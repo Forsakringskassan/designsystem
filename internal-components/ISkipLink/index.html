@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="sv" class="theme-default">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>ISkipLink</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="keywords" content="Försäkringskassan, Swedish Social Agency, Designsystem, FKDS, FKUI, Frontend, Opensource, Myndighet" />
+<link rel="stylesheet" href="../../vendors.css?v=4.1.0" />
+<link rel="stylesheet" href="../../docs.css?v=4.1.0" />
+<link rel="stylesheet" href="../../fonts.css?v=4.1.0" />
+<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.1.0" />
+<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.1.0" />
+<link rel="stylesheet" href="../../fkui-exp.css?v=4.1.0" />
+<link rel="stylesheet" href="../../fkui-int.css?v=4.1.0" />
+
+</head>
+<body class="component">
+    <div class="page">
+        <div style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false"><symbol id="f-icon-alert" viewBox="0 0 512 512"><path d="m233.363 287.35-17.101-96.43c-3.45-19.48 15.314-36.92 39.737-36.92 24.423 0 43.187 17.43 39.737 36.92l-17.101 96.43c-1.613 9.08-11.256 15.82-22.636 15.82-11.38 0-21.023-6.74-22.636-15.82zM220 364.031c0-19.875 16.11-36 36-36 19.876 0 36 16.11 36 36s-16.11 36-36 36c-19.876 0-36-16.124-36-36z" fill="currentColor"/></symbol><symbol id="f-icon-arrow-down" viewBox="0 0 512 512"><path d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0z" fill="currentColor"/></symbol><symbol id="f-icon-arrow-in-circle" viewBox="0 0 512 512"><path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" fill="currentColor"/></symbol><symbol id="f-icon-arrow-right" viewBox="0 0 512 512" fill="none"><path d="M381.476 272.971 187.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L284.505 256 130.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L381.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" fill="currentColor"/></symbol><symbol id="f-icon-bell" viewBox="0 0 512 512" fill="none"><path d="M256.001 512c35.32 0 63.97-28.65 63.97-64h-127.94c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C150.561 68.1 96.081 130.3 96.081 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z" fill="currentColor"/></symbol><symbol id="f-icon-calendar" viewBox="0 0 512 512"><path d="M180 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H80c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H80v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z" fill="currentColor"/></symbol><symbol id="f-icon-caret-down" viewBox="0 0 512 512"><path d="M127.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L270.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L113.2 226.1c-12.6-12.6-3.7-34.1 14.1-34.1z" fill="currentColor"/></symbol><symbol id="f-icon-caret-up" viewBox="0 0 512 512"><path d="M384.662 352H127.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z" fill="currentColor"/></symbol><symbol id="f-icon-circle" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><path d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256z" style="fill:currentColor"/><path d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256zM256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7C138.2 42.7 42.7 138.2 42.7 256S138.2 469.3 256 469.3z" style="fill-rule:evenodd;clip-rule:evenodd"/></symbol><symbol id="f-icon-close" viewBox="0 0 512 512"><path d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L322.72 256z" fill="currentColor"/></symbol><symbol id="f-icon-dash" viewBox="0 0 512 512"><path d="M448 208H64c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" fill="currentColor"/></symbol><symbol id="f-icon-doc" viewBox="0 0 512 512"><path d="M288 136V0H88C74.7 0 64 10.7 64 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H312c-13.2 0-24-10.8-24-24zm57.1 120H369c7.7 0 13.4 7.1 11.7 14.7l-38 168c-1.2 5.5-6.1 9.3-11.7 9.3h-38c-5.5 0-10.3-3.8-11.6-9.1-25.8-103.5-20.8-81.2-25.6-110.5h-.5c-1.1 14.3-2.4 17.4-25.6 110.5-1.3 5.3-6.1 9.1-11.6 9.1H181c-5.6 0-10.5-3.9-11.7-9.4l-37.8-168c-1.7-7.5 4-14.6 11.7-14.6h24.5c5.7 0 10.7 4 11.8 9.7 15.6 78 20.1 109.5 21 122.2 1.6-10.2 7.3-32.7 29.4-122.7 1.3-5.4 6.1-9.1 11.7-9.1h29.1c5.6 0 10.4 3.8 11.7 9.2 24 100.4 28.8 124 29.6 129.4-.2-11.2-2.6-17.8 21.6-129.2 1-5.6 5.9-9.5 11.5-9.5zM448 121.9v6.1H320V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z" fill="currentColor"/></symbol><symbol id="f-icon-error" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32 32-14.3 32-32z" fill="currentColor"/></symbol><symbol id="f-icon-file" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path d="M0 64C0 28.7 28.7 0 64 0h160v128c0 17.7 14.3 32 32 32h128v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0l128 128z" fill="currentColor"/></symbol><symbol id="f-icon-i" version="1.1" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><style>.i{fill:currentColor}</style><path class="i" d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75V243.12zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09z"/></symbol><symbol id="f-icon-info" viewBox="0 0 21 21" fill="none"><circle cx="10.08" cy="10.08" r="10.08" fill="currentColor"/><rect x="8.88" y="7.68" width="2.4" height="8.16" rx="1.2" fill="#fff"/><circle cx="10.08" cy="5.76" fill="#fff" r="1.2"/></symbol><symbol id="f-icon-new-window" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><path d="M455.1 464.4H46.2V55.5h166.6V8.7H-1V512h503.3V298.2h-47.2v166.2z" style="fill:gray"/><path d="M460.3 0H317v52.1h105.9L275.3 199.9l37.5 37.1L460.3 89.6v106.2h52.1V0h-52.1z" style="fill:#1b1e23"/></symbol><symbol id="f-icon-paper-clip" viewBox="0 0 512 512"><path d="M75.246 466.142c-58.43-60.289-57.341-157.511 1.386-217.581L286.392 34c44.316-45.332 116.351-45.336 160.671 0 43.89 44.894 43.943 117.329 0 162.276L264.214 383.128c-29.855 30.537-78.633 30.111-107.982-.998-28.275-29.97-27.368-77.473 1.452-106.953l143.743-146.835c6.182-6.314 16.312-6.422 22.626-.241l22.861 22.379c6.315 6.182 6.422 16.312.241 22.626L203.427 319.927c-4.932 5.045-5.236 13.428-.648 18.292 4.372 4.634 11.245 4.711 15.688.165l182.849-186.851c19.613-20.062 19.613-52.725-.011-72.798-19.189-19.627-49.957-19.637-69.154 0L122.39 293.295c-34.763 35.56-35.299 93.12-1.191 128.313 34.01 35.093 88.985 35.137 123.058.286l172.06-175.999c6.177-6.319 16.307-6.433 22.626-.256l22.877 22.364c6.319 6.177 6.434 16.307.256 22.626l-172.06 175.998c-59.576 60.938-155.943 60.216-214.77-.485z" fill="currentColor"/></symbol><symbol id="f-icon-pdf" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM64 224h24c30.9 0 56 25.1 56 56s-25.1 56-56 56h-8v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm24 80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8v48h8zm72-64c0-8.8 7.2-16 16-16h24c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-24c-8.8 0-16-7.2-16-16V240zm32 112h8c8.8 0 16-7.2 16-16v-64c0-8.8-7.2-16-16-16h-8v96zm96-128h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16z" fill="currentColor"/></symbol><symbol id="f-icon-pen" viewBox="0 0 512 512"><path d="m290.74 93.24 128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z" fill="currentColor"/></symbol><symbol id="f-icon-plus" viewBox="0 0 512 512"><path d="M448 208H304V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H64c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" fill="currentColor"/></symbol><symbol id="f-icon-reply" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><path fill="currentColor" d="m8.3 189.8 176-152C199.7 24.5 224 35.3 224 56v80.1c160.6 1.8 288 34 288 186.3 0 61.4-39.6 122.3-83.3 154.1-13.7 9.9-33.1-2.5-28.1-18.6 45.3-145-21.5-183.5-176.6-185.7V360c0 20.7-24.3 31.5-39.7 18.2l-176-152c-11.1-9.6-11.1-26.8 0-36.4z"/></symbol><symbol id="f-icon-sort" viewBox="0 0 512 512"><path d="M137 288h238c21.4 0 32.1 25.9 17 41L273 448c-9.4 9.4-24.6 9.4-33.9 0L120 329c-15.1-15.1-4.4-41 17-41zm255-105L273 64c-9.4-9.4-24.6-9.4-33.9 0L120 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z" fill="currentColor"/></symbol><symbol id="f-icon-success-in-circle" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path d="M243.8 339.8c-10.9 10.9-28.7 10.9-39.6 0l-64-64c-10.9-10.9-10.9-28.7 0-39.6 10.9-10.9 28.7-10.9 39.6 0l44.2 44.2 108.2-108.2c10.9-10.9 28.7-10.9 39.6 0 10.9 10.9 10.9 28.7 0 39.6l-128 128zM512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256zM256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z" fill="currentColor"/></symbol><symbol id="f-icon-success" viewBox="0 0 512 512"><path d="m173.898 439.404-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" fill="currentColor"/></symbol><symbol id="f-icon-trashcan" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><path fill="currentColor" d="M387.4 133H140.7c-25.2 0-44.9 19.6-44.9 44.9l22.4 286c0 25.2 19.6 44.9 44.9 44.9H365c25.2 0 44.9-19.6 44.9-44.9l22.4-283.2c0-28.1-19.7-47.7-44.9-47.7zM205.2 435.8c0 11.2-8.4 19.6-19.6 19.6S166 447 166 435.8V203.1c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6v232.7zm78.5 2.8c0 11.2-8.4 19.6-19.6 19.6s-19.6-8.4-19.6-19.6V203.1c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6v235.5zm81.3 0c0 11.2-8.4 19.6-19.6 19.6s-22.4-8.4-22.4-19.6V205.9c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6v232.7h2.8zM437.9 68.5H365V23.7C365 12.5 356.6 4 345.3 4H182.7c-11.2 0-19.6 8.4-19.6 19.6v44.9H90.2C79 68.5 70.6 79.7 70.6 91s8.4 19.6 19.6 19.6h347.7c11.2 0 19.6-8.4 19.6-19.6s-8.4-22.5-19.6-22.5zM205.2 46.1H323v25.2H205.2V46.1z"/></symbol><symbol id="f-icon-triangle" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><path d="M215.1 75.68c18.17-31.5 63.63-31.5 81.8 0l177.95 308.45c18.16 31.48-4.56 70.82-40.9 70.82H78.05c-36.34 0-59.06-39.34-40.9-70.82L215.1 75.68z" style="fill:currentColor"/><path d="m331.89 66.64 165.1 286.16c33.7 58.41-8.46 131.4-75.89 131.4H90.91c-67.43 0-109.59-72.99-75.89-131.4L180.11 66.64c33.72-58.44 118.06-58.44 151.78 0zm-37.94 21.89c-16.86-29.22-59.03-29.22-75.89 0L52.96 374.7c-16.85 29.2 4.23 65.7 37.95 65.7H421.1c33.72 0 54.79-36.49 37.95-65.7L293.95 88.53z" style="fill-rule:evenodd;clip-rule:evenodd"/></symbol></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false"><symbol id="f-filetypes-icon-doc" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM111 257.1l26.8 89.2 31.6-90.3c3.4-9.6 12.5-16.1 22.7-16.1s19.3 6.4 22.7 16.1l31.6 90.3 26.6-89.2c3.8-12.7 17.2-19.9 29.9-16.1s19.9 17.2 16.1 29.9l-48 160c-3 10-12.1 16.9-22.4 17.1s-19.8-6.2-23.2-16.1L192 336.6l-33.3 95.3c-3.4 9.8-12.8 16.3-23.2 16.1s-19.5-7.1-22.4-17.1l-48-160c-3.8-12.7 3.4-26.1 16.1-29.9s26.1 3.4 29.9 16.1z" fill="currentColor"/></symbol><symbol id="f-filetypes-icon-pdf" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM64 224h24c30.9 0 56 25.1 56 56s-25.1 56-56 56h-8v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm24 80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8v48h8zm72-64c0-8.8 7.2-16 16-16h24c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-24c-8.8 0-16-7.2-16-16V240zm32 112h8c8.8 0 16-7.2 16-16v-64c0-8.8-7.2-16-16-16h-8v96zm96-128h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16z" fill="currentColor"/></symbol><symbol id="f-filetypes-icon-pic" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path d="M0 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v320c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm323.8 106.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6-26.5-33.1c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4S78.8 416 88 416h336c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192c26.5 0 48-21.5 48-48s-21.5-48-48-48-48 21.5-48 48 21.5 48 48 48z" fill="currentColor"/></symbol></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false"><symbol id="f-social-icon-fk-logo" viewBox="0 0 513 512"><path d="M512.975 0h-512v512h512V0z" fill="#116A3E"/><path fill-rule="evenodd" clip-rule="evenodd" d="M223.631 217.045c-3.51 0-6.48 2.893-6.48 6.441v90.869c0 3.549 2.045 8.524 4.59 11.07l94.687 94.34c2.546 2.506 7.483 4.551 11.07 4.551h90.907c3.548 0 6.479-2.97 6.479-6.441v-90.561c0-3.509-2.082-8.562-4.551-11.069l-94.725-94.571c-2.507-2.507-7.483-4.551-11.031-4.551l-90.946-.078z" fill="#fff"/><path d="M431.712 456.019H82.237c-13.923 0-25.262-11.378-25.262-25.378V81.282c0-13.962 11.339-25.301 25.262-25.301h349.475c13.962 0 25.263 11.34 25.263 25.301v349.359c.038 14-11.301 25.378-25.263 25.378zM82.237 67.706c-7.482 0-13.537 6.094-13.537 13.576v349.359c0 7.521 6.093 13.653 13.537 13.653h349.475c7.482 0 13.576-6.132 13.576-13.653V81.282c0-7.482-6.094-13.576-13.576-13.576H82.237z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M94.81 87.569c-3.548 0-6.48 2.892-6.48 6.44v323.827c0 3.587 2.045 4.474 4.552 1.89l93.838-94.379c2.469-2.584 4.513-7.521 4.513-11.146V197.529c0-3.587 2.931-6.479 6.518-6.479h116.864c3.587 0 8.524-2.006 11.031-4.513l94.649-94.34c2.507-2.468 1.658-4.551-1.89-4.551H94.81v-.077z" fill="#fff"/></symbol></svg>
+</div>
+
+
+<div class="top-nav">
+    
+
+    <a class="top-nav__skiplink" href="#main-content">
+        Gå direkt till innehåll
+    </a>
+    <div class="container-fluid top-nav__container">
+        <div class="top-nav__branding">
+            <a href="../.." class="top-nav__logo"><span class="sr-only">Försäkringskassans logotyp, länk till startsida för design</span></a>
+
+            <span class="top-nav__systemversion">
+                FKUI v4.1.0 
+            </span>
+        </div>
+        <nav aria-label="Huvudmeny" class="top-nav__wrapper">
+            <ul class="top-nav__list">
+                
+                <li>
+                    <a href="../../components" class="top-nav__link">
+                        Komponenter
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="../../core" class="top-nav__link">
+                        Generellt
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="../../designtokens" class="top-nav__link">
+                        Designelement
+                    </a>
+                </li>
+                
+                <li>
+                    <a href=".." class="top-nav__link">
+                        Ramverkskomponenter
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/Forsakringskassan/fk-designsystem/tree/master" title="Försäkringskassans Github" class="top-nav__link top-nav__link--repo">
+                        <span class="sr-only">Försäkringskassans GitHub, länk till extern webbsida</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+        
+        <a class="top-nav__toggle-menu">Meny</a>
+    </div>
+</div>
+<nav class="mobile-nav">
+    <div class="container-fluid">
+        <div class="mobile-nav__header-container">
+            <a class="mobile-nav__logo"></a>
+            <a class="mobile-nav__toggle-menu">Meny</a>
+        </div>
+        <ul class="mobile-nav__list">
+            
+            <li>
+                <a href="../../components" class="mobile-nav__link">
+                Komponenter
+                </a>
+                <ul class="mobile-nav__list mobile-nav__list--level-2">
+                  
+                <li>
+                    <a class="mobile-nav__link" href="../../components/chip">
+                    Chip
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/sort-filter-dataset">
+                    Datamängdsorterare
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/datepicker">
+                    Datumväljare
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/select-field">
+                    Dropplista
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/label">
+                    Etikett
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/expandable-panel">
+                    Expanderbar panel
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/expandable-paragraph">
+                    Expanderbart stycke
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/error-list">
+                    Fellista
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/file-item">
+                    Filpresentatör
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/file-uploader">
+                    Filuppladdare
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/file-selector">
+                    Filväljare
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/textarea-field">
+                    Flerradigt inmatningsfält
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/progressbar">
+                    Förloppsindikator
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/wizard">
+                    Guide/guidesteg
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/icon">
+                    Ikon
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/text-field">
+                    Inmatningsfält
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/button">
+                    Knappar
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/checkbox">
+                    Kryssruta
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/loader">
+                    Laddningsindikator
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/list">
+                    Lista
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/crud-dataset">
+                    Listredigerare
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/anchor">
+                    Länk
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/message-box">
+                    Meddelanderuta
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/modal">
+                    Modal dialogruta
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/offline">
+                    Offline
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/output-field">
+                    Presentationsfält - dynamiskt/statiskt
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/radio-button">
+                    Radioknapp
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/page-header">
+                    Sidhuvud
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/entrypoint">
+                    Startpunkt
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/static-panel">
+                    Statisk panel
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/table">
+                    Tabell
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/tooltip">
+                    Tooltip
+                    </a>
+                </li>
+                
+                </ul>
+            </li>
+            
+            <li>
+                <a href="../../core" class="mobile-nav__link">
+                Generellt
+                </a>
+                <ul class="mobile-nav__list mobile-nav__list--level-2">
+                  
+                <li>
+                    <a class="mobile-nav__link" href="../../core/helpers">
+                    Hjälpklasser
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../core/layout">
+                    Layout
+                    </a>
+                </li>
+                
+                </ul>
+            </li>
+            
+            <li>
+                <a href="../../designtokens" class="mobile-nav__link">
+                Designelement
+                </a>
+                <ul class="mobile-nav__list mobile-nav__list--level-2">
+                  
+                <li>
+                    <a class="mobile-nav__link" href="../../designtokens/colors">
+                    Färger
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../designtokens/icons">
+                    Ikoner
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../designtokens/typography">
+                    Typografi
+                    </a>
+                </li>
+                
+                </ul>
+            </li>
+            
+            <li>
+                <a href=".." class="mobile-nav__link">
+                Ramverkskomponenter
+                </a>
+                <ul class="mobile-nav__list mobile-nav__list--level-2">
+                  
+                <li>
+                    <a class="mobile-nav__link" href="../animate-expand">
+                    IAnimateExpand
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../IFlex">
+                    IFlex
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../IMenu">
+                    IMenu
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../popup">
+                    IPopup
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../IPopupMenu">
+                    IPopupMenu
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="">
+                    ISkipLink
+                    </a>
+                </li>
+                
+                </ul>
+            </li>
+            
+            
+            <li>
+                <a href="https://github.com/Forsakringskassan/fk-designsystem/tree/master"
+                    class="mobile-nav__link mobile-nav__link--repo">
+                    <span aria-hidden="true">GitHub</span>
+                    <span class="sr-only">Försäkringskassan GitHub, länk till extern webbsida</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+
+        <div class="page__wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <nav aria-labelledby="aside-nav__header" class="col col--md-4 col--lg-3 col--xl-2 pt-3 aside-nav">
+    <div class="aside-nav__header">
+        <h3 id="aside-nav__header">Ramverkskomponenter
+        </h3>
+    </div>
+    <ul class="aside-nav__list">
+        
+            
+            
+            <li>
+                <a class="aside-nav__second-link
+                          "
+                    href="../animate-expand">
+                    <span class="aside-nav__link-text">
+                        IAnimateExpand
+                    </span>
+                </a>
+                <ul class="aside-nav__list">
+                    
+                        
+                </ul>
+            </li>
+        
+            
+            <li>
+                <a class="aside-nav__second-link
+                          "
+                    href="../IFlex">
+                    <span class="aside-nav__link-text">
+                        IFlex
+                    </span>
+                </a>
+                <ul class="aside-nav__list">
+                    
+                        
+                </ul>
+            </li>
+        
+            
+            <li>
+                <a class="aside-nav__second-link
+                          "
+                    href="../IMenu">
+                    <span class="aside-nav__link-text">
+                        IMenu
+                    </span>
+                </a>
+                <ul class="aside-nav__list">
+                    
+                        
+                </ul>
+            </li>
+        
+            
+            <li>
+                <a class="aside-nav__second-link
+                          "
+                    href="../popup">
+                    <span class="aside-nav__link-text">
+                        IPopup
+                    </span>
+                </a>
+                <ul class="aside-nav__list">
+                    
+                        
+                </ul>
+            </li>
+        
+            
+            <li>
+                <a class="aside-nav__second-link
+                          "
+                    href="../IPopupMenu">
+                    <span class="aside-nav__link-text">
+                        IPopupMenu
+                    </span>
+                </a>
+                <ul class="aside-nav__list">
+                    
+                        
+                </ul>
+            </li>
+        
+            
+            <li>
+                <a class="aside-nav__second-link
+                           aside-nav__second-link--selected "
+                    href="">
+                    <span class="aside-nav__link-text">
+                        ISkipLink
+                    </span>
+                </a>
+                <ul class="aside-nav__list">
+                    
+                        
+                </ul>
+            </li>
+        
+    </ul>
+</nav>
+
+                    <div class="content col col--sm-12 col--md-8 col--lg-9 col--xl-10">
+                        <main id="main-content" class="content__wrapper">
+                            <div class="content__header">
+                                <div>
+                                    <h1>ISkipLink</h1>
+                                </div>
+                                <div>
+                                    <button type="button" id="toggle-theme" class="button"></button>
+                                </div>
+                            </div>
+                            <h2 id="exempel">Exempel</h2>
+
+                <div class="example mb-4">
+                    <div class="example__menu">
+                        <button
+                            type="button"
+                            class="button button--discrete example__toggle-code"
+                            aria-expanded="false"
+                        ><i class="icon icon--code"></i> Visa kod</button>
+                    </div>
+                    <div class="example__live">
+                        <a href="#main" class="iskiplink:focus"> Gå direkt till innehåll </a>
+
+                    </div>
+                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#main&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;iskiplink:focus&quot;</span>&gt;</span> Gå direkt till innehåll <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+                </div><h2 id="ovrigt">Övrigt</h2>
+<h3 id="lankar">Länkar</h3>
+<p><s>Användargränsnitt, Förvaltningsdokumentation -Startpunkt för komponent</s></p>
+<p><s>Designriktlinjersjälvbetjäning</s></p>
+<p><s>Designriktlinjer interna system</s></p>
+<p><s>FKUI Vue - Vue komponent som innehåller logik och interaktion baserad på FKUI Design</s></p>
+
+                            
+                            
+                            
+
+                            <a href="https://github.com/Forsakringskassan/fk-designsystem/tree/master/packages/design/src/internal-components/ISkipLink">
+                                Källkod - Källkod för denna komponent
+                            </a>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../app.js?v=4.1.0"></script>
+</body>
+</html>
