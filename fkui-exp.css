@@ -6427,7 +6427,18 @@ input[type=search]:focus,
   height: calc(13px + 4px);
 }
 
-.wizard-step .icon-stack div {
+.wizard-step .wizard-step__header {
+  margin-left: -10px;
+}
+
+.wizard-step .wizard-step__header .icon-stack {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.wizard-step .wizard-step__header .icon-stack div {
   width: 100%;
   text-align: center;
   font-size: 20px;
@@ -6435,32 +6446,21 @@ input[type=search]:focus,
   font-weight: bold;
 }
 
-.wizard-step .wizard-step__header {
-  margin-left: -10px;
-}
-
-.wizard-step .wizard-step__header__step-of {
-  color: var(--f-text-color-discrete, #5f6165);
-  font-weight: normal;
-  font-size: 1rem;
-}
-
-.wizard-step .icon-stack {
-  display: block;
-  width: 30px;
-  height: 30px;
-  margin-right: 8px;
-}
-
-.wizard-step .icon.f-icon-circle {
+.wizard-step .wizard-step__header .icon.f-icon-circle {
   width: 30px;
   height: 30px;
   -webkit-transition: color 400ms ease-out, fill 400ms ease-out, opacity 400ms ease-out;
   transition: color 400ms ease-out, fill 400ms ease-out, opacity 400ms ease-out;
 }
 
-.wizard-step .icon.f-icon-success {
+.wizard-step .wizard-step__header .icon.f-icon-success {
   display: none;
+}
+
+.wizard-step .wizard-step__header__step-of {
+  color: var(--f-text-color-discrete, #5f6165);
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .wizard-step .wizard-step__header__line-down {
