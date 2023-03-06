@@ -6,13 +6,13 @@
 <title>Modal dialogruta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="keywords" content="Försäkringskassan, Swedish Social Agency, Designsystem, FKDS, FKUI, Frontend, Opensource, Myndighet" />
-<link rel="stylesheet" href="../../vendors.css?v=4.11.0" />
-<link rel="stylesheet" href="../../docs.css?v=4.11.0" />
-<link rel="stylesheet" href="../../fonts.css?v=4.11.0" />
-<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.11.0" />
-<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.11.0" />
-<link rel="stylesheet" href="../../fkui-exp.css?v=4.11.0" />
-<link rel="stylesheet" href="../../fkui-int.css?v=4.11.0" />
+<link rel="stylesheet" href="../../vendors.css?v=4.12.0" />
+<link rel="stylesheet" href="../../docs.css?v=4.12.0" />
+<link rel="stylesheet" href="../../fonts.css?v=4.12.0" />
+<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.12.0" />
+<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.12.0" />
+<link rel="stylesheet" href="../../fkui-exp.css?v=4.12.0" />
+<link rel="stylesheet" href="../../fkui-int.css?v=4.12.0" />
 
 </head>
 <body class="component">
@@ -35,7 +35,7 @@
             <a href="../.." class="top-nav__logo"><span class="sr-only">Försäkringskassans logotyp, länk till startsida för design</span></a>
 
             <span class="top-nav__systemversion">
-                FKUI v4.11.0 
+                FKUI v4.12.0 
             </span>
         </div>
         <nav aria-label="Huvudmeny" class="top-nav__wrapper">
@@ -992,7 +992,7 @@
                             </div>
                             <h2 id="usage">Usage</h2>
 <pre class="hljs example__code example__code--visible"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span> <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-container&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-inner&quot;</span>&gt;</span>
@@ -1020,9 +1020,9 @@
                     <div class="example__live">
                         <div class="modal">
     <!-- Hide backdrop in demos. -->
-    <!-- <div class="modal__backdrop" aria-hidden="false"> -->
-    <!-- <div role="document" class="modal__outer-container" tabindex="-1"> -->
-    <div class="modal__inner-container" role="dialog" aria-modal="true">
+    <!-- <div class="modal__backdrop"> -->
+    <!-- <div class="modal__outer-container" tabindex="-1" role="dialog" aria-modal="true"> -->
+    <div class="modal__inner-container">
         <div class="modal__dialog-container">
             <div class="modal__dialog">
                 <div class="modal__dialog-inner">
@@ -1079,9 +1079,9 @@
                     </div>
                     <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Hide backdrop in demos. --&gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__backdrop&quot; aria-hidden=&quot;false&quot;&gt; --&gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;div role=&quot;document&quot; class=&quot;modal__outer-container&quot; tabindex=&quot;-1&quot;&gt; --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span> <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__backdrop&quot;&gt; --&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__outer-container&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot;&gt; --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-container&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-inner&quot;</span>&gt;</span>
@@ -1149,9 +1149,9 @@
                     <div class="example__live">
                         <div class="modal modal--information">
     <!-- Hide backdrop in demos. -->
-    <!-- <div class="modal__backdrop" aria-hidden="false"> -->
-    <!-- <div role="document" class="modal__outer-container" tabindex="-1"> -->
-    <div class="modal__inner-container" role="dialog" aria-modal="true">
+    <!-- <div class="modal__backdrop"> -->
+    <!-- <div class="modal__outer-container" tabindex="-1" role="dialog" aria-modal="true"> -->
+    <div class="modal__inner-container">
         <div class="modal__dialog-container">
             <div class="modal__dialog">
                 <div class="modal__dialog-inner">
@@ -1211,9 +1211,9 @@
                     </div>
                     <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal modal--information&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Hide backdrop in demos. --&gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__backdrop&quot; aria-hidden=&quot;false&quot;&gt; --&gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;div role=&quot;document&quot; class=&quot;modal__outer-container&quot; tabindex=&quot;-1&quot;&gt; --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span> <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__backdrop&quot;&gt; --&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__outer-container&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot;&gt; --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-container&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-inner&quot;</span>&gt;</span>
@@ -1284,9 +1284,9 @@
                     <div class="example__live">
                         <div class="modal modal--warning">
     <!-- Hide backdrop in demos. -->
-    <!-- <div class="modal__backdrop" aria-hidden="false"> -->
-    <!-- <div role="document" class="modal__outer-container" tabindex="-1"> -->
-    <div class="modal__inner-container" role="dialog" aria-modal="true">
+    <!-- <div class="modal__backdrop"> -->
+    <!-- <div class="modal__outer-container" tabindex="-1" role="dialog" aria-modal="true"> -->
+    <div class="modal__inner-container">
         <div class="modal__dialog-container">
             <div class="modal__dialog">
                 <div class="modal__dialog-inner">
@@ -1346,9 +1346,9 @@
                     </div>
                     <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal modal--warning&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Hide backdrop in demos. --&gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__backdrop&quot; aria-hidden=&quot;false&quot;&gt; --&gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;div role=&quot;document&quot; class=&quot;modal__outer-container&quot; tabindex=&quot;-1&quot;&gt; --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span> <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__backdrop&quot;&gt; --&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__outer-container&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot;&gt; --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-container&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-inner&quot;</span>&gt;</span>
@@ -1419,9 +1419,9 @@
                     <div class="example__live">
                         <div class="modal modal--error">
     <!-- Hide backdrop in demos. -->
-    <!-- <div class="modal__backdrop" aria-hidden="false"> -->
-    <!-- <div role="document" class="modal__outer-container" tabindex="-1"> -->
-    <div class="modal__inner-container" role="dialog" aria-modal="true">
+    <!-- <div class="modal__backdrop"> -->
+    <!-- <div class="modal__outer-container" tabindex="-1" role="dialog" aria-modal="true"> -->
+    <div class="modal__inner-container">
         <div class="modal__dialog-container">
             <div class="modal__dialog">
                 <div class="modal__dialog-inner">
@@ -1481,9 +1481,9 @@
                     </div>
                     <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal modal--error&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Hide backdrop in demos. --&gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__backdrop&quot; aria-hidden=&quot;false&quot;&gt; --&gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;div role=&quot;document&quot; class=&quot;modal__outer-container&quot; tabindex=&quot;-1&quot;&gt; --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span> <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__backdrop&quot;&gt; --&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;div class=&quot;modal__outer-container&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot;&gt; --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-container&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-inner&quot;</span>&gt;</span>
@@ -1562,9 +1562,14 @@
 </button>
 
 <div id="liveexample" class="modal" style="display: none;">
-    <div class="modal__backdrop" aria-hidden="false">
-        <div role="document" class="modal__outer-container" tabindex="-1">
-            <div class="modal__inner-container" role="dialog" aria-modal="true">
+    <div class="modal__backdrop">
+        <div
+            class="modal__outer-container"
+            tabindex="-1"
+            role="dialog"
+            aria-modal="true"
+        >
+            <div class="modal__inner-container">
                 <div class="modal__dialog-container">
                     <div class="modal__dialog">
                         <div class="modal__dialog-inner">
@@ -1787,9 +1792,14 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;liveexample&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__backdrop&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;document&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__outer-container&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span> <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__backdrop&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__outer-container&quot;</span>
+            <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span>
+            <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span>
+            <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>
+        &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-container&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-inner&quot;</span>&gt;</span>
@@ -2013,7 +2023,7 @@
 <p>Du ändrar storleken genom att lägga till motsvarande CSS-klass <code>modal__dialog-container--$size</code>.
 För att till exempel använda <code>large</code> lägger du till <code>modal__dialog_content--large</code>:</p>
 <pre class="hljs example__code example__code--visible"><code> &lt;div class=&quot;modal&quot;&gt;
-     &lt;div class=&quot;modal__inner-container&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot;&gt;
+     &lt;div class=&quot;modal__inner-container&quot;&gt;
 <span class="hljs-deletion">-        &lt;div class=&quot;modal__dialog-container&quot;&gt;</span>
 <span class="hljs-addition">+        &lt;div class=&quot;modal__dialog-container modal__dialog-container--large&quot;&gt;</span>
              &lt;div class=&quot;modal__dialog&quot;&gt;
@@ -2080,9 +2090,14 @@ För att till exempel använda <code>large</code> lägger du till <code>modal__d
 </button>
 
 <div id="size-live-example" class="modal" style="display: none;">
-    <div class="modal__backdrop" aria-hidden="false">
-        <div role="document" class="modal__outer-container" tabindex="-1">
-            <div class="modal__inner-container" role="dialog" aria-modal="true">
+    <div class="modal__backdrop">
+        <div
+            class="modal__outer-container"
+            tabindex="-1"
+            role="dialog"
+            aria-modal="true"
+        >
+            <div class="modal__inner-container">
                 <div
                     class="modal__dialog-container modal__dialog-container--fullscreen modal__dialog-container--large"
                 >
@@ -2200,9 +2215,14 @@ För att till exempel använda <code>large</code> lägger du till <code>modal__d
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;size-live-example&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__backdrop&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;document&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__outer-container&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span> <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__backdrop&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__outer-container&quot;</span>
+            <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span>
+            <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;dialog&quot;</span>
+            <span class="hljs-attr">aria-modal</span>=<span class="hljs-string">&quot;true&quot;</span>
+        &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__inner-container&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
                     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal__dialog-container modal__dialog-container--fullscreen modal__dialog-container--large&quot;</span>
                 &gt;</span>
@@ -2285,6 +2305,6 @@ För att till exempel använda <code>large</code> lägger du till <code>modal__d
             </div>
         </div>
     </div>
-    <script src="../../app.js?v=4.11.0"></script>
+    <script src="../../app.js?v=4.12.0"></script>
 </body>
 </html>
