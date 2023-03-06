@@ -2883,7 +2883,7 @@ input[type=search]:focus,
   color: var(--f-text-color-link, #434ee4);
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 0.2rem;
+  text-underline-offset: 0.25rem;
   -webkit-text-decoration-color: var(--f-text-color-link, #434ee4);
           text-decoration-color: var(--f-text-color-link, #434ee4);
   font-weight: var(--f-font-weight-medium, 700);
@@ -4240,6 +4240,7 @@ input[type=search]:focus,
 
 .contextmenu__lefticon {
   margin-right: 0.75rem;
+  min-width: var(--f-icon-size-small, 1rem);
 }
 
 .crud-dataset {
@@ -6387,8 +6388,8 @@ input[type=search]:focus,
 
 .text-field__icon-wrapper {
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
   position: relative;
 }
 
@@ -7072,23 +7073,28 @@ input[type=search]:focus,
   padding-right: 0.75rem;
 }
 
+.imenu--horizontal .imenu__list__item--highlight {
+  color: var(--f-text-color-menu-horizontal-highlight, #1b1e23);
+  font-weight: var(--f-font-weight-medium, 700);
+}
+
+.imenu--horizontal .imenu__list__anchor-container {
+  padding-bottom: 0.5rem;
+  border-bottom: 5px solid transparent;
+}
+
+.imenu--horizontal .imenu__list__anchor-container--highlight {
+  border-bottom: 5px solid var(--f-border-color-menu-horizontal-highlight, #116a3e);
+}
+
+.imenu--horizontal .imenu__list__anchor-container:hover {
+  border-bottom: 5px solid var(--f-border-color-menu-horizontal-hover, #a6d0ab);
+}
+
 .imenu--horizontal .imenu__list__anchor {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-bottom: 5px solid transparent;
-  padding-bottom: 0.5rem;
-}
-
-.imenu--horizontal .imenu__list__anchor:hover {
-  font-weight: var(--f-font-weight-normal, 400);
-  border-bottom: 5px solid var(--f-border-color-menu-horizontal-hover, #a6d0ab);
-}
-
-.imenu--horizontal .imenu__list__anchor--highlight {
-  color: var(--f-text-color-menu-horizontal-highlight, #1b1e23);
-  font-weight: var(--f-font-weight-medium, 700);
-  border-bottom: 5px solid var(--f-border-color-menu-horizontal-highlight, #116a3e);
 }
 
 .imenu--horizontal .imenu__list__anchor--highlight:hover {

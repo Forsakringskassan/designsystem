@@ -6,13 +6,13 @@
 <title>Chip</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="keywords" content="Försäkringskassan, Swedish Social Agency, Designsystem, FKDS, FKUI, Frontend, Opensource, Myndighet" />
-<link rel="stylesheet" href="../../vendors.css?v=4.14.0" />
-<link rel="stylesheet" href="../../docs.css?v=4.14.0" />
-<link rel="stylesheet" href="../../fonts.css?v=4.14.0" />
-<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.14.0" />
-<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.14.0" />
-<link rel="stylesheet" href="../../fkui-exp.css?v=4.14.0" />
-<link rel="stylesheet" href="../../fkui-int.css?v=4.14.0" />
+<link rel="stylesheet" href="../../vendors.css?v=4.15.0" />
+<link rel="stylesheet" href="../../docs.css?v=4.15.0" />
+<link rel="stylesheet" href="../../fonts.css?v=4.15.0" />
+<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.15.0" />
+<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.15.0" />
+<link rel="stylesheet" href="../../fkui-exp.css?v=4.15.0" />
+<link rel="stylesheet" href="../../fkui-int.css?v=4.15.0" />
 
 </head>
 <body class="component">
@@ -35,7 +35,7 @@
             <a href="../.." class="top-nav__logo"><span class="sr-only">Försäkringskassans logotyp, länk till startsida för design</span></a>
 
             <span class="top-nav__systemversion">
-                FKUI v4.14.0 
+                FKUI v4.15.0 
             </span>
         </div>
         <nav aria-label="Huvudmeny" class="top-nav__wrapper">
@@ -147,12 +147,6 @@
                 </li>
                  
                 <li>
-                    <a class="mobile-nav__link" href="../calendar-day">
-                    FCalendarDay
-                    </a>
-                </li>
-                 
-                <li>
                     <a class="mobile-nav__link" href="../error-list">
                     Fellista
                     </a>
@@ -203,6 +197,12 @@
                 <li>
                     <a class="mobile-nav__link" href="../text-field">
                     Inmatningsfält
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../calendar-day">
+                    Kalenderdag
                     </a>
                 </li>
                  
@@ -573,21 +573,6 @@
             <li>
                 <a class="aside-nav__second-link
                           "
-                    href="../calendar-day">
-                    <span class="aside-nav__link-text">
-                        FCalendarDay
-                    </span>
-                </a>
-                <ul class="aside-nav__list">
-                    
-                        
-                </ul>
-            </li>
-        
-            
-            <li>
-                <a class="aside-nav__second-link
-                          "
                     href="../error-list">
                     <span class="aside-nav__link-text">
                         Fellista
@@ -720,6 +705,21 @@
                     href="../text-field">
                     <span class="aside-nav__link-text">
                         Inmatningsfält
+                    </span>
+                </a>
+                <ul class="aside-nav__list">
+                    
+                        
+                </ul>
+            </li>
+        
+            
+            <li>
+                <a class="aside-nav__second-link
+                          "
+                    href="../calendar-day">
+                    <span class="aside-nav__link-text">
+                        Kalenderdag
                     </span>
                 </a>
                 <ul class="aside-nav__list">
@@ -1024,11 +1024,7 @@
                         ><i class="icon icon--code"></i> Visa kod</button>
                     </div>
                     <div class="example__live">
-                        <fieldset
-    id="barn-over-18"
-    name="barn-over-18"
-    class="radio-button-group--chip  radio-button-group"
->
+                        <fieldset class="radio-button-group--chip radio-button-group">
     <legend class="label radio-button-group__label">
         Bor det barn som har fyllt 18 år i bostaden?
     </legend>
@@ -1062,11 +1058,7 @@
 </fieldset>
 
                     </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>
-    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;barn-over-18&quot;</span>
-    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;barn-over-18&quot;</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio-button-group--chip  radio-button-group&quot;</span>
-&gt;</span>
+                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio-button-group--chip radio-button-group&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">legend</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label radio-button-group__label&quot;</span>&gt;</span>
         Bor det barn som har fyllt 18 år i bostaden?
     <span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
@@ -1110,11 +1102,7 @@
                         ><i class="icon icon--code"></i> Visa kod</button>
                     </div>
                     <div class="example__live">
-                        <fieldset
-    id="filtrering"
-    name="filtrering"
-    class="radio-button-group--chip  radio-button-group"
->
+                        <fieldset class="radio-button-group--chip radio-button-group">
     <legend class="label radio-button-group__label">
         Filtrera ditt sökresultat
     </legend>
@@ -1176,11 +1164,7 @@
 </fieldset>
 
                     </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>
-    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;filtrering&quot;</span>
-    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;filtrering&quot;</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio-button-group--chip  radio-button-group&quot;</span>
-&gt;</span>
+                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio-button-group--chip radio-button-group&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">legend</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label radio-button-group__label&quot;</span>&gt;</span>
         Filtrera ditt sökresultat
     <span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
@@ -1260,6 +1244,6 @@
             </div>
         </div>
     </div>
-    <script src="../../app.js?v=4.14.0"></script>
+    <script src="../../app.js?v=4.15.0"></script>
 </body>
 </html>
