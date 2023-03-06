@@ -6,13 +6,13 @@
 <title>IMenu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="keywords" content="Försäkringskassan, Swedish Social Agency, Designsystem, FKDS, FKUI, Frontend, Opensource, Myndighet" />
-<link rel="stylesheet" href="../../vendors.css?v=4.2.0" />
-<link rel="stylesheet" href="../../docs.css?v=4.2.0" />
-<link rel="stylesheet" href="../../fonts.css?v=4.2.0" />
-<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.2.0" />
-<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.2.0" />
-<link rel="stylesheet" href="../../fkui-exp.css?v=4.2.0" />
-<link rel="stylesheet" href="../../fkui-int.css?v=4.2.0" />
+<link rel="stylesheet" href="../../vendors.css?v=4.5.0" />
+<link rel="stylesheet" href="../../docs.css?v=4.5.0" />
+<link rel="stylesheet" href="../../fonts.css?v=4.5.0" />
+<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.5.0" />
+<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.5.0" />
+<link rel="stylesheet" href="../../fkui-exp.css?v=4.5.0" />
+<link rel="stylesheet" href="../../fkui-int.css?v=4.5.0" />
 
 </head>
 <body class="component">
@@ -35,7 +35,7 @@
             <a href="../.." class="top-nav__logo"><span class="sr-only">Försäkringskassans logotyp, länk till startsida för design</span></a>
 
             <span class="top-nav__systemversion">
-                FKUI v4.2.0 
+                FKUI v4.5.0 
             </span>
         </div>
         <nav aria-label="Huvudmeny" class="top-nav__wrapper">
@@ -233,6 +233,12 @@
                 <li>
                     <a class="mobile-nav__link" href="../../components/modal">
                     Modal dialogruta
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../../components/navigation-menu">
+                    Navigeringsmeny
                     </a>
                 </li>
                  
@@ -522,28 +528,28 @@
                         <nav class="imenu imenu--horizontal">
     <ul class="imenu__list">
         <li class="imenu__list__item">
-            <a tabindex="0">File</a>
+            <a tabindex="0" class="imenu__list__anchor">File</a>
         </li>
         <li class="imenu__list__item">
-            <a tabindex="0">Edit</a>
+            <a tabindex="0" class="imenu__list__anchor">Edit</a>
         </li>
         <li class="imenu__list__item">
-            <a tabindex="0">Selection</a>
-        </li>
-        <li class="imenu__list__item imenu__list__item--highlight">
-            <a tabindex="0">View</a>
+            <a tabindex="0" class="imenu__list__anchor">Selection</a>
         </li>
         <li class="imenu__list__item">
-            <a tabindex="0">Go</a>
+            <a tabindex="0" class="imenu__list__anchor--highlight">View</a>
         </li>
         <li class="imenu__list__item">
-            <a tabindex="0">Run</a>
+            <a tabindex="0" class="imenu__list__anchor">Go</a>
         </li>
         <li class="imenu__list__item">
-            <a tabindex="0">Terminal</a>
+            <a tabindex="0" class="imenu__list__anchor">Run</a>
         </li>
         <li class="imenu__list__item">
-            <a tabindex="0">Help</a>
+            <a tabindex="0" class="imenu__list__anchor">Terminal</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor">Help</a>
         </li>
     </ul>
 </nav>
@@ -552,28 +558,28 @@
                     <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu imenu--horizontal&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>File<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>File<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Edit<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Edit<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Selection<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item imenu__list__item--highlight&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>View<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Selection<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor--highlight&quot;</span>&gt;</span>View<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Run<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Terminal<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Run<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Help<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Terminal<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Help<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
@@ -668,6 +674,6 @@
             </div>
         </div>
     </div>
-    <script src="../../app.js?v=4.2.0"></script>
+    <script src="../../app.js?v=4.5.0"></script>
 </body>
 </html>

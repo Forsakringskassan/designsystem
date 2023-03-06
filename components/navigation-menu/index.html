@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Expanderbar panel</title>
+<title>Navigeringsmeny</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="keywords" content="Försäkringskassan, Swedish Social Agency, Designsystem, FKDS, FKUI, Frontend, Opensource, Myndighet" />
 <link rel="stylesheet" href="../../vendors.css?v=4.5.0" />
@@ -123,7 +123,7 @@
                 </li>
                  
                 <li>
-                    <a class="mobile-nav__link" href="">
+                    <a class="mobile-nav__link" href="../expandable-panel">
                     Expanderbar panel
                     </a>
                 </li>
@@ -237,7 +237,7 @@
                 </li>
                  
                 <li>
-                    <a class="mobile-nav__link" href="../navigation-menu">
+                    <a class="mobile-nav__link" href="">
                     Navigeringsmeny
                     </a>
                 </li>
@@ -488,8 +488,8 @@
             
             <li>
                 <a class="aside-nav__second-link
-                           aside-nav__second-link--selected "
-                    href="">
+                          "
+                    href="../expandable-panel">
                     <span class="aside-nav__link-text">
                         Expanderbar panel
                     </span>
@@ -782,8 +782,8 @@
             
             <li>
                 <a class="aside-nav__second-link
-                          "
-                    href="../navigation-menu">
+                           aside-nav__second-link--selected "
+                    href="">
                     <span class="aside-nav__link-text">
                         Navigeringsmeny
                     </span>
@@ -921,14 +921,14 @@
                         <main id="main-content" class="content__wrapper">
                             <div class="content__header">
                                 <div>
-                                    <h1>Expanderbar panel</h1>
+                                    <h1>Navigeringsmeny</h1>
                                 </div>
                                 <div>
                                     <button type="button" id="toggle-theme" class="button"></button>
                                 </div>
                             </div>
                             <h2 id="exempel">Exempel</h2>
-<h3 id="standard">Standard</h3>
+<h3 id="horizontellt-lage">Horizontellt läge</h3>
 
                 <div class="example mb-4">
                     <div class="example__menu">
@@ -939,67 +939,67 @@
                         ><i class="icon icon--code"></i> Visa kod</button>
                     </div>
                     <div class="example__live">
-                        <div class="expandable-panel expandable-panel--collapsed">
-    <h2 class="expandable-panel__heading">
-        <button
-            type="button"
-            aria-expanded="false"
-            aria-controls="example-expandable-panel"
-        >
-            <span class="expandable-panel__icon">
-                <span class="icon-stack">
-                    <svg focusable="false" class="icon">
-                        <use xlink:href="#f-icon-dash"></use>
-                    </svg>
-                    <svg focusable="false" class="icon">
-                        <use xlink:href="#f-icon-dash"></use>
-                    </svg>
-                </span>
-            </span>
-
-            Klicka för att expandera
-        </button>
-    </h2>
-    <div class="expandable-panel__content" id="example-expandable-panel">
-        <div class="expandable-panel__body">Lorem ipsum dolor sit amet.</div>
-    </div>
-</div>
+                        <nav class="imenu imenu--horizontal">
+    <ul class="imenu__list">
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor">File</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor">Edit</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor">Selection</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor--highlight">View</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor">Go</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor">Run</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor">Terminal</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0" class="imenu__list__anchor">Help</a>
+        </li>
+    </ul>
+</nav>
 
                     </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel expandable-panel--collapsed&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__heading&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;false&quot;</span>
-            <span class="hljs-attr">aria-controls</span>=<span class="hljs-string">&quot;example-expandable-panel&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__icon&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon-stack&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-dash&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-dash&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu imenu--horizontal&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>File<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Edit<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Selection<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor--highlight&quot;</span>&gt;</span>View<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Run<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Terminal<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>&gt;</span>Help<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+</code></pre>
+                </div><h3 id="vertikalt-lage">Vertikalt läge</h3>
 
-            Klicka för att expandera
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__content&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;example-expandable-panel&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__body&quot;</span>&gt;</span>Lorem ipsum dolor sit amet.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-                </div><h3 id="med-notifiering">Med notifiering</h3>
-<p>Med <code>expandable-panel__notification</code> kan man lägga till en notifieringsikon:</p>
-<pre class="hljs example__code example__code--visible"><code><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__notification&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Du har 12 notifieringar&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-bell&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-</code></pre>
                 <div class="example mb-4">
                     <div class="example__menu">
                         <button
@@ -1009,212 +1009,77 @@
                         ><i class="icon icon--code"></i> Visa kod</button>
                     </div>
                     <div class="example__live">
-                        <div class="expandable-panel expandable-panel--collapsed">
-    <h2 class="expandable-panel__heading">
-        <button
-            type="button"
-            aria-expanded="false"
-            aria-controls="example-expandable-panel-notifications"
-        >
-            <span class="expandable-panel__icon">
-                <span class="icon-stack">
-                    <svg focusable="false" class="icon">
-                        <use xlink:href="#f-icon-dash"></use>
-                    </svg>
-                    <svg focusable="false" class="icon">
-                        <use xlink:href="#f-icon-dash"></use>
-                    </svg>
-                </span>
-            </span>
-
-            Klicka för att expandera
-
-            <span
-                class="expandable-panel__notification"
-                title="Du har 12 notifieringar"
-            >
-                <svg focusable="false" class="icon">
-                    <use xlink:href="#f-icon-bell"></use>
-                </svg>
-            </span>
-        </button>
-    </h2>
-    <div
-        class="expandable-panel__content"
-        id="example-expandable-panel-notifications"
-    >
-        <div class="expandable-panel__body">Lorem ipsum dolor sit amet.</div>
-    </div>
-</div>
+                        <nav class="imenu imenu--vertical">
+    <ul class="imenu__list">
+        <li class="imenu__list__item">
+            <a tabindex="0">File</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0">Edit</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0">Selection</a>
+        </li>
+        <li class="imenu__list__item imenu__list__item--highlight">
+            <a tabindex="0">View</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0">Go</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0">Run</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0">Terminal</a>
+        </li>
+        <li class="imenu__list__item">
+            <a tabindex="0">Help</a>
+        </li>
+    </ul>
+</nav>
 
                     </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel expandable-panel--collapsed&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__heading&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;false&quot;</span>
-            <span class="hljs-attr">aria-controls</span>=<span class="hljs-string">&quot;example-expandable-panel-notifications&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__icon&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon-stack&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-dash&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-dash&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-
-            Klicka för att expandera
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__notification&quot;</span>
-                <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Du har 12 notifieringar&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-bell&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
-        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__content&quot;</span>
-        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;example-expandable-panel-notifications&quot;</span>
-    &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__body&quot;</span>&gt;</span>Lorem ipsum dolor sit amet.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu imenu--vertical&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>File<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Edit<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Selection<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item imenu__list__item--highlight&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>View<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Run<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Terminal<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Help<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 </code></pre>
-                </div><h3 id="relaterat-innehall">Relaterat innehåll</h3>
-<p>Panelen kan innehålla relaterat innehåll som presenteras under det vanliga innehållet när panelen är expanderad:</p>
-<pre class="hljs example__code example__code--visible"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__content&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__body&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__outside&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-                <div class="example mb-4">
-                    <div class="example__menu">
-                        <button
-                            type="button"
-                            class="button button--discrete example__toggle-code"
-                            aria-expanded="false"
-                        ><i class="icon icon--code"></i> Visa kod</button>
-                    </div>
-                    <div class="example__live">
-                        <div class="expandable-panel expandable-panel--collapsed">
-    <h2 class="expandable-panel__heading">
-        <button
-            type="button"
-            aria-expanded="false"
-            aria-controls="example-expandable-panel-related"
-        >
-            <span class="expandable-panel__icon">
-                <span class="icon-stack">
-                    <svg focusable="false" class="icon">
-                        <use xlink:href="#f-icon-dash"></use>
-                    </svg>
-                    <svg focusable="false" class="icon">
-                        <use xlink:href="#f-icon-dash"></use>
-                    </svg>
-                </span>
-            </span>
-
-            Klicka för att expandera
-        </button>
-    </h2>
-    <div
-        class="expandable-panel__content"
-        id="example-expandable-panel-related"
-    >
-        <div class="expandable-panel__body">Lorem ipsum dolor sit amet.</div>
-        <div class="expandable-panel__outside">Relaterat innehåll</div>
-    </div>
-</div>
-
-                    </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel expandable-panel--collapsed&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__heading&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;false&quot;</span>
-            <span class="hljs-attr">aria-controls</span>=<span class="hljs-string">&quot;example-expandable-panel-related&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__icon&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon-stack&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-dash&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-dash&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-
-            Klicka för att expandera
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
-        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__content&quot;</span>
-        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;example-expandable-panel-related&quot;</span>
-    &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__body&quot;</span>&gt;</span>Lorem ipsum dolor sit amet.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__outside&quot;</span>&gt;</span>Relaterat innehåll<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-                </div><h2 id="anvandning">Användning</h2>
-<pre class="hljs example__code example__code--visible"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel expandable-panel--expanded&quot;</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- Texten som visas i den klickbara ytan för att expandera/kollapsa expandable-panelen --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__heading&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;true&quot;</span>
-            <span class="hljs-attr">aria-controls</span>=<span class="hljs-string">&quot;example-expandable-panel-usage&quot;</span>
-        &gt;</span>
-            ...
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__content&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;example-expandable-panel-usage&quot;</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- Innehållet som visas när expandable-panelen är expanderad --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__body&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-        <span class="hljs-comment">&lt;!-- Ev. relaterat innehåll som visas under expandable-panelen när den är expanderad --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-panel__outside&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre><p>Panel använder klasserna <code>expandable-panel--expanded</code> och <code>expandable-panel--collapsed</code> för att styra om innehållet visas eller ej.</p>
-<h3 id="tillganglighet">Tillgänglighet</h3>
-<p>Använd <code>aria-expanded</code> och <code>aria-controls</code> på <code>&lt;button&gt;</code> elementet.</p>
-<h3 id="animation">Animation (valfritt)</h3>
-<p>För att använda animerad expandering/kollapsning beräknar man innehållets höjd.
-När panelen expanderas sätter man CSS <code>height</code> på <code>expandable-panel__content</code> till höjden samt nollställer vid kollapsning.
-Man kan med fördel återställa höjden mellan animationer för att enklare hantera storleksförändring av innehåll.</p>
-<h3 id="css-klasser">CSS klasser</h3>
-<ul>
-<li><code>expandable-panel</code> - Komponentens primära klass.</li>
-<li><code>expandable-panel--collapsed</code> - Används i kombination med <code>expandable-panel</code> och kommer att dölja innehållet.</li>
-<li><code>expandable-panel--expanded</code> - Används i kombination med <code>expandable-panel</code> och kommer att visa innehållet.</li>
-<li><code>expandable-panel__heading</code> - Markerar panelens rubrik.</li>
-<li><code>expandable-panel__icon</code> - Markerar panelens ikon.</li>
-<li><code>expandable-panel__notification</code> - Markerar panelens notifikationer.</li>
-<li><code>expandable-panel__content</code> - Wrapper runt <code>expandable-panel__body</code> och <code>expandable-panel_outside</code> för att stödja animation.</li>
-<li><code>expandable-panel__body</code> - Används för att visa panelens primära innehåll (visning styrs av <code>expandable-panel--collapsed</code> och <code>expandable-panel--expanded</code>)</li>
-<li><code>expandable-panel__outside</code> - Används för att visa relaterat innehåll.</li>
-</ul>
-<h2 id="ovrigt">Övrigt</h2>
+                </div><h2 id="ovrigt">Övrigt</h2>
 <h3 id="lankar">Länkar</h3>
 <p><s>Användargränsnitt, Förvaltningsdokumentation - Startpunkt för komponent</s></p>
 <p><s>Designriktlinjer självbetjäning</s></p>
 <p><s>Designriktlinjer interna system</s></p>
-<p><s>FKUI Vue - Vue komponent som innehåller logik och interaktion baserad på FKUI Design</s></p>
+<p><a href="https://github.com/Forsakringskassan/fk-designsystem/tree/master/packages/design/src/components/FNavigationMenu">Källkod - Källkod för denna komponent</a></p>
 
                             
                             
                             
 
-                            <a href="https://github.com/Forsakringskassan/fk-designsystem/tree/master/packages/design/src/components/expandable-panel">
+                            <a href="https://github.com/Forsakringskassan/fk-designsystem/tree/master/packages/design/src/components/navigation-menu">
                                 Källkod - Källkod för denna komponent
                             </a>
                         </main>
