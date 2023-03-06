@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Datumväljare</title>
+<title>Datumväljare (äldre version)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="keywords" content="Försäkringskassan, Swedish Social Agency, Designsystem, FKDS, FKUI, Frontend, Opensource, Myndighet" />
-<link rel="stylesheet" href="../../vendors.css?v=4.12.0" />
-<link rel="stylesheet" href="../../docs.css?v=4.12.0" />
-<link rel="stylesheet" href="../../fonts.css?v=4.12.0" />
-<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.12.0" />
-<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.12.0" />
-<link rel="stylesheet" href="../../fkui-exp.css?v=4.12.0" />
-<link rel="stylesheet" href="../../fkui-int.css?v=4.12.0" />
+<link rel="stylesheet" href="../../vendors.css?v=4.14.0" />
+<link rel="stylesheet" href="../../docs.css?v=4.14.0" />
+<link rel="stylesheet" href="../../fonts.css?v=4.14.0" />
+<link rel="stylesheet" href="../../fkui-exp-css-variables.css?v=4.14.0" />
+<link rel="stylesheet" href="../../fkui-int-css-variables.css?v=4.14.0" />
+<link rel="stylesheet" href="../../fkui-exp.css?v=4.14.0" />
+<link rel="stylesheet" href="../../fkui-int.css?v=4.14.0" />
 
 </head>
 <body class="component">
@@ -35,7 +35,7 @@
             <a href="../.." class="top-nav__logo"><span class="sr-only">Försäkringskassans logotyp, länk till startsida för design</span></a>
 
             <span class="top-nav__systemversion">
-                FKUI v4.12.0 
+                FKUI v4.14.0 
             </span>
         </div>
         <nav aria-label="Huvudmeny" class="top-nav__wrapper">
@@ -111,14 +111,14 @@
                 </li>
                  
                 <li>
-                    <a class="mobile-nav__link" href="">
+                    <a class="mobile-nav__link" href="../datepicker-field">
                     Datumväljare
                     </a>
                 </li>
                  
                 <li>
-                    <a class="mobile-nav__link" href="../datepicker-field">
-                    Datumväljarfält
+                    <a class="mobile-nav__link" href="">
+                    Datumväljare (äldre version)
                     </a>
                 </li>
                  
@@ -215,6 +215,12 @@
                 <li>
                     <a class="mobile-nav__link" href="../group">
                     Komponentgrupp
+                    </a>
+                </li>
+                 
+                <li>
+                    <a class="mobile-nav__link" href="../contextmenu">
+                    Kontextuell meny
                     </a>
                 </li>
                  
@@ -476,8 +482,8 @@
             
             <li>
                 <a class="aside-nav__second-link
-                           aside-nav__second-link--selected "
-                    href="">
+                          "
+                    href="../datepicker-field">
                     <span class="aside-nav__link-text">
                         Datumväljare
                     </span>
@@ -491,10 +497,10 @@
             
             <li>
                 <a class="aside-nav__second-link
-                          "
-                    href="../datepicker-field">
+                           aside-nav__second-link--selected "
+                    href="">
                     <span class="aside-nav__link-text">
-                        Datumväljarfält
+                        Datumväljare (äldre version)
                     </span>
                 </a>
                 <ul class="aside-nav__list">
@@ -756,6 +762,21 @@
             <li>
                 <a class="aside-nav__second-link
                           "
+                    href="../contextmenu">
+                    <span class="aside-nav__link-text">
+                        Kontextuell meny
+                    </span>
+                </a>
+                <ul class="aside-nav__list">
+                    
+                        
+                </ul>
+            </li>
+        
+            
+            <li>
+                <a class="aside-nav__second-link
+                          "
                     href="../checkbox">
                     <span class="aside-nav__link-text">
                         Kryssruta
@@ -984,993 +1005,14 @@
                         <main id="main-content" class="content__wrapper">
                             <div class="content__header">
                                 <div>
-                                    <h1>Datumväljare</h1>
+                                    <h1>Datumväljare (äldre version)</h1>
                                 </div>
                                 <div>
                                     <button type="button" id="toggle-theme" class="button"></button>
                                 </div>
                             </div>
-                            <h2 id="exempel">Exempel</h2>
-<h3 id="standard">Standard</h3>
-
-                <div class="example mb-4">
-                    <div class="example__menu">
-                        <button
-                            type="button"
-                            class="button button--discrete example__toggle-code"
-                            aria-expanded="false"
-                        ><i class="icon icon--code"></i> Visa kod</button>
-                    </div>
-                    <div class="example__live">
-                        <div class="datepicker">
-    <div class="datepicker__select">
-        <div class="text-field">
-            <label for="normal" class="label">Välj ett datum</label>
-            <div class="text-field__icon-wrapper">
-                <input
-                    type="text"
-                    id="normal"
-                    class="text-field__input"
-                    maxlength="10"
-                />
-            </div>
-        </div>
-        <button
-            type="button"
-            aria-label="Öppna datumväljare"
-            class="datepicker__open"
-        >
-            <svg focusable="false" class="icon">
-                <use xlink:href="#f-icon-calendar"></use>
-            </svg>
-        </button>
-    </div>
-    <div class="datepicker__calendar">
-        <div tabindex="0" class="calendar calendar--hide-tabs">
-            <div class="calendar__container">
-                <span class="sr-only">Kalender välj dagar</span>
-                <div class="calendar__navbar">
-                    <button
-                        type="button"
-                        aria-label="Visa April månad"
-                        class="calendar__navbar-arrow calendar__navbar-arrow--left"
-                    >
-                        <svg focusable="false" class="icon button__icon">
-                            <use xlink:href="#f-icon-arrow-in-circle"></use>
-                        </svg>
-                        <span aria-hidden="true">Apr</span>
-                    </button>
-                    <button type="button" class="calendar__navbar-middle">
-                        <span class="calendar__navbar-middle-top">
-                            <span>Maj 2019</span>
-                        </span>
-                        <span class="calendar__navbar-middle-bottom">
-                            <span>Gå till årsvyn</span>
-                        </span>
-                    </button>
-                    <button
-                        type="button"
-                        aria-label="Visa Juni månad"
-                        class="calendar__navbar-arrow calendar__navbar-arrow--right"
-                    >
-                        <span aria-hidden="true">Jun</span>
-                        <svg focusable="false" class="icon button__icon">
-                            <use xlink:href="#f-icon-arrow-in-circle"></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class="calendar__monthview">
-                    <div class="calendar__row">
-                        <div class="calendar__item calendar__item--week">
-                            Mån
-                        </div>
-                        <div class="calendar__item calendar__item--week">
-                            Tis
-                        </div>
-                        <div class="calendar__item calendar__item--week">
-                            Ons
-                        </div>
-                        <div class="calendar__item calendar__item--week">
-                            Tors
-                        </div>
-                        <div class="calendar__item calendar__item--week">
-                            Fre
-                        </div>
-                        <div class="calendar__item calendar__item--week">
-                            Lör
-                        </div>
-                        <div class="calendar__item calendar__item--week">
-                            Sön
-                        </div>
-                    </div>
-                    <div class="calendar__row">
-                        <div type="button" class="calendar__item"></div>
-                        <div type="button" class="calendar__item"></div>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">onsdag 1a maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-1"
-                                >1</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">torsdag 2a maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-2"
-                                >2</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">fredag 3e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-3"
-                                >3</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">lördag 4e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-4"
-                                >4</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">söndag 5e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-5"
-                                >5</span
-                            >
-                        </button>
-                    </div>
-                    <div class="calendar__row">
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">måndag 6e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-6"
-                                >6</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">tisdag 7e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-7"
-                                >7</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">onsdag 8e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-8"
-                                >8</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">torsdag 9e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-9"
-                                >9</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">fredag 10e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-10"
-                                >10</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">lördag 11e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-11"
-                                >11</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">söndag 12e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-12"
-                                >12</span
-                            >
-                        </button>
-                    </div>
-                    <div class="calendar__row">
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">måndag 13e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-13"
-                                >13</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">tisdag 14e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-14"
-                                >14</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">onsdag 15e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-15"
-                                >15</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">torsdag 16e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-16"
-                                >16</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">fredag 17e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-17"
-                                >17</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">lördag 18e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-18"
-                                >18</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">söndag 19e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-19"
-                                >19</span
-                            >
-                        </button>
-                    </div>
-                    <div class="calendar__row">
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">måndag 20e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-20"
-                                >20</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">tisdag 21a maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-21"
-                                >21</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">onsdag 22a maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-22"
-                                >22</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">torsdag 23e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-23"
-                                >23</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">fredag 24e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-24"
-                                >24</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">lördag 25e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-25"
-                                >25</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">söndag 26e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-26"
-                                >26</span
-                            >
-                        </button>
-                    </div>
-                    <div class="calendar__row">
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">måndag 27e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-27"
-                                >27</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">tisdag 28e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-28"
-                                >28</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">onsdag 29e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-29"
-                                >29</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">torsdag 30e maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-30"
-                                >30</span
-                            >
-                        </button>
-                        <button
-                            type="button"
-                            class="calendar__item calendar__item--date"
-                        >
-                            <span class="sr-only">fredag 31a maj 2019</span>
-                            <span
-                                aria-hidden="true"
-                                class="calendar__item__number calendar__item__number-31"
-                                >31</span
-                            >
-                        </button>
-                        <div type="button" class="calendar__item"></div>
-                        <div type="button" class="calendar__item"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                    </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;datepicker&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;datepicker__select&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;normal&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Välj ett datum<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__icon-wrapper&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-                    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;normal&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__input&quot;</span>
-                    <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;10&quot;</span>
-                /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Öppna datumväljare&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;datepicker__open&quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-calendar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;datepicker__calendar&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar calendar--hide-tabs&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__container&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Kalender välj dagar<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__navbar&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Visa April månad&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__navbar-arrow calendar__navbar-arrow--left&quot;</span>
-                    &gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon button__icon&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-arrow-in-circle&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Apr<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__navbar-middle&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__navbar-middle-top&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__navbar-middle-bottom&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Gå till årsvyn<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Visa Juni månad&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__navbar-arrow calendar__navbar-arrow--right&quot;</span>
-                    &gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Jun<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon button__icon&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-arrow-in-circle&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__monthview&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--week&quot;</span>&gt;</span>
-                            Mån
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--week&quot;</span>&gt;</span>
-                            Tis
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--week&quot;</span>&gt;</span>
-                            Ons
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--week&quot;</span>&gt;</span>
-                            Tors
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--week&quot;</span>&gt;</span>
-                            Fre
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--week&quot;</span>&gt;</span>
-                            Lör
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--week&quot;</span>&gt;</span>
-                            Sön
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>onsdag 1a maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-1&quot;</span>
-                                &gt;</span>1&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>torsdag 2a maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-2&quot;</span>
-                                &gt;</span>2&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>fredag 3e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-3&quot;</span>
-                                &gt;</span>3&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>lördag 4e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-4&quot;</span>
-                                &gt;</span>4&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>söndag 5e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-5&quot;</span>
-                                &gt;</span>5&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>måndag 6e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-6&quot;</span>
-                                &gt;</span>6&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>tisdag 7e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-7&quot;</span>
-                                &gt;</span>7&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>onsdag 8e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-8&quot;</span>
-                                &gt;</span>8&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>torsdag 9e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-9&quot;</span>
-                                &gt;</span>9&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>fredag 10e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-10&quot;</span>
-                                &gt;</span>10&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>lördag 11e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-11&quot;</span>
-                                &gt;</span>11&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>söndag 12e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-12&quot;</span>
-                                &gt;</span>12&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>måndag 13e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-13&quot;</span>
-                                &gt;</span>13&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>tisdag 14e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-14&quot;</span>
-                                &gt;</span>14&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>onsdag 15e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-15&quot;</span>
-                                &gt;</span>15&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>torsdag 16e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-16&quot;</span>
-                                &gt;</span>16&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>fredag 17e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-17&quot;</span>
-                                &gt;</span>17&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>lördag 18e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-18&quot;</span>
-                                &gt;</span>18&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>söndag 19e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-19&quot;</span>
-                                &gt;</span>19&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>måndag 20e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-20&quot;</span>
-                                &gt;</span>20&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>tisdag 21a maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-21&quot;</span>
-                                &gt;</span>21&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>onsdag 22a maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-22&quot;</span>
-                                &gt;</span>22&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>torsdag 23e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-23&quot;</span>
-                                &gt;</span>23&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>fredag 24e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-24&quot;</span>
-                                &gt;</span>24&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>lördag 25e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-25&quot;</span>
-                                &gt;</span>25&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>söndag 26e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-26&quot;</span>
-                                &gt;</span>26&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>måndag 27e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-27&quot;</span>
-                                &gt;</span>27&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>tisdag 28e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-28&quot;</span>
-                                &gt;</span>28&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>onsdag 29e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-29&quot;</span>
-                                &gt;</span>29&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>torsdag 30e maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-30&quot;</span>
-                                &gt;</span>30&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item calendar__item--date&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>fredag 31a maj 2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                                <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item__number calendar__item__number-31&quot;</span>
-                                &gt;</span>31&lt;/span
-                            &gt;
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;calendar__item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-                </div><h2 id="exempel-1">Exempel</h2>
-<h3 id="inaktiv">Inaktiv</h3>
-
-                <div class="example mb-4">
-                    <div class="example__menu">
-                        <button
-                            type="button"
-                            class="button button--discrete example__toggle-code"
-                            aria-expanded="false"
-                        ><i class="icon icon--code"></i> Visa kod</button>
-                    </div>
-                    <div class="example__live">
-                        <div>
-    <div>
-        <div>
-            <div class="datepicker">
-                <div class="datepicker__select">
-                    <div class="text-field">
-                        <label class="label"> Välj ett datum </label>
-                        <div class="text-field__icon-wrapper">
-                            <input
-                                type="text"
-                                maxlength="20"
-                                disabled
-                                class="text-field__input"
-                                data-validation=""
-                                aria-invalid="false"
-                            />
-                        </div>
-                    </div>
-                    <button
-                        type="button"
-                        aria-label="Öppna datumväljare"
-                        aria-expanded="false"
-                        disabled
-                        class="datepicker__open"
-                    >
-                        <svg focusable="false" class="icon f-icon-calendar">
-                            <use xlink:href="#f-icon-calendar"></use>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                    </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;datepicker&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;datepicker__select&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span> Välj ett datum <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__icon-wrapper&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-                                <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;20&quot;</span>
-                                <span class="hljs-attr">disabled</span>
-                                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__input&quot;</span>
-                                <span class="hljs-attr">data-validation</span>=<span class="hljs-string">&quot;&quot;</span>
-                                <span class="hljs-attr">aria-invalid</span>=<span class="hljs-string">&quot;false&quot;</span>
-                            /&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Öppna datumväljare&quot;</span>
-                        <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;false&quot;</span>
-                        <span class="hljs-attr">disabled</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;datepicker__open&quot;</span>
-                    &gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon f-icon-calendar&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-calendar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-                </div><h2 id="ovrigt">Övrigt</h2>
+                            <p>Datumväljare är deprekerad. Se komponentens <a href="../../../vue/#/Components/FDatepicker">migreringsguide</a>.</p>
+<h2 id="ovrigt">Övrigt</h2>
 <h3 id="lankar">Länkar</h3>
 <p><s>Användargränsnitt, Förvaltningsdokumentation - Startpunkt för komponent</s></p>
 <p><s>Designriktlinjer självbetjäning</s></p>
@@ -1990,6 +1032,6 @@
             </div>
         </div>
     </div>
-    <script src="../../app.js?v=4.12.0"></script>
+    <script src="../../app.js?v=4.14.0"></script>
 </body>
 </html>

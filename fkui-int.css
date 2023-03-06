@@ -4195,6 +4195,53 @@ input[type=search]:focus,
           flex-flow: row wrap;
 }
 
+.contextmenu {
+  min-width: 260px;
+  background-color: var(--f-background-popupmenu, #ffffff);
+}
+
+.contextmenu__list {
+  margin: 0;
+  border: 1px solid var(--f-border-color-popupmenu, #d9d9d9);
+  padding: 0.5rem;
+  display: block;
+  list-style-type: none;
+}
+
+.contextmenu__list__item {
+  cursor: pointer;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.75rem;
+}
+
+.contextmenu__list__item a,
+.contextmenu__list__item a:visited,
+.contextmenu__list__item a:active {
+  color: var(--f-text-color-popupmenu, #1b1e23);
+}
+
+.contextmenu__list__item:hover {
+  color: var(--f-text-color-popupmenu-hover, #1b1e23);
+  background-color: var(--f-background-popupmenu-vertical-hover, #e5e5e5);
+}
+
+.contextmenu__separator {
+  margin: 0.75rem;
+  height: 1px;
+  border: none;
+  border-top: 1px solid var(--f-border-color-separator-contextmenu, #999999);
+}
+
+.contextmenu__lefticon {
+  margin-right: 0.75rem;
+}
+
 .crud-dataset {
   margin: var(--f-margin-component, 0 0 1.5rem);
 }
