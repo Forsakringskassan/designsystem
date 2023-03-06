@@ -4738,6 +4738,14 @@ input[type=search]:focus,
   border-bottom: var(--f-border-width-small, 1px) solid var(--f-border-color-separator, #d9d9d9);
 }
 
+.component-group > .component-group__item:not(:only-child) {
+  margin-bottom: 1rem;
+}
+
+.component-group > .component-group__item:last-child:not(:first-child) {
+  margin-bottom: 2rem;
+}
+
 .list__item {
   display: -webkit-box;
   display: -ms-flexbox;
