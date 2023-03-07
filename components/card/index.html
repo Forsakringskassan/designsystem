@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Fellista</title>
+<title>Kort</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="keywords" content="Försäkringskassan, Swedish Social Agency, Designsystem, FKDS, FKUI, Frontend, Opensource, Myndighet" />
 <link rel="stylesheet" href="../../vendors.css?v=4.18.0" />
@@ -147,7 +147,7 @@
                 </li>
                  
                 <li>
-                    <a class="mobile-nav__link" href="">
+                    <a class="mobile-nav__link" href="../error-list">
                     Fellista
                     </a>
                 </li>
@@ -225,7 +225,7 @@
                 </li>
                  
                 <li>
-                    <a class="mobile-nav__link" href="../card">
+                    <a class="mobile-nav__link" href="">
                     Kort
                     </a>
                 </li>
@@ -578,8 +578,8 @@
             
             <li>
                 <a class="aside-nav__second-link
-                           aside-nav__second-link--selected "
-                    href="">
+                          "
+                    href="../error-list">
                     <span class="aside-nav__link-text">
                         Fellista
                     </span>
@@ -782,8 +782,8 @@
             
             <li>
                 <a class="aside-nav__second-link
-                          "
-                    href="../card">
+                           aside-nav__second-link--selected "
+                    href="">
                     <span class="aside-nav__link-text">
                         Kort
                     </span>
@@ -1026,14 +1026,27 @@
                         <main id="main-content" class="content__wrapper">
                             <div class="content__header">
                                 <div>
-                                    <h1>Fellista</h1>
+                                    <h1>Kort</h1>
                                 </div>
                                 <div>
                                     <button type="button" id="toggle-theme" class="button"></button>
                                 </div>
                             </div>
-                            <h2 id="exempel">Exempel</h2>
-<h3 id="fellista-med-punkter">Fellista med punkter</h3>
+                            <p>Används för att gruppera innehåll.</p>
+<h2 id="anvadning">Anvädning</h2>
+<pre class="hljs example__code example__code--visible"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card--default&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card__header&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!--- Optional header content --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card__content&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!--- Card content --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card__footer&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!--- Optional footer content --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre><h2 id="exempel">Exempel</h2>
+<h3 id="kort-innehallandes-tva-inmatningsfalt">Kort innehållandes två inmatningsfält</h3>
 
                 <div class="example mb-4">
                     <div class="example__menu">
@@ -1044,146 +1057,129 @@
                         ><i class="icon icon--code"></i> Visa kod</button>
                     </div>
                     <div class="example__live">
-                        <nav>
-    <div class="error-list">
-        <ul
-            class="error-list__list error-list--list-style-none error-list--padding-left "
-        >
-            <li>
-                <a href="javascript:"
-                    ><span class="error-list__bullet" aria-hidden="true"></span
-                    ><span class="error-list__link">Förnamn</span></a
+                        <div class="card card--default">
+    <div class="card__header"></div>
+    <div class="card__content">
+        <div class="text-field">
+            <label for="fornamn" class="label"> Förnamn </label>
+            <div class="text-field__icon-wrapper">
+                <input
+                    id="fornamn"
+                    type="text"
+                    class="text-field__input"
+                    maxlength="50"
+                />
+            </div>
+        </div>
+
+        <div class="text-field">
+            <label for="email" class="label"> Mejl </label>
+            <div class="text-field__icon-wrapper">
+                <input
+                    id="email"
+                    type="email"
+                    class="text-field__input"
+                    maxlength="150"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="card__footer">
+        <div class="button-group">
+            <button
+                class="button button-group__item button--discrete"
+                type="button"
+            >
+                <svg
+                    aria-hidden="true"
+                    class="icon button__icon"
+                    focusable="false"
                 >
-            </li>
-            <li>
-                <a href="javascript:"
-                    ><span class="error-list__bullet" aria-hidden="true"></span
-                    ><span class="error-list__link">Personnummer</span></a
+                    <use xlink:href="#f-icon-trashcan" /></svg
+                ><span>Ta bort</span>
+            </button>
+
+            <button
+                class="button button-group__item button--discrete"
+                type="button"
+            >
+                <svg
+                    aria-hidden="true"
+                    class="icon button__icon"
+                    focusable="false"
                 >
-            </li>
-        </ul>
+                    <use xlink:href="#f-icon-pen" /></svg
+                ><span>Ändra</span>
+            </button>
+        </div>
     </div>
-</nav>
+</div>
 
                     </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__list error-list--list-style-none error-list--padding-left &quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__bullet&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>&lt;/span
-                    &gt;<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__link&quot;</span>&gt;</span>Förnamn<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>&lt;/a
-                &gt;
-            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__bullet&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>&lt;/span
-                    &gt;<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__link&quot;</span>&gt;</span>Personnummer<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>&lt;/a
-                &gt;
-            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card--default&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card__header&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card__content&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;fornamn&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span> Förnamn <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__icon-wrapper&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fornamn&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__input&quot;</span>
+                    <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;50&quot;</span>
+                /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span> Mejl <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__icon-wrapper&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;email&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__input&quot;</span>
+                    <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;150&quot;</span>
+                /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-</code></pre>
-                </div><h3 id="fellista-utan-punkter">Fellista utan punkter</h3>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card__footer&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--discrete&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">svg</span>
+                    <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon button__icon&quot;</span>
+                    <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-trashcan&quot;</span> /&gt;</span>&lt;/svg
+                &gt;<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Ta bort<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-                <div class="example mb-4">
-                    <div class="example__menu">
-                        <button
-                            type="button"
-                            class="button button--discrete example__toggle-code"
-                            aria-expanded="false"
-                        ><i class="icon icon--code"></i> Visa kod</button>
-                    </div>
-                    <div class="example__live">
-                        <nav>
-    <div class="error-list">
-        <ul class="error-list__list error-list--list-style-none">
-            <li class="error-list__link">
-                <a href="javascript:">Förnamn</a>
-            </li>
-            <li class="error-list__link">
-                <a href="javascript:">Personnummer</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-                    </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__list error-list--list-style-none&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__link&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>&gt;</span>Förnamn<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__link&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>&gt;</span>Personnummer<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--discrete&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">svg</span>
+                    <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon button__icon&quot;</span>
+                    <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-pen&quot;</span> /&gt;</span>&lt;/svg
+                &gt;<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Ändra<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-                </div><h3 id="fellista-utan-klickbara-lankar">Fellista utan klickbara länkar</h3>
-
-                <div class="example mb-4">
-                    <div class="example__menu">
-                        <button
-                            type="button"
-                            class="button button--discrete example__toggle-code"
-                            aria-expanded="false"
-                        ><i class="icon icon--code"></i> Visa kod</button>
-                    </div>
-                    <div class="example__live">
-                        <nav>
-    <div class="error-list">
-        <ul
-            class="error-list__list error-list--list-style-none error-list--padding-left "
-        >
-            <li>
-                <span class="error-list__bullet" aria-hidden="true"></span>
-                <span>Förnamn</span>
-            </li>
-            <li>
-                <span class="error-list__bullet" aria-hidden="true"></span>
-                <span>Personnummer</span>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-                    </div>
-                    <pre class="hljs example__code"><code><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__list error-list--list-style-none error-list--padding-left &quot;</span>
-        &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__bullet&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Förnamn<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list__bullet&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Personnummer<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-</code></pre>
-                </div><h2 id="ovrigt">Övrigt</h2>
-<p>Fellista används aldrig självständigt utan används alltid tillsammans med en eller flera komponent. Fellista används i <a href="../form/">Formulär/Formulärsteg</a> och <a href="../wizard/">Guide/Guidesteg</a>.</p>
-<h3 id="lankar">Länkar</h3>
-<p><s>Användargränsnitt, Förvaltningsdokumentation - Startpunkt för komponent</s></p>
-<p><s>Designriktlinjer självbetjäning</s></p>
-<p><s>Designriktlinjer interna system</s></p>
-<p><s>FKUI Vue - Vue komponent som innehåller logik och interaktion baserad på FKUI Design</s></p>
-
+                </div>
                             
                             
                             
 
-                            <a href="https://github.com/Forsakringskassan/fk-designsystem/tree/master/packages/design/src/components/error-list">
+                            <a href="https://github.com/Forsakringskassan/fk-designsystem/tree/master/packages/design/src/components/card">
                                 Källkod - Källkod för denna komponent
                             </a>
                         </main>

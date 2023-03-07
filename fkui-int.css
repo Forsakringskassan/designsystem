@@ -1718,7 +1718,6 @@ input[type=search]:focus,
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
-  mix-blend-mode: multiply;
   font-weight: var(--f-font-weight-bold, 900);
   outline-offset: 0.25rem;
 }
@@ -1784,6 +1783,7 @@ input[type=search]:focus,
 .button.button--discrete:hover, .button.button--text:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
+  mix-blend-mode: multiply;
 }
 
 .button.button--discrete, .button.button--text, .button.button--discrete:focus, .button.button--discrete:active, .button.button--discrete:hover {
@@ -2080,6 +2080,20 @@ input[type=search]:focus,
 .page-header__right-slot {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.card {
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.card--default {
+  border-radius: 2px;
+  border: 2px solid var(--f-border-color-card, #8c8c8c);
+}
+
+.card__footer > .button-group .button-group__item {
+  margin-bottom: 0;
 }
 
 .tooltip-before {
@@ -3183,7 +3197,6 @@ input[type=search]:focus,
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
-  mix-blend-mode: multiply;
   font-weight: var(--f-font-weight-bold, 900);
   outline-offset: 0.25rem;
 }
@@ -3249,6 +3262,7 @@ input[type=search]:focus,
 .button.button--discrete:hover, .button.button--text:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
+  mix-blend-mode: multiply;
 }
 
 .button.button--discrete, .button.button--text, .button.button--discrete:focus, .button.button--discrete:active, .button.button--discrete:hover {
@@ -6183,18 +6197,17 @@ input[type=search]:focus,
 
 .table tbody td,
 .table tbody th {
+  padding: var(--f-table-body-row-padding, 0.4rem);
   border-bottom: 1px solid var(--f-border-color-grid, #d9d9d9);
   white-space: nowrap;
 }
 
 .table tbody td {
-  padding: var(--f-table-body-row-padding, 0.4rem);
   line-height: 1.5rem;
   font-weight: var(--f-font-weight-normal, 400);
 }
 
 .table tbody th {
-  padding: 0.5rem;
   border-right: 1px solid var(--f-border-color-grid, #d9d9d9);
   font-weight: var(--f-font-weight-medium, 700);
 }

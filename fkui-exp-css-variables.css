@@ -1,5 +1,5 @@
 :root {
-  --f-css-variables-version: "4.17.0";
+  --f-css-variables-version: "4.18.0";
   --f-text-color-default: #1b1e23;
   --f-text-color-default-inverted: #ffffff;
   --f-text-color-discrete: #5f6165;
@@ -119,6 +119,7 @@
   --f-border-color-input-inner: #e5e5f5;
   --f-border-color-input-inner-selected: #e5e5f5;
   --f-border-color-input-inner-disabled: #ffffff;
+  --f-border-color-card: #8c8c8c;
   --f-border-color-calendar-highlight: #5f6165;
   --f-border-color-calendar-disabled: #999999;
   --f-border-color-calendar-navbar: #d9d9d9;
