@@ -55,7 +55,9 @@ jobs:
               run: npm run html-validate || false
             - name: Stylelint
               if: success() || failure()
-              run: npm run stylelint
+              run: |
+                  npm run -w @fkui/css-variables build
+                  npm run stylelint
             - name: pnr-scanner
               if: success() || failure()
               run: |
