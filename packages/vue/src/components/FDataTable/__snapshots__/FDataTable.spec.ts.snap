@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot should match snapshot with no items in rows and default text 1`] = `
+<div class="">
+  <table class="table">
+    <!--v-if-->
+    <colgroup>
+      <col class="table__column--expand">
+      <col class="table__column--expand">
+    </colgroup>
+    <thead>
+      <tr class="table__row">
+        <th scope="col" class="table__column table__column--text table__column--expand"><span>A</span>
+          <!--v-if-->
+          <!--v-if-->
+        </th>
+        <th scope="col" class="table__column table__column--numeric table__column--expand"><span>A</span>
+          <!--v-if-->
+          <!--v-if-->
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--v-if-->
+      <tr>
+        <td class="table__column table__column--action" colspan="2">Tabellen är tom</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`should match snapshot should match snapshot with no rows in table and custom text 1`] = `
+<div class="">
+  <table class="table">
+    <!--v-if-->
+    <colgroup>
+      <col class="table__column--expand">
+      <col class="table__column--expand">
+    </colgroup>
+    <thead>
+      <tr class="table__row">
+        <th scope="col" class="table__column table__column--text table__column--expand"><span>A</span>
+          <!--v-if-->
+          <!--v-if-->
+        </th>
+        <th scope="col" class="table__column table__column--numeric table__column--expand"><span>A</span>
+          <!--v-if-->
+          <!--v-if-->
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--v-if-->
+      <tr>
+        <td class="table__column table__column--action" colspan="2"> THE LIST IS EMPTY! </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`should match snapshot tbody 1`] = `
+<tbody>
+  <!--v-if-->
+  <!--v-if-->
+  <tr class="table__row">
+    <td class="table__column table__column--text">1<span class="sr-only">&nbsp;</span></td>
+    <td class="table__column table__column--numeric">2<span class="sr-only">&nbsp;</span></td>
+  </tr>
+  <tr class="table__row">
+    <td class="table__column table__column--text">3<span class="sr-only">&nbsp;</span></td>
+    <td class="table__column table__column--numeric">4<span class="sr-only">&nbsp;</span></td>
+  </tr>
+</tbody>
+`;
+
+exports[`should match snapshot thead 1`] = `
+<thead>
+  <tr class="table__row">
+    <th scope="col" class="table__column table__column--text table__column--expand"><span>A</span>
+      <!--v-if-->
+      <!--v-if-->
+    </th>
+    <th scope="col" class="table__column table__column--numeric table__column--expand"><span>A</span>
+      <!--v-if-->
+      <!--v-if-->
+    </th>
+  </tr>
+</thead>
+`;

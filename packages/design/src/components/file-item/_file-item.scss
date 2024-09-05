@@ -1,0 +1,80 @@
+@use "../anchor/anchor";
+@use "../../core/size";
+
+$FILE_ITEM_SELECTOR: ".file-item" !default;
+$FILE_LIST_ITEM_SELECTOR: ".file-item-list" !default;
+
+#{$FILE_LIST_ITEM_SELECTOR} {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#{$FILE_ITEM_SELECTOR} {
+    .button--discrete {
+        padding: 0;
+        min-width: auto;
+        text-align: left;
+        margin-right: size.$margin-025;
+    }
+
+    &__row {
+        margin-bottom: size.$margin-125;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button,
+        a {
+            margin-bottom: 0;
+        }
+    }
+
+    &__file-open {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend .anchor;
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend .anchor--block;
+
+        flex: 0 1 auto;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    &__file-remove {
+        flex: 0 0 auto;
+
+        svg {
+            color: var(--f-icon-color-primary);
+        }
+    }
+
+    &__file-abort {
+        flex: 0 0 auto;
+
+        svg {
+            color: var(--f-icon-color-error);
+        }
+    }
+
+    &__change-info {
+        margin-top: calc(-1 * size.$margin-125);
+    }
+
+    &__file-name {
+        margin-left: size.$margin-025;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+    &__separator {
+        margin-bottom: size.$margin-125;
+        border: var(--f-border-width-medium) solid var(--f-border-color-separator);
+    }
+
+    &__file-uploading {
+        .progress__meter--inprogress {
+            background: var(--f-background-progress-file-item-ongoing);
+            border: var(--f-border-width-small) solid var(--f-border-color-progress-file-item-ongoing);
+        }
+    }
+}

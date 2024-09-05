@@ -1,0 +1,61 @@
+{
+  "name": "@fkui/date",
+  "version": "5.35.0",
+  "description": "Date",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "packages/date"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.js"
+    }
+  },
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/types/index.d.ts",
+  "files": [
+    "lib",
+    "!**/*.spec.{js,js.map,d.ts}"
+  ],
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "rollup --config",
+    "postbuild": "fk-api-extractor",
+    "build:docs": "typedoc",
+    "clean": "rimraf .jest-cache coverage lib temp test-results typedoc",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "start": "npm run build:docs && fkui-serve typedoc",
+    "test": "jest --coverage",
+    "unit": "jest",
+    "unit:watch": "jest --watch",
+    "watch": "rollup --config --watch"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config",
+    "setupFiles": [
+      "<rootDir>/src/dayjs-setup.ts"
+    ]
+  },
+  "dependencies": {
+    "dayjs": "1.11.13"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "26.0.1",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-typescript": "11.1.6",
+    "rollup": "4.21.2"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

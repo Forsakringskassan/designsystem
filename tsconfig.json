@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        /* based on @tsconfig/node20 (https://github.com/tsconfig/bases/blob/main/bases/node20.json) */
+        "target": "es2022",
+        "module": "esnext",
+        "lib": ["es2023", "dom", "dom.iterable"],
+
+        "declaration": true,
+        "declarationMap": true,
+        "strict": true,
+        "jsx": "preserve",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "sourceMap": true
+    }
+}

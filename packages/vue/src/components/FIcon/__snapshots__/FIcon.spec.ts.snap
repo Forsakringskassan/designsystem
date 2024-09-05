@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot and use prop name to set icon 1`] = `
+<svg
+  aria-hidden="true"
+  class="icon f-icon-my-icon"
+  focusable="false"
+>
+  
+  
+  <use
+    xlink:href="#f-icon-my-icon"
+  />
+</svg>
+`;
+
+exports[`snapshots should match snapshot when passing content to default slot 1`] = `
+<svg
+  class="icon f-icon-my-icon"
+  focusable="false"
+>
+  
+  <title>
+    FIcon test information
+  </title>
+  
+  <use
+    xlink:href="#f-icon-my-icon"
+  />
+</svg>
+`;

@@ -1,0 +1,76 @@
+@use "../../core/size";
+@use "../../core/config-variables";
+@use "../../core/mixins/breakpoints";
+@use "../../core/utils/functions" as *;
+
+$DATEPICKER_FIELD_SELECTOR: ".datepicker-field" !default;
+$POPUP_SELECTOR: ".popup" !default;
+
+// 40px = popup spacing (20px) * 2
+$popup-spacing: 40px;
+$calendar-width: calc(100vw - #{$popup-spacing});
+
+#{$DATEPICKER_FIELD_SELECTOR} {
+    &__button {
+        background: transparent;
+        border: 0;
+        flex: 0 0 auto;
+        padding: 0;
+        cursor: pointer;
+
+        .icon {
+            color: var(--f-icon-color-primary);
+            min-height: var(--f-icon-size-large);
+            min-width: var(--f-icon-size-large);
+            height: densify(var(--f-icon-size-x-large));
+            width: densify(var(--f-icon-size-x-large));
+            vertical-align: middle;
+        }
+
+        &:disabled .icon {
+            color: var(--f-icon-color-discrete);
+        }
+    }
+
+    &__popup {
+        // 16px = popup spacing (20px) - 4px
+        margin-top: -16px;
+        border-radius: var(--f-border-radius-medium);
+        border: var(--f-border-width-small) solid var(--f-border-color-modal);
+        background-color: var(--f-background-content);
+    }
+
+    &__close {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__close > &__close__button {
+        margin: 0;
+        padding: 1rem;
+    }
+}
+
+#{$POPUP_SELECTOR}--overlay #{$DATEPICKER_FIELD_SELECTOR} {
+    &__popup {
+        width: $calendar-width;
+        max-width: 28rem;
+    }
+}
+
+#{$POPUP_SELECTOR}--inline #{$DATEPICKER_FIELD_SELECTOR} {
+    &__popup {
+        width: 100%;
+    }
+    &__table {
+        margin-top: 0;
+    }
+    &__table .calendar-month__cell {
+        padding: 0;
+        border-bottom: unset;
+    }
+    &__table .calendar-month__header-cell {
+        background-color: unset;
+        border: unset;
+    }
+}

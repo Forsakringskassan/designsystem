@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot 1`] = `
+<div
+  class="card card--default"
+>
+  <div
+    class="card__header"
+  >
+    
+    Header slot
+    
+  </div>
+  <div
+    class="card__content"
+  >
+    
+    Content slot
+    
+  </div>
+  <div
+    class="card__footer"
+  >
+    
+    Footer slot
+    
+  </div>
+</div>
+`;

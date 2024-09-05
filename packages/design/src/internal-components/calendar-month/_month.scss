@@ -1,0 +1,74 @@
+@use "../../components/z-index";
+
+$MONTH_SELECTOR: ".calendar-month" !default;
+$days: 7;
+$week-width: 2%;
+$day-width: calc((100% - $week-width) / $days);
+
+#{$MONTH_SELECTOR} {
+    &__table {
+        border-spacing: 2px;
+        padding: 0 0.5rem 1rem;
+        width: 100%;
+        border-collapse: separate;
+        border: none;
+        margin: 0;
+    }
+
+    &__col--week {
+        width: #{$week-width};
+    }
+
+    &__col--day {
+        width: #{$day-width};
+    }
+
+    &__header-cell {
+        padding: 0.5rem 0;
+        text-align: center;
+        background-color: white;
+
+        abbr {
+            font-weight: var(--f-font-weight-normal);
+            text-decoration: none;
+            border-bottom: none;
+            text-transform: none;
+            font-size: 1rem;
+            cursor: auto;
+            color: var(--f-text-color-weekday-weeknumber);
+        }
+    }
+
+    &__cell {
+        height: 2.75rem;
+        padding: 0;
+        background: white;
+    }
+
+    &__cell--week-number {
+        vertical-align: middle;
+        padding-right: 0.25rem;
+        text-align: right;
+        min-width: 2rem;
+        color: var(--f-text-color-weekday-weeknumber);
+    }
+
+    &__button {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        padding: 0;
+        width: 100%;
+        background-color: var(--f-background-month);
+        font-size: 1rem;
+
+        &:focus {
+            position: relative;
+            z-index: z-index.$CALENDAR_MONTH;
+
+            &[tabindex="-1"] {
+                box-shadow: var(--f-focus-box-shadow);
+            }
+        }
+    }
+}

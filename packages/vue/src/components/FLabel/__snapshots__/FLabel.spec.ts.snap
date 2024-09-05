@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`html-validate <f-label for="00-number-input"></f-label> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  Attribute "for" has invalid value "00-number-input" [attribute-allowed-values]]
+`;
+
+exports[`html-validate <f-label for="number input"></f-label> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  Attribute "for" has invalid value "number input" [attribute-allowed-values]]
+`;
+
+exports[`html-validate <f-label><template #tooltip><div /></template></f-label> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <div> element is not permitted as content under slot "tooltip" (<f-label>) [element-permitted-content]]
+`;
+
+exports[`snapshots should match snapshot with a second label element containing the description and error-message slots 1`] = `
+<div>
+  <div
+    class="tooltip-before"
+  >
+    <label
+      class="label tooltip-before__label"
+      for="FOR_ID"
+    >
+      
+      LABEL_TEXT
+      
+    </label>
+  </div>
+  
+  TOOLTIP
+  
+  <label
+    class="label sr-separator"
+    for="FOR_ID"
+  >
+    
+    DESCRIPTION
+    
+    <span
+      class="label__message label__message--error"
+    >
+      <f-icon-stub
+        class="label__icon--left"
+        library="f"
+        name="error"
+      />
+      
+      ERROR_MESSAGE
+      
+    </span>
+  </label>
+</div>
+`;
+
+exports[`snapshots should match snapshot with a second label element containing the error-message slot 1`] = `
+<div>
+  <div
+    class="tooltip-before"
+  >
+    <label
+      class="label tooltip-before__label"
+      for="FOR_ID"
+    >
+      
+      LABEL_TEXT
+      
+    </label>
+  </div>
+  
+  TOOLTIP
+  
+  <label
+    class="label sr-separator"
+    for="FOR_ID"
+  >
+    
+    
+    <span
+      class="label__message label__message--error"
+    >
+      <f-icon-stub
+        class="label__icon--left"
+        library="f"
+        name="error"
+      />
+      
+      ERROR_MESSAGE
+      
+    </span>
+  </label>
+</div>
+`;
+
+exports[`snapshots should match snapshot with one label element containing the default slot 1`] = `
+<label
+  class="label"
+  for="FOR_ID"
+>
+  
+  LABEL_TEXT
+  
+  
+  
+  <!--v-if-->
+</label>
+`;
+
+exports[`snapshots should match snapshot with one label element containing the default, description and error-message slots 1`] = `
+<label
+  class="label"
+  for="FOR_ID"
+>
+  
+  LABEL_TEXT
+  
+  
+  DESCRIPTION
+  
+  <span
+    class="label__message label__message--error"
+  >
+    <f-icon-stub
+      class="label__icon--left"
+      library="f"
+      name="error"
+    />
+    
+    ERRROR_MESSAGE
+    
+  </span>
+</label>
+`;
+
+exports[`snapshots should match snapshot with the tooltip slot rendered outside the label element 1`] = `
+<div>
+  <div
+    class="tooltip-before"
+  >
+    <label
+      class="label tooltip-before__label"
+      for="FOR_ID"
+    >
+      
+      LABEL_TEXT
+      
+    </label>
+  </div>
+  
+  TOOLTIP
+  
+  <!--v-if-->
+</div>
+`;

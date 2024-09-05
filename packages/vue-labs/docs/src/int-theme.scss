@@ -1,0 +1,11 @@
+@use "~@fkui/css-variables/src/fkui-int-css-variables" as fkui with (
+    $global: false
+);
+
+html {
+    font-size: 14px;
+}
+
+.code-preview__preview {
+    @include fkui.css-variables();
+}

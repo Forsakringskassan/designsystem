@@ -1,0 +1,18 @@
+$CRUD_DATASET_SELECTOR: ".crud-dataset" !default;
+$crud-dataset-add-button-margin-top: 0.5rem !default;
+$crud-dataset-add-button-margin-left: 2px !default; // to line up with table or list that has 2px border
+
+#{$CRUD_DATASET_SELECTOR} {
+    margin: 0 0 var(--f-margin-component-bottom);
+
+    &__add-button {
+        margin-bottom: 0 !important;
+        margin-top: $crud-dataset-add-button-margin-top !important;
+        margin-left: $crud-dataset-add-button-margin-left;
+    }
+
+    .list,
+    .table {
+        margin-bottom: 0;
+    }
+}

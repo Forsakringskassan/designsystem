@@ -1,0 +1,11 @@
+@use "../../mixins/sr-only";
+
+.sr {
+    &-only {
+        @include sr-only.sr-only;
+    }
+
+    &-separator {
+        display: block !important;
+    }
+}

@@ -1,0 +1,27 @@
+$ANCHOR_SELECTOR: ".anchor" !default;
+$anchor-svg-margin: 0.25rem;
+@use "../../core/mixins/anchor";
+
+#{$ANCHOR_SELECTOR} {
+    @include anchor.anchor;
+
+    &#{$ANCHOR_SELECTOR}--block {
+        display: inline-flex;
+
+        & > svg,
+        & > .icon-stack {
+            flex-shrink: 0;
+            margin: calc((var(--f-line-height-large) * 1rem - var(--f-icon-size-small)) / 2) $anchor-svg-margin 0;
+        }
+    }
+
+    &#{$ANCHOR_SELECTOR}--discrete {
+        color: var(--f-text-color-link-discrete);
+        text-decoration-color: var(--f-border-color-link-discrete);
+
+        &:hover {
+            color: var(--f-text-color-link-discrete-hover);
+            text-decoration-color: var(--f-text-color-link-discrete-hover);
+        }
+    }
+}

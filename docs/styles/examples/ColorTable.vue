@@ -1,0 +1,38 @@
+<template>
+    <f-data-table :rows="typeWorkaround" key-attribute="name">
+        <template #caption> <span class="sr-only"> Färgpaletten </span> </template>
+        <template #default="{ row }">
+            <f-table-column name="name" title="Namn" type="text" shrink>
+                {{ row.name }}
+            </f-table-column>
+            <f-table-column name="color" title="Exempel" type="text" shrink>
+                <!-- [html-validate-disable-next no-inline-style] -->
+                <span class="color-table__color" :style="{ 'background-color': row.value }"></span>
+            </f-table-column>
+            <f-table-column name="value" title="Färgkod" type="text" shrink>
+                <code>{{ row.value }}</code>
+            </f-table-column>
+        </template>
+    </f-data-table>
+</template>
+
+<script lang="ts">
+import { defineComponent, type PropType } from "vue";
+import { type ListArray, type UnknownItem, FDataTable, FTableColumn } from "@fkui/vue";
+import { type SassVariable } from "@fkui/css-variables/dist/palette.json";
+
+export default defineComponent({
+    components: { FDataTable, FTableColumn },
+    props: {
+        colors: {
+            type: Array as PropType<SassVariable[]>,
+            required: true,
+        },
+    },
+    computed: {
+        typeWorkaround(): ListArray<UnknownItem> {
+            return this.colors as unknown as ListArray<UnknownItem>;
+        },
+    },
+});
+</script>

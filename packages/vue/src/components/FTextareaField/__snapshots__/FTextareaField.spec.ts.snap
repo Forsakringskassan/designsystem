@@ -1,0 +1,282 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`html-validate <f-textarea-field maxlength="100 000" soft-limit="30 000">Label</f-textarea-field> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  Attribute "maxlength" has invalid value "100 000" [attribute-allowed-values]
+  Attribute "soft-limit" has invalid value "30 000" [attribute-allowed-values]]
+`;
+
+exports[`html-validate <f-textarea-field>Label<template #tooltip><div /></template></f-textarea-field> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <div> element is not permitted as content under slot "tooltip" (<f-textarea-field>) [element-permitted-content]]
+`;
+
+exports[`snapshots should match snapshot when validityMode is ERROR and isValid is false 1`] = `
+<div
+  class="textarea-field textarea-field--error"
+>
+  <label
+    class="label"
+    for="textarea-field"
+  >
+    
+    
+    Label
+    
+    
+    
+    
+    <span
+      class="label__message label__message--error"
+    >
+      <f-icon-stub
+        class="label__icon--left"
+        library="f"
+        name="error"
+      />
+      
+      
+      
+      Something went wrong.
+      
+      
+      
+    </span>
+  </label>
+  <!--v-if-->
+  <textarea
+    class="textarea-field__textarea textarea-field__resize--none"
+    id="textarea-field"
+    rows="4"
+  />
+</div>
+`;
+
+exports[`snapshots should match snapshot when validityMode is INITIAL and isValid is false 1`] = `
+<div
+  class="textarea-field"
+>
+  <label
+    class="label"
+    for="textarea-field"
+  >
+    
+    
+    Label
+    
+    
+    
+    
+    <!--v-if-->
+  </label>
+  <!--v-if-->
+  <textarea
+    class="textarea-field__textarea textarea-field__resize--none"
+    id="textarea-field"
+    rows="4"
+  />
+</div>
+`;
+
+exports[`snapshots should match snapshot when validityMode is INITIAL and isValid is true 1`] = `
+<div
+  class="textarea-field"
+>
+  <label
+    class="label"
+    for="textarea-field"
+  >
+    
+    
+    Label
+    
+    
+    
+    
+    <!--v-if-->
+  </label>
+  <!--v-if-->
+  <textarea
+    class="textarea-field__textarea textarea-field__resize--none"
+    id="textarea-field"
+    rows="4"
+  />
+</div>
+`;
+
+exports[`snapshots should match snapshot when validityMode is VALID and isValid is true 1`] = `
+<div
+  class="textarea-field"
+>
+  <label
+    class="label"
+    for="textarea-field"
+  >
+    
+    
+    Label
+    
+    
+    
+    
+    <!--v-if-->
+  </label>
+  <!--v-if-->
+  <textarea
+    class="textarea-field__textarea textarea-field__resize--none"
+    id="textarea-field"
+    rows="4"
+  />
+</div>
+`;
+
+exports[`snapshots should match snapshot with label and textarea 1`] = `
+<div
+  class="textarea-field"
+>
+  <label
+    class="label"
+    for="textarea-field"
+  >
+    
+    
+    Label
+    
+    
+    
+    
+    <!--v-if-->
+  </label>
+  <!--v-if-->
+  <textarea
+    class="textarea-field__textarea textarea-field__resize--none"
+    id="textarea-field"
+    rows="4"
+  />
+</div>
+`;
+
+exports[`snapshots should match snapshot with label, error message and textarea 1`] = `
+<div
+  class="textarea-field"
+>
+  <label
+    class="label"
+    for="textarea-field"
+  >
+    
+    
+    Label
+    
+    
+    
+    
+    <span
+      class="label__message label__message--error"
+    >
+      <f-icon-stub
+        class="label__icon--left"
+        library="f"
+        name="error"
+      />
+      
+      
+      ERRROR_MESSAGE
+      
+      
+    </span>
+  </label>
+  <!--v-if-->
+  <textarea
+    class="textarea-field__textarea textarea-field__resize--none"
+    id="textarea-field"
+    rows="4"
+  />
+</div>
+`;
+
+exports[`snapshots should match snapshot with label, tooltip, description, error message and textarea 1`] = `
+<div
+  class="textarea-field"
+>
+  <div>
+    <div
+      class="tooltip-before"
+    >
+      <label
+        class="label tooltip-before__label"
+        for="textarea-field"
+      >
+        
+        
+        Label
+        
+        
+      </label>
+    </div>
+    
+    
+    TOOLTIP
+    
+    
+    <label
+      class="label sr-separator"
+      for="textarea-field"
+    >
+      
+      
+      DESCRIPTION
+      
+      
+      <span
+        class="label__message label__message--error"
+      >
+        <f-icon-stub
+          class="label__icon--left"
+          library="f"
+          name="error"
+        />
+        
+        
+        ERROR_MESSAGE
+        
+        
+      </span>
+    </label>
+  </div>
+  <!--v-if-->
+  <textarea
+    class="textarea-field__textarea textarea-field__resize--none"
+    id="textarea-field"
+    rows="4"
+  />
+</div>
+`;
+
+exports[`snapshots should match snapshot with resize vertical 1`] = `
+<div
+  class="textarea-field"
+>
+  <label
+    class="label"
+    for="textarea-field"
+  >
+    
+    
+    Label
+    
+    
+    
+    
+    <!--v-if-->
+  </label>
+  <!--v-if-->
+  <textarea
+    class="textarea-field__textarea textarea-field__resize--vertical"
+    id="textarea-field"
+    rows="4"
+  />
+</div>
+`;

@@ -1,0 +1,105 @@
+name: Build
+
+on: [push, pull_request]
+
+permissions:
+    contents: read
+    checks: write
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js 20.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Jest
+              run: |
+                  npm --ignore-scripts test
+                  find packages
+            - name: Publish test results
+              if: success() || failure()
+              uses: mikepenz/action-junit-report@v4
+              with:
+                  report_paths: "packages/*/test-results/jest-junit.xml"
+                  include_passed: true
+                  check_name: Jest
+            - name: Build packages
+              run: npm run build
+            - name: Build documentation
+              run: npm run build:docs
+
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js 20.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Prettier
+              run: npm run prettier:check
+            - name: ESLint
+              if: success() || failure()
+              run: npm run eslint || false
+            - name: HTML Validate
+              if: success() || failure()
+              run: npm run html-validate || false
+            - name: Stylelint
+              if: success() || failure()
+              run: npm run stylelint
+            - name: pnr-scanner
+              if: success() || failure()
+              run: |
+                  errors=$(npx pnr-scanner . 2> /dev/null | egrep "    " | wc -l)
+                  if [[ "${errors}" != "0" ]]; then
+                      echo "Found ${errors} potential personnummer. Rerun `npx pnr-scanner .` locally for more information."
+                      exit 1
+                  fi
+
+    cypress:
+        name: Cypress
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Use Node.js 20.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: |
+                  npm run build
+                  npm run build:docs
+            - name: Cypress E2E tests
+              uses: cypress-io/github-action@v6
+              with:
+                  summary-title: "E2E tests"
+                  start: npm start
+                  build: npx cypress info
+                  wait-on: "http://127.0.0.1:8080"
+                  quiet: true
+            - name: Cypress Component Testing
+              if: success() || failure()
+              uses: cypress-io/github-action@v6
+              with:
+                  summary-title: "Component tests"
+                  install: false
+                  component: true
+                  quiet: true
+            - uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore

@@ -1,0 +1,4 @@
+@mixin focus-indicator() {
+    border-radius: 0;
+    box-shadow: var(--f-focus-box-shadow);
+}

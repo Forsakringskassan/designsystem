@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with all slots used 1`] = `
+<div
+  class="layout-application-template"
+>
+  <header
+    class="layout-application-template__header"
+  >
+    
+    HEADER
+    
+    <nav>
+      
+      TOPNAVIGATION
+      
+    </nav>
+  </header>
+  <main
+    class="layout-application-template__main"
+  >
+    
+    DEFAULT
+    
+    <footer
+      class="layout-application-template__footer"
+    >
+      
+      FOOTER
+      
+    </footer>
+  </main>
+</div>
+`;
+
+exports[`snapshots should render snapshot with no header and footer if running under another application 1`] = `
+<div
+  class="layout-application-template"
+>
+  <header
+    class="layout-application-template__header"
+  >
+    <!--v-if-->
+    <nav>
+      
+      TOPNAVIGATION
+      
+    </nav>
+  </header>
+  <main
+    class="layout-application-template__main"
+  >
+    
+    DEFAULT
+    
+    <!--v-if-->
+  </main>
+</div>
+`;

@@ -1,0 +1,86 @@
+@use "../../core/mixins/circle";
+
+$CALENDAR_DAY_SELECTOR: ".calendar-day" !default;
+$calendar-highlight-border: var(--f-border-width-small) solid var(--f-border-color-calendar-highlight);
+
+#{$CALENDAR_DAY_SELECTOR} {
+    align-items: center;
+    display: inline-flex;
+    font-weight: var(--f-font-weight-medium);
+    justify-content: center;
+    height: 2.75rem;
+    width: 100%;
+
+    &--highlight {
+        position: relative;
+
+        &::before {
+            @include circle.circle($border: $calendar-highlight-border, $size: 2rem);
+
+            content: "";
+            position: absolute;
+            border: var(--f-border-width-small) solid var(--f-border-color-calendar-highlight);
+        }
+
+        &.calendar-day--selected {
+            &::before {
+                border: var(--f-border-width-medium) solid var(--f-border-color-calendar-selected);
+            }
+        }
+        &:active:not(&--disabled) {
+            color: var(--f-text-color-default-inverted);
+            background-color: var(--f-background-calendar-selected);
+
+            &::before {
+                border: var(--f-border-width-medium) solid var(--f-border-color-calendar-selected);
+            }
+        }
+
+        &.calendar-day--disabled {
+            position: relative;
+
+            &::before {
+                @include circle.circle($border: $calendar-highlight-border, $size: 2rem);
+
+                content: "";
+                position: absolute;
+                border: var(--f-border-width-small) solid var(--f-border-color-calendar-highlight);
+            }
+
+            &::after {
+                content: "";
+                z-index: 1;
+                position: absolute;
+                border-top: var(--f-border-width-medium) solid;
+                width: 60%;
+            }
+        }
+    }
+
+    &--selected {
+        color: var(--f-text-color-default-inverted);
+        background-color: var(--f-background-calendar-selected);
+    }
+
+    &--disabled {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            border-top: var(--f-border-width-medium) solid;
+            width: 60%;
+        }
+    }
+
+    &:hover:not(&--disabled, &--selected),
+    &--hover:not(&--disabled, &--selected) {
+        background-color: var(--f-background-calendar-hover);
+    }
+
+    &:active:not(&--disabled),
+    &--active:not(&--disabled) {
+        color: var(--f-text-color-default-inverted);
+        background-color: var(--f-background-calendar-selected);
+    }
+}

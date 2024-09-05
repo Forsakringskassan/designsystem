@@ -1,0 +1,25 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "types": ["node", "jest"],
+        "outDir": "./lib",
+        "rootDir": "./src",
+        "emitDeclarationOnly": true,
+        "declarationDir": "temp/types/"
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts"],
+    "typedocOptions": {
+        "entryPoints": ["src/index.ts"],
+        "out": "typedoc",
+        "exclude": "**/*+(.spec|.e2e).ts",
+        "excludePrivate": true,
+        "excludeInternal": true,
+        "hideGenerator": true,
+        "treatWarningsAsErrors": true,
+        "validation": {
+            "notExported": true,
+            "invalidLink": true
+        }
+    }
+}

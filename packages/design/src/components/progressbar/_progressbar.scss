@@ -1,0 +1,34 @@
+@use "../../core/size";
+
+$PROGRESS_BAR_SELECTOR: ".progress" !default;
+
+#{$PROGRESS_BAR_SELECTOR} {
+    background-color: var(--f-background-progress);
+    border-radius: var(--f-height-medium);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+    height: var(--f-height-small);
+    margin-bottom: size.$margin-150;
+    padding: 0;
+
+    &__meter {
+        border-radius: var(--f-height-medium);
+        display: block;
+        float: left;
+        height: var(--f-height-small);
+        margin: calc(-1 * var(--f-border-width-small));
+        transition:
+            width var(--f-animation-duration-medium) ease-out,
+            background-color var(--f-animation-duration-medium) ease-out;
+
+        &--inprogress {
+            background: var(--f-background-progress-ongoing);
+            border: var(--f-border-width-small) solid var(--f-border-color-progress-ongoing);
+        }
+
+        &--finished {
+            background: var(--f-background-progress-finished);
+            border: var(--f-border-width-small) solid var(--f-border-color-progress-finished);
+            width: calc(100% + 2 * var(--f-border-width-small));
+        }
+    }
+}

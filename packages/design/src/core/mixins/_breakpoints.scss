@@ -1,0 +1,42 @@
+@use "../../core/utils/functions";
+
+@mixin breakpoint-only($key) {
+    $min-value: functions.get-min-for($key);
+    $max-value: functions.get-max-for($key);
+
+    @if $min-value != null and $max-value != null {
+        @media (min-width: $min-value) and (max-width: $max-value) {
+            @content;
+        }
+    } @else if $max-value == null {
+        @include breakpoint-up($key) {
+            @content;
+        }
+    } @else if $min-value == null {
+        @include breakpoint-down($key) {
+            @content;
+        }
+    }
+}
+
+@mixin breakpoint-down($key) {
+    $value: functions.get-max-for($key);
+    @if $value {
+        @media (max-width: $value) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin breakpoint-up($key) {
+    $value: functions.get-min-for($key);
+    @if $value {
+        @media (min-width: $value) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}

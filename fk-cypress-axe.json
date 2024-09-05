@@ -1,0 +1,11 @@
+{
+    "context": {
+        "include": [[".code-preview"], ["[data-preview]"], ["[data-cy-root]"]],
+        "exclude": [
+            [".calendar__item--selected"],
+            [".file-selector input"],
+            [".wizard-step__header__title"],
+            [".live-example__code"]
+        ]
+    }
+}

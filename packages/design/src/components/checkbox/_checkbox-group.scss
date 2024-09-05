@@ -1,0 +1,18 @@
+@use "../../core/size";
+@use ".././radio-button/item";
+
+$CHECKBOX_GROUP_SELECTOR: ".checkbox-group" !default;
+
+#{$CHECKBOX_GROUP_SELECTOR} {
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+    &--border {
+        #{$CHECKBOX_GROUP_SELECTOR}__content {
+            .checkbox {
+                @extend %selectable-item;
+            }
+        }
+    }
+}

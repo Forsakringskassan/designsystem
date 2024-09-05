@@ -1,0 +1,121 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints";
+@use "../../core/utils/functions" as *;
+
+$MESSAGE_BOX_SELECTOR: ".message-box" !default;
+
+@mixin make-box-variant($MESSAGE_BOX_SELECTOR, $background-color, $border-color, $short-layout: false) {
+    border: var(--f-border-width-medium) solid;
+    border-color: $border-color;
+    background-color: $background-color;
+    border-radius: var(--f-border-radius-small);
+
+    @if $short-layout {
+        border-left: size.$padding-100 solid $border-color;
+
+        #{$MESSAGE_BOX_SELECTOR} {
+            &__icon {
+                font-size: 0; // ignore any whitespaces in template affecting height
+
+                .icon {
+                    height: var(--f-icon-size-large);
+                    width: var(--f-icon-size-large);
+                    &-stack {
+                        height: var(--f-icon-size-large);
+                        width: var(--f-icon-size-large);
+                    }
+                    &__exclamation {
+                        transform: translateY(-0.05rem);
+                    }
+                    &__banner {
+                        fill: var(--f-icon-color-error);
+                        color: white;
+                    }
+                }
+            }
+            &__icon__banner {
+                margin-top: 0;
+            }
+        }
+    } @else {
+        border-top: size.$padding-100 solid $border-color;
+    }
+
+    .iflex__item > p {
+        margin-bottom: 0;
+    }
+}
+
+@mixin messagebox-banner-variant($selector) {
+    width: var(--f-width-full);
+    box-shadow: var(--f-box-modal-shadow);
+    border-collapse: separate;
+    padding: densify(size.$padding-100) size.$padding-100;
+
+    @include make-box-variant($selector, var(--f-background-error), var(--f-border-color-error));
+
+    .iflex__item > p {
+        margin-bottom: 0;
+    }
+}
+
+#{$MESSAGE_BOX_SELECTOR} {
+    padding: densify(size.$padding-150) size.$padding-150;
+    margin: size.$margin-050 0 densify(size.$margin-200) 0;
+
+    &__heading {
+        font-size: var(--f-font-size-h3);
+        font-weight: var(--f-font-weight-medium);
+        color: var(--f-text-color-default);
+        line-height: var(--f-line-height-medium);
+        align-items: flex-start;
+        margin-bottom: densify(size.$margin-050);
+        margin-top: 0;
+
+        @include breakpoints.breakpoint-only(sm) {
+            font-size: var(--f-font-size-large);
+        }
+    }
+
+    &--info {
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-info), var(--f-border-color-info));
+    }
+
+    &--info-short {
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-info), var(--f-border-color-info), $short-layout: true);
+    }
+
+    &--error {
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-error), var(--f-border-color-error));
+    }
+
+    &--error-short {
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-error), var(--f-border-color-error), $short-layout: true);
+    }
+
+    &--warning {
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-warning), var(--f-border-color-warning));
+    }
+
+    &--warning-short {
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-warning), var(--f-border-color-warning), $short-layout: true);
+    }
+
+    &--success {
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-success), var(--f-border-color-success));
+    }
+
+    &--success-short {
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-success), var(--f-border-color-success), $short-layout: true);
+    }
+
+    &--banner {
+        @include messagebox-banner-variant($MESSAGE_BOX_SELECTOR);
+    }
+
+    @include breakpoints.breakpoint-down(sm) {
+        margin-bottom: densify(size.$margin-150);
+        margin-top: densify(size.$margin-150);
+        padding: densify(size.$padding-100) size.$padding-100;
+    }
+}

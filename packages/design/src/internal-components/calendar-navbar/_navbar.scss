@@ -1,0 +1,55 @@
+$CALENDAR_NAVBAR_SELECTOR: ".calendar-navbar" !default;
+$calendar-icon-padding: 5px;
+$calendar-icon-disabled-border-width: 1px;
+$calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-disabled-border-width);
+
+#{$CALENDAR_NAVBAR_SELECTOR} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid var(--f-border-color-calendar-navbar);
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: var(--f-font-size-h4);
+
+    &__month {
+        order: 2;
+    }
+
+    &__arrow--previous {
+        order: 1;
+        transform: scaleX(-1);
+    }
+
+    &__arrow--next {
+        order: 3;
+    }
+
+    &__icon {
+        color: var(--f-icon-color-white);
+        background-color: var(--f-icon-color-primary);
+        width: var(--f-icon-size-large);
+        height: var(--f-icon-size-large);
+        padding: $calendar-icon-padding;
+        border-radius: 50%;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+
+        &--disabled {
+            color: var(--f-icon-color-discrete);
+            background-color: var(--f-icon-color-white);
+            padding: $calendar-icon-disabled-padding;
+            border: $calendar-icon-disabled-border-width solid var(--f-border-color-calendar-navbar);
+            box-shadow: none;
+        }
+    }
+
+    &__arrow {
+        padding: 0;
+        display: flex;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot when collapsed 1`] = `
+<div
+  class="expandable-panel expandable-panel--collapsed"
+>
+  <h2
+    class="expandable-panel__heading"
+  >
+    <button
+      aria-controls="my-id"
+      aria-expanded="false"
+      type="button"
+    >
+      <span
+        class="expandable-panel__icon"
+      >
+        <span
+          class="icon-stack"
+        >
+          <f-icon-stub
+            library="f"
+            name="dash"
+          />
+          <f-icon-stub
+            library="f"
+            name="dash"
+          />
+        </span>
+      </span>
+      
+      My panel title
+      
+      <!--v-if-->
+    </button>
+  </h2>
+  <f-expand-stub />
+</div>
+`;
+
+exports[`snapshots should match snapshot when expanded 1`] = `
+<div
+  class="expandable-panel expandable-panel--expanded"
+>
+  <h2
+    class="expandable-panel__heading"
+  >
+    <button
+      aria-controls="my-id"
+      aria-expanded="true"
+      type="button"
+    >
+      <span
+        class="expandable-panel__icon"
+      >
+        <span
+          class="icon-stack"
+        >
+          <f-icon-stub
+            library="f"
+            name="dash"
+          />
+          <f-icon-stub
+            library="f"
+            name="dash"
+          />
+        </span>
+      </span>
+      
+      My panel title
+      
+      <!--v-if-->
+    </button>
+  </h2>
+  <f-expand-stub />
+</div>
+`;
+
+exports[`snapshots should match snapshot with "outside" slot 1`] = `
+<div class="expandable-panel expandable-panel--collapsed">
+  <h2 class="expandable-panel__heading"><button type="button" aria-expanded="false" aria-controls="my-id"><span class="expandable-panel__icon"><span class="icon-stack"><f-icon-stub name="dash" library="f"></f-icon-stub><f-icon-stub name="dash" library="f"></f-icon-stub></span></span>My panel title
+      <!--v-if-->
+    </button></h2>
+  <f-expand-stub></f-expand-stub>
+</div>
+`;
+
+exports[`snapshots should match snapshot with custom heading level 1`] = `
+<div class="expandable-panel expandable-panel--collapsed">
+  <h3 class="expandable-panel__heading"><button type="button" aria-expanded="false" aria-controls="my-id"><span class="expandable-panel__icon"><span class="icon-stack"><f-icon-stub name="dash" library="f"></f-icon-stub><f-icon-stub name="dash" library="f"></f-icon-stub></span></span>My panel title
+      <!--v-if-->
+    </button></h3>
+  <f-expand-stub></f-expand-stub>
+</div>
+`;
+
+exports[`snapshots should match snapshot with generated id 1`] = `
+<div class="expandable-panel expandable-panel--collapsed">
+  <h2 class="expandable-panel__heading"><button type="button" aria-expanded="false" aria-controls="fkui-vue-element-0001"><span class="expandable-panel__icon"><span class="icon-stack"><f-icon-stub name="dash" library="f"></f-icon-stub><f-icon-stub name="dash" library="f"></f-icon-stub></span></span>My panel title
+      <!--v-if-->
+    </button></h2>
+  <f-expand-stub></f-expand-stub>
+</div>
+`;
+
+exports[`snapshots should match snapshot with notification 1`] = `
+<div
+  class="expandable-panel expandable-panel--collapsed"
+>
+  <h2
+    class="expandable-panel__heading"
+  >
+    <button
+      aria-controls="my-id"
+      aria-expanded="false"
+      type="button"
+    >
+      <span
+        class="expandable-panel__icon"
+      >
+        <span
+          class="icon-stack"
+        >
+          <f-icon-stub
+            library="f"
+            name="dash"
+          />
+          <f-icon-stub
+            library="f"
+            name="dash"
+          />
+        </span>
+      </span>
+      
+      My panel title
+      
+      <span
+        class="expandable-panel__notification"
+        title="2 notifieringar"
+      >
+        <span
+          class="sr-only"
+        >
+          Du har 2 notifieringar.
+        </span>
+        <f-icon-stub
+          library="f"
+          name="bell"
+        />
+      </span>
+    </button>
+  </h2>
+  <f-expand-stub />
+</div>
+`;

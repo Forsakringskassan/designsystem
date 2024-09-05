@@ -1,0 +1,51 @@
+// **
+// * Adds an arrow (downpointing triangle) to an element.
+// *
+// * @param $size Diagonal size of the arrow (in px only).
+// * @param $position Vertical position.
+// * @param $width Border width (in px only).
+// * @param $background Triangle background color.
+// * @param $border Triangle border color.
+// * @param $up If arrow should be faced up.
+// *
+@mixin arrow-creator($size, $position, $width: 2px, $background: #fff, $border: #000, $up: false) {
+    $inner-size: calc(#{$size} - #{$width} * 1.4142);
+    $negative-inner-size: calc(-1 * (#{$size} - #{$width} * 1.4142));
+    $outer-size: $size;
+    $negative-outer-size: calc(-1 * #{$size});
+
+    position: absolute;
+    left: $position;
+
+    @if $up {
+        top: 0;
+        transform: rotate(180deg);
+    } @else {
+        top: 100%;
+    }
+
+    &::before,
+    &::after {
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        pointer-events: none;
+        z-index: 1;
+        position: absolute;
+    }
+
+    &::after {
+        border-color: none;
+        border-top-color: $background;
+        border-width: $inner-size;
+        margin-left: $negative-inner-size;
+    }
+
+    &::before {
+        border-color: none;
+        border-top-color: $border;
+        border-width: $outer-size;
+        margin-left: $negative-outer-size;
+    }
+}

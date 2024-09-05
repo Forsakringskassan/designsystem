@@ -1,0 +1,116 @@
+@use "../../core/size";
+@use "../../components/z-index";
+@use "arrows/top" as arrowTop;
+@use "arrows/top-before" as arrowTopBefore;
+@use "arrows/bottom" as arrowBottom;
+@use "arrows/bottom-before" as arrowBottomBefore;
+@use "arrows/left" as arrowLeft;
+@use "arrows/left-before" as arrowLeftBefore;
+@use "arrows/right" as arrowRight;
+@use "arrows/right-before" as arrowRightBefore;
+
+// With inspiration from:
+// https://www.smashingmagazine.com/2024/03/modern-css-tooltips-speech-bubbles-part1/#comments-modern-css-tooltips-speech-bubbles-part1
+$POPUP_ERROR_SELECTOR: ".popup-error" !default;
+#{$POPUP_ERROR_SELECTOR} {
+    --i-popup-error-offset: 24px;
+
+    // Arrorw angle
+    $angle: 60deg;
+
+    // Arrow height
+    $height: 10px;
+
+    // Arrow position (0%:left 100%:right)
+    $pos: calc(100% - var(--i-popup-error-offset));
+    $radius: 0.2em;
+    $border-width: var(--f-border-width-medium);
+    $border-color: var(--f-border-color-error);
+    $bg-color: var(--f-background-error);
+    $offset: $height * tan($angle / 2);
+
+    &--overlay {
+        position: absolute;
+
+        // Place popup at the top as default so it doesn't affect
+        // the page height when teleporting to bottom of body.
+        top: 0;
+
+        #{$POPUP_ERROR_SELECTOR}__wrapper {
+            left: -10000px;
+            position: absolute;
+            z-index: z-index.$POPUP_ZINDEX;
+            white-space: nowrap;
+        }
+    }
+
+    &--inline {
+        position: static;
+
+        #{$POPUP_ERROR_SELECTOR}__wrapper {
+            box-sizing: border-box;
+            margin-top: size.$margin-050;
+            margin-bottom: size.$margin-050;
+            position: static;
+        }
+    }
+
+    &--arrow {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5em 10px;
+        background: var(--f-border-color-error);
+        line-height: 24px;
+        position: relative;
+
+        #{$POPUP_ERROR_SELECTOR}__button {
+            margin: 0;
+            min-height: 24px;
+            min-width: 24px;
+            padding: 0;
+            padding-left: 5px;
+        }
+    }
+
+    &--arrow::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        padding: $border-width;
+        border-radius: inherit;
+        background: $bg-color content-box;
+    }
+
+    &--top {
+        @include arrowTop.mixin($pos, $radius, $height, $angle, $border-color);
+    }
+
+    &--bottom {
+        @include arrowBottom.mixin($pos, $radius, $height, $angle, $border-color);
+    }
+
+    &--left {
+        @include arrowLeft.mixin($pos, $radius, $height, $angle, $border-color);
+    }
+
+    &--right {
+        @include arrowRight.mixin($pos, $radius, $height, $angle, $border-color);
+    }
+
+    &--top::before {
+        @include arrowTopBefore.mixin($pos, $radius, $height, $angle, $border-width, $bg-color);
+    }
+
+    &--bottom::before {
+        @include arrowBottomBefore.mixin($pos, $radius, $height, $angle, $border-width, $bg-color);
+    }
+
+    &--left::before {
+        @include arrowLeftBefore.mixin($pos, $radius, $height, $angle, $border-width, $bg-color);
+    }
+
+    &--right::before {
+        @include arrowRightBefore.mixin($pos, $radius, $height, $angle, $border-width, $bg-color);
+    }
+}

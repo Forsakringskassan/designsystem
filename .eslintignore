@@ -1,0 +1,12 @@
+build/
+coverage/
+dist/
+lib/
+node_modules/
+public/
+temp/
+typedoc/
+
+# pageobject output
+packages/*/pageobject/**/*.d.ts
+packages/*/pageobject/**/*.js

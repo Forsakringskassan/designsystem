@@ -1,0 +1,23 @@
+$asset-path: "~@fkui/design" !default;
+$asset-path-images: "#{$asset-path}/src/assets/images" !default;
+
+// responsiveness
+$f-grid-base: 16px !default;
+$f-grid-columns: 12 !default;
+$f-gutter-width: 2rem !default;
+$f-container-spacing: 1rem !default;
+$f-container-max-widths: (
+    sm: 95%,
+    md: 90%,
+    lg: 80%,
+    xl: 1280px,
+) !default;
+$f-breakpoint-medium: (40 * $f-grid-base) !default; // 640px
+$f-breakpoint-large: (64 * $f-grid-base) !default; // 1024px
+$f-breakpoint-xlarge: (80 * $f-grid-base) !default; // 1280px
+$f-breakpoints: (
+    sm: 0,
+    md: $f-breakpoint-medium,
+    lg: $f-breakpoint-large,
+    xl: $f-breakpoint-xlarge,
+) !default;

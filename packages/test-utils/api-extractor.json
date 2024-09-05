@@ -1,0 +1,10 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+    "extends": "../../api-extractor.json",
+    "tsdocMetadata": {
+        "tsdocMetadataFilePath": "<projectFolder>/dist/types/tsdoc-metadata.json"
+    },
+    "dtsRollup": {
+        "enabled": false
+    }
+}

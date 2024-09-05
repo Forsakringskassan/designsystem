@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
+<div
+  class="sort-filter-dataset"
+>
+  <div
+    class="iflex iflex--collapse iflex--gap-3x iflex--wrap"
+  >
+    
+    <div
+      class="iflex__item iflex--align-center iflex--shrink"
+    >
+      
+      
+    </div>
+    <div
+      class="iflex__item iflex--align-top iflex--grow"
+    >
+      
+      <div
+        class="iflex iflex--collapse iflex--float-right"
+      >
+        
+        <div
+          class="iflex__item iflex--align-center iflex--shrink"
+        >
+          
+          <div
+            class="sort-filter-dataset__search"
+          >
+            <f-icon-stub
+              class="sort-filter-dataset__search__magnify-icon"
+              library="f"
+              name="search"
+            />
+            <f-text-field-stub
+              id="fkui-vue-element-0001"
+              inline="true"
+              inputwidth="sm-12"
+              labelwidth="sm-12"
+              maxlength="64"
+              modelvalue=""
+              placeholder="Sök"
+              type="text"
+            />
+            <!--v-if-->
+          </div>
+          
+        </div>
+        <div
+          class="iflex__item iflex--align-center iflex--shrink"
+        >
+          
+          <div
+            class="select-field select-field--inline"
+          >
+            <div
+              class=""
+            >
+              <label
+                class="label"
+                for="fkui-vue-element-0002"
+              >
+                
+                
+                Sortera på
+                
+                
+                
+                
+                <!--v-if-->
+              </label>
+            </div>
+            <div
+              class="select-field__icon-wrapper"
+            >
+              <select
+                class="select-field__select sort-filter-dataset__sort"
+                id="fkui-vue-element-0002"
+              >
+                
+                <option
+                  value="[object Object]"
+                >
+                  Välj
+                </option>
+                
+                <option
+                  value="[object Object]"
+                >
+                  Column A (stigande) 
+                </option>
+                <option
+                  value="[object Object]"
+                >
+                  Column A (fallande) 
+                </option>
+                <option
+                  value="[object Object]"
+                >
+                  Column B (stigande) 
+                </option>
+                <option
+                  value="[object Object]"
+                >
+                  Column B (fallande) 
+                </option>
+                
+                
+              </select>
+              <!--v-if-->
+              <f-icon-stub
+                class="select-field__icon"
+                library="f"
+                name="arrow-down"
+              />
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
+</div>
+`;

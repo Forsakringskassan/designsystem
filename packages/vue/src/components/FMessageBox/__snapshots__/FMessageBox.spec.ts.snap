@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FMessageBox should match snapshot with content 1`] = `
+<div
+  class="message-box message-box--success"
+>
+  <span
+    class="sr-only"
+  >
+    Meddelande
+  </span>
+  <div
+    class="iflex iflex--gap-2x"
+  >
+    
+    <!--v-if-->
+    <div
+      class="iflex__item iflex--align-center iflex--grow message-box__content"
+    >
+      
+      
+      <p>
+        content
+      </p>
+      
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`FMessageBox should match snapshot with correct type 1`] = `
+<div
+  class="message-box message-box--info"
+>
+  <span
+    class="sr-only"
+  >
+    Informationsmeddelande
+  </span>
+  <div
+    class="iflex iflex--gap-2x"
+  >
+    
+    <!--v-if-->
+    <div
+      class="iflex__item iflex--align-center iflex--grow message-box__content"
+    >
+      
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`FMessageBox should match snapshot with correct type 2`] = `
+<div
+  class="message-box message-box--error"
+>
+  <span
+    class="sr-only"
+  >
+    Felmeddelande
+  </span>
+  <div
+    class="iflex iflex--gap-2x"
+  >
+    
+    <!--v-if-->
+    <div
+      class="iflex__item iflex--align-center iflex--grow message-box__content"
+    >
+      
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`FMessageBox should match snapshot with correct type 3`] = `
+<div
+  class="message-box message-box--warning"
+>
+  <span
+    class="sr-only"
+  >
+    Varningsmeddelande
+  </span>
+  <div
+    class="iflex iflex--gap-2x"
+  >
+    
+    <!--v-if-->
+    <div
+      class="iflex__item iflex--align-center iflex--grow message-box__content"
+    >
+      
+      
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`FMessageBox should match snapshot with correct type 4`] = `
+<div
+  class="message-box message-box--success"
+>
+  <span
+    class="sr-only"
+  >
+    Meddelande
+  </span>
+  <div
+    class="iflex iflex--gap-2x"
+  >
+    
+    <!--v-if-->
+    <div
+      class="iflex__item iflex--align-center iflex--grow message-box__content"
+    >
+      
+      
+    </div>
+    
+  </div>
+</div>
+`;

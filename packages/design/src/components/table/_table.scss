@@ -1,0 +1,415 @@
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+
+$TABLE_SELECTOR: ".table" !default;
+
+// General variables
+$table-font-size: var(--f-font-size-standard) !default;
+$table-focus-size: 2px !default;
+$table-margin: 0 0 densify(var(--f-margin-component-bottom)) !default;
+
+// Caption
+$table-caption-background: transparent !default;
+$table-caption-foreground: var(--f-text-color-default) !default;
+
+// Header
+$table-header-background: var(--f-background-grid-header) !default;
+$table-header-foreground: var(--f-text-color-default) !default;
+$table-header-separator: 1px solid var(--f-border-color-grid) !default;
+$table-header-padding: densify(size.$padding-025) size.$padding-050 !default;
+$table-header-border: 2px solid var(--f-border-color-grid-header) !default;
+$table-header-font-weight: var(--f-font-weight-medium) !default;
+
+// Column description
+$table-description-foreground: var(--f-text-color-discrete) !default;
+$table-description-background: transparent !default;
+$table-description-font-weight: var(--f-font-weight-normal) !default;
+
+// Rows
+$table-row-background: var(--f-background-grid-default) !default;
+$table-row-background-alt: var(--f-background-grid-striped) !default;
+$table-row-foreground: var(--f-text-color-default) !default;
+$table-row-separator: 1px solid var(--f-border-color-grid) !default;
+$table-row-font-weight: var(--f-font-weight-normal) !default;
+$table-row-line-height: densify(1.5rem) !default;
+
+// Input fields in table cells
+$table-input-margin-top: densify(size.$margin-025);
+$table-input-min-width: size.$padding-175;
+$table-input-height: size.$padding-175;
+$table-input-offset-vertical: densify(0.15rem);
+$table-input-offset-horizontal: 0.25rem;
+
+%table-monospace {
+    // IE11
+    font-feature-settings: tnum 1;
+
+    // others
+    font-variant-numeric: tabular-nums;
+}
+
+%table-row-normal {
+    background: $table-row-background;
+    color: $table-row-foreground;
+}
+
+%table-row-striped {
+    background: $table-row-background-alt;
+    color: $table-row-foreground;
+}
+
+%table-row-hover {
+    background: var(--f-background-grid-hover);
+    color: $table-row-foreground;
+    outline: 1px solid var(--f-border-color-grid-hover);
+}
+
+%table-row-focus-within {
+    background: var(--f-background-grid-focus-inner);
+    color: $table-row-foreground;
+}
+
+%table-row-focus {
+    background: var(--f-background-grid-hover);
+    color: $table-row-foreground;
+    outline: $table-focus-size solid var(--f-color-focus);
+
+    // override shadow set by [tabindex]
+    box-shadow: none;
+}
+
+%table-row-selected {
+    background: var(--f-background-grid-selected);
+    color: $table-row-foreground;
+}
+
+%table-row-active {
+    background: var(--f-background-grid-active);
+    color: $table-row-foreground;
+}
+
+%table-row-expanded-border {
+    border-bottom-color: var(--f-border-color-grid-expanded);
+}
+
+%table-row-expandable {
+    cursor: pointer;
+}
+
+%table-row-collapsed {
+    visibility: collapse;
+}
+
+#{$TABLE_SELECTOR} {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: $table-font-size;
+    margin: $table-margin;
+    width: 100%;
+
+    // preoccupy the space needed for focus border so the size is not affected
+    // while focus is active
+    border: $table-focus-size solid transparent;
+
+    &:focus {
+        // border color is used instead of dual-color shadow because when
+        // combined with scroll the edges are cut by overflow of the container
+        // element, especially on the right side.
+        border-color: var(--f-color-focus);
+
+        // override shadow set by [tabindex]
+        box-shadow: none;
+    }
+
+    caption {
+        background: $table-caption-background;
+        color: $table-caption-foreground;
+        font-size: var(--f-font-size-standard);
+        font-weight: var(--f-font-weight-medium);
+        line-height: var(--f-line-height-large);
+        margin-bottom: densify(size.$margin-025);
+        width: var(--f-width-full);
+        text-align: left;
+    }
+
+    thead {
+        th {
+            background: $table-header-background;
+            border-bottom: $table-header-border;
+            border-right: $table-header-separator;
+            color: $table-header-foreground;
+            font-weight: $table-header-font-weight;
+            line-height: var(--f-line-height-large);
+            padding: $table-header-padding;
+            vertical-align: top;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            #{$TABLE_SELECTOR}__column__header__icon {
+                color: var(--f-icon-color-table-header);
+                height: var(--f-icon-size-x-small);
+                width: var(--f-icon-size-x-small);
+                min-width: var(--f-icon-size-x-small);
+
+                &--discrete {
+                    color: var(--f-icon-color-table-header-discrete);
+                }
+            }
+        }
+    }
+
+    tbody {
+        #{$TABLE_SELECTOR}__row {
+            @extend %table-row-normal;
+
+            &--normal {
+                @extend %table-row-normal;
+            }
+
+            &--striped {
+                @extend %table-row-striped;
+            }
+
+            &--hover {
+                @extend %table-row-hover;
+            }
+
+            &--expandable {
+                @extend %table-row-expandable;
+            }
+
+            &--expanded-border {
+                td,
+                th {
+                    @extend %table-row-expanded-border;
+                }
+            }
+
+            &:focus-within,
+            &--focus-within {
+                @extend %table-row-focus-within;
+
+                // these have higher priority
+                &#{$TABLE_SELECTOR}__row {
+                    &--selected {
+                        @extend %table-row-selected;
+                    }
+
+                    &--active {
+                        @extend %table-row-active;
+                    }
+                }
+            }
+
+            &:focus,
+            &--focus {
+                @extend %table-row-focus;
+
+                // these have higher priority
+                &#{$TABLE_SELECTOR}__row {
+                    &--selected {
+                        @extend %table-row-selected;
+                    }
+
+                    &--active {
+                        @extend %table-row-active;
+                    }
+                }
+            }
+
+            &--selected {
+                @extend %table-row-selected;
+            }
+
+            &--active {
+                @extend %table-row-active;
+            }
+        }
+
+        #{$TABLE_SELECTOR}__expandable-row {
+            @extend %table-row-normal;
+
+            &--collapsed {
+                visibility: collapse;
+            }
+        }
+
+        td,
+        th {
+            padding: densify(var(--f-table-body-row-padding)) var(--f-table-body-row-padding);
+            border-bottom: $table-row-separator;
+            white-space: nowrap;
+        }
+
+        td {
+            line-height: $table-row-line-height;
+            font-weight: $table-row-font-weight;
+        }
+
+        th {
+            border-right: $table-header-separator;
+            font-weight: $table-header-font-weight;
+            line-height: $table-row-line-height;
+        }
+
+        #{$TABLE_SELECTOR}__column {
+            // apply monospace font only on tbody rows, not thead
+            &--numeric,
+            &--date {
+                @extend %table-monospace;
+            }
+
+            &--selectable {
+                padding: densify(0.2rem) 0.2rem;
+            }
+
+            &--indented {
+                padding-left: size.$padding-150;
+            }
+
+            // remove margin and reduce padding on buttons
+            &--action .button--discrete {
+                border-radius: var(--f-button-discrete-table-column-action-border-radius);
+                margin: var(--f-button-discrete-table-column-action-margin);
+                /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+                padding-top: densify(var(--f-button-discrete-table-column-action-padding-top));
+                padding-right: var(--f-button-discrete-table-column-action-padding-right);
+                padding-bottom: densify(var(--f-button-discrete-table-column-action-padding-bottom));
+                padding-left: var(--f-button-discrete-table-column-action-padding-left);
+                /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+                min-width: 24px;
+            }
+
+            &--action .button__icon {
+                margin: var(--f-button-discrete-table-column-action-icon-margin);
+            }
+        }
+    }
+
+    &__column {
+        &--text {
+            text-align: left;
+        }
+
+        &--numeric {
+            text-align: right;
+        }
+
+        &--date {
+            text-align: left;
+        }
+
+        &--action {
+            text-align: center;
+        }
+
+        &--shrink {
+            width: 1px;
+            white-space: nowrap;
+        }
+
+        &--sortable {
+            cursor: pointer;
+        }
+
+        &__description {
+            display: block;
+            background: $table-description-background;
+            color: $table-description-foreground;
+            font-weight: $table-description-font-weight;
+        }
+    }
+
+    &--striped tbody {
+        #{$TABLE_SELECTOR}__row:nth-child(even) {
+            @extend %table-row-striped;
+
+            // these have higher priority
+            &#{$TABLE_SELECTOR}__row {
+                &--selected {
+                    @extend %table-row-selected;
+                }
+
+                &--active {
+                    @extend %table-row-active;
+                }
+            }
+        }
+    }
+
+    &--hover tbody {
+        #{$TABLE_SELECTOR}__row:hover {
+            @extend %table-row-hover;
+
+            // these have higher priority
+            &#{$TABLE_SELECTOR}__row {
+                &--selected {
+                    @extend %table-row-selected;
+                }
+
+                &--active {
+                    @extend %table-row-active;
+                }
+            }
+        }
+    }
+
+    &--selectable #{$TABLE_SELECTOR}__row {
+        td:hover,
+        th:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__scroll {
+        // move margin from <table> to the wrapper div
+        margin: $table-margin;
+
+        #{$TABLE_SELECTOR} {
+            margin: 0;
+        }
+
+        &--horizontal {
+            overflow-x: auto;
+        }
+
+        &--vertical {
+            overflow-y: auto;
+        }
+    }
+
+    &__input {
+        margin-top: $table-input-margin-top;
+
+        .checkbox__label,
+        .radio-button__label {
+            min-width: $table-input-min-width;
+            min-height: $table-input-height;
+            padding: 0;
+        }
+
+        .checkbox__label::after,
+        .checkbox__label::before,
+        .radio-button__label::after,
+        .radio-button__label::before {
+            top: $table-input-offset-vertical;
+            left: $table-input-offset-horizontal;
+        }
+    }
+
+    &__expand-icon {
+        color: var(--f-icon-color-primary);
+        background: transparent;
+        border: 0;
+        flex: 0 0 auto;
+        padding: 0;
+        pointer-events: none;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

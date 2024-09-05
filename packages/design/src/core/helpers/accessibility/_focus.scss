@@ -1,0 +1,24 @@
+@use "../../mixins/focus";
+
+button:focus,
+a:focus,
+a.button:focus,
+img:focus,
+select:focus,
+textarea:focus,
+input[type="submit"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="image"]:focus,
+input[type="search"]:focus,
+[tabindex]:focus {
+    @include focus.focus-indicator;
+
+    outline: none;
+}
+
+[tabindex="-1"]:focus {
+    box-shadow: none;
+    outline: none;
+}

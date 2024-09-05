@@ -1,0 +1,100 @@
+@use "~@fkui/css-variables/dist/fkui-exp-css-variables";
+@use "~@fkui/css-variables/src/palette-variables" as palette;
+@use "~@fkui/design/src/core/config-variables" with (
+    $asset-path: ".",
+    $asset-path-images: "./images"
+);
+@use "~@fkui/design/src/core/mixins/breakpoints";
+@use "~highlight.js/styles/default";
+@use "~@fkui/design/src/fkui-exp";
+@use "~@forsakringskassan/docs-generator/style";
+@use "~@forsakringskassan/docs-live-example/dist/main";
+
+@font-face {
+    font-family: "NeueHaas";
+    src: url("./fonts/NHaasGroteskTXPro-55Rg.woff") format("woff");
+}
+
+@font-face {
+    font-family: "NeueHaas";
+    src: url("./fonts/NHaasGroteskTXPro-65Md.woff") format("woff");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "NeueHaas";
+    src: url("./fonts/NHaasGroteskTXPro-75Bd.woff") format("woff");
+    font-weight: 900;
+}
+
+:root {
+    --docs-font-family: "NeueHaas", arial, "Helvetica Neue", sans-serif;
+    --docs-heading-family: "NeueHaas", arial, "Helvetica Neue", sans-serif;
+    --docs-heading-font-weight: 700;
+}
+
+.mermaid p {
+    margin-bottom: 0;
+}
+
+.color-table__color {
+    display: inline-block;
+    width: 3rem;
+    height: 2rem;
+    border-radius: 0.25rem;
+    border: 1px solid #000;
+}
+
+footer {
+    background: palette.$palette-color-green-a-85;
+    color: var(--f-color-white);
+    padding: 3rem;
+
+    @include breakpoints.breakpoint-up(lg) {
+        display: flex;
+        gap: 5rem;
+    }
+
+    h1,
+    .heading--h1 {
+        font-size: 1.5rem;
+        font-weight: var(--f-font-weight-medium);
+    }
+
+    ul {
+        list-style: none;
+        margin: 0 0 1rem;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    .anchor {
+        color: var(--f-color-white);
+        font-weight: var(--f-font-weight-normal);
+        text-decoration-color: var(--f-color-white);
+    }
+
+    .footer__left {
+        flex: 0 0 auto;
+    }
+
+    .footer__center {
+        flex: 1 1 auto;
+    }
+
+    .footer__right {
+        flex: 0 0 auto;
+    }
+
+    .version {
+        color: var(--f-color-white);
+        margin-left: 0;
+    }
+
+    #version-dialog .list__item {
+        margin: 0;
+    }
+}

@@ -1,0 +1,7 @@
+$CALENDAR_SELECTOR: ".calendar" !default;
+
+#{$CALENDAR_SELECTOR} {
+    &__wrapper {
+        width: 100%;
+    }
+}

@@ -1,0 +1,97 @@
+@use "../../core/config-variables";
+@use "../../core/size";
+@use "../../core/mixins/circle" as *;
+@use "../../core/utils/functions" as *;
+
+$EXPANDABLE_PARAGRAPH_SELECTOR: ".expandable-paragraph" !default;
+$ICON_WIDTH: var(--f-icon-size-small);
+$ICON_MARGIN: 0.5rem;
+$CONTENT_MARGIN: calc(#{$ICON_WIDTH} + #{$ICON_MARGIN});
+$EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
+
+#{$EXPANDABLE_PARAGRAPH_SELECTOR} {
+    margin: 0 0 densify(var(--f-margin-component-bottom));
+    &__heading {
+        line-height: $EXPANDABLE_PARAGRAPH_LINE_HEIGHT;
+        margin: 0;
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            margin: 0;
+            display: flex;
+            text-align: left;
+            padding: 0;
+            flex-shrink: 0;
+        }
+    }
+
+    &__icon {
+        @include circle($background: var(--f-icon-color-expandable-paragraph), $size: $ICON_WIDTH);
+
+        margin-top: calc((#{$EXPANDABLE_PARAGRAPH_LINE_HEIGHT} * 1em - #{$ICON_WIDTH}) / 2); // Unit "em" intended here, align icon to header
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        display: flex;
+        color: var(--f-icon-color-white);
+        padding: 3px; // cross icon size
+        flex-shrink: 0; // needed for IE11
+        margin-right: $ICON_MARGIN;
+
+        .icon {
+            transition: transform var(--f-animation-duration-long) ease;
+        }
+    }
+
+    &#{$EXPANDABLE_PARAGRAPH_SELECTOR}--open {
+        #{$EXPANDABLE_PARAGRAPH_SELECTOR}__icon {
+            svg:nth-child(2) {
+                transform: rotate(0);
+            }
+        }
+
+        #{$EXPANDABLE_PARAGRAPH_SELECTOR}__container {
+            height: auto;
+        }
+    }
+
+    &#{$EXPANDABLE_PARAGRAPH_SELECTOR}--closed {
+        #{$EXPANDABLE_PARAGRAPH_SELECTOR}__icon {
+            svg:nth-child(2) {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+    &__container {
+        height: 0;
+        overflow: hidden;
+        transition: height var(--f-animation-duration-medium) cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    }
+
+    &__content,
+    &__related-information {
+        margin-left: $CONTENT_MARGIN;
+    }
+
+    &__related-information {
+        color: var(--f-text-color-discrete);
+        font-size: 0.875rem;
+    }
+
+    &__content {
+        margin-top: densify(size.$margin-075);
+        margin-bottom: densify(size.$margin-100);
+    }
+
+    &__separator {
+        border-bottom: var(--f-border-width-medium) solid var(--f-border-color-separator);
+        margin: 0 $ICON_MARGIN densify(size.$margin-050) $ICON_MARGIN;
+    }
+
+    &--list {
+        margin-bottom: densify(size.$margin-050);
+        padding-bottom: densify(size.$padding-050);
+        border-bottom: var(--f-border-width-small) solid var(--f-border-color-separator);
+    }
+}

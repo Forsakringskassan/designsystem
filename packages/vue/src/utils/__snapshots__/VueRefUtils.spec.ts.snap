@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`findElementFromVueRef should match snapshot if ref does not exist 1`] = `undefined`;
+
+exports[`findElementFromVueRef should match snapshot if ref is a Vue component 1`] = `
+<span>
+  Find me!
+</span>
+`;
+
+exports[`findElementFromVueRef should match snapshot if ref is an Element 1`] = `
+<svg>
+  Find me!
+</svg>
+`;
+
+exports[`findElementFromVueRef should match snapshot if ref is an Element array 1`] = `undefined`;
+
+exports[`findElementFromVueRef should match snapshot if ref is an array of Vue components 1`] = `undefined`;
+
+exports[`getElementFromVueRef should match snapshot if ref is a Vue component 1`] = `
+<span>
+  Find me!
+</span>
+`;
+
+exports[`getElementFromVueRef should match snapshot if ref is an Element 1`] = `
+<svg>
+  Find me!
+</svg>
+`;
+
+exports[`getElementsFromVueRef should match snapshot if ref does not exist 1`] = `[]`;
+
+exports[`getElementsFromVueRef should match snapshot if ref is a Vue component 1`] = `
+[
+  <span>
+    Find me!
+  </span>,
+]
+`;
+
+exports[`getElementsFromVueRef should match snapshot if ref is an Element 1`] = `
+[
+  <svg>
+    Find me!
+  </svg>,
+]
+`;
+
+exports[`getElementsFromVueRef should match snapshot if ref is an Element array 1`] = `
+[
+  <li>
+    1
+  </li>,
+  <li>
+    2
+  </li>,
+  <li>
+    3
+  </li>,
+  <li>
+    4
+  </li>,
+]
+`;
+
+exports[`getElementsFromVueRef should match snapshot if ref is an array of Vue components 1`] = `
+[
+  <span>
+    1
+  </span>,
+  <span>
+    2
+  </span>,
+  <span>
+    3
+  </span>,
+  <span>
+    4
+  </span>,
+]
+`;
+
+exports[`getHTMLElementFromVueRef should match snapshot if ref is a Vue component 1`] = `
+<span>
+  Find me!
+</span>
+`;
+
+exports[`getHTMLElementFromVueRef should match snapshot if ref is an Element 1`] = `
+<p>
+  Find me!
+</p>
+`;
+
+exports[`getHTMLElementsFromVueRef should match snapshot if ref does not exist 1`] = `[]`;
+
+exports[`getHTMLElementsFromVueRef should match snapshot if ref is a Vue component 1`] = `
+[
+  <span>
+    Find me!
+  </span>,
+]
+`;
+
+exports[`getHTMLElementsFromVueRef should match snapshot if ref is an HTMLElement array 1`] = `
+[
+  <li>
+    1
+  </li>,
+  <li>
+    2
+  </li>,
+  <li>
+    3
+  </li>,
+  <li>
+    4
+  </li>,
+]
+`;
+
+exports[`getHTMLElementsFromVueRef should match snapshot if ref is an array of Vue components 1`] = `
+[
+  <span>
+    1
+  </span>,
+  <span>
+    2
+  </span>,
+  <span>
+    3
+  </span>,
+  <span>
+    4
+  </span>,
+]
+`;

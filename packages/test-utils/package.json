@@ -1,0 +1,76 @@
+{
+  "name": "@fkui/test-utils",
+  "version": "5.35.0",
+  "description": "FKUI test utils for Jest",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "packages/test-utils"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "./dist/cjs/jest.js",
+    "./dist/esm/jest.js",
+    "./src/matchers/index.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/lib.d.ts",
+      "import": "./dist/esm/lib.js",
+      "require": "./dist/cjs/lib.js"
+    },
+    "./jest": {
+      "types": "./dist/types/jest.d.ts",
+      "import": "./dist/esm/jest.js",
+      "require": "./dist/cjs/jest.js"
+    },
+    "./vue": {
+      "types": "./dist/types/vue.d.ts",
+      "import": "./dist/esm/vue.js",
+      "require": "./dist/cjs/vue.js"
+    }
+  },
+  "main": "dist/cjs/lib.js",
+  "types": "dist/types/lib.d.ts",
+  "files": [
+    "dist",
+    "jest.d.ts",
+    "vue.d.ts"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist temp && tsc",
+    "build": "node build.js",
+    "postbuild": "fk-api-extractor api-extractor.json api-extractor-*.json",
+    "clean": "rimraf .jest-cache dist temp test-results",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config-vue"
+  },
+  "devDependencies": {
+    "@vue/server-renderer": "3.4.38",
+    "@vue/test-utils": "2.4.6",
+    "esbuild": "0.23.1",
+    "jest-environment-jsdom": "29.7.0",
+    "strip-ansi": "6.0.1",
+    "vue": "3.4.38"
+  },
+  "peerDependencies": {
+    "jest": "^26 || ^27 || ^28 || ^29",
+    "vue": "^3"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

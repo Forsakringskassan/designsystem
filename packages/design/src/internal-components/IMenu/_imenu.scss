@@ -1,0 +1,106 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints";
+@import "../../core/config-variables";
+
+$IMENU_SELECTOR: ".imenu" !default;
+
+#{$IMENU_SELECTOR} {
+    background-color: var(--f-background-menu);
+
+    &__list {
+        margin: 0;
+        padding: 0;
+
+        &__item {
+            cursor: pointer;
+            list-style-type: none;
+            white-space: nowrap;
+
+            a,
+            a:visited,
+            a:active {
+                color: var(--f-text-color-menu);
+            }
+
+            a:hover {
+                color: var(--f-text-color-menu-hover);
+            }
+        }
+    }
+}
+
+#{$IMENU_SELECTOR}--vertical {
+    .imenu__list {
+        display: block;
+
+        &__item {
+            padding: size.$padding-075;
+            display: block;
+
+            &:hover {
+                font-weight: var(--f-font-weight-normal);
+                background-color: var(--f-background-menu-vertical-hover);
+            }
+
+            &--highlight {
+                background-color: var(--f-background-menu-vertical-highlight);
+                font-weight: var(--f-font-weight-medium);
+            }
+
+            &--highlight:hover {
+                font-weight: var(--f-font-weight-medium);
+            }
+        }
+    }
+}
+
+#{$IMENU_SELECTOR}--horizontal {
+    overflow: hidden;
+
+    .imenu__list {
+        display: flex;
+
+        &__item {
+            display: inline-flex;
+            padding-top: size.$padding-100;
+            padding-left: size.$padding-075;
+            padding-right: size.$padding-075;
+
+            &--highlight {
+                color: var(--f-text-color-menu-horizontal-highlight);
+                font-weight: var(--f-font-weight-medium);
+            }
+        }
+
+        &__anchor-container {
+            padding-bottom: size.$padding-050;
+            border-bottom: 5px solid transparent;
+
+            &--highlight {
+                border-bottom: 5px solid var(--f-border-color-menu-horizontal-highlight);
+            }
+
+            &:hover {
+                border-bottom: 5px solid var(--f-border-color-menu-horizontal-hover);
+            }
+        }
+
+        &__anchor {
+            display: inline-flex;
+
+            &--highlight:hover {
+                font-weight: var(--f-font-weight-medium);
+            }
+
+            &-icon-right {
+                flex: 1 0 auto;
+                padding-top: size.$padding-025;
+                color: var(--f-border-color-menu-horizontal-highlight);
+            }
+
+            &-span {
+                padding-right: size.$padding-075;
+            }
+        }
+    }
+}

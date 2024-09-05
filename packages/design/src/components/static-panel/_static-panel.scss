@@ -1,0 +1,31 @@
+@use "../../core/size";
+
+$STATIC_PANEL_SELECTOR: ".static-panel" !default;
+
+#{$STATIC_PANEL_SELECTOR} {
+    margin-bottom: 2.5rem;
+
+    &__heading {
+        background: var(--f-background-heading-static-panel);
+        border: var(--f-static-panel-heading-border);
+        border-bottom: 0;
+        font-size: var(--f-font-size-h3);
+        line-height: 2rem;
+        margin-bottom: 0;
+        padding: size.$padding-025 size.$padding-100;
+    }
+
+    &__content {
+        border-top: 0;
+        border: var(--f-border-width-medium) solid var(--f-border-color-panel);
+        padding: size.$padding-175 size.$padding-150;
+    }
+
+    &__icon {
+        height: var(--f-icon-size-x-large);
+        margin-right: size.$margin-025;
+        position: relative;
+        top: size.$margin-050;
+        width: var(--f-icon-size-x-large);
+    }
+}

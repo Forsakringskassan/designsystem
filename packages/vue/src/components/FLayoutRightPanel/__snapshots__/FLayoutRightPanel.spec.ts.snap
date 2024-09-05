@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should match snapshot 1`] = `
+<div class="layout-secondary">
+  <div id="layout-secondary__primary" class="layout-secondary__primary">DEFAULT</div>
+  <aside style="width: 320px; top: 0px;" class="layout-secondary__secondary">
+    <div class="layout-secondary__secondary__border">
+      <div class="layout-secondary__secondary__border__dot"></div>
+      <div class="layout-secondary__secondary__border__dot"></div>
+      <div class="layout-secondary__secondary__border__dot"></div>
+    </div>
+    <div class="layout-secondary__secondary__inner">
+      <div class="layout-secondary__secondary__inner__title" style="max-width: 285px;">
+        <h3 tabindex="-1">TITEL</h3>
+      </div>
+      <div>
+        <hr aria-hidden="true">
+      </div>
+      <div class="layout-secondary__secondary__inner__content scroll-target" style="max-width: 285px;">TOPNAVIGATION<button class="button button--tertiary button--small button--tertiary--black layout-secondary__secondary__inner__close" type="button"><span class="sr-only">Stäng sekundärpanelen</span>
+          <f-icon-stub name="close" library="f" class="button__icon"></f-icon-stub>
+        </button></div>
+    </div>
+  </aside>
+</div>
+`;

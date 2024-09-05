@@ -1,0 +1,16 @@
+.sticky {
+    /* Double position is specified due to E11-compability.
+    `fixed` is used by IE11.
+    `sticky` is used by other web browsers. */
+
+    // sass-lint:disable-block no-duplicate-properties
+    position: fixed;
+    position: sticky;
+    z-index: 9999;
+
+    &--top {
+        right: 0;
+        top: 0;
+        left: 0;
+    }
+}

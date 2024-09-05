@@ -1,0 +1,11 @@
+@use "../../core/size";
+
+$radio_button_label_offset: 0.1rem;
+$INDENT_SELECTOR: ".indent" !default;
+
+#{$INDENT_SELECTOR} {
+    border-left: var(--f-border-width-medium) solid var(--f-border-color-separator);
+    margin-bottom: size.$margin-100;
+    margin-left: size.$margin-050;
+    padding-left: size.$padding-150;
+}

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FLoader should have text by default 1`] = `
+<teleport-stub to="[object HTMLBodyElement]" disabled="false">
+  <div class="loader loader--overlay" style="display: none;">
+    <div class="loader__backdrop">
+      <div class="loader__wrapper">
+        <div class="loader__spinner-1 loader__spinner">
+          <div class="loader__spinner-1-circle1 loader__circle loader__circle--1"></div>
+          <div class="loader__spinner-1-circle2 loader__circle loader__circle--2"></div>
+          <div class="loader__spinner-1-circle3 loader__circle loader__circle--3"></div>
+          <div class="loader__spinner-1-circle4 loader__circle loader__circle--4"></div>
+        </div>
+        <div class="loader__spinner-2 loader__spinner">
+          <div class="loader__spinner-2-circle1 loader__circle loader__circle--1"></div>
+          <div class="loader__spinner-2-circle2 loader__circle loader__circle--2"></div>
+          <div class="loader__spinner-2-circle3 loader__circle loader__circle--3"></div>
+          <div class="loader__spinner-2-circle4 loader__circle loader__circle--4"></div>
+        </div>
+        <div class="loader__spinner-3 loader__spinner">
+          <div class="loader__spinner-3-circle1 loader__circle loader__circle--1"></div>
+          <div class="loader__spinner-3-circle2 loader__circle loader__circle--2"></div>
+          <div class="loader__spinner-3-circle3 loader__circle loader__circle--3"></div>
+          <div class="loader__spinner-3-circle4 loader__circle loader__circle--4"></div>
+        </div>
+      </div>
+      <div class="loader__wait-text" tabindex="-1"><span role="alert">Vänligen vänta</span></div>
+    </div>
+  </div>
+</teleport-stub>
+`;
+
+exports[`html-validate <f-loader><button></button></f-loader> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <button> is missing recommended "type" attribute [no-implicit-button-type]
+  <button> must have accessible text [text-content]]
+`;
+
+exports[`html-validate <f-loader><div></div></f-loader> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <div> element is not permitted as content under <f-loader> [element-permitted-content]]
+`;
+
+exports[`html-validate <f-loader><p></p></f-loader> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <p> element is not permitted as content under <f-loader> [element-permitted-content]]
+`;

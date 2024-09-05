@@ -1,0 +1,95 @@
+{
+    "folders": [
+        {
+            "name": "FKUI",
+            "path": ".",
+        },
+        {
+            "name": "@fkui/css-variables",
+            "path": "packages\\css-variables",
+        },
+        {
+            "name": "@fkui/design",
+            "path": "packages\\design",
+        },
+        {
+            "name": "@fkui/date",
+            "path": "packages\\date",
+        },
+        {
+            "name": "@fkui/logic",
+            "path": "packages\\logic",
+        },
+        {
+            "name": "@fkui/vue",
+            "path": "packages\\vue",
+        },
+        {
+            "name": "@fkui/vue-labs",
+            "path": "packages\\vue-labs",
+        },
+        {
+            "path": "docs",
+        },
+    ],
+    "settings": {
+        "css.validate": false,
+        "less.validate": false,
+        "scss.validate": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "eslint.autoFixOnSave": true,
+        "eslint.enable": true,
+        "prettier.requireConfig": true,
+        "editor.renderWhitespace": "boundary",
+        "eslint.alwaysShowStatus": true,
+        "prettier.disableLanguages": [],
+        "eslint.validate": [
+            {
+                "language": "javascript",
+                "autoFix": true,
+            },
+            {
+                "language": "javascriptreact",
+                "autoFix": true,
+            },
+            {
+                "language": "typescript",
+                "autoFix": true,
+            },
+            {
+                "language": "typescriptreact",
+                "autoFix": true,
+            },
+            {
+                "language": "vue",
+                "autoFix": true,
+            },
+            {
+                "language": "html",
+                "autoFix": true,
+            },
+        ],
+        "[vue]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+        },
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+        },
+        "jest.jestCommandLine": "npm exec jest --",
+        "jest.runMode": "on-demand",
+    },
+    "extensions": {
+        "recommendations": [
+            "christian-kohler.npm-intellisense",
+            "davidanson.vscode-markdownlint",
+            "dbaeumer.vscode-eslint",
+            "ecmel.vscode-html-css",
+            "editorconfig.editorconfig",
+            "esbenp.prettier-vscode",
+            "html-validate.vscode-html-validate",
+            "orta.vscode-jest",
+            "vue.volar",
+        ],
+    },
+}

@@ -1,0 +1,51 @@
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+
+$CARD_SELECTOR: ".card" !default;
+
+#{$CARD_SELECTOR} {
+    padding: densify(size.$padding-100) size.$padding-100;
+    margin: densify(size.$margin-100) 0;
+
+    &--default {
+        border-radius: var(--f-border-radius-medium);
+        border: var(--f-border-width-medium) solid var(--f-border-color-card);
+    }
+
+    &__content {
+        > p,
+        > div {
+            &:last-child {
+                margin-bottom: 0;
+
+                > *:last-child {
+                    // Disable eventually margin from vue-components (wraps all components in an extra div)
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &__header {
+        &-label {
+            color: var(--f-text-color-default);
+            font-size: var(--f-font-size-large);
+            font-weight: var(--f-font-weight-bold);
+            line-height: var(--f-line-height-large);
+            margin-bottom: densify(size.$margin-025);
+            display: block;
+        }
+    }
+
+    &__footer {
+        padding-top: densify(size.$padding-125);
+
+        > .button-group {
+            margin-bottom: 0;
+
+            .button-group__item {
+                margin-bottom: 0 !important;
+            }
+        }
+    }
+}

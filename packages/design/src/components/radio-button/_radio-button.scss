@@ -1,0 +1,106 @@
+@use "../../core/size";
+@use "../../core/mixins/focus" as *;
+@use "../../core/mixins/sr-only" as *;
+@use "../../core/utils/functions" as *;
+
+$radio_button_label_offset: 0.1rem;
+$RADIO_BUTTON_SELECTOR: ".radio-button" !default;
+
+#{$RADIO_BUTTON_SELECTOR} {
+    min-height: var(--f-height-medium);
+    margin-bottom: densify(size.$margin-100);
+    margin-right: size.$margin-150;
+
+    &:last-child {
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    &__input {
+        @include sr-only;
+
+        // Set height so that IE11 will scroll element into view when navigating (tab, arrow).
+        // Use 4 times the height of radio-button to ensure it is inside the view.
+        // This height will not be visible.
+        min-height: calc(4 * var(--f-height-medium));
+    }
+
+    &__label {
+        min-width: 4.5rem; // set to avoid being too small when limited or no text is used
+        cursor: pointer;
+        display: inline-block;
+        font-size: var(--f-font-size-standard);
+        line-height: var(--f-line-height-small);
+        padding-left: size.$padding-175;
+        padding-top: $radio_button_label_offset;
+        padding-bottom: $radio_button_label_offset;
+        position: relative;
+
+        // Safari: required to make label clickable
+        * {
+            pointer-events: none;
+        }
+
+        &::before,
+        &::after {
+            border-radius: 50%;
+            content: "";
+            height: var(--f-icon-size-medium);
+            left: 0;
+            margin: $radio_button_label_offset 0;
+            position: absolute;
+            top: 0;
+            cursor: pointer;
+            width: var(--f-icon-size-medium);
+            border: var(--f-border-width-medium) solid var(--f-border-color-input);
+            display: block;
+            transition:
+                background-color ease var(--f-animation-duration-medium),
+                border-color ease var(--f-animation-duration-medium),
+                opacity ease var(--f-animation-duration-medium);
+        }
+
+        // Outer ring of the custom radio input
+        &::before {
+            background: var(--f-background-input);
+            box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner);
+        }
+
+        // Inner ring of the custom radio input
+        &::after {
+            background: var(--f-background-input-selected);
+            box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner-selected);
+            opacity: 0;
+        }
+    }
+
+    &.disabled {
+        color: var(--f-text-color-input-disabled);
+
+        #{$RADIO_BUTTON_SELECTOR}__label {
+            &::before,
+            &::after {
+                border: var(--f-border-width-medium) solid var(--f-text-color-input-disabled);
+                box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner-disabled);
+            }
+
+            &::after {
+                background: var(--f-background-input-selected-disabled);
+            }
+        }
+    }
+
+    // Hide inner ring by default
+    input[type="radio"] + label::after {
+        opacity: 0;
+    }
+
+    // Show inner ring when checked
+    input[type="radio"]:checked + label::after {
+        opacity: 1;
+    }
+
+    input[type="radio"]:focus + label {
+        @include focus-indicator;
+    }
+}

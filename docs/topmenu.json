@@ -1,0 +1,22 @@
+[
+    {
+        "path": "./components/",
+        "title": "Komponenter"
+    },
+    {
+        "path": "./patterns/",
+        "title": "Mönster"
+    },
+    {
+        "path": "./develop/",
+        "title": "Utveckla"
+    },
+    {
+        "path": "./styles/",
+        "title": "Visuellt"
+    },
+    {
+        "path": "./guide/",
+        "title": "Om designsystemet"
+    }
+]

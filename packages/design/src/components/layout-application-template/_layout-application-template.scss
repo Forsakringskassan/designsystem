@@ -1,0 +1,75 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../core/config-variables" as vars;
+@use "../z-index";
+
+$LAYOUT_APPLICATION_SELECTOR: ".layout-application-template" !default;
+$ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
+
+#{$LAYOUT_APPLICATION_SELECTOR} {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &__header {
+        z-index: $ZINDEX;
+        position: sticky;
+        align-self: flex-start;
+        top: 0;
+        width: 100%;
+    }
+
+    &__footer {
+        flex-shrink: 0;
+    }
+
+    &__main {
+        flex-grow: 1;
+
+        > .container-fluid {
+            margin: 20px;
+            width: initial;
+            max-width: 1440px;
+        }
+    }
+}
+
+#{$LAYOUT_APPLICATION_SELECTOR}__body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+#{$LAYOUT_APPLICATION_SELECTOR}__body > div {
+    height: 100%;
+}
+
+#{$LAYOUT_APPLICATION_SELECTOR}__html {
+    height: 100%;
+}
+
+@each $name in map.keys(vars.$f-breakpoints) {
+    .grid--force {
+        @for $size from 1 through vars.$f-grid-columns {
+            .col.col--#{$name}-#{$size} {
+                width: 100%;
+                max-width: 100%;
+                flex: none;
+            }
+        }
+    }
+
+    .grid--force-#{$name} {
+        @for $size from 1 through vars.$f-grid-columns {
+            .col {
+                &.col--#{$name}-#{$size} {
+                    flex: 0 0 math.percentage(math.div($size, vars.$f-grid-columns));
+                    max-width: math.percentage(math.div($size, vars.$f-grid-columns));
+                }
+                &.col--#{$name}-order-#{$size} {
+                    order: $size;
+                }
+            }
+        }
+    }
+}

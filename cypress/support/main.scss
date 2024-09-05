@@ -1,0 +1,25 @@
+$asset-path: "@fkui/design";
+
+@font-face {
+    font-family: "NeueHaas";
+    src: url("../../docs/src/assets/fonts/NHaasGroteskTXPro-55Rg.woff") format("woff");
+}
+
+@font-face {
+    font-family: "NeueHaas";
+    src: url("../../docs/src/assets/fonts/NHaasGroteskTXPro-65Md.woff") format("woff");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "NeueHaas";
+    src: url("../../docs/src/assets/fonts/NHaasGroteskTXPro-75Bd.woff") format("woff");
+    font-weight: 900;
+}
+
+@import "@fkui/design/src/fonts";
+@import "@fkui/design/src/fkui";
+
+body {
+    font-family: "NeueHaas";
+}

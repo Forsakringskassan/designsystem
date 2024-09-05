@@ -1,0 +1,41 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "../../core/config-variables";
+
+// Expands a shorthand value:
+// 10px -> 10px 10px 10px 10px
+// 10px 20px -> 10px 20px 10px 20px
+// 10px 20px 30px -> 10px 20px 30px 20px
+// 10px 20px 30px 40px -> 10px 20px 30px 40px
+@function fk-expand-shorthand($val) {
+    @if list.length($val) == 1 {
+        @return $val $val $val $val;
+    } @else if list.length($val) == 2 {
+        @return list.nth($val, 1) list.nth($val, 2) list.nth($val, 1) list.nth($val, 2);
+    } @else if list.length($val) == 3 {
+        @return list.nth($val, 1) list.nth($val, 2) list.nth($val, 3) list.nth($val, 2);
+    } @else {
+        @return $val;
+    }
+}
+
+@function strip-unit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
+@function get-min-for($key) {
+    $value: map.get(config-variables.$f-breakpoints, $key);
+    @return if($value != 0, $value, null);
+}
+
+@function get-max-for($key) {
+    $breakpoint-keys: map.keys(config-variables.$f-breakpoints);
+    $index: list.index($breakpoint-keys, $key);
+    $next: if($index < list.length($breakpoint-keys), list.nth($breakpoint-keys, $index + 1), null);
+    @return if($next, get-min-for($next) - 0.02px, null);
+}
+
+@function densify($value) {
+    @return calc($value * var(--f-density-factor));
+}

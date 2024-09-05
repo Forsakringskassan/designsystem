@@ -1,0 +1,129 @@
+@use "../z-index";
+
+$LAYOUT_SECONDARY_SELECTOR: ".layout-secondary" !default;
+$ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
+
+// parameters
+$layout-secondary-scroll-width: 6px !default;
+$layout-secondary-border-width: 5px !default;
+$layout-secondary-inner-margin: 20px !default;
+$layout-secondary-content-padding: 4px !default;
+$layout-secondary-dot-diameter: 4px !default;
+$layout-secondary-dot-spacing: 4px !default;
+
+// Colors
+$palette-color-fk-black-5: #f4f4f4 !default;
+$palette-color-fk-black-50: #8d8e91 !default;
+$palette-color-bluebell-15: #e5e5f5 !default;
+$background-secondary: #{$palette-color-fk-black-5};
+$border-hover-secondary: #{$palette-color-bluebell-15};
+$border-dots-secondary: #{$palette-color-fk-black-50};
+$scrollbar-secondary: #{$palette-color-fk-black-50};
+
+#{$LAYOUT_SECONDARY_SELECTOR} {
+    width: 100%;
+    min-height: 100%;
+
+    &__primary {
+        flex: auto;
+
+        > .container-fluid {
+            width: initial;
+            max-width: 1440px;
+            padding: 1.5rem;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    &__secondary {
+        background-color: #{$background-secondary};
+        position: fixed;
+        display: flex;
+        right: 0;
+        bottom: 0;
+        z-index: $ZINDEX;
+
+        .button.button--tertiary:hover {
+            background-color: var(--f-background-sidepanel-button-tertiary-hover);
+        }
+
+        &__border {
+            width: #{$layout-secondary-border-width};
+            background-color: #{$background-secondary};
+            cursor: w-resize;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            &__dot {
+                background-color: #{$border-dots-secondary};
+                width: #{$layout-secondary-dot-diameter};
+                height: #{$layout-secondary-dot-diameter};
+                border-radius: 2px;
+                margin-top: #{$layout-secondary-dot-spacing};
+            }
+        }
+
+        &__border:hover {
+            background-color: #{$border-hover-secondary};
+        }
+
+        &__inner {
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            word-wrap: break-word;
+            margin: #{$layout-secondary-inner-margin - $layout-secondary-content-padding};
+            margin-left: #{$layout-secondary-inner-margin - $layout-secondary-content-padding - $layout-secondary-border-width};
+
+            &__title {
+                display: flex;
+                align-items: center;
+                padding: #{$layout-secondary-content-padding};
+            }
+
+            &__title h3 {
+                flex: auto;
+                margin: 0;
+                min-width: 40%;
+            }
+
+            &__close.button {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin-bottom: 0;
+            }
+
+            &__content {
+                flex-grow: 1;
+                overflow-y: auto;
+                padding: #{$layout-secondary-content-padding};
+
+                &::-webkit-scrollbar {
+                    width: #{$layout-secondary-scroll-width};
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #{$scrollbar-secondary};
+                    border: 1px solid #{$scrollbar-secondary};
+                    box-sizing: border-box;
+                    border-radius: 33px;
+                }
+            }
+        }
+    }
+
+    @media (width <=1280px) {
+        &__secondary {
+            /* stylelint-disable-next-line color-function-notation, alpha-value-notation -- technical debt */
+            box-shadow:
+                4px 0 2px rgb(0, 0, 0, 0.5),
+                -4px 0 2px rgb(0, 0, 0, 0.5);
+        }
+    }
+}

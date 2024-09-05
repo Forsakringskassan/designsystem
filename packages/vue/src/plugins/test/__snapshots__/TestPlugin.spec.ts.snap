@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add data-test attribute to the FTextField 1`] = `
+<div
+  class="text-field"
+  data-test="test-0047"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <label
+      class="label"
+      for="fkui-vue-element-0001"
+    >
+      
+      
+      Testing v-test directive
+      
+      
+      
+      
+      <!--v-if-->
+    </label>
+  </div>
+  <div
+    class="text-field__input-wrapper i-width-sm-12"
+  >
+    
+    
+    <div
+      class="text-field__icon-wrapper"
+    >
+      <input
+        class="text-field__input"
+        id="fkui-vue-element-0001"
+        maxlength="100"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    
+  </div>
+</div>
+`;

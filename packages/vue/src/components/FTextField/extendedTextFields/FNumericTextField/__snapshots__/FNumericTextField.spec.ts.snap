@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with label and input 1`] = `
+<div
+  class="text-field"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <label
+      class="label"
+      for="myField"
+    >
+      
+      
+       My numeric field 
+      
+      
+      
+      
+      <!--v-if-->
+    </label>
+  </div>
+  <div
+    class="text-field__input-wrapper i-width-sm-12"
+  >
+    
+    
+    <div
+      class="text-field__icon-wrapper"
+    >
+      <input
+        aria-invalid="false"
+        class="text-field__input"
+        data-validation=""
+        id="myField"
+        inputmode="numeric"
+        maxlength="20"
+        type="text"
+      />
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    
+    
+  </div>
+</div>
+`;

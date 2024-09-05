@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset group should send validity event when checking radio/checkbox input 1`] = `
+{
+  "elementId": "fieldset-element",
+  "isValid": true,
+  "nativeEvent": "validate",
+  "target": <fieldset
+    data-required=""
+    data-validation=""
+    id="fieldset-element"
+  >
+    
+                
+    <legend
+      id="legend"
+    >
+      Legend
+    </legend>
+    
+                
+    <input
+      aria-invalid="false"
+      id="test-element1"
+      required=""
+      type="checkbox"
+    />
+    
+                
+    <input
+      aria-invalid="false"
+      id="test-element2"
+      required=""
+      type="checkbox"
+    />
+    
+            
+  </fieldset>,
+  "validationMessage": "",
+  "validityMode": "VALID",
+}
+`;
+
+exports[`Fieldset group should send validity event when checking radio/checkbox input 2`] = `
+{
+  "elementId": "fieldset-element",
+  "isValid": true,
+  "nativeEvent": "validate",
+  "target": <fieldset
+    data-required=""
+    data-validation=""
+    id="fieldset-element"
+  >
+    
+                
+    <legend
+      id="legend"
+    >
+      Legend
+    </legend>
+    
+                
+    <input
+      aria-invalid="false"
+      id="test-element1"
+      required=""
+      type="checkbox"
+    />
+    
+                
+    <input
+      aria-invalid="false"
+      id="test-element2"
+      required=""
+      type="checkbox"
+    />
+    
+            
+  </fieldset>,
+  "validationMessage": "",
+  "validityMode": "VALID",
+}
+`;
+
+exports[`Fieldset group should send validity event when clicking outside fieldset group 1`] = `
+{
+  "elementId": "fieldset-element",
+  "isValid": false,
+  "nativeEvent": "validate",
+  "target": <fieldset
+    data-required=""
+    data-validation=""
+    id="fieldset-element"
+  >
+    
+                
+    <legend
+      id="legend"
+    >
+      Legend
+    </legend>
+    
+                
+    <input
+      aria-invalid="false"
+      id="test-element1"
+      required=""
+      type="checkbox"
+    />
+    
+                
+    <input
+      aria-invalid="false"
+      id="test-element2"
+      required=""
+      type="checkbox"
+    />
+    
+            
+  </fieldset>,
+  "validationMessage": "Välj minst ett alternativ.",
+  "validityMode": "INITIAL",
+}
+`;
+
+exports[`Fieldset group should send validity event when leaving fieldset group (focusin-event on element outside fieldset) 1`] = `
+{
+  "elementId": "fieldset-element",
+  "isValid": false,
+  "nativeEvent": "validate",
+  "target": <fieldset
+    data-required=""
+    data-validation=""
+    id="fieldset-element"
+  >
+    
+                
+    <legend
+      id="legend"
+    >
+      Legend
+    </legend>
+    
+                
+    <input
+      aria-invalid="false"
+      id="test-element1"
+      required=""
+      type="checkbox"
+    />
+    
+                
+    <input
+      aria-invalid="false"
+      id="test-element2"
+      required=""
+      type="checkbox"
+    />
+    
+            
+  </fieldset>,
+  "validationMessage": "Välj minst ett alternativ.",
+  "validityMode": "INITIAL",
+}
+`;
+
+exports[`On init - adds required attribute to child input elements, focusin- and validate event listener 1`] = `
+<fieldset
+  data-required=""
+  data-validation=""
+  id="fieldset-element"
+>
+  
+                
+  <legend
+    id="legend"
+  >
+    Legend
+  </legend>
+  
+                
+  <input
+    id="test-element1"
+    required=""
+    type="checkbox"
+  />
+  
+                
+  <input
+    id="test-element2"
+    required=""
+    type="checkbox"
+  />
+  
+            
+</fieldset>
+`;

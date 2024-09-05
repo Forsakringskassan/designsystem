@@ -1,0 +1,98 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints";
+@import "../../core/config-variables";
+
+$IFLEX_SELECTOR: ".iflex" !default;
+$iflex-base-gap: 0.25rem;
+
+%iflex {
+    display: flex;
+}
+
+@for $i from 1 through 8 {
+    %iflex--gap-#{$i}x {
+        margin-left: -$iflex-base-gap * $i;
+        margin-right: -$iflex-base-gap * $i;
+
+        %iflex__item {
+            padding-left: $iflex-base-gap * $i;
+            padding-right: $iflex-base-gap * $i;
+        }
+    }
+}
+
+%iflex__item {
+    flex: 1 0 0%;
+}
+
+%iflex--grow {
+    flex: 1 1 auto;
+}
+
+%iflex--shrink {
+    flex: 0 1 auto;
+}
+
+%iflex--align-top {
+    align-self: flex-start;
+}
+
+%iflex--align-center {
+    align-self: center;
+}
+
+%iflex--align-bottom {
+    align-self: flex-end;
+}
+
+#{$IFLEX_SELECTOR} {
+    @extend %iflex;
+
+    &__item {
+        @extend %iflex__item;
+    }
+
+    &--grow {
+        @extend %iflex--grow;
+    }
+
+    &--shrink {
+        @extend %iflex--shrink;
+    }
+
+    @for $i from 1 through 8 {
+        &--gap-#{$i}x {
+            @extend %iflex--gap-#{$i}x;
+        }
+    }
+
+    &--align-top {
+        @extend %iflex--align-top;
+    }
+
+    &--align-center {
+        @extend %iflex--align-center;
+    }
+
+    &--align-bottom {
+        @extend %iflex--align-bottom;
+    }
+}
+
+#{$IFLEX_SELECTOR}--collapse {
+    @include breakpoints.breakpoint-down(sm) {
+        display: block;
+    }
+}
+
+#{$IFLEX_SELECTOR}--wrap {
+    flex-wrap: wrap;
+}
+
+#{$IFLEX_SELECTOR}--float-right {
+    justify-content: flex-end;
+}
+
+#{$IFLEX_SELECTOR}--float-center {
+    justify-content: center;
+}

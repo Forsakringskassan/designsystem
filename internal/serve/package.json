@@ -1,0 +1,34 @@
+{
+  "name": "@fkui/serve",
+  "version": "5.35.0",
+  "private": true,
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "internal/serve"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js"
+    }
+  },
+  "main": "lib/index.js",
+  "bin": {
+    "fkui-serve": "bin/serve.js"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "dependencies": {
+    "cli-table": "0.3.11",
+    "dayjs": "1.11.13",
+    "express": "4.19.2",
+    "kleur": "4.1.5"
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}

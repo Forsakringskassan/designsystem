@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with span and p 1`] = `
+<div
+  class="output-field"
+>
+  <label
+    class="label"
+  >
+    
+    
+    Heading
+    
+    
+    
+    
+    <!--v-if-->
+  </label>
+  <p
+    class="output-field__output"
+  >
+    
+    En liten text
+    
+  </p>
+</div>
+`;
+
+exports[`snapshots should match snapshot with span, p and tooltip 1`] = `
+<div
+  class="output-field"
+>
+  <div>
+    <div
+      class="tooltip-before"
+    >
+      <label
+        class="label tooltip-before__label"
+      >
+        
+        
+        Heading
+        
+        
+      </label>
+    </div>
+    
+    
+    TOOLTIP
+    
+    
+    <!--v-if-->
+  </div>
+  <p
+    class="output-field__output"
+  >
+    
+    En liten text
+    
+  </p>
+</div>
+`;

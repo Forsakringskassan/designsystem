@@ -1,0 +1,28 @@
+@use "../../core/mixins/focus" as *;
+@use "../../core/mixins/sr-only" as *;
+
+$FILE_SELECTOR_SELECTOR: ".file-selector" !default;
+
+#{$FILE_SELECTOR_SELECTOR} {
+    svg {
+        color: var(--f-icon-color-primary);
+    }
+
+    input[type="file"] {
+        @include sr-only;
+
+        &:focus + label {
+            @include focus-indicator;
+        }
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    input:disabled + label {
+        background-color: transparent;
+        border-color: transparent;
+        cursor: default;
+    }
+}

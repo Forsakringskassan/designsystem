@@ -1,0 +1,24 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "outDir": "temp",
+        "rootDir": "src",
+        "emitDeclarationOnly": true,
+        "declarationDir": "temp/types",
+        "allowJs": true,
+        "paths": {
+            "@fkui/vue": ["./src/index.ts"]
+        },
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.vue"],
+    "exclude": [
+        "src/@types/cypress.d.ts",
+        "src/pageobject/**/*.ts",
+        "src/stub.d.ts",
+        "src/**/*.cy.ts",
+        "src/**/*.pageobject.ts",
+        "src/**/pageobjects.ts"
+    ]
+}

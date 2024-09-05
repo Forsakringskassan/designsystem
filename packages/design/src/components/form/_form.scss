@@ -1,0 +1,8 @@
+@use "../../core/size";
+
+$FORM_SELECTOR: ".form" !default;
+
+#{$FORM_SELECTOR} {
+    padding-top: size.$padding-100;
+    padding-bottom: calc(2 * size.$padding-150);
+}

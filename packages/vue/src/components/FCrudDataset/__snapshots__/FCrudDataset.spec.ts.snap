@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should match snapshot 1`] = `
+<div class="crud-dataset">
+  <div id="cancelMessage"> Modalen har stängts </div>
+  <table>
+    <tr>
+      <th> id </th>
+      <th> name </th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>a</td>
+      <td><button type="button" class="button button--discrete" id="modifyButton">
+          <!--v-if-->
+          <!--v-if-->Ändra
+        </button></td>
+      <td><button type="button" class="button button--discrete" id="deleteButton">
+          <!--v-if-->
+          <!--v-if-->Ta bort
+        </button></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>b</td>
+      <td><button type="button" class="button button--discrete" id="modifyButton">
+          <!--v-if-->
+          <!--v-if-->Ändra
+        </button></td>
+      <td><button type="button" class="button button--discrete" id="deleteButton">
+          <!--v-if-->
+          <!--v-if-->Ta bort
+        </button></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>c</td>
+      <td><button type="button" class="button button--discrete" id="modifyButton">
+          <!--v-if-->
+          <!--v-if-->Ändra
+        </button></td>
+      <td><button type="button" class="button button--discrete" id="deleteButton">
+          <!--v-if-->
+          <!--v-if-->Ta bort
+        </button></td>
+    </tr>
+  </table>
+  <div><button type="button" class="button button--discrete crud-dataset__add-button">
+      <f-icon-stub name="plus" library="f" class="button__icon"></f-icon-stub>Lägg till ny
+    </button></div>
+  <f-form-modal-stub fullscreen="true" isopen="false" size="" datatest="" useerrorlist="false" formid="fkui-vue-element-0001" ariaclosetext="Stäng" beforesubmit="[Function]" beforevalidation="[Function]" buttons="[object Object],[object Object]" value="[object Object]"></f-form-modal-stub>
+  <f-confirm-modal-stub fullscreen="false" isopen="false" content="Brödtext" heading="Rubrik" size="" buttons="[object Object],[object Object]"></f-confirm-modal-stub>
+</div>
+`;

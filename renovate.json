@@ -1,0 +1,11 @@
+{
+    "extends": ["local>forsakringskassan/renovate-config"],
+    "packageRules": [
+        {
+            "description": "Raise PR instead of merging minor versions of typescript",
+            "matchPackageNames": ["typescript"],
+            "matchUpdateTypes": ["minor"],
+            "automerge": false
+        }
+    ]
+}

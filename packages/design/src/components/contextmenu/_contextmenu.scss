@@ -1,0 +1,54 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints";
+@use "../../core/config-variables";
+
+$CONTEXTMENU_SELECTOR: ".contextmenu" !default;
+
+#{$CONTEXTMENU_SELECTOR} {
+    min-width: 260px;
+    background-color: var(--f-background-popupmenu);
+
+    &__list {
+        margin: 0;
+        border: 1px solid var(--f-border-color-popupmenu);
+        padding: size.$padding-050;
+        display: block;
+        list-style-type: none;
+
+        &__item {
+            cursor: pointer;
+            white-space: normal;
+            display: flex;
+            align-items: center;
+            padding: size.$padding-075;
+
+            a,
+            a:visited,
+            a:active {
+                color: var(--f-text-color-popupmenu);
+            }
+
+            &:hover {
+                color: var(--f-text-color-popupmenu-hover);
+                background-color: var(--f-background-popupmenu-vertical-hover);
+            }
+
+            // when desktop, long texts expands popup
+            @include breakpoints.breakpoint-up(md) {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    &__separator {
+        margin: 0.75rem;
+        height: 1px;
+        border: none;
+        border-top: 1px solid var(--f-border-color-separator-contextmenu);
+    }
+
+    &__lefticon {
+        margin-right: 0.75rem;
+        min-width: var(--f-icon-size-small);
+    }
+}

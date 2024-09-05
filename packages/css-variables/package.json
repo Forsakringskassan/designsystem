@@ -1,0 +1,39 @@
+{
+  "name": "@fkui/css-variables",
+  "version": "5.35.0",
+  "description": "FK Themes",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "packages/css-variables"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "run-s clean sass extract-variables",
+    "clean": "rimraf dist src/_version.scss",
+    "extract-variables": "node extractVariables.js",
+    "prepack": "npm run build",
+    "presass": "node generate-version.js",
+    "sass": "sass src:dist --style expanded --no-source-map",
+    "postsass": "node scripts/extract-sass-variables.mjs src/_palette-variables.scss dist/palette.json"
+  },
+  "devDependencies": {
+    "get-css-variables": "0.3.0",
+    "glob": "11.0.0",
+    "npm-run-all2": "6.2.2",
+    "postcss": "8.4.43",
+    "postcss-scss": "4.0.9",
+    "rimraf": "6.0.1",
+    "sass": "1.77.8"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

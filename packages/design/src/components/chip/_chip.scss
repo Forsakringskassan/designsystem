@@ -1,0 +1,91 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints" as bp;
+
+$chip-border-radius: 20px;
+
+@mixin chip($group, $item, $type) {
+    .#{$group}--chip {
+        .#{$group}__label {
+            margin-bottom: size.$margin-025;
+        }
+
+        .#{$group}__content {
+            margin: -0.25rem;
+        }
+
+        .#{$item} {
+            margin: 0;
+            padding: size.$padding-025;
+
+            &.disabled {
+                .#{$item}__label {
+                    background: var(--f-background-button-disabled);
+                    border-color: var(--f-border-color-button-disabled);
+                    color: var(--f-text-color-button-disabled);
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .#{$item}__label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: var(--f-font-weight-medium);
+            padding: size.$padding-050 size.$padding-100;
+            border-radius: $chip-border-radius;
+            border: var(--f-border-width-medium) solid var(--f-border-color-input);
+            background-color: var(--f-background-chip);
+            color: var(--f-text-color-chip);
+            justify-content: center;
+            max-width: 400px;
+            user-select: none;
+
+            &::before,
+            &::after {
+                display: none;
+            }
+
+            svg {
+                margin-right: size.$margin-050;
+            }
+        }
+
+        .#{$item}__label:hover {
+            border-color: var(--f-border-color-chip-hover);
+            background-color: var(--f-background-chip-hover);
+            color: var(--f-text-color-chip-hover);
+        }
+
+        input[type="#{$type}"]:checked + .#{$item}__label {
+            background: var(--f-background-chip-active);
+            border-color: var(--f-border-color-chip-active);
+            color: var(--f-text-color-chip-active);
+        }
+
+        input[type="#{$type}"]:focus + label.#{$item}__label {
+            border-radius: $chip-border-radius;
+        }
+    }
+
+    .#{$group}--chip.#{$group}--horizontal {
+        .#{$group}__content {
+            flex-flow: row wrap;
+
+            .#{$item} {
+                margin-bottom: 0;
+            }
+
+            @include bp.breakpoint-down(sm) {
+                flex-flow: row wrap;
+
+                .#{$item} {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+@include chip("radio-button-group", "radio-button", "radio");
+@include chip("checkbox-group", "checkbox", "checkbox");

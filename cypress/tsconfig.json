@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "strict": true,
+        "target": "es6",
+        "lib": ["es6", "dom"],
+        "types": ["cypress", "node", "cypress-html-validate/commands"],
+        "paths": {
+            "@fkui/*": ["./packages/*"]
+        }
+    },
+    "include": ["**/*.ts"]
+}

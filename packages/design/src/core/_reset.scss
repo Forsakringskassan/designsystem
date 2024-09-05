@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+}
+
+article,
+aside,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select:focus::-ms-value {
+    background: none;
+    color: #000;
+    outline: 1px dotted #000;
+}
+
+ul,
+ol {
+    padding-left: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}

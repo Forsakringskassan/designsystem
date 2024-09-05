@@ -1,0 +1,60 @@
+// Components to be used in standalone mode
+@use "expandable-panel/expandable-panel";
+@use "icon/icon";
+@use "entrypoint/entrypoint";
+@use "page-header/page-header";
+@use "card/card";
+
+// Using use syntax
+@use "layout-application-template/layout-application-template";
+@use "layout-navigation/layout-navigation";
+@use "layout-secondary/layout-secondary";
+@use "tooltip/tooltip";
+@use "modal/modal";
+@use "offline/offline";
+@use "dialogue-tree/dialogue-tree";
+
+// These imports can be removed when all components are standalone
+// These imports shall only contain variables and/or functions and not generate any css themselves.
+@import "../core/mixins/all";
+@import "../core/config-variables";
+@import "../core/utils/all";
+
+// Non Standalone Components (i.e using old import syntax)
+@import "z-index";
+@import "label/label";
+
+@import "anchor/anchor";
+@import "badge/badge";
+@import "button/button";
+@import "calendar-deprecated/calendar-deprecated";
+@import "calendar-day/calendar-day";
+@import "checkbox/all";
+@import "chip/chip";
+@import "close-button/close-button";
+@import "contextmenu/contextmenu";
+@import "crud-dataset/crud-dataset";
+@import "datepicker-field/datepicker-field";
+@import "expandable-paragraph/expandable-paragraph";
+@import "fieldset/fieldset";
+@import "group/group";
+@import "indent/indent";
+@import "list/list";
+@import "loader/loader";
+@import "message-box/message-box";
+@import "navbar/navbar";
+@import "output-field/output-field";
+@import "progressbar/progressbar";
+@import "radio-button/all";
+@import "select-field/select-field";
+@import "sort-filter-dataset/sort-filter-dataset";
+@import "table/table";
+@import "textarea-field/textarea-field";
+@import "text-field/text-field";
+@import "form/all";
+@import "error-list/error-list";
+@import "file-selector/file-selector";
+@import "file-item/file-item";
+@import "file-uploader/file-uploader";
+@import "static-panel/static-panel";
+@import "wizard/all";

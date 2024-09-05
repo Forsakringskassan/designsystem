@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot tbody 1`] = `
+<tbody>
+  <tr class="table__row" tabindex="0">
+    <!--v-if-->
+    <!--v-if-->
+    <td class="table__column table__column--text">1<span class="sr-only">&nbsp;</span></td>
+    <td class="table__column table__column--numeric">2<span class="sr-only">&nbsp;</span></td>
+  </tr>
+  <!--v-if-->
+  <tr class="table__row" tabindex="0">
+    <!--v-if-->
+    <!--v-if-->
+    <td class="table__column table__column--text">3<span class="sr-only">&nbsp;</span></td>
+    <td class="table__column table__column--numeric">4<span class="sr-only">&nbsp;</span></td>
+  </tr>
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+</tbody>
+`;
+
+exports[`should match snapshot thead 1`] = `
+<thead>
+  <tr class="table__row">
+    <!--v-if-->
+    <!--v-if-->
+    <th scope="col" class="table__column table__column--text table__column--expand"><span>A</span>
+      <!--v-if-->
+      <!--v-if-->
+    </th>
+    <th scope="col" class="table__column table__column--numeric table__column--expand"><span>A</span>
+      <!--v-if-->
+      <!--v-if-->
+    </th>
+  </tr>
+</thead>
+`;

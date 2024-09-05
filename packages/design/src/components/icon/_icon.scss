@@ -1,0 +1,175 @@
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+
+$ICON_SELECTOR: ".icon" !default;
+
+@at-root {
+    %icon--base {
+        display: inline-block;
+        height: var(--f-icon-size-small);
+        max-height: 100%;
+        max-width: 100%;
+        pointer-events: none;
+        width: var(--f-icon-size-small);
+    }
+
+    %icon--inset-top-right {
+        display: inline;
+        height: var(--f-icon-size-large);
+        position: absolute;
+        right: size.$margin-075;
+        top: densify(size.$margin-050);
+        transition: opacity var(--f-animation-duration-medium) ease-in-out;
+        width: var(--f-icon-size-large);
+    }
+
+    %icon-stack {
+        @extend %icon--base;
+
+        position: relative;
+
+        #{$ICON_SELECTOR} {
+            position: absolute;
+        }
+    }
+}
+
+#{$ICON_SELECTOR} {
+    @extend %icon--base;
+
+    &--flip-horizontal {
+        transform: scaleX(-1);
+    }
+
+    &--flip-vertical {
+        transform: scaleY(-1);
+    }
+
+    &--rotate-90 {
+        transform: rotate(90deg);
+    }
+
+    &--rotate-180 {
+        transform: rotate(180deg);
+    }
+
+    &--rotate-270 {
+        transform: rotate(270deg);
+    }
+}
+
+#{$ICON_SELECTOR}-stack,
+#{$ICON_SELECTOR} {
+    &--new-window {
+        // anchor icons to top-right and bottom-left
+        .icon {
+            &.f-icon-new-window {
+                width: 55%;
+                height: 55%;
+                top: 0;
+                right: 0;
+            }
+
+            &:not(.f-icon-new-window) {
+                width: 83%;
+                height: 83%;
+                bottom: 0;
+                left: 5%;
+            }
+        }
+    }
+}
+
+#{$ICON_SELECTOR}-stack,
+#{$ICON_SELECTOR}--stack {
+    @extend %icon-stack;
+
+    &--tooltip {
+        .f-icon-circle {
+            color: var(--f-icon-color-info);
+            fill: var(--f-icon-color-info);
+        }
+
+        .f-icon-i {
+            color: var(--f-icon-color-white);
+        }
+    }
+
+    &--info {
+        .f-icon-circle {
+            color: var(--f-icon-color-white);
+            fill: var(--f-icon-color-info);
+        }
+    }
+
+    &--warning {
+        .f-icon-circle {
+            color: var(--f-icon-color-white);
+            fill: var(--f-icon-color-warning);
+        }
+    }
+
+    &--error {
+        .f-icon-triangle {
+            color: var(--f-icon-color-white);
+            fill: var(--f-icon-color-error);
+        }
+    }
+
+    &--success {
+        .f-icon-circle {
+            color: var(--f-icon-color-white);
+            fill: var(--f-icon-color-success);
+        }
+        .f-icon-success {
+            transform: scale(0.6);
+        }
+    }
+
+    &--large {
+        width: 2.5rem;
+        height: 2.5rem;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &--circle,
+    &--circle-bottom {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 100%;
+        overflow: hidden;
+        .f-icon-circle {
+            color: var(--f-icon-color-success-background);
+            fill: var(--f-icon-color-success-background);
+            width: 100%;
+            height: 100%;
+        }
+        .icon:not(.f-icon-circle) {
+            color: var(--f-icon-color-success);
+            position: absolute;
+        }
+    }
+    &--circle {
+        .icon:not(.f-icon-circle) {
+            width: 100 * 0.7%;
+            height: 100 * 0.7%;
+            inset: 0;
+            margin: auto;
+        }
+    }
+
+    &--circle-bottom {
+        .icon:not(.f-icon-circle) {
+            width: 100 * 0.8%;
+            height: 100 * 0.8%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            bottom: 0%;
+        }
+    }
+}

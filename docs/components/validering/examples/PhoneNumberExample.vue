@@ -1,0 +1,18 @@
+<template>
+    <f-text-field id="input" v-model="model" v-validation.phoneNumber>
+        Fyll i ett telefonnummer
+    </f-text-field>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "PhoneNumberExample",
+    components: { FTextField },
+    data() {
+        return { model: "" };
+    },
+});
+</script>

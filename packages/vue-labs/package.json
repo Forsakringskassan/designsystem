@@ -1,0 +1,88 @@
+{
+  "name": "@fkui/vue-labs",
+  "version": "5.35.0",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "packages/vue-labs"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.cjs.js",
+      "import": "./dist/esm/index.esm.js"
+    },
+    "./pageobject/*": "./pageobject/*",
+    "./style.css": "./dist/style.css"
+  },
+  "main": "./dist/cjs/index.cjs.js",
+  "module": "./dist/esm/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "htmlvalidate",
+    "pageobject/**/*.{js,js.map,d.ts}",
+    "!**/*.spec.{js,ts,d.ts}",
+    "!**/.eslintrc.json"
+  ],
+  "scripts": {
+    "prebuild": "run-s clean",
+    "build": "run-s build:lib build:pageobject build:dts",
+    "build:docs": "node generate-docs.mjs",
+    "build:dts": "vue-tsc --emitDeclarationOnly",
+    "build:lib": "fk-build-vue-lib",
+    "build:pageobject": "tsc --build pageobject/",
+    "clean": "rimraf -g .jest-cache *.tsbuildinfo coverage dist public temp test-results",
+    "start": "vite --",
+    "start:docs": "fkui-serve public",
+    "test": "jest --coverage",
+    "unit": "jest",
+    "unit:watch": "jest --watch"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config-vue",
+    "setupFilesAfterEnv": [
+      "./jest.setup.ts"
+    ]
+  },
+  "dependencies": {
+    "dayjs": "^1.11.0",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@fkui/css-variables": "5.35.0",
+    "@fkui/date": "5.35.0",
+    "@fkui/design": "5.35.0",
+    "@fkui/icon-lib-default": "5.35.0",
+    "@fkui/logic": "5.35.0",
+    "@fkui/test-utils": "5.35.0",
+    "@fkui/vue": "5.35.0",
+    "@forsakringskassan/docs-generator": "1.33.0",
+    "@forsakringskassan/vite-lib-config": "2.0.1",
+    "@vue/test-utils": "2.4.6",
+    "vite": "5.4.2",
+    "vue": "3.4.38",
+    "vue-router": "4.4.3"
+  },
+  "peerDependencies": {
+    "@fkui/date": "^5",
+    "@fkui/design": "^5",
+    "@fkui/logic": "^5",
+    "@fkui/vue": "^5",
+    "core-js": "^3.23",
+    "html-validate": ">= 7.9.0",
+    "vue": "^3"
+  },
+  "peerDependenciesMeta": {
+    "html-validate": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

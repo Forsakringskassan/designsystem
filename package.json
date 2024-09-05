@@ -1,0 +1,138 @@
+{
+  "name": "@fkui/fkui-monorepo",
+  "version": "5.35.0",
+  "private": true,
+  "description": "fkui monorepo",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "main": "index.js",
+  "files": [],
+  "workspaces": [
+    "docs",
+    "packages/*",
+    "internal/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "build:docs": "node generate-docs.mjs && lerna run build:docs && npm run build:public",
+    "build:public": "node scripts/postbuild.js && html-validate --config .htmlvalidate-public.js public",
+    "preclean": "rimraf -g .eslintcache *.tgz public temp test-results",
+    "clean": "npm run --workspaces --if-present clean",
+    "css-variables": "npm run --workspace packages/css-variables --",
+    "cypress": "cypress",
+    "date": "npm run --workspace packages/date --",
+    "design": "npm run --workspace packages/design --",
+    "eslint": "eslint --cache .",
+    "eslint:fix": "eslint --fix .",
+    "html-validate": "html-validate --ext md,html,vue docs packages/*/src internal/*/src",
+    "labs": "npm run --workspace packages/vue-labs --",
+    "lerna": "lerna",
+    "link-all": "lerna exec npm link",
+    "lint": "run-s prettier:check eslint stylelint html-validate",
+    "lint:fix": "run-s prettier:write eslint:fix stylelint:fix",
+    "logic": "npm run --workspace packages/logic --",
+    "prepare": "husky",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "sandbox": "npm run --workspace internal/vue-sandbox --",
+    "start": "fkui-serve public",
+    "start:cypress": "node cypress/server.js",
+    "start:demo": "run-s build:docs start",
+    "start:sandbox": "run-s build:docs && fkui-serve public/vue-sandbox",
+    "stylelint": "stylelint \"packages/*/src/**/*.scss\" \"internal/*/src/**/*.scss\"",
+    "stylelint:fix": "npm run stylelint -- --fix",
+    "pretest": "npm run lint",
+    "test": "lerna run test",
+    "test:ct": "cypress run-ct --headless",
+    "vue": "npm run --workspace packages/vue --"
+  },
+  "commitlint": {
+    "extends": "@forsakringskassan/commitlint-config"
+  },
+  "lint-staged": {
+    "*.{json,md,css,scss,html}": "prettier --write",
+    "*.{js,cjs,mjs,vue,ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "prettier": "@forsakringskassan/prettier-config",
+  "release": {
+    "extends": "@forsakringskassan/semantic-release-monorepo-config"
+  },
+  "stylelint": {
+    "extends": [
+      "@forsakringskassan/stylelint-config",
+      "./packages/design/stylelint/recommended"
+    ],
+    "rules": {
+      "alpha-value-notation": null,
+      "color-function-notation": null,
+      "media-feature-range-notation": null
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "7.25.2",
+    "@babel/preset-env": "7.25.4",
+    "@forsakringskassan/commitlint-config": "1.3.3",
+    "@forsakringskassan/cypress-axe": "3.1.3",
+    "@forsakringskassan/cypress-visual-regression": "2.3.2",
+    "@forsakringskassan/docs-generator": "1.33.0",
+    "@forsakringskassan/docs-live-example": "1.4.6",
+    "@forsakringskassan/eslint-config": "11.2.8",
+    "@forsakringskassan/eslint-config-cli": "11.2.0",
+    "@forsakringskassan/eslint-config-cypress": "11.2.7",
+    "@forsakringskassan/eslint-config-jest": "11.2.7",
+    "@forsakringskassan/eslint-config-typescript": "11.2.6",
+    "@forsakringskassan/eslint-config-vue": "11.2.8",
+    "@forsakringskassan/jest-config": "29.5.10",
+    "@forsakringskassan/jest-config-vue": "29.5.10",
+    "@forsakringskassan/prettier-config": "2.1.1",
+    "@forsakringskassan/stylelint-config": "2.2.8",
+    "@forsakringskassan/vite-lib-config": "2.0.1",
+    "@html-validate/release-scripts": "6.5.3",
+    "@types/estree": "1.0.5",
+    "@types/glob": "8.1.0",
+    "@types/jest": "29.5.12",
+    "@types/lodash": "4.17.7",
+    "@types/node": "20.16.3",
+    "@vue/server-renderer": "3.4.38",
+    "autoprefixer": "10.4.20",
+    "cli-table": "0.3.11",
+    "core-js": "3.38.1",
+    "cypress": "13.14.1",
+    "cypress-html-validate": "6.1.0",
+    "esbuild": "0.23.1",
+    "flush-promises": "1.0.2",
+    "fs-extra": "11.2.0",
+    "glob": "11.0.0",
+    "highlight.js": "11.10.0",
+    "html-validate": "8.21.0",
+    "html-validate-markdown": "4.0.0",
+    "html-validate-vue": "6.0.8",
+    "husky": "9.1.5",
+    "is-ci": "3.0.1",
+    "lerna": "6.6.2",
+    "lint-staged": "15.2.10",
+    "mocha-junit-reporter": "2.2.1",
+    "mocha-multi-reporters": "1.5.1",
+    "npm-run-all2": "6.2.2",
+    "postcss": "8.4.43",
+    "rimraf": "6.0.1",
+    "sass": "1.77.8",
+    "typedoc": "0.26.6",
+    "typescript": "5.5.4",
+    "vite": "5.4.2",
+    "vue": "3.4.38",
+    "vue-tsc": "2.1.4"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

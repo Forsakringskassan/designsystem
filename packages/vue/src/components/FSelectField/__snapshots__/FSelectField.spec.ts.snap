@@ -1,0 +1,411 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`html-validate <f-select-field><template #label>label</template><div></div></f-select-field> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <div> element is not permitted as content under <f-select-field> [element-permitted-content]]
+`;
+
+exports[`html-validate <f-select-field><template #label>label</template><template #default><div></div></template><option>Apple</option></f-select-field> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <div> element is not permitted as content under slot "default" (<f-select-field>) [element-permitted-content]]
+`;
+
+exports[`html-validate <f-select-field><template #tooltip><div /></template><template #label>label</template></f-select-field> should be invalid 1`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <div> element is not permitted as content under slot "tooltip" (<f-select-field>) [element-permitted-content]]
+`;
+
+exports[`snapshots should match snapshot when validityMode is ERROR and isValid is false 1`] = `
+<div
+  class="select-field select-field--error"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <label
+      class="label"
+      for="select-field"
+    >
+      
+      
+      Fruit
+      
+      
+      
+      
+      <span
+        class="label__message label__message--error"
+      >
+        <f-icon-stub
+          class="label__icon--left"
+          library="f"
+          name="error"
+        />
+        
+        
+        
+        Something went wrong.
+        
+        
+        
+      </span>
+    </label>
+  </div>
+  <div
+    class="select-field__icon-wrapper i-width-sm-12"
+  >
+    <select
+      class="select-field__select"
+      id="select-field"
+    >
+      
+      <option>
+        Apple
+      </option>
+      <option>
+        Banana
+      </option>
+      
+    </select>
+    <!--v-if-->
+    <f-icon-stub
+      class="select-field__icon"
+      library="f"
+      name="arrow-down"
+    />
+  </div>
+</div>
+`;
+
+exports[`snapshots should match snapshot when validityMode is INITIAL and isValid is false 1`] = `
+<div
+  class="select-field"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <label
+      class="label"
+      for="select-field"
+    >
+      
+      
+      Fruit
+      
+      
+      
+      
+      <!--v-if-->
+    </label>
+  </div>
+  <div
+    class="select-field__icon-wrapper i-width-sm-12"
+  >
+    <select
+      class="select-field__select"
+      id="select-field"
+    >
+      
+      <option>
+        Apple
+      </option>
+      <option>
+        Banana
+      </option>
+      
+    </select>
+    <!--v-if-->
+    <f-icon-stub
+      class="select-field__icon"
+      library="f"
+      name="arrow-down"
+    />
+  </div>
+</div>
+`;
+
+exports[`snapshots should match snapshot when validityMode is INTIAL and isValid is true 1`] = `
+<div
+  class="select-field"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <label
+      class="label"
+      for="select-field"
+    >
+      
+      
+      Fruit
+      
+      
+      
+      
+      <!--v-if-->
+    </label>
+  </div>
+  <div
+    class="select-field__icon-wrapper i-width-sm-12"
+  >
+    <select
+      class="select-field__select"
+      id="select-field"
+    >
+      
+      <option>
+        Apple
+      </option>
+      <option>
+        Banana
+      </option>
+      
+    </select>
+    <!--v-if-->
+    <f-icon-stub
+      class="select-field__icon"
+      library="f"
+      name="arrow-down"
+    />
+  </div>
+</div>
+`;
+
+exports[`snapshots should match snapshot when validityMode is VALID and isValid is true 1`] = `
+<div
+  class="select-field"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <label
+      class="label"
+      for="select-field"
+    >
+      
+      
+      Fruit
+      
+      
+      
+      
+      <!--v-if-->
+    </label>
+  </div>
+  <div
+    class="select-field__icon-wrapper i-width-sm-12"
+  >
+    <select
+      class="select-field__select"
+      id="select-field"
+    >
+      
+      <option>
+        Apple
+      </option>
+      <option>
+        Banana
+      </option>
+      
+    </select>
+    <!--v-if-->
+    <f-icon-stub
+      class="select-field__icon"
+      library="f"
+      name="arrow-down"
+    />
+  </div>
+</div>
+`;
+
+exports[`snapshots should match snapshot with label and select 1`] = `
+<div
+  class="select-field"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <label
+      class="label"
+      for="select-field"
+    >
+      
+      
+      Fruit
+      
+      
+      
+      
+      <!--v-if-->
+    </label>
+  </div>
+  <div
+    class="select-field__icon-wrapper i-width-sm-12"
+  >
+    <select
+      class="select-field__select"
+      id="select-field"
+    >
+      
+      <option>
+        Apple
+      </option>
+      <option>
+        Banana
+      </option>
+      
+    </select>
+    <!--v-if-->
+    <f-icon-stub
+      class="select-field__icon"
+      library="f"
+      name="arrow-down"
+    />
+  </div>
+</div>
+`;
+
+exports[`snapshots should match snapshot with label, select and error message 1`] = `
+<div
+  class="select-field"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <label
+      class="label"
+      for="select-field"
+    >
+      
+      
+      Fruit
+      
+      
+      
+      
+      <span
+        class="label__message label__message--error"
+      >
+        <f-icon-stub
+          class="label__icon--left"
+          library="f"
+          name="error"
+        />
+        
+        
+        ERROR_MESSAGE
+        
+        
+      </span>
+    </label>
+  </div>
+  <div
+    class="select-field__icon-wrapper i-width-sm-12"
+  >
+    <select
+      aria-invalid="true"
+      class="select-field__select"
+      id="select-field"
+    >
+      
+      <option>
+        Apple
+      </option>
+      <option>
+        Banana
+      </option>
+      
+    </select>
+    <!--v-if-->
+    <f-icon-stub
+      class="select-field__icon"
+      library="f"
+      name="arrow-down"
+    />
+  </div>
+</div>
+`;
+
+exports[`snapshots should match snapshot with label, tooltip, description, error message and select 1`] = `
+<div
+  class="select-field"
+>
+  <div
+    class="i-width-sm-12"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="tooltip-before"
+      >
+        <label
+          class="label tooltip-before__label"
+          for="select-field"
+        >
+          
+          
+          Fruit
+          
+          
+        </label>
+      </div>
+      
+      
+      TOOLTIP
+      
+      
+      <label
+        class="label sr-separator"
+        for="select-field"
+      >
+        
+        
+        DESCRIPTION
+        
+        
+        <span
+          class="label__message label__message--error"
+        >
+          <f-icon-stub
+            class="label__icon--left"
+            library="f"
+            name="error"
+          />
+          
+          
+          ERROR_MESSAGE
+          
+          
+        </span>
+      </label>
+    </div>
+  </div>
+  <div
+    class="select-field__icon-wrapper i-width-sm-12"
+  >
+    <select
+      class="select-field__select"
+      id="select-field"
+    >
+      
+      <option>
+        Apple
+      </option>
+      <option>
+        Banana
+      </option>
+      
+    </select>
+    <!--v-if-->
+    <f-icon-stub
+      class="select-field__icon"
+      library="f"
+      name="arrow-down"
+    />
+  </div>
+</div>
+`;

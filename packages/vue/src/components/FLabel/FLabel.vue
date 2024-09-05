@@ -1,0 +1,84 @@
+<template>
+    <div v-if="$slots.tooltip">
+        <div v-if="hasDefaultSlot" class="tooltip-before">
+            <label class="label tooltip-before__label" :for="forProperty">
+                <slot name="default"></slot>
+            </label>
+        </div>
+
+        <!-- @slot Slot for tooltip. -->
+        <slot name="tooltip"></slot>
+
+        <label v-if="hasDescriptionSlot || hasErrorMessageSlot" class="label sr-separator" :for="forProperty">
+            <!--
+                @slot Optional slot for description.
+                @binding {string[]} descriptionClass CSS classes for primary description content.
+                @binding {string[]} discreteDescriptionClass CSS classes for format description.
+            -->
+            <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+            <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
+                <f-icon class="label__icon--left" name="error"></f-icon>
+                <slot name="error-message"></slot>
+            </span>
+        </label>
+    </div>
+
+    <label v-else class="label" :for="forProperty">
+        <!-- @slot Slot for label content. -->
+        <slot name="default"></slot>
+        <!--
+            @slot Optional slot for description.
+            @binding {string[]} descriptionClass CSS classes for primary description content.
+            @binding {string[]} discreteDescriptionClass CSS classes for format description.
+          -->
+        <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+        <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
+            <f-icon class="label__icon--left" name="error"></f-icon>
+            <!-- @slot Slot for displaying single or several error messages. -->
+            <slot name="error-message"></slot>
+        </span>
+    </label>
+</template>
+
+<script lang="ts">
+import { defineComponent, type PropType } from "vue";
+import { hasSlot } from "../../utils";
+import { FIcon } from "../FIcon";
+
+export default defineComponent({
+    name: "FLabel",
+    components: {
+        FIcon,
+    },
+    props: {
+        /**
+         * The id for the form element the label is bound to.
+         */
+        for: {
+            type: String as PropType<string | undefined>,
+            required: false,
+            default: undefined,
+        },
+    },
+    data() {
+        return {
+            descriptionClass: ["label__description"],
+            discreteDescriptionClass: ["label__description", "label__description--discrete"],
+        };
+    },
+    computed: {
+        forProperty(): string | undefined {
+            return this.for;
+        },
+        hasDefaultSlot(): boolean {
+            return hasSlot(this, "default");
+        },
+        hasErrorMessageSlot(): boolean {
+            return hasSlot(this, "error-message");
+        },
+        hasDescriptionSlot(): boolean {
+            return hasSlot(this, "description");
+        },
+    },
+});
+</script>

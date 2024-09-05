@@ -1,0 +1,78 @@
+@use "focus";
+
+@mixin make-button-variant(
+    $name,
+    $shadow,
+    $shadow-hover,
+    $background-color,
+    $color,
+    $color--hover: $color,
+    $color--focus: $color--hover,
+    $color--disabled: var(--f-text-color-button-disabled),
+    $icon-color: $color,
+    $icon-color--hover: $color--hover,
+    $icon-color--focus: $color--focus,
+    $icon-color--disabled: $color--disabled,
+    $background-color--hover: $background-color,
+    $background-color--focus: $background-color--hover,
+    $background-color--disabled: var(--f-background-button-disabled),
+    $border-color: transparent,
+    $border-color--hover: $border-color,
+    $border-color--focus: $border-color--hover,
+    $border-color--disabled: var(--f-border-color-button-disabled),
+    $border-width: var(--f-border-width-medium),
+    $padding-top,
+    $padding-right,
+    $padding-bottom,
+    $padding-left
+) {
+    background-color: $background-color;
+    border-color: $border-color;
+    border-width: $border-width;
+    box-shadow: $shadow;
+    color: $color;
+    padding: $padding-top $padding-right $padding-bottom $padding-left;
+
+    & > .button__icon {
+        color: $icon-color;
+    }
+
+    &:hover {
+        background-color: $background-color--hover;
+        border-color: $border-color--hover;
+        color: $color--hover;
+        box-shadow: $shadow-hover;
+
+        & > .button__icon {
+            color: $icon-color--hover;
+        }
+    }
+
+    &:active,
+    &:focus {
+        @include focus.focus-indicator;
+
+        background-color: $background-color--focus;
+        border-color: $border-color--focus;
+        color: $color--focus;
+
+        & > .button__icon {
+            color: $icon-color--focus;
+        }
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &:disabled,
+    &:disabled:hover,
+    &#{$name}--disabled,
+    &#{$name}--disabled:hover {
+        background-color: $background-color--disabled;
+        border-color: $border-color--disabled;
+        color: $color--disabled;
+
+        & > .button__icon {
+            color: $icon-color--disabled;
+        }
+    }
+}

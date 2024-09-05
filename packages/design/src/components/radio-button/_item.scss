@@ -1,0 +1,54 @@
+@import ".././list/list";
+
+$RADIO_BUTTON_SELECTOR: ".radio-button" !default;
+$CHECKBOX_SELECTOR: ".checkbox" !default;
+
+%selectable-item {
+    border: $list-border;
+    margin-bottom: 0;
+    width: 100%;
+    cursor: pointer;
+    border-bottom: none;
+    &:last-child {
+        border-bottom: $list-border;
+    }
+
+    input:focus + label {
+        outline: 2px solid var(--f-border-color-grid);
+        outline-offset: -2px;
+    }
+    input + label::after {
+        top: 0.9rem;
+        left: 1rem;
+    }
+    input:checked + label::after {
+        top: 0.9rem;
+        left: 1rem;
+    }
+    &:hover {
+        @extend %list-item-hover;
+    }
+    &:has(input:checked) {
+        @extend %list-item-selected;
+    }
+    label::before {
+        top: 0.9rem;
+        left: 1rem;
+    }
+    label {
+        padding: 1rem;
+        padding-left: 3rem;
+        width: 100%;
+    }
+}
+
+#{$RADIO_BUTTON_SELECTOR,
+$CHECKBOX_SELECTOR} {
+    &__details {
+        display: block;
+    }
+
+    &__width {
+        width: 100%;
+    }
+}

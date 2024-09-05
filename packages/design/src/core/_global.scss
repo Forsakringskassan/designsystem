@@ -1,0 +1,47 @@
+@use "../core/mixins/breakpoints";
+@use "size";
+
+html {
+    // only applies when using FKUI in a non scoped application
+    font-size: var(--f-font-size-default-rem);
+
+    @include breakpoints.breakpoint-up(lg) {
+        font-size: var(--f-font-size-default-large-up-rem);
+    }
+}
+
+body {
+    // only applies when using FKUI in a non scoped application
+    color: var(--f-text-color-default);
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-normal);
+    line-height: var(--f-line-height-large);
+}
+
+p {
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-normal);
+    line-height: var(--f-line-height-large);
+    margin-bottom: #{size.$margin-100};
+}
+
+b,
+strong {
+    font-weight: var(--f-font-weight-medium);
+}
+
+code {
+    font-size: var(--f-font-size-standard);
+    border-radius: var(--f-border-radius-small);
+    font-family: var(--f-font-family-code);
+    background-color: var(--f-background-code);
+    display: inline-block;
+    margin: 0 #{size.$margin-025};
+    padding: 0 #{size.$padding-025};
+}
+
+pre {
+    code {
+        display: block;
+    }
+}

@@ -1,0 +1,16 @@
+@use "../../core/size";
+@import "../../core/config-variables";
+
+$ISKIPLINK_SELECTOR: ".iskiplink" !default;
+
+#{$ISKIPLINK_SELECTOR} {
+    position: absolute;
+    top: -200px;
+
+    &:focus {
+        color: black;
+        background-color: var(--f-background-skiplink-focus);
+        left: 10px;
+        top: 45px;
+    }
+}

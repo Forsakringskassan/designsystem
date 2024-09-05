@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with header and content when open 1`] = `
+<div
+  class="tooltip"
+>
+  <div
+    class="tooltip__container"
+  >
+    <button
+      aria-expanded="true"
+      class="tooltip__button"
+      type="button"
+    >
+      <span
+        class="icon-stack icon-stack--tooltip"
+      >
+        <f-icon-stub
+          library="f"
+          name="circle"
+        />
+        <f-icon-stub
+          library="f"
+          name="i"
+        />
+        <span
+          class="sr-only"
+        >
+          Screen reader text
+        </span>
+      </span>
+    </button>
+    <transition-stub
+      appear="false"
+      css="true"
+      persisted="false"
+    >
+      
+      <div>
+        <div
+          class="tooltip__content-wrapper"
+          tabindex="-1"
+        >
+          <span
+            class="tooltip__arrow"
+            style="left: -2px;"
+          />
+          <div
+            class="tooltip__content"
+          >
+            <div
+              class="tooltip__header"
+            >
+              
+              Tooltip
+              
+            </div>
+            <div
+              class="tooltip__body"
+            >
+              
+              <p>
+                Content...
+              </p>
+              
+            </div>
+          </div>
+          <div
+            class="iflex iflex--float-right"
+          >
+            
+            <div
+              class="iflex__item iflex--align-top iflex--shrink"
+            >
+              
+              <button
+                class="close-button"
+                type="button"
+              >
+                <span>
+                  Close
+                </span>
+                <f-icon-stub
+                  class="button__icon"
+                  library="f"
+                  name="close"
+                />
+              </button>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </transition-stub>
+  </div>
+</div>
+`;
+
+exports[`snapshots should match snapshot with header, content and screen reader text 1`] = `
+<div
+  class="tooltip"
+>
+  <div
+    class="tooltip__container"
+  >
+    <button
+      aria-expanded="false"
+      class="tooltip__button"
+      type="button"
+    >
+      <span
+        class="icon-stack icon-stack--tooltip"
+      >
+        <f-icon-stub
+          library="f"
+          name="circle"
+        />
+        <f-icon-stub
+          library="f"
+          name="i"
+        />
+        <span
+          class="sr-only"
+        >
+          Screen reader text
+        </span>
+      </span>
+    </button>
+    <transition-stub
+      appear="false"
+      css="true"
+      persisted="false"
+    >
+      
+      
+    </transition-stub>
+  </div>
+</div>
+`;

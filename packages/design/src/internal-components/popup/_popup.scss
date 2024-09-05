@@ -1,0 +1,35 @@
+@use "../../core/size";
+@use "../../components/z-index";
+@import "../../core/config-variables";
+
+$POPUP_SELECTOR: ".popup" !default;
+
+#{$POPUP_SELECTOR} {
+    &--overlay {
+        position: absolute;
+
+        // Place popup at the top as default so it doesn't affect
+        // the page height when teleporting to bottom of body.
+        top: 0;
+
+        #{$POPUP_SELECTOR}__wrapper {
+            left: -10000px;
+            max-width: fit-content;
+            border-radius: var(--f-border-radius-small);
+            position: absolute;
+            z-index: z-index.$POPUP_ZINDEX;
+            box-shadow: var(--f-box-modal-shadow);
+        }
+    }
+
+    &--inline {
+        position: static;
+
+        #{$POPUP_SELECTOR}__wrapper {
+            box-sizing: border-box;
+            margin-top: size.$margin-050;
+            margin-bottom: size.$margin-050;
+            position: static;
+        }
+    }
+}

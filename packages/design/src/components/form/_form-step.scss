@@ -1,0 +1,91 @@
+@use "../../core/size";
+@use "../../core/mixins/arrow-creator" as *;
+@use "../../core/mixins/breakpoints" as bp;
+
+$FORM_STEP_SELECTOR: ".form-step" !default;
+
+#{$FORM_STEP_SELECTOR} {
+    background: var(--f-background-form-step);
+    border: var(--f-border-width-medium) solid var(--f-border-color-form-step);
+    border-radius: var(--f-border-radius-small);
+    margin: 0 0 var(--f-margin-component-bottom);
+    margin-bottom: size.$margin-200;
+    padding: size.$padding-200;
+    position: relative;
+    transition:
+        background-color var(--f-animation-duration-medium) ease-in-out,
+        border-color var(--f-animation-duration-medium) ease-in-out;
+
+    @include bp.breakpoint-down(sm) {
+        padding: size.$padding-150 size.$padding-075 size.$padding-200;
+        margin-left: calc(-1 * size.$margin-075);
+        margin-right: calc(-1 * size.$margin-075);
+    }
+
+    &--last-step {
+        margin-bottom: calc(2 * size.$margin-150);
+
+        @include bp.breakpoint-down(sm) {
+            margin-bottom: size.$margin-200;
+        }
+    }
+
+    &__header {
+        margin-bottom: size.$margin-050;
+    }
+
+    &__title {
+        font-size: var(--f-font-size-h2);
+        display: inline;
+
+        @include bp.breakpoint-down(sm) {
+            font-size: var(--f-font-size-xxx-large);
+        }
+    }
+
+    &__check {
+        transition: opacity var(--f-animation-duration-medium) ease-in-out;
+        color: var(--f-icon-color-success);
+        height: var(--f-icon-size-x-large);
+        margin-bottom: calc(-1 * size.$margin-025);
+        margin-left: size.$margin-050;
+        width: var(--f-icon-size-x-large);
+    }
+
+    &__error {
+        color: var(--f-text-color-error);
+    }
+
+    &__arrow {
+        @include arrow-creator(
+            $size: var(--f-icon-size-small),
+            $position: calc(size.$padding-150 + size.$padding-150),
+            $width: var(--f-border-width-medium),
+            $background: var(--f-background-form-step),
+            $border: var(--f-border-color-form-step)
+        );
+
+        @include bp.breakpoint-down(sm) {
+            left: calc(size.$padding-100 + size.$padding-100);
+        }
+    }
+
+    &--complete {
+        background: var(--f-background-success);
+        border-color: var(--f-border-color-success);
+
+        #{$FORM_STEP_SELECTOR}__arrow {
+            @include arrow-creator(
+                $size: var(--f-icon-size-small),
+                $position: calc(size.$padding-150 + size.$padding-150),
+                $width: var(--f-border-width-medium),
+                $background: var(--f-background-success),
+                $border: var(--f-border-color-success)
+            );
+
+            @include bp.breakpoint-down(sm) {
+                left: size.$padding-200;
+            }
+        }
+    }
+}

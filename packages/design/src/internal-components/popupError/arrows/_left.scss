@@ -1,0 +1,19 @@
+@function border-radius($pos, $radius, $offset) {
+    @return $radius / min($radius, $pos - $offset) $radius $radius min($radius, 100% - $pos - $offset);
+}
+
+@function border-image($pos, $offset, $height, $radius, $border-color) {
+    @return conic-gradient($border-color 0 0) fill 0 / max(0%, $pos - $offset) $radius max(0%, 100% - $pos - $offset) 0 / 0 0 0 $height;
+}
+
+@function clip-path($pos, $offset, $height) {
+    @return polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 min(100%, $pos + $offset), calc(-1 * $height) $pos, 0 max(0%, $pos - $offset));
+}
+
+@mixin mixin($pos, $radius, $height, $angle, $border-color) {
+    $offset: $height * tan($angle / 2);
+
+    border-radius: border-radius($pos, $offset, $angle);
+    border-image: border-image($pos, $offset, $height, $radius, $border-color);
+    clip-path: clip-path($pos, $offset, $height);
+}

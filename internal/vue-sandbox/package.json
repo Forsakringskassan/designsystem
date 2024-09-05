@@ -1,0 +1,43 @@
+{
+  "name": "@fkui/vue-sandbox",
+  "version": "5.35.0",
+  "private": true,
+  "description": "fkui-vue-sandbox",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "internal/vue-sandbox"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "scripts": {
+    "prebuild": "vue-tsc",
+    "build": "vite build --mode development",
+    "build:docs": "vite build --mode development",
+    "clean": "rimraf dist",
+    "start": "vite --"
+  },
+  "dependencies": {
+    "@fkui/css-variables": "5.35.0",
+    "@fkui/date": "5.35.0",
+    "@fkui/design": "5.35.0",
+    "@fkui/logic": "5.35.0",
+    "@fkui/vue": "5.35.0",
+    "core-js": "^3.6.5",
+    "vue": "3.4.38",
+    "vue-router": "4.4.3"
+  },
+  "devDependencies": {
+    "@fkui/icon-lib-default": "5.35.0",
+    "@vitejs/plugin-vue": "5.1.3",
+    "autoprefixer": "10.4.20",
+    "html-validate": "8.21.0",
+    "postcss": "8.4.43",
+    "vite": "5.4.2"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

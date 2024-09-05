@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot when validityMode is ERROR 1`] = `
+<fieldset
+  class="fieldset"
+  id="someId"
+>
+  <legend
+    class="label fieldset__label"
+  >
+    
+    Label
+    
+    <!--v-if-->
+    
+    
+    
+    <span
+      class="label__message label__message--error"
+    >
+      <f-icon-stub
+        class="label__icon--left"
+        library="f"
+        name="error"
+      />
+       Something went wrong.
+    </span>
+    
+  </legend>
+  <!--v-if-->
+  <!--v-if-->
+  <div
+    class="fieldset__content"
+  >
+    
+    
+  </div>
+</fieldset>
+`;
+
+exports[`snapshots should match snapshot when validityMode is INITIAL 1`] = `
+<fieldset
+  class="fieldset"
+  id="someId"
+>
+  <legend
+    class="label fieldset__label"
+  >
+    
+    Label
+    
+    <!--v-if-->
+    
+    
+    
+    <!--v-if-->
+    
+  </legend>
+  <!--v-if-->
+  <!--v-if-->
+  <div
+    class="fieldset__content"
+  >
+    
+    
+  </div>
+</fieldset>
+`;
+
+exports[`snapshots should match snapshot when validityMode is INITIAL 2`] = `
+<fieldset
+  class="fieldset"
+  id="someId"
+>
+  <legend
+    class="label fieldset__label"
+  >
+    
+    Label
+    
+    <!--v-if-->
+    
+    
+    
+    <!--v-if-->
+    
+  </legend>
+  <!--v-if-->
+  <!--v-if-->
+  <div
+    class="fieldset__content"
+  >
+    
+    
+  </div>
+</fieldset>
+`;
+
+exports[`snapshots should match snapshot when validityMode is VALID 1`] = `
+<fieldset
+  class="fieldset"
+  id="someId"
+>
+  <legend
+    class="label fieldset__label"
+  >
+    
+    Label
+    
+    <!--v-if-->
+    
+    
+    
+    <!--v-if-->
+    
+  </legend>
+  <!--v-if-->
+  <!--v-if-->
+  <div
+    class="fieldset__content"
+  >
+    
+    
+  </div>
+</fieldset>
+`;
+
+exports[`snapshots should match snapshot with generated id attribute 1`] = `
+<fieldset id="fkui-vue-element-0001" class="fieldset">
+  <legend class="label fieldset__label">
+    <!--v-if-->
+    <!--v-if-->
+  </legend>
+  <!--v-if-->
+  <!--v-if-->
+  <div class="fieldset__content"></div>
+</fieldset>
+`;
+
+exports[`snapshots should match snapshot with label and content 1`] = `
+<fieldset
+  class="fieldset"
+  id="someId"
+>
+  <legend
+    class="label fieldset__label"
+  >
+    
+    Label
+    
+    <!--v-if-->
+    
+    
+    
+    <!--v-if-->
+    
+  </legend>
+  <!--v-if-->
+  <!--v-if-->
+  <div
+    class="fieldset__content"
+  >
+    
+    Content
+    
+  </div>
+</fieldset>
+`;
+
+exports[`snapshots should match snapshot with label, content and error message 1`] = `
+<fieldset
+  class="fieldset"
+  id="someId"
+>
+  <legend
+    class="label fieldset__label"
+  >
+    
+    Label
+    
+    <!--v-if-->
+    
+    
+    
+    Something went wrong.
+    
+  </legend>
+  <!--v-if-->
+  <!--v-if-->
+  <div
+    class="fieldset__content"
+  >
+    
+    Content
+    
+  </div>
+</fieldset>
+`;
+
+exports[`snapshots should match snapshot with label, content and tooltip 1`] = `
+<fieldset
+  class="fieldset"
+  id="someId"
+>
+  <legend
+    class="label sr-only"
+  >
+    
+    Label
+    
+    <!--v-if-->
+    
+    
+    
+    <!--v-if-->
+    
+  </legend>
+  <!--v-if-->
+  
+  <div
+    class="sr-separator"
+  >
+    <div
+      aria-hidden="true"
+      class="tooltip-before"
+    >
+      <div
+        class="label tooltip-before__label"
+      >
+        
+        Label
+        
+      </div>
+    </div>
+    
+    Tooltip
+    
+  </div>
+  <!--v-if-->
+  
+  <div
+    class="fieldset__content"
+  >
+    
+    Content
+    
+  </div>
+</fieldset>
+`;

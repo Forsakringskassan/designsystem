@@ -1,0 +1,7 @@
+$FILE_UPLOADER_SELECTOR: ".file-uploader" !default;
+
+#{$FILE_UPLOADER_SELECTOR} {
+    &__message-box {
+        margin-top: 1.25rem;
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "docs",
+  "version": "5.35.0",
+  "private": true,
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "docs"
+  },
+  "scripts": {
+    "build": "vue-tsc -b",
+    "clean": "rimraf -g *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@fkui/icon-lib-default": "5.35.0",
+    "@fkui/vue": "5.35.0"
+  },
+  "devDependencies": {
+    "@forsakringskassan/docs-generator": "1.33.0",
+    "cypress": "13.14.1",
+    "vue": "3.4.38"
+  }
+}

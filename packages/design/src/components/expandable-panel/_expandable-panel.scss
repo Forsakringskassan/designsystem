@@ -1,0 +1,113 @@
+@use "../../core/mixins/circle";
+@use "../../core/typography/headings";
+@use "../icon/icon";
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+
+$EXPANDABLE_PANEL_SELECTOR: ".expandable-panel" !default;
+$EXPANDABLE_PANEL_LINE_HEIGHT: var(--f-line-height-medium);
+$ICON_MARGIN: 0.5rem;
+$ICON_WIDTH: var(--f-icon-size-medium);
+
+#{$EXPANDABLE_PANEL_SELECTOR} {
+    margin-bottom: densify(size.$margin-200);
+
+    &__icon {
+        @include circle.circle($background: var(--f-icon-color-expandable-panel), $size: $ICON_WIDTH);
+
+        margin-top: calc((#{$EXPANDABLE_PANEL_LINE_HEIGHT} * 1em - #{$ICON_WIDTH}) / 2); // Unit "em" intended here, align icon to header
+        display: flex;
+        color: var(--f-background-heading-expandable-panel);
+        padding: 3px; // cross icon size
+        flex-shrink: 0; // needed for IE11
+        margin-right: $ICON_MARGIN;
+        .icon {
+            transition: transform var(--f-animation-duration-long) ease;
+        }
+    }
+
+    &.expandable-panel--expanded {
+        .expandable-panel__icon {
+            svg:nth-child(2) {
+                transform: rotate(0);
+            }
+        }
+
+        .expandable-panel__content {
+            height: auto;
+        }
+
+        .expandable-panel__heading button {
+            border: var(--f-expandable-panel-heading-border-open);
+        }
+    }
+
+    &.expandable-panel--collapsed {
+        .expandable-panel__icon {
+            svg:nth-child(2) {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+    &__heading {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend .heading--h3;
+
+        margin-bottom: 0 !important;
+
+        button {
+            background-color: var(--f-background-heading-expandable-panel);
+            border: var(--f-expandable-panel-heading-border-close);
+            border-radius: var(--f-expandable-panel-heading-border-radius);
+            color: var(--f-text-color-heading-expandable-panel);
+            cursor: pointer;
+            display: flex;
+            margin: 0;
+            padding: densify(size.$padding-100) size.$padding-100;
+            position: relative;
+            text-align: left;
+            width: 100%;
+
+            &:focus,
+            &:hover {
+                background-color: var(--f-background-heading-expandable-panel-hover);
+            }
+        }
+    }
+
+    &__notification {
+        @include circle.circle(
+            $background: var(--f-icon-color-notice),
+            $border: var(--f-border-width-medium) solid var(--f-icon-color-white),
+            $size: var(--f-icon-size-x-large)
+        );
+
+        display: inline-block;
+        padding: 0.27rem;
+        position: absolute;
+        right: 1.5rem;
+        top: calc(-0.5 * size.$padding-150);
+        line-height: 0;
+
+        svg {
+            color: var(--f-icon-color-white);
+            height: auto;
+            width: auto;
+        }
+    }
+
+    &__content {
+        height: 0;
+        overflow: hidden;
+        transition: height var(--f-animation-duration-medium) ease-in;
+    }
+
+    &__body {
+        background-color: var(--f-background-expandable-panel);
+        border: var(--f-border-width-medium) solid var(--f-border-color-panel);
+        border-top: 0;
+        line-height: inherit;
+        padding: densify(size.$padding-150) size.$padding-150;
+    }
+}

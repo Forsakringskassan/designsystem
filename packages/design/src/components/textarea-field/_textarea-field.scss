@@ -1,0 +1,55 @@
+@use "../../core/size";
+@use "../../core";
+@use "../../core/utils/functions" as *;
+
+$TEXTAREA_FIELD_SELECTOR: ".textarea-field" !default;
+
+#{$TEXTAREA_FIELD_SELECTOR} {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    line-height: var(--f-line-height-large);
+    margin: 0 0 densify(var(--f-margin-component-bottom));
+    position: relative;
+    width: var(--f-width-full);
+
+    &--inline {
+        @include core.label-inline;
+    }
+
+    &__textarea {
+        background-color: var(--f-background-input);
+        box-shadow: var(--f-input-shadow-inset);
+        border-radius: var(--f-border-radius-medium);
+        border: var(--f-border-width-medium) solid var(--f-border-color-input);
+        box-sizing: border-box;
+        font-size: var(--f-font-size-standard);
+        min-height: densify(var(--f-height-large));
+        padding: densify(size.$padding-050) size.$padding-075;
+        width: var(--f-width-full);
+    }
+
+    &__textarea[rows] {
+        height: auto;
+    }
+
+    &__textarea:disabled {
+        border-color: var(--f-border-color-input-disabled);
+        color: var(--f-text-color-input-disabled);
+        background-color: var(--f-background-input-disabled);
+    }
+
+    &--error {
+        #{$TEXTAREA_FIELD_SELECTOR}__textarea {
+            border-color: var(--f-border-color-error);
+        }
+    }
+
+    &__resize--none {
+        resize: none;
+    }
+
+    &__resize--vertical {
+        resize: vertical;
+    }
+}

@@ -1,0 +1,22 @@
+@use "../../core/config-variables";
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+
+$FIELDSET_SELECTOR: ".fieldset" !default;
+
+#{$FIELDSET_SELECTOR} {
+    border: 0;
+    margin: 0 0 densify(var(--f-margin-component-bottom));
+    padding: 0;
+    width: var(--f-width-full);
+
+    &__label {
+        padding: 0;
+        margin-bottom: densify(size.$margin-075);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+}

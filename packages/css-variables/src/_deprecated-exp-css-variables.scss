@@ -1,0 +1,193 @@
+@use "./palette-variables" as *;
+
+$palette-color-red-10: #fdeaea !default;
+$palette-color-black-5: #f2f2f2 !default;
+$palette-color-black-10: #e5e5e5 !default;
+$palette-color-black-15: #d9d9d9 !default;
+$palette-color-black-40: #999999 !default;
+$palette-color-black-45: #8c8c8c !default;
+$palette-color-green-a-90: #297951 !default;
+$palette-color-green-65-dark: #0f660f !default;
+$palette-color-green-c-50: #d3e7d5 !default;
+$palette-color-green-c-100: #a6d0ab !default;
+$palette-color-blue-10: #ededfc !default;
+$palette-color-black-40: #999999 !default;
+$palette-color-black-45: #8c8c8c !default;
+$palette-color-blue-10: #ededfc !default;
+$palette-color-blue-15: #e3e4fb !default;
+$palette-color-blue-20: #d9dcfa !default;
+$palette-color-blue-85-dark: #3942c2 !default;
+$palette-color-blue-85: #5f68e8 !default;
+$palette-color-blue-100: #434ee4 !default;
+$palette-color-bluebell-10: #edeef8 !default;
+$palette-color-bluebell-90-dark: #434aa4 !default;
+$palette-color-green-100: #179c17 !default;
+$palette-color-green-80: #46b046 !default;
+$palette-color-green-45: #97d397 !default;
+$palette-color-green-10: #e8f5e8 !default;
+$palette-color-green-5: #f3faf3 !default;
+$palette-color-green-65-dark: #0f660f !default;
+$palette-color-green-b-65-dark: #2f693d !default;
+$palette-color-green-b-95-dark: #459959 !default;
+$palette-color-green-c-100: #a6d0ab !default;
+$palette-color-green-c-50: #d3e7d5 !default;
+$palette-color-orange-10: #fef3e7 !default;
+$palette-color-orange-100: #f38c10 !default;
+$palette-color-yellow-10: #fff8e7 !default;
+$palette-color-yellow-65-dark: #a67b0a !default;
+$palette-color-tegel-80: #db6a35 !default;
+$palette-color-tegel-60: #e48f68 !default;
+$palette-color-tegel-40: #edb59a !default;
+$palette-color-tegel-20: #ffffff !default;
+$palette-color-plommon-100: #a73a64 !default;
+$palette-color-plommon-80: #b96182 !default;
+$palette-color-plommon-60: #ca88a1 !default;
+$palette-color-plommon-40: #dcb0c1 !default;
+$palette-color-plommon-20: #edd7e0 !default;
+$palette-color-senap-80: #cba14d !default;
+$palette-color-senap-60: #d8b879 !default;
+$palette-color-senap-40: #e5d0a6 !default;
+$palette-color-senap-20: #f2e7d2 !default;
+$palette-color-hav-80: #6f85b2 !default;
+$palette-color-hav-60: #93a3c5 !default;
+$palette-color-hav-40: #b7c2d9 !default;
+$palette-color-hav-20: #dbe0ec !default;
+
+@mixin deprecated-variables {
+    // Backdrop color
+    // Example use: modal dialogues
+    --f-backdrop-modal: rgba(0, 0, 0, 0.75);
+    --f-color-backdrop: rgba(0, 0, 0, 0.75); // v1.3.0
+    --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3); // v1.3.0
+
+    /// Base colors
+    --f-color-white: #{$palette-color-white-100}; // v1.5.1
+    --f-color-black: #{$palette-color-fk-black-100}; // v1.5.1
+
+    /// Brand colors
+    /// Brand A colors, from light to strong
+    /// Example use: collapse icon, expandable panel, navbar
+    --f-color-brand-a-medium: #{$palette-color-green-a-90}; // v1.5.1
+    --f-color-brand-a-strong: #{$palette-color-green-a-100}; // v1.5.1
+
+    /// Brand B colors, from light to strong
+    /// Example use: expandable paragraph
+    --f-color-brand-b-medium: #{$palette-color-green-b-100}; // v1.5.1
+    --f-color-brand-b-strong: #{$palette-color-green-65-dark}; // v1.5.1
+
+    /// Brand C colors, from light to strong
+    /// Example use: static panel
+    --f-color-brand-c-light: #{$palette-color-green-c-50}; // v1.5.1
+    --f-color-brand-c-medium: #{$palette-color-green-c-100}; // v1.5.1
+
+    /// Info colors, from light to strong, e.g. light blue to dark blue.
+    /// Example use: info message, tooltip, info modal
+    --f-color-info-light: #{$palette-color-blue-10}; // v1.5.1
+    --f-color-info-midlight: #{$palette-color-blue-15}; // v1.5.1
+    --f-color-info-medium: #{$palette-color-blue-20}; // v1.5.1
+    --f-color-info-midstrong: #{$palette-color-bluebell-100}; // v1.5.1
+    --f-color-info-strong: #{$palette-color-blue-85-dark}; // v1.5.1
+
+    /// Primary colors, from light to strong
+    /// Example use: primary button
+    --f-color-primary-light: #{$palette-color-bluebell-5}; // v1.5.1
+    --f-color-primary-midlight: #{$palette-color-bluebell-15}; // v1.5.1
+    --f-color-primary-midstrong: #{$palette-color-bluebell-100}; // v1.5.1
+    --f-color-primary-strong: #{$palette-color-bluebell-90-dark}; // v1.5.1
+
+    /// Secondary colors, from light to strong
+    /// Example user: secondary button
+    --f-color-secondary-light: #{$palette-color-white-100}; // v1.5.1
+    --f-color-secondary-midlight: #{$palette-color-bluebell-10}; // v1.5.1
+    --f-color-secondary-medium: #{$palette-color-bluebell-10}; // v1.5.1
+    --f-color-secondary-strong: #{$palette-color-bluebell-100}; // v1.5.1
+
+    /// Standard colors, from light to strong
+    /// Example user: standard button
+    --f-color-standard-medium: #{$palette-color-blue-10}; // v1.5.1
+    --f-color-standard-strong: #{$palette-color-blue-20}; // v1.5.1
+
+    /// Passive colors, from light to strong, e.g. light gray to dark gray.
+    /// Example use: disabled
+    --f-color-passive-light: #{$palette-color-black-5}; // v1.5.1
+    --f-color-passive-midlight: #{$palette-color-black-10}; // v1.5.1
+    --f-color-passive-medium: #{$palette-color-black-15}; // v1.5.1
+    --f-color-passive-midstrong: #{$palette-color-black-40}; // v1.5.1
+    --f-color-passive-strong: #{$palette-color-black-45}; // v1.5.1
+
+    /// Success colors, from light to strong, e.g. light green to dark green.
+    /// Example use: valid check icon, bakground valid formstep
+    --f-color-success-light: #{$palette-color-green-5}; // v1.5.1
+    --f-color-success-medium: #{$palette-color-green-100}; // v1.5.1
+
+    /// Warning colors, from light to strong, e.g. light yellow to dark yellow.
+    /// Example use: warning message box, warning modal
+    --f-color-warning-light: #{$palette-color-yellow-10}; // v1.5.1
+    --f-color-warning-medium: #{$palette-color-yellow-100}; // v1.5.1
+    --f-color-warning-strong: #{$palette-color-yellow-65-dark}; // v1.5.1
+
+    /// Error colors, from light to strong, e.g. light red to dark red.
+    /// Example use: error message box, error modal
+    --f-color-error-light: #{$palette-color-red-10}; // v1.5.1
+    --f-color-error-medium: #{$palette-color-red-100}; // v1.5.1
+
+    // Notice colors, from light to strong, e.g. light orange to dark orange.
+    // Example use: notice messagebox (driftmeddelande)
+    --f-color-notice-light: #{$palette-color-orange-10}; // v1.5.1
+    --f-color-notice-medium: #{$palette-color-orange-100}; // v1.5.1
+    --f-color-notice-strong: #{$palette-color-tegel-100}; // v1.5.1
+
+    // Deprected since v3.3.0
+    --f-shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --f-shadow-medium: 0 0 20px rgba(0, 0, 0, 0.3);
+    --f-shadow-inset: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+    --f-font-color-primary: #{$palette-color-fk-black-100};
+    --f-font-color-secondary: #{$palette-color-blue-100};
+    --f-font-color-passive: #{$palette-color-fk-black-70};
+    --f-font-size-default: 16px;
+    --f-font-size-default-large-up: 16px;
+    --f-font-height-small: 1.25;
+    --f-font-height-medium: 1.4;
+    --f-font-height-strong: 1.5;
+    --f-font-size-xxxxx-large: 2.5rem;
+    --f-font-size-xxxx-large: 1.75rem;
+    --f-font-size-xx-large: 1.375rem;
+    --f-font-size-x-large: 1.25rem;
+    --f-font-size-medium: 1rem;
+    --f-size-small: 0.75rem;
+    --f-size-medium: 1rem;
+    --f-size-large: 1.25rem;
+    --f-space-xx-small: 0.25rem;
+    --f-space-x-small: 0.5rem;
+    --f-space-small: 0.75rem;
+    --f-space-medium: 1rem;
+    --f-space-large: 1.25rem;
+    --f-space-x-large: 1.5rem;
+    --f-space-xx-large: 1.75rem;
+    --f-space-xxx-large: 2rem;
+    --f-margin-top: 0.25rem;
+    --f-margin-bottom: 1.5rem;
+    --f-margin: 0 0 1.5rem;
+    --f-padding: 0 2.25em 0 0.75em;
+    --f-color-interactive-focus: #{$palette-color-fk-black-100};
+    --f-animation-wrapper: 4em;
+    --f-animation-margin: 0 auto 3em auto;
+    --f-hover-filter: brightness(115%);
+
+    /// Deprecated since 4.36.0
+    --f-background-button-primary-disabled: #{$palette-color-fk-black-5};
+
+    /// Deprecated since 5.23.0
+    --f-margin-component: 0 0 1.5rem;
+    --f-button-default-padding: 1rem 1.5rem;
+    --f-button-primary-padding: 1rem 1.5rem;
+    --f-button-secondary-padding: 1rem 1.5rem;
+    --f-button-standard-padding: 1rem 1.5rem;
+    --f-button-tertiary-padding: 0.75rem 0.5rem;
+    --f-button-discrete-padding: initial;
+    --f-button-discrete-black-padding: initial;
+    --f-button-discrete-table-column-action-padding: 0.571rem;
+
+    /// Deprecated since 5.32.0
+    --f-tooltip-close-button-padding: initial;
+}

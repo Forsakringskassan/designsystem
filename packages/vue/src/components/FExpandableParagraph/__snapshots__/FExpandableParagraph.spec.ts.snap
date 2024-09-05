@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot when collapsed 1`] = `
+<div
+  class="expandable-paragraph expandable-paragraph--closed"
+>
+  <div
+    class=""
+  >
+    <span
+      class="expandable-paragraph__heading heading--h4"
+    >
+      <button
+        aria-controls="my-id"
+        aria-expanded="false"
+        class="expandable-paragraph__button"
+        type="button"
+      >
+        <span
+          class="expandable-paragraph__icon"
+        >
+          <span
+            class="icon-stack"
+          >
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+          </span>
+        </span>
+        
+        My expandable component
+        
+      </button>
+    </span>
+    <!--v-if-->
+  </div>
+  <f-expand-stub />
+</div>
+`;
+
+exports[`snapshots should match snapshot when expanded 1`] = `
+<div
+  class="expandable-paragraph expandable-paragraph--open"
+>
+  <div
+    class=""
+  >
+    <span
+      class="expandable-paragraph__heading heading--h4"
+    >
+      <button
+        aria-controls="my-id"
+        aria-expanded="true"
+        class="expandable-paragraph__button"
+        type="button"
+      >
+        <span
+          class="expandable-paragraph__icon"
+        >
+          <span
+            class="icon-stack"
+          >
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+          </span>
+        </span>
+        
+        My expandable component
+        
+      </button>
+    </span>
+    <!--v-if-->
+  </div>
+  <f-expand-stub />
+</div>
+`;
+
+exports[`snapshots should match snapshot with custom heading level 1`] = `
+<div
+  class="expandable-paragraph expandable-paragraph--closed"
+>
+  <div
+    class=""
+  >
+    <h3
+      class="expandable-paragraph__heading heading--h4"
+    >
+      <button
+        aria-controls="my-id"
+        aria-expanded="false"
+        class="expandable-paragraph__button"
+        type="button"
+      >
+        <span
+          class="expandable-paragraph__icon"
+        >
+          <span
+            class="icon-stack"
+          >
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+          </span>
+        </span>
+        
+        My expandable component
+        
+      </button>
+    </h3>
+    <!--v-if-->
+  </div>
+  <f-expand-stub />
+</div>
+`;
+
+exports[`snapshots should match snapshot with list styling 1`] = `
+<div
+  class="expandable-paragraph expandable-paragraph--closed expandable-paragraph--list"
+>
+  <div
+    class=""
+  >
+    <h3
+      class="expandable-paragraph__heading heading--h4"
+    >
+      <button
+        aria-controls="my-id"
+        aria-expanded="false"
+        class="expandable-paragraph__button"
+        type="button"
+      >
+        <span
+          class="expandable-paragraph__icon"
+        >
+          <span
+            class="icon-stack"
+          >
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+          </span>
+        </span>
+        
+        My expandable component
+        
+      </button>
+    </h3>
+    <!--v-if-->
+  </div>
+  <f-expand-stub />
+</div>
+`;
+
+exports[`snapshots should match snapshot with related information 1`] = `
+<div
+  class="expandable-paragraph expandable-paragraph--closed"
+>
+  <div
+    class="expandable-paragraph--related-information"
+  >
+    <h3
+      class="expandable-paragraph__heading heading--h4"
+    >
+      <button
+        aria-controls="my-id"
+        aria-expanded="false"
+        class="expandable-paragraph__button"
+        type="button"
+      >
+        <span
+          class="expandable-paragraph__icon"
+        >
+          <span
+            class="icon-stack"
+          >
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+            <f-icon-stub
+              library="f"
+              name="dash"
+            />
+          </span>
+        </span>
+        
+        My expandable component
+        
+      </button>
+    </h3>
+    <div
+      class="expandable-paragraph__related-information"
+    >
+      
+      dolor sit amet
+      
+    </div>
+  </div>
+  <f-expand-stub />
+</div>
+`;

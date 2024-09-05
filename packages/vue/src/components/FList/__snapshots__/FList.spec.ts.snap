@@ -1,0 +1,354 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`active element should activate element and emit change event when item getting space key ( ) down event 1`] = `
+[
+  "list__item--active",
+  "list__item",
+]
+`;
+
+exports[`active element should activate element and emit change event when item getting space key ( ) down event 2`] = `
+{
+  "id": "2",
+  "name": "TEST 2",
+  "permission": "Write",
+}
+`;
+
+exports[`active element should activate element and emit change event when item getting space key (Spacebar) down event 1`] = `
+[
+  "list__item--active",
+  "list__item",
+]
+`;
+
+exports[`active element should activate element and emit change event when item getting space key (Spacebar) down event 2`] = `
+{
+  "id": "2",
+  "name": "TEST 2",
+  "permission": "Write",
+}
+`;
+
+exports[`active element should activate element and emit click event when item getting space key ( ) down event 1`] = `
+[
+  "list__item--active",
+  "list__item",
+]
+`;
+
+exports[`active element should activate element and emit click event when item getting space key ( ) down event 2`] = `
+{
+  "id": "2",
+  "name": "TEST 2",
+  "permission": "Write",
+}
+`;
+
+exports[`active element should activate element and emit click event when item getting space key (Spacebar) down event 1`] = `
+[
+  "list__item--active",
+  "list__item",
+]
+`;
+
+exports[`active element should activate element and emit click event when item getting space key (Spacebar) down event 2`] = `
+{
+  "id": "2",
+  "name": "TEST 2",
+  "permission": "Write",
+}
+`;
+
+exports[`snapshots should match snapshot with a list containg three items 1`] = `
+<ul
+  class="list"
+>
+  
+  <li
+    class="list__item"
+  >
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        1, TEST 1, Read
+      </p>
+      
+    </div>
+  </li>
+  <li
+    class="list__item"
+  >
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        2, TEST 2, Write
+      </p>
+      
+    </div>
+  </li>
+  <li
+    class="list__item"
+  >
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        3, TEST 3, Read
+      </p>
+      
+    </div>
+  </li>
+  
+  <!--v-if-->
+</ul>
+`;
+
+exports[`snapshots should match snapshot with list being selectable with first and second item selected 1`] = `
+<ul
+  class="list list--hover"
+  tabindex="0"
+>
+  
+  <li
+    aria-labelledby="fkui-vue-element-0001_item_1"
+    class="list__item--selected list__item"
+    id="fkui-vue-element-0001_item_1"
+    tabindex="0"
+  >
+    <div
+      class="list__item__selectpane"
+    >
+      <div
+        class="list__item__selectpane__input"
+      >
+        <f-checkbox-field-stub
+          disabled="false"
+          id="fkui-vue-element-0002"
+          modelvalue="true"
+          value="true"
+        />
+      </div>
+    </div>
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        1, TEST 1, Read
+      </p>
+      
+    </div>
+  </li>
+  <li
+    aria-labelledby="fkui-vue-element-0001_item_2"
+    class="list__item--selected list__item"
+    id="fkui-vue-element-0001_item_2"
+    tabindex="0"
+  >
+    <div
+      class="list__item__selectpane"
+    >
+      <div
+        class="list__item__selectpane__input"
+      >
+        <f-checkbox-field-stub
+          disabled="false"
+          id="fkui-vue-element-0003"
+          modelvalue="true"
+          value="true"
+        />
+      </div>
+    </div>
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        2, TEST 2, Write
+      </p>
+      
+    </div>
+  </li>
+  <li
+    aria-labelledby="fkui-vue-element-0001_item_3"
+    class="list__item"
+    id="fkui-vue-element-0001_item_3"
+    tabindex="0"
+  >
+    <div
+      class="list__item__selectpane"
+    >
+      <div
+        class="list__item__selectpane__input"
+      >
+        <f-checkbox-field-stub
+          disabled="false"
+          id="fkui-vue-element-0004"
+          modelvalue="false"
+          value="true"
+        />
+      </div>
+    </div>
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        3, TEST 3, Read
+      </p>
+      
+    </div>
+  </li>
+  
+  <!--v-if-->
+</ul>
+`;
+
+exports[`snapshots should match snapshot with list being selectable with second item active 1`] = `
+<ul
+  class="list list--hover"
+  tabindex="0"
+>
+  
+  <li
+    aria-labelledby="fkui-vue-element-0001_item_1"
+    class="list__item"
+    id="fkui-vue-element-0001_item_1"
+    tabindex="0"
+  >
+    <div
+      class="list__item__selectpane"
+    >
+      <div
+        class="list__item__selectpane__input"
+      >
+        <f-checkbox-field-stub
+          disabled="false"
+          id="fkui-vue-element-0002"
+          modelvalue="false"
+          value="true"
+        />
+      </div>
+    </div>
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        1, TEST 1, Read
+      </p>
+      
+    </div>
+  </li>
+  <li
+    aria-labelledby="fkui-vue-element-0001_item_2"
+    class="list__item--active list__item"
+    id="fkui-vue-element-0001_item_2"
+    tabindex="0"
+  >
+    <div
+      class="list__item__selectpane"
+    >
+      <div
+        class="list__item__selectpane__input"
+      >
+        <f-checkbox-field-stub
+          disabled="false"
+          id="fkui-vue-element-0003"
+          modelvalue="false"
+          value="true"
+        />
+      </div>
+    </div>
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        2, TEST 2, Write
+      </p>
+      
+    </div>
+  </li>
+  <li
+    aria-labelledby="fkui-vue-element-0001_item_3"
+    class="list__item"
+    id="fkui-vue-element-0001_item_3"
+    tabindex="0"
+  >
+    <div
+      class="list__item__selectpane"
+    >
+      <div
+        class="list__item__selectpane__input"
+      >
+        <f-checkbox-field-stub
+          disabled="false"
+          id="fkui-vue-element-0004"
+          modelvalue="false"
+          value="true"
+        />
+      </div>
+    </div>
+    <div
+      class="list__item__itempane"
+    >
+      
+      <p>
+        3, TEST 3, Read
+      </p>
+      
+    </div>
+  </li>
+  
+  <!--v-if-->
+</ul>
+`;
+
+exports[`snapshots should match snapshot with no items in list and custom text 1`] = `
+<ul
+  class="list"
+>
+  
+  
+  <li
+    class="list__item"
+  >
+    <div
+      class="list__item__itempane"
+    >
+      
+      THE LIST IS EMPTY!
+      
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`snapshots should match snapshot with no items in list and default text 1`] = `
+<ul
+  class="list"
+>
+  
+  
+  <li
+    class="list__item"
+  >
+    <div
+      class="list__item__itempane"
+    >
+      
+      <em>
+        Listan är tom
+      </em>
+      
+    </div>
+  </li>
+</ul>
+`;

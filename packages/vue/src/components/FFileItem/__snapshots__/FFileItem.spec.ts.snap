@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileItem should match snapshot with slots 1`] = `
+<div
+  class="file-item"
+>
+  <div
+    class="file-item__row"
+  >
+    <a
+      class="file-item__file-open"
+      id="123"
+    >
+      <div
+        class="icon-stack button__icon icon-stack--new-window"
+      >
+        <f-icon-stub
+          library="f"
+          name="new-window"
+        />
+        <f-icon-stub
+          library="f"
+          name="pdf"
+        />
+      </div>
+      <span
+        class="file-item__file-name"
+      >
+        foo.bar
+      </span>
+      <span
+        class="sr-only"
+      >
+         öppnas i nytt fönster
+      </span>
+    </a>
+    
+    file item goes here
+    
+  </div>
+  
+  progress is 80%
+  
+  <!--v-if-->
+  <hr
+    class="file-item__separator"
+  />
+</div>
+`;
+
+exports[`FileItem should match snapshots without slots 1`] = `
+<div
+  class="file-item"
+>
+  <div
+    class="file-item__row"
+  >
+    <a
+      class="file-item__file-open"
+      id="123"
+    >
+      <div
+        class="icon-stack button__icon icon-stack--new-window"
+      >
+        <f-icon-stub
+          library="f"
+          name="new-window"
+        />
+        <f-icon-stub
+          library="f"
+          name="pdf"
+        />
+      </div>
+      <span
+        class="file-item__file-name"
+      >
+        foo.bar
+      </span>
+      <span
+        class="sr-only"
+      >
+         öppnas i nytt fönster
+      </span>
+    </a>
+    
+    
+  </div>
+  
+  
+  <!--v-if-->
+  <hr
+    class="file-item__separator"
+  />
+</div>
+`;
+
+exports[`FileItem should pass attributes 1`] = `
+<div
+  class="file-item"
+>
+  <div
+    class="file-item__row"
+  >
+    <a
+      class="file-item__file-open"
+      disabled="disabled"
+      id="123"
+    >
+      <div
+        class="icon-stack button__icon icon-stack--new-window"
+      >
+        <f-icon-stub
+          library="f"
+          name="new-window"
+        />
+        <f-icon-stub
+          library="f"
+          name="pdf"
+        />
+      </div>
+      <span
+        class="file-item__file-name"
+      >
+        foo.bar
+      </span>
+      <span
+        class="sr-only"
+      >
+         öppnas i nytt fönster
+      </span>
+    </a>
+    
+    
+  </div>
+  
+  
+  <!--v-if-->
+  <hr
+    class="file-item__separator"
+  />
+</div>
+`;

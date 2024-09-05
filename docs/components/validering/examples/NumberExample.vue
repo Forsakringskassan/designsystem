@@ -1,0 +1,16 @@
+<template>
+    <f-text-field id="input" v-model="model" v-validation.number> Fyll i ett tal </f-text-field>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "NumberExample",
+    components: { FTextField },
+    data() {
+        return { model: "" };
+    },
+});
+</script>

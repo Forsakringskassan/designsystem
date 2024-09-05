@@ -1,0 +1,51 @@
+@use "sass:math";
+
+$ikon-width-default: 40px;
+
+// Mixin for positioning, padding and sizing an icon. To set an
+// icon based on width, both image size ratio and width needs to be supplied. The
+// ratio should be supplied as width divided by height. It will set icon height to
+// 40px by default (which would generate a 40x40 px icon, assuming the
+// ratio is 1).
+@mixin text-with-icon(
+    $padding-right: false,
+    $padding-left: false,
+    $icon-height: $ikon-width-default,
+    $icon-width: false,
+    $icon-size-ratio: false,
+    $top: auto,
+    $right: auto,
+    $bottom: auto,
+    $left: auto
+) {
+    position: relative;
+
+    .ikon,
+    .icon {
+        @if $icon-width and $icon-size-ratio {
+            font-size: math.div($icon-width, $icon-size-ratio);
+        } @else {
+            font-size: $icon-height;
+        }
+
+        &[class^="ikon-"],
+        &[class^="icon-"],
+        &[class*=" icon-"],
+        &[class*=" ikon-"] {
+            inset: $top $right $bottom $left;
+            position: absolute;
+        }
+
+        &::before {
+            vertical-align: top;
+        }
+    }
+
+    @if $padding-left {
+        padding-left: $padding-left;
+    }
+
+    @if $padding-right {
+        padding-right: $padding-right;
+    }
+}

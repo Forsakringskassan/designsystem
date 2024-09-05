@@ -1,0 +1,29 @@
+{
+  "name": "@fkui/icon-lib-default",
+  "version": "5.35.0",
+  "description": "Default icon library",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "packages/icon-lib-default"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "fkui-icon-lib-build",
+    "serve": "fkui-serve dist",
+    "start": "run-s build serve"
+  },
+  "devDependencies": {
+    "@fkui/icon-lib-builder": "5.35.0"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

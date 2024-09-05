@@ -1,0 +1,16 @@
+<template>
+    <f-text-field id="input" v-model="model" v-validation.integer> Fyll i ett heltal </f-text-field>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "IntegerExample",
+    components: { FTextField },
+    data() {
+        return { model: "" };
+    },
+});
+</script>

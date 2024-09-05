@@ -1,0 +1,87 @@
+{
+  "name": "@fkui/logic",
+  "version": "5.35.0",
+  "description": "Logic",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "packages/logic"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "./lib/cjs/polyfills.js",
+    "./lib/esm/polyfills.js",
+    "./lib/polyfills.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.js"
+    },
+    "./polyfills": {
+      "types": "./lib/types/polyfills.d.ts",
+      "require": "./lib/cjs/polyfills.js",
+      "import": "./lib/esm/polyfills.js"
+    },
+    "./lib/polyfills": {
+      "types": "./lib/types/polyfills.d.ts",
+      "require": "./lib/cjs/polyfills.js",
+      "import": "./lib/esm/polyfills.js"
+    }
+  },
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/types/index.d.ts",
+  "files": [
+    "lib",
+    "!**/*.spec.{js,js.map,d.ts}"
+  ],
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "rollup --config",
+    "postbuild": "fk-api-extractor",
+    "build:docs": "typedoc",
+    "clean": "rimraf .jest-cache coverage lib/cjs lib/esm lib/types temp test-results typedoc",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "start": "npm run build:docs && fkui-serve typedoc",
+    "test": "jest --coverage",
+    "posttest": "node scripts/domless.js",
+    "unit": "jest",
+    "unit:watch": "jest --watch",
+    "watch": "rollup --config --watch"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config",
+    "setupFiles": [
+      "<rootDir>/setupFiles/mocks.js"
+    ],
+    "testEnvironment": "jsdom"
+  },
+  "dependencies": {
+    "lodash.clonedeep": "4.5.0"
+  },
+  "devDependencies": {
+    "@fkui/date": "5.35.0",
+    "@fkui/test-utils": "5.35.0",
+    "@rollup/plugin-commonjs": "26.0.1",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-typescript": "11.1.6",
+    "@types/lodash.clonedeep": "4.5.9",
+    "flush-promises": "1.0.2",
+    "jest-environment-jsdom": "29.7.0",
+    "rollup": "4.21.2",
+    "rollup-plugin-dts": "6.1.1"
+  },
+  "peerDependencies": {
+    "@fkui/date": "^5"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

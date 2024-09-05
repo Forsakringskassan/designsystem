@@ -1,0 +1,18 @@
+<template>
+    <f-text-field id="input" v-model="model" v-validation.percent>
+        Fyll i ett tal i procent
+    </f-text-field>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "PercentExample",
+    components: { FTextField },
+    data() {
+        return { model: "" };
+    },
+});
+</script>

@@ -1,0 +1,54 @@
+@use "../../core/config-variables";
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+
+$ERROR_LIST_SELECTOR: ".error-list" !default;
+
+#{$ERROR_LIST_SELECTOR} {
+    color: var(--f-text-color-error);
+    margin: 0 0 densify(var(--f-margin-component-bottom));
+
+    &--list-style-none {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    &--padding-left {
+        padding-left: size.$padding-100;
+    }
+
+    &__list {
+        margin: 0;
+        line-height: max(1.5, densify(2));
+    }
+
+    &__bullet::before {
+        color: var(--f-text-color-error);
+        content: "•";
+        display: inline;
+        font-size: var(--f-font-size-h4);
+        line-height: 0;
+        margin-right: size.$margin-075;
+    }
+
+    &__link {
+        color: var(--f-text-color-error);
+        cursor: pointer;
+        list-style-position: inside;
+        text-decoration: underline;
+
+        a {
+            color: var(--f-text-color-error);
+        }
+    }
+
+    &__icon {
+        max-width: none;
+        position: relative;
+        top: 3px;
+    }
+
+    &--list-item {
+        display: list-item;
+    }
+}

@@ -1,0 +1,497 @@
+$BUTTON_SELECTOR: ".button" !default;
+
+@use "../../core";
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+
+@mixin button-group-margin($margin-bottom, $margin-right) {
+    margin-bottom: $margin-bottom;
+    margin-right: $margin-right;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+/// Button group and button list
+.button-group {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: densify(size.$margin-050);
+    margin-top: densify(size.$margin-025);
+
+    .button-group__item {
+        margin: 0;
+        margin-bottom: densify(size.$margin-100);
+
+        @include core.breakpoint-up(md) {
+            @include button-group-margin(densify(size.$margin-100), size.$margin-125);
+        }
+    }
+
+    > .button.button--discrete {
+        @include button-group-margin(densify(size.$margin-100), size.$margin-150);
+    }
+
+    > .button.button--small {
+        @include button-group-margin(densify(size.$margin-075), size.$margin-075);
+        &.button--full-width {
+            @include core.breakpoint-down(sm) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    > .button.button--medium {
+        @include button-group-margin(densify(size.$margin-075), size.$margin-100);
+        &.button--full-width {
+            @include core.breakpoint-down(sm) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    > .button.button--large {
+        @include core.breakpoint-up(md) {
+            @include button-group-margin(densify(size.$margin-100), size.$margin-125);
+        }
+    }
+
+    &--end {
+        justify-content: flex-end;
+    }
+}
+
+.button-list {
+    margin-bottom: densify(size.$margin-050);
+    margin-top: densify(size.$margin-025);
+    padding-left: 0;
+
+    > li button {
+        margin: 0;
+        margin-bottom: densify(size.$margin-100);
+
+        &.button.button--small,
+        &.button.button--medium {
+            margin-bottom: densify(size.$margin-075);
+        }
+
+        &.button.button--large {
+            margin-bottom: densify(size.$margin-100);
+        }
+    }
+}
+
+/// Primary button
+$button--primary: (
+    background-color: var(--f-background-button-primary),
+    background-color--hover: var(--f-background-button-primary-hover),
+    color: var(--f-text-color-button-primary),
+    shadow: var(--f-button-shadow),
+    shadow-hover: var(--f-button-shadow-hover),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-primary-padding-top)),
+    padding-right: var(--f-button-primary-padding-right),
+    padding-bottom: densify(var(--f-button-primary-padding-bottom)),
+    padding-left: var(--f-button-primary-padding-left),
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+) !default;
+
+/// Secondary button
+$button--secondary: (
+    background-color--hover: var(--f-background-button-secondary-hover),
+    background-color: var(--f-background-button-secondary),
+    border-color: var(--f-border-color-button-secondary),
+    color: var(--f-text-color-button-secondary),
+    shadow: var(--f-button-shadow),
+    shadow-hover: var(--f-button-shadow-hover),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-secondary-padding-top)),
+    padding-right: var(--f-button-secondary-padding-right),
+    padding-bottom: densify(var(--f-button-secondary-padding-bottom)),
+    padding-left: var(--f-button-secondary-padding-left),
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+) !default;
+
+/// Standard button
+$button--standard: (
+    background-color--hover: var(--f-background-button-standard-hover),
+    background-color: var(--f-background-button-standard),
+    border-color: var(--f-border-color-button-standard),
+    color: var(--f-text-color-button-standard),
+    shadow: var(--f-button-shadow),
+    shadow-hover: var(--f-button-shadow-hover),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-standard-padding-top)),
+    padding-right: var(--f-button-standard-padding-right),
+    padding-bottom: densify(var(--f-button-standard-padding-bottom)),
+    padding-left: var(--f-button-standard-padding-left),
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+) !default;
+
+/// Discrete button
+$button--discrete: (
+    color: var(--f-text-color-button-discrete),
+    color--hover: var(--f-text-color-button-discrete-hover),
+    color--disabled: var(--f-text-color-button-discrete-disabled),
+    background-color--hover: var(--f-background-button-discrete-hover),
+    background-color: transparent,
+    background-color--disabled: transparent,
+    border-color--disabled: transparent,
+    border-width: 0,
+    shadow: none,
+    shadow-hover: var(--f-button-shadow-hover),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-discrete-padding-top)),
+    padding-right: var(--f-button-discrete-padding-right),
+    padding-bottom: densify(var(--f-button-discrete-padding-bottom)),
+    padding-left: var(--f-button-discrete-padding-left),
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+) !default;
+
+/// Discrete inverted button
+$button--discrete-inverted: (
+    color: var(--f-text-color-button-discrete-inverted),
+    color--hover: var(--f-text-color-button-discrete-inverted-hover),
+    color--disabled: var(--f-text-color-button-discrete-inverted-disabled),
+    background-color: transparent,
+    background-color--disabled: transparent,
+    border-color--disabled: transparent,
+    border-width: 0,
+    shadow: none,
+    shadow-hover: var(--f-button-shadow-hover),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-discrete-padding-top)),
+    padding-right: var(--f-button-discrete-padding-right),
+    padding-bottom: densify(var(--f-button-discrete-padding-bottom)),
+    padding-left: var(--f-button-discrete-padding-left),
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+) !default;
+
+/// Tertiary button
+$button--tertiary: (
+    color: var(--f-text-color-button-tertiary),
+    color--hover: var(--f-text-color-button-tertiary-hover),
+    color--disabled: var(--f-text-color-button-tertiary-disabled),
+    background-color--hover: var(--f-background-button-tertiary-hover),
+    background-color: transparent,
+    background-color--disabled: transparent,
+    border-color--disabled: transparent,
+    border-width: 0,
+    shadow: none,
+    shadow-hover: none,
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-tertiary-padding-top)),
+    padding-right: var(--f-button-tertiary-padding-right),
+    padding-bottom: densify(var(--f-button-tertiary-padding-bottom)),
+    padding-left: var(--f-button-tertiary-padding-left),
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+) !default;
+
+/// Button placeholders
+%button-template {
+    border-color: transparent;
+    border-radius: var(--f-border-radius-medium);
+    border-style: solid;
+    border-width: var(--f-border-width-medium);
+    cursor: pointer;
+    display: inline-block;
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-medium);
+    justify-content: center;
+    letter-spacing: var(--f-button-letter-spacing);
+    line-height: var(--f-button-default-line-height);
+    margin-bottom: densify(size.$margin-150);
+    margin-top: densify(size.$margin-025);
+    min-width: var(--f-button-min-width);
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+    padding-top: densify(var(--f-button-default-padding-top));
+    padding-right: var(--f-button-default-padding-right);
+    padding-bottom: densify(var(--f-button-default-padding-bottom));
+    padding-left: var(--f-button-default-padding-left);
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+    position: relative;
+    text-align: center;
+    transition: background-color var(--f-animation-duration-medium) ease-out;
+
+    @include core.breakpoint-down(sm) {
+        max-width: var(--f-width-full);
+        width: var(--f-width-full);
+    }
+}
+
+/// Deprecated: Will be removed in next major version (FKUI v4).
+.button--text {
+    /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+    @extend .button--discrete;
+
+    &--black {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend .button--discrete--black;
+
+        color: var(--f-text-color-default);
+
+        & > .button__icon {
+            color: var(--f-icon-color-black);
+        }
+    }
+}
+
+#{$BUTTON_SELECTOR} {
+    @extend %button-template;
+    @include core.make-button-variant($BUTTON_SELECTOR, $button--standard...);
+
+    &#{$BUTTON_SELECTOR}--primary {
+        @include core.make-button-variant($BUTTON_SELECTOR, $button--primary...);
+    }
+
+    &#{$BUTTON_SELECTOR}--secondary {
+        @include core.make-button-variant($BUTTON_SELECTOR, $button--secondary...);
+    }
+
+    &#{$BUTTON_SELECTOR}--discrete {
+        width: inherit;
+        min-width: 0;
+        font-weight: var(--f-font-weight-bold);
+        outline-offset: size.$padding-025;
+        line-height: calc(1.25 * var(--f-font-size-standard));
+
+        @include core.make-button-variant($BUTTON_SELECTOR, $button--discrete...);
+
+        @include core.breakpoint-down(sm) {
+            width: auto;
+        }
+
+        &--black {
+            /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+            padding-top: densify(var(--f-button-discrete-black-padding-top));
+            padding-right: var(--f-button-discrete-black-padding-right);
+            padding-bottom: densify(var(--f-button-discrete-black-padding-bottom));
+            padding-left: var(--f-button-discrete-black-padding-left);
+            /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+            color: var(--f-text-color-default);
+
+            & > .button__icon {
+                color: var(--f-icon-color-black);
+            }
+        }
+
+        &:hover {
+            box-shadow: none;
+            mix-blend-mode: multiply;
+        }
+        &,
+        &:focus,
+        &:active,
+        &:hover {
+            border-radius: var(--f-button-discrete-radius-hover);
+        }
+    }
+
+    &#{$BUTTON_SELECTOR}--discrete-inverted {
+        width: inherit;
+        min-width: 0;
+        font-weight: var(--f-font-weight-bold);
+        outline-offset: size.$padding-025;
+        /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+        padding-top: densify(var(--f-button-discrete-padding-top));
+        padding-right: var(--f-button-discrete-padding-right);
+        padding-bottom: densify(var(--f-button-discrete-padding-bottom));
+        padding-left: var(--f-button-discrete-padding-left);
+        /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+        line-height: calc(1.25 * var(--f-font-size-standard));
+
+        @include core.make-button-variant($BUTTON_SELECTOR, $button--discrete-inverted...);
+
+        @include core.breakpoint-down(sm) {
+            width: auto;
+        }
+
+        &,
+        &:focus,
+        &:active,
+        &:hover {
+            border-radius: var(--f-button-discrete-radius-hover);
+        }
+    }
+
+    &#{$BUTTON_SELECTOR}--tertiary {
+        width: inherit;
+        min-width: 0;
+        font-weight: var(--f-font-weight-medium);
+        outline-offset: size.$padding-025;
+
+        @include core.make-button-variant($BUTTON_SELECTOR, $button--tertiary...);
+
+        @include core.breakpoint-down(sm) {
+            width: auto;
+        }
+
+        &--black {
+            color: var(--f-text-color-default);
+
+            & > .button__icon {
+                color: var(--f-icon-color-black);
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: var(--f-text-color-default);
+
+                & > .button__icon {
+                    color: var(--f-icon-color-black);
+                }
+            }
+        }
+
+        &--inverted {
+            color: var(--f-text-color-button-tertiary-inverted);
+
+            & > .button__icon {
+                color: var(--f-text-color-button-tertiary-inverted);
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: var(--f-text-color-button-tertiary-inverted-hover);
+                background-color: transparent;
+
+                & > .button__icon {
+                    color: var(--f-text-color-button-tertiary-inverted-hover);
+                }
+            }
+
+            &:disabled {
+                color: var(--f-text-color-button-tertiary-disabled);
+                border-width: 0;
+                background-color: transparent;
+
+                & > .button__icon {
+                    color: var(--f-text-color-button-tertiary-disabled);
+                }
+            }
+        }
+
+        &--underline {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+
+            &:disabled {
+                text-decoration: none;
+            }
+        }
+
+        &#{$BUTTON_SELECTOR}--small {
+            min-width: 24px;
+            padding: densify(0.375rem) size.$padding-025;
+            text-underline-offset: 3.5px;
+            &#{$BUTTON_SELECTOR}--align-text {
+                margin-left: -(size.$margin-025);
+            }
+        }
+
+        &#{$BUTTON_SELECTOR}--medium {
+            min-width: 8rem;
+            /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+            padding-top: densify(var(--f-button-tertiary-padding-top));
+            padding-right: var(--f-button-tertiary-padding-right);
+            padding-bottom: densify(var(--f-button-tertiary-padding-bottom));
+            padding-left: var(--f-button-tertiary-padding-left);
+            /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+            &#{$BUTTON_SELECTOR}--align-text {
+                margin-left: -(size.$margin-050);
+            }
+        }
+
+        &#{$BUTTON_SELECTOR}--large {
+            min-width: var(--f-button-min-width);
+            padding: densify(1.125rem) 0.75rem;
+            &#{$BUTTON_SELECTOR}--align-text {
+                margin-left: -(size.$margin-075);
+            }
+        }
+
+        &#{$BUTTON_SELECTOR}--align-text {
+            margin-left: -(size.$margin-050);
+            min-width: 0;
+        }
+
+        @include core.breakpoint-down(sm) {
+            &.button--full-width {
+                min-width: var(--f-width-full);
+            }
+        }
+    }
+
+    &#{$BUTTON_SELECTOR}--full-width {
+        min-width: var(--f-width-full);
+    }
+
+    &#{$BUTTON_SELECTOR}--margin-bottom-0 {
+        margin-bottom: 0;
+    }
+
+    &#{$BUTTON_SELECTOR}--small {
+        font-size: 14px;
+        line-height: 1.25rem;
+        min-width: 4rem;
+        padding: densify(size.$padding-025) size.$padding-075;
+
+        @include core.breakpoint-down(sm) {
+            &:not(.button--full-width) {
+                width: auto;
+            }
+        }
+
+        & > .button__icon {
+            height: 14px;
+            width: 14px;
+        }
+    }
+
+    &#{$BUTTON_SELECTOR}--medium {
+        line-height: 1.5rem;
+        min-width: 8rem;
+        padding: densify(0.625rem) 1.25rem;
+
+        @include core.breakpoint-down(sm) {
+            &:not(.button--full-width) {
+                width: auto;
+            }
+        }
+    }
+
+    &#{$BUTTON_SELECTOR}--large {
+        line-height: 1.5rem;
+        min-width: 9.5rem;
+        padding: densify(1rem) 1.5rem;
+
+        @include core.breakpoint-down(sm) {
+            max-width: var(--f-width-full);
+            width: var(--f-width-full);
+        }
+    }
+
+    & > .button__icon {
+        margin-right: size.$margin-025;
+        transform: translate(0, 15%);
+
+        &:not(:first-child) {
+            margin-left: size.$margin-025;
+            margin-right: 0;
+        }
+    }
+
+    & > .button__icon--end {
+        position: absolute;
+        right: size.$padding-125;
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &:disabled,
+    &:disabled:hover,
+    &#{$BUTTON_SELECTOR}--disabled {
+        border-width: var(--f-border-width-medium);
+        box-shadow: none;
+        cursor: default;
+    }
+}

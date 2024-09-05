@@ -1,0 +1,87 @@
+@use "../../core/size";
+@use "../icon/icon";
+@use "../../core/mixins/arrow-creator";
+@use "../../core/mixins/breakpoints";
+@use "../../core/utils/functions" as *;
+
+$TOOLTIP_SELECTOR: ".tooltip" !default;
+
+#{$TOOLTIP_SELECTOR}-before {
+    display: inline-block;
+
+    &__label {
+        display: block;
+    }
+}
+
+#{$TOOLTIP_SELECTOR} {
+    display: inline;
+    margin-left: size.$margin-050;
+
+    &__container {
+        display: inline;
+    }
+
+    &__button {
+        background: none;
+        border: 0;
+        cursor: pointer;
+        font-size: var(--f-font-size-large);
+        padding: 0.125rem;
+        transform: translateY(0.125rem);
+        height: var(--f-icon-size-large);
+        width: var(--f-icon-size-large);
+
+        #{icon.$ICON_SELECTOR}-stack {
+            height: 100%;
+            width: 100%;
+        }
+
+        #{icon.$ICON_SELECTOR} {
+            height: 100%;
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    &__arrow {
+        @include arrow-creator.arrow-creator(
+            $background: var(--f-background-info),
+            $border: var(--f-tooltip-border-color),
+            $position: size.$margin-200,
+            $size: size.$margin-075,
+            $up: true,
+            $width: var(--f-tooltip-border-width)
+        );
+    }
+
+    /// Content wrapper is placed around everything, i.e.
+    /// arrow, close button, header and body.
+    &__content-wrapper {
+        background-color: var(--f-background-info);
+        border: var(--f-tooltip-border-width) solid var(--f-tooltip-border-color);
+        border-radius: var(--f-border-radius-small);
+        box-sizing: content-box;
+        margin-top: size.$margin-075;
+        margin-bottom: size.$margin-050;
+        position: relative;
+    }
+
+    /// Content is placed around header and body.
+    &__content {
+        margin: densify(size.$margin-100) size.$margin-100 0 size.$margin-100;
+    }
+
+    &__header {
+        align-items: flex-start;
+        display: flex;
+        font-size: var(--f-font-size-large);
+        font-weight: var(--f-font-weight-bold);
+        line-height: var(--f-line-height-medium);
+        margin-bottom: size.$margin-050;
+    }
+
+    .close-button {
+        margin: var(--f-tooltip-close-button-margin);
+    }
+}

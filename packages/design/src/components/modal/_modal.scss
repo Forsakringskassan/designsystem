@@ -1,0 +1,190 @@
+@use "sass:map";
+@use "../../core/size";
+@use "../z-index";
+@use "../../core/mixins/breakpoints";
+
+$MODAL_SELECTOR: ".modal" !default;
+$modal-sizes: (
+    "small": var(--f-modal-size-small),
+    "medium": var(--f-modal-size-medium),
+    "large": var(--f-modal-size-large),
+    "fullwidth": var(--f-modal-size-fullwidth),
+) !default;
+$modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
+
+// @at-root is used to set these classes globally due to styling scope issue where the component is used out of the styling scope
+@at-root {
+    #{$MODAL_SELECTOR} {
+        &__open {
+            // both of these properties is used to prevent scrolling in the background
+            overflow: hidden;
+            position: fixed;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+#{$MODAL_SELECTOR} {
+    &__backdrop {
+        background: var(--f-background-overlay);
+        display: flex;
+        height: 100%;
+        inset: 0;
+        position: fixed;
+        width: 100%;
+        z-index: z-index.$MODAL_BACKDROP_ZINDEX;
+    }
+
+    &__outer-container {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        overflow: auto;
+        width: 100%;
+    }
+
+    &__inner-container {
+        align-items: center;
+        justify-content: center;
+        max-height: 100%;
+        width: 100%;
+    }
+
+    &__shelf {
+        justify-content: flex-end;
+        display: flex;
+        background-color: var(--f-background-modal-shelf);
+        border-top-left-radius: var(--f-border-radius-medium);
+        border-top-right-radius: var(--f-border-radius-medium);
+        margin-bottom: size.$margin-100;
+    }
+
+    &__header {
+        display: flex;
+        font-size: var(--f-font-size-h4);
+        margin-bottom: size.$margin-050;
+        width: 100%;
+
+        #{$MODAL_SELECTOR}__title {
+            font-size: var(--f-modal-title-font-size);
+            margin-bottom: 0;
+            margin-top: 0;
+            color: var(--f-text-color-default);
+        }
+    }
+
+    &__dialog-container {
+        background: transparent;
+        display: flex;
+        margin: auto;
+        width: $modal-width;
+
+        // desktop sizes
+        @include breakpoints.breakpoint-up(md) {
+            max-width: map.get($modal-sizes, "small");
+
+            @each $key, $size in $modal-sizes {
+                &--#{$key} {
+                    max-width: $size;
+                }
+            }
+
+            // @deprecated alias, use --large (to be removed in fkui 4.x)
+            &-large {
+                max-width: map.get($modal-sizes, "large");
+            }
+
+            // @deprecated alias, use --fullwidth (to be removed in fkui 4.x)
+            &-fullscreen {
+                max-width: map.get($modal-sizes, "fullwidth");
+            }
+        }
+
+        // mobile sizes
+        @include breakpoints.breakpoint-down(sm) {
+            &--fullscreen {
+                width: 100%;
+                max-width: none;
+
+                #{$MODAL_SELECTOR}__dialog {
+                    min-height: 100vh;
+                }
+
+                #{$MODAL_SELECTOR}__dialog-inner {
+                    flex: 1 1 auto;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                #{$MODAL_SELECTOR}__content {
+                    flex: 1 1 auto;
+                }
+            }
+        }
+    }
+
+    &__dialog {
+        background: var(--f-background-content);
+        border-radius: var(--f-border-radius-medium);
+        display: flex;
+        flex-direction: column-reverse;
+        height: auto;
+        margin: auto;
+        width: 100%;
+        position: relative;
+        z-index: z-index.$MODAL_ZINDEX;
+
+        #{$MODAL_SELECTOR}__dialog-inner {
+            height: auto;
+            margin: 0 size.$margin-150 size.$margin-150;
+
+            @include breakpoints.breakpoint-down(sm) {
+                margin: 0 size.$margin-100 size.$margin-100;
+            }
+        }
+
+        #{$MODAL_SELECTOR}__footer {
+            margin-top: size.$margin-200;
+
+            > .button-group {
+                margin-bottom: 0;
+
+                .button-group__item:last-child:not(.button--small, .button--medium) {
+                    margin-bottom: 0;
+                }
+
+                @include breakpoints.breakpoint-up(md) {
+                    .button-group__item {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        /// Upper close button-group
+        > .button-group {
+            margin: 0;
+
+            .button-group__item:last-child {
+                margin: var(--f-modal-close-button-margin);
+                padding: var(--f-modal-close-button-padding);
+            }
+        }
+    }
+
+    &--information {
+        --f-background-modal-shelf: var(--f-border-color-info);
+        --f-text-color-close-button: var(--f-text-color-default-inverted);
+    }
+
+    &--warning {
+        --f-background-modal-shelf: var(--f-border-color-warning);
+    }
+
+    &--error {
+        --f-background-modal-shelf: var(--f-border-color-error);
+        --f-text-color-close-button: var(--f-text-color-default-inverted);
+    }
+}

@@ -1,0 +1,96 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints";
+@use "../../core/config-variables";
+
+$assets-primary-logo-path: "#{config-variables.$asset-path}/infrastructure/web/assets/images" !default;
+$PAGE_HEADER_SELECTOR: ".page-header" !default;
+$page-header-separator-width: 1px !default;
+$page-header-logo-small-size: 0.8rem;
+$page-header-logo-large-size: 12.39rem;
+$fk-logo-small: "fk-logo-primary-small.svg";
+$fk-logo-large: "fk-logo-primary-large.svg";
+
+#{$PAGE_HEADER_SELECTOR} {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    color: var(--f-text-color-default-inverted);
+    background-color: var(--f-background-pageheader-primary);
+    padding: size.$padding-100 0 size.$padding-100 size.$padding-100;
+    align-items: center;
+    overflow: hidden;
+
+    &__logo {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+        box-sizing: border-box;
+        &--small {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: $page-header-logo-small-size;
+            background-image: url("#{config-variables.$asset-path-images}/#{$fk-logo-small}");
+        }
+        &--large {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: var(--f-background-pageheader-primary);
+            padding: $page-header-logo-small-size calc($page-header-logo-large-size / 2);
+            background-image: url("#{config-variables.$asset-path-images}/#{$fk-logo-large}");
+        }
+        &--responsive {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: var(--f-background-pageheader-primary);
+            padding: $page-header-logo-small-size calc($page-header-logo-large-size / 2);
+            background-image: url("#{config-variables.$asset-path-images}/#{$fk-logo-large}");
+
+            @include breakpoints.breakpoint-only(sm) {
+                min-width: $page-header-logo-small-size;
+                padding: $page-header-logo-small-size;
+                background-image: url("#{config-variables.$asset-path-images}/#{$fk-logo-small}");
+            }
+        }
+        & > a {
+            display: inline-flex;
+        }
+        &::after {
+            content: " ";
+            background-color: var(--f-border-color-separator-pageheader-primary);
+            height: 1.38rem;
+            padding: calc($page-header-separator-width / 2);
+            margin: 0 size.$padding-100 0.155rem;
+        }
+    }
+
+    &__app-name {
+        padding-top: 0.22rem;
+        margin: 0;
+        font-size: var(--f-font-size-h3);
+        font-weight: var(--f-font-weight-medium);
+        color: var(--f-text-color-default-inverted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 9rem;
+    }
+
+    &__right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-grow: 1;
+        white-space: nowrap;
+        padding-top: 0.4rem;
+        font-size: var(--f-font-size-standard);
+
+        &-slot {
+            padding-left: size.$padding-100;
+            padding-right: size.$padding-100;
+        }
+    }
+}
