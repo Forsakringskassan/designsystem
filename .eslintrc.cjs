@@ -69,5 +69,14 @@ module.exports = {
                 "import/no-extraneous-dependencies": "off",
             },
         },
+
+        {
+            /* These legacy files points to compiled files which may or may not
+             * exist yet */
+            files: "packages/*/*.d.ts",
+            rules: {
+                "import/no-unresolved": "off",
+            },
+        },
     ],
 };

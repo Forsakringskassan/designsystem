@@ -18,21 +18,19 @@ jobs:
                   node-version: 20.x
             - name: Install dependencies
               run: npm ci
+            - name: Build packages
+              run: npm run build
+            - name: Build documentation
+              run: npm run build:docs
             - name: Jest
-              run: |
-                  npm --ignore-scripts test
-                  find packages
+              run: npm --ignore-scripts test
             - name: Publish test results
-              if: success() || failure()
+              if: github.event_name == 'push' && (success() || failure())
               uses: mikepenz/action-junit-report@v4
               with:
                   report_paths: "packages/*/test-results/jest-junit.xml"
                   include_passed: true
                   check_name: Jest
-            - name: Build packages
-              run: npm run build
-            - name: Build documentation
-              run: npm run build:docs
 
     lint:
         name: Lint
@@ -45,6 +43,8 @@ jobs:
                   node-version: 20.x
             - name: Install dependencies
               run: npm ci
+            - name: Minimal build
+              run: npm run -w @fkui/css-variables build
             - name: Prettier
               run: npm run prettier:check
             - name: ESLint
@@ -65,9 +65,10 @@ jobs:
                       exit 1
                   fi
 
-    cypress:
-        name: Cypress
+    cypress-e2e:
+        name: Cypress E2E Tests
         runs-on: ubuntu-latest
+        if: github.event_name == 'push'
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -87,14 +88,36 @@ jobs:
                   summary-title: "E2E tests"
                   start: npm start
                   build: npx cypress info
+                  browser: chrome
                   wait-on: "http://127.0.0.1:8080"
                   quiet: true
+            - uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: cypress-e2e-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore
+
+    cypress-ct:
+        name: Cypress Component Tests
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push'
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Use Node.js 20.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build (minimal)
+              run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue build
             - name: Cypress Component Testing
-              if: success() || failure()
               uses: cypress-io/github-action@v6
               with:
                   summary-title: "Component tests"
-                  install: false
+                  browser: chrome
                   component: true
                   quiet: true
             - uses: actions/upload-artifact@v4
