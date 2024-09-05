@@ -1,5 +1,6 @@
 {
     "extends": ["local>forsakringskassan/renovate-config"],
+    "ignoreDeps": ["fk-icons"],
     "packageRules": [
         {
             "description": "Raise PR instead of merging minor versions of typescript",
