@@ -23,11 +23,9 @@ jobs:
             - name: Build documentation
               run: npm run build:docs
             - name: Jest
-              run: |
-                  npm --ignore-scripts test
-                  find packages
+              run: npm --ignore-scripts test
             - name: Publish test results
-              if: success() || failure()
+              if: github.event_name == 'push' && (success() || failure())
               uses: mikepenz/action-junit-report@v4
               with:
                   report_paths: "packages/*/test-results/jest-junit.xml"
@@ -67,8 +65,8 @@ jobs:
                       exit 1
                   fi
 
-    cypress:
-        name: Cypress
+    cypress-e2e:
+        name: Cypress E2E Tests
         runs-on: ubuntu-latest
         if: github.event_name == 'push'
         steps:
@@ -93,12 +91,32 @@ jobs:
                   browser: chrome
                   wait-on: "http://127.0.0.1:8080"
                   quiet: true
+            - uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: cypress-e2e-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore
+
+    cypress-ct:
+        name: Cypress Component Tests
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push'
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Use Node.js 20.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: npm run build
             - name: Cypress Component Testing
-              if: success() || failure()
               uses: cypress-io/github-action@v6
               with:
                   summary-title: "Component tests"
-                  install: false
                   browser: chrome
                   component: true
                   quiet: true
