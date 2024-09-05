@@ -916,8 +916,8 @@ describe("mindate within month", () => {
 
     describe("open calendar and navigate to prev month by pressing left arrow", () => {
         beforeEach(() => {
-            datepickerField.toggleCalendarButton().click(),
-                datepickerField.dayButton("2022-12-01").focus();
+            datepickerField.toggleCalendarButton().click();
+            datepickerField.dayButton("2022-12-01").focus();
             cy.focused().trigger("keydown", { code: "ArrowLeft" });
         });
 
