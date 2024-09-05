@@ -89,6 +89,7 @@ jobs:
                   summary-title: "E2E tests"
                   start: npm start
                   build: npx cypress info
+                  browser: chrome
                   wait-on: "http://127.0.0.1:8080"
                   quiet: true
             - name: Cypress Component Testing
@@ -97,6 +98,7 @@ jobs:
               with:
                   summary-title: "Component tests"
                   install: false
+                  browser: chrome
                   component: true
                   quiet: true
             - uses: actions/upload-artifact@v4
