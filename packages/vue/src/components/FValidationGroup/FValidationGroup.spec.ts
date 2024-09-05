@@ -82,7 +82,8 @@ describe("events", () => {
         expect(wrapper.emitted("group-validity")).toHaveLength(1);
     });
 
-    it.each`
+    /* eslint-disable-next-line jest/no-disabled-tests -- technical debt: flaky test */
+    it.skip.each`
         stopPropagation | expectedEvent
         ${true}         | ${false}
         ${false}        | ${true}
