@@ -46,13 +46,13 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     }
 }
 
-@mixin messagebox-banner-variant($selector) {
+@mixin messagebox-banner-variant($selector, $short-layout: false) {
     width: var(--f-width-full);
     box-shadow: var(--f-box-modal-shadow);
     border-collapse: separate;
     padding: densify(size.$padding-100) size.$padding-100;
 
-    @include make-box-variant($selector, var(--f-background-error), var(--f-border-color-error));
+    @include make-box-variant($selector, var(--f-background-error), var(--f-border-color-error), $short-layout);
 
     .iflex__item > p {
         margin-bottom: 0;
