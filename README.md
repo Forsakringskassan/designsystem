@@ -8,6 +8,6 @@ Komponenterna är testade både manuellt och med hjälp av automatiserade verkty
 
 ## Kom igång
 
-Läs mer om hur du kommer igång med att använda FKUI: https://forsakringskassan.github.io/latest/guide/getting-started.html
+Läs mer om hur du kommer igång med att använda FKUI: https://forsakringskassan.github.io/designsystem/latest/guide/getting-started/
 
-Läs mer om hur du bidrar till FKUI: https://forsakringskassan.github.io/latest/guide/contribute-to-fkds/
+Läs mer om hur du bidrar till FKUI: https://forsakringskassan.github.io/designsystem/latest/guide/contribute-to-fkds/
