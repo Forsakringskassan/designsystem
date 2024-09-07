@@ -25,7 +25,7 @@ export default defineComponent({
             this.result = "";
             try {
                 this.result = await formModal(this, ExampleModal);
-            } catch (err) {
+            } catch {
                 console.log("Användaren avbröt");
             }
         },

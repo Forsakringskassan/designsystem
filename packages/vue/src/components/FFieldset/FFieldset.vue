@@ -294,7 +294,10 @@ export default defineComponent({
                 focusElementId,
             };
             this.validity = this.detail;
-            this.validityElement ? dispatchComponentValidityEvent(this.validityElement, this.dispatchObject) : false;
+
+            if (this.validityElement) {
+                dispatchComponentValidityEvent(this.validityElement, this.dispatchObject);
+            }
 
             const message = detail.validityMode === "INITIAL" ? "" : detail.validationMessage;
 

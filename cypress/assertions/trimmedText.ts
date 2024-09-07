@@ -1,6 +1,7 @@
 chai.Assertion.addMethod("trimmedText", function (expectedString) {
     const $element = this._obj;
 
+    /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- this has side-effects */
     new chai.Assertion($element).to.be.exist;
 
     const actual = $element

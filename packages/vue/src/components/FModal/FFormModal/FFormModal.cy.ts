@@ -182,7 +182,7 @@ describe("FFormModal usable with API", () => {
                             frukt: "Kiwi",
                         },
                     });
-                } catch (err) {
+                } catch {
                     return;
                 }
             },

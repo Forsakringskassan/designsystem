@@ -11,7 +11,7 @@ const haveSessionStorage = (() => {
         } else {
             return false;
         }
-    } catch (e) {
+    } catch {
         /* Safari on iOS throws security exceptions when accessing
          * sessionstorage in private browsing. */
         return false;

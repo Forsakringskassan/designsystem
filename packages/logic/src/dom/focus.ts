@@ -200,7 +200,7 @@ export function focusLast(rootElement: HTMLElement): void {
 export function restoreFocus(): void {
     try {
         forcePopFocus();
-    } catch (error) {
+    } catch {
         /* do nothing */
     }
 }
