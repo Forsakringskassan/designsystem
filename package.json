@@ -101,7 +101,7 @@
     "@types/jest": "29.5.12",
     "@types/lodash": "4.17.7",
     "@types/node": "20.16.4",
-    "@vue/server-renderer": "3.4.38",
+    "@vue/server-renderer": "3.5.1",
     "autoprefixer": "10.4.20",
     "cli-table": "0.3.11",
     "core-js": "3.38.1",

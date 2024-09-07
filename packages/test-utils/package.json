@@ -53,7 +53,7 @@
     "preset": "@forsakringskassan/jest-config-vue"
   },
   "devDependencies": {
-    "@vue/server-renderer": "3.4.38",
+    "@vue/server-renderer": "3.5.1",
     "@vue/test-utils": "2.4.6",
     "esbuild": "0.23.1",
     "jest-environment-jsdom": "29.7.0",
