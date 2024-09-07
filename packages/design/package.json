@@ -32,7 +32,7 @@
     "@fkui/css-variables": "5.35.0",
     "@fkui/icon-lib-default": "5.35.0",
     "autoprefixer": "10.4.20",
-    "cssnano": "7.0.5",
+    "cssnano": "7.0.6",
     "flush-promises": "1.0.2",
     "glob": "11.0.0",
     "jest-light-runner": "0.6.0",
