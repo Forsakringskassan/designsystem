@@ -7,6 +7,12 @@
             "matchPackageNames": ["typescript"],
             "matchUpdateTypes": ["minor"],
             "automerge": false
+        },
+        {
+            "description": "Group vue and @vue/* packages together",
+            "matchPackageNames": ["vue", "@vue/**"],
+            "groupName": "Vue monorepo",
+            "groupSlug": "vue-monorepo"
         }
     ]
 }
