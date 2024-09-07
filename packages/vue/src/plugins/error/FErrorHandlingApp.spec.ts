@@ -1,5 +1,5 @@
 import { defineComponent, h, markRaw } from "vue";
-import VueRouter from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { EventBus } from "../../utils";
@@ -88,8 +88,8 @@ describe("FErrorHandlingApp", () => {
 
     it("should show default page after route", async () => {
         // Given
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes: [
                 {
                     path: "/",

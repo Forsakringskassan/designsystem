@@ -119,7 +119,7 @@ export interface ValidationConfigUpdateDetail {
  *
  * @public
  */
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface -- technical debt */
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type -- technical debt */
 export interface PendingValidityEvent {}
 
 /**
@@ -127,7 +127,7 @@ export interface PendingValidityEvent {}
  *
  * @public
  */
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface -- technical debt */
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type -- technical debt */
 export interface ValidateEvent {}
 
 /**

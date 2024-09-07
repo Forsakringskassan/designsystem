@@ -198,6 +198,7 @@ interface FInteractiveTableData {
 function forceRepaintIE11(target: HTMLElement): void {
     if (navigator.userAgent.includes("Trident")) {
         target.style.display = "none";
+        /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, this function is probably not needed any longer */
         target.offsetHeight;
         target.style.removeProperty("display");
     }

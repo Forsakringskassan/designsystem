@@ -253,7 +253,7 @@ export default defineComponent({
                 scrollTop: hasScrollTarget ? scrollTarget.scrollTop : window.scrollY,
                 spacing: POPUP_SPACING,
             });
-            const scrollOptions: ScrollToOptions = { top, behavior: "smooth" };
+            const scrollOptions = { top, behavior: "smooth" } as const;
 
             wrapper.style.removeProperty("left");
             wrapper.style.removeProperty("top");

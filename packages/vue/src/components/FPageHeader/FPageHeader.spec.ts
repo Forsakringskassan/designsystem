@@ -1,7 +1,11 @@
 import "html-validate/jest";
 import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
-import VueRouter, { type RouteRecordRaw } from "vue-router";
+import {
+    type RouteRecordRaw,
+    createRouter,
+    createWebHashHistory,
+} from "vue-router";
 import FPageHeader from "./FPageHeader.vue";
 
 describe("slots", () => {
@@ -14,8 +18,8 @@ describe("slots", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -42,8 +46,8 @@ describe("slots", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -65,8 +69,8 @@ describe("slots", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -89,8 +93,8 @@ describe("slots", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -114,8 +118,8 @@ describe("props", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -138,8 +142,8 @@ describe("props", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -256,8 +260,8 @@ describe("routing", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -286,8 +290,8 @@ describe("routing", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -309,8 +313,8 @@ describe("routing", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -337,8 +341,8 @@ describe("routing", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -368,8 +372,8 @@ describe("routing", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {
@@ -394,8 +398,8 @@ describe("routing", () => {
                 component: defineComponent({}),
             },
         ];
-        const router = VueRouter.createRouter({
-            history: VueRouter.createWebHashHistory(),
+        const router = createRouter({
+            history: createWebHashHistory(),
             routes,
         });
         const wrapper = mount(FPageHeader, {

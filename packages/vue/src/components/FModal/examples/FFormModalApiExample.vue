@@ -37,7 +37,7 @@ export default defineComponent({
                         firstName: "Anton",
                     },
                 });
-            } catch (err) {
+            } catch {
                 console.log("användaren avbröt");
             }
         },

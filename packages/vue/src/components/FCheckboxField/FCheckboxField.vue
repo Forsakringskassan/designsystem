@@ -230,6 +230,7 @@ export default defineComponent({
             const height = computedStyle.height;
             Object.assign(htmlElement.style, this.visibleStyle);
             // Force redraw
+            /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
             getComputedStyle(element).height;
             setTimeout(() => {
                 this.height = parseInt(height as string, 10);
@@ -246,6 +247,7 @@ export default defineComponent({
             htmlElement.style.height = height;
 
             // Force redraw
+            /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
             getComputedStyle(element).height;
             setTimeout(() => {
                 Object.assign(htmlElement.style, this.visibleStyle);

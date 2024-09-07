@@ -13,7 +13,7 @@
  *
  * @public
  */
-/* eslint-disable @typescript-eslint/no-empty-interface -- augmented by consumers */
+/* eslint-disable @typescript-eslint/no-empty-object-type -- augmented by consumers */
 export interface EventBusMap {
     /* augmented by API consumers */
 }
