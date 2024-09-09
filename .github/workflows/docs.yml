@@ -3,7 +3,7 @@ name: Deploy
 on:
     push:
         tags:
-            - 'v**'
+            - "v**"
     workflow_dispatch:
 
 jobs:
@@ -40,23 +40,30 @@ jobs:
               run: git status && git diff
             - name: Pull pages as subtree
               run: git subtree add --prefix pages ${DST_REMOTE} ${DST_BRANCH}
-            - name: Prune old files
+            - name: Prune latest
               run: |
                   if [[ -e pages/latest ]]; then
                       git rm -rf pages/latest
                   fi
+            - name: Prune tagged release
+              run: |
                   if [[ -e pages/${VERSION} ]]; then
                       git rm -rf pages/${VERSION}
                   fi
-            - name: Prepare new files
+            - name: Create tagged release
               run: |
                   rsync -a public/ pages/${VERSION}
-                  ln -s ${VERSION} pages/latest
+                  git add -f pages/${VERSION}
+            - name: Create version metadata
+              run: |
                   ls -d pages/v*.*.* | sed "s#pages/##g" | jq -Rn '{ "versions": [inputs] }' | tee pages/versions.json
-                  git add -f \
-                      pages/latest \
-                      pages/${VERSION} \
-                      pages/versions.json
+                  git add -f pages/versions.json
+            - name: Symlink latest to tagged release
+              run: |
+                  ln -s ${VERSION} pages/latest
+                  git add -f pages/latest
+            - name: Commit changes
+              run: |
                   git commit \
                       --message "chore(release): [skip ci] deploy ${VERSION} documentation" \
                       --no-verify \
