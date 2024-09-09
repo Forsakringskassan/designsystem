@@ -2,10 +2,15 @@
   "name": "@fkui/logic",
   "version": "5.35.0",
   "description": "Logic",
+  "keywords": [
+    "fkui",
+    "designsystem"
+  ],
   "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "packages/logic"
   },
   "license": "MIT",

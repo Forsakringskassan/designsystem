@@ -1,0 +1,31 @@
+name: npm-pkg-lint
+
+on: [push]
+
+jobs:
+    npm-pkg-lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/cache@v4
+              with:
+                  path: ~/.cache/npm-pkg-lint
+                  key: npm-pkg-lint
+            - name: Use Node.js 20.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: npm run --if-present build
+            - name: npm-pkg-lint
+              run: |
+                  for pkg in packages/*/; do (
+                      echo "::group::${pkg}"
+                      set -e
+                      cd $pkg
+                      npm pack
+                      npm exec npm-pkg-lint
+                      echo "::endgroup::"
+                  ); done
