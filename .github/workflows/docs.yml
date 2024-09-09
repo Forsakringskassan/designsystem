@@ -10,6 +10,7 @@ jobs:
     docs:
         name: Deploy
         runs-on: ubuntu-latest
+        if: github.ref_protected == true
         env:
             DST_REMOTE: origin
             DST_BRANCH: gh-pages
