@@ -2,10 +2,16 @@
   "name": "@fkui/icon-lib-builder",
   "version": "5.35.0",
   "description": "Icon library builder",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "icons"
+  ],
   "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "packages/icon-lib-builder"
   },
   "license": "MIT",
@@ -16,7 +22,8 @@
   "files": [
     "bin",
     "scripts",
-    "templates"
+    "templates",
+    "!scripts/**/*.spec.js"
   ],
   "scripts": {
     "test": "jest --coverage"

@@ -2,10 +2,16 @@
   "name": "@fkui/design",
   "version": "5.35.0",
   "description": "fkui design",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "css"
+  ],
   "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "packages/design"
   },
   "license": "MIT",

@@ -1,10 +1,17 @@
 {
   "name": "@fkui/vue-labs",
   "version": "5.35.0",
+  "description": "Experimental and unstable FKUI components",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "vue"
+  ],
   "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "packages/vue-labs"
   },
   "license": "MIT",
@@ -25,7 +32,8 @@
     "dist",
     "htmlvalidate",
     "pageobject/**/*.{js,js.map,d.ts}",
-    "!**/*.spec.{js,ts,d.ts}",
+    "!**/examples/**",
+    "!**/*.spec.{js,ts,d.ts,d.ts.map}",
     "!**/.eslintrc.json"
   ],
   "scripts": {
@@ -72,7 +80,7 @@
     "@fkui/design": "^5",
     "@fkui/logic": "^5",
     "@fkui/vue": "^5",
-    "core-js": "^3.23",
+    "core-js": "^3.24",
     "html-validate": ">= 7.9.0",
     "vue": "^3"
   },

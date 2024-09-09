@@ -2,10 +2,19 @@
   "name": "@fkui/test-utils",
   "version": "5.35.0",
   "description": "FKUI test utils for Jest",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "test",
+    "jest",
+    "vue",
+    "cypress"
+  ],
   "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "packages/test-utils"
   },
   "license": "MIT",

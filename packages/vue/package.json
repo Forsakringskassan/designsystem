@@ -1,10 +1,17 @@
 {
   "name": "@fkui/vue",
   "version": "5.35.0",
+  "description": "Vue implementation of FKUI components",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "vue"
+  ],
   "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "packages/vue"
   },
   "license": "MIT",
@@ -44,7 +51,6 @@
     "build:lib": "fk-build-vue-lib",
     "build:pageobjects": "esbuild --bundle --platform=node --target=node12.0 --sourcemap --outfile=dist/cjs/pageobject.js ./src/pageobjects.ts",
     "clean": "rimraf -g .jest-cache *.tsbuildinfo coverage dist public temp test-results",
-    "prepack": "npm run build",
     "start": "vite --",
     "test": "jest --coverage",
     "unit": "jest",
@@ -86,7 +92,7 @@
     "@fkui/date": "^5",
     "@fkui/design": "^5",
     "@fkui/logic": "^5",
-    "core-js": "^3.23",
+    "core-js": "^3.24",
     "fk-icons": "^4.30.1",
     "html-validate": ">= 7.9.0",
     "vue": "^3"

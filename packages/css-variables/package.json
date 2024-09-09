@@ -2,10 +2,16 @@
   "name": "@fkui/css-variables",
   "version": "5.35.0",
   "description": "FK Themes",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "css"
+  ],
   "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "packages/css-variables"
   },
   "license": "MIT",

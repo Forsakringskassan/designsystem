@@ -4,9 +4,10 @@
   "private": true,
   "description": "fkui-vue-sandbox",
   "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "internal/vue-sandbox"
   },
   "license": "MIT",
@@ -24,7 +25,7 @@
     "@fkui/design": "5.35.0",
     "@fkui/logic": "5.35.0",
     "@fkui/vue": "5.35.0",
-    "core-js": "^3.6.5",
+    "core-js": "3.38.1",
     "vue": "3.4.38",
     "vue-router": "4.4.3"
   },
