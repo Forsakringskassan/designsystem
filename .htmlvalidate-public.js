@@ -32,7 +32,7 @@ module.exports = {
                         "^https://foundation.zurb.com/",
                         "^https://getbem.com/",
                         "^https://getbootstrap.com/",
-                        "^https://github.com/Forsakringskassan/",
+                        "^https://github.com/[fF]orsakringskassan/",
                         "^https://github.com/lerna/",
                         "^https://github.com/semantic-release/",
                         "^https://help.figma.com/",
