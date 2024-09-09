@@ -25,5 +25,5 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: |
                   npm config set access public
-                  npm install -g "@forsakringskassan/semantic-release-monorepo-config"
+                  npm install --no-save "@forsakringskassan/semantic-release-monorepo-config"
                   npm exec semantic-release
