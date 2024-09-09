@@ -1,2 +1,9 @@
 # CHANGELOG
 
+## 5.36.0 (2024-09-09)
+
+
+### Features
+
+* **@fkui/css-variables, @fkui/date, @fkui/design, @fkui/icon-lib-builder, @fkui/icon-lib-default, @fkui/logic, @fkui/test-utils, @fkui/vue-labs, @fkui/vue:** initial public version (refs SFKUI-6500) d0b0604
+* **deps:** update dependency kleur to v4 e88d20d
