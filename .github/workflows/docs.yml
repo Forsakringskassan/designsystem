@@ -34,7 +34,6 @@ jobs:
             - name: Build documentation
               run: npm run build:docs
               env:
-                  DOCS_MOTD_URL: "/latest"
                   DOCS_SOURCE_URL_FORMAT: "https://github.com/${{ github.repository }}/blob/{{ hash }}/{{ path }}"
             - name: Sanity check
               run: git status && git diff
