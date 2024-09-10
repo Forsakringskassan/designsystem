@@ -7,7 +7,6 @@ import isCI from "is-ci";
 import {
     Generator,
     matomoProcessor,
-    motdProcessor,
     searchProcessor,
     selectableVersionProcessor,
     sourceUrlProcessor,
@@ -101,10 +100,6 @@ const docs = new Generator({
                       prUrlFormat:
                           "{{ homepage }}/pull-requests/{{ pr }}/overview",
                   },
-        }),
-        motdProcessor({
-            enabled: isRelease,
-            message: "Det finns en nyare version av designsystemet",
         }),
         selectableVersionProcessor(pkg, "footer:right", {
             enabled: isRelease,
