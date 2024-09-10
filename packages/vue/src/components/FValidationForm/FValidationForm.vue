@@ -3,7 +3,7 @@
         <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
         <form :id="id" v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
             <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
-                <f-error-list :bullets="true" :items="errors">
+                <f-error-list :items="errors" :bullets="errorListBullets" :before-navigate="errorListBeforeNavigate">
                     <template #title>
                         <!--
                             @slot **optional** Slot for displaying error description.
@@ -24,7 +24,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { ValidationService, focus, ElementIdService } from "@fkui/logic";
-import { FErrorList } from "../FErrorList";
+import { BeforeNavigate, FErrorList } from "../FErrorList";
 import { FValidationGroup } from "../FValidationGroup";
 import { GroupValidityEvent, ComponentValidityEvent, ErrorItem } from "../../types";
 import { FValidationFormAction, type FValidationFormCallback } from "./types";
@@ -80,6 +80,26 @@ export default defineComponent({
             type: Boolean,
             required: false,
             default: true,
+        },
+        /**
+         * Display bullets in the error list component.
+         */
+        errorListBullets: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+        /**
+         *Optional callback function to the error list component for performing actions before navigation.
+         */
+        errorListBeforeNavigate: {
+            type: Function as PropType<BeforeNavigate>,
+            required: false,
+            default(): BeforeNavigate {
+                return () => {
+                    /* do nothing */
+                };
+            },
         },
     },
     emits: ["submit"],
