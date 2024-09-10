@@ -68,7 +68,7 @@
     "@fkui/logic": "5.36.0",
     "@fkui/test-utils": "5.36.0",
     "@fkui/vue": "5.36.0",
-    "@forsakringskassan/docs-generator": "2.1.0",
+    "@forsakringskassan/docs-generator": "2.2.0",
     "@forsakringskassan/vite-lib-config": "2.0.1",
     "@vue/test-utils": "2.4.6",
     "vite": "5.4.3",
