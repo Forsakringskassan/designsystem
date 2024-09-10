@@ -36,8 +36,7 @@ const DEFAULT_MATOMO_CONFIG = {
 const {
     MATOMO_SITE_ID = "19",
     MATOMO_CONFIG = "",
-    DOCS_MOTD_URL = "",
-    DOCS_SOURCE_URL_FORMAT = "",
+    DOCS_SOURCE_URL_FORMAT = "https://github.com/Forsakringskassan/designsystem/blob/{{ hash }}/{{ path }}",
 } = process.env;
 const matomoConfig = MATOMO_CONFIG
     ? JSON.parse(MATOMO_CONFIG)
@@ -64,7 +63,6 @@ const fkuiDesign = path.relative(
 if (isCI) {
     console.group("Configuration");
     console.log("Matomo:", MATOMO_SITE_ID ? "enabled" : "disabled");
-    console.log("Motd url: ", DOCS_MOTD_URL);
     console.log("Source url format: ", DOCS_SOURCE_URL_FORMAT);
     console.groupEnd();
     console.log();
@@ -105,15 +103,11 @@ const docs = new Generator({
                   },
         }),
         motdProcessor({
-            enabled: isRelease && Boolean(DOCS_MOTD_URL),
-            message: /* HTML */ `
-                <a class="anchor anchor--block" href="${DOCS_MOTD_URL}">
-                    Det finns en nyare version av designsystemet
-                </a>
-            `,
+            enabled: isRelease,
+            message: "Det finns en nyare version av designsystemet",
         }),
         selectableVersionProcessor(pkg, "footer:right", {
-            enabled: Boolean(DOCS_MOTD_URL),
+            enabled: isRelease,
         }),
         matomoProcessor({
             enabled: Boolean(MATOMO_SITE_ID),
