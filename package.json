@@ -21,7 +21,7 @@
   "scripts": {
     "build": "lerna run build",
     "build:docs": "node generate-docs.mjs && lerna run build:docs && npm run build:public",
-    "build:public": "node scripts/postbuild.js && html-validate --config .htmlvalidate-public.js public",
+    "build:public": "node scripts/postbuild.js && html-validate --formatter stylish,codeframe --config .htmlvalidate-public.js public",
     "preclean": "rimraf -g .eslintcache *.tgz public temp test-results",
     "clean": "npm run --workspaces --if-present clean",
     "css-variables": "npm run --workspace packages/css-variables --",
@@ -30,7 +30,7 @@
     "design": "npm run --workspace packages/design --",
     "eslint": "eslint --cache .",
     "eslint:fix": "eslint --fix .",
-    "html-validate": "html-validate --ext md,html,vue docs packages/*/src internal/*/src",
+    "html-validate": "html-validate --formatter stylish,codeframe --ext md,html,vue docs packages/*/src internal/*/src",
     "labs": "npm run --workspace packages/vue-labs --",
     "lerna": "lerna",
     "link-all": "lerna exec npm link",
