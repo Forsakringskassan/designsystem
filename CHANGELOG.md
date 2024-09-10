@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 5.36.2 (2024-09-10)
+
+
+### Bug Fixes
+
+* remove broken motd link (refs SFKUI-6500) 42e61e0
+
 ## 5.36.1 (2024-09-10)
 
 
