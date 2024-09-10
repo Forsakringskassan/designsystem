@@ -36,7 +36,7 @@ const DEFAULT_MATOMO_CONFIG = {
 const {
     MATOMO_SITE_ID = "19",
     MATOMO_CONFIG = "",
-    DOCS_SOURCE_URL_FORMAT = "",
+    DOCS_SOURCE_URL_FORMAT = "https://github.com/Forsakringskassan/designsystem/blob/{{ hash }}/{{ path }}",
 } = process.env;
 const matomoConfig = MATOMO_CONFIG
     ? JSON.parse(MATOMO_CONFIG)
