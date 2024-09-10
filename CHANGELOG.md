@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 5.36.1 (2024-09-10)
+
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** offline should use short layout ab7e7f9, closes #13
+
 ## 5.36.0 (2024-09-09)
 
 
