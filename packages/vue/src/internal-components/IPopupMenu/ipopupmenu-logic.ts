@@ -1,9 +1,9 @@
 import { MenuAction } from "../../types";
-import { IMenuItem } from "../IMenu/imenu-utils";
+import { type MenuItem } from "../../components";
 
 export interface MenuActionTarget {
     readonly currentFocusedItemIndex: number;
-    readonly items: IMenuItem[];
+    readonly items: MenuItem[];
 
     setFocusOnItem(index: number): Promise<void>;
     activateItem(index: number): Promise<void>;

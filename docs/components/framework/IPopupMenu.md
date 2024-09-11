@@ -4,7 +4,7 @@ layout: component
 component: IPopupMenu
 ---
 
-Popup-meny är en ramverkskomponent som används i samband med meny ({@link IMenu}).
+Popup-meny är en ramverkskomponent som används av {@link FNavigationMenu navigeringsmenyn}.
 
 ```import
 IPopupMenuExample.vue

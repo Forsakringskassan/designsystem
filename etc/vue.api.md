@@ -9729,49 +9729,33 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>, {}, {
-overflowIndex: number;
-ignoreNoOverflow: boolean;
-selectedMenuItemKey: string;
-selectedPopupItemKey: string;
-popupAnchor: HTMLElement;
-popupOpen: boolean;
-currentFocusedItemIndex: number;
-focusedMenuItemKey: string;
-focusedPopupMenuItemKey: string;
-initPopupNavigationIndex: boolean;
-}, {
-items(): IMenuItem[];
-visibleItems(): IMenuItem[];
-popupItems(): IMenuItem[];
-hasPopupMenuSelectedItems(): boolean;
-}, {
-selectedMenuItemSrText(): string;
-menuMoreWithSelectedItemsSrText(): string;
-findItemByKey(items: IMenuItem[], key: string): IMenuItem | undefined;
-indexOfItemByKey(items: IMenuItem[], key: string): number;
-onOverflow(index: number): Promise<void>;
-refreshSelectedItem(): Promise<void>;
-doSelectItem(key: string): Promise<void>;
-onSelectMenu(key: string): Promise<void>;
-onSelectPopup(key: string): Promise<void>;
-onClosePopup(): Promise<void>;
-setPopupOpen(value: boolean): Promise<void>;
-updateOverflowIndex(index: number): void;
-onKeyUp(event: KeyboardEvent): void;
-doHandleMenuTabKey(action: MenuAction): boolean;
-doHandlePopupMenuTabKey(action: MenuAction): Promise<boolean>;
-setCurrentFocusedItemIndex(value: number): void;
-doInitPopupNavigationIndex(event: KeyboardEvent): void;
-onKeyDown(event: KeyboardEvent): Promise<void>;
-setFocusOnItem(index: number): Promise<void>;
+}>, {}, FNavigationMenuData, {
+items(): MenuItem[];
+overflowItems(): MenuItem[];
 hasOverflow(): boolean;
+overflowItemSelected(): boolean;
+menuClasses(): string[];
+popupItemClasses(): string[];
+selectedItemSrText(): string;
+popupLabel(): string;
+popupMenuSrText(): string;
+popupMenuSelectedSrText(): string;
+}, {
+itemClasses(item: MenuItem, index: number): string[];
+showItemSrText(index: number): boolean;
+getVisibleAnchors(): HTMLElement[];
+getAnchor(index: number): HTMLElement | undefined;
+findItemByKey(key: string): MenuItem | undefined;
+indexOfItemByKey(key: string): number;
+selectItem(key: string): void;
 activateItem(index: number): Promise<void>;
-activateInvisibleItem(item: IMenuItem): Promise<void>;
-setFocusedItemIndex(index: number): void;
-setFocusedPopupMenuItemKey(key: string): Promise<void>;
-setFocusedMenuItemKey(key: string): void;
-setSelectedMenuItemKey(key: string): Promise<void>;
+onClickItem(item: MenuItem, doClick?: boolean): Promise<void>;
+onPopupMenuItemSelected(key: string): void;
+togglePopup(open: boolean): void;
+setFocusOnItem(index: number): Promise<void>;
+onResize(): Promise<void>;
+onKeyUp(event: KeyboardEvent): void;
+onKeyDown(event: KeyboardEvent): Promise<void>;
 }, ComponentOptions, ComponentOptionsMixin, ("selectedRoute" | "update:route")[], "selectedRoute" | "update:route", PublicProps, Readonly<ExtractPropTypes<    {
 route: {
 type: StringConstructor;
@@ -9824,111 +9808,6 @@ menuMoreWithSelectedItemsScreenReaderText: string;
 menuAriaLabel: string;
 popupAriaLabel: string;
 }, {}, {
-IMenu: DefineComponent<ExtractPropTypes<    {
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-items: {
-type: PropType<IMenuItem[]>;
-required: true;
-};
-vertical: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-focusedItemKey: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-enableKeyboardNavigation: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-selectedMenuItemScreenReaderText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-hasMenuMoreSelectedItems: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-}>, {}, {
-resizeObserver: ResizeObserver | undefined;
-currentFocusedItemIndex: number;
-lastSelectedItem: string;
-}, {
-cssClasses(): Record<string, boolean>;
-}, {
-getAnchor(index: number): HTMLElement | undefined;
-getSelectedMenuItemScreenReaderText(index: number): string | undefined;
-isSelected(index: number): boolean;
-ariaHasPopup(index: number): boolean | undefined;
-findItemByKey(key: string): IMenuItem | undefined;
-indexOfItemByKey(key: string): number;
-onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
-onResize(): void;
-cssClassHighlight(item: IMenuItem): string;
-ccsClassHighlightAnchor(item: IMenuItem): string;
-ccsClassHighlightAnchorContainer(item: IMenuItem): string;
-setFocusOnItem(index: number): Promise<void>;
-activateItem(index: number): Promise<void>;
-setFocusedItemIndex(index: number): void;
-onKeyUp(event: KeyboardEvent): void;
-onKeyDown(event: KeyboardEvent): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "update:modelValue" | "overflow")[], "select" | "update:modelValue" | "overflow", PublicProps, Readonly<ExtractPropTypes<    {
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-items: {
-type: PropType<IMenuItem[]>;
-required: true;
-};
-vertical: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-focusedItemKey: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-enableKeyboardNavigation: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-selectedMenuItemScreenReaderText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-hasMenuMoreSelectedItems: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-}>> & Readonly<{
-onSelect?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onOverflow?: ((...args: any[]) => any) | undefined;
-}>, {
-vertical: boolean;
-modelValue: string;
-focusedItemKey: string;
-enableKeyboardNavigation: boolean;
-selectedMenuItemScreenReaderText: string;
-hasMenuMoreSelectedItems: boolean;
-}, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
 type: StringConstructor;
@@ -9983,7 +9862,6 @@ library: string;
 flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
-}, {}, string, ComponentProvideOptions, true, {}, any>;
 IPopupMenu: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
@@ -10004,7 +9882,7 @@ type: PropType<HTMLElement | undefined>;
 default: undefined;
 };
 items: {
-type: PropType<IMenuItem[]>;
+type: PropType<MenuItem[]>;
 required: true;
 };
 enableKeyboardNavigation: {
@@ -10028,10 +9906,10 @@ lastSelectedItem: string;
 }, {}, {
 isSelected(index: number): boolean;
 focusElement(): HTMLElement | null;
-findItemByKey(key: string): IMenuItem | undefined;
+findItemByKey(key: string): MenuItem | undefined;
 indexOfItemByKey(key: string): number;
-onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
-itemClasses(item: IMenuItem): string[];
+onClickItem(item: MenuItem, doClick?: boolean): Promise<void>;
+itemClasses(item: MenuItem): string[];
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
 setFocusedItemIndex(index: number): void;
@@ -10057,7 +9935,7 @@ type: PropType<HTMLElement | undefined>;
 default: undefined;
 };
 items: {
-type: PropType<IMenuItem[]>;
+type: PropType<MenuItem[]>;
 required: true;
 };
 enableKeyboardNavigation: {
@@ -10084,64 +9962,10 @@ onClose?: ((...args: any[]) => any) | undefined;
 anchor: HTMLElement | undefined;
 modelValue: string;
 ariaLabel: string;
+focusedItem: string;
 enableKeyboardNavigation: boolean;
 selectedMenuItemScreenReaderText: string;
-focusedItem: string;
 }, {}, {
-FIcon: DefineComponent<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>, {}, {}, {
-spriteKey(): string;
-spriteId(): string;
-modifiers(): string[];
-ariaHidden(): "true" | undefined;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>> & Readonly<{}>, {
-library: string;
-flip: string;
-rotate: string;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 IPopup: DefineComponent<ExtractPropTypes<    {
 isOpen: {
 type: BooleanConstructor;
@@ -10263,6 +10087,22 @@ setFocus: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export interface FNavigationMenuData {
+    // (undocumented)
+    focusedPopupMenuItem: string;
+    // (undocumented)
+    overflowIndex: number;
+    // (undocumented)
+    popupAnchor: HTMLElement | undefined;
+    // (undocumented)
+    popupOpen: boolean;
+    // (undocumented)
+    resizeObserver: ResizeObserver | undefined;
+    // (undocumented)
+    selectedItem: string;
+}
 
 // @public (undocumented)
 export const FNumericTextField: DefineComponent<ExtractPropTypes<    {
@@ -17455,181 +17295,6 @@ align: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const IMenu: DefineComponent<ExtractPropTypes<    {
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-items: {
-type: PropType<IMenuItem[]>;
-required: true;
-};
-vertical: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-focusedItemKey: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-enableKeyboardNavigation: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-selectedMenuItemScreenReaderText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-hasMenuMoreSelectedItems: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-}>, {}, {
-resizeObserver: ResizeObserver | undefined;
-currentFocusedItemIndex: number;
-lastSelectedItem: string;
-}, {
-cssClasses(): Record<string, boolean>;
-}, {
-getAnchor(index: number): HTMLElement | undefined;
-getSelectedMenuItemScreenReaderText(index: number): string | undefined;
-isSelected(index: number): boolean;
-ariaHasPopup(index: number): boolean | undefined;
-findItemByKey(key: string): IMenuItem | undefined;
-indexOfItemByKey(key: string): number;
-onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
-onResize(): void;
-cssClassHighlight(item: IMenuItem): string;
-ccsClassHighlightAnchor(item: IMenuItem): string;
-ccsClassHighlightAnchorContainer(item: IMenuItem): string;
-setFocusOnItem(index: number): Promise<void>;
-activateItem(index: number): Promise<void>;
-setFocusedItemIndex(index: number): void;
-onKeyUp(event: KeyboardEvent): void;
-onKeyDown(event: KeyboardEvent): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "update:modelValue" | "overflow")[], "select" | "update:modelValue" | "overflow", PublicProps, Readonly<ExtractPropTypes<    {
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-items: {
-type: PropType<IMenuItem[]>;
-required: true;
-};
-vertical: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-focusedItemKey: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-enableKeyboardNavigation: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-selectedMenuItemScreenReaderText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-hasMenuMoreSelectedItems: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-}>> & Readonly<{
-onSelect?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onOverflow?: ((...args: any[]) => any) | undefined;
-}>, {
-vertical: boolean;
-modelValue: string;
-focusedItemKey: string;
-enableKeyboardNavigation: boolean;
-selectedMenuItemScreenReaderText: string;
-hasMenuMoreSelectedItems: boolean;
-}, {}, {
-FIcon: DefineComponent<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>, {}, {}, {
-spriteKey(): string;
-spriteId(): string;
-modifiers(): string[];
-ariaHidden(): "true" | undefined;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>> & Readonly<{}>, {
-library: string;
-flip: string;
-rotate: string;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
-}, {}, string, ComponentProvideOptions, true, {}, any>;
-
-// @public (undocumented)
-export interface IMenuItem {
-    ariaHasPopup?: boolean;
-    href?: string;
-    iconRight?: string;
-    key: string;
-    label: string;
-    srMenuMoreTextContents?: string;
-    // (undocumented)
-    srMenuMoreTextSelectedContents?: string;
-    target?: string;
-}
-
-// @public (undocumented)
 export function includeItem<T extends object, K extends keyof T>(item: ListItem<T> | undefined, itemList: ListArray<T> | undefined, compareAttribute: K): boolean;
 
 // @public (undocumented)
@@ -17901,7 +17566,7 @@ type: PropType<HTMLElement | undefined>;
 default: undefined;
 };
 items: {
-type: PropType<IMenuItem[]>;
+type: PropType<MenuItem[]>;
 required: true;
 };
 enableKeyboardNavigation: {
@@ -17925,10 +17590,10 @@ lastSelectedItem: string;
 }, {}, {
 isSelected(index: number): boolean;
 focusElement(): HTMLElement | null;
-findItemByKey(key: string): IMenuItem | undefined;
+findItemByKey(key: string): MenuItem | undefined;
 indexOfItemByKey(key: string): number;
-onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
-itemClasses(item: IMenuItem): string[];
+onClickItem(item: MenuItem, doClick?: boolean): Promise<void>;
+itemClasses(item: MenuItem): string[];
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
 setFocusedItemIndex(index: number): void;
@@ -17954,7 +17619,7 @@ type: PropType<HTMLElement | undefined>;
 default: undefined;
 };
 items: {
-type: PropType<IMenuItem[]>;
+type: PropType<MenuItem[]>;
 required: true;
 };
 enableKeyboardNavigation: {
@@ -17981,64 +17646,10 @@ onClose?: ((...args: any[]) => any) | undefined;
 anchor: HTMLElement | undefined;
 modelValue: string;
 ariaLabel: string;
+focusedItem: string;
 enableKeyboardNavigation: boolean;
 selectedMenuItemScreenReaderText: string;
-focusedItem: string;
 }, {}, {
-FIcon: DefineComponent<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>, {}, {}, {
-spriteKey(): string;
-spriteId(): string;
-modifiers(): string[];
-ariaHidden(): "true" | undefined;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>> & Readonly<{}>, {
-library: string;
-flip: string;
-rotate: string;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 IPopup: DefineComponent<ExtractPropTypes<    {
 isOpen: {
 type: BooleanConstructor;
@@ -18223,6 +17834,14 @@ export enum MenuAction {
     MOVE_NEXT = 0,
     // (undocumented)
     MOVE_PREV = 1
+}
+
+// @public
+export interface MenuItem {
+    href?: string;
+    key: string;
+    label: string;
+    target?: string;
 }
 
 // @public
