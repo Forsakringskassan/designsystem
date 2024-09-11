@@ -2,7 +2,6 @@ import { MenuAction } from "../../types";
 import { IMenuItem } from "./imenu-utils";
 
 export interface MenuActionTarget {
-    readonly currentFocusedItemIndex: number;
     readonly items: IMenuItem[];
 
     setFocusOnItem(index: number): Promise<void>;
@@ -44,9 +43,9 @@ export function getNewItemIndexFromMenuAction(
 export async function doMenuAction(
     action: MenuAction | null,
     target: MenuActionTarget,
+    currentIndex: number,
 ): Promise<void> {
     const itemsLength = target.items.length;
-    const currentIndex = target.currentFocusedItemIndex;
     const newFocusedItemIndex = getNewItemIndexFromMenuAction(
         action,
         currentIndex,

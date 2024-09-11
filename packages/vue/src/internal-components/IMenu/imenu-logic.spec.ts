@@ -51,24 +51,22 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     ];
     it("should move focus to first item", async () => {
         const target: MenuActionTarget = {
-            currentFocusedItemIndex: 1, // second item index
             items: testItems,
             setFocusOnItem: jest.fn().mockResolvedValue(undefined),
             activateItem: jest.fn().mockResolvedValue(undefined),
         };
         // move to first item
-        await doMenuAction(MenuAction.MOVE_FIRST, target);
+        await doMenuAction(MenuAction.MOVE_FIRST, target, 1);
         expect(target.setFocusOnItem).toHaveBeenCalledWith(0); // first item index
     });
     it("should activate the current item", async () => {
         const target: MenuActionTarget = {
-            currentFocusedItemIndex: 1, // second item index
             items: testItems,
             setFocusOnItem: jest.fn().mockResolvedValue(undefined),
             activateItem: jest.fn().mockResolvedValue(undefined),
         };
         // activate current item
-        await doMenuAction(MenuAction.ACTIVATE, target);
+        await doMenuAction(MenuAction.ACTIVATE, target, 1);
         expect(target.activateItem).toHaveBeenCalledWith(1); // second item index
     });
 });

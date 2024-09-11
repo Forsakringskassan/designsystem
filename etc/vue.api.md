@@ -6253,7 +6253,6 @@ default: boolean;
 };
 }, unknown, {
 resizeObserver: ResizeObserver | undefined;
-currentFocusedItemIndex: number;
 lastSelectedItem: string;
 }, {
 cssClasses(): Record<string, boolean>;
@@ -6271,7 +6270,6 @@ ccsClassHighlightAnchor(item: IMenuItem): string;
 ccsClassHighlightAnchorContainer(item: IMenuItem): string;
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
-setFocusedItemIndex(index: number): void;
 onKeyUp(event: KeyboardEvent): void;
 onKeyDown(event: KeyboardEvent): Promise<void>;
 }, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "update:modelValue" | "overflow")[], "select" | "update:modelValue" | "overflow", PublicProps, Readonly<ExtractPropTypes<    {

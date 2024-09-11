@@ -124,7 +124,6 @@ export default defineComponent({
     data() {
         return {
             resizeObserver: undefined as ResizeObserver | undefined,
-            currentFocusedItemIndex: 0,
             lastSelectedItem: "",
         };
     },
@@ -152,8 +151,6 @@ export default defineComponent({
                 const index = this.indexOfItemByKey(newVal);
                 if (index >= 0) {
                     await this.setFocusOnItem(index);
-                } else {
-                    this.setFocusedItemIndex(0);
                 }
             },
         },
@@ -165,14 +162,11 @@ export default defineComponent({
                 const index = this.indexOfItemByKey(newVal);
                 if (index >= 0) {
                     await this.activateItem(index);
-                } else {
-                    this.setFocusedItemIndex(0);
                 }
             },
         },
     },
     mounted() {
-        this.currentFocusedItemIndex = 0;
         if (!this.vertical) {
             this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
             this.resizeObserver.observe(this.$el);
@@ -272,16 +266,12 @@ export default defineComponent({
             return item.key === this.modelValue ? "imenu__list__anchor-container--highlight" : "";
         },
         async setFocusOnItem(index: number): Promise<void> {
-            this.setFocusedItemIndex(index);
             await this.$nextTick();
             const itemAnchor = this.getAnchor(index);
             focus(itemAnchor, { preventScroll: true });
         },
         async activateItem(index: number): Promise<void> {
             await this.onClickItem(this.items[index], true);
-        },
-        setFocusedItemIndex(index: number): void {
-            this.currentFocusedItemIndex = index;
         },
         onKeyUp(event: KeyboardEvent) {
             if (!this.enableKeyboardNavigation) {
@@ -299,8 +289,11 @@ export default defineComponent({
 
             const action = actionFromKeyboardEvent(event);
             if (action !== null) {
+                const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+                const focusedIndex = anchors.findIndex((anchor) => anchor === event.target);
+
                 event.preventDefault();
-                await doMenuAction(action, this);
+                await doMenuAction(action, this, focusedIndex);
             }
         },
     },
