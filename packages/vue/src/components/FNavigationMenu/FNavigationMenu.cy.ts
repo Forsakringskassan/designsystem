@@ -187,12 +187,12 @@ describe("tests", () => {
         const navMenu = mountTC2AndGetPageObject();
         const menuPageObj: IMenuPageObject = navMenu.menu();
         menuPageObj
-            .getItemLink(5)
-            .should("not.have.class", "imenu__list__anchor--highlight");
+            .item(5)
+            .should("not.have.class", "imenu__list__item--highlight");
         menuPageObj.getItemLink(5).click();
         menuPageObj
-            .getItemLink(5)
-            .should("have.class", "imenu__list__anchor--highlight");
+            .item(5)
+            .should("have.class", "imenu__list__item--highlight");
     });
 
     /* eslint-disable-next-line mocha/no-skipped-tests -- technical debt: flaky test */
@@ -205,8 +205,8 @@ describe("tests", () => {
 
         //More-menu should not be highlighted
         menuPageObj
-            .getItemLink(7)
-            .should("not.have.class", "imenu__list__anchor--highlight");
+            .item(7)
+            .should("not.have.class", "imenu__list__item--highlight");
 
         //Select item in popupmenu
         menuPageObj.getItemLink(7).click();
@@ -217,8 +217,8 @@ describe("tests", () => {
 
         //More-menu should be highlighted
         menuPageObj
-            .getItemLink(7)
-            .should("have.class", "imenu__list__anchor--highlight");
+            .item(7)
+            .should("have.class", "imenu__list__item--highlight");
 
         //Selected item in popupmenu should be highlighted
         menuPageObj.getItemLink(7).click();
@@ -242,8 +242,8 @@ describe("tests", () => {
         //More menu should be highlited
         menuPageObj.getItemLink(5).should("contain.text", "Mer");
         menuPageObj
-            .getItemLink(5)
-            .should("have.class", "imenu__list__anchor--highlight");
+            .item(5)
+            .should("have.class", "imenu__list__item--highlight");
 
         // selected item should still be highlighted (now in popupmenu)
         menuPageObj.getItemLink(5).click();
@@ -268,15 +268,15 @@ describe("tests", () => {
 
         //More menu should be highlited
         menuPageObj
-            .getItemLink(5)
-            .should("have.class", "imenu__list__anchor--highlight");
+            .item(5)
+            .should("have.class", "imenu__list__item--highlight");
 
         //Resize to move selected item from popupmenu to menu
         cy.viewport(viewportLarge.width, viewportLarge.height);
 
         // selected item should still be highlighted (now in menu)
         menuPageObj
-            .getItemLink(5)
-            .should("have.class", "imenu__list__anchor--highlight");
+            .item(5)
+            .should("have.class", "imenu__list__item--highlight");
     });
 });

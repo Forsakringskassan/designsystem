@@ -1,17 +1,16 @@
 <template>
-    <nav class="imenu" aria-label="Navigeringsmeny" :class="cssClasses" @keyup="onKeyUp" @keydown="onKeyDown">
+    <nav class="imenu" aria-label="Navigeringsmeny" :class="menuClasses" @keyup="onKeyUp" @keydown="onKeyDown">
         <ul class="imenu__list" role="menubar">
             <li
                 v-for="(item, index) in items"
                 ref="items"
                 :key="item.key"
                 :data-ref-index="index"
-                class="imenu__list__item"
-                :class="cssClassHighlight(item)"
+                :class="itemClasses(item)"
                 role="none"
                 @click="onClickItem(item)"
             >
-                <div :class="ccsClassHighlightAnchorContainer(item)" class="imenu__list__anchor-container">
+                <div class="imenu__list__anchor-container">
                     <a
                         ref="anchors"
                         :data-ref-index="index"
@@ -19,7 +18,6 @@
                         :href="item.href"
                         :target="item.target"
                         class="imenu__list__anchor"
-                        :class="ccsClassHighlightAnchor(item)"
                         role="menuitem"
                         :aria-haspopup="ariaHasPopup(index)"
                     >
@@ -128,11 +126,8 @@ export default defineComponent({
         };
     },
     computed: {
-        cssClasses(): Record<string, boolean> {
-            return {
-                "imenu--horizontal": !this.vertical,
-                "imenu--vertical": this.vertical,
-            };
+        menuClasses(): string[] {
+            return this.vertical ? ["imenu--vertical"] : ["imenu--horizontal"];
         },
     },
     watch: {
@@ -256,14 +251,9 @@ export default defineComponent({
              */
             this.$emit("overflow", overflowIndex);
         },
-        cssClassHighlight(item: IMenuItem): string {
-            return item.key === this.modelValue ? "imenu__list__item--highlight" : "";
-        },
-        ccsClassHighlightAnchor(item: IMenuItem): string {
-            return item.key === this.modelValue ? "imenu__list__anchor--highlight" : "";
-        },
-        ccsClassHighlightAnchorContainer(item: IMenuItem): string {
-            return item.key === this.modelValue ? "imenu__list__anchor-container--highlight" : "";
+        itemClasses(item: IMenuItem): string[] {
+            const highlight = item.key === this.modelValue ? ["imenu__list__item--highlight"] : [];
+            return ["imenu__list__item", ...highlight];
         },
         async setFocusOnItem(index: number): Promise<void> {
             await this.$nextTick();

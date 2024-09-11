@@ -69,16 +69,20 @@ $IMENU_SELECTOR: ".imenu" !default;
             &--highlight {
                 color: var(--f-text-color-menu-horizontal-highlight);
                 font-weight: var(--f-font-weight-medium);
+
+                .imenu__list__anchor-container {
+                    border-bottom: 5px solid var(--f-border-color-menu-horizontal-highlight);
+                }
+
+                .imenu__list__anchor:hover {
+                    font-weight: var(--f-font-weight-medium);
+                }
             }
         }
 
         &__anchor-container {
             padding-bottom: size.$padding-050;
             border-bottom: 5px solid transparent;
-
-            &--highlight {
-                border-bottom: 5px solid var(--f-border-color-menu-horizontal-highlight);
-            }
 
             &:hover {
                 border-bottom: 5px solid var(--f-border-color-menu-horizontal-hover);
@@ -87,10 +91,6 @@ $IMENU_SELECTOR: ".imenu" !default;
 
         &__anchor {
             display: inline-flex;
-
-            &--highlight:hover {
-                font-weight: var(--f-font-weight-medium);
-            }
 
             &-icon-right {
                 flex: 1 0 auto;

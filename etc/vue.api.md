@@ -6255,7 +6255,7 @@ default: boolean;
 resizeObserver: ResizeObserver | undefined;
 lastSelectedItem: string;
 }, {
-cssClasses(): Record<string, boolean>;
+menuClasses(): string[];
 }, {
 getAnchor(index: number): HTMLElement | undefined;
 getSelectedMenuItemScreenReaderText(index: number): string | undefined;
@@ -6265,9 +6265,7 @@ findItemByKey(key: string): IMenuItem | undefined;
 indexOfItemByKey(key: string): number;
 onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
 onResize(): void;
-cssClassHighlight(item: IMenuItem): string;
-ccsClassHighlightAnchor(item: IMenuItem): string;
-ccsClassHighlightAnchorContainer(item: IMenuItem): string;
+itemClasses(item: IMenuItem): string[];
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
 onKeyUp(event: KeyboardEvent): void;
