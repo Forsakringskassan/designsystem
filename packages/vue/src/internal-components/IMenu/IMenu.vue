@@ -118,7 +118,32 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["overflow", "select", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted on item overflow. Event that is dispatched when the horizontal
+         * menu items do not fit in the current total width.
+         * The event payload is the item position/index of the item in overflow.
+         *
+         * @event overflow
+         * @type {number} index for overflowed item
+         */
+        "overflow",
+        /**
+         *  Vue 2 v-model event. Event that is dispatched when an item is clicked.
+         *
+         * @deprecated
+         * @event select
+         * @type {string} item key
+         */
+        "select",
+        /**
+         *  V-model event. Event that is dispatched when an item is clicked.
+         *
+         * @event update:modelValue
+         * @type {string} item key
+         */
+        "update:modelValue",
+    ],
     data() {
         return {
             resizeObserver: undefined as ResizeObserver | undefined,
@@ -207,23 +232,8 @@ export default defineComponent({
         },
         async onClickItem(item: IMenuItem, doClick: boolean = false): Promise<void> {
             if (item.key === menuMoreKey || item.key !== this.lastSelectedItem) {
-                /**
-                 *  V-model event. Event that is dispatched when an item is clicked.
-                 *
-                 * @event update:modelValue
-                 * @type {string} item key
-                 */
                 this.$emit("update:modelValue", item.key);
-
-                /**
-                 *  Vue 2 v-model event. Event that is dispatched when an item is clicked.
-                 *
-                 * @deprecated
-                 * @event select
-                 * @type {string} item key
-                 */
                 this.$emit("select", item.key);
-
                 this.lastSelectedItem = item.key;
             }
             if (item.href && doClick) {
@@ -241,14 +251,6 @@ export default defineComponent({
 
             const overflowIndex = findOverflowIndex(barWidth, itemElements);
 
-            /**
-             * Emitted on item overflow. Event that is dispatched when the horizontal
-             * menu items do not fit in the current total width.
-             * The event payload is the item position/index of the item in overflow.
-             *
-             * @event overflow
-             * @type {number} index for overflowed item
-             */
             this.$emit("overflow", overflowIndex);
         },
         itemClasses(item: IMenuItem): string[] {
