@@ -83,7 +83,7 @@
     "rollup-plugin-dts": "6.1.1"
   },
   "peerDependencies": {
-    "@fkui/date": "^5"
+    "@fkui/date": "^5.36.0"
   },
   "engines": {
     "node": ">= 20",

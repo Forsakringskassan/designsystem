@@ -76,10 +76,10 @@
     "vue-router": "4.4.3"
   },
   "peerDependencies": {
-    "@fkui/date": "^5",
-    "@fkui/design": "^5",
-    "@fkui/logic": "^5",
-    "@fkui/vue": "^5",
+    "@fkui/date": "^5.36.0",
+    "@fkui/design": "^5.36.0",
+    "@fkui/logic": "^5.36.0",
+    "@fkui/vue": "^5.36.0",
     "core-js": "^3.24",
     "html-validate": ">= 7.9.0",
     "vue": "^3"

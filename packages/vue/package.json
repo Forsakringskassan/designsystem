@@ -89,9 +89,9 @@
   },
   "peerDependencies": {
     "@babel/runtime": "^7",
-    "@fkui/date": "^5",
-    "@fkui/design": "^5",
-    "@fkui/logic": "^5",
+    "@fkui/date": "^5.36.0",
+    "@fkui/design": "^5.36.0",
+    "@fkui/logic": "^5.36.0",
     "core-js": "^3.24",
     "fk-icons": "^4.30.1",
     "html-validate": ">= 7.9.0",
