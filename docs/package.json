@@ -18,7 +18,7 @@
     "@fkui/vue": "5.36.1"
   },
   "devDependencies": {
-    "@forsakringskassan/docs-generator": "2.2.1",
+    "@forsakringskassan/docs-generator": "2.2.2",
     "cypress": "13.14.2",
     "vue": "3.4.38"
   }
