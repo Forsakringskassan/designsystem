@@ -85,7 +85,7 @@
     "flush-promises": "1.0.2",
     "vite": "5.4.3",
     "vue": "3.4.38",
-    "vue-router": "4.4.3"
+    "vue-router": "4.4.4"
   },
   "peerDependencies": {
     "@babel/runtime": "^7",
