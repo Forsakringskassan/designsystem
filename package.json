@@ -116,7 +116,7 @@
     "html-validate": "8.22.0",
     "html-validate-markdown": "4.0.0",
     "html-validate-vue": "6.0.8",
-    "husky": "9.1.5",
+    "husky": "9.1.6",
     "is-ci": "3.0.1",
     "lerna": "6.6.2",
     "lint-staged": "15.2.10",
