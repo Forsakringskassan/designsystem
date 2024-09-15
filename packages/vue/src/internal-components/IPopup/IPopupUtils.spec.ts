@@ -1,3 +1,4 @@
+import { Rect } from "../../utils";
 import {
     Candidate,
     CandidateOrder,
@@ -7,7 +8,6 @@ import {
     getFallbackPosition,
     isInside,
     Placement,
-    Rect,
     SpacingDirection,
 } from "./IPopupUtils";
 
