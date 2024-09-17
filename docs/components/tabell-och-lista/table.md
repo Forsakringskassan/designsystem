@@ -3,7 +3,7 @@ title: Tabell
 status: Produktionsklar
 layout: component
 sortorder: 1
-components:
+component:
     - FDataTable
     - FInteractiveTable
     - FTableColumn
