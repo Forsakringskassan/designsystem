@@ -124,7 +124,7 @@
     "mocha-multi-reporters": "1.5.1",
     "npm-pkg-lint": "3.8.0",
     "npm-run-all2": "6.2.3",
-    "postcss": "8.4.45",
+    "postcss": "8.4.47",
     "rimraf": "6.0.1",
     "sass": "1.78.0",
     "typedoc": "0.26.7",
