@@ -4062,9 +4062,9 @@ required: false;
 validator(value: string): boolean;
 };
 skipLink: {
-type: BooleanConstructor;
+type: PropType<string | boolean>;
 required: false;
-default: boolean;
+default: string;
 };
 skipLinkHref: {
 type: StringConstructor;
@@ -4095,6 +4095,7 @@ default: string;
 logoClass(): string;
 hasRouterLink(): boolean;
 routerLinkTo(): RouteLocationPathRaw | RouteLocationNamedRaw | null;
+skipLinkAnchor(): string | null;
 altLogoText(): string;
 }, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 logoSize: {
@@ -4104,9 +4105,9 @@ required: false;
 validator(value: string): boolean;
 };
 skipLink: {
-type: BooleanConstructor;
+type: PropType<string | boolean>;
 required: false;
-default: boolean;
+default: string;
 };
 skipLinkHref: {
 type: StringConstructor;
@@ -4136,7 +4137,7 @@ default: string;
 }>>, {
 headerTag: string;
 logoSize: string;
-skipLink: boolean;
+skipLink: string | boolean;
 skipLinkHref: string;
 routerLinkPath: string;
 routerLinkName: string;

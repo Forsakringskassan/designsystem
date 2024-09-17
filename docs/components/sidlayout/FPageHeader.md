@@ -23,6 +23,26 @@ Sidhuvudet kan också visa sekundär information till höger.
 FPageHeaderCustomLogo.vue
 ```
 
+## Skiplink
+
+Skiplink är en särskild länk som fungerar som det första tabbningsbara elementet och visas endast när det fokuserats.
+Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det primära innehållet utan att navigera genom navigeringsmenyer osv.
+
+Skiplink aktiveras genom att sätta`skipLink` till det id som innehåller det primära innehållet:
+
+```diff
+ <header>
+     <f-page-header
++        skip-link="awesome-id"
+     </f-page-header>
+ </header>
++<main>
++    <h1 id="awesome-id" tabindex="-1">
++</main>
+```
+
+Notera att elementet måste vara fokuserbart.
+
 ## API
 
 :::api
