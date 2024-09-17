@@ -41,7 +41,6 @@ const matomoConfig = MATOMO_CONFIG
     ? JSON.parse(MATOMO_CONFIG)
     : DEFAULT_MATOMO_CONFIG;
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
-const docsRoot = path.relative(rootDir, "docs");
 
 const isRelease = (() => {
     try {
@@ -147,7 +146,6 @@ docs.compileStyle("docs-int", "./docs/src/int-theme.scss", {
     },
 });
 
-docs.copyResource("fonts", path.join(docsRoot, "src/assets/fonts"));
 docs.copyResource("images", path.join(fkuiDesign, "assets/images"));
 
 try {

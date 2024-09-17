@@ -240,16 +240,16 @@ describe("tests", () => {
         cy.viewport(viewportSmall.width, viewportSmall.height);
 
         //More menu should be highlited
-        menuPageObj.getItemLink(4).should("contain.text", "Mer");
+        menuPageObj.getItemLink(5).should("contain.text", "Mer");
         menuPageObj
-            .getItemLink(4)
+            .getItemLink(5)
             .should("have.class", "imenu__list__anchor--highlight");
 
         // selected item should still be highlighted (now in popupmenu)
-        menuPageObj.getItemLink(4).click();
+        menuPageObj.getItemLink(5).click();
         const popupMenuPageObj: IPopupMenuPageObject = navMenu.popupMenu();
         popupMenuPageObj
-            .item(1)
+            .item(0)
             .should("have.class", "ipopupmenu__list__item--highlight");
     });
 
@@ -260,15 +260,15 @@ describe("tests", () => {
         const popupMenuPageObj: IPopupMenuPageObject = navMenu.popupMenu();
 
         //Wait on more-menu to settle
-        menuPageObj.getItemLink(4).should("contain.text", "Mer");
+        menuPageObj.getItemLink(5).should("contain.text", "Mer");
 
         // Select item in popupmenu
-        menuPageObj.getItemLink(4).click();
-        popupMenuPageObj.item(1).click();
+        menuPageObj.getItemLink(5).click();
+        popupMenuPageObj.item(0).click();
 
         //More menu should be highlited
         menuPageObj
-            .getItemLink(4)
+            .getItemLink(5)
             .should("have.class", "imenu__list__anchor--highlight");
 
         //Resize to move selected item from popupmenu to menu

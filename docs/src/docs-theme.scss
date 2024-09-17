@@ -10,26 +10,9 @@
 @use "~@forsakringskassan/docs-generator/style";
 @use "~@forsakringskassan/docs-live-example/dist/main";
 
-@font-face {
-    font-family: "NeueHaas";
-    src: url("./fonts/NHaasGroteskTXPro-55Rg.woff") format("woff");
-}
-
-@font-face {
-    font-family: "NeueHaas";
-    src: url("./fonts/NHaasGroteskTXPro-65Md.woff") format("woff");
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: "NeueHaas";
-    src: url("./fonts/NHaasGroteskTXPro-75Bd.woff") format("woff");
-    font-weight: 900;
-}
-
 :root {
-    --docs-font-family: "NeueHaas", arial, "Helvetica Neue", sans-serif;
-    --docs-heading-family: "NeueHaas", arial, "Helvetica Neue", sans-serif;
+    --docs-font-family: arial, "Helvetica Neue", sans-serif;
+    --docs-heading-family: arial, "Helvetica Neue", sans-serif;
     --docs-heading-font-weight: 700;
 }
 
