@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-c3122b.json"
+            href="../../search-data-963863.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dqlDx1lSIRsGw8BguEFuRnB55pnYzW27422HDJxQ/CcOfX+LjXdTkZMz2lJ3+lL8"
+            integrity="sha384-icrFx4hAeoPfXJ+nSd2J+cXPe2MWc0gUAYYvy5PeLD0KaWKgBqdh1cnbbJgurkgz"
             id="search-data"
         />
     </head>
@@ -1052,9 +1052,9 @@
                     integrity="sha384-qoSeREA7soZwLCSWMLpBrgSGho5RgTHhcJ3GRILF8a8d7GDkXf07z5tDnsS7zZP/"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-def839.js"
+                    src="../../assets/vendor-fkui-vue-89c957.js"
                     crossorigin
-                    integrity="sha384-dK5QG/D37yAxBaMCQ6BDcNG5TmWH4tsDkuwcHGcTrckeLLKzvHOd5kj5vlke96y0"
+                    integrity="sha384-zRmrXtUIsl4QGu4/PZhgki+/HOOqRWUpJIF6NfkjpZAisVmemq2CMr3QlDruvUXS"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-caabe5.js"
@@ -1076,7 +1076,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6258717a5424d3c47ceede4ff90683ad02f5ff66/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/398c2a3986171712f15b4fb0e37eb1b2bbb0b184/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
             
         </code>
          
@@ -1100,6 +1100,8 @@
                             <ul>
                                 
                                 <li><a href="#formular_med_fa_falt">Formulär med få fält</a></li>
+                                
+                                <li><a href="#formular_med_dolda_falt">Formulär med dolda fält</a></li>
                                 
                                 <li><a href="#paverka_flode_vid_klick_pa_submit">Påverka flöde vid klick på submit</a></li>
                                 
@@ -1264,6 +1266,36 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
      &lt;/f-validation-form&gt;
 </code></pre>
                 </div>
+            <h2 id="formular_med_dolda_falt"><a class="header-anchor" href="#formular_med_dolda_falt">Formulär med dolda fält</a></h2><p>Om man använder sig av FErrorList och har inmatningsfält i komponenter som kollapsar, t.ex. FExpandablePanel, så måste man använda :use-error-list-callback-function för att öppna containern innan fokus kan flyttas till inmatningsfältet.</p>
+
+                <div
+                    id="example-e49a99"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">     &lt;f-validation-form
+         @submit=&quot;onSubmit&quot;
+<span class="hljs-addition">+        :use-error-list-callback-function=&quot;expandPanel&quot;</span>
+     &gt;
+      &lt;template #default&gt;
+        &lt;f-expandable-panel :expanded=&quot;expand&quot;&gt;
+          &lt;template #title&gt;Panel to be expanded&lt;/template&gt;
+           &lt;template #default&gt;
+            &lt;f-text-field
+              id=&quot;field1&quot;
+              v-model=&quot;field1&quot;
+              v-validation.required
+            &gt;
+                Field1
+            &lt;/f-text-field&gt;
+          &lt;/template&gt;
+        &lt;/f-expandable-panel&gt;
+     &lt;/f-validation-form&gt;
+</code></pre>
+                </div>
             <h2 id="paverka_flode_vid_klick_pa_submit"><a class="header-anchor" href="#paverka_flode_vid_klick_pa_submit">Påverka flöde vid klick på submit</a></h2><p>Fält valideras redan med vanlig validering, men om extra validering behövs (manuella steg, korsvalidering eller servervalidering osv) så kan <code>beforeValidation</code> eller <code>beforeSubmit</code> användas för att påverka flödet.</p>
 <p><img src="../../assets/images/dabbdbd311256d94a68eab9d59153829.png" alt="submit"></p>
 <table class="table">
@@ -1287,7 +1319,7 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
 <p>Båda hooks kan avbryta flödet genom att returnera <code>FValidationFormAction.ABORT</code>:</p>
 
                 <div
-                    id="example-f41c30"
+                    id="example-4456df"
                     class="code-preview code-preview--default"
                     
                     
@@ -1306,7 +1338,7 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
 Första inmatningsfältet kommer alltid få ett fel när man försöker skicka in formuläret.</p>
 
             <div
-                id="example-2ec317"
+                id="example-168e1a"
                 class="code-preview code-preview--default"
                 
                 
@@ -1444,16 +1476,20 @@ If the prop is not set a random value will be generated.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>true</p>
-</td></tr><tr><td><p>errorListOptions</p>
-</td><td><p>If given, you can controll the use of bullets and the use of the optional callback before navigation.</p>
-</td><td><p>FErrorListOptionsObject</p>
+</td></tr><tr><td><p>useErrorListBullets</p>
+</td><td><p>Display bullets in FErrorList.</p>
+</td><td><p>boolean</p>
 </td><td><p>false</p>
-</td><td><p>() =&gt; ({<br>
-bullets: true,<br>
-beforeNavigate: () =&gt; {<br>
+</td><td><p>true</p>
+</td></tr><tr><td><p>useErrorListCallbackFunction</p>
+</td><td><p>Optional callback function to FErrorList for performing actions before navigation.</p>
+</td><td><p>BeforeNavigate</p>
+</td><td><p>false</p>
+</td><td><p>function() {<br>
+return () =&gt; {<br>
 /* do nothing */<br>
-},<br>
-})</p>
+};<br>
+}</p>
 </td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>submit</p>
 </td><td><p>V-model event.</p>
 </td><td><p>&lt;anonymous&gt;: undefined</p>
@@ -1483,9 +1519,9 @@ beforeNavigate: () =&gt; {<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/6258717a5424d3c47ceede4ff90683ad02f5ff66">6258717</a>)<br />
+    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/398c2a3986171712f15b4fb0e37eb1b2bbb0b184">398c2a3</a>)<br />
         
-        2024-09-17 13:36
+        2024-09-19 14:12
 </div>
 
 

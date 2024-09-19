@@ -3172,16 +3172,23 @@
         default: true
       },
       /**
-       * If given, you can controll the use of bullets and the use of the optional callback before navigation.
+       * Display bullets in FErrorList.
        */
-      errorListOptions: {
-        type: Object,
+      useErrorListBullets: {
+        type: Boolean,
         required: false,
-        default: () => ({
-          bullets: true,
-          beforeNavigate: () => {
-          }
-        })
+        default: true
+      },
+      /**
+       *Optional callback function to FErrorList for performing actions before navigation.
+       */
+      useErrorListCallbackFunction: {
+        type: Function,
+        required: false,
+        default() {
+          return () => {
+          };
+        }
       }
     },
     emits: ["submit"],
@@ -3275,9 +3282,9 @@
             _hoisted_26,
             [
               (0, import_vue24.createVNode)(_component_f_error_list, {
-                bullets: _ctx.errorListOptions.bullets,
                 items: _ctx.errors,
-                "before-navigate": _ctx.errorListOptions.beforeNavigate
+                bullets: _ctx.useErrorListBullets,
+                "before-navigate": _ctx.useErrorListCallbackFunction
               }, {
                 title: (0, import_vue24.withCtx)(() => [
                   (0, import_vue24.createCommentVNode)("\n                            @slot **optional** Slot for displaying error description.\n\n                            After this slot a list of invalid elements is listed.\n                            When an item is clicked it will scroll to and focus that invalid element.\n                        "),
@@ -3285,7 +3292,7 @@
                 ]),
                 _: 3
                 /* FORWARDED */
-              }, 8, ["bullets", "items", "before-navigate"])
+              }, 8, ["items", "bullets", "before-navigate"])
             ],
             512
             /* NEED_PATCH */
