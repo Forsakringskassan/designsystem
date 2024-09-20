@@ -1,6 +1,6 @@
 {
   "name": "@fkui/design",
-  "version": "5.36.1",
+  "version": "5.36.3",
   "description": "fkui design",
   "keywords": [
     "fkui",
@@ -35,7 +35,7 @@
     "runner": "jest-light-runner"
   },
   "devDependencies": {
-    "@fkui/css-variables": "5.36.0",
+    "@fkui/css-variables": "5.36.3",
     "@fkui/icon-lib-default": "5.36.0",
     "autoprefixer": "10.4.20",
     "cssnano": "7.0.6",
@@ -50,7 +50,7 @@
     "svgo": "3.3.2"
   },
   "peerDependencies": {
-    "@fkui/css-variables": "^5.36.0",
+    "@fkui/css-variables": "^5.36.3",
     "sass": "^1.40",
     "stylelint": ">= 14"
   },

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.36.3 (2024-09-20)
+
+
+### Dependency upgrades
+
+* **deps:** update dependency express to v4.20.0 [security] 7bf4cad
+* **deps:** update dependency express to v4.21.0 892b107
+
 ## 5.36.2 (2024-09-10)
 
 
