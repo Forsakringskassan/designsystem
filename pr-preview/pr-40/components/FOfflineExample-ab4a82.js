@@ -3172,17 +3172,17 @@
         default: true
       },
       /**
-       * Display bullets in FErrorList.
+       * Display bullets in the error list component.
        */
-      useErrorListBullets: {
+      errorListBullets: {
         type: Boolean,
         required: false,
         default: true
       },
       /**
-       *Optional callback function to FErrorList for performing actions before navigation.
+       *Optional callback function to the error list component for performing actions before navigation.
        */
-      useErrorListCallbackFunction: {
+      errorListBeforeNavigate: {
         type: Function,
         required: false,
         default() {
@@ -3283,8 +3283,8 @@
             [
               (0, import_vue24.createVNode)(_component_f_error_list, {
                 items: _ctx.errors,
-                bullets: _ctx.useErrorListBullets,
-                "before-navigate": _ctx.useErrorListCallbackFunction
+                bullets: _ctx.errorListBullets,
+                "before-navigate": _ctx.errorListBeforeNavigate
               }, {
                 title: (0, import_vue24.withCtx)(() => [
                   (0, import_vue24.createCommentVNode)("\n                            @slot **optional** Slot for displaying error description.\n\n                            After this slot a list of invalid elements is listed.\n                            When an item is clicked it will scroll to and focus that invalid element.\n                        "),

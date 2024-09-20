@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-963863.json"
+            href="../../search-data-6d6c8b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-icrFx4hAeoPfXJ+nSd2J+cXPe2MWc0gUAYYvy5PeLD0KaWKgBqdh1cnbbJgurkgz"
+            integrity="sha384-Xfqt/T1a3QH9CbLEzE3/5Ijzq4i9J6o4IUGS8RZVxJTdiEFbffAUAAld+71bIy2V"
             id="search-data"
         />
     </head>
@@ -1052,9 +1052,9 @@
                     integrity="sha384-qoSeREA7soZwLCSWMLpBrgSGho5RgTHhcJ3GRILF8a8d7GDkXf07z5tDnsS7zZP/"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-89c957.js"
+                    src="../../assets/vendor-fkui-vue-2637b6.js"
                     crossorigin
-                    integrity="sha384-zRmrXtUIsl4QGu4/PZhgki+/HOOqRWUpJIF6NfkjpZAisVmemq2CMr3QlDruvUXS"
+                    integrity="sha384-FMbdwOD7QxHGhZNxV38dClLKnpg/fpCZV1d94miV3xfLktnx+w6ZMqwXKt/YO2sP"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-caabe5.js"
@@ -1076,7 +1076,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/398c2a3986171712f15b4fb0e37eb1b2bbb0b184/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/96115602cd968028fa13798d61005ca76ae7a755/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
             
         </code>
          
@@ -1266,10 +1266,10 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
      &lt;/f-validation-form&gt;
 </code></pre>
                 </div>
-            <h2 id="formular_med_dolda_falt"><a class="header-anchor" href="#formular_med_dolda_falt">Formulär med dolda fält</a></h2><p>Om man använder sig av FErrorList och har inmatningsfält i komponenter som kollapsar, t.ex. FExpandablePanel, så måste man använda :use-error-list-callback-function för att öppna containern innan fokus kan flyttas till inmatningsfältet.</p>
+            <h2 id="formular_med_dolda_falt"><a class="header-anchor" href="#formular_med_dolda_falt">Formulär med dolda fält</a></h2><p>Om man använder sig av FErrorList och har inmatningsfält i komponenter som kollapsar, t.ex. FExpandablePanel, så måste man använda <code>errorListBeforeNavigate</code> för att öppna containern innan fokus kan flyttas till inmatningsfältet.</p>
 
                 <div
-                    id="example-e49a99"
+                    id="example-2a815c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1278,7 +1278,7 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">     &lt;f-validation-form
          @submit=&quot;onSubmit&quot;
-<span class="hljs-addition">+        :use-error-list-callback-function=&quot;expandPanel&quot;</span>
+<span class="hljs-addition">+        :error-list-before-navigate=&quot;expandPanel&quot;</span>
      &gt;
       &lt;template #default&gt;
         &lt;f-expandable-panel :expanded=&quot;expand&quot;&gt;
@@ -1476,13 +1476,13 @@ If the prop is not set a random value will be generated.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>true</p>
-</td></tr><tr><td><p>useErrorListBullets</p>
-</td><td><p>Display bullets in FErrorList.</p>
+</td></tr><tr><td><p>errorListBullets</p>
+</td><td><p>Display bullets in the error list component.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>true</p>
-</td></tr><tr><td><p>useErrorListCallbackFunction</p>
-</td><td><p>Optional callback function to FErrorList for performing actions before navigation.</p>
+</td></tr><tr><td><p>errorListBeforeNavigate</p>
+</td><td><p>Optional callback function to the error list component for performing actions before navigation.</p>
 </td><td><p>BeforeNavigate</p>
 </td><td><p>false</p>
 </td><td><p>function() {<br>
@@ -1519,9 +1519,9 @@ return () =&gt; {<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/398c2a3986171712f15b4fb0e37eb1b2bbb0b184">398c2a3</a>)<br />
-        
-        2024-09-19 14:12
+    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/96115602cd968028fa13798d61005ca76ae7a755">9611560</a>)<br />
+        <a href="https://forsakringskassan.github.io/designsystem//pull-requests/40/overview">PR 40</a><br />
+        2024-09-20 08:30
 </div>
 
 
@@ -1608,15 +1608,15 @@ return () =&gt; {<br>
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/main-b8b646.js"
-            crossorigin
-            integrity="sha384-/O9Al2JnABuFlzbL4CG4QcWt0GNOmEegos0yhbymlVCebRkpQ1czX6xM9Ai72IIh"
-            
-        ></script>
-        <script
             src="../../assets/processors/selectable-version/select-version-42b338.js"
             crossorigin
             integrity="sha384-9teClDZoUmFqd4Uy9zGlWIwizRBX8jp3Tuvbf8GCf6jj1pTG5nVxJGQ/gOCfOsnK"
+            
+        ></script>
+        <script
+            src="../../assets/main-ac86a8.js"
+            crossorigin
+            integrity="sha384-2WZHbDID3lsEsTySsmMFytwSiNzbhGeFULHahLYH5KBQ+WMCFZEqYFy3WFeIvITK"
             
         ></script>
     </body>
