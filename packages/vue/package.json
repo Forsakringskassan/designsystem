@@ -79,7 +79,7 @@
     "@fkui/icon-lib-default": "5.36.0",
     "@fkui/logic": "5.36.0",
     "@fkui/test-utils": "5.36.0",
-    "@forsakringskassan/vite-lib-config": "2.0.2",
+    "@forsakringskassan/vite-lib-config": "2.0.3",
     "@vue/test-utils": "2.4.6",
     "cypress": "13.14.2",
     "flush-promises": "1.0.2",
