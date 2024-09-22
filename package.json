@@ -113,7 +113,7 @@
     "fs-extra": "11.2.0",
     "glob": "11.0.0",
     "highlight.js": "11.10.0",
-    "html-validate": "8.22.0",
+    "html-validate": "8.23.0",
     "html-validate-markdown": "4.0.0",
     "html-validate-vue": "6.0.8",
     "husky": "9.1.6",
