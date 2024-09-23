@@ -169,6 +169,16 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
+errorListBullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBeforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
 }, unknown, {
 validity: GroupValidityEvent;
 submitted: boolean;
@@ -200,6 +210,16 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
+errorListBullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBeforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
 }>> & {
 onSubmit?: ((...args: any[]) => any) | undefined;
 }, {
@@ -207,6 +227,8 @@ beforeSubmit: FValidationFormCallback;
 id: string;
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
+errorListBullets: boolean;
+errorListBeforeNavigate: BeforeNavigate;
 }, {}>;
 export { _default as FValidationForm }
 export { _default as IValidationForm }

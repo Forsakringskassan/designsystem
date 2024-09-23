@@ -1,6 +1,8 @@
 import { ExamplePageobject } from "./examples/Example.pageobject";
 import WithErrorListExample from "./examples/WithErrorList.vue";
 import NoErrorListExample from "./examples/NoErrorList.vue";
+import WithErrorListAndCbFunctionExample from "./examples/WithErrorListAndCbFunction.vue";
+import WithErrorListAndNoBulletsExample from "./examples/WithErrorListAndNoBullets.vue";
 
 const validationForm = new ExamplePageobject("form");
 
@@ -127,5 +129,26 @@ describe("FValidationForm", () => {
         validationForm.getSubmitButton().click();
 
         validationForm.errorlist.el().get("span").contains("Custom message");
+    });
+
+    it("should execute FErrorList callback function when clicking errorLink", () => {
+        cy.mount(WithErrorListAndCbFunctionExample);
+        validationForm.getSubmitButton().click();
+
+        validationForm.errorlist.getLinkByName("Field1").click();
+        cy.focused().should("have.attr", "id").and("eq", "field1");
+
+        validationForm.errorlist.getLinkByName("Field2").click();
+        cy.focused().should("have.attr", "id").and("eq", "field2");
+    });
+
+    it("should display error list without bullets", () => {
+        cy.mount(WithErrorListAndNoBulletsExample);
+        validationForm.getSubmitButton().click();
+
+        validationForm.errorlist
+            .links()
+            .find("span.error-list__bullet")
+            .should("not.exist");
     });
 });
