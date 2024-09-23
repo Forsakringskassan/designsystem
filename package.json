@@ -126,7 +126,7 @@
     "npm-run-all2": "6.2.3",
     "postcss": "8.4.47",
     "rimraf": "6.0.1",
-    "sass": "1.79.1",
+    "sass": "1.79.2",
     "typedoc": "0.26.7",
     "typescript": "5.6.2",
     "vite": "5.4.6",
