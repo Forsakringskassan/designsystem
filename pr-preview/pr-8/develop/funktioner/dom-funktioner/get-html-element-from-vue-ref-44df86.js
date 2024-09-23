@@ -31,6 +31,7 @@
 
   // virtual-entry:./docs/develop/funktioner/dom-funktioner/get-html-element-from-vue-ref.md
   var import_vue3 = __require("vue");
+  var exampleComponent = {};
   var _hoisted_1 = { ref: "myParagraph" };
   function render(_ctx, _cache) {
     return (0, import_vue3.openBlock)(), (0, import_vue3.createElementBlock)("div", null, [
