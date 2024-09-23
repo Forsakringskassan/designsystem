@@ -9409,7 +9409,18 @@
     /**
     * Include the error list component.
     */
-    useErrorList: { type: Boolean, required: false, default: true }
+    useErrorList: { type: Boolean, required: false, default: true },
+    /**
+    * Display bullets in the error list component.
+    */
+    errorListBullets: { type: Boolean, required: false, default: true },
+    /**
+    *Optional callback function to the error list component for performing actions before navigation.
+    */
+    errorListBeforeNavigate: { type: Function, required: false, default() {
+      return () => {
+      };
+    } }
   }, emits: ["submit"], data() {
     return { validity: { isValid: true, componentsWithError: [], componentCount: 0 }, submitted: false };
   }, computed: { groupKey() {
@@ -9461,11 +9472,11 @@
       default: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("form", (0, import_vue.mergeProps)({ id: _ctx.id }, _ctx.$attrs, { novalidate: "", autocomplete: "off", onSubmit: _cache[0] || (_cache[0] = (0, import_vue.withModifiers)((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"])) }), [_ctx.displayErrors ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
         "nav",
         _hoisted_2$C,
-        [(0, import_vue.createVNode)(_component_f_error_list, { bullets: true, items: _ctx.errors }, {
+        [(0, import_vue.createVNode)(_component_f_error_list, { items: _ctx.errors, bullets: _ctx.errorListBullets, "before-navigate": _ctx.errorListBeforeNavigate }, {
           title: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message")]),
           _: 3
           /* FORWARDED */
-        }, 8, ["items"])],
+        }, 8, ["items", "bullets", "before-navigate"])],
         512
         /* NEED_PATCH */
       )) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 16, _hoisted_1$Q)]),
