@@ -79,11 +79,12 @@ export {
 } from "./FWizard";
 
 export {
-    FDialogueTree,
-    type FDialogueTreeQuestion,
-    type FDialogueTreeSubQuestion,
+    type FDialogueTreeData,
     type FDialogueTreeEndQuestion,
     type FDialogueTreeOption,
+    type FDialogueTreeQuestion,
+    type FDialogueTreeSubQuestion,
     type FDialogueTreeUserProgress,
+    FDialogueTree,
     isDialogueTreeEndQuestion,
 } from "./FDialogueTree";

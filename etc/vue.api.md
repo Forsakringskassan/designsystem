@@ -1798,8 +1798,6 @@ initialMonth: FDate | undefined;
 highlightToday: boolean;
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "DialogueTreeData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const FDialogueTree: DefineComponent<    {
 modelValue: {
@@ -1810,7 +1808,7 @@ dialogueTree: {
 type: PropType<FDialogueTreeQuestion>;
 required: true;
 };
-}, unknown, DialogueTreeData, {
+}, unknown, FDialogueTreeData, {
 userData(): unknown;
 options(): FDialogueTreeOption[];
 }, {
@@ -1829,6 +1827,14 @@ required: true;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {}, {}>;
+
+// @public (undocumented)
+export interface FDialogueTreeData {
+    // (undocumented)
+    currentStep: FDialogueTreeQuestion;
+    // (undocumented)
+    steps: number[];
+}
 
 // @public (undocumented)
 export interface FDialogueTreeEndQuestion {
