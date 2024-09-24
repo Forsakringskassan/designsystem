@@ -505,21 +505,28 @@
 <p>Du kan bidra med följande:</p>
 <ul>
 <li>kontakta FKDS-teamet (<a href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a>) och se vad du kan hjälpa till med</li>
-<li>föreslå ny komponent, funktionalitet, mönster eller uppdatera designsystemets sajt</li>
+<li>föreslå ny komponent, funktionalitet, mönster eller uppdatera designsystemets webbplats</li>
 <li>ge förbättringsförslag, rapportera och fixa buggar</li>
 <li>lägga en pull request.</li>
 </ul>
 <h2 id="uppdatera_dokumentation"><a class="header-anchor" href="#uppdatera_dokumentation">Uppdatera dokumentation</a></h2><p>Kontakta FKDS-teamet eller lägg en pull request.</p>
-<h2 id="foresla_ett_nytt_monster"><a class="header-anchor" href="#foresla_ett_nytt_monster">Föreslå ett nytt mönster</a></h2><p>Gå igenom befintliga <a href="../../patterns">mönster</a> och kontakta FKDS-teamet om du saknar något. Du kan också lägga en pull request.</p>
+<h2 id="foresla_ett_nytt_monster"><a class="header-anchor" href="#foresla_ett_nytt_monster">Föreslå ett nytt mönster</a></h2><p>Gå igenom befintliga <a href="../../patterns">mönster</a> och kontakta FKDS-teamet om du saknar något.
+Du kan också lägga en pull request.</p>
 <h2 id="ny_komponent_eller_funktionalitet"><a class="header-anchor" href="#ny_komponent_eller_funktionalitet">Ny komponent eller funktionalitet</a></h2><p>Varje komponent som läggs till designsystemet består av tre delar:</p>
 <ul>
 <li>design</li>
 <li>dokumentation</li>
 <li>kod</li>
 </ul>
-<p>Du kan bidra i vilken del som helst, men alla tre delarna måste vara implementerade och validerade innan en komponent kan släppas. Kontakta FKDS-teamet innan du påbörjar arbetet.</p>
-<h3 id="design"><a class="header-anchor" href="#design">Design</a></h3><p>Komponent eller ny funktionalitet ska följa våra grafiska riktlinjer (färgpalett, ikoner och typografi) och mönster. Den ska också uppfylla krav på tillgänglighet som till exemepel kontrast. Riktlinjer och mönster för komponenten beskrivs på den här sajten.</p>
-<h3 id="dokumentation"><a class="header-anchor" href="#dokumentation">Dokumentation</a></h3><p>Användardokumentationen behöver uppdateras vid ny eller ändrad komponent/funktionalitet. Användardokumentationen ligger på den här sajten och kan bestå av beskrivning, live-exempel, riktlinjer, designmönster och API.</p>
+<p>Du kan bidra i vilken del som helst, men alla tre delarna måste vara implementerade och validerade innan en komponent kan släppas.
+Kontakta FKDS-teamet innan du påbörjar arbetet.</p>
+<h3 id="design"><a class="header-anchor" href="#design">Design</a></h3><p>Komponent eller ny funktionalitet ska följa våra grafiska riktlinjer (färgpalett, ikoner och typografi) och mönster.
+Den ska också uppfylla krav på tillgänglighet som till exemepel kontrast.
+Riktlinjer och mönster för komponenten beskrivs på den här webbplatsen.</p>
+<h3 id="dokumentation"><a class="header-anchor" href="#dokumentation">Dokumentation</a></h3><p>Användardokumentationen behöver uppdateras vid ny eller ändrad komponent/funktionalitet.
+Användardokumentationen ligger på den här webbplatsen och kan bestå av beskrivning, live-exempel, riktlinjer, designmönster och API.
+All dokumentation på webbplatsen ska vara på svenska.
+Undantag är referenser till koden.</p>
 <h3 id="kod"><a class="header-anchor" href="#kod">Kod</a></h3><p>Vi förväntar oss följande när du bidrar med kod till designsystemet</p>
 <ul>
 <li>logik ska läggas i FKUI:s logik-paket</li>
@@ -530,7 +537,8 @@
 <li>skärmdumpar (screenshots) vid behov</li>
 </ul>
 <h4 id="verktyg"><a class="header-anchor" href="#verktyg">Verktyg</a></h4><p>Beroende på vad du vill bidra med behöver du tillgång till GitHub.</p>
-<h4 id="lagga_en_pull_request"><a class="header-anchor" href="#lagga_en_pull_request">Lägga en pull request</a></h4><p>Lägg upp din pull request mot master. Alla pull requests är välkomna. Om din pull request inte är redo för granskning, skapa istället en draft pull request.</p>
+<h4 id="lagga_en_pull_request"><a class="header-anchor" href="#lagga_en_pull_request">Lägga en pull request</a></h4><p>Lägg upp din pull request mot master. Alla pull requests är välkomna.
+Om din pull request inte är redo för granskning, skapa istället en draft pull request.</p>
 <p>För att kunna göra ändringar i FKUI i din utvecklingsmiljö behöver du göra följande</p>
 <ol>
 <li>Klona FKUI-repo</li>
@@ -575,8 +583,11 @@
 <li>interaktion mellan flera komponenter</li>
 <li>exempel i dokumentation.</li>
 </ul>
-<p>Undvik större mängder av mockning för enkelhetens skull och test av implementationsdetaljer. Testa till exempel hellre att en komponent inte är synlig än att funktionen <code>hideComponent</code> används. På så sätt undviker vi &quot;false negatives&quot; om vi skulle ändra namnet på funktionen eller &quot;false positives&quot; om funktionen går sönder och inte döljer komponenten.</p>
-<p>Försäkra dig om att testfallen och regressionstesterna går igenom. Kom ihåg att lägga till uppdaterade skärmdumpar (screenshots). Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skärmstorlekar på olika enheter och webbläsare.</p>
+<p>Undvik större mängder av mockning för enkelhetens skull och test av implementationsdetaljer.
+Testa till exempel hellre att en komponent inte är synlig än att funktionen <code>hideComponent</code> används.
+På så sätt undviker vi &quot;false negatives&quot; om vi skulle ändra namnet på funktionen eller &quot;false positives&quot; om funktionen går sönder och inte döljer komponenten.</p>
+<p>Försäkra dig om att testfallen och regressionstesterna går igenom. Kom ihåg att lägga till uppdaterade skärmdumpar (screenshots).
+Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skärmstorlekar på olika enheter och webbläsare.</p>
 <p>Du hittar åtgärder som du kan göra i GitBash och tillhörande kommando i tabellen nedan.</p>
 <table class="table">
 <thead>
@@ -601,7 +612,9 @@
 </tbody>
 </table>
 <p><a href="./testing.html">Läs mer om test här</a></p>
-<h2 id="buggar_och_forbattringsforslag"><a class="header-anchor" href="#buggar_och_forbattringsforslag">Buggar och förbättringsförslag</a></h2><p>Du kan rapportera buggar genom att följa instruktionen på sidan <a href="../help-and-support.html#rapportera_buggar#">Hjälp och support</a>. Vi ser gärna att du och ditt team bidrar genom att lösa de buggar ni själva hittar. Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p>
+<h2 id="buggar_och_forbattringsforslag"><a class="header-anchor" href="#buggar_och_forbattringsforslag">Buggar och förbättringsförslag</a></h2><p>Du kan rapportera buggar genom att följa instruktionen på sidan <a href="../help-and-support.html#rapportera_buggar#">Hjälp och support</a>.
+Vi ser gärna att du och ditt team bidrar genom att lösa de buggar ni själva hittar.
+Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p>
 <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../help-and-support.html">Hjälp och support</a></p>
 <p><a href="../getting-started">Kom igång</a></p>
 
@@ -624,9 +637,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/22291e5c1eecc3a7759be976afd974a8f02ab8a0">22291e5</a>)<br />
+    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/5375949fa94a7c9d4f6c79361536096733e5578f">5375949</a>)<br />
         <a href="https://forsakringskassan.github.io/designsystem//pull-requests/8/overview">PR 8</a><br />
-        2024-09-24 08:36
+        2024-09-24 10:55
 </div>
 
 
