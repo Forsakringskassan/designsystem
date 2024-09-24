@@ -5204,6 +5204,46 @@ expand: boolean;
 }, {}>;
 
 // @public (undocumented)
+export interface FTableColumnData {
+    // (undocumented)
+    description?: string;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    size: FTableColumnSize;
+    // (undocumented)
+    sort: FTableColumnSort;
+    // (undocumented)
+    sortable: boolean;
+    // (undocumented)
+    title: string;
+    // (undocumented)
+    type: FTableColumnType;
+    // (undocumented)
+    visible: boolean;
+}
+
+// @public (undocumented)
+export enum FTableColumnSize {
+    // (undocumented)
+    EXPAND = "table__column--expand",
+    // (undocumented)
+    SHRINK = "table__column--shrink"
+}
+
+// @public (undocumented)
+export enum FTableColumnSort {
+    // (undocumented)
+    ASCENDING = "ascending",
+    // (undocumented)
+    DESCENDING = "descending",
+    // (undocumented)
+    UNSORTED = "unsorted"
+}
+
+// @public (undocumented)
 export enum FTableColumnType {
     // (undocumented)
     ACTION = "action",
@@ -6719,7 +6759,6 @@ export interface VueLike {
 
 // Warnings were encountered during analysis:
 //
-// src/components/FDataTable/FDataTable.vue:306:57 - (ae-forgotten-export) The symbol "FTableColumnData" needs to be exported by the entry point index.d.ts
 // src/components/FFileItem/FFileItem.vue:201:38 - (ae-forgotten-export) The symbol "IconName" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)

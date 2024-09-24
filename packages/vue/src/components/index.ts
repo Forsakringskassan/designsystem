@@ -49,9 +49,12 @@ export * from "./FSelectField";
 export * from "./FStaticField";
 export * from "./FInteractiveTable";
 export {
-    type FTableColumnType,
+    type FTableColumnData,
     type FTableInterface,
     FTableColumn,
+    FTableColumnSize,
+    FTableColumnSort,
+    FTableColumnType,
 } from "./FTableColumn";
 export * from "./FTextareaField";
 export * from "./FTextField";
