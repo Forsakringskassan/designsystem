@@ -47,7 +47,7 @@ describe("FPageHeader", () => {
 
         skipLink.focus().click();
 
-        cy.location("hash").should("eq", "#/applicationlayout-main-content");
+        cy.location("hash").should("eq", "#/main-content");
         cy.focused().should("have.attr", "id", "main-content");
     });
 

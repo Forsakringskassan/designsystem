@@ -28,7 +28,7 @@ FPageHeaderCustomLogo.vue
 Skiplink är en särskild länk som fungerar som det första tabbningsbara elementet och visas endast när det fokuserats.
 Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det primära innehållet utan att navigera genom navigeringsmenyer osv.
 
-Skiplink aktiveras genom att sätta`skipLink` till det id som innehåller det primära innehållet:
+Skiplink aktiveras genom att sätta `skipLink` till det id som innehåller det primära innehållet:
 
 ```diff
  <header>
