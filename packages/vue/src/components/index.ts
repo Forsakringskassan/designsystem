@@ -35,7 +35,7 @@ export {
     FLayoutRightPanel,
     FLayoutRightPanelService,
 } from "./FLayoutRightPanel";
-export * from "./FList";
+export { type FListData, FList } from "./FList";
 export * from "./FLoader";
 export * from "./FMessageBox";
 export * from "./FModal";

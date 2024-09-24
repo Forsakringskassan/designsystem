@@ -3069,8 +3069,6 @@ export interface FLayoutRightPanelInteface {
 // @public (undocumented)
 export const FLayoutRightPanelService: FLayoutRightPanelInteface;
 
-// Warning: (ae-forgotten-export) The symbol "FListData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const FList: DefineComponent<    {
 items: {
@@ -3172,6 +3170,14 @@ checkbox: boolean;
 active: UnknownItem | undefined;
 selectable: boolean;
 }, {}>;
+
+// @public (undocumented)
+export interface FListData {
+    // (undocumented)
+    activeItem: ListItem | undefined;
+    // (undocumented)
+    selectedItems: ListArray;
+}
 
 // @public (undocumented)
 export const FLoader: DefineComponent<    {
