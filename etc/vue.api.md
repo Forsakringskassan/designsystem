@@ -475,6 +475,32 @@ export interface EventBusMap {
 }
 
 // @public (undocumented)
+export interface ExpandableTable {
+    // (undocumented)
+    expandableColumnClasses(column: FTableColumnData, index: number): string[];
+    // (undocumented)
+    expandableRowClasses(row: ListItem, index: number): string[];
+    // (undocumented)
+    expandableRows(row: ListItem): ListArray | undefined;
+    // (undocumented)
+    expandedRows: Ref<ListArray>;
+    // (undocumented)
+    getExpandableDescribedby(row: ListItem): string | undefined;
+    // (undocumented)
+    hasExpandableContent(row: ListItem): boolean;
+    // (undocumented)
+    hasExpandableSlot: ComputedRef<boolean>;
+    // (undocumented)
+    isExpandableTable: ComputedRef<boolean>;
+    // (undocumented)
+    isExpanded(row: ListItem): boolean;
+    // (undocumented)
+    rowAriaExpanded(row: ListItem): boolean | undefined;
+    // (undocumented)
+    toggleExpanded(row: ListItem): void;
+}
+
+// @public (undocumented)
 export const FBadge: DefineComponent<    {
 status: {
 type: StringConstructor;
@@ -1300,8 +1326,6 @@ label: boolean;
 icon: boolean;
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "FCrudDatasetData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const FCrudDataset: DefineComponent<    {
 modelValue: {
@@ -1428,6 +1452,28 @@ addNewModalHeader: string;
 modifyModalHeader: string;
 deleteModalHeader: string;
 }, {}>;
+
+// @public (undocumented)
+export interface FCrudDatasetData {
+    // (undocumented)
+    callbackAfterItemAdd(item: ListItem): void;
+    // (undocumented)
+    callbackBeforeItemDelete(item: ListItem): void;
+    // (undocumented)
+    isConfirmModalOpen: boolean;
+    // (undocumented)
+    isFormModalOpen: boolean;
+    // (undocumented)
+    item: null | ListItem;
+    // (undocumented)
+    Operation: typeof Operation;
+    // (undocumented)
+    operation: Operation;
+    // (undocumented)
+    originalItemToUpdate: null | ListItem;
+    // (undocumented)
+    result: ListArray;
+}
 
 // @public (undocumented)
 export interface FCrudDatasetInterface {
@@ -1778,8 +1824,6 @@ initialMonth: FDate | undefined;
 highlightToday: boolean;
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "DialogueTreeData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const FDialogueTree: DefineComponent<    {
 modelValue: {
@@ -1790,7 +1834,7 @@ dialogueTree: {
 type: PropType<FDialogueTreeQuestion>;
 required: true;
 };
-}, unknown, DialogueTreeData, {
+}, unknown, FDialogueTreeData, {
 userData(): unknown;
 options(): FDialogueTreeOption[];
 }, {
@@ -1809,6 +1853,14 @@ required: true;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {}, {}>;
+
+// @public (undocumented)
+export interface FDialogueTreeData {
+    // (undocumented)
+    currentStep: FDialogueTreeQuestion;
+    // (undocumented)
+    steps: number[];
+}
 
 // @public (undocumented)
 export interface FDialogueTreeEndQuestion {
@@ -2777,9 +2829,6 @@ export function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined
 // @public
 export function findParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | undefined;
 
-// Warning: (ae-forgotten-export) The symbol "ExpandableTable" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "FInteractiveTableData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const FInteractiveTable: DefineComponent<    {
 rows: {
@@ -2908,6 +2957,20 @@ hover: boolean;
 expandableAttribute: string;
 expandableDescribedby: string;
 }, {}>;
+
+// @public (undocumented)
+export interface FInteractiveTableData {
+    // (undocumented)
+    activeRow: ListItem | undefined;
+    // (undocumented)
+    columns: FTableColumnData[];
+    // (undocumented)
+    emptyRow: Record<string, unknown>;
+    // (undocumented)
+    selectedRows: ListArray;
+    // (undocumented)
+    tr: HTMLElement[];
+}
 
 // @public (undocumented)
 export interface FKUIConfig {
@@ -3069,8 +3132,6 @@ export interface FLayoutRightPanelInteface {
 // @public (undocumented)
 export const FLayoutRightPanelService: FLayoutRightPanelInteface;
 
-// Warning: (ae-forgotten-export) The symbol "FListData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const FList: DefineComponent<    {
 items: {
@@ -3172,6 +3233,14 @@ checkbox: boolean;
 active: UnknownItem | undefined;
 selectable: boolean;
 }, {}>;
+
+// @public (undocumented)
+export interface FListData {
+    // (undocumented)
+    activeItem: ListItem | undefined;
+    // (undocumented)
+    selectedItems: ListArray;
+}
 
 // @public (undocumented)
 export const FLoader: DefineComponent<    {
@@ -3917,10 +3986,18 @@ export class FormErrorList implements FormErrorList {
     title: string;
 }
 
-// Warning: (ae-forgotten-export) The symbol "MaybeOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
-export function formModal<T>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: MaybeOptions): Promise<T>;
+export function formModal<T>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: FormModalMaybeOptions): Promise<T>;
+
+// @public (undocumented)
+export type FormModalMaybeOptions = Partial<FormModalModalOptions>;
+
+// @public (undocumented)
+export interface FormModalModalOptions {
+    beforeSubmit?: FValidationFormCallback;
+    props: Record<string, unknown | undefined>;
+    size: "large" | "fullscreen";
+}
 
 // @public (undocumented)
 export class FormStep implements FormErrorList, FormStepFields {
@@ -5202,6 +5279,46 @@ visible: boolean;
 rowHeader: boolean;
 expand: boolean;
 }, {}>;
+
+// @public (undocumented)
+export interface FTableColumnData {
+    // (undocumented)
+    description?: string;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    size: FTableColumnSize;
+    // (undocumented)
+    sort: FTableColumnSort;
+    // (undocumented)
+    sortable: boolean;
+    // (undocumented)
+    title: string;
+    // (undocumented)
+    type: FTableColumnType;
+    // (undocumented)
+    visible: boolean;
+}
+
+// @public (undocumented)
+export enum FTableColumnSize {
+    // (undocumented)
+    EXPAND = "table__column--expand",
+    // (undocumented)
+    SHRINK = "table__column--shrink"
+}
+
+// @public (undocumented)
+export enum FTableColumnSort {
+    // (undocumented)
+    ASCENDING = "ascending",
+    // (undocumented)
+    DESCENDING = "descending",
+    // (undocumented)
+    UNSORTED = "unsorted"
+}
 
 // @public (undocumented)
 export enum FTableColumnType {
@@ -6547,13 +6664,6 @@ export enum MenuAction {
     MOVE_PREV = 1
 }
 
-// @public (undocumented)
-export interface ModalOptions {
-    attachTo: string | Element;
-    // (undocumented)
-    props: Record<string, unknown | undefined>;
-}
-
 // @public
 export enum ModalReason {
     CONFIRM = "confirm",
@@ -6586,10 +6696,30 @@ export interface NavigationMenuItem {
 // @public
 export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, text: string): AsyncModalResult<T>;
 
-// Warning: (ae-forgotten-export) The symbol "MaybeOptions_2" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: MaybeOptions_2): AsyncModalResult<T>;
+export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: OpenModalMaybeOptions): AsyncModalResult<T>;
+
+// @public (undocumented)
+export type OpenModalMaybeOptions = Partial<OpenModalModaloptions>;
+
+// @public (undocumented)
+export interface OpenModalModaloptions {
+    attachTo: string | Element;
+    // (undocumented)
+    props: Record<string, unknown | undefined>;
+}
+
+// @public (undocumented)
+export enum Operation {
+    // (undocumented)
+    ADD = 0,
+    // (undocumented)
+    DELETE = 1,
+    // (undocumented)
+    MODIFY = 2,
+    // (undocumented)
+    NONE = 3
+}
 
 // @public (undocumented)
 export interface PanelLayoutComposable {
@@ -6719,7 +6849,6 @@ export interface VueLike {
 
 // Warnings were encountered during analysis:
 //
-// src/components/FDataTable/FDataTable.vue:306:57 - (ae-forgotten-export) The symbol "FTableColumnData" needs to be exported by the entry point index.d.ts
 // src/components/FFileItem/FFileItem.vue:201:38 - (ae-forgotten-export) The symbol "IconName" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)

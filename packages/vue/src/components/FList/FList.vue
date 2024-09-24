@@ -87,11 +87,7 @@ import { type ListItem, type ListArray } from "../../types";
 import { itemEquals, includeItem, handleKeyboardFocusNavigation, getElementFromVueRef } from "../../utils";
 import { TranslationMixin } from "../../plugins";
 import { ActivateItemInjected, ActivateItemInterface } from "../FCrudDataset";
-
-interface FListData {
-    selectedItems: ListArray;
-    activeItem: ListItem | undefined;
-}
+import { type FListData } from "./flist-data";
 
 export default defineComponent({
     name: "FList",

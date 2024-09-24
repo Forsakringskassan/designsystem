@@ -1,3 +1,4 @@
+export { type FDialogueTreeData } from "./FDialogueTreeData";
 export {
     type FDialogueTreeQuestion,
     type FDialogueTreeSubQuestion,

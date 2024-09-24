@@ -26,17 +26,13 @@ import { focus, focusFirst } from "@fkui/logic";
 
 import { FIcon } from "../FIcon";
 import { getHTMLElementsFromVueRef } from "../../utils";
+import { FDialogueTreeData } from "./FDialogueTreeData";
 import {
     type FDialogueTreeOption,
     FDialogueTreeQuestion,
     type FDialogueTreeUserProgress,
     isDialogueTreeEndQuestion,
 } from "./FDialogueTreeModel";
-
-interface DialogueTreeData {
-    currentStep: FDialogueTreeQuestion;
-    steps: number[];
-}
 
 export default defineComponent({
     name: "FDialogueTree",
@@ -61,7 +57,7 @@ export default defineComponent({
         },
     },
     emits: ["change", "update:modelValue"],
-    data(): DialogueTreeData {
+    data(): FDialogueTreeData {
         return {
             currentStep: this.dialogueTree,
             steps: [],

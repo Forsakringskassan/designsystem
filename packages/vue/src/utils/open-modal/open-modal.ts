@@ -4,7 +4,11 @@ import { MaybeComponent } from "../maybe-component";
 import { type ModalResult, type AsyncModalResult } from "./modal-result";
 import { type ModalOptions } from "./modal-options";
 
-type MaybeOptions = Partial<ModalOptions>;
+/**
+ * @public
+ */
+export type MaybeOptions = Partial<ModalOptions>;
+
 type PartialResult<T = void> = Partial<ModalResult<T>>;
 
 function unpackPayload<T = void>(

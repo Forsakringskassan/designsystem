@@ -4,8 +4,19 @@ export * from "./ValidationUtils";
 export * from "./VueRefUtils";
 export { type EmptyTableRow, emptyTableRow } from "./empty-table-row";
 export { type EventBusMap, EventBus } from "./event-bus";
-export * from "./form-modal";
-export * from "./open-modal";
+export {
+    type MaybeOptions as FormModalMaybeOptions,
+    type ModalOptions as FormModalModalOptions,
+    formModal,
+} from "./form-modal";
+export {
+    type AsyncModalResult,
+    type MaybeOptions as OpenModalMaybeOptions,
+    type ModalOptions as OpenModalModaloptions,
+    type ModalResult,
+    ModalReason,
+    openModal,
+} from "./open-modal";
 export * from "./mount-component";
 export * from "./confirm-modal";
 export { focus, type VueLike } from "./focus";

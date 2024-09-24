@@ -3,6 +3,9 @@ import { type ListArray, type ListItem } from "../../types";
 import { type FTableColumnData } from "../FTableColumn";
 import { itemEquals, includeItem } from "../../utils";
 
+/**
+ * @public
+ */
 export interface ExpandableTable {
     expandedRows: Ref<ListArray>;
     isExpandableTable: ComputedRef<boolean>;

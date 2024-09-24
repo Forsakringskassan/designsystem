@@ -1,5 +1,8 @@
 import { type FValidationFormCallback } from "../../components/FValidationForm/types";
 
+/**
+ * @public
+ */
 export interface ModalOptions {
     /** Modal size */
     size: "large" | "fullscreen";

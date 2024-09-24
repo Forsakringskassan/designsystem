@@ -2,7 +2,16 @@ export { FBadge } from "./FBadge";
 export { FCalendar, FCalendarDay } from "./FCalendar";
 export * from "./FContextMenu";
 export * from "./FCheckboxField";
-export * from "./FCrudDataset";
+export {
+    type ActivateItemCallback,
+    type ActivateItemInterface,
+    type FCrudDatasetData,
+    type FCrudDatasetInterface,
+    ActivateItemInjected,
+    FCrudButton,
+    FCrudDataset,
+    Operation,
+} from "./FCrudDataset";
 export * from "./FDataTable";
 export * from "./FDatepickerField";
 export * from "./FErrorList";
@@ -35,7 +44,7 @@ export {
     FLayoutRightPanel,
     FLayoutRightPanelService,
 } from "./FLayoutRightPanel";
-export * from "./FList";
+export { type FListData, FList } from "./FList";
 export * from "./FLoader";
 export * from "./FMessageBox";
 export * from "./FModal";
@@ -47,11 +56,18 @@ export * from "./FProgressbar";
 export * from "./FRadioField";
 export * from "./FSelectField";
 export * from "./FStaticField";
-export * from "./FInteractiveTable";
 export {
-    type FTableColumnType,
+    type ExpandableTable,
+    type FInteractiveTableData,
+    FInteractiveTable,
+} from "./FInteractiveTable";
+export {
+    type FTableColumnData,
     type FTableInterface,
     FTableColumn,
+    FTableColumnSize,
+    FTableColumnSort,
+    FTableColumnType,
 } from "./FTableColumn";
 export * from "./FTextareaField";
 export * from "./FTextField";
@@ -67,11 +83,12 @@ export {
 } from "./FWizard";
 
 export {
-    FDialogueTree,
-    type FDialogueTreeQuestion,
-    type FDialogueTreeSubQuestion,
+    type FDialogueTreeData,
     type FDialogueTreeEndQuestion,
     type FDialogueTreeOption,
+    type FDialogueTreeQuestion,
+    type FDialogueTreeSubQuestion,
     type FDialogueTreeUserProgress,
+    FDialogueTree,
     isDialogueTreeEndQuestion,
 } from "./FDialogueTree";

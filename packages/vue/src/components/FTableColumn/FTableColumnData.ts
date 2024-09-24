@@ -8,17 +8,26 @@ export enum FTableColumnType {
     ACTION = "action",
 }
 
+/**
+ * @public
+ */
 export enum FTableColumnSize {
     EXPAND = "table__column--expand",
     SHRINK = "table__column--shrink",
 }
 
+/**
+ * @public
+ */
 export enum FTableColumnSort {
     UNSORTED = "unsorted",
     ASCENDING = "ascending",
     DESCENDING = "descending",
 }
 
+/**
+ * @public
+ */
 export interface FTableColumnData {
     id: string;
     name: string;
