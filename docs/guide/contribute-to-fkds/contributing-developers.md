@@ -50,7 +50,7 @@ Du bygger alla paket genom:
 npm run build
 ```
 
-Du behöver bygga dokumentationen om du ska köra dokumentationssajten:
+För att köra webbplatsen för dokumentationen behöver du först bygga den:
 
 ```bash
 npm run build:docs
@@ -141,7 +141,7 @@ Följ riktlinjerna nedan
 -   Namnge variabler enligt [BEM:s standard för namn](https://getbem.com/).
 -   Ta fram exempel för olika komponent-tillstånd.
 -   Undvid att skapa globala CSS-klasser.
--   Använd prefix för komponenter för att underlätta för de konsumenter som kör olika versioner på samma sajt.
+-   Använd prefix för komponenter för att underlätta för de konsumenter som kör olika versioner på samma webbplats.
 -   Sätt prefix `.h-` för hjälp-klasser.
 -   Använd `rem` för storlekar (finns undantag, till exempel när du inte vill att skalning ska utgå från rem-storleken).
 

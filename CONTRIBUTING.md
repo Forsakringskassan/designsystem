@@ -7,7 +7,7 @@ Du kan bidra till designsystemet på många sätt. Läs igenom guiden nedan inna
 Du kan bidra med följande:
 
 -   kontakta FKDS-teamet (<designsystem@forsakringskassan.se>) och se vad du kan hjälpa till med
--   föreslå ny komponent, funktionalitet, mönster eller uppdatera designsystemets sajt
+-   föreslå ny komponent, funktionalitet, mönster eller uppdatera designsystemets webbplats
 -   ge förbättringsförslag, rapportera och fixa buggar
 -   lägga en pull request.
 
@@ -17,7 +17,8 @@ Kontakta FKDS-teamet eller lägg en pull request.
 
 ## Föreslå ett nytt mönster
 
-Gå igenom befintliga {@link patterns mönster} och kontakta FKDS-teamet om du saknar något. Du kan också lägga en pull request.
+Gå igenom befintliga {@link patterns mönster} och kontakta FKDS-teamet om du saknar något.
+Du kan också lägga en pull request.
 
 ## Ny komponent eller funktionalitet
 
@@ -27,15 +28,21 @@ Varje komponent som läggs till designsystemet består av tre delar:
 -   dokumentation
 -   kod
 
-Du kan bidra i vilken del som helst, men alla tre delarna måste vara implementerade och validerade innan en komponent kan släppas. Kontakta FKDS-teamet innan du påbörjar arbetet.
+Du kan bidra i vilken del som helst, men alla tre delarna måste vara implementerade och validerade innan en komponent kan släppas.
+Kontakta FKDS-teamet innan du påbörjar arbetet.
 
 ### Design
 
-Komponent eller ny funktionalitet ska följa våra grafiska riktlinjer (färgpalett, ikoner och typografi) och mönster. Den ska också uppfylla krav på tillgänglighet som till exemepel kontrast. Riktlinjer och mönster för komponenten beskrivs på den här sajten.
+Komponent eller ny funktionalitet ska följa våra grafiska riktlinjer (färgpalett, ikoner och typografi) och mönster.
+Den ska också uppfylla krav på tillgänglighet som till exemepel kontrast.
+Riktlinjer och mönster för komponenten beskrivs på den här webbplatsen.
 
 ### Dokumentation
 
-Användardokumentationen behöver uppdateras vid ny eller ändrad komponent/funktionalitet. Användardokumentationen ligger på den här sajten och kan bestå av beskrivning, live-exempel, riktlinjer, designmönster och API.
+Användardokumentationen behöver uppdateras vid ny eller ändrad komponent/funktionalitet.
+Användardokumentationen ligger på den här webbplatsen och kan bestå av beskrivning, live-exempel, riktlinjer, designmönster och API.
+All dokumentation på webbplatsen ska vara på svenska.
+Undantag är referenser till koden.
 
 ### Kod
 
@@ -54,7 +61,8 @@ Beroende på vad du vill bidra med behöver du tillgång till GitHub.
 
 #### Lägga en pull request
 
-Lägg upp din pull request mot master. Alla pull requests är välkomna. Om din pull request inte är redo för granskning, skapa istället en draft pull request.
+Lägg upp din pull request mot master. Alla pull requests är välkomna.
+Om din pull request inte är redo för granskning, skapa istället en draft pull request.
 
 För att kunna göra ändringar i FKUI i din utvecklingsmiljö behöver du göra följande
 
@@ -101,9 +109,12 @@ E2E-tester med cypress-tester
 -   interaktion mellan flera komponenter
 -   exempel i dokumentation.
 
-Undvik större mängder av mockning för enkelhetens skull och test av implementationsdetaljer. Testa till exempel hellre att en komponent inte är synlig än att funktionen `hideComponent` används. På så sätt undviker vi "false negatives" om vi skulle ändra namnet på funktionen eller "false positives" om funktionen går sönder och inte döljer komponenten.
+Undvik större mängder av mockning för enkelhetens skull och test av implementationsdetaljer.
+Testa till exempel hellre att en komponent inte är synlig än att funktionen `hideComponent` används.
+På så sätt undviker vi "false negatives" om vi skulle ändra namnet på funktionen eller "false positives" om funktionen går sönder och inte döljer komponenten.
 
-Försäkra dig om att testfallen och regressionstesterna går igenom. Kom ihåg att lägga till uppdaterade skärmdumpar (screenshots). Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skärmstorlekar på olika enheter och webbläsare.
+Försäkra dig om att testfallen och regressionstesterna går igenom. Kom ihåg att lägga till uppdaterade skärmdumpar (screenshots).
+Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skärmstorlekar på olika enheter och webbläsare.
 
 Du hittar åtgärder som du kan göra i GitBash och tillhörande kommando i tabellen nedan.
 
@@ -117,7 +128,9 @@ Du hittar åtgärder som du kan göra i GitBash och tillhörande kommando i tabe
 
 ## Buggar och förbättringsförslag
 
-Du kan rapportera buggar genom att följa instruktionen på sidan {@link help-and-support#rapportera_buggar# Hjälp och support}. Vi ser gärna att du och ditt team bidrar genom att lösa de buggar ni själva hittar. Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.
+Du kan rapportera buggar genom att följa instruktionen på sidan {@link help-and-support#rapportera_buggar# Hjälp och support}.
+Vi ser gärna att du och ditt team bidrar genom att lösa de buggar ni själva hittar.
+Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.
 
 ## Relaterat
 
