@@ -3170,6 +3170,25 @@
         type: Boolean,
         required: false,
         default: true
+      },
+      /**
+       * Display bullets in the error list component.
+       */
+      errorListBullets: {
+        type: Boolean,
+        required: false,
+        default: true
+      },
+      /**
+       *Optional callback function to the error list component for performing actions before navigation.
+       */
+      errorListBeforeNavigate: {
+        type: Function,
+        required: false,
+        default() {
+          return () => {
+          };
+        }
       }
     },
     emits: ["submit"],
@@ -3263,8 +3282,9 @@
             _hoisted_26,
             [
               (0, import_vue24.createVNode)(_component_f_error_list, {
-                bullets: true,
-                items: _ctx.errors
+                items: _ctx.errors,
+                bullets: _ctx.errorListBullets,
+                "before-navigate": _ctx.errorListBeforeNavigate
               }, {
                 title: (0, import_vue24.withCtx)(() => [
                   (0, import_vue24.createCommentVNode)("\n                            @slot **optional** Slot for displaying error description.\n\n                            After this slot a list of invalid elements is listed.\n                            When an item is clicked it will scroll to and focus that invalid element.\n                        "),
@@ -3272,7 +3292,7 @@
                 ]),
                 _: 3
                 /* FORWARDED */
-              }, 8, ["items"])
+              }, 8, ["items", "bullets", "before-navigate"])
             ],
             512
             /* NEED_PATCH */

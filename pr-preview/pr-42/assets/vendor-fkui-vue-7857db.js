@@ -7168,6 +7168,9 @@
     FSortFilterDatasetInjected: () => FSortFilterDatasetInjected,
     FStaticField: () => FStaticField,
     FTableColumn: () => FTableColumn,
+    FTableColumnSize: () => FTableColumnSize,
+    FTableColumnSort: () => FTableColumnSort,
+    FTableColumnType: () => FTableColumnType,
     FTextField: () => FTextField,
     FTextareaField: () => FTextareaField,
     FTooltip: () => FTooltip,
@@ -7193,6 +7196,7 @@
     IValidationForm: () => FValidationForm,
     MenuAction: () => MenuAction,
     ModalReason: () => ModalReason,
+    Operation: () => Operation,
     TableScroll: () => TableScroll,
     TestPlugin: () => TestPlugin,
     TranslationMixin: () => TranslationMixin,
@@ -9409,7 +9413,18 @@
     /**
     * Include the error list component.
     */
-    useErrorList: { type: Boolean, required: false, default: true }
+    useErrorList: { type: Boolean, required: false, default: true },
+    /**
+    * Display bullets in the error list component.
+    */
+    errorListBullets: { type: Boolean, required: false, default: true },
+    /**
+    *Optional callback function to the error list component for performing actions before navigation.
+    */
+    errorListBeforeNavigate: { type: Function, required: false, default() {
+      return () => {
+      };
+    } }
   }, emits: ["submit"], data() {
     return { validity: { isValid: true, componentsWithError: [], componentCount: 0 }, submitted: false };
   }, computed: { groupKey() {
@@ -9461,11 +9476,11 @@
       default: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("form", (0, import_vue.mergeProps)({ id: _ctx.id }, _ctx.$attrs, { novalidate: "", autocomplete: "off", onSubmit: _cache[0] || (_cache[0] = (0, import_vue.withModifiers)((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"])) }), [_ctx.displayErrors ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
         "nav",
         _hoisted_2$C,
-        [(0, import_vue.createVNode)(_component_f_error_list, { bullets: true, items: _ctx.errors }, {
+        [(0, import_vue.createVNode)(_component_f_error_list, { items: _ctx.errors, bullets: _ctx.errorListBullets, "before-navigate": _ctx.errorListBeforeNavigate }, {
           title: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message")]),
           _: 3
           /* FORWARDED */
-        }, 8, ["items"])],
+        }, 8, ["items", "bullets", "before-navigate"])],
         512
         /* NEED_PATCH */
       )) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 16, _hoisted_1$Q)]),
@@ -11369,13 +11384,13 @@
     */
     deleteModalHeader: { type: String, required: false, default: import_logic.TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "\xC4r du s\xE4ker p\xE5 att du vill ta bort raden?") }
   }, emits: ["change", "created", "deleted", "updated", "update:modelValue"], data() {
-    return { result: [], Operation, operation: 3, item: null, originalItemToUpdate: null, isFormModalOpen: false, isConfirmModalOpen: false, callbackAfterItemAdd() {
+    return { result: [], Operation, operation: Operation.NONE, item: null, originalItemToUpdate: null, isFormModalOpen: false, isConfirmModalOpen: false, callbackAfterItemAdd() {
     }, callbackBeforeItemDelete() {
     } };
   }, computed: { confirmButtonText() {
-    return this.operation === 0 ? this.$t("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+    return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
   }, cancelButtonText() {
-    return this.operation === 0 ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+    return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
   }, confirmDeleteButtons() {
     return [{ label: this.$t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"), type: "primary", event: "confirm" }, { label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"), type: "secondary" }];
   }, hasAddSlot() {
@@ -11385,7 +11400,7 @@
   }, hasModifySlot() {
     return Boolean(this.$slots.modify);
   }, formModalHeader() {
-    return this.operation === 0 ? this.addNewModalHeader : this.modifyModalHeader;
+    return this.operation === Operation.ADD ? this.addNewModalHeader : this.modifyModalHeader;
   } }, watch: { modelValue: { immediate: true, deep: true, handler(data) {
     this.result = [...data];
   } } }, mounted() {
@@ -11396,14 +11411,14 @@
     if (!this.hasAddSlot) {
       throw Error("No template is defined for #add");
     }
-    this.operation = 0;
+    this.operation = Operation.ADD;
     this.item = this.beforeCreate ? this.beforeCreate() : {};
     this.isFormModalOpen = true;
   }, deleteItem(item) {
     if (!this.hasDeleteSlot) {
       throw Error("No template is defined for #delete");
     }
-    this.operation = 1;
+    this.operation = Operation.DELETE;
     this.item = item;
     this.isConfirmModalOpen = true;
   }, onDeleteConfirm() {
@@ -11428,14 +11443,14 @@
     if (!this.item) {
       return;
     }
-    if (this.operation === 0) {
+    if (this.operation === Operation.ADD) {
       this.result.push(this.item);
       this.$emit("created", this.item);
       this.$emit("update:modelValue", this.result);
       this.$emit("change", this.result);
       this.callbackAfterItemAdd(this.item);
       (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), { assertive: true });
-    } else if (this.operation === 2) {
+    } else if (this.operation === Operation.MODIFY) {
       if (this.originalItemToUpdate) {
         Object.assign(this.originalItemToUpdate, this.item);
       } else {
@@ -11451,7 +11466,7 @@
     if (!this.hasModifySlot) {
       throw Error("No template is defined for #modify");
     }
-    this.operation = 2;
+    this.operation = Operation.MODIFY;
     this.originalItemToUpdate = item;
     this.item = (0, import_logic.deepClone)(item);
     this.isFormModalOpen = true;

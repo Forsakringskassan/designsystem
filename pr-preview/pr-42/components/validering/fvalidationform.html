@@ -1052,9 +1052,9 @@
                     integrity="sha384-qoSeREA7soZwLCSWMLpBrgSGho5RgTHhcJ3GRILF8a8d7GDkXf07z5tDnsS7zZP/"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-61c3fa.js"
+                    src="../../assets/vendor-fkui-vue-7857db.js"
                     crossorigin
-                    integrity="sha384-uzPYbqbQqjD1+7cfGtd3qAKOGClyv32RUHjSJt74MDKtfzyAUunV2+1eN+wAY/LN"
+                    integrity="sha384-9ev8lzmRSq09LY4y6Q2ByITPz1LdGUu5s6TNbGpsfl1Vpqz/j+41eBkNmEWc7l62"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-caabe5.js"
@@ -1076,7 +1076,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/876d1bd8de79f96c5966160f0615561633634da4/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/497102210f3049f23c399baa63a07e35a84c09e7/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
             
         </code>
          
@@ -1100,6 +1100,8 @@
                             <ul>
                                 
                                 <li><a href="#formular_med_fa_falt">Formulär med få fält</a></li>
+                                
+                                <li><a href="#formular_med_dolda_falt">Formulär med dolda fält</a></li>
                                 
                                 <li><a href="#paverka_flode_vid_klick_pa_submit">Påverka flöde vid klick på submit</a></li>
                                 
@@ -1264,7 +1266,150 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
      &lt;/f-validation-form&gt;
 </code></pre>
                 </div>
-            <h2 id="paverka_flode_vid_klick_pa_submit"><a class="header-anchor" href="#paverka_flode_vid_klick_pa_submit">Påverka flöde vid klick på submit</a></h2><p>Fält valideras redan med vanlig validering, men om extra validering behövs (manuella steg, korsvalidering eller servervalidering osv) så kan <code>beforeValidation</code> eller <code>beforeSubmit</code> användas för att påverka flödet.</p>
+            <h2 id="formular_med_dolda_falt"><a class="header-anchor" href="#formular_med_dolda_falt">Formulär med dolda fält</a></h2><p>För att få validering och felhantering att fungera för inmatningskomponenter som ligger dolda i en kollapsad expanderbar yta måste du se till att ytan öppnas.
+Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara ytan innan fokus kan flyttas till inmatningsfältet.</p>
+
+                <div
+                    id="example-1f2142"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">&lt;template&gt;
+     &lt;f-validation-form
+<span class="hljs-addition">+         :error-list-before-navigate=&quot;expandPanel&quot;</span>
+     &gt;
+      &lt;template #default&gt;
+        &lt;f-expandable-panel :expanded=&quot;expand&quot;&gt;
+          &lt;template #title&gt;Panel to be expanded&lt;/template&gt;
+           &lt;template #default&gt;
+            &lt;f-text-field
+              id=&quot;field1&quot;
+              v-model=&quot;field1&quot;
+              v-validation.required
+            &gt;
+                Field1
+            &lt;/f-text-field&gt;
+          &lt;/template&gt;
+        &lt;/f-expandable-panel&gt;
+     &lt;/f-validation-form&gt;
+&lt;/template&gt;
+</code></pre>
+                </div>
+            <p>Följande exempel visar hur man kan använda <code>errorListBeforeNavigate</code> för att expandera ytan innan fokus flyttas.</p>
+
+            <div
+                id="example-2e6a1f"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="WithErrorListAndCbFunction"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./WithErrorListAndCbFunction-e42f44.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> <span class="hljs-attr">:error-list-before-navigate</span>=<span class="hljs-string">&quot;expandPanel&quot;</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">error-message</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> Custom message <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-expandable-panel</span> <span class="hljs-attr">:expanded</span>=<span class="hljs-string">&quot;expand&quot;</span> @<span class="hljs-attr">toggle</span>=<span class="hljs-string">&quot;onToggle&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span>Panel to be expanded<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;field1&quot;</span>
+                        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;field1&quot;</span>
+                        <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                    &gt;</span>
+                        Field1
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;field2&quot;</span>
+                        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;field2&quot;</span>
+                        <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                    &gt;</span>
+                        Field2
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-expandable-panel</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
+                    <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;submit-button&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--primary button--large&quot;</span>
+                &gt;</span>
+                    Spara
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;cancel-button&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--secondary button--large&quot;</span>
+                    @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
+                &gt;</span>
+                    Avbryt
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FExpandablePanel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ErrorListWithOptionsExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FExpandablePanel</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">field1</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">field2</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">expand</span>: <span class="hljs-literal">false</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Spara&quot;</span>);
+        },
+        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">expand</span> = <span class="hljs-literal">false</span>;
+        },
+        <span class="hljs-title function_">onToggle</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">expand</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">expand</span>;
+        },
+        <span class="hljs-title function_">expandPanel</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">expand</span> = <span class="hljs-literal">true</span>;
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="paverka_flode_vid_klick_pa_submit"><a class="header-anchor" href="#paverka_flode_vid_klick_pa_submit">Påverka flöde vid klick på submit</a></h2><p>Fält valideras redan med vanlig validering, men om extra validering behövs (manuella steg, korsvalidering eller servervalidering osv) så kan <code>beforeValidation</code> eller <code>beforeSubmit</code> användas för att påverka flödet.</p>
 <p><img src="../../assets/images/dabbdbd311256d94a68eab9d59153829.png" alt="submit"></p>
 <table class="table">
 <thead>
@@ -1287,7 +1432,7 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
 <p>Båda hooks kan avbryta flödet genom att returnera <code>FValidationFormAction.ABORT</code>:</p>
 
                 <div
-                    id="example-f41c30"
+                    id="example-2ddbcf"
                     class="code-preview code-preview--default"
                     
                     
@@ -1306,7 +1451,7 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
 Första inmatningsfältet kommer alltid få ett fel när man försöker skicka in formuläret.</p>
 
             <div
-                id="example-2ec317"
+                id="example-65b48e"
                 class="code-preview code-preview--default"
                 
                 
@@ -1444,6 +1589,20 @@ If the prop is not set a random value will be generated.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>true</p>
+</td></tr><tr><td><p>errorListBullets</p>
+</td><td><p>Display bullets in the error list component.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>true</p>
+</td></tr><tr><td><p>errorListBeforeNavigate</p>
+</td><td><p>Optional callback function to the error list component for performing actions before navigation.</p>
+</td><td><p>BeforeNavigate</p>
+</td><td><p>false</p>
+</td><td><p>function() {<br>
+return () =&gt; {<br>
+/* do nothing */<br>
+};<br>
+}</p>
 </td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>submit</p>
 </td><td><p>V-model event.</p>
 </td><td><p>&lt;anonymous&gt;: undefined</p>
@@ -1473,9 +1632,9 @@ If the prop is not set a random value will be generated.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/876d1bd8de79f96c5966160f0615561633634da4">876d1bd</a>)<br />
+    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/497102210f3049f23c399baa63a07e35a84c09e7">4971022</a>)<br />
         <a href="https://forsakringskassan.github.io/designsystem//pull-requests/42/overview">PR 42</a><br />
-        2024-09-23 11:26
+        2024-09-24 09:20
 </div>
 
 
