@@ -3,7 +3,10 @@ import { type MaybeComponent } from "../maybe-component";
 import { MaybeWithFKUIContext } from "../../config";
 import { type ModalOptions } from "./modal-options";
 
-type MaybeOptions = Partial<ModalOptions>;
+/**
+ * @public
+ */
+export type MaybeOptions = Partial<ModalOptions>;
 
 /**
  * Open a form modal and return the results from the input fields.

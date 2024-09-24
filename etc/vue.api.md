@@ -3986,10 +3986,18 @@ export class FormErrorList implements FormErrorList {
     title: string;
 }
 
-// Warning: (ae-forgotten-export) The symbol "MaybeOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
-export function formModal<T>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: MaybeOptions): Promise<T>;
+export function formModal<T>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: FormModalMaybeOptions): Promise<T>;
+
+// @public (undocumented)
+export type FormModalMaybeOptions = Partial<FormModalModalOptions>;
+
+// @public (undocumented)
+export interface FormModalModalOptions {
+    beforeSubmit?: FValidationFormCallback;
+    props: Record<string, unknown | undefined>;
+    size: "large" | "fullscreen";
+}
 
 // @public (undocumented)
 export class FormStep implements FormErrorList, FormStepFields {
@@ -6656,13 +6664,6 @@ export enum MenuAction {
     MOVE_PREV = 1
 }
 
-// @public (undocumented)
-export interface ModalOptions {
-    attachTo: string | Element;
-    // (undocumented)
-    props: Record<string, unknown | undefined>;
-}
-
 // @public
 export enum ModalReason {
     CONFIRM = "confirm",
@@ -6695,10 +6696,18 @@ export interface NavigationMenuItem {
 // @public
 export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, text: string): AsyncModalResult<T>;
 
-// Warning: (ae-forgotten-export) The symbol "MaybeOptions_2" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: MaybeOptions_2): AsyncModalResult<T>;
+export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: OpenModalMaybeOptions): AsyncModalResult<T>;
+
+// @public (undocumented)
+export type OpenModalMaybeOptions = Partial<OpenModalModaloptions>;
+
+// @public (undocumented)
+export interface OpenModalModaloptions {
+    attachTo: string | Element;
+    // (undocumented)
+    props: Record<string, unknown | undefined>;
+}
 
 // @public (undocumented)
 export enum Operation {
