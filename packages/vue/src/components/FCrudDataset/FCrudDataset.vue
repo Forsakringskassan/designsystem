@@ -81,25 +81,8 @@ import { TranslationMixin } from "../../plugins";
 import { type FValidationFormCallback } from "../FValidationForm";
 import { FCrudDatasetInterface } from "./FCrudDatasetInterface";
 import { ActivateItemInterface } from "./ActivateItemInterface";
-
-enum Operation {
-    ADD,
-    DELETE,
-    MODIFY,
-    NONE,
-}
-
-interface FCrudDatasetData {
-    result: ListArray;
-    Operation: typeof Operation;
-    operation: Operation;
-    item: null | ListItem;
-    originalItemToUpdate: null | ListItem;
-    isFormModalOpen: boolean;
-    isConfirmModalOpen: boolean;
-    callbackAfterItemAdd(item: ListItem): void;
-    callbackBeforeItemDelete(item: ListItem): void;
-}
+import { type FCrudDatasetData } from "./fcruddataset-data";
+import { Operation } from "./operation";
 
 export default defineComponent({
     name: "FCrudDataset",

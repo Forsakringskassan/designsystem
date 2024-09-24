@@ -1300,8 +1300,6 @@ label: boolean;
 icon: boolean;
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "FCrudDatasetData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const FCrudDataset: DefineComponent<    {
 modelValue: {
@@ -1428,6 +1426,28 @@ addNewModalHeader: string;
 modifyModalHeader: string;
 deleteModalHeader: string;
 }, {}>;
+
+// @public (undocumented)
+export interface FCrudDatasetData {
+    // (undocumented)
+    callbackAfterItemAdd(item: ListItem): void;
+    // (undocumented)
+    callbackBeforeItemDelete(item: ListItem): void;
+    // (undocumented)
+    isConfirmModalOpen: boolean;
+    // (undocumented)
+    isFormModalOpen: boolean;
+    // (undocumented)
+    item: null | ListItem;
+    // (undocumented)
+    Operation: typeof Operation;
+    // (undocumented)
+    operation: Operation;
+    // (undocumented)
+    originalItemToUpdate: null | ListItem;
+    // (undocumented)
+    result: ListArray;
+}
 
 // @public (undocumented)
 export interface FCrudDatasetInterface {
@@ -6636,6 +6656,18 @@ export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Compo
 //
 // @public (undocumented)
 export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: MaybeOptions_2): AsyncModalResult<T>;
+
+// @public (undocumented)
+export enum Operation {
+    // (undocumented)
+    ADD = 0,
+    // (undocumented)
+    DELETE = 1,
+    // (undocumented)
+    MODIFY = 2,
+    // (undocumented)
+    NONE = 3
+}
 
 // @public (undocumented)
 export interface PanelLayoutComposable {

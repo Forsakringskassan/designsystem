@@ -2,7 +2,16 @@ export { FBadge } from "./FBadge";
 export { FCalendar, FCalendarDay } from "./FCalendar";
 export * from "./FContextMenu";
 export * from "./FCheckboxField";
-export * from "./FCrudDataset";
+export {
+    type ActivateItemCallback,
+    type ActivateItemInterface,
+    type FCrudDatasetData,
+    type FCrudDatasetInterface,
+    ActivateItemInjected,
+    FCrudButton,
+    FCrudDataset,
+    Operation,
+} from "./FCrudDataset";
 export * from "./FDataTable";
 export * from "./FDatepickerField";
 export * from "./FErrorList";
