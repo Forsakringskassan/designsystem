@@ -57,6 +57,7 @@ export * from "./FRadioField";
 export * from "./FSelectField";
 export * from "./FStaticField";
 export {
+    type ExpandableTable,
     type FInteractiveTableData,
     FInteractiveTable,
 } from "./FInteractiveTable";

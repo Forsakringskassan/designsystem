@@ -475,6 +475,32 @@ export interface EventBusMap {
 }
 
 // @public (undocumented)
+export interface ExpandableTable {
+    // (undocumented)
+    expandableColumnClasses(column: FTableColumnData, index: number): string[];
+    // (undocumented)
+    expandableRowClasses(row: ListItem, index: number): string[];
+    // (undocumented)
+    expandableRows(row: ListItem): ListArray | undefined;
+    // (undocumented)
+    expandedRows: Ref<ListArray>;
+    // (undocumented)
+    getExpandableDescribedby(row: ListItem): string | undefined;
+    // (undocumented)
+    hasExpandableContent(row: ListItem): boolean;
+    // (undocumented)
+    hasExpandableSlot: ComputedRef<boolean>;
+    // (undocumented)
+    isExpandableTable: ComputedRef<boolean>;
+    // (undocumented)
+    isExpanded(row: ListItem): boolean;
+    // (undocumented)
+    rowAriaExpanded(row: ListItem): boolean | undefined;
+    // (undocumented)
+    toggleExpanded(row: ListItem): void;
+}
+
+// @public (undocumented)
 export const FBadge: DefineComponent<    {
 status: {
 type: StringConstructor;
@@ -2803,8 +2829,6 @@ export function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined
 // @public
 export function findParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | undefined;
 
-// Warning: (ae-forgotten-export) The symbol "ExpandableTable" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const FInteractiveTable: DefineComponent<    {
 rows: {
