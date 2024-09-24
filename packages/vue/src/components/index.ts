@@ -56,7 +56,10 @@ export * from "./FProgressbar";
 export * from "./FRadioField";
 export * from "./FSelectField";
 export * from "./FStaticField";
-export * from "./FInteractiveTable";
+export {
+    type FInteractiveTableData,
+    FInteractiveTable,
+} from "./FInteractiveTable";
 export {
     type FTableColumnData,
     type FTableInterface,

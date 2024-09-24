@@ -2804,7 +2804,6 @@ export function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined
 export function findParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | undefined;
 
 // Warning: (ae-forgotten-export) The symbol "ExpandableTable" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "FInteractiveTableData" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
 export const FInteractiveTable: DefineComponent<    {
@@ -2934,6 +2933,20 @@ hover: boolean;
 expandableAttribute: string;
 expandableDescribedby: string;
 }, {}>;
+
+// @public (undocumented)
+export interface FInteractiveTableData {
+    // (undocumented)
+    activeRow: ListItem | undefined;
+    // (undocumented)
+    columns: FTableColumnData[];
+    // (undocumented)
+    emptyRow: Record<string, unknown>;
+    // (undocumented)
+    selectedRows: ListArray;
+    // (undocumented)
+    tr: HTMLElement[];
+}
 
 // @public (undocumented)
 export interface FKUIConfig {

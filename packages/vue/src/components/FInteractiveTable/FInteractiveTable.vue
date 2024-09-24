@@ -186,14 +186,7 @@ import { TranslationMixin } from "../../plugins";
 import { FIcon } from "../FIcon";
 import { onKeydown } from "./FTableKeybindings";
 import { type ExpandableTable, useExpandableTable } from "./useExpandableTable";
-
-interface FInteractiveTableData {
-    activeRow: ListItem | undefined;
-    columns: FTableColumnData[];
-    emptyRow: Record<string, unknown>;
-    selectedRows: ListArray;
-    tr: HTMLElement[];
-}
+import { type FInteractiveTableData } from "./finteractivetable-data";
 
 function forceRepaintIE11(target: HTMLElement): void {
     if (navigator.userAgent.includes("Trident")) {
