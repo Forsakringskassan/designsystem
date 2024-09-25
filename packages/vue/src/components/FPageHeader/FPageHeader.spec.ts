@@ -110,29 +110,100 @@ describe("slots", () => {
 });
 
 describe("props", () => {
-    it("should set skipLinkref prop", () => {
-        const mySkipLinkHref = "#myhref";
-        const routes: RouteRecordRaw[] = [
-            {
-                path: "/",
-                component: defineComponent({}),
-            },
-        ];
-        const router = createRouter({
-            history: createWebHashHistory(),
-            routes,
+    describe("skipLink", () => {
+        it("should enable and set skiplink target", () => {
+            const routes: RouteRecordRaw[] = [
+                {
+                    path: "/",
+                    component: defineComponent({}),
+                },
+            ];
+            const router = createRouter({
+                history: createWebHashHistory(),
+                routes,
+            });
+            const wrapper = mount(FPageHeader, {
+                props: {
+                    skipLink: "awesome-target",
+                },
+                global: {
+                    plugins: [router],
+                },
+            });
+            const skipLink = wrapper.find(".iskiplink");
+            expect(skipLink.attributes().href).toBe("#awesome-target");
         });
-        const wrapper = mount(FPageHeader, {
-            props: {
-                skipLink: true,
-                skipLinkHref: mySkipLinkHref,
-            },
-            global: {
-                plugins: [router],
-            },
+
+        it("should disable skiplink when empty string", () => {
+            const routes: RouteRecordRaw[] = [
+                {
+                    path: "/",
+                    component: defineComponent({}),
+                },
+            ];
+            const router = createRouter({
+                history: createWebHashHistory(),
+                routes,
+            });
+            const wrapper = mount(FPageHeader, {
+                props: {
+                    skipLink: "",
+                },
+                global: {
+                    plugins: [router],
+                },
+            });
+            const skipLink = wrapper.find(".iskiplink");
+            expect(skipLink.exists()).toBeFalsy();
         });
-        const skipLinkEl = wrapper.find(".iskiplink");
-        expect(skipLinkEl.attributes().href).toBe(mySkipLinkHref);
+
+        it("should disable skiplink when false (deprecated usage)", () => {
+            const routes: RouteRecordRaw[] = [
+                {
+                    path: "/",
+                    component: defineComponent({}),
+                },
+            ];
+            const router = createRouter({
+                history: createWebHashHistory(),
+                routes,
+            });
+            const wrapper = mount(FPageHeader, {
+                props: {
+                    skipLink: false,
+                },
+                global: {
+                    plugins: [router],
+                },
+            });
+            const skipLink = wrapper.find(".iskiplink");
+            expect(skipLink.exists()).toBeFalsy();
+        });
+
+        it("should use deprecated skipLinkref when true", () => {
+            const routes: RouteRecordRaw[] = [
+                {
+                    path: "/",
+                    component: defineComponent({}),
+                },
+            ];
+            const router = createRouter({
+                history: createWebHashHistory(),
+                routes,
+            });
+            const skipLinkHref = "#myhref";
+            const wrapper = mount(FPageHeader, {
+                props: {
+                    skipLink: true,
+                    skipLinkHref,
+                },
+                global: {
+                    plugins: [router],
+                },
+            });
+            const skipLinkEl = wrapper.find(".iskiplink");
+            expect(skipLinkEl.attributes().href).toBe(skipLinkHref);
+        });
     });
 
     it("should set headerTag as h1 around default slot", () => {
@@ -206,17 +277,87 @@ describe("html-validate", () => {
         });
     });
 
-    it("should check that skipLink is and id-selector", () => {
+    it("skip-link", () => {
         expect.assertions(2);
-        expect(
-            '<f-page-header skip-link skip-link-href="#abc"></f-page-header>',
-        ).toHTMLValidate();
-        expect(
-            '<f-page-header skip-link skip-link-href="abc#"></f-page-header>',
-        ).toMatchInlineCodeframe(`
-            "error: Attribute "skip-link-href" has invalid value "abc#" (attribute-allowed-values) at inline:1:42:
-            > 1 | <f-page-header skip-link skip-link-href="abc#"></f-page-header>
-                |                                          ^^^^
+        const valid = /* HTML */ `
+            <!-- valid for backwards compatibility: same as true -->
+            <f-page-header skip-link></f-page-header>
+
+            <!-- valid for backwards compatibility: enabled, use skip-link-href -->
+            <f-page-header :skip-link="true"></f-page-header>
+
+            <!-- valid for backwards compatibility: disabled -->
+            <f-page-header :skip-link="false"></f-page-header>
+
+            <!-- proper id -->
+            <f-page-header skip-link="foo"></f-page-header>
+        `;
+        const invalid = /* HTML */ `
+            <!-- empty id -->
+            <f-page-header skip-link=""></f-page-header>
+        `;
+        expect(valid).toMatchInlineCodeframe(`""`);
+        expect(invalid).toMatchInlineCodeframe(`
+            "error: Attribute "skip-link" should omit value (attribute-empty-style) at inline:3:28:
+              1 |
+              2 |             <!-- empty id -->
+            > 3 |             <f-page-header skip-link=""></f-page-header>
+                |                            ^^^^^^^^^
+              4 |
+            Selector: f-page-header"
+        `);
+    });
+
+    it("skip-link-href should not be used without skip-link", () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <!-- [html-validate-disable-block no-deprecated-attr -- rule not under test] -->
+            <f-page-header skip-link-href="#foo"></f-page-header>
+        `;
+        expect(markup).toMatchInlineCodeframe(`
+            "error: "skip-link-href" attribute cannot be used on <f-page-header> in this context: requires skip-link prop to be set (attribute-misuse) at inline:3:28:
+              1 |
+              2 |             <!-- [html-validate-disable-block no-deprecated-attr -- rule not under test] -->
+            > 3 |             <f-page-header skip-link-href="#foo"></f-page-header>
+                |                            ^^^^^^^^^^^^^^
+              4 |
+            Selector: f-page-header"
+        `);
+    });
+
+    it("skip-link-href should be deprecated", () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-page-header skip-link skip-link-href="#foo"></f-page-header>
+        `;
+        expect(markup).toMatchInlineCodeframe(`
+            "error: Attribute "skip-link-href" is deprecated on <f-page-header> element (no-deprecated-attr) at inline:2:38:
+              1 |
+            > 2 |             <f-page-header skip-link skip-link-href="#foo"></f-page-header>
+                |                                      ^^^^^^^^^^^^^^
+              3 |
+            Selector: f-page-header"
+        `);
+    });
+
+    it("should check that skipLink is an id-selector", () => {
+        expect.assertions(2);
+        const valid = /* HTML */ `
+            <!-- [html-validate-disable-block no-deprecated-attr -- rule not under test] -->
+            <f-page-header skip-link skip-link-href="#abc"></f-page-header>
+        `;
+        const invalid = /* HTML */ `
+            <!-- [html-validate-disable-block no-deprecated-attr -- rule not under test] -->
+            <f-page-header skip-link skip-link-href="abc#"></f-page-header>
+        `;
+        expect(valid).toMatchInlineCodeframe(`""`);
+        expect(invalid).toMatchInlineCodeframe(`
+            "error: Attribute "skip-link-href" has invalid value "abc#" (attribute-allowed-values) at inline:3:54:
+              1 |
+              2 |             <!-- [html-validate-disable-block no-deprecated-attr -- rule not under test] -->
+            > 3 |             <f-page-header skip-link skip-link-href="abc#"></f-page-header>
+                |                                                      ^^^^
+              4 |
             Selector: f-page-header"
         `);
     });
