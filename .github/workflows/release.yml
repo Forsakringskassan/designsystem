@@ -1,4 +1,5 @@
 name: Release
+concurrency: release-${{ github.ref }}
 
 on:
     workflow_dispatch:
