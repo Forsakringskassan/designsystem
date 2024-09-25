@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 5.37.0 (2024-09-25)
+
+
+### Features
+
+* **@fkui/vue:** two new props `errorList*` for `FValidationForm` (fixes SFKUI-6792) 2cc596c
+* **@fkui/vue:** use single `skipLink` prop on `FPageHeader` (refs SFKUI-6500) 1d024aa
+
+
+### Bug Fixes
+
+* **@fkui/vue:** add missing `ExpandableTable` export (refs SFKUI-6500) 57c0117
+* **@fkui/vue:** add missing `FCRUDDatasetData` export (refs SFKUI-6500) 562e226
+* **@fkui/vue:** add missing `FDialogueTreeData` export (refs SFKUI-6500) df4880d
+* **@fkui/vue:** add missing `FInteractiveTableData` export (refs SFKUI-6500) 9b5112b
+* **@fkui/vue:** add missing `FListData` export (refs SFKUI-6500) 8101130
+* **@fkui/vue:** add missing `FTableColumnData` export (refs SFKUI-6500) e9fd47d
+* **@fkui/vue:** add missing `ModalOptions` and `MaybeOptions` export (refs SFKUI-6500) 63a7da5
+
 ## 5.36.3 (2024-09-20)
 
 
