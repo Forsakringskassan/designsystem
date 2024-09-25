@@ -8,6 +8,7 @@ import {
 
 describe("getNewItemIndexFromMenuAction", () => {
     const items = ["A", "B", "C"];
+
     it.each`
         index | menuAction               | newIndex | desc
         ${0}  | ${MenuAction.MOVE_NEXT}  | ${1}     | ${"MOVE_NEXT"}
@@ -20,7 +21,7 @@ describe("getNewItemIndexFromMenuAction", () => {
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
                 index,
-                items.length,
+                items.length - 1,
             );
             expect(result).toEqual(newIndex);
         },
@@ -36,7 +37,7 @@ describe("getNewItemIndexFromMenuAction", () => {
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
                 index,
-                items.length,
+                items.length - 1,
             );
             expect(result).toEqual(newIndex);
         },
@@ -49,6 +50,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
         { label: "label2", key: "MENU_2", href: "#href-2" },
         { label: "label3", key: "MENU_3", href: "#href-3" },
     ];
+
     it("should move focus to first item", async () => {
         const target: MenuActionTarget = {
             items: testItems,
@@ -56,9 +58,10 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
             activateItem: jest.fn().mockResolvedValue(undefined),
         };
         // move to first item
-        await doMenuAction(MenuAction.MOVE_FIRST, target, 1);
+        await doMenuAction(MenuAction.MOVE_FIRST, target, 1, 2);
         expect(target.setFocusOnItem).toHaveBeenCalledWith(0); // first item index
     });
+
     it("should activate the current item", async () => {
         const target: MenuActionTarget = {
             items: testItems,
@@ -66,7 +69,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
             activateItem: jest.fn().mockResolvedValue(undefined),
         };
         // activate current item
-        await doMenuAction(MenuAction.ACTIVATE, target, 1);
+        await doMenuAction(MenuAction.ACTIVATE, target, 1, 2);
         expect(target.activateItem).toHaveBeenCalledWith(1); // second item index
     });
 });

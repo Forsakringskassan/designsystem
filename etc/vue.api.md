@@ -3538,48 +3538,14 @@ required: false;
 default: string;
 };
 }, unknown, {
-overflowIndex: number;
-ignoreNoOverflow: boolean;
-selectedMenuItemKey: string;
-selectedPopupItemKey: string;
-popupAnchor: HTMLElement;
-popupOpen: boolean;
-currentFocusedItemIndex: number;
-focusedMenuItemKey: string;
-focusedPopupMenuItemKey: string;
-initPopupNavigationIndex: boolean;
+selectedItemKey: string;
 }, {
 items(): IMenuItem[];
-visibleItems(): IMenuItem[];
-popupItems(): IMenuItem[];
-hasPopupMenuSelectedItems(): boolean;
+selectedItemSrText(): string;
+selectedOverflowMenuSrText(): string;
+popupLabel(): string;
 }, {
-selectedMenuItemSrText(): string;
-menuMoreWithSelectedItemsSrText(): string;
-findItemByKey(items: IMenuItem[], key: string): IMenuItem | undefined;
-indexOfItemByKey(items: IMenuItem[], key: string): number;
-onOverflow(index: number): Promise<void>;
-refreshSelectedItem(): Promise<void>;
-doSelectItem(key: string): Promise<void>;
-onSelectMenu(key: string): Promise<void>;
-onSelectPopup(key: string): Promise<void>;
-onClosePopup(): Promise<void>;
-setPopupOpen(value: boolean): Promise<void>;
-updateOverflowIndex(index: number): void;
-onKeyUp(event: KeyboardEvent): void;
-doHandleMenuTabKey(action: MenuAction): boolean;
-doHandlePopupMenuTabKey(action: MenuAction): Promise<boolean>;
-setCurrentFocusedItemIndex(value: number): void;
-doInitPopupNavigationIndex(event: KeyboardEvent): void;
-onKeyDown(event: KeyboardEvent): Promise<void>;
-setFocusOnItem(index: number): Promise<void>;
-hasOverflow(): boolean;
-activateItem(index: number): Promise<void>;
-activateInvisibleItem(item: IMenuItem): Promise<void>;
-setFocusedItemIndex(index: number): void;
-setFocusedPopupMenuItemKey(key: string): Promise<void>;
-setFocusedMenuItemKey(key: string): void;
-setSelectedMenuItemKey(key: string): Promise<void>;
+onSelectItem(key: string): void;
 }, ComponentOptions, ComponentOptionsMixin, ("selectedRoute" | "update:route")[], "selectedRoute" | "update:route", PublicProps, Readonly<ExtractPropTypes<    {
 route: {
 type: StringConstructor;
@@ -3626,11 +3592,11 @@ onSelectedRoute?: ((...args: any[]) => any) | undefined;
 }, {
 vertical: boolean;
 selectedMenuItemScreenReaderText: string;
+popupAriaLabel: string;
 route: string;
 menuMoreScreenReaderText: string;
 menuMoreWithSelectedItemsScreenReaderText: string;
 menuAriaLabel: string;
-popupAriaLabel: string;
 }, {}>;
 
 // @public (undocumented)
@@ -6221,6 +6187,8 @@ shrink: boolean;
 align: string;
 }, {}>;
 
+// Warning: (ae-forgotten-export) The symbol "IMenuData" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export const IMenu: DefineComponent<    {
 modelValue: {
@@ -6247,33 +6215,57 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-selectedMenuItemScreenReaderText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-hasMenuMoreSelectedItems: {
+enableOverflow: {
 type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, unknown, {
-resizeObserver: ResizeObserver | undefined;
-lastSelectedItem: string;
-}, {
+selectedItemSrText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+overflowMenuSrText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+selectedOverflowMenuSrText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+popupAriaLabel: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+popupLabel: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}, unknown, IMenuData, {
 menuClasses(): string[];
+popupItemClasses(): string[];
+getOverflowMenuSrText(): string;
+overflowEnabled(): boolean;
+hasOverflow(): boolean;
+overflowItems(): IMenuItem[];
+overflowItemSelected(): boolean;
 }, {
+itemClasses(item: IMenuItem, index: number): string[];
+showItemSrText(index: number): boolean;
+getVisibleAnchors(): HTMLElement[];
 getAnchor(index: number): HTMLElement | undefined;
-getSelectedMenuItemScreenReaderText(index: number): string | undefined;
-isSelected(index: number): boolean;
-ariaHasPopup(index: number): boolean | undefined;
 findItemByKey(key: string): IMenuItem | undefined;
 indexOfItemByKey(key: string): number;
-onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
-onResize(): void;
-itemClasses(item: IMenuItem): string[];
+togglePopup(open: boolean): void;
+onResize(): Promise<void>;
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
+onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
+onPopupMenuItemSelected(key: string): void;
 onKeyUp(event: KeyboardEvent): void;
 onKeyDown(event: KeyboardEvent): Promise<void>;
 }, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "update:modelValue" | "overflow")[], "select" | "update:modelValue" | "overflow", PublicProps, Readonly<ExtractPropTypes<    {
@@ -6301,15 +6293,35 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-selectedMenuItemScreenReaderText: {
+enableOverflow: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+selectedItemSrText: {
 type: StringConstructor;
 required: false;
 default: string;
 };
-hasMenuMoreSelectedItems: {
-type: BooleanConstructor;
+overflowMenuSrText: {
+type: StringConstructor;
 required: false;
-default: boolean;
+default: string;
+};
+selectedOverflowMenuSrText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+popupAriaLabel: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+popupLabel: {
+type: StringConstructor;
+required: false;
+default: string;
 };
 }>> & {
 onSelect?: ((...args: any[]) => any) | undefined;
@@ -6320,8 +6332,12 @@ vertical: boolean;
 modelValue: string;
 focusedItemKey: string;
 enableKeyboardNavigation: boolean;
-selectedMenuItemScreenReaderText: string;
-hasMenuMoreSelectedItems: boolean;
+enableOverflow: boolean;
+selectedItemSrText: string;
+overflowMenuSrText: string;
+selectedOverflowMenuSrText: string;
+popupAriaLabel: string;
+popupLabel: string;
 }, {}>;
 
 // @public (undocumented)

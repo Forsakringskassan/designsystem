@@ -21,13 +21,17 @@ export class FNavigationMenuPageobject implements BasePageObject {
         this.selector = selector;
     }
 
+    /**
+     * Returns `IMenu` page object.
+     */
     public menu(): IMenuPageObject {
-        return new IMenuPageObject(`${this.selector}.imenu > ul.imenu__list`);
+        return new IMenuPageObject(`${this.selector}.imenu`);
     }
 
+    /**
+     * Returns `IPopupMenu` page object.
+     */
     public popupMenu(): IPopupMenuPageObject {
-        return new IPopupMenuPageObject(
-            `${this.selector}.ipopupmenu > ul.ipopupmenu__list`,
-        );
+        return this.menu().popupMenu();
     }
 }

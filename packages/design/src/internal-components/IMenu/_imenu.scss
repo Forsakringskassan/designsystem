@@ -27,6 +27,21 @@ $IMENU_SELECTOR: ".imenu" !default;
             }
         }
     }
+
+    &__popup-item {
+        position: relative;
+        list-style-type: none;
+        white-space: nowrap;
+
+        &__wrapper {
+            display: inline-flex;
+            position: absolute;
+            left: 0;
+            padding-top: size.$padding-100;
+            padding-left: size.$padding-075;
+            padding-right: size.$padding-075;
+        }
+    }
 }
 
 #{$IMENU_SELECTOR}--vertical {
@@ -77,6 +92,10 @@ $IMENU_SELECTOR: ".imenu" !default;
                 .imenu__list__anchor:hover {
                     font-weight: var(--f-font-weight-medium);
                 }
+            }
+
+            &--hidden {
+                visibility: hidden;
             }
         }
 

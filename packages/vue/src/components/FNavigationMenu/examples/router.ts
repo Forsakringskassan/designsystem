@@ -10,4 +10,4 @@ function generateExampleLabelsAndRoutes(
     return res;
 }
 
-export const routes = generateExampleLabelsAndRoutes(10);
+export const routes = generateExampleLabelsAndRoutes(15);

@@ -72,12 +72,8 @@ describe("events", () => {
         const firstItem = imenuList.findAll(
             ".imenu__list__item > .imenu__list__anchor-container > a",
         )[0];
-        const previousEmits = [...wrapper.emitted().selectedRoute];
         await firstItem.trigger("click");
-        expect(wrapper.emitted().selectedRoute).toEqual([
-            ...previousEmits,
-            [testItems[0].route],
-        ]);
+        expect(wrapper.emitted().selectedRoute).toEqual([[testItems[0].route]]);
     });
 
     it("should select the current route passed with props directly after mount", async () => {

@@ -11,32 +11,34 @@ export interface MenuActionTarget {
 export function getNewItemIndexFromMenuAction(
     action: MenuAction | null,
     index: number,
-    n: number,
+    maxIndex: number,
 ): number {
+    const minIndex = 0;
+    const nextIndex = index + 1;
+    const prevIndex = index - 1;
     let newIndex;
-    if (n <= 0) {
-        return 0;
-    }
+
     switch (action) {
         case MenuAction.MOVE_NEXT:
-            newIndex = (index + 1) % n;
+            newIndex = nextIndex > maxIndex ? minIndex : nextIndex;
             break;
 
         case MenuAction.MOVE_PREV:
-            newIndex = (index - 1 + n) % n;
+            newIndex = prevIndex < minIndex ? maxIndex : prevIndex;
             break;
 
         case MenuAction.MOVE_FIRST:
-            newIndex = 0;
+            newIndex = minIndex;
             break;
 
         case MenuAction.MOVE_LAST:
-            newIndex = Math.max(n - 1, 0);
+            newIndex = maxIndex;
             break;
 
         default:
             newIndex = index;
     }
+
     return newIndex;
 }
 
@@ -44,22 +46,22 @@ export async function doMenuAction(
     action: MenuAction | null,
     target: MenuActionTarget,
     currentIndex: number,
+    maxIndex: number,
 ): Promise<void> {
-    const itemsLength = target.items.length;
-    const newFocusedItemIndex = getNewItemIndexFromMenuAction(
+    const newcurrentFocusedItemIndex = getNewItemIndexFromMenuAction(
         action,
         currentIndex,
-        itemsLength,
+        maxIndex,
     );
     switch (action) {
         case MenuAction.MOVE_NEXT:
         case MenuAction.MOVE_PREV:
         case MenuAction.MOVE_FIRST:
         case MenuAction.MOVE_LAST:
-            await target.setFocusOnItem(newFocusedItemIndex);
+            await target.setFocusOnItem(newcurrentFocusedItemIndex);
             break;
         case MenuAction.ACTIVATE:
-            await target.activateItem(newFocusedItemIndex);
+            await target.activateItem(newcurrentFocusedItemIndex);
             break;
     }
 }

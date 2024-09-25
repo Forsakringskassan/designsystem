@@ -483,9 +483,7 @@ export class FNavigationMenuPageobject implements BasePageObject {
     constructor(selector: string);
     // (undocumented)
     el(): DefaultCypressChainable;
-    // (undocumented)
     menu(): IMenuPageObject;
-    // (undocumented)
     popupMenu(): IPopupMenuPageObject;
     // (undocumented)
     selector: string;
@@ -800,13 +798,16 @@ export class ICalendarNavbarPageObject implements BasePageObject {
 
 // @public
 export class IMenuPageObject implements BasePageObject {
-    constructor(selector: string);
+    constructor(selector?: string);
     // (undocumented)
     el(): DefaultCypressChainable;
     getItemLink(index: number): DefaultCypressChainable;
     getSelectedItem(): DefaultCypressChainable;
     item(index: number): DefaultCypressChainable;
     items(): DefaultCypressChainable;
+    overflowedItems(): DefaultCypressChainable;
+    overflowItem(): DefaultCypressChainable;
+    popupMenu(): IPopupMenuPageObject;
     // (undocumented)
     selector: string;
 }

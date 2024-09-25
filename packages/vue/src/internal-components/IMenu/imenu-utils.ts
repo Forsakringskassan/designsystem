@@ -1,5 +1,3 @@
-export const menuMoreKey = "MENU_MORE";
-
 /**
  * @public
  */
@@ -36,7 +34,15 @@ export interface IMenuItem {
 }
 
 /**
- * Find the first element to overflow.
+ * Minimum menu item index that allows overflow.
+ *
+ * @internal
+ */
+export const MIN_OVERFLOW_INDEX = 1;
+
+/**
+ * Find the first element to overflow excluding the
+ * item that will overlap the overflow menu item if overflow is enabled.
  *
  * @internal
  * @returns Element index or -1 if no element overflows.
@@ -46,8 +52,18 @@ export function findOverflowIndex(
     elements: Array<{ offsetWidth: number }>,
 ): number {
     let sum = 0;
-    return elements.findIndex((element) => {
+    const index = elements.findIndex((element) => {
         sum += element.offsetWidth;
         return sum > totalWidth;
     });
+
+    if (index > -1) {
+        if (index - 1 < MIN_OVERFLOW_INDEX) {
+            return MIN_OVERFLOW_INDEX;
+        }
+
+        return index;
+    }
+
+    return index;
 }

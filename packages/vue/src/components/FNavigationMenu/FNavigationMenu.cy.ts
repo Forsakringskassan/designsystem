@@ -182,8 +182,7 @@ describe("tests", () => {
         cy.get(selectedRouteDataTestid).should("have.text", "ROUTE_8");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- technical debt: flaky test */
-    it.skip("should highlight selected item in menu", () => {
+    it("should highlight selected item in menu", () => {
         const navMenu = mountTC2AndGetPageObject();
         const menuPageObj: IMenuPageObject = navMenu.menu();
         menuPageObj
@@ -195,8 +194,7 @@ describe("tests", () => {
             .should("have.class", "imenu__list__item--highlight");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- technical debt: flaky test */
-    it.skip("should highlight selected item in popup-menu", () => {
+    it("should highlight selected item in popup-menu", () => {
         const navMenu = mountTC2AndGetPageObject();
         const menuPageObj: IMenuPageObject = navMenu.menu();
         const popupMenuPageObj: IPopupMenuPageObject = navMenu.popupMenu();

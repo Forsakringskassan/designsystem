@@ -139,12 +139,7 @@ describe("events", () => {
         await wrapper.vm.$nextTick();
 
         // then
-        // (when the component is mounted it will emit `overflow`, that is why the value
-        // `mockOverflowIndexValue` appears 2 times in the expected event payload array)
-        expect(wrapper.emitted().overflow).toEqual([
-            [mockOverflowIndexValue],
-            [mockOverflowIndexValue],
-        ]);
+        expect(wrapper.emitted().overflow).toEqual([[mockOverflowIndexValue]]);
     });
 });
 
