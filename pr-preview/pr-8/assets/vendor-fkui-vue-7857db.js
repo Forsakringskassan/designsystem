@@ -15731,10 +15731,22 @@
     } },
     /**
     * Render skiplink.
+    *
+    * When set to a non-empty string thethe skiplink feature is enabled.
+    * The string is the id of the element to move focus to.
+    *
+    * When set to `true` the deprecated `skipLinkHref` prop is used to
+    * set the element id to move focus to.
+    *
+    * When set to `false` or empty string the skiplink feature is disabled.
+    *
+    * Using a boolean is deprecated. Leave unset or a non-empty string.
     */
-    skipLink: { type: Boolean, required: false, default: false },
+    skipLink: { type: [String, Boolean], required: false, default: "" },
     /**
     * Target for skiplink.
+    *
+    * @deprecated Use `skipLink` prop with a non-empty string instead.
     */
     skipLinkHref: { type: String, required: false, default: "#applicationlayout-main-content" },
     /**
@@ -15770,6 +15782,15 @@
       return { path: routerLinkPath };
     }
     return null;
+  }, skipLinkAnchor() {
+    const { skipLink, skipLinkHref } = this;
+    if (skipLink === false || skipLink === "") {
+      return null;
+    } else if (skipLink === true) {
+      return skipLinkHref;
+    } else {
+      return `#${skipLink}`;
+    }
   }, altLogoText() {
     return getAltLogoText(this.hasRouterLink, this.routerLinkLabel, this.$t);
   } } });
@@ -15784,7 +15805,7 @@
   function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_skip_link = (0, import_vue.resolveComponent)("i-skip-link");
     const _component_router_link = (0, import_vue.resolveComponent)("router-link");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$a, [_ctx.skipLink ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("nav", _hoisted_2$7, [(0, import_vue.createVNode)(_component_i_skip_link, { href: _ctx.skipLinkHref }, {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$a, [_ctx.skipLinkAnchor ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("nav", _hoisted_2$7, [(0, import_vue.createVNode)(_component_i_skip_link, { href: _ctx.skipLinkAnchor }, {
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "skip-link-text")]),
       _: 3
       /* FORWARDED */

@@ -1052,9 +1052,9 @@
                     integrity="sha384-qoSeREA7soZwLCSWMLpBrgSGho5RgTHhcJ3GRILF8a8d7GDkXf07z5tDnsS7zZP/"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-349c95.js"
+                    src="../../assets/vendor-fkui-vue-7857db.js"
                     crossorigin
-                    integrity="sha384-JcreCwC1QyT0RErMYVp5FqN0ePPo/5YUGxTbbp76SOP2gLxnDl94RkrFgBDJeIN5"
+                    integrity="sha384-9ev8lzmRSq09LY4y6Q2ByITPz1LdGUu5s6TNbGpsfl1Vpqz/j+41eBkNmEWc7l62"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-caabe5.js"
@@ -1076,7 +1076,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/07dc5aaa7b7615027cbe356b72c8fe3d82e18ed0/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/79e75039908853d7e5ec794c0d1222ecf7c58163/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
             
         </code>
          
@@ -1100,6 +1100,8 @@
                             <ul>
                                 
                                 <li><a href="#egen_logotyp_och_brytpunkt">Egen logotyp och brytpunkt</a></li>
+                                
+                                <li><a href="#skiplink">Skiplink</a></li>
                                 
                                 <li><a href="#api">API</a></li>
                                 
@@ -1266,16 +1268,45 @@
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>logoSize</p>
+        <h2 id="skiplink"><a class="header-anchor" href="#skiplink">Skiplink</a></h2><p>Skiplink är en särskild länk som fungerar som det första tabbningsbara elementet och visas endast när det fokuserats.
+Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det primära innehållet utan att navigera genom navigeringsmenyer osv.</p>
+<p>Skiplink aktiveras genom att sätta <code>skipLink</code> till det id som innehåller det primära innehållet:</p>
+
+                <div
+                    id="example-f40bb2"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;header&gt;
+     &lt;f-page-header
+<span class="hljs-addition">+        skip-link=&quot;awesome-id&quot;</span>
+     &lt;/f-page-header&gt;
+ &lt;/header&gt;
+<span class="hljs-addition">+&lt;main&gt;</span>
+<span class="hljs-addition">+    &lt;h1 id=&quot;awesome-id&quot; tabindex=&quot;-1&quot;&gt;</span>
+<span class="hljs-addition">+&lt;/main&gt;</span>
+</code></pre>
+                </div>
+            <p>Notera att elementet måste vara fokuserbart.</p>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>logoSize</p>
 </td><td><p>Setting the logo sizes small, large or responsive.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;responsive&quot;</p>
 </td></tr><tr><td><p>skipLink</p>
 </td><td><p>Render skiplink.</p>
-</td><td><p>boolean</p>
+<p>When set to a non-empty string thethe skiplink feature is enabled.<br>
+The string is the id of the element to move focus to.</p>
+<p>When set to <code>true</code> the deprecated <code>skipLinkHref</code> prop is used to<br>
+set the element id to move focus to.</p>
+<p>When set to <code>false</code> or empty string the skiplink feature is disabled.</p>
+<p>Using a boolean is deprecated. Leave unset or a non-empty string.</p>
+</td><td><p>string | boolean</p>
 </td><td><p>false</p>
-</td><td><p>false</p>
+</td><td><p>&quot;&quot;</p>
 </td></tr><tr><td><p>skipLinkHref</p>
 </td><td><p>Target for skiplink.</p>
 </td><td><p>string</p>
@@ -1335,9 +1366,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/07dc5aaa7b7615027cbe356b72c8fe3d82e18ed0">07dc5aa</a>)<br />
+    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/79e75039908853d7e5ec794c0d1222ecf7c58163">79e7503</a>)<br />
         <a href="https://forsakringskassan.github.io/designsystem//pull-requests/8/overview">PR 8</a><br />
-        2024-09-25 06:19
+        2024-09-25 07:08
 </div>
 
 
