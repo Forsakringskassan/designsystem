@@ -2392,7 +2392,7 @@ default: undefined;
 }, unknown, unknown, {
 isMimeTypeChanged(): boolean;
 mimeTypeChangedText(): string;
-iconName(): IconName;
+iconName(): FFileItemIconName;
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
@@ -2424,6 +2424,9 @@ mimeType: string;
 originalMimeType: string;
 changedMimeTypeText: string;
 }, {}>;
+
+// @public (undocumented)
+export type FFileItemIconName = "doc" | "file" | "pic" | "pdf";
 
 // @public (undocumented)
 export const FFileSelector: DefineComponent<    {
@@ -6896,10 +6899,6 @@ export interface VueLike {
     // (undocumented)
     focusTarget?: VueLike | Element | Array<VueLike | Element> | null;
 }
-
-// Warnings were encountered during analysis:
-//
-// src/components/FFileItem/FFileItem.vue:201:38 - (ae-forgotten-export) The symbol "IconName" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

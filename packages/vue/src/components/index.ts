@@ -19,7 +19,7 @@ export * from "./FExpand";
 export * from "./FExpandablePanel";
 export * from "./FExpandableParagraph";
 export * from "./FFieldset";
-export * from "./FFileItem";
+export { type FFileItemIconName, FFileItem } from "./FFileItem";
 export * from "./FFileSelector";
 export * from "./FSortFilterDataset";
 export {
