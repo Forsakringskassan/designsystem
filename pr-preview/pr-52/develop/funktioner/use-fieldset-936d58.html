@@ -110,7 +110,10 @@
         ></script>
 
         <main><f-fieldset name="my-awesome-group">
-    <awesome-component></awesome-component>
+    <template #label> My fieldset </template>
+    <template #default>
+        <awesome-component></awesome-component>
+    </template>
 </f-fieldset>
 </main>
     </body>
