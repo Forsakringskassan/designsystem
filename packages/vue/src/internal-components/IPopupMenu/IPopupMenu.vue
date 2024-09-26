@@ -46,7 +46,7 @@ import { type IMenuItem } from "../IMenu";
 import { actionFromKeyboardEvent, getSortedHTMLElementsFromVueRef } from "../../utils";
 import { doMenuAction } from "./ipopupmenu-logic";
 
-const preventKeys: string[] = ["Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
+const preventKeys: string[] = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
 
 export default defineComponent({
     name: "IPopupMenu",
@@ -217,13 +217,18 @@ export default defineComponent({
         async setFocusOnItem(index: number): Promise<void> {
             this.setFocusedItemIndex(index);
             await this.$nextTick();
-            if (this.isOpen) {
-                const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-                if (anchors.length > 0) {
-                    const itemAnchor = anchors[index];
-                    focus(itemAnchor, { preventScroll: true });
-                }
+
+            if (!this.isOpen) {
+                return;
             }
+
+            const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+            if (anchors.length === 0) {
+                return;
+            }
+
+            const itemAnchor = anchors[index];
+            focus(itemAnchor, { preventScroll: true });
         },
         async activateItem(index: number): Promise<void> {
             if (index !== this.currentFocusedItemIndex) {
@@ -251,11 +256,29 @@ export default defineComponent({
                 return;
             }
 
-            const action = actionFromKeyboardEvent(event);
-            if (action !== null) {
-                event.preventDefault();
-                await doMenuAction(action, this);
+            const firstItemFocused = this.currentFocusedItemIndex === 0;
+            const lastItemFocused = this.currentFocusedItemIndex === this.items.length - 1;
+
+            const tabOutPrev = event.key === "Tab" && event.shiftKey && firstItemFocused;
+            const tabOutNext = event.key === "Tab" && !event.shiftKey && lastItemFocused;
+
+            // If tabbing out, close popup to trigger `popFocus` to focus element that opened the popup.
+            if (tabOutPrev || tabOutNext) {
+                if (tabOutPrev) {
+                    event.preventDefault();
+                }
+
+                this.$emit("close");
+                return;
             }
+
+            const action = actionFromKeyboardEvent(event);
+            if (action === null) {
+                return;
+            }
+
+            event.preventDefault();
+            await doMenuAction(action, this);
         },
     },
 });

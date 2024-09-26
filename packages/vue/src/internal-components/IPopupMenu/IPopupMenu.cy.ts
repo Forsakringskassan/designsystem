@@ -97,6 +97,35 @@ describe("keyboard navigation", () => {
             popupMenu.getItemLink(0).should("have.focus");
         });
 
+        it("should wrap focus with arrow keys", () => {
+            cy.focused().trigger("keydown", { key: "ArrowUp" });
+            popupMenu.getItemLink(2).should("have.focus");
+
+            cy.focused().trigger("keydown", { key: "ArrowDown" });
+            popupMenu.getItemLink(0).should("have.focus");
+        });
+
+        it("should move focus with tab", () => {
+            cy.focused().trigger("keydown", { key: "Tab" });
+            popupMenu.getItemLink(1).should("have.focus");
+
+            cy.focused().trigger("keydown", { key: "Tab", shiftKey: true });
+            popupMenu.getItemLink(0).should("have.focus");
+        });
+
+        it("should close popup on tab to previous when on first item", () => {
+            cy.focused().trigger("keydown", { key: "Tab", shiftKey: true });
+            popupMenu.el().should("not.exist");
+        });
+
+        it("should close popup on tab to next when on last item", () => {
+            cy.focused().trigger("keydown", { key: "ArrowUp" });
+            popupMenu.getItemLink(2).should("have.focus");
+
+            cy.focused().trigger("keydown", { key: "Tab" });
+            popupMenu.el().should("not.exist");
+        });
+
         it("should select item with spacebar", () => {
             cy.focused().trigger("keydown", { key: "Spacebar" });
             cy.get(highlightedItemTestId).should("have.text", "key1");
@@ -119,6 +148,14 @@ describe("keyboard navigation", () => {
             popupMenu.getItemLink(0).should("have.focus");
 
             cy.focused().trigger("keydown", { key: "ArrowUp" });
+            popupMenu.getItemLink(0).should("have.focus");
+        });
+
+        it("should not programmatically move focus with tab", () => {
+            cy.focused().trigger("keydown", { key: "Tab" });
+            popupMenu.getItemLink(0).should("have.focus");
+
+            cy.focused().trigger("keydown", { key: "Tab", shiftKey: true });
             popupMenu.getItemLink(0).should("have.focus");
         });
 
