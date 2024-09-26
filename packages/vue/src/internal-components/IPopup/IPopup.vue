@@ -17,20 +17,14 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
-import { handleTab, pushFocus, popFocus, type StackHandle } from "@fkui/logic";
+import { handleTab, pushFocus, popFocus } from "@fkui/logic";
 import { config } from "../../config";
 import { getElement, fitInsideArea, getScrollToPopup, Placement, CandidateOrder } from "./IPopupUtils";
 import { getContainer } from "./get-container";
 import { getFocusableElement } from "./get-focusable-element";
 import { isTeleportDisabled } from "./is-teleport-disabled";
 import { MIN_DESKTOP_WIDTH, POPUP_SPACING } from "./constants";
-
-interface IPopupData {
-    teleportDisabled: boolean;
-    placement: Placement;
-    focus: StackHandle | null;
-    noCloseOnResize: boolean;
-}
+import { type IPopupData } from "./ipopup-data";
 
 export default defineComponent({
     name: "IPopup",

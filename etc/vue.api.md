@@ -6336,8 +6336,6 @@ export interface IMenuItem {
 // @public (undocumented)
 export function includeItem<T extends object, K extends keyof T>(item: ListItem<T> | undefined, itemList: ListArray<T> | undefined, compareAttribute: K): boolean;
 
-// Warning: (ae-forgotten-export) The symbol "IPopupData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const IPopup: DefineComponent<    {
 isOpen: {
@@ -6458,6 +6456,18 @@ keyboardTrap: boolean;
 focusElement: () => HTMLElement | null;
 setFocus: boolean;
 }, {}>;
+
+// @public (undocumented)
+export interface IPopupData {
+    // (undocumented)
+    focus: StackHandle | null;
+    // (undocumented)
+    noCloseOnResize: boolean;
+    // (undocumented)
+    placement: Placement;
+    // (undocumented)
+    teleportDisabled: boolean;
+}
 
 // Warning: (ae-forgotten-export) The symbol "IPopupErrorData" needs to be exported by the entry point index.d.ts
 //
@@ -6754,6 +6764,21 @@ export interface PanelLayoutComposable {
 
 // @public (undocumented)
 export type ParseFunction<TModel> = (viewValue: string) => TModel | undefined;
+
+// @public (undocumented)
+export enum Placement {
+    "A" = "A",
+    "B" = "B",
+    "C" = "C",
+    "D" = "D",
+    "E" = "E",
+    "F" = "F",
+    "Fallback" = "Fallback",
+    "G" = "G",
+    "H" = "H",
+    "I" = "I",
+    "NotCalculated" = "NotCalculated"
+}
 
 // @public
 export function refIsElement(value: unknown): value is Element;

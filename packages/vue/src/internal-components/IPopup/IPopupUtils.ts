@@ -41,6 +41,9 @@ export enum SpacingDirection {
     "None",
 }
 
+/**
+ * @public
+ */
 export enum Placement {
     /** popup below and alignment towards the left edge. */
     "A" = "A",
