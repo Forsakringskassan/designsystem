@@ -254,8 +254,8 @@ type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstruc
 required: true;
 };
 }, {
-showDetails: "never" | "always" | "when-selected";
-getFieldsetLabelText: () => string;
+showDetails: "always" | "never" | "when-selected";
+getFieldsetLabelText: () => string | undefined;
 }, {
 expanded: boolean;
 height: number;
@@ -340,8 +340,8 @@ required: true;
 };
 }, {
 sharedName: string | undefined;
-showDetails: "never" | "always" | "when-selected";
-getFieldsetLabelText: () => string;
+showDetails: "always" | "never" | "when-selected";
+getFieldsetLabelText: () => string | undefined;
 }, {
 height: number;
 initialStyle: {
@@ -2278,11 +2278,11 @@ type: BooleanConstructor;
 required: false;
 };
 showDetails: {
-type: StringConstructor;
+type: PropType<"never" | "when-selected" | "always">;
 default: string;
 validator(value: string): boolean;
 };
-}, unknown, {
+}, void, {
 validity: ValidityEvent;
 descriptionClass: string[];
 discreteDescriptionClass: string[];
@@ -2348,7 +2348,7 @@ type: BooleanConstructor;
 required: false;
 };
 showDetails: {
-type: StringConstructor;
+type: PropType<"never" | "when-selected" | "always">;
 default: string;
 validator(value: string): boolean;
 };
@@ -2356,9 +2356,9 @@ validator(value: string): boolean;
 name: string;
 horizontal: boolean;
 id: string;
-showDetails: string;
 labelClass: string;
 contentClass: string;
+showDetails: "always" | "never" | "when-selected";
 chip: boolean;
 border: boolean;
 }, {}>;

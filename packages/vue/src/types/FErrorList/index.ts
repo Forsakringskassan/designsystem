@@ -1,1 +1,1 @@
-export * from "./ErrorItem";
+export { type ErrorItem } from "./ErrorItem";

@@ -1,6 +1,5 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { getFieldsetLabelText } from "../FFieldset/FFieldsetProvide";
 import FCheckboxField from "./FCheckboxField.vue";
 
 function createWrapper({
@@ -13,11 +12,6 @@ function createWrapper({
         props: { value: "Default value", ...props },
         slots: { default: "Default label", ...slots },
         attachTo: createPlaceholderInDocument(),
-        global: {
-            provide: {
-                [getFieldsetLabelText]: () => undefined,
-            },
-        },
     });
 }
 

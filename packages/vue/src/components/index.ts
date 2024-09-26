@@ -18,7 +18,7 @@ export * from "./FErrorList";
 export * from "./FExpand";
 export * from "./FExpandablePanel";
 export * from "./FExpandableParagraph";
-export * from "./FFieldset";
+export { FFieldset } from "./FFieldset";
 export { type FFileItemIconName, FFileItem } from "./FFileItem";
 export * from "./FFileSelector";
 export * from "./FSortFilterDataset";
