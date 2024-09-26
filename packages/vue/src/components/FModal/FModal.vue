@@ -48,18 +48,13 @@
 
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { ElementIdService, pushFocus, popFocus, type StackHandle, findTabbableElements } from "@fkui/logic";
+import { ElementIdService, pushFocus, popFocus, findTabbableElements } from "@fkui/logic";
 import { FIcon } from "../FIcon";
 import { TranslationMixin } from "../../plugins";
 import { findElementFromVueRef, getHTMLElementFromVueRef, hasSlot } from "../../utils";
 import { sizes, sizeClass } from "./sizes";
 import { focusElement } from "./focus-element";
-
-interface FModalData {
-    nonModalFocusableElements: HTMLElement[];
-    savedFocus: StackHandle | null;
-    savedScroll: number | null;
-}
+import { type FModalData } from "./fmodal-data";
 
 /**
  * Level: Ready

@@ -3369,8 +3369,6 @@ provideScreenReaderContext: boolean;
 layout: "standard" | "short";
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "FModalData" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const FModal: DefineComponent<    {
 id: {
@@ -3484,6 +3482,16 @@ export interface FModalButtonDescriptor {
     submitButton?: boolean;
     // (undocumented)
     type: "primary" | "secondary";
+}
+
+// @public (undocumented)
+export interface FModalData {
+    // (undocumented)
+    nonModalFocusableElements: HTMLElement[];
+    // (undocumented)
+    savedFocus: StackHandle | null;
+    // (undocumented)
+    savedScroll: number | null;
 }
 
 // @public (undocumented)
