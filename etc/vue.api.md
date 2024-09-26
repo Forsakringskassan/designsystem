@@ -6579,7 +6579,7 @@ focusElement(): HTMLElement | null;
 findItemByKey(key: string): IMenuItem | undefined;
 indexOfItemByKey(key: string): number;
 onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
-cssClassHighlight(item: IMenuItem): string;
+itemClasses(item: IMenuItem): string[];
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
 setFocusedItemIndex(index: number): void;

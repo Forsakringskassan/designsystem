@@ -16,8 +16,7 @@
                     ref="items"
                     :key="item.key"
                     role="presentation"
-                    class="ipopupmenu__list__item"
-                    :class="cssClassHighlight(item)"
+                    :class="itemClasses(item)"
                     @click="onClickItem(item)"
                 >
                     <a
@@ -211,8 +210,9 @@ export default defineComponent({
                 anchors[this.currentFocusedItemIndex]?.click();
             }
         },
-        cssClassHighlight(item: IMenuItem): string {
-            return item.key === this.modelValue ? "ipopupmenu__list__item--highlight" : "";
+        itemClasses(item: IMenuItem): string[] {
+            const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
+            return ["ipopupmenu__list__item", ...highlight];
         },
         async setFocusOnItem(index: number): Promise<void> {
             this.setFocusedItemIndex(index);
