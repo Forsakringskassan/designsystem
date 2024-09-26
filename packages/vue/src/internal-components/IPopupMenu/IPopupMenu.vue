@@ -116,7 +116,29 @@ export default defineComponent({
             default: "vald nu",
         },
     },
-    emits: ["close", "select", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted when an item is selected and when tabbing out of the popup.
+         *
+         * @event close
+         */
+        "close",
+        /**
+         * Vue 2 V-model event. Emitted when an item is selected.
+         *
+         * @event select
+         * @deprecated
+         * @type {string} item key
+         */
+        "select",
+        /**
+         * V-model event. Emitted when an item is selected.
+         *
+         * @event select
+         * @type {string} item key
+         */
+        "update:modelValue",
+    ],
     data() {
         return {
             currentFocusedItemIndex: 0,
@@ -177,28 +199,13 @@ export default defineComponent({
         },
         async onClickItem(item: IMenuItem, doClick: boolean = false): Promise<void> {
             if (item.key !== this.lastSelectedItem) {
-                /**
-                 * V-model event. Event that is dispatched when an item is selected.
-                 * @event select
-                 * @type {string} item key
-                 */
                 this.$emit("update:modelValue", item.key);
-
-                /**
-                 * Vue 2 V-model event. Event that is dispatched when an item is selected.
-                 * @event select
-                 * @deprecated
-                 * @type {string} item key
-                 */
                 this.$emit("select", item.key);
-
                 this.lastSelectedItem = item.key;
             }
-            /**
-             * Event that is dispatched after an item is selected or
-             * after pressing tab in the menu
-             */
+
             this.$emit("close");
+
             if (item.href && doClick) {
                 const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
                 anchors[this.currentFocusedItemIndex]?.click();
