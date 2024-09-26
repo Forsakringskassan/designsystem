@@ -6469,8 +6469,6 @@ export interface IPopupData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IPopupErrorData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const IPopupError: DefineComponent<    {
 isOpen: {
@@ -6518,6 +6516,18 @@ onClose?: ((...args: any[]) => any) | undefined;
 anchor: HTMLElement | null | undefined;
 errorMessage: string;
 }, {}>;
+
+// @public (undocumented)
+export interface IPopupErrorData {
+    // (undocumented)
+    arrowOffset: number;
+    // (undocumented)
+    arrowPosition: string;
+    // (undocumented)
+    placement: Placement;
+    // (undocumented)
+    teleportDisabled: boolean;
+}
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<    {
