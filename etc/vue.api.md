@@ -2462,8 +2462,6 @@ id: string;
 disabled: boolean;
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "FFormData" needs to be exported by the entry point index.d.ts
-//
 // @public @deprecated (undocumented)
 export const FForm: DefineComponent<    {
 id: {
@@ -2512,6 +2510,14 @@ id: string;
 displayError: boolean;
 errorScroll: "center" | "top";
 }, {}>;
+
+// @public (undocumented)
+export interface FFormData {
+    // (undocumented)
+    components: Record<string, Reference<FormErrorList | FormStep>>;
+    // (undocumented)
+    errorMessageSlotClass: string[];
+}
 
 // @public (undocumented)
 export const FFormModal: DefineComponent<    {
