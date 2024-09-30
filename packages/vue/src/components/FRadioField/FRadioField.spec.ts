@@ -1,6 +1,6 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { getFieldsetLabelText } from "../FFieldset/FFieldsetProvide";
+import { injectionKeys as fieldsetInjectionKeys } from "../FFieldset/use-fieldset";
 import FRadioField from "./FRadioField.vue";
 
 function createWrapper({
@@ -15,8 +15,7 @@ function createWrapper({
         slots: { default: "Default label", ...slots },
         global: {
             provide: {
-                sharedName: "providedName",
-                [getFieldsetLabelText]: () => undefined,
+                [fieldsetInjectionKeys.sharedName as symbol]: "providedName",
             },
         },
     });

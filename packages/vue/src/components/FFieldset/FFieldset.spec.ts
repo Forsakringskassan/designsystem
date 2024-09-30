@@ -1,5 +1,5 @@
 import "html-validate/jest";
-import { defineComponent, h } from "vue";
+import { defineComponent } from "vue";
 import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import {
     type ValidityEvent,
@@ -9,8 +9,8 @@ import {
 import flushPromises from "flush-promises";
 import { ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";
-import { getFieldsetLabelText } from "./FFieldsetProvide";
 import FFieldset from "./FFieldset.vue";
+import { useFieldset } from "./use-fieldset";
 
 const defaultSlots = { label: "Label", default: "Content" };
 
@@ -118,9 +118,9 @@ describe("snapshots", () => {
 
 it("should provide injection for label (legend) text", () => {
     const ChildComponent = defineComponent({
-        inject: { getFieldsetLabelText },
-        render() {
-            return h("div");
+        template: /* HTML */ ` <div>{{ getFieldsetLabelText() }}</div> `,
+        setup() {
+            return useFieldset();
         },
     });
     const wrapper = createWrapper({
@@ -129,15 +129,7 @@ it("should provide injection for label (legend) text", () => {
             default: ChildComponent,
         },
     });
-
-    /* eslint-disable @typescript-eslint/no-explicit-any -- technical debt,
-     * should not test methods directly or at least use a proper interface */
-    expect(
-        (
-            wrapper.findComponent(ChildComponent).vm as any
-        ).getFieldsetLabelText(),
-    ).toBe("Label text");
-    /* eslint-enable */
+    expect(wrapper.findComponent(ChildComponent).text()).toBe("Label text");
 });
 
 describe("attributes", () => {

@@ -15,3 +15,4 @@ export {
     isFormStepReference,
     sortComponentsWithErrorsOnDOMOrder,
 } from "./FormUtils";
+export { type FFormData } from "./fform-data";
