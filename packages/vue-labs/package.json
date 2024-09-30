@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue-labs",
-  "version": "5.37.0",
+  "version": "5.37.1",
   "description": "Experimental and unstable FKUI components",
   "keywords": [
     "fkui",
@@ -62,12 +62,12 @@
   },
   "devDependencies": {
     "@fkui/css-variables": "5.37.0",
-    "@fkui/date": "5.37.0",
+    "@fkui/date": "5.37.1",
     "@fkui/design": "5.37.0",
     "@fkui/icon-lib-default": "5.37.0",
-    "@fkui/logic": "5.37.0",
+    "@fkui/logic": "5.37.1",
     "@fkui/test-utils": "5.37.0",
-    "@fkui/vue": "5.37.0",
+    "@fkui/vue": "5.37.1",
     "@forsakringskassan/docs-generator": "2.4.0",
     "@forsakringskassan/vite-lib-config": "2.0.3",
     "@vue/test-utils": "2.4.6",
@@ -76,9 +76,9 @@
     "vue-router": "4.4.5"
   },
   "peerDependencies": {
-    "@fkui/date": "^5.37.0",
+    "@fkui/date": "^5.37.1",
     "@fkui/design": "^5.36.0",
-    "@fkui/logic": "^5.37.0",
+    "@fkui/logic": "^5.37.1",
     "@fkui/vue": "^5.36.0",
     "core-js": "^3.24",
     "html-validate": ">= 7.9.0",

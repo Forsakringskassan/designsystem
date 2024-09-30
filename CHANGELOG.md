@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 5.37.1 (2024-09-30)
+
+
+### Bug Fixes
+
+* **@fkui/vue:** add missing `FFormData` export (refs SFKUI-6500) 7c5a78a
+* **@fkui/vue:** add missing `FModalData` export (refs SFKUI-6500) 97fdcc8
+* **@fkui/vue:** add missing `IconName` export (refs SFKUI-6500) 4e8d9eb
+* **@fkui/vue:** add missing `IPopupData` export (refs SFKUI-6500) bfcee75
+* **@fkui/vue:** add missing `IPopupErrorData` export (refs SFKUI-6500) 31c8dd4
+
 ## 5.37.0 (2024-09-25)
 
 

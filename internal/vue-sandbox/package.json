@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue-sandbox",
-  "version": "5.37.0",
+  "version": "5.37.1",
   "private": true,
   "description": "fkui-vue-sandbox",
   "homepage": "https://forsakringskassan.github.io/designsystem/",
@@ -21,10 +21,10 @@
   },
   "dependencies": {
     "@fkui/css-variables": "5.37.0",
-    "@fkui/date": "5.37.0",
+    "@fkui/date": "5.37.1",
     "@fkui/design": "5.37.0",
-    "@fkui/logic": "5.37.0",
-    "@fkui/vue": "5.37.0",
+    "@fkui/logic": "5.37.1",
+    "@fkui/vue": "5.37.1",
     "core-js": "3.38.1",
     "vue": "3.4.38",
     "vue-router": "4.4.5"
