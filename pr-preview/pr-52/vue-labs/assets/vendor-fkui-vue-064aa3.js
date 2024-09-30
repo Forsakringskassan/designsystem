@@ -7250,7 +7250,6 @@
     setRunningContext: () => setRunningContext,
     sortComponentsWithErrorsOnDOMOrder: () => sortComponentsWithErrorsOnDOMOrder,
     tableScrollClasses: () => tableScrollClasses,
-    useFieldset: () => useFieldset,
     useTranslate: () => useTranslate
   });
   var import_es_array_push = __toESM(require_es_array_push(), 1);
