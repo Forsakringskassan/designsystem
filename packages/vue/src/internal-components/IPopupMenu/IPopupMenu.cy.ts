@@ -1,13 +1,14 @@
 import { defineComponent } from "vue";
 import { IPopupMenuPageObject } from "../../pageobject";
 import IPopupMenu from "./IPopupMenu.vue";
+import IPopupMenuExample from "./examples/IPopupMenuExample.vue";
 
 const popupMenu = new IPopupMenuPageObject(".ipopupmenu--vertical");
 
 // The id of the button that toggles the popup visibility on/off
 const toggleOpenPopupButtonId = "#toggle-open";
-// The data-testid catches and display the highlited item
-const highlightedItemTestId = '[data-testid="highlightedItem"]';
+const selectedItemId = '[data-testid="selectedItem"]';
+const focusedItemId = '[data-testid="focusedItem"]';
 
 function mountTestComponent(
     isOpen: boolean,
@@ -25,11 +26,13 @@ function mountTestComponent(
                 >
                     Öppna
                 </button>
-                <pre data-testid="highlightedItem">{{ model }}</pre>
+                <pre data-testid="selectedItem">{{ selectedItem }}</pre>
+                <pre data-testid="focusedItem">{{ focusedItem }}</pre>
                 <i-popup-menu
                     id="ipopupmenu"
                     ref="ipopupmenu"
-                    v-model="model"
+                    v-model="selectedItem"
+                    v-model:focused-item="focusedItem"
                     :is-open="isOpen"
                     :items="items"
                     anchor="toggle-open"
@@ -46,7 +49,8 @@ function mountTestComponent(
         data() {
             return {
                 items: items,
-                model: "",
+                selectedItem: "",
+                focusedItem: "",
                 isOpen: isOpen,
             };
         },
@@ -128,7 +132,7 @@ describe("keyboard navigation", () => {
 
         it("should select item with spacebar", () => {
             cy.focused().trigger("keydown", { key: "Spacebar" });
-            cy.get(highlightedItemTestId).should("have.text", "key1");
+            cy.get(selectedItemId).should("have.text", "key1");
         });
     });
 
@@ -161,7 +165,50 @@ describe("keyboard navigation", () => {
 
         it("should not select item with spacebar", () => {
             cy.focused().trigger("keydown", { key: "Spacebar" });
-            cy.get(highlightedItemTestId).should("be.empty");
+            cy.get(selectedItemId).should("be.empty");
+        });
+    });
+});
+
+describe("props", () => {
+    describe("v-model:focused-item", () => {
+        it("should update when focused item changes", () => {
+            mountTestComponent(true, arrayWithThreeTestItems);
+            popupMenu.getItemLink(0).should("be.visible");
+            popupMenu.getItemLink(0).focus();
+            popupMenu.getItemLink(0).should("have.focus");
+            cy.get(focusedItemId).should("be.empty");
+
+            cy.focused().trigger("keydown", { key: "ArrowDown" });
+            cy.get(focusedItemId).should("contain.text", "key2");
+        });
+
+        it("should be empty when popup is closed", () => {
+            mountTestComponent(true, arrayWithThreeTestItems);
+            popupMenu.getItemLink(0).should("be.visible");
+            popupMenu.getItemLink(0).focus();
+            popupMenu.getItemLink(0).should("have.focus");
+            cy.get(focusedItemId).should("be.empty");
+
+            cy.focused().trigger("keydown", { key: "ArrowDown" });
+            cy.get(focusedItemId).should("contain.text", "key2");
+
+            cy.focused().trigger("keydown", { key: "Spacebar" });
+            cy.get(focusedItemId).should("be.empty");
+        });
+
+        it("should set focus into popup menu on change from empty", () => {
+            const openButton = "#popup-menu-open-button";
+            cy.mount(IPopupMenuExample);
+            cy.get(openButton).focus();
+            cy.get(openButton).should("have.focus");
+
+            cy.get(openButton).trigger("click");
+            popupMenu.el().should("exist");
+
+            // Example changes `v-model:focused-item` to first item key on pressing tab.
+            cy.focused().trigger("keydown", { key: "Tab" });
+            popupMenu.getItemLink(0).should("have.focus");
         });
     });
 });
@@ -206,7 +253,7 @@ describe("pageobject", () => {
         cy.get(toggleOpenPopupButtonId).click();
         // select item at index 1
         popupMenu.item(1).click();
-        cy.get(highlightedItemTestId).should("have.text", "key2");
+        cy.get(selectedItemId).should("have.text", "key2");
         cy.get(toggleOpenPopupButtonId).click();
         popupMenu.getSelectedItem().should("contain.text", "label2");
     });

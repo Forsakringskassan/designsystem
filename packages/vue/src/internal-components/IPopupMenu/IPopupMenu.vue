@@ -53,6 +53,27 @@ export default defineComponent({
     components: { FIcon, IPopup },
     props: {
         /**
+         * Key of the currently selected and highlighted item.
+         *
+         * @model
+         */
+        modelValue: {
+            type: String,
+            required: false,
+            default: "",
+        },
+        /**
+         * Key of the currently focused item.
+         * Sets focus on matching item element when value changes.
+         *
+         * @model
+         */
+        focusedItem: {
+            type: String,
+            required: false,
+            default: "",
+        },
+        /**
          * Toggle open/closed popup.
          */
         isOpen: {
@@ -67,28 +88,11 @@ export default defineComponent({
             default: undefined,
         },
         /**
-         * The currently highlighted menu item key
-         * @model
-         */
-        modelValue: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        /**
          * The items to be diplayed in the menu
          */
         items: {
             type: Array as PropType<IMenuItem[]>,
             required: true,
-        },
-        /**
-         * The key of the currently selected focused item
-         */
-        focusedItemKey: {
-            type: String,
-            required: false,
-            default: "",
         },
         /**
          * If true, enable built-in keyboard navigation
@@ -137,6 +141,13 @@ export default defineComponent({
          * @type {string} item key
          */
         "update:modelValue",
+        /**
+         * V-model event. Emitted when item focus changes.
+         *
+         * @event select
+         * @type {string} Key of focused item, or empty if no item focused.
+         */
+        "update:focusedItem",
     ],
     data() {
         return {
@@ -147,22 +158,14 @@ export default defineComponent({
     watch: {
         isOpen: {
             immediate: true,
-            async handler(): Promise<void> {
-                this.currentFocusedItemIndex = 0;
-                this.lastSelectedItem = "";
-            },
-        },
-        focusedItemKey: {
             async handler(newVal): Promise<void> {
-                if (this.enableKeyboardNavigation) {
+                if (newVal) {
                     return;
                 }
-                const index = this.indexOfItemByKey(newVal);
-                if (index >= 0) {
-                    await this.setFocusOnItem(index);
-                } else {
-                    this.setFocusedItemIndex(0);
-                }
+
+                this.currentFocusedItemIndex = 0;
+                this.lastSelectedItem = "";
+                this.$emit("update:focusedItem", "");
             },
         },
         modelValue: {
@@ -173,6 +176,20 @@ export default defineComponent({
                 const index = this.indexOfItemByKey(newVal);
                 if (index >= 0) {
                     await this.activateItem(index);
+                } else {
+                    this.setFocusedItemIndex(0);
+                }
+            },
+        },
+        focusedItem: {
+            async handler(newVal): Promise<void> {
+                if (newVal.length === 0) {
+                    return;
+                }
+
+                const index = this.indexOfItemByKey(newVal);
+                if (index >= 0) {
+                    await this.setFocusOnItem(index);
                 } else {
                     this.setFocusedItemIndex(0);
                 }
@@ -229,6 +246,9 @@ export default defineComponent({
 
             const itemAnchor = anchors[index];
             focus(itemAnchor, { preventScroll: true });
+
+            const key = this.items[index].key;
+            this.$emit("update:focusedItem", key);
         },
         async activateItem(index: number): Promise<void> {
             if (index !== this.currentFocusedItemIndex) {
