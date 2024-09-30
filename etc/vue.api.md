@@ -1775,7 +1775,6 @@ isDateEnabled(day: FDate): boolean;
 isDaySelected(date: FDate): boolean;
 highlightDay(date: FDate): boolean;
 updateTextFieldValue(newValue: string): Promise<void>;
-updateCalendarValue: typeof updateCalendarValue;
 }, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
@@ -6882,9 +6881,6 @@ export const UNHANDLED_ERROR_EVENT: "unhandled-error";
 
 // @public (undocumented)
 export type UnknownItem = Record<string, unknown>;
-
-// @public (undocumented)
-export function updateCalendarValue(this: InstanceType<typeof FDatepickerField>, newValue: string): void;
 
 // @public
 export function useTranslate(): TranslateFunction;

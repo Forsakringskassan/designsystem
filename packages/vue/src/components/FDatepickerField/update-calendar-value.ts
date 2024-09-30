@@ -1,26 +1,31 @@
 import { FDate } from "@fkui/date";
 import { isInvalidMonth } from "../../internal-components/calendar/is-invalid-month";
-import FDatepickerField from "./FDatepickerField.vue";
 
 /**
- * @public
+ * @internal
  */
 export function updateCalendarValue(
-    this: InstanceType<typeof FDatepickerField>,
+    datepicker: {
+        calendarValue: FDate | undefined;
+        readonly minDate: FDate | undefined;
+        readonly maxDate: FDate | undefined;
+        isDateEnabled(date: FDate): boolean;
+    },
     newValue: string,
 ): void {
+    const { isDateEnabled, minDate, maxDate } = datepicker;
     const newCalendarValue = FDate.fromIso(newValue);
 
     if (!newCalendarValue.isValid()) {
-        this.calendarValue = undefined;
-    } else if (isInvalidMonth(newCalendarValue, this.minDate, this.maxDate)) {
-        this.calendarValue = undefined;
-    } else if (!this.isDateEnabled(newCalendarValue)) {
-        this.calendarValue = undefined;
+        datepicker.calendarValue = undefined;
+    } else if (isInvalidMonth(newCalendarValue, minDate, maxDate)) {
+        datepicker.calendarValue = undefined;
+    } else if (!isDateEnabled(newCalendarValue)) {
+        datepicker.calendarValue = undefined;
     } else if (
-        !this.calendarValue ||
-        !this.calendarValue.equals(newCalendarValue)
+        !datepicker.calendarValue ||
+        !datepicker.calendarValue.equals(newCalendarValue)
     ) {
-        this.calendarValue = newCalendarValue;
+        datepicker.calendarValue = newCalendarValue;
     }
 }
