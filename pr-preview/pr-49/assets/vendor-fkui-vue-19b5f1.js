@@ -7197,6 +7197,7 @@
     MenuAction: () => MenuAction,
     ModalReason: () => ModalReason,
     Operation: () => Operation,
+    Placement: () => Placement,
     TableScroll: () => TableScroll,
     TestPlugin: () => TestPlugin,
     TranslationMixin: () => TranslationMixin,
@@ -7249,7 +7250,6 @@
     setRunningContext: () => setRunningContext,
     sortComponentsWithErrorsOnDOMOrder: () => sortComponentsWithErrorsOnDOMOrder,
     tableScrollClasses: () => tableScrollClasses,
-    updateCalendarValue: () => updateCalendarValue,
     useTranslate: () => useTranslate
   });
   var import_es_array_push = __toESM(require_es_array_push(), 1);
@@ -10938,8 +10938,219 @@
     }, 8, ["is-open", "anchor", "focus-element"]);
   }
   var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$N]]);
+  function* labelClasses(options) {
+    const { labelClass } = options;
+    yield "fieldset__label";
+    yield labelClass;
+  }
+  function* contentClasses(options) {
+    const { hasRadiobutton, hasCheckbox, contentClass } = options;
+    yield "fieldset__content";
+    if (hasRadiobutton) {
+      yield "radio-button-group__content";
+    }
+    if (hasCheckbox) {
+      yield "checkbox-group__content";
+    }
+    yield contentClass;
+  }
+  var injectionKeys = { sharedName: Symbol("sharedName"), showDetails: Symbol("showDetails"), getFieldsetLabelText: Symbol("getFieldsetLabelText") };
+  function useFieldset() {
+    return { sharedName: (0, import_vue.inject)(injectionKeys.sharedName, void 0), showDetails: (0, import_vue.inject)(injectionKeys.showDetails, "never"), getFieldsetLabelText: (0, import_vue.inject)(injectionKeys.getFieldsetLabelText, () => void 0) };
+  }
+  var _sfc_main$W = (0, import_vue.defineComponent)({ name: "FFieldset", components: { FIcon }, mixins: [TranslationMixin], props: {
+    /**
+    * The id for the fieldset id attribute.
+    * If the prop is not set a random value will be generated.
+    */
+    id: { type: String, required: false, default: () => import_logic.ElementIdService.generateElementId() },
+    /**
+    * Name provided to child content as `sharedName` for optional usage (it will not be set on the fieldset element).
+    * For radio inputs this is a shortcut to specify the shared name attribute at one place,
+    * instead of repeatedly setting the name attribute on each radio input.
+    */
+    name: { type: String, required: false, default: void 0 },
+    /**
+    * The CSS classes for the label, description and error-message slot.
+    */
+    labelClass: { type: String, required: false, default: "" },
+    /**
+    * The CSS classes for the default slot.
+    */
+    contentClass: { type: String, required: false, default: "" },
+    /**
+    * Aligns underlying items horizontally.
+    * Supported by radiobuttons and chip layout.
+    */
+    horizontal: { type: Boolean, required: false },
+    /**
+    * Displays radio and checkbox content with chip layout.
+    */
+    chip: { type: Boolean, required: false, default: false },
+    /**
+    * Displays a box with border around radiobuttons and checkboxes.
+    */
+    border: { type: Boolean, required: false },
+    /**
+    * Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.
+    *
+    * * `never` (default) - Never show item details.
+    * - `when-selected` - Show item details when selected.
+    * - `always` - Always show item details.
+    */
+    showDetails: { type: String, default: "never", validator(value) {
+      return ["never", "when-selected", "always"].includes(value);
+    } }
+  }, setup(props) {
+    const slots = (0, import_vue.useSlots)();
+    (0, import_vue.provide)(injectionKeys.sharedName, props.name);
+    (0, import_vue.provide)(injectionKeys.showDetails, props.showDetails);
+    (0, import_vue.provide)(injectionKeys.getFieldsetLabelText, () => {
+      return renderSlotText(slots.label);
+    });
+  }, data() {
+    return { validity: { validityMode: "INITIAL" }, descriptionClass: ["label__description"], discreteDescriptionClass: ["label__description", "label__description--discrete"], validityElement: null, dispatchObject: {}, detail: {}, hasDocumentListener: false, legendKey: 1, oldMessage: "", children: new Array(), hasCheckbox: false, hasRadiobutton: false };
+  }, computed: { hasError() {
+    return this.validity.validityMode === "ERROR";
+  }, hasErrorMessageSlot() {
+    return hasSlot(this, "error-message");
+  }, hasTooltipSlot() {
+    return Boolean(this.$slots.tooltip);
+  }, hasDescriptionSlot() {
+    return hasSlot(this, "description");
+  }, legendClass() {
+    return this.hasTooltipSlot ? ["sr-only"] : this.groupLabelClass;
+  }, groupLabelClass() {
+    return Array.from(labelClasses(this));
+  }, groupContentClass() {
+    return Array.from(contentClasses(this));
+  }, classes() {
+    const { hasRadiobutton, hasCheckbox, horizontal, chip, border } = this;
+    return { "radio-button-group": hasRadiobutton, "radio-button-group--chip": chip && hasRadiobutton, "radio-button-group--horizontal": horizontal && hasRadiobutton, "radio-button-group--border": border && hasRadiobutton, "checkbox-group": hasCheckbox, "checkbox-group--chip": chip && hasCheckbox, "checkbox-group--horizontal": horizontal && hasCheckbox, "checkbox-group--border": border && hasCheckbox };
+  }, checkedChildren() {
+    return this.children.filter((child) => child.checked);
+  }, debouncedUpdateChildren() {
+    return (0, import_logic.debounce)(this.updateCheckboxChildren.bind(this), 150);
+  }, checkboxCheckedScreenReaderText() {
+    return this.checkedChildren.length === 1 ? this.$t("fkui.checkbox-group.checkbox.checked", "Kryssruta kryssad") : this.$t("fkui.checkbox-group.checkbox.not.checked", "Kryssruta ej kryssad");
+  }, numberOfCheckboxesScreenReaderText() {
+    return this.$t("fkui.checkbox-group.count", "Grupp med {{ count }} kryssrutor", { count: String(this.children.length) });
+  }, numberOfCheckedCheckboxesScreenText() {
+    return this.$t("fkui.checkbox-group.checked", "{{ checked }} kryssad av {{ count }}", { checked: String(this.checkedChildren.length), count: String(this.children.length) });
+  } }, async mounted() {
+    await this.$nextTick();
+    const types = Array.from(this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`), (it) => it.getAttribute("type"));
+    this.hasCheckbox = types.includes("checkbox");
+    this.hasRadiobutton = types.includes("radio");
+    if (this.hasCheckbox) {
+      this.updateCheckboxChildren();
+    }
+  }, updated() {
+    if (this.hasCheckbox) {
+      this.debouncedUpdateChildren();
+    }
+  }, methods: {
+    async onValidity({ detail }) {
+      var _renderSlotText2;
+      if (detail.target !== this.$el) {
+        return;
+      }
+      this.detail = detail;
+      await this.$nextTick();
+      const errorMessage = (_renderSlotText2 = renderSlotText(this.$slots.label)) !== null && _renderSlotText2 !== void 0 ? _renderSlotText2 : "";
+      const firstFocusableElement = this.$el.querySelector("input:not(disabled), select:not(disabled), textarea:not(disabled)");
+      const focusElementId = firstFocusableElement ? firstFocusableElement.id : this.id;
+      this.validityElement = this.$el;
+      this.dispatchObject = { ...detail, errorMessage, focusElementId };
+      this.validity = this.detail;
+      if (this.validityElement) {
+        dispatchComponentValidityEvent(this.validityElement, this.dispatchObject);
+      }
+      const message = detail.validityMode === "INITIAL" ? "" : detail.validationMessage;
+      if (message !== this.oldMessage) {
+        this.forceLegendUpdate();
+        this.oldMessage = message;
+      }
+    },
+    /**
+    * Workaround for NVDA-bug. Force re rendering of legend element due to NVDA not recognizing innerHTML changes.
+    * NVDA has closed the bug as it is related to the browser (works in FF): https://github.com/nvaccess/nvda/issues/13162
+    */
+    forceLegendUpdate() {
+      this.legendKey++;
+    },
+    async updateCheckboxChildren() {
+      await this.$nextTick();
+      this.children = Array.from(this.$el.querySelectorAll('input[type="checkbox"]'));
+    }
+  } });
+  var _hoisted_1$H = ["id"];
+  var _hoisted_2$v = { key: 0, class: "sr-only" };
+  var _hoisted_3$r = { key: 0, class: "label__message label__message--error" };
+  var _hoisted_4$m = { key: 0, "data-test": "checked-boxes", class: "sr-only", "aria-live": "polite" };
+  var _hoisted_5$k = { key: 0 };
+  var _hoisted_6$g = { key: 1 };
+  var _hoisted_7$d = { class: "sr-separator" };
+  var _hoisted_8$9 = { class: "tooltip-before", "aria-hidden": "true" };
+  var _hoisted_9$5 = { class: "label tooltip-before__label" };
+  var _hoisted_10$5 = { key: 0, class: "label__message label__message--error" };
+  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("fieldset", { id: _ctx.id, class: (0, import_vue.normalizeClass)(["fieldset", _ctx.classes]), onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)) }, [((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
+      "legend",
+      { key: _ctx.legendKey, class: (0, import_vue.normalizeClass)(["label", _ctx.legendClass]) },
+      [(0, import_vue.renderSlot)(_ctx.$slots, "label"), (0, import_vue.createTextVNode)(), _ctx.hasCheckbox && _ctx.children.length > 1 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_2$v, [(0, import_vue.createElementVNode)(
+        "span",
+        null,
+        (0, import_vue.toDisplayString)(_ctx.numberOfCheckboxesScreenReaderText),
+        1
+        /* TEXT */
+      )])) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ hasError: _ctx.hasError, validationMessage: _ctx.validity.validationMessage })), () => [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$r, [(0, import_vue.createVNode)(_component_f_icon, { class: "label__icon--left", name: "error" }), (0, import_vue.createTextVNode)(
+        " " + (0, import_vue.toDisplayString)(_ctx.validity.validationMessage),
+        1
+        /* TEXT */
+      )])) : (0, import_vue.createCommentVNode)("v-if", true)])],
+      2
+      /* CLASS */
+    )), (0, import_vue.createTextVNode)(), _ctx.hasCheckbox ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_4$m, [_ctx.children.length === 1 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
+      "span",
+      _hoisted_5$k,
+      (0, import_vue.toDisplayString)(_ctx.checkboxCheckedScreenReaderText),
+      1
+      /* TEXT */
+    )) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
+      "span",
+      _hoisted_6$g,
+      (0, import_vue.toDisplayString)(_ctx.numberOfCheckedCheckboxesScreenText),
+      1
+      /* TEXT */
+    ))])) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), _ctx.hasTooltipSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
+      import_vue.Fragment,
+      { key: 1 },
+      [(0, import_vue.createElementVNode)("div", _hoisted_7$d, [(0, import_vue.createElementVNode)("div", _hoisted_8$9, [(0, import_vue.createElementVNode)("div", _hoisted_9$5, [(0, import_vue.renderSlot)(_ctx.$slots, "label")])]), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "tooltip")]), (0, import_vue.createTextVNode)(), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
+        "div",
+        { key: 0, class: (0, import_vue.normalizeClass)(["label", _ctx.groupLabelClass]), "aria-hidden": "true" },
+        [(0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ hasError: _ctx.hasError, validationMessage: _ctx.validity.validationMessage })), () => [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_10$5, [(0, import_vue.createVNode)(_component_f_icon, { class: "label__icon--left", name: "error" }), (0, import_vue.createTextVNode)(
+          " " + (0, import_vue.toDisplayString)(_ctx.validity.validationMessage),
+          1
+          /* TEXT */
+        )])) : (0, import_vue.createCommentVNode)("v-if", true)])],
+        2
+        /* CLASS */
+      )) : (0, import_vue.createCommentVNode)("v-if", true)],
+      64
+      /* STABLE_FRAGMENT */
+    )) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)(
+      "div",
+      { class: (0, import_vue.normalizeClass)(_ctx.groupContentClass) },
+      [(0, import_vue.renderSlot)(_ctx.$slots, "default")],
+      2
+      /* CLASS */
+    )], 42, _hoisted_1$H);
+  }
+  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$M]]);
   var anyType$1 = [String, Object, Array, Number, Date, Boolean];
-  var _sfc_main$W = (0, import_vue.defineComponent)({ name: "FCheckboxField", inheritAttrs: false, props: {
+  var _sfc_main$V = (0, import_vue.defineComponent)({ name: "FCheckboxField", inheritAttrs: false, props: {
     /**
     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
     */
@@ -10964,7 +11175,8 @@
     */
     value: { type: anyType$1, required: true }
   }, emits: ["change", "update:modelValue"], setup() {
-    return { showDetails: (0, import_vue.inject)("showDetails", "never"), getFieldsetLabelText: (0, import_vue.inject)("getFieldsetLabelText", () => "") };
+    const { showDetails, getFieldsetLabelText } = useFieldset();
+    return { showDetails, getFieldsetLabelText };
   }, data() {
     return { expanded: false, height: 0, initialStyle: { overflow: "hidden", transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)" }, hiddenStyle: { height: "auto", position: "absolute", visibility: "hidden" }, visibleStyle: { width: "", position: "", visibility: "", height: "0px" }, openedStyle: { height: "auto" } };
   }, computed: {
@@ -11054,249 +11266,44 @@
       Object.assign(htmlElement.style, this.visibleStyle);
     });
   } } });
-  var _hoisted_1$H = ["id", "disabled"];
-  var _hoisted_2$v = ["for"];
-  var _hoisted_3$r = { key: 0, class: "checkbox__details" };
-  var _hoisted_4$m = /* @__PURE__ */ (0, import_vue.createElementVNode)(
+  var _hoisted_1$G = ["id", "disabled"];
+  var _hoisted_2$u = ["for"];
+  var _hoisted_3$q = { key: 0, class: "checkbox__details" };
+  var _hoisted_4$l = /* @__PURE__ */ (0, import_vue.createElementVNode)(
     "br",
     null,
     null,
     -1
     /* HOISTED */
   );
-  var _hoisted_5$k = { key: 0, class: "checkbox__details" };
-  var _hoisted_6$g = /* @__PURE__ */ (0, import_vue.createElementVNode)(
+  var _hoisted_5$j = { key: 0, class: "checkbox__details" };
+  var _hoisted_6$f = /* @__PURE__ */ (0, import_vue.createElementVNode)(
     "br",
     null,
     null,
     -1
     /* HOISTED */
   );
-  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "div",
       { class: (0, import_vue.normalizeClass)(["checkbox", _ctx.disabledClass]), onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)) },
-      [(0, import_vue.createElementVNode)("input", (0, import_vue.mergeProps)({ id: _ctx.id }, _ctx.attrs, { ref: "checkboxInput", type: "checkbox", class: "checkbox__input", disabled: _ctx.disabled, onKeydown: _cache[0] || (_cache[0] = (0, import_vue.withKeys)((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])), onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag()) }), null, 16, _hoisted_1$H), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("label", { class: (0, import_vue.normalizeClass)(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"), for: _ctx.id }, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), (0, import_vue.createTextVNode)(), _ctx.$slots.details ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
+      [(0, import_vue.createElementVNode)("input", (0, import_vue.mergeProps)({ id: _ctx.id }, _ctx.attrs, { ref: "checkboxInput", type: "checkbox", class: "checkbox__input", disabled: _ctx.disabled, onKeydown: _cache[0] || (_cache[0] = (0, import_vue.withKeys)((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])), onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag()) }), null, 16, _hoisted_1$G), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("label", { class: (0, import_vue.normalizeClass)(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"), for: _ctx.id }, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), (0, import_vue.createTextVNode)(), _ctx.$slots.details ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
         import_vue.Fragment,
         { key: 0 },
-        [_ctx.showDetails === "always" ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$r, [_hoisted_4$m, (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "details")])) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), _ctx.showDetails === "when-selected" ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Transition, { key: 1, onEnter: _ctx.enter, onAfterEnter: _ctx.afterEnter, onLeave: _ctx.leave }, {
-          default: (0, import_vue.withCtx)(() => [_ctx.expanded ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$k, [_hoisted_6$g, (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "details", { height: _ctx.height })])) : (0, import_vue.createCommentVNode)("v-if", true)]),
+        [_ctx.showDetails === "always" ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$q, [_hoisted_4$l, (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "details")])) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), _ctx.showDetails === "when-selected" ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Transition, { key: 1, onEnter: _ctx.enter, onAfterEnter: _ctx.afterEnter, onLeave: _ctx.leave }, {
+          default: (0, import_vue.withCtx)(() => [_ctx.expanded ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$j, [_hoisted_6$f, (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "details", { height: _ctx.height })])) : (0, import_vue.createCommentVNode)("v-if", true)]),
           _: 3
           /* FORWARDED */
         }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : (0, import_vue.createCommentVNode)("v-if", true)],
         64
         /* STABLE_FRAGMENT */
-      )) : (0, import_vue.createCommentVNode)("v-if", true)], 10, _hoisted_2$v)],
+      )) : (0, import_vue.createCommentVNode)("v-if", true)], 10, _hoisted_2$u)],
       34
       /* CLASS, NEED_HYDRATION */
     );
   }
-  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$M]]);
-  var getFieldsetLabelText = Symbol("getFieldsetLabelText");
-  function* labelClasses(options) {
-    const { labelClass } = options;
-    yield "fieldset__label";
-    yield labelClass;
-  }
-  function* contentClasses(options) {
-    const { hasRadiobutton, hasCheckbox, contentClass } = options;
-    yield "fieldset__content";
-    if (hasRadiobutton) {
-      yield "radio-button-group__content";
-    }
-    if (hasCheckbox) {
-      yield "checkbox-group__content";
-    }
-    yield contentClass;
-  }
-  var _sfc_main$V = (0, import_vue.defineComponent)({ name: "FFieldset", components: { FIcon }, mixins: [TranslationMixin], provide() {
-    return { [getFieldsetLabelText]: () => {
-      return renderSlotText(this.$slots.label);
-    }, sharedName: this.name, showDetails: this.showDetails };
-  }, props: {
-    /**
-    * The id for the fieldset id attribute.
-    * If the prop is not set a random value will be generated.
-    */
-    id: { type: String, required: false, default: () => import_logic.ElementIdService.generateElementId() },
-    /**
-    * Name provided to child content as `sharedName` for optional usage (it will not be set on the fieldset element).
-    * For radio inputs this is a shortcut to specify the shared name attribute at one place,
-    * instead of repeatedly setting the name attribute on each radio input.
-    */
-    name: { type: String, required: false, default: void 0 },
-    /**
-    * The CSS classes for the label, description and error-message slot.
-    */
-    labelClass: { type: String, required: false, default: "" },
-    /**
-    * The CSS classes for the default slot.
-    */
-    contentClass: { type: String, required: false, default: "" },
-    /**
-    * Aligns underlying items horizontally.
-    * Supported by radiobuttons and chip layout.
-    */
-    horizontal: { type: Boolean, required: false },
-    /**
-    * Displays radio and checkbox content with chip layout.
-    */
-    chip: { type: Boolean, required: false, default: false },
-    /**
-    * Displays a box with border around radiobuttons and checkboxes.
-    */
-    border: { type: Boolean, required: false },
-    /**
-    * Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.
-    *
-    * * `never` (default) - Never show item details.
-    * - `when-selected` - Show item details when selected.
-    * - `always` - Always show item details.
-    */
-    showDetails: { type: String, default: "never", validator(value) {
-      return ["never", "when-selected", "always"].includes(value);
-    } }
-  }, data() {
-    return { validity: { validityMode: "INITIAL" }, descriptionClass: ["label__description"], discreteDescriptionClass: ["label__description", "label__description--discrete"], validityElement: null, dispatchObject: {}, detail: {}, hasDocumentListener: false, legendKey: 1, oldMessage: "", children: new Array(), hasCheckbox: false, hasRadiobutton: false };
-  }, computed: { hasError() {
-    return this.validity.validityMode === "ERROR";
-  }, hasErrorMessageSlot() {
-    return hasSlot(this, "error-message");
-  }, hasTooltipSlot() {
-    return Boolean(this.$slots.tooltip);
-  }, hasDescriptionSlot() {
-    return hasSlot(this, "description");
-  }, legendClass() {
-    return this.hasTooltipSlot ? ["sr-only"] : this.groupLabelClass;
-  }, groupLabelClass() {
-    return Array.from(labelClasses(this));
-  }, groupContentClass() {
-    return Array.from(contentClasses(this));
-  }, classes() {
-    const { hasRadiobutton, hasCheckbox, horizontal, chip, border } = this;
-    return { "radio-button-group": hasRadiobutton, "radio-button-group--chip": chip && hasRadiobutton, "radio-button-group--horizontal": horizontal && hasRadiobutton, "radio-button-group--border": border && hasRadiobutton, "checkbox-group": hasCheckbox, "checkbox-group--chip": chip && hasCheckbox, "checkbox-group--horizontal": horizontal && hasCheckbox, "checkbox-group--border": border && hasCheckbox };
-  }, checkedChildren() {
-    return this.children.filter((child) => child.checked);
-  }, debouncedUpdateChildren() {
-    return (0, import_logic.debounce)(this.updateCheckboxChildren.bind(this), 150);
-  }, checkboxCheckedScreenReaderText() {
-    return this.checkedChildren.length === 1 ? this.$t("fkui.checkbox-group.checkbox.checked", "Kryssruta kryssad") : this.$t("fkui.checkbox-group.checkbox.not.checked", "Kryssruta ej kryssad");
-  }, numberOfCheckboxesScreenReaderText() {
-    return this.$t("fkui.checkbox-group.count", "Grupp med {{ count }} kryssrutor", { count: String(this.children.length) });
-  }, numberOfCheckedCheckboxesScreenText() {
-    return this.$t("fkui.checkbox-group.checked", "{{ checked }} kryssad av {{ count }}", { checked: String(this.checkedChildren.length), count: String(this.children.length) });
-  } }, async mounted() {
-    await this.$nextTick();
-    const types = Array.from(this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`), (it) => it.getAttribute("type"));
-    this.hasCheckbox = types.includes("checkbox");
-    this.hasRadiobutton = types.includes("radio");
-    if (this.hasCheckbox) {
-      this.updateCheckboxChildren();
-    }
-  }, updated() {
-    if (this.hasCheckbox) {
-      this.debouncedUpdateChildren();
-    }
-  }, methods: {
-    async onValidity({ detail }) {
-      var _renderSlotText2;
-      if (detail.target !== this.$el) {
-        return;
-      }
-      this.detail = detail;
-      await this.$nextTick();
-      const errorMessage = (_renderSlotText2 = renderSlotText(this.$slots.label)) !== null && _renderSlotText2 !== void 0 ? _renderSlotText2 : "";
-      const firstFocusableElement = this.$el.querySelector("input:not(disabled), select:not(disabled), textarea:not(disabled)");
-      const focusElementId = firstFocusableElement ? firstFocusableElement.id : this.id;
-      this.validityElement = this.$el;
-      this.dispatchObject = { ...detail, errorMessage, focusElementId };
-      this.validity = this.detail;
-      if (this.validityElement) {
-        dispatchComponentValidityEvent(this.validityElement, this.dispatchObject);
-      }
-      const message = detail.validityMode === "INITIAL" ? "" : detail.validationMessage;
-      if (message !== this.oldMessage) {
-        this.forceLegendUpdate();
-        this.oldMessage = message;
-      }
-    },
-    /**
-    * Workaround for NVDA-bug. Force re rendering of legend element due to NVDA not recognizing innerHTML changes.
-    * NVDA has closed the bug as it is related to the browser (works in FF): https://github.com/nvaccess/nvda/issues/13162
-    */
-    forceLegendUpdate() {
-      this.legendKey++;
-    },
-    async updateCheckboxChildren() {
-      await this.$nextTick();
-      this.children = Array.from(this.$el.querySelectorAll('input[type="checkbox"]'));
-    }
-  } });
-  var _hoisted_1$G = ["id"];
-  var _hoisted_2$u = { key: 0, class: "sr-only" };
-  var _hoisted_3$q = { key: 0, class: "label__message label__message--error" };
-  var _hoisted_4$l = { key: 0, "data-test": "checked-boxes", class: "sr-only", "aria-live": "polite" };
-  var _hoisted_5$j = { key: 0 };
-  var _hoisted_6$f = { key: 1 };
-  var _hoisted_7$d = { class: "sr-separator" };
-  var _hoisted_8$9 = { class: "tooltip-before", "aria-hidden": "true" };
-  var _hoisted_9$5 = { class: "label tooltip-before__label" };
-  var _hoisted_10$5 = { key: 0, class: "label__message label__message--error" };
-  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("fieldset", { id: _ctx.id, class: (0, import_vue.normalizeClass)(["fieldset", _ctx.classes]), onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)) }, [((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
-      "legend",
-      { key: _ctx.legendKey, class: (0, import_vue.normalizeClass)(["label", _ctx.legendClass]) },
-      [(0, import_vue.renderSlot)(_ctx.$slots, "label"), (0, import_vue.createTextVNode)(), _ctx.hasCheckbox && _ctx.children.length > 1 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_2$u, [(0, import_vue.createElementVNode)(
-        "span",
-        null,
-        (0, import_vue.toDisplayString)(_ctx.numberOfCheckboxesScreenReaderText),
-        1
-        /* TEXT */
-      )])) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ hasError: _ctx.hasError, validationMessage: _ctx.validity.validationMessage })), () => [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$q, [(0, import_vue.createVNode)(_component_f_icon, { class: "label__icon--left", name: "error" }), (0, import_vue.createTextVNode)(
-        " " + (0, import_vue.toDisplayString)(_ctx.validity.validationMessage),
-        1
-        /* TEXT */
-      )])) : (0, import_vue.createCommentVNode)("v-if", true)])],
-      2
-      /* CLASS */
-    )), (0, import_vue.createTextVNode)(), _ctx.hasCheckbox ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_4$l, [_ctx.children.length === 1 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
-      "span",
-      _hoisted_5$j,
-      (0, import_vue.toDisplayString)(_ctx.checkboxCheckedScreenReaderText),
-      1
-      /* TEXT */
-    )) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
-      "span",
-      _hoisted_6$f,
-      (0, import_vue.toDisplayString)(_ctx.numberOfCheckedCheckboxesScreenText),
-      1
-      /* TEXT */
-    ))])) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), _ctx.hasTooltipSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
-      import_vue.Fragment,
-      { key: 1 },
-      [(0, import_vue.createElementVNode)("div", _hoisted_7$d, [(0, import_vue.createElementVNode)("div", _hoisted_8$9, [(0, import_vue.createElementVNode)("div", _hoisted_9$5, [(0, import_vue.renderSlot)(_ctx.$slots, "label")])]), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "tooltip")]), (0, import_vue.createTextVNode)(), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
-        "div",
-        { key: 0, class: (0, import_vue.normalizeClass)(["label", _ctx.groupLabelClass]), "aria-hidden": "true" },
-        [(0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), (0, import_vue.createTextVNode)(), (0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ hasError: _ctx.hasError, validationMessage: _ctx.validity.validationMessage })), () => [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_10$5, [(0, import_vue.createVNode)(_component_f_icon, { class: "label__icon--left", name: "error" }), (0, import_vue.createTextVNode)(
-          " " + (0, import_vue.toDisplayString)(_ctx.validity.validationMessage),
-          1
-          /* TEXT */
-        )])) : (0, import_vue.createCommentVNode)("v-if", true)])],
-        2
-        /* CLASS */
-      )) : (0, import_vue.createCommentVNode)("v-if", true)],
-      64
-      /* STABLE_FRAGMENT */
-    )) : (0, import_vue.createCommentVNode)("v-if", true), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)(
-      "div",
-      { class: (0, import_vue.normalizeClass)(_ctx.groupContentClass) },
-      [(0, import_vue.renderSlot)(_ctx.$slots, "default")],
-      2
-      /* CLASS */
-    )], 42, _hoisted_1$G);
-  }
-  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$L]]);
+  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$L]]);
   var _sfc_main$U = (0, import_vue.defineComponent)({ name: "FCheckboxGroup", components: { FFieldset }, mixins: [TranslationMixin], inheritAttrs: false, props: {
     /**
     * The id for the fieldset id attribute.
@@ -13090,16 +13097,17 @@
     }
     return !config2.days.includes(day.weekDay);
   }
-  function updateCalendarValue(newValue) {
+  function updateCalendarValue(datepicker, newValue) {
+    const { isDateEnabled, minDate, maxDate } = datepicker;
     const newCalendarValue = import_date.FDate.fromIso(newValue);
     if (!newCalendarValue.isValid()) {
-      this.calendarValue = void 0;
-    } else if (isInvalidMonth(newCalendarValue, this.minDate, this.maxDate)) {
-      this.calendarValue = void 0;
-    } else if (!this.isDateEnabled(newCalendarValue)) {
-      this.calendarValue = void 0;
-    } else if (!this.calendarValue || !this.calendarValue.equals(newCalendarValue)) {
-      this.calendarValue = newCalendarValue;
+      datepicker.calendarValue = void 0;
+    } else if (isInvalidMonth(newCalendarValue, minDate, maxDate)) {
+      datepicker.calendarValue = void 0;
+    } else if (!isDateEnabled(newCalendarValue)) {
+      datepicker.calendarValue = void 0;
+    } else if (!datepicker.calendarValue || !datepicker.calendarValue.equals(newCalendarValue)) {
+      datepicker.calendarValue = newCalendarValue;
     }
   }
   function getDisplayMonth(minDate, maxDate, selectedDate, initialMonth) {
@@ -13177,7 +13185,7 @@
   } }, watch: { modelValue: { async handler(value) {
     if (value !== this.textFieldValue) {
       await this.updateTextFieldValue(value);
-      this.updateCalendarValue(value);
+      updateCalendarValue(this, value);
     }
   }, immediate: true } }, mounted() {
     import_logic.ValidationService.addValidatorsToElement(getInputElement(this), { date: {}, dateFormat: {}, minDate: { limit: this.minDate.toString() }, maxDate: { limit: this.maxDate.toString() } }, true);
@@ -13200,7 +13208,7 @@
     const pendingValidityEvent = new CustomEvent("pending-validity", { bubbles: false });
     inputElement.dispatchEvent(pendingValidityEvent);
   }, onChangeTextField() {
-    this.updateCalendarValue(this.textFieldValue);
+    updateCalendarValue(this, this.textFieldValue);
     this.$emit("update:modelValue", this.textFieldValue);
     this.$emit("change", this.textFieldValue);
   }, onClickCalendarButton() {
@@ -13229,7 +13237,7 @@
     this.$emit("update:modelValue", date.toString());
     this.$emit("change", date.toString());
     await this.updateTextFieldValue(date.toString());
-    this.updateCalendarValue(date.toString());
+    updateCalendarValue(this, date.toString());
   }, async onKeyupEsc() {
     this.isCalendarOpen = false;
     (0, import_logic.waitForScreenReader)(() => {
@@ -13282,7 +13290,7 @@
     this.textFieldValue = newValue;
     await this.$nextTick();
     import_logic.ValidationService.validateElement(getInputElement(this));
-  }, updateCalendarValue } });
+  } } });
   var _hoisted_1$u = { ref: "component", class: "datepicker-field" };
   var _hoisted_2$o = ["disabled", "aria-expanded"];
   var _hoisted_3$l = { class: "sr-only" };
@@ -15897,7 +15905,8 @@
     */
     value: { type: anyType, required: true }
   }, emits: ["change", "update:modelValue"], setup() {
-    return { sharedName: (0, import_vue.inject)("sharedName", void 0), showDetails: (0, import_vue.inject)("showDetails", "never"), getFieldsetLabelText: (0, import_vue.inject)("getFieldsetLabelText", () => "") };
+    const { sharedName, showDetails, getFieldsetLabelText } = useFieldset();
+    return { sharedName, showDetails, getFieldsetLabelText };
   }, data() {
     return { height: 0, initialStyle: { overflow: "hidden", transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)" }, hiddenStyle: { height: "auto", position: "absolute", visibility: "hidden" }, visibleStyle: { width: "", position: "", visibility: "", height: "0px" }, openedStyle: { height: "auto" } };
   }, computed: { attrs() {
