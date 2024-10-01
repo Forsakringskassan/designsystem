@@ -117,7 +117,7 @@ FKUI använder flera verktyg för statisk kodanalys och lintning:
 Samtliga verktyg körs och är konfigurerade från root men i undantagsfall konfigureras verktygen om i respektive paket.
 Flera verktyg använder färdiga mallar för sin konfiguration, se respektive konfigurationsfil och dokumentation för detaljer.
 
-Vid commit anropas både Prettier och ESLint via husky (konfigurerat i `.husky/pre-commit`).
+Vid commit anropas både Prettier och ESLint via husky (konfigurerat i `.husky/pre-commit`). Läs mer om git hooks.
 
 ### ESLint
 
