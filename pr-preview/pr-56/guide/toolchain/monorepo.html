@@ -785,7 +785,7 @@ Notera att precis som med parametrar till <code>npm run</code> måste parametrar
             <p>Båda motsvarar då <code>npm run --workspaces build</code> fast garanterar att <code>build</code> anropats i en ordning som garanterar att beroenden byggts först.</p>
 <h2 id="commits"><a class="header-anchor" href="#commits">Commits</a></h2><p>I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.</p>
 <p>Läs mer om hur <a href="#changelog">Changelog genereras från commits</a>.</p>
-<p>Commitmeddelanden använder en modifierad variant av Conventional Commits där skillnaden är att vi kräver en Jira-referens i slutet:</p>
+<p>Commitmeddelanden använder en modifierad variant av <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> där skillnaden är att vi kräver en Jira-referens i slutet:</p>
 <blockquote>
 <p>${type}: ${description} (${relation} ${jira})</p>
 </blockquote>
@@ -820,7 +820,7 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
 <p>Om det behövs kan man kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
 
                 <div
-                    id="example-55e19f"
+                    id="example-e56fc3"
                     class="code-preview code-preview--default"
                     
                     
@@ -857,7 +857,7 @@ De commits som tas hänsyn till är commits där commitmeddelande använder:</p>
 <p>Exempelvis om vi har följande lista med commits sen föregående release:</p>
 
                 <div
-                    id="example-f7dc22"
+                    id="example-d4fdf8"
                     class="code-preview code-preview--default"
                     
                     
@@ -873,7 +873,7 @@ fix: fix another bug in component A (fixes XYZ-5432)
             <p>Efter filtrering kommer listan reduceras till:</p>
 
                 <div
-                    id="example-186dd5"
+                    id="example-5aeeda"
                     class="code-preview code-preview--default"
                     
                     
@@ -888,7 +888,7 @@ fix: fix another bug in component A (fixes XYZ-5432)
             <p>Scope, om det inte explicit är satt, fylls i automatiskt:</p>
 
                 <div
-                    id="example-25886c"
+                    id="example-c6f0c0"
                     class="code-preview code-preview--default"
                     
                     
@@ -903,7 +903,7 @@ fix(@fkui/logic): fix another bug in component A (fixes XYZ-5432)
             <p>Efter gruppering kommer listan transformerats till:</p>
 
                 <div
-                    id="example-81782b"
+                    id="example-79091a"
                     class="code-preview code-preview--default"
                     
                     
@@ -921,7 +921,7 @@ fix:
             <p>och utifrån det genereras följande nya rader i Changelog:</p>
 
                 <div
-                    id="example-7b6427"
+                    id="example-78d833"
                     class="code-preview code-preview--default"
                     
                     
@@ -995,9 +995,9 @@ Se dokumentation för respektive vad de gör och hur det används.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/fc6487d346b1bd07a6fc08cbe585111cbcd3e04a">fc6487d</a>)<br />
+    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/bed08461c9d7289c67a53727c316f00014bfc51e">bed0846</a>)<br />
         <a href="https://forsakringskassan.github.io/designsystem//pull-requests/56/overview">PR 56</a><br />
-        2024-10-01 07:22
+        2024-10-02 17:43
 </div>
 
 
