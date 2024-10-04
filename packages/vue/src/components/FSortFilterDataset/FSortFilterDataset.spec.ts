@@ -359,9 +359,10 @@ it("should throw error when sorting objects", async () => {
     } catch (error) {
         gotException = error;
     }
-    expect(gotException).toMatchInlineSnapshot(
-        `[Error: Sorting is only supported for types number, string and boolean (attribute 'd')]`,
-    );
+    expect(gotException).toMatchInlineSnapshot(`
+        [Error: Sorting is only supported for types number, string and boolean.
+                    Attribute 'd' comparsion of types 'object' and 'object' is not supported.]
+    `);
 });
 
 it("should sort strings independent of case", async () => {
