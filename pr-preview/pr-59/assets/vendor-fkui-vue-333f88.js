@@ -12655,7 +12655,8 @@
       return nullCompare(value1, value2);
     }
     if (!isSupportedType(value1) || !isSupportedType(value2)) {
-      throw Error(`Sorting is only supported for types number, string and boolean (attribute '${attribute.toString()}')`);
+      throw Error(`Sorting is only supported for types number, string and boolean.
+            Attribute '${attribute.toString()}' comparsion of types '${typeof value1}' and '${typeof value2}' is not supported.`);
     }
     if (typeof value1 === "string" && typeof value2 === "string") {
       return fixOrder(value1.localeCompare(value2), ascending);
