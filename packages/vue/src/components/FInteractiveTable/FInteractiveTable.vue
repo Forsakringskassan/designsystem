@@ -341,7 +341,7 @@ export default defineComponent({
     },
     computed: {
         hasCaption(): boolean {
-            return hasSlot(this, "caption");
+            return hasSlot(this, "caption", {}, { stripClasses: [] });
         },
         hasCheckboxDescription(): boolean {
             return hasSlot(this, "checkbox-description", { row: this.emptyRow });

@@ -222,6 +222,25 @@ it("should add <caption> if caption slot is set", async () => {
     expect(caption.text()).toContain("My fancy caption");
 });
 
+it("should add <caption> if caption slot only contains sr-only text", async () => {
+    expect.assertions(2);
+    const TestComponent = {
+        components: { FDataTable, FTableColumn },
+        template: /* HTML */ `
+            <f-data-table :rows="[]" key-attribute="id">
+                <template #caption>
+                    <span class="sr-only"> "My fancy caption </span>
+                </template>
+            </f-data-table>
+        `,
+    };
+    const wrapper = mount(TestComponent);
+    await wrapper.vm.$nextTick();
+    const caption = wrapper.find("caption");
+    expect(caption.exists()).toBeTruthy();
+    expect(caption.text()).toContain("My fancy caption");
+});
+
 it("should not include caption if no caption slot", async () => {
     expect.assertions(1);
     const TestComponent = {
