@@ -12,41 +12,34 @@
     </live-example>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { FCheckboxField, FBadge, FSelectField } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
+import { computed, ref } from "vue";
 
-export default defineComponent({
-    name: "FBadgeLiveExample",
-    components: { LiveExample, FCheckboxField, FSelectField },
-    data() {
-        return {
-            isInverted: false,
-            badgeType: "standard",
-        };
-    },
-    computed: {
-        components(): object {
-            return { FBadge };
-        },
-        inverted(): string {
-            const template = /* HTML */ ` inverted`;
-            return this.isInverted ? template : "";
-        },
-        status(): string {
-            const BadgeType = this.badgeType;
-            if (this.badgeType === "standard") {
-                const template = /* HTML */ ``;
-                return this.badgeType ? template : "";
-            } else {
-                const template = /* HTML */ ` status="${BadgeType}" `;
-                return this.badgeType ? template : "";
-            }
-        },
-        template(): string {
-            return /* HTML */ ` <f-badge ${this.status} ${this.inverted}> Text </f-badge> `;
-        },
-    },
+const isInverted = ref();
+const badgeType = ref();
+
+const components = computed<object>(() => FBadge);
+
+const inverted = computed<string>(() => {
+    const template = `inverted`;
+
+    return isInverted.value ? template : "";
+});
+
+const status = computed<string>(() => {
+    const BadgeType = badgeType.value;
+    if (badgeType.value === "standard") {
+        const template = ``;
+        return badgeType.value ? template : "";
+    } else {
+        const template = ` status="${BadgeType}" `;
+        return badgeType.value ? template : "";
+    }
+});
+
+const template = computed<string>(() => {
+    return ` <f-badge ${status.value} ${inverted.value}> Text </f-badge> `;
 });
 </script>
