@@ -38,6 +38,7 @@ module.exports = {
                         "^https://github.com/lerna/",
                         "^https://github.com/semantic-release/",
                         "^https://help.figma.com/",
+                        "^https://www.i18next.com/",
                         "^https://support.atlassian.com/",
                         "^https://typedoc.org/",
                         "^https://www.conventionalcommits.org/en/v1.0.0/",
