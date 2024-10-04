@@ -151,7 +151,7 @@ export default defineComponent({
     },
     computed: {
         hasCaption(): boolean {
-            return hasSlot(this, "caption");
+            return hasSlot(this, "caption", {}, { stripClasses: [] });
         },
         tableClasses(): string[] {
             const classes = [];

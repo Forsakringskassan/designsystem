@@ -93,6 +93,7 @@ export function renderSlotText(
     props: Record<string, unknown> = {},
     options?: Partial<RenderSlotOptions>,
 ): string | undefined {
+    console.log('renderSlotText', render, props, options);
     if (!render) {
         return undefined;
     }

@@ -1,5 +1,5 @@
 import { type Slots } from "vue";
-import { renderSlotText } from "./render-slot-text";
+import { RenderSlotOptions, renderSlotText } from "./render-slot-text";
 
 /**
  * Check if slot is implemented by the user.
@@ -14,8 +14,10 @@ export function hasSlot(
     vm: { $slots: Slots },
     name: string,
     props: Record<string, unknown> = {},
+    options: Partial<RenderSlotOptions> = {},
 ): boolean {
+    console.log('hasSlot', vm, name, props, options);
     const slot = vm.$slots[name];
 
-    return Boolean(renderSlotText(slot, props));
+    return Boolean(renderSlotText(slot, props, options));
 }
