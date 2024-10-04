@@ -64,14 +64,38 @@ describe("FSortFilterSorter", () => {
     it("should trow error when trying to sort objects", () => {
         const data = [{ myObject: { number: 1 } }, { myObject: { number: 2 } }];
         expect(() => sort(data, "myObject", true)).toThrow(
-            "Sorting is only supported for types number, string and boolean (attribute 'myObject')",
+            `Sorting is only supported for types number, string and boolean.
+            Attribute 'myObject' comparsion of types 'object' and 'object' is not supported.`,
         );
     });
 
-    it("should trow error when trying to sort values with different types", () => {
-        const data = [{ val: 1 }, { val: "text" }];
+    it("should sort type string first if mixed types", () => {
+        const data = [
+            { val: 2 },
+            { val: 3 },
+            { val: "two" },
+            { val: "one" },
+            { val: 1 },
+        ];
+        const result = sort(data, "val", true);
+        expect(result[0].val).toBe("one");
+        expect(result[1].val).toBe("two");
+        expect(result[2].val).toBe(1);
+        expect(result[3].val).toBe(2);
+        expect(result[4].val).toBe(3);
+    });
+
+    it("shold throw error for unhandled types", () => {
+        interface CustomType {
+            a: string;
+            b: number;
+        }
+        const unsupportedType: CustomType = { a: "one", b: 1 };
+        const data = [{ val: 1 }, { val: "text" }, { val: unsupportedType }];
+
         expect(() => sort(data, "val", true)).toThrow(
-            "Sorting is not supported for rows containing different types (attribute 'val')",
+            `Sorting is only supported for types number, string and boolean.
+            Attribute 'val' comparsion of types 'object' and 'string' is not supported.`,
         );
     });
 });
