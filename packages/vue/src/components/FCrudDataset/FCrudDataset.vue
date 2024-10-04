@@ -8,7 +8,7 @@
             <button
                 data-test="f-crud-dataset-add-button"
                 type="button"
-                class="button button--discrete crud-dataset__add-button"
+                class="button button--tertiary crud-dataset__add-button"
                 @click="createItem()"
             >
                 <f-icon class="button__icon" name="plus" />

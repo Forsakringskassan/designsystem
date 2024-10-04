@@ -280,10 +280,19 @@ $table-input-offset-horizontal: 0.25rem;
                 padding-left: var(--f-button-discrete-table-column-action-padding-left);
                 /* stylelint-enable declaration-block-no-redundant-longhand-properties */
                 min-width: 24px;
+                width: max-content;
             }
 
-            &--action .button__icon {
+            &--action .button--tertiary {
+                margin: var(--f-button-tertiary-table-column-action-margin);
+                min-width: 24px;
+                width: max-content;
+            }
+
+            &--action .button--discrete .button__icon,
+            &--action .button--tertiary .button__icon {
                 margin: var(--f-button-discrete-table-column-action-icon-margin);
+                transform: translate(0, 10%);
             }
         }
     }
