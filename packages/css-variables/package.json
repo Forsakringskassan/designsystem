@@ -30,7 +30,7 @@
     "postsass": "node scripts/extract-sass-variables.mjs src/_palette-variables.scss dist/palette.json"
   },
   "devDependencies": {
-    "get-css-variables": "0.3.0",
+    "get-css-variables": "1.0.0",
     "glob": "11.0.0",
     "npm-run-all2": "6.2.3",
     "postcss": "8.4.47",
