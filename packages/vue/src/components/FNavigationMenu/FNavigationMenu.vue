@@ -17,10 +17,10 @@
         <i-popup-menu
             ref="popupMenu"
             v-model="selectedPopupItemKey"
+            v-model:focused-item="focusedPopupMenuItemKey"
             :items="popupItems"
             :is-open="popupOpen"
             :anchor="popupAnchor"
-            :focused-item-key="focusedPopupMenuItemKey"
             :selected-menu-item-screen-reader-text="selectedMenuItemSrText()"
             :aria-label="popupAriaLabel"
             @select="onSelectPopup"

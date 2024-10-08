@@ -6533,6 +6533,16 @@ export interface IPopupErrorData {
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+focusedItem: {
+type: StringConstructor;
+required: false;
+default: string;
+};
 isOpen: {
 type: BooleanConstructor;
 required: true;
@@ -6541,19 +6551,9 @@ anchor: {
 type: PropType<HTMLElement | undefined>;
 default: undefined;
 };
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
 items: {
 type: PropType<IMenuItem[]>;
 required: true;
-};
-focusedItemKey: {
-type: StringConstructor;
-required: false;
-default: string;
 };
 enableKeyboardNavigation: {
 type: BooleanConstructor;
@@ -6579,13 +6579,23 @@ focusElement(): HTMLElement | null;
 findItemByKey(key: string): IMenuItem | undefined;
 indexOfItemByKey(key: string): number;
 onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
-cssClassHighlight(item: IMenuItem): string;
+itemClasses(item: IMenuItem): string[];
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
 setFocusedItemIndex(index: number): void;
 onKeyUp(event: KeyboardEvent): void;
 onKeyDown(event: KeyboardEvent): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close" | "update:modelValue")[], "select" | "close" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close" | "update:modelValue" | "update:focusedItem")[], "select" | "close" | "update:modelValue" | "update:focusedItem", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+focusedItem: {
+type: StringConstructor;
+required: false;
+default: string;
+};
 isOpen: {
 type: BooleanConstructor;
 required: true;
@@ -6594,19 +6604,9 @@ anchor: {
 type: PropType<HTMLElement | undefined>;
 default: undefined;
 };
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
 items: {
 type: PropType<IMenuItem[]>;
 required: true;
-};
-focusedItemKey: {
-type: StringConstructor;
-required: false;
-default: string;
 };
 enableKeyboardNavigation: {
 type: BooleanConstructor;
@@ -6627,13 +6627,14 @@ default: string;
 onSelect?: ((...args: any[]) => any) | undefined;
 onClose?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+"onUpdate:focusedItem"?: ((...args: any[]) => any) | undefined;
 }, {
 anchor: HTMLElement | undefined;
 modelValue: string;
 ariaLabel: string;
-focusedItemKey: string;
 enableKeyboardNavigation: boolean;
 selectedMenuItemScreenReaderText: string;
+focusedItem: string;
 }, {}>;
 
 // @public (undocumented)
