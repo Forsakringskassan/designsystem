@@ -12654,6 +12654,10 @@
     if (!(0, import_logic.isSet)(value1) || !(0, import_logic.isSet)(value2)) {
       return nullCompare(value1, value2);
     }
+    if (!isSupportedType(value1) || !isSupportedType(value2)) {
+      throw Error(`Sorting is only supported for types number, string and boolean.
+            Attribute '${attribute.toString()}' comparsion of types '${typeof value1}' and '${typeof value2}' is not supported.`);
+    }
     if (typeof value1 === "string" && typeof value2 === "string") {
       return fixOrder(value1.localeCompare(value2), ascending);
     }
@@ -12663,10 +12667,14 @@
     if (typeof value1 === "boolean" && typeof value2 === "boolean") {
       return fixOrder(booleanCompare(value1, value2), ascending);
     }
-    if (typeof value1 !== typeof value2) {
-      throw Error(`Sorting is not supported for rows containing different types (attribute '${attribute.toString()}')`);
+    if (typeof value1 === "string") {
+      return -1;
+    } else {
+      return 1;
     }
-    throw Error(`Sorting is only supported for types number, string and boolean (attribute '${attribute.toString()}')`);
+  }
+  function isSupportedType(value) {
+    return ["string", "number", "boolean"].includes(typeof value);
   }
   function fixOrder(order, ascending) {
     return ascending ? order : order - order * 2;
