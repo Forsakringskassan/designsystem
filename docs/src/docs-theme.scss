@@ -5,7 +5,6 @@
     $asset-path-images: "./images"
 );
 @use "~@fkui/design/src/core/mixins/breakpoints";
-@use "~highlight.js/styles/default";
 @use "~@fkui/design/src/fkui-exp";
 @use "~@forsakringskassan/docs-generator/style";
 @use "~@forsakringskassan/docs-live-example/dist/main";

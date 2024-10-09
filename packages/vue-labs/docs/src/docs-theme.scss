@@ -3,7 +3,6 @@
     $asset-path: ".",
     $asset-path-images: "./images"
 );
-@use "~highlight.js/styles/default";
 @use "~@fkui/design/src/fkui-exp";
 @use "~@forsakringskassan/docs-generator/docs";
 @use "~@fkui/vue-labs/style";
