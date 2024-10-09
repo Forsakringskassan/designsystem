@@ -2,7 +2,7 @@
     <div class="card card--default">
         <div v-if="hasHeaderSlot" class="card__header">
             <!--@slot Slot for the title. -->
-            <slot name="header" v-bind="{ headingSlotClass: headingClass }"></slot>
+            <slot name="header" v-bind="{ headingSlotClass: 'card__header-label' }"></slot>
         </div>
         <div class="card__content">
             <!--@slot Slot for the main content, e.g. paragraphs, input fields, etc. -->
@@ -15,27 +15,11 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import { hasSlot } from "../../utils";
+<script setup lang="ts">
+import { computed } from "vue";
+import { useSlotUtils } from "../../composables";
 
-/**
- * Level: Beta
- */
-export default defineComponent({
-    name: "FCard",
-    data() {
-        return {
-            headingClass: ["card__header-label"],
-        };
-    },
-    computed: {
-        hasHeaderSlot(): boolean {
-            return hasSlot(this, "header");
-        },
-        hasFooterSlot(): boolean {
-            return hasSlot(this, "footer");
-        },
-    },
-});
+const { hasSlot } = useSlotUtils();
+const hasHeaderSlot = computed(() => hasSlot("header"));
+const hasFooterSlot = computed(() => hasSlot("footer"));
 </script>
