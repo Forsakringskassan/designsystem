@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="sv" class="layout--example">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Sökfält - FKUI Labs</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../assets/docs-d63801.css"
+            crossorigin
+            integrity="sha384-0AH5Ul7uSKgkR8FD2Rig2lwx1Xzkf9KlFTwEcJor1Uwsm7gSL73hvo8YfYNVliFj"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-exp-e7e4a3.css"
+            crossorigin
+            integrity="sha384-j4Bow4JoxA3h9Mb/sf4A4r0WX+wpUqcdj06jmBmUTXDlrwmSK9i9VU8V6uzccaFe"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-int-edcd36.css"
+            crossorigin
+            integrity="sha384-BaBoTR9/9sjeapFibwT7riaJhla+n2bWFdpfwB8Fbx4KTCuEK50yTwKLnrLp9YtA"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../assets/bootstrap-0df2b2.js"
+            crossorigin
+            integrity="sha384-/CsPb6xxx2R6SuFD6YW8AvT0hMxEGGkO4Mh6yG04C8ck+/qIKXqKA3EALt2ADT17"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        <script src="../assets/vendor-vue-2edf39.js"></script>
+        <script src="../assets/vendor-fkui-logic-4dae35.js"></script>
+        <script src="../assets/vendor-fkui-date-effe99.js"></script>
+        <script src="../assets/vendor-fkui-vue-4c1581.js"></script>
+
+        <!-- prettier-ignore --><!-- prettier-ignore -->
+        <script
+            src="../assets/main-300fce.js"
+            crossorigin
+            integrity="sha384-UeeOgfdnhMfCL5xaoMHqH6DV6+dwo/9Gpjlq0ffZ+EIVBeb3W1sacdaUq3qrN+5M"
+            
+        ></script>
+
+        <main>
+        <div id="XSearchBarExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./XSearchBarExample-e5a7a0.js"></script>
+    </main>
+    </body>
+</html>
