@@ -1,14 +1,13 @@
-@use "~@fkui/css-variables/dist/fkui-exp-css-variables";
-@use "~@fkui/css-variables/src/palette-variables" as palette;
-@use "~@fkui/design/src/core/config-variables" with (
+@use "@fkui/css-variables/dist/fkui-exp-css-variables";
+@use "@fkui/css-variables/src/palette-variables" as palette;
+@use "@fkui/design/src/core/config-variables" with (
     $asset-path: ".",
     $asset-path-images: "./images"
 );
-@use "~@fkui/design/src/core/mixins/breakpoints";
-@use "~highlight.js/styles/default";
-@use "~@fkui/design/src/fkui-exp";
-@use "~@forsakringskassan/docs-generator/style";
-@use "~@forsakringskassan/docs-live-example/dist/main";
+@use "@fkui/design/src/core/mixins/breakpoints";
+@use "@fkui/design/src/fkui-exp";
+@use "@forsakringskassan/docs-generator/style";
+@use "@forsakringskassan/docs-live-example/dist/main";
 
 :root {
     --docs-font-family: arial, "Helvetica Neue", sans-serif;

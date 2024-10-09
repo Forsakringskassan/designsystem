@@ -1,9 +1,8 @@
-@use "~@fkui/css-variables/dist/fkui-exp-css-variables";
-@use "~@fkui/design/src/core/config-variables" with (
+@use "@fkui/css-variables/dist/fkui-exp-css-variables";
+@use "@fkui/design/src/core/config-variables" with (
     $asset-path: ".",
     $asset-path-images: "./images"
 );
-@use "~highlight.js/styles/default";
-@use "~@fkui/design/src/fkui-exp";
-@use "~@forsakringskassan/docs-generator/docs";
-@use "~@fkui/vue-labs/style";
+@use "@fkui/design/src/fkui-exp";
+@use "@forsakringskassan/docs-generator/docs";
+@use "@fkui/vue-labs/style";
