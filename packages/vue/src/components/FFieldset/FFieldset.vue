@@ -77,15 +77,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { type PropType, defineComponent, provide, useSlots } from "vue";
 import { ElementIdService, type ValidityEvent, debounce } from "@fkui/logic";
 import { renderSlotText, dispatchComponentValidityEvent, hasSlot } from "../../utils";
 import { ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";
 import { TranslationMixin } from "../../plugins";
-import { getFieldsetLabelText } from "./FFieldsetProvide";
 import { labelClasses } from "./label-classes";
 import { contentClasses } from "./content-classes";
+import { injectionKeys } from "./use-fieldset";
 
 export default defineComponent({
     name: "FFieldset",
@@ -93,15 +93,6 @@ export default defineComponent({
         FIcon,
     },
     mixins: [TranslationMixin],
-    provide() {
-        return {
-            [getFieldsetLabelText]: () => {
-                return renderSlotText(this.$slots.label);
-            },
-            sharedName: this.name,
-            showDetails: this.showDetails,
-        };
-    },
     props: {
         /**
          * The id for the fieldset id attribute.
@@ -169,12 +160,20 @@ export default defineComponent({
          * - `always` - Always show item details.
          */
         showDetails: {
-            type: String,
+            type: String as PropType<"never" | "when-selected" | "always">,
             default: "never",
             validator(value: string) {
                 return ["never", "when-selected", "always"].includes(value);
             },
         },
+    },
+    setup(props) {
+        const slots = useSlots();
+        provide(injectionKeys.sharedName, props.name);
+        provide(injectionKeys.showDetails, props.showDetails);
+        provide(injectionKeys.getFieldsetLabelText, () => {
+            return renderSlotText(slots.label);
+        });
     },
     data() {
         return {

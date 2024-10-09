@@ -1,7 +1,7 @@
 <template>
     <div class="page-header__root">
-        <nav v-if="skipLink">
-            <i-skip-link :href="skipLinkHref">
+        <nav v-if="skipLinkAnchor">
+            <i-skip-link :href="skipLinkAnchor">
                 <!-- @slot Slot for skip link text. -->
                 <slot name="skip-link-text"></slot>
             </i-skip-link>
@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { type PropType, defineComponent } from "vue";
 import { type RouteLocationPathRaw, type RouteLocationNamedRaw } from "vue-router";
 import { TranslationMixin } from "../../plugins/translation";
 import { ISkipLink } from "../../internal-components/ISkipLink";
@@ -55,14 +55,26 @@ export default defineComponent({
         },
         /**
          * Render skiplink.
+         *
+         * When set to a non-empty string thethe skiplink feature is enabled.
+         * The string is the id of the element to move focus to.
+         *
+         * When set to `true` the deprecated `skipLinkHref` prop is used to
+         * set the element id to move focus to.
+         *
+         * When set to `false` or empty string the skiplink feature is disabled.
+         *
+         * Using a boolean is deprecated. Leave unset or a non-empty string.
          */
         skipLink: {
-            type: Boolean,
+            type: [String, Boolean] as PropType<string | boolean>,
             required: false,
-            default: false,
+            default: "",
         },
         /**
          * Target for skiplink.
+         *
+         * @deprecated Use `skipLink` prop with a non-empty string instead.
          */
         skipLinkHref: {
             type: String,
@@ -122,6 +134,16 @@ export default defineComponent({
                 return { path: routerLinkPath };
             }
             return null;
+        },
+        skipLinkAnchor(): string | null {
+            const { skipLink, skipLinkHref } = this;
+            if (skipLink === false || skipLink === "") {
+                return null;
+            } else if (skipLink === true) {
+                return skipLinkHref;
+            } else {
+                return `#${skipLink}`;
+            }
         },
         altLogoText(): string {
             return getAltLogoText(this.hasRouterLink, this.routerLinkLabel, this.$t);

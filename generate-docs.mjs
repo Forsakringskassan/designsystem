@@ -95,9 +95,8 @@ const docs = new Generator({
             scm: isRelease
                 ? undefined
                 : {
-                      commitUrlFormat: "{{ homepage }}/commits/{{ hash }}",
-                      prUrlFormat:
-                          "{{ homepage }}/pull-requests/{{ pr }}/overview",
+                      commitUrlFormat: "{{ repository }}/commits/{{ hash }}",
+                      prUrlFormat: "{{ repository }}/pull/{{ pr }}",
                   },
         }),
         selectableVersionProcessor(pkg, "footer:right", {

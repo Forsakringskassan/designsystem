@@ -37,10 +37,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, toValue } from "vue";
+import { defineComponent, toValue } from "vue";
 import { ElementIdService, type ValidityEvent } from "@fkui/logic";
 import { isEqual } from "lodash";
 import { dispatchComponentValidityEvent, renderSlotText, hasSlot, getHTMLElementFromVueRef } from "../../utils";
+import { useFieldset } from "../FFieldset";
 
 // ! Boolean must be last so that empty string ('') is not parsed as true, see: https://github.com/vuejs/vue/blob/81e1e47cabbd479e2a285f03120944f1efffe749/test/unit/features/options/props.spec.js#L516.
 const anyType = [String, Object, Array, Number, Date, Boolean];
@@ -89,9 +90,10 @@ export default defineComponent({
     },
     emits: ["change", "update:modelValue"],
     setup() {
+        const { showDetails, getFieldsetLabelText } = useFieldset();
         return {
-            showDetails: inject("showDetails", "never") as "never" | "always" | "when-selected",
-            getFieldsetLabelText: inject("getFieldsetLabelText", () => "") as () => string,
+            showDetails,
+            getFieldsetLabelText,
         };
     },
     data() {

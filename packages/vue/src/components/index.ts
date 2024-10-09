@@ -13,13 +13,13 @@ export {
     Operation,
 } from "./FCrudDataset";
 export * from "./FDataTable";
-export * from "./FDatepickerField";
+export { FDatepickerField } from "./FDatepickerField";
 export * from "./FErrorList";
 export * from "./FExpand";
 export * from "./FExpandablePanel";
 export * from "./FExpandableParagraph";
-export * from "./FFieldset";
-export * from "./FFileItem";
+export { FFieldset } from "./FFieldset";
+export { type FFileItemIconName, FFileItem } from "./FFileItem";
 export * from "./FFileSelector";
 export * from "./FSortFilterDataset";
 export {
@@ -47,7 +47,15 @@ export {
 export { type FListData, FList } from "./FList";
 export * from "./FLoader";
 export * from "./FMessageBox";
-export * from "./FModal";
+export {
+    type FModalButton,
+    type FModalButtonDescriptor,
+    type FModalData,
+    FConfirmModal,
+    FFormModal,
+    FFormModalAction,
+    FModal,
+} from "./FModal";
 export * from "./FNavigationMenu";
 export * from "./FOffline";
 export * from "./FOutputField";

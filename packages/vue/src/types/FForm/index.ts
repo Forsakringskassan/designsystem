@@ -1,2 +1,2 @@
-export * from "./FormErrorList";
-export * from "./FormStepData";
+export { FormErrorList } from "./FormErrorList";
+export { type FormStepFields, FormStep } from "./FormStepData";

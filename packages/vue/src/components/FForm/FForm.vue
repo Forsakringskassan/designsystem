@@ -33,11 +33,7 @@ import { FMessageBox } from "../FMessageBox";
 import { FErrorList } from "../FErrorList";
 import { type FFormProvider, createFFormProvideOptions } from "./FFormProvide";
 import { cleanUpElements, isFormStepReference, sortComponentsWithErrorsOnDOMOrder } from "./FormUtils";
-
-interface FFormData {
-    errorMessageSlotClass: string[];
-    components: Record<string, Reference<FormErrorList | FormStep>>;
-}
+import { type FFormData } from "./fform-data";
 
 /**
  * @deprecated `<f-form>` is deprecated.

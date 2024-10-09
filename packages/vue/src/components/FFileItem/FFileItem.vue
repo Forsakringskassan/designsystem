@@ -27,8 +27,7 @@
 import { defineComponent } from "vue";
 import { ElementIdService, isSet } from "@fkui/logic";
 import FIcon from "../FIcon/FIcon.vue";
-
-type IconName = "doc" | "file" | "pic" | "pdf";
+import { type IconName } from "./icon-name";
 
 /* default icon used when no mimetype matches */
 const DEFAULT_ICON: IconName = "file";
