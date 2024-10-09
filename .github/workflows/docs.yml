@@ -54,7 +54,7 @@ jobs:
                   git add -f pages/${VERSION}
             - name: Create version metadata
               run: |
-                  ls -d pages/v*.*.* | sed "s#pages/##g" | jq -Rn '{ "versions": [inputs] }' | tee pages/versions.json
+                  ls -d pages/v*.*.* | sed "s#pages/##g" | jq -Rn '{ "versions": [inputs], "latest": "$VERSION" }' | tee pages/versions.json
                   git add -f pages/versions.json
             - name: Symlink latest to tagged release
               run: |
