@@ -9,7 +9,7 @@ layout: pattern
 | v3            | utgått    | 2021-10      | 2023-09               |                                                 |
 | v4            | underhåll | 2022-09      | 2024-09               | Internet Explorer 11 stöds inte längre.         |
 | v5            | aktiv     | 2023-09      |                       | Uppgradering till Vue 3, FDatepicker borttagen. |
-| Nästa release |           |              |                       | Ej definierat, planering pågår.                 |
+| Nästa release |           |              |                       | Pågående planering. FForm, FFormStep tas bort   |
 
 -   Status: En release kan ha status aktiv, underhåll och utgått.
     Vi släpper ny funktionalitet och fixar buggar i release med status aktiv.
