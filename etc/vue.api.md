@@ -500,33 +500,12 @@ export interface ExpandableTable {
     toggleExpanded(row: ListItem): void;
 }
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export const FBadge: DefineComponent<    {
-status: {
-type: StringConstructor;
-default: string;
-validator: (value: string) => boolean;
-};
-inverted: {
-type: BooleanConstructor;
-default: boolean;
-};
-}, unknown, unknown, {
-badgeClass(): string;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-status: {
-type: StringConstructor;
-default: string;
-validator: (value: string) => boolean;
-};
-inverted: {
-type: BooleanConstructor;
-default: boolean;
-};
-}>>, {
-status: string;
-inverted: boolean;
-}, {}>;
+export const FBadge: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 
 // @public (undocumented)
 export const FBankAccountNumberTextField: DefineComponent<    {
@@ -2236,9 +2215,9 @@ onToggle?: ((...args: any[]) => any) | undefined;
 }, {
 id: string;
 expanded: boolean;
+list: boolean;
 headerTag: string;
 headerVisualTag: string;
-list: boolean;
 }, {}>;
 
 // @public (undocumented)
@@ -2352,8 +2331,8 @@ default: string;
 validator(value: string): boolean;
 };
 }>>, {
-name: string;
 horizontal: boolean;
+name: string;
 id: string;
 labelClass: string;
 contentClass: string;
@@ -5044,7 +5023,7 @@ labelClass(): string;
 labelWrapperClass(): string | undefined;
 selectWrapperClass(): string | undefined;
 vModel: {
-get(): string | number | boolean | Record<string, any> | unknown[] | undefined;
+get(): string | number | boolean | unknown[] | Record<string, any> | undefined;
 set(value: unknown): void;
 };
 }, {
@@ -5080,7 +5059,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
 id: string;
-modelValue: string | number | boolean | Record<string, any> | unknown[];
+modelValue: string | number | boolean | unknown[] | Record<string, any>;
 inline: boolean;
 labelWidth: string;
 selectWidth: string;
