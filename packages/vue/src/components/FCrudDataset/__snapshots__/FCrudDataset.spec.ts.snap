@@ -11,11 +11,11 @@ exports[`snapshot should match snapshot 1`] = `
     <tr>
       <td>1</td>
       <td>a</td>
-      <td><button type="button" class="button button--discrete" id="modifyButton">
+      <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
           <!--v-if-->
           <!--v-if-->Ändra
         </button></td>
-      <td><button type="button" class="button button--discrete" id="deleteButton">
+      <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
           <!--v-if-->
           <!--v-if-->Ta bort
         </button></td>
@@ -23,11 +23,11 @@ exports[`snapshot should match snapshot 1`] = `
     <tr>
       <td>2</td>
       <td>b</td>
-      <td><button type="button" class="button button--discrete" id="modifyButton">
+      <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
           <!--v-if-->
           <!--v-if-->Ändra
         </button></td>
-      <td><button type="button" class="button button--discrete" id="deleteButton">
+      <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
           <!--v-if-->
           <!--v-if-->Ta bort
         </button></td>
@@ -35,17 +35,17 @@ exports[`snapshot should match snapshot 1`] = `
     <tr>
       <td>3</td>
       <td>c</td>
-      <td><button type="button" class="button button--discrete" id="modifyButton">
+      <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
           <!--v-if-->
           <!--v-if-->Ändra
         </button></td>
-      <td><button type="button" class="button button--discrete" id="deleteButton">
+      <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
           <!--v-if-->
           <!--v-if-->Ta bort
         </button></td>
     </tr>
   </table>
-  <div><button type="button" class="button button--discrete crud-dataset__add-button">
+  <div><button type="button" class="button button--tertiary crud-dataset__add-button">
       <f-icon-stub name="plus" library="f" class="button__icon"></f-icon-stub>Lägg till ny
     </button></div>
   <f-form-modal-stub fullscreen="true" isopen="false" size="" datatest="" useerrorlist="false" formid="fkui-vue-element-0001" ariaclosetext="Stäng" beforesubmit="[Function]" beforevalidation="[Function]" buttons="[object Object],[object Object]" value="[object Object]"></f-form-modal-stub>
