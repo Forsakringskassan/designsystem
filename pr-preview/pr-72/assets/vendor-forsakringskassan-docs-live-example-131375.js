@@ -7099,43 +7099,28 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       return __returned__;
     }
   });
-  var _withScopeId = (n) => ((0, import_vue4.pushScopeId)("data-v-7a98eb26"), n = n(), (0, import_vue4.popScopeId)(), n);
   var _hoisted_1 = { class: "live-example__code-toggle" };
   var _hoisted_2 = ["aria-controls", "aria-expanded"];
-  var _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ (0, import_vue4.createElementVNode)(
-    "i",
-    { class: "icon icon--code" },
-    null,
-    -1
-    /* HOISTED */
-  ));
-  var _hoisted_4 = ["id"];
-  var _hoisted_5 = {
+  var _hoisted_3 = ["id"];
+  var _hoisted_4 = {
     class: "live-example__code-languages",
     onsubmit: "event.preventDefault()"
   };
-  var _hoisted_6 = {
+  var _hoisted_5 = {
     key: 0,
     class: "fieldset radio-button-group radio-button-group--horizontal"
   };
-  var _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ (0, import_vue4.createElementVNode)(
-    "legend",
-    { class: "label fieldset__label" },
-    "Kodspr\xE5k",
-    -1
-    /* HOISTED */
-  ));
-  var _hoisted_8 = { class: "fieldset__content radio-button-group__content" };
-  var _hoisted_9 = {
+  var _hoisted_6 = { class: "fieldset__content radio-button-group__content" };
+  var _hoisted_7 = {
     key: 0,
     class: "radio-button"
   };
-  var _hoisted_10 = ["id"];
-  var _hoisted_11 = ["for"];
-  var _hoisted_12 = { class: "radio-button" };
-  var _hoisted_13 = ["id"];
-  var _hoisted_14 = ["for"];
-  var _hoisted_15 = ["innerHTML"];
+  var _hoisted_8 = ["id"];
+  var _hoisted_9 = ["for"];
+  var _hoisted_10 = { class: "radio-button" };
+  var _hoisted_11 = ["id"];
+  var _hoisted_12 = ["for"];
+  var _hoisted_13 = ["innerHTML"];
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)(
       import_vue4.Fragment,
@@ -7149,7 +7134,13 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
             "aria-expanded": $setup.animation.isOpen ? "true" : "false",
             onClick: $setup.onToggleCode
           }, [
-            _hoisted_3,
+            _cache[2] || (_cache[2] = (0, import_vue4.createElementVNode)(
+              "i",
+              { class: "icon icon--code" },
+              null,
+              -1
+              /* HOISTED */
+            )),
             (0, import_vue4.createTextVNode)(
               " " + (0, import_vue4.toDisplayString)($setup.codeToggleText),
               1
@@ -7163,11 +7154,17 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
           class: "collapsed"
         }, [
           (0, import_vue4.createCommentVNode)(" [html-validate-disable-next wcag/h32 -- this form is not meant to be submitted] "),
-          (0, import_vue4.createElementVNode)("form", _hoisted_5, [
-            $setup.sourcecode ? ((0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)("fieldset", _hoisted_6, [
-              _hoisted_7,
-              (0, import_vue4.createElementVNode)("div", _hoisted_8, [
-                $props.templateLanguage === "vue" ? ((0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)("div", _hoisted_9, [
+          (0, import_vue4.createElementVNode)("form", _hoisted_4, [
+            $setup.sourcecode ? ((0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)("fieldset", _hoisted_5, [
+              _cache[3] || (_cache[3] = (0, import_vue4.createElementVNode)(
+                "legend",
+                { class: "label fieldset__label" },
+                "Kodspr\xE5k",
+                -1
+                /* HOISTED */
+              )),
+              (0, import_vue4.createElementVNode)("div", _hoisted_6, [
+                $props.templateLanguage === "vue" ? ((0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)("div", _hoisted_7, [
                   (0, import_vue4.withDirectives)((0, import_vue4.createElementVNode)("input", {
                     id: $setup.id("lang-original"),
                     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.selectedLanguage = $event),
@@ -7176,15 +7173,15 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
                     name: "selected-language",
                     value: "original",
                     onChange: $setup.updateSourcecode
-                  }, null, 40, _hoisted_10), [
+                  }, null, 40, _hoisted_8), [
                     [import_vue4.vModelRadio, $setup.selectedLanguage]
                   ]),
                   (0, import_vue4.createElementVNode)("label", {
                     for: $setup.id("lang-original"),
                     class: "radio-button__label"
-                  }, " Vue ", 8, _hoisted_11)
+                  }, " Vue ", 8, _hoisted_9)
                 ])) : (0, import_vue4.createCommentVNode)("v-if", true),
-                (0, import_vue4.createElementVNode)("div", _hoisted_12, [
+                (0, import_vue4.createElementVNode)("div", _hoisted_10, [
                   (0, import_vue4.withDirectives)((0, import_vue4.createElementVNode)("input", {
                     id: $setup.id("lang-rendered"),
                     "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $setup.selectedLanguage = $event),
@@ -7193,20 +7190,20 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
                     name: "selected-language",
                     value: "rendered",
                     onChange: $setup.updateSourcecode
-                  }, null, 40, _hoisted_13), [
+                  }, null, 40, _hoisted_11), [
                     [import_vue4.vModelRadio, $setup.selectedLanguage]
                   ]),
                   (0, import_vue4.createElementVNode)("label", {
                     for: $setup.id("lang-rendered"),
                     class: "radio-button__label"
-                  }, " HTML ", 8, _hoisted_14)
+                  }, " HTML ", 8, _hoisted_12)
                 ])
               ])
             ])) : (0, import_vue4.createCommentVNode)("v-if", true)
           ]),
           (0, import_vue4.createCommentVNode)(" eslint-disable-next-line vue/no-v-html -- expected to show highlighted markup "),
-          (0, import_vue4.createElementVNode)("pre", { innerHTML: $setup.sourcecode }, null, 8, _hoisted_15)
-        ], 8, _hoisted_4)
+          (0, import_vue4.createElementVNode)("pre", { innerHTML: $setup.sourcecode }, null, 8, _hoisted_13)
+        ], 8, _hoisted_3)
       ],
       64
       /* STABLE_FRAGMENT */
@@ -7344,7 +7341,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       this.exampleElement = this.$refs.example;
     }
   });
-  var _hoisted_16 = { class: "live-example__container" };
+  var _hoisted_14 = { class: "live-example__container" };
   var _hoisted_22 = {
     ref: "example",
     class: "live-example__example"
@@ -7352,25 +7349,15 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
   var _hoisted_32 = { key: 0 };
   var _hoisted_42 = ["innerHTML"];
   var _hoisted_52 = { key: 2 };
-  var _hoisted_62 = /* @__PURE__ */ (0, import_vue6.createElementVNode)(
-    "pre",
-    null,
-    "Unknown language, cannot render example",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_72 = [
-    _hoisted_62
-  ];
-  var _hoisted_82 = { class: "live-example__controls" };
-  var _hoisted_92 = {
+  var _hoisted_62 = { class: "live-example__controls" };
+  var _hoisted_72 = {
     key: 0,
     class: "live-example__code"
   };
   function render2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_live_vue_code = (0, import_vue6.resolveComponent)("live-vue-code");
     const _component_live_example_sourcecode = (0, import_vue6.resolveComponent)("live-example-sourcecode");
-    return (0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("div", _hoisted_16, [
+    return (0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("div", _hoisted_14, [
       (0, import_vue6.createElementVNode)(
         "div",
         _hoisted_22,
@@ -7391,15 +7378,23 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
             ],
             2112
             /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-          )) : ((0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("div", _hoisted_52, [..._hoisted_72]))
+          )) : ((0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("div", _hoisted_52, _cache[0] || (_cache[0] = [
+            (0, import_vue6.createElementVNode)(
+              "pre",
+              null,
+              "Unknown language, cannot render example",
+              -1
+              /* HOISTED */
+            )
+          ])))
         ],
         512
         /* NEED_PATCH */
       ),
-      (0, import_vue6.createElementVNode)("div", _hoisted_82, [
+      (0, import_vue6.createElementVNode)("div", _hoisted_62, [
         (0, import_vue6.renderSlot)(_ctx.$slots, "default")
       ]),
-      _ctx.exampleElement ? ((0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("div", _hoisted_92, [
+      _ctx.exampleElement ? ((0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("div", _hoisted_72, [
         (0, import_vue6.createVNode)(_component_live_example_sourcecode, {
           element: _ctx.exampleElement,
           template: _ctx.template,
