@@ -8,7 +8,7 @@ describe("FProgressbar", () => {
     );
 
     beforeEach(() => {
-        cy.visit("/components/ladda/fprogressbar.html");
+        cy.visit("/components/load/fprogressbar.html");
     });
 
     it("Should have state inprogress from beginning", () => {

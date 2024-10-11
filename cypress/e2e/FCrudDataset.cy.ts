@@ -6,7 +6,7 @@ import {
 
 describe("FCrudDataset", () => {
     beforeEach(() => {
-        cy.visit("/components/tabell-och-lista/fcruddataset.html");
+        cy.visit("/components/table-and-list/fcruddataset.html");
     });
 
     it("should provide a page object that can access add button", () => {
