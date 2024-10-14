@@ -184,7 +184,7 @@ describe("snapshot", () => {
 it("should show add button when #add slot is present", () => {
     const wrapper = createWrapper([ADD_TEMPLATE], { stubs: ["FConfirmModal"] });
     expect(wrapper.find(".crud-dataset__add-button")).toMatchInlineSnapshot(`
-        <button type="button" class="button button--discrete crud-dataset__add-button">
+        <button type="button" class="button button--tertiary crud-dataset__add-button">
           <f-icon-stub name="plus" library="f" class="button__icon"></f-icon-stub>Lägg till ny
         </button>
     `);

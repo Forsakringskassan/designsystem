@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="button button--discrete" @click="executeAction">
+    <button type="button" class="button button--small button--tertiary" @click="executeAction">
         <f-icon v-if="icon" class="button__icon" :name="iconName"></f-icon>
         <span v-if="!label" class="sr-only">
             <slot> {{ buttonText }} </slot>
