@@ -23,6 +23,12 @@ function compare<T>(
         // Null values are always unsorted at the end of the list
         return nullCompare(value1, value2);
     }
+    if (!isSupportedType(value1) || !isSupportedType(value2)) {
+        throw Error(
+            `Sorting is only supported for types number, string and boolean.
+            Attribute '${attribute.toString()}' comparsion of types '${typeof value1}' and '${typeof value2}' is not supported.`,
+        );
+    }
     if (typeof value1 === "string" && typeof value2 === "string") {
         return fixOrder(value1.localeCompare(value2), ascending);
     }
@@ -33,15 +39,17 @@ function compare<T>(
         return fixOrder(booleanCompare(value1, value2), ascending);
     }
 
-    if (typeof value1 !== typeof value2) {
-        throw Error(
-            `Sorting is not supported for rows containing different types (attribute '${attribute.toString()}')`,
-        );
+    // We have mixed types, then we assume that the value of type string is incorrect (parser has not been applied after validation error).
+    // Values with error should always be sorted first.
+    if (typeof value1 === "string") {
+        return -1;
+    } else {
+        return 1;
     }
+}
 
-    throw Error(
-        `Sorting is only supported for types number, string and boolean (attribute '${attribute.toString()}')`,
-    );
+function isSupportedType(value: unknown): boolean {
+    return ["string", "number", "boolean"].includes(typeof value);
 }
 
 // This is used instead of list.reverse to keep null values

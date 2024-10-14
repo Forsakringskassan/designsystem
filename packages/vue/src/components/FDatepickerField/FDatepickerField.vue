@@ -243,7 +243,7 @@ export default defineComponent({
             async handler(value: string): Promise<void> {
                 if (value !== this.textFieldValue) {
                     await this.updateTextFieldValue(value);
-                    this.updateCalendarValue(value);
+                    updateCalendarValue(this, value);
                 }
             },
             immediate: true,
@@ -298,7 +298,7 @@ export default defineComponent({
             inputElement.dispatchEvent(pendingValidityEvent);
         },
         onChangeTextField(): void {
-            this.updateCalendarValue(this.textFieldValue);
+            updateCalendarValue(this, this.textFieldValue);
 
             /**
              * `v-model` event.
@@ -349,7 +349,7 @@ export default defineComponent({
             this.$emit("update:modelValue", date.toString());
             this.$emit("change", date.toString());
             await this.updateTextFieldValue(date.toString());
-            this.updateCalendarValue(date.toString());
+            updateCalendarValue(this, date.toString());
         },
         async onKeyupEsc(): Promise<void> {
             this.isCalendarOpen = false;
@@ -417,7 +417,6 @@ export default defineComponent({
             await this.$nextTick();
             ValidationService.validateElement(getInputElement(this));
         },
-        updateCalendarValue,
     },
 });
 </script>

@@ -16,8 +16,7 @@
                     ref="items"
                     :key="item.key"
                     role="presentation"
-                    class="ipopupmenu__list__item"
-                    :class="cssClassHighlight(item)"
+                    :class="itemClasses(item)"
                     @click="onClickItem(item)"
                 >
                     <a
@@ -47,12 +46,33 @@ import { type IMenuItem } from "../IMenu";
 import { actionFromKeyboardEvent, getSortedHTMLElementsFromVueRef } from "../../utils";
 import { doMenuAction } from "./ipopupmenu-logic";
 
-const preventKeys: string[] = ["Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
+const preventKeys: string[] = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
 
 export default defineComponent({
     name: "IPopupMenu",
     components: { FIcon, IPopup },
     props: {
+        /**
+         * Key of the currently selected and highlighted item.
+         *
+         * @model
+         */
+        modelValue: {
+            type: String,
+            required: false,
+            default: "",
+        },
+        /**
+         * Key of the currently focused item.
+         * Sets focus on matching item element when value changes.
+         *
+         * @model
+         */
+        focusedItem: {
+            type: String,
+            required: false,
+            default: "",
+        },
         /**
          * Toggle open/closed popup.
          */
@@ -68,28 +88,11 @@ export default defineComponent({
             default: undefined,
         },
         /**
-         * The currently highlighted menu item key
-         * @model
-         */
-        modelValue: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        /**
          * The items to be diplayed in the menu
          */
         items: {
             type: Array as PropType<IMenuItem[]>,
             required: true,
-        },
-        /**
-         * The key of the currently selected focused item
-         */
-        focusedItemKey: {
-            type: String,
-            required: false,
-            default: "",
         },
         /**
          * If true, enable built-in keyboard navigation
@@ -116,7 +119,36 @@ export default defineComponent({
             default: "vald nu",
         },
     },
-    emits: ["close", "select", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted when an item is selected and when tabbing out of the popup.
+         *
+         * @event close
+         */
+        "close",
+        /**
+         * Vue 2 V-model event. Emitted when an item is selected.
+         *
+         * @event select
+         * @deprecated
+         * @type {string} item key
+         */
+        "select",
+        /**
+         * V-model event. Emitted when an item is selected.
+         *
+         * @event select
+         * @type {string} item key
+         */
+        "update:modelValue",
+        /**
+         * V-model event. Emitted when item focus changes.
+         *
+         * @event select
+         * @type {string} Key of focused item, or empty if no item focused.
+         */
+        "update:focusedItem",
+    ],
     data() {
         return {
             currentFocusedItemIndex: 0,
@@ -126,22 +158,14 @@ export default defineComponent({
     watch: {
         isOpen: {
             immediate: true,
-            async handler(): Promise<void> {
-                this.currentFocusedItemIndex = 0;
-                this.lastSelectedItem = "";
-            },
-        },
-        focusedItemKey: {
             async handler(newVal): Promise<void> {
-                if (this.enableKeyboardNavigation) {
+                if (newVal) {
                     return;
                 }
-                const index = this.indexOfItemByKey(newVal);
-                if (index >= 0) {
-                    await this.setFocusOnItem(index);
-                } else {
-                    this.setFocusedItemIndex(0);
-                }
+
+                this.currentFocusedItemIndex = 0;
+                this.lastSelectedItem = "";
+                this.$emit("update:focusedItem", "");
             },
         },
         modelValue: {
@@ -152,6 +176,20 @@ export default defineComponent({
                 const index = this.indexOfItemByKey(newVal);
                 if (index >= 0) {
                     await this.activateItem(index);
+                } else {
+                    this.setFocusedItemIndex(0);
+                }
+            },
+        },
+        focusedItem: {
+            async handler(newVal): Promise<void> {
+                if (newVal.length === 0) {
+                    return;
+                }
+
+                const index = this.indexOfItemByKey(newVal);
+                if (index >= 0) {
+                    await this.setFocusOnItem(index);
                 } else {
                     this.setFocusedItemIndex(0);
                 }
@@ -177,46 +215,40 @@ export default defineComponent({
         },
         async onClickItem(item: IMenuItem, doClick: boolean = false): Promise<void> {
             if (item.key !== this.lastSelectedItem) {
-                /**
-                 * V-model event. Event that is dispatched when an item is selected.
-                 * @event select
-                 * @type {string} item key
-                 */
                 this.$emit("update:modelValue", item.key);
-
-                /**
-                 * Vue 2 V-model event. Event that is dispatched when an item is selected.
-                 * @event select
-                 * @deprecated
-                 * @type {string} item key
-                 */
                 this.$emit("select", item.key);
-
                 this.lastSelectedItem = item.key;
             }
-            /**
-             * Event that is dispatched after an item is selected or
-             * after pressing tab in the menu
-             */
+
             this.$emit("close");
+
             if (item.href && doClick) {
                 const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
                 anchors[this.currentFocusedItemIndex]?.click();
             }
         },
-        cssClassHighlight(item: IMenuItem): string {
-            return item.key === this.modelValue ? "ipopupmenu__list__item--highlight" : "";
+        itemClasses(item: IMenuItem): string[] {
+            const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
+            return ["ipopupmenu__list__item", ...highlight];
         },
         async setFocusOnItem(index: number): Promise<void> {
             this.setFocusedItemIndex(index);
             await this.$nextTick();
-            if (this.isOpen) {
-                const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-                if (anchors.length > 0) {
-                    const itemAnchor = anchors[index];
-                    focus(itemAnchor, { preventScroll: true });
-                }
+
+            if (!this.isOpen) {
+                return;
             }
+
+            const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+            if (anchors.length === 0) {
+                return;
+            }
+
+            const itemAnchor = anchors[index];
+            focus(itemAnchor, { preventScroll: true });
+
+            const key = this.items[index].key;
+            this.$emit("update:focusedItem", key);
         },
         async activateItem(index: number): Promise<void> {
             if (index !== this.currentFocusedItemIndex) {
@@ -244,11 +276,29 @@ export default defineComponent({
                 return;
             }
 
-            const action = actionFromKeyboardEvent(event);
-            if (action !== null) {
-                event.preventDefault();
-                await doMenuAction(action, this);
+            const firstItemFocused = this.currentFocusedItemIndex === 0;
+            const lastItemFocused = this.currentFocusedItemIndex === this.items.length - 1;
+
+            const tabOutPrev = event.key === "Tab" && event.shiftKey && firstItemFocused;
+            const tabOutNext = event.key === "Tab" && !event.shiftKey && lastItemFocused;
+
+            // If tabbing out, close popup to trigger `popFocus` to focus element that opened the popup.
+            if (tabOutPrev || tabOutNext) {
+                if (tabOutPrev) {
+                    event.preventDefault();
+                }
+
+                this.$emit("close");
+                return;
             }
+
+            const action = actionFromKeyboardEvent(event);
+            if (action === null) {
+                return;
+            }
+
+            event.preventDefault();
+            await doMenuAction(action, this);
         },
     },
 });

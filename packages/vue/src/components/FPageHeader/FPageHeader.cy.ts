@@ -14,14 +14,14 @@ const TestComponent = defineComponent({
     template: /* HTML */ `
         <div>
             <f-page-header
-                skip-link
+                skip-link="main-content"
                 logo-size="responsive"
                 routerLinkPath="logo-link"
             >
                 Exempelapplikation
                 <template #right> Namn Namnsson </template>
             </f-page-header>
-            <a href="#" id="applicationlayout-main-content"> Huvudinnehåll </a>
+            <a href="#" id="main-content"> Huvudinnehåll </a>
         </div>
     `,
     components: {
@@ -47,8 +47,8 @@ describe("FPageHeader", () => {
 
         skipLink.focus().click();
 
-        cy.location("hash").should("eq", "#/applicationlayout-main-content");
-        cy.get("#applicationlayout-main-content").focused();
+        cy.location("hash").should("eq", "#/main-content");
+        cy.focused().should("have.attr", "id", "main-content");
     });
 
     it("should get application name", () => {

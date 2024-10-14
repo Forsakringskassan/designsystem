@@ -27,7 +27,7 @@ Sätt `data` till lista som ska sorteras och filtreras samt `sortableAttributes`
 
 ### Förvald sortering
 
-Sätt `defaultSortAttribute` till namnet på fältet som ska sorteras samt `defaultSortAscending` till `true` (default)`eller`false` för att välja om sorteringen ska ske i stigande (`true`) eller fallande (`false`) ordning.
+Sätt `defaultSortAttribute` till namnet på fältet som ska sorteras samt `defaultSortAscending` till `true` (default) eller `false` för att välja om sorteringen ska ske i stigande (`true`) eller fallande (`false`) ordning.
 
 ```diff
  <f-sort-filter-dataset

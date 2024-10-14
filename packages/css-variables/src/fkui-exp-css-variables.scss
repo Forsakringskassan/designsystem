@@ -350,7 +350,8 @@ $global: true !default;
     --f-button-discrete-radius-hover: none;
     --f-button-discrete-table-column-action-margin: 0;
     --f-button-discrete-table-column-action-border-radius: #{$_f-border-radius-medium};
-    --f-button-discrete-table-column-action-icon-margin: 0;
+    --f-button-discrete-table-column-action-icon-margin: 0 2px 0 2px;
+    --f-button-tertiary-table-column-action-margin: 0 0 0 0.5rem;
 
     $_f-button-default-padding-top: 1rem;
     $_f-button-default-padding-right: 1.5rem;

@@ -29,14 +29,10 @@ import { type PropType, defineComponent } from "vue";
 import { FIcon } from "../../components/FIcon";
 import { CandidateOrder, Placement, fitInsideArea } from "../IPopup/IPopupUtils";
 import { computeArrowOffset } from "./compute-arrow-offset";
+import { type IPopupErrorData } from "./ipopuperror-data";
 
 const POPUP_SPACING = 10;
-interface IPopupErrorData {
-    teleportDisabled: boolean;
-    placement: Placement;
-    arrowPosition: string;
-    arrowOffset: number;
-}
+
 export default defineComponent({
     name: "IPopupError",
     components: { FIcon },

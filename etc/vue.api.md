@@ -254,8 +254,8 @@ type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstruc
 required: true;
 };
 }, {
-showDetails: "never" | "always" | "when-selected";
-getFieldsetLabelText: () => string;
+showDetails: "always" | "never" | "when-selected";
+getFieldsetLabelText: () => string | undefined;
 }, {
 expanded: boolean;
 height: number;
@@ -340,8 +340,8 @@ required: true;
 };
 }, {
 sharedName: string | undefined;
-showDetails: "never" | "always" | "when-selected";
-getFieldsetLabelText: () => string;
+showDetails: "always" | "never" | "when-selected";
+getFieldsetLabelText: () => string | undefined;
 }, {
 height: number;
 initialStyle: {
@@ -500,33 +500,12 @@ export interface ExpandableTable {
     toggleExpanded(row: ListItem): void;
 }
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export const FBadge: DefineComponent<    {
-status: {
-type: StringConstructor;
-default: string;
-validator: (value: string) => boolean;
-};
-inverted: {
-type: BooleanConstructor;
-default: boolean;
-};
-}, unknown, unknown, {
-badgeClass(): string;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-status: {
-type: StringConstructor;
-default: string;
-validator: (value: string) => boolean;
-};
-inverted: {
-type: BooleanConstructor;
-default: boolean;
-};
-}>>, {
-status: string;
-inverted: boolean;
-}, {}>;
+export const FBadge: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 
 // @public (undocumented)
 export const FBankAccountNumberTextField: DefineComponent<    {
@@ -1775,7 +1754,6 @@ isDateEnabled(day: FDate): boolean;
 isDaySelected(date: FDate): boolean;
 highlightDay(date: FDate): boolean;
 updateTextFieldValue(newValue: string): Promise<void>;
-updateCalendarValue: typeof updateCalendarValue;
 }, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
@@ -2237,9 +2215,9 @@ onToggle?: ((...args: any[]) => any) | undefined;
 }, {
 id: string;
 expanded: boolean;
+list: boolean;
 headerTag: string;
 headerVisualTag: string;
-list: boolean;
 }, {}>;
 
 // @public (undocumented)
@@ -2278,11 +2256,11 @@ type: BooleanConstructor;
 required: false;
 };
 showDetails: {
-type: StringConstructor;
+type: PropType<"never" | "when-selected" | "always">;
 default: string;
 validator(value: string): boolean;
 };
-}, unknown, {
+}, void, {
 validity: ValidityEvent;
 descriptionClass: string[];
 discreteDescriptionClass: string[];
@@ -2348,17 +2326,17 @@ type: BooleanConstructor;
 required: false;
 };
 showDetails: {
-type: StringConstructor;
+type: PropType<"never" | "when-selected" | "always">;
 default: string;
 validator(value: string): boolean;
 };
 }>>, {
-name: string;
 horizontal: boolean;
+name: string;
 id: string;
-showDetails: string;
 labelClass: string;
 contentClass: string;
+showDetails: "always" | "never" | "when-selected";
 chip: boolean;
 border: boolean;
 }, {}>;
@@ -2392,7 +2370,7 @@ default: undefined;
 }, unknown, unknown, {
 isMimeTypeChanged(): boolean;
 mimeTypeChangedText(): string;
-iconName(): IconName;
+iconName(): FFileItemIconName;
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
@@ -2424,6 +2402,9 @@ mimeType: string;
 originalMimeType: string;
 changedMimeTypeText: string;
 }, {}>;
+
+// @public (undocumented)
+export type FFileItemIconName = "doc" | "file" | "pic" | "pdf";
 
 // @public (undocumented)
 export const FFileSelector: DefineComponent<    {
@@ -2462,8 +2443,6 @@ id: string;
 disabled: boolean;
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "FFormData" needs to be exported by the entry point index.d.ts
-//
 // @public @deprecated (undocumented)
 export const FForm: DefineComponent<    {
 id: {
@@ -2512,6 +2491,14 @@ id: string;
 displayError: boolean;
 errorScroll: "center" | "top";
 }, {}>;
+
+// @public (undocumented)
+export interface FFormData {
+    // (undocumented)
+    components: Record<string, Reference<FormErrorList | FormStep>>;
+    // (undocumented)
+    errorMessageSlotClass: string[];
+}
 
 // @public (undocumented)
 export const FFormModal: DefineComponent<    {
@@ -3363,8 +3350,6 @@ provideScreenReaderContext: boolean;
 layout: "standard" | "short";
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "FModalData" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const FModal: DefineComponent<    {
 id: {
@@ -3478,6 +3463,16 @@ export interface FModalButtonDescriptor {
     submitButton?: boolean;
     // (undocumented)
     type: "primary" | "secondary";
+}
+
+// @public (undocumented)
+export interface FModalData {
+    // (undocumented)
+    nonModalFocusableElements: HTMLElement[];
+    // (undocumented)
+    savedFocus: StackHandle | null;
+    // (undocumented)
+    savedScroll: number | null;
 }
 
 // @public (undocumented)
@@ -4062,9 +4057,9 @@ required: false;
 validator(value: string): boolean;
 };
 skipLink: {
-type: BooleanConstructor;
+type: PropType<string | boolean>;
 required: false;
-default: boolean;
+default: string;
 };
 skipLinkHref: {
 type: StringConstructor;
@@ -4095,6 +4090,7 @@ default: string;
 logoClass(): string;
 hasRouterLink(): boolean;
 routerLinkTo(): RouteLocationPathRaw | RouteLocationNamedRaw | null;
+skipLinkAnchor(): string | null;
 altLogoText(): string;
 }, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 logoSize: {
@@ -4104,9 +4100,9 @@ required: false;
 validator(value: string): boolean;
 };
 skipLink: {
-type: BooleanConstructor;
+type: PropType<string | boolean>;
 required: false;
-default: boolean;
+default: string;
 };
 skipLinkHref: {
 type: StringConstructor;
@@ -4136,7 +4132,7 @@ default: string;
 }>>, {
 headerTag: string;
 logoSize: string;
-skipLink: boolean;
+skipLink: string | boolean;
 skipLinkHref: string;
 routerLinkPath: string;
 routerLinkName: string;
@@ -5027,7 +5023,7 @@ labelClass(): string;
 labelWrapperClass(): string | undefined;
 selectWrapperClass(): string | undefined;
 vModel: {
-get(): string | number | boolean | Record<string, any> | unknown[] | undefined;
+get(): string | number | boolean | unknown[] | Record<string, any> | undefined;
 set(value: unknown): void;
 };
 }, {
@@ -5063,7 +5059,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
 id: string;
-modelValue: string | number | boolean | Record<string, any> | unknown[];
+modelValue: string | number | boolean | unknown[] | Record<string, any>;
 inline: boolean;
 labelWidth: string;
 selectWidth: string;
@@ -6321,8 +6317,6 @@ export interface IMenuItem {
 // @public (undocumented)
 export function includeItem<T extends object, K extends keyof T>(item: ListItem<T> | undefined, itemList: ListArray<T> | undefined, compareAttribute: K): boolean;
 
-// Warning: (ae-forgotten-export) The symbol "IPopupData" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const IPopup: DefineComponent<    {
 isOpen: {
@@ -6444,8 +6438,18 @@ focusElement: () => HTMLElement | null;
 setFocus: boolean;
 }, {}>;
 
-// Warning: (ae-forgotten-export) The symbol "IPopupErrorData" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export interface IPopupData {
+    // (undocumented)
+    focus: StackHandle | null;
+    // (undocumented)
+    noCloseOnResize: boolean;
+    // (undocumented)
+    placement: Placement;
+    // (undocumented)
+    teleportDisabled: boolean;
+}
+
 // @public (undocumented)
 export const IPopupError: DefineComponent<    {
 isOpen: {
@@ -6495,7 +6499,29 @@ errorMessage: string;
 }, {}>;
 
 // @public (undocumented)
+export interface IPopupErrorData {
+    // (undocumented)
+    arrowOffset: number;
+    // (undocumented)
+    arrowPosition: string;
+    // (undocumented)
+    placement: Placement;
+    // (undocumented)
+    teleportDisabled: boolean;
+}
+
+// @public (undocumented)
 export const IPopupMenu: DefineComponent<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+focusedItem: {
+type: StringConstructor;
+required: false;
+default: string;
+};
 isOpen: {
 type: BooleanConstructor;
 required: true;
@@ -6504,19 +6530,9 @@ anchor: {
 type: PropType<HTMLElement | undefined>;
 default: undefined;
 };
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
 items: {
 type: PropType<IMenuItem[]>;
 required: true;
-};
-focusedItemKey: {
-type: StringConstructor;
-required: false;
-default: string;
 };
 enableKeyboardNavigation: {
 type: BooleanConstructor;
@@ -6542,13 +6558,23 @@ focusElement(): HTMLElement | null;
 findItemByKey(key: string): IMenuItem | undefined;
 indexOfItemByKey(key: string): number;
 onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
-cssClassHighlight(item: IMenuItem): string;
+itemClasses(item: IMenuItem): string[];
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
 setFocusedItemIndex(index: number): void;
 onKeyUp(event: KeyboardEvent): void;
 onKeyDown(event: KeyboardEvent): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close" | "update:modelValue")[], "select" | "close" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close" | "update:modelValue" | "update:focusedItem")[], "select" | "close" | "update:modelValue" | "update:focusedItem", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+focusedItem: {
+type: StringConstructor;
+required: false;
+default: string;
+};
 isOpen: {
 type: BooleanConstructor;
 required: true;
@@ -6557,19 +6583,9 @@ anchor: {
 type: PropType<HTMLElement | undefined>;
 default: undefined;
 };
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
 items: {
 type: PropType<IMenuItem[]>;
 required: true;
-};
-focusedItemKey: {
-type: StringConstructor;
-required: false;
-default: string;
 };
 enableKeyboardNavigation: {
 type: BooleanConstructor;
@@ -6590,13 +6606,14 @@ default: string;
 onSelect?: ((...args: any[]) => any) | undefined;
 onClose?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+"onUpdate:focusedItem"?: ((...args: any[]) => any) | undefined;
 }, {
 anchor: HTMLElement | undefined;
 modelValue: string;
 ariaLabel: string;
-focusedItemKey: string;
 enableKeyboardNavigation: boolean;
 selectedMenuItemScreenReaderText: string;
+focusedItem: string;
 }, {}>;
 
 // @public (undocumented)
@@ -6740,6 +6757,21 @@ export interface PanelLayoutComposable {
 // @public (undocumented)
 export type ParseFunction<TModel> = (viewValue: string) => TModel | undefined;
 
+// @public (undocumented)
+export enum Placement {
+    "A" = "A",
+    "B" = "B",
+    "C" = "C",
+    "D" = "D",
+    "E" = "E",
+    "F" = "F",
+    "Fallback" = "Fallback",
+    "G" = "G",
+    "H" = "H",
+    "I" = "I",
+    "NotCalculated" = "NotCalculated"
+}
+
 // @public
 export function refIsElement(value: unknown): value is Element;
 
@@ -6830,9 +6862,6 @@ export const UNHANDLED_ERROR_EVENT: "unhandled-error";
 // @public (undocumented)
 export type UnknownItem = Record<string, unknown>;
 
-// @public (undocumented)
-export function updateCalendarValue(this: InstanceType<typeof FDatepickerField>, newValue: string): void;
-
 // @public
 export function useTranslate(): TranslateFunction;
 
@@ -6846,10 +6875,6 @@ export interface VueLike {
     // (undocumented)
     focusTarget?: VueLike | Element | Array<VueLike | Element> | null;
 }
-
-// Warnings were encountered during analysis:
-//
-// src/components/FFileItem/FFileItem.vue:201:38 - (ae-forgotten-export) The symbol "IconName" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

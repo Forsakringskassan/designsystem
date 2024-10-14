@@ -1,36 +1,53 @@
 <template>
     <div>
-        <button ref="popupAnchor" type="button" @click="onClick">Öppna</button>
-        <pre>Highlight: {{ model }}</pre>
+        <button
+            id="popup-menu-open-button"
+            ref="popup-anchor"
+            type="button"
+            class="button button--secondary"
+            @click="onClick"
+            @keyup="onKeyUp"
+            @keydown="onKeyDown"
+        >
+            Öppna popupmeny
+        </button>
+
         <i-popup-menu
-            v-model="model"
-            :is-open="isOpen"
+            id="popup-menu"
+            v-model="selectedItem"
+            v-model:focused-item="focusedItem"
             :items="items"
+            :is-open="popupOpen"
             :anchor="getAnchor()"
-            :enable-keyboard-navigation="true"
+            enable-keyboard-navigation
             @close="onClose"
         ></i-popup-menu>
+
+        <pre>Selected item: {{ selectedItem }}</pre>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
-import { IPopupMenu } from "@fkui/vue";
+import { IPopupMenu } from "..";
 
 const exampleItems = [
-    { label: "Det", key: "MENU_1", href: "/qwe" },
-    { label: "var", key: "MENU_2" },
-    { label: "en", key: "MENU_3" },
-    { label: "finliten", key: "MENU_4" },
-    { label: "meny", key: "MENU_5" },
-    { label: "som är", key: "MENU_6" },
-    { label: "rätt lång", key: "MENU_7" },
-    { label: "och innehållet", key: "MENU_8" },
-    { label: "kommer", key: "MENU_9" },
-    { label: "wrappas", key: "MENU_10" },
-    { label: "Med href", key: "MENU_HREF", href: "/" },
-    { label: "Testar target", key: "MENU_EXTERN", href: "http://www.google.com", target: "_blank" },
+    { label: "Länk 1", key: "MENU_1" },
+    { label: "Länk 2", key: "MENU_2" },
+    { label: "Länk 3", key: "MENU_3" },
+    { label: "Länk 4 (med href)", key: "MENU_HREF", href: "/" },
+    {
+        label: "Länk 5 (med href + target)",
+        key: "MENU_EXTERN",
+        href: "https://github.com/Forsakringskassan/designsystem",
+        target: "_blank",
+    },
 ];
+
+const upKeys = ["Up", "ArrowUp"];
+const downKeys = ["Down", "ArrowDown"];
+const verticalKeys = [...upKeys, ...downKeys];
+const preventKeys = ["Tab", ...verticalKeys];
 
 export default defineComponent({
     name: "IPopupMenuExample",
@@ -38,19 +55,47 @@ export default defineComponent({
     data() {
         return {
             items: exampleItems,
-            model: "",
-            isOpen: false,
+            selectedItem: "",
+            focusedItem: "",
+            popupOpen: false,
         };
     },
     methods: {
-        getAnchor() {
-            return this.$refs.popupAnchor;
+        getAnchor(): HTMLElement {
+            return this.$refs["popup-anchor"] as HTMLElement;
         },
-        onClose() {
-            this.isOpen = false;
+        onClose(): void {
+            this.popupOpen = false;
         },
-        onClick() {
-            this.isOpen = !this.isOpen;
+        onClick(): void {
+            this.popupOpen = !this.popupOpen;
+        },
+        onKeyUp(event: KeyboardEvent): void {
+            if (!this.popupOpen) {
+                return;
+            }
+            if (preventKeys.includes(event.key)) {
+                event.preventDefault();
+            }
+        },
+        onKeyDown(event: KeyboardEvent): void {
+            if (!this.popupOpen) {
+                return;
+            }
+            if (!preventKeys.includes(event.key)) {
+                return;
+            }
+
+            const tabNext = event.key === "Tab" && !event.shiftKey;
+            const focusPopup = tabNext || verticalKeys.includes(event.key);
+            if (focusPopup) {
+                event.preventDefault();
+                const index = upKeys.includes(event.key) ? this.items.length - 1 : 0;
+                this.focusedItem = this.items[index].key;
+                return;
+            }
+
+            this.popupOpen = false;
         },
     },
 });
