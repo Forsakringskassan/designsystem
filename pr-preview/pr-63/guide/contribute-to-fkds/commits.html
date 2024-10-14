@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-530764.css"
+            href="../../assets/docs-0f0b20.css"
             crossorigin
-            integrity="sha384-LEmBartntkP3X+3cmDfkLVFZdO3YEcnNjBEAD6ku/V14OjeE9S9CBM4/Eg6TC/Ka"
+            integrity="sha384-NxgL0Fcc1BwXLIgcNehRdEI+Kfk6YGBQHIJh0uZFKjzlE58ATuRN4umIwHTeJfMy"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-6536d0.css"
+            href="../../assets/docs-exp-3cb848.css"
             crossorigin
-            integrity="sha384-vYVNQoy62Jn6dDWqataezqGMXhDLav568xENF6Pmqy61VgfOUzX+s8z0Jcmyps9p"
+            integrity="sha384-RIFdezZEyghKBnWGnU8GalsCL/pyORCRQSD/JH9H2VJRldNydpMFVdrliikCHoE5"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-5014fc.css"
+            href="../../assets/docs-int-b89a7a.css"
             crossorigin
-            integrity="sha384-rHl9pkn77haAI3OxtPJ7XxocEil2JS9xHypAGXouuuWadHbqAWzZE+JG+9cqIJFU"
+            integrity="sha384-GsPRhr7ciVP6tZLZNtu7XqSTyiRF9MKoN27IgzNFOlySwiHbE70mXb4Axk1KsG52"
             data-theme="int" disabled
         />
 
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0647a5.json"
+            href="../../search-data-94ad08.json"
             as="fetch"
             crossorigin
-            integrity="sha384-lr1TVTc+Sp0exiQ76FuTfOAxWxF8v7zwKpIoCNpxRIQ8TD4ny4CZ0YuwgdMv1AWA"
+            integrity="sha384-CeWGqN+LlsEUoo0JG27OYfmv+s+cZXLbeFDwRLGmMDjALUoAqqfKDAXOQAMkSpqD"
             id="search-data"
         />
     </head>
@@ -467,14 +467,14 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-68b153.js"
+                    src="../../assets/vendor-fkui-vue-553092.js"
                     crossorigin
-                    integrity="sha384-d6sH0BeaeTS3YT4zXjgvZS+xVuKhGAAKLoickGLxoNzwNaRUEsYLt7e931vTHdCW"
+                    integrity="sha384-lPtTobhzmZBf0ZKu6baRGiTMlv26/FEWnsq2APrj93oZDdTGTT2gHMeg0MG8LznH"
                 ></script>
                 <script
-                    src="../../assets/vendor-forsakringskassan-docs-live-example-caabe5.js"
+                    src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
                     crossorigin
-                    integrity="sha384-COa+K2pIEMfZRsufv3uA32N6otKo/IltB1HxAHUR9URjRR1g2nop3l0NJonpSgiu"
+                    integrity="sha384-nJLPQGIUBkkwVgDY+ToqjpI+vosaIHaIBoTit9uWov/I2yjBNiUgUWlsfRJXelga"
                 ></script>
 
                 <!-- prettier-ignore --><main>
@@ -488,13 +488,23 @@
 
 
                         
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#typ">Typ</a></li>
+                                
+                                <li><a href="#tumregler">Tumregler</a></li>
+                                
+                            </ul>
+                        </details>
+                        
                     </div>
                     
 
                     <div id="content">
                         <!-- prettier-ignore -->
 <p>I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.</p>
-<p>Läs mer om hur <a href="#changelog">Changelog genereras från commits</a>.</p>
 <p>Commitmeddelanden använder en modifierad variant av <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> där skillnaden är att vi kräver en Jira-referens i slutet:</p>
 <blockquote>
 <p>${type}: ${description} (${relation} ${jira})</p>
@@ -506,58 +516,133 @@
 <li><code>${relation}</code> är hur commit relaterat till en Jira, <code>refs</code> eller <code>fixes</code>.</li>
 <li><code>${jira}</code> är den Jira som commit relaterar till.</li>
 </ul>
+<p>Exempelvis: <code>feat: new component </code>FFoobar<code> (fixes XYZ-123)</code></p>
 <p>Scope sätter vi enbart i undantagsfall då det populeras automatiskt i Changelog.
 Vanligt undantag är <code>chore(deps)</code> för beroenden, <code>chore(release)</code> för releaser samt <code>refactor(${verktyg})</code> och <code>style(${verktyg})</code>.</p>
-<details style="border: 2px solid #eee; padding: 1.5rem; margin-bottom: 1rem;">
-<summary style="cursor: pointer;">Tillgängliga typer</summary>
-<p>De <code>${type}</code> vi använder är:</p>
-<ul>
-<li><code>fix</code> för buggrättningar.</li>
-<li><code>feat</code> för nya features.</li>
-<li><code>build</code> för ändringar av byggscript.</li>
-<li><code>chore(deps)</code> för beroenden.</li>
-<li><code>chore(release)</code> för releaser (ej manuellt).</li>
-<li><code>chore</code> bör undvikas men tillåts för commits som inte passar in under andra typer.</li>
-<li><code>ci</code> för ändringar av CI/CD-script.</li>
-<li><code>docs</code> för ändringar av dokumentation.</li>
-<li><code>style</code> för kosmetiska ändringar som ej påverkar konsumenter (dvs ej visuellt utseende).</li>
-<li><code>refactor</code> för refaktorisering av kod som ej påverkar konsumenter.</li>
-<li><code>perf</code> för ändingar som förbättrar prestanda men ej annars påverkar konsumenter.</li>
-<li><code>test</code> för ändringar eller tillägg av testfall.</li>
-</ul>
-</details>
-<p>Ett bra commitmeddelande ska:</p>
+<h2 id="typ"><a class="header-anchor" href="#typ">Typ</a></h2><p>Den viktigaste beståndsdelen är <code>type</code> som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.</p>
+<p>De vanligaste två är <code>feat</code> (ny funktionallitet) och <code>fix</code> (rättning av existerande funktionallitet).
+Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code>refactor</code> (interna förändringar som inte påverkar konsument).</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    Tillgängliga typer
+                </summary>
+                <table class="table">
+<thead>
+<tr class="table__row">
+<th class="table__column table__column--text" scope="col">Typ</th>
+<th class="table__column table__column--text" scope="col">Release</th>
+<th class="table__column table__column--text" scope="col">Changelog</th>
+<th class="table__column table__column--text" scope="col">Beskrivning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>fix</code></td>
+<td class="table__column table__column--text">Patch</td>
+<td class="table__column table__column--text">Ja</td>
+<td class="table__column table__column--text">Rättning av existerande funktionallitet eller komponent</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>feat</code></td>
+<td class="table__column table__column--text">Minor</td>
+<td class="table__column table__column--text">Ja</td>
+<td class="table__column table__column--text">Ny funktionallitet eller komponent.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>build</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar av byggscript.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>chore(deps)</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar av beroenden.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>chore(release)</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Release (ej manuellt, används för automatiska releaser).</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>chore</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Bör undvikas men tillåts för commits som inte passar in under andra typer.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>ci</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar av CI/CD-script.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>docs</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar av dokumentation.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>style</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Kosmetiska ändringar av kod som ej påverkar konsumenter, exempelvis kodformatering.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>refactor</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Refaktorisering av kod som ej påverkar konsumenter.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>perf</code></td>
+<td class="table__column table__column--text">Patch</td>
+<td class="table__column table__column--text">Ja</td>
+<td class="table__column table__column--text">Ändringar som förbättrar prestanda men ej annars påverkar konsumenter.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>test</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar eller tillägg av testfall.</td>
+</tr>
+</tbody>
+</table>
+
+            </details>
+        <h2 id="tumregler"><a class="header-anchor" href="#tumregler">Tumregler</a></h2><p>Ett bra commitmeddelande ska:</p>
 <ul>
 <li>Beskriva vilken komponent eller funktion den berör. Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</li>
+<li>Undvika att benämna ramverkskomponenter (&quot;i-komponenter&quot;) utan istället de publika komponenter (&quot;f-komponenter&quot;) som påverkas av ändringen.</li>
 </ul>
 
             <div class="docs-messagebox docs-messagebox--info">
                 <p class="docs-messagebox__title">Bra meddelande</p>
                 <ul>
-<li>feat: add new prop <code>foo</code> on component <code>FBar</code></li>
-<li>fix: fix styling issue when clicking on <code>FBaz</code></li>
+<li>feat: add new prop <code>foo</code> on component <code>FBar</code> (refs XYZ-123)</li>
+<li>fix: fix styling issue when clicking on <code>FBaz</code> (fixes XYZ-123)</li>
 </ul>
 
             </div>
-        </div>
-<div class="col col--md-6">
-
+        
             <div class="docs-messagebox docs-messagebox--danger">
                 <p class="docs-messagebox__title">Undvik</p>
                 <ul>
-<li>feat: add new prop</li>
-<li>fix: fix styling</li>
+<li>feat: add new prop (refs XYZ-123)</li>
+<li>fix: fix styling (fix XYZ-123)</li>
 </ul>
 
             </div>
-        <p>Läs mer om <a href="#brytande-andringar">brytnade ändringar</a>.</p>
+        <p>Läs mer om <a href="./release.html#brytande-andringar">brytande ändringar</a>.</p>
 <p>Vi använder <a href="https://commitlint.js.org/">Commitlint</a> för att upprätthålla formatet på commitmeddelanden.
 Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code> från <code>.husky/commit-msg</code>) och är konfigurerat med att använda <a href="https://github.com/Forsakringskassan/commitlint-config"><code>@forsakringskassan/commitlint-config</code></a>.</p>
-<p>Läs mer om <a href="#git-hooks">git hooks</a>.</p>
-<p>Om det behövs kan man kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
+<p>Om det behövs kan du kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
 
                 <div
-                    id="example-3a0aea"
+                    id="example-4fcaed"
                     class="code-preview code-preview--default"
                     
                     
@@ -571,7 +656,7 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
 <ol>
 <li>För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch). Denna commit ska använda <code>feat</code> eller <code>fix</code> som type.</li>
 <li>Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda <code>git commit --fixup</code> eller skapar en ny commit med <code>refactor</code> som type.</li>
-<li>Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups men även de commits som använder <code>refactor</code> (var syfte inte är att göra en refaktorisering av kod som inte skapats i denna branch).</li>
+<li>Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups men även de commits som använder <code>refactor</code> (vars syfte inte är att göra en refaktorisering av kod som inte skapats i denna branch).</li>
 </ol>
 
 
@@ -593,9 +678,9 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/commits (<a href="https://github.com/Forsakringskassan/designsystem/commits/02bbeca696dca5c768b5517ce7e17fb010d76cd6">02bbeca</a>)<br />
+    docs/commits (<a href="https://github.com/Forsakringskassan/designsystem/commits/9ff5b4a08242773f367f8886ab1791d2a9696a75">9ff5b4a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/63">PR 63</a><br />
-        2024-10-09 06:48
+        2024-10-14 09:09
 </div>
 
 
@@ -688,9 +773,9 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
             
         ></script>
         <script
-            src="../../assets/main-5af13e.js"
+            src="../../assets/main-8b3997.js"
             crossorigin
-            integrity="sha384-A/8AcgZAoMz5+pe51Lzs7zQcsQGb17UB/ceEvl+nXYZOnky58pRVh/ReIofzEnV8"
+            integrity="sha384-tMUsZzOmoZSz2qWzoCwYEHpbl3EEWosdUVGhRQ8XHBCBoP4QIjodcfAg2qFXy/NO"
             
         ></script>
     </body>

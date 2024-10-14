@@ -3872,9 +3872,9 @@
   var import_logic13 = __require("@fkui/logic");
 
   // packages/vue/src/utils/has-slot.ts
-  function hasSlot(vm, name, props = {}) {
+  function hasSlot(vm, name, props = {}, options = {}) {
     const slot = vm.$slots[name];
-    return Boolean(renderSlotText(slot, props));
+    return Boolean(renderSlotText(slot, props, options));
   }
 
   // packages/vue/src/utils/action-from-keyboard-event.ts
