@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { type PropType, defineComponent } from "vue";
 import { addFocusListener, findTabbableElements, removeFocusListener, restoreFocus, saveFocus } from "@fkui/logic";
 import { TranslationMixin } from "../../plugins";
 import { config } from "../../config";
@@ -79,6 +79,18 @@ export default defineComponent({
             required: false,
             default: "sv",
         },
+        /**
+         * Set teleport target (when overlay is enabled).
+         *
+         * - When set to a string it is used as a selector.
+         * - When set to a element it is used directly.
+         * - Default uses {@link config#teleportTarget}.
+         */
+        teleport: {
+            type: [String, HTMLElement] as PropType<string | HTMLElement | undefined>,
+            required: false,
+            default: undefined,
+        },
     },
     data() {
         return {
@@ -96,7 +108,11 @@ export default defineComponent({
             };
         },
         teleportTarget() {
-            return config.teleportTarget;
+            if (this.teleport) {
+                return this.teleport;
+            } else {
+                return config.teleportTarget;
+            }
         },
         teleportDisabled() {
             return !this.overlay;
