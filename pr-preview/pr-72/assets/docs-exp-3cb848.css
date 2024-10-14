@@ -339,7 +339,8 @@ html {
   --f-button-discrete-radius-hover: none;
   --f-button-discrete-table-column-action-margin: 0;
   --f-button-discrete-table-column-action-border-radius: 4px;
-  --f-button-discrete-table-column-action-icon-margin: 0;
+  --f-button-discrete-table-column-action-icon-margin: 0 2px 0 2px;
+  --f-button-tertiary-table-column-action-margin: 0 0 0 0.5rem;
   --f-button-default-padding-top: 1rem;
   --f-button-default-padding-right: 1.5rem;
   --f-button-default-padding-bottom: 1rem;
