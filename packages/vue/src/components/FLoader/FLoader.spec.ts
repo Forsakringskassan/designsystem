@@ -1,5 +1,6 @@
 import "html-validate/jest";
 import { shallowMount } from "@vue/test-utils";
+import { config } from "../../config";
 import FLoader from "./FLoader.vue";
 
 describe("FLoader", () => {
@@ -63,6 +64,44 @@ describe("FLoader", () => {
             },
         });
         expect(wrapper.get(".loader__wait-text").text()).toBe("Please wait");
+    });
+});
+
+describe("props", () => {
+    describe("teleport", () => {
+        it("should teleport config.teleportTarget by default", () => {
+            expect.assertions(1);
+            config.teleportTarget = "#selector";
+            const wrapper = shallowMount(FLoader, {
+                props: { show: true },
+                global: {
+                    stubs: {
+                        teleport: {
+                            props: ["to", "disabled"],
+                            template: "{{ to }}",
+                        },
+                    },
+                },
+            });
+            expect(wrapper.text()).toBe("#selector");
+        });
+
+        it("should teleport to target set by prop", () => {
+            expect.assertions(1);
+            config.teleportTarget = "#selector";
+            const wrapper = shallowMount(FLoader, {
+                props: { show: true, teleport: "#overriden" },
+                global: {
+                    stubs: {
+                        teleport: {
+                            props: ["to", "disabled"],
+                            template: "{{ to }}",
+                        },
+                    },
+                },
+            });
+            expect(wrapper.text()).toBe("#overriden");
+        });
     });
 });
 

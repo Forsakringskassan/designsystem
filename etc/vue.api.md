@@ -9262,6 +9262,11 @@ type: StringConstructor;
 required: false;
 default: string;
 };
+teleport: {
+type: PropType<string | HTMLElement | undefined>;
+required: false;
+default: undefined;
+};
 }>, {}, {
 oldFocus: HTMLElement;
 }, {
@@ -9294,7 +9299,13 @@ type: StringConstructor;
 required: false;
 default: string;
 };
+teleport: {
+type: PropType<string | HTMLElement | undefined>;
+required: false;
+default: undefined;
+};
 }>> & Readonly<{}>, {
+teleport: string | HTMLElement | undefined;
 overlay: boolean;
 delay: boolean;
 language: string;

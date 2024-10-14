@@ -18,7 +18,11 @@ FLoaderExample.vue
 ## Teleport
 
 Komponenten teleporteras till body-elementet som standard när den visas som overlay.
-Detta kan ändras till valfritt element genom att ändra värdet för `config.teleportTarget`.
+
+Detta kan ändras till valfritt element antingen genom att
+
+-   ändra värdet för `config.teleportTarget` (global för applikationen).
+-   sätta prop `teleport` (per komponentinstans)
 
 ## API
 
