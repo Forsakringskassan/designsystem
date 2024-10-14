@@ -1,1 +1,14 @@
+# Default reviewers
 * @ext @dvitamin @NicklasWei @MCFK
+
+# Code changes
+packages/ @ext @dvitamin @NicklasWei @MCFK @OlofFredriksson
+
+# Documentation changes
+docs/ @ext @dvitamin @NicklasWei @MCFK @kristofernilsson @Marie-Jakobsson @kristinalindstrom
+
+# Dependency updates
+package.json @ext @dvitamin @MCFK @NicklasWei
+package-lock.json @ext @dvitamin @MCFK @NicklasWei
+internal/*/package.json @dvitamin @ext @MCFK @NicklasWei
+packages/*/package.json @dvitamin @ext @MCFK @NicklasWei
