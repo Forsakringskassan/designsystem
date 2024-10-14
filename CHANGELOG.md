@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 5.37.2 (2024-10-14)
+
+
+### Dependency upgrades
+
+* **deps:** update dependency express to v4.21.1 a087891
+
+
+### Bug Fixes
+
+* **@fkui/css-variables, @fkui/design, @fkui/vue:** teritary buttons in table (refs SFKUI-6710) 2bbe76e
+* **@fkui/vue:** `FSortFilterDataset` add support for sorting mixed types (fixes SFKUI-6816) dfb30e7
+* **@fkui/vue:** enable focus to `IPopupMenu` while using key nav (refs SFKUI-6622) dc9563c
+* **@fkui/vue:** fix tabbing issues in `IPopupMenu` (refs SFKUI-6644) a48312d
+* **@fkui/vue:** table caption with sr-only is rendered properly (fixes SFKUI-6434) 8096dc9
+
 ## 5.37.1 (2024-09-30)
 
 
