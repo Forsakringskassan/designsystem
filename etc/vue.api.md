@@ -5907,7 +5907,7 @@ export function hasParentByName(vm: ComponentPublicInstance | undefined | null, 
 // @public
 export function hasSlot(vm: {
     $slots: Slots;
-}, name: string, props?: Record<string, unknown>): boolean;
+}, name: string, props?: Record<string, unknown>, options?: Partial<RenderSlotOptions>): boolean;
 
 // @public (undocumented)
 export const IAnimateExpand: DefineComponent<    {

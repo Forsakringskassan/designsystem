@@ -1,18 +1,40 @@
 ---
-title: hasSlot
+title: hasSlot() function
+short-title: hasSlot()
 name: hasSlot
-layout: content-with-menu
+layout: article
 ---
 
 Check if slot is implemented by the user.
 
+## Syntax
+
 ```ts
-export function hasSlot(
-    vm: { $slots: Record<string, NormalizedScopedSlot | undefined> },
-    name: string,
-    props: Record<string, unknown> = {},
-): boolean;
+function hasSlot(vm, name, props, options);
 ```
+
+## Parametrar
+
+`vm: { $slots: Record<string, NormalizedScopedSlot | undefined> }`
+: Component instance.
+
+`name: string`
+: Name of the slot to check for.
+
+`props: Record<string, unknown>` {@optional}
+: Props required by a scoped slot.
+
+`options: Partial<RenderSlotOptions>` {@optional}
+: Render options.
+
+    `stripClasses: string[]`
+    : List of classes to exclude when extracting slot text.
+
+        Default: `["sr-only"]`
+
+## Returvärde
+
+`true` if the slot is implemented and have non-empty content, otherwise `false`.
 
 ## Usage
 
@@ -41,4 +63,20 @@ If you use scoped slots you need to pass in the scope:
 
 ```ts
 hasSlot(this, "foo", { name: "World" }); // --> true
+```
+
+By default text wrapped by the `sr-only` class is ignored.
+This can be changed by setting the `stripClasses` option to `[]`
+
+```html static
+<my-awesome-component>
+    <template #foo>
+        <span class="sr-only"> Lorem ipsum dolor sit amet </span>
+    </template>
+</my-awesome-component>
+```
+
+```ts
+hasSlot(this, "foo"); // --> false
+hasSlot(this, "foo", {}, { stripClasses: [] }); // --> true
 ```

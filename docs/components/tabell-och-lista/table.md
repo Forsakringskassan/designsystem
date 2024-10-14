@@ -92,10 +92,44 @@ För att istället skapa expanderbara rader med valfritt innehåll används `exp
 
 Observera att det inte är rekommenderat att skapa för komplext expanderat innehåll, så som att placera ytterligare expanderbara tabeller inuti.
 
+## Tabellrubrik
+
+En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad heading.
+
+Om tabellen har en heading i nära anslutning som också förklarar tabellens innebörd assoccierar du den med `aria-labelledby`:
+
+```diff
+-<h3>Tabellrubrik</h3>
+-<f-data-table>
++<h3 id="awesome-heading">Tabellrubrik</h3>
++<f-data-table aria-labelledby="awesome-header">
+   ...
+ </f-data-table>
+```
+
+Använd caption om tabellen inte har en naturlig rubrik:
+
+```diff
+ <f-data-table>
++  <template #caption> Tabellrubrik </template>
+   ...
+ </f-data-table>
+```
+
+I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:
+
+```diff
+ <f-data-table>
++  <template #caption>
++    <span class="sr-only"> Tabellrubrik </span>
++  </template>
+   ...
+ </f-data-table>
+```
+
 ## Tänk på det här
 
 -   Gör en ordentlig analys av vilken information som måste visas i tabellen. Målet bör vara att alla kolumner får plats på skärmen.
--   Alla tabeller ska ha en tabellrubrik (caption) men den kan döljas visuellt om du till exempel vill använda en överliggande rubrik istället. En dold caption läses fortfarande upp av skärmläsaren.
 -   Hjälp användaren att hitta i en tabell med mycket information genom att lägga till möjlighet att söka eller sortera. Använd komponent {@link FSortFilterDataset Datamängdssorteraren}
 
 ## Utforma en tabell
