@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-37ef44.json"
+            href="../../search-data-c91205.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Ij2MuQA3UKEbMS0frWOCcQcdImr4uasueLj864/Wu/qEb510PzRt2CMl3u+hxTsX"
+            integrity="sha384-E1wBX6teVlQECrgTmnuN5Rbr+HgSOhWIjEW0xV6uU5p2WG2fnY4anyyoKGUTN6oP"
             id="search-data"
         />
     </head>
@@ -1044,9 +1044,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-9dc6e9.js"
+                    src="../../assets/vendor-fkui-vue-553092.js"
                     crossorigin
-                    integrity="sha384-Ln/7w67Y9+Ibhp4dMlF+SlXd+eu3XXatcAm2LxlffjwD3Z3rCUqrnBWwTtIiULcl"
+                    integrity="sha384-lPtTobhzmZBf0ZKu6baRGiTMlv26/FEWnsq2APrj93oZDdTGTT2gHMeg0MG8LznH"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -1069,19 +1069,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/2dc5d512b3903aacf3fa4c6acb79ebda5938113a/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/60ed56c8f8825437044eba837282b67dbae9f93b/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/2dc5d512b3903aacf3fa4c6acb79ebda5938113a/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/60ed56c8f8825437044eba837282b67dbae9f93b/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/2dc5d512b3903aacf3fa4c6acb79ebda5938113a/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/60ed56c8f8825437044eba837282b67dbae9f93b/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1106,6 +1106,8 @@
                                 <li><a href="#datatabell">Datatabell</a></li>
                                 
                                 <li><a href="#interaktiv_tabell">Interaktiv tabell</a></li>
+                                
+                                <li><a href="#tabellrubrik">Tabellrubrik</a></li>
                                 
                                 <li><a href="#tank_pa_det_har">Tänk på det här</a></li>
                                 
@@ -1323,9 +1325,61 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 </code></pre>
                 </div>
             <p>Observera att det inte är rekommenderat att skapa för komplext expanderat innehåll, så som att placera ytterligare expanderbara tabeller inuti.</p>
-<h2 id="tank_pa_det_har"><a class="header-anchor" href="#tank_pa_det_har">Tänk på det här</a></h2><ul>
+<h2 id="tabellrubrik"><a class="header-anchor" href="#tabellrubrik">Tabellrubrik</a></h2><p>En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad heading.</p>
+<p>Om tabellen har en heading i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>:</p>
+
+                <div
+                    id="example-10085f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;h3&gt;Tabellrubrik&lt;/h3&gt;</span>
+<span class="hljs-deletion">-&lt;f-data-table&gt;</span>
+<span class="hljs-addition">+&lt;h3 id=&quot;awesome-heading&quot;&gt;Tabellrubrik&lt;/h3&gt;</span>
+<span class="hljs-addition">+&lt;f-data-table aria-labelledby=&quot;awesome-header&quot;&gt;</span>
+   ...
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <p>Använd caption om tabellen inte har en naturlig rubrik:</p>
+
+                <div
+                    id="example-cb578c"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-data-table&gt;
+<span class="hljs-addition">+  &lt;template #caption&gt; Tabellrubrik &lt;/template&gt;</span>
+   ...
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <p>I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:</p>
+
+                <div
+                    id="example-7834d6"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-data-table&gt;
+<span class="hljs-addition">+  &lt;template #caption&gt;</span>
+<span class="hljs-addition">+    &lt;span class=&quot;sr-only&quot;&gt; Tabellrubrik &lt;/span&gt;</span>
+<span class="hljs-addition">+  &lt;/template&gt;</span>
+   ...
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <h2 id="tank_pa_det_har"><a class="header-anchor" href="#tank_pa_det_har">Tänk på det här</a></h2><ul>
 <li>Gör en ordentlig analys av vilken information som måste visas i tabellen. Målet bör vara att alla kolumner får plats på skärmen.</li>
-<li>Alla tabeller ska ha en tabellrubrik (caption) men den kan döljas visuellt om du till exempel vill använda en överliggande rubrik istället. En dold caption läses fortfarande upp av skärmläsaren.</li>
 <li>Hjälp användaren att hitta i en tabell med mycket information genom att lägga till möjlighet att söka eller sortera. Använd komponent <a href="./fsortfilterdataset.html">Datamängdssorteraren</a></li>
 </ul>
 <h2 id="utforma_en_tabell"><a class="header-anchor" href="#utforma_en_tabell">Utforma en tabell</a></h2><ul>
@@ -1338,7 +1392,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-ea3e0b"
+                    id="example-640d1c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1565,9 +1619,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/strip-ansi-7.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/2dc5d512b3903aacf3fa4c6acb79ebda5938113a">2dc5d51</a>)<br />
+    renovate/strip-ansi-7.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/60ed56c8f8825437044eba837282b67dbae9f93b">60ed56c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/8">PR 8</a><br />
-        2024-10-14 06:49
+        2024-10-14 07:11
 </div>
 
 

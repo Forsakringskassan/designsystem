@@ -3588,9 +3588,9 @@
   var import_logic13 = __require("@fkui/logic");
 
   // packages/vue/src/utils/has-slot.ts
-  function hasSlot(vm, name, props = {}) {
+  function hasSlot(vm, name, props = {}, options = {}) {
     const slot = vm.$slots[name];
-    return Boolean(renderSlotText(slot, props));
+    return Boolean(renderSlotText(slot, props, options));
   }
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=script
