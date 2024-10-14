@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-94ad08.json"
+            href="../../search-data-46aeb6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-CeWGqN+LlsEUoo0JG27OYfmv+s+cZXLbeFDwRLGmMDjALUoAqqfKDAXOQAMkSpqD"
+            integrity="sha384-IAVfnwLOhYh4ZagRvJYwEdmuJ3J9jecY5i24ZeokKhmoR4PfoOR0ofe85JaA7Svz"
             id="search-data"
         />
     </head>
@@ -510,9 +510,8 @@
                         <!-- prettier-ignore -->
 <p>I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.</p>
 <p>Commitmeddelanden använder en modifierad variant av <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> där skillnaden är att vi kräver en Jira-referens i slutet:</p>
-<blockquote>
-<p>${type}: ${description} (${relation} ${jira})</p>
-</blockquote>
+<pre><code>${type}: ${description} (${relation} ${jira})
+</code></pre>
 <p>där:</p>
 <ul>
 <li><code>${type}</code> är vilken typ av commit, vanligtvis <code>fix</code> eller <code>feat</code>.</li>
@@ -520,8 +519,13 @@
 <li><code>${relation}</code> är hur commit relaterat till en Jira, <code>refs</code> eller <code>fixes</code>.</li>
 <li><code>${jira}</code> är den Jira som commit relaterar till.</li>
 </ul>
-<p>Exempelvis: <code>feat: new component `FFoobar` (fixes XYZ-123)</code></p>
-<p>Scope sätter vi enbart i undantagsfall då det populeras automatiskt i Changelog.
+
+            <div class="docs-messagebox docs-messagebox--info">
+                <p class="docs-messagebox__title">Exempelvis</p>
+                <p><code>feat: new component </code>FFoobar` (fixes XYZ-123)``</p>
+
+            </div>
+        <p>Scope sätter vi enbart i undantagsfall då det populeras automatiskt i Changelog.
 Vanligt undantag är <code>chore(deps)</code> för beroenden, <code>chore(release)</code> för releaser samt <code>refactor(${verktyg})</code> och <code>style(${verktyg})</code>.</p>
 <h2 id="typ"><a class="header-anchor" href="#typ">Typ</a></h2><p>Den viktigaste beståndsdelen är <code>type</code> som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.</p>
 <p>De vanligaste två är <code>feat</code> (ny funktionallitet) och <code>fix</code> (rättning av existerande funktionallitet).
@@ -620,8 +624,8 @@ Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code
         <p>Läs mer om <a href="./release.html#brytande_andringar">brytande ändringar</a>.</p>
 <h2 id="tumregler"><a class="header-anchor" href="#tumregler">Tumregler</a></h2><p>Ett bra commitmeddelande ska:</p>
 <ul>
-<li>Beskriva vilken komponent eller funktion den berör. Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</li>
-<li>Undvika att benämna ramverkskomponenter (&quot;i-komponenter&quot;) utan istället de publika komponenter (&quot;f-komponenter&quot;) som påverkas av ändringen.</li>
+<li>Beskriva vilken eller vilka  komponenter eller funktioner som berörs. Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</li>
+<li>Undvika att benämna ramverkskomponenter (&quot;i-komponenter&quot;) utan skriv istället de publika komponenter (&quot;f-komponenter&quot;) som påverkas av ändringen.</li>
 </ul>
 
             <div class="docs-messagebox docs-messagebox--info">
@@ -637,7 +641,7 @@ Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code
                 <p class="docs-messagebox__title">Undvik</p>
                 <ul>
 <li>feat: add new prop (refs XYZ-123)</li>
-<li>fix: fix styling (fix XYZ-123)</li>
+<li>fix: WIP (fix XYZ-123)</li>
 </ul>
 
             </div>
@@ -646,7 +650,7 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
 <p>Om det behövs kan du kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
 
                 <div
-                    id="example-87f26a"
+                    id="example-a2af4f"
                     class="code-preview code-preview--default"
                     
                     
@@ -682,9 +686,9 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/commits (<a href="https://github.com/Forsakringskassan/designsystem/commits/c78ad89d9804320dfb078d20585e09b45e298d58">c78ad89</a>)<br />
+    docs/commits (<a href="https://github.com/Forsakringskassan/designsystem/commits/99273a27ed448f216ff5375036fac5fdcde2036c">99273a2</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/63">PR 63</a><br />
-        2024-10-14 09:23
+        2024-10-14 13:03
 </div>
 
 
