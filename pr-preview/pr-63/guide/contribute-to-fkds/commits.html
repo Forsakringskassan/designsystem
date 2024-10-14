@@ -496,6 +496,10 @@
                                 
                                 <li><a href="#tumregler">Tumregler</a></li>
                                 
+                                <li><a href="#commitlint">Commitlint</a></li>
+                                
+                                <li><a href="#arbetsflode">Arbetsflöde</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -516,7 +520,7 @@
 <li><code>${relation}</code> är hur commit relaterat till en Jira, <code>refs</code> eller <code>fixes</code>.</li>
 <li><code>${jira}</code> är den Jira som commit relaterar till.</li>
 </ul>
-<p>Exempelvis: <code>feat: new component </code>FFoobar<code> (fixes XYZ-123)</code></p>
+<p>Exempelvis: <code>feat: new component `FFoobar` (fixes XYZ-123)</code></p>
 <p>Scope sätter vi enbart i undantagsfall då det populeras automatiskt i Changelog.
 Vanligt undantag är <code>chore(deps)</code> för beroenden, <code>chore(release)</code> för releaser samt <code>refactor(${verktyg})</code> och <code>style(${verktyg})</code>.</p>
 <h2 id="typ"><a class="header-anchor" href="#typ">Typ</a></h2><p>Den viktigaste beståndsdelen är <code>type</code> som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.</p>
@@ -613,7 +617,8 @@ Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code
 </table>
 
             </details>
-        <h2 id="tumregler"><a class="header-anchor" href="#tumregler">Tumregler</a></h2><p>Ett bra commitmeddelande ska:</p>
+        <p>Läs mer om <a href="./release.html#brytande_andringar">brytande ändringar</a>.</p>
+<h2 id="tumregler"><a class="header-anchor" href="#tumregler">Tumregler</a></h2><p>Ett bra commitmeddelande ska:</p>
 <ul>
 <li>Beskriva vilken komponent eller funktion den berör. Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</li>
 <li>Undvika att benämna ramverkskomponenter (&quot;i-komponenter&quot;) utan istället de publika komponenter (&quot;f-komponenter&quot;) som påverkas av ändringen.</li>
@@ -636,13 +641,12 @@ Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code
 </ul>
 
             </div>
-        <p>Läs mer om <a href="./release.html#brytande-andringar">brytande ändringar</a>.</p>
-<p>Vi använder <a href="https://commitlint.js.org/">Commitlint</a> för att upprätthålla formatet på commitmeddelanden.
+        <h2 id="commitlint"><a class="header-anchor" href="#commitlint">Commitlint</a></h2><p>Vi använder <a href="https://commitlint.js.org/">Commitlint</a> för att upprätthålla formatet på commitmeddelanden.
 Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code> från <code>.husky/commit-msg</code>) och är konfigurerat med att använda <a href="https://github.com/Forsakringskassan/commitlint-config"><code>@forsakringskassan/commitlint-config</code></a>.</p>
 <p>Om det behövs kan du kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
 
                 <div
-                    id="example-4fcaed"
+                    id="example-87f26a"
                     class="code-preview code-preview--default"
                     
                     
@@ -652,7 +656,7 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
                     <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">git commit --no-verify -m <span class="hljs-string">&#x27;non-conforming message&#x27;</span>
 </code></pre>
                 </div>
-            <p>För feature-branches rekommenderar vi detta arbetsflödet för dina commits:</p>
+            <h2 id="arbetsflode"><a class="header-anchor" href="#arbetsflode">Arbetsflöde</a></h2><p>För feature-branches rekommenderar vi detta arbetsflödet för dina commits:</p>
 <ol>
 <li>För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch). Denna commit ska använda <code>feat</code> eller <code>fix</code> som type.</li>
 <li>Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda <code>git commit --fixup</code> eller skapar en ny commit med <code>refactor</code> som type.</li>
@@ -678,9 +682,9 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/commits (<a href="https://github.com/Forsakringskassan/designsystem/commits/2afceca8215cd5d465fa259bf03325b619290067">2afceca</a>)<br />
+    docs/commits (<a href="https://github.com/Forsakringskassan/designsystem/commits/c78ad89d9804320dfb078d20585e09b45e298d58">c78ad89</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/63">PR 63</a><br />
-        2024-10-14 09:13
+        2024-10-14 09:23
 </div>
 
 
