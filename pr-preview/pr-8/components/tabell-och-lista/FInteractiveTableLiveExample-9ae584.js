@@ -208,19 +208,27 @@
                 <f-table-column name="actions" title="\xC5tg\xE4rd" type="action" shrink>
                     <button
                         aria-label="Redigera"
-                        class="button button--discrete table__action"
+                        class="button button--tertiary button--small"
                         type="button"
                     >
-                        <svg aria-hidden="true" class="icon button__pen" focusable="false">
+                        <svg
+                            aria-hidden="true"
+                            class="icon button__icon button__pen"
+                            focusable="false"
+                        >
                             <use xlink:href="#f-icon-pen" />
                         </svg>
                     </button>
                     <button
                         aria-label="Ta bort"
-                        class="button button--discrete table__action"
+                        class="button button--tertiary button--small"
                         type="button"
                     >
-                        <svg aria-hidden="true" class="icon button__trashcan" focusable="false">
+                        <svg
+                            aria-hidden="true"
+                            class="icon button__icon button__trashcan"
+                            focusable="false"
+                        >
                             <use xlink:href="#f-icon-trashcan" />
                         </svg>
                     </button>
