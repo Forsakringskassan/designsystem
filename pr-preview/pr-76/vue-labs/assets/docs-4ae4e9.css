@@ -6910,13 +6910,6 @@ input[type=search]:focus,
   width: var(--f-width-full);
   text-align: left;
 }
-.no-bugfix thead th,
-.no-bugfix thead td,
-.no-bugfix tbody th,
-.no-bugfix tbody td {
-  white-space: nowrap;
-}
-
 .table thead th {
   background: var(--f-background-grid-header);
   border-bottom: 2px solid var(--f-border-color-grid-header);

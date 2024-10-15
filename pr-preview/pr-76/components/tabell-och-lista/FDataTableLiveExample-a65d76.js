@@ -45,8 +45,7 @@
         hasCustomEmptyText: false,
         hasHiddenCaption: false,
         emptyItems: [],
-        scroll: "none",
-        clipFix: false
+        scroll: "none"
       };
     },
     computed: {
@@ -110,11 +109,10 @@
       },
       template() {
         const scroll = this.scroll !== "none" ? `scroll="${this.scroll}"` : "";
-        const classes = `class="${this.clipFix ? "" : "no-bugfix"}"`;
         return (
           /* HTML */
           `
-                <f-data-table ${classes} ${this.items} ${this.striped} ${scroll} key-attribute="id">
+                <f-data-table ${this.items} ${this.striped} ${scroll} key-attribute="id">
                     <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
                         <f-table-column name="level" title="Niv\xE5" ${this.rowHeader} type="text">
@@ -251,21 +249,9 @@
           /* STABLE */
         }, 8, ["modelValue"]),
         (0, import_vue5.createTextVNode)(),
-        (0, import_vue5.createVNode)(_component_f_checkbox_field, {
-          modelValue: _ctx.clipFix,
-          "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.clipFix = $event),
-          value: true
-        }, {
-          default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)("\n            Buggr\xE4ttning f\xF6r tabell som klipps\n        ")
-          ]),
-          _: 1
-          /* STABLE */
-        }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createVNode)(_component_f_select_field, {
           modelValue: _ctx.scroll,
-          "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.scroll = $event)
+          "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.scroll = $event)
         }, {
           label: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createTextVNode)(" Scroll ")
@@ -294,7 +280,7 @@
             (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomEmptyText,
-              "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasCustomEmptyText = $event),
+              "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasCustomEmptyText = $event),
               value: false
             }, {
               default: (0, import_vue5.withCtx)(() => [
@@ -306,7 +292,7 @@
             (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomEmptyText,
-              "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.hasCustomEmptyText = $event),
+              "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasCustomEmptyText = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => [
