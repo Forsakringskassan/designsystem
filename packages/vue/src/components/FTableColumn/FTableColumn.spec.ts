@@ -22,6 +22,7 @@ function createWrapper({
             provide: {
                 addColumn: jest.fn(),
                 setVisibilityColumn: jest.fn(),
+                renderColumns: true,
                 ...provide,
             },
         },
@@ -212,6 +213,17 @@ it("should be transparent", async () => {
     });
     await wrapper.vm.$nextTick();
     expect(wrapper.attributes("foo")).toBe("bar");
+});
+
+it("should not render any content unless renderColumns is enabled", async () => {
+    expect.assertions(1);
+    const wrapper = createWrapper({
+        provide: {
+            renderColumns: false,
+        },
+    });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find("*").exists()).toBeFalsy();
 });
 
 describe("html-validate", () => {

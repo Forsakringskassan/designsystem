@@ -1,5 +1,5 @@
 <template>
-    <component :is="tagName" v-if="visible" :class="classes" :scope="scope" v-bind="$attrs">
+    <component :is="tagName" v-if="renderColumns && visible" :class="classes" :scope="scope" v-bind="$attrs">
         <slot></slot>
         <!-- Extra space between columns for screen reader. Otherwise it can sometimes read two numbers as one longer number.
             For example a table with | 2 | 200 | can be read as 2200 in some languages.

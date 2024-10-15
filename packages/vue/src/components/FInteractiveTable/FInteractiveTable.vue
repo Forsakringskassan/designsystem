@@ -127,20 +127,11 @@
                     </template>
                 </template>
 
-                <tr v-if="!hasInitiateColumns">
-                    <slot v-bind="{ row: emptyRow }"></slot>
+                <tr v-if="isEmpty && columns.length === 0">
+                    <slot v-bind="{ row: {} }"></slot>
                 </tr>
 
                 <template v-if="isEmpty">
-                    <tr v-show="false" hidden>
-                        <!--
-                            when no rows are present the columns wont be rendered
-                            either so we must add an empty blank row for columns
-                            visibility etc to update
-                        -->
-                        <slot v-bind="{ row: emptyRow }"></slot>
-                    </tr>
-
                     <tr>
                         <td class="table__column table__column--action" :colspan="nbOfColumns">
                             <!--
@@ -157,17 +148,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { type PropType, computed, defineComponent, provide } from "vue";
 import { type ListArray, type ListItem } from "../../types";
-import {
-    TableScroll,
-    emptyTableRow,
-    hasSlot,
-    tableScrollClasses,
-    itemEquals,
-    includeItem,
-    renderSlotText,
-} from "../../utils";
+import { TableScroll, hasSlot, tableScrollClasses, itemEquals, includeItem, renderSlotText } from "../../utils";
 import {
     FTableColumnData,
     FTableColumnSort,
@@ -201,7 +184,7 @@ export default defineComponent({
     name: "FInteractiveTable",
     components: { FCheckboxField, FIcon },
     mixins: [TranslationMixin],
-    provide(): FTableInterface {
+    provide(): Omit<FTableInterface, "renderColumns"> {
         return {
             addColumn: (column: FTableColumnData) => {
                 this.columns = addColumn(this.columns, column);
@@ -318,6 +301,10 @@ export default defineComponent({
         "collapse",
     ],
     setup(props, context): FSortFilterDatasetInterface & ActivateItemInterface & ExpandableTable {
+        provide(
+            "renderColumns",
+            computed(() => props.rows.length > 0),
+        );
         const sortFilterDatasetInjected = FSortFilterDatasetInjected();
         const activateItemInjected = ActivateItemInjected();
         const expandableTable = useExpandableTable(
@@ -334,7 +321,6 @@ export default defineComponent({
         return {
             activeRow: undefined,
             columns: [],
-            emptyRow: emptyTableRow(),
             selectedRows: [],
             tr: [],
         };
@@ -344,10 +330,12 @@ export default defineComponent({
             return hasSlot(this, "caption", {}, { stripClasses: [] });
         },
         hasCheckboxDescription(): boolean {
-            return hasSlot(this, "checkbox-description", { row: this.emptyRow });
-        },
-        hasInitiateColumns(): boolean {
-            return this.columns.length > 0;
+            /* this is under the assumption that `hasCheckboxDescription` is
+             * only used when there is one or more rows present, if this is to be
+             * called under other circumstances we need a stub object but this
+             * should be good enough for now */
+            const firstRow = this.rows[0];
+            return hasSlot(this, "checkbox-description", { row: firstRow });
         },
         isEmpty(): boolean {
             return this.rows.length === 0;

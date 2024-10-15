@@ -338,22 +338,26 @@ it("should be transparent", async () => {
     expect(table.attributes("foo")).toBe("bar");
 });
 
-it("should handle nested row objects", async () => {
-    expect.assertions(1);
+it("should handle nested row objects no rows are present", async () => {
+    expect.assertions(2);
     const TestComponent = defineComponent({
         components: { FDataTable, FTableColumn },
         template: /* HTML */ `
             <f-data-table :rows="[]" key-attribute="id">
                 <template #caption> My fancy caption </template>
                 <template #default="{ row }">
-                    <f-table-column name="test" title="MyTitle">
+                    <f-table-column name="test" title="My Awesome Column">
                         {{ row.some.deeply.nested.prop }}
                     </f-table-column>
                 </template>
             </f-data-table>
         `,
     });
-    expect(() => mount(TestComponent)).not.toThrow();
+    const wrapper = mount(TestComponent);
+    await wrapper.vm.$nextTick();
+    const th = wrapper.findAll("thead th");
+    expect(th).toHaveLength(1);
+    expect(th[0].text()).toBe("My Awesome Column");
 });
 
 it("should call provided sort method when clicking columnheader that is registrated as sortable", async () => {

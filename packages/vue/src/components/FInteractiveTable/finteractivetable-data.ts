@@ -7,7 +7,6 @@ import { type FTableColumnData } from "../FTableColumn";
 export interface FInteractiveTableData {
     activeRow: ListItem | undefined;
     columns: FTableColumnData[];
-    emptyRow: Record<string, unknown>;
     selectedRows: ListArray;
     tr: HTMLElement[];
 }
