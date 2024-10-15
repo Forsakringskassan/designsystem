@@ -97,7 +97,7 @@
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createElementVNode)("div", null, [
-        (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_loader, {
+        (0, import_vue5.createVNode)(_component_f_loader, {
           show: _ctx.show,
           overlay: _ctx.overlay,
           delay: _ctx.delay
@@ -115,9 +115,7 @@
           ]),
           _: 1
           /* STABLE */
-        }, 8, ["show", "overlay", "delay"])), [
-          [_directive_test, "loaderExample"]
-        ])
+        }, 8, ["show", "overlay", "delay"])
       ]),
       (0, import_vue5.createTextVNode)(),
       (0, import_vue5.createElementVNode)("div", _hoisted_1, [

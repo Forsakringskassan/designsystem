@@ -125,7 +125,7 @@
                             type="text"
                             expand
                         >
-                            {{ row.start }}
+                            <span class="nowrap">{{ row.start }}</span>
                         </f-table-column>
                         <f-table-column
                             name="end"
@@ -133,7 +133,7 @@
                             ${this.rowDescription}
                             type="text"
                         >
-                            {{ row.end }}
+                            <span class="nowrap">{{ row.end }}</span>
                         </f-table-column>
                         <f-table-column name="antal" title="Antal dagar" type="numeric">
                             {{ row.antal }}
