@@ -111,7 +111,7 @@
         modelValue: _ctx.current,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.current = $event),
         "header-tag": "h2",
-        "disable-initial-focus": "true",
+        "disable-initial-focus": "",
         onCompleted: _ctx.onCompleted,
         onCancel: _ctx.onCancel
       }, {
