@@ -18,14 +18,12 @@ export function setup(options: SetupOptions): void {
         },
     });
     setRunningContext(app);
-    app.use(ErrorPlugin);
+    app.use(ErrorPlugin, {
+        captureWarnings: true,
+        logToConsole: true,
+    });
     app.use(ValidationPlugin);
     app.use(TestPlugin);
     app.use(TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-        /* eslint-disable-next-line no-console -- expected to log */
-        console.warn(`Warning:`, msg, trace);
-        throw new Error(msg);
-    };
 }

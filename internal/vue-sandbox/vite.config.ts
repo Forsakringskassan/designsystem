@@ -7,6 +7,9 @@ export default defineConfig({
     // - File won't be found since searching from root of public and not /vue-sandbox/.
     base: "./",
     plugins: [vue()],
+    build: {
+        minify: false,
+    },
     optimizeDeps: {
         /**
          * Vite treats monorepo packages as sourcecode and performs no prebundling by default.
