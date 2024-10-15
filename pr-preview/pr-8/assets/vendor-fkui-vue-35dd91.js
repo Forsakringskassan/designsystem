@@ -12911,7 +12911,7 @@
     * - `"both"`: Enables scrolling in both directions
     * - `"none"`: Disables scrolling (default)
     */
-    scroll: { type: String, default: TableScroll.NONE, validator: function(value) {
+    scroll: { type: String, default: TableScroll.NONE, validator(value) {
       const types = Object.values(TableScroll);
       return types.includes(value);
     } }

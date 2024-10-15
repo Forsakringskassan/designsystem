@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-1767e8.css"
+            href="../../assets/docs-f35221.css"
             crossorigin
-            integrity="sha384-/Ff5ZXxXKDQHqdP6XIIpuzZX7p46EmiuY5RsExoPQOw4NHE8mNKCOBo5TpqAd7ns"
+            integrity="sha384-OIYDJ+HN73LhSwdJAmb9cTiAFhtdB1spwC8CBR+qAxYErH0swl9tWOlRFfWQn3jT"
             
         />
         <link
@@ -1064,9 +1064,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-abbe88.js"
+                    src="../../assets/vendor-fkui-vue-35dd91.js"
                     crossorigin
-                    integrity="sha384-Nw/VU3FcL3I4iwc14IC9QIq4HqL5BcNafC3oYYhosBfGBdDAPVmiDDnjfiCZu1Lx"
+                    integrity="sha384-f3Ek1n+qb7+iSI21Pl3nhsgbAhS0rDxeAhkrmtQ8IM4AWhvK88OfwpLb7l4tvQFG"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -1089,19 +1089,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/02bcaed5a867d604ca9ebf5e7ac95361fbcf3da2/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/6155d532ca9b9c532a08a0f5503c048167eee039/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/02bcaed5a867d604ca9ebf5e7ac95361fbcf3da2/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/6155d532ca9b9c532a08a0f5503c048167eee039/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/02bcaed5a867d604ca9ebf5e7ac95361fbcf3da2/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/6155d532ca9b9c532a08a0f5503c048167eee039/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1160,9 +1160,13 @@
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
+.nowrap {
+    white-space: nowrap;
+}
+
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FDataTableLiveExample-e9030d.js"></script>
+        <script defer src="./FDataTableLiveExample-e354fa.js"></script>
     
                 </div>
             <h2 id="interaktiv_tabell"><a class="header-anchor" href="#interaktiv_tabell">Interaktiv tabell</a></h2><p><code>FInteractiveTable</code></p>
@@ -1404,15 +1408,34 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 </ul>
 <h2 id="utforma_en_tabell"><a class="header-anchor" href="#utforma_en_tabell">Utforma en tabell</a></h2><ul>
 <li>Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara. Samma princip gäller för kolumner.</li>
+<li>Tabellen kommer radbryta innehåll om det inte får plats. Använd istället skroll-funktionen om innehållet blir svårläst.</li>
 <li>Du kan ange vilka kolumner som tar maximal bredd och vilka som får ta minsta möjliga.</li>
 <li>Text i en tabellcell ska i regel vara vänsterställd. Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.</li>
 <li>Använd zebra-randiga rader när du har långa och många rader.  Det gör det enklare att visuellt skanna av tabellen och följa rader.</li>
 </ul>
-<h3 id="tomt_lage_i_tabellen"><a class="header-anchor" href="#tomt_lage_i_tabellen">Tomt läge i tabellen</a></h3><p>Texten för en tom tabell går att anpassas till att bättre passa innehållet, till exempel &quot;Det finns inga betalningar&quot;, &quot;Ingen anslutning finns&quot;
+<h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p>För att lägga till skoll i tabell använder du prop <code>scroll</code>:</p>
+
+                <div
+                    id="example-a6d93a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-data-table :rows=&quot;items&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-data-table :rows=&quot;items&quot; scroll=&quot;horizontal&quot;&gt;</span>
+     &lt;template #default=&quot;{ row }&quot;&gt;
+         &lt;!-- [...] --&gt;
+     &lt;/template&gt;
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <h3 id="tomt_lage_i_tabellen"><a class="header-anchor" href="#tomt_lage_i_tabellen">Tomt läge i tabellen</a></h3><p>Texten för en tom tabell går att anpassas till att bättre passa innehållet, till exempel &quot;Det finns inga betalningar&quot;, &quot;Ingen anslutning finns&quot;
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-640d1c"
+                    id="example-f09767"
                     class="code-preview code-preview--default"
                     
                     
@@ -1639,9 +1662,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/strip-ansi-7.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/02bcaed5a867d604ca9ebf5e7ac95361fbcf3da2">02bcaed</a>)<br />
+    renovate/strip-ansi-7.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/6155d532ca9b9c532a08a0f5503c048167eee039">6155d53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/8">PR 8</a><br />
-        2024-10-15 15:25
+        2024-10-15 16:01
 </div>
 
 
