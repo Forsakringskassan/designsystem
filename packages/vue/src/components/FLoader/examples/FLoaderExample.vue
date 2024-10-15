@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <f-loader v-test="'loaderExample'" :show="show" :overlay="overlay" :delay="delay">
+            <f-loader :show="show" :overlay="overlay" :delay="delay">
                 <template v-if="customText"> Loading (App specific)... </template>
             </f-loader>
         </div>

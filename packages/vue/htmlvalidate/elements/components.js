@@ -1300,6 +1300,10 @@ module.exports = defineMetadata({
         flow: true,
         permittedContent: ["f-wizard-step", "@flow"],
         attributes: {
+            "disable-initial-focus": {
+                required: false,
+                boolean: true,
+            },
             "header-tag": {
                 required: true,
                 enum: ["h1", "h2", "h3", "h4", "h5", "h6"],

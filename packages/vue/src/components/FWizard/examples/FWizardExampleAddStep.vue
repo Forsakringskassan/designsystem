@@ -3,7 +3,7 @@
         <f-wizard
             v-model="current"
             header-tag="h2"
-            disable-initial-focus="true"
+            disable-initial-focus
             @completed="onCompleted"
             @cancel="onCancel"
         >
