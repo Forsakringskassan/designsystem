@@ -1649,7 +1649,7 @@ default: boolean;
 scroll: {
 type: PropType<TableScroll>;
 default: TableScroll;
-validator: (value: string) => boolean;
+validator(value: string): boolean;
 };
 }, FSortFilterDatasetInterface, {
 columns: FTableColumnData[];
@@ -1685,7 +1685,7 @@ default: boolean;
 scroll: {
 type: PropType<TableScroll>;
 default: TableScroll;
-validator: (value: string) => boolean;
+validator(value: string): boolean;
 };
 }>>, {
 scroll: TableScroll;

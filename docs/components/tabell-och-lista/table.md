@@ -135,9 +135,23 @@ I undantagsfall kan du också använda en dold skärmläsartext i caption, men t
 ## Utforma en tabell
 
 -   Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara. Samma princip gäller för kolumner.
+-   Tabellen kommer radbryta innehåll om det inte får plats. Använd istället skroll-funktionen om innehållet blir svårläst.
 -   Du kan ange vilka kolumner som tar maximal bredd och vilka som får ta minsta möjliga.
 -   Text i en tabellcell ska i regel vara vänsterställd. Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.
 -   Använd zebra-randiga rader när du har långa och många rader.  Det gör det enklare att visuellt skanna av tabellen och följa rader.
+
+### Skroll i tabell
+
+För att lägga till skoll i tabell använder du prop `scroll`:
+
+```diff
+-<f-data-table :rows="items">
++<f-data-table :rows="items" scroll="horizontal">
+     <template #default="{ row }">
+         <!-- [...] -->
+     </template>
+ </f-data-table>
+```
 
 ### Tomt läge i tabellen
 
