@@ -9669,6 +9669,7 @@ body {
   grid-area: example;
   padding: var(--live-example-space);
   background: repeating-conic-gradient(#fff 0 90deg, rgb(235, 235, 235) 0 180deg) 0 0/20px 20px round;
+  overflow: hidden;
 }
 
 .live-example__controls {
@@ -9731,12 +9732,6 @@ body {
   height: 2rem;
   border-radius: 0.25rem;
   border: 1px solid #000;
-}
-
-/* Prevent example from overflowing and/or widen the example beyond the
-container. This should not be merged here but rather in docs-live-example */
-.live-example__example {
-  overflow: hidden;
 }
 
 footer {

@@ -152,7 +152,7 @@
   var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
     "option",
     { value: "none" },
-    "Nej",
+    "Inaktiv",
     -1
     /* HOISTED */
   );
@@ -254,7 +254,7 @@
           "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.scroll = $event)
         }, {
           label: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(" Scroll ")
+            (0, import_vue5.createTextVNode)(" Skroll ")
           ]),
           default: (0, import_vue5.withCtx)(() => [
             _hoisted_1,

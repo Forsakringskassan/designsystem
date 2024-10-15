@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-b98158.css"
+            href="../../assets/docs-f35221.css"
             crossorigin
-            integrity="sha384-JAvymFK/fxdErPSNUxQvu5OnwIiMUdBrFfVzzQYjnOdfIUoidy8+qK8EbWEjPe6G"
+            integrity="sha384-OIYDJ+HN73LhSwdJAmb9cTiAFhtdB1spwC8CBR+qAxYErH0swl9tWOlRFfWQn3jT"
             
         />
         <link
@@ -1069,19 +1069,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/dd3574bab63660627af845d05396049cd7150974/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/1dff5ad46d84966a2bea66803308c9314e0f69fe/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/dd3574bab63660627af845d05396049cd7150974/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/1dff5ad46d84966a2bea66803308c9314e0f69fe/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/dd3574bab63660627af845d05396049cd7150974/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/1dff5ad46d84966a2bea66803308c9314e0f69fe/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1142,7 +1142,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FDataTableLiveExample-a65d76.js"></script>
+        <script defer src="./FDataTableLiveExample-d980aa.js"></script>
     
                 </div>
             <h2 id="interaktiv_tabell"><a class="header-anchor" href="#interaktiv_tabell">Interaktiv tabell</a></h2><p><code>FInteractiveTable</code></p>
@@ -1389,12 +1389,29 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <li>Text i en tabellcell ska i regel vara vänsterställd. Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.</li>
 <li>Använd zebra-randiga rader när du har långa och många rader.  Det gör det enklare att visuellt skanna av tabellen och följa rader.</li>
 </ul>
-<h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p>För att lägga till skoll i tabell använder du (fylls på av utvecklare)...</p>
-<h3 id="tomt_lage_i_tabellen"><a class="header-anchor" href="#tomt_lage_i_tabellen">Tomt läge i tabellen</a></h3><p>Texten för en tom tabell går att anpassas till att bättre passa innehållet, till exempel &quot;Det finns inga betalningar&quot;, &quot;Ingen anslutning finns&quot;
+<h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p>För att lägga till skoll i tabell använder du prop <code>scroll</code>:</p>
+
+                <div
+                    id="example-a6d93a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-data-table :rows=&quot;items&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-data-table :rows=&quot;items&quot; scroll=&quot;horizontal&quot;&gt;</span>
+     &lt;template #default=&quot;{ row }&quot;&gt;
+         &lt;!-- [...] --&gt;
+     &lt;/template&gt;
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <h3 id="tomt_lage_i_tabellen"><a class="header-anchor" href="#tomt_lage_i_tabellen">Tomt läge i tabellen</a></h3><p>Texten för en tom tabell går att anpassas till att bättre passa innehållet, till exempel &quot;Det finns inga betalningar&quot;, &quot;Ingen anslutning finns&quot;
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-465701"
+                    id="example-f09767"
                     class="code-preview code-preview--default"
                     
                     
@@ -1621,9 +1638,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    bugfix/table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/dd3574bab63660627af845d05396049cd7150974">dd3574b</a>)<br />
+    bugfix/table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/1dff5ad46d84966a2bea66803308c9314e0f69fe">1dff5ad</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/76">PR 76</a><br />
-        2024-10-15 13:44
+        2024-10-15 14:29
 </div>
 
 
