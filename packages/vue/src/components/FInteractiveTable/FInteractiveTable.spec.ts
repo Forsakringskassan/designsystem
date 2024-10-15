@@ -766,22 +766,26 @@ describe("events", () => {
     });
 });
 
-it("should throw exception if using nestled row objects without empy-row prop set", async () => {
-    expect.assertions(1);
+it("should handle nestled row objects when no rows are present", async () => {
+    expect.assertions(2);
     const TestComponent = defineComponent({
         components: { FInteractiveTable, FTableColumn },
         template: /* HTML */ `
             <f-interactive-table :rows="[]" key-attribute="id">
                 <template #caption> My fancy caption </template>
                 <template #default="{ row }">
-                    <f-table-column name="test" title="MyTitle">
+                    <f-table-column name="test" title="My Awesome Column">
                         {{ row.some.deeply.nested.prop }}
                     </f-table-column>
                 </template>
             </f-interactive-table>
         `,
     });
-    expect(() => mount(TestComponent)).not.toThrow();
+    const wrapper = mount(TestComponent);
+    await wrapper.vm.$nextTick();
+    const th = wrapper.findAll("thead th");
+    expect(th).toHaveLength(1);
+    expect(th[0].text()).toBe("My Awesome Column");
 });
 
 it("should call provided sort method when clicking columnheader that is registrated as sortable", async () => {

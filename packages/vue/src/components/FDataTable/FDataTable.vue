@@ -27,8 +27,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-if="!hasInitiateColumns">
-                    <slot v-bind="{ row: emptyRow }"></slot>
+                <tr v-if="isEmpty && columns.length === 0">
+                    <slot v-bind="{ row: {} }"></slot>
                 </tr>
                 <tr v-if="isEmpty">
                     <td class="table__column table__column--action" :colspan="columns.length">
@@ -58,9 +58,9 @@ Default text is 'Tabellen är tom' (key fkui.data-table.empty).
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { type PropType, computed, defineComponent, provide } from "vue";
 import { type ListArray, type ListItem } from "../../types";
-import { TableScroll, emptyTableRow, tableScrollClasses, hasSlot } from "../../utils";
+import { TableScroll, tableScrollClasses, hasSlot } from "../../utils";
 import {
     FTableColumnData,
     FTableColumnSort,
@@ -83,7 +83,7 @@ export default defineComponent({
         FIcon,
     },
     mixins: [TranslationMixin],
-    provide(): FTableInterface {
+    provide(): Omit<FTableInterface, "renderColumns"> {
         return {
             addColumn: (column: FTableColumnData) => {
                 if (column.type === FTableColumnType.ACTION) {
@@ -140,13 +140,16 @@ export default defineComponent({
             },
         },
     },
-    setup(): FSortFilterDatasetInterface {
+    setup(props): FSortFilterDatasetInterface {
+        provide(
+            "renderColumns",
+            computed(() => props.rows.length > 0),
+        );
         return FSortFilterDatasetInjected();
     },
     data() {
         return {
             columns: [] as FTableColumnData[],
-            emptyRow: emptyTableRow() as Record<string, unknown>,
         };
     },
     computed: {
@@ -165,9 +168,6 @@ export default defineComponent({
         },
         visibleColumns(): FTableColumnData[] {
             return this.columns.filter((col) => col.visible);
-        },
-        hasInitiateColumns(): boolean {
-            return this.columns.length > 0;
         },
         wrapperClasses(): string[] {
             return tableScrollClasses(this.scroll);

@@ -23,6 +23,15 @@ export interface FTableInterface {
      * Used to hide label (sr-only) and enable `IPopupError`, for inputfields enclosed by a table.
      */
     textFieldTableMode: boolean;
+
+    /**
+     * Enables/Disables rendering of column content.
+     *
+     * - When enabled the column will be rendered as normal
+     * - When disabled the column will be registered in the table component but
+     *   no actual content will be rendered.
+     */
+    readonly renderColumns: boolean;
 }
 
 export function FTableInjected(): FTableInterface {
@@ -33,5 +42,6 @@ export function FTableInjected(): FTableInterface {
             visible: boolean,
         ) => void,
         textFieldTableMode: true,
+        renderColumns: inject("renderColumns", false),
     };
 }

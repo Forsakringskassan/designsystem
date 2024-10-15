@@ -405,19 +405,6 @@ export function dispatchComponentUnmountEvent(element: ValidatableHTMLElement): 
 // @public
 export function dispatchComponentValidityEvent(element: Element, detail: ComponentValidityEvent): void;
 
-// @internal (undocumented)
-export interface EmptyTableRow {
-    // (undocumented)
-    [Symbol.toPrimitive](hint: string): unknown;
-    // (undocumented)
-    (): string;
-    // (undocumented)
-    [key: string]: EmptyTableRow;
-}
-
-// @internal
-export function emptyTableRow(textContent?: string): EmptyTableRow;
-
 // @public (undocumented)
 export class ErrorData {
     constructor(error: Error, vm: ComponentPublicInstance | null, info: string);
@@ -1666,13 +1653,11 @@ validator: (value: string) => boolean;
 };
 }, FSortFilterDatasetInterface, {
 columns: FTableColumnData[];
-emptyRow: Record<string, unknown>;
 }, {
 hasCaption(): boolean;
 tableClasses(): string[];
 isEmpty(): boolean;
 visibleColumns(): FTableColumnData[];
-hasInitiateColumns(): boolean;
 wrapperClasses(): string[];
 tabindex(): number | undefined;
 }, {
@@ -2880,7 +2865,6 @@ default: undefined;
 }, FSortFilterDatasetInterface & ActivateItemInterface & ExpandableTable, FInteractiveTableData, {
 hasCaption(): boolean;
 hasCheckboxDescription(): boolean;
-hasInitiateColumns(): boolean;
 isEmpty(): boolean;
 visibleColumns(): FTableColumnData[];
 tableClasses(): string[];
@@ -2972,8 +2956,6 @@ export interface FInteractiveTableData {
     activeRow: ListItem | undefined;
     // (undocumented)
     columns: FTableColumnData[];
-    // (undocumented)
-    emptyRow: Record<string, unknown>;
     // (undocumented)
     selectedRows: ListArray;
     // (undocumented)
@@ -5352,6 +5334,7 @@ export enum FTableColumnType {
 // @public
 export interface FTableInterface {
     addColumn(column: FTableColumnData): void;
+    readonly renderColumns: boolean;
     setVisibilityColumn(id: string, visible: boolean): void;
     textFieldTableMode: boolean;
 }
