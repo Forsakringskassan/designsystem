@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="sv" class="layout--pattern" data-root-url="../..">
+<html lang="sv" class="layout--article" data-root-url="../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Fieldset migreringsguide - FK Designsystem</title>
+        <title>Commits och commitmeddelanden - FK Designsystem</title>
 
         <!-- prettier-ignore -->
         <link
@@ -287,8 +287,8 @@
 <nav class="navigation" aria-label="Sekundär">
 <ol>
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
-        <details >
+    <li class="expandable active">
+        <details open>
             <summary>Bidra till designsystemet</summary>
             <!-- prettier-ignore -->
             
@@ -299,7 +299,7 @@
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="../contribute-to-fkds/"
+            href="./"
             
         >
             Bidra till designsystemet
@@ -309,7 +309,7 @@
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="../contribute-to-fkds/contributing-developers.html"
+            href="./contributing-developers.html"
             
         >
             För utvecklare
@@ -319,7 +319,7 @@
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="../contribute-to-fkds/testing.html"
+            href="./testing.html"
             
         >
             Automatisk testning
@@ -329,17 +329,17 @@
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="../contribute-to-fkds/checklist-publication.html"
+            href="./checklist-publication.html"
             
         >
             Checklista vid publicering
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
-    <li class="link ">
+    <li class="link active">
         <!-- prettier-ignore -->
         <a
-            href="../contribute-to-fkds/commits.html"
+            href="./commits.html"
             
         >
             Commits och commitmeddelanden
@@ -349,7 +349,7 @@
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="../contribute-to-fkds/release.html"
+            href="./release.html"
             
         >
             Releaseprocess
@@ -413,8 +413,8 @@
             Hjälp och support
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable active">
-        <details open>
+    <li class="expandable ">
+        <details >
             <summary>Migreringsguider</summary>
             <!-- prettier-ignore -->
             
@@ -422,10 +422,10 @@
 <ol>
     <!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
-    <li class="link active">
+    <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="./migrating-to-fieldset.html"
+            href="../migration/migrating-to-fieldset.html"
             
         >
             Fieldset migreringsguide
@@ -435,7 +435,7 @@
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="./migrating-to-v5.html"
+            href="../migration/migrating-to-v5.html"
             
         >
             Version 5 migreringsguide
@@ -499,24 +499,12 @@
 
                 <!-- prettier-ignore --><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Fieldset migreringsguide</h1>
+                    <h1 id="title">Commits och commitmeddelanden</h1>
 
                     
                     <div id="aside">
                         <!-- prettier-ignore -->
-<dl>
-    <!-- prettier-ignore -->
-    
-    <dt>Komponent</dt>
-    <dd>
-        
-        <code>[object Object]</code>,  
-        <code>[object Object]</code>,  
-        <code>[object Object]</code>,  
-        <code>[object Object]</code> 
-    </dd>
-    
-</dl>
+<dl></dl>
 
 
                         
@@ -524,7 +512,13 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#deprekering_av_gruppkomponenter_for_radio_och_kryssruta">Deprekering av gruppkomponenter för radio och kryssruta</a></li>
+                                <li><a href="#typ">Typ</a></li>
+                                
+                                <li><a href="#tumregler">Tumregler</a></li>
+                                
+                                <li><a href="#commitlint">Commitlint</a></li>
+                                
+                                <li><a href="#arbetsflode">Arbetsflöde</a></li>
                                 
                             </ul>
                         </details>
@@ -534,121 +528,165 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="deprekering_av_gruppkomponenter_for_radio_och_kryssruta"><a class="header-anchor" href="#deprekering_av_gruppkomponenter_for_radio_och_kryssruta">Deprekering av gruppkomponenter för radio och kryssruta</a></h2><h3 id="radio"><a class="header-anchor" href="#radio">Radio</a></h3><p>Ersätt <code>FRadioGroup</code> med <code>FFieldset</code>.</p>
+<p>I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.</p>
+<p>Commitmeddelanden använder en modifierad variant av <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> där skillnaden är att vi kräver en Jira-referens i slutet:</p>
+<pre><code>${type}: ${description} (${relation} ${jira})
+</code></pre>
+<p>där:</p>
+<ul>
+<li><code>${type}</code> är vilken typ av commit, vanligtvis <code>fix</code> eller <code>feat</code>.</li>
+<li><code>${description}</code> är en kort summering av commit.</li>
+<li><code>${relation}</code> är hur commit relaterat till en Jira, <code>refs</code> eller <code>fixes</code>.</li>
+<li><code>${jira}</code> är den Jira som commit relaterar till.</li>
+</ul>
+
+            <div class="docs-messagebox docs-messagebox--info">
+                <p class="docs-messagebox__title">Exempelvis</p>
+                <p><code>feat: new component `FFoobar` (fixes XYZ-123)</code></p>
+
+            </div>
+        <p>Scope sätter vi enbart i undantagsfall då det populeras automatiskt i Changelog.
+Vanligt undantag är <code>chore(deps)</code> för beroenden, <code>chore(release)</code> för releaser samt <code>refactor(${verktyg})</code> och <code>style(${verktyg})</code>.</p>
+<h2 id="typ"><a class="header-anchor" href="#typ">Typ</a></h2><p>Den viktigaste beståndsdelen är <code>type</code> som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.</p>
+<p>De vanligaste två är <code>feat</code> (ny funktionallitet) och <code>fix</code> (rättning av existerande funktionallitet).
+Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code>refactor</code> (interna förändringar som inte påverkar konsument).</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    Tillgängliga typer
+                </summary>
+                <table class="table">
+<thead>
+<tr class="table__row">
+<th class="table__column table__column--text" scope="col">Typ</th>
+<th class="table__column table__column--text" scope="col">Release</th>
+<th class="table__column table__column--text" scope="col">Changelog</th>
+<th class="table__column table__column--text" scope="col">Beskrivning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>fix</code></td>
+<td class="table__column table__column--text">Patch</td>
+<td class="table__column table__column--text">Ja</td>
+<td class="table__column table__column--text">Rättning av existerande funktionallitet eller komponent</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>feat</code></td>
+<td class="table__column table__column--text">Minor</td>
+<td class="table__column table__column--text">Ja</td>
+<td class="table__column table__column--text">Ny funktionallitet eller komponent.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>build</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar av byggscript.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>chore(deps)</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar av beroenden.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>chore(release)</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Release (ej manuellt, används för automatiska releaser).</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>chore</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Bör undvikas men tillåts för commits som inte passar in under andra typer.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>ci</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar av CI/CD-script.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>docs</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar av dokumentation.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>style</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Kosmetiska ändringar av kod som ej påverkar konsumenter, exempelvis kodformatering.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>refactor</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Refaktorisering av kod som ej påverkar konsumenter.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>perf</code></td>
+<td class="table__column table__column--text">Patch</td>
+<td class="table__column table__column--text">Ja</td>
+<td class="table__column table__column--text">Ändringar som förbättrar prestanda men ej annars påverkar konsumenter.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>test</code></td>
+<td class="table__column table__column--text">-</td>
+<td class="table__column table__column--text"></td>
+<td class="table__column table__column--text">Ändringar eller tillägg av testfall.</td>
+</tr>
+</tbody>
+</table>
+
+            </details>
+        <p>Läs mer om <a href="./release.html#brytande_andringar">brytande ändringar</a>.</p>
+<h2 id="tumregler"><a class="header-anchor" href="#tumregler">Tumregler</a></h2><p>Ett bra commitmeddelande ska:</p>
+<ul>
+<li>Beskriva vilken eller vilka komponenter eller funktioner som berörs. Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</li>
+<li>Undvika att benämna ramverkskomponenter (&quot;i-komponenter&quot;) utan skriv istället de publika komponenter (&quot;f-komponenter&quot;) som påverkas av ändringen.</li>
+</ul>
+
+            <div class="docs-messagebox docs-messagebox--info">
+                <p class="docs-messagebox__title">Bra meddelande</p>
+                <ul>
+<li>feat: add new prop <code>foo</code> on component <code>FBar</code> (refs XYZ-123)</li>
+<li>fix: fix styling issue when clicking on <code>FBaz</code> (fixes XYZ-123)</li>
+</ul>
+
+            </div>
+        
+            <div class="docs-messagebox docs-messagebox--danger">
+                <p class="docs-messagebox__title">Undvik</p>
+                <ul>
+<li>feat: add new prop (refs XYZ-123)</li>
+<li>fix: WIP (fix XYZ-123)</li>
+</ul>
+
+            </div>
+        <h2 id="commitlint"><a class="header-anchor" href="#commitlint">Commitlint</a></h2><p>Vi använder <a href="https://commitlint.js.org/">Commitlint</a> för att upprätthålla formatet på commitmeddelanden.
+Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code> från <code>.husky/commit-msg</code>) och är konfigurerat med att använda <a href="https://github.com/Forsakringskassan/commitlint-config"><code>@forsakringskassan/commitlint-config</code></a>.</p>
+<p>Om det behövs kan du kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
 
                 <div
-                    id="example-8135a0"
+                    id="example-a2af4f"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="diff"
+                    data-language="bash"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-radio-group&gt;</span>
-<span class="hljs-addition">+&lt;f-fieldset&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">git commit --no-verify -m <span class="hljs-string">&#x27;non-conforming message&#x27;</span>
 </code></pre>
                 </div>
-            <p>Ersätt attributet <code>is-horizontal</code> med <code>horizontal</code>.</p>
+            <h2 id="arbetsflode"><a class="header-anchor" href="#arbetsflode">Arbetsflöde</a></h2><p>För feature-branches rekommenderar vi detta arbetsflödet för dina commits:</p>
+<ol>
+<li>För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch). Denna commit ska använda <code>feat</code> eller <code>fix</code> som type.</li>
+<li>Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda <code>git commit --fixup</code> eller skapar en ny commit med <code>refactor</code> som type.</li>
+<li>Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups men även de commits som använder <code>refactor</code> (vars syfte inte är att göra en refaktorisering av kod som inte skapats i denna branch).</li>
+</ol>
 
-                <div
-                    id="example-092eac"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-radio-group is-horizontal&gt;</span>
-<span class="hljs-addition">+&lt;f-fieldset horizontal&gt;</span>
-</code></pre>
-                </div>
-            <p>Indentering är inte längre kopplat till komponenten, utan sker fristående genom att ange klassen <code>indent</code>.</p>
-
-                <div
-                    id="example-0a618c"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-radio-group&gt;</span>
-<span class="hljs-deletion">-    &lt;template #default=&quot;{ indentClass }&quot;&gt;</span>
-<span class="hljs-deletion">-        &lt;div :class=&quot;indentClass&quot;&gt;</span>
-<span class="hljs-addition">+&lt;f-fieldset horizontal&gt;</span>
-<span class="hljs-addition">+    &lt;div class=&quot;indent&quot;&gt;</span>
-</code></pre>
-                </div>
-            <p>Ersätt <code>FRadioGroupField</code> med <code>FRadioField</code>.</p>
-
-                <div
-                    id="example-e7f9cd"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-radio-group-field&gt;</span>
-<span class="hljs-addition">+&lt;f-radio-field&gt;</span>
-</code></pre>
-                </div>
-            <p>Se <a href="../../components/inmatning/fradiogroupdeprecated.html">Radioknapp (deprekerad)</a> för tidigare API.</p>
-<h3 id="kryssruta"><a class="header-anchor" href="#kryssruta">Kryssruta</a></h3><p>Ersätt <code>FCheckboxGroup</code> med <code>FFieldset</code>.</p>
-
-                <div
-                    id="example-17ca13"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-checkbox-group&gt;</span>
-<span class="hljs-addition">+&lt;f-fieldset&gt;</span>
-</code></pre>
-                </div>
-            <p>Ersätt <code>FCheckboxGroupField</code> med <code>FCheckboxField</code>.</p>
-
-                <div
-                    id="example-be60ca"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-checkbox-group-field&gt;</span>
-<span class="hljs-addition">+&lt;f-checkbox-field&gt;</span>
-</code></pre>
-                </div>
-            <p>Se <a href="../../components/inmatning/fcheckboxgroupdeprecated.html">Kryssruta (deprekerad)</a> för tidigare API.</p>
-<h3 id="komplett_exempel"><a class="header-anchor" href="#komplett_exempel">Komplett exempel</a></h3>
-                <div
-                    id="example-56e15f"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-radio-group name=&quot;barn-over-18&quot; is-horizontal&gt;</span>
-<span class="hljs-addition">+&lt;f-fieldset name=&quot;barn-over-18&quot; horizontal&gt;</span>
-    &lt;template #label&gt; Bor det barn som har fyllt 18 år i bostaden? &lt;/template&gt;
-<span class="hljs-deletion">-    &lt;f-radio-group-field</span>
-<span class="hljs-addition">+    &lt;f-radio-field</span>
-        id=&quot;barn-over-18-ja&quot;
-        v-model=&quot;hasChildrenOverEighteen&quot;
-        :value=&quot;true&quot;
-    &gt;
-        Ja, det bor barn över 18 år där
-<span class="hljs-deletion">-    &lt;/f-radio-group-field&gt;</span>
-<span class="hljs-addition">+    &lt;/f-radio-field&gt;</span>
-<span class="hljs-deletion">-&lt;/f-radio-group&gt;</span>
-<span class="hljs-addition">+&lt;/f-fieldset&gt;</span>
-</code></pre>
-                </div>
-            
 
                     </div>
                 </main>
@@ -772,10 +810,10 @@
 
     <!--
 
-         Source file: docs/guide/migration/migrating-to-fieldset.md
-         Document ID: fs:docs/guide/migration/migrating-to-fieldset.md
-         Document name: migrating-to-fieldset
-         Document alias: component:FRadioGroupField, component:FCheckboxGroup, component:FCheckboxGroupField, component:FCheckboxField
+         Source file: docs/guide/contribute-to-fkds/commits.md
+         Document ID: fs:docs/guide/contribute-to-fkds/commits.md
+         Document name: commits
+         Document alias: 
 
     -->
 </html>
