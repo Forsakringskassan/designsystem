@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-402c3b.json"
+            href="../../search-data-c91205.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LiKncmpMyF8coWQlecykjE0E7OxYrSLvaNooBEf1V28IjtxDFSLp/1Ic/u08TaVr"
+            integrity="sha384-E1wBX6teVlQECrgTmnuN5Rbr+HgSOhWIjEW0xV6uU5p2WG2fnY4anyyoKGUTN6oP"
             id="search-data"
         />
     </head>
@@ -1069,19 +1069,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/9e97227e1406d9ae6db0e02ca0868e80ec97e0dd/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/dd3574bab63660627af845d05396049cd7150974/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/9e97227e1406d9ae6db0e02ca0868e80ec97e0dd/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/dd3574bab63660627af845d05396049cd7150974/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/9e97227e1406d9ae6db0e02ca0868e80ec97e0dd/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/dd3574bab63660627af845d05396049cd7150974/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1384,15 +1384,17 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 </ul>
 <h2 id="utforma_en_tabell"><a class="header-anchor" href="#utforma_en_tabell">Utforma en tabell</a></h2><ul>
 <li>Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara. Samma princip gäller för kolumner.</li>
+<li>Tabellen kommer radbryta innehåll om det inte får plats. Använd istället skroll-funktionen om innehållet blir svårläst.</li>
 <li>Du kan ange vilka kolumner som tar maximal bredd och vilka som får ta minsta möjliga.</li>
 <li>Text i en tabellcell ska i regel vara vänsterställd. Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.</li>
 <li>Använd zebra-randiga rader när du har långa och många rader.  Det gör det enklare att visuellt skanna av tabellen och följa rader.</li>
 </ul>
+<h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p>För att lägga till skoll i tabell använder du (fylls på av utvecklare)...</p>
 <h3 id="tomt_lage_i_tabellen"><a class="header-anchor" href="#tomt_lage_i_tabellen">Tomt läge i tabellen</a></h3><p>Texten för en tom tabell går att anpassas till att bättre passa innehållet, till exempel &quot;Det finns inga betalningar&quot;, &quot;Ingen anslutning finns&quot;
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-640d1c"
+                    id="example-465701"
                     class="code-preview code-preview--default"
                     
                     
@@ -1619,9 +1621,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    bugfix/table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/9e97227e1406d9ae6db0e02ca0868e80ec97e0dd">9e97227</a>)<br />
+    bugfix/table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/dd3574bab63660627af845d05396049cd7150974">dd3574b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/76">PR 76</a><br />
-        2024-10-15 11:35
+        2024-10-15 13:44
 </div>
 
 
