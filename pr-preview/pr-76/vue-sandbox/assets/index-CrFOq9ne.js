@@ -20407,9 +20407,7 @@ function filter(list, filterAttributes, searchString) {
     return types.includes(value);
   } }
 }, setup(props) {
-  provide("renderColumns", () => {
-    return props.rows.length > 0;
-  });
+  provide("renderColumns", computed(() => props.rows.length > 0));
   return FSortFilterDatasetInjected();
 }, data() {
   return { columns: [] };
@@ -20708,9 +20706,7 @@ function forceRepaintIE11(target) {
   */
   "collapse"
 ], setup(props, context) {
-  provide("renderColumns", () => {
-    return props.rows.length > 0;
-  });
+  provide("renderColumns", computed(() => props.rows.length > 0));
   const sortFilterDatasetInjected = FSortFilterDatasetInjected();
   const activateItemInjected = ActivateItemInjected();
   const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, context.emit, context.slots);
