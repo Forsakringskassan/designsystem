@@ -501,7 +501,7 @@ onValidity({ detail }: CustomEvent<ValidityEvent>): void;
 enter(element: Element): void;
 afterEnter(element: Element): void;
 leave(element: Element): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 disabled: {
 type: BooleanConstructor;
 required: false;
@@ -582,7 +582,7 @@ onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
 enter(element: Element): void;
 afterEnter(element: Element): void;
 leave(element: Element): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 disabled: {
 type: BooleanConstructor;
 required: false;
@@ -699,33 +699,12 @@ export interface ExpandableTable {
     toggleExpanded(row: ListItem): void;
 }
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export const FBadge: DefineComponent<ExtractPropTypes<    {
-status: {
-type: StringConstructor;
-default: string;
-validator: (value: string) => boolean;
-};
-inverted: {
-type: BooleanConstructor;
-default: boolean;
-};
-}>, {}, {}, {
-badgeClass(): string;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-status: {
-type: StringConstructor;
-default: string;
-validator: (value: string) => boolean;
-};
-inverted: {
-type: BooleanConstructor;
-default: boolean;
-};
-}>> & Readonly<{}>, {
-status: string;
-inverted: boolean;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+export const FBadge: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 
 // @public (undocumented)
 export const FBankAccountNumberTextField: DefineComponent<ExtractPropTypes<    {
@@ -813,7 +792,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -1198,7 +1177,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -1519,7 +1498,7 @@ required: true;
 }>, {}, {}, {}, {
 onClickDay(date: FDate): void;
 onChangeMonth(date: FDate): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -1572,7 +1551,7 @@ onClickPreviousButton(): void;
 onClickNextButton(): void;
 getDateText(value: FDate): string;
 isFocused(ref: string): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -1667,7 +1646,7 @@ onClickDay(date: FDate): void;
 onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
 isDayFocused(date: FDate): boolean;
 getTabindex(date: FDate): 0 | -1;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -1797,12 +1776,12 @@ selected: boolean;
 highlight: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FCard: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
+export const FCard: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
 
 // @public @deprecated (undocumented)
 export const FCheckboxGroup: DefineComponent<ExtractPropTypes<    {
@@ -1938,8 +1917,8 @@ default: string;
 validator(value: string): boolean;
 };
 }>> & Readonly<{}>, {
-name: string;
 horizontal: boolean;
+name: string;
 id: string;
 labelClass: string;
 contentClass: string;
@@ -2090,7 +2069,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -2657,7 +2636,7 @@ doHandlePopupMenuTabKey(action: MenuAction): boolean;
 onKeyDown(event: KeyboardEvent): Promise<void>;
 setFocusOnItem(index: number): Promise<void>;
 activateItem(index: number): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close")[], "select" | "close", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("close" | "select")[], "close" | "select", PublicProps, Readonly<ExtractPropTypes<    {
 isOpen: {
 type: BooleanConstructor;
 required: true;
@@ -3024,7 +3003,7 @@ reason: string;
 onModalClose(): void;
 onFormModalSubmit(): void;
 updateItem(item: ListItem): void;
-}, ComponentOptions, ComponentOptionsMixin, ("created" | "updated" | "update:modelValue" | "change" | "deleted")[], "created" | "updated" | "update:modelValue" | "change" | "deleted", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "created" | "updated" | "update:modelValue" | "deleted")[], "change" | "created" | "updated" | "update:modelValue" | "deleted", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<ListArray<ListItem>>;
 required: false;
@@ -3148,7 +3127,7 @@ hasDeprecatedSlots(): boolean;
 onClose(): void;
 onSubmit(): Promise<void>;
 onCancel(): void;
-}, ComponentOptions, ComponentOptionsMixin, ("close" | "submit" | "cancel")[], "close" | "submit" | "cancel", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("cancel" | "close" | "submit")[], "cancel" | "close" | "submit", PublicProps, Readonly<ExtractPropTypes<    {
 fullscreen: {
 type: BooleanConstructor;
 required: false;
@@ -4056,7 +4035,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4544,7 +4523,7 @@ isDateEnabled(day: FDate): boolean;
 isDaySelected(date: FDate): boolean;
 highlightDay(date: FDate): boolean;
 updateTextFieldValue(newValue: string): Promise<void>;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
 required: false;
@@ -4612,7 +4591,7 @@ required: true;
 }>, {}, {}, {}, {
 onClickDay(date: FDate): void;
 onChangeMonth(date: FDate): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -4665,7 +4644,7 @@ onClickPreviousButton(): void;
 onClickNextButton(): void;
 getDateText(value: FDate): string;
 isFocused(ref: string): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -4760,7 +4739,7 @@ onClickDay(date: FDate): void;
 onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
 isDayFocused(date: FDate): boolean;
 getTabindex(date: FDate): 0 | -1;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -5022,7 +5001,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -5443,7 +5422,7 @@ options(): FDialogueTreeOption[];
 }, {
 onClickedOption(option: FDialogueTreeOption, index: number): Promise<void>;
 emitChange(lastStep: boolean): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDialogueTreeUserProgress>;
 required: true;
@@ -5596,7 +5575,7 @@ onValidity({ detail }: CustomEvent<ValidityEvent>): void;
 onPendingValidity(): void;
 configureValidators(): void;
 configureExtendedValidation(elements: HTMLInputElement[]): void;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -5707,7 +5686,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -6673,8 +6652,8 @@ default: string;
 validator(value: string): boolean;
 };
 }>> & Readonly<{}>, {
-name: string;
 horizontal: boolean;
+name: string;
 id: string;
 labelClass: string;
 contentClass: string;
@@ -7441,7 +7420,7 @@ hasDeprecatedSlots(): boolean;
 onClose(): void;
 onSubmit(): Promise<void>;
 onCancel(): void;
-}, ComponentOptions, ComponentOptionsMixin, ("close" | "submit" | "cancel")[], "close" | "submit" | "cancel", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("cancel" | "close" | "submit")[], "cancel" | "close" | "submit", PublicProps, Readonly<ExtractPropTypes<    {
 fullscreen: {
 type: BooleanConstructor;
 required: false;
@@ -8516,7 +8495,7 @@ callbackSortableColumns(columnNames: string[]): void;
 callbackAfterItemAdd(item: ListItem): void;
 callbackBeforeItemDelete(item: ListItem): void;
 escapeNewlines(value: string): string;
-}, ComponentOptions, ComponentOptionsMixin, ("select" | "collapse" | "update:modelValue" | "change" | "click" | "expand" | "update" | "unselect")[], "select" | "collapse" | "update:modelValue" | "change" | "click" | "expand" | "update" | "unselect", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect")[], "change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect", PublicProps, Readonly<ExtractPropTypes<    {
 rows: {
 type: PropType<ListArray>;
 required: true;
@@ -8565,8 +8544,8 @@ onUnselect?: ((...args: any[]) => any) | undefined;
 onCollapse?: ((...args: any[]) => any) | undefined;
 onExpand?: ((...args: any[]) => any) | undefined;
 }>, {
-modelValue: ListArray | undefined;
 scroll: TableScroll;
+modelValue: ListArray | undefined;
 striped: boolean;
 selectable: boolean;
 hover: boolean;
@@ -8628,7 +8607,7 @@ onValidity({ detail }: CustomEvent<ValidityEvent>): void;
 enter(element: Element): void;
 afterEnter(element: Element): void;
 leave(element: Element): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 disabled: {
 type: BooleanConstructor;
 required: false;
@@ -9102,7 +9081,7 @@ onItemBlur(event: FocusEvent): void;
 callbackAfterItemAdd(item: ListItem): void;
 callbackBeforeItemDelete(item: ListItem): void;
 isActive(item: ListItem): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("select" | "update:modelValue" | "change" | "click" | "update" | "unselect" | "update:active")[], "select" | "update:modelValue" | "change" | "click" | "update" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "update:modelValue" | "update" | "unselect" | "update:active")[], "change" | "click" | "select" | "update:modelValue" | "update" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
 items: {
 type: PropType<ListArray>;
 required: true;
@@ -9203,7 +9182,7 @@ onValidity({ detail }: CustomEvent<ValidityEvent>): void;
 enter(element: Element): void;
 afterEnter(element: Element): void;
 leave(element: Element): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 disabled: {
 type: BooleanConstructor;
 required: false;
@@ -9917,7 +9896,7 @@ activateItem(index: number): Promise<void>;
 setFocusedItemIndex(index: number): void;
 onKeyUp(event: KeyboardEvent): void;
 onKeyDown(event: KeyboardEvent): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close" | "update:modelValue" | "update:focusedItem")[], "select" | "close" | "update:modelValue" | "update:focusedItem", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("close" | "select" | "update:modelValue" | "update:focusedItem")[], "close" | "select" | "update:modelValue" | "update:focusedItem", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
 required: false;
@@ -10200,7 +10179,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -10748,7 +10727,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -11428,7 +11407,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -11832,7 +11811,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -12169,7 +12148,7 @@ onValidity({ detail }: CustomEvent<ValidityEvent>): void;
 onPendingValidity(): void;
 configureValidators(): void;
 configureExtendedValidation(elements: HTMLInputElement[]): void;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -12274,7 +12253,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -12652,7 +12631,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -13039,7 +13018,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -13524,8 +13503,8 @@ default: string;
 validator(value: string): boolean;
 };
 }>> & Readonly<{}>, {
-name: string;
 horizontal: boolean;
+name: string;
 id: string;
 labelClass: string;
 contentClass: string;
@@ -13621,7 +13600,7 @@ onInput(event: Event): void;
 onChange(event: Event): void;
 onBlur(event: Event): void;
 onUpdate(event: Event): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -13727,7 +13706,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -14118,7 +14097,7 @@ set(value: unknown): void;
 };
 }, {
 onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -14431,7 +14410,7 @@ set(value: unknown): void;
 };
 }, {
 onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -14675,7 +14654,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -15605,7 +15584,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -15923,7 +15902,7 @@ hasHeader(): boolean;
 }, {
 onClickToggle(): void;
 positionArrow(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "toggle")[], "update:modelValue" | "toggle", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("toggle" | "update:modelValue")[], "toggle" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: BooleanConstructor;
 required: false;
@@ -16192,7 +16171,7 @@ openStep(step: FWizardStepDefinition): void;
 openNext(step: FWizardStepDefinition): Promise<void>;
 doOpen(open: StepNumber | -1): Promise<void>;
 cancel(isFinalStep: boolean): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("cancel" | "update:modelValue" | "change" | "completed")[], "cancel" | "update:modelValue" | "change" | "completed", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("cancel" | "change" | "update:modelValue" | "completed")[], "cancel" | "change" | "update:modelValue" | "completed", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
 default: null;
@@ -16998,7 +16977,7 @@ onClickDay(date: FDate): void;
 onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
 isDayFocused(date: FDate): boolean;
 getTabindex(date: FDate): 0 | -1;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -17138,7 +17117,7 @@ onClickPreviousButton(): void;
 onClickNextButton(): void;
 getDateText(value: FDate): string;
 isFocused(ref: string): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -17603,7 +17582,7 @@ activateItem(index: number): Promise<void>;
 setFocusedItemIndex(index: number): void;
 onKeyUp(event: KeyboardEvent): void;
 onKeyDown(event: KeyboardEvent): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close" | "update:modelValue" | "update:focusedItem")[], "select" | "close" | "update:modelValue" | "update:focusedItem", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("close" | "select" | "update:modelValue" | "update:focusedItem")[], "close" | "select" | "update:modelValue" | "update:focusedItem", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
 required: false;
