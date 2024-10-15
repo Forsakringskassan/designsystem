@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/components/FWizard/examples/FWizardExampleAddStep.vue
@@ -111,7 +110,7 @@
         modelValue: _ctx.current,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.current = $event),
         "header-tag": "h2",
-        "disable-initial-focus": "true",
+        "disable-initial-focus": "",
         onCompleted: _ctx.onCompleted,
         onCancel: _ctx.onCancel
       }, {

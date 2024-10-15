@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue
@@ -36,7 +35,7 @@
   var import_vue5 = __require("vue");
   var exampleComponent = (0, import_vue3.defineComponent)({
     name: "FDataTableLiveExample",
-    components: { LiveExample: import_docs_live_example.LiveExample, FCheckboxField: import_vue4.FCheckboxField, FRadioField: import_vue4.FRadioField, FFieldset: import_vue4.FFieldset },
+    components: { LiveExample: import_docs_live_example.LiveExample, FCheckboxField: import_vue4.FCheckboxField, FRadioField: import_vue4.FRadioField, FSelectField: import_vue4.FSelectField, FFieldset: import_vue4.FFieldset },
     data() {
       return {
         isEmpty: false,
@@ -45,7 +44,8 @@
         hasRowDescription: false,
         hasCustomEmptyText: false,
         hasHiddenCaption: false,
-        emptyItems: []
+        emptyItems: [],
+        scroll: "none"
       };
     },
     computed: {
@@ -58,21 +58,24 @@
               start: "2022-04-10",
               end: "2022-04-25",
               level: "Sjukpenning",
-              antal: "15"
+              antal: "15",
+              anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             },
             {
               id: "2",
               start: "2022-05-06",
               end: "2022-05-10",
               level: "L\xE4gstaniv\xE5",
-              antal: "4"
+              antal: "4",
+              anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             },
             {
               id: "3",
               start: "2022-05-20",
               end: "2022-05-31",
               level: "Sjukpenning",
-              antal: "11"
+              antal: "11",
+              anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             }
           ]
         };
@@ -87,7 +90,7 @@
         return this.isStriped ? "striped" : "";
       },
       rowHeader() {
-        return this.hasRowHeader ? `:row-header="true"` : "";
+        return this.hasRowHeader ? `row-header` : "";
       },
       rowDescription() {
         return this.hasRowDescription ? `description="(\xE5\xE5\xE5\xE5-mm-dd)"` : "";
@@ -98,17 +101,18 @@
       empty() {
         const template = (
           /* HTML */
-          `
-                <template #empty> Det finns inga aktuella utbetalningar. </template>
-            `
+          `<template #empty>
+                Det finns inga aktuella utbetalningar.
+            </template>`
         );
         return this.isEmpty && this.hasCustomEmptyText ? template : "";
       },
       template() {
+        const scroll = this.scroll !== "none" ? `scroll="${this.scroll}"` : "";
         return (
           /* HTML */
           `
-                <f-data-table ${this.items} ${this.striped} key-attribute="id">
+                <f-data-table ${this.items} ${this.striped} ${scroll} key-attribute="id">
                     <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
                         <f-table-column name="level" title="Niv\xE5" ${this.rowHeader} type="text">
@@ -121,7 +125,7 @@
                             type="text"
                             expand
                         >
-                            {{ row.start }}
+                            <span class="nowrap">{{ row.start }}</span>
                         </f-table-column>
                         <f-table-column
                             name="end"
@@ -129,10 +133,13 @@
                             ${this.rowDescription}
                             type="text"
                         >
-                            {{ row.end }}
+                            <span class="nowrap">{{ row.end }}</span>
                         </f-table-column>
                         <f-table-column name="antal" title="Antal dagar" type="numeric">
                             {{ row.antal }}
+                        </f-table-column>
+                        <f-table-column name="anteckning" title="Anteckning" type="text">
+                            {{ row.anteckning }}
                         </f-table-column>
                     </template>
                     ${this.empty}
@@ -142,8 +149,37 @@
       }
     }
   });
+  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
+    "option",
+    { value: "none" },
+    "Inaktiv",
+    -1
+    /* HOISTED */
+  );
+  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
+    "option",
+    { value: "horizontal" },
+    "Horisontal",
+    -1
+    /* HOISTED */
+  );
+  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
+    "option",
+    { value: "vertical" },
+    "Vertikal",
+    -1
+    /* HOISTED */
+  );
+  var _hoisted_4 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
+    "option",
+    { value: "both" },
+    "B\xE5da",
+    -1
+    /* HOISTED */
+  );
   function render(_ctx, _cache) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
+    const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _component_live_example = (0, import_vue5.resolveComponent)("live-example");
@@ -213,6 +249,26 @@
           /* STABLE */
         }, 8, ["modelValue"]),
         (0, import_vue5.createTextVNode)(),
+        (0, import_vue5.createVNode)(_component_f_select_field, {
+          modelValue: _ctx.scroll,
+          "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.scroll = $event)
+        }, {
+          label: (0, import_vue5.withCtx)(() => [
+            (0, import_vue5.createTextVNode)(" Skroll ")
+          ]),
+          default: (0, import_vue5.withCtx)(() => [
+            _hoisted_1,
+            (0, import_vue5.createTextVNode)(),
+            _hoisted_2,
+            (0, import_vue5.createTextVNode)(),
+            _hoisted_3,
+            (0, import_vue5.createTextVNode)(),
+            _hoisted_4
+          ]),
+          _: 1
+          /* STABLE */
+        }, 8, ["modelValue"]),
+        (0, import_vue5.createTextVNode)(),
         _ctx.isEmpty ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, {
           key: 0,
           name: "radio-empty-text"
@@ -224,7 +280,7 @@
             (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomEmptyText,
-              "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.hasCustomEmptyText = $event),
+              "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasCustomEmptyText = $event),
               value: false
             }, {
               default: (0, import_vue5.withCtx)(() => [
@@ -236,7 +292,7 @@
             (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomEmptyText,
-              "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasCustomEmptyText = $event),
+              "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasCustomEmptyText = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => [

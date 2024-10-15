@@ -6939,7 +6939,7 @@ input[type=search]:focus,
 .table tbody th {
   padding: calc(var(--f-table-body-row-padding) * var(--f-density-factor)) var(--f-table-body-row-padding);
   border-bottom: 1px solid var(--f-border-color-grid);
-  white-space: nowrap;
+  vertical-align: top;
 }
 .table tbody td {
   line-height: calc(1.5rem * var(--f-density-factor));
@@ -7008,6 +7008,12 @@ input[type=search]:focus,
 }
 .table__scroll {
   margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));
+}
+.table__scroll thead th,
+.table__scroll thead td,
+.table__scroll tbody th,
+.table__scroll tbody td {
+  white-space: nowrap;
 }
 .table__scroll .table {
   margin: 0;
@@ -9663,6 +9669,7 @@ body {
   grid-area: example;
   padding: var(--live-example-space);
   background: repeating-conic-gradient(#fff 0 90deg, rgb(235, 235, 235) 0 180deg) 0 0/20px 20px round;
+  overflow: hidden;
 }
 
 .live-example__controls {
