@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.37.3 (2024-10-15)
+
+
+### Bug Fixes
+
+* **@fkui/design:** tables without scrolling activates will word-wrap instead of overflowing (refs SFKUI-6500) dad8178
+* **@fkui/vue:** fix table "invalid prop: type check failed [..] expected [..] got function" (fixes SFKUI-6382) f2a47b8
+
 ## 5.37.2 (2024-10-14)
 
 

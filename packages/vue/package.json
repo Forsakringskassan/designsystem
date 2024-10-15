@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue",
-  "version": "5.37.2",
+  "version": "5.37.3",
   "description": "Vue implementation of FKUI components",
   "keywords": [
     "fkui",
@@ -75,7 +75,7 @@
   "devDependencies": {
     "@fkui/css-variables": "5.37.2",
     "@fkui/date": "5.37.2",
-    "@fkui/design": "5.37.2",
+    "@fkui/design": "5.37.3",
     "@fkui/icon-lib-default": "5.37.0",
     "@fkui/logic": "5.37.2",
     "@fkui/test-utils": "5.37.0",
