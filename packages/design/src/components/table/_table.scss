@@ -240,7 +240,7 @@ $table-input-offset-horizontal: 0.25rem;
         th {
             padding: densify(var(--f-table-body-row-padding)) var(--f-table-body-row-padding);
             border-bottom: $table-row-separator;
-            white-space: nowrap;
+            vertical-align: top;
         }
 
         td {
@@ -375,6 +375,13 @@ $table-input-offset-horizontal: 0.25rem;
     &__scroll {
         // move margin from <table> to the wrapper div
         margin: $table-margin;
+
+        thead th,
+        thead td,
+        tbody th,
+        tbody td {
+            white-space: nowrap;
+        }
 
         #{$TABLE_SELECTOR} {
             margin: 0;
