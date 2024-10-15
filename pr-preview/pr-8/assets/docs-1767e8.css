@@ -9663,6 +9663,7 @@ body {
   grid-area: example;
   padding: var(--live-example-space);
   background: repeating-conic-gradient(#fff 0 90deg, rgb(235, 235, 235) 0 180deg) 0 0/20px 20px round;
+  overflow: hidden;
 }
 
 .live-example__controls {
