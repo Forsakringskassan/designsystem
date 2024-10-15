@@ -51,6 +51,12 @@ Om det finns ett JIRA- eller GitHub-ärende kan du använda det i branchens namn
 
 ### Commits
 
+Commitmeddelanden skrivs i ett format baserat på [Conventional Commits][conventional-commits] och ligger som grund för release och changelog.
+
+-   Läs mer om {@link commits commitmeddelanden}.
+
+[conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
+
 Vi rekommenderar följande arbetsflöde:
 
 1. Skapa en branch som utgår från `main` eller `release/N.x`.

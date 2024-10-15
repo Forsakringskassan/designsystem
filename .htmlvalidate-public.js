@@ -25,6 +25,8 @@ module.exports = {
                 allowExternal: {
                     include: [
                         "^https://.*\\.vuejs.org/.*",
+
+                        "^https://commitlint.js.org/",
                         "^https://developer.mozilla.org/",
                         "^https://docs.cypress.io/",
                         "^https://docs.npmjs.com",
