@@ -12916,9 +12916,7 @@
       return types.includes(value);
     } }
   }, setup(props) {
-    (0, import_vue.provide)("renderColumns", () => {
-      return props.rows.length > 0;
-    });
+    (0, import_vue.provide)("renderColumns", (0, import_vue.computed)(() => props.rows.length > 0));
     return FSortFilterDatasetInjected();
   }, data() {
     return { columns: [] };
@@ -16266,9 +16264,7 @@
     */
     "collapse"
   ], setup(props, context) {
-    (0, import_vue.provide)("renderColumns", () => {
-      return props.rows.length > 0;
-    });
+    (0, import_vue.provide)("renderColumns", (0, import_vue.computed)(() => props.rows.length > 0));
     const sortFilterDatasetInjected = FSortFilterDatasetInjected();
     const activateItemInjected = ActivateItemInjected();
     const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, context.emit, context.slots);
