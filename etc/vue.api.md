@@ -3254,6 +3254,11 @@ type: StringConstructor;
 required: false;
 default: string;
 };
+teleport: {
+type: PropType<string | HTMLElement | undefined>;
+required: false;
+default: undefined;
+};
 }, unknown, {
 oldFocus: HTMLElement;
 }, {
@@ -3286,7 +3291,13 @@ type: StringConstructor;
 required: false;
 default: string;
 };
+teleport: {
+type: PropType<string | HTMLElement | undefined>;
+required: false;
+default: undefined;
+};
 }>>, {
+teleport: string | HTMLElement | undefined;
 overlay: boolean;
 delay: boolean;
 language: string;
