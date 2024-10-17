@@ -107,11 +107,11 @@ export type ComponentValueTypes = ComponentValidityEvent | Reference<FormErrorLi
 // @public (undocumented)
 export const config: FKUIConfig;
 
-// @public (undocumented)
-export function confirmModal(callingInstance: MaybeWithFKUIContext, modalData: confirmModalObject): Promise<boolean>;
+// @public
+export function confirmModal(callingInstance: MaybeWithFKUIContext, texts: ConfirmModalTexts): Promise<boolean>;
 
 // @public (undocumented)
-export interface confirmModalObject {
+export interface ConfirmModalTexts {
     // (undocumented)
     confirm: string;
     // (undocumented)
@@ -18388,6 +18388,16 @@ export const UNHANDLED_ERROR_EVENT: "unhandled-error";
 
 // @public (undocumented)
 export type UnknownItem = Record<string, unknown>;
+
+// @public
+export interface UseModal {
+    confirmModal(texts: ConfirmModalTexts): Promise<boolean>;
+    formModal<T>(component: Component, options?: Partial<OpenModalModaloptions>): Promise<T>;
+    openModal<T>(component: Component, options?: Partial<OpenModalModaloptions>): AsyncModalResult<T>;
+}
+
+// @public (undocumented)
+export function useModal(): UseModal;
 
 // @public
 export function useTranslate(): TranslateFunction;
