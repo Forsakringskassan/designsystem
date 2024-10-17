@@ -90,7 +90,10 @@ module.exports = {
                     sortorder: 1,
                 });
                 transformHeading(doc);
-                transformPath(doc, "./guide/contribute-to-fkds/index.html");
+                transformPath(
+                    doc,
+                    "./gettingstarted/contribute-to-fkds/index.html",
+                );
                 return doc;
             },
         },
@@ -104,7 +107,10 @@ module.exports = {
                     sortorder: 3,
                 });
                 transformHeading(doc);
-                transformPath(doc, "./guide/contribute-to-fkds/testing.html");
+                transformPath(
+                    doc,
+                    "./gettingstarted/contribute-to-fkds/testing.html",
+                );
                 return doc;
             },
         },

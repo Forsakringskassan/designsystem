@@ -17,7 +17,7 @@ Kontakta FKDS-teamet eller lägg en pull request.
 
 ## Föreslå ett nytt mönster
 
-Gå igenom befintliga {@link patterns mönster} och kontakta FKDS-teamet om du saknar något.
+Kontakta FKDS-teamet om du saknar ett mönster eller vill ändra på något.
 Du kan också lägga en pull request.
 
 ## Ny komponent eller funktionalitet

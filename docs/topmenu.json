@@ -1,22 +1,22 @@
 [
     {
+        "path": "./gettingstarted/",
+        "title": "Kom igång"
+    },
+    {
         "path": "./components/",
         "title": "Komponenter"
     },
     {
-        "path": "./patterns/",
-        "title": "Mönster"
+        "path": "./guides/",
+        "title": "Guider"
     },
     {
-        "path": "./develop/",
-        "title": "Utveckla"
+        "path": "./functions/",
+        "title": "Funktioner"
     },
     {
         "path": "./styles/",
         "title": "Visuellt"
-    },
-    {
-        "path": "./guide/",
-        "title": "Om"
     }
 ]

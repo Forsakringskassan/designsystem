@@ -5,7 +5,7 @@ describe("ErrorPlugin", () => {
 
     beforeEach(() => {
         cy.clearLocalStorage();
-        cy.visit("/develop/plugins/errorplugin.html", {
+        cy.visit("/functions/plugins/errorplugin.html", {
             onBeforeLoad(win) {
                 cy.spy(win.console, "error").as("consoleError");
                 cy.spy(win.console, "warn").as("consoleWarn");
