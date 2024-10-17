@@ -35,6 +35,11 @@ function unpackPayload<T = void>(
  * Props can be passed to the component using the options parameter.
  *
  * @public
+ *
+ * @param component - Vue component to render.
+ * @param options - Component options.
+ * @returns A promise resolved with reason for dismissal and optionally a
+ * payload when the modal is closed.
  */
 export function openModal<T = void>(
     callingInstance: MaybeWithFKUIContext,
