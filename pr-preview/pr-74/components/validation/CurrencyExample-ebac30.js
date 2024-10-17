@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./docs/components/validation/examples/CurrencyExample.vue
