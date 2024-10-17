@@ -83,7 +83,7 @@
     "@vue/test-utils": "2.4.6",
     "cypress": "13.15.0",
     "flush-promises": "1.0.2",
-    "vite": "5.4.8",
+    "vite": "5.4.9",
     "vue": "3.4.38",
     "vue-router": "4.4.5"
   },
