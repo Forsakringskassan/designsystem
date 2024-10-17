@@ -5,7 +5,7 @@ import { openModal } from "../open-modal";
 /**
  * @public
  */
-export interface confirmModalObject {
+export interface ConfirmModalTexts {
     heading: string;
     content: string;
     confirm: string;
@@ -14,19 +14,30 @@ export interface confirmModalObject {
 
 /**
  * @public
+ * @deprecated Deprecated alias, use [[ConfirmModalTexts]].
+ */
+export type confirmModalObject = ConfirmModalTexts;
+
+/**
+ * Open a confirmation modal with given text.
+ *
+ * @public
+ * @param texts - Texts to show in modal.
+ * @returns A promise resolved with a `true` if modal was dismissed in a
+ * positive manner ("Yes, I want to ...") or `false` if dismissed in a negative manner ("No, don't ...")
  */
 export async function confirmModal(
     callingInstance: MaybeWithFKUIContext,
-    modalData: confirmModalObject,
+    texts: ConfirmModalTexts,
 ): Promise<boolean> {
     const buttons = [
-        { label: modalData.confirm, event: "confirm", type: "primary" },
-        { label: modalData.dismiss, event: "dismiss", type: "secondary" },
+        { label: texts.confirm, event: "confirm", type: "primary" },
+        { label: texts.dismiss, event: "dismiss", type: "secondary" },
     ];
     const { reason } = await openModal(callingInstance, FConfirmModal, {
         props: {
-            heading: modalData.heading,
-            content: modalData.content,
+            heading: texts.heading,
+            content: texts.content,
             buttons,
         },
     });

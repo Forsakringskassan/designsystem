@@ -1,30 +1,54 @@
 ---
-title: confirmModal
-layout: content-with-menu
+title: confirmModal() function
+short-title: confirmModal()
+layout: article
 ---
 
+Open a {@link FConfirmModal} confirmation modal with given text.
+
+This is for Vue Options API.
+Use {@link useModal useModal()} with Composition API.
+
+## Syntax
+
 ```ts
-export interface confirmModalObject {
-    heading: string;
-    content: string;
-    confirm: string;
-    dismiss: string;
-}
-export async function confirmModal(
-    callingInstance: MaybeWithFKUIContext,
-    modalData: confirmModalObject,
-): Promise<boolean>;
+function confirmModal(callingInstance, texts);
 ```
 
-Provides function for simpler usage of [open-modal](#/Utilities/open-modal)
+### Parametrar
 
-## Usage
+`callingInstance`
+: Current component attempting to open confirmation modal. Typically `this`.
+
+`texts`
+: Texts to display in modal.
+
+    `heading: string`
+    : Text to display in modal header.
+
+    `content: string`
+    : Text to display in modal body.
+
+    `confirm: string`
+    : Text for confirmation button.
+
+    `dismiss: string`
+    : Text for cancel button.
+
+## Exempel
 
 ```ts
-result = await confirmModal(this, {
+const confirmed = await confirmModal(this, {
     heading: "Ta bort arbetsgivare",
     content: `Är du säker att du vill ta bort "${arbetsgivare.namn}"?`,
     confirm: "Ja, ta bort",
     dismiss: "Nej, behåll",
 });
+if (confirmed) {
+    /* ... */
+}
 ```
+
+## Relaterat
+
+-   {@link useModal useModal()} for using with composition API.
