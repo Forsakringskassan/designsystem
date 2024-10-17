@@ -1,25 +1,41 @@
 ---
-title: formModal
-layout: content-with-menu
+title: formModal() function
+short-title: formModal()
+layout: article
 ---
 
+Open a form inside a {@link FFormModal} modal and return the form data.
+
+This is for Vue Options API.
+Use {@link useModal useModal()} with Composition API.
+
+## Syntax
+
 ```ts
-export interface ModalOptions {
-    /** Modal size */
-    size: "large" | "fullscreen";
-    /** Modal props */
-    props: Record<string, string | undefined>;
-}
-
-type MaybeOptions = Partial<ModalOptions>;
-
-export async function formModal<T>(
-    Component: MaybeComponent,
-    options?: MaybeOptions,
-): Promise<T>;
+function formModal(callingInstance, options);
 ```
 
-Provides an API to programatically open FFormModal dialogs.
+### Parametrar
+
+`callingInstance`
+: Current component attempting to open confirmation modal. Typically `this`.
+
+`options` {@optional}
+: Modal options.
+
+    `size` {@optional}
+    : Optional modal size.
+
+        Must be one of:
+
+    	- `"large"`
+    	- `"fullscreen"
+
+    `beforeSubmit` {@optional}
+    : Optional callback passed to {@link FFormModal}.
+
+    `props` {@optional}
+    : Optional props to pass to modal.
 
 ## Usage
 
@@ -66,3 +82,7 @@ try {
 console.log("Modal closed with result", result);
 // Modal closed with result `data`
 ```
+
+## Relaterat
+
+-   {@link useModal useModal()} for using with composition API.
