@@ -23,6 +23,7 @@ export { getInputElement } from "./get-input-element";
 export { hasSlot } from "./has-slot";
 export { type MaybeComponent } from "./maybe-component";
 export { type RenderSlotOptions, renderSlotText } from "./render-slot-text";
+export { type UseModal, useModal } from "./use-modal";
 export {
     findParentByName,
     getParentByName,
