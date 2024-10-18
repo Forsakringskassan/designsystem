@@ -926,13 +926,12 @@ selected: boolean;
 highlight: boolean;
 }, {}>;
 
-// @public
-export const FCard: DefineComponent<    {}, {}, {
-headingClass: string[];
-}, {
-hasHeaderSlot(): boolean;
-hasFooterSlot(): boolean;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {}>>, {}, {}>;
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FCard: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 
 // @public @deprecated (undocumented)
 export const FCheckboxGroup: DefineComponent<    {
