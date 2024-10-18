@@ -1089,7 +1089,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/eeced84edd1a557afe8c97485c1c6a6711d39f06/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/13b24b5909972c0530a8a12538c78e4895347b85/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
             
         </code>
          
@@ -1187,9 +1187,15 @@ interface <span class="hljs-title class_">FormData</span> {
 <li>Din komponent måste sätta <code>value</code> propen på <code>FFormModal</code> komponenten.</li>
 <li>Din komponent måste binda <code>v-model</code> till fält på <code>value</code> objektet.</li>
 </ul>
-<h2 id="anvandning_med_template"><a class="header-anchor" href="#anvandning_med_template">Användning med template</a></h2>
+
+            <div class="docs-messagebox docs-messagebox--danger">
+                <p class="docs-messagebox__title">DANGER</p>
+                <p>Om din komponent inte tar en intern kopia av <code>value</code> så måste konsumenten skicka in en kopia med initiala värden, annars kommer objektet muteras även om slutanvändaren avbryter i formulärsmodalen.</p>
+
+            </div>
+        <h2 id="anvandning_med_template"><a class="header-anchor" href="#anvandning_med_template">Användning med template</a></h2>
             <div
-                id="example-4b2dde"
+                id="example-3a55d0"
                 class="code-preview code-preview--default"
                 
                 
@@ -1271,7 +1277,7 @@ interface <span class="hljs-title class_">FormData</span> {
             </div>
         <h2 id="anvandning_med_api"><a class="header-anchor" href="#anvandning_med_api">Användning med API</a></h2>
             <div
-                id="example-339651"
+                id="example-c16b0d"
                 class="code-preview code-preview--default"
                 
                 
@@ -1357,7 +1363,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <p><strong>Med API:</strong></p>
 
                 <div
-                    id="example-ae9b6c"
+                    id="example-b048a5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1376,7 +1382,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
             <p><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
 
                 <div
-                    id="example-7d9cce"
+                    id="example-77d08e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1395,7 +1401,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 </div>
             
                 <div
-                    id="example-d10575"
+                    id="example-b1ba1e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1413,7 +1419,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p>Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code> property:</p>
 
                 <div
-                    id="example-10a7be"
+                    id="example-0070fa"
                     class="code-preview code-preview--default"
                     
                     
@@ -1427,7 +1433,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
             <p>Om du använder <code>screenreader</code> för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i <code>label</code>. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.</p>
 <h2 id="template"><a class="header-anchor" href="#template">Template</a></h2>
             <div
-                id="example-d4226a"
+                id="example-22dd80"
                 class="code-preview code-preview--default"
                 
                 
@@ -1523,7 +1529,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
         <h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p>Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
 
                 <div
-                    id="example-3e0f19"
+                    id="example-3fc7ed"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1543,7 +1549,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-ae84ac"
+                    id="example-05ca34"
                     class="code-preview code-preview--default"
                     
                     
@@ -1559,7 +1565,7 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
 
                 <div
-                    id="example-418355"
+                    id="example-ff108c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1702,9 +1708,9 @@ The event payload is the data that has been submitted.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/use-modal (<a href="https://github.com/Forsakringskassan/designsystem/commits/eeced84edd1a557afe8c97485c1c6a6711d39f06">eeced84</a>)<br />
+    feature/use-modal (<a href="https://github.com/Forsakringskassan/designsystem/commits/13b24b5909972c0530a8a12538c78e4895347b85">13b24b5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/81">PR 81</a><br />
-        2024-10-18 13:14
+        2024-10-18 13:17
 </div>
 
 
