@@ -16,6 +16,8 @@ describe("FTooltip", () => {
                 body: /* HTML */ ` <p>Lorem ipsum</p> `,
             },
             props: {
+                modelValue: false,
+                headerTag: "h2",
                 closeButtonText: "Stäng",
                 screenReaderText: "Screen reader text",
             },

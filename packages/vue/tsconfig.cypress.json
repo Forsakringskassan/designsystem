@@ -15,6 +15,7 @@
     },
     "include": [
         "src/@types/cypress.d.ts",
+        "src/@types/shims-vue.d.ts",
         "src/**/*.ts",
         "src/**/*.vue",
         "src/**/*.cy.ts"
