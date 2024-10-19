@@ -1,7 +1,7 @@
 <template>
     <div v-if="$slots.tooltip">
-        <div v-if="hasDefaultSlot" class="tooltip-before">
-            <label class="label tooltip-before__label" :for="forProperty">
+        <div v-if="hasDefaultSlot" ref="tooltipAttachTo">
+            <label class="label" :for="forProperty">
                 <slot name="default"></slot>
             </label>
         </div>
@@ -41,9 +41,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { defineComponent, type PropType, provide, useTemplateRef } from "vue";
 import { hasSlot } from "../../utils";
 import { FIcon } from "../FIcon";
+import { tooltipAttachTo } from "../FTooltip";
 
 export default defineComponent({
     name: "FLabel",
@@ -59,6 +60,9 @@ export default defineComponent({
             required: false,
             default: undefined,
         },
+    },
+    setup() {
+        provide(tooltipAttachTo, useTemplateRef("tooltipAttachTo"));
     },
     data() {
         return {
