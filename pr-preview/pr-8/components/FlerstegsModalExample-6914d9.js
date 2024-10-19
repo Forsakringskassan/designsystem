@@ -183,9 +183,9 @@
           /* TEXT */
         )
       ]),
-      "error-message": (0, import_vue5.withCtx)(() => [
+      "error-message": (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)("Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till:")
-      ]),
+      ])),
       "input-text-fields": (0, import_vue5.withCtx)(() => [
         (0, import_vue5.createVNode)(_component_f_dialogue_tree, {
           modelValue: _ctx.current,
@@ -243,13 +243,6 @@
     }
   });
   var _hoisted_1 = { key: 0 };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue8.createElementVNode)(
-    "pre",
-    null,
-    "Modalen st\xE4ngdes med resultatet:",
-    -1
-    /* HOISTED */
-  );
   function render2(_ctx, _cache) {
     return (0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", null, [
       (0, import_vue8.createElementVNode)("button", {
@@ -257,10 +250,16 @@
         class: "button button--secondary",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
       }, "\xD6ppna Modal"),
-      (0, import_vue8.createTextVNode)(),
+      _cache[3] || (_cache[3] = (0, import_vue8.createTextVNode)()),
       _ctx.result ? ((0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", _hoisted_1, [
-        _hoisted_2,
-        (0, import_vue8.createTextVNode)(),
+        _cache[1] || (_cache[1] = (0, import_vue8.createElementVNode)(
+          "pre",
+          null,
+          "Modalen st\xE4ngdes med resultatet:",
+          -1
+          /* HOISTED */
+        )),
+        _cache[2] || (_cache[2] = (0, import_vue8.createTextVNode)()),
         (0, import_vue8.createElementVNode)(
           "pre",
           null,

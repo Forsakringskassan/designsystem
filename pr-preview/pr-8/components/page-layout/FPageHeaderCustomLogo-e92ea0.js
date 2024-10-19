@@ -36,29 +36,28 @@
     name: "FPageHeaderCustomLogo",
     components: { FPageHeader: import_vue4.FPageHeader }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    {
-      class: "my-own-logos",
-      "aria-label": "Annan logotyp",
-      role: "img"
-    },
-    null,
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_page_header = (0, import_vue5.resolveComponent)("f-page-header");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_page_header, null, {
-      right: (0, import_vue5.withCtx)(() => [
+      right: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
         (0, import_vue5.createTextVNode)(" Namn Namnsson ")
-      ]),
-      logo: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
+      ])),
+      logo: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+        (0, import_vue5.createElementVNode)(
+          "span",
+          {
+            class: "my-own-logos",
+            "aria-label": "Annan logotyp",
+            role: "img"
+          },
+          null,
+          -1
+          /* HOISTED */
+        )
+      ])),
       default: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createTextVNode)("\n        Exempelapplikation\n        "),
-        (0, import_vue5.createTextVNode)()
+        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)("\n        Exempelapplikation\n        ")),
+        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)())
       ]),
       _: 1
       /* STABLE */

@@ -57,9 +57,9 @@
           rows: _ctx.items,
           "key-attribute": "id"
         }, {
-          caption: (0, import_vue5.withCtx)(() => [
+          caption: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
             (0, import_vue5.createTextVNode)(" Tabell med standard densitet ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(({ row }) => [
             (0, import_vue5.createVNode)(
               _component_f_table_column,
@@ -82,7 +82,7 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -109,15 +109,15 @@
           /* STABLE */
         }, 8, ["rows"])
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", _hoisted_3, [
         (0, import_vue5.createVNode)(_component_f_data_table, {
           rows: _ctx.items,
           "key-attribute": "id"
         }, {
-          caption: (0, import_vue5.withCtx)(() => [
+          caption: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)(" Tabell med kompakt densitet ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(({ row }) => [
             (0, import_vue5.createVNode)(
               _component_f_table_column,
@@ -140,7 +140,7 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {

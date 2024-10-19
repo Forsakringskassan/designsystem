@@ -47,32 +47,31 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    [
-      /* @__PURE__ */ (0, import_vue5.createElementVNode)("a", {
-        class: "anchor",
-        href: "",
-        target: "_blank"
-      }, " L\xE4nk till annan sida ")
-    ],
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_expandable_panel = (0, import_vue5.resolveComponent)("f-expandable-panel");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_expandable_panel, {
       expanded: _ctx.expanded,
       onToggle: _ctx.onToggle
     }, {
-      title: (0, import_vue5.withCtx)(() => [
+      title: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
         (0, import_vue5.createTextVNode)(" Titel ")
-      ]),
-      default: (0, import_vue5.withCtx)(() => [
+      ])),
+      default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
         (0, import_vue5.createTextVNode)("\n            Inneh\xE5ll\n            "),
-        _hoisted_1
-      ]),
+        (0, import_vue5.createElementVNode)(
+          "p",
+          null,
+          [
+            (0, import_vue5.createElementVNode)("a", {
+              class: "anchor",
+              href: "",
+              target: "_blank"
+            }, " L\xE4nk till annan sida ")
+          ],
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]);

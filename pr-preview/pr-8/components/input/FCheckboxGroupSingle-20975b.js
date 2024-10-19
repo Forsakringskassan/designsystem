@@ -41,31 +41,30 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "h2",
-    null,
-    "Underskrift",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, { name: "underskrift" }, {
-      label: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
+      label: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+        (0, import_vue5.createElementVNode)(
+          "h2",
+          null,
+          "Underskrift",
+          -1
+          /* HOISTED */
+        )
+      ])),
       default: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createTextVNode)(),
+        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.sign,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.sign = $event),
           value: "Ja"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
             (0, import_vue5.createTextVNode)("\n            Jag \xE4r en ensam kryssruta s\xE5 min screenreadertext kommer att vara anpassad f\xF6r det.\n        ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

@@ -36,22 +36,21 @@
     name: "FIconInfo",
     components: { FIcon: import_vue4.FIcon }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "title",
-    null,
-    "Redigera",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_icon, {
       name: "pen",
       tabindex: "0"
     }, {
-      default: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
+      default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+        (0, import_vue5.createElementVNode)(
+          "title",
+          null,
+          "Redigera",
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     });

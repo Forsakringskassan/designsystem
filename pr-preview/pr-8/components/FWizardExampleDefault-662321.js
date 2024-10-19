@@ -50,31 +50,7 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    {
-      disabled: true,
-      value: ""
-    },
-    "V\xE4lj",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "ALTERNATIV1" },
-    "Alternativ 1",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "ALTERNATIV2" },
-    "Alternativ 2",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_4 = { key: 0 };
+  var _hoisted_1 = { key: 0 };
   function render(_ctx, _cache) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_wizard_step = (0, import_vue5.resolveComponent)("f-wizard-step");
@@ -97,9 +73,9 @@
           }, {
             default: (0, import_vue5.withCtx)(() => [
               (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, null, {
-                default: (0, import_vue5.withCtx)(() => [
+                default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
                   (0, import_vue5.createTextVNode)("\n                    Etikett-rubrik\n                ")
-                ]),
+                ])),
                 _: 1
                 /* STABLE */
               })), [
@@ -113,11 +89,11 @@
                   }
                 ]
               ]),
-              (0, import_vue5.createTextVNode)(),
+              _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
               (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, null, {
-                default: (0, import_vue5.withCtx)(() => [
+                default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
                   (0, import_vue5.createTextVNode)("\n                    Etikett-rubrik (frivillig)\n                ")
-                ]),
+                ])),
                 _: 1
                 /* STABLE */
               })), [
@@ -132,7 +108,7 @@
             _: 1
             /* STABLE */
           }),
-          (0, import_vue5.createTextVNode)(),
+          _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createVNode)(_component_f_wizard_step, {
             key: "bar",
             "use-error-list": false,
@@ -143,9 +119,9 @@
                 modelValue: _ctx.date,
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.date = $event)
               }, {
-                default: (0, import_vue5.withCtx)(() => [
+                default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
                   (0, import_vue5.createTextVNode)("\n                    Etikett-rubrik\n                ")
-                ]),
+                ])),
                 _: 1
                 /* STABLE */
               }, 8, ["modelValue"])), [
@@ -156,21 +132,42 @@
                   { required: true }
                 ]
               ]),
-              (0, import_vue5.createTextVNode)(),
+              _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)()),
               (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_select_field, {
                 modelValue: _ctx.options,
                 "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.options = $event)
               }, {
-                label: (0, import_vue5.withCtx)(() => [
+                label: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
                   (0, import_vue5.createTextVNode)(" Etikett-rubrik ")
-                ]),
+                ])),
                 default: (0, import_vue5.withCtx)(() => [
-                  (0, import_vue5.createTextVNode)(),
-                  _hoisted_1,
-                  (0, import_vue5.createTextVNode)(),
-                  _hoisted_2,
-                  (0, import_vue5.createTextVNode)(),
-                  _hoisted_3
+                  _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
+                  _cache[9] || (_cache[9] = (0, import_vue5.createElementVNode)(
+                    "option",
+                    {
+                      disabled: true,
+                      value: ""
+                    },
+                    "V\xE4lj",
+                    -1
+                    /* HOISTED */
+                  )),
+                  _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
+                  _cache[11] || (_cache[11] = (0, import_vue5.createElementVNode)(
+                    "option",
+                    { value: "ALTERNATIV1" },
+                    "Alternativ 1",
+                    -1
+                    /* HOISTED */
+                  )),
+                  _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
+                  _cache[13] || (_cache[13] = (0, import_vue5.createElementVNode)(
+                    "option",
+                    { value: "ALTERNATIV2" },
+                    "Alternativ 2",
+                    -1
+                    /* HOISTED */
+                  ))
                 ]),
                 _: 1
                 /* STABLE */
@@ -186,17 +183,17 @@
             _: 1
             /* STABLE */
           }),
-          (0, import_vue5.createTextVNode)(),
+          _cache[18] || (_cache[18] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createVNode)(_component_f_wizard_step, {
             key: "baz",
             "use-error-list": false,
             title: "Stegrubrik 3"
           }, {
-            "next-button-text": (0, import_vue5.withCtx)(() => [
+            "next-button-text": (0, import_vue5.withCtx)(() => _cache[15] || (_cache[15] = [
               (0, import_vue5.createTextVNode)(" Klar ")
-            ]),
+            ])),
             default: (0, import_vue5.withCtx)(() => [
-              (0, import_vue5.createTextVNode)("\n                En informationstext\n                ")
+              _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)("\n                En informationstext\n                "))
             ]),
             _: 1
             /* STABLE */
@@ -205,8 +202,8 @@
         _: 1
         /* STABLE */
       }, 8, ["modelValue", "onCompleted"]),
-      (0, import_vue5.createTextVNode)(),
-      _ctx.done ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("p", _hoisted_4, "Allt \xE4r ifyllt")) : (0, import_vue5.createCommentVNode)("v-if", true)
+      _cache[19] || (_cache[19] = (0, import_vue5.createTextVNode)()),
+      _ctx.done ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("p", _hoisted_1, "Allt \xE4r ifyllt")) : (0, import_vue5.createCommentVNode)("v-if", true)
     ]);
   }
   exampleComponent.render = render;

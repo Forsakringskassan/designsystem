@@ -62,80 +62,62 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { style: { "background-color": "green", "color": "white" } },
-    [
-      /* @__PURE__ */ (0, import_vue5.createElementVNode)("a", { href: "#" }, "[sidhuvud]")
-    ],
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { style: { "background-color": "lightgray" } },
-    [
-      /* @__PURE__ */ (0, import_vue5.createElementVNode)("a", { href: "#" }, "[toppnavigering]")
-    ],
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "h3",
-    null,
-    "Navigationstitel",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_4 = { class: "container-fluid" };
-  var _hoisted_5 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "h1",
-    null,
-    "Prim\xE4ryta",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_6 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    "Klicka nedan f\xF6r att se mer i sekund\xE4rpanelen.",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_7 = ["id", "onClick"];
-  var _hoisted_8 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { style: { "background-color": "green", "color": "white", "text-align": "center" } },
-    [
-      /* @__PURE__ */ (0, import_vue5.createElementVNode)("a", { href: "#" }, "[sidfot]")
-    ],
-    -1
-    /* HOISTED */
-  );
+  var _hoisted_1 = { class: "container-fluid" };
+  var _hoisted_2 = ["id", "onClick"];
   function render(_ctx, _cache) {
     const _component_f_layout_right_panel = (0, import_vue5.resolveComponent)("f-layout-right-panel");
     const _component_f_layout_left_panel = (0, import_vue5.resolveComponent)("f-layout-left-panel");
     const _component_f_layout_application_template = (0, import_vue5.resolveComponent)("f-layout-application-template");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_layout_application_template, null, {
-      header: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
-      "top-navigation": (0, import_vue5.withCtx)(() => [
-        _hoisted_2
-      ]),
-      footer: (0, import_vue5.withCtx)(() => [
-        _hoisted_8
-      ]),
+      header: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+        (0, import_vue5.createElementVNode)(
+          "div",
+          { style: { "background-color": "green", "color": "white" } },
+          [
+            (0, import_vue5.createElementVNode)("a", { href: "#" }, "[sidhuvud]")
+          ],
+          -1
+          /* HOISTED */
+        )
+      ])),
+      "top-navigation": (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+        (0, import_vue5.createElementVNode)(
+          "div",
+          { style: { "background-color": "lightgray" } },
+          [
+            (0, import_vue5.createElementVNode)("a", { href: "#" }, "[toppnavigering]")
+          ],
+          -1
+          /* HOISTED */
+        )
+      ])),
+      footer: (0, import_vue5.withCtx)(() => _cache[14] || (_cache[14] = [
+        (0, import_vue5.createElementVNode)(
+          "div",
+          { style: { "background-color": "green", "color": "white", "text-align": "center" } },
+          [
+            (0, import_vue5.createElementVNode)("a", { href: "#" }, "[sidfot]")
+          ],
+          -1
+          /* HOISTED */
+        )
+      ])),
       default: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createTextVNode)(),
-        (0, import_vue5.createTextVNode)(),
+        _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
+        _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_layout_left_panel, null, {
-          heading: (0, import_vue5.withCtx)(() => [
-            _hoisted_3
-          ]),
-          content: (0, import_vue5.withCtx)(() => [
+          heading: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+            (0, import_vue5.createElementVNode)(
+              "h3",
+              null,
+              "Navigationstitel",
+              -1
+              /* HOISTED */
+            )
+          ])),
+          content: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)(" [content] ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createVNode)(_component_f_layout_right_panel, null, {
               heading: (0, import_vue5.withCtx)(() => [
@@ -155,7 +137,7 @@
                   1
                   /* TEXT */
                 ),
-                (0, import_vue5.createTextVNode)(),
+                _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
                 (0, import_vue5.createElementVNode)("button", {
                   class: "button button--primary",
                   type: "button",
@@ -163,11 +145,23 @@
                 }, "\n                            St\xE4ng\n                        ")
               ]),
               default: (0, import_vue5.withCtx)(() => [
-                (0, import_vue5.createElementVNode)("div", _hoisted_4, [
-                  _hoisted_5,
-                  (0, import_vue5.createTextVNode)(),
-                  _hoisted_6,
-                  (0, import_vue5.createTextVNode)(),
+                (0, import_vue5.createElementVNode)("div", _hoisted_1, [
+                  _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
+                    "h1",
+                    null,
+                    "Prim\xE4ryta",
+                    -1
+                    /* HOISTED */
+                  )),
+                  _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
+                  _cache[8] || (_cache[8] = (0, import_vue5.createElementVNode)(
+                    "p",
+                    null,
+                    "Klicka nedan f\xF6r att se mer i sekund\xE4rpanelen.",
+                    -1
+                    /* HOISTED */
+                  )),
+                  _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
                   (0, import_vue5.createElementVNode)("ul", null, [
                     ((0, import_vue5.openBlock)(true), (0, import_vue5.createElementBlock)(
                       import_vue5.Fragment,
@@ -181,7 +175,7 @@
                             href: "javascript:void(0)",
                             class: "anchor",
                             onClick: ($event) => _ctx.openPanel(item)
-                          }, (0, import_vue5.toDisplayString)(item.title), 9, _hoisted_7)
+                          }, (0, import_vue5.toDisplayString)(item.title), 9, _hoisted_2)
                         ]);
                       }),
                       128
@@ -197,7 +191,7 @@
           _: 1
           /* STABLE */
         }),
-        (0, import_vue5.createTextVNode)()
+        _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)())
       ]),
       _: 1
       /* STABLE */

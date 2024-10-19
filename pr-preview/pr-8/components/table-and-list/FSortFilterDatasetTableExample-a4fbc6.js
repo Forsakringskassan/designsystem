@@ -74,13 +74,6 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "sr-only" },
-    " Frukter ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_interactive_table = (0, import_vue5.resolveComponent)("f-interactive-table");
@@ -108,9 +101,15 @@
           striped: "",
           "key-attribute": "id"
         }, {
-          caption: (0, import_vue5.withCtx)(() => [
-            _hoisted_1
-          ]),
+          caption: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+            (0, import_vue5.createElementVNode)(
+              "span",
+              { class: "sr-only" },
+              " Frukter ",
+              -1
+              /* HOISTED */
+            )
+          ])),
           default: (0, import_vue5.withCtx)(({ row }) => [
             (0, import_vue5.createVNode)(
               _component_f_table_column,
@@ -134,7 +133,7 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -157,7 +156,7 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {

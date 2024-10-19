@@ -58,16 +58,6 @@
     }
   });
   var _hoisted_1 = { class: "button-group" };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "button",
-    {
-      type: "submit",
-      class: "button button-group__item button--primary button--large"
-    },
-    "\n                    Spara\n                ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_validation_form = (0, import_vue5.resolveComponent)("f-validation-form");
@@ -76,18 +66,18 @@
       "before-submit": _ctx.runServerValidation,
       onSubmit: _ctx.onSubmit
     }, {
-      "error-message": (0, import_vue5.withCtx)(() => [
+      "error-message": (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
         (0, import_vue5.createTextVNode)(" Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till: ")
-      ]),
+      ])),
       default: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
           ref: "field1",
           modelValue: _ctx.field1,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.field1 = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)("\n                Ett inmatningsf\xE4lt\n            ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [
@@ -101,14 +91,14 @@
             }
           ]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
           modelValue: _ctx.field2,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.field2 = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
             (0, import_vue5.createTextVNode)("\n                Ett annat inmatningsf\xE4lt\n            ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [
@@ -122,10 +112,19 @@
             }
           ]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)("div", _hoisted_1, [
-          _hoisted_2,
-          (0, import_vue5.createTextVNode)(),
+          _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
+            "button",
+            {
+              type: "submit",
+              class: "button button-group__item button--primary button--large"
+            },
+            "\n                    Spara\n                ",
+            -1
+            /* HOISTED */
+          )),
+          _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)("button", {
             type: "button",
             class: "button button-group__item button--secondary button--large",

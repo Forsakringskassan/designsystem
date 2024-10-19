@@ -48,9 +48,9 @@
       "label-width": "md-9",
       "input-width": "md-6"
     }, {
-      default: (0, import_vue5.withCtx)(() => [
+      default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
         (0, import_vue5.createTextVNode)("\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi\n        mollis pulvinar.\n    ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["modelValue"])), [

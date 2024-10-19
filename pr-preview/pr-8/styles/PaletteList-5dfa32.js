@@ -416,13 +416,6 @@
 
   // sfc-template:/home/runner/work/designsystem/designsystem/docs/styles/examples/ColorTable.vue?type=template
   var import_vue5 = __require("vue");
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "sr-only" },
-    " F\xE4rgpaletten ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_data_table = (0, import_vue5.resolveComponent)("f-data-table");
@@ -430,9 +423,15 @@
       rows: _ctx.typeWorkaround,
       "key-attribute": "name"
     }, {
-      caption: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
+      caption: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+        (0, import_vue5.createElementVNode)(
+          "span",
+          { class: "sr-only" },
+          " F\xE4rgpaletten ",
+          -1
+          /* HOISTED */
+        )
+      ])),
       default: (0, import_vue5.withCtx)(({ row }) => [
         (0, import_vue5.createVNode)(
           _component_f_table_column,
@@ -549,7 +548,7 @@
                 1
                 /* TEXT */
               ),
-              (0, import_vue7.createTextVNode)(),
+              _cache[0] || (_cache[0] = (0, import_vue7.createTextVNode)()),
               (0, import_vue7.createVNode)(_component_color_table, {
                 colors: p.variables
               }, null, 8, ["colors"])

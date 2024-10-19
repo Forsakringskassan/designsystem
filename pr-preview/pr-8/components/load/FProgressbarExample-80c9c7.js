@@ -50,13 +50,6 @@
     }
   });
   var _hoisted_1 = { class: "debug-data" };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "sr-only" },
-    "Debug-data: ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_progressbar = (0, import_vue5.resolveComponent)("f-progressbar");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -66,28 +59,34 @@
         label: "Progressbar",
         "value-text": "You have uploaded %VALUE% %."
       }, null, 8, ["value"]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("pre", _hoisted_1, [
-        _hoisted_2,
+        _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+          "span",
+          { class: "sr-only" },
+          "Debug-data: ",
+          -1
+          /* HOISTED */
+        )),
         (0, import_vue5.createTextVNode)(
           "value: " + (0, import_vue5.toDisplayString)(_ctx.currentProgress),
           1
           /* TEXT */
         )
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("button", {
         type: "button",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.increase())
       }, "Increase"),
-      (0, import_vue5.createTextVNode)(),
+      _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("button", {
         type: "button",
         onClick: _cache[1] || (_cache[1] = ($event) => _ctx.decrease())
       }, "Decrease"),
-      (0, import_vue5.createTextVNode)(),
+      _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("label", null, [
-        (0, import_vue5.createTextVNode)("\n            Progress:\n            "),
+        _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)("\n            Progress:\n            ")),
         (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
           "input",
           {

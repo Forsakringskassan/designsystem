@@ -46,13 +46,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    "Ingress",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_form_modal = (0, import_vue5.resolveComponent)("f-form-modal");
@@ -67,17 +60,23 @@
           onClose: _cache[1] || (_cache[1] = ($event) => _ctx.closeModal()),
           onSubmit: _cache[2] || (_cache[2] = ($event) => _ctx.closeModal())
         }, {
-          header: (0, import_vue5.withCtx)(() => [
+          header: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)(" Rubrik ")
-          ]),
-          default: (0, import_vue5.withCtx)(() => [
-            _hoisted_1
-          ]),
+          ])),
+          default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
+            (0, import_vue5.createElementVNode)(
+              "p",
+              null,
+              "Ingress",
+              -1
+              /* HOISTED */
+            )
+          ])),
           "input-text-fields": (0, import_vue5.withCtx)(() => [
             (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, null, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
                 (0, import_vue5.createTextVNode)("\n                Etikett\n            ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             })), [
@@ -97,7 +96,7 @@
           _: 1
           /* STABLE */
         }, 8, ["is-open"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)("button", {
           type: "button",
           class: "button button--secondary",

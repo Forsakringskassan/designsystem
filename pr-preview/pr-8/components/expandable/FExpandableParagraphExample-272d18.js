@@ -47,26 +47,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    null,
-    " Inneh\xE5ll ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    [
-      /* @__PURE__ */ (0, import_vue5.createElementVNode)("a", {
-        class: "anchor",
-        href: "",
-        target: "_blank"
-      }, " L\xE4nk till annan sida ")
-    ],
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_expandable_paragraph = (0, import_vue5.resolveComponent)("f-expandable-paragraph");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_expandable_paragraph, {
@@ -74,14 +54,32 @@
       "header-tag": "span",
       onToggle: _ctx.onToggle
     }, {
-      title: (0, import_vue5.withCtx)(() => [
+      title: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
         (0, import_vue5.createTextVNode)(" Titel (span) ")
-      ]),
-      default: (0, import_vue5.withCtx)(() => [
-        _hoisted_1,
+      ])),
+      default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+        (0, import_vue5.createElementVNode)(
+          "span",
+          null,
+          " Inneh\xE5ll ",
+          -1
+          /* HOISTED */
+        ),
         (0, import_vue5.createTextVNode)(),
-        _hoisted_2
-      ]),
+        (0, import_vue5.createElementVNode)(
+          "p",
+          null,
+          [
+            (0, import_vue5.createElementVNode)("a", {
+              class: "anchor",
+              href: "",
+              target: "_blank"
+            }, " L\xE4nk till annan sida ")
+          ],
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]);

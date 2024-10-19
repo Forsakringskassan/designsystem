@@ -49,14 +49,7 @@
     type: "button",
     class: "button button--tertiary button--medium file-item__file-remove file-item__abort"
   };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    null,
-    " Avbryt uppladdning ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = {
+  var _hoisted_2 = {
     key: 1,
     type: "button",
     class: "button button--tertiary button--medium file-item__file-remove"
@@ -67,7 +60,7 @@
     const _component_f_file_item = (0, import_vue5.resolveComponent)("f-file-item");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createElementVNode)("label", null, [
-        (0, import_vue5.createTextVNode)("\n            Progress:\n            \n            "),
+        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)("\n            Progress:\n            \n            ")),
         (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
           "input",
           {
@@ -89,7 +82,7 @@
           ]
         ])
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_file_item, {
         "file-name": _ctx.fileName,
         "mime-type": _ctx.mimeType
@@ -100,18 +93,24 @@
               name: "close",
               class: "button__icon"
             }),
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_2
-          ])) : _ctx.progress === 100 ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("button", _hoisted_3, [
+            _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
+            _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
+              "span",
+              null,
+              " Avbryt uppladdning ",
+              -1
+              /* HOISTED */
+            ))
+          ])) : _ctx.progress === 100 ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("button", _hoisted_2, [
             (0, import_vue5.createVNode)(_component_f_icon, {
               name: "trashcan",
               class: "button__icon"
             }),
-            (0, import_vue5.createTextVNode)("\n                    Ta bort\n                ")
+            _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)("\n                    Ta bort\n                "))
           ])) : (0, import_vue5.createCommentVNode)("v-if", true)
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)(),
+          _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
           _ctx.progress < 100 ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_progressbar, {
             key: 0,
             "aria-label": "progress",

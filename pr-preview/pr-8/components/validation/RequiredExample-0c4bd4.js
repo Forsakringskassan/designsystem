@@ -48,17 +48,6 @@
     }
   });
   var _hoisted_1 = { class: "button-group" };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "button",
-    {
-      id: "submit",
-      type: "submit",
-      class: "button button-group__item button--primary button--large"
-    },
-    "\n                Spara\n            ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_validation_form = (0, import_vue5.resolveComponent)("f-validation-form");
@@ -73,9 +62,9 @@
           modelValue: _ctx.model,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
             (0, import_vue5.createTextVNode)("\n            Fyll i minst ett tecken\n        ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [
@@ -86,10 +75,20 @@
             { required: true }
           ]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)("div", _hoisted_1, [
-          _hoisted_2,
-          (0, import_vue5.createTextVNode)(),
+          _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+            "button",
+            {
+              id: "submit",
+              type: "submit",
+              class: "button button-group__item button--primary button--large"
+            },
+            "\n                Spara\n            ",
+            -1
+            /* HOISTED */
+          )),
+          _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)("button", {
             type: "button",
             class: "button button-group__item button--secondary button--large",

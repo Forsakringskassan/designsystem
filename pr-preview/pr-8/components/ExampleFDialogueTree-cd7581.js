@@ -107,7 +107,7 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_dialogue_tree, {
         modelValue: _ctx.current,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.current = $event),
@@ -118,11 +118,11 @@
             import_vue5.Fragment,
             { key: 0 },
             [
-              (0, import_vue5.createTextVNode)("\n                    formA\n                    "),
+              _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)("\n                    formA\n                    ")),
               (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, null, {
-                default: (0, import_vue5.withCtx)(() => [
+                default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
                   (0, import_vue5.createTextVNode)("\n                        Field 1\n                    ")
-                ]),
+                ])),
                 _: 1
                 /* STABLE */
               })), [
@@ -140,16 +140,16 @@
             64
             /* STABLE_FRAGMENT */
           )) : (0, import_vue5.createCommentVNode)("v-if", true),
-          (0, import_vue5.createTextVNode)(),
+          _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
           userData.type === "formB" ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)(
             import_vue5.Fragment,
             { key: 1 },
             [
-              (0, import_vue5.createTextVNode)("\n                    formB\n                    "),
+              _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)("\n                    formB\n                    ")),
               (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, null, {
-                default: (0, import_vue5.withCtx)(() => [
+                default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
                   (0, import_vue5.createTextVNode)("\n                        Field 1\n                    ")
-                ]),
+                ])),
                 _: 1
                 /* STABLE */
               })), [

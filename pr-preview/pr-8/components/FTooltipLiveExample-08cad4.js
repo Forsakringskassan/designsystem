@@ -79,9 +79,9 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.hasHeader = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
             (0, import_vue5.createTextVNode)(" Rubrik i tooltip")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

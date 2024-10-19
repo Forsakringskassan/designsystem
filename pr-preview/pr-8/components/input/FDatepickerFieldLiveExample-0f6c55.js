@@ -164,52 +164,10 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "" },
-    "Nuvarande m\xE5nad (standard)",
-    -1
-    /* HOISTED */
-  );
+  var _hoisted_1 = ["value"];
   var _hoisted_2 = ["value"];
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "" },
-    "10 \xE5r tillbaka (standard)",
-    -1
-    /* HOISTED */
-  );
+  var _hoisted_3 = ["value"];
   var _hoisted_4 = ["value"];
-  var _hoisted_5 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "" },
-    "10 \xE5r fram\xE5t (standard)",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_6 = ["value"];
-  var _hoisted_7 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: false },
-    "Inga (standard)",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_8 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: true },
-    "Exempel: L\xF6rdag och s\xF6ndag",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_9 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: [] },
-    "Inga (standard)",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_10 = ["value"];
   function render(_ctx, _cache) {
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
@@ -225,169 +183,205 @@
           modelValue: _ctx.monthToShow,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.monthToShow = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[11] || (_cache[11] = [
             (0, import_vue5.createTextVNode)(" Visa m\xE5nad ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_1,
-            (0, import_vue5.createTextVNode)(),
+            _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
+            _cache[13] || (_cache[13] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "" },
+              "Nuvarande m\xE5nad (standard)",
+              -1
+              /* HOISTED */
+            )),
+            _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)("option", {
               value: _ctx.getDateWithOffset(-6)
-            }, "\n                Exempel: " + (0, import_vue5.toDisplayString)(_ctx.getMonthYearString(_ctx.getDateWithOffset(-6))), 9, _hoisted_2)
+            }, "\n                Exempel: " + (0, import_vue5.toDisplayString)(_ctx.getMonthYearString(_ctx.getDateWithOffset(-6))), 9, _hoisted_1)
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[41] || (_cache[41] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_select_field, {
           modelValue: _ctx.minDateLimit,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.minDateLimit = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[15] || (_cache[15] = [
             (0, import_vue5.createTextVNode)(" Tidigaste valbara datum ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_3,
-            (0, import_vue5.createTextVNode)(),
+            _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
+            _cache[17] || (_cache[17] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "" },
+              "10 \xE5r tillbaka (standard)",
+              -1
+              /* HOISTED */
+            )),
+            _cache[18] || (_cache[18] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)("option", {
               value: _ctx.getDateWithOffset(-3)
-            }, "Exempel: " + (0, import_vue5.toDisplayString)(_ctx.getDateWithOffset(-3)), 9, _hoisted_4)
+            }, "Exempel: " + (0, import_vue5.toDisplayString)(_ctx.getDateWithOffset(-3)), 9, _hoisted_2)
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[42] || (_cache[42] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_select_field, {
           modelValue: _ctx.maxDateLimit,
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.maxDateLimit = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[19] || (_cache[19] = [
             (0, import_vue5.createTextVNode)(" Senaste valbara datum ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_5,
-            (0, import_vue5.createTextVNode)(),
+            _cache[20] || (_cache[20] = (0, import_vue5.createTextVNode)()),
+            _cache[21] || (_cache[21] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "" },
+              "10 \xE5r fram\xE5t (standard)",
+              -1
+              /* HOISTED */
+            )),
+            _cache[22] || (_cache[22] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)("option", {
               value: _ctx.getDateWithOffset(3)
-            }, "Exempel: " + (0, import_vue5.toDisplayString)(_ctx.getDateWithOffset(3)), 9, _hoisted_6)
+            }, "Exempel: " + (0, import_vue5.toDisplayString)(_ctx.getDateWithOffset(3)), 9, _hoisted_3)
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[43] || (_cache[43] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_select_field, {
           modelValue: _ctx.invalidWeekdays,
           "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.invalidWeekdays = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[23] || (_cache[23] = [
             (0, import_vue5.createTextVNode)(" Ej valbara veckodagar ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_7,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_8
+            _cache[24] || (_cache[24] = (0, import_vue5.createTextVNode)()),
+            _cache[25] || (_cache[25] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: false },
+              "Inga (standard)",
+              -1
+              /* HOISTED */
+            )),
+            _cache[26] || (_cache[26] = (0, import_vue5.createTextVNode)()),
+            _cache[27] || (_cache[27] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: true },
+              "Exempel: L\xF6rdag och s\xF6ndag",
+              -1
+              /* HOISTED */
+            ))
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[44] || (_cache[44] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_select_field, {
           modelValue: _ctx.invalidDates,
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.invalidDates = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[28] || (_cache[28] = [
             (0, import_vue5.createTextVNode)(" Ej valbara datum ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_9,
-            (0, import_vue5.createTextVNode)(),
+            _cache[29] || (_cache[29] = (0, import_vue5.createTextVNode)()),
+            _cache[30] || (_cache[30] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: [] },
+              "Inga (standard)",
+              -1
+              /* HOISTED */
+            )),
+            _cache[31] || (_cache[31] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)("option", {
               value: _ctx.getInvalidDates()
-            }, "Exempel: " + (0, import_vue5.toDisplayString)(_ctx.getInvalidDates().join(", ")), 9, _hoisted_10)
+            }, "Exempel: " + (0, import_vue5.toDisplayString)(_ctx.getInvalidDates().join(", ")), 9, _hoisted_4)
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[45] || (_cache[45] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.highlightTodayEnabled,
           "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.highlightTodayEnabled = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[32] || (_cache[32] = [
             (0, import_vue5.createTextVNode)("\n            Markera dagens datum i kalendern\n        ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[46] || (_cache[46] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isRequired,
           "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.isRequired = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[33] || (_cache[33] = [
             (0, import_vue5.createTextVNode)(" Obligatorisk f\xE4lt ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[47] || (_cache[47] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isDisabled,
           "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.isDisabled = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[34] || (_cache[34] = [
             (0, import_vue5.createTextVNode)(" Inaktivt f\xE4lt ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[48] || (_cache[48] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.alwaysInlineEnabled,
           "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.alwaysInlineEnabled = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[35] || (_cache[35] = [
             (0, import_vue5.createTextVNode)("\n            Kalendern visas alltid inline\n        ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[49] || (_cache[49] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_fieldset, { name: "etikett" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[36] || (_cache[36] = [
             (0, import_vue5.createTextVNode)(" Etiketten ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
+            _cache[39] || (_cache[39] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.tooltipVisible,
               "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.tooltipVisible = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[37] || (_cache[37] = [
                 (0, import_vue5.createTextVNode)(" Tooltip ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
+            _cache[40] || (_cache[40] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.descriptionVisible,
               "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => _ctx.descriptionVisible = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[38] || (_cache[38] = [
                 (0, import_vue5.createTextVNode)("\n                Hj\xE4lptext\n            ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])

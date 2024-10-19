@@ -43,9 +43,9 @@
       accept: "image/jpeg, image/tiff",
       disabled: ""
     }, {
-      default: (0, import_vue5.withCtx)(() => [
+      default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
         (0, import_vue5.createTextVNode)("\n        L\xE4gg till fil\n    ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     });

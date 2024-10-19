@@ -36,27 +36,6 @@
     name: "FMessageBoxContextSeparate",
     components: { FMessageBox: import_vue4.FMessageBox }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "sr-only" },
-    "\n                    Sk\xE4rml\xE4sarinformation som fullst\xE4ndigt ers\xE4tter rubriken och som inneh\xE5ller\n                    tydlig kontext\n                ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "aria-hidden" },
-    " En rubrik som inte f\xF6rklarar sin kontext ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_message_box = (0, import_vue5.resolveComponent)("f-message-box");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_message_box, {
@@ -69,16 +48,34 @@
           {
             class: (0, import_vue5.normalizeClass)(headingSlotClass)
           },
-          [
-            _hoisted_1,
+          _cache[0] || (_cache[0] = [
+            (0, import_vue5.createElementVNode)(
+              "span",
+              { class: "sr-only" },
+              "\n                    Sk\xE4rml\xE4sarinformation som fullst\xE4ndigt ers\xE4tter rubriken och som inneh\xE5ller\n                    tydlig kontext\n                ",
+              -1
+              /* HOISTED */
+            ),
             (0, import_vue5.createTextVNode)(),
-            _hoisted_2
-          ],
+            (0, import_vue5.createElementVNode)(
+              "span",
+              { class: "aria-hidden" },
+              " En rubrik som inte f\xF6rklarar sin kontext ",
+              -1
+              /* HOISTED */
+            )
+          ]),
           2
           /* CLASS */
         ),
-        (0, import_vue5.createTextVNode)(),
-        _hoisted_3
+        _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
+        _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
+          "p",
+          null,
+          "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
+          -1
+          /* HOISTED */
+        ))
       ]),
       _: 1
       /* STABLE */

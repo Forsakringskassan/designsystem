@@ -54,27 +54,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    null,
-    " Inneh\xE5ll ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    null,
-    " Inneh\xE5ll ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    null,
-    " Inneh\xE5ll ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_expandable_paragraph = (0, import_vue5.resolveComponent)("f-expandable-paragraph");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -83,45 +62,63 @@
         "header-tag": "h2",
         onToggle: _ctx.onToggle1
       }, {
-        title: (0, import_vue5.withCtx)(() => [
+        title: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
           (0, import_vue5.createTextVNode)(" Titel (h2) ")
-        ]),
-        default: (0, import_vue5.withCtx)(() => [
-          _hoisted_1
-        ]),
+        ])),
+        default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+          (0, import_vue5.createElementVNode)(
+            "span",
+            null,
+            " Inneh\xE5ll ",
+            -1
+            /* HOISTED */
+          )
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_expandable_paragraph, {
         expanded: _ctx.expanded2,
         "header-tag": "h3",
         onToggle: _ctx.onToggle2
       }, {
-        title: (0, import_vue5.withCtx)(() => [
+        title: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createTextVNode)(" Titel (h3) ")
-        ]),
-        default: (0, import_vue5.withCtx)(() => [
-          _hoisted_2
-        ]),
+        ])),
+        default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
+          (0, import_vue5.createElementVNode)(
+            "span",
+            null,
+            " Inneh\xE5ll ",
+            -1
+            /* HOISTED */
+          )
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_expandable_paragraph, {
         expanded: _ctx.expanded3,
         "header-tag": "h4",
         onToggle: _ctx.onToggle3
       }, {
-        title: (0, import_vue5.withCtx)(() => [
+        title: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
           (0, import_vue5.createTextVNode)(" Titel (h4) ")
-        ]),
-        related: (0, import_vue5.withCtx)(() => [
+        ])),
+        related: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
           (0, import_vue5.createTextVNode)(" 2020-06-25 ")
-        ]),
-        default: (0, import_vue5.withCtx)(() => [
-          _hoisted_3
-        ]),
+        ])),
+        default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
+          (0, import_vue5.createElementVNode)(
+            "span",
+            null,
+            " Inneh\xE5ll ",
+            -1
+            /* HOISTED */
+          )
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"])

@@ -47,9 +47,9 @@
         key: 0,
         id: "child-name"
       }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)("\n            Barnets namn\n        ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       })), [
@@ -60,7 +60,7 @@
           { maxLength: true }
         ]
       ]) : (0, import_vue5.createCommentVNode)("v-if", true),
-      (0, import_vue5.createTextVNode)(),
+      _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "button",
         {

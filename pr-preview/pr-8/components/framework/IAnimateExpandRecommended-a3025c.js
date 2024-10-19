@@ -60,27 +60,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "height: 200px; background: hotpink" },
-    "200px h\xF6jd",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "height: 600px; background: cyan" },
-    "600px h\xF6jd",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "height: 1200px; background: yellow" },
-    "1200px h\xF6jd",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_i_animate_expand = (0, import_vue5.resolveComponent)("i-animate-expand");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -88,7 +67,7 @@
         type: "button",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.isExpanded = !_ctx.isExpanded)
       }, "\xD6ppna/st\xE4ng animering"),
-      (0, import_vue5.createTextVNode)(),
+      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
         "input",
         {
@@ -101,7 +80,7 @@
       ), [
         [import_vue5.vModelCheckbox, _ctx.isAnimated]
       ]),
-      (0, import_vue5.createTextVNode)(" Animera\n        "),
+      _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)(" Animera\n        ")),
       (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
         "input",
         {
@@ -114,7 +93,7 @@
       ), [
         [import_vue5.vModelCheckbox, _ctx.hasOpacity]
       ]),
-      (0, import_vue5.createTextVNode)(" Opacitet\n        "),
+      _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)(" Opacitet\n        ")),
       (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
         "input",
         {
@@ -127,25 +106,43 @@
       ), [
         [import_vue5.vModelCheckbox, _ctx.useVShow]
       ]),
-      (0, import_vue5.createTextVNode)(" Use v-show instead of v-if\n        "),
+      _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)(" Use v-show instead of v-if\n        ")),
       (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
         "select",
         {
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.style = $event)
         },
-        [
-          _hoisted_1,
+        _cache[5] || (_cache[5] = [
+          (0, import_vue5.createElementVNode)(
+            "option",
+            { value: "height: 200px; background: hotpink" },
+            "200px h\xF6jd",
+            -1
+            /* HOISTED */
+          ),
           (0, import_vue5.createTextVNode)(),
-          _hoisted_2,
+          (0, import_vue5.createElementVNode)(
+            "option",
+            { value: "height: 600px; background: cyan" },
+            "600px h\xF6jd",
+            -1
+            /* HOISTED */
+          ),
           (0, import_vue5.createTextVNode)(),
-          _hoisted_3
-        ],
+          (0, import_vue5.createElementVNode)(
+            "option",
+            { value: "height: 1200px; background: yellow" },
+            "1200px h\xF6jd",
+            -1
+            /* HOISTED */
+          )
+        ]),
         512
         /* NEED_PATCH */
       ), [
         [import_vue5.vModelSelect, _ctx.style]
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,
@@ -153,7 +150,7 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,
@@ -161,7 +158,7 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_i_animate_expand, {
         expanded: _ctx.isExpanded,
         opacity: _ctx.hasOpacity,

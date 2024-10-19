@@ -36,20 +36,6 @@
     name: "FMessageBoxIconLink",
     components: { FMessageBox: import_vue4.FMessageBox, FIcon: import_vue4.FIcon }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "a",
-    {
-      class: "anchor",
-      href: "javascript:",
-      target: "_blank"
-    },
-    [
-      /* @__PURE__ */ (0, import_vue5.createTextVNode)("\n                    L\xE4nk\n                    "),
-      /* @__PURE__ */ (0, import_vue5.createElementVNode)("span", { class: "sr-only" }, " \xF6ppnas i nytt f\xF6nster ")
-    ],
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     const _component_f_message_box = (0, import_vue5.resolveComponent)("f-message-box");
@@ -64,10 +50,23 @@
           2
           /* CLASS */
         ),
-        (0, import_vue5.createTextVNode)(),
+        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)("p", null, [
-          _hoisted_1,
-          (0, import_vue5.createTextVNode)(),
+          _cache[0] || (_cache[0] = (0, import_vue5.createElementVNode)(
+            "a",
+            {
+              class: "anchor",
+              href: "javascript:",
+              target: "_blank"
+            },
+            [
+              (0, import_vue5.createTextVNode)("\n                    L\xE4nk\n                    "),
+              (0, import_vue5.createElementVNode)("span", { class: "sr-only" }, " \xF6ppnas i nytt f\xF6nster ")
+            ],
+            -1
+            /* HOISTED */
+          )),
+          _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createVNode)(_component_f_icon, { name: "new-window" })
         ])
       ]),
