@@ -5,15 +5,15 @@
 ```ts
 
 import { ComponentOptionsMixin } from 'vue';
+import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
-import { ExtractPropTypes } from 'vue';
 import { PublicProps } from 'vue';
 
 // @public
 export function createPlaceholderInDocument(): HTMLElement;
 
 // @public (undocumented)
-export const DensityWrapper: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {}>>, {}, {}>;
+export const DensityWrapper: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public
 export const densityWrapperHeight: number;
@@ -25,7 +25,7 @@ export const densityWrapperWidth: number;
 export function generateSelector(element: Element | null): string;
 
 // @public (undocumented)
-export const SizeWrapper: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {}>>, {}, {}>;
+export const SizeWrapper: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public
 export const sizeWrapperHeight: number;

@@ -12,6 +12,7 @@ import { ClearingnumberString } from '@fkui/logic';
 import { Component } from 'vue';
 import { ComponentOptions } from 'vue';
 import { ComponentOptionsMixin } from 'vue';
+import { ComponentProvideOptions } from 'vue';
 import { ComponentPublicInstance } from 'vue';
 import { ComputedRef } from 'vue';
 import { DefineComponent } from 'vue';
@@ -148,7 +149,7 @@ export function createFFormProvideOptions(vm: {
 }): FFormProvider;
 
 // @public (undocumented)
-const _default: DefineComponent<    {
+const _default: DefineComponent<ExtractPropTypes<    {
 beforeSubmit: {
 type: PropType<FValidationFormCallback>;
 required: false;
@@ -179,7 +180,7 @@ type: PropType<BeforeNavigate>;
 required: false;
 default(): BeforeNavigate;
 };
-}, unknown, {
+}>, {}, {
 validity: GroupValidityEvent;
 submitted: boolean;
 }, {
@@ -220,21 +221,232 @@ type: PropType<BeforeNavigate>;
 required: false;
 default(): BeforeNavigate;
 };
-}>> & {
+}>> & Readonly<{
 onSubmit?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 beforeSubmit: FValidationFormCallback;
 id: string;
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 errorListBullets: boolean;
 errorListBeforeNavigate: BeforeNavigate;
-}, {}>;
+}, {}, {
+FValidationGroup: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
+components: Record<string, ComponentValidityEvent>;
+}, {}, {
+onComponentUnmount(event: CustomEvent<ComponentUnmountEvent>): void;
+onComponentValidity(event: CustomEvent<ComponentValidityEvent>): Promise<void>;
+triggerGroupValidityEvent(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("group-validity" | "update:modelValue")[], "group-validity" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+"onGroup-validity"?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+modelValue: GroupValidityEvent;
+stopPropagation: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FErrorList: DefineComponent<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {}, {
+hasTitleSlot(): boolean;
+}, {
+liClasses(errorItem: ErrorItem): string[];
+onClickItem(item: ErrorItem): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{}>, {
+bullets: boolean;
+beforeNavigate: BeforeNavigate;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 export { _default as FValidationForm }
 export { _default as IValidationForm }
 
 // @public (undocumented)
-const _default_2: DefineComponent<    {
+const _default_2: DefineComponent<ExtractPropTypes<    {
 disabled: {
 type: BooleanConstructor;
 required: false;
@@ -253,7 +465,7 @@ value: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
 required: true;
 };
-}, {
+}>, {
 showDetails: "always" | "never" | "when-selected";
 getFieldsetLabelText: () => string | undefined;
 }, {
@@ -308,18 +520,18 @@ value: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
 required: true;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 id: string;
 disabled: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 export { _default_2 as FCheckboxField }
 export { _default_2 as FCheckboxGroupField }
 
 // @public (undocumented)
-const _default_3: DefineComponent<    {
+const _default_3: DefineComponent<ExtractPropTypes<    {
 disabled: {
 type: BooleanConstructor;
 required: false;
@@ -338,7 +550,7 @@ value: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
 required: true;
 };
-}, {
+}>, {
 sharedName: string | undefined;
 showDetails: "always" | "never" | "when-selected";
 getFieldsetLabelText: () => string | undefined;
@@ -389,13 +601,13 @@ value: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
 required: true;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 id: string;
 disabled: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 export { _default_3 as FRadioField }
 export { _default_3 as FRadioGroupField }
 
@@ -488,7 +700,7 @@ export interface ExpandableTable {
 }
 
 // @public (undocumented)
-export const FBadge: DefineComponent<    {
+export const FBadge: DefineComponent<ExtractPropTypes<    {
 status: {
 type: StringConstructor;
 default: string;
@@ -498,7 +710,7 @@ inverted: {
 type: BooleanConstructor;
 default: boolean;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 badgeClass(): string;
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 status: {
@@ -510,23 +722,23 @@ inverted: {
 type: BooleanConstructor;
 default: boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 status: string;
 inverted: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FBankAccountNumberTextField: DefineComponent<    {
+export const FBankAccountNumberTextField: DefineComponent<ExtractPropTypes<    {
 parser: {
 type: PropType<ParseFunction<BankAccountNumberString>>;
 required: false;
 default: typeof parseBankAccountNumber;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 defaultText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -567,7 +779,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -642,12 +854,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -656,28 +868,262 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 parser: {
 type: PropType<ParseFunction<BankAccountNumberString>>;
 required: false;
 default: typeof parseBankAccountNumber;
 };
-}>>, {
+}>> & Readonly<{}>, {
 parser: ParseFunction<string>;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FBankgiroTextField: DefineComponent<    {
+export const FBankgiroTextField: DefineComponent<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<BankgiroString>>;
 required: false;
 default: typeof parseBankgiro;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 defaultText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -718,7 +1164,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -793,12 +1239,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -807,18 +1253,252 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<BankgiroString>>;
 required: false;
 default: typeof parseBankgiro;
 };
-}>>, {
+}>> & Readonly<{}>, {
 formatter: FormatFunction<string>;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FCalendar: DefineComponent<    {
+export const FCalendar: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -836,7 +1516,7 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
-}, unknown, unknown, {}, {
+}>, {}, {}, {}, {
 onClickDay(date: FDate): void;
 onChangeMonth(date: FDate): void;
 }, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
@@ -857,16 +1537,207 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 tabDate: FDate | undefined;
-}, {}>;
+}, {}, {
+ICalendarNavbar: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>, {}, {}, {
+previousDisabled(): boolean;
+nextDisabled(): boolean;
+previousValue(): FDate;
+nextValue(): FDate;
+currentText(): string;
+previousSrText(): string;
+nextSrText(): string;
+previousIconClasses(): Record<string, boolean>;
+nextIconClasses(): Record<string, boolean>;
+}, {
+onClickPreviousButton(): void;
+onClickNextButton(): void;
+getDateText(value: FDate): string;
+isFocused(ref: string): boolean;
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+ICalendarMonth: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+tabDate: {
+type: PropType<FDate | undefined>;
+required: false;
+default: undefined;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>, {}, {}, {}, {
+onClickDay(date: FDate): void;
+onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
+isDayFocused(date: FDate): boolean;
+getTabindex(date: FDate): 0 | -1;
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+tabDate: {
+type: PropType<FDate | undefined>;
+required: false;
+default: undefined;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+onClick?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+tabDate: FDate | undefined;
+}, {}, {
+ICalendarMonthGrid: DefineComponent<ExtractPropTypes<    {
+value: {
+type: PropType<FDate>;
+required: true;
+};
+hideWeekNumbers: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
+weekdays: WeekdayNaming[];
+focused: boolean;
+resizeObserver: ResizeObserver | undefined;
+internalHideWeekNumbers: boolean;
+showShortWeekdays: boolean;
+}, {
+totalCols(): number;
+weeks(): Array<{
+week: number;
+days: FDate[];
+}>;
+}, {
+onResize(): void;
+onFocusin(): void;
+onFocusout(e: FocusEvent): void;
+getDayStartOffset: getDayStartOffset;
+getDayEndOffset: getDayEndOffset;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+value: {
+type: PropType<FDate>;
+required: true;
+};
+hideWeekNumbers: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{}>, {
+hideWeekNumbers: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FCalendarDay: DefineComponent<    {
+export const FCalendarDay: DefineComponent<ExtractPropTypes<    {
 day: {
 type: PropType<FDate>;
 required: true;
@@ -891,7 +1762,7 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 srText(): string;
 dayClasses(): string[];
 }, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
@@ -919,12 +1790,12 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 focused: boolean;
 enabled: boolean;
 selected: boolean;
 highlight: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public
 export const FCard: DefineComponent<    {}, {}, {
@@ -932,10 +1803,10 @@ headingClass: string[];
 }, {
 hasHeaderSlot(): boolean;
 hasFooterSlot(): boolean;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {}>>, {}, {}>;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public @deprecated (undocumented)
-export const FCheckboxGroup: DefineComponent<    {
+export const FCheckboxGroup: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -945,7 +1816,7 @@ name: {
 type: StringConstructor;
 required: true;
 };
-}, unknown, unknown, {}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -955,1279 +1826,10 @@ name: {
 type: StringConstructor;
 required: true;
 };
-}>>, {
+}>> & Readonly<{}>, {
 id: string;
-}, {}>;
-
-// @public (undocumented)
-export const FClearingnumberTextField: DefineComponent<    {
-formatter: {
-type: PropType<FormatFunction<ClearingnumberString>>;
-required: false;
-default: typeof parseClearingNumber;
-};
-}, {
-textFieldTableMode: boolean;
-}, {
-defaultText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-inline: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-modelValue: {
-type: (StringConstructor | NumberConstructor)[];
-required: false;
-default: string;
-};
-type: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-formatter: {
-type: PropType<FormatFunction<any>>;
-required: false;
-default: undefined;
-};
-parser: {
-type: PropType<ParseFunction<any>>;
-required: false;
-default: undefined;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}, {
-textFieldTableMode: boolean;
-}, {
-showErrorPopup: boolean;
-viewValue: string;
-lastModelValue: unknown;
-validationMessage: string;
-validityMode: string;
-defaultText: string;
-descriptionText: string;
-descriptionScreenReaderText: string;
-discreteDescriptionText: string;
-discreteDescriptionScreenReaderText: string;
-}, {
-showPopupError(): boolean;
-labelClass(): string;
-isValid(): boolean;
-hasError(): boolean;
-rootClass(): Record<string, boolean>;
-labelWrapperClass(): string | undefined;
-inputWrapperClass(): string | undefined;
-isModelUpdatedProgrammatically(): boolean;
-}, {
-getErrorPopupAnchor(): HTMLElement;
-closePopupError(): void;
-onChange(): Promise<void>;
-onFocus(): void;
-onBlur(): Promise<void>;
-onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
-onPendingValidity(): void;
-resolveNewModelValue(viewValue: string): unknown;
-syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
-triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
-setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-inline: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-modelValue: {
-type: (StringConstructor | NumberConstructor)[];
-required: false;
-default: string;
-};
-type: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-formatter: {
-type: PropType<FormatFunction<any>>;
-required: false;
-default: undefined;
-};
-parser: {
-type: PropType<ParseFunction<any>>;
-required: false;
-default: undefined;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>> & {
-onBlur?: ((...args: any[]) => any) | undefined;
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
-type: string;
-id: string;
-modelValue: string | number;
-inline: boolean;
-labelWidth: string;
-formatter: FormatFunction<any>;
-parser: ParseFunction<any>;
-inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-formatter: {
-type: PropType<FormatFunction<ClearingnumberString>>;
-required: false;
-default: typeof parseClearingNumber;
-};
-}>>, {
-formatter: FormatFunction<string>;
-}, {}>;
-
-// @public
-export const FConfirmModal: DefineComponent<    {
-fullscreen: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-isOpen: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-content: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-heading: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-size: {
-type: StringConstructor;
-default: string;
-validator(value: string): boolean;
-};
-ariaCloseText: {
-type: StringConstructor;
-required: false;
-default: undefined;
-};
-buttons: {
-type: PropType<FModalButtonDescriptor[]>;
-required: false;
-default: () => FModalButtonDescriptor[];
-};
-}, unknown, unknown, {
-preparedButtons(): FModalButton[];
-}, {
-onClose(): void;
-onClick(button: FModalButton): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, string[], string, PublicProps, Readonly<ExtractPropTypes<    {
-fullscreen: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-isOpen: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-content: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-heading: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-size: {
-type: StringConstructor;
-default: string;
-validator(value: string): boolean;
-};
-ariaCloseText: {
-type: StringConstructor;
-required: false;
-default: undefined;
-};
-buttons: {
-type: PropType<FModalButtonDescriptor[]>;
-required: false;
-default: () => FModalButtonDescriptor[];
-};
-}>> & {
-[x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-}, {
-size: string;
-content: string;
-isOpen: boolean;
-fullscreen: boolean;
-ariaCloseText: string;
-heading: string;
-buttons: FModalButtonDescriptor[];
-}, {}>;
-
-// @public (undocumented)
-export const FContextMenu: DefineComponent<    {
-isOpen: {
-type: BooleanConstructor;
-required: true;
-};
-anchor: {
-type: PropType<HTMLElement | undefined>;
-required: false;
-default: undefined;
-};
-items: {
-type: PropType<ContextMenuItem[]>;
-required: true;
-};
-ariaLabel: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}, {
-contextmenu: Ref<HTMLElement | null>;
-}, {
-selectedItem: string;
-currentFocusedItemIndex: number;
-}, {
-popupItems(): ContextMenuTextItem[];
-separatorPositions(): number[];
-hasIcons(): boolean;
-}, {
-hasSeparatorAfterItemAt(index: number): boolean;
-closePopup(): void;
-onClickItem(item: ContextMenuItem): void;
-tabIndex(index: number): number;
-onKeyUp(event: KeyboardEvent): void;
-doHandlePopupMenuTabKey(action: MenuAction): boolean;
-onKeyDown(event: KeyboardEvent): Promise<void>;
-setFocusOnItem(index: number): Promise<void>;
-activateItem(index: number): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close")[], "select" | "close", PublicProps, Readonly<ExtractPropTypes<    {
-isOpen: {
-type: BooleanConstructor;
-required: true;
-};
-anchor: {
-type: PropType<HTMLElement | undefined>;
-required: false;
-default: undefined;
-};
-items: {
-type: PropType<ContextMenuItem[]>;
-required: true;
-};
-ariaLabel: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>> & {
-onSelect?: ((...args: any[]) => any) | undefined;
-onClose?: ((...args: any[]) => any) | undefined;
-}, {
-anchor: HTMLElement | undefined;
-ariaLabel: string;
-}, {}>;
-
-// @public (undocumented)
-export const FCrudButton: DefineComponent<    {
-action: {
-type: StringConstructor;
-required: true;
-validator(value: string): boolean;
-};
-icon: {
-type: BooleanConstructor;
-default: boolean;
-};
-item: {
-type: ObjectConstructor;
-required: true;
-};
-label: {
-type: BooleanConstructor;
-default: boolean;
-};
-}, FCrudDatasetInterface, unknown, {
-iconName(): string;
-buttonText(): string;
-}, {
-executeAction(): void;
-}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-action: {
-type: StringConstructor;
-required: true;
-validator(value: string): boolean;
-};
-icon: {
-type: BooleanConstructor;
-default: boolean;
-};
-item: {
-type: ObjectConstructor;
-required: true;
-};
-label: {
-type: BooleanConstructor;
-default: boolean;
-};
-}>>, {
-label: boolean;
-icon: boolean;
-}, {}>;
-
-// @public (undocumented)
-export const FCrudDataset: DefineComponent<    {
-modelValue: {
-type: PropType<ListArray<ListItem>>;
-required: false;
-default: () => never[];
-};
-beforeCreate: {
-type: PropType<(() => ListItem) | undefined>;
-required: false;
-default: undefined;
-};
-primaryButtonRight: {
-type: BooleanConstructor;
-default: boolean;
-};
-beforeSubmit: {
-type: PropType<FValidationFormCallback>;
-required: false;
-default(): void;
-};
-beforeValidation: {
-type: PropType<FValidationFormCallback>;
-required: false;
-default(): void;
-};
-onCancel: {
-type: PropType<() => void>;
-required: false;
-default(): undefined;
-};
-addNewModalHeader: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-modifyModalHeader: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-deleteModalHeader: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}, unknown, FCrudDatasetData, {
-confirmButtonText(): string;
-cancelButtonText(): string;
-confirmDeleteButtons(): FModalButtonDescriptor[];
-hasAddSlot(): boolean;
-hasDeleteSlot(): boolean;
-hasModifySlot(): boolean;
-formModalHeader(): string;
-}, {
-createItem(): void;
-deleteItem(item: ListItem): void;
-onDeleteConfirm(): void;
-onDeleteClose(e: {
-reason: string;
-}): void;
-onModalClose(): void;
-onFormModalSubmit(): void;
-updateItem(item: ListItem): void;
-}, ComponentOptions, ComponentOptionsMixin, ("created" | "updated" | "update:modelValue" | "change" | "deleted")[], "created" | "updated" | "update:modelValue" | "change" | "deleted", PublicProps, Readonly<ExtractPropTypes<    {
-modelValue: {
-type: PropType<ListArray<ListItem>>;
-required: false;
-default: () => never[];
-};
-beforeCreate: {
-type: PropType<(() => ListItem) | undefined>;
-required: false;
-default: undefined;
-};
-primaryButtonRight: {
-type: BooleanConstructor;
-default: boolean;
-};
-beforeSubmit: {
-type: PropType<FValidationFormCallback>;
-required: false;
-default(): void;
-};
-beforeValidation: {
-type: PropType<FValidationFormCallback>;
-required: false;
-default(): void;
-};
-onCancel: {
-type: PropType<() => void>;
-required: false;
-default(): undefined;
-};
-addNewModalHeader: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-modifyModalHeader: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-deleteModalHeader: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>> & {
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onCreated?: ((...args: any[]) => any) | undefined;
-onUpdated?: ((...args: any[]) => any) | undefined;
-onDeleted?: ((...args: any[]) => any) | undefined;
-}, {
-beforeSubmit: FValidationFormCallback;
-modelValue: ListArray<UnknownItem>;
-beforeValidation: FValidationFormCallback;
-onCancel: () => void;
-beforeCreate: (() => ListItem) | undefined;
-primaryButtonRight: boolean;
-addNewModalHeader: string;
-modifyModalHeader: string;
-deleteModalHeader: string;
-}, {}>;
-
-// @public (undocumented)
-export interface FCrudDatasetData {
-    // (undocumented)
-    callbackAfterItemAdd(item: ListItem): void;
-    // (undocumented)
-    callbackBeforeItemDelete(item: ListItem): void;
-    // (undocumented)
-    isConfirmModalOpen: boolean;
-    // (undocumented)
-    isFormModalOpen: boolean;
-    // (undocumented)
-    item: null | ListItem;
-    // (undocumented)
-    Operation: typeof Operation;
-    // (undocumented)
-    operation: Operation;
-    // (undocumented)
-    originalItemToUpdate: null | ListItem;
-    // (undocumented)
-    result: ListArray;
-}
-
-// @public (undocumented)
-export interface FCrudDatasetInterface {
-    // (undocumented)
-    delete(item: ListItem): void;
-    // (undocumented)
-    modify(item: ListItem): void;
-}
-
-// @public (undocumented)
-export const FCurrencyTextField: DefineComponent<    {
-formatter: {
-type: PropType<FormatFunction<number>>;
-required: false;
-default: typeof formatNumber;
-};
-parser: {
-type: PropType<ParseFunction<number>>;
-required: false;
-default: typeof parseNumber;
-};
-}, {
-textFieldTableMode: boolean;
-}, {
-defaultText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-inline: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-modelValue: {
-type: (StringConstructor | NumberConstructor)[];
-required: false;
-default: string;
-};
-type: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-formatter: {
-type: PropType<FormatFunction<any>>;
-required: false;
-default: undefined;
-};
-parser: {
-type: PropType<ParseFunction<any>>;
-required: false;
-default: undefined;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}, {
-textFieldTableMode: boolean;
-}, {
-showErrorPopup: boolean;
-viewValue: string;
-lastModelValue: unknown;
-validationMessage: string;
-validityMode: string;
-defaultText: string;
-descriptionText: string;
-descriptionScreenReaderText: string;
-discreteDescriptionText: string;
-discreteDescriptionScreenReaderText: string;
-}, {
-showPopupError(): boolean;
-labelClass(): string;
-isValid(): boolean;
-hasError(): boolean;
-rootClass(): Record<string, boolean>;
-labelWrapperClass(): string | undefined;
-inputWrapperClass(): string | undefined;
-isModelUpdatedProgrammatically(): boolean;
-}, {
-getErrorPopupAnchor(): HTMLElement;
-closePopupError(): void;
-onChange(): Promise<void>;
-onFocus(): void;
-onBlur(): Promise<void>;
-onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
-onPendingValidity(): void;
-resolveNewModelValue(viewValue: string): unknown;
-syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
-triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
-setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-inline: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-modelValue: {
-type: (StringConstructor | NumberConstructor)[];
-required: false;
-default: string;
-};
-type: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-formatter: {
-type: PropType<FormatFunction<any>>;
-required: false;
-default: undefined;
-};
-parser: {
-type: PropType<ParseFunction<any>>;
-required: false;
-default: undefined;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>> & {
-onBlur?: ((...args: any[]) => any) | undefined;
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
-type: string;
-id: string;
-modelValue: string | number;
-inline: boolean;
-labelWidth: string;
-formatter: FormatFunction<any>;
-parser: ParseFunction<any>;
-inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-formatter: {
-type: PropType<FormatFunction<number>>;
-required: false;
-default: typeof formatNumber;
-};
-parser: {
-type: PropType<ParseFunction<number>>;
-required: false;
-default: typeof parseNumber;
-};
-}>>, {
-formatter: FormatFunction<number>;
-parser: ParseFunction<number>;
-}, {}>;
-
-// @public (undocumented)
-export const FDataTable: DefineComponent<    {
-rows: {
-type: PropType<ListArray>;
-required: true;
-};
-keyAttribute: {
-type: StringConstructor;
-required: true;
-};
-striped: {
-type: BooleanConstructor;
-default: boolean;
-};
-scroll: {
-type: PropType<TableScroll>;
-default: TableScroll;
-validator(value: string): boolean;
-};
-}, FSortFilterDatasetInterface, {
-columns: FTableColumnData[];
-}, {
-hasCaption(): boolean;
-tableClasses(): string[];
-isEmpty(): boolean;
-visibleColumns(): FTableColumnData[];
-wrapperClasses(): string[];
-tabindex(): number | undefined;
-}, {
-rowKey(item: ListItem): string;
-columnClasses(column: FTableColumnData): string[];
-iconClasses(column: FTableColumnData): string[];
-iconName(column: FTableColumnData): string;
-onClickColumnHeader(column: FTableColumnData): void;
-callbackOnSort(columnName: string, ascending: boolean): void;
-callbackSortableColumns(columnNames: string[]): void;
-escapeNewlines(value: string): string;
-}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-rows: {
-type: PropType<ListArray>;
-required: true;
-};
-keyAttribute: {
-type: StringConstructor;
-required: true;
-};
-striped: {
-type: BooleanConstructor;
-default: boolean;
-};
-scroll: {
-type: PropType<TableScroll>;
-default: TableScroll;
-validator(value: string): boolean;
-};
-}>>, {
-scroll: TableScroll;
-striped: boolean;
-}, {}>;
-
-// @public (undocumented)
-export const FDatepickerField: DefineComponent<    {
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-initialMonth: {
-type: PropType<FDate | undefined>;
-required: false;
-default: undefined;
-};
-highlightToday: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-alwaysInline: {
-type: BooleanConstructor;
-default: boolean;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-}, {
-textFieldValue: Ref<string>;
-textFieldTouched: Ref<boolean>;
-textFieldValidityRevealed: Ref<boolean>;
-textFieldTableMode: boolean;
-componentTouched: Ref<boolean>;
-calendarMonth: ShallowRef<FDate>;
-calendarValue: ShallowRef<FDate | undefined>;
-isCalendarOpen: Ref<boolean>;
-validationConfig: Ref<ValidatorConfigs>;
-minDate: ShallowRef<FDate>;
-maxDate: ShallowRef<FDate>;
-calendarInputs: Ref<HTMLElement | null>;
-}, unknown, {
-calendarButtonText(): string;
-popupClass(): string;
-}, {
-dateFormatter: typeof parseDate;
-onValidityTextField({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
-onChangeTextField(): void;
-onClickCalendarButton(): void;
-onFocusoutTextFieldButton(e: FocusEvent): void;
-onSelectCalendarDay(date: FDate): Promise<void>;
-onKeyupEsc(): Promise<void>;
-onClickCloseCalendarButton(): Promise<void>;
-onOpenPopup(): void;
-onClosePopup(): void;
-onValidationConfigUpdate(event: CustomEvent<ValidationConfigUpdateDetail>): Promise<void>;
-isDateEnabled(day: FDate): boolean;
-isDaySelected(date: FDate): boolean;
-highlightDay(date: FDate): boolean;
-updateTextFieldValue(newValue: string): Promise<void>;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
-modelValue: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-initialMonth: {
-type: PropType<FDate | undefined>;
-required: false;
-default: undefined;
-};
-highlightToday: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-alwaysInline: {
-type: BooleanConstructor;
-default: boolean;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-}>> & {
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
-modelValue: string;
-alwaysInline: boolean;
-disabled: boolean;
-labelWidth: string;
-inputWidth: string;
-initialMonth: FDate | undefined;
-highlightToday: boolean;
-}, {}>;
-
-// @public (undocumented)
-export const FDialogueTree: DefineComponent<    {
-modelValue: {
-type: PropType<FDialogueTreeUserProgress>;
-required: true;
-};
-dialogueTree: {
-type: PropType<FDialogueTreeQuestion>;
-required: true;
-};
-}, unknown, FDialogueTreeData, {
-userData(): unknown;
-options(): FDialogueTreeOption[];
-}, {
-onClickedOption(option: FDialogueTreeOption, index: number): Promise<void>;
-emitChange(lastStep: boolean): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
-modelValue: {
-type: PropType<FDialogueTreeUserProgress>;
-required: true;
-};
-dialogueTree: {
-type: PropType<FDialogueTreeQuestion>;
-required: true;
-};
-}>> & {
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {}, {}>;
-
-// @public (undocumented)
-export interface FDialogueTreeData {
-    // (undocumented)
-    currentStep: FDialogueTreeQuestion;
-    // (undocumented)
-    steps: number[];
-}
-
-// @public (undocumented)
-export interface FDialogueTreeEndQuestion {
-    // (undocumented)
-    label: string;
-    // (undocumented)
-    userData: unknown;
-}
-
-// @public
-export interface FDialogueTreeOption {
-    // (undocumented)
-    label: string;
-    // (undocumented)
-    question: FDialogueTreeQuestion;
-}
-
-// @public (undocumented)
-export type FDialogueTreeQuestion = FDialogueTreeSubQuestion | FDialogueTreeEndQuestion;
-
-// @public (undocumented)
-export interface FDialogueTreeSubQuestion {
-    // (undocumented)
-    label: string;
-    // (undocumented)
-    options: FDialogueTreeOption[];
-}
-
-// @public
-export interface FDialogueTreeUserProgress {
-    // (undocumented)
-    label: string;
-    // (undocumented)
-    lastStep: boolean;
-    // (undocumented)
-    steps: number[];
-}
-
-// @public (undocumented)
-export const FEmailTextField: DefineComponent<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-modelValue: {
-type: StringConstructor;
-required: false;
-default: undefined;
-};
-maxLength: {
-type: NumberConstructor;
-default: number;
-};
-extendedValidation: {
-type: BooleanConstructor;
-default: boolean;
-};
-pasteErrorText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}, unknown, {
-validityMode: string;
-secondEmail: string;
-showPasteErrorMessage: boolean;
-defaultText: string;
 }, {}, {
-onChange(event: Event): void;
-onBlur(event: Event): void;
-onUpdate(event: Event): void;
-onPaste(event: Event): boolean;
-onValidity({ detail }: CustomEvent<ValidityEvent>): void;
-onPendingValidity(): void;
-configureValidators(): void;
-configureExtendedValidation(elements: HTMLInputElement[]): void;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-modelValue: {
-type: StringConstructor;
-required: false;
-default: undefined;
-};
-maxLength: {
-type: NumberConstructor;
-default: number;
-};
-extendedValidation: {
-type: BooleanConstructor;
-default: boolean;
-};
-pasteErrorText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>> & {
-onBlur?: ((...args: any[]) => any) | undefined;
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
-id: string;
-modelValue: string;
-maxLength: number;
-extendedValidation: boolean;
-pasteErrorText: string;
-}, {}>;
-
-// @public (undocumented)
-export const FErrorHandlingApp: DefineComponent<    {
-defaultComponent: {
-type: PropType<Component | undefined>;
-required: false;
-default: undefined;
-};
-errorComponent: {
-type: PropType<Component>;
-required: false;
-default: DefineComponent<    {
-payload: {
-type: PropType<ErrorData>;
-required: false;
-default: null;
-};
-}, unknown, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-payload: {
-type: PropType<ErrorData>;
-required: false;
-default: null;
-};
-}>>, {
-payload: ErrorData;
-}, {}>;
-};
-}, unknown, ErrorViewData, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-defaultComponent: {
-type: PropType<Component | undefined>;
-required: false;
-default: undefined;
-};
-errorComponent: {
-type: PropType<Component>;
-required: false;
-default: DefineComponent<    {
-payload: {
-type: PropType<ErrorData>;
-required: false;
-default: null;
-};
-}, unknown, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-payload: {
-type: PropType<ErrorData>;
-required: false;
-default: null;
-};
-}>>, {
-payload: ErrorData;
-}, {}>;
-};
-}>>, {
-defaultComponent: Component | undefined;
-errorComponent: Component;
-}, {}>;
-
-// @public (undocumented)
-export const FErrorList: DefineComponent<    {
-items: {
-type: PropType<ErrorItem[]>;
-required: true;
-};
-bullets: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-beforeNavigate: {
-type: PropType<BeforeNavigate>;
-required: false;
-default(): BeforeNavigate;
-};
-}, unknown, unknown, {
-hasTitleSlot(): boolean;
-}, {
-liClasses(errorItem: ErrorItem): string[];
-onClickItem(item: ErrorItem): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-items: {
-type: PropType<ErrorItem[]>;
-required: true;
-};
-bullets: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-beforeNavigate: {
-type: PropType<BeforeNavigate>;
-required: false;
-default(): BeforeNavigate;
-};
-}>>, {
-bullets: boolean;
-beforeNavigate: BeforeNavigate;
-}, {}>;
-
-// @public (undocumented)
-export const FExpand: DefineComponent<    {}, {}, {
-height: number;
-initialStyle: {
-overflow: string;
-transition: string;
-};
-hiddenStyle: {
-height: string;
-position: string;
-visibility: string;
-};
-visibleStyle: {
-width: string;
-position: string;
-visibility: string;
-height: string;
-};
-openedStyle: {
-height: string;
-};
-}, {}, {
-enter(element: Element): void;
-afterEnter(element: Element): void;
-leave(element: Element): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {}>>, {}, {}>;
-
-// @public (undocumented)
-export const FExpandablePanel: DefineComponent<    {
-expanded: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-headerTag: {
-default: string;
-required: false;
-validator(value: string): boolean;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-notifications: {
-type: NumberConstructor;
-required: false;
-default: number;
-};
-screenReaderNotificationTemplate: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}, unknown, unknown, {
-expandedClass(): string;
-hasOutsideSlot(): boolean;
-haveNotifications(): boolean;
-screenReaderNotificationText(): string;
-}, {
-onClickHeadingButton(event: MouseEvent): void;
-}, ComponentOptions, ComponentOptionsMixin, "toggle"[], "toggle", PublicProps, Readonly<ExtractPropTypes<    {
-expanded: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-headerTag: {
-default: string;
-required: false;
-validator(value: string): boolean;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-notifications: {
-type: NumberConstructor;
-required: false;
-default: number;
-};
-screenReaderNotificationTemplate: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>> & {
-onToggle?: ((...args: any[]) => any) | undefined;
-}, {
-id: string;
-expanded: boolean;
-headerTag: string;
-notifications: number;
-screenReaderNotificationTemplate: string;
-}, {}>;
-
-// @public (undocumented)
-export const FExpandableParagraph: DefineComponent<    {
-expanded: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-headerTag: {
-default: string;
-required: false;
-validator(value: string): boolean;
-};
-headerVisualTag: {
-type: StringConstructor;
-default: string;
-required: false;
-validator(value: string): boolean;
-};
-list: {
-type: BooleanConstructor;
-default: boolean;
-required: false;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-}, unknown, unknown, {
-expandedClass(): string;
-listClass(): string;
-relatedClass(): string;
-hasRelatedSlot(): boolean;
-headerVisualClass(): string;
-}, {
-onClickMinimize(event: MouseEvent): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, "toggle"[], "toggle", PublicProps, Readonly<ExtractPropTypes<    {
-expanded: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-headerTag: {
-default: string;
-required: false;
-validator(value: string): boolean;
-};
-headerVisualTag: {
-type: StringConstructor;
-default: string;
-required: false;
-validator(value: string): boolean;
-};
-list: {
-type: BooleanConstructor;
-default: boolean;
-required: false;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-}>> & {
-onToggle?: ((...args: any[]) => any) | undefined;
-}, {
-id: string;
-expanded: boolean;
-headerTag: string;
-headerVisualTag: string;
-list: boolean;
-}, {}>;
-
-// @public (undocumented)
-export const FFieldset: DefineComponent<    {
+FFieldset: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -2266,7 +1868,7 @@ type: PropType<"never" | "when-selected" | "always">;
 default: string;
 validator(value: string): boolean;
 };
-}, void, {
+}>, void, {
 validity: ValidityEvent;
 descriptionClass: string[];
 discreteDescriptionClass: string[];
@@ -2336,7 +1938,7 @@ type: PropType<"never" | "when-selected" | "always">;
 default: string;
 validator(value: string): boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 name: string;
 horizontal: boolean;
 id: string;
@@ -2345,169 +1947,1147 @@ contentClass: string;
 showDetails: "always" | "never" | "when-selected";
 chip: boolean;
 border: boolean;
-}, {}>;
-
-// @public (undocumented)
-export const FFileItem: DefineComponent<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-fileName: {
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
 type: StringConstructor;
 required: true;
 };
-mimeType: {
+library: {
 type: StringConstructor;
 required: false;
-default: undefined;
+default: string;
 };
-originalMimeType: {
-type: StringConstructor;
+flip: {
+type: PropType<string>;
+default: null;
 required: false;
-default: undefined;
+validator(value: string): boolean;
 };
-changedMimeTypeText: {
-type: StringConstructor;
+rotate: {
+type: PropType<string>;
+default: null;
 required: false;
-default: undefined;
+validator(value: string): boolean;
 };
-}, unknown, unknown, {
-isMimeTypeChanged(): boolean;
-mimeTypeChangedText(): string;
-iconName(): FFileItemIconName;
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-fileName: {
+name: {
 type: StringConstructor;
 required: true;
 };
-mimeType: {
+library: {
 type: StringConstructor;
 required: false;
-default: undefined;
+default: string;
 };
-originalMimeType: {
-type: StringConstructor;
+flip: {
+type: PropType<string>;
+default: null;
 required: false;
-default: undefined;
+validator(value: string): boolean;
 };
-changedMimeTypeText: {
-type: StringConstructor;
+rotate: {
+type: PropType<string>;
+default: null;
 required: false;
-default: undefined;
+validator(value: string): boolean;
 };
-}>>, {
-id: string;
-mimeType: string;
-originalMimeType: string;
-changedMimeTypeText: string;
-}, {}>;
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export type FFileItemIconName = "doc" | "file" | "pic" | "pdf";
-
-// @public (undocumented)
-export const FFileSelector: DefineComponent<    {
+export const FClearingnumberTextField: DefineComponent<ExtractPropTypes<    {
+formatter: {
+type: PropType<FormatFunction<ClearingnumberString>>;
+required: false;
+default: typeof parseClearingNumber;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+defaultText: string;
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
 default: () => string;
 };
-disabled: {
+inline: {
 type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, unknown, unknown, {
-attrs(): Record<string, unknown>;
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+showErrorPopup: boolean;
+viewValue: string;
+lastModelValue: unknown;
+validationMessage: string;
+validityMode: string;
+defaultText: string;
+descriptionText: string;
+descriptionScreenReaderText: string;
+discreteDescriptionText: string;
+discreteDescriptionScreenReaderText: string;
+}, {
+showPopupError(): boolean;
 labelClass(): string;
-labelId(): string;
-ariaDisabled(): string | undefined;
-}, {
-onClick(event: Event): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, "change"[], "change", PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-}>> & {
-onChange?: ((...args: any[]) => any) | undefined;
-}, {
-id: string;
-disabled: boolean;
-}, {}>;
-
-// @public @deprecated (undocumented)
-export const FForm: DefineComponent<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-displayError: {
-type: BooleanConstructor;
-default: boolean;
-};
-errorScroll: {
-type: PropType<"center" | "top">;
-default: string;
-validator(value: string): boolean;
-};
-}, unknown, FFormData, {
-attrs(): Record<string, unknown>;
-numberOfTimesSubmitted(): number;
-isSubmitted(): boolean;
+isValid(): boolean;
 hasError(): boolean;
-componentsWithErrors(): Array<FormErrorList | FormStep>;
-needsErrorScroll(): boolean;
+rootClass(): Record<string, boolean>;
+labelWrapperClass(): string | undefined;
+inputWrapperClass(): string | undefined;
+isModelUpdatedProgrammatically(): boolean;
 }, {
-focusDomElement(): Promise<void>;
-focusFallbackElement(): Promise<void>;
-onSubmit(event: Event): Promise<boolean>;
-onComponentValidity(event: CustomEvent<ComponentValidityEvent>): Promise<void>;
-}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+getErrorPopupAnchor(): HTMLElement;
+closePopupError(): void;
+onChange(): Promise<void>;
+onFocus(): void;
+onBlur(): Promise<void>;
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onPendingValidity(): void;
+resolveNewModelValue(viewValue: string): unknown;
+syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
+triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
+setViewValueToFormattedValueOrFallbackToValue(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
 default: () => string;
 };
-displayError: {
+inline: {
 type: BooleanConstructor;
+required: false;
 default: boolean;
 };
-errorScroll: {
-type: PropType<"center" | "top">;
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onBlur?: ((...args: any[]) => any) | undefined;
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onUpdate?: ((...args: any[]) => any) | undefined;
+}>, {
+type: string;
+id: string;
+modelValue: string | number;
+inline: boolean;
+labelWidth: string;
+formatter: FormatFunction<any>;
+parser: ParseFunction<any>;
+inputWidth: string;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+formatter: {
+type: PropType<FormatFunction<ClearingnumberString>>;
+required: false;
+default: typeof parseClearingNumber;
+};
+}>> & Readonly<{}>, {
+formatter: FormatFunction<string>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public
+export const FConfirmModal: DefineComponent<ExtractPropTypes<    {
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+content: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+heading: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+size: {
+type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
-}>>, {
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+buttons: {
+type: PropType<FModalButtonDescriptor[]>;
+required: false;
+default: () => FModalButtonDescriptor[];
+};
+}>, {}, {}, {
+preparedButtons(): FModalButton[];
+}, {
+onClose(): void;
+onClick(button: FModalButton): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, string[], string, PublicProps, Readonly<ExtractPropTypes<    {
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+content: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+heading: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+buttons: {
+type: PropType<FModalButtonDescriptor[]>;
+required: false;
+default: () => FModalButtonDescriptor[];
+};
+}>> & Readonly<{
+[x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
+}>, {
+size: string;
+content: string;
+isOpen: boolean;
+fullscreen: boolean;
+ariaCloseText: string;
+heading: string;
+buttons: FModalButtonDescriptor[];
+}, {}, {
+FModal: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+type: {
+type: PropType<"" | "information" | "warning" | "error">;
+default: string;
+validator(value: string): boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+}>, {}, FModalData, {
+modalClass(): string[];
+containerClasses(): string[];
+hasHeaderSlot(): boolean;
+}, {
+onClose(): void;
+openModal(): void;
+resolveFocusElement(): Element;
+restoreState(): void;
+onFocusFirst(): void;
+onFocusLast(): void;
+}, ComponentOptions, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+type: {
+type: PropType<"" | "information" | "warning" | "error">;
+default: string;
+validator(value: string): boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+type: "" | "warning" | "error" | "information";
+size: string;
+isOpen: boolean;
+fullscreen: boolean;
 id: string;
-displayError: boolean;
-errorScroll: "center" | "top";
-}, {}>;
+ariaCloseText: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export interface FFormData {
-    // (undocumented)
-    components: Record<string, Reference<FormErrorList | FormStep>>;
-    // (undocumented)
-    errorMessageSlotClass: string[];
-}
+export const FContextMenu: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | undefined>;
+required: false;
+default: undefined;
+};
+items: {
+type: PropType<ContextMenuItem[]>;
+required: true;
+};
+ariaLabel: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+contextmenu: Ref<HTMLElement | null, HTMLElement | null>;
+}, {
+selectedItem: string;
+currentFocusedItemIndex: number;
+}, {
+popupItems(): ContextMenuTextItem[];
+separatorPositions(): number[];
+hasIcons(): boolean;
+}, {
+hasSeparatorAfterItemAt(index: number): boolean;
+closePopup(): void;
+onClickItem(item: ContextMenuItem): void;
+tabIndex(index: number): number;
+onKeyUp(event: KeyboardEvent): void;
+doHandlePopupMenuTabKey(action: MenuAction): boolean;
+onKeyDown(event: KeyboardEvent): Promise<void>;
+setFocusOnItem(index: number): Promise<void>;
+activateItem(index: number): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close")[], "select" | "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | undefined>;
+required: false;
+default: undefined;
+};
+items: {
+type: PropType<ContextMenuItem[]>;
+required: true;
+};
+ariaLabel: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onSelect?: ((...args: any[]) => any) | undefined;
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | undefined;
+ariaLabel: string;
+}, {}, {
+IPopup: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+inline: {
+type: PropType<"always" | "never" | "auto">;
+required: false;
+validator(value: string): boolean;
+default: string;
+};
+alwaysInline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+container: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+viewport: {
+type: PropType<HTMLElement>;
+required: false;
+default(): HTMLElement;
+};
+keyboardTrap: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusElement: {
+type: PropType<() => HTMLElement | null>;
+required: false;
+default: null;
+};
+setFocus: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, IPopupData, {
+popupClasses(): string[];
+forceInline(): boolean;
+forceOverlay(): boolean;
+teleportTarget(): string | Element;
+}, {
+toggleIsOpen(isOpen: boolean): Promise<void>;
+applyFocus(): void;
+isMobileSize(): boolean;
+onDocumentClickHandler(): void;
+onWindowResizeHandler(): void;
+onPopupClickHandler(event: Event): void;
+onKeyEsc(): void;
+onKeyTab(event: KeyboardEvent): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("close" | "open")[], "close" | "open", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+inline: {
+type: PropType<"always" | "never" | "auto">;
+required: false;
+validator(value: string): boolean;
+default: string;
+};
+alwaysInline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+container: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+viewport: {
+type: PropType<HTMLElement>;
+required: false;
+default(): HTMLElement;
+};
+keyboardTrap: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusElement: {
+type: PropType<() => HTMLElement | null>;
+required: false;
+default: null;
+};
+setFocus: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+onOpen?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+viewport: HTMLElement;
+inline: "always" | "never" | "auto";
+alwaysInline: boolean;
+container: HTMLElement | null | undefined;
+keyboardTrap: boolean;
+focusElement: () => HTMLElement | null;
+setFocus: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FFormModal: DefineComponent<    {
+export const FCrudButton: DefineComponent<ExtractPropTypes<    {
+action: {
+type: StringConstructor;
+required: true;
+validator(value: string): boolean;
+};
+icon: {
+type: BooleanConstructor;
+default: boolean;
+};
+item: {
+type: ObjectConstructor;
+required: true;
+};
+label: {
+type: BooleanConstructor;
+default: boolean;
+};
+}>, FCrudDatasetInterface, {}, {
+iconName(): string;
+buttonText(): string;
+}, {
+executeAction(): void;
+}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+action: {
+type: StringConstructor;
+required: true;
+validator(value: string): boolean;
+};
+icon: {
+type: BooleanConstructor;
+default: boolean;
+};
+item: {
+type: ObjectConstructor;
+required: true;
+};
+label: {
+type: BooleanConstructor;
+default: boolean;
+};
+}>> & Readonly<{}>, {
+label: boolean;
+icon: boolean;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FCrudDataset: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<ListArray<ListItem>>;
+required: false;
+default: () => never[];
+};
+beforeCreate: {
+type: PropType<(() => ListItem) | undefined>;
+required: false;
+default: undefined;
+};
+primaryButtonRight: {
+type: BooleanConstructor;
+default: boolean;
+};
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): void;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): void;
+};
+onCancel: {
+type: PropType<() => void>;
+required: false;
+default(): undefined;
+};
+addNewModalHeader: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+modifyModalHeader: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+deleteModalHeader: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {}, FCrudDatasetData, {
+confirmButtonText(): string;
+cancelButtonText(): string;
+confirmDeleteButtons(): FModalButtonDescriptor[];
+hasAddSlot(): boolean;
+hasDeleteSlot(): boolean;
+hasModifySlot(): boolean;
+formModalHeader(): string;
+}, {
+createItem(): void;
+deleteItem(item: ListItem): void;
+onDeleteConfirm(): void;
+onDeleteClose(e: {
+reason: string;
+}): void;
+onModalClose(): void;
+onFormModalSubmit(): void;
+updateItem(item: ListItem): void;
+}, ComponentOptions, ComponentOptionsMixin, ("created" | "updated" | "update:modelValue" | "change" | "deleted")[], "created" | "updated" | "update:modelValue" | "change" | "deleted", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<ListArray<ListItem>>;
+required: false;
+default: () => never[];
+};
+beforeCreate: {
+type: PropType<(() => ListItem) | undefined>;
+required: false;
+default: undefined;
+};
+primaryButtonRight: {
+type: BooleanConstructor;
+default: boolean;
+};
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): void;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): void;
+};
+onCancel: {
+type: PropType<() => void>;
+required: false;
+default(): undefined;
+};
+addNewModalHeader: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+modifyModalHeader: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+deleteModalHeader: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onCreated?: ((...args: any[]) => any) | undefined;
+onUpdated?: ((...args: any[]) => any) | undefined;
+onDeleted?: ((...args: any[]) => any) | undefined;
+}>, {
+beforeSubmit: FValidationFormCallback;
+beforeCreate: (() => ListItem) | undefined;
+modelValue: ListArray<UnknownItem>;
+beforeValidation: FValidationFormCallback;
+onCancel: () => void;
+primaryButtonRight: boolean;
+addNewModalHeader: string;
+modifyModalHeader: string;
+deleteModalHeader: string;
+}, {}, {
+FFormModal: DefineComponent<ExtractPropTypes<    {
 fullscreen: {
 type: BooleanConstructor;
 required: false;
@@ -2562,7 +3142,7 @@ type: PropType<FModalButtonDescriptor[]>;
 required: false;
 default: () => FModalButtonDescriptor[];
 };
-}, unknown, {}, {
+}>, {}, {}, {
 preparedButtons(): FModalButton[];
 hasDeprecatedSlots(): boolean;
 }, {
@@ -2624,11 +3204,11 @@ type: PropType<FModalButtonDescriptor[]>;
 required: false;
 default: () => FModalButtonDescriptor[];
 };
-}>> & {
+}>> & Readonly<{
 onSubmit?: ((...args: any[]) => any) | undefined;
 onClose?: ((...args: any[]) => any) | undefined;
 onCancel?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 value: Record<string, any>;
 size: string;
 isOpen: boolean;
@@ -2640,7 +3220,4732 @@ beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 dataTest: string;
 formId: string;
-}, {}>;
+}, {}, {
+FModal: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+type: {
+type: PropType<"" | "information" | "warning" | "error">;
+default: string;
+validator(value: string): boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+}>, {}, FModalData, {
+modalClass(): string[];
+containerClasses(): string[];
+hasHeaderSlot(): boolean;
+}, {
+onClose(): void;
+openModal(): void;
+resolveFocusElement(): Element;
+restoreState(): void;
+onFocusFirst(): void;
+onFocusLast(): void;
+}, ComponentOptions, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+type: {
+type: PropType<"" | "information" | "warning" | "error">;
+default: string;
+validator(value: string): boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+type: "" | "warning" | "error" | "information";
+size: string;
+isOpen: boolean;
+fullscreen: boolean;
+id: string;
+ariaCloseText: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FValidationForm: DefineComponent<ExtractPropTypes<    {
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+useErrorList: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBeforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {
+validity: GroupValidityEvent;
+submitted: boolean;
+}, {
+groupKey(): string;
+errors(): ErrorItem[];
+displayErrors(): boolean;
+}, {
+hasFormErrors(): Promise<boolean>;
+onSubmit(event: Event): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "submit"[], "submit", PublicProps, Readonly<ExtractPropTypes<    {
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+useErrorList: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBeforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{
+onSubmit?: ((...args: any[]) => any) | undefined;
+}>, {
+beforeSubmit: FValidationFormCallback;
+id: string;
+beforeValidation: FValidationFormCallback;
+useErrorList: boolean;
+errorListBullets: boolean;
+errorListBeforeNavigate: BeforeNavigate;
+}, {}, {
+FValidationGroup: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
+components: Record<string, ComponentValidityEvent>;
+}, {}, {
+onComponentUnmount(event: CustomEvent<ComponentUnmountEvent>): void;
+onComponentValidity(event: CustomEvent<ComponentValidityEvent>): Promise<void>;
+triggerGroupValidityEvent(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("group-validity" | "update:modelValue")[], "group-validity" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+"onGroup-validity"?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+modelValue: GroupValidityEvent;
+stopPropagation: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FErrorList: DefineComponent<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {}, {
+hasTitleSlot(): boolean;
+}, {
+liClasses(errorItem: ErrorItem): string[];
+onClickItem(item: ErrorItem): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{}>, {
+bullets: boolean;
+beforeNavigate: BeforeNavigate;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FConfirmModal: DefineComponent<ExtractPropTypes<    {
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+content: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+heading: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+buttons: {
+type: PropType<FModalButtonDescriptor[]>;
+required: false;
+default: () => FModalButtonDescriptor[];
+};
+}>, {}, {}, {
+preparedButtons(): FModalButton[];
+}, {
+onClose(): void;
+onClick(button: FModalButton): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, string[], string, PublicProps, Readonly<ExtractPropTypes<    {
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+content: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+heading: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+buttons: {
+type: PropType<FModalButtonDescriptor[]>;
+required: false;
+default: () => FModalButtonDescriptor[];
+};
+}>> & Readonly<{
+[x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
+}>, {
+size: string;
+content: string;
+isOpen: boolean;
+fullscreen: boolean;
+ariaCloseText: string;
+heading: string;
+buttons: FModalButtonDescriptor[];
+}, {}, {
+FModal: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+type: {
+type: PropType<"" | "information" | "warning" | "error">;
+default: string;
+validator(value: string): boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+}>, {}, FModalData, {
+modalClass(): string[];
+containerClasses(): string[];
+hasHeaderSlot(): boolean;
+}, {
+onClose(): void;
+openModal(): void;
+resolveFocusElement(): Element;
+restoreState(): void;
+onFocusFirst(): void;
+onFocusLast(): void;
+}, ComponentOptions, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+type: {
+type: PropType<"" | "information" | "warning" | "error">;
+default: string;
+validator(value: string): boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+type: "" | "warning" | "error" | "information";
+size: string;
+isOpen: boolean;
+fullscreen: boolean;
+id: string;
+ariaCloseText: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, () => FCrudDatasetInterface & ActivateItemInterface, true, {}, any>;
+
+// @public (undocumented)
+export interface FCrudDatasetData {
+    // (undocumented)
+    callbackAfterItemAdd(item: ListItem): void;
+    // (undocumented)
+    callbackBeforeItemDelete(item: ListItem): void;
+    // (undocumented)
+    isConfirmModalOpen: boolean;
+    // (undocumented)
+    isFormModalOpen: boolean;
+    // (undocumented)
+    item: null | ListItem;
+    // (undocumented)
+    Operation: typeof Operation;
+    // (undocumented)
+    operation: Operation;
+    // (undocumented)
+    originalItemToUpdate: null | ListItem;
+    // (undocumented)
+    result: ListArray;
+}
+
+// @public (undocumented)
+export interface FCrudDatasetInterface {
+    // (undocumented)
+    delete(item: ListItem): void;
+    // (undocumented)
+    modify(item: ListItem): void;
+}
+
+// @public (undocumented)
+export const FCurrencyTextField: DefineComponent<ExtractPropTypes<    {
+formatter: {
+type: PropType<FormatFunction<number>>;
+required: false;
+default: typeof formatNumber;
+};
+parser: {
+type: PropType<ParseFunction<number>>;
+required: false;
+default: typeof parseNumber;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+defaultText: string;
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+showErrorPopup: boolean;
+viewValue: string;
+lastModelValue: unknown;
+validationMessage: string;
+validityMode: string;
+defaultText: string;
+descriptionText: string;
+descriptionScreenReaderText: string;
+discreteDescriptionText: string;
+discreteDescriptionScreenReaderText: string;
+}, {
+showPopupError(): boolean;
+labelClass(): string;
+isValid(): boolean;
+hasError(): boolean;
+rootClass(): Record<string, boolean>;
+labelWrapperClass(): string | undefined;
+inputWrapperClass(): string | undefined;
+isModelUpdatedProgrammatically(): boolean;
+}, {
+getErrorPopupAnchor(): HTMLElement;
+closePopupError(): void;
+onChange(): Promise<void>;
+onFocus(): void;
+onBlur(): Promise<void>;
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onPendingValidity(): void;
+resolveNewModelValue(viewValue: string): unknown;
+syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
+triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
+setViewValueToFormattedValueOrFallbackToValue(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onBlur?: ((...args: any[]) => any) | undefined;
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onUpdate?: ((...args: any[]) => any) | undefined;
+}>, {
+type: string;
+id: string;
+modelValue: string | number;
+inline: boolean;
+labelWidth: string;
+formatter: FormatFunction<any>;
+parser: ParseFunction<any>;
+inputWidth: string;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+formatter: {
+type: PropType<FormatFunction<number>>;
+required: false;
+default: typeof formatNumber;
+};
+parser: {
+type: PropType<ParseFunction<number>>;
+required: false;
+default: typeof parseNumber;
+};
+}>> & Readonly<{}>, {
+formatter: FormatFunction<number>;
+parser: ParseFunction<number>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FDataTable: DefineComponent<ExtractPropTypes<    {
+rows: {
+type: PropType<ListArray>;
+required: true;
+};
+keyAttribute: {
+type: StringConstructor;
+required: true;
+};
+striped: {
+type: BooleanConstructor;
+default: boolean;
+};
+scroll: {
+type: PropType<TableScroll>;
+default: TableScroll;
+validator(value: string): boolean;
+};
+}>, FSortFilterDatasetInterface, {
+columns: FTableColumnData[];
+}, {
+hasCaption(): boolean;
+tableClasses(): string[];
+isEmpty(): boolean;
+visibleColumns(): FTableColumnData[];
+wrapperClasses(): string[];
+tabindex(): number | undefined;
+}, {
+rowKey(item: ListItem): string;
+columnClasses(column: FTableColumnData): string[];
+iconClasses(column: FTableColumnData): string[];
+iconName(column: FTableColumnData): string;
+onClickColumnHeader(column: FTableColumnData): void;
+callbackOnSort(columnName: string, ascending: boolean): void;
+callbackSortableColumns(columnNames: string[]): void;
+escapeNewlines(value: string): string;
+}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+rows: {
+type: PropType<ListArray>;
+required: true;
+};
+keyAttribute: {
+type: StringConstructor;
+required: true;
+};
+striped: {
+type: BooleanConstructor;
+default: boolean;
+};
+scroll: {
+type: PropType<TableScroll>;
+default: TableScroll;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+scroll: TableScroll;
+striped: boolean;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, () => Omit<FTableInterface, "renderColumns">, true, {}, any>;
+
+// @public (undocumented)
+export const FDatepickerField: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+initialMonth: {
+type: PropType<FDate | undefined>;
+required: false;
+default: undefined;
+};
+highlightToday: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+alwaysInline: {
+type: BooleanConstructor;
+default: boolean;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {
+textFieldValue: Ref<string, string>;
+textFieldTouched: Ref<boolean, boolean>;
+textFieldValidityRevealed: Ref<boolean, boolean>;
+textFieldTableMode: boolean;
+componentTouched: Ref<boolean, boolean>;
+calendarMonth: ShallowRef<FDate, FDate>;
+calendarValue: ShallowRef<FDate | undefined, FDate | undefined>;
+isCalendarOpen: Ref<boolean, boolean>;
+validationConfig: Ref<ValidatorConfigs, ValidatorConfigs>;
+minDate: ShallowRef<FDate, FDate>;
+maxDate: ShallowRef<FDate, FDate>;
+calendarInputs: Ref<HTMLElement | null, HTMLElement | null>;
+}, {}, {
+calendarButtonText(): string;
+popupClass(): string;
+}, {
+dateFormatter: typeof parseDate;
+onValidityTextField({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onChangeTextField(): void;
+onClickCalendarButton(): void;
+onFocusoutTextFieldButton(e: FocusEvent): void;
+onSelectCalendarDay(date: FDate): Promise<void>;
+onKeyupEsc(): Promise<void>;
+onClickCloseCalendarButton(): Promise<void>;
+onOpenPopup(): void;
+onClosePopup(): void;
+onValidationConfigUpdate(event: CustomEvent<ValidationConfigUpdateDetail>): Promise<void>;
+isDateEnabled(day: FDate): boolean;
+isDaySelected(date: FDate): boolean;
+highlightDay(date: FDate): boolean;
+updateTextFieldValue(newValue: string): Promise<void>;
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+initialMonth: {
+type: PropType<FDate | undefined>;
+required: false;
+default: undefined;
+};
+highlightToday: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+alwaysInline: {
+type: BooleanConstructor;
+default: boolean;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+modelValue: string;
+alwaysInline: boolean;
+disabled: boolean;
+labelWidth: string;
+inputWidth: string;
+initialMonth: FDate | undefined;
+highlightToday: boolean;
+}, {}, {
+FCalendar: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+tabDate: {
+type: PropType<FDate | undefined>;
+required: false;
+default: undefined;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>, {}, {}, {}, {
+onClickDay(date: FDate): void;
+onChangeMonth(date: FDate): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+tabDate: {
+type: PropType<FDate | undefined>;
+required: false;
+default: undefined;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+onClick?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+tabDate: FDate | undefined;
+}, {}, {
+ICalendarNavbar: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>, {}, {}, {
+previousDisabled(): boolean;
+nextDisabled(): boolean;
+previousValue(): FDate;
+nextValue(): FDate;
+currentText(): string;
+previousSrText(): string;
+nextSrText(): string;
+previousIconClasses(): Record<string, boolean>;
+nextIconClasses(): Record<string, boolean>;
+}, {
+onClickPreviousButton(): void;
+onClickNextButton(): void;
+getDateText(value: FDate): string;
+isFocused(ref: string): boolean;
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+ICalendarMonth: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+tabDate: {
+type: PropType<FDate | undefined>;
+required: false;
+default: undefined;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>, {}, {}, {}, {
+onClickDay(date: FDate): void;
+onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
+isDayFocused(date: FDate): boolean;
+getTabindex(date: FDate): 0 | -1;
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+tabDate: {
+type: PropType<FDate | undefined>;
+required: false;
+default: undefined;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+onClick?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+tabDate: FDate | undefined;
+}, {}, {
+ICalendarMonthGrid: DefineComponent<ExtractPropTypes<    {
+value: {
+type: PropType<FDate>;
+required: true;
+};
+hideWeekNumbers: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
+weekdays: WeekdayNaming[];
+focused: boolean;
+resizeObserver: ResizeObserver | undefined;
+internalHideWeekNumbers: boolean;
+showShortWeekdays: boolean;
+}, {
+totalCols(): number;
+weeks(): Array<{
+week: number;
+days: FDate[];
+}>;
+}, {
+onResize(): void;
+onFocusin(): void;
+onFocusout(e: FocusEvent): void;
+getDayStartOffset: getDayStartOffset;
+getDayEndOffset: getDayEndOffset;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+value: {
+type: PropType<FDate>;
+required: true;
+};
+hideWeekNumbers: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{}>, {
+hideWeekNumbers: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopup: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+inline: {
+type: PropType<"always" | "never" | "auto">;
+required: false;
+validator(value: string): boolean;
+default: string;
+};
+alwaysInline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+container: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+viewport: {
+type: PropType<HTMLElement>;
+required: false;
+default(): HTMLElement;
+};
+keyboardTrap: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusElement: {
+type: PropType<() => HTMLElement | null>;
+required: false;
+default: null;
+};
+setFocus: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, IPopupData, {
+popupClasses(): string[];
+forceInline(): boolean;
+forceOverlay(): boolean;
+teleportTarget(): string | Element;
+}, {
+toggleIsOpen(isOpen: boolean): Promise<void>;
+applyFocus(): void;
+isMobileSize(): boolean;
+onDocumentClickHandler(): void;
+onWindowResizeHandler(): void;
+onPopupClickHandler(event: Event): void;
+onKeyEsc(): void;
+onKeyTab(event: KeyboardEvent): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("close" | "open")[], "close" | "open", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+inline: {
+type: PropType<"always" | "never" | "auto">;
+required: false;
+validator(value: string): boolean;
+default: string;
+};
+alwaysInline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+container: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+viewport: {
+type: PropType<HTMLElement>;
+required: false;
+default(): HTMLElement;
+};
+keyboardTrap: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusElement: {
+type: PropType<() => HTMLElement | null>;
+required: false;
+default: null;
+};
+setFocus: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+onOpen?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+viewport: HTMLElement;
+inline: "always" | "never" | "auto";
+alwaysInline: boolean;
+container: HTMLElement | null | undefined;
+keyboardTrap: boolean;
+focusElement: () => HTMLElement | null;
+setFocus: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FTextField: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+showErrorPopup: boolean;
+viewValue: string;
+lastModelValue: unknown;
+validationMessage: string;
+validityMode: string;
+defaultText: string;
+descriptionText: string;
+descriptionScreenReaderText: string;
+discreteDescriptionText: string;
+discreteDescriptionScreenReaderText: string;
+}, {
+showPopupError(): boolean;
+labelClass(): string;
+isValid(): boolean;
+hasError(): boolean;
+rootClass(): Record<string, boolean>;
+labelWrapperClass(): string | undefined;
+inputWrapperClass(): string | undefined;
+isModelUpdatedProgrammatically(): boolean;
+}, {
+getErrorPopupAnchor(): HTMLElement;
+closePopupError(): void;
+onChange(): Promise<void>;
+onFocus(): void;
+onBlur(): Promise<void>;
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onPendingValidity(): void;
+resolveNewModelValue(viewValue: string): unknown;
+syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
+triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
+setViewValueToFormattedValueOrFallbackToValue(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onBlur?: ((...args: any[]) => any) | undefined;
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onUpdate?: ((...args: any[]) => any) | undefined;
+}>, {
+type: string;
+id: string;
+modelValue: string | number;
+inline: boolean;
+labelWidth: string;
+formatter: FormatFunction<any>;
+parser: ParseFunction<any>;
+inputWidth: string;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FCalendarDay: DefineComponent<ExtractPropTypes<    {
+day: {
+type: PropType<FDate>;
+required: true;
+};
+enabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focused: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+selected: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+highlight: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {}, {
+srText(): string;
+dayClasses(): string[];
+}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+day: {
+type: PropType<FDate>;
+required: true;
+};
+enabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focused: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+selected: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+highlight: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{}>, {
+focused: boolean;
+enabled: boolean;
+selected: boolean;
+highlight: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FDialogueTree: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDialogueTreeUserProgress>;
+required: true;
+};
+dialogueTree: {
+type: PropType<FDialogueTreeQuestion>;
+required: true;
+};
+}>, {}, FDialogueTreeData, {
+userData(): unknown;
+options(): FDialogueTreeOption[];
+}, {
+onClickedOption(option: FDialogueTreeOption, index: number): Promise<void>;
+emitChange(lastStep: boolean): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDialogueTreeUserProgress>;
+required: true;
+};
+dialogueTree: {
+type: PropType<FDialogueTreeQuestion>;
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export interface FDialogueTreeData {
+    // (undocumented)
+    currentStep: FDialogueTreeQuestion;
+    // (undocumented)
+    steps: number[];
+}
+
+// @public (undocumented)
+export interface FDialogueTreeEndQuestion {
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    userData: unknown;
+}
+
+// @public
+export interface FDialogueTreeOption {
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    question: FDialogueTreeQuestion;
+}
+
+// @public (undocumented)
+export type FDialogueTreeQuestion = FDialogueTreeSubQuestion | FDialogueTreeEndQuestion;
+
+// @public (undocumented)
+export interface FDialogueTreeSubQuestion {
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    options: FDialogueTreeOption[];
+}
+
+// @public
+export interface FDialogueTreeUserProgress {
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    lastStep: boolean;
+    // (undocumented)
+    steps: number[];
+}
+
+// @public (undocumented)
+export const FEmailTextField: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+maxLength: {
+type: NumberConstructor;
+default: number;
+};
+extendedValidation: {
+type: BooleanConstructor;
+default: boolean;
+};
+pasteErrorText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {}, {
+validityMode: string;
+secondEmail: string;
+showPasteErrorMessage: boolean;
+defaultText: string;
+}, {}, {
+onChange(event: Event): void;
+onBlur(event: Event): void;
+onUpdate(event: Event): void;
+onPaste(event: Event): boolean;
+onValidity({ detail }: CustomEvent<ValidityEvent>): void;
+onPendingValidity(): void;
+configureValidators(): void;
+configureExtendedValidation(elements: HTMLInputElement[]): void;
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+maxLength: {
+type: NumberConstructor;
+default: number;
+};
+extendedValidation: {
+type: BooleanConstructor;
+default: boolean;
+};
+pasteErrorText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onBlur?: ((...args: any[]) => any) | undefined;
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onUpdate?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+modelValue: string;
+maxLength: number;
+extendedValidation: boolean;
+pasteErrorText: string;
+}, {}, {
+FTextField: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+showErrorPopup: boolean;
+viewValue: string;
+lastModelValue: unknown;
+validationMessage: string;
+validityMode: string;
+defaultText: string;
+descriptionText: string;
+descriptionScreenReaderText: string;
+discreteDescriptionText: string;
+discreteDescriptionScreenReaderText: string;
+}, {
+showPopupError(): boolean;
+labelClass(): string;
+isValid(): boolean;
+hasError(): boolean;
+rootClass(): Record<string, boolean>;
+labelWrapperClass(): string | undefined;
+inputWrapperClass(): string | undefined;
+isModelUpdatedProgrammatically(): boolean;
+}, {
+getErrorPopupAnchor(): HTMLElement;
+closePopupError(): void;
+onChange(): Promise<void>;
+onFocus(): void;
+onBlur(): Promise<void>;
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onPendingValidity(): void;
+resolveNewModelValue(viewValue: string): unknown;
+syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
+triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
+setViewValueToFormattedValueOrFallbackToValue(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onBlur?: ((...args: any[]) => any) | undefined;
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onUpdate?: ((...args: any[]) => any) | undefined;
+}>, {
+type: string;
+id: string;
+modelValue: string | number;
+inline: boolean;
+labelWidth: string;
+formatter: FormatFunction<any>;
+parser: ParseFunction<any>;
+inputWidth: string;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FErrorHandlingApp: DefineComponent<ExtractPropTypes<    {
+defaultComponent: {
+type: PropType<Component | undefined>;
+required: false;
+default: undefined;
+};
+errorComponent: {
+type: PropType<Component>;
+required: false;
+default: DefineComponent<ExtractPropTypes<    {
+payload: {
+type: PropType<ErrorData>;
+required: false;
+default: null;
+};
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+payload: {
+type: PropType<ErrorData>;
+required: false;
+default: null;
+};
+}>> & Readonly<{}>, {
+payload: ErrorData;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+};
+}>, {}, ErrorViewData, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+defaultComponent: {
+type: PropType<Component | undefined>;
+required: false;
+default: undefined;
+};
+errorComponent: {
+type: PropType<Component>;
+required: false;
+default: DefineComponent<ExtractPropTypes<    {
+payload: {
+type: PropType<ErrorData>;
+required: false;
+default: null;
+};
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+payload: {
+type: PropType<ErrorData>;
+required: false;
+default: null;
+};
+}>> & Readonly<{}>, {
+payload: ErrorData;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+};
+}>> & Readonly<{}>, {
+defaultComponent: Component | undefined;
+errorComponent: Component;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FErrorList: DefineComponent<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {}, {
+hasTitleSlot(): boolean;
+}, {
+liClasses(errorItem: ErrorItem): string[];
+onClickItem(item: ErrorItem): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{}>, {
+bullets: boolean;
+beforeNavigate: BeforeNavigate;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FExpand: DefineComponent<    {}, {}, {
+height: number;
+initialStyle: {
+overflow: string;
+transition: string;
+};
+hiddenStyle: {
+height: string;
+position: string;
+visibility: string;
+};
+visibleStyle: {
+width: string;
+position: string;
+visibility: string;
+height: string;
+};
+openedStyle: {
+height: string;
+};
+}, {}, {
+enter(element: Element): void;
+afterEnter(element: Element): void;
+leave(element: Element): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FExpandablePanel: DefineComponent<ExtractPropTypes<    {
+expanded: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+headerTag: {
+default: string;
+required: false;
+validator(value: string): boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+notifications: {
+type: NumberConstructor;
+required: false;
+default: number;
+};
+screenReaderNotificationTemplate: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {}, {}, {
+expandedClass(): string;
+hasOutsideSlot(): boolean;
+haveNotifications(): boolean;
+screenReaderNotificationText(): string;
+}, {
+onClickHeadingButton(event: MouseEvent): void;
+}, ComponentOptions, ComponentOptionsMixin, "toggle"[], "toggle", PublicProps, Readonly<ExtractPropTypes<    {
+expanded: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+headerTag: {
+default: string;
+required: false;
+validator(value: string): boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+notifications: {
+type: NumberConstructor;
+required: false;
+default: number;
+};
+screenReaderNotificationTemplate: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onToggle?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+expanded: boolean;
+headerTag: string;
+notifications: number;
+screenReaderNotificationTemplate: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FExpand: DefineComponent<    {}, {}, {
+height: number;
+initialStyle: {
+overflow: string;
+transition: string;
+};
+hiddenStyle: {
+height: string;
+position: string;
+visibility: string;
+};
+visibleStyle: {
+width: string;
+position: string;
+visibility: string;
+height: string;
+};
+openedStyle: {
+height: string;
+};
+}, {}, {
+enter(element: Element): void;
+afterEnter(element: Element): void;
+leave(element: Element): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FExpandableParagraph: DefineComponent<ExtractPropTypes<    {
+expanded: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+headerTag: {
+default: string;
+required: false;
+validator(value: string): boolean;
+};
+headerVisualTag: {
+type: StringConstructor;
+default: string;
+required: false;
+validator(value: string): boolean;
+};
+list: {
+type: BooleanConstructor;
+default: boolean;
+required: false;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>, {}, {}, {
+expandedClass(): string;
+listClass(): string;
+relatedClass(): string;
+hasRelatedSlot(): boolean;
+headerVisualClass(): string;
+}, {
+onClickMinimize(event: MouseEvent): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "toggle"[], "toggle", PublicProps, Readonly<ExtractPropTypes<    {
+expanded: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+headerTag: {
+default: string;
+required: false;
+validator(value: string): boolean;
+};
+headerVisualTag: {
+type: StringConstructor;
+default: string;
+required: false;
+validator(value: string): boolean;
+};
+list: {
+type: BooleanConstructor;
+default: boolean;
+required: false;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>> & Readonly<{
+onToggle?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+expanded: boolean;
+headerTag: string;
+headerVisualTag: string;
+list: boolean;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FExpand: DefineComponent<    {}, {}, {
+height: number;
+initialStyle: {
+overflow: string;
+transition: string;
+};
+hiddenStyle: {
+height: string;
+position: string;
+visibility: string;
+};
+visibleStyle: {
+width: string;
+position: string;
+visibility: string;
+height: string;
+};
+openedStyle: {
+height: string;
+};
+}, {}, {
+enter(element: Element): void;
+afterEnter(element: Element): void;
+leave(element: Element): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FFieldset: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+name: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+labelClass: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+contentClass: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+horizontal: {
+type: BooleanConstructor;
+required: false;
+};
+chip: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+border: {
+type: BooleanConstructor;
+required: false;
+};
+showDetails: {
+type: PropType<"never" | "when-selected" | "always">;
+default: string;
+validator(value: string): boolean;
+};
+}>, void, {
+validity: ValidityEvent;
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+validityElement: HTMLElement | null;
+dispatchObject: ComponentValidityEvent;
+detail: ValidityEvent;
+hasDocumentListener: boolean;
+legendKey: number;
+oldMessage: string;
+children: HTMLInputElement[];
+hasCheckbox: boolean;
+hasRadiobutton: boolean;
+}, {
+hasError(): boolean;
+hasErrorMessageSlot(): boolean;
+hasTooltipSlot(): boolean;
+hasDescriptionSlot(): boolean;
+legendClass(): string[];
+groupLabelClass(): string[];
+groupContentClass(): string[];
+classes(): Record<string, boolean>;
+checkedChildren(): HTMLInputElement[];
+debouncedUpdateChildren(): () => void;
+checkboxCheckedScreenReaderText(): string;
+numberOfCheckboxesScreenReaderText(): string;
+numberOfCheckedCheckboxesScreenText(): string;
+}, {
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+forceLegendUpdate(): void;
+updateCheckboxChildren(): Promise<void>;
+}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+name: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+labelClass: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+contentClass: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+horizontal: {
+type: BooleanConstructor;
+required: false;
+};
+chip: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+border: {
+type: BooleanConstructor;
+required: false;
+};
+showDetails: {
+type: PropType<"never" | "when-selected" | "always">;
+default: string;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+name: string;
+horizontal: boolean;
+id: string;
+labelClass: string;
+contentClass: string;
+showDetails: "always" | "never" | "when-selected";
+chip: boolean;
+border: boolean;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FFileItem: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+fileName: {
+type: StringConstructor;
+required: true;
+};
+mimeType: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+originalMimeType: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+changedMimeTypeText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+}>, {}, {}, {
+isMimeTypeChanged(): boolean;
+mimeTypeChangedText(): string;
+iconName(): FFileItemIconName;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+fileName: {
+type: StringConstructor;
+required: true;
+};
+mimeType: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+originalMimeType: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+changedMimeTypeText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+id: string;
+mimeType: string;
+originalMimeType: string;
+changedMimeTypeText: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export type FFileItemIconName = "doc" | "file" | "pic" | "pdf";
+
+// @public (undocumented)
+export const FFileSelector: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {}, {
+attrs(): Record<string, unknown>;
+labelClass(): string;
+labelId(): string;
+ariaDisabled(): string | undefined;
+}, {
+onClick(event: Event): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "change"[], "change", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+disabled: boolean;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public @deprecated (undocumented)
+export const FForm: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+displayError: {
+type: BooleanConstructor;
+default: boolean;
+};
+errorScroll: {
+type: PropType<"center" | "top">;
+default: string;
+validator(value: string): boolean;
+};
+}>, {}, FFormData, {
+attrs(): Record<string, unknown>;
+numberOfTimesSubmitted(): number;
+isSubmitted(): boolean;
+hasError(): boolean;
+componentsWithErrors(): Array<FormErrorList | FormStep>;
+needsErrorScroll(): boolean;
+}, {
+focusDomElement(): Promise<void>;
+focusFallbackElement(): Promise<void>;
+onSubmit(event: Event): Promise<boolean>;
+onComponentValidity(event: CustomEvent<ComponentValidityEvent>): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+displayError: {
+type: BooleanConstructor;
+default: boolean;
+};
+errorScroll: {
+type: PropType<"center" | "top">;
+default: string;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+id: string;
+displayError: boolean;
+errorScroll: "center" | "top";
+}, {}, {
+FMessageBox: DefineComponent<ExtractPropTypes<    {
+type: {
+type: StringConstructor;
+required: true;
+validator(value: string): boolean;
+};
+banner: {
+type: BooleanConstructor;
+required: false;
+};
+provideScreenReaderContext: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+layout: {
+type: PropType<"standard" | "short">;
+required: false;
+default: string;
+validator(value: string): boolean;
+};
+}>, {}, {
+headingClass: string[];
+}, {
+messageBoxType(): string;
+bannerType(): string;
+classType(): string;
+classIcon(): string;
+stackTypeClass(): string;
+symbol(): string;
+sign(): string;
+}, {
+screenReaderContext(): string;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+type: {
+type: StringConstructor;
+required: true;
+validator(value: string): boolean;
+};
+banner: {
+type: BooleanConstructor;
+required: false;
+};
+provideScreenReaderContext: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+layout: {
+type: PropType<"standard" | "short">;
+required: false;
+default: string;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+banner: boolean;
+provideScreenReaderContext: boolean;
+layout: "standard" | "short";
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FErrorList: DefineComponent<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {}, {
+hasTitleSlot(): boolean;
+}, {
+liClasses(errorItem: ErrorItem): string[];
+onClickItem(item: ErrorItem): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{}>, {
+bullets: boolean;
+beforeNavigate: BeforeNavigate;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, () => FFormProvider, true, {}, any>;
+
+// @public (undocumented)
+export interface FFormData {
+    // (undocumented)
+    components: Record<string, Reference<FormErrorList | FormStep>>;
+    // (undocumented)
+    errorMessageSlotClass: string[];
+}
+
+// @public (undocumented)
+export const FFormModal: DefineComponent<ExtractPropTypes<    {
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+dataTest: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+value: {
+type: ObjectConstructor;
+default: () => {};
+};
+useErrorList: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+formId: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): void;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): void;
+};
+buttons: {
+type: PropType<FModalButtonDescriptor[]>;
+required: false;
+default: () => FModalButtonDescriptor[];
+};
+}>, {}, {}, {
+preparedButtons(): FModalButton[];
+hasDeprecatedSlots(): boolean;
+}, {
+onClose(): void;
+onSubmit(): Promise<void>;
+onCancel(): void;
+}, ComponentOptions, ComponentOptionsMixin, ("close" | "submit" | "cancel")[], "close" | "submit" | "cancel", PublicProps, Readonly<ExtractPropTypes<    {
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+dataTest: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+value: {
+type: ObjectConstructor;
+default: () => {};
+};
+useErrorList: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+formId: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): void;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): void;
+};
+buttons: {
+type: PropType<FModalButtonDescriptor[]>;
+required: false;
+default: () => FModalButtonDescriptor[];
+};
+}>> & Readonly<{
+onSubmit?: ((...args: any[]) => any) | undefined;
+onClose?: ((...args: any[]) => any) | undefined;
+onCancel?: ((...args: any[]) => any) | undefined;
+}>, {
+value: Record<string, any>;
+size: string;
+isOpen: boolean;
+fullscreen: boolean;
+beforeSubmit: FValidationFormCallback;
+ariaCloseText: string;
+buttons: FModalButtonDescriptor[];
+beforeValidation: FValidationFormCallback;
+useErrorList: boolean;
+dataTest: string;
+formId: string;
+}, {}, {
+FModal: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+type: {
+type: PropType<"" | "information" | "warning" | "error">;
+default: string;
+validator(value: string): boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+}>, {}, FModalData, {
+modalClass(): string[];
+containerClasses(): string[];
+hasHeaderSlot(): boolean;
+}, {
+onClose(): void;
+openModal(): void;
+resolveFocusElement(): Element;
+restoreState(): void;
+onFocusFirst(): void;
+onFocusLast(): void;
+}, ComponentOptions, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaCloseText: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+fullscreen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+type: {
+type: PropType<"" | "information" | "warning" | "error">;
+default: string;
+validator(value: string): boolean;
+};
+size: {
+type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+type: "" | "warning" | "error" | "information";
+size: string;
+isOpen: boolean;
+fullscreen: boolean;
+id: string;
+ariaCloseText: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FValidationForm: DefineComponent<ExtractPropTypes<    {
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+useErrorList: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBeforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {
+validity: GroupValidityEvent;
+submitted: boolean;
+}, {
+groupKey(): string;
+errors(): ErrorItem[];
+displayErrors(): boolean;
+}, {
+hasFormErrors(): Promise<boolean>;
+onSubmit(event: Event): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "submit"[], "submit", PublicProps, Readonly<ExtractPropTypes<    {
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+useErrorList: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBeforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{
+onSubmit?: ((...args: any[]) => any) | undefined;
+}>, {
+beforeSubmit: FValidationFormCallback;
+id: string;
+beforeValidation: FValidationFormCallback;
+useErrorList: boolean;
+errorListBullets: boolean;
+errorListBeforeNavigate: BeforeNavigate;
+}, {}, {
+FValidationGroup: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
+components: Record<string, ComponentValidityEvent>;
+}, {}, {
+onComponentUnmount(event: CustomEvent<ComponentUnmountEvent>): void;
+onComponentValidity(event: CustomEvent<ComponentValidityEvent>): Promise<void>;
+triggerGroupValidityEvent(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("group-validity" | "update:modelValue")[], "group-validity" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+"onGroup-validity"?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+modelValue: GroupValidityEvent;
+stopPropagation: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FErrorList: DefineComponent<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {}, {
+hasTitleSlot(): boolean;
+}, {
+liClasses(errorItem: ErrorItem): string[];
+onClickItem(item: ErrorItem): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{}>, {
+bullets: boolean;
+beforeNavigate: BeforeNavigate;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public
 export interface FFormProvider {
@@ -2653,7 +7958,7 @@ export interface FFormProvider {
 }
 
 // @public @deprecated (undocumented)
-export const FFormStep: DefineComponent<    {
+export const FFormStep: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: true;
@@ -2671,7 +7976,7 @@ disableErrorLinks: {
 type: BooleanConstructor;
 default: boolean;
 };
-}, {
+}>, {
 setRef: (id: string, data: FormStep | FormStep) => void;
 getRef: (id: string) => Reference<FormStep | FormStep>;
 setIsOpen: (id: string, isOpen: boolean) => void;
@@ -2716,49 +8021,13 @@ disableErrorLinks: {
 type: BooleanConstructor;
 default: boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 id: string;
 hasArrow: boolean;
 isLastStep: boolean;
 disableErrorLinks: boolean;
-}, {}>;
-
-// @public @deprecated (undocumented)
-export const FFormStepButton: DefineComponent<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-isOpen: BooleanConstructor;
-isAnyFieldTouched: BooleanConstructor;
-additionalScreenreaderText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}, unknown, unknown, {}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-isOpen: BooleanConstructor;
-isAnyFieldTouched: BooleanConstructor;
-additionalScreenreaderText: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>>, {
-isOpen: boolean;
-id: string;
-isAnyFieldTouched: boolean;
-additionalScreenreaderText: string;
-}, {}>;
-
-// @public (undocumented)
-export const FIcon: DefineComponent<    {
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
 type: StringConstructor;
 required: true;
@@ -2780,7 +8049,7 @@ default: null;
 required: false;
 validator(value: string): boolean;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 spriteKey(): string;
 spriteId(): string;
 modifiers(): string[];
@@ -2807,11 +8076,367 @@ default: null;
 required: false;
 validator(value: string): boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 library: string;
 flip: string;
 rotate: string;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FValidationGroup: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
+components: Record<string, ComponentValidityEvent>;
+}, {}, {
+onComponentUnmount(event: CustomEvent<ComponentUnmountEvent>): void;
+onComponentValidity(event: CustomEvent<ComponentValidityEvent>): Promise<void>;
+triggerGroupValidityEvent(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("group-validity" | "update:modelValue")[], "group-validity" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+"onGroup-validity"?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+modelValue: GroupValidityEvent;
+stopPropagation: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FErrorList: DefineComponent<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {}, {
+hasTitleSlot(): boolean;
+}, {
+liClasses(errorItem: ErrorItem): string[];
+onClickItem(item: ErrorItem): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{}>, {
+bullets: boolean;
+beforeNavigate: BeforeNavigate;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public @deprecated (undocumented)
+export const FFormStepButton: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: BooleanConstructor;
+isAnyFieldTouched: BooleanConstructor;
+additionalScreenreaderText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {}, {}, {}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+isOpen: BooleanConstructor;
+isAnyFieldTouched: BooleanConstructor;
+additionalScreenreaderText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{}>, {
+isOpen: boolean;
+id: string;
+isAnyFieldTouched: boolean;
+additionalScreenreaderText: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public
 export function findElementFromVueRef(ref: unknown): Element | undefined;
@@ -2823,7 +8448,7 @@ export function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined
 export function findParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | undefined;
 
 // @public (undocumented)
-export const FInteractiveTable: DefineComponent<    {
+export const FInteractiveTable: DefineComponent<ExtractPropTypes<    {
 rows: {
 type: PropType<ListArray>;
 required: true;
@@ -2862,7 +8487,7 @@ type: PropType<ListArray | undefined>;
 required: false;
 default: undefined;
 };
-}, FSortFilterDatasetInterface & ActivateItemInterface & ExpandableTable, FInteractiveTableData, {
+}>, FSortFilterDatasetInterface & ActivateItemInterface & ExpandableTable, FInteractiveTableData, {
 hasCaption(): boolean;
 hasCheckboxDescription(): boolean;
 isEmpty(): boolean;
@@ -2931,7 +8556,7 @@ type: PropType<ListArray | undefined>;
 required: false;
 default: undefined;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 onSelect?: ((...args: any[]) => any) | undefined;
@@ -2940,7 +8565,7 @@ onUpdate?: ((...args: any[]) => any) | undefined;
 onUnselect?: ((...args: any[]) => any) | undefined;
 onCollapse?: ((...args: any[]) => any) | undefined;
 onExpand?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 modelValue: ListArray | undefined;
 scroll: TableScroll;
 striped: boolean;
@@ -2948,7 +8573,143 @@ selectable: boolean;
 hover: boolean;
 expandableAttribute: string;
 expandableDescribedby: string;
-}, {}>;
+}, {}, {
+FCheckboxField: DefineComponent<ExtractPropTypes<    {
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+};
+value: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: true;
+};
+}>, {
+showDetails: "always" | "never" | "when-selected";
+getFieldsetLabelText: () => string | undefined;
+}, {
+expanded: boolean;
+height: number;
+initialStyle: {
+overflow: string;
+transition: string;
+};
+hiddenStyle: {
+height: string;
+position: string;
+visibility: string;
+};
+visibleStyle: {
+width: string;
+position: string;
+visibility: string;
+height: string;
+};
+openedStyle: {
+height: string;
+};
+}, {
+attrs(): Record<string, unknown>;
+disabledClass(): string;
+injected(): any;
+}, {
+updateExpandedFlag(): void;
+emitVModelEvent(event: Event): void;
+onKeydown(event: Event): void;
+onValidity({ detail }: CustomEvent<ValidityEvent>): void;
+enter(element: Element): void;
+afterEnter(element: Element): void;
+leave(element: Element): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+};
+value: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+disabled: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, () => Omit<FTableInterface, "renderColumns">, true, {}, any>;
 
 // @public (undocumented)
 export interface FInteractiveTableData {
@@ -2994,13 +8755,13 @@ export interface FKUIContext {
 }
 
 // @public (undocumented)
-export const FLabel: DefineComponent<    {
+export const FLabel: DefineComponent<ExtractPropTypes<    {
 for: {
 type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}, unknown, {
+}>, {}, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -3014,9 +8775,64 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>>, {
+}>> & Readonly<{}>, {
 for: string | undefined;
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export const FLayoutApplicationTemplate: DefineComponent<    {}, {}, {}, {
@@ -3025,16 +8841,16 @@ showTopNavigation(): boolean;
 showFooter(): boolean;
 }, {
 hasSlot(name: string): boolean;
-}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {}>>, {}, {}>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FLayoutLeftPanel: DefineComponent<    {
+export const FLayoutLeftPanel: DefineComponent<ExtractPropTypes<    {
 initialWidth: {
 type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
-}, PanelLayoutComposable, {
+}>, PanelLayoutComposable, {
 isOpen: boolean;
 offsetTop: number;
 }, {
@@ -3049,12 +8865,67 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 initialWidth: string;
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FLayoutRightPanel: DefineComponent<    {
+export const FLayoutRightPanel: DefineComponent<ExtractPropTypes<    {
 initialWidth: {
 type: StringConstructor;
 default: string;
@@ -3068,7 +8939,7 @@ minWidth: {
 type: StringConstructor;
 default: string;
 };
-}, PanelLayoutComposable, {
+}>, PanelLayoutComposable, {
 isAbsolutePositioned: boolean;
 isOpen: boolean;
 offsetTop: number;
@@ -3096,11 +8967,66 @@ minWidth: {
 type: StringConstructor;
 default: string;
 };
-}>>, {
+}>> & Readonly<{}>, {
 initialWidth: string;
 maxWidth: number;
 minWidth: string;
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export type FLayoutRightPanelContentEvent = "close" | "open-dialog" | "open";
@@ -3123,7 +9049,7 @@ export interface FLayoutRightPanelInteface {
 export const FLayoutRightPanelService: FLayoutRightPanelInteface;
 
 // @public (undocumented)
-export const FList: DefineComponent<    {
+export const FList: DefineComponent<ExtractPropTypes<    {
 items: {
 type: PropType<ListArray>;
 required: true;
@@ -3154,7 +9080,7 @@ elementId: {
 type: StringConstructor;
 default: () => string;
 };
-}, ActivateItemInterface, FListData, {
+}>, ActivateItemInterface, FListData, {
 isEmpty(): boolean;
 ariaActiveDescendant(): string | undefined;
 }, {
@@ -3208,7 +9134,7 @@ elementId: {
 type: StringConstructor;
 default: () => string;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 onSelect?: ((...args: any[]) => any) | undefined;
@@ -3216,13 +9142,95 @@ onSelect?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
 onUnselect?: ((...args: any[]) => any) | undefined;
 "onUpdate:active"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 elementId: string;
 modelValue: ListArray | undefined;
 checkbox: boolean;
-active: UnknownItem | undefined;
 selectable: boolean;
-}, {}>;
+active: UnknownItem | undefined;
+}, {}, {
+FCheckboxField: DefineComponent<ExtractPropTypes<    {
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+};
+value: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: true;
+};
+}>, {
+showDetails: "always" | "never" | "when-selected";
+getFieldsetLabelText: () => string | undefined;
+}, {
+expanded: boolean;
+height: number;
+initialStyle: {
+overflow: string;
+transition: string;
+};
+hiddenStyle: {
+height: string;
+position: string;
+visibility: string;
+};
+visibleStyle: {
+width: string;
+position: string;
+visibility: string;
+height: string;
+};
+openedStyle: {
+height: string;
+};
+}, {
+attrs(): Record<string, unknown>;
+disabledClass(): string;
+injected(): any;
+}, {
+updateExpandedFlag(): void;
+emitVModelEvent(event: Event): void;
+onKeydown(event: Event): void;
+onValidity({ detail }: CustomEvent<ValidityEvent>): void;
+enter(element: Element): void;
+afterEnter(element: Element): void;
+leave(element: Element): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+};
+value: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+disabled: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export interface FListData {
@@ -3233,7 +9241,7 @@ export interface FListData {
 }
 
 // @public (undocumented)
-export const FLoader: DefineComponent<    {
+export const FLoader: DefineComponent<ExtractPropTypes<    {
 show: {
 type: BooleanConstructor;
 required: true;
@@ -3254,7 +9262,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, unknown, {
+}>, {}, {
 oldFocus: HTMLElement;
 }, {
 defaultLoadingText(): string;
@@ -3286,14 +9294,14 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>>, {
+}>> & Readonly<{}>, {
 overlay: boolean;
 delay: boolean;
 language: string;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FMessageBox: DefineComponent<    {
+export const FMessageBox: DefineComponent<ExtractPropTypes<    {
 type: {
 type: StringConstructor;
 required: true;
@@ -3314,7 +9322,7 @@ required: false;
 default: string;
 validator(value: string): boolean;
 };
-}, unknown, {
+}>, {}, {
 headingClass: string[];
 }, {
 messageBoxType(): string;
@@ -3347,14 +9355,150 @@ required: false;
 default: string;
 validator(value: string): boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 banner: boolean;
 provideScreenReaderContext: boolean;
 layout: "standard" | "short";
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public
-export const FModal: DefineComponent<    {
+export const FModal: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -3385,7 +9529,7 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
-}, unknown, FModalData, {
+}>, {}, FModalData, {
 modalClass(): string[];
 containerClasses(): string[];
 hasHeaderSlot(): boolean;
@@ -3427,16 +9571,71 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
-}>> & {
+}>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: "" | "warning" | "error" | "information";
 size: string;
 isOpen: boolean;
 fullscreen: boolean;
 id: string;
 ariaCloseText: string;
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export interface FModalButton {
@@ -3479,7 +9678,7 @@ export interface FModalData {
 }
 
 // @public (undocumented)
-export const FNavigationMenu: DefineComponent<    {
+export const FNavigationMenu: DefineComponent<ExtractPropTypes<    {
 route: {
 type: StringConstructor;
 required: false;
@@ -3519,7 +9718,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, unknown, {
+}>, {}, {
 overflowIndex: number;
 ignoreNoOverflow: boolean;
 selectedMenuItemKey: string;
@@ -3602,10 +9801,10 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onSelectedRoute?: ((...args: any[]) => any) | undefined;
 "onUpdate:route"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 vertical: boolean;
 selectedMenuItemScreenReaderText: string;
 route: string;
@@ -3613,10 +9812,449 @@ menuMoreScreenReaderText: string;
 menuMoreWithSelectedItemsScreenReaderText: string;
 menuAriaLabel: string;
 popupAriaLabel: string;
-}, {}>;
+}, {}, {
+IMenu: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+items: {
+type: PropType<IMenuItem[]>;
+required: true;
+};
+vertical: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusedItemKey: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+enableKeyboardNavigation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+selectedMenuItemScreenReaderText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+hasMenuMoreSelectedItems: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
+resizeObserver: ResizeObserver | undefined;
+currentFocusedItemIndex: number;
+lastSelectedItem: string;
+}, {
+cssClasses(): Record<string, boolean>;
+}, {
+getAnchor(index: number): HTMLElement | undefined;
+getSelectedMenuItemScreenReaderText(index: number): string | undefined;
+isSelected(index: number): boolean;
+ariaHasPopup(index: number): boolean | undefined;
+findItemByKey(key: string): IMenuItem | undefined;
+indexOfItemByKey(key: string): number;
+onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
+onResize(): void;
+cssClassHighlight(item: IMenuItem): string;
+ccsClassHighlightAnchor(item: IMenuItem): string;
+ccsClassHighlightAnchorContainer(item: IMenuItem): string;
+setFocusOnItem(index: number): Promise<void>;
+activateItem(index: number): Promise<void>;
+setFocusedItemIndex(index: number): void;
+onKeyUp(event: KeyboardEvent): void;
+onKeyDown(event: KeyboardEvent): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "update:modelValue" | "overflow")[], "select" | "update:modelValue" | "overflow", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+items: {
+type: PropType<IMenuItem[]>;
+required: true;
+};
+vertical: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusedItemKey: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+enableKeyboardNavigation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+selectedMenuItemScreenReaderText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+hasMenuMoreSelectedItems: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+onSelect?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onOverflow?: ((...args: any[]) => any) | undefined;
+}>, {
+vertical: boolean;
+modelValue: string;
+focusedItemKey: string;
+enableKeyboardNavigation: boolean;
+selectedMenuItemScreenReaderText: string;
+hasMenuMoreSelectedItems: boolean;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupMenu: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+focusedItem: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | undefined>;
+default: undefined;
+};
+items: {
+type: PropType<IMenuItem[]>;
+required: true;
+};
+enableKeyboardNavigation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaLabel: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+selectedMenuItemScreenReaderText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {}, {
+currentFocusedItemIndex: number;
+lastSelectedItem: string;
+}, {}, {
+isSelected(index: number): boolean;
+focusElement(): HTMLElement | null;
+findItemByKey(key: string): IMenuItem | undefined;
+indexOfItemByKey(key: string): number;
+onClickItem(item: IMenuItem, doClick?: boolean): Promise<void>;
+itemClasses(item: IMenuItem): string[];
+setFocusOnItem(index: number): Promise<void>;
+activateItem(index: number): Promise<void>;
+setFocusedItemIndex(index: number): void;
+onKeyUp(event: KeyboardEvent): void;
+onKeyDown(event: KeyboardEvent): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "close" | "update:modelValue" | "update:focusedItem")[], "select" | "close" | "update:modelValue" | "update:focusedItem", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+focusedItem: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | undefined>;
+default: undefined;
+};
+items: {
+type: PropType<IMenuItem[]>;
+required: true;
+};
+enableKeyboardNavigation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+ariaLabel: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+selectedMenuItemScreenReaderText: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onSelect?: ((...args: any[]) => any) | undefined;
+onClose?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+"onUpdate:focusedItem"?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | undefined;
+modelValue: string;
+ariaLabel: string;
+enableKeyboardNavigation: boolean;
+selectedMenuItemScreenReaderText: string;
+focusedItem: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopup: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+inline: {
+type: PropType<"always" | "never" | "auto">;
+required: false;
+validator(value: string): boolean;
+default: string;
+};
+alwaysInline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+container: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+viewport: {
+type: PropType<HTMLElement>;
+required: false;
+default(): HTMLElement;
+};
+keyboardTrap: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusElement: {
+type: PropType<() => HTMLElement | null>;
+required: false;
+default: null;
+};
+setFocus: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, IPopupData, {
+popupClasses(): string[];
+forceInline(): boolean;
+forceOverlay(): boolean;
+teleportTarget(): string | Element;
+}, {
+toggleIsOpen(isOpen: boolean): Promise<void>;
+applyFocus(): void;
+isMobileSize(): boolean;
+onDocumentClickHandler(): void;
+onWindowResizeHandler(): void;
+onPopupClickHandler(event: Event): void;
+onKeyEsc(): void;
+onKeyTab(event: KeyboardEvent): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("close" | "open")[], "close" | "open", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+inline: {
+type: PropType<"always" | "never" | "auto">;
+required: false;
+validator(value: string): boolean;
+default: string;
+};
+alwaysInline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+container: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+viewport: {
+type: PropType<HTMLElement>;
+required: false;
+default(): HTMLElement;
+};
+keyboardTrap: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusElement: {
+type: PropType<() => HTMLElement | null>;
+required: false;
+default: null;
+};
+setFocus: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+onOpen?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+viewport: HTMLElement;
+inline: "always" | "never" | "auto";
+alwaysInline: boolean;
+container: HTMLElement | null | undefined;
+keyboardTrap: boolean;
+focusElement: () => HTMLElement | null;
+setFocus: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FNumericTextField: DefineComponent<    {
+export const FNumericTextField: DefineComponent<ExtractPropTypes<    {
 decimals: {
 type: NumberConstructor;
 required: false;
@@ -3632,9 +10270,9 @@ type: PropType<ParseFunction<number>>;
 required: false;
 default: typeof parseNumber;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
-}, unknown, {}, {}, ComponentOptionsMixin, DefineComponent<    {
+}, {}, {}, {}, ComponentOptionsMixin, DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -3675,7 +10313,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -3750,12 +10388,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -3764,7 +10402,241 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 decimals: {
 type: NumberConstructor;
 required: false;
@@ -3780,11 +10652,11 @@ type: PropType<ParseFunction<number>>;
 required: false;
 default: typeof parseNumber;
 };
-}>>, {
+}>> & Readonly<{}>, {
 formatter: FormatFunction<number>;
 parser: ParseFunction<number>;
 decimals: number;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public
 function focus_2(element: unknown, options?: boolean | FocusOptions_2): boolean;
@@ -3797,22 +10669,158 @@ role: string;
 shouldNotRead: boolean;
 }, {}, {
 updateOnlineStatus(event: Event): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {}>>, {}, {}>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FOrganisationsnummerTextField: DefineComponent<    {
+export const FOrganisationsnummerTextField: DefineComponent<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<OrganisationsnummerString>>;
 required: false;
 default: typeof parseOrganisationsnummer;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 defaultText: string;
 discreteDescriptionText: string;
 discreteDescriptionScreenReaderText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -3853,7 +10861,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -3928,12 +10936,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -3942,15 +10950,249 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<OrganisationsnummerString>>;
 required: false;
 default: typeof parseOrganisationsnummer;
 };
-}>>, {
+}>> & Readonly<{}>, {
 formatter: FormatFunction<string>;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export type FormatFunction<TModel> = (modelValue: TModel) => string | undefined;
@@ -4025,7 +11267,7 @@ export interface FormStepFields {
 }
 
 // @public (undocumented)
-export const FOutputField: DefineComponent<    {
+export const FOutputField: DefineComponent<ExtractPropTypes<    {
 for: {
 type: (StringConstructor | ArrayConstructor)[];
 required: true;
@@ -4035,7 +11277,7 @@ type: StringConstructor;
 required: false;
 default: () => string;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 htmlFor(): string;
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 for: {
@@ -4047,12 +11289,91 @@ type: StringConstructor;
 required: false;
 default: () => string;
 };
-}>>, {
+}>> & Readonly<{}>, {
 id: string;
-}, {}>;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FPageHeader: DefineComponent<    {
+export const FPageHeader: DefineComponent<ExtractPropTypes<    {
 logoSize: {
 type: StringConstructor;
 default: string;
@@ -4089,7 +11410,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 logoClass(): string;
 hasRouterLink(): boolean;
 routerLinkTo(): RouteLocationPathRaw | RouteLocationNamedRaw | null;
@@ -4132,7 +11453,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>>, {
+}>> & Readonly<{}>, {
 headerTag: string;
 logoSize: string;
 skipLink: string | boolean;
@@ -4140,10 +11461,26 @@ skipLinkHref: string;
 routerLinkPath: string;
 routerLinkName: string;
 routerLinkLabel: string;
-}, {}>;
+}, {}, {
+ISkipLink: DefineComponent<ExtractPropTypes<    {
+href: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {}, {}, {}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+href: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{}>, {
+href: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FPercentTextField: DefineComponent<    {
+export const FPercentTextField: DefineComponent<ExtractPropTypes<    {
 decimals: {
 type: NumberConstructor;
 required: false;
@@ -4159,11 +11496,11 @@ type: PropType<ParseFunction<number>>;
 required: false;
 default: typeof parsePercent;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 defaultText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4204,7 +11541,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -4279,12 +11616,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -4293,7 +11630,241 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 decimals: {
 type: NumberConstructor;
 required: false;
@@ -4309,14 +11880,14 @@ type: PropType<ParseFunction<number>>;
 required: false;
 default: typeof parsePercent;
 };
-}>>, {
+}>> & Readonly<{}>, {
 formatter: FormatFunction<number>;
 parser: ParseFunction<number>;
 decimals: number;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FPersonnummerTextField: DefineComponent<    {
+export const FPersonnummerTextField: DefineComponent<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<PersonnummerString>>;
 required: false;
@@ -4327,13 +11898,13 @@ type: PropType<ParseFunction<PersonnummerString>>;
 required: false;
 default: typeof parsePersonnummer;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 defaultText: string;
 discreteDescriptionText: string;
 discreteDescriptionScreenReaderText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4374,7 +11945,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -4449,12 +12020,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -4463,7 +12034,241 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<PersonnummerString>>;
 required: false;
@@ -4474,13 +12279,13 @@ type: PropType<ParseFunction<PersonnummerString>>;
 required: false;
 default: typeof parsePersonnummer;
 };
-}>>, {
+}>> & Readonly<{}>, {
 formatter: FormatFunction<string>;
 parser: ParseFunction<string>;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FPhoneTextField: DefineComponent<    {
+export const FPhoneTextField: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4499,7 +12304,7 @@ extendedValidation: {
 type: BooleanConstructor;
 default: boolean;
 };
-}, unknown, {
+}>, {}, {
 validityMode: string;
 secondPhone: string;
 defaultText: string;
@@ -4530,30 +12335,18 @@ extendedValidation: {
 type: BooleanConstructor;
 default: boolean;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 id: string;
 modelValue: string;
 maxLength: number;
 extendedValidation: boolean;
-}, {}>;
-
-// @public (undocumented)
-export const FPlusgiroTextField: DefineComponent<    {
-formatter: {
-type: PropType<FormatFunction<PlusgiroString>>;
-required: false;
-default: typeof parsePlusgiro;
-};
-}, {
-textFieldTableMode: boolean;
-}, {
-defaultText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
+}, {}, {
+FTextField: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4594,7 +12387,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -4669,12 +12462,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -4683,30 +12476,255 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FPlusgiroTextField: DefineComponent<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<PlusgiroString>>;
 required: false;
 default: typeof parsePlusgiro;
 };
-}>>, {
-formatter: FormatFunction<string>;
-}, {}>;
-
-// @public (undocumented)
-export const FPostalCodeTextField: DefineComponent<    {
-formatter: {
-type: PropType<FormatFunction<PostalCodeString>>;
-required: false;
-default: typeof formatPostalCode;
-};
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 defaultText: string;
-discreteDescriptionText: string;
-discreteDescriptionScreenReaderText: string;
-}, {}, {}, ComponentOptions, DefineComponent<    {
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4747,7 +12765,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -4822,12 +12840,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -4836,18 +12854,639 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+formatter: {
+type: PropType<FormatFunction<PlusgiroString>>;
+required: false;
+default: typeof parsePlusgiro;
+};
+}>> & Readonly<{}>, {
+formatter: FormatFunction<string>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FPostalCodeTextField: DefineComponent<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<PostalCodeString>>;
 required: false;
 default: typeof formatPostalCode;
 };
-}>>, {
+}>, {
+textFieldTableMode: boolean;
+}, {
+defaultText: string;
+discreteDescriptionText: string;
+discreteDescriptionScreenReaderText: string;
+}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+showErrorPopup: boolean;
+viewValue: string;
+lastModelValue: unknown;
+validationMessage: string;
+validityMode: string;
+defaultText: string;
+descriptionText: string;
+descriptionScreenReaderText: string;
+discreteDescriptionText: string;
+discreteDescriptionScreenReaderText: string;
+}, {
+showPopupError(): boolean;
+labelClass(): string;
+isValid(): boolean;
+hasError(): boolean;
+rootClass(): Record<string, boolean>;
+labelWrapperClass(): string | undefined;
+inputWrapperClass(): string | undefined;
+isModelUpdatedProgrammatically(): boolean;
+}, {
+getErrorPopupAnchor(): HTMLElement;
+closePopupError(): void;
+onChange(): Promise<void>;
+onFocus(): void;
+onBlur(): Promise<void>;
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onPendingValidity(): void;
+resolveNewModelValue(viewValue: string): unknown;
+syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
+triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
+setViewValueToFormattedValueOrFallbackToValue(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onBlur?: ((...args: any[]) => any) | undefined;
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onUpdate?: ((...args: any[]) => any) | undefined;
+}>, {
+type: string;
+id: string;
+modelValue: string | number;
+inline: boolean;
+labelWidth: string;
+formatter: FormatFunction<any>;
+parser: ParseFunction<any>;
+inputWidth: string;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+formatter: {
+type: PropType<FormatFunction<PostalCodeString>>;
+required: false;
+default: typeof formatPostalCode;
+};
+}>> & Readonly<{}>, {
 formatter: FormatFunction<string>;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FProgressbar: DefineComponent<    {
+export const FProgressbar: DefineComponent<ExtractPropTypes<    {
 value: {
 type: NumberConstructor;
 required: true;
@@ -4862,7 +13501,7 @@ ariaLabel: {
 type: StringConstructor;
 required: true;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 progressValueNow(): number;
 isFinished(): boolean;
 isInProgress(): boolean;
@@ -4885,12 +13524,12 @@ ariaLabel: {
 type: StringConstructor;
 required: true;
 };
-}>>, {
+}>> & Readonly<{}>, {
 valueText: string;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public @deprecated (undocumented)
-export const FRadioGroup: DefineComponent<    {
+export const FRadioGroup: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4904,7 +13543,7 @@ isHorizontal: {
 type: BooleanConstructor;
 required: false;
 };
-}, unknown, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4918,13 +13557,188 @@ isHorizontal: {
 type: BooleanConstructor;
 required: false;
 };
-}>>, {
+}>> & Readonly<{}>, {
 id: string;
 isHorizontal: boolean;
-}, {}>;
+}, {}, {
+FFieldset: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+name: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+labelClass: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+contentClass: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+horizontal: {
+type: BooleanConstructor;
+required: false;
+};
+chip: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+border: {
+type: BooleanConstructor;
+required: false;
+};
+showDetails: {
+type: PropType<"never" | "when-selected" | "always">;
+default: string;
+validator(value: string): boolean;
+};
+}>, void, {
+validity: ValidityEvent;
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+validityElement: HTMLElement | null;
+dispatchObject: ComponentValidityEvent;
+detail: ValidityEvent;
+hasDocumentListener: boolean;
+legendKey: number;
+oldMessage: string;
+children: HTMLInputElement[];
+hasCheckbox: boolean;
+hasRadiobutton: boolean;
+}, {
+hasError(): boolean;
+hasErrorMessageSlot(): boolean;
+hasTooltipSlot(): boolean;
+hasDescriptionSlot(): boolean;
+legendClass(): string[];
+groupLabelClass(): string[];
+groupContentClass(): string[];
+classes(): Record<string, boolean>;
+checkedChildren(): HTMLInputElement[];
+debouncedUpdateChildren(): () => void;
+checkboxCheckedScreenReaderText(): string;
+numberOfCheckboxesScreenReaderText(): string;
+numberOfCheckedCheckboxesScreenText(): string;
+}, {
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+forceLegendUpdate(): void;
+updateCheckboxChildren(): Promise<void>;
+}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+name: {
+type: StringConstructor;
+required: false;
+default: undefined;
+};
+labelClass: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+contentClass: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+horizontal: {
+type: BooleanConstructor;
+required: false;
+};
+chip: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+border: {
+type: BooleanConstructor;
+required: false;
+};
+showDetails: {
+type: PropType<"never" | "when-selected" | "always">;
+default: string;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+name: string;
+horizontal: boolean;
+id: string;
+labelClass: string;
+contentClass: string;
+showDetails: "always" | "never" | "when-selected";
+chip: boolean;
+border: boolean;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FSearchTextField: DefineComponent<    {
+export const FSearchTextField: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -4944,7 +13758,7 @@ maxLength: {
 type: NumberConstructor;
 default: number;
 };
-}, unknown, {
+}>, {}, {
 defaultText: string;
 }, {
 canClear(): boolean;
@@ -4974,20 +13788,440 @@ maxLength: {
 type: NumberConstructor;
 default: number;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 id: string;
 modelValue: string;
 maxLength: number;
 clearableScreenReaderText: string;
-}, {}>;
+}, {}, {
+FTextField: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+showErrorPopup: boolean;
+viewValue: string;
+lastModelValue: unknown;
+validationMessage: string;
+validityMode: string;
+defaultText: string;
+descriptionText: string;
+descriptionScreenReaderText: string;
+discreteDescriptionText: string;
+discreteDescriptionScreenReaderText: string;
+}, {
+showPopupError(): boolean;
+labelClass(): string;
+isValid(): boolean;
+hasError(): boolean;
+rootClass(): Record<string, boolean>;
+labelWrapperClass(): string | undefined;
+inputWrapperClass(): string | undefined;
+isModelUpdatedProgrammatically(): boolean;
+}, {
+getErrorPopupAnchor(): HTMLElement;
+closePopupError(): void;
+onChange(): Promise<void>;
+onFocus(): void;
+onBlur(): Promise<void>;
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onPendingValidity(): void;
+resolveNewModelValue(viewValue: string): unknown;
+syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
+triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
+setViewValueToFormattedValueOrFallbackToValue(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onBlur?: ((...args: any[]) => any) | undefined;
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onUpdate?: ((...args: any[]) => any) | undefined;
+}>, {
+type: string;
+id: string;
+modelValue: string | number;
+inline: boolean;
+labelWidth: string;
+formatter: FormatFunction<any>;
+parser: ParseFunction<any>;
+inputWidth: string;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FSelectField: DefineComponent<    {
+export const FSelectField: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -5013,7 +14247,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 validityMode: string;
@@ -5057,19 +14291,152 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 id: string;
 modelValue: string | number | boolean | Record<string, any> | unknown[];
 inline: boolean;
 labelWidth: string;
 selectWidth: string;
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FSortFilterDataset: DefineComponent<    {
+export const FSortFilterDataset: DefineComponent<ExtractPropTypes<    {
 data: {
 type: PropType<ListArray<ListItem>>;
 required: true;
@@ -5104,7 +14471,7 @@ type: BooleanConstructor;
 required: false;
 default: () => boolean;
 };
-}, unknown, {
+}>, {}, {
 searchString: string;
 sortAttribute: SortOrder;
 sortFilterResult: ListArray<ListItem>;
@@ -5156,17 +14523,731 @@ type: BooleanConstructor;
 required: false;
 default: () => boolean;
 };
-}>> & {
+}>> & Readonly<{
 onDatasetSorted?: ((...args: any[]) => any) | undefined;
 onUsedSortAttributes?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 data: ListArray<UnknownItem>;
 defaultSortAttribute: string;
 showSort: boolean;
 showFilter: boolean;
 placeholderFilter: string;
 defaultSortAscending: boolean;
-}, {}>;
+}, {}, {
+FSelectField: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+selectWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+validityMode: string;
+validationMessage: string;
+}, {
+attrs(): Record<string, unknown>;
+hasError(): boolean;
+rootClass(): Record<string, boolean>;
+labelClass(): string;
+labelWrapperClass(): string | undefined;
+selectWrapperClass(): string | undefined;
+vModel: {
+get(): string | number | boolean | Record<string, any> | unknown[] | undefined;
+set(value: unknown): void;
+};
+}, {
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+selectWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+modelValue: string | number | boolean | Record<string, any> | unknown[];
+inline: boolean;
+labelWidth: string;
+selectWidth: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FTextField: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>, {
+textFieldTableMode: boolean;
+}, {
+showErrorPopup: boolean;
+viewValue: string;
+lastModelValue: unknown;
+validationMessage: string;
+validityMode: string;
+defaultText: string;
+descriptionText: string;
+descriptionScreenReaderText: string;
+discreteDescriptionText: string;
+discreteDescriptionScreenReaderText: string;
+}, {
+showPopupError(): boolean;
+labelClass(): string;
+isValid(): boolean;
+hasError(): boolean;
+rootClass(): Record<string, boolean>;
+labelWrapperClass(): string | undefined;
+inputWrapperClass(): string | undefined;
+isModelUpdatedProgrammatically(): boolean;
+}, {
+getErrorPopupAnchor(): HTMLElement;
+closePopupError(): void;
+onChange(): Promise<void>;
+onFocus(): void;
+onBlur(): Promise<void>;
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onPendingValidity(): void;
+resolveNewModelValue(viewValue: string): unknown;
+syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
+triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
+setViewValueToFormattedValueOrFallbackToValue(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+}>> & Readonly<{
+onBlur?: ((...args: any[]) => any) | undefined;
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+onUpdate?: ((...args: any[]) => any) | undefined;
+}>, {
+type: string;
+id: string;
+modelValue: string | number;
+inline: boolean;
+labelWidth: string;
+formatter: FormatFunction<any>;
+parser: ParseFunction<any>;
+inputWidth: string;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, () => FSortFilterDatasetInterface, true, {}, any>;
 
 // @public
 export function FSortFilterDatasetInjected(): FSortFilterDatasetInterface;
@@ -5185,10 +15266,89 @@ export type FSortFilterDatasetMountCallback = (columnNames: string[]) => void;
 export type FSortFilterDatasetSortCallback = (attribute: string, ascending: boolean) => void;
 
 // @public (undocumented)
-export const FStaticField: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {}>>, {}, {}>;
+export const FStaticField: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FTableColumn: DefineComponent<    {
+export const FTableColumn: DefineComponent<ExtractPropTypes<    {
 name: {
 type: StringConstructor;
 required: true;
@@ -5227,7 +15387,7 @@ required: false;
 default: FTableColumnType;
 validator(value: string): value is FTableColumnType;
 };
-}, FTableInterface, unknown, {
+}>, FTableInterface, {}, {
 classes(): string[];
 scope(): "row" | null;
 tagName(): "td" | "th";
@@ -5270,14 +15430,14 @@ required: false;
 default: FTableColumnType;
 validator(value: string): value is FTableColumnType;
 };
-}>>, {
+}>> & Readonly<{}>, {
 type: "text" | "date" | "action" | "numeric";
-shrink: boolean;
 description: string;
+shrink: boolean;
 visible: boolean;
 rowHeader: boolean;
 expand: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export interface FTableColumnData {
@@ -5340,7 +15500,7 @@ export interface FTableInterface {
 }
 
 // @public (undocumented)
-export const FTextareaField: DefineComponent<    {
+export const FTextareaField: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -5374,7 +15534,7 @@ resizable: {
 type: BooleanConstructor;
 default: boolean;
 };
-}, unknown, {
+}>, {}, {
 validityMode: string;
 validationMessage: string;
 }, {
@@ -5424,10 +15584,10 @@ resizable: {
 type: BooleanConstructor;
 default: boolean;
 };
-}>> & {
+}>> & Readonly<{
 onInput?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 id: string;
 modelValue: string;
 disabled: boolean;
@@ -5435,10 +15595,89 @@ maxlength: number;
 softLimit: number;
 charactersLeftWarning: string;
 resizable: boolean;
-}, {}>;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FTextField: DefineComponent<    {
+export const FTextField: DefineComponent<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -5479,7 +15718,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, {
+}>, {
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -5554,12 +15793,12 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 type: string;
 id: string;
 modelValue: string | number;
@@ -5568,10 +15807,244 @@ labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
 inputWidth: string;
-}, {}>;
+}, {}, {
+FLabel: DefineComponent<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, {
+descriptionClass: string[];
+discreteDescriptionClass: string[];
+}, {
+forProperty(): string | undefined;
+hasDefaultSlot(): boolean;
+hasErrorMessageSlot(): boolean;
+hasDescriptionSlot(): boolean;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+for: {
+type: PropType<string | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{}>, {
+for: string | undefined;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopupError: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>, {}, IPopupErrorData, {
+popupClasses(): string[];
+arrowClass(): string;
+errorStyle(): string;
+}, {
+onResize(): void;
+onKeyEsc(event: KeyboardEvent): void;
+onClose(): void;
+setArrowOffset(): void;
+toggleIsOpen(isOpen: boolean): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "close"[], "close", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+errorMessage: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+errorMessage: string;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FTooltip: DefineComponent<    {
+export const FTooltip: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: BooleanConstructor;
 required: false;
@@ -5590,7 +16063,7 @@ default: string;
 required: false;
 validator(value: string): boolean;
 };
-}, unknown, {
+}>, {}, {
 isOpen: boolean;
 }, {
 hasHeader(): boolean;
@@ -5616,14 +16089,175 @@ default: string;
 required: false;
 validator(value: string): boolean;
 };
-}>> & {
+}>> & Readonly<{
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onToggle?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 modelValue: boolean;
 headerTag: string;
 closeButtonText: string;
-}, {}>;
+}, {}, {
+FExpand: DefineComponent<    {}, {}, {
+height: number;
+initialStyle: {
+overflow: string;
+transition: string;
+};
+hiddenStyle: {
+height: string;
+position: string;
+visibility: string;
+};
+visibleStyle: {
+width: string;
+position: string;
+visibility: string;
+height: string;
+};
+openedStyle: {
+height: string;
+};
+}, {}, {
+enter(element: Element): void;
+afterEnter(element: Element): void;
+leave(element: Element): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 enum FValidationFormAction {
@@ -5640,7 +16274,7 @@ export { FValidationFormAction as FWizardStepAction }
 export type FValidationFormCallback = () => void | FValidationFormAction | Promise<FValidationFormAction> | Promise<void>;
 
 // @public (undocumented)
-export const FValidationGroup: DefineComponent<    {
+export const FValidationGroup: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: PropType<GroupValidityEvent>;
 required: false;
@@ -5651,7 +16285,7 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, unknown, {
+}>, {}, {
 components: Record<string, ComponentValidityEvent>;
 }, {}, {
 onComponentUnmount(event: CustomEvent<ComponentUnmountEvent>): void;
@@ -5668,16 +16302,16 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}>> & {
+}>> & Readonly<{
 "onGroup-validity"?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 modelValue: GroupValidityEvent;
 stopPropagation: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const FWizard: DefineComponent<    {
+export const FWizard: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
 default: null;
@@ -5692,7 +16326,7 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, unknown, {
+}>, {}, {
 steps: FWizardStepDefinition[];
 }, {
 anyOpen(): boolean;
@@ -5720,15 +16354,15 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onCancel?: ((...args: any[]) => any) | undefined;
 onCompleted?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 modelValue: string;
 disableInitialFocus: boolean;
-}, {}>;
+}, {}, {}, {}, string, () => FWizardApi, true, {}, any>;
 
 // @public (undocumented)
 export interface FWizardApi {
@@ -5755,7 +16389,7 @@ export interface FWizardApi {
 export type FWizardKey = string | number | symbol | boolean;
 
 // @public (undocumented)
-export const FWizardStep: DefineComponent<    {
+export const FWizardStep: DefineComponent<ExtractPropTypes<    {
 title: {
 type: StringConstructor;
 required: true;
@@ -5775,7 +16409,7 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, FWizardApi, {
+}>, FWizardApi, {
 step: FWizardStepDefinition;
 validity: GroupValidityEvent;
 isOpenedFirstTime: boolean;
@@ -5817,11 +16451,519 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 beforeNext: FValidationFormCallback;
-}, {}>;
+}, {}, {
+IAnimateExpand: DefineComponent<ExtractPropTypes<    {
+animate: {
+type: BooleanConstructor;
+default: boolean;
+};
+useVShow: {
+type: BooleanConstructor;
+default: boolean;
+};
+expanded: {
+type: (StringConstructor | BooleanConstructor | NumberConstructor)[];
+default: boolean;
+};
+opacity: {
+type: BooleanConstructor;
+default: boolean;
+};
+beforeAnimation: {
+type: PropType<AnimationCallback>;
+required: false;
+default(): AnimationCallback;
+};
+afterAnimation: {
+type: PropType<AnimationCallback>;
+required: false;
+default(): AnimationCallback;
+};
+}>, {}, {
+internalExpanded: boolean;
+height: number | string;
+isAnimating: boolean;
+cssClasses: string;
+timerList: Array<ReturnType<typeof setTimeout>>;
+}, {
+animationClasses(): string;
+heightStyle(): string;
+shouldVIf(): boolean;
+shouldVShow(): boolean;
+}, {
+getContentHeight(): number;
+openNoAnimation(): Promise<void>;
+closeNoAnimation(): Promise<void>;
+openAnimation(): Promise<void>;
+closeAnimation(): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+animate: {
+type: BooleanConstructor;
+default: boolean;
+};
+useVShow: {
+type: BooleanConstructor;
+default: boolean;
+};
+expanded: {
+type: (StringConstructor | BooleanConstructor | NumberConstructor)[];
+default: boolean;
+};
+opacity: {
+type: BooleanConstructor;
+default: boolean;
+};
+beforeAnimation: {
+type: PropType<AnimationCallback>;
+required: false;
+default(): AnimationCallback;
+};
+afterAnimation: {
+type: PropType<AnimationCallback>;
+required: false;
+default(): AnimationCallback;
+};
+}>> & Readonly<{}>, {
+animate: boolean;
+expanded: string | number | boolean;
+useVShow: boolean;
+opacity: boolean;
+beforeAnimation: AnimationCallback;
+afterAnimation: AnimationCallback;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FValidationForm: DefineComponent<ExtractPropTypes<    {
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+useErrorList: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBeforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {
+validity: GroupValidityEvent;
+submitted: boolean;
+}, {
+groupKey(): string;
+errors(): ErrorItem[];
+displayErrors(): boolean;
+}, {
+hasFormErrors(): Promise<boolean>;
+onSubmit(event: Event): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, "submit"[], "submit", PublicProps, Readonly<ExtractPropTypes<    {
+beforeSubmit: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+beforeValidation: {
+type: PropType<FValidationFormCallback>;
+required: false;
+default(): () => undefined;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+useErrorList: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+errorListBeforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{
+onSubmit?: ((...args: any[]) => any) | undefined;
+}>, {
+beforeSubmit: FValidationFormCallback;
+id: string;
+beforeValidation: FValidationFormCallback;
+useErrorList: boolean;
+errorListBullets: boolean;
+errorListBeforeNavigate: BeforeNavigate;
+}, {}, {
+FValidationGroup: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
+components: Record<string, ComponentValidityEvent>;
+}, {}, {
+onComponentUnmount(event: CustomEvent<ComponentUnmountEvent>): void;
+onComponentValidity(event: CustomEvent<ComponentValidityEvent>): Promise<void>;
+triggerGroupValidityEvent(): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("group-validity" | "update:modelValue")[], "group-validity" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<GroupValidityEvent>;
+required: false;
+default: () => GroupValidityEvent;
+};
+stopPropagation: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+"onGroup-validity"?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+modelValue: GroupValidityEvent;
+stopPropagation: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+FErrorList: DefineComponent<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>, {}, {}, {
+hasTitleSlot(): boolean;
+}, {
+liClasses(errorItem: ErrorItem): string[];
+onClickItem(item: ErrorItem): Promise<void>;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+items: {
+type: PropType<ErrorItem[]>;
+required: true;
+};
+bullets: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+beforeNavigate: {
+type: PropType<BeforeNavigate>;
+required: false;
+default(): BeforeNavigate;
+};
+}>> & Readonly<{}>, {
+bullets: boolean;
+beforeNavigate: BeforeNavigate;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlex: DefineComponent<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+gap: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+collapse: {
+type: BooleanConstructor;
+default: boolean;
+};
+wrap: {
+type: BooleanConstructor;
+default: boolean;
+};
+float: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+gap: string;
+collapse: boolean;
+wrap: boolean;
+float: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IFlexItem: DefineComponent<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>, {}, {}, {
+classList(): string[];
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+grow: {
+type: BooleanConstructor;
+default: boolean;
+};
+shrink: {
+type: BooleanConstructor;
+default: boolean;
+};
+align: {
+type: StringConstructor;
+default: string;
+validator(val: string): boolean;
+};
+}>> & Readonly<{}>, {
+grow: boolean;
+shrink: boolean;
+align: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export interface FWizardStepDefinition {
@@ -5893,7 +17035,7 @@ export function hasSlot(vm: {
 }, name: string, props?: Record<string, unknown>, options?: Partial<RenderSlotOptions>): boolean;
 
 // @public (undocumented)
-export const IAnimateExpand: DefineComponent<    {
+export const IAnimateExpand: DefineComponent<ExtractPropTypes<    {
 animate: {
 type: BooleanConstructor;
 default: boolean;
@@ -5920,7 +17062,7 @@ type: PropType<AnimationCallback>;
 required: false;
 default(): AnimationCallback;
 };
-}, unknown, {
+}>, {}, {
 internalExpanded: boolean;
 height: number | string;
 isAnimating: boolean;
@@ -5964,17 +17106,17 @@ type: PropType<AnimationCallback>;
 required: false;
 default(): AnimationCallback;
 };
-}>>, {
+}>> & Readonly<{}>, {
 animate: boolean;
 expanded: string | number | boolean;
 useVShow: boolean;
 opacity: boolean;
 beforeAnimation: AnimationCallback;
 afterAnimation: AnimationCallback;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const ICalendarMonth: DefineComponent<    {
+export const ICalendarMonth: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -5992,7 +17134,7 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
-}, unknown, unknown, {}, {
+}>, {}, {}, {}, {
 onClickDay(date: FDate): void;
 onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
 isDayFocused(date: FDate): boolean;
@@ -6015,16 +17157,14 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 tabDate: FDate | undefined;
-}, {}>;
-
-// @public (undocumented)
-export const ICalendarMonthGrid: DefineComponent<    {
+}, {}, {
+ICalendarMonthGrid: DefineComponent<ExtractPropTypes<    {
 value: {
 type: PropType<FDate>;
 required: true;
@@ -6034,7 +17174,51 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, unknown, {
+}>, {}, {
+weekdays: WeekdayNaming[];
+focused: boolean;
+resizeObserver: ResizeObserver | undefined;
+internalHideWeekNumbers: boolean;
+showShortWeekdays: boolean;
+}, {
+totalCols(): number;
+weeks(): Array<{
+week: number;
+days: FDate[];
+}>;
+}, {
+onResize(): void;
+onFocusin(): void;
+onFocusout(e: FocusEvent): void;
+getDayStartOffset: getDayStartOffset;
+getDayEndOffset: getDayEndOffset;
+}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+value: {
+type: PropType<FDate>;
+required: true;
+};
+hideWeekNumbers: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{}>, {
+hideWeekNumbers: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const ICalendarMonthGrid: DefineComponent<ExtractPropTypes<    {
+value: {
+type: PropType<FDate>;
+required: true;
+};
+hideWeekNumbers: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, {
 weekdays: WeekdayNaming[];
 focused: boolean;
 resizeObserver: ResizeObserver | undefined;
@@ -6062,12 +17246,12 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 hideWeekNumbers: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const ICalendarNavbar: DefineComponent<    {
+export const ICalendarNavbar: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -6080,7 +17264,7 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 previousDisabled(): boolean;
 nextDisabled(): boolean;
 previousValue(): FDate;
@@ -6108,13 +17292,68 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
-}>> & {
+}>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {}, {}>;
+}>, {}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const IFlex: DefineComponent<    {
+export const IFlex: DefineComponent<ExtractPropTypes<    {
 gap: {
 type: StringConstructor;
 default: string;
@@ -6133,7 +17372,7 @@ type: StringConstructor;
 default: string;
 validator(val: string): boolean;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 gap: {
@@ -6154,15 +17393,15 @@ type: StringConstructor;
 default: string;
 validator(val: string): boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 gap: string;
 collapse: boolean;
 wrap: boolean;
 float: string;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const IFlexItem: DefineComponent<    {
+export const IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
 default: boolean;
@@ -6176,7 +17415,7 @@ type: StringConstructor;
 default: string;
 validator(val: string): boolean;
 };
-}, unknown, unknown, {
+}>, {}, {}, {
 classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
@@ -6192,14 +17431,14 @@ type: StringConstructor;
 default: string;
 validator(val: string): boolean;
 };
-}>>, {
+}>> & Readonly<{}>, {
 grow: boolean;
 shrink: boolean;
 align: string;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export const IMenu: DefineComponent<    {
+export const IMenu: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
 required: false;
@@ -6234,7 +17473,7 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, unknown, {
+}>, {}, {
 resizeObserver: ResizeObserver | undefined;
 currentFocusedItemIndex: number;
 lastSelectedItem: string;
@@ -6292,18 +17531,73 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}>> & {
+}>> & Readonly<{
 onSelect?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onOverflow?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 vertical: boolean;
 modelValue: string;
 focusedItemKey: string;
 enableKeyboardNavigation: boolean;
 selectedMenuItemScreenReaderText: string;
 hasMenuMoreSelectedItems: boolean;
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export interface IMenuItem {
@@ -6322,7 +17616,7 @@ export interface IMenuItem {
 export function includeItem<T extends object, K extends keyof T>(item: ListItem<T> | undefined, itemList: ListArray<T> | undefined, compareAttribute: K): boolean;
 
 // @public (undocumented)
-export const IPopup: DefineComponent<    {
+export const IPopup: DefineComponent<ExtractPropTypes<    {
 isOpen: {
 type: BooleanConstructor;
 required: true;
@@ -6368,7 +17662,7 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}, unknown, IPopupData, {
+}>, {}, IPopupData, {
 popupClasses(): string[];
 forceInline(): boolean;
 forceOverlay(): boolean;
@@ -6428,10 +17722,10 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-}>> & {
+}>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 onOpen?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 anchor: HTMLElement | null | undefined;
 viewport: HTMLElement;
 inline: "always" | "never" | "auto";
@@ -6440,7 +17734,7 @@ container: HTMLElement | null | undefined;
 keyboardTrap: boolean;
 focusElement: () => HTMLElement | null;
 setFocus: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export interface IPopupData {
@@ -6455,7 +17749,7 @@ export interface IPopupData {
 }
 
 // @public (undocumented)
-export const IPopupError: DefineComponent<    {
+export const IPopupError: DefineComponent<ExtractPropTypes<    {
 isOpen: {
 type: BooleanConstructor;
 required: true;
@@ -6470,7 +17764,7 @@ type: PropType<HTMLElement | null | undefined>;
 required: false;
 default: undefined;
 };
-}, unknown, IPopupErrorData, {
+}>, {}, IPopupErrorData, {
 popupClasses(): string[];
 arrowClass(): string;
 errorStyle(): string;
@@ -6495,12 +17789,67 @@ type: PropType<HTMLElement | null | undefined>;
 required: false;
 default: undefined;
 };
-}>> & {
+}>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 anchor: HTMLElement | null | undefined;
 errorMessage: string;
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export interface IPopupErrorData {
@@ -6515,7 +17864,7 @@ export interface IPopupErrorData {
 }
 
 // @public (undocumented)
-export const IPopupMenu: DefineComponent<    {
+export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
 required: false;
@@ -6553,7 +17902,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}, unknown, {
+}>, {}, {
 currentFocusedItemIndex: number;
 lastSelectedItem: string;
 }, {}, {
@@ -6606,19 +17955,193 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>> & {
+}>> & Readonly<{
 onSelect?: ((...args: any[]) => any) | undefined;
 onClose?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 "onUpdate:focusedItem"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
 anchor: HTMLElement | undefined;
 modelValue: string;
 ariaLabel: string;
 enableKeyboardNavigation: boolean;
 selectedMenuItemScreenReaderText: string;
 focusedItem: string;
-}, {}>;
+}, {}, {
+FIcon: DefineComponent<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>, {}, {}, {
+spriteKey(): string;
+spriteId(): string;
+modifiers(): string[];
+ariaHidden(): "true" | undefined;
+}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+name: {
+type: StringConstructor;
+required: true;
+};
+library: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+flip: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+rotate: {
+type: PropType<string>;
+default: null;
+required: false;
+validator(value: string): boolean;
+};
+}>> & Readonly<{}>, {
+library: string;
+flip: string;
+rotate: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+IPopup: DefineComponent<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+inline: {
+type: PropType<"always" | "never" | "auto">;
+required: false;
+validator(value: string): boolean;
+default: string;
+};
+alwaysInline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+container: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+viewport: {
+type: PropType<HTMLElement>;
+required: false;
+default(): HTMLElement;
+};
+keyboardTrap: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusElement: {
+type: PropType<() => HTMLElement | null>;
+required: false;
+default: null;
+};
+setFocus: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, {}, IPopupData, {
+popupClasses(): string[];
+forceInline(): boolean;
+forceOverlay(): boolean;
+teleportTarget(): string | Element;
+}, {
+toggleIsOpen(isOpen: boolean): Promise<void>;
+applyFocus(): void;
+isMobileSize(): boolean;
+onDocumentClickHandler(): void;
+onWindowResizeHandler(): void;
+onPopupClickHandler(event: Event): void;
+onKeyEsc(): void;
+onKeyTab(event: KeyboardEvent): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("close" | "open")[], "close" | "open", PublicProps, Readonly<ExtractPropTypes<    {
+isOpen: {
+type: BooleanConstructor;
+required: true;
+};
+anchor: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+inline: {
+type: PropType<"always" | "never" | "auto">;
+required: false;
+validator(value: string): boolean;
+default: string;
+};
+alwaysInline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+container: {
+type: PropType<HTMLElement | null | undefined>;
+required: false;
+default: undefined;
+};
+viewport: {
+type: PropType<HTMLElement>;
+required: false;
+default(): HTMLElement;
+};
+keyboardTrap: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+focusElement: {
+type: PropType<() => HTMLElement | null>;
+required: false;
+default: null;
+};
+setFocus: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{
+onClose?: ((...args: any[]) => any) | undefined;
+onOpen?: ((...args: any[]) => any) | undefined;
+}>, {
+anchor: HTMLElement | null | undefined;
+viewport: HTMLElement;
+inline: "always" | "never" | "auto";
+alwaysInline: boolean;
+container: HTMLElement | null | undefined;
+keyboardTrap: boolean;
+focusElement: () => HTMLElement | null;
+setFocus: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export function isContextMenuSeparatorItem(value: ContextMenuItem & {
@@ -6637,21 +18160,21 @@ export function isDialogueTreeEndQuestion(value: Partial<FDialogueTreeEndQuestio
 export function isFormStepReference(reference: Reference<FormErrorList | FormStep>): reference is Reference<FormStep>;
 
 // @public (undocumented)
-export const ISkipLink: DefineComponent<    {
+export const ISkipLink: DefineComponent<ExtractPropTypes<    {
 href: {
 type: StringConstructor;
 required: false;
 default: string;
 };
-}, unknown, unknown, {}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 href: {
 type: StringConstructor;
 required: false;
 default: string;
 };
-}>>, {
+}>> & Readonly<{}>, {
 href: string;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export function itemEquals<T extends object, K extends keyof T>(item1: ListItem<T> | undefined, item2: ListItem<T> | undefined, compareAttribute: K): boolean;
