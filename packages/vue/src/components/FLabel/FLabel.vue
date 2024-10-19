@@ -1,10 +1,11 @@
 <template>
     <div v-if="$slots.tooltip">
-        <div v-if="hasDefaultSlot" class="tooltip-before">
-            <label class="label tooltip-before__label" :for="forProperty">
+        <template v-if="hasDefaultSlot">
+            <label class="label" :for="forProperty">
                 <slot name="default"></slot>
+                <input type="checkbox" role="button" class="tooltip__toggle">
             </label>
-        </div>
+        </template>
 
         <!-- @slot Slot for tooltip. -->
         <slot name="tooltip"></slot>

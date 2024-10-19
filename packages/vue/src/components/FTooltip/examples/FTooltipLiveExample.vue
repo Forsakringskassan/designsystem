@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTooltip, FCheckboxField } from "@fkui/vue";
+import { FLabel, FTooltip, FCheckboxField } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
@@ -20,6 +20,7 @@ export default defineComponent({
     computed: {
         components(): object {
             return {
+                FLabel,
                 FTooltip,
             };
         },
@@ -28,13 +29,15 @@ export default defineComponent({
         },
         template(): string {
             return /* HTML */ `
-                <div class="tooltip-before">
-                    <label class="label tooltip-before__label"> Etikett </label>
-                </div>
-                <f-tooltip screen-reader-text="Denna text syns bara för skärmläsare">
-                    ${this.header}
-                    <template #body> Lorem ipsum dolor sit amet. </template>
-                </f-tooltip>
+                <f-label>
+                    <template #default> Etikett </template>
+                    <template #tooltip>
+                        <f-tooltip screen-reader-text="Denna text syns bara för skärmläsare">
+                            ${this.header}
+                            <template #body> Lorem ipsum dolor sit amet. </template>
+                        </f-tooltip>
+                    </template>
+                </f-label>
             `;
         },
     },

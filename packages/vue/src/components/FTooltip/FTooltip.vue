@@ -1,44 +1,15 @@
 <template>
     <div class="tooltip">
-        <div class="tooltip__container">
-            <button
-                class="tooltip__button"
-                type="button"
-                :aria-expanded="isOpen ? 'true' : 'false'"
-                @click="onClickToggle"
-            >
-                <span class="icon-stack icon-stack--tooltip">
-                    <f-icon name="circle"></f-icon>
-                    <f-icon name="i"></f-icon>
-                    <span class="sr-only">{{ screenReaderText }}</span>
-                </span>
-            </button>
-            <f-expand>
-                <div v-if="isOpen">
-                    <div class="tooltip__content-wrapper" tabindex="-1" :aria-hidden="isOpen ? undefined : 'true'">
-                        <span v-show="isOpen" class="tooltip__arrow"></span>
-                        <div class="tooltip__content">
-                            <component :is="headerTag" v-if="hasHeader" class="tooltip__header">
-                                <!-- @slot Tooltip header content -->
-                                <slot name="header"></slot>
-                            </component>
+        <div class="tooltip__bubble" tabindex="-1">
+            <component :is="headerTag" v-if="hasHeader" class="tooltip__header">
+                <!-- @slot Tooltip header content -->
+                <slot name="header"></slot>
+            </component>
 
-                            <div class="tooltip__body">
-                                <!-- @slot Tooltip body content-->
-                                <slot name="body"></slot>
-                            </div>
-                        </div>
-                        <i-flex float="right">
-                            <i-flex-item shrink>
-                                <button class="close-button" type="button" @click="onClickToggle">
-                                    <span>{{ closeButtonText }}</span>
-                                    <f-icon class="button__icon" name="close"></f-icon>
-                                </button>
-                            </i-flex-item>
-                        </i-flex>
-                    </div>
-                </div>
-            </f-expand>
+            <div class="tooltip__body">
+                <!-- @slot Tooltip body content-->
+                <slot name="body"></slot>
+            </div>
         </div>
     </div>
 </template>

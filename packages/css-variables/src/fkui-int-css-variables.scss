@@ -9,6 +9,20 @@ $global: true !default;
 @mixin css-variables {
     @include deprecated-variables;
 
+	--border-color: #ff0081;
+	--border-radius: 4px;
+	--background-color: #ffcae5;
+	--border-size: 2px;
+	--arrow-size: 24px;
+	--bias: 0.5px;
+
+    --arrow-height: 0px;
+    --arrow-width: 0px;
+    --border-width: 0px;
+    --outer-border: none;
+    --inner-border: none;
+    --border-offset: 0px;
+
     // ***********
     // TEXT COLORS
     // ***********
