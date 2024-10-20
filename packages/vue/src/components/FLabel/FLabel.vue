@@ -1,9 +1,8 @@
 <template>
     <div v-if="$slots.tooltip">
         <template v-if="hasDefaultSlot">
-            <label class="label" :for="forProperty">
+            <label ref="tooltipIcon" class="label" :for="forProperty">
                 <slot name="default"></slot>
-                <input type="checkbox" role="button" class="tooltip__toggle">
             </label>
         </template>
 
@@ -42,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { defineComponent, type PropType, provide, useTemplateRef } from "vue";
 import { hasSlot } from "../../utils";
 import { FIcon } from "../FIcon";
 
@@ -60,6 +59,10 @@ export default defineComponent({
             required: false,
             default: undefined,
         },
+    },
+    setup() {
+        const tooltipIcon = useTemplateRef("tooltipIcon");
+        provide("tooltipIcon", tooltipIcon);
     },
     data() {
         return {

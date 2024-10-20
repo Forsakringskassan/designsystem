@@ -5,6 +5,8 @@ $arrowWidth: 20;
 $arrowHeight: 14;
 $borderWidth: 2;
 
+/* TDB: document math (to be honest I dont remember specifics but it comes down
+ * to simple triognometry). It also looks awful with SCSS math.div syntax :( */
 $a: math.atan(math.div($arrowWidth, 2 * $arrowHeight));
 $b: math.div($borderWidth, math.sin(90deg - $a));
 $c: math.div($borderWidth, math.sin($a));
@@ -12,15 +14,16 @@ $c: math.div($borderWidth, math.sin($a));
 /* prettier-ignore */
 $outerBorder:
     math.div($arrowWidth, 2),
-    $arrowHeight,
+    $arrowHeight;
 
 /* prettier-ignore */
 $innerBorder:
     math.div(math.round((list.nth($outerBorder, 1) - $b) * 10), 10),
     math.div(math.round((list.nth($outerBorder, 2) - $c) * 10), 10);
 
-:where(label, h1, h2, h3, h4, h5, h6):has(input.tooltip__toggle:checked) + .tooltip {
-    display: block;
+.label:has(+ .tooltip.expanded),
+.label:has(+ .tooltip.animating) {
+    margin-bottom: 0;
 }
 
 .tooltip {
@@ -29,10 +32,28 @@ $innerBorder:
     width: 100%;
     margin-bottom: 1rem;
 
-    --border-offset: 10px;
-
-    &.in {
+    &.expanded, &.animating {
         display: block;
+    }
+
+    &__button {
+        display: inline-flex;
+        appearance: none;
+        background: none;
+        border: 0;
+        margin: 0 0 0 0.125rem;
+        padding: 0;
+        cursor: pointer;
+
+        /* shift it slightly downwards so it aligns better with text */
+        position: relative;
+        bottom: -2px;
+
+        /* bug in icon? */
+        .icon {
+            top: 0;
+            left: 0;
+        }
     }
 
     &__bubble {
@@ -49,7 +70,7 @@ $innerBorder:
             content: "";
             position: absolute;
             top: 0;
-            left: clamp(calc(#{$arrowWidth}px / 2), var(--border-offset), calc(100% - #{$arrowWidth}px / 2));
+            left: clamp(calc(#{$arrowWidth}px / 2), var(--tooltip-offset), calc(100% - #{$arrowWidth}px / 2));
             border-style: solid;
             border-width: 0 #{list.nth($outerBorder, 1)}px #{list.nth($outerBorder, 2)}px #{list.nth($outerBorder, 1)}px;
             border-color: transparent transparent var(--border-color);
@@ -60,7 +81,7 @@ $innerBorder:
             content: "";
             position: absolute;
             top: 0;
-            left: clamp(calc(#{$arrowWidth}px / 2), var(--border-offset), calc(100% - #{$arrowWidth}px / 2));
+            left: clamp(calc(#{$arrowWidth}px / 2), var(--tooltip-offset), calc(100% - #{$arrowWidth}px / 2));
             border-style: solid;
             border-width: 0 #{list.nth($innerBorder, 1)}px #{list.nth($innerBorder, 2)}px #{list.nth($innerBorder, 1)}px;
             border-color: transparent transparent var(--background-color);

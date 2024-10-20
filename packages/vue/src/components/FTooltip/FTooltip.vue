@@ -1,5 +1,15 @@
 <template>
-    <div class="tooltip">
+    <Teleport v-if="tooltipIcon" :to="tooltipIcon">
+        <button ref="button" class="tooltip__button" type="button" :aria-expanded="isOpen" @click="onClickToggle">
+            <span class="icon-stack icon-stack--tooltip">
+                <f-icon name="circle"></f-icon>
+                <f-icon name="i"></f-icon>
+                <span class="sr-only">{{ screenReaderText }}</span>
+            </span>
+        </button>
+    </Teleport>
+
+    <div ref="wrapper" class="tooltip">
         <div class="tooltip__bubble" tabindex="-1">
             <component :is="headerTag" v-if="hasHeader" class="tooltip__header">
                 <!-- @slot Tooltip header content -->
@@ -15,12 +25,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { focus, TranslationService } from "@fkui/logic";
+import { computed, defineComponent, inject, type Ref, useTemplateRef, watchEffect } from "vue";
+import { TranslationService } from "@fkui/logic";
 import { FExpand } from "../FExpand";
 import { IFlex, IFlexItem } from "../../internal-components";
 import { FIcon } from "../FIcon";
-import { hasSlot } from "../../utils";
+import { focus, hasSlot } from "../../utils";
+import { useAnimation } from "./use-animation";
+import { useOffset } from "./use-offset";
 
 export default defineComponent({
     name: "FTooltip",
@@ -73,6 +85,27 @@ export default defineComponent({
         },
     },
     emits: ["update:modelValue", "toggle"],
+    setup() {
+        const tooltipIcon = inject<Ref<HTMLElement> | null>("tooltipIcon", null);
+        const wrapper = useTemplateRef<HTMLElement>("wrapper");
+        const button = useTemplateRef<HTMLElement>("button");
+        const { animate } = useAnimation({
+            duration: 250,
+            easing: "ease-in",
+            element: wrapper,
+        });
+        const offset = useOffset({
+            element: button,
+            parent: computed(() => tooltipIcon?.value.parentElement ?? null),
+        });
+        watchEffect(() => {
+            if (!wrapper.value) {
+                return;
+            }
+            wrapper.value.style.setProperty("--tooltip-offset", `${offset.value}px`);
+        });
+        return { animate, tooltipIcon };
+    },
     data() {
         return {
             isOpen: false,
@@ -90,17 +123,6 @@ export default defineComponent({
                 this.isOpen = value;
             },
         },
-    },
-    mounted() {
-        window.addEventListener("resize", () => {
-            if (this.isOpen) {
-                this.positionArrow();
-            }
-        });
-
-        if (this.isOpen) {
-            this.positionArrow();
-        }
     },
     methods: {
         /**
@@ -129,24 +151,10 @@ export default defineComponent({
             this.$emit("toggle", event);
 
             if (!this.isOpen) {
-                const button = this.$el.querySelector(".tooltip__button");
-                focus(button);
+                focus(this.$refs.button);
             }
-            this.$nextTick(() => {
-                this.positionArrow();
-            });
-        },
-        positionArrow(): void {
-            const button: HTMLElement | null = this.$el.querySelector(".tooltip__button");
-            const arrow: HTMLElement | null = this.$el.querySelector(".tooltip__arrow");
-            const content: HTMLElement | null = this.$el.querySelector(".tooltip__content-wrapper");
-            const borderSize = 2;
 
-            if (button && arrow && content) {
-                const buttonOffsetLeft: number = button.offsetLeft - content.offsetLeft;
-                const relativeOffset = buttonOffsetLeft - borderSize + button.getBoundingClientRect().width / 2;
-                arrow.style.left = `${relativeOffset}px`;
-            }
+            this.animate(value ? "expand" : "collapse");
         },
     },
 });

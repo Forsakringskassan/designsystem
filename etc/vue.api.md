@@ -875,7 +875,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -1260,7 +1260,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -2153,7 +2153,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -4119,7 +4119,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -5085,7 +5085,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -5770,7 +5770,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -8761,7 +8761,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -10409,7 +10409,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -10957,7 +10957,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -11298,7 +11298,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -11637,7 +11637,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -12041,7 +12041,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -12483,7 +12483,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -12861,7 +12861,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -13248,7 +13248,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -13936,7 +13936,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -14361,7 +14361,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -14674,7 +14674,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -14884,7 +14884,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -15273,7 +15273,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -15602,7 +15602,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -15814,7 +15814,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -16063,13 +16063,15 @@ default: string;
 required: false;
 validator(value: string): boolean;
 };
-}>, {}, {
+}>, {
+animate: (state: "expand" | "collapse") => void;
+tooltipIcon: Ref<HTMLElement, HTMLElement> | null;
+}, {
 isOpen: boolean;
 }, {
 hasHeader(): boolean;
 }, {
 onClickToggle(): void;
-positionArrow(): void;
 }, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "toggle")[], "update:modelValue" | "toggle", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: BooleanConstructor;
@@ -16094,8 +16096,8 @@ validator(value: string): boolean;
 onToggle?: ((...args: any[]) => any) | undefined;
 }>, {
 modelValue: boolean;
-headerTag: string;
 closeButtonText: string;
+headerTag: string;
 }, {}, {
 FExpand: DefineComponent<    {}, {}, {
 height: number;
@@ -16258,6 +16260,9 @@ shrink: boolean;
 align: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FTooltipToggle: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 enum FValidationFormAction {
