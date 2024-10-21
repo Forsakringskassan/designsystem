@@ -14,6 +14,52 @@ Modalen har alltid en primärknapp för submit och en sekundärknapp för att av
 -   Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.
 -   Öppna inte ytterligare modaler från en modal.
 
+## Modellvärde
+
+Minimalt exempel:
+
+```vue static
+<template>
+    <f-form-modal :value>
+        <template #header> Awesome Modal </template>
+        <template #input-text-fields>
+            <f-text-field v-model="value.name"> Awesome Field </f-text-field>
+        </template>
+    </f-form-modal>
+</template>
+
+<script>
+import { type PropType, defineComponent } from "vue";
+import { FFormModal, FTextField } from "@fkui/vue";
+
+interface FormData {
+    name: string;
+}
+
+export default defineComponent({
+    components: { FFormModal, FTextField },
+    props: {
+        value: {
+            type: Object as PropType<FormData>,
+            required: true,
+        },
+    },
+});
+</script>
+```
+
+När du implementerar din formulärsmodal är det några saker att ta i beaktning:
+
+-   Din komponent måste ha en prop `value` med typen `Object`. Du kan med fördel använda `as PropType<T>` där `<T>` är ett interface motsvarande de inmatningar formuläret motsvarar.
+-   Din komponent måste sätta `value` propen på `FFormModal` komponenten.
+-   Din komponent måste binda `v-model` till fält på `value` objektet.
+
+::: danger
+
+Om din komponent inte tar en intern kopia av `value` så måste konsumenten skicka in en kopia med initiala värden, annars kommer objektet muteras även om slutanvändaren avbryter i formulärsmodalen.
+
+:::
+
 ## Användning med template
 
 ```import
@@ -123,6 +169,5 @@ vue:FFormModal
 
 ## Relaterat
 
-[Modal-api](#/Utilities/form-modal)
-
-[Modal dialogruta - FModal](#/Components/FModal)
+* {@link form-modal `formModal()`} för programatiskt användande av formulärsmodal.
+* {@link FModal Modal} för mer information om modaler.
