@@ -100,7 +100,7 @@
     "@types/estree": "1.0.6",
     "@types/glob": "8.1.0",
     "@types/jest": "29.5.13",
-    "@types/lodash": "4.17.11",
+    "@types/lodash": "4.17.12",
     "@types/node": "20.16.13",
     "@vue/server-renderer": "3.5.12",
     "autoprefixer": "10.4.20",
