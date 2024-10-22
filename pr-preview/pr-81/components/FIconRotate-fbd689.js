@@ -43,12 +43,12 @@
         name: "pic",
         rotate: "90"
       }),
-      (0, import_vue5.createTextVNode)(),
+      _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_icon, {
         name: "pic",
         rotate: "180"
       }),
-      (0, import_vue5.createTextVNode)(),
+      _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_icon, {
         name: "pic",
         rotate: "270"

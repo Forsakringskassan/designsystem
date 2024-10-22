@@ -74,20 +74,6 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "br",
-    null,
-    null,
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "br",
-    null,
-    null,
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_list = (0, import_vue5.resolveComponent)("f-list");
     const _component_f_sort_filter_dataset = (0, import_vue5.resolveComponent)("f-sort-filter-dataset");
@@ -119,9 +105,9 @@
               1
               /* TEXT */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)("p", null, [
-              (0, import_vue5.createTextVNode)("\n                        Land:\n                        "),
+              _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)("\n                        Land:\n                        ")),
               (0, import_vue5.createElementVNode)(
                 "em",
                 null,
@@ -129,9 +115,15 @@
                 1
                 /* TEXT */
               ),
-              (0, import_vue5.createTextVNode)(),
-              _hoisted_1,
-              (0, import_vue5.createTextVNode)("\n                        Beskrivning:\n                        "),
+              _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
+              _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
+                "br",
+                null,
+                null,
+                -1
+                /* HOISTED */
+              )),
+              _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)("\n                        Beskrivning:\n                        ")),
               (0, import_vue5.createElementVNode)(
                 "em",
                 null,
@@ -139,8 +131,14 @@
                 1
                 /* TEXT */
               ),
-              (0, import_vue5.createTextVNode)(),
-              _hoisted_2
+              _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
+              _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+                "br",
+                null,
+                null,
+                -1
+                /* HOISTED */
+              ))
             ])
           ]),
           screenreader: (0, import_vue5.withCtx)(({ item }) => [

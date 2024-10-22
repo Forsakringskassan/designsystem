@@ -89,10 +89,10 @@
     </head>
     <body>
         <!-- prettier-ignore -->
-        <script src="../../assets/vendor-vue-e43b20.js"></script>
+        <script src="../../assets/vendor-vue-a2f4e5.js"></script>
         <script src="../../assets/vendor-fkui-logic-1193bc.js"></script>
         <script src="../../assets/vendor-fkui-date-9b7c35.js"></script>
-        <script src="../../assets/vendor-fkui-vue-1de1a1.js"></script>
+        <script src="../../assets/vendor-fkui-vue-1f14b8.js"></script>
         <script src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"></script>
 
         <!-- prettier-ignore --><!-- prettier-ignore -->
@@ -109,14 +109,15 @@
             
         ></script>
 
-        <main>
-        <div id="FFormModal"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FFormModal-0b656e.js"></script>
-    </main>
+        <main><template>
+    <f-form-modal :value>
+        <template #header> Awesome Modal </template>
+        <template #input-text-fields>
+            <f-text-field v-model="value.name"> Namn </f-text-field>
+            <f-text-field v-model="value.age"> Ålder </f-text-field>
+        </template>
+    </f-form-modal>
+</template>
+</main>
     </body>
 </html>

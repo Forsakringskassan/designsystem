@@ -79,18 +79,8 @@
   var _hoisted_1 = { style: { "position": "relative", "z-index": "1000000" } };
   var _hoisted_2 = ["disabled"];
   var _hoisted_3 = { key: 0 };
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "label",
-    null,
-    " Delay \xE4r p\xE5slagen ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_5 = [
-    _hoisted_4
-  ];
-  var _hoisted_6 = { key: 0 };
-  var _hoisted_7 = ["disabled"];
+  var _hoisted_4 = { key: 0 };
+  var _hoisted_5 = ["disabled"];
   function render(_ctx, _cache) {
     const _component_f_loader = (0, import_vue5.resolveComponent)("f-loader");
     const _directive_test = (0, import_vue5.resolveDirective)("test");
@@ -117,61 +107,69 @@
           /* STABLE */
         }, 8, ["show", "overlay", "delay"])
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", _hoisted_1, [
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("button", {
           type: "button",
           class: "button button--discrete",
           onClick: _cache[0] || (_cache[0] = ($event) => _ctx.toggleLoader())
-        }, [
+        }, _cache[5] || (_cache[5] = [
           (0, import_vue5.createTextVNode)("\n                Toggla loader\n            ")
-        ])), [
+        ]))), [
           [_directive_test, "loader-toggle"]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("button", {
           type: "button",
           class: "button button--discrete",
           disabled: Boolean(_ctx.show),
           onClick: _cache[1] || (_cache[1] = ($event) => _ctx.toggleOverlay())
-        }, [
+        }, _cache[6] || (_cache[6] = [
           (0, import_vue5.createTextVNode)("\n                Toggla overlay\n            ")
-        ], 8, _hoisted_2)), [
+        ]), 8, _hoisted_2)), [
           [_directive_test, "loader-toggle-overlay"]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("button", {
           type: "button",
           class: "button button--discrete",
           onClick: _cache[2] || (_cache[2] = ($event) => _ctx.toggleDelay())
-        }, [
+        }, _cache[7] || (_cache[7] = [
           (0, import_vue5.createTextVNode)("\n                Toggla delay\n            ")
-        ])), [
+        ]))), [
           [_directive_test, "loader-toggle-delay"]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("button", {
           type: "button",
           class: "button button--discrete",
           onClick: _cache[3] || (_cache[3] = ($event) => _ctx.toggleCloseText())
-        }, [
+        }, _cache[8] || (_cache[8] = [
           (0, import_vue5.createTextVNode)("\n                Toggla text\n            ")
-        ])), [
+        ]))), [
           [_directive_test, "loader-toggle-text"]
         ]),
-        (0, import_vue5.createTextVNode)(),
-        _ctx.delay ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_3, [..._hoisted_5])) : (0, import_vue5.createCommentVNode)("v-if", true)
+        _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
+        _ctx.delay ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_3, _cache[9] || (_cache[9] = [
+          (0, import_vue5.createElementVNode)(
+            "label",
+            null,
+            " Delay \xE4r p\xE5slagen ",
+            -1
+            /* HOISTED */
+          )
+        ]))) : (0, import_vue5.createCommentVNode)("v-if", true)
       ]),
-      (0, import_vue5.createTextVNode)(),
-      _ctx.overlay ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_6, [
+      _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
+      _ctx.overlay ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_4, [
         (0, import_vue5.createElementVNode)("label", null, [
-          (0, import_vue5.createTextVNode)("\n                Forcera avst\xE4ngning efter antal sekunder:\n                "),
+          _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)("\n                Forcera avst\xE4ngning efter antal sekunder:\n                ")),
           (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)("input", {
             id: "loader-timer",
             "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.time = $event),
             type: "text",
             disabled: Boolean(_ctx.show)
-          }, null, 8, _hoisted_7), [
+          }, null, 8, _hoisted_5), [
             [import_vue5.vModelText, _ctx.time],
             [_directive_test, "loader-timer"],
             [

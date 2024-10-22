@@ -39,13 +39,6 @@
       return { favoritGrupp: {} };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "pre",
-    null,
-    "v-model",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_validation_group = (0, import_vue5.resolveComponent)("f-validation-group");
@@ -61,9 +54,9 @@
             id: "frukt",
             maxlength: "100"
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
               (0, import_vue5.createTextVNode)("\n                Favoritfrukt\n            ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })), [
@@ -74,14 +67,14 @@
               { required: true }
             ]
           ]),
-          (0, import_vue5.createTextVNode)(),
+          _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
             id: "godis",
             maxlength: "100"
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
               (0, import_vue5.createTextVNode)("\n                Favoritgodis\n            ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })), [
@@ -96,9 +89,15 @@
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
-      (0, import_vue5.createTextVNode)(),
-      _hoisted_1,
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
+      _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+        "pre",
+        null,
+        "v-model",
+        -1
+        /* HOISTED */
+      )),
+      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,

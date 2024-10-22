@@ -62,13 +62,6 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "h3",
-    null,
-    "Vertical",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_i_menu = (0, import_vue5.resolveComponent)("i-menu");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -79,7 +72,7 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_i_menu, {
         modelValue: _ctx.model,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event),
@@ -96,9 +89,15 @@
         type: "button",
         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.items = _ctx.items.slice(4))
       }, "Click cut"),
-      (0, import_vue5.createTextVNode)(),
-      _hoisted_1,
-      (0, import_vue5.createTextVNode)(),
+      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
+      _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
+        "h3",
+        null,
+        "Vertical",
+        -1
+        /* HOISTED */
+      )),
+      _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_i_menu, {
         modelValue: _ctx.model,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.model = $event),

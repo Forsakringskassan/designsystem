@@ -53,13 +53,6 @@
     }
   });
   var _hoisted_1 = { class: "my-awesome-popup" };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    "\n                    Tr\xE4utensilierna i ett tryckeri \xE4ro ingalunda en oviktig faktor, f\xF6r trevnadens,\n                    ordningens och ekonomiens uppr\xE4tth\xE5llande, och dock \xE4r det icke s\xE4llan som\n                    sorgliga erfarenheter g\xF6ras p\xE5 grund af det of\xF6rst\xE5nd med hvilket kaster,\n                    formbr\xE4den och regaler tillverkas och f\xF6rs\xE4ljas Kaster som \xE4ro d\xE5ligt hopkomna\n                    och af otillr\xE4ckligt.\n                ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_i_popup = (0, import_vue5.resolveComponent)("i-popup");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -75,7 +68,7 @@
         512
         /* NEED_PATCH */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_i_popup, {
         "is-open": _ctx.isOpen,
         anchor: _ctx.$refs.popupAnchor,
@@ -83,8 +76,14 @@
       }, {
         default: (0, import_vue5.withCtx)(() => [
           (0, import_vue5.createElementVNode)("div", _hoisted_1, [
-            _hoisted_2,
-            (0, import_vue5.createTextVNode)(),
+            _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
+              "p",
+              null,
+              "\n                    Tr\xE4utensilierna i ett tryckeri \xE4ro ingalunda en oviktig faktor, f\xF6r trevnadens,\n                    ordningens och ekonomiens uppr\xE4tth\xE5llande, och dock \xE4r det icke s\xE4llan som\n                    sorgliga erfarenheter g\xF6ras p\xE5 grund af det of\xF6rst\xE5nd med hvilket kaster,\n                    formbr\xE4den och regaler tillverkas och f\xF6rs\xE4ljas Kaster som \xE4ro d\xE5ligt hopkomna\n                    och af otillr\xE4ckligt.\n                ",
+              -1
+              /* HOISTED */
+            )),
+            _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)("button", {
               type: "button",
               class: "button button--tertiary",

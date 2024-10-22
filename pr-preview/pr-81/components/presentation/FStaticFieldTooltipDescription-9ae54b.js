@@ -42,17 +42,17 @@
     const _component_f_static_field = (0, import_vue5.resolveComponent)("f-static-field");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
       (0, import_vue5.createVNode)(_component_f_static_field, null, {
-        label: (0, import_vue5.withCtx)(() => [
+        label: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
           (0, import_vue5.createTextVNode)(" Etikett ")
-        ]),
+        ])),
         tooltip: (0, import_vue5.withCtx)(() => [
           (0, import_vue5.createVNode)(_component_f_tooltip, { "screen-reader-text": "L\xE4s mer om avancerat f\xE4lt" }, {
-            header: (0, import_vue5.withCtx)(() => [
+            header: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
               (0, import_vue5.createTextVNode)(" Mer om avancerat f\xE4lt ")
-            ]),
-            body: (0, import_vue5.withCtx)(() => [
+            ])),
+            body: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
               (0, import_vue5.createTextVNode)(" Detta f\xE4ltet kr\xE4ver lite n\xE4rmare f\xF6rklaring. ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })
@@ -67,7 +67,7 @@
             2
             /* CLASS */
           ),
-          (0, import_vue5.createTextVNode)(),
+          _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)(
             "span",
             {
@@ -78,9 +78,9 @@
             /* CLASS */
           )
         ]),
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
           (0, import_vue5.createTextVNode)(" En liten statisk text. ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       })

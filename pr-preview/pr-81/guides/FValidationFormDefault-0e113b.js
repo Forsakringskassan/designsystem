@@ -62,16 +62,6 @@
     }
   });
   var _hoisted_1 = { class: "button-group" };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "button",
-    {
-      type: "submit",
-      class: "button button-group__item button--primary button--large"
-    },
-    "\n                    Spara\n                ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_phone_text_field = (0, import_vue5.resolveComponent)("f-phone-text-field");
     const _component_f_email_text_field = (0, import_vue5.resolveComponent)("f-email-text-field");
@@ -81,9 +71,9 @@
     const _component_f_validation_form = (0, import_vue5.resolveComponent)("f-validation-form");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_validation_form, { onSubmit: _ctx.onSubmit }, {
-      "error-message": (0, import_vue5.withCtx)(() => [
+      "error-message": (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
         (0, import_vue5.createTextVNode)(" Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till: ")
-      ]),
+      ])),
       default: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.withDirectives)((0, import_vue5.createVNode)(_component_f_phone_text_field, {
           modelValue: _ctx.phone,
@@ -96,18 +86,18 @@
             { required: true }
           ]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[22] || (_cache[22] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_phone_text_field, {
           modelValue: _ctx.phoneAlt,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.phoneAlt = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
             (0, import_vue5.createTextVNode)("\n                Alternativt telefonnummer (frivilligt)\n            ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[23] || (_cache[23] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)((0, import_vue5.createVNode)(_component_f_email_text_field, {
           modelValue: _ctx.email,
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.email = $event)
@@ -119,32 +109,32 @@
             { required: true }
           ]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[24] || (_cache[24] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, { name: "info" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
             (0, import_vue5.createTextVNode)(" Hur vill du f\xE5 information fr\xE5n oss? ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.info,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.info = $event),
               value: "mejl"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[11] || (_cache[11] = [
                 (0, import_vue5.createTextVNode)(" Mejl ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
+            _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.info,
               "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.info = $event),
               value: "sms"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
                 (0, import_vue5.createTextVNode)(" Sms ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])
@@ -159,32 +149,32 @@
             { required: true }
           ]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[25] || (_cache[25] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, { name: "type" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[15] || (_cache[15] = [
             (0, import_vue5.createTextVNode)(" Vilken information vill du ha? ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.news,
               "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.news = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[16] || (_cache[16] = [
                 (0, import_vue5.createTextVNode)(" Nyheter ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
+            _cache[18] || (_cache[18] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.tips,
               "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.tips = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[17] || (_cache[17] = [
                 (0, import_vue5.createTextVNode)(" Tips ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])
@@ -199,10 +189,19 @@
             { required: true }
           ]
         ]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[26] || (_cache[26] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)("div", _hoisted_1, [
-          _hoisted_2,
-          (0, import_vue5.createTextVNode)(),
+          _cache[20] || (_cache[20] = (0, import_vue5.createElementVNode)(
+            "button",
+            {
+              type: "submit",
+              class: "button button-group__item button--primary button--large"
+            },
+            "\n                    Spara\n                ",
+            -1
+            /* HOISTED */
+          )),
+          _cache[21] || (_cache[21] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)("button", {
             type: "button",
             class: "button button-group__item button--secondary button--large",

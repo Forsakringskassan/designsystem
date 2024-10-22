@@ -85,7 +85,7 @@
         512
         /* NEED_PATCH */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,
@@ -93,7 +93,7 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_context_menu, {
         "is-open": _ctx.isOpen,
         items: _ctx.items,

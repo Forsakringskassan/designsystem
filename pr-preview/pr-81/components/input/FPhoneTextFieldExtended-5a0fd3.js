@@ -47,9 +47,9 @@
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.extendedphone = $event),
       "extended-validation": ""
     }, {
-      extendedLabel: (0, import_vue5.withCtx)(() => [
+      extendedLabel: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
         (0, import_vue5.createTextVNode)(" Skriv in ditt telefonnummer igen ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["modelValue"])), [

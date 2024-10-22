@@ -71,35 +71,35 @@
         name: "color",
         onChange: _ctx.onToggleDisable
       }, {
-        label: (0, import_vue5.withCtx)(() => [
+        label: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createTextVNode)(" Ska inmatningsf\xE4ltet vara inaktivt? ")
-        ]),
+        ])),
         default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)(),
+          _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_radio_field, {
             id: "disabled-no",
             modelValue: _ctx.isDisabled,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isDisabled = $event),
             value: false
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
               (0, import_vue5.createTextVNode)("\n                Nej\n            ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])), [
             [_directive_test, "disabled-no"]
           ]),
-          (0, import_vue5.createTextVNode)(),
+          _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_radio_field, {
             id: "disabled-yes",
             modelValue: _ctx.isDisabled,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isDisabled = $event),
             value: true
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
               (0, import_vue5.createTextVNode)("\n                Ja\n            ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])), [
@@ -109,7 +109,7 @@
         _: 1
         /* STABLE */
       }, 8, ["onChange"]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", _hoisted_1, [
         (0, import_vue5.createElementVNode)("div", _hoisted_2, [
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
@@ -119,9 +119,9 @@
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.name = $event),
             disabled: _ctx.isDisabled
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
               (0, import_vue5.createTextVNode)("\n                    Namn\n                ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue", "disabled"])), [

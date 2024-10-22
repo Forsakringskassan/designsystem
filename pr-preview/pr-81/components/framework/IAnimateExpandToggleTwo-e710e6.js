@@ -42,20 +42,6 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { style: { "background-color": "yellow", "height": "200px", "position": "relative" } },
-    null,
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { style: { "background-color": "hotpink", "height": "300px", "position": "relative" } },
-    null,
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_i_animate_expand = (0, import_vue5.resolveComponent)("i-animate-expand");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -63,7 +49,7 @@
         type: "button",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.toggle = !_ctx.toggle)
       }, "Toggle"),
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
         "input",
         {
@@ -76,25 +62,37 @@
       ), [
         [import_vue5.vModelCheckbox, _ctx.opacity]
       ]),
-      (0, import_vue5.createTextVNode)(" Toning\n\n        "),
+      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)(" Toning\n\n        ")),
       (0, import_vue5.createVNode)(_component_i_animate_expand, {
         opacity: _ctx.opacity,
         expanded: _ctx.toggle
       }, {
-        default: (0, import_vue5.withCtx)(() => [
-          _hoisted_1
-        ]),
+        default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+          (0, import_vue5.createElementVNode)(
+            "div",
+            { style: { "background-color": "yellow", "height": "200px", "position": "relative" } },
+            null,
+            -1
+            /* HOISTED */
+          )
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["opacity", "expanded"]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_i_animate_expand, {
         opacity: _ctx.opacity,
         expanded: !_ctx.toggle
       }, {
-        default: (0, import_vue5.withCtx)(() => [
-          _hoisted_2
-        ]),
+        default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+          (0, import_vue5.createElementVNode)(
+            "div",
+            { style: { "background-color": "hotpink", "height": "300px", "position": "relative" } },
+            null,
+            -1
+            /* HOISTED */
+          )
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["opacity", "expanded"])

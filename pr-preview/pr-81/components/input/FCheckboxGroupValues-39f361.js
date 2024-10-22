@@ -45,33 +45,33 @@
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, { name: "checkbox-complex-values" }, {
-      label: (0, import_vue5.withCtx)(() => [
+      label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)(" Broschyrer ")
-      ]),
+      ])),
       default: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createTextVNode)(),
+        _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "broschyrer-bor-eller-arbetar-utomlands",
           modelValue: _ctx.brochures,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.brochures = $event),
           value: ["Om du bor eller arbetar utomlands"]
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)("\n            Om du bor eller arbetar utomlands\n        ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "broschyrer-offentlighet-sekretess",
           modelValue: _ctx.brochures,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.brochures = $event),
           value: { offentlighet: false, sekretess: true }
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)("\n            Offentlighet och sekretess\n        ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

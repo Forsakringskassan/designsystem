@@ -36,51 +36,47 @@
     name: "FLayoutApplicationTemplateExample",
     components: { FLayoutApplicationTemplate: import_vue4.FLayoutApplicationTemplate }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { class: "example-header" },
-    "[sidhuvud]",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { class: "example-topnav" },
-    "[toppnavigering]",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { class: "example-content" },
-    "[prim\xE4ryta]",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "div",
-    { class: "example-footer" },
-    "[sidfot]",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_layout_application_template = (0, import_vue5.resolveComponent)("f-layout-application-template");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_layout_application_template, null, {
-      header: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
-      "top-navigation": (0, import_vue5.withCtx)(() => [
-        _hoisted_2
-      ]),
-      footer: (0, import_vue5.withCtx)(() => [
-        _hoisted_4
-      ]),
+      header: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+        (0, import_vue5.createElementVNode)(
+          "div",
+          { class: "example-header" },
+          "[sidhuvud]",
+          -1
+          /* HOISTED */
+        )
+      ])),
+      "top-navigation": (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+        (0, import_vue5.createElementVNode)(
+          "div",
+          { class: "example-topnav" },
+          "[toppnavigering]",
+          -1
+          /* HOISTED */
+        )
+      ])),
+      footer: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+        (0, import_vue5.createElementVNode)(
+          "div",
+          { class: "example-footer" },
+          "[sidfot]",
+          -1
+          /* HOISTED */
+        )
+      ])),
       default: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createTextVNode)(),
-        (0, import_vue5.createTextVNode)(),
-        _hoisted_3,
-        (0, import_vue5.createTextVNode)()
+        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
+        _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
+        _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+          "div",
+          { class: "example-content" },
+          "[prim\xE4ryta]",
+          -1
+          /* HOISTED */
+        )),
+        _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)())
       ]),
       _: 1
       /* STABLE */

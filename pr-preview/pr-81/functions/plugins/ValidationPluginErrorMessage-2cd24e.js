@@ -48,9 +48,9 @@
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event),
       maxlength: 100
     }, {
-      default: (0, import_vue5.withCtx)(() => [
+      default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
         (0, import_vue5.createTextVNode)("\n        Ett f\xE4lt med specifict felmeddelande\n    ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["modelValue"])), [

@@ -63,16 +63,6 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "button",
-    {
-      class: "button button--primary",
-      type: "submit"
-    },
-    "Submit",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_email_text_field = (0, import_vue5.resolveComponent)("f-email-text-field");
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
@@ -87,9 +77,9 @@
           hover: "",
           "key-attribute": "id"
         }, {
-          caption: (0, import_vue5.withCtx)(() => [
+          caption: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
             (0, import_vue5.createTextVNode)(" PopupError example ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(({ row }) => [
             (0, import_vue5.createVNode)(
               _component_f_table_column,
@@ -119,7 +109,7 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -152,8 +142,17 @@
           _: 1
           /* STABLE */
         }, 8, ["rows"]),
-        (0, import_vue5.createTextVNode)(),
-        _hoisted_1
+        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
+        _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
+          "button",
+          {
+            class: "button button--primary",
+            type: "submit"
+          },
+          "Submit",
+          -1
+          /* HOISTED */
+        ))
       ]),
       _: 1
       /* STABLE */

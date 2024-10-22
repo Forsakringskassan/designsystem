@@ -139,7 +139,7 @@
               1
               /* TEXT */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)(
               "span",
               {

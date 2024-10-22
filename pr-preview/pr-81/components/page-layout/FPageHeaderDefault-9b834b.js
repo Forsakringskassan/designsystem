@@ -39,11 +39,11 @@
   function render(_ctx, _cache) {
     const _component_f_page_header = (0, import_vue5.resolveComponent)("f-page-header");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_page_header, null, {
-      right: (0, import_vue5.withCtx)(() => [
+      right: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
         (0, import_vue5.createTextVNode)(" Namn Namnsson ")
-      ]),
+      ])),
       default: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createTextVNode)("\n        Exempelapplikation\n        ")
+        _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)("\n        Exempelapplikation\n        "))
       ]),
       _: 1
       /* STABLE */

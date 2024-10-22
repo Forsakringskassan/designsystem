@@ -39,19 +39,18 @@
       return { validityEvent: "", nameModel: "" };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "strong",
-    null,
-    "ValidityEvent",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
-      _hoisted_1,
-      (0, import_vue5.createTextVNode)(),
+      _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+        "strong",
+        null,
+        "ValidityEvent",
+        -1
+        /* HOISTED */
+      )),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,
@@ -59,16 +58,16 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
         id: "name-of-child",
         modelValue: _ctx.nameModel,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.nameModel = $event),
         onValidity: _cache[1] || (_cache[1] = ($event) => _ctx.validityEvent = $event.detail)
       }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)("\n            Name of child\n        ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [

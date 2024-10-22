@@ -149,34 +149,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "none" },
-    "Inaktiv",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "horizontal" },
-    "Horisontal",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "vertical" },
-    "Vertikal",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "both" },
-    "B\xE5da",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
@@ -194,110 +166,134 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isStriped = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
             (0, import_vue5.createTextVNode)(" Zebrarandig ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[21] || (_cache[21] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.hasRowHeader,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.hasRowHeader = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
             (0, import_vue5.createTextVNode)(" Radrubriker ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[22] || (_cache[22] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.hasRowDescription,
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasRowDescription = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
             (0, import_vue5.createTextVNode)("\n            Kolumnbeskrivnig\n        ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[23] || (_cache[23] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.hasHiddenCaption,
           "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.hasHiddenCaption = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[11] || (_cache[11] = [
             (0, import_vue5.createTextVNode)(" Dold caption ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[24] || (_cache[24] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isEmpty,
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isEmpty = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
             (0, import_vue5.createTextVNode)(" Tom tabell ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[25] || (_cache[25] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_select_field, {
           modelValue: _ctx.scroll,
           "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.scroll = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[13] || (_cache[13] = [
             (0, import_vue5.createTextVNode)(" Skroll ")
-          ]),
-          default: (0, import_vue5.withCtx)(() => [
-            _hoisted_1,
+          ])),
+          default: (0, import_vue5.withCtx)(() => _cache[14] || (_cache[14] = [
+            (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "none" },
+              "Inaktiv",
+              -1
+              /* HOISTED */
+            ),
             (0, import_vue5.createTextVNode)(),
-            _hoisted_2,
+            (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "horizontal" },
+              "Horisontal",
+              -1
+              /* HOISTED */
+            ),
             (0, import_vue5.createTextVNode)(),
-            _hoisted_3,
+            (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "vertical" },
+              "Vertikal",
+              -1
+              /* HOISTED */
+            ),
             (0, import_vue5.createTextVNode)(),
-            _hoisted_4
-          ]),
+            (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "both" },
+              "B\xE5da",
+              -1
+              /* HOISTED */
+            )
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[26] || (_cache[26] = (0, import_vue5.createTextVNode)()),
         _ctx.isEmpty ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, {
           key: 0,
           name: "radio-empty-text"
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[16] || (_cache[16] = [
             (0, import_vue5.createTextVNode)(" Meddelande f\xF6r tom tabell ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
+            _cache[19] || (_cache[19] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomEmptyText,
               "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasCustomEmptyText = $event),
               value: false
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[17] || (_cache[17] = [
                 (0, import_vue5.createTextVNode)("\n                Standardmeddelande\n            ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
+            _cache[20] || (_cache[20] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomEmptyText,
               "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasCustomEmptyText = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[18] || (_cache[18] = [
                 (0, import_vue5.createTextVNode)("\n                Eget meddelande\n            ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])

@@ -58,9 +58,9 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue = $event),
           parser: _ctx.parseNumber
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
             (0, import_vue5.createTextVNode)(" Inmatningsf\xE4lt ")
-          ]),
+          ])),
           description: (0, import_vue5.withCtx)(({ descriptionClass }) => [
             (0, import_vue5.createElementVNode)(
               "span",
@@ -83,12 +83,12 @@
           ]
         ])
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", _hoisted_3, [
         (0, import_vue5.createVNode)(_component_f_output_field, { for: "parser-example" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)(" modelValue ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createElementVNode)(
               "pre",

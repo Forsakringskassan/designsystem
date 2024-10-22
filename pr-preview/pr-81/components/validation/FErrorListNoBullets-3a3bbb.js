@@ -50,17 +50,17 @@
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createVNode)(_component_f_error_list, { items: _ctx.items }, {
-        title: (0, import_vue5.withCtx)(() => [
+        title: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
           (0, import_vue5.createTextVNode)(" Kolla p\xE5 felen nedan ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["items"]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { id: "fornamn-utan-bullets" }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)(" F\xF6rnamn ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       })), [
@@ -71,11 +71,11 @@
           { maxLength: true }
         ]
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { id: "efternamn-utan-bullets" }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Efternamn ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       })), [

@@ -82,13 +82,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "b",
-    null,
-    "Frukter",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_crud_button = (0, import_vue5.resolveComponent)("f-crud-button");
@@ -108,9 +101,15 @@
           rows: _ctx.fruits,
           "key-attribute": "id"
         }, {
-          caption: (0, import_vue5.withCtx)(() => [
-            _hoisted_1
-          ]),
+          caption: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+            (0, import_vue5.createElementVNode)(
+              "b",
+              null,
+              "Frukter",
+              -1
+              /* HOISTED */
+            )
+          ])),
           default: (0, import_vue5.withCtx)(({ row }) => [
             (0, import_vue5.createVNode)(
               _component_f_table_column,
@@ -134,7 +133,7 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -157,7 +156,7 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -180,7 +179,7 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            (0, import_vue5.createTextVNode)(),
+            _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -197,9 +196,9 @@
                     icon: "",
                     label: ""
                   }, {
-                    default: (0, import_vue5.withCtx)(() => [
+                    default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
                       (0, import_vue5.createTextVNode)("\n                            \xC4ndra Namn\n                        ")
-                    ]),
+                    ])),
                     _: 2
                     /* DYNAMIC */
                   }, 1032, ["item"])
@@ -221,9 +220,9 @@
           "onUpdate:modelValue": ($event) => item.name = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
             (0, import_vue5.createTextVNode)("\n                Namn\n            ")
-          ]),
+          ])),
           _: 2
           /* DYNAMIC */
         }, 1032, ["modelValue", "onUpdate:modelValue"])), [

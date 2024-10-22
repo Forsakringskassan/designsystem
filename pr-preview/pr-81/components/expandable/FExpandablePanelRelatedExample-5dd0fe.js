@@ -53,15 +53,15 @@
       expanded: _ctx.expanded,
       onToggle: _ctx.onToggle
     }, {
-      title: (0, import_vue5.withCtx)(() => [
+      title: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
         (0, import_vue5.createTextVNode)(" Titel ")
-      ]),
-      default: (0, import_vue5.withCtx)(() => [
+      ])),
+      default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
         (0, import_vue5.createTextVNode)(" Inneh\xE5ll ")
-      ]),
-      outside: (0, import_vue5.withCtx)(() => [
+      ])),
+      outside: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)("\n            Relaterat inneh\xE5ll som visas n\xE4r panelen \xE4r expanderad men utanf\xF6r body\n        ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]);

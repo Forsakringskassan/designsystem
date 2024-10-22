@@ -60,9 +60,9 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue = $event),
           parser: _ctx.myParser
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
             (0, import_vue5.createTextVNode)(" Inmatningsf\xE4lt ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue", "parser"])), [
@@ -74,12 +74,12 @@
           ]
         ])
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", _hoisted_3, [
         (0, import_vue5.createVNode)(_component_f_output_field, { for: "with-parser" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
             (0, import_vue5.createTextVNode)(" modelValue ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createElementVNode)(
               "pre",

@@ -43,7 +43,7 @@
         name: "pic",
         flip: "horizontal"
       }),
-      (0, import_vue5.createTextVNode)(),
+      _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_icon, {
         name: "pic",
         flip: "vertical"

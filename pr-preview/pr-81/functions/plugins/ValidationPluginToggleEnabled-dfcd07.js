@@ -55,15 +55,15 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
+      _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
         id: "validator-enabled",
         modelValue: _ctx.model,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
       }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)("\n            Max tio tecken\n        ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [
@@ -75,7 +75,7 @@
           { maxLength: true }
         ]
       ]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("button", {
         class: "button button--primary",
         "data-test": "validator-enabled-button",

@@ -46,9 +46,9 @@
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, { name: "group-name-default" }, {
-      label: (0, import_vue5.withCtx)(() => [
+      label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)(" Arbetar du deltid? ")
-      ]),
+      ])),
       description: (0, import_vue5.withCtx)(({ descriptionClass }) => [
         (0, import_vue5.createElementVNode)(
           "span",
@@ -62,42 +62,42 @@
       ]),
       tooltip: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.createVNode)(_component_f_tooltip, { "screen-reader-text": "L\xE4s mer om Bor det barn som har fyllt 18 \xE5r i bostaden?" }, {
-          header: (0, import_vue5.withCtx)(() => [
+          header: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)(" Lite allm\xE4n information ")
-          ]),
-          body: (0, import_vue5.withCtx)(() => [
+          ])),
+          body: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)("\n                    H\xE4r kan man skriva lite extra information om man nu \xF6nskar det!\n                ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         })
       ]),
       default: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createTextVNode)(),
-        (0, import_vue5.createTextVNode)(),
-        (0, import_vue5.createTextVNode)(),
+        _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
+        _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
+        _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_radio_field, {
           id: "deltid-ja",
           modelValue: _ctx.deltid,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.deltid = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
             (0, import_vue5.createTextVNode)(" Ja ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_radio_field, {
           id: "deltid-nej",
           modelValue: _ctx.deltid,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.deltid = $event),
           value: false
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
             (0, import_vue5.createTextVNode)(" Nej ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

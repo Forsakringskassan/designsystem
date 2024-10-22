@@ -76,7 +76,7 @@
         class: "button button--secondary",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
       }, "\xD6ppna Modal"),
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       _ctx.result ? ((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)(
         "pre",
         _hoisted_2,
@@ -84,7 +84,7 @@
         1
         /* TEXT */
       )) : (0, import_vue5.createCommentVNode)("v-if", true),
-      (0, import_vue5.createTextVNode)(),
+      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", null, [
         (0, import_vue5.createVNode)(_component_f_confirm_modal, {
           "is-open": _ctx.isOpen,
@@ -93,12 +93,12 @@
           onDismiss: _ctx.dismiss,
           onClose: _ctx.close
         }, {
-          heading: (0, import_vue5.withCtx)(() => [
+          heading: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
             (0, import_vue5.createTextVNode)(" Tr\xE4utensilierna ")
-          ]),
-          content: (0, import_vue5.withCtx)(() => [
+          ])),
+          content: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
             (0, import_vue5.createTextVNode)("\n                    Tr\xE4utensilierna i ett tryckeri \xE4ro ingalunda en oviktig faktor, f\xF6r trevnadens,\n                    ordningens och ekonomiens uppr\xE4tth\xE5llande, och dock \xE4r det icke s\xE4llan som\n                    sorgliga erfarenheter g\xF6ras p\xE5 grund af det of\xF6rst\xE5nd med hvilket kaster,\n                    formbr\xE4den och regaler tillverkas och f\xF6rs\xE4ljas Kaster som \xE4ro d\xE5ligt hopkomna\n                    och af otillr\xE4ckligt.\n                ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["is-open", "buttons", "onConfirm", "onDismiss", "onClose"])

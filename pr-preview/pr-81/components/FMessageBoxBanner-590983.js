@@ -36,22 +36,21 @@
     name: "FMessageBoxBanner",
     components: { FMessageBox: import_vue4.FMessageBox }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    "\n            Det verkar som att du inte har n\xE5gon internetuppkoppling just nu. T\xE4nk p\xE5 att du beh\xF6ver\n            uppkoppling f\xF6r att kunna signera\n        ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_message_box = (0, import_vue5.resolveComponent)("f-message-box");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_message_box, {
       type: "error",
       banner: ""
     }, {
-      default: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
+      default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+        (0, import_vue5.createElementVNode)(
+          "p",
+          null,
+          "\n            Det verkar som att du inte har n\xE5gon internetuppkoppling just nu. T\xE4nk p\xE5 att du beh\xF6ver\n            uppkoppling f\xF6r att kunna signera\n        ",
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     });

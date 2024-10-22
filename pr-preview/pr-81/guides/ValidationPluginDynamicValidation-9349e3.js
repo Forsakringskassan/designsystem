@@ -52,53 +52,42 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    "Namn f\xE5r inte vara kortare \xE4n minsta l\xE4ngd.",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = { class: "row" };
-  var _hoisted_3 = {
+  var _hoisted_1 = { class: "row" };
+  var _hoisted_2 = {
     id: "min-name",
     class: "col col--md-6"
   };
-  var _hoisted_4 = {
+  var _hoisted_3 = {
     id: "min-minLength",
     class: "col col--md-6"
   };
-  var _hoisted_5 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "button",
-    {
-      class: "button",
-      type: "submit"
-    },
-    "Signera",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_validation_form = (0, import_vue5.resolveComponent)("f-validation-form");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_validation_form, { "use-error-list": false }, {
-      "error-message": (0, import_vue5.withCtx)(() => [
+      "error-message": (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)(" Alla fr\xE5gor \xE4r inte korrekt ifyllda. Titta i: ")
-      ]),
+      ])),
       default: (0, import_vue5.withCtx)(() => [
-        _hoisted_1,
-        (0, import_vue5.createTextVNode)(),
-        (0, import_vue5.createTextVNode)(),
-        (0, import_vue5.createElementVNode)("div", _hoisted_2, [
-          (0, import_vue5.createElementVNode)("div", _hoisted_3, [
+        _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
+          "p",
+          null,
+          "Namn f\xE5r inte vara kortare \xE4n minsta l\xE4ngd.",
+          -1
+          /* HOISTED */
+        )),
+        _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
+        _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
+        (0, import_vue5.createElementVNode)("div", _hoisted_1, [
+          (0, import_vue5.createElementVNode)("div", _hoisted_2, [
             (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
               modelValue: _ctx.name,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.name = $event)
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
                 (0, import_vue5.createTextVNode)("\n                    Namn\n                ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])), [
@@ -120,15 +109,15 @@
               ]
             ])
           ]),
-          (0, import_vue5.createTextVNode)(),
-          (0, import_vue5.createElementVNode)("div", _hoisted_4, [
+          _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
+          (0, import_vue5.createElementVNode)("div", _hoisted_3, [
             (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
               modelValue: _ctx.minLength,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.minLength = $event)
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
                 (0, import_vue5.createTextVNode)("\n                    Minimuml\xE4ngd\n                ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])), [
@@ -144,8 +133,17 @@
             ])
           ])
         ]),
-        (0, import_vue5.createTextVNode)(),
-        _hoisted_5
+        _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
+        _cache[10] || (_cache[10] = (0, import_vue5.createElementVNode)(
+          "button",
+          {
+            class: "button",
+            type: "submit"
+          },
+          "Signera",
+          -1
+          /* HOISTED */
+        ))
       ]),
       _: 1
       /* STABLE */

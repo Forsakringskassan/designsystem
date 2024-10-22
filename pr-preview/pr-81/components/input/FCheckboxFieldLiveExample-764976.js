@@ -162,27 +162,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "never" },
-    "Nej",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "always" },
-    "Utvidgad text",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "when-selected" },
-    "Expanderbar text",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
@@ -199,81 +178,99 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isDisabled = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
             (0, import_vue5.createTextVNode)(" Inaktiverad ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[22] || (_cache[22] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isRequired,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isRequired = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
             (0, import_vue5.createTextVNode)(" Obligatorisk ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[23] || (_cache[23] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isBorder,
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.isBorder = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
             (0, import_vue5.createTextVNode)(" Ram ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
+        _cache[24] || (_cache[24] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_fieldset, { name: "checkbox-label" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
             (0, import_vue5.createTextVNode)(" Etiketten ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
+            _cache[19] || (_cache[19] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.tooltipVisible,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.tooltipVisible = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
                 (0, import_vue5.createTextVNode)(" Tooltip ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
+            _cache[20] || (_cache[20] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.descriptionVisible,
               "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.descriptionVisible = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[11] || (_cache[11] = [
                 (0, import_vue5.createTextVNode)("\n                Hj\xE4lptext\n            ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
+            _cache[21] || (_cache[21] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_select_field, {
               modelValue: _ctx.showDetails,
               "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.showDetails = $event)
             }, {
-              label: (0, import_vue5.withCtx)(() => [
+              label: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
                 (0, import_vue5.createTextVNode)(" Ut\xF6kad etikett ")
-              ]),
+              ])),
               default: (0, import_vue5.withCtx)(() => [
-                (0, import_vue5.createTextVNode)(),
-                _hoisted_1,
-                (0, import_vue5.createTextVNode)(),
-                _hoisted_2,
-                (0, import_vue5.createTextVNode)(),
-                _hoisted_3
+                _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
+                _cache[14] || (_cache[14] = (0, import_vue5.createElementVNode)(
+                  "option",
+                  { value: "never" },
+                  "Nej",
+                  -1
+                  /* HOISTED */
+                )),
+                _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
+                _cache[16] || (_cache[16] = (0, import_vue5.createElementVNode)(
+                  "option",
+                  { value: "always" },
+                  "Utvidgad text",
+                  -1
+                  /* HOISTED */
+                )),
+                _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)()),
+                _cache[18] || (_cache[18] = (0, import_vue5.createElementVNode)(
+                  "option",
+                  { value: "when-selected" },
+                  "Expanderbar text",
+                  -1
+                  /* HOISTED */
+                ))
               ]),
               _: 1
               /* STABLE */

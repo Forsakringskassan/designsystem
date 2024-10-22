@@ -80,13 +80,6 @@
   });
   var _hoisted_1 = ["value"];
   var _hoisted_2 = ["value"];
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "sr-only" },
-    " Frukter ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache) {
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
@@ -98,18 +91,18 @@
         modelValue: _ctx.fruits,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.fruits = $event)
       }, {
-        label: (0, import_vue5.withCtx)(() => [
+        label: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)(" V\xE4lj datak\xE4lla ")
-        ]),
+        ])),
         default: (0, import_vue5.withCtx)(() => [
           (0, import_vue5.createElementVNode)("option", { value: _ctx.emptyList }, "Inl\xE4st data utan rader", 8, _hoisted_1),
-          (0, import_vue5.createTextVNode)(),
+          _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)("option", { value: _ctx.populatedList }, "Inl\xE4st data med rader", 8, _hoisted_2)
         ]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
-      (0, import_vue5.createTextVNode)(),
+      _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_sort_filter_dataset, {
         data: _ctx.fruits,
         "sortable-attributes": _ctx.sortableAttributes
@@ -133,15 +126,21 @@
             1
             /* TEXT */
           ),
-          (0, import_vue5.createTextVNode)(),
+          _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createVNode)(_component_f_data_table, {
             rows: sortFilterResult,
             striped: "",
             "key-attribute": "id"
           }, {
-            caption: (0, import_vue5.withCtx)(() => [
-              _hoisted_3
-            ]),
+            caption: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
+              (0, import_vue5.createElementVNode)(
+                "span",
+                { class: "sr-only" },
+                " Frukter ",
+                -1
+                /* HOISTED */
+              )
+            ])),
             default: (0, import_vue5.withCtx)(({ row }) => [
               (0, import_vue5.createVNode)(
                 _component_f_table_column,
@@ -165,7 +164,7 @@
                 1024
                 /* DYNAMIC_SLOTS */
               ),
-              (0, import_vue5.createTextVNode)(),
+              _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
               (0, import_vue5.createVNode)(
                 _component_f_table_column,
                 {
@@ -188,7 +187,7 @@
                 1024
                 /* DYNAMIC_SLOTS */
               ),
-              (0, import_vue5.createTextVNode)(),
+              _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
               (0, import_vue5.createVNode)(
                 _component_f_table_column,
                 {

@@ -45,17 +45,28 @@
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_form_modal = (0, import_vue5.resolveComponent)("f-form-modal", true);
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_form_modal, { value: _ctx.value }, {
-      header: (0, import_vue5.withCtx)(() => [
+      header: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)(" Awesome Modal ")
-      ]),
+      ])),
       "input-text-fields": (0, import_vue5.withCtx)(() => [
         (0, import_vue5.createVNode)(_component_f_text_field, {
           modelValue: _ctx.value.name,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value.name = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(" Awesome Field ")
-          ]),
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+            (0, import_vue5.createTextVNode)(" Namn ")
+          ])),
+          _: 1
+          /* STABLE */
+        }, 8, ["modelValue"]),
+        _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
+        (0, import_vue5.createVNode)(_component_f_text_field, {
+          modelValue: _ctx.value.age,
+          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.value.age = $event)
+        }, {
+          default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
+            (0, import_vue5.createTextVNode)(" \xC5lder ")
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])
