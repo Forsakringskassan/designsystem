@@ -1,0 +1,67 @@
+{
+  "name": "@fkui/i18next-translate",
+  "version": "5.37.1",
+  "description": "i18next translation provider for FKUI TranslationService",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "i18n"
+  ],
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/i18next-translate"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "rollup --config",
+    "postbuild": "fk-api-extractor",
+    "build:docs": "typedoc",
+    "clean": "rimraf .jest-cache coverage dist temp test-results typedoc",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "start": "npm run build:docs && fkui-serve typedoc",
+    "test": "jest --coverage",
+    "unit": "jest",
+    "unit:watch": "jest --watch",
+    "watch": "rollup --config --watch"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config"
+  },
+  "dependencies": {
+    "i18next": "23.15.1"
+  },
+  "devDependencies": {
+    "@fkui/logic": "5.37.1",
+    "@rollup/plugin-commonjs": "28.0.0",
+    "@rollup/plugin-node-resolve": "15.3.0",
+    "@rollup/plugin-typescript": "12.1.0",
+    "rollup": "4.24.0"
+  },
+  "peerDependencies": {
+    "@fkui/logic": "^5.36.0"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}
