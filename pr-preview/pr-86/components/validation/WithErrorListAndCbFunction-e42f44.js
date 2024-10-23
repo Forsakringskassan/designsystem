@@ -58,7 +58,7 @@
     }
   });
   var _hoisted_1 = { class: "button-group" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_expandable_panel = (0, import_vue5.resolveComponent)("f-expandable-panel");
     const _component_f_validation_form = (0, import_vue5.resolveComponent)("f-validation-form");
@@ -91,7 +91,7 @@
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.field1 = $event)
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
-                (0, import_vue5.createTextVNode)("\n                        Field1\n                    ")
+                (0, import_vue5.createTextVNode)(" Field1 ")
               ])),
               _: 1
               /* STABLE */
@@ -106,14 +106,13 @@
                 }
               ]
             ]),
-            _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
               id: "field2",
               modelValue: _ctx.field2,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.field2 = $event)
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
-                (0, import_vue5.createTextVNode)("\n                        Field2\n                    ")
+                (0, import_vue5.createTextVNode)(" Field2 ")
               ])),
               _: 1
               /* STABLE */
@@ -132,26 +131,24 @@
           _: 1
           /* STABLE */
         }, 8, ["expanded", "onToggle"]),
-        _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)("div", _hoisted_1, [
-          _cache[9] || (_cache[9] = (0, import_vue5.createElementVNode)(
+          _cache[7] || (_cache[7] = (0, import_vue5.createElementVNode)(
             "button",
             {
               type: "submit",
               "data-test": "submit-button",
               class: "button button-group__item button--primary button--large"
             },
-            "\n                    Spara\n                ",
+            " Spara ",
             -1
             /* HOISTED */
           )),
-          _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)("button", {
             type: "button",
             "data-test": "cancel-button",
             class: "button button-group__item button--secondary button--large",
             onClick: _cache[2] || (_cache[2] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
-          }, "\n                    Avbryt\n                ")
+          }, " Avbryt ")
         ])
       ]),
       _: 1

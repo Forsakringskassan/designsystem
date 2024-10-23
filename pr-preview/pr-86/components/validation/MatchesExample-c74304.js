@@ -47,7 +47,7 @@
     id: "input-wrapper",
     class: "col col--md-6"
   };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
@@ -64,7 +64,6 @@
           /* STABLE */
         }, 8, ["modelValue"])
       ]),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", _hoisted_3, [
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
           id: "input",
@@ -72,7 +71,7 @@
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.model = $event)
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
-            (0, import_vue5.createTextVNode)("\n                Inmatningsf\xE4lt\n            ")
+            (0, import_vue5.createTextVNode)(" Inmatningsf\xE4lt ")
           ])),
           _: 1
           /* STABLE */

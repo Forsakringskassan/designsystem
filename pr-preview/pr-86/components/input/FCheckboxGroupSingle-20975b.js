@@ -41,7 +41,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
@@ -56,14 +56,13 @@
         )
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.sign,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.sign = $event),
           value: "Ja"
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-            (0, import_vue5.createTextVNode)("\n            Jag \xE4r en ensam kryssruta s\xE5 min screenreadertext kommer att vara anpassad f\xF6r det.\n        ")
+            (0, import_vue5.createTextVNode)(" Jag \xE4r en ensam kryssruta s\xE5 min screenreadertext kommer att vara anpassad f\xF6r det. ")
           ])),
           _: 1
           /* STABLE */

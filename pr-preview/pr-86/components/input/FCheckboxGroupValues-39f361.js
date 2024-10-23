@@ -41,7 +41,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, { name: "checkbox-complex-values" }, {
@@ -49,7 +49,6 @@
         (0, import_vue5.createTextVNode)(" Broschyrer ")
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "broschyrer-bor-eller-arbetar-utomlands",
           modelValue: _ctx.brochures,
@@ -57,12 +56,11 @@
           value: ["Om du bor eller arbetar utomlands"]
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
-            (0, import_vue5.createTextVNode)("\n            Om du bor eller arbetar utomlands\n        ")
+            (0, import_vue5.createTextVNode)(" Om du bor eller arbetar utomlands ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "broschyrer-offentlighet-sekretess",
           modelValue: _ctx.brochures,
@@ -70,7 +68,7 @@
           value: { offentlighet: false, sekretess: true }
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
-            (0, import_vue5.createTextVNode)("\n            Offentlighet och sekretess\n        ")
+            (0, import_vue5.createTextVNode)(" Offentlighet och sekretess ")
           ])),
           _: 1
           /* STABLE */

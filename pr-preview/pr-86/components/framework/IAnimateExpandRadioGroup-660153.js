@@ -42,7 +42,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_i_animate_expand = (0, import_vue5.resolveComponent)("i-animate-expand");
@@ -53,7 +53,6 @@
         (0, import_vue5.createTextVNode)(" Vill du svar p\xE5 mer fr\xE5gor? ")
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_radio_field, {
           modelValue: _ctx.moreQuestions,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.moreQuestions = $event),
@@ -65,7 +64,6 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_i_animate_expand, { expanded: _ctx.moreQuestions }, {
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createVNode)(_component_f_fieldset, {
@@ -76,7 +74,6 @@
                 (0, import_vue5.createTextVNode)(" \xC4r du s\xE4ker? ")
               ])),
               default: (0, import_vue5.withCtx)(() => [
-                _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
                 (0, import_vue5.createVNode)(_component_f_radio_field, {
                   modelValue: _ctx.areYouSure,
                   "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.areYouSure = $event),
@@ -88,12 +85,11 @@
                   _: 1
                   /* STABLE */
                 }, 8, ["modelValue"]),
-                _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
                 (0, import_vue5.createVNode)(_component_i_animate_expand, { expanded: _ctx.areYouSure }, {
                   default: (0, import_vue5.withCtx)(() => [
                     (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { class: "indent" }, {
                       default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
-                        (0, import_vue5.createTextVNode)("\n                        Vad tyckte du?\n                    ")
+                        (0, import_vue5.createTextVNode)(" Vad tyckte du? ")
                       ])),
                       _: 1
                       /* STABLE */
@@ -109,7 +105,6 @@
                   _: 1
                   /* STABLE */
                 }, 8, ["expanded"]),
-                _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
                 (0, import_vue5.createVNode)(_component_f_radio_field, {
                   modelValue: _ctx.areYouSure,
                   "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.areYouSure = $event),
@@ -129,13 +124,12 @@
           _: 1
           /* STABLE */
         }, 8, ["expanded"]),
-        _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_radio_field, {
           modelValue: _ctx.moreQuestions,
           "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.moreQuestions = $event),
           value: false
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[13] || (_cache[13] = [
+          default: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
             (0, import_vue5.createTextVNode)(" Nej tack ")
           ])),
           _: 1

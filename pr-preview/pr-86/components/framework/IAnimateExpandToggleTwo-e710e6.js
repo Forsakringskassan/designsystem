@@ -42,14 +42,13 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_animate_expand = (0, import_vue5.resolveComponent)("i-animate-expand");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createElementVNode)("button", {
         type: "button",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.toggle = !_ctx.toggle)
       }, "Toggle"),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
         "input",
         {
@@ -62,7 +61,7 @@
       ), [
         [import_vue5.vModelCheckbox, _ctx.opacity]
       ]),
-      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)(" Toning\n\n        ")),
+      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)(" Toning ")),
       (0, import_vue5.createVNode)(_component_i_animate_expand, {
         opacity: _ctx.opacity,
         expanded: _ctx.toggle
@@ -79,7 +78,6 @@
         _: 1
         /* STABLE */
       }, 8, ["opacity", "expanded"]),
-      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_i_animate_expand, {
         opacity: _ctx.opacity,
         expanded: !_ctx.toggle

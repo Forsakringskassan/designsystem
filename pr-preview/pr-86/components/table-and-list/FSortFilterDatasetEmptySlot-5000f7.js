@@ -80,7 +80,7 @@
   });
   var _hoisted_1 = ["value"];
   var _hoisted_2 = ["value"];
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_data_table = (0, import_vue5.resolveComponent)("f-data-table");
@@ -96,13 +96,11 @@
         ])),
         default: (0, import_vue5.withCtx)(() => [
           (0, import_vue5.createElementVNode)("option", { value: _ctx.emptyList }, "Inl\xE4st data utan rader", 8, _hoisted_1),
-          _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)("option", { value: _ctx.populatedList }, "Inl\xE4st data med rader", 8, _hoisted_2)
         ]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
-      _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_sort_filter_dataset, {
         data: _ctx.fruits,
         "sortable-attributes": _ctx.sortableAttributes
@@ -126,13 +124,12 @@
             1
             /* TEXT */
           ),
-          _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createVNode)(_component_f_data_table, {
             rows: sortFilterResult,
             striped: "",
             "key-attribute": "id"
           }, {
-            caption: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
+            caption: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
               (0, import_vue5.createElementVNode)(
                 "span",
                 { class: "sr-only" },
@@ -164,7 +161,6 @@
                 1024
                 /* DYNAMIC_SLOTS */
               ),
-              _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
               (0, import_vue5.createVNode)(
                 _component_f_table_column,
                 {
@@ -187,7 +183,6 @@
                 1024
                 /* DYNAMIC_SLOTS */
               ),
-              _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
               (0, import_vue5.createVNode)(
                 _component_f_table_column,
                 {
@@ -216,7 +211,7 @@
                 import_vue5.Fragment,
                 { key: 0 },
                 [
-                  (0, import_vue5.createTextVNode)("\n                            Det finns inga frukter att visa.\n                        ")
+                  (0, import_vue5.createTextVNode)(" Det finns inga frukter att visa. ")
                 ],
                 64
                 /* STABLE_FRAGMENT */

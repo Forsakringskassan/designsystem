@@ -30,19 +30,29 @@
 
   // virtual-entry:./docs/components/FTooltip.md
   var import_vue3 = __require("vue");
-  var exampleComponent = {};
+  var import_vue4 = __require("vue");
+  var exampleComponent = {
+    __name: "FTooltip",
+    setup(__props, { expose: __expose }) {
+      __expose();
+      const heading = (0, import_vue3.useTemplateRef)("heading");
+      const __returned__ = { heading, useTemplateRef: import_vue3.useTemplateRef };
+      Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+      return __returned__;
+    }
+  };
   var _hoisted_1 = { ref: "heading" };
-  function render(_ctx, _cache) {
-    const _component_f_tooltip = (0, import_vue3.resolveComponent)("f-tooltip", true);
-    return (0, import_vue3.openBlock)(), (0, import_vue3.createElementBlock)(
-      import_vue3.Fragment,
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_f_tooltip = (0, import_vue4.resolveComponent)("f-tooltip", true);
+    return (0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)(
+      import_vue4.Fragment,
       null,
       [
-        (0, import_vue3.createElementVNode)(
+        (0, import_vue4.createElementVNode)(
           "div",
           _hoisted_1,
           _cache[0] || (_cache[0] = [
-            (0, import_vue3.createElementVNode)(
+            (0, import_vue4.createElementVNode)(
               "h2",
               null,
               "En rubrik",
@@ -53,13 +63,12 @@
           512
           /* NEED_PATCH */
         ),
-        _cache[2] || (_cache[2] = (0, import_vue3.createTextVNode)()),
-        (0, import_vue3.createVNode)(_component_f_tooltip, {
+        (0, import_vue4.createVNode)(_component_f_tooltip, {
           "attach-to": "heading",
           "screen-reader-text": "Sk\xE4rml\xE4sartext"
         }, {
-          body: (0, import_vue3.withCtx)(() => _cache[1] || (_cache[1] = [
-            (0, import_vue3.createTextVNode)(" Lorem ipsum dolor sit amet. ")
+          body: (0, import_vue4.withCtx)(() => _cache[1] || (_cache[1] = [
+            (0, import_vue4.createTextVNode)(" Lorem ipsum dolor sit amet. ")
           ])),
           _: 1
           /* STABLE */

@@ -72,7 +72,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_live_example = (0, import_vue5.resolveComponent)("live-example");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_live_example, {
@@ -91,7 +91,6 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.longText,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.longText = $event),

@@ -20304,21 +20304,21 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$P, [["render", _sfc_render$F]]);
 const tooltipAttachTo = Symbol("tooltipAttachTo");
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion)");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const reducedMotion = ref(prefersReducedMotion.matches);
+prefersReducedMotion.addEventListener("change", (event) => {
+  reducedMotion.value = event.matches;
+});
 function useAnimation(options) {
   const { duration = 250, easing = "ease-in", element: elementRef } = options;
-  const useAnimation2 = ref(!prefersReducedMotion.matches);
   let animation = null;
-  prefersReducedMotion.addEventListener("change", (event) => {
-    useAnimation2.value = !event.matches;
-  });
-  return { enabled: readonly(useAnimation2), animate(state) {
+  return { enabled: computed(() => reducedMotion.value === false), animate(state) {
     const element = elementRef.value;
     if (!element) {
       return;
     }
     element.classList.toggle("expanded", state === "expand");
-    if (!useAnimation2) {
+    if (reducedMotion.value) {
       return;
     }
     if (animation) {

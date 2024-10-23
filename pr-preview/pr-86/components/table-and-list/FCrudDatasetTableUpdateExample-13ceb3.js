@@ -82,7 +82,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_crud_button = (0, import_vue5.resolveComponent)("f-crud-button");
     const _component_f_interactive_table = (0, import_vue5.resolveComponent)("f-interactive-table");
@@ -133,7 +133,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -156,7 +155,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -179,7 +177,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -197,7 +194,7 @@
                     label: ""
                   }, {
                     default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-                      (0, import_vue5.createTextVNode)("\n                            \xC4ndra Namn\n                        ")
+                      (0, import_vue5.createTextVNode)(" \xC4ndra Namn ")
                     ])),
                     _: 2
                     /* DYNAMIC */
@@ -220,8 +217,8 @@
           "onUpdate:modelValue": ($event) => item.name = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
-            (0, import_vue5.createTextVNode)("\n                Namn\n            ")
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+            (0, import_vue5.createTextVNode)(" Namn ")
           ])),
           _: 2
           /* DYNAMIC */

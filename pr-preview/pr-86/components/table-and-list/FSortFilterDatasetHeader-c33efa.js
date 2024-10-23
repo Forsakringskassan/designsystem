@@ -35,7 +35,7 @@
   var exampleComponent = (0, import_vue3.defineComponent)({
     components: { FSortFilterDataset: import_vue4.FSortFilterDataset }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_sort_filter_dataset = (0, import_vue5.resolveComponent)("f-sort-filter-dataset");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_sort_filter_dataset, {
       data: [],

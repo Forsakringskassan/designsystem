@@ -36,7 +36,7 @@
     name: "FLayoutApplicationTemplateExample",
     components: { FLayoutApplicationTemplate: import_vue4.FLayoutApplicationTemplate }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_layout_application_template = (0, import_vue5.resolveComponent)("f-layout-application-template");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_layout_application_template, null, {
       header: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
@@ -67,16 +67,13 @@
         )
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
-        _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
-        _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+        _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
           "div",
           { class: "example-content" },
           "[prim\xE4ryta]",
           -1
           /* HOISTED */
-        )),
-        _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)())
+        ))
       ]),
       _: 1
       /* STABLE */

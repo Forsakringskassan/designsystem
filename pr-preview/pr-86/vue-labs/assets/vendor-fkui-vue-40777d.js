@@ -12538,21 +12538,21 @@
   }
   var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$B]]);
   var tooltipAttachTo = Symbol("tooltipAttachTo");
-  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion)");
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var reducedMotion = (0, import_vue.ref)(prefersReducedMotion.matches);
+  prefersReducedMotion.addEventListener("change", (event) => {
+    reducedMotion.value = event.matches;
+  });
   function useAnimation(options) {
     const { duration = 250, easing = "ease-in", element: elementRef } = options;
-    const useAnimation2 = (0, import_vue.ref)(!prefersReducedMotion.matches);
     let animation = null;
-    prefersReducedMotion.addEventListener("change", (event) => {
-      useAnimation2.value = !event.matches;
-    });
-    return { enabled: (0, import_vue.readonly)(useAnimation2), animate(state) {
+    return { enabled: (0, import_vue.computed)(() => reducedMotion.value === false), animate(state) {
       const element = elementRef.value;
       if (!element) {
         return;
       }
       element.classList.toggle("expanded", state === "expand");
-      if (!useAnimation2) {
+      if (reducedMotion.value) {
         return;
       }
       if (animation) {

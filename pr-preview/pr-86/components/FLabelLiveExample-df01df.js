@@ -102,7 +102,7 @@
     },
     methods: {}
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _component_live_example = (0, import_vue5.resolveComponent)("live-example");
@@ -117,31 +117,28 @@
             (0, import_vue5.createTextVNode)(" Egenskaper ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.descriptionVisible,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.descriptionVisible = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
-                (0, import_vue5.createTextVNode)("\n                Hj\xE4lptext\n            ")
+                (0, import_vue5.createTextVNode)(" Hj\xE4lptext ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.discreteDescriptionVisible,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.discreteDescriptionVisible = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
-                (0, import_vue5.createTextVNode)("\n                Formatbeskrivning\n            ")
+                (0, import_vue5.createTextVNode)(" Formatbeskrivning ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.tooltipVisible,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.tooltipVisible = $event),
@@ -153,14 +150,13 @@
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.errorMessageVisible,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.errorMessageVisible = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
-                (0, import_vue5.createTextVNode)("\n                Felmeddelande\n            ")
+                (0, import_vue5.createTextVNode)(" Felmeddelande ")
               ])),
               _: 1
               /* STABLE */

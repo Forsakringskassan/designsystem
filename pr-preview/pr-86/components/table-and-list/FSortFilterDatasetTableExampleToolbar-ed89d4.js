@@ -83,7 +83,7 @@
     class: "button button-group__item button--tertiary button--small",
     type: "button"
   };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_interactive_table = (0, import_vue5.resolveComponent)("f-interactive-table");
@@ -92,14 +92,13 @@
       import_vue5.Fragment,
       null,
       [
-        _cache[12] || (_cache[12] = (0, import_vue5.createElementVNode)(
+        _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
           "h3",
           null,
           "Frukter",
           -1
           /* HOISTED */
         )),
-        _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_sort_filter_dataset, {
           data: _ctx.fruits,
           "default-sort-attribute": "name",
@@ -113,8 +112,7 @@
                   name: "trashcan",
                   class: "button__icon"
                 }),
-                _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)()),
-                _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
+                _cache[0] || (_cache[0] = (0, import_vue5.createElementVNode)(
                   "span",
                   null,
                   " Ta bort ",
@@ -122,14 +120,12 @@
                   /* HOISTED */
                 ))
               ]),
-              _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
               (0, import_vue5.createElementVNode)("button", _hoisted_3, [
                 (0, import_vue5.createVNode)(_component_f_icon, {
                   name: "paper-clip",
                   class: "button__icon"
                 }),
-                _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
-                _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+                _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
                   "span",
                   null,
                   " Bifoga ",
@@ -146,7 +142,7 @@
               selectable: "",
               "key-attribute": "id"
             }, {
-              caption: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
+              caption: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
                 (0, import_vue5.createElementVNode)(
                   "span",
                   { class: "sr-only" },
@@ -155,7 +151,7 @@
                   /* HOISTED */
                 )
               ])),
-              "checkbox-description": (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
+              "checkbox-description": (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
                 (0, import_vue5.createTextVNode)(" V\xE4lj denna raden ")
               ])),
               default: (0, import_vue5.withCtx)(({ row }) => [
@@ -181,7 +177,6 @@
                   1024
                   /* DYNAMIC_SLOTS */
                 ),
-                _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
                 (0, import_vue5.createVNode)(
                   _component_f_table_column,
                   {
@@ -204,7 +199,6 @@
                   1024
                   /* DYNAMIC_SLOTS */
                 ),
-                _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
                 (0, import_vue5.createVNode)(
                   _component_f_table_column,
                   {

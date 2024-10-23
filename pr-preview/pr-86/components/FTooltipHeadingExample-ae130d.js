@@ -50,7 +50,7 @@
   var _hoisted_4 = { ref: "heading4" };
   var _hoisted_5 = { ref: "heading5" };
   var _hoisted_6 = { ref: "heading6" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_tooltip = (0, import_vue5.resolveComponent)("f-tooltip");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)(
       import_vue5.Fragment,
@@ -71,7 +71,6 @@
           512
           /* NEED_PATCH */
         ),
-        _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_tooltip, {
           "attach-to": _ctx.heading1,
           "screen-reader-text": "Sk\xE4rml\xE4sartext"
@@ -82,7 +81,6 @@
           _: 1
           /* STABLE */
         }, 8, ["attach-to"]),
-        _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)(
           "div",
           _hoisted_2,
@@ -98,7 +96,6 @@
           512
           /* NEED_PATCH */
         ),
-        _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_tooltip, {
           "attach-to": _ctx.heading2,
           "screen-reader-text": "Sk\xE4rml\xE4sartext"
@@ -109,7 +106,6 @@
           _: 1
           /* STABLE */
         }, 8, ["attach-to"]),
-        _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)(
           "div",
           _hoisted_3,
@@ -125,7 +121,6 @@
           512
           /* NEED_PATCH */
         ),
-        _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_tooltip, {
           "attach-to": _ctx.heading3,
           "screen-reader-text": "Sk\xE4rml\xE4sartext"
@@ -136,7 +131,6 @@
           _: 1
           /* STABLE */
         }, 8, ["attach-to"]),
-        _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)(
           "div",
           _hoisted_4,
@@ -152,7 +146,6 @@
           512
           /* NEED_PATCH */
         ),
-        _cache[18] || (_cache[18] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_tooltip, {
           "attach-to": _ctx.heading4,
           "screen-reader-text": "Sk\xE4rml\xE4sartext"
@@ -163,7 +156,6 @@
           _: 1
           /* STABLE */
         }, 8, ["attach-to"]),
-        _cache[19] || (_cache[19] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)(
           "div",
           _hoisted_5,
@@ -179,7 +171,6 @@
           512
           /* NEED_PATCH */
         ),
-        _cache[20] || (_cache[20] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_tooltip, {
           "attach-to": _ctx.heading5,
           "screen-reader-text": "Sk\xE4rml\xE4sartext"
@@ -190,7 +181,6 @@
           _: 1
           /* STABLE */
         }, 8, ["attach-to"]),
-        _cache[21] || (_cache[21] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)(
           "div",
           _hoisted_6,
@@ -206,7 +196,6 @@
           512
           /* NEED_PATCH */
         ),
-        _cache[22] || (_cache[22] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_tooltip, {
           "attach-to": _ctx.heading6,
           "screen-reader-text": "Sk\xE4rml\xE4sartext"

@@ -39,7 +39,7 @@
       return { model: "" };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
@@ -49,7 +49,7 @@
       maxlength: 100
     }, {
       default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-        (0, import_vue5.createTextVNode)("\n        Ett f\xE4lt med specifict felmeddelande\n    ")
+        (0, import_vue5.createTextVNode)(" Ett f\xE4lt med specifict felmeddelande ")
       ])),
       _: 1
       /* STABLE */

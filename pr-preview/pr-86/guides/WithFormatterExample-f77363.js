@@ -48,7 +48,7 @@
   var _hoisted_1 = { class: "row" };
   var _hoisted_2 = { class: "col col--md-9" };
   var _hoisted_3 = { class: "col col--md-3" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_output_field = (0, import_vue5.resolveComponent)("f-output-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
@@ -74,7 +74,6 @@
           ]
         ])
       ]),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", _hoisted_3, [
         (0, import_vue5.createVNode)(_component_f_output_field, { for: "with-formatter" }, {
           label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [

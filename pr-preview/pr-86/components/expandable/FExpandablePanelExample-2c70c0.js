@@ -47,7 +47,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_expandable_panel = (0, import_vue5.resolveComponent)("f-expandable-panel");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_expandable_panel, {
       expanded: _ctx.expanded,
@@ -57,7 +57,7 @@
         (0, import_vue5.createTextVNode)(" Titel ")
       ])),
       default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-        (0, import_vue5.createTextVNode)("\n            Inneh\xE5ll\n            "),
+        (0, import_vue5.createTextVNode)(" Inneh\xE5ll "),
         (0, import_vue5.createElementVNode)(
           "p",
           null,

@@ -43,7 +43,7 @@
       import_logic.ValidationService.setSubmitted("validator-enabled");
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_test = (0, import_vue5.resolveDirective)("test");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
@@ -55,14 +55,13 @@
         1
         /* TEXT */
       ),
-      _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
         id: "validator-enabled",
         modelValue: _ctx.model,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
       }, {
         default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-          (0, import_vue5.createTextVNode)("\n            Max tio tecken\n        ")
+          (0, import_vue5.createTextVNode)(" Max tio tecken ")
         ])),
         _: 1
         /* STABLE */
@@ -75,13 +74,12 @@
           { maxLength: true }
         ]
       ]),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("button", {
         class: "button button--primary",
         "data-test": "validator-enabled-button",
         type: "button",
         onClick: _cache[1] || (_cache[1] = ($event) => _ctx.toggleEnabled = !_ctx.toggleEnabled)
-      }, "\n            Aktivera/Inaktivera\n        ")
+      }, " Aktivera/Inaktivera ")
     ]);
   }
   exampleComponent.render = render;
