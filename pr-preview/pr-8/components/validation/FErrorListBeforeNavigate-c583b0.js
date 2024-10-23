@@ -51,7 +51,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue5.resolveComponent)("f-error-list");
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_expandable_panel = (0, import_vue5.resolveComponent)("f-expandable-panel");
@@ -66,7 +66,6 @@
         _: 1
         /* STABLE */
       }, 8, ["items", "before-navigate"]),
-      _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_expandable_panel, {
         expanded: _ctx.expanded,
         onToggle: _cache[0] || (_cache[0] = ($event) => _ctx.expanded = !_ctx.expanded)
@@ -85,7 +84,6 @@
             _: 1
             /* STABLE */
           }),
-          _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createVNode)(_component_f_text_field, {
             id: "favorit-godis",
             maxlength: "100"

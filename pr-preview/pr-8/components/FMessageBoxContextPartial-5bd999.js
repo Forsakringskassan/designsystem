@@ -36,7 +36,7 @@
     name: "FMessageBoxContextPartial",
     components: { FMessageBox: import_vue4.FMessageBox }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_message_box = (0, import_vue5.resolveComponent)("f-message-box");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_message_box, {
       type: "info",
@@ -56,13 +56,12 @@
               -1
               /* HOISTED */
             ),
-            (0, import_vue5.createTextVNode)("\n                En rubrik som kombineras med en sk\xE4rml\xE4sartext f\xF6r att tydligt f\xF6rklara sin kontext\n                n\xE4r den f\xE5r fokus\n            ")
+            (0, import_vue5.createTextVNode)(" En rubrik som kombineras med en sk\xE4rml\xE4sartext f\xF6r att tydligt f\xF6rklara sin kontext n\xE4r den f\xE5r fokus ")
           ]),
           2
           /* CLASS */
         ),
-        _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
-        _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
+        _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
           "p",
           null,
           "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",

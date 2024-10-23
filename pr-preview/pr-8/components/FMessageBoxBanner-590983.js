@@ -36,7 +36,7 @@
     name: "FMessageBoxBanner",
     components: { FMessageBox: import_vue4.FMessageBox }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_message_box = (0, import_vue5.resolveComponent)("f-message-box");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_message_box, {
       type: "error",
@@ -46,7 +46,7 @@
         (0, import_vue5.createElementVNode)(
           "p",
           null,
-          "\n            Det verkar som att du inte har n\xE5gon internetuppkoppling just nu. T\xE4nk p\xE5 att du beh\xF6ver\n            uppkoppling f\xF6r att kunna signera\n        ",
+          " Det verkar som att du inte har n\xE5gon internetuppkoppling just nu. T\xE4nk p\xE5 att du beh\xF6ver uppkoppling f\xF6r att kunna signera ",
           -1
           /* HOISTED */
         )

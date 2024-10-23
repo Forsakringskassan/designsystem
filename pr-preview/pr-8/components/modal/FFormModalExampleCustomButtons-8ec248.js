@@ -218,7 +218,7 @@
   var _hoisted_1 = { class: "f-form-modal-custom-buttons" };
   var _hoisted_2 = { class: "f-form-modal-example" };
   var _hoisted_3 = { key: 0 };
-  function render2(_ctx, _cache) {
+  function render2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_example_modal = (0, import_vue7.resolveComponent)("example-modal");
     return (0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", _hoisted_1, [
       (0, import_vue7.createElementVNode)("button", {
@@ -226,7 +226,6 @@
         class: "button button--secondary",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
       }, "\xD6ppna Modal"),
-      _cache[3] || (_cache[3] = (0, import_vue7.createTextVNode)()),
       (0, import_vue7.createElementVNode)("div", _hoisted_2, [
         (0, import_vue7.createVNode)(_component_example_modal, {
           "is-open": _ctx.isOpen,
@@ -236,7 +235,6 @@
           onClose: _ctx.onClose
         }, null, 8, ["is-open", "buttons", "onSubmit", "onCancel", "onClose"])
       ]),
-      _cache[4] || (_cache[4] = (0, import_vue7.createTextVNode)()),
       _ctx.field1 || _ctx.field2 ? ((0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", _hoisted_3, [
         _cache[1] || (_cache[1] = (0, import_vue7.createElementVNode)(
           "pre",
@@ -245,7 +243,6 @@
           -1
           /* HOISTED */
         )),
-        _cache[2] || (_cache[2] = (0, import_vue7.createTextVNode)()),
         (0, import_vue7.createElementVNode)(
           "pre",
           null,

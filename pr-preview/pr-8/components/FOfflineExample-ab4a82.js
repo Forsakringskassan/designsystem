@@ -3731,7 +3731,7 @@
       }
     }
   });
-  function render13(_ctx, _cache) {
+  function render13(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_offline = (0, import_vue30.resolveComponent)("f-offline");
     const _directive_test = (0, import_vue30.resolveDirective)("test");
     return (0, import_vue30.withDirectives)(((0, import_vue30.openBlock)(), (0, import_vue30.createElementBlock)("div", null, [
@@ -3746,7 +3746,6 @@
         _: 1
         /* STABLE */
       }),
-      _cache[1] || (_cache[1] = (0, import_vue30.createTextVNode)()),
       (0, import_vue30.createElementVNode)("button", {
         type: "button",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.toggle && _ctx.toggle(...args))

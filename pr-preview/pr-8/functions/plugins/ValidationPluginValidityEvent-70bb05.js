@@ -39,7 +39,7 @@
       return { validityEvent: "", nameModel: "" };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -50,7 +50,6 @@
         -1
         /* HOISTED */
       )),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,
@@ -58,7 +57,6 @@
         1
         /* TEXT */
       ),
-      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
         id: "name-of-child",
         modelValue: _ctx.nameModel,
@@ -66,7 +64,7 @@
         onValidity: _cache[1] || (_cache[1] = ($event) => _ctx.validityEvent = $event.detail)
       }, {
         default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-          (0, import_vue5.createTextVNode)("\n            Name of child\n        ")
+          (0, import_vue5.createTextVNode)(" Name of child ")
         ])),
         _: 1
         /* STABLE */

@@ -48,7 +48,7 @@
   var _hoisted_1 = { class: "row" };
   var _hoisted_2 = { class: "col col--md-6 density-default" };
   var _hoisted_3 = { class: "col col--md-6 density-dense" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_data_table = (0, import_vue5.resolveComponent)("f-data-table");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
@@ -82,7 +82,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -109,13 +108,12 @@
           /* STABLE */
         }, 8, ["rows"])
       ]),
-      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("div", _hoisted_3, [
         (0, import_vue5.createVNode)(_component_f_data_table, {
           rows: _ctx.items,
           "key-attribute": "id"
         }, {
-          caption: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+          caption: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
             (0, import_vue5.createTextVNode)(" Tabell med kompakt densitet ")
           ])),
           default: (0, import_vue5.withCtx)(({ row }) => [
@@ -140,7 +138,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {

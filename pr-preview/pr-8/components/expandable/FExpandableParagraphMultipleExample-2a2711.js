@@ -54,7 +54,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_expandable_paragraph = (0, import_vue5.resolveComponent)("f-expandable-paragraph");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createVNode)(_component_f_expandable_paragraph, {
@@ -77,16 +77,15 @@
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
-      _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_expandable_paragraph, {
         expanded: _ctx.expanded2,
         "header-tag": "h3",
         onToggle: _ctx.onToggle2
       }, {
-        title: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+        title: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Titel (h3) ")
         ])),
-        default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
+        default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createElementVNode)(
             "span",
             null,
@@ -98,19 +97,18 @@
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
-      _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_expandable_paragraph, {
         expanded: _ctx.expanded3,
         "header-tag": "h4",
         onToggle: _ctx.onToggle3
       }, {
-        title: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
+        title: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
           (0, import_vue5.createTextVNode)(" Titel (h4) ")
         ])),
-        related: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
+        related: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
           (0, import_vue5.createTextVNode)(" 2020-06-25 ")
         ])),
-        default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
+        default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
           (0, import_vue5.createElementVNode)(
             "span",
             null,

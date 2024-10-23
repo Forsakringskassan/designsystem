@@ -58,7 +58,7 @@
     }
   });
   var _hoisted_1 = { class: "f-confirm-modal" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
       (0, import_vue5.createElementVNode)("button", {
         type: "button",

@@ -40,7 +40,7 @@
     }
   });
   var _hoisted_1 = { "data-test": "output-field" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_static_field = (0, import_vue5.resolveComponent)("f-static-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
@@ -51,7 +51,7 @@
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.name = $event)
       }, {
         default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-          (0, import_vue5.createTextVNode)("\n            Namn\n        ")
+          (0, import_vue5.createTextVNode)(" Namn ")
         ])),
         _: 1
         /* STABLE */
@@ -63,13 +63,12 @@
           { maxLength: true }
         ]
       ]),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_static_field, null, {
         label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Beskrivning ")
         ])),
         default: (0, import_vue5.withCtx)(() => [
-          _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)("\n            En liten statisk beskrivning.\n        "))
+          _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)(" En liten statisk beskrivning. "))
         ]),
         _: 1
         /* STABLE */

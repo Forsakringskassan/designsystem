@@ -360,16 +360,15 @@
     ref: "target",
     class: "pos-target"
   };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)("div", _hoisted_1, [
-      _cache[5] || (_cache[5] = (0, import_vue4.createElementVNode)(
+      _cache[4] || (_cache[4] = (0, import_vue4.createElementVNode)(
         "label",
         null,
         " Begr\xE4nsa till: ",
         -1
         /* HOISTED */
       )),
-      _cache[6] || (_cache[6] = (0, import_vue4.createTextVNode)()),
       (0, import_vue4.withDirectives)((0, import_vue4.createElementVNode)(
         "select",
         {
@@ -384,7 +383,6 @@
             -1
             /* HOISTED */
           ),
-          (0, import_vue4.createTextVNode)(),
           (0, import_vue4.createElementVNode)(
             "option",
             { value: "container" },
@@ -392,7 +390,6 @@
             -1
             /* HOISTED */
           ),
-          (0, import_vue4.createTextVNode)(),
           (0, import_vue4.createElementVNode)(
             "option",
             { value: "combo" },
@@ -406,8 +403,7 @@
       ), [
         [import_vue4.vModelSelect, _ctx.constraint]
       ]),
-      _cache[7] || (_cache[7] = (0, import_vue4.createTextVNode)()),
-      _cache[8] || (_cache[8] = (0, import_vue4.createElementVNode)(
+      _cache[5] || (_cache[5] = (0, import_vue4.createElementVNode)(
         "p",
         null,
         [
@@ -418,7 +414,6 @@
         -1
         /* HOISTED */
       )),
-      _cache[9] || (_cache[9] = (0, import_vue4.createTextVNode)()),
       (0, import_vue4.createElementVNode)(
         "div",
         _hoisted_2,
@@ -434,7 +429,6 @@
             544
             /* NEED_HYDRATION, NEED_PATCH */
           ),
-          _cache[4] || (_cache[4] = (0, import_vue4.createTextVNode)()),
           (0, import_vue4.createElementVNode)(
             "div",
             _hoisted_3,

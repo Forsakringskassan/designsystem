@@ -44,7 +44,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, { name: "group-name-checkbox" }, {
@@ -52,7 +52,6 @@
         (0, import_vue5.createTextVNode)(" Vilka dagar i veckan vill du bli kontaktad? ")
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "dagar-mandag",
           modelValue: _ctx.dagar,
@@ -60,12 +59,11 @@
           value: "mandag"
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
-            (0, import_vue5.createTextVNode)("\n            M\xE5ndag\n        ")
+            (0, import_vue5.createTextVNode)(" M\xE5ndag ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "dagar-tisdag",
           modelValue: _ctx.dagar,
@@ -73,12 +71,11 @@
           value: "tisdag"
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
-            (0, import_vue5.createTextVNode)("\n            Tisdag\n        ")
+            (0, import_vue5.createTextVNode)(" Tisdag ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "dagar-onsdag",
           modelValue: _ctx.dagar,
@@ -86,12 +83,11 @@
           value: "onsdag"
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
-            (0, import_vue5.createTextVNode)("\n            Onsdag\n        ")
+            (0, import_vue5.createTextVNode)(" Onsdag ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "dagar-torsdag",
           modelValue: _ctx.dagar,
@@ -99,12 +95,11 @@
           value: "torsdag"
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
-            (0, import_vue5.createTextVNode)("\n            Torsdag\n        ")
+            (0, import_vue5.createTextVNode)(" Torsdag ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "dagar-fredag",
           modelValue: _ctx.dagar,
@@ -112,7 +107,7 @@
           value: "fredag"
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
-            (0, import_vue5.createTextVNode)("\n            Fredag\n        ")
+            (0, import_vue5.createTextVNode)(" Fredag ")
           ])),
           _: 1
           /* STABLE */

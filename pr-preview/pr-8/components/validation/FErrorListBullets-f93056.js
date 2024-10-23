@@ -44,7 +44,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue5.resolveComponent)("f-error-list");
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
@@ -59,7 +59,6 @@
         _: 1
         /* STABLE */
       }, 8, ["items"]),
-      _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { id: "fornamn-med-bullets" }, {
         default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)(" F\xF6rnamn ")
@@ -74,7 +73,6 @@
           { maxLength: true }
         ]
       ]),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { id: "efternamn-med-bullets" }, {
         default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Efternamn ")

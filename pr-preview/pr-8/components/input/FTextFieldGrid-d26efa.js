@@ -39,7 +39,7 @@
       return { foo: "" };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
@@ -49,7 +49,7 @@
       "input-width": "md-6"
     }, {
       default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-        (0, import_vue5.createTextVNode)("\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi\n        mollis pulvinar.\n    ")
+        (0, import_vue5.createTextVNode)(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi mollis pulvinar. ")
       ])),
       _: 1
       /* STABLE */

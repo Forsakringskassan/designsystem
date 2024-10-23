@@ -293,7 +293,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_x_search_bar = (0, import_vue7.resolveComponent)("x-search-bar");
     const _component_f_validation_form = (0, import_vue7.resolveComponent)("f-validation-form");
     return (0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", null, [

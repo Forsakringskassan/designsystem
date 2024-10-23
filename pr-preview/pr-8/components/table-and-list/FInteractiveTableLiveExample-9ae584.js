@@ -284,7 +284,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
@@ -306,19 +306,17 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[30] || (_cache[30] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isExpandable,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isExpandable = $event),
           value: true
         }, {
           default: (0, import_vue5.withCtx)(() => _cache[13] || (_cache[13] = [
-            (0, import_vue5.createTextVNode)("\n            Expanderbara rader\n        ")
+            (0, import_vue5.createTextVNode)(" Expanderbara rader ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[31] || (_cache[31] = (0, import_vue5.createTextVNode)()),
         _ctx.isExpandable ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, {
           key: 0,
           name: "radio-expandable-type"
@@ -327,26 +325,24 @@
             (0, import_vue5.createTextVNode)(" Typ av expanderat inneh\xE5ll ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomExpandContent,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasCustomExpandContent = $event),
               value: false
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[15] || (_cache[15] = [
-                (0, import_vue5.createTextVNode)("\n                Tabellrad\n            ")
+                (0, import_vue5.createTextVNode)(" Tabellrad ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[18] || (_cache[18] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomExpandContent,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.hasCustomExpandContent = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[16] || (_cache[16] = [
-                (0, import_vue5.createTextVNode)("\n                Valfritt inneh\xE5ll\n            ")
+                (0, import_vue5.createTextVNode)(" Valfritt inneh\xE5ll ")
               ])),
               _: 1
               /* STABLE */
@@ -355,107 +351,98 @@
           _: 1
           /* STABLE */
         })) : (0, import_vue5.createCommentVNode)("v-if", true),
-        _cache[32] || (_cache[32] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.hasHover,
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.hasHover = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[19] || (_cache[19] = [
+          default: (0, import_vue5.withCtx)(() => _cache[17] || (_cache[17] = [
             (0, import_vue5.createTextVNode)(" Hover ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[33] || (_cache[33] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isStriped,
           "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.isStriped = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[20] || (_cache[20] = [
+          default: (0, import_vue5.withCtx)(() => _cache[18] || (_cache[18] = [
             (0, import_vue5.createTextVNode)(" Zebrarandig ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[34] || (_cache[34] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.hasActions,
           "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasActions = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[21] || (_cache[21] = [
+          default: (0, import_vue5.withCtx)(() => _cache[19] || (_cache[19] = [
             (0, import_vue5.createTextVNode)(" \xC5tg\xE4rdsknappar ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[35] || (_cache[35] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.hasRowHeader,
           "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasRowHeader = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[22] || (_cache[22] = [
+          default: (0, import_vue5.withCtx)(() => _cache[20] || (_cache[20] = [
             (0, import_vue5.createTextVNode)(" Radrubriker ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[36] || (_cache[36] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.hasHiddenCaption,
           "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.hasHiddenCaption = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[23] || (_cache[23] = [
+          default: (0, import_vue5.withCtx)(() => _cache[21] || (_cache[21] = [
             (0, import_vue5.createTextVNode)(" Dold caption ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[37] || (_cache[37] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isEmpty,
           "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.isEmpty = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[24] || (_cache[24] = [
+          default: (0, import_vue5.withCtx)(() => _cache[22] || (_cache[22] = [
             (0, import_vue5.createTextVNode)(" Tom tabell ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[38] || (_cache[38] = (0, import_vue5.createTextVNode)()),
         _ctx.isEmpty ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, {
           key: 1,
           name: "radio-empty-text"
         }, {
-          label: (0, import_vue5.withCtx)(() => _cache[25] || (_cache[25] = [
+          label: (0, import_vue5.withCtx)(() => _cache[23] || (_cache[23] = [
             (0, import_vue5.createTextVNode)(" Meddelande f\xF6r tom tabell ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[28] || (_cache[28] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomEmptyText,
               "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => _ctx.hasCustomEmptyText = $event),
               value: false
             }, {
-              default: (0, import_vue5.withCtx)(() => _cache[26] || (_cache[26] = [
-                (0, import_vue5.createTextVNode)("\n                Standardmeddelande\n            ")
+              default: (0, import_vue5.withCtx)(() => _cache[24] || (_cache[24] = [
+                (0, import_vue5.createTextVNode)(" Standardmeddelande ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[29] || (_cache[29] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.hasCustomEmptyText,
               "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => _ctx.hasCustomEmptyText = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => _cache[27] || (_cache[27] = [
-                (0, import_vue5.createTextVNode)("\n                Eget meddelande\n            ")
+              default: (0, import_vue5.withCtx)(() => _cache[25] || (_cache[25] = [
+                (0, import_vue5.createTextVNode)(" Eget meddelande ")
               ])),
               _: 1
               /* STABLE */

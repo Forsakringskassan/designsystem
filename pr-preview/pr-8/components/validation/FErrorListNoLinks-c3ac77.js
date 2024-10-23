@@ -39,7 +39,7 @@
       return { items: [{ title: "F\xF6rnamn" }, { title: "Efternamn" }] };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue5.resolveComponent)("f-error-list");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_error_list, {
       items: _ctx.items,

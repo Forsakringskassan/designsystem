@@ -57,7 +57,7 @@
       (0, import_vue4.focus)(this);
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_my_button = (0, import_vue5.resolveComponent)("my-button");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)(
       import_vue5.Fragment,
@@ -70,15 +70,13 @@
           -1
           /* HOISTED */
         )),
-        _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
-        _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
+        _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
           "p",
           null,
           "Some interesting content.",
           -1
           /* HOISTED */
         )),
-        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(
           _component_my_button,
           { ref: "myButton" },

@@ -65,7 +65,7 @@
     }
   });
   var _hoisted_1 = { "data-testid": "fcontextmenu-exempel1" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_context_menu = (0, import_vue5.resolveComponent)("f-context-menu");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
       (0, import_vue5.createElementVNode)(
@@ -78,11 +78,10 @@
           "aria-haspopup": "menu",
           onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
         },
-        "\n            \xD6ppna\n        ",
+        " \xD6ppna ",
         512
         /* NEED_PATCH */
       ),
-      _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,
@@ -90,7 +89,6 @@
         1
         /* TEXT */
       ),
-      _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_context_menu, {
         "data-test": "contextmenu-open",
         "is-open": _ctx.isOpen,

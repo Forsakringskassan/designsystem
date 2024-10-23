@@ -47,7 +47,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_expandable_panel = (0, import_vue5.resolveComponent)("f-expandable-panel");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_expandable_panel, {
       expanded: _ctx.expanded,
@@ -60,7 +60,7 @@
         (0, import_vue5.createTextVNode)(" Inneh\xE5ll ")
       ])),
       outside: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-        (0, import_vue5.createTextVNode)("\n            Relaterat inneh\xE5ll som visas n\xE4r panelen \xE4r expanderad men utanf\xF6r body\n        ")
+        (0, import_vue5.createTextVNode)(" Relaterat inneh\xE5ll som visas n\xE4r panelen \xE4r expanderad men utanf\xF6r body ")
       ])),
       _: 1
       /* STABLE */

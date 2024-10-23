@@ -36,7 +36,7 @@
     name: "ValidationPluginFormValidation",
     components: { FValidationForm: import_vue4.FValidationForm, FTextField: import_vue4.FTextField }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_validation_form = (0, import_vue5.resolveComponent)("f-validation-form");
     const _directive_validation_prefix = (0, import_vue5.resolveDirective)("validation-prefix");
@@ -47,11 +47,10 @@
         (0, import_vue5.createTextVNode)(" Fel i f\xF6ljande f\xE4lt... ")
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { maxlength: 100 }, {
             default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-              (0, import_vue5.createTextVNode)("\n                Okreativ etikett\n            ")
+              (0, import_vue5.createTextVNode)(" Okreativ etikett ")
             ])),
             _: 1
             /* STABLE */
@@ -69,10 +68,9 @@
               { required: true }
             ]
           ]),
-          _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { maxlength: 100 }, {
             default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-              (0, import_vue5.createTextVNode)("\n                Okreativ etikett\n            ")
+              (0, import_vue5.createTextVNode)(" Okreativ etikett ")
             ])),
             _: 1
             /* STABLE */
@@ -90,10 +88,9 @@
               { required: true }
             ]
           ]),
-          _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { maxlength: 100 }, {
             default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
-              (0, import_vue5.createTextVNode)("\n                Okreativ etikett\n            ")
+              (0, import_vue5.createTextVNode)(" Okreativ etikett ")
             ])),
             _: 1
             /* STABLE */
@@ -114,8 +111,7 @@
         ])), [
           [_directive_validation_prefix, "PREFIX "]
         ]),
-        _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
-        _cache[8] || (_cache[8] = (0, import_vue5.createElementVNode)(
+        _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
           "button",
           { type: "submit" },
           "Trigga fel",

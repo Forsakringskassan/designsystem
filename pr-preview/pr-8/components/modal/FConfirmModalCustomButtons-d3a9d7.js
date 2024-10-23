@@ -64,14 +64,13 @@
     }
   });
   var _hoisted_1 = { class: "f-confirm-modal" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
       (0, import_vue5.createElementVNode)("button", {
         type: "button",
         class: "button button--secondary",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
       }, "Tre knappar"),
-      _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,

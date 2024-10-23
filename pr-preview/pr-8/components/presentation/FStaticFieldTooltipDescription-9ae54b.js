@@ -37,7 +37,7 @@
     components: { FStaticField: import_vue4.FStaticField, FTooltip: import_vue4.FTooltip }
   });
   var _hoisted_1 = { "data-test": "output-field" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_tooltip = (0, import_vue5.resolveComponent)("f-tooltip");
     const _component_f_static_field = (0, import_vue5.resolveComponent)("f-static-field");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
@@ -67,7 +67,6 @@
             2
             /* CLASS */
           ),
-          _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)(
             "span",
             {
@@ -78,7 +77,7 @@
             /* CLASS */
           )
         ]),
-        default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
+        default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createTextVNode)(" En liten statisk text. ")
         ])),
         _: 1

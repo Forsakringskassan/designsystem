@@ -36,12 +36,12 @@
     name: "TestPluginExample",
     components: { FTextField: import_vue4.FTextField }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { id: "child-name" }, {
       default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
-        (0, import_vue5.createTextVNode)("\n        Barnets namn\n    ")
+        (0, import_vue5.createTextVNode)(" Barnets namn ")
       ])),
       _: 1
       /* STABLE */

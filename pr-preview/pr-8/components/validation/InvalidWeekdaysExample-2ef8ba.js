@@ -39,7 +39,7 @@
       return { model: "" };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
@@ -48,7 +48,7 @@
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
     }, {
       default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-        (0, import_vue5.createTextVNode)("\n        Fyll i ett datum som inte \xE4r m\xE5ndag, tisdag, onsdag eller torsdag\n    ")
+        (0, import_vue5.createTextVNode)(" Fyll i ett datum som inte \xE4r m\xE5ndag, tisdag, onsdag eller torsdag ")
       ])),
       _: 1
       /* STABLE */

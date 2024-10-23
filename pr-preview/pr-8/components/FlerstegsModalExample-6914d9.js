@@ -243,14 +243,13 @@
     }
   });
   var _hoisted_1 = { key: 0 };
-  function render2(_ctx, _cache) {
+  function render2(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", null, [
       (0, import_vue8.createElementVNode)("button", {
         type: "button",
         class: "button button--secondary",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
       }, "\xD6ppna Modal"),
-      _cache[3] || (_cache[3] = (0, import_vue8.createTextVNode)()),
       _ctx.result ? ((0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", _hoisted_1, [
         _cache[1] || (_cache[1] = (0, import_vue8.createElementVNode)(
           "pre",
@@ -259,7 +258,6 @@
           -1
           /* HOISTED */
         )),
-        _cache[2] || (_cache[2] = (0, import_vue8.createTextVNode)()),
         (0, import_vue8.createElementVNode)(
           "pre",
           null,

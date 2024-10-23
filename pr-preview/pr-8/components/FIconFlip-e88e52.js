@@ -36,14 +36,13 @@
     name: "FIconFlip",
     components: { FIcon: import_vue4.FIcon }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createVNode)(_component_f_icon, {
         name: "pic",
         flip: "horizontal"
       }),
-      _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_icon, {
         name: "pic",
         flip: "vertical"

@@ -42,7 +42,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_month_grid = (0, import_vue5.resolveComponent)("i-calendar-month-grid");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_i_calendar_month_grid, { value: _ctx.month }, {
       default: (0, import_vue5.withCtx)(({ date }) => [
