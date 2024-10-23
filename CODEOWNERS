@@ -2,10 +2,10 @@
 * @ext @dvitamin @NicklasWei @MCFK
 
 # Code changes
-packages/ @ext @dvitamin @NicklasWei @MCFK @OlofFredriksson @TMFKse
+packages/ @ext @dvitamin @NicklasWei @MCFK @OlofFredriksson @TMFKse @mitra-Re
 
 # Documentation changes
-docs/ @ext @dvitamin @NicklasWei @MCFK @kristofernilsson @Marie-Jakobsson @kristinalindstrom
+docs/ @ext @dvitamin @NicklasWei @MCFK @kristofernilsson @Marie-Jakobsson @kristinalindstrom @mitra-Re
 
 # Dependency updates
 package.json @ext @dvitamin @MCFK @NicklasWei
