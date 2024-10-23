@@ -1,0 +1,33 @@
+@use "palette-variables" as *;
+
+@mixin css-variables {
+    // BACKGROUND
+
+    // BACKGROUND - FEEDBACK
+    --fkds-color-feedback-background-neutral: #{$palette-color-fk-black-5}; // global
+    --fkds-color-feedback-background-neutral-strong: #{$palette-color-fk-black-15}; // global
+    --fkds-color-feedback-background-info: #{$palette-color-bluebell-5}; // global
+    --fkds-color-feedback-background-info-strong: #{$palette-color-bluebell-100}; // global
+    --fkds-color-feedback-background-negative: #{$palette-color-red-5}; // global
+    --fkds-color-feedback-background-negative-strong: #{$palette-color-red-100}; // global
+    --fkds-color-feedback-background-positive: #{$palette-color-green-a-5}; // global
+    --fkds-color-feedback-background-positive-strong: #{$palette-color-green-a-85}; // global
+    --fkds-color-feedback-background-warning: #{$palette-color-yellow-5}; // global
+    --fkds-color-feedback-background-warning-strong: #{$palette-color-yellow-100}; // global
+
+    // BORDER
+
+    // BORDER - FEEDBACK
+    --fkds-color-feedback-border-neutral: #{$palette-color-fk-black-50}; // global
+    --fkds-color-feedback-border-info: #{$palette-color-bluebell-100}; // global
+    --fkds-color-feedback-border-negative: #{$palette-color-red-100}; // global
+    --fkds-color-feedback-border-positive: #{$palette-color-green-a-85}; // global
+    --fkds-color-feedback-border-warning: #{$palette-color-yellow-100}; // global
+
+    // ICON
+
+    // TEXT
+
+    --fkds-color-text-inverted: #{$palette-color-white-100}; // global
+    --fkds-color-text-primary: #{$palette-color-fk-black-100}; // global
+}
