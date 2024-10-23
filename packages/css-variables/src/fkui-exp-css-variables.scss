@@ -3,11 +3,13 @@
 @use "palette-variables" as *;
 @use "version" as *;
 @use "deprecated-exp-css-variables" as *;
+@use "semantic-tokens" as semantic-tokens;
 
 $global: true !default;
 
 @mixin css-variables {
     @include deprecated-variables;
+    @include semantic-tokens.css-variables;
 
     // ***********
     // TEXT COLORS
