@@ -550,7 +550,7 @@ module.exports = defineMetadata({
             type: ["text", "date", "numeric", "action"],
         },
         requiredAttributes: ["name", "title"],
-        permittedContent: ["@phrasing", "button"],
+        permittedContent: ["@phrasing", "button", "f-badge"],
     },
 
     "f-tooltip": {
