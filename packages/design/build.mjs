@@ -10,16 +10,16 @@ import { optimize } from "svgo";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import postcssUrl from "postcss-url";
-import varFuncFallback from "postcss-var-func-fallback";
+//import varFuncFallback from "postcss-var-func-fallback";
 
 /* fkui themes */
-import expTheme from "@fkui/css-variables/dist/fkui-exp-css-variables.js";
-import intTheme from "@fkui/css-variables/dist/fkui-int-css-variables.js";
+//import expTheme from "@fkui/css-variables/dist/fkui-exp-css-variables.js";
+//import intTheme from "@fkui/css-variables/dist/fkui-int-css-variables.js";
 
-const themes = {
-    exp: expTheme,
-    int: intTheme,
-};
+//const themes = {
+//  exp: expTheme,
+//int: intTheme,
+//};
 
 async function optimzeAssets(src, dst) {
     const files = await glob("**/*.svg", { cwd: src, posix: true });
@@ -55,14 +55,14 @@ async function optimzeAssets(src, dst) {
     }
 }
 
-async function postprocess(css, from, to, { theme, minify }) {
+async function postprocess(css, from, to, { minify }) {
     /** @type {import("cssnano").Options} */
     const cssnanoOptions = {
         preset: ["default", { discardComments: { removeAll: true } }],
     };
-    const fallbackOptions = {
-        variables: themes[theme],
-    };
+    // const fallbackOptions = {
+    //    variables: themes[theme],
+    //};
     const plugins = [
         autoprefixer,
         postcssUrl({
@@ -71,7 +71,7 @@ async function postprocess(css, from, to, { theme, minify }) {
             encodeType: "base64",
             optimizeSvgEncode: true,
         }),
-        theme ? varFuncFallback(fallbackOptions) : false,
+        //theme ? varFuncFallback(fallbackOptions) : false,
         minify ? cssnano(cssnanoOptions) : false,
     ].filter(Boolean);
     return await postcss(plugins).process(css, { from, to });
