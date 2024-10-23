@@ -2897,12 +2897,18 @@ input[type=search]:focus,
   width: var(--icon-size, 0px);
   height: var(--icon-size, 0px);
 }
+.tooltip__body {
+  padding: 1rem 1rem 0;
+}
+.tooltip__footer {
+  display: flex;
+  justify-content: flex-end;
+}
 .tooltip__bubble {
   display: flex;
   flex-direction: column;
   position: relative;
   margin-top: 10px;
-  padding: 1rem;
   border: 2px solid var(--f-tooltip-border-color, #8d8e91);
   border-radius: var(--f-border-radius-small, 2px);
   background-color: var(--f-background-info, #f5f6fa);

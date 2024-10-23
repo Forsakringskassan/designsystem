@@ -18695,7 +18695,7 @@ const _hoisted_3$w = { class: "modal__inner-container" };
 const _hoisted_4$r = { class: "modal__dialog" };
 const _hoisted_5$l = { class: "modal__dialog-inner" };
 const _hoisted_6$f = { class: "modal__header" };
-const _hoisted_7$c = { key: 0, ref: "modalTitle", class: "modal__title", tabindex: "-1" };
+const _hoisted_7$d = { key: 0, ref: "modalTitle", class: "modal__title", tabindex: "-1" };
 const _hoisted_8$8 = { ref: "modalContent", class: "modal__content", tabindex: "-1" };
 const _hoisted_9$5 = { class: "modal__footer" };
 const _hoisted_10$5 = { class: "modal__shelf" };
@@ -18716,7 +18716,7 @@ function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
         /* NEED_HYDRATION */
       ), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock(
         "h1",
-        _hoisted_7$c,
+        _hoisted_7$d,
         [renderSlot(_ctx.$slots, "header")],
         512
         /* NEED_PATCH */

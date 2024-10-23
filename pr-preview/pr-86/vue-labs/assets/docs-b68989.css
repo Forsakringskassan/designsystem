@@ -3290,12 +3290,18 @@ input[type=search]:focus,
   width: var(--icon-size);
   height: var(--icon-size);
 }
+.tooltip__body {
+  padding: 1rem 1rem 0;
+}
+.tooltip__footer {
+  display: flex;
+  justify-content: flex-end;
+}
 .tooltip__bubble {
   display: flex;
   flex-direction: column;
   position: relative;
   margin-top: 10px;
-  padding: 1rem;
   border: 2px solid var(--f-tooltip-border-color);
   border-radius: var(--f-border-radius-small);
   background-color: var(--f-background-info);
