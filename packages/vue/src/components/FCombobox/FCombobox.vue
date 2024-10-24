@@ -26,7 +26,7 @@ const filteredOptions = computed(() => {
 
     const filterLowerCased = filter.value.toLowerCase();
 
-    return props.options.filter((it) => it.toLowerCase().indexOf(filterLowerCased) === 0);
+    return props.options.filter((it) => it.toLowerCase().indexOf(filterLowerCased) > -1);
 });
 
 const hasOptions = computed(() => {
@@ -102,7 +102,7 @@ async function onComboboxMouseDown(e: MouseEvent): Promise<void> {
 
         setTimeout(() => {
             ignoreComboboxClick.value = false;
-        }, 100);
+        }, 300);
     }
 }
 
