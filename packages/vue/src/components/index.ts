@@ -100,3 +100,5 @@ export {
     FDialogueTree,
     isDialogueTreeEndQuestion,
 } from "./FDialogueTree";
+
+export { FCombobox } from "./FCombobox";

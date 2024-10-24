@@ -22,6 +22,7 @@ import { FocusOptions as FocusOptions_2 } from '@fkui/logic';
 import { formatNumber } from '@fkui/logic';
 import { formatPersonnummer } from '@fkui/logic';
 import { formatPostalCode } from '@fkui/logic';
+import { ModelRef } from 'vue';
 import { OrganisationsnummerString } from '@fkui/logic';
 import { parseBankAccountNumber } from '@fkui/logic';
 import { parseBankgiro } from '@fkui/logic';
@@ -2389,6 +2390,15 @@ default: typeof parseClearingNumber;
 }>> & Readonly<{}>, {
 formatter: FormatFunction<string>;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_PublicProps" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FCombobox: DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+"update:modelValue": (modelValue: string | undefined) => any;
+}, string, PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
+"onUpdate:modelValue"?: ((modelValue: string | undefined) => any) | undefined;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 // @public
 export const FConfirmModal: DefineComponent<ExtractPropTypes<    {

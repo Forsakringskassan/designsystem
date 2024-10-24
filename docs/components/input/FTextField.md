@@ -23,6 +23,12 @@ Tänk på följande om du ska använda ett inmatningsfält utan något särskilt
 
 Använd inte inaktiva komponenter, bland annat då de är svåra att uppfatta för användare med skärmläsare.
 
+## Combobox förslag
+
+```import
+FComboboxExample.vue
+```
+
 ## Validering
 
 Ett inmatningsfält kan visas med två statusar: neutral och fel. Innehållet i ett inmatningsfält valideras när användaren lämnar fältet. Information om felaktig inmatning visas med etikettens feltext. Ett inmatningsfält kan ha en eller flera validatorer.

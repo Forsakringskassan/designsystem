@@ -51,6 +51,9 @@
                 Annan etikett
             </f-checkbox-field>
         </f-fieldset>
+        <f-checkbox-field v-model="useDatalist" :value="true">
+            Visa förslag (datalist)
+        </f-checkbox-field>
     </live-example>
 </template>
 
@@ -94,6 +97,7 @@ export default defineComponent({
             isWhitelist: false,
             isDisabled: false,
             appendInnerVisible: false,
+            useDatalist: true,
         };
     },
     computed: {
@@ -209,13 +213,30 @@ export default defineComponent({
         disabled(): string {
             return this.isDisabled ? "disabled" : "";
         },
+        dataListAttr(): string {
+            return this.useDatalist ? `list="browsers"` : "";
+        },
+        datalistElement(): string {
+            return this.useDatalist
+                ? /* HTML */ `
+                      <datalist id="browsers">
+                          <option value="Chrome"></option>
+                          <option value="Firefox"></option>
+                          <option value="Opera"></option>
+                          <option value="Safari"></option>
+                          <option value="Microsoft Edge"></option>
+                      </datalist>
+                  `
+                : "";
+        },
         template(): string {
             return /* HTML */ `
-            <${this.type} v-model="model" ${this.validation} ${this.inline} ${this.disabled}>
+            <${this.type} v-model="model" ${this.validation} ${this.inline} ${this.disabled} ${this.dataListAttr}>
             ${this.label}
             ${this.tooltip} ${this.description}
             ${this.appendInner}
             </${this.type}>
+            ${this.datalistElement}
             `;
         },
     },
