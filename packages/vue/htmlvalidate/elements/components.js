@@ -1488,4 +1488,8 @@ module.exports = defineMetadata({
         },
         slots: ["default"],
     },
+
+    "f-combobox": {
+        flow: true,
+    },
 });
