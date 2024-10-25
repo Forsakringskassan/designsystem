@@ -180,20 +180,20 @@ De olika typerna av ändring (Type) som är tillåtna och vilken release som de 
 
 #### Typer av ändring och vilken release de generar
 
-| Type        | Description                                                                             | Release |
-| ----------- | --------------------------------------------------------------------------------------- | ------- |
-| Breaking    | A breaking which requires the users attention, <br>usually in the form of code changes. | Major   |
-| `feat`      | A new feature has been added.                                                           | Minor   |
-| `fix`       | An existing feature has been patched.                                                   | Patch   |
-| `build`,    | Changes to build-system/tooling only.                                                   | -       |
-| `chore`,    | Other changes not fitting any other description.                                        | -       |
-| `ci`,       | Changes to CI/CD configuration only.                                                    | -       |
-| `docs`,     | Documentation changes only                                                              | -       |
-| `perf`,     | Performance improvements.                                                               | Patch   |
-| `refactor`, | Code change that neither fixes a bug nor adds a feature.                                | -       |
-| `revert`,   | Revert an existing commit.                                                              | Patch   |
-| `style`,    | Cosmetic changes to source code, e.g. reformatting.                                     | -       |
-| `test`      | Changes to tests only                                                                   | -       |
+| Type       | Description                                                                             | Release |
+| ---------- | --------------------------------------------------------------------------------------- | ------- |
+| Breaking   | A breaking which requires the users attention, <br>usually in the form of code changes. | Major   |
+| `feat`     | A new feature has been added.                                                           | Minor   |
+| `fix`      | An existing feature has been patched.                                                   | Patch   |
+| `build`    | Changes to build-system/tooling only.                                                   | -       |
+| `chore`    | Other changes not fitting any other description.                                        | -       |
+| `ci`       | Changes to CI/CD configuration only.                                                    | -       |
+| `docs`     | Documentation changes only                                                              | -       |
+| `perf`     | Performance improvements.                                                               | Patch   |
+| `refactor` | Code change that neither fixes a bug nor adds a feature.                                | -       |
+| `revert`   | Revert an existing commit.                                                              | Patch   |
+| `style`    | Cosmetic changes to source code, e.g. reformatting.                                     | -       |
+| `test`     | Changes to tests only                                                                   | -       |
 
 #### Commit-meddelande utifrån typ av ändring
 

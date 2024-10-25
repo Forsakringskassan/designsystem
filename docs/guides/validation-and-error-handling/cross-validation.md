@@ -1,7 +1,6 @@
 ---
 title: Korsvalidering
 layout: pattern
-sortorder: 6
 ---
 
 ## Datumperiod

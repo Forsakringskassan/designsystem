@@ -126,7 +126,7 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 
 ### Tillåtna tecken `whitelist`
 
-Validatorn kontrollerar att de tecken som användaren har fyllt är tillåtna tecken.
+Validatorn kontrollerar att de tecken som användaren har fyllt i är tillåtna tecken.
 
 Tillåtna tecken är:  a-z A-Z 0-9 . , - ( ) ? + = ! : @ \* À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
 

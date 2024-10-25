@@ -1,7 +1,6 @@
 ---
 title: Längdvalidering
 layout: pattern
-sortorder: 7
 ---
 
 Du måste använda längdvalidering på fritextfält. Det kan göras på två sätt och ibland är det bra att ha båda sätten på ett fritextfält.
