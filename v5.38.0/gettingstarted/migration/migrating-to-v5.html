@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="sv" class="layout--pattern" data-root-url="../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Version 5 migreringsguide - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-6e2086.css"
+            crossorigin
+            integrity="sha384-nFampl5SKsCvDUFVH3sb1sDDV1PrkDTUZEjs0SidmLezvMmeH72NtuBQXQb+osXx"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-exp-3cb848.css"
+            crossorigin
+            integrity="sha384-RIFdezZEyghKBnWGnU8GalsCL/pyORCRQSD/JH9H2VJRldNydpMFVdrliikCHoE5"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-int-b89a7a.css"
+            crossorigin
+            integrity="sha384-GsPRhr7ciVP6tZLZNtu7XqSTyiRF9MKoN27IgzNFOlySwiHbE70mXb4Axk1KsG52"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/bootstrap-956ec3.js"
+            crossorigin
+            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../search-data-fa7e3c.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-O2UYP4IObWuttSo1kpzi3vdV+MgyPOgx3jGIfVm8tCfQC2Zmvbt0m7ytMiT8NHSH"
+            id="search-data"
+        />
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        <div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header>
+                <!-- prettier-ignore --><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list">
+        <!-- prettier-ignore -->
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../components/"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../components/"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <div class="select-field" style="visibility: hidden">
+        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
+        <div class="select-field__icon-wrapper">
+            <select id="fkds-theme-select" class="select-field__select">
+                <option value="exp">Försäkringskassan</option>
+                <option value="int">FK Hapo</option>
+            </select>
+            <svg focusable="false" class="icon select-field__icon">
+                <use xlink:href="#docs-icon-arrow-down"></use>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function themeSelector() {
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key) ?? "exp";
+            }
+
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
+            }
+
+            function enableTheme(theme) {
+                const style = Array.from(document.querySelectorAll("[data-theme]"));
+                for (const el of style) {
+                    el.disabled = el.dataset.theme !== theme;
+                }
+            }
+
+            const el = document.querySelector("#fkds-theme-select");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
+            el.addEventListener("change", () => {
+                const theme = el.value;
+                saveSelectedTheme("fkds-theme", theme);
+                enableTheme(theme);
+            });
+
+            const selected = getSelectedTheme("fkds-theme");
+            enableTheme(selected);
+            el.value = selected;
+
+            wrapper.style.visibility = null;
+        }
+
+        themeSelector();
+    </script>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary">
+                <!-- prettier-ignore -->
+<div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Använda designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-design-system/getting-started.html"
+            
+        >
+            Kom igång
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-design-system/getting-started-application.html"
+            
+        >
+            Ta fram applikation
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-design-system/icon-library.html"
+            
+        >
+            Skapa eget ikonbibliotek
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Bidra till designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../contribute-to-fkds/"
+            
+        >
+            Bidra till designsystemet
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../contribute-to-fkds/contributing-developers.html"
+            
+        >
+            För utvecklare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../contribute-to-fkds/release.html"
+            
+        >
+            Releaseprocess
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../contribute-to-fkds/testing.html"
+            
+        >
+            Automatisk testning
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../contribute-to-fkds/checklist-publication.html"
+            
+        >
+            Checklista vid publicering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../contribute-to-fkds/commits.html"
+            
+        >
+            Commits och commitmeddelanden
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Om designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../about/"
+            
+        >
+            Designsystemet
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../about/news.html"
+            
+        >
+            Nyheter
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../about/release-plan.html"
+            
+        >
+            Releaseplan
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../help-and-support.html"
+            
+        >
+            Hjälp och support
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable active">
+        <details open>
+            <summary>Migreringsguider</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./migrating-to-fieldset.html"
+            
+        >
+            Fieldset migreringsguide
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link active">
+        <!-- prettier-ignore -->
+        <a
+            href="./migrating-to-v5.html"
+            
+        >
+            Version 5 migreringsguide
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
+</nav>
+</div>
+
+
+                <!-- prettier-ignore -->
+                <script
+                    src="../../assets/vendor-vue-a2f4e5.js"
+                    crossorigin
+                    integrity="sha384-G0p1/R2lkvkBeu18tmdftl6amM/ogqlPyFs4TbAaHZ6wWDgDjawSdlikX3tImEFu"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-logic-1193bc.js"
+                    crossorigin
+                    integrity="sha384-UNmhiYi/XVBF/0CUVZ3OrzBhrjxEMOts2MfS8iFwj7DP+u5HC5r8NIJz+MsdQyrL"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-date-9b7c35.js"
+                    crossorigin
+                    integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-vue-1f14b8.js"
+                    crossorigin
+                    integrity="sha384-qWXAjYPcK2tOu4sl0xLowxEGd/zE0DY/83ZkL/+jVRNhvoYw00njtiSxrLTxhbdf"
+                ></script>
+                <script
+                    src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
+                    crossorigin
+                    integrity="sha384-nJLPQGIUBkkwVgDY+ToqjpI+vosaIHaIBoTit9uWov/I2yjBNiUgUWlsfRJXelga"
+                ></script>
+
+                <!-- prettier-ignore --><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Version 5 migreringsguide</h1>
+
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl>
+    <!-- prettier-ignore -->
+    
+</dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#vue_3">Vue 3</a></li>
+                                
+                                <li><a href="#vue_runtime">Vue Runtime</a></li>
+                                
+                                <li><a href="#personnummer_displays_10_digits_instead_of_12">Personnummer displays 10 digits instead of 12</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content">
+                        <!-- prettier-ignore -->
+<h2 id="vue_3"><a class="header-anchor" href="#vue_3">Vue 3</a></h2><p><code>@fkui/vue</code> is migrated to Vue 3 and requires your app to be migrated as well.</p>
+<h3 id="prerequisites"><a class="header-anchor" href="#prerequisites">Prerequisites</a></h3><p>Before you begin make sure to read:</p>
+<ul>
+<li>Official <a href="https://v3-migration.vuejs.org/">Vue 3 migration guide</a></li>
+<li>Official <a href="https://router.vuejs.org/guide/migration/">vue-router migration guide</a> (if your application uses routing)</li>
+</ul>
+<p>Additionally some changes has to be made to your build toolchain:</p>
+<ul>
+<li><code>@forsakringskassan/jest-config</code> must be updated to 29.3.0 or later.</li>
+<li>Toolchain migrated to Vite</li>
+<li>Optional: If your application uses vue-styleguidist to generate documentation it must be migrated to <code>@forsakringskassan/docs-generator</code></li>
+</ul>
+<p>If you are using <code>vue-stylegudist</code>:</p>
+<p><code>vue-stylegudist</code> does not support Vue 3 and must be replaced.
+Suggested replacement is <a href="https://github.com/Forsakringskassan/docs-generator"><code>@forsakringskassan/docs-generator</code></a>.</p>
+<h3 id="broad_instructions"><a class="header-anchor" href="#broad_instructions">Broad instructions</a></h3><ol>
+<li>Replace <code>new Vue(..)</code> with <code>createApp(..)</code>.</li>
+</ol>
+
+                <div
+                    id="example-b7c5a3"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-import Vue from &quot;vue&quot;;</span>
+<span class="hljs-addition">+import { createApp } from &quot;vue&quot;;</span>
+
+<span class="hljs-deletion">-const vm = new Vue(MyAwesomeApp);</span>
+<span class="hljs-addition">+const app = createApp(MyAwesomeApp);</span>
+</code></pre>
+                </div>
+            <ol start="2">
+<li>Plugins are applied per instance and not global:</li>
+</ol>
+
+                <div
+                    id="example-bf09ba"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-Vue.use(MyAwesomePlugin);</span>
+
+ const app = createApp(MyAwesomeApp);
+<span class="hljs-addition">+app.use(MyAwesomePlugin);</span>
+</code></pre>
+                </div>
+            <ol start="3">
+<li>Replace <code>Vue.extend(..)</code> with <code>defineComponent(..)</code> in Single File Components (SFCs):</li>
+</ol>
+
+                <div
+                    id="example-013062"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-import Vue from &quot;vue&quot;;</span>
+<span class="hljs-addition">+import { defineComponent } from &quot;vue&quot;;</span>
+
+<span class="hljs-deletion">-export default Vue.extend({</span>
+<span class="hljs-addition">+export default defineComponent({</span>
+   /* ... */
+ });
+</code></pre>
+                </div>
+            <h3 id="set_running_app_context"><a class="header-anchor" href="#set_running_app_context">Set running app context</a></h3><p>FKUI requires knowledge about the running app instance.</p>
+
+                <div
+                    id="example-a3b334"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+import { setRunningContext } from &quot;@fkui/vue&quot;;</span>
+
+const app = createApp(App);
+<span class="hljs-addition">+setRunningContext(app);</span>
+</code></pre>
+                </div>
+            <p>Note: you can still create multiple Vue applications, just make sure to call <code>setRunningContext</code> for each <code>app</code> you create.</p>
+<h3 id="mountcomponent_cleanup"><a class="header-anchor" href="#mountcomponent_cleanup"><code>mountComponent</code> cleanup</a></h3><p><code>mountComponent(..)</code> returns an <code>App</code> instance instead of Vue 2 <code>Vue</code> instance and thus uses the <code>unmount()</code> method instead of <code>$destroy()</code>.</p>
+
+                <div
+                    id="example-22f4ed"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const vm = mountComponent(..);</span>
+<span class="hljs-deletion">-vm.$destroy();</span>
+<span class="hljs-addition">+const app = mountComponent(..);</span>
+<span class="hljs-addition">+app.unmount();</span>
+</code></pre>
+                </div>
+            <p>Additionally you no longer need to manually remove the target element:</p>
+
+                <div
+                    id="example-5bdbb2"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const targetElement = document.createElement();
+ const app = mountComponent(MyAwesomeComponent, { attachTo: targetElement });
+<span class="hljs-deletion">-targetElement.removeChild(vm.$el);</span>
+ app.unmount();
+</code></pre>
+                </div>
+            <h3 id="mountcomponent_requires_calling_instance"><a class="header-anchor" href="#mountcomponent_requires_calling_instance"><code>mountComponent</code> requires calling instance</a></h3><p><code>mountComponent</code> and related functions needs the calling instance to be passed as a parameter.</p>
+<p>This change affects the following functions:</p>
+<ul>
+<li><code>mountComponent</code></li>
+<li><code>openModal</code></li>
+<li><code>confirmModal</code></li>
+<li><code>formModal</code></li>
+<li><code>mountFOffline</code></li>
+</ul>
+<p>For instance, when using <code>mountComponent(..)</code>:</p>
+
+                <div
+                    id="example-d20a08"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-mountComponent(MyAwesomeComponent, { ... });</span>
+<span class="hljs-addition">+mountComponent(this, MyAwesomeComponent, { ... });</span>
+</code></pre>
+                </div>
+            <h3 id="mountcomponent_options_now_follow_vue3_attrs_structure"><a class="header-anchor" href="#mountcomponent_options_now_follow_vue3_attrs_structure"><code>mountComponent</code> options now follow Vue3 <code>$attrs</code> structure</a></h3><p>Passing props:</p>
+<p>For instance, when using <code>mountComponent(..)</code>:</p>
+
+                <div
+                    id="example-870c09"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">mountComponent(this, MyComponent, {
+    attachTo: targetElement,
+<span class="hljs-deletion">-   props: {</span>
+<span class="hljs-deletion">-       foo: &quot;bar&quot;,</span>
+<span class="hljs-deletion">-   },</span>
+<span class="hljs-addition">+   foo: &quot;bar&quot;,</span>
+});
+</code></pre>
+                </div>
+            <p>Listening to events:</p>
+
+                <div
+                    id="example-90b5b2"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">mountComponent(this, MyComponent, {
+    attachTo: targetElement,
+<span class="hljs-deletion">-   on: {</span>
+<span class="hljs-deletion">-       submit(): void {</span>
+<span class="hljs-deletion">-           /* do something */</span>
+<span class="hljs-deletion">-       },</span>
+<span class="hljs-addition">+   onSubmit: void {</span>
+<span class="hljs-addition">+       /* do something */</span>
+<span class="hljs-addition">+   },</span>
+});
+</code></pre>
+                </div>
+            <h3 id="i_popup_target_removed"><a class="header-anchor" href="#i_popup_target_removed"><code>&lt;i-popup-target&gt;</code> removed</a></h3><p>If your application includes the <code>&lt;i-popup-target&gt;</code> component you must remove it.
+By default any <code>IPopup</code> will be mounted as a child of <code>&lt;body&gt;</code> but this can be customized by the <code>Config.popupTarget</code> selector.</p>
+<h3 id="mountoffline_removed"><a class="header-anchor" href="#mountoffline_removed"><code>mountOffline(...)</code> removed</a></h3><p><code>mountOffline(...)</code> is no longer available. For EXP-applications it´s not needed, as the feature is now included in Sitevision.
+If you are creating a GHS-application with the need for the <code>FOffline</code> component, just add <code>&lt;f-offline&gt; Custom Message &lt;/f-offline&gt;</code> to your application template.</p>
+<h3 id="tooltip_slot_in_custom_components"><a class="header-anchor" href="#tooltip_slot_in_custom_components"><code>#tooltip</code> slot in custom components</a></h3><p>If you have an application specific input field wrapping the <code>#tooltip</code> slot from <code>FLabel</code> you must now add <code>v-if=&quot;$slots.tooltip&quot;</code> to the component:</p>
+
+                <div
+                    id="example-91a3da"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;template #tooltip&gt;</span>
+<span class="hljs-addition">+&lt;template v-if=&quot;$slots.tooltip&quot; #tooltip&gt;</span>
+     &lt;!-- @slot Slot for tooltip. --&gt;
+     &lt;slot name=&quot;tooltip&quot;&gt;&lt;/slot&gt;
+ &lt;/template&gt;
+</code></pre>
+                </div>
+            <h3 id="class_on_components"><a class="header-anchor" href="#class_on_components">Class on components</a></h3>
+                <div
+                    id="example-39b76d"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=static
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;foo&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+</code></pre>
+                </div>
+            <p>Classes used to be set on the root element of the component.
+It is now transparently set on the <code>&lt;input&gt;</code> element instead.</p>
+<h2 id="vue_runtime"><a class="header-anchor" href="#vue_runtime">Vue Runtime</a></h2><p>The <code>@fkui/vue-runtime</code> package has been removed.</p>
+<p>Instead each package has to be manually installed:</p>
+
+                <div
+                    id="example-6b2565"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm install @fkui/{css-variables,logic,<span class="hljs-built_in">date</span>,vue}
+npm <span class="hljs-built_in">rm</span> @fkui/vue-runtime
+</code></pre>
+                </div>
+            <p>If you use additional packages such as <code>@fkui/vue-labs</code> you need to install it as well.</p>
+<p>Replace imports from <code>@fkui/vue-runtime</code> to respective package directly:</p>
+
+                <div
+                    id="example-8649dc"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-import { foo } from &quot;@fkui/vue-runtime/logic&quot;;</span>
+<span class="hljs-deletion">-import { bar } from &quot;@fkui/vue-runtime/vue&quot;;</span>
+<span class="hljs-addition">+import { foo } from &quot;@fkui/logic&quot;;</span>
+<span class="hljs-addition">+import { bar } from &quot;@fkui/vue&quot;;</span>
+</code></pre>
+                </div>
+            <h2 id="personnummer_displays_10_digits_instead_of_12"><a class="header-anchor" href="#personnummer_displays_10_digits_instead_of_12">Personnummer displays 10 digits instead of 12</a></h2><p>Personnummer is extended to understand both 12- and 10-digit strings.</p>
+<p>Personnummer is still saved with 12-digits but displayed with 10 digits.
+Textkeys have been replaced in order to not interfer with already-deployed applications
+using former 12-digit display.</p>
+<p>Read more about personnummer format at
+<a href="https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html">Skatteverket</a>.</p>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer>
+                <!-- prettier-ignore --><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right">
+    <!-- prettier-ignore -->
+    <div class="version">
+    <!-- prettier-ignore -->
+    <div class="heading--h1">FKDS version 5.38.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div>
+
+        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div>
+<!-- prettier-ignore -->
+        <dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label"> Sök </label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/processors/selectable-version/select-version-42b338.js"
+            crossorigin
+            integrity="sha384-9teClDZoUmFqd4Uy9zGlWIwizRBX8jp3Tuvbf8GCf6jj1pTG5nVxJGQ/gOCfOsnK"
+            
+        ></script>
+        <script
+            src="../../assets/main-8b3997.js"
+            crossorigin
+            integrity="sha384-tMUsZzOmoZSz2qWzoCwYEHpbl3EEWosdUVGhRQ8XHBCBoP4QIjodcfAg2qFXy/NO"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/gettingstarted/migration/migrating-to-v5.md
+         Document ID: fs:docs/gettingstarted/migration/migrating-to-v5.md
+         Document name: migrating-to-v5
+         Document alias: 
+
+    -->
+</html>
