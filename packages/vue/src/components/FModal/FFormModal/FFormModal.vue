@@ -55,7 +55,7 @@
                         type="submit"
                         class="button button--primary button-group__item button--large"
                     >
-                        <!-- @slot @deprecated - Slot for submit button text. If you want to modify the footer section, see prop "buttons" -->
+                        <!-- @slot - @deprecated Slot for submit button text. If you want to modify the footer section, see prop "buttons" -->
                         <slot name="submit-button-text">
                             {{ $t("fkui.form-modal.button.submit.text", "Spara") }}
                         </slot>
@@ -66,7 +66,7 @@
                         class="button button--secondary button-group__item button--large"
                         @click="onCancel"
                     >
-                        <!-- @slot @deprecated -  Slot for cancel button text. If you want to modify the footer section, see prop "buttons" -->
+                        <!-- @slot - @deprecated Slot for cancel button text. If you want to modify the footer section, see prop "buttons" -->
                         <slot name="cancel-button-text">
                             {{ $t("fkui.form-modal.button.cancel.text", "Avbryt") }}
                         </slot>

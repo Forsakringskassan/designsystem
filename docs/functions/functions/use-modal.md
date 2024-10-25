@@ -20,11 +20,11 @@ Use {@link open-modal openModal()}, {@link confirm-modal confirmModal()} and {@l
 function useModal();
 ```
 
-### Parametrar
+### Parameters
 
 None
 
-### Returvärde
+### Return value
 
 `openModal(component, options)`
 : A wrapped {@link open-modal openModal()} function without `callingInstance` parameter.
@@ -69,7 +69,7 @@ const { formModal } = useModal();
 const result = await formModal<MyAwesomeData>(MyAwesomeModal);
 ```
 
-## Relaterat
+## Related
 
 -   {@link open-modal openModal()}
 -   {@link confirm-modal confirmModal()}

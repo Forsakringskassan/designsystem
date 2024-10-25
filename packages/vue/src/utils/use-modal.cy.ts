@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref } from "vue";
+import { type PropType, defineComponent, ref } from "vue";
 import { FFormModal, FModal, FTextField } from "../components";
 import { useModal } from "./use-modal";
 

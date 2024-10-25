@@ -15,7 +15,7 @@ Use {@link useModal useModal()} with Composition API.
 function confirmModal(callingInstance, texts);
 ```
 
-### Parametrar
+### Parameters
 
 `callingInstance`
 : Current component attempting to open confirmation modal. Typically `this`.
@@ -34,6 +34,10 @@ function confirmModal(callingInstance, texts);
 
     `dismiss: string`
     : Text for cancel button.
+
+### Return value
+
+A `Promise` resolving to `true` if the user confirms the action and `false` if the user cancels the action.
 
 ## Exempel
 

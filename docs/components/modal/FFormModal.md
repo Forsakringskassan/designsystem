@@ -14,16 +14,130 @@ Modalen har alltid en primärknapp för submit och en sekundärknapp för att av
 -   Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.
 -   Öppna inte ytterligare modaler från en modal.
 
-## Användning med template
+## Användning
 
-```import
-FFormModalExample.vue
+Du skapar själv upp din formulärsmodal genom att skapa upp en ny Vue-komponent där `FFormModal`-komponenten nyttjas.
+
+Skapa först upp ett interface motsvarande den data din formulärsmodal ska arbeta med:
+
+```ts static
+interface Person {
+    name: string;
+    age: string;
+}
 ```
 
-## Användning med API
+Din komponent ska innehålla en prop `value` motsvarande ett objekt av interfacet:
+
+```diff
+ export default defineComponent({
+     props: {
++        value: {
++            type: Object as PropType<Person>,
++            required: true,
++        },
+     },
+ });
+```
+
+Template använder `FFormModal` och binder `value` dels som `value`-propen men också som `v-model` för respektive inmatningsfält.
+Inmatningsfälten läggs in i `#input-text-fields`-slotten.
+
+```html static
+<template>
+    <f-form-modal :value>
+        <template #header> Awesome Modal </template>
+        <template #input-text-fields>
+            <f-text-field v-model="value.name"> Namn </f-text-field>
+            <f-text-field v-model="value.age"> Ålder </f-text-field>
+        </template>
+    </f-form-modal>
+</template>
+```
+
+::: details Fullständigt exempel
+
+```vue static
+<template>
+    <f-form-modal :value>
+        <template #header> Awesome Modal </template>
+        <template #input-text-fields>
+            <f-text-field v-model="value.name"> Namn </f-text-field>
+            <f-text-field v-model="value.age"> Ålder </f-text-field>
+        </template>
+    </f-form-modal>
+</template>
+
+<script lang="ts">
+import { type PropType, defineComponent } from "vue";
+import { FFormModal, FTextField } from "@fkui/vue";
+
+interface Person {
+    name: string;
+    age: string;
+}
+
+export default defineComponent({
+    components: { FFormModal, FTextField },
+    props: {
+        value: {
+            type: Object as PropType<Person>,
+            required: true,
+        },
+    },
+});
+</script>
+```
+
+:::
+
+::: danger Tänk på att
+
+Data muteras direkt på `value`-propen.
+Det kan leda till oönskade konsekvenser om konsumenten skickas in existernade referenser till objekt istället för att skicka in en kopia eller nytt objekt.
+Du kan antingen låta din formulärsmodal hantera deta genom att internt kopiera `value` eller tydligt dokumentera att konsumenten måste skicka in en kopia.
+
+:::
+
+## Öppna modal med API
+
+Det rekommenderade sättet att använda formulärsmodalen är med {@link form-modal `formModal()`} (options API) eller {@link useModal `useModal()`} (composition API).
+
+```ts
+// options api
+const result = await formModal<Person>(this, PersonFormModal);
+
+// composition api
+const { formModal } = useModal();
+const result = await formModal<Person>(PersonFormModal);
+```
+
+Returvärdet är `Promise` som löses ut med `resolve(value)` (det objekt som ligger lagrat i `value` när modalen stängs).
+Om användaren avbryter modalen avvisas `Promise` med `reject()` .
+
+Förifylld data kan skickas in med propen `value`:
+
+```ts
+const result = await formModal<Person>(PersonFormModal, {
+    props: {
+        value: {
+            name: "Kalle Anka",
+            age: 60,
+        },
+    },
+});
+```
 
 ```import
 FFormModalApiExample.vue
+```
+
+## Öppna modal med template
+
+Komponenten kan också användas direkt i `<template>` men vi rekommenderar inte denna lösning::
+
+```import
+FFormModalExample.vue
 ```
 
 ## Formulärsmodal med flera knappar
@@ -123,6 +237,5 @@ vue:FFormModal
 
 ## Relaterat
 
-[Modal-api](#/Utilities/form-modal)
-
-[Modal dialogruta - FModal](#/Components/FModal)
+-   {@link useModal `useModal()`} (composition API) {@link form-modal `formModal()`} (options API) för programatiskt användande av formulärsmodal.
+-   {@link FModal Modal} för mer information om modaler.

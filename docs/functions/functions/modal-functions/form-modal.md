@@ -15,7 +15,7 @@ Use {@link useModal useModal()} with Composition API.
 function formModal(callingInstance, options);
 ```
 
-### Parametrar
+### Parameters
 
 `callingInstance`
 : Current component attempting to open confirmation modal. Typically `this`.
@@ -36,6 +36,10 @@ function formModal(callingInstance, options);
 
     `props` {@optional}
     : Optional props to pass to modal.
+
+### Return value
+
+A `Promise` resolving to the form data bound to the `value` prop.
 
 ## Usage
 
