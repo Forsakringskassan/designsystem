@@ -22,6 +22,7 @@ import { FocusOptions as FocusOptions_2 } from '@fkui/logic';
 import { formatNumber } from '@fkui/logic';
 import { formatPersonnummer } from '@fkui/logic';
 import { formatPostalCode } from '@fkui/logic';
+import { InjectionKey } from 'vue';
 import { OrganisationsnummerString } from '@fkui/logic';
 import { parseBankAccountNumber } from '@fkui/logic';
 import { parseBankgiro } from '@fkui/logic';
@@ -875,7 +876,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -1260,7 +1261,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -2153,7 +2154,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -4119,7 +4120,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -5085,7 +5086,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -5770,7 +5771,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -8761,7 +8762,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -10409,7 +10410,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -10957,7 +10958,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -11298,7 +11299,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -11637,7 +11638,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -12041,7 +12042,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -12483,7 +12484,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -12861,7 +12862,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -13248,7 +13249,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -13936,7 +13937,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -14361,7 +14362,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -14674,7 +14675,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -14884,7 +14885,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -15273,7 +15274,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -15602,7 +15603,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -15814,7 +15815,7 @@ type: PropType<string | undefined>;
 required: false;
 default: undefined;
 };
-}>, {}, {
+}>, void, {
 descriptionClass: string[];
 discreteDescriptionClass: string[];
 }, {
@@ -16045,6 +16046,14 @@ rotate: string;
 
 // @public (undocumented)
 export const FTooltip: DefineComponent<ExtractPropTypes<    {
+attachTo: {
+type: {
+new (): HTMLElement;
+prototype: HTMLElement;
+};
+required: false;
+default: null;
+};
 modelValue: {
 type: BooleanConstructor;
 required: false;
@@ -16063,14 +16072,24 @@ default: string;
 required: false;
 validator(value: string): boolean;
 };
-}>, {}, {
+}>, {
+animate: (state: "expand" | "collapse") => void;
+iconTarget: ComputedRef<HTMLElement | null>;
+}, {
 isOpen: boolean;
 }, {
 hasHeader(): boolean;
 }, {
 onClickToggle(): void;
-positionArrow(): void;
 }, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "toggle")[], "update:modelValue" | "toggle", PublicProps, Readonly<ExtractPropTypes<    {
+attachTo: {
+type: {
+new (): HTMLElement;
+prototype: HTMLElement;
+};
+required: false;
+default: null;
+};
 modelValue: {
 type: BooleanConstructor;
 required: false;
@@ -16093,9 +16112,10 @@ validator(value: string): boolean;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onToggle?: ((...args: any[]) => any) | undefined;
 }>, {
+attachTo: HTMLElement;
 modelValue: boolean;
-headerTag: string;
 closeButtonText: string;
+headerTag: string;
 }, {}, {
 FExpand: DefineComponent<    {}, {}, {
 height: number;
@@ -18368,6 +18388,9 @@ export function tableScrollClasses(val: TableScroll): string[];
 
 // @public (undocumented)
 export const TestPlugin: Plugin_2;
+
+// @internal (undocumented)
+export const tooltipAttachTo: InjectionKey<Readonly<ShallowRef<HTMLElement | null>>>;
 
 // @public (undocumented)
 export interface TranslateFunction {

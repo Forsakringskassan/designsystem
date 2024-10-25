@@ -9,6 +9,14 @@ $global: true !default;
 @mixin css-variables {
     @include deprecated-variables;
 
+    --arrow-height: 0px;
+    --arrow-width: 0px;
+    --border-width: 0px;
+    --outer-border: none;
+    --inner-border: none;
+    --tooltip-offset: 0px;
+    --icon-size: 0px;
+
     // ***********
     // TEXT COLORS
     // ***********

@@ -1,87 +1,143 @@
-@use "../../core/size";
-@use "../icon/icon";
-@use "../../core/mixins/arrow-creator";
-@use "../../core/mixins/breakpoints";
-@use "../../core/utils/functions" as *;
+@use "sass:math";
+@use "sass:list";
 
-$TOOLTIP_SELECTOR: ".tooltip" !default;
+$tooltip-background-color: var(--f-background-info);
+$tooltip-border-color: var(--f-tooltip-border-color);
+$tooltip-border-radius: var(--f-border-radius-small);
 
-#{$TOOLTIP_SELECTOR}-before {
-    display: inline-block;
+$tooltip-arrow-width: 20;
+$tooltip-arrow-height: 10;
+$tooltip-border-width: 2;
 
-    &__label {
+/* TDB: document math (to be honest I dont remember specifics but it comes down
+ * to simple triognometry). It also looks awful with SCSS math.div syntax :( */
+$a: math.atan(math.div($tooltip-arrow-width, 2 * $tooltip-arrow-height));
+$b: math.div($tooltip-border-width, math.sin(90deg - $a));
+$c: math.div($tooltip-border-width, math.sin($a));
+
+/* prettier-ignore */
+$outer-border:
+    math.div($tooltip-arrow-width, 2),
+    $tooltip-arrow-height;
+
+/* prettier-ignore */
+$inner-border:
+    math.div(math.round((list.nth($outer-border, 1) - $b) * 10), 10),
+    math.div(math.round((list.nth($outer-border, 2) - $c) * 10), 10);
+
+.tooltip {
+    display: none;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    &.expanded,
+    &.animating {
         display: block;
     }
-}
-
-#{$TOOLTIP_SELECTOR} {
-    display: inline;
-    margin-left: size.$margin-050;
 
     &__container {
-        display: inline;
+        text-wrap: pretty;
+        margin-bottom: calc(0.25rem * var(--f-density-factor));
+
+        &:has(+ .tooltip.expanded),
+        &:has(+ .tooltip.animating) {
+            margin-bottom: 0;
+        }
+
+        .label {
+            display: inline;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            display: inline;
+        }
+
+        &:has(h1) .tooltip__button {
+            --icon-size: 1.5em;
+            margin-left: 0.5em;
+            bottom: 0.2rem;
+        }
+
+        &:has(h2) .tooltip__button {
+            --icon-size: 1.2em;
+            margin-left: 0.5em;
+            bottom: 0;
+        }
     }
 
     &__button {
+        --icon-size: 1em;
+
+        display: inline-flex;
+        appearance: none;
         background: none;
         border: 0;
+        margin: 0 0 0 0.125rem;
+        padding: 0;
         cursor: pointer;
-        font-size: var(--f-font-size-large);
-        padding: 0.125rem;
-        transform: translateY(0.125rem);
-        height: var(--f-icon-size-large);
-        width: var(--f-icon-size-large);
 
-        #{icon.$ICON_SELECTOR}-stack {
-            height: 100%;
-            width: 100%;
-        }
+        /* shift it slightly downwards so it aligns better with text */
+        position: relative;
+        bottom: -0.125em;
 
-        #{icon.$ICON_SELECTOR} {
-            height: 100%;
-            width: 100%;
+        /* bug in icon? */
+        .icon {
+            top: 0;
             left: 0;
         }
+
+        &,
+        .icon,
+        .icon-stack {
+            width: var(--icon-size);
+            height: var(--icon-size);
+        }
     }
 
-    &__arrow {
-        @include arrow-creator.arrow-creator(
-            $background: var(--f-background-info),
-            $border: var(--f-tooltip-border-color),
-            $position: size.$margin-200,
-            $size: size.$margin-075,
-            $up: true,
-            $width: var(--f-tooltip-border-width)
-        );
+    &__body {
+        padding: 1rem 1rem 0;
     }
 
-    /// Content wrapper is placed around everything, i.e.
-    /// arrow, close button, header and body.
-    &__content-wrapper {
-        background-color: var(--f-background-info);
-        border: var(--f-tooltip-border-width) solid var(--f-tooltip-border-color);
-        border-radius: var(--f-border-radius-small);
-        box-sizing: content-box;
-        margin-top: size.$margin-075;
-        margin-bottom: size.$margin-050;
-        position: relative;
-    }
-
-    /// Content is placed around header and body.
-    &__content {
-        margin: densify(size.$margin-100) size.$margin-100 0 size.$margin-100;
-    }
-
-    &__header {
-        align-items: flex-start;
+    &__footer {
         display: flex;
-        font-size: var(--f-font-size-large);
-        font-weight: var(--f-font-weight-bold);
-        line-height: var(--f-line-height-medium);
-        margin-bottom: size.$margin-050;
+        justify-content: flex-end;
     }
 
-    .close-button {
-        margin: var(--f-tooltip-close-button-margin);
+    &__bubble {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: $tooltip-arrow-height * 1px;
+        border: 2px solid $tooltip-border-color;
+        border-radius: $tooltip-border-radius;
+        background-color: $tooltip-background-color;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: clamp(calc(#{$tooltip-arrow-width}px / 2), var(--tooltip-offset), calc(100% - #{$tooltip-arrow-width}px / 2));
+            border-style: solid;
+            border-width: 0 #{list.nth($outer-border, 1)}px #{list.nth($outer-border, 2)}px #{list.nth($outer-border, 1)}px;
+            border-color: transparent transparent $tooltip-border-color;
+            translate: -50% -100%;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: clamp(calc(#{$tooltip-arrow-width}px / 2), var(--tooltip-offset), calc(100% - #{$tooltip-arrow-width}px / 2));
+            border-style: solid;
+            border-width: 0 #{list.nth($inner-border, 1)}px #{list.nth($inner-border, 2)}px #{list.nth($inner-border, 1)}px;
+            border-color: transparent transparent $tooltip-background-color;
+            translate: -50% -100%;
+        }
     }
 }
