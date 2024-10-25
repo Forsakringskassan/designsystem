@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 5.38.0 (2024-10-25)
+
+
+### Features
+
+* **@fkui/vue:** new `useModal()` composable for using modals with composition API (refs SFKUI-6500) a210418
+
 ## 5.37.3 (2024-10-15)
 
 
