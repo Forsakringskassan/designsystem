@@ -7249,6 +7249,7 @@
     setRunningContext: () => setRunningContext,
     sortComponentsWithErrorsOnDOMOrder: () => sortComponentsWithErrorsOnDOMOrder,
     tableScrollClasses: () => tableScrollClasses,
+    useModal: () => useModal,
     useTranslate: () => useTranslate
   });
   var import_es_array_push = __toESM(require_es_array_push(), 1);
@@ -9585,9 +9586,9 @@
     }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
   }
   var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$W]]);
-  async function confirmModal(callingInstance, modalData) {
-    const buttons = [{ label: modalData.confirm, event: "confirm", type: "primary" }, { label: modalData.dismiss, event: "dismiss", type: "secondary" }];
-    const { reason } = await openModal(callingInstance, FConfirmModal, { props: { heading: modalData.heading, content: modalData.content, buttons } });
+  async function confirmModal(callingInstance, texts) {
+    const buttons = [{ label: texts.confirm, event: "confirm", type: "primary" }, { label: texts.dismiss, event: "dismiss", type: "secondary" }];
+    const { reason } = await openModal(callingInstance, FConfirmModal, { props: { heading: texts.heading, content: texts.content, buttons } });
     return reason === "confirm";
   }
   function isVueComponent(element) {
@@ -9620,6 +9621,20 @@
   function hasSlot(vm, name, props = {}, options = {}) {
     const slot = vm.$slots[name];
     return Boolean(renderSlotText(slot, props, options));
+  }
+  function useModal() {
+    const instance = (0, import_vue.getCurrentInstance)();
+    if (!instance) {
+      throw new Error(`useModal(..) used outside component scope`);
+    }
+    const context = { $fkui: instance };
+    return { openModal(component, options) {
+      return openModal(context, component, options);
+    }, confirmModal(texts) {
+      return confirmModal(context, texts);
+    }, formModal(component, options) {
+      return formModal(context, component, options);
+    } };
   }
   function findParentByName(vm, name) {
     let current = vm;

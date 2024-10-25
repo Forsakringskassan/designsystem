@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="sv" class="layout--content-with-menu" data-root-url="../../..">
+<html lang="sv" class="layout--article" data-root-url="../../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>confirmModal - FK Designsystem</title>
+        <title>confirmModal() function - FK Designsystem</title>
 
         <!-- prettier-ignore -->
         <link
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-94e81b.json"
+            href="../../../search-data-fa7e3c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Chtpm//eoBRjpdZ+APfy0ob6+F02m5floVSCivzjfjErql5JbePLUgtfqSPuQKdS"
+            integrity="sha384-O2UYP4IObWuttSo1kpzi3vdV+MgyPOgx3jGIfVm8tCfQC2Zmvbt0m7ytMiT8NHSH"
             id="search-data"
         />
     </head>
@@ -557,7 +557,7 @@
             href="./confirm-modal.html"
             
         >
-            confirmModal
+            confirmModal()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -567,7 +567,7 @@
             href="./form-modal.html"
             
         >
-            formModal
+            formModal()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -623,6 +623,16 @@
             
         >
             tableScrollClasses
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-modal.html"
+            
+        >
+            useModal()
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -861,9 +871,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../../assets/vendor-fkui-vue-c1bdf2.js"
+                    src="../../../assets/vendor-fkui-vue-1f14b8.js"
                     crossorigin
-                    integrity="sha384-I7xvy2hep5UHPRaXqJ3aet/4dodouGb8ucs1PyLgWsFpBXyGMNr7GziZbzzdeJ4O"
+                    integrity="sha384-qWXAjYPcK2tOu4sl0xLowxEGd/zE0DY/83ZkL/+jVRNhvoYw00njtiSxrLTxhbdf"
                 ></script>
                 <script
                     src="../../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -873,52 +883,93 @@
 
                 <!-- prettier-ignore --><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">confirmModal</h1>
+                    <h1 id="title">confirmModal() function</h1>
 
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#syntax">Syntax</a></li>
+                                
+                                <li><a href="#exempel">Exempel</a></li>
+                                
+                                <li><a href="#relaterat">Relaterat</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
                     
 
                     <div id="content">
                         <!-- prettier-ignore -->
-
+<p>Open a <a href="../../../components/modal/fconfirmmodal.html"><code>FConfirmModal</code></a> confirmation modal with given text.</p>
+<p>This is for Vue Options API.
+Use <a href="../use-modal.html">useModal()</a> with Composition API.</p>
+<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-85f80c"
+                    id="example-7f22c9"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> confirmModalObject {
-    <span class="hljs-attr">heading</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">content</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">confirm</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">dismiss</span>: <span class="hljs-built_in">string</span>;
-}
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-params">
-    <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
-    <span class="hljs-attr">modalData</span>: confirmModalObject,
-</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">boolean</span>&gt;;
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-params">callingInstance, texts</span>);
 </code></pre>
                 </div>
-            <p>Provides function for simpler usage of <a href="#/Utilities/open-modal">open-modal</a></p>
-<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
+            <h3 id="parameters"><a class="header-anchor" href="#parameters">Parameters</a></h3><dl>
+<dt><code>callingInstance</code></dt>
+<dd>
+<p>Current component attempting to open confirmation modal. Typically <code>this</code>.</p>
+</dd>
+<dt><code>texts</code></dt>
+<dd>
+<p>Texts to display in modal.</p>
+<dl>
+<dt><code>heading: string</code></dt>
+<dd>Text to display in modal header.</dd>
+<dt><code>content: string</code></dt>
+<dd>Text to display in modal body.</dd>
+<dt><code>confirm: string</code></dt>
+<dd>Text for confirmation button.</dd>
+<dt><code>dismiss: string</code></dt>
+<dd>Text for cancel button.</dd>
+</dl>
+</dd>
+</dl>
+<h3 id="return_value"><a class="header-anchor" href="#return_value">Return value</a></h3><p>A <code>Promise</code> resolving to <code>true</code> if the user confirms the action and <code>false</code> if the user cancels the action.</p>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-e7004c"
+                    id="example-94510d"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0">result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
     <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort arbetsgivare&quot;</span>,
     <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${arbetsgivare.namn}</span>&quot;?`</span>,
     <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
     <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
 });
+<span class="hljs-keyword">if</span> (confirmed) {
+    <span class="hljs-comment">/* ... */</span>
+}
 </code></pre>
                 </div>
-            
+            <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
+<li><a href="../use-modal.html">useModal()</a> for using with composition API.</li>
+</ul>
+
 
                     </div>
                 </main>
@@ -939,9 +990,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/strip-ansi-7.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/644122944558c7ecb398e116ee9ee86e9306981b">6441229</a>)<br />
+    renovate/strip-ansi-7.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/6b0dc113712c4bd136122f40861e9e6cfd5420fb">6b0dc11</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/8">PR 8</a><br />
-        2024-10-25 06:50
+        2024-10-25 07:00
 </div>
 
 
