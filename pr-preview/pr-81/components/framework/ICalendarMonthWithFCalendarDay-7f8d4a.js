@@ -52,7 +52,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_calendar_day = (0, import_vue5.resolveComponent)("f-calendar-day");
     const _component_i_calendar_month = (0, import_vue5.resolveComponent)("i-calendar-month");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_i_calendar_month, {

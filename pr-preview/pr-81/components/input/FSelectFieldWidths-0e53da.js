@@ -39,7 +39,7 @@
       return { foo: "" };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_select_field, {
@@ -49,11 +49,10 @@
       "select-width": "md-6"
     }, {
       label: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-        (0, import_vue5.createTextVNode)("\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi\n            mollis pulvinar.\n        ")
+        (0, import_vue5.createTextVNode)(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi mollis pulvinar. ")
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
-        _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+        _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
           "option",
           {
             disabled: "",
@@ -64,24 +63,21 @@
           -1
           /* HOISTED */
         )),
-        _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
-        _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+        _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
           "option",
           { value: "FOO" },
           "Foo",
           -1
           /* HOISTED */
         )),
-        _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
-        _cache[7] || (_cache[7] = (0, import_vue5.createElementVNode)(
+        _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
           "option",
           { value: "BAR" },
           "Bar",
           -1
           /* HOISTED */
         )),
-        _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
-        _cache[9] || (_cache[9] = (0, import_vue5.createElementVNode)(
+        _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
           "option",
           { value: "BAZ" },
           "Baz",

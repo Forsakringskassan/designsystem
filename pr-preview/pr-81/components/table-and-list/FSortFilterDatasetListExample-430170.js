@@ -74,7 +74,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_list = (0, import_vue5.resolveComponent)("f-list");
     const _component_f_sort_filter_dataset = (0, import_vue5.resolveComponent)("f-sort-filter-dataset");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_sort_filter_dataset, {
@@ -105,9 +105,8 @@
               1
               /* TEXT */
             ),
-            _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)("p", null, [
-              _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)("\n                        Land:\n                        ")),
+              _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)(" Land: ")),
               (0, import_vue5.createElementVNode)(
                 "em",
                 null,
@@ -115,15 +114,14 @@
                 1
                 /* TEXT */
               ),
-              _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
-              _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
+              _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
                 "br",
                 null,
                 null,
                 -1
                 /* HOISTED */
               )),
-              _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)("\n                        Beskrivning:\n                        ")),
+              _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)(" Beskrivning: ")),
               (0, import_vue5.createElementVNode)(
                 "em",
                 null,
@@ -131,8 +129,7 @@
                 1
                 /* TEXT */
               ),
-              _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
-              _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+              _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
                 "br",
                 null,
                 null,

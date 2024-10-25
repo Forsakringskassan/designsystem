@@ -64,7 +64,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -84,7 +84,7 @@
           )
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)("\n            Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'foo'\n            "))
+          _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'foo' "))
         ]),
         _: 1
         /* STABLE */
@@ -102,7 +102,6 @@
           }
         ]
       ]),
-      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
         modelValue: _ctx.modelBar,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.modelBar = $event)
@@ -119,7 +118,7 @@
           )
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)("\n            Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'bar'\n            "))
+          _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'bar' "))
         ]),
         _: 1
         /* STABLE */
@@ -140,7 +139,6 @@
           }
         ]
       ]),
-      _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
         modelValue: _ctx.modelDemo,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.modelDemo = $event)
@@ -157,7 +155,7 @@
           )
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)("\n            Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'demo'\n            "))
+          _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'demo' "))
         ]),
         _: 1
         /* STABLE */

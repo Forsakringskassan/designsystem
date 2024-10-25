@@ -63,7 +63,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_email_text_field = (0, import_vue5.resolveComponent)("f-email-text-field");
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_postal_code_text_field = (0, import_vue5.resolveComponent)("f-postal-code-text-field");
@@ -109,7 +109,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -142,8 +141,7 @@
           _: 1
           /* STABLE */
         }, 8, ["rows"]),
-        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
-        _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
+        _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
           "button",
           {
             class: "button button--primary",

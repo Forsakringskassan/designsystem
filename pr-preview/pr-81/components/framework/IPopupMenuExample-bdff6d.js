@@ -4651,7 +4651,7 @@
       }
     }
   });
-  function render14(_ctx, _cache) {
+  function render14(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_popup_menu = (0, import_vue33.resolveComponent)("i-popup-menu");
     return (0, import_vue33.openBlock)(), (0, import_vue33.createElementBlock)("div", null, [
       (0, import_vue33.createElementVNode)(
@@ -4665,11 +4665,10 @@
           onKeyup: _cache[1] || (_cache[1] = (...args) => _ctx.onKeyUp && _ctx.onKeyUp(...args)),
           onKeydown: _cache[2] || (_cache[2] = (...args) => _ctx.onKeyDown && _ctx.onKeyDown(...args))
         },
-        "\n            \xD6ppna popupmeny\n        ",
+        " \xD6ppna popupmeny ",
         544
         /* NEED_HYDRATION, NEED_PATCH */
       ),
-      _cache[5] || (_cache[5] = (0, import_vue33.createTextVNode)()),
       (0, import_vue33.createVNode)(_component_i_popup_menu, {
         id: "popup-menu",
         modelValue: _ctx.selectedItem,
@@ -4682,7 +4681,6 @@
         "enable-keyboard-navigation": "",
         onClose: _ctx.onClose
       }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "onClose"]),
-      _cache[6] || (_cache[6] = (0, import_vue33.createTextVNode)()),
       (0, import_vue33.createElementVNode)(
         "pre",
         null,

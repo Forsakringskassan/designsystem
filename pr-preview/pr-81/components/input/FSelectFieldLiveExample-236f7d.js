@@ -131,7 +131,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _component_live_example = (0, import_vue5.resolveComponent)("live-example");
@@ -152,7 +152,6 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isDisabled,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isDisabled = $event),
@@ -164,25 +163,22 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_fieldset, { name: "SelectField-label" }, {
           label: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
             (0, import_vue5.createTextVNode)(" Etiketten ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.descriptionVisible,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.descriptionVisible = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
-                (0, import_vue5.createTextVNode)("\n                Hj\xE4lptext\n            ")
+                (0, import_vue5.createTextVNode)(" Hj\xE4lptext ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.tooltipVisible,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.tooltipVisible = $event),
@@ -194,7 +190,6 @@
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.showInline,
               "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.showInline = $event),

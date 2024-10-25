@@ -44,7 +44,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_navbar = (0, import_vue5.resolveComponent)("i-calendar-navbar");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_i_calendar_navbar, {
       modelValue: _ctx.month,

@@ -54,13 +54,13 @@
     type: "button",
     class: "button button--tertiary button--medium file-item__file-remove"
   };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     const _component_f_progressbar = (0, import_vue5.resolveComponent)("f-progressbar");
     const _component_f_file_item = (0, import_vue5.resolveComponent)("f-file-item");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createElementVNode)("label", null, [
-        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)("\n            Progress:\n            \n            ")),
+        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)(" Progress: ")),
         (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
           "input",
           {
@@ -82,7 +82,6 @@
           ]
         ])
       ]),
-      _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_file_item, {
         "file-name": _ctx.fileName,
         "mime-type": _ctx.mimeType
@@ -93,8 +92,7 @@
               name: "close",
               class: "button__icon"
             }),
-            _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
-            _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
+            _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
               "span",
               null,
               " Avbryt uppladdning ",
@@ -106,11 +104,10 @@
               name: "trashcan",
               class: "button__icon"
             }),
-            _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)("\n                    Ta bort\n                "))
+            _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)(" Ta bort "))
           ])) : (0, import_vue5.createCommentVNode)("v-if", true)
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
           _ctx.progress < 100 ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_progressbar, {
             key: 0,
             "aria-label": "progress",

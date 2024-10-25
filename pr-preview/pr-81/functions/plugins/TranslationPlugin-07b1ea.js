@@ -35,7 +35,7 @@
   var exampleComponent = (0, import_vue3.defineComponent)({
     mixins: [import_vue4.TranslationMixin]
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)(
       "p",
       null,

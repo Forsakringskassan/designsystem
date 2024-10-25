@@ -42,7 +42,7 @@
     }
   });
   var _hoisted_1 = { key: 0 };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_expand = (0, import_vue5.resolveComponent)("f-expand");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createVNode)(_component_f_expand, null, {
@@ -52,7 +52,6 @@
         _: 1
         /* STABLE */
       }),
-      _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "button",
         {

@@ -64,7 +64,7 @@
   });
   var _hoisted_1 = { class: "container-fluid" };
   var _hoisted_2 = ["id", "onClick"];
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_layout_right_panel = (0, import_vue5.resolveComponent)("f-layout-right-panel");
     const _component_f_layout_left_panel = (0, import_vue5.resolveComponent)("f-layout-left-panel");
     const _component_f_layout_application_template = (0, import_vue5.resolveComponent)("f-layout-application-template");
@@ -91,7 +91,7 @@
           /* HOISTED */
         )
       ])),
-      footer: (0, import_vue5.withCtx)(() => _cache[14] || (_cache[14] = [
+      footer: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
         (0, import_vue5.createElementVNode)(
           "div",
           { style: { "background-color": "green", "color": "white", "text-align": "center" } },
@@ -103,8 +103,6 @@
         )
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
-        _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_layout_left_panel, null, {
           heading: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createElementVNode)(
@@ -137,31 +135,28 @@
                   1
                   /* TEXT */
                 ),
-                _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
                 (0, import_vue5.createElementVNode)("button", {
                   class: "button button--primary",
                   type: "button",
                   onClick: _cache[0] || (_cache[0] = ($event) => _ctx.closePanel())
-                }, "\n                            St\xE4ng\n                        ")
+                }, " St\xE4ng ")
               ]),
               default: (0, import_vue5.withCtx)(() => [
                 (0, import_vue5.createElementVNode)("div", _hoisted_1, [
-                  _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
+                  _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
                     "h1",
                     null,
                     "Prim\xE4ryta",
                     -1
                     /* HOISTED */
                   )),
-                  _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)()),
-                  _cache[8] || (_cache[8] = (0, import_vue5.createElementVNode)(
+                  _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
                     "p",
                     null,
                     "Klicka nedan f\xF6r att se mer i sekund\xE4rpanelen.",
                     -1
                     /* HOISTED */
                   )),
-                  _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
                   (0, import_vue5.createElementVNode)("ul", null, [
                     ((0, import_vue5.openBlock)(true), (0, import_vue5.createElementBlock)(
                       import_vue5.Fragment,
@@ -190,8 +185,7 @@
           ]),
           _: 1
           /* STABLE */
-        }),
-        _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)())
+        })
       ]),
       _: 1
       /* STABLE */

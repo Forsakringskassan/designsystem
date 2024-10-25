@@ -196,7 +196,7 @@
     },
     methods: {}
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
@@ -215,104 +215,91 @@
             (0, import_vue5.createTextVNode)(" Typ ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
-            _cache[13] || (_cache[13] = (0, import_vue5.createElementVNode)(
+            _cache[12] || (_cache[12] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-text-field" },
               "Fritext",
               -1
               /* HOISTED */
             )),
-            _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)()),
-            _cache[15] || (_cache[15] = (0, import_vue5.createElementVNode)(
+            _cache[13] || (_cache[13] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-clearingnumber-text-field" },
               "Clearingnummer",
               -1
               /* HOISTED */
             )),
-            _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
-            _cache[17] || (_cache[17] = (0, import_vue5.createElementVNode)(
+            _cache[14] || (_cache[14] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-bank-account-number-text-field" },
               "Kontonummer",
               -1
               /* HOISTED */
             )),
-            _cache[18] || (_cache[18] = (0, import_vue5.createTextVNode)()),
-            _cache[19] || (_cache[19] = (0, import_vue5.createElementVNode)(
+            _cache[15] || (_cache[15] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-email-text-field" },
               "Mejladress",
               -1
               /* HOISTED */
             )),
-            _cache[20] || (_cache[20] = (0, import_vue5.createTextVNode)()),
-            _cache[21] || (_cache[21] = (0, import_vue5.createElementVNode)(
+            _cache[16] || (_cache[16] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-numeric-text-field" },
               "Numeriskt",
               -1
               /* HOISTED */
             )),
-            _cache[22] || (_cache[22] = (0, import_vue5.createTextVNode)()),
-            _cache[23] || (_cache[23] = (0, import_vue5.createElementVNode)(
+            _cache[17] || (_cache[17] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-organisationsnummer-text-field" },
               "Organisationsnummer",
               -1
               /* HOISTED */
             )),
-            _cache[24] || (_cache[24] = (0, import_vue5.createTextVNode)()),
-            _cache[25] || (_cache[25] = (0, import_vue5.createElementVNode)(
+            _cache[18] || (_cache[18] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-personnummer-text-field" },
               "Personnummer",
               -1
               /* HOISTED */
             )),
-            _cache[26] || (_cache[26] = (0, import_vue5.createTextVNode)()),
-            _cache[27] || (_cache[27] = (0, import_vue5.createElementVNode)(
+            _cache[19] || (_cache[19] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-plusgiro-text-field" },
               "Plusgiro",
               -1
               /* HOISTED */
             )),
-            _cache[28] || (_cache[28] = (0, import_vue5.createTextVNode)()),
-            _cache[29] || (_cache[29] = (0, import_vue5.createElementVNode)(
+            _cache[20] || (_cache[20] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-postal-code-text-field" },
               "Postnummer",
               -1
               /* HOISTED */
             )),
-            _cache[30] || (_cache[30] = (0, import_vue5.createTextVNode)()),
-            _cache[31] || (_cache[31] = (0, import_vue5.createElementVNode)(
+            _cache[21] || (_cache[21] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-percent-text-field" },
               "Procent",
               -1
               /* HOISTED */
             )),
-            _cache[32] || (_cache[32] = (0, import_vue5.createTextVNode)()),
-            _cache[33] || (_cache[33] = (0, import_vue5.createElementVNode)(
+            _cache[22] || (_cache[22] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-phone-text-field" },
               "Telefonnummer",
               -1
               /* HOISTED */
             )),
-            _cache[34] || (_cache[34] = (0, import_vue5.createTextVNode)()),
-            _cache[35] || (_cache[35] = (0, import_vue5.createElementVNode)(
+            _cache[23] || (_cache[23] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-currency-text-field" },
               "Valuta",
               -1
               /* HOISTED */
             )),
-            _cache[36] || (_cache[36] = (0, import_vue5.createTextVNode)()),
-            _cache[37] || (_cache[37] = (0, import_vue5.createElementVNode)(
+            _cache[24] || (_cache[24] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "f-search-text-field" },
               "S\xF6kf\xE4lt",
@@ -323,26 +310,23 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[58] || (_cache[58] = (0, import_vue5.createTextVNode)()),
         _ctx.isTextfieldOrNumeric ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_select_field, {
           key: 0,
           modelValue: _ctx.maxLength,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.maxLength = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => _cache[38] || (_cache[38] = [
+          label: (0, import_vue5.withCtx)(() => _cache[25] || (_cache[25] = [
             (0, import_vue5.createTextVNode)(" Max antal tecken ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[39] || (_cache[39] = (0, import_vue5.createTextVNode)()),
-            _cache[40] || (_cache[40] = (0, import_vue5.createElementVNode)(
+            _cache[26] || (_cache[26] = (0, import_vue5.createElementVNode)(
               "option",
               { value: 0 },
               "Ingen gr\xE4ns",
               -1
               /* HOISTED */
             )),
-            _cache[41] || (_cache[41] = (0, import_vue5.createTextVNode)()),
-            _cache[42] || (_cache[42] = (0, import_vue5.createElementVNode)(
+            _cache[27] || (_cache[27] = (0, import_vue5.createElementVNode)(
               "option",
               { value: 20 },
               "Exempel: 20 tecken",
@@ -353,123 +337,113 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-        _cache[59] || (_cache[59] = (0, import_vue5.createTextVNode)()),
         _ctx.isTextfieldOrNumeric ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_checkbox_field, {
           key: 1,
           modelValue: _ctx.isWhitelist,
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.isWhitelist = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[43] || (_cache[43] = [
-            (0, import_vue5.createTextVNode)("\n            Begr\xE4nsa till\xE5tna tecken med whitelist-validatorn\n        ")
+          default: (0, import_vue5.withCtx)(() => _cache[28] || (_cache[28] = [
+            (0, import_vue5.createTextVNode)(" Begr\xE4nsa till\xE5tna tecken med whitelist-validatorn ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-        _cache[60] || (_cache[60] = (0, import_vue5.createTextVNode)()),
         !_ctx.isClearable ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_checkbox_field, {
           key: 2,
           modelValue: _ctx.isRequired,
           "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.isRequired = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[44] || (_cache[44] = [
-            (0, import_vue5.createTextVNode)("\n            Obligatorisk f\xE4lt\n        ")
+          default: (0, import_vue5.withCtx)(() => _cache[29] || (_cache[29] = [
+            (0, import_vue5.createTextVNode)(" Obligatorisk f\xE4lt ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-        _cache[61] || (_cache[61] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isDisabled,
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isDisabled = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[45] || (_cache[45] = [
+          default: (0, import_vue5.withCtx)(() => _cache[30] || (_cache[30] = [
             (0, import_vue5.createTextVNode)(" Inaktivt f\xE4lt ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[62] || (_cache[62] = (0, import_vue5.createTextVNode)()),
         _ctx.showAppendInner ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_checkbox_field, {
           key: 3,
           modelValue: _ctx.appendInnerVisible,
           "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.appendInnerVisible = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[46] || (_cache[46] = [
-            (0, import_vue5.createTextVNode)("\n            Inneh\xE5ll i inmatningsf\xE4lt\n        ")
+          default: (0, import_vue5.withCtx)(() => _cache[31] || (_cache[31] = [
+            (0, import_vue5.createTextVNode)(" Inneh\xE5ll i inmatningsf\xE4lt ")
           ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-        _cache[63] || (_cache[63] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_fieldset, { name: "etikett" }, {
-          label: (0, import_vue5.withCtx)(() => _cache[47] || (_cache[47] = [
+          label: (0, import_vue5.withCtx)(() => _cache[32] || (_cache[32] = [
             (0, import_vue5.createTextVNode)(" Etiketten ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[53] || (_cache[53] = (0, import_vue5.createTextVNode)()),
             _ctx.supportDescription ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_checkbox_field, {
               key: 0,
               modelValue: _ctx.descriptionVisible,
               "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.descriptionVisible = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => _cache[48] || (_cache[48] = [
-                (0, import_vue5.createTextVNode)("\n                Hj\xE4lptext\n            ")
+              default: (0, import_vue5.withCtx)(() => _cache[33] || (_cache[33] = [
+                (0, import_vue5.createTextVNode)(" Hj\xE4lptext ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-            _cache[54] || (_cache[54] = (0, import_vue5.createTextVNode)()),
             _ctx.supportDescription ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_checkbox_field, {
               key: 1,
               modelValue: _ctx.discreteDescriptionVisible,
               "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.discreteDescriptionVisible = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => _cache[49] || (_cache[49] = [
-                (0, import_vue5.createTextVNode)("\n                Formatbeskrivning\n            ")
+              default: (0, import_vue5.withCtx)(() => _cache[34] || (_cache[34] = [
+                (0, import_vue5.createTextVNode)(" Formatbeskrivning ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-            _cache[55] || (_cache[55] = (0, import_vue5.createTextVNode)()),
             !_ctx.isEmail ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_checkbox_field, {
               key: 2,
               modelValue: _ctx.tooltipVisible,
               "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.tooltipVisible = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => _cache[50] || (_cache[50] = [
-                (0, import_vue5.createTextVNode)("\n                Tooltip\n            ")
+              default: (0, import_vue5.withCtx)(() => _cache[35] || (_cache[35] = [
+                (0, import_vue5.createTextVNode)(" Tooltip ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-            _cache[56] || (_cache[56] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
               modelValue: _ctx.isInline,
               "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.isInline = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => _cache[51] || (_cache[51] = [
+              default: (0, import_vue5.withCtx)(() => _cache[36] || (_cache[36] = [
                 (0, import_vue5.createTextVNode)(" Inline ")
               ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[57] || (_cache[57] = (0, import_vue5.createTextVNode)()),
             !_ctx.isTextfieldOrNumeric ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_checkbox_field, {
               key: 3,
               modelValue: _ctx.customLabel,
               "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => _ctx.customLabel = $event),
               value: true
             }, {
-              default: (0, import_vue5.withCtx)(() => _cache[52] || (_cache[52] = [
-                (0, import_vue5.createTextVNode)("\n                Annan etikett\n            ")
+              default: (0, import_vue5.withCtx)(() => _cache[37] || (_cache[37] = [
+                (0, import_vue5.createTextVNode)(" Annan etikett ")
               ])),
               _: 1
               /* STABLE */

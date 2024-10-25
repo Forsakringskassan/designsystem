@@ -50,7 +50,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_expandable_panel = (0, import_vue5.resolveComponent)("f-expandable-panel");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createVNode)(_component_f_expandable_panel, {
@@ -67,16 +67,15 @@
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
-      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_expandable_panel, {
         expanded: _ctx.expanded2,
         notifications: 2,
         onToggle: _ctx.onToggle2
       }, {
-        title: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+        title: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Titel med tv\xE5 notifieringar ")
         ])),
-        default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
+        default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createTextVNode)(" Inneh\xE5ll ")
         ])),
         _: 1

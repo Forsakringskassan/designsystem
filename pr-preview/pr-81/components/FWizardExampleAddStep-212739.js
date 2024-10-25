@@ -82,7 +82,7 @@
   });
   var _hoisted_1 = ["onClick"];
   var _hoisted_2 = { style: { "margin-top": "30px" } };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     const _component_f_wizard_step = (0, import_vue5.resolveComponent)("f-wizard-step");
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
@@ -113,7 +113,6 @@
                 -1
                 /* HOISTED */
               )),
-              _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
               (0, import_vue5.createElementVNode)("button", {
                 type: "button",
                 class: "button button--discrete",
@@ -123,7 +122,7 @@
                   class: "button__icon",
                   name: "plus"
                 }),
-                _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)(" L\xE4gg till fruktkorg\n                "))
+                _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)(" L\xE4gg till fruktkorg "))
               ])
             ]),
             _: 1
@@ -131,7 +130,6 @@
           })), [
             [_directive_test, "myOrderStep"]
           ]),
-          _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
           ((0, import_vue5.openBlock)(true), (0, import_vue5.createElementBlock)(
             import_vue5.Fragment,
             null,
@@ -146,8 +144,8 @@
                     modelValue: item.namn,
                     "onUpdate:modelValue": ($event) => item.namn = $event
                   }, {
-                    default: (0, import_vue5.withCtx)(() => [..._cache[6] || (_cache[6] = [
-                      (0, import_vue5.createTextVNode)("\n                    Namn p\xE5 presentkort\n                ")
+                    default: (0, import_vue5.withCtx)(() => [..._cache[5] || (_cache[5] = [
+                      (0, import_vue5.createTextVNode)(" Namn p\xE5 presentkort ")
                     ])]),
                     _: 2
                     /* DYNAMIC */
@@ -162,16 +160,14 @@
                       }
                     ]
                   ]),
-                  _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
                   (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(
                     _component_f_fieldset,
                     { id: "frukt-checkbox-group" },
                     {
-                      label: (0, import_vue5.withCtx)(() => [..._cache[7] || (_cache[7] = [
+                      label: (0, import_vue5.withCtx)(() => [..._cache[6] || (_cache[6] = [
                         (0, import_vue5.createTextVNode)(" Vad ska ing\xE5 i din fruktkorg? ")
                       ])]),
                       default: (0, import_vue5.withCtx)(() => [
-                        _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
                         ((0, import_vue5.openBlock)(true), (0, import_vue5.createElementBlock)(
                           import_vue5.Fragment,
                           null,
@@ -210,14 +206,13 @@
                       { required: true }
                     ]
                   ]),
-                  _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
                   (0, import_vue5.createElementVNode)("button", {
                     type: "button",
                     class: "button button--discrete",
                     onClick: ($event) => _ctx.removeBasket(item)
                   }, [
                     (0, import_vue5.createVNode)(_component_f_icon, { name: "trashcan" }),
-                    _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)(" Ta bort fruktkorg\n                "))
+                    _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)(" Ta bort fruktkorg "))
                   ], 8, _hoisted_1)
                 ]),
                 _: 2
@@ -227,13 +222,12 @@
             128
             /* KEYED_FRAGMENT */
           )),
-          _cache[14] || (_cache[14] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_wizard_step, {
             key: "baz",
             title: "Mina uppgifter",
             onBeforeNext: _ctx.onBeforeNext
           }, {
-            default: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
+            default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
               (0, import_vue5.createElementVNode)(
                 "p",
                 null,
@@ -251,15 +245,13 @@
         _: 1
         /* STABLE */
       }, 8, ["modelValue", "onCompleted", "onCancel"]),
-      _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("p", _hoisted_2, [
-        _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)("\n            Ett steg kan \xF6ppnas programatiskt, t.ex. man klickar '\xE4ndra' i ett granska-steg.\n            ")),
+        _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)(" Ett steg kan \xF6ppnas programatiskt, t.ex. man klickar '\xE4ndra' i ett granska-steg. ")),
         (0, import_vue5.createElementVNode)("button", {
           type: "button",
           onClick: _cache[2] || (_cache[2] = ($event) => _ctx.current = "baz")
         }, "\xD6ppna sista steget")
       ]),
-      _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,

@@ -36,11 +36,11 @@
     name: "FFileSelectorEnabled",
     components: { FFileSelector: import_vue4.FFileSelector }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_file_selector = (0, import_vue5.resolveComponent)("f-file-selector");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_file_selector, { accept: "application/pdf, image/jpeg, image/tiff, image/png" }, {
       default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
-        (0, import_vue5.createTextVNode)("\n        L\xE4gg till fil\n    ")
+        (0, import_vue5.createTextVNode)(" L\xE4gg till fil ")
       ])),
       _: 1
       /* STABLE */

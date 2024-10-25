@@ -82,7 +82,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_crud_button = (0, import_vue5.resolveComponent)("f-crud-button");
     const _component_f_interactive_table = (0, import_vue5.resolveComponent)("f-interactive-table");
@@ -134,7 +134,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -157,7 +156,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -180,7 +178,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -196,7 +193,6 @@
                     item: row,
                     icon: ""
                   }, null, 8, ["item"]),
-                  _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
                   (0, import_vue5.createVNode)(_component_f_crud_button, {
                     action: "delete",
                     item: row,
@@ -220,8 +216,8 @@
           "onUpdate:modelValue": ($event) => item.name = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
-            (0, import_vue5.createTextVNode)("\n                Namn\n            ")
+          default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+            (0, import_vue5.createTextVNode)(" Namn ")
           ])),
           _: 2
           /* DYNAMIC */
@@ -236,14 +232,13 @@
             }
           ]
         ]),
-        _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
           modelValue: item.origin,
           "onUpdate:modelValue": ($event) => item.origin = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
-            (0, import_vue5.createTextVNode)("\n                Land\n            ")
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+            (0, import_vue5.createTextVNode)(" Land ")
           ])),
           _: 2
           /* DYNAMIC */
@@ -258,13 +253,12 @@
             }
           ]
         ]),
-        _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_textarea_field, {
           modelValue: item.description,
           "onUpdate:modelValue": ($event) => item.description = $event
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
-            (0, import_vue5.createTextVNode)("\n                Beskrivning\n            ")
+          default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
+            (0, import_vue5.createTextVNode)(" Beskrivning ")
           ])),
           _: 2
           /* DYNAMIC */
@@ -277,7 +271,7 @@
           ]
         ]),
         (0, import_vue5.createTextVNode)(
-          "\n            ID " + (0, import_vue5.toDisplayString)(item.id),
+          " ID " + (0, import_vue5.toDisplayString)(item.id),
           1
           /* TEXT */
         )
@@ -288,8 +282,8 @@
           "onUpdate:modelValue": ($event) => item.id = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
-            (0, import_vue5.createTextVNode)("\n                ID\n            ")
+          default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
+            (0, import_vue5.createTextVNode)(" ID ")
           ])),
           _: 2
           /* DYNAMIC */
@@ -304,14 +298,13 @@
             }
           ]
         ]),
-        _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
           modelValue: item.name,
           "onUpdate:modelValue": ($event) => item.name = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[13] || (_cache[13] = [
-            (0, import_vue5.createTextVNode)("\n                Namn\n            ")
+          default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
+            (0, import_vue5.createTextVNode)(" Namn ")
           ])),
           _: 2
           /* DYNAMIC */
@@ -326,14 +319,13 @@
             }
           ]
         ]),
-        _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
           modelValue: item.origin,
           "onUpdate:modelValue": ($event) => item.origin = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[14] || (_cache[14] = [
-            (0, import_vue5.createTextVNode)("\n                Land\n            ")
+          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
+            (0, import_vue5.createTextVNode)(" Land ")
           ])),
           _: 2
           /* DYNAMIC */
@@ -348,13 +340,12 @@
             }
           ]
         ]),
-        _cache[18] || (_cache[18] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_textarea_field, {
           modelValue: item.description,
           "onUpdate:modelValue": ($event) => item.description = $event
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[15] || (_cache[15] = [
-            (0, import_vue5.createTextVNode)("\n                Beskrivning\n            ")
+          default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
+            (0, import_vue5.createTextVNode)(" Beskrivning ")
           ])),
           _: 2
           /* DYNAMIC */
@@ -369,7 +360,7 @@
       ]),
       delete: (0, import_vue5.withCtx)(({ item }) => [
         (0, import_vue5.createTextVNode)(
-          '\n            Vill du verkligen radera fruken "' + (0, import_vue5.toDisplayString)(item.name) + '" med ID ' + (0, import_vue5.toDisplayString)(item.id),
+          ' Vill du verkligen radera fruken "' + (0, import_vue5.toDisplayString)(item.name) + '" med ID ' + (0, import_vue5.toDisplayString)(item.id),
           1
           /* TEXT */
         )

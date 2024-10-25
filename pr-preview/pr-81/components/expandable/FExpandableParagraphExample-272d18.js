@@ -47,7 +47,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_expandable_paragraph = (0, import_vue5.resolveComponent)("f-expandable-paragraph");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_expandable_paragraph, {
       expanded: _ctx.expanded,
@@ -65,7 +65,6 @@
           -1
           /* HOISTED */
         ),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createElementVNode)(
           "p",
           null,

@@ -72,7 +72,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
@@ -87,7 +87,6 @@
             (0, import_vue5.createTextVNode)(" Typ ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.messageType,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.messageType = $event),
@@ -99,7 +98,6 @@
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.messageType,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.messageType = $event),
@@ -111,7 +109,6 @@
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[12] || (_cache[12] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.messageType,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.messageType = $event),
@@ -123,14 +120,13 @@
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.messageType,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.messageType = $event),
               value: "success"
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
-                (0, import_vue5.createTextVNode)("\n                Positiv \xE5terkoppling\n            ")
+                (0, import_vue5.createTextVNode)(" Positiv \xE5terkoppling ")
               ])),
               _: 1
               /* STABLE */
@@ -139,13 +135,12 @@
           _: 1
           /* STABLE */
         }),
-        _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.shortLayout,
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.shortLayout = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[14] || (_cache[14] = [
+          default: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
             (0, import_vue5.createTextVNode)(" Kort meddelande ")
           ])),
           _: 1

@@ -208,15 +208,14 @@
   var _hoisted_1 = { class: "f-form-modal-example" };
   var _hoisted_2 = { key: 0 };
   var _hoisted_3 = { id: "api-result" };
-  function render2(_ctx, _cache) {
+  function render2(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", _hoisted_1, [
       (0, import_vue8.createElementVNode)("button", {
         "data-test": "form-modal-api-example-button",
         type: "button",
         class: "button button--secondary",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
-      }, "\n            \xD6ppna Modal\n        "),
-      _cache[3] || (_cache[3] = (0, import_vue8.createTextVNode)()),
+      }, " \xD6ppna Modal "),
       _ctx.result ? ((0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", _hoisted_2, [
         _cache[1] || (_cache[1] = (0, import_vue8.createElementVNode)(
           "pre",
@@ -225,7 +224,6 @@
           -1
           /* HOISTED */
         )),
-        _cache[2] || (_cache[2] = (0, import_vue8.createTextVNode)()),
         (0, import_vue8.createElementVNode)(
           "pre",
           _hoisted_3,

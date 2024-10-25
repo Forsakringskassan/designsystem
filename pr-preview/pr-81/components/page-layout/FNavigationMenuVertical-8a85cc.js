@@ -48,7 +48,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_navigation_menu = (0, import_vue5.resolveComponent)("f-navigation-menu");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createElementVNode)(
@@ -58,7 +58,6 @@
         1
         /* TEXT */
       ),
-      _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_navigation_menu, {
         vertical: "",
         routes: _ctx.routes,

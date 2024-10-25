@@ -79,7 +79,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
@@ -95,7 +95,6 @@
             (0, import_vue5.createTextVNode)(" Typ av l\xE4nk ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.linkType,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.linkType = $event),
@@ -107,7 +106,6 @@
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.linkType,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.linkType = $event),
@@ -119,7 +117,6 @@
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            _cache[11] || (_cache[11] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.linkType,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.linkType = $event),
@@ -135,34 +132,30 @@
           _: 1
           /* STABLE */
         }),
-        _cache[20] || (_cache[20] = (0, import_vue5.createTextVNode)()),
         _ctx.isDocument ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_select_field, {
           key: 0,
           modelValue: _ctx.fileType,
           "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.fileType = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
+          label: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
             (0, import_vue5.createTextVNode)(" Filtyp ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
-            _cache[14] || (_cache[14] = (0, import_vue5.createElementVNode)(
+            _cache[10] || (_cache[10] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "pdf" },
               "PDF",
               -1
               /* HOISTED */
             )),
-            _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
-            _cache[16] || (_cache[16] = (0, import_vue5.createElementVNode)(
+            _cache[11] || (_cache[11] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "doc" },
               "Doc",
               -1
               /* HOISTED */
             )),
-            _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)()),
-            _cache[18] || (_cache[18] = (0, import_vue5.createElementVNode)(
+            _cache[12] || (_cache[12] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "pic" },
               "Bild",
@@ -173,13 +166,12 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-        _cache[21] || (_cache[21] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isDiscrete,
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isDiscrete = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[19] || (_cache[19] = [
+          default: (0, import_vue5.withCtx)(() => _cache[13] || (_cache[13] = [
             (0, import_vue5.createTextVNode)(" Diskret l\xE4nk ")
           ])),
           _: 1

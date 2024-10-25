@@ -36,7 +36,7 @@
     name: "IFlexExample",
     components: { FIcon: import_vue4.FIcon, IFlex: import_vue4.IFlex, IFlexItem: import_vue4.IFlexItem }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue5.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue5.resolveComponent)("i-flex");
@@ -56,7 +56,6 @@
             _: 1
             /* STABLE */
           }),
-          _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createVNode)(_component_i_flex_item, { grow: "" }, {
             default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
               (0, import_vue5.createElementVNode)(
