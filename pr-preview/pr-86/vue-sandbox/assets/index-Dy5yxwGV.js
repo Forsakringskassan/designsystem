@@ -20423,7 +20423,7 @@ function useOffset(options) {
     if (!wrapper2.value) {
       return;
     }
-    wrapper2.value.style.setProperty("--tooltip-offset", `${offset2.value}px`);
+    wrapper2.value.style.setProperty("--f-tooltip-offset", `${offset2.value}px`);
   });
   return { animate, iconTarget };
 }, data() {

@@ -2830,8 +2830,6 @@ input[type=search]:focus,
   }
 }
 
-/* TDB: document math (to be honest I dont remember specifics but it comes down
- * to simple triognometry). It also looks awful with SCSS math.div syntax :( */
 /* prettier-ignore */
 /* prettier-ignore */
 .tooltip {
@@ -2862,17 +2860,17 @@ input[type=search]:focus,
   display: inline;
 }
 .tooltip__container:has(h1) .tooltip__button {
-  --icon-size: 1.5em;
+  --f-tooltip-icon-size: 1.5em;
   margin-left: 0.5em;
   bottom: 0.2rem;
 }
 .tooltip__container:has(h2) .tooltip__button {
-  --icon-size: 1.2em;
+  --f-tooltip-icon-size: 1.2em;
   margin-left: 0.5em;
   bottom: 0;
 }
 .tooltip__button {
-  --icon-size: 1em;
+  --f-tooltip-icon-size: 1em;
   display: inline-flex;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -2894,8 +2892,8 @@ input[type=search]:focus,
 .tooltip__button,
 .tooltip__button .icon,
 .tooltip__button .icon-stack {
-  width: var(--icon-size, 0px);
-  height: var(--icon-size, 0px);
+  width: var(--f-tooltip-icon-size, 0px);
+  height: var(--f-tooltip-icon-size, 0px);
 }
 .tooltip__body {
   padding: 1rem 1rem 0;
@@ -2917,7 +2915,7 @@ input[type=search]:focus,
   content: "";
   position: absolute;
   top: 0;
-  left: clamp(20px / 2, var(--tooltip-offset, 0px), 100% - 20px / 2);
+  left: clamp(20px / 2, var(--f-tooltip-offset, 0px), 100% - 20px / 2);
   border-style: solid;
   border-width: 0 10px 10px 10px;
   border-color: transparent transparent var(--f-tooltip-border-color, #8d8e91);
@@ -2927,7 +2925,7 @@ input[type=search]:focus,
   content: "";
   position: absolute;
   top: 0;
-  left: clamp(20px / 2, var(--tooltip-offset, 0px), 100% - 20px / 2);
+  left: clamp(20px / 2, var(--f-tooltip-offset, 0px), 100% - 20px / 2);
   border-style: solid;
   border-width: 0 7.2px 7.2px 7.2px;
   border-color: transparent transparent var(--f-background-info, #f5f6fa);

@@ -87,13 +87,6 @@
   --f-button-discrete-black-padding: initial;
   --f-button-discrete-table-column-action-padding: 0.571rem;
   --f-tooltip-close-button-padding: initial;
-  --arrow-height: 0px;
-  --arrow-width: 0px;
-  --border-width: 0px;
-  --outer-border: none;
-  --inner-border: none;
-  --tooltip-offset: 0px;
-  --icon-size: 0px;
   --f-text-color-default: #1b1e23;
   --f-text-color-default-inverted: #ffffff;
   --f-text-color-discrete: #5f6165;
@@ -391,4 +384,6 @@
   --f-table-body-row-padding: 0.5rem;
   --f-list-item-itempane-padding: 1.25rem;
   --i-popup-error-offset: 24px;
+  --f-tooltip-offset: 0px;
+  --f-tooltip-icon-size: 0px;
 }

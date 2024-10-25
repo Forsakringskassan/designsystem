@@ -1,31 +1,31 @@
 <!doctype html>
-<html lang="sv" class="layout--content-with-menu" data-root-url="../../..">
+<html lang="sv" class="layout--article" data-root-url="../../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>confirmModal - FK Designsystem</title>
+        <title>confirmModal() function - FK Designsystem</title>
 
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-1db866.css"
+            href="../../../assets/docs-f6a274.css"
             crossorigin
-            integrity="sha384-RHpYmmg7OoVam7dJw3nb9RVJcLLhRRfnwtOjO6cs4KwGZ+yduLDmXYu39fu3htvL"
+            integrity="sha384-+pwcg/u2W43gYXugFD2DpihpGzmfiGUO1GYI2NJvaaAzbIxgHxaNNK1qXVhm6izp"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-exp-2f97a7.css"
+            href="../../../assets/docs-exp-3df01b.css"
             crossorigin
-            integrity="sha384-begu87+o3x2To/R7QE4HkwZNXkb0hl6nEq7w3p4BSwDpOoQNEMkUeNNvj8V1S5lk"
+            integrity="sha384-DWoArOZr63vUo4dNxcocaEtPVqYpyI49IF+yU/8/4Y1/a8zKyYnwQ27ni868Ny0z"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-int-39cdf8.css"
+            href="../../../assets/docs-int-2a09bd.css"
             crossorigin
-            integrity="sha384-L+kJmmBYOwB2UwKZ2RQHpqERZz2+RrH1bSqaqY8tdjm0hOfIut8NcL70g7Jrx2c7"
+            integrity="sha384-uJnW4KDTQGB5l5ZM2d1zbfqh3IPl5VBkqFPfOFF7DBiZmV8svb+UpSEmkC8eEnHk"
             data-theme="int" disabled
         />
 
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-94e81b.json"
+            href="../../../search-data-fa7e3c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Chtpm//eoBRjpdZ+APfy0ob6+F02m5floVSCivzjfjErql5JbePLUgtfqSPuQKdS"
+            integrity="sha384-O2UYP4IObWuttSo1kpzi3vdV+MgyPOgx3jGIfVm8tCfQC2Zmvbt0m7ytMiT8NHSH"
             id="search-data"
         />
     </head>
@@ -557,7 +557,7 @@
             href="./confirm-modal.html"
             
         >
-            confirmModal
+            confirmModal()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -567,7 +567,7 @@
             href="./form-modal.html"
             
         >
-            formModal
+            formModal()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -623,6 +623,16 @@
             
         >
             tableScrollClasses
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-modal.html"
+            
+        >
+            useModal()
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -861,9 +871,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../../assets/vendor-fkui-vue-24bf89.js"
+                    src="../../../assets/vendor-fkui-vue-6bf2a7.js"
                     crossorigin
-                    integrity="sha384-xKDzYTf6wQIfrKGLuQyLe+B+CFBDnqfaPNNArdu2rJUQkLwZ1Nm3+cj7jELAFqG9"
+                    integrity="sha384-xn596LJkzaKqBmHKQ8j6bXaPbs6Rf3yiEpGoLmre8uH0a0782BiNIIMWhO539T4j"
                 ></script>
                 <script
                     src="../../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -873,52 +883,93 @@
 
                 <!-- prettier-ignore --><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">confirmModal</h1>
+                    <h1 id="title">confirmModal() function</h1>
 
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#syntax">Syntax</a></li>
+                                
+                                <li><a href="#exempel">Exempel</a></li>
+                                
+                                <li><a href="#relaterat">Relaterat</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
                     
 
                     <div id="content">
                         <!-- prettier-ignore -->
-
+<p>Open a <a href="../../../components/modal/fconfirmmodal.html"><code>FConfirmModal</code></a> confirmation modal with given text.</p>
+<p>This is for Vue Options API.
+Use <a href="../use-modal.html">useModal()</a> with Composition API.</p>
+<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-85f80c"
+                    id="example-7f22c9"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> confirmModalObject {
-    <span class="hljs-attr">heading</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">content</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">confirm</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">dismiss</span>: <span class="hljs-built_in">string</span>;
-}
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-params">
-    <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
-    <span class="hljs-attr">modalData</span>: confirmModalObject,
-</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">boolean</span>&gt;;
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-params">callingInstance, texts</span>);
 </code></pre>
                 </div>
-            <p>Provides function for simpler usage of <a href="#/Utilities/open-modal">open-modal</a></p>
-<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
+            <h3 id="parameters"><a class="header-anchor" href="#parameters">Parameters</a></h3><dl>
+<dt><code>callingInstance</code></dt>
+<dd>
+<p>Current component attempting to open confirmation modal. Typically <code>this</code>.</p>
+</dd>
+<dt><code>texts</code></dt>
+<dd>
+<p>Texts to display in modal.</p>
+<dl>
+<dt><code>heading: string</code></dt>
+<dd>Text to display in modal header.</dd>
+<dt><code>content: string</code></dt>
+<dd>Text to display in modal body.</dd>
+<dt><code>confirm: string</code></dt>
+<dd>Text for confirmation button.</dd>
+<dt><code>dismiss: string</code></dt>
+<dd>Text for cancel button.</dd>
+</dl>
+</dd>
+</dl>
+<h3 id="return_value"><a class="header-anchor" href="#return_value">Return value</a></h3><p>A <code>Promise</code> resolving to <code>true</code> if the user confirms the action and <code>false</code> if the user cancels the action.</p>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-e7004c"
+                    id="example-94510d"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0">result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
     <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort arbetsgivare&quot;</span>,
     <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${arbetsgivare.namn}</span>&quot;?`</span>,
     <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
     <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
 });
+<span class="hljs-keyword">if</span> (confirmed) {
+    <span class="hljs-comment">/* ... */</span>
+}
 </code></pre>
                 </div>
-            
+            <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
+<li><a href="../use-modal.html">useModal()</a> for using with composition API.</li>
+</ul>
+
 
                     </div>
                 </main>
@@ -939,9 +990,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/revamped-tooltip (<a href="https://github.com/Forsakringskassan/designsystem/commits/6b6552ef952ca6416b3af73c5daa94b18c2420dd">6b6552e</a>)<br />
+    feature/revamped-tooltip (<a href="https://github.com/Forsakringskassan/designsystem/commits/8296433066240725dbde20cc9d84fb3f8d84976f">8296433</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/86">PR 86</a><br />
-        2024-10-23 17:08
+        2024-10-25 07:02
 </div>
 
 
