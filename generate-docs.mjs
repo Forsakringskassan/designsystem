@@ -14,6 +14,7 @@ import {
     topnavProcessor,
     versionProcessor,
     cookieProcessor,
+    motdProcessor,
 } from "@forsakringskassan/docs-generator";
 import config from "./docs.config.js";
 
@@ -99,9 +100,8 @@ const docs = new Generator({
                       prUrlFormat: "{{ repository }}/pull/{{ pr }}",
                   },
         }),
-        selectableVersionProcessor(pkg, "footer:right", {
-            enabled: isRelease,
-        }),
+        motdProcessor(),
+        selectableVersionProcessor(pkg, "footer:right"),
         matomoProcessor({
             enabled: Boolean(MATOMO_SITE_ID),
             siteId: MATOMO_SITE_ID,
@@ -152,8 +152,16 @@ try {
 
     if (createVersionMock) {
         await fs.mkdir("public/latest", { recursive: true });
-        const json = JSON.stringify({ versions: ["0.0.0"] });
-        await fs.writeFile("public/latest/versions.json", json);
+        const latest = `v${pkg.version}`;
+        const versions = JSON.stringify(
+            {
+                latest,
+                versions: [latest],
+            },
+            null,
+            2,
+        );
+        await fs.writeFile("public/versions.json", versions, "utf-8");
     }
 } catch (err) {
     console.error(err.prettyError ? err.prettyError() : err);
