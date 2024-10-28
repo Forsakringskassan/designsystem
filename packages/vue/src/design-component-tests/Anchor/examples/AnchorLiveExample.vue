@@ -47,7 +47,11 @@ export default defineComponent({
                 case "document":
                     return [`<f-icon name="${icon}"></f-icon>`, text];
                 case "external":
-                    return [text, `<f-icon name="new-window"></f-icon>`];
+                    return [
+                        text,
+                        `<f-icon name="new-window"></f-icon>`,
+                        `<span class="sr-only">öppnas i ny flik</span>`,
+                    ];
                 default:
                     return [text];
             }
