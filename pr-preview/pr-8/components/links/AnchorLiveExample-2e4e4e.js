@@ -59,7 +59,11 @@
           case "document":
             return [`<f-icon name="${icon}"></f-icon>`, text];
           case "external":
-            return [text, `<f-icon name="new-window"></f-icon>`];
+            return [
+              text,
+              `<f-icon name="new-window"></f-icon>`,
+              `<span class="sr-only">\xF6ppnas i ny flik</span>`
+            ];
           default:
             return [text];
         }
