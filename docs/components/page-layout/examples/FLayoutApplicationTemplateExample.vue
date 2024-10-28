@@ -62,7 +62,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FLayoutLeftPanel, FLayoutRightPanel, FLayoutRightPanelService } from "@fkui/vue";
+import {
+    FLayoutApplicationTemplate,
+    FLayoutLeftPanel,
+    FLayoutRightPanel,
+    FLayoutRightPanelService,
+} from "@fkui/vue";
 
 interface ExampleItem {
     title: string;
@@ -77,7 +82,7 @@ interface ExampleData {
 
 export default defineComponent({
     name: "FullNavigationExampleApp",
-    components: { FLayoutLeftPanel, FLayoutRightPanel },
+    components: { FLayoutApplicationTemplate, FLayoutLeftPanel, FLayoutRightPanel },
     data(): ExampleData {
         return {
             selectedText: "",
