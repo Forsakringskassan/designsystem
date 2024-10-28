@@ -66,8 +66,4 @@ vue:FConfirmModal
 
 ## Relaterat
 
-{@link fconfirmmodal#api Bekräftelsemodal-via-api}
-
-{@link fmodal#api Modal-api}
-
-{@link fmodal Modal dialogruta}
+{@link FModal Modal dialogruta}

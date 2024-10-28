@@ -35,10 +35,9 @@ Den här webbplatsen är delvis förenlig med lagen om tillgänglighet till digi
 #### Övergripande brister på webbplatsen
 
 -   Webbplatsen respekterar inte användarens webbläsarinställningar för färger (ljust/mörkt tema) och teckenstorlek.
--   Webbplatsen tar inte hänsyn till användarens inställning av så kallade
 -   Webbplatsens layout är inte tillräckligt följsam (responsiv) utan webbplatsen sätter sidans minimibredd till 400px.
     Vid vybredden 320px blir det scrollning både vertikalt och horisontellt (vilket motsvarar 1280px vid 400 % zoom).
-    En del tabeller är inte följsamma.
+    En del tabeller är inte heller tillräckligt följsamma.
 -   Det saknas en länk för att hoppa förbi de återkommande interaktiva elementen i sidhuvudet.
     Användare som navigerar sekventiellt behöver trycka flera gånger på Tabb-tangenten på varje sida för att komma till huvudinnehållet.
 -   Webbplatsen tar inte hänsyn till användarens inställning av så kallade "högkontrastläget" (forced colours mode).
@@ -62,4 +61,4 @@ Den senaste bedömningen gjordes den 21 oktober 2024.
 
 Webbplatsen publicerades den 5 september 2024.
 
-Redogörelsen uppdaterades senast den 23 oktober 2024.
+Redogörelsen uppdaterades senast den 28 oktober 2024.
