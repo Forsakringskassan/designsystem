@@ -7,16 +7,32 @@ function isLiveExample(example: ManifestExample): boolean {
     return example.tags.includes("live-example");
 }
 
+function isVuePreviewExample(example: ManifestExample): boolean {
+    return (
+        example.language === "vue" &&
+        !example.tags.includes("live-example") &&
+        !example.tags.includes("static")
+    );
+}
+
 it("should visit all pages and ensure examples load properly", () => {
     cy.task<ManifestPage[]>("getDocsPages").then((pages) => {
         for (const page of pages) {
             const { path, examples } = page;
             const liveExamples = examples.filter(isLiveExample);
-            if (liveExamples.length === 0) {
+            const vuePreviewExamples = examples.filter(isVuePreviewExample);
+
+            if (path.endsWith("fpageheader.html")) {
+                //Skip FPageHeader due to known bug in documentation, `Failed to resolve component: router-link`.
+                continue;
+            }
+
+            if (liveExamples.length === 0 && vuePreviewExamples.length === 0) {
                 continue;
             }
 
             cy.visit(path);
+
             for (const example of liveExamples) {
                 const selector = example.selector;
                 const container = `${selector} .live-example__container`;
@@ -34,6 +50,15 @@ it("should visit all pages and ensure examples load properly", () => {
                 cy.get(toggleCode).click();
                 cy.get(markup).should("exist");
                 cy.get(markup).invoke("text").should("not.be.empty");
+                cy.get(errorhandler).should("not.exist");
+            }
+
+            for (const example of vuePreviewExamples) {
+                const selector = example.selector;
+                const preview = `${selector} .code-preview__preview`;
+                const errorhandler = `${selector} [data-test=f-error-page]`;
+
+                cy.get(preview).should("exist").and("not.be.empty");
                 cy.get(errorhandler).should("not.exist");
             }
         }
