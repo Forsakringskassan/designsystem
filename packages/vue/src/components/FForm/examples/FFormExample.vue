@@ -461,6 +461,7 @@ import {
     FStaticField,
     FTextField,
     FTextareaField,
+    FTooltip,
 } from "@fkui/vue";
 import ExampleKostnad from "./ExampleKostnad.vue";
 
@@ -485,6 +486,7 @@ export default defineComponent({
         FOrganisationsnummerTextField,
         FPhoneTextField,
         ExampleKostnad,
+        FTooltip,
     },
     data() {
         return {
