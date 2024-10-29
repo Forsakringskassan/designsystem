@@ -98,7 +98,26 @@
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -1018,10 +1037,38 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/strip-ansi-7.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/62053a51b42809f7873d9648055a0a45c2c81ab2">62053a5</a>)<br />
+    renovate/strip-ansi-7.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/8ab2668d4a874046f4406cef9dc942804dbab1b2">8ab2668</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/8">PR 8</a><br />
-        2024-10-28 16:10
+        2024-10-29 08:05
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -1106,6 +1153,12 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
 
 
         <!-- prettier-ignore -->
+        <script
+            src="../../assets/processors/motd/index-8c87e1.js"
+            crossorigin
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            
+        ></script>
         <script
             src="../../assets/processors/selectable-version/select-version-b4d866.js"
             crossorigin
