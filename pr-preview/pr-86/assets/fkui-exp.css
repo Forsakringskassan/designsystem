@@ -2830,13 +2830,11 @@ input[type=search]:focus,
   }
 }
 
-/* prettier-ignore */
-/* prettier-ignore */
 .tooltip {
   display: none;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: calc(1rem * var(--f-density-factor, 1));
 }
 .tooltip.expanded, .tooltip.animating {
   display: block;
@@ -2850,6 +2848,8 @@ input[type=search]:focus,
 }
 .tooltip__container .label {
   display: inline;
+  width: -moz-max-content;
+  width: max-content;
 }
 .tooltip__container h1,
 .tooltip__container h2,
@@ -2858,32 +2858,30 @@ input[type=search]:focus,
 .tooltip__container h5,
 .tooltip__container h6 {
   display: inline;
+  width: -moz-max-content;
+  width: max-content;
 }
 .tooltip__container:has(h1) .tooltip__button {
-  --f-tooltip-icon-size: 1.5em;
-  margin-left: 0.5em;
-  bottom: 0.2rem;
+  bottom: 0.2lh;
 }
 .tooltip__container:has(h2) .tooltip__button {
-  --f-tooltip-icon-size: 1.2em;
-  margin-left: 0.5em;
+  bottom: 0.1lh;
+}
+.tooltip__container:has(h3) .tooltip__button {
   bottom: 0;
 }
 .tooltip__button {
-  --f-tooltip-icon-size: 1em;
   display: inline-flex;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   background: none;
   border: 0;
-  margin: 0 0 0 0.125rem;
   padding: 0;
   cursor: pointer;
-  /* shift it slightly downwards so it aligns better with text */
+  margin-left: 0.25rem;
   position: relative;
-  bottom: -0.125em;
-  /* bug in icon? */
+  bottom: -0.1lh;
 }
 .tooltip__button .icon {
   top: 0;
@@ -2892,11 +2890,21 @@ input[type=search]:focus,
 .tooltip__button,
 .tooltip__button .icon,
 .tooltip__button .icon-stack {
-  width: var(--f-tooltip-icon-size, 0px);
-  height: var(--f-tooltip-icon-size, 0px);
+  width: 1em;
+  height: 1em;
 }
 .tooltip__body {
-  padding: 1rem 1rem 0;
+  padding: 0 1rem;
+}
+.tooltip__header {
+  font-size: var(--f-font-size-large, 1.125rem);
+  font-weight: var(--f-font-weight-bold, 900);
+  line-height: var(--f-line-height-medium, 1.4);
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+.tooltip .close-button {
+  margin: var(--f-tooltip-close-button-margin, 0.375rem 0.375rem 0.625rem 0.625rem);
 }
 .tooltip__footer {
   display: flex;
@@ -2907,9 +2915,11 @@ input[type=search]:focus,
   flex-direction: column;
   position: relative;
   margin-top: 10px;
+  margin-bottom: 0.5rem;
   border: 2px solid var(--f-tooltip-border-color, #8d8e91);
   border-radius: var(--f-border-radius-small, 2px);
   background-color: var(--f-background-info, #f5f6fa);
+  padding-top: 1rem;
 }
 .tooltip__bubble::before {
   content: "";
