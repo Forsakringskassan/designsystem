@@ -10,9 +10,9 @@ Komponenterna är testade både manuellt och med hjälp av automatiserade verkty
 
 ## Kom igång
 
-Läs mer om hur du kommer igång med att använda FKUI: https://forsakringskassan.github.io/designsystem/latest/guide/getting-started/
+Läs mer om hur du kommer igång med att använda FKUI: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/
 
-Läs mer om hur du bidrar till FKUI: https://forsakringskassan.github.io/designsystem/latest/guide/contribute-to-fkds/
+Läs mer om hur du bidrar till FKUI: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/contribute-to-fkds/
 
 # FK Design System
 
@@ -27,6 +27,6 @@ The component framework was initially released internally in October 2019. It ha
 
 ## Getting started
 
-Getting started: https://forsakringskassan.github.io/designsystem/latest/guide/getting-started/
+Getting started: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/
 
-How to contribute: https://forsakringskassan.github.io/designsystem/latest/guide/contribute-to-fkds/
+How to contribute: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/contribute-to-fkds/
