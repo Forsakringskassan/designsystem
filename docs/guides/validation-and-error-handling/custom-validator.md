@@ -1,7 +1,6 @@
 ---
 title: Validator - anpassad
 layout: pattern
-sortorder: 4
 ---
 
 Om ingen av de fördefinerade validatorerna passar dina behov så går det bra att skapa en egen validator i din applikation.

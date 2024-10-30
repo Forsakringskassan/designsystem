@@ -66,10 +66,4 @@ vue:FConfirmModal
 
 ## Relaterat
 
-[Bekräftelsemodal via api](#/Utilities/confirm-modal)
-
-[Modal-api](#/Utilities/open-modal)
-
-[Knappordnings-konfiguration](#/Configuration)
-
-[Modal dialogruta](#/Components/FModal)
+{@link FModal Modal dialogruta}
