@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="./search-data-fa7e3c.json"
+            href="./search-data-047f75.json"
             as="fetch"
             crossorigin
-            integrity="sha384-O2UYP4IObWuttSo1kpzi3vdV+MgyPOgx3jGIfVm8tCfQC2Zmvbt0m7ytMiT8NHSH"
+            integrity="sha384-XZgQ9AEET/0Rlcb2fJxzrLlg/mduky6KrkdQE9s3fICPFj8yxjOGzCdZYZOIus4D"
             id="search-data"
         />
     </head>
@@ -371,14 +371,28 @@ Om du upptäcker problem som inte är beskrivna på den här sidan, eller om du 
 Om du inte är nöjd med hur vi hanterar dina synpunkter kan du kontakta <a href="https://www.digg.se/">Myndigheten för digital förvaltning</a> och berätta det.</p>
 <h3 id="teknisk_information_om_webbplatsens_tillganglighet"><a class="header-anchor" href="#teknisk_information_om_webbplatsens_tillganglighet">Teknisk information om webbplatsens tillgänglighet</a></h3><p>Den här webbplatsen är delvis förenlig med lagen om tillgänglighet till digital offentlig service, på grund av de brister som beskrivs nedan.</p>
 <h4 id="overgripande_brister_pa_webbplatsen"><a class="header-anchor" href="#overgripande_brister_pa_webbplatsen">Övergripande brister på webbplatsen</a></h4><ul>
-<li>Det finns ingen genväg för att hoppa över innehåll som upprepas på flera sidor för användare som navigerar med tangentbord.</li>
-<li>När man använder förstoring i mobilen syns inte allt innehåll på skärmen.</li>
+<li>Webbplatsen respekterar inte användarens webbläsarinställningar för färger (ljust/mörkt tema) och teckenstorlek.</li>
+<li>Webbplatsens layout är inte tillräckligt följsam (responsiv) utan webbplatsen sätter sidans minimibredd till 400px.
+Vid vybredden 320px blir det scrollning både vertikalt och horisontellt (vilket motsvarar 1280px vid 400 % zoom).
+En del tabeller är inte heller tillräckligt följsamma.</li>
+<li>Det saknas en länk för att hoppa förbi de återkommande interaktiva elementen i sidhuvudet.
+Användare som navigerar sekventiellt behöver trycka flera gånger på Tabb-tangenten på varje sida för att komma till huvudinnehållet.</li>
+<li>Webbplatsen tar inte hänsyn till användarens inställning av så kallade &quot;högkontrastläget&quot; (forced colours mode).
+I detta läge syns fokus-markeringen inte alls för länkar, radioknappar, kryssrutor och vissa knappar.
+För radiogrupper syns inte heller markeringen av det valda alternativet.</li>
+<li>Många sidor innehåller block med programkod eller annat formaterat innehåll.
+Dessa block är fokuserbara (med tabindex=0), men saknar synlig fokusmarkering.</li>
+<li>Webbplatsen innehåller ord och fraser på engelska, men språk-ändringen är inte maskinläsbart angiven.
+En skärmläsare kommer därför att läsa upp den engelska texten med svensk talsyntes, vilket gör den svår att uppfatta.</li>
+<li>En del informationsbärande bilder saknar textalternativ vilket gör att informationen inte når användare med skärmläsare.</li>
 </ul>
 <p>Vi arbetar med att kontinuerligt förbättra webbplatsen och åtgärda de brister som finns.</p>
-<h3 id="hur_vi_testat_webbplatsen"><a class="header-anchor" href="#hur_vi_testat_webbplatsen">Hur vi testat webbplatsen</a></h3><p>Vi har gjort en intern testning av Designsystemet med hjälp av våra egna experter.</p>
-<p>Den senaste bedömningen gjordes den 26 augusti 2024.</p>
+<h3 id="hur_vi_testat_webbplatsen"><a class="header-anchor" href="#hur_vi_testat_webbplatsen">Hur vi testat webbplatsen</a></h3><p>Vi har anlitat ett externt företag specialicerat på tillgänglighet för granskning av Designsystemet.
+Syftet med granskningen var att kartlägga de brister vi har för att få ett så tillgängligt designsystem som möjligt.
+Granskningen omfattade alla sidor som ingår i Designsystemet förutom de som ligger under &quot;Utveckla&quot; i menyn, då dessa främst består av kodexempel.</p>
+<p>Den senaste bedömningen gjordes den 21 oktober 2024.</p>
 <p>Webbplatsen publicerades den 5 september 2024.</p>
-<p>Redogörelsen uppdaterades senast den 3 september 2024.</p>
+<p>Redogörelsen uppdaterades senast den 28 oktober 2024.</p>
 
 
                     </div>
@@ -400,9 +414,9 @@ Om du inte är nöjd med hur vi hanterar dina synpunkter kan du kontakta <a href
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    test/add-vue-preview-e2e (<a href="https://github.com/Forsakringskassan/designsystem/commits/12955366b05df190c486ef996f7a933b896451a2">1295536</a>)<br />
+    test/add-vue-preview-e2e (<a href="https://github.com/Forsakringskassan/designsystem/commits/6460356022435a6677bfbfac78d75fa6e918eb97">6460356</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/98">PR 98</a><br />
-        2024-10-30 07:18
+        2024-10-30 12:08
 </div>
 <div class="toolbar__item">
     <form id="version">

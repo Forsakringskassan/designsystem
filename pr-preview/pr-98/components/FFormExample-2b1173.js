@@ -219,7 +219,8 @@
       FEmailTextField: import_vue7.FEmailTextField,
       FOrganisationsnummerTextField: import_vue7.FOrganisationsnummerTextField,
       FPhoneTextField: import_vue7.FPhoneTextField,
-      ExampleKostnad: ExampleKostnad_default2
+      ExampleKostnad: ExampleKostnad_default2,
+      FTooltip: import_vue7.FTooltip
     },
     data() {
       return {
