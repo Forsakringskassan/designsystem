@@ -8550,8 +8550,9 @@ main {
 .docs-messagebox {
   border: 2px solid transparent;
   border-left-width: 1rem;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 2.5rem;
   margin-bottom: 1rem;
+  border-radius: 2px;
 }
 
 .docs-messagebox :last-child {
@@ -8563,19 +8564,43 @@ main {
 }
 
 .docs-messagebox--details {
-  border-color: var(--docs-messagebox-details-border);
   background: var(--docs-messagebox-details-background);
+  border-radius: 2px;
+  border: 1px solid var(--docs-messagebox-details-border);
 }
 
 .docs-messagebox--details summary {
   cursor: pointer;
-  margin: -1.5rem;
-  padding: 1.5rem;
+  margin: -1.5rem -1.5rem -1.5rem -2.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 0;
+}
+
+.docs-messagebox--details summary::before {
+  content: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZD0iTTQ2Ny42NTggMTk2LjkxM0wyODMuNjU2IDM3Mi45MDdDMjc1LjkyMiAzODAuMzEzIDI2NS45NTMgMzg0IDI1NiAzODRDMjQ2LjA0NyAzODQgMjM2LjA3OCAzODAuMzEzIDIyOC4zNDQgMzcyLjkwN0w0NC4zNDIgMTk2LjkxM0MyOC4zODkgMTgxLjYzMyAyNy44MjYgMTU2LjMyMSA0My4wOTIgMTQwLjM1M0M1OC4zNzMgMTI0LjM1NCA4My42ODYgMTIzLjg1NCA5OS42NTUgMTM5LjEwM0wyNTYgMjg4LjY2TDQxMi4zNDUgMTM5LjEwM0M0MjguMzE0IDEyMy44MjIgNDUzLjYyNyAxMjQuMzg1IDQ2OC45MDggMTQwLjM1M0M0ODQuMTc0IDE1Ni4zMjEgNDgzLjYxMSAxODEuNjMzIDQ2Ny42NTggMTk2LjkxM1oiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K");
+  transform: translateY(3px);
+  transition: all 200ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  margin-right: 0.2rem;
 }
 
 .docs-messagebox--details[open] summary {
   margin-bottom: 0;
   padding-bottom: 0.75rem;
+}
+
+.docs-messagebox--details[open] > summary::before {
+  transform: rotate(180deg) translateY(-5px);
+  transition: all 200ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+}
+
+.docs-messagebox--details summary::marker {
+  color: transparent;
+}
+
+.docs-messagebox--details summary::-webkit-details-marker {
+  color: transparent;
 }
 
 .docs-messagebox--info {
@@ -8591,6 +8616,10 @@ main {
 .docs-messagebox--danger {
   border-color: var(--docs-messagebox-danger-border);
   background: var(--docs-messagebox-danger-background);
+}
+
+.docs-messagebox code {
+  background-color: var(--docs-code-optional-background-color);
 }
 
 #sidenav {
@@ -9520,6 +9549,8 @@ kbd {
   --docs-version-hover-color: var(--docs-text-color-default);
   --docs-cookie-background-color: #f5f6fa;
   --docs-cookie-border-color: #4a52b6;
+  --docs-code-background-color: #f4f4f4;
+  --docs-code-optional-background-color: #e5e5e5;
 }
 
 *,
