@@ -7738,10 +7738,10 @@ var defineGlobalProperty$2 = defineGlobalProperty$3;
 var SHARED = "__core-js_shared__";
 var store$3 = sharedStore.exports = globalThis$d[SHARED] || defineGlobalProperty$2(SHARED, {});
 (store$3.versions || (store$3.versions = [])).push({
-  version: "3.38.1",
+  version: "3.39.0",
   mode: "global",
   copyright: "© 2014-2024 Denis Pushkarev (zloirock.ru)",
-  license: "https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE",
+  license: "https://github.com/zloirock/core-js/blob/v3.39.0/LICENSE",
   source: "https://github.com/zloirock/core-js"
 });
 var sharedStoreExports = sharedStore.exports;
