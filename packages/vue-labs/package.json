@@ -59,9 +59,6 @@
       "./jest.setup.ts"
     ]
   },
-  "dependencies": {
-    "dayjs": "^1.11.0"
-  },
   "devDependencies": {
     "@fkui/css-variables": "5.38.0",
     "@fkui/date": "5.38.0",
