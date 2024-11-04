@@ -73,7 +73,7 @@
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.20"
+    "lodash": "4.17.21"
   },
   "devDependencies": {
     "@fkui/css-variables": "5.38.0",
