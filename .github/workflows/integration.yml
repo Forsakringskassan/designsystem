@@ -1,0 +1,34 @@
+name: Integration
+
+on:
+    push:
+        branches:
+            - "**"
+
+jobs:
+    integration:
+        name: Integration test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js 20.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build packages
+              run: npm run build
+            - name: Remove conflicting dependencies
+              run: |
+                  npm rm --include-workspace-root --workspaces \
+                      @forsakringskassan/docs-live-example
+            - name: Install minimum declared versions
+              run: |
+                  VERSION=$(npx -y -w @fkui/vue npm-min-peer vue)
+                  npm install --force --include-workspace-root --workspaces \
+                      vue@${VERSION} \
+                      @vue/server-renderer@${VERSION}
+                  npm ls vue @vue/server-renderer
+            - name: Build sandbox
+              run: npm run -w @fkui/vue-sandbox build
