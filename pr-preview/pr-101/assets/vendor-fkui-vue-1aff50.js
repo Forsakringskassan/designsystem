@@ -10009,7 +10009,11 @@
     if (!component.contains(relatedTarget)) {
       this.focused = false;
     }
-  }, getDayStartOffset, getDayEndOffset } });
+  }, getDayStartOffset(days) {
+    return getDayStartOffset(days);
+  }, getDayEndOffset(days) {
+    return getDayEndOffset(days);
+  } } });
   var _hoisted_1$L = { key: 0, class: "calendar-month__col--week" };
   var _hoisted_2$y = { role: "presentation" };
   var _hoisted_3$r = { role: "presentation" };
