@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-811160.json"
+            href="../../search-data-fc05bf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-7YZaDUMFgxRLV5VS6hUvsqnSnkNNsQ3hL6Q+gidSe8I7DydAtE/tqeWUHNydwxBL"
+            integrity="sha384-pTJBh18Ru8pUjphQmlxsIKYw6P8YULLr3hKN944sPErPIJwXds1c9dGLqeXA6GXa"
             id="search-data"
         />
     </head>
@@ -917,10 +917,10 @@ Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ValidationPlugin</span>);
 </code></pre>
                 </div>
@@ -932,10 +932,10 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>({
     <span class="hljs-string">&#x27;required&#x27;</span>, <span class="hljs-string">&#x27;Fältet krävs&#x27;</span>,
     <span class="hljs-string">&#x27;personnummerFormat&#x27;</span>, <span class="hljs-string">&#x27;Felaktigt format på personnummer&#x27;</span>,
@@ -949,10 +949,10 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(
     <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
@@ -1168,10 +1168,10 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">validatorConfigs</span>: <span class="hljs-title class_">ValidatorConfigs</span> = {
     <span class="hljs-attr">email</span>: { <span class="hljs-attr">errorMessage</span>: <span class="hljs-string">&#x27;E-posten är inte korrekt ifylld&#x27;</span> },
@@ -1686,9 +1686,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/2652eccbee9e8fcb08f27f787461c5f126ef69b3">2652ecc</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/4da5f266e0a0a33682fe5f219a1a8a76053f875e">4da5f26</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/101">PR 101</a><br />
-        2024-11-04 11:39
+        2024-11-04 14:37
 </div>
 <div class="toolbar__item">
     <form id="version">
