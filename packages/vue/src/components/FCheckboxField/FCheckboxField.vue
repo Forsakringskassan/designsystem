@@ -39,7 +39,7 @@
 <script lang="ts">
 import { defineComponent, toValue } from "vue";
 import { ElementIdService, type ValidityEvent } from "@fkui/logic";
-import { isEqual } from "lodash";
+import isEqual from "lodash/isEqual";
 import { dispatchComponentValidityEvent, renderSlotText, hasSlot, getHTMLElementFromVueRef } from "../../utils";
 import { useFieldset } from "../FFieldset";
 
