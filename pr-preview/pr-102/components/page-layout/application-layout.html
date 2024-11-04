@@ -1073,9 +1073,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-4ee1cf.js"
+                    src="../../assets/vendor-fkui-vue-abcc12.js"
                     crossorigin
-                    integrity="sha384-gBToqntaNKVi+sjDCREsDyz5D2l2zHWKCkGR8kC/T1+GKeukBNQs69jbAfzAF2I6"
+                    integrity="sha384-dQPYR9rHm2TbIYJZWwJtBmMgiTHsv3trBYMbzlpHvpWbgbGv2btvgUDqznwn9IhO"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -1098,19 +1098,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6def4e160ad0c5e2abb455babd8900876a4421c8/packages/vue/src/components/FLayoutApplicationTemplate/FLayoutApplicationTemplate.vue">FLayoutApplicationTemplate</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/e86301f5c1db9ee9570b838a6a4c260726c85e81/packages/vue/src/components/FLayoutApplicationTemplate/FLayoutApplicationTemplate.vue">FLayoutApplicationTemplate</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6def4e160ad0c5e2abb455babd8900876a4421c8/packages/vue/src/components/FLayoutLeftPanel/FLayoutLeftPanel.vue">FLayoutLeftPanel</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/e86301f5c1db9ee9570b838a6a4c260726c85e81/packages/vue/src/components/FLayoutLeftPanel/FLayoutLeftPanel.vue">FLayoutLeftPanel</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6def4e160ad0c5e2abb455babd8900876a4421c8/packages/vue/src/components/FLayoutRightPanel/FLayoutRightPanel.vue">FLayoutRightPanel</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/e86301f5c1db9ee9570b838a6a4c260726c85e81/packages/vue/src/components/FLayoutRightPanel/FLayoutRightPanel.vue">FLayoutRightPanel</a>
             
         </code>
          
@@ -1177,7 +1177,7 @@ Komponenterna består dels av en applikationsmall <code>FLayoutApplicationTempla
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FLayoutApplicationTemplateExample-94b500.js"></script>
+        <script defer src="./FLayoutApplicationTemplateExample-506450.js"></script>
     </div>
                 <div>
             <button
@@ -1190,7 +1190,7 @@ Komponenterna består dels av en applikationsmall <code>FLayoutApplicationTempla
                 Visa kod
             </button>
          
-                  <a href="FLayoutApplicationTemplateExample-94b500.html" class="code-preview__fullscreen">
+                  <a href="FLayoutApplicationTemplateExample-506450.html" class="code-preview__fullscreen">
                       <i class="icon icon--fullscreen"></i>
                       Helskärm
                   </a>
@@ -1264,7 +1264,12 @@ Komponenterna består dels av en applikationsmall <code>FLayoutApplicationTempla
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FLayoutLeftPanel</span>, <span class="hljs-title class_">FLayoutRightPanel</span>, <span class="hljs-title class_">FLayoutRightPanelService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FLayoutApplicationTemplate</span>,
+    <span class="hljs-title class_">FLayoutLeftPanel</span>,
+    <span class="hljs-title class_">FLayoutRightPanel</span>,
+    <span class="hljs-title class_">FLayoutRightPanelService</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 interface <span class="hljs-title class_">ExampleItem</span> {
     <span class="hljs-attr">title</span>: string;
@@ -1279,7 +1284,7 @@ interface <span class="hljs-title class_">ExampleData</span> {
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FullNavigationExampleApp&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FLayoutLeftPanel</span>, <span class="hljs-title class_">FLayoutRightPanel</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FLayoutApplicationTemplate</span>, <span class="hljs-title class_">FLayoutLeftPanel</span>, <span class="hljs-title class_">FLayoutRightPanel</span> },
     <span class="hljs-title function_">data</span>(): <span class="hljs-title class_">ExampleData</span> {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">selectedText</span>: <span class="hljs-string">&quot;&quot;</span>,
@@ -1473,9 +1478,9 @@ Det kan vara till exempel en tabell- eller listrad i den primära ytan som man k
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    menu-fix (<a href="https://github.com/Forsakringskassan/designsystem/commits/6def4e160ad0c5e2abb455babd8900876a4421c8">6def4e1</a>)<br />
+    menu-fix (<a href="https://github.com/Forsakringskassan/designsystem/commits/e86301f5c1db9ee9570b838a6a4c260726c85e81">e86301f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/102">PR 102</a><br />
-        2024-11-03 15:14
+        2024-11-04 11:08
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1602,9 +1607,9 @@ Det kan vara till exempel en tabell- eller listrad i den primära ytan som man k
             
         ></script>
         <script
-            src="../../assets/main-b02b4d.js"
+            src="../../assets/main-dfa38f.js"
             crossorigin
-            integrity="sha384-A5sr5ktY14RHGV0JhiZJN4677kLSQSNbxjrFP/HH9HUami0dLhJRHZWVN6JKpEVt"
+            integrity="sha384-T1ZkxKemccCwNVOSd/t0j7qhUN/HTQZe6DKXgL25IiVBJfBkXh4np4ADbioOyQEB"
             
         ></script>
     </body>
