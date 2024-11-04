@@ -1,5 +1,4 @@
 import { isRadiobuttonOrCheckbox, isValidatableFormElement } from "../../dom";
-import { PartialRecord } from "../../types";
 import { isSet } from "../../utils";
 import {
     type ValidatorConfig,
@@ -66,7 +65,8 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         ElementValidatorsReference
     > = {};
 
-    public validationErrorMessages: PartialRecord<ValidatorName, string> = {};
+    public validationErrorMessages: Record<ValidatorName, string | undefined> =
+        {};
 
     public constructor() {
         this.addValidationErrorMessages(getErrorMessages());
@@ -86,7 +86,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     }
 
     public addValidationErrorMessages(
-        validationErrorMessages: PartialRecord<ValidatorName, string>,
+        validationErrorMessages: Record<ValidatorName, string>,
     ): void {
         this.validationErrorMessages = {
             ...this.validationErrorMessages,

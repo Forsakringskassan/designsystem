@@ -342,11 +342,6 @@ export function parsePlusgiro(value: string): PlusgiroString | undefined;
 // @public (undocumented)
 export function parsePostalCode(value: string): PostalCodeString | undefined;
 
-// @public (undocumented)
-export type PartialRecord<K extends keyof any, T> = {
-    [P in K]?: T;
-};
-
 // @public
 export interface PendingValidityEvent {
 }
@@ -562,7 +557,7 @@ export interface ValidationServiceInterface {
     validateAllElements(root: string | Element): Promise<void>;
     validateElement(element: string | Element | null): Promise<ValidationResult>;
     // @internal
-    validationErrorMessages: PartialRecord<ValidatorName, string>;
+    validationErrorMessages: Record<ValidatorName, string | undefined>;
 }
 
 // @public
@@ -586,7 +581,7 @@ export interface Validator<TConfig = ValidatorConfig> {
 export type ValidatorConfig = Record<string, string | number | boolean | string[] | unknown[]> & ValidatorOptions;
 
 // @public
-export type ValidatorConfigs = PartialRecord<ValidatorName | string, ValidatorConfig>;
+export type ValidatorConfigs = Record<ValidatorName | string, ValidatorConfig | undefined>;
 
 // @public
 export type ValidatorName = string;

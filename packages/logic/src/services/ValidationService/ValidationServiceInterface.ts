@@ -1,4 +1,3 @@
-import { type PartialRecord } from "../../types";
 import { type Validator, type ValidatorName } from "./Validator";
 
 /**
@@ -45,9 +44,9 @@ export interface ValidatorOptions {
  *
  * @public
  */
-export type ValidatorConfigs = PartialRecord<
+export type ValidatorConfigs = Record<
     ValidatorName | string,
-    ValidatorConfig
+    ValidatorConfig | undefined
 >;
 
 /**
@@ -180,7 +179,7 @@ export interface ValidationServiceInterface {
      *
      * @internal
      */
-    validationErrorMessages: PartialRecord<ValidatorName, string>;
+    validationErrorMessages: Record<ValidatorName, string | undefined>;
 
     /**
      * Resolves validity mode when error
