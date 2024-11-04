@@ -60,8 +60,7 @@
     ]
   },
   "dependencies": {
-    "dayjs": "^1.11.0",
-    "lodash": "^4.17.20"
+    "dayjs": "^1.11.0"
   },
   "devDependencies": {
     "@fkui/css-variables": "5.38.0",
