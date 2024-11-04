@@ -1718,8 +1718,8 @@ days: FDate[];
 onResize(): void;
 onFocusin(): void;
 onFocusout(e: FocusEvent): void;
-getDayStartOffset: getDayStartOffset;
-getDayEndOffset: getDayEndOffset;
+getDayStartOffset(days: FDate[]): number;
+getDayEndOffset(days: FDate[]): number;
 }, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 value: {
 type: PropType<FDate>;
@@ -4812,8 +4812,8 @@ days: FDate[];
 onResize(): void;
 onFocusin(): void;
 onFocusout(e: FocusEvent): void;
-getDayStartOffset: getDayStartOffset;
-getDayEndOffset: getDayEndOffset;
+getDayStartOffset(days: FDate[]): number;
+getDayEndOffset(days: FDate[]): number;
 }, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 value: {
 type: PropType<FDate>;
@@ -17190,8 +17190,8 @@ days: FDate[];
 onResize(): void;
 onFocusin(): void;
 onFocusout(e: FocusEvent): void;
-getDayStartOffset: getDayStartOffset;
-getDayEndOffset: getDayEndOffset;
+getDayStartOffset(days: FDate[]): number;
+getDayEndOffset(days: FDate[]): number;
 }, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 value: {
 type: PropType<FDate>;
@@ -17234,8 +17234,8 @@ days: FDate[];
 onResize(): void;
 onFocusin(): void;
 onFocusout(e: FocusEvent): void;
-getDayStartOffset: typeof getDayStartOffset;
-getDayEndOffset: typeof getDayEndOffset;
+getDayStartOffset(days: FDate[]): number;
+getDayEndOffset(days: FDate[]): number;
 }, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 value: {
 type: PropType<FDate>;

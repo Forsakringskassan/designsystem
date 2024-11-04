@@ -154,8 +154,12 @@ export default defineComponent({
                 this.focused = false;
             }
         },
-        getDayStartOffset,
-        getDayEndOffset,
+        getDayStartOffset(days: FDate[]): number {
+            return getDayStartOffset(days);
+        },
+        getDayEndOffset(days: FDate[]): number {
+            return getDayEndOffset(days);
+        },
     },
 });
 </script>
