@@ -34,7 +34,7 @@
   var import_vue5 = __require("vue");
   var exampleComponent = (0, import_vue3.defineComponent)({
     name: "FullNavigationExampleApp",
-    components: { FLayoutLeftPanel: import_vue4.FLayoutLeftPanel, FLayoutRightPanel: import_vue4.FLayoutRightPanel },
+    components: { FLayoutApplicationTemplate: import_vue4.FLayoutApplicationTemplate, FLayoutLeftPanel: import_vue4.FLayoutLeftPanel, FLayoutRightPanel: import_vue4.FLayoutRightPanel },
     data() {
       return {
         selectedText: "",
