@@ -14,6 +14,11 @@ Läs mer om hur du kommer igång med att använda FKUI: https://forsakringskassa
 
 Läs mer om hur du bidrar till FKUI: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/contribute-to-fkds/
 
+## Kontakta oss
+
+Har du några övergripande funderingar på designsystemet och FKUI hör av dig till oss på
+<designsystem@forsakringskassan.se>.
+
 # FK Design System
 
 FK Design System is developed by the Swedish Social Insurance Agency (Försäkringskassan).
@@ -30,3 +35,8 @@ The component framework was initially released internally in October 2019. It ha
 Getting started: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/
 
 How to contribute: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/contribute-to-fkds/
+
+## Contact us
+
+If you have any general concerns about the design system and FKUI, please contact us at
+<designsystem@forsakringskassan.se>.
