@@ -66,8 +66,8 @@ const remove = (arr, el) => {
   }
 };
 const hasOwnProperty$b = Object.prototype.hasOwnProperty;
-const hasOwn$7 = (val, key) => hasOwnProperty$b.call(val, key);
-const isArray$7 = Array.isArray;
+const hasOwn = (val, key) => hasOwnProperty$b.call(val, key);
+const isArray$6 = Array.isArray;
 const isMap = (val) => toTypeString(val) === "[object Map]";
 const isSet$1 = (val) => toTypeString(val) === "[object Set]";
 const isDate = (val) => toTypeString(val) === "[object Date]";
@@ -142,7 +142,7 @@ const getGlobalThis = () => {
   return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {});
 };
 function normalizeStyle(value) {
-  if (isArray$7(value)) {
+  if (isArray$6(value)) {
     const res = {};
     for (let i = 0; i < value.length; i++) {
       const item = value[i];
@@ -175,7 +175,7 @@ function normalizeClass(value) {
   let res = "";
   if (isString$1(value)) {
     res = value;
-  } else if (isArray$7(value)) {
+  } else if (isArray$6(value)) {
     for (let i = 0; i < value.length; i++) {
       const normalized = normalizeClass(value[i]);
       if (normalized) {
@@ -227,8 +227,8 @@ function looseEqual(a, b) {
   if (aValidType || bValidType) {
     return a === b;
   }
-  aValidType = isArray$7(a);
-  bValidType = isArray$7(b);
+  aValidType = isArray$6(a);
+  bValidType = isArray$6(b);
   if (aValidType || bValidType) {
     return aValidType && bValidType ? looseCompareArrays(a, b) : false;
   }
@@ -260,7 +260,7 @@ const isRef$1 = (val) => {
   return !!(val && val["__v_isRef"] === true);
 };
 const toDisplayString = (val) => {
-  return isString$1(val) ? val : val == null ? "" : isArray$7(val) || isObject$9(val) && (val.toString === objectToString$2 || !isFunction$3(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+  return isString$1(val) ? val : val == null ? "" : isArray$6(val) || isObject$9(val) && (val.toString === objectToString$2 || !isFunction$3(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
 };
 const replacer = (_key, val) => {
   if (isRef$1(val)) {
@@ -281,7 +281,7 @@ const replacer = (_key, val) => {
     };
   } else if (isSymbol$3(val)) {
     return stringifySymbol(val);
-  } else if (isObject$9(val) && !isArray$7(val) && !isPlainObject(val)) {
+  } else if (isObject$9(val) && !isArray$6(val) && !isPlainObject(val)) {
     return String(val);
   }
   return val;
@@ -811,7 +811,7 @@ function trigger(target, type, key, newValue, oldValue, oldTarget) {
   if (type === "clear") {
     depsMap.forEach(run);
   } else {
-    const targetIsArray = isArray$7(target);
+    const targetIsArray = isArray$6(target);
     const isArrayIndex = targetIsArray && isIntegerKey(key);
     if (targetIsArray && key === "length") {
       const newLength = Number(newValue);
@@ -873,7 +873,7 @@ const arrayInstrumentations = {
   },
   concat(...args) {
     return reactiveReadArray(this).concat(
-      ...args.map((x) => isArray$7(x) ? reactiveReadArray(x) : x)
+      ...args.map((x) => isArray$6(x) ? reactiveReadArray(x) : x)
     );
   },
   entries() {
@@ -1062,7 +1062,7 @@ class BaseReactiveHandler {
       }
       return;
     }
-    const targetIsArray = isArray$7(target);
+    const targetIsArray = isArray$6(target);
     if (!isReadonly2) {
       let fn2;
       if (targetIsArray && (fn2 = arrayInstrumentations[key])) {
@@ -1110,7 +1110,7 @@ class MutableReactiveHandler extends BaseReactiveHandler {
         oldValue = toRaw(oldValue);
         value = toRaw(value);
       }
-      if (!isArray$7(target) && isRef(oldValue) && !isRef(value)) {
+      if (!isArray$6(target) && isRef(oldValue) && !isRef(value)) {
         if (isOldValueReadonly) {
           return false;
         } else {
@@ -1119,7 +1119,7 @@ class MutableReactiveHandler extends BaseReactiveHandler {
         }
       }
     }
-    const hadKey = isArray$7(target) && isIntegerKey(key) ? Number(key) < target.length : hasOwn$7(target, key);
+    const hadKey = isArray$6(target) && isIntegerKey(key) ? Number(key) < target.length : hasOwn(target, key);
     const result = Reflect.set(
       target,
       key,
@@ -1136,7 +1136,7 @@ class MutableReactiveHandler extends BaseReactiveHandler {
     return result;
   }
   deleteProperty(target, key) {
-    const hadKey = hasOwn$7(target, key);
+    const hadKey = hasOwn(target, key);
     target[key];
     const result = Reflect.deleteProperty(target, key);
     if (result && hadKey) {
@@ -1155,7 +1155,7 @@ class MutableReactiveHandler extends BaseReactiveHandler {
     track(
       target,
       "iterate",
-      isArray$7(target) ? "length" : ITERATE_KEY
+      isArray$6(target) ? "length" : ITERATE_KEY
     );
     return Reflect.ownKeys(target);
   }
@@ -1356,7 +1356,7 @@ function createInstrumentationGetter(isReadonly2, shallow) {
       return target;
     }
     return Reflect.get(
-      hasOwn$7(instrumentations, key) && key in target ? instrumentations : target,
+      hasOwn(instrumentations, key) && key in target ? instrumentations : target,
       key,
       receiver
     );
@@ -1476,7 +1476,7 @@ function toRaw(observed) {
   return raw ? toRaw(raw) : observed;
 }
 function markRaw(value) {
-  if (!hasOwn$7(value, "__v_skip") && Object.isExtensible(value)) {
+  if (!hasOwn(value, "__v_skip") && Object.isExtensible(value)) {
     def(value, "__v_skip", true);
   }
   return value;
@@ -1630,7 +1630,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
   } else if (isReactive(source)) {
     getter = () => reactiveGetter(source);
     forceTrigger = true;
-  } else if (isArray$7(source)) {
+  } else if (isArray$6(source)) {
     isMultiSource = true;
     forceTrigger = source.some((s) => isReactive(s) || isShallow(s));
     getter = () => source.map((s) => {
@@ -1764,7 +1764,7 @@ function traverse(value, depth = Infinity, seen) {
   depth--;
   if (isRef(value)) {
     traverse(value.value, depth, seen);
-  } else if (isArray$7(value)) {
+  } else if (isArray$6(value)) {
     for (let i = 0; i < value.length; i++) {
       traverse(value[i], depth, seen);
     }
@@ -1912,7 +1912,7 @@ function callWithAsyncErrorHandling(fn2, instance, type, args) {
     }
     return res;
   }
-  if (isArray$7(fn2)) {
+  if (isArray$6(fn2)) {
     const values = [];
     for (let i = 0; i < fn2.length; i++) {
       values.push(callWithAsyncErrorHandling(fn2[i], instance, type, args));
@@ -2004,7 +2004,7 @@ function queueFlush() {
   }
 }
 function queuePostFlushCb(cb) {
-  if (!isArray$7(cb)) {
+  if (!isArray$6(cb)) {
     if (activePostFlushCbs && cb.id === -1) {
       activePostFlushCbs.splice(postFlushIndex + 1, 0, cb);
     } else if (!(cb.flags & 1)) {
@@ -2645,7 +2645,7 @@ function resolveTransitionHooks(vnode, props, state, instance, postClone) {
   const callAsyncHook = (hook, args) => {
     const done = args[1];
     callHook2(hook, args);
-    if (isArray$7(hook)) {
+    if (isArray$6(hook)) {
       if (hook.every((hook2) => hook2.length <= 1)) done();
     } else if (hook.length <= 1) {
       done();
@@ -2826,11 +2826,11 @@ function markAsyncBoundary(instance) {
   instance.ids = [instance.ids[0] + instance.ids[2]++ + "-", 0, 0];
 }
 function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
-  if (isArray$7(rawRef)) {
+  if (isArray$6(rawRef)) {
     rawRef.forEach(
       (r, i) => setRef(
         r,
-        oldRawRef && (isArray$7(oldRawRef) ? oldRawRef[i] : oldRawRef),
+        oldRawRef && (isArray$6(oldRawRef) ? oldRawRef[i] : oldRawRef),
         parentSuspense,
         vnode,
         isUnmount
@@ -2849,7 +2849,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   const setupState = owner.setupState;
   const rawSetupState = toRaw(setupState);
   const canSetSetupRef = setupState === EMPTY_OBJ ? () => false : (key) => {
-    return hasOwn$7(rawSetupState, key);
+    return hasOwn(rawSetupState, key);
   };
   if (oldRef != null && oldRef !== ref3) {
     if (isString$1(oldRef)) {
@@ -2871,9 +2871,9 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
         if (rawRef.f) {
           const existing = _isString ? canSetSetupRef(ref3) ? setupState[ref3] : refs[ref3] : ref3.value;
           if (isUnmount) {
-            isArray$7(existing) && remove(existing, refValue);
+            isArray$6(existing) && remove(existing, refValue);
           } else {
-            if (!isArray$7(existing)) {
+            if (!isArray$6(existing)) {
               if (_isString) {
                 refs[ref3] = [refValue];
                 if (canSetSetupRef(ref3)) {
@@ -3032,7 +3032,7 @@ function resolve(registry2, name) {
 function renderList(source, renderItem, cache, index) {
   let ret;
   const cached = cache;
-  const sourceIsArray = isArray$7(source);
+  const sourceIsArray = isArray$6(source);
   if (sourceIsArray || isString$1(source)) {
     const sourceIsReactiveArray = sourceIsArray && isReactive(source);
     let needsWrap = false;
@@ -3076,7 +3076,7 @@ function renderList(source, renderItem, cache, index) {
 function createSlots(slots, dynamicSlots) {
   for (let i = 0; i < dynamicSlots.length; i++) {
     const slot = dynamicSlots[i];
-    if (isArray$7(slot)) {
+    if (isArray$6(slot)) {
       for (let j = 0; j < slot.length; j++) {
         slots[slot[j].name] = slot[j].fn;
       }
@@ -3163,7 +3163,7 @@ const publicPropertiesMap = (
     $watch: (i) => instanceWatch.bind(i)
   })
 );
-const hasSetupBinding = (state, key) => state !== EMPTY_OBJ && !state.__isScriptSetup && hasOwn$7(state, key);
+const hasSetupBinding = (state, key) => state !== EMPTY_OBJ && !state.__isScriptSetup && hasOwn(state, key);
 const PublicInstanceProxyHandlers = {
   get({ _: instance }, key) {
     if (key === "__v_skip") {
@@ -3187,17 +3187,17 @@ const PublicInstanceProxyHandlers = {
       } else if (hasSetupBinding(setupState, key)) {
         accessCache[key] = 1;
         return setupState[key];
-      } else if (data2 !== EMPTY_OBJ && hasOwn$7(data2, key)) {
+      } else if (data2 !== EMPTY_OBJ && hasOwn(data2, key)) {
         accessCache[key] = 2;
         return data2[key];
       } else if (
         // only cache other properties when instance has declared (thus stable)
         // props
-        (normalizedProps = instance.propsOptions[0]) && hasOwn$7(normalizedProps, key)
+        (normalizedProps = instance.propsOptions[0]) && hasOwn(normalizedProps, key)
       ) {
         accessCache[key] = 3;
         return props[key];
-      } else if (ctx !== EMPTY_OBJ && hasOwn$7(ctx, key)) {
+      } else if (ctx !== EMPTY_OBJ && hasOwn(ctx, key)) {
         accessCache[key] = 4;
         return ctx[key];
       } else if (shouldCacheAccess) {
@@ -3216,12 +3216,12 @@ const PublicInstanceProxyHandlers = {
       (cssModule = type.__cssModules) && (cssModule = cssModule[key])
     ) {
       return cssModule;
-    } else if (ctx !== EMPTY_OBJ && hasOwn$7(ctx, key)) {
+    } else if (ctx !== EMPTY_OBJ && hasOwn(ctx, key)) {
       accessCache[key] = 4;
       return ctx[key];
     } else if (
       // global properties
-      globalProperties = appContext.config.globalProperties, hasOwn$7(globalProperties, key)
+      globalProperties = appContext.config.globalProperties, hasOwn(globalProperties, key)
     ) {
       {
         return globalProperties[key];
@@ -3233,10 +3233,10 @@ const PublicInstanceProxyHandlers = {
     if (hasSetupBinding(setupState, key)) {
       setupState[key] = value;
       return true;
-    } else if (data2 !== EMPTY_OBJ && hasOwn$7(data2, key)) {
+    } else if (data2 !== EMPTY_OBJ && hasOwn(data2, key)) {
       data2[key] = value;
       return true;
-    } else if (hasOwn$7(instance.props, key)) {
+    } else if (hasOwn(instance.props, key)) {
       return false;
     }
     if (key[0] === "$" && key.slice(1) in instance) {
@@ -3252,19 +3252,19 @@ const PublicInstanceProxyHandlers = {
     _: { data: data2, setupState, accessCache, ctx, appContext, propsOptions }
   }, key) {
     let normalizedProps;
-    return !!accessCache[key] || data2 !== EMPTY_OBJ && hasOwn$7(data2, key) || hasSetupBinding(setupState, key) || (normalizedProps = propsOptions[0]) && hasOwn$7(normalizedProps, key) || hasOwn$7(ctx, key) || hasOwn$7(publicPropertiesMap, key) || hasOwn$7(appContext.config.globalProperties, key);
+    return !!accessCache[key] || data2 !== EMPTY_OBJ && hasOwn(data2, key) || hasSetupBinding(setupState, key) || (normalizedProps = propsOptions[0]) && hasOwn(normalizedProps, key) || hasOwn(ctx, key) || hasOwn(publicPropertiesMap, key) || hasOwn(appContext.config.globalProperties, key);
   },
   defineProperty(target, key, descriptor) {
     if (descriptor.get != null) {
       target._.accessCache[key] = 0;
-    } else if (hasOwn$7(descriptor, "value")) {
+    } else if (hasOwn(descriptor, "value")) {
       this.set(target, key, descriptor.value, null);
     }
     return Reflect.defineProperty(target, key, descriptor);
   }
 };
 function normalizePropsOrEmits(props) {
-  return isArray$7(props) ? props.reduce(
+  return isArray$6(props) ? props.reduce(
     (normalized, p2) => (normalized[p2] = null, normalized),
     {}
   ) : props;
@@ -3365,7 +3365,7 @@ function applyOptions(instance) {
     callHook$1(created, instance, "c");
   }
   function registerLifecycleHook(register, hook) {
-    if (isArray$7(hook)) {
+    if (isArray$6(hook)) {
       hook.forEach((_hook) => register(_hook.bind(publicThis)));
     } else if (hook) {
       register(hook.bind(publicThis));
@@ -3383,7 +3383,7 @@ function applyOptions(instance) {
   registerLifecycleHook(onBeforeUnmount, beforeUnmount);
   registerLifecycleHook(onUnmounted, unmounted);
   registerLifecycleHook(onServerPrefetch, serverPrefetch);
-  if (isArray$7(expose)) {
+  if (isArray$6(expose)) {
     if (expose.length) {
       const exposed = instance.exposed || (instance.exposed = {});
       expose.forEach((key) => {
@@ -3409,7 +3409,7 @@ function applyOptions(instance) {
   }
 }
 function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) {
-  if (isArray$7(injectOptions)) {
+  if (isArray$6(injectOptions)) {
     injectOptions = normalizeInject(injectOptions);
   }
   for (const key in injectOptions) {
@@ -3442,7 +3442,7 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) 
 }
 function callHook$1(hook, instance, type) {
   callWithAsyncErrorHandling(
-    isArray$7(hook) ? hook.map((h2) => h2.bind(instance.proxy)) : hook.bind(instance.proxy),
+    isArray$6(hook) ? hook.map((h2) => h2.bind(instance.proxy)) : hook.bind(instance.proxy),
     instance,
     type
   );
@@ -3461,7 +3461,7 @@ function createWatcher(raw, ctx, publicThis, key) {
       watch(getter, raw.bind(publicThis));
     }
   } else if (isObject$9(raw)) {
-    if (isArray$7(raw)) {
+    if (isArray$6(raw)) {
       raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
     } else {
       const handler = isFunction$3(raw.handler) ? raw.handler.bind(publicThis) : ctx[raw.handler];
@@ -3569,7 +3569,7 @@ function mergeInject(to, from) {
   return mergeObjectOptions(normalizeInject(to), normalizeInject(from));
 }
 function normalizeInject(raw) {
-  if (isArray$7(raw)) {
+  if (isArray$6(raw)) {
     const res = {};
     for (let i = 0; i < raw.length; i++) {
       res[raw[i]] = raw[i];
@@ -3586,7 +3586,7 @@ function mergeObjectOptions(to, from) {
 }
 function mergeEmitsOrPropsOptions(to, from) {
   if (to) {
-    if (isArray$7(to) && isArray$7(from)) {
+    if (isArray$6(to) && isArray$6(from)) {
       return [.../* @__PURE__ */ new Set([...to, ...from])];
     }
     return extend(
@@ -3809,7 +3809,7 @@ function updateProps(instance, rawProps, rawPrevProps, optimized) {
         }
         const value = rawProps[key];
         if (options) {
-          if (hasOwn$7(attrs, key)) {
+          if (hasOwn(attrs, key)) {
             if (value !== attrs[key]) {
               attrs[key] = value;
               hasAttrsChanged = true;
@@ -3840,9 +3840,9 @@ function updateProps(instance, rawProps, rawPrevProps, optimized) {
     let kebabKey;
     for (const key in rawCurrentProps) {
       if (!rawProps || // for camelCase
-      !hasOwn$7(rawProps, key) && // it's possible the original props was passed in as kebab-case
+      !hasOwn(rawProps, key) && // it's possible the original props was passed in as kebab-case
       // and converted to camelCase (#955)
-      ((kebabKey = hyphenate(key)) === key || !hasOwn$7(rawProps, kebabKey))) {
+      ((kebabKey = hyphenate(key)) === key || !hasOwn(rawProps, kebabKey))) {
         if (options) {
           if (rawPrevProps && // for camelCase
           (rawPrevProps[key] !== void 0 || // for kebab-case
@@ -3863,7 +3863,7 @@ function updateProps(instance, rawProps, rawPrevProps, optimized) {
     }
     if (attrs !== rawCurrentProps) {
       for (const key in attrs) {
-        if (!rawProps || !hasOwn$7(rawProps, key) && true) {
+        if (!rawProps || !hasOwn(rawProps, key) && true) {
           delete attrs[key];
           hasAttrsChanged = true;
         }
@@ -3885,7 +3885,7 @@ function setFullProps(instance, rawProps, props, attrs) {
       }
       const value = rawProps[key];
       let camelKey;
-      if (options && hasOwn$7(options, camelKey = camelize(key))) {
+      if (options && hasOwn(options, camelKey = camelize(key))) {
         if (!needCastKeys || !needCastKeys.includes(camelKey)) {
           props[camelKey] = value;
         } else {
@@ -3910,7 +3910,7 @@ function setFullProps(instance, rawProps, props, attrs) {
         key,
         castValues[key],
         instance,
-        !hasOwn$7(castValues, key)
+        !hasOwn(castValues, key)
       );
     }
   }
@@ -3919,7 +3919,7 @@ function setFullProps(instance, rawProps, props, attrs) {
 function resolvePropValue(options, props, key, value, instance, isAbsent) {
   const opt = options[key];
   if (opt != null) {
-    const hasDefault = hasOwn$7(opt, "default");
+    const hasDefault = hasOwn(opt, "default");
     if (hasDefault && value === void 0) {
       const defaultValue = opt.default;
       if (opt.type !== Function && !opt.skipFactory && isFunction$3(defaultValue)) {
@@ -3991,7 +3991,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
     return EMPTY_ARR;
   }
-  if (isArray$7(raw)) {
+  if (isArray$6(raw)) {
     for (let i = 0; i < raw.length; i++) {
       const normalizedKey = camelize(raw[i]);
       if (validatePropName(normalizedKey)) {
@@ -4003,11 +4003,11 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
       const normalizedKey = camelize(key);
       if (validatePropName(normalizedKey)) {
         const opt = raw[key];
-        const prop = normalized[normalizedKey] = isArray$7(opt) || isFunction$3(opt) ? { type: opt } : extend({}, opt);
+        const prop = normalized[normalizedKey] = isArray$6(opt) || isFunction$3(opt) ? { type: opt } : extend({}, opt);
         const propType = prop.type;
         let shouldCast = false;
         let shouldCastTrue = true;
-        if (isArray$7(propType)) {
+        if (isArray$6(propType)) {
           for (let index = 0; index < propType.length; ++index) {
             const type = propType[index];
             const typeName = isFunction$3(type) && type.name;
@@ -4029,7 +4029,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
           1
           /* shouldCastTrue */
         ] = shouldCastTrue;
-        if (shouldCast || hasOwn$7(prop, "default")) {
+        if (shouldCast || hasOwn(prop, "default")) {
           needCastKeys.push(normalizedKey);
         }
       }
@@ -4048,7 +4048,7 @@ function validatePropName(key) {
   return false;
 }
 const isInternalKey = (key) => key[0] === "_" || key === "$stable";
-const normalizeSlotValue = (value) => isArray$7(value) ? value.map(normalizeVNode) : [normalizeVNode(value)];
+const normalizeSlotValue = (value) => isArray$6(value) ? value.map(normalizeVNode) : [normalizeVNode(value)];
 const normalizeSlot$1 = (key, rawSlot, ctx) => {
   if (rawSlot._n) {
     return rawSlot;
@@ -5398,7 +5398,7 @@ function needTransition(parentSuspense, transition) {
 function traverseStaticChildren(n1, n2, shallow = false) {
   const ch1 = n1.children;
   const ch2 = n2.children;
-  if (isArray$7(ch1) && isArray$7(ch2)) {
+  if (isArray$6(ch1) && isArray$6(ch2)) {
     for (let i = 0; i < ch1.length; i++) {
       const c1 = ch1[i];
       let c2 = ch2[i];
@@ -5644,7 +5644,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
     }
     return null;
   }
-  if (isArray$7(raw)) {
+  if (isArray$6(raw)) {
     raw.forEach((key) => normalized[key] = null);
   } else {
     extend(normalized, raw);
@@ -5659,7 +5659,7 @@ function isEmitListener(options, key) {
     return false;
   }
   key = key.slice(2).replace(/Once$/, "");
-  return hasOwn$7(options, key[0].toLowerCase() + key.slice(1)) || hasOwn$7(options, hyphenate(key)) || hasOwn$7(options, key);
+  return hasOwn(options, key[0].toLowerCase() + key.slice(1)) || hasOwn(options, hyphenate(key)) || hasOwn(options, key);
 }
 function markAttrsAccessed() {
 }
@@ -5856,7 +5856,7 @@ function updateHOCHostEl({ vnode, parent }, el) {
 const isSuspense = (type) => type.__isSuspense;
 function queueEffectWithSuspense(fn2, suspense) {
   if (suspense && suspense.pendingBranch) {
-    if (isArray$7(fn2)) {
+    if (isArray$6(fn2)) {
       suspense.effects.push(...fn2);
     } else {
       suspense.effects.push(fn2);
@@ -6021,7 +6021,7 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
       props.class = normalizeClass(klass);
     }
     if (isObject$9(style)) {
-      if (isProxy(style) && !isArray$7(style)) {
+      if (isProxy(style) && !isArray$6(style)) {
         style = extend({}, style);
       }
       props.style = normalizeStyle(style);
@@ -6056,7 +6056,7 @@ function cloneVNode(vnode, extraProps, mergeRef = false, cloneTransition = false
       // #2078 in the case of <component :is="vnode" ref="extra"/>
       // if the vnode itself already has a ref, cloneVNode will need to merge
       // the refs so the single vnode can be set on multiple refs
-      mergeRef && ref3 ? isArray$7(ref3) ? ref3.concat(normalizeRef(extraProps)) : [ref3, normalizeRef(extraProps)] : normalizeRef(extraProps)
+      mergeRef && ref3 ? isArray$6(ref3) ? ref3.concat(normalizeRef(extraProps)) : [ref3, normalizeRef(extraProps)] : normalizeRef(extraProps)
     ) : ref3,
     scopeId: vnode.scopeId,
     slotScopeIds: vnode.slotScopeIds,
@@ -6106,7 +6106,7 @@ function createCommentVNode(text = "", asBlock = false) {
 function normalizeVNode(child) {
   if (child == null || typeof child === "boolean") {
     return createVNode(Comment);
-  } else if (isArray$7(child)) {
+  } else if (isArray$6(child)) {
     return createVNode(
       Fragment,
       null,
@@ -6127,7 +6127,7 @@ function normalizeChildren(vnode, children) {
   const { shapeFlag } = vnode;
   if (children == null) {
     children = null;
-  } else if (isArray$7(children)) {
+  } else if (isArray$6(children)) {
     type = 16;
   } else if (typeof children === "object") {
     if (shapeFlag & (1 | 64)) {
@@ -6181,7 +6181,7 @@ function mergeProps(...args) {
       } else if (isOn(key)) {
         const existing = ret[key];
         const incoming = toMerge[key];
-        if (incoming && existing !== incoming && !(isArray$7(existing) && existing.includes(incoming))) {
+        if (incoming && existing !== incoming && !(isArray$6(existing) && existing.includes(incoming))) {
           ret[key] = existing ? [].concat(existing, incoming) : incoming;
         }
       } else if (key !== "") {
@@ -6502,7 +6502,7 @@ const computed = (getterOrOptions, debugOptions) => {
 function h(type, propsOrChildren, children) {
   const l = arguments.length;
   if (l === 2) {
-    if (isObject$9(propsOrChildren) && !isArray$7(propsOrChildren)) {
+    if (isObject$9(propsOrChildren) && !isArray$6(propsOrChildren)) {
       if (isVNode(propsOrChildren)) {
         return createVNode(type, null, [propsOrChildren]);
       }
@@ -6639,14 +6639,14 @@ const Transition = /* @__PURE__ */ decorate$1(
   (props, { slots }) => h(BaseTransition, resolveTransitionProps(props), slots)
 );
 const callHook = (hook, args = []) => {
-  if (isArray$7(hook)) {
+  if (isArray$6(hook)) {
     hook.forEach((h2) => h2(...args));
   } else if (hook) {
     hook(...args);
   }
 };
 const hasExplicitCallback = (hook) => {
-  return hook ? isArray$7(hook) ? hook.some((h2) => h2.length > 1) : hook.length > 1 : false;
+  return hook ? isArray$6(hook) ? hook.some((h2) => h2.length > 1) : hook.length > 1 : false;
 };
 function resolveTransitionProps(rawProps) {
   const baseProps = {};
@@ -6941,7 +6941,7 @@ function patchStyle(el, prev, next) {
 }
 const importantRE = /\s*!important$/;
 function setStyle(style, name, val) {
-  if (isArray$7(val)) {
+  if (isArray$6(val)) {
     val.forEach((v) => setStyle(style, name, v));
   } else {
     if (val == null) val = "";
@@ -7106,7 +7106,7 @@ function createInvoker(initialValue, instance) {
   return invoker;
 }
 function patchStopImmediatePropagation(e, value) {
-  if (isArray$7(value)) {
+  if (isArray$6(value)) {
     const originalStop = e.stopImmediatePropagation;
     e.stopImmediatePropagation = () => {
       originalStop.call(e);
@@ -7185,7 +7185,7 @@ function shouldSetAsProp(el, key, value, isSVG) {
 }
 const getModelAssigner = (vnode) => {
   const fn2 = vnode.props["onUpdate:modelValue"] || false;
-  return isArray$7(fn2) ? (value) => invokeArrayFns(fn2, value) : fn2;
+  return isArray$6(fn2) ? (value) => invokeArrayFns(fn2, value) : fn2;
 };
 function onCompositionStart(e) {
   e.target.composing = true;
@@ -7257,7 +7257,7 @@ const vModelCheckbox = {
       const elementValue = getValue$2(el);
       const checked = el.checked;
       const assign2 = el[assignKey];
-      if (isArray$7(modelValue)) {
+      if (isArray$6(modelValue)) {
         const index = looseIndexOf(modelValue, elementValue);
         const found = index !== -1;
         if (checked && !found) {
@@ -7290,7 +7290,7 @@ const vModelCheckbox = {
 function setChecked(el, { value, oldValue }, vnode) {
   el._modelValue = value;
   let checked;
-  if (isArray$7(value)) {
+  if (isArray$6(value)) {
     checked = looseIndexOf(value, vnode.props.value) > -1;
   } else if (isSet$1(value)) {
     checked = value.has(vnode.props.value);
@@ -7352,7 +7352,7 @@ const vModelSelect = {
 };
 function setSelected(el, value) {
   const isMultiple = el.multiple;
-  const isArrayValue = isArray$7(value);
+  const isArrayValue = isArray$6(value);
   if (isMultiple && !isArrayValue && !isSet$1(value)) {
     return;
   }
@@ -7533,991 +7533,6 @@ if (document.readyState === "loading") {
 } else {
   injectSpritesheet();
 }
-var commonjsGlobal$2 = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
-var check = function(it) {
-  return it && it.Math === Math && it;
-};
-var globalThis_1 = (
-  // eslint-disable-next-line es/no-global-this -- safe
-  check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || // eslint-disable-next-line no-restricted-globals -- safe
-  check(typeof self == "object" && self) || check(typeof commonjsGlobal$2 == "object" && commonjsGlobal$2) || check(typeof commonjsGlobal$2 == "object" && commonjsGlobal$2) || // eslint-disable-next-line no-new-func -- fallback
-  /* @__PURE__ */ function() {
-    return this;
-  }() || Function("return this")()
-);
-var objectGetOwnPropertyDescriptor = {};
-var fails$a = function(exec) {
-  try {
-    return !!exec();
-  } catch (error) {
-    return true;
-  }
-};
-var fails$9 = fails$a;
-var descriptors = !fails$9(function() {
-  return Object.defineProperty({}, 1, { get: function() {
-    return 7;
-  } })[1] !== 7;
-});
-var fails$8 = fails$a;
-var functionBindNative = !fails$8(function() {
-  var test = (function() {
-  }).bind();
-  return typeof test != "function" || test.hasOwnProperty("prototype");
-});
-var NATIVE_BIND$1 = functionBindNative;
-var call$4 = Function.prototype.call;
-var functionCall = NATIVE_BIND$1 ? call$4.bind(call$4) : function() {
-  return call$4.apply(call$4, arguments);
-};
-var objectPropertyIsEnumerable = {};
-var $propertyIsEnumerable = {}.propertyIsEnumerable;
-var getOwnPropertyDescriptor$2 = Object.getOwnPropertyDescriptor;
-var NASHORN_BUG = getOwnPropertyDescriptor$2 && !$propertyIsEnumerable.call({ 1: 2 }, 1);
-objectPropertyIsEnumerable.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
-  var descriptor = getOwnPropertyDescriptor$2(this, V);
-  return !!descriptor && descriptor.enumerable;
-} : $propertyIsEnumerable;
-var createPropertyDescriptor$2 = function(bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value
-  };
-};
-var NATIVE_BIND = functionBindNative;
-var FunctionPrototype$1 = Function.prototype;
-var call$3 = FunctionPrototype$1.call;
-var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype$1.bind.bind(call$3, call$3);
-var functionUncurryThis = NATIVE_BIND ? uncurryThisWithBind : function(fn2) {
-  return function() {
-    return call$3.apply(fn2, arguments);
-  };
-};
-var uncurryThis$c = functionUncurryThis;
-var toString$1 = uncurryThis$c({}.toString);
-var stringSlice$1 = uncurryThis$c("".slice);
-var classofRaw$1 = function(it) {
-  return stringSlice$1(toString$1(it), 8, -1);
-};
-var uncurryThis$b = functionUncurryThis;
-var fails$7 = fails$a;
-var classof$3 = classofRaw$1;
-var $Object$2 = Object;
-var split = uncurryThis$b("".split);
-var indexedObject = fails$7(function() {
-  return !$Object$2("z").propertyIsEnumerable(0);
-}) ? function(it) {
-  return classof$3(it) === "String" ? split(it, "") : $Object$2(it);
-} : $Object$2;
-var isNullOrUndefined$2 = function(it) {
-  return it === null || it === void 0;
-};
-var isNullOrUndefined$1 = isNullOrUndefined$2;
-var $TypeError$8 = TypeError;
-var requireObjectCoercible$2 = function(it) {
-  if (isNullOrUndefined$1(it)) throw new $TypeError$8("Can't call method on " + it);
-  return it;
-};
-var IndexedObject = indexedObject;
-var requireObjectCoercible$1 = requireObjectCoercible$2;
-var toIndexedObject$3 = function(it) {
-  return IndexedObject(requireObjectCoercible$1(it));
-};
-var documentAll = typeof document == "object" && document.all;
-var isCallable$a = typeof documentAll == "undefined" && documentAll !== void 0 ? function(argument) {
-  return typeof argument == "function" || argument === documentAll;
-} : function(argument) {
-  return typeof argument == "function";
-};
-var isCallable$9 = isCallable$a;
-var isObject$8 = function(it) {
-  return typeof it == "object" ? it !== null : isCallable$9(it);
-};
-var globalThis$i = globalThis_1;
-var isCallable$8 = isCallable$a;
-var aFunction = function(argument) {
-  return isCallable$8(argument) ? argument : void 0;
-};
-var getBuiltIn$2 = function(namespace, method) {
-  return arguments.length < 2 ? aFunction(globalThis$i[namespace]) : globalThis$i[namespace] && globalThis$i[namespace][method];
-};
-var uncurryThis$a = functionUncurryThis;
-var objectIsPrototypeOf = uncurryThis$a({}.isPrototypeOf);
-var globalThis$h = globalThis_1;
-var navigator$1 = globalThis$h.navigator;
-var userAgent$2 = navigator$1 && navigator$1.userAgent;
-var environmentUserAgent = userAgent$2 ? String(userAgent$2) : "";
-var globalThis$g = globalThis_1;
-var userAgent$1 = environmentUserAgent;
-var process = globalThis$g.process;
-var Deno$1 = globalThis$g.Deno;
-var versions = process && process.versions || Deno$1 && Deno$1.version;
-var v8 = versions && versions.v8;
-var match, version;
-if (v8) {
-  match = v8.split(".");
-  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
-}
-if (!version && userAgent$1) {
-  match = userAgent$1.match(/Edge\/(\d+)/);
-  if (!match || match[1] >= 74) {
-    match = userAgent$1.match(/Chrome\/(\d+)/);
-    if (match) version = +match[1];
-  }
-}
-var environmentV8Version = version;
-var V8_VERSION = environmentV8Version;
-var fails$6 = fails$a;
-var globalThis$f = globalThis_1;
-var $String$3 = globalThis$f.String;
-var symbolConstructorDetection = !!Object.getOwnPropertySymbols && !fails$6(function() {
-  var symbol = Symbol("symbol detection");
-  return !$String$3(symbol) || !(Object(symbol) instanceof Symbol) || // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-  !Symbol.sham && V8_VERSION && V8_VERSION < 41;
-});
-var NATIVE_SYMBOL$1 = symbolConstructorDetection;
-var useSymbolAsUid = NATIVE_SYMBOL$1 && !Symbol.sham && typeof Symbol.iterator == "symbol";
-var getBuiltIn$1 = getBuiltIn$2;
-var isCallable$7 = isCallable$a;
-var isPrototypeOf = objectIsPrototypeOf;
-var USE_SYMBOL_AS_UID$1 = useSymbolAsUid;
-var $Object$1 = Object;
-var isSymbol$2 = USE_SYMBOL_AS_UID$1 ? function(it) {
-  return typeof it == "symbol";
-} : function(it) {
-  var $Symbol = getBuiltIn$1("Symbol");
-  return isCallable$7($Symbol) && isPrototypeOf($Symbol.prototype, $Object$1(it));
-};
-var $String$2 = String;
-var tryToString$1 = function(argument) {
-  try {
-    return $String$2(argument);
-  } catch (error) {
-    return "Object";
-  }
-};
-var isCallable$6 = isCallable$a;
-var tryToString = tryToString$1;
-var $TypeError$7 = TypeError;
-var aCallable$2 = function(argument) {
-  if (isCallable$6(argument)) return argument;
-  throw new $TypeError$7(tryToString(argument) + " is not a function");
-};
-var aCallable$1 = aCallable$2;
-var isNullOrUndefined = isNullOrUndefined$2;
-var getMethod$1 = function(V, P) {
-  var func = V[P];
-  return isNullOrUndefined(func) ? void 0 : aCallable$1(func);
-};
-var call$2 = functionCall;
-var isCallable$5 = isCallable$a;
-var isObject$7 = isObject$8;
-var $TypeError$6 = TypeError;
-var ordinaryToPrimitive$1 = function(input, pref) {
-  var fn2, val;
-  if (pref === "string" && isCallable$5(fn2 = input.toString) && !isObject$7(val = call$2(fn2, input))) return val;
-  if (isCallable$5(fn2 = input.valueOf) && !isObject$7(val = call$2(fn2, input))) return val;
-  if (pref !== "string" && isCallable$5(fn2 = input.toString) && !isObject$7(val = call$2(fn2, input))) return val;
-  throw new $TypeError$6("Can't convert object to primitive value");
-};
-var sharedStore = { exports: {} };
-var globalThis$e = globalThis_1;
-var defineProperty$2 = Object.defineProperty;
-var defineGlobalProperty$3 = function(key, value) {
-  try {
-    defineProperty$2(globalThis$e, key, { value, configurable: true, writable: true });
-  } catch (error) {
-    globalThis$e[key] = value;
-  }
-  return value;
-};
-var globalThis$d = globalThis_1;
-var defineGlobalProperty$2 = defineGlobalProperty$3;
-var SHARED = "__core-js_shared__";
-var store$3 = sharedStore.exports = globalThis$d[SHARED] || defineGlobalProperty$2(SHARED, {});
-(store$3.versions || (store$3.versions = [])).push({
-  version: "3.39.0",
-  mode: "global",
-  copyright: "© 2014-2024 Denis Pushkarev (zloirock.ru)",
-  license: "https://github.com/zloirock/core-js/blob/v3.39.0/LICENSE",
-  source: "https://github.com/zloirock/core-js"
-});
-var sharedStoreExports = sharedStore.exports;
-var store$2 = sharedStoreExports;
-var shared$3 = function(key, value) {
-  return store$2[key] || (store$2[key] = value || {});
-};
-var requireObjectCoercible = requireObjectCoercible$2;
-var $Object = Object;
-var toObject$2 = function(argument) {
-  return $Object(requireObjectCoercible(argument));
-};
-var uncurryThis$9 = functionUncurryThis;
-var toObject$1 = toObject$2;
-var hasOwnProperty$9 = uncurryThis$9({}.hasOwnProperty);
-var hasOwnProperty_1 = Object.hasOwn || function hasOwn(it, key) {
-  return hasOwnProperty$9(toObject$1(it), key);
-};
-var uncurryThis$8 = functionUncurryThis;
-var id = 0;
-var postfix = Math.random();
-var toString = uncurryThis$8(1 .toString);
-var uid$2 = function(key) {
-  return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString(++id + postfix, 36);
-};
-var globalThis$c = globalThis_1;
-var shared$2 = shared$3;
-var hasOwn$6 = hasOwnProperty_1;
-var uid$1 = uid$2;
-var NATIVE_SYMBOL = symbolConstructorDetection;
-var USE_SYMBOL_AS_UID = useSymbolAsUid;
-var Symbol$5 = globalThis$c.Symbol;
-var WellKnownSymbolsStore = shared$2("wks");
-var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol$5["for"] || Symbol$5 : Symbol$5 && Symbol$5.withoutSetter || uid$1;
-var wellKnownSymbol$1 = function(name) {
-  if (!hasOwn$6(WellKnownSymbolsStore, name)) {
-    WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn$6(Symbol$5, name) ? Symbol$5[name] : createWellKnownSymbol("Symbol." + name);
-  }
-  return WellKnownSymbolsStore[name];
-};
-var call$1 = functionCall;
-var isObject$6 = isObject$8;
-var isSymbol$1 = isSymbol$2;
-var getMethod = getMethod$1;
-var ordinaryToPrimitive = ordinaryToPrimitive$1;
-var wellKnownSymbol = wellKnownSymbol$1;
-var $TypeError$5 = TypeError;
-var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
-var toPrimitive$1 = function(input, pref) {
-  if (!isObject$6(input) || isSymbol$1(input)) return input;
-  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
-  var result;
-  if (exoticToPrim) {
-    if (pref === void 0) pref = "default";
-    result = call$1(exoticToPrim, input, pref);
-    if (!isObject$6(result) || isSymbol$1(result)) return result;
-    throw new $TypeError$5("Can't convert object to primitive value");
-  }
-  if (pref === void 0) pref = "number";
-  return ordinaryToPrimitive(input, pref);
-};
-var toPrimitive = toPrimitive$1;
-var isSymbol = isSymbol$2;
-var toPropertyKey$2 = function(argument) {
-  var key = toPrimitive(argument, "string");
-  return isSymbol(key) ? key : key + "";
-};
-var globalThis$b = globalThis_1;
-var isObject$5 = isObject$8;
-var document$1 = globalThis$b.document;
-var EXISTS$1 = isObject$5(document$1) && isObject$5(document$1.createElement);
-var documentCreateElement = function(it) {
-  return EXISTS$1 ? document$1.createElement(it) : {};
-};
-var DESCRIPTORS$8 = descriptors;
-var fails$5 = fails$a;
-var createElement = documentCreateElement;
-var ie8DomDefine = !DESCRIPTORS$8 && !fails$5(function() {
-  return Object.defineProperty(createElement("div"), "a", {
-    get: function() {
-      return 7;
-    }
-  }).a !== 7;
-});
-var DESCRIPTORS$7 = descriptors;
-var call = functionCall;
-var propertyIsEnumerableModule = objectPropertyIsEnumerable;
-var createPropertyDescriptor$1 = createPropertyDescriptor$2;
-var toIndexedObject$2 = toIndexedObject$3;
-var toPropertyKey$1 = toPropertyKey$2;
-var hasOwn$5 = hasOwnProperty_1;
-var IE8_DOM_DEFINE$1 = ie8DomDefine;
-var $getOwnPropertyDescriptor$1 = Object.getOwnPropertyDescriptor;
-objectGetOwnPropertyDescriptor.f = DESCRIPTORS$7 ? $getOwnPropertyDescriptor$1 : function getOwnPropertyDescriptor(O, P) {
-  O = toIndexedObject$2(O);
-  P = toPropertyKey$1(P);
-  if (IE8_DOM_DEFINE$1) try {
-    return $getOwnPropertyDescriptor$1(O, P);
-  } catch (error) {
-  }
-  if (hasOwn$5(O, P)) return createPropertyDescriptor$1(!call(propertyIsEnumerableModule.f, O, P), O[P]);
-};
-var objectDefineProperty = {};
-var DESCRIPTORS$6 = descriptors;
-var fails$4 = fails$a;
-var v8PrototypeDefineBug = DESCRIPTORS$6 && fails$4(function() {
-  return Object.defineProperty(function() {
-  }, "prototype", {
-    value: 42,
-    writable: false
-  }).prototype !== 42;
-});
-var isObject$4 = isObject$8;
-var $String$1 = String;
-var $TypeError$4 = TypeError;
-var anObject$2 = function(argument) {
-  if (isObject$4(argument)) return argument;
-  throw new $TypeError$4($String$1(argument) + " is not an object");
-};
-var DESCRIPTORS$5 = descriptors;
-var IE8_DOM_DEFINE = ie8DomDefine;
-var V8_PROTOTYPE_DEFINE_BUG = v8PrototypeDefineBug;
-var anObject$1 = anObject$2;
-var toPropertyKey = toPropertyKey$2;
-var $TypeError$3 = TypeError;
-var $defineProperty = Object.defineProperty;
-var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var ENUMERABLE = "enumerable";
-var CONFIGURABLE$1 = "configurable";
-var WRITABLE = "writable";
-objectDefineProperty.f = DESCRIPTORS$5 ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
-  anObject$1(O);
-  P = toPropertyKey(P);
-  anObject$1(Attributes);
-  if (typeof O === "function" && P === "prototype" && "value" in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
-    var current = $getOwnPropertyDescriptor(O, P);
-    if (current && current[WRITABLE]) {
-      O[P] = Attributes.value;
-      Attributes = {
-        configurable: CONFIGURABLE$1 in Attributes ? Attributes[CONFIGURABLE$1] : current[CONFIGURABLE$1],
-        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
-        writable: false
-      };
-    }
-  }
-  return $defineProperty(O, P, Attributes);
-} : $defineProperty : function defineProperty2(O, P, Attributes) {
-  anObject$1(O);
-  P = toPropertyKey(P);
-  anObject$1(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return $defineProperty(O, P, Attributes);
-  } catch (error) {
-  }
-  if ("get" in Attributes || "set" in Attributes) throw new $TypeError$3("Accessors not supported");
-  if ("value" in Attributes) O[P] = Attributes.value;
-  return O;
-};
-var DESCRIPTORS$4 = descriptors;
-var definePropertyModule$2 = objectDefineProperty;
-var createPropertyDescriptor = createPropertyDescriptor$2;
-var createNonEnumerableProperty$2 = DESCRIPTORS$4 ? function(object, key, value) {
-  return definePropertyModule$2.f(object, key, createPropertyDescriptor(1, value));
-} : function(object, key, value) {
-  object[key] = value;
-  return object;
-};
-var makeBuiltIn$3 = { exports: {} };
-var DESCRIPTORS$3 = descriptors;
-var hasOwn$4 = hasOwnProperty_1;
-var FunctionPrototype = Function.prototype;
-var getDescriptor = DESCRIPTORS$3 && Object.getOwnPropertyDescriptor;
-var EXISTS = hasOwn$4(FunctionPrototype, "name");
-var PROPER = EXISTS && (function something() {
-}).name === "something";
-var CONFIGURABLE = EXISTS && (!DESCRIPTORS$3 || DESCRIPTORS$3 && getDescriptor(FunctionPrototype, "name").configurable);
-var functionName = {
-  EXISTS,
-  PROPER,
-  CONFIGURABLE
-};
-var uncurryThis$7 = functionUncurryThis;
-var isCallable$4 = isCallable$a;
-var store$1 = sharedStoreExports;
-var functionToString = uncurryThis$7(Function.toString);
-if (!isCallable$4(store$1.inspectSource)) {
-  store$1.inspectSource = function(it) {
-    return functionToString(it);
-  };
-}
-var inspectSource$1 = store$1.inspectSource;
-var globalThis$a = globalThis_1;
-var isCallable$3 = isCallable$a;
-var WeakMap$4 = globalThis$a.WeakMap;
-var weakMapBasicDetection = isCallable$3(WeakMap$4) && /native code/.test(String(WeakMap$4));
-var shared$1 = shared$3;
-var uid = uid$2;
-var keys$2 = shared$1("keys");
-var sharedKey$1 = function(key) {
-  return keys$2[key] || (keys$2[key] = uid(key));
-};
-var hiddenKeys$3 = {};
-var NATIVE_WEAK_MAP = weakMapBasicDetection;
-var globalThis$9 = globalThis_1;
-var isObject$3 = isObject$8;
-var createNonEnumerableProperty$1 = createNonEnumerableProperty$2;
-var hasOwn$3 = hasOwnProperty_1;
-var shared = sharedStoreExports;
-var sharedKey = sharedKey$1;
-var hiddenKeys$2 = hiddenKeys$3;
-var OBJECT_ALREADY_INITIALIZED = "Object already initialized";
-var TypeError$2 = globalThis$9.TypeError;
-var WeakMap$3 = globalThis$9.WeakMap;
-var set, get, has;
-var enforce = function(it) {
-  return has(it) ? get(it) : set(it, {});
-};
-var getterFor = function(TYPE) {
-  return function(it) {
-    var state;
-    if (!isObject$3(it) || (state = get(it)).type !== TYPE) {
-      throw new TypeError$2("Incompatible receiver, " + TYPE + " required");
-    }
-    return state;
-  };
-};
-if (NATIVE_WEAK_MAP || shared.state) {
-  var store = shared.state || (shared.state = new WeakMap$3());
-  store.get = store.get;
-  store.has = store.has;
-  store.set = store.set;
-  set = function(it, metadata) {
-    if (store.has(it)) throw new TypeError$2(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    store.set(it, metadata);
-    return metadata;
-  };
-  get = function(it) {
-    return store.get(it) || {};
-  };
-  has = function(it) {
-    return store.has(it);
-  };
-} else {
-  var STATE = sharedKey("state");
-  hiddenKeys$2[STATE] = true;
-  set = function(it, metadata) {
-    if (hasOwn$3(it, STATE)) throw new TypeError$2(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    createNonEnumerableProperty$1(it, STATE, metadata);
-    return metadata;
-  };
-  get = function(it) {
-    return hasOwn$3(it, STATE) ? it[STATE] : {};
-  };
-  has = function(it) {
-    return hasOwn$3(it, STATE);
-  };
-}
-var internalState = {
-  set,
-  get,
-  has,
-  enforce,
-  getterFor
-};
-var uncurryThis$6 = functionUncurryThis;
-var fails$3 = fails$a;
-var isCallable$2 = isCallable$a;
-var hasOwn$2 = hasOwnProperty_1;
-var DESCRIPTORS$2 = descriptors;
-var CONFIGURABLE_FUNCTION_NAME = functionName.CONFIGURABLE;
-var inspectSource = inspectSource$1;
-var InternalStateModule = internalState;
-var enforceInternalState = InternalStateModule.enforce;
-var getInternalState = InternalStateModule.get;
-var $String = String;
-var defineProperty$1 = Object.defineProperty;
-var stringSlice = uncurryThis$6("".slice);
-var replace = uncurryThis$6("".replace);
-var join = uncurryThis$6([].join);
-var CONFIGURABLE_LENGTH = DESCRIPTORS$2 && !fails$3(function() {
-  return defineProperty$1(function() {
-  }, "length", { value: 8 }).length !== 8;
-});
-var TEMPLATE = String(String).split("String");
-var makeBuiltIn$2 = makeBuiltIn$3.exports = function(value, name, options) {
-  if (stringSlice($String(name), 0, 7) === "Symbol(") {
-    name = "[" + replace($String(name), /^Symbol\(([^)]*)\).*$/, "$1") + "]";
-  }
-  if (options && options.getter) name = "get " + name;
-  if (options && options.setter) name = "set " + name;
-  if (!hasOwn$2(value, "name") || CONFIGURABLE_FUNCTION_NAME && value.name !== name) {
-    if (DESCRIPTORS$2) defineProperty$1(value, "name", { value: name, configurable: true });
-    else value.name = name;
-  }
-  if (CONFIGURABLE_LENGTH && options && hasOwn$2(options, "arity") && value.length !== options.arity) {
-    defineProperty$1(value, "length", { value: options.arity });
-  }
-  try {
-    if (options && hasOwn$2(options, "constructor") && options.constructor) {
-      if (DESCRIPTORS$2) defineProperty$1(value, "prototype", { writable: false });
-    } else if (value.prototype) value.prototype = void 0;
-  } catch (error) {
-  }
-  var state = enforceInternalState(value);
-  if (!hasOwn$2(state, "source")) {
-    state.source = join(TEMPLATE, typeof name == "string" ? name : "");
-  }
-  return value;
-};
-Function.prototype.toString = makeBuiltIn$2(function toString2() {
-  return isCallable$2(this) && getInternalState(this).source || inspectSource(this);
-}, "toString");
-var makeBuiltInExports = makeBuiltIn$3.exports;
-var isCallable$1 = isCallable$a;
-var definePropertyModule$1 = objectDefineProperty;
-var makeBuiltIn$1 = makeBuiltInExports;
-var defineGlobalProperty$1 = defineGlobalProperty$3;
-var defineBuiltIn$1 = function(O, key, value, options) {
-  if (!options) options = {};
-  var simple = options.enumerable;
-  var name = options.name !== void 0 ? options.name : key;
-  if (isCallable$1(value)) makeBuiltIn$1(value, name, options);
-  if (options.global) {
-    if (simple) O[key] = value;
-    else defineGlobalProperty$1(key, value);
-  } else {
-    try {
-      if (!options.unsafe) delete O[key];
-      else if (O[key]) simple = true;
-    } catch (error) {
-    }
-    if (simple) O[key] = value;
-    else definePropertyModule$1.f(O, key, {
-      value,
-      enumerable: false,
-      configurable: !options.nonConfigurable,
-      writable: !options.nonWritable
-    });
-  }
-  return O;
-};
-var objectGetOwnPropertyNames = {};
-var ceil = Math.ceil;
-var floor = Math.floor;
-var mathTrunc = Math.trunc || function trunc(x) {
-  var n = +x;
-  return (n > 0 ? floor : ceil)(n);
-};
-var trunc2 = mathTrunc;
-var toIntegerOrInfinity$3 = function(argument) {
-  var number = +argument;
-  return number !== number || number === 0 ? 0 : trunc2(number);
-};
-var toIntegerOrInfinity$2 = toIntegerOrInfinity$3;
-var max = Math.max;
-var min$2 = Math.min;
-var toAbsoluteIndex$1 = function(index, length) {
-  var integer = toIntegerOrInfinity$2(index);
-  return integer < 0 ? max(integer + length, 0) : min$2(integer, length);
-};
-var toIntegerOrInfinity$1 = toIntegerOrInfinity$3;
-var min$1 = Math.min;
-var toLength$2 = function(argument) {
-  var len = toIntegerOrInfinity$1(argument);
-  return len > 0 ? min$1(len, 9007199254740991) : 0;
-};
-var toLength$1 = toLength$2;
-var lengthOfArrayLike$2 = function(obj) {
-  return toLength$1(obj.length);
-};
-var toIndexedObject$1 = toIndexedObject$3;
-var toAbsoluteIndex = toAbsoluteIndex$1;
-var lengthOfArrayLike$1 = lengthOfArrayLike$2;
-var createMethod = function(IS_INCLUDES) {
-  return function($this, el, fromIndex) {
-    var O = toIndexedObject$1($this);
-    var length = lengthOfArrayLike$1(O);
-    if (length === 0) return !IS_INCLUDES && -1;
-    var index = toAbsoluteIndex(fromIndex, length);
-    var value;
-    if (IS_INCLUDES && el !== el) while (length > index) {
-      value = O[index++];
-      if (value !== value) return true;
-    }
-    else for (; length > index; index++) {
-      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
-    }
-    return !IS_INCLUDES && -1;
-  };
-};
-var arrayIncludes = {
-  // `Array.prototype.includes` method
-  // https://tc39.es/ecma262/#sec-array.prototype.includes
-  includes: createMethod(true),
-  // `Array.prototype.indexOf` method
-  // https://tc39.es/ecma262/#sec-array.prototype.indexof
-  indexOf: createMethod(false)
-};
-var uncurryThis$5 = functionUncurryThis;
-var hasOwn$1 = hasOwnProperty_1;
-var toIndexedObject = toIndexedObject$3;
-var indexOf = arrayIncludes.indexOf;
-var hiddenKeys$1 = hiddenKeys$3;
-var push = uncurryThis$5([].push);
-var objectKeysInternal = function(object, names) {
-  var O = toIndexedObject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) !hasOwn$1(hiddenKeys$1, key) && hasOwn$1(O, key) && push(result, key);
-  while (names.length > i) if (hasOwn$1(O, key = names[i++])) {
-    ~indexOf(result, key) || push(result, key);
-  }
-  return result;
-};
-var enumBugKeys$1 = [
-  "constructor",
-  "hasOwnProperty",
-  "isPrototypeOf",
-  "propertyIsEnumerable",
-  "toLocaleString",
-  "toString",
-  "valueOf"
-];
-var internalObjectKeys = objectKeysInternal;
-var enumBugKeys = enumBugKeys$1;
-var hiddenKeys = enumBugKeys.concat("length", "prototype");
-objectGetOwnPropertyNames.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return internalObjectKeys(O, hiddenKeys);
-};
-var objectGetOwnPropertySymbols = {};
-objectGetOwnPropertySymbols.f = Object.getOwnPropertySymbols;
-var getBuiltIn = getBuiltIn$2;
-var uncurryThis$4 = functionUncurryThis;
-var getOwnPropertyNamesModule = objectGetOwnPropertyNames;
-var getOwnPropertySymbolsModule = objectGetOwnPropertySymbols;
-var anObject = anObject$2;
-var concat = uncurryThis$4([].concat);
-var ownKeys$1 = getBuiltIn("Reflect", "ownKeys") || function ownKeys(it) {
-  var keys2 = getOwnPropertyNamesModule.f(anObject(it));
-  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-  return getOwnPropertySymbols ? concat(keys2, getOwnPropertySymbols(it)) : keys2;
-};
-var hasOwn2 = hasOwnProperty_1;
-var ownKeys2 = ownKeys$1;
-var getOwnPropertyDescriptorModule = objectGetOwnPropertyDescriptor;
-var definePropertyModule = objectDefineProperty;
-var copyConstructorProperties$1 = function(target, source, exceptions) {
-  var keys2 = ownKeys2(source);
-  var defineProperty4 = definePropertyModule.f;
-  var getOwnPropertyDescriptor3 = getOwnPropertyDescriptorModule.f;
-  for (var i = 0; i < keys2.length; i++) {
-    var key = keys2[i];
-    if (!hasOwn2(target, key) && !(exceptions && hasOwn2(exceptions, key))) {
-      defineProperty4(target, key, getOwnPropertyDescriptor3(source, key));
-    }
-  }
-};
-var fails$2 = fails$a;
-var isCallable = isCallable$a;
-var replacement = /#|\.prototype\./;
-var isForced$1 = function(feature, detection) {
-  var value = data[normalize(feature)];
-  return value === POLYFILL ? true : value === NATIVE ? false : isCallable(detection) ? fails$2(detection) : !!detection;
-};
-var normalize = isForced$1.normalize = function(string) {
-  return String(string).replace(replacement, ".").toLowerCase();
-};
-var data = isForced$1.data = {};
-var NATIVE = isForced$1.NATIVE = "N";
-var POLYFILL = isForced$1.POLYFILL = "P";
-var isForced_1 = isForced$1;
-var globalThis$8 = globalThis_1;
-var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f;
-var createNonEnumerableProperty = createNonEnumerableProperty$2;
-var defineBuiltIn = defineBuiltIn$1;
-var defineGlobalProperty = defineGlobalProperty$3;
-var copyConstructorProperties = copyConstructorProperties$1;
-var isForced = isForced_1;
-var _export = function(options, source) {
-  var TARGET = options.target;
-  var GLOBAL = options.global;
-  var STATIC = options.stat;
-  var FORCED2, target, key, targetProperty, sourceProperty, descriptor;
-  if (GLOBAL) {
-    target = globalThis$8;
-  } else if (STATIC) {
-    target = globalThis$8[TARGET] || defineGlobalProperty(TARGET, {});
-  } else {
-    target = globalThis$8[TARGET] && globalThis$8[TARGET].prototype;
-  }
-  if (target) for (key in source) {
-    sourceProperty = source[key];
-    if (options.dontCallGetSet) {
-      descriptor = getOwnPropertyDescriptor$1(target, key);
-      targetProperty = descriptor && descriptor.value;
-    } else targetProperty = target[key];
-    FORCED2 = isForced(GLOBAL ? key : TARGET + (STATIC ? "." : "#") + key, options.forced);
-    if (!FORCED2 && targetProperty !== void 0) {
-      if (typeof sourceProperty == typeof targetProperty) continue;
-      copyConstructorProperties(sourceProperty, targetProperty);
-    }
-    if (options.sham || targetProperty && targetProperty.sham) {
-      createNonEnumerableProperty(sourceProperty, "sham", true);
-    }
-    defineBuiltIn(target, key, sourceProperty, options);
-  }
-};
-var classof$2 = classofRaw$1;
-var isArray$6 = Array.isArray || function isArray(argument) {
-  return classof$2(argument) === "Array";
-};
-var DESCRIPTORS$1 = descriptors;
-var isArray$5 = isArray$6;
-var $TypeError$2 = TypeError;
-var getOwnPropertyDescriptor2 = Object.getOwnPropertyDescriptor;
-var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS$1 && !function() {
-  if (this !== void 0) return true;
-  try {
-    Object.defineProperty([], "length", { writable: false }).length = 1;
-  } catch (error) {
-    return error instanceof TypeError;
-  }
-}();
-var arraySetLength = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function(O, length) {
-  if (isArray$5(O) && !getOwnPropertyDescriptor2(O, "length").writable) {
-    throw new $TypeError$2("Cannot set read only .length");
-  }
-  return O.length = length;
-} : function(O, length) {
-  return O.length = length;
-};
-var $TypeError$1 = TypeError;
-var MAX_SAFE_INTEGER$2 = 9007199254740991;
-var doesNotExceedSafeInteger$1 = function(it) {
-  if (it > MAX_SAFE_INTEGER$2) throw $TypeError$1("Maximum allowed index exceeded");
-  return it;
-};
-var $$2 = _export;
-var toObject = toObject$2;
-var lengthOfArrayLike = lengthOfArrayLike$2;
-var setArrayLength = arraySetLength;
-var doesNotExceedSafeInteger = doesNotExceedSafeInteger$1;
-var fails$1 = fails$a;
-var INCORRECT_TO_LENGTH = fails$1(function() {
-  return [].push.call({ length: 4294967296 }, 1) !== 4294967297;
-});
-var properErrorOnNonWritableLength = function() {
-  try {
-    Object.defineProperty([], "length", { writable: false }).push();
-  } catch (error) {
-    return error instanceof TypeError;
-  }
-};
-var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
-$$2({ target: "Array", proto: true, arity: 1, forced: FORCED }, {
-  // eslint-disable-next-line no-unused-vars -- required for `.length`
-  push: function push2(item) {
-    var O = toObject(this);
-    var len = lengthOfArrayLike(O);
-    var argCount = arguments.length;
-    doesNotExceedSafeInteger(len + argCount);
-    for (var i = 0; i < argCount; i++) {
-      O[len] = arguments[i];
-      len++;
-    }
-    setArrayLength(O, len);
-    return len;
-  }
-});
-var makeBuiltIn = makeBuiltInExports;
-var defineProperty3 = objectDefineProperty;
-var defineBuiltInAccessor$1 = function(target, name, descriptor) {
-  if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
-  if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
-  return defineProperty3.f(target, name, descriptor);
-};
-var classofRaw = classofRaw$1;
-var uncurryThis$3 = functionUncurryThis;
-var functionUncurryThisClause = function(fn2) {
-  if (classofRaw(fn2) === "Function") return uncurryThis$3(fn2);
-};
-var uncurryThis$2 = functionUncurryThis;
-var aCallable = aCallable$2;
-var functionUncurryThisAccessor = function(object, key, method) {
-  try {
-    return uncurryThis$2(aCallable(Object.getOwnPropertyDescriptor(object, key)[method]));
-  } catch (error) {
-  }
-};
-var globalThis$7 = globalThis_1;
-var uncurryThisAccessor$1 = functionUncurryThisAccessor;
-var classof$1 = classofRaw$1;
-var ArrayBuffer$3 = globalThis$7.ArrayBuffer;
-var TypeError$1 = globalThis$7.TypeError;
-var arrayBufferByteLength$2 = ArrayBuffer$3 && uncurryThisAccessor$1(ArrayBuffer$3.prototype, "byteLength", "get") || function(O) {
-  if (classof$1(O) !== "ArrayBuffer") throw new TypeError$1("ArrayBuffer expected");
-  return O.byteLength;
-};
-var globalThis$6 = globalThis_1;
-var uncurryThis$1 = functionUncurryThisClause;
-var arrayBufferByteLength$1 = arrayBufferByteLength$2;
-var ArrayBuffer$2 = globalThis$6.ArrayBuffer;
-var ArrayBufferPrototype$2 = ArrayBuffer$2 && ArrayBuffer$2.prototype;
-var slice$1 = ArrayBufferPrototype$2 && uncurryThis$1(ArrayBufferPrototype$2.slice);
-var arrayBufferIsDetached = function(O) {
-  if (arrayBufferByteLength$1(O) !== 0) return false;
-  if (!slice$1) return false;
-  try {
-    slice$1(O, 0, 0);
-    return false;
-  } catch (error) {
-    return true;
-  }
-};
-var DESCRIPTORS = descriptors;
-var defineBuiltInAccessor = defineBuiltInAccessor$1;
-var isDetached$1 = arrayBufferIsDetached;
-var ArrayBufferPrototype$1 = ArrayBuffer.prototype;
-if (DESCRIPTORS && !("detached" in ArrayBufferPrototype$1)) {
-  defineBuiltInAccessor(ArrayBufferPrototype$1, "detached", {
-    configurable: true,
-    get: function detached() {
-      return isDetached$1(this);
-    }
-  });
-}
-var toIntegerOrInfinity = toIntegerOrInfinity$3;
-var toLength = toLength$2;
-var $RangeError = RangeError;
-var toIndex$1 = function(it) {
-  if (it === void 0) return 0;
-  var number = toIntegerOrInfinity(it);
-  var length = toLength(number);
-  if (number !== length) throw new $RangeError("Wrong length or index");
-  return length;
-};
-var isDetached = arrayBufferIsDetached;
-var $TypeError = TypeError;
-var arrayBufferNotDetached = function(it) {
-  if (isDetached(it)) throw new $TypeError("ArrayBuffer is detached");
-  return it;
-};
-var globalThis$5 = globalThis_1;
-var userAgent = environmentUserAgent;
-var classof = classofRaw$1;
-var userAgentStartsWith = function(string) {
-  return userAgent.slice(0, string.length) === string;
-};
-var environment = function() {
-  if (userAgentStartsWith("Bun/")) return "BUN";
-  if (userAgentStartsWith("Cloudflare-Workers")) return "CLOUDFLARE";
-  if (userAgentStartsWith("Deno/")) return "DENO";
-  if (userAgentStartsWith("Node.js/")) return "NODE";
-  if (globalThis$5.Bun && typeof Bun.version == "string") return "BUN";
-  if (globalThis$5.Deno && typeof Deno.version == "object") return "DENO";
-  if (classof(globalThis$5.process) === "process") return "NODE";
-  if (globalThis$5.window && globalThis$5.document) return "BROWSER";
-  return "REST";
-}();
-var ENVIRONMENT$1 = environment;
-var environmentIsNode = ENVIRONMENT$1 === "NODE";
-var globalThis$4 = globalThis_1;
-var IS_NODE = environmentIsNode;
-var getBuiltInNodeModule$1 = function(name) {
-  if (IS_NODE) {
-    try {
-      return globalThis$4.process.getBuiltinModule(name);
-    } catch (error) {
-    }
-    try {
-      return Function('return require("' + name + '")')();
-    } catch (error) {
-    }
-  }
-};
-var globalThis$3 = globalThis_1;
-var fails = fails$a;
-var V8 = environmentV8Version;
-var ENVIRONMENT = environment;
-var structuredClone$2 = globalThis$3.structuredClone;
-var structuredCloneProperTransfer = !!structuredClone$2 && !fails(function() {
-  if (ENVIRONMENT === "DENO" && V8 > 92 || ENVIRONMENT === "NODE" && V8 > 94 || ENVIRONMENT === "BROWSER" && V8 > 97) return false;
-  var buffer2 = new ArrayBuffer(8);
-  var clone = structuredClone$2(buffer2, { transfer: [buffer2] });
-  return buffer2.byteLength !== 0 || clone.byteLength !== 8;
-});
-var globalThis$2 = globalThis_1;
-var getBuiltInNodeModule = getBuiltInNodeModule$1;
-var PROPER_STRUCTURED_CLONE_TRANSFER$1 = structuredCloneProperTransfer;
-var structuredClone$1 = globalThis$2.structuredClone;
-var $ArrayBuffer = globalThis$2.ArrayBuffer;
-var $MessageChannel = globalThis$2.MessageChannel;
-var detach = false;
-var WorkerThreads, channel, buffer, $detach;
-if (PROPER_STRUCTURED_CLONE_TRANSFER$1) {
-  detach = function(transferable) {
-    structuredClone$1(transferable, { transfer: [transferable] });
-  };
-} else if ($ArrayBuffer) try {
-  if (!$MessageChannel) {
-    WorkerThreads = getBuiltInNodeModule("worker_threads");
-    if (WorkerThreads) $MessageChannel = WorkerThreads.MessageChannel;
-  }
-  if ($MessageChannel) {
-    channel = new $MessageChannel();
-    buffer = new $ArrayBuffer(2);
-    $detach = function(transferable) {
-      channel.port1.postMessage(null, [transferable]);
-    };
-    if (buffer.byteLength === 2) {
-      $detach(buffer);
-      if (buffer.byteLength === 0) detach = $detach;
-    }
-  }
-} catch (error) {
-}
-var detachTransferable$1 = detach;
-var globalThis$1 = globalThis_1;
-var uncurryThis = functionUncurryThis;
-var uncurryThisAccessor = functionUncurryThisAccessor;
-var toIndex = toIndex$1;
-var notDetached = arrayBufferNotDetached;
-var arrayBufferByteLength = arrayBufferByteLength$2;
-var detachTransferable = detachTransferable$1;
-var PROPER_STRUCTURED_CLONE_TRANSFER = structuredCloneProperTransfer;
-var structuredClone = globalThis$1.structuredClone;
-var ArrayBuffer$1 = globalThis$1.ArrayBuffer;
-var DataView$2 = globalThis$1.DataView;
-var min = Math.min;
-var ArrayBufferPrototype = ArrayBuffer$1.prototype;
-var DataViewPrototype = DataView$2.prototype;
-var slice = uncurryThis(ArrayBufferPrototype.slice);
-var isResizable = uncurryThisAccessor(ArrayBufferPrototype, "resizable", "get");
-var maxByteLength = uncurryThisAccessor(ArrayBufferPrototype, "maxByteLength", "get");
-var getInt8 = uncurryThis(DataViewPrototype.getInt8);
-var setInt8 = uncurryThis(DataViewPrototype.setInt8);
-var arrayBufferTransfer = (PROPER_STRUCTURED_CLONE_TRANSFER || detachTransferable) && function(arrayBuffer, newLength, preserveResizability) {
-  var byteLength = arrayBufferByteLength(arrayBuffer);
-  var newByteLength = newLength === void 0 ? byteLength : toIndex(newLength);
-  var fixedLength = !isResizable || !isResizable(arrayBuffer);
-  var newBuffer;
-  notDetached(arrayBuffer);
-  if (PROPER_STRUCTURED_CLONE_TRANSFER) {
-    arrayBuffer = structuredClone(arrayBuffer, { transfer: [arrayBuffer] });
-    if (byteLength === newByteLength && (preserveResizability || fixedLength)) return arrayBuffer;
-  }
-  if (byteLength >= newByteLength && (!preserveResizability || fixedLength)) {
-    newBuffer = slice(arrayBuffer, 0, newByteLength);
-  } else {
-    var options = preserveResizability && !fixedLength && maxByteLength ? { maxByteLength: maxByteLength(arrayBuffer) } : void 0;
-    newBuffer = new ArrayBuffer$1(newByteLength, options);
-    var a = new DataView$2(arrayBuffer);
-    var b = new DataView$2(newBuffer);
-    var copyLength = min(newByteLength, byteLength);
-    for (var i = 0; i < copyLength; i++) setInt8(b, i, getInt8(a, i));
-  }
-  if (!PROPER_STRUCTURED_CLONE_TRANSFER) detachTransferable(arrayBuffer);
-  return newBuffer;
-};
-var $$1 = _export;
-var $transfer$1 = arrayBufferTransfer;
-if ($transfer$1) $$1({ target: "ArrayBuffer", proto: true }, {
-  transfer: function transfer() {
-    return $transfer$1(this, arguments.length ? arguments[0] : void 0, true);
-  }
-});
-var $ = _export;
-var $transfer = arrayBufferTransfer;
-if ($transfer) $({ target: "ArrayBuffer", proto: true }, {
-  transferToFixedLength: function transferToFixedLength() {
-    return $transfer(this, arguments.length ? arguments[0] : void 0, false);
-  }
-});
 const configLogic = {
   production: true
 };
@@ -8824,7 +7839,7 @@ function requireLodash_clonedeep() {
     Stack2.prototype.has = stackHas2;
     Stack2.prototype.set = stackSet2;
     function arrayLikeKeys2(value, inherited) {
-      var result = isArray3(value) || isArguments2(value) ? baseTimes2(value.length, String) : [];
+      var result = isArray4(value) || isArguments2(value) ? baseTimes2(value.length, String) : [];
       var length = result.length, skipIndexes = !!length;
       for (var key in value) {
         if (hasOwnProperty2.call(value, key) && !(skipIndexes && (key == "length" || isIndex2(key, length)))) {
@@ -8862,7 +7877,7 @@ function requireLodash_clonedeep() {
       if (!isObject2(value)) {
         return value;
       }
-      var isArr = isArray3(value);
+      var isArr = isArray4(value);
       if (isArr) {
         result = initCloneArray(value);
         if (!isDeep) {
@@ -8911,7 +7926,7 @@ function requireLodash_clonedeep() {
     }
     function baseGetAllKeys2(object, keysFunc, symbolsFunc) {
       var result = keysFunc(object);
-      return isArray3(object) ? result : arrayPush2(result, symbolsFunc(object));
+      return isArray4(object) ? result : arrayPush2(result, symbolsFunc(object));
     }
     function baseGetTag2(value) {
       return objectToString2.call(value);
@@ -9107,7 +8122,7 @@ function requireLodash_clonedeep() {
     function isArguments2(value) {
       return isArrayLikeObject(value) && hasOwnProperty2.call(value, "callee") && (!propertyIsEnumerable3.call(value, "callee") || objectToString2.call(value) == argsTag2);
     }
-    var isArray3 = Array.isArray;
+    var isArray4 = Array.isArray;
     function isArrayLike2(value) {
       return value != null && isLength2(value.length) && !isFunction2(value);
     }
@@ -11878,9 +10893,6 @@ const ISO8601_YYYY_MM_DD = "YYYY-MM-DD";
     [DateFormat.YYYYMMDD]: "YYYYMMDD"
   }
 });
-var __defProp2 = Object.defineProperty;
-var __defNormalProp2 = (obj, key, value) => key in obj ? __defProp2(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField2 = (obj, key, value) => __defNormalProp2(obj, key + "", value);
 const _export_sfc$1 = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -11888,66 +10900,907 @@ const _export_sfc$1 = (sfc, props) => {
   }
   return target;
 };
+var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+function getDefaultExportFromCjs(x) {
+  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+}
+var check = function(it) {
+  return it && it.Math === Math && it;
+};
+var globalThis_1 = (
+  // eslint-disable-next-line es/no-global-this -- safe
+  check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || // eslint-disable-next-line no-restricted-globals -- safe
+  check(typeof self == "object" && self) || check(typeof commonjsGlobal == "object" && commonjsGlobal) || check(typeof commonjsGlobal == "object" && commonjsGlobal) || // eslint-disable-next-line no-new-func -- fallback
+  /* @__PURE__ */ function() {
+    return this;
+  }() || Function("return this")()
+);
+var objectGetOwnPropertyDescriptor = {};
+var fails$a = function(exec) {
+  try {
+    return !!exec();
+  } catch (error) {
+    return true;
+  }
+};
+var fails$9 = fails$a;
+var descriptors = !fails$9(function() {
+  return Object.defineProperty({}, 1, {
+    get: function() {
+      return 7;
+    }
+  })[1] !== 7;
+});
+var fails$8 = fails$a;
+var functionBindNative = !fails$8(function() {
+  var test = (function() {
+  }).bind();
+  return typeof test != "function" || test.hasOwnProperty("prototype");
+});
+var NATIVE_BIND$1 = functionBindNative;
+var call$4 = Function.prototype.call;
+var functionCall = NATIVE_BIND$1 ? call$4.bind(call$4) : function() {
+  return call$4.apply(call$4, arguments);
+};
+var objectPropertyIsEnumerable = {};
+var $propertyIsEnumerable = {}.propertyIsEnumerable;
+var getOwnPropertyDescriptor$2 = Object.getOwnPropertyDescriptor;
+var NASHORN_BUG = getOwnPropertyDescriptor$2 && !$propertyIsEnumerable.call({
+  1: 2
+}, 1);
+objectPropertyIsEnumerable.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
+  var descriptor = getOwnPropertyDescriptor$2(this, V);
+  return !!descriptor && descriptor.enumerable;
+} : $propertyIsEnumerable;
+var createPropertyDescriptor$2 = function(bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value
+  };
+};
+var NATIVE_BIND = functionBindNative;
+var FunctionPrototype$1 = Function.prototype;
+var call$3 = FunctionPrototype$1.call;
+var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype$1.bind.bind(call$3, call$3);
+var functionUncurryThis = NATIVE_BIND ? uncurryThisWithBind : function(fn2) {
+  return function() {
+    return call$3.apply(fn2, arguments);
+  };
+};
+var uncurryThis$c = functionUncurryThis;
+var toString$1 = uncurryThis$c({}.toString);
+var stringSlice$1 = uncurryThis$c("".slice);
+var classofRaw$1 = function(it) {
+  return stringSlice$1(toString$1(it), 8, -1);
+};
+var uncurryThis$b = functionUncurryThis;
+var fails$7 = fails$a;
+var classof$3 = classofRaw$1;
+var $Object$2 = Object;
+var split = uncurryThis$b("".split);
+var indexedObject = fails$7(function() {
+  return !$Object$2("z").propertyIsEnumerable(0);
+}) ? function(it) {
+  return classof$3(it) === "String" ? split(it, "") : $Object$2(it);
+} : $Object$2;
+var isNullOrUndefined$2 = function(it) {
+  return it === null || it === void 0;
+};
+var isNullOrUndefined$1 = isNullOrUndefined$2;
+var $TypeError$8 = TypeError;
+var requireObjectCoercible$2 = function(it) {
+  if (isNullOrUndefined$1(it)) throw new $TypeError$8("Can't call method on " + it);
+  return it;
+};
+var IndexedObject = indexedObject;
+var requireObjectCoercible$1 = requireObjectCoercible$2;
+var toIndexedObject$3 = function(it) {
+  return IndexedObject(requireObjectCoercible$1(it));
+};
+var documentAll = typeof document == "object" && document.all;
+var isCallable$a = typeof documentAll == "undefined" && documentAll !== void 0 ? function(argument) {
+  return typeof argument == "function" || argument === documentAll;
+} : function(argument) {
+  return typeof argument == "function";
+};
+var isCallable$9 = isCallable$a;
+var isObject$8 = function(it) {
+  return typeof it == "object" ? it !== null : isCallable$9(it);
+};
+var globalThis$i = globalThis_1;
+var isCallable$8 = isCallable$a;
+var aFunction = function(argument) {
+  return isCallable$8(argument) ? argument : void 0;
+};
+var getBuiltIn$2 = function(namespace, method) {
+  return arguments.length < 2 ? aFunction(globalThis$i[namespace]) : globalThis$i[namespace] && globalThis$i[namespace][method];
+};
+var uncurryThis$a = functionUncurryThis;
+var objectIsPrototypeOf = uncurryThis$a({}.isPrototypeOf);
+var globalThis$h = globalThis_1;
+var navigator$1 = globalThis$h.navigator;
+var userAgent$2 = navigator$1 && navigator$1.userAgent;
+var environmentUserAgent = userAgent$2 ? String(userAgent$2) : "";
+var globalThis$g = globalThis_1;
+var userAgent$1 = environmentUserAgent;
+var process = globalThis$g.process;
+var Deno$1 = globalThis$g.Deno;
+var versions = process && process.versions || Deno$1 && Deno$1.version;
+var v8 = versions && versions.v8;
+var match, version;
+if (v8) {
+  match = v8.split(".");
+  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+}
+if (!version && userAgent$1) {
+  match = userAgent$1.match(/Edge\/(\d+)/);
+  if (!match || match[1] >= 74) {
+    match = userAgent$1.match(/Chrome\/(\d+)/);
+    if (match) version = +match[1];
+  }
+}
+var environmentV8Version = version;
+var V8_VERSION = environmentV8Version;
+var fails$6 = fails$a;
+var globalThis$f = globalThis_1;
+var $String$3 = globalThis$f.String;
+var symbolConstructorDetection = !!Object.getOwnPropertySymbols && !fails$6(function() {
+  var symbol = Symbol("symbol detection");
+  return !$String$3(symbol) || !(Object(symbol) instanceof Symbol) || // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
+  !Symbol.sham && V8_VERSION && V8_VERSION < 41;
+});
+var NATIVE_SYMBOL$1 = symbolConstructorDetection;
+var useSymbolAsUid = NATIVE_SYMBOL$1 && !Symbol.sham && typeof Symbol.iterator == "symbol";
+var getBuiltIn$1 = getBuiltIn$2;
+var isCallable$7 = isCallable$a;
+var isPrototypeOf = objectIsPrototypeOf;
+var USE_SYMBOL_AS_UID$1 = useSymbolAsUid;
+var $Object$1 = Object;
+var isSymbol$2 = USE_SYMBOL_AS_UID$1 ? function(it) {
+  return typeof it == "symbol";
+} : function(it) {
+  var $Symbol = getBuiltIn$1("Symbol");
+  return isCallable$7($Symbol) && isPrototypeOf($Symbol.prototype, $Object$1(it));
+};
+var $String$2 = String;
+var tryToString$1 = function(argument) {
+  try {
+    return $String$2(argument);
+  } catch (error) {
+    return "Object";
+  }
+};
+var isCallable$6 = isCallable$a;
+var tryToString = tryToString$1;
+var $TypeError$7 = TypeError;
+var aCallable$2 = function(argument) {
+  if (isCallable$6(argument)) return argument;
+  throw new $TypeError$7(tryToString(argument) + " is not a function");
+};
+var aCallable$1 = aCallable$2;
+var isNullOrUndefined = isNullOrUndefined$2;
+var getMethod$1 = function(V, P) {
+  var func = V[P];
+  return isNullOrUndefined(func) ? void 0 : aCallable$1(func);
+};
+var call$2 = functionCall;
+var isCallable$5 = isCallable$a;
+var isObject$7 = isObject$8;
+var $TypeError$6 = TypeError;
+var ordinaryToPrimitive$1 = function(input, pref) {
+  var fn2, val;
+  if (pref === "string" && isCallable$5(fn2 = input.toString) && !isObject$7(val = call$2(fn2, input))) return val;
+  if (isCallable$5(fn2 = input.valueOf) && !isObject$7(val = call$2(fn2, input))) return val;
+  if (pref !== "string" && isCallable$5(fn2 = input.toString) && !isObject$7(val = call$2(fn2, input))) return val;
+  throw new $TypeError$6("Can't convert object to primitive value");
+};
+var sharedStore = {
+  exports: {}
+};
+var globalThis$e = globalThis_1;
+var defineProperty$2 = Object.defineProperty;
+var defineGlobalProperty$3 = function(key, value) {
+  try {
+    defineProperty$2(globalThis$e, key, {
+      value,
+      configurable: true,
+      writable: true
+    });
+  } catch (error) {
+    globalThis$e[key] = value;
+  }
+  return value;
+};
+var globalThis$d = globalThis_1;
+var defineGlobalProperty$2 = defineGlobalProperty$3;
+var SHARED = "__core-js_shared__";
+var store$3 = sharedStore.exports = globalThis$d[SHARED] || defineGlobalProperty$2(SHARED, {});
+(store$3.versions || (store$3.versions = [])).push({
+  version: "3.39.0",
+  mode: "global",
+  copyright: "© 2014-2024 Denis Pushkarev (zloirock.ru)",
+  license: "https://github.com/zloirock/core-js/blob/v3.39.0/LICENSE",
+  source: "https://github.com/zloirock/core-js"
+});
+var sharedStoreExports = sharedStore.exports;
+var store$2 = sharedStoreExports;
+var shared$3 = function(key, value) {
+  return store$2[key] || (store$2[key] = value || {});
+};
+var requireObjectCoercible = requireObjectCoercible$2;
+var $Object = Object;
+var toObject$2 = function(argument) {
+  return $Object(requireObjectCoercible(argument));
+};
+var uncurryThis$9 = functionUncurryThis;
+var toObject$1 = toObject$2;
+var hasOwnProperty$9 = uncurryThis$9({}.hasOwnProperty);
+var hasOwnProperty_1 = Object.hasOwn || function hasOwn2(it, key) {
+  return hasOwnProperty$9(toObject$1(it), key);
+};
+var uncurryThis$8 = functionUncurryThis;
+var id = 0;
+var postfix = Math.random();
+var toString = uncurryThis$8(1 .toString);
+var uid$2 = function(key) {
+  return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString(++id + postfix, 36);
+};
+var globalThis$c = globalThis_1;
+var shared$2 = shared$3;
+var hasOwn$6 = hasOwnProperty_1;
+var uid$1 = uid$2;
+var NATIVE_SYMBOL = symbolConstructorDetection;
+var USE_SYMBOL_AS_UID = useSymbolAsUid;
+var Symbol$5 = globalThis$c.Symbol;
+var WellKnownSymbolsStore = shared$2("wks");
+var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol$5["for"] || Symbol$5 : Symbol$5 && Symbol$5.withoutSetter || uid$1;
+var wellKnownSymbol$1 = function(name) {
+  if (!hasOwn$6(WellKnownSymbolsStore, name)) {
+    WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn$6(Symbol$5, name) ? Symbol$5[name] : createWellKnownSymbol("Symbol." + name);
+  }
+  return WellKnownSymbolsStore[name];
+};
+var call$1 = functionCall;
+var isObject$6 = isObject$8;
+var isSymbol$1 = isSymbol$2;
+var getMethod = getMethod$1;
+var ordinaryToPrimitive = ordinaryToPrimitive$1;
+var wellKnownSymbol = wellKnownSymbol$1;
+var $TypeError$5 = TypeError;
+var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
+var toPrimitive$2 = function(input, pref) {
+  if (!isObject$6(input) || isSymbol$1(input)) return input;
+  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
+  var result;
+  if (exoticToPrim) {
+    if (pref === void 0) pref = "default";
+    result = call$1(exoticToPrim, input, pref);
+    if (!isObject$6(result) || isSymbol$1(result)) return result;
+    throw new $TypeError$5("Can't convert object to primitive value");
+  }
+  if (pref === void 0) pref = "number";
+  return ordinaryToPrimitive(input, pref);
+};
+var toPrimitive$1 = toPrimitive$2;
+var isSymbol = isSymbol$2;
+var toPropertyKey$3 = function(argument) {
+  var key = toPrimitive$1(argument, "string");
+  return isSymbol(key) ? key : key + "";
+};
+var globalThis$b = globalThis_1;
+var isObject$5 = isObject$8;
+var document$1 = globalThis$b.document;
+var EXISTS$1 = isObject$5(document$1) && isObject$5(document$1.createElement);
+var documentCreateElement = function(it) {
+  return EXISTS$1 ? document$1.createElement(it) : {};
+};
+var DESCRIPTORS$8 = descriptors;
+var fails$5 = fails$a;
+var createElement = documentCreateElement;
+var ie8DomDefine = !DESCRIPTORS$8 && !fails$5(function() {
+  return Object.defineProperty(createElement("div"), "a", {
+    get: function() {
+      return 7;
+    }
+  }).a !== 7;
+});
+var DESCRIPTORS$7 = descriptors;
+var call = functionCall;
+var propertyIsEnumerableModule = objectPropertyIsEnumerable;
+var createPropertyDescriptor$1 = createPropertyDescriptor$2;
+var toIndexedObject$2 = toIndexedObject$3;
+var toPropertyKey$2 = toPropertyKey$3;
+var hasOwn$5 = hasOwnProperty_1;
+var IE8_DOM_DEFINE$1 = ie8DomDefine;
+var $getOwnPropertyDescriptor$1 = Object.getOwnPropertyDescriptor;
+objectGetOwnPropertyDescriptor.f = DESCRIPTORS$7 ? $getOwnPropertyDescriptor$1 : function getOwnPropertyDescriptor(O, P) {
+  O = toIndexedObject$2(O);
+  P = toPropertyKey$2(P);
+  if (IE8_DOM_DEFINE$1) try {
+    return $getOwnPropertyDescriptor$1(O, P);
+  } catch (error) {
+  }
+  if (hasOwn$5(O, P)) return createPropertyDescriptor$1(!call(propertyIsEnumerableModule.f, O, P), O[P]);
+};
+var objectDefineProperty = {};
+var DESCRIPTORS$6 = descriptors;
+var fails$4 = fails$a;
+var v8PrototypeDefineBug = DESCRIPTORS$6 && fails$4(function() {
+  return Object.defineProperty(function() {
+  }, "prototype", {
+    value: 42,
+    writable: false
+  }).prototype !== 42;
+});
+var isObject$4 = isObject$8;
+var $String$1 = String;
+var $TypeError$4 = TypeError;
+var anObject$2 = function(argument) {
+  if (isObject$4(argument)) return argument;
+  throw new $TypeError$4($String$1(argument) + " is not an object");
+};
+var DESCRIPTORS$5 = descriptors;
+var IE8_DOM_DEFINE = ie8DomDefine;
+var V8_PROTOTYPE_DEFINE_BUG = v8PrototypeDefineBug;
+var anObject$1 = anObject$2;
+var toPropertyKey$1 = toPropertyKey$3;
+var $TypeError$3 = TypeError;
+var $defineProperty = Object.defineProperty;
+var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var ENUMERABLE = "enumerable";
+var CONFIGURABLE$1 = "configurable";
+var WRITABLE = "writable";
+objectDefineProperty.f = DESCRIPTORS$5 ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
+  anObject$1(O);
+  P = toPropertyKey$1(P);
+  anObject$1(Attributes);
+  if (typeof O === "function" && P === "prototype" && "value" in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
+    var current = $getOwnPropertyDescriptor(O, P);
+    if (current && current[WRITABLE]) {
+      O[P] = Attributes.value;
+      Attributes = {
+        configurable: CONFIGURABLE$1 in Attributes ? Attributes[CONFIGURABLE$1] : current[CONFIGURABLE$1],
+        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
+        writable: false
+      };
+    }
+  }
+  return $defineProperty(O, P, Attributes);
+} : $defineProperty : function defineProperty2(O, P, Attributes) {
+  anObject$1(O);
+  P = toPropertyKey$1(P);
+  anObject$1(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return $defineProperty(O, P, Attributes);
+  } catch (error) {
+  }
+  if ("get" in Attributes || "set" in Attributes) throw new $TypeError$3("Accessors not supported");
+  if ("value" in Attributes) O[P] = Attributes.value;
+  return O;
+};
+var DESCRIPTORS$4 = descriptors;
+var definePropertyModule$2 = objectDefineProperty;
+var createPropertyDescriptor = createPropertyDescriptor$2;
+var createNonEnumerableProperty$2 = DESCRIPTORS$4 ? function(object, key, value) {
+  return definePropertyModule$2.f(object, key, createPropertyDescriptor(1, value));
+} : function(object, key, value) {
+  object[key] = value;
+  return object;
+};
+var makeBuiltIn$3 = {
+  exports: {}
+};
+var DESCRIPTORS$3 = descriptors;
+var hasOwn$4 = hasOwnProperty_1;
+var FunctionPrototype = Function.prototype;
+var getDescriptor = DESCRIPTORS$3 && Object.getOwnPropertyDescriptor;
+var EXISTS = hasOwn$4(FunctionPrototype, "name");
+var PROPER = EXISTS && (function something() {
+}).name === "something";
+var CONFIGURABLE = EXISTS && (!DESCRIPTORS$3 || DESCRIPTORS$3 && getDescriptor(FunctionPrototype, "name").configurable);
+var functionName = {
+  EXISTS,
+  PROPER,
+  CONFIGURABLE
+};
+var uncurryThis$7 = functionUncurryThis;
+var isCallable$4 = isCallable$a;
+var store$1 = sharedStoreExports;
+var functionToString = uncurryThis$7(Function.toString);
+if (!isCallable$4(store$1.inspectSource)) {
+  store$1.inspectSource = function(it) {
+    return functionToString(it);
+  };
+}
+var inspectSource$1 = store$1.inspectSource;
+var globalThis$a = globalThis_1;
+var isCallable$3 = isCallable$a;
+var WeakMap$3 = globalThis$a.WeakMap;
+var weakMapBasicDetection = isCallable$3(WeakMap$3) && /native code/.test(String(WeakMap$3));
+var shared$1 = shared$3;
+var uid = uid$2;
+var keys$2 = shared$1("keys");
+var sharedKey$1 = function(key) {
+  return keys$2[key] || (keys$2[key] = uid(key));
+};
+var hiddenKeys$3 = {};
+var NATIVE_WEAK_MAP = weakMapBasicDetection;
+var globalThis$9 = globalThis_1;
+var isObject$3 = isObject$8;
+var createNonEnumerableProperty$1 = createNonEnumerableProperty$2;
+var hasOwn$3 = hasOwnProperty_1;
+var shared = sharedStoreExports;
+var sharedKey = sharedKey$1;
+var hiddenKeys$2 = hiddenKeys$3;
+var OBJECT_ALREADY_INITIALIZED = "Object already initialized";
+var TypeError$2 = globalThis$9.TypeError;
+var WeakMap$2 = globalThis$9.WeakMap;
+var set, get, has;
+var enforce = function(it) {
+  return has(it) ? get(it) : set(it, {});
+};
+var getterFor = function(TYPE) {
+  return function(it) {
+    var state;
+    if (!isObject$3(it) || (state = get(it)).type !== TYPE) {
+      throw new TypeError$2("Incompatible receiver, " + TYPE + " required");
+    }
+    return state;
+  };
+};
+if (NATIVE_WEAK_MAP || shared.state) {
+  var store = shared.state || (shared.state = new WeakMap$2());
+  store.get = store.get;
+  store.has = store.has;
+  store.set = store.set;
+  set = function(it, metadata) {
+    if (store.has(it)) throw new TypeError$2(OBJECT_ALREADY_INITIALIZED);
+    metadata.facade = it;
+    store.set(it, metadata);
+    return metadata;
+  };
+  get = function(it) {
+    return store.get(it) || {};
+  };
+  has = function(it) {
+    return store.has(it);
+  };
+} else {
+  var STATE = sharedKey("state");
+  hiddenKeys$2[STATE] = true;
+  set = function(it, metadata) {
+    if (hasOwn$3(it, STATE)) throw new TypeError$2(OBJECT_ALREADY_INITIALIZED);
+    metadata.facade = it;
+    createNonEnumerableProperty$1(it, STATE, metadata);
+    return metadata;
+  };
+  get = function(it) {
+    return hasOwn$3(it, STATE) ? it[STATE] : {};
+  };
+  has = function(it) {
+    return hasOwn$3(it, STATE);
+  };
+}
+var internalState = {
+  set,
+  get,
+  has,
+  enforce,
+  getterFor
+};
+var uncurryThis$6 = functionUncurryThis;
+var fails$3 = fails$a;
+var isCallable$2 = isCallable$a;
+var hasOwn$2 = hasOwnProperty_1;
+var DESCRIPTORS$2 = descriptors;
+var CONFIGURABLE_FUNCTION_NAME = functionName.CONFIGURABLE;
+var inspectSource = inspectSource$1;
+var InternalStateModule = internalState;
+var enforceInternalState = InternalStateModule.enforce;
+var getInternalState = InternalStateModule.get;
+var $String = String;
+var defineProperty$1 = Object.defineProperty;
+var stringSlice = uncurryThis$6("".slice);
+var replace = uncurryThis$6("".replace);
+var join = uncurryThis$6([].join);
+var CONFIGURABLE_LENGTH = DESCRIPTORS$2 && !fails$3(function() {
+  return defineProperty$1(function() {
+  }, "length", {
+    value: 8
+  }).length !== 8;
+});
+var TEMPLATE = String(String).split("String");
+var makeBuiltIn$2 = makeBuiltIn$3.exports = function(value, name, options) {
+  if (stringSlice($String(name), 0, 7) === "Symbol(") {
+    name = "[" + replace($String(name), /^Symbol\(([^)]*)\).*$/, "$1") + "]";
+  }
+  if (options && options.getter) name = "get " + name;
+  if (options && options.setter) name = "set " + name;
+  if (!hasOwn$2(value, "name") || CONFIGURABLE_FUNCTION_NAME && value.name !== name) {
+    if (DESCRIPTORS$2) defineProperty$1(value, "name", {
+      value: name,
+      configurable: true
+    });
+    else value.name = name;
+  }
+  if (CONFIGURABLE_LENGTH && options && hasOwn$2(options, "arity") && value.length !== options.arity) {
+    defineProperty$1(value, "length", {
+      value: options.arity
+    });
+  }
+  try {
+    if (options && hasOwn$2(options, "constructor") && options.constructor) {
+      if (DESCRIPTORS$2) defineProperty$1(value, "prototype", {
+        writable: false
+      });
+    } else if (value.prototype) value.prototype = void 0;
+  } catch (error) {
+  }
+  var state = enforceInternalState(value);
+  if (!hasOwn$2(state, "source")) {
+    state.source = join(TEMPLATE, typeof name == "string" ? name : "");
+  }
+  return value;
+};
+Function.prototype.toString = makeBuiltIn$2(function toString2() {
+  return isCallable$2(this) && getInternalState(this).source || inspectSource(this);
+}, "toString");
+var makeBuiltInExports = makeBuiltIn$3.exports;
+var isCallable$1 = isCallable$a;
+var definePropertyModule$1 = objectDefineProperty;
+var makeBuiltIn$1 = makeBuiltInExports;
+var defineGlobalProperty$1 = defineGlobalProperty$3;
+var defineBuiltIn$1 = function(O, key, value, options) {
+  if (!options) options = {};
+  var simple = options.enumerable;
+  var name = options.name !== void 0 ? options.name : key;
+  if (isCallable$1(value)) makeBuiltIn$1(value, name, options);
+  if (options.global) {
+    if (simple) O[key] = value;
+    else defineGlobalProperty$1(key, value);
+  } else {
+    try {
+      if (!options.unsafe) delete O[key];
+      else if (O[key]) simple = true;
+    } catch (error) {
+    }
+    if (simple) O[key] = value;
+    else definePropertyModule$1.f(O, key, {
+      value,
+      enumerable: false,
+      configurable: !options.nonConfigurable,
+      writable: !options.nonWritable
+    });
+  }
+  return O;
+};
+var objectGetOwnPropertyNames = {};
+var ceil = Math.ceil;
+var floor = Math.floor;
+var mathTrunc = Math.trunc || function trunc(x) {
+  var n = +x;
+  return (n > 0 ? floor : ceil)(n);
+};
+var trunc2 = mathTrunc;
+var toIntegerOrInfinity$3 = function(argument) {
+  var number = +argument;
+  return number !== number || number === 0 ? 0 : trunc2(number);
+};
+var toIntegerOrInfinity$2 = toIntegerOrInfinity$3;
+var max = Math.max;
+var min$2 = Math.min;
+var toAbsoluteIndex$1 = function(index, length) {
+  var integer = toIntegerOrInfinity$2(index);
+  return integer < 0 ? max(integer + length, 0) : min$2(integer, length);
+};
+var toIntegerOrInfinity$1 = toIntegerOrInfinity$3;
+var min$1 = Math.min;
+var toLength$2 = function(argument) {
+  var len = toIntegerOrInfinity$1(argument);
+  return len > 0 ? min$1(len, 9007199254740991) : 0;
+};
+var toLength$1 = toLength$2;
+var lengthOfArrayLike$2 = function(obj) {
+  return toLength$1(obj.length);
+};
+var toIndexedObject$1 = toIndexedObject$3;
+var toAbsoluteIndex = toAbsoluteIndex$1;
+var lengthOfArrayLike$1 = lengthOfArrayLike$2;
+var createMethod = function(IS_INCLUDES) {
+  return function($this, el, fromIndex) {
+    var O = toIndexedObject$1($this);
+    var length = lengthOfArrayLike$1(O);
+    if (length === 0) return !IS_INCLUDES && -1;
+    var index = toAbsoluteIndex(fromIndex, length);
+    var value;
+    if (IS_INCLUDES && el !== el) while (length > index) {
+      value = O[index++];
+      if (value !== value) return true;
+    }
+    else for (; length > index; index++) {
+      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+    }
+    return !IS_INCLUDES && -1;
+  };
+};
+var arrayIncludes = {
+  // `Array.prototype.includes` method
+  // https://tc39.es/ecma262/#sec-array.prototype.includes
+  includes: createMethod(true),
+  // `Array.prototype.indexOf` method
+  // https://tc39.es/ecma262/#sec-array.prototype.indexof
+  indexOf: createMethod(false)
+};
+var uncurryThis$5 = functionUncurryThis;
+var hasOwn$1 = hasOwnProperty_1;
+var toIndexedObject = toIndexedObject$3;
+var indexOf = arrayIncludes.indexOf;
+var hiddenKeys$1 = hiddenKeys$3;
+var push = uncurryThis$5([].push);
+var objectKeysInternal = function(object, names) {
+  var O = toIndexedObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) !hasOwn$1(hiddenKeys$1, key) && hasOwn$1(O, key) && push(result, key);
+  while (names.length > i) if (hasOwn$1(O, key = names[i++])) {
+    ~indexOf(result, key) || push(result, key);
+  }
+  return result;
+};
+var enumBugKeys$1 = ["constructor", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "toLocaleString", "toString", "valueOf"];
+var internalObjectKeys = objectKeysInternal;
+var enumBugKeys = enumBugKeys$1;
+var hiddenKeys = enumBugKeys.concat("length", "prototype");
+objectGetOwnPropertyNames.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return internalObjectKeys(O, hiddenKeys);
+};
+var objectGetOwnPropertySymbols = {};
+objectGetOwnPropertySymbols.f = Object.getOwnPropertySymbols;
+var getBuiltIn = getBuiltIn$2;
+var uncurryThis$4 = functionUncurryThis;
+var getOwnPropertyNamesModule = objectGetOwnPropertyNames;
+var getOwnPropertySymbolsModule = objectGetOwnPropertySymbols;
+var anObject = anObject$2;
+var concat = uncurryThis$4([].concat);
+var ownKeys$1 = getBuiltIn("Reflect", "ownKeys") || function ownKeys(it) {
+  var keys2 = getOwnPropertyNamesModule.f(anObject(it));
+  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+  return getOwnPropertySymbols ? concat(keys2, getOwnPropertySymbols(it)) : keys2;
+};
+var hasOwn22 = hasOwnProperty_1;
+var ownKeys2 = ownKeys$1;
+var getOwnPropertyDescriptorModule = objectGetOwnPropertyDescriptor;
+var definePropertyModule = objectDefineProperty;
+var copyConstructorProperties$1 = function(target, source, exceptions) {
+  var keys2 = ownKeys2(source);
+  var defineProperty4 = definePropertyModule.f;
+  var getOwnPropertyDescriptor3 = getOwnPropertyDescriptorModule.f;
+  for (var i = 0; i < keys2.length; i++) {
+    var key = keys2[i];
+    if (!hasOwn22(target, key) && !(exceptions && hasOwn22(exceptions, key))) {
+      defineProperty4(target, key, getOwnPropertyDescriptor3(source, key));
+    }
+  }
+};
+var fails$2 = fails$a;
+var isCallable = isCallable$a;
+var replacement = /#|\.prototype\./;
+var isForced$1 = function(feature, detection) {
+  var value = data[normalize(feature)];
+  return value === POLYFILL ? true : value === NATIVE ? false : isCallable(detection) ? fails$2(detection) : !!detection;
+};
+var normalize = isForced$1.normalize = function(string) {
+  return String(string).replace(replacement, ".").toLowerCase();
+};
+var data = isForced$1.data = {};
+var NATIVE = isForced$1.NATIVE = "N";
+var POLYFILL = isForced$1.POLYFILL = "P";
+var isForced_1 = isForced$1;
+var globalThis$8 = globalThis_1;
+var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f;
+var createNonEnumerableProperty = createNonEnumerableProperty$2;
+var defineBuiltIn = defineBuiltIn$1;
+var defineGlobalProperty = defineGlobalProperty$3;
+var copyConstructorProperties = copyConstructorProperties$1;
+var isForced = isForced_1;
+var _export = function(options, source) {
+  var TARGET = options.target;
+  var GLOBAL = options.global;
+  var STATIC = options.stat;
+  var FORCED2, target, key, targetProperty, sourceProperty, descriptor;
+  if (GLOBAL) {
+    target = globalThis$8;
+  } else if (STATIC) {
+    target = globalThis$8[TARGET] || defineGlobalProperty(TARGET, {});
+  } else {
+    target = globalThis$8[TARGET] && globalThis$8[TARGET].prototype;
+  }
+  if (target) for (key in source) {
+    sourceProperty = source[key];
+    if (options.dontCallGetSet) {
+      descriptor = getOwnPropertyDescriptor$1(target, key);
+      targetProperty = descriptor && descriptor.value;
+    } else targetProperty = target[key];
+    FORCED2 = isForced(GLOBAL ? key : TARGET + (STATIC ? "." : "#") + key, options.forced);
+    if (!FORCED2 && targetProperty !== void 0) {
+      if (typeof sourceProperty == typeof targetProperty) continue;
+      copyConstructorProperties(sourceProperty, targetProperty);
+    }
+    if (options.sham || targetProperty && targetProperty.sham) {
+      createNonEnumerableProperty(sourceProperty, "sham", true);
+    }
+    defineBuiltIn(target, key, sourceProperty, options);
+  }
+};
+var classof$2 = classofRaw$1;
+var isArray$5 = Array.isArray || function isArray(argument) {
+  return classof$2(argument) === "Array";
+};
+var DESCRIPTORS$1 = descriptors;
+var isArray$4 = isArray$5;
+var $TypeError$2 = TypeError;
+var getOwnPropertyDescriptor2 = Object.getOwnPropertyDescriptor;
+var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS$1 && !function() {
+  if (this !== void 0) return true;
+  try {
+    Object.defineProperty([], "length", {
+      writable: false
+    }).length = 1;
+  } catch (error) {
+    return error instanceof TypeError;
+  }
+}();
+var arraySetLength = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function(O, length) {
+  if (isArray$4(O) && !getOwnPropertyDescriptor2(O, "length").writable) {
+    throw new $TypeError$2("Cannot set read only .length");
+  }
+  return O.length = length;
+} : function(O, length) {
+  return O.length = length;
+};
+var $TypeError$1 = TypeError;
+var MAX_SAFE_INTEGER$2 = 9007199254740991;
+var doesNotExceedSafeInteger$1 = function(it) {
+  if (it > MAX_SAFE_INTEGER$2) throw $TypeError$1("Maximum allowed index exceeded");
+  return it;
+};
+var $$2 = _export;
+var toObject = toObject$2;
+var lengthOfArrayLike = lengthOfArrayLike$2;
+var setArrayLength = arraySetLength;
+var doesNotExceedSafeInteger = doesNotExceedSafeInteger$1;
+var fails$1 = fails$a;
+var INCORRECT_TO_LENGTH = fails$1(function() {
+  return [].push.call({
+    length: 4294967296
+  }, 1) !== 4294967297;
+});
+var properErrorOnNonWritableLength = function() {
+  try {
+    Object.defineProperty([], "length", {
+      writable: false
+    }).push();
+  } catch (error) {
+    return error instanceof TypeError;
+  }
+};
+var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
+$$2({
+  target: "Array",
+  proto: true,
+  arity: 1,
+  forced: FORCED
+}, {
+  // eslint-disable-next-line no-unused-vars -- required for `.length`
+  push: function push2(item) {
+    var O = toObject(this);
+    var len = lengthOfArrayLike(O);
+    var argCount = arguments.length;
+    doesNotExceedSafeInteger(len + argCount);
+    for (var i = 0; i < argCount; i++) {
+      O[len] = arguments[i];
+      len++;
+    }
+    setArrayLength(O, len);
+    return len;
+  }
+});
 const Flip = ["horizontal", "vertical"];
 const Rotate = ["90", "180", "270"];
-const _sfc_main$1c = /* @__PURE__ */ defineComponent({ name: "FIcon", inheritAttrs: false, props: {
-  /**
-  * Icon name.
-  */
-  name: { type: String, required: true },
-  /**
-  * fk-icon library
-  */
-  library: { type: String, required: false, default: "f" },
-  /**
-  * Flip icon horizontally or vertically.
-  *
-  * Must be set to one of:
-  *
-  * - `horizontal`
-  * - `vertical`
-  */
-  flip: { type: String, default: null, required: false, validator(value) {
-    return Flip.includes(value);
-  } },
-  /**
-  * Rotate icon.
-  *
-  * Must be set to one of:
-  *
-  * - `90`
-  * - `180`
-  * - `270`
-  */
-  rotate: { type: String, default: null, required: false, validator(value) {
-    return Rotate.includes(value);
-  } }
-}, computed: { spriteKey() {
-  return `${this.library}-icon-${this.name}`;
-}, spriteId() {
-  return `#${this.spriteKey}`;
-}, modifiers() {
-  const classes = [];
-  if (this.flip) {
-    classes.push(`icon--flip-${this.flip}`);
+const _sfc_main$1c = /* @__PURE__ */ defineComponent({
+  name: "FIcon",
+  inheritAttrs: false,
+  props: {
+    /**
+     * Icon name.
+     */
+    name: {
+      type: String,
+      required: true
+    },
+    /**
+     * fk-icon library
+     */
+    library: {
+      type: String,
+      required: false,
+      default: "f"
+    },
+    /**
+     * Flip icon horizontally or vertically.
+     *
+     * Must be set to one of:
+     *
+     * - `horizontal`
+     * - `vertical`
+     */
+    flip: {
+      type: String,
+      default: null,
+      required: false,
+      validator(value) {
+        return Flip.includes(value);
+      }
+    },
+    /**
+     * Rotate icon.
+     *
+     * Must be set to one of:
+     *
+     * - `90`
+     * - `180`
+     * - `270`
+     */
+    rotate: {
+      type: String,
+      default: null,
+      required: false,
+      validator(value) {
+        return Rotate.includes(value);
+      }
+    }
+  },
+  computed: {
+    spriteKey() {
+      return `${this.library}-icon-${this.name}`;
+    },
+    spriteId() {
+      return `#${this.spriteKey}`;
+    },
+    modifiers() {
+      const classes = [];
+      if (this.flip) {
+        classes.push(`icon--flip-${this.flip}`);
+      }
+      if (this.rotate) {
+        classes.push(`icon--rotate-${this.rotate}`);
+      }
+      return classes;
+    },
+    ariaHidden() {
+      const slotUsed = Boolean(this.$slots.default);
+      const ariaLabel = this.$attrs["aria-label"] !== void 0;
+      const ariaLabelledby = this.$attrs["aria-labelledby"] !== void 0;
+      const ariaDescription = this.$attrs["aria-description"] !== void 0;
+      const ariaDescribedby = this.$attrs["aria-describedby"] !== void 0;
+      const hasText = slotUsed || ariaLabel || ariaLabelledby || ariaDescription || ariaDescribedby;
+      return hasText ? void 0 : "true";
+    }
   }
-  if (this.rotate) {
-    classes.push(`icon--rotate-${this.rotate}`);
-  }
-  return classes;
-}, ariaHidden() {
-  const slotUsed = Boolean(this.$slots.default);
-  const ariaLabel = this.$attrs["aria-label"] !== void 0;
-  const ariaLabelledby = this.$attrs["aria-labelledby"] !== void 0;
-  const ariaDescription = this.$attrs["aria-description"] !== void 0;
-  const ariaDescribedby = this.$attrs["aria-describedby"] !== void 0;
-  const hasText = slotUsed || ariaLabel || ariaLabelledby || ariaDescription || ariaDescribedby;
-  return hasText ? void 0 : "true";
-} } });
+});
 const _hoisted_1$T = ["aria-hidden"];
 const _hoisted_2$F = ["xlink:href"];
 function _sfc_render$12(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, { focusable: "false", class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]], "aria-hidden": _ctx.ariaHidden }), [renderSlot(_ctx.$slots, "default"), _cache[0] || (_cache[0] = createTextVNode()), createBaseVNode("use", { "xlink:href": _ctx.spriteId }, null, 8, _hoisted_2$F)], 16, _hoisted_1$T);
+  return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
+    focusable: "false",
+    class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
+    "aria-hidden": _ctx.ariaHidden
+  }), [renderSlot(_ctx.$slots, "default"), _cache[0] || (_cache[0] = createTextVNode()), createBaseVNode("use", {
+    "xlink:href": _ctx.spriteId
+  }, null, 8, _hoisted_2$F)], 16, _hoisted_1$T);
 }
 const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1c, [["render", _sfc_render$12]]);
 const DATA_TEST_ATTRIBUTE_NAME = "data-test";
@@ -11956,25 +11809,36 @@ function throwErrorIfEmpty(value) {
     throw new Error(`Did you forgot to add a value to v-test?`);
   }
 }
-const TestDirective = { mounted(el, { value }) {
-  throwErrorIfEmpty(value);
-  el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
-}, updated(el, { value }) {
-  throwErrorIfEmpty(value);
-  el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
-} };
-const TestPlugin = { install(app2) {
-  app2.directive("test", TestDirective);
-} };
+const TestDirective = {
+  mounted(el, {
+    value
+  }) {
+    throwErrorIfEmpty(value);
+    el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
+  },
+  updated(el, {
+    value
+  }) {
+    throwErrorIfEmpty(value);
+    el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
+  }
+};
+const TestPlugin = {
+  install(app2) {
+    app2.directive("test", TestDirective);
+  }
+};
 function translate(key, defaultValueOrArgs, args) {
-  const { provider } = TranslationService;
+  const {
+    provider
+  } = TranslationService;
   return provider.translate(key, defaultValueOrArgs, args);
 }
-const TranslationMixin = { methods: { $t: translate } };
-var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
-function getDefaultExportFromCjs(x) {
-  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
-}
+const TranslationMixin = {
+  methods: {
+    $t: translate
+  }
+};
 function listCacheClear$1() {
   this.__data__ = [];
   this.size = 0;
@@ -12253,7 +12117,11 @@ var _Hash = Hash$1;
 var Hash = _Hash, ListCache$2 = _ListCache, Map$3 = _Map;
 function mapCacheClear$1() {
   this.size = 0;
-  this.__data__ = { "hash": new Hash(), "map": new (Map$3 || ListCache$2)(), "string": new Hash() };
+  this.__data__ = {
+    "hash": new Hash(),
+    "map": new (Map$3 || ListCache$2)(),
+    "string": new Hash()
+  };
 }
 var _mapCacheClear = mapCacheClear$1;
 function isKeyable$1(value) {
@@ -12561,7 +12429,9 @@ var isArguments$1 = baseIsArguments(/* @__PURE__ */ function() {
   return isObjectLike$2(value) && hasOwnProperty$4.call(value, "callee") && !propertyIsEnumerable2.call(value, "callee");
 };
 var isArguments_1 = isArguments$1;
-var isBuffer$2 = { exports: {} };
+var isBuffer$2 = {
+  exports: {}
+};
 function stubFalse() {
   return false;
 }
@@ -12607,7 +12477,9 @@ function baseUnary$1(func) {
   };
 }
 var _baseUnary = baseUnary$1;
-var _nodeUtil = { exports: {} };
+var _nodeUtil = {
+  exports: {}
+};
 _nodeUtil.exports;
 (function(module, exports) {
   var freeGlobal2 = _freeGlobal;
@@ -12743,6 +12615,228 @@ function equalObjects$1(object, other, bitmask, customizer, equalFunc, stack2) {
   return result;
 }
 var _equalObjects = equalObjects$1;
+var makeBuiltIn = makeBuiltInExports;
+var defineProperty3 = objectDefineProperty;
+var defineBuiltInAccessor$1 = function(target, name, descriptor) {
+  if (descriptor.get) makeBuiltIn(descriptor.get, name, {
+    getter: true
+  });
+  if (descriptor.set) makeBuiltIn(descriptor.set, name, {
+    setter: true
+  });
+  return defineProperty3.f(target, name, descriptor);
+};
+var classofRaw = classofRaw$1;
+var uncurryThis$3 = functionUncurryThis;
+var functionUncurryThisClause = function(fn2) {
+  if (classofRaw(fn2) === "Function") return uncurryThis$3(fn2);
+};
+var uncurryThis$2 = functionUncurryThis;
+var aCallable = aCallable$2;
+var functionUncurryThisAccessor = function(object, key, method) {
+  try {
+    return uncurryThis$2(aCallable(Object.getOwnPropertyDescriptor(object, key)[method]));
+  } catch (error) {
+  }
+};
+var globalThis$7 = globalThis_1;
+var uncurryThisAccessor$1 = functionUncurryThisAccessor;
+var classof$1 = classofRaw$1;
+var ArrayBuffer$3 = globalThis$7.ArrayBuffer;
+var TypeError$1 = globalThis$7.TypeError;
+var arrayBufferByteLength$2 = ArrayBuffer$3 && uncurryThisAccessor$1(ArrayBuffer$3.prototype, "byteLength", "get") || function(O) {
+  if (classof$1(O) !== "ArrayBuffer") throw new TypeError$1("ArrayBuffer expected");
+  return O.byteLength;
+};
+var globalThis$6 = globalThis_1;
+var uncurryThis$1 = functionUncurryThisClause;
+var arrayBufferByteLength$1 = arrayBufferByteLength$2;
+var ArrayBuffer$2 = globalThis$6.ArrayBuffer;
+var ArrayBufferPrototype$2 = ArrayBuffer$2 && ArrayBuffer$2.prototype;
+var slice$1 = ArrayBufferPrototype$2 && uncurryThis$1(ArrayBufferPrototype$2.slice);
+var arrayBufferIsDetached = function(O) {
+  if (arrayBufferByteLength$1(O) !== 0) return false;
+  if (!slice$1) return false;
+  try {
+    slice$1(O, 0, 0);
+    return false;
+  } catch (error) {
+    return true;
+  }
+};
+var DESCRIPTORS = descriptors;
+var defineBuiltInAccessor = defineBuiltInAccessor$1;
+var isDetached$1 = arrayBufferIsDetached;
+var ArrayBufferPrototype$1 = ArrayBuffer.prototype;
+if (DESCRIPTORS && !("detached" in ArrayBufferPrototype$1)) {
+  defineBuiltInAccessor(ArrayBufferPrototype$1, "detached", {
+    configurable: true,
+    get: function detached() {
+      return isDetached$1(this);
+    }
+  });
+}
+var toIntegerOrInfinity = toIntegerOrInfinity$3;
+var toLength = toLength$2;
+var $RangeError = RangeError;
+var toIndex$1 = function(it) {
+  if (it === void 0) return 0;
+  var number = toIntegerOrInfinity(it);
+  var length = toLength(number);
+  if (number !== length) throw new $RangeError("Wrong length or index");
+  return length;
+};
+var isDetached = arrayBufferIsDetached;
+var $TypeError = TypeError;
+var arrayBufferNotDetached = function(it) {
+  if (isDetached(it)) throw new $TypeError("ArrayBuffer is detached");
+  return it;
+};
+var globalThis$5 = globalThis_1;
+var userAgent = environmentUserAgent;
+var classof = classofRaw$1;
+var userAgentStartsWith = function(string) {
+  return userAgent.slice(0, string.length) === string;
+};
+var environment = function() {
+  if (userAgentStartsWith("Bun/")) return "BUN";
+  if (userAgentStartsWith("Cloudflare-Workers")) return "CLOUDFLARE";
+  if (userAgentStartsWith("Deno/")) return "DENO";
+  if (userAgentStartsWith("Node.js/")) return "NODE";
+  if (globalThis$5.Bun && typeof Bun.version == "string") return "BUN";
+  if (globalThis$5.Deno && typeof Deno.version == "object") return "DENO";
+  if (classof(globalThis$5.process) === "process") return "NODE";
+  if (globalThis$5.window && globalThis$5.document) return "BROWSER";
+  return "REST";
+}();
+var ENVIRONMENT$1 = environment;
+var environmentIsNode = ENVIRONMENT$1 === "NODE";
+var globalThis$4 = globalThis_1;
+var IS_NODE = environmentIsNode;
+var getBuiltInNodeModule$1 = function(name) {
+  if (IS_NODE) {
+    try {
+      return globalThis$4.process.getBuiltinModule(name);
+    } catch (error) {
+    }
+    try {
+      return Function('return require("' + name + '")')();
+    } catch (error) {
+    }
+  }
+};
+var globalThis$3 = globalThis_1;
+var fails = fails$a;
+var V8 = environmentV8Version;
+var ENVIRONMENT = environment;
+var structuredClone$2 = globalThis$3.structuredClone;
+var structuredCloneProperTransfer = !!structuredClone$2 && !fails(function() {
+  if (ENVIRONMENT === "DENO" && V8 > 92 || ENVIRONMENT === "NODE" && V8 > 94 || ENVIRONMENT === "BROWSER" && V8 > 97) return false;
+  var buffer2 = new ArrayBuffer(8);
+  var clone = structuredClone$2(buffer2, {
+    transfer: [buffer2]
+  });
+  return buffer2.byteLength !== 0 || clone.byteLength !== 8;
+});
+var globalThis$2 = globalThis_1;
+var getBuiltInNodeModule = getBuiltInNodeModule$1;
+var PROPER_STRUCTURED_CLONE_TRANSFER$1 = structuredCloneProperTransfer;
+var structuredClone$1 = globalThis$2.structuredClone;
+var $ArrayBuffer = globalThis$2.ArrayBuffer;
+var $MessageChannel = globalThis$2.MessageChannel;
+var detach = false;
+var WorkerThreads, channel, buffer, $detach;
+if (PROPER_STRUCTURED_CLONE_TRANSFER$1) {
+  detach = function(transferable) {
+    structuredClone$1(transferable, {
+      transfer: [transferable]
+    });
+  };
+} else if ($ArrayBuffer) try {
+  if (!$MessageChannel) {
+    WorkerThreads = getBuiltInNodeModule("worker_threads");
+    if (WorkerThreads) $MessageChannel = WorkerThreads.MessageChannel;
+  }
+  if ($MessageChannel) {
+    channel = new $MessageChannel();
+    buffer = new $ArrayBuffer(2);
+    $detach = function(transferable) {
+      channel.port1.postMessage(null, [transferable]);
+    };
+    if (buffer.byteLength === 2) {
+      $detach(buffer);
+      if (buffer.byteLength === 0) detach = $detach;
+    }
+  }
+} catch (error) {
+}
+var detachTransferable$1 = detach;
+var globalThis$1 = globalThis_1;
+var uncurryThis = functionUncurryThis;
+var uncurryThisAccessor = functionUncurryThisAccessor;
+var toIndex = toIndex$1;
+var notDetached = arrayBufferNotDetached;
+var arrayBufferByteLength = arrayBufferByteLength$2;
+var detachTransferable = detachTransferable$1;
+var PROPER_STRUCTURED_CLONE_TRANSFER = structuredCloneProperTransfer;
+var structuredClone = globalThis$1.structuredClone;
+var ArrayBuffer$1 = globalThis$1.ArrayBuffer;
+var DataView$2 = globalThis$1.DataView;
+var min = Math.min;
+var ArrayBufferPrototype = ArrayBuffer$1.prototype;
+var DataViewPrototype = DataView$2.prototype;
+var slice = uncurryThis(ArrayBufferPrototype.slice);
+var isResizable = uncurryThisAccessor(ArrayBufferPrototype, "resizable", "get");
+var maxByteLength = uncurryThisAccessor(ArrayBufferPrototype, "maxByteLength", "get");
+var getInt8 = uncurryThis(DataViewPrototype.getInt8);
+var setInt8 = uncurryThis(DataViewPrototype.setInt8);
+var arrayBufferTransfer = (PROPER_STRUCTURED_CLONE_TRANSFER || detachTransferable) && function(arrayBuffer, newLength, preserveResizability) {
+  var byteLength = arrayBufferByteLength(arrayBuffer);
+  var newByteLength = newLength === void 0 ? byteLength : toIndex(newLength);
+  var fixedLength = !isResizable || !isResizable(arrayBuffer);
+  var newBuffer;
+  notDetached(arrayBuffer);
+  if (PROPER_STRUCTURED_CLONE_TRANSFER) {
+    arrayBuffer = structuredClone(arrayBuffer, {
+      transfer: [arrayBuffer]
+    });
+    if (byteLength === newByteLength && (preserveResizability || fixedLength)) return arrayBuffer;
+  }
+  if (byteLength >= newByteLength && (!preserveResizability || fixedLength)) {
+    newBuffer = slice(arrayBuffer, 0, newByteLength);
+  } else {
+    var options = preserveResizability && !fixedLength && maxByteLength ? {
+      maxByteLength: maxByteLength(arrayBuffer)
+    } : void 0;
+    newBuffer = new ArrayBuffer$1(newByteLength, options);
+    var a = new DataView$2(arrayBuffer);
+    var b = new DataView$2(newBuffer);
+    var copyLength = min(newByteLength, byteLength);
+    for (var i = 0; i < copyLength; i++) setInt8(b, i, getInt8(a, i));
+  }
+  if (!PROPER_STRUCTURED_CLONE_TRANSFER) detachTransferable(arrayBuffer);
+  return newBuffer;
+};
+var $$1 = _export;
+var $transfer$1 = arrayBufferTransfer;
+if ($transfer$1) $$1({
+  target: "ArrayBuffer",
+  proto: true
+}, {
+  transfer: function transfer() {
+    return $transfer$1(this, arguments.length ? arguments[0] : void 0, true);
+  }
+});
+var $ = _export;
+var $transfer = arrayBufferTransfer;
+if ($transfer) $({
+  target: "ArrayBuffer",
+  proto: true
+}, {
+  transferToFixedLength: function transferToFixedLength() {
+    return $transfer(this, arguments.length ? arguments[0] : void 0, false);
+  }
+});
 var getNative$3 = _getNative, root$3 = _root;
 var DataView$1 = getNative$3(root$3, "DataView");
 var _DataView = DataView$1;
@@ -12755,12 +12849,12 @@ var _Set = Set$1;
 var getNative = _getNative, root = _root;
 var WeakMap$1 = getNative(root, "WeakMap");
 var _WeakMap = WeakMap$1;
-var DataView = _DataView, Map$1 = _Map, Promise$1 = _Promise, Set$2 = _Set, WeakMap$2 = _WeakMap, baseGetTag = _baseGetTag, toSource = _toSource;
+var DataView = _DataView, Map$1 = _Map, Promise$1 = _Promise, Set$2 = _Set, WeakMap$4 = _WeakMap, baseGetTag = _baseGetTag, toSource = _toSource;
 var mapTag = "[object Map]", objectTag$1 = "[object Object]", promiseTag = "[object Promise]", setTag = "[object Set]", weakMapTag = "[object WeakMap]";
 var dataViewTag = "[object DataView]";
-var dataViewCtorString = toSource(DataView), mapCtorString = toSource(Map$1), promiseCtorString = toSource(Promise$1), setCtorString = toSource(Set$2), weakMapCtorString = toSource(WeakMap$2);
+var dataViewCtorString = toSource(DataView), mapCtorString = toSource(Map$1), promiseCtorString = toSource(Promise$1), setCtorString = toSource(Set$2), weakMapCtorString = toSource(WeakMap$4);
 var getTag$1 = baseGetTag;
-if (DataView && getTag$1(new DataView(new ArrayBuffer(1))) != dataViewTag || Map$1 && getTag$1(new Map$1()) != mapTag || Promise$1 && getTag$1(Promise$1.resolve()) != promiseTag || Set$2 && getTag$1(new Set$2()) != setTag || WeakMap$2 && getTag$1(new WeakMap$2()) != weakMapTag) {
+if (DataView && getTag$1(new DataView(new ArrayBuffer(1))) != dataViewTag || Map$1 && getTag$1(new Map$1()) != mapTag || Promise$1 && getTag$1(Promise$1.resolve()) != promiseTag || Set$2 && getTag$1(new Set$2()) != setTag || WeakMap$4 && getTag$1(new WeakMap$4()) != weakMapTag) {
   getTag$1 = function(value) {
     var result = baseGetTag(value), Ctor = result == objectTag$1 ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : "";
     if (ctorString) {
@@ -12781,13 +12875,13 @@ if (DataView && getTag$1(new DataView(new ArrayBuffer(1))) != dataViewTag || Map
   };
 }
 var _getTag = getTag$1;
-var Stack = _Stack, equalArrays = _equalArrays, equalByTag = _equalByTag, equalObjects = _equalObjects, getTag = _getTag, isArray$4 = isArray_1, isBuffer = isBufferExports, isTypedArray = isTypedArray_1;
+var Stack = _Stack, equalArrays = _equalArrays, equalByTag = _equalByTag, equalObjects = _equalObjects, getTag = _getTag, isArray2 = isArray_1, isBuffer = isBufferExports, isTypedArray = isTypedArray_1;
 var COMPARE_PARTIAL_FLAG = 1;
 var argsTag = "[object Arguments]", arrayTag = "[object Array]", objectTag = "[object Object]";
 var objectProto = Object.prototype;
 var hasOwnProperty = objectProto.hasOwnProperty;
 function baseIsEqualDeep$1(object, other, bitmask, customizer, equalFunc, stack2) {
-  var objIsArr = isArray$4(object), othIsArr = isArray$4(other), objTag = objIsArr ? arrayTag : getTag(object), othTag = othIsArr ? arrayTag : getTag(other);
+  var objIsArr = isArray2(object), othIsArr = isArray2(other), objTag = objIsArr ? arrayTag : getTag(object), othTag = othIsArr ? arrayTag : getTag(other);
   objTag = objTag == argsTag ? objectTag : objTag;
   othTag = othTag == argsTag ? objectTag : othTag;
   var objIsObj = objTag == objectTag, othIsObj = othTag == objectTag, isSameTag = objTag == othTag;
@@ -12860,23 +12954,30 @@ var TableScroll = /* @__PURE__ */ ((TableScroll2) => {
   TableScroll2["NONE"] = "none";
   return TableScroll2;
 })(TableScroll || {});
-const scrollClasses = { [
-  "horizontal"
-  /* HORIZONTAL */
-]: ["table__scroll", "table__scroll--horizontal"], [
-  "vertical"
-  /* VERTICAL */
-]: ["table__scroll", "table__scroll--vertical"], [
-  "both"
-  /* BOTH */
-]: ["table__scroll", "table__scroll--horizontal", "table__scroll--vertical"], [
-  "none"
-  /* NONE */
-]: [] };
+const scrollClasses = {
+  [
+    "horizontal"
+    /* HORIZONTAL */
+  ]: ["table__scroll", "table__scroll--horizontal"],
+  [
+    "vertical"
+    /* VERTICAL */
+  ]: ["table__scroll", "table__scroll--vertical"],
+  [
+    "both"
+    /* BOTH */
+  ]: ["table__scroll", "table__scroll--horizontal", "table__scroll--vertical"],
+  [
+    "none"
+    /* NONE */
+  ]: []
+};
 function tableScrollClasses(val) {
   return scrollClasses[val];
 }
-const defaultOptions = { stripClasses: ["sr-only"] };
+const defaultOptions = {
+  stripClasses: ["sr-only"]
+};
 function collapseWhitespace(text) {
   return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
 }
@@ -12915,13 +13016,24 @@ function renderSlotText(render, props = {}, options) {
   if (nodes.length === 0) {
     return void 0;
   }
-  return collapseWhitespace(getTextContent(nodes, { ...defaultOptions, ...options }));
+  return collapseWhitespace(getTextContent(nodes, {
+    ...defaultOptions,
+    ...options
+  }));
 }
 function dispatchComponentValidityEvent(element, detail) {
-  element.dispatchEvent(new CustomEvent("component-validity", { detail, bubbles: true }));
+  element.dispatchEvent(new CustomEvent("component-validity", {
+    detail,
+    bubbles: true
+  }));
 }
 function dispatchComponentUnmountEvent(element) {
-  const event = new CustomEvent("component-unmount", { detail: { elementId: element.id }, bubbles: true });
+  const event = new CustomEvent("component-unmount", {
+    detail: {
+      elementId: element.id
+    },
+    bubbles: true
+  });
   element.dispatchEvent(event);
 }
 function refIsElement(value) {
@@ -12950,14 +13062,16 @@ function getHTMLElementFromVueRef(ref2) {
 function lazyLoad(fn2) {
   let cache;
   return () => {
-    var _cache2;
-    return (_cache2 = cache) !== null && _cache2 !== void 0 ? _cache2 : cache = fn2();
+    var _cache;
+    return (_cache = cache) !== null && _cache !== void 0 ? _cache : cache = fn2();
   };
 }
 const eventTarget = lazyLoad(() => new EventTarget());
 const fn = /* @__PURE__ */ new Map();
 function $emit(type, ...args) {
-  const event = new CustomEvent(type, { detail: args });
+  const event = new CustomEvent(type, {
+    detail: args
+  });
   eventTarget().dispatchEvent(event);
 }
 function $on(type, callback) {
@@ -12968,7 +13082,11 @@ function $off(type, callback) {
   eventTarget().removeEventListener(type, fn.get(callback));
   fn.delete(callback);
 }
-const EventBus = { $emit, $on, $off };
+const EventBus = {
+  $emit,
+  $on,
+  $off
+};
 var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
   FKUIConfigButtonOrder2[FKUIConfigButtonOrder2["LEFT_TO_RIGHT"] = 0] = "LEFT_TO_RIGHT";
   FKUIConfigButtonOrder2[FKUIConfigButtonOrder2["RIGHT_TO_LEFT"] = 1] = "RIGHT_TO_LEFT";
@@ -12976,26 +13094,37 @@ var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
 })(FKUIConfigButtonOrder || {});
 let popupContainer = document.body;
 let production = true;
-const config = { buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT, teleportTarget: document.body, modalTarget: null, popupTarget: null, get popupContainer() {
-  if (typeof popupContainer === "string") {
-    const element = document.querySelector(popupContainer);
-    if (!element) {
-      throw new Error(`Failed to find popupContainer element from selector "${popupContainer}"`);
+const config = {
+  buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
+  teleportTarget: document.body,
+  modalTarget: null,
+  popupTarget: null,
+  get popupContainer() {
+    if (typeof popupContainer === "string") {
+      const element = document.querySelector(popupContainer);
+      if (!element) {
+        throw new Error(`Failed to find popupContainer element from selector "${popupContainer}"`);
+      }
+      return element;
+    } else {
+      return popupContainer;
     }
-    return element;
-  } else {
-    return popupContainer;
+  },
+  set popupContainer(value) {
+    popupContainer = value;
+  },
+  set production(value) {
+    production = value;
+    configLogic.production = value;
+  },
+  get production() {
+    return production;
   }
-}, set popupContainer(value) {
-  popupContainer = value;
-}, set production(value) {
-  production = value;
-  configLogic.production = value;
-}, get production() {
-  return production;
-} };
+};
 function setRunningContext(app2) {
-  const fkuiContext = { appContext: app2._context };
+  const fkuiContext = {
+    appContext: app2._context
+  };
   app2.config.globalProperties.$fkui = fkuiContext;
 }
 const sizes = ["", "small", "medium", "large", "fullscreen", "fullwidth"];
@@ -13033,174 +13162,239 @@ function elementIsRadioButton(element) {
 function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
 }
-const _sfc_main$1b = /* @__PURE__ */ defineComponent({ name: "FModal", components: { FIcon }, mixins: [TranslationMixin], inheritAttrs: true, props: {
-  /**
-  * The id for the root element id attribute.
-  * If the prop is not set a random value will be generated.
-  */
-  id: { type: String, required: false, default: () => ElementIdService.generateElementId() },
-  /**
-  * If the modal is open.
-  * Use this to toggle if the modal should be visible or not.
-  */
-  isOpen: { type: Boolean, required: false, default: false },
-  /**
-  * The aria-label attribute text for the top right close button.
-  */
-  ariaCloseText: { type: String, required: false, default: void 0 },
-  /**
-  * Enable fullscreen mode in mobile.
-  */
-  fullscreen: { type: Boolean, required: false, default: false },
-  /**
-  * The type of modal. 'information', 'warning' and 'error' is valid.
-  */
-  type: { type: String, default: "", validator(value) {
-    return ["", "information", "warning", "error"].includes(value);
-  } },
-  /**
-  * The size of modal in desktop mode.
-  */
-  size: { type: String, default: "", validator(value) {
-    return sizes.includes(value);
-  } }
-}, emits: ["close"], data() {
-  return { nonModalFocusableElements: [], savedFocus: null, savedScroll: null };
-}, computed: { modalClass() {
-  return this.type ? [`modal--${this.type}`] : [];
-}, containerClasses() {
-  const size = sizeClass(this.size);
-  if (this.fullscreen) {
-    return [...size, "modal__dialog-container--fullscreen"];
-  } else {
-    return size;
-  }
-}, hasHeaderSlot() {
-  return hasSlot(this, "header");
-} }, watch: { isOpen: { immediate: true, async handler(value) {
-  if (value) {
-    await this.$nextTick();
-    this.openModal();
-  } else {
+const _sfc_main$1b = /* @__PURE__ */ defineComponent({
+  name: "FModal",
+  components: {
+    FIcon
+  },
+  mixins: [TranslationMixin],
+  inheritAttrs: true,
+  props: {
+    /**
+     * The id for the root element id attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * If the modal is open.
+     * Use this to toggle if the modal should be visible or not.
+     */
+    isOpen: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * The aria-label attribute text for the top right close button.
+     */
+    ariaCloseText: {
+      type: String,
+      required: false,
+      default: void 0
+    },
+    /**
+     * Enable fullscreen mode in mobile.
+     */
+    fullscreen: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * The type of modal. 'information', 'warning' and 'error' is valid.
+     */
+    type: {
+      type: String,
+      default: "",
+      validator(value) {
+        return ["", "information", "warning", "error"].includes(value);
+      }
+    },
+    /**
+     * The size of modal in desktop mode.
+     */
+    size: {
+      type: String,
+      default: "",
+      validator(value) {
+        return sizes.includes(value);
+      }
+    }
+  },
+  emits: ["close"],
+  data() {
+    return {
+      nonModalFocusableElements: [],
+      savedFocus: null,
+      savedScroll: null
+    };
+  },
+  computed: {
+    modalClass() {
+      return this.type ? [`modal--${this.type}`] : [];
+    },
+    containerClasses() {
+      const size = sizeClass(this.size);
+      if (this.fullscreen) {
+        return [...size, "modal__dialog-container--fullscreen"];
+      } else {
+        return size;
+      }
+    },
+    hasHeaderSlot() {
+      return hasSlot(this, "header");
+    }
+  },
+  watch: {
+    isOpen: {
+      immediate: true,
+      async handler(value) {
+        if (value) {
+          await this.$nextTick();
+          this.openModal();
+        } else {
+          this.restoreState();
+        }
+      }
+    }
+  },
+  beforeUnmount() {
     this.restoreState();
-  }
-} } }, beforeUnmount() {
-  this.restoreState();
-}, methods: {
-  onClose() {
-    this.$emit("close");
   },
-  openModal() {
-    const root2 = document.documentElement;
-    const scroll = root2.scrollTop;
-    root2.style.top = `-${scroll}px`;
-    root2.classList.add("modal__open");
-    const focusElement2 = this.resolveFocusElement();
-    this.savedFocus = pushFocus(focusElement2);
-    this.savedScroll = scroll;
-  },
-  /**
-  * Prioritises what element to initially focus on in the following order:
-  *
-  * 1. Header
-  * 2. First interactive element within content
-  * 3. Content
-  */
-  resolveFocusElement() {
-    const titleElement = findElementFromVueRef(this.$refs.modalTitle);
-    if (titleElement) {
-      return titleElement;
-    }
-    const contentElement = getHTMLElementFromVueRef(this.$refs.modalContent);
-    const tabbableChildren = findTabbableElements(contentElement);
-    const firstTabbableChildElement = tabbableChildren.length ? tabbableChildren[0] : void 0;
-    return firstTabbableChildElement !== null && firstTabbableChildElement !== void 0 ? firstTabbableChildElement : contentElement;
-  },
-  restoreState() {
-    if (this.savedFocus) {
-      var _this$savedScroll;
+  methods: {
+    onClose() {
+      this.$emit("close");
+    },
+    openModal() {
       const root2 = document.documentElement;
-      root2.classList.remove("modal__open");
-      root2.style.removeProperty("top");
-      root2.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
-      popFocus(this.savedFocus);
-      this.savedFocus = null;
-      this.savedScroll = null;
+      const scroll = root2.scrollTop;
+      root2.style.top = `-${scroll}px`;
+      root2.classList.add("modal__open");
+      const focusElement2 = this.resolveFocusElement();
+      this.savedFocus = pushFocus(focusElement2);
+      this.savedScroll = scroll;
+    },
+    /**
+     * Prioritises what element to initially focus on in the following order:
+     *
+     * 1. Header
+     * 2. First interactive element within content
+     * 3. Content
+     */
+    resolveFocusElement() {
+      const titleElement = findElementFromVueRef(this.$refs.modalTitle);
+      if (titleElement) {
+        return titleElement;
+      }
+      const contentElement = getHTMLElementFromVueRef(this.$refs.modalContent);
+      const tabbableChildren = findTabbableElements(contentElement);
+      const firstTabbableChildElement = tabbableChildren.length ? tabbableChildren[0] : void 0;
+      return firstTabbableChildElement !== null && firstTabbableChildElement !== void 0 ? firstTabbableChildElement : contentElement;
+    },
+    restoreState() {
+      if (this.savedFocus) {
+        var _this$savedScroll;
+        const root2 = document.documentElement;
+        root2.classList.remove("modal__open");
+        root2.style.removeProperty("top");
+        root2.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
+        popFocus(this.savedFocus);
+        this.savedFocus = null;
+        this.savedScroll = null;
+      }
+    },
+    onFocusFirst() {
+      const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
+      const lastTabbableElement = tabbableElements[tabbableElements.length - 2];
+      focusElement(lastTabbableElement, this.$el);
+    },
+    onFocusLast() {
+      const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
+      const firstTabbableElement = tabbableElements[1];
+      focusElement(firstTabbableElement, this.$el);
     }
-  },
-  onFocusFirst() {
-    const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
-    const lastTabbableElement = tabbableElements[tabbableElements.length - 2];
-    focusElement(lastTabbableElement, this.$el);
-  },
-  onFocusLast() {
-    const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
-    const firstTabbableElement = tabbableElements[1];
-    focusElement(firstTabbableElement, this.$el);
   }
-} });
+});
 const _hoisted_1$S = ["id"];
-const _hoisted_2$E = { class: "modal__backdrop" };
-const _hoisted_3$w = { class: "modal__inner-container" };
-const _hoisted_4$r = { class: "modal__dialog" };
-const _hoisted_5$l = { class: "modal__dialog-inner" };
-const _hoisted_6$f = { class: "modal__header" };
-const _hoisted_7$d = { key: 0, ref: "modalTitle", class: "modal__title", tabindex: "-1" };
-const _hoisted_8$9 = { ref: "modalContent", class: "modal__content", tabindex: "-1" };
-const _hoisted_9$6 = { class: "modal__footer" };
-const _hoisted_10$6 = { class: "modal__shelf" };
+const _hoisted_2$E = {
+  class: "modal__backdrop"
+};
+const _hoisted_3$w = {
+  class: "modal__inner-container"
+};
+const _hoisted_4$r = {
+  class: "modal__dialog"
+};
+const _hoisted_5$l = {
+  class: "modal__dialog-inner"
+};
+const _hoisted_6$f = {
+  class: "modal__header"
+};
+const _hoisted_7$d = {
+  key: 0,
+  ref: "modalTitle",
+  class: "modal__title",
+  tabindex: "-1"
+};
+const _hoisted_8$9 = {
+  ref: "modalContent",
+  class: "modal__content",
+  tabindex: "-1"
+};
+const _hoisted_9$6 = {
+  class: "modal__footer"
+};
+const _hoisted_10$6 = {
+  class: "modal__shelf"
+};
 const _hoisted_11$3 = ["aria-label"];
 function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return _ctx.isOpen ? (openBlock(), createElementBlock("div", { key: 0, id: _ctx.id, class: normalizeClass(["modal", _ctx.modalClass]) }, [createBaseVNode("div", _hoisted_2$E, [createBaseVNode(
-    "div",
-    { class: "modal__outer-container scroll-target", tabindex: "-1", role: "dialog", "aria-modal": "true", onKeyup: _cache[3] || (_cache[3] = withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"])) },
-    [createBaseVNode("div", _hoisted_3$w, [createBaseVNode(
-      "div",
-      { ref: "modalDialogContainer", class: normalizeClass(["modal__dialog-container", _ctx.containerClasses]) },
-      [createBaseVNode("div", _hoisted_4$r, [createBaseVNode("div", _hoisted_5$l, [createBaseVNode("div", _hoisted_6$f, [createBaseVNode(
-        "div",
-        { tabindex: "0", onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args)) },
-        null,
-        32
-        /* NEED_HYDRATION */
-      ), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock(
-        "h1",
-        _hoisted_7$d,
-        [renderSlot(_ctx.$slots, "header")],
-        512
-        /* NEED_PATCH */
-      )) : createCommentVNode("v-if", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode(
-        "div",
-        _hoisted_8$9,
-        [renderSlot(_ctx.$slots, "content")],
-        512
-        /* NEED_PATCH */
-      ), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$6, [createBaseVNode("button", { type: "button", class: "close-button", "aria-label": _ctx.ariaCloseText, onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClose && _ctx.onClose(...args)) }, [createBaseVNode(
-        "span",
-        null,
-        toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")),
-        1
-        /* TEXT */
-      ), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_f_icon, { name: "close" })], 8, _hoisted_11$3), _cache[8] || (_cache[8] = createTextVNode()), createBaseVNode(
-        "div",
-        { tabindex: "0", onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args)) },
-        null,
-        32
-        /* NEED_HYDRATION */
-      )])])],
-      2
-      /* CLASS */
-    )])],
-    32
-    /* NEED_HYDRATION */
-  )])], 10, _hoisted_1$S)) : createCommentVNode("v-if", true);
+  return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    id: _ctx.id,
+    class: normalizeClass(["modal", _ctx.modalClass])
+  }, [createBaseVNode("div", _hoisted_2$E, [createBaseVNode("div", {
+    class: "modal__outer-container scroll-target",
+    tabindex: "-1",
+    role: "dialog",
+    "aria-modal": "true",
+    onKeyup: _cache[3] || (_cache[3] = withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
+  }, [createBaseVNode("div", _hoisted_3$w, [createBaseVNode("div", {
+    ref: "modalDialogContainer",
+    class: normalizeClass(["modal__dialog-container", _ctx.containerClasses])
+  }, [createBaseVNode("div", _hoisted_4$r, [createBaseVNode("div", _hoisted_5$l, [createBaseVNode("div", _hoisted_6$f, [createBaseVNode("div", {
+    tabindex: "0",
+    onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$6, [createBaseVNode("button", {
+    type: "button",
+    class: "close-button",
+    "aria-label": _ctx.ariaCloseText,
+    onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClose && _ctx.onClose(...args))
+  }, [createBaseVNode("span", null, toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")), 1), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_f_icon, {
+    name: "close"
+  })], 8, _hoisted_11$3), _cache[8] || (_cache[8] = createTextVNode()), createBaseVNode("div", {
+    tabindex: "0",
+    onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
+  }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$S)) : createCommentVNode("", true);
 }
 const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1b, [["render", _sfc_render$11]]);
 function prepareButtonList(src, buttonOrder = config.buttonOrder) {
   const list = src.map((it) => {
-    var _it$event, _ref2, _it$reason, _it$type;
-    return { label: it.label, screenreader: it.screenreader, event: (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "dismiss", reason: (_ref2 = (_it$reason = it.reason) !== null && _it$reason !== void 0 ? _it$reason : it.event) !== null && _ref2 !== void 0 ? _ref2 : "dismiss", classlist: ["button", `button--${(_it$type = it.type) !== null && _it$type !== void 0 ? _it$type : "secondary"}`], buttonType: it.submitButton ? "submit" : "button" };
+    var _it$event, _ref, _it$reason, _it$type;
+    return {
+      label: it.label,
+      screenreader: it.screenreader,
+      event: (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "dismiss",
+      reason: (_ref = (_it$reason = it.reason) !== null && _it$reason !== void 0 ? _it$reason : it.event) !== null && _ref !== void 0 ? _ref : "dismiss",
+      classlist: ["button", `button--${(_it$type = it.type) !== null && _it$type !== void 0 ? _it$type : "secondary"}`],
+      buttonType: it.submitButton ? "submit" : "button"
+    };
   });
   switch (buttonOrder) {
     case FKUIConfigButtonOrder.LEFT_TO_RIGHT:
@@ -13209,198 +13403,273 @@ function prepareButtonList(src, buttonOrder = config.buttonOrder) {
       return list.reverse();
   }
 }
-const defaultButtons = [{ label: "Primärknapp", event: "confirm", type: "primary" }, { label: "Sekundärknapp", event: "dismiss", type: "secondary" }];
-const _sfc_main$1a = /* @__PURE__ */ defineComponent({ name: "FConfirmModal", components: { FModal }, inheritAttrs: true, props: {
-  /**
-  * Enable fullscreen mode in mobile.
-  */
-  fullscreen: { type: Boolean, required: false, default: false },
-  /**
-  * Prop for opening modal
-  */
-  isOpen: { type: Boolean, required: false, default: false },
-  /**
-  * Simple text content
-  */
-  content: { type: String, required: false, default: "Brödtext" },
-  /**
-  * Simple text header
-  */
-  heading: { type: String, required: false, default: "Rubrik" },
-  /**
-  * The size of modal. 'large' and 'fullscreen' is valid.
-  */
-  size: { type: String, default: "", validator(value) {
-    return sizes.includes(value);
-  } },
-  /**
-  * The aria-label attribute text for the top right close button.
-  */
-  ariaCloseText: { type: String, required: false, default: void 0 },
-  /**
-  * List of buttons
-  */
-  buttons: { type: Array, required: false, default: () => {
-    return defaultButtons;
-  } }
-}, emits: ["close", ...defaultButtons.map((it) => {
-  var _it$event2;
-  return (_it$event2 = it.event) !== null && _it$event2 !== void 0 ? _it$event2 : "";
-})], computed: { preparedButtons() {
-  return prepareButtonList(this.buttons);
-} }, methods: { onClose() {
-  this.$emit("close", { reason: "close" });
-}, onClick(button) {
-  this.$emit(button.event);
-  this.$emit("close", { reason: button.reason });
-} } });
-const _hoisted_1$R = { class: "button-group" };
+const defaultButtons = [{
+  label: "Primärknapp",
+  event: "confirm",
+  type: "primary"
+}, {
+  label: "Sekundärknapp",
+  event: "dismiss",
+  type: "secondary"
+}];
+const _sfc_main$1a = /* @__PURE__ */ defineComponent({
+  name: "FConfirmModal",
+  components: {
+    FModal
+  },
+  inheritAttrs: true,
+  props: {
+    /**
+     * Enable fullscreen mode in mobile.
+     */
+    fullscreen: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * Prop for opening modal
+     */
+    isOpen: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * Simple text content
+     */
+    content: {
+      type: String,
+      required: false,
+      default: "Brödtext"
+    },
+    /**
+     * Simple text header
+     */
+    heading: {
+      type: String,
+      required: false,
+      default: "Rubrik"
+    },
+    /**
+     * The size of modal. 'large' and 'fullscreen' is valid.
+     */
+    size: {
+      type: String,
+      default: "",
+      validator(value) {
+        return sizes.includes(value);
+      }
+    },
+    /**
+     * The aria-label attribute text for the top right close button.
+     */
+    ariaCloseText: {
+      type: String,
+      required: false,
+      default: void 0
+    },
+    /**
+     * List of buttons
+     */
+    buttons: {
+      type: Array,
+      required: false,
+      default: () => {
+        return defaultButtons;
+      }
+    }
+  },
+  emits: ["close", ...defaultButtons.map((it) => {
+    var _it$event;
+    return (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "";
+  })],
+  computed: {
+    preparedButtons() {
+      return prepareButtonList(this.buttons);
+    }
+  },
+  methods: {
+    onClose() {
+      this.$emit("close", {
+        reason: "close"
+      });
+    },
+    onClick(button) {
+      this.$emit(button.event);
+      this.$emit("close", {
+        reason: button.reason
+      });
+    }
+  }
+});
+const _hoisted_1$R = {
+  class: "button-group"
+};
 const _hoisted_2$D = ["onClick"];
-const _hoisted_3$v = { key: 0, class: "sr-only" };
+const _hoisted_3$v = {
+  key: 0,
+  class: "sr-only"
+};
 function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = resolveComponent("f-modal");
-  return openBlock(), createBlock(_component_f_modal, { fullscreen: _ctx.fullscreen, "is-open": _ctx.isOpen, "aria-close-text": _ctx.ariaCloseText, type: "warning", size: _ctx.size, onClose: _ctx.onClose }, {
-    header: withCtx(() => [renderSlot(_ctx.$slots, "heading", {}, () => [createTextVNode(
-      toDisplayString(_ctx.heading),
-      1
-      /* TEXT */
-    )])]),
-    content: withCtx(() => [renderSlot(_ctx.$slots, "content", {}, () => [createTextVNode(
-      toDisplayString(_ctx.content),
-      1
-      /* TEXT */
-    )])]),
-    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$R, [(openBlock(true), createElementBlock(
-      Fragment,
-      null,
-      renderList(_ctx.preparedButtons, (button) => {
-        return openBlock(), createElementBlock("button", { key: button.label, type: "button", class: normalizeClass([button.classlist, "button-group__item"]), onClick: ($event) => _ctx.onClick(button) }, [createBaseVNode(
-          "span",
-          null,
-          toDisplayString(button.label),
-          1
-          /* TEXT */
-        ), _cache[0] || (_cache[0] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock(
-          "span",
-          _hoisted_3$v,
-          " " + toDisplayString(button.screenreader),
-          1
-          /* TEXT */
-        )) : createCommentVNode("v-if", true)], 10, _hoisted_2$D);
-      }),
-      128
-      /* KEYED_FRAGMENT */
-    ))])]),
+  return openBlock(), createBlock(_component_f_modal, {
+    fullscreen: _ctx.fullscreen,
+    "is-open": _ctx.isOpen,
+    "aria-close-text": _ctx.ariaCloseText,
+    type: "warning",
+    size: _ctx.size,
+    onClose: _ctx.onClose
+  }, {
+    header: withCtx(() => [renderSlot(_ctx.$slots, "heading", {}, () => [createTextVNode(toDisplayString(_ctx.heading), 1)])]),
+    content: withCtx(() => [renderSlot(_ctx.$slots, "content", {}, () => [createTextVNode(toDisplayString(_ctx.content), 1)])]),
+    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$R, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
+      return openBlock(), createElementBlock("button", {
+        key: button.label,
+        type: "button",
+        class: normalizeClass([button.classlist, "button-group__item"]),
+        onClick: ($event) => _ctx.onClick(button)
+      }, [createBaseVNode("span", null, toDisplayString(button.label), 1), _cache[0] || (_cache[0] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$v, " " + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$D);
+    }), 128))])]),
     _: 3
-    /* FORWARDED */
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "onClose"]);
 }
 const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$10]]);
 const GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 const ALIGNMENT = ["top", "center", "bottom"];
 const FLOAT = ["left", "center", "right"];
-const _sfc_main$19 = /* @__PURE__ */ defineComponent({ name: "IFlex", inheritAttrs: true, props: {
-  /**
-  * Set gap (gutter) between items.
-  *
-  * Must be one of:
-  *
-  * - `"1x"`
-  * - `"2x"`
-  * - `"3x"`
-  * - ...
-  * - `"8x"`
-  *
-  * Example: a value of `"3x"` corresponds to a gap of `3 * 0.25 = 0.75rem`.
-  */
-  gap: { type: String, default: "", validator(val) {
-    return val === "" || GAP.includes(val);
-  } },
-  /**
-  * If set the IFlexItems will be fullwidth and
-  * stacked on top of each other when breakpoint is small (aka mobile).
-  */
-  collapse: { type: Boolean, default: false },
-  /**
-  * If set the IFlexItems will wrap when out of space
-  */
-  wrap: { type: Boolean, default: false },
-  /**
-  * Set how IFlexItems should float.
-  *
-  * Must be one of:
-  *
-  * - `"left"`
-  * - `"center"`
-  * - `"right"`
-  */
-  float: { type: String, default: "", validator(val) {
-    return val === "" || FLOAT.includes(val);
-  } }
-}, computed: { classList() {
-  const classes = [];
-  if (this.collapse) {
-    classes.push("iflex--collapse");
+const _sfc_main$19 = /* @__PURE__ */ defineComponent({
+  name: "IFlex",
+  inheritAttrs: true,
+  props: {
+    /**
+     * Set gap (gutter) between items.
+     *
+     * Must be one of:
+     *
+     * - `"1x"`
+     * - `"2x"`
+     * - `"3x"`
+     * - ...
+     * - `"8x"`
+     *
+     * Example: a value of `"3x"` corresponds to a gap of `3 * 0.25 = 0.75rem`.
+     */
+    gap: {
+      type: String,
+      default: "",
+      validator(val) {
+        return val === "" || GAP.includes(val);
+      }
+    },
+    /**
+     * If set the IFlexItems will be fullwidth and
+     * stacked on top of each other when breakpoint is small (aka mobile).
+     */
+    collapse: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * If set the IFlexItems will wrap when out of space
+     */
+    wrap: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Set how IFlexItems should float.
+     *
+     * Must be one of:
+     *
+     * - `"left"`
+     * - `"center"`
+     * - `"right"`
+     */
+    float: {
+      type: String,
+      default: "",
+      validator(val) {
+        return val === "" || FLOAT.includes(val);
+      }
+    }
+  },
+  computed: {
+    classList() {
+      const classes = [];
+      if (this.collapse) {
+        classes.push("iflex--collapse");
+      }
+      if (this.gap) {
+        classes.push(`iflex--gap-${this.gap}`);
+      }
+      if (this.wrap) {
+        classes.push(`iflex--wrap`);
+      }
+      if (this.float) {
+        classes.push(`iflex--float-${this.float}`);
+      }
+      return classes;
+    }
   }
-  if (this.gap) {
-    classes.push(`iflex--gap-${this.gap}`);
-  }
-  if (this.wrap) {
-    classes.push(`iflex--wrap`);
-  }
-  if (this.float) {
-    classes.push(`iflex--float-${this.float}`);
-  }
-  return classes;
-} } });
+});
 function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock(
-    "div",
-    { class: normalizeClass(["iflex", _ctx.classList]) },
-    [renderSlot(_ctx.$slots, "default")],
-    2
-    /* CLASS */
-  );
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(["iflex", _ctx.classList])
+  }, [renderSlot(_ctx.$slots, "default")], 2);
 }
 const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$$]]);
-const _sfc_main$18 = /* @__PURE__ */ defineComponent({ name: "IFlexItem", inheritAttrs: true, props: {
-  /**
-  * If set this item will grow to its largest possible size.
-  */
-  grow: { type: Boolean, default: false },
-  /**
-  * If set this item will shrink to its smallest possible size.
-  */
-  shrink: { type: Boolean, default: false },
-  /**
-  * Vertical positioning of content.
-  *
-  * Must be one of:
-  *
-  * - `"top"`
-  * - `"center"`
-  * - `"bottom"`
-  */
-  align: { type: String, default: "top", validator(val) {
-    return ALIGNMENT.includes(val);
-  } }
-}, computed: { classList() {
-  const classList = [`iflex--align-${this.align}`];
-  if (this.grow) {
-    classList.push("iflex--grow");
-  } else if (this.shrink) {
-    classList.push("iflex--shrink");
+const _sfc_main$18 = /* @__PURE__ */ defineComponent({
+  name: "IFlexItem",
+  inheritAttrs: true,
+  props: {
+    /**
+     * If set this item will grow to its largest possible size.
+     */
+    grow: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * If set this item will shrink to its smallest possible size.
+     */
+    shrink: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Vertical positioning of content.
+     *
+     * Must be one of:
+     *
+     * - `"top"`
+     * - `"center"`
+     * - `"bottom"`
+     */
+    align: {
+      type: String,
+      default: "top",
+      validator(val) {
+        return ALIGNMENT.includes(val);
+      }
+    }
+  },
+  computed: {
+    classList() {
+      const classList = [`iflex--align-${this.align}`];
+      if (this.grow) {
+        classList.push("iflex--grow");
+      } else if (this.shrink) {
+        classList.push("iflex--shrink");
+      }
+      return classList;
+    }
   }
-  return classList;
-} } });
+});
 function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock(
-    "div",
-    { class: normalizeClass(["iflex__item", _ctx.classList]) },
-    [renderSlot(_ctx.$slots, "default")],
-    2
-    /* CLASS */
-  );
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(["iflex__item", _ctx.classList])
+  }, [renderSlot(_ctx.$slots, "default")], 2);
 }
 const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$_]]);
 function focusError(item) {
@@ -13412,137 +13681,127 @@ function focusError(item) {
   scrollTo(element, window.innerHeight * 0.25);
   focus(focusElement2 ? focusElement2 : element);
 }
-const _sfc_main$17 = /* @__PURE__ */ defineComponent({ name: "FErrorList", components: { FIcon, IFlex, IFlexItem }, props: {
-  /**
-  * List of errors of type `ErrorItem`.
-  * If element id is unspecified, no link will be rendered.
-  * If element with id don't exist on navigation, an exception is thrown.
-  */
-  items: { type: Array, required: true },
-  /**
-  * Display bullets in list.
-  */
-  bullets: { type: Boolean, required: false, default: false },
-  /**
-  * Optional callback for performing actions before navigation.
-  */
-  beforeNavigate: { type: Function, required: false, default() {
-    return () => {
-    };
-  } }
-}, computed: { hasTitleSlot() {
-  return hasSlot(this, "title");
-} }, methods: { liClasses(errorItem) {
-  const classes = [];
-  if (!this.bullets && errorItem.id) {
-    classes.push("error-list__link");
+const _sfc_main$17 = /* @__PURE__ */ defineComponent({
+  name: "FErrorList",
+  components: {
+    FIcon,
+    IFlex,
+    IFlexItem
+  },
+  props: {
+    /**
+     * List of errors of type `ErrorItem`.
+     * If element id is unspecified, no link will be rendered.
+     * If element with id don't exist on navigation, an exception is thrown.
+     */
+    items: {
+      type: Array,
+      required: true
+    },
+    /**
+     * Display bullets in list.
+     */
+    bullets: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * Optional callback for performing actions before navigation.
+     */
+    beforeNavigate: {
+      type: Function,
+      required: false,
+      default() {
+        return () => {
+        };
+      }
+    }
+  },
+  computed: {
+    hasTitleSlot() {
+      return hasSlot(this, "title");
+    }
+  },
+  methods: {
+    liClasses(errorItem) {
+      const classes = [];
+      if (!this.bullets && errorItem.id) {
+        classes.push("error-list__link");
+      }
+      return classes;
+    },
+    async onClickItem(item) {
+      await this.beforeNavigate(item);
+      focusError(item);
+    }
   }
-  return classes;
-}, async onClickItem(item) {
-  await this.beforeNavigate(item);
-  focusError(item);
-} } });
-const _hoisted_1$Q = { class: "error-list" };
-const _hoisted_2$C = { key: 0 };
-const _hoisted_3$u = { class: "error-list__list error-list--list-style-none" };
+});
+const _hoisted_1$Q = {
+  class: "error-list"
+};
+const _hoisted_2$C = {
+  key: 0
+};
+const _hoisted_3$u = {
+  class: "error-list__list error-list--list-style-none"
+};
 const _hoisted_4$q = ["onClick"];
-const _hoisted_5$k = { class: "error-list__link" };
+const _hoisted_5$k = {
+  class: "error-list__link"
+};
 function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
   return openBlock(), createElementBlock("div", _hoisted_1$Q, [createVNode(_component_i_flex, null, {
-    default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, { key: 0, shrink: "" }, {
-      default: withCtx(() => [createVNode(_component_f_icon, { class: "error-list__icon", name: "error" })]),
+    default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, {
+      key: 0,
+      shrink: ""
+    }, {
+      default: withCtx(() => [createVNode(_component_f_icon, {
+        class: "error-list__icon",
+        name: "error"
+      })]),
       _: 1
-      /* STABLE */
-    })) : createCommentVNode("v-if", true), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, { key: 1, shrink: "" }, {
+    })) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, {
+      key: 1,
+      shrink: ""
+    }, {
       default: withCtx(() => _cache[0] || (_cache[0] = [createTextVNode(" ")])),
       _: 1
-      /* STABLE */
-    })) : createCommentVNode("v-if", true), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_flex_item, { grow: "" }, {
-      default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createElementBlock("div", _hoisted_2$C, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("v-if", true), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("ul", _hoisted_3$u, [(openBlock(true), createElementBlock(
-        Fragment,
-        null,
-        renderList(_ctx.items, (item) => {
-          return openBlock(), createElementBlock(
-            "li",
-            { key: item.id, class: normalizeClass(_ctx.liClasses(item)) },
-            [item.id ? (openBlock(), createElementBlock("a", { key: 0, href: "javascript:", onClick: withModifiers(($event) => _ctx.onClickItem(item), ["prevent"]) }, [_ctx.bullets ? (openBlock(), createElementBlock(
-              Fragment,
-              { key: 0 },
-              [_cache[1] || (_cache[1] = createBaseVNode(
-                "span",
-                { class: "error-list__bullet", "aria-hidden": "true" },
-                null,
-                -1
-                /* HOISTED */
-              )), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode(
-                "span",
-                _hoisted_5$k,
-                toDisplayString(item.title),
-                1
-                /* TEXT */
-              )],
-              64
-              /* STABLE_FRAGMENT */
-            )) : (openBlock(), createElementBlock(
-              Fragment,
-              { key: 1 },
-              [createTextVNode(
-                toDisplayString(item.title),
-                1
-                /* TEXT */
-              )],
-              64
-              /* STABLE_FRAGMENT */
-            ))], 8, _hoisted_4$q)) : (openBlock(), createElementBlock(
-              Fragment,
-              { key: 1 },
-              [_ctx.bullets ? (openBlock(), createElementBlock(
-                Fragment,
-                { key: 0 },
-                [_cache[3] || (_cache[3] = createBaseVNode(
-                  "span",
-                  { class: "error-list__bullet", "aria-hidden": "true" },
-                  null,
-                  -1
-                  /* HOISTED */
-                )), _cache[4] || (_cache[4] = createTextVNode()), createBaseVNode(
-                  "span",
-                  null,
-                  toDisplayString(item.title),
-                  1
-                  /* TEXT */
-                )],
-                64
-                /* STABLE_FRAGMENT */
-              )) : (openBlock(), createElementBlock(
-                Fragment,
-                { key: 1 },
-                [createTextVNode(
-                  toDisplayString(item.title),
-                  1
-                  /* TEXT */
-                )],
-                64
-                /* STABLE_FRAGMENT */
-              ))],
-              64
-              /* STABLE_FRAGMENT */
-            ))],
-            2
-            /* CLASS */
-          );
-        }),
-        128
-        /* KEYED_FRAGMENT */
-      ))])]),
+    })) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_flex_item, {
+      grow: ""
+    }, {
+      default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createElementBlock("div", _hoisted_2$C, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("ul", _hoisted_3$u, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item) => {
+        return openBlock(), createElementBlock("li", {
+          key: item.id,
+          class: normalizeClass(_ctx.liClasses(item))
+        }, [item.id ? (openBlock(), createElementBlock("a", {
+          key: 0,
+          href: "javascript:",
+          onClick: withModifiers(($event) => _ctx.onClickItem(item), ["prevent"])
+        }, [_ctx.bullets ? (openBlock(), createElementBlock(Fragment, {
+          key: 0
+        }, [_cache[1] || (_cache[1] = createBaseVNode("span", {
+          class: "error-list__bullet",
+          "aria-hidden": "true"
+        }, null, -1)), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode("span", _hoisted_5$k, toDisplayString(item.title), 1)], 64)) : (openBlock(), createElementBlock(Fragment, {
+          key: 1
+        }, [createTextVNode(toDisplayString(item.title), 1)], 64))], 8, _hoisted_4$q)) : (openBlock(), createElementBlock(Fragment, {
+          key: 1
+        }, [_ctx.bullets ? (openBlock(), createElementBlock(Fragment, {
+          key: 0
+        }, [_cache[3] || (_cache[3] = createBaseVNode("span", {
+          class: "error-list__bullet",
+          "aria-hidden": "true"
+        }, null, -1)), _cache[4] || (_cache[4] = createTextVNode()), createBaseVNode("span", null, toDisplayString(item.title), 1)], 64)) : (openBlock(), createElementBlock(Fragment, {
+          key: 1
+        }, [createTextVNode(toDisplayString(item.title), 1)], 64))], 64))], 2);
+      }), 128))])]),
       _: 3
-      /* FORWARDED */
     })]),
     _: 3
-    /* FORWARDED */
   })]);
 }
 const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$Z]]);
@@ -13559,52 +13818,81 @@ function cleanUpElements(vm) {
     }, 0);
   });
 }
-const _sfc_main$16 = /* @__PURE__ */ defineComponent({ name: "FValidationGroup", props: {
-  /**
-  * A `GroupValidityEvent` object containing:
-  *
-  *   `isValid`: the aggregated validity of underlying components
-  *
-  *   `componentsWithError`: a list of components with errors sorted in DOM order
-  *
-  *   `componentCount`: number of registered components
-  * @model
-  */
-  modelValue: { type: Object, required: false, default: () => {
-    return { isValid: false, componentsWithError: [], componentCount: 0 };
-  } },
-  /**
-  * Controls whether component-validity event should be propagated or not from underlying components.
-  */
-  stopPropagation: { type: Boolean, required: false, default: false }
-}, emits: ["group-validity", "update:modelValue"], data() {
-  return { components: {} };
-}, methods: { onComponentUnmount(event) {
-  delete this.components[event.detail.elementId];
-  this.triggerGroupValidityEvent();
-}, async onComponentValidity(event) {
-  if (this.stopPropagation) {
-    event.stopPropagation();
+const _sfc_main$16 = /* @__PURE__ */ defineComponent({
+  name: "FValidationGroup",
+  props: {
+    /**
+     * A `GroupValidityEvent` object containing:
+     *
+     *   `isValid`: the aggregated validity of underlying components
+     *
+     *   `componentsWithError`: a list of components with errors sorted in DOM order
+     *
+     *   `componentCount`: number of registered components
+     * @model
+     */
+    modelValue: {
+      type: Object,
+      required: false,
+      default: () => {
+        return {
+          isValid: false,
+          componentsWithError: [],
+          componentCount: 0
+        };
+      }
+    },
+    /**
+     * Controls whether component-validity event should be propagated or not from underlying components.
+     */
+    stopPropagation: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+  emits: ["group-validity", "update:modelValue"],
+  data() {
+    return {
+      components: {}
+    };
+  },
+  methods: {
+    onComponentUnmount(event) {
+      delete this.components[event.detail.elementId];
+      this.triggerGroupValidityEvent();
+    },
+    async onComponentValidity(event) {
+      if (this.stopPropagation) {
+        event.stopPropagation();
+      }
+      await cleanUpElements(this);
+      this.components[event.detail.elementId] = event.detail;
+      this.triggerGroupValidityEvent();
+    },
+    triggerGroupValidityEvent() {
+      const components = Object.values(this.components);
+      const isValid = components.every((component) => component.isValid);
+      const componentsWithError = components.filter((component) => component.validityMode === "ERROR");
+      componentsWithError.sort((a, b) => documentOrderComparator(a.target, b.target));
+      this.$emit("update:modelValue", {
+        isValid,
+        componentsWithError,
+        componentCount: components.length
+      });
+      this.$emit("group-validity", {
+        isValid,
+        componentsWithError,
+        componentCount: components.length
+      });
+    }
   }
-  await cleanUpElements(this);
-  this.components[event.detail.elementId] = event.detail;
-  this.triggerGroupValidityEvent();
-}, triggerGroupValidityEvent() {
-  const components = Object.values(this.components);
-  const isValid = components.every((component) => component.isValid);
-  const componentsWithError = components.filter((component) => component.validityMode === "ERROR");
-  componentsWithError.sort((a, b) => documentOrderComparator(a.target, b.target));
-  this.$emit("update:modelValue", { isValid, componentsWithError, componentCount: components.length });
-  this.$emit("group-validity", { isValid, componentsWithError, componentCount: components.length });
-} } });
+});
 function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock(
-    "div",
-    { onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)), onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args)) },
-    [renderSlot(_ctx.$slots, "default")],
-    32
-    /* NEED_HYDRATION */
-  );
+  return openBlock(), createElementBlock("div", {
+    onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
+    onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
+  }, [renderSlot(_ctx.$slots, "default")], 32);
 }
 const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$Y]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
@@ -13612,242 +13900,424 @@ var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
   return FValidationFormAction2;
 })(FValidationFormAction || {});
-const _sfc_main$15 = /* @__PURE__ */ defineComponent({ name: "FValidationForm", components: { FValidationGroup, FErrorList }, inheritAttrs: false, props: {
-  /**
-  * If given, this function is called before the `submit` event is emitted.
-  *
-  * Optionally this callback may return `FValidationFormAction`. If
-  * `FValidationFormAction.CANCEL` is returned the submission is
-  * cancelled and no event will be emitted. The consumer should make it
-  * clear why the action was cancelled.
-  *
-  * If a promise is returned it will be awaited.
-  *
-  * The consumer does not need to validate form data, it is handled
-  * internally by the component.
-  */
-  beforeSubmit: { type: Function, required: false, default() {
-    return () => void 0;
-  } },
-  /**
-  * If given, this function is called before the form data is validated and the `submit` event is emitted.
-  */
-  beforeValidation: { type: Function, required: false, default() {
-    return () => void 0;
-  } },
-  /**
-  * The id for the form id attribute.
-  * If the prop is not set a random value will be generated.
-  */
-  id: { type: String, required: false, default: () => ElementIdService.generateElementId() },
-  /**
-  * Include the error list component.
-  */
-  useErrorList: { type: Boolean, required: false, default: true },
-  /**
-  * Display bullets in the error list component.
-  */
-  errorListBullets: { type: Boolean, required: false, default: true },
-  /**
-  *Optional callback function to the error list component for performing actions before navigation.
-  */
-  errorListBeforeNavigate: { type: Function, required: false, default() {
-    return () => {
+const _sfc_main$15 = /* @__PURE__ */ defineComponent({
+  name: "FValidationForm",
+  components: {
+    FValidationGroup,
+    FErrorList
+  },
+  inheritAttrs: false,
+  props: {
+    /**
+     * If given, this function is called before the `submit` event is emitted.
+     *
+     * Optionally this callback may return `FValidationFormAction`. If
+     * `FValidationFormAction.CANCEL` is returned the submission is
+     * cancelled and no event will be emitted. The consumer should make it
+     * clear why the action was cancelled.
+     *
+     * If a promise is returned it will be awaited.
+     *
+     * The consumer does not need to validate form data, it is handled
+     * internally by the component.
+     */
+    beforeSubmit: {
+      type: Function,
+      required: false,
+      default() {
+        return () => void 0;
+      }
+    },
+    /**
+     * If given, this function is called before the form data is validated and the `submit` event is emitted.
+     */
+    beforeValidation: {
+      type: Function,
+      required: false,
+      default() {
+        return () => void 0;
+      }
+    },
+    /**
+     * The id for the form id attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * Include the error list component.
+     */
+    useErrorList: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    /**
+     * Display bullets in the error list component.
+     */
+    errorListBullets: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    /**
+     *Optional callback function to the error list component for performing actions before navigation.
+     */
+    errorListBeforeNavigate: {
+      type: Function,
+      required: false,
+      default() {
+        return () => {
+        };
+      }
+    }
+  },
+  emits: ["submit"],
+  data() {
+    return {
+      validity: {
+        isValid: true,
+        componentsWithError: [],
+        componentCount: 0
+      },
+      submitted: false
     };
-  } }
-}, emits: ["submit"], data() {
-  return { validity: { isValid: true, componentsWithError: [], componentCount: 0 }, submitted: false };
-}, computed: { groupKey() {
-  return `${this.id}-group`;
-}, errors() {
-  return this.validity.componentsWithError.map((c) => ({ id: c.elementId, focusElementId: c.focusElementId, title: c.errorMessage }));
-}, displayErrors() {
-  return this.useErrorList && this.submitted && this.errors.length > 0;
-} }, methods: { async hasFormErrors() {
-  ValidationService.setSubmitted(this.id);
-  await ValidationService.validateAllElements(this.id);
-  await this.$nextTick();
-  await new Promise((resolve2) => window.setTimeout(resolve2, 0));
-  if (this.validity.isValid) {
-    return false;
+  },
+  computed: {
+    groupKey() {
+      return `${this.id}-group`;
+    },
+    errors() {
+      return this.validity.componentsWithError.map((c) => ({
+        id: c.elementId,
+        focusElementId: c.focusElementId,
+        title: c.errorMessage
+      }));
+    },
+    displayErrors() {
+      return this.useErrorList && this.submitted && this.errors.length > 0;
+    }
+  },
+  methods: {
+    async hasFormErrors() {
+      ValidationService.setSubmitted(this.id);
+      await ValidationService.validateAllElements(this.id);
+      await this.$nextTick();
+      await new Promise((resolve2) => window.setTimeout(resolve2, 0));
+      if (this.validity.isValid) {
+        return false;
+      }
+      if (this.useErrorList) {
+        focus(this.$refs.errors);
+      } else {
+        const firstError = this.validity.componentsWithError[0];
+        const element = document.getElementById(firstError.focusElementId);
+        focus(element);
+      }
+      return true;
+    },
+    async onSubmit(event) {
+      this.submitted = true;
+      const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
+      if (beforeValidation === FValidationFormAction.CANCEL) {
+        return;
+      }
+      if (await this.hasFormErrors()) {
+        return;
+      }
+      const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
+      if (beforeAction === FValidationFormAction.CANCEL) {
+        return;
+      }
+      if (await this.hasFormErrors()) {
+        return;
+      }
+      this.$emit("submit", event);
+    }
   }
-  if (this.useErrorList) {
-    focus(this.$refs.errors);
-  } else {
-    const firstError = this.validity.componentsWithError[0];
-    const element = document.getElementById(firstError.focusElementId);
-    focus(element);
-  }
-  return true;
-}, async onSubmit(event) {
-  this.submitted = true;
-  const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
-  if (beforeValidation === FValidationFormAction.CANCEL) {
-    return;
-  }
-  if (await this.hasFormErrors()) {
-    return;
-  }
-  const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
-  if (beforeAction === FValidationFormAction.CANCEL) {
-    return;
-  }
-  if (await this.hasFormErrors()) {
-    return;
-  }
-  this.$emit("submit", event);
-} } });
+});
 const _hoisted_1$P = ["id"];
-const _hoisted_2$B = { key: 0, ref: "errors", tabindex: "-1", role: "group" };
+const _hoisted_2$B = {
+  key: 0,
+  ref: "errors",
+  tabindex: "-1",
+  role: "group"
+};
 function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = resolveComponent("f-error-list");
   const _component_f_validation_group = resolveComponent("f-validation-group");
-  return openBlock(), createBlock(_component_f_validation_group, { key: _ctx.groupKey, modelValue: _ctx.validity, "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event), "stop-propagation": true }, {
-    default: withCtx(() => [createBaseVNode("form", mergeProps({ id: _ctx.id }, _ctx.$attrs, { novalidate: "", autocomplete: "off", onSubmit: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"])) }), [_ctx.displayErrors ? (openBlock(), createElementBlock(
-      "nav",
-      _hoisted_2$B,
-      [createVNode(_component_f_error_list, { items: _ctx.errors, bullets: _ctx.errorListBullets, "before-navigate": _ctx.errorListBeforeNavigate }, {
-        title: withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
-        _: 3
-        /* FORWARDED */
-      }, 8, ["items", "bullets", "before-navigate"])],
-      512
-      /* NEED_PATCH */
-    )) : createCommentVNode("v-if", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$P)]),
+  return openBlock(), createBlock(_component_f_validation_group, {
+    key: _ctx.groupKey,
+    modelValue: _ctx.validity,
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event),
+    "stop-propagation": true
+  }, {
+    default: withCtx(() => [createBaseVNode("form", mergeProps({
+      id: _ctx.id
+    }, _ctx.$attrs, {
+      novalidate: "",
+      autocomplete: "off",
+      onSubmit: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"]))
+    }), [_ctx.displayErrors ? (openBlock(), createElementBlock("nav", _hoisted_2$B, [createVNode(_component_f_error_list, {
+      items: _ctx.errors,
+      bullets: _ctx.errorListBullets,
+      "before-navigate": _ctx.errorListBeforeNavigate
+    }, {
+      title: withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
+      _: 3
+    }, 8, ["items", "bullets", "before-navigate"])], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$P)]),
     _: 3
-    /* FORWARDED */
   }, 8, ["modelValue"]);
 }
 const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$X]]);
-const _sfc_main$14 = /* @__PURE__ */ defineComponent({ name: "FFormModal", components: { FModal, FValidationForm }, mixins: [TranslationMixin], inheritAttrs: true, props: {
-  /**
-  * Enable fullscreen mode in mobile.
-  */
-  fullscreen: { type: Boolean, required: false, default: true },
-  /**
-  * If the modal is open.
-  * Use this to toggle if the modal should be visible or not.
-  */
-  isOpen: { type: Boolean, required: false, default: true },
-  /**
-  * See <f-modal> `size` props.
-  */
-  size: { type: String, default: "", validator(value) {
-    return sizes.includes(value);
-  } },
-  /**
-  * @ignore
-  */
-  dataTest: { type: String, required: false, default: "" },
-  /**
-  * The data that has been submitted.
-  */
-  value: { type: Object, default: function() {
+const _sfc_main$14 = /* @__PURE__ */ defineComponent({
+  name: "FFormModal",
+  components: {
+    FModal,
+    FValidationForm
+  },
+  mixins: [TranslationMixin],
+  inheritAttrs: true,
+  props: {
+    /**
+     * Enable fullscreen mode in mobile.
+     */
+    fullscreen: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    /**
+     * If the modal is open.
+     * Use this to toggle if the modal should be visible or not.
+     */
+    isOpen: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    /**
+     * See <f-modal> `size` props.
+     */
+    size: {
+      type: String,
+      default: "",
+      validator(value) {
+        return sizes.includes(value);
+      }
+    },
+    /**
+     * @ignore
+     */
+    dataTest: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * The data that has been submitted.
+     */
+    value: {
+      type: Object,
+      default: function() {
+        return {};
+      }
+    },
+    /**
+     * Include the error list component.
+     */
+    useErrorList: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    /**
+     * The id for the form id attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    formId: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * The aria-label attribute text for the top right close button.
+     */
+    ariaCloseText: {
+      type: String,
+      required: false,
+      default: void 0
+    },
+    /**
+     * If given, this function is called before the [[submit]] event is emitted.
+     * See <f-validation-form> `beforeSubmit` props for more info.
+     */
+    beforeSubmit: {
+      type: Function,
+      required: false,
+      default() {
+      }
+    },
+    /**
+     * If given, this function is called before the form data is validated and the [[submit]] event is emitted.
+     * See <f-validation-form> `beforeValidation` props for more info.
+     */
+    beforeValidation: {
+      type: Function,
+      required: false,
+      default() {
+      }
+    },
+    buttons: {
+      type: Array,
+      required: false,
+      default: () => [{
+        label: TranslationService.provider.translate("fkui.form-modal.button.submit.text", "Spara"),
+        event: "submit",
+        type: "primary",
+        submitButton: true
+      }, {
+        label: TranslationService.provider.translate("fkui.form-modal.button.cancel.text", "Avbryt"),
+        event: "dismiss",
+        type: "secondary"
+      }]
+    }
+  },
+  emits: ["cancel", "close", "submit"],
+  data() {
     return {};
-  } },
-  /**
-  * Include the error list component.
-  */
-  useErrorList: { type: Boolean, required: false, default: true },
-  /**
-  * The id for the form id attribute.
-  * If the prop is not set a random value will be generated.
-  */
-  formId: { type: String, required: false, default: () => ElementIdService.generateElementId() },
-  /**
-  * The aria-label attribute text for the top right close button.
-  */
-  ariaCloseText: { type: String, required: false, default: void 0 },
-  /**
-  * If given, this function is called before the [[submit]] event is emitted.
-  * See <f-validation-form> `beforeSubmit` props for more info.
-  */
-  beforeSubmit: { type: Function, required: false, default() {
-  } },
-  /**
-  * If given, this function is called before the form data is validated and the [[submit]] event is emitted.
-  * See <f-validation-form> `beforeValidation` props for more info.
-  */
-  beforeValidation: { type: Function, required: false, default() {
-  } },
-  buttons: { type: Array, required: false, default: () => [{ label: TranslationService.provider.translate("fkui.form-modal.button.submit.text", "Spara"), event: "submit", type: "primary", submitButton: true }, { label: TranslationService.provider.translate("fkui.form-modal.button.cancel.text", "Avbryt"), event: "dismiss", type: "secondary" }] }
-}, emits: ["cancel", "close", "submit"], data() {
-  return {};
-}, computed: { preparedButtons() {
-  return prepareButtonList(this.buttons, FKUIConfigButtonOrder.LEFT_TO_RIGHT);
-}, hasDeprecatedSlots() {
-  return hasSlot(this, "cancel-button-text") || hasSlot(this, "submit-button-text");
-} }, methods: { onClose() {
-  ValidationService.resetState(this.$el);
-  this.$emit("cancel");
-  this.$emit("close", { reason: "close" });
-}, async onSubmit() {
-  ValidationService.resetState(this.$el);
-  this.$emit("submit", { data: this.value });
-  this.$emit("close", { reason: "submit", data: this.value });
-}, onCancel() {
-  ValidationService.resetState(this.$el);
-  this.$emit("cancel");
-  this.$emit("close", { reason: "close" });
-} } });
-const _hoisted_1$O = { class: "button-group" };
+  },
+  computed: {
+    preparedButtons() {
+      return prepareButtonList(this.buttons, FKUIConfigButtonOrder.LEFT_TO_RIGHT);
+    },
+    hasDeprecatedSlots() {
+      return hasSlot(this, "cancel-button-text") || hasSlot(this, "submit-button-text");
+    }
+  },
+  methods: {
+    onClose() {
+      ValidationService.resetState(this.$el);
+      this.$emit("cancel");
+      this.$emit("close", {
+        reason: "close"
+      });
+    },
+    async onSubmit() {
+      ValidationService.resetState(this.$el);
+      this.$emit("submit", {
+        data: this.value
+      });
+      this.$emit("close", {
+        reason: "submit",
+        data: this.value
+      });
+    },
+    onCancel() {
+      ValidationService.resetState(this.$el);
+      this.$emit("cancel");
+      this.$emit("close", {
+        reason: "close"
+      });
+    }
+  }
+});
+const _hoisted_1$O = {
+  class: "button-group"
+};
 const _hoisted_2$A = ["type", "form", "onClick"];
-const _hoisted_3$t = { key: 0, class: "sr-only" };
+const _hoisted_3$t = {
+  key: 0,
+  class: "sr-only"
+};
 const _hoisted_4$p = ["form"];
 function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = resolveComponent("f-validation-form");
   const _component_f_modal = resolveComponent("f-modal");
-  return openBlock(), createBlock(_component_f_modal, { "data-test": _ctx.dataTest, fullscreen: _ctx.fullscreen, "is-open": _ctx.isOpen, size: _ctx.size, "aria-close-text": _ctx.ariaCloseText, onClose: _ctx.onClose }, {
+  return openBlock(), createBlock(_component_f_modal, {
+    "data-test": _ctx.dataTest,
+    fullscreen: _ctx.fullscreen,
+    "is-open": _ctx.isOpen,
+    size: _ctx.size,
+    "aria-close-text": _ctx.ariaCloseText,
+    onClose: _ctx.onClose
+  }, {
     header: withCtx(() => [renderSlot(_ctx.$slots, "header")]),
-    content: withCtx(() => [createBaseVNode("div", null, [renderSlot(_ctx.$slots, "default")]), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_f_validation_form, { id: _ctx.formId, "before-submit": _ctx.beforeSubmit, "before-validation": _ctx.beforeValidation, "use-error-list": _ctx.useErrorList, onSubmit: _ctx.onSubmit, onCancel: _ctx.onCancel }, {
+    content: withCtx(() => [createBaseVNode("div", null, [renderSlot(_ctx.$slots, "default")]), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_f_validation_form, {
+      id: _ctx.formId,
+      "before-submit": _ctx.beforeSubmit,
+      "before-validation": _ctx.beforeValidation,
+      "use-error-list": _ctx.useErrorList,
+      onSubmit: _ctx.onSubmit,
+      onCancel: _ctx.onCancel
+    }, {
       "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
       default: withCtx(() => [_cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "input-text-fields")]),
       _: 3
-      /* FORWARDED */
     }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])]),
-    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$O, [!_ctx.hasDeprecatedSlots ? (openBlock(true), createElementBlock(
-      Fragment,
-      { key: 0 },
-      renderList(_ctx.preparedButtons, (button) => {
-        return openBlock(), createElementBlock("button", { key: button.label, type: button.buttonType, class: normalizeClass([button.classlist, "button-group__item"]), form: button.buttonType === "submit" ? _ctx.formId : void 0, onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false }, [createBaseVNode(
-          "span",
-          null,
-          toDisplayString(button.label),
-          1
-          /* TEXT */
-        ), _cache[3] || (_cache[3] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock(
-          "span",
-          _hoisted_3$t,
-          " " + toDisplayString(button.screenreader),
-          1
-          /* TEXT */
-        )) : createCommentVNode("v-if", true)], 10, _hoisted_2$A);
-      }),
-      128
-      /* KEYED_FRAGMENT */
-    )) : (openBlock(), createElementBlock(
-      Fragment,
-      { key: 1 },
-      [createBaseVNode("button", { form: _ctx.formId, "data-test": "submit-button", type: "submit", class: "button button--primary button-group__item button--large" }, [renderSlot(_ctx.$slots, "submit-button-text", {}, () => [createTextVNode(
-        toDisplayString(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")),
-        1
-        /* TEXT */
-      )])], 8, _hoisted_4$p), _cache[4] || (_cache[4] = createTextVNode()), createBaseVNode("button", { "data-test": "cancel-button", type: "button", class: "button button--secondary button-group__item button--large", onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args)) }, [renderSlot(_ctx.$slots, "cancel-button-text", {}, () => [createTextVNode(
-        toDisplayString(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")),
-        1
-        /* TEXT */
-      )])])],
-      64
-      /* STABLE_FRAGMENT */
-    ))])]),
+    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$O, [!_ctx.hasDeprecatedSlots ? (openBlock(true), createElementBlock(Fragment, {
+      key: 0
+    }, renderList(_ctx.preparedButtons, (button) => {
+      return openBlock(), createElementBlock("button", {
+        key: button.label,
+        type: button.buttonType,
+        class: normalizeClass([button.classlist, "button-group__item"]),
+        form: button.buttonType === "submit" ? _ctx.formId : void 0,
+        onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
+      }, [createBaseVNode("span", null, toDisplayString(button.label), 1), _cache[3] || (_cache[3] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$t, " " + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$A);
+    }), 128)) : (openBlock(), createElementBlock(Fragment, {
+      key: 1
+    }, [createBaseVNode("button", {
+      form: _ctx.formId,
+      "data-test": "submit-button",
+      type: "submit",
+      class: "button button--primary button-group__item button--large"
+    }, [renderSlot(_ctx.$slots, "submit-button-text", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")), 1)])], 8, _hoisted_4$p), _cache[4] || (_cache[4] = createTextVNode()), createBaseVNode("button", {
+      "data-test": "cancel-button",
+      type: "button",
+      class: "button button--secondary button-group__item button--large",
+      onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
+    }, [renderSlot(_ctx.$slots, "cancel-button-text", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")), 1)])])], 64))])]),
     _: 3
-    /* FORWARDED */
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
 const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$W]]);
 function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
   return Boolean(renderSlotText(slot, props, options));
+}
+function _typeof(o) {
+  "@babel/helpers - typeof";
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+    return typeof o2;
+  } : function(o2) {
+    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+  }, _typeof(o);
+}
+function toPrimitive(t, r) {
+  if ("object" != _typeof(t) || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof(i)) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r ? String : Number)(t);
+}
+function toPropertyKey(t) {
+  var i = toPrimitive(t, "string");
+  return "symbol" == _typeof(i) ? i : i + "";
+}
+function _defineProperty(e, r, t) {
+  return (r = toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+    value: t,
+    enumerable: true,
+    configurable: true,
+    writable: true
+  }) : e[r] = t, e;
 }
 function getValidatableElement(element) {
   if (isValidatableHTMLElement(element)) {
@@ -13865,7 +14335,10 @@ function triggerInitialValidationToSupportFFormStepValidation(el) {
   ValidationService.validateElement(target);
 }
 function registerValidators(el, binding) {
-  const { modifiers: bindingModifiers = {}, value: bindingValue = {} } = binding;
+  const {
+    modifiers: bindingModifiers = {},
+    value: bindingValue = {}
+  } = binding;
   const target = getValidatableElement(el);
   Object.keys(bindingValue).forEach((validatorName) => {
     if (!bindingModifiers[validatorName]) {
@@ -13878,29 +14351,38 @@ function registerValidators(el, binding) {
   });
   ValidationService.addValidatorsToElement(target, validatorConfigs);
 }
-const ValidationDirective = { beforeMount(el, binding) {
-  registerValidators(el, binding);
-}, beforeUnmount(el, _binding) {
-  const validatableElement = getValidatableElement(el);
-  dispatchComponentUnmountEvent(validatableElement);
-  ValidationService.removeValidatorsFromElement(validatableElement);
-}, updated(el, binding) {
-  if (!isEqual$1(binding.value, binding.oldValue)) {
+const ValidationDirective = {
+  beforeMount(el, binding) {
     registerValidators(el, binding);
+  },
+  beforeUnmount(el, _binding) {
+    const validatableElement = getValidatableElement(el);
+    dispatchComponentUnmountEvent(validatableElement);
+    ValidationService.removeValidatorsFromElement(validatableElement);
+  },
+  updated(el, binding) {
+    if (!isEqual$1(binding.value, binding.oldValue)) {
+      registerValidators(el, binding);
+    }
+  },
+  mounted(el) {
+    triggerInitialValidationToSupportFFormStepValidation(el);
   }
-}, mounted(el) {
-  triggerInitialValidationToSupportFFormStepValidation(el);
-} };
-const ValidationPrefixDirective = { beforeMount(el, binding) {
-  el.addEventListener("component-validity", (event) => {
-    const e = event;
-    e.detail.errorMessage = `${binding.value}${e.detail.errorMessage}`;
-  });
-} };
-const ValidationPlugin = { install(app2) {
-  app2.directive("validation", ValidationDirective);
-  app2.directive("validationPrefix", ValidationPrefixDirective);
-} };
+};
+const ValidationPrefixDirective = {
+  beforeMount(el, binding) {
+    el.addEventListener("component-validity", (event) => {
+      const e = event;
+      e.detail.errorMessage = `${binding.value}${e.detail.errorMessage}`;
+    });
+  }
+};
+const ValidationPlugin = {
+  install(app2) {
+    app2.directive("validation", ValidationDirective);
+    app2.directive("validationPrefix", ValidationPrefixDirective);
+  }
+};
 var Placement = /* @__PURE__ */ ((Placement2) => {
   Placement2["A"] = "A";
   Placement2["B"] = "B";
@@ -14037,7 +14519,12 @@ function clipRect(src, clip) {
   const y = Math.max(src.y, clip.y);
   const width = Math.min(src.x + src.width, clip.x + clip.width) - x;
   const height = Math.min(src.y + src.height, clip.y + clip.height) - y;
-  return { x, y, width, height };
+  return {
+    x,
+    y,
+    width,
+    height
+  };
 }
 function getAbsolutePosition(src) {
   if (!src) {
@@ -14045,33 +14532,71 @@ function getAbsolutePosition(src) {
   }
   const isRoot = src.isSameNode(document.documentElement);
   if (isRoot) {
-    return { x: window.pageXOffset, y: window.pageYOffset, width: src.clientWidth, height: src.clientHeight };
+    return {
+      x: window.pageXOffset,
+      y: window.pageYOffset,
+      width: src.clientWidth,
+      height: src.clientHeight
+    };
   }
   const rect = src.getBoundingClientRect();
-  return { x: Math.floor(rect.left + window.pageXOffset), y: Math.floor(rect.top + window.pageYOffset), width: Math.floor(rect.width), height: Math.floor(rect.height) };
+  return {
+    x: Math.floor(rect.left + window.pageXOffset),
+    y: Math.floor(rect.top + window.pageYOffset),
+    width: Math.floor(rect.width),
+    height: Math.floor(rect.height)
+  };
 }
 function fitInsideArea(options) {
   var _a;
   if (isElementOptions(options)) {
-    const { area: areaElement, anchor: anchorElement, target: targetElement, viewport: viewportElement, spacing: spacing2, candidateOrder } = options;
+    const {
+      area: areaElement,
+      anchor: anchorElement,
+      target: targetElement,
+      viewport: viewportElement,
+      spacing: spacing2,
+      candidateOrder
+    } = options;
     const area2 = getAbsolutePosition(areaElement);
     const anchor2 = getAbsolutePosition(anchorElement);
     const target2 = getAbsolutePosition(targetElement);
     const viewport2 = getAbsolutePosition(viewportElement);
-    const result = fitInsideArea({ area: area2, target: target2, anchor: anchor2, viewport: viewport2, spacing: spacing2, candidateOrder });
+    const result = fitInsideArea({
+      area: area2,
+      target: target2,
+      anchor: anchor2,
+      viewport: viewport2,
+      spacing: spacing2,
+      candidateOrder
+    });
     const offset2 = (_a = targetElement.offsetParent) == null ? void 0 : _a.getBoundingClientRect();
     if (!offset2) {
       return result;
     }
-    return { ...result, x: result.x - (offset2.left + window.pageXOffset), y: result.y - (offset2.top + window.pageYOffset) };
+    return {
+      ...result,
+      x: result.x - (offset2.left + window.pageXOffset),
+      y: result.y - (offset2.top + window.pageYOffset)
+    };
   }
-  const { anchor, target, area, viewport, spacing } = options;
+  const {
+    anchor,
+    target,
+    area,
+    viewport,
+    spacing
+  } = options;
   const clippedArea = clipRect(area, viewport);
   const candidates = getCandidates(anchor, target, clippedArea, spacing, options.candidateOrder);
   const index = candidates.findIndex((it) => isInside(clippedArea, it, spacing));
   if (index >= 0) {
     const match2 = candidates[index];
-    return { x: match2.x, y: match2.y, placement: match2.placement };
+    return {
+      x: match2.x,
+      y: match2.y,
+      placement: match2.placement
+    };
   }
   return {
     ...getFallbackPosition(anchor, target, clippedArea, spacing),
@@ -14083,166 +14608,255 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
   const x = anchor.x - (target.width + spacing);
   const y = anchor.y + anchor.height + spacing;
   if (x >= clippedArea.x) {
-    return { x, y };
+    return {
+      x,
+      y
+    };
   } else {
-    return { x: clippedArea.x + spacing, y };
+    return {
+      x: clippedArea.x + spacing,
+      y
+    };
   }
 }
-const injectionKeys = { sharedName: Symbol("sharedName"), showDetails: Symbol("showDetails"), getFieldsetLabelText: Symbol("getFieldsetLabelText") };
+const injectionKeys = {
+  sharedName: Symbol("sharedName"),
+  showDetails: Symbol("showDetails"),
+  getFieldsetLabelText: Symbol("getFieldsetLabelText")
+};
 function useFieldset() {
-  return { sharedName: inject(injectionKeys.sharedName, void 0), showDetails: inject(injectionKeys.showDetails, "never"), getFieldsetLabelText: inject(injectionKeys.getFieldsetLabelText, () => void 0) };
+  return {
+    sharedName: inject(injectionKeys.sharedName, void 0),
+    showDetails: inject(injectionKeys.showDetails, "never"),
+    getFieldsetLabelText: inject(injectionKeys.getFieldsetLabelText, () => void 0)
+  };
 }
 const anyType$1 = [String, Object, Array, Number, Date, Boolean];
-const _sfc_main$V = /* @__PURE__ */ defineComponent({ name: "FCheckboxField", inheritAttrs: false, props: {
-  /**
-  * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
-  */
-  disabled: { type: Boolean, required: false, default: false },
-  /**
-  * The id for the input id attribute.
-  * The id for the label for attribute.
-  * If the prop is not set a random value will be generated.
-  */
-  id: { type: String, required: false, default: () => ElementIdService.generateElementId() },
-  /**
-  * The value for the input checked attribute.
-  * @model
-  */
-  // ? The rule is disabled so that the `checked` prop can be undefined or null.
-  /* eslint-disable-next-line vue/require-default-prop -- technical debt,
-      /* it should contain a default value of undefined and proptype should
-      /* include undefined (see comment on line above) */
-  modelValue: { type: anyType$1, required: false },
-  /**
-  * The value for the input.
-  */
-  value: { type: anyType$1, required: true }
-}, emits: ["change", "update:modelValue"], setup() {
-  const { showDetails, getFieldsetLabelText } = useFieldset();
-  return { showDetails, getFieldsetLabelText };
-}, data() {
-  return { expanded: false, height: 0, initialStyle: { overflow: "hidden", transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)" }, hiddenStyle: { height: "auto", position: "absolute", visibility: "hidden" }, visibleStyle: { width: "", position: "", visibility: "", height: "0px" }, openedStyle: { height: "auto" } };
-}, computed: {
-  attrs() {
-    let checked;
-    if (Array.isArray(this.modelValue)) {
-      checked = this.modelValue.findIndex((it) => isEqual$1(toValue(it), toValue(this.value))) >= 0;
-    } else {
-      checked = this.value === this.modelValue;
+const _sfc_main$V = /* @__PURE__ */ defineComponent({
+  name: "FCheckboxField",
+  inheritAttrs: false,
+  props: {
+    /**
+     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     */
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * The id for the input id attribute.
+     * The id for the label for attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * The value for the input checked attribute.
+     * @model
+     */
+    // ? The rule is disabled so that the `checked` prop can be undefined or null.
+    /* eslint-disable-next-line vue/require-default-prop -- technical debt,
+    /* it should contain a default value of undefined and proptype should
+    /* include undefined (see comment on line above) */
+    modelValue: {
+      type: anyType$1,
+      required: false
+    },
+    /**
+     * The value for the input.
+     */
+    value: {
+      type: anyType$1,
+      required: true
     }
-    return { ...this.$attrs, value: this.value, checked, onChange: (event) => {
-      if (event.target instanceof HTMLInputElement) {
-        this.emitVModelEvent(event);
+  },
+  emits: ["change", "update:modelValue"],
+  setup() {
+    const {
+      showDetails,
+      getFieldsetLabelText
+    } = useFieldset();
+    return {
+      showDetails,
+      getFieldsetLabelText
+    };
+  },
+  data() {
+    return {
+      expanded: false,
+      height: 0,
+      initialStyle: {
+        overflow: "hidden",
+        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
+      },
+      hiddenStyle: {
+        height: "auto",
+        position: "absolute",
+        visibility: "hidden"
+      },
+      visibleStyle: {
+        width: "",
+        position: "",
+        visibility: "",
+        height: "0px"
+      },
+      openedStyle: {
+        height: "auto"
       }
-    }, onInput: (event) => {
-      event.target.focus();
-    } };
+    };
   },
-  disabledClass() {
-    return this.disabled ? "disabled" : "";
+  computed: {
+    attrs() {
+      let checked;
+      if (Array.isArray(this.modelValue)) {
+        checked = this.modelValue.findIndex((it) => isEqual$1(toValue(it), toValue(this.value))) >= 0;
+      } else {
+        checked = this.value === this.modelValue;
+      }
+      return {
+        ...this.$attrs,
+        value: this.value,
+        checked,
+        onChange: (event) => {
+          if (event.target instanceof HTMLInputElement) {
+            this.emitVModelEvent(event);
+          }
+        },
+        onInput: (event) => {
+          event.target.focus();
+        }
+      };
+    },
+    disabledClass() {
+      return this.disabled ? "disabled" : "";
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, nore sure whats going on here
+    injected() {
+      return this;
+    }
   },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, nore sure whats going on here
-  injected() {
-    return this;
-  }
-}, methods: { updateExpandedFlag() {
-  const checkboxInput = getHTMLElementFromVueRef(this.$refs["checkboxInput"]);
-  this.expanded = checkboxInput.checked;
-}, emitVModelEvent(event) {
-  let newModel;
-  if (Array.isArray(this.modelValue)) {
-    newModel = [...this.modelValue].filter((it) => !isEqual$1(toValue(it), toValue(this.value)));
-    if (this.modelValue.length <= newModel.length) {
-      newModel.push(this.value);
+  methods: {
+    updateExpandedFlag() {
+      const checkboxInput = getHTMLElementFromVueRef(this.$refs["checkboxInput"]);
+      this.expanded = checkboxInput.checked;
+    },
+    emitVModelEvent(event) {
+      let newModel;
+      if (Array.isArray(this.modelValue)) {
+        newModel = [...this.modelValue].filter((it) => !isEqual$1(toValue(it), toValue(this.value)));
+        if (this.modelValue.length <= newModel.length) {
+          newModel.push(this.value);
+        }
+      } else {
+        if (this.value === this.modelValue) {
+          newModel = typeof this.value === "boolean" ? false : void 0;
+        } else {
+          const target = event.target;
+          newModel = target.value === "true" ? true : this.value;
+        }
+      }
+      this.$emit("update:modelValue", newModel);
+      this.$emit("change", newModel);
+    },
+    onKeydown(event) {
+      event.stopPropagation();
+    },
+    onValidity({
+      detail
+    }) {
+      if (detail.target !== this.$el.querySelector("input")) {
+        return;
+      }
+      let errorMessage = "";
+      if (hasSlot(this, "default")) {
+        const labelText = this.injected.getFieldsetLabelText();
+        if (labelText) {
+          errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
+        } else {
+          errorMessage = `${renderSlotText(this.$slots.default)}`;
+        }
+      }
+      const element = this.$el.querySelector(`#${detail.elementId}`);
+      if (element) {
+        dispatchComponentValidityEvent(element, {
+          ...detail,
+          errorMessage,
+          focusElementId: detail.elementId
+        });
+      }
+    },
+    enter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const computedStyle = getComputedStyle(element);
+      Object.assign(htmlElement.style, this.initialStyle);
+      Object.assign(htmlElement.style, this.hiddenStyle);
+      htmlElement.style.width = computedStyle.width;
+      const height = computedStyle.height;
+      Object.assign(htmlElement.style, this.visibleStyle);
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        this.height = parseInt(height, 10);
+        htmlElement.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.openedStyle);
+    },
+    leave(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const height = getComputedStyle(element).height;
+      htmlElement.style.height = height;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        Object.assign(htmlElement.style, this.visibleStyle);
+      });
     }
-  } else {
-    if (this.value === this.modelValue) {
-      newModel = typeof this.value === "boolean" ? false : void 0;
-    } else {
-      const target = event.target;
-      newModel = target.value === "true" ? true : this.value;
-    }
   }
-  this.$emit("update:modelValue", newModel);
-  this.$emit("change", newModel);
-}, onKeydown(event) {
-  event.stopPropagation();
-}, onValidity({ detail }) {
-  if (detail.target !== this.$el.querySelector("input")) {
-    return;
-  }
-  let errorMessage = "";
-  if (hasSlot(this, "default")) {
-    const labelText = this.injected.getFieldsetLabelText();
-    if (labelText) {
-      errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
-    } else {
-      errorMessage = `${renderSlotText(this.$slots.default)}`;
-    }
-  }
-  const element = this.$el.querySelector(`#${detail.elementId}`);
-  if (element) {
-    dispatchComponentValidityEvent(element, { ...detail, errorMessage, focusElementId: detail.elementId });
-  }
-}, enter(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  const computedStyle = getComputedStyle(element);
-  Object.assign(htmlElement.style, this.initialStyle);
-  Object.assign(htmlElement.style, this.hiddenStyle);
-  htmlElement.style.width = computedStyle.width;
-  const height = computedStyle.height;
-  Object.assign(htmlElement.style, this.visibleStyle);
-  getComputedStyle(element).height;
-  setTimeout(() => {
-    this.height = parseInt(height, 10);
-    htmlElement.style.height = height;
-  });
-}, afterEnter(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  Object.assign(htmlElement.style, this.openedStyle);
-}, leave(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  const height = getComputedStyle(element).height;
-  htmlElement.style.height = height;
-  getComputedStyle(element).height;
-  setTimeout(() => {
-    Object.assign(htmlElement.style, this.visibleStyle);
-  });
-} } });
+});
 const _hoisted_1$F = ["id", "disabled"];
 const _hoisted_2$u = ["for"];
-const _hoisted_3$o = { key: 0, class: "checkbox__details" };
-const _hoisted_4$k = { key: 0, class: "checkbox__details" };
+const _hoisted_3$o = {
+  key: 0,
+  class: "checkbox__details"
+};
+const _hoisted_4$k = {
+  key: 0,
+  class: "checkbox__details"
+};
 function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock(
-    "div",
-    { class: normalizeClass(["checkbox", _ctx.disabledClass]), onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)) },
-    [createBaseVNode("input", mergeProps({ id: _ctx.id }, _ctx.attrs, { ref: "checkboxInput", type: "checkbox", class: "checkbox__input", disabled: _ctx.disabled, onKeydown: _cache[0] || (_cache[0] = withKeys((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])), onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag()) }), null, 16, _hoisted_1$F), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("label", { class: normalizeClass(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"), for: _ctx.id }, [renderSlot(_ctx.$slots, "default"), _cache[8] || (_cache[8] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(
-      Fragment,
-      { key: 0 },
-      [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$o, [_cache[3] || (_cache[3] = createBaseVNode(
-        "br",
-        null,
-        null,
-        -1
-        /* HOISTED */
-      )), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "details")])) : createCommentVNode("v-if", true), _cache[7] || (_cache[7] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, { key: 1, onEnter: _ctx.enter, onAfterEnter: _ctx.afterEnter, onLeave: _ctx.leave }, {
-        default: withCtx(() => [_ctx.expanded ? (openBlock(), createElementBlock("span", _hoisted_4$k, [_cache[5] || (_cache[5] = createBaseVNode(
-          "br",
-          null,
-          null,
-          -1
-          /* HOISTED */
-        )), _cache[6] || (_cache[6] = createTextVNode()), renderSlot(_ctx.$slots, "details", { height: _ctx.height })])) : createCommentVNode("v-if", true)]),
-        _: 3
-        /* FORWARDED */
-      }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("v-if", true)],
-      64
-      /* STABLE_FRAGMENT */
-    )) : createCommentVNode("v-if", true)], 10, _hoisted_2$u)],
-    34
-    /* CLASS, NEED_HYDRATION */
-  );
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(["checkbox", _ctx.disabledClass]),
+    onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
+  }, [createBaseVNode("input", mergeProps({
+    id: _ctx.id
+  }, _ctx.attrs, {
+    ref: "checkboxInput",
+    type: "checkbox",
+    class: "checkbox__input",
+    disabled: _ctx.disabled,
+    onKeydown: _cache[0] || (_cache[0] = withKeys((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])),
+    onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag())
+  }), null, 16, _hoisted_1$F), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("label", {
+    class: normalizeClass(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
+    for: _ctx.id
+  }, [renderSlot(_ctx.$slots, "default"), _cache[8] || (_cache[8] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
+    key: 0
+  }, [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$o, [_cache[3] || (_cache[3] = createBaseVNode("br", null, null, -1)), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "details")])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, {
+    key: 1,
+    onEnter: _ctx.enter,
+    onAfterEnter: _ctx.afterEnter,
+    onLeave: _ctx.leave
+  }, {
+    default: withCtx(() => [_ctx.expanded ? (openBlock(), createElementBlock("span", _hoisted_4$k, [_cache[5] || (_cache[5] = createBaseVNode("br", null, null, -1)), _cache[6] || (_cache[6] = createTextVNode()), renderSlot(_ctx.$slots, "details", {
+      height: _ctx.height
+    })])) : createCommentVNode("", true)]),
+    _: 3
+  }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$u)], 34);
 }
 const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$V, [["render", _sfc_render$L]]);
 var Operation = /* @__PURE__ */ ((Operation2) => {
@@ -14252,152 +14866,256 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["NONE"] = 3] = "NONE";
   return Operation2;
 })(Operation || {});
-/* @__PURE__ */ defineComponent({ name: "FCrudDataset", components: { FFormModal, FConfirmModal, FIcon }, mixins: [TranslationMixin], provide() {
-  return { delete: (item) => {
-    this.deleteItem(item);
-  }, modify: (item) => {
-    this.updateItem(item);
-  }, registerCallbackAfterItemAdd: (callback) => {
-    this.callbackAfterItemAdd = callback;
-  }, registerCallbackBeforeItemDelete: (callback) => {
-    this.callbackBeforeItemDelete = callback;
-  } };
-}, props: {
-  /**
-  * The list of items that should be deleted, modified or added to.
-  * If the prop is not set an empty array will be used.
-  * @model
-  */
-  modelValue: { type: Array, required: false, default: () => [] },
-  /**
-  * A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.
-  * Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.
-  */
-  beforeCreate: { type: Function, required: false, default: void 0 },
-  /**
-  * If `true` the primary button in the modals will be placed to the right side instead of to the left.
-  */
-  primaryButtonRight: { type: Boolean, default: false },
-  /**
-  * If given, this function is called before the [[submit]] event is emitted.
-  * See <f-validation-form> `beforeSubmit` props for more info.
-  */
-  beforeSubmit: { type: Function, required: false, default() {
-  } },
-  /**
-  * If given, this function is called before the form data is validated and the [[submit]] event is emitted.
-  * See <f-validation-form> `beforeValidation` props for more info.
-  */
-  beforeValidation: { type: Function, required: false, default() {
-  } },
-  /**
-  * If given, this function is called after the modal has been closed.
-  */
-  onCancel: { type: Function, required: false, default() {
-    return void 0;
-  } },
-  /**
-  * Property for changing the "add new" modal heading
-  */
-  addNewModalHeader: { type: String, required: false, default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad") },
-  /**
-  * Property for changing the "modify" modal heading
-  */
-  modifyModalHeader: { type: String, required: false, default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad") },
-  /**
-  * Property for changing the "delete" modal heading
-  */
-  deleteModalHeader: { type: String, required: false, default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?") }
-}, emits: ["change", "created", "deleted", "updated", "update:modelValue"], data() {
-  return { result: [], Operation, operation: Operation.NONE, item: null, originalItemToUpdate: null, isFormModalOpen: false, isConfirmModalOpen: false, callbackAfterItemAdd() {
-  }, callbackBeforeItemDelete() {
-  } };
-}, computed: { confirmButtonText() {
-  return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-}, cancelButtonText() {
-  return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
-}, confirmDeleteButtons() {
-  return [{ label: this.$t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"), type: "primary", event: "confirm" }, { label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"), type: "secondary" }];
-}, hasAddSlot() {
-  return Boolean(this.$slots.add);
-}, hasDeleteSlot() {
-  return Boolean(this.$slots.delete);
-}, hasModifySlot() {
-  return Boolean(this.$slots.modify);
-}, formModalHeader() {
-  return this.operation === Operation.ADD ? this.addNewModalHeader : this.modifyModalHeader;
-} }, watch: { modelValue: { immediate: true, deep: true, handler(data2) {
-  this.result = [...data2];
-} } }, mounted() {
-  if (!this.hasAddSlot && !this.hasDeleteSlot && !this.hasModifySlot) {
-    throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
-  }
-}, methods: { createItem() {
-  if (!this.hasAddSlot) {
-    throw Error("No template is defined for #add");
-  }
-  this.operation = Operation.ADD;
-  this.item = this.beforeCreate ? this.beforeCreate() : {};
-  this.isFormModalOpen = true;
-}, deleteItem(item) {
-  if (!this.hasDeleteSlot) {
-    throw Error("No template is defined for #delete");
-  }
-  this.operation = Operation.DELETE;
-  this.item = item;
-  this.isConfirmModalOpen = true;
-}, onDeleteConfirm() {
-  if (!this.item) {
-    return;
-  }
-  this.callbackBeforeItemDelete(this.item);
-  this.result = this.result.filter((item) => item !== this.item);
-  this.$emit("deleted", this.item);
-  this.$emit("update:modelValue", this.result);
-  this.$emit("change", this.result);
-  alertScreenReader(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), { assertive: true });
-}, onDeleteClose(e) {
-  this.onModalClose();
-  if (e.reason === "close" && this.onCancel) {
-    this.onCancel();
-  }
-}, onModalClose() {
-  this.isFormModalOpen = false;
-  this.isConfirmModalOpen = false;
-}, onFormModalSubmit() {
-  if (!this.item) {
-    return;
-  }
-  if (this.operation === Operation.ADD) {
-    this.result.push(this.item);
-    this.$emit("created", this.item);
-    this.$emit("update:modelValue", this.result);
-    this.$emit("change", this.result);
-    this.callbackAfterItemAdd(this.item);
-    alertScreenReader(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), { assertive: true });
-  } else if (this.operation === Operation.MODIFY) {
-    if (this.originalItemToUpdate) {
-      Object.assign(this.originalItemToUpdate, this.item);
-    } else {
-      this.originalItemToUpdate = this.item;
+/* @__PURE__ */ defineComponent({
+  name: "FCrudDataset",
+  components: {
+    FFormModal,
+    FConfirmModal,
+    FIcon
+  },
+  mixins: [TranslationMixin],
+  provide() {
+    return {
+      delete: (item) => {
+        this.deleteItem(item);
+      },
+      modify: (item) => {
+        this.updateItem(item);
+      },
+      registerCallbackAfterItemAdd: (callback) => {
+        this.callbackAfterItemAdd = callback;
+      },
+      registerCallbackBeforeItemDelete: (callback) => {
+        this.callbackBeforeItemDelete = callback;
+      }
+    };
+  },
+  props: {
+    /**
+     * The list of items that should be deleted, modified or added to.
+     * If the prop is not set an empty array will be used.
+     * @model
+     */
+    modelValue: {
+      type: Array,
+      required: false,
+      default: () => []
+    },
+    /**
+     * A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.
+     * Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.
+     */
+    beforeCreate: {
+      type: Function,
+      required: false,
+      default: void 0
+    },
+    /**
+     * If `true` the primary button in the modals will be placed to the right side instead of to the left.
+     */
+    primaryButtonRight: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * If given, this function is called before the [[submit]] event is emitted.
+     * See <f-validation-form> `beforeSubmit` props for more info.
+     */
+    beforeSubmit: {
+      type: Function,
+      required: false,
+      default() {
+      }
+    },
+    /**
+     * If given, this function is called before the form data is validated and the [[submit]] event is emitted.
+     * See <f-validation-form> `beforeValidation` props for more info.
+     */
+    beforeValidation: {
+      type: Function,
+      required: false,
+      default() {
+      }
+    },
+    /**
+     * If given, this function is called after the modal has been closed.
+     */
+    onCancel: {
+      type: Function,
+      required: false,
+      default() {
+        return void 0;
+      }
+    },
+    /**
+     * Property for changing the "add new" modal heading
+     */
+    addNewModalHeader: {
+      type: String,
+      required: false,
+      default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad")
+    },
+    /**
+     * Property for changing the "modify" modal heading
+     */
+    modifyModalHeader: {
+      type: String,
+      required: false,
+      default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad")
+    },
+    /**
+     * Property for changing the "delete" modal heading
+     */
+    deleteModalHeader: {
+      type: String,
+      required: false,
+      default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?")
     }
-    this.$emit("updated", this.originalItemToUpdate);
-    this.$emit("update:modelValue", this.result);
-    this.$emit("change", this.result);
-    alertScreenReader(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), { assertive: true });
+  },
+  emits: ["change", "created", "deleted", "updated", "update:modelValue"],
+  data() {
+    return {
+      result: [],
+      Operation,
+      operation: Operation.NONE,
+      item: null,
+      originalItemToUpdate: null,
+      isFormModalOpen: false,
+      isConfirmModalOpen: false,
+      callbackAfterItemAdd() {
+      },
+      callbackBeforeItemDelete() {
+      }
+    };
+  },
+  computed: {
+    confirmButtonText() {
+      return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+    },
+    cancelButtonText() {
+      return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+    },
+    confirmDeleteButtons() {
+      return [{
+        label: this.$t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
+        type: "primary",
+        event: "confirm"
+      }, {
+        label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
+        type: "secondary"
+      }];
+    },
+    hasAddSlot() {
+      return Boolean(this.$slots.add);
+    },
+    hasDeleteSlot() {
+      return Boolean(this.$slots.delete);
+    },
+    hasModifySlot() {
+      return Boolean(this.$slots.modify);
+    },
+    formModalHeader() {
+      return this.operation === Operation.ADD ? this.addNewModalHeader : this.modifyModalHeader;
+    }
+  },
+  watch: {
+    modelValue: {
+      immediate: true,
+      deep: true,
+      handler(data2) {
+        this.result = [...data2];
+      }
+    }
+  },
+  mounted() {
+    if (!this.hasAddSlot && !this.hasDeleteSlot && !this.hasModifySlot) {
+      throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
+    }
+  },
+  methods: {
+    createItem() {
+      if (!this.hasAddSlot) {
+        throw Error("No template is defined for #add");
+      }
+      this.operation = Operation.ADD;
+      this.item = this.beforeCreate ? this.beforeCreate() : {};
+      this.isFormModalOpen = true;
+    },
+    deleteItem(item) {
+      if (!this.hasDeleteSlot) {
+        throw Error("No template is defined for #delete");
+      }
+      this.operation = Operation.DELETE;
+      this.item = item;
+      this.isConfirmModalOpen = true;
+    },
+    onDeleteConfirm() {
+      if (!this.item) {
+        return;
+      }
+      this.callbackBeforeItemDelete(this.item);
+      this.result = this.result.filter((item) => item !== this.item);
+      this.$emit("deleted", this.item);
+      this.$emit("update:modelValue", this.result);
+      this.$emit("change", this.result);
+      alertScreenReader(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
+        assertive: true
+      });
+    },
+    onDeleteClose(e) {
+      this.onModalClose();
+      if (e.reason === "close" && this.onCancel) {
+        this.onCancel();
+      }
+    },
+    onModalClose() {
+      this.isFormModalOpen = false;
+      this.isConfirmModalOpen = false;
+    },
+    onFormModalSubmit() {
+      if (!this.item) {
+        return;
+      }
+      if (this.operation === Operation.ADD) {
+        this.result.push(this.item);
+        this.$emit("created", this.item);
+        this.$emit("update:modelValue", this.result);
+        this.$emit("change", this.result);
+        this.callbackAfterItemAdd(this.item);
+        alertScreenReader(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
+          assertive: true
+        });
+      } else if (this.operation === Operation.MODIFY) {
+        if (this.originalItemToUpdate) {
+          Object.assign(this.originalItemToUpdate, this.item);
+        } else {
+          this.originalItemToUpdate = this.item;
+        }
+        this.$emit("updated", this.originalItemToUpdate);
+        this.$emit("update:modelValue", this.result);
+        this.$emit("change", this.result);
+        alertScreenReader(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
+          assertive: true
+        });
+      }
+      this.isFormModalOpen = false;
+    },
+    updateItem(item) {
+      if (!this.hasModifySlot) {
+        throw Error("No template is defined for #modify");
+      }
+      this.operation = Operation.MODIFY;
+      this.originalItemToUpdate = item;
+      this.item = deepClone(item);
+      this.isFormModalOpen = true;
+    }
   }
-  this.isFormModalOpen = false;
-}, updateItem(item) {
-  if (!this.hasModifySlot) {
-    throw Error("No template is defined for #modify");
-  }
-  this.operation = Operation.MODIFY;
-  this.originalItemToUpdate = item;
-  this.item = deepClone(item);
-  this.isFormModalOpen = true;
-} } });
+});
 function ActivateItemInjected() {
-  return { registerCallbackAfterItemAdd: inject("registerCallbackAfterItemAdd", () => void 0), registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0) };
+  return {
+    registerCallbackAfterItemAdd: inject("registerCallbackAfterItemAdd", () => void 0),
+    registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0)
+  };
 }
 var FTableColumnType = /* @__PURE__ */ ((FTableColumnType2) => {
   FTableColumnType2["TEXT"] = "text";
@@ -14469,232 +15187,415 @@ function isTableColumnType(value) {
   return ["text", "date", "numeric", "action"].includes(value);
 }
 function FTableInjected() {
-  return { addColumn: inject("addColumn"), setVisibilityColumn: inject("setVisibilityColumn"), textFieldTableMode: true, renderColumns: inject("renderColumns", false) };
+  return {
+    addColumn: inject("addColumn"),
+    setVisibilityColumn: inject("setVisibilityColumn"),
+    textFieldTableMode: true,
+    renderColumns: inject("renderColumns", false)
+  };
 }
-/* @__PURE__ */ defineComponent({ name: "FTableColumn", inheritAttrs: false, props: {
-  /**
-  * Unique (per-table) identifier.
-  *
-  * Typically set to the row property displayed but any unique string can
-  * be used.
-  */
-  name: { type: String, required: true },
-  /**
-  * If set to true, display the column, set to false to hide it.
-  */
-  visible: { type: Boolean, default: true },
-  /**
-  * If `true` this cell will be a row header (`<th>` as opposed to
-  * `<td>`).
-  */
-  rowHeader: { type: Boolean, required: false, default: false },
-  /**
-  * Text to show in column header. In order to force newlines use `\n`.
-  */
-  title: { type: String, required: true },
-  /**
-  * Additional column description.
-  */
-  description: { type: String, required: false, default: "" },
-  /**
-  * Set this column to shrink as small as possible.
-  *
-  * Cannot be combined with `expand`
-  */
-  shrink: { type: Boolean, required: false, default: false },
-  /**
-  * Set this column to expand as large as possible.
-  *
-  * Cannot be combined with `shrink`
-  *
-  * Default if neither `expand` or `shrink` is set.
-  */
-  expand: { type: Boolean, required: false, default: false },
-  /**
-  * Type of data the rows contains.
-  *
-  * Applies proper alignment and some styling (e.g. "numeric" uses fixed
-  * width numbers).
-  *
-  * Can be one of the following values:
-  *
-  * - `"text"`: regular text data (default)
-  * - `"date"`: date (should be YYYY-MM-DD)
-  * - `"numeric"`: numeric data
-  * - `"action"`: buttons to perform actions on row
-  */
-  type: { type: String, required: false, default: FTableColumnType.TEXT, validator(value) {
-    return isTableColumnType(value);
-  } }
-}, setup() {
-  return FTableInjected();
-}, computed: { classes() {
-  return ["table__column", `table__column--${this.type}`];
-}, scope() {
-  return this.rowHeader ? "row" : null;
-}, tagName() {
-  if (this.rowHeader) {
-    return "th";
-  } else {
-    return "td";
+/* @__PURE__ */ defineComponent({
+  name: "FTableColumn",
+  inheritAttrs: false,
+  props: {
+    /**
+     * Unique (per-table) identifier.
+     *
+     * Typically set to the row property displayed but any unique string can
+     * be used.
+     */
+    name: {
+      type: String,
+      required: true
+    },
+    /**
+     * If set to true, display the column, set to false to hide it.
+     */
+    visible: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * If `true` this cell will be a row header (`<th>` as opposed to
+     * `<td>`).
+     */
+    rowHeader: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * Text to show in column header. In order to force newlines use `\n`.
+     */
+    title: {
+      type: String,
+      required: true
+    },
+    /**
+     * Additional column description.
+     */
+    description: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * Set this column to shrink as small as possible.
+     *
+     * Cannot be combined with `expand`
+     */
+    shrink: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * Set this column to expand as large as possible.
+     *
+     * Cannot be combined with `shrink`
+     *
+     * Default if neither `expand` or `shrink` is set.
+     */
+    expand: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * Type of data the rows contains.
+     *
+     * Applies proper alignment and some styling (e.g. "numeric" uses fixed
+     * width numbers).
+     *
+     * Can be one of the following values:
+     *
+     * - `"text"`: regular text data (default)
+     * - `"date"`: date (should be YYYY-MM-DD)
+     * - `"numeric"`: numeric data
+     * - `"action"`: buttons to perform actions on row
+     */
+    type: {
+      type: String,
+      required: false,
+      default: FTableColumnType.TEXT,
+      validator(value) {
+        return isTableColumnType(value);
+      }
+    }
+  },
+  setup() {
+    return FTableInjected();
+  },
+  computed: {
+    classes() {
+      return ["table__column", `table__column--${this.type}`];
+    },
+    scope() {
+      return this.rowHeader ? "row" : null;
+    },
+    tagName() {
+      if (this.rowHeader) {
+        return "th";
+      } else {
+        return "td";
+      }
+    }
+  },
+  watch: {
+    visible: {
+      handler: function() {
+        this.setVisibilityColumn(this.name, this.visible);
+      }
+    }
+  },
+  created() {
+    if (this.shrink && this.expand) {
+      throw new Error("Table cannot have both shrink and expand enabled at the same time");
+    }
+    const size = this.shrink ? FTableColumnSize.SHRINK : FTableColumnSize.EXPAND;
+    this.addColumn({
+      name: this.name,
+      title: this.title,
+      description: this.description || void 0,
+      id: ElementIdService.generateElementId("column"),
+      size,
+      type: this.type,
+      visible: this.visible,
+      sortable: false,
+      sort: FTableColumnSort.UNSORTED
+    });
   }
-} }, watch: { visible: { handler: function() {
-  this.setVisibilityColumn(this.name, this.visible);
-} } }, created() {
-  if (this.shrink && this.expand) {
-    throw new Error("Table cannot have both shrink and expand enabled at the same time");
-  }
-  const size = this.shrink ? FTableColumnSize.SHRINK : FTableColumnSize.EXPAND;
-  this.addColumn({ name: this.name, title: this.title, description: this.description || void 0, id: ElementIdService.generateElementId("column"), size, type: this.type, visible: this.visible, sortable: false, sort: FTableColumnSort.UNSORTED });
-} });
+});
 function FSortFilterDatasetInjected() {
-  return { sort: inject("sort", () => void 0), registerCallbackOnSort: inject("registerCallbackOnSort", () => void 0), registerCallbackOnMount: inject("registerCallbackOnMount", () => void 0) };
+  return {
+    sort: inject("sort", () => void 0),
+    registerCallbackOnSort: inject("registerCallbackOnSort", () => void 0),
+    registerCallbackOnMount: inject("registerCallbackOnMount", () => void 0)
+  };
 }
-const _sfc_main$Q = /* @__PURE__ */ defineComponent({ name: "FLabel", components: { FIcon }, props: {
-  /**
-  * The id for the form element the label is bound to.
-  */
-  for: { type: String, required: false, default: void 0 }
-}, data() {
-  return { descriptionClass: ["label__description"], discreteDescriptionClass: ["label__description", "label__description--discrete"] };
-}, computed: { forProperty() {
-  return this.for;
-}, hasDefaultSlot() {
-  return hasSlot(this, "default");
-}, hasErrorMessageSlot() {
-  return hasSlot(this, "error-message");
-}, hasDescriptionSlot() {
-  return hasSlot(this, "description");
-} } });
-const _hoisted_1$C = { key: 0 };
-const _hoisted_2$s = { key: 0, class: "tooltip-before" };
+const _sfc_main$Q = /* @__PURE__ */ defineComponent({
+  name: "FLabel",
+  components: {
+    FIcon
+  },
+  props: {
+    /**
+     * The id for the form element the label is bound to.
+     */
+    for: {
+      type: String,
+      required: false,
+      default: void 0
+    }
+  },
+  data() {
+    return {
+      descriptionClass: ["label__description"],
+      discreteDescriptionClass: ["label__description", "label__description--discrete"]
+    };
+  },
+  computed: {
+    forProperty() {
+      return this.for;
+    },
+    hasDefaultSlot() {
+      return hasSlot(this, "default");
+    },
+    hasErrorMessageSlot() {
+      return hasSlot(this, "error-message");
+    },
+    hasDescriptionSlot() {
+      return hasSlot(this, "description");
+    }
+  }
+});
+const _hoisted_1$C = {
+  key: 0
+};
+const _hoisted_2$s = {
+  key: 0,
+  class: "tooltip-before"
+};
 const _hoisted_3$n = ["for"];
 const _hoisted_4$j = ["for"];
-const _hoisted_5$f = { key: 0, class: "label__message label__message--error" };
+const _hoisted_5$f = {
+  key: 0,
+  class: "label__message label__message--error"
+};
 const _hoisted_6$b = ["for"];
-const _hoisted_7$a = { key: 0, class: "label__message label__message--error" };
+const _hoisted_7$a = {
+  key: 0,
+  class: "label__message label__message--error"
+};
 function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$C, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$s, [createBaseVNode("label", { class: "label tooltip-before__label", for: _ctx.forProperty }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$n)])) : createCommentVNode("v-if", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", { key: 1, class: "label sr-separator", for: _ctx.forProperty }, [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$f, [createVNode(_component_f_icon, { class: "label__icon--left", name: "error" }), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("v-if", true)], 8, _hoisted_4$j)) : createCommentVNode("v-if", true)])) : (openBlock(), createElementBlock("label", { key: 1, class: "label", for: _ctx.forProperty }, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$a, [createVNode(_component_f_icon, { class: "label__icon--left", name: "error" }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("v-if", true)], 8, _hoisted_6$b));
+  return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$C, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$s, [createBaseVNode("label", {
+    class: "label tooltip-before__label",
+    for: _ctx.forProperty
+  }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$n)])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
+    key: 1,
+    class: "label sr-separator",
+    for: _ctx.forProperty
+  }, [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
+    descriptionClass: _ctx.descriptionClass,
+    discreteDescriptionClass: _ctx.discreteDescriptionClass
+  }))), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$f, [createVNode(_component_f_icon, {
+    class: "label__icon--left",
+    name: "error"
+  }), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_4$j)) : createCommentVNode("", true)])) : (openBlock(), createElementBlock("label", {
+    key: 1,
+    class: "label",
+    for: _ctx.forProperty
+  }, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
+    descriptionClass: _ctx.descriptionClass,
+    discreteDescriptionClass: _ctx.discreteDescriptionClass
+  }))), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$a, [createVNode(_component_f_icon, {
+    class: "label__icon--left",
+    name: "error"
+  }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$b));
 }
 const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$Q, [["render", _sfc_render$G]]);
 function resolveWidthClass$1(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
-const _sfc_main$P = /* @__PURE__ */ defineComponent({ name: "FSelectField", components: { FIcon, FLabel }, inheritAttrs: false, props: {
-  /**
-  * The id for the select id attribute.
-  * The id for the label for attribute.
-  * If the prop is not set a random value will be generated.
-  */
-  id: { type: String, required: false, default: () => ElementIdService.generateElementId() },
-  /**
-  * Show the component inline.
-  */
-  inline: { type: Boolean, required: false, default: false },
-  /**
-  * The value for the input.
-  * If the prop is not set undefined will be used.
-  * @model
-  */
-  modelValue: { type: [String, Number, Object, Array, Boolean], required: false, default: void 0 },
-  /**
-  * Set responsive width for label section.
-  *
-  * ```
-  * label-width="md-9 lg-6"
-  * ```
-  */
-  labelWidth: { type: String, required: false, default: "sm-12" },
-  /**
-  * Set responsive width for select section that wraps select element and icons.
-  *
-  * ```
-  * select-width="md-6 lg-3"
-  * ```
-  */
-  selectWidth: { type: String, required: false, default: "sm-12" }
-}, emits: ["change", "update:modelValue"], setup() {
-  return { textFieldTableMode: inject("textFieldTableMode", false) };
-}, data() {
-  return { validityMode: "INITIAL", validationMessage: "" };
-}, computed: { attrs() {
-  return {
-    ...this.$attrs,
-    // Disable change
-    onChange: () => void 0
-  };
-}, hasError() {
-  return this.validityMode === "ERROR";
-}, rootClass() {
-  return { ["select-field--error"]: this.hasError, ["select-field--inline"]: this.inline, ["text-field--table"]: this.textFieldTableMode, ["select-field--table-error"]: this.textFieldTableMode && this.hasError };
-}, labelClass() {
-  return this.textFieldTableMode ? "sr-only" : "";
-}, labelWrapperClass() {
-  return resolveWidthClass$1(this.labelWidth, this.inline);
-}, selectWrapperClass() {
-  return resolveWidthClass$1(this.selectWidth, this.inline);
-}, vModel: { get() {
-  return this.modelValue;
-}, set(value) {
-  this.$emit("update:modelValue", value);
-  this.$emit("change", value);
-} } }, methods: { async onValidity({ detail }) {
-  var _renderSlotText3;
-  this.validationMessage = detail.validationMessage;
-  this.validityMode = detail.validityMode;
-  await this.$nextTick();
-  const errorMessage = (_renderSlotText3 = renderSlotText(this.$slots.label)) !== null && _renderSlotText3 !== void 0 ? _renderSlotText3 : "";
-  const element = this.$el.querySelector(`#${detail.elementId}`);
-  if (element) {
-    dispatchComponentValidityEvent(element, { ...detail, errorMessage, focusElementId: detail.elementId });
+const _sfc_main$P = /* @__PURE__ */ defineComponent({
+  name: "FSelectField",
+  components: {
+    FIcon,
+    FLabel
+  },
+  inheritAttrs: false,
+  props: {
+    /**
+     * The id for the select id attribute.
+     * The id for the label for attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * Show the component inline.
+     */
+    inline: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * The value for the input.
+     * If the prop is not set undefined will be used.
+     * @model
+     */
+    modelValue: {
+      type: [String, Number, Object, Array, Boolean],
+      required: false,
+      default: void 0
+    },
+    /**
+     * Set responsive width for label section.
+     *
+     * ```
+     * label-width="md-9 lg-6"
+     * ```
+     */
+    labelWidth: {
+      type: String,
+      required: false,
+      default: "sm-12"
+    },
+    /**
+     * Set responsive width for select section that wraps select element and icons.
+     *
+     * ```
+     * select-width="md-6 lg-3"
+     * ```
+     */
+    selectWidth: {
+      type: String,
+      required: false,
+      default: "sm-12"
+    }
+  },
+  emits: ["change", "update:modelValue"],
+  setup() {
+    return {
+      textFieldTableMode: inject("textFieldTableMode", false)
+    };
+  },
+  data() {
+    return {
+      validityMode: "INITIAL",
+      validationMessage: ""
+    };
+  },
+  computed: {
+    attrs() {
+      return {
+        ...this.$attrs,
+        // Disable change
+        onChange: () => void 0
+      };
+    },
+    hasError() {
+      return this.validityMode === "ERROR";
+    },
+    rootClass() {
+      return {
+        ["select-field--error"]: this.hasError,
+        ["select-field--inline"]: this.inline,
+        ["text-field--table"]: this.textFieldTableMode,
+        ["select-field--table-error"]: this.textFieldTableMode && this.hasError
+      };
+    },
+    labelClass() {
+      return this.textFieldTableMode ? "sr-only" : "";
+    },
+    labelWrapperClass() {
+      return resolveWidthClass$1(this.labelWidth, this.inline);
+    },
+    selectWrapperClass() {
+      return resolveWidthClass$1(this.selectWidth, this.inline);
+    },
+    vModel: {
+      get() {
+        return this.modelValue;
+      },
+      set(value) {
+        this.$emit("update:modelValue", value);
+        this.$emit("change", value);
+      }
+    }
+  },
+  methods: {
+    async onValidity({
+      detail
+    }) {
+      var _renderSlotText;
+      this.validationMessage = detail.validationMessage;
+      this.validityMode = detail.validityMode;
+      await this.$nextTick();
+      const errorMessage = (_renderSlotText = renderSlotText(this.$slots.label)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
+      const element = this.$el.querySelector(`#${detail.elementId}`);
+      if (element) {
+        dispatchComponentValidityEvent(element, {
+          ...detail,
+          errorMessage,
+          focusElementId: detail.elementId
+        });
+      }
+    }
   }
-} } });
+});
 const _hoisted_1$B = ["id"];
 function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock(
-    "div",
-    { class: normalizeClass(["select-field", _ctx.rootClass]), onValidity: _cache[1] || (_cache[1] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)) },
-    [createBaseVNode(
-      "div",
-      { class: normalizeClass(_ctx.labelWrapperClass) },
-      [createVNode(_component_f_label, { for: _ctx.id, class: normalizeClass(_ctx.labelClass) }, createSlots({
-        default: withCtx(() => [renderSlot(_ctx.$slots, "label")]),
-        description: withCtx(({ descriptionClass, discreteDescriptionClass }) => [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({ descriptionClass, discreteDescriptionClass })))]),
-        "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({ hasError: _ctx.hasError, validationMessage: _ctx.validationMessage })), () => [_ctx.hasError ? (openBlock(), createElementBlock(
-          Fragment,
-          { key: 0 },
-          [createTextVNode(
-            toDisplayString(_ctx.validationMessage),
-            1
-            /* TEXT */
-          )],
-          64
-          /* STABLE_FRAGMENT */
-        )) : createCommentVNode("v-if", true)])]),
-        _: 2
-        /* DYNAMIC */
-      }, [_ctx.$slots.tooltip ? { name: "tooltip", fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]), key: "0" } : void 0]), 1032, ["for", "class"])],
-      2
-      /* CLASS */
-    ), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode(
-      "div",
-      { class: normalizeClass(["select-field__icon-wrapper", _ctx.selectWrapperClass]) },
-      [withDirectives(createBaseVNode("select", mergeProps({ id: _ctx.id, "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event), class: "select-field__select" }, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$B), [[vModelSelect, _ctx.vModel]]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(
-        _component_f_icon,
-        { key: 0, ref: "icon", class: "text-field__icon input-icon select-field__error-popup-icon", name: "error" },
-        null,
-        512
-        /* NEED_PATCH */
-      )) : createCommentVNode("v-if", true), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, { class: "select-field__icon", name: "arrow-down" })],
-      2
-      /* CLASS */
-    )],
-    34
-    /* CLASS, NEED_HYDRATION */
-  );
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(["select-field", _ctx.rootClass]),
+    onValidity: _cache[1] || (_cache[1] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
+  }, [createBaseVNode("div", {
+    class: normalizeClass(_ctx.labelWrapperClass)
+  }, [createVNode(_component_f_label, {
+    for: _ctx.id,
+    class: normalizeClass(_ctx.labelClass)
+  }, createSlots({
+    default: withCtx(() => [renderSlot(_ctx.$slots, "label")]),
+    description: withCtx(({
+      descriptionClass,
+      discreteDescriptionClass
+    }) => [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
+      descriptionClass,
+      discreteDescriptionClass
+    })))]),
+    "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
+      hasError: _ctx.hasError,
+      validationMessage: _ctx.validationMessage
+    })), () => [_ctx.hasError ? (openBlock(), createElementBlock(Fragment, {
+      key: 0
+    }, [createTextVNode(toDisplayString(_ctx.validationMessage), 1)], 64)) : createCommentVNode("", true)])]),
+    _: 2
+  }, [_ctx.$slots.tooltip ? {
+    name: "tooltip",
+    fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]),
+    key: "0"
+  } : void 0]), 1032, ["for", "class"])], 2), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("div", {
+    class: normalizeClass(["select-field__icon-wrapper", _ctx.selectWrapperClass])
+  }, [withDirectives(createBaseVNode("select", mergeProps({
+    id: _ctx.id,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event),
+    class: "select-field__select"
+  }, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$B), [[vModelSelect, _ctx.vModel]]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
+    key: 0,
+    ref: "icon",
+    class: "text-field__icon input-icon select-field__error-popup-icon",
+    name: "error"
+  }, null, 512)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
+    class: "select-field__icon",
+    name: "arrow-down"
+  })], 2)], 34);
 }
 const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$P, [["render", _sfc_render$F]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
@@ -14703,29 +15604,47 @@ function computeArrowOffset(placement, inputIconRect, wrapperRect) {
       const wrapperRightX = wrapperRect.x + wrapperRect.width;
       const iconCenterX = inputIconRect.x + inputIconRect.width / 2;
       const offset2 = wrapperRightX - iconCenterX;
-      return { position: "top", offset: offset2 };
+      return {
+        position: "top",
+        offset: offset2
+      };
     }
     case Placement.B: {
       const offset2 = wrapperRect.x + wrapperRect.width - (inputIconRect.x + inputIconRect.width / 2);
-      return { position: "top", offset: offset2 };
+      return {
+        position: "top",
+        offset: offset2
+      };
     }
     case Placement.C: {
       const wrapperRightX = wrapperRect.x + wrapperRect.width;
       const iconCenterX = inputIconRect.x + inputIconRect.width / 2;
       const offset2 = wrapperRightX - iconCenterX;
-      return { position: "bottom", offset: offset2 };
+      return {
+        position: "bottom",
+        offset: offset2
+      };
     }
     case Placement.D: {
       const offset2 = wrapperRect.x + wrapperRect.width - (inputIconRect.x + inputIconRect.width / 2);
-      return { position: "bottom", offset: offset2 };
+      return {
+        position: "bottom",
+        offset: offset2
+      };
     }
     case Placement.E: {
       const offset2 = wrapperRect.y + wrapperRect.height - (inputIconRect.y + inputIconRect.height / 2);
-      return { position: "left", offset: offset2 };
+      return {
+        position: "left",
+        offset: offset2
+      };
     }
     case Placement.F: {
       const offset2 = wrapperRect.y + wrapperRect.height - (inputIconRect.y + inputIconRect.height / 2);
-      return { position: "right", offset: offset2 };
+      return {
+        position: "right",
+        offset: offset2
+      };
     }
     case Placement.G:
     case Placement.H:
@@ -14733,489 +15652,717 @@ function computeArrowOffset(placement, inputIconRect, wrapperRect) {
     case Placement.Fallback:
     case Placement.NotCalculated: {
       const offset2 = wrapperRect.x + wrapperRect.width - (inputIconRect.x + inputIconRect.width / 2);
-      return { position: "top", offset: offset2 };
+      return {
+        position: "top",
+        offset: offset2
+      };
     }
   }
 }
 const POPUP_SPACING = 10;
-const _sfc_main$O = /* @__PURE__ */ defineComponent({ name: "IPopupError", components: { FIcon }, inheritAttrs: false, props: {
-  /**
-  * Toggle open/closed error popup.
-  */
-  isOpen: { type: Boolean, required: true },
-  /**
-  * Message to display
-  */
-  errorMessage: { type: String, required: false, default: "Error" },
-  /**
-  * DOM element to position error popup at.
-  */
-  anchor: { type: HTMLElement, required: false, default: void 0 }
-}, emits: ["close"], data() {
-  return { teleportDisabled: false, placement: Placement.NotCalculated, arrowPosition: "top", arrowOffset: 24 };
-}, computed: { popupClasses() {
-  const forceInline = this.teleportDisabled || this.placement === Placement.Fallback;
-  const popupState = forceInline ? ["popup-error--inline"] : ["popup-error--overlay"];
-  return ["popup-error", ...popupState];
-}, arrowClass() {
-  return `popup-error popup-error--arrow popup-error--${this.arrowPosition}`;
-}, errorStyle() {
-  return `--i-popup-error-offset: ${this.arrowOffset}px`;
-} }, watch: { anchor: { immediate: true, handler(anchor) {
-  if (anchor) {
-    anchor.addEventListener("keyup", this.onKeyEsc);
-    window.addEventListener("resize", this.onResize);
+const _sfc_main$O = /* @__PURE__ */ defineComponent({
+  name: "IPopupError",
+  components: {
+    FIcon
+  },
+  inheritAttrs: false,
+  props: {
+    /**
+     * Toggle open/closed error popup.
+     */
+    isOpen: {
+      type: Boolean,
+      required: true
+    },
+    /**
+     * Message to display
+     */
+    errorMessage: {
+      type: String,
+      required: false,
+      default: "Error"
+    },
+    /**
+     * DOM element to position error popup at.
+     */
+    anchor: {
+      type: HTMLElement,
+      required: false,
+      default: void 0
+    }
+  },
+  emits: ["close"],
+  data() {
+    return {
+      teleportDisabled: false,
+      placement: Placement.NotCalculated,
+      arrowPosition: "top",
+      arrowOffset: 24
+    };
+  },
+  computed: {
+    popupClasses() {
+      const forceInline = this.teleportDisabled || this.placement === Placement.Fallback;
+      const popupState = forceInline ? ["popup-error--inline"] : ["popup-error--overlay"];
+      return ["popup-error", ...popupState];
+    },
+    arrowClass() {
+      return `popup-error popup-error--arrow popup-error--${this.arrowPosition}`;
+    },
+    errorStyle() {
+      return `--i-popup-error-offset: ${this.arrowOffset}px`;
+    }
+  },
+  watch: {
+    anchor: {
+      immediate: true,
+      handler(anchor) {
+        if (anchor) {
+          anchor.addEventListener("keyup", this.onKeyEsc);
+          window.addEventListener("resize", this.onResize);
+        }
+      }
+    },
+    isOpen: {
+      immediate: true,
+      async handler(value) {
+        await this.toggleIsOpen(value);
+      }
+    }
+  },
+  unmounted() {
+    var _a;
+    (_a = this.anchor) == null ? void 0 : _a.removeEventListener("keyup", this.onKeyEsc);
+    window.removeEventListener("resize", this.onResize);
+  },
+  methods: {
+    onResize() {
+      this.toggleIsOpen(this.isOpen);
+    },
+    onKeyEsc(event) {
+      if (event.key === "Escape") {
+        this.$emit("close");
+      }
+    },
+    onClose() {
+      this.$emit("close");
+    },
+    setArrowOffset() {
+      var _a;
+      const wrapper2 = this.$refs["wrapper"];
+      const inputIcon = (_a = this.anchor) == null ? void 0 : _a.nextElementSibling;
+      if (!inputIcon || !wrapper2) {
+        return;
+      }
+      const inputIconRect = inputIcon.getBoundingClientRect();
+      const wrapperRect = wrapper2.getBoundingClientRect();
+      const arrow = computeArrowOffset(this.placement, inputIconRect, wrapperRect);
+      this.arrowOffset = arrow.offset;
+      this.arrowPosition = arrow.position;
+    },
+    async toggleIsOpen(isOpen) {
+      if (!isOpen) {
+        this.placement = Placement.NotCalculated;
+        return;
+      }
+      await this.$nextTick();
+      const wrapper2 = this.$refs["wrapper"];
+      if (!this.anchor) {
+        throw new Error("No anchor element found");
+      }
+      const area = document.body;
+      const viewport = document.documentElement;
+      const result = fitInsideArea({
+        area,
+        anchor: this.anchor,
+        target: wrapper2,
+        viewport,
+        spacing: POPUP_SPACING,
+        candidateOrder: CandidateOrder.IPopupError
+      });
+      this.placement = result.placement;
+      if (result.placement !== Placement.Fallback) {
+        this.teleportDisabled = false;
+        wrapper2.style.left = `${result.x}px`;
+        wrapper2.style.top = `${result.y}px`;
+        await this.setArrowOffset();
+        return;
+      }
+      await this.setArrowOffset();
+      this.teleportDisabled = true;
+      wrapper2.style.removeProperty("left");
+      wrapper2.style.removeProperty("top");
+    }
   }
-} }, isOpen: { immediate: true, async handler(value) {
-  await this.toggleIsOpen(value);
-} } }, unmounted() {
-  var _a;
-  (_a = this.anchor) == null ? void 0 : _a.removeEventListener("keyup", this.onKeyEsc);
-  window.removeEventListener("resize", this.onResize);
-}, methods: { onResize() {
-  this.toggleIsOpen(this.isOpen);
-}, onKeyEsc(event) {
-  if (event.key === "Escape") {
-    this.$emit("close");
-  }
-}, onClose() {
-  this.$emit("close");
-}, setArrowOffset() {
-  var _a;
-  const wrapper2 = this.$refs["wrapper"];
-  const inputIcon = (_a = this.anchor) == null ? void 0 : _a.nextElementSibling;
-  if (!inputIcon || !wrapper2) {
-    return;
-  }
-  const inputIconRect = inputIcon.getBoundingClientRect();
-  const wrapperRect = wrapper2.getBoundingClientRect();
-  const arrow = computeArrowOffset(this.placement, inputIconRect, wrapperRect);
-  this.arrowOffset = arrow.offset;
-  this.arrowPosition = arrow.position;
-}, async toggleIsOpen(isOpen) {
-  if (!isOpen) {
-    this.placement = Placement.NotCalculated;
-    return;
-  }
-  await this.$nextTick();
-  const wrapper2 = this.$refs["wrapper"];
-  if (!this.anchor) {
-    throw new Error("No anchor element found");
-  }
-  const area = document.body;
-  const viewport = document.documentElement;
-  const result = fitInsideArea({ area, anchor: this.anchor, target: wrapper2, viewport, spacing: POPUP_SPACING, candidateOrder: CandidateOrder.IPopupError });
-  this.placement = result.placement;
-  if (result.placement !== Placement.Fallback) {
-    this.teleportDisabled = false;
-    wrapper2.style.left = `${result.x}px`;
-    wrapper2.style.top = `${result.y}px`;
-    await this.setArrowOffset();
-    return;
-  }
-  await this.setArrowOffset();
-  this.teleportDisabled = true;
-  wrapper2.style.removeProperty("left");
-  wrapper2.style.removeProperty("top");
-} } });
-const _hoisted_1$A = { ref: "wrapper", class: "popup-error__wrapper" };
+});
+const _hoisted_1$A = {
+  ref: "wrapper",
+  class: "popup-error__wrapper"
+};
 function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return _ctx.isOpen ? (openBlock(), createBlock(Teleport, { key: 0, to: "body", disabled: _ctx.teleportDisabled }, [createBaseVNode(
-    "div",
-    { ref: "popup", class: normalizeClass(_ctx.popupClasses), "aria-hidden": "true" },
-    [createBaseVNode(
-      "div",
-      _hoisted_1$A,
-      [createBaseVNode(
-        "div",
-        { class: normalizeClass(_ctx.arrowClass), style: normalizeStyle(_ctx.errorStyle) },
-        [createBaseVNode(
-          "span",
-          null,
-          toDisplayString(_ctx.errorMessage),
-          1
-          /* TEXT */
-        ), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("button", { tabindex: "-1", type: "button", class: "button button--discrete button--discrete--black modal__close-button popup-error__button", "aria-label": "Stäng", onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClose && _ctx.onClose(...args)) }, [createVNode(_component_f_icon, { name: "close", class: "button__icon" })])],
-        6
-        /* CLASS, STYLE */
-      )],
-      512
-      /* NEED_PATCH */
-    )],
-    2
-    /* CLASS */
-  )], 8, ["disabled"])) : createCommentVNode("v-if", true);
+  return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
+    key: 0,
+    to: "body",
+    disabled: _ctx.teleportDisabled
+  }, [createBaseVNode("div", {
+    ref: "popup",
+    class: normalizeClass(_ctx.popupClasses),
+    "aria-hidden": "true"
+  }, [createBaseVNode("div", _hoisted_1$A, [createBaseVNode("div", {
+    class: normalizeClass(_ctx.arrowClass),
+    style: normalizeStyle(_ctx.errorStyle)
+  }, [createBaseVNode("span", null, toDisplayString(_ctx.errorMessage), 1), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("button", {
+    tabindex: "-1",
+    type: "button",
+    class: "button button--discrete button--discrete--black modal__close-button popup-error__button",
+    "aria-label": "Stäng",
+    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClose && _ctx.onClose(...args))
+  }, [createVNode(_component_f_icon, {
+    name: "close",
+    class: "button__icon"
+  })])], 6)], 512)], 2)], 8, ["disabled"])) : createCommentVNode("", true);
 }
 const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$O, [["render", _sfc_render$E]]);
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
-const _sfc_main$N = /* @__PURE__ */ defineComponent({ name: "FTextField", components: { FLabel, FIcon, IPopupError }, inheritAttrs: false, props: {
-  /**
-  * The id for the input id attribute.
-  * The id for the label for attribute.
-  * If the prop is not set a random value will be generated.
-  */
-  id: { type: String, required: false, default: () => ElementIdService.generateElementId() },
-  /**
-  * Show the component inline.
-  */
-  inline: { type: Boolean, required: false, default: false },
-  /**
-  * The value for the input.
-  * If the prop is not set undefined will be used.
-  * @model
-  */
-  modelValue: { type: [String, Number], required: false, default: "" },
-  /**
-  * The type used for the input.
-  * If the prop is not set text will be used.
-  */
-  type: { type: String, required: false, default: "text" },
-  /**
-  * - The `formatter` function must only be used on a component that uses validation.
-  * - The `formatter` function acts differently depending on if the `parser` function is defined or not.
-  *
-  * | formatter without parser | formatter with parser |
-  * | ----- | -----|
-  * | modelvalue = parsed viewvalue using formatter function | modelvalue = parsed viewvalue using parser function |
-  * | viewvalue = modelvalue (where modelvalue is already parsed) | viewvalue = formatted modelvalue using formatter function (where modelvalue is already parsed) |
-  */
-  formatter: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- We cannot know which type is used.
-    type: Function,
-    required: false,
-    default: void 0
+const _sfc_main$N = /* @__PURE__ */ defineComponent({
+  name: "FTextField",
+  components: {
+    FLabel,
+    FIcon,
+    IPopupError
   },
-  /**
-  * - The `parser` function must only be used on a component that uses validation.
-  * - The `parser` function acts differently depending on if the `formatter` function is defined or not.
-  *   - For parser combined with formatter, refer to formatter prop doc.
-  *
-  * | parser without formatter |
-  * | ----- |
-  * | modelvalue = parsed viewvalue using parser function |
-  * | viewvalue = never updated except when modelvalue differs from parsed viewvalue |
-  */
-  parser: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- We cannot know which type is used.
-    type: Function,
-    required: false,
-    default: void 0
+  inheritAttrs: false,
+  props: {
+    /**
+     * The id for the input id attribute.
+     * The id for the label for attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * Show the component inline.
+     */
+    inline: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * The value for the input.
+     * If the prop is not set undefined will be used.
+     * @model
+     */
+    modelValue: {
+      type: [String, Number],
+      required: false,
+      default: ""
+    },
+    /**
+     * The type used for the input.
+     * If the prop is not set text will be used.
+     */
+    type: {
+      type: String,
+      required: false,
+      default: "text"
+    },
+    /**
+     * - The `formatter` function must only be used on a component that uses validation.
+     * - The `formatter` function acts differently depending on if the `parser` function is defined or not.
+     *
+     * | formatter without parser | formatter with parser |
+     * | ----- | -----|
+     * | modelvalue = parsed viewvalue using formatter function | modelvalue = parsed viewvalue using parser function |
+     * | viewvalue = modelvalue (where modelvalue is already parsed) | viewvalue = formatted modelvalue using formatter function (where modelvalue is already parsed) |
+     */
+    formatter: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- We cannot know which type is used.
+      type: Function,
+      required: false,
+      default: void 0
+    },
+    /**
+     * - The `parser` function must only be used on a component that uses validation.
+     * - The `parser` function acts differently depending on if the `formatter` function is defined or not.
+     *   - For parser combined with formatter, refer to formatter prop doc.
+     *
+     * | parser without formatter |
+     * | ----- |
+     * | modelvalue = parsed viewvalue using parser function |
+     * | viewvalue = never updated except when modelvalue differs from parsed viewvalue |
+     */
+    parser: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- We cannot know which type is used.
+      type: Function,
+      required: false,
+      default: void 0
+    },
+    /**
+     * Set responsive width for label section.
+     *
+     * ```
+     * label-width="md-9 lg-6"
+     * ```
+     */
+    labelWidth: {
+      type: String,
+      required: false,
+      default: "sm-12"
+    },
+    /**
+     * Set responsive width for input section that wraps input element and icons.
+     *
+     * ```
+     * input-width="md-6 lg-3"
+     * ```
+     */
+    inputWidth: {
+      type: String,
+      required: false,
+      default: "sm-12"
+    }
   },
-  /**
-  * Set responsive width for label section.
-  *
-  * ```
-  * label-width="md-9 lg-6"
-  * ```
-  */
-  labelWidth: { type: String, required: false, default: "sm-12" },
-  /**
-  * Set responsive width for input section that wraps input element and icons.
-  *
-  * ```
-  * input-width="md-6 lg-3"
-  * ```
-  */
-  inputWidth: { type: String, required: false, default: "sm-12" }
-}, emits: ["blur", "change", "update", "update:modelValue"], setup() {
-  return { textFieldTableMode: inject("textFieldTableMode", false) };
-}, data() {
-  return {
-    showErrorPopup: false,
-    viewValue: "",
-    lastModelValue: "",
-    validationMessage: "",
-    validityMode: "INITIAL",
-    // internal default texts possible to override when extending component
-    defaultText: "",
-    descriptionText: "",
-    descriptionScreenReaderText: "",
-    discreteDescriptionText: "",
-    discreteDescriptionScreenReaderText: ""
-  };
-}, computed: { showPopupError() {
-  return this.textFieldTableMode && this.hasError && this.showErrorPopup;
-}, labelClass() {
-  return this.textFieldTableMode ? "sr-only" : "";
-}, isValid() {
-  return this.validityMode === "VALID";
-}, hasError() {
-  return this.validityMode === "ERROR";
-}, rootClass() {
-  return { "text-field--error": this.hasError, "text-field--inline": this.inline, "text-field--table": this.textFieldTableMode };
-}, labelWrapperClass() {
-  return resolveWidthClass(this.labelWidth, this.inline);
-}, inputWrapperClass() {
-  return resolveWidthClass(this.inputWidth, this.inline);
-}, isModelUpdatedProgrammatically() {
-  return this.lastModelValue !== this.modelValue;
-} }, watch: { modelValue: { immediate: true, handler: function() {
-  if (this.modelValue === void 0 || this.modelValue === null) {
-    this.viewValue = "";
-    return;
-  }
-  if (!this.isModelUpdatedProgrammatically) {
-    return;
-  }
-  this.setViewValueToFormattedValueOrFallbackToValue();
-  this.lastModelValue = this.modelValue;
-} } }, methods: { getErrorPopupAnchor() {
-  return this.$refs.input;
-}, closePopupError() {
-  this.showErrorPopup = false;
-}, async onChange() {
-  if (!this.$refs.input.hasAttribute("data-validation")) {
-    this.$emit("update:modelValue", this.viewValue);
-    this.$emit("update", this.viewValue);
-    await this.$nextTick();
-    this.$emit("change", this.viewValue);
-  }
-}, onFocus() {
-  this.showErrorPopup = true;
-}, async onBlur() {
-  this.showErrorPopup = false;
-  if (!this.$refs.input) {
-    return;
-  }
-  if (!this.$refs.input.hasAttribute("data-validation")) {
-    this.$emit("update:modelValue", this.viewValue);
-    this.$emit("update", this.viewValue);
-    await this.$nextTick();
-    this.$emit("blur", this.viewValue);
-  }
-}, async onValidity({ detail }) {
-  this.validationMessage = detail.validationMessage;
-  this.validityMode = detail.validityMode;
-  if (detail.nativeEvent === "change" || detail.nativeEvent === "blur") {
-    let newModelValue;
-    if (detail.isValid) {
-      newModelValue = this.resolveNewModelValue(this.viewValue);
-    } else {
-      newModelValue = this.viewValue;
+  emits: ["blur", "change", "update", "update:modelValue"],
+  setup() {
+    return {
+      textFieldTableMode: inject("textFieldTableMode", false)
+    };
+  },
+  data() {
+    return {
+      showErrorPopup: false,
+      viewValue: "",
+      lastModelValue: "",
+      validationMessage: "",
+      validityMode: "INITIAL",
+      // internal default texts possible to override when extending component
+      defaultText: "",
+      descriptionText: "",
+      descriptionScreenReaderText: "",
+      discreteDescriptionText: "",
+      discreteDescriptionScreenReaderText: ""
+    };
+  },
+  computed: {
+    showPopupError() {
+      return this.textFieldTableMode && this.hasError && this.showErrorPopup;
+    },
+    labelClass() {
+      return this.textFieldTableMode ? "sr-only" : "";
+    },
+    isValid() {
+      return this.validityMode === "VALID";
+    },
+    hasError() {
+      return this.validityMode === "ERROR";
+    },
+    rootClass() {
+      return {
+        "text-field--error": this.hasError,
+        "text-field--inline": this.inline,
+        "text-field--table": this.textFieldTableMode
+      };
+    },
+    labelWrapperClass() {
+      return resolveWidthClass(this.labelWidth, this.inline);
+    },
+    inputWrapperClass() {
+      return resolveWidthClass(this.inputWidth, this.inline);
+    },
+    isModelUpdatedProgrammatically() {
+      return this.lastModelValue !== this.modelValue;
     }
-    this.lastModelValue = newModelValue;
-    this.$emit("update:modelValue", newModelValue);
-    this.$emit("update", newModelValue);
-    await this.$nextTick();
-    this.$emit(detail.nativeEvent, newModelValue);
-    if (detail.isValid) {
-      this.syncViewValueAfterModelUpdate(newModelValue);
+  },
+  watch: {
+    modelValue: {
+      immediate: true,
+      handler: function() {
+        if (this.modelValue === void 0 || this.modelValue === null) {
+          this.viewValue = "";
+          return;
+        }
+        if (!this.isModelUpdatedProgrammatically) {
+          return;
+        }
+        this.setViewValueToFormattedValueOrFallbackToValue();
+        this.lastModelValue = this.modelValue;
+      }
+    }
+  },
+  methods: {
+    getErrorPopupAnchor() {
+      return this.$refs.input;
+    },
+    closePopupError() {
+      this.showErrorPopup = false;
+    },
+    async onChange() {
+      if (!this.$refs.input.hasAttribute("data-validation")) {
+        this.$emit("update:modelValue", this.viewValue);
+        this.$emit("update", this.viewValue);
+        await this.$nextTick();
+        this.$emit("change", this.viewValue);
+      }
+    },
+    onFocus() {
+      this.showErrorPopup = true;
+    },
+    async onBlur() {
+      this.showErrorPopup = false;
+      if (!this.$refs.input) {
+        return;
+      }
+      if (!this.$refs.input.hasAttribute("data-validation")) {
+        this.$emit("update:modelValue", this.viewValue);
+        this.$emit("update", this.viewValue);
+        await this.$nextTick();
+        this.$emit("blur", this.viewValue);
+      }
+    },
+    async onValidity({
+      detail
+    }) {
+      this.validationMessage = detail.validationMessage;
+      this.validityMode = detail.validityMode;
+      if (detail.nativeEvent === "change" || detail.nativeEvent === "blur") {
+        let newModelValue;
+        if (detail.isValid) {
+          newModelValue = this.resolveNewModelValue(this.viewValue);
+        } else {
+          newModelValue = this.viewValue;
+        }
+        this.lastModelValue = newModelValue;
+        this.$emit("update:modelValue", newModelValue);
+        this.$emit("update", newModelValue);
+        await this.$nextTick();
+        this.$emit(detail.nativeEvent, newModelValue);
+        if (detail.isValid) {
+          this.syncViewValueAfterModelUpdate(newModelValue);
+        }
+      }
+      this.triggerComponentValidityEvent(detail);
+    },
+    onPendingValidity() {
+      this.validityMode = "INITIAL";
+    },
+    resolveNewModelValue(viewValue) {
+      const trimmedViewValue = viewValue.trim();
+      if (trimmedViewValue === "") {
+        return "";
+      } else if (isSet(this.parser)) {
+        var _this$parser;
+        return (_this$parser = this.parser(trimmedViewValue)) !== null && _this$parser !== void 0 ? _this$parser : trimmedViewValue;
+      } else if (isSet(this.formatter)) {
+        var _this$formatter;
+        return (_this$formatter = this.formatter(trimmedViewValue)) !== null && _this$formatter !== void 0 ? _this$formatter : trimmedViewValue;
+      } else {
+        return trimmedViewValue;
+      }
+    },
+    syncViewValueAfterModelUpdate(newModelValue) {
+      if (newModelValue === "") {
+        this.viewValue = "";
+      } else if (isSet(this.parser)) {
+        if (isSet(this.formatter)) {
+          this.viewValue = String(this.formatter(newModelValue) || this.viewValue);
+        }
+      } else {
+        this.viewValue = String(newModelValue);
+      }
+    },
+    triggerComponentValidityEvent(validityEvent) {
+      var _renderSlotText;
+      const errorMessage = (_renderSlotText = renderSlotText(this.$slots.default, {}, {
+        stripClasses: []
+      })) !== null && _renderSlotText !== void 0 ? _renderSlotText : this.defaultText;
+      const element = this.$el.querySelector(`#${validityEvent.elementId}`);
+      if (element) {
+        dispatchComponentValidityEvent(element, {
+          ...validityEvent,
+          errorMessage,
+          focusElementId: validityEvent.elementId
+        });
+      }
+    },
+    setViewValueToFormattedValueOrFallbackToValue() {
+      if (!isSet(this.formatter)) {
+        this.viewValue = String(this.modelValue);
+        return;
+      }
+      const parsedValue = isSet(this.parser) && typeof this.modelValue === "string" ? this.parser(this.modelValue) : this.modelValue;
+      const formattedValue = isSet(parsedValue) ? this.formatter(parsedValue) : void 0;
+      this.viewValue = isSet(formattedValue) ? formattedValue : String(this.modelValue);
     }
   }
-  this.triggerComponentValidityEvent(detail);
-}, onPendingValidity() {
-  this.validityMode = "INITIAL";
-}, resolveNewModelValue(viewValue) {
-  const trimmedViewValue = viewValue.trim();
-  if (trimmedViewValue === "") {
-    return "";
-  } else if (isSet(this.parser)) {
-    var _this$parser;
-    return (_this$parser = this.parser(trimmedViewValue)) !== null && _this$parser !== void 0 ? _this$parser : trimmedViewValue;
-  } else if (isSet(this.formatter)) {
-    var _this$formatter;
-    return (_this$formatter = this.formatter(trimmedViewValue)) !== null && _this$formatter !== void 0 ? _this$formatter : trimmedViewValue;
-  } else {
-    return trimmedViewValue;
-  }
-}, syncViewValueAfterModelUpdate(newModelValue) {
-  if (newModelValue === "") {
-    this.viewValue = "";
-  } else if (isSet(this.parser)) {
-    if (isSet(this.formatter)) {
-      this.viewValue = String(this.formatter(newModelValue) || this.viewValue);
-    }
-  } else {
-    this.viewValue = String(newModelValue);
-  }
-}, triggerComponentValidityEvent(validityEvent) {
-  var _renderSlotText4;
-  const errorMessage = (_renderSlotText4 = renderSlotText(this.$slots.default, {}, { stripClasses: [] })) !== null && _renderSlotText4 !== void 0 ? _renderSlotText4 : this.defaultText;
-  const element = this.$el.querySelector(`#${validityEvent.elementId}`);
-  if (element) {
-    dispatchComponentValidityEvent(element, { ...validityEvent, errorMessage, focusElementId: validityEvent.elementId });
-  }
-}, setViewValueToFormattedValueOrFallbackToValue() {
-  if (!isSet(this.formatter)) {
-    this.viewValue = String(this.modelValue);
-    return;
-  }
-  const parsedValue = isSet(this.parser) && typeof this.modelValue === "string" ? this.parser(this.modelValue) : this.modelValue;
-  const formattedValue = isSet(parsedValue) ? this.formatter(parsedValue) : void 0;
-  this.viewValue = isSet(formattedValue) ? formattedValue : String(this.modelValue);
-} } });
-const _hoisted_1$z = { key: 0 };
-const _hoisted_2$r = { key: 0, class: "sr-only" };
-const _hoisted_3$m = { key: 0, class: "sr-only" };
-const _hoisted_4$i = { class: "text-field__icon-wrapper" };
+});
+const _hoisted_1$z = {
+  key: 0
+};
+const _hoisted_2$r = {
+  key: 0,
+  class: "sr-only"
+};
+const _hoisted_3$m = {
+  key: 0,
+  class: "sr-only"
+};
+const _hoisted_4$i = {
+  class: "text-field__icon-wrapper"
+};
 const _hoisted_5$e = ["id", "type"];
-const _hoisted_6$a = { key: 2, class: "text-field__append-inner" };
+const _hoisted_6$a = {
+  key: 2,
+  class: "text-field__append-inner"
+};
 function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_popup_error = resolveComponent("i-popup-error");
-  return openBlock(), createElementBlock(
-    "div",
-    { class: normalizeClass(["text-field", _ctx.rootClass]) },
-    [createBaseVNode(
-      "div",
-      { class: normalizeClass(_ctx.labelWrapperClass) },
-      [createVNode(_component_f_label, { for: _ctx.id, class: normalizeClass(_ctx.labelClass) }, createSlots({
-        default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock(
-          "span",
-          _hoisted_1$z,
-          toDisplayString(_ctx.defaultText),
-          1
-          /* TEXT */
-        )) : createCommentVNode("v-if", true)])]),
-        description: withCtx(({ descriptionClass, discreteDescriptionClass }) => [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({ descriptionClass, discreteDescriptionClass })), () => [_ctx.descriptionText ? (openBlock(), createElementBlock(
-          "span",
-          { key: 0, class: normalizeClass(descriptionClass) },
-          [_ctx.descriptionScreenReaderText ? (openBlock(), createElementBlock(
-            "span",
-            _hoisted_2$r,
-            toDisplayString(_ctx.descriptionScreenReaderText),
-            1
-            /* TEXT */
-          )) : createCommentVNode("v-if", true), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode(
-            "span",
-            null,
-            toDisplayString(_ctx.descriptionText),
-            1
-            /* TEXT */
-          )],
-          2
-          /* CLASS */
-        )) : createCommentVNode("v-if", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock(
-          "span",
-          { key: 1, class: normalizeClass(discreteDescriptionClass) },
-          [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock(
-            "span",
-            _hoisted_3$m,
-            toDisplayString(_ctx.discreteDescriptionScreenReaderText),
-            1
-            /* TEXT */
-          )) : createCommentVNode("v-if", true), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode(
-            "span",
-            null,
-            toDisplayString(_ctx.discreteDescriptionText),
-            1
-            /* TEXT */
-          )],
-          2
-          /* CLASS */
-        )) : createCommentVNode("v-if", true)])]),
-        "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({ hasError: _ctx.hasError, validationMessage: _ctx.validationMessage })), () => [_ctx.hasError ? (openBlock(), createElementBlock(
-          Fragment,
-          { key: 0 },
-          [createTextVNode(
-            toDisplayString(_ctx.validationMessage),
-            1
-            /* TEXT */
-          )],
-          64
-          /* STABLE_FRAGMENT */
-        )) : createCommentVNode("v-if", true)])]),
-        _: 2
-        /* DYNAMIC */
-      }, [_ctx.$slots.tooltip ? { name: "tooltip", fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]), key: "0" } : void 0]), 1032, ["for", "class"])],
-      2
-      /* CLASS */
-    ), _cache[17] || (_cache[17] = createTextVNode()), createBaseVNode(
-      "div",
-      { class: normalizeClass(["text-field__input-wrapper", _ctx.inputWrapperClass]) },
-      [renderSlot(_ctx.$slots, "input-left"), _cache[15] || (_cache[15] = createTextVNode()), createBaseVNode("div", _hoisted_4$i, [withDirectives(createBaseVNode("input", mergeProps({ id: _ctx.id, ref: "input", "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event), type: _ctx.type, class: "text-field__input" }, _ctx.$attrs, { onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.onBlur && _ctx.onBlur(...args)), onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocus && _ctx.onFocus(...args)), onChange: _cache[3] || (_cache[3] = (...args) => _ctx.onChange && _ctx.onChange(...args)), onValidity: _cache[4] || (_cache[4] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)), onPendingValidity: _cache[5] || (_cache[5] = (...args) => _ctx.onPendingValidity && _ctx.onPendingValidity(...args)) }), null, 16, _hoisted_5$e), [[vModelDynamic, _ctx.viewValue]]), _cache[12] || (_cache[12] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(
-        _component_f_icon,
-        { key: 0, ref: "icon", class: "text-field__icon input-icon text-field__append-inner text-field__error-popup-icon", name: "error" },
-        null,
-        512
-        /* NEED_PATCH */
-      )) : createCommentVNode("v-if", true), _cache[13] || (_cache[13] = createTextVNode()), _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_i_popup_error, { key: 1, anchor: _ctx.getErrorPopupAnchor(), "is-open": _ctx.showPopupError, "error-message": _ctx.validationMessage, onClose: _ctx.closePopupError }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("v-if", true), _cache[14] || (_cache[14] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$a, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("v-if", true)]), _cache[16] || (_cache[16] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")],
-      2
-      /* CLASS */
-    )],
-    2
-    /* CLASS */
-  );
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(["text-field", _ctx.rootClass])
+  }, [createBaseVNode("div", {
+    class: normalizeClass(_ctx.labelWrapperClass)
+  }, [createVNode(_component_f_label, {
+    for: _ctx.id,
+    class: normalizeClass(_ctx.labelClass)
+  }, createSlots({
+    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$z, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("", true)])]),
+    description: withCtx(({
+      descriptionClass,
+      discreteDescriptionClass
+    }) => [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
+      descriptionClass,
+      discreteDescriptionClass
+    })), () => [_ctx.descriptionText ? (openBlock(), createElementBlock("span", {
+      key: 0,
+      class: normalizeClass(descriptionClass)
+    }, [_ctx.descriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_2$r, toDisplayString(_ctx.descriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.descriptionText), 1)], 2)) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock("span", {
+      key: 1,
+      class: normalizeClass(discreteDescriptionClass)
+    }, [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_3$m, toDisplayString(_ctx.discreteDescriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.discreteDescriptionText), 1)], 2)) : createCommentVNode("", true)])]),
+    "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
+      hasError: _ctx.hasError,
+      validationMessage: _ctx.validationMessage
+    })), () => [_ctx.hasError ? (openBlock(), createElementBlock(Fragment, {
+      key: 0
+    }, [createTextVNode(toDisplayString(_ctx.validationMessage), 1)], 64)) : createCommentVNode("", true)])]),
+    _: 2
+  }, [_ctx.$slots.tooltip ? {
+    name: "tooltip",
+    fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]),
+    key: "0"
+  } : void 0]), 1032, ["for", "class"])], 2), _cache[17] || (_cache[17] = createTextVNode()), createBaseVNode("div", {
+    class: normalizeClass(["text-field__input-wrapper", _ctx.inputWrapperClass])
+  }, [renderSlot(_ctx.$slots, "input-left"), _cache[15] || (_cache[15] = createTextVNode()), createBaseVNode("div", _hoisted_4$i, [withDirectives(createBaseVNode("input", mergeProps({
+    id: _ctx.id,
+    ref: "input",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event),
+    type: _ctx.type,
+    class: "text-field__input"
+  }, _ctx.$attrs, {
+    onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.onBlur && _ctx.onBlur(...args)),
+    onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocus && _ctx.onFocus(...args)),
+    onChange: _cache[3] || (_cache[3] = (...args) => _ctx.onChange && _ctx.onChange(...args)),
+    onValidity: _cache[4] || (_cache[4] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)),
+    onPendingValidity: _cache[5] || (_cache[5] = (...args) => _ctx.onPendingValidity && _ctx.onPendingValidity(...args))
+  }), null, 16, _hoisted_5$e), [[vModelDynamic, _ctx.viewValue]]), _cache[12] || (_cache[12] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
+    key: 0,
+    ref: "icon",
+    class: "text-field__icon input-icon text-field__append-inner text-field__error-popup-icon",
+    name: "error"
+  }, null, 512)) : createCommentVNode("", true), _cache[13] || (_cache[13] = createTextVNode()), _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_i_popup_error, {
+    key: 1,
+    anchor: _ctx.getErrorPopupAnchor(),
+    "is-open": _ctx.showPopupError,
+    "error-message": _ctx.validationMessage,
+    onClose: _ctx.closePopupError
+  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[14] || (_cache[14] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$a, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true)]), _cache[16] || (_cache[16] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")], 2)], 2);
 }
 const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$N, [["render", _sfc_render$D]]);
-/* @__PURE__ */ defineComponent({ name: "FEmailTextField", components: { FTextField }, mixins: [TranslationMixin], inheritAttrs: false, props: {
-  /**
-  * The id for the input id attribute.
-  * The id for the label for attribute.
-  * If the prop is not set a random value will be generated.
-  */
-  id: { type: String, required: false, default: () => ElementIdService.generateElementId() },
-  /**
-  * The value for the input.
-  * If the prop is not set undefined will be used.
-  * @model
-  */
-  modelValue: { type: String, required: false, default: void 0 },
-  maxLength: { type: Number, default: 80 },
-  extendedValidation: { type: Boolean, default: false },
-  /**
-  * The error message to be displayed on paste
-  * If the prop is not set the default text "Du kan inte kopiera mejladressen. Du måste skriva in den igen." will be set
-  */
-  pasteErrorText: { type: String, required: false, default: TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du måste skriva in den igen.") }
-}, emits: ["blur", "change", "update", "update:modelValue"], data() {
-  return { validityMode: "INITIAL", secondEmail: "", showPasteErrorMessage: false, defaultText: this.$t("fkui.email-text-field.label", "Mejladress") };
-}, mounted() {
-  this.configureValidators();
-}, methods: { onChange(event) {
-  this.$emit("change", event);
-}, onBlur(event) {
-  this.$emit("blur", event);
-}, onUpdate(event) {
-  this.$emit("update:modelValue", event);
-  this.$emit("update", event);
-}, onPaste(event) {
-  this.showPasteErrorMessage = true;
-  event.preventDefault();
-  return false;
-}, onValidity({ detail }) {
-  var _renderSlotText5;
-  this.showPasteErrorMessage = false;
-  this.validityMode = detail.validityMode;
-  const errorMessage = (_renderSlotText5 = renderSlotText(this.$slots.default)) !== null && _renderSlotText5 !== void 0 ? _renderSlotText5 : this.defaultText;
-  const element = this.$el.querySelector(`#${detail.elementId}`);
-  if (element) {
-    dispatchComponentValidityEvent(element, { ...detail, errorMessage, focusElementId: detail.elementId });
+/* @__PURE__ */ defineComponent({
+  name: "FEmailTextField",
+  components: {
+    FTextField
+  },
+  mixins: [TranslationMixin],
+  inheritAttrs: false,
+  props: {
+    /**
+     * The id for the input id attribute.
+     * The id for the label for attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * The value for the input.
+     * If the prop is not set undefined will be used.
+     * @model
+     */
+    modelValue: {
+      type: String,
+      required: false,
+      default: void 0
+    },
+    maxLength: {
+      type: Number,
+      default: 80
+    },
+    extendedValidation: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * The error message to be displayed on paste
+     * If the prop is not set the default text "Du kan inte kopiera mejladressen. Du måste skriva in den igen." will be set
+     */
+    pasteErrorText: {
+      type: String,
+      required: false,
+      default: TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du måste skriva in den igen.")
+    }
+  },
+  emits: ["blur", "change", "update", "update:modelValue"],
+  data() {
+    return {
+      validityMode: "INITIAL",
+      secondEmail: "",
+      showPasteErrorMessage: false,
+      defaultText: this.$t("fkui.email-text-field.label", "Mejladress")
+    };
+  },
+  mounted() {
+    this.configureValidators();
+  },
+  methods: {
+    onChange(event) {
+      this.$emit("change", event);
+    },
+    onBlur(event) {
+      this.$emit("blur", event);
+    },
+    onUpdate(event) {
+      this.$emit("update:modelValue", event);
+      this.$emit("update", event);
+    },
+    onPaste(event) {
+      this.showPasteErrorMessage = true;
+      event.preventDefault();
+      return false;
+    },
+    onValidity({
+      detail
+    }) {
+      var _renderSlotText;
+      this.showPasteErrorMessage = false;
+      this.validityMode = detail.validityMode;
+      const errorMessage = (_renderSlotText = renderSlotText(this.$slots.default)) !== null && _renderSlotText !== void 0 ? _renderSlotText : this.defaultText;
+      const element = this.$el.querySelector(`#${detail.elementId}`);
+      if (element) {
+        dispatchComponentValidityEvent(element, {
+          ...detail,
+          errorMessage,
+          focusElementId: detail.elementId
+        });
+      }
+    },
+    onPendingValidity() {
+      this.validityMode = "INITIAL";
+    },
+    configureValidators() {
+      const elements = Array.from(this.$el.querySelectorAll("input"));
+      const validatorEmailConfig = {
+        email: {}
+      };
+      ValidationService.addValidatorsToElement(elements[0], validatorEmailConfig, true);
+      if (this.extendedValidation) {
+        this.configureExtendedValidation(elements);
+      }
+    },
+    configureExtendedValidation(elements) {
+      const validatorEmailMatchesConfig = {
+        required: {
+          enabled: elements[0].hasAttribute("required")
+        },
+        email: {},
+        matches: {
+          id: elements[0].id
+        }
+      };
+      ValidationService.addValidatorsToElement(elements[1], validatorEmailMatchesConfig, true);
+    }
   }
-}, onPendingValidity() {
-  this.validityMode = "INITIAL";
-}, configureValidators() {
-  const elements = Array.from(this.$el.querySelectorAll("input"));
-  const validatorEmailConfig = { email: {} };
-  ValidationService.addValidatorsToElement(elements[0], validatorEmailConfig, true);
-  if (this.extendedValidation) {
-    this.configureExtendedValidation(elements);
+});
+/* @__PURE__ */ defineComponent({
+  name: "FSearchTextField",
+  components: {
+    FTextField,
+    FIcon
+  },
+  props: {
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    modelValue: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    clearableScreenReaderText: {
+      type: String,
+      required: false,
+      default: TranslationService.provider.translate("fkui.search-text-field.search-screen-reader", "Töm inmatningsfält")
+    },
+    maxLength: {
+      type: Number,
+      default: 80
+    }
+  },
+  emits: ["blur", "change", "update", "update:modelValue"],
+  data() {
+    return {
+      defaultText: this.$t("fkui.search-text-field.label", "Sök")
+    };
+  },
+  computed: {
+    canClear() {
+      return this.modelValue !== "";
+    }
+  },
+  methods: {
+    clear() {
+      alertScreenReader(this.$t("fkui.search-text-field.aria-live.clear", "Inmatningsfältet har tömts"), {
+        assertive: true
+      });
+      this.$emit("update:modelValue", "");
+      this.$el.querySelector("input").focus();
+    },
+    onInput(event) {
+      this.$emit("update:modelValue", event.target.value);
+    },
+    onChange(event) {
+      this.$emit("change", event);
+    },
+    onBlur(event) {
+      this.$emit("blur", event);
+    },
+    onUpdate(event) {
+      this.$emit("update:modelValue", event);
+    }
   }
-}, configureExtendedValidation(elements) {
-  const validatorEmailMatchesConfig = { required: { enabled: elements[0].hasAttribute("required") }, email: {}, matches: { id: elements[0].id } };
-  ValidationService.addValidatorsToElement(elements[1], validatorEmailMatchesConfig, true);
-} } });
-/* @__PURE__ */ defineComponent({ name: "FSearchTextField", components: { FTextField, FIcon }, props: { id: { type: String, required: false, default: () => ElementIdService.generateElementId() }, modelValue: { type: String, required: false, default: "" }, clearableScreenReaderText: { type: String, required: false, default: TranslationService.provider.translate("fkui.search-text-field.search-screen-reader", "Töm inmatningsfält") }, maxLength: { type: Number, default: 80 } }, emits: ["blur", "change", "update", "update:modelValue"], data() {
-  return { defaultText: this.$t("fkui.search-text-field.label", "Sök") };
-}, computed: { canClear() {
-  return this.modelValue !== "";
-} }, methods: { clear() {
-  alertScreenReader(this.$t("fkui.search-text-field.aria-live.clear", "Inmatningsfältet har tömts"), { assertive: true });
-  this.$emit("update:modelValue", "");
-  this.$el.querySelector("input").focus();
-}, onInput(event) {
-  this.$emit("update:modelValue", event.target.value);
-}, onChange(event) {
-  this.$emit("change", event);
-}, onBlur(event) {
-  this.$emit("blur", event);
-}, onUpdate(event) {
-  this.$emit("update:modelValue", event);
-} } });
+});
 function sort(list, sortAttribute, ascending) {
   return list.sort((item1, item2) => compare(item1, item2, sortAttribute, ascending));
 }
@@ -15290,245 +16437,423 @@ function filter(list, filterAttributes, searchString) {
   const searchTerms = searchString.split(/\s+/).map((word) => word.toLocaleLowerCase());
   return list.filter((item) => includesAllSearchTerms(item, filterAttributes, searchTerms));
 }
-/* @__PURE__ */ defineComponent({ name: "FSortFilterDataset", components: { FSelectField, FTextField, FIcon, IFlex, IFlexItem }, mixins: [TranslationMixin], provide() {
-  return { sort: (attribute, ascending) => {
-    const foundAttribute = this.sortOrders.find((item) => item.attribute === attribute && item.ascending === ascending);
-    if (foundAttribute) {
-      this.sortAttribute = foundAttribute;
-    } else {
-      this.sortAttribute = { attribute: "", ascending: false };
+/* @__PURE__ */ defineComponent({
+  name: "FSortFilterDataset",
+  components: {
+    FSelectField,
+    FTextField,
+    FIcon,
+    IFlex,
+    IFlexItem
+  },
+  mixins: [TranslationMixin],
+  provide() {
+    return {
+      sort: (attribute, ascending) => {
+        const foundAttribute = this.sortOrders.find((item) => item.attribute === attribute && item.ascending === ascending);
+        if (foundAttribute) {
+          this.sortAttribute = foundAttribute;
+        } else {
+          this.sortAttribute = {
+            attribute: "",
+            ascending: false
+          };
+        }
+        this.sortFilterData();
+        this.$emit("usedSortAttributes", this.sortAttribute);
+      },
+      registerCallbackOnSort: (callback) => {
+        this.tableCallbackOnSort = callback;
+      },
+      registerCallbackOnMount: (callback) => {
+        this.tableCallbackSortableColumns = callback;
+      }
+    };
+  },
+  props: {
+    /**
+     * The data that you wish to sort or filter.
+     */
+    data: {
+      type: Array,
+      required: true,
+      default: () => []
+    },
+    /**
+     * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
+     * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
+     */
+    sortableAttributes: {
+      type: Object,
+      required: true
+    },
+    /**
+     * If set the data will be sorted by this attribute by default.
+     */
+    defaultSortAttribute: {
+      type: String,
+      required: false,
+      default: () => ""
+    },
+    /**
+     * Show/hides the sort dropdown.
+     */
+    showSort: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    /**
+     * Show/hides the filter input.
+     */
+    showFilter: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    /**
+     * Set placeholder text in filter input field.
+     * Default is textkey "fkui.sort-filter-dataset.placeholder.filter"
+     */
+    placeholderFilter: {
+      type: String,
+      required: false,
+      default: TranslationMixin.methods.$t("fkui.sort-filter-dataset.placeholder.filter", "Sök")
+    },
+    /**
+     * The order the data will be sorted by if defaultSortAttribute has been set.
+     */
+    defaultSortAscending: {
+      type: Boolean,
+      required: false,
+      default: () => true
     }
-    this.sortFilterData();
-    this.$emit("usedSortAttributes", this.sortAttribute);
-  }, registerCallbackOnSort: (callback) => {
-    this.tableCallbackOnSort = callback;
-  }, registerCallbackOnMount: (callback) => {
-    this.tableCallbackSortableColumns = callback;
-  } };
-}, props: {
-  /**
-  * The data that you wish to sort or filter.
-  */
-  data: { type: Array, required: true, default: () => [] },
-  /**
-  * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
-  * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
-  */
-  sortableAttributes: { type: Object, required: true },
-  /**
-  * If set the data will be sorted by this attribute by default.
-  */
-  defaultSortAttribute: { type: String, required: false, default: () => "" },
-  /**
-  * Show/hides the sort dropdown.
-  */
-  showSort: { type: Boolean, required: false, default: true },
-  /**
-  * Show/hides the filter input.
-  */
-  showFilter: { type: Boolean, required: false, default: true },
-  /**
-  * Set placeholder text in filter input field.
-  * Default is textkey "fkui.sort-filter-dataset.placeholder.filter"
-  */
-  placeholderFilter: { type: String, required: false, default: TranslationMixin.methods.$t("fkui.sort-filter-dataset.placeholder.filter", "Sök") },
-  /**
-  * The order the data will be sorted by if defaultSortAttribute has been set.
-  */
-  defaultSortAscending: { type: Boolean, required: false, default: () => true }
-}, emits: ["datasetSorted", "usedSortAttributes"], data() {
-  return { searchString: "", sortAttribute: { attribute: "", ascending: false }, sortFilterResult: [], tableCallbackOnSort: () => {
-    return;
-  }, tableCallbackSortableColumns: () => {
-    return;
-  } };
-}, computed: { showClearButton() {
-  return this.searchString.length > 0;
-}, sortOrders() {
-  const arr = [];
-  let id2 = 0;
-  Object.keys(this.sortableAttributes).forEach((key) => {
-    arr.push({ attribute: key, name: this.sortableAttributes[key], ascendingName: this.$t("fkui.sort-filter-dataset.label.ascending", "stigande"), ascending: true, id: id2++ });
-    arr.push({ attribute: key, name: this.sortableAttributes[key], ascendingName: this.$t("fkui.sort-filter-dataset.label.descending", "fallande"), ascending: false, id: id2++ });
-  });
-  return arr;
-}, filterAttributes() {
-  return Object.keys(this.sortableAttributes);
-} }, watch: { data: { immediate: true, deep: true, handler: function() {
-  if (this.defaultSortAttribute !== "") {
-    const foundAttribute = this.sortOrders.find((item) => item.attribute === this.defaultSortAttribute && item.ascending === this.defaultSortAscending);
-    if (foundAttribute) {
-      this.sortAttribute = foundAttribute;
+  },
+  emits: ["datasetSorted", "usedSortAttributes"],
+  data() {
+    return {
+      searchString: "",
+      sortAttribute: {
+        attribute: "",
+        ascending: false
+      },
+      sortFilterResult: [],
+      tableCallbackOnSort: () => {
+        return;
+      },
+      tableCallbackSortableColumns: () => {
+        return;
+      }
+    };
+  },
+  computed: {
+    showClearButton() {
+      return this.searchString.length > 0;
+    },
+    sortOrders() {
+      const arr = [];
+      let id2 = 0;
+      Object.keys(this.sortableAttributes).forEach((key) => {
+        arr.push({
+          attribute: key,
+          name: this.sortableAttributes[key],
+          ascendingName: this.$t("fkui.sort-filter-dataset.label.ascending", "stigande"),
+          ascending: true,
+          id: id2++
+        });
+        arr.push({
+          attribute: key,
+          name: this.sortableAttributes[key],
+          ascendingName: this.$t("fkui.sort-filter-dataset.label.descending", "fallande"),
+          ascending: false,
+          id: id2++
+        });
+      });
+      return arr;
+    },
+    filterAttributes() {
+      return Object.keys(this.sortableAttributes);
+    }
+  },
+  watch: {
+    data: {
+      immediate: true,
+      deep: true,
+      handler: function() {
+        if (this.defaultSortAttribute !== "") {
+          const foundAttribute = this.sortOrders.find((item) => item.attribute === this.defaultSortAttribute && item.ascending === this.defaultSortAscending);
+          if (foundAttribute) {
+            this.sortAttribute = foundAttribute;
+          }
+        }
+        this.sortFilterData();
+      }
+    }
+  },
+  created() {
+    this.debouncedFilterResultset = debounce(this.filterResultset, 250).bind(this);
+  },
+  mounted() {
+    this.tableCallbackSortableColumns(Object.keys(this.sortableAttributes));
+  },
+  methods: {
+    sortFilterData() {
+      const filteredData = filter(this.data, this.filterAttributes, this.searchString);
+      if (this.sortAttribute.attribute === "") {
+        this.sortFilterResult = filteredData;
+      } else {
+        this.sortFilterResult = sort([...filteredData], this.sortAttribute.attribute, this.sortAttribute.ascending);
+      }
+      this.$nextTick(() => {
+        this.tableCallbackOnSort(this.sortAttribute.attribute, this.sortAttribute.ascending);
+      });
+      this.$emit("datasetSorted", this.sortFilterResult);
+    },
+    onChangeSortAttribute() {
+      this.sortFilterData();
+      this.$emit("usedSortAttributes", this.sortAttribute);
+    },
+    onSearchInput(event) {
+      this.searchString = event.target.value;
+      this.debouncedFilterResultset();
+    },
+    onClickClearSearch() {
+      this.searchString = "";
+      this.sortFilterData();
+      const input = this.$el.querySelector(".text-field--inline input");
+      focus(input);
+    },
+    debouncedFilterResultset() {
+    },
+    filterResultset() {
+      this.sortFilterData();
+      if (this.searchString === "") {
+        alertScreenReader(this.$t("fkui.sort-filter-dataset.aria-live.empty", "Sök redigera Sök tom"));
+      } else {
+        const searchAriaLive = this.$t("fkui.sort-filter-dataset.aria-live.search", `Din sökning på "{{ search }}" gav {{ result }} träffar.`, {
+          result: this.sortFilterResult.length,
+          search: this.searchString
+        });
+        alertScreenReader(searchAriaLive);
+      }
     }
   }
-  this.sortFilterData();
-} } }, created() {
-  this.debouncedFilterResultset = debounce(this.filterResultset, 250).bind(this);
-}, mounted() {
-  this.tableCallbackSortableColumns(Object.keys(this.sortableAttributes));
-}, methods: { sortFilterData() {
-  const filteredData = filter(this.data, this.filterAttributes, this.searchString);
-  if (this.sortAttribute.attribute === "") {
-    this.sortFilterResult = filteredData;
-  } else {
-    this.sortFilterResult = sort([...filteredData], this.sortAttribute.attribute, this.sortAttribute.ascending);
-  }
-  this.$nextTick(() => {
-    this.tableCallbackOnSort(this.sortAttribute.attribute, this.sortAttribute.ascending);
-  });
-  this.$emit("datasetSorted", this.sortFilterResult);
-}, onChangeSortAttribute() {
-  this.sortFilterData();
-  this.$emit("usedSortAttributes", this.sortAttribute);
-}, onSearchInput(event) {
-  this.searchString = event.target.value;
-  this.debouncedFilterResultset();
-}, onClickClearSearch() {
-  this.searchString = "";
-  this.sortFilterData();
-  const input = this.$el.querySelector(".text-field--inline input");
-  focus(input);
-}, debouncedFilterResultset() {
-}, filterResultset() {
-  this.sortFilterData();
-  if (this.searchString === "") {
-    alertScreenReader(this.$t("fkui.sort-filter-dataset.aria-live.empty", "Sök redigera Sök tom"));
-  } else {
-    const searchAriaLive = this.$t("fkui.sort-filter-dataset.aria-live.search", `Din sökning på "{{ search }}" gav {{ result }} träffar.`, { result: this.sortFilterResult.length, search: this.searchString });
-    alertScreenReader(searchAriaLive);
-  }
-} } });
-/* @__PURE__ */ defineComponent({ name: "FDataTable", components: { FIcon }, mixins: [TranslationMixin], provide() {
-  return { addColumn: (column) => {
-    if (column.type === FTableColumnType.ACTION) {
-      throw new Error("Cannot use action column in FDataTable component");
+});
+/* @__PURE__ */ defineComponent({
+  name: "FDataTable",
+  components: {
+    FIcon
+  },
+  mixins: [TranslationMixin],
+  provide() {
+    return {
+      addColumn: (column) => {
+        if (column.type === FTableColumnType.ACTION) {
+          throw new Error("Cannot use action column in FDataTable component");
+        }
+        this.columns = addColumn(this.columns, column);
+      },
+      setVisibilityColumn: (id2, visible) => {
+        setVisibilityColumn(this.columns, id2, visible);
+      },
+      textFieldTableMode: true
+    };
+  },
+  inheritAttrs: false,
+  props: {
+    /**
+     * The rows to be listed.
+     * The rows will be listed in the given array order.
+     */
+    rows: {
+      type: Array,
+      required: true
+    },
+    /**
+     * Unique attribute in rows.
+     */
+    keyAttribute: {
+      type: String,
+      required: true
+    },
+    /**
+     * If `true` alternating rows will use a different background color.
+     */
+    striped: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Enable scrolling inside table.
+     *
+     * Can be one of the following values:
+     *
+     * - `"horizontal"`: Enables horizontal scrolling
+     * - `"vertical"`: Enables vertical scrolling
+     * - `"both"`: Enables scrolling in both directions
+     * - `"none"`: Disables scrolling (default)
+     */
+    scroll: {
+      type: String,
+      default: TableScroll.NONE,
+      validator(value) {
+        const types = Object.values(TableScroll);
+        return types.includes(value);
+      }
     }
-    this.columns = addColumn(this.columns, column);
-  }, setVisibilityColumn: (id2, visible) => {
-    setVisibilityColumn(this.columns, id2, visible);
-  }, textFieldTableMode: true };
-}, inheritAttrs: false, props: {
-  /**
-  * The rows to be listed.
-  * The rows will be listed in the given array order.
-  */
-  rows: { type: Array, required: true },
-  /**
-  * Unique attribute in rows.
-  */
-  keyAttribute: { type: String, required: true },
-  /**
-  * If `true` alternating rows will use a different background color.
-  */
-  striped: { type: Boolean, default: false },
-  /**
-  * Enable scrolling inside table.
-  *
-  * Can be one of the following values:
-  *
-  * - `"horizontal"`: Enables horizontal scrolling
-  * - `"vertical"`: Enables vertical scrolling
-  * - `"both"`: Enables scrolling in both directions
-  * - `"none"`: Disables scrolling (default)
-  */
-  scroll: { type: String, default: TableScroll.NONE, validator(value) {
-    const types = Object.values(TableScroll);
-    return types.includes(value);
-  } }
-}, setup(props) {
-  provide("renderColumns", computed(() => props.rows.length > 0));
-  return FSortFilterDatasetInjected();
-}, data() {
-  return { columns: [] };
-}, computed: { hasCaption() {
-  return hasSlot(this, "caption", {}, { stripClasses: [] });
-}, tableClasses() {
-  const classes = [];
-  if (this.striped) {
-    classes.push("table--striped");
+  },
+  setup(props) {
+    provide("renderColumns", computed(() => props.rows.length > 0));
+    return FSortFilterDatasetInjected();
+  },
+  data() {
+    return {
+      columns: []
+    };
+  },
+  computed: {
+    hasCaption() {
+      return hasSlot(this, "caption", {}, {
+        stripClasses: []
+      });
+    },
+    tableClasses() {
+      const classes = [];
+      if (this.striped) {
+        classes.push("table--striped");
+      }
+      return classes;
+    },
+    isEmpty() {
+      return this.rows.length === 0;
+    },
+    visibleColumns() {
+      return this.columns.filter((col) => col.visible);
+    },
+    wrapperClasses() {
+      return tableScrollClasses(this.scroll);
+    },
+    tabindex() {
+      return this.scroll !== TableScroll.NONE ? 0 : void 0;
+    }
+  },
+  mounted() {
+    this.registerCallbackOnSort(this.callbackOnSort);
+    this.registerCallbackOnMount(this.callbackSortableColumns);
+  },
+  methods: {
+    rowKey(item) {
+      const key = item[this.keyAttribute];
+      if (typeof key === "undefined") {
+        throw new Error(`Key attribute [${this.keyAttribute}]' is missing in row`);
+      }
+      return String(key);
+    },
+    columnClasses(column) {
+      const classes = ["table__column", `table__column--${column.type}`, column.size];
+      if (column.sortable) {
+        classes.push("table__column--sortable");
+      }
+      return classes;
+    },
+    iconClasses(column) {
+      return getSortableIconClasses(column);
+    },
+    iconName(column) {
+      return getSortableIconName(column);
+    },
+    onClickColumnHeader(column) {
+      if (!column.sortable) {
+        return;
+      }
+      let columnName = column.name;
+      if (column.sort === FTableColumnSort.DESCENDING) {
+        columnName = "";
+        column.sort = FTableColumnSort.UNSORTED;
+      }
+      this.sort(columnName, column.sort !== FTableColumnSort.ASCENDING);
+    },
+    callbackOnSort(columnName, ascending) {
+      updateSortOrder(this.columns, columnName, ascending);
+    },
+    callbackSortableColumns(columnNames) {
+      setSortableColumns(this.columns, columnNames);
+    },
+    escapeNewlines(value) {
+      return value.replace(/\n/g, "<br/>");
+    }
   }
-  return classes;
-}, isEmpty() {
-  return this.rows.length === 0;
-}, visibleColumns() {
-  return this.columns.filter((col) => col.visible);
-}, wrapperClasses() {
-  return tableScrollClasses(this.scroll);
-}, tabindex() {
-  return this.scroll !== TableScroll.NONE ? 0 : void 0;
-} }, mounted() {
-  this.registerCallbackOnSort(this.callbackOnSort);
-  this.registerCallbackOnMount(this.callbackSortableColumns);
-}, methods: { rowKey(item) {
-  const key = item[this.keyAttribute];
-  if (typeof key === "undefined") {
-    throw new Error(`Key attribute [${this.keyAttribute}]' is missing in row`);
+});
+const _sfc_main$w = /* @__PURE__ */ defineComponent({
+  name: "FExpand",
+  data() {
+    return {
+      height: 0,
+      initialStyle: {
+        overflow: "hidden",
+        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
+      },
+      hiddenStyle: {
+        height: "auto",
+        position: "absolute",
+        visibility: "hidden"
+      },
+      visibleStyle: {
+        width: "",
+        position: "",
+        visibility: "",
+        height: "0px"
+      },
+      openedStyle: {
+        height: "auto"
+      }
+    };
+  },
+  methods: {
+    enter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.initialStyle);
+      Object.assign(htmlElement.style, this.hiddenStyle);
+      htmlElement.style.width = getComputedStyle(element).width;
+      const height = getComputedStyle(element).height;
+      Object.assign(htmlElement.style, this.visibleStyle);
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        this.height = parseInt(height, 10);
+        htmlElement.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.openedStyle);
+    },
+    leave(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const height = getComputedStyle(element).height;
+      htmlElement.style.height = height;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        Object.assign(htmlElement.style, this.visibleStyle);
+      });
+    }
   }
-  return String(key);
-}, columnClasses(column) {
-  const classes = ["table__column", `table__column--${column.type}`, column.size];
-  if (column.sortable) {
-    classes.push("table__column--sortable");
-  }
-  return classes;
-}, iconClasses(column) {
-  return getSortableIconClasses(column);
-}, iconName(column) {
-  return getSortableIconName(column);
-}, onClickColumnHeader(column) {
-  if (!column.sortable) {
-    return;
-  }
-  let columnName = column.name;
-  if (column.sort === FTableColumnSort.DESCENDING) {
-    columnName = "";
-    column.sort = FTableColumnSort.UNSORTED;
-  }
-  this.sort(columnName, column.sort !== FTableColumnSort.ASCENDING);
-}, callbackOnSort(columnName, ascending) {
-  updateSortOrder(this.columns, columnName, ascending);
-}, callbackSortableColumns(columnNames) {
-  setSortableColumns(this.columns, columnNames);
-}, escapeNewlines(value) {
-  return value.replace(/\n/g, "<br/>");
-} } });
-const _sfc_main$w = /* @__PURE__ */ defineComponent({ name: "FExpand", data() {
-  return { height: 0, initialStyle: { overflow: "hidden", transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)" }, hiddenStyle: { height: "auto", position: "absolute", visibility: "hidden" }, visibleStyle: { width: "", position: "", visibility: "", height: "0px" }, openedStyle: { height: "auto" } };
-}, methods: { enter(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  Object.assign(htmlElement.style, this.initialStyle);
-  Object.assign(htmlElement.style, this.hiddenStyle);
-  htmlElement.style.width = getComputedStyle(element).width;
-  const height = getComputedStyle(element).height;
-  Object.assign(htmlElement.style, this.visibleStyle);
-  getComputedStyle(element).height;
-  setTimeout(() => {
-    this.height = parseInt(height, 10);
-    htmlElement.style.height = height;
-  });
-}, afterEnter(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  Object.assign(htmlElement.style, this.openedStyle);
-}, leave(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  const height = getComputedStyle(element).height;
-  htmlElement.style.height = height;
-  getComputedStyle(element).height;
-  setTimeout(() => {
-    Object.assign(htmlElement.style, this.visibleStyle);
-  });
-} } });
+});
 function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(Transition, { onEnter: _ctx.enter, onAfterEnter: _ctx.afterEnter, onLeave: _ctx.leave }, {
-    default: withCtx(() => [renderSlot(_ctx.$slots, "default", { height: _ctx.height })]),
+  return openBlock(), createBlock(Transition, {
+    onEnter: _ctx.enter,
+    onAfterEnter: _ctx.afterEnter,
+    onLeave: _ctx.leave
+  }, {
+    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {
+      height: _ctx.height
+    })]),
     _: 3
-    /* FORWARDED */
   }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
 const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$w]]);
 class FRightPanelServiceImpl {
   constructor() {
-    __publicField2(this, "focusedElementBeforeOpenining", null);
+    _defineProperty(this, "focusedElementBeforeOpenining", null);
   }
   open() {
     this.focusedElementBeforeOpenining = window.document.activeElement;
@@ -15646,7 +16971,19 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
   function hasExpandableContent(row) {
     return Boolean(expandableRows(row));
   }
-  return { expandedRows, isExpandableTable, hasExpandableSlot, toggleExpanded, isExpanded, rowAriaExpanded, expandableRowClasses, expandableColumnClasses, getExpandableDescribedby, expandableRows, hasExpandableContent };
+  return {
+    expandedRows,
+    isExpandableTable,
+    hasExpandableSlot,
+    toggleExpanded,
+    isExpanded,
+    rowAriaExpanded,
+    expandableRowClasses,
+    expandableColumnClasses,
+    getExpandableDescribedby,
+    expandableRows,
+    hasExpandableContent
+  };
 }
 function forceRepaintIE11(target) {
   if (navigator.userAgent.includes("Trident")) {
@@ -15655,323 +16992,467 @@ function forceRepaintIE11(target) {
     target.style.removeProperty("display");
   }
 }
-/* @__PURE__ */ defineComponent({ name: "FInteractiveTable", components: { FCheckboxField, FIcon }, mixins: [TranslationMixin], provide() {
-  return { addColumn: (column) => {
-    this.columns = addColumn(this.columns, column);
-  }, setVisibilityColumn: (id2, visible) => {
-    setVisibilityColumn(this.columns, id2, visible);
-  }, textFieldTableMode: true };
-}, inheritAttrs: false, props: {
-  /**
-  * The rows to be listed.
-  * The rows will be listed in the given array order.
-  */
-  rows: { type: Array, required: true },
-  /**
-  * If `true` hovering over a row will be highlighted
-  */
-  hover: { type: Boolean, default: false },
-  /**
-  * Unique attribute in rows.
-  */
-  keyAttribute: { type: String, required: true },
-  /**
-  * Attribute of expandable content in rows.
-  * If provided, the table can contain expandable rows.
-  */
-  expandableAttribute: { type: String, default: "" },
-  /**
-  * Element id for aria-describedby on expandable rows to describe expanded content.
-  */
-  expandableDescribedby: { type: String, default: "" },
-  /**
-  * If `true` the table rows will be selectable.
-  * @see 'select' and 'unselect' events.
-  */
-  selectable: { type: Boolean, default: false },
-  /**
-  * If `true` alternating rows will use a different background color.
-  */
-  striped: { type: Boolean, default: false },
-  /**
-  * Enable scrolling inside table.
-  *
-  * Can be one of the following values:
-  *
-  * - `"horizontal"`: Enables horizontal scrolling
-  * - `"vertical"`: Enables vertical scrolling
-  * - `"both"`: Enables scrolling in both directions
-  * - `"none"`: Disables scrolling (default)
-  */
-  scroll: { type: String, default: TableScroll.NONE, validator: function(value) {
-    const types = Object.values(TableScroll);
-    return types.includes(value);
-  } },
-  /**
-  * V-model will bind to value containing selected rows.
-  */
-  modelValue: { type: Array, required: false, default: void 0 }
-}, emits: [
-  "change",
-  "click",
-  "update",
-  "unselect",
-  "update:modelValue",
-  "select",
-  /**
-  * Emitted when row is expanded.
-  *
-  * @event expand
-  * @param row
-  * @type {ListItem}
-  */
-  "expand",
-  /**
-  * Emitted when row is collapsed.
-  *
-  * @event collapse
-  * @param row
-  * @type {ListItem}
-  */
-  "collapse"
-], setup(props, context) {
-  provide("renderColumns", computed(() => props.rows.length > 0));
-  const sortFilterDatasetInjected = FSortFilterDatasetInjected();
-  const activateItemInjected = ActivateItemInjected();
-  const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, context.emit, context.slots);
-  return { ...sortFilterDatasetInjected, ...activateItemInjected, ...expandableTable };
-}, data() {
-  return { activeRow: void 0, columns: [], selectedRows: [], tr: [] };
-}, computed: { hasCaption() {
-  return hasSlot(this, "caption", {}, { stripClasses: [] });
-}, hasCheckboxDescription() {
-  const firstRow = this.rows[0];
-  return hasSlot(this, "checkbox-description", { row: firstRow });
-}, isEmpty() {
-  return this.rows.length === 0;
-}, visibleColumns() {
-  return this.columns.filter((col) => col.visible);
-}, tableClasses() {
-  const classes = [];
-  if (this.selectable) {
-    classes.push("table--selectable");
-  }
-  if (this.hover) {
-    classes.push("table--hover");
-  }
-  return classes;
-}, tableRole() {
-  return this.isExpandableTable ? "treegrid" : "grid";
-}, wrapperClasses() {
-  return tableScrollClasses(this.scroll);
-}, nbOfColumns() {
-  let columnCount = this.columns.length;
-  if (this.selectable) {
-    columnCount++;
-  }
-  if (this.isExpandableTable) {
-    columnCount++;
-  }
-  return columnCount;
-} }, watch: { rows: { immediate: true, deep: true, handler: function() {
-  if (this.modelValue) {
-    this.selectedRows = this.modelValue.filter((row) => {
-      return includeItem(row, this.rows, this.keyAttribute);
+/* @__PURE__ */ defineComponent({
+  name: "FInteractiveTable",
+  components: {
+    FCheckboxField,
+    FIcon
+  },
+  mixins: [TranslationMixin],
+  provide() {
+    return {
+      addColumn: (column) => {
+        this.columns = addColumn(this.columns, column);
+      },
+      setVisibilityColumn: (id2, visible) => {
+        setVisibilityColumn(this.columns, id2, visible);
+      },
+      textFieldTableMode: true
+    };
+  },
+  inheritAttrs: false,
+  props: {
+    /**
+     * The rows to be listed.
+     * The rows will be listed in the given array order.
+     */
+    rows: {
+      type: Array,
+      required: true
+    },
+    /**
+     * If `true` hovering over a row will be highlighted
+     */
+    hover: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Unique attribute in rows.
+     */
+    keyAttribute: {
+      type: String,
+      required: true
+    },
+    /**
+     * Attribute of expandable content in rows.
+     * If provided, the table can contain expandable rows.
+     */
+    expandableAttribute: {
+      type: String,
+      default: ""
+    },
+    /**
+     * Element id for aria-describedby on expandable rows to describe expanded content.
+     */
+    expandableDescribedby: {
+      type: String,
+      default: ""
+    },
+    /**
+     * If `true` the table rows will be selectable.
+     * @see 'select' and 'unselect' events.
+     */
+    selectable: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * If `true` alternating rows will use a different background color.
+     */
+    striped: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Enable scrolling inside table.
+     *
+     * Can be one of the following values:
+     *
+     * - `"horizontal"`: Enables horizontal scrolling
+     * - `"vertical"`: Enables vertical scrolling
+     * - `"both"`: Enables scrolling in both directions
+     * - `"none"`: Disables scrolling (default)
+     */
+    scroll: {
+      type: String,
+      default: TableScroll.NONE,
+      validator: function(value) {
+        const types = Object.values(TableScroll);
+        return types.includes(value);
+      }
+    },
+    /**
+     * V-model will bind to value containing selected rows.
+     */
+    modelValue: {
+      type: Array,
+      required: false,
+      default: void 0
+    }
+  },
+  emits: [
+    "change",
+    "click",
+    "update",
+    "unselect",
+    "update:modelValue",
+    "select",
+    /**
+     * Emitted when row is expanded.
+     *
+     * @event expand
+     * @param row
+     * @type {ListItem}
+     */
+    "expand",
+    /**
+     * Emitted when row is collapsed.
+     *
+     * @event collapse
+     * @param row
+     * @type {ListItem}
+     */
+    "collapse"
+  ],
+  setup(props, context) {
+    provide("renderColumns", computed(() => props.rows.length > 0));
+    const sortFilterDatasetInjected = FSortFilterDatasetInjected();
+    const activateItemInjected = ActivateItemInjected();
+    const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, context.emit, context.slots);
+    return {
+      ...sortFilterDatasetInjected,
+      ...activateItemInjected,
+      ...expandableTable
+    };
+  },
+  data() {
+    return {
+      activeRow: void 0,
+      columns: [],
+      selectedRows: [],
+      tr: []
+    };
+  },
+  computed: {
+    hasCaption() {
+      return hasSlot(this, "caption", {}, {
+        stripClasses: []
+      });
+    },
+    hasCheckboxDescription() {
+      const firstRow = this.rows[0];
+      return hasSlot(this, "checkbox-description", {
+        row: firstRow
+      });
+    },
+    isEmpty() {
+      return this.rows.length === 0;
+    },
+    visibleColumns() {
+      return this.columns.filter((col) => col.visible);
+    },
+    tableClasses() {
+      const classes = [];
+      if (this.selectable) {
+        classes.push("table--selectable");
+      }
+      if (this.hover) {
+        classes.push("table--hover");
+      }
+      return classes;
+    },
+    tableRole() {
+      return this.isExpandableTable ? "treegrid" : "grid";
+    },
+    wrapperClasses() {
+      return tableScrollClasses(this.scroll);
+    },
+    nbOfColumns() {
+      let columnCount = this.columns.length;
+      if (this.selectable) {
+        columnCount++;
+      }
+      if (this.isExpandableTable) {
+        columnCount++;
+      }
+      return columnCount;
+    }
+  },
+  watch: {
+    rows: {
+      immediate: true,
+      deep: true,
+      handler: function() {
+        if (this.modelValue) {
+          this.selectedRows = this.modelValue.filter((row) => {
+            return includeItem(row, this.rows, this.keyAttribute);
+          });
+        }
+      }
+    }
+  },
+  updated() {
+    const tbodyElement = this.$refs["tbodyElement"];
+    const trElements = [].slice.call(tbodyElement.children);
+    const trInteractableElements = trElements.filter((tr) => {
+      return tr.tabIndex === 0;
     });
-  }
-} } }, updated() {
-  const tbodyElement = this.$refs["tbodyElement"];
-  const trElements = [].slice.call(tbodyElement.children);
-  const trInteractableElements = trElements.filter((tr) => {
-    return tr.tabIndex === 0;
-  });
-  this.tr = trInteractableElements;
-}, mounted() {
-  this.registerCallbackOnSort(this.callbackOnSort);
-  this.registerCallbackOnMount(this.callbackSortableColumns);
-  this.registerCallbackAfterItemAdd(this.callbackAfterItemAdd);
-  this.registerCallbackBeforeItemDelete(this.callbackBeforeItemDelete);
-}, methods: { isActive(row) {
-  return itemEquals(row, this.activeRow, this.keyAttribute);
-}, isSelected(row) {
-  return includeItem(row, this.selectedRows, this.keyAttribute);
-}, onKeydownExpandable(event, index) {
-  if (event.key === " " || event.key === "Spacebar") {
-    event.preventDefault();
-    return;
-  }
-  onKeydown.call(this, event, index);
-}, onKeydown(event, index) {
-  onKeydown.call(this, event, index);
-}, onClick(event, row) {
-  const { target } = event;
-  const isRelevant = ["TD", "TH"].includes(target.nodeName);
-  if (isRelevant) {
-    const parent = target.parentElement;
-    this.activate(row, parent);
-  }
-}, activate(row, tr) {
-  this.$emit("click", row);
-  if (this.isExpandableTable && this.hasExpandableContent(row)) {
-    this.toggleExpanded(row);
-  }
-  if (!itemEquals(row, this.activeRow, this.keyAttribute)) {
-    this.$emit("change", row);
-    this.activeRow = row;
-    if (tr) {
-      tr.focus();
-      const td = tr.children[0];
-      forceRepaintIE11(td);
+    this.tr = trInteractableElements;
+  },
+  mounted() {
+    this.registerCallbackOnSort(this.callbackOnSort);
+    this.registerCallbackOnMount(this.callbackSortableColumns);
+    this.registerCallbackAfterItemAdd(this.callbackAfterItemAdd);
+    this.registerCallbackBeforeItemDelete(this.callbackBeforeItemDelete);
+  },
+  methods: {
+    isActive(row) {
+      return itemEquals(row, this.activeRow, this.keyAttribute);
+    },
+    isSelected(row) {
+      return includeItem(row, this.selectedRows, this.keyAttribute);
+    },
+    onKeydownExpandable(event, index) {
+      if (event.key === " " || event.key === "Spacebar") {
+        event.preventDefault();
+        return;
+      }
+      onKeydown.call(this, event, index);
+    },
+    onKeydown(event, index) {
+      onKeydown.call(this, event, index);
+    },
+    onClick(event, row) {
+      const {
+        target
+      } = event;
+      const isRelevant = ["TD", "TH"].includes(target.nodeName);
+      if (isRelevant) {
+        const parent = target.parentElement;
+        this.activate(row, parent);
+      }
+    },
+    activate(row, tr) {
+      this.$emit("click", row);
+      if (this.isExpandableTable && this.hasExpandableContent(row)) {
+        this.toggleExpanded(row);
+      }
+      if (!itemEquals(row, this.activeRow, this.keyAttribute)) {
+        this.$emit("change", row);
+        this.activeRow = row;
+        if (tr) {
+          tr.focus();
+          const td = tr.children[0];
+          forceRepaintIE11(td);
+        }
+      }
+    },
+    rowDescription(row) {
+      const slot = this.$slots["row-description"];
+      return renderSlotText(slot, {
+        row
+      });
+    },
+    onSelect(row) {
+      if (includeItem(row, this.selectedRows, this.keyAttribute)) {
+        this.selectedRows = this.selectedRows.filter((i) => !itemEquals(i, row, this.keyAttribute));
+        this.$emit("unselect", row);
+      } else {
+        this.selectedRows.push(row);
+        this.$emit("select", row);
+      }
+      this.updateVModelWithSelectedRows();
+      this.$forceUpdate();
+    },
+    updateVModelWithSelectedRows() {
+      if (this.modelValue) {
+        this.$emit("update:modelValue", this.selectedRows);
+        this.$emit("update", this.selectedRows);
+      }
+    },
+    rowClasses(row, index) {
+      const active = this.isActive(row) ? ["table__row--active"] : [];
+      const selected = this.isSelected(row) ? ["table__row--selected"] : [];
+      const isExpandableRow = this.isExpandableTable && this.hasExpandableContent(row);
+      const expandable = isExpandableRow ? ["table__row--expandable"] : [];
+      const expanded = this.isExpanded(row) ? ["table__row--expanded-border"] : [];
+      const striped = this.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
+      return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
+    },
+    rowKey(row) {
+      const key = row[this.keyAttribute];
+      if (typeof key === "undefined") {
+        throw new Error(`Key attribute [${this.keyAttribute}]' is missing in row`);
+      }
+      return String(key);
+    },
+    columnClasses(column) {
+      const sortable = column.sortable ? ["table__column--sortable"] : [];
+      return ["table__column", `table__column--${column.type}`, ...sortable, column.size];
+    },
+    iconClasses(column) {
+      return getSortableIconClasses(column);
+    },
+    iconName(column) {
+      return getSortableIconName(column);
+    },
+    onClickColumnHeader(column) {
+      if (!column.sortable) {
+        return;
+      }
+      let columnName = column.name;
+      if (column.sort === FTableColumnSort.DESCENDING) {
+        columnName = "";
+        column.sort = FTableColumnSort.UNSORTED;
+      }
+      this.sort(columnName, column.sort !== FTableColumnSort.ASCENDING);
+    },
+    callbackOnSort(columnName, ascending) {
+      updateSortOrder(this.columns, columnName, ascending);
+    },
+    callbackSortableColumns(columnNames) {
+      setSortableColumns(this.columns, columnNames);
+    },
+    callbackAfterItemAdd(item) {
+      this.activate(item, null);
+    },
+    callbackBeforeItemDelete(item) {
+      if (this.rows.length === 0) {
+        return;
+      }
+      let targetIndex = this.rows.indexOf(item) - 1;
+      if (targetIndex < 0 && this.rows.length > 1) {
+        targetIndex = 1;
+      } else if (targetIndex < 0) {
+        targetIndex = 0;
+      }
+      this.activate(this.rows[targetIndex], this.tr[targetIndex]);
+    },
+    escapeNewlines(value) {
+      return value.replace(/\n/g, "<br/>");
     }
   }
-}, rowDescription(row) {
-  const slot = this.$slots["row-description"];
-  return renderSlotText(slot, { row });
-}, onSelect(row) {
-  if (includeItem(row, this.selectedRows, this.keyAttribute)) {
-    this.selectedRows = this.selectedRows.filter((i) => !itemEquals(i, row, this.keyAttribute));
-    this.$emit("unselect", row);
-  } else {
-    this.selectedRows.push(row);
-    this.$emit("select", row);
-  }
-  this.updateVModelWithSelectedRows();
-  this.$forceUpdate();
-}, updateVModelWithSelectedRows() {
-  if (this.modelValue) {
-    this.$emit("update:modelValue", this.selectedRows);
-    this.$emit("update", this.selectedRows);
-  }
-}, rowClasses(row, index) {
-  const active = this.isActive(row) ? ["table__row--active"] : [];
-  const selected = this.isSelected(row) ? ["table__row--selected"] : [];
-  const isExpandableRow = this.isExpandableTable && this.hasExpandableContent(row);
-  const expandable = isExpandableRow ? ["table__row--expandable"] : [];
-  const expanded = this.isExpanded(row) ? ["table__row--expanded-border"] : [];
-  const striped = this.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
-  return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
-}, rowKey(row) {
-  const key = row[this.keyAttribute];
-  if (typeof key === "undefined") {
-    throw new Error(`Key attribute [${this.keyAttribute}]' is missing in row`);
-  }
-  return String(key);
-}, columnClasses(column) {
-  const sortable = column.sortable ? ["table__column--sortable"] : [];
-  return ["table__column", `table__column--${column.type}`, ...sortable, column.size];
-}, iconClasses(column) {
-  return getSortableIconClasses(column);
-}, iconName(column) {
-  return getSortableIconName(column);
-}, onClickColumnHeader(column) {
-  if (!column.sortable) {
-    return;
-  }
-  let columnName = column.name;
-  if (column.sort === FTableColumnSort.DESCENDING) {
-    columnName = "";
-    column.sort = FTableColumnSort.UNSORTED;
-  }
-  this.sort(columnName, column.sort !== FTableColumnSort.ASCENDING);
-}, callbackOnSort(columnName, ascending) {
-  updateSortOrder(this.columns, columnName, ascending);
-}, callbackSortableColumns(columnNames) {
-  setSortableColumns(this.columns, columnNames);
-}, callbackAfterItemAdd(item) {
-  this.activate(item, null);
-}, callbackBeforeItemDelete(item) {
-  if (this.rows.length === 0) {
-    return;
-  }
-  let targetIndex = this.rows.indexOf(item) - 1;
-  if (targetIndex < 0 && this.rows.length > 1) {
-    targetIndex = 1;
-  } else if (targetIndex < 0) {
-    targetIndex = 0;
-  }
-  this.activate(this.rows[targetIndex], this.tr[targetIndex]);
-}, escapeNewlines(value) {
-  return value.replace(/\n/g, "<br/>");
-} } });
-/* @__PURE__ */ defineComponent({ name: "FTooltip", components: { FExpand, FIcon, IFlex, IFlexItem }, props: {
-  /**
-  * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
-  *
-  * @model
-  */
-  modelValue: { type: Boolean, required: false },
-  /**
-  * Screen reader text for toggle button
-  */
-  screenReaderText: { type: String, required: true },
-  /**
-  * Close button text
-  */
-  closeButtonText: { type: String, required: false, default: TranslationService.provider.translate("fkui.tooltip.close", "Stäng") },
-  /**
-  * Element to render for the header element inside the tooltip.
-  *
-  * Must be set to one of:
-  *
-  * - `div` (default)
-  * - `span`
-  * - `h1`
-  * - `h2`
-  * - `h3`
-  * - `h4`
-  * - `h5`
-  * - `h6`
-  */
-  headerTag: { default: "div", required: false, validator(value) {
-    return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
-  } }
-}, emits: ["update:modelValue", "toggle"], data() {
-  return { isOpen: false };
-}, computed: { hasHeader() {
-  return hasSlot(this, "header");
-} }, watch: { modelValue: { immediate: true, handler(value) {
-  this.isOpen = value;
-} } }, mounted() {
-  window.addEventListener("resize", () => {
+});
+/* @__PURE__ */ defineComponent({
+  name: "FTooltip",
+  components: {
+    FExpand,
+    FIcon,
+    IFlex,
+    IFlexItem
+  },
+  props: {
+    /**
+     * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
+     *
+     * @model
+     */
+    modelValue: {
+      type: Boolean,
+      required: false
+    },
+    /**
+     * Screen reader text for toggle button
+     */
+    screenReaderText: {
+      type: String,
+      required: true
+    },
+    /**
+     * Close button text
+     */
+    closeButtonText: {
+      type: String,
+      required: false,
+      default: TranslationService.provider.translate("fkui.tooltip.close", "Stäng")
+    },
+    /**
+     * Element to render for the header element inside the tooltip.
+     *
+     * Must be set to one of:
+     *
+     * - `div` (default)
+     * - `span`
+     * - `h1`
+     * - `h2`
+     * - `h3`
+     * - `h4`
+     * - `h5`
+     * - `h6`
+     */
+    headerTag: {
+      default: "div",
+      required: false,
+      validator(value) {
+        return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
+      }
+    }
+  },
+  emits: ["update:modelValue", "toggle"],
+  data() {
+    return {
+      isOpen: false
+    };
+  },
+  computed: {
+    hasHeader() {
+      return hasSlot(this, "header");
+    }
+  },
+  watch: {
+    modelValue: {
+      immediate: true,
+      handler(value) {
+        this.isOpen = value;
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener("resize", () => {
+      if (this.isOpen) {
+        this.positionArrow();
+      }
+    });
     if (this.isOpen) {
       this.positionArrow();
     }
-  });
-  if (this.isOpen) {
-    this.positionArrow();
-  }
-}, methods: {
-  /**
-  * Gets called when the user interacts with the toggle button
-  *
-  * @internal
-  */
-  onClickToggle() {
-    this.isOpen = !this.isOpen;
-    const value = this.isOpen;
-    const event = { isOpen: this.isOpen };
-    this.$emit("update:modelValue", value);
-    this.$emit("toggle", event);
-    if (!this.isOpen) {
-      const button = this.$el.querySelector(".tooltip__button");
-      focus(button);
-    }
-    this.$nextTick(() => {
-      this.positionArrow();
-    });
   },
-  positionArrow() {
-    const button = this.$el.querySelector(".tooltip__button");
-    const arrow = this.$el.querySelector(".tooltip__arrow");
-    const content = this.$el.querySelector(".tooltip__content-wrapper");
-    const borderSize = 2;
-    if (button && arrow && content) {
-      const buttonOffsetLeft = button.offsetLeft - content.offsetLeft;
-      const relativeOffset = buttonOffsetLeft - borderSize + button.getBoundingClientRect().width / 2;
-      arrow.style.left = `${relativeOffset}px`;
+  methods: {
+    /**
+     * Gets called when the user interacts with the toggle button
+     *
+     * @internal
+     */
+    onClickToggle() {
+      this.isOpen = !this.isOpen;
+      const value = this.isOpen;
+      const event = {
+        isOpen: this.isOpen
+      };
+      this.$emit("update:modelValue", value);
+      this.$emit("toggle", event);
+      if (!this.isOpen) {
+        const button = this.$el.querySelector(".tooltip__button");
+        focus(button);
+      }
+      this.$nextTick(() => {
+        this.positionArrow();
+      });
+    },
+    positionArrow() {
+      const button = this.$el.querySelector(".tooltip__button");
+      const arrow = this.$el.querySelector(".tooltip__arrow");
+      const content = this.$el.querySelector(".tooltip__content-wrapper");
+      const borderSize = 2;
+      if (button && arrow && content) {
+        const buttonOffsetLeft = button.offsetLeft - content.offsetLeft;
+        const relativeOffset = buttonOffsetLeft - borderSize + button.getBoundingClientRect().width / 2;
+        arrow.style.left = `${relativeOffset}px`;
+      }
     }
   }
-} });
+});
 /*!
   * vue-router v4.4.5
   * (c) 2024 Eduardo San Martin Morote
@@ -15991,13 +17472,13 @@ function applyToParams(fn2, params) {
   const newParams = {};
   for (const key in params) {
     const value = params[key];
-    newParams[key] = isArray2(value) ? value.map(fn2) : fn2(value);
+    newParams[key] = isArray3(value) ? value.map(fn2) : fn2(value);
   }
   return newParams;
 }
 const noop = () => {
 };
-const isArray2 = Array.isArray;
+const isArray3 = Array.isArray;
 const HASH_RE = /#/g;
 const AMPERSAND_RE = /&/g;
 const SLASH_RE = /\//g;
@@ -16090,10 +17571,10 @@ function isSameRouteLocationParams(a, b) {
   return true;
 }
 function isSameRouteLocationParamsValue(a, b) {
-  return isArray2(a) ? isEquivalentArray(a, b) : isArray2(b) ? isEquivalentArray(b, a) : a === b;
+  return isArray3(a) ? isEquivalentArray(a, b) : isArray3(b) ? isEquivalentArray(b, a) : a === b;
 }
 function isEquivalentArray(a, b) {
-  return isArray2(b) ? a.length === b.length && a.every((value, i) => value === b[i]) : a.length === 1 && a[0] === b;
+  return isArray3(b) ? a.length === b.length && a.every((value, i) => value === b[i]) : a.length === 1 && a[0] === b;
 }
 function resolveRelativePath(to, from) {
   if (to.startsWith("/"))
@@ -16519,10 +18000,10 @@ function tokensToParser(segments, extraOptions) {
         } else if (token.type === 1) {
           const { value, repeatable, optional } = token;
           const param = value in params ? params[value] : "";
-          if (isArray2(param) && !repeatable) {
+          if (isArray3(param) && !repeatable) {
             throw new Error(`Provided param "${value}" is an array but it is not repeatable (* or + modifiers)`);
           }
-          const text = isArray2(param) ? param.join("/") : param;
+          const text = isArray3(param) ? param.join("/") : param;
           if (!text) {
             if (optional) {
               if (segment.length < 2) {
@@ -16989,7 +18470,7 @@ function parseQuery(search) {
     const value = eqPos < 0 ? null : decode(searchParam.slice(eqPos + 1));
     if (key in query) {
       let currentValue = query[key];
-      if (!isArray2(currentValue)) {
+      if (!isArray3(currentValue)) {
         currentValue = query[key] = [currentValue];
       }
       currentValue.push(value);
@@ -17010,7 +18491,7 @@ function stringifyQuery(query) {
       }
       continue;
     }
-    const values = isArray2(value) ? value.map((v) => v && encodeQueryValue(v)) : [value && encodeQueryValue(value)];
+    const values = isArray3(value) ? value.map((v) => v && encodeQueryValue(v)) : [value && encodeQueryValue(value)];
     values.forEach((value2) => {
       if (value2 !== void 0) {
         search += (search.length ? "&" : "") + key;
@@ -17026,7 +18507,7 @@ function normalizeQuery(query) {
   for (const key in query) {
     const value = query[key];
     if (value !== void 0) {
-      normalizedQuery[key] = isArray2(value) ? value.map((v) => v == null ? null : "" + v) : value == null ? value : "" + value;
+      normalizedQuery[key] = isArray3(value) ? value.map((v) => v == null ? null : "" + v) : value == null ? value : "" + value;
     }
   }
   return normalizedQuery;
@@ -17230,7 +18711,7 @@ function includesParams(outer, inner) {
       if (innerValue !== outerValue)
         return false;
     } else {
-      if (!isArray2(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value !== outerValue[i]))
+      if (!isArray3(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value !== outerValue[i]))
         return false;
     }
   }
@@ -17568,7 +19049,7 @@ function createRouter(options) {
       guards = [];
       for (const record of enteringRecords) {
         if (record.beforeEnter) {
-          if (isArray2(record.beforeEnter)) {
+          if (isArray3(record.beforeEnter)) {
             for (const beforeEnter of record.beforeEnter)
               guards.push(guardToPromiseFn(beforeEnter, to, from));
           } else {
