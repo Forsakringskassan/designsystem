@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/components/FBadge/examples/FBadgeLiveExample.vue
@@ -78,42 +77,7 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "standard" },
-    "Standard",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "warning" },
-    "Varning",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "error" },
-    "Fel",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "success" },
-    "Framg\xE5ng",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_5 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "info" },
-    "Info",
-    -1
-    /* HOISTED */
-  );
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_live_example = (0, import_vue5.resolveComponent)("live-example");
@@ -126,33 +90,57 @@
           modelValue: _ctx.badgeType,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.badgeType = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
             (0, import_vue5.createTextVNode)(" Typ ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_1,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_2,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_3,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_4,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_5
+            _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "standard" },
+              "Standard",
+              -1
+              /* HOISTED */
+            )),
+            _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "warning" },
+              "Varning",
+              -1
+              /* HOISTED */
+            )),
+            _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "error" },
+              "Fel",
+              -1
+              /* HOISTED */
+            )),
+            _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "success" },
+              "Framg\xE5ng",
+              -1
+              /* HOISTED */
+            )),
+            _cache[7] || (_cache[7] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "info" },
+              "Info",
+              -1
+              /* HOISTED */
+            ))
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isInverted,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isInverted = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
             (0, import_vue5.createTextVNode)(" Inverterad ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

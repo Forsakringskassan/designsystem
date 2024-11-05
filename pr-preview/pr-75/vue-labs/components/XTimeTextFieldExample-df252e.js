@@ -274,28 +274,7 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue6.createElementVNode)(
-    "br",
-    null,
-    null,
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue6.createElementVNode)(
-    "br",
-    null,
-    null,
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue6.createElementVNode)(
-    "br",
-    null,
-    null,
-    -1
-    /* HOISTED */
-  );
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_x_time_text_field = (0, import_vue6.resolveComponent)("x-time-text-field");
     const _directive_validation = (0, import_vue6.resolveDirective)("validation");
     return (0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("div", null, [
@@ -315,7 +294,7 @@
           )
         ]),
         default: (0, import_vue6.withCtx)(() => [
-          (0, import_vue6.createTextVNode)("\n            Ange arbetstid\n            ")
+          _cache[1] || (_cache[1] = (0, import_vue6.createTextVNode)(" Ange arbetstid "))
         ]),
         _: 1
         /* STABLE */
@@ -332,28 +311,45 @@
           }
         ]
       ]),
-      (0, import_vue6.createTextVNode)(),
       (0, import_vue6.createElementVNode)("p", null, [
         (0, import_vue6.createTextVNode)(
-          "\n            V\xE4rde: " + (0, import_vue6.toDisplayString)(_ctx.time) + ".",
+          " V\xE4rde: " + (0, import_vue6.toDisplayString)(_ctx.time) + ".",
           1
           /* TEXT */
         ),
-        _hoisted_1,
+        _cache[2] || (_cache[2] = (0, import_vue6.createElementVNode)(
+          "br",
+          null,
+          null,
+          -1
+          /* HOISTED */
+        )),
         (0, import_vue6.createTextVNode)(
-          "\n            Renskrivet v\xE4rde: " + (0, import_vue6.toDisplayString)(_ctx.userFriendlyValue) + ".",
+          " Renskrivet v\xE4rde: " + (0, import_vue6.toDisplayString)(_ctx.userFriendlyValue) + ".",
           1
           /* TEXT */
         ),
-        _hoisted_2,
+        _cache[3] || (_cache[3] = (0, import_vue6.createElementVNode)(
+          "br",
+          null,
+          null,
+          -1
+          /* HOISTED */
+        )),
         (0, import_vue6.createTextVNode)(
-          "\n            V\xE4rde i timmar: " + (0, import_vue6.toDisplayString)(_ctx.timeInHours) + ".",
+          " V\xE4rde i timmar: " + (0, import_vue6.toDisplayString)(_ctx.timeInHours) + ".",
           1
           /* TEXT */
         ),
-        _hoisted_3,
+        _cache[4] || (_cache[4] = (0, import_vue6.createElementVNode)(
+          "br",
+          null,
+          null,
+          -1
+          /* HOISTED */
+        )),
         (0, import_vue6.createTextVNode)(
-          "\n            V\xE4rde i objektnotation: " + (0, import_vue6.toDisplayString)(_ctx.timeAsObject) + ".\n        ",
+          " V\xE4rde i objektnotation: " + (0, import_vue6.toDisplayString)(_ctx.timeAsObject) + ". ",
           1
           /* TEXT */
         )

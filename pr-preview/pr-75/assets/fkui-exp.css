@@ -6557,7 +6557,7 @@ input[type=search]:focus,
 .table tbody th {
   padding: calc(var(--f-table-body-row-padding, 0.5rem) * var(--f-density-factor, 1)) var(--f-table-body-row-padding, 0.5rem);
   border-bottom: 1px solid var(--f-border-color-grid, #8d8e91);
-  white-space: nowrap;
+  vertical-align: top;
 }
 .table tbody td {
   line-height: calc(1.5rem * var(--f-density-factor, 1));
@@ -6628,6 +6628,12 @@ input[type=search]:focus,
 }
 .table__scroll {
   margin: 0 0 calc(var(--f-margin-component-bottom, 1.5rem) * var(--f-density-factor, 1));
+}
+.table__scroll thead th,
+.table__scroll thead td,
+.table__scroll tbody th,
+.table__scroll tbody td {
+  white-space: nowrap;
 }
 .table__scroll .table {
   margin: 0;

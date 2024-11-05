@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/internal-components/IMenu/examples/IMenuExample.vue
@@ -63,14 +62,7 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "h3",
-    null,
-    "Vertical",
-    -1
-    /* HOISTED */
-  );
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_menu = (0, import_vue5.resolveComponent)("i-menu");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createElementVNode)(
@@ -80,7 +72,6 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
       (0, import_vue5.createVNode)(_component_i_menu, {
         modelValue: _ctx.model,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event),
@@ -89,7 +80,7 @@
         onOverflow: _cache[1] || (_cache[1] = ($event) => _ctx.overflow = $event)
       }, null, 8, ["modelValue", "items"]),
       (0, import_vue5.createTextVNode)(
-        "\n        Overflow: " + (0, import_vue5.toDisplayString)(_ctx.overflow) + " ",
+        " Overflow: " + (0, import_vue5.toDisplayString)(_ctx.overflow) + " ",
         1
         /* TEXT */
       ),
@@ -97,9 +88,13 @@
         type: "button",
         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.items = _ctx.items.slice(4))
       }, "Click cut"),
-      (0, import_vue5.createTextVNode)(),
-      _hoisted_1,
-      (0, import_vue5.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
+        "h3",
+        null,
+        "Vertical",
+        -1
+        /* HOISTED */
+      )),
       (0, import_vue5.createVNode)(_component_i_menu, {
         modelValue: _ctx.model,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.model = $event),

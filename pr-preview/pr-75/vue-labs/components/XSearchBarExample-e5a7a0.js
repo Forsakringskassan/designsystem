@@ -266,9 +266,8 @@
       "input-right": (0, import_vue3.withCtx)(() => [(0, import_vue3.createElementVNode)("button", _hoisted_1, [(0, import_vue3.createVNode)(_component_f_icon, {
         name: "search",
         library: "f"
-      }), (0, import_vue3.createTextVNode)(), (0, import_vue3.createElementVNode)("span", null, [(0, import_vue3.renderSlot)(_ctx.$slots, "button-text", {}, () => [(0, import_vue3.createTextVNode)(" S\xF6k ")])])])]),
+      }), _cache[2] || (_cache[2] = (0, import_vue3.createTextVNode)()), (0, import_vue3.createElementVNode)("span", null, [(0, import_vue3.renderSlot)(_ctx.$slots, "button-text", {}, () => [_cache[1] || (_cache[1] = (0, import_vue3.createTextVNode)(" S\xF6k "))])])])]),
       _: 3
-      /* FORWARDED */
     }, 8, ["modelValue", "maxlength"]);
   }
   var XSearchBar = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
@@ -293,7 +292,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_x_search_bar = (0, import_vue7.resolveComponent)("x-search-bar");
     const _component_f_validation_form = (0, import_vue7.resolveComponent)("f-validation-form");
     return (0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", null, [
@@ -303,9 +302,9 @@
             modelValue: _ctx.value,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value = $event)
           }, {
-            default: (0, import_vue7.withCtx)(() => [
+            default: (0, import_vue7.withCtx)(() => _cache[1] || (_cache[1] = [
               (0, import_vue7.createTextVNode)(" S\xF6kf\xE4lt ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])

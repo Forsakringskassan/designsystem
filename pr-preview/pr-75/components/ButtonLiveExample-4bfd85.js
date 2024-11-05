@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/design-component-tests/Button/examples/ButtonLiveExample.vue
@@ -126,70 +125,7 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "primary" },
-    "Prim\xE4r",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "secondary" },
-    "Sekund\xE4r",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "tertiary" },
-    "Terti\xE4r",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "small" },
-    "Small",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_5 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "medium" },
-    "Medium (standard)",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_6 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "large" },
-    "Large",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_7 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "standard" },
-    "Standard",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_8 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "black" },
-    "Svart",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_9 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "inverted" },
-    "Inverterad",
-    -1
-    /* HOISTED */
-  );
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
@@ -204,82 +140,107 @@
           modelValue: _ctx.buttonType,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.buttonType = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
             (0, import_vue5.createTextVNode)(" Typ ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_1,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_2,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_3
+            _cache[9] || (_cache[9] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "primary" },
+              "Prim\xE4r",
+              -1
+              /* HOISTED */
+            )),
+            _cache[10] || (_cache[10] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "secondary" },
+              "Sekund\xE4r",
+              -1
+              /* HOISTED */
+            )),
+            _cache[11] || (_cache[11] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "tertiary" },
+              "Terti\xE4r",
+              -1
+              /* HOISTED */
+            ))
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createVNode)(_component_f_select_field, {
           modelValue: _ctx.buttonSize,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.buttonSize = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
             (0, import_vue5.createTextVNode)(" Storlek ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_4,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_5,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_6
+            _cache[13] || (_cache[13] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "small" },
+              "Small",
+              -1
+              /* HOISTED */
+            )),
+            _cache[14] || (_cache[14] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "medium" },
+              "Medium (standard)",
+              -1
+              /* HOISTED */
+            )),
+            _cache[15] || (_cache[15] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "large" },
+              "Large",
+              -1
+              /* HOISTED */
+            ))
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.hasIcon,
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasIcon = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[16] || (_cache[16] = [
             (0, import_vue5.createTextVNode)(" Visa ikon ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createTextVNode)(),
         _ctx.hasIcon ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, {
           key: 0,
           name: "radio-place-icon",
           horizontal: ""
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[17] || (_cache[17] = [
             (0, import_vue5.createTextVNode)(" Placering av ikon ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.iconPlacement,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.iconPlacement = $event),
               value: "left"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[18] || (_cache[18] = [
                 (0, import_vue5.createTextVNode)(" V\xE4nster ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.iconPlacement,
               "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.iconPlacement = $event),
               value: "right"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[19] || (_cache[19] = [
                 (0, import_vue5.createTextVNode)(" H\xF6ger ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])
@@ -287,48 +248,60 @@
           _: 1
           /* STABLE */
         })) : (0, import_vue5.createCommentVNode)("v-if", true),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isFullwidth,
           "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.isFullwidth = $event),
           value: true,
           disabled: _ctx.disabledFullwidth
         }, {
-          default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)("\n            Fullbredd i mobil\n        ")
-          ]),
+          default: (0, import_vue5.withCtx)(() => _cache[20] || (_cache[20] = [
+            (0, import_vue5.createTextVNode)(" Fullbredd i mobil ")
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue", "disabled"]),
-        (0, import_vue5.createTextVNode)(),
         _ctx.isTertiary ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_select_field, {
           key: 1,
           modelValue: _ctx.tertiaryColor,
           "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.tertiaryColor = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[21] || (_cache[21] = [
             (0, import_vue5.createTextVNode)(" F\xE4rg ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_7,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_8,
-            (0, import_vue5.createTextVNode)(),
-            _hoisted_9
+            _cache[22] || (_cache[22] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "standard" },
+              "Standard",
+              -1
+              /* HOISTED */
+            )),
+            _cache[23] || (_cache[23] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "black" },
+              "Svart",
+              -1
+              /* HOISTED */
+            )),
+            _cache[24] || (_cache[24] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "inverted" },
+              "Inverterad",
+              -1
+              /* HOISTED */
+            ))
           ]),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.isDisabled,
           "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.isDisabled = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[25] || (_cache[25] = [
             (0, import_vue5.createTextVNode)(" Inaktiv ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

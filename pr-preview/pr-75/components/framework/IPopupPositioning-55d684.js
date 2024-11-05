@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue
@@ -353,81 +352,71 @@
     }
   });
   var _hoisted_1 = { class: "wrapper" };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue4.createElementVNode)(
-    "label",
-    null,
-    " Begr\xE4nsa till: ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue4.createElementVNode)(
-    "option",
-    { value: "viewport" },
-    "Viewport",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue4.createElementVNode)(
-    "option",
-    { value: "container" },
-    "Container",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_5 = /* @__PURE__ */ (0, import_vue4.createElementVNode)(
-    "option",
-    { value: "combo" },
-    "Viewport + container",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_6 = /* @__PURE__ */ (0, import_vue4.createElementVNode)(
-    "p",
-    null,
-    [
-      /* @__PURE__ */ (0, import_vue4.createTextVNode)("Dra "),
-      /* @__PURE__ */ (0, import_vue4.createElementVNode)("i", null, "ankaret"),
-      /* @__PURE__ */ (0, import_vue4.createTextVNode)(" med hj\xE4lp av musen.")
-    ],
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_7 = {
+  var _hoisted_2 = {
     ref: "area",
     class: "area"
   };
-  var _hoisted_8 = {
+  var _hoisted_3 = {
     ref: "target",
     class: "pos-target"
   };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)("div", _hoisted_1, [
-      _hoisted_2,
-      (0, import_vue4.createTextVNode)(),
+      _cache[4] || (_cache[4] = (0, import_vue4.createElementVNode)(
+        "label",
+        null,
+        " Begr\xE4nsa till: ",
+        -1
+        /* HOISTED */
+      )),
       (0, import_vue4.withDirectives)((0, import_vue4.createElementVNode)(
         "select",
         {
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.constraint = $event),
           onChange: _cache[1] || (_cache[1] = (...args) => _ctx.onChangeConstraint && _ctx.onChangeConstraint(...args))
         },
-        [
-          _hoisted_3,
-          (0, import_vue4.createTextVNode)(),
-          _hoisted_4,
-          (0, import_vue4.createTextVNode)(),
-          _hoisted_5
-        ],
+        _cache[3] || (_cache[3] = [
+          (0, import_vue4.createElementVNode)(
+            "option",
+            { value: "viewport" },
+            "Viewport",
+            -1
+            /* HOISTED */
+          ),
+          (0, import_vue4.createElementVNode)(
+            "option",
+            { value: "container" },
+            "Container",
+            -1
+            /* HOISTED */
+          ),
+          (0, import_vue4.createElementVNode)(
+            "option",
+            { value: "combo" },
+            "Viewport + container",
+            -1
+            /* HOISTED */
+          )
+        ]),
         544
         /* NEED_HYDRATION, NEED_PATCH */
       ), [
         [import_vue4.vModelSelect, _ctx.constraint]
       ]),
-      (0, import_vue4.createTextVNode)(),
-      _hoisted_6,
-      (0, import_vue4.createTextVNode)(),
+      _cache[5] || (_cache[5] = (0, import_vue4.createElementVNode)(
+        "p",
+        null,
+        [
+          (0, import_vue4.createTextVNode)("Dra "),
+          (0, import_vue4.createElementVNode)("i", null, "ankaret"),
+          (0, import_vue4.createTextVNode)(" med hj\xE4lp av musen.")
+        ],
+        -1
+        /* HOISTED */
+      )),
       (0, import_vue4.createElementVNode)(
         "div",
-        _hoisted_7,
+        _hoisted_2,
         [
           (0, import_vue4.createElementVNode)(
             "div",
@@ -440,10 +429,9 @@
             544
             /* NEED_HYDRATION, NEED_PATCH */
           ),
-          (0, import_vue4.createTextVNode)(),
           (0, import_vue4.createElementVNode)(
             "div",
-            _hoisted_8,
+            _hoisted_3,
             "Popup",
             512
             /* NEED_PATCH */

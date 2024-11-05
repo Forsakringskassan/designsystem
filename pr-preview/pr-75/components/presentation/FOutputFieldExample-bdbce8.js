@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/components/FOutputField/examples/FOutputFieldExample.vue
@@ -40,7 +39,7 @@
       return { number1: "1", number2: "2" };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_tooltip = (0, import_vue5.resolveComponent)("f-tooltip");
     const _component_f_output_field = (0, import_vue5.resolveComponent)("f-output-field");
@@ -51,9 +50,9 @@
         modelValue: _ctx.number1,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.number1 = $event)
       }, {
-        default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)("\n            Nummer 1\n        ")
-        ]),
+        default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+          (0, import_vue5.createTextVNode)(" Nummer 1 ")
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [
@@ -64,15 +63,14 @@
           { maxLength: true }
         ]
       ]),
-      (0, import_vue5.createTextVNode)(),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
         id: "two",
         modelValue: _ctx.number2,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.number2 = $event)
       }, {
-        default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)("\n            Nummer 2\n        ")
-        ]),
+        default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+          (0, import_vue5.createTextVNode)(" Nummer 2 ")
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [
@@ -83,28 +81,26 @@
           { maxLength: true }
         ]
       ]),
-      (0, import_vue5.createTextVNode)(),
       (0, import_vue5.createVNode)(_component_f_output_field, {
         id: "calculated",
         for: "one two"
       }, {
-        label: (0, import_vue5.withCtx)(() => [
+        label: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
           (0, import_vue5.createTextVNode)(" Summa ")
-        ]),
+        ])),
         tooltip: (0, import_vue5.withCtx)(() => [
           (0, import_vue5.createVNode)(_component_f_tooltip, { "screen-reader-text": "L\xE4s mer om avancerat f\xE4lt" }, {
-            header: (0, import_vue5.withCtx)(() => [
+            header: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
               (0, import_vue5.createTextVNode)(" Mer om summa-f\xE4ltet ")
-            ]),
-            body: (0, import_vue5.withCtx)(() => [
+            ])),
+            body: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
               (0, import_vue5.createTextVNode)(" Detta f\xE4ltet \xE4r en summa av nummer 1 och nummer 2. ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)(),
           (0, import_vue5.createTextVNode)(
             " " + (0, import_vue5.toDisplayString)(parseInt(_ctx.number1) + parseInt(_ctx.number2)),
             1

@@ -1645,22 +1645,21 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/internal-components/IPopupMenu/examples/IPopupMenuExample.vue
-  var import_vue31 = __require("vue");
+  var import_vue32 = __require("vue");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
-  var import_vue29 = __require("vue");
+  var import_vue30 = __require("vue");
   var import_logic16 = __require("@fkui/logic");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
@@ -1779,7 +1778,7 @@
   var FIcon_default2 = FIcon_default;
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
-  var import_vue27 = __require("vue");
+  var import_vue28 = __require("vue");
   var import_logic15 = __require("@fkui/logic");
 
   // packages/vue/src/config/config.ts
@@ -2260,34 +2259,30 @@
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
   var import_vue8 = __require("vue");
   var _hoisted_12 = { "data-test": "f-error-page" };
-  var _hoisted_22 = /* @__PURE__ */ (0, import_vue8.createElementVNode)(
-    "h1",
-    null,
-    "Fel",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue8.createElementVNode)(
-    "p",
-    null,
-    "Ett fel har uppst\xE5tt.",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue8.createElementVNode)(
-    "a",
-    { href: "/" },
-    "G\xE5 till startsidan",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_5 = [
-    _hoisted_22,
-    _hoisted_3,
-    _hoisted_4
-  ];
   function render2(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", _hoisted_12, [..._hoisted_5]);
+    return (0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", _hoisted_12, _cache[0] || (_cache[0] = [
+      (0, import_vue8.createElementVNode)(
+        "h1",
+        null,
+        "Fel",
+        -1
+        /* HOISTED */
+      ),
+      (0, import_vue8.createElementVNode)(
+        "p",
+        null,
+        "Ett fel har uppst\xE5tt.",
+        -1
+        /* HOISTED */
+      ),
+      (0, import_vue8.createElementVNode)(
+        "a",
+        { href: "/" },
+        "G\xE5 till startsidan",
+        -1
+        /* HOISTED */
+      )
+    ]));
   }
 
   // packages/vue/src/plugins/error/FErrorPage.vue
@@ -2551,10 +2546,10 @@
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=template
   var import_vue12 = __require("vue");
   var _hoisted_13 = ["id"];
-  var _hoisted_23 = { class: "modal__backdrop" };
-  var _hoisted_32 = { class: "modal__inner-container" };
-  var _hoisted_42 = { class: "modal__dialog" };
-  var _hoisted_52 = { class: "modal__dialog-inner" };
+  var _hoisted_22 = { class: "modal__backdrop" };
+  var _hoisted_3 = { class: "modal__inner-container" };
+  var _hoisted_4 = { class: "modal__dialog" };
+  var _hoisted_5 = { class: "modal__dialog-inner" };
   var _hoisted_6 = { class: "modal__header" };
   var _hoisted_7 = {
     key: 0,
@@ -2577,7 +2572,7 @@
       id: _ctx.id,
       class: (0, import_vue12.normalizeClass)(["modal", _ctx.modalClass])
     }, [
-      (0, import_vue12.createElementVNode)("div", _hoisted_23, [
+      (0, import_vue12.createElementVNode)("div", _hoisted_22, [
         (0, import_vue12.createElementVNode)(
           "div",
           {
@@ -2588,7 +2583,7 @@
             onKeyup: _cache[3] || (_cache[3] = (0, import_vue12.withKeys)((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
           },
           [
-            (0, import_vue12.createElementVNode)("div", _hoisted_32, [
+            (0, import_vue12.createElementVNode)("div", _hoisted_3, [
               (0, import_vue12.createElementVNode)(
                 "div",
                 {
@@ -2596,8 +2591,8 @@
                   class: (0, import_vue12.normalizeClass)(["modal__dialog-container", _ctx.containerClasses])
                 },
                 [
-                  (0, import_vue12.createElementVNode)("div", _hoisted_42, [
-                    (0, import_vue12.createElementVNode)("div", _hoisted_52, [
+                  (0, import_vue12.createElementVNode)("div", _hoisted_4, [
+                    (0, import_vue12.createElementVNode)("div", _hoisted_5, [
                       (0, import_vue12.createElementVNode)("div", _hoisted_6, [
                         (0, import_vue12.createElementVNode)(
                           "div",
@@ -2797,8 +2792,8 @@
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue?type=template
   var import_vue14 = __require("vue");
   var _hoisted_14 = { class: "button-group" };
-  var _hoisted_24 = ["onClick"];
-  var _hoisted_33 = {
+  var _hoisted_23 = ["onClick"];
+  var _hoisted_32 = {
     key: 0,
     class: "sr-only"
   };
@@ -2853,12 +2848,12 @@
                 ),
                 button.screenreader ? ((0, import_vue14.openBlock)(), (0, import_vue14.createElementBlock)(
                   "span",
-                  _hoisted_33,
+                  _hoisted_32,
                   "\xA0" + (0, import_vue14.toDisplayString)(button.screenreader),
                   1
                   /* TEXT */
                 )) : (0, import_vue14.createCommentVNode)("v-if", true)
-              ], 10, _hoisted_24);
+              ], 10, _hoisted_23);
             }),
             128
             /* KEYED_FRAGMENT */
@@ -3133,30 +3128,10 @@
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=template
   var import_vue20 = __require("vue");
   var _hoisted_15 = { class: "error-list" };
-  var _hoisted_25 = { key: 0 };
-  var _hoisted_34 = { class: "error-list__list error-list--list-style-none" };
-  var _hoisted_43 = ["onClick"];
-  var _hoisted_53 = /* @__PURE__ */ (0, import_vue20.createElementVNode)(
-    "span",
-    {
-      class: "error-list__bullet",
-      "aria-hidden": "true"
-    },
-    null,
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_62 = { class: "error-list__link" };
-  var _hoisted_72 = /* @__PURE__ */ (0, import_vue20.createElementVNode)(
-    "span",
-    {
-      class: "error-list__bullet",
-      "aria-hidden": "true"
-    },
-    null,
-    -1
-    /* HOISTED */
-  );
+  var _hoisted_24 = { key: 0 };
+  var _hoisted_33 = { class: "error-list__list error-list--list-style-none" };
+  var _hoisted_42 = ["onClick"];
+  var _hoisted_52 = { class: "error-list__link" };
   function render8(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue20.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue20.resolveComponent)("i-flex-item");
@@ -3182,19 +3157,19 @@
             key: 1,
             shrink: ""
           }, {
-            default: (0, import_vue20.withCtx)(() => [
+            default: (0, import_vue20.withCtx)(() => _cache[0] || (_cache[0] = [
               (0, import_vue20.createTextVNode)("\xA0")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })) : (0, import_vue20.createCommentVNode)("v-if", true),
           (0, import_vue20.createVNode)(_component_i_flex_item, { grow: "" }, {
             default: (0, import_vue20.withCtx)(() => [
-              _ctx.hasTitleSlot ? ((0, import_vue20.openBlock)(), (0, import_vue20.createElementBlock)("div", _hoisted_25, [
+              _ctx.hasTitleSlot ? ((0, import_vue20.openBlock)(), (0, import_vue20.createElementBlock)("div", _hoisted_24, [
                 (0, import_vue20.createCommentVNode)(" @slot Optional title shown above the errorlist. No icon is shown if no title is set "),
                 (0, import_vue20.renderSlot)(_ctx.$slots, "title")
               ])) : (0, import_vue20.createCommentVNode)("v-if", true),
-              (0, import_vue20.createElementVNode)("ul", _hoisted_34, [
+              (0, import_vue20.createElementVNode)("ul", _hoisted_33, [
                 ((0, import_vue20.openBlock)(true), (0, import_vue20.createElementBlock)(
                   import_vue20.Fragment,
                   null,
@@ -3215,10 +3190,19 @@
                             import_vue20.Fragment,
                             { key: 0 },
                             [
-                              _hoisted_53,
+                              _cache[1] || (_cache[1] = (0, import_vue20.createElementVNode)(
+                                "span",
+                                {
+                                  class: "error-list__bullet",
+                                  "aria-hidden": "true"
+                                },
+                                null,
+                                -1
+                                /* HOISTED */
+                              )),
                               (0, import_vue20.createElementVNode)(
                                 "span",
-                                _hoisted_62,
+                                _hoisted_52,
                                 (0, import_vue20.toDisplayString)(item.title),
                                 1
                                 /* TEXT */
@@ -3239,7 +3223,7 @@
                             64
                             /* STABLE_FRAGMENT */
                           ))
-                        ], 8, _hoisted_43)) : ((0, import_vue20.openBlock)(), (0, import_vue20.createElementBlock)(
+                        ], 8, _hoisted_42)) : ((0, import_vue20.openBlock)(), (0, import_vue20.createElementBlock)(
                           import_vue20.Fragment,
                           { key: 1 },
                           [
@@ -3247,7 +3231,16 @@
                               import_vue20.Fragment,
                               { key: 0 },
                               [
-                                _hoisted_72,
+                                _cache[2] || (_cache[2] = (0, import_vue20.createElementVNode)(
+                                  "span",
+                                  {
+                                    class: "error-list__bullet",
+                                    "aria-hidden": "true"
+                                  },
+                                  null,
+                                  -1
+                                  /* HOISTED */
+                                )),
                                 (0, import_vue20.createElementVNode)(
                                   "span",
                                   null,
@@ -3539,7 +3532,7 @@
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=template
   var import_vue24 = __require("vue");
   var _hoisted_16 = ["id"];
-  var _hoisted_26 = {
+  var _hoisted_25 = {
     key: 0,
     ref: "errors",
     tabindex: "-1",
@@ -3563,7 +3556,7 @@
         }), [
           _ctx.displayErrors ? ((0, import_vue24.openBlock)(), (0, import_vue24.createElementBlock)(
             "nav",
-            _hoisted_26,
+            _hoisted_25,
             [
               (0, import_vue24.createVNode)(_component_f_error_list, {
                 items: _ctx.errors,
@@ -3743,12 +3736,12 @@
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
   var import_vue26 = __require("vue");
   var _hoisted_17 = { class: "button-group" };
-  var _hoisted_27 = ["type", "form", "onClick"];
-  var _hoisted_35 = {
+  var _hoisted_26 = ["type", "form", "onClick"];
+  var _hoisted_34 = {
     key: 0,
     class: "sr-only"
   };
-  var _hoisted_44 = ["form"];
+  var _hoisted_43 = ["form"];
   function render11(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_validation_form = (0, import_vue26.resolveComponent)("f-validation-form");
     const _component_f_modal = (0, import_vue26.resolveComponent)("f-modal");
@@ -3810,12 +3803,12 @@
                 ),
                 button.screenreader ? ((0, import_vue26.openBlock)(), (0, import_vue26.createElementBlock)(
                   "span",
-                  _hoisted_35,
+                  _hoisted_34,
                   "\xA0" + (0, import_vue26.toDisplayString)(button.screenreader),
                   1
                   /* TEXT */
                 )) : (0, import_vue26.createCommentVNode)("v-if", true)
-              ], 10, _hoisted_27);
+              ], 10, _hoisted_26);
             }),
             128
             /* KEYED_FRAGMENT */
@@ -3829,7 +3822,7 @@
                 type: "submit",
                 class: "button button--primary button-group__item button--large"
               }, [
-                (0, import_vue26.createCommentVNode)(' @slot @deprecated - Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
+                (0, import_vue26.createCommentVNode)(' @slot - @deprecated Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
                 (0, import_vue26.renderSlot)(_ctx.$slots, "submit-button-text", {}, () => [
                   (0, import_vue26.createTextVNode)(
                     (0, import_vue26.toDisplayString)(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")),
@@ -3837,14 +3830,14 @@
                     /* TEXT */
                   )
                 ])
-              ], 8, _hoisted_44),
+              ], 8, _hoisted_43),
               (0, import_vue26.createElementVNode)("button", {
                 "data-test": "cancel-button",
                 type: "button",
                 class: "button button--secondary button-group__item button--large",
                 onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
               }, [
-                (0, import_vue26.createCommentVNode)(' @slot @deprecated -  Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
+                (0, import_vue26.createCommentVNode)(' @slot - @deprecated Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
                 (0, import_vue26.renderSlot)(_ctx.$slots, "cancel-button-text", {}, () => [
                   (0, import_vue26.createTextVNode)(
                     (0, import_vue26.toDisplayString)(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")),
@@ -3876,6 +3869,9 @@
     const slot = vm.$slots[name];
     return Boolean(renderSlotText(slot, props, options));
   }
+
+  // packages/vue/src/utils/use-modal.ts
+  var import_vue27 = __require("vue");
 
   // packages/vue/src/utils/action-from-keyboard-event.ts
   function actionFromKeyboardEvent(event) {
@@ -3938,7 +3934,7 @@
   }
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
-  var IPopup_default = (0, import_vue27.defineComponent)({
+  var IPopup_default = (0, import_vue28.defineComponent)({
     name: "IPopup",
     inheritAttrs: false,
     props: {
@@ -4174,29 +4170,29 @@
   });
 
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=template
-  var import_vue28 = __require("vue");
+  var import_vue29 = __require("vue");
   function render12(_ctx, _cache, $props, $setup, $data, $options) {
-    return _ctx.isOpen ? ((0, import_vue28.openBlock)(), (0, import_vue28.createBlock)(import_vue28.Teleport, {
+    return _ctx.isOpen ? ((0, import_vue29.openBlock)(), (0, import_vue29.createBlock)(import_vue29.Teleport, {
       key: 0,
       to: _ctx.teleportTarget,
       disabled: _ctx.teleportDisabled
     }, [
-      (0, import_vue28.createElementVNode)(
+      (0, import_vue29.createElementVNode)(
         "div",
-        (0, import_vue28.mergeProps)({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }),
+        (0, import_vue29.mergeProps)({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }),
         [
-          (0, import_vue28.createElementVNode)(
+          (0, import_vue29.createElementVNode)(
             "div",
             {
               ref: "wrapper",
               role: "presentation",
               class: "popup__wrapper",
               onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onPopupClickHandler && _ctx.onPopupClickHandler(...args)),
-              onKeyup: _cache[1] || (_cache[1] = (0, import_vue28.withKeys)((0, import_vue28.withModifiers)((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
-              onKeydown: _cache[2] || (_cache[2] = (0, import_vue28.withKeys)((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
+              onKeyup: _cache[1] || (_cache[1] = (0, import_vue29.withKeys)((0, import_vue29.withModifiers)((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
+              onKeydown: _cache[2] || (_cache[2] = (0, import_vue29.withKeys)((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
             },
             [
-              (0, import_vue28.renderSlot)(_ctx.$slots, "default", (0, import_vue28.normalizeProps)((0, import_vue28.guardReactiveProps)({ toggleIsOpen: _ctx.toggleIsOpen, placement: _ctx.placement })))
+              (0, import_vue29.renderSlot)(_ctx.$slots, "default", (0, import_vue29.normalizeProps)((0, import_vue29.guardReactiveProps)({ toggleIsOpen: _ctx.toggleIsOpen, placement: _ctx.placement })))
             ],
             544
             /* NEED_HYDRATION, NEED_PATCH */
@@ -4205,7 +4201,7 @@
         16
         /* FULL_PROPS */
       )
-    ], 8, ["to", "disabled"])) : (0, import_vue28.createCommentVNode)("v-if", true);
+    ], 8, ["to", "disabled"])) : (0, import_vue29.createCommentVNode)("v-if", true);
   }
 
   // packages/vue/src/internal-components/IPopup/IPopup.vue
@@ -4260,7 +4256,7 @@
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
   var preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
-  var IPopupMenu_default = (0, import_vue29.defineComponent)({
+  var IPopupMenu_default = (0, import_vue30.defineComponent)({
     name: "IPopupMenu",
     components: { FIcon: FIcon_default2, IPopup: IPopup_default2 },
     props: {
@@ -4500,22 +4496,22 @@
   });
 
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=template
-  var import_vue30 = __require("vue");
+  var import_vue31 = __require("vue");
   var _hoisted_18 = ["aria-label"];
-  var _hoisted_28 = {
+  var _hoisted_27 = {
     role: "menu",
     class: "ipopupmenu__list"
   };
-  var _hoisted_36 = ["onClick"];
-  var _hoisted_45 = ["data-ref-index", "href", "target"];
-  var _hoisted_54 = {
+  var _hoisted_35 = ["onClick"];
+  var _hoisted_44 = ["data-ref-index", "href", "target"];
+  var _hoisted_53 = {
     key: 0,
     class: "sr-only"
   };
   function render13(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue30.resolveComponent)("f-icon");
-    const _component_i_popup = (0, import_vue30.resolveComponent)("i-popup");
-    return (0, import_vue30.openBlock)(), (0, import_vue30.createBlock)(_component_i_popup, {
+    const _component_f_icon = (0, import_vue31.resolveComponent)("f-icon");
+    const _component_i_popup = (0, import_vue31.resolveComponent)("i-popup");
+    return (0, import_vue31.openBlock)(), (0, import_vue31.createBlock)(_component_i_popup, {
       class: "ipopupmenu",
       "is-open": _ctx.isOpen,
       "keyboard-trap": false,
@@ -4525,25 +4521,25 @@
       onKeyup: _ctx.onKeyUp,
       onKeydown: _ctx.onKeyDown
     }, {
-      default: (0, import_vue30.withCtx)(() => [
-        (0, import_vue30.createElementVNode)("nav", {
+      default: (0, import_vue31.withCtx)(() => [
+        (0, import_vue31.createElementVNode)("nav", {
           class: "ipopupmenu ipopupmenu--vertical",
           "aria-label": _ctx.ariaLabel
         }, [
-          (0, import_vue30.createElementVNode)("ul", _hoisted_28, [
-            ((0, import_vue30.openBlock)(true), (0, import_vue30.createElementBlock)(
-              import_vue30.Fragment,
+          (0, import_vue31.createElementVNode)("ul", _hoisted_27, [
+            ((0, import_vue31.openBlock)(true), (0, import_vue31.createElementBlock)(
+              import_vue31.Fragment,
               null,
-              (0, import_vue30.renderList)(_ctx.items, (item, index) => {
-                return (0, import_vue30.openBlock)(), (0, import_vue30.createElementBlock)("li", {
+              (0, import_vue31.renderList)(_ctx.items, (item, index) => {
+                return (0, import_vue31.openBlock)(), (0, import_vue31.createElementBlock)("li", {
                   ref_for: true,
                   ref: "items",
                   key: item.key,
                   role: "presentation",
-                  class: (0, import_vue30.normalizeClass)(_ctx.itemClasses(item)),
+                  class: (0, import_vue31.normalizeClass)(_ctx.itemClasses(item)),
                   onClick: ($event) => _ctx.onClickItem(item)
                 }, [
-                  (0, import_vue30.createElementVNode)("a", {
+                  (0, import_vue31.createElementVNode)("a", {
                     ref_for: true,
                     ref: "anchors",
                     "data-ref-index": index,
@@ -4552,26 +4548,26 @@
                     target: item.target,
                     tabindex: "0"
                   }, [
-                    _ctx.isSelected(index) ? ((0, import_vue30.openBlock)(), (0, import_vue30.createElementBlock)("span", _hoisted_54, [
-                      (0, import_vue30.createElementVNode)(
+                    _ctx.isSelected(index) ? ((0, import_vue31.openBlock)(), (0, import_vue31.createElementBlock)("span", _hoisted_53, [
+                      (0, import_vue31.createElementVNode)(
                         "span",
                         null,
-                        (0, import_vue30.toDisplayString)(_ctx.selectedMenuItemScreenReaderText) + "\xA0",
+                        (0, import_vue31.toDisplayString)(_ctx.selectedMenuItemScreenReaderText) + "\xA0",
                         1
                         /* TEXT */
                       )
-                    ])) : (0, import_vue30.createCommentVNode)("v-if", true),
-                    (0, import_vue30.createTextVNode)(
-                      (0, import_vue30.toDisplayString)(item.label) + " ",
+                    ])) : (0, import_vue31.createCommentVNode)("v-if", true),
+                    (0, import_vue31.createTextVNode)(
+                      (0, import_vue31.toDisplayString)(item.label) + " ",
                       1
                       /* TEXT */
                     ),
-                    item.iconRight ? ((0, import_vue30.openBlock)(), (0, import_vue30.createBlock)(_component_f_icon, {
+                    item.iconRight ? ((0, import_vue31.openBlock)(), (0, import_vue31.createBlock)(_component_f_icon, {
                       key: 1,
                       name: item.iconRight
-                    }, null, 8, ["name"])) : (0, import_vue30.createCommentVNode)("v-if", true)
-                  ], 8, _hoisted_45)
-                ], 10, _hoisted_36);
+                    }, null, 8, ["name"])) : (0, import_vue31.createCommentVNode)("v-if", true)
+                  ], 8, _hoisted_44)
+                ], 10, _hoisted_35);
               }),
               128
               /* KEYED_FRAGMENT */
@@ -4590,7 +4586,7 @@
   var IPopupMenu_default2 = IPopupMenu_default;
 
   // virtual-entry:./packages/vue/src/internal-components/IPopupMenu/examples/IPopupMenuExample.vue
-  var import_vue32 = __require("vue");
+  var import_vue33 = __require("vue");
   var exampleItems = [
     { label: "L\xE4nk 1", key: "MENU_1" },
     { label: "L\xE4nk 2", key: "MENU_2" },
@@ -4607,7 +4603,7 @@
   var downKeys = ["Down", "ArrowDown"];
   var verticalKeys = [...upKeys, ...downKeys];
   var preventKeys2 = ["Tab", ...verticalKeys];
-  var exampleComponent = (0, import_vue31.defineComponent)({
+  var exampleComponent = (0, import_vue32.defineComponent)({
     name: "IPopupMenuExample",
     components: { IPopupMenu: IPopupMenu_default2 },
     data() {
@@ -4655,10 +4651,10 @@
       }
     }
   });
-  function render14(_ctx, _cache) {
-    const _component_i_popup_menu = (0, import_vue32.resolveComponent)("i-popup-menu");
-    return (0, import_vue32.openBlock)(), (0, import_vue32.createElementBlock)("div", null, [
-      (0, import_vue32.createElementVNode)(
+  function render14(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_i_popup_menu = (0, import_vue33.resolveComponent)("i-popup-menu");
+    return (0, import_vue33.openBlock)(), (0, import_vue33.createElementBlock)("div", null, [
+      (0, import_vue33.createElementVNode)(
         "button",
         {
           id: "popup-menu-open-button",
@@ -4669,12 +4665,11 @@
           onKeyup: _cache[1] || (_cache[1] = (...args) => _ctx.onKeyUp && _ctx.onKeyUp(...args)),
           onKeydown: _cache[2] || (_cache[2] = (...args) => _ctx.onKeyDown && _ctx.onKeyDown(...args))
         },
-        "\n            \xD6ppna popupmeny\n        ",
+        " \xD6ppna popupmeny ",
         544
         /* NEED_HYDRATION, NEED_PATCH */
       ),
-      (0, import_vue32.createTextVNode)(),
-      (0, import_vue32.createVNode)(_component_i_popup_menu, {
+      (0, import_vue33.createVNode)(_component_i_popup_menu, {
         id: "popup-menu",
         modelValue: _ctx.selectedItem,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.selectedItem = $event),
@@ -4686,11 +4681,10 @@
         "enable-keyboard-navigation": "",
         onClose: _ctx.onClose
       }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "onClose"]),
-      (0, import_vue32.createTextVNode)(),
-      (0, import_vue32.createElementVNode)(
+      (0, import_vue33.createElementVNode)(
         "pre",
         null,
-        "Selected item: " + (0, import_vue32.toDisplayString)(_ctx.selectedItem),
+        "Selected item: " + (0, import_vue33.toDisplayString)(_ctx.selectedItem),
         1
         /* TEXT */
       )
