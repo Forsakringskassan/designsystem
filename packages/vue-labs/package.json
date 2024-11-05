@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue-labs",
-  "version": "5.38.0",
+  "version": "5.39.0",
   "description": "Experimental and unstable FKUI components",
   "keywords": [
     "fkui",
@@ -60,13 +60,13 @@
     ]
   },
   "devDependencies": {
-    "@fkui/css-variables": "5.38.0",
-    "@fkui/date": "5.38.0",
-    "@fkui/design": "5.38.0",
-    "@fkui/icon-lib-default": "5.38.0",
-    "@fkui/logic": "5.38.0",
-    "@fkui/test-utils": "5.38.0",
-    "@fkui/vue": "5.38.0",
+    "@fkui/css-variables": "5.39.0",
+    "@fkui/date": "5.39.0",
+    "@fkui/design": "5.39.0",
+    "@fkui/icon-lib-default": "5.39.0",
+    "@fkui/logic": "5.39.0",
+    "@fkui/test-utils": "5.39.0",
+    "@fkui/vue": "5.39.0",
     "@forsakringskassan/docs-generator": "2.13.0",
     "@forsakringskassan/vite-lib-config": "2.2.0",
     "@vue/test-utils": "2.4.6",

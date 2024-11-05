@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 5.39.0 (2024-11-05)
+
+
+### Features
+
+* **deps:** bundle lodash (refs SFKUI-6500) 6cb2abc
+
+
+### Bug Fixes
+
+* **@fkui/vue:** fix `getDay{Start,End}Offset` refers to a value but is being used as a type (refs SFKUI-6500) 871ddce
+* **@fkui/vue:** fix treeshaking issue with lodash (refs SFKUI-6500) baf361b
+
 ## 5.38.0 (2024-10-25)
 
 
