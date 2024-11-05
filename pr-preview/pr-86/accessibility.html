@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="./assets/docs-f3791d.css"
+            href="./assets/docs-336abb.css"
             crossorigin
-            integrity="sha384-agiY/1phRN61DnGg4Zt0+4MtC/JlXJ1IzwlMljB6CSPZCdOYeu7qTOljkK2Nu0Ch"
+            integrity="sha384-8wVYmRMsE77wQNZbPbTcpwbT+Pi0nsCu97Zt+BnpYIYHcGeolcewGMTPrAzC+KwO"
             
         />
         <link
@@ -89,16 +89,35 @@
 
         <link
             rel="preload"
-            href="./search-data-fa7e3c.json"
+            href="./search-data-811160.json"
             as="fetch"
             crossorigin
-            integrity="sha384-O2UYP4IObWuttSo1kpzi3vdV+MgyPOgx3jGIfVm8tCfQC2Zmvbt0m7ytMiT8NHSH"
+            integrity="sha384-7YZaDUMFgxRLV5VS6hUvsqnSnkNNsQ3hL6Q+gidSe8I7DydAtE/tqeWUHNydwxBL"
             id="search-data"
         />
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -302,9 +321,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="./assets/vendor-fkui-vue-22cbb9.js"
+                    src="./assets/vendor-fkui-vue-fde704.js"
                     crossorigin
-                    integrity="sha384-17E70ZvXUGrE/7qEkttfLwNstMZgTJXlqRpRaAYSM5CA/khgeebj8bw0MmP8Zzcz"
+                    integrity="sha384-J5aPpeG4VpZoRrwJEoP6ei7INU02EQU5KvDOgUsgDqdvXoUxmwWMgx9XUN7yke3h"
                 ></script>
                 <script
                     src="./assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -352,14 +371,28 @@ Om du upptäcker problem som inte är beskrivna på den här sidan, eller om du 
 Om du inte är nöjd med hur vi hanterar dina synpunkter kan du kontakta <a href="https://www.digg.se/">Myndigheten för digital förvaltning</a> och berätta det.</p>
 <h3 id="teknisk_information_om_webbplatsens_tillganglighet"><a class="header-anchor" href="#teknisk_information_om_webbplatsens_tillganglighet">Teknisk information om webbplatsens tillgänglighet</a></h3><p>Den här webbplatsen är delvis förenlig med lagen om tillgänglighet till digital offentlig service, på grund av de brister som beskrivs nedan.</p>
 <h4 id="overgripande_brister_pa_webbplatsen"><a class="header-anchor" href="#overgripande_brister_pa_webbplatsen">Övergripande brister på webbplatsen</a></h4><ul>
-<li>Det finns ingen genväg för att hoppa över innehåll som upprepas på flera sidor för användare som navigerar med tangentbord.</li>
-<li>När man använder förstoring i mobilen syns inte allt innehåll på skärmen.</li>
+<li>Webbplatsen respekterar inte användarens webbläsarinställningar för färger (ljust/mörkt tema) och teckenstorlek.</li>
+<li>Webbplatsens layout är inte tillräckligt följsam (responsiv) utan webbplatsen sätter sidans minimibredd till 400px.
+Vid vybredden 320px blir det scrollning både vertikalt och horisontellt (vilket motsvarar 1280px vid 400 % zoom).
+En del tabeller är inte heller tillräckligt följsamma.</li>
+<li>Det saknas en länk för att hoppa förbi de återkommande interaktiva elementen i sidhuvudet.
+Användare som navigerar sekventiellt behöver trycka flera gånger på Tabb-tangenten på varje sida för att komma till huvudinnehållet.</li>
+<li>Webbplatsen tar inte hänsyn till användarens inställning av så kallade &quot;högkontrastläget&quot; (forced colours mode).
+I detta läge syns fokus-markeringen inte alls för länkar, radioknappar, kryssrutor och vissa knappar.
+För radiogrupper syns inte heller markeringen av det valda alternativet.</li>
+<li>Många sidor innehåller block med programkod eller annat formaterat innehåll.
+Dessa block är fokuserbara (med tabindex=0), men saknar synlig fokusmarkering.</li>
+<li>Webbplatsen innehåller ord och fraser på engelska, men språk-ändringen är inte maskinläsbart angiven.
+En skärmläsare kommer därför att läsa upp den engelska texten med svensk talsyntes, vilket gör den svår att uppfatta.</li>
+<li>En del informationsbärande bilder saknar textalternativ vilket gör att informationen inte når användare med skärmläsare.</li>
 </ul>
 <p>Vi arbetar med att kontinuerligt förbättra webbplatsen och åtgärda de brister som finns.</p>
-<h3 id="hur_vi_testat_webbplatsen"><a class="header-anchor" href="#hur_vi_testat_webbplatsen">Hur vi testat webbplatsen</a></h3><p>Vi har gjort en intern testning av Designsystemet med hjälp av våra egna experter.</p>
-<p>Den senaste bedömningen gjordes den 26 augusti 2024.</p>
+<h3 id="hur_vi_testat_webbplatsen"><a class="header-anchor" href="#hur_vi_testat_webbplatsen">Hur vi testat webbplatsen</a></h3><p>Vi har anlitat ett externt företag specialicerat på tillgänglighet för granskning av Designsystemet.
+Syftet med granskningen var att kartlägga de brister vi har för att få ett så tillgängligt designsystem som möjligt.
+Granskningen omfattade alla sidor som ingår i Designsystemet förutom de som ligger under &quot;Utveckla&quot; i menyn, då dessa främst består av kodexempel.</p>
+<p>Den senaste bedömningen gjordes den 21 oktober 2024.</p>
 <p>Webbplatsen publicerades den 5 september 2024.</p>
-<p>Redogörelsen uppdaterades senast den 3 september 2024.</p>
+<p>Redogörelsen uppdaterades senast den 28 oktober 2024.</p>
 
 
                     </div>
@@ -381,10 +414,38 @@ Om du inte är nöjd med hur vi hanterar dina synpunkter kan du kontakta <a href
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/revamped-tooltip (<a href="https://github.com/Forsakringskassan/designsystem/commits/88643875e1a6a636d79ab9aa585a8c103127d407">8864387</a>)<br />
+    feature/revamped-tooltip (<a href="https://github.com/Forsakringskassan/designsystem/commits/6cea0de58dd1425e6c05310c9be02272fbfdb1c1">6cea0de</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/86">PR 86</a><br />
-        2024-10-29 07:25
+        2024-11-05 13:05
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -470,15 +531,21 @@ Om du inte är nöjd med hur vi hanterar dina synpunkter kan du kontakta <a href
 
         <!-- prettier-ignore -->
         <script
-            src="./assets/processors/selectable-version/select-version-b4d866.js"
+            src="./assets/processors/motd/index-8c87e1.js"
             crossorigin
-            integrity="sha384-ZQB+GeqGW+EWCKdF/MrQpDANQVh51J0Rq+wVgCvfXShx5oiRf/HdfIYIGhNrRxoO"
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
             
         ></script>
         <script
-            src="./assets/main-b02b4d.js"
+            src="./assets/processors/selectable-version/select-version-d176d5.js"
             crossorigin
-            integrity="sha384-A5sr5ktY14RHGV0JhiZJN4677kLSQSNbxjrFP/HH9HUami0dLhJRHZWVN6JKpEVt"
+            integrity="sha384-COFm7vMTiEm+ijckiQnc2rnnGbhF9EczN/NpqxHnp8Fw6EmIg8jGEl5GmHYfoTGk"
+            
+        ></script>
+        <script
+            src="./assets/main-dfa38f.js"
+            crossorigin
+            integrity="sha384-T1ZkxKemccCwNVOSd/t0j7qhUN/HTQZe6DKXgL25IiVBJfBkXh4np4ADbioOyQEB"
             
         ></script>
     </body>

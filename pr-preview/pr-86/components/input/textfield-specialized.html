@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-f3791d.css"
+            href="../../assets/docs-336abb.css"
             crossorigin
-            integrity="sha384-agiY/1phRN61DnGg4Zt0+4MtC/JlXJ1IzwlMljB6CSPZCdOYeu7qTOljkK2Nu0Ch"
+            integrity="sha384-8wVYmRMsE77wQNZbPbTcpwbT+Pi0nsCu97Zt+BnpYIYHcGeolcewGMTPrAzC+KwO"
             
         />
         <link
@@ -89,16 +89,35 @@
 
         <link
             rel="preload"
-            href="../../search-data-fa7e3c.json"
+            href="../../search-data-811160.json"
             as="fetch"
             crossorigin
-            integrity="sha384-O2UYP4IObWuttSo1kpzi3vdV+MgyPOgx3jGIfVm8tCfQC2Zmvbt0m7ytMiT8NHSH"
+            integrity="sha384-7YZaDUMFgxRLV5VS6hUvsqnSnkNNsQ3hL6Q+gidSe8I7DydAtE/tqeWUHNydwxBL"
             id="search-data"
         />
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -1064,9 +1083,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-22cbb9.js"
+                    src="../../assets/vendor-fkui-vue-fde704.js"
                     crossorigin
-                    integrity="sha384-17E70ZvXUGrE/7qEkttfLwNstMZgTJXlqRpRaAYSM5CA/khgeebj8bw0MmP8Zzcz"
+                    integrity="sha384-J5aPpeG4VpZoRrwJEoP6ei7INU02EQU5KvDOgUsgDqdvXoUxmwWMgx9XUN7yke3h"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -1141,8 +1160,8 @@
                     <div id="content">
                         <!-- prettier-ignore -->
 <p>Det specialiserade inmatningsfältet används när användaren själv ska skriva in information som kontonummer, personnummer eller telefonnummer. Det specialiserade inmatningsfältet ärver egenskaper från vanliga inmatningsfältet och lägger till text för etikett, validerar inmatat värde och formaterar värde vid behov.</p>
-<p><a href="../../guides/formatter-parser.html">Läs mer om formatering och parsning</a></p>
-<p><a href="../../guides/validation.html">Läs mer om validering</a></p>
+<p><a href="../../guides/formatting-and-parsing/formatter-parser.html">Läs mer om formatering och parsning</a></p>
+<p><a href="../../guides/validation-and-error-handling/validation.html">Läs mer om validering</a></p>
 <p>Exempel för de specialiserade inmatningsfälten finner du på <a href="./ftextfield.html">inmatningsfält</a></p>
 <h2 id="bankgiro"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h2><p><code>FBankgiroTextField</code></p>
 <h3 id="etikett"><a class="header-anchor" href="#etikett">Etikett</a></h3><table class="table">
@@ -1189,7 +1208,7 @@
 </table>
 <h3 id="validering"><a class="header-anchor" href="#validering">Validering</a></h3><p><code>maxLength.bankgiro=&quot;{ maxLength: { length: 9 }&quot;</code></p>
 <h4 id="validatorer"><a class="header-anchor" href="#validatorer">Validatorer</a></h4><p><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#bankgiro">format för bankgiro</a>.</p>
-<h4 id="attribut_for_maxlangd"><a class="header-anchor" href="#attribut_for_maxlangd">Attribut för maxlängd</a></h4><p><code>maxlength=40</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd"><a class="header-anchor" href="#attribut_for_maxlangd">Attribut för maxlängd</a></h4><p><code>maxlength=40</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api"><a class="header-anchor" href="#api">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="clearingnummer"><a class="header-anchor" href="#clearingnummer">Clearingnummer</a></h2><p><code>FClearingnumberTextField</code></p>
 <h3 id="etikett--1"><a class="header-anchor" href="#etikett--1">Etikett</a></h3><table class="table">
@@ -1242,7 +1261,7 @@
 <p>För clearingnummer kan värdet behöva omvandlas ytterligare innan det skickas till backend. Importera <code>formatClearingNumberForBackend</code>-metod från logik-paketet för att ta bort eventuell femte siffra.</p>
 <h3 id="validering--3"><a class="header-anchor" href="#validering--3">Validering</a></h3><p><code>clearingNumber</code></p>
 <h4 id="validatorer--4"><a class="header-anchor" href="#validatorer--4">Validatorer</a></h4><p><a href="../validation/validators.html#clearingnummer">Format för clearingnummer</a></p>
-<h4 id="attribut_for_maxlangd--5"><a class="header-anchor" href="#attribut_for_maxlangd--5">Attribut för maxlängd</a></h4><p><code>maxlength=16</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--5"><a class="header-anchor" href="#attribut_for_maxlangd--5">Attribut för maxlängd</a></h4><p><code>maxlength=16</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--6"><a class="header-anchor" href="#api--6">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="kontonummer"><a class="header-anchor" href="#kontonummer">Kontonummer</a></h2><p><code>FBankAccountNumberTextField</code></p>
 <h3 id="etikett--7"><a class="header-anchor" href="#etikett--7">Etikett</a></h3><table class="table">
@@ -1289,7 +1308,7 @@
 </table>
 <h3 id="validering--9"><a class="header-anchor" href="#validering--9">Validering</a></h3><p><code>bankAccountNumber</code></p>
 <h4 id="validatorer--10"><a class="header-anchor" href="#validatorer--10">Validatorer</a></h4><p><a href="../validation/validators.html#kontonummer">Format för kontonummer</a>.</p>
-<h4 id="attribut_for_maxlangd--11"><a class="header-anchor" href="#attribut_for_maxlangd--11">Attribut för maxlängd</a></h4><p><code>maxlength=40</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--11"><a class="header-anchor" href="#attribut_for_maxlangd--11">Attribut för maxlängd</a></h4><p><code>maxlength=40</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--12"><a class="header-anchor" href="#api--12">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="mejladress"><a class="header-anchor" href="#mejladress">Mejladress</a></h2><p><code>FEmailTextField</code></p>
 <p>Inmatningsfält för mejladress finns med enkel validering som beskrivs nedan och med <a href="#mejladress_utokad">utökad validering</a>. Vid utökad validering ska användaren bekräfta mejladressen genom att skriva in den en gång till.</p>
@@ -1311,7 +1330,7 @@
 </table>
 <h3 id="validering--14"><a class="header-anchor" href="#validering--14">Validering</a></h3><p><code>email</code></p>
 <h4 id="validatorer--15"><a class="header-anchor" href="#validatorer--15">Validatorer</a></h4><p><a href="../validation/validators.html#mejladress">Format för mejladress</a>.</p>
-<h4 id="attribut_for_maxlangd--16"><a class="header-anchor" href="#attribut_for_maxlangd--16">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--16"><a class="header-anchor" href="#attribut_for_maxlangd--16">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 
             <div
                 id="example-dd2066"
@@ -1390,7 +1409,7 @@
 </table>
 <h3 id="validering--18"><a class="header-anchor" href="#validering--18">Validering</a></h3><p><code>email.matches</code></p>
 <h4 id="validatorer--19"><a class="header-anchor" href="#validatorer--19">Validatorer</a></h4><p><a href="../validation/validators.html#mejladress">Format för mejladress</a> och <a href="../validation/validators.html#identisk">identisk</a>.</p>
-<h4 id="attribut_for_maxlangd--20"><a class="header-anchor" href="#attribut_for_maxlangd--20">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--20"><a class="header-anchor" href="#attribut_for_maxlangd--20">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 
             <div
                 id="example-8cddf8"
@@ -1536,7 +1555,7 @@ If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. 
 </table>
 <h3 id="validering--23"><a class="header-anchor" href="#validering--23">Validering</a></h3><p><code>decimals</code></p>
 <h4 id="validatorer--24"><a class="header-anchor" href="#validatorer--24">Validatorer</a></h4><p><a href="../validation/validators.html#decimaltal">Decimaltal</a> (om propertyn är angiven).</p>
-<h4 id="attribut_for_maxlangd--25"><a class="header-anchor" href="#attribut_for_maxlangd--25">Attribut för maxlängd</a></h4><p><code>maxlength=20</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--25"><a class="header-anchor" href="#attribut_for_maxlangd--25">Attribut för maxlängd</a></h4><p><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--26"><a class="header-anchor" href="#api--26">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="organisationsnummer"><a class="header-anchor" href="#organisationsnummer">Organisationsnummer</a></h2><p><code>FOrganisationsnummerTextField</code></p>
 <h3 id="etikett--27"><a class="header-anchor" href="#etikett--27">Etikett</a></h3><table class="table">
@@ -1593,7 +1612,7 @@ If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. 
 </table>
 <h3 id="validering--29"><a class="header-anchor" href="#validering--29">Validering</a></h3><p><code>maxLength.organisationsnummer=&quot;{ maxLength:{ length: 11 }}&quot;</code></p>
 <h4 id="validatorer--30"><a class="header-anchor" href="#validatorer--30">Validatorer</a></h4><p><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#organisationsnummer">format för organisationsnummer</a>.</p>
-<h4 id="attribut_for_maxlangd--31"><a class="header-anchor" href="#attribut_for_maxlangd--31">Attribut för maxlängd</a></h4><p><code>maxlength=20</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--31"><a class="header-anchor" href="#attribut_for_maxlangd--31">Attribut för maxlängd</a></h4><p><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--32"><a class="header-anchor" href="#api--32">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="personnummer"><a class="header-anchor" href="#personnummer">Personnummer</a></h2><p><code>FPersonnummerTextField</code></p>
 <p>Inmatningsfältet för personnummer har förlåtande inmatning,
@@ -1660,7 +1679,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </table>
 <h3 id="validering--35"><a class="header-anchor" href="#validering--35">Validering</a></h3><p><code>maxLength.personnummerFormat.personnummerLuhn= &quot;{ maxLength:{ length: 20 }}&quot;</code></p>
 <h4 id="validatorer--36"><a class="header-anchor" href="#validatorer--36">Validatorer</a></h4><p><a href="../validation/validators.html#maxlangd">Maxlängd</a>, <a href="../validation/validators.html#personnummer_format">format för personnummer</a> och <a href="../validation/validators.html#personnummer_checksumma">kontrollsiffra för personnummer</a>.</p>
-<h4 id="attribut_for_maxlangd--37"><a class="header-anchor" href="#attribut_for_maxlangd--37">Attribut för maxlängd</a></h4><p><code>maxlength=23</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--37"><a class="header-anchor" href="#attribut_for_maxlangd--37">Attribut för maxlängd</a></h4><p><code>maxlength=23</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--38"><a class="header-anchor" href="#api--38">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="plusgiro"><a class="header-anchor" href="#plusgiro">Plusgiro</a></h2><p><code>FPlusgiroTextField</code></p>
 <h3 id="etikett--39"><a class="header-anchor" href="#etikett--39">Etikett</a></h3><table class="table">
@@ -1707,7 +1726,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </table>
 <h3 id="validering--41"><a class="header-anchor" href="#validering--41">Validering</a></h3><p><code>maxLength.plusgiro= &quot;{ maxLength:{ length: 9 }}&quot;</code></p>
 <h4 id="validatorer--42"><a class="header-anchor" href="#validatorer--42">Validatorer</a></h4><p><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#plusgiro">format för plusgiro</a>.</p>
-<h4 id="attribut_for_maxlangd--43"><a class="header-anchor" href="#attribut_for_maxlangd--43">Attribut för maxlängd</a></h4><p><code>maxlength=15</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--43"><a class="header-anchor" href="#attribut_for_maxlangd--43">Attribut för maxlängd</a></h4><p><code>maxlength=15</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--44"><a class="header-anchor" href="#api--44">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="postnummer"><a class="header-anchor" href="#postnummer">Postnummer</a></h2><p><code>FPostalCodeTextField</code></p>
 <h3 id="etikett--45"><a class="header-anchor" href="#etikett--45">Etikett</a></h3><table class="table">
@@ -1764,7 +1783,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </table>
 <h3 id="validering--47"><a class="header-anchor" href="#validering--47">Validering</a></h3><p><code>maxLength.postalCode=&quot;{ maxLength:´{ length: 13 }}&quot;</code></p>
 <h4 id="validatorer--48"><a class="header-anchor" href="#validatorer--48">Validatorer</a></h4><p><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#postnummer">format för postnummer</a>.</p>
-<h4 id="attribut_for_maxlangd--49"><a class="header-anchor" href="#attribut_for_maxlangd--49">Attribut för maxlängd</a></h4><p><code>maxlength=15</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--49"><a class="header-anchor" href="#attribut_for_maxlangd--49">Attribut för maxlängd</a></h4><p><code>maxlength=15</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--50"><a class="header-anchor" href="#api--50">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="procent"><a class="header-anchor" href="#procent">Procent</a></h2><p><code>FPercentTextField</code></p>
 <h3 id="format--51"><a class="header-anchor" href="#format--51">Format</a></h3><table class="table">
@@ -1800,7 +1819,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </table>
 <h3 id="validering--52"><a class="header-anchor" href="#validering--52">Validering</a></h3><p><code>percent.minValue.maxValue= &quot;{ minValue: { minValue: 0 }, maxValue: { maxValue: 999 } }&quot;</code></p>
 <h4 id="validatorer--53"><a class="header-anchor" href="#validatorer--53">Validatorer</a></h4><p><a href="../validation/validators.html#procent">Format för procent</a>, <a href="../validation/validators.html#minvarde">minvärde</a> och <a href="../validation/validators.html#maxvarde">maxvärde</a>.</p>
-<h4 id="attribut_for_maxlangd--54"><a class="header-anchor" href="#attribut_for_maxlangd--54">Attribut för maxlängd</a></h4><p><code>maxlength=10</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--54"><a class="header-anchor" href="#attribut_for_maxlangd--54">Attribut för maxlängd</a></h4><p><code>maxlength=10</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--55"><a class="header-anchor" href="#api--55">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="sokfalt"><a class="header-anchor" href="#sokfalt">Sökfält</a></h2><p><code>FSearchTextField</code></p>
 <p>Används för sökningar där användaren skriver in sin söktext i ett inmatningsfält.</p>
@@ -1846,7 +1865,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="valiering"><a class="header-anchor" href="#valiering">Valiering</a></h3><h4 id="attribut_for_maxlangd--58"><a class="header-anchor" href="#attribut_for_maxlangd--58">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="valiering"><a class="header-anchor" href="#valiering">Valiering</a></h3><h4 id="attribut_for_maxlangd--58"><a class="header-anchor" href="#attribut_for_maxlangd--58">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--59"><a class="header-anchor" href="#api--59">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="telefonnummer"><a class="header-anchor" href="#telefonnummer">Telefonnummer</a></h2><p><code>FPhoneTextField</code></p>
 <p>Inmatningsfält för telefonnummer finns med enkel validering som beskrivs nedan och med <a href="#telefonnummer_utokad">utökad validering</a>. Vid utökad validering ska användaren bekräfta telefonnummer genom att skriva in det en gång till.</p>
@@ -1884,7 +1903,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </table>
 <h3 id="validering--62"><a class="header-anchor" href="#validering--62">Validering</a></h3><p><code>phoneNumber</code></p>
 <h4 id="validatorer--63"><a class="header-anchor" href="#validatorer--63">Validatorer</a></h4><p><a href="../validation/validators.html#telefonnummer">Format för telefonnummer</a>.</p>
-<h4 id="attribut_for_maxlangd--64"><a class="header-anchor" href="#attribut_for_maxlangd--64">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--64"><a class="header-anchor" href="#attribut_for_maxlangd--64">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 
             <div
                 id="example-a9e28f"
@@ -1974,7 +1993,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </table>
 <h3 id="validering--67"><a class="header-anchor" href="#validering--67">Validering</a></h3><p><code>phoneNumber.matches</code></p>
 <h4 id="validatorer--68"><a class="header-anchor" href="#validatorer--68">Validatorer</a></h4><p><a href="../validation/validators.html#telefonnummer">Format för telefonnummer</a> och <a href="../validation/validators.html#identisk">identisk</a>.</p>
-<h4 id="attribut_for_maxlangd--69"><a class="header-anchor" href="#attribut_for_maxlangd--69">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--69"><a class="header-anchor" href="#attribut_for_maxlangd--69">Attribut för maxlängd</a></h4><p><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 
             <div
                 id="example-f34116"
@@ -2107,11 +2126,11 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
 </table>
 <h3 id="validering--72"><a class="header-anchor" href="#validering--72">Validering</a></h3><p><code>currency.integer</code></p>
 <h4 id="validatorer--73"><a class="header-anchor" href="#validatorer--73">Validatorer</a></h4><p><a href="../validation/validators.html#valutabelopp">Valutabelopp</a> och <a href="../validation/validators.html#heltal">heltal</a>.</p>
-<h4 id="attribut_for_maxlangd--74"><a class="header-anchor" href="#attribut_for_maxlangd--74">Attribut för maxlängd</a></h4><p><code>maxlength=20</code> <a href="../../guides/length-validation.html">Läs mer om längdvalidering</a></p>
+<h4 id="attribut_for_maxlangd--74"><a class="header-anchor" href="#attribut_for_maxlangd--74">Attribut för maxlängd</a></h4><p><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 <h3 id="api--75"><a class="header-anchor" href="#api--75">API</a></h3><p>Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
 <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="./ftextfield.html">Inmatningsfält</a></p>
-<p><a href="../../guides/formatter-parser.html">Formatering och parsning</a></p>
-<p><a href="../../guides/validation.html">Validering</a></p>
+<p><a href="../../guides/formatting-and-parsing/formatter-parser.html">Formatering och parsning</a></p>
+<p><a href="../../guides/validation-and-error-handling/validation.html">Validering</a></p>
 
 
                     </div>
@@ -2133,10 +2152,38 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/revamped-tooltip (<a href="https://github.com/Forsakringskassan/designsystem/commits/88643875e1a6a636d79ab9aa585a8c103127d407">8864387</a>)<br />
+    feature/revamped-tooltip (<a href="https://github.com/Forsakringskassan/designsystem/commits/6cea0de58dd1425e6c05310c9be02272fbfdb1c1">6cea0de</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/86">PR 86</a><br />
-        2024-10-29 07:25
+        2024-11-05 13:05
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -2222,15 +2269,21 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/processors/selectable-version/select-version-b4d866.js"
+            src="../../assets/processors/motd/index-8c87e1.js"
             crossorigin
-            integrity="sha384-ZQB+GeqGW+EWCKdF/MrQpDANQVh51J0Rq+wVgCvfXShx5oiRf/HdfIYIGhNrRxoO"
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
             
         ></script>
         <script
-            src="../../assets/main-b02b4d.js"
+            src="../../assets/processors/selectable-version/select-version-d176d5.js"
             crossorigin
-            integrity="sha384-A5sr5ktY14RHGV0JhiZJN4677kLSQSNbxjrFP/HH9HUami0dLhJRHZWVN6JKpEVt"
+            integrity="sha384-COFm7vMTiEm+ijckiQnc2rnnGbhF9EczN/NpqxHnp8Fw6EmIg8jGEl5GmHYfoTGk"
+            
+        ></script>
+        <script
+            src="../../assets/main-dfa38f.js"
+            crossorigin
+            integrity="sha384-T1ZkxKemccCwNVOSd/t0j7qhUN/HTQZe6DKXgL25IiVBJfBkXh4np4ADbioOyQEB"
             
         ></script>
     </body>

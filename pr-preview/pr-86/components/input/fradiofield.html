@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-f3791d.css"
+            href="../../assets/docs-336abb.css"
             crossorigin
-            integrity="sha384-agiY/1phRN61DnGg4Zt0+4MtC/JlXJ1IzwlMljB6CSPZCdOYeu7qTOljkK2Nu0Ch"
+            integrity="sha384-8wVYmRMsE77wQNZbPbTcpwbT+Pi0nsCu97Zt+BnpYIYHcGeolcewGMTPrAzC+KwO"
             
         />
         <link
@@ -89,16 +89,35 @@
 
         <link
             rel="preload"
-            href="../../search-data-fa7e3c.json"
+            href="../../search-data-811160.json"
             as="fetch"
             crossorigin
-            integrity="sha384-O2UYP4IObWuttSo1kpzi3vdV+MgyPOgx3jGIfVm8tCfQC2Zmvbt0m7ytMiT8NHSH"
+            integrity="sha384-7YZaDUMFgxRLV5VS6hUvsqnSnkNNsQ3hL6Q+gidSe8I7DydAtE/tqeWUHNydwxBL"
             id="search-data"
         />
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -1064,9 +1083,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-22cbb9.js"
+                    src="../../assets/vendor-fkui-vue-fde704.js"
                     crossorigin
-                    integrity="sha384-17E70ZvXUGrE/7qEkttfLwNstMZgTJXlqRpRaAYSM5CA/khgeebj8bw0MmP8Zzcz"
+                    integrity="sha384-J5aPpeG4VpZoRrwJEoP6ei7INU02EQU5KvDOgUsgDqdvXoUxmwWMgx9XUN7yke3h"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -1089,13 +1108,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/88643875e1a6a636d79ab9aa585a8c103127d407/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/6cea0de58dd1425e6c05310c9be02272fbfdb1c1/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/88643875e1a6a636d79ab9aa585a8c103127d407/packages/vue/src/components/FRadioField/FRadioField.vue">FRadioField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/6cea0de58dd1425e6c05310c9be02272fbfdb1c1/packages/vue/src/components/FRadioField/FRadioField.vue">FRadioField</a>
             
         </code>
          
@@ -1275,10 +1294,38 @@ If the prop is not set a random value will be generated.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/revamped-tooltip (<a href="https://github.com/Forsakringskassan/designsystem/commits/88643875e1a6a636d79ab9aa585a8c103127d407">8864387</a>)<br />
+    feature/revamped-tooltip (<a href="https://github.com/Forsakringskassan/designsystem/commits/6cea0de58dd1425e6c05310c9be02272fbfdb1c1">6cea0de</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/86">PR 86</a><br />
-        2024-10-29 07:25
+        2024-11-05 13:05
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -1364,15 +1411,21 @@ If the prop is not set a random value will be generated.</p>
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/processors/selectable-version/select-version-b4d866.js"
+            src="../../assets/processors/motd/index-8c87e1.js"
             crossorigin
-            integrity="sha384-ZQB+GeqGW+EWCKdF/MrQpDANQVh51J0Rq+wVgCvfXShx5oiRf/HdfIYIGhNrRxoO"
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
             
         ></script>
         <script
-            src="../../assets/main-b02b4d.js"
+            src="../../assets/processors/selectable-version/select-version-d176d5.js"
             crossorigin
-            integrity="sha384-A5sr5ktY14RHGV0JhiZJN4677kLSQSNbxjrFP/HH9HUami0dLhJRHZWVN6JKpEVt"
+            integrity="sha384-COFm7vMTiEm+ijckiQnc2rnnGbhF9EczN/NpqxHnp8Fw6EmIg8jGEl5GmHYfoTGk"
+            
+        ></script>
+        <script
+            src="../../assets/main-dfa38f.js"
+            crossorigin
+            integrity="sha384-T1ZkxKemccCwNVOSd/t0j7qhUN/HTQZe6DKXgL25IiVBJfBkXh4np4ADbioOyQEB"
             
         ></script>
     </body>
