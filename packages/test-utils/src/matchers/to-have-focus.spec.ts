@@ -1,6 +1,5 @@
 /* eslint-disable jest/no-conditional-expect -- for testing exceptions */
 
-import stripAnsi from "strip-ansi";
 import { toHaveFocus } from "./to-have-focus";
 
 declare global {
@@ -11,6 +10,16 @@ declare global {
         }
     }
 }
+
+expect.addSnapshotSerializer({
+    test(value: unknown) {
+        return typeof value === "string";
+    },
+    serialize(value: string) {
+        /* eslint-disable-next-line no-control-regex -- expected to replace control regex */
+        return value.replace(/\u001B\[[0-9;]*m/g, "");
+    },
+});
 
 expect.extend({
     toHaveFocus,
@@ -44,15 +53,15 @@ it("should fail if element is not focused", () => {
         expect(element).toHaveFocus();
         /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- assume message will be present */
     } catch (error: any) {
-        expect(stripAnsi(error?.message)).toMatchInlineSnapshot(`
-            "expect(received).toHaveFocus(expected)
+        expect(error?.message).toMatchInlineSnapshot(`
+            expect(received).toHaveFocus(expected)
 
             Expected element to have focus but another element was focused
 
             Expected:
               "html > body > input"
             Received:
-              "html > body""
+              "html > body"
         `);
     }
 });
@@ -63,15 +72,15 @@ it("should fail if detached element is not focused", () => {
         expect(detached).toHaveFocus();
         /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- assume message will be present  */
     } catch (error: any) {
-        expect(stripAnsi(error?.message)).toMatchInlineSnapshot(`
-            "expect(received).toHaveFocus(expected)
+        expect(error?.message).toMatchInlineSnapshot(`
+            expect(received).toHaveFocus(expected)
 
             Expected element to have focus but another element was focused
 
             Expected:
               "input"
             Received:
-              "html > body""
+              "html > body"
         `);
     }
 });
@@ -81,9 +90,7 @@ it("should fail if element is focused", () => {
     element.focus();
     expect(() => {
         expect(element).not.toHaveFocus();
-    }).toThrowErrorMatchingInlineSnapshot(
-        `"Expected element not to have focus"`,
-    );
+    }).toThrowErrorMatchingInlineSnapshot(`Expected element not to have focus`);
 });
 
 it("should handle document.activeElement being null", () => {
@@ -94,15 +101,15 @@ it("should handle document.activeElement being null", () => {
         expect(element).toHaveFocus();
         /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- assume message will be present  */
     } catch (error: any) {
-        expect(stripAnsi(error?.message)).toMatchInlineSnapshot(`
-            "expect(received).toHaveFocus(expected)
+        expect(error?.message).toMatchInlineSnapshot(`
+            expect(received).toHaveFocus(expected)
 
             Expected element to have focus but no element was focused
 
             Expected:
               "html > body > input"
             Received:
-              "<null>""
+              "<null>"
         `);
     } finally {
         document.appendChild(root);
@@ -115,6 +122,6 @@ it("should throw error if expected value is not Element", () => {
     expect(() => {
         expect("foobar").toHaveFocus();
     }).toThrowErrorMatchingInlineSnapshot(
-        `"Expected value must be Element instance but got "string" instead"`,
+        `Expected value must be Element instance but got "string" instead`,
     );
 });
