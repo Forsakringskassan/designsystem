@@ -259,7 +259,7 @@
       });
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_data_table = (0, import_vue5.resolveComponent)("f-data-table");
@@ -298,7 +298,6 @@
           1024
           /* DYNAMIC_SLOTS */
         ),
-        _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(
           _component_f_table_column,
           {
@@ -320,7 +319,6 @@
           1024
           /* DYNAMIC_SLOTS */
         ),
-        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(
           _component_f_table_column,
           {

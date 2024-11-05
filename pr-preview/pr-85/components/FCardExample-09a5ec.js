@@ -45,7 +45,7 @@
     class: "button button-group__item button--tertiary button--medium button--align-text",
     type: "button"
   };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     const _component_f_card = (0, import_vue5.resolveComponent)("f-card");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_card, null, {
@@ -68,27 +68,24 @@
           -1
           /* HOISTED */
         ),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createElementVNode)(
           "p",
           null,
           [
-            (0, import_vue5.createTextVNode)("\n                Gatan 1 "),
+            (0, import_vue5.createTextVNode)(" Gatan 1 "),
             (0, import_vue5.createElementVNode)("br"),
-            (0, import_vue5.createTextVNode)("\n                123 45 Staden "),
+            (0, import_vue5.createTextVNode)(" 123 45 Staden "),
             (0, import_vue5.createElementVNode)("br"),
-            (0, import_vue5.createTextVNode)("\n                Sverige\n            ")
+            (0, import_vue5.createTextVNode)(" Sverige ")
           ],
           -1
           /* HOISTED */
         ),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createElementVNode)(
           "p",
           null,
           [
             (0, import_vue5.createElementVNode)("label", { class: "label" }, " Telefonnummer "),
-            (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createElementVNode)("span", null, " 0109999999 ")
           ],
           -1
@@ -99,8 +96,7 @@
         (0, import_vue5.createElementVNode)("div", _hoisted_1, [
           (0, import_vue5.createElementVNode)("button", _hoisted_2, [
             (0, import_vue5.createVNode)(_component_f_icon, { name: "trashcan" }),
-            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
-            _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
+            _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
               "span",
               null,
               " Ta bort ",
@@ -108,11 +104,9 @@
               /* HOISTED */
             ))
           ]),
-          _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createElementVNode)("button", _hoisted_3, [
             (0, import_vue5.createVNode)(_component_f_icon, { name: "pen" }),
-            _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
-            _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
+            _cache[2] || (_cache[2] = (0, import_vue5.createElementVNode)(
               "span",
               null,
               " \xC4ndra ",

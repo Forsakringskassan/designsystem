@@ -39,7 +39,7 @@
       return { number1: "1", number2: "2" };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_tooltip = (0, import_vue5.resolveComponent)("f-tooltip");
     const _component_f_output_field = (0, import_vue5.resolveComponent)("f-output-field");
@@ -51,7 +51,7 @@
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.number1 = $event)
       }, {
         default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-          (0, import_vue5.createTextVNode)("\n            Nummer 1\n        ")
+          (0, import_vue5.createTextVNode)(" Nummer 1 ")
         ])),
         _: 1
         /* STABLE */
@@ -63,14 +63,13 @@
           { maxLength: true }
         ]
       ]),
-      _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
         id: "two",
         modelValue: _ctx.number2,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.number2 = $event)
       }, {
         default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
-          (0, import_vue5.createTextVNode)("\n            Nummer 2\n        ")
+          (0, import_vue5.createTextVNode)(" Nummer 2 ")
         ])),
         _: 1
         /* STABLE */
@@ -82,7 +81,6 @@
           { maxLength: true }
         ]
       ]),
-      _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_output_field, {
         id: "calculated",
         for: "one two"
@@ -103,7 +101,6 @@
           })
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.createTextVNode)(
             " " + (0, import_vue5.toDisplayString)(parseInt(_ctx.number1) + parseInt(_ctx.number2)),
             1

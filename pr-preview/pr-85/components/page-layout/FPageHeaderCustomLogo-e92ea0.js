@@ -36,7 +36,7 @@
     name: "FPageHeaderCustomLogo",
     components: { FPageHeader: import_vue4.FPageHeader }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_page_header = (0, import_vue5.resolveComponent)("f-page-header");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_page_header, null, {
       right: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
@@ -56,8 +56,7 @@
         )
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)("\n        Exempelapplikation\n        ")),
-        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)())
+        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)(" Exempelapplikation "))
       ]),
       _: 1
       /* STABLE */

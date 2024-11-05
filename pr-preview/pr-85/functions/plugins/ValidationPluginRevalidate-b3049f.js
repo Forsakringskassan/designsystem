@@ -45,12 +45,12 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)("button", {
       class: "button button--primary",
       type: "button",
       onClick: _cache[0] || (_cache[0] = ($event) => _ctx.validateAllFieldsOnPage())
-    }, "\n        Validera alla f\xE4lt p\xE5 sidan\n    ");
+    }, " Validera alla f\xE4lt p\xE5 sidan ");
   }
   exampleComponent.render = render;
   setup({

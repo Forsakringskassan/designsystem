@@ -3589,34 +3589,6 @@ input[type=search]:focus,
   text-decoration-color: var(--f-text-color-link-discrete-hover);
 }
 
-:root {
-  --fkui-badge-color-text-default: var(--fkds-color-text-primary);
-  --fkui-badge-color-background-default: var(--fkds-color-feedback-background-neutral-strong);
-  --fkui-badge-color-text-default-inverted: var(--fkds-color-text-primary);
-  --fkui-badge-color-background-default-inverted: var(--fkds-color-feedback-background-neutral);
-  --fkui-badge-color-border-default-inverted: var(--fkds-color-feedback-border-neutral);
-  --fkui-badge-color-text-warning: var(--fkds-color-text-primary);
-  --fkui-badge-color-background-warning: var(--fkds-color-feedback-background-warning-strong);
-  --fkui-badge-color-text-warning-inverted: var(--fkds-color-text-primary);
-  --fkui-badge-color-background-warning-inverted: var(--fkds-color-feedback-background-warning);
-  --fkui-badge-color-border-warning-inverted: var(--fkds-color-feedback-border-warning);
-  --fkui-badge-color-text-error: var(--fkds-color-text-inverted);
-  --fkui-badge-color-background-error: var(--fkds-color-feedback-background-negative-strong);
-  --fkui-badge-color-text-error-inverted: var(--fkds-color-text-primary);
-  --fkui-badge-color-background-error-inverted: var(--fkds-color-feedback-background-negative);
-  --fkui-badge-color-border-error-inverted: var(--fkds-color-feedback-border-negative);
-  --fkui-badge-color-text-success: var(--fkds-color-text-inverted);
-  --fkui-badge-color-background-success: var(--fkds-color-feedback-background-positive-strong);
-  --fkui-badge-color-text-success-inverted: var(--fkds-color-text-primary);
-  --fkui-badge-color-background-success-inverted: var(--fkds-color-feedback-background-positive);
-  --fkui-badge-color-border-success-inverted: var(--fkds-color-feedback-border-positive);
-  --fkui-badge-color-text-info: var(--fkds-color-text-inverted);
-  --fkui-badge-color-background-info: var(--fkds-color-feedback-background-info-strong);
-  --fkui-badge-color-text-info-inverted: var(--fkds-color-text-primary);
-  --fkui-badge-color-background-info-inverted: var(--fkds-color-feedback-background-info);
-  --fkui-badge-color-border-info-inverted: : var(--fkds-color-feedback-border-success);
-}
-
 .badge {
   border-radius: var(--f-border-radius-medium);
   border-style: solid;
@@ -3629,54 +3601,54 @@ input[type=search]:focus,
   padding: 0 0.5rem;
 }
 .badge--default {
-  color: var(--fkui-badge-color-text-default);
-  color-background: var(--fkui-badge-color-background-default);
-  color-border: var(--fkui-badge-color-background-default);
+  color: var(--fkds-color-text-primary);
+  background-color: var(--fkds-color-feedback-background-neutral-strong);
+  border-color: var(--fkds-color-feedback-background-neutral-strong);
 }
 .badge--default-inverted {
-  color: var(--fkui-badge-color-text-default-inverted);
-  color-background: var(--fkui-badge-color-background-default-inverted);
-  color-border: var(--fkui-badge-color-border-default-inverted);
+  color: var(--fkds-color-text-primary);
+  background-color: var(--fkds-color-feedback-background-neutral);
+  border-color: var(--fkds-color-feedback-border-neutral);
 }
 .badge--warning {
-  color: var(--fkui-badge-color-text-warning);
-  color-background: var(--fkui-badge-color-background-warning);
-  color-border: var(--fkui-badge-color-background-warning);
+  color: var(--fkds-color-text-primary);
+  background-color: var(--fkds-color-feedback-background-warning-strong);
+  border-color: var(--fkds-color-feedback-background-warning-strong);
 }
 .badge--warning-inverted {
-  color: var(--fkui-badge-color-text-warning-inverted);
-  color-background: var(--fkui-badge-color-background-warning-inverted);
-  color-border: var(--fkui-badge-color-border-warning-inverted);
+  color: var(--fkds-color-text-primary);
+  background-color: var(--fkds-color-feedback-background-warning);
+  border-color: var(--fkds-color-feedback-border-warning);
 }
 .badge--error {
-  color: var(--fkui-badge-color-text-error);
-  color-background: var(--fkui-badge-color-background-error);
-  color-border: var(--fkui-badge-color-background-error);
+  color: var(--fkds-color-text-inverted);
+  background-color: var(--fkds-color-feedback-background-negative-strong);
+  border-color: var(--fkds-color-feedback-background-negative-strong);
 }
 .badge--error-inverted {
-  color: var(--fkui-badge-color-text-error-inverted);
-  color-background: var(--fkui-badge-color-background-error-inverted);
-  color-border: var(--fkui-badge-color-border-error-inverted);
+  color: var(--fkds-color-text-primary);
+  background-color: var(--fkds-color-feedback-background-negative);
+  border-color: var(--fkds-color-feedback-border-negative);
 }
 .badge--success {
-  color: var(--fkui-badge-color-text-success);
-  color-background: var(--fkui-badge-color-background-success);
-  color-border: var(--fkui-badge-color-background-success);
+  color: var(--fkds-color-text-inverted);
+  background-color: var(--fkds-color-feedback-background-positive-strong);
+  border-color: var(--fkds-color-feedback-background-positive-strong);
 }
 .badge--success-inverted {
-  color: var(--fkui-badge-color-text-success-inverted);
-  color-background: var(--fkui-badge-color-background-success-inverted);
-  color-border: var(--fkui-badge-color-border-success-inverted);
+  color: var(--fkds-color-text-primary);
+  background-color: var(--fkds-color-feedback-background-positive);
+  border-color: var(--fkds-color-feedback-border-positive);
 }
 .badge--info {
-  color: var(--fkui-badge-color-text-info);
-  color-background: var(--fkui-badge-color-background-info);
-  color-border: var(--fkui-badge-color-background-info);
+  color: var(--fkds-color-text-inverted);
+  background-color: var(--fkds-color-feedback-background-info-strong);
+  border-color: var(--fkds-color-feedback-background-info-strong);
 }
 .badge--info-inverted {
-  color: var(--fkui-badge-color-text-info-inverted);
-  color-background: var(--fkui-badge-color-background-info-inverted);
-  color-border: var(--fkui-badge-color-border-info-inverted);
+  color: var(--fkds-color-text-primary);
+  background-color: var(--fkds-color-feedback-background-info);
+  border-color: var(--fkds-color-feedback-border-success);
 }
 
 .button-group {

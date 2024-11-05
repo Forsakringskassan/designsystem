@@ -46,7 +46,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_form_modal = (0, import_vue5.resolveComponent)("f-form-modal");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
@@ -75,7 +75,7 @@
           "input-text-fields": (0, import_vue5.withCtx)(() => [
             (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, null, {
               default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
-                (0, import_vue5.createTextVNode)("\n                Etikett\n            ")
+                (0, import_vue5.createTextVNode)(" Etikett ")
               ])),
               _: 1
               /* STABLE */
@@ -96,12 +96,11 @@
           _: 1
           /* STABLE */
         }, 8, ["is-open"]),
-        _cache[9] || (_cache[9] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)("button", {
           type: "button",
           class: "button button--secondary",
           onClick: _cache[3] || (_cache[3] = ($event) => _ctx.isOpen = true)
-        }, "\n        \xD6ppna modal\n    ")
+        }, " \xD6ppna modal ")
       ],
       64
       /* STABLE_FRAGMENT */

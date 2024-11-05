@@ -39,7 +39,7 @@
       return { favoritGrupp: {} };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_validation_group = (0, import_vue5.resolveComponent)("f-validation-group");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
@@ -55,7 +55,7 @@
             maxlength: "100"
           }, {
             default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-              (0, import_vue5.createTextVNode)("\n                Favoritfrukt\n            ")
+              (0, import_vue5.createTextVNode)(" Favoritfrukt ")
             ])),
             _: 1
             /* STABLE */
@@ -67,13 +67,12 @@
               { required: true }
             ]
           ]),
-          _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
             id: "godis",
             maxlength: "100"
           }, {
             default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-              (0, import_vue5.createTextVNode)("\n                Favoritgodis\n            ")
+              (0, import_vue5.createTextVNode)(" Favoritgodis ")
             ])),
             _: 1
             /* STABLE */
@@ -89,15 +88,13 @@
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
-      _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+      _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
         "pre",
         null,
         "v-model",
         -1
         /* HOISTED */
       )),
-      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,

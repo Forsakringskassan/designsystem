@@ -41,7 +41,7 @@
       };
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, {
@@ -52,7 +52,6 @@
         (0, import_vue5.createTextVNode)(" Ligger radioknapparna horisontellt? ")
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_radio_field, {
           id: "horisontellt-ja",
           modelValue: _ctx.model,
@@ -65,7 +64,6 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_radio_field, {
           id: "horisontellt-nej",
           modelValue: _ctx.model,

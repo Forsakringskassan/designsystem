@@ -62,7 +62,7 @@
     }
   });
   var _hoisted_1 = { "data-test": "days-array" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_calendar_day = (0, import_vue5.resolveComponent)("f-calendar-day");
     const _component_f_calendar = (0, import_vue5.resolveComponent)("f-calendar");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -84,7 +84,6 @@
         _: 1
         /* STABLE */
       }, 8, ["modelValue", "min-date", "max-date", "onClick"]),
-      _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "span",
         _hoisted_1,

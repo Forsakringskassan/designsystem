@@ -115,7 +115,7 @@
     }
   });
   var _hoisted_1 = { class: "date" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_calendar = (0, import_vue5.resolveComponent)("f-calendar");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_calendar, {
       modelValue: _ctx.month,
@@ -139,7 +139,6 @@
               1
               /* TEXT */
             ),
-            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createElementVNode)(
               "span",
               {

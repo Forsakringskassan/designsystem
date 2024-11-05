@@ -114,7 +114,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_select_field = (0, import_vue5.resolveComponent)("f-select-field");
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_live_example = (0, import_vue5.resolveComponent)("live-example");
@@ -132,32 +132,28 @@
             (0, import_vue5.createTextVNode)(" Typ ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
-            _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
+            _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "" },
               "Standard",
               -1
               /* HOISTED */
             )),
-            _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
-            _cache[7] || (_cache[7] = (0, import_vue5.createElementVNode)(
+            _cache[5] || (_cache[5] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "information" },
               "Informationsmodal",
               -1
               /* HOISTED */
             )),
-            _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)()),
-            _cache[9] || (_cache[9] = (0, import_vue5.createElementVNode)(
+            _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "warning" },
               "Varningsmodal",
               -1
               /* HOISTED */
             )),
-            _cache[10] || (_cache[10] = (0, import_vue5.createTextVNode)()),
-            _cache[11] || (_cache[11] = (0, import_vue5.createElementVNode)(
+            _cache[7] || (_cache[7] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "error" },
               "Felmodal",
@@ -168,41 +164,36 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[22] || (_cache[22] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_select_field, {
           modelValue: _ctx.modalSize,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.modalSize = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
+          label: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
             (0, import_vue5.createTextVNode)(" Storlek ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
-            _cache[13] || (_cache[13] = (0, import_vue5.createTextVNode)()),
-            _cache[14] || (_cache[14] = (0, import_vue5.createElementVNode)(
+            _cache[9] || (_cache[9] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "small" },
               "Liten",
               -1
               /* HOISTED */
             )),
-            _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
-            _cache[16] || (_cache[16] = (0, import_vue5.createElementVNode)(
+            _cache[10] || (_cache[10] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "medium" },
               "Medium",
               -1
               /* HOISTED */
             )),
-            _cache[17] || (_cache[17] = (0, import_vue5.createTextVNode)()),
-            _cache[18] || (_cache[18] = (0, import_vue5.createElementVNode)(
+            _cache[11] || (_cache[11] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "large" },
               "Stor",
               -1
               /* HOISTED */
             )),
-            _cache[19] || (_cache[19] = (0, import_vue5.createTextVNode)()),
-            _cache[20] || (_cache[20] = (0, import_vue5.createElementVNode)(
+            _cache[12] || (_cache[12] = (0, import_vue5.createElementVNode)(
               "option",
               { value: "fullwidth" },
               "Fullbredd",
@@ -213,14 +204,13 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        _cache[23] || (_cache[23] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.modalFullscreen,
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.modalFullscreen = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[21] || (_cache[21] = [
-            (0, import_vue5.createTextVNode)("\n            Fullsk\xE4rm i mobill\xE4ge\n        ")
+          default: (0, import_vue5.withCtx)(() => _cache[13] || (_cache[13] = [
+            (0, import_vue5.createTextVNode)(" Fullsk\xE4rm i mobill\xE4ge ")
           ])),
           _: 1
           /* STABLE */

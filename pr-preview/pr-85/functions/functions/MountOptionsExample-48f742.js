@@ -88,7 +88,7 @@
       });
     }
   });
-  function render2(_ctx, _cache) {
+  function render2(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div");
   }
   exampleComponent.render = render2;

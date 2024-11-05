@@ -528,7 +528,7 @@
       };
     }
   });
-  function render2(_ctx, _cache) {
+  function render2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_color_table = (0, import_vue7.resolveComponent)("color-table");
     return (0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", null, [
       ((0, import_vue7.openBlock)(true), (0, import_vue7.createElementBlock)(
@@ -548,7 +548,6 @@
                 1
                 /* TEXT */
               ),
-              _cache[0] || (_cache[0] = (0, import_vue7.createTextVNode)()),
               (0, import_vue7.createVNode)(_component_color_table, {
                 colors: p.variables
               }, null, 8, ["colors"])

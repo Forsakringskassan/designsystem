@@ -64,7 +64,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_navigation_menu = (0, import_vue5.resolveComponent)("f-navigation-menu");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -75,7 +75,6 @@
         1
         /* TEXT */
       ),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,
@@ -83,7 +82,6 @@
         1
         /* TEXT */
       ),
-      _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createElementVNode)("p", null, [
         (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
           "input",
@@ -103,13 +101,11 @@
             { maxLength: true }
           ]
         ]),
-        _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)()),
         (0, import_vue5.createElementVNode)("button", {
           type: "button",
           onClick: _cache[1] || (_cache[1] = ($event) => _ctx.selectedRoute = _ctx.routeInput)
         }, "Go to route")
       ]),
-      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_navigation_menu, {
         route: _ctx.selectedRoute,
         "onUpdate:route": _cache[2] || (_cache[2] = ($event) => _ctx.selectedRoute = $event),

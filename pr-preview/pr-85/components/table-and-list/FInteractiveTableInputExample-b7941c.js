@@ -67,7 +67,7 @@
   });
   var _hoisted_1 = { class: "row" };
   var _hoisted_2 = { class: "col col--lg-10" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_datepicker_field = (0, import_vue5.resolveComponent)("f-datepicker-field");
     const _component_f_numeric_text_field = (0, import_vue5.resolveComponent)("f-numeric-text-field");
@@ -105,7 +105,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {
@@ -134,7 +133,6 @@
               1024
               /* DYNAMIC_SLOTS */
             ),
-            _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)()),
             (0, import_vue5.createVNode)(
               _component_f_table_column,
               {

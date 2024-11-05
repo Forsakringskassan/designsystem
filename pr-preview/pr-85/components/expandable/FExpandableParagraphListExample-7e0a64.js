@@ -54,7 +54,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_expandable_paragraph = (0, import_vue5.resolveComponent)("f-expandable-paragraph");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createVNode)(_component_f_expandable_paragraph, {
@@ -81,7 +81,6 @@
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
-      _cache[15] || (_cache[15] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_expandable_paragraph, {
         expanded: _ctx.expanded2,
         "header-tag": "h3",
@@ -89,13 +88,13 @@
         list: true,
         onToggle: _ctx.onToggle2
       }, {
-        title: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
+        title: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createTextVNode)(" Titel (h3) (visuell h6) ")
         ])),
-        related: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
+        related: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
           (0, import_vue5.createTextVNode)(" 2020-06-25 ")
         ])),
-        default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
+        default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
           (0, import_vue5.createElementVNode)(
             "span",
             null,
@@ -107,7 +106,6 @@
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
-      _cache[16] || (_cache[16] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_expandable_paragraph, {
         expanded: _ctx.expanded3,
         "header-tag": "h6",
@@ -115,13 +113,13 @@
         list: true,
         onToggle: _ctx.onToggle3
       }, {
-        title: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
+        title: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
           (0, import_vue5.createTextVNode)(" Titel (h6) (visuell h2) ")
         ])),
-        related: (0, import_vue5.withCtx)(() => _cache[11] || (_cache[11] = [
+        related: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
           (0, import_vue5.createTextVNode)(" 2020-06-25 ")
         ])),
-        default: (0, import_vue5.withCtx)(() => _cache[12] || (_cache[12] = [
+        default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
           (0, import_vue5.createElementVNode)(
             "span",
             null,

@@ -37,11 +37,10 @@
     components: { FIcon: import_vue4.FIcon }
   });
   var _hoisted_1 = { class: "icon-stack" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
       (0, import_vue5.createVNode)(_component_f_icon, { name: "pdf" }),
-      _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)()),
       (0, import_vue5.createVNode)(_component_f_icon, { name: "success" })
     ]);
   }
