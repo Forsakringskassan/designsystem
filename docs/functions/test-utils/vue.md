@@ -45,7 +45,7 @@ const SizesButtonsComponent = defineComponent({
 
 it(`should show how component looks in different sizes`, () => {
     cy.viewport(sizeWrapperWidth, sizeWrapperHeight);
-    cy.mount(SizesComponent);
+    cy.mount(SizesButtonsComponent);
 });
 ```
 

@@ -10,6 +10,6 @@ layout: content-with-menu
 export function handleKeyboardFocusNavigation(
     key: string,
     focusedElement: HTMLElement,
-    focusableElements: Array<Element>,
+    focusableElements: Element[],
 ): void;
 ```

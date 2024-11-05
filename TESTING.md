@@ -286,9 +286,10 @@ Import-rader ska sorteras enligt följande:
 
 Typescript funktion, klass osv:
 
+<!-- prettier-ignore -->
 ```ts
 import "html-validate/jest";                              // 1. Enbart side-effects
-import "path" from "path";                                // 2. NodeJS standardbibiliotek
+import path from "path";                                  // 2. NodeJS standardbibiliotek
 import _ from "lodash";                                   // 3. Tredje-parts bibliotek
 import apimock from "@forsakringskassan/apimock-express"; // 4. In-house bibliotek
 import { focus } from "@fkui/logic";                      // 5. Inom monorepo

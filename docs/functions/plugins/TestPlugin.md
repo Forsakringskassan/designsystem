@@ -6,11 +6,15 @@ layout: content-with-menu
 _TestPlugin_ lägger till stöd för att lägga till `data-test` attribute dynamiskt på HTML element.
 Plugin:et är tänkt att användas vid testautomation, enhets- och e2e-tester.
 
-_ValidationPlugin_ initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )
+_TestPlugin_ initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )
 
 ```ts
+import { createApp } from "vue";
 import { TestPlugin } from "@fkui/vue";
-Vue.use(TestPlugin);
+
+const app = createApp(App);
+app.use(TestPlugin);
+app.mount("#app");
 ```
 
 ## Användning

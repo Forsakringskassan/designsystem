@@ -15,7 +15,7 @@ import { TranslationService } from "@fkui/logic";
 import { i18nextProvider } from "@fkui/i18next-translate";
 
 /* create a new 18next translation provider */
-const provider = i18nextProvider({
+const provider = await i18nextProvider({
     defaultLanguage: "sv",
     async loadLanguage(lang) {
         const response = await fetch(`/texts/${lang}.json`);

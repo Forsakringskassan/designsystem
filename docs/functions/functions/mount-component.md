@@ -3,6 +3,12 @@ title: mountComponent
 layout: content-with-menu
 ---
 
+::: warning
+
+This function is not yet available for usage with Vue Composition API!
+
+:::
+
 ```ts
 export interface MountOptions {
     /**
@@ -19,8 +25,8 @@ export interface MountOptions {
 export function mountComponent(
     callingInstance: MaybeWithFKUIContext,
     Component: MaybeComponent,
-    options: VNodeData & MountOptions,
-): Vue;
+    options?: Record<string, unknown> & MountOptions,
+): App<Element>;
 ```
 
 Mount a VUE component using API.

@@ -17,6 +17,7 @@ Görs lämpligtvis i applikationens `main.ts`.
 
 ```js
 import { config, FKUIConfigButtonOrder } from "@fkui/vue";
+
 config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
 ```
 
