@@ -48,7 +48,7 @@
     "preset": "@forsakringskassan/jest-config"
   },
   "dependencies": {
-    "i18next": "23.15.1"
+    "i18next": "23.16.4"
   },
   "devDependencies": {
     "@fkui/logic": "5.37.1",
