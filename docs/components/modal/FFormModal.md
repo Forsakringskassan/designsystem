@@ -214,8 +214,8 @@ Notera att det är metoden `onBeforeSubmit` som ska skickas in i sin helhelt, an
 I `onBeforeSubmit` har du möjlighet att sätta nya valideringsfel på inmatningsfält:
 
 ```ts
-onBeforeSubmit(): Promise<void> {
-    const myField = getElementFromVueRef(this.refs.myField);
+onBeforeSubmit(): void {
+    const myField = getElementFromVueRef(this.$refs.myField);
     ValidationService.setError(myField, "This value is invalid!");
 },
 ```
@@ -223,7 +223,7 @@ onBeforeSubmit(): Promise<void> {
 Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera `FFormModalAction.CANCEL` från `onBeforeSubmit`:
 
 ```ts
-onBeforeSubmit(): Promise<FFormModalAction> {
+onBeforeSubmit(): FFormModalAction {
     this.showErrorMessage = true;
     return FFormModalAction.CANCEL;
 },

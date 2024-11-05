@@ -66,17 +66,17 @@ ErrorPluginExample.vue
 Axios-fel mm hanteras om man har kodat på följande vis:
 
 ```ts
-async function bliFel() {
-    await axios.get("http://hej");
-    // alternativt return axios.get('http://hej');
+async function bliFel(): void {
+    await axios.get("http://example.net");
+    // alternativt return axios.get('http://example.net');
 }
 ```
 
 Om man däremot har kodat felaktigt, enligt nedanstående exempel, kommer exceptions inte att fångas av denna plugin.
 
 ```ts
-function bliFel() {
-    axios.get("http://hej");
+function bliFel(): void {
+    axios.get("http://example.net");
 }
 ```
 

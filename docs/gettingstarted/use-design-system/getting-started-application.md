@@ -106,7 +106,8 @@ Om du vill ha tillgång till `injectSpritesheet`-funktionen kan du anropa den sj
 
 ```javascript
 import { injectSpritesheet } from "@fkui/icon-lib-default/dist/f/injectSpritesheet";
-injectSpriteSheet();
+
+injectSpritesheet();
 ```
 
 Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.
