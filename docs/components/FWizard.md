@@ -77,8 +77,8 @@ Notera att det är metoden `onBeforeNext` som ska skickas in i sin helhelt, anro
 I `onBeforeNext` har du möjlighet att sätta nya valideringsfel på inmatningsfält:
 
 ```ts
-onBeforeNext(): Promise<void> {
-    const myField = getElementFromVueRef(this.refs.myField);
+onBeforeNext(): void {
+    const myField = getElementFromVueRef(this.$refs.myField);
     ValidationService.setError(myField, "This value is invalid!");
 },
 ```
@@ -86,7 +86,7 @@ onBeforeNext(): Promise<void> {
 Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera `FWizardStepAction.CANCEL` från `onBeforeNext`:
 
 ```ts
-onBeforeNext(): Promise<FWizardStepAction> {
+onBeforeNext(): FWizardStepAction {
     this.showErrorMessage = true;
     return FWizardStepAction.CANCEL;
 },

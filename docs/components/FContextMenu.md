@@ -35,9 +35,9 @@ I detta exemplet används typen `ContextMenuItem` för att definiera valen i men
 `{ separator: true }` används för att positionera en avskiljare mellan två menyval.
 
 ```ts
-import { ContextMenuItem } from "@fkui/vue";
+import { type ContextMenuItem } from "@fkui/vue";
 
-const exampleItems: Array<ContextMenuItem> = [
+const exampleItems: ContextMenuItem[] = [
     { label: "Påminnelse", key: "MENU_2", icon: "bell" },
     { label: "Ändra", key: "MENU_3", icon: "pen" },
     { separator: true },

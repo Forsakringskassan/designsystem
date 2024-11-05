@@ -5,9 +5,10 @@ layout: component
 component: FOffline
 ---
 
-Offline används när användaren saknar internetuppkoppling. Ett felmeddelande visas som uppmärksammar användaren om detta. 
-Offline är en overlay som lägger sig högst upp över övrigt innehåll när internetanslutningen går ner. Den försvinner igen när anslutningen är tillbaka.
-Den mountas med funktionen mountFOffline så tidigt som möjligt för att autoinkluderas i applikationen. Komponenten kan även läggas in på enstaka sidor där det är extra viktigt att internetanslutningen behöver fungera.
+Offline används när användaren saknar internetuppkoppling.
+Ett felmeddelande visas som uppmärksammar användaren om detta.
+Offline är en overlay som lägger sig högst upp över övrigt innehåll när internetanslutningen går ner.
+Den försvinner igen när anslutningen är tillbaka.
 
 Det finns ett par alternativ för att få komponenten att visa sig:
 
@@ -27,17 +28,17 @@ FOfflineExample.vue
 
 Användning med standardtext
 
-```js
-mountFOffline(this);
+```html
+<f-offline></f-offline>
 ```
 
 Användning med en egen text
 
-```js
-mountFOffline(
-    this,
-    "Det verkar som att du inte har någon internetuppkoppling just nu. Tänk på att du behöver uppkoppling för att kunna signera",
-);
+```html
+<f-offline>
+    Det verkar som att du inte har någon internetuppkoppling just nu. Tänk på
+    att du behöver uppkoppling för att kunna signera
+</f-offline>
 ```
 
 ## API

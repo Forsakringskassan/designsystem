@@ -15,14 +15,14 @@ Komponentgrupp används för att gruppera komponenter.
 
 Avstånd justeras mellan komponenter och efter gruppen genom att lägga på klassen "component-group" på ett överliggande element och "component-group\_\_item" på komponenterna i gruppen.
 
-```ts
+```html static
 <div class="component-group">
     <div class="component-group__item">Komponent 1</div>
     <div class="component-group__item">Komponent 2</div>
 </div>
 ```
 
-```html
+```html nomarkup
 <div class="component-group">
     <div class="component-group__item">
         <label for="field-1" class="label">Komponent 1</label>
@@ -38,5 +38,3 @@ Avstånd justeras mellan komponenter och efter gruppen genom att lägga på klas
     </div>
 </div>
 ```
-
-## Övrigt

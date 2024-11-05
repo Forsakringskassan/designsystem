@@ -10,10 +10,17 @@ Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas n
 
 ## Validatorn
 
-Logiken som utför valideringen skrivs i metoden:
+En validator implementeras genom att skapa ett objekt som uppfyller interfacet `Validator`:
 
 ```ts
-validation(value: string, element: ValidatableHTMLElement, config: TConfig): boolean
+interface Validator<TConfig> {
+    name: string;
+    validation(
+        value: string,
+        element: ValidatableHTMLElement,
+        config: TConfig,
+    ): boolean;
+}
 ```
 
 där:
@@ -111,11 +118,16 @@ Om det finns möjlighet till felaktig konfiguration eller om standardvärden int
 export const startsWithValidator: Validator<StartsWithConfig> = {
     name: "startsWith",
     validation(value, element, configuration) {
-        if (!isSet(configuration.startString)) {
+        const { startString } = configuration;
+        if (!isSet(startString)) {
             throw new Error(
                 "startsWithValidator: configuration.startString is missing!",
             );
         }
+        if (isEmpty(value)) {
+            return true;
+        }
+        return value.startsWith(startString);
     },
 };
 ```

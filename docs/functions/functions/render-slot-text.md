@@ -22,7 +22,7 @@ export interface RenderSlotOptions {
 ```ts
 export function renderSlotText(
     render: Slot | undefined,
-    props: Record<string, unknown> = {},
+    props?: Record<string, unknown>,
     options?: Partial<RenderSlotOptions>,
 ): string | undefined;
 ```
