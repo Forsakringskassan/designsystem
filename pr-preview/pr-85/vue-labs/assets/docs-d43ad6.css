@@ -4053,7 +4053,7 @@ input[type=search]:focus,
 .badge--info-inverted {
   color: var(--fkds-color-text-primary);
   background-color: var(--fkds-color-feedback-background-info);
-  border-color: var(--fkds-color-feedback-border-success);
+  border-color: var(--fkds-color-feedback-border-info);
 }
 
 .button-group {
