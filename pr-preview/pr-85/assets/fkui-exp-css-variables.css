@@ -1,5 +1,5 @@
 :root {
-  --f-css-variables-version: "5.38.0";
+  --f-css-variables-version: "5.39.0";
   --f-backdrop-modal: rgba(0, 0, 0, 0.75);
   --f-color-backdrop: rgba(0, 0, 0, 0.75);
   --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -87,6 +87,23 @@
   --f-button-discrete-black-padding: initial;
   --f-button-discrete-table-column-action-padding: 0.571rem;
   --f-tooltip-close-button-padding: initial;
+  --fkds-color-feedback-background-neutral: #f4f4f4;
+  --fkds-color-feedback-background-neutral-strong: #ddddde;
+  --fkds-color-feedback-background-info: #f5f6fa;
+  --fkds-color-feedback-background-info-strong: #4a52b6;
+  --fkds-color-feedback-background-negative: #fcf3f3;
+  --fkds-color-feedback-background-negative-strong: #ca1515;
+  --fkds-color-feedback-background-positive: #f3f8f5;
+  --fkds-color-feedback-background-positive-strong: #35805b;
+  --fkds-color-feedback-background-warning: #fffcf3;
+  --fkds-color-feedback-background-warning-strong: #ffbe10;
+  --fkds-color-feedback-border-neutral: #ddddde;
+  --fkds-color-feedback-border-info: #4a52b6;
+  --fkds-color-feedback-border-negative: #ca1515;
+  --fkds-color-feedback-border-positive: #35805b;
+  --fkds-color-feedback-border-warning: #ffbe10;
+  --fkds-color-text-inverted: #ffffff;
+  --fkds-color-text-primary: #1b1e23;
   --f-text-color-default: #1b1e23;
   --f-text-color-default-inverted: #ffffff;
   --f-text-color-discrete: #5f6165;
