@@ -3608,7 +3608,7 @@ input[type=search]:focus,
 .badge--default-inverted {
   color: var(--fkds-color-text-primary, #1b1e23);
   background-color: var(--fkds-color-feedback-background-neutral, #f4f4f4);
-  border-color: var(--fkds-color-feedback-border-neutral, #ddddde);
+  border-color: var(--fkds-color-feedback-border-neutral, #8d8e91);
 }
 .badge--warning {
   color: var(--fkds-color-text-primary, #1b1e23);

@@ -2,7 +2,8 @@ html {
   font-size: 14px;
 }
 
-.code-preview__preview {
+.code-preview__preview,
+.live-example__example {
   --f-color-backdrop: rgba(0, 0, 0, 0.75);
   --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3);
   --f-backdrop-modal: rgba(0, 0, 0, 0.75);
@@ -100,7 +101,7 @@ html {
   --fkds-color-feedback-background-positive-strong: #35805b;
   --fkds-color-feedback-background-warning: #fffcf3;
   --fkds-color-feedback-background-warning-strong: #ffbe10;
-  --fkds-color-feedback-border-neutral: #ddddde;
+  --fkds-color-feedback-border-neutral: #8d8e91;
   --fkds-color-feedback-border-info: #4a52b6;
   --fkds-color-feedback-border-negative: #ca1515;
   --fkds-color-feedback-border-positive: #35805b;
