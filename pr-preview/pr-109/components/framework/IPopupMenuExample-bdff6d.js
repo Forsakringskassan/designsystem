@@ -1815,252 +1815,6 @@
     }
   };
 
-  // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
-  function offset(page, el) {
-    const rect = el.getBoundingClientRect();
-    return {
-      top: rect.top + page.pageYOffset,
-      left: rect.left + page.pageXOffset
-    };
-  }
-  function getElement(anchor) {
-    if (!anchor) {
-      return null;
-    }
-    if (typeof anchor === "string") {
-      return document.getElementById(anchor);
-    } else {
-      return anchor;
-    }
-  }
-  function getCandidates(anchor, target, clippedArea, spacing, candidateOrder) {
-    const dw = target.width - anchor.width;
-    const a = {
-      placement: "A" /* A */,
-      x: anchor.x,
-      y: anchor.y + anchor.height + spacing,
-      width: target.width,
-      height: target.height,
-      direction: 1 /* Vertical */
-    };
-    const b = {
-      placement: "B" /* B */,
-      x: anchor.x - dw,
-      y: anchor.y + anchor.height + spacing,
-      width: target.width,
-      height: target.height,
-      direction: 1 /* Vertical */
-    };
-    const c = {
-      placement: "C" /* C */,
-      x: anchor.x,
-      y: anchor.y - target.height - spacing,
-      width: target.width,
-      height: target.height,
-      direction: 1 /* Vertical */
-    };
-    const d = {
-      placement: "D" /* D */,
-      x: anchor.x - dw,
-      y: anchor.y - target.height - spacing,
-      width: target.width,
-      height: target.height,
-      direction: 1 /* Vertical */
-    };
-    const e = {
-      placement: "E" /* E */,
-      x: anchor.x + anchor.width + spacing,
-      y: anchor.y + anchor.height / 2 - target.height / 2,
-      width: target.width,
-      height: target.height,
-      direction: 0 /* Horizontal */
-    };
-    const f = {
-      placement: "F" /* F */,
-      x: anchor.x - (target.width + spacing),
-      y: anchor.y + anchor.height / 2 - target.height / 2,
-      width: target.width,
-      height: target.height,
-      direction: 0 /* Horizontal */
-    };
-    const g = {
-      placement: "G" /* G */,
-      x: anchor.x + anchor.width + spacing,
-      y: clippedArea.y + spacing,
-      width: target.width,
-      height: target.height,
-      direction: 2 /* Both */
-    };
-    const h2 = {
-      placement: "H" /* H */,
-      x: anchor.x - (target.width + spacing),
-      y: clippedArea.y + spacing,
-      width: target.width,
-      height: target.height,
-      direction: 2 /* Both */
-    };
-    const i = {
-      placement: "I" /* I */,
-      x: clippedArea.x + (clippedArea.width - target.width) / 2,
-      y: clippedArea.y + (clippedArea.height - target.height) / 2,
-      width: target.width,
-      height: target.height,
-      direction: 3 /* None */
-    };
-    if (candidateOrder === "IPopupError" /* IPopupError */) {
-      return [b, a, d, c, e, f, f, f, f];
-    } else {
-      return [a, b, c, d, e, f, g, h2, i];
-    }
-  }
-  function isInside(outer, inner, spacing) {
-    const isHorizontalDirection = inner.direction === 0 /* Horizontal */ || inner.direction === 2 /* Both */;
-    const xSpacing = isHorizontalDirection ? spacing : 0;
-    const isVerticalDirection = inner.direction === 1 /* Vertical */ || inner.direction === 2 /* Both */;
-    const ySpacing = isVerticalDirection ? spacing : 0;
-    const ax = [inner.x, inner.x + inner.width];
-    const ay = [inner.y, inner.y + inner.height];
-    const bx = [outer.x + xSpacing, outer.x + outer.width - xSpacing];
-    const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
-    if (ax[0] < bx[0] || ax[1] > bx[1]) {
-      return false;
-    }
-    if (ay[0] < by[0] || ay[1] > by[1]) {
-      return false;
-    }
-    return true;
-  }
-  function isElementOptions(options) {
-    return options.target instanceof HTMLElement;
-  }
-  function clipRect(src, clip) {
-    if (!clip) {
-      return src;
-    }
-    const x = Math.max(src.x, clip.x);
-    const y = Math.max(src.y, clip.y);
-    const width = Math.min(src.x + src.width, clip.x + clip.width) - x;
-    const height = Math.min(src.y + src.height, clip.y + clip.height) - y;
-    return { x, y, width, height };
-  }
-  function getAbsolutePosition(src) {
-    if (!src) {
-      return void 0;
-    }
-    const isRoot = src.isSameNode(document.documentElement);
-    if (isRoot) {
-      return {
-        x: window.pageXOffset,
-        y: window.pageYOffset,
-        width: src.clientWidth,
-        height: src.clientHeight
-      };
-    }
-    const rect = src.getBoundingClientRect();
-    return {
-      x: Math.floor(rect.left + window.pageXOffset),
-      y: Math.floor(rect.top + window.pageYOffset),
-      width: Math.floor(rect.width),
-      height: Math.floor(rect.height)
-    };
-  }
-  function fitInsideArea(options) {
-    if (isElementOptions(options)) {
-      const {
-        area: areaElement,
-        anchor: anchorElement,
-        target: targetElement,
-        viewport: viewportElement,
-        spacing: spacing2,
-        candidateOrder
-      } = options;
-      const area2 = getAbsolutePosition(areaElement);
-      const anchor2 = getAbsolutePosition(anchorElement);
-      const target2 = getAbsolutePosition(targetElement);
-      const viewport2 = getAbsolutePosition(viewportElement);
-      const result = fitInsideArea({
-        area: area2,
-        target: target2,
-        anchor: anchor2,
-        viewport: viewport2,
-        spacing: spacing2,
-        candidateOrder
-      });
-      const offset2 = targetElement.offsetParent?.getBoundingClientRect();
-      if (!offset2) {
-        return result;
-      }
-      return {
-        ...result,
-        x: result.x - (offset2.left + window.pageXOffset),
-        y: result.y - (offset2.top + window.pageYOffset)
-      };
-    }
-    const { anchor, target, area, viewport, spacing } = options;
-    const clippedArea = clipRect(area, viewport);
-    const candidates = getCandidates(
-      anchor,
-      target,
-      clippedArea,
-      spacing,
-      options.candidateOrder
-    );
-    const index = candidates.findIndex(
-      (it) => isInside(clippedArea, it, spacing)
-    );
-    if (index >= 0) {
-      const match = candidates[index];
-      return { x: match.x, y: match.y, placement: match.placement };
-    }
-    return {
-      ...getFallbackPosition(anchor, target, clippedArea, spacing),
-      placement: "Fallback" /* Fallback */
-    };
-  }
-  function getScrollToPopup(param) {
-    const popupOffset = offset(
-      { pageXOffset: 0, pageYOffset: param.scrollTop },
-      param.popup
-    );
-    const popupHeight = param.popup.offsetHeight;
-    const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
-    if (neededScroll > param.scrollTop) {
-      return neededScroll;
-    } else {
-      return param.scrollTop;
-    }
-  }
-  function getFallbackPosition(anchor, target, clippedArea, spacing) {
-    const x = anchor.x - (target.width + spacing);
-    const y = anchor.y + anchor.height + spacing;
-    if (x >= clippedArea.x) {
-      return {
-        x,
-        y
-      };
-    } else {
-      return {
-        x: clippedArea.x + spacing,
-        y
-      };
-    }
-  }
-
-  // packages/vue/src/internal-components/IPopup/get-container.ts
-  function getContainer(element, prop) {
-    if (prop) {
-      return prop;
-    }
-    const parent = element.closest(".popup__container");
-    if (parent) {
-      return parent;
-    }
-    return config.popupContainer;
-  }
-
-  // packages/vue/src/internal-components/IPopup/get-focusable-element.ts
-  var import_logic14 = __require("@fkui/logic");
-
   // packages/vue/src/utils/ListUtils.ts
   var import_logic2 = __require("@fkui/logic");
 
@@ -3906,7 +3660,253 @@
     }
   }
 
+  // packages/vue/src/utils/get-absolute-position.ts
+  function getAbsolutePosition(src) {
+    if (!src) {
+      return void 0;
+    }
+    const isRoot = src.isSameNode(document.documentElement);
+    if (isRoot) {
+      return {
+        x: window.pageXOffset,
+        y: window.pageYOffset,
+        width: src.clientWidth,
+        height: src.clientHeight
+      };
+    }
+    const rect = src.getBoundingClientRect();
+    return {
+      x: Math.floor(rect.left + window.pageXOffset),
+      y: Math.floor(rect.top + window.pageYOffset),
+      width: Math.floor(rect.width),
+      height: Math.floor(rect.height)
+    };
+  }
+
+  // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
+  function offset(page, el) {
+    const rect = el.getBoundingClientRect();
+    return {
+      top: rect.top + page.pageYOffset,
+      left: rect.left + page.pageXOffset
+    };
+  }
+  function getElement(anchor) {
+    if (!anchor) {
+      return null;
+    }
+    if (typeof anchor === "string") {
+      return document.getElementById(anchor);
+    } else {
+      return anchor;
+    }
+  }
+  function getCandidates(anchor, target, clippedArea, spacing, candidateOrder) {
+    const dw = target.width - anchor.width;
+    const a = {
+      placement: "A" /* A */,
+      x: anchor.x,
+      y: anchor.y + anchor.height + spacing,
+      width: target.width,
+      height: target.height,
+      direction: 1 /* Vertical */
+    };
+    const b = {
+      placement: "B" /* B */,
+      x: anchor.x - dw,
+      y: anchor.y + anchor.height + spacing,
+      width: target.width,
+      height: target.height,
+      direction: 1 /* Vertical */
+    };
+    const c = {
+      placement: "C" /* C */,
+      x: anchor.x,
+      y: anchor.y - target.height - spacing,
+      width: target.width,
+      height: target.height,
+      direction: 1 /* Vertical */
+    };
+    const d = {
+      placement: "D" /* D */,
+      x: anchor.x - dw,
+      y: anchor.y - target.height - spacing,
+      width: target.width,
+      height: target.height,
+      direction: 1 /* Vertical */
+    };
+    const e = {
+      placement: "E" /* E */,
+      x: anchor.x + anchor.width + spacing,
+      y: anchor.y + anchor.height / 2 - target.height / 2,
+      width: target.width,
+      height: target.height,
+      direction: 0 /* Horizontal */
+    };
+    const f = {
+      placement: "F" /* F */,
+      x: anchor.x - (target.width + spacing),
+      y: anchor.y + anchor.height / 2 - target.height / 2,
+      width: target.width,
+      height: target.height,
+      direction: 0 /* Horizontal */
+    };
+    const g = {
+      placement: "G" /* G */,
+      x: anchor.x + anchor.width + spacing,
+      y: clippedArea.y + spacing,
+      width: target.width,
+      height: target.height,
+      direction: 2 /* Both */
+    };
+    const h2 = {
+      placement: "H" /* H */,
+      x: anchor.x - (target.width + spacing),
+      y: clippedArea.y + spacing,
+      width: target.width,
+      height: target.height,
+      direction: 2 /* Both */
+    };
+    const i = {
+      placement: "I" /* I */,
+      x: clippedArea.x + (clippedArea.width - target.width) / 2,
+      y: clippedArea.y + (clippedArea.height - target.height) / 2,
+      width: target.width,
+      height: target.height,
+      direction: 3 /* None */
+    };
+    if (candidateOrder === "IPopupError" /* IPopupError */) {
+      return [b, a, d, c, e, f, f, f, f];
+    } else {
+      return [a, b, c, d, e, f, g, h2, i];
+    }
+  }
+  function isInside(outer, inner, spacing) {
+    const isHorizontalDirection = inner.direction === 0 /* Horizontal */ || inner.direction === 2 /* Both */;
+    const xSpacing = isHorizontalDirection ? spacing : 0;
+    const isVerticalDirection = inner.direction === 1 /* Vertical */ || inner.direction === 2 /* Both */;
+    const ySpacing = isVerticalDirection ? spacing : 0;
+    const ax = [inner.x, inner.x + inner.width];
+    const ay = [inner.y, inner.y + inner.height];
+    const bx = [outer.x + xSpacing, outer.x + outer.width - xSpacing];
+    const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
+    if (ax[0] < bx[0] || ax[1] > bx[1]) {
+      return false;
+    }
+    if (ay[0] < by[0] || ay[1] > by[1]) {
+      return false;
+    }
+    return true;
+  }
+  function isElementOptions(options) {
+    return options.target instanceof HTMLElement;
+  }
+  function clipRect(src, clip) {
+    if (!clip) {
+      return src;
+    }
+    const x = Math.max(src.x, clip.x);
+    const y = Math.max(src.y, clip.y);
+    const width = Math.min(src.x + src.width, clip.x + clip.width) - x;
+    const height = Math.min(src.y + src.height, clip.y + clip.height) - y;
+    return { x, y, width, height };
+  }
+  function fitInsideArea(options) {
+    if (isElementOptions(options)) {
+      const {
+        area: areaElement,
+        anchor: anchorElement,
+        target: targetElement,
+        viewport: viewportElement,
+        spacing: spacing2,
+        candidateOrder
+      } = options;
+      const area2 = getAbsolutePosition(areaElement);
+      const anchor2 = getAbsolutePosition(anchorElement);
+      const target2 = getAbsolutePosition(targetElement);
+      const viewport2 = getAbsolutePosition(viewportElement);
+      const result = fitInsideArea({
+        area: area2,
+        target: target2,
+        anchor: anchor2,
+        viewport: viewport2,
+        spacing: spacing2,
+        candidateOrder
+      });
+      const offset2 = targetElement.offsetParent?.getBoundingClientRect();
+      if (!offset2) {
+        return result;
+      }
+      return {
+        ...result,
+        x: result.x - (offset2.left + window.pageXOffset),
+        y: result.y - (offset2.top + window.pageYOffset)
+      };
+    }
+    const { anchor, target, area, viewport, spacing } = options;
+    const clippedArea = clipRect(area, viewport);
+    const candidates = getCandidates(
+      anchor,
+      target,
+      clippedArea,
+      spacing,
+      options.candidateOrder
+    );
+    const index = candidates.findIndex(
+      (it) => isInside(clippedArea, it, spacing)
+    );
+    if (index >= 0) {
+      const match = candidates[index];
+      return { x: match.x, y: match.y, placement: match.placement };
+    }
+    return {
+      ...getFallbackPosition(anchor, target, clippedArea, spacing),
+      placement: "Fallback" /* Fallback */
+    };
+  }
+  function getScrollToPopup(param) {
+    const popupOffset = offset(
+      { pageXOffset: 0, pageYOffset: param.scrollTop },
+      param.popup
+    );
+    const popupHeight = param.popup.offsetHeight;
+    const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
+    if (neededScroll > param.scrollTop) {
+      return neededScroll;
+    } else {
+      return param.scrollTop;
+    }
+  }
+  function getFallbackPosition(anchor, target, clippedArea, spacing) {
+    const x = anchor.x - (target.width + spacing);
+    const y = anchor.y + anchor.height + spacing;
+    if (x >= clippedArea.x) {
+      return {
+        x,
+        y
+      };
+    } else {
+      return {
+        x: clippedArea.x + spacing,
+        y
+      };
+    }
+  }
+
+  // packages/vue/src/internal-components/IPopup/get-container.ts
+  function getContainer(element, prop) {
+    if (prop) {
+      return prop;
+    }
+    const parent = element.closest(".popup__container");
+    if (parent) {
+      return parent;
+    }
+    return config.popupContainer;
+  }
+
   // packages/vue/src/internal-components/IPopup/get-focusable-element.ts
+  var import_logic14 = __require("@fkui/logic");
   function getFocusableElement(rootElement, callback) {
     if (callback) {
       return callback();

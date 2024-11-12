@@ -14319,6 +14319,27 @@ function _defineProperty(e, r, t) {
     writable: true
   }) : e[r] = t, e;
 }
+function getAbsolutePosition(src) {
+  if (!src) {
+    return void 0;
+  }
+  const isRoot = src.isSameNode(document.documentElement);
+  if (isRoot) {
+    return {
+      x: window.pageXOffset,
+      y: window.pageYOffset,
+      width: src.clientWidth,
+      height: src.clientHeight
+    };
+  }
+  const rect = src.getBoundingClientRect();
+  return {
+    x: Math.floor(rect.left + window.pageXOffset),
+    y: Math.floor(rect.top + window.pageYOffset),
+    width: Math.floor(rect.width),
+    height: Math.floor(rect.height)
+  };
+}
 function getValidatableElement(element) {
   if (isValidatableHTMLElement(element)) {
     return element;
@@ -14524,27 +14545,6 @@ function clipRect(src, clip) {
     y,
     width,
     height
-  };
-}
-function getAbsolutePosition(src) {
-  if (!src) {
-    return void 0;
-  }
-  const isRoot = src.isSameNode(document.documentElement);
-  if (isRoot) {
-    return {
-      x: window.pageXOffset,
-      y: window.pageYOffset,
-      width: src.clientWidth,
-      height: src.clientHeight
-    };
-  }
-  const rect = src.getBoundingClientRect();
-  return {
-    x: Math.floor(rect.left + window.pageXOffset),
-    y: Math.floor(rect.top + window.pageYOffset),
-    width: Math.floor(rect.width),
-    height: Math.floor(rect.height)
   };
 }
 function fitInsideArea(options) {

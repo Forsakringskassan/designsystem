@@ -133,6 +133,7 @@
     findParentByName: () => findParentByName,
     focus: () => focus,
     formModal: () => formModal,
+    getAbsolutePosition: () => getAbsolutePosition,
     getDayEndOffset: () => getDayEndOffset,
     getDayStartOffset: () => getDayStartOffset,
     getElementFromVueRef: () => getElementFromVueRef,
@@ -4183,6 +4184,27 @@
         return null;
     }
   }
+  function getAbsolutePosition(src) {
+    if (!src) {
+      return void 0;
+    }
+    const isRoot = src.isSameNode(document.documentElement);
+    if (isRoot) {
+      return {
+        x: window.pageXOffset,
+        y: window.pageYOffset,
+        width: src.clientWidth,
+        height: src.clientHeight
+      };
+    }
+    const rect = src.getBoundingClientRect();
+    return {
+      x: Math.floor(rect.left + window.pageXOffset),
+      y: Math.floor(rect.top + window.pageYOffset),
+      width: Math.floor(rect.width),
+      height: Math.floor(rect.height)
+    };
+  }
   function getValidatableElement(element) {
     if ((0, import_logic.isValidatableHTMLElement)(element)) {
       return element;
@@ -5187,27 +5209,6 @@
       y,
       width,
       height
-    };
-  }
-  function getAbsolutePosition(src) {
-    if (!src) {
-      return void 0;
-    }
-    const isRoot = src.isSameNode(document.documentElement);
-    if (isRoot) {
-      return {
-        x: window.pageXOffset,
-        y: window.pageYOffset,
-        width: src.clientWidth,
-        height: src.clientHeight
-      };
-    }
-    const rect = src.getBoundingClientRect();
-    return {
-      x: Math.floor(rect.left + window.pageXOffset),
-      y: Math.floor(rect.top + window.pageYOffset),
-      width: Math.floor(rect.width),
-      height: Math.floor(rect.height)
     };
   }
   function fitInsideArea(options) {
