@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-6223c5.json"
+            href="../../search-data-f45594.json"
             as="fetch"
             crossorigin
-            integrity="sha384-zEG1GOSLIIPjrmvQoLM1PotDp3aKmt6fG+rWq08AWzValagq+4tag12Bsk11G2nq"
+            integrity="sha384-5IN0RsvBv+BxGQ3loyUNyZf8XEu/F/4C+221VWp7A+yPUPCSas9d664KixXYFeDE"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/14339b75aa6e6a0bc2994f7894ca0a4b4352944b/packages/vue/src/components/FNavigationMenu/FNavigationMenu.vue">FNavigationMenu</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/ef0bdf8f569111e6713b5a0054f6a6dad22031b9/packages/vue/src/components/FNavigationMenu/FNavigationMenu.vue">FNavigationMenu</a>
             
         </code>
          
@@ -1221,95 +1221,26 @@ Detta kan användas tillsammans med till exempel Vue Router för att navigera ti
                 </div>
             <h2 id="visa_aktiv_sida"><a class="header-anchor" href="#visa_aktiv_sida">Visa aktiv sida</a></h2><p>För att visa aktiv sida behöver du styra det valda menyalternativet programmatiskt med <code>v-model:route</code>.</p>
 <p>När modellen ändras till ett värde som matchar <code>route</code> för en <code>NavigationMenuItem</code> i <code>routes</code> så visas den som vald i menyn.
-Om värdet inte matchar nåt så visas inget alternativ som valt.</p>
-<p>Se nedan exempel där valt menyalternativ kontrolleras med hjälp av ett formulär.</p>
+Om värdet inte matchar nåt så visas istället inget alternativ som valt.</p>
 
-            <div
-                id="example-cffe0b"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="FNavigationMenuActiveRoute"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FNavigationMenuActiveRoute-75c543.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
                 <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
+                    id="example-e95353"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>selectedRoute: {{ selectedRoute }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>availableRoutes: {{ availableRoutes }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;routeInput&quot;</span>
-                <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 20 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;selectedRoute = routeInput&quot;</span>&gt;</span>Go to route<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-navigation-menu</span> <span class="hljs-attr">v-model:route</span>=<span class="hljs-string">&quot;selectedRoute&quot;</span> <span class="hljs-attr">:routes</span>=<span class="hljs-string">&quot;routes&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-navigation-menu</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FNavigationMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FNavigationMenuActiveRoute&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FNavigationMenu</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-comment">/** <span class="hljs-doctag">@type</span> {<span class="hljs-type">NavigationMenuItem[]</span>} */</span>
-            <span class="hljs-attr">routes</span>: [
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label1&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_1&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label2&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_2&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label3&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_3&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label4&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_4&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label5&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_5&quot;</span> },
-            ],
-            <span class="hljs-attr">selectedRoute</span>: <span class="hljs-string">&quot;ROUTE_2&quot;</span>, <span class="hljs-comment">// or this.route.path (from Vue router in setup)</span>
-            <span class="hljs-attr">routeInput</span>: <span class="hljs-string">&quot;ROUTE_3&quot;</span>,
-        };
-    },
-    <span class="hljs-attr">computed</span>: {
-        <span class="hljs-title function_">availableRoutes</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">routes</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">r</span>) =&gt;</span> r.<span class="hljs-property">route</span>).<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-navigation-menu :routes=&quot;routes&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-navigation-menu v-model:route=&quot;currentRoute&quot; :routes=&quot;routes&quot;&gt;</span>
 </code></pre>
                 </div>
-            </div>
-        <h2 id="overflodande_alternativ"><a class="header-anchor" href="#overflodande_alternativ">Överflödande alternativ</a></h2><p>När alla alternativ inte får plats i bredd så placeras de istället i en undermeny (endast för meny utan <code>vertical</code> prop).
+            <h2 id="overflodande_alternativ"><a class="header-anchor" href="#overflodande_alternativ">Överflödande alternativ</a></h2><p>När alla alternativ inte får plats i bredd så placeras de istället i en undermeny (endast för meny utan <code>vertical</code> prop).
 När detta händer placeras ett nytt alternativ i slutet på menyn som öppnar undermenyn.</p>
 <p>Justera fönstrets storlek så att alla alternativ inte får plats för att se överflödesbeteendet.</p>
 
             <div
-                id="example-73a36a"
+                id="example-02d7a0"
                 class="code-preview code-preview--default"
                 
                 
@@ -1437,9 +1368,9 @@ In most use cases the event payload is used to call Vue <code>router.push()</cod
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    menu-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/14339b75aa6e6a0bc2994f7894ca0a4b4352944b">14339b7</a>)<br />
+    menu-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/ef0bdf8f569111e6713b5a0054f6a6dad22031b9">ef0bdf8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/111">PR 111</a><br />
-        2024-11-12 12:41
+        2024-11-12 14:20
 </div>
 <div class="toolbar__item">
     <form id="version">
