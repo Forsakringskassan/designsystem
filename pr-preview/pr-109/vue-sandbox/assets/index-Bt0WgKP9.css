@@ -87,6 +87,23 @@
   --f-button-discrete-black-padding: initial;
   --f-button-discrete-table-column-action-padding: 0.571rem;
   --f-tooltip-close-button-padding: initial;
+  --fkds-color-feedback-background-neutral: #f4f4f4;
+  --fkds-color-feedback-background-neutral-strong: #ddddde;
+  --fkds-color-feedback-background-info: #f5f6fa;
+  --fkds-color-feedback-background-info-strong: #4a52b6;
+  --fkds-color-feedback-background-negative: #fcf3f3;
+  --fkds-color-feedback-background-negative-strong: #ca1515;
+  --fkds-color-feedback-background-positive: #f3f8f5;
+  --fkds-color-feedback-background-positive-strong: #35805b;
+  --fkds-color-feedback-background-warning: #fffcf3;
+  --fkds-color-feedback-background-warning-strong: #ffbe10;
+  --fkds-color-feedback-border-neutral: #8d8e91;
+  --fkds-color-feedback-border-info: #4a52b6;
+  --fkds-color-feedback-border-negative: #ca1515;
+  --fkds-color-feedback-border-positive: #35805b;
+  --fkds-color-feedback-border-warning: #ffbe10;
+  --fkds-color-text-inverted: #ffffff;
+  --fkds-color-text-primary: #1b1e23;
   --f-text-color-default: #1b1e23;
   --f-text-color-default-inverted: #ffffff;
   --f-text-color-discrete: #5f6165;
@@ -3983,7 +4000,6 @@ input[type=search]:focus,
   border-style: solid;
   border-width: var(--f-border-width-small, 1px);
   box-sizing: border-box;
-  color: var(--f-text-color-default, #1b1e23);
   display: inline-block;
   font-size: var(--f-font-size-standard, 1rem);
   line-height: calc(var(--f-line-height-large, 1.5) * var(--f-density-factor, 1));
@@ -3991,47 +4007,54 @@ input[type=search]:focus,
   padding: 0 0.5rem;
 }
 .badge--default {
-  background-color: var(--f-background-badge-default, #ddddde);
-  border-color: var(--f-background-badge-default, #ddddde);
+  color: var(--fkds-color-text-primary, #1b1e23);
+  background-color: var(--fkds-color-feedback-background-neutral-strong, #ddddde);
+  border-color: var(--fkds-color-feedback-background-neutral-strong, #ddddde);
 }
 .badge--default-inverted {
-  background-color: var(--f-background-badge-default-inverted, #f4f4f4);
-  border-color: var(--f-border-color-badge-default, #8d8e91);
+  color: var(--fkds-color-text-primary, #1b1e23);
+  background-color: var(--fkds-color-feedback-background-neutral, #f4f4f4);
+  border-color: var(--fkds-color-feedback-border-neutral, #8d8e91);
 }
 .badge--warning {
-  background-color: var(--f-background-badge-warning, #ffbe10);
-  border-color: var(--f-background-badge-warning, #ffbe10);
+  color: var(--fkds-color-text-primary, #1b1e23);
+  background-color: var(--fkds-color-feedback-background-warning-strong, #ffbe10);
+  border-color: var(--fkds-color-feedback-background-warning-strong, #ffbe10);
 }
 .badge--warning-inverted {
-  background-color: var(--f-background-badge-warning-inverted, #fffcf3);
-  border-color: var(--f-border-color-badge-warning, #ffbe10);
+  color: var(--fkds-color-text-primary, #1b1e23);
+  background-color: var(--fkds-color-feedback-background-warning, #fffcf3);
+  border-color: var(--fkds-color-feedback-border-warning, #ffbe10);
 }
 .badge--error {
-  color: var(--f-text-color-default-inverted, #ffffff);
-  background-color: var(--f-background-badge-error, #ca1515);
-  border-color: var(--f-background-badge-error, #ca1515);
+  color: var(--fkds-color-text-inverted, #ffffff);
+  background-color: var(--fkds-color-feedback-background-negative-strong, #ca1515);
+  border-color: var(--fkds-color-feedback-background-negative-strong, #ca1515);
 }
 .badge--error-inverted {
-  background-color: var(--f-background-badge-error-inverted, #fcf3f3);
-  border-color: var(--f-border-color-badge-error, #ca1515);
+  color: var(--fkds-color-text-primary, #1b1e23);
+  background-color: var(--fkds-color-feedback-background-negative, #fcf3f3);
+  border-color: var(--fkds-color-feedback-border-negative, #ca1515);
 }
 .badge--success {
-  color: var(--f-text-color-default-inverted, #ffffff);
-  background-color: var(--f-background-badge-success, #35805b);
-  border-color: var(--f-background-badge-success, #35805b);
+  color: var(--fkds-color-text-inverted, #ffffff);
+  background-color: var(--fkds-color-feedback-background-positive-strong, #35805b);
+  border-color: var(--fkds-color-feedback-background-positive-strong, #35805b);
 }
 .badge--success-inverted {
-  background-color: var(--f-background-badge-success-inverted, #f3f8f5);
-  border-color: var(--f-border-color-badge-success, #35805b);
+  color: var(--fkds-color-text-primary, #1b1e23);
+  background-color: var(--fkds-color-feedback-background-positive, #f3f8f5);
+  border-color: var(--fkds-color-feedback-border-positive, #35805b);
 }
 .badge--info {
-  color: var(--f-text-color-default-inverted, #ffffff);
-  background-color: var(--f-background-badge-info, #4a52b6);
-  border-color: var(--f-background-badge-info, #4a52b6);
+  color: var(--fkds-color-text-inverted, #ffffff);
+  background-color: var(--fkds-color-feedback-background-info-strong, #4a52b6);
+  border-color: var(--fkds-color-feedback-background-info-strong, #4a52b6);
 }
 .badge--info-inverted {
-  background-color: var(--f-background-badge-info-inverted, #f5f6fa);
-  border-color: var(--f-border-color-badge-info, #4a52b6);
+  color: var(--fkds-color-text-primary, #1b1e23);
+  background-color: var(--fkds-color-feedback-background-info, #f5f6fa);
+  border-color: var(--fkds-color-feedback-border-info, #4a52b6);
 }
 
 .button-group {
