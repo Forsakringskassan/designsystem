@@ -16989,6 +16989,12 @@ export interface FWizardStepDefinition {
     stepNumber: number;
 }
 
+// @internal
+export function getAbsolutePosition(src: HTMLElement): Rect;
+
+// @internal
+export function getAbsolutePosition(src?: HTMLElement): Rect | undefined;
+
 // @public
 export function getDayEndOffset(days: FDate[]): number;
 
@@ -18308,6 +18314,22 @@ export enum Placement {
     "H" = "H",
     "I" = "I",
     "NotCalculated" = "NotCalculated"
+}
+
+// @internal (undocumented)
+export interface Point {
+    // (undocumented)
+    x: number;
+    // (undocumented)
+    y: number;
+}
+
+// @internal (undocumented)
+export interface Rect extends Point {
+    // (undocumented)
+    height: number;
+    // (undocumented)
+    width: number;
 }
 
 // @public

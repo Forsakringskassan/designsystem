@@ -30,3 +30,8 @@ export {
     hasParentByName,
 } from "./parent-by-name";
 export { actionFromKeyboardEvent } from "./action-from-keyboard-event";
+export {
+    type Point,
+    type Rect,
+    getAbsolutePosition,
+} from "./get-absolute-position";
