@@ -34,7 +34,7 @@
     "@vitejs/plugin-vue": "5.1.4",
     "autoprefixer": "10.4.20",
     "html-validate": "8.25.0",
-    "postcss": "8.4.47",
+    "postcss": "8.4.48",
     "vite": "5.4.10"
   },
   "engines": {

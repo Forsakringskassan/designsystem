@@ -33,7 +33,7 @@
     "get-css-variables": "1.0.0",
     "glob": "11.0.0",
     "npm-run-all2": "7.0.1",
-    "postcss": "8.4.47",
+    "postcss": "8.4.48",
     "postcss-scss": "4.0.9",
     "rimraf": "6.0.1",
     "sass": "1.79.5"
