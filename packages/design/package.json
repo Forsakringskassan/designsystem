@@ -44,7 +44,7 @@
     "jest-light-runner": "0.6.0",
     "jest-preset-stylelint": "7.1.0",
     "picocolors": "1.1.1",
-    "postcss": "8.4.48",
+    "postcss": "8.4.49",
     "postcss-url": "10.1.3",
     "postcss-var-func-fallback": "3.0.0",
     "svgo": "3.3.2"
