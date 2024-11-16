@@ -64,6 +64,7 @@
                     @blur="onBlur"
                     @focus="onFocus"
                     @change="onChange"
+                    @validation-config-update="onValidationConfigUpdate"
                     @validity="onValidity"
                     @pending-validity="onPendingValidity"
                 />
@@ -93,7 +94,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, type PropType, useTemplateRef } from "vue";
-import { ElementIdService, isSet, type ValidityEvent } from "@fkui/logic";
+import { ElementIdService, isSet, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FLabel } from "../FLabel";
 import { FIcon } from "../FIcon";
 import { IPopupError } from "../../internal-components/IPopupError";
@@ -347,6 +348,17 @@ export default defineComponent({
         },
         onPendingValidity(): void {
             this.validityMode = "INITIAL";
+        },
+        onValidationConfigUpdate(): void {
+            // technical dept (validation): for some reason nextTick is not enough
+            setTimeout(() => {
+                if (!this.inputRef) {
+                    return;
+                }
+
+                // revalidate field when config is updated
+                ValidationService.validateElement(this.inputRef);
+            }, 100);
         },
         resolveNewModelValue(viewValue: string): unknown {
             const trimmedViewValue = viewValue.trim();
