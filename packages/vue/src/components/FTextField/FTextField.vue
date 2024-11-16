@@ -64,6 +64,7 @@
                     @blur="onBlur"
                     @focus="onFocus"
                     @change="onChange"
+                    @validation-config-update="onValidationConfigUpdate"
                     @validity="onValidity"
                     @pending-validity="onPendingValidity"
                 />
@@ -94,7 +95,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, type PropType } from "vue";
-import { ElementIdService, isSet, type ValidityEvent } from "@fkui/logic";
+import { ElementIdService, isSet, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FLabel } from "../FLabel";
 import { FIcon } from "../FIcon";
 import { IPopupError } from "../../internal-components/IPopupError";
@@ -213,6 +214,7 @@ export default defineComponent({
             lastModelValue: "" as unknown,
             validationMessage: "" as string,
             validityMode: "INITIAL" as string,
+            isAfterInitialRender: false,
 
             // internal default texts possible to override when extending component
             defaultText: "",
@@ -270,11 +272,14 @@ export default defineComponent({
             },
         },
     },
+    beforeUpdate() {
+        this.isAfterInitialRender = true;
+    },
     methods: {
         getErrorPopupAnchor(): HTMLElement {
             return this.$refs.input as HTMLElement;
         },
-        closePopupError() {
+        closePopupError(): void {
             this.showErrorPopup = false;
         },
         async onChange(): Promise<void> {
@@ -350,6 +355,20 @@ export default defineComponent({
         },
         onPendingValidity(): void {
             this.validityMode = "INITIAL";
+        },
+        async onValidationConfigUpdate(): Promise<void> {
+            if (!this.isAfterInitialRender) {
+                return;
+            }
+
+            await this.$nextTick();
+
+            if (!this.$refs.input) {
+                return;
+            }
+
+            // revalidate field when config is updated
+            ValidationService.validateElement(this.$refs.input as HTMLElement);
         },
         resolveNewModelValue(viewValue: string): unknown {
             const trimmedViewValue = viewValue.trim();

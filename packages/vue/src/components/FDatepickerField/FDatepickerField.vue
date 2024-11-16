@@ -116,7 +116,7 @@ import {
 } from "@fkui/logic";
 import { IPopup } from "../../internal-components/IPopup";
 import { TranslationMixin } from "../../plugins";
-import { getInputElement, getHTMLElementFromVueRef, findHTMLElementFromVueRef } from "../../utils";
+import { getInputElement, getHTMLElementFromVueRef } from "../../utils";
 import { FCalendar, FCalendarDay } from "../FCalendar";
 import { FTextField } from "../FTextField";
 import { FIcon } from "../FIcon";
@@ -396,11 +396,6 @@ export default defineComponent({
                 }
 
                 this.maxDate = FDate.fromIso(maxDateConfig.limit.toString());
-            }
-            const element = findHTMLElementFromVueRef(this.$refs.calendarInputs);
-            if (element) {
-                await this.$nextTick();
-                ValidationService.validateAllElements(element);
             }
         },
         isDateEnabled(day: FDate): boolean {
