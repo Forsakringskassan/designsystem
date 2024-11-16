@@ -69,13 +69,12 @@
                 />
                 <f-icon
                     v-if="hasError && textFieldTableMode"
-                    ref="icon"
                     class="text-field__icon input-icon text-field__append-inner text-field__error-popup-icon"
                     name="error"
                 ></f-icon>
                 <i-popup-error
                     v-if="textFieldTableMode"
-                    :anchor="getErrorPopupAnchor()"
+                    :anchor="inputRef"
                     :is-open="showPopupError"
                     :error-message="validationMessage"
                     @close="closePopupError"
@@ -93,7 +92,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, type PropType } from "vue";
+import { defineComponent, inject, type PropType, useTemplateRef } from "vue";
 import { ElementIdService, isSet, type ValidityEvent } from "@fkui/logic";
 import { FLabel } from "../FLabel";
 import { FIcon } from "../FIcon";
@@ -203,6 +202,7 @@ export default defineComponent({
     emits: ["blur", "change", "update", "update:modelValue"],
     setup() {
         return {
+            inputRef: useTemplateRef<HTMLInputElement>("input"),
             textFieldTableMode: inject("textFieldTableMode", false) as boolean,
         };
     },
@@ -271,15 +271,12 @@ export default defineComponent({
         },
     },
     methods: {
-        getErrorPopupAnchor(): HTMLElement {
-            return this.$refs.input as HTMLElement;
-        },
         closePopupError() {
             this.showErrorPopup = false;
         },
         async onChange(): Promise<void> {
             // trigger v-model update when not handled by onValidity event
-            if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
+            if (!this.inputRef?.hasAttribute("data-validation")) {
                 /* V-model event.
                  * @event update:modelValue
                  * @type {string}
@@ -307,12 +304,12 @@ export default defineComponent({
         async onBlur(): Promise<void> {
             this.showErrorPopup = false;
             // blur event can be triggered when unmounted, check ref existance
-            if (!this.$refs.input) {
+            if (!this.inputRef) {
                 return;
             }
 
             // trigger v-model update when not handled by onValidity event
-            if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
+            if (!this.inputRef.hasAttribute("data-validation")) {
                 this.$emit("update:modelValue", this.viewValue);
                 this.$emit("update", this.viewValue);
                 await this.$nextTick(); // wait for model update before triggering blur event

@@ -780,6 +780,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -802,7 +803,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -1165,6 +1165,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -1187,7 +1188,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -2058,6 +2058,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -2080,7 +2081,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -4024,6 +4024,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -4046,7 +4047,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -4990,6 +4990,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -5012,7 +5013,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -5675,6 +5675,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -5697,7 +5698,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -10325,6 +10325,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -10347,7 +10348,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -10873,6 +10873,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -10895,7 +10896,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -11553,6 +11553,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -11575,7 +11576,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -11957,6 +11957,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -11979,7 +11980,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -12399,6 +12399,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -12421,7 +12422,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -12777,6 +12777,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -12799,7 +12800,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -13164,6 +13164,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -13186,7 +13187,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -13852,6 +13852,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -13874,7 +13875,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -14800,6 +14800,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -14822,7 +14823,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
@@ -15730,6 +15730,7 @@ required: false;
 default: string;
 };
 }>, {
+inputRef: Readonly<ShallowRef<HTMLInputElement | null>>;
 textFieldTableMode: boolean;
 }, {
 showErrorPopup: boolean;
@@ -15752,7 +15753,6 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
-getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
 onFocus(): void;
