@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -321,7 +321,7 @@
     return typeof argument == "function";
   };
   var isCallable$9 = isCallable$a;
-  var isObject$8 = function(it) {
+  var isObject$7 = function(it) {
     return typeof it == "object" ? it !== null : isCallable$9(it);
   };
   var globalThis$i = globalThis_1;
@@ -403,13 +403,13 @@
   };
   var call$2 = functionCall;
   var isCallable$5 = isCallable$a;
-  var isObject$7 = isObject$8;
+  var isObject$6 = isObject$7;
   var $TypeError$6 = TypeError;
   var ordinaryToPrimitive$1 = function(input, pref) {
     var fn2, val;
-    if (pref === "string" && isCallable$5(fn2 = input.toString) && !isObject$7(val = call$2(fn2, input))) return val;
-    if (isCallable$5(fn2 = input.valueOf) && !isObject$7(val = call$2(fn2, input))) return val;
-    if (pref !== "string" && isCallable$5(fn2 = input.toString) && !isObject$7(val = call$2(fn2, input))) return val;
+    if (pref === "string" && isCallable$5(fn2 = input.toString) && !isObject$6(val = call$2(fn2, input))) return val;
+    if (isCallable$5(fn2 = input.valueOf) && !isObject$6(val = call$2(fn2, input))) return val;
+    if (pref !== "string" && isCallable$5(fn2 = input.toString) && !isObject$6(val = call$2(fn2, input))) return val;
     throw new $TypeError$6("Can't convert object to primitive value");
   };
   var sharedStore = {
@@ -479,7 +479,7 @@
     return WellKnownSymbolsStore[name];
   };
   var call$1 = functionCall;
-  var isObject$6 = isObject$8;
+  var isObject$5 = isObject$7;
   var isSymbol$1 = isSymbol$2;
   var getMethod = getMethod$1;
   var ordinaryToPrimitive = ordinaryToPrimitive$1;
@@ -487,13 +487,13 @@
   var $TypeError$5 = TypeError;
   var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
   var toPrimitive$2 = function(input, pref) {
-    if (!isObject$6(input) || isSymbol$1(input)) return input;
+    if (!isObject$5(input) || isSymbol$1(input)) return input;
     var exoticToPrim = getMethod(input, TO_PRIMITIVE);
     var result;
     if (exoticToPrim) {
       if (pref === void 0) pref = "default";
       result = call$1(exoticToPrim, input, pref);
-      if (!isObject$6(result) || isSymbol$1(result)) return result;
+      if (!isObject$5(result) || isSymbol$1(result)) return result;
       throw new $TypeError$5("Can't convert object to primitive value");
     }
     if (pref === void 0) pref = "number";
@@ -506,9 +506,9 @@
     return isSymbol(key) ? key : key + "";
   };
   var globalThis$b = globalThis_1;
-  var isObject$5 = isObject$8;
+  var isObject$4 = isObject$7;
   var document$1 = globalThis$b.document;
-  var EXISTS$1 = isObject$5(document$1) && isObject$5(document$1.createElement);
+  var EXISTS$1 = isObject$4(document$1) && isObject$4(document$1.createElement);
   var documentCreateElement = function(it) {
     return EXISTS$1 ? document$1.createElement(it) : {};
   };
@@ -550,11 +550,11 @@
       writable: false
     }).prototype !== 42;
   });
-  var isObject$4 = isObject$8;
+  var isObject$3 = isObject$7;
   var $String$1 = String;
   var $TypeError$4 = TypeError;
   var anObject$2 = function(argument) {
-    if (isObject$4(argument)) return argument;
+    if (isObject$3(argument)) return argument;
     throw new $TypeError$4($String$1(argument) + " is not an object");
   };
   var DESCRIPTORS$5 = descriptors;
@@ -613,12 +613,8 @@
   var FunctionPrototype = Function.prototype;
   var getDescriptor = DESCRIPTORS$3 && Object.getOwnPropertyDescriptor;
   var EXISTS = hasOwn$4(FunctionPrototype, "name");
-  var PROPER = EXISTS && function something() {
-  }.name === "something";
   var CONFIGURABLE = EXISTS && (!DESCRIPTORS$3 || DESCRIPTORS$3 && getDescriptor(FunctionPrototype, "name").configurable);
   var functionName = {
-    EXISTS,
-    PROPER,
     CONFIGURABLE
   };
   var uncurryThis$7 = functionUncurryThis;
@@ -644,7 +640,6 @@
   var hiddenKeys$3 = {};
   var NATIVE_WEAK_MAP = weakMapBasicDetection;
   var globalThis$9 = globalThis_1;
-  var isObject$3 = isObject$8;
   var createNonEnumerableProperty$1 = createNonEnumerableProperty$2;
   var hasOwn$3 = hasOwnProperty_1;
   var shared = sharedStoreExports;
@@ -658,15 +653,6 @@
   var has;
   var enforce = function(it) {
     return has(it) ? get(it) : set(it, {});
-  };
-  var getterFor = function(TYPE) {
-    return function(it) {
-      var state;
-      if (!isObject$3(it) || (state = get(it)).type !== TYPE) {
-        throw new TypeError$2("Incompatible receiver, " + TYPE + " required");
-      }
-      return state;
-    };
   };
   if (NATIVE_WEAK_MAP || shared.state) {
     store = shared.state || (shared.state = new WeakMap$2());
@@ -704,11 +690,8 @@
   var store;
   var STATE;
   var internalState = {
-    set,
     get,
-    has,
-    enforce,
-    getterFor
+    enforce
   };
   var uncurryThis$6 = functionUncurryThis;
   var fails$3 = fails$a;
@@ -846,9 +829,6 @@
     };
   };
   var arrayIncludes = {
-    // `Array.prototype.includes` method
-    // https://tc39.es/ecma262/#sec-array.prototype.includes
-    includes: createMethod(true),
     // `Array.prototype.indexOf` method
     // https://tc39.es/ecma262/#sec-array.prototype.indexof
     indexOf: createMethod(false)
@@ -2640,7 +2620,6 @@
     return FKUIConfigButtonOrder2;
   })(FKUIConfigButtonOrder || {});
   var popupContainer = document.body;
-  var production = true;
   var config = {
     buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
     teleportTarget: document.body,
@@ -2659,13 +2638,6 @@
     },
     set popupContainer(value) {
       popupContainer = value;
-    },
-    set production(value) {
-      production = value;
-      import_logic.configLogic.production = value;
-    },
-    get production() {
-      return production;
     }
   };
   function setRunningContext(app) {
