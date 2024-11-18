@@ -1,282 +1,339 @@
-import { defineComponent } from "vue";
-import {
-    IMenuPageObject,
-    IPopupMenuPageObject,
-    FNavigationMenuPageobject,
-} from "../../pageobject";
+import { type DefineComponent, defineComponent } from "vue";
+import { FNavigationMenuPageobject } from "../../pageobject";
 import FNavigationMenu from "./FNavigationMenu.vue";
 
-// The viewport size has been adjusted to display 7 menu items out of 10.
-// The remaining 3 items are displayed in the popup menu that is shown after clicking on "Mer"
-const viewportLarge = { width: 700, height: 500 };
+const navMenu = new FNavigationMenuPageobject();
+const popupMenu = navMenu.popupMenu();
 
-// The viewport size has been adjusted to display 4 menu items out of 10.
-// The remaining 6 items are displayed in the popup menu that is shown after clicking on "Mer"
-const viewportSmall = { width: 500, height: 500 };
+const VIEWPORT = {
+    // Wide enough for no items to overflow.
+    NO_OVERFLOW: { width: 1024, height: 600 },
+    // 3 items overflowing (8 visible items).
+    LOW_OVERFLOW: { width: 700, height: 600 },
+    // 6 items overflowing (2 visible items).
+    HIGH_OVERFLOW: { width: 200, height: 600 },
+};
 
-const testDataWith5Routes = [
+function setViewport(viewport: { height: number; width: number }): void {
+    cy.viewport(viewport.width, viewport.height);
+}
+
+const testRoutes = [
     { label: "label #1", route: "ROUTE_1" },
     { label: "label #2", route: "ROUTE_2" },
     { label: "label #3", route: "ROUTE_3" },
-    { label: "label #4", route: "ROUTE_4", href: "#href-4", target: "_blank" }, // Menu item with href
+    { label: "label #4", route: "ROUTE_4", href: "#href-4", target: "_blank" },
     { label: "label #5", route: "ROUTE_5" },
-];
-
-const testDataWith10Routes = [
-    testDataWith5Routes[0],
-    testDataWith5Routes[1],
-    testDataWith5Routes[2],
-    testDataWith5Routes[3],
-    testDataWith5Routes[4],
     { label: "label #6", route: "ROUTE_6" },
     { label: "label #7", route: "ROUTE_7" },
-    { label: "label #8", route: "ROUTE_8" }, // overflow, will be in popup menu
+    { label: "label #8", route: "ROUTE_8" },
     { label: "label #9", route: "ROUTE_9" },
-    { label: "label #10", route: "ROUTE_10", href: "#href-10" }, // Popup menu with href
+    { label: "label #10", route: "ROUTE_10", href: "#href-10" },
 ];
 
-const TestComponentTemplate = /* HTML */ `
-    <div>
+const modelRouteId = '[data-testid="modelRoute"]';
+const selectedRouteId = '[data-testid="selectedRoute"]';
+
+const defaultTemplate = /* HTML */ `
+    <div style="min-height:95vh">
         <f-navigation-menu
+            v-model:route="route"
             :routes="routes"
             @selectedRoute="selectedRoute = $event"
         />
         <div>
+            <span data-testid="modelRoute"> {{ route }} </span>
             <span data-testid="selectedRoute"> {{ selectedRoute }} </span>
         </div>
     </div>
 `;
 
-const selectedRouteDataTestid = '[data-testid="selectedRoute"]';
-
-const TestComponent1 = defineComponent({
-    template: TestComponentTemplate,
-    components: {
-        FNavigationMenu,
-    },
-    data() {
-        return {
-            routes: testDataWith5Routes,
-            selectedRoute: "",
-        };
-    },
-});
-
-const TestComponent2 = defineComponent({
-    template: TestComponentTemplate,
-    components: {
-        FNavigationMenu,
-    },
-    data() {
-        return {
-            routes: testDataWith10Routes,
-            selectedRoute: "",
-        };
-    },
-});
-
-beforeEach(() => {
-    // Set viewport width and height to 700 x 500 px
-    cy.viewport(viewportLarge.width, viewportLarge.height);
-});
-
-function mountTC1AndGetPageObject(): FNavigationMenuPageobject {
-    cy.mount(TestComponent1);
-    return new FNavigationMenuPageobject("nav");
+function createComponent(template = defaultTemplate): DefineComponent {
+    return defineComponent({
+        template,
+        components: {
+            FNavigationMenu,
+        },
+        data() {
+            return {
+                routes: testRoutes,
+                route: "",
+                selectedRoute: "",
+            };
+        },
+    });
 }
 
-function mountTC2AndGetPageObject(): FNavigationMenuPageobject {
-    cy.mount(TestComponent2);
-    return new FNavigationMenuPageobject("nav");
-}
+describe("on resize", () => {
+    it("items that overflow should be hidden", () => {
+        setViewport(VIEWPORT.NO_OVERFLOW);
+        cy.mount(createComponent());
 
-describe("pageobjects", () => {
-    describe("without overflow", () => {
-        it("should be visible and contain 5 items", () => {
-            const navMenu = mountTC1AndGetPageObject();
-            navMenu.el().should("to.exist");
-            const menuPageObj: IMenuPageObject = navMenu.menu();
-            // should contain 5 menu items
-            menuPageObj.items().should("have.length", 5);
-            menuPageObj.item(0).should("contain.text", "label #1");
-            menuPageObj.item(4).should("contain.text", "label #5");
-        });
+        navMenu.items().should("have.length", 10);
+        navMenu.overflowItems().should("have.length", 0);
 
-        it("should return the selected item after click", () => {
-            const navMenu = mountTC1AndGetPageObject();
-            const menuPageObj: IMenuPageObject = navMenu.menu();
-            menuPageObj.item(0).click();
-            menuPageObj.getSelectedItem().should("contain.text", "label #1");
-        });
+        setViewport(VIEWPORT.LOW_OVERFLOW);
+        navMenu.items().should("have.length", 8);
+        navMenu.overflowItems().should("have.length", 3);
     });
 
-    describe("with overflow", () => {
-        it("should be visible and contain 8 items", () => {
-            const navMenu = mountTC2AndGetPageObject();
-            navMenu.el().should("to.exist");
-            const menuPageObj: IMenuPageObject = navMenu.menu();
-            // should contain 8 menu items. 7 labels + one "Mer" menu item
-            menuPageObj.items().should("have.length", 8);
-            menuPageObj.item(0).should("contain.text", "label #1");
-            // overflow happens at item index 7 with label "label #8"
-            menuPageObj.item(7).should("contain.text", "Mer");
-        });
+    it("items that are no longer overflowing should become visible", () => {
+        setViewport(VIEWPORT.LOW_OVERFLOW);
+        cy.mount(createComponent());
 
-        it("should be visible after click on 'Mer' and contain 3 items", () => {
-            const navMenu = mountTC2AndGetPageObject();
-            const menuPageObj: IMenuPageObject = navMenu.menu();
-            menuPageObj.el().should("to.exist");
-            menuPageObj.items().should("have.length", 8);
-            menuPageObj
-                .item(7)
-                .should("contain.text", "Mer")
-                .click({ force: true });
-            const popupMenuPageObj: IPopupMenuPageObject = navMenu.popupMenu();
-            popupMenuPageObj.el().should("to.exist");
-            popupMenuPageObj.items().should("have.length", 3);
-        });
+        navMenu.items().should("have.length", 8);
+        navMenu.overflowItems().should("have.length", 3);
+
+        setViewport(VIEWPORT.NO_OVERFLOW);
+        navMenu.items().should("have.length", 10);
+        navMenu.overflowItems().should("have.length", 0);
+    });
+
+    it("should show popup item if menu has overflowing items", () => {
+        setViewport(VIEWPORT.LOW_OVERFLOW);
+        cy.mount(createComponent());
+        navMenu.popupItem().should("exist");
+    });
+
+    it("should not show popup item if no items are overflowing", () => {
+        setViewport(VIEWPORT.NO_OVERFLOW);
+        cy.mount(createComponent());
+        navMenu.popupItem().should("not.exist");
+    });
+
+    it("should not overflow if `vertical` is used", () => {
+        setViewport(VIEWPORT.HIGH_OVERFLOW);
+        const template = /* HTML */ `
+            <div style="min-height: 95vh">
+                <f-navigation-menu :routes="routes" vertical />
+            </div>
+        `;
+        cy.mount(createComponent(template));
+
+        navMenu.items().should("have.length", 10);
+        navMenu.overflowItems().should("have.length", 0);
+        navMenu.popupItem().should("not.exist");
     });
 });
 
-describe("tests", () => {
-    it("should emit selectedRoute on selected item menu", () => {
-        const navMenu = mountTC2AndGetPageObject();
-        const menuPageObj: IMenuPageObject = navMenu.menu();
-        menuPageObj.item(0).click();
-        cy.get(selectedRouteDataTestid).should("have.text", "ROUTE_1");
+describe("on select item", () => {
+    beforeEach(() => {
+        setViewport(VIEWPORT.LOW_OVERFLOW);
     });
 
-    it("should change href on click link", () => {
-        const navMenu = mountTC2AndGetPageObject();
-        const menuPageObj: IMenuPageObject = navMenu.menu();
-        menuPageObj
-            .getItemLink(3)
-            .should("contain.text", "label #4")
-            .should("have.attr", "href", "#href-4");
+    it("should emit selectedRoute", () => {
+        cy.mount(createComponent());
+        cy.get(selectedRouteId).should("have.text", "");
+        navMenu.item(0).click();
+        cy.get(selectedRouteId).should("have.text", "ROUTE_1");
     });
 
-    it("should have target on link with target", () => {
-        const navMenu = mountTC2AndGetPageObject();
-        const menuPageObj: IMenuPageObject = navMenu.menu();
-        menuPageObj.getItemLink(3).should("have.attr", "target", "_blank");
+    it("should emit selectedRoute when item is selected in popup menu", () => {
+        cy.mount(createComponent());
+        navMenu.popupItem().click();
+        popupMenu.item(0).click();
+        cy.get(selectedRouteId).should("have.text", "ROUTE_8");
     });
 
-    it("should emit selectedRoute on selected item from popupmenu", () => {
-        const navMenu = mountTC2AndGetPageObject();
-        const menuPageObj: IMenuPageObject = navMenu.menu();
-        menuPageObj.el().should("to.exist");
-        // Give the component time to redraw (it will replace item label #8 with "Mer") because of overflow
-        menuPageObj.items().should("have.length", 8);
-        // click on "Mer"
-        menuPageObj
-            .item(7)
-            .should("contain.text", "Mer")
-            .click({ force: true });
-        const popupMenuPageObj: IPopupMenuPageObject = navMenu.popupMenu();
-        // click on first item inside popupmenu
-        popupMenuPageObj.items().should("have.length", 3);
-        popupMenuPageObj
-            .item(0)
-            .should("contain.text", "label #8")
-            .click({ force: true });
-        cy.get(selectedRouteDataTestid).should("have.text", "ROUTE_8");
+    it("should update route v-model", () => {
+        cy.mount(createComponent());
+        cy.get(modelRouteId).should("have.text", "");
+        navMenu.item(0).click();
+        cy.get(modelRouteId).should("have.text", "ROUTE_1");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- technical debt: flaky test */
-    it.skip("should highlight selected item in menu", () => {
-        const navMenu = mountTC2AndGetPageObject();
-        const menuPageObj: IMenuPageObject = navMenu.menu();
-        menuPageObj
-            .getItemLink(5)
-            .should("not.have.class", "imenu__list__anchor--highlight");
-        menuPageObj.getItemLink(5).click();
-        menuPageObj
-            .getItemLink(5)
-            .should("have.class", "imenu__list__anchor--highlight");
+    it("should update route v-model when item is selected in popup menu", () => {
+        cy.mount(createComponent());
+        navMenu.popupItem().click();
+        popupMenu.item(0).click();
+        cy.get(modelRouteId).should("have.text", "ROUTE_8");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- technical debt: flaky test */
-    it.skip("should highlight selected item in popup-menu", () => {
-        const navMenu = mountTC2AndGetPageObject();
-        const menuPageObj: IMenuPageObject = navMenu.menu();
-        const popupMenuPageObj: IPopupMenuPageObject = navMenu.popupMenu();
-        //Wait on more-menu to settle
-        menuPageObj.getItemLink(7).should("contain.text", "Mer");
-
-        //More-menu should not be highlighted
-        menuPageObj
-            .getItemLink(7)
-            .should("not.have.class", "imenu__list__anchor--highlight");
-
-        //Select item in popupmenu
-        menuPageObj.getItemLink(7).click();
-        popupMenuPageObj
-            .item(1)
-            .should("not.have.class", "ipopupmenu__list__item--highlight");
-        popupMenuPageObj.item(1).click();
-
-        //More-menu should be highlighted
-        menuPageObj
-            .getItemLink(7)
-            .should("have.class", "imenu__list__anchor--highlight");
-
-        //Selected item in popupmenu should be highlighted
-        menuPageObj.getItemLink(7).click();
-        popupMenuPageObj
-            .item(1)
-            .should("have.class", "ipopupmenu__list__item--highlight");
+    it("should highlight selected item", () => {
+        cy.mount(createComponent());
+        navMenu
+            .item(5)
+            .should("not.have.class", "imenu__list__item--highlight");
+        navMenu.item(5).click();
+        navMenu.item(5).should("have.class", "imenu__list__item--highlight");
     });
 
-    it("should keep highlighted item when moved from menu to popup-menu", () => {
-        const navMenu = mountTC2AndGetPageObject();
-        const menuPageObj: IMenuPageObject = navMenu.menu();
-        //Wait on more-menu to settle
-        menuPageObj.getItemLink(7).should("contain.text", "Mer");
+    it("should highlight popup item when an item in popup menu is selected", () => {
+        cy.mount(createComponent());
+        navMenu
+            .popupItem()
+            .should("not.have.class", "imenu__list__item--highlight");
+        navMenu.popupItem().click();
+        popupMenu.item(0).click();
+        navMenu
+            .popupItem()
+            .should("have.class", "imenu__list__item--highlight");
+    });
 
-        // Select item in menu
-        menuPageObj.getItemLink(5).click();
+    it("should highlight selected item in popup menu", () => {
+        cy.mount(createComponent());
 
-        //Resize to move selected item to popupmenu
-        cy.viewport(viewportSmall.width, viewportSmall.height);
+        // Select item in popup menu.
+        navMenu.popupItem().click();
+        popupMenu.item(0).click();
 
-        //More menu should be highlited
-        menuPageObj.getItemLink(5).should("contain.text", "Mer");
-        menuPageObj
-            .getItemLink(5)
-            .should("have.class", "imenu__list__anchor--highlight");
-
-        // selected item should still be highlighted (now in popupmenu)
-        menuPageObj.getItemLink(5).click();
-        const popupMenuPageObj: IPopupMenuPageObject = navMenu.popupMenu();
-        popupMenuPageObj
+        // Reopen popup menu (selected item should be highlighted).
+        navMenu.popupItem().click();
+        popupMenu
             .item(0)
             .should("have.class", "ipopupmenu__list__item--highlight");
     });
 
-    it("should keep highlighted item when moved from popup-menu to menu", () => {
-        const navMenu = mountTC2AndGetPageObject();
-        cy.viewport(viewportSmall.width, viewportSmall.height);
-        const menuPageObj: IMenuPageObject = navMenu.menu();
-        const popupMenuPageObj: IPopupMenuPageObject = navMenu.popupMenu();
+    it("should still be highlighted when moved from menu to popup menu", () => {
+        cy.mount(createComponent());
 
-        //Wait on more-menu to settle
-        menuPageObj.getItemLink(5).should("contain.text", "Mer");
+        // Select an item.
+        navMenu.item(5).click();
+        navMenu.item(5).should("have.class", "imenu__list__item--highlight");
 
-        // Select item in popupmenu
-        menuPageObj.getItemLink(5).click();
-        popupMenuPageObj.item(0).click();
+        // Resize to move selected item to popup menu (popup item should be highlighted).
+        setViewport(VIEWPORT.HIGH_OVERFLOW);
+        navMenu.items().should("have.length", 2);
+        navMenu
+            .popupItem()
+            .should("have.class", "imenu__list__item--highlight");
 
-        //More menu should be highlited
-        menuPageObj
-            .getItemLink(5)
-            .should("have.class", "imenu__list__anchor--highlight");
+        // Selected item should still be highlighted (now in popup menu).
+        navMenu.popupItem().click();
+        popupMenu
+            .item(4)
+            .should("have.class", "ipopupmenu__list__item--highlight");
+    });
 
-        //Resize to move selected item from popupmenu to menu
-        cy.viewport(viewportLarge.width, viewportLarge.height);
+    it("should still be highlighted when moved from popup menu to menu", () => {
+        setViewport(VIEWPORT.HIGH_OVERFLOW);
+        cy.mount(createComponent());
 
-        // selected item should still be highlighted (now in menu)
-        menuPageObj
-            .getItemLink(5)
-            .should("have.class", "imenu__list__anchor--highlight");
+        // Select an item in popup menu (should highlight popup item).
+        navMenu.popupItem().click();
+        popupMenu.item(4).click();
+        navMenu
+            .popupItem()
+            .should("have.class", "imenu__list__item--highlight");
+
+        // Resize to move selected item from popup menu to menu.
+        setViewport(VIEWPORT.LOW_OVERFLOW);
+        navMenu.items().should("have.length", 8);
+        navMenu.item(5).should("have.class", "imenu__list__item--highlight");
+    });
+});
+
+describe("on key pressed", () => {
+    beforeEach(() => {
+        setViewport(VIEWPORT.LOW_OVERFLOW);
+        cy.mount(createComponent());
+        navMenu.itemLink(0).should("be.visible");
+        navMenu.itemLink(0).focus();
+        navMenu.itemLink(0).should("have.focus");
+    });
+
+    it("should move focus with arrow keys", () => {
+        cy.focused().trigger("keydown", { key: "ArrowRight" });
+        navMenu.itemLink(1).should("have.focus");
+
+        cy.focused().trigger("keydown", { key: "ArrowLeft" });
+        navMenu.itemLink(0).should("have.focus");
+
+        cy.focused().trigger("keydown", { key: "ArrowDown" });
+        navMenu.itemLink(1).should("have.focus");
+
+        cy.focused().trigger("keydown", { key: "ArrowUp" });
+        navMenu.itemLink(0).should("have.focus");
+    });
+
+    it("should move focus with tab", () => {
+        cy.focused().trigger("keydown", { key: "Tab" });
+        navMenu.itemLink(1).should("have.focus");
+
+        cy.focused().trigger("keydown", { key: "Tab", shiftKey: true });
+        navMenu.itemLink(0).should("have.focus");
+    });
+
+    it("should wrap focus with arrow keys", () => {
+        cy.focused().trigger("keydown", { key: "ArrowLeft" });
+        navMenu.itemLink(7).should("have.focus");
+
+        cy.focused().trigger("keydown", { key: "ArrowRight" });
+        navMenu.itemLink(0).should("have.focus");
+
+        cy.focused().trigger("keydown", { key: "ArrowUp" });
+        navMenu.itemLink(7).should("have.focus");
+
+        cy.focused().trigger("keydown", { key: "ArrowDown" });
+        navMenu.itemLink(0).should("have.focus");
+    });
+
+    it("should select item with spacebar", () => {
+        cy.focused().trigger("keydown", { key: "Spacebar" });
+        cy.get(selectedRouteId).should("have.text", "ROUTE_1");
+        cy.get(modelRouteId).should("have.text", "ROUTE_1");
+    });
+
+    it("should select item with enter", () => {
+        cy.focused().trigger("keydown", { key: "Enter" });
+        cy.get(selectedRouteId).should("have.text", "ROUTE_1");
+        cy.get(modelRouteId).should("have.text", "ROUTE_1");
+    });
+
+    it("should toggle popup when popup item is selected", () => {
+        cy.focused().trigger("keydown", { key: "ArrowLeft" });
+        navMenu.itemLink(7).should("have.focus");
+
+        cy.focused().trigger("keydown", { key: "Spacebar" });
+        popupMenu.el().should("exist");
+
+        cy.focused().trigger("keydown", { key: "Spacebar" });
+        popupMenu.el().should("not.exist");
+
+        cy.focused().trigger("keydown", { key: "Enter" });
+        popupMenu.el().should("exist");
+
+        cy.focused().trigger("keydown", { key: "Enter" });
+        popupMenu.el().should("not.exist");
+    });
+
+    describe("when focusing popup item and popup menu is open", () => {
+        beforeEach(() => {
+            // Move focus to popup item and open popup menu.
+            navMenu.itemLink(7).focus();
+            navMenu.itemLink(7).should("have.focus");
+            cy.focused().trigger("keydown", { key: "Spacebar" });
+            popupMenu.el().should("exist");
+        });
+
+        it("should move focus to first item in popup menu on arrow down", () => {
+            cy.focused().trigger("keydown", { key: "ArrowDown" });
+            popupMenu.getItemLink(0).should("have.focus");
+        });
+
+        it("should move focus to first item in popup menu on tab", () => {
+            cy.focused().trigger("keydown", { key: "Tab" });
+            popupMenu.getItemLink(0).should("have.focus");
+        });
+
+        it("should move focus to last item in popup menu on arrow up", () => {
+            cy.focused().trigger("keydown", { key: "ArrowUp" });
+            popupMenu.getItemLink(2).should("have.focus");
+        });
+
+        it("should close popup on arrow left", () => {
+            cy.focused().trigger("keydown", { key: "ArrowLeft" });
+            popupMenu.el().should("not.exist");
+        });
+
+        it("should close popup on arrow right", () => {
+            cy.focused().trigger("keydown", { key: "ArrowRight" });
+            popupMenu.el().should("not.exist");
+        });
+
+        it("should close popup on tab to previous", () => {
+            cy.focused().trigger("keydown", { key: "Tab", shiftKey: true });
+            popupMenu.el().should("not.exist");
+        });
     });
 });

@@ -56,7 +56,12 @@ export {
     FFormModalAction,
     FModal,
 } from "./FModal";
-export * from "./FNavigationMenu";
+export {
+    type FNavigationMenuData,
+    type MenuItem,
+    type NavigationMenuItem,
+    FNavigationMenu,
+} from "./FNavigationMenu";
 export * from "./FOffline";
 export * from "./FOutputField";
 export * from "./FPageHeader";

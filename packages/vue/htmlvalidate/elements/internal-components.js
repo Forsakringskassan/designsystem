@@ -209,7 +209,8 @@ module.exports = defineMetadata({
             },
         },
     },
-    "i-menu": {
+
+    "i-popup-menu": {
         flow: true,
         interactive: true,
         permittedContent: [],
@@ -218,16 +219,6 @@ module.exports = defineMetadata({
             items: {
                 required: true,
             },
-            vertical: {
-                boolean: true,
-                required: false,
-            },
-        },
-    },
-
-    "i-popup-menu": {
-        inherit: "i-menu",
-        attributes: {
             "is-open": {
                 boolean: true,
                 required: true,

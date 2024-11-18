@@ -28,8 +28,9 @@
                         tabindex="0"
                     >
                         <span v-if="isSelected(index)" class="sr-only">
-                            <span>{{ selectedMenuItemScreenReaderText }}&nbsp;</span> </span
-                        >{{ item.label }} <f-icon v-if="item.iconRight" :name="item.iconRight" />
+                            <span>{{ selectedMenuItemScreenReaderText }}&nbsp;</span>
+                        </span>
+                        {{ item.label }}
                     </a>
                 </li>
             </ul>
@@ -40,9 +41,8 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { focus } from "@fkui/logic";
-import { FIcon } from "../../components/FIcon";
 import { IPopup } from "../IPopup";
-import { type IMenuItem } from "../IMenu";
+import { type MenuItem } from "../../components";
 import { actionFromKeyboardEvent, getSortedHTMLElementsFromVueRef } from "../../utils";
 import { doMenuAction } from "./ipopupmenu-logic";
 
@@ -50,7 +50,7 @@ const preventKeys: string[] = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Hom
 
 export default defineComponent({
     name: "IPopupMenu",
-    components: { FIcon, IPopup },
+    components: { IPopup },
     props: {
         /**
          * Key of the currently selected and highlighted item.
@@ -91,7 +91,7 @@ export default defineComponent({
          * The items to be diplayed in the menu
          */
         items: {
-            type: Array as PropType<IMenuItem[]>,
+            type: Array as PropType<MenuItem[]>,
             required: true,
         },
         /**
@@ -203,7 +203,7 @@ export default defineComponent({
         focusElement(): HTMLElement | null {
             return null;
         },
-        findItemByKey(key: string): IMenuItem | undefined {
+        findItemByKey(key: string): MenuItem | undefined {
             return this.items.find((it) => it.key === key);
         },
         indexOfItemByKey(key: string): number {
@@ -213,7 +213,7 @@ export default defineComponent({
             }
             return this.items.indexOf(item);
         },
-        async onClickItem(item: IMenuItem, doClick: boolean = false): Promise<void> {
+        async onClickItem(item: MenuItem, doClick: boolean = false): Promise<void> {
             if (item.key !== this.lastSelectedItem) {
                 this.$emit("update:modelValue", item.key);
                 this.$emit("select", item.key);
@@ -227,7 +227,7 @@ export default defineComponent({
                 anchors[this.currentFocusedItemIndex]?.click();
             }
         },
-        itemClasses(item: IMenuItem): string[] {
+        itemClasses(item: MenuItem): string[] {
             const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
             return ["ipopupmenu__list__item", ...highlight];
         },

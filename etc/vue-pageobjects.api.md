@@ -480,13 +480,18 @@ export class FModalPageObject implements BasePageObject {
 
 // @public
 export class FNavigationMenuPageobject implements BasePageObject {
-    constructor(selector: string);
+    constructor(selector?: string);
     // (undocumented)
     el(): DefaultCypressChainable;
-    // (undocumented)
+    item(index: number): DefaultCypressChainable;
+    itemLink(index: number): DefaultCypressChainable;
+    items(): DefaultCypressChainable;
+    // @deprecated
     menu(): IMenuPageObject;
-    // (undocumented)
+    overflowItems(): DefaultCypressChainable;
+    popupItem(): DefaultCypressChainable;
     popupMenu(): IPopupMenuPageObject;
+    selectedItem(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
 }
@@ -798,14 +803,18 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     text(): DefaultCypressChainable;
 }
 
-// @public
+// @public @deprecated
 export class IMenuPageObject implements BasePageObject {
-    constructor(selector: string);
+    constructor(selector?: string);
     // (undocumented)
     el(): DefaultCypressChainable;
+    // @deprecated
     getItemLink(index: number): DefaultCypressChainable;
+    // @deprecated
     getSelectedItem(): DefaultCypressChainable;
+    // @deprecated
     item(index: number): DefaultCypressChainable;
+    // @deprecated
     items(): DefaultCypressChainable;
     // (undocumented)
     selector: string;

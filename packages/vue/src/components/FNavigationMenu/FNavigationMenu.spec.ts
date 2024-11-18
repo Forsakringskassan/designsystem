@@ -4,7 +4,6 @@ import flushPromises from "flush-promises";
 import FNavigationMenu from "./FNavigationMenu.vue";
 import { NavigationMenuItem } from "./navigation-menu-item";
 
-/* Mock ResizeObserver used in IMenu */
 const resizeObserverMock = jest.fn().mockImplementation(() => ({
     observe: jest.fn(),
     unobserve: jest.fn(),
@@ -16,7 +15,7 @@ const testItems: NavigationMenuItem[] = [
     { label: "label1", route: "ROUTE_1" },
     { label: "label2", route: "ROUTE_2" },
     { label: "label3", route: "ROUTE_3" },
-    { label: "label4", route: "", href: "/", target: "" },
+    { label: "label4", route: "", href: "/", target: "_blank" },
 ];
 
 beforeEach(() => {
@@ -24,39 +23,72 @@ beforeEach(() => {
 });
 
 describe("props", () => {
-    it("should have same number of items as in props routes", () => {
-        const wrapper = mount(FNavigationMenu, {
-            props: {
-                route: "",
-                routes: testItems,
-            },
-        });
-        const imenuList = wrapper.get(".imenu__list");
-        const items = imenuList.findAll(".imenu__list__item");
-
-        expect(items).toHaveLength(testItems.length);
-    });
-
-    it.each`
-        verticalValue | klass
-        ${false}      | ${"imenu--horizontal"}
-        ${true}       | ${"imenu--vertical"}
-    `(
-        "should have class $klass when vertical prop is $verticalValue",
-        async ({ verticalValue, klass }) => {
+    describe("routes", () => {
+        it("should have same number of items as in props routes", () => {
             const wrapper = mount(FNavigationMenu, {
                 props: {
                     route: "",
                     routes: testItems,
-                    vertical: verticalValue,
+                },
+            });
+            const imenuList = wrapper.get(".imenu__list");
+            const items = imenuList.findAll(".imenu__list__item");
+            expect(items).toHaveLength(testItems.length);
+        });
+
+        it("should add href attribute to item element if used in route", () => {
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
+                },
+            });
+
+            const itemLink = wrapper.findAll(".imenu__list__anchor")[3];
+            expect(itemLink.element.getAttribute("href")).toBe("/");
+        });
+
+        it("should add target attribute to item element if used in route", () => {
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
+                },
+            });
+
+            const itemLink = wrapper.findAll(".imenu__list__anchor")[3];
+            expect(itemLink.element.getAttribute("target")).toBe("_blank");
+        });
+    });
+
+    describe("vertical", () => {
+        it("should set horizontal class when `vertical` is not used (default)", async () => {
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
                 },
             });
             await wrapper.vm.$nextTick();
 
             const nav = wrapper.get("nav");
-            expect(nav.classes()).toContain(klass);
-        },
-    );
+            expect(nav.classes()).toContain("imenu--horizontal");
+        });
+
+        it("should set vertical class when `vertical` is used", async () => {
+            const wrapper = mount(FNavigationMenu, {
+                props: {
+                    route: "",
+                    routes: testItems,
+                    vertical: true,
+                },
+            });
+            await wrapper.vm.$nextTick();
+
+            const nav = wrapper.get("nav");
+            expect(nav.classes()).toContain("imenu--vertical");
+        });
+    });
 });
 
 describe("events", () => {
@@ -72,12 +104,8 @@ describe("events", () => {
         const firstItem = imenuList.findAll(
             ".imenu__list__item > .imenu__list__anchor-container > a",
         )[0];
-        const previousEmits = [...wrapper.emitted().selectedRoute];
         await firstItem.trigger("click");
-        expect(wrapper.emitted().selectedRoute).toEqual([
-            ...previousEmits,
-            [testItems[0].route],
-        ]);
+        expect(wrapper.emitted().selectedRoute).toEqual([[testItems[0].route]]);
     });
 
     it("should select the current route passed with props directly after mount", async () => {

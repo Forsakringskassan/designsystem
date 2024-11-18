@@ -1,5 +1,5 @@
 import { MenuAction } from "../../types";
-import { IMenuItem } from "../IMenu/imenu-utils";
+import { type MenuItem } from "../../components";
 import {
     MenuActionTarget,
     getNewItemIndexFromMenuAction,
@@ -44,7 +44,7 @@ describe("getNewItemIndexFromMenuAction", () => {
 });
 
 describe("Menu actions triggered with keyboard (doMenuAction)", () => {
-    const testItems: IMenuItem[] = [
+    const testItems: MenuItem[] = [
         { label: "label1", key: "MENU_1", href: "#href-1" },
         { label: "label2", key: "MENU_2", href: "#href-2" },
         { label: "label3", key: "MENU_3", href: "#href-3" },
