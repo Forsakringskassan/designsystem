@@ -228,4 +228,26 @@ module.exports = defineMetadata({
             },
         },
     },
+
+    "i-popup-listbox": {
+        flow: true,
+        interactive: true,
+        permittedContent: ["@flow"],
+        permittedDescendants: [{ exclude: ["@interactive"] }],
+        attributes: {
+            "is-open": {
+                boolean: true,
+                required: true,
+            },
+            anchor: {
+                required: true,
+            },
+            numOfItems: {
+                required: true,
+            },
+            itemHeight: {
+                required: false,
+            },
+        },
+    },
 });

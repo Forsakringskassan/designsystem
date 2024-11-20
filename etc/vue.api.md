@@ -17579,6 +17579,13 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
 modelValue: {
