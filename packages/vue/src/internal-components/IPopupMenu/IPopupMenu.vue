@@ -17,7 +17,7 @@
                     :key="item.key"
                     role="presentation"
                     :class="itemClasses(item)"
-                    @click="onClickItem(item)"
+                    @click="(event) => onClickItem(event, item)"
                 >
                     <a
                         ref="anchors"
@@ -213,19 +213,33 @@ export default defineComponent({
             }
             return this.items.indexOf(item);
         },
-        async onClickItem(item: MenuItem, doClick: boolean = false): Promise<void> {
-            if (item.key !== this.lastSelectedItem) {
-                this.$emit("update:modelValue", item.key);
-                this.$emit("select", item.key);
-                this.lastSelectedItem = item.key;
+        onClickItem(event: Event, item: MenuItem): void {
+            this.selectItem(item.key);
+
+            // Only need to click anchor if target wasn't anchor.
+            const target = event.target;
+            const isAnchor = target instanceof HTMLElement && target.tagName === "A";
+            if (!isAnchor) {
+                this.clickItemAnchor(item);
+            }
+        },
+        clickItemAnchor(item: MenuItem): void {
+            if (!item.href) {
+                return;
+            }
+
+            const index = this.items.indexOf(item);
+            const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+            anchors[index].click();
+        },
+        selectItem(key: string): void {
+            if (key !== this.lastSelectedItem) {
+                this.$emit("update:modelValue", key);
+                this.$emit("select", key);
+                this.lastSelectedItem = key;
             }
 
             this.$emit("close");
-
-            if (item.href && doClick) {
-                const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-                anchors[this.currentFocusedItemIndex]?.click();
-            }
         },
         itemClasses(item: MenuItem): string[] {
             const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
@@ -254,7 +268,10 @@ export default defineComponent({
             if (index !== this.currentFocusedItemIndex) {
                 await this.setFocusOnItem(index);
             }
-            await this.onClickItem(this.items[index], true);
+
+            const item = this.items[index];
+            this.selectItem(item.key);
+            this.clickItemAnchor(item);
         },
         setFocusedItemIndex(index: number): void {
             this.currentFocusedItemIndex = index;

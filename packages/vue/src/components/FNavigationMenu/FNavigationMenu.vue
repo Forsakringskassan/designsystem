@@ -8,7 +8,7 @@
                 :data-ref-index="index"
                 :class="itemClasses(item, index)"
                 role="none"
-                @click="onClickItem(item)"
+                @click="(event) => onClickItem(event, item)"
             >
                 <div class="imenu__list__anchor-container">
                     <a
@@ -315,13 +315,27 @@ export default defineComponent({
                 return;
             }
 
-            await this.onClickItem(this.items[index], true);
-        },
-        async onClickItem(item: MenuItem, doClick: boolean = false): Promise<void> {
+            const item = this.items[index];
             this.selectItem(item.key);
-            if (item.href && doClick) {
-                this.getAnchor(this.items.indexOf(item))?.click();
+            this.clickItemAnchor(item);
+        },
+        onClickItem(event: Event, item: MenuItem): void {
+            this.selectItem(item.key);
+
+            // Only need to click anchor if target wasn't anchor.
+            const target = event.target;
+            const isAnchor = target instanceof HTMLElement && target.tagName === "A";
+            if (!isAnchor) {
+                this.clickItemAnchor(item);
             }
+        },
+        clickItemAnchor(item: MenuItem): void {
+            if (!item.href) {
+                return;
+            }
+
+            const index = this.items.indexOf(item);
+            this.getAnchor(index)?.click();
         },
         onPopupMenuItemSelected(key: string): void {
             this.selectItem(key);

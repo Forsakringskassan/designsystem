@@ -221,6 +221,18 @@ describe("on select item", () => {
         navMenu.items().should("have.length", 8);
         navMenu.item(5).should("have.class", "imenu__list__item--highlight");
     });
+
+    it("should activate link if item has `href`", () => {
+        setViewport(VIEWPORT.NO_OVERFLOW);
+        cy.mount(createComponent());
+
+        cy.url().should("not.contain", "#href-10");
+        navMenu.item(9).click();
+        cy.url().should("contain", "#href-10");
+
+        // Restore URL state.
+        cy.location().go("back");
+    });
 });
 
 describe("on key pressed", () => {
