@@ -17,6 +17,12 @@ export interface AlertScreenReaderOptions {
     assertive: boolean;
 }
 
+// @public (undocumented)
+export interface AllowListValidatorConfig extends ValidatorOptions {
+    // (undocumented)
+    list: string[];
+}
+
 // @public @deprecated
 export function applyValidationMessages(): void;
 

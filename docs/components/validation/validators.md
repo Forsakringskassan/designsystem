@@ -148,6 +148,28 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:
 
 -   Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och ".
 
+### Val från lista `allowList`
+
+Validatorn kontrollerar att värdet som användaren angivit exakt matchar något av valen i listan.
+
+Om det finns behov av att dynamiskt ändra på listans innehåll, så behöver den befintliga listan ersättas med en ny lista för att en omvalidering ska ske.
+
+```import nomarkup
+AllowListExample.vue
+```
+
+Skriv så här i kod:
+
+```diff
+ <f-text-field
++    v-validation.allowList="{ allowList: { list: ["foo", "bar", "baz"] } }"
+ ></f-text-field>
+```
+
+Felmeddelandet till användaren när valideringen inte är godkänd är:
+
+-   Ange ett av alternativen i listan.
+
 ## Datum
 
 ### Datum `date`

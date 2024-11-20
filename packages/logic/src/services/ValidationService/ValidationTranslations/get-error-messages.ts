@@ -143,5 +143,7 @@ export function getErrorMessages(): Record<string, string> {
             'Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och ".',
         )
 
+        .map("allowList", "Ange ett av alternativen i listan.")
+
         .build();
 }

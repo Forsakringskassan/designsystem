@@ -3,6 +3,7 @@ import ValidationPluginDynamicValidation from "./examples/ValidationPluginDynami
 import ValidationPluginFormValidation from "./examples/ValidationPluginFormValidation.vue";
 import ValidationPluginToggleDisable from "./examples/ValidationPluginToggleDisable.vue";
 import ValidationPluginToggleEnabled from "./examples/ValidationPluginToggleEnabled.vue";
+import ValidationPluginRevalidateList from "./examples/ValidationPluginRevalidateList.vue";
 
 describe("ValidationPlugin", () => {
     it("should support dynamic validation via value sent from configuration", () => {
@@ -52,6 +53,26 @@ describe("ValidationPlugin", () => {
         errorLinks().should("contain", "PREFIX 1");
         errorLinks().should("contain", "PREFIX 2");
         errorLinks().should("contain", "PREFIX 3");
+    });
+
+    describe("list config reactivity", () => {
+        it("should revalidate when list is replaced", () => {
+            cy.mount(ValidationPluginRevalidateList);
+
+            // list: ["foo", "bar", "baz"]
+            cy.get("#input").type("foo");
+            cy.get("#input").blur();
+            cy.get("#error").should("not.exist");
+
+            cy.get("#input").clear();
+            cy.get("#input").type("doff");
+            cy.get("#input").blur();
+            cy.get("#error").should("be.visible");
+
+            cy.get("#replace-list").click();
+            // list: ["ole", "dole", "doff"]
+            cy.get("#error").should("not.exist");
+        });
     });
 
     describe('example "Inaktiva fält"', () => {

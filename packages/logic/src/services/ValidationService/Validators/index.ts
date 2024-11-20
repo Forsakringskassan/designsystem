@@ -1,4 +1,5 @@
 import { ValidationService } from "../ValidationService";
+import { allowListValidator } from "./AllowListValidator";
 import { bankAccountNumberValidator } from "./BankAccountNumberValidator";
 import { bankgiroValidator } from "./BankgiroValidator";
 import { blacklistValidator } from "./BlacklistValidator";
@@ -49,7 +50,9 @@ export {
     type InvalidWeekdaysValidatorConfig,
     isInvalidWeekdaysConfig,
 } from "./InvalidWeekdaysValidator";
+export { type AllowListValidatorConfig } from "./AllowListValidator";
 
+ValidationService.registerValidator(allowListValidator);
 ValidationService.registerValidator(bankAccountNumberValidator);
 ValidationService.registerValidator(bankgiroValidator);
 ValidationService.registerValidator(blacklistValidator);
