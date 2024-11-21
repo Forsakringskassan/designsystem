@@ -118,20 +118,46 @@ function createWrapper(
     { stubs = [] as string[], props = {} } = {},
 ): VueWrapper<InstanceType<typeof TestComponent>> {
     const templateStart = `
-        <f-crud-dataset v-model="items" :on-cancel="onCancel" :before-validation="beforeValidation" :before-submit="beforeSubmit" @created="onCreatedEvent" @updated="onUpdatedEvent" @deleted="onDeletedEvent">
+        <f-crud-dataset
+            v-model="items"
+            :on-cancel="onCancel"
+            :before-validation="beforeValidation"
+            :before-submit="beforeSubmit"
+            @created="onCreatedEvent"
+            @updated="onUpdatedEvent"
+            @deleted="onDeletedEvent"
+        >
             <template #default>
-                <div id="cancelMessage"> Modalen har stängts </div>
+                <div id="cancelMessage">Modalen har stängts</div>
                 <table>
-                    <tr>
-                        <th> id </th>
-                        <th> name </th>
-                    </tr>
-                    <tr v-for="item in items" :key="item.id">
-                        <td> {{ item.id }} </td>
-                        <td> {{ item.name }} </td>
-                        <td> <f-crud-button id="modifyButton" action="modify" :item="item" label /> </td>
-                        <td> <f-crud-button id="deleteButton" action="delete" :item="item" label /> </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in items" :key="item.id">
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>
+                                <f-crud-button
+                                    id="modifyButton"
+                                    action="modify"
+                                    :item="item"
+                                    label
+                                />
+                            </td>
+                            <td>
+                                <f-crud-button
+                                    id="deleteButton"
+                                    action="delete"
+                                    :item="item"
+                                    label
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </template>
     `;
