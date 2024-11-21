@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="./assets/docs-b76412.css"
+            href="./assets/docs-e63955.css"
             crossorigin
-            integrity="sha384-6ydUx6dd0TpxDN+u6EIn3QRxxlZNDQwbBNa3a49ot/oCDlW8mhB4Brbl5prnJoSp"
+            integrity="sha384-YAYA9cFRS9ZihaF2GqTCpFlXz2hl/tHUk4x/qmxocNubZel95HpbVgWyB8HQW2qL"
             
         />
         <link
             rel="stylesheet"
-            href="./assets/docs-exp-3cb848.css"
+            href="./assets/docs-exp-fa6182.css"
             crossorigin
-            integrity="sha384-RIFdezZEyghKBnWGnU8GalsCL/pyORCRQSD/JH9H2VJRldNydpMFVdrliikCHoE5"
+            integrity="sha384-OEZmY/G4NV8arCXnz/eGIgsSzQri2JjCVZuKnSqt2W1z5AVkTwQ7ukNywlu/IAEQ"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="./assets/docs-int-b89a7a.css"
+            href="./assets/docs-int-1bec58.css"
             crossorigin
-            integrity="sha384-GsPRhr7ciVP6tZLZNtu7XqSTyiRF9MKoN27IgzNFOlySwiHbE70mXb4Axk1KsG52"
+            integrity="sha384-MZlBNeD6FvCR2Ur+2y47Hz1Exh2VAs9HrfySfEgY1SMH024fBJgN3+UPTJoWAsvT"
             data-theme="int" disabled
         />
 
@@ -89,16 +89,35 @@
 
         <link
             rel="preload"
-            href="./search-data-94e81b.json"
+            href="./search-data-b866a5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Chtpm//eoBRjpdZ+APfy0ob6+F02m5floVSCivzjfjErql5JbePLUgtfqSPuQKdS"
+            integrity="sha384-QRdbQTmwZ4iC3w54yAXBaeUkCXOtpowyLi2PNobrZ5gMmDqzDcfHXuUgXXfSQMXf"
             id="search-data"
         />
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -286,14 +305,14 @@
 
                 <!-- prettier-ignore -->
                 <script
-                    src="./assets/vendor-vue-a2f4e5.js"
+                    src="./assets/vendor-vue-468cb1.js"
                     crossorigin
-                    integrity="sha384-G0p1/R2lkvkBeu18tmdftl6amM/ogqlPyFs4TbAaHZ6wWDgDjawSdlikX3tImEFu"
+                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="./assets/vendor-fkui-logic-1193bc.js"
+                    src="./assets/vendor-fkui-logic-c7d12d.js"
                     crossorigin
-                    integrity="sha384-UNmhiYi/XVBF/0CUVZ3OrzBhrjxEMOts2MfS8iFwj7DP+u5HC5r8NIJz+MsdQyrL"
+                    integrity="sha384-KfBge6nMMuRpeR0dh95yP8Ac/rX6Y/0afF5XxYhI4fq7WSaByc0WiVAny9Sy7IJY"
                 ></script>
                 <script
                     src="./assets/vendor-fkui-date-9b7c35.js"
@@ -301,9 +320,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="./assets/vendor-fkui-vue-db389d.js"
+                    src="./assets/vendor-fkui-vue-161a32.js"
                     crossorigin
-                    integrity="sha384-Lh2kzV+Pq7IcJkOPebWOLOKjxZrphyih7C5iEFE9uQ7qjv2/XrboswM26m4sPzU4"
+                    integrity="sha384-Yc72RazHIAjN3LoTyqkFMHKg6pF3icB5ZECAuT/25sWvhVg4cgMXLAG/nmNu3Q5R"
                 ></script>
                 <script
                     src="./assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -319,32 +338,42 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="v5-37-3"><a class="header-anchor" href="#v5-37-3">5.37.3 (2024-10-15)</a></h2><h3 id="bug_fixes"><a class="header-anchor" href="#bug_fixes">Bug Fixes</a></h3><ul>
+<h2 id="v5-39-0"><a class="header-anchor" href="#v5-39-0">5.39.0 (2024-11-05)</a></h2><h3 id="features"><a class="header-anchor" href="#features">Features</a></h3><ul>
+<li><strong>deps:</strong> bundle lodash (refs SFKUI-6500) 6cb2abc</li>
+</ul>
+<h3 id="bug_fixes"><a class="header-anchor" href="#bug_fixes">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> fix <code>getDay{Start,End}Offset</code> refers to a value but is being used as a type (refs SFKUI-6500) 871ddce</li>
+<li><strong>@fkui/vue:</strong> fix treeshaking issue with lodash (refs SFKUI-6500) baf361b</li>
+</ul>
+<h2 id="v5-38-0"><a class="header-anchor" href="#v5-38-0">5.38.0 (2024-10-25)</a></h2><h3 id="features--1"><a class="header-anchor" href="#features--1">Features</a></h3><ul>
+<li><strong>@fkui/vue:</strong> new <code>useModal()</code> composable for using modals with composition API (refs SFKUI-6500) a210418</li>
+</ul>
+<h2 id="v5-37-3"><a class="header-anchor" href="#v5-37-3">5.37.3 (2024-10-15)</a></h2><h3 id="bug_fixes--2"><a class="header-anchor" href="#bug_fixes--2">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design:</strong> tables without scrolling activates will word-wrap instead of overflowing (refs SFKUI-6500) dad8178</li>
 <li><strong>@fkui/vue:</strong> fix table &quot;invalid prop: type check failed [..] expected [..] got function&quot; (fixes SFKUI-6382) f2a47b8</li>
 </ul>
 <h2 id="v5-37-2"><a class="header-anchor" href="#v5-37-2">5.37.2 (2024-10-14)</a></h2><h3 id="dependency_upgrades"><a class="header-anchor" href="#dependency_upgrades">Dependency upgrades</a></h3><ul>
 <li><strong>deps:</strong> update dependency express to v4.21.1 a087891</li>
 </ul>
-<h3 id="bug_fixes--1"><a class="header-anchor" href="#bug_fixes--1">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--3"><a class="header-anchor" href="#bug_fixes--3">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/css-variables, @fkui/design, @fkui/vue:</strong> teritary buttons in table (refs SFKUI-6710) 2bbe76e</li>
 <li><strong>@fkui/vue:</strong> <code>FSortFilterDataset</code> add support for sorting mixed types (fixes SFKUI-6816) dfb30e7</li>
 <li><strong>@fkui/vue:</strong> enable focus to <code>IPopupMenu</code> while using key nav (refs SFKUI-6622) dc9563c</li>
 <li><strong>@fkui/vue:</strong> fix tabbing issues in <code>IPopupMenu</code> (refs SFKUI-6644) a48312d</li>
 <li><strong>@fkui/vue:</strong> table caption with sr-only is rendered properly (fixes SFKUI-6434) 8096dc9</li>
 </ul>
-<h2 id="v5-37-1"><a class="header-anchor" href="#v5-37-1">5.37.1 (2024-09-30)</a></h2><h3 id="bug_fixes--2"><a class="header-anchor" href="#bug_fixes--2">Bug Fixes</a></h3><ul>
+<h2 id="v5-37-1"><a class="header-anchor" href="#v5-37-1">5.37.1 (2024-09-30)</a></h2><h3 id="bug_fixes--4"><a class="header-anchor" href="#bug_fixes--4">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/vue:</strong> add missing <code>FFormData</code> export (refs SFKUI-6500) 7c5a78a</li>
 <li><strong>@fkui/vue:</strong> add missing <code>FModalData</code> export (refs SFKUI-6500) 97fdcc8</li>
 <li><strong>@fkui/vue:</strong> add missing <code>IconName</code> export (refs SFKUI-6500) 4e8d9eb</li>
 <li><strong>@fkui/vue:</strong> add missing <code>IPopupData</code> export (refs SFKUI-6500) bfcee75</li>
 <li><strong>@fkui/vue:</strong> add missing <code>IPopupErrorData</code> export (refs SFKUI-6500) 31c8dd4</li>
 </ul>
-<h2 id="v5-37-0"><a class="header-anchor" href="#v5-37-0">5.37.0 (2024-09-25)</a></h2><h3 id="features"><a class="header-anchor" href="#features">Features</a></h3><ul>
+<h2 id="v5-37-0"><a class="header-anchor" href="#v5-37-0">5.37.0 (2024-09-25)</a></h2><h3 id="features--5"><a class="header-anchor" href="#features--5">Features</a></h3><ul>
 <li><strong>@fkui/vue:</strong> two new props <code>errorList*</code> for <code>FValidationForm</code> (fixes SFKUI-6792) 2cc596c</li>
 <li><strong>@fkui/vue:</strong> use single <code>skipLink</code> prop on <code>FPageHeader</code> (refs SFKUI-6500) 1d024aa</li>
 </ul>
-<h3 id="bug_fixes--3"><a class="header-anchor" href="#bug_fixes--3">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--6"><a class="header-anchor" href="#bug_fixes--6">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/vue:</strong> add missing <code>ExpandableTable</code> export (refs SFKUI-6500) 57c0117</li>
 <li><strong>@fkui/vue:</strong> add missing <code>FCRUDDatasetData</code> export (refs SFKUI-6500) 562e226</li>
 <li><strong>@fkui/vue:</strong> add missing <code>FDialogueTreeData</code> export (refs SFKUI-6500) df4880d</li>
@@ -353,17 +382,17 @@
 <li><strong>@fkui/vue:</strong> add missing <code>FTableColumnData</code> export (refs SFKUI-6500) e9fd47d</li>
 <li><strong>@fkui/vue:</strong> add missing <code>ModalOptions</code> and <code>MaybeOptions</code> export (refs SFKUI-6500) 63a7da5</li>
 </ul>
-<h2 id="v5-36-3"><a class="header-anchor" href="#v5-36-3">5.36.3 (2024-09-20)</a></h2><h3 id="dependency_upgrades--4"><a class="header-anchor" href="#dependency_upgrades--4">Dependency upgrades</a></h3><ul>
+<h2 id="v5-36-3"><a class="header-anchor" href="#v5-36-3">5.36.3 (2024-09-20)</a></h2><h3 id="dependency_upgrades--7"><a class="header-anchor" href="#dependency_upgrades--7">Dependency upgrades</a></h3><ul>
 <li><strong>deps:</strong> update dependency express to v4.20.0 [security] 7bf4cad</li>
 <li><strong>deps:</strong> update dependency express to v4.21.0 892b107</li>
 </ul>
-<h2 id="v5-36-2"><a class="header-anchor" href="#v5-36-2">5.36.2 (2024-09-10)</a></h2><h3 id="bug_fixes--5"><a class="header-anchor" href="#bug_fixes--5">Bug Fixes</a></h3><ul>
+<h2 id="v5-36-2"><a class="header-anchor" href="#v5-36-2">5.36.2 (2024-09-10)</a></h2><h3 id="bug_fixes--8"><a class="header-anchor" href="#bug_fixes--8">Bug Fixes</a></h3><ul>
 <li>remove broken motd link (refs SFKUI-6500) 42e61e0</li>
 </ul>
-<h2 id="v5-36-1"><a class="header-anchor" href="#v5-36-1">5.36.1 (2024-09-10)</a></h2><h3 id="bug_fixes--6"><a class="header-anchor" href="#bug_fixes--6">Bug Fixes</a></h3><ul>
+<h2 id="v5-36-1"><a class="header-anchor" href="#v5-36-1">5.36.1 (2024-09-10)</a></h2><h3 id="bug_fixes--9"><a class="header-anchor" href="#bug_fixes--9">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design, @fkui/vue:</strong> offline should use short layout ab7e7f9, closes #13</li>
 </ul>
-<h2 id="v5-36-0"><a class="header-anchor" href="#v5-36-0">5.36.0 (2024-09-09)</a></h2><h3 id="features--7"><a class="header-anchor" href="#features--7">Features</a></h3><ul>
+<h2 id="v5-36-0"><a class="header-anchor" href="#v5-36-0">5.36.0 (2024-09-09)</a></h2><h3 id="features--10"><a class="header-anchor" href="#features--10">Features</a></h3><ul>
 <li><strong>@fkui/css-variables, @fkui/date, @fkui/design, @fkui/icon-lib-builder, @fkui/icon-lib-default, @fkui/logic, @fkui/test-utils, @fkui/vue-labs, @fkui/vue:</strong> initial public version (refs SFKUI-6500) d0b0604</li>
 <li><strong>deps:</strong> update dependency kleur to v4 e88d20d</li>
 </ul>
@@ -388,10 +417,38 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/eae56c9e940a9160c7585e2be398a76255dbdf76">eae56c9</a>)<br />
+    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/1c7c86a4726fc4e2fd8d84cc72a27b870a462afd">1c7c86a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/88">PR 88</a><br />
-        2024-10-24 07:04
+        2024-11-21 12:00
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -477,15 +534,21 @@
 
         <!-- prettier-ignore -->
         <script
-            src="./assets/processors/selectable-version/select-version-42b338.js"
+            src="./assets/processors/motd/index-8c87e1.js"
             crossorigin
-            integrity="sha384-9teClDZoUmFqd4Uy9zGlWIwizRBX8jp3Tuvbf8GCf6jj1pTG5nVxJGQ/gOCfOsnK"
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
             
         ></script>
         <script
-            src="./assets/main-8b3997.js"
+            src="./assets/processors/selectable-version/select-version-d176d5.js"
             crossorigin
-            integrity="sha384-tMUsZzOmoZSz2qWzoCwYEHpbl3EEWosdUVGhRQ8XHBCBoP4QIjodcfAg2qFXy/NO"
+            integrity="sha384-COFm7vMTiEm+ijckiQnc2rnnGbhF9EczN/NpqxHnp8Fw6EmIg8jGEl5GmHYfoTGk"
+            
+        ></script>
+        <script
+            src="./assets/main-dfa38f.js"
+            crossorigin
+            integrity="sha384-T1ZkxKemccCwNVOSd/t0j7qhUN/HTQZe6DKXgL25IiVBJfBkXh4np4ADbioOyQEB"
             
         ></script>
     </body>

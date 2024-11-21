@@ -1656,129 +1656,14 @@
   }
 
   // virtual-entry:./packages/vue/src/internal-components/IPopupMenu/examples/IPopupMenuExample.vue
-  var import_vue31 = __require("vue");
+  var import_vue32 = __require("vue");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
-  var import_vue29 = __require("vue");
+  var import_vue30 = __require("vue");
   var import_logic16 = __require("@fkui/logic");
 
-  // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
-  var import_vue3 = __require("vue");
-  var Flip = ["horizontal", "vertical"];
-  var Rotate = ["90", "180", "270"];
-  var FIcon_default = (0, import_vue3.defineComponent)({
-    name: "FIcon",
-    inheritAttrs: false,
-    props: {
-      /**
-       * Icon name.
-       */
-      name: {
-        type: String,
-        required: true
-      },
-      /**
-       * fk-icon library
-       */
-      library: {
-        type: String,
-        required: false,
-        default: "f"
-      },
-      /**
-       * Flip icon horizontally or vertically.
-       *
-       * Must be set to one of:
-       *
-       * - `horizontal`
-       * - `vertical`
-       */
-      flip: {
-        type: String,
-        default: null,
-        required: false,
-        validator(value) {
-          return Flip.includes(value);
-        }
-      },
-      /**
-       * Rotate icon.
-       *
-       * Must be set to one of:
-       *
-       * - `90`
-       * - `180`
-       * - `270`
-       */
-      rotate: {
-        type: String,
-        default: null,
-        required: false,
-        validator(value) {
-          return Rotate.includes(value);
-        }
-      }
-    },
-    computed: {
-      spriteKey() {
-        return `${this.library}-icon-${this.name}`;
-      },
-      spriteId() {
-        return `#${this.spriteKey}`;
-      },
-      modifiers() {
-        const classes = [];
-        if (this.flip) {
-          classes.push(`icon--flip-${this.flip}`);
-        }
-        if (this.rotate) {
-          classes.push(`icon--rotate-${this.rotate}`);
-        }
-        return classes;
-      },
-      ariaHidden() {
-        const slotUsed = Boolean(this.$slots.default);
-        const ariaLabel = this.$attrs["aria-label"] !== void 0;
-        const ariaLabelledby = this.$attrs["aria-labelledby"] !== void 0;
-        const ariaDescription = this.$attrs["aria-description"] !== void 0;
-        const ariaDescribedby = this.$attrs["aria-describedby"] !== void 0;
-        const hasText = slotUsed || ariaLabel || ariaLabelledby || ariaDescription || ariaDescribedby;
-        return hasText ? void 0 : "true";
-      }
-    }
-  });
-
-  // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=template
-  var import_vue4 = __require("vue");
-  var _hoisted_1 = ["aria-hidden"];
-  var _hoisted_2 = ["xlink:href"];
-  function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)(
-      import_vue4.Fragment,
-      null,
-      [
-        (0, import_vue4.createCommentVNode)(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
-        ((0, import_vue4.openBlock)(), (0, import_vue4.createElementBlock)("svg", (0, import_vue4.mergeProps)(_ctx.$attrs, {
-          focusable: "false",
-          class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
-          "aria-hidden": _ctx.ariaHidden
-        }), [
-          (0, import_vue4.renderSlot)(_ctx.$slots, "default"),
-          (0, import_vue4.createElementVNode)("use", { "xlink:href": _ctx.spriteId }, null, 8, _hoisted_2)
-        ], 16, _hoisted_1))
-      ],
-      2112
-      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-    );
-  }
-
-  // packages/vue/src/components/FIcon/FIcon.vue
-  FIcon_default.render = render;
-  FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
-  var FIcon_default2 = FIcon_default;
-
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
-  var import_vue27 = __require("vue");
+  var import_vue28 = __require("vue");
   var import_logic15 = __require("@fkui/logic");
 
   // packages/vue/src/config/config.ts
@@ -1815,257 +1700,11 @@
     }
   };
 
-  // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
-  function offset(page, el) {
-    const rect = el.getBoundingClientRect();
-    return {
-      top: rect.top + page.pageYOffset,
-      left: rect.left + page.pageXOffset
-    };
-  }
-  function getElement(anchor) {
-    if (!anchor) {
-      return null;
-    }
-    if (typeof anchor === "string") {
-      return document.getElementById(anchor);
-    } else {
-      return anchor;
-    }
-  }
-  function getCandidates(anchor, target, clippedArea, spacing, candidateOrder) {
-    const dw = target.width - anchor.width;
-    const a = {
-      placement: "A" /* A */,
-      x: anchor.x,
-      y: anchor.y + anchor.height + spacing,
-      width: target.width,
-      height: target.height,
-      direction: 1 /* Vertical */
-    };
-    const b = {
-      placement: "B" /* B */,
-      x: anchor.x - dw,
-      y: anchor.y + anchor.height + spacing,
-      width: target.width,
-      height: target.height,
-      direction: 1 /* Vertical */
-    };
-    const c = {
-      placement: "C" /* C */,
-      x: anchor.x,
-      y: anchor.y - target.height - spacing,
-      width: target.width,
-      height: target.height,
-      direction: 1 /* Vertical */
-    };
-    const d = {
-      placement: "D" /* D */,
-      x: anchor.x - dw,
-      y: anchor.y - target.height - spacing,
-      width: target.width,
-      height: target.height,
-      direction: 1 /* Vertical */
-    };
-    const e = {
-      placement: "E" /* E */,
-      x: anchor.x + anchor.width + spacing,
-      y: anchor.y + anchor.height / 2 - target.height / 2,
-      width: target.width,
-      height: target.height,
-      direction: 0 /* Horizontal */
-    };
-    const f = {
-      placement: "F" /* F */,
-      x: anchor.x - (target.width + spacing),
-      y: anchor.y + anchor.height / 2 - target.height / 2,
-      width: target.width,
-      height: target.height,
-      direction: 0 /* Horizontal */
-    };
-    const g = {
-      placement: "G" /* G */,
-      x: anchor.x + anchor.width + spacing,
-      y: clippedArea.y + spacing,
-      width: target.width,
-      height: target.height,
-      direction: 2 /* Both */
-    };
-    const h2 = {
-      placement: "H" /* H */,
-      x: anchor.x - (target.width + spacing),
-      y: clippedArea.y + spacing,
-      width: target.width,
-      height: target.height,
-      direction: 2 /* Both */
-    };
-    const i = {
-      placement: "I" /* I */,
-      x: clippedArea.x + (clippedArea.width - target.width) / 2,
-      y: clippedArea.y + (clippedArea.height - target.height) / 2,
-      width: target.width,
-      height: target.height,
-      direction: 3 /* None */
-    };
-    if (candidateOrder === "IPopupError" /* IPopupError */) {
-      return [b, a, d, c, e, f, f, f, f];
-    } else {
-      return [a, b, c, d, e, f, g, h2, i];
-    }
-  }
-  function isInside(outer, inner, spacing) {
-    const isHorizontalDirection = inner.direction === 0 /* Horizontal */ || inner.direction === 2 /* Both */;
-    const xSpacing = isHorizontalDirection ? spacing : 0;
-    const isVerticalDirection = inner.direction === 1 /* Vertical */ || inner.direction === 2 /* Both */;
-    const ySpacing = isVerticalDirection ? spacing : 0;
-    const ax = [inner.x, inner.x + inner.width];
-    const ay = [inner.y, inner.y + inner.height];
-    const bx = [outer.x + xSpacing, outer.x + outer.width - xSpacing];
-    const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
-    if (ax[0] < bx[0] || ax[1] > bx[1]) {
-      return false;
-    }
-    if (ay[0] < by[0] || ay[1] > by[1]) {
-      return false;
-    }
-    return true;
-  }
-  function isElementOptions(options) {
-    return options.target instanceof HTMLElement;
-  }
-  function clipRect(src, clip) {
-    if (!clip) {
-      return src;
-    }
-    const x = Math.max(src.x, clip.x);
-    const y = Math.max(src.y, clip.y);
-    const width = Math.min(src.x + src.width, clip.x + clip.width) - x;
-    const height = Math.min(src.y + src.height, clip.y + clip.height) - y;
-    return { x, y, width, height };
-  }
-  function getAbsolutePosition(src) {
-    if (!src) {
-      return void 0;
-    }
-    const isRoot = src.isSameNode(document.documentElement);
-    if (isRoot) {
-      return {
-        x: window.pageXOffset,
-        y: window.pageYOffset,
-        width: src.clientWidth,
-        height: src.clientHeight
-      };
-    }
-    const rect = src.getBoundingClientRect();
-    return {
-      x: Math.floor(rect.left + window.pageXOffset),
-      y: Math.floor(rect.top + window.pageYOffset),
-      width: Math.floor(rect.width),
-      height: Math.floor(rect.height)
-    };
-  }
-  function fitInsideArea(options) {
-    if (isElementOptions(options)) {
-      const {
-        area: areaElement,
-        anchor: anchorElement,
-        target: targetElement,
-        viewport: viewportElement,
-        spacing: spacing2,
-        candidateOrder
-      } = options;
-      const area2 = getAbsolutePosition(areaElement);
-      const anchor2 = getAbsolutePosition(anchorElement);
-      const target2 = getAbsolutePosition(targetElement);
-      const viewport2 = getAbsolutePosition(viewportElement);
-      const result = fitInsideArea({
-        area: area2,
-        target: target2,
-        anchor: anchor2,
-        viewport: viewport2,
-        spacing: spacing2,
-        candidateOrder
-      });
-      const offset2 = targetElement.offsetParent?.getBoundingClientRect();
-      if (!offset2) {
-        return result;
-      }
-      return {
-        ...result,
-        x: result.x - (offset2.left + window.pageXOffset),
-        y: result.y - (offset2.top + window.pageYOffset)
-      };
-    }
-    const { anchor, target, area, viewport, spacing } = options;
-    const clippedArea = clipRect(area, viewport);
-    const candidates = getCandidates(
-      anchor,
-      target,
-      clippedArea,
-      spacing,
-      options.candidateOrder
-    );
-    const index = candidates.findIndex(
-      (it) => isInside(clippedArea, it, spacing)
-    );
-    if (index >= 0) {
-      const match = candidates[index];
-      return { x: match.x, y: match.y, placement: match.placement };
-    }
-    return {
-      ...getFallbackPosition(anchor, target, clippedArea, spacing),
-      placement: "Fallback" /* Fallback */
-    };
-  }
-  function getScrollToPopup(param) {
-    const popupOffset = offset(
-      { pageXOffset: 0, pageYOffset: param.scrollTop },
-      param.popup
-    );
-    const popupHeight = param.popup.offsetHeight;
-    const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
-    if (neededScroll > param.scrollTop) {
-      return neededScroll;
-    } else {
-      return param.scrollTop;
-    }
-  }
-  function getFallbackPosition(anchor, target, clippedArea, spacing) {
-    const x = anchor.x - (target.width + spacing);
-    const y = anchor.y + anchor.height + spacing;
-    if (x >= clippedArea.x) {
-      return {
-        x,
-        y
-      };
-    } else {
-      return {
-        x: clippedArea.x + spacing,
-        y
-      };
-    }
-  }
-
-  // packages/vue/src/internal-components/IPopup/get-container.ts
-  function getContainer(element, prop) {
-    if (prop) {
-      return prop;
-    }
-    const parent = element.closest(".popup__container");
-    if (parent) {
-      return parent;
-    }
-    return config.popupContainer;
-  }
-
-  // packages/vue/src/internal-components/IPopup/get-focusable-element.ts
-  var import_logic14 = __require("@fkui/logic");
-
   // packages/vue/src/utils/ListUtils.ts
   var import_logic2 = __require("@fkui/logic");
 
   // packages/vue/src/utils/render-slot-text.ts
-  var import_vue5 = __require("vue");
+  var import_vue3 = __require("vue");
   var defaultOptions = {
     stripClasses: ["sr-only"]
   };
@@ -2086,10 +1725,10 @@
     };
   }
   function excludeComment(node) {
-    return node.type !== import_vue5.Comment;
+    return node.type !== import_vue3.Comment;
   }
   function getTextContent(children, options) {
-    return children.filter(import_vue5.isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
+    return children.filter(import_vue3.isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
       if (Array.isArray(child.children)) {
         return getTextContent(child.children, options);
       }
@@ -2203,11 +1842,126 @@
   };
 
   // packages/vue/src/utils/mount-component/mount-component.ts
-  var import_vue6 = __require("vue");
+  var import_vue4 = __require("vue");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
   var import_vue11 = __require("vue");
   var import_logic7 = __require("@fkui/logic");
+
+  // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
+  var import_vue5 = __require("vue");
+  var Flip = ["horizontal", "vertical"];
+  var Rotate = ["90", "180", "270"];
+  var FIcon_default = (0, import_vue5.defineComponent)({
+    name: "FIcon",
+    inheritAttrs: false,
+    props: {
+      /**
+       * Icon name.
+       */
+      name: {
+        type: String,
+        required: true
+      },
+      /**
+       * fk-icon library
+       */
+      library: {
+        type: String,
+        required: false,
+        default: "f"
+      },
+      /**
+       * Flip icon horizontally or vertically.
+       *
+       * Must be set to one of:
+       *
+       * - `horizontal`
+       * - `vertical`
+       */
+      flip: {
+        type: String,
+        default: null,
+        required: false,
+        validator(value) {
+          return Flip.includes(value);
+        }
+      },
+      /**
+       * Rotate icon.
+       *
+       * Must be set to one of:
+       *
+       * - `90`
+       * - `180`
+       * - `270`
+       */
+      rotate: {
+        type: String,
+        default: null,
+        required: false,
+        validator(value) {
+          return Rotate.includes(value);
+        }
+      }
+    },
+    computed: {
+      spriteKey() {
+        return `${this.library}-icon-${this.name}`;
+      },
+      spriteId() {
+        return `#${this.spriteKey}`;
+      },
+      modifiers() {
+        const classes = [];
+        if (this.flip) {
+          classes.push(`icon--flip-${this.flip}`);
+        }
+        if (this.rotate) {
+          classes.push(`icon--rotate-${this.rotate}`);
+        }
+        return classes;
+      },
+      ariaHidden() {
+        const slotUsed = Boolean(this.$slots.default);
+        const ariaLabel = this.$attrs["aria-label"] !== void 0;
+        const ariaLabelledby = this.$attrs["aria-labelledby"] !== void 0;
+        const ariaDescription = this.$attrs["aria-description"] !== void 0;
+        const ariaDescribedby = this.$attrs["aria-describedby"] !== void 0;
+        const hasText = slotUsed || ariaLabel || ariaLabelledby || ariaDescription || ariaDescribedby;
+        return hasText ? void 0 : "true";
+      }
+    }
+  });
+
+  // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=template
+  var import_vue6 = __require("vue");
+  var _hoisted_1 = ["aria-hidden"];
+  var _hoisted_2 = ["xlink:href"];
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
+    return (0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)(
+      import_vue6.Fragment,
+      null,
+      [
+        (0, import_vue6.createCommentVNode)(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
+        ((0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("svg", (0, import_vue6.mergeProps)(_ctx.$attrs, {
+          focusable: "false",
+          class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
+          "aria-hidden": _ctx.ariaHidden
+        }), [
+          (0, import_vue6.renderSlot)(_ctx.$slots, "default"),
+          (0, import_vue6.createElementVNode)("use", { "xlink:href": _ctx.spriteId }, null, 8, _hoisted_2)
+        ], 16, _hoisted_1))
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
+  }
+
+  // packages/vue/src/components/FIcon/FIcon.vue
+  FIcon_default.render = render;
+  FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
+  var FIcon_default2 = FIcon_default;
 
   // packages/vue/src/plugins/translation/translate.ts
   var import_logic4 = __require("@fkui/logic");
@@ -3822,7 +3576,7 @@
                 type: "submit",
                 class: "button button--primary button-group__item button--large"
               }, [
-                (0, import_vue26.createCommentVNode)(' @slot @deprecated - Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
+                (0, import_vue26.createCommentVNode)(' @slot - @deprecated Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
                 (0, import_vue26.renderSlot)(_ctx.$slots, "submit-button-text", {}, () => [
                   (0, import_vue26.createTextVNode)(
                     (0, import_vue26.toDisplayString)(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")),
@@ -3837,7 +3591,7 @@
                 class: "button button--secondary button-group__item button--large",
                 onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
               }, [
-                (0, import_vue26.createCommentVNode)(' @slot @deprecated -  Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
+                (0, import_vue26.createCommentVNode)(' @slot - @deprecated Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
                 (0, import_vue26.renderSlot)(_ctx.$slots, "cancel-button-text", {}, () => [
                   (0, import_vue26.createTextVNode)(
                     (0, import_vue26.toDisplayString)(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")),
@@ -3869,6 +3623,9 @@
     const slot = vm.$slots[name];
     return Boolean(renderSlotText(slot, props, options));
   }
+
+  // packages/vue/src/utils/use-modal.ts
+  var import_vue27 = __require("vue");
 
   // packages/vue/src/utils/action-from-keyboard-event.ts
   function actionFromKeyboardEvent(event) {
@@ -3903,7 +3660,253 @@
     }
   }
 
+  // packages/vue/src/utils/get-absolute-position.ts
+  function getAbsolutePosition(src) {
+    if (!src) {
+      return void 0;
+    }
+    const isRoot = src.isSameNode(document.documentElement);
+    if (isRoot) {
+      return {
+        x: window.pageXOffset,
+        y: window.pageYOffset,
+        width: src.clientWidth,
+        height: src.clientHeight
+      };
+    }
+    const rect = src.getBoundingClientRect();
+    return {
+      x: Math.floor(rect.left + window.pageXOffset),
+      y: Math.floor(rect.top + window.pageYOffset),
+      width: Math.floor(rect.width),
+      height: Math.floor(rect.height)
+    };
+  }
+
+  // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
+  function offset(page, el) {
+    const rect = el.getBoundingClientRect();
+    return {
+      top: rect.top + page.pageYOffset,
+      left: rect.left + page.pageXOffset
+    };
+  }
+  function getElement(anchor) {
+    if (!anchor) {
+      return null;
+    }
+    if (typeof anchor === "string") {
+      return document.getElementById(anchor);
+    } else {
+      return anchor;
+    }
+  }
+  function getCandidates(anchor, target, clippedArea, spacing, candidateOrder) {
+    const dw = target.width - anchor.width;
+    const a = {
+      placement: "A" /* A */,
+      x: anchor.x,
+      y: anchor.y + anchor.height + spacing,
+      width: target.width,
+      height: target.height,
+      direction: 1 /* Vertical */
+    };
+    const b = {
+      placement: "B" /* B */,
+      x: anchor.x - dw,
+      y: anchor.y + anchor.height + spacing,
+      width: target.width,
+      height: target.height,
+      direction: 1 /* Vertical */
+    };
+    const c = {
+      placement: "C" /* C */,
+      x: anchor.x,
+      y: anchor.y - target.height - spacing,
+      width: target.width,
+      height: target.height,
+      direction: 1 /* Vertical */
+    };
+    const d = {
+      placement: "D" /* D */,
+      x: anchor.x - dw,
+      y: anchor.y - target.height - spacing,
+      width: target.width,
+      height: target.height,
+      direction: 1 /* Vertical */
+    };
+    const e = {
+      placement: "E" /* E */,
+      x: anchor.x + anchor.width + spacing,
+      y: anchor.y + anchor.height / 2 - target.height / 2,
+      width: target.width,
+      height: target.height,
+      direction: 0 /* Horizontal */
+    };
+    const f = {
+      placement: "F" /* F */,
+      x: anchor.x - (target.width + spacing),
+      y: anchor.y + anchor.height / 2 - target.height / 2,
+      width: target.width,
+      height: target.height,
+      direction: 0 /* Horizontal */
+    };
+    const g = {
+      placement: "G" /* G */,
+      x: anchor.x + anchor.width + spacing,
+      y: clippedArea.y + spacing,
+      width: target.width,
+      height: target.height,
+      direction: 2 /* Both */
+    };
+    const h2 = {
+      placement: "H" /* H */,
+      x: anchor.x - (target.width + spacing),
+      y: clippedArea.y + spacing,
+      width: target.width,
+      height: target.height,
+      direction: 2 /* Both */
+    };
+    const i = {
+      placement: "I" /* I */,
+      x: clippedArea.x + (clippedArea.width - target.width) / 2,
+      y: clippedArea.y + (clippedArea.height - target.height) / 2,
+      width: target.width,
+      height: target.height,
+      direction: 3 /* None */
+    };
+    if (candidateOrder === "IPopupError" /* IPopupError */) {
+      return [b, a, d, c, e, f, f, f, f];
+    } else {
+      return [a, b, c, d, e, f, g, h2, i];
+    }
+  }
+  function isInside(outer, inner, spacing) {
+    const isHorizontalDirection = inner.direction === 0 /* Horizontal */ || inner.direction === 2 /* Both */;
+    const xSpacing = isHorizontalDirection ? spacing : 0;
+    const isVerticalDirection = inner.direction === 1 /* Vertical */ || inner.direction === 2 /* Both */;
+    const ySpacing = isVerticalDirection ? spacing : 0;
+    const ax = [inner.x, inner.x + inner.width];
+    const ay = [inner.y, inner.y + inner.height];
+    const bx = [outer.x + xSpacing, outer.x + outer.width - xSpacing];
+    const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
+    if (ax[0] < bx[0] || ax[1] > bx[1]) {
+      return false;
+    }
+    if (ay[0] < by[0] || ay[1] > by[1]) {
+      return false;
+    }
+    return true;
+  }
+  function isElementOptions(options) {
+    return options.target instanceof HTMLElement;
+  }
+  function clipRect(src, clip) {
+    if (!clip) {
+      return src;
+    }
+    const x = Math.max(src.x, clip.x);
+    const y = Math.max(src.y, clip.y);
+    const width = Math.min(src.x + src.width, clip.x + clip.width) - x;
+    const height = Math.min(src.y + src.height, clip.y + clip.height) - y;
+    return { x, y, width, height };
+  }
+  function fitInsideArea(options) {
+    if (isElementOptions(options)) {
+      const {
+        area: areaElement,
+        anchor: anchorElement,
+        target: targetElement,
+        viewport: viewportElement,
+        spacing: spacing2,
+        candidateOrder
+      } = options;
+      const area2 = getAbsolutePosition(areaElement);
+      const anchor2 = getAbsolutePosition(anchorElement);
+      const target2 = getAbsolutePosition(targetElement);
+      const viewport2 = getAbsolutePosition(viewportElement);
+      const result = fitInsideArea({
+        area: area2,
+        target: target2,
+        anchor: anchor2,
+        viewport: viewport2,
+        spacing: spacing2,
+        candidateOrder
+      });
+      const offset2 = targetElement.offsetParent?.getBoundingClientRect();
+      if (!offset2) {
+        return result;
+      }
+      return {
+        ...result,
+        x: result.x - (offset2.left + window.pageXOffset),
+        y: result.y - (offset2.top + window.pageYOffset)
+      };
+    }
+    const { anchor, target, area, viewport, spacing } = options;
+    const clippedArea = clipRect(area, viewport);
+    const candidates = getCandidates(
+      anchor,
+      target,
+      clippedArea,
+      spacing,
+      options.candidateOrder
+    );
+    const index = candidates.findIndex(
+      (it) => isInside(clippedArea, it, spacing)
+    );
+    if (index >= 0) {
+      const match = candidates[index];
+      return { x: match.x, y: match.y, placement: match.placement };
+    }
+    return {
+      ...getFallbackPosition(anchor, target, clippedArea, spacing),
+      placement: "Fallback" /* Fallback */
+    };
+  }
+  function getScrollToPopup(param) {
+    const popupOffset = offset(
+      { pageXOffset: 0, pageYOffset: param.scrollTop },
+      param.popup
+    );
+    const popupHeight = param.popup.offsetHeight;
+    const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
+    if (neededScroll > param.scrollTop) {
+      return neededScroll;
+    } else {
+      return param.scrollTop;
+    }
+  }
+  function getFallbackPosition(anchor, target, clippedArea, spacing) {
+    const x = anchor.x - (target.width + spacing);
+    const y = anchor.y + anchor.height + spacing;
+    if (x >= clippedArea.x) {
+      return {
+        x,
+        y
+      };
+    } else {
+      return {
+        x: clippedArea.x + spacing,
+        y
+      };
+    }
+  }
+
+  // packages/vue/src/internal-components/IPopup/get-container.ts
+  function getContainer(element, prop) {
+    if (prop) {
+      return prop;
+    }
+    const parent = element.closest(".popup__container");
+    if (parent) {
+      return parent;
+    }
+    return config.popupContainer;
+  }
+
   // packages/vue/src/internal-components/IPopup/get-focusable-element.ts
+  var import_logic14 = __require("@fkui/logic");
   function getFocusableElement(rootElement, callback) {
     if (callback) {
       return callback();
@@ -3931,7 +3934,7 @@
   }
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
-  var IPopup_default = (0, import_vue27.defineComponent)({
+  var IPopup_default = (0, import_vue28.defineComponent)({
     name: "IPopup",
     inheritAttrs: false,
     props: {
@@ -4167,29 +4170,29 @@
   });
 
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=template
-  var import_vue28 = __require("vue");
+  var import_vue29 = __require("vue");
   function render12(_ctx, _cache, $props, $setup, $data, $options) {
-    return _ctx.isOpen ? ((0, import_vue28.openBlock)(), (0, import_vue28.createBlock)(import_vue28.Teleport, {
+    return _ctx.isOpen ? ((0, import_vue29.openBlock)(), (0, import_vue29.createBlock)(import_vue29.Teleport, {
       key: 0,
       to: _ctx.teleportTarget,
       disabled: _ctx.teleportDisabled
     }, [
-      (0, import_vue28.createElementVNode)(
+      (0, import_vue29.createElementVNode)(
         "div",
-        (0, import_vue28.mergeProps)({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }),
+        (0, import_vue29.mergeProps)({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }),
         [
-          (0, import_vue28.createElementVNode)(
+          (0, import_vue29.createElementVNode)(
             "div",
             {
               ref: "wrapper",
               role: "presentation",
               class: "popup__wrapper",
               onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onPopupClickHandler && _ctx.onPopupClickHandler(...args)),
-              onKeyup: _cache[1] || (_cache[1] = (0, import_vue28.withKeys)((0, import_vue28.withModifiers)((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
-              onKeydown: _cache[2] || (_cache[2] = (0, import_vue28.withKeys)((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
+              onKeyup: _cache[1] || (_cache[1] = (0, import_vue29.withKeys)((0, import_vue29.withModifiers)((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
+              onKeydown: _cache[2] || (_cache[2] = (0, import_vue29.withKeys)((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
             },
             [
-              (0, import_vue28.renderSlot)(_ctx.$slots, "default", (0, import_vue28.normalizeProps)((0, import_vue28.guardReactiveProps)({ toggleIsOpen: _ctx.toggleIsOpen, placement: _ctx.placement })))
+              (0, import_vue29.renderSlot)(_ctx.$slots, "default", (0, import_vue29.normalizeProps)((0, import_vue29.guardReactiveProps)({ toggleIsOpen: _ctx.toggleIsOpen, placement: _ctx.placement })))
             ],
             544
             /* NEED_HYDRATION, NEED_PATCH */
@@ -4198,7 +4201,7 @@
         16
         /* FULL_PROPS */
       )
-    ], 8, ["to", "disabled"])) : (0, import_vue28.createCommentVNode)("v-if", true);
+    ], 8, ["to", "disabled"])) : (0, import_vue29.createCommentVNode)("v-if", true);
   }
 
   // packages/vue/src/internal-components/IPopup/IPopup.vue
@@ -4253,9 +4256,9 @@
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
   var preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
-  var IPopupMenu_default = (0, import_vue29.defineComponent)({
+  var IPopupMenu_default = (0, import_vue30.defineComponent)({
     name: "IPopupMenu",
-    components: { FIcon: FIcon_default2, IPopup: IPopup_default2 },
+    components: { IPopup: IPopup_default2 },
     props: {
       /**
        * Key of the currently selected and highlighted item.
@@ -4493,7 +4496,7 @@
   });
 
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=template
-  var import_vue30 = __require("vue");
+  var import_vue31 = __require("vue");
   var _hoisted_18 = ["aria-label"];
   var _hoisted_27 = {
     role: "menu",
@@ -4506,9 +4509,8 @@
     class: "sr-only"
   };
   function render13(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue30.resolveComponent)("f-icon");
-    const _component_i_popup = (0, import_vue30.resolveComponent)("i-popup");
-    return (0, import_vue30.openBlock)(), (0, import_vue30.createBlock)(_component_i_popup, {
+    const _component_i_popup = (0, import_vue31.resolveComponent)("i-popup");
+    return (0, import_vue31.openBlock)(), (0, import_vue31.createBlock)(_component_i_popup, {
       class: "ipopupmenu",
       "is-open": _ctx.isOpen,
       "keyboard-trap": false,
@@ -4518,25 +4520,25 @@
       onKeyup: _ctx.onKeyUp,
       onKeydown: _ctx.onKeyDown
     }, {
-      default: (0, import_vue30.withCtx)(() => [
-        (0, import_vue30.createElementVNode)("nav", {
+      default: (0, import_vue31.withCtx)(() => [
+        (0, import_vue31.createElementVNode)("nav", {
           class: "ipopupmenu ipopupmenu--vertical",
           "aria-label": _ctx.ariaLabel
         }, [
-          (0, import_vue30.createElementVNode)("ul", _hoisted_27, [
-            ((0, import_vue30.openBlock)(true), (0, import_vue30.createElementBlock)(
-              import_vue30.Fragment,
+          (0, import_vue31.createElementVNode)("ul", _hoisted_27, [
+            ((0, import_vue31.openBlock)(true), (0, import_vue31.createElementBlock)(
+              import_vue31.Fragment,
               null,
-              (0, import_vue30.renderList)(_ctx.items, (item, index) => {
-                return (0, import_vue30.openBlock)(), (0, import_vue30.createElementBlock)("li", {
+              (0, import_vue31.renderList)(_ctx.items, (item, index) => {
+                return (0, import_vue31.openBlock)(), (0, import_vue31.createElementBlock)("li", {
                   ref_for: true,
                   ref: "items",
                   key: item.key,
                   role: "presentation",
-                  class: (0, import_vue30.normalizeClass)(_ctx.itemClasses(item)),
+                  class: (0, import_vue31.normalizeClass)(_ctx.itemClasses(item)),
                   onClick: ($event) => _ctx.onClickItem(item)
                 }, [
-                  (0, import_vue30.createElementVNode)("a", {
+                  (0, import_vue31.createElementVNode)("a", {
                     ref_for: true,
                     ref: "anchors",
                     "data-ref-index": index,
@@ -4545,24 +4547,20 @@
                     target: item.target,
                     tabindex: "0"
                   }, [
-                    _ctx.isSelected(index) ? ((0, import_vue30.openBlock)(), (0, import_vue30.createElementBlock)("span", _hoisted_53, [
-                      (0, import_vue30.createElementVNode)(
+                    _ctx.isSelected(index) ? ((0, import_vue31.openBlock)(), (0, import_vue31.createElementBlock)("span", _hoisted_53, [
+                      (0, import_vue31.createElementVNode)(
                         "span",
                         null,
-                        (0, import_vue30.toDisplayString)(_ctx.selectedMenuItemScreenReaderText) + "\xA0",
+                        (0, import_vue31.toDisplayString)(_ctx.selectedMenuItemScreenReaderText) + "\xA0",
                         1
                         /* TEXT */
                       )
-                    ])) : (0, import_vue30.createCommentVNode)("v-if", true),
-                    (0, import_vue30.createTextVNode)(
-                      (0, import_vue30.toDisplayString)(item.label) + " ",
+                    ])) : (0, import_vue31.createCommentVNode)("v-if", true),
+                    (0, import_vue31.createTextVNode)(
+                      " " + (0, import_vue31.toDisplayString)(item.label),
                       1
                       /* TEXT */
-                    ),
-                    item.iconRight ? ((0, import_vue30.openBlock)(), (0, import_vue30.createBlock)(_component_f_icon, {
-                      key: 1,
-                      name: item.iconRight
-                    }, null, 8, ["name"])) : (0, import_vue30.createCommentVNode)("v-if", true)
+                    )
                   ], 8, _hoisted_44)
                 ], 10, _hoisted_35);
               }),
@@ -4583,7 +4581,7 @@
   var IPopupMenu_default2 = IPopupMenu_default;
 
   // virtual-entry:./packages/vue/src/internal-components/IPopupMenu/examples/IPopupMenuExample.vue
-  var import_vue32 = __require("vue");
+  var import_vue33 = __require("vue");
   var exampleItems = [
     { label: "L\xE4nk 1", key: "MENU_1" },
     { label: "L\xE4nk 2", key: "MENU_2" },
@@ -4600,7 +4598,7 @@
   var downKeys = ["Down", "ArrowDown"];
   var verticalKeys = [...upKeys, ...downKeys];
   var preventKeys2 = ["Tab", ...verticalKeys];
-  var exampleComponent = (0, import_vue31.defineComponent)({
+  var exampleComponent = (0, import_vue32.defineComponent)({
     name: "IPopupMenuExample",
     components: { IPopupMenu: IPopupMenu_default2 },
     data() {
@@ -4649,9 +4647,9 @@
     }
   });
   function render14(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_i_popup_menu = (0, import_vue32.resolveComponent)("i-popup-menu");
-    return (0, import_vue32.openBlock)(), (0, import_vue32.createElementBlock)("div", null, [
-      (0, import_vue32.createElementVNode)(
+    const _component_i_popup_menu = (0, import_vue33.resolveComponent)("i-popup-menu");
+    return (0, import_vue33.openBlock)(), (0, import_vue33.createElementBlock)("div", null, [
+      (0, import_vue33.createElementVNode)(
         "button",
         {
           id: "popup-menu-open-button",
@@ -4666,7 +4664,7 @@
         544
         /* NEED_HYDRATION, NEED_PATCH */
       ),
-      (0, import_vue32.createVNode)(_component_i_popup_menu, {
+      (0, import_vue33.createVNode)(_component_i_popup_menu, {
         id: "popup-menu",
         modelValue: _ctx.selectedItem,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.selectedItem = $event),
@@ -4678,10 +4676,10 @@
         "enable-keyboard-navigation": "",
         onClose: _ctx.onClose
       }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "onClose"]),
-      (0, import_vue32.createElementVNode)(
+      (0, import_vue33.createElementVNode)(
         "pre",
         null,
-        "Selected item: " + (0, import_vue32.toDisplayString)(_ctx.selectedItem),
+        "Selected item: " + (0, import_vue33.toDisplayString)(_ctx.selectedItem),
         1
         /* TEXT */
       )

@@ -1,0 +1,1905 @@
+<!doctype html>
+<html lang="sv" class="layout--component" data-root-url="../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Kombobox - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-e63955.css"
+            crossorigin
+            integrity="sha384-YAYA9cFRS9ZihaF2GqTCpFlXz2hl/tHUk4x/qmxocNubZel95HpbVgWyB8HQW2qL"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-exp-fa6182.css"
+            crossorigin
+            integrity="sha384-OEZmY/G4NV8arCXnz/eGIgsSzQri2JjCVZuKnSqt2W1z5AVkTwQ7ukNywlu/IAEQ"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-int-1bec58.css"
+            crossorigin
+            integrity="sha384-MZlBNeD6FvCR2Ur+2y47Hz1Exh2VAs9HrfySfEgY1SMH024fBJgN3+UPTJoWAsvT"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/bootstrap-956ec3.js"
+            crossorigin
+            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../search-data-b866a5.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-QRdbQTmwZ4iC3w54yAXBaeUkCXOtpowyLi2PNobrZ5gMmDqzDcfHXuUgXXfSQMXf"
+            id="search-data"
+        />
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header>
+                <!-- prettier-ignore --><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list">
+        <!-- prettier-ignore -->
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <div class="select-field" style="visibility: hidden">
+        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
+        <div class="select-field__icon-wrapper">
+            <select id="fkds-theme-select" class="select-field__select">
+                <option value="exp">Försäkringskassan</option>
+                <option value="int">FK Hapo</option>
+            </select>
+            <svg focusable="false" class="icon select-field__icon">
+                <use xlink:href="#docs-icon-arrow-down"></use>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function themeSelector() {
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key) ?? "exp";
+            }
+
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
+            }
+
+            function enableTheme(theme) {
+                const style = Array.from(document.querySelectorAll("[data-theme]"));
+                for (const el of style) {
+                    el.disabled = el.dataset.theme !== theme;
+                }
+            }
+
+            const el = document.querySelector("#fkds-theme-select");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
+            el.addEventListener("change", () => {
+                const theme = el.value;
+                saveSelectedTheme("fkds-theme", theme);
+                enableTheme(theme);
+            });
+
+            const selected = getSelectedTheme("fkds-theme");
+            enableTheme(selected);
+            el.value = selected;
+
+            wrapper.style.visibility = null;
+        }
+
+        themeSelector();
+    </script>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary">
+                <!-- prettier-ignore -->
+<div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fbadge.html"
+            
+        >
+            Bricka
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../chip.html"
+            
+        >
+            Chip
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fdialoguetree.html"
+            
+        >
+            Dialogträd
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flabel.html"
+            
+        >
+            Etikett
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Expanderbara ytor</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../expandable/fexpandablepanel.html"
+            
+        >
+            Expanderbar panel
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../expandable/fexpand.html"
+            
+        >
+            Expanderbart innehåll
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../expandable/fexpandableparagraph.html"
+            
+        >
+            Expanderbart stycke
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Filuppladdning</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../file-upload/ffileitem.html"
+            
+        >
+            Filpresentatör
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../file-upload/ffileselector.html"
+            
+        >
+            Filväljare
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fform.html"
+            
+        >
+            Formulär
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Gruppera</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../group/ffieldset.html"
+            
+        >
+            Fältgruppering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../group/"
+            
+        >
+            Komponentgrupp
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../ficon.html"
+            
+        >
+            Ikon
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable active">
+        <details open>
+            <summary>Inmatning</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./ftextfield.html"
+            
+        >
+            Inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fdatepickerfield.html"
+            
+        >
+            Datumväljare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fselectfield.html"
+            
+        >
+            Dropplista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./ftextareafield.html"
+            
+        >
+            Flerradigt inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link active">
+        <!-- prettier-ignore -->
+        <a
+            href="./combobox.html"
+            
+        >
+            Kombobox
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fcheckboxfield.html"
+            
+        >
+            Kryssruta
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fradiofield.html"
+            
+        >
+            Radioknapp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./textfield-specialized.html"
+            
+        >
+            Specialiserade inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fcalendar.html"
+            
+        >
+            Kalender
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../button.html"
+            
+        >
+            Knapp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fcontextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fcard.html"
+            
+        >
+            Kort
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Ladda innehåll</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../load/fprogressbar.html"
+            
+        >
+            Förloppsindikator
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../load/floader.html"
+            
+        >
+            Laddningsindikator
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Länkar</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../links/anchor.html"
+            
+        >
+            Länk
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../links/entrypoint.html"
+            
+        >
+            Startpunkt
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fmessagebox.html"
+            
+        >
+            Meddelanderuta
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Modal</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../modal/fconfirmmodal.html"
+            
+        >
+            Bekräftelsemodal
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../modal/fformmodal.html"
+            
+        >
+            Formulärsmodal
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../modal/fmodal.html"
+            
+        >
+            Modal dialogruta
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../foffline.html"
+            
+        >
+            Offline
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Presentationsfält</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../presentation/foutputfield.html"
+            
+        >
+            Presentationsfält - dynamiskt
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../presentation/fstaticfield.html"
+            
+        >
+            Presentationsfält - statiskt
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Ramverkskomponenter</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/ianimateexpand.html"
+            
+        >
+            Animerad expandering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/iflexitem.html"
+            
+        >
+            Flex Item
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/iflex.html"
+            
+        >
+            Flexibel positionering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/iskiplink.html"
+            
+        >
+            Gå till innehåll
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/icalendarmonth.html"
+            
+        >
+            Kalendermånad
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/icalendarnavbar.html"
+            
+        >
+            Kalendernavigering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/icalendarmonthgrid.html"
+            
+        >
+            Kalenderrutnät
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/ipopup.html"
+            
+        >
+            Popup
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/ipopupmenu.html"
+            
+        >
+            Popup-meny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/ipopuperror.html"
+            
+        >
+            PopupError
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Sidlayout</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../page-layout/application-layout.html"
+            
+        >
+            Applikationslayout
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../page-layout/fnavigationmenu.html"
+            
+        >
+            Navigeringsmeny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../page-layout/fpageheader.html"
+            
+        >
+            Sidhuvud
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fwizard.html"
+            
+        >
+            Steg för steg-guide
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Tabell och lista</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../table-and-list/table.html"
+            
+        >
+            Tabell
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../table-and-list/flist.html"
+            
+        >
+            Lista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../table-and-list/fcruddataset.html"
+            
+        >
+            Datamängdredigerare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../table-and-list/fsortfilterdataset.html"
+            
+        >
+            Datamängdsorterare
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../ftooltip.html"
+            
+        >
+            Tooltip
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Validering</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../validation/ferrorlist.html"
+            
+        >
+            Fellista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../validation/formatters-and-parsers.html"
+            
+        >
+            Formaterare och parsers
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../validation/validators.html"
+            
+        >
+            Validatorer
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../validation/fvalidationgroup.html"
+            
+        >
+            Validering samlad
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../validation/fvalidationform.html"
+            
+        >
+            Valideringsformulär
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
+</nav>
+</div>
+
+
+                <!-- prettier-ignore -->
+                <script
+                    src="../../assets/vendor-vue-468cb1.js"
+                    crossorigin
+                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-logic-c7d12d.js"
+                    crossorigin
+                    integrity="sha384-KfBge6nMMuRpeR0dh95yP8Ac/rX6Y/0afF5XxYhI4fq7WSaByc0WiVAny9Sy7IJY"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-date-9b7c35.js"
+                    crossorigin
+                    integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-vue-161a32.js"
+                    crossorigin
+                    integrity="sha384-Yc72RazHIAjN3LoTyqkFMHKg6pF3icB5ZECAuT/25sWvhVg4cgMXLAG/nmNu3Q5R"
+                ></script>
+                <script
+                    src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
+                    crossorigin
+                    integrity="sha384-nJLPQGIUBkkwVgDY+ToqjpI+vosaIHaIBoTit9uWov/I2yjBNiUgUWlsfRJXelga"
+                ></script>
+
+                <!-- prettier-ignore --><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Kombobox</h1>
+
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl>
+    <!-- prettier-ignore -->
+    
+    <dt>Komponent</dt>
+    <dd>
+        
+        <code>
+            
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/1c7c86a4726fc4e2fd8d84cc72a27b870a462afd/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
+            
+        </code>
+         
+    </dd>
+    
+
+    <!-- prettier-ignore -->
+    
+    <dt>Status</dt>
+    <dd>
+        <div class="badge badge--success">Produktionsklar</div>
+    </dd>
+    
+</dl>
+
+
+                        
+                    </div>
+                    
+
+                    <div id="content">
+                        <!-- prettier-ignore -->
+<p>Exempel</p>
+
+            <div
+                id="example-ead6d8"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="ComboboxExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+.space {
+    margin-top: 10rem;
+}
+
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./ComboboxExample-b99710.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">error-message</span>&gt;</span> Oj, du har glömt fylla i något. Gå till: <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Vi behöver mer information om din hund<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-12 col--md-4 col--lg-3&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;breed&quot;</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;valdRas&quot;</span>
+                            <span class="hljs-attr">v-validation.required.option</span>=<span class="hljs-string">&quot;{ option: { options: raser } }&quot;</span>
+                            <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;100&quot;</span>
+                            <span class="hljs-attr">:options</span>=<span class="hljs-string">&quot;raser&quot;</span>
+                        &gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>Välj hundens ras<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;valtNamn&quot;</span>
+                            <span class="hljs-attr">v-validation.required</span>
+                            <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;100&quot;</span>
+                            <span class="hljs-attr">:options</span>=<span class="hljs-string">&quot;namn&quot;</span>
+                        &gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>Fyll i hundens namn<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;valtNamn &amp;&amp; valdRas&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Stämmer informationen nedan?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">f-output-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;result&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;breed name&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Info om din hund <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                {{ `Hunden ${valtNamn} är av rasen ${valdRas}` }}
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">f-output-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--primary button--large&quot;</span>
+                    &gt;</span>
+                        Spara
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--secondary button--large&quot;</span>
+                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
+                    &gt;</span>
+                        Avbryt
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;space&quot;</span>&gt;</span>{{ { valdRas, valtNamn } }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FOutputField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FOutputField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">valdRas</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">valtNamn</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">namn</span>: [
+                <span class="hljs-string">&quot;Bamse&quot;</span>,
+                <span class="hljs-string">&quot;Kira&quot;</span>,
+                <span class="hljs-string">&quot;Bosse&quot;</span>,
+                <span class="hljs-string">&quot;Hugo&quot;</span>,
+                <span class="hljs-string">&quot;Milton&quot;</span>,
+                <span class="hljs-string">&quot;Maja&quot;</span>,
+                <span class="hljs-string">&quot;Milou&quot;</span>,
+                <span class="hljs-string">&quot;Stina&quot;</span>,
+                <span class="hljs-string">&quot;Rex&quot;</span>,
+                <span class="hljs-string">&quot;Nelson&quot;</span>,
+                <span class="hljs-string">&quot;Greta&quot;</span>,
+                <span class="hljs-string">&quot;Elvis&quot;</span>,
+                <span class="hljs-string">&quot;Simba&quot;</span>,
+                <span class="hljs-string">&quot;Molly&quot;</span>,
+                <span class="hljs-string">&quot;Sixten&quot;</span>,
+                <span class="hljs-string">&quot;Svante&quot;</span>,
+                <span class="hljs-string">&quot;Charlie&quot;</span>,
+                <span class="hljs-string">&quot;Lexie&quot;</span>,
+                <span class="hljs-string">&quot;Ozzy&quot;</span>,
+                <span class="hljs-string">&quot;Max&quot;</span>,
+                <span class="hljs-string">&quot;Dino&quot;</span>,
+            ],
+
+            <span class="hljs-attr">raser</span>: [
+                <span class="hljs-string">&quot;Affenpinscher&quot;</span>,
+                <span class="hljs-string">&quot;Afghan Hound&quot;</span>,
+                <span class="hljs-string">&quot;Aidi&quot;</span>,
+                <span class="hljs-string">&quot;Airedale Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Akbash Dog&quot;</span>,
+                <span class="hljs-string">&quot;Akita&quot;</span>,
+                <span class="hljs-string">&quot;Alano Español&quot;</span>,
+                <span class="hljs-string">&quot;Alaskan Klee Kai&quot;</span>,
+                <span class="hljs-string">&quot;Alaskan Malamute&quot;</span>,
+                <span class="hljs-string">&quot;Alpine Dachsbracke&quot;</span>,
+                <span class="hljs-string">&quot;Alpine Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;American Bulldog&quot;</span>,
+                <span class="hljs-string">&quot;American Cocker Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;American Eskimo Dog&quot;</span>,
+                <span class="hljs-string">&quot;American Foxhound&quot;</span>,
+                <span class="hljs-string">&quot;American Hairless Terrier&quot;</span>,
+                <span class="hljs-string">&quot;American Pit Bull Terrier&quot;</span>,
+                <span class="hljs-string">&quot;American Staffordshire Terrier&quot;</span>,
+                <span class="hljs-string">&quot;American Water Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Anglo-Français de Petite Vénerie&quot;</span>,
+                <span class="hljs-string">&quot;Appenzeller Sennenhund&quot;</span>,
+                <span class="hljs-string">&quot;Ariege Pointer&quot;</span>,
+                <span class="hljs-string">&quot;Ariegeois&quot;</span>,
+                <span class="hljs-string">&quot;Armant&quot;</span>,
+                <span class="hljs-string">&quot;Armenian Gampr dog&quot;</span>,
+                <span class="hljs-string">&quot;Artois Hound&quot;</span>,
+                <span class="hljs-string">&quot;Australian Cattle Dog&quot;</span>,
+                <span class="hljs-string">&quot;Australian Kelpie&quot;</span>,
+                <span class="hljs-string">&quot;Australian Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Australian Silky Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Australian Stumpy Tail Cattle Dog&quot;</span>,
+                <span class="hljs-string">&quot;Australian Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Azawakh&quot;</span>,
+                <span class="hljs-string">&quot;Bakharwal Dog&quot;</span>,
+                <span class="hljs-string">&quot;Barbet&quot;</span>,
+                <span class="hljs-string">&quot;Basenji&quot;</span>,
+                <span class="hljs-string">&quot;Basque Shepherd Dog&quot;</span>,
+                <span class="hljs-string">&quot;Basset Artésien Normand&quot;</span>,
+                <span class="hljs-string">&quot;Basset Bleu de Gascogne&quot;</span>,
+                <span class="hljs-string">&quot;Basset Fauve de Bretagne&quot;</span>,
+                <span class="hljs-string">&quot;Basset Hound&quot;</span>,
+                <span class="hljs-string">&quot;Bavarian Mountain Hound&quot;</span>,
+                <span class="hljs-string">&quot;Beagle&quot;</span>,
+                <span class="hljs-string">&quot;Beagle-Harrier&quot;</span>,
+                <span class="hljs-string">&quot;Bearded Collie&quot;</span>,
+                <span class="hljs-string">&quot;Beauceron&quot;</span>,
+                <span class="hljs-string">&quot;Bedlington Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Belgian Shepherd Dog (Groenendael)&quot;</span>,
+                <span class="hljs-string">&quot;Belgian Shepherd Dog (Laekenois)&quot;</span>,
+                <span class="hljs-string">&quot;Belgian Shepherd Dog (Malinois)&quot;</span>,
+                <span class="hljs-string">&quot;Bergamasco Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Berger Blanc Suisse&quot;</span>,
+                <span class="hljs-string">&quot;Berger Picard&quot;</span>,
+                <span class="hljs-string">&quot;Berner Laufhund&quot;</span>,
+                <span class="hljs-string">&quot;Bernese Mountain Dog&quot;</span>,
+                <span class="hljs-string">&quot;Billy&quot;</span>,
+                <span class="hljs-string">&quot;Black and Tan Coonhound&quot;</span>,
+                <span class="hljs-string">&quot;Black and Tan Virginia Foxhound&quot;</span>,
+                <span class="hljs-string">&quot;Black Norwegian Elkhound&quot;</span>,
+                <span class="hljs-string">&quot;Black Russian Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Bloodhound&quot;</span>,
+                <span class="hljs-string">&quot;Blue Lacy&quot;</span>,
+                <span class="hljs-string">&quot;Blue Paul Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Boerboel&quot;</span>,
+                <span class="hljs-string">&quot;Bohemian Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Bolognese&quot;</span>,
+                <span class="hljs-string">&quot;Border Collie&quot;</span>,
+                <span class="hljs-string">&quot;Border Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Borzoi&quot;</span>,
+                <span class="hljs-string">&quot;Boston Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Bouvier des Ardennes&quot;</span>,
+                <span class="hljs-string">&quot;Bouvier des Flandres&quot;</span>,
+                <span class="hljs-string">&quot;Boxer&quot;</span>,
+                <span class="hljs-string">&quot;Boykin Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Bracco Italiano&quot;</span>,
+                <span class="hljs-string">&quot;Braque d&#x27;Auvergne&quot;</span>,
+                <span class="hljs-string">&quot;Braque du Bourbonnais&quot;</span>,
+                <span class="hljs-string">&quot;Braque du Puy&quot;</span>,
+                <span class="hljs-string">&quot;Braque Francais&quot;</span>,
+                <span class="hljs-string">&quot;Braque Saint-Germain&quot;</span>,
+                <span class="hljs-string">&quot;Brazilian Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Briard&quot;</span>,
+                <span class="hljs-string">&quot;Briquet Griffon Vendéen&quot;</span>,
+                <span class="hljs-string">&quot;Brittany&quot;</span>,
+                <span class="hljs-string">&quot;Broholmer&quot;</span>,
+                <span class="hljs-string">&quot;Bruno Jura Hound&quot;</span>,
+                <span class="hljs-string">&quot;Bucovina Shepherd Dog&quot;</span>,
+                <span class="hljs-string">&quot;Bull and Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Bull Terrier (Miniature)&quot;</span>,
+                <span class="hljs-string">&quot;Bull Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Bulldog&quot;</span>,
+                <span class="hljs-string">&quot;Bullenbeisser&quot;</span>,
+                <span class="hljs-string">&quot;Bullmastiff&quot;</span>,
+                <span class="hljs-string">&quot;Bully Kutta&quot;</span>,
+                <span class="hljs-string">&quot;Burgos Pointer&quot;</span>,
+                <span class="hljs-string">&quot;Cairn Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Canaan Dog&quot;</span>,
+                <span class="hljs-string">&quot;Canadian Eskimo Dog&quot;</span>,
+                <span class="hljs-string">&quot;Cane Corso&quot;</span>,
+                <span class="hljs-string">&quot;Cardigan Welsh Corgi&quot;</span>,
+                <span class="hljs-string">&quot;Carolina Dog&quot;</span>,
+                <span class="hljs-string">&quot;Carpathian Shepherd Dog&quot;</span>,
+                <span class="hljs-string">&quot;Catahoula Cur&quot;</span>,
+                <span class="hljs-string">&quot;Catalan Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Caucasian Shepherd Dog&quot;</span>,
+                <span class="hljs-string">&quot;Cavalier King Charles Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Central Asian Shepherd Dog&quot;</span>,
+                <span class="hljs-string">&quot;Cesky Fousek&quot;</span>,
+                <span class="hljs-string">&quot;Cesky Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Chesapeake Bay Retriever&quot;</span>,
+                <span class="hljs-string">&quot;Chien Français Blanc et Noir&quot;</span>,
+                <span class="hljs-string">&quot;Chien Français Blanc et Orange&quot;</span>,
+                <span class="hljs-string">&quot;Chien Français Tricolore&quot;</span>,
+                <span class="hljs-string">&quot;Chien-gris&quot;</span>,
+                <span class="hljs-string">&quot;Chihuahua&quot;</span>,
+                <span class="hljs-string">&quot;Chilean Fox Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Chinese Chongqing Dog&quot;</span>,
+                <span class="hljs-string">&quot;Chinese Crested Dog&quot;</span>,
+                <span class="hljs-string">&quot;Chinese Imperial Dog&quot;</span>,
+                <span class="hljs-string">&quot;Chinook&quot;</span>,
+                <span class="hljs-string">&quot;Chippiparai&quot;</span>,
+                <span class="hljs-string">&quot;Chow Chow&quot;</span>,
+                <span class="hljs-string">&quot;Cierny Sery&quot;</span>,
+                <span class="hljs-string">&quot;Cimarrón Uruguayo&quot;</span>,
+                <span class="hljs-string">&quot;Cirneco dell&#x27;Etna&quot;</span>,
+                <span class="hljs-string">&quot;Clumber Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Combai&quot;</span>,
+                <span class="hljs-string">&quot;Cordoba Fighting Dog&quot;</span>,
+                <span class="hljs-string">&quot;Coton de Tulear&quot;</span>,
+                <span class="hljs-string">&quot;Cretan Hound&quot;</span>,
+                <span class="hljs-string">&quot;Croatian Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Cumberland Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Curly Coated Retriever&quot;</span>,
+                <span class="hljs-string">&quot;Cursinu&quot;</span>,
+                <span class="hljs-string">&quot;Cão da Serra de Aires&quot;</span>,
+                <span class="hljs-string">&quot;Cão de Castro Laboreiro&quot;</span>,
+                <span class="hljs-string">&quot;Cão Fila de São Miguel&quot;</span>,
+                <span class="hljs-string">&quot;Dachshund&quot;</span>,
+                <span class="hljs-string">&quot;Dalmatian&quot;</span>,
+                <span class="hljs-string">&quot;Dandie Dinmont Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Danish Swedish Farmdog&quot;</span>,
+                <span class="hljs-string">&quot;Deutsche Bracke&quot;</span>,
+                <span class="hljs-string">&quot;Doberman Pinscher&quot;</span>,
+                <span class="hljs-string">&quot;Dogo Argentino&quot;</span>,
+                <span class="hljs-string">&quot;Dogo Cubano&quot;</span>,
+                <span class="hljs-string">&quot;Dogue de Bordeaux&quot;</span>,
+                <span class="hljs-string">&quot;Drentse Patrijshond&quot;</span>,
+                <span class="hljs-string">&quot;Drever&quot;</span>,
+                <span class="hljs-string">&quot;Dunker&quot;</span>,
+                <span class="hljs-string">&quot;Dutch Shepherd Dog&quot;</span>,
+                <span class="hljs-string">&quot;Dutch Smoushond&quot;</span>,
+                <span class="hljs-string">&quot;East Siberian Laika&quot;</span>,
+                <span class="hljs-string">&quot;East-European Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Elo&quot;</span>,
+                <span class="hljs-string">&quot;English Cocker Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;English Foxhound&quot;</span>,
+                <span class="hljs-string">&quot;English Mastiff&quot;</span>,
+                <span class="hljs-string">&quot;English Setter&quot;</span>,
+                <span class="hljs-string">&quot;English Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;English Springer Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;English Toy Terrier (Black &amp;amp; Tan)&quot;</span>,
+                <span class="hljs-string">&quot;English Water Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;English White Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Entlebucher Mountain Dog&quot;</span>,
+                <span class="hljs-string">&quot;Estonian Hound&quot;</span>,
+                <span class="hljs-string">&quot;Estrela Mountain Dog&quot;</span>,
+                <span class="hljs-string">&quot;Eurasier&quot;</span>,
+                <span class="hljs-string">&quot;Field Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Fila Brasileiro&quot;</span>,
+                <span class="hljs-string">&quot;Finnish Hound&quot;</span>,
+                <span class="hljs-string">&quot;Finnish Lapphund&quot;</span>,
+                <span class="hljs-string">&quot;Finnish Spitz&quot;</span>,
+                <span class="hljs-string">&quot;Flat-Coated Retriever&quot;</span>,
+                <span class="hljs-string">&quot;Formosan Mountain Dog&quot;</span>,
+                <span class="hljs-string">&quot;Fox Terrier (Smooth)&quot;</span>,
+                <span class="hljs-string">&quot;French Bulldog&quot;</span>,
+                <span class="hljs-string">&quot;French Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Galgo Español&quot;</span>,
+                <span class="hljs-string">&quot;Gascon Saintongeois&quot;</span>,
+                <span class="hljs-string">&quot;German Longhaired Pointer&quot;</span>,
+                <span class="hljs-string">&quot;German Pinscher&quot;</span>,
+                <span class="hljs-string">&quot;German Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;German Shorthaired Pointer&quot;</span>,
+                <span class="hljs-string">&quot;German Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;German Spitz&quot;</span>,
+                <span class="hljs-string">&quot;German Wirehaired Pointer&quot;</span>,
+                <span class="hljs-string">&quot;Giant Schnauzer&quot;</span>,
+                <span class="hljs-string">&quot;Glen of Imaal Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Golden Retriever&quot;</span>,
+                <span class="hljs-string">&quot;Gordon Setter&quot;</span>,
+                <span class="hljs-string">&quot;Gran Mastín de Borínquen&quot;</span>,
+                <span class="hljs-string">&quot;Grand Anglo-Français Blanc et Noir&quot;</span>,
+                <span class="hljs-string">&quot;Grand Anglo-Français Blanc et Orange&quot;</span>,
+                <span class="hljs-string">&quot;Grand Anglo-Français Tricolore&quot;</span>,
+                <span class="hljs-string">&quot;Grand Basset Griffon Vendéen&quot;</span>,
+                <span class="hljs-string">&quot;Grand Bleu de Gascogne&quot;</span>,
+                <span class="hljs-string">&quot;Grand Griffon Vendéen&quot;</span>,
+                <span class="hljs-string">&quot;Great Dane&quot;</span>,
+                <span class="hljs-string">&quot;Great Pyrenees&quot;</span>,
+                <span class="hljs-string">&quot;Greater Swiss Mountain Dog&quot;</span>,
+                <span class="hljs-string">&quot;Greek Harehound&quot;</span>,
+                <span class="hljs-string">&quot;Greenland Dog&quot;</span>,
+                <span class="hljs-string">&quot;Greyhound&quot;</span>,
+                <span class="hljs-string">&quot;Griffon Bleu de Gascogne&quot;</span>,
+                <span class="hljs-string">&quot;Griffon Bruxellois&quot;</span>,
+                <span class="hljs-string">&quot;Griffon Fauve de Bretagne&quot;</span>,
+                <span class="hljs-string">&quot;Griffon Nivernais&quot;</span>,
+                <span class="hljs-string">&quot;Hamiltonstövare&quot;</span>,
+                <span class="hljs-string">&quot;Hanover Hound&quot;</span>,
+                <span class="hljs-string">&quot;Hare Indian Dog&quot;</span>,
+                <span class="hljs-string">&quot;Harrier&quot;</span>,
+                <span class="hljs-string">&quot;Havanese&quot;</span>,
+                <span class="hljs-string">&quot;Hawaiian Poi Dog&quot;</span>,
+                <span class="hljs-string">&quot;Himalayan Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Hokkaido&quot;</span>,
+                <span class="hljs-string">&quot;Hovawart&quot;</span>,
+                <span class="hljs-string">&quot;Huntaway&quot;</span>,
+                <span class="hljs-string">&quot;Hygenhund&quot;</span>,
+                <span class="hljs-string">&quot;Ibizan Hound&quot;</span>,
+                <span class="hljs-string">&quot;Icelandic Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Indian pariah dog&quot;</span>,
+                <span class="hljs-string">&quot;Indian Spitz&quot;</span>,
+                <span class="hljs-string">&quot;Irish Red and White Setter&quot;</span>,
+                <span class="hljs-string">&quot;Irish Setter&quot;</span>,
+                <span class="hljs-string">&quot;Irish Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Irish Water Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Irish Wolfhound&quot;</span>,
+                <span class="hljs-string">&quot;Istrian Coarse-haired Hound&quot;</span>,
+                <span class="hljs-string">&quot;Istrian Shorthaired Hound&quot;</span>,
+                <span class="hljs-string">&quot;Italian Greyhound&quot;</span>,
+                <span class="hljs-string">&quot;Jack Russell Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Jagdterrier&quot;</span>,
+                <span class="hljs-string">&quot;Jämthund&quot;</span>,
+                <span class="hljs-string">&quot;Kai Ken&quot;</span>,
+                <span class="hljs-string">&quot;Kaikadi&quot;</span>,
+                <span class="hljs-string">&quot;Kanni&quot;</span>,
+                <span class="hljs-string">&quot;Karelian Bear Dog&quot;</span>,
+                <span class="hljs-string">&quot;Karst Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Keeshond&quot;</span>,
+                <span class="hljs-string">&quot;Kerry Beagle&quot;</span>,
+                <span class="hljs-string">&quot;Kerry Blue Terrier&quot;</span>,
+                <span class="hljs-string">&quot;King Charles Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;King Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Kintamani&quot;</span>,
+                <span class="hljs-string">&quot;Kishu&quot;</span>,
+                <span class="hljs-string">&quot;Komondor&quot;</span>,
+                <span class="hljs-string">&quot;Kooikerhondje&quot;</span>,
+                <span class="hljs-string">&quot;Koolie&quot;</span>,
+                <span class="hljs-string">&quot;Korean Jindo Dog&quot;</span>,
+                <span class="hljs-string">&quot;Kromfohrländer&quot;</span>,
+                <span class="hljs-string">&quot;Kumaon Mastiff&quot;</span>,
+                <span class="hljs-string">&quot;Kurī&quot;</span>,
+                <span class="hljs-string">&quot;Kuvasz&quot;</span>,
+                <span class="hljs-string">&quot;Kyi-Leo&quot;</span>,
+                <span class="hljs-string">&quot;Labrador Husky&quot;</span>,
+                <span class="hljs-string">&quot;Labrador Retriever&quot;</span>,
+                <span class="hljs-string">&quot;Lagotto Romagnolo&quot;</span>,
+                <span class="hljs-string">&quot;Lakeland Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Lancashire Heeler&quot;</span>,
+                <span class="hljs-string">&quot;Landseer&quot;</span>,
+                <span class="hljs-string">&quot;Lapponian Herder&quot;</span>,
+                <span class="hljs-string">&quot;Large Münsterländer&quot;</span>,
+                <span class="hljs-string">&quot;Leonberger&quot;</span>,
+                <span class="hljs-string">&quot;Lhasa Apso&quot;</span>,
+                <span class="hljs-string">&quot;Lithuanian Hound&quot;</span>,
+                <span class="hljs-string">&quot;Longhaired Whippet&quot;</span>,
+                <span class="hljs-string">&quot;Löwchen&quot;</span>,
+                <span class="hljs-string">&quot;Mahratta Greyhound&quot;</span>,
+                <span class="hljs-string">&quot;Maltese&quot;</span>,
+                <span class="hljs-string">&quot;Manchester Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Maremma Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;McNab&quot;</span>,
+                <span class="hljs-string">&quot;Mexican Hairless Dog&quot;</span>,
+                <span class="hljs-string">&quot;Miniature American Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Miniature Australian Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Miniature Fox Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Miniature Pinscher&quot;</span>,
+                <span class="hljs-string">&quot;Miniature Schnauzer&quot;</span>,
+                <span class="hljs-string">&quot;Miniature Shar Pei&quot;</span>,
+                <span class="hljs-string">&quot;Molossus&quot;</span>,
+                <span class="hljs-string">&quot;Montenegrin Mountain Hound&quot;</span>,
+                <span class="hljs-string">&quot;Moscow Watchdog&quot;</span>,
+                <span class="hljs-string">&quot;Moscow Water Dog&quot;</span>,
+                <span class="hljs-string">&quot;Mountain Cur&quot;</span>,
+                <span class="hljs-string">&quot;Mucuchies&quot;</span>,
+                <span class="hljs-string">&quot;Mudhol Hound&quot;</span>,
+                <span class="hljs-string">&quot;Mudi&quot;</span>,
+                <span class="hljs-string">&quot;Neapolitan Mastiff&quot;</span>,
+                <span class="hljs-string">&quot;New Zealand Heading Dog&quot;</span>,
+                <span class="hljs-string">&quot;Newfoundland&quot;</span>,
+                <span class="hljs-string">&quot;Norfolk Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Norfolk Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Norrbottenspets&quot;</span>,
+                <span class="hljs-string">&quot;North Country Beagle&quot;</span>,
+                <span class="hljs-string">&quot;Northern Inuit Dog&quot;</span>,
+                <span class="hljs-string">&quot;Norwegian Buhund&quot;</span>,
+                <span class="hljs-string">&quot;Norwegian Elkhound&quot;</span>,
+                <span class="hljs-string">&quot;Norwegian Lundehund&quot;</span>,
+                <span class="hljs-string">&quot;Norwich Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Old Croatian Sighthound&quot;</span>,
+                <span class="hljs-string">&quot;Old Danish Pointer&quot;</span>,
+                <span class="hljs-string">&quot;Old English Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Old English Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Old German Shepherd Dog&quot;</span>,
+                <span class="hljs-string">&quot;Olde English Bulldogge&quot;</span>,
+                <span class="hljs-string">&quot;Otterhound&quot;</span>,
+                <span class="hljs-string">&quot;Pachon Navarro&quot;</span>,
+                <span class="hljs-string">&quot;Paisley Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Pandikona&quot;</span>,
+                <span class="hljs-string">&quot;Papillon&quot;</span>,
+                <span class="hljs-string">&quot;Parson Russell Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Patterdale Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Pekingese&quot;</span>,
+                <span class="hljs-string">&quot;Pembroke Welsh Corgi&quot;</span>,
+                <span class="hljs-string">&quot;Perro de Presa Canario&quot;</span>,
+                <span class="hljs-string">&quot;Perro de Presa Mallorquin&quot;</span>,
+                <span class="hljs-string">&quot;Peruvian Hairless Dog&quot;</span>,
+                <span class="hljs-string">&quot;Petit Basset Griffon Vendéen&quot;</span>,
+                <span class="hljs-string">&quot;Petit Bleu de Gascogne&quot;</span>,
+                <span class="hljs-string">&quot;Phalène&quot;</span>,
+                <span class="hljs-string">&quot;Pharaoh Hound&quot;</span>,
+                <span class="hljs-string">&quot;Phu Quoc ridgeback dog&quot;</span>,
+                <span class="hljs-string">&quot;Picardy Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Plott Hound&quot;</span>,
+                <span class="hljs-string">&quot;Podenco Canario&quot;</span>,
+                <span class="hljs-string">&quot;Pointer (dog breed)&quot;</span>,
+                <span class="hljs-string">&quot;Polish Greyhound&quot;</span>,
+                <span class="hljs-string">&quot;Polish Hound&quot;</span>,
+                <span class="hljs-string">&quot;Polish Hunting Dog&quot;</span>,
+                <span class="hljs-string">&quot;Polish Lowland Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Polish Tatra Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Pomeranian&quot;</span>,
+                <span class="hljs-string">&quot;Pont-Audemer Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Poodle&quot;</span>,
+                <span class="hljs-string">&quot;Porcelaine&quot;</span>,
+                <span class="hljs-string">&quot;Portuguese Podengo&quot;</span>,
+                <span class="hljs-string">&quot;Portuguese Pointer&quot;</span>,
+                <span class="hljs-string">&quot;Portuguese Water Dog&quot;</span>,
+                <span class="hljs-string">&quot;Posavac Hound&quot;</span>,
+                <span class="hljs-string">&quot;Pražský Krysařík&quot;</span>,
+                <span class="hljs-string">&quot;Pudelpointer&quot;</span>,
+                <span class="hljs-string">&quot;Pug&quot;</span>,
+                <span class="hljs-string">&quot;Puli&quot;</span>,
+                <span class="hljs-string">&quot;Pumi&quot;</span>,
+                <span class="hljs-string">&quot;Pungsan Dog&quot;</span>,
+                <span class="hljs-string">&quot;Pyrenean Mastiff&quot;</span>,
+                <span class="hljs-string">&quot;Pyrenean Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Rafeiro do Alentejo&quot;</span>,
+                <span class="hljs-string">&quot;Rajapalayam&quot;</span>,
+                <span class="hljs-string">&quot;Rampur Greyhound&quot;</span>,
+                <span class="hljs-string">&quot;Rastreador Brasileiro&quot;</span>,
+                <span class="hljs-string">&quot;Rat Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Ratonero Bodeguero Andaluz&quot;</span>,
+                <span class="hljs-string">&quot;Redbone Coonhound&quot;</span>,
+                <span class="hljs-string">&quot;Rhodesian Ridgeback&quot;</span>,
+                <span class="hljs-string">&quot;Rottweiler&quot;</span>,
+                <span class="hljs-string">&quot;Rough Collie&quot;</span>,
+                <span class="hljs-string">&quot;Russell Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Russian Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Russian tracker&quot;</span>,
+                <span class="hljs-string">&quot;Russo-European Laika&quot;</span>,
+                <span class="hljs-string">&quot;Sabueso Español&quot;</span>,
+                <span class="hljs-string">&quot;Saint-Usuge Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Sakhalin Husky&quot;</span>,
+                <span class="hljs-string">&quot;Saluki&quot;</span>,
+                <span class="hljs-string">&quot;Samoyed&quot;</span>,
+                <span class="hljs-string">&quot;Sapsali&quot;</span>,
+                <span class="hljs-string">&quot;Schapendoes&quot;</span>,
+                <span class="hljs-string">&quot;Schillerstövare&quot;</span>,
+                <span class="hljs-string">&quot;Schipperke&quot;</span>,
+                <span class="hljs-string">&quot;Schweizer Laufhund&quot;</span>,
+                <span class="hljs-string">&quot;Schweizerischer Niederlaufhund&quot;</span>,
+                <span class="hljs-string">&quot;Scotch Collie&quot;</span>,
+                <span class="hljs-string">&quot;Scottish Deerhound&quot;</span>,
+                <span class="hljs-string">&quot;Scottish Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Sealyham Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Segugio Italiano&quot;</span>,
+                <span class="hljs-string">&quot;Seppala Siberian Sleddog&quot;</span>,
+                <span class="hljs-string">&quot;Serbian Hound&quot;</span>,
+                <span class="hljs-string">&quot;Serbian Tricolour Hound&quot;</span>,
+                <span class="hljs-string">&quot;Shar Pei&quot;</span>,
+                <span class="hljs-string">&quot;Shetland Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Shiba Inu&quot;</span>,
+                <span class="hljs-string">&quot;Shih Tzu&quot;</span>,
+                <span class="hljs-string">&quot;Shikoku&quot;</span>,
+                <span class="hljs-string">&quot;Shiloh Shepherd Dog&quot;</span>,
+                <span class="hljs-string">&quot;Siberian Husky&quot;</span>,
+                <span class="hljs-string">&quot;Silken Windhound&quot;</span>,
+                <span class="hljs-string">&quot;Sinhala Hound&quot;</span>,
+                <span class="hljs-string">&quot;Skye Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Sloughi&quot;</span>,
+                <span class="hljs-string">&quot;Slovak Cuvac&quot;</span>,
+                <span class="hljs-string">&quot;Slovakian Rough-haired Pointer&quot;</span>,
+                <span class="hljs-string">&quot;Small Greek Domestic Dog&quot;</span>,
+                <span class="hljs-string">&quot;Small Münsterländer&quot;</span>,
+                <span class="hljs-string">&quot;Smooth Collie&quot;</span>,
+                <span class="hljs-string">&quot;South Russian Ovcharka&quot;</span>,
+                <span class="hljs-string">&quot;Southern Hound&quot;</span>,
+                <span class="hljs-string">&quot;Spanish Mastiff&quot;</span>,
+                <span class="hljs-string">&quot;Spanish Water Dog&quot;</span>,
+                <span class="hljs-string">&quot;Spinone Italiano&quot;</span>,
+                <span class="hljs-string">&quot;Sporting Lucas Terrier&quot;</span>,
+                <span class="hljs-string">&quot;St. Bernard&quot;</span>,
+                <span class="hljs-string">&quot;St. John&#x27;s water dog&quot;</span>,
+                <span class="hljs-string">&quot;Stabyhoun&quot;</span>,
+                <span class="hljs-string">&quot;Staffordshire Bull Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Standard Schnauzer&quot;</span>,
+                <span class="hljs-string">&quot;Stephens Cur&quot;</span>,
+                <span class="hljs-string">&quot;Styrian Coarse-haired Hound&quot;</span>,
+                <span class="hljs-string">&quot;Sussex Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Swedish Lapphund&quot;</span>,
+                <span class="hljs-string">&quot;Swedish Vallhund&quot;</span>,
+                <span class="hljs-string">&quot;Tahltan Bear Dog&quot;</span>,
+                <span class="hljs-string">&quot;Taigan&quot;</span>,
+                <span class="hljs-string">&quot;Talbot&quot;</span>,
+                <span class="hljs-string">&quot;Tamaskan Dog&quot;</span>,
+                <span class="hljs-string">&quot;Teddy Roosevelt Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Telomian&quot;</span>,
+                <span class="hljs-string">&quot;Tenterfield Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Thai Bangkaew Dog&quot;</span>,
+                <span class="hljs-string">&quot;Thai Ridgeback&quot;</span>,
+                <span class="hljs-string">&quot;Tibetan Mastiff&quot;</span>,
+                <span class="hljs-string">&quot;Tibetan Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Tibetan Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Tornjak&quot;</span>,
+                <span class="hljs-string">&quot;Tosa&quot;</span>,
+                <span class="hljs-string">&quot;Toy Bulldog&quot;</span>,
+                <span class="hljs-string">&quot;Toy Fox Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Toy Manchester Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Toy Trawler Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Transylvanian Hound&quot;</span>,
+                <span class="hljs-string">&quot;Treeing Cur&quot;</span>,
+                <span class="hljs-string">&quot;Treeing Walker Coonhound&quot;</span>,
+                <span class="hljs-string">&quot;Trigg Hound&quot;</span>,
+                <span class="hljs-string">&quot;Tweed Water Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Tyrolean Hound&quot;</span>,
+                <span class="hljs-string">&quot;Vizsla&quot;</span>,
+                <span class="hljs-string">&quot;Volpino Italiano&quot;</span>,
+                <span class="hljs-string">&quot;Weimaraner&quot;</span>,
+                <span class="hljs-string">&quot;Welsh Sheepdog&quot;</span>,
+                <span class="hljs-string">&quot;Welsh Springer Spaniel&quot;</span>,
+                <span class="hljs-string">&quot;Welsh Terrier&quot;</span>,
+                <span class="hljs-string">&quot;West Highland White Terrier&quot;</span>,
+                <span class="hljs-string">&quot;West Siberian Laika&quot;</span>,
+                <span class="hljs-string">&quot;Westphalian Dachsbracke&quot;</span>,
+                <span class="hljs-string">&quot;Wetterhoun&quot;</span>,
+                <span class="hljs-string">&quot;Whippet&quot;</span>,
+                <span class="hljs-string">&quot;White Shepherd&quot;</span>,
+                <span class="hljs-string">&quot;Wire Fox Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Wirehaired Pointing Griffon&quot;</span>,
+                <span class="hljs-string">&quot;Wirehaired Vizsla&quot;</span>,
+                <span class="hljs-string">&quot;Yorkshire Terrier&quot;</span>,
+                <span class="hljs-string">&quot;Šarplaninac&quot;</span>,
+            ],
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Sparar&quot;</span>);
+        },
+        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Avbryt&quot;</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">valdRas</span> = <span class="hljs-string">&quot;&quot;</span>;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">valtNamn</span> = <span class="hljs-string">&quot;&quot;</span>;
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+<span class="hljs-selector-class">.space</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10rem</span>;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        
+
+                    </div>
+                </main>
+            </div>
+
+            <footer>
+                <!-- prettier-ignore --><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../../gettingstarted/about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right">
+    <!-- prettier-ignore -->
+    <div class="version">
+    <!-- prettier-ignore -->
+    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/1c7c86a4726fc4e2fd8d84cc72a27b870a462afd">1c7c86a</a>)<br />
+        <a href="https://github.com/Forsakringskassan/designsystem/pull/88">PR 88</a><br />
+        2024-11-21 12:00
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div>
+
+        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div>
+<!-- prettier-ignore -->
+        <dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label"> Sök </label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/processors/motd/index-8c87e1.js"
+            crossorigin
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            
+        ></script>
+        <script
+            src="../../assets/processors/selectable-version/select-version-d176d5.js"
+            crossorigin
+            integrity="sha384-COFm7vMTiEm+ijckiQnc2rnnGbhF9EczN/NpqxHnp8Fw6EmIg8jGEl5GmHYfoTGk"
+            
+        ></script>
+        <script
+            src="../../assets/main-dfa38f.js"
+            crossorigin
+            integrity="sha384-T1ZkxKemccCwNVOSd/t0j7qhUN/HTQZe6DKXgL25IiVBJfBkXh4np4ADbioOyQEB"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/input/combobox.md
+         Document ID: fs:docs/components/input/combobox.md
+         Document name: combobox
+         Document alias: component:FTextField
+
+    -->
+</html>

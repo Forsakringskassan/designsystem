@@ -1656,10 +1656,10 @@
   }
 
   // virtual-entry:./packages/vue/src/components/FOffline/examples/FOfflineExample.vue
-  var import_vue29 = __require("vue");
+  var import_vue30 = __require("vue");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=script
-  var import_vue27 = __require("vue");
+  var import_vue28 = __require("vue");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
   var import_vue3 = __require("vue");
@@ -3538,7 +3538,7 @@
                 type: "submit",
                 class: "button button--primary button-group__item button--large"
               }, [
-                (0, import_vue26.createCommentVNode)(' @slot @deprecated - Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
+                (0, import_vue26.createCommentVNode)(' @slot - @deprecated Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
                 (0, import_vue26.renderSlot)(_ctx.$slots, "submit-button-text", {}, () => [
                   (0, import_vue26.createTextVNode)(
                     (0, import_vue26.toDisplayString)(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")),
@@ -3553,7 +3553,7 @@
                 class: "button button--secondary button-group__item button--large",
                 onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
               }, [
-                (0, import_vue26.createCommentVNode)(' @slot @deprecated -  Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
+                (0, import_vue26.createCommentVNode)(' @slot - @deprecated Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
                 (0, import_vue26.renderSlot)(_ctx.$slots, "cancel-button-text", {}, () => [
                   (0, import_vue26.createTextVNode)(
                     (0, import_vue26.toDisplayString)(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")),
@@ -3586,9 +3586,12 @@
     return Boolean(renderSlotText(slot, props, options));
   }
 
+  // packages/vue/src/utils/use-modal.ts
+  var import_vue27 = __require("vue");
+
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=script
   var EVENTS = ["online", "offline"];
-  var FOffline_default = (0, import_vue27.defineComponent)({
+  var FOffline_default = (0, import_vue28.defineComponent)({
     name: "FOffline",
     components: {
       FIcon: FIcon_default2,
@@ -3638,7 +3641,7 @@
   });
 
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=template
-  var import_vue28 = __require("vue");
+  var import_vue29 = __require("vue");
   var _hoisted_18 = ["role"];
   var _hoisted_27 = {
     key: 0,
@@ -3648,41 +3651,41 @@
   var _hoisted_44 = { class: "offline__content" };
   var _hoisted_53 = ["aria-hidden"];
   function render12(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue28.resolveComponent)("f-icon");
-    const _component_i_flex_item = (0, import_vue28.resolveComponent)("i-flex-item");
-    const _component_i_flex = (0, import_vue28.resolveComponent)("i-flex");
-    return (0, import_vue28.openBlock)(), (0, import_vue28.createElementBlock)("div", {
+    const _component_f_icon = (0, import_vue29.resolveComponent)("f-icon");
+    const _component_i_flex_item = (0, import_vue29.resolveComponent)("i-flex-item");
+    const _component_i_flex = (0, import_vue29.resolveComponent)("i-flex");
+    return (0, import_vue29.openBlock)(), (0, import_vue29.createElementBlock)("div", {
       ref: "offline",
       class: "offline__wrapper",
       role: _ctx.role
     }, [
-      !_ctx.isOnline ? ((0, import_vue28.openBlock)(), (0, import_vue28.createElementBlock)("div", _hoisted_27, [
-        (0, import_vue28.createVNode)(_component_i_flex, { gap: "2x" }, {
-          default: (0, import_vue28.withCtx)(() => [
-            (0, import_vue28.createVNode)(_component_i_flex_item, {
+      !_ctx.isOnline ? ((0, import_vue29.openBlock)(), (0, import_vue29.createElementBlock)("div", _hoisted_27, [
+        (0, import_vue29.createVNode)(_component_i_flex, { gap: "2x" }, {
+          default: (0, import_vue29.withCtx)(() => [
+            (0, import_vue29.createVNode)(_component_i_flex_item, {
               class: "offline__icon",
               shrink: "",
               align: "center"
             }, {
-              default: (0, import_vue28.withCtx)(() => [
-                (0, import_vue28.createElementVNode)("span", _hoisted_35, [
-                  (0, import_vue28.createVNode)(_component_f_icon, { name: "triangle" }),
-                  (0, import_vue28.createVNode)(_component_f_icon, { name: "alert" })
+              default: (0, import_vue29.withCtx)(() => [
+                (0, import_vue29.createElementVNode)("span", _hoisted_35, [
+                  (0, import_vue29.createVNode)(_component_f_icon, { name: "triangle" }),
+                  (0, import_vue29.createVNode)(_component_f_icon, { name: "alert" })
                 ])
               ]),
               _: 1
               /* STABLE */
             }),
-            (0, import_vue28.createVNode)(_component_i_flex_item, {
+            (0, import_vue29.createVNode)(_component_i_flex_item, {
               class: "offline_content",
               grow: "",
               align: "center"
             }, {
-              default: (0, import_vue28.withCtx)(() => [
-                (0, import_vue28.createElementVNode)("p", _hoisted_44, [
-                  (0, import_vue28.createCommentVNode)(" @slot Slot for customizing text message. "),
-                  (0, import_vue28.renderSlot)(_ctx.$slots, "default", {}, () => [
-                    _cache[0] || (_cache[0] = (0, import_vue28.createTextVNode)(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu "))
+              default: (0, import_vue29.withCtx)(() => [
+                (0, import_vue29.createElementVNode)("p", _hoisted_44, [
+                  (0, import_vue29.createCommentVNode)(" @slot Slot for customizing text message. "),
+                  (0, import_vue29.renderSlot)(_ctx.$slots, "default", {}, () => [
+                    _cache[0] || (_cache[0] = (0, import_vue29.createTextVNode)(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu "))
                   ])
                 ])
               ]),
@@ -3693,12 +3696,12 @@
           _: 3
           /* FORWARDED */
         })
-      ])) : (0, import_vue28.createCommentVNode)("v-if", true),
-      (0, import_vue28.withDirectives)((0, import_vue28.createElementVNode)("span", {
+      ])) : (0, import_vue29.createCommentVNode)("v-if", true),
+      (0, import_vue29.withDirectives)((0, import_vue29.createElementVNode)("span", {
         class: "sr-only",
         "aria-hidden": _ctx.shouldNotRead ? "true" : void 0
       }, " Din internetuppkoppling fungerar igen ", 8, _hoisted_53), [
-        [import_vue28.vShow, _ctx.isOnline]
+        [import_vue29.vShow, _ctx.isOnline]
       ])
     ], 8, _hoisted_18);
   }
@@ -3709,8 +3712,8 @@
   var FOffline_default2 = FOffline_default;
 
   // virtual-entry:./packages/vue/src/components/FOffline/examples/FOfflineExample.vue
-  var import_vue30 = __require("vue");
-  var exampleComponent = (0, import_vue29.defineComponent)({
+  var import_vue31 = __require("vue");
+  var exampleComponent = (0, import_vue30.defineComponent)({
     name: "FOfflineExample",
     components: { FOffline: FOffline_default2 },
     data() {
@@ -3732,13 +3735,13 @@
     }
   });
   function render13(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_offline = (0, import_vue30.resolveComponent)("f-offline");
-    const _directive_test = (0, import_vue30.resolveDirective)("test");
-    return (0, import_vue30.withDirectives)(((0, import_vue30.openBlock)(), (0, import_vue30.createElementBlock)("div", null, [
-      (0, import_vue30.createVNode)(_component_f_offline, null, {
-        default: (0, import_vue30.withCtx)(() => [
-          (0, import_vue30.createTextVNode)(
-            (0, import_vue30.toDisplayString)(_ctx.offlineMessage),
+    const _component_f_offline = (0, import_vue31.resolveComponent)("f-offline");
+    const _directive_test = (0, import_vue31.resolveDirective)("test");
+    return (0, import_vue31.withDirectives)(((0, import_vue31.openBlock)(), (0, import_vue31.createElementBlock)("div", null, [
+      (0, import_vue31.createVNode)(_component_f_offline, null, {
+        default: (0, import_vue31.withCtx)(() => [
+          (0, import_vue31.createTextVNode)(
+            (0, import_vue31.toDisplayString)(_ctx.offlineMessage),
             1
             /* TEXT */
           )
@@ -3746,7 +3749,7 @@
         _: 1
         /* STABLE */
       }),
-      (0, import_vue30.createElementVNode)("button", {
+      (0, import_vue31.createElementVNode)("button", {
         type: "button",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.toggle && _ctx.toggle(...args))
       }, "Visa/D\xF6lj komponent")

@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-b76412.css"
+            href="../../assets/docs-e63955.css"
             crossorigin
-            integrity="sha384-6ydUx6dd0TpxDN+u6EIn3QRxxlZNDQwbBNa3a49ot/oCDlW8mhB4Brbl5prnJoSp"
+            integrity="sha384-YAYA9cFRS9ZihaF2GqTCpFlXz2hl/tHUk4x/qmxocNubZel95HpbVgWyB8HQW2qL"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-3cb848.css"
+            href="../../assets/docs-exp-fa6182.css"
             crossorigin
-            integrity="sha384-RIFdezZEyghKBnWGnU8GalsCL/pyORCRQSD/JH9H2VJRldNydpMFVdrliikCHoE5"
+            integrity="sha384-OEZmY/G4NV8arCXnz/eGIgsSzQri2JjCVZuKnSqt2W1z5AVkTwQ7ukNywlu/IAEQ"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-b89a7a.css"
+            href="../../assets/docs-int-1bec58.css"
             crossorigin
-            integrity="sha384-GsPRhr7ciVP6tZLZNtu7XqSTyiRF9MKoN27IgzNFOlySwiHbE70mXb4Axk1KsG52"
+            integrity="sha384-MZlBNeD6FvCR2Ur+2y47Hz1Exh2VAs9HrfySfEgY1SMH024fBJgN3+UPTJoWAsvT"
             data-theme="int" disabled
         />
 
@@ -89,16 +89,35 @@
 
         <link
             rel="preload"
-            href="../../search-data-94e81b.json"
+            href="../../search-data-b866a5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Chtpm//eoBRjpdZ+APfy0ob6+F02m5floVSCivzjfjErql5JbePLUgtfqSPuQKdS"
+            integrity="sha384-QRdbQTmwZ4iC3w54yAXBaeUkCXOtpowyLi2PNobrZ5gMmDqzDcfHXuUgXXfSQMXf"
             id="search-data"
         />
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -557,7 +576,7 @@
             href="../functions/modal-functions/confirm-modal.html"
             
         >
-            confirmModal
+            confirmModal()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -567,7 +586,7 @@
             href="../functions/modal-functions/form-modal.html"
             
         >
-            formModal
+            formModal()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -624,6 +643,16 @@
         >
             tableScrollClasses
         </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../functions/use-modal.html"
+            
+        >
+            useModal()
+        </a>
     </li><!-- prettier-ignore --></ol>
 
             
@@ -666,6 +695,49 @@
             
         >
             Skärmläsare
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>i18next</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../i18next-translate/i18next.html"
+            
+        >
+            i18next
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../i18next-translate/i18next-provider.html"
+            
+        >
+            i18nextProvider
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../i18next-translate/i18next-provider-interface.html"
+            
+        >
+            I18nextProvider
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -846,14 +918,14 @@
 
                 <!-- prettier-ignore -->
                 <script
-                    src="../../assets/vendor-vue-a2f4e5.js"
+                    src="../../assets/vendor-vue-468cb1.js"
                     crossorigin
-                    integrity="sha384-G0p1/R2lkvkBeu18tmdftl6amM/ogqlPyFs4TbAaHZ6wWDgDjawSdlikX3tImEFu"
+                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-1193bc.js"
+                    src="../../assets/vendor-fkui-logic-c7d12d.js"
                     crossorigin
-                    integrity="sha384-UNmhiYi/XVBF/0CUVZ3OrzBhrjxEMOts2MfS8iFwj7DP+u5HC5r8NIJz+MsdQyrL"
+                    integrity="sha384-KfBge6nMMuRpeR0dh95yP8Ac/rX6Y/0afF5XxYhI4fq7WSaByc0WiVAny9Sy7IJY"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-9b7c35.js"
@@ -861,9 +933,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-db389d.js"
+                    src="../../assets/vendor-fkui-vue-161a32.js"
                     crossorigin
-                    integrity="sha384-Lh2kzV+Pq7IcJkOPebWOLOKjxZrphyih7C5iEFE9uQ7qjv2/XrboswM26m4sPzU4"
+                    integrity="sha384-Yc72RazHIAjN3LoTyqkFMHKg6pF3icB5ZECAuT/25sWvhVg4cgMXLAG/nmNu3Q5R"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -888,10 +960,10 @@ Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ValidationPlugin</span>);
 </code></pre>
                 </div>
@@ -903,10 +975,10 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>({
     <span class="hljs-string">&#x27;required&#x27;</span>, <span class="hljs-string">&#x27;Fältet krävs&#x27;</span>,
     <span class="hljs-string">&#x27;personnummerFormat&#x27;</span>, <span class="hljs-string">&#x27;Felaktigt format på personnummer&#x27;</span>,
@@ -920,10 +992,10 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(
     <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
@@ -1139,10 +1211,10 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">validatorConfigs</span>: <span class="hljs-title class_">ValidatorConfigs</span> = {
     <span class="hljs-attr">email</span>: { <span class="hljs-attr">errorMessage</span>: <span class="hljs-string">&#x27;E-posten är inte korrekt ifylld&#x27;</span> },
@@ -1631,10 +1703,10 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
 </code></pre>
                 </div>
             </div>
-        <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../../guides/validation.html">Validering och felhantering</a></p>
-<p><a href="../../guides/custom-validator.html">Validator - anpassad</a></p>
-<p><a href="../../guides/cross-validation.html">Korsvalidering</a></p>
-<p><a href="../../guides/length-validation.html">Längdvalidering</a></p>
+        <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p>
+<p><a href="../../guides/validation-and-error-handling/custom-validator.html">Validator - anpassad</a></p>
+<p><a href="../../guides/validation-and-error-handling/cross-validation.html">Korsvalidering</a></p>
+<p><a href="../../guides/validation-and-error-handling/length-validation.html">Längdvalidering</a></p>
 <p><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
 
 
@@ -1657,10 +1729,38 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/eae56c9e940a9160c7585e2be398a76255dbdf76">eae56c9</a>)<br />
+    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/1c7c86a4726fc4e2fd8d84cc72a27b870a462afd">1c7c86a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/88">PR 88</a><br />
-        2024-10-24 07:04
+        2024-11-21 12:00
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -1746,15 +1846,21 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/processors/selectable-version/select-version-42b338.js"
+            src="../../assets/processors/motd/index-8c87e1.js"
             crossorigin
-            integrity="sha384-9teClDZoUmFqd4Uy9zGlWIwizRBX8jp3Tuvbf8GCf6jj1pTG5nVxJGQ/gOCfOsnK"
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
             
         ></script>
         <script
-            src="../../assets/main-8b3997.js"
+            src="../../assets/processors/selectable-version/select-version-d176d5.js"
             crossorigin
-            integrity="sha384-tMUsZzOmoZSz2qWzoCwYEHpbl3EEWosdUVGhRQ8XHBCBoP4QIjodcfAg2qFXy/NO"
+            integrity="sha384-COFm7vMTiEm+ijckiQnc2rnnGbhF9EczN/NpqxHnp8Fw6EmIg8jGEl5GmHYfoTGk"
+            
+        ></script>
+        <script
+            src="../../assets/main-dfa38f.js"
+            crossorigin
+            integrity="sha384-T1ZkxKemccCwNVOSd/t0j7qhUN/HTQZe6DKXgL25IiVBJfBkXh4np4ADbioOyQEB"
             
         ></script>
     </body>
