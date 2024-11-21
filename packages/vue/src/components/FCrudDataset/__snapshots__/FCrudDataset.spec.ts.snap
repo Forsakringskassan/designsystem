@@ -2,48 +2,52 @@
 
 exports[`snapshot should match snapshot 1`] = `
 <div class="crud-dataset">
-  <div id="cancelMessage"> Modalen har stängts </div>
+  <div id="cancelMessage">Modalen har stängts</div>
   <table>
-    <tr>
-      <th> id </th>
-      <th> name </th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>a</td>
-      <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
-          <!--v-if-->
-          <!--v-if-->Ändra
-        </button></td>
-      <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
-          <!--v-if-->
-          <!--v-if-->Ta bort
-        </button></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>b</td>
-      <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
-          <!--v-if-->
-          <!--v-if-->Ändra
-        </button></td>
-      <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
-          <!--v-if-->
-          <!--v-if-->Ta bort
-        </button></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>c</td>
-      <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
-          <!--v-if-->
-          <!--v-if-->Ändra
-        </button></td>
-      <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
-          <!--v-if-->
-          <!--v-if-->Ta bort
-        </button></td>
-    </tr>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>a</td>
+        <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
+            <!--v-if-->
+            <!--v-if-->Ändra
+          </button></td>
+        <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
+            <!--v-if-->
+            <!--v-if-->Ta bort
+          </button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>b</td>
+        <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
+            <!--v-if-->
+            <!--v-if-->Ändra
+          </button></td>
+        <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
+            <!--v-if-->
+            <!--v-if-->Ta bort
+          </button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>c</td>
+        <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
+            <!--v-if-->
+            <!--v-if-->Ändra
+          </button></td>
+        <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
+            <!--v-if-->
+            <!--v-if-->Ta bort
+          </button></td>
+      </tr>
+    </tbody>
   </table>
   <div><button type="button" class="button button--tertiary crud-dataset__add-button">
       <f-icon-stub name="plus" library="f" class="button__icon"></f-icon-stub>Lägg till ny
