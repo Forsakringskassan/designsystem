@@ -236,6 +236,24 @@ describe("tests", () => {
         mountTestComponent(true, arrayWithOneTestItem);
         popupMenu.getItemLink(0).should("have.attr", "target", "_blank");
     });
+
+    it("should activate link when item with `href` is clicked", () => {
+        const items = [
+            {
+                label: "foobar",
+                key: "foobar",
+                href: "#foobar",
+            },
+        ];
+        mountTestComponent(true, items);
+
+        cy.url().should("not.contain", "#foobar");
+        popupMenu.item(0).click();
+        cy.url().should("contain", "#foobar");
+
+        // Restore URL state.
+        cy.location().go("back");
+    });
 });
 
 describe("pageobject", () => {
