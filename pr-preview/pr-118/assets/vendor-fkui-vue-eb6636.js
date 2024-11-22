@@ -9480,18 +9480,27 @@
       return -1;
     }
     return this.items.indexOf(item);
-  }, async onClickItem(item, doClick = false) {
-    var _a;
-    if (item.key !== this.lastSelectedItem) {
-      this.$emit("update:modelValue", item.key);
-      this.$emit("select", item.key);
-      this.lastSelectedItem = item.key;
+  }, onClickItem(event, item) {
+    this.selectItem(item.key);
+    const target = event.target;
+    const isAnchor = target instanceof HTMLElement && target.tagName === "A";
+    if (!isAnchor) {
+      this.clickItemAnchor(item);
+    }
+  }, clickItemAnchor(item) {
+    if (!item.href) {
+      return;
+    }
+    const index = this.items.indexOf(item);
+    const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+    anchors[index].click();
+  }, selectItem(key) {
+    if (key !== this.lastSelectedItem) {
+      this.$emit("update:modelValue", key);
+      this.$emit("select", key);
+      this.lastSelectedItem = key;
     }
     this.$emit("close");
-    if (item.href && doClick) {
-      const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-      (_a = anchors[this.currentFocusedItemIndex]) == null ? void 0 : _a.click();
-    }
   }, itemClasses(item) {
     const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
     return ["ipopupmenu__list__item", ...highlight];
@@ -9513,7 +9522,9 @@
     if (index !== this.currentFocusedItemIndex) {
       await this.setFocusOnItem(index);
     }
-    await this.onClickItem(this.items[index], true);
+    const item = this.items[index];
+    this.selectItem(item.key);
+    this.clickItemAnchor(item);
   }, setFocusedItemIndex(index) {
     this.currentFocusedItemIndex = index;
   }, onKeyUp(event) {
@@ -9560,7 +9571,7 @@
         import_vue.Fragment,
         null,
         (0, import_vue.renderList)(_ctx.items, (item, index) => {
-          return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", { ref_for: true, ref: "items", key: item.key, role: "presentation", class: (0, import_vue.normalizeClass)(_ctx.itemClasses(item)), onClick: ($event) => _ctx.onClickItem(item) }, [(0, import_vue.createElementVNode)("a", { ref_for: true, ref: "anchors", "data-ref-index": index, href: item.href, role: "menuitem", target: item.target, tabindex: "0" }, [_ctx.isSelected(index) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$6, [(0, import_vue.createElementVNode)(
+          return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", { ref_for: true, ref: "items", key: item.key, role: "presentation", class: (0, import_vue.normalizeClass)(_ctx.itemClasses(item)), onClick: (event) => _ctx.onClickItem(event, item) }, [(0, import_vue.createElementVNode)("a", { ref_for: true, ref: "anchors", "data-ref-index": index, href: item.href, role: "menuitem", target: item.target, tabindex: "0" }, [_ctx.isSelected(index) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$6, [(0, import_vue.createElementVNode)(
             "span",
             null,
             (0, import_vue.toDisplayString)(_ctx.selectedMenuItemScreenReaderText) + "\xA0",
@@ -9764,13 +9775,23 @@
       this.togglePopup(!this.popupOpen);
       return;
     }
-    await this.onClickItem(this.items[index], true);
-  }, async onClickItem(item, doClick = false) {
-    var _a;
+    const item = this.items[index];
     this.selectItem(item.key);
-    if (item.href && doClick) {
-      (_a = this.getAnchor(this.items.indexOf(item))) == null ? void 0 : _a.click();
+    this.clickItemAnchor(item);
+  }, onClickItem(event, item) {
+    this.selectItem(item.key);
+    const target = event.target;
+    const isAnchor = target instanceof HTMLElement && target.tagName === "A";
+    if (!isAnchor) {
+      this.clickItemAnchor(item);
     }
+  }, clickItemAnchor(item) {
+    var _a;
+    if (!item.href) {
+      return;
+    }
+    const index = this.items.indexOf(item);
+    (_a = this.getAnchor(index)) == null ? void 0 : _a.click();
   }, onPopupMenuItemSelected(key) {
     this.selectItem(key);
     if (key !== this.selectedItem) {
@@ -9867,7 +9888,7 @@
         import_vue.Fragment,
         null,
         (0, import_vue.renderList)(_ctx.items, (item, index) => {
-          return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", { key: item.key, ref_for: true, ref: "items", "data-ref-index": index, class: (0, import_vue.normalizeClass)(_ctx.itemClasses(item, index)), role: "none", onClick: ($event) => _ctx.onClickItem(item) }, [(0, import_vue.createElementVNode)("div", _hoisted_3$8, [(0, import_vue.createElementVNode)("a", { ref_for: true, ref: "anchors", "data-ref-index": index, tabindex: "0", href: item.href, target: item.target, class: "imenu__list__anchor", role: "menuitem" }, [_ctx.showItemSrText(index) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$5, [(0, import_vue.createElementVNode)(
+          return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", { key: item.key, ref_for: true, ref: "items", "data-ref-index": index, class: (0, import_vue.normalizeClass)(_ctx.itemClasses(item, index)), role: "none", onClick: (event) => _ctx.onClickItem(event, item) }, [(0, import_vue.createElementVNode)("div", _hoisted_3$8, [(0, import_vue.createElementVNode)("a", { ref_for: true, ref: "anchors", "data-ref-index": index, tabindex: "0", href: item.href, target: item.target, class: "imenu__list__anchor", role: "menuitem" }, [_ctx.showItemSrText(index) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$5, [(0, import_vue.createElementVNode)(
             "span",
             null,
             (0, import_vue.toDisplayString)(_ctx.selectedItemSrText) + "\xA0",
