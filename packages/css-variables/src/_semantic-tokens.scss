@@ -26,8 +26,16 @@
 
     // ICON
 
+    --fkds-icon-color-content-inverted: #{$palette-color-white-100}; // global
+    --fkds-icon-color-feedback-background-negative: #{$palette-color-red-100}; // global
+
     // TEXT
 
     --fkds-color-text-inverted: #{$palette-color-white-100}; // global
     --fkds-color-text-primary: #{$palette-color-fk-black-100}; // global
+    --fkds-color-text-secondary: #{$palette-color-fk-black-70}; // global
+
+    // TEXT - FEEDBACK
+
+    --fkds-color-feedback-text-negative: #{$palette-color-red-100}; // global
 }

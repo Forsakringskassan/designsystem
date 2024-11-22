@@ -13,9 +13,9 @@
             <!--
                 @slot Optional slot for description.
                 @binding {string[]} descriptionClass CSS classes for primary description content.
-                @binding {string[]} discreteDescriptionClass CSS classes for format description.
+                @binding {string[]} discreetDescriptionClass CSS classes for format description.
             -->
-            <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+            <slot name="description" v-bind="{ descriptionClass, discreetDescriptionClass }"></slot>
             <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
                 <f-icon class="label__icon--left" name="error"></f-icon>
                 <slot name="error-message"></slot>
@@ -29,9 +29,9 @@
         <!--
             @slot Optional slot for description.
             @binding {string[]} descriptionClass CSS classes for primary description content.
-            @binding {string[]} discreteDescriptionClass CSS classes for format description.
+            @binding {string[]} discreetDescriptionClass CSS classes for format description.
           -->
-        <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+        <slot name="description" v-bind="{ descriptionClass, discreetDescriptionClass }"></slot>
         <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
             <f-icon class="label__icon--left" name="error"></f-icon>
             <!-- @slot Slot for displaying single or several error messages. -->
@@ -67,7 +67,7 @@ export default defineComponent({
     data() {
         return {
             descriptionClass: ["label__description"],
-            discreteDescriptionClass: ["label__description", "label__description--discrete"],
+            discreetDescriptionClass: ["label__description", "label__description--discreet"],
         };
     },
     computed: {
