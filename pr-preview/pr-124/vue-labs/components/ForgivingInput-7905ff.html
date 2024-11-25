@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="sv" class="layout--example">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Tidsinmatning - FKUI Labs</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../assets/docs-75e6c2.css"
+            crossorigin
+            integrity="sha384-8eZZmVX9K0eWlfZ4bw3xCaDUqnjescB1UgKQnUhuJn9v5gSu3pmr4c7uq1Xa3uLa"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-exp-6e546b.css"
+            crossorigin
+            integrity="sha384-WRtOzNs03sUVPJmA8oXdGNu3rVP/vPElWQO4Akscq2UMdCCen9x4vnDMCxc2T7jz"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-int-0907b9.css"
+            crossorigin
+            integrity="sha384-JW9wmYp5/qridj31oi5WoL9Mgvx0nNnok8HjSuotp7gWaifIBRx16hwx9Gllt+S0"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../assets/bootstrap-0df2b2.js"
+            crossorigin
+            integrity="sha384-/CsPb6xxx2R6SuFD6YW8AvT0hMxEGGkO4Mh6yG04C8ck+/qIKXqKA3EALt2ADT17"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        <script src="../assets/vendor-vue-ce6943.js"></script>
+        <script src="../assets/vendor-fkui-logic-4dae35.js"></script>
+        <script src="../assets/vendor-fkui-date-effe99.js"></script>
+        <script src="../assets/vendor-fkui-vue-4addaa.js"></script>
+
+        <!-- prettier-ignore --><!-- prettier-ignore -->
+        <script
+            src="../assets/main-358e38.js"
+            crossorigin
+            integrity="sha384-2ivC/gGEMNwanybSSzGe/yPGP9z9r/1Xan3VoEK8L25D3Efivj+AlVvCtyyF5qZH"
+            
+        ></script>
+
+        <main>
+        <div id="ForgivingInput"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./ForgivingInput-7905ff.js"></script>
+    </main>
+    </body>
+</html>
