@@ -74,9 +74,9 @@ const isDate = (val) => toTypeString(val) === "[object Date]";
 const isFunction$3 = (val) => typeof val === "function";
 const isString$1 = (val) => typeof val === "string";
 const isSymbol$3 = (val) => typeof val === "symbol";
-const isObject$8 = (val) => val !== null && typeof val === "object";
+const isObject$9 = (val) => val !== null && typeof val === "object";
 const isPromise = (val) => {
-  return (isObject$8(val) || isFunction$3(val)) && isFunction$3(val.then) && isFunction$3(val.catch);
+  return (isObject$9(val) || isFunction$3(val)) && isFunction$3(val.then) && isFunction$3(val.catch);
 };
 const objectToString$2 = Object.prototype.toString;
 const toTypeString = (value) => objectToString$2.call(value);
@@ -154,7 +154,7 @@ function normalizeStyle(value) {
       }
     }
     return res;
-  } else if (isString$1(value) || isObject$8(value)) {
+  } else if (isString$1(value) || isObject$9(value)) {
     return value;
   }
 }
@@ -182,7 +182,7 @@ function normalizeClass(value) {
         res += normalized + " ";
       }
     }
-  } else if (isObject$8(value)) {
+  } else if (isObject$9(value)) {
     for (const name in value) {
       if (value[name]) {
         res += name + " ";
@@ -232,8 +232,8 @@ function looseEqual(a, b) {
   if (aValidType || bValidType) {
     return aValidType && bValidType ? looseCompareArrays(a, b) : false;
   }
-  aValidType = isObject$8(a);
-  bValidType = isObject$8(b);
+  aValidType = isObject$9(a);
+  bValidType = isObject$9(b);
   if (aValidType || bValidType) {
     if (!aValidType || !bValidType) {
       return false;
@@ -260,7 +260,7 @@ const isRef$1 = (val) => {
   return !!(val && val["__v_isRef"] === true);
 };
 const toDisplayString = (val) => {
-  return isString$1(val) ? val : val == null ? "" : isArray$7(val) || isObject$8(val) && (val.toString === objectToString$2 || !isFunction$3(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+  return isString$1(val) ? val : val == null ? "" : isArray$7(val) || isObject$9(val) && (val.toString === objectToString$2 || !isFunction$3(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
 };
 const replacer = (_key, val) => {
   if (isRef$1(val)) {
@@ -281,7 +281,7 @@ const replacer = (_key, val) => {
     };
   } else if (isSymbol$3(val)) {
     return stringifySymbol(val);
-  } else if (isObject$8(val) && !isArray$7(val) && !isPlainObject(val)) {
+  } else if (isObject$9(val) && !isArray$7(val) && !isPlainObject(val)) {
     return String(val);
   }
   return val;
@@ -1096,7 +1096,7 @@ class BaseReactiveHandler {
     if (isRef(res)) {
       return targetIsArray && isIntegerKey(key) ? res : res.value;
     }
-    if (isObject$8(res)) {
+    if (isObject$9(res)) {
       return isReadonly2 ? readonly(res) : reactive(res);
     }
     return res;
@@ -1439,7 +1439,7 @@ function shallowReadonly(target) {
   );
 }
 function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
-  if (!isObject$8(target)) {
+  if (!isObject$9(target)) {
     return target;
   }
   if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) {
@@ -1485,8 +1485,8 @@ function markRaw(value) {
   }
   return value;
 }
-const toReactive = (value) => isObject$8(value) ? reactive(value) : value;
-const toReadonly = (value) => isObject$8(value) ? readonly(value) : value;
+const toReactive = (value) => isObject$9(value) ? reactive(value) : value;
+const toReadonly = (value) => isObject$9(value) ? readonly(value) : value;
 function isRef(r) {
   return r ? r["__v_isRef"] === true : false;
 }
@@ -1757,7 +1757,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
   return watchHandle;
 }
 function traverse(value, depth = Infinity, seen) {
-  if (depth <= 0 || !isObject$8(value) || value["__v_skip"]) {
+  if (depth <= 0 || !isObject$9(value) || value["__v_skip"]) {
     return value;
   }
   seen = seen || /* @__PURE__ */ new Set();
@@ -3107,7 +3107,7 @@ function renderList(source, renderItem, cache, index) {
     for (let i = 0; i < source; i++) {
       ret[i] = renderItem(i + 1, i, void 0, cached);
     }
-  } else if (isObject$8(source)) {
+  } else if (isObject$9(source)) {
     if (source[Symbol.iterator]) {
       ret = Array.from(
         source,
@@ -3380,7 +3380,7 @@ function applyOptions(instance) {
   }
   if (dataOptions) {
     const data2 = dataOptions.call(publicThis, publicThis);
-    if (!isObject$8(data2)) ;
+    if (!isObject$9(data2)) ;
     else {
       instance.data = reactive(data2);
     }
@@ -3468,7 +3468,7 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) 
   for (const key in injectOptions) {
     const opt = injectOptions[key];
     let injected;
-    if (isObject$8(opt)) {
+    if (isObject$9(opt)) {
       if ("default" in opt) {
         injected = inject(
           opt.from || key,
@@ -3513,7 +3513,7 @@ function createWatcher(raw, ctx, publicThis, key) {
     {
       watch(getter, raw.bind(publicThis));
     }
-  } else if (isObject$8(raw)) {
+  } else if (isObject$9(raw)) {
     if (isArray$7(raw)) {
       raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
     } else {
@@ -3549,7 +3549,7 @@ function resolveMergedOptions(instance) {
     }
     mergeOptions$1(resolved, base, optionMergeStrategies);
   }
-  if (isObject$8(base)) {
+  if (isObject$9(base)) {
     cache.set(base, resolved);
   }
   return resolved;
@@ -3687,7 +3687,7 @@ function createAppAPI(render, hydrate) {
     if (!isFunction$3(rootComponent)) {
       rootComponent = extend({}, rootComponent);
     }
-    if (rootProps != null && !isObject$8(rootProps)) {
+    if (rootProps != null && !isObject$9(rootProps)) {
       rootProps = null;
     }
     const context = createAppContext();
@@ -4039,7 +4039,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject$8(comp)) {
+    if (isObject$9(comp)) {
       cache.set(comp, EMPTY_ARR);
     }
     return EMPTY_ARR;
@@ -4089,7 +4089,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   const res = [normalized, needCastKeys];
-  if (isObject$8(comp)) {
+  if (isObject$9(comp)) {
     cache.set(comp, res);
   }
   return res;
@@ -5695,7 +5695,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject$8(comp)) {
+    if (isObject$9(comp)) {
       cache.set(comp, null);
     }
     return null;
@@ -5705,7 +5705,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
   } else {
     extend(normalized, raw);
   }
-  if (isObject$8(comp)) {
+  if (isObject$9(comp)) {
     cache.set(comp, normalized);
   }
   return normalized;
@@ -6076,14 +6076,14 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
     if (klass && !isString$1(klass)) {
       props.class = normalizeClass(klass);
     }
-    if (isObject$8(style)) {
+    if (isObject$9(style)) {
       if (isProxy(style) && !isArray$7(style)) {
         style = extend({}, style);
       }
       props.style = normalizeStyle(style);
     }
   }
-  const shapeFlag = isString$1(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$8(type) ? 4 : isFunction$3(type) ? 2 : 0;
+  const shapeFlag = isString$1(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$9(type) ? 4 : isFunction$3(type) ? 2 : 0;
   return createBaseVNode(
     type,
     props,
@@ -6444,7 +6444,7 @@ function handleSetupResult(instance, setupResult, isSSR) {
     } else {
       instance.render = setupResult;
     }
-  } else if (isObject$8(setupResult)) {
+  } else if (isObject$9(setupResult)) {
     instance.setupState = proxyRefs(setupResult);
   } else ;
   finishComponentSetup(instance, isSSR);
@@ -6558,7 +6558,7 @@ const computed = (getterOrOptions, debugOptions) => {
 function h(type, propsOrChildren, children) {
   const l = arguments.length;
   if (l === 2) {
-    if (isObject$8(propsOrChildren) && !isArray$7(propsOrChildren)) {
+    if (isObject$9(propsOrChildren) && !isArray$7(propsOrChildren)) {
       if (isVNode(propsOrChildren)) {
         return createVNode(type, null, [propsOrChildren]);
       }
@@ -6821,7 +6821,7 @@ function resolveTransitionProps(rawProps) {
 function normalizeDuration(duration) {
   if (duration == null) {
     return null;
-  } else if (isObject$8(duration)) {
+  } else if (isObject$9(duration)) {
     return [NumberOf(duration.enter), NumberOf(duration.leave)];
   } else {
     const n = NumberOf(duration);
@@ -7694,7 +7694,7 @@ var isCallable$a = typeof documentAll == "undefined" && documentAll !== void 0 ?
   return typeof argument == "function";
 };
 var isCallable$9 = isCallable$a;
-var isObject$7 = function(it) {
+var isObject$8 = function(it) {
   return typeof it == "object" ? it !== null : isCallable$9(it);
 };
 var globalThis$i = globalThis_1;
@@ -7775,13 +7775,13 @@ var getMethod$1 = function(V, P) {
 };
 var call$2 = functionCall;
 var isCallable$5 = isCallable$a;
-var isObject$6 = isObject$7;
+var isObject$7 = isObject$8;
 var $TypeError$6 = TypeError;
 var ordinaryToPrimitive$1 = function(input, pref) {
   var fn2, val;
-  if (pref === "string" && isCallable$5(fn2 = input.toString) && !isObject$6(val = call$2(fn2, input))) return val;
-  if (isCallable$5(fn2 = input.valueOf) && !isObject$6(val = call$2(fn2, input))) return val;
-  if (pref !== "string" && isCallable$5(fn2 = input.toString) && !isObject$6(val = call$2(fn2, input))) return val;
+  if (pref === "string" && isCallable$5(fn2 = input.toString) && !isObject$7(val = call$2(fn2, input))) return val;
+  if (isCallable$5(fn2 = input.valueOf) && !isObject$7(val = call$2(fn2, input))) return val;
+  if (pref !== "string" && isCallable$5(fn2 = input.toString) && !isObject$7(val = call$2(fn2, input))) return val;
   throw new $TypeError$6("Can't convert object to primitive value");
 };
 var sharedStore = { exports: {} };
@@ -7845,7 +7845,7 @@ var wellKnownSymbol$1 = function(name) {
   return WellKnownSymbolsStore[name];
 };
 var call$1 = functionCall;
-var isObject$5 = isObject$7;
+var isObject$6 = isObject$8;
 var isSymbol$1 = isSymbol$2;
 var getMethod = getMethod$1;
 var ordinaryToPrimitive = ordinaryToPrimitive$1;
@@ -7853,13 +7853,13 @@ var wellKnownSymbol = wellKnownSymbol$1;
 var $TypeError$5 = TypeError;
 var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
 var toPrimitive$1 = function(input, pref) {
-  if (!isObject$5(input) || isSymbol$1(input)) return input;
+  if (!isObject$6(input) || isSymbol$1(input)) return input;
   var exoticToPrim = getMethod(input, TO_PRIMITIVE);
   var result;
   if (exoticToPrim) {
     if (pref === void 0) pref = "default";
     result = call$1(exoticToPrim, input, pref);
-    if (!isObject$5(result) || isSymbol$1(result)) return result;
+    if (!isObject$6(result) || isSymbol$1(result)) return result;
     throw new $TypeError$5("Can't convert object to primitive value");
   }
   if (pref === void 0) pref = "number";
@@ -7872,9 +7872,9 @@ var toPropertyKey$2 = function(argument) {
   return isSymbol(key) ? key : key + "";
 };
 var globalThis$b = globalThis_1;
-var isObject$4 = isObject$7;
+var isObject$5 = isObject$8;
 var document$1 = globalThis$b.document;
-var EXISTS$1 = isObject$4(document$1) && isObject$4(document$1.createElement);
+var EXISTS$1 = isObject$5(document$1) && isObject$5(document$1.createElement);
 var documentCreateElement = function(it) {
   return EXISTS$1 ? document$1.createElement(it) : {};
 };
@@ -7916,11 +7916,11 @@ var v8PrototypeDefineBug = DESCRIPTORS$6 && fails$4(function() {
     writable: false
   }).prototype !== 42;
 });
-var isObject$3 = isObject$7;
+var isObject$4 = isObject$8;
 var $String$1 = String;
 var $TypeError$4 = TypeError;
 var anObject$2 = function(argument) {
-  if (isObject$3(argument)) return argument;
+  if (isObject$4(argument)) return argument;
   throw new $TypeError$4($String$1(argument) + " is not an object");
 };
 var DESCRIPTORS$5 = descriptors;
@@ -7977,8 +7977,12 @@ var hasOwn$4 = hasOwnProperty_1;
 var FunctionPrototype = Function.prototype;
 var getDescriptor = DESCRIPTORS$3 && Object.getOwnPropertyDescriptor;
 var EXISTS = hasOwn$4(FunctionPrototype, "name");
+var PROPER = EXISTS && (function something() {
+}).name === "something";
 var CONFIGURABLE = EXISTS && (!DESCRIPTORS$3 || DESCRIPTORS$3 && getDescriptor(FunctionPrototype, "name").configurable);
 var functionName = {
+  EXISTS,
+  PROPER,
   CONFIGURABLE
 };
 var uncurryThis$7 = functionUncurryThis;
@@ -8004,6 +8008,7 @@ var sharedKey$1 = function(key) {
 var hiddenKeys$3 = {};
 var NATIVE_WEAK_MAP = weakMapBasicDetection;
 var globalThis$9 = globalThis_1;
+var isObject$3 = isObject$8;
 var createNonEnumerableProperty$1 = createNonEnumerableProperty$2;
 var hasOwn$3 = hasOwnProperty_1;
 var shared = sharedStoreExports;
@@ -8015,6 +8020,15 @@ var WeakMap$3 = globalThis$9.WeakMap;
 var set, get, has;
 var enforce = function(it) {
   return has(it) ? get(it) : set(it, {});
+};
+var getterFor = function(TYPE) {
+  return function(it) {
+    var state;
+    if (!isObject$3(it) || (state = get(it)).type !== TYPE) {
+      throw new TypeError$2("Incompatible receiver, " + TYPE + " required");
+    }
+    return state;
+  };
 };
 if (NATIVE_WEAK_MAP || shared.state) {
   var store = shared.state || (shared.state = new WeakMap$3());
@@ -8050,8 +8064,11 @@ if (NATIVE_WEAK_MAP || shared.state) {
   };
 }
 var internalState = {
+  set,
   get,
-  enforce
+  has,
+  enforce,
+  getterFor
 };
 var uncurryThis$6 = functionUncurryThis;
 var fails$3 = fails$a;
@@ -8180,6 +8197,9 @@ var createMethod = function(IS_INCLUDES) {
   };
 };
 var arrayIncludes = {
+  // `Array.prototype.includes` method
+  // https://tc39.es/ecma262/#sec-array.prototype.includes
+  includes: createMethod(true),
   // `Array.prototype.indexOf` method
   // https://tc39.es/ecma262/#sec-array.prototype.indexof
   indexOf: createMethod(false)
@@ -8560,6 +8580,9 @@ if ($transfer) $({ target: "ArrayBuffer", proto: true }, {
     return $transfer(this, arguments.length ? arguments[0] : void 0, false);
   }
 });
+const configLogic = {
+  production: true
+};
 function isEmpty(value) {
   return !value;
 }
@@ -10367,17 +10390,21 @@ function pushFocus(element) {
 function popFocus(handle) {
   if (_focusElementStack.length === 0) {
     const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
-    {
+    if (configLogic.production) {
       console.error(emptyStackErrorMsg);
       return;
+    } else {
+      throw new Error(emptyStackErrorMsg);
     }
   }
   const top = _focusElementStack.pop();
   if ((top == null ? void 0 : top.id) !== handle[sym]) {
     const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top == null ? void 0 : top.id} but got ${handle[sym]}`;
-    {
+    if (configLogic.production) {
       console.error(outOfOrderErrorMsg);
       return;
+    } else {
+      throw new Error(outOfOrderErrorMsg);
     }
   }
   focus(top == null ? void 0 : top.element);
@@ -13026,7 +13053,8 @@ var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
   return FKUIConfigButtonOrder2;
 })(FKUIConfigButtonOrder || {});
 let popupContainer = document.body;
-const config = { buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT, get popupContainer() {
+let production = true;
+const config = { buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT, teleportTarget: document.body, modalTarget: null, popupTarget: null, get popupContainer() {
   if (typeof popupContainer === "string") {
     const element = document.querySelector(popupContainer);
     if (!element) {
@@ -13038,6 +13066,11 @@ const config = { buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT, get popupCont
   }
 }, set popupContainer(value) {
   popupContainer = value;
+}, set production(value) {
+  production = value;
+  configLogic.production = value;
+}, get production() {
+  return production;
 } };
 function setRunningContext(app2) {
   const fkuiContext = { appContext: app2._context };
@@ -15121,7 +15154,7 @@ function tryBelow(itemHeight, anchor, viewport) {
     return void 0;
   }
   const fittedHeight = itemHeight * itemsFit;
-  return { top: anchor.y + anchor.height, width: anchor.width, height: fittedHeight };
+  return { left: anchor.x, top: anchor.y + anchor.height, width: anchor.width, height: fittedHeight };
 }
 function tryAbove(itemHeight, anchor, viewport) {
   const p1 = viewport.y;
@@ -15132,12 +15165,12 @@ function tryAbove(itemHeight, anchor, viewport) {
     return void 0;
   }
   const fittedHeight = itemHeight * itemsFit;
-  return { top: anchor.y - fittedHeight, width: anchor.width, height: fittedHeight };
+  return { left: anchor.x, top: anchor.y - fittedHeight, width: anchor.width, height: fittedHeight };
 }
-function computeListboxRect(anchor, options, root2 = document.documentElement, { scrollY } = window) {
+function computeListboxRect(anchor, options, root2 = document.documentElement, { scrollY, scrollX } = window) {
   const { itemHeight } = options;
   const rect = anchor.getBoundingClientRect();
-  const anchorRect = { y: Math.floor(rect.top + scrollY), width: Math.floor(rect.width), height: Math.floor(rect.height) };
+  const anchorRect = { x: Math.floor(rect.x + scrollX), y: Math.floor(rect.top + scrollY), width: Math.floor(rect.width), height: Math.floor(rect.height) };
   const viewportRect = { y: scrollY, height: root2.clientHeight };
   const d = tryBelow(itemHeight, anchorRect, viewportRect);
   if (d) {
@@ -15182,6 +15215,7 @@ const _sfc_main$P = /* @__PURE__ */ defineComponent({ __name: "IPopupListbox", p
     }
   }
   async function openPopup() {
+    var _a;
     await nextTick();
     const wrapperElement = wrapper2.value;
     if (!__props.anchor || !wrapperElement) {
@@ -15192,8 +15226,12 @@ const _sfc_main$P = /* @__PURE__ */ defineComponent({ __name: "IPopupListbox", p
     wrapperElement.style.boxShadow = "none";
     const rect = computeListboxRect(__props.anchor, { itemHeight: 42 });
     if (rect) {
-      const { top, width, height } = rect;
+      var _ref4;
+      const { top, left, width, height } = rect;
+      const offsetRect = (_a = wrapperElement == null ? void 0 : wrapperElement.offsetParent) == null ? void 0 : _a.getBoundingClientRect();
+      const offsetLeft = (_ref4 = offsetRect == null ? void 0 : offsetRect.x) !== null && _ref4 !== void 0 ? _ref4 : 0;
       wrapperElement.style.top = `${top}px`;
+      wrapperElement.style.left = `${left - offsetLeft}px`;
       wrapperElement.style.minWidth = `${width}px`;
       wrapperElement.style.maxHeight = `${height}px`;
     }

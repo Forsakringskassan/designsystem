@@ -4419,17 +4419,29 @@
         }
         return this.items.indexOf(item);
       },
-      async onClickItem(item, doClick = false) {
-        if (item.key !== this.lastSelectedItem) {
-          this.$emit("update:modelValue", item.key);
-          this.$emit("select", item.key);
-          this.lastSelectedItem = item.key;
+      onClickItem(event, item) {
+        this.selectItem(item.key);
+        const target = event.target;
+        const isAnchor = target instanceof HTMLElement && target.tagName === "A";
+        if (!isAnchor) {
+          this.clickItemAnchor(item);
+        }
+      },
+      clickItemAnchor(item) {
+        if (!item.href) {
+          return;
+        }
+        const index = this.items.indexOf(item);
+        const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+        anchors[index].click();
+      },
+      selectItem(key) {
+        if (key !== this.lastSelectedItem) {
+          this.$emit("update:modelValue", key);
+          this.$emit("select", key);
+          this.lastSelectedItem = key;
         }
         this.$emit("close");
-        if (item.href && doClick) {
-          const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-          anchors[this.currentFocusedItemIndex]?.click();
-        }
       },
       itemClasses(item) {
         const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
@@ -4454,7 +4466,9 @@
         if (index !== this.currentFocusedItemIndex) {
           await this.setFocusOnItem(index);
         }
-        await this.onClickItem(this.items[index], true);
+        const item = this.items[index];
+        this.selectItem(item.key);
+        this.clickItemAnchor(item);
       },
       setFocusedItemIndex(index) {
         this.currentFocusedItemIndex = index;
@@ -4536,7 +4550,7 @@
                   key: item.key,
                   role: "presentation",
                   class: (0, import_vue31.normalizeClass)(_ctx.itemClasses(item)),
-                  onClick: ($event) => _ctx.onClickItem(item)
+                  onClick: (event) => _ctx.onClickItem(event, item)
                 }, [
                   (0, import_vue31.createElementVNode)("a", {
                     ref_for: true,
