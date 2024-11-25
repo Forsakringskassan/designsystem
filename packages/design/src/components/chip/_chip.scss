@@ -1,5 +1,6 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints" as bp;
+@use "variables" as *;
 
 $chip-border-radius: 20px;
 
@@ -19,9 +20,9 @@ $chip-border-radius: 20px;
 
             &.disabled {
                 .#{$item}__label {
-                    background: var(--f-background-button-disabled);
-                    border-color: var(--f-border-color-button-disabled);
-                    color: var(--f-text-color-button-disabled);
+                    background: $chip-color-background-disabled;
+                    border-color: $chip-color-border-disabled;
+                    color: $chip-color-text-disabled;
                     cursor: not-allowed;
                 }
             }
@@ -34,9 +35,9 @@ $chip-border-radius: 20px;
             font-weight: var(--f-font-weight-medium);
             padding: size.$padding-050 size.$padding-100;
             border-radius: $chip-border-radius;
-            border: var(--f-border-width-medium) solid var(--f-border-color-input);
-            background-color: var(--f-background-chip);
-            color: var(--f-text-color-chip);
+            border: var(--f-border-width-medium) solid $chip-color-border-default;
+            background-color: $chip-color-background-default;
+            color: $chip-color-text-default;
             justify-content: center;
             max-width: 400px;
             user-select: none;
@@ -52,15 +53,15 @@ $chip-border-radius: 20px;
         }
 
         .#{$item}__label:hover {
-            border-color: var(--f-border-color-chip-hover);
-            background-color: var(--f-background-chip-hover);
-            color: var(--f-text-color-chip-hover);
+            border-color: $chip-color-border-hover;
+            background-color: $chip-color-background-hover;
+            color: $chip-color-text-hover;
         }
 
         input[type="#{$type}"]:checked + .#{$item}__label {
-            background: var(--f-background-chip-active);
-            border-color: var(--f-border-color-chip-active);
-            color: var(--f-text-color-chip-active);
+            background: $chip-color-background-selected;
+            border-color: $chip-color-border-selected;
+            color: $chip-color-text-selected;
         }
 
         input[type="#{$type}"]:focus + label.#{$item}__label {

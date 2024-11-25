@@ -1,0 +1,17 @@
+// TEXT
+$chip-color-text-default: var(--fkds-color-text-primary);
+$chip-color-text-selected: var(--fkds-color-text-inverted);
+$chip-color-text-disabled: var(--fkds-color-text-disabled);
+$chip-color-text-hover: var(--fkds-color-text-primary);
+
+// BACKGROUND
+$chip-color-background-default: var(--fkds-color-background-primary);
+$chip-color-background-selected: var(--fkds-color-action-background-select-default);
+$chip-color-background-disabled: var(--fkds-color-background-disabled);
+$chip-color-background-hover: var(--fkds-color-action-background-select-hover);
+
+// BORDER
+$chip-color-border-default: var(--fkds-color-border-primary);
+$chip-color-border-disabled: var(--fkds-color-border-primary);
+$chip-color-border-hover: var(--fkds-color-border-primary);
+$chip-color-border-selected: transparent;
