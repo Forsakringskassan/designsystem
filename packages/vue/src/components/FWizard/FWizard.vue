@@ -168,12 +168,14 @@ export default defineComponent({
                 this.$emit("change", null);
             }
         },
-        cancel(): void {
+        cancel(isFinalStep: boolean): void {
             /**
              * Emitted when wizard is canceled, i.e.
              * user pressing 'Avbryt' button.
+             *
+             * Passes a boolean indicating if it was cancelled on the final step.
              */
-            this.$emit("cancel");
+            this.$emit("cancel", isFinalStep);
         },
     },
 });

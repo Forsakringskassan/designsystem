@@ -266,7 +266,7 @@ export default defineComponent({
         },
         onCancel(): void {
             /* injected from FWizard */
-            this.cancel();
+            this.cancel(this.isFinalStep);
         },
         /**
          * Scroll down before animation starts.

@@ -16192,7 +16192,7 @@ getCurrentOpen(): FWizardStepDefinition | null;
 openStep(step: FWizardStepDefinition): void;
 openNext(step: FWizardStepDefinition): Promise<void>;
 doOpen(open: StepNumber | -1): Promise<void>;
-cancel(): void;
+cancel(isFinalStep: boolean): void;
 }, ComponentOptionsMixin, ComponentOptionsMixin, ("cancel" | "update:modelValue" | "change" | "completed")[], "cancel" | "update:modelValue" | "change" | "completed", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
@@ -16221,7 +16221,7 @@ disableInitialFocus: boolean;
 // @public (undocumented)
 export interface FWizardApi {
     // (undocumented)
-    cancel(): void;
+    cancel(isFinalStep: boolean): void;
     // (undocumented)
     getStepCount(): number;
     // (undocumented)
