@@ -112,7 +112,7 @@
     "flush-promises": "1.0.2",
     "fs-extra": "11.2.0",
     "glob": "11.0.0",
-    "html-validate": "8.25.1",
+    "html-validate": "8.26.0",
     "html-validate-markdown": "4.0.0",
     "html-validate-vue": "6.2.0",
     "husky": "9.1.7",
