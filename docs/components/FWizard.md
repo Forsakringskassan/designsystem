@@ -47,7 +47,7 @@ Innehåll och frågor som inte passar under en och samma rubrik ska inte placera
 ### Knapptexter
 
 -   Standardtexten på primärknappen är Fortsätt, men det går att sätta en text på primärknappen i varje steg (next-button-text).
--   Sekundärknappens text är alltid Avbryt.
+-   Standardtexten på sekundärknappen är Avbryt, men det går att sätta en text på sekundärknappen i varje steg (cancel-button-text).
 
 ## För utvecklare
 

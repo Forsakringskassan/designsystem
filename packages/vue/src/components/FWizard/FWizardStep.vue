@@ -106,7 +106,9 @@
                             class="button button--secondary button-group__item button--large"
                             @click="onCancel"
                         >
-                            {{ $t("fkui.wizard-step.button.cancel.text", "Avbryt") }}
+                            <slot name="cancel-button-text">
+                                {{ $t("fkui.wizard-step.button.cancel.text", "Avbryt") }}
+                            </slot>
                         </button>
                     </div>
                 </template>

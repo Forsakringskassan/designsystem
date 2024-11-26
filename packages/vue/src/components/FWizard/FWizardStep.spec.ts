@@ -153,6 +153,52 @@ describe("html-validate", () => {
         });
     });
 
+    it("should allow phrasing content in cancel-button-text slot", () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-wizard header-tag="h1">
+                <f-wizard-step key="my-key" title="my-title">
+                    <template #cancel-button-text>
+                        <span></span>
+                    </template>
+                </f-wizard-step>
+            </f-wizard>
+        `;
+        expect(markup).toHTMLValidate();
+    });
+
+    it("should not allow flow content in cancel-button-text slot", () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-wizard-step key="my-key" title="my-title">
+                <template #cancel-button-text>
+                    <div></div>
+                </template>
+            </f-wizard-step>
+        `;
+        expect(markup).not.toHTMLValidate({
+            ruleId: "element-permitted-content",
+            message:
+                '<div> element is not permitted as content under slot "cancel-button-text" (<f-wizard-step>)',
+        });
+    });
+
+    it("should not allow interactive content in cancel-button-text slot", () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-wizard-step key="my-key" title="my-title">
+                <template #cancel-button-text>
+                    <button type="button">Button</button>
+                </template>
+            </f-wizard-step>
+        `;
+        expect(markup).not.toHTMLValidate({
+            ruleId: "element-permitted-content",
+            message:
+                '<button> element is not permitted as a descendant of slot "cancel-button-text" (<f-wizard-step>)',
+        });
+    });
+
     it("should require key attribute", () => {
         expect.assertions(1);
         const markup = /* HTML */ `

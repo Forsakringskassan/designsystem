@@ -1327,7 +1327,13 @@ module.exports = defineMetadata({
             },
         },
         permittedContent: ["@flow", "template"],
-        slots: ["default", "step-of", "error-message", "next-button-text"],
+        slots: [
+            "default",
+            "step-of",
+            "error-message",
+            "next-button-text",
+            "cancel-button-text",
+        ],
     },
 
     "f-wizard-step#default": {
@@ -1343,6 +1349,15 @@ module.exports = defineMetadata({
     },
 
     "f-wizard-step#next-button-text": {
+        inherit: "button",
+        attributes: {
+            type: {
+                required: false,
+            },
+        },
+    },
+
+    "f-wizard-step#cancel-button-text": {
         inherit: "button",
         attributes: {
             type: {
