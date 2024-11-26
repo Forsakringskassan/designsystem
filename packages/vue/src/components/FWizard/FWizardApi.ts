@@ -33,7 +33,7 @@ export interface FWizardApi {
     getStepCount(): number;
     openStep(step: FWizardStepDefinition): void;
     openNext(self: FWizardStepDefinition): void;
-    cancel(): void;
+    cancel(isFinalStep: boolean): void;
     inheritedProps: {
         readonly headerTag: string;
         readonly disableInitialFocus: boolean;
@@ -50,7 +50,7 @@ export function FWizardApiInjected(): FWizardApi {
         getStepCount: inject("getStepCount") as () => number,
         openStep: inject("openStep") as (step: FWizardStepDefinition) => void,
         openNext: inject("openNext") as (self: FWizardStepDefinition) => void,
-        cancel: inject("cancel") as () => void,
+        cancel: inject("cancel") as (isFinalStep: boolean) => void,
         inheritedProps: inject("inheritedProps") as {
             readonly headerTag: string;
             readonly disableInitialFocus: boolean;
