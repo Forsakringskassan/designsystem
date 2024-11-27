@@ -1,6 +1,9 @@
 import { type ValidatorConfig, isSet } from "@fkui/logic";
 import { parseTimeToNumber } from "../converters";
 
+/**
+ * @public
+ */
 /* eslint-disable-next-line @typescript-eslint/no-extraneous-class -- technical
  * debt, should be refactored to vanilla functions */
 export class HoursMinutesValidatorUtils {

@@ -38,7 +38,8 @@
   ],
   "scripts": {
     "prebuild": "run-s clean",
-    "build": "run-s build:lib build:pageobject build:dts",
+    "build": "run-s build:lib build:pageobject build:dts build:api",
+    "build:api": "fk-api-extractor --patch-augmentations api-extractor.*.json",
     "build:docs": "node generate-docs.mjs",
     "build:dts": "vue-tsc --emitDeclarationOnly",
     "build:lib": "fk-build-vue-lib",
