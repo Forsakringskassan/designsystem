@@ -1,4 +1,5 @@
 export * from "./components";
+export { useSlotUtils, type UseSlotUtils } from "./composables";
 export {
     config,
     type FKUIConfig,
