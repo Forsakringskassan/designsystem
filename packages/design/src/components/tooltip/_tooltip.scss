@@ -3,6 +3,7 @@
 @use "../../core/mixins/arrow-creator";
 @use "../../core/mixins/breakpoints";
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $TOOLTIP_SELECTOR: ".tooltip" !default;
 
@@ -46,8 +47,8 @@ $TOOLTIP_SELECTOR: ".tooltip" !default;
 
     &__arrow {
         @include arrow-creator.arrow-creator(
-            $background: var(--f-background-info),
-            $border: var(--f-tooltip-border-color),
+            $background: $tooltip-color-background,
+            $border: $tooltip-color-border,
             $position: size.$margin-200,
             $size: size.$margin-075,
             $up: true,
@@ -58,8 +59,8 @@ $TOOLTIP_SELECTOR: ".tooltip" !default;
     /// Content wrapper is placed around everything, i.e.
     /// arrow, close button, header and body.
     &__content-wrapper {
-        background-color: var(--f-background-info);
-        border: var(--f-tooltip-border-width) solid var(--f-tooltip-border-color);
+        background-color: $tooltip-color-background;
+        border: var(--f-tooltip-border-width) solid $tooltip-color-border;
         border-radius: var(--f-border-radius-small);
         box-sizing: content-box;
         margin-top: size.$margin-075;
