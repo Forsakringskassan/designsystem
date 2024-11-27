@@ -42,7 +42,7 @@
   "types": "lib/types/index.d.ts",
   "files": [
     "lib",
-    "!**/*.spec.{js,js.map,d.ts}"
+    "!**/*.js.map"
   ],
   "scripts": {
     "prebuild": "tsc",
