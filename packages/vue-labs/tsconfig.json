@@ -1,10 +1,11 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "outDir": "dist/types",
+        "outDir": "temp",
         "rootDir": "src",
-        "allowJs": true,
         "emitDeclarationOnly": true,
+        "declarationDir": "temp/types",
+        "allowJs": true,
         "skipLibCheck": true
     },
     "include": ["src/**/*.ts", "src/**/*.vue"]

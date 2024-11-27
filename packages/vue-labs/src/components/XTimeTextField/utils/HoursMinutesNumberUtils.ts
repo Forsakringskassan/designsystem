@@ -27,6 +27,9 @@ function padInitialZeros(value: string | undefined, maxLength = 2): string {
     return value.padStart(maxLength, "0");
 }
 
+/**
+ * @public
+ */
 export function hoursMinutesStringToMinutes(
     valueString: string,
     extraForgiving = false,
@@ -43,6 +46,9 @@ export function hoursMinutesStringToMinutes(
     return !isNaN(totalMinutes) ? totalMinutes : undefined;
 }
 
+/**
+ * @public
+ */
 export function minutesToHoursMinutesString(
     value?: number,
 ): HoursMinutesString {
@@ -58,6 +64,9 @@ export function minutesToHoursMinutesString(
     return stripWhitespace(valueString);
 }
 
+/**
+ * @public
+ */
 export function splitHoursMinutes(
     valueString: string,
     extraForgiving = false,
@@ -82,6 +91,8 @@ export function splitHoursMinutes(
  * Example:
  *     Input: 13.5
  *     Output: '13 timmar och 30 minuter'
+ *
+ * @public
  */
 export function minutesToUserFriendlyString(value: number): string {
     const [hours, minutes] = splitHoursMinutes(
@@ -103,6 +114,7 @@ export function minutesToUserFriendlyString(value: number): string {
  *
  * Parameters that are undefined or NaN will be ignored and add 0 to the sum.
  *
+ * @public
  * @param values - Values in minutes, to be converted into a value in hours.
  * @returns The sum of all values divided by 60. E.g., `150` becomes `2.5`.
  */
@@ -122,6 +134,7 @@ export function minutesToHoursFloat(
  *
  * Parameters that are undefined or NaN will be ignored and add 0 to the sum.
  *
+ * @public
  * @param values - Values in minutes, to be converted into a value into an
  * hour minute object.
  * @returns The sum of all values in an object representation. E.g.,

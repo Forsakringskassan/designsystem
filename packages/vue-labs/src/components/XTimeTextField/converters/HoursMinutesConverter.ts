@@ -3,9 +3,16 @@ import {
     hoursMinutesStringToMinutes,
 } from "../utils";
 
-// A string in the format hh:mm (hours may exceed two digits), e.g., 08:15, 16:00 and 900:12.
+/**
+ * A string in the format hh:mm (hours may exceed two digits), e.g., 08:15, 16:00 and 900:12.
+ *
+ * @public
+ */
 export type HoursMinutesString = string;
 
+/**
+ * @public
+ */
 export function formatNumberToTime(
     value?: number,
 ): HoursMinutesString | undefined {
@@ -30,10 +37,16 @@ function parseTimeToNumberUsingConfig(
     return !isNaN(parsedValue) ? parsedValue : undefined;
 }
 
+/**
+ * @public
+ */
 export function parseTimeToNumber(value?: string | null): number | undefined {
     return parseTimeToNumberUsingConfig(value, false);
 }
 
+/**
+ * @public
+ */
 export function forgivingParseTimeToNumber(
     value?: string | null,
 ): number | undefined {
