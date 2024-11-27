@@ -3285,19 +3285,19 @@ input[type=search]:focus,
 }
 .tooltip__arrow::after {
   border-color: none;
-  border-top-color: var(--f-background-info);
+  border-top-color: var(--fkds-color-feedback-background-info);
   border-width: calc(0.75rem - var(--f-tooltip-border-width) * 1.4142);
   margin-left: calc(-1 * (0.75rem - var(--f-tooltip-border-width) * 1.4142));
 }
 .tooltip__arrow::before {
   border-color: none;
-  border-top-color: var(--f-tooltip-border-color);
+  border-top-color: var(--fkds-color-feedback-border-info);
   border-width: 0.75rem;
   margin-left: calc(-1 * 0.75rem);
 }
 .tooltip__content-wrapper {
-  background-color: var(--f-background-info);
-  border: var(--f-tooltip-border-width) solid var(--f-tooltip-border-color);
+  background-color: var(--fkds-color-feedback-background-info);
+  border: var(--f-tooltip-border-width) solid var(--fkds-color-feedback-border-info);
   border-radius: var(--f-border-radius-small);
   box-sizing: content-box;
   margin-top: 0.75rem;

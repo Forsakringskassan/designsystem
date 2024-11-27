@@ -2880,19 +2880,19 @@ input[type=search]:focus,
 }
 .tooltip__arrow::after {
   border-color: none;
-  border-top-color: var(--f-background-info, #f5f6fa);
+  border-top-color: var(--fkds-color-feedback-background-info, #f5f6fa);
   border-width: calc(0.75rem - var(--f-tooltip-border-width, var(--f-border-width-small)) * 1.4142);
   margin-left: calc(-1 * (0.75rem - var(--f-tooltip-border-width, var(--f-border-width-small)) * 1.4142));
 }
 .tooltip__arrow::before {
   border-color: none;
-  border-top-color: var(--f-tooltip-border-color, #8d8e91);
+  border-top-color: var(--fkds-color-feedback-border-info, #4a52b6);
   border-width: 0.75rem;
   margin-left: calc(-1 * 0.75rem);
 }
 .tooltip__content-wrapper {
-  background-color: var(--f-background-info, #f5f6fa);
-  border: var(--f-tooltip-border-width, var(--f-border-width-small)) solid var(--f-tooltip-border-color, #8d8e91);
+  background-color: var(--fkds-color-feedback-background-info, #f5f6fa);
+  border: var(--f-tooltip-border-width, var(--f-border-width-small)) solid var(--fkds-color-feedback-border-info, #4a52b6);
   border-radius: var(--f-border-radius-small, 2px);
   box-sizing: content-box;
   margin-top: 0.75rem;
