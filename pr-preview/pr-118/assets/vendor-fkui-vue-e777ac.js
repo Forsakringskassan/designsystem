@@ -36,9 +36,9 @@
     mod
   ));
 
-  // ../../node_modules/core-js/internals/global-this.js
+  // node_modules/core-js/internals/global-this.js
   var require_global_this = __commonJS({
-    "../../node_modules/core-js/internals/global-this.js"(exports, module) {
+    "node_modules/core-js/internals/global-this.js"(exports, module) {
       "use strict";
       var check = function(it) {
         return it && it.Math === Math && it;
@@ -52,9 +52,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/fails.js
+  // node_modules/core-js/internals/fails.js
   var require_fails = __commonJS({
-    "../../node_modules/core-js/internals/fails.js"(exports, module) {
+    "node_modules/core-js/internals/fails.js"(exports, module) {
       "use strict";
       module.exports = function(exec) {
         try {
@@ -66,9 +66,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/descriptors.js
+  // node_modules/core-js/internals/descriptors.js
   var require_descriptors = __commonJS({
-    "../../node_modules/core-js/internals/descriptors.js"(exports, module) {
+    "node_modules/core-js/internals/descriptors.js"(exports, module) {
       "use strict";
       var fails = require_fails();
       module.exports = !fails(function() {
@@ -79,9 +79,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/function-bind-native.js
+  // node_modules/core-js/internals/function-bind-native.js
   var require_function_bind_native = __commonJS({
-    "../../node_modules/core-js/internals/function-bind-native.js"(exports, module) {
+    "node_modules/core-js/internals/function-bind-native.js"(exports, module) {
       "use strict";
       var fails = require_fails();
       module.exports = !fails(function() {
@@ -92,9 +92,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/function-call.js
+  // node_modules/core-js/internals/function-call.js
   var require_function_call = __commonJS({
-    "../../node_modules/core-js/internals/function-call.js"(exports, module) {
+    "node_modules/core-js/internals/function-call.js"(exports, module) {
       "use strict";
       var NATIVE_BIND = require_function_bind_native();
       var call = Function.prototype.call;
@@ -104,9 +104,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/object-property-is-enumerable.js
+  // node_modules/core-js/internals/object-property-is-enumerable.js
   var require_object_property_is_enumerable = __commonJS({
-    "../../node_modules/core-js/internals/object-property-is-enumerable.js"(exports) {
+    "node_modules/core-js/internals/object-property-is-enumerable.js"(exports) {
       "use strict";
       var $propertyIsEnumerable = {}.propertyIsEnumerable;
       var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
@@ -118,9 +118,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/create-property-descriptor.js
+  // node_modules/core-js/internals/create-property-descriptor.js
   var require_create_property_descriptor = __commonJS({
-    "../../node_modules/core-js/internals/create-property-descriptor.js"(exports, module) {
+    "node_modules/core-js/internals/create-property-descriptor.js"(exports, module) {
       "use strict";
       module.exports = function(bitmap, value) {
         return {
@@ -133,9 +133,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/function-uncurry-this.js
+  // node_modules/core-js/internals/function-uncurry-this.js
   var require_function_uncurry_this = __commonJS({
-    "../../node_modules/core-js/internals/function-uncurry-this.js"(exports, module) {
+    "node_modules/core-js/internals/function-uncurry-this.js"(exports, module) {
       "use strict";
       var NATIVE_BIND = require_function_bind_native();
       var FunctionPrototype = Function.prototype;
@@ -149,9 +149,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/classof-raw.js
+  // node_modules/core-js/internals/classof-raw.js
   var require_classof_raw = __commonJS({
-    "../../node_modules/core-js/internals/classof-raw.js"(exports, module) {
+    "node_modules/core-js/internals/classof-raw.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       var toString = uncurryThis({}.toString);
@@ -162,9 +162,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/indexed-object.js
+  // node_modules/core-js/internals/indexed-object.js
   var require_indexed_object = __commonJS({
-    "../../node_modules/core-js/internals/indexed-object.js"(exports, module) {
+    "node_modules/core-js/internals/indexed-object.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       var fails = require_fails();
@@ -179,9 +179,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/is-null-or-undefined.js
+  // node_modules/core-js/internals/is-null-or-undefined.js
   var require_is_null_or_undefined = __commonJS({
-    "../../node_modules/core-js/internals/is-null-or-undefined.js"(exports, module) {
+    "node_modules/core-js/internals/is-null-or-undefined.js"(exports, module) {
       "use strict";
       module.exports = function(it) {
         return it === null || it === void 0;
@@ -189,9 +189,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/require-object-coercible.js
+  // node_modules/core-js/internals/require-object-coercible.js
   var require_require_object_coercible = __commonJS({
-    "../../node_modules/core-js/internals/require-object-coercible.js"(exports, module) {
+    "node_modules/core-js/internals/require-object-coercible.js"(exports, module) {
       "use strict";
       var isNullOrUndefined = require_is_null_or_undefined();
       var $TypeError = TypeError;
@@ -202,9 +202,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/to-indexed-object.js
+  // node_modules/core-js/internals/to-indexed-object.js
   var require_to_indexed_object = __commonJS({
-    "../../node_modules/core-js/internals/to-indexed-object.js"(exports, module) {
+    "node_modules/core-js/internals/to-indexed-object.js"(exports, module) {
       "use strict";
       var IndexedObject = require_indexed_object();
       var requireObjectCoercible = require_require_object_coercible();
@@ -214,9 +214,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/is-callable.js
+  // node_modules/core-js/internals/is-callable.js
   var require_is_callable = __commonJS({
-    "../../node_modules/core-js/internals/is-callable.js"(exports, module) {
+    "node_modules/core-js/internals/is-callable.js"(exports, module) {
       "use strict";
       var documentAll = typeof document == "object" && document.all;
       module.exports = typeof documentAll == "undefined" && documentAll !== void 0 ? function(argument) {
@@ -227,9 +227,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/is-object.js
+  // node_modules/core-js/internals/is-object.js
   var require_is_object = __commonJS({
-    "../../node_modules/core-js/internals/is-object.js"(exports, module) {
+    "node_modules/core-js/internals/is-object.js"(exports, module) {
       "use strict";
       var isCallable = require_is_callable();
       module.exports = function(it) {
@@ -238,9 +238,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/get-built-in.js
+  // node_modules/core-js/internals/get-built-in.js
   var require_get_built_in = __commonJS({
-    "../../node_modules/core-js/internals/get-built-in.js"(exports, module) {
+    "node_modules/core-js/internals/get-built-in.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var isCallable = require_is_callable();
@@ -253,18 +253,18 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/object-is-prototype-of.js
+  // node_modules/core-js/internals/object-is-prototype-of.js
   var require_object_is_prototype_of = __commonJS({
-    "../../node_modules/core-js/internals/object-is-prototype-of.js"(exports, module) {
+    "node_modules/core-js/internals/object-is-prototype-of.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       module.exports = uncurryThis({}.isPrototypeOf);
     }
   });
 
-  // ../../node_modules/core-js/internals/environment-user-agent.js
+  // node_modules/core-js/internals/environment-user-agent.js
   var require_environment_user_agent = __commonJS({
-    "../../node_modules/core-js/internals/environment-user-agent.js"(exports, module) {
+    "node_modules/core-js/internals/environment-user-agent.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var navigator2 = globalThis2.navigator;
@@ -273,9 +273,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/environment-v8-version.js
+  // node_modules/core-js/internals/environment-v8-version.js
   var require_environment_v8_version = __commonJS({
-    "../../node_modules/core-js/internals/environment-v8-version.js"(exports, module) {
+    "node_modules/core-js/internals/environment-v8-version.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var userAgent = require_environment_user_agent();
@@ -300,9 +300,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/symbol-constructor-detection.js
+  // node_modules/core-js/internals/symbol-constructor-detection.js
   var require_symbol_constructor_detection = __commonJS({
-    "../../node_modules/core-js/internals/symbol-constructor-detection.js"(exports, module) {
+    "node_modules/core-js/internals/symbol-constructor-detection.js"(exports, module) {
       "use strict";
       var V8_VERSION = require_environment_v8_version();
       var fails = require_fails();
@@ -316,18 +316,18 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/use-symbol-as-uid.js
+  // node_modules/core-js/internals/use-symbol-as-uid.js
   var require_use_symbol_as_uid = __commonJS({
-    "../../node_modules/core-js/internals/use-symbol-as-uid.js"(exports, module) {
+    "node_modules/core-js/internals/use-symbol-as-uid.js"(exports, module) {
       "use strict";
       var NATIVE_SYMBOL = require_symbol_constructor_detection();
       module.exports = NATIVE_SYMBOL && !Symbol.sham && typeof Symbol.iterator == "symbol";
     }
   });
 
-  // ../../node_modules/core-js/internals/is-symbol.js
+  // node_modules/core-js/internals/is-symbol.js
   var require_is_symbol = __commonJS({
-    "../../node_modules/core-js/internals/is-symbol.js"(exports, module) {
+    "node_modules/core-js/internals/is-symbol.js"(exports, module) {
       "use strict";
       var getBuiltIn = require_get_built_in();
       var isCallable = require_is_callable();
@@ -343,9 +343,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/try-to-string.js
+  // node_modules/core-js/internals/try-to-string.js
   var require_try_to_string = __commonJS({
-    "../../node_modules/core-js/internals/try-to-string.js"(exports, module) {
+    "node_modules/core-js/internals/try-to-string.js"(exports, module) {
       "use strict";
       var $String = String;
       module.exports = function(argument) {
@@ -358,9 +358,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/a-callable.js
+  // node_modules/core-js/internals/a-callable.js
   var require_a_callable = __commonJS({
-    "../../node_modules/core-js/internals/a-callable.js"(exports, module) {
+    "node_modules/core-js/internals/a-callable.js"(exports, module) {
       "use strict";
       var isCallable = require_is_callable();
       var tryToString = require_try_to_string();
@@ -372,9 +372,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/get-method.js
+  // node_modules/core-js/internals/get-method.js
   var require_get_method = __commonJS({
-    "../../node_modules/core-js/internals/get-method.js"(exports, module) {
+    "node_modules/core-js/internals/get-method.js"(exports, module) {
       "use strict";
       var aCallable = require_a_callable();
       var isNullOrUndefined = require_is_null_or_undefined();
@@ -385,9 +385,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/ordinary-to-primitive.js
+  // node_modules/core-js/internals/ordinary-to-primitive.js
   var require_ordinary_to_primitive = __commonJS({
-    "../../node_modules/core-js/internals/ordinary-to-primitive.js"(exports, module) {
+    "node_modules/core-js/internals/ordinary-to-primitive.js"(exports, module) {
       "use strict";
       var call = require_function_call();
       var isCallable = require_is_callable();
@@ -403,17 +403,17 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/is-pure.js
+  // node_modules/core-js/internals/is-pure.js
   var require_is_pure = __commonJS({
-    "../../node_modules/core-js/internals/is-pure.js"(exports, module) {
+    "node_modules/core-js/internals/is-pure.js"(exports, module) {
       "use strict";
       module.exports = false;
     }
   });
 
-  // ../../node_modules/core-js/internals/define-global-property.js
+  // node_modules/core-js/internals/define-global-property.js
   var require_define_global_property = __commonJS({
-    "../../node_modules/core-js/internals/define-global-property.js"(exports, module) {
+    "node_modules/core-js/internals/define-global-property.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var defineProperty = Object.defineProperty;
@@ -428,9 +428,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/shared-store.js
+  // node_modules/core-js/internals/shared-store.js
   var require_shared_store = __commonJS({
-    "../../node_modules/core-js/internals/shared-store.js"(exports, module) {
+    "node_modules/core-js/internals/shared-store.js"(exports, module) {
       "use strict";
       var IS_PURE = require_is_pure();
       var globalThis2 = require_global_this();
@@ -447,9 +447,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/shared.js
+  // node_modules/core-js/internals/shared.js
   var require_shared = __commonJS({
-    "../../node_modules/core-js/internals/shared.js"(exports, module) {
+    "node_modules/core-js/internals/shared.js"(exports, module) {
       "use strict";
       var store = require_shared_store();
       module.exports = function(key, value) {
@@ -458,9 +458,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/to-object.js
+  // node_modules/core-js/internals/to-object.js
   var require_to_object = __commonJS({
-    "../../node_modules/core-js/internals/to-object.js"(exports, module) {
+    "node_modules/core-js/internals/to-object.js"(exports, module) {
       "use strict";
       var requireObjectCoercible = require_require_object_coercible();
       var $Object = Object;
@@ -470,9 +470,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/has-own-property.js
+  // node_modules/core-js/internals/has-own-property.js
   var require_has_own_property = __commonJS({
-    "../../node_modules/core-js/internals/has-own-property.js"(exports, module) {
+    "node_modules/core-js/internals/has-own-property.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       var toObject = require_to_object();
@@ -483,9 +483,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/uid.js
+  // node_modules/core-js/internals/uid.js
   var require_uid = __commonJS({
-    "../../node_modules/core-js/internals/uid.js"(exports, module) {
+    "node_modules/core-js/internals/uid.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       var id = 0;
@@ -497,9 +497,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/well-known-symbol.js
+  // node_modules/core-js/internals/well-known-symbol.js
   var require_well_known_symbol = __commonJS({
-    "../../node_modules/core-js/internals/well-known-symbol.js"(exports, module) {
+    "node_modules/core-js/internals/well-known-symbol.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var shared = require_shared();
@@ -519,9 +519,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/to-primitive.js
+  // node_modules/core-js/internals/to-primitive.js
   var require_to_primitive = __commonJS({
-    "../../node_modules/core-js/internals/to-primitive.js"(exports, module) {
+    "node_modules/core-js/internals/to-primitive.js"(exports, module) {
       "use strict";
       var call = require_function_call();
       var isObject2 = require_is_object();
@@ -547,9 +547,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/to-property-key.js
+  // node_modules/core-js/internals/to-property-key.js
   var require_to_property_key = __commonJS({
-    "../../node_modules/core-js/internals/to-property-key.js"(exports, module) {
+    "node_modules/core-js/internals/to-property-key.js"(exports, module) {
       "use strict";
       var toPrimitive = require_to_primitive();
       var isSymbol = require_is_symbol();
@@ -560,9 +560,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/document-create-element.js
+  // node_modules/core-js/internals/document-create-element.js
   var require_document_create_element = __commonJS({
-    "../../node_modules/core-js/internals/document-create-element.js"(exports, module) {
+    "node_modules/core-js/internals/document-create-element.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var isObject2 = require_is_object();
@@ -574,9 +574,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/ie8-dom-define.js
+  // node_modules/core-js/internals/ie8-dom-define.js
   var require_ie8_dom_define = __commonJS({
-    "../../node_modules/core-js/internals/ie8-dom-define.js"(exports, module) {
+    "node_modules/core-js/internals/ie8-dom-define.js"(exports, module) {
       "use strict";
       var DESCRIPTORS = require_descriptors();
       var fails = require_fails();
@@ -591,9 +591,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/object-get-own-property-descriptor.js
+  // node_modules/core-js/internals/object-get-own-property-descriptor.js
   var require_object_get_own_property_descriptor = __commonJS({
-    "../../node_modules/core-js/internals/object-get-own-property-descriptor.js"(exports) {
+    "node_modules/core-js/internals/object-get-own-property-descriptor.js"(exports) {
       "use strict";
       var DESCRIPTORS = require_descriptors();
       var call = require_function_call();
@@ -616,9 +616,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/v8-prototype-define-bug.js
+  // node_modules/core-js/internals/v8-prototype-define-bug.js
   var require_v8_prototype_define_bug = __commonJS({
-    "../../node_modules/core-js/internals/v8-prototype-define-bug.js"(exports, module) {
+    "node_modules/core-js/internals/v8-prototype-define-bug.js"(exports, module) {
       "use strict";
       var DESCRIPTORS = require_descriptors();
       var fails = require_fails();
@@ -632,9 +632,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/an-object.js
+  // node_modules/core-js/internals/an-object.js
   var require_an_object = __commonJS({
-    "../../node_modules/core-js/internals/an-object.js"(exports, module) {
+    "node_modules/core-js/internals/an-object.js"(exports, module) {
       "use strict";
       var isObject2 = require_is_object();
       var $String = String;
@@ -646,9 +646,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/object-define-property.js
+  // node_modules/core-js/internals/object-define-property.js
   var require_object_define_property = __commonJS({
-    "../../node_modules/core-js/internals/object-define-property.js"(exports) {
+    "node_modules/core-js/internals/object-define-property.js"(exports) {
       "use strict";
       var DESCRIPTORS = require_descriptors();
       var IE8_DOM_DEFINE = require_ie8_dom_define();
@@ -692,9 +692,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/create-non-enumerable-property.js
+  // node_modules/core-js/internals/create-non-enumerable-property.js
   var require_create_non_enumerable_property = __commonJS({
-    "../../node_modules/core-js/internals/create-non-enumerable-property.js"(exports, module) {
+    "node_modules/core-js/internals/create-non-enumerable-property.js"(exports, module) {
       "use strict";
       var DESCRIPTORS = require_descriptors();
       var definePropertyModule = require_object_define_property();
@@ -708,9 +708,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/function-name.js
+  // node_modules/core-js/internals/function-name.js
   var require_function_name = __commonJS({
-    "../../node_modules/core-js/internals/function-name.js"(exports, module) {
+    "node_modules/core-js/internals/function-name.js"(exports, module) {
       "use strict";
       var DESCRIPTORS = require_descriptors();
       var hasOwn = require_has_own_property();
@@ -728,9 +728,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/inspect-source.js
+  // node_modules/core-js/internals/inspect-source.js
   var require_inspect_source = __commonJS({
-    "../../node_modules/core-js/internals/inspect-source.js"(exports, module) {
+    "node_modules/core-js/internals/inspect-source.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       var isCallable = require_is_callable();
@@ -745,9 +745,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/weak-map-basic-detection.js
+  // node_modules/core-js/internals/weak-map-basic-detection.js
   var require_weak_map_basic_detection = __commonJS({
-    "../../node_modules/core-js/internals/weak-map-basic-detection.js"(exports, module) {
+    "node_modules/core-js/internals/weak-map-basic-detection.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var isCallable = require_is_callable();
@@ -756,9 +756,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/shared-key.js
+  // node_modules/core-js/internals/shared-key.js
   var require_shared_key = __commonJS({
-    "../../node_modules/core-js/internals/shared-key.js"(exports, module) {
+    "node_modules/core-js/internals/shared-key.js"(exports, module) {
       "use strict";
       var shared = require_shared();
       var uid = require_uid();
@@ -769,17 +769,17 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/hidden-keys.js
+  // node_modules/core-js/internals/hidden-keys.js
   var require_hidden_keys = __commonJS({
-    "../../node_modules/core-js/internals/hidden-keys.js"(exports, module) {
+    "node_modules/core-js/internals/hidden-keys.js"(exports, module) {
       "use strict";
       module.exports = {};
     }
   });
 
-  // ../../node_modules/core-js/internals/internal-state.js
+  // node_modules/core-js/internals/internal-state.js
   var require_internal_state = __commonJS({
-    "../../node_modules/core-js/internals/internal-state.js"(exports, module) {
+    "node_modules/core-js/internals/internal-state.js"(exports, module) {
       "use strict";
       var NATIVE_WEAK_MAP = require_weak_map_basic_detection();
       var globalThis2 = require_global_this();
@@ -852,9 +852,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/make-built-in.js
+  // node_modules/core-js/internals/make-built-in.js
   var require_make_built_in = __commonJS({
-    "../../node_modules/core-js/internals/make-built-in.js"(exports, module) {
+    "node_modules/core-js/internals/make-built-in.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       var fails = require_fails();
@@ -907,9 +907,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/define-built-in.js
+  // node_modules/core-js/internals/define-built-in.js
   var require_define_built_in = __commonJS({
-    "../../node_modules/core-js/internals/define-built-in.js"(exports, module) {
+    "node_modules/core-js/internals/define-built-in.js"(exports, module) {
       "use strict";
       var isCallable = require_is_callable();
       var definePropertyModule = require_object_define_property();
@@ -942,9 +942,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/math-trunc.js
+  // node_modules/core-js/internals/math-trunc.js
   var require_math_trunc = __commonJS({
-    "../../node_modules/core-js/internals/math-trunc.js"(exports, module) {
+    "node_modules/core-js/internals/math-trunc.js"(exports, module) {
       "use strict";
       var ceil = Math.ceil;
       var floor = Math.floor;
@@ -955,9 +955,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/to-integer-or-infinity.js
+  // node_modules/core-js/internals/to-integer-or-infinity.js
   var require_to_integer_or_infinity = __commonJS({
-    "../../node_modules/core-js/internals/to-integer-or-infinity.js"(exports, module) {
+    "node_modules/core-js/internals/to-integer-or-infinity.js"(exports, module) {
       "use strict";
       var trunc = require_math_trunc();
       module.exports = function(argument) {
@@ -967,9 +967,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/to-absolute-index.js
+  // node_modules/core-js/internals/to-absolute-index.js
   var require_to_absolute_index = __commonJS({
-    "../../node_modules/core-js/internals/to-absolute-index.js"(exports, module) {
+    "node_modules/core-js/internals/to-absolute-index.js"(exports, module) {
       "use strict";
       var toIntegerOrInfinity = require_to_integer_or_infinity();
       var max = Math.max;
@@ -981,9 +981,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/to-length.js
+  // node_modules/core-js/internals/to-length.js
   var require_to_length = __commonJS({
-    "../../node_modules/core-js/internals/to-length.js"(exports, module) {
+    "node_modules/core-js/internals/to-length.js"(exports, module) {
       "use strict";
       var toIntegerOrInfinity = require_to_integer_or_infinity();
       var min = Math.min;
@@ -994,9 +994,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/length-of-array-like.js
+  // node_modules/core-js/internals/length-of-array-like.js
   var require_length_of_array_like = __commonJS({
-    "../../node_modules/core-js/internals/length-of-array-like.js"(exports, module) {
+    "node_modules/core-js/internals/length-of-array-like.js"(exports, module) {
       "use strict";
       var toLength = require_to_length();
       module.exports = function(obj) {
@@ -1005,9 +1005,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/array-includes.js
+  // node_modules/core-js/internals/array-includes.js
   var require_array_includes = __commonJS({
-    "../../node_modules/core-js/internals/array-includes.js"(exports, module) {
+    "node_modules/core-js/internals/array-includes.js"(exports, module) {
       "use strict";
       var toIndexedObject = require_to_indexed_object();
       var toAbsoluteIndex = require_to_absolute_index();
@@ -1040,9 +1040,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/object-keys-internal.js
+  // node_modules/core-js/internals/object-keys-internal.js
   var require_object_keys_internal = __commonJS({
-    "../../node_modules/core-js/internals/object-keys-internal.js"(exports, module) {
+    "node_modules/core-js/internals/object-keys-internal.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       var hasOwn = require_has_own_property();
@@ -1064,9 +1064,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/enum-bug-keys.js
+  // node_modules/core-js/internals/enum-bug-keys.js
   var require_enum_bug_keys = __commonJS({
-    "../../node_modules/core-js/internals/enum-bug-keys.js"(exports, module) {
+    "node_modules/core-js/internals/enum-bug-keys.js"(exports, module) {
       "use strict";
       module.exports = [
         "constructor",
@@ -1080,9 +1080,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/object-get-own-property-names.js
+  // node_modules/core-js/internals/object-get-own-property-names.js
   var require_object_get_own_property_names = __commonJS({
-    "../../node_modules/core-js/internals/object-get-own-property-names.js"(exports) {
+    "node_modules/core-js/internals/object-get-own-property-names.js"(exports) {
       "use strict";
       var internalObjectKeys = require_object_keys_internal();
       var enumBugKeys = require_enum_bug_keys();
@@ -1093,17 +1093,17 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/object-get-own-property-symbols.js
+  // node_modules/core-js/internals/object-get-own-property-symbols.js
   var require_object_get_own_property_symbols = __commonJS({
-    "../../node_modules/core-js/internals/object-get-own-property-symbols.js"(exports) {
+    "node_modules/core-js/internals/object-get-own-property-symbols.js"(exports) {
       "use strict";
       exports.f = Object.getOwnPropertySymbols;
     }
   });
 
-  // ../../node_modules/core-js/internals/own-keys.js
+  // node_modules/core-js/internals/own-keys.js
   var require_own_keys = __commonJS({
-    "../../node_modules/core-js/internals/own-keys.js"(exports, module) {
+    "node_modules/core-js/internals/own-keys.js"(exports, module) {
       "use strict";
       var getBuiltIn = require_get_built_in();
       var uncurryThis = require_function_uncurry_this();
@@ -1119,9 +1119,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/copy-constructor-properties.js
+  // node_modules/core-js/internals/copy-constructor-properties.js
   var require_copy_constructor_properties = __commonJS({
-    "../../node_modules/core-js/internals/copy-constructor-properties.js"(exports, module) {
+    "node_modules/core-js/internals/copy-constructor-properties.js"(exports, module) {
       "use strict";
       var hasOwn = require_has_own_property();
       var ownKeys = require_own_keys();
@@ -1141,9 +1141,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/is-forced.js
+  // node_modules/core-js/internals/is-forced.js
   var require_is_forced = __commonJS({
-    "../../node_modules/core-js/internals/is-forced.js"(exports, module) {
+    "node_modules/core-js/internals/is-forced.js"(exports, module) {
       "use strict";
       var fails = require_fails();
       var isCallable = require_is_callable();
@@ -1162,9 +1162,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/export.js
+  // node_modules/core-js/internals/export.js
   var require_export = __commonJS({
-    "../../node_modules/core-js/internals/export.js"(exports, module) {
+    "node_modules/core-js/internals/export.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var getOwnPropertyDescriptor = require_object_get_own_property_descriptor().f;
@@ -1205,9 +1205,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/is-array.js
+  // node_modules/core-js/internals/is-array.js
   var require_is_array = __commonJS({
-    "../../node_modules/core-js/internals/is-array.js"(exports, module) {
+    "node_modules/core-js/internals/is-array.js"(exports, module) {
       "use strict";
       var classof = require_classof_raw();
       module.exports = Array.isArray || function isArray2(argument) {
@@ -1216,9 +1216,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/array-set-length.js
+  // node_modules/core-js/internals/array-set-length.js
   var require_array_set_length = __commonJS({
-    "../../node_modules/core-js/internals/array-set-length.js"(exports, module) {
+    "node_modules/core-js/internals/array-set-length.js"(exports, module) {
       "use strict";
       var DESCRIPTORS = require_descriptors();
       var isArray2 = require_is_array();
@@ -1243,9 +1243,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/does-not-exceed-safe-integer.js
+  // node_modules/core-js/internals/does-not-exceed-safe-integer.js
   var require_does_not_exceed_safe_integer = __commonJS({
-    "../../node_modules/core-js/internals/does-not-exceed-safe-integer.js"(exports, module) {
+    "node_modules/core-js/internals/does-not-exceed-safe-integer.js"(exports, module) {
       "use strict";
       var $TypeError = TypeError;
       var MAX_SAFE_INTEGER2 = 9007199254740991;
@@ -1256,9 +1256,9 @@
     }
   });
 
-  // ../../node_modules/core-js/modules/es.array.push.js
+  // node_modules/core-js/modules/es.array.push.js
   var require_es_array_push = __commonJS({
-    "../../node_modules/core-js/modules/es.array.push.js"() {
+    "node_modules/core-js/modules/es.array.push.js"() {
       "use strict";
       var $ = require_export();
       var toObject = require_to_object();
@@ -1295,9 +1295,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/define-built-in-accessor.js
+  // node_modules/core-js/internals/define-built-in-accessor.js
   var require_define_built_in_accessor = __commonJS({
-    "../../node_modules/core-js/internals/define-built-in-accessor.js"(exports, module) {
+    "node_modules/core-js/internals/define-built-in-accessor.js"(exports, module) {
       "use strict";
       var makeBuiltIn = require_make_built_in();
       var defineProperty = require_object_define_property();
@@ -1309,9 +1309,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/function-uncurry-this-clause.js
+  // node_modules/core-js/internals/function-uncurry-this-clause.js
   var require_function_uncurry_this_clause = __commonJS({
-    "../../node_modules/core-js/internals/function-uncurry-this-clause.js"(exports, module) {
+    "node_modules/core-js/internals/function-uncurry-this-clause.js"(exports, module) {
       "use strict";
       var classofRaw = require_classof_raw();
       var uncurryThis = require_function_uncurry_this();
@@ -1321,9 +1321,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/function-uncurry-this-accessor.js
+  // node_modules/core-js/internals/function-uncurry-this-accessor.js
   var require_function_uncurry_this_accessor = __commonJS({
-    "../../node_modules/core-js/internals/function-uncurry-this-accessor.js"(exports, module) {
+    "node_modules/core-js/internals/function-uncurry-this-accessor.js"(exports, module) {
       "use strict";
       var uncurryThis = require_function_uncurry_this();
       var aCallable = require_a_callable();
@@ -1336,9 +1336,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/array-buffer-byte-length.js
+  // node_modules/core-js/internals/array-buffer-byte-length.js
   var require_array_buffer_byte_length = __commonJS({
-    "../../node_modules/core-js/internals/array-buffer-byte-length.js"(exports, module) {
+    "node_modules/core-js/internals/array-buffer-byte-length.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var uncurryThisAccessor = require_function_uncurry_this_accessor();
@@ -1352,9 +1352,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/array-buffer-is-detached.js
+  // node_modules/core-js/internals/array-buffer-is-detached.js
   var require_array_buffer_is_detached = __commonJS({
-    "../../node_modules/core-js/internals/array-buffer-is-detached.js"(exports, module) {
+    "node_modules/core-js/internals/array-buffer-is-detached.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var uncurryThis = require_function_uncurry_this_clause();
@@ -1375,9 +1375,9 @@
     }
   });
 
-  // ../../node_modules/core-js/modules/es.array-buffer.detached.js
+  // node_modules/core-js/modules/es.array-buffer.detached.js
   var require_es_array_buffer_detached = __commonJS({
-    "../../node_modules/core-js/modules/es.array-buffer.detached.js"() {
+    "node_modules/core-js/modules/es.array-buffer.detached.js"() {
       "use strict";
       var DESCRIPTORS = require_descriptors();
       var defineBuiltInAccessor = require_define_built_in_accessor();
@@ -1394,9 +1394,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/to-index.js
+  // node_modules/core-js/internals/to-index.js
   var require_to_index = __commonJS({
-    "../../node_modules/core-js/internals/to-index.js"(exports, module) {
+    "node_modules/core-js/internals/to-index.js"(exports, module) {
       "use strict";
       var toIntegerOrInfinity = require_to_integer_or_infinity();
       var toLength = require_to_length();
@@ -1411,9 +1411,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/array-buffer-not-detached.js
+  // node_modules/core-js/internals/array-buffer-not-detached.js
   var require_array_buffer_not_detached = __commonJS({
-    "../../node_modules/core-js/internals/array-buffer-not-detached.js"(exports, module) {
+    "node_modules/core-js/internals/array-buffer-not-detached.js"(exports, module) {
       "use strict";
       var isDetached = require_array_buffer_is_detached();
       var $TypeError = TypeError;
@@ -1424,9 +1424,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/environment.js
+  // node_modules/core-js/internals/environment.js
   var require_environment = __commonJS({
-    "../../node_modules/core-js/internals/environment.js"(exports, module) {
+    "node_modules/core-js/internals/environment.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var userAgent = require_environment_user_agent();
@@ -1448,18 +1448,18 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/environment-is-node.js
+  // node_modules/core-js/internals/environment-is-node.js
   var require_environment_is_node = __commonJS({
-    "../../node_modules/core-js/internals/environment-is-node.js"(exports, module) {
+    "node_modules/core-js/internals/environment-is-node.js"(exports, module) {
       "use strict";
       var ENVIRONMENT = require_environment();
       module.exports = ENVIRONMENT === "NODE";
     }
   });
 
-  // ../../node_modules/core-js/internals/get-built-in-node-module.js
+  // node_modules/core-js/internals/get-built-in-node-module.js
   var require_get_built_in_node_module = __commonJS({
-    "../../node_modules/core-js/internals/get-built-in-node-module.js"(exports, module) {
+    "node_modules/core-js/internals/get-built-in-node-module.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var IS_NODE = require_environment_is_node();
@@ -1478,9 +1478,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/structured-clone-proper-transfer.js
+  // node_modules/core-js/internals/structured-clone-proper-transfer.js
   var require_structured_clone_proper_transfer = __commonJS({
-    "../../node_modules/core-js/internals/structured-clone-proper-transfer.js"(exports, module) {
+    "node_modules/core-js/internals/structured-clone-proper-transfer.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var fails = require_fails();
@@ -1496,9 +1496,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/detach-transferable.js
+  // node_modules/core-js/internals/detach-transferable.js
   var require_detach_transferable = __commonJS({
-    "../../node_modules/core-js/internals/detach-transferable.js"(exports, module) {
+    "node_modules/core-js/internals/detach-transferable.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var getBuiltInNodeModule = require_get_built_in_node_module();
@@ -1537,9 +1537,9 @@
     }
   });
 
-  // ../../node_modules/core-js/internals/array-buffer-transfer.js
+  // node_modules/core-js/internals/array-buffer-transfer.js
   var require_array_buffer_transfer = __commonJS({
-    "../../node_modules/core-js/internals/array-buffer-transfer.js"(exports, module) {
+    "node_modules/core-js/internals/array-buffer-transfer.js"(exports, module) {
       "use strict";
       var globalThis2 = require_global_this();
       var uncurryThis = require_function_uncurry_this();
@@ -1586,9 +1586,9 @@
     }
   });
 
-  // ../../node_modules/core-js/modules/es.array-buffer.transfer.js
+  // node_modules/core-js/modules/es.array-buffer.transfer.js
   var require_es_array_buffer_transfer = __commonJS({
-    "../../node_modules/core-js/modules/es.array-buffer.transfer.js"() {
+    "node_modules/core-js/modules/es.array-buffer.transfer.js"() {
       "use strict";
       var $ = require_export();
       var $transfer = require_array_buffer_transfer();
@@ -1600,9 +1600,9 @@
     }
   });
 
-  // ../../node_modules/core-js/modules/es.array-buffer.transfer-to-fixed-length.js
+  // node_modules/core-js/modules/es.array-buffer.transfer-to-fixed-length.js
   var require_es_array_buffer_transfer_to_fixed_length = __commonJS({
-    "../../node_modules/core-js/modules/es.array-buffer.transfer-to-fixed-length.js"() {
+    "node_modules/core-js/modules/es.array-buffer.transfer-to-fixed-length.js"() {
       "use strict";
       var $ = require_export();
       var $transfer = require_array_buffer_transfer();
@@ -1614,7 +1614,7 @@
     }
   });
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -1627,7 +1627,7 @@
     FBankgiroTextField: () => _sfc_main$G,
     FCalendar: () => FCalendar,
     FCalendarDay: () => FCalendarDay,
-    FCard: () => FCard,
+    FCard: () => _sfc_main$m,
     FCheckboxField: () => FCheckboxField,
     FCheckboxGroup: () => FCheckboxGroup,
     FCheckboxGroupField: () => FCheckboxField,
@@ -1769,6 +1769,7 @@
     sortComponentsWithErrorsOnDOMOrder: () => sortComponentsWithErrorsOnDOMOrder,
     tableScrollClasses: () => tableScrollClasses,
     useModal: () => useModal,
+    useSlotUtils: () => useSlotUtils,
     useTranslate: () => useTranslate
   });
   var import_es_array_push = __toESM(require_es_array_push(), 1);
@@ -1805,7 +1806,7 @@
     }
     return target;
   };
-  function _sfc_render$12(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "div",
       { class: (0, import_vue.normalizeClass)(["badge", _ctx.badgeClass]) },
@@ -1814,7 +1815,7 @@
       /* CLASS */
     );
   }
-  var FBadge = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$12]]);
+  var FBadge = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$11]]);
   var Flip = ["horizontal", "vertical"];
   var Rotate = ["90", "180", "270"];
   var _sfc_main$1b = (0, import_vue.defineComponent)({ name: "FIcon", inheritAttrs: false, props: {
@@ -1873,10 +1874,10 @@
   } } });
   var _hoisted_1$T = ["aria-hidden"];
   var _hoisted_2$F = ["xlink:href"];
-  function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("svg", (0, import_vue.mergeProps)(_ctx.$attrs, { focusable: "false", class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]], "aria-hidden": _ctx.ariaHidden }), [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("use", { "xlink:href": _ctx.spriteId }, null, 8, _hoisted_2$F)], 16, _hoisted_1$T);
   }
-  var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$11]]);
+  var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$10]]);
   var DATA_TEST_ATTRIBUTE_NAME = "data-test";
   function throwErrorIfEmpty(value) {
     if (!value) {
@@ -3394,7 +3395,7 @@
   var _hoisted_9$7 = { class: "modal__footer" };
   var _hoisted_10$6 = { class: "modal__shelf" };
   var _hoisted_11$3 = ["aria-label"];
-  function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", { key: 0, id: _ctx.id, class: (0, import_vue.normalizeClass)(["modal", _ctx.modalClass]) }, [(0, import_vue.createElementVNode)("div", _hoisted_2$E, [(0, import_vue.createElementVNode)(
       "div",
@@ -3440,7 +3441,7 @@
       /* NEED_HYDRATION */
     )])], 10, _hoisted_1$S)) : (0, import_vue.createCommentVNode)("v-if", true);
   }
-  var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$10]]);
+  var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$$]]);
   function prepareButtonList(src, buttonOrder = config.buttonOrder) {
     const list = src.map((it) => {
       var _it$event, _ref2, _it$reason, _it$type;
@@ -3501,7 +3502,7 @@
   var _hoisted_1$R = { class: "button-group" };
   var _hoisted_2$D = ["onClick"];
   var _hoisted_3$v = { key: 0, class: "sr-only" };
-  function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_modal, { fullscreen: _ctx.fullscreen, "is-open": _ctx.isOpen, "aria-close-text": _ctx.ariaCloseText, type: "warning", size: _ctx.size, onClose: _ctx.onClose }, {
       header: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "heading", {}, () => [(0, import_vue.createTextVNode)(
@@ -3539,7 +3540,7 @@
       /* FORWARDED */
     }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "onClose"]);
   }
-  var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$$]]);
+  var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$_]]);
   var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
   var ALIGNMENT = ["top", "center", "bottom"];
   var FLOAT = ["left", "center", "right"];
@@ -3597,7 +3598,7 @@
     }
     return classes;
   } } });
-  function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "div",
       { class: (0, import_vue.normalizeClass)(["iflex", _ctx.classList]) },
@@ -3606,7 +3607,7 @@
       /* CLASS */
     );
   }
-  var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$_]]);
+  var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$Z]]);
   var _sfc_main$17 = (0, import_vue.defineComponent)({ name: "IFlexItem", inheritAttrs: true, props: {
     /**
     * If set this item will grow to its largest possible size.
@@ -3637,7 +3638,7 @@
     }
     return classList;
   } } });
-  function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "div",
       { class: (0, import_vue.normalizeClass)(["iflex__item", _ctx.classList]) },
@@ -3646,7 +3647,7 @@
       /* CLASS */
     );
   }
-  var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$Z]]);
+  var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$Y]]);
   function focusError(item) {
     const element = document.querySelector(`#${item.id}`);
     if (!element) {
@@ -3691,7 +3692,7 @@
   var _hoisted_3$u = { class: "error-list__list error-list--list-style-none" };
   var _hoisted_4$q = ["onClick"];
   var _hoisted_5$k = { class: "error-list__link" };
-  function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
@@ -3789,7 +3790,7 @@
       /* FORWARDED */
     })]);
   }
-  var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$Y]]);
+  var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$X]]);
   function cleanUpElements(vm) {
     return new Promise((resolve) => {
       window.setTimeout(() => {
@@ -3856,7 +3857,7 @@
     this.$emit("update:modelValue", { isValid, componentsWithError, componentCount: components.length });
     this.$emit("group-validity", { isValid, componentsWithError, componentCount: components.length });
   } } });
-  function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "div",
       { onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)), onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args)) },
@@ -3865,7 +3866,7 @@
       /* NEED_HYDRATION */
     );
   }
-  var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$X]]);
+  var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$W]]);
   var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
     FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
     FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -3958,7 +3959,7 @@
   } } });
   var _hoisted_1$P = ["id"];
   var _hoisted_2$B = { key: 0, ref: "errors", tabindex: "-1", role: "group" };
-  function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue.resolveComponent)("f-error-list");
     const _component_f_validation_group = (0, import_vue.resolveComponent)("f-validation-group");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_validation_group, { key: _ctx.groupKey, modelValue: _ctx.validity, "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event), "stop-propagation": true }, {
@@ -3977,7 +3978,7 @@
       /* FORWARDED */
     }, 8, ["modelValue"]);
   }
-  var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$W]]);
+  var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$V]]);
   var _sfc_main$13 = (0, import_vue.defineComponent)({ name: "FFormModal", components: { FModal, FValidationForm }, mixins: [TranslationMixin], inheritAttrs: true, props: {
     /**
     * Enable fullscreen mode in mobile.
@@ -4053,7 +4054,7 @@
   var _hoisted_2$A = ["type", "form", "onClick"];
   var _hoisted_3$t = { key: 0, class: "sr-only" };
   var _hoisted_4$p = ["form"];
-  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_validation_form = (0, import_vue.resolveComponent)("f-validation-form");
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_modal, { "data-test": _ctx.dataTest, fullscreen: _ctx.fullscreen, "is-open": _ctx.isOpen, size: _ctx.size, "aria-close-text": _ctx.ariaCloseText, onClose: _ctx.onClose }, {
@@ -4103,7 +4104,7 @@
       /* FORWARDED */
     }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
   }
-  var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$V]]);
+  var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$U]]);
   async function confirmModal(callingInstance, texts) {
     const buttons = [{ label: texts.confirm, event: "confirm", type: "primary" }, { label: texts.dismiss, event: "dismiss", type: "secondary" }];
     const { reason } = await openModal(callingInstance, FConfirmModal, { props: { heading: texts.heading, content: texts.content, buttons } });
@@ -4345,7 +4346,7 @@
   } };
   var _sfc_main$12 = (0, import_vue.defineComponent)({ name: "FErrorPage", props: { payload: { type: Object, required: false, default: null } } });
   var _hoisted_1$N = { "data-test": "f-error-page" };
-  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$N, _cache[0] || (_cache[0] = [(0, import_vue.createElementVNode)(
       "h1",
       null,
@@ -4366,7 +4367,7 @@
       /* HOISTED */
     )]));
   }
-  var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$U]]);
+  var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$T]]);
   var _sfc_main$11 = (0, import_vue.defineComponent)({ name: "FErrorHandlingApp", props: { defaultComponent: { type: [Function, Object], required: false, default: void 0 }, errorComponent: { type: [Function, Object], required: false, default: FErrorPage } }, data() {
     return new ErrorViewData();
   }, watch: { $route() {
@@ -4377,10 +4378,10 @@
       this.payload = payload;
     });
   } });
-  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(_ctx.errorComponent), { key: 0, payload: _ctx.payload }, null, 8, ["payload"])) : _ctx.defaultComponent ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(_ctx.defaultComponent), { key: 1 })) : (0, import_vue.renderSlot)(_ctx.$slots, "default", { key: 2 })]);
   }
-  var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$T]]);
+  var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$S]]);
   function isMonthBefore(date, minDate) {
     return Boolean(minDate && date.isBefore(minDate.startOfMonth()));
   }
@@ -4473,7 +4474,7 @@
   var _hoisted_4$o = { class: "sr-only" };
   var _hoisted_5$j = ["aria-disabled", "aria-live"];
   var _hoisted_6$f = { class: "sr-only" };
-  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$M, [(0, import_vue.createElementVNode)(
       "div",
@@ -4495,7 +4496,7 @@
       /* TEXT */
     ), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_icon, { class: (0, import_vue.normalizeClass)(_ctx.nextIconClasses), name: "arrow-right" }, null, 8, ["class"])], 8, _hoisted_5$j)]);
   }
-  var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$S]]);
+  var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$R]]);
   function getDayStartOffset(days) {
     return days[0].weekDay - 1;
   }
@@ -4556,7 +4557,7 @@
   var _hoisted_11$2 = ["colspan"];
   var _hoisted_12$2 = { key: 1, "aria-hidden": "true" };
   var _hoisted_13$1 = ["colspan"];
-  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "table",
       { class: "calendar-month__table", role: "application", onFocusin: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusin && _ctx.onFocusin(...args)), onFocusout: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusout && _ctx.onFocusout(...args)) },
@@ -4637,7 +4638,7 @@
       /* NEED_HYDRATION */
     );
   }
-  var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$R]]);
+  var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$Q]]);
   var DayStep = { ArrowRight: 1, ArrowLeft: -1, ArrowUp: -7, ArrowDown: 7 };
   function isDayStepKey(e) {
     return Object.keys(DayStep).includes(e.code);
@@ -4714,7 +4715,7 @@
     return getDayTabindex(date, activeDate, this.tabDate);
   } } });
   var _hoisted_1$K = ["data-date", "tabindex", "onClick", "onKeydown"];
-  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_month_grid = (0, import_vue.resolveComponent)("i-calendar-month-grid");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_calendar_month_grid, { value: _ctx.modelValue }, {
       default: (0, import_vue.withCtx)(({ date }) => [(0, import_vue.createElementVNode)("button", { ref: date.toString(), class: "calendar-month__button", "data-test": "select-day-button", "data-date": date.toString(), tabindex: _ctx.getTabindex(date), type: "button", onClick: (0, import_vue.withModifiers)(($event) => _ctx.onClickDay(date), ["stop", "prevent"]), onKeydown: ($event) => _ctx.onKeydownDay(date, $event) }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", { date, isFocused: _ctx.isDayFocused(date) })], 40, _hoisted_1$K)]),
@@ -4722,7 +4723,7 @@
       /* FORWARDED */
     }, 8, ["value"]);
   }
-  var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$Q]]);
+  var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$P]]);
   var _sfc_main$Z = (0, import_vue.defineComponent)({ name: "FCalendar", components: { ICalendarNavbar, ICalendarMonth }, props: {
     /**
     * Active month.
@@ -4751,7 +4752,7 @@
     this.$emit("change", date);
   } } });
   var _hoisted_1$J = { class: "calendar__wrapper" };
-  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_navbar = (0, import_vue.resolveComponent)("i-calendar-navbar");
     const _component_i_calendar_month = (0, import_vue.resolveComponent)("i-calendar-month");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$J, [(0, import_vue.createVNode)(_component_i_calendar_navbar, { "model-value": _ctx.modelValue, "min-date": _ctx.minDate, "max-date": _ctx.maxDate, "onUpdate:modelValue": _ctx.onChangeMonth }, null, 8, ["model-value", "min-date", "max-date", "onUpdate:modelValue"]), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_i_calendar_month, { "model-value": _ctx.modelValue, "min-date": _ctx.minDate, "max-date": _ctx.maxDate, "tab-date": _ctx.tabDate, onClick: _ctx.onClickDay, "onUpdate:modelValue": _ctx.onChangeMonth }, {
@@ -4760,7 +4761,7 @@
       /* FORWARDED */
     }, 8, ["model-value", "min-date", "max-date", "tab-date", "onClick", "onUpdate:modelValue"])]);
   }
-  var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$P]]);
+  var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$O]]);
   function getCalendarDaySrText(day, enabled, selected, t) {
     const parts = [];
     if (!enabled) {
@@ -4819,7 +4820,7 @@
   } } });
   var _hoisted_1$I = { "aria-hidden": "true" };
   var _hoisted_2$x = { class: "sr-only" };
-  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "span",
       { class: (0, import_vue.normalizeClass)(_ctx.dayClasses) },
@@ -4840,7 +4841,7 @@
       /* CLASS */
     );
   }
-  var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$O]]);
+  var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$N]]);
   function offset(page, el) {
     const rect = el.getBoundingClientRect();
     return { top: rect.top + page.pageYOffset, left: rect.left + page.pageXOffset };
@@ -5226,7 +5227,7 @@
       (0, import_logic.handleTab)(event, this.$refs.wrapper);
     }
   } } });
-  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, { key: 0, to: _ctx.teleportTarget, disabled: _ctx.teleportDisabled }, [(0, import_vue.createElementVNode)(
       "div",
       (0, import_vue.mergeProps)({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }),
@@ -5241,7 +5242,7 @@
       /* FULL_PROPS */
     )], 8, ["to", "disabled"])) : (0, import_vue.createCommentVNode)("v-if", true);
   }
-  var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$N]]);
+  var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$M]]);
   function isContextMenuTextItem(value) {
     return typeof value.key === "string";
   }
@@ -5405,7 +5406,7 @@
   var _hoisted_3$q = ["onClick"];
   var _hoisted_4$m = ["tabindex"];
   var _hoisted_5$h = { key: 0, class: "contextmenu__separator" };
-  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup = (0, import_vue.resolveComponent)("i-popup");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup, { "is-open": _ctx.isOpen, "keyboard-trap": false, anchor: _ctx.anchor, "set-focus": true, "focus-element": () => _ctx.contextmenu, inline: "never", onClose: _cache[2] || (_cache[2] = ($event) => _ctx.$emit("close")) }, {
@@ -5434,7 +5435,7 @@
       /* STABLE */
     }, 8, ["is-open", "anchor", "focus-element"]);
   }
-  var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$M]]);
+  var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$L]]);
   function* labelClasses(options) {
     const { labelClass } = options;
     yield "fieldset__label";
@@ -5591,7 +5592,7 @@
   var _hoisted_8$8 = { class: "tooltip-before", "aria-hidden": "true" };
   var _hoisted_9$5 = { class: "label tooltip-before__label" };
   var _hoisted_10$4 = { key: 0, class: "label__message label__message--error" };
-  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("fieldset", { id: _ctx.id, class: (0, import_vue.normalizeClass)(["fieldset", _ctx.classes]), onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)) }, [((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "legend",
@@ -5645,7 +5646,7 @@
       /* CLASS */
     )], 42, _hoisted_1$G);
   }
-  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$L]]);
+  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$K]]);
   var anyType$1 = [String, Object, Array, Number, Date, Boolean];
   var _sfc_main$U = (0, import_vue.defineComponent)({ name: "FCheckboxField", inheritAttrs: false, props: {
     /**
@@ -5767,7 +5768,7 @@
   var _hoisted_2$u = ["for"];
   var _hoisted_3$o = { key: 0, class: "checkbox__details" };
   var _hoisted_4$k = { key: 0, class: "checkbox__details" };
-  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "div",
       { class: (0, import_vue.normalizeClass)(["checkbox", _ctx.disabledClass]), onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)) },
@@ -5798,7 +5799,7 @@
       /* CLASS, NEED_HYDRATION */
     );
   }
-  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$K]]);
+  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$J]]);
   var _sfc_main$T = (0, import_vue.defineComponent)({ name: "FCheckboxGroup", components: { FFieldset }, mixins: [TranslationMixin], inheritAttrs: false, props: {
     /**
     * The id for the fieldset id attribute.
@@ -5810,7 +5811,7 @@
     */
     name: { type: String, required: true }
   } });
-  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_fieldset = (0, import_vue.resolveComponent)("f-fieldset");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_fieldset, (0, import_vue.mergeProps)({ id: _ctx.id, name: _ctx.name }, _ctx.$attrs), (0, import_vue.createSlots)({
       label: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "label")]),
@@ -5821,7 +5822,7 @@
       /* DYNAMIC */
     }, [_ctx.$slots.tooltip ? { name: "tooltip", fn: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "tooltip")]), key: "0" } : void 0]), 1040, ["id", "name"]);
   }
-  var FCheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$J]]);
+  var FCheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$I]]);
   var Operation = /* @__PURE__ */ ((Operation2) => {
     Operation2[Operation2["ADD"] = 0] = "ADD";
     Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -5975,7 +5976,7 @@
   } } });
   var _hoisted_1$E = { class: "crud-dataset" };
   var _hoisted_2$t = { key: 0 };
-  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_form_modal = (0, import_vue.resolveComponent)("f-form-modal");
     const _component_f_confirm_modal = (0, import_vue.resolveComponent)("f-confirm-modal");
@@ -6013,7 +6014,7 @@
       /* FORWARDED */
     }, 8, ["is-open", "buttons", "onConfirm", "onClose"])]);
   }
-  var FCrudDataset = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$I]]);
+  var FCrudDataset = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$H]]);
   function FCrudDatasetInjected() {
     return { delete: (0, import_vue.inject)("delete"), modify: (0, import_vue.inject)("modify") };
   }
@@ -6041,7 +6042,7 @@
     }
   } } });
   var _hoisted_1$D = { key: 1, class: "sr-only" };
-  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", { type: "button", class: "button button--small button--tertiary", onClick: _cache[0] || (_cache[0] = (...args) => _ctx.executeAction && _ctx.executeAction(...args)) }, [_ctx.icon ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_icon, { key: 0, class: "button__icon", name: _ctx.iconName }, null, 8, ["name"])) : (0, import_vue.createCommentVNode)("v-if", true), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), !_ctx.label ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_1$D, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)(
       (0, import_vue.toDisplayString)(_ctx.buttonText),
@@ -6053,7 +6054,7 @@
       /* TEXT */
     )]) : (0, import_vue.createCommentVNode)("v-if", true)]);
   }
-  var FCrudButton = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$H]]);
+  var FCrudButton = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$G]]);
   function ActivateItemInjected() {
     return { registerCallbackAfterItemAdd: (0, import_vue.inject)("registerCallbackAfterItemAdd", () => void 0), registerCallbackBeforeItemDelete: (0, import_vue.inject)("registerCallbackBeforeItemDelete", () => void 0) };
   }
@@ -6205,7 +6206,7 @@
     const size = this.shrink ? FTableColumnSize.SHRINK : FTableColumnSize.EXPAND;
     this.addColumn({ name: this.name, title: this.title, description: this.description || void 0, id: import_logic.ElementIdService.generateElementId("column"), size, type: this.type, visible: this.visible, sortable: false, sort: FTableColumnSort.UNSORTED });
   } });
-  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.renderColumns && _ctx.visible ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(_ctx.tagName), (0, import_vue.mergeProps)({ key: 0, class: _ctx.classes, scope: _ctx.scope }, _ctx.$attrs), {
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), _cache[1] || (_cache[1] = (0, import_vue.createElementVNode)(
         "span",
@@ -6218,7 +6219,7 @@
       /* FORWARDED */
     }, 16, ["class", "scope"])) : (0, import_vue.createCommentVNode)("v-if", true);
   }
-  var FTableColumn = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$G]]);
+  var FTableColumn = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$F]]);
   function FSortFilterDatasetInjected() {
     return { sort: (0, import_vue.inject)("sort", () => void 0), registerCallbackOnSort: (0, import_vue.inject)("registerCallbackOnSort", () => void 0), registerCallbackOnMount: (0, import_vue.inject)("registerCallbackOnMount", () => void 0) };
   }
@@ -6245,11 +6246,11 @@
   var _hoisted_5$f = { key: 0, class: "label__message label__message--error" };
   var _hoisted_6$c = ["for"];
   var _hoisted_7$b = { key: 0, class: "label__message label__message--error" };
-  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.$slots.tooltip ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$C, [_ctx.hasDefaultSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$s, [(0, import_vue.createElementVNode)("label", { class: "label tooltip-before__label", for: _ctx.forProperty }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 8, _hoisted_3$n)])) : (0, import_vue.createCommentVNode)("v-if", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("label", { key: 1, class: "label sr-separator", for: _ctx.forProperty }, [(0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _ctx.hasErrorMessageSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$f, [(0, import_vue.createVNode)(_component_f_icon, { class: "label__icon--left", name: "error" }), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "error-message")])) : (0, import_vue.createCommentVNode)("v-if", true)], 8, _hoisted_4$j)) : (0, import_vue.createCommentVNode)("v-if", true)])) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("label", { key: 1, class: "label", for: _ctx.forProperty }, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), _ctx.hasErrorMessageSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_7$b, [(0, import_vue.createVNode)(_component_f_icon, { class: "label__icon--left", name: "error" }), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "error-message")])) : (0, import_vue.createCommentVNode)("v-if", true)], 8, _hoisted_6$c));
   }
-  var FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$F]]);
+  var FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$E]]);
   function resolveWidthClass$1(words, inline) {
     return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
   }
@@ -6323,7 +6324,7 @@
     }
   } } });
   var _hoisted_1$B = ["id"];
-  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_label = (0, import_vue.resolveComponent)("f-label");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
@@ -6368,7 +6369,7 @@
       /* CLASS, NEED_HYDRATION */
     );
   }
-  var FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$E]]);
+  var FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$D]]);
   function computeArrowOffset(placement, inputIconRect, wrapperRect) {
     switch (placement) {
       case Placement.A: {
@@ -6491,7 +6492,7 @@
     wrapper.style.removeProperty("top");
   } } });
   var _hoisted_1$A = { ref: "wrapper", class: "popup-error__wrapper" };
-  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, { key: 0, to: "body", disabled: _ctx.teleportDisabled }, [(0, import_vue.createElementVNode)(
       "div",
@@ -6519,7 +6520,7 @@
       /* CLASS */
     )], 8, ["disabled"])) : (0, import_vue.createCommentVNode)("v-if", true);
   }
-  var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$D]]);
+  var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$C]]);
   function resolveWidthClass(words, inline) {
     return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
   }
@@ -6725,7 +6726,7 @@
   var _hoisted_4$i = { class: "text-field__icon-wrapper" };
   var _hoisted_5$e = ["id", "type"];
   var _hoisted_6$b = { key: 2, class: "text-field__append-inner" };
-  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_label = (0, import_vue.resolveComponent)("f-label");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup_error = (0, import_vue.resolveComponent)("i-popup-error");
@@ -6813,7 +6814,7 @@
       /* CLASS */
     );
   }
-  var FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$C]]);
+  var FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$B]]);
   var _sfc_main$L = (0, import_vue.defineComponent)({ name: "FEmailTextField", components: { FTextField }, mixins: [TranslationMixin], inheritAttrs: false, props: {
     /**
     * The id for the input id attribute.
@@ -6872,7 +6873,7 @@
     import_logic.ValidationService.addValidatorsToElement(elements[1], validatorEmailMatchesConfig, true);
   } } });
   var _hoisted_1$y = { key: 0 };
-  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({ id: _ctx.id, type: "email", maxlength: _ctx.maxLength }, _ctx.$attrs, { "model-value": _ctx.modelValue, onChange: _ctx.onChange, onBlur: _ctx.onBlur, onUpdate: _ctx.onUpdate, onValidity: _ctx.onValidity, onPendingValidity: _ctx.onPendingValidity }), {
       "error-message": (0, import_vue.withCtx)(() => [_ctx.showPasteErrorMessage ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
@@ -6899,7 +6900,7 @@
       /* FORWARDED */
     }, 8, ["modelValue", "maxlength", "onPaste"])) : (0, import_vue.createCommentVNode)("v-if", true)]);
   }
-  var FEmailTextField = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$B]]);
+  var FEmailTextField = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$A]]);
   var _sfc_main$K = (0, import_vue.defineComponent)({ name: "FPhoneTextField", components: { FTextField }, mixins: [TranslationMixin], inheritAttrs: false, props: {
     /**
     * The id for the input id attribute.
@@ -6947,7 +6948,7 @@
     const validatorPhoneMatchesConfig = { required: { enabled: elements[0].hasAttribute("required") }, phoneNumber: {}, matches: { id: elements[0].id } };
     import_logic.ValidationService.addValidatorsToElement(elements[1], validatorPhoneMatchesConfig, true);
   } } });
-  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({ id: _ctx.id, type: "tel", maxlength: _ctx.maxLength }, _ctx.$attrs, { "model-value": _ctx.modelValue, onChange: _ctx.onChange, onBlur: _ctx.onBlur, onUpdate: _ctx.onUpdate, onValidity: _ctx.onValidity, onPendingValidity: _ctx.onPendingValidity }), {
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)(
@@ -6967,7 +6968,7 @@
       /* FORWARDED */
     }, 8, ["modelValue", "maxlength"])) : (0, import_vue.createCommentVNode)("v-if", true)]);
   }
-  var FPhoneTextField = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$A]]);
+  var FPhoneTextField = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$z]]);
   var _sfc_main$J = (0, import_vue.defineComponent)({ name: "FCurrencyTextField", extends: FTextField, mixins: [TranslationMixin], props: { formatter: { type: Function, required: false, default: import_logic.formatNumber }, parser: { type: Function, required: false, default: import_logic.parseNumber } }, setup() {
     return { textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false) };
   }, data() {
@@ -6997,7 +6998,7 @@
     this.$emit("update:modelValue", event);
   } } });
   var _hoisted_1$x = { class: "sr-only" };
-  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({ id: _ctx.id, maxlength: _ctx.maxLength, "model-value": _ctx.modelValue }, _ctx.$attrs, { type: "search", class: "text-field--search", onChange: _ctx.onChange, onInput: _ctx.onInput, onBlur: _ctx.onBlur, onUpdate: _ctx.onUpdate }), (0, import_vue.createSlots)({
@@ -7020,7 +7021,7 @@
       /* TEXT */
     )])]), key: "1" } : void 0]), 1040, ["id", "maxlength", "model-value", "onChange", "onInput", "onBlur", "onUpdate"])]);
   }
-  var FSearchTextField = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$z]]);
+  var FSearchTextField = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$y]]);
   var _sfc_main$H = (0, import_vue.defineComponent)({ name: "FBankAccountNumberTextField", extends: FTextField, mixins: [TranslationMixin], props: { parser: { type: Function, required: false, default: import_logic.parseBankAccountNumber } }, setup() {
     return { textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false) };
   }, data() {
@@ -7328,7 +7329,7 @@
   var _hoisted_5$d = { class: "sr-only" };
   var _hoisted_6$a = { value: { attribute: "", ascending: false } };
   var _hoisted_7$a = ["value"];
-  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
@@ -7399,7 +7400,7 @@
       /* FORWARDED */
     }), _cache[10] || (_cache[10] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ sortFilterResult: _ctx.sortFilterResult })))]);
   }
-  var FSortFilterDataset = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$y]]);
+  var FSortFilterDataset = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$x]]);
   var _sfc_main$x = (0, import_vue.defineComponent)({ name: "FDataTable", components: { FIcon }, mixins: [TranslationMixin], provide() {
     return { addColumn: (column) => {
       if (column.type === FTableColumnType.ACTION) {
@@ -7502,7 +7503,7 @@
   var _hoisted_6$9 = { key: 0 };
   var _hoisted_7$9 = { key: 1 };
   var _hoisted_8$7 = ["colspan"];
-  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       "div",
@@ -7558,7 +7559,7 @@
       /* CLASS */
     );
   }
-  var FDataTable = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$x]]);
+  var FDataTable = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$w]]);
   function isDayEnabled(day, config2) {
     return passesMinDate(day, config2.minDate) && passesMaxDate(day, config2.maxDate) && passesInvalidDates(day, config2.invalidDates) && passesInvalidWeekdays(day, config2.invalidWeekdays);
   }
@@ -7796,7 +7797,7 @@
   var _hoisted_2$o = ["disabled", "aria-expanded"];
   var _hoisted_3$j = { class: "sr-only" };
   var _hoisted_4$f = { class: "datepicker-field__close" };
-  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     const _component_f_calendar_day = (0, import_vue.resolveComponent)("f-calendar-day");
@@ -7859,7 +7860,7 @@
       /* NEED_PATCH */
     );
   }
-  var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$w]]);
+  var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$v]]);
   var _sfc_main$v = (0, import_vue.defineComponent)({ name: "FExpand", data() {
     return { height: 0, initialStyle: { overflow: "hidden", transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)" }, hiddenStyle: { height: "auto", position: "absolute", visibility: "hidden" }, visibleStyle: { width: "", position: "", visibility: "", height: "0px" }, openedStyle: { height: "auto" } };
   }, methods: { enter(element) {
@@ -7886,14 +7887,14 @@
       Object.assign(htmlElement.style, this.visibleStyle);
     });
   } } });
-  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Transition, { onEnter: _ctx.enter, onAfterEnter: _ctx.afterEnter, onLeave: _ctx.leave }, {
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default", { height: _ctx.height })]),
       _: 3
       /* FORWARDED */
     }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
   }
-  var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$v]]);
+  var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$u]]);
   var _sfc_main$u = (0, import_vue.defineComponent)({ name: "FExpandablePanel", components: { FIcon, FExpand }, mixins: [TranslationMixin], inheritAttrs: false, props: {
     /**
     * Toggle expanded/collapsed state
@@ -7937,7 +7938,7 @@
   var _hoisted_6$8 = ["id"];
   var _hoisted_7$8 = { class: "expandable-panel__body" };
   var _hoisted_8$6 = { key: 0, class: "expandable-panel__outside" };
-  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_expand = (0, import_vue.resolveComponent)("f-expand");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
@@ -7962,7 +7963,7 @@
       /* CLASS */
     );
   }
-  var FExpandablePanel = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["render", _sfc_render$u]]);
+  var FExpandablePanel = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["render", _sfc_render$t]]);
   var _sfc_main$t = (0, import_vue.defineComponent)({ name: "FExpandableParagraph", components: { FIcon, FExpand }, inheritAttrs: false, props: {
     /**
     * Toggle expanded/collapsed state
@@ -8012,7 +8013,7 @@
   var _hoisted_5$a = ["id"];
   var _hoisted_6$7 = { class: "expandable-paragraph__content" };
   var _hoisted_7$7 = { key: 0, class: "expandable-paragraph__separator" };
-  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_expand = (0, import_vue.resolveComponent)("f-expand");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
@@ -8037,7 +8038,7 @@
       /* CLASS */
     );
   }
-  var FExpandableParagraph = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$t]]);
+  var FExpandableParagraph = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$s]]);
   var DEFAULT_ICON = "file";
   var iconMap = { "image/*": "pic", "application/msword": "doc", "application/pdf": "pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "doc", "application/vnd.openxmlformats-officedocument.wordprocessingml.template": "doc" };
   var _sfc_main$s = (0, import_vue.defineComponent)({ name: "FFileItem", components: { FIcon }, inheritAttrs: false, props: {
@@ -8093,7 +8094,7 @@
   var _hoisted_5$9 = { class: "file-item__file-name" };
   var _hoisted_6$6 = { class: "sr-only" };
   var _hoisted_7$6 = { key: 0, class: "file-item__change-info" };
-  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$r, [(0, import_vue.createElementVNode)("div", _hoisted_2$l, [(0, import_vue.createElementVNode)("a", (0, import_vue.mergeProps)({ id: _ctx.id, class: "file-item__file-open" }, _ctx.$attrs), [(0, import_vue.createElementVNode)("div", _hoisted_4$c, [(0, import_vue.createVNode)(_component_f_icon, { name: "new-window" }), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_icon, { name: _ctx.iconName }, null, 8, ["name"])]), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)(
       "span",
@@ -8121,7 +8122,7 @@
       /* HOISTED */
     ))]);
   }
-  var FFileItem = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$s]]);
+  var FFileItem = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$r]]);
   var _sfc_main$r = (0, import_vue.defineComponent)({ name: "FFileSelector", components: { FIcon }, inheritAttrs: false, model: { prop: "files", event: "change" }, props: {
     /**
     * The id for the input id attribute.
@@ -8153,11 +8154,11 @@
   var _hoisted_1$q = { class: "file-selector" };
   var _hoisted_2$k = ["id", "aria-labelledby", "aria-disabled"];
   var _hoisted_3$f = ["id", "for"];
-  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$q, [(0, import_vue.createElementVNode)("input", (0, import_vue.mergeProps)({ id: _ctx.id, ref: "file-selector", type: "file", "aria-labelledby": _ctx.labelId, "aria-disabled": _ctx.ariaDisabled ? "true" : void 0 }, _ctx.attrs, { onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args)) }), null, 16, _hoisted_2$k), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("label", { id: _ctx.labelId, role: "button", class: (0, import_vue.normalizeClass)([_ctx.labelClass, "button button--tertiary button--medium"]), for: _ctx.id, "aria-hidden": "true" }, [(0, import_vue.createVNode)(_component_f_icon, { class: "button__icon", name: "paper-clip" }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 10, _hoisted_3$f)]);
   }
-  var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r]]);
+  var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$q]]);
   var iconClasses = { success: { symbol: "circle", sign: "success", screenReaderContextKey: "fkui.message-box.sr-context.success", screenReaderContextDefault: "Meddelande" }, warning: { symbol: "circle", sign: "alert", screenReaderContextKey: "fkui.message-box.sr-context.warning", screenReaderContextDefault: "Varningsmeddelande" }, error: { symbol: "triangle", sign: "alert", screenReaderContextKey: "fkui.message-box.sr-context.error", screenReaderContextDefault: "Felmeddelande" }, info: { symbol: "circle", sign: "i", screenReaderContextKey: "fkui.message-box.sr-context.info", screenReaderContextDefault: "Informationsmeddelande" } };
   var _sfc_main$q = (0, import_vue.defineComponent)({ name: "FMessageBox", components: { FIcon, IFlex, IFlexItem }, props: {
     /**
@@ -8211,7 +8212,7 @@
     return import_logic.TranslationService.provider.translate(iconClasses[this.type].screenReaderContextKey, iconClasses[this.type].screenReaderContextDefault);
   } } });
   var _hoisted_1$p = { key: 0, class: "sr-only" };
-  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
@@ -8247,7 +8248,7 @@
       /* CLASS */
     );
   }
-  var FMessageBox = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q]]);
+  var FMessageBox = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$p]]);
   var setRef = Symbol("setRef");
   var getRef = Symbol("getRef");
   var setIsOpen = Symbol("setIsOpen");
@@ -8367,7 +8368,7 @@
     await cleanUpElements(this);
   } } });
   var _hoisted_1$o = ["id"];
-  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue.resolveComponent)("f-error-list");
     const _component_f_message_box = (0, import_vue.resolveComponent)("f-message-box");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("form", (0, import_vue.mergeProps)({ id: _ctx.id, class: "form", novalidate: "" }, _ctx.attrs, { onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)) }), [_ctx.displayError && _ctx.isSubmitted && _ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_message_box, { key: 0, tabindex: "-1", type: "error" }, {
@@ -8376,7 +8377,7 @@
       /* FORWARDED */
     })) : (0, import_vue.createCommentVNode)("v-if", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 16, _hoisted_1$o);
   }
-  var FForm = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p]]);
+  var FForm = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$o]]);
   var _sfc_main$o = (0, import_vue.defineComponent)({ name: "FFormStep", components: { FIcon, FValidationGroup, FErrorList }, mixins: [TranslationMixin], inheritAttrs: false, props: {
     /**
     * The id for the root div id attribute.
@@ -8496,7 +8497,7 @@
   var _hoisted_1$n = { class: "form-step__header", tabindex: "-1", role: "group" };
   var _hoisted_2$j = ["id"];
   var _hoisted_3$e = { key: 0, class: "form-step__arrow" };
-  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_error_list = (0, import_vue.resolveComponent)("f-error-list");
     const _component_f_validation_group = (0, import_vue.resolveComponent)("f-validation-group");
@@ -8520,7 +8521,7 @@
       /* FORWARDED */
     }, 16, ["id", "modelValue"]);
   }
-  var FFormStep = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o]]);
+  var FFormStep = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$n]]);
   var _sfc_main$n = (0, import_vue.defineComponent)({ name: "FFormStepButton", components: { FIcon }, mixins: [TranslationMixin], inheritAttrs: false, model: { prop: "sr-only" }, props: {
     /**
     * If the id is not set a random value will be generated.
@@ -8532,7 +8533,7 @@
   } });
   var _hoisted_1$m = ["id", "aria-expanded"];
   var _hoisted_2$i = { class: "sr-only" };
-  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", (0, import_vue.mergeProps)({ id: _ctx.id, class: "button button--margin-bottom-0 button--large", type: "button" }, _ctx.$attrs, { "aria-expanded": _ctx.isOpen ? "true" : "false", "data-form-step-button": "" }), [_ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
       import_vue.Fragment,
@@ -8562,22 +8563,25 @@
       /* TEXT */
     )], 16, _hoisted_1$m);
   }
-  var FFormStepButton = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n]]);
-  var _sfc_main$m = (0, import_vue.defineComponent)({ name: "FCard", data() {
-    return { headingClass: ["card__header-label"] };
-  }, computed: { hasHeaderSlot() {
-    return hasSlot(this, "header");
-  }, hasFooterSlot() {
-    return hasSlot(this, "footer");
-  } } });
+  var FFormStepButton = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$m]]);
+  function useSlotUtils() {
+    const $slots = (0, import_vue.useSlots)();
+    return { hasSlot(name) {
+      return hasSlot({ $slots }, name);
+    } };
+  }
   var _hoisted_1$l = { class: "card card--default" };
   var _hoisted_2$h = { key: 0, class: "card__header" };
   var _hoisted_3$d = { class: "card__content" };
   var _hoisted_4$b = { key: 1, class: "card__footer" };
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$l, [_ctx.hasHeaderSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$h, [(0, import_vue.renderSlot)(_ctx.$slots, "header", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ headingSlotClass: _ctx.headingClass })))])) : (0, import_vue.createCommentVNode)("v-if", true), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_3$d, [(0, import_vue.renderSlot)(_ctx.$slots, "default")]), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _ctx.hasFooterSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_4$b, [(0, import_vue.renderSlot)(_ctx.$slots, "footer")])) : (0, import_vue.createCommentVNode)("v-if", true)]);
-  }
-  var FCard = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m]]);
+  var _sfc_main$m = /* @__PURE__ */ (0, import_vue.defineComponent)({ __name: "FCard", setup(__props) {
+    const { hasSlot: hasSlot2 } = useSlotUtils();
+    const hasHeaderSlot = (0, import_vue.computed)(() => hasSlot2("header"));
+    const hasFooterSlot = (0, import_vue.computed)(() => hasSlot2("footer"));
+    return (_ctx, _cache) => {
+      return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$l, [hasHeaderSlot.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$h, [(0, import_vue.renderSlot)(_ctx.$slots, "header", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({ headingSlotClass: "card__header-label" })))])) : (0, import_vue.createCommentVNode)("v-if", true), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_3$d, [(0, import_vue.renderSlot)(_ctx.$slots, "default")]), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), hasFooterSlot.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_4$b, [(0, import_vue.renderSlot)(_ctx.$slots, "footer")])) : (0, import_vue.createCommentVNode)("v-if", true)]);
+    };
+  } });
   var _sfc_main$l = (0, import_vue.defineComponent)({ name: "FLayoutApplicationTemplate", computed: { showHeader() {
     return this.hasSlot("header");
   }, showTopNavigation() {

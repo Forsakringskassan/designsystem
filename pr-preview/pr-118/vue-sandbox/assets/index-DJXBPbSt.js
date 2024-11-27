@@ -11989,10 +11989,10 @@ const _sfc_main$1b = /* @__PURE__ */ defineComponent({ name: "FIcon", inheritAtt
 } } });
 const _hoisted_1$T = ["aria-hidden"];
 const _hoisted_2$F = ["xlink:href"];
-function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, { focusable: "false", class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]], "aria-hidden": _ctx.ariaHidden }), [renderSlot(_ctx.$slots, "default"), _cache[0] || (_cache[0] = createTextVNode()), createBaseVNode("use", { "xlink:href": _ctx.spriteId }, null, 8, _hoisted_2$F)], 16, _hoisted_1$T);
 }
-const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1b, [["render", _sfc_render$11]]);
+const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1b, [["render", _sfc_render$10]]);
 const DATA_TEST_ATTRIBUTE_NAME = "data-test";
 function throwErrorIfEmpty(value) {
   if (!value) {
@@ -13193,7 +13193,7 @@ const _hoisted_8$a = { ref: "modalContent", class: "modal__content", tabindex: "
 const _hoisted_9$7 = { class: "modal__footer" };
 const _hoisted_10$6 = { class: "modal__shelf" };
 const _hoisted_11$3 = ["aria-label"];
-function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createElementBlock("div", { key: 0, id: _ctx.id, class: normalizeClass(["modal", _ctx.modalClass]) }, [createBaseVNode("div", _hoisted_2$E, [createBaseVNode(
     "div",
@@ -13239,7 +13239,7 @@ function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
     /* NEED_HYDRATION */
   )])], 10, _hoisted_1$S)) : createCommentVNode("v-if", true);
 }
-const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$10]]);
+const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$$]]);
 function prepareButtonList(src, buttonOrder = config.buttonOrder) {
   const list = src.map((it) => {
     var _it$event, _ref2, _it$reason, _it$type;
@@ -13300,7 +13300,7 @@ const _sfc_main$19 = /* @__PURE__ */ defineComponent({ name: "FConfirmModal", co
 const _hoisted_1$R = { class: "button-group" };
 const _hoisted_2$D = ["onClick"];
 const _hoisted_3$v = { key: 0, class: "sr-only" };
-function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, { fullscreen: _ctx.fullscreen, "is-open": _ctx.isOpen, "aria-close-text": _ctx.ariaCloseText, type: "warning", size: _ctx.size, onClose: _ctx.onClose }, {
     header: withCtx(() => [renderSlot(_ctx.$slots, "heading", {}, () => [createTextVNode(
@@ -13338,7 +13338,7 @@ function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
     /* FORWARDED */
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "onClose"]);
 }
-const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$$]]);
+const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$_]]);
 const GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 const ALIGNMENT = ["top", "center", "bottom"];
 const FLOAT = ["left", "center", "right"];
@@ -13396,7 +13396,7 @@ const _sfc_main$18 = /* @__PURE__ */ defineComponent({ name: "IFlex", inheritAtt
   }
   return classes;
 } } });
-function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock(
     "div",
     { class: normalizeClass(["iflex", _ctx.classList]) },
@@ -13405,7 +13405,7 @@ function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
     /* CLASS */
   );
 }
-const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$_]]);
+const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$Z]]);
 const _sfc_main$17 = /* @__PURE__ */ defineComponent({ name: "IFlexItem", inheritAttrs: true, props: {
   /**
   * If set this item will grow to its largest possible size.
@@ -13436,7 +13436,7 @@ const _sfc_main$17 = /* @__PURE__ */ defineComponent({ name: "IFlexItem", inheri
   }
   return classList;
 } } });
-function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock(
     "div",
     { class: normalizeClass(["iflex__item", _ctx.classList]) },
@@ -13445,7 +13445,7 @@ function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
     /* CLASS */
   );
 }
-const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$Z]]);
+const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$Y]]);
 function focusError(item) {
   const element = document.querySelector(`#${item.id}`);
   if (!element) {
@@ -13490,7 +13490,7 @@ const _hoisted_2$C = { key: 0 };
 const _hoisted_3$u = { class: "error-list__list error-list--list-style-none" };
 const _hoisted_4$q = ["onClick"];
 const _hoisted_5$k = { class: "error-list__link" };
-function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
@@ -13588,7 +13588,7 @@ function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
     /* FORWARDED */
   })]);
 }
-const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$Y]]);
+const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$X]]);
 function cleanUpElements(vm) {
   return new Promise((resolve2) => {
     window.setTimeout(() => {
@@ -13640,7 +13640,7 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({ name: "FValidationGroup",
   this.$emit("update:modelValue", { isValid, componentsWithError, componentCount: components.length });
   this.$emit("group-validity", { isValid, componentsWithError, componentCount: components.length });
 } } });
-function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock(
     "div",
     { onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)), onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args)) },
@@ -13649,7 +13649,7 @@ function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
     /* NEED_HYDRATION */
   );
 }
-const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$X]]);
+const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$W]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -13742,7 +13742,7 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({ name: "FValidationForm", 
 } } });
 const _hoisted_1$P = ["id"];
 const _hoisted_2$B = { key: 0, ref: "errors", tabindex: "-1", role: "group" };
-function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = resolveComponent("f-error-list");
   const _component_f_validation_group = resolveComponent("f-validation-group");
   return openBlock(), createBlock(_component_f_validation_group, { key: _ctx.groupKey, modelValue: _ctx.validity, "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event), "stop-propagation": true }, {
@@ -13761,7 +13761,7 @@ function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
     /* FORWARDED */
   }, 8, ["modelValue"]);
 }
-const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$W]]);
+const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$V]]);
 const _sfc_main$13 = /* @__PURE__ */ defineComponent({ name: "FFormModal", components: { FModal, FValidationForm }, mixins: [TranslationMixin], inheritAttrs: true, props: {
   /**
   * Enable fullscreen mode in mobile.
@@ -13837,7 +13837,7 @@ const _hoisted_1$O = { class: "button-group" };
 const _hoisted_2$A = ["type", "form", "onClick"];
 const _hoisted_3$t = { key: 0, class: "sr-only" };
 const _hoisted_4$p = ["form"];
-function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = resolveComponent("f-validation-form");
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, { "data-test": _ctx.dataTest, fullscreen: _ctx.fullscreen, "is-open": _ctx.isOpen, size: _ctx.size, "aria-close-text": _ctx.ariaCloseText, onClose: _ctx.onClose }, {
@@ -13887,7 +13887,7 @@ function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     /* FORWARDED */
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
-const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$V]]);
+const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$U]]);
 function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
   return Boolean(renderSlotText(slot, props, options));
@@ -14256,7 +14256,7 @@ const _hoisted_1$F = ["id", "disabled"];
 const _hoisted_2$u = ["for"];
 const _hoisted_3$o = { key: 0, class: "checkbox__details" };
 const _hoisted_4$k = { key: 0, class: "checkbox__details" };
-function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock(
     "div",
     { class: normalizeClass(["checkbox", _ctx.disabledClass]), onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)) },
@@ -14287,7 +14287,7 @@ function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     /* CLASS, NEED_HYDRATION */
   );
 }
-const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$U, [["render", _sfc_render$K]]);
+const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$U, [["render", _sfc_render$J]]);
 var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["ADD"] = 0] = "ADD";
   Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -14616,11 +14616,11 @@ const _hoisted_4$j = ["for"];
 const _hoisted_5$f = { key: 0, class: "label__message label__message--error" };
 const _hoisted_6$c = ["for"];
 const _hoisted_7$b = { key: 0, class: "label__message label__message--error" };
-function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$C, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$s, [createBaseVNode("label", { class: "label tooltip-before__label", for: _ctx.forProperty }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$n)])) : createCommentVNode("v-if", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", { key: 1, class: "label sr-separator", for: _ctx.forProperty }, [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$f, [createVNode(_component_f_icon, { class: "label__icon--left", name: "error" }), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("v-if", true)], 8, _hoisted_4$j)) : createCommentVNode("v-if", true)])) : (openBlock(), createElementBlock("label", { key: 1, class: "label", for: _ctx.forProperty }, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({ descriptionClass: _ctx.descriptionClass, discreteDescriptionClass: _ctx.discreteDescriptionClass }))), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$b, [createVNode(_component_f_icon, { class: "label__icon--left", name: "error" }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("v-if", true)], 8, _hoisted_6$c));
 }
-const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$P, [["render", _sfc_render$F]]);
+const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$P, [["render", _sfc_render$E]]);
 function resolveWidthClass$1(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -14694,7 +14694,7 @@ const _sfc_main$O = /* @__PURE__ */ defineComponent({ name: "FSelectField", comp
   }
 } } });
 const _hoisted_1$B = ["id"];
-function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   return openBlock(), createElementBlock(
@@ -14739,7 +14739,7 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     /* CLASS, NEED_HYDRATION */
   );
 }
-const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$O, [["render", _sfc_render$E]]);
+const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$O, [["render", _sfc_render$D]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   switch (placement) {
     case Placement.A: {
@@ -14862,7 +14862,7 @@ const _sfc_main$N = /* @__PURE__ */ defineComponent({ name: "IPopupError", compo
   wrapper2.style.removeProperty("top");
 } } });
 const _hoisted_1$A = { ref: "wrapper", class: "popup-error__wrapper" };
-function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createBlock(Teleport, { key: 0, to: "body", disabled: _ctx.teleportDisabled }, [createBaseVNode(
     "div",
@@ -14890,7 +14890,7 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     /* CLASS */
   )], 8, ["disabled"])) : createCommentVNode("v-if", true);
 }
-const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$N, [["render", _sfc_render$D]]);
+const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$N, [["render", _sfc_render$C]]);
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -15096,7 +15096,7 @@ const _hoisted_3$m = { key: 0, class: "sr-only" };
 const _hoisted_4$i = { class: "text-field__icon-wrapper" };
 const _hoisted_5$e = ["id", "type"];
 const _hoisted_6$b = { key: 2, class: "text-field__append-inner" };
-function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_popup_error = resolveComponent("i-popup-error");
@@ -15184,7 +15184,7 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     /* CLASS */
   );
 }
-const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$M, [["render", _sfc_render$C]]);
+const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$M, [["render", _sfc_render$B]]);
 /* @__PURE__ */ defineComponent({ name: "FEmailTextField", components: { FTextField }, mixins: [TranslationMixin], inheritAttrs: false, props: {
   /**
   * The id for the input id attribute.
@@ -15561,14 +15561,14 @@ const _sfc_main$v = /* @__PURE__ */ defineComponent({ name: "FExpand", data() {
     Object.assign(htmlElement.style, this.visibleStyle);
   });
 } } });
-function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Transition, { onEnter: _ctx.enter, onAfterEnter: _ctx.afterEnter, onLeave: _ctx.leave }, {
     default: withCtx(() => [renderSlot(_ctx.$slots, "default", { height: _ctx.height })]),
     _: 3
     /* FORWARDED */
   }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
-const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$v]]);
+const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$u]]);
 class FRightPanelServiceImpl {
   constructor() {
     __publicField2(this, "focusedElementBeforeOpenining", null);
