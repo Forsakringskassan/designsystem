@@ -11924,13 +11924,6 @@ const ISO8601_YYYY_MM_DD = "YYYY-MM-DD";
 var __defProp2 = Object.defineProperty;
 var __defNormalProp2 = (obj, key, value) => key in obj ? __defProp2(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField2 = (obj, key, value) => __defNormalProp2(obj, key + "", value);
-const _export_sfc$1 = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
 const Flip = ["horizontal", "vertical"];
 const Rotate = ["90", "180", "270"];
 const _sfc_main$1b = /* @__PURE__ */ defineComponent({ name: "FIcon", inheritAttrs: false, props: {
@@ -11987,6 +11980,13 @@ const _sfc_main$1b = /* @__PURE__ */ defineComponent({ name: "FIcon", inheritAtt
   const hasText = slotUsed || ariaLabel || ariaLabelledby || ariaDescription || ariaDescribedby;
   return hasText ? void 0 : "true";
 } } });
+const _export_sfc$1 = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
 const _hoisted_1$T = ["aria-hidden"];
 const _hoisted_2$F = ["xlink:href"];
 function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {

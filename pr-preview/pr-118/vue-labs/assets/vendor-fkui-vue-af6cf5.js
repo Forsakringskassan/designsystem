@@ -1622,7 +1622,7 @@
     ErrorPlugin: () => ErrorPlugin,
     ErrorViewData: () => ErrorViewData,
     EventBus: () => EventBus,
-    FBadge: () => FBadge,
+    FBadge: () => _sfc_main$1c,
     FBankAccountNumberTextField: () => _sfc_main$H,
     FBankgiroTextField: () => _sfc_main$G,
     FCalendar: () => FCalendar,
@@ -1783,39 +1783,32 @@
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp2(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   var statuses = ["default", "warning", "error", "success", "info"];
-  var _sfc_main$1c = (0, import_vue.defineComponent)({ name: "FBadge", props: {
+  var _sfc_main$1c = /* @__PURE__ */ (0, import_vue.defineComponent)({ __name: "FBadge", props: {
     /**
     * The status of the badge, can be either 'default', 'warning', 'error', 'success' or 'info'.
-    *
     */
-    status: { type: String, default: "default", validator: function(value) {
+    status: { type: String, default: "default", validator(value) {
       return statuses.includes(value);
     } },
     /**
     * If badge should be inverted.
-    *
     */
     inverted: { type: Boolean, default: false }
-  }, computed: { badgeClass() {
-    return this.inverted ? `badge--${this.status}-inverted` : `badge--${this.status}`;
-  } } });
-  var _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
-      "div",
-      { class: (0, import_vue.normalizeClass)(["badge", _ctx.badgeClass]) },
-      [(0, import_vue.renderSlot)(_ctx.$slots, "default")],
-      2
-      /* CLASS */
-    );
-  }
-  var FBadge = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$11]]);
+  }, setup(__props) {
+    const props = __props;
+    const badgeClass = (0, import_vue.computed)(() => {
+      return props.inverted ? `badge--${props.status}-inverted` : `badge--${props.status}`;
+    });
+    return (_ctx, _cache) => {
+      return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
+        "div",
+        { class: (0, import_vue.normalizeClass)(["badge", badgeClass.value]) },
+        [(0, import_vue.renderSlot)(_ctx.$slots, "default")],
+        2
+        /* CLASS */
+      );
+    };
+  } });
   var Flip = ["horizontal", "vertical"];
   var Rotate = ["90", "180", "270"];
   var _sfc_main$1b = (0, import_vue.defineComponent)({ name: "FIcon", inheritAttrs: false, props: {
@@ -1872,6 +1865,13 @@
     const hasText = slotUsed || ariaLabel || ariaLabelledby || ariaDescription || ariaDescribedby;
     return hasText ? void 0 : "true";
   } } });
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   var _hoisted_1$T = ["aria-hidden"];
   var _hoisted_2$F = ["xlink:href"];
   function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
