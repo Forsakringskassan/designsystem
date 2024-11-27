@@ -79,7 +79,6 @@
     "@fkui/design": "^5.36.0",
     "@fkui/logic": "^5.36.0",
     "@fkui/vue": "^5.36.0",
-    "core-js": "^3.24",
     "html-validate": ">= 7.9.0",
     "vue": "^3"
   },
