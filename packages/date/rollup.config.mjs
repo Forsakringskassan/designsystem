@@ -1,3 +1,4 @@
+import path from "node:path";
 import typescript from "@rollup/plugin-typescript";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -12,6 +13,10 @@ function build(format) {
             format,
             sourcemap: true,
             interop: "auto",
+            sourcemapPathTransform(relativeSourcePath, sourcemapPath) {
+                const absolute = path.join(sourcemapPath, relativeSourcePath);
+                return path.relative(outDir, absolute);
+            },
         },
         plugins: [
             typescript({
