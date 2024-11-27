@@ -4965,7 +4965,7 @@ input[type=search]:focus,
 .radio-button-group--chip .radio-button.disabled .radio-button__label {
   background: var(--fkds-color-background-disabled, #f4f4f4);
   border-color: var(--fkds-color-border-primary, #8d8e91);
-  color: var(--fkds-color-text-disabled, #8d8e91 // global);
+  color: var(--fkds-color-text-disabled, #8d8e91);
   cursor: not-allowed;
 }
 .radio-button-group--chip .radio-button__label {
@@ -4992,11 +4992,11 @@ input[type=search]:focus,
 }
 .radio-button-group--chip .radio-button__label:hover {
   border-color: var(--fkds-color-border-primary, #8d8e91);
-  background-color: var(--fkds-color-action-background-secondary-hover, #e5e5f5);
+  background-color: var(--fkds-color-action-background-select-hover, #dbe9e2);
   color: var(--fkds-color-text-primary, #1b1e23);
 }
 .radio-button-group--chip input[type=radio]:checked + .radio-button__label {
-  background: var(--fkds-color-feedback-background-positive-strong, #35805b);
+  background: var(--fkds-color-action-background-select-default, #35805b);
   border-color: transparent;
   color: var(--fkds-color-text-inverted, #ffffff);
 }
@@ -5032,7 +5032,7 @@ input[type=search]:focus,
 .checkbox-group--chip .checkbox.disabled .checkbox__label {
   background: var(--fkds-color-background-disabled, #f4f4f4);
   border-color: var(--fkds-color-border-primary, #8d8e91);
-  color: var(--fkds-color-text-disabled, #8d8e91 // global);
+  color: var(--fkds-color-text-disabled, #8d8e91);
   cursor: not-allowed;
 }
 .checkbox-group--chip .checkbox__label {
@@ -5059,11 +5059,11 @@ input[type=search]:focus,
 }
 .checkbox-group--chip .checkbox__label:hover {
   border-color: var(--fkds-color-border-primary, #8d8e91);
-  background-color: var(--fkds-color-action-background-secondary-hover, #e5e5f5);
+  background-color: var(--fkds-color-action-background-select-hover, #dbe9e2);
   color: var(--fkds-color-text-primary, #1b1e23);
 }
 .checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {
-  background: var(--fkds-color-feedback-background-positive-strong, #35805b);
+  background: var(--fkds-color-action-background-select-default, #35805b);
   border-color: transparent;
   color: var(--fkds-color-text-inverted, #ffffff);
 }
