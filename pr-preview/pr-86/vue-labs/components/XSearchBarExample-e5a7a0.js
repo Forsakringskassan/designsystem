@@ -268,6 +268,7 @@
         library: "f"
       }), _cache[2] || (_cache[2] = (0, import_vue3.createTextVNode)()), (0, import_vue3.createElementVNode)("span", null, [(0, import_vue3.renderSlot)(_ctx.$slots, "button-text", {}, () => [_cache[1] || (_cache[1] = (0, import_vue3.createTextVNode)(" S\xF6k "))])])])]),
       _: 3
+      /* FORWARDED */
     }, 8, ["modelValue", "maxlength"]);
   }
   var XSearchBar = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
