@@ -3,6 +3,7 @@ import {
     parsePersonnummer,
     parsePersonnummerLuhn,
     isValidDate,
+    formatPersonnummerToDate,
 } from "./personnummerConverter";
 
 //The test social security numbers(personnummer) used is approved by Skatteverket.
@@ -115,5 +116,35 @@ describe("isValidDate", () => {
         expect.assertions(2);
         expect(isValidDate(FDate.fromIso("1840-05-05"), now)).toBeFalsy();
         expect(isValidDate(FDate.fromIso("2023-12-09"), now)).toBeFalsy();
+    });
+});
+
+describe("formatPersonnummerToDate", () => {
+    it.each`
+        personnummer      | expectedDate    | description
+        ${"199001011234"} | ${"1990-01-01"} | ${"valid personnummer with date 1990-01-01"}
+        ${"198506059876"} | ${"1985-06-05"} | ${"valid personnummer with date 1985-06-05"}
+        ${"202312319876"} | ${"2023-12-31"} | ${"valid personnummer with date 2023-12-31"}
+    `(
+        "should return FDate $expectedDate for $description",
+        ({ personnummer, expectedDate }) => {
+            const result = formatPersonnummerToDate(personnummer);
+            expect(result?.toString()).toEqual(expectedDate);
+        },
+    );
+
+    it.each`
+        personnummer       | description
+        ${"invalidstring"} | ${"invalid personnummer string"}
+        ${"123456789012"}  | ${"personnummer string with incorrect date"}
+        ${""}              | ${"empty personnummer string"}
+    `("should return undefined for $description", ({ personnummer }) => {
+        const result = formatPersonnummerToDate(personnummer);
+        expect(result).toBeUndefined();
+    });
+
+    it("should return undefined for undefined input", () => {
+        const result = formatPersonnummerToDate(undefined);
+        expect(result).toBeUndefined();
     });
 });

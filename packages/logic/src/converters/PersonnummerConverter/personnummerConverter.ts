@@ -1,6 +1,7 @@
 import { FDate } from "@fkui/date";
 import { validChecksum, isSet } from "../../utils";
 import { stripWhitespace } from "../../text";
+import { parseDate } from "../DateConverter";
 import { resolveCentury } from "./resolve-century";
 
 const PERSONNUMMER_REGEXP =
@@ -125,4 +126,19 @@ export function formatPersonnummer(
     }
 
     return value.substring(2);
+}
+
+/**
+ * Formats personnummer to a 8-digit date.
+ *
+ * @public
+ */
+export function formatPersonnummerToDate(
+    value: PersonnummerString | undefined,
+): FDate | undefined {
+    const datePart = parseDate(parsePersonnummer(value)?.slice(0, 8) || "");
+    if (!datePart) {
+        return undefined;
+    }
+    return FDate.fromIso(datePart);
 }

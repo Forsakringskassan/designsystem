@@ -200,6 +200,9 @@ export function formatPercent(modelValue: number | string | undefined | null, de
 // @public
 export function formatPersonnummer(value: PersonnummerString | null | undefined): string | undefined;
 
+// @public
+export function formatPersonnummerToDate(value: PersonnummerString | undefined): FDate | undefined;
+
 // @public (undocumented)
 export function formatPostalCode(value: string | undefined | null): string | undefined;
 
