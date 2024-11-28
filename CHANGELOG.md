@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## 5.40.0 (2024-11-28)
+
+
+### Features
+
+* **@fkui/css-variables, @fkui/design, @fkui/vue:** tooltip rewritten (fixes SFKUI-679) 37defce
+* **@fkui/css-variables, @fkui/design:** semantic tokens (refs SFKUI-6836) 0713aaa
+* **@fkui/design:** semantic tokens tooltip (refs SFKUI-6920) 0700bfe
+* **@fkui/i18next-translate:** new package `@fkui/i18next-translate` for using `i18next` with FKUI (refs SFKUI-6500) f565ad7
+* **@fkui/logic:** add formatPersonnummerToDate helper (refs KDK-48741) a652d7d
+* **@fkui/logic:** add validator `personnummerNotSame` (refs KDK-48741) ae2d18d
+* **@fkui/logic:** add validator `personnummerOlder` (refs KDK-48741) 6a91033
+* **@fkui/logic:** add validator `personnummerYounger` (refs KDK-48741) 84a5299
+* **@fkui/vue:** add `cancel-button-text` slot to wizard step (refs SFKUI-6500) 8078723
+* **@fkui/vue:** add `isFinalStep` param to wizard `cancel` event (refs SFKUI-6500) 19dde28
+* **@fkui/vue:** add new useSlotUtils composable (refs SKFUI-6500) 61bbeaa
+* **@fkui/vue:** new prop `teleport` on `FLoader` to override default teleport target (refs SFKUI-6500) 1ede0e2
+* **@fkui/vue:** revalidate textfield on config update (refs SFKUI-6500) 930188e
+* **deps:** require vue 3.5 or later (refs SFKUI-6500) 082d1f8
+* **deps:** update dependency i18next to v24 4c8650f
+
+
+### Dependency upgrades
+
+* **deps:** update dependency i18next to v23.16.4 f3af4ba
+* **deps:** update dependency i18next to v23.16.5 843cefd
+* **deps:** update dependency i18next to v23.16.6 186c42a
+* **deps:** update dependency i18next to v23.16.8 28d293d
+
+
+### Bug Fixes
+
+* **@fkui/css-variables:** modal shelf color (refs SFKUI-6500) 3a17a84
+* **@fkui/design, @fkui/vue:** `FNavigationMenu` use `visibility` for overflow (fixes SFKUI-6731) 0e0f9ce
+* **@fkui/vue:** click on menu item activates anchor (refs SFKUI-4899) d7a58b7
+
 ## 5.39.0 (2024-11-05)
 
 
