@@ -31,11 +31,9 @@ exports[`snapshots should match snapshot with span, p and tooltip 1`] = `
   class="output-field"
 >
   <div>
-    <div
-      class="tooltip-before"
-    >
+    <div>
       <label
-        class="label tooltip-before__label"
+        class="label"
       >
         
         

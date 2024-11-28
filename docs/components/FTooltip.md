@@ -57,14 +57,27 @@ Om du behöver använda en semantisk rubriksnivå använd `header-tag` parameter
 ## Tooltip på rubrik
 
 Utöver etikett så kan tooltip även placeras på en rubrik.
+Lägg en `<div>` runt elementet och passa in till `attachTo` propen.
 
-```html static
-<div class="tooltip-before">
-    <h2>En rubrik</h2>
-</div>
-<f-tooltip screen-reader-text="Skärmläsartext">
-    <template #body> Lorem ipsum dolor sit amet. </template>
-</f-tooltip>
+```vue static
+<script setup>
+import { useTemplateRef } from "vue";
+
+const heading = useTemplateRef("heading");
+</script>
+
+<template>
+    <div ref="heading">
+        <h2>En rubrik</h2>
+    </div>
+    <f-tooltip attach-to="heading" screen-reader-text="Skärmläsartext">
+        <template #body> Lorem ipsum dolor sit amet. </template>
+    </f-tooltip>
+</template>
+```
+
+```import nomarkup
+FTooltipHeadingExample.vue
 ```
 
 ## API

@@ -18,7 +18,15 @@ export class FTooltipPageObject implements BasePageObject {
     }
 
     public iButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .tooltip__button`);
+        return cy.get(
+            [
+                /* no attached to anything */
+                `.tooltip__button:has(~ :is(${this.selector}))`,
+
+                /* attached to label or heading */
+                `.tooltip__container:has(.tooltip__button):has(~ :is(${this.selector})) > .tooltip__button`,
+            ].join(", "),
+        );
     }
 
     public header(): DefaultCypressChainable {
@@ -48,9 +56,9 @@ export class FTooltipPageObject implements BasePageObject {
             closeButtonBottom: (): DefaultCypressChainable =>
                 cy.get(`${this.selector} .close-button`),
             heading: (): DefaultCypressChainable =>
-                cy.get(`${this.selector} .tooltip__content .tooltip__header`),
+                cy.get(`${this.selector} .tooltip__header`),
             brodtext: (): DefaultCypressChainable =>
-                cy.get(`${this.selector} .tooltip__content .tooltip__body`),
+                cy.get(`${this.selector} .tooltip__body`),
         };
     }
 }

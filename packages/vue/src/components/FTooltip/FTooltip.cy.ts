@@ -3,9 +3,10 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { defineComponent } from "vue";
+import { defineComponent, useTemplateRef } from "vue";
 import { FTooltipPageObject } from "../../pageobject";
-import FTextField from "../FTextField/FTextField.vue";
+import { FLabel } from "../FLabel";
+import { FTextField } from "../FTextField";
 import FTooltip from "./FTooltip.vue";
 
 describe("FTooltip", () => {
@@ -16,7 +17,6 @@ describe("FTooltip", () => {
                 body: /* HTML */ ` <p>Lorem ipsum</p> `,
             },
             props: {
-                closeButtonText: "Stäng",
                 screenReaderText: "Screen reader text",
             },
         });
@@ -33,13 +33,12 @@ describe("FTooltip", () => {
         const TestComponent = defineComponent({
             components: { FTooltip },
             template: /* HTML */ `
-                <div v-for="v in variants">
-                    <div class="tooltip-before">
-                        <label class="label tooltip-before__label">
-                            Etikett
-                        </label>
+                <div v-for="(v, index) in variants">
+                    <div ref="attach">
+                        <label class="label"> Etikett </label>
                     </div>
                     <f-tooltip
+                        :attach-to="attach?.[index]"
                         :id="v.id"
                         v-model="v.model"
                         screen-reader-text="Läs mer"
@@ -49,6 +48,9 @@ describe("FTooltip", () => {
                     </f-tooltip>
                 </div>
             `,
+            setup() {
+                return { attach: useTemplateRef("attach") };
+            },
             data() {
                 return {
                     variants: [
@@ -60,8 +62,8 @@ describe("FTooltip", () => {
         });
         cy.viewport(800, 600);
         cy.mount(TestComponent);
-        cy.get("#collapsed .tooltip__content").should("not.exist");
-        cy.get("#expanded .tooltip__content").should("exist");
+        cy.get("#collapsed .tooltip__body").should("not.be.visible");
+        cy.get("#expanded .tooltip__body").should("be.visible");
         cy.toMatchScreenshot();
     });
 
@@ -70,11 +72,12 @@ describe("FTooltip", () => {
         const TestComponent = defineComponent({
             components: { FTooltip },
             template: /* HTML */ `
-                <div v-for="v in variants">
-                    <div class="tooltip-before">
-                        <h3 class="label tooltip-before__label">Rubrik</h3>
+                <div v-for="(v, index) in variants">
+                    <div ref="attach">
+                        <h3 class="label">Rubrik</h3>
                     </div>
                     <f-tooltip
+                        :attach-to="attach?.[index]"
                         :id="v.id"
                         v-model="v.model"
                         screen-reader-text="Läs mer"
@@ -84,6 +87,9 @@ describe("FTooltip", () => {
                     </f-tooltip>
                 </div>
             `,
+            setup() {
+                return { attach: useTemplateRef("attach") };
+            },
             data() {
                 return {
                     variants: [
@@ -95,8 +101,8 @@ describe("FTooltip", () => {
         });
         cy.viewport(800, 600);
         cy.mount(TestComponent);
-        cy.get("#collapsed .tooltip__content").should("not.exist");
-        cy.get("#expanded .tooltip__content").should("exist");
+        cy.get("#collapsed .tooltip__body").should("not.be.visible");
+        cy.get("#expanded .tooltip__body").should("be.visible");
         cy.toMatchScreenshot();
     });
 
@@ -132,8 +138,8 @@ describe("FTooltip", () => {
         });
         cy.viewport(800, 600);
         cy.mount(TestComponent);
-        cy.get("#collapsed .tooltip__content").should("not.exist");
-        cy.get("#expanded .tooltip__content").should("exist");
+        cy.get("#collapsed .tooltip__body").should("not.be.visible");
+        cy.get("#expanded .tooltip__body").should("be.visible");
         cy.toMatchScreenshot();
     });
 
@@ -142,19 +148,20 @@ describe("FTooltip", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>
-                    <div class="tooltip-before">
-                        <label class="label tooltip-before__label">
-                            Tooltip
-                        </label>
-                    </div>
-                    <f-tooltip screen-reader-text="Skärmläsartext">
-                        <template #header> Rubrik </template>
-                        <template #body> Brödtext </template>
-                    </f-tooltip>
+                    <f-label>
+                        <template #default> Tooltip </template>
+                        <template #tooltip>
+                            <f-tooltip screen-reader-text="Skärmläsartext">
+                                <template #header> Rubrik </template>
+                                <template #body> Brödtext </template>
+                            </f-tooltip>
+                        </template>
+                    </f-label>
                 </density-wrapper>
             `,
             components: {
                 DensityWrapper,
+                FLabel,
                 FTooltip,
             },
         });

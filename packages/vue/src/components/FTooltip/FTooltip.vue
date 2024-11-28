@@ -1,60 +1,64 @@
 <template>
-    <div class="tooltip">
-        <div class="tooltip__container">
-            <button
-                class="tooltip__button"
-                type="button"
-                :aria-expanded="isOpen ? 'true' : 'false'"
-                @click="onClickToggle"
-            >
-                <span class="icon-stack icon-stack--tooltip">
-                    <f-icon name="circle"></f-icon>
-                    <f-icon name="i"></f-icon>
-                    <span class="sr-only">{{ screenReaderText }}</span>
-                </span>
-            </button>
-            <f-expand>
-                <div v-if="isOpen">
-                    <div class="tooltip__content-wrapper" tabindex="-1" :aria-hidden="isOpen ? undefined : 'true'">
-                        <span v-show="isOpen" class="tooltip__arrow"></span>
-                        <div class="tooltip__content">
-                            <component :is="headerTag" v-if="hasHeader" class="tooltip__header">
-                                <!-- @slot Tooltip header content -->
-                                <slot name="header"></slot>
-                            </component>
+    <!-- [html-validate-disable-next element-case -- false positive, is proper case for Vue] -->
+    <Teleport :disabled="iconTarget === null" :to="iconTarget">
+        <button ref="button" class="tooltip__button" type="button" :aria-expanded="isOpen" @click="onClickToggle">
+            <span class="icon-stack icon-stack--tooltip">
+                <f-icon name="circle"></f-icon>
+                <f-icon name="i"></f-icon>
+                <span class="sr-only">{{ screenReaderText }}</span>
+            </span>
+        </button>
+    </Teleport>
 
-                            <div class="tooltip__body">
-                                <!-- @slot Tooltip body content-->
-                                <slot name="body"></slot>
-                            </div>
-                        </div>
-                        <i-flex float="right">
-                            <i-flex-item shrink>
-                                <button class="close-button" type="button" @click="onClickToggle">
-                                    <span>{{ closeButtonText }}</span>
-                                    <f-icon class="button__icon" name="close"></f-icon>
-                                </button>
-                            </i-flex-item>
-                        </i-flex>
-                    </div>
-                </div>
-            </f-expand>
+    <div ref="wrapper" class="tooltip" v-bind="$attrs">
+        <div v-if="ready" class="tooltip__bubble" tabindex="-1">
+            <component :is="headerTag" v-if="hasHeader" class="tooltip__header">
+                <!-- @slot Tooltip header content -->
+                <slot name="header"></slot>
+            </component>
+
+            <div class="tooltip__body">
+                <!-- @slot Tooltip body content-->
+                <slot name="body"></slot>
+            </div>
+
+            <div class="tooltip__footer">
+                <button class="close-button" type="button" @click="onClickToggle">
+                    <span>{{ closeButtonText }}</span>
+                    <f-icon class="button__icon" name="close"></f-icon>
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { focus, TranslationService } from "@fkui/logic";
+import { computed, defineComponent, inject, ref, toRef, useTemplateRef, watchEffect } from "vue";
+import { TranslationService } from "@fkui/logic";
 import { FExpand } from "../FExpand";
 import { IFlex, IFlexItem } from "../../internal-components";
 import { FIcon } from "../FIcon";
-import { hasSlot } from "../../utils";
+import { focus, hasSlot } from "../../utils";
+import { tooltipAttachTo } from "./tooltip-attach-to";
+import { useAnimation } from "./use-animation";
+import { useOffset } from "./use-offset";
 
 export default defineComponent({
     name: "FTooltip",
     components: { FExpand, FIcon, IFlex, IFlexItem },
+    inheritAttrs: false,
     props: {
+        /**
+         * Element to attach tooltip toggle button.
+         *
+         * Only needed when using with arbitrary elements, e.g. when using with
+         * `FLabel` you do not need to set this prop.
+         */
+        attachTo: {
+            type: HTMLElement,
+            required: false,
+            default: null,
+        },
         /**
          * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
          *
@@ -102,6 +106,42 @@ export default defineComponent({
         },
     },
     emits: ["update:modelValue", "toggle"],
+    setup(props) {
+        const provided = inject(tooltipAttachTo, null);
+        const attachTo = toRef(props, "attachTo");
+        const ready = ref(false);
+        const iconTarget = computed(() => {
+            if (provided?.value) {
+                return provided.value;
+            }
+            if (attachTo.value) {
+                return attachTo.value;
+            }
+            return null;
+        });
+        const wrapper = useTemplateRef<HTMLElement>("wrapper");
+        const button = useTemplateRef<HTMLElement>("button");
+        const { animate } = useAnimation({
+            duration: 250,
+            easing: "ease-in",
+            element: wrapper,
+        });
+        const offset = useOffset({
+            element: button,
+            parent: computed(() => iconTarget.value?.parentElement ?? null),
+        });
+        watchEffect(() => {
+            iconTarget.value?.classList.add("tooltip__container");
+        });
+        watchEffect(() => {
+            if (!wrapper.value) {
+                return;
+            }
+            wrapper.value.style.setProperty("--f-tooltip-offset", `${offset.value}px`);
+            ready.value = true;
+        });
+        return { animate, iconTarget, ready };
+    },
     data() {
         return {
             isOpen: false,
@@ -117,19 +157,9 @@ export default defineComponent({
             immediate: true,
             handler(value: boolean) {
                 this.isOpen = value;
+                this.animate(value ? "expand" : "collapse");
             },
         },
-    },
-    mounted() {
-        window.addEventListener("resize", () => {
-            if (this.isOpen) {
-                this.positionArrow();
-            }
-        });
-
-        if (this.isOpen) {
-            this.positionArrow();
-        }
     },
     methods: {
         /**
@@ -158,24 +188,10 @@ export default defineComponent({
             this.$emit("toggle", event);
 
             if (!this.isOpen) {
-                const button = this.$el.querySelector(".tooltip__button");
-                focus(button);
+                focus(this.$refs.button);
             }
-            this.$nextTick(() => {
-                this.positionArrow();
-            });
-        },
-        positionArrow(): void {
-            const button: HTMLElement | null = this.$el.querySelector(".tooltip__button");
-            const arrow: HTMLElement | null = this.$el.querySelector(".tooltip__arrow");
-            const content: HTMLElement | null = this.$el.querySelector(".tooltip__content-wrapper");
-            const borderSize = 2;
 
-            if (button && arrow && content) {
-                const buttonOffsetLeft: number = button.offsetLeft - content.offsetLeft;
-                const relativeOffset = buttonOffsetLeft - borderSize + button.getBoundingClientRect().width / 2;
-                arrow.style.left = `${relativeOffset}px`;
-            }
+            this.animate(value ? "expand" : "collapse");
         },
     },
 });

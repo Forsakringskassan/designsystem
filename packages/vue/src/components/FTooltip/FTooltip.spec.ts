@@ -21,37 +21,30 @@ function createWrapper({
     });
 }
 
-describe("snapshots", () => {
-    it("should match snapshot with header, content and screen reader text", () => {
-        const wrapper = createWrapper({
-            slots: {
-                header: `Tooltip`,
-                body: /* HTML */ ` <p>Content...</p> `,
-            },
-            props: {
-                closeButtonText: "Close",
-                screenReaderText: "Screen reader text",
-            },
-        });
-        expect(wrapper.element).toMatchSnapshot();
+it("should set aria-expanded on tooltip button", () => {
+    expect.assertions(2);
+    const expanded = mount(FTooltip, {
+        props: { screenReaderText: "", modelValue: true },
     });
-
-    it("should match snapshot with header and content when open", async () => {
-        const wrapper = createWrapper({
-            slots: {
-                header: `Tooltip`,
-                body: /* HTML */ ` <p>Content...</p> `,
-            },
-            props: {
-                closeButtonText: "Close",
-                screenReaderText: "Screen reader text",
-            },
-        });
-
-        await wrapper.get(tooltipButtonClass).trigger("click");
-
-        expect(wrapper.element).toMatchSnapshot();
+    const collapsed = mount(FTooltip, {
+        props: { screenReaderText: "", modelValue: false },
     });
+    const selector = ".tooltip__button";
+    expect(expanded.get(selector).attributes("aria-expanded")).toBe("true");
+    expect(collapsed.get(selector).attributes("aria-expanded")).toBe("false");
+});
+
+it("should set expanded class on tooltip container", () => {
+    expect.assertions(2);
+    const expanded = mount(FTooltip, {
+        props: { screenReaderText: "", modelValue: true },
+    });
+    const collapsed = mount(FTooltip, {
+        props: { screenReaderText: "", modelValue: false },
+    });
+    const selector = ".tooltip";
+    expect(expanded.get(selector).classes()).toContain("expanded");
+    expect(collapsed.get(selector).classes()).not.toContain("expanded");
 });
 
 describe("slots", () => {
@@ -61,7 +54,6 @@ describe("slots", () => {
                 header: `Tooltip`,
             },
         });
-
         await wrapper.get(tooltipButtonClass).trigger("click");
         const header = wrapper.get(headerClass);
         expect(header.text()).toBe("Tooltip");
