@@ -5,7 +5,7 @@ import { onMounted, onUnmounted, readonly, type Ref, ref, watch } from "vue";
  *
  * @internal
  */
-export function useOffset(options: {
+export function useHorizontalOffset(options: {
     element: Ref<HTMLElement | null>;
     parent: Ref<HTMLElement | null>;
 }): Readonly<Ref<number>> {

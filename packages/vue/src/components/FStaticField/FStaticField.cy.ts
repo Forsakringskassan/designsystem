@@ -21,8 +21,9 @@ describe("FStaticField", () => {
             "[data-test] .output-field",
         );
         staticFieldWithTooltip.label.trimmedText().should("equal", "Etikett");
-        staticFieldWithTooltip.tooltip.el().should("be.visible");
+        staticFieldWithTooltip.tooltip.el().should("not.be.visible");
         staticFieldWithTooltip.tooltip.iButton().click();
+        staticFieldWithTooltip.tooltip.el().should("be.visible");
         staticFieldWithTooltip
             .body()
             .should("have.trimmedText", "En liten statisk text.");

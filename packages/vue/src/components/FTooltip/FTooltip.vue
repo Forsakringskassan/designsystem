@@ -41,7 +41,7 @@ import { FIcon } from "../FIcon";
 import { focus, hasSlot } from "../../utils";
 import { tooltipAttachTo } from "./tooltip-attach-to";
 import { useAnimation } from "./use-animation";
-import { useOffset } from "./use-offset";
+import { useHorizontalOffset } from "./use-horizontal-offset";
 
 export default defineComponent({
     name: "FTooltip",
@@ -126,7 +126,7 @@ export default defineComponent({
             easing: "ease-in",
             element: wrapper,
         });
-        const offset = useOffset({
+        const offset = useHorizontalOffset({
             element: button,
             parent: computed(() => iconTarget.value?.parentElement ?? null),
         });
