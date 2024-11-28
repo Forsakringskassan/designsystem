@@ -38,12 +38,14 @@
     components: { LiveExample: import_docs_live_example.LiveExample, FCheckboxField: import_vue4.FCheckboxField },
     data() {
       return {
-        hasHeader: false
+        hasHeader: false,
+        longText: false
       };
     },
     computed: {
       components() {
         return {
+          FLabel: import_vue4.FLabel,
           FTooltip: import_vue4.FTooltip
         };
       },
@@ -51,16 +53,20 @@
         return this.hasHeader ? "<template #header> L\xE4r dig mer om [..] </template>" : "";
       },
       template() {
+        const { longText } = this;
+        const text = longText ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit in elit nunc, iaculis sit amet consequat vel, placerat et purus" : "Etikett";
         return (
           /* HTML */
           `
-                <div class="tooltip-before">
-                    <label class="label tooltip-before__label"> Etikett </label>
-                </div>
-                <f-tooltip screen-reader-text="Denna text syns bara f\xF6r sk\xE4rml\xE4sare">
-                    ${this.header}
-                    <template #body> Lorem ipsum dolor sit amet. </template>
-                </f-tooltip>
+                <f-label>
+                    <template #default> ${text} </template>
+                    <template #tooltip>
+                        <f-tooltip screen-reader-text="Denna text syns bara f\xF6r sk\xE4rml\xE4sare">
+                            ${this.header}
+                            <template #body> Lorem ipsum dolor sit amet. </template>
+                        </f-tooltip>
+                    </template>
+                </f-label>
             `
         );
       }
@@ -79,8 +85,19 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.hasHeader = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
-            (0, import_vue5.createTextVNode)(" Rubrik i tooltip")
+          default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+            (0, import_vue5.createTextVNode)(" Rubrik i tooltip ")
+          ])),
+          _: 1
+          /* STABLE */
+        }, 8, ["modelValue"]),
+        (0, import_vue5.createVNode)(_component_f_checkbox_field, {
+          modelValue: _ctx.longText,
+          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.longText = $event),
+          value: true
+        }, {
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+            (0, import_vue5.createTextVNode)(" L\xE5ng text ")
           ])),
           _: 1
           /* STABLE */

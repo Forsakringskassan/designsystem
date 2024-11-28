@@ -859,6 +859,10 @@ function trigger(target, type, key, newValue, oldValue, oldTarget) {
   }
   endBatch();
 }
+function getDepFromReactive(object, key) {
+  const depMap = targetMap.get(object);
+  return depMap && depMap.get(key);
+}
 function reactiveReadArray(array) {
   const raw = toRaw(array);
   if (raw === array) return raw;
@@ -1550,6 +1554,51 @@ const shallowUnwrapHandlers = {
 };
 function proxyRefs(objectWithRefs) {
   return isReactive(objectWithRefs) ? objectWithRefs : new Proxy(objectWithRefs, shallowUnwrapHandlers);
+}
+class ObjectRefImpl {
+  constructor(_object, _key, _defaultValue) {
+    this._object = _object;
+    this._key = _key;
+    this._defaultValue = _defaultValue;
+    this["__v_isRef"] = true;
+    this._value = void 0;
+  }
+  get value() {
+    const val = this._object[this._key];
+    return this._value = val === void 0 ? this._defaultValue : val;
+  }
+  set value(newVal) {
+    this._object[this._key] = newVal;
+  }
+  get dep() {
+    return getDepFromReactive(toRaw(this._object), this._key);
+  }
+}
+class GetterRefImpl {
+  constructor(_getter) {
+    this._getter = _getter;
+    this["__v_isRef"] = true;
+    this["__v_isReadonly"] = true;
+    this._value = void 0;
+  }
+  get value() {
+    return this._value = this._getter();
+  }
+}
+function toRef(source, key, defaultValue) {
+  if (isRef(source)) {
+    return source;
+  } else if (isFunction$3(source)) {
+    return new GetterRefImpl(source);
+  } else if (isObject$9(source) && arguments.length > 1) {
+    return propertyToRef(source, key, defaultValue);
+  } else {
+    return ref(source);
+  }
+}
+function propertyToRef(source, key, defaultValue) {
+  const val = source[key];
+  return isRef(val) ? val : new ObjectRefImpl(source, key, defaultValue);
 }
 class ComputedRefImpl {
   constructor(fn2, setter, isSSR) {
@@ -2858,6 +2907,22 @@ function defineComponent(options, extraOptions) {
 }
 function markAsyncBoundary(instance) {
   instance.ids = [instance.ids[0] + instance.ids[2]++ + "-", 0, 0];
+}
+function useTemplateRef(key) {
+  const i = getCurrentInstance();
+  const r = shallowRef(null);
+  if (i) {
+    const refs = i.refs === EMPTY_OBJ ? i.refs = {} : i.refs;
+    {
+      Object.defineProperty(refs, key, {
+        enumerable: true,
+        get: () => r.value,
+        set: (val) => r.value = val
+      });
+    }
+  }
+  const ret = r;
+  return ret;
 }
 function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   if (isArray$6(rawRef)) {
@@ -5516,6 +5581,9 @@ const useSSRContext = () => {
     return ctx;
   }
 };
+function watchEffect(effect2, options) {
+  return doWatch(effect2, null, options);
+}
 function watch(source, cb, options) {
   return doWatch(source, cb, options);
 }
@@ -9122,6 +9190,21 @@ class FDate {
     return this.toString(DateFormat$1.ISO8601);
   }
 }
+function parseDate(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  const normalized = normalizeDateFormat(value);
+  if (!normalized) {
+    return void 0;
+  }
+  const date = FDate.fromIso(normalized);
+  if (date.isValid()) {
+    return date.toString();
+  } else {
+    return void 0;
+  }
+}
 function stripWhitespace(text) {
   return text.replace(/\s+/g, "");
 }
@@ -9206,6 +9289,14 @@ function parsePersonnummerLuhn(value) {
     return void 0;
   }
   return parsed;
+}
+function formatPersonnummerToDate(value) {
+  var _a;
+  const datePart = parseDate(((_a = parsePersonnummer(value)) == null ? void 0 : _a.slice(0, 8)) || "");
+  if (!datePart) {
+    return void 0;
+  }
+  return FDate.fromIso(datePart);
 }
 const PLUSGIRO_REGEXP = /^\d{1,7}[-]?\d{1}$/;
 function hyphenShouldBeAdded(value) {
@@ -9339,7 +9430,7 @@ const TABBABLE_ELEMENT_SELECTOR = [
 function isHTMLElement(element) {
   return Boolean(element && element instanceof HTMLElement);
 }
-function focus(element, options = {}) {
+function focus$1(element, options = {}) {
   if (typeof options === "boolean") {
     options = { force: options };
   }
@@ -9380,7 +9471,7 @@ function pushFocus(element) {
     element: document.activeElement
   };
   _focusElementStack.push(stackFrame);
-  focus(element);
+  focus$1(element);
   return { [sym]: stackFrame.id };
 }
 function popFocus(handle) {
@@ -9403,7 +9494,7 @@ function popFocus(handle) {
       throw new Error(outOfOrderErrorMsg);
     }
   }
-  focus(top == null ? void 0 : top.element);
+  focus$1(top == null ? void 0 : top.element);
 }
 function isRadiobuttonOrCheckbox(element) {
   return element instanceof HTMLInputElement && (element.type === "radio" || element.type === "checkbox");
@@ -10038,10 +10129,34 @@ const bankgiroValidator = {
     return isEmpty(value) || isSet(parseBankgiro(value));
   }
 };
+function toArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  } else {
+    return [value];
+  }
+}
+const blacklistValidator = {
+  name: "blacklist",
+  validation(value, _element, config2) {
+    if (!config2.values) {
+      throw new Error("config.exclude must have values");
+    }
+    const values = toArray(config2.values);
+    const found = values.some((it) => String(it) === value);
+    return !found;
+  }
+};
 const clearingNumberValidator = {
   name: "clearingNumber",
   validation(value) {
     return isEmpty(value) || isSet(parseClearingNumber(value));
+  }
+};
+const currencyValidator = {
+  name: "currency",
+  validation(value) {
+    return isEmpty(value) || isSet(parseNumber(value));
   }
 };
 const dateValidator = {
@@ -10086,30 +10201,36 @@ const decimalValidator = {
     return isEmpty(valueWithoutWhitespace) || createNumberRegexp(minDecimalsAsNumber, maxDecimalsAsNumber).test(valueWithoutWhitespace);
   }
 };
-function toArray(value) {
-  if (Array.isArray(value)) {
-    return value;
-  } else {
-    return [value];
-  }
-}
-const blacklistValidator = {
-  name: "blacklist",
-  validation(value, _element, config2) {
-    if (!config2.values) {
-      throw new Error("config.exclude must have values");
-    }
-    const values = toArray(config2.values);
-    const found = values.some((it) => String(it) === value);
-    return !found;
-  }
-};
 const emailValidator = {
   name: "email",
   validation(value, _element, config2) {
     const maxLength = config2.maxLength || 254;
     const EMAIL_REGEXP = new RegExp(`^(?=.{1,${maxLength}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
     return isEmpty(value) || EMAIL_REGEXP.test(value);
+  }
+};
+function numberValidator$1(value, config2, name, compare2) {
+  if (value === "") {
+    return true;
+  }
+  const limit = config2[name];
+  if (!isSet(limit)) {
+    return false;
+  }
+  const limitAsNumber = parseNumber(String(config2[name]));
+  if (limitAsNumber === void 0) {
+    throw new Error(`config.${String(name)} must be a number`);
+  }
+  const valueAsNumber = parseNumber(value);
+  if (valueAsNumber === void 0) {
+    return false;
+  }
+  return compare2(valueAsNumber, limitAsNumber);
+}
+const greaterThanValidator = {
+  name: "greaterThan",
+  validation(value, _element, config2) {
+    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 > limit);
   }
 };
 const NUMBER_REGEXP = /^([-−]?[0-9]+)?$/;
@@ -10151,30 +10272,6 @@ const invalidWeekdaysValidator = {
     return !config2.days.includes(day);
   }
 };
-function numberValidator$1(value, config2, name, compare2) {
-  if (value === "") {
-    return true;
-  }
-  const limit = config2[name];
-  if (!isSet(limit)) {
-    return false;
-  }
-  const limitAsNumber = parseNumber(String(config2[name]));
-  if (limitAsNumber === void 0) {
-    throw new Error(`config.${String(name)} must be a number`);
-  }
-  const valueAsNumber = parseNumber(value);
-  if (valueAsNumber === void 0) {
-    return false;
-  }
-  return compare2(valueAsNumber, limitAsNumber);
-}
-const greaterThanValidator = {
-  name: "greaterThan",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 > limit);
-  }
-};
 const lessThanValidator = {
   name: "lessThan",
   validation(value, _element, config2) {
@@ -10189,6 +10286,21 @@ const matchesValidator = {
     }
     const el = document.getElementById(config2.id);
     return el.value === value;
+  }
+};
+const maxDateValidator = {
+  name: "maxDate",
+  validation(value, _element, config2) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    const normalizedValue = normalizeDateFormat(value);
+    if (!normalizedValue) {
+      return false;
+    }
+    const parsed = FDate.fromIso(normalizedValue);
+    const limit = FDate.fromIso(validLimit(config2.limit));
+    return parsed.equals(limit) || parsed.isBefore(limit);
   }
 };
 const maxLengthValidator = {
@@ -10218,21 +10330,6 @@ const minDateValidator = {
     return parsed.equals(limit) || parsed.isAfter(limit);
   }
 };
-const maxDateValidator = {
-  name: "maxDate",
-  validation(value, _element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalizedValue = normalizeDateFormat(value);
-    if (!normalizedValue) {
-      return false;
-    }
-    const parsed = FDate.fromIso(normalizedValue);
-    const limit = FDate.fromIso(validLimit(config2.limit));
-    return parsed.equals(limit) || parsed.isBefore(limit);
-  }
-};
 const minLengthValidator = {
   name: "minLength",
   validation(value, _element, config2) {
@@ -10247,12 +10344,6 @@ const minValueValidator = {
 };
 const numberValidator = {
   name: "number",
-  validation(value) {
-    return isEmpty(value) || isSet(parseNumber(value));
-  }
-};
-const currencyValidator = {
-  name: "currency",
   validation(value) {
     return isEmpty(value) || isSet(parseNumber(value));
   }
@@ -10281,6 +10372,45 @@ const personnummerLuhnValidator = {
   name: "personnummerLuhn",
   validation(value) {
     return isEmpty(value) || isSet(parsePersonnummerLuhn(value));
+  }
+};
+const personnummerNotSame = {
+  name: "personnummerNotSame",
+  validation(value, _element, config2) {
+    const valuePnr = parsePersonnummer(String(value));
+    if (!valuePnr) {
+      return true;
+    }
+    const otherFieldPnr = parsePersonnummer(String(config2.otherField));
+    if (!otherFieldPnr) {
+      return true;
+    }
+    if (valuePnr === otherFieldPnr) {
+      return false;
+    }
+    return true;
+  }
+};
+const personnummerOlder = {
+  name: "personnummerOlder",
+  validation(value, _element, config2) {
+    const valueAsDate = formatPersonnummerToDate(value);
+    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
+    if (!valueAsDate || !otherAsDate) {
+      return true;
+    }
+    return FDate.compare(valueAsDate, otherAsDate) !== 1;
+  }
+};
+const personnummerYounger = {
+  name: "personnummerYounger",
+  validation(value, _element, config2) {
+    const valueAsDate = formatPersonnummerToDate(value);
+    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
+    if (!valueAsDate || !otherAsDate) {
+      return true;
+    }
+    return FDate.compare(valueAsDate, otherAsDate) !== -1;
   }
 };
 const PHONE_NUMBER_REGEXP = /^(\+?[-_/() ]*(\d[-_/() ]*?){3,17})$/;
@@ -10344,30 +10474,33 @@ const whitelistValidator = {
 };
 ValidationService.registerValidator(bankAccountNumberValidator);
 ValidationService.registerValidator(bankgiroValidator);
+ValidationService.registerValidator(blacklistValidator);
 ValidationService.registerValidator(clearingNumberValidator);
+ValidationService.registerValidator(currencyValidator);
 ValidationService.registerValidator(dateFormatValidator);
 ValidationService.registerValidator(dateValidator);
 ValidationService.registerValidator(decimalValidator);
-ValidationService.registerValidator(blacklistValidator);
 ValidationService.registerValidator(emailValidator);
-ValidationService.registerValidator(integerValidator);
 ValidationService.registerValidator(greaterThanValidator);
+ValidationService.registerValidator(integerValidator);
 ValidationService.registerValidator(invalidDatesValidator);
 ValidationService.registerValidator(invalidWeekdaysValidator);
 ValidationService.registerValidator(lessThanValidator);
-ValidationService.registerValidator(minLengthValidator);
 ValidationService.registerValidator(matchesValidator);
+ValidationService.registerValidator(maxDateValidator);
 ValidationService.registerValidator(maxLengthValidator);
-ValidationService.registerValidator(minValueValidator);
 ValidationService.registerValidator(maxValueValidator);
 ValidationService.registerValidator(minDateValidator);
-ValidationService.registerValidator(maxDateValidator);
+ValidationService.registerValidator(minLengthValidator);
+ValidationService.registerValidator(minValueValidator);
 ValidationService.registerValidator(numberValidator);
-ValidationService.registerValidator(currencyValidator);
 ValidationService.registerValidator(organisationsnummerValidator);
 ValidationService.registerValidator(percentValidator);
 ValidationService.registerValidator(personnummerFormatValidator);
 ValidationService.registerValidator(personnummerLuhnValidator);
+ValidationService.registerValidator(personnummerNotSame);
+ValidationService.registerValidator(personnummerOlder);
+ValidationService.registerValidator(personnummerYounger);
 ValidationService.registerValidator(phoneNumberValidator);
 ValidationService.registerValidator(plusgiroValidator);
 ValidationService.registerValidator(postalCodeValidator);
@@ -10936,13 +11069,6 @@ const ISO8601_YYYY_MM_DD = "YYYY-MM-DD";
     [DateFormat.YYYYMMDD]: "YYYYMMDD"
   }
 });
-const _export_sfc$1 = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
@@ -11834,9 +11960,16 @@ const _sfc_main$1b = /* @__PURE__ */ defineComponent({
     }
   }
 });
+const _export_sfc$1 = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
 const _hoisted_1$T = ["aria-hidden"];
 const _hoisted_2$F = ["xlink:href"];
-function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
     focusable: "false",
     class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
@@ -11845,7 +11978,7 @@ function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
     "xlink:href": _ctx.spriteId
   }, null, 8, _hoisted_2$F)], 16, _hoisted_1$T);
 }
-const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1b, [["render", _sfc_render$11]]);
+const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1b, [["render", _sfc_render$10]]);
 const DATA_TEST_ATTRIBUTE_NAME = "data-test";
 function throwErrorIfEmpty(value) {
   if (!value) {
@@ -13187,16 +13320,16 @@ function focusElement(element, container) {
   if (elementIsRadioButton(element)) {
     focusRadioButtonGroup(element, container);
   } else {
-    focus(element);
+    focus$1(element);
   }
 }
 function focusRadioButtonGroup(element, container) {
   const radioGroupInputs = container.querySelectorAll(`input[type="radio"][name="${element.name}"]`);
   const checkedRadioButton = Array.from(radioGroupInputs).find((inputEl) => inputEl.checked);
   if (checkedRadioButton) {
-    focus(checkedRadioButton);
+    focus$1(checkedRadioButton);
   } else {
-    focus(element);
+    focus$1(element);
   }
 }
 function elementIsRadioButton(element) {
@@ -13378,25 +13511,25 @@ const _hoisted_5$l = {
 const _hoisted_6$g = {
   class: "modal__header"
 };
-const _hoisted_7$e = {
+const _hoisted_7$d = {
   key: 0,
   ref: "modalTitle",
   class: "modal__title",
   tabindex: "-1"
 };
-const _hoisted_8$a = {
+const _hoisted_8$9 = {
   ref: "modalContent",
   class: "modal__content",
   tabindex: "-1"
 };
-const _hoisted_9$7 = {
+const _hoisted_9$6 = {
   class: "modal__footer"
 };
-const _hoisted_10$6 = {
+const _hoisted_10$5 = {
   class: "modal__shelf"
 };
 const _hoisted_11$3 = ["aria-label"];
-function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -13414,7 +13547,7 @@ function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createBaseVNode("div", _hoisted_4$r, [createBaseVNode("div", _hoisted_5$l, [createBaseVNode("div", _hoisted_6$g, [createBaseVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$e, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$a, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$6, [createBaseVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$5, [createBaseVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -13426,7 +13559,7 @@ function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
     onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$S)) : createCommentVNode("", true);
 }
-const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$10]]);
+const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$$]]);
 function prepareButtonList(src, buttonOrder = config.buttonOrder) {
   const list = src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
@@ -13554,7 +13687,7 @@ const _hoisted_3$v = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
     fullscreen: _ctx.fullscreen,
@@ -13577,7 +13710,7 @@ function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "onClose"]);
 }
-const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$$]]);
+const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$_]]);
 const GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 const ALIGNMENT = ["top", "center", "bottom"];
 const FLOAT = ["left", "center", "right"];
@@ -13656,12 +13789,12 @@ const _sfc_main$18 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$_]]);
+const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$Z]]);
 const _sfc_main$17 = /* @__PURE__ */ defineComponent({
   name: "IFlexItem",
   inheritAttrs: true,
@@ -13709,12 +13842,12 @@ const _sfc_main$17 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex__item", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$Z]]);
+const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$Y]]);
 function focusError(item) {
   const element = document.querySelector(`#${item.id}`);
   if (!element) {
@@ -13722,7 +13855,7 @@ function focusError(item) {
   }
   const focusElement2 = document.querySelector(`#${item.focusElementId}`);
   scrollTo(element, window.innerHeight * 0.25);
-  focus(focusElement2 ? focusElement2 : element);
+  focus$1(focusElement2 ? focusElement2 : element);
 }
 const _sfc_main$16 = /* @__PURE__ */ defineComponent({
   name: "FErrorList",
@@ -13793,7 +13926,7 @@ const _hoisted_4$q = ["onClick"];
 const _hoisted_5$k = {
   class: "error-list__link"
 };
-function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
@@ -13847,7 +13980,7 @@ function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })]);
 }
-const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$Y]]);
+const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$X]]);
 function cleanUpElements(vm) {
   return new Promise((resolve2) => {
     window.setTimeout(() => {
@@ -13931,13 +14064,13 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
     onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
   }, [renderSlot(_ctx.$slots, "default")], 32);
 }
-const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$X]]);
+const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$W]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -14054,11 +14187,11 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
         return false;
       }
       if (this.useErrorList) {
-        focus(this.$refs.errors);
+        focus$1(this.$refs.errors);
       } else {
         const firstError = this.validity.componentsWithError[0];
         const element = document.getElementById(firstError.focusElementId);
-        focus(element);
+        focus$1(element);
       }
       return true;
     },
@@ -14089,7 +14222,7 @@ const _hoisted_2$B = {
   tabindex: "-1",
   role: "group"
 };
-function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = resolveComponent("f-error-list");
   const _component_f_validation_group = resolveComponent("f-validation-group");
   return openBlock(), createBlock(_component_f_validation_group, {
@@ -14115,7 +14248,7 @@ function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["modelValue"]);
 }
-const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$W]]);
+const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$V]]);
 const _sfc_main$13 = /* @__PURE__ */ defineComponent({
   name: "FFormModal",
   components: {
@@ -14277,7 +14410,7 @@ const _hoisted_3$t = {
   class: "sr-only"
 };
 const _hoisted_4$p = ["form"];
-function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = resolveComponent("f-validation-form");
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
@@ -14327,7 +14460,25 @@ function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
-const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$V]]);
+const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$U]]);
+function isVueComponent(element) {
+  return Boolean(element && typeof element === "object" && "$el" in element);
+}
+function focus(element, options = {}) {
+  if (Array.isArray(element)) {
+    return focus(element[0], options);
+  }
+  if (isVueComponent(element)) {
+    var _element$focusTarget;
+    const targetElement = (_element$focusTarget = element.focusTarget) !== null && _element$focusTarget !== void 0 ? _element$focusTarget : element.$el;
+    return focus(targetElement, options);
+  }
+  if (element instanceof HTMLElement) {
+    focus$1(element, options);
+    return true;
+  }
+  return false;
+}
 function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
   return Boolean(renderSlotText(slot, props, options));
@@ -14871,7 +15022,7 @@ const _hoisted_4$k = {
   key: 0,
   class: "checkbox__details"
 };
-function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["checkbox", _ctx.disabledClass]),
     onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -14901,7 +15052,7 @@ function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$u)], 34);
 }
-const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$U, [["render", _sfc_render$K]]);
+const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$U, [["render", _sfc_render$J]]);
 var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["ADD"] = 0] = "ADD";
   Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -15377,270 +15528,72 @@ function FSortFilterDatasetInjected() {
   };
 }
 const _sfc_main$P = /* @__PURE__ */ defineComponent({
-  name: "FLabel",
-  components: {
-    FIcon
-  },
-  props: {
-    /**
-     * The id for the form element the label is bound to.
-     */
-    for: {
-      type: String,
-      required: false,
-      default: void 0
-    }
-  },
+  name: "FExpand",
   data() {
     return {
-      descriptionClass: ["label__description"],
-      discreteDescriptionClass: ["label__description", "label__description--discrete"]
-    };
-  },
-  computed: {
-    forProperty() {
-      return this.for;
-    },
-    hasDefaultSlot() {
-      return hasSlot(this, "default");
-    },
-    hasErrorMessageSlot() {
-      return hasSlot(this, "error-message");
-    },
-    hasDescriptionSlot() {
-      return hasSlot(this, "description");
-    }
-  }
-});
-const _hoisted_1$C = {
-  key: 0
-};
-const _hoisted_2$s = {
-  key: 0,
-  class: "tooltip-before"
-};
-const _hoisted_3$n = ["for"];
-const _hoisted_4$j = ["for"];
-const _hoisted_5$f = {
-  key: 0,
-  class: "label__message label__message--error"
-};
-const _hoisted_6$c = ["for"];
-const _hoisted_7$b = {
-  key: 0,
-  class: "label__message label__message--error"
-};
-function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = resolveComponent("f-icon");
-  return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$C, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$s, [createBaseVNode("label", {
-    class: "label tooltip-before__label",
-    for: _ctx.forProperty
-  }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$n)])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
-    key: 1,
-    class: "label sr-separator",
-    for: _ctx.forProperty
-  }, [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
-    descriptionClass: _ctx.descriptionClass,
-    discreteDescriptionClass: _ctx.discreteDescriptionClass
-  }))), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$f, [createVNode(_component_f_icon, {
-    class: "label__icon--left",
-    name: "error"
-  }), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_4$j)) : createCommentVNode("", true)])) : (openBlock(), createElementBlock("label", {
-    key: 1,
-    class: "label",
-    for: _ctx.forProperty
-  }, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
-    descriptionClass: _ctx.descriptionClass,
-    discreteDescriptionClass: _ctx.discreteDescriptionClass
-  }))), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$b, [createVNode(_component_f_icon, {
-    class: "label__icon--left",
-    name: "error"
-  }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$c));
-}
-const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$P, [["render", _sfc_render$F]]);
-function resolveWidthClass$1(words, inline) {
-  return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
-}
-const _sfc_main$O = /* @__PURE__ */ defineComponent({
-  name: "FSelectField",
-  components: {
-    FIcon,
-    FLabel
-  },
-  inheritAttrs: false,
-  props: {
-    /**
-     * The id for the select id attribute.
-     * The id for the label for attribute.
-     * If the prop is not set a random value will be generated.
-     */
-    id: {
-      type: String,
-      required: false,
-      default: () => ElementIdService.generateElementId()
-    },
-    /**
-     * Show the component inline.
-     */
-    inline: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    /**
-     * The value for the input.
-     * If the prop is not set undefined will be used.
-     * @model
-     */
-    modelValue: {
-      type: [String, Number, Object, Array, Boolean],
-      required: false,
-      default: void 0
-    },
-    /**
-     * Set responsive width for label section.
-     *
-     * ```
-     * label-width="md-9 lg-6"
-     * ```
-     */
-    labelWidth: {
-      type: String,
-      required: false,
-      default: "sm-12"
-    },
-    /**
-     * Set responsive width for select section that wraps select element and icons.
-     *
-     * ```
-     * select-width="md-6 lg-3"
-     * ```
-     */
-    selectWidth: {
-      type: String,
-      required: false,
-      default: "sm-12"
-    }
-  },
-  emits: ["change", "update:modelValue"],
-  setup() {
-    return {
-      textFieldTableMode: inject("textFieldTableMode", false)
-    };
-  },
-  data() {
-    return {
-      validityMode: "INITIAL",
-      validationMessage: ""
-    };
-  },
-  computed: {
-    attrs() {
-      return {
-        ...this.$attrs,
-        // Disable change
-        onChange: () => void 0
-      };
-    },
-    hasError() {
-      return this.validityMode === "ERROR";
-    },
-    rootClass() {
-      return {
-        ["select-field--error"]: this.hasError,
-        ["select-field--inline"]: this.inline,
-        ["text-field--table"]: this.textFieldTableMode,
-        ["select-field--table-error"]: this.textFieldTableMode && this.hasError
-      };
-    },
-    labelClass() {
-      return this.textFieldTableMode ? "sr-only" : "";
-    },
-    labelWrapperClass() {
-      return resolveWidthClass$1(this.labelWidth, this.inline);
-    },
-    selectWrapperClass() {
-      return resolveWidthClass$1(this.selectWidth, this.inline);
-    },
-    vModel: {
-      get() {
-        return this.modelValue;
+      height: 0,
+      initialStyle: {
+        overflow: "hidden",
+        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
       },
-      set(value) {
-        this.$emit("update:modelValue", value);
-        this.$emit("change", value);
+      hiddenStyle: {
+        height: "auto",
+        position: "absolute",
+        visibility: "hidden"
+      },
+      visibleStyle: {
+        width: "",
+        position: "",
+        visibility: "",
+        height: "0px"
+      },
+      openedStyle: {
+        height: "auto"
       }
-    }
+    };
   },
   methods: {
-    async onValidity({
-      detail
-    }) {
-      var _renderSlotText;
-      this.validationMessage = detail.validationMessage;
-      this.validityMode = detail.validityMode;
-      await this.$nextTick();
-      const errorMessage = (_renderSlotText = renderSlotText(this.$slots.label)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
-      const element = this.$el.querySelector(`#${detail.elementId}`);
-      if (element) {
-        dispatchComponentValidityEvent(element, {
-          ...detail,
-          errorMessage,
-          focusElementId: detail.elementId
-        });
-      }
+    enter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.initialStyle);
+      Object.assign(htmlElement.style, this.hiddenStyle);
+      htmlElement.style.width = getComputedStyle(element).width;
+      const height = getComputedStyle(element).height;
+      Object.assign(htmlElement.style, this.visibleStyle);
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        this.height = parseInt(height, 10);
+        htmlElement.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.openedStyle);
+    },
+    leave(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const height = getComputedStyle(element).height;
+      htmlElement.style.height = height;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        Object.assign(htmlElement.style, this.visibleStyle);
+      });
     }
   }
 });
-const _hoisted_1$B = ["id"];
 function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_label = resolveComponent("f-label");
-  const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["select-field", _ctx.rootClass]),
-    onValidity: _cache[1] || (_cache[1] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
-  }, [createBaseVNode("div", {
-    class: normalizeClass(_ctx.labelWrapperClass)
-  }, [createVNode(_component_f_label, {
-    for: _ctx.id,
-    class: normalizeClass(_ctx.labelClass)
-  }, createSlots({
-    default: withCtx(() => [renderSlot(_ctx.$slots, "label")]),
-    description: withCtx(({
-      descriptionClass,
-      discreteDescriptionClass
-    }) => [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
-      descriptionClass,
-      discreteDescriptionClass
-    })))]),
-    "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
-      hasError: _ctx.hasError,
-      validationMessage: _ctx.validationMessage
-    })), () => [_ctx.hasError ? (openBlock(), createElementBlock(Fragment, {
-      key: 0
-    }, [createTextVNode(toDisplayString(_ctx.validationMessage), 1)], 64)) : createCommentVNode("", true)])]),
-    _: 2
-  }, [_ctx.$slots.tooltip ? {
-    name: "tooltip",
-    fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]),
-    key: "0"
-  } : void 0]), 1032, ["for", "class"])], 2), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("div", {
-    class: normalizeClass(["select-field__icon-wrapper", _ctx.selectWrapperClass])
-  }, [withDirectives(createBaseVNode("select", mergeProps({
-    id: _ctx.id,
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event),
-    class: "select-field__select"
-  }, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$B), [[vModelSelect, _ctx.vModel]]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
-    key: 0,
-    ref: "icon",
-    class: "text-field__icon input-icon select-field__error-popup-icon",
-    name: "error"
-  }, null, 512)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
-    class: "select-field__icon",
-    name: "arrow-down"
-  })], 2)], 34);
+  return openBlock(), createBlock(Transition, {
+    onEnter: _ctx.enter,
+    onAfterEnter: _ctx.afterEnter,
+    onLeave: _ctx.leave
+  }, {
+    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {
+      height: _ctx.height
+    })]),
+    _: 3
+  }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
-const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$O, [["render", _sfc_render$E]]);
+const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$P, [["render", _sfc_render$E]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   switch (placement) {
     case Placement.A: {
@@ -15703,7 +15656,7 @@ function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   }
 }
 const POPUP_SPACING = 10;
-const _sfc_main$N = /* @__PURE__ */ defineComponent({
+const _sfc_main$O = /* @__PURE__ */ defineComponent({
   name: "IPopupError",
   components: {
     FIcon
@@ -15838,7 +15791,7 @@ const _sfc_main$N = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$A = {
+const _hoisted_1$C = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
@@ -15852,7 +15805,7 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "popup",
     class: normalizeClass(_ctx.popupClasses),
     "aria-hidden": "true"
-  }, [createBaseVNode("div", _hoisted_1$A, [createBaseVNode("div", {
+  }, [createBaseVNode("div", _hoisted_1$C, [createBaseVNode("div", {
     class: normalizeClass(_ctx.arrowClass),
     style: normalizeStyle(_ctx.errorStyle)
   }, [createBaseVNode("span", null, toDisplayString(_ctx.errorMessage), 1), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("button", {
@@ -15866,11 +15819,528 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     class: "button__icon"
   })])], 6)], 512)], 2)], 8, ["disabled"])) : createCommentVNode("", true);
 }
-const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$N, [["render", _sfc_render$D]]);
+const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$O, [["render", _sfc_render$D]]);
+const tooltipAttachTo = Symbol("tooltipAttachTo");
+let initialized = false;
+const reducedMotion = ref(false);
+function useAnimation(options) {
+  const {
+    duration = 250,
+    easing = "ease-in",
+    element: elementRef
+  } = options;
+  let current = "collapse";
+  let animation = null;
+  onMounted(() => {
+    if (initialized) {
+      return;
+    }
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    reducedMotion.value = prefersReducedMotion.matches;
+    prefersReducedMotion.addEventListener("change", (event) => {
+      reducedMotion.value = event.matches;
+    });
+    initialized = true;
+  });
+  watchEffect(() => {
+    if (elementRef.value) {
+      elementRef.value.classList.toggle("expanded", current === "expand");
+    }
+  });
+  return {
+    enabled: computed(() => reducedMotion.value === false),
+    animate(state) {
+      current = state;
+      const element = elementRef.value;
+      if (!element) {
+        return;
+      }
+      element.classList.toggle("expanded", state === "expand");
+      if (reducedMotion.value) {
+        return;
+      }
+      if (animation) {
+        animation.cancel();
+      }
+      element.classList.add("animating");
+      const h2 = element.offsetHeight;
+      if (state === "expand") {
+        animation = element.animate([{
+          height: 0
+        }, {
+          height: `${h2}px`
+        }], {
+          duration,
+          easing
+        });
+      } else {
+        animation = element.animate([{
+          height: `${h2}px`
+        }, {
+          height: 0
+        }], {
+          duration,
+          easing
+        });
+      }
+      animation.addEventListener("finish", () => {
+        element.classList.remove("animating");
+      });
+    }
+  };
+}
+function useHorizontalOffset(options) {
+  const {
+    element: elementRef,
+    parent: parentRef
+  } = options;
+  const offset2 = ref(0);
+  watch(() => elementRef.value, updateOffset);
+  watch(() => parentRef, updateOffset);
+  onMounted(() => window.addEventListener("resize", updateOffset));
+  onUnmounted(() => window.removeEventListener("resize", updateOffset));
+  return readonly(offset2);
+  function updateOffset() {
+    const element = elementRef.value;
+    const parent = parentRef.value;
+    if (!element || !parent) {
+      return;
+    }
+    setTimeout(() => {
+      const borderWidth = 2;
+      const center = element.offsetWidth / 2;
+      const left = element.offsetLeft - parent.offsetLeft;
+      offset2.value = left - borderWidth + center;
+    }, 0);
+  }
+}
+/* @__PURE__ */ defineComponent({
+  name: "FTooltip",
+  components: {
+    FExpand,
+    FIcon,
+    IFlex,
+    IFlexItem
+  },
+  inheritAttrs: false,
+  props: {
+    /**
+     * Element to attach tooltip toggle button.
+     *
+     * Only needed when using with arbitrary elements, e.g. when using with
+     * `FLabel` you do not need to set this prop.
+     */
+    attachTo: {
+      type: HTMLElement,
+      required: false,
+      default: null
+    },
+    /**
+     * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
+     *
+     * @model
+     */
+    modelValue: {
+      type: Boolean,
+      required: false
+    },
+    /**
+     * Screen reader text for toggle button
+     */
+    screenReaderText: {
+      type: String,
+      required: true
+    },
+    /**
+     * Close button text
+     */
+    closeButtonText: {
+      type: String,
+      required: false,
+      default: TranslationService.provider.translate("fkui.tooltip.close", "Stäng")
+    },
+    /**
+     * Element to render for the header element inside the tooltip.
+     *
+     * Must be set to one of:
+     *
+     * - `div` (default)
+     * - `span`
+     * - `h1`
+     * - `h2`
+     * - `h3`
+     * - `h4`
+     * - `h5`
+     * - `h6`
+     */
+    headerTag: {
+      default: "div",
+      required: false,
+      validator(value) {
+        return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
+      }
+    }
+  },
+  emits: ["update:modelValue", "toggle"],
+  setup(props) {
+    const provided = inject(tooltipAttachTo, null);
+    const attachTo = toRef(props, "attachTo");
+    const ready = ref(false);
+    const iconTarget = computed(() => {
+      if (provided == null ? void 0 : provided.value) {
+        return provided.value;
+      }
+      if (attachTo.value) {
+        return attachTo.value;
+      }
+      return null;
+    });
+    const wrapper2 = useTemplateRef("wrapper");
+    const button = useTemplateRef("button");
+    const {
+      animate
+    } = useAnimation({
+      duration: 250,
+      easing: "ease-in",
+      element: wrapper2
+    });
+    const offset2 = useHorizontalOffset({
+      element: button,
+      parent: computed(() => {
+        var _a;
+        var _iconTarget$value$par;
+        return (_iconTarget$value$par = (_a = iconTarget.value) == null ? void 0 : _a.parentElement) !== null && _iconTarget$value$par !== void 0 ? _iconTarget$value$par : null;
+      })
+    });
+    watchEffect(() => {
+      var _a;
+      (_a = iconTarget.value) == null ? void 0 : _a.classList.add("tooltip__container");
+    });
+    watchEffect(() => {
+      if (!wrapper2.value) {
+        return;
+      }
+      wrapper2.value.style.setProperty("--f-tooltip-offset", `${offset2.value}px`);
+      ready.value = true;
+    });
+    return {
+      animate,
+      iconTarget,
+      ready
+    };
+  },
+  data() {
+    return {
+      isOpen: false
+    };
+  },
+  computed: {
+    hasHeader() {
+      return hasSlot(this, "header");
+    }
+  },
+  watch: {
+    modelValue: {
+      immediate: true,
+      handler(value) {
+        this.isOpen = value;
+        this.animate(value ? "expand" : "collapse");
+      }
+    }
+  },
+  methods: {
+    /**
+     * Gets called when the user interacts with the toggle button
+     *
+     * @internal
+     */
+    onClickToggle() {
+      this.isOpen = !this.isOpen;
+      const value = this.isOpen;
+      const event = {
+        isOpen: this.isOpen
+      };
+      this.$emit("update:modelValue", value);
+      this.$emit("toggle", event);
+      if (!this.isOpen) {
+        focus(this.$refs.button);
+      }
+      this.animate(value ? "expand" : "collapse");
+    }
+  }
+});
+const _sfc_main$J = /* @__PURE__ */ defineComponent({
+  name: "FLabel",
+  components: {
+    FIcon
+  },
+  props: {
+    /**
+     * The id for the form element the label is bound to.
+     */
+    for: {
+      type: String,
+      required: false,
+      default: void 0
+    }
+  },
+  setup() {
+    provide(tooltipAttachTo, useTemplateRef("tooltipAttachTo"));
+  },
+  data() {
+    return {
+      descriptionClass: ["label__description"],
+      discreteDescriptionClass: ["label__description", "label__description--discrete"]
+    };
+  },
+  computed: {
+    forProperty() {
+      return this.for;
+    },
+    hasDefaultSlot() {
+      return hasSlot(this, "default");
+    },
+    hasErrorMessageSlot() {
+      return hasSlot(this, "error-message");
+    },
+    hasDescriptionSlot() {
+      return hasSlot(this, "description");
+    }
+  }
+});
+const _hoisted_1$x = {
+  key: 0
+};
+const _hoisted_2$q = {
+  key: 0,
+  ref: "tooltipAttachTo"
+};
+const _hoisted_3$l = ["for"];
+const _hoisted_4$h = ["for"];
+const _hoisted_5$d = {
+  key: 0,
+  class: "label__message label__message--error"
+};
+const _hoisted_6$b = ["for"];
+const _hoisted_7$a = {
+  key: 0,
+  class: "label__message label__message--error"
+};
+function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_icon = resolveComponent("f-icon");
+  return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$x, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$q, [createBaseVNode("label", {
+    class: "label",
+    for: _ctx.forProperty
+  }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$l)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
+    key: 1,
+    class: "label sr-separator",
+    for: _ctx.forProperty
+  }, [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
+    descriptionClass: _ctx.descriptionClass,
+    discreteDescriptionClass: _ctx.discreteDescriptionClass
+  }))), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$d, [createVNode(_component_f_icon, {
+    class: "label__icon--left",
+    name: "error"
+  }), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_4$h)) : createCommentVNode("", true)])) : (openBlock(), createElementBlock("label", {
+    key: 1,
+    class: "label",
+    for: _ctx.forProperty
+  }, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
+    descriptionClass: _ctx.descriptionClass,
+    discreteDescriptionClass: _ctx.discreteDescriptionClass
+  }))), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$a, [createVNode(_component_f_icon, {
+    class: "label__icon--left",
+    name: "error"
+  }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$b));
+}
+const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$J, [["render", _sfc_render$y]]);
+function resolveWidthClass$1(words, inline) {
+  return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
+}
+const _sfc_main$I = /* @__PURE__ */ defineComponent({
+  name: "FSelectField",
+  components: {
+    FIcon,
+    FLabel
+  },
+  inheritAttrs: false,
+  props: {
+    /**
+     * The id for the select id attribute.
+     * The id for the label for attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * Show the component inline.
+     */
+    inline: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * The value for the input.
+     * If the prop is not set undefined will be used.
+     * @model
+     */
+    modelValue: {
+      type: [String, Number, Object, Array, Boolean],
+      required: false,
+      default: void 0
+    },
+    /**
+     * Set responsive width for label section.
+     *
+     * ```
+     * label-width="md-9 lg-6"
+     * ```
+     */
+    labelWidth: {
+      type: String,
+      required: false,
+      default: "sm-12"
+    },
+    /**
+     * Set responsive width for select section that wraps select element and icons.
+     *
+     * ```
+     * select-width="md-6 lg-3"
+     * ```
+     */
+    selectWidth: {
+      type: String,
+      required: false,
+      default: "sm-12"
+    }
+  },
+  emits: ["change", "update:modelValue"],
+  setup() {
+    return {
+      textFieldTableMode: inject("textFieldTableMode", false)
+    };
+  },
+  data() {
+    return {
+      validityMode: "INITIAL",
+      validationMessage: ""
+    };
+  },
+  computed: {
+    attrs() {
+      return {
+        ...this.$attrs,
+        // Disable change
+        onChange: () => void 0
+      };
+    },
+    hasError() {
+      return this.validityMode === "ERROR";
+    },
+    rootClass() {
+      return {
+        ["select-field--error"]: this.hasError,
+        ["select-field--inline"]: this.inline,
+        ["text-field--table"]: this.textFieldTableMode,
+        ["select-field--table-error"]: this.textFieldTableMode && this.hasError
+      };
+    },
+    labelClass() {
+      return this.textFieldTableMode ? "sr-only" : "";
+    },
+    labelWrapperClass() {
+      return resolveWidthClass$1(this.labelWidth, this.inline);
+    },
+    selectWrapperClass() {
+      return resolveWidthClass$1(this.selectWidth, this.inline);
+    },
+    vModel: {
+      get() {
+        return this.modelValue;
+      },
+      set(value) {
+        this.$emit("update:modelValue", value);
+        this.$emit("change", value);
+      }
+    }
+  },
+  methods: {
+    async onValidity({
+      detail
+    }) {
+      var _renderSlotText;
+      this.validationMessage = detail.validationMessage;
+      this.validityMode = detail.validityMode;
+      await this.$nextTick();
+      const errorMessage = (_renderSlotText = renderSlotText(this.$slots.label)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
+      const element = this.$el.querySelector(`#${detail.elementId}`);
+      if (element) {
+        dispatchComponentValidityEvent(element, {
+          ...detail,
+          errorMessage,
+          focusElementId: detail.elementId
+        });
+      }
+    }
+  }
+});
+const _hoisted_1$w = ["id"];
+function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_label = resolveComponent("f-label");
+  const _component_f_icon = resolveComponent("f-icon");
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(["select-field", _ctx.rootClass]),
+    onValidity: _cache[1] || (_cache[1] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
+  }, [createBaseVNode("div", {
+    class: normalizeClass(_ctx.labelWrapperClass)
+  }, [createVNode(_component_f_label, {
+    for: _ctx.id,
+    class: normalizeClass(_ctx.labelClass)
+  }, createSlots({
+    default: withCtx(() => [renderSlot(_ctx.$slots, "label")]),
+    description: withCtx(({
+      descriptionClass,
+      discreteDescriptionClass
+    }) => [renderSlot(_ctx.$slots, "description", normalizeProps(guardReactiveProps({
+      descriptionClass,
+      discreteDescriptionClass
+    })))]),
+    "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
+      hasError: _ctx.hasError,
+      validationMessage: _ctx.validationMessage
+    })), () => [_ctx.hasError ? (openBlock(), createElementBlock(Fragment, {
+      key: 0
+    }, [createTextVNode(toDisplayString(_ctx.validationMessage), 1)], 64)) : createCommentVNode("", true)])]),
+    _: 2
+  }, [_ctx.$slots.tooltip ? {
+    name: "tooltip",
+    fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]),
+    key: "0"
+  } : void 0]), 1032, ["for", "class"])], 2), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("div", {
+    class: normalizeClass(["select-field__icon-wrapper", _ctx.selectWrapperClass])
+  }, [withDirectives(createBaseVNode("select", mergeProps({
+    id: _ctx.id,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event),
+    class: "select-field__select"
+  }, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$w), [[vModelSelect, _ctx.vModel]]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
+    key: 0,
+    ref: "icon",
+    class: "text-field__icon input-icon select-field__error-popup-icon",
+    name: "error"
+  }, null, 512)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
+    class: "select-field__icon",
+    name: "arrow-down"
+  })], 2)], 34);
+}
+const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$I, [["render", _sfc_render$x]]);
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
-const _sfc_main$M = /* @__PURE__ */ defineComponent({
+const _sfc_main$H = /* @__PURE__ */ defineComponent({
   name: "FTextField",
   components: {
     FLabel,
@@ -16145,26 +16615,26 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$z = {
+const _hoisted_1$v = {
   key: 0
 };
-const _hoisted_2$r = {
+const _hoisted_2$p = {
   key: 0,
   class: "sr-only"
 };
-const _hoisted_3$m = {
+const _hoisted_3$k = {
   key: 0,
   class: "sr-only"
 };
-const _hoisted_4$i = {
+const _hoisted_4$g = {
   class: "text-field__icon-wrapper"
 };
-const _hoisted_5$e = ["id", "type"];
-const _hoisted_6$b = {
+const _hoisted_5$c = ["id", "type"];
+const _hoisted_6$a = {
   key: 2,
   class: "text-field__append-inner"
 };
-function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_popup_error = resolveComponent("i-popup-error");
@@ -16176,7 +16646,7 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     for: _ctx.id,
     class: normalizeClass(_ctx.labelClass)
   }, createSlots({
-    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$z, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("", true)])]),
+    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$v, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("", true)])]),
     description: withCtx(({
       descriptionClass,
       discreteDescriptionClass
@@ -16186,10 +16656,10 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     })), () => [_ctx.descriptionText ? (openBlock(), createElementBlock("span", {
       key: 0,
       class: normalizeClass(descriptionClass)
-    }, [_ctx.descriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_2$r, toDisplayString(_ctx.descriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.descriptionText), 1)], 2)) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock("span", {
+    }, [_ctx.descriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_2$p, toDisplayString(_ctx.descriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.descriptionText), 1)], 2)) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock("span", {
       key: 1,
       class: normalizeClass(discreteDescriptionClass)
-    }, [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_3$m, toDisplayString(_ctx.discreteDescriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.discreteDescriptionText), 1)], 2)) : createCommentVNode("", true)])]),
+    }, [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_3$k, toDisplayString(_ctx.discreteDescriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.discreteDescriptionText), 1)], 2)) : createCommentVNode("", true)])]),
     "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
       hasError: _ctx.hasError,
       validationMessage: _ctx.validationMessage
@@ -16203,7 +16673,7 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     key: "0"
   } : void 0]), 1032, ["for", "class"])], 2), _cache[17] || (_cache[17] = createTextVNode()), createBaseVNode("div", {
     class: normalizeClass(["text-field__input-wrapper", _ctx.inputWrapperClass])
-  }, [renderSlot(_ctx.$slots, "input-left"), _cache[15] || (_cache[15] = createTextVNode()), createBaseVNode("div", _hoisted_4$i, [withDirectives(createBaseVNode("input", mergeProps({
+  }, [renderSlot(_ctx.$slots, "input-left"), _cache[15] || (_cache[15] = createTextVNode()), createBaseVNode("div", _hoisted_4$g, [withDirectives(createBaseVNode("input", mergeProps({
     id: _ctx.id,
     ref: "input",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event),
@@ -16215,7 +16685,7 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[3] || (_cache[3] = (...args) => _ctx.onChange && _ctx.onChange(...args)),
     onValidity: _cache[4] || (_cache[4] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)),
     onPendingValidity: _cache[5] || (_cache[5] = (...args) => _ctx.onPendingValidity && _ctx.onPendingValidity(...args))
-  }), null, 16, _hoisted_5$e), [[vModelDynamic, _ctx.viewValue]]), _cache[12] || (_cache[12] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
+  }), null, 16, _hoisted_5$c), [[vModelDynamic, _ctx.viewValue]]), _cache[12] || (_cache[12] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
     key: 0,
     ref: "icon",
     class: "text-field__icon input-icon text-field__append-inner text-field__error-popup-icon",
@@ -16226,9 +16696,9 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     "is-open": _ctx.showPopupError,
     "error-message": _ctx.validationMessage,
     onClose: _ctx.closePopupError
-  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[14] || (_cache[14] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$b, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true)]), _cache[16] || (_cache[16] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")], 2)], 2);
+  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[14] || (_cache[14] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$a, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true)]), _cache[16] || (_cache[16] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")], 2)], 2);
 }
-const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$M, [["render", _sfc_render$C]]);
+const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$H, [["render", _sfc_render$w]]);
 /* @__PURE__ */ defineComponent({
   name: "FEmailTextField",
   components: {
@@ -16664,7 +17134,7 @@ function filter(list, filterAttributes, searchString) {
       this.searchString = "";
       this.sortFilterData();
       const input = this.$el.querySelector(".text-field--inline input");
-      focus(input);
+      focus$1(input);
     },
     debouncedFilterResultset() {
     },
@@ -16827,73 +17297,6 @@ function filter(list, filterAttributes, searchString) {
     }
   }
 });
-const _sfc_main$v = /* @__PURE__ */ defineComponent({
-  name: "FExpand",
-  data() {
-    return {
-      height: 0,
-      initialStyle: {
-        overflow: "hidden",
-        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
-      },
-      hiddenStyle: {
-        height: "auto",
-        position: "absolute",
-        visibility: "hidden"
-      },
-      visibleStyle: {
-        width: "",
-        position: "",
-        visibility: "",
-        height: "0px"
-      },
-      openedStyle: {
-        height: "auto"
-      }
-    };
-  },
-  methods: {
-    enter(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      Object.assign(htmlElement.style, this.initialStyle);
-      Object.assign(htmlElement.style, this.hiddenStyle);
-      htmlElement.style.width = getComputedStyle(element).width;
-      const height = getComputedStyle(element).height;
-      Object.assign(htmlElement.style, this.visibleStyle);
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        this.height = parseInt(height, 10);
-        htmlElement.style.height = height;
-      });
-    },
-    afterEnter(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      Object.assign(htmlElement.style, this.openedStyle);
-    },
-    leave(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      const height = getComputedStyle(element).height;
-      htmlElement.style.height = height;
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        Object.assign(htmlElement.style, this.visibleStyle);
-      });
-    }
-  }
-});
-function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(Transition, {
-    onEnter: _ctx.enter,
-    onAfterEnter: _ctx.afterEnter,
-    onLeave: _ctx.leave
-  }, {
-    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {
-      height: _ctx.height
-    })]),
-    _: 3
-  }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
-}
-const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$v]]);
 class FRightPanelServiceImpl {
   constructor() {
     _defineProperty(this, "focusedElementBeforeOpenining", null);
@@ -17374,125 +17777,6 @@ function forceRepaintIE11(target) {
     },
     escapeNewlines(value) {
       return value.replace(/\n/g, "<br/>");
-    }
-  }
-});
-/* @__PURE__ */ defineComponent({
-  name: "FTooltip",
-  components: {
-    FExpand,
-    FIcon,
-    IFlex,
-    IFlexItem
-  },
-  props: {
-    /**
-     * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
-     *
-     * @model
-     */
-    modelValue: {
-      type: Boolean,
-      required: false
-    },
-    /**
-     * Screen reader text for toggle button
-     */
-    screenReaderText: {
-      type: String,
-      required: true
-    },
-    /**
-     * Close button text
-     */
-    closeButtonText: {
-      type: String,
-      required: false,
-      default: TranslationService.provider.translate("fkui.tooltip.close", "Stäng")
-    },
-    /**
-     * Element to render for the header element inside the tooltip.
-     *
-     * Must be set to one of:
-     *
-     * - `div` (default)
-     * - `span`
-     * - `h1`
-     * - `h2`
-     * - `h3`
-     * - `h4`
-     * - `h5`
-     * - `h6`
-     */
-    headerTag: {
-      default: "div",
-      required: false,
-      validator(value) {
-        return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
-      }
-    }
-  },
-  emits: ["update:modelValue", "toggle"],
-  data() {
-    return {
-      isOpen: false
-    };
-  },
-  computed: {
-    hasHeader() {
-      return hasSlot(this, "header");
-    }
-  },
-  watch: {
-    modelValue: {
-      immediate: true,
-      handler(value) {
-        this.isOpen = value;
-      }
-    }
-  },
-  mounted() {
-    window.addEventListener("resize", () => {
-      if (this.isOpen) {
-        this.positionArrow();
-      }
-    });
-    if (this.isOpen) {
-      this.positionArrow();
-    }
-  },
-  methods: {
-    /**
-     * Gets called when the user interacts with the toggle button
-     *
-     * @internal
-     */
-    onClickToggle() {
-      this.isOpen = !this.isOpen;
-      const value = this.isOpen;
-      const event = {
-        isOpen: this.isOpen
-      };
-      this.$emit("update:modelValue", value);
-      this.$emit("toggle", event);
-      if (!this.isOpen) {
-        const button = this.$el.querySelector(".tooltip__button");
-        focus(button);
-      }
-      this.$nextTick(() => {
-        this.positionArrow();
-      });
-    },
-    positionArrow() {
-      const button = this.$el.querySelector(".tooltip__button");
-      const arrow = this.$el.querySelector(".tooltip__arrow");
-      const content = this.$el.querySelector(".tooltip__content-wrapper");
-      const borderSize = 2;
-      if (button && arrow && content) {
-        const buttonOffsetLeft = button.offsetLeft - content.offsetLeft;
-        const relativeOffset = buttonOffsetLeft - borderSize + button.getBoundingClientRect().width / 2;
-        arrow.style.left = `${relativeOffset}px`;
-      }
     }
   }
 });
