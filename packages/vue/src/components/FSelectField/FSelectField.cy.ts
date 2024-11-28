@@ -62,9 +62,7 @@ describe("FSelectField", () => {
         });
 
         cy.mount(TestComponent);
-        const selectField = new FSelectFieldPageObject(
-            ".select-field:has(#select-field)",
-        );
+        const selectField = new FSelectFieldPageObject(".select-field");
         selectField.label.el().should("contain.text", "Dropplista");
         selectField.label.description().should("contain.text", "Hjälptext");
         selectField.label
