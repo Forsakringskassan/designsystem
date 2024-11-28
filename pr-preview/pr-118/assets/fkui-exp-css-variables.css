@@ -401,4 +401,6 @@
   --f-table-body-row-padding: 0.5rem;
   --f-list-item-itempane-padding: 1.25rem;
   --i-popup-error-offset: 24px;
+  --f-tooltip-offset: 0px;
+  --f-tooltip-icon-size: 0px;
 }

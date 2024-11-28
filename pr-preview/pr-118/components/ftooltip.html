@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-7f268b.css"
+            href="../assets/docs-0112f4.css"
             crossorigin
-            integrity="sha384-hEyVAKUWVmrpkVzkdua8PFMXADTiXrOhEbV9+A9DU9+4ljVZZHXKfrToLQkHFfSS"
+            integrity="sha384-V4LBTt8PpL96YylwEahG3c8puHEdGrEMZlx0r6YIweA0oHKTlxIP/vh3CTiRcKA9"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-fa6182.css"
+            href="../assets/docs-exp-bcc635.css"
             crossorigin
-            integrity="sha384-OEZmY/G4NV8arCXnz/eGIgsSzQri2JjCVZuKnSqt2W1z5AVkTwQ7ukNywlu/IAEQ"
+            integrity="sha384-877kzjh8hxE8ZnKDFCK76TX7i6TQJ1QMY18qtPWApONI8OAwMIV6ZHB/Q5b9HHVZ"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-int-1bec58.css"
+            href="../assets/docs-int-fbebae.css"
             crossorigin
-            integrity="sha384-MZlBNeD6FvCR2Ur+2y47Hz1Exh2VAs9HrfySfEgY1SMH024fBJgN3+UPTJoWAsvT"
+            integrity="sha384-qlp+mzzPFWU7RAkT6yuhrAY5wQnvE4/8q5libwES/KiOPKvNxG0q0JIb/pHH/TLO"
             data-theme="int" disabled
         />
 
@@ -1073,9 +1073,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-b5445a.js"
+                    src="../assets/vendor-fkui-vue-98275e.js"
                     crossorigin
-                    integrity="sha384-9erLvJSVBGXquqpGen43xd65j8QNrqMypYN+u4y73p5tyaL6LeDDUKE0avm9Mor4"
+                    integrity="sha384-Bgd6RaK0w10smHpR6kalC02AfG3Lz4Wze/zp7T6kDXFTHEE/M21R1pIfcwnbEfi2"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-131375.js"
@@ -1098,7 +1098,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/9448e5923f0a32f01717cff2cd54d549b5c41512/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/79cdaf0267b196130ca67888bea02ba03e5ea674/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
             
         </code>
          
@@ -1150,7 +1150,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FTooltipLiveExample-08cad4.js"></script>
+        <script defer src="./FTooltipLiveExample-18f99f.js"></script>
     
                 </div>
             <ul>
@@ -1183,25 +1183,60 @@ Om informationen är viktig för alla, men så pass omfattande att den inte kan 
  &gt;
 </code></pre>
                 </div>
-            <h2 id="tooltip_pa_rubrik"><a class="header-anchor" href="#tooltip_pa_rubrik">Tooltip på rubrik</a></h2><p>Utöver etikett så kan tooltip även placeras på en rubrik.</p>
+            <h2 id="tooltip_pa_rubrik"><a class="header-anchor" href="#tooltip_pa_rubrik">Tooltip på rubrik</a></h2><p>Utöver etikett så kan tooltip även placeras på en rubrik.
+Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachTo</code> propen.</p>
 
                 <div
-                    id="example-db9908"
+                    id="example-c0dc0b"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
-                    data-language="html"
+                    data-language="vue"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tooltip-before&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>En rubrik<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">f-tooltip</span> <span class="hljs-attr">screen-reader-text</span>=<span class="hljs-string">&quot;Skärmläsartext&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">body</span>&gt;</span> Lorem ipsum dolor sit amet. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">f-tooltip</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> heading = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;heading&quot;</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;heading&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>En rubrik<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-tooltip</span> <span class="hljs-attr">attach-to</span>=<span class="hljs-string">&quot;heading&quot;</span> <span class="hljs-attr">screen-reader-text</span>=<span class="hljs-string">&quot;Skärmläsartext&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">body</span>&gt;</span> Lorem ipsum dolor sit amet. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-tooltip</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>v-model</p>
+            
+                <div
+                    id="example-0d3c78"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=nomarkup
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="FTooltipHeadingExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./FTooltipHeadingExample-98656a.js"></script>
+    </div>
+                </div>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>attachTo</p>
+</td><td><p>Element to attach tooltip toggle button.</p>
+<p>Only needed when using with arbitrary elements, e.g. when using with<br>
+<code>FLabel</code> you do not need to set this prop.</p>
+</td><td><p>HTMLElement</p>
+</td><td><p>false</p>
+</td><td><p>null</p>
+</td></tr><tr><td><p>v-model</p>
 </td><td><p>State (expanded or collapsed) of the tooltip. The value is <code>true</code> if the tooltip is expanded.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
@@ -1265,9 +1300,9 @@ Om informationen är viktig för alla, men så pass omfattande att den inte kan 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/mikepenz-action-junit-report-5.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/9448e5923f0a32f01717cff2cd54d549b5c41512">9448e59</a>)<br />
+    renovate/mikepenz-action-junit-report-5.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/79cdaf0267b196130ca67888bea02ba03e5ea674">79cdaf0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/118">PR 118</a><br />
-        2024-11-28 07:16
+        2024-11-28 07:41
 </div>
 <div class="toolbar__item">
     <form id="version">
