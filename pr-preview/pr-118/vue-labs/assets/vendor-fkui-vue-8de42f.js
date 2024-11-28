@@ -7295,6 +7295,7 @@
       lastModelValue: "",
       validationMessage: "",
       validityMode: "INITIAL",
+      isAfterInitialRender: false,
       // internal default texts possible to override when extending component
       defaultText: "",
       descriptionText: "",
@@ -7328,7 +7329,9 @@
     }
     this.setViewValueToFormattedValueOrFallbackToValue();
     this.lastModelValue = this.modelValue;
-  } } }, methods: { getErrorPopupAnchor() {
+  } } }, beforeUpdate() {
+    this.isAfterInitialRender = true;
+  }, methods: { getErrorPopupAnchor() {
     return this.$refs.input;
   }, closePopupError() {
     this.showErrorPopup = false;
@@ -7374,6 +7377,15 @@
     this.triggerComponentValidityEvent(detail);
   }, onPendingValidity() {
     this.validityMode = "INITIAL";
+  }, async onValidationConfigUpdate() {
+    if (!this.isAfterInitialRender) {
+      return;
+    }
+    await this.$nextTick();
+    if (!this.$refs.input) {
+      return;
+    }
+    import_logic.ValidationService.validateElement(this.$refs.input);
   }, resolveNewModelValue(viewValue) {
     const trimmedViewValue = viewValue.trim();
     if (trimmedViewValue === "") {
@@ -7446,7 +7458,7 @@
               (0, import_vue.toDisplayString)(_ctx.descriptionScreenReaderText),
               1
               /* TEXT */
-            )) : (0, import_vue.createCommentVNode)("v-if", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)(
+            )) : (0, import_vue.createCommentVNode)("v-if", true), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)(
               "span",
               null,
               (0, import_vue.toDisplayString)(_ctx.descriptionText),
@@ -7455,7 +7467,7 @@
             )],
             2
             /* CLASS */
-          )) : (0, import_vue.createCommentVNode)("v-if", true), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), _ctx.discreteDescriptionText ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
+          )) : (0, import_vue.createCommentVNode)("v-if", true), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), _ctx.discreteDescriptionText ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
             "span",
             { key: 1, class: (0, import_vue.normalizeClass)(discreteDescriptionClass) },
             [_ctx.discreteDescriptionScreenReaderText ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(
@@ -7464,7 +7476,7 @@
               (0, import_vue.toDisplayString)(_ctx.discreteDescriptionScreenReaderText),
               1
               /* TEXT */
-            )) : (0, import_vue.createCommentVNode)("v-if", true), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)(
+            )) : (0, import_vue.createCommentVNode)("v-if", true), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)(
               "span",
               null,
               (0, import_vue.toDisplayString)(_ctx.discreteDescriptionText),
@@ -7490,16 +7502,16 @@
         }, [_ctx.$slots.tooltip ? { name: "tooltip", fn: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "tooltip")]), key: "0" } : void 0]), 1032, ["for", "class"])],
         2
         /* CLASS */
-      ), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)(
+      ), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)(
         "div",
         { class: (0, import_vue.normalizeClass)(["text-field__input-wrapper", _ctx.inputWrapperClass]) },
-        [(0, import_vue.renderSlot)(_ctx.$slots, "input-left"), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_4$g, [(0, import_vue.withDirectives)((0, import_vue.createElementVNode)("input", (0, import_vue.mergeProps)({ id: _ctx.id, ref: "input", "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event), type: _ctx.type, class: "text-field__input" }, _ctx.$attrs, { onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.onBlur && _ctx.onBlur(...args)), onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocus && _ctx.onFocus(...args)), onChange: _cache[3] || (_cache[3] = (...args) => _ctx.onChange && _ctx.onChange(...args)), onValidity: _cache[4] || (_cache[4] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)), onPendingValidity: _cache[5] || (_cache[5] = (...args) => _ctx.onPendingValidity && _ctx.onPendingValidity(...args)) }), null, 16, _hoisted_5$c), [[import_vue.vModelDynamic, _ctx.viewValue]]), _cache[12] || (_cache[12] = (0, import_vue.createTextVNode)()), _ctx.hasError && _ctx.textFieldTableMode ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(
+        [(0, import_vue.renderSlot)(_ctx.$slots, "input-left"), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_4$g, [(0, import_vue.withDirectives)((0, import_vue.createElementVNode)("input", (0, import_vue.mergeProps)({ id: _ctx.id, ref: "input", "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event), type: _ctx.type, class: "text-field__input" }, _ctx.$attrs, { onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.onBlur && _ctx.onBlur(...args)), onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocus && _ctx.onFocus(...args)), onChange: _cache[3] || (_cache[3] = (...args) => _ctx.onChange && _ctx.onChange(...args)), onValidationConfigUpdate: _cache[4] || (_cache[4] = (...args) => _ctx.onValidationConfigUpdate && _ctx.onValidationConfigUpdate(...args)), onValidity: _cache[5] || (_cache[5] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)), onPendingValidity: _cache[6] || (_cache[6] = (...args) => _ctx.onPendingValidity && _ctx.onPendingValidity(...args)) }), null, 16, _hoisted_5$c), [[import_vue.vModelDynamic, _ctx.viewValue]]), _cache[13] || (_cache[13] = (0, import_vue.createTextVNode)()), _ctx.hasError && _ctx.textFieldTableMode ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(
           _component_f_icon,
           { key: 0, ref: "icon", class: "text-field__icon input-icon text-field__append-inner text-field__error-popup-icon", name: "error" },
           null,
           512
           /* NEED_PATCH */
-        )) : (0, import_vue.createCommentVNode)("v-if", true), _cache[13] || (_cache[13] = (0, import_vue.createTextVNode)()), _ctx.textFieldTableMode ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup_error, { key: 1, anchor: _ctx.getErrorPopupAnchor(), "is-open": _ctx.showPopupError, "error-message": _ctx.validationMessage, onClose: _ctx.closePopupError }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : (0, import_vue.createCommentVNode)("v-if", true), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), _ctx.$slots["append-inner"] ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_6$a, [(0, import_vue.renderSlot)(_ctx.$slots, "append-inner")])) : (0, import_vue.createCommentVNode)("v-if", true)]), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-right")],
+        )) : (0, import_vue.createCommentVNode)("v-if", true), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), _ctx.textFieldTableMode ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup_error, { key: 1, anchor: _ctx.getErrorPopupAnchor(), "is-open": _ctx.showPopupError, "error-message": _ctx.validationMessage, onClose: _ctx.closePopupError }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : (0, import_vue.createCommentVNode)("v-if", true), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), _ctx.$slots["append-inner"] ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_6$a, [(0, import_vue.renderSlot)(_ctx.$slots, "append-inner")])) : (0, import_vue.createCommentVNode)("v-if", true)]), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-right")],
         2
         /* CLASS */
       )],
@@ -8469,11 +8481,6 @@
         throw new Error("MaxDate validator must be set");
       }
       this.maxDate = import_date.FDate.fromIso(maxDateConfig.limit.toString());
-    }
-    const element = findHTMLElementFromVueRef(this.$refs.calendarInputs);
-    if (element) {
-      await this.$nextTick();
-      import_logic.ValidationService.validateAllElements(element);
     }
   }, isDateEnabled(day) {
     return isDayEnabled(day, this.validationConfig);

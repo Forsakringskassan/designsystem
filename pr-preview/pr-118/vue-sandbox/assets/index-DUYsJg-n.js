@@ -15332,6 +15332,7 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({ name: "FTextField", compon
     lastModelValue: "",
     validationMessage: "",
     validityMode: "INITIAL",
+    isAfterInitialRender: false,
     // internal default texts possible to override when extending component
     defaultText: "",
     descriptionText: "",
@@ -15365,7 +15366,9 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({ name: "FTextField", compon
   }
   this.setViewValueToFormattedValueOrFallbackToValue();
   this.lastModelValue = this.modelValue;
-} } }, methods: { getErrorPopupAnchor() {
+} } }, beforeUpdate() {
+  this.isAfterInitialRender = true;
+}, methods: { getErrorPopupAnchor() {
   return this.$refs.input;
 }, closePopupError() {
   this.showErrorPopup = false;
@@ -15411,6 +15414,15 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({ name: "FTextField", compon
   this.triggerComponentValidityEvent(detail);
 }, onPendingValidity() {
   this.validityMode = "INITIAL";
+}, async onValidationConfigUpdate() {
+  if (!this.isAfterInitialRender) {
+    return;
+  }
+  await this.$nextTick();
+  if (!this.$refs.input) {
+    return;
+  }
+  ValidationService.validateElement(this.$refs.input);
 }, resolveNewModelValue(viewValue) {
   const trimmedViewValue = viewValue.trim();
   if (trimmedViewValue === "") {
@@ -15483,7 +15495,7 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
             toDisplayString(_ctx.descriptionScreenReaderText),
             1
             /* TEXT */
-          )) : createCommentVNode("v-if", true), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode(
+          )) : createCommentVNode("v-if", true), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode(
             "span",
             null,
             toDisplayString(_ctx.descriptionText),
@@ -15492,7 +15504,7 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
           )],
           2
           /* CLASS */
-        )) : createCommentVNode("v-if", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock(
+        )) : createCommentVNode("v-if", true), _cache[9] || (_cache[9] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock(
           "span",
           { key: 1, class: normalizeClass(discreteDescriptionClass) },
           [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock(
@@ -15501,7 +15513,7 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
             toDisplayString(_ctx.discreteDescriptionScreenReaderText),
             1
             /* TEXT */
-          )) : createCommentVNode("v-if", true), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode(
+          )) : createCommentVNode("v-if", true), _cache[8] || (_cache[8] = createTextVNode()), createBaseVNode(
             "span",
             null,
             toDisplayString(_ctx.discreteDescriptionText),
@@ -15527,16 +15539,16 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
       }, [_ctx.$slots.tooltip ? { name: "tooltip", fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]), key: "0" } : void 0]), 1032, ["for", "class"])],
       2
       /* CLASS */
-    ), _cache[17] || (_cache[17] = createTextVNode()), createBaseVNode(
+    ), _cache[18] || (_cache[18] = createTextVNode()), createBaseVNode(
       "div",
       { class: normalizeClass(["text-field__input-wrapper", _ctx.inputWrapperClass]) },
-      [renderSlot(_ctx.$slots, "input-left"), _cache[15] || (_cache[15] = createTextVNode()), createBaseVNode("div", _hoisted_4$g, [withDirectives(createBaseVNode("input", mergeProps({ id: _ctx.id, ref: "input", "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event), type: _ctx.type, class: "text-field__input" }, _ctx.$attrs, { onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.onBlur && _ctx.onBlur(...args)), onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocus && _ctx.onFocus(...args)), onChange: _cache[3] || (_cache[3] = (...args) => _ctx.onChange && _ctx.onChange(...args)), onValidity: _cache[4] || (_cache[4] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)), onPendingValidity: _cache[5] || (_cache[5] = (...args) => _ctx.onPendingValidity && _ctx.onPendingValidity(...args)) }), null, 16, _hoisted_5$c), [[vModelDynamic, _ctx.viewValue]]), _cache[12] || (_cache[12] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(
+      [renderSlot(_ctx.$slots, "input-left"), _cache[16] || (_cache[16] = createTextVNode()), createBaseVNode("div", _hoisted_4$g, [withDirectives(createBaseVNode("input", mergeProps({ id: _ctx.id, ref: "input", "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event), type: _ctx.type, class: "text-field__input" }, _ctx.$attrs, { onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.onBlur && _ctx.onBlur(...args)), onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocus && _ctx.onFocus(...args)), onChange: _cache[3] || (_cache[3] = (...args) => _ctx.onChange && _ctx.onChange(...args)), onValidationConfigUpdate: _cache[4] || (_cache[4] = (...args) => _ctx.onValidationConfigUpdate && _ctx.onValidationConfigUpdate(...args)), onValidity: _cache[5] || (_cache[5] = (...args) => _ctx.onValidity && _ctx.onValidity(...args)), onPendingValidity: _cache[6] || (_cache[6] = (...args) => _ctx.onPendingValidity && _ctx.onPendingValidity(...args)) }), null, 16, _hoisted_5$c), [[vModelDynamic, _ctx.viewValue]]), _cache[13] || (_cache[13] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(
         _component_f_icon,
         { key: 0, ref: "icon", class: "text-field__icon input-icon text-field__append-inner text-field__error-popup-icon", name: "error" },
         null,
         512
         /* NEED_PATCH */
-      )) : createCommentVNode("v-if", true), _cache[13] || (_cache[13] = createTextVNode()), _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_i_popup_error, { key: 1, anchor: _ctx.getErrorPopupAnchor(), "is-open": _ctx.showPopupError, "error-message": _ctx.validationMessage, onClose: _ctx.closePopupError }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("v-if", true), _cache[14] || (_cache[14] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$a, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("v-if", true)]), _cache[16] || (_cache[16] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")],
+      )) : createCommentVNode("v-if", true), _cache[14] || (_cache[14] = createTextVNode()), _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_i_popup_error, { key: 1, anchor: _ctx.getErrorPopupAnchor(), "is-open": _ctx.showPopupError, "error-message": _ctx.validationMessage, onClose: _ctx.closePopupError }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("v-if", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$a, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("v-if", true)]), _cache[17] || (_cache[17] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")],
       2
       /* CLASS */
     )],
