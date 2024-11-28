@@ -339,11 +339,9 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
     <div
       class=""
     >
-      <div
-        class="tooltip-before"
-      >
+      <div>
         <label
-          class="label tooltip-before__label"
+          class="label"
           for="select-field"
         >
           

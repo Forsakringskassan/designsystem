@@ -20,11 +20,9 @@ exports[`html-validate <f-label><template #tooltip><div /></template></f-label> 
 
 exports[`snapshots should match snapshot with a second label element containing the description and error-message slots 1`] = `
 <div>
-  <div
-    class="tooltip-before"
-  >
+  <div>
     <label
-      class="label tooltip-before__label"
+      class="label"
       for="FOR_ID"
     >
       
@@ -60,11 +58,9 @@ exports[`snapshots should match snapshot with a second label element containing 
 
 exports[`snapshots should match snapshot with a second label element containing the error-message slot 1`] = `
 <div>
-  <div
-    class="tooltip-before"
-  >
+  <div>
     <label
-      class="label tooltip-before__label"
+      class="label"
       for="FOR_ID"
     >
       
@@ -139,11 +135,9 @@ exports[`snapshots should match snapshot with one label element containing the d
 
 exports[`snapshots should match snapshot with the tooltip slot rendered outside the label element 1`] = `
 <div>
-  <div
-    class="tooltip-before"
-  >
+  <div>
     <label
-      class="label tooltip-before__label"
+      class="label"
       for="FOR_ID"
     >
       

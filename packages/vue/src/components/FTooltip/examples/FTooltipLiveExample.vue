@@ -1,12 +1,13 @@
 <template>
     <live-example :components="components" :template="template">
-        <f-checkbox-field v-model="hasHeader" :value="true"> Rubrik i tooltip</f-checkbox-field>
+        <f-checkbox-field v-model="hasHeader" :value="true"> Rubrik i tooltip </f-checkbox-field>
+        <f-checkbox-field v-model="longText" :value="true"> Lång text </f-checkbox-field>
     </live-example>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTooltip, FCheckboxField } from "@fkui/vue";
+import { FLabel, FTooltip, FCheckboxField } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
@@ -15,11 +16,13 @@ export default defineComponent({
     data() {
         return {
             hasHeader: false,
+            longText: false,
         };
     },
     computed: {
         components(): object {
             return {
+                FLabel,
                 FTooltip,
             };
         },
@@ -27,14 +30,20 @@ export default defineComponent({
             return this.hasHeader ? "<template #header> Lär dig mer om [..] </template>" : "";
         },
         template(): string {
+            const { longText } = this;
+            const text = longText
+                ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit in elit nunc, iaculis sit amet consequat vel, placerat et purus"
+                : "Etikett";
             return /* HTML */ `
-                <div class="tooltip-before">
-                    <label class="label tooltip-before__label"> Etikett </label>
-                </div>
-                <f-tooltip screen-reader-text="Denna text syns bara för skärmläsare">
-                    ${this.header}
-                    <template #body> Lorem ipsum dolor sit amet. </template>
-                </f-tooltip>
+                <f-label>
+                    <template #default> ${text} </template>
+                    <template #tooltip>
+                        <f-tooltip screen-reader-text="Denna text syns bara för skärmläsare">
+                            ${this.header}
+                            <template #body> Lorem ipsum dolor sit amet. </template>
+                        </f-tooltip>
+                    </template>
+                </f-label>
             `;
         },
     },

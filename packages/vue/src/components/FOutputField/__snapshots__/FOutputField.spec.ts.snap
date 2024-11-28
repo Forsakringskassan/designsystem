@@ -5,11 +5,9 @@ exports[`snapshots should match snapshot with label, tooltip, output and for att
   class="output-field"
 >
   <div>
-    <div
-      class="tooltip-before"
-    >
+    <div>
       <label
-        class="label tooltip-before__label"
+        class="label"
         for="fkui-vue-element-0001"
       >
         

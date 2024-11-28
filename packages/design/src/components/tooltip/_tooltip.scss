@@ -1,88 +1,173 @@
+// stylelint-disable scss/comment-no-empty -- not sure how to write a longer comment that isn't a documentation block or compiled into output
+
+@use "sass:math";
+@use "sass:list";
 @use "../../core/size";
-@use "../icon/icon";
-@use "../../core/mixins/arrow-creator";
-@use "../../core/mixins/breakpoints";
 @use "../../core/utils/functions" as *;
 @use "variables" as *;
 
-$TOOLTIP_SELECTOR: ".tooltip" !default;
+$tooltip-border-radius: var(--f-border-radius-small);
+$tooltip-arrow-width: 20;
+$tooltip-arrow-height: 10;
+$tooltip-border-width: 2;
 
-#{$TOOLTIP_SELECTOR}-before {
-    display: inline-block;
+// Width and height are the sides of the two right angle triangles:
+//
+// +---+---+  --+
+// |  /|\  |    |
+// | / | \ |    h
+// |/α |  \|    |
+// +---+---+  --+
+//
+// |       |
+// +---w---+
+//
+// Note that the width is the combined width of both triangles
 
-    &__label {
+// First we calculate the angle α as `atan(w / 2h)`
+$a: math.atan(math.div($tooltip-arrow-width, 2 * $tooltip-arrow-height));
+
+// Given the angle α we can compute
+$b: math.div($tooltip-border-width, math.sin(90deg - $a));
+$c: math.div($tooltip-border-width, math.sin($a));
+
+// prettier-ignore
+$outer-border:
+    math.div($tooltip-arrow-width, 2),
+    $tooltip-arrow-height;
+
+// prettier-ignore
+$inner-border:
+    math.div(math.round((list.nth($outer-border, 1) - $b) * 10), 10),
+    math.div(math.round((list.nth($outer-border, 2) - $c) * 10), 10);
+
+.tooltip {
+    display: none;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: densify(size.$margin-100);
+
+    &.expanded,
+    &.animating {
         display: block;
     }
-}
-
-#{$TOOLTIP_SELECTOR} {
-    display: inline;
-    margin-left: size.$margin-050;
 
     &__container {
-        display: inline;
+        text-wrap: pretty;
+        margin-bottom: densify(size.$margin-025);
+
+        &:has(+ .tooltip.expanded),
+        &:has(+ .tooltip.animating) {
+            margin-bottom: 0;
+        }
+
+        .label {
+            display: inline;
+            width: max-content;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            display: inline;
+            width: max-content;
+        }
+
+        &:has(h1) .tooltip__button {
+            bottom: 0.2lh;
+        }
+
+        &:has(h2) .tooltip__button {
+            bottom: 0.1lh;
+        }
+
+        &:has(h3) .tooltip__button {
+            bottom: 0;
+        }
     }
 
     &__button {
+        display: inline-flex;
+        appearance: none;
         background: none;
         border: 0;
+        padding: 0;
         cursor: pointer;
-        font-size: var(--f-font-size-large);
-        padding: 0.125rem;
-        transform: translateY(0.125rem);
-        height: var(--f-icon-size-large);
-        width: var(--f-icon-size-large);
+        margin-left: 0.25rem;
 
-        #{icon.$ICON_SELECTOR}-stack {
-            height: 100%;
-            width: 100%;
-        }
+        // shift it slightly downwards so it aligns better with text
+        position: relative;
+        bottom: -0.1lh;
 
-        #{icon.$ICON_SELECTOR} {
-            height: 100%;
-            width: 100%;
+        // bug in icon?
+        .icon {
+            top: 0;
             left: 0;
         }
+
+        &,
+        .icon,
+        .icon-stack {
+            width: 1em;
+            height: 1em;
+        }
     }
 
-    &__arrow {
-        @include arrow-creator.arrow-creator(
-            $background: $tooltip-color-background,
-            $border: $tooltip-color-border,
-            $position: size.$margin-200,
-            $size: size.$margin-075,
-            $up: true,
-            $width: var(--f-tooltip-border-width)
-        );
-    }
-
-    /// Content wrapper is placed around everything, i.e.
-    /// arrow, close button, header and body.
-    &__content-wrapper {
-        background-color: $tooltip-color-background;
-        border: var(--f-tooltip-border-width) solid $tooltip-color-border;
-        border-radius: var(--f-border-radius-small);
-        box-sizing: content-box;
-        margin-top: size.$margin-075;
-        margin-bottom: size.$margin-050;
-        position: relative;
-    }
-
-    /// Content is placed around header and body.
-    &__content {
-        margin: densify(size.$margin-100) size.$margin-100 0 size.$margin-100;
+    &__body {
+        padding: 0 size.$padding-100;
     }
 
     &__header {
-        align-items: flex-start;
-        display: flex;
         font-size: var(--f-font-size-large);
         font-weight: var(--f-font-weight-bold);
         line-height: var(--f-line-height-medium);
+        padding: 0 size.$padding-100;
         margin-bottom: size.$margin-050;
     }
 
     .close-button {
         margin: var(--f-tooltip-close-button-margin);
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__bubble {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: $tooltip-arrow-height * 1px;
+        margin-bottom: size.$margin-050;
+        border: 2px solid $tooltip-color-border;
+        border-radius: $tooltip-border-radius;
+        background-color: $tooltip-color-background;
+        padding-top: size.$padding-100;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: clamp(calc(#{$tooltip-arrow-width}px / 2), var(--f-tooltip-offset), calc(100% - #{$tooltip-arrow-width}px / 2));
+            border-style: solid;
+            border-width: 0 #{list.nth($outer-border, 1)}px #{list.nth($outer-border, 2)}px #{list.nth($outer-border, 1)}px;
+            border-color: transparent transparent $tooltip-color-border;
+            translate: -50% -100%;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: clamp(calc(#{$tooltip-arrow-width}px / 2), var(--f-tooltip-offset), calc(100% - #{$tooltip-arrow-width}px / 2));
+            border-style: solid;
+            border-width: 0 #{list.nth($inner-border, 1)}px #{list.nth($inner-border, 2)}px #{list.nth($inner-border, 1)}px;
+            border-color: transparent transparent $tooltip-color-background;
+            translate: -50% -100%;
+        }
     }
 }
