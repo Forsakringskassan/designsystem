@@ -10107,6 +10107,21 @@ class FDate {
     return this.toString(DateFormat$1.ISO8601);
   }
 }
+function parseDate(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  const normalized = normalizeDateFormat(value);
+  if (!normalized) {
+    return void 0;
+  }
+  const date = FDate.fromIso(normalized);
+  if (date.isValid()) {
+    return date.toString();
+  } else {
+    return void 0;
+  }
+}
 function stripWhitespace(text) {
   return text.replace(/\s+/g, "");
 }
@@ -10191,6 +10206,14 @@ function parsePersonnummerLuhn(value) {
     return void 0;
   }
   return parsed;
+}
+function formatPersonnummerToDate(value) {
+  var _a;
+  const datePart = parseDate(((_a = parsePersonnummer(value)) == null ? void 0 : _a.slice(0, 8)) || "");
+  if (!datePart) {
+    return void 0;
+  }
+  return FDate.fromIso(datePart);
 }
 const PLUSGIRO_REGEXP = /^\d{1,7}[-]?\d{1}$/;
 function hyphenShouldBeAdded(value) {
@@ -11023,10 +11046,34 @@ const bankgiroValidator = {
     return isEmpty(value) || isSet(parseBankgiro(value));
   }
 };
+function toArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  } else {
+    return [value];
+  }
+}
+const blacklistValidator = {
+  name: "blacklist",
+  validation(value, _element, config2) {
+    if (!config2.values) {
+      throw new Error("config.exclude must have values");
+    }
+    const values = toArray(config2.values);
+    const found = values.some((it) => String(it) === value);
+    return !found;
+  }
+};
 const clearingNumberValidator = {
   name: "clearingNumber",
   validation(value) {
     return isEmpty(value) || isSet(parseClearingNumber(value));
+  }
+};
+const currencyValidator = {
+  name: "currency",
+  validation(value) {
+    return isEmpty(value) || isSet(parseNumber(value));
   }
 };
 const dateValidator = {
@@ -11071,30 +11118,36 @@ const decimalValidator = {
     return isEmpty(valueWithoutWhitespace) || createNumberRegexp(minDecimalsAsNumber, maxDecimalsAsNumber).test(valueWithoutWhitespace);
   }
 };
-function toArray(value) {
-  if (Array.isArray(value)) {
-    return value;
-  } else {
-    return [value];
-  }
-}
-const blacklistValidator = {
-  name: "blacklist",
-  validation(value, _element, config2) {
-    if (!config2.values) {
-      throw new Error("config.exclude must have values");
-    }
-    const values = toArray(config2.values);
-    const found = values.some((it) => String(it) === value);
-    return !found;
-  }
-};
 const emailValidator = {
   name: "email",
   validation(value, _element, config2) {
     const maxLength = config2.maxLength || 254;
     const EMAIL_REGEXP = new RegExp(`^(?=.{1,${maxLength}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
     return isEmpty(value) || EMAIL_REGEXP.test(value);
+  }
+};
+function numberValidator$1(value, config2, name, compare2) {
+  if (value === "") {
+    return true;
+  }
+  const limit = config2[name];
+  if (!isSet(limit)) {
+    return false;
+  }
+  const limitAsNumber = parseNumber(String(config2[name]));
+  if (limitAsNumber === void 0) {
+    throw new Error(`config.${String(name)} must be a number`);
+  }
+  const valueAsNumber = parseNumber(value);
+  if (valueAsNumber === void 0) {
+    return false;
+  }
+  return compare2(valueAsNumber, limitAsNumber);
+}
+const greaterThanValidator = {
+  name: "greaterThan",
+  validation(value, _element, config2) {
+    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 > limit);
   }
 };
 const NUMBER_REGEXP = /^([-−]?[0-9]+)?$/;
@@ -11136,30 +11189,6 @@ const invalidWeekdaysValidator = {
     return !config2.days.includes(day);
   }
 };
-function numberValidator$1(value, config2, name, compare2) {
-  if (value === "") {
-    return true;
-  }
-  const limit = config2[name];
-  if (!isSet(limit)) {
-    return false;
-  }
-  const limitAsNumber = parseNumber(String(config2[name]));
-  if (limitAsNumber === void 0) {
-    throw new Error(`config.${String(name)} must be a number`);
-  }
-  const valueAsNumber = parseNumber(value);
-  if (valueAsNumber === void 0) {
-    return false;
-  }
-  return compare2(valueAsNumber, limitAsNumber);
-}
-const greaterThanValidator = {
-  name: "greaterThan",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 > limit);
-  }
-};
 const lessThanValidator = {
   name: "lessThan",
   validation(value, _element, config2) {
@@ -11174,6 +11203,21 @@ const matchesValidator = {
     }
     const el = document.getElementById(config2.id);
     return el.value === value;
+  }
+};
+const maxDateValidator = {
+  name: "maxDate",
+  validation(value, _element, config2) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    const normalizedValue = normalizeDateFormat(value);
+    if (!normalizedValue) {
+      return false;
+    }
+    const parsed = FDate.fromIso(normalizedValue);
+    const limit = FDate.fromIso(validLimit(config2.limit));
+    return parsed.equals(limit) || parsed.isBefore(limit);
   }
 };
 const maxLengthValidator = {
@@ -11203,21 +11247,6 @@ const minDateValidator = {
     return parsed.equals(limit) || parsed.isAfter(limit);
   }
 };
-const maxDateValidator = {
-  name: "maxDate",
-  validation(value, _element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalizedValue = normalizeDateFormat(value);
-    if (!normalizedValue) {
-      return false;
-    }
-    const parsed = FDate.fromIso(normalizedValue);
-    const limit = FDate.fromIso(validLimit(config2.limit));
-    return parsed.equals(limit) || parsed.isBefore(limit);
-  }
-};
 const minLengthValidator = {
   name: "minLength",
   validation(value, _element, config2) {
@@ -11232,12 +11261,6 @@ const minValueValidator = {
 };
 const numberValidator = {
   name: "number",
-  validation(value) {
-    return isEmpty(value) || isSet(parseNumber(value));
-  }
-};
-const currencyValidator = {
-  name: "currency",
   validation(value) {
     return isEmpty(value) || isSet(parseNumber(value));
   }
@@ -11266,6 +11289,45 @@ const personnummerLuhnValidator = {
   name: "personnummerLuhn",
   validation(value) {
     return isEmpty(value) || isSet(parsePersonnummerLuhn(value));
+  }
+};
+const personnummerNotSame = {
+  name: "personnummerNotSame",
+  validation(value, _element, config2) {
+    const valuePnr = parsePersonnummer(String(value));
+    if (!valuePnr) {
+      return true;
+    }
+    const otherFieldPnr = parsePersonnummer(String(config2.otherField));
+    if (!otherFieldPnr) {
+      return true;
+    }
+    if (valuePnr === otherFieldPnr) {
+      return false;
+    }
+    return true;
+  }
+};
+const personnummerOlder = {
+  name: "personnummerOlder",
+  validation(value, _element, config2) {
+    const valueAsDate = formatPersonnummerToDate(value);
+    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
+    if (!valueAsDate || !otherAsDate) {
+      return true;
+    }
+    return FDate.compare(valueAsDate, otherAsDate) !== 1;
+  }
+};
+const personnummerYounger = {
+  name: "personnummerYounger",
+  validation(value, _element, config2) {
+    const valueAsDate = formatPersonnummerToDate(value);
+    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
+    if (!valueAsDate || !otherAsDate) {
+      return true;
+    }
+    return FDate.compare(valueAsDate, otherAsDate) !== -1;
   }
 };
 const PHONE_NUMBER_REGEXP = /^(\+?[-_/() ]*(\d[-_/() ]*?){3,17})$/;
@@ -11329,30 +11391,33 @@ const whitelistValidator = {
 };
 ValidationService.registerValidator(bankAccountNumberValidator);
 ValidationService.registerValidator(bankgiroValidator);
+ValidationService.registerValidator(blacklistValidator);
 ValidationService.registerValidator(clearingNumberValidator);
+ValidationService.registerValidator(currencyValidator);
 ValidationService.registerValidator(dateFormatValidator);
 ValidationService.registerValidator(dateValidator);
 ValidationService.registerValidator(decimalValidator);
-ValidationService.registerValidator(blacklistValidator);
 ValidationService.registerValidator(emailValidator);
-ValidationService.registerValidator(integerValidator);
 ValidationService.registerValidator(greaterThanValidator);
+ValidationService.registerValidator(integerValidator);
 ValidationService.registerValidator(invalidDatesValidator);
 ValidationService.registerValidator(invalidWeekdaysValidator);
 ValidationService.registerValidator(lessThanValidator);
-ValidationService.registerValidator(minLengthValidator);
 ValidationService.registerValidator(matchesValidator);
+ValidationService.registerValidator(maxDateValidator);
 ValidationService.registerValidator(maxLengthValidator);
-ValidationService.registerValidator(minValueValidator);
 ValidationService.registerValidator(maxValueValidator);
 ValidationService.registerValidator(minDateValidator);
-ValidationService.registerValidator(maxDateValidator);
+ValidationService.registerValidator(minLengthValidator);
+ValidationService.registerValidator(minValueValidator);
 ValidationService.registerValidator(numberValidator);
-ValidationService.registerValidator(currencyValidator);
 ValidationService.registerValidator(organisationsnummerValidator);
 ValidationService.registerValidator(percentValidator);
 ValidationService.registerValidator(personnummerFormatValidator);
 ValidationService.registerValidator(personnummerLuhnValidator);
+ValidationService.registerValidator(personnummerNotSame);
+ValidationService.registerValidator(personnummerOlder);
+ValidationService.registerValidator(personnummerYounger);
 ValidationService.registerValidator(phoneNumberValidator);
 ValidationService.registerValidator(plusgiroValidator);
 ValidationService.registerValidator(postalCodeValidator);
