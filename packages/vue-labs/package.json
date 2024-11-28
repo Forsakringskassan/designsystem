@@ -73,7 +73,7 @@
     "@vue/test-utils": "2.4.6",
     "vite": "5.4.11",
     "vue": "3.5.13",
-    "vue-router": "4.4.5"
+    "vue-router": "4.5.0"
   },
   "peerDependencies": {
     "@fkui/date": "^5.36.0",
