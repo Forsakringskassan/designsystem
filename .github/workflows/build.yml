@@ -30,7 +30,7 @@ jobs:
               run: npm --ignore-scripts test
             - name: Publish test results
               if: github.event_name == 'push' && (success() || failure())
-              uses: mikepenz/action-junit-report@v4
+              uses: mikepenz/action-junit-report@v5
               with:
                   report_paths: "packages/*/test-results/jest-junit.xml"
                   include_passed: true
