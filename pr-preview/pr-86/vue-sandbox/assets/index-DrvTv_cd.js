@@ -14912,7 +14912,7 @@ function useAnimation(options) {
     });
   } };
 }
-function useOffset(options) {
+function useHorizontalOffset(options) {
   const { element: elementRef, parent: parentRef } = options;
   const offset2 = ref(0);
   watch(() => elementRef.value, updateOffset);
@@ -14989,7 +14989,7 @@ function useOffset(options) {
   const wrapper2 = useTemplateRef("wrapper");
   const button = useTemplateRef("button");
   const { animate } = useAnimation({ duration: 250, easing: "ease-in", element: wrapper2 });
-  const offset2 = useOffset({ element: button, parent: computed(() => {
+  const offset2 = useHorizontalOffset({ element: button, parent: computed(() => {
     var _ref3;
     var _a;
     return (_ref3 = (_a = iconTarget.value) == null ? void 0 : _a.parentElement) !== null && _ref3 !== void 0 ? _ref3 : null;

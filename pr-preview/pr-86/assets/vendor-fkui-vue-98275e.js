@@ -6901,7 +6901,7 @@
       });
     } };
   }
-  function useOffset(options) {
+  function useHorizontalOffset(options) {
     const { element: elementRef, parent: parentRef } = options;
     const offset2 = (0, import_vue.ref)(0);
     (0, import_vue.watch)(() => elementRef.value, updateOffset);
@@ -6978,7 +6978,7 @@
     const wrapper = (0, import_vue.useTemplateRef)("wrapper");
     const button = (0, import_vue.useTemplateRef)("button");
     const { animate } = useAnimation({ duration: 250, easing: "ease-in", element: wrapper });
-    const offset2 = useOffset({ element: button, parent: (0, import_vue.computed)(() => {
+    const offset2 = useHorizontalOffset({ element: button, parent: (0, import_vue.computed)(() => {
       var _ref3;
       var _a;
       return (_ref3 = (_a = iconTarget.value) == null ? void 0 : _a.parentElement) !== null && _ref3 !== void 0 ? _ref3 : null;
