@@ -402,4 +402,6 @@ html {
   --f-table-body-row-padding: 0.4rem;
   --f-list-item-itempane-padding: 0.8rem;
   --i-popup-error-offset: 16px;
+  --f-tooltip-offset: 0px;
+  --f-tooltip-icon-size: 0px;
 }

@@ -579,11 +579,11 @@
                   }, 8, ["modelValue", "options"])), [
                     [
                       _directive_validation,
-                      { option: { options: _ctx.raser } },
+                      { allowList: { list: _ctx.raser } },
                       void 0,
                       {
                         required: true,
-                        option: true
+                        allowList: true
                       }
                     ]
                   ]),

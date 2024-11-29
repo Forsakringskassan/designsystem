@@ -1,5 +1,5 @@
 :root {
-  --f-css-variables-version: "5.39.0";
+  --f-css-variables-version: "5.40.0";
   --f-color-backdrop: rgba(0, 0, 0, 0.75);
   --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3);
   --f-backdrop-modal: rgba(0, 0, 0, 0.75);
@@ -399,4 +399,6 @@
   --f-table-body-row-padding: 0.4rem;
   --f-list-item-itempane-padding: 0.8rem;
   --i-popup-error-offset: 16px;
+  --f-tooltip-offset: 0px;
+  --f-tooltip-icon-size: 0px;
 }
