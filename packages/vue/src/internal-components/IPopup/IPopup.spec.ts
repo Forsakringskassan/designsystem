@@ -120,35 +120,6 @@ describe("events", () => {
 
         expect(wrapper.vm.$data["gotCloseEvent"]).toBeFalsy();
     });
-
-    it('should emit "close" event when resizing window and popup is open', async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
-
-        const wrapper = await mountPopup();
-        await openPopup(wrapper);
-
-        const resizeEvent = document.createEvent("Event");
-        resizeEvent.initEvent("resize", true, true);
-        window.dispatchEvent(resizeEvent);
-
-        await wrapper.vm.$nextTick();
-        await flushPromises();
-
-        expect(wrapper.vm.$data["gotCloseEvent"]).toBeTruthy();
-    });
-
-    it('should not emit "close" event when resizing window and popup is closed', async () => {
-        const wrapper = await mountPopup();
-
-        const resizeEvent = document.createEvent("Event");
-        resizeEvent.initEvent("resize", true, true);
-        window.dispatchEvent(resizeEvent);
-
-        await jest.runAllTimers();
-        await flushPromises();
-
-        expect(wrapper.vm.$data["gotCloseEvent"]).toBeFalsy();
-    });
 });
 
 describe("html-validate", () => {

@@ -56,6 +56,16 @@ const defaultPopupTemplate = /* HTML */ `
     </i-popup>
 `;
 
+function setInlineTemplate(inline: "always" | "never" | "auto"): string {
+    return /* HTML */ `
+        <i-popup :isOpen="isOpen" :anchor="$refs.anchor" inline="${inline}">
+            <div style="height: 300px; width: 250px;">
+                <span> POPUP CONTENT </span>
+            </div>
+        </i-popup>
+    `;
+}
+
 describe("open popup", () => {
     describe("classes", () => {
         describe("default", () => {
@@ -85,20 +95,6 @@ describe("open popup", () => {
         });
 
         describe("`inline` prop", () => {
-            function setInlineTemplate(inline: string): string {
-                return /* HTML */ `
-                    <i-popup
-                        :isOpen="isOpen"
-                        :anchor="$refs.anchor"
-                        inline="${inline}"
-                    >
-                        <div style="height: 300px; width: 250px;">
-                            <span> POPUP CONTENT </span>
-                        </div>
-                    </i-popup>
-                `;
-            }
-
             it("should add `popup--inline` class when set to `always`", () => {
                 setViewport(VIEWPORT.DESKTOP);
                 const template = setInlineTemplate("always");
@@ -220,6 +216,66 @@ describe("open popup", () => {
             cy.mount(component);
             cy.get(popupButtonId).click();
             cy.get(popupButtonId).should("have.focus");
+        });
+    });
+});
+
+describe("resize viewport with open popup", () => {
+    describe("`inline` prop is set to `auto`", () => {
+        it("should change to inline when resized from desktop to mobile size", () => {
+            setViewport(VIEWPORT.DESKTOP);
+            const template = setInlineTemplate("auto");
+            const component = createComponent(template);
+            cy.mount(component);
+
+            cy.get(popupButtonId).click();
+            popup.el().should("have.class", "popup--overlay");
+
+            setViewport(VIEWPORT.MOBILE);
+            popup.el().should("have.class", "popup--inline");
+        });
+
+        it("should change to overlay when resized from mobile to desktop size.", () => {
+            setViewport(VIEWPORT.MOBILE);
+            const template = setInlineTemplate("auto");
+            const component = createComponent(template);
+            cy.mount(component);
+
+            cy.get(popupButtonId).click();
+            popup.el().should("have.class", "popup--inline");
+
+            setViewport(VIEWPORT.DESKTOP);
+            popup.el().should("have.class", "popup--overlay");
+        });
+    });
+
+    describe("`inline` prop is set to `always`", () => {
+        it("should still be inline when resized from mobile to desktop size", () => {
+            setViewport(VIEWPORT.MOBILE);
+            const template = setInlineTemplate("always");
+            const component = createComponent(template);
+            cy.mount(component);
+
+            cy.get(popupButtonId).click();
+            popup.el().should("have.class", "popup--inline");
+
+            setViewport(VIEWPORT.DESKTOP);
+            popup.el().should("have.class", "popup--inline");
+        });
+    });
+
+    describe("`inline` prop is set to `never`", () => {
+        it("should still be overlay when resized from desktop to mobile size", () => {
+            setViewport(VIEWPORT.DESKTOP);
+            const template = setInlineTemplate("never");
+            const component = createComponent(template);
+            cy.mount(component);
+
+            cy.get(popupButtonId).click();
+            popup.el().should("have.class", "popup--overlay");
+
+            setViewport(VIEWPORT.MOBILE);
+            popup.el().should("have.class", "popup--overlay");
         });
     });
 });

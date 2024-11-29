@@ -25,6 +25,8 @@ export function isTeleportDisabled(
         disableTeleport = true;
     } else if (forceOverlay) {
         disableTeleport = false;
+    } else if (placement === Placement.NotCalculated && !isMobileSize) {
+        disableTeleport = false;
     }
 
     return disableTeleport;

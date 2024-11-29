@@ -101,6 +101,17 @@ describe("on resize", () => {
         navMenu.popupItem().should("not.exist");
     });
 
+    it("should close open popup menu if no items are overflowing", () => {
+        setViewport(VIEWPORT.LOW_OVERFLOW);
+        cy.mount(createComponent());
+
+        navMenu.popupItem().click();
+        popupMenu.el().should("exist");
+
+        setViewport(VIEWPORT.NO_OVERFLOW);
+        popupMenu.el().should("not.exist");
+    });
+
     it("should not overflow if `vertical` is used", () => {
         setViewport(VIEWPORT.HIGH_OVERFLOW);
         const template = /* HTML */ `
