@@ -7,60 +7,52 @@ component: FNavigationMenu
 
 Navigeringsmeny låter användaren navigera i en applikation med flera undersidor och se vilken sida användaren befinner sig på.
 
-## Navigeringsmeny i horisontellt läge
-
-```import
-FNavigationMenuHorizontal.vue
+```import live-example
+FNavigationMenuLiveExample.vue
 ```
 
-I detta exemplet används typen `NavigationMenuItem` för att definiera länkar i menyn.
-Det finns två typer av länkar: "in-app" och "extern".
-Om användaren väljer ett item utan `href` skickas en event `selectedRoute` med argumentet `route` som kan användas ihop med till exempel Vue router.
-Om användaren klickar på ett item med en `href` blir beteendet som att klicka på en extern länk.
+## Skapa menyalternativ
+
+För att definiera alternativ i menyn används en array av `NavigationMenuItem` objekt.
+
+Om du anger `href` för objektet så kommer menyalternativet fungera som en vanlig länk med aktuellt `href` värde.
+
+Utan `href` så skickas ett `selectedRoute` event med `route` för det valda alternativet.
+Detta kan användas tillsammans med till exempel Vue Router för att navigera till vald `route`.
+
+```import
+navigation-menu-item.ts
+```
 
 ```ts
 const routes: NavigationMenuItem[] = [
     { label: "label1", route: "ROUTE_1" },
     { label: "label2", route: "ROUTE_2" },
-    { label: "label3", route: "ROUTE_3" },
-    { label: "label4", route: "ROUTE_4", href: "/", target: "" },
+    { label: "label3", route: "ROUTE_3", href: "/", target: "_blank" },
 ];
 ```
 
-## Navigeringsmeny i vertikalt läge
+## Visa aktiv sida
 
-Du aktiverar vertikalt läge genom att använda `vertical` prop:
+För att visa aktiv sida behöver du styra det valda menyalternativet programmatiskt med `v-model:route`.
+
+När modellen ändras till ett värde som matchar `route` för en `NavigationMenuItem` i `routes` så visas den som vald i menyn.
+Om värdet inte matchar nåt så visas istället inget alternativ som valt.
 
 ```diff
- <f-navigation-menu
-    :routes="routes"
-+   vertical
-    @selectedRoute="selectedRoute=$event"
- ></f-navigation-menu>
+-<f-navigation-menu :routes="routes">
++<f-navigation-menu v-model:route="currentRoute" :routes="routes">
 ```
 
-```import
-FNavigationMenuVertical.vue
-```
+## Överflödande alternativ
 
-## Overflow exempel
+När alla alternativ inte får plats i bredd så placeras de istället i en undermeny (endast för meny utan `vertical` prop).
+När detta händer placeras ett nytt alternativ i slutet på menyn som öppnar undermenyn.
 
-Detta exemplet visar på hur _overflow_ beter sig.
-Overflow sker då ett element, till exempel navigeringsmenyn, har för mycket innehåll i sig (består av för många menuitems) för att kunna visas inom sin tilldelade yta (bredden i den här exemplet).
-Justera fönstrets storlek för att visa beteende vid overflow.
+Justera fönstrets storlek så att alla alternativ inte får plats för att se överflödesbeteendet.
 
 ```import
 FNavigationMenuOverflow.vue
-```
-
-## Ange modell (v-model:route)
-
-En route-modell kan anges i navigeringsmenyn för att kunna styra vald route programmatiskt.
-Om ett värde tilldelas som inte finns i `routes` så kommer värdet att sättas om till `""` och alla länkar att avmarkeras (om det inte finns en länk för route `""`).
-I detta exempel kan man sätta om routen programmatiskt med hjälp av ett formulär.
-
-```import
-FNavigationMenuActiveRoute.vue
 ```
 
 ## Skärmläsare
