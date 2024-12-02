@@ -10117,17 +10117,11 @@ class ValidationServiceImpl {
   }
 }
 const ValidationService = new ValidationServiceImpl();
-function isInvalidAllowListConfig(value) {
-  return Boolean(value.list);
-}
 const allowListValidator = {
   name: "allowList",
   validation(value, element, config2) {
-    if (isEmpty(value)) {
+    if (isEmpty(value) || config2.list === void 0 || config2.list.length === 0) {
       return true;
-    }
-    if (!isInvalidAllowListConfig(config2)) {
-      throw new Error(`Invalid allowList config for ${element.id}`);
     }
     return config2.list.includes(value);
   }

@@ -6,7 +6,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/logic/lib/esm/index.js
+  // ../logic/lib/esm/index.js
   var esm_exports = {};
   __export(esm_exports, {
     DATE_REGEXP_WITH_DASH: () => DATE_REGEXP_WITH_DASH,
@@ -2781,17 +2781,11 @@ Caused by: ${cause.stack}`;
     }
   };
   var ValidationService = new ValidationServiceImpl();
-  function isInvalidAllowListConfig(value) {
-    return Boolean(value.list);
-  }
   var allowListValidator = {
     name: "allowList",
     validation(value, element, config) {
-      if (isEmpty(value)) {
+      if (isEmpty(value) || config.list === void 0 || config.list.length === 0) {
         return true;
-      }
-      if (!isInvalidAllowListConfig(config)) {
-        throw new Error(`Invalid allowList config for ${element.id}`);
       }
       return config.list.includes(value);
     }
