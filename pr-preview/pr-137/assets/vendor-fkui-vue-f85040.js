@@ -7497,21 +7497,32 @@
       const wrapper = (0, import_vue.useTemplateRef)("wrapper");
       const content = (0, import_vue.useTemplateRef)("content");
       const popupClasses = ["popup", "popup--overlay"];
+      const teleportTarget = (0, import_vue.computed)(() => {
+        var _config$popupTarget;
+        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
+      });
       useEventListener(__props.anchor, "keyup", onKeyEsc);
+      function addListeners() {
+        document.addEventListener("click", onDocumentClickHandler);
+        window.addEventListener("resize", onResize);
+      }
+      function removeListeners() {
+        document.removeEventListener("click", onDocumentClickHandler);
+        window.removeEventListener("resize", onResize);
+      }
       (0, import_vue.watchEffect)(() => {
         if (__props.isOpen) {
           openPopup();
           setTimeout(() => {
             if (__props.isOpen) {
-              document.addEventListener("click", onDocumentClickHandler);
-              window.addEventListener("resize", onResize);
+              addListeners();
             }
           }, 0);
         } else {
-          document.removeEventListener("click", onDocumentClickHandler);
-          window.removeEventListener("resize", onResize);
+          removeListeners();
         }
       });
+      (0, import_vue.onUnmounted)(removeListeners);
       function onDocumentClickHandler() {
         emit("close");
       }
@@ -7564,7 +7575,7 @@
       return (_ctx, _cache) => {
         return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
           key: 0,
-          to: "body",
+          to: teleportTarget.value,
           disabled: teleportDisabled
         }, [(0, import_vue.createElementVNode)("div", (0, import_vue.mergeProps)({
           ref: "popup"
@@ -7581,7 +7592,7 @@
         }, [(0, import_vue.createElementVNode)("div", {
           ref_key: "content",
           ref: content
-        }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)], 40, _hoisted_1$C)], 16)])) : (0, import_vue.createCommentVNode)("", true);
+        }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)], 40, _hoisted_1$C)], 16)], 8, ["to"])) : (0, import_vue.createCommentVNode)("", true);
       };
     }
   });
