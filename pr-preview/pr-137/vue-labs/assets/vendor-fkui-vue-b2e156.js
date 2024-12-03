@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -7504,15 +7504,15 @@
       useEventListener(__props.anchor, "keyup", onKeyEsc);
       function addListeners() {
         document.addEventListener("click", onDocumentClickHandler);
-        window.addEventListener("resize", onResize);
+        window.addEventListener("resize", (0, import_logic.debounce)(onResize, 100));
       }
       function removeListeners() {
         document.removeEventListener("click", onDocumentClickHandler);
-        window.removeEventListener("resize", onResize);
+        window.removeEventListener("resize", (0, import_logic.debounce)(onResize, 100));
       }
       (0, import_vue.watchEffect)(() => {
         if (__props.isOpen) {
-          openPopup();
+          calculatePosition();
           setTimeout(() => {
             if (__props.isOpen) {
               addListeners();
@@ -7527,7 +7527,9 @@
         emit("close");
       }
       function onResize() {
-        emit("close");
+        if (__props.isOpen) {
+          calculatePosition();
+        }
       }
       function onKeyEsc(event) {
         if (event.key === "Escape") {
@@ -7537,7 +7539,7 @@
       function guessItemHeight(numOfItems, contentWrapper) {
         return Math.ceil(contentWrapper.clientHeight / numOfItems);
       }
-      async function openPopup() {
+      async function calculatePosition() {
         var _a;
         await (0, import_vue.nextTick)();
         const wrapperElement = wrapper.value;
