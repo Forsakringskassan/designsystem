@@ -87,6 +87,13 @@ import { labelClasses } from "./label-classes";
 import { contentClasses } from "./content-classes";
 import { injectionKeys } from "./use-fieldset";
 
+function isEqual<T>(a: T[], b: T[]): boolean {
+    if (a.length !== b.length) {
+        return false;
+    }
+    return a.every((_, i) => a[i] === b[i]);
+}
+
 export default defineComponent({
     name: "FFieldset",
     components: {
@@ -314,7 +321,10 @@ export default defineComponent({
         },
         async updateCheckboxChildren(): Promise<void> {
             await this.$nextTick();
-            this.children = Array.from(this.$el.querySelectorAll('input[type="checkbox"]'));
+            const checkboxes = Array.from(this.$el.querySelectorAll('input[type="checkbox"]')) as HTMLInputElement[];
+            if (!isEqual(this.children, checkboxes)) {
+                this.children = checkboxes;
+            }
         },
     },
 });
