@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -5422,14 +5422,10 @@
     emits: [
       /**
        * Emitted when popup is visible and placement is fully calculated.
-       *
-       * @event open
        */
       "open",
       /**
        * Emitted when clicked outside of popup.
-       *
-       * @event close
        */
       "close"
     ],

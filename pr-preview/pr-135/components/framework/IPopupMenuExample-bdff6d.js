@@ -4024,14 +4024,10 @@
     emits: [
       /**
        * Emitted when popup is visible and placement is fully calculated.
-       *
-       * @event open
        */
       "open",
       /**
        * Emitted when clicked outside of popup.
-       *
-       * @event close
        */
       "close"
     ],
