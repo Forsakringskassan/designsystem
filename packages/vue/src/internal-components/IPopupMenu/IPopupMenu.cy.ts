@@ -86,8 +86,6 @@ describe("keyboard navigation", () => {
         beforeEach(() => {
             // Large enough to activate teleport.
             cy.viewport(1024, 600);
-            /* eslint-disable-next-line cypress/no-unnecessary-waiting -- technical debt SFKUI-6672: the popup closes if the resize event is fired too late */
-            cy.wait(500);
             mountTestComponent(true, arrayWithThreeTestItems);
             popupMenu.getItemLink(0).should("be.visible");
             popupMenu.getItemLink(0).focus();
@@ -140,8 +138,6 @@ describe("keyboard navigation", () => {
         beforeEach(() => {
             // Large enough to activate teleport.
             cy.viewport(1024, 600);
-            /* eslint-disable-next-line cypress/no-unnecessary-waiting -- technical debt SFKUI-6672: the popup closes if the resize event is fired too late */
-            cy.wait(500);
             mountTestComponent(true, arrayWithThreeTestItems, false);
             popupMenu.getItemLink(0).should("be.visible");
             popupMenu.getItemLink(0).focus();

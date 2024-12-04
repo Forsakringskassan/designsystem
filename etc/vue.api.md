@@ -2717,15 +2717,18 @@ default: boolean;
 };
 }>, {}, IPopupData, {
 popupClasses(): string[];
+isInline(): boolean;
 forceInline(): boolean;
 forceOverlay(): boolean;
 teleportTarget(): string | Element;
 }, {
 toggleIsOpen(isOpen: boolean): Promise<void>;
+calculatePlacement(): Promise<void>;
 applyFocus(): void;
 isMobileSize(): boolean;
 onDocumentClickHandler(): void;
-onWindowResizeHandler(): void;
+onWindowResizeDebounced(): void;
+onWindowResize(): Promise<void>;
 onPopupClickHandler(event: Event): void;
 onKeyEsc(): void;
 onKeyTab(event: KeyboardEvent): void;
@@ -4864,15 +4867,18 @@ default: boolean;
 };
 }>, {}, IPopupData, {
 popupClasses(): string[];
+isInline(): boolean;
 forceInline(): boolean;
 forceOverlay(): boolean;
 teleportTarget(): string | Element;
 }, {
 toggleIsOpen(isOpen: boolean): Promise<void>;
+calculatePlacement(): Promise<void>;
 applyFocus(): void;
 isMobileSize(): boolean;
 onDocumentClickHandler(): void;
-onWindowResizeHandler(): void;
+onWindowResizeDebounced(): void;
+onWindowResize(): Promise<void>;
 onPopupClickHandler(event: Event): void;
 onKeyEsc(): void;
 onKeyTab(event: KeyboardEvent): void;
@@ -10008,15 +10014,18 @@ default: boolean;
 };
 }>, {}, IPopupData, {
 popupClasses(): string[];
+isInline(): boolean;
 forceInline(): boolean;
 forceOverlay(): boolean;
 teleportTarget(): string | Element;
 }, {
 toggleIsOpen(isOpen: boolean): Promise<void>;
+calculatePlacement(): Promise<void>;
 applyFocus(): void;
 isMobileSize(): boolean;
 onDocumentClickHandler(): void;
-onWindowResizeHandler(): void;
+onWindowResizeDebounced(): void;
+onWindowResize(): Promise<void>;
 onPopupClickHandler(event: Event): void;
 onKeyEsc(): void;
 onKeyTab(event: KeyboardEvent): void;
@@ -17380,15 +17389,18 @@ default: boolean;
 };
 }>, {}, IPopupData, {
 popupClasses(): string[];
+isInline(): boolean;
 forceInline(): boolean;
 forceOverlay(): boolean;
 teleportTarget(): string | Element;
 }, {
 toggleIsOpen(isOpen: boolean): Promise<void>;
+calculatePlacement(): Promise<void>;
 applyFocus(): void;
 isMobileSize(): boolean;
 onDocumentClickHandler(): void;
-onWindowResizeHandler(): void;
+onWindowResizeDebounced(): void;
+onWindowResize(): Promise<void>;
 onPopupClickHandler(event: Event): void;
 onKeyEsc(): void;
 onKeyTab(event: KeyboardEvent): void;
@@ -17456,8 +17468,6 @@ setFocus: boolean;
 export interface IPopupData {
     // (undocumented)
     focus: StackHandle | null;
-    // (undocumented)
-    noCloseOnResize: boolean;
     // (undocumented)
     placement: Placement;
     // (undocumented)
@@ -17734,15 +17744,18 @@ default: boolean;
 };
 }>, {}, IPopupData, {
 popupClasses(): string[];
+isInline(): boolean;
 forceInline(): boolean;
 forceOverlay(): boolean;
 teleportTarget(): string | Element;
 }, {
 toggleIsOpen(isOpen: boolean): Promise<void>;
+calculatePlacement(): Promise<void>;
 applyFocus(): void;
 isMobileSize(): boolean;
 onDocumentClickHandler(): void;
-onWindowResizeHandler(): void;
+onWindowResizeDebounced(): void;
+onWindowResize(): Promise<void>;
 onPopupClickHandler(event: Event): void;
 onKeyEsc(): void;
 onKeyTab(event: KeyboardEvent): void;

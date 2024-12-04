@@ -17,8 +17,9 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
-import { handleTab, pushFocus, popFocus } from "@fkui/logic";
+import { debounce, handleTab, pushFocus, popFocus } from "@fkui/logic";
 import { config } from "../../config";
+import { getHTMLElementFromVueRef } from "../../utils";
 import { getElement, fitInsideArea, getScrollToPopup, Placement, CandidateOrder } from "./IPopupUtils";
 import { getContainer } from "./get-container";
 import { getFocusableElement } from "./get-focusable-element";
@@ -112,27 +113,41 @@ export default defineComponent({
             default: true,
         },
     },
-    emits: ["open", "close"],
+    emits: [
+        /**
+         * Emitted when popup is visible and placement is fully calculated.
+         */
+        "open",
+        /**
+         * Emitted when clicked outside of popup.
+         */
+        "close",
+    ],
     data(): IPopupData {
         return {
             teleportDisabled: false,
             placement: Placement.NotCalculated,
             focus: null,
-            noCloseOnResize: false,
         };
     },
     computed: {
         popupClasses(): string[] {
+            const popupState = this.isInline ? ["popup--inline"] : ["popup--overlay"];
+            return ["popup", ...popupState];
+        },
+        isInline(): boolean {
             let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
 
             if (this.forceInline) {
                 isInline = true;
             } else if (this.forceOverlay) {
                 isInline = false;
+            } else if (this.placement === Placement.NotCalculated && !this.isMobileSize()) {
+                // Overlay is required to get accurate results from placement calculation.
+                isInline = false;
             }
 
-            const popupState = isInline ? ["popup--inline"] : ["popup--overlay"];
-            return ["popup", ...popupState];
+            return isInline;
         },
         forceInline(): boolean {
             return this.alwaysInline || this.inline === "always";
@@ -159,20 +174,23 @@ export default defineComponent({
                         // verify that it's still open
                         if (this.isOpen) {
                             document.addEventListener("click", this.onDocumentClickHandler);
-                            window.addEventListener("resize", this.onWindowResizeHandler);
+                            window.addEventListener("resize", this.onWindowResizeDebounced);
                         }
                     }, 0);
                 } else {
                     document.removeEventListener("click", this.onDocumentClickHandler);
-                    window.removeEventListener("resize", this.onWindowResizeHandler);
+                    window.removeEventListener("resize", this.onWindowResizeDebounced);
                 }
             },
         },
     },
+    created() {
+        this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
+    },
     unmounted() {
         // Clean up if unmounted but still opened
         document.removeEventListener("click", this.onDocumentClickHandler);
-        window.removeEventListener("resize", this.onWindowResizeHandler);
+        window.removeEventListener("resize", this.onWindowResizeDebounced);
     },
     methods: {
         async toggleIsOpen(isOpen: boolean): Promise<void> {
@@ -191,15 +209,20 @@ export default defineComponent({
             /* popup is opening */
             // Wait for popup to show up
             await this.$nextTick();
-            const popup = this.$refs["popup"] as HTMLElement;
-            const wrapper = this.$refs["wrapper"] as HTMLElement;
+            await this.calculatePlacement();
+            this.applyFocus();
+            this.$emit("open");
+        },
+        async calculatePlacement(): Promise<void> {
+            const popup = getHTMLElementFromVueRef(this.$refs.popup);
+            const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
             const anchor = getElement(this.anchor);
 
             if (!anchor) {
                 throw new Error("No anchor element found");
             }
 
-            // Check candidates for overlay position.
+            // Check candidates for overlay placement.
             const shouldCheckCandidates = this.forceOverlay || !(this.isMobileSize() || this.forceInline);
             if (shouldCheckCandidates) {
                 const area = getContainer(popup, this.container);
@@ -218,23 +241,14 @@ export default defineComponent({
                 if (useOverlay) {
                     wrapper.style.left = `${result.x}px`;
                     wrapper.style.top = `${result.y}px`;
-                    this.applyFocus();
-
-                    /**
-                     * Emitted when popup is visible and placement is fully calculated.
-                     * @event open
-                     */
-                    this.$emit("open");
                     return;
                 }
             }
 
-            // Block resize close event while virtual keyboard
-            // is closing so it doesn't instantly close popup.
-            this.noCloseOnResize = true;
-
             // Force disable teleport since it won't be updated due to fallback placement.
             this.teleportDisabled = true;
+            wrapper.style.removeProperty("left");
+            wrapper.style.removeProperty("top");
 
             // Wait for virtual keyboard to be closed before calculating scroll.
             await new Promise((resolve) => setTimeout(resolve, 200));
@@ -249,25 +263,22 @@ export default defineComponent({
             });
             const scrollOptions = { top, behavior: "smooth" } as const;
 
-            wrapper.style.removeProperty("left");
-            wrapper.style.removeProperty("top");
-
             if (hasScrollTarget) {
                 scrollTarget.scrollTo(scrollOptions);
             } else {
                 window.scrollTo(scrollOptions);
             }
-
-            this.noCloseOnResize = false;
-            this.applyFocus();
-            this.$emit("open");
         },
         applyFocus(): void {
-            if (this.setFocus) {
-                const wrapper = this.$refs["wrapper"];
-                const focusableElement = getFocusableElement(wrapper, this.focusElement);
-                this.focus = pushFocus(focusableElement);
+            if (!this.setFocus) {
+                return;
             }
+            const wrapper = this.$refs.wrapper;
+            if (!wrapper) {
+                return;
+            }
+            const focusableElement = getFocusableElement(wrapper, this.focusElement);
+            this.focus = pushFocus(focusableElement);
         },
         isMobileSize(): boolean {
             return window.innerWidth < MIN_DESKTOP_WIDTH;
@@ -275,12 +286,34 @@ export default defineComponent({
         onDocumentClickHandler(): void {
             this.$emit("close");
         },
-        onWindowResizeHandler(): void {
-            if (this.noCloseOnResize) {
+        onWindowResizeDebounced(): void {
+            // Overwritten in created so that the debounced `onWindowResize`
+            // method can be removed by removeEventListener.
+        },
+        async onWindowResize(): Promise<void> {
+            // Abort if popup was closed during debounce.
+            if (!this.isOpen) {
+                return;
+            }
+            // Don't need to recalculate on resize if forced inline.
+            if (this.forceInline) {
+                return;
+            }
+            // Don't need to recalculate if popup is still supposed to be inline.
+            if (this.isInline && this.isMobileSize()) {
                 return;
             }
 
-            this.$emit("close");
+            // Reset placement/teleport to get overlay state for accurate calculation.
+            if (this.isInline) {
+                this.placement = Placement.NotCalculated;
+                this.teleportDisabled = false;
+                await this.$nextTick();
+            }
+
+            await this.calculatePlacement();
+            const { placement, forceInline, forceOverlay } = this;
+            this.teleportDisabled = isTeleportDisabled({ window, placement, forceInline, forceOverlay });
         },
         onPopupClickHandler(event: Event): void {
             // prevent propagation so we don't catch this
@@ -292,7 +325,8 @@ export default defineComponent({
         },
         onKeyTab(event: KeyboardEvent): void {
             if (this.keyboardTrap) {
-                handleTab(event, this.$refs.wrapper as HTMLElement);
+                const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
+                handleTab(event, wrapper);
             }
         },
     },

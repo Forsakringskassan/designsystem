@@ -378,10 +378,15 @@ export default defineComponent({
             this.overflowIndex = foundOverflowIndex;
 
             if (!this.hasOverflow) {
+                this.popupOpen = false;
                 return;
             }
 
-            // wait for computed to update v-if for popup item.
+            // Close popup to later recalculate after new anchor position when reopened.
+            const popupWasOpen = this.popupOpen;
+            this.popupOpen = false;
+
+            // Wait for computed to update v-if for popup item.
             await this.$nextTick();
 
             const wrapper = getHTMLElementFromVueRef(this.$refs["popup-item"]);
@@ -392,6 +397,8 @@ export default defineComponent({
             const wrapperRect = getAbsolutePosition(wrapper);
             const offset = wrapperRect.x - firstHiddenItemRect.x;
             wrapper.style.left = `-${offset}px`;
+
+            this.popupOpen = popupWasOpen;
         },
         onKeyUp(event: KeyboardEvent): void {
             if (preventKeys.includes(event.key)) {
