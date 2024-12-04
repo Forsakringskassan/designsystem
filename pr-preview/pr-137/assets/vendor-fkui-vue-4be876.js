@@ -2379,11 +2379,11 @@
   }
   var _baseIsEqual = baseIsEqual$1;
   var baseIsEqual = _baseIsEqual;
-  function isEqual(value, other) {
+  function isEqual$1(value, other) {
     return baseIsEqual(value, other);
   }
-  var isEqual_1 = isEqual;
-  var isEqual$1 = /* @__PURE__ */ getDefaultExportFromCjs(isEqual_1);
+  var isEqual_1 = isEqual$1;
+  var isEqual$2 = /* @__PURE__ */ getDefaultExportFromCjs(isEqual_1);
   function itemEquals(item1, item2, compareAttribute) {
     if (!(0, import_logic.isSet)(item1) || !(0, import_logic.isSet)(item2)) {
       return false;
@@ -4247,7 +4247,7 @@
       import_logic.ValidationService.removeValidatorsFromElement(validatableElement);
     },
     updated(el, binding) {
-      if (!isEqual$1(binding.value, binding.oldValue)) {
+      if (!isEqual$2(binding.value, binding.oldValue)) {
         registerValidators(el, binding);
       }
     },
@@ -5330,6 +5330,8 @@
       disableTeleport = true;
     } else if (forceOverlay) {
       disableTeleport = false;
+    } else if (placement === Placement.NotCalculated && !isMobileSize) {
+      disableTeleport = false;
     }
     return disableTeleport;
   }
@@ -5418,25 +5420,38 @@
         default: true
       }
     },
-    emits: ["open", "close"],
+    emits: [
+      /**
+       * Emitted when popup is visible and placement is fully calculated.
+       */
+      "open",
+      /**
+       * Emitted when clicked outside of popup.
+       */
+      "close"
+    ],
     data() {
       return {
         teleportDisabled: false,
         placement: Placement.NotCalculated,
-        focus: null,
-        noCloseOnResize: false
+        focus: null
       };
     },
     computed: {
       popupClasses() {
+        const popupState = this.isInline ? ["popup--inline"] : ["popup--overlay"];
+        return ["popup", ...popupState];
+      },
+      isInline() {
         let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
         if (this.forceInline) {
           isInline = true;
         } else if (this.forceOverlay) {
           isInline = false;
+        } else if (this.placement === Placement.NotCalculated && !this.isMobileSize()) {
+          isInline = false;
         }
-        const popupState = isInline ? ["popup--inline"] : ["popup--overlay"];
-        return ["popup", ...popupState];
+        return isInline;
       },
       forceInline() {
         return this.alwaysInline || this.inline === "always";
@@ -5469,19 +5484,22 @@
             setTimeout(() => {
               if (this.isOpen) {
                 document.addEventListener("click", this.onDocumentClickHandler);
-                window.addEventListener("resize", this.onWindowResizeHandler);
+                window.addEventListener("resize", this.onWindowResizeDebounced);
               }
             }, 0);
           } else {
             document.removeEventListener("click", this.onDocumentClickHandler);
-            window.removeEventListener("resize", this.onWindowResizeHandler);
+            window.removeEventListener("resize", this.onWindowResizeDebounced);
           }
         }
       }
     },
+    created() {
+      this.onWindowResizeDebounced = (0, import_logic.debounce)(this.onWindowResize, 100).bind(this);
+    },
     unmounted() {
       document.removeEventListener("click", this.onDocumentClickHandler);
-      window.removeEventListener("resize", this.onWindowResizeHandler);
+      window.removeEventListener("resize", this.onWindowResizeDebounced);
     },
     methods: {
       async toggleIsOpen(isOpen) {
@@ -5494,8 +5512,13 @@
           return;
         }
         await this.$nextTick();
-        const popup = this.$refs["popup"];
-        const wrapper = this.$refs["wrapper"];
+        await this.calculatePlacement();
+        this.applyFocus();
+        this.$emit("open");
+      },
+      async calculatePlacement() {
+        const popup = getHTMLElementFromVueRef(this.$refs.popup);
+        const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
         const anchor = getElement(this.anchor);
         if (!anchor) {
           throw new Error("No anchor element found");
@@ -5517,13 +5540,12 @@
           if (useOverlay) {
             wrapper.style.left = `${result.x}px`;
             wrapper.style.top = `${result.y}px`;
-            this.applyFocus();
-            this.$emit("open");
             return;
           }
         }
-        this.noCloseOnResize = true;
         this.teleportDisabled = true;
+        wrapper.style.removeProperty("left");
+        wrapper.style.removeProperty("top");
         await new Promise((resolve) => setTimeout(resolve, 200));
         const scrollTarget = popup.closest(".scroll-target");
         const hasScrollTarget = scrollTarget !== null;
@@ -5537,23 +5559,22 @@
           top,
           behavior: "smooth"
         };
-        wrapper.style.removeProperty("left");
-        wrapper.style.removeProperty("top");
         if (hasScrollTarget) {
           scrollTarget.scrollTo(scrollOptions);
         } else {
           window.scrollTo(scrollOptions);
         }
-        this.noCloseOnResize = false;
-        this.applyFocus();
-        this.$emit("open");
       },
       applyFocus() {
-        if (this.setFocus) {
-          const wrapper = this.$refs["wrapper"];
-          const focusableElement = getFocusableElement(wrapper, this.focusElement);
-          this.focus = (0, import_logic.pushFocus)(focusableElement);
+        if (!this.setFocus) {
+          return;
         }
+        const wrapper = this.$refs.wrapper;
+        if (!wrapper) {
+          return;
+        }
+        const focusableElement = getFocusableElement(wrapper, this.focusElement);
+        this.focus = (0, import_logic.pushFocus)(focusableElement);
       },
       isMobileSize() {
         return window.innerWidth < MIN_DESKTOP_WIDTH;
@@ -5561,11 +5582,35 @@
       onDocumentClickHandler() {
         this.$emit("close");
       },
-      onWindowResizeHandler() {
-        if (this.noCloseOnResize) {
+      onWindowResizeDebounced() {
+      },
+      async onWindowResize() {
+        if (!this.isOpen) {
           return;
         }
-        this.$emit("close");
+        if (this.forceInline) {
+          return;
+        }
+        if (this.isInline && this.isMobileSize()) {
+          return;
+        }
+        if (this.isInline) {
+          this.placement = Placement.NotCalculated;
+          this.teleportDisabled = false;
+          await this.$nextTick();
+        }
+        await this.calculatePlacement();
+        const {
+          placement,
+          forceInline,
+          forceOverlay
+        } = this;
+        this.teleportDisabled = isTeleportDisabled({
+          window,
+          placement,
+          forceInline,
+          forceOverlay
+        });
       },
       onPopupClickHandler(event) {
         event.stopPropagation();
@@ -5575,7 +5620,8 @@
       },
       onKeyTab(event) {
         if (this.keyboardTrap) {
-          (0, import_logic.handleTab)(event, this.$refs.wrapper);
+          const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
+          (0, import_logic.handleTab)(event, wrapper);
         }
       }
     }
@@ -5901,6 +5947,12 @@
       getFieldsetLabelText: (0, import_vue.inject)(injectionKeys.getFieldsetLabelText, () => void 0)
     };
   }
+  function isEqual(a, b) {
+    if (a.length !== b.length) {
+      return false;
+    }
+    return a.every((_, i) => a[i] === b[i]);
+  }
   var _sfc_main$W = (0, import_vue.defineComponent)({
     name: "FFieldset",
     components: {
@@ -6121,7 +6173,10 @@
       },
       async updateCheckboxChildren() {
         await this.$nextTick();
-        this.children = Array.from(this.$el.querySelectorAll('input[type="checkbox"]'));
+        const checkboxes = Array.from(this.$el.querySelectorAll('input[type="checkbox"]'));
+        if (!isEqual(this.children, checkboxes)) {
+          this.children = checkboxes;
+        }
       }
     }
   });
@@ -6280,7 +6335,7 @@
       attrs() {
         let checked;
         if (Array.isArray(this.modelValue)) {
-          checked = this.modelValue.findIndex((it) => isEqual$1((0, import_vue.toValue)(it), (0, import_vue.toValue)(this.value))) >= 0;
+          checked = this.modelValue.findIndex((it) => isEqual$2((0, import_vue.toValue)(it), (0, import_vue.toValue)(this.value))) >= 0;
         } else {
           checked = this.value === this.modelValue;
         }
@@ -6314,7 +6369,7 @@
       emitVModelEvent(event) {
         let newModel;
         if (Array.isArray(this.modelValue)) {
-          newModel = [...this.modelValue].filter((it) => !isEqual$1((0, import_vue.toValue)(it), (0, import_vue.toValue)(this.value)));
+          newModel = [...this.modelValue].filter((it) => !isEqual$2((0, import_vue.toValue)(it), (0, import_vue.toValue)(this.value)));
           if (this.modelValue.length <= newModel.length) {
             newModel.push(this.value);
           }
@@ -13390,8 +13445,11 @@
         }
         this.overflowIndex = foundOverflowIndex;
         if (!this.hasOverflow) {
+          this.popupOpen = false;
           return;
         }
+        const popupWasOpen = this.popupOpen;
+        this.popupOpen = false;
         await this.$nextTick();
         const wrapper = getHTMLElementFromVueRef(this.$refs["popup-item"]);
         wrapper.style.left = "0";
@@ -13400,6 +13458,7 @@
         const wrapperRect = getAbsolutePosition(wrapper);
         const offset2 = wrapperRect.x - firstHiddenItemRect.x;
         wrapper.style.left = `-${offset2}px`;
+        this.popupOpen = popupWasOpen;
       },
       onKeyUp(event) {
         if (preventKeys.includes(event.key)) {

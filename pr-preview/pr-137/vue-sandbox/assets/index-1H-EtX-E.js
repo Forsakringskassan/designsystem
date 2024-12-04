@@ -13109,11 +13109,11 @@ function baseIsEqual$1(value, other, bitmask, customizer, stack2) {
 }
 var _baseIsEqual = baseIsEqual$1;
 var baseIsEqual = _baseIsEqual;
-function isEqual(value, other) {
+function isEqual$1(value, other) {
   return baseIsEqual(value, other);
 }
-var isEqual_1 = isEqual;
-const isEqual$1 = /* @__PURE__ */ getDefaultExportFromCjs(isEqual_1);
+var isEqual_1 = isEqual$1;
+const isEqual$2 = /* @__PURE__ */ getDefaultExportFromCjs(isEqual_1);
 function itemEquals(item1, item2, compareAttribute) {
   if (!isSet(item1) || !isSet(item2)) {
     return false;
@@ -14586,7 +14586,7 @@ const ValidationDirective = {
     ValidationService.removeValidatorsFromElement(validatableElement);
   },
   updated(el, binding) {
-    if (!isEqual$1(binding.value, binding.oldValue)) {
+    if (!isEqual$2(binding.value, binding.oldValue)) {
       registerValidators(el, binding);
     }
   },
@@ -14917,7 +14917,7 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
     attrs() {
       let checked;
       if (Array.isArray(this.modelValue)) {
-        checked = this.modelValue.findIndex((it) => isEqual$1(toValue(it), toValue(this.value))) >= 0;
+        checked = this.modelValue.findIndex((it) => isEqual$2(toValue(it), toValue(this.value))) >= 0;
       } else {
         checked = this.value === this.modelValue;
       }
@@ -14951,7 +14951,7 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
     emitVModelEvent(event) {
       let newModel;
       if (Array.isArray(this.modelValue)) {
-        newModel = [...this.modelValue].filter((it) => !isEqual$1(toValue(it), toValue(this.value)));
+        newModel = [...this.modelValue].filter((it) => !isEqual$2(toValue(it), toValue(this.value)));
         if (this.modelValue.length <= newModel.length) {
           newModel.push(this.value);
         }
