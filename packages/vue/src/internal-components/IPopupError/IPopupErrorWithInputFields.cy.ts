@@ -71,8 +71,7 @@ describe("PopupError", () => {
         cy.viewport(600, 300);
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FClearingnumberTextField`", () => {
+    it("should be visible for `FClearingnumberTextField`", () => {
         const template = /* HTML */ `
             <f-clearingnumber-text-field
                 v-validation.required
@@ -87,8 +86,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FBankAccountNumberTextField`", () => {
+    it("should be visible for `FBankAccountNumberTextField`", () => {
         const template = /* HTML */ `
             <f-bank-account-number-text-field
                 v-model="model"
@@ -106,8 +104,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FCurrencyTextField`", () => {
+    it("should be visible for `FCurrencyTextField`", () => {
         const template = /* HTML */ `
             <f-currency-text-field
                 v-model="model"
@@ -122,8 +119,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FDatepickerField`", () => {
+    it("should be visible for `FDatepickerField`", () => {
         const template = /* HTML */ `
             <f-datepicker-field
                 v-model="model"
@@ -138,8 +134,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FNumericTextField`", () => {
+    it("should be visible for `FNumericTextField`", () => {
         const template = /* HTML */ `
             <f-numeric-text-field
                 v-model="model"
@@ -154,8 +149,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FOrganisationsnummerTextField`", () => {
+    it("should be visible for `FOrganisationsnummerTextField`", () => {
         const template = /* HTML */ `
             <f-organisationsnummer-text-field
                 v-model="model"
@@ -173,8 +167,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FPercentTextField`", () => {
+    it("should be visible for `FPercentTextField`", () => {
         const template = /* HTML */ `
             <f-percent-text-field
                 v-model="model"
@@ -189,8 +182,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FPersonnummerTextField`", () => {
+    it("should be visible for `FPersonnummerTextField`", () => {
         const template = /* HTML */ `
             <f-personnummer-text-field
                 v-model="model"
@@ -205,8 +197,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FPlusgiroTextField`", () => {
+    it("should be visible for `FPlusgiroTextField`", () => {
         const template = /* HTML */ `
             <f-plusgiro-text-field
                 v-model="model"
@@ -221,8 +212,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FPostalCodeTextField`", () => {
+    it("should be visible for `FPostalCodeTextField`", () => {
         const template = /* HTML */ `
             <f-postal-code-text-field
                 v-model="model"
@@ -237,8 +227,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should only show error-icon for `FSelectField`", () => {
+    it("should only show error-icon for `FSelectField`", () => {
         const template = /* HTML */ `
             <f-select-field id="input" v-model="model" v-validation.required>
                 <template #label> Etikett </template>
@@ -254,8 +243,7 @@ describe("PopupError", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible for `FTextField`", () => {
+    it("should be visible for `FTextField`", () => {
         const template = /* HTML */ `
             <f-text-field v-model="model" v-validation.required id="input">
             </f-text-field>

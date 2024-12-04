@@ -214,8 +214,7 @@ describe("FRadioField", () => {
         radioGroup.radioButton(radioField.no).details().should("not.exist");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should always show details regardless of whether yes or no is checked when show-details is always", () => {
+    it("should always show details regardless of whether yes or no is checked when show-details is always", () => {
         const template = /* HTML */ `
             <f-fieldset name="radio-name" border show-details="always">
                 <template #label> Label text </template>
@@ -246,8 +245,7 @@ describe("FRadioField", () => {
         cy.get("fieldset").toMatchScreenshot({ baseDelay: 500 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("details should be visible only when item is selected when show-details is when-selected", () => {
+    it("details should be visible only when item is selected when show-details is when-selected", () => {
         const template = /* HTML */ `
             <f-fieldset name="radio-name" border show-details="when-selected">
                 <template #label> Label text </template>
@@ -282,8 +280,7 @@ describe("FRadioField", () => {
         cy.get("fieldset").toMatchScreenshot({ baseDelay: 500 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    describe.skip("density", () => {
+    describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>

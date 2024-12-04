@@ -43,8 +43,7 @@ describe("pristine", () => {
         cy.mount(FDatepickerField);
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should have approved design", () => {
+    it("should have approved design", () => {
         shouldMatchScreenshot();
     });
 
@@ -70,8 +69,7 @@ describe("enter a valid date and leave textfield", () => {
         datepickerField.input().blur();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should have approved design", () => {
+    it("should have approved design", () => {
         shouldMatchScreenshot();
     });
 
@@ -95,8 +93,7 @@ describe("enter an invalid date and leave textfield", () => {
         datepickerField.input().blur();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should have approved design", () => {
+    it("should have approved design", () => {
         shouldMatchScreenshot();
     });
 
@@ -240,8 +237,7 @@ describe("open calendar in desktop", () => {
         datepickerField.toggleCalendarButton().click();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- FDatepickerField is closed on resize and Cypress triggers a resize (SFKUI-6642) */
-    it.skip("should not show calendar inline", () => {
+    it("should not show calendar inline", () => {
         shouldMatchScreenshot();
     });
 });
@@ -388,8 +384,7 @@ describe("open calendar and press ESC", () => {
 });
 
 describe("open calendar with width 320px", () => {
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should not show week numbers", () => {
+    it("should not show week numbers", () => {
         cy.viewport(639, 639);
 
         const template = /* HTML */ `
@@ -576,8 +571,7 @@ describe("valid date", () => {
             datepickerField.toggleCalendarButton().click();
         });
 
-        /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-        it.skip("should have approved design", () => {
+        it("should have approved design", () => {
             shouldMatchScreenshot();
         });
 
@@ -627,8 +621,7 @@ describe("today's date", () => {
             datepickerField.toggleCalendarButton().click();
         });
 
-        /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-        it.skip("should have approved design", () => {
+        it("should have approved design", () => {
             shouldMatchScreenshot();
         });
 
@@ -737,8 +730,7 @@ describe("open calendar in desktop with always inline", () => {
         datepickerField.toggleCalendarButton().click();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should show calendar inline", () => {
+    it("should show calendar inline", () => {
         shouldMatchScreenshot();
     });
 });
@@ -979,8 +971,7 @@ describe("maxdate within month", () => {
     });
 
     describe("open calendar", () => {
-        /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-        it.skip("should have approved design", () => {
+        it("should have approved design", () => {
             datepickerField.toggleCalendarButton().click();
             shouldMatchScreenshot();
         });
@@ -1079,8 +1070,7 @@ describe("min- and maxdate within month", () => {
     });
 
     describe("open calendar", () => {
-        /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-        it.skip("should have approved design", () => {
+        it("should have approved design", () => {
             datepickerField.toggleCalendarButton().click();
             shouldMatchScreenshot();
         });
@@ -1112,8 +1102,7 @@ describe("popup-target", () => {
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("density", () => {
+describe("density", () => {
     const DensityComponent = defineComponent({
         template: /* HTML */ `
             <density-wrapper>

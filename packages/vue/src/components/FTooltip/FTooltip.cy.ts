@@ -28,8 +28,7 @@ describe("FTooltip", () => {
         tooltip.closeButton().click();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should appear visually correct with label and tooltip", () => {
+    it("should appear visually correct with label and tooltip", () => {
         const TestComponent = defineComponent({
             components: { FTooltip },
             template: /* HTML */ `
@@ -67,8 +66,7 @@ describe("FTooltip", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should appear visually correct with heading and tooltip", () => {
+    it("should appear visually correct with heading and tooltip", () => {
         const TestComponent = defineComponent({
             components: { FTooltip },
             template: /* HTML */ `
@@ -106,8 +104,7 @@ describe("FTooltip", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should appear visually correct with input field and tooltip", () => {
+    it("should appear visually correct with input field and tooltip", () => {
         const TestComponent = defineComponent({
             components: { FTextField, FTooltip },
             template: /* HTML */ `
@@ -143,8 +140,7 @@ describe("FTooltip", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    describe.skip("density", () => {
+    describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>

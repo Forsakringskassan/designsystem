@@ -131,15 +131,13 @@ const PersonnummerComponent = defineComponent({
     },
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-it.skip(`should contain input field with label`, () => {
+it(`should contain input field with label`, () => {
     cy.viewport(sizeWrapperWidth, sizeWrapperHeight);
     cy.mount(SizesComponent);
     cy.toMatchScreenshot();
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-it.skip(`should display icons before and after input field`, () => {
+it(`should display icons before and after input field`, () => {
     cy.viewport(sizeWrapperWidth, sizeWrapperHeight);
     cy.mount(SizesButtonsComponent);
     cy.toMatchScreenshot();
@@ -229,8 +227,7 @@ describe("FTextFieldGrid example", () => {
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("Append inner content", () => {
+describe("Append inner content", () => {
     it(`should show content`, () => {
         cy.mount(AppendInnerContentComponent);
         cy.get(".text-field__append-inner").should("contain.text", "kr");
@@ -247,8 +244,7 @@ describe.skip("Append inner content", () => {
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("density", () => {
+describe("density", () => {
     it(`should be densified`, () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `

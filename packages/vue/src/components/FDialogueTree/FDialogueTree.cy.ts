@@ -12,8 +12,7 @@ describe("Dialogue Tree", () => {
             cy.viewport(1024, 600);
         });
 
-        /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-        it.skip("should have approved design", () => {
+        it("should have approved design", () => {
             const dialogueTree = mount();
             dialogueTree.el().toMatchScreenshot();
         });
