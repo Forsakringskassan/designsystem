@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 5.41.0 (2024-12-04)
+
+
+### Features
+
+* **@fkui/logic, @fkui/vue:** add allowList validator (refs SFKUI-5885) 405bc54
+
+
+### Dependency upgrades
+
+* **deps:** update dependency i18next to v24.0.2 ([#132](undefined/Forsakringskassan/designsystem/issues/132)) 313fa70
+
+
+### Bug Fixes
+
+* **@fkui/vue:** fix infinite loop when rendering fieldset with checkboxes (fixes SFKUI-6863) 6cd4c8a
+
 ## 5.40.0 (2024-11-28)
 
 

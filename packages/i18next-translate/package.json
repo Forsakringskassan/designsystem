@@ -1,6 +1,6 @@
 {
   "name": "@fkui/i18next-translate",
-  "version": "5.40.0",
+  "version": "5.41.0",
   "description": "i18next translation provider for FKUI TranslationService",
   "keywords": [
     "fkui",
