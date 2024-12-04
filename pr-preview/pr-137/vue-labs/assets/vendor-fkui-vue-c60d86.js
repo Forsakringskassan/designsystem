@@ -7641,7 +7641,6 @@
           ref_key: "wrapper",
           ref: wrapper
         }, _ctx.$attrs, {
-          role: "presentation",
           class: "popup__wrapper",
           onKeyup: (0, import_vue.withKeys)((0, import_vue.withModifiers)(onKeyEsc, ["stop"]), ["esc"]),
           onClick: _cache[0] || (_cache[0] = (0, import_vue.withModifiers)(() => {
