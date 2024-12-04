@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -7634,22 +7634,22 @@
           key: 0,
           to: teleportTarget.value,
           disabled: teleportDisabled
+        }, [(0, import_vue.createElementVNode)("div", {
+          ref: "popup",
+          class: (0, import_vue.normalizeClass)(popupClasses)
         }, [(0, import_vue.createElementVNode)("div", (0, import_vue.mergeProps)({
-          ref: "popup"
-        }, _ctx.$attrs, {
-          class: popupClasses
-        }), [(0, import_vue.createElementVNode)("div", {
           ref_key: "wrapper",
-          ref: wrapper,
+          ref: wrapper
+        }, _ctx.$attrs, {
           role: "presentation",
           class: "popup__wrapper",
           onKeyup: (0, import_vue.withKeys)((0, import_vue.withModifiers)(onKeyEsc, ["stop"]), ["esc"]),
           onClick: _cache[0] || (_cache[0] = (0, import_vue.withModifiers)(() => {
           }, ["stop"]))
-        }, [(0, import_vue.createElementVNode)("div", {
+        }), [(0, import_vue.createElementVNode)("div", {
           ref_key: "content",
           ref: content
-        }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)], 40, _hoisted_1$C)], 16)], 8, ["to"])) : (0, import_vue.createCommentVNode)("", true);
+        }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)], 16, _hoisted_1$C)], 512)], 8, ["to"])) : (0, import_vue.createCommentVNode)("", true);
       };
     }
   });
