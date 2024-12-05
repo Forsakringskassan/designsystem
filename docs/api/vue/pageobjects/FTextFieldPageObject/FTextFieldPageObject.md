@@ -34,4 +34,4 @@ awesomeInput.input.blur();
 
 ## See also
 
--   {@link inmatningsfalt}
+-   {@link FTextField}

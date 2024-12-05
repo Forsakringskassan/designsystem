@@ -6,7 +6,7 @@ layout: content-with-menu
 
 FTextFieldPageObject: input() method
 
-The `input()` method returns a Cypress Chainable representing the `<input>` element of a {@link inmatningsfalt} component.
+The `input()` method returns a Cypress Chainable representing the `<input>` element of a {@link FTextField} component.
 
 ## Syntax
 
@@ -37,4 +37,4 @@ awesomeInput.input.blur();
 
 ## See also
 
--   {@link inmatningsfalt}
+-   {@link FTextField}

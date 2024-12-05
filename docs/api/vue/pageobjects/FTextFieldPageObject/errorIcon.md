@@ -6,7 +6,7 @@ layout: content-with-menu
 
 FTextFieldPageObject: errorIcon() method
 
-The `errorIcon()` method returns a Cypress Chainable representing the error icon element of a {@link inmatningsfalt} component.
+The `errorIcon()` method returns a Cypress Chainable representing the error icon element of a {@link FTextField} component.
 
 > **Note**: Deprecated: applications should not use `errorIcon()` in tests. If you want to test if the input field has a validation error use `nonExistingMethod()` to get the error message from the label.
 
@@ -27,7 +27,12 @@ None
 ## Examples
 
 ```html
-<f-text-field v-test="'awesome-input'" v-validation.minLength="{minLength: { length: 10 }}"> My Awesome Input </f-text-field>
+<f-text-field
+    v-test="'awesome-input'"
+    v-validation.minLength="{minLength: { length: 10 }}"
+>
+    My Awesome Input
+</f-text-field>
 ```
 
 ```ts
@@ -35,7 +40,7 @@ const awesomeInput = FTextFieldPageObject("[data-test=awesome-input]");
 
 /* input an invalid value */
 awesomeInput.input.focus();
-awesomeInput.input.enter('foo');
+awesomeInput.input.enter("foo");
 
 /* leave input to trigger validation */
 awesomeInput.input.blur();
@@ -46,4 +51,4 @@ awesomeInput.errorIcon().should("exist");
 
 ## See also
 
--   {@link inmatningsfalt}
+-   {@link FTextField}
