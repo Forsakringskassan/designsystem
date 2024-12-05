@@ -27,7 +27,7 @@ const TestComponent = defineComponent({
 describe("density", () => {
     const DensityComponent = defineComponent({
         template: /* HTML */ `
-            <density-wrapper>
+            <density-wrapper id="wrapper">
             <test-component expanded></test-component
             </density-wrapper>
         `,
@@ -40,6 +40,7 @@ describe("density", () => {
     it(`should be densified`, () => {
         cy.viewport(densityWrapperWidth, densityWrapperHeight);
         cy.mount(DensityComponent);
+        cy.get("#wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 });
@@ -57,6 +58,7 @@ it("should match visual regression when collapsed", () => {
             TestComponent,
         },
     });
+    cy.get("#wrapper").should("be.visible");
     cy.get("#wrapper").toMatchScreenshot();
 });
 
@@ -73,5 +75,6 @@ it("should match visual regression when expanded", () => {
             TestComponent,
         },
     });
+    cy.get("#wrapper").should("be.visible");
     cy.get("#wrapper").toMatchScreenshot();
 });

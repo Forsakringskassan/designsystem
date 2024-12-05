@@ -47,6 +47,7 @@ describe("Flist screenshot", () => {
             </f-list>
         `;
         cy.mount(createComponent(template));
+        cy.get(".list").should("be.visible");
         cy.toMatchScreenshot();
     });
 

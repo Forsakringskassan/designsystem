@@ -11,6 +11,7 @@ it("should match visual regression (desktop)", () => {
     cy.window().then((window) => {
         window.dispatchEvent(new Event("offline"));
     });
+    cy.get(".offline__wrapper").should("be.visible");
     cy.toMatchScreenshot();
 });
 
@@ -20,5 +21,6 @@ it("should match visual regression (mobile)", () => {
     cy.window().then((window) => {
         window.dispatchEvent(new Event("offline"));
     });
+    cy.get(".offline__wrapper").should("be.visible");
     cy.toMatchScreenshot();
 });

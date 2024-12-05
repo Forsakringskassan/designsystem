@@ -2,3 +2,14 @@ $asset-path: "@fkui/design";
 
 @import "@fkui/design/src/fonts";
 @import "@fkui/design/src/fkui";
+body {
+    font-optical-sizing: none;
+    font-variation-settings: normal;
+    --f-font-family: "Inter";
+}
+@font-face {
+    font-family: "Inter";
+    font-optical-sizing: none;
+    font-variation-settings: normal;
+    src: URL("./Inter-VariableFont_opsz,wght.ttf") format("truetype");
+}

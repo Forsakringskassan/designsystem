@@ -1,3 +1,4 @@
+import EventEmitter from "node:events";
 import { type ConfigData } from "html-validate";
 import { type Manifest, Generator } from "@forsakringskassan/docs-generator";
 import { defineConfig } from "cypress";
@@ -9,6 +10,44 @@ import htmlvalidate, {
 import exclude from "./packages/vue/htmlvalidate/cypress";
 
 import config from "./docs.config";
+
+class EventForwarder {
+    private emitter: EventEmitter;
+    private task: Cypress.Tasks;
+    public on: Cypress.PluginEvents;
+
+    public constructor() {
+        this.emitter = new EventEmitter();
+        this.task = {};
+        this.on = (action, arg) => {
+            if (action === "task") {
+                Object.assign(this.task, arg);
+            } else {
+                this.emitter.on(action, arg as () => void);
+            }
+        };
+    }
+
+    public forward(on: Cypress.PluginEvents): void {
+        for (const event of this.emitter.eventNames()) {
+            /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- because we cannot extract the action names as a union of strings */
+            on(event as any, async (...args: unknown[]) => {
+                if (event === "before:browser:launch") {
+                    const browser = args[0];
+                    let launchOptions = args[1];
+                    for (const listener of this.emitter.listeners(event)) {
+                        launchOptions = await listener(browser, launchOptions);
+                    }
+                } else {
+                    for (const listener of this.emitter.listeners(event)) {
+                        await listener(...args);
+                    }
+                }
+            });
+        }
+        on("task", this.task);
+    }
+}
 
 async function getDocsPagesImpl(): Promise<Manifest["pages"]> {
     const docs = new Generator(config);
@@ -101,9 +140,36 @@ export default defineConfig({
         },
     },
     component: {
-        setupNodeEvents(on, config) {
-            getToMatchScreenshotsPlugin(on, config);
-            return install(on, config);
+        setupNodeEvents(cypressOn, config) {
+            const eventForwarder = new EventForwarder();
+            const on = eventForwarder.on;
+            try {
+                getToMatchScreenshotsPlugin(on, config);
+                on("before:browser:launch", (browser, launchOptions) => {
+                    if (browser.name === "chrome") {
+                        console.log("Force device scale 1!");
+                        launchOptions.args.push("--window-size=1280,720");
+                        launchOptions.args.push(
+                            "--force-device-scale-factor=1",
+                        );
+                        launchOptions.args.push(
+                            "--cast-initial-screen-width=1280",
+                        );
+                        launchOptions.args.push(
+                            "--cast-initial-screen-height=720",
+                        );
+                        launchOptions.args.push("--disable-font-antialiasing");
+                        launchOptions.args.push("--font-render-hinting");
+                        console.log("Browser", browser);
+                        console.log("launchOptions", launchOptions);
+                    }
+                    return launchOptions;
+                });
+            } finally {
+                eventForwarder.forward(cypressOn);
+            }
+
+            return install(cypressOn, config);
         },
         devServer: {
             framework: "vue",

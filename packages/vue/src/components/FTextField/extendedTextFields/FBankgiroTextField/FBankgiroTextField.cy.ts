@@ -23,6 +23,7 @@ describe("FBankgiroTextField", () => {
             `<f-bankgiro-text-field v-model="model"></f-bankgiro-text-field>`,
         );
         cy.viewport(400, 200);
+        cy.get(".text-field").should("be.visible");
         cy.toMatchScreenshot();
     });
 

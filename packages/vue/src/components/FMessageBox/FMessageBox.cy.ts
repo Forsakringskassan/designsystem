@@ -41,6 +41,7 @@ describe("default layout", () => {
     it(`should be densified`, () => {
         cy.viewport(densityWrapperWidth, densityWrapperHeight);
         cy.mount(DensityComponent);
+        cy.get(".message-box").should("be.visible");
         cy.toMatchScreenshot();
     });
 });
@@ -57,6 +58,7 @@ describe("short layout", () => {
     it(`should be densified`, () => {
         cy.viewport(densityWrapperWidth, densityWrapperHeight);
         cy.mount(DensityComponent);
+        cy.get(".message-box").should("be.visible");
         cy.toMatchScreenshot();
     });
 });
@@ -83,5 +85,6 @@ it("should have approved design", () => {
     });
 
     cy.mount(ScreenshotComponent);
+    cy.get(".message-box").should("be.visible");
     cy.toMatchScreenshot();
 });
