@@ -671,7 +671,67 @@ Skriv så här i kod när användaren ska fylla i personnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användarenn när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.
+Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.
+
+### Personnummer - inte samma `personnummerNotSame`
+
+Validatorn kontrollerar att det ifyllda personnumret inte är samma som personnumret i annat fält.
+
+Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`). Validatorn för format ska stå före validatorn för `personnummerNotSame`.
+
+```import nomarkup
+PersonnummerNotSameExample.vue
+```
+
+Skriv så här i kod för att jämföra med ett inmatningsfält med `v-model="reference"`:
+
+```diff
+ <f-text-field
++    v-validation.personnummerFormat.personnummerNotSame="{ personnummerNotSame: { otherField: reference } }"
+ ></f-text-field>
+```
+
+Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.
+
+### Personnummer - äldre `personnummerOlder`
+
+Validatorn kontrollerar att det ifyllda personnumret är äldre än eller är i samma ålder som personnumret i annat fält.
+
+Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`). Validatorn för format ska stå före validatorn för `personnummerOlder`.
+
+```import nomarkup
+PersonnummerOlderExample.vue
+```
+
+Skriv så här i kod för att jämföra med ett inmatningsfält med `v-model="reference"`:
+
+```diff
+ <f-text-field
++    v-validation.personnummerFormat.personnummerOlder="{ personnummerOlder: { otherField: reference } }"
+ ></f-text-field>
+```
+
+Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.
+
+### Personnummer - yngre `personnummerYounger`
+
+Validatorn kontrollerar att det ifyllda personnumret är yngre än eller är i samma ålder som personnumret i annat fält.
+
+Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`). Validatorn för format ska stå före validatorn för `personnummerYounger`.
+
+```import nomarkup
+PersonnummerYoungerExample.vue
+```
+
+Skriv så här i kod för att jämföra med ett inmatningsfält med `v-model="reference"`:
+
+```diff
+ <f-text-field
++    v-validation.personnummerFormat.personnummerYounger="{ personnummerYounger: { otherField: reference } }"
+ ></f-text-field>
+```
+
+Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.
 
 ## Adress och kontaktuppgifter
 
