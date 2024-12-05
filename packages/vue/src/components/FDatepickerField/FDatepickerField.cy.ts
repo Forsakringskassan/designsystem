@@ -33,6 +33,7 @@ function setViewport(viewPort: { height: number; width: number }): void {
 }
 
 function shouldMatchScreenshot(): void {
+    cy.get(".datepicker-field__popup").should("be.visible");
     cy.toMatchScreenshot({ baseDelay });
 }
 
@@ -44,7 +45,8 @@ describe("pristine", () => {
     });
 
     it("should have approved design", () => {
-        shouldMatchScreenshot();
+        cy.get(".datepicker-field__button").should("be.visible");
+        cy.toMatchScreenshot({ baseDelay });
     });
 
     it("should set calendar button sr-text", () => {
@@ -70,7 +72,8 @@ describe("enter a valid date and leave textfield", () => {
     });
 
     it("should have approved design", () => {
-        shouldMatchScreenshot();
+        cy.get(".datepicker-field__button").should("be.visible");
+        cy.toMatchScreenshot({ baseDelay });
     });
 
     it("should show no error message", () => {
@@ -94,7 +97,8 @@ describe("enter an invalid date and leave textfield", () => {
     });
 
     it("should have approved design", () => {
-        shouldMatchScreenshot();
+        cy.get(".datepicker-field__button").should("be.visible");
+        cy.toMatchScreenshot({ baseDelay });
     });
 
     it("should show error message", () => {
@@ -1123,6 +1127,7 @@ describe("density", () => {
     it(`should be densified`, () => {
         cy.viewport(densityWrapperWidth, densityWrapperHeight);
         cy.mount(DensityComponent);
-        cy.toMatchScreenshot();
+        cy.get(".datepicker-field__button").should("be.visible");
+        cy.toMatchScreenshot({ baseDelay });
     });
 });

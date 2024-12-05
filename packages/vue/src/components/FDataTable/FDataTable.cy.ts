@@ -43,6 +43,7 @@ describe("density", () => {
     it(`should be densified`, () => {
         cy.viewport(densityWrapperWidth, densityWrapperHeight);
         cy.mount(DensityComponent);
+        cy.get(".table").should("be.visible");
         cy.toMatchScreenshot();
     });
 });
