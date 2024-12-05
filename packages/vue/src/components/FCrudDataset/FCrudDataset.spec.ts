@@ -175,7 +175,7 @@ function createWrapper(
     return mount(newComponent, {
         global: {
             plugins: [ValidationPlugin],
-            stubs: ["FIcon", ...stubs],
+            stubs: ["FIcon", "teleport", ...stubs],
         },
         props,
         attachTo: createPlaceholderInDocument(),

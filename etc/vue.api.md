@@ -2499,6 +2499,7 @@ validator(value: string): boolean;
 modalClass(): string[];
 containerClasses(): string[];
 hasHeaderSlot(): boolean;
+teleportTarget(): string | Element;
 }, {
 onClose(): void;
 openModal(): void;
@@ -3244,6 +3245,7 @@ validator(value: string): boolean;
 modalClass(): string[];
 containerClasses(): string[];
 hasHeaderSlot(): boolean;
+teleportTarget(): string | Element;
 }, {
 onClose(): void;
 openModal(): void;
@@ -3764,6 +3766,7 @@ validator(value: string): boolean;
 modalClass(): string[];
 containerClasses(): string[];
 hasHeaderSlot(): boolean;
+teleportTarget(): string | Element;
 }, {
 onClose(): void;
 openModal(): void;
@@ -4574,9 +4577,9 @@ default: boolean;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
+disabled: boolean;
 modelValue: string;
 alwaysInline: boolean;
-disabled: boolean;
 labelWidth: string;
 inputWidth: string;
 initialMonth: FDate | undefined;
@@ -7546,6 +7549,7 @@ validator(value: string): boolean;
 modalClass(): string[];
 containerClasses(): string[];
 hasHeaderSlot(): boolean;
+teleportTarget(): string | Element;
 }, {
 onClose(): void;
 openModal(): void;
@@ -9541,6 +9545,7 @@ validator(value: string): boolean;
 modalClass(): string[];
 containerClasses(): string[];
 hasHeaderSlot(): boolean;
+teleportTarget(): string | Element;
 }, {
 onClose(): void;
 openModal(): void;
@@ -15461,8 +15466,8 @@ onInput?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
-modelValue: string;
 disabled: boolean;
+modelValue: string;
 maxlength: number;
 softLimit: number;
 charactersLeftWarning: string;

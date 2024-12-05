@@ -25,6 +25,9 @@ describe("events", () => {
             props: {
                 isOpen: true,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
         const closeElement = wrapper.get(".close-button");
 
@@ -36,6 +39,9 @@ describe("events", () => {
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: true,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
         const closeElement = wrapper.get(".modal__content");
@@ -51,6 +57,9 @@ describe("props", () => {
             props: {
                 isOpen: true,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const modal = wrapper.get(".modal");
@@ -61,6 +70,9 @@ describe("props", () => {
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: false,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
@@ -76,6 +88,9 @@ describe("props", () => {
                 props: {
                     isOpen: true,
                 },
+                global: {
+                    stubs: ["teleport"],
+                },
             });
             await wrapper.vm.$nextTick();
             const element = wrapper.get(".modal__dialog-container");
@@ -89,6 +104,9 @@ describe("props", () => {
                     fullscreen: true,
                     isOpen: true,
                 },
+                global: {
+                    stubs: ["teleport"],
+                },
             });
             await wrapper.vm.$nextTick();
             const element = wrapper.get(".modal__dialog-container");
@@ -101,6 +119,9 @@ describe("props", () => {
                 props: {
                     fullscreen: false,
                     isOpen: true,
+                },
+                global: {
+                    stubs: ["teleport"],
                 },
             });
             await wrapper.vm.$nextTick();
@@ -122,6 +143,9 @@ describe("props", () => {
                 props: {
                     isOpen: true,
                     size,
+                },
+                global: {
+                    stubs: ["teleport"],
                 },
             });
             await wrapper.vm.$nextTick();
@@ -153,6 +177,9 @@ describe("accessibility", () => {
                 header: "my header",
                 content: { template: interactiveContent },
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
         await flushPromises();
         const headerElement = wrapper.get(".modal__title").element;
@@ -167,6 +194,9 @@ describe("accessibility", () => {
                 isOpen: true,
             },
             slots: { content: { template: interactiveContent } },
+            global: {
+                stubs: ["teleport"],
+            },
         });
         await flushPromises();
         const interactiveElement = wrapper.get("#interactive").element;
@@ -181,6 +211,9 @@ describe("accessibility", () => {
                 isOpen: true,
             },
             slots: { content: "my content" },
+            global: {
+                stubs: ["teleport"],
+            },
         });
         await flushPromises();
         const contentElement = wrapper.get(".modal__content").element;
@@ -215,6 +248,9 @@ describe("accessibility", () => {
         });
         const wrapper = mount(TestComponent, {
             attachTo: createPlaceholderInDocument(),
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const toggleButton =
@@ -242,6 +278,9 @@ describe("scrollbars", () => {
                 isOpen: true,
             },
             attachTo: createPlaceholderInDocument(),
+            global: {
+                stubs: ["teleport"],
+            },
         });
         await wrapper.vm.$nextTick();
         // css class modal__open removes scrollbars
@@ -255,6 +294,9 @@ describe("scrollbars", () => {
                 isOpen: false,
             },
             attachTo: createPlaceholderInDocument(),
+            global: {
+                stubs: ["teleport"],
+            },
         });
         await wrapper.vm.$nextTick();
         const documentElement = document.documentElement;
@@ -267,6 +309,9 @@ describe("scrollbars", () => {
                 isOpen: true,
             },
             attachTo: createPlaceholderInDocument(),
+            global: {
+                stubs: ["teleport"],
+            },
         });
         await wrapper.vm.$nextTick();
 

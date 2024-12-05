@@ -8,6 +8,9 @@ describe("events", () => {
             props: {
                 isOpen: true,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
         const closeElement = wrapper.get(".close-button");
 
@@ -19,6 +22,9 @@ describe("events", () => {
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
         const dismissElement = wrapper.get(".button--primary");
@@ -41,6 +47,9 @@ describe("events", () => {
                 ],
             },
             emits: ["close", "unsure"],
+            global: {
+                stubs: ["teleport"],
+            },
         });
         const closeElement = wrapper.get(".button--secondary");
 
@@ -56,6 +65,9 @@ describe("button order", () => {
             props: {
                 isOpen: true,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
         const buttonsGroup = wrapper.get(".modal__footer");
         const primary = buttonsGroup.findAll("button")[0];
@@ -67,6 +79,9 @@ describe("button order", () => {
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
         const buttonsGroup = wrapper.get(".modal__footer");
@@ -82,6 +97,9 @@ describe("props", () => {
                 isOpen: true,
                 heading: "foo heading",
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const heading = wrapper.find("h1");
@@ -93,6 +111,9 @@ describe("props", () => {
             props: {
                 isOpen: true,
                 content: "bar content",
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
@@ -112,6 +133,9 @@ describe("props", () => {
                     },
                 ],
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const button = wrapper.get(".button--secondary");
@@ -124,6 +148,9 @@ describe("props", () => {
             props: {
                 isOpen: true,
                 buttons: [{ label: "Lorem ipsum", type: "secondary" }],
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
@@ -141,6 +168,9 @@ describe("slots", () => {
             slots: {
                 heading: "foo heading",
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const heading = wrapper.find("h1");
@@ -154,6 +184,9 @@ describe("slots", () => {
             },
             slots: {
                 heading: "<pre>bar content</pre>",
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
@@ -170,6 +203,9 @@ describe("slots", () => {
             slots: {
                 heading: "slot heading",
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         expect(wrapper.find(".modal__header").text()).toBe("slot heading");
@@ -183,6 +219,9 @@ describe("slots", () => {
             },
             slots: {
                 content: "<pre>slot content</pre>",
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 

@@ -59,6 +59,7 @@ function createWrapper(
         attachTo: createPlaceholderInDocument(),
         global: {
             plugins: [ValidationPlugin],
+            stubs: ["teleport"],
         },
     });
 }
@@ -80,6 +81,9 @@ describe("events", () => {
             props: {
                 isOpen: true,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
         const closeElement = wrapper.get(".close-button");
         await closeElement.trigger("click");
@@ -92,6 +96,9 @@ describe("events", () => {
             props: {
                 isOpen: true,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
         const closeElement = wrapper.get(".button--secondary");
         await closeElement.trigger("click");
@@ -103,6 +110,9 @@ describe("events", () => {
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
@@ -117,6 +127,9 @@ describe("events", () => {
             props: {
                 isOpen: true,
                 beforeSubmit: beforeSubmit,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
         expect(beforeSubmit).toHaveBeenCalledTimes(0);
@@ -135,6 +148,9 @@ describe("events", () => {
                 isOpen: true,
                 beforeSubmit: onBeforeSubmit,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         await doTriggerSubmit(wrapper);
@@ -150,6 +166,9 @@ describe("events", () => {
             props: {
                 isOpen: true,
                 beforeSubmit: onBeforeSubmit,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
@@ -167,6 +186,9 @@ describe("events", () => {
                 isOpen: true,
                 beforeSubmit: onBeforeSubmit,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         await doTriggerSubmit(wrapper);
@@ -178,6 +200,9 @@ describe("events", () => {
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
@@ -223,6 +248,9 @@ describe("deprecated slots", () => {
                 isOpen: true,
             },
             slots: { "cancel-button-text": cancelButtonText },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const button = wrapper.find('[data-test="cancel-button"]');
@@ -236,6 +264,9 @@ describe("deprecated slots", () => {
                 isOpen: true,
             },
             slots: { "submit-button-text": submitButtonText },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const button = wrapper.find('[data-test="submit-button"]');
@@ -253,6 +284,9 @@ describe("slots", () => {
             slots: {
                 header: headerText,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const header = wrapper.find("h1");
@@ -268,6 +302,9 @@ describe("slots", () => {
             slots: {
                 header: /* HTML */ ` <pre>${contentText}</pre> `,
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const content = wrapper.find("pre");
@@ -282,6 +319,9 @@ describe("slots", () => {
             },
             slots: {
                 default: `${contentText}`,
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
@@ -320,6 +360,9 @@ describe("props", () => {
                     props: {
                         size,
                     },
+                    global: {
+                        stubs: ["teleport"],
+                    },
                 });
                 const container = wrapper.get(".modal__dialog-container");
                 expect(container.classes()).toContain(className);
@@ -334,6 +377,9 @@ describe("props", () => {
                 ariaCloseText: "CLOSE_TEXT",
             },
             slots: {},
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const fmodal = wrapper.getComponent(FModal);
@@ -352,6 +398,9 @@ describe("props", () => {
                     },
                 ],
             },
+            global: {
+                stubs: ["teleport"],
+            },
         });
 
         const button = wrapper.get(".button--secondary");
@@ -364,6 +413,9 @@ describe("props", () => {
             props: {
                 isOpen: true,
                 buttons: [{ label: "Lorem ipsum", type: "secondary" }],
+            },
+            global: {
+                stubs: ["teleport"],
             },
         });
 
