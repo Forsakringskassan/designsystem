@@ -63,6 +63,66 @@ FTextFieldGrid.vue
 vue:FTextField
 :::
 
+## Pageobjekt
+
+{@link FTextFieldPageObject}
+
+### `FTextFieldPageObject`
+
+| Name                            | Type                                     | Description                             |
+| ------------------------------- | ---------------------------------------- | --------------------------------------- |
+| `constructor(selector: string)` | -                                        | `selector` - the root of the text field |
+| `selector`                      | `string`                                 | -                                       |
+| `el`                            | `Cypress.Chainable<JQuery<HTMLElement>>` | -                                       |
+| `label`                         | `FLabelPageObject`                       | -                                       |
+| `input()                        | `Cypress.Chainable<JQuery<HTMLElement>>` | Referens till inmatningsfältet          |
+
+## Pageobjekt
+
+### `FTextFieldPageObject(selector: string)`
+
+- `selector` - the root of the textfield.
+
+### `FTextFieldPageObject.selector: string`
+
+Selector till root elementet.
+
+### `FTextFieldPageObject.el: Cypress.Chainable<JQuery<HTMLElement>>`
+
+Elementet som valts ut.
+
+### `FTextFieldPageObject.label: FLabelPageObject`
+
+Inmatningsfältets etikett.
+
+### `FTextFieldPageObject.input(): Cypress.Chainable<JQuery<HTMLElement>>`
+
+Referens till inmatningsfältet.
+
+## Pageobjekt
+
+```ts
+class FTextFieldPageObject {
+    public selector: string;
+    
+    public el: () => DefaultCypressChainable;
+
+    public label: FLabelPageObject;
+
+    public tooltip: FTooltipPageObject;
+
+    /**
+     * @param selector - the root of the text field, usually `<div class="text-field">...</div>`.
+     */
+    public constructor(selector: string);
+
+    public input(): DefaultCypressChainable;
+
+    public errorIcon(): DefaultCypressChainable;
+}
+```
+
+
 ## Relaterat
 
 {@link FLabel Etikett}
