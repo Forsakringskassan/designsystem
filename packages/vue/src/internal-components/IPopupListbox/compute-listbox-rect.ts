@@ -6,6 +6,7 @@ import { type Rect } from "../../utils";
 export interface ListboxOptions {
     readonly itemHeight: number;
     readonly numOfItems: number;
+    verticalSpacing: number;
 }
 
 /**
@@ -33,12 +34,20 @@ interface DocumentElementLike {
 
 /**
  * Calculates the number of whole items which fits into this height. The result
- * is clamped to a maximum of 6 items.
+ * is clamped to a maximum of 7 items.
  *
  * @internal
  */
-export function numItems(itemHeight: number, availableHeight: number): number {
-    return Math.min(Math.floor(availableHeight / itemHeight), 6);
+export function numItems(
+    itemHeight: number,
+    availableHeight: number,
+    verticalSpacing: number,
+): number {
+    const itemsFit = Math.floor(
+        (availableHeight - verticalSpacing) / itemHeight,
+    );
+
+    return Math.min(itemsFit, 7);
 }
 
 /**
@@ -49,6 +58,7 @@ export function tryBelow(
     numOfItems: number,
     anchor: Pick<Rect, "x" | "y" | "width" | "height">,
     viewport: Pick<Rect, "y" | "height">,
+    verticalSpacing: number,
 ): ListboxRect | undefined {
     /*
      *    Viewport
@@ -63,9 +73,9 @@ export function tryBelow(
     const p1 = viewport.y + viewport.height;
     const p2 = anchor.y + anchor.height;
     const availableHeight = p1 - p2;
-    const itemsFit = numItems(itemHeight, availableHeight);
+    const itemsFit = numItems(itemHeight, availableHeight, verticalSpacing);
 
-    if (itemsFit < 2) {
+    if (itemsFit < 3) {
         return undefined;
     }
 
@@ -87,6 +97,7 @@ export function tryAbove(
     numOfItems: number,
     anchor: Pick<Rect, "x" | "y" | "width">,
     viewport: Pick<Rect, "y">,
+    verticalSpacing: number,
 ): ListboxRect | undefined {
     /*
      *    Viewport
@@ -101,9 +112,9 @@ export function tryAbove(
     const p1 = viewport.y;
     const p2 = anchor.y;
     const availableHeight = p2 - p1;
-    const itemsFit = numItems(itemHeight, availableHeight);
+    const itemsFit = numItems(itemHeight, availableHeight, verticalSpacing);
 
-    if (itemsFit < 2) {
+    if (itemsFit < 3) {
         return undefined;
     }
 
@@ -111,7 +122,7 @@ export function tryAbove(
 
     return {
         left: anchor.x,
-        top: anchor.y - fittedHeight,
+        top: anchor.y - fittedHeight - verticalSpacing,
         width: anchor.width,
         height: fittedHeight,
     };
@@ -126,7 +137,7 @@ export function computeListboxRect(
     root: DocumentElementLike = document.documentElement,
     { scrollY, scrollX }: WindowLike = window,
 ): ListboxRect | undefined {
-    const { itemHeight, numOfItems } = options;
+    const { itemHeight, numOfItems, verticalSpacing } = options;
     const rect = anchor.getBoundingClientRect();
     const anchorRect = {
         x: Math.floor(rect.x + scrollX),
@@ -139,14 +150,26 @@ export function computeListboxRect(
         height: root.clientHeight,
     };
 
-    const d = tryBelow(itemHeight, numOfItems, anchorRect, viewportRect);
-    if (d) {
-        return d;
+    const below = tryBelow(
+        itemHeight,
+        numOfItems,
+        anchorRect,
+        viewportRect,
+        verticalSpacing,
+    );
+    if (below) {
+        return below;
     }
 
-    const u = tryAbove(itemHeight, numOfItems, anchorRect, viewportRect);
-    if (u) {
-        return u;
+    const above = tryAbove(
+        itemHeight,
+        numOfItems,
+        anchorRect,
+        viewportRect,
+        verticalSpacing,
+    );
+    if (above) {
+        return above;
     }
 
     return undefined;

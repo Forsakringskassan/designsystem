@@ -52,10 +52,14 @@ exports[`snapshots should match snapshot with label and input 1`] = `
       <!---->
        
       <!---->
+       
+      <!---->
     </div>
      
     
     
   </div>
+   
+  <!---->
 </div>
 `;

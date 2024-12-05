@@ -1,0 +1,43 @@
+@use "variables" as *;
+
+.popup .popup__wrapper.combobox__listbox {
+    background-color: $combobox-color-background;
+    border: var(--f-border-width-medium) solid $combobox-color-border;
+    border-radius: var(--f-border-radius-medium);
+    box-shadow: var(--f-box-modal-shadow);
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 2px;
+}
+
+.combobox__listbox__list {
+    margin: 0;
+    padding: 0;
+}
+
+.combobox__listbox__option {
+    color: $combobox-color-text;
+    cursor: pointer;
+    list-style-type: none;
+    padding: 0.75rem;
+    white-space: nowrap;
+
+    &:hover {
+        background-color: $combobox-color-background-hover;
+        color: $combobox-color-text-hover;
+    }
+
+    &--highlight {
+        background-color: $combobox-color-background-selected;
+        color: $combobox-color-text-selected;
+        font-weight: var(--f-font-weight-medium);
+    }
+}
+
+.combobox__button {
+    background: inherit;
+    border: none;
+    color: $combobox-f-icon-arrow-down-color-content-default;
+    margin: 0;
+    padding: 0;
+}

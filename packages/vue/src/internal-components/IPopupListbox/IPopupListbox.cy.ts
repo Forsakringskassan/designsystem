@@ -10,7 +10,7 @@ describe("IPopupListbox below anchor", () => {
         setViewport({ height: 300, width: 480 });
     });
 
-    it("should position 2 items below input without scroll", () => {
+    it("should position 3 items below input without scroll", () => {
         const component = defineComponent({
             template: /* HTML */ `
                 <div>
@@ -24,12 +24,12 @@ describe("IPopupListbox below anchor", () => {
                     <i-popup-listbox
                         :is-open
                         :anchor="$refs.input"
-                        :num-of-items="2"
+                        :num-of-items="3"
                     >
                         <ul
                             style="list-style-type: none; padding: 0; margin: 0"
                         >
-                            <li v-for="index in 2" :key="index">
+                            <li v-for="index in 3" :key="index">
                                 Item {{ index }}
                             </li>
                         </ul>
@@ -62,7 +62,7 @@ describe("IPopupListbox below anchor", () => {
         cy.get(".popup__wrapper").should("have.css", "left", "43px");
     });
 
-    it("should position 6 items below input without scroll", () => {
+    it("should position 7 items below input without scroll", () => {
         const component = defineComponent({
             template: /* HTML */ `
                 <div>
@@ -76,12 +76,12 @@ describe("IPopupListbox below anchor", () => {
                     <i-popup-listbox
                         :is-open
                         :anchor="$refs.input"
-                        :num-of-items="6"
+                        :num-of-items="7"
                     >
                         <ul
                             style="list-style-type: none; padding: 0; margin: 0"
                         >
-                            <li v-for="index in 6" :key="index">
+                            <li v-for="index in 7" :key="index">
                                 Item {{ index }}
                             </li>
                         </ul>
@@ -172,7 +172,7 @@ describe("IPopupListbox above anchor", () => {
     beforeEach(() => {
         setViewport({ height: 300, width: 480 });
     });
-    it("should position 2 items above input without scroll", () => {
+    it("should position 3 items above input without scroll", () => {
         const component = defineComponent({
             template: /* HTML */ `
                 <div>
@@ -186,12 +186,12 @@ describe("IPopupListbox above anchor", () => {
                     <i-popup-listbox
                         :is-open
                         :anchor="$refs.input"
-                        :num-of-items="2"
+                        :num-of-items="3"
                     >
                         <ul
                             style="list-style-type: none; padding: 0; margin: 0"
                         >
-                            <li v-for="index in 2" :key="index">
+                            <li v-for="index in 3" :key="index">
                                 Item {{ index }}
                             </li>
                         </ul>
@@ -219,12 +219,12 @@ describe("IPopupListbox above anchor", () => {
          * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
          */
 
-        // top = body margin-top + input margin-top + 2 * itemHeight = 8 + 200 - 2 * 24 = 160
-        cy.get(".popup__wrapper").should("have.css", "top", "160px");
+        // top = body margin-top + input margin-top + 2 * itemHeight = 8 + 200 - 3 * 24 = 160
+        cy.get(".popup__wrapper").should("have.css", "top", "136px");
         cy.get(".popup__wrapper").should("have.css", "left", "43px");
     });
 
-    it("should position 6 items above input without scroll", () => {
+    it("should position 7 items above input without scroll", () => {
         const component = defineComponent({
             template: /* HTML */ `
                 <div>
@@ -238,12 +238,12 @@ describe("IPopupListbox above anchor", () => {
                     <i-popup-listbox
                         :is-open
                         :anchor="$refs.input"
-                        :num-of-items="6"
+                        :num-of-items="7"
                     >
                         <ul
                             style="list-style-type: none; padding: 0; margin: 0"
                         >
-                            <li v-for="index in 6" :key="index">
+                            <li v-for="index in 7" :key="index">
                                 Item {{ index }}
                             </li>
                         </ul>
@@ -271,8 +271,8 @@ describe("IPopupListbox above anchor", () => {
          * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
          */
 
-        // top = body margin-top + input margin-top + 6 * itemHeight = 8 + 200 - 6 * 24
-        cy.get(".popup__wrapper").should("have.css", "top", "64px");
+        // top = body margin-top + input margin-top + 6 * itemHeight = 8 + 200 - 7 * 24
+        cy.get(".popup__wrapper").should("have.css", "top", "40px");
         cy.get(".popup__wrapper").should("have.css", "left", "43px");
     });
 
@@ -324,8 +324,8 @@ describe("IPopupListbox above anchor", () => {
          * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
          */
 
-        // top = body margin-top + input margin-top + 6 * itemHeight = 8 + 200 - 6 * 24
-        cy.get(".popup__wrapper").should("have.css", "top", "64px");
+        // top = body margin-top + input margin-top + 6 * itemHeight = 8 + 200 - 7 * 24
+        cy.get(".popup__wrapper").should("have.css", "top", "40px");
         cy.get(".popup__wrapper").should("have.css", "left", "43px");
     });
 });

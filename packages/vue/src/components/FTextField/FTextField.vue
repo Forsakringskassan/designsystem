@@ -85,27 +85,48 @@
                     <!-- @slot Slot for add content inside the input to the right -->
                     <slot name="append-inner"></slot>
                 </div>
+                <div v-if="options" class="text-field__append-inner">
+                    <i-combobox-toggle-button
+                        :aria-controls="dropdownIsOpen ? dropdownId : undefined"
+                        :aria-expanded="dropdownIsOpen"
+                        @toggle="toggleDropdown"
+                    ></i-combobox-toggle-button>
+                </div>
             </div>
 
             <!-- @slot Slot for adding content to the right of the input element. -->
             <slot name="input-right" />
         </div>
+
+        <i-combobox-dropdown
+            v-if="options && $refs.input"
+            :id="dropdownId"
+            :is-open="dropdownIsOpen"
+            :options="dropdownOptions"
+            :active-option
+            :active-option-id
+            :input-node="$refs.input"
+            @select="onDropdownSelect"
+            @close="onDropdownClose"
+        ></i-combobox-dropdown>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, type PropType } from "vue";
+import { defineComponent, type PropType } from "vue";
 import { ElementIdService, isSet, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FLabel } from "../FLabel";
 import { FIcon } from "../FIcon";
 import { IPopupError } from "../../internal-components/IPopupError";
 import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
+import { IComboboxDropdown, IComboboxToggleButton } from "../../internal-components/combobox";
 import { resolveWidthClass } from "./FTextField.logic";
+import { useTextFieldSetup } from "./useTextFieldSetup";
 import { FormatFunction, ParseFunction } from "./index";
 
 export default defineComponent({
     name: "FTextField",
-    components: { FLabel, FIcon, IPopupError },
+    components: { FLabel, FIcon, IPopupError, IComboboxDropdown, IComboboxToggleButton },
     inheritAttrs: false,
     props: {
         /**
@@ -200,17 +221,53 @@ export default defineComponent({
             required: false,
             default: "sm-12",
         },
+        /**
+         * List of options.
+         *
+         * When set, the user can select a value from the list of options and filter while typing.
+         *
+         * If a formatter is used by the component, make sure the options are formatted as well.
+         */
+        options: {
+            type: Array as PropType<string[] | undefined>,
+            required: false,
+            default: () => undefined,
+        },
     },
     emits: ["blur", "change", "update", "update:modelValue"],
-    setup() {
+    setup(props) {
+        // a shared setup is used because components extending this component need to redeclare the same setup
+        const {
+            textFieldTableMode,
+            viewValue,
+            onOptionSelected,
+            dropdownId,
+            dropdownIsOpen,
+            dropdownOptions,
+            activeOptionId,
+            activeOption,
+            toggleDropdown,
+            selectOption,
+            closeDropdown,
+        } = useTextFieldSetup(props);
+
         return {
-            textFieldTableMode: inject("textFieldTableMode", false) as boolean,
+            textFieldTableMode,
+            viewValue,
+            onOptionSelected,
+            dropdownId,
+            dropdownIsOpen,
+            dropdownOptions,
+            activeOptionId,
+            activeOption,
+            toggleDropdown,
+            selectOption,
+            closeDropdown,
         };
     },
     data() {
         return {
             showErrorPopup: false,
-            viewValue: "" as string,
             lastModelValue: "" as unknown,
             validationMessage: "" as string,
             validityMode: "INITIAL" as string,
@@ -276,6 +333,12 @@ export default defineComponent({
         this.isAfterInitialRender = true;
     },
     methods: {
+        onDropdownSelect(value: string): void {
+            this.selectOption(value);
+        },
+        onDropdownClose(): void {
+            this.closeDropdown();
+        },
         getErrorPopupAnchor(): HTMLElement {
             return this.$refs.input as HTMLElement;
         },
