@@ -79,6 +79,7 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
@@ -92,6 +93,7 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
@@ -105,6 +107,7 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
@@ -118,6 +121,7 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
@@ -131,6 +135,7 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
