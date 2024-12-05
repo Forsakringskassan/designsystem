@@ -1,0 +1,327 @@
+import { ElementIdService, isEmpty } from "@fkui/logic";
+import {
+    computed,
+    nextTick,
+    onMounted,
+    ref,
+    type Ref,
+    type ShallowRef,
+    watchEffect,
+} from "vue";
+import { useEventListener } from "../../composables";
+import { useTranslate } from "../../plugins";
+
+const $t = useTranslate();
+
+/**
+ * @public
+ */
+export function useCombobox(
+    inputRef: Readonly<ShallowRef<HTMLInputElement | null>>,
+    options: string[] | undefined,
+): {
+    dropdownId: string;
+    dropdownIsOpen: Readonly<Ref<boolean>>;
+    dropdownOptions: Readonly<Ref<string[]>>;
+    activeOptionId: string;
+    activeOption: Readonly<Ref<string | null>>;
+    selectedValue: Ref<string | null>;
+    toggleDropdown: () => void;
+    closeDropdown: () => void;
+} {
+    if (!options) {
+        return {
+            dropdownId: "",
+            dropdownIsOpen: ref(false),
+            dropdownOptions: ref([]),
+            activeOptionId: "",
+            activeOption: ref(null),
+            selectedValue: ref(null),
+            toggleDropdown() {
+                /* do nothing */
+            },
+            closeDropdown() {
+                /* do nothing */
+            },
+        };
+    }
+
+    useEventListener(inputRef, "click", onInputClick);
+    useEventListener(inputRef, "focus", onInputFocus);
+    useEventListener(inputRef, "keydown", onInputKeyDown);
+    useEventListener(inputRef, "keyup", onInputKeyUp);
+
+    const dropdownId = ElementIdService.generateElementId();
+    const activeOptionId = ElementIdService.generateElementId();
+
+    function onInputClick(): void {
+        toggleDropdown();
+    }
+
+    onMounted(() => {
+        if (!inputRef.value) {
+            throw new Error("missing input ref");
+        }
+
+        filter.value = inputRef.value.value;
+        inputRef.value.setAttribute("role", "combobox");
+        inputRef.value.setAttribute("aria-autocomplete", "list");
+    });
+
+    const dropdownIsOpen = ref(false);
+    const filter = ref("");
+    const activeOption: Ref<string | null> = ref(null);
+    const selectMode = ref(false);
+    const selectedValue: Ref<string | null> = ref(null);
+
+    function toggleDropdown(): void {
+        if (!dropdownIsOpen.value) {
+            openSelected();
+        } else {
+            close();
+        }
+    }
+
+    async function openSelected(
+        fallback: null | "first" | "last" = null,
+    ): Promise<void> {
+        if (hasOptions.value) {
+            dropdownIsOpen.value = true;
+
+            await nextTick();
+
+            if (selectMode.value) {
+                activeOption.value = filter.value;
+            } else if (fallback === "first") {
+                activeOption.value = dropdownOptions.value[0];
+            } else if (fallback === "last") {
+                activeOption.value =
+                    dropdownOptions.value[dropdownOptions.value.length - 1];
+            } else {
+                activeOption.value = null;
+            }
+        }
+    }
+
+    function close(): void {
+        dropdownIsOpen.value = false;
+        activeOption.value = null;
+    }
+
+    const dropdownOptions = computed(() => {
+        if (isEmpty(filter.value) || selectMode.value) {
+            return options;
+        }
+
+        const filterLowerCased = filter.value.toLowerCase();
+
+        return options.filter(
+            (it) => it.toLowerCase().indexOf(filterLowerCased) > -1,
+        );
+    });
+
+    const hasOptions = computed(() => {
+        return dropdownOptions.value.length > 0;
+    });
+
+    const hasMultipleOptions = computed(() => {
+        return dropdownOptions.value.length > 1;
+    });
+
+    function setNextOption(): void {
+        if (activeOption.value && hasMultipleOptions.value) {
+            const index = dropdownOptions.value.indexOf(activeOption.value);
+
+            if (index === dropdownOptions.value.length - 1) {
+                activeOption.value = dropdownOptions.value[0];
+            } else {
+                activeOption.value = dropdownOptions.value[index + 1];
+            }
+        } else {
+            activeOption.value = dropdownOptions.value[0];
+        }
+    }
+
+    function setPreviousOption(): void {
+        if (activeOption.value && hasMultipleOptions.value) {
+            const index = dropdownOptions.value.indexOf(activeOption.value);
+
+            if (index === 0) {
+                activeOption.value =
+                    dropdownOptions.value[dropdownOptions.value.length - 1];
+            } else {
+                activeOption.value = dropdownOptions.value[index - 1];
+            }
+        } else {
+            activeOption.value = dropdownOptions.value[0];
+        }
+    }
+
+    function onInputFocus(): void {
+        selectMode.value = options?.includes(filter.value) ?? false;
+    }
+
+    watchEffect(() => {
+        if (selectedValue.value) {
+            close();
+            filter.value = selectedValue.value;
+            selectMode.value = true;
+        }
+    });
+
+    async function onInputKeyDown(event: KeyboardEvent): Promise<void> {
+        let flag = false;
+
+        if (event.ctrlKey || event.shiftKey) {
+            return;
+        }
+
+        switch (event.key) {
+            case "Enter":
+                if (dropdownIsOpen.value) {
+                    if (activeOption.value) {
+                        selectedValue.value = activeOption.value;
+                        flag = true;
+                    }
+                    close();
+                }
+
+                break;
+
+            case "Down":
+            case "ArrowDown":
+                if (dropdownIsOpen.value) {
+                    setNextOption();
+                } else {
+                    openSelected("first");
+                }
+
+                flag = true;
+                break;
+
+            case "Up":
+            case "ArrowUp":
+                if (dropdownIsOpen.value) {
+                    setPreviousOption();
+                } else {
+                    openSelected("last");
+                }
+
+                flag = true;
+                break;
+
+            case "Esc":
+            case "Escape":
+                if (dropdownIsOpen.value) {
+                    close();
+                }
+
+                flag = true;
+                break;
+
+            case "Tab":
+                if (dropdownIsOpen.value) {
+                    close();
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        if (flag) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    }
+
+    function onInputKeyUp(): void {
+        if (!inputRef.value) {
+            throw new Error("missing input ref");
+        }
+
+        if (filter.value === inputRef.value.value) {
+            return;
+        }
+
+        filter.value = inputRef.value.value;
+        activeOption.value = null;
+        selectMode.value = false;
+
+        if (!dropdownIsOpen.value) {
+            openSelected();
+        } else if (!hasOptions.value) {
+            close();
+        }
+    }
+
+    watchEffect(() => {
+        if (!inputRef.value) {
+            return;
+        }
+        inputRef.value.setAttribute("aria-expanded", `${dropdownIsOpen.value}`);
+
+        if (dropdownIsOpen.value) {
+            inputRef.value.setAttribute("aria-controls", dropdownId);
+        } else {
+            inputRef.value.removeAttribute("aria-controls");
+        }
+    });
+
+    watchEffect(async () => {
+        if (!inputRef.value) {
+            return;
+        }
+
+        if (activeOption.value) {
+            inputRef.value.setAttribute(
+                "aria-activedescendant",
+                activeOptionId,
+            );
+        } else {
+            inputRef.value.removeAttribute("aria-activedescendant");
+        }
+    });
+
+    watchEffect(() => {
+        if (!inputRef.value) {
+            return;
+        }
+
+        let description = selectMode.value
+            ? `${$t("fkui.combobox.selected", "Valt förslag")} `
+            : "";
+
+        if (isEmpty(filter.value) || selectMode.value) {
+            description += $t(
+                "fkui.combobox.listDetails",
+                `Det finns {{ count }} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`,
+                { count: options.length },
+            );
+        } else if (hasOptions.value) {
+            description += $t(
+                "fkui.combobox.matchesListDetails",
+                `Det finns {{ count }} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`,
+                { count: dropdownOptions.value.length },
+            );
+        } else {
+            description = $t(
+                "fkui.combobox.noMatchesListDetails",
+                "Det finns inga förslag som matchar.",
+            );
+        }
+
+        inputRef.value.setAttribute("aria-description", description);
+    });
+
+    return {
+        dropdownId,
+        dropdownIsOpen,
+        dropdownOptions,
+        activeOptionId,
+        activeOption,
+        toggleDropdown,
+        closeDropdown: close,
+        selectedValue,
+    };
+}

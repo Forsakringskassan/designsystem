@@ -39,9 +39,11 @@ exports[`should add data-test attribute to the FTextField 1`] = `
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
+      <!--v-if-->
     </div>
     
     
   </div>
+  <!--v-if-->
 </div>
 `;

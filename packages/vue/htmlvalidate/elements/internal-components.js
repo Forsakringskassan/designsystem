@@ -242,12 +242,40 @@ module.exports = defineMetadata({
             anchor: {
                 required: true,
             },
-            numOfItems: {
+            "num-of-items": {
                 required: true,
             },
-            itemHeight: {
+            "item-height": {
                 required: false,
             },
         },
+    },
+    "i-combobox-dropdown": {
+        flow: true,
+        interactive: true,
+        permittedContent: ["@flow"],
+        permittedDescendants: [{ exclude: ["@interactive"] }],
+        attributes: {
+            "is-open": {
+                boolean: true,
+                required: true,
+            },
+            options: {
+                required: true,
+            },
+            "active-option": {
+                required: false,
+            },
+            "active-option-id": {
+                required: false,
+            },
+            "input-node": {
+                required: true,
+            },
+        },
+    },
+    "i-combobox-toggle-button": {
+        flow: true,
+        interactive: true,
     },
 });

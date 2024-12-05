@@ -85,27 +85,59 @@
                     <!-- @slot Slot for add content inside the input to the right -->
                     <slot name="append-inner"></slot>
                 </div>
+                <div v-if="options" class="text-field__append-inner">
+                    <i-combobox-toggle-button
+                        :aria-controls="dropdownIsOpen ? dropdownId : undefined"
+                        :aria-expanded="dropdownIsOpen"
+                        @toggle="toggleDropdown"
+                    ></i-combobox-toggle-button>
+                </div>
             </div>
 
             <!-- @slot Slot for adding content to the right of the input element. -->
             <slot name="input-right" />
         </div>
+
+        <i-combobox-dropdown
+            v-if="options && $refs.input"
+            :id="dropdownId"
+            :is-open="dropdownIsOpen"
+            :options="dropdownOptions"
+            :active-option
+            :active-option-id
+            :input-node="$refs.input"
+            @select="onDropdownSelect"
+            @close="onDropdownClose"
+        ></i-combobox-dropdown>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, type PropType } from "vue";
+import { defineComponent, inject, useTemplateRef, type PropType } from "vue";
 import { ElementIdService, isSet, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FLabel } from "../FLabel";
 import { FIcon } from "../FIcon";
 import { IPopupError } from "../../internal-components/IPopupError";
 import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
+import { IComboboxDropdown, IComboboxToggleButton, useCombobox } from "../../internal-components/combobox";
 import { resolveWidthClass } from "./FTextField.logic";
 import { FormatFunction, ParseFunction } from "./index";
 
+interface FTextFieldProps {
+    id: string;
+    inline: boolean;
+    modelValue: string | number;
+    type: string;
+    formatter?: FormatFunction<unknown>;
+    parser?: ParseFunction<unknown>;
+    labelWidth: string;
+    inputWidth: string;
+    options?: string[];
+}
+
 export default defineComponent({
     name: "FTextField",
-    components: { FLabel, FIcon, IPopupError },
+    components: { FLabel, FIcon, IPopupError, IComboboxDropdown, IComboboxToggleButton },
     inheritAttrs: false,
     props: {
         /**
@@ -200,11 +232,43 @@ export default defineComponent({
             required: false,
             default: "sm-12",
         },
+        /**
+         * List of options.
+         *
+         * When set, the user can select a value from the list of options and filter while typing.
+         */
+        options: {
+            type: Array as PropType<string[] | undefined>,
+            required: false,
+            default: () => undefined,
+        },
     },
     emits: ["blur", "change", "update", "update:modelValue"],
-    setup() {
+    setup(props: FTextFieldProps) {
+        const inputNode = useTemplateRef<HTMLInputElement>("input");
+        const textFieldTableMode = inject("textFieldTableMode", false) as boolean;
+
+        const {
+            dropdownId,
+            dropdownIsOpen,
+            dropdownOptions,
+            activeOptionId,
+            activeOption,
+            selectedValue,
+            toggleDropdown,
+            closeDropdown,
+        } = useCombobox(inputNode, props.options);
+
         return {
-            textFieldTableMode: inject("textFieldTableMode", false) as boolean,
+            textFieldTableMode,
+            dropdownId,
+            dropdownIsOpen,
+            dropdownOptions,
+            activeOptionId,
+            activeOption,
+            selectedValue,
+            toggleDropdown,
+            closeDropdown,
         };
     },
     data() {
@@ -271,11 +335,29 @@ export default defineComponent({
                 this.lastModelValue = this.modelValue;
             },
         },
+        selectedValue: {
+            immediate: false,
+            handler: async function (newValue: string) {
+                this.viewValue = newValue;
+                this.$emit("update:modelValue", newValue);
+                await this.$nextTick();
+
+                const input = this.$refs.input as HTMLInputElement | null;
+                input?.select();
+                input?.focus();
+            },
+        },
     },
     beforeUpdate() {
         this.isAfterInitialRender = true;
     },
     methods: {
+        onDropdownSelect(value: string): void {
+            this.selectedValue = value;
+        },
+        onDropdownClose(): void {
+            this.closeDropdown();
+        },
         getErrorPopupAnchor(): HTMLElement {
             return this.$refs.input as HTMLElement;
         },

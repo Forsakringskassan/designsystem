@@ -14,6 +14,7 @@ import { IPopupErrorData } from '@fkui/vue';
 import { ParseFunction } from '@fkui/vue';
 import { PropType } from 'vue';
 import { PublicProps } from 'vue';
+import { Ref } from 'vue';
 import { ValidatorConfig } from '@fkui/logic';
 import { ValidityEvent } from '@fkui/logic';
 
@@ -209,49 +210,26 @@ modelValue: string;
 maxLength: number;
 clearableScreenReaderText: string;
 }, {}, {
-FTextField: DefineComponent<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-inline: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-modelValue: {
-type: (StringConstructor | NumberConstructor)[];
-required: false;
-default: string;
-};
-type: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-formatter: {
-type: PropType<FormatFunction<any>>;
-required: false;
-default: undefined;
-};
-parser: {
-type: PropType<ParseFunction<any>>;
-required: false;
-default: undefined;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>, {
+FTextField: DefineComponent<    {
+id: string;
+inline: boolean;
+modelValue: string | number;
+type: string;
+formatter?: FormatFunction<unknown> | undefined;
+parser?: ParseFunction<unknown> | undefined;
+labelWidth: string;
+inputWidth: string;
+options?: string[] | undefined;
+}, {
 textFieldTableMode: boolean;
+dropdownId: string;
+dropdownIsOpen: Readonly<Ref<boolean, boolean>>;
+dropdownOptions: Readonly<Ref<string[], string[]>>;
+activeOptionId: string;
+activeOption: Readonly<Ref<string | null, string | null>>;
+selectedValue: Ref<string | null, string | null>;
+toggleDropdown: () => void;
+closeDropdown: () => void;
 }, {
 showErrorPopup: boolean;
 viewValue: string;
@@ -274,6 +252,8 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
+onDropdownSelect(value: string): void;
+onDropdownClose(): void;
 getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
@@ -286,48 +266,17 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-inline: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-modelValue: {
-type: (StringConstructor | NumberConstructor)[];
-required: false;
-default: string;
-};
-type: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-formatter: {
-type: PropType<FormatFunction<any>>;
-required: false;
-default: undefined;
-};
-parser: {
-type: PropType<ParseFunction<any>>;
-required: false;
-default: undefined;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>> & Readonly<{
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<{
+id: string;
+inline: boolean;
+modelValue: string | number;
+type: string;
+formatter?: FormatFunction<unknown> | undefined;
+parser?: ParseFunction<unknown> | undefined;
+labelWidth: string;
+inputWidth: string;
+options?: string[] | undefined;
+}> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
@@ -337,6 +286,7 @@ type: string;
 id: string;
 modelValue: string | number;
 inline: boolean;
+options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
@@ -575,6 +525,34 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+close: () => any;
+select: (option: string) => any;
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
+onClose?: (() => any) | undefined;
+onSelect?: ((option: string) => any) | undefined;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
+listboxNode: HTMLUListElement;
+}, HTMLDivElement>;
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+toggle: () => any;
+}, string, PublicProps, Readonly<{}> & Readonly<{
+onToggle?: (() => any) | undefined;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -647,49 +625,26 @@ default: typeof parseTimeToNumber;
 };
 }>, {
 textFieldTableMode: boolean;
-}, {}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-inline: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-modelValue: {
-type: (StringConstructor | NumberConstructor)[];
-required: false;
-default: string;
-};
-type: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-formatter: {
-type: PropType<FormatFunction<any>>;
-required: false;
-default: undefined;
-};
-parser: {
-type: PropType<ParseFunction<any>>;
-required: false;
-default: undefined;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>, {
+}, {}, {}, {}, ComponentOptions, DefineComponent<    {
+id: string;
+inline: boolean;
+modelValue: string | number;
+type: string;
+formatter?: FormatFunction<unknown> | undefined;
+parser?: ParseFunction<unknown> | undefined;
+labelWidth: string;
+inputWidth: string;
+options?: string[] | undefined;
+}, {
 textFieldTableMode: boolean;
+dropdownId: string;
+dropdownIsOpen: Readonly<Ref<boolean, boolean>>;
+dropdownOptions: Readonly<Ref<string[], string[]>>;
+activeOptionId: string;
+activeOption: Readonly<Ref<string | null, string | null>>;
+selectedValue: Ref<string | null, string | null>;
+toggleDropdown: () => void;
+closeDropdown: () => void;
 }, {
 showErrorPopup: boolean;
 viewValue: string;
@@ -712,6 +667,8 @@ labelWrapperClass(): string | undefined;
 inputWrapperClass(): string | undefined;
 isModelUpdatedProgrammatically(): boolean;
 }, {
+onDropdownSelect(value: string): void;
+onDropdownClose(): void;
 getErrorPopupAnchor(): HTMLElement;
 closePopupError(): void;
 onChange(): Promise<void>;
@@ -724,48 +681,17 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-inline: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-modelValue: {
-type: (StringConstructor | NumberConstructor)[];
-required: false;
-default: string;
-};
-type: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-formatter: {
-type: PropType<FormatFunction<any>>;
-required: false;
-default: undefined;
-};
-parser: {
-type: PropType<ParseFunction<any>>;
-required: false;
-default: undefined;
-};
-labelWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-inputWidth: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-}>> & Readonly<{
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<{
+id: string;
+inline: boolean;
+modelValue: string | number;
+type: string;
+formatter?: FormatFunction<unknown> | undefined;
+parser?: ParseFunction<unknown> | undefined;
+labelWidth: string;
+inputWidth: string;
+options?: string[] | undefined;
+}> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
@@ -775,6 +701,7 @@ type: string;
 id: string;
 modelValue: string | number;
 inline: boolean;
+options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
 parser: ParseFunction<any>;
@@ -1013,6 +940,34 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+close: () => any;
+select: (option: string) => any;
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
+onClose?: (() => any) | undefined;
+onSelect?: ((option: string) => any) | undefined;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
+listboxNode: HTMLUListElement;
+}, HTMLDivElement>;
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+toggle: () => any;
+}, string, PublicProps, Readonly<{}> & Readonly<{
+onToggle?: (() => any) | undefined;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<HoursMinutesString>>;

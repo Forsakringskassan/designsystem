@@ -1,0 +1,37 @@
+.popup .popup__wrapper.combobox__listbox {
+    background-color: var(--f-background-popupmenu);
+    border: 1px solid var(--f-border-color-popupmenu);
+    border-radius: var(--f-border-radius-medium);
+}
+
+.combobox__listbox__list {
+    margin: 0;
+    padding: 0;
+}
+
+.combobox__listbox__option {
+    cursor: pointer;
+    list-style-type: none;
+    white-space: nowrap;
+    color: var(--f-text-color-popupmenu);
+    padding: 0.75rem;
+    display: block;
+
+    &:hover {
+        background-color: var(--f-background-popupmenu-vertical-hover);
+        color: var(--f-text-color-popupmenu-hover);
+    }
+
+    &--highlight {
+        background-color: var(--f-background-popupmenu-vertical-highlight);
+        font-weight: var(--f-font-weight-medium);
+    }
+}
+
+.combobox__button {
+    background: inherit;
+    border: none;
+    color: var(--f-icon-color-primary);
+    margin: 0;
+    padding: 0;
+}
