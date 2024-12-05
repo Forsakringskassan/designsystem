@@ -10117,17 +10117,11 @@ class ValidationServiceImpl {
   }
 }
 const ValidationService = new ValidationServiceImpl();
-function isInvalidAllowListConfig(value) {
-  return Boolean(value.list);
-}
 const allowListValidator = {
   name: "allowList",
   validation(value, element, config2) {
-    if (isEmpty(value)) {
+    if (isEmpty(value) || config2.list === void 0 || config2.list.length === 0) {
       return true;
-    }
-    if (!isInvalidAllowListConfig(config2)) {
-      throw new Error(`Invalid allowList config for ${element.id}`);
     }
     return config2.list.includes(value);
   }
@@ -13115,11 +13109,11 @@ function baseIsEqual$1(value, other, bitmask, customizer, stack2) {
 }
 var _baseIsEqual = baseIsEqual$1;
 var baseIsEqual = _baseIsEqual;
-function isEqual(value, other) {
+function isEqual$1(value, other) {
   return baseIsEqual(value, other);
 }
-var isEqual_1 = isEqual;
-const isEqual$1 = /* @__PURE__ */ getDefaultExportFromCjs(isEqual_1);
+var isEqual_1 = isEqual$1;
+const isEqual$2 = /* @__PURE__ */ getDefaultExportFromCjs(isEqual_1);
 function itemEquals(item1, item2, compareAttribute) {
   if (!isSet(item1) || !isSet(item2)) {
     return false;
@@ -14592,7 +14586,7 @@ const ValidationDirective = {
     ValidationService.removeValidatorsFromElement(validatableElement);
   },
   updated(el, binding) {
-    if (!isEqual$1(binding.value, binding.oldValue)) {
+    if (!isEqual$2(binding.value, binding.oldValue)) {
       registerValidators(el, binding);
     }
   },
@@ -14923,7 +14917,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
     attrs() {
       let checked;
       if (Array.isArray(this.modelValue)) {
-        checked = this.modelValue.findIndex((it) => isEqual$1(toValue(it), toValue(this.value))) >= 0;
+        checked = this.modelValue.findIndex((it) => isEqual$2(toValue(it), toValue(this.value))) >= 0;
       } else {
         checked = this.value === this.modelValue;
       }
@@ -14957,7 +14951,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
     emitVModelEvent(event) {
       let newModel;
       if (Array.isArray(this.modelValue)) {
-        newModel = [...this.modelValue].filter((it) => !isEqual$1(toValue(it), toValue(this.value)));
+        newModel = [...this.modelValue].filter((it) => !isEqual$2(toValue(it), toValue(this.value)));
         if (this.modelValue.length <= newModel.length) {
           newModel.push(this.value);
         }
@@ -15930,26 +15924,39 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
     const wrapper2 = useTemplateRef("wrapper");
     const content = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
+    const teleportTarget = computed(() => {
+      var _config$popupTarget;
+      return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
+    });
     useEventListener(__props.anchor, "keyup", onKeyEsc);
+    function addListeners() {
+      document.addEventListener("click", onDocumentClickHandler);
+      window.addEventListener("resize", debounce(onResize, 100));
+    }
+    function removeListeners() {
+      document.removeEventListener("click", onDocumentClickHandler);
+      window.removeEventListener("resize", debounce(onResize, 100));
+    }
     watchEffect(() => {
       if (__props.isOpen) {
-        openPopup();
+        calculatePosition();
         setTimeout(() => {
           if (__props.isOpen) {
-            document.addEventListener("click", onDocumentClickHandler);
-            window.addEventListener("resize", onResize);
+            addListeners();
           }
         }, 0);
       } else {
-        document.removeEventListener("click", onDocumentClickHandler);
-        window.removeEventListener("resize", onResize);
+        removeListeners();
       }
     });
+    onUnmounted(removeListeners);
     function onDocumentClickHandler() {
       emit2("close");
     }
     function onResize() {
-      emit2("close");
+      if (__props.isOpen) {
+        calculatePosition();
+      }
     }
     function onKeyEsc(event) {
       if (event.key === "Escape") {
@@ -15959,7 +15966,7 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
     function guessItemHeight(numOfItems, contentWrapper) {
       return Math.ceil(contentWrapper.clientHeight / numOfItems);
     }
-    async function openPopup() {
+    async function calculatePosition() {
       var _a;
       await nextTick();
       const wrapperElement = wrapper2.value;
@@ -15997,24 +16004,23 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
         key: 0,
-        to: "body",
+        to: teleportTarget.value,
         disabled: teleportDisabled
+      }, [createBaseVNode("div", {
+        ref: "popup",
+        class: normalizeClass(popupClasses)
       }, [createBaseVNode("div", mergeProps({
-        ref: "popup"
-      }, _ctx.$attrs, {
-        class: popupClasses
-      }), [createBaseVNode("div", {
         ref_key: "wrapper",
-        ref: wrapper2,
-        role: "presentation",
+        ref: wrapper2
+      }, _ctx.$attrs, {
         class: "popup__wrapper",
         onKeyup: withKeys(withModifiers(onKeyEsc, ["stop"]), ["esc"]),
         onClick: _cache[0] || (_cache[0] = withModifiers(() => {
         }, ["stop"]))
-      }, [createBaseVNode("div", {
+      }), [createBaseVNode("div", {
         ref_key: "content",
         ref: content
-      }, [renderSlot(_ctx.$slots, "default")], 512)], 40, _hoisted_1$D)], 16)])) : createCommentVNode("", true);
+      }, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$D)], 512)], 8, ["to"])) : createCommentVNode("", true);
     };
   }
 });
@@ -16221,11 +16227,11 @@ function useCombobox(inputRef, options) {
     if (!inputRef.value) {
       return;
     }
-    let description;
+    let description = selectMode.value ? "Valt förslag. " : "";
     if (isEmpty(filter2.value) || selectMode.value) {
-      description = `Det finns ${options.length} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`;
+      description += `Det finns ${options.length} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`;
     } else if (hasOptions.value) {
-      description = `Det finns ${dropdownOptions.value.length} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`;
+      description += `Det finns ${dropdownOptions.value.length} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`;
     } else {
       description = "Det finns inga förslag som matchar.";
     }
@@ -16281,7 +16287,7 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
         const activeOptionNode = (_a = listboxNode.value) == null ? void 0 : _a.querySelector(`#${__props.activeOptionId}`);
         if (activeOptionNode) {
           activeOptionNode.scrollIntoView({
-            behavior: "smooth",
+            behavior: "instant",
             block: "nearest"
           });
         }
