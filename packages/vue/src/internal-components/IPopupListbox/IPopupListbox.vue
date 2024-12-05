@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { watchEffect, useTemplateRef, nextTick, computed, onUnmounted } from "vue";
+import { watchEffect, useTemplateRef, nextTick, computed, onUnmounted, watch } from "vue";
 import { debounce } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 import { config } from "../../config";
+import { getAbsolutePosition } from "../../utils";
 import { computeListboxRect } from "./compute-listbox-rect";
 
 export interface IPopupListboxProps {
@@ -10,18 +11,36 @@ export interface IPopupListboxProps {
     anchor: HTMLElement | null;
     numOfItems: number;
     itemHeight?: number;
+    activeElement?: HTMLElement | undefined;
 }
 
-const { isOpen, anchor, numOfItems, itemHeight } = defineProps<IPopupListboxProps>();
+const { isOpen, anchor, numOfItems, itemHeight, activeElement } = defineProps<IPopupListboxProps>();
 const emit = defineEmits<{ close: [] }>();
-const wrapper = useTemplateRef("wrapper");
-const content = useTemplateRef("content");
+const wrapperRef = useTemplateRef("wrapper");
+const contentRef = useTemplateRef("content");
 
 const teleportDisabled = false;
 const popupClasses = ["popup", "popup--overlay"];
 const teleportTarget = computed(() => config.popupTarget ?? config.teleportTarget);
+let guessedItemHeight: number | undefined = undefined;
+let verticalSpacing: number | undefined = undefined;
 
 useEventListener(anchor, "keyup", onKeyEsc);
+
+watchEffect(() => {
+    if (wrapperRef.value && activeElement !== undefined) {
+        const centerPosition =
+            activeElement.offsetTop -
+            (wrapperRef.value.getBoundingClientRect().height - activeElement.getBoundingClientRect().height) / 2;
+
+        if (!isElementInsideViewport(wrapperRef.value)) {
+            // Scroll wrapper into viewport
+            wrapperRef.value.scrollIntoView({ behavior: "instant", block: "nearest" });
+        }
+        // Scroll activeElement to center of wrapper.
+        wrapperRef.value.scrollTo({ top: centerPosition, behavior: "instant" });
+    }
+});
 
 function addListeners(): void {
     document.addEventListener("click", onDocumentClickHandler);
@@ -31,6 +50,17 @@ function addListeners(): void {
 function removeListeners(): void {
     document.removeEventListener("click", onDocumentClickHandler);
     window.removeEventListener("resize", debounce(onResize, 100));
+}
+
+function isElementInsideViewport(element: Element): boolean {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    const insideX = rect.left >= 0 && rect.left + rect.width <= windowWidth;
+    const insideY = rect.top >= 0 && rect.top + rect.height <= windowHeight;
+
+    return insideX && insideY;
 }
 
 watchEffect(() => {
@@ -48,6 +78,15 @@ watchEffect(() => {
         removeListeners();
     }
 });
+
+watch(
+    () => numOfItems,
+    (oldValue, newValue) => {
+        if (oldValue !== newValue && isOpen) {
+            calculatePosition();
+        }
+    },
+);
 
 onUnmounted(removeListeners);
 
@@ -74,8 +113,8 @@ function guessItemHeight(numOfItems: number, contentWrapper: HTMLElement): numbe
 async function calculatePosition(): Promise<void> {
     await nextTick();
 
-    const wrapperElement = wrapper.value;
-    const contentWrapper = content.value;
+    const wrapperElement = wrapperRef.value;
+    const contentWrapper = contentRef.value;
 
     if (!anchor || !wrapperElement || !contentWrapper) {
         return;
@@ -83,21 +122,31 @@ async function calculatePosition(): Promise<void> {
 
     let contentItemHeigth = itemHeight;
     if (!contentItemHeigth) {
-        contentItemHeigth = guessItemHeight(numOfItems, contentWrapper);
+        if (!guessedItemHeight) {
+            guessedItemHeight = guessItemHeight(numOfItems, contentWrapper);
+        }
+        contentItemHeigth = guessedItemHeight;
+    }
+    if (verticalSpacing === undefined) {
+        const absWrapper = getAbsolutePosition(wrapperElement);
+        const marginTotal = absWrapper.y * 2; // margin-top + margin-bottom
+        verticalSpacing = Math.ceil(absWrapper.height - contentItemHeigth * numOfItems) + marginTotal;
     }
 
     wrapperElement.style.overflowY = "auto";
-    wrapperElement.style.left = `0px`;
-    wrapperElement.style.boxShadow = "none";
-    const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems });
+    wrapperElement.style.overflowX = "hidden";
+    wrapperElement.style.left = "0px";
+
+    const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems, verticalSpacing });
     if (rect) {
         const { top, left, width, height } = rect;
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
         const offsetLeft = offsetRect?.x ?? 0;
         wrapperElement.style.top = `${top}px`;
         wrapperElement.style.left = `${left - offsetLeft}px`;
-        wrapperElement.style.minWidth = `${width}px`;
-        wrapperElement.style.maxHeight = `${height}px`;
+        wrapperElement.style.width = `${width}px`;
+        contentWrapper.style.maxHeight = `${height}px`;
+        contentWrapper.style.width = `${width}px`;
     }
 }
 </script>
@@ -105,7 +154,14 @@ async function calculatePosition(): Promise<void> {
 <template>
     <teleport v-if="isOpen" :to="teleportTarget" :disabled="teleportDisabled">
         <div ref="popup" :class="popupClasses">
-            <div ref="wrapper" v-bind="$attrs" class="popup__wrapper" @keyup.esc.stop="onKeyEsc" @click.stop>
+            <div
+                ref="wrapper"
+                v-bind="$attrs"
+                class="popup__wrapper"
+                tabindex="0"
+                @keyup.esc.stop="onKeyEsc"
+                @click.stop
+            >
                 <div ref="content">
                     <slot></slot>
                 </div>

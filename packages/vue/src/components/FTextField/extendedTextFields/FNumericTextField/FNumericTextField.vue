@@ -1,9 +1,10 @@
 <script lang="ts">
 import { formatNumber, parseNumber, ValidationService } from "@fkui/logic";
-import { defineComponent, inject, type PropType } from "vue";
+import { defineComponent, type PropType } from "vue";
 import FTextField from "../../FTextField.vue";
 import { FormatFunction, ParseFunction } from "../../index";
 import { getInputElement } from "../../../../utils";
+import { useTextFieldSetup } from "../../useTextFieldSetup";
 
 function defaultFormatter(this: { decimals: number }, modelValue: number): string | undefined {
     return formatNumber(modelValue, this.decimals);
@@ -33,10 +34,8 @@ export default defineComponent({
             default: parseNumber,
         },
     },
-    setup() {
-        return {
-            textFieldTableMode: inject("textFieldTableMode", false) as boolean,
-        };
+    setup(props) {
+        return useTextFieldSetup(props);
     },
     mounted() {
         const inputElement = getInputElement(this);

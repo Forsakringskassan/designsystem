@@ -1,6 +1,6 @@
 <script lang="ts">
-import { type PropType, defineComponent, inject } from "vue";
-import { FTextField, TranslationMixin, type ParseFunction, type FormatFunction } from "@fkui/vue";
+import { type PropType, defineComponent } from "vue";
+import { FTextField, TranslationMixin, type ParseFunction, type FormatFunction, useTextFieldSetup } from "@fkui/vue";
 import { isSet, ValidationService } from "@fkui/logic";
 import { HoursMinutesString, formatNumberToTime, parseTimeToNumber } from "./converters";
 import "./validators";
@@ -21,10 +21,8 @@ export default defineComponent({
             default: parseTimeToNumber,
         },
     },
-    setup() {
-        return {
-            textFieldTableMode: inject("textFieldTableMode", false) as boolean,
-        };
+    setup(props) {
+        return useTextFieldSetup(props);
     },
     mounted() {
         const inputElement: HTMLInputElement = this.$el.querySelector("input");

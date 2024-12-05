@@ -63,10 +63,12 @@ exports[`snapshots should match snapshot when pristine 1`] = `
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <div
     class="text-field"
@@ -99,10 +101,12 @@ exports[`snapshots should match snapshot when pristine 1`] = `
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   
 </form>
@@ -153,10 +157,12 @@ exports[`snapshots should match snapshot with errors 1`] = `
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <div
     class="text-field text-field--error"
@@ -189,10 +195,12 @@ exports[`snapshots should match snapshot with errors 1`] = `
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   
 </form>
