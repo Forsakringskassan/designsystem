@@ -11977,7 +11977,7 @@ const _export_sfc$1 = (sfc, props) => {
   }
   return target;
 };
-const _hoisted_1$V = ["aria-hidden"];
+const _hoisted_1$W = ["aria-hidden"];
 const _hoisted_2$G = ["xlink:href"];
 function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
@@ -11986,7 +11986,7 @@ function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-hidden": _ctx.ariaHidden
   }), [renderSlot(_ctx.$slots, "default"), _cache[0] || (_cache[0] = createTextVNode()), createBaseVNode("use", {
     "xlink:href": _ctx.spriteId
-  }, null, 8, _hoisted_2$G)], 16, _hoisted_1$V);
+  }, null, 8, _hoisted_2$G)], 16, _hoisted_1$W);
 }
 const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1e, [["render", _sfc_render$10]]);
 const DATA_TEST_ATTRIBUTE_NAME = "data-test";
@@ -12025,6 +12025,9 @@ const TranslationMixin = {
     $t: translate
   }
 };
+function useTranslate() {
+  return translate;
+}
 function listCacheClear$1() {
   this.__data__ = [];
   this.size = 0;
@@ -13505,7 +13508,7 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$U = ["id"];
+const _hoisted_1$V = ["id"];
 const _hoisted_2$F = {
   class: "modal__backdrop"
 };
@@ -13567,7 +13570,7 @@ function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
   })], 8, _hoisted_11$3), _cache[8] || (_cache[8] = createTextVNode()), createBaseVNode("div", {
     tabindex: "0",
     onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
-  }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$U)) : createCommentVNode("", true);
+  }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$V)) : createCommentVNode("", true);
 }
 const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1d, [["render", _sfc_render$$]]);
 function prepareButtonList(src, buttonOrder = config.buttonOrder) {
@@ -13689,7 +13692,7 @@ const _sfc_main$1c = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$T = {
+const _hoisted_1$U = {
   class: "button-group"
 };
 const _hoisted_2$E = ["onClick"];
@@ -13709,7 +13712,7 @@ function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     header: withCtx(() => [renderSlot(_ctx.$slots, "heading", {}, () => [createTextVNode(toDisplayString(_ctx.heading), 1)])]),
     content: withCtx(() => [renderSlot(_ctx.$slots, "content", {}, () => [createTextVNode(toDisplayString(_ctx.content), 1)])]),
-    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$T, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
+    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$U, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
       return openBlock(), createElementBlock("button", {
         key: button.label,
         type: "button",
@@ -13923,7 +13926,7 @@ const _sfc_main$19 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$S = {
+const _hoisted_1$T = {
   class: "error-list"
 };
 const _hoisted_2$D = {
@@ -13940,7 +13943,7 @@ function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
-  return openBlock(), createElementBlock("div", _hoisted_1$S, [createVNode(_component_i_flex, null, {
+  return openBlock(), createElementBlock("div", _hoisted_1$T, [createVNode(_component_i_flex, null, {
     default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, {
       key: 0,
       shrink: ""
@@ -14225,7 +14228,7 @@ const _sfc_main$17 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$R = ["id"];
+const _hoisted_1$S = ["id"];
 const _hoisted_2$C = {
   key: 0,
   ref: "errors",
@@ -14254,7 +14257,7 @@ function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       title: withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
       _: 3
-    }, 8, ["items", "bullets", "before-navigate"])], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$R)]),
+    }, 8, ["items", "bullets", "before-navigate"])], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$S)]),
     _: 3
   }, 8, ["modelValue"]);
 }
@@ -14411,7 +14414,7 @@ const _sfc_main$16 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$Q = {
+const _hoisted_1$R = {
   class: "button-group"
 };
 const _hoisted_2$B = ["type", "form", "onClick"];
@@ -14444,7 +14447,7 @@ function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
       default: withCtx(() => [_cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "input-text-fields")]),
       _: 3
     }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])]),
-    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$Q, [!_ctx.hasDeprecatedSlots ? (openBlock(true), createElementBlock(Fragment, {
+    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$R, [!_ctx.hasDeprecatedSlots ? (openBlock(true), createElementBlock(Fragment, {
       key: 0
     }, renderList(_ctx.preparedButtons, (button) => {
       return openBlock(), createElementBlock("button", {
@@ -15022,7 +15025,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$H = ["id", "disabled"];
+const _hoisted_1$I = ["id", "disabled"];
 const _hoisted_2$v = ["for"];
 const _hoisted_3$p = {
   key: 0,
@@ -15045,7 +15048,7 @@ function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: _ctx.disabled,
     onKeydown: _cache[0] || (_cache[0] = withKeys((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])),
     onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag())
-  }), null, 16, _hoisted_1$H), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("label", {
+  }), null, 16, _hoisted_1$I), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("label", {
     class: normalizeClass(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
     for: _ctx.id
   }, [renderSlot(_ctx.$slots, "default"), _cache[8] || (_cache[8] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
@@ -15801,7 +15804,7 @@ const _sfc_main$R = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$E = {
+const _hoisted_1$F = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
@@ -15815,7 +15818,7 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "popup",
     class: normalizeClass(_ctx.popupClasses),
     "aria-hidden": "true"
-  }, [createBaseVNode("div", _hoisted_1$E, [createBaseVNode("div", {
+  }, [createBaseVNode("div", _hoisted_1$F, [createBaseVNode("div", {
     class: normalizeClass(_ctx.arrowClass),
     style: normalizeStyle(_ctx.errorStyle)
   }, [createBaseVNode("span", null, toDisplayString(_ctx.errorMessage), 1), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("button", {
@@ -15904,7 +15907,7 @@ function computeListboxRect(anchor, options, root2 = document.documentElement, {
   }
   return void 0;
 }
-const _hoisted_1$D = ["onKeyup"];
+const _hoisted_1$E = ["onKeyup"];
 const teleportDisabled = false;
 const _sfc_main$Q = /* @__PURE__ */ defineComponent({
   __name: "IPopupListbox",
@@ -16014,16 +16017,18 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
         ref: wrapper2
       }, _ctx.$attrs, {
         class: "popup__wrapper",
+        tabindex: "0",
         onKeyup: withKeys(withModifiers(onKeyEsc, ["stop"]), ["esc"]),
         onClick: _cache[0] || (_cache[0] = withModifiers(() => {
         }, ["stop"]))
       }), [createBaseVNode("div", {
         ref_key: "content",
         ref: content
-      }, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$D)], 512)], 8, ["to"])) : createCommentVNode("", true);
+      }, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$E)], 512)], 8, ["to"])) : createCommentVNode("", true);
     };
   }
 });
+const $t = useTranslate();
 function useCombobox(inputRef, options) {
   if (!options) {
     return {
@@ -16227,13 +16232,17 @@ function useCombobox(inputRef, options) {
     if (!inputRef.value) {
       return;
     }
-    let description = selectMode.value ? "Valt förslag. " : "";
+    let description = selectMode.value ? `${$t("fkui.combobox.selected", "Valt förslag")} ` : "";
     if (isEmpty(filter2.value) || selectMode.value) {
-      description += `Det finns ${options.length} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`;
+      description += $t("fkui.combobox.listDetails", `Det finns {{ count }} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`, {
+        count: options.length
+      });
     } else if (hasOptions.value) {
-      description += `Det finns ${dropdownOptions.value.length} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`;
+      description += $t("fkui.combobox.matchesListDetails", `Det finns {{ count }} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`, {
+        count: dropdownOptions.value.length
+      });
     } else {
-      description = "Det finns inga förslag som matchar.";
+      description = $t("fkui.combobox.noMatchesListDetails", "Det finns inga förslag som matchar.");
     }
     inputRef.value.setAttribute("aria-description", description);
   });
@@ -16248,13 +16257,13 @@ function useCombobox(inputRef, options) {
     selectedValue
   };
 }
-const _hoisted_1$z = {
+const _hoisted_1$A = {
   class: "combobox"
 };
 const _hoisted_2$s = ["id"];
 const _hoisted_3$n = ["id", "aria-selected", "onClick"];
 const _sfc_main$M = /* @__PURE__ */ defineComponent({
-  __name: "IOptionsPopup",
+  __name: "IComboboxDropdown",
   props: {
     id: {},
     isOpen: {
@@ -16294,10 +16303,11 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
       }
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$z, [createVNode(unref(_sfc_main$Q), {
+      return openBlock(), createElementBlock("div", _hoisted_1$A, [createVNode(unref(_sfc_main$Q), {
         "is-open": _ctx.isOpen,
         anchor: _ctx.inputNode,
         "num-of-items": _ctx.options.length,
+        class: "combobox__listbox",
         onClose: onListboxClose
       }, {
         default: withCtx(() => [createBaseVNode("ul", {
@@ -16306,7 +16316,7 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
           ref: listboxNode,
           role: "listbox",
           "aria-label": "Förslag",
-          class: "combobox__listbox"
+          class: "combobox__listbox__list"
         }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (item) => {
           return openBlock(), createElementBlock("li", {
             id: isOptionActive(item) ? _ctx.activeOptionId : void 0,
@@ -16324,24 +16334,27 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
     };
   }
 });
+const _hoisted_1$z = ["aria-label"];
 const _sfc_main$L = /* @__PURE__ */ defineComponent({
-  __name: "IToggleOptionsButton",
+  __name: "IComboboxToggleButton",
   emits: ["toggle"],
   setup(__props, {
     emit: __emit
   }) {
+    const $t2 = useTranslate();
     const emit2 = __emit;
+    const ariaLabel = $t2("fkui.combobox.toggle", "Öppna förslagen");
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", {
         class: "combobox__button",
         type: "button",
-        "aria-label": "Öppna förslagen",
+        "aria-label": unref(ariaLabel),
         tabindex: "-1",
-        onClick: _cache[0] || (_cache[0] = withModifiers(($event) => emit2("toggle"), ["stop", "prevent"]))
+        onClick: _cache[0] || (_cache[0] = ($event) => emit2("toggle"))
       }, [createVNode(unref(FIcon), {
         name: "arrow-down",
         class: "text-field__icon"
-      })]);
+      })], 8, _hoisted_1$z);
     };
   }
 });
@@ -16871,8 +16884,8 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
     FLabel,
     FIcon,
     IPopupError,
-    IToggleOptionsButton: _sfc_main$L,
-    IOptionsPopup: _sfc_main$M
+    IComboboxDropdown: _sfc_main$M,
+    IComboboxToggleButton: _sfc_main$L
   },
   inheritAttrs: false,
   props: {
@@ -16968,6 +16981,11 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
       required: false,
       default: "sm-12"
     },
+    /**
+     * List of options.
+     *
+     * When set, the user can select a value from the list of options and filter while typing.
+     */
     options: {
       type: Array,
       required: false,
@@ -16978,9 +16996,26 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
   setup(props) {
     const inputNode = useTemplateRef("input");
     const textFieldTableMode = inject("textFieldTableMode", false);
+    const {
+      dropdownId,
+      dropdownIsOpen,
+      dropdownOptions,
+      activeOptionId,
+      activeOption,
+      selectedValue,
+      toggleDropdown,
+      closeDropdown
+    } = useCombobox(inputNode, props.options);
     return {
       textFieldTableMode,
-      ...useCombobox(inputNode, props.options)
+      dropdownId,
+      dropdownIsOpen,
+      dropdownOptions,
+      activeOptionId,
+      activeOption,
+      selectedValue,
+      toggleDropdown,
+      closeDropdown
     };
   },
   data() {
@@ -17208,8 +17243,8 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_popup_error = resolveComponent("i-popup-error");
-  const _component_i_toggle_options_button = resolveComponent("i-toggle-options-button");
-  const _component_i_options_popup = resolveComponent("i-options-popup");
+  const _component_i_combobox_toggle_button = resolveComponent("i-combobox-toggle-button");
+  const _component_i_combobox_dropdown = resolveComponent("i-combobox-dropdown");
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["text-field", _ctx.rootClass])
   }, [createBaseVNode("div", {
@@ -17269,11 +17304,11 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     "is-open": _ctx.showPopupError,
     "error-message": _ctx.validationMessage,
     onClose: _ctx.closePopupError
-  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$a, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), _ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$a, [createVNode(_component_i_toggle_options_button, {
+  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$a, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), _ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$a, [createVNode(_component_i_combobox_toggle_button, {
     "aria-controls": _ctx.dropdownIsOpen ? _ctx.dropdownId : void 0,
     "aria-expanded": _ctx.dropdownIsOpen,
     onToggle: _ctx.toggleDropdown
-  }, null, 8, ["aria-controls", "aria-expanded", "onToggle"])])) : createCommentVNode("", true)]), _cache[18] || (_cache[18] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")], 2), _cache[20] || (_cache[20] = createTextVNode()), _ctx.options && _ctx.$refs.input ? (openBlock(), createBlock(_component_i_options_popup, {
+  }, null, 8, ["aria-controls", "aria-expanded", "onToggle"])])) : createCommentVNode("", true)]), _cache[18] || (_cache[18] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")], 2), _cache[20] || (_cache[20] = createTextVNode()), _ctx.options && _ctx.$refs.input ? (openBlock(), createBlock(_component_i_combobox_dropdown, {
     key: 0,
     id: _ctx.dropdownId,
     "is-open": _ctx.dropdownIsOpen,

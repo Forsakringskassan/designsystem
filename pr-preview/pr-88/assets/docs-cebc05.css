@@ -5529,14 +5529,17 @@ input[type=search]:focus,
   min-width: var(--f-icon-size-small);
 }
 
-.combobox__listbox {
+.popup .popup__wrapper.combobox__listbox {
   background-color: var(--f-background-popupmenu);
-  margin: 0;
   border: 1px solid var(--f-border-color-popupmenu);
-  padding: 0;
-  display: block;
-  min-width: 15rem;
+  border-radius: var(--f-border-radius-medium);
 }
+
+.combobox__listbox__list {
+  margin: 0;
+  padding: 0;
+}
+
 .combobox__listbox__option {
   cursor: pointer;
   list-style-type: none;

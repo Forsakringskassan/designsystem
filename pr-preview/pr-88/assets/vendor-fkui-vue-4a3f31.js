@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -103,15 +103,15 @@
     ICalendarMonth: () => ICalendarMonth,
     ICalendarMonthGrid: () => ICalendarMonthGrid,
     ICalendarNavbar: () => ICalendarNavbar,
+    IComboboxDropdown: () => _sfc_main$M,
+    IComboboxToggleButton: () => _sfc_main$L,
     IFlex: () => IFlex,
     IFlexItem: () => IFlexItem,
-    IOptionsPopup: () => _sfc_main$M,
     IPopup: () => IPopup,
     IPopupError: () => IPopupError,
     IPopupListbox: () => _sfc_main$Q,
     IPopupMenu: () => IPopupMenu,
     ISkipLink: () => ISkipLink,
-    IToggleOptionsButton: () => _sfc_main$L,
     IValidationForm: () => FValidationForm,
     MenuAction: () => MenuAction,
     ModalReason: () => ModalReason,
@@ -1115,7 +1115,7 @@
     }
     return target;
   };
-  var _hoisted_1$V = ["aria-hidden"];
+  var _hoisted_1$W = ["aria-hidden"];
   var _hoisted_2$G = ["xlink:href"];
   function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("svg", (0, import_vue.mergeProps)(_ctx.$attrs, {
@@ -1124,7 +1124,7 @@
       "aria-hidden": _ctx.ariaHidden
     }), [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("use", {
       "xlink:href": _ctx.spriteId
-    }, null, 8, _hoisted_2$G)], 16, _hoisted_1$V);
+    }, null, 8, _hoisted_2$G)], 16, _hoisted_1$W);
   }
   var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$10]]);
   var DATA_TEST_ATTRIBUTE_NAME = "data-test";
@@ -3005,7 +3005,7 @@
       }
     }
   });
-  var _hoisted_1$U = ["id"];
+  var _hoisted_1$V = ["id"];
   var _hoisted_2$F = {
     class: "modal__backdrop"
   };
@@ -3067,7 +3067,7 @@
     })], 8, _hoisted_11$3), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", {
       tabindex: "0",
       onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
-    }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$U)) : (0, import_vue.createCommentVNode)("", true);
+    }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$V)) : (0, import_vue.createCommentVNode)("", true);
   }
   var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$$]]);
   function prepareButtonList(src, buttonOrder = config.buttonOrder) {
@@ -3189,7 +3189,7 @@
       }
     }
   });
-  var _hoisted_1$T = {
+  var _hoisted_1$U = {
     class: "button-group"
   };
   var _hoisted_2$E = ["onClick"];
@@ -3209,7 +3209,7 @@
     }, {
       header: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "heading", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.heading), 1)])]),
       content: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "content", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.content), 1)])]),
-      footer: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", _hoisted_1$T, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.preparedButtons, (button) => {
+      footer: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", _hoisted_1$U, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.preparedButtons, (button) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", {
           key: button.label,
           type: "button",
@@ -3423,7 +3423,7 @@
       }
     }
   });
-  var _hoisted_1$S = {
+  var _hoisted_1$T = {
     class: "error-list"
   };
   var _hoisted_2$D = {
@@ -3440,7 +3440,7 @@
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$S, [(0, import_vue.createVNode)(_component_i_flex, null, {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$T, [(0, import_vue.createVNode)(_component_i_flex, null, {
       default: (0, import_vue.withCtx)(() => [_ctx.hasTitleSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_flex_item, {
         key: 0,
         shrink: ""
@@ -3740,7 +3740,7 @@
       }
     }
   });
-  var _hoisted_1$R = ["id"];
+  var _hoisted_1$S = ["id"];
   var _hoisted_2$C = {
     key: 0,
     ref: "errors",
@@ -3769,7 +3769,7 @@
       }, {
         title: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message")]),
         _: 3
-      }, 8, ["items", "bullets", "before-navigate"])], 512)) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 16, _hoisted_1$R)]),
+      }, 8, ["items", "bullets", "before-navigate"])], 512)) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 16, _hoisted_1$S)]),
       _: 3
     }, 8, ["modelValue"]);
   }
@@ -3926,7 +3926,7 @@
       }
     }
   });
-  var _hoisted_1$Q = {
+  var _hoisted_1$R = {
     class: "button-group"
   };
   var _hoisted_2$B = ["type", "form", "onClick"];
@@ -3959,7 +3959,7 @@
         default: (0, import_vue.withCtx)(() => [_cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-text-fields")]),
         _: 3
       }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])]),
-      footer: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", _hoisted_1$Q, [!_ctx.hasDeprecatedSlots ? ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, {
+      footer: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", _hoisted_1$R, [!_ctx.hasDeprecatedSlots ? ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, {
         key: 0
       }, (0, import_vue.renderList)(_ctx.preparedButtons, (button) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", {
@@ -4321,11 +4321,11 @@
       }
     }
   });
-  var _hoisted_1$P = {
+  var _hoisted_1$Q = {
     "data-test": "f-error-page"
   };
   function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$P, _cache[0] || (_cache[0] = [(0, import_vue.createElementVNode)("h1", null, "Fel", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("p", null, "Ett fel har uppst\xE5tt.", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("a", {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$Q, _cache[0] || (_cache[0] = [(0, import_vue.createElementVNode)("h1", null, "Fel", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("p", null, "Ett fel har uppst\xE5tt.", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("a", {
       href: "/"
     }, "G\xE5 till startsidan", -1)]));
   }
@@ -4380,7 +4380,7 @@
     const startOfMonth = date.startOfMonth();
     return isMonthBefore(startOfMonth, minDate) || isMonthAfter(startOfMonth, maxDate);
   }
-  function getMessage($t, date, minDate, maxDate) {
+  function getMessage($t2, date, minDate, maxDate) {
     const invalidMonth = isInvalidMonth(date, minDate, maxDate);
     if (!invalidMonth) {
       return void 0;
@@ -4391,7 +4391,7 @@
         monthName,
         year
       } = minDate;
-      return $t("fkui.calendar.error.below-min-date", "Du kan inte v\xE4lja en dag f\xF6re {{day}} {{month}} {{year}}", {
+      return $t2("fkui.calendar.error.below-min-date", "Du kan inte v\xE4lja en dag f\xF6re {{day}} {{month}} {{year}}", {
         day,
         month: monthName,
         year
@@ -4403,7 +4403,7 @@
         monthName,
         year
       } = maxDate;
-      return $t("fkui.calendar.error.above-max-date", "Du kan inte v\xE4lja en dag efter {{day}} {{month}} {{year}}", {
+      return $t2("fkui.calendar.error.above-max-date", "Du kan inte v\xE4lja en dag efter {{day}} {{month}} {{year}}", {
         day,
         month: monthName,
         year
@@ -4524,7 +4524,7 @@
       }
     }
   });
-  var _hoisted_1$O = {
+  var _hoisted_1$P = {
     class: "calendar-navbar"
   };
   var _hoisted_2$A = {
@@ -4541,7 +4541,7 @@
   };
   function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$O, [(0, import_vue.createElementVNode)("div", _hoisted_2$A, (0, import_vue.toDisplayString)(_ctx.currentText), 1), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$P, [(0, import_vue.createElementVNode)("div", _hoisted_2$A, (0, import_vue.toDisplayString)(_ctx.currentText), 1), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
       ref: "previousButton",
       class: "calendar-navbar__arrow calendar-navbar__arrow--previous",
       type: "button",
@@ -4641,7 +4641,7 @@
       }
     }
   });
-  var _hoisted_1$N = {
+  var _hoisted_1$O = {
     key: 0,
     class: "calendar-month__col--week"
   };
@@ -4684,7 +4684,7 @@
       role: "application",
       onFocusin: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusin && _ctx.onFocusin(...args)),
       onFocusout: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusout && _ctx.onFocusout(...args))
-    }, [(0, import_vue.createElementVNode)("colgroup", null, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_1$N)) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _cache[3] || (_cache[3] = (0, import_vue.createElementVNode)("col", {
+    }, [(0, import_vue.createElementVNode)("colgroup", null, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_1$O)) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _cache[3] || (_cache[3] = (0, import_vue.createElementVNode)("col", {
       class: "calendar-month__col--day"
     }, null, -1)), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _cache[5] || (_cache[5] = (0, import_vue.createElementVNode)("col", {
       class: "calendar-month__col--day"
@@ -4852,7 +4852,7 @@
       }
     }
   });
-  var _hoisted_1$M = ["data-date", "tabindex", "onClick", "onKeydown"];
+  var _hoisted_1$N = ["data-date", "tabindex", "onClick", "onKeydown"];
   function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_month_grid = (0, import_vue.resolveComponent)("i-calendar-month-grid");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_calendar_month_grid, {
@@ -4872,7 +4872,7 @@
       }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {
         date,
         isFocused: _ctx.isDayFocused(date)
-      })], 40, _hoisted_1$M)]),
+      })], 40, _hoisted_1$N)]),
       _: 3
     }, 8, ["value"]);
   }
@@ -4929,13 +4929,13 @@
       }
     }
   });
-  var _hoisted_1$L = {
+  var _hoisted_1$M = {
     class: "calendar__wrapper"
   };
   function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_navbar = (0, import_vue.resolveComponent)("i-calendar-navbar");
     const _component_i_calendar_month = (0, import_vue.resolveComponent)("i-calendar-month");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$L, [(0, import_vue.createVNode)(_component_i_calendar_navbar, {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$M, [(0, import_vue.createVNode)(_component_i_calendar_navbar, {
       "model-value": _ctx.modelValue,
       "min-date": _ctx.minDate,
       "max-date": _ctx.maxDate,
@@ -5042,7 +5042,7 @@
       }
     }
   });
-  var _hoisted_1$K = {
+  var _hoisted_1$L = {
     "aria-hidden": "true"
   };
   var _hoisted_2$y = {
@@ -5051,7 +5051,7 @@
   function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", {
       class: (0, import_vue.normalizeClass)(_ctx.dayClasses)
-    }, [(0, import_vue.createElementVNode)("span", _hoisted_1$K, (0, import_vue.toDisplayString)(_ctx.day.day), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_2$y, (0, import_vue.toDisplayString)(_ctx.srText), 1)], 2);
+    }, [(0, import_vue.createElementVNode)("span", _hoisted_1$L, (0, import_vue.toDisplayString)(_ctx.day.day), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_2$y, (0, import_vue.toDisplayString)(_ctx.srText), 1)], 2);
   }
   var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$N]]);
   function offset(page, el) {
@@ -5862,7 +5862,7 @@
       }
     }
   });
-  var _hoisted_1$J = ["aria-label"];
+  var _hoisted_1$K = ["aria-label"];
   var _hoisted_2$x = {
     ref: "contextmenu",
     role: "menu",
@@ -5911,7 +5911,7 @@
           ref_for: true,
           ref: "anchors"
         }, (0, import_vue.toDisplayString)(item.label), 513)], 8, _hoisted_4$m), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _ctx.hasSeparatorAfterItemAt(index) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("hr", _hoisted_5$h)) : (0, import_vue.createCommentVNode)("", true)], 8, _hoisted_3$r);
-      }), 128))], 512)], 40, _hoisted_1$J)]),
+      }), 128))], 512)], 40, _hoisted_1$K)]),
       _: 1
     }, 8, ["is-open", "anchor", "focus-element"]);
   }
@@ -6183,7 +6183,7 @@
       }
     }
   });
-  var _hoisted_1$I = ["id"];
+  var _hoisted_1$J = ["id"];
   var _hoisted_2$w = {
     key: 0,
     class: "sr-only"
@@ -6253,7 +6253,7 @@
       name: "error"
     }), (0, import_vue.createTextVNode)(" " + (0, import_vue.toDisplayString)(_ctx.validity.validationMessage), 1)])) : (0, import_vue.createCommentVNode)("", true)])], 2)) : (0, import_vue.createCommentVNode)("", true)], 64)) : (0, import_vue.createCommentVNode)("", true), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.groupContentClass)
-    }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2)], 42, _hoisted_1$I);
+    }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2)], 42, _hoisted_1$J);
   }
   var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$K]]);
   var anyType$1 = [String, Object, Array, Number, Date, Boolean];
@@ -6443,7 +6443,7 @@
       }
     }
   });
-  var _hoisted_1$H = ["id", "disabled"];
+  var _hoisted_1$I = ["id", "disabled"];
   var _hoisted_2$v = ["for"];
   var _hoisted_3$p = {
     key: 0,
@@ -6466,7 +6466,7 @@
       disabled: _ctx.disabled,
       onKeydown: _cache[0] || (_cache[0] = (0, import_vue.withKeys)((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])),
       onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag())
-    }), null, 16, _hoisted_1$H), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("label", {
+    }), null, 16, _hoisted_1$I), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("label", {
       class: (0, import_vue.normalizeClass)(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
       for: _ctx.id
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), _ctx.$slots.details ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
@@ -6786,7 +6786,7 @@
       }
     }
   });
-  var _hoisted_1$G = {
+  var _hoisted_1$H = {
     class: "crud-dataset"
   };
   var _hoisted_2$u = {
@@ -6796,7 +6796,7 @@
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_form_modal = (0, import_vue.resolveComponent)("f-form-modal");
     const _component_f_confirm_modal = (0, import_vue.resolveComponent)("f-confirm-modal");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$G, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), _ctx.hasAddSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$u, [(0, import_vue.createElementVNode)("button", {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$H, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), _ctx.hasAddSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$u, [(0, import_vue.createElementVNode)("button", {
       "data-test": "f-crud-dataset-add-button",
       type: "button",
       class: "button button--tertiary crud-dataset__add-button",
@@ -6904,7 +6904,7 @@
       }
     }
   });
-  var _hoisted_1$F = {
+  var _hoisted_1$G = {
     key: 1,
     class: "sr-only"
   };
@@ -6918,7 +6918,7 @@
       key: 0,
       class: "button__icon",
       name: _ctx.iconName
-    }, null, 8, ["name"])) : (0, import_vue.createCommentVNode)("", true), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), !_ctx.label ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_1$F, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.buttonText), 1)])])) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _ctx.label ? (0, import_vue.renderSlot)(_ctx.$slots, "default", {
+    }, null, 8, ["name"])) : (0, import_vue.createCommentVNode)("", true), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), !_ctx.label ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_1$G, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.buttonText), 1)])])) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _ctx.label ? (0, import_vue.renderSlot)(_ctx.$slots, "default", {
       key: 2
     }, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.buttonText), 1)]) : (0, import_vue.createCommentVNode)("", true)]);
   }
@@ -7422,7 +7422,7 @@
       }
     }
   });
-  var _hoisted_1$E = {
+  var _hoisted_1$F = {
     ref: "wrapper",
     class: "popup-error__wrapper"
   };
@@ -7436,7 +7436,7 @@
       ref: "popup",
       class: (0, import_vue.normalizeClass)(_ctx.popupClasses),
       "aria-hidden": "true"
-    }, [(0, import_vue.createElementVNode)("div", _hoisted_1$E, [(0, import_vue.createElementVNode)("div", {
+    }, [(0, import_vue.createElementVNode)("div", _hoisted_1$F, [(0, import_vue.createElementVNode)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.arrowClass),
       style: (0, import_vue.normalizeStyle)(_ctx.errorStyle)
     }, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(_ctx.errorMessage), 1), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
@@ -7535,7 +7535,7 @@
     }
     return void 0;
   }
-  var _hoisted_1$D = ["onKeyup"];
+  var _hoisted_1$E = ["onKeyup"];
   var teleportDisabled = false;
   var _sfc_main$Q = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "IPopupListbox",
@@ -7645,13 +7645,14 @@
           ref: wrapper
         }, _ctx.$attrs, {
           class: "popup__wrapper",
+          tabindex: "0",
           onKeyup: (0, import_vue.withKeys)((0, import_vue.withModifiers)(onKeyEsc, ["stop"]), ["esc"]),
           onClick: _cache[0] || (_cache[0] = (0, import_vue.withModifiers)(() => {
           }, ["stop"]))
         }), [(0, import_vue.createElementVNode)("div", {
           ref_key: "content",
           ref: content
-        }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)], 16, _hoisted_1$D)], 512)], 8, ["to"])) : (0, import_vue.createCommentVNode)("", true);
+        }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)], 16, _hoisted_1$E)], 512)], 8, ["to"])) : (0, import_vue.createCommentVNode)("", true);
       };
     }
   });
@@ -7951,7 +7952,7 @@
       }
     }
   });
-  var _hoisted_1$C = ["aria-label"];
+  var _hoisted_1$D = ["aria-label"];
   var _hoisted_2$t = {
     role: "menu",
     class: "ipopupmenu__list"
@@ -7994,7 +7995,7 @@
           target: item.target,
           tabindex: "0"
         }, [_ctx.isSelected(index) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$f, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(_ctx.selectedMenuItemScreenReaderText) + "\xA0", 1)])) : (0, import_vue.createCommentVNode)("", true), (0, import_vue.createTextVNode)(" " + (0, import_vue.toDisplayString)(item.label), 1)], 8, _hoisted_4$j)], 10, _hoisted_3$o);
-      }), 128))])], 8, _hoisted_1$C)]),
+      }), 128))])], 8, _hoisted_1$D)]),
       _: 1
     }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
   }
@@ -8196,7 +8197,7 @@
       }
     }
   });
-  var _hoisted_1$B = {
+  var _hoisted_1$C = {
     key: 0,
     ref: "content",
     "data-test": "animation-content"
@@ -8205,7 +8206,7 @@
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.animationClasses),
       style: (0, import_vue.normalizeStyle)(_ctx.heightStyle)
-    }, [_ctx.shouldVIf ? (0, import_vue.withDirectives)(((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$B, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)), [[import_vue.vShow, _ctx.shouldVShow]]) : (0, import_vue.createCommentVNode)("", true)], 6);
+    }, [_ctx.shouldVIf ? (0, import_vue.withDirectives)(((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$C, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)), [[import_vue.vShow, _ctx.shouldVShow]]) : (0, import_vue.createCommentVNode)("", true)], 6);
   }
   var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$B]]);
   var _sfc_main$N = (0, import_vue.defineComponent)({
@@ -8222,14 +8223,15 @@
       }
     }
   });
-  var _hoisted_1$A = ["href"];
+  var _hoisted_1$B = ["href"];
   function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("a", {
       class: "iskiplink",
       href: _ctx.href
-    }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$A);
+    }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$B);
   }
   var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$A]]);
+  var $t = useTranslate();
   function useCombobox(inputRef, options) {
     if (!options) {
       return {
@@ -8433,13 +8435,17 @@
       if (!inputRef.value) {
         return;
       }
-      let description = selectMode.value ? "Valt f\xF6rslag. " : "";
+      let description = selectMode.value ? `${$t("fkui.combobox.selected", "Valt f\xF6rslag")} ` : "";
       if ((0, import_logic.isEmpty)(filter2.value) || selectMode.value) {
-        description += `Det finns ${options.length} f\xF6rslag. Anv\xE4nd upp\xE5tpil och ned\xE5tpil f\xF6r att navigera bland f\xF6rslagen.`;
+        description += $t("fkui.combobox.listDetails", `Det finns {{ count }} f\xF6rslag. Anv\xE4nd upp\xE5tpil och ned\xE5tpil f\xF6r att navigera bland f\xF6rslagen.`, {
+          count: options.length
+        });
       } else if (hasOptions.value) {
-        description += `Det finns ${dropdownOptions.value.length} f\xF6rslag som matchar. Anv\xE4nd upp\xE5tpil och ned\xE5tpil f\xF6r att navigera bland f\xF6rslagen.`;
+        description += $t("fkui.combobox.matchesListDetails", `Det finns {{ count }} f\xF6rslag som matchar. Anv\xE4nd upp\xE5tpil och ned\xE5tpil f\xF6r att navigera bland f\xF6rslagen.`, {
+          count: dropdownOptions.value.length
+        });
       } else {
-        description = "Det finns inga f\xF6rslag som matchar.";
+        description = $t("fkui.combobox.noMatchesListDetails", "Det finns inga f\xF6rslag som matchar.");
       }
       inputRef.value.setAttribute("aria-description", description);
     });
@@ -8454,13 +8460,13 @@
       selectedValue
     };
   }
-  var _hoisted_1$z = {
+  var _hoisted_1$A = {
     class: "combobox"
   };
   var _hoisted_2$s = ["id"];
   var _hoisted_3$n = ["id", "aria-selected", "onClick"];
   var _sfc_main$M = /* @__PURE__ */ (0, import_vue.defineComponent)({
-    __name: "IOptionsPopup",
+    __name: "IComboboxDropdown",
     props: {
       id: {},
       isOpen: {
@@ -8500,10 +8506,11 @@
         }
       });
       return (_ctx, _cache) => {
-        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$z, [(0, import_vue.createVNode)((0, import_vue.unref)(_sfc_main$Q), {
+        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$A, [(0, import_vue.createVNode)((0, import_vue.unref)(_sfc_main$Q), {
           "is-open": _ctx.isOpen,
           anchor: _ctx.inputNode,
           "num-of-items": _ctx.options.length,
+          class: "combobox__listbox",
           onClose: onListboxClose
         }, {
           default: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("ul", {
@@ -8512,7 +8519,7 @@
             ref: listboxNode,
             role: "listbox",
             "aria-label": "F\xF6rslag",
-            class: "combobox__listbox"
+            class: "combobox__listbox__list"
           }, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.options, (item) => {
             return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", {
               id: isOptionActive(item) ? _ctx.activeOptionId : void 0,
@@ -8530,24 +8537,27 @@
       };
     }
   });
+  var _hoisted_1$z = ["aria-label"];
   var _sfc_main$L = /* @__PURE__ */ (0, import_vue.defineComponent)({
-    __name: "IToggleOptionsButton",
+    __name: "IComboboxToggleButton",
     emits: ["toggle"],
     setup(__props, {
       emit: __emit
     }) {
+      const $t2 = useTranslate();
       const emit = __emit;
+      const ariaLabel = $t2("fkui.combobox.toggle", "\xD6ppna f\xF6rslagen");
       return (_ctx, _cache) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", {
           class: "combobox__button",
           type: "button",
-          "aria-label": "\xD6ppna f\xF6rslagen",
+          "aria-label": (0, import_vue.unref)(ariaLabel),
           tabindex: "-1",
-          onClick: _cache[0] || (_cache[0] = (0, import_vue.withModifiers)(($event) => emit("toggle"), ["stop", "prevent"]))
+          onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
         }, [(0, import_vue.createVNode)((0, import_vue.unref)(FIcon), {
           name: "arrow-down",
           class: "text-field__icon"
-        })]);
+        })], 8, _hoisted_1$z);
       };
     }
   });
@@ -9129,8 +9139,8 @@
       FLabel,
       FIcon,
       IPopupError,
-      IToggleOptionsButton: _sfc_main$L,
-      IOptionsPopup: _sfc_main$M
+      IComboboxDropdown: _sfc_main$M,
+      IComboboxToggleButton: _sfc_main$L
     },
     inheritAttrs: false,
     props: {
@@ -9226,6 +9236,11 @@
         required: false,
         default: "sm-12"
       },
+      /**
+       * List of options.
+       *
+       * When set, the user can select a value from the list of options and filter while typing.
+       */
       options: {
         type: Array,
         required: false,
@@ -9236,9 +9251,26 @@
     setup(props) {
       const inputNode = (0, import_vue.useTemplateRef)("input");
       const textFieldTableMode = (0, import_vue.inject)("textFieldTableMode", false);
+      const {
+        dropdownId,
+        dropdownIsOpen,
+        dropdownOptions,
+        activeOptionId,
+        activeOption,
+        selectedValue,
+        toggleDropdown,
+        closeDropdown
+      } = useCombobox(inputNode, props.options);
       return {
         textFieldTableMode,
-        ...useCombobox(inputNode, props.options)
+        dropdownId,
+        dropdownIsOpen,
+        dropdownOptions,
+        activeOptionId,
+        activeOption,
+        selectedValue,
+        toggleDropdown,
+        closeDropdown
       };
     },
     data() {
@@ -9466,8 +9498,8 @@
     const _component_f_label = (0, import_vue.resolveComponent)("f-label");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup_error = (0, import_vue.resolveComponent)("i-popup-error");
-    const _component_i_toggle_options_button = (0, import_vue.resolveComponent)("i-toggle-options-button");
-    const _component_i_options_popup = (0, import_vue.resolveComponent)("i-options-popup");
+    const _component_i_combobox_toggle_button = (0, import_vue.resolveComponent)("i-combobox-toggle-button");
+    const _component_i_combobox_dropdown = (0, import_vue.resolveComponent)("i-combobox-dropdown");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["text-field", _ctx.rootClass])
     }, [(0, import_vue.createElementVNode)("div", {
@@ -9527,11 +9559,11 @@
       "is-open": _ctx.showPopupError,
       "error-message": _ctx.validationMessage,
       onClose: _ctx.closePopupError
-    }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : (0, import_vue.createCommentVNode)("", true), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), _ctx.$slots["append-inner"] ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_6$a, [(0, import_vue.renderSlot)(_ctx.$slots, "append-inner")])) : (0, import_vue.createCommentVNode)("", true), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), _ctx.options ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_7$a, [(0, import_vue.createVNode)(_component_i_toggle_options_button, {
+    }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : (0, import_vue.createCommentVNode)("", true), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), _ctx.$slots["append-inner"] ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_6$a, [(0, import_vue.renderSlot)(_ctx.$slots, "append-inner")])) : (0, import_vue.createCommentVNode)("", true), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), _ctx.options ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_7$a, [(0, import_vue.createVNode)(_component_i_combobox_toggle_button, {
       "aria-controls": _ctx.dropdownIsOpen ? _ctx.dropdownId : void 0,
       "aria-expanded": _ctx.dropdownIsOpen,
       onToggle: _ctx.toggleDropdown
-    }, null, 8, ["aria-controls", "aria-expanded", "onToggle"])])) : (0, import_vue.createCommentVNode)("", true)]), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-right")], 2), _cache[20] || (_cache[20] = (0, import_vue.createTextVNode)()), _ctx.options && _ctx.$refs.input ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_options_popup, {
+    }, null, 8, ["aria-controls", "aria-expanded", "onToggle"])])) : (0, import_vue.createCommentVNode)("", true)]), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-right")], 2), _cache[20] || (_cache[20] = (0, import_vue.createTextVNode)()), _ctx.options && _ctx.$refs.input ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_combobox_dropdown, {
       key: 0,
       id: _ctx.dropdownId,
       "is-open": _ctx.dropdownIsOpen,
