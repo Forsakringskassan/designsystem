@@ -135,8 +135,5 @@
   "engines": {
     "node": ">= 20",
     "npm": ">= 7"
-  },
-  "dependencies": {
-    "open": "^10.1.0"
   }
 }
