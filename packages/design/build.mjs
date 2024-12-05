@@ -55,7 +55,7 @@ async function optimzeAssets(src, dst) {
     }
 }
 
-async function postprocess(css, from, to, { theme, minify }) {
+async function postprocess(css, from, to, { theme, minify, sourceMap }) {
     /** @type {import("cssnano").Options} */
     const cssnanoOptions = {
         preset: ["default", { discardComments: { removeAll: true } }],
@@ -74,7 +74,11 @@ async function postprocess(css, from, to, { theme, minify }) {
         theme ? varFuncFallback(fallbackOptions) : false,
         minify ? cssnano(cssnanoOptions) : false,
     ].filter(Boolean);
-    return await postcss(plugins).process(css, { from, to });
+    return await postcss(plugins).process(css, {
+        from,
+        to,
+        map: { prev: sourceMap },
+    });
 }
 
 /**
@@ -107,6 +111,8 @@ async function compileSass(src, dst, { theme } = {}) {
     const result = sass.compileString(data, {
         style: "expanded",
         loadPaths: ["."],
+        sourceMap: true,
+        sourceMapIncludeSources: true,
 
         /* consider all current active deprecations to be fatal, i.e. fail the build */
         fatalDeprecations: Object.values(sass.deprecations)
@@ -117,10 +123,12 @@ async function compileSass(src, dst, { theme } = {}) {
     const development = await postprocess(result.css, src, dst, {
         theme,
         minify: false,
+        sourceMap: result.sourceMap,
     });
     const production = await postprocess(result.css, src, dst, {
         theme,
         minify: true,
+        sourceMap: result.sourceMap,
     });
     const { dir, name } = path.parse(dst);
 
@@ -144,7 +152,22 @@ await fs.mkdir("lib", { recursive: true });
 
 console.group();
 await optimzeAssets("src/assets", "temp/assets");
-await compileSass("src/fkui-exp.scss", "lib/fkui-exp.css", { theme: "exp" });
-await compileSass("src/fkui-int.scss", "lib/fkui-int.css", { theme: "int" });
-await compileSass("src/fonts.scss", "lib/fonts.css");
+try {
+    await compileSass("src/fkui-exp.scss", "lib/fkui-exp.css", {
+        theme: "exp",
+    });
+    await compileSass("src/fkui-int.scss", "lib/fkui-int.css", {
+        theme: "int",
+    });
+    await compileSass("src/fonts.scss", "lib/fonts.css");
+} catch (err) {
+    console.log();
+    if (err instanceof postcss.CssSyntaxError) {
+        console.error(`${err.file}:${err.line}:${err.column}: ${err.reason}`);
+        console.log(err.showSourceCode());
+        process.exitCode = 1;
+    } else {
+        throw err;
+    }
+}
 console.groupEnd();
