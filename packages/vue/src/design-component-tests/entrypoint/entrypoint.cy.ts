@@ -29,11 +29,13 @@ const TestComponent = defineComponent({
 it("should match visual regression (desktop)", () => {
     cy.viewport(...Viewport.DESKTOP);
     cy.mount(TestComponent);
+    cy.get(".entrypoint").should("be.visible");
     cy.get("#wrapper").toMatchScreenshot();
 });
 
 it("should match visual regression (mobile)", () => {
     cy.viewport(...Viewport.MOBILE);
     cy.mount(TestComponent);
+    cy.get(".entrypoint").should("be.visible");
     cy.get("#wrapper").toMatchScreenshot();
 });
