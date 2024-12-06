@@ -57,10 +57,12 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <!--v-if-->
 </div>
@@ -108,10 +110,12 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <!--v-if-->
 </div>
@@ -159,10 +163,12 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <!--v-if-->
 </div>
@@ -210,10 +216,12 @@ exports[`snapshots should match snapshot when validityMode is VALID and isValid 
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <!--v-if-->
 </div>
@@ -261,10 +269,12 @@ exports[`snapshots should match snapshot with label and input 1`] = `
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <!--v-if-->
 </div>
@@ -312,10 +322,12 @@ exports[`snapshots should match snapshot with label, error message and input 1`]
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <!--v-if-->
 </div>
@@ -363,10 +375,12 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
+        <!--v-if-->
       </div>
       
       
     </div>
+    <!--v-if-->
   </div>
   <!--v-if-->
 </div>

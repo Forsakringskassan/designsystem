@@ -12,3 +12,9 @@ export {
     ICalendarMonthGrid,
     ICalendarNavbar,
 } from "./calendar";
+
+export {
+    IComboboxDropdown,
+    IComboboxToggleButton,
+    useCombobox,
+} from "./combobox";
