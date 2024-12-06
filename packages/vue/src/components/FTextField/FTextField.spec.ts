@@ -477,12 +477,12 @@ describe("set v-model programmatic", () => {
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.vm.$data.validityMode).toBe("ERROR");
-            expect(wrapper.vm.$data.viewValue).toBe("original input");
+            expect(wrapper.vm.viewValue).toBe("original input");
             expect(wrapper.vm.$data.lastModelValue).toBe("original input");
 
             await wrapper.setProps({ modelValue: vModel });
 
-            expect(wrapper.vm.$data.viewValue).toBe(vModel);
+            expect(wrapper.vm.viewValue).toBe(vModel);
         },
     );
 
@@ -527,7 +527,7 @@ describe("set v-model programmatic", () => {
 
             await wrapper.setProps({ modelValue: vModel });
 
-            expect(wrapper.vm.$data.viewValue).toBe(expectedViewModel);
+            expect(wrapper.vm.viewValue).toBe(expectedViewModel);
         },
     );
 });

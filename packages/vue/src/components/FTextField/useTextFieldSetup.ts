@@ -1,7 +1,7 @@
-import { inject, ref, useTemplateRef } from "vue";
+import { inject, nextTick, type Ref, ref, useTemplateRef } from "vue";
 import { useCombobox } from "../../internal-components";
-import { FormatFunction } from "./FormatFunction";
-import { ParseFunction } from "./ParseFunction";
+import { type FormatFunction } from "./FormatFunction";
+import { type ParseFunction } from "./ParseFunction";
 
 interface FTextFieldProps {
     id: string;
@@ -15,9 +15,30 @@ interface FTextFieldProps {
     options?: string[];
 }
 
-export function useTextFieldSetup(props: FTextFieldProps): any {
+export function useTextFieldSetup(props: FTextFieldProps): {
+    textFieldTableMode: boolean;
+    viewValue: Ref<string>;
+    onOptionSelected: (value: string) => void;
+    dropdownId: string;
+    dropdownIsOpen: Readonly<Ref<boolean>>;
+    dropdownOptions: Readonly<Ref<string[]>>;
+    activeOptionId: string;
+    activeOption: Readonly<Ref<string | null>>;
+    toggleDropdown: () => void;
+    selectOption: (value: string) => void;
+    closeDropdown: () => void;
+} {
     const inputNode = useTemplateRef<HTMLInputElement>("input");
     const textFieldTableMode = inject("textFieldTableMode", false) as boolean;
+    const viewValue = ref("");
+
+    async function onOptionSelected(value: string): Promise<void> {
+        viewValue.value = value;
+        await nextTick();
+
+        inputNode.value?.select();
+        inputNode.value?.focus();
+    }
 
     const {
         dropdownId,
@@ -25,21 +46,22 @@ export function useTextFieldSetup(props: FTextFieldProps): any {
         dropdownOptions,
         activeOptionId,
         activeOption,
-        selectedValue,
         toggleDropdown,
+        selectOption,
         closeDropdown,
-    } = useCombobox(inputNode, props.options);
+    } = useCombobox(inputNode, props.options, onOptionSelected);
 
     return {
-        viewValue: ref(""),
         textFieldTableMode,
+        viewValue,
+        onOptionSelected,
         dropdownId,
         dropdownIsOpen,
         dropdownOptions,
         activeOptionId,
         activeOption,
-        selectedValue,
         toggleDropdown,
+        selectOption,
         closeDropdown,
     };
 }

@@ -1,10 +1,11 @@
 <script lang="ts">
 import { type BankAccountNumberString, ValidationService, parseBankAccountNumber } from "@fkui/logic";
-import { defineComponent, inject, type PropType } from "vue";
+import { defineComponent, type PropType } from "vue";
 import FTextField from "../../FTextField.vue";
 import { ParseFunction } from "../../index";
 import { getInputElement } from "../../../../utils";
 import { TranslationMixin } from "../../../../plugins";
+import { useTextFieldSetup } from "../../useTextFieldSetup";
 
 export default defineComponent({
     name: "FBankAccountNumberTextField",
@@ -17,10 +18,8 @@ export default defineComponent({
             default: parseBankAccountNumber,
         },
     },
-    setup() {
-        return {
-            textFieldTableMode: inject("textFieldTableMode", false) as boolean,
-        };
+    setup(props) {
+        return useTextFieldSetup(props);
     },
     data() {
         return {

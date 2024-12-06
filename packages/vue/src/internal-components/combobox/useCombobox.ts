@@ -19,14 +19,15 @@ const $t = useTranslate();
 export function useCombobox(
     inputRef: Readonly<ShallowRef<HTMLInputElement | null>>,
     options: string[] | undefined,
+    onOptionSelected?: (value: string) => void,
 ): {
     dropdownId: string;
     dropdownIsOpen: Readonly<Ref<boolean>>;
     dropdownOptions: Readonly<Ref<string[]>>;
     activeOptionId: string;
     activeOption: Readonly<Ref<string | null>>;
-    selectedValue: Ref<string | null>;
     toggleDropdown: () => void;
+    selectOption: (value: string) => void;
     closeDropdown: () => void;
 } {
     if (!options) {
@@ -36,8 +37,10 @@ export function useCombobox(
             dropdownOptions: ref([]),
             activeOptionId: "",
             activeOption: ref(null),
-            selectedValue: ref(null),
             toggleDropdown() {
+                /* do nothing */
+            },
+            selectOption() {
                 /* do nothing */
             },
             closeDropdown() {
@@ -57,7 +60,7 @@ export function useCombobox(
     const activeOption: Ref<string | null> = ref(null);
     const filter = ref("");
     const selectMode = ref(false);
-    const selectedValue: Ref<string | null> = ref(null);
+    const selectedOption: Ref<string | null> = ref(null);
 
     const dropdownOptions = computed(() => {
         if (isEmpty(filter.value) || selectMode.value) {
@@ -77,15 +80,6 @@ export function useCombobox(
 
     const hasMultipleOptions = computed(() => {
         return dropdownOptions.value.length > 1;
-    });
-
-    // selectedValue trigger: closes dropdown and sets internal values
-    watchEffect(() => {
-        if (selectedValue.value) {
-            close();
-            filter.value = selectedValue.value;
-            selectMode.value = true;
-        }
     });
 
     // dropdownIsOpen trigger: sets input aria-expanded, aria-controls
@@ -150,6 +144,41 @@ export function useCombobox(
         inputRef.value.setAttribute("aria-description", description);
     });
 
+    onMounted(() => {
+        if (!inputRef.value) {
+            throw new Error("missing input ref");
+        }
+
+        filter.value = inputRef.value.value;
+        inputRef.value.setAttribute("role", "combobox");
+        inputRef.value.setAttribute("aria-autocomplete", "list");
+    });
+
+    return {
+        dropdownId,
+        dropdownIsOpen,
+        dropdownOptions,
+        activeOptionId,
+        activeOption,
+        toggleDropdown,
+        selectOption,
+        closeDropdown: close,
+    };
+
+    function selectOption(value: string): void {
+        selectedOption.value = value;
+
+        if (selectedOption.value) {
+            close();
+            filter.value = selectedOption.value;
+            selectMode.value = true;
+
+            if (onOptionSelected) {
+                onOptionSelected(value);
+            }
+        }
+    }
+
     async function openSelected(
         fallback: null | "first" | "last" = null,
     ): Promise<void> {
@@ -213,16 +242,6 @@ export function useCombobox(
         }
     }
 
-    onMounted(() => {
-        if (!inputRef.value) {
-            throw new Error("missing input ref");
-        }
-
-        filter.value = inputRef.value.value;
-        inputRef.value.setAttribute("role", "combobox");
-        inputRef.value.setAttribute("aria-autocomplete", "list");
-    });
-
     function onInputClick(): void {
         toggleDropdown();
     }
@@ -242,7 +261,7 @@ export function useCombobox(
             case "Enter":
                 if (dropdownIsOpen.value) {
                     if (activeOption.value) {
-                        selectedValue.value = activeOption.value;
+                        selectOption(activeOption.value);
                         flag = true;
                     }
                     close();
@@ -316,15 +335,4 @@ export function useCombobox(
             close();
         }
     }
-
-    return {
-        dropdownId,
-        dropdownIsOpen,
-        dropdownOptions,
-        activeOptionId,
-        activeOption,
-        toggleDropdown,
-        closeDropdown: close,
-        selectedValue,
-    };
 }

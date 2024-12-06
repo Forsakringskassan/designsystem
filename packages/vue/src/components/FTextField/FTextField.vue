@@ -234,7 +234,34 @@ export default defineComponent({
     },
     emits: ["blur", "change", "update", "update:modelValue"],
     setup(props) {
-        return useTextFieldSetup(props);
+        // a shared setup is used because components extending this component need to redeclare the same setup
+        const {
+            textFieldTableMode,
+            viewValue,
+            onOptionSelected,
+            dropdownId,
+            dropdownIsOpen,
+            dropdownOptions,
+            activeOptionId,
+            activeOption,
+            toggleDropdown,
+            selectOption,
+            closeDropdown,
+        } = useTextFieldSetup(props);
+
+        return {
+            textFieldTableMode,
+            viewValue,
+            onOptionSelected,
+            dropdownId,
+            dropdownIsOpen,
+            dropdownOptions,
+            activeOptionId,
+            activeOption,
+            toggleDropdown,
+            selectOption,
+            closeDropdown,
+        };
     },
     data() {
         return {
@@ -299,25 +326,13 @@ export default defineComponent({
                 this.lastModelValue = this.modelValue;
             },
         },
-        selectedValue: {
-            immediate: false,
-            handler: async function (newValue: string) {
-                this.viewValue = newValue;
-                this.$emit("update:modelValue", newValue);
-                await this.$nextTick();
-
-                const input = this.$refs.input as HTMLInputElement | null;
-                input?.select();
-                input?.focus();
-            },
-        },
     },
     beforeUpdate() {
         this.isAfterInitialRender = true;
     },
     methods: {
         onDropdownSelect(value: string): void {
-            this.selectedValue = value;
+            this.selectOption(value);
         },
         onDropdownClose(): void {
             this.closeDropdown();
