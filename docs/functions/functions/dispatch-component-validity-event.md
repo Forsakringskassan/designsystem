@@ -13,5 +13,5 @@ export function dispatchComponentValidityEvent(
 ): void;
 ```
 
--   `element` - the element to dispatch event to
--   `detail` - the event detail
+- `element` - the element to dispatch event to
+- `detail` - the event detail

@@ -11,8 +11,8 @@ Den mountas med funktionen mountFOffline så tidigt som möjligt för att autoin
 
 Det finns ett par alternativ för att få komponenten att visa sig:
 
--   Aktivera "offline-läge" i browsern
--   Stäng av nätverksanslutningen (exempelvis koppla ned Wi-Fi på en mobil enhet).
+- Aktivera "offline-läge" i browsern
+- Stäng av nätverksanslutningen (exempelvis koppla ned Wi-Fi på en mobil enhet).
 
 Du kan även använda knappen nedanför som simulerar nätverksproblem genom att skicka samma event som browsern gör då den upptäcker att uppkopplingen har misslyckats (detta visar komponenten men sätter inte browsern i offline-läge).
 

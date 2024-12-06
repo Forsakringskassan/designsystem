@@ -12,12 +12,12 @@ Om du bidrar till designsystemet genom att göra en uppdatering, kontrollera att
 
 Det får inte finnas persondata som tillhör en person eller som möjliggör identifiering. Det kan till exempel vara
 
--   personnummer
--   kortnummer
--   telefonnummer
--   mejladresser
--   adresser
--   kontonummer.
+- personnummer
+- kortnummer
+- telefonnummer
+- mejladresser
+- adresser
+- kontonummer.
 
 Använd de avpersonifierade testdata som myndigheter tillhandahåller, till exempel [Skatteverket testdata](https://www.skatteverket.se/omoss/digitalasamarbeten/utvecklingavapierochoppnadata/kunskapochinspiration/alltdubehovervetaomtestpersonnummer.4.5b35a6251761e6914202df9.html) och [Post och tele-styrelsens telefonnummer för användning i böcker och filmer](https://www.pts.se/sv/bransch/telefoni/nummer-och-adressering/telefonnummer-for-anvandning-i-bocker-och-filmer-etc/).
 

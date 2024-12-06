@@ -12,6 +12,6 @@ export function refIsVueArray(
 ): value is ComponentPublicInstance[];
 ```
 
--   `value` - The value to type check.
+- `value` - The value to type check.
 
 Returns `true` if the ref is a `Vue` (component) array with at least one item, otherwise false.

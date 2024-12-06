@@ -26,11 +26,11 @@ Grid används för att skapa responsiva gränssnitt som anpassar sig till olika 
 Containern styr den maximala bredden som innehållet får ta och sätter marginal i vänster- och högerkant. Containerns fulla bredd motsvarar 12 kolumner.
 Det finns två typer av containers:
 
--   **Container** – centrerar innehållet på skärmen i en maxbredd som varierar beroende av skärmens bredd
+- **Container** – centrerar innehållet på skärmen i en maxbredd som varierar beroende av skärmens bredd
 
 ![Container](./grid/container.png)
 
--   **Container-fluid** - tar 100% av den tillgängliga ytan. Om en maxbredd sätts kommer ytan vänsterjusteras
+- **Container-fluid** - tar 100% av den tillgängliga ytan. Om en maxbredd sätts kommer ytan vänsterjusteras
 
 ![Container-fluid](./grid/container-fluid.png)
 
@@ -55,10 +55,10 @@ Innehåll i ett gridlayout placeras i kolumner (`col`) och kolumnerna ska i sig 
 
 ![Kolumner](./grid/kolumner.png)
 
--   En kolumn som sätts till col-12 tar upp alla 12 möjliga kolumner i raden, men eftersom samma resultat uppnås utan att använda rad- och kolumnklasser behöver den varianten i regel inte användas.
--   I en rad med två lika stora kolumner får vardera ta upp 6 av radens 12 möjliga kolumner.
--   I en rad med tre lika stora kolumner får vardera ta upp 4 av radens 12 möjliga kolumner.
--   Kolumnerna i en rad kan vara olika stora – så länge summan av kolumnernas bredd inte överstiger 12 kommer de lägga sig bredvid varandra.
+- En kolumn som sätts till col-12 tar upp alla 12 möjliga kolumner i raden, men eftersom samma resultat uppnås utan att använda rad- och kolumnklasser behöver den varianten i regel inte användas.
+- I en rad med två lika stora kolumner får vardera ta upp 6 av radens 12 möjliga kolumner.
+- I en rad med tre lika stora kolumner får vardera ta upp 4 av radens 12 möjliga kolumner.
+- Kolumnerna i en rad kan vara olika stora – så länge summan av kolumnernas bredd inte överstiger 12 kommer de lägga sig bredvid varandra.
 
 #### Exempel med olika komponentstorlekar
 
@@ -151,10 +151,10 @@ Komponenternas bredd styrs av bredden på den kolumn de placeras i.
 
 Genom att använda fördefinierade brytpunkter kan du anpassa hur en layout ska se ut vid olika skärmstorlekar. Det finns fyra brytpunkter som kan konfigureras. Varje brytpunkt har ett standardvärde för vilken skärmbredd den kommer att bryta på:
 
--   sm - skärmbredd mellan 0 och 639 pixlar
--   md - skärmbredd mellan 640 och 1023 pixlar
--   lg - skärmbredd mellan 1024 och 1279 pixlar
--   xl - skärmbredd från 1280 pixlar och uppåt
+- sm - skärmbredd mellan 0 och 639 pixlar
+- md - skärmbredd mellan 640 och 1023 pixlar
+- lg - skärmbredd mellan 1024 och 1279 pixlar
+- xl - skärmbredd från 1280 pixlar och uppåt
 
 Du sätter bredden på en kolumn för olika skärmstorlekar genom att ange i klassen för vilken brytpunkt bredden gäller.
 

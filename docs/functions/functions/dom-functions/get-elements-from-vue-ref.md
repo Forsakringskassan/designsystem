@@ -11,7 +11,7 @@ If there are none, the array returned will be empty rather than `undefined`.
 export function getElementsFromVueRef(ref: unknown): Element[];
 ```
 
--   `ref` - The ref to extract `Element` items from.
+- `ref` - The ref to extract `Element` items from.
 
 Returns An `Array` of `Element` items.
 Possibly empty.

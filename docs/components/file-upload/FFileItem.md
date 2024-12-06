@@ -21,10 +21,10 @@ FFileItemButtonProgress.vue
 
 Filikonen till vänster bestäms av mimetype:
 
--   Bilder använder `f-icon-pic`
--   PDF använder `f-icon-pdf`
--   Word-dokument använder `f-icon-doc`
--   Övriga filer använder `f-icon-file`
+- Bilder använder `f-icon-pic`
+- PDF använder `f-icon-pdf`
+- Word-dokument använder `f-icon-doc`
+- Övriga filer använder `f-icon-file`
 
 ```import test-id=icons
 FFileItemIcons.vue

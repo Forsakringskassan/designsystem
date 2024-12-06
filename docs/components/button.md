@@ -47,9 +47,9 @@ FCardExample.vue
 
 Alla varianter av knappen finns i tre storlekar:
 
--   Small
--   Medium
--   Large
+- Small
+- Medium
+- Large
 
 Knapparnas storlekar kan användas för att förstärka den visuella hierarkin mellan knapparna på en sida.
 Knappens bredd bestäms av längden på knapptexten. För varje knappstorlek finns en minsta bredd.
@@ -128,6 +128,6 @@ Knappars text för endast skärmläsare (SR-only-text) ska vara så beskrivande 
 
 Alla tidigare typer av knappar finns kvar för att nuvarande applikationer ska fortsätta att fungera utan ändringar. Men när vi uppdaterar en applikation ska följande ändringar göras:
 
--   Diskret knapp - ska ersättas med en tertiär knapp av lämplig storlek.
--   Standard - ska ersättas med en sekundär knapp av lämplig storlek.
--   Primär och sekundär ska ändras så att de använder en faktisk storlek.
+- Diskret knapp - ska ersättas med en tertiär knapp av lämplig storlek.
+- Standard - ska ersättas med en sekundär knapp av lämplig storlek.
+- Primär och sekundär ska ändras så att de använder en faktisk storlek.

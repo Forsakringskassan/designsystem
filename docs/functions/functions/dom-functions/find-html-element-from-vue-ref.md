@@ -12,7 +12,7 @@ export function findHTMLElementFromVueRef(
 ): HTMLElement | undefined;
 ```
 
--   `ref` - The ref to extract `HTMLElement` from.
+- `ref` - The ref to extract `HTMLElement` from.
 
 Returns an `HTMLElement` if ref is `Vue` or `HTMLElement`.
 Otherwise `undefined`.

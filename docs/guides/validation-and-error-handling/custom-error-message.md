@@ -5,8 +5,8 @@ layout: content-with-menu
 
 Samtliga inmatningskomponenter har en slot `error-message` med två bindings:
 
--   `hasError` som talar om huruvida det finns ett valideringsfel eller ej
--   `validationMessage` innehåller felmeddelanden kopplat till valideringsfelet.
+- `hasError` som talar om huruvida det finns ett valideringsfel eller ej
+- `validationMessage` innehåller felmeddelanden kopplat till valideringsfelet.
 
 Detta kan användas för att - som konsument av komponenterna - själv ansvara för presentationen av felmeddelandet (`validationMessage`).
 

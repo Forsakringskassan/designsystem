@@ -9,10 +9,10 @@ Komponenter för testning av Vue.js komponenter.
 
 Renderar upp innehållet i default slotten i olika upplösningar:
 
--   320px (minsta storlek vi stödjer)
--   639px (övre gränsvärde för mobil)
--   640px (lägre gränsvärde för desktop)
--   1024px (desktop)
+- 320px (minsta storlek vi stödjer)
+- 639px (övre gränsvärde för mobil)
+- 640px (lägre gränsvärde för desktop)
+- 1024px (desktop)
 
 ```ts
 const sizeWrapperWidth: number;
@@ -53,9 +53,9 @@ it(`should show how component looks in different sizes`, () => {
 
 Renderar upp innehållet i default slotten i olika densiteter:
 
--   Standard (`density-default`)
--   Kompakt (`density-dense`)
--   Extra kompakt (`density-densest`)
+- Standard (`density-default`)
+- Kompakt (`density-dense`)
+- Extra kompakt (`density-densest`)
 
 ```ts
 const densityWrapperWidth: number;

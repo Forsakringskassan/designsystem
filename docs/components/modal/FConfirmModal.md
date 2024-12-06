@@ -9,10 +9,10 @@ Använd en bekräftelsemodal när användare har gjort ett val som har stor påv
 
 En bekräftelsemodal har
 
--   rubriktext
--   brödtext
--   en knapptext för den destruktiva handlingen, till exempel för att ta bort uppgifter
--   en knapptext för att ångra och gå tillbaka.
+- rubriktext
+- brödtext
+- en knapptext för den destruktiva handlingen, till exempel för att ta bort uppgifter
+- en knapptext för att ångra och gå tillbaka.
 
 ## Knapparna
 

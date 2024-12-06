@@ -13,10 +13,10 @@ Commitmeddelanden använder en modifierad variant av [Conventional Commits][conv
 
 där:
 
--   `${type}` är vilken typ av commit, vanligtvis `fix` eller `feat`.
--   `${description}` är en kort summering av commit.
--   `${relation}` är hur commit relaterat till en Jira, `refs` eller `fixes`.
--   `${jira}` är den Jira som commit relaterar till.
+- `${type}` är vilken typ av commit, vanligtvis `fix` eller `feat`.
+- `${description}` är en kort summering av commit.
+- `${relation}` är hur commit relaterat till en Jira, `refs` eller `fixes`.
+- `${jira}` är den Jira som commit relaterar till.
 
 ::: info Exempelvis
 
@@ -59,20 +59,20 @@ Läs mer om {@link release#brytande_andringar brytande ändringar}.
 
 Ett bra commitmeddelande ska:
 
--   Beskriva vilken eller vilka komponenter eller funktioner som berörs. Skriv "add new prop `foo` on component `FBar`" istället för `"add new prop"` eller "add new prop `foo`" eftersom läsaren inte känner till sammanhanget.
--   Undvika att benämna ramverkskomponenter ("i-komponenter") utan skriv istället de publika komponenter ("f-komponenter") som påverkas av ändringen.
+- Beskriva vilken eller vilka komponenter eller funktioner som berörs. Skriv "add new prop `foo` on component `FBar`" istället för `"add new prop"` eller "add new prop `foo`" eftersom läsaren inte känner till sammanhanget.
+- Undvika att benämna ramverkskomponenter ("i-komponenter") utan skriv istället de publika komponenter ("f-komponenter") som påverkas av ändringen.
 
 ::: info Bra meddelande
 
--   feat: add new prop `foo` on component `FBar` (refs XYZ-123)
--   fix: fix styling issue when clicking on `FBaz` (fixes XYZ-123)
+- feat: add new prop `foo` on component `FBar` (refs XYZ-123)
+- fix: fix styling issue when clicking on `FBaz` (fixes XYZ-123)
 
 :::
 
 ::: danger Undvik
 
--   feat: add new prop (refs XYZ-123)
--   fix: WIP (fix XYZ-123)
+- feat: add new prop (refs XYZ-123)
+- fix: WIP (fix XYZ-123)
 
 :::
 

@@ -55,4 +55,4 @@ if (confirmed) {
 
 ## Relaterat
 
--   {@link useModal useModal()} for using with composition API.
+- {@link useModal useModal()} for using with composition API.

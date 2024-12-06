@@ -17,8 +17,8 @@ Vi rekommenderar att du i första hand använder de {@link textfield-specialized
 
 Förenklat sett kan man säga att:
 
--   Parser tolkar vy-värdet och gör om till ett modell-värde.
--   Formaterare tolkar modell-värdet och gör om till ett vy-värde.
+- Parser tolkar vy-värdet och gör om till ett modell-värde.
+- Formaterare tolkar modell-värdet och gör om till ett vy-värde.
 
 Vy-värdet (`viewValue`) är det som visuellt presenteras i inmatningsfältet och är vanligtvis det som matats in av användaren.
 

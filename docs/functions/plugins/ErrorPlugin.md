@@ -93,14 +93,14 @@ app.use(ErrorPlugin, {
 
 ### `captureWarnings`
 
--   type: `boolean`
--   default: `true`
+- type: `boolean`
+- default: `true`
 
 Om `true` så hanteras varningar som fel i utvecklarläge.
 
 ### `logToConsole`
 
--   type: `boolean`
--   default: `true`
+- type: `boolean`
+- default: `true`
 
 Om `true` så loggas fel till console (så som det normallt set blir när `ErrorPlugin` eller en annan `errorHandler` installerats)

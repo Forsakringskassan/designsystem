@@ -17,17 +17,17 @@ Varje dag i kalendern är en knapp och det går att styra vad som ska hända nä
 
 Till exempel kan ett klick på en dag i kalendern användas för att:
 
--   Visa information om dagen
--   Visa formulärsfält för att fylla i uppgifter om dagen
--   Välja dagen (som en av flera)
+- Visa information om dagen
+- Visa formulärsfält för att fylla i uppgifter om dagen
+- Välja dagen (som en av flera)
 
 ## Valbara dagar
 
 Det går att styra vilka dagar som är valbara genom att:
 
--   Sätt en period för inom vilken det ska finnas valbara dagar
--   Ange enskilda dagar som inte är valbara
--   Ange veckodagar som inte är valbara.
+- Sätt en period för inom vilken det ska finnas valbara dagar
+- Ange enskilda dagar som inte är valbara
+- Ange veckodagar som inte är valbara.
 
 Användaren kan klicka på en dag som inte är valbar, därmed kan du välja att visa ett felmeddelande på ett lämpligt sätt.
 

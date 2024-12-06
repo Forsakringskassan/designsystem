@@ -8,8 +8,8 @@ component: EventBus
 
 In general using global events should be avoided and instead communication between components should instead:
 
--   Use `props` for the parent to pass data down to a child.
--   Use Vue events for children to notify the parent of changes.
+- Use `props` for the parent to pass data down to a child.
+- Use Vue events for children to notify the parent of changes.
 
 Using global events can lead to code that is hard to troubleshoot, diagnose and to write tests for.
 Use with caution.

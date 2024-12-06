@@ -15,11 +15,11 @@ FWizardExampleDefault.vue
 
 Använd steg för steg för att dela upp en större uppgift som användaren ska utföra. Då kan användaren fokusera på en sak i taget istället för att bli överöst med information och val.
 
--   Använd så få steg som möjligt, helst inte fler än 5 eller 6.
--   Ett steg ska innehålla en eller några få enkla val eller kortfattad information.
--   Antalet steg ska vara fast och inte ändras beroende på val användaren gör i ett steg.
--   Rubrikerna för stegen måste följa korrekt rubriknivå för sidan.
--   Om ett steg innehåller ett formulär måste det vara komplett och rätt ifyllt innan användaren tillåtas att fortsätta till nästa steg.
+- Använd så få steg som möjligt, helst inte fler än 5 eller 6.
+- Ett steg ska innehålla en eller några få enkla val eller kortfattad information.
+- Antalet steg ska vara fast och inte ändras beroende på val användaren gör i ett steg.
+- Rubrikerna för stegen måste följa korrekt rubriknivå för sidan.
+- Om ett steg innehåller ett formulär måste det vara komplett och rätt ifyllt innan användaren tillåtas att fortsätta till nästa steg.
 
 ## Stegens storlek och omfattning
 
@@ -29,25 +29,25 @@ Innehåll och frågor som inte passar under en och samma rubrik ska inte placera
 
 ## När steg för steg inte passar
 
--   När uppgifterna vi presenterar inte har en naturlig följd.
--   När vi har väldigt omfattande uppgifter som resulterar i många och långa steg.
--   När något av stegen tar väldigt lång tid att fylla i, i kombination med att steget blir omfattande, till exempel att användarens val skapar långa listor eller tabeller.
+- När uppgifterna vi presenterar inte har en naturlig följd.
+- När vi har väldigt omfattande uppgifter som resulterar i många och långa steg.
+- När något av stegen tar väldigt lång tid att fylla i, i kombination med att steget blir omfattande, till exempel att användarens val skapar långa listor eller tabeller.
 
 ## Copyriktlinjer
 
 ### Stegrubriker
 
--   Syftar i första hand till att hjälpa till att dela in flödet i mindre delar.
--   Ska ha relevant copy men inte bära hela innehållet i delen - det gör till exempel etikettrubrikerna om ett steg innehåller ett formulär.
--   Ska ge användaren en snabb översikt över det enskilda steget och även en tydlig översikt över flödet.
--   Ska vara så kortfattade som möjligt.
--   Bör bestå av konkreta substantiv som till exempel Dagar, Bostad, Sjukdom och symtom.
--   ”Kompletterande uppgifter” och ”Övrigt” ska undvikas. Om det är svårt att skriva en lämplig rubrik på grund av att innehållet spretar bör du se över indelningen i steg.
+- Syftar i första hand till att hjälpa till att dela in flödet i mindre delar.
+- Ska ha relevant copy men inte bära hela innehållet i delen - det gör till exempel etikettrubrikerna om ett steg innehåller ett formulär.
+- Ska ge användaren en snabb översikt över det enskilda steget och även en tydlig översikt över flödet.
+- Ska vara så kortfattade som möjligt.
+- Bör bestå av konkreta substantiv som till exempel Dagar, Bostad, Sjukdom och symtom.
+- ”Kompletterande uppgifter” och ”Övrigt” ska undvikas. Om det är svårt att skriva en lämplig rubrik på grund av att innehållet spretar bör du se över indelningen i steg.
 
 ### Knapptexter
 
--   Standardtexten på primärknappen är Fortsätt, men det går att sätta en text på primärknappen i varje steg (next-button-text).
--   Standardtexten på sekundärknappen är Avbryt, men det går att sätta en text på sekundärknappen i varje steg (cancel-button-text).
+- Standardtexten på primärknappen är Fortsätt, men det går att sätta en text på primärknappen i varje steg (next-button-text).
+- Standardtexten på sekundärknappen är Avbryt, men det går att sätta en text på sekundärknappen i varje steg (cancel-button-text).
 
 ## För utvecklare
 

@@ -89,4 +89,4 @@ console.log("Modal closed with result", result);
 
 ## Relaterat
 
--   {@link useModal useModal()} for using with composition API.
+- {@link useModal useModal()} for using with composition API.

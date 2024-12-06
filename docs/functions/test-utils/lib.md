@@ -38,7 +38,7 @@ Måste köras i en miljö där DOM finns tillgängligt, exempelvis en browser el
 function generateSelector(element: Element | null): string;
 ```
 
--   `element` - Elementet att generera selector för.
+- `element` - Elementet att generera selector för.
 
 ### Användning
 

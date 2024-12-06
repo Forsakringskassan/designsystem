@@ -10,7 +10,7 @@ Gets an `Element` a ref, provided it is defined and not an array.
 export function getElementFromVueRef(ref: unknown): Element | never;
 ```
 
--   `ref` - The ref to extract the `Element` from.
+- `ref` - The ref to extract the `Element` from.
 
 Returns an `Element` if ref is `Vue` or `Element`.
 

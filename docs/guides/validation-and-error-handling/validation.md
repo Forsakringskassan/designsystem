@@ -12,8 +12,8 @@ I {@link FLabel#feltexter_i_etiketten Feltexter i etiketten} kan du se hur vi sk
 
 Exempel på när fel ska visas:
 
--   Användaren har fyllt i ett felaktigt tecken.
--   Ett inmatat postnummer matchar inte med någon ort.
+- Användaren har fyllt i ett felaktigt tecken.
+- Ett inmatat postnummer matchar inte med någon ort.
 
 Vi visar fel först när användaren lämnar fältet eftersom vi inte vill avbryta användaren med ett felmeddelande innan hen anser sig vara klar med att fylla i uppgifter i fältet.
 
@@ -46,8 +46,8 @@ Formuläret valideras när användaren trycker på submit-knappen eller på ENTE
 
 Det finns två alternativ för hur fel i ett formulär kan visas när användaren ha tryckt på submit-knappen:
 
--   Fokus flyttas till den första formulärskomponenten med fel eller saknade uppgifter.
--   En {@link FErrorList fellista} med ankarlänkar till varje fält med fel visas ovanför formuläret. Fellistan får automatiskt fokus.
+- Fokus flyttas till den första formulärskomponenten med fel eller saknade uppgifter.
+- En {@link FErrorList fellista} med ankarlänkar till varje fält med fel visas ovanför formuläret. Fellistan får automatiskt fokus.
 
 I formulär med några få komponenter rekommenderas det att fokus flyttas direkt till första formulärskomponenten.
 För stora formulär bör du använda en fellista.
@@ -57,9 +57,9 @@ För stora formulär bör du använda en fellista.
 Som standard ska du använda komponenten {@link FValidationForm valideringsformulär} för alla typer av formulär.
 Komponenten ger önskat beteende och funktioner för validering av formulär, till exempel:
 
--   Som standard används en {@link FErrorList fellista} men den kan stängas av.
--   Stöd för backend-validering.
--   Fokushantering när användaren försöker skicka in ett formulär med fel.
+- Som standard används en {@link FErrorList fellista} men den kan stängas av.
+- Stöd för backend-validering.
+- Fokushantering när användaren försöker skicka in ett formulär med fel.
 
 ## Validatorer
 

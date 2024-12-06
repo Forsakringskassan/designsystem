@@ -17,8 +17,8 @@ export function focus(
 ): void;
 ```
 
--   `element` - Element to focus.
--   `options` - Focus options. If you pass boolean `true` or `false` it sets the `force` option.
+- `element` - Element to focus.
+- `options` - Focus options. If you pass boolean `true` or `false` it sets the `force` option.
 
 ```ts
 export interface FocusOptions {
@@ -28,9 +28,9 @@ export interface FocusOptions {
 }
 ```
 
--   `force` - If set to `true` `tabindex="-1"` will be added as needed so any element can be focused.
--   `preventScroll` - By default the element is scrolled into view. Set this to `true` to prevent this behavior. See full description of [`preventScroll` at MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#parameters)
--   `scrollToTop` - By default the element is scrolled into view centered vertically. Set this to `true` to scroll such that the elements top is at the top of the viewport. It will utilize the `scrollIntoView` function, see full description of [`scrollIntoView` at MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
+- `force` - If set to `true` `tabindex="-1"` will be added as needed so any element can be focused.
+- `preventScroll` - By default the element is scrolled into view. Set this to `true` to prevent this behavior. See full description of [`preventScroll` at MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#parameters)
+- `scrollToTop` - By default the element is scrolled into view centered vertically. Set this to `true` to scroll such that the elements top is at the top of the viewport. It will utilize the `scrollIntoView` function, see full description of [`scrollIntoView` at MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
 
 ```ts
 // @fkui/vue
@@ -40,8 +40,8 @@ export function focus(
 ): boolean;
 ```
 
--   `element` - Element to focus.
--   `options` - Focus options. If you pass boolean `true` or `false` it sets the `force` option.
+- `element` - Element to focus.
+- `options` - Focus options. If you pass boolean `true` or `false` it sets the `force` option.
 
 Returns `true` if successfully found an HTMLElement to focus. Otherwise, `false`.
 

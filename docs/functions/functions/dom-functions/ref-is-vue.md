@@ -10,6 +10,6 @@ Verifies that a ref is a single Vue component and nothing else.
 export function refIsVue(value: unknown): value is ComponentPublicInstance;
 ```
 
--   `value` - The value to type check.
+- `value` - The value to type check.
 
 Returns `true` if the ref is a `Vue` (component), otherwise false.

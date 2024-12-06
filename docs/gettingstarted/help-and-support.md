@@ -17,8 +17,8 @@ Lägg en pull request (PR) för mindre förändringar, men kontakta oss gärna p
 
 Exempel på vad du kan bidra med:
 
--   Implementera ny komponent eller utökad funktionalitet på befintlig komponent.
--   Fixa buggar som ni själva upptäckt.
+- Implementera ny komponent eller utökad funktionalitet på befintlig komponent.
+- Fixa buggar som ni själva upptäckt.
 
 ## Kontakta oss
 

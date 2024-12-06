@@ -15,8 +15,8 @@ export function findParentByName(
 ): ComponentPublicInstance | undefined;
 ```
 
--   `vm` - Component instance.
--   `name` - The name of the parent to be found.
+- `vm` - Component instance.
+- `name` - The name of the parent to be found.
 
 Returns the found Vue component, otherwise `undefined`.
 

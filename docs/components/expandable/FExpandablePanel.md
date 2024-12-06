@@ -13,9 +13,9 @@ FExpandablePanelExample.vue
 
 En expanderbar panel består av 3 ytor (slots):
 
--   Title: panelens rubrik.
--   Default: innehåll som ska visas när panelen är öppen.
--   Outside: relaterat innehåll som visas under den öppna panelen.
+- Title: panelens rubrik.
+- Default: innehåll som ska visas när panelen är öppen.
+- Outside: relaterat innehåll som visas under den öppna panelen.
 
 En expanderbar panel ger möjlighet att uppmärksamma användare på förändringar eller händelser.
 
