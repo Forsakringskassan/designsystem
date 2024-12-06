@@ -13,6 +13,10 @@ Tänk på att det blir svårare för användarna med många olika statusar. Begr
 FBadgeLiveExample.vue
 ```
 
+## Testing testing
+
+bla bla bla
+
 ## Tänk på att
 
 - Blanda inte standard med inverterade i samma färg på samma sida.
