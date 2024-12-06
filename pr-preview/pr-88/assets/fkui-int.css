@@ -4991,9 +4991,9 @@ input[type=search]:focus,
   padding: 0.25rem;
 }
 .radio-button-group--chip .radio-button.disabled .radio-button__label {
-  background: var(--f-background-button-disabled, #f4f4f4);
-  border-color: var(--f-border-color-button-disabled, #8d8e91);
-  color: var(--f-text-color-button-disabled, #8d8e91);
+  background: var(--fkds-color-background-disabled, #f4f4f4);
+  border-color: var(--fkds-color-border-primary, #8d8e91);
+  color: var(--fkds-color-text-disabled, #8d8e91);
   cursor: not-allowed;
 }
 .radio-button-group--chip .radio-button__label {
@@ -5003,9 +5003,9 @@ input[type=search]:focus,
   font-weight: var(--f-font-weight-medium, 700);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  border: var(--f-border-width-medium, 1px) solid var(--f-border-color-input, #8d8e91);
-  background-color: var(--f-background-chip, #ffffff);
-  color: var(--f-text-color-chip, #1b1e23);
+  border: var(--f-border-width-medium, 1px) solid var(--fkds-color-border-primary, #8d8e91);
+  background-color: var(--fkds-color-background-primary, #ffffff);
+  color: var(--fkds-color-text-primary, #1b1e23);
   justify-content: center;
   max-width: 400px;
   -webkit-user-select: none;
@@ -5019,14 +5019,14 @@ input[type=search]:focus,
   margin-right: 0.5rem;
 }
 .radio-button-group--chip .radio-button__label:hover {
-  border-color: var(--f-border-color-chip-hover, #35805b);
-  background-color: var(--f-background-chip-hover, #f3f8f5);
-  color: var(--f-text-color-chip-hover, #1b1e23);
+  border-color: var(--fkds-color-border-primary, #8d8e91);
+  background-color: var(--fkds-color-action-background-select-hover, #dbe9e2);
+  color: var(--fkds-color-text-primary, #1b1e23);
 }
 .radio-button-group--chip input[type=radio]:checked + .radio-button__label {
-  background: var(--f-background-chip-active, #35805b);
-  border-color: var(--f-border-color-chip-active, #35805b);
-  color: var(--f-text-color-chip-active, #ffffff);
+  background: var(--fkds-color-action-background-select-default, #35805b);
+  border-color: transparent;
+  color: var(--fkds-color-text-inverted, #ffffff);
 }
 .radio-button-group--chip input[type=radio]:focus + label.radio-button__label {
   border-radius: 20px;
@@ -5058,9 +5058,9 @@ input[type=search]:focus,
   padding: 0.25rem;
 }
 .checkbox-group--chip .checkbox.disabled .checkbox__label {
-  background: var(--f-background-button-disabled, #f4f4f4);
-  border-color: var(--f-border-color-button-disabled, #8d8e91);
-  color: var(--f-text-color-button-disabled, #8d8e91);
+  background: var(--fkds-color-background-disabled, #f4f4f4);
+  border-color: var(--fkds-color-border-primary, #8d8e91);
+  color: var(--fkds-color-text-disabled, #8d8e91);
   cursor: not-allowed;
 }
 .checkbox-group--chip .checkbox__label {
@@ -5070,9 +5070,9 @@ input[type=search]:focus,
   font-weight: var(--f-font-weight-medium, 700);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  border: var(--f-border-width-medium, 1px) solid var(--f-border-color-input, #8d8e91);
-  background-color: var(--f-background-chip, #ffffff);
-  color: var(--f-text-color-chip, #1b1e23);
+  border: var(--f-border-width-medium, 1px) solid var(--fkds-color-border-primary, #8d8e91);
+  background-color: var(--fkds-color-background-primary, #ffffff);
+  color: var(--fkds-color-text-primary, #1b1e23);
   justify-content: center;
   max-width: 400px;
   -webkit-user-select: none;
@@ -5086,14 +5086,14 @@ input[type=search]:focus,
   margin-right: 0.5rem;
 }
 .checkbox-group--chip .checkbox__label:hover {
-  border-color: var(--f-border-color-chip-hover, #35805b);
-  background-color: var(--f-background-chip-hover, #f3f8f5);
-  color: var(--f-text-color-chip-hover, #1b1e23);
+  border-color: var(--fkds-color-border-primary, #8d8e91);
+  background-color: var(--fkds-color-action-background-select-hover, #dbe9e2);
+  color: var(--fkds-color-text-primary, #1b1e23);
 }
 .checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {
-  background: var(--f-background-chip-active, #35805b);
-  border-color: var(--f-border-color-chip-active, #35805b);
-  color: var(--f-text-color-chip-active, #ffffff);
+  background: var(--fkds-color-action-background-select-default, #35805b);
+  border-color: transparent;
+  color: var(--fkds-color-text-inverted, #ffffff);
 }
 .checkbox-group--chip input[type=checkbox]:focus + label.checkbox__label {
   border-radius: 20px;
