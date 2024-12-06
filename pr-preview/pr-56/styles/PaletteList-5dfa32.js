@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./docs/styles/examples/PaletteList.vue
@@ -417,13 +416,6 @@
 
   // sfc-template:/home/runner/work/designsystem/designsystem/docs/styles/examples/ColorTable.vue?type=template
   var import_vue5 = __require("vue");
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "sr-only" },
-    " F\xE4rgpaletten ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_data_table = (0, import_vue5.resolveComponent)("f-data-table");
@@ -431,9 +423,15 @@
       rows: _ctx.typeWorkaround,
       "key-attribute": "name"
     }, {
-      caption: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
+      caption: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+        (0, import_vue5.createElementVNode)(
+          "span",
+          { class: "sr-only" },
+          " F\xE4rgpaletten ",
+          -1
+          /* HOISTED */
+        )
+      ])),
       default: (0, import_vue5.withCtx)(({ row }) => [
         (0, import_vue5.createVNode)(
           _component_f_table_column,
@@ -530,7 +528,7 @@
       };
     }
   });
-  function render2(_ctx, _cache) {
+  function render2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_color_table = (0, import_vue7.resolveComponent)("color-table");
     return (0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", null, [
       ((0, import_vue7.openBlock)(true), (0, import_vue7.createElementBlock)(
@@ -550,7 +548,6 @@
                 1
                 /* TEXT */
               ),
-              (0, import_vue7.createTextVNode)(),
               (0, import_vue7.createVNode)(_component_color_table, {
                 colors: p.variables
               }, null, 8, ["colors"])

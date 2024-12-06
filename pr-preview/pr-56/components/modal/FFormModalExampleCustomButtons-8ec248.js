@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/components/FModal/examples/FFormModalExampleCustomButtons.vue
@@ -94,13 +93,6 @@
 
   // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/ExampleModal.vue?type=template
   var import_vue5 = __require("vue");
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    " Fruktsallad \xE4r en dessert best\xE5ende av minst tre sorters blandade frukter som \xE4r t\xE4rnade eller skivade och ofta skalade och urk\xE4rnade. En tallrik med fruktsallad best\xE5ende av p\xE4ron, satsuma, kiwi, passionsfrukt, granat\xE4ppelk\xE4rnor, samt grekisk yoghurt blandat med flytande honung, kardemumma och vaniljsocker. ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_form_modal = (0, import_vue5.resolveComponent)("f-form-modal");
@@ -118,20 +110,20 @@
       onCancel: _ctx.onCancel,
       onClose: _ctx.onClose
     }, {
-      header: (0, import_vue5.withCtx)(() => [
+      header: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)(" Fruktsallad ")
-      ]),
-      "error-message": (0, import_vue5.withCtx)(() => [
+      ])),
+      "error-message": (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
         (0, import_vue5.createTextVNode)(" Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till: ")
-      ]),
+      ])),
       "input-text-fields": (0, import_vue5.withCtx)(() => [
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
           modelValue: _ctx.value.field1,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value.field1 = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)(" Favoritfrukt ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [
@@ -150,9 +142,9 @@
           modelValue: _ctx.value.field2,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.value.field2 = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
             (0, import_vue5.createTextVNode)(" Smak ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [
@@ -169,7 +161,13 @@
         ])
       ]),
       default: (0, import_vue5.withCtx)(() => [
-        _hoisted_1
+        _cache[6] || (_cache[6] = (0, import_vue5.createElementVNode)(
+          "p",
+          null,
+          " Fruktsallad \xE4r en dessert best\xE5ende av minst tre sorters blandade frukter som \xE4r t\xE4rnade eller skivade och ofta skalade och urk\xE4rnade. En tallrik med fruktsallad best\xE5ende av p\xE4ron, satsuma, kiwi, passionsfrukt, granat\xE4ppelk\xE4rnor, samt grekisk yoghurt blandat med flytande honung, kardemumma och vaniljsocker. ",
+          -1
+          /* HOISTED */
+        ))
       ]),
       _: 1
       /* STABLE */
@@ -217,25 +215,17 @@
       }
     }
   });
-  var _hoisted_12 = { class: "f-form-modal-custom-buttons" };
+  var _hoisted_1 = { class: "f-form-modal-custom-buttons" };
   var _hoisted_2 = { class: "f-form-modal-example" };
   var _hoisted_3 = { key: 0 };
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue7.createElementVNode)(
-    "pre",
-    null,
-    "Modalen st\xE4ngdes med resultatet:",
-    -1
-    /* HOISTED */
-  );
-  function render2(_ctx, _cache) {
+  function render2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_example_modal = (0, import_vue7.resolveComponent)("example-modal");
-    return (0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", _hoisted_12, [
+    return (0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", _hoisted_1, [
       (0, import_vue7.createElementVNode)("button", {
         type: "button",
         class: "button button--secondary",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
       }, "\xD6ppna Modal"),
-      (0, import_vue7.createTextVNode)(),
       (0, import_vue7.createElementVNode)("div", _hoisted_2, [
         (0, import_vue7.createVNode)(_component_example_modal, {
           "is-open": _ctx.isOpen,
@@ -245,10 +235,14 @@
           onClose: _ctx.onClose
         }, null, 8, ["is-open", "buttons", "onSubmit", "onCancel", "onClose"])
       ]),
-      (0, import_vue7.createTextVNode)(),
       _ctx.field1 || _ctx.field2 ? ((0, import_vue7.openBlock)(), (0, import_vue7.createElementBlock)("div", _hoisted_3, [
-        _hoisted_4,
-        (0, import_vue7.createTextVNode)(),
+        _cache[1] || (_cache[1] = (0, import_vue7.createElementVNode)(
+          "pre",
+          null,
+          "Modalen st\xE4ngdes med resultatet:",
+          -1
+          /* HOISTED */
+        )),
         (0, import_vue7.createElementVNode)(
           "pre",
           null,

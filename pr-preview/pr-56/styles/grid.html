@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-f93916.css"
+            href="../assets/docs-3b4371.css"
             crossorigin
-            integrity="sha384-cJFatC/Rlcjcsk221ngbnvyH1LKgyTdRRJE9N3kxwdwTOSEZSc2hjmNfggnxvJc0"
+            integrity="sha384-sLwBV2pQdXbd2MeKHOrw7UCKuAsZC9Ju9NYXt2YwPJCqzyTNyX37sk1H3oh/glYc"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-6536d0.css"
+            href="../assets/docs-exp-7d254d.css"
             crossorigin
-            integrity="sha384-vYVNQoy62Jn6dDWqataezqGMXhDLav568xENF6Pmqy61VgfOUzX+s8z0Jcmyps9p"
+            integrity="sha384-sqWEQkmH2jAsztk3CxUCrdtK8cYykguMIJd1+UAbp+gh1gaJtO0UEs42tyyIWO//"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-int-5014fc.css"
+            href="../assets/docs-int-195032.css"
             crossorigin
-            integrity="sha384-rHl9pkn77haAI3OxtPJ7XxocEil2JS9xHypAGXouuuWadHbqAWzZE+JG+9cqIJFU"
+            integrity="sha384-V/ILRCps6g6bgagi33Opo/H/71OfAwkS2GheQp4DazqjuLDf2mlB1OxMd/9mIfzd"
             data-theme="int" disabled
         />
 
@@ -89,16 +89,35 @@
 
         <link
             rel="preload"
-            href="../search-data-ed0785.json"
+            href="../search-data-e151cc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-vN+pPdpYfpQnEjpJa6zxDUpwhsxbqDtrC9wR6Qry8ztIa+0SS+70KtUDejXUycVM"
+            integrity="sha384-2ABnfiBLMOj9Xo2Hbwlth5g0PPb1dyO4OaiNnOFtWRYKjQVWb8+SLTJBuaC6DYEb"
             id="search-data"
         />
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -124,82 +143,94 @@
                 <!-- prettier-ignore --><div class="page-header__root">
     <div class="page-header">
         <a class="page-header__logo" href="../index.html">
-            <span aria-label="Försäkringskassan" role="img" class="page-header__logo--small"> </span>
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../index.html"> FK Designsystem </a>
-        <div class="page-header__right"><nav class="imenu imenu--horizontal" aria-label="Primär">
-    <ul class="imenu__list">
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list">
         <!-- prettier-ignore -->
         
         
-        <li class="imenu__list__item ">
-            <div
-                class="imenu__list__anchor-container "
-            >
-                <a
-                    class="imenu__list__anchor "
-                    href="../components/"
-                >
-                    Komponenter
-                </a>
-            </div>
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../gettingstarted/"> Kom igång </a>
         </li>
         
         
-        <li class="imenu__list__item ">
-            <div
-                class="imenu__list__anchor-container "
-            >
-                <a
-                    class="imenu__list__anchor "
-                    href="../patterns/"
-                >
-                    Mönster
-                </a>
-            </div>
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../components/"> Komponenter </a>
         </li>
         
         
-        <li class="imenu__list__item ">
-            <div
-                class="imenu__list__anchor-container "
-            >
-                <a
-                    class="imenu__list__anchor "
-                    href="../develop/"
-                >
-                    Utveckla
-                </a>
-            </div>
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../guides/"> Guider </a>
         </li>
         
         
-        <li class="imenu__list__item imenu__list__item--highlight">
-            <div
-                class="imenu__list__anchor-container imenu__list__anchor-container--highlight"
-            >
-                <a
-                    class="imenu__list__anchor imenu__list__anchor--highlight"
-                    href="./"
-                >
-                    Visuellt
-                </a>
-            </div>
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../functions/"> Funktioner </a>
         </li>
         
         
-        <li class="imenu__list__item ">
-            <div
-                class="imenu__list__anchor-container "
-            >
-                <a
-                    class="imenu__list__anchor "
-                    href="../guide/"
-                >
-                    Om
-                </a>
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="./"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../gettingstarted/"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../components/"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./"> Visuellt </a>
+                    </li>
+                    </ul>
             </div>
-        </li></ul>
+        </li>
+    </ul>
 </nav>
 
             <div class="page-header__right-slot">
@@ -341,14 +372,14 @@
 
                 <!-- prettier-ignore -->
                 <script
-                    src="../assets/vendor-vue-903888.js"
+                    src="../assets/vendor-vue-468cb1.js"
                     crossorigin
-                    integrity="sha384-xCo6KcKIuTRnfRivUVTDhY03YgEh8unw6kZd7/9KssQ0iKqa/g9Ud2/ZJ+EumhdU"
+                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-logic-1193bc.js"
+                    src="../assets/vendor-fkui-logic-082726.js"
                     crossorigin
-                    integrity="sha384-UNmhiYi/XVBF/0CUVZ3OrzBhrjxEMOts2MfS8iFwj7DP+u5HC5r8NIJz+MsdQyrL"
+                    integrity="sha384-YHSlqr71aqp5fPPZunSRYS2tkqQx4hqhZukM3hIrWDDA7UYj18evujZMUYDCPpDC"
                 ></script>
                 <script
                     src="../assets/vendor-fkui-date-9b7c35.js"
@@ -356,27 +387,27 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-19b5f1.js"
+                    src="../assets/vendor-fkui-vue-4695f8.js"
                     crossorigin
-                    integrity="sha384-NZt7o2wFZnibNQDxkt8FjGotNdXrMu5wSAusn1ZwX68DwXw5RXSe1jJ1r1tuvWJn"
+                    integrity="sha384-zT2BDxhMD7wJehLzwudY4a8PuqnpbAH4YLgTt4GKv2EGHdjijE+8xly7pf4KxgLg"
                 ></script>
                 <script
-                    src="../assets/vendor-forsakringskassan-docs-live-example-caabe5.js"
+                    src="../assets/vendor-forsakringskassan-docs-live-example-187830.js"
                     crossorigin
-                    integrity="sha384-COa+K2pIEMfZRsufv3uA32N6otKo/IltB1HxAHUR9URjRR1g2nop3l0NJonpSgiu"
+                    integrity="sha384-JgjVMeOrKPkw95Rgfcde2PhvkOsewLPYjYqYl7zT9PCyCntCVjsLrUhuxU67tJ65"
                 ></script>
 
                 <!-- prettier-ignore --><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">Grid</h1>
-                     
+
+                    
                     <div id="aside">
                         <!-- prettier-ignore -->
 <dl>
     <!-- prettier-ignore -->
     
 </dl>
-
 
 
                         
@@ -1072,6 +1103,7 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
     <h1>Kontakta oss</h1>
     <ul>
         <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../gettingstarted/about/index.html">Om designsystemet</a></li>
     </ul>
 </div>
 
@@ -1081,10 +1113,38 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    unknown (<a href="https://forsakringskassan.github.io/designsystem//commits/bed08461c9d7289c67a53727c316f00014bfc51e">bed0846</a>)<br />
-        <a href="https://forsakringskassan.github.io/designsystem//pull-requests/56/overview">PR 56</a><br />
-        2024-10-02 17:43
+    docs/toolchain (<a href="https://github.com/Forsakringskassan/designsystem/commits/6da6fed5289bf6a176cd4a70c874112a440081bb">6da6fed</a>)<br />
+        <a href="https://github.com/Forsakringskassan/designsystem/pull/56">PR 56</a><br />
+        2024-12-06 09:31
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -1170,15 +1230,21 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
 
         <!-- prettier-ignore -->
         <script
-            src="../assets/processors/selectable-version/select-version-42b338.js"
+            src="../assets/processors/motd/index-8c87e1.js"
             crossorigin
-            integrity="sha384-9teClDZoUmFqd4Uy9zGlWIwizRBX8jp3Tuvbf8GCf6jj1pTG5nVxJGQ/gOCfOsnK"
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
             
         ></script>
         <script
-            src="../assets/main-ac86a8.js"
+            src="../assets/processors/selectable-version/select-version-2c94d2.js"
             crossorigin
-            integrity="sha384-2WZHbDID3lsEsTySsmMFytwSiNzbhGeFULHahLYH5KBQ+WMCFZEqYFy3WFeIvITK"
+            integrity="sha384-R3O97vBp9sTtPA5qXGh9zq03NNIpg5M7RmA7UqOcxptQ98J0s1f3NjnQ1pax6bAJ"
+            
+        ></script>
+        <script
+            src="../assets/main-4751c4.js"
+            crossorigin
+            integrity="sha384-q15KHOoz4gQtk9HXaWqxES3YsgzEsJu3opgGi9+VKgdWVRscUrF84pZgEse5YQgN"
             
         ></script>
     </body>

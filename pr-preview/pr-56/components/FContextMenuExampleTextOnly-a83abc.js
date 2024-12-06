@@ -18,15 +18,14 @@
       }
     });
     (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin);
+    app.use(import_vue2.ErrorPlugin, {
+      captureWarnings: true,
+      logToConsole: true
+    });
     app.use(import_vue2.ValidationPlugin);
     app.use(import_vue2.TestPlugin);
     app.use(import_vue2.TranslationPlugin);
     app.mount(selector);
-    app.config.warnHandler = (msg, vm, trace) => {
-      console.warn(`Warning:`, msg, trace);
-      throw new Error(msg);
-    };
   }
 
   // virtual-entry:./packages/vue/src/components/FContextMenu/examples/FContextMenuExampleTextOnly.vue
@@ -69,7 +68,7 @@
     }
   });
   var _hoisted_1 = { "data-testid": "fcontextmenu-exempel2" };
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_context_menu = (0, import_vue5.resolveComponent)("f-context-menu");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
       (0, import_vue5.createElementVNode)(
@@ -82,11 +81,10 @@
           "aria-haspopup": "menu",
           onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
         },
-        "\n            \xD6ppna\n        ",
+        " \xD6ppna ",
         512
         /* NEED_PATCH */
       ),
-      (0, import_vue5.createTextVNode)(),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,
@@ -94,7 +92,6 @@
         1
         /* TEXT */
       ),
-      (0, import_vue5.createTextVNode)(),
       (0, import_vue5.createVNode)(_component_f_context_menu, {
         "is-open": _ctx.isOpen,
         items: _ctx.items,
