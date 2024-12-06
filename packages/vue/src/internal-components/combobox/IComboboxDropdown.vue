@@ -35,7 +35,7 @@ watchEffect(async () => {
         if (activeOptionNode) {
             activeOptionNode.scrollIntoView({
                 behavior: "instant",
-                block: "nearest",
+                block: "center",
             });
         }
     }
