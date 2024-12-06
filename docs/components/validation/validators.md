@@ -32,9 +32,9 @@ interface MatchesValidatorConfig {
 
 Kända buggar:
 
--   Validatorn kraschar om `id` refererar till ett inmatningsfält som inte finns.
--   Validatorn ger alltid ett felmeddelande om `id` refererar till ett element som inte är ett inmatningsfält.
--   Validatorn fungerar inte om referensvärdet uppdateras. Du behöver hantera det manuellt, se {@link cross-validation korsvalidering}.
+- Validatorn kraschar om `id` refererar till ett inmatningsfält som inte finns.
+- Validatorn ger alltid ett felmeddelande om `id` refererar till ett element som inte är ett inmatningsfält.
+- Validatorn fungerar inte om referensvärdet uppdateras. Du behöver hantera det manuellt, se {@link cross-validation korsvalidering}.
 
 ### Maxlängd `maxLength`
 
@@ -54,11 +54,11 @@ Skriv så här i kod för att sätta en maxlängd på tio tecken:
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   bankgiro `bankgiro`: Fyll i bankgironumret.
--   organisationsnummer `organisationsnummer`: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
--   personnummer-format `personnummerFormat`: Skriv personnumret med 10 siffror.
--   plusgiro `plusgiro`: Fyll i plusgironumret.
--   postnummer `postalCode`: Fyll i ett postnummer.
+- bankgiro `bankgiro`: Fyll i bankgironumret.
+- organisationsnummer `organisationsnummer`: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
+- personnummer-format `personnummerFormat`: Skriv personnumret med 10 siffror.
+- plusgiro `plusgiro`: Fyll i plusgironumret.
+- postnummer `postalCode`: Fyll i ett postnummer.
 
 ### Minlängd `minLength`
 
@@ -82,13 +82,13 @@ Validatorn kontrollerar att inmatningskomponenten har ett värde.
 
 Valideringskriterier för inmatningsfält är:
 
--   Det måste finnas ett ifyllt värde.
--   Värden med endast mellanslag, indrag, radbrytningar och kontrolltecken (CR, LF) är inte godkänt.
--   Undefined och null är inte godkänt.
+- Det måste finnas ett ifyllt värde.
+- Värden med endast mellanslag, indrag, radbrytningar och kontrolltecken (CR, LF) är inte godkänt.
+- Undefined och null är inte godkänt.
 
 Valideringskriterier för radioknapp och kryssruta:
 
--   Det måste finnas minst en vald radioknapp eller kryssruta i gruppen.
+- Det måste finnas minst en vald radioknapp eller kryssruta i gruppen.
 
 ```import nomarkup
 RequiredExample.vue
@@ -104,25 +104,25 @@ Skriv så här i kod:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:
 
--   inmatningsfält: Fyll i text.
--   dropplista: Välj ett av alternativen.
--   kryssruta: Välj minst ett alternativ.
--   radioknapp: Välj ett av alternativen.
+- inmatningsfält: Fyll i text.
+- dropplista: Välj ett av alternativen.
+- kryssruta: Välj minst ett alternativ.
+- radioknapp: Välj ett av alternativen.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   bankgiro `bankgiro`: Fyll i bankgironumret.
--   clearingnummer `clearingNumber`: Fyll i ett clearingnummer.
--   datum `date`: Välj ett datum.
--   kontonummer `bankAccountNumber`: Fyll i ett kontonummer.
--   nummer `number`: Fyll i en siffra.
--   organisationsnummer `organisationsnummer`: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
--   personnummer-format `personnummerFormat`: Skriv personnumret med 10 siffror.
--   plusgiro `plusgiro`: Fyll i plusgironumret.
--   postnummer `postalCode`: Fyll i ett postnummer.
--   procent `percent`: Fyll i en siffra.
--   telefonnummer `phoneNumber`: Kolla att telefonnumret stämmer.
--   valutabelopp `currency`: Fyll i ett belopp.
+- bankgiro `bankgiro`: Fyll i bankgironumret.
+- clearingnummer `clearingNumber`: Fyll i ett clearingnummer.
+- datum `date`: Välj ett datum.
+- kontonummer `bankAccountNumber`: Fyll i ett kontonummer.
+- nummer `number`: Fyll i en siffra.
+- organisationsnummer `organisationsnummer`: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
+- personnummer-format `personnummerFormat`: Skriv personnumret med 10 siffror.
+- plusgiro `plusgiro`: Fyll i plusgironumret.
+- postnummer `postalCode`: Fyll i ett postnummer.
+- procent `percent`: Fyll i en siffra.
+- telefonnummer `phoneNumber`: Kolla att telefonnumret stämmer.
+- valutabelopp `currency`: Fyll i ett belopp.
 
 ### Tillåtna tecken `whitelist`
 
@@ -146,7 +146,7 @@ Skriv så här i kod:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:
 
--   Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och ".
+- Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och ".
 
 ### Val från lista `allowList`
 
@@ -168,7 +168,7 @@ Skriv så här i kod:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:
 
--   Ange ett av alternativen i listan.
+- Ange ett av alternativen i listan.
 
 ## Datum
 
@@ -178,11 +178,11 @@ Validatorn kontrollerar att det ifyllda värdet är ett giltigt datum.
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, bindestreck eller snedstreck.
--   Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.
--   Max antal tecken är tio.
--   Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.
--   Det datum som fylls i måste vara ett giltigt datum (det kontrolleras mot en kalender).
+- Tillåtna tecken är siffror, bindestreck eller snedstreck.
+- Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.
+- Max antal tecken är tio.
+- Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.
+- Det datum som fylls i måste vara ett giltigt datum (det kontrolleras mot en kalender).
 
 Till exempel är 2020-02-30 inte ett giltigt datum.
 
@@ -206,10 +206,10 @@ Felmeddelandet när validatorn för datum `date` är kombinerad med validatorn f
 
 Validatorn kontrollerar att det ifyllda värde stämmer överens mot de här valideringskriterierna:
 
--   Tillåtna tecken är siffror, bindestreck eller snedstreck.
--   Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.
--   Max antal tecken är tio.
--   Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.
+- Tillåtna tecken är siffror, bindestreck eller snedstreck.
+- Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.
+- Max antal tecken är tio.
+- Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.
 
 ```import nomarkup
 DateFormatExample.vue
@@ -267,7 +267,7 @@ Validatorn kontrollerar att det datum som användaren har fyllt i **inte** ligge
 
 Valideringskriterie:
 
--   Tillåtna datum är till och med det datum som anges.
+- Tillåtna datum är till och med det datum som anges.
 
 ```import nomarkup
 MaxDateExample.vue
@@ -289,7 +289,7 @@ Validatorn kontrollerar att det datum som användaren har fyllt i **inte** ligge
 
 Valideringskriterie:
 
--   Tillåtna datum är från och med det datum som anges.
+- Tillåtna datum är från och med det datum som anges.
 
 ```import nomarkup
 MinDateExample.vue
@@ -311,13 +311,13 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Dat
 
 Validatorn kontrollerat att det ifyllda värdet stämmer överens med valideringskriterierna:
 
--   Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
--   Minustecken är endast tillåtet om det ligger först.
--   Ett decimalkomma är tillåtet
--   En decimalpunkt är tillåten.
--   Decimalkomma och decimalpunkt räknas båda som decimalseparator.
--   Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
--   Alla numeriska värden är tillåtna.
+- Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
+- Minustecken är endast tillåtet om det ligger först.
+- Ett decimalkomma är tillåtet
+- En decimalpunkt är tillåten.
+- Decimalkomma och decimalpunkt räknas båda som decimalseparator.
+- Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
+- Alla numeriska värden är tillåtna.
 
 ```import nomarkup
 NumberExample.vue
@@ -335,9 +335,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du 
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   obligatorisk `required`: Fyll i en siffra.
--   maxvärde `maxValue`: Du har fyllt i en för hög siffra.
--   minvärde `minValue`: Fyll i en högre siffra.
+- obligatorisk `required`: Fyll i en siffra.
+- maxvärde `maxValue`: Du har fyllt i en för hög siffra.
+- minvärde `minValue`: Fyll i en högre siffra.
 
 ### Heltal `integer`
 
@@ -345,9 +345,9 @@ Validatorn kontrollerar att det ifyllda värdet är ett heltal.
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, mellanslag och minustecken.
--   Minustecken är endast tillåtet om det ligger först
--   Endast heltal är tillåtna.
+- Tillåtna tecken är siffror, mellanslag och minustecken.
+- Minustecken är endast tillåtet om det ligger först
+- Endast heltal är tillåtna.
 
 ```import nomarkup
 IntegerExample.vue
@@ -365,8 +365,8 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyl
 
 Det finns särskilda felmeddelanden när den här validatorn komponbineras med andra validatorer:
 
--   obligatorisk `required`: Fyll i en siffra.
--   procent `percent`: Fyll i procent utan decimal.
+- obligatorisk `required`: Fyll i en siffra.
+- procent `percent`: Fyll i procent utan decimal.
 
 ### Decimaltal `decimal`
 
@@ -376,14 +376,14 @@ Max antal decimaler och minsta antal decimaler är konfigurerbart. Utgångsvärd
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
--   Minustecken är endast tillåtet om det ligger först.
--   Ett decimalkomma är tillåtet.
--   En decimalpunkt är tillåten.
--   Decimalkomma och decimalpunkt räknas båda som decimalseparator.
--   Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
--   Endast decimaltal är tillåtet.
--   Antal decimaler följer angivna värden (konfigurerbart).
+- Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
+- Minustecken är endast tillåtet om det ligger först.
+- Ett decimalkomma är tillåtet.
+- En decimalpunkt är tillåten.
+- Decimalkomma och decimalpunkt räknas båda som decimalseparator.
+- Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
+- Endast decimaltal är tillåtet.
+- Antal decimaler följer angivna värden (konfigurerbart).
 
 ```import nomarkup
 DecimalExample.vue
@@ -405,14 +405,14 @@ Validatorn kontrollerar att det ifyllda värdet inte överstiger det angivna gr�
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
--   Minustecken endast tillåtet om det ligger först.
--   Ett decimalkomma är tillåtet.
--   En decimalpunkt är tillåten.
--   Decimalkomma och decimalpunkt räknas båda som decimalseparator.
--   Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
--   Alla numeriska värden är tillåtna.
--   Det ifyllda värdet får inte överstiga gränsvärdet.
+- Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
+- Minustecken endast tillåtet om det ligger först.
+- Ett decimalkomma är tillåtet.
+- En decimalpunkt är tillåten.
+- Decimalkomma och decimalpunkt räknas båda som decimalseparator.
+- Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
+- Alla numeriska värden är tillåtna.
+- Det ifyllda värdet får inte överstiga gränsvärdet.
 
 ```import nomarkup
 MaxValueExample.vue
@@ -430,9 +430,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du 
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   nummer `number`: Du har fyllt i en för hög siffra.
--   procent `percent`: Fyll i en lägre siffra.
--   valutabelopp `currency`: Fyll i ett belopp.
+- nummer `number`: Du har fyllt i en för hög siffra.
+- procent `percent`: Fyll i en lägre siffra.
+- valutabelopp `currency`: Fyll i ett belopp.
 
 ### Minvärde `minValue`
 
@@ -440,14 +440,14 @@ Validatorn kontrollerar att det ifyllda värdet inte understiger det angivna gr�
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
--   Minustecken är endast tillåtet om det ligger först.
--   Ett decimalkomma är tillåtet.
--   En decimalpunkt är tillåten.
--   Decimalkomma och decimalpunkt räknas båda som decimalseparator.
--   Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
--   Alla numeriska värden är tillåtna.
--   Det ifyllda värdet får inte understiga gränsvärdet.
+- Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
+- Minustecken är endast tillåtet om det ligger först.
+- Ett decimalkomma är tillåtet.
+- En decimalpunkt är tillåten.
+- Decimalkomma och decimalpunkt räknas båda som decimalseparator.
+- Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
+- Alla numeriska värden är tillåtna.
+- Det ifyllda värdet får inte understiga gränsvärdet.
 
 ```import nomarkup
 MinValueExample.vue
@@ -465,9 +465,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyl
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   nummer `number`: Fyll i en högre siffra.
--   procent `percent`: Fyll i en högre siffra.
--   valutabelopp `currency`: Fyll i ett belopp.
+- nummer `number`: Fyll i en högre siffra.
+- procent `percent`: Fyll i en högre siffra.
+- valutabelopp `currency`: Fyll i ett belopp.
 
 ### Mindre än `lessThen`
 
@@ -475,14 +475,14 @@ Validatorn kontrollerar att det ifyllda värdet är mindre än det angivna grän
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
--   Minustecken är endast tillåtet om det ligger först.
--   Ett decimalkomma är tillåtet.
--   En decimalpunkt är tillåten.
--   Decimalkomma och decimalpunkt räknas båda som decimalseparator.
--   Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
--   Alla numeriska värden är tillåtna.
--   Det ifyllda värdet måste vara mindre än gränsvärdet.
+- Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
+- Minustecken är endast tillåtet om det ligger först.
+- Ett decimalkomma är tillåtet.
+- En decimalpunkt är tillåten.
+- Decimalkomma och decimalpunkt räknas båda som decimalseparator.
+- Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
+- Alla numeriska värden är tillåtna.
+- Det ifyllda värdet måste vara mindre än gränsvärdet.
 
 ```import nomarkup
 LessThanExample.vue
@@ -504,14 +504,14 @@ Validatorn kontrollerar att det ifyllda värdet är större än det angivna grä
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
--   Minustecken är endast tillåtet om det ligger först
--   Ett decimalkomma är tillåtet.
--   En decimalpunkt är tillåten.
--   Decimalkomma och decimalpunkt räknas båda som decimalseparator.
--   Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
--   Alla numeriska värden är tillåtna.
--   Det ifyllda värdet ska vara större än gränsvärdet.
+- Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.
+- Minustecken är endast tillåtet om det ligger först
+- Ett decimalkomma är tillåtet.
+- En decimalpunkt är tillåten.
+- Decimalkomma och decimalpunkt räknas båda som decimalseparator.
+- Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
+- Alla numeriska värden är tillåtna.
+- Det ifyllda värdet ska vara större än gränsvärdet.
 
 ```import nomarkup
 GreaterThanExample.vue
@@ -531,12 +531,12 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyl
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med valideringskriterierna:
 
--   Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt, och minustecken.
--   Minustecken är endast tillåtet om det ligger först.
--   Ett decimalkomma är tillåtet.
--   En decimalpunkt är tillåten.
--   Decimalkomma och decimalpunkt räknas båda som decimalseparator.
--   Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
+- Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt, och minustecken.
+- Minustecken är endast tillåtet om det ligger först.
+- Ett decimalkomma är tillåtet.
+- En decimalpunkt är tillåten.
+- Decimalkomma och decimalpunkt räknas båda som decimalseparator.
+- Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.
 
 ```import nomarkup
 PercentExample.vue
@@ -554,10 +554,10 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyl
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   heltal `integer`: Fyll i procent utan decimal.
--   maxvärde `maxValue`: Fyll i en lägre siffra.
--   minvärde `minValue`: Fyll i en högre siffra.
--   obligatorisk `required`: Fyll i en siffra.
+- heltal `integer`: Fyll i procent utan decimal.
+- maxvärde `maxValue`: Fyll i en lägre siffra.
+- minvärde `minValue`: Fyll i en högre siffra.
+- obligatorisk `required`: Fyll i en siffra.
 
 ### Valutabelopp `currency`
 
@@ -579,9 +579,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyl
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   obligatorisk `required`: Fyll i ett belopp.
--   maxvärde `maxValue`: Fyll i ett belopp.
--   minvärde `minValue`: Fyll i ett belopp.
+- obligatorisk `required`: Fyll i ett belopp.
+- maxvärde `maxValue`: Fyll i ett belopp.
+- minvärde `minValue`: Fyll i ett belopp.
 
 ## Identifiering
 
@@ -591,11 +591,11 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för organ
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror och bindestreck.
--   Bindestreck får bara vara på plats nummer sju i ordningen.
--   Minsta antal tecken är tio. Minst tio tecken måste vara siffror.
--   Max antal tecken är 11.
--   Checksumman stämmer överens med det ifyllda värdet.
+- Tillåtna tecken är siffror och bindestreck.
+- Bindestreck får bara vara på plats nummer sju i ordningen.
+- Minsta antal tecken är tio. Minst tio tecken måste vara siffror.
+- Max antal tecken är 11.
+- Checksumman stämmer överens med det ifyllda värdet.
 
 ```import nomarkup
 OrganisationsnummerExample.vue
@@ -613,9 +613,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyl
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   obligatorisk `requied`: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
+- obligatorisk `requied`: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
 
--   maxlängd `maxLength`: Organisationsnumret kan inte ha mer än 11 tecken.
+- maxlängd `maxLength`: Organisationsnumret kan inte ha mer än 11 tecken.
 
 ### Personnummer - format `personnummerFormat`
 
@@ -623,14 +623,14 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för perso
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, bindestreck och plustecken.
--   Det måste vara 10 eller 12 siffror.
--   Datum ligger efter 5 maj 1840.
--   Datum ligger inte i framtiden om sekel är angivet.
--   År >= 00 och <=99.
--   Månad >= 01 och <=12.
--   Dag >= 01 och <=31 eller >= 60 och <=91 (det senare är samordningsnummer).
--   De fyra sista siffrorna: 0000-9999.
+- Tillåtna tecken är siffror, bindestreck och plustecken.
+- Det måste vara 10 eller 12 siffror.
+- Datum ligger efter 5 maj 1840.
+- Datum ligger inte i framtiden om sekel är angivet.
+- År >= 00 och <=99.
+- Månad >= 01 och <=12.
+- Dag >= 01 och <=31 eller >= 60 och <=91 (det senare är samordningsnummer).
+- De fyra sista siffrorna: 0000-9999.
 
 Det finns en separat validator för att kontrollera checksumman på ett personnummer, personnummer-checksumma (personnummerLuhn). Validatorn för format ska stå före validatorn för checksumma.
 
@@ -650,8 +650,8 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Skr
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   obligatorisk `required`: Skriv personnumret med 10 siffror.
--   maxlängd `maxLength`: Skriv personnumret med 10 siffror.
+- obligatorisk `required`: Skriv personnumret med 10 siffror.
+- maxlängd `maxLength`: Skriv personnumret med 10 siffror.
 
 ### Personnummer - checksumma `personnummerLuhn`
 
@@ -681,12 +681,12 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med giltigt format för
 
 Valideringskriterier:
 
--   Ifyllt värde ska ha format **localpart@domain**.
--   Tillåtna tecken för **localpart** är a-ö, 0-9, snedstreck och punkt.
--   Tillåtna tecken för **domain** är a-z, 0-9 och punkt.
--   **localpart** ska innehålla minst ett tecken.
--   **domain** ska innehålla minst ett tecken och får inte börja eller avslutas med punkt.
--   Max antal tecken följer det angivna värdet (konfigurerbart).
+- Ifyllt värde ska ha format **localpart@domain**.
+- Tillåtna tecken för **localpart** är a-ö, 0-9, snedstreck och punkt.
+- Tillåtna tecken för **domain** är a-z, 0-9 och punkt.
+- **localpart** ska innehålla minst ett tecken.
+- **domain** ska innehålla minst ett tecken och får inte börja eller avslutas med punkt.
+- Max antal tecken följer det angivna värdet (konfigurerbart).
 
 ```import nomarkup
 EmailExample.vue
@@ -708,12 +708,12 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för postn
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror och mellanslag.
--   Antal siffror ska vara fem.
--   Minsta antal tecken är fem.
--   Max antal tecken är sex.
--   Mellanslag är endast tillåtet på position fyra.
--   Första siffran ska vara 1 till 9.
+- Tillåtna tecken är siffror och mellanslag.
+- Antal siffror ska vara fem.
+- Minsta antal tecken är fem.
+- Max antal tecken är sex.
+- Mellanslag är endast tillåtet på position fyra.
+- Första siffran ska vara 1 till 9.
 
 ```import nomarkup
 PostalCodeExample.vue
@@ -731,8 +731,8 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyl
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   obligatorisk `required`: Fyll i ett postnummer.
--   maxLängd `maxLength`: Postnumret kan inte ha mer än 13 tecken.
+- obligatorisk `required`: Fyll i ett postnummer.
+- maxLängd `maxLength`: Postnumret kan inte ha mer än 13 tecken.
 
 ### Telefonnummer `phoneNumber`
 
@@ -740,12 +740,12 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för telef
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, plustecken, bindestreck, mellanslag, parentes, understreck och snedstreck framåt ( / ).
--   Plustecken får bara stå först.
--   Minsta antal tecken är tre.
--   Det måste vara minst tre siffror.
--   Max antal tecken är 20.
--   Det får max vara 15 siffror.
+- Tillåtna tecken är siffror, plustecken, bindestreck, mellanslag, parentes, understreck och snedstreck framåt ( / ).
+- Plustecken får bara stå först.
+- Minsta antal tecken är tre.
+- Det måste vara minst tre siffror.
+- Max antal tecken är 20.
+- Det får max vara 15 siffror.
 
 ```import nomarkup
 PhoneNumberExample.vue
@@ -771,12 +771,12 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för bankg
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror och bindestreck.
--   Bindestreck får bara vara på plats nummer fyra eller fem i ordningen.
--   Minsta antal tecken är sju tecken.
--   Det måsta vara minst sju siffror.
--   Max antal tecken är nio tecken.
--   Checksumman ska stämma på det ifyllda värdet.
+- Tillåtna tecken är siffror och bindestreck.
+- Bindestreck får bara vara på plats nummer fyra eller fem i ordningen.
+- Minsta antal tecken är sju tecken.
+- Det måsta vara minst sju siffror.
+- Max antal tecken är nio tecken.
+- Checksumman ska stämma på det ifyllda värdet.
 
 ```import nomarkup
 BankgiroExample.vue
@@ -794,8 +794,8 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Skr
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   obligatorisk `required`: Fyll i bankgironumret.
--   maxlängd `maxLength`: Bankgironumret kan ha mer än 9 tecken.
+- obligatorisk `required`: Fyll i bankgironumret.
+- maxlängd `maxLength`: Bankgironumret kan ha mer än 9 tecken.
 
 ### Clearingnummer `clearingNumber`
 
@@ -803,12 +803,12 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för clear
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, mellanslag och bindestreck.
--   Mellanslag och bindestreck är bara tillåtet mellan siffra nummer fyra och fem.
--   Minsta antal tecken är fyra.
--   Det måste vara minst fyra siffror.
--   Max antal tecken är sex.
--   Det får vara max fem siffror.
+- Tillåtna tecken är siffror, mellanslag och bindestreck.
+- Mellanslag och bindestreck är bara tillåtet mellan siffra nummer fyra och fem.
+- Minsta antal tecken är fyra.
+- Det måste vara minst fyra siffror.
+- Max antal tecken är sex.
+- Det får vara max fem siffror.
 
 ```import nomarkup
 ClearingNumberExample.vue
@@ -832,10 +832,10 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för konto
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror, mellanslag, bindestreck, punkt och komma.
--   Minsta antal tecken är tre.
--   Det måste vara minst tre siffror.
--   Max antal tecken är 16.
+- Tillåtna tecken är siffror, mellanslag, bindestreck, punkt och komma.
+- Minsta antal tecken är tre.
+- Det måste vara minst tre siffror.
+- Max antal tecken är 16.
 
 ```import nomarkup
 BankAccountNumberExample.vue
@@ -859,11 +859,11 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för plusg
 
 Valideringskriterier:
 
--   Tillåtna tecken är siffror och bindestreck.
--   Minsta antal tecken är tre. Minst två tecken måste vara siffror.
--   Max antal tecken är nio. Max åtta tecken får vara siffror.
--   Bindestreck får bara vara på näst sista positionen.
--   Checksumman ska stämma på det ifyllda värdet.
+- Tillåtna tecken är siffror och bindestreck.
+- Minsta antal tecken är tre. Minst två tecken måste vara siffror.
+- Max antal tecken är nio. Max åtta tecken får vara siffror.
+- Bindestreck får bara vara på näst sista positionen.
+- Checksumman ska stämma på det ifyllda värdet.
 
 ```import nomarkup
 PlusgiroExample.vue
@@ -881,8 +881,8 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Skr
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
--   obligatorisk `required`: Fyll i plusgironumret.
--   maxlängd `maxLength`: Plusgironumret kan inte ha mer än 11 tecken.
+- obligatorisk `required`: Fyll i plusgironumret.
+- maxlängd `maxLength`: Plusgironumret kan inte ha mer än 11 tecken.
 
 ## Relaterat
 

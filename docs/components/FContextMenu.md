@@ -12,10 +12,10 @@ Använd en kontextmeny för att presentera flera åtgärder som hör ihop när d
 
 Placera bara funktioner som används sällan i en kontextmeny.
 
--   Menyvalens texter ska vara korta och tydliga, som texter på knappar, exempelvis "Skriv ut" , "Ersätt" eller "Kopiera".
--   En ikon kan användas för att tydliggöra.
--   Använd en delningslinje för att gruppera eller särskilja vissa funktioner i menyn.
--   Ange ett namn som tydligt beskriver syftet för kontextmenyn i `aria-label` prop.
+- Menyvalens texter ska vara korta och tydliga, som texter på knappar, exempelvis "Skriv ut" , "Ersätt" eller "Kopiera".
+- En ikon kan användas för att tydliggöra.
+- Använd en delningslinje för att gruppera eller särskilja vissa funktioner i menyn.
+- Ange ett namn som tydligt beskriver syftet för kontextmenyn i `aria-label` prop.
 
 ## Bara text
 

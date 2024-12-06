@@ -8,8 +8,8 @@ Du kan sätta det visuella utseendet för din applikation på flera olika sätt.
 
 Det finns idag två fördefinierade teman i FKUI
 
--   Försäkringskassan (`exp`)
--   FK Hapo (`int`)
+- Försäkringskassan (`exp`)
+- FK Hapo (`int`)
 
 Du kan också skapa ett eget tema genom att utgå från ett av de fördefinerade temana och anpassa det efter dina behov.
 

@@ -93,8 +93,7 @@ $button--primary: (
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-primary-padding-top)),
     padding-right: var(--f-button-primary-padding-right),
     padding-bottom: densify(var(--f-button-primary-padding-bottom)),
-    padding-left: var(--f-button-primary-padding-left),
-    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+    padding-left: var(--f-button-primary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
 /// Secondary button
@@ -108,8 +107,7 @@ $button--secondary: (
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-secondary-padding-top)),
     padding-right: var(--f-button-secondary-padding-right),
     padding-bottom: densify(var(--f-button-secondary-padding-bottom)),
-    padding-left: var(--f-button-secondary-padding-left),
-    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+    padding-left: var(--f-button-secondary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
 /// Standard button
@@ -123,8 +121,7 @@ $button--standard: (
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-standard-padding-top)),
     padding-right: var(--f-button-standard-padding-right),
     padding-bottom: densify(var(--f-button-standard-padding-bottom)),
-    padding-left: var(--f-button-standard-padding-left),
-    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+    padding-left: var(--f-button-standard-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
 /// Discrete button
@@ -142,8 +139,7 @@ $button--discrete: (
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-discrete-padding-top)),
     padding-right: var(--f-button-discrete-padding-right),
     padding-bottom: densify(var(--f-button-discrete-padding-bottom)),
-    padding-left: var(--f-button-discrete-padding-left),
-    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+    padding-left: var(--f-button-discrete-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
 /// Discrete inverted button
@@ -160,8 +156,7 @@ $button--discrete-inverted: (
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-discrete-padding-top)),
     padding-right: var(--f-button-discrete-padding-right),
     padding-bottom: densify(var(--f-button-discrete-padding-bottom)),
-    padding-left: var(--f-button-discrete-padding-left),
-    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+    padding-left: var(--f-button-discrete-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
 /// Tertiary button
@@ -179,8 +174,7 @@ $button--tertiary: (
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-tertiary-padding-top)),
     padding-right: var(--f-button-tertiary-padding-right),
     padding-bottom: densify(var(--f-button-tertiary-padding-bottom)),
-    padding-left: var(--f-button-tertiary-padding-left),
-    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+    padding-left: var(--f-button-tertiary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
 /// Button placeholders

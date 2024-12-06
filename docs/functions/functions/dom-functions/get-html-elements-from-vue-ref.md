@@ -11,7 +11,7 @@ If there are none, the array returned will be empty rather than `undefined`.
 export function getHTMLElementsFromVueRef(ref: unknown): HTMLElement[];
 ```
 
--   `ref` - The ref to extract `HTMLElement` items from.
+- `ref` - The ref to extract `HTMLElement` items from.
 
 Returns an `Array` of `HTMLElement` items.
 Possibly empty.

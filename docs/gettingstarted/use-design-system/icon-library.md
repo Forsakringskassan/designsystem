@@ -38,7 +38,7 @@ Ikoner renderas sedan genom följande markup:
 
 ## Riktlinjer för ikoner
 
--   512x512 viewbox (`viewBox="0 0 512 512"`)
+- 512x512 viewbox (`viewBox="0 0 512 512"`)
 
 ### Ändra skala på ikoner
 

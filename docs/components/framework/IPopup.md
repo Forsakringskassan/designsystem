@@ -73,29 +73,29 @@ Detta interaktiva exempel visar hur positionering beter sig vid olika placeringa
 
 Positioneringen föredrar:
 
--   Placera popup under istället för ovanför ankare.
--   Placera popup så den linjerar med vänster kant över höger kant.
+- Placera popup under istället för ovanför ankare.
+- Placera popup så den linjerar med vänster kant över höger kant.
 
-*   "A" - popup under och linjering mot vänster kant.
-*   "B" - popup under och linjering mot höger kant.
-*   "C" - popup ovanför och linjering mot vänster kant.
-*   "D" - popup ovanför och linjering mot höger kant.
-*   "E" - popup höger om ankaren vertikalt centrerad.
-*   "F" - popup vänster om ankaren vertikalt centrerad.
-*   "G" - popup höger om ankaren linjering i toppen av begränsade ytan.
-*   "H" - popup vänster om ankaren linjering i toppen av begränsade ytan.
-*   "I" - popup vertikalt och horisontellt centrerad i begränsade ytan.
+* "A" - popup under och linjering mot vänster kant.
+* "B" - popup under och linjering mot höger kant.
+* "C" - popup ovanför och linjering mot vänster kant.
+* "D" - popup ovanför och linjering mot höger kant.
+* "E" - popup höger om ankaren vertikalt centrerad.
+* "F" - popup vänster om ankaren vertikalt centrerad.
+* "G" - popup höger om ankaren linjering i toppen av begränsade ytan.
+* "H" - popup vänster om ankaren linjering i toppen av begränsade ytan.
+* "I" - popup vertikalt och horisontellt centrerad i begränsade ytan.
 
 Ifall ingen av ovanstående positioner fungerar kommer en fallback användas.
 
--   Om `inline` är satt till `never` positioneras popup under ankare utan linjering.
--   Om `inline` är satt till `auto` kommer popup visas inline under ankare.
+- Om `inline` är satt till `never` positioneras popup under ankare utan linjering.
+- Om `inline` är satt till `auto` kommer popup visas inline under ankare.
 
 I följande exempel visas tre varianter:
 
--   `Viewport`: använder `<body>` som yta och fönster som viewport
--   `Container`: använder container som yta, ingen viewport
--   `Viewport + container`: använder container som yta, fönster som viewport
+- `Viewport`: använder `<body>` som yta och fönster som viewport
+- `Container`: använder container som yta, ingen viewport
+- `Viewport + container`: använder container som yta, fönster som viewport
 
 ```import
 IPopupPositioning.vue

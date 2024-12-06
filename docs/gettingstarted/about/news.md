@@ -38,9 +38,9 @@ Det interna temat byter i dokumentationen namn till FK Hapo. Detta är ett steg 
 Version: 5.17.0 <br>
 2024-03-22
 
--   `FRadioGroup`, `FCheckboxGroup` ersätts med Fältgruppering (`FFieldset`)
--   `FRadioGroupField` byter namn till `FRadioField`
--   `FCheckboxGroupField` byter namn till `FCheckboxField`
+- `FRadioGroup`, `FCheckboxGroup` ersätts med Fältgruppering (`FFieldset`)
+- `FRadioGroupField` byter namn till `FRadioField`
+- `FCheckboxGroupField` byter namn till `FCheckboxField`
 
 {@link migrating-to-fieldset Läs mer om hur du uppdaterar din användning av radio och kryssrutor }
 

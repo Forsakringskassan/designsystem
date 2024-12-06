@@ -16,17 +16,17 @@ layout: pattern
 
 Before you begin make sure to read:
 
--   Official [Vue 3 migration guide][vue3-migration]
--   Official [vue-router migration guide][vue-router-migration] (if your application uses routing)
+- Official [Vue 3 migration guide][vue3-migration]
+- Official [vue-router migration guide][vue-router-migration] (if your application uses routing)
 
 [vue3-migration]: https://v3-migration.vuejs.org/
 [vue-router-migration]: https://router.vuejs.org/guide/migration/
 
 Additionally some changes has to be made to your build toolchain:
 
--   `@forsakringskassan/jest-config` must be updated to 29.3.0 or later.
--   Toolchain migrated to Vite
--   Optional: If your application uses vue-styleguidist to generate documentation it must be migrated to `@forsakringskassan/docs-generator`
+- `@forsakringskassan/jest-config` must be updated to 29.3.0 or later.
+- Toolchain migrated to Vite
+- Optional: If your application uses vue-styleguidist to generate documentation it must be migrated to `@forsakringskassan/docs-generator`
 
 :::alt migrating-to-v5-other
 
@@ -109,11 +109,11 @@ Additionally you no longer need to manually remove the target element:
 
 This change affects the following functions:
 
--   `mountComponent`
--   `openModal`
--   `confirmModal`
--   `formModal`
--   `mountFOffline`
+- `mountComponent`
+- `openModal`
+- `confirmModal`
+- `formModal`
+- `mountFOffline`
 
 For instance, when using `mountComponent(..)`:
 

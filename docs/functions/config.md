@@ -24,8 +24,8 @@ config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
 
 ### `buttonOrder`
 
--   default: `LEFT_TO_RIGHT`
--   type: `FKUIConfigButtonOrder`
+- default: `LEFT_TO_RIGHT`
+- type: `FKUIConfigButtonOrder`
 
 Anger i vilken ordning man vill visa knappar.
 
@@ -63,32 +63,32 @@ Anger i vilken ordning man vill visa knappar.
 
 ### `teleportTarget`
 
--   default: `document.body`
--   type: `string | Element`
+- default: `document.body`
+- type: `string | Element`
 
 Anger var komponenter som teleporteras ska monteras.
 
 Komponenter som påverkas av denna inställning inkluderar:
 
--   Programmatiskt öppnad `FModal`.
--   `FLoader` när den använder `overlay`.
--   `IPopup` när den använder `overlay`.
--   `IPopupMenu` när den använder `overlay`.
--   `FDatepickerField` när den använder `overlay`.
--   `FNavigationMenu` popupmeny när den använder `overlay`.
--   `FContextMenu`.
+- Programmatiskt öppnad `FModal`.
+- `FLoader` när den använder `overlay`.
+- `IPopup` när den använder `overlay`.
+- `IPopupMenu` när den använder `overlay`.
+- `FDatepickerField` när den använder `overlay`.
+- `FNavigationMenu` popupmeny när den använder `overlay`.
+- `FContextMenu`.
 
 ### `popupContainer`
 
--   default: `document.body`
--   type: `string | HTMLElement`
+- default: `document.body`
+- type: `string | HTMLElement`
 
 Anger inom vilken container popups ska hålla sig inom när den använder overlay.
 
 ### `production`
 
--   default: true
--   type: `boolean`
+- default: true
+- type: `boolean`
 
 Gör det möjligt att specificera om man vill ha ett skarpt produktion beteendet av FKUI eller en icke-produktion, t.ex för test/utveckling,
 beteendet.

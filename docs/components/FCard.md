@@ -21,9 +21,9 @@ Ett kort kan innehålla flera knappar eller länkar, till exempel för att visa 
 
 Ett kort har tre ytor där innehåll kan placeras:
 
--   Rubrik (header)
--   Innehåll (default)
--   Knappar och länkar (footer)
+- Rubrik (header)
+- Innehåll (default)
+- Knappar och länkar (footer)
 
 Rubriken kan också användas som en länk för att visa detaljer om objektet eller personen. Undvik att göra hela kortet till en länk.
 
@@ -31,9 +31,9 @@ Rubriken ska sättas till rätt nivå.
 
 ## När du inte ska använda kort
 
--   En lista med kort ska inte användas när du behöver lista ett större antal objekt som har samma innehåll och layout. Då passar komponenterna lista eller tabell bättre. Lista och tabell är framförallt att föredra om användaren behöver ha en bra överblick över alla poster för att kunna jämföra dem.
--   Placera inte långa listor eller mycket omfattande information i kort.
--   Gruppera inte information eller formulärskomponeter med kort.
+- En lista med kort ska inte användas när du behöver lista ett större antal objekt som har samma innehåll och layout. Då passar komponenterna lista eller tabell bättre. Lista och tabell är framförallt att föredra om användaren behöver ha en bra överblick över alla poster för att kunna jämföra dem.
+- Placera inte långa listor eller mycket omfattande information i kort.
+- Gruppera inte information eller formulärskomponeter med kort.
 
 ## API
 

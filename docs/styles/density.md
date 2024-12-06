@@ -17,11 +17,11 @@ En hög densitet kan till exempel användas för att presentera en tabell med my
 sida som i övrigt är luftig.
 Använd inte densitet för att ändra storleken på enskilda komponenter som till exempel en knapp eller ett inmatningsfält.
 
--   Designsystemet har tre nivåer av densitet: standard, kompakt och extra kompakt.
--   Densitet är frikopplat från textstorlek.
-    Till exempel går det att kombinera en relativt stor textstorlek med hög densitet.
--   En högre densitet ger inte mindre horisontellt utrymme för text.
-    Till exempel ska en kolumn i en tabell visa samma mängd tecken oavsett vald densitet.
+- Designsystemet har tre nivåer av densitet: standard, kompakt och extra kompakt.
+- Densitet är frikopplat från textstorlek.
+  Till exempel går det att kombinera en relativt stor textstorlek med hög densitet.
+- En högre densitet ger inte mindre horisontellt utrymme för text.
+  Till exempel ska en kolumn i en tabell visa samma mängd tecken oavsett vald densitet.
 
 Jämför olika nivåer {@link compare-density här}.
 

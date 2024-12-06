@@ -21,12 +21,12 @@ En stor meddelanderuta har alltid en rubrik. Rubrik ska sättas till rätt nivå
 Rubriken ska beskriva kärnfrågan så tydligt som möjligt.
 Ord som “information” ska inte användas i en rubrik.
 
--   Informationsmeddelanden används för att förmedla extra viktig information som gäller alla eller majoriteten av besökarna på sidan.
--   Varningsmeddelanden används för att uppmärksamma användaren på sådant som är viktigt att veta och som kan
-    kräva att användaren agerar i ett senare skede.
--   Felmeddelanden används för att informera användaren om kritiska och stoppande fel och vad användaren behöver
-    göra för att kunna fortsätta.
--   Positiv återkoppling används för att informera användaren när denne har gjort vad som behövs och att resultatet var lyckat.
+- Informationsmeddelanden används för att förmedla extra viktig information som gäller alla eller majoriteten av besökarna på sidan.
+- Varningsmeddelanden används för att uppmärksamma användaren på sådant som är viktigt att veta och som kan
+  kräva att användaren agerar i ett senare skede.
+- Felmeddelanden används för att informera användaren om kritiska och stoppande fel och vad användaren behöver
+  göra för att kunna fortsätta.
+- Positiv återkoppling används för att informera användaren när denne har gjort vad som behövs och att resultatet var lyckat.
 
 ## Copy
 

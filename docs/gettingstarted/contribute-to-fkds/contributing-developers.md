@@ -138,12 +138,12 @@ npm link @fkui/vue
 
 Följ riktlinjerna nedan
 
--   Namnge variabler enligt [BEM:s standard för namn](https://getbem.com/).
--   Ta fram exempel för olika komponent-tillstånd.
--   Undvid att skapa globala CSS-klasser.
--   Använd prefix för komponenter för att underlätta för de konsumenter som kör olika versioner på samma webbplats.
--   Sätt prefix `.h-` för hjälp-klasser.
--   Använd `rem` för storlekar (finns undantag, till exempel när du inte vill att skalning ska utgå från rem-storleken).
+- Namnge variabler enligt [BEM:s standard för namn](https://getbem.com/).
+- Ta fram exempel för olika komponent-tillstånd.
+- Undvid att skapa globala CSS-klasser.
+- Använd prefix för komponenter för att underlätta för de konsumenter som kör olika versioner på samma webbplats.
+- Sätt prefix `.h-` för hjälp-klasser.
+- Använd `rem` för storlekar (finns undantag, till exempel när du inte vill att skalning ska utgå från rem-storleken).
 
 ### Commit
 

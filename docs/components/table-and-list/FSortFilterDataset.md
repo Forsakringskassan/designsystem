@@ -103,9 +103,9 @@ FSortFilterDatasetHeader.vue
 
 För att visa antalet rader som presenteras använder man sig av de två listornas längd.
 
--   Om längden av de ursprungliga raderna är `0` finns inga rader att visa oavsett filtrering.
--   Om längden av de filtrerade raderna är `0` (men urprungliga är större än `0`) visas inga rader på grund av filter.
--   Om längden mellan de två skiljer sig åt har sökningen gett ett resultat.
+- Om längden av de ursprungliga raderna är `0` finns inga rader att visa oavsett filtrering.
+- Om längden av de filtrerade raderna är `0` (men urprungliga är större än `0`) visas inga rader på grund av filter.
+- Om längden mellan de två skiljer sig åt har sökningen gett ett resultat.
 
 Vi använder begreppet "träffar" för att presentera resultat.
 Om det går att specificera träffar så är det bättre att göra det, till exempel "Det finns inga frukter att visa" istället för "Det finns inga träffar att visa".

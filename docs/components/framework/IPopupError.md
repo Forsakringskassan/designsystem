@@ -12,12 +12,12 @@ Men `PopupError` har en annan prioriterad ordning för vart felmeddelandet kan p
 
 Position för felmeddelandet väljs enligt följande, i fallande prioordning:
 
--   "B" - popup under och linjering mot höger kant.
--   "A" - popup under och linjering mot vänster kant.
--   "D" - popup ovanför och linjering mot höger kant.
--   "C" - popup ovanför och linjering mot vänster kant.
--   "E" - popup höger om ankaren vertikalt centrerad.
--   "F" - popup vänster om ankaren vertikalt centrerad.
+- "B" - popup under och linjering mot höger kant.
+- "A" - popup under och linjering mot vänster kant.
+- "D" - popup ovanför och linjering mot höger kant.
+- "C" - popup ovanför och linjering mot vänster kant.
+- "E" - popup höger om ankaren vertikalt centrerad.
+- "F" - popup vänster om ankaren vertikalt centrerad.
 
 Ifall ingen av ovanstående positioner fungerar placeras felmeddelandet inline under inmatningsfältet.
 

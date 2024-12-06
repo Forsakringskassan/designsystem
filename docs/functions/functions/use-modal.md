@@ -7,9 +7,9 @@ layout: article
 
 Composable to get access to modal functions without using `callingInstance`:
 
--   `openModal()`
--   `confirmModal()`
--   `formModal()`
+- `openModal()`
+- `confirmModal()`
+- `formModal()`
 
 This is for Vue Composition API.
 Use {@link open-modal openModal()}, {@link confirm-modal confirmModal()} and {@link form-modal formModal()} with Options API.
@@ -71,6 +71,6 @@ const result = await formModal<MyAwesomeData>(MyAwesomeModal);
 
 ## Related
 
--   {@link open-modal openModal()}
--   {@link confirm-modal confirmModal()}
--   {@link form-modal formModal()}
+- {@link open-modal openModal()}
+- {@link confirm-modal confirmModal()}
+- {@link form-modal formModal()}

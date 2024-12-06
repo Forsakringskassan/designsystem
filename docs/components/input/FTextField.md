@@ -18,8 +18,8 @@ Ett inmatningsfält kan användas för inmatning som inte kräver något särski
 
 Tänk på följande om du ska använda ett inmatningsfält utan något särskilt krav på formatet, till exempel ett fält för ett personnamn:
 
--   Ange en maxgräns för antal tecken, se {@link length-validation längdvalidering}.
--   Du behöver troligtvis hindra att användaren matar in otillåtna tecken genom att använda {@link validators validatorn för otillåtna tecken}.
+- Ange en maxgräns för antal tecken, se {@link length-validation längdvalidering}.
+- Du behöver troligtvis hindra att användaren matar in otillåtna tecken genom att använda {@link validators validatorn för otillåtna tecken}.
 
 Använd inte inaktiva komponenter, bland annat då de är svåra att uppfatta för användare med skärmläsare.
 

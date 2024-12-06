@@ -16,8 +16,8 @@ Som ersättare till `FForm` finns `FWizard` alternativt `FValidationForm`, val a
 
 Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:
 
--   {@link FWizard}
--   {@link FValidationForm}
+- {@link FWizard}
+- {@link FValidationForm}
 
 ---
 

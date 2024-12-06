@@ -12,7 +12,7 @@ Gets an `HTMLElement` a ref, provided it is defined and not an array.
 export function getHTMLElementFromVueRef(ref: unknown): HTMLElement | never;
 ```
 
--   `ref` - The ref to extract the `HTMLElement` from.
+- `ref` - The ref to extract the `HTMLElement` from.
 
 Returns an `HTMLElement` if ref is `Vue` or `Element`.
 

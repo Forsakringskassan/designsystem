@@ -14,10 +14,10 @@ Den här sidan innehåller riktlinjer för automatiska testfall.
 
 Med enhetstester testar vi:
 
--   logik
--   events
--   props
--   regler för HTML-Validate.
+- logik
+- events
+- props
+- regler för HTML-Validate.
 
 I enhetstester testar vi funktionalitet i isolation och mockar omvärlden.
 Styrkan med enhetstester i Jest ligger i att de är snabba, enkla att mocka och att man enkelt kan anropa funktioner.
@@ -27,8 +27,8 @@ Svagheten ligger i att det är svårt att vänta ut cykler från exempelvis Vue.
 
 Med komponenttester testar vi:
 
--   enskilda komponenter
--   interaktion med komponenten.
+- enskilda komponenter
+- interaktion med komponenten.
 
 Komponenttester körs i Chrome med Cypress och där testar vi komponenter i isolation.
 Vi interagerar med komponenten på samma sätt som en konsument implementerat ett use-case och på ett sätt som en slutkund interagerat med.
@@ -39,8 +39,8 @@ Svagheten ligger i att det är svårare att mocka omvärlden och lockande att sk
 
 Med E2E-tester testar vi:
 
--   interaktion mellan flera komponenter
--   exempel i dokumentation.
+- interaktion mellan flera komponenter
+- exempel i dokumentation.
 
 E2E-tester kör i Chrome med Cypress och kräver en webserver som servar en websida, sidan under test.
 För komponenter använder vi oss av samma pageobject som konsumenter och kompletterar detta med interna pageobjekt för respektive sida under test.
@@ -249,11 +249,11 @@ Tydligare vad som gått fel när man läser loggar och för att som läsare för
 
 ### Gruppera med `describe`
 
--   Props grupperas under `describe("props", () => { ... })`.
--   Events grupperas under `describe("events", () => { ... })`.
--   HTML-Validate regler grupperas under `describe("html-validate", () => { ... })`.
--   Dokumentationsexempel grupperas under exemplets namn.
--   I övrigt gruppera efter logisk funktionalitet.
+- Props grupperas under `describe("props", () => { ... })`.
+- Events grupperas under `describe("events", () => { ... })`.
+- HTML-Validate regler grupperas under `describe("html-validate", () => { ... })`.
+- Dokumentationsexempel grupperas under exemplets namn.
+- I övrigt gruppera efter logisk funktionalitet.
 
 ### Koppla till krav ID där applicerbart
 
@@ -262,13 +262,13 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 
 ### Checklista
 
--   [ ] Enhetstest för logik?
--   [ ] Enhetstest för propar?
--   [ ] Enhetstest för event?
--   [ ] Enhetstest för HTML-Validate?
--   [ ] Component tests för interaktion med komponent?
--   [ ] Cypresstest för exempel i dokumentation?
--   [ ] Pageobject?
+- [ ] Enhetstest för logik?
+- [ ] Enhetstest för propar?
+- [ ] Enhetstest för event?
+- [ ] Enhetstest för HTML-Validate?
+- [ ] Component tests för interaktion med komponent?
+- [ ] Cypresstest för exempel i dokumentation?
+- [ ] Pageobject?
 
 ## Jest
 

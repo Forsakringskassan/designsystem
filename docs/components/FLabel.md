@@ -13,18 +13,18 @@ FLabelLiveExample.vue
 
 En etikett utnyttjar html-elementet label och används tillsammans med exempelvis inmatningskomponenter. En etikett innehåller alltid etikett-rubrik medan övriga delar ska kombineras på det mest ändamålsenliga sättet i en given situation.
 
--   Etiketten är en utökad label består av fyra delar: rubrik, hjälptext, formatbeskrivning och felmeddelande.
--   Hjälptexten är valfri och används för att förtydliga rubriken.
--   Formatbeskrivningen är valfri och beskriver hur något ska fyllas i, exempelvis i vilket format ett personnummer eller ett datum ska fyllas i.
--   Tooltip {@link FTooltip (FTooltip)} är en egen komponent som kan ge ytterligare information och hjälp om vad och hur användaren ska fylla i eller välja. Tooltip är valfri.
--   Etikettens feltext används för att visa information om felaktig inmatning eller om obligatorisk information saknas.
+- Etiketten är en utökad label består av fyra delar: rubrik, hjälptext, formatbeskrivning och felmeddelande.
+- Hjälptexten är valfri och används för att förtydliga rubriken.
+- Formatbeskrivningen är valfri och beskriver hur något ska fyllas i, exempelvis i vilket format ett personnummer eller ett datum ska fyllas i.
+- Tooltip {@link FTooltip (FTooltip)} är en egen komponent som kan ge ytterligare information och hjälp om vad och hur användaren ska fylla i eller välja. Tooltip är valfri.
+- Etikettens feltext används för att visa information om felaktig inmatning eller om obligatorisk information saknas.
 
 ## Obligatoriska fält
 
 Vi markerar aldrig fält som användare måste fylla i eftersom utgångspunkten är att vi bara frågar efter information som vi verkligen behöver. Därför markerar vi istället frivilliga fält i de få fall de förekommer. Etikettrubriken till ett icke obligatoriskt fält avslutas med texten "(Frivillig)" eller "(Valfritt)".
 
--   "Frivillig" används för formulär på fk.se
--   "Valfritt" använd i internt IT-stöd.
+- "Frivillig" används för formulär på fk.se
+- "Valfritt" använd i internt IT-stöd.
 
 ## Copy
 
@@ -34,9 +34,9 @@ Rubrik ska alltid finnas med. Om det är möjligt ska bara rubrik användas. Hj�
 
 Exempel på etikettrubriker:
 
--   Adress
--   Bostadskostnad i kronor per månad
--   Gäller din ansökan den här adressen?
+- Adress
+- Bostadskostnad i kronor per månad
+- Gäller din ansökan den här adressen?
 
 Formatbeskrivning används bara när användaren måste fylla i ett fält på ett visst sätt eller enligt ett visst format.
 

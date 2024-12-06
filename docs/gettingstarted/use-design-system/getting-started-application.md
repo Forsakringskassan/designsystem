@@ -7,9 +7,9 @@ sortorder: 2
 
 För att sätta det visuella utseendet på din applikation behöver du
 
--   välja ett tema
--   sätta temat för din applikation
--   importera ett ikonbibliotek till din applikation.
+- välja ett tema
+- sätta temat för din applikation
+- importera ett ikonbibliotek till din applikation.
 
 ## Välj tema
 

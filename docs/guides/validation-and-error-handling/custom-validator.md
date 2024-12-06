@@ -18,9 +18,9 @@ validation(value: string, element: ValidatableHTMLElement, config: TConfig): boo
 
 där:
 
--   `value` är det inmatade värdet som ska valideras
--   `element` är HTML elementet vars värde valideras
--   `config` är konsumentens konfiguration (dvs det som skickats in till v-validation="{ ... }")
+- `value` är det inmatade värdet som ska valideras
+- `element` är HTML elementet vars värde valideras
+- `config` är konsumentens konfiguration (dvs det som skickats in till v-validation="{ ... }")
 
 Observera att värdet i `value` är en `string` och att det är vy-värdet innan parsning och formatering.
 Värdet kan därmed behöva hantering och verifiering innan den faktiska valideringen sker.
@@ -29,8 +29,8 @@ Se mer om parsning och formatering här: {@link custom-formatter-parser Gör din
 
 Resultatet av valideringen returneras i form av en `boolean` där:
 
--   `true` innebär att det inmatade värdet är giltigt
--   `false` innebär att det inmatade värdet är ogiltigt och ett felmeddelande presenteras
+- `true` innebär att det inmatade värdet är giltigt
+- `false` innebär att det inmatade värdet är ogiltigt och ett felmeddelande presenteras
 
 Börja med att skapa en enklare validering där du kontrollerar om `value` börjar med den fasta strängen "demo".
 Om din validator används på frivilliga fält, så är även ett tomt värde giltigt.

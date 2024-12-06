@@ -34,20 +34,20 @@ Den här webbplatsen är delvis förenlig med lagen om tillgänglighet till digi
 
 #### Övergripande brister på webbplatsen
 
--   Webbplatsen respekterar inte användarens webbläsarinställningar för färger (ljust/mörkt tema) och teckenstorlek.
--   Webbplatsens layout är inte tillräckligt följsam (responsiv) utan webbplatsen sätter sidans minimibredd till 400px.
-    Vid vybredden 320px blir det scrollning både vertikalt och horisontellt (vilket motsvarar 1280px vid 400 % zoom).
-    En del tabeller är inte heller tillräckligt följsamma.
--   Det saknas en länk för att hoppa förbi de återkommande interaktiva elementen i sidhuvudet.
-    Användare som navigerar sekventiellt behöver trycka flera gånger på Tabb-tangenten på varje sida för att komma till huvudinnehållet.
--   Webbplatsen tar inte hänsyn till användarens inställning av så kallade "högkontrastläget" (forced colours mode).
-    I detta läge syns fokus-markeringen inte alls för länkar, radioknappar, kryssrutor och vissa knappar.
-    För radiogrupper syns inte heller markeringen av det valda alternativet.
--   Många sidor innehåller block med programkod eller annat formaterat innehåll.
-    Dessa block är fokuserbara (med tabindex=0), men saknar synlig fokusmarkering.
--   Webbplatsen innehåller ord och fraser på engelska, men språk-ändringen är inte maskinläsbart angiven.
-    En skärmläsare kommer därför att läsa upp den engelska texten med svensk talsyntes, vilket gör den svår att uppfatta.
--   En del informationsbärande bilder saknar textalternativ vilket gör att informationen inte når användare med skärmläsare.
+- Webbplatsen respekterar inte användarens webbläsarinställningar för färger (ljust/mörkt tema) och teckenstorlek.
+- Webbplatsens layout är inte tillräckligt följsam (responsiv) utan webbplatsen sätter sidans minimibredd till 400px.
+  Vid vybredden 320px blir det scrollning både vertikalt och horisontellt (vilket motsvarar 1280px vid 400 % zoom).
+  En del tabeller är inte heller tillräckligt följsamma.
+- Det saknas en länk för att hoppa förbi de återkommande interaktiva elementen i sidhuvudet.
+  Användare som navigerar sekventiellt behöver trycka flera gånger på Tabb-tangenten på varje sida för att komma till huvudinnehållet.
+- Webbplatsen tar inte hänsyn till användarens inställning av så kallade "högkontrastläget" (forced colours mode).
+  I detta läge syns fokus-markeringen inte alls för länkar, radioknappar, kryssrutor och vissa knappar.
+  För radiogrupper syns inte heller markeringen av det valda alternativet.
+- Många sidor innehåller block med programkod eller annat formaterat innehåll.
+  Dessa block är fokuserbara (med tabindex=0), men saknar synlig fokusmarkering.
+- Webbplatsen innehåller ord och fraser på engelska, men språk-ändringen är inte maskinläsbart angiven.
+  En skärmläsare kommer därför att läsa upp den engelska texten med svensk talsyntes, vilket gör den svår att uppfatta.
+- En del informationsbärande bilder saknar textalternativ vilket gör att informationen inte når användare med skärmläsare.
 
 Vi arbetar med att kontinuerligt förbättra webbplatsen och åtgärda de brister som finns.
 

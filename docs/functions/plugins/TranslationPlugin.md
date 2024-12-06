@@ -81,9 +81,9 @@ Det är enbart att rekommendera för applikationer och ej för komponentbibliote
 
 ## `$t(key: string, [defaultValue: string], [params: Record<string, unknown>])`
 
--   `key` - Textnyckel som ska översättas.
--   `defaultValue` - Standardtext som visas när ingen översättning finns.
--   `params` - Parametrar som kan interpoleras. Kräver en provider med stöd för interpolering.
+- `key` - Textnyckel som ska översättas.
+- `defaultValue` - Standardtext som visas när ingen översättning finns.
+- `params` - Parametrar som kan interpoleras. Kräver en provider med stöd för interpolering.
 
 Första parametern till `$t()` är textnyckeln som används för att slå upp översatt text.
 

@@ -28,17 +28,17 @@ Vi använder aldrig våra egna eller andras personuppgifter eller ens egna påhi
 
 Vi rekommenderar att du har följande utvecklingsverktyg
 
--   Git Bash
--   NodeJS
--   Visual Studio Code.
+- Git Bash
+- NodeJS
+- Visual Studio Code.
 
 Installera FKUI-paket. Vanlig uppsättning av paket är:
 
--   `@fkui/css-variables` (css-variabler)
--   `@fkui/design` (styling)
--   `@fkui/date` (datum)
--   `@fkui/logic` (funktioner)
--   `@fkui/vue` (ramverkspecifika komponenter, plugins)
+- `@fkui/css-variables` (css-variabler)
+- `@fkui/design` (styling)
+- `@fkui/date` (datum)
+- `@fkui/logic` (funktioner)
+- `@fkui/vue` (ramverkspecifika komponenter, plugins)
 
 ```bash
 npm install @fkui/css-variables @fkui/design @fkui/date @fkui/logic @fkui/vue

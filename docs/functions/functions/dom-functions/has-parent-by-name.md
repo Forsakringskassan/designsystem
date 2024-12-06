@@ -15,8 +15,8 @@ export function hasParentByName(
 ): boolean;
 ```
 
--   `vm` - Component instance.
--   `name` - The name of the parent to be found.
+- `vm` - Component instance.
+- `name` - The name of the parent to be found.
 
 ## Usage
 
