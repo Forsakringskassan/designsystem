@@ -52,35 +52,103 @@ export function useCombobox(
     useEventListener(inputRef, "keyup", onInputKeyUp);
 
     const dropdownId = ElementIdService.generateElementId();
-    const activeOptionId = ElementIdService.generateElementId();
-
-    function onInputClick(): void {
-        toggleDropdown();
-    }
-
-    onMounted(() => {
-        if (!inputRef.value) {
-            throw new Error("missing input ref");
-        }
-
-        filter.value = inputRef.value.value;
-        inputRef.value.setAttribute("role", "combobox");
-        inputRef.value.setAttribute("aria-autocomplete", "list");
-    });
-
     const dropdownIsOpen = ref(false);
-    const filter = ref("");
+    const activeOptionId = ElementIdService.generateElementId();
     const activeOption: Ref<string | null> = ref(null);
+    const filter = ref("");
     const selectMode = ref(false);
     const selectedValue: Ref<string | null> = ref(null);
 
-    function toggleDropdown(): void {
-        if (!dropdownIsOpen.value) {
-            openSelected();
-        } else {
-            close();
+    const dropdownOptions = computed(() => {
+        if (isEmpty(filter.value) || selectMode.value) {
+            return options;
         }
-    }
+
+        const filterLowerCased = filter.value.toLowerCase();
+
+        return options.filter(
+            (it) => it.toLowerCase().indexOf(filterLowerCased) > -1,
+        );
+    });
+
+    const hasOptions = computed(() => {
+        return dropdownOptions.value.length > 0;
+    });
+
+    const hasMultipleOptions = computed(() => {
+        return dropdownOptions.value.length > 1;
+    });
+
+    // selectedValue trigger: closes dropdown and sets internal values
+    watchEffect(() => {
+        if (selectedValue.value) {
+            close();
+            filter.value = selectedValue.value;
+            selectMode.value = true;
+        }
+    });
+
+    // dropdownIsOpen trigger: sets input aria-expanded, aria-controls
+    watchEffect(() => {
+        if (!inputRef.value) {
+            return;
+        }
+        inputRef.value.setAttribute("aria-expanded", `${dropdownIsOpen.value}`);
+
+        if (dropdownIsOpen.value) {
+            inputRef.value.setAttribute("aria-controls", dropdownId);
+        } else {
+            inputRef.value.removeAttribute("aria-controls");
+        }
+    });
+
+    // activeOption trigger: sets input aria-activedescendant
+    watchEffect(async () => {
+        if (!inputRef.value) {
+            return;
+        }
+
+        if (activeOption.value) {
+            inputRef.value.setAttribute(
+                "aria-activedescendant",
+                activeOptionId,
+            );
+        } else {
+            inputRef.value.removeAttribute("aria-activedescendant");
+        }
+    });
+
+    // selectMode, filter, options trigger: sets input aria-description
+    watchEffect(() => {
+        if (!inputRef.value) {
+            return;
+        }
+
+        let description = selectMode.value
+            ? `${$t("fkui.combobox.selected", "Valt förslag")} `
+            : "";
+
+        if (isEmpty(filter.value) || selectMode.value) {
+            description += $t(
+                "fkui.combobox.listDetails",
+                `Det finns {{ count }} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`,
+                { count: options.length },
+            );
+        } else if (hasOptions.value) {
+            description += $t(
+                "fkui.combobox.matchesListDetails",
+                `Det finns {{ count }} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`,
+                { count: dropdownOptions.value.length },
+            );
+        } else {
+            description = $t(
+                "fkui.combobox.noMatchesListDetails",
+                "Det finns inga förslag som matchar.",
+            );
+        }
+
+        inputRef.value.setAttribute("aria-description", description);
+    });
 
     async function openSelected(
         fallback: null | "first" | "last" = null,
@@ -108,25 +176,13 @@ export function useCombobox(
         activeOption.value = null;
     }
 
-    const dropdownOptions = computed(() => {
-        if (isEmpty(filter.value) || selectMode.value) {
-            return options;
+    function toggleDropdown(): void {
+        if (!dropdownIsOpen.value) {
+            openSelected();
+        } else {
+            close();
         }
-
-        const filterLowerCased = filter.value.toLowerCase();
-
-        return options.filter(
-            (it) => it.toLowerCase().indexOf(filterLowerCased) > -1,
-        );
-    });
-
-    const hasOptions = computed(() => {
-        return dropdownOptions.value.length > 0;
-    });
-
-    const hasMultipleOptions = computed(() => {
-        return dropdownOptions.value.length > 1;
-    });
+    }
 
     function setNextOption(): void {
         if (activeOption.value && hasMultipleOptions.value) {
@@ -157,17 +213,23 @@ export function useCombobox(
         }
     }
 
+    onMounted(() => {
+        if (!inputRef.value) {
+            throw new Error("missing input ref");
+        }
+
+        filter.value = inputRef.value.value;
+        inputRef.value.setAttribute("role", "combobox");
+        inputRef.value.setAttribute("aria-autocomplete", "list");
+    });
+
+    function onInputClick(): void {
+        toggleDropdown();
+    }
+
     function onInputFocus(): void {
         selectMode.value = options?.includes(filter.value) ?? false;
     }
-
-    watchEffect(() => {
-        if (selectedValue.value) {
-            close();
-            filter.value = selectedValue.value;
-            selectMode.value = true;
-        }
-    });
 
     async function onInputKeyDown(event: KeyboardEvent): Promise<void> {
         let flag = false;
@@ -254,65 +316,6 @@ export function useCombobox(
             close();
         }
     }
-
-    watchEffect(() => {
-        if (!inputRef.value) {
-            return;
-        }
-        inputRef.value.setAttribute("aria-expanded", `${dropdownIsOpen.value}`);
-
-        if (dropdownIsOpen.value) {
-            inputRef.value.setAttribute("aria-controls", dropdownId);
-        } else {
-            inputRef.value.removeAttribute("aria-controls");
-        }
-    });
-
-    watchEffect(async () => {
-        if (!inputRef.value) {
-            return;
-        }
-
-        if (activeOption.value) {
-            inputRef.value.setAttribute(
-                "aria-activedescendant",
-                activeOptionId,
-            );
-        } else {
-            inputRef.value.removeAttribute("aria-activedescendant");
-        }
-    });
-
-    watchEffect(() => {
-        if (!inputRef.value) {
-            return;
-        }
-
-        let description = selectMode.value
-            ? `${$t("fkui.combobox.selected", "Valt förslag")} `
-            : "";
-
-        if (isEmpty(filter.value) || selectMode.value) {
-            description += $t(
-                "fkui.combobox.listDetails",
-                `Det finns {{ count }} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`,
-                { count: options.length },
-            );
-        } else if (hasOptions.value) {
-            description += $t(
-                "fkui.combobox.matchesListDetails",
-                `Det finns {{ count }} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`,
-                { count: dropdownOptions.value.length },
-            );
-        } else {
-            description = $t(
-                "fkui.combobox.noMatchesListDetails",
-                "Det finns inga förslag som matchar.",
-            );
-        }
-
-        inputRef.value.setAttribute("aria-description", description);
-    });
 
     return {
         dropdownId,
