@@ -4,6 +4,7 @@
     background-color: $combobox-color-background;
     border: var(--f-border-width-medium) solid $combobox-color-border;
     border-radius: var(--f-border-radius-medium);
+    box-shadow: var(--f-box-modal-shadow);
     margin-top: 4px;
     padding: 2px;
 }

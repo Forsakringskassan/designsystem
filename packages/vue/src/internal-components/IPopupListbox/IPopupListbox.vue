@@ -88,7 +88,6 @@ async function calculatePosition(): Promise<void> {
 
     wrapperElement.style.overflowY = "auto";
     wrapperElement.style.left = `0px`;
-    wrapperElement.style.boxShadow = "none";
     const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems });
     if (rect) {
         const { top, left, width, height } = rect;
