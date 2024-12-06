@@ -113,27 +113,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, useTemplateRef, type PropType } from "vue";
+import { defineComponent, type PropType } from "vue";
 import { ElementIdService, isSet, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FLabel } from "../FLabel";
 import { FIcon } from "../FIcon";
 import { IPopupError } from "../../internal-components/IPopupError";
 import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
-import { IComboboxDropdown, IComboboxToggleButton, useCombobox } from "../../internal-components/combobox";
+import { IComboboxDropdown, IComboboxToggleButton } from "../../internal-components/combobox";
 import { resolveWidthClass } from "./FTextField.logic";
+import { useTextFieldSetup } from "./useTextFieldSetup";
 import { FormatFunction, ParseFunction } from "./index";
-
-interface FTextFieldProps {
-    id: string;
-    inline: boolean;
-    modelValue: string | number;
-    type: string;
-    formatter?: FormatFunction<unknown>;
-    parser?: ParseFunction<unknown>;
-    labelWidth: string;
-    inputWidth: string;
-    options?: string[];
-}
 
 export default defineComponent({
     name: "FTextField",
@@ -244,37 +233,12 @@ export default defineComponent({
         },
     },
     emits: ["blur", "change", "update", "update:modelValue"],
-    setup(props: FTextFieldProps) {
-        const inputNode = useTemplateRef<HTMLInputElement>("input");
-        const textFieldTableMode = inject("textFieldTableMode", false) as boolean;
-
-        const {
-            dropdownId,
-            dropdownIsOpen,
-            dropdownOptions,
-            activeOptionId,
-            activeOption,
-            selectedValue,
-            toggleDropdown,
-            closeDropdown,
-        } = useCombobox(inputNode, props.options);
-
-        return {
-            textFieldTableMode,
-            dropdownId,
-            dropdownIsOpen,
-            dropdownOptions,
-            activeOptionId,
-            activeOption,
-            selectedValue,
-            toggleDropdown,
-            closeDropdown,
-        };
+    setup(props) {
+        return useTextFieldSetup(props);
     },
     data() {
         return {
             showErrorPopup: false,
-            viewValue: "" as string,
             lastModelValue: "" as unknown,
             validationMessage: "" as string,
             validityMode: "INITIAL" as string,
