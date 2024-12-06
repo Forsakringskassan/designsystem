@@ -1088,9 +1088,9 @@
                     integrity="sha384-ONWwA5DZGNyQephu5i8kMMwd7hxbRFLWm1azaseHxyU9ZyY/ueFsnm30aIndu1Lq"
                 ></script>
                 <script
-                    src="../../assets/vendor-forsakringskassan-docs-live-example-131375.js"
+                    src="../../assets/vendor-forsakringskassan-docs-live-example-187830.js"
                     crossorigin
-                    integrity="sha384-nJLPQGIUBkkwVgDY+ToqjpI+vosaIHaIBoTit9uWov/I2yjBNiUgUWlsfRJXelga"
+                    integrity="sha384-JgjVMeOrKPkw95Rgfcde2PhvkOsewLPYjYqYl7zT9PCyCntCVjsLrUhuxU67tJ65"
                 ></script>
 
                 <!-- prettier-ignore --><main>
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/d991e94981ee807a334e4c5db472e4e8afed4ccd/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/dc621f9e7d7763589716e1f50c3e265c29346994/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
             
         </code>
          
@@ -1119,625 +1119,193 @@
     
     <dt>Status</dt>
     <dd>
-        <div class="badge badge--success">Produktionsklar</div>
+        <div class="badge badge--info">Preliminär</div>
     </dd>
     
 </dl>
 
 
                         
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#exempel">Exempel</a></li>
+                                
+                                <li><a href="#anvand">Använd</a></li>
+                                
+                                <li><a href="#anvand_inte">Använd inte</a></li>
+                                
+                                <li><a href="#api">API</a></li>
+                                
+                            </ul>
+                        </details>
+                        
                     </div>
                     
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Exempel</p>
-
-            <div
-                id="example-ead6d8"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
+<p>Använd en kombobox när användaren behöver välja från ett stort antal alternativ, eller i de fall då användaren både ska kunna välja från förbestämda förslag eller skriva en egen text.</p>
+<p>Komboboxen kombinerar ett textfält med en lista med förbestämda alternativ. Listan filtreras för att matcha inmatningen i textfältet. Den kan antingen sättas att tillåta fritext eller kräva att användaren väljer ett alternativ från listan.</p>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
+                <div
+                    id="example-627896"
+                    class="code-preview code-preview--borderless"
+                    data-test="live"
+                    data-tags=live-example
+                    data-language="vue"
+                >
+                    
         <div id="ComboboxExample"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.space {
-    margin-top: 10rem;
-}
-
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./ComboboxExample-aa4f8b.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">error-message</span>&gt;</span> Oj, du har glömt fylla i något. Gå till: <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Vi behöver mer information om din hund<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-12 col--md-4 col--lg-3&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;breed&quot;</span>
-                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;valdRas&quot;</span>
-                            <span class="hljs-attr">v-validation.required.allowList</span>=<span class="hljs-string">&quot;{ allowList: { list: raser } }&quot;</span>
-                            <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;100&quot;</span>
-                            <span class="hljs-attr">:options</span>=<span class="hljs-string">&quot;raser&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>Välj hundens ras<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span>
-                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;valtNamn&quot;</span>
-                            <span class="hljs-attr">v-validation.required</span>
-                            <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;100&quot;</span>
-                            <span class="hljs-attr">:options</span>=<span class="hljs-string">&quot;namn&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>Fyll i hundens namn<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;valtNamn &amp;&amp; valdRas&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Stämmer informationen nedan?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">f-output-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;result&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;breed name&quot;</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Info om din hund <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                                {{ `Hunden ${valtNamn} är av rasen ${valdRas}` }}
-                            <span class="hljs-tag">&lt;/<span class="hljs-name">f-output-field</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--primary button--large&quot;</span>
-                    &gt;</span>
-                        Spara
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--secondary button--large&quot;</span>
-                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
-                    &gt;</span>
-                        Avbryt
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;space&quot;</span>&gt;</span>{{ { valdRas, valtNamn } }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FOutputField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FOutputField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">valdRas</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">valtNamn</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">namn</span>: [
-                <span class="hljs-string">&quot;Bamse&quot;</span>,
-                <span class="hljs-string">&quot;Kira&quot;</span>,
-                <span class="hljs-string">&quot;Bosse&quot;</span>,
-                <span class="hljs-string">&quot;Hugo&quot;</span>,
-                <span class="hljs-string">&quot;Milton&quot;</span>,
-                <span class="hljs-string">&quot;Maja&quot;</span>,
-                <span class="hljs-string">&quot;Milou&quot;</span>,
-                <span class="hljs-string">&quot;Stina&quot;</span>,
-                <span class="hljs-string">&quot;Rex&quot;</span>,
-                <span class="hljs-string">&quot;Nelson&quot;</span>,
-                <span class="hljs-string">&quot;Greta&quot;</span>,
-                <span class="hljs-string">&quot;Elvis&quot;</span>,
-                <span class="hljs-string">&quot;Simba&quot;</span>,
-                <span class="hljs-string">&quot;Molly&quot;</span>,
-                <span class="hljs-string">&quot;Sixten&quot;</span>,
-                <span class="hljs-string">&quot;Svante&quot;</span>,
-                <span class="hljs-string">&quot;Charlie&quot;</span>,
-                <span class="hljs-string">&quot;Lexie&quot;</span>,
-                <span class="hljs-string">&quot;Ozzy&quot;</span>,
-                <span class="hljs-string">&quot;Max&quot;</span>,
-                <span class="hljs-string">&quot;Dino&quot;</span>,
-            ],
-
-            <span class="hljs-attr">raser</span>: [
-                <span class="hljs-string">&quot;Affenpinscher&quot;</span>,
-                <span class="hljs-string">&quot;Afghan Hound&quot;</span>,
-                <span class="hljs-string">&quot;Aidi&quot;</span>,
-                <span class="hljs-string">&quot;Airedale Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Akbash Dog&quot;</span>,
-                <span class="hljs-string">&quot;Akita&quot;</span>,
-                <span class="hljs-string">&quot;Alano Español&quot;</span>,
-                <span class="hljs-string">&quot;Alaskan Klee Kai&quot;</span>,
-                <span class="hljs-string">&quot;Alaskan Malamute&quot;</span>,
-                <span class="hljs-string">&quot;Alpine Dachsbracke&quot;</span>,
-                <span class="hljs-string">&quot;Alpine Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;American Bulldog&quot;</span>,
-                <span class="hljs-string">&quot;American Cocker Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;American Eskimo Dog&quot;</span>,
-                <span class="hljs-string">&quot;American Foxhound&quot;</span>,
-                <span class="hljs-string">&quot;American Hairless Terrier&quot;</span>,
-                <span class="hljs-string">&quot;American Pit Bull Terrier&quot;</span>,
-                <span class="hljs-string">&quot;American Staffordshire Terrier&quot;</span>,
-                <span class="hljs-string">&quot;American Water Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Anglo-Français de Petite Vénerie&quot;</span>,
-                <span class="hljs-string">&quot;Appenzeller Sennenhund&quot;</span>,
-                <span class="hljs-string">&quot;Ariege Pointer&quot;</span>,
-                <span class="hljs-string">&quot;Ariegeois&quot;</span>,
-                <span class="hljs-string">&quot;Armant&quot;</span>,
-                <span class="hljs-string">&quot;Armenian Gampr dog&quot;</span>,
-                <span class="hljs-string">&quot;Artois Hound&quot;</span>,
-                <span class="hljs-string">&quot;Australian Cattle Dog&quot;</span>,
-                <span class="hljs-string">&quot;Australian Kelpie&quot;</span>,
-                <span class="hljs-string">&quot;Australian Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Australian Silky Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Australian Stumpy Tail Cattle Dog&quot;</span>,
-                <span class="hljs-string">&quot;Australian Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Azawakh&quot;</span>,
-                <span class="hljs-string">&quot;Bakharwal Dog&quot;</span>,
-                <span class="hljs-string">&quot;Barbet&quot;</span>,
-                <span class="hljs-string">&quot;Basenji&quot;</span>,
-                <span class="hljs-string">&quot;Basque Shepherd Dog&quot;</span>,
-                <span class="hljs-string">&quot;Basset Artésien Normand&quot;</span>,
-                <span class="hljs-string">&quot;Basset Bleu de Gascogne&quot;</span>,
-                <span class="hljs-string">&quot;Basset Fauve de Bretagne&quot;</span>,
-                <span class="hljs-string">&quot;Basset Hound&quot;</span>,
-                <span class="hljs-string">&quot;Bavarian Mountain Hound&quot;</span>,
-                <span class="hljs-string">&quot;Beagle&quot;</span>,
-                <span class="hljs-string">&quot;Beagle-Harrier&quot;</span>,
-                <span class="hljs-string">&quot;Bearded Collie&quot;</span>,
-                <span class="hljs-string">&quot;Beauceron&quot;</span>,
-                <span class="hljs-string">&quot;Bedlington Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Belgian Shepherd Dog (Groenendael)&quot;</span>,
-                <span class="hljs-string">&quot;Belgian Shepherd Dog (Laekenois)&quot;</span>,
-                <span class="hljs-string">&quot;Belgian Shepherd Dog (Malinois)&quot;</span>,
-                <span class="hljs-string">&quot;Bergamasco Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Berger Blanc Suisse&quot;</span>,
-                <span class="hljs-string">&quot;Berger Picard&quot;</span>,
-                <span class="hljs-string">&quot;Berner Laufhund&quot;</span>,
-                <span class="hljs-string">&quot;Bernese Mountain Dog&quot;</span>,
-                <span class="hljs-string">&quot;Billy&quot;</span>,
-                <span class="hljs-string">&quot;Black and Tan Coonhound&quot;</span>,
-                <span class="hljs-string">&quot;Black and Tan Virginia Foxhound&quot;</span>,
-                <span class="hljs-string">&quot;Black Norwegian Elkhound&quot;</span>,
-                <span class="hljs-string">&quot;Black Russian Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Bloodhound&quot;</span>,
-                <span class="hljs-string">&quot;Blue Lacy&quot;</span>,
-                <span class="hljs-string">&quot;Blue Paul Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Boerboel&quot;</span>,
-                <span class="hljs-string">&quot;Bohemian Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Bolognese&quot;</span>,
-                <span class="hljs-string">&quot;Border Collie&quot;</span>,
-                <span class="hljs-string">&quot;Border Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Borzoi&quot;</span>,
-                <span class="hljs-string">&quot;Boston Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Bouvier des Ardennes&quot;</span>,
-                <span class="hljs-string">&quot;Bouvier des Flandres&quot;</span>,
-                <span class="hljs-string">&quot;Boxer&quot;</span>,
-                <span class="hljs-string">&quot;Boykin Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Bracco Italiano&quot;</span>,
-                <span class="hljs-string">&quot;Braque d&#x27;Auvergne&quot;</span>,
-                <span class="hljs-string">&quot;Braque du Bourbonnais&quot;</span>,
-                <span class="hljs-string">&quot;Braque du Puy&quot;</span>,
-                <span class="hljs-string">&quot;Braque Francais&quot;</span>,
-                <span class="hljs-string">&quot;Braque Saint-Germain&quot;</span>,
-                <span class="hljs-string">&quot;Brazilian Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Briard&quot;</span>,
-                <span class="hljs-string">&quot;Briquet Griffon Vendéen&quot;</span>,
-                <span class="hljs-string">&quot;Brittany&quot;</span>,
-                <span class="hljs-string">&quot;Broholmer&quot;</span>,
-                <span class="hljs-string">&quot;Bruno Jura Hound&quot;</span>,
-                <span class="hljs-string">&quot;Bucovina Shepherd Dog&quot;</span>,
-                <span class="hljs-string">&quot;Bull and Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Bull Terrier (Miniature)&quot;</span>,
-                <span class="hljs-string">&quot;Bull Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Bulldog&quot;</span>,
-                <span class="hljs-string">&quot;Bullenbeisser&quot;</span>,
-                <span class="hljs-string">&quot;Bullmastiff&quot;</span>,
-                <span class="hljs-string">&quot;Bully Kutta&quot;</span>,
-                <span class="hljs-string">&quot;Burgos Pointer&quot;</span>,
-                <span class="hljs-string">&quot;Cairn Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Canaan Dog&quot;</span>,
-                <span class="hljs-string">&quot;Canadian Eskimo Dog&quot;</span>,
-                <span class="hljs-string">&quot;Cane Corso&quot;</span>,
-                <span class="hljs-string">&quot;Cardigan Welsh Corgi&quot;</span>,
-                <span class="hljs-string">&quot;Carolina Dog&quot;</span>,
-                <span class="hljs-string">&quot;Carpathian Shepherd Dog&quot;</span>,
-                <span class="hljs-string">&quot;Catahoula Cur&quot;</span>,
-                <span class="hljs-string">&quot;Catalan Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Caucasian Shepherd Dog&quot;</span>,
-                <span class="hljs-string">&quot;Cavalier King Charles Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Central Asian Shepherd Dog&quot;</span>,
-                <span class="hljs-string">&quot;Cesky Fousek&quot;</span>,
-                <span class="hljs-string">&quot;Cesky Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Chesapeake Bay Retriever&quot;</span>,
-                <span class="hljs-string">&quot;Chien Français Blanc et Noir&quot;</span>,
-                <span class="hljs-string">&quot;Chien Français Blanc et Orange&quot;</span>,
-                <span class="hljs-string">&quot;Chien Français Tricolore&quot;</span>,
-                <span class="hljs-string">&quot;Chien-gris&quot;</span>,
-                <span class="hljs-string">&quot;Chihuahua&quot;</span>,
-                <span class="hljs-string">&quot;Chilean Fox Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Chinese Chongqing Dog&quot;</span>,
-                <span class="hljs-string">&quot;Chinese Crested Dog&quot;</span>,
-                <span class="hljs-string">&quot;Chinese Imperial Dog&quot;</span>,
-                <span class="hljs-string">&quot;Chinook&quot;</span>,
-                <span class="hljs-string">&quot;Chippiparai&quot;</span>,
-                <span class="hljs-string">&quot;Chow Chow&quot;</span>,
-                <span class="hljs-string">&quot;Cierny Sery&quot;</span>,
-                <span class="hljs-string">&quot;Cimarrón Uruguayo&quot;</span>,
-                <span class="hljs-string">&quot;Cirneco dell&#x27;Etna&quot;</span>,
-                <span class="hljs-string">&quot;Clumber Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Combai&quot;</span>,
-                <span class="hljs-string">&quot;Cordoba Fighting Dog&quot;</span>,
-                <span class="hljs-string">&quot;Coton de Tulear&quot;</span>,
-                <span class="hljs-string">&quot;Cretan Hound&quot;</span>,
-                <span class="hljs-string">&quot;Croatian Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Cumberland Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Curly Coated Retriever&quot;</span>,
-                <span class="hljs-string">&quot;Cursinu&quot;</span>,
-                <span class="hljs-string">&quot;Cão da Serra de Aires&quot;</span>,
-                <span class="hljs-string">&quot;Cão de Castro Laboreiro&quot;</span>,
-                <span class="hljs-string">&quot;Cão Fila de São Miguel&quot;</span>,
-                <span class="hljs-string">&quot;Dachshund&quot;</span>,
-                <span class="hljs-string">&quot;Dalmatian&quot;</span>,
-                <span class="hljs-string">&quot;Dandie Dinmont Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Danish Swedish Farmdog&quot;</span>,
-                <span class="hljs-string">&quot;Deutsche Bracke&quot;</span>,
-                <span class="hljs-string">&quot;Doberman Pinscher&quot;</span>,
-                <span class="hljs-string">&quot;Dogo Argentino&quot;</span>,
-                <span class="hljs-string">&quot;Dogo Cubano&quot;</span>,
-                <span class="hljs-string">&quot;Dogue de Bordeaux&quot;</span>,
-                <span class="hljs-string">&quot;Drentse Patrijshond&quot;</span>,
-                <span class="hljs-string">&quot;Drever&quot;</span>,
-                <span class="hljs-string">&quot;Dunker&quot;</span>,
-                <span class="hljs-string">&quot;Dutch Shepherd Dog&quot;</span>,
-                <span class="hljs-string">&quot;Dutch Smoushond&quot;</span>,
-                <span class="hljs-string">&quot;East Siberian Laika&quot;</span>,
-                <span class="hljs-string">&quot;East-European Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Elo&quot;</span>,
-                <span class="hljs-string">&quot;English Cocker Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;English Foxhound&quot;</span>,
-                <span class="hljs-string">&quot;English Mastiff&quot;</span>,
-                <span class="hljs-string">&quot;English Setter&quot;</span>,
-                <span class="hljs-string">&quot;English Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;English Springer Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;English Toy Terrier (Black &amp;amp; Tan)&quot;</span>,
-                <span class="hljs-string">&quot;English Water Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;English White Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Entlebucher Mountain Dog&quot;</span>,
-                <span class="hljs-string">&quot;Estonian Hound&quot;</span>,
-                <span class="hljs-string">&quot;Estrela Mountain Dog&quot;</span>,
-                <span class="hljs-string">&quot;Eurasier&quot;</span>,
-                <span class="hljs-string">&quot;Field Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Fila Brasileiro&quot;</span>,
-                <span class="hljs-string">&quot;Finnish Hound&quot;</span>,
-                <span class="hljs-string">&quot;Finnish Lapphund&quot;</span>,
-                <span class="hljs-string">&quot;Finnish Spitz&quot;</span>,
-                <span class="hljs-string">&quot;Flat-Coated Retriever&quot;</span>,
-                <span class="hljs-string">&quot;Formosan Mountain Dog&quot;</span>,
-                <span class="hljs-string">&quot;Fox Terrier (Smooth)&quot;</span>,
-                <span class="hljs-string">&quot;French Bulldog&quot;</span>,
-                <span class="hljs-string">&quot;French Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Galgo Español&quot;</span>,
-                <span class="hljs-string">&quot;Gascon Saintongeois&quot;</span>,
-                <span class="hljs-string">&quot;German Longhaired Pointer&quot;</span>,
-                <span class="hljs-string">&quot;German Pinscher&quot;</span>,
-                <span class="hljs-string">&quot;German Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;German Shorthaired Pointer&quot;</span>,
-                <span class="hljs-string">&quot;German Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;German Spitz&quot;</span>,
-                <span class="hljs-string">&quot;German Wirehaired Pointer&quot;</span>,
-                <span class="hljs-string">&quot;Giant Schnauzer&quot;</span>,
-                <span class="hljs-string">&quot;Glen of Imaal Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Golden Retriever&quot;</span>,
-                <span class="hljs-string">&quot;Gordon Setter&quot;</span>,
-                <span class="hljs-string">&quot;Gran Mastín de Borínquen&quot;</span>,
-                <span class="hljs-string">&quot;Grand Anglo-Français Blanc et Noir&quot;</span>,
-                <span class="hljs-string">&quot;Grand Anglo-Français Blanc et Orange&quot;</span>,
-                <span class="hljs-string">&quot;Grand Anglo-Français Tricolore&quot;</span>,
-                <span class="hljs-string">&quot;Grand Basset Griffon Vendéen&quot;</span>,
-                <span class="hljs-string">&quot;Grand Bleu de Gascogne&quot;</span>,
-                <span class="hljs-string">&quot;Grand Griffon Vendéen&quot;</span>,
-                <span class="hljs-string">&quot;Great Dane&quot;</span>,
-                <span class="hljs-string">&quot;Great Pyrenees&quot;</span>,
-                <span class="hljs-string">&quot;Greater Swiss Mountain Dog&quot;</span>,
-                <span class="hljs-string">&quot;Greek Harehound&quot;</span>,
-                <span class="hljs-string">&quot;Greenland Dog&quot;</span>,
-                <span class="hljs-string">&quot;Greyhound&quot;</span>,
-                <span class="hljs-string">&quot;Griffon Bleu de Gascogne&quot;</span>,
-                <span class="hljs-string">&quot;Griffon Bruxellois&quot;</span>,
-                <span class="hljs-string">&quot;Griffon Fauve de Bretagne&quot;</span>,
-                <span class="hljs-string">&quot;Griffon Nivernais&quot;</span>,
-                <span class="hljs-string">&quot;Hamiltonstövare&quot;</span>,
-                <span class="hljs-string">&quot;Hanover Hound&quot;</span>,
-                <span class="hljs-string">&quot;Hare Indian Dog&quot;</span>,
-                <span class="hljs-string">&quot;Harrier&quot;</span>,
-                <span class="hljs-string">&quot;Havanese&quot;</span>,
-                <span class="hljs-string">&quot;Hawaiian Poi Dog&quot;</span>,
-                <span class="hljs-string">&quot;Himalayan Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Hokkaido&quot;</span>,
-                <span class="hljs-string">&quot;Hovawart&quot;</span>,
-                <span class="hljs-string">&quot;Huntaway&quot;</span>,
-                <span class="hljs-string">&quot;Hygenhund&quot;</span>,
-                <span class="hljs-string">&quot;Ibizan Hound&quot;</span>,
-                <span class="hljs-string">&quot;Icelandic Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Indian pariah dog&quot;</span>,
-                <span class="hljs-string">&quot;Indian Spitz&quot;</span>,
-                <span class="hljs-string">&quot;Irish Red and White Setter&quot;</span>,
-                <span class="hljs-string">&quot;Irish Setter&quot;</span>,
-                <span class="hljs-string">&quot;Irish Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Irish Water Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Irish Wolfhound&quot;</span>,
-                <span class="hljs-string">&quot;Istrian Coarse-haired Hound&quot;</span>,
-                <span class="hljs-string">&quot;Istrian Shorthaired Hound&quot;</span>,
-                <span class="hljs-string">&quot;Italian Greyhound&quot;</span>,
-                <span class="hljs-string">&quot;Jack Russell Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Jagdterrier&quot;</span>,
-                <span class="hljs-string">&quot;Jämthund&quot;</span>,
-                <span class="hljs-string">&quot;Kai Ken&quot;</span>,
-                <span class="hljs-string">&quot;Kaikadi&quot;</span>,
-                <span class="hljs-string">&quot;Kanni&quot;</span>,
-                <span class="hljs-string">&quot;Karelian Bear Dog&quot;</span>,
-                <span class="hljs-string">&quot;Karst Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Keeshond&quot;</span>,
-                <span class="hljs-string">&quot;Kerry Beagle&quot;</span>,
-                <span class="hljs-string">&quot;Kerry Blue Terrier&quot;</span>,
-                <span class="hljs-string">&quot;King Charles Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;King Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Kintamani&quot;</span>,
-                <span class="hljs-string">&quot;Kishu&quot;</span>,
-                <span class="hljs-string">&quot;Komondor&quot;</span>,
-                <span class="hljs-string">&quot;Kooikerhondje&quot;</span>,
-                <span class="hljs-string">&quot;Koolie&quot;</span>,
-                <span class="hljs-string">&quot;Korean Jindo Dog&quot;</span>,
-                <span class="hljs-string">&quot;Kromfohrländer&quot;</span>,
-                <span class="hljs-string">&quot;Kumaon Mastiff&quot;</span>,
-                <span class="hljs-string">&quot;Kurī&quot;</span>,
-                <span class="hljs-string">&quot;Kuvasz&quot;</span>,
-                <span class="hljs-string">&quot;Kyi-Leo&quot;</span>,
-                <span class="hljs-string">&quot;Labrador Husky&quot;</span>,
-                <span class="hljs-string">&quot;Labrador Retriever&quot;</span>,
-                <span class="hljs-string">&quot;Lagotto Romagnolo&quot;</span>,
-                <span class="hljs-string">&quot;Lakeland Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Lancashire Heeler&quot;</span>,
-                <span class="hljs-string">&quot;Landseer&quot;</span>,
-                <span class="hljs-string">&quot;Lapponian Herder&quot;</span>,
-                <span class="hljs-string">&quot;Large Münsterländer&quot;</span>,
-                <span class="hljs-string">&quot;Leonberger&quot;</span>,
-                <span class="hljs-string">&quot;Lhasa Apso&quot;</span>,
-                <span class="hljs-string">&quot;Lithuanian Hound&quot;</span>,
-                <span class="hljs-string">&quot;Longhaired Whippet&quot;</span>,
-                <span class="hljs-string">&quot;Löwchen&quot;</span>,
-                <span class="hljs-string">&quot;Mahratta Greyhound&quot;</span>,
-                <span class="hljs-string">&quot;Maltese&quot;</span>,
-                <span class="hljs-string">&quot;Manchester Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Maremma Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;McNab&quot;</span>,
-                <span class="hljs-string">&quot;Mexican Hairless Dog&quot;</span>,
-                <span class="hljs-string">&quot;Miniature American Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Miniature Australian Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Miniature Fox Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Miniature Pinscher&quot;</span>,
-                <span class="hljs-string">&quot;Miniature Schnauzer&quot;</span>,
-                <span class="hljs-string">&quot;Miniature Shar Pei&quot;</span>,
-                <span class="hljs-string">&quot;Molossus&quot;</span>,
-                <span class="hljs-string">&quot;Montenegrin Mountain Hound&quot;</span>,
-                <span class="hljs-string">&quot;Moscow Watchdog&quot;</span>,
-                <span class="hljs-string">&quot;Moscow Water Dog&quot;</span>,
-                <span class="hljs-string">&quot;Mountain Cur&quot;</span>,
-                <span class="hljs-string">&quot;Mucuchies&quot;</span>,
-                <span class="hljs-string">&quot;Mudhol Hound&quot;</span>,
-                <span class="hljs-string">&quot;Mudi&quot;</span>,
-                <span class="hljs-string">&quot;Neapolitan Mastiff&quot;</span>,
-                <span class="hljs-string">&quot;New Zealand Heading Dog&quot;</span>,
-                <span class="hljs-string">&quot;Newfoundland&quot;</span>,
-                <span class="hljs-string">&quot;Norfolk Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Norfolk Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Norrbottenspets&quot;</span>,
-                <span class="hljs-string">&quot;North Country Beagle&quot;</span>,
-                <span class="hljs-string">&quot;Northern Inuit Dog&quot;</span>,
-                <span class="hljs-string">&quot;Norwegian Buhund&quot;</span>,
-                <span class="hljs-string">&quot;Norwegian Elkhound&quot;</span>,
-                <span class="hljs-string">&quot;Norwegian Lundehund&quot;</span>,
-                <span class="hljs-string">&quot;Norwich Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Old Croatian Sighthound&quot;</span>,
-                <span class="hljs-string">&quot;Old Danish Pointer&quot;</span>,
-                <span class="hljs-string">&quot;Old English Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Old English Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Old German Shepherd Dog&quot;</span>,
-                <span class="hljs-string">&quot;Olde English Bulldogge&quot;</span>,
-                <span class="hljs-string">&quot;Otterhound&quot;</span>,
-                <span class="hljs-string">&quot;Pachon Navarro&quot;</span>,
-                <span class="hljs-string">&quot;Paisley Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Pandikona&quot;</span>,
-                <span class="hljs-string">&quot;Papillon&quot;</span>,
-                <span class="hljs-string">&quot;Parson Russell Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Patterdale Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Pekingese&quot;</span>,
-                <span class="hljs-string">&quot;Pembroke Welsh Corgi&quot;</span>,
-                <span class="hljs-string">&quot;Perro de Presa Canario&quot;</span>,
-                <span class="hljs-string">&quot;Perro de Presa Mallorquin&quot;</span>,
-                <span class="hljs-string">&quot;Peruvian Hairless Dog&quot;</span>,
-                <span class="hljs-string">&quot;Petit Basset Griffon Vendéen&quot;</span>,
-                <span class="hljs-string">&quot;Petit Bleu de Gascogne&quot;</span>,
-                <span class="hljs-string">&quot;Phalène&quot;</span>,
-                <span class="hljs-string">&quot;Pharaoh Hound&quot;</span>,
-                <span class="hljs-string">&quot;Phu Quoc ridgeback dog&quot;</span>,
-                <span class="hljs-string">&quot;Picardy Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Plott Hound&quot;</span>,
-                <span class="hljs-string">&quot;Podenco Canario&quot;</span>,
-                <span class="hljs-string">&quot;Pointer (dog breed)&quot;</span>,
-                <span class="hljs-string">&quot;Polish Greyhound&quot;</span>,
-                <span class="hljs-string">&quot;Polish Hound&quot;</span>,
-                <span class="hljs-string">&quot;Polish Hunting Dog&quot;</span>,
-                <span class="hljs-string">&quot;Polish Lowland Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Polish Tatra Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Pomeranian&quot;</span>,
-                <span class="hljs-string">&quot;Pont-Audemer Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Poodle&quot;</span>,
-                <span class="hljs-string">&quot;Porcelaine&quot;</span>,
-                <span class="hljs-string">&quot;Portuguese Podengo&quot;</span>,
-                <span class="hljs-string">&quot;Portuguese Pointer&quot;</span>,
-                <span class="hljs-string">&quot;Portuguese Water Dog&quot;</span>,
-                <span class="hljs-string">&quot;Posavac Hound&quot;</span>,
-                <span class="hljs-string">&quot;Pražský Krysařík&quot;</span>,
-                <span class="hljs-string">&quot;Pudelpointer&quot;</span>,
-                <span class="hljs-string">&quot;Pug&quot;</span>,
-                <span class="hljs-string">&quot;Puli&quot;</span>,
-                <span class="hljs-string">&quot;Pumi&quot;</span>,
-                <span class="hljs-string">&quot;Pungsan Dog&quot;</span>,
-                <span class="hljs-string">&quot;Pyrenean Mastiff&quot;</span>,
-                <span class="hljs-string">&quot;Pyrenean Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Rafeiro do Alentejo&quot;</span>,
-                <span class="hljs-string">&quot;Rajapalayam&quot;</span>,
-                <span class="hljs-string">&quot;Rampur Greyhound&quot;</span>,
-                <span class="hljs-string">&quot;Rastreador Brasileiro&quot;</span>,
-                <span class="hljs-string">&quot;Rat Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Ratonero Bodeguero Andaluz&quot;</span>,
-                <span class="hljs-string">&quot;Redbone Coonhound&quot;</span>,
-                <span class="hljs-string">&quot;Rhodesian Ridgeback&quot;</span>,
-                <span class="hljs-string">&quot;Rottweiler&quot;</span>,
-                <span class="hljs-string">&quot;Rough Collie&quot;</span>,
-                <span class="hljs-string">&quot;Russell Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Russian Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Russian tracker&quot;</span>,
-                <span class="hljs-string">&quot;Russo-European Laika&quot;</span>,
-                <span class="hljs-string">&quot;Sabueso Español&quot;</span>,
-                <span class="hljs-string">&quot;Saint-Usuge Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Sakhalin Husky&quot;</span>,
-                <span class="hljs-string">&quot;Saluki&quot;</span>,
-                <span class="hljs-string">&quot;Samoyed&quot;</span>,
-                <span class="hljs-string">&quot;Sapsali&quot;</span>,
-                <span class="hljs-string">&quot;Schapendoes&quot;</span>,
-                <span class="hljs-string">&quot;Schillerstövare&quot;</span>,
-                <span class="hljs-string">&quot;Schipperke&quot;</span>,
-                <span class="hljs-string">&quot;Schweizer Laufhund&quot;</span>,
-                <span class="hljs-string">&quot;Schweizerischer Niederlaufhund&quot;</span>,
-                <span class="hljs-string">&quot;Scotch Collie&quot;</span>,
-                <span class="hljs-string">&quot;Scottish Deerhound&quot;</span>,
-                <span class="hljs-string">&quot;Scottish Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Sealyham Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Segugio Italiano&quot;</span>,
-                <span class="hljs-string">&quot;Seppala Siberian Sleddog&quot;</span>,
-                <span class="hljs-string">&quot;Serbian Hound&quot;</span>,
-                <span class="hljs-string">&quot;Serbian Tricolour Hound&quot;</span>,
-                <span class="hljs-string">&quot;Shar Pei&quot;</span>,
-                <span class="hljs-string">&quot;Shetland Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Shiba Inu&quot;</span>,
-                <span class="hljs-string">&quot;Shih Tzu&quot;</span>,
-                <span class="hljs-string">&quot;Shikoku&quot;</span>,
-                <span class="hljs-string">&quot;Shiloh Shepherd Dog&quot;</span>,
-                <span class="hljs-string">&quot;Siberian Husky&quot;</span>,
-                <span class="hljs-string">&quot;Silken Windhound&quot;</span>,
-                <span class="hljs-string">&quot;Sinhala Hound&quot;</span>,
-                <span class="hljs-string">&quot;Skye Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Sloughi&quot;</span>,
-                <span class="hljs-string">&quot;Slovak Cuvac&quot;</span>,
-                <span class="hljs-string">&quot;Slovakian Rough-haired Pointer&quot;</span>,
-                <span class="hljs-string">&quot;Small Greek Domestic Dog&quot;</span>,
-                <span class="hljs-string">&quot;Small Münsterländer&quot;</span>,
-                <span class="hljs-string">&quot;Smooth Collie&quot;</span>,
-                <span class="hljs-string">&quot;South Russian Ovcharka&quot;</span>,
-                <span class="hljs-string">&quot;Southern Hound&quot;</span>,
-                <span class="hljs-string">&quot;Spanish Mastiff&quot;</span>,
-                <span class="hljs-string">&quot;Spanish Water Dog&quot;</span>,
-                <span class="hljs-string">&quot;Spinone Italiano&quot;</span>,
-                <span class="hljs-string">&quot;Sporting Lucas Terrier&quot;</span>,
-                <span class="hljs-string">&quot;St. Bernard&quot;</span>,
-                <span class="hljs-string">&quot;St. John&#x27;s water dog&quot;</span>,
-                <span class="hljs-string">&quot;Stabyhoun&quot;</span>,
-                <span class="hljs-string">&quot;Staffordshire Bull Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Standard Schnauzer&quot;</span>,
-                <span class="hljs-string">&quot;Stephens Cur&quot;</span>,
-                <span class="hljs-string">&quot;Styrian Coarse-haired Hound&quot;</span>,
-                <span class="hljs-string">&quot;Sussex Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Swedish Lapphund&quot;</span>,
-                <span class="hljs-string">&quot;Swedish Vallhund&quot;</span>,
-                <span class="hljs-string">&quot;Tahltan Bear Dog&quot;</span>,
-                <span class="hljs-string">&quot;Taigan&quot;</span>,
-                <span class="hljs-string">&quot;Talbot&quot;</span>,
-                <span class="hljs-string">&quot;Tamaskan Dog&quot;</span>,
-                <span class="hljs-string">&quot;Teddy Roosevelt Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Telomian&quot;</span>,
-                <span class="hljs-string">&quot;Tenterfield Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Thai Bangkaew Dog&quot;</span>,
-                <span class="hljs-string">&quot;Thai Ridgeback&quot;</span>,
-                <span class="hljs-string">&quot;Tibetan Mastiff&quot;</span>,
-                <span class="hljs-string">&quot;Tibetan Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Tibetan Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Tornjak&quot;</span>,
-                <span class="hljs-string">&quot;Tosa&quot;</span>,
-                <span class="hljs-string">&quot;Toy Bulldog&quot;</span>,
-                <span class="hljs-string">&quot;Toy Fox Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Toy Manchester Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Toy Trawler Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Transylvanian Hound&quot;</span>,
-                <span class="hljs-string">&quot;Treeing Cur&quot;</span>,
-                <span class="hljs-string">&quot;Treeing Walker Coonhound&quot;</span>,
-                <span class="hljs-string">&quot;Trigg Hound&quot;</span>,
-                <span class="hljs-string">&quot;Tweed Water Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Tyrolean Hound&quot;</span>,
-                <span class="hljs-string">&quot;Vizsla&quot;</span>,
-                <span class="hljs-string">&quot;Volpino Italiano&quot;</span>,
-                <span class="hljs-string">&quot;Weimaraner&quot;</span>,
-                <span class="hljs-string">&quot;Welsh Sheepdog&quot;</span>,
-                <span class="hljs-string">&quot;Welsh Springer Spaniel&quot;</span>,
-                <span class="hljs-string">&quot;Welsh Terrier&quot;</span>,
-                <span class="hljs-string">&quot;West Highland White Terrier&quot;</span>,
-                <span class="hljs-string">&quot;West Siberian Laika&quot;</span>,
-                <span class="hljs-string">&quot;Westphalian Dachsbracke&quot;</span>,
-                <span class="hljs-string">&quot;Wetterhoun&quot;</span>,
-                <span class="hljs-string">&quot;Whippet&quot;</span>,
-                <span class="hljs-string">&quot;White Shepherd&quot;</span>,
-                <span class="hljs-string">&quot;Wire Fox Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Wirehaired Pointing Griffon&quot;</span>,
-                <span class="hljs-string">&quot;Wirehaired Vizsla&quot;</span>,
-                <span class="hljs-string">&quot;Yorkshire Terrier&quot;</span>,
-                <span class="hljs-string">&quot;Šarplaninac&quot;</span>,
-            ],
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Sparar&quot;</span>);
-        },
-        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Avbryt&quot;</span>);
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">valdRas</span> = <span class="hljs-string">&quot;&quot;</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">valtNamn</span> = <span class="hljs-string">&quot;&quot;</span>;
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
-<span class="hljs-selector-class">.space</span> {
-    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10rem</span>;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-</code></pre>
+        <script defer src="./ComboboxExample-c4d33e.js"></script>
+    
                 </div>
-            </div>
-        
+            <h2 id="anvand"><a class="header-anchor" href="#anvand">Använd</a></h2><ul>
+<li>Istället för en dropplista när det finns ett stort antal alternativ att välja mellan.</li>
+<li>När användaren både ska kunna skriva en godtycklig fritext eller välja bland förbestämda förslag i listan.</li>
+</ul>
+<h2 id="anvand_inte"><a class="header-anchor" href="#anvand_inte">Använd inte</a></h2><ul>
+<li>Vid färre alternativ, använd en dropplista eller radioknappar.</li>
+</ul>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
+</td><td><p>The id for the input id attribute.<br>
+The id for the label for attribute.<br>
+If the prop is not set a random value will be generated.</p>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
+</td></tr><tr><td><p>inline</p>
+</td><td><p>Show the component inline.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>false</p>
+</td></tr><tr><td><p>v-model</p>
+</td><td><p>The value for the input.<br>
+If the prop is not set undefined will be used.</p>
+</td><td><p>string|number</p>
+</td><td><p>false</p>
+</td><td><p>&quot;&quot;</p>
+</td></tr><tr><td><p>type</p>
+</td><td><p>The type used for the input.<br>
+If the prop is not set text will be used.</p>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;text&quot;</p>
+</td></tr><tr><td><p>formatter</p>
+</td><td><ul>
+<li>The <code>formatter</code> function must only be used on a component that uses validation.</li>
+<li>The <code>formatter</code> function acts differently depending on if the <code>parser</code> function is defined or not.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>formatter without parser</th>
+<th>formatter with parser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modelvalue = parsed viewvalue using formatter function</td>
+<td>modelvalue = parsed viewvalue using parser function</td>
+</tr>
+<tr>
+<td>viewvalue = modelvalue (where modelvalue is already parsed)</td>
+<td>viewvalue = formatted modelvalue using formatter function (where modelvalue is already parsed)</td>
+</tr>
+</tbody>
+</table>
+</td><td><p>FormatFunction&lt;any&gt;</p>
+</td><td><p>false</p>
+</td><td><p>undefined</p>
+</td></tr><tr><td><p>parser</p>
+</td><td><ul>
+<li>The <code>parser</code> function must only be used on a component that uses validation.</li>
+<li>The <code>parser</code> function acts differently depending on if the <code>formatter</code> function is defined or not.
+<ul>
+<li>For parser combined with formatter, refer to formatter prop doc.</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>parser without formatter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modelvalue = parsed viewvalue using parser function</td>
+</tr>
+<tr>
+<td>viewvalue = never updated except when modelvalue differs from parsed viewvalue</td>
+</tr>
+</tbody>
+</table>
+</td><td><p>ParseFunction&lt;any&gt;</p>
+</td><td><p>false</p>
+</td><td><p>undefined</p>
+</td></tr><tr><td><p>labelWidth</p>
+</td><td><p>Set responsive width for label section.</p>
+<pre><code>label-width=&quot;md-9 lg-6&quot;
+</code></pre>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;sm-12&quot;</p>
+</td></tr><tr><td><p>inputWidth</p>
+</td><td><p>Set responsive width for input section that wraps input element and icons.</p>
+<pre><code>input-width=&quot;md-6 lg-3&quot;
+</code></pre>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;sm-12&quot;</p>
+</td></tr><tr><td><p>options</p>
+</td><td><p>List of options.</p>
+<p>When set, the user can select a value from the list of options and filter while typing.</p>
+</td><td><p>string[] | undefined</p>
+</td><td><p>false</p>
+</td><td><p>() =&gt; undefined</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>blur</p>
+</td><td><p>‐</p>
+</td><td><p>&lt;anonymous&gt;: string</p>
+</td></tr><tr><td><p>change</p>
+</td><td><p>‐</p>
+</td><td><p>&lt;anonymous&gt;: string</p>
+</td></tr><tr><td><p>update</p>
+</td><td><p>‐</p>
+</td><td><p>&lt;anonymous&gt;: undefined</p>
+</td></tr><tr><td><p>update:modelValue</p>
+</td><td><p>‐</p>
+</td><td><p>&lt;anonymous&gt;: undefined</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
+</td><td><p>Slot for label content.</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>tooltip</p>
+</td><td><p>Slot for tooltip.</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>description</p>
+</td><td><p>Optional slot for description. See <a href="#/Components/FLabel">FLabel</a> for details.</p>
+</td><td><p>descriptionClass<br>
+discreteDescriptionClass</p>
+</td></tr><tr><td><p>error-message</p>
+</td><td><p>Slot for displaying single or several error messages.</p>
+</td><td><p>hasError<br>
+validationMessage</p>
+</td></tr><tr><td><p>input-left</p>
+</td><td><p>Slot for adding content to the left of the input element.</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>append-inner</p>
+</td><td><p>Slot for add content inside the input to the right</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>input-right</p>
+</td><td><p>Slot for adding content to the right of the input element.</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div>
 
                     </div>
                 </main>
@@ -1758,9 +1326,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/d991e94981ee807a334e4c5db472e4e8afed4ccd">d991e94</a>)<br />
+    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/dc621f9e7d7763589716e1f50c3e265c29346994">dc621f9</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/88">PR 88</a><br />
-        2024-12-06 09:08
+        2024-12-06 09:28
 </div>
 <div class="toolbar__item">
     <form id="version">
