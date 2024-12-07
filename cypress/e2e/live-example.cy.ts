@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions -- expect style assertions have side-effects */
+
 import { type Manifest } from "@forsakringskassan/docs-generator";
 
 type ManifestPage = Manifest["pages"][number];
@@ -43,14 +45,27 @@ it("should visit all pages and ensure examples load properly", () => {
                 const markup = `${code} code`;
                 const errorhandler = `${selector} [data-test=f-error-page]`;
 
-                cy.get(container).should("exist");
-                cy.get(runtime).should("exist").and("not.be.empty");
-                cy.get(controls).should("exist").and("not.be.empty");
-                cy.get(code).should("exist");
+                cy.get(container).should(($el) => {
+                    expect($el, path).to.exist;
+                });
+                cy.get(runtime).should(($el) => {
+                    expect($el, path).to.exist.and.not.be.empty;
+                });
+                cy.get(controls).should(($el) => {
+                    expect($el, path).to.exist.and.not.be.empty;
+                });
+                cy.get(code).should(($el) => {
+                    expect($el, path).to.exist;
+                });
+
                 cy.get(toggleCode).click();
-                cy.get(markup).should("exist");
-                cy.get(markup).invoke("text").should("not.be.empty");
-                cy.get(errorhandler).should("not.exist");
+                cy.get(markup).should(($el) => {
+                    expect($el, path).to.exist;
+                    expect($el.text(), path).not.be.empty;
+                });
+                cy.get(errorhandler).should(($el) => {
+                    expect($el, path).not.to.exist;
+                });
             }
 
             for (const example of vuePreviewExamples) {
@@ -58,8 +73,12 @@ it("should visit all pages and ensure examples load properly", () => {
                 const preview = `${selector} .code-preview__preview`;
                 const errorhandler = `${selector} [data-test=f-error-page]`;
 
-                cy.get(preview).should("exist").and("not.be.empty");
-                cy.get(errorhandler).should("not.exist");
+                cy.get(preview).should(($el) => {
+                    expect($el, path).to.exist.and.not.be.empty;
+                });
+                cy.get(errorhandler).should(($el) => {
+                    expect($el, path).not.to.exist;
+                });
             }
         }
     });
