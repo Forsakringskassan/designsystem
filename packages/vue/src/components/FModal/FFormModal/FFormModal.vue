@@ -18,6 +18,7 @@
             </div>
             <f-validation-form
                 :id="formId"
+                ref="form"
                 :before-submit="beforeSubmit"
                 :before-validation="beforeValidation"
                 :use-error-list="useErrorList"
@@ -85,7 +86,7 @@ import { FValidationForm, type FValidationFormCallback } from "../../FValidation
 import { TranslationMixin } from "../../../plugins/translation";
 import { sizes } from "../sizes";
 import { FModalButton, FModalButtonDescriptor, prepareButtonList } from "../modal-button";
-import { hasSlot } from "../../../utils";
+import { getHTMLElementFromVueRef, hasSlot } from "../../../utils";
 import { FKUIConfigButtonOrder } from "../../../config";
 
 export default defineComponent({
@@ -218,7 +219,8 @@ export default defineComponent({
     },
     methods: {
         onClose() {
-            ValidationService.resetState(this.$el);
+            const form = getHTMLElementFromVueRef(this.$refs.form);
+            ValidationService.resetState(form);
             /**
              * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
              * In most use cases the isOpen prop should be set to false when this event is triggered.
@@ -231,7 +233,8 @@ export default defineComponent({
             this.$emit("close", { reason: "close" });
         },
         async onSubmit() {
-            ValidationService.resetState(this.$el);
+            const form = getHTMLElementFromVueRef(this.$refs.form);
+            ValidationService.resetState(form);
             /**
              * Event that is dispatched when the submit button is is clicked.
              * The event payload is the data that has been submitted.
@@ -240,7 +243,8 @@ export default defineComponent({
             this.$emit("close", { reason: "submit", data: this.value });
         },
         onCancel() {
-            ValidationService.resetState(this.$el);
+            const form = getHTMLElementFromVueRef(this.$refs.form);
+            ValidationService.resetState(form);
             this.$emit("cancel");
             this.$emit("close", { reason: "close" });
         },
