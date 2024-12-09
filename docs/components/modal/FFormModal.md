@@ -11,8 +11,8 @@ Formulärsmodalen baseras på en modal dialogruta av typen standard och visas i 
 
 Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra. Alla fält valideras när användaren trycker på primärknappen.
 
--   Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.
--   Öppna inte ytterligare modaler från en modal.
+- Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.
+- Öppna inte ytterligare modaler från en modal.
 
 ## Användning
 
@@ -176,8 +176,8 @@ buttons: [{ label: "Stäng", event: "dismiss" }];
 
 Två event har speciell innebörd:
 
--   `dismiss`: stänger modalen utan att spara formulärsdata.
--   `submit`: stänger modalen och returnerar formulärsdata till anroparen.
+- `dismiss`: stänger modalen utan att spara formulärsdata.
+- `submit`: stänger modalen och returnerar formulärsdata till anroparen.
 
 ## Skärmläsare
 
@@ -237,5 +237,5 @@ vue:FFormModal
 
 ## Relaterat
 
--   {@link useModal `useModal()`} (composition API) {@link form-modal `formModal()`} (options API) för programatiskt användande av formulärsmodal.
--   {@link FModal Modal} för mer information om modaler.
+- {@link useModal `useModal()`} (composition API) {@link form-modal `formModal()`} (options API) för programatiskt användande av formulärsmodal.
+- {@link FModal Modal} för mer information om modaler.
