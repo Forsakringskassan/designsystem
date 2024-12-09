@@ -13,6 +13,7 @@
 @use "layout-secondary/layout-secondary";
 @use "navbar/navbar";
 @use "navigation-menu/navigation-menu";
+@use "radio-button/all" as radio-button;
 @use "tooltip/tooltip";
 @use "modal/modal";
 @use "offline/offline";
@@ -48,7 +49,6 @@
 @import "message-box/message-box";
 @import "output-field/output-field";
 @import "progressbar/progressbar";
-@import "radio-button/all";
 @import "select-field/select-field";
 @import "sort-filter-dataset/sort-filter-dataset";
 @import "table/table";
