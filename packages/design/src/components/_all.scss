@@ -6,57 +6,47 @@
 @use "card/card";
 
 // Using use syntax
+@use "anchor/anchor";
+@use "badge/badge";
+@use "button/button";
+@use "calendar-day/calendar-day";
+@use "calendar-deprecated/calendar-deprecated";
 @use "checkbox/all" as checkbox;
+@use "chip/chip";
+@use "close-button/close-button";
+@use "combobox/combobox";
+@use "contextmenu/contextmenu";
+@use "crud-dataset/crud-dataset";
+@use "datepicker-field/datepicker-field";
+@use "dialogue-tree/dialogue-tree";
+@use "error-list/error-list";
+@use "expandable-paragraph/expandable-paragraph";
+@use "fieldset/fieldset";
+@use "file-item/file-item";
+@use "file-selector/file-selector";
+@use "file-uploader/file-uploader";
 @use "form/all" as form;
+@use "group/group";
+@use "indent/indent";
+@use "label/label";
 @use "layout-application-template/layout-application-template";
 @use "layout-navigation/layout-navigation";
 @use "layout-secondary/layout-secondary";
+@use "list/list";
+@use "loader/loader";
+@use "message-box/message-box";
+@use "modal/modal";
 @use "navbar/navbar";
 @use "navigation-menu/navigation-menu";
+@use "offline/offline";
+@use "output-field/output-field";
+@use "progressbar/progressbar";
 @use "radio-button/all" as radio-button;
+@use "select-field/select-field";
+@use "sort-filter-dataset/sort-filter-dataset";
+@use "static-panel/static-panel";
+@use "table/table";
+@use "text-field/text-field";
+@use "textarea-field/textarea-field";
 @use "tooltip/tooltip";
 @use "wizard/all" as wizard;
-@use "modal/modal";
-@use "offline/offline";
-@use "dialogue-tree/dialogue-tree";
-
-// These imports can be removed when all components are standalone
-// These imports shall only contain variables and/or functions and not generate any css themselves.
-@import "../core/mixins/all";
-@import "../core/config-variables";
-@import "../core/utils/all";
-
-// Non Standalone Components (i.e using old import syntax)
-@import "z-index";
-@import "label/label";
-
-@import "anchor/anchor";
-@import "badge/badge";
-@import "button/button";
-@import "calendar-deprecated/calendar-deprecated";
-@import "calendar-day/calendar-day";
-@import "chip/chip";
-@import "close-button/close-button";
-@import "combobox/combobox";
-@import "contextmenu/contextmenu";
-@import "crud-dataset/crud-dataset";
-@import "datepicker-field/datepicker-field";
-@import "expandable-paragraph/expandable-paragraph";
-@import "fieldset/fieldset";
-@import "group/group";
-@import "indent/indent";
-@import "list/list";
-@import "loader/loader";
-@import "message-box/message-box";
-@import "output-field/output-field";
-@import "progressbar/progressbar";
-@import "select-field/select-field";
-@import "sort-filter-dataset/sort-filter-dataset";
-@import "table/table";
-@import "textarea-field/textarea-field";
-@import "text-field/text-field";
-@import "error-list/error-list";
-@import "file-selector/file-selector";
-@import "file-item/file-item";
-@import "file-uploader/file-uploader";
-@import "static-panel/static-panel";
