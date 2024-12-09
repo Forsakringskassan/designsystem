@@ -11,8 +11,7 @@ describe("discrete desktop", () => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("normal", () => {
+    it("normal", () => {
         cy.mount(ButtonDiscreteExample, {
             props: {
                 type: "discrete",
@@ -22,8 +21,7 @@ describe("discrete desktop", () => {
         cy.get("#screenshotArea").toMatchScreenshot({ baseDelay: 100 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("inverted", () => {
+    it("inverted", () => {
         cy.mount(ButtonDiscreteExample, {
             props: {
                 type: "discrete-inverted",
@@ -39,8 +37,7 @@ describe("discrete mobile", () => {
         cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("normal", () => {
+    it("normal", () => {
         cy.mount(ButtonDiscreteExample, {
             props: {
                 type: "discrete",
@@ -50,8 +47,7 @@ describe("discrete mobile", () => {
         cy.get("#screenshotArea").toMatchScreenshot({ baseDelay: 100 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("inverted", () => {
+    it("inverted", () => {
         cy.mount(ButtonDiscreteExample, {
             props: {
                 type: "discrete-inverted",
@@ -64,8 +60,7 @@ describe("discrete mobile", () => {
 
 describe("button-group ", () => {
     describe("button--full-width", () => {
-        /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-        it.skip("desktop", () => {
+        it("desktop", () => {
             cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
             cy.mount(ButtonButtonGroupFullWidthExample, {
                 props: {
@@ -75,8 +70,7 @@ describe("button-group ", () => {
             cy.toMatchScreenshot({ baseDelay: 100 });
         });
 
-        /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-        it.skip("mobile", () => {
+        it("mobile", () => {
             cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
             cy.mount(ButtonButtonGroupFullWidthExample, {
                 props: {
@@ -87,8 +81,7 @@ describe("button-group ", () => {
         });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("desktop", () => {
+    it("desktop", () => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
         cy.mount(ButtonButtonGroupFullWidthExample, {
             props: {
@@ -98,8 +91,7 @@ describe("button-group ", () => {
         cy.toMatchScreenshot({ baseDelay: 100 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("desktop density `dense`", () => {
+    it("desktop density `dense`", () => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
         cy.mount(ButtonButtonGroupFullWidthExample, {
             props: {
@@ -110,8 +102,7 @@ describe("button-group ", () => {
         cy.toMatchScreenshot({ baseDelay: 100 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("desktop density `densest`", () => {
+    it("desktop density `densest`", () => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
         cy.mount(ButtonButtonGroupFullWidthExample, {
             props: {
@@ -122,8 +113,7 @@ describe("button-group ", () => {
         cy.toMatchScreenshot({ baseDelay: 100 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("mobile", () => {
+    it("mobile", () => {
         cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
         cy.mount(ButtonButtonGroupFullWidthExample, {
             props: {
