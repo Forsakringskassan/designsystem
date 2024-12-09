@@ -67,5 +67,5 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-@import "./XSearchBar.scss";
+@use "./XSearchBar.scss";
 </style>
