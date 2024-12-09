@@ -6,6 +6,7 @@
 @use "card/card";
 
 // Using use syntax
+@use "checkbox/all";
 @use "layout-application-template/layout-application-template";
 @use "layout-navigation/layout-navigation";
 @use "layout-secondary/layout-secondary";
@@ -29,7 +30,6 @@
 @import "button/button";
 @import "calendar-deprecated/calendar-deprecated";
 @import "calendar-day/calendar-day";
-@import "checkbox/all";
 @import "chip/chip";
 @import "close-button/close-button";
 @import "combobox/combobox";
