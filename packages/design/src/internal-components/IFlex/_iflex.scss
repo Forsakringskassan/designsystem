@@ -1,6 +1,6 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
-@import "../../core/config-variables";
+@use "../../core/config-variables";
 
 $IFLEX_SELECTOR: ".iflex" !default;
 $iflex-base-gap: 0.25rem;
