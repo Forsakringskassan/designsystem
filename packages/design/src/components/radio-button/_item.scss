@@ -1,16 +1,16 @@
-@import ".././list/list";
+@use ".././list/list";
 
 $RADIO_BUTTON_SELECTOR: ".radio-button" !default;
 $CHECKBOX_SELECTOR: ".checkbox" !default;
 
 %selectable-item {
-    border: $list-border;
+    border: list.$list-border;
     margin-bottom: 0;
     width: 100%;
     cursor: pointer;
     border-bottom: none;
     &:last-child {
-        border-bottom: $list-border;
+        border-bottom: list.$list-border;
     }
 
     input:focus + label {

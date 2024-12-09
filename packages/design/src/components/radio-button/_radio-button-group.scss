@@ -1,7 +1,7 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints" as bp;
-@import "./radio-button";
-@import "./item";
+@use "./radio-button";
+@use "./item";
 
 $RADIO_BUTTON_GROUP_SELECTOR: ".radio-button-group" !default;
 
@@ -15,14 +15,14 @@ $RADIO_BUTTON_GROUP_SELECTOR: ".radio-button-group" !default;
         #{$RADIO_BUTTON_GROUP_SELECTOR}__content {
             flex-direction: row;
 
-            #{$RADIO_BUTTON_SELECTOR} {
+            #{radio-button.$RADIO_BUTTON_SELECTOR} {
                 margin-bottom: 0;
             }
 
             @include bp.breakpoint-down(sm) {
                 flex-direction: column;
 
-                #{$RADIO_BUTTON_SELECTOR} {
+                #{radio-button.$RADIO_BUTTON_SELECTOR} {
                     margin-bottom: size.$margin-100;
                 }
             }
