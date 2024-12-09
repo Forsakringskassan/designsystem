@@ -11,6 +11,7 @@
 @use "layout-application-template/layout-application-template";
 @use "layout-navigation/layout-navigation";
 @use "layout-secondary/layout-secondary";
+@use "navbar/navbar";
 @use "tooltip/tooltip";
 @use "modal/modal";
 @use "offline/offline";
@@ -44,7 +45,6 @@
 @import "list/list";
 @import "loader/loader";
 @import "message-box/message-box";
-@import "navbar/navbar";
 @import "navigation-menu/navigation-menu";
 @import "output-field/output-field";
 @import "progressbar/progressbar";
