@@ -6,7 +6,8 @@
 @use "card/card";
 
 // Using use syntax
-@use "checkbox/all";
+@use "checkbox/all" as checkbox;
+@use "form/all" as form;
 @use "layout-application-template/layout-application-template";
 @use "layout-navigation/layout-navigation";
 @use "layout-secondary/layout-secondary";
@@ -53,7 +54,6 @@
 @import "table/table";
 @import "textarea-field/textarea-field";
 @import "text-field/text-field";
-@import "form/all";
 @import "error-list/error-list";
 @import "file-selector/file-selector";
 @import "file-item/file-item";
