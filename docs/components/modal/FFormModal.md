@@ -95,7 +95,7 @@ export default defineComponent({
 
 Data muteras direkt på `value`-propen.
 Det kan leda till oönskade konsekvenser om konsumenten skickas in existernade referenser till objekt istället för att skicka in en kopia eller nytt objekt.
-Du kan antingen låta din formulärsmodal hantera deta genom att internt kopiera `value` eller tydligt dokumentera att konsumenten måste skicka in en kopia.
+Du kan antingen låta din formulärsmodal hantera detta genom att internt kopiera `value` eller tydligt dokumentera att konsumenten måste skicka in en kopia.
 
 :::
 
