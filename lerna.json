@@ -1,5 +1,3 @@
 {
-    "version": "5.41.0",
-    "hoist": true,
-    "useWorkspaces": true
+    "version": "5.41.0"
 }
