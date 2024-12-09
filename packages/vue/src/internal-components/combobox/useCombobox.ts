@@ -197,6 +197,8 @@ export function useCombobox(
             } else {
                 activeOption.value = null;
             }
+
+            inputRef.value?.focus();
         }
     }
 

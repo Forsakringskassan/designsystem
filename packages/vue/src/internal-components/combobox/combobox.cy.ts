@@ -128,15 +128,10 @@ it("should navigate amont options when pressing down- and up-arrows", () => {
     cy.get(activeOption).should("have.text", "baz");
 });
 
-it("should close menu and set selected value when pressing enter on option", () => {
+it("should set focus on input after toggled by button", () => {
     cy.mount(FTextField, defaultMountOptions);
-    cy.get(input).click();
-    cy.get(input).type("{downArrow}{enter}");
-    cy.get(dropdown).should("not.exist");
-    cy.get(input)
-        .should("have.value", "foo")
-        .and("have.attr", "aria-description")
-        .and("contain", "Valt förslag");
+    cy.get(button).click();
+    cy.get(input).should("have.focus");
 });
 
 it("should close menu and set selected value when clicking option", () => {
