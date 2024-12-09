@@ -7,6 +7,99 @@ import {
 import { FSelectField } from "../FSelectField";
 import FModal from "./FModal.vue";
 
+function generateModalMarkup(focusStrategy = "on"): string {
+    return /* HTML */ `
+        <div class="f-modal-example">
+            <div class="row">
+                <div class="col col--md-6">
+                    <f-select-field
+                        v-model="type"
+                        v-test="'open-example-modal-type-select-field'"
+                    >
+                        <template #label> Modaltyp: </template>
+                        <option value>Standard</option>
+                        <option value="information">Informationsmodal</option>
+                        <option value="warning">Varningsmodal</option>
+                        <option value="error">Felmodal</option>
+                    </f-select-field>
+                </div>
+                <div class="col col--md-6">
+                    <f-select-field v-model="size">
+                        <template #label> Storlek (desktop): </template>
+                        <option value>Standard</option>
+                        <option value="small">Small (default)</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="fullscreen">Fullscreen</option>
+                    </f-select-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col--md-6">
+                    <f-select-field v-model="fullscreen">
+                        <template #label> Fullskärm (mobil): </template>
+                        <option :value="true">Ja</option>
+                        <option :value="false">Standard (nej)</option>
+                    </f-select-field>
+                </div>
+                <div class="col col--md-6">
+                    <f-select-field v-model="modalContent">
+                        <template #label> Mängd innehåll: </template>
+                        <option :value="content.minimal">Minimal</option>
+                        <option :value="content.normal">Normal</option>
+                        <option :value="content.maximal">Maximal</option>
+                    </f-select-field>
+                </div>
+            </div>
+            <button
+                type="button"
+                class="button button--secondary"
+                data-test="open-example-modal-button"
+                @click="onClickOpenModal"
+            >
+                Öppna modal
+            </button>
+            <f-modal
+                :is-open="isOpen"
+                data-test="modul-open"
+                close-text="Stäng"
+                aria-close-text="Stäng"
+                :fullscreen="fullscreen"
+                :type="type"
+                :size="size"
+                focus="${focusStrategy}"
+                @close="onCloseModal"
+            >
+                <template #header> Träutensilierna </template>
+                <template #content>
+                    <p v-for="paragraph in modalContent" :key="paragraph">
+                        {{ paragraph }}
+                    </p>
+                </template>
+                <template #footer>
+                    <div class="button-group">
+                        <button
+                            data-test="closeButton"
+                            type="button"
+                            class="button button--secondary button-group__item button--large"
+                            @click="onClickCloseModal"
+                        >
+                            Stäng sekundär
+                        </button>
+                        <button
+                            type="button"
+                            class="button button--primary button-group__item button--large"
+                            @click="onClickCloseModal"
+                        >
+                            Stäng
+                        </button>
+                    </div>
+                </template>
+            </f-modal>
+        </div>
+    `;
+}
+
 const content = {
     minimal: ["Lorem ipsum dolor sit amet."],
     normal: [
@@ -92,98 +185,8 @@ describe("FModal", () => {
 
     beforeEach(() => {
         cy.clearLocalStorage();
-        const template = /* HTML */ `
-            <div class="f-modal-example">
-                <div class="row">
-                    <div class="col col--md-6">
-                        <f-select-field
-                            v-model="type"
-                            v-test="'open-example-modal-type-select-field'"
-                        >
-                            <template #label> Modaltyp: </template>
-                            <option value>Standard</option>
-                            <option value="information">
-                                Informationsmodal
-                            </option>
-                            <option value="warning">Varningsmodal</option>
-                            <option value="error">Felmodal</option>
-                        </f-select-field>
-                    </div>
-                    <div class="col col--md-6">
-                        <f-select-field v-model="size">
-                            <template #label> Storlek (desktop): </template>
-                            <option value>Standard</option>
-                            <option value="small">Small (default)</option>
-                            <option value="medium">Medium</option>
-                            <option value="large">Large</option>
-                            <option value="fullscreen">Fullscreen</option>
-                        </f-select-field>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col--md-6">
-                        <f-select-field v-model="fullscreen">
-                            <template #label> Fullskärm (mobil): </template>
-                            <option :value="true">Ja</option>
-                            <option :value="false">Standard (nej)</option>
-                        </f-select-field>
-                    </div>
-                    <div class="col col--md-6">
-                        <f-select-field v-model="modalContent">
-                            <template #label> Mängd innehåll: </template>
-                            <option :value="content.minimal">Minimal</option>
-                            <option :value="content.normal">Normal</option>
-                            <option :value="content.maximal">Maximal</option>
-                        </f-select-field>
-                    </div>
-                </div>
-                <button
-                    type="button"
-                    class="button button--secondary"
-                    data-test="open-example-modal-button"
-                    @click="onClickOpenModal"
-                >
-                    Öppna modal
-                </button>
-                <f-modal
-                    :is-open="isOpen"
-                    data-test="modul-open"
-                    close-text="Stäng"
-                    aria-close-text="Stäng"
-                    :fullscreen="fullscreen"
-                    :type="type"
-                    :size="size"
-                    @close="onCloseModal"
-                >
-                    <template #header> Träutensilierna </template>
-                    <template #content>
-                        <p v-for="paragraph in modalContent" :key="paragraph">
-                            {{ paragraph }}
-                        </p>
-                    </template>
-                    <template #footer>
-                        <div class="button-group">
-                            <button
-                                data-test="closeButton"
-                                type="button"
-                                class="button button--secondary button-group__item button--large"
-                                @click="onClickCloseModal"
-                            >
-                                Stäng sekundär
-                            </button>
-                            <button
-                                type="button"
-                                class="button button--primary button-group__item button--large"
-                                @click="onClickCloseModal"
-                            >
-                                Stäng
-                            </button>
-                        </div>
-                    </template>
-                </f-modal>
-            </div>
-        `;
-        cy.mount(createComponent(template));
+
+        cy.mount(createComponent(generateModalMarkup()));
     });
 
     it("should provide a page object that can access any necessary elements", () => {
@@ -250,5 +253,41 @@ describe("FModal", () => {
         openModalButton().click();
         modal.secondaryButton().click();
         modal.el().should("not.exist");
+    });
+
+    describe("focus", () => {
+        it("default should set focus when modal is opened and closed", () => {
+            cy.mount(createComponent(generateModalMarkup("on")));
+            openModalButton().click();
+
+            cy.focused().should("have.class", "modal__title");
+
+            modal.primaryButton().click();
+            cy.focused().should(
+                "have.attr",
+                "data-test",
+                "open-example-modal-button",
+            );
+        });
+
+        it("should be able to disable focus strategy", () => {
+            cy.mount(createComponent(generateModalMarkup("off")));
+            openModalButton().click();
+            cy.focused().should(
+                "have.attr",
+                "data-test",
+                "open-example-modal-button",
+            );
+            modal.primaryButton().click();
+            cy.focused().should("not.exist");
+        });
+
+        it("should be able to disable close focus", () => {
+            cy.mount(createComponent(generateModalMarkup("open")));
+            openModalButton().click();
+            cy.focused().should("have.class", "modal__title");
+            modal.primaryButton().click();
+            cy.focused().should("not.exist");
+        });
     });
 });
