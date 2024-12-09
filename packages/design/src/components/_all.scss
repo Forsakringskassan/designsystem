@@ -15,6 +15,7 @@
 @use "navigation-menu/navigation-menu";
 @use "radio-button/all" as radio-button;
 @use "tooltip/tooltip";
+@use "wizard/all" as wizard;
 @use "modal/modal";
 @use "offline/offline";
 @use "dialogue-tree/dialogue-tree";
@@ -59,4 +60,3 @@
 @import "file-item/file-item";
 @import "file-uploader/file-uploader";
 @import "static-panel/static-panel";
-@import "wizard/all";
