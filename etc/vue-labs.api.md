@@ -210,29 +210,66 @@ modelValue: string;
 maxLength: number;
 clearableScreenReaderText: string;
 }, {}, {
-FTextField: DefineComponent<    {
-id: string;
-inline: boolean;
-modelValue: string | number;
-type: string;
-formatter?: FormatFunction<unknown> | undefined;
-parser?: ParseFunction<unknown> | undefined;
-labelWidth: string;
-inputWidth: string;
-options?: string[] | undefined;
-}, {
+FTextField: DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+options: {
+type: PropType<string[] | undefined>;
+required: false;
+default: () => undefined;
+};
+}>, {
 textFieldTableMode: boolean;
+viewValue: Ref<string, string>;
+onOptionSelected: (value: string) => void;
 dropdownId: string;
 dropdownIsOpen: Readonly<Ref<boolean, boolean>>;
 dropdownOptions: Readonly<Ref<string[], string[]>>;
 activeOptionId: string;
 activeOption: Readonly<Ref<string | null, string | null>>;
-selectedValue: Ref<string | null, string | null>;
 toggleDropdown: () => void;
+selectOption: (value: string) => void;
 closeDropdown: () => void;
 }, {
 showErrorPopup: boolean;
-viewValue: string;
 lastModelValue: unknown;
 validationMessage: string;
 validityMode: string;
@@ -266,17 +303,53 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<{
-id: string;
-inline: boolean;
-modelValue: string | number;
-type: string;
-formatter?: FormatFunction<unknown> | undefined;
-parser?: ParseFunction<unknown> | undefined;
-labelWidth: string;
-inputWidth: string;
-options?: string[] | undefined;
-}> & Readonly<{
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+options: {
+type: PropType<string[] | undefined>;
+required: false;
+default: () => undefined;
+};
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
@@ -625,29 +698,76 @@ default: typeof parseTimeToNumber;
 };
 }>, {
 textFieldTableMode: boolean;
-}, {}, {}, {}, ComponentOptions, DefineComponent<    {
-id: string;
-inline: boolean;
-modelValue: string | number;
-type: string;
-formatter?: FormatFunction<unknown> | undefined;
-parser?: ParseFunction<unknown> | undefined;
-labelWidth: string;
-inputWidth: string;
-options?: string[] | undefined;
-}, {
+viewValue: Ref<string>;
+onOptionSelected: (value: string) => void;
+dropdownId: string;
+dropdownIsOpen: Readonly<Ref<boolean>>;
+dropdownOptions: Readonly<Ref<string[]>>;
+activeOptionId: string;
+activeOption: Readonly<Ref<string | null>>;
+toggleDropdown: () => void;
+selectOption: (value: string) => void;
+closeDropdown: () => void;
+}, {}, {}, {}, ComponentOptions, DefineComponent<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+options: {
+type: PropType<string[] | undefined>;
+required: false;
+default: () => undefined;
+};
+}>, {
 textFieldTableMode: boolean;
+viewValue: Ref<string, string>;
+onOptionSelected: (value: string) => void;
 dropdownId: string;
 dropdownIsOpen: Readonly<Ref<boolean, boolean>>;
 dropdownOptions: Readonly<Ref<string[], string[]>>;
 activeOptionId: string;
 activeOption: Readonly<Ref<string | null, string | null>>;
-selectedValue: Ref<string | null, string | null>;
 toggleDropdown: () => void;
+selectOption: (value: string) => void;
 closeDropdown: () => void;
 }, {
 showErrorPopup: boolean;
-viewValue: string;
 lastModelValue: unknown;
 validationMessage: string;
 validityMode: string;
@@ -681,17 +801,53 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<{
-id: string;
-inline: boolean;
-modelValue: string | number;
-type: string;
-formatter?: FormatFunction<unknown> | undefined;
-parser?: ParseFunction<unknown> | undefined;
-labelWidth: string;
-inputWidth: string;
-options?: string[] | undefined;
-}> & Readonly<{
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+inline: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+modelValue: {
+type: (StringConstructor | NumberConstructor)[];
+required: false;
+default: string;
+};
+type: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+formatter: {
+type: PropType<FormatFunction<any>>;
+required: false;
+default: undefined;
+};
+parser: {
+type: PropType<ParseFunction<any>>;
+required: false;
+default: undefined;
+};
+labelWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+inputWidth: {
+type: StringConstructor;
+required: false;
+default: string;
+};
+options: {
+type: PropType<string[] | undefined>;
+required: false;
+default: () => undefined;
+};
+}>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;

@@ -1116,10 +1116,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -1549,10 +1563,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -2489,10 +2517,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -4506,10 +4548,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -5513,10 +5569,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -6236,10 +6306,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -10780,10 +10864,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -11376,10 +11474,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -12104,10 +12216,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -12556,10 +12682,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -13036,10 +13176,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -13462,10 +13616,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -13897,10 +14065,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -14623,10 +14805,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -15609,10 +15805,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -16577,10 +16787,24 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxDropdown: DefineComponent<    {
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<{
+id: string;
+isOpen: boolean;
+options: string[];
+activeOption: string | null;
+activeOptionId: string;
+inputNode: HTMLInputElement;
+}> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -17928,11 +18152,13 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_Props" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export const IComboboxDropdown: DefineComponent<IComboboxDropdownProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxDropdown: DefineComponent<__VLS_Props, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<IComboboxDropdownProps> & Readonly<{
+}, string, PublicProps, Readonly<__VLS_Props> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -18825,6 +19051,23 @@ export interface UseSlotUtils {
 // @public (undocumented)
 export function useSlotUtils(): UseSlotUtils;
 
+// Warning: (ae-forgotten-export) The symbol "FTextFieldProps" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function useTextFieldSetup(props: FTextFieldProps): {
+    textFieldTableMode: boolean;
+    viewValue: Ref<string>;
+    onOptionSelected: (value: string) => void;
+    dropdownId: string;
+    dropdownIsOpen: Readonly<Ref<boolean>>;
+    dropdownOptions: Readonly<Ref<string[]>>;
+    activeOptionId: string;
+    activeOption: Readonly<Ref<string | null>>;
+    toggleDropdown: () => void;
+    selectOption: (value: string) => void;
+    closeDropdown: () => void;
+};
+
 // @public
 export function useTranslate(): TranslateFunction;
 
@@ -18838,10 +19081,6 @@ export interface VueLike {
     // (undocumented)
     focusTarget?: VueLike | Element | Array<VueLike | Element> | null;
 }
-
-// Warnings were encountered during analysis:
-//
-// src/components/FTextField/extendedTextFields/FBankAccountNumberTextField/FBankAccountNumberTextField.vue:63:79 - (ae-forgotten-export) The symbol "IComboboxDropdownProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

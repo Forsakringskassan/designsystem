@@ -2,16 +2,14 @@
 import { nextTick, useTemplateRef, watchEffect } from "vue";
 import { IPopupListbox } from "../IPopupListbox";
 
-export interface IComboboxDropdownProps {
+const { id, isOpen, options, activeOption, activeOptionId, inputNode } = defineProps<{
     id: string;
     isOpen: boolean;
     options: string[];
     activeOption: string | null;
     activeOptionId: string;
     inputNode: HTMLInputElement;
-}
-
-const { id, isOpen, options, activeOption, activeOptionId, inputNode } = defineProps<IComboboxDropdownProps>();
+}>();
 
 const emit = defineEmits<{ select: [option: string]; close: [] }>();
 
