@@ -1,0 +1,18 @@
+// TEXT
+$selectfield-color-text-default: var(--fkds-color-text-primary);
+$selectfield-color-text-disabled: var(--fkds-color-text-disabled);
+
+// ICON
+$selectfield-icon-color-content-disabled: var(--fkds-icon-color-content-disabled);
+$selectfield-f-icon-arrow-down-color-content-default: var(--fkds-icon-color-action-content-primary-default);
+
+// BACKGROUND
+$selectfield-color-background-hover: var(--fkds-color-action-background-secondary-hover);
+$selectfield-color-background-default: var(--fkds-color-background-primary);
+$selectfield-color-background-focus: var(--fkds-color-background-primary);
+$selectfield-color-background-disabled: var(--fkds-color-background-disabled);
+
+// BORDER
+$selectfield-color-border-disabled: var(--fkds-color-border-primary);
+$selectfield-color-border-default: var(--fkds-color-border-primary);
+$selectfield-color-border-error: var(--fkds-color-feedback-border-negative);

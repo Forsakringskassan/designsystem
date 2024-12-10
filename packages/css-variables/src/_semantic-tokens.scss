@@ -1,46 +1,126 @@
 @use "palette-variables" as *;
 
 @mixin css-variables {
+    // TEXT
+    --fkds-color-text-primary: #{$palette-color-fk-black-100};
+    --fkds-color-text-secondary: #{$palette-color-fk-black-70};
+    --fkds-color-text-inverted: #{$palette-color-white-100};
+    --fkds-color-text-disabled: #{$palette-color-fk-black-50};
+
     // BACKGROUND
     --fkds-color-background-primary: #{$palette-color-white-100};
+    --fkds-color-background-secondary: #{$palette-color-fk-black-5};
+    --fkds-color-background-tertiary: #{$palette-color-fk-black-15};
     --fkds-color-background-disabled: #{$palette-color-fk-black-5};
 
     // BACKGROUND - ACTION
     --fkds-color-action-background-select-hover: #{$palette-color-green-a-15};
     --fkds-color-action-background-select-default: #{$palette-color-green-a-85};
 
-    // ACTION
-    --fkds-icon-color-action-content-weak-default: #{$palette-color-fk-black-70};
+    // BORDER
+    --fkds-color-border-primary: #{$palette-color-fk-black-50};
+    --fkds-color-border-strong: #{$palette-color-fk-black-70};
+    --fkds-color-border-weak: #{$palette-color-fk-black-15};
 
-    // BACKGROUND - FEEDBACK
+    // ACTION - TEXT
+    --fkds-color-action-text-primary-default: #{$palette-color-bluebell-100};
+    --fkds-color-action-text-primary-hover: #{$palette-color-bluebell-120};
+    --fkds-color-action-text-primary-active: #{$palette-color-bluebell-120};
+    --fkds-color-action-text-primary-focus: #{$palette-color-bluebell-120};
+    --fkds-color-action-text-secondary-default: #{$palette-color-fk-black-100};
+    --fkds-color-action-text-secondary-hover: #{$palette-color-bluebell-120};
+    --fkds-color-action-text-secondary-active: #{$palette-color-bluebell-120};
+    --fkds-color-action-text-secondary-focus: #{$palette-color-bluebell-120};
+    --fkds-color-action-text-inverted-default: #{$palette-color-white-100};
+    --fkds-color-action-text-inverted-hover: #{$palette-color-white-100};
+    --fkds-color-action-text-inverted-active: #{$palette-color-white-100};
+    --fkds-color-action-text-inverted-focus: #{$palette-color-white-100};
+    --fkds-color-action-text-disabled: #{$palette-color-fk-black-50};
+
+    // ACTION - BACKGROUND
+    --fkds-color-action-background-primary-default: #{$palette-color-bluebell-100};
+    --fkds-color-action-background-primary-hover: #{$palette-color-bluebell-120};
+    --fkds-color-action-background-primary-active: #{$palette-color-bluebell-120};
+    --fkds-color-action-background-primary-focus: #{$palette-color-bluebell-120};
+    --fkds-color-action-background-secondary-default: #{$palette-color-bluebell-5};
+    --fkds-color-action-background-secondary-hover: #{$palette-color-bluebell-15};
+    --fkds-color-action-background-secondary-active: #{$palette-color-bluebell-15};
+    --fkds-color-action-background-secondary-focus: #{$palette-color-bluebell-15};
+    --fkds-color-action-background-accent-default: #{$palette-color-green-a-100};
+    --fkds-color-action-background-accent-hover: #{$palette-color-green-a-120};
+    --fkds-color-action-background-accent-active: #{$palette-color-green-a-120};
+    --fkds-color-action-background-accent-focus: #{$palette-color-green-a-120};
+    --fkds-color-action-background-disabled: #{$palette-color-fk-black-5};
+
+    // ACTION - BORDER
+    --fkds-color-action-border-primary-default: #{$palette-color-bluebell-100};
+    --fkds-color-action-border-primary-hover: #{$palette-color-bluebell-120};
+    --fkds-color-action-border-primary-active: #{$palette-color-bluebell-120};
+    --fkds-color-action-border-primary-focus: #{$palette-color-bluebell-120};
+    --fkds-color-action-border-accent-default: #{$palette-color-green-a-100};
+    --fkds-color-action-border-accent-hover: #{$palette-color-green-a-120};
+    --fkds-color-action-border-accent-active: #{$palette-color-green-a-120};
+    --fkds-color-action-border-accent-focus: #{$palette-color-green-a-120};
+    --fkds-color-action-border-disabled: #{$palette-color-fk-black-50};
+
+    // FEEDBACK - BACKGROUND
     --fkds-color-feedback-background-neutral: #{$palette-color-fk-black-5};
     --fkds-color-feedback-background-neutral-strong: #{$palette-color-fk-black-15};
     --fkds-color-feedback-background-info: #{$palette-color-bluebell-5};
     --fkds-color-feedback-background-info-strong: #{$palette-color-bluebell-100};
-    --fkds-color-feedback-background-negative: #{$palette-color-red-5};
-    --fkds-color-feedback-background-negative-strong: #{$palette-color-red-100};
     --fkds-color-feedback-background-positive: #{$palette-color-green-a-5};
     --fkds-color-feedback-background-positive-strong: #{$palette-color-green-a-85};
     --fkds-color-feedback-background-warning: #{$palette-color-yellow-5};
     --fkds-color-feedback-background-warning-strong: #{$palette-color-yellow-100};
+    --fkds-color-feedback-background-negative: #{$palette-color-red-5};
+    --fkds-color-feedback-background-negative-strong: #{$palette-color-red-100};
 
-    // BORDER
-    --fkds-color-border-primary: #{$palette-color-fk-black-50};
-
-    // BORDER - FEEDBACK
+    // FEEDBACK - BORDER
     --fkds-color-feedback-border-neutral: #{$palette-color-fk-black-50};
     --fkds-color-feedback-border-info: #{$palette-color-bluebell-100};
-    --fkds-color-feedback-border-negative: #{$palette-color-red-100};
     --fkds-color-feedback-border-positive: #{$palette-color-green-a-85};
     --fkds-color-feedback-border-warning: #{$palette-color-yellow-100};
+    --fkds-color-feedback-border-negative: #{$palette-color-red-100};
+
+    // SELECT - BACKGROUND
+    --fkds-color-select-background-primary-default: #{$palette-color-green-a-85};
+    --fkds-color-select-background-primary-hover: #{$palette-color-green-a-15};
+    --fkds-color-select-background-primary-active: #{$palette-color-green-a-15};
+    --fkds-color-select-background-primary-focus: #{$palette-color-green-a-15};
 
     // ICON
-    --fkds-icon-color-action-content-primary-default: #{$palette-color-bluebell-100};
-    --fkds-icon-color-action-content-primary-disabled: #{$palette-color-fk-black-50};
+    --fkds-icon-color-content-primary: #{$palette-color-fk-black-100};
+    --fkds-icon-color-background-primary: #{$palette-color-white-100};
+    --fkds-icon-color-border-primary: #{$palette-color-fk-black-100};
     --fkds-icon-color-content-disabled: #{$palette-color-fk-black-50};
 
-    // TEXT
-    --fkds-color-text-inverted: #{$palette-color-white-100};
-    --fkds-color-text-primary: #{$palette-color-fk-black-100};
-    --fkds-color-text-disabled: #{$palette-color-fk-black-50};
+    // ICON - ACTION
+    --fkds-icon-color-action-content-primary-default: #{$palette-color-bluebell-100};
+    --fkds-icon-color-action-content-primary-disabled: #{$palette-color-fk-black-50};
+    --fkds-icon-color-action-content-primary-hover: #{$palette-color-bluebell-120};
+    --fkds-icon-color-action-content-primary-active: #{$palette-color-bluebell-120};
+    --fkds-icon-color-action-content-primary-focus: #{$palette-color-bluebell-120};
+    --fkds-icon-color-action-content-secondary-default: #{$palette-color-fk-black-100};
+    --fkds-icon-color-action-content-secondary-hover: #{$palette-color-bluebell-120};
+    --fkds-icon-color-action-content-secondary-active: #{$palette-color-bluebell-120};
+    --fkds-icon-color-action-content-secondary-focus: #{$palette-color-bluebell-120};
+    --fkds-icon-color-action-content-accent-default: #{$palette-color-green-a-100};
+    --fkds-icon-color-action-content-accent-hover: #{$palette-color-green-a-120};
+    --fkds-icon-color-action-content-accent-active: #{$palette-color-green-a-120};
+    --fkds-icon-color-action-content-accent-focus: #{$palette-color-green-a-120};
+    --fkds-icon-color-action-content-weak-default: #{$palette-color-fk-black-70};
+
+    // ICON - FEEDBACK
+    --fkds-icon-color-feedback-content-info: #{$palette-color-fk-black-100};
+    --fkds-icon-color-feedback-content-positive: #{$palette-color-fk-black-100};
+    --fkds-icon-color-feedback-content-warning: #{$palette-color-fk-black-100};
+    --fkds-icon-color-feedback-content-negative: #{$palette-color-fk-black-100};
+    --fkds-icon-color-feedback-background-info: #{$palette-color-white-100};
+    --fkds-icon-color-feedback-background-positive: #{$palette-color-white-100};
+    --fkds-icon-color-feedback-background-warning: #{$palette-color-white-100};
+    --fkds-icon-color-feedback-background-negative: #{$palette-color-white-100};
+    --fkds-icon-color-feedback-border-info: #{$palette-color-fk-black-100};
+    --fkds-icon-color-feedback-border-positive: #{$palette-color-green-a-85};
+    --fkds-icon-color-feedback-border-warning: #{$palette-color-yellow-100};
+    --fkds-icon-color-feedback-border-negative: #{$palette-color-red-100};
 }
