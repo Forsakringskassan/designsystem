@@ -44,28 +44,23 @@ exports[`snapshots should match snapshot with default classes and filled slots 1
   <!--v-if-->
   
   <div
-    class="sr-separator"
+    class="label"
   >
-    <div
+    <span
       aria-hidden="true"
-      class="tooltip-before"
     >
-      <div
-        class="label tooltip-before__label"
-      >
-        
-        
-        Label
-        
-        
-      </div>
-    </div>
-    
-    
-    Tooltip
-    
-    
+      
+      
+      Label
+      
+      
+    </span>
   </div>
+  
+  
+  Tooltip
+  
+  
   <div
     aria-hidden="true"
     class="label fieldset__label"
