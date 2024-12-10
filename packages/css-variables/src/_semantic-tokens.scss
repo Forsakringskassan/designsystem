@@ -5,6 +5,11 @@
     --fkds-color-background-primary: #{$palette-color-white-100};
     --fkds-color-background-disabled: #{$palette-color-fk-black-5};
 
+    // BACKGROUND - ACTION
+    --fkds-color-action-background-select-hover: #{$palette-color-green-a-15};
+    --fkds-color-action-background-select-default: #{$palette-color-green-a-85}; // Ändra till ...-primary?
+    --fkds-color-action-background-secondary-hover: #{$palette-color-bluebell-15};
+
     // BACKGROUND - FEEDBACK
     --fkds-color-feedback-background-neutral: #{$palette-color-fk-black-5};
     --fkds-color-feedback-background-neutral-strong: #{$palette-color-fk-black-15};
@@ -32,7 +37,11 @@
     --fkds-color-feedback-border-warning: #{$palette-color-yellow-100};
 
     // ICON
+    --fkds-icon-color-content-disabled: #{$palette-color-fk-black-50};
     --fkds-icon-color-action-content-primary-default: #{$palette-color-bluebell-100};
+
+    // ICON ACTION
+    --fkds-color-action-content-primary-default: #{$palette-color-bluebell-100};
 
     // TEXT
     --fkds-color-text-inverted: #{$palette-color-white-100};
