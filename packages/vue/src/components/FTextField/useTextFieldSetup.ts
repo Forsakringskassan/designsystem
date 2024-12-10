@@ -3,7 +3,10 @@ import { useCombobox } from "../../internal-components";
 import { type FormatFunction } from "./FormatFunction";
 import { type ParseFunction } from "./ParseFunction";
 
-interface FTextFieldProps {
+/**
+ * @public
+ */
+export interface TextFieldSetupProps {
     id: string;
     inline: boolean;
     modelValue: string | number;
@@ -15,7 +18,13 @@ interface FTextFieldProps {
     options?: string[];
 }
 
-export function useTextFieldSetup(props: FTextFieldProps): {
+/**
+ * Setup logic used by `FTextField`.
+ * Components extending `FTextField` reuse the same setup.
+ *
+ * @public
+ */
+export function useTextFieldSetup(props: TextFieldSetupProps): {
     textFieldTableMode: boolean;
     viewValue: Ref<string>;
     onOptionSelected: (value: string) => void;

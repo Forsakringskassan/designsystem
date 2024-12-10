@@ -18997,6 +18997,28 @@ export function tableScrollClasses(val: TableScroll): string[];
 // @public (undocumented)
 export const TestPlugin: Plugin_2;
 
+// @public (undocumented)
+export interface TextFieldSetupProps {
+    // (undocumented)
+    formatter?: FormatFunction<unknown>;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    inline: boolean;
+    // (undocumented)
+    inputWidth: string;
+    // (undocumented)
+    labelWidth: string;
+    // (undocumented)
+    modelValue: string | number;
+    // (undocumented)
+    options?: string[];
+    // (undocumented)
+    parser?: ParseFunction<unknown>;
+    // (undocumented)
+    type: string;
+}
+
 // @internal (undocumented)
 export const tooltipAttachTo: InjectionKey<Readonly<ShallowRef<HTMLElement | null>>>;
 
@@ -19051,10 +19073,8 @@ export interface UseSlotUtils {
 // @public (undocumented)
 export function useSlotUtils(): UseSlotUtils;
 
-// Warning: (ae-forgotten-export) The symbol "FTextFieldProps" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export function useTextFieldSetup(props: FTextFieldProps): {
+// @public
+export function useTextFieldSetup(props: TextFieldSetupProps): {
     textFieldTableMode: boolean;
     viewValue: Ref<string>;
     onOptionSelected: (value: string) => void;
