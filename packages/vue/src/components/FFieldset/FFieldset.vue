@@ -34,17 +34,19 @@
             <span v-else>{{ numberOfCheckedCheckboxesScreenText }}</span>
         </span>
 
+        <!-- the original <legend> element is sr-only when a tooltip is present
+        so the tooltip button can be positioned correctly when a description is
+        also present -->
         <template v-if="hasTooltipSlot">
-            <div class="sr-separator">
-                <div class="tooltip-before" aria-hidden="true">
-                    <div class="label tooltip-before__label">
-                        <slot name="label"></slot>
-                    </div>
-                </div>
-
-                <!-- @slot Slot for tooltip. -->
-                <slot name="tooltip"></slot>
+            <div ref="tooltipAttachTo" class="label">
+                <span aria-hidden="true">
+                    <slot name="label"></slot>
+                </span>
             </div>
+
+            <!-- @slot Slot for tooltip. -->
+            <slot name="tooltip"></slot>
+
             <div
                 v-if="hasDescriptionSlot || hasErrorMessageSlot || hasError"
                 class="label"
@@ -77,12 +79,13 @@
 </template>
 
 <script lang="ts">
-import { type PropType, defineComponent, provide, useSlots } from "vue";
+import { type PropType, defineComponent, provide, useSlots, useTemplateRef } from "vue";
 import { ElementIdService, type ValidityEvent, debounce } from "@fkui/logic";
 import { renderSlotText, dispatchComponentValidityEvent, hasSlot } from "../../utils";
 import { ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";
 import { TranslationMixin } from "../../plugins";
+import { tooltipAttachTo } from "../FTooltip";
 import { labelClasses } from "./label-classes";
 import { contentClasses } from "./content-classes";
 import { injectionKeys } from "./use-fieldset";
@@ -181,6 +184,7 @@ export default defineComponent({
         provide(injectionKeys.getFieldsetLabelText, () => {
             return renderSlotText(slots.label);
         });
+        provide(tooltipAttachTo, useTemplateRef("tooltipAttachTo"));
     },
     data() {
         return {
