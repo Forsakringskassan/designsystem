@@ -3018,18 +3018,18 @@
   var _hoisted_6$g = {
     class: "modal__header"
   };
-  var _hoisted_7$c = {
+  var _hoisted_7$d = {
     key: 0,
     ref: "modalTitle",
     class: "modal__title",
     tabindex: "-1"
   };
-  var _hoisted_8$8 = {
+  var _hoisted_8$9 = {
     ref: "modalContent",
     class: "modal__content",
     tabindex: "-1"
   };
-  var _hoisted_9$5 = {
+  var _hoisted_9$6 = {
     class: "modal__footer"
   };
   var _hoisted_10$4 = {
@@ -3054,7 +3054,7 @@
     }, [(0, import_vue.createElementVNode)("div", _hoisted_4$r, [(0, import_vue.createElementVNode)("div", _hoisted_5$l, [(0, import_vue.createElementVNode)("div", _hoisted_6$g, [(0, import_vue.createElementVNode)("div", {
       tabindex: "0",
       onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-    }, null, 32), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _ctx.hasHeaderSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("h1", _hoisted_7$c, [(0, import_vue.renderSlot)(_ctx.$slots, "header")], 512)) : (0, import_vue.createCommentVNode)("", true)]), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_8$8, [(0, import_vue.renderSlot)(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_9$5, [(0, import_vue.renderSlot)(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_10$4, [(0, import_vue.createElementVNode)("button", {
+    }, null, 32), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _ctx.hasHeaderSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("h1", _hoisted_7$d, [(0, import_vue.renderSlot)(_ctx.$slots, "header")], 512)) : (0, import_vue.createCommentVNode)("", true)]), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_8$9, [(0, import_vue.renderSlot)(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_9$6, [(0, import_vue.renderSlot)(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_10$4, [(0, import_vue.createElementVNode)("button", {
       type: "button",
       class: "close-button",
       "aria-label": _ctx.ariaCloseText,
@@ -4658,13 +4658,13 @@
   var _hoisted_6$e = {
     role: "presentation"
   };
-  var _hoisted_7$b = {
+  var _hoisted_7$c = {
     key: 0,
     class: "calendar-month__cell calendar-month__cell--week-number",
     "aria-hidden": "true"
   };
-  var _hoisted_8$7 = ["colspan"];
-  var _hoisted_9$4 = ["colspan"];
+  var _hoisted_8$8 = ["colspan"];
+  var _hoisted_9$5 = ["colspan"];
   var _hoisted_10$3 = {
     key: 0,
     "aria-hidden": "true"
@@ -4709,12 +4709,12 @@
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", {
         key: week.week,
         role: "presentation"
-      }, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_7$b, (0, import_vue.toDisplayString)(week.week), 1)) : (0, import_vue.createCommentVNode)("", true), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), _ctx.getDayStartOffset(week.days) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", {
+      }, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_7$c, (0, import_vue.toDisplayString)(week.week), 1)) : (0, import_vue.createCommentVNode)("", true), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), _ctx.getDayStartOffset(week.days) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", {
         key: 1,
         class: "calendar-month__cell",
         colspan: _ctx.getDayStartOffset(week.days),
         "aria-hidden": "true"
-      }, null, 8, _hoisted_8$7)) : (0, import_vue.createCommentVNode)("", true), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(week.days, (day) => {
+      }, null, 8, _hoisted_8$8)) : (0, import_vue.createCommentVNode)("", true), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(week.days, (day) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", {
           key: day.toString(),
           class: "calendar-month__cell",
@@ -4728,7 +4728,7 @@
         class: "calendar-month__cell",
         colspan: _ctx.getDayEndOffset(week.days),
         "aria-hidden": "true"
-      }, null, 8, _hoisted_9$4)) : (0, import_vue.createCommentVNode)("", true)]);
+      }, null, 8, _hoisted_9$5)) : (0, import_vue.createCommentVNode)("", true)]);
     }), 128)), _cache[20] || (_cache[20] = (0, import_vue.createTextVNode)()), _ctx.weeks.length < 5 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_10$3, [(0, import_vue.createElementVNode)("td", {
       class: "calendar-month__cell",
       colspan: _ctx.totalCols,
@@ -7440,11 +7440,14 @@
       hasErrorMessageSlot() {
         return hasSlot(this, "error-message");
       },
+      hasTooltipSlot() {
+        return Boolean(this.$slots.tooltip);
+      },
       hasDescriptionSlot() {
         return hasSlot(this, "description");
       },
       legendClass() {
-        return this.groupLabelClass;
+        return this.hasTooltipSlot ? ["sr-only"] : this.groupLabelClass;
       },
       groupLabelClass() {
         return Array.from(labelClasses(this));
@@ -7572,6 +7575,17 @@
   var _hoisted_6$c = {
     key: 1
   };
+  var _hoisted_7$b = {
+    class: "label",
+    ref: "tooltipAttachTo"
+  };
+  var _hoisted_8$7 = {
+    "aria-hidden": "true"
+  };
+  var _hoisted_9$4 = {
+    key: 0,
+    class: "label__message label__message--error"
+  };
   function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("fieldset", {
@@ -7580,7 +7594,6 @@
       onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
     }, [((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("legend", {
       key: _ctx.legendKey,
-      ref: "tooltipAttachTo",
       class: (0, import_vue.normalizeClass)(["label", _ctx.legendClass])
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "label"), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _ctx.hasCheckbox && _ctx.children.length > 1 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_2$t, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(_ctx.numberOfCheckboxesScreenReaderText), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
       descriptionClass: _ctx.descriptionClass,
@@ -7591,7 +7604,22 @@
     })), () => [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$n, [(0, import_vue.createVNode)(_component_f_icon, {
       class: "label__icon--left",
       name: "error"
-    }), (0, import_vue.createTextVNode)(" " + (0, import_vue.toDisplayString)(_ctx.validity.validationMessage), 1)])) : (0, import_vue.createCommentVNode)("", true)])], 2)), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "tooltip"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), _ctx.hasCheckbox ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_4$j, [_ctx.children.length === 1 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$e, (0, import_vue.toDisplayString)(_ctx.checkboxCheckedScreenReaderText), 1)) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_6$c, (0, import_vue.toDisplayString)(_ctx.numberOfCheckedCheckboxesScreenText), 1))])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", {
+    }), (0, import_vue.createTextVNode)(" " + (0, import_vue.toDisplayString)(_ctx.validity.validationMessage), 1)])) : (0, import_vue.createCommentVNode)("", true)])], 2)), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), _ctx.hasCheckbox ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_4$j, [_ctx.children.length === 1 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$e, (0, import_vue.toDisplayString)(_ctx.checkboxCheckedScreenReaderText), 1)) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_6$c, (0, import_vue.toDisplayString)(_ctx.numberOfCheckedCheckboxesScreenText), 1))])) : (0, import_vue.createCommentVNode)("", true), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), _ctx.hasTooltipSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
+      key: 1
+    }, [(0, import_vue.createElementVNode)("div", _hoisted_7$b, [(0, import_vue.createElementVNode)("span", _hoisted_8$7, [(0, import_vue.renderSlot)(_ctx.$slots, "label")])], 512), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
+      key: 0,
+      class: (0, import_vue.normalizeClass)(["label", _ctx.groupLabelClass]),
+      "aria-hidden": "true"
+    }, [(0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+      descriptionClass: _ctx.descriptionClass,
+      discreteDescriptionClass: _ctx.discreteDescriptionClass
+    }))), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+      hasError: _ctx.hasError,
+      validationMessage: _ctx.validity.validationMessage
+    })), () => [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_9$4, [(0, import_vue.createVNode)(_component_f_icon, {
+      class: "label__icon--left",
+      name: "error"
+    }), (0, import_vue.createTextVNode)(" " + (0, import_vue.toDisplayString)(_ctx.validity.validationMessage), 1)])) : (0, import_vue.createCommentVNode)("", true)])], 2)) : (0, import_vue.createCommentVNode)("", true)], 64)) : (0, import_vue.createCommentVNode)("", true), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.groupContentClass)
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2)], 42, _hoisted_1$B);
   }
