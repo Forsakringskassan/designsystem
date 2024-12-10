@@ -12,7 +12,8 @@ export class FCrudDatasetPageObject implements BasePageObject {
     public constructor(selector: string) {
         this.selector = selector;
         this.el = () => cy.get(this.selector);
-        this.form = new FValidationFormPageObject(`${this.selector} form`);
+        // Modal is teleported so `this.selector` can't be used.
+        this.form = new FValidationFormPageObject(`.modal__content form`);
     }
 
     public addButton(): DefaultCypressChainable {
@@ -22,14 +23,12 @@ export class FCrudDatasetPageObject implements BasePageObject {
     }
 
     public cancelButton(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__footer > .button-group > .button--secondary`,
-        );
+        // Modal is teleported so `this.selector` can't be used.
+        return cy.get(`.modal__footer > .button-group > .button--secondary`);
     }
 
     public confirmButton(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__footer > .button-group > .button--primary`,
-        );
+        // Modal is teleported so `this.selector` can't be used.
+        return cy.get(`.modal__footer > .button-group > .button--primary`);
     }
 }
