@@ -218,24 +218,19 @@ exports[`snapshots should match snapshot with label, content and tooltip 1`] = `
   <!--v-if-->
   
   <div
-    class="sr-separator"
+    class="label"
   >
-    <div
+    <span
       aria-hidden="true"
-      class="tooltip-before"
     >
-      <div
-        class="label tooltip-before__label"
-      >
-        
-        Label
-        
-      </div>
-    </div>
-    
-    Tooltip
-    
+      
+      Label
+      
+    </span>
   </div>
+  
+  Tooltip
+  
   <!--v-if-->
   
   <div

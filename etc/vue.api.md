@@ -15306,9 +15306,9 @@ validator(value: string): value is FTableColumnType;
 type: "text" | "date" | "action" | "numeric";
 description: string;
 shrink: boolean;
+expand: boolean;
 visible: boolean;
 rowHeader: boolean;
-expand: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
@@ -16423,8 +16423,8 @@ default(): AnimationCallback;
 };
 }>> & Readonly<{}>, {
 animate: boolean;
-expanded: string | number | boolean;
 useVShow: boolean;
+expanded: string | number | boolean;
 opacity: boolean;
 beforeAnimation: AnimationCallback;
 afterAnimation: AnimationCallback;
@@ -17008,8 +17008,8 @@ default(): AnimationCallback;
 };
 }>> & Readonly<{}>, {
 animate: boolean;
-expanded: string | number | boolean;
 useVShow: boolean;
+expanded: string | number | boolean;
 opacity: boolean;
 beforeAnimation: AnimationCallback;
 afterAnimation: AnimationCallback;
