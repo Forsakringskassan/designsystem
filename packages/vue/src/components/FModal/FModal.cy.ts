@@ -203,29 +203,25 @@ describe("FModal", () => {
         modal.typeOfModal().should("be.equal", "modal");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("standard should have approved design", () => {
+    it("standard should have approved design", () => {
         modalSelector.dropdown().select(modalType.standard);
         openModalButton().click();
         modal.el().toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("information should have approved design", () => {
+    it("information should have approved design", () => {
         modalSelector.dropdown().select(modalType.information);
         openModalButton().click();
         modal.el().toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("warning should have approved design", () => {
+    it("warning should have approved design", () => {
         modalSelector.dropdown().select(modalType.warning);
         openModalButton().click();
         modal.el().toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("error should have approved design", () => {
+    it("error should have approved design", () => {
         modalSelector.dropdown().select(modalType.error);
         openModalButton().click();
         modal.el().toMatchScreenshot();

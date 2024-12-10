@@ -1,14 +1,29 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <title>Components App</title>
-    </head>
-    <body>
-        <div data-cy-root>
-            <div id="teleport"></div>
-        </div>
-    </body>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Components App</title>
+    <script>
+        function winSize() {
+            return `
+Inner Width: ${this.innerWidth}
+Inner Height: ${this.innerHeight}
+Outer Width: ${this.outerWidth}
+Outer Height: ${this.outerHeight}
+`;
+        }
+    </script>
+</head>
+
+<body>
+    <div data-cy-root>
+        <div id="teleport"></div>
+    </div>
+    <pre id="size">Hej</pre>
+</body>
+<script>document.getElementById("size").innerText = winSize();</script>
+
 </html>
