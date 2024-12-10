@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -7576,8 +7576,8 @@
     key: 1
   };
   var _hoisted_7$b = {
-    class: "label",
-    ref: "tooltipAttachTo"
+    ref: "tooltipAttachTo",
+    class: "label"
   };
   var _hoisted_8$7 = {
     "aria-hidden": "true"
