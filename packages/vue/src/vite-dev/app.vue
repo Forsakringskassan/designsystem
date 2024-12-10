@@ -1,20 +1,13 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { FTextField } from "../components";
+
+const namn = ref("");
+</script>
+
 <template>
-    <div>
-        <f-text-field v-model="namn" v-validation.required maxlength="100">Namn</f-text-field>
+    <div class="container">
+        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
         <pre>Hej {{ namn }}</pre>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FTextField } from "../components";
-
-export default defineComponent({
-    components: { FTextField },
-    data() {
-        return {
-            namn: "",
-        };
-    },
-});
-</script>
