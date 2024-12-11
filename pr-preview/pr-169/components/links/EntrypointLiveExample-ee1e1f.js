@@ -53,9 +53,8 @@
           /* HTML */
           `
                 <a class="entrypoint ${this.fullwidth}" href="javascript:">
-                    Ans\xF6k om hundbidrag<span class="sr-only">
-                        Till tj\xE4nsten ans\xF6k om hundbidrag</span
-                    >
+                    Ans\xF6k om hundbidrag
+                    <span class="sr-only"> Till tj\xE4nsten ans\xF6k om hundbidrag</span>
                     <f-icon name="arrow-right" class="entrypoint__icon"></f-icon>
                 </a>
             `
