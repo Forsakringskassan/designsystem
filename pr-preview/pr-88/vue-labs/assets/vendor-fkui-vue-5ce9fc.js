@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -7560,6 +7560,7 @@
         var _config$popupTarget;
         return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
       });
+      let guessedItemHeight = void 0;
       useEventListener(__props.anchor, "keyup", onKeyEsc);
       function addListeners() {
         document.addEventListener("click", onDocumentClickHandler);
@@ -7613,7 +7614,10 @@
         }
         let contentItemHeigth = __props.itemHeight;
         if (!contentItemHeigth) {
-          contentItemHeigth = guessItemHeight(__props.numOfItems, contentWrapper);
+          if (!guessedItemHeight) {
+            guessedItemHeight = guessItemHeight(__props.numOfItems, contentWrapper);
+          }
+          contentItemHeigth = guessedItemHeight;
         }
         wrapperElement.style.overflowY = "auto";
         wrapperElement.style.left = `0px`;
@@ -7634,7 +7638,7 @@
           wrapperElement.style.top = `${top}px`;
           wrapperElement.style.left = `${left - offsetLeft}px`;
           wrapperElement.style.minWidth = `${width}px`;
-          wrapperElement.style.maxHeight = `${height}px`;
+          contentWrapper.style.maxHeight = `${height}px`;
         }
       }
       return (_ctx, _cache) => {

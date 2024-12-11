@@ -15931,6 +15931,7 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
       var _config$popupTarget;
       return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
     });
+    let guessedItemHeight = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
     function addListeners() {
       document.addEventListener("click", onDocumentClickHandler);
@@ -15984,7 +15985,10 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
       }
       let contentItemHeigth = __props.itemHeight;
       if (!contentItemHeigth) {
-        contentItemHeigth = guessItemHeight(__props.numOfItems, contentWrapper);
+        if (!guessedItemHeight) {
+          guessedItemHeight = guessItemHeight(__props.numOfItems, contentWrapper);
+        }
+        contentItemHeigth = guessedItemHeight;
       }
       wrapperElement.style.overflowY = "auto";
       wrapperElement.style.left = `0px`;
@@ -16005,7 +16009,7 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
         wrapperElement.style.top = `${top}px`;
         wrapperElement.style.left = `${left - offsetLeft}px`;
         wrapperElement.style.minWidth = `${width}px`;
-        wrapperElement.style.maxHeight = `${height}px`;
+        contentWrapper.style.maxHeight = `${height}px`;
       }
     }
     return (_ctx, _cache) => {
