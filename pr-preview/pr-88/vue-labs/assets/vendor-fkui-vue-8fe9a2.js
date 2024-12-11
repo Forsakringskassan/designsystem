@@ -173,6 +173,7 @@
     useCombobox: () => useCombobox,
     useModal: () => useModal,
     useSlotUtils: () => useSlotUtils,
+    useTextFieldSetup: () => useTextFieldSetup,
     useTranslate: () => useTranslate
   });
   var import_vue = __require("vue");
@@ -7611,7 +7612,6 @@
         }
         wrapperElement.style.overflowY = "auto";
         wrapperElement.style.left = `0px`;
-        wrapperElement.style.boxShadow = "none";
         const rect = computeListboxRect(__props.anchor, {
           itemHeight: contentItemHeigth,
           numOfItems: __props.numOfItems
@@ -8232,7 +8232,7 @@
   }
   var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$A]]);
   var $t = useTranslate();
-  function useCombobox(inputRef, options) {
+  function useCombobox(inputRef, options, onOptionSelected) {
     if (!options) {
       return {
         dropdownId: "",
@@ -8240,8 +8240,9 @@
         dropdownOptions: (0, import_vue.ref)([]),
         activeOptionId: "",
         activeOption: (0, import_vue.ref)(null),
-        selectedValue: (0, import_vue.ref)(null),
         toggleDropdown() {
+        },
+        selectOption() {
         },
         closeDropdown() {
         }
@@ -8257,7 +8258,7 @@
     const activeOption = (0, import_vue.ref)(null);
     const filter2 = (0, import_vue.ref)("");
     const selectMode = (0, import_vue.ref)(false);
-    const selectedValue = (0, import_vue.ref)(null);
+    const selectedOption = (0, import_vue.ref)(null);
     const dropdownOptions = (0, import_vue.computed)(() => {
       if ((0, import_logic.isEmpty)(filter2.value) || selectMode.value) {
         return options;
@@ -8270,13 +8271,6 @@
     });
     const hasMultipleOptions = (0, import_vue.computed)(() => {
       return dropdownOptions.value.length > 1;
-    });
-    (0, import_vue.watchEffect)(() => {
-      if (selectedValue.value) {
-        close();
-        filter2.value = selectedValue.value;
-        selectMode.value = true;
-      }
     });
     (0, import_vue.watchEffect)(() => {
       if (!inputRef.value) {
@@ -8317,7 +8311,37 @@
       }
       inputRef.value.setAttribute("aria-description", description);
     });
+    (0, import_vue.onMounted)(() => {
+      if (!inputRef.value) {
+        throw new Error("missing input ref");
+      }
+      filter2.value = inputRef.value.value;
+      inputRef.value.setAttribute("role", "combobox");
+      inputRef.value.setAttribute("aria-autocomplete", "list");
+    });
+    return {
+      dropdownId,
+      dropdownIsOpen,
+      dropdownOptions,
+      activeOptionId,
+      activeOption,
+      toggleDropdown,
+      selectOption,
+      closeDropdown: close
+    };
+    function selectOption(value) {
+      selectedOption.value = value;
+      if (selectedOption.value) {
+        close();
+        filter2.value = selectedOption.value;
+        selectMode.value = true;
+        if (onOptionSelected) {
+          onOptionSelected(value);
+        }
+      }
+    }
     async function openSelected(fallback = null) {
+      var _a;
       if (hasOptions.value) {
         dropdownIsOpen.value = true;
         await (0, import_vue.nextTick)();
@@ -8330,6 +8354,7 @@
         } else {
           activeOption.value = null;
         }
+        (_a = inputRef.value) == null ? void 0 : _a.focus();
       }
     }
     function close() {
@@ -8367,14 +8392,6 @@
         activeOption.value = dropdownOptions.value[0];
       }
     }
-    (0, import_vue.onMounted)(() => {
-      if (!inputRef.value) {
-        throw new Error("missing input ref");
-      }
-      filter2.value = inputRef.value.value;
-      inputRef.value.setAttribute("role", "combobox");
-      inputRef.value.setAttribute("aria-autocomplete", "list");
-    });
     function onInputClick() {
       toggleDropdown();
     }
@@ -8391,7 +8408,7 @@
         case "Enter":
           if (dropdownIsOpen.value) {
             if (activeOption.value) {
-              selectedValue.value = activeOption.value;
+              selectOption(activeOption.value);
               flag = true;
             }
             close();
@@ -8449,16 +8466,6 @@
         close();
       }
     }
-    return {
-      dropdownId,
-      dropdownIsOpen,
-      dropdownOptions,
-      activeOptionId,
-      activeOption,
-      toggleDropdown,
-      closeDropdown: close,
-      selectedValue
-    };
   }
   var _hoisted_1$A = {
     class: "combobox"
@@ -8500,7 +8507,7 @@
           if (activeOptionNode) {
             activeOptionNode.scrollIntoView({
               behavior: "instant",
-              block: "nearest"
+              block: "center"
             });
           }
         }
@@ -9133,6 +9140,46 @@
   function resolveWidthClass(words, inline) {
     return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
   }
+  function setCursorAtEnd(input) {
+    input.setSelectionRange(input.value.length, input.value.length);
+  }
+  function useTextFieldSetup(props) {
+    const inputNode = (0, import_vue.useTemplateRef)("input");
+    const textFieldTableMode = (0, import_vue.inject)("textFieldTableMode", false);
+    const viewValue = (0, import_vue.ref)("");
+    async function onOptionSelected(value) {
+      if (!inputNode.value) {
+        return;
+      }
+      viewValue.value = value;
+      await (0, import_vue.nextTick)();
+      inputNode.value.focus();
+      setCursorAtEnd(inputNode.value);
+    }
+    const {
+      dropdownId,
+      dropdownIsOpen,
+      dropdownOptions,
+      activeOptionId,
+      activeOption,
+      toggleDropdown,
+      selectOption,
+      closeDropdown
+    } = useCombobox(inputNode, props.options, onOptionSelected);
+    return {
+      textFieldTableMode,
+      viewValue,
+      onOptionSelected,
+      dropdownId,
+      dropdownIsOpen,
+      dropdownOptions,
+      activeOptionId,
+      activeOption,
+      toggleDropdown,
+      selectOption,
+      closeDropdown
+    };
+  }
   var _sfc_main$H = (0, import_vue.defineComponent)({
     name: "FTextField",
     components: {
@@ -9249,34 +9296,36 @@
     },
     emits: ["blur", "change", "update", "update:modelValue"],
     setup(props) {
-      const inputNode = (0, import_vue.useTemplateRef)("input");
-      const textFieldTableMode = (0, import_vue.inject)("textFieldTableMode", false);
       const {
+        textFieldTableMode,
+        viewValue,
+        onOptionSelected,
         dropdownId,
         dropdownIsOpen,
         dropdownOptions,
         activeOptionId,
         activeOption,
-        selectedValue,
         toggleDropdown,
+        selectOption,
         closeDropdown
-      } = useCombobox(inputNode, props.options);
+      } = useTextFieldSetup(props);
       return {
         textFieldTableMode,
+        viewValue,
+        onOptionSelected,
         dropdownId,
         dropdownIsOpen,
         dropdownOptions,
         activeOptionId,
         activeOption,
-        selectedValue,
         toggleDropdown,
+        selectOption,
         closeDropdown
       };
     },
     data() {
       return {
         showErrorPopup: false,
-        viewValue: "",
         lastModelValue: "",
         validationMessage: "",
         validityMode: "INITIAL",
@@ -9333,17 +9382,6 @@
           this.setViewValueToFormattedValueOrFallbackToValue();
           this.lastModelValue = this.modelValue;
         }
-      },
-      selectedValue: {
-        immediate: false,
-        handler: async function(newValue) {
-          this.viewValue = newValue;
-          this.$emit("update:modelValue", newValue);
-          await this.$nextTick();
-          const input = this.$refs.input;
-          input == null ? void 0 : input.select();
-          input == null ? void 0 : input.focus();
-        }
       }
     },
     beforeUpdate() {
@@ -9351,7 +9389,7 @@
     },
     methods: {
       onDropdownSelect(value) {
-        this.selectedValue = value;
+        this.selectOption(value);
       },
       onDropdownClose() {
         this.closeDropdown();
@@ -9872,10 +9910,8 @@
         default: import_logic.parseNumber
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {
@@ -10018,10 +10054,8 @@
         default: import_logic.parseBankAccountNumber
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {
@@ -10049,10 +10083,8 @@
         default: import_logic.parseBankgiro
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {
@@ -10083,10 +10115,8 @@
         default: import_logic.parseClearingNumber
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {
@@ -10130,10 +10160,8 @@
         default: import_logic.parseNumber
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     mounted() {
       const inputElement = getInputElement(this);
@@ -10161,10 +10189,8 @@
         default: import_logic.parsePersonnummer
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {
@@ -10198,10 +10224,8 @@
         default: import_logic.parsePlusgiro
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {
@@ -10232,10 +10256,8 @@
         default: import_logic.formatPostalCode
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {
@@ -10284,10 +10306,8 @@
         default: import_logic.parsePercent
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {
@@ -10321,10 +10341,8 @@
         default: import_logic.parseOrganisationsnummer
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return useTextFieldSetup(props);
     },
     data() {
       return {

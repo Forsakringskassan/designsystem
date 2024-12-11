@@ -15983,7 +15983,6 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
       }
       wrapperElement.style.overflowY = "auto";
       wrapperElement.style.left = `0px`;
-      wrapperElement.style.boxShadow = "none";
       const rect = computeListboxRect(__props.anchor, {
         itemHeight: contentItemHeigth,
         numOfItems: __props.numOfItems
@@ -16029,7 +16028,7 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
   }
 });
 const $t = useTranslate();
-function useCombobox(inputRef, options) {
+function useCombobox(inputRef, options, onOptionSelected) {
   if (!options) {
     return {
       dropdownId: "",
@@ -16037,8 +16036,9 @@ function useCombobox(inputRef, options) {
       dropdownOptions: ref([]),
       activeOptionId: "",
       activeOption: ref(null),
-      selectedValue: ref(null),
       toggleDropdown() {
+      },
+      selectOption() {
       },
       closeDropdown() {
       }
@@ -16054,7 +16054,7 @@ function useCombobox(inputRef, options) {
   const activeOption = ref(null);
   const filter2 = ref("");
   const selectMode = ref(false);
-  const selectedValue = ref(null);
+  const selectedOption = ref(null);
   const dropdownOptions = computed(() => {
     if (isEmpty(filter2.value) || selectMode.value) {
       return options;
@@ -16067,13 +16067,6 @@ function useCombobox(inputRef, options) {
   });
   const hasMultipleOptions = computed(() => {
     return dropdownOptions.value.length > 1;
-  });
-  watchEffect(() => {
-    if (selectedValue.value) {
-      close();
-      filter2.value = selectedValue.value;
-      selectMode.value = true;
-    }
   });
   watchEffect(() => {
     if (!inputRef.value) {
@@ -16114,7 +16107,37 @@ function useCombobox(inputRef, options) {
     }
     inputRef.value.setAttribute("aria-description", description);
   });
+  onMounted(() => {
+    if (!inputRef.value) {
+      throw new Error("missing input ref");
+    }
+    filter2.value = inputRef.value.value;
+    inputRef.value.setAttribute("role", "combobox");
+    inputRef.value.setAttribute("aria-autocomplete", "list");
+  });
+  return {
+    dropdownId,
+    dropdownIsOpen,
+    dropdownOptions,
+    activeOptionId,
+    activeOption,
+    toggleDropdown,
+    selectOption,
+    closeDropdown: close
+  };
+  function selectOption(value) {
+    selectedOption.value = value;
+    if (selectedOption.value) {
+      close();
+      filter2.value = selectedOption.value;
+      selectMode.value = true;
+      if (onOptionSelected) {
+        onOptionSelected(value);
+      }
+    }
+  }
   async function openSelected(fallback = null) {
+    var _a;
     if (hasOptions.value) {
       dropdownIsOpen.value = true;
       await nextTick();
@@ -16127,6 +16150,7 @@ function useCombobox(inputRef, options) {
       } else {
         activeOption.value = null;
       }
+      (_a = inputRef.value) == null ? void 0 : _a.focus();
     }
   }
   function close() {
@@ -16164,14 +16188,6 @@ function useCombobox(inputRef, options) {
       activeOption.value = dropdownOptions.value[0];
     }
   }
-  onMounted(() => {
-    if (!inputRef.value) {
-      throw new Error("missing input ref");
-    }
-    filter2.value = inputRef.value.value;
-    inputRef.value.setAttribute("role", "combobox");
-    inputRef.value.setAttribute("aria-autocomplete", "list");
-  });
   function onInputClick() {
     toggleDropdown();
   }
@@ -16188,7 +16204,7 @@ function useCombobox(inputRef, options) {
       case "Enter":
         if (dropdownIsOpen.value) {
           if (activeOption.value) {
-            selectedValue.value = activeOption.value;
+            selectOption(activeOption.value);
             flag = true;
           }
           close();
@@ -16246,16 +16262,6 @@ function useCombobox(inputRef, options) {
       close();
     }
   }
-  return {
-    dropdownId,
-    dropdownIsOpen,
-    dropdownOptions,
-    activeOptionId,
-    activeOption,
-    toggleDropdown,
-    closeDropdown: close,
-    selectedValue
-  };
 }
 const _hoisted_1$A = {
   class: "combobox"
@@ -16297,7 +16303,7 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
         if (activeOptionNode) {
           activeOptionNode.scrollIntoView({
             behavior: "instant",
-            block: "nearest"
+            block: "center"
           });
         }
       }
@@ -16878,6 +16884,46 @@ const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$I, [["render", _sfc
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
+function setCursorAtEnd(input) {
+  input.setSelectionRange(input.value.length, input.value.length);
+}
+function useTextFieldSetup(props) {
+  const inputNode = useTemplateRef("input");
+  const textFieldTableMode = inject("textFieldTableMode", false);
+  const viewValue = ref("");
+  async function onOptionSelected(value) {
+    if (!inputNode.value) {
+      return;
+    }
+    viewValue.value = value;
+    await nextTick();
+    inputNode.value.focus();
+    setCursorAtEnd(inputNode.value);
+  }
+  const {
+    dropdownId,
+    dropdownIsOpen,
+    dropdownOptions,
+    activeOptionId,
+    activeOption,
+    toggleDropdown,
+    selectOption,
+    closeDropdown
+  } = useCombobox(inputNode, props.options, onOptionSelected);
+  return {
+    textFieldTableMode,
+    viewValue,
+    onOptionSelected,
+    dropdownId,
+    dropdownIsOpen,
+    dropdownOptions,
+    activeOptionId,
+    activeOption,
+    toggleDropdown,
+    selectOption,
+    closeDropdown
+  };
+}
 const _sfc_main$H = /* @__PURE__ */ defineComponent({
   name: "FTextField",
   components: {
@@ -16994,34 +17040,36 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
   },
   emits: ["blur", "change", "update", "update:modelValue"],
   setup(props) {
-    const inputNode = useTemplateRef("input");
-    const textFieldTableMode = inject("textFieldTableMode", false);
     const {
+      textFieldTableMode,
+      viewValue,
+      onOptionSelected,
       dropdownId,
       dropdownIsOpen,
       dropdownOptions,
       activeOptionId,
       activeOption,
-      selectedValue,
       toggleDropdown,
+      selectOption,
       closeDropdown
-    } = useCombobox(inputNode, props.options);
+    } = useTextFieldSetup(props);
     return {
       textFieldTableMode,
+      viewValue,
+      onOptionSelected,
       dropdownId,
       dropdownIsOpen,
       dropdownOptions,
       activeOptionId,
       activeOption,
-      selectedValue,
       toggleDropdown,
+      selectOption,
       closeDropdown
     };
   },
   data() {
     return {
       showErrorPopup: false,
-      viewValue: "",
       lastModelValue: "",
       validationMessage: "",
       validityMode: "INITIAL",
@@ -17078,17 +17126,6 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
         this.setViewValueToFormattedValueOrFallbackToValue();
         this.lastModelValue = this.modelValue;
       }
-    },
-    selectedValue: {
-      immediate: false,
-      handler: async function(newValue) {
-        this.viewValue = newValue;
-        this.$emit("update:modelValue", newValue);
-        await this.$nextTick();
-        const input = this.$refs.input;
-        input == null ? void 0 : input.select();
-        input == null ? void 0 : input.focus();
-      }
     }
   },
   beforeUpdate() {
@@ -17096,7 +17133,7 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
   },
   methods: {
     onDropdownSelect(value) {
-      this.selectedValue = value;
+      this.selectOption(value);
     },
     onDropdownClose() {
       this.closeDropdown();

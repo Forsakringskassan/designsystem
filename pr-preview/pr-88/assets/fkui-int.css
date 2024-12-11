@@ -5131,9 +5131,12 @@ input[type=search]:focus,
 }
 
 .popup .popup__wrapper.combobox__listbox {
-  background-color: var(--f-background-popupmenu, #ffffff);
-  border: 1px solid var(--f-border-color-popupmenu, #ddddde);
+  background-color: var(--fkds-color-background-primary, #ffffff);
+  border: var(--f-border-width-medium, 1px) solid var(--fkds-color-border-primary, #8d8e91);
   border-radius: var(--f-border-radius-medium, 4px);
+  box-shadow: var(--f-box-modal-shadow, 0 0 20px rgba(0, 0, 0, 0.3));
+  margin-top: 4px;
+  padding: 2px;
 }
 
 .combobox__listbox__list {
@@ -5142,26 +5145,26 @@ input[type=search]:focus,
 }
 
 .combobox__listbox__option {
+  color: var(--fkds-color-text-primary, #1b1e23);
   cursor: pointer;
   list-style-type: none;
-  white-space: nowrap;
-  color: var(--f-text-color-popupmenu, #1b1e23);
   padding: 0.75rem;
-  display: block;
+  white-space: nowrap;
 }
 .combobox__listbox__option:hover {
-  background-color: var(--f-background-popupmenu-vertical-hover, #d9d9d9);
-  color: var(--f-text-color-popupmenu-hover, #1b1e23);
+  background-color: var(--fkds-color-action-background-select-hover, #dbe9e2);
+  color: var(--fkds-color-text-primary, #1b1e23);
 }
 .combobox__listbox__option--highlight {
-  background-color: var(--f-background-popupmenu-vertical-highlight, #dbe9e2);
+  background-color: var(--fkds-color-action-background-select-default, #35805b);
+  color: var(--fkds-color-text-inverted, #ffffff);
   font-weight: var(--f-font-weight-medium, 700);
 }
 
 .combobox__button {
   background: inherit;
   border: none;
-  color: var(--f-icon-color-primary, #116a3e);
+  color: var(--fkds-icon-color-action-content-primary-default, #4a52b6);
   margin: 0;
   padding: 0;
 }
