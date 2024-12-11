@@ -24,11 +24,10 @@ const TestComponent = defineComponent({
     },
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("density", () => {
+describe("density", () => {
     const DensityComponent = defineComponent({
         template: /* HTML */ `
-            <density-wrapper>
+            <density-wrapper id="wrapper">
             <test-component expanded></test-component
             </density-wrapper>
         `,
@@ -41,12 +40,12 @@ describe.skip("density", () => {
     it(`should be densified`, () => {
         cy.viewport(densityWrapperWidth, densityWrapperHeight);
         cy.mount(DensityComponent);
+        cy.get("#wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-it.skip("should match visual regression when collapsed", () => {
+it("should match visual regression when collapsed", () => {
     cy.mount({
         template: /* HTML */ `
             <div id="wrapper" style="padding: 1rem">
@@ -59,11 +58,11 @@ it.skip("should match visual regression when collapsed", () => {
             TestComponent,
         },
     });
+    cy.get("#wrapper").should("be.visible");
     cy.get("#wrapper").toMatchScreenshot();
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-it.skip("should match visual regression when expanded", () => {
+it("should match visual regression when expanded", () => {
     cy.mount({
         template: /* HTML */ `
             <div id="wrapper" style="padding: 1rem">
@@ -76,5 +75,6 @@ it.skip("should match visual regression when expanded", () => {
             TestComponent,
         },
     });
+    cy.get("#wrapper").should("be.visible");
     cy.get("#wrapper").toMatchScreenshot();
 });

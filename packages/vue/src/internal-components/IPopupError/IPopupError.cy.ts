@@ -69,8 +69,7 @@ describe("PopupError", () => {
         cy.viewport(400, 400);
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible below the input field", () => {
+    it("should be visible below the input field", () => {
         const component = createComponent({
             caption: "PopupError below the input field",
             styleDiv: "height: 380px; width: 380px;",
@@ -80,11 +79,11 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible to the rigth of the input field", () => {
+    it("should be visible to the rigth of the input field", () => {
         const component = createComponent({
             caption: "PopupError to the rigth of the input field",
             styleDiv: "height: 100px; width: 380px;",
@@ -94,11 +93,11 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible to the left of the input field", () => {
+    it("should be visible to the left of the input field", () => {
         const component = createComponent({
             caption: "PopupError to the left of the input field",
             styleDiv: "height: 100px; width: 380px;",
@@ -108,11 +107,11 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be visible above the input field", () => {
+    it("should be visible above the input field", () => {
         const component = createComponent({
             caption: "PopupError above the input field",
             styleDiv: "height: 280px; width: 380px; padding-top: 200px;",
@@ -122,11 +121,11 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should be inline, below the input field", () => {
+    it("should be inline, below the input field", () => {
         const component = createComponent({
             caption: "PopupError inline below the input field",
             styleDiv: "height: 100px;",
@@ -136,6 +135,7 @@ describe("PopupError", () => {
         });
         cy.mount(component);
         triggerPopupError(textfield);
+        cy.get(".popup-error__wrapper").should("be.visible");
         cy.toMatchScreenshot();
     });
 
