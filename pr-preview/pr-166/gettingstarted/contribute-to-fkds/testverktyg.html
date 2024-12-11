@@ -667,10 +667,19 @@ Flera verktyg använder färdiga mallar för sin konfiguration, se respektive ko
                 <p>Ej migrerat till Eslint v9 och flat config!</p>
 
             </div>
-        <p>Använder [<code>@forsakringskassan/eslint-config</code>] och tillhörande paket.
-Konfiguration hittas i <code>.eslintrc.cjs</code>.</p>
+        <p>Använder <a href="https://github.com/Forsakringskassan/eslint-config"><code>@forsakringskassan/eslint-config</code></a> och tillhörande paket.
+Konfiguration hittas i <code>.eslintrc.cjs</code> samt <code>.eslintignore</code>.</p>
 <p>Utöver standardkonfigurationen så är exempel och testfall konfigurerade med en snällare konfiguration.</p>
-<h3 id="prettier"><a class="header-anchor" href="#prettier">Prettier</a></h3><h3 id="html_validate"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><h3 id="stylelint"><a class="header-anchor" href="#stylelint">Stylelint</a></h3>
+
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">WARNING</p>
+                <p>I undantagsfall finns <code>.eslintrc.*</code> filer i underkataloger.
+Det är kodskuld som bör migreras.</p>
+
+            </div>
+        <h3 id="prettier"><a class="header-anchor" href="#prettier">Prettier</a></h3><p>Använder <a href="https://github.com/Forsakringskassan/prettier-config"><code>@forsakringskassan/prettier-config</code></a>.
+Konfiguration hittas i <code>package.json</code> samt <code>.prettierignore</code>.</p>
+<h3 id="html_validate"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><h3 id="stylelint"><a class="header-anchor" href="#stylelint">Stylelint</a></h3>
 
                     </div>
                 </main>
@@ -691,9 +700,9 @@ Konfiguration hittas i <code>.eslintrc.cjs</code>.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/toolchain-testing (<a href="https://github.com/Forsakringskassan/designsystem/commits/9b6bb3e1aaa1369b735d5d0aecd679930a5a20d6">9b6bb3e</a>)<br />
+    docs/toolchain-testing (<a href="https://github.com/Forsakringskassan/designsystem/commits/2dd74098397d5343424425fcfa4e4ba0baa8a1d2">2dd7409</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/166">PR 166</a><br />
-        2024-12-11 09:30
+        2024-12-11 09:37
 </div>
 <div class="toolbar__item">
     <form id="version">
