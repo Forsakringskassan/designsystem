@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="sv" class="layout--example">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Tidsinmatning - FKUI Labs</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../assets/docs-2f6e22.css"
+            crossorigin
+            integrity="sha384-rlYOay9xuGsc93D/ez2fEBjY9f87wDnYHcsLQy9kZncIj8SvwFrbU2W/ggpIQlRZ"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-exp-01574b.css"
+            crossorigin
+            integrity="sha384-ZYZPUoZVFmNcVEFQ3SUBEVzkdSeFFlqDFM/E0FLcskZqwdm4kvrRMi8St2HDYqVR"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-int-7b14e7.css"
+            crossorigin
+            integrity="sha384-AM83stK/uD5u9atAsnjKLtczI4PczwpEKr29VsOCuc0t826u4vBRjC2VzqmMCEZ3"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../assets/bootstrap-0df2b2.js"
+            crossorigin
+            integrity="sha384-/CsPb6xxx2R6SuFD6YW8AvT0hMxEGGkO4Mh6yG04C8ck+/qIKXqKA3EALt2ADT17"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        <script src="../assets/vendor-vue-ce6943.js"></script>
+        <script src="../assets/vendor-fkui-logic-3e3c9a.js"></script>
+        <script src="../assets/vendor-fkui-date-effe99.js"></script>
+        <script src="../assets/vendor-fkui-vue-c60d86.js"></script>
+
+        <!-- prettier-ignore --><!-- prettier-ignore -->
+        <script
+            src="../assets/main-d3a803.js"
+            crossorigin
+            integrity="sha384-m3/vMo6QtzpQvD6zZ8W18+/YLS7THOHEaha4syDznIi/F1MAboSksPxrvy3OHfxV"
+            
+        ></script>
+
+        <main>
+        <div id="XTimeTextFieldExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./XTimeTextFieldExample-df252e.js"></script>
+    </main>
+    </body>
+</html>
