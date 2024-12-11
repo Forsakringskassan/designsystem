@@ -15952,6 +15952,11 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
         removeListeners();
       }
     });
+    watch(() => __props.numOfItems, (oldValue, newValue) => {
+      if (oldValue !== newValue && __props.isOpen) {
+        calculatePosition();
+      }
+    });
     onUnmounted(removeListeners);
     function onDocumentClickHandler() {
       emit2("close");

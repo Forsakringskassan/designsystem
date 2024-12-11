@@ -7581,6 +7581,11 @@
           removeListeners();
         }
       });
+      (0, import_vue.watch)(() => __props.numOfItems, (oldValue, newValue) => {
+        if (oldValue !== newValue && __props.isOpen) {
+          calculatePosition();
+        }
+      });
       (0, import_vue.onUnmounted)(removeListeners);
       function onDocumentClickHandler() {
         emit("close");
