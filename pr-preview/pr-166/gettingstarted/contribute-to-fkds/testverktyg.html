@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-99162c.json"
+            href="../../search-data-355599.json"
             as="fetch"
             crossorigin
-            integrity="sha384-tz0WOXqFy8o0uU+1Gna2Ik1NrMkaEZeLedFYhSVdcPuP4dPpaC8RyfM76NtLIAn1"
+            integrity="sha384-zJ5iUwqnDylZACRzMqreuznnzaIFjUixUWkty9a9t8vRANzeaUO61g+VlON8KM9g"
             id="search-data"
         />
     </head>
@@ -650,7 +650,7 @@ npm start
 </code></pre>
                 </div>
             <p>E2E-tester ska endast användas som en sista utväg.</p>
-<p>För konfiguration se <a href="#komponenttester-cypress">komponenttester</a>.</p>
+<p>För konfiguration se <a href="#komponenttester_cypress">komponenttester</a>.</p>
 <h2 id="statisk_kodanalys_och_lintning"><a class="header-anchor" href="#statisk_kodanalys_och_lintning">Statisk kodanalys och lintning</a></h2><p>FKUI använder flera verktyg för statisk kodanalys och lintning:</p>
 <ul>
 <li>Prettier för att formatera kod.</li>
@@ -661,9 +661,16 @@ npm start
 <p>Samtliga verktyg körs och är konfigurerade från root men i undantagsfall konfigureras verktygen om i respektive paket.
 Flera verktyg använder färdiga mallar för sin konfiguration, se respektive konfigurationsfil och dokumentation för detaljer.</p>
 <p>Vid commit anropas både Prettier och ESLint via husky (konfigurerat i <code>.husky/pre-commit</code>). Läs mer om git hooks.</p>
-<h3 id="eslint"><a class="header-anchor" href="#eslint">Eslint</a></h3><p>Använder <code>@forsakringskassan/eslint-config</code>.</p>
-<p>Läs mer om dokumentationsexempel.</p>
+<h3 id="eslint"><a class="header-anchor" href="#eslint">Eslint</a></h3>
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">WARNING</p>
+                <p>Ej migrerat till Eslint v9 och flat config!</p>
 
+            </div>
+        <p>Använder [<code>@forsakringskassan/eslint-config</code>] och tillhörande paket.
+Konfiguration hittas i <code>.eslintrc.cjs</code>.</p>
+<p>Utöver standardkonfigurationen så är exempel och testfall konfigurerade med en snällare konfiguration.</p>
+<h3 id="prettier"><a class="header-anchor" href="#prettier">Prettier</a></h3><h3 id="html_validate"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><h3 id="stylelint"><a class="header-anchor" href="#stylelint">Stylelint</a></h3>
 
                     </div>
                 </main>
@@ -684,9 +691,9 @@ Flera verktyg använder färdiga mallar för sin konfiguration, se respektive ko
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/toolchain-testing (<a href="https://github.com/Forsakringskassan/designsystem/commits/5c56069e704735db34b6a022af0289b01ec0de31">5c56069</a>)<br />
+    docs/toolchain-testing (<a href="https://github.com/Forsakringskassan/designsystem/commits/9b6bb3e1aaa1369b735d5d0aecd679930a5a20d6">9b6bb3e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/166">PR 166</a><br />
-        2024-12-11 08:45
+        2024-12-11 09:30
 </div>
 <div class="toolbar__item">
     <form id="version">
