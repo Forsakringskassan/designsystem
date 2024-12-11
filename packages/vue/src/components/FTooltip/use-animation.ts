@@ -34,15 +34,20 @@ export function useAnimation(options: {
             return;
         }
 
-        const prefersReducedMotion = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-        );
+        if ("matchMedia" in window) {
+            const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+            );
 
-        reducedMotion.value = prefersReducedMotion.matches;
+            reducedMotion.value = prefersReducedMotion.matches;
 
-        prefersReducedMotion.addEventListener("change", (event) => {
-            reducedMotion.value = event.matches;
-        });
+            prefersReducedMotion.addEventListener("change", (event) => {
+                reducedMotion.value = event.matches;
+            });
+        } else {
+            /* fallback when matchMedia is not available, typically in jsdom under testing or similar environment */
+            reducedMotion.value = true;
+        }
 
         initialized = true;
     });
