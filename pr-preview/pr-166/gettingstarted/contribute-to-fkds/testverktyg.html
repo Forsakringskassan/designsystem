@@ -571,8 +571,8 @@ Förrutom i undantagsfall testar vi inte interaktion med komponenter med Jest om
 <p>Enhetstester placeras i samma katalog som filen som ska testas och använder <code>${filename}.spec.ts</code> som filnamn.</p>
 <p>För Jest finns två färdiga presets:</p>
 <ul>
-<li><code>@forsakringskassan/jest-config</code>: för paket som är skriva i ren typescript, ej ramverksspecifikt.</li>
-<li><code>@forsakringskassan/jest-config-vue</code>: för paket med Vue-komponenter.</li>
+<li><a href="https://github.com/Forsakringskassan/jest-config/tree/main/packages/jest-config"><code>@forsakringskassan/jest-config</code></a>: för paket som är skriva i ren typescript, ej ramverksspecifikt.</li>
+<li><a href="https://github.com/Forsakringskassan/jest-config/tree/main/packages/jest-config-vue"><code>@forsakringskassan/jest-config-vue</code></a>: för paket med Vue-komponenter.</li>
 </ul>
 <p>Båda konfigurationer genererar både coverage och test resultat i maskinläsbart format i <code>coverage</code> samt <code>test-results</code> katalogerna.
 CI-miljö läser in samtliga filer.</p>
@@ -596,7 +596,7 @@ CI-miljö läser in filen.</p>
 <p><code>tsconfig.json</code> i respektive paket med Cypress komponenttester pekar ut en separat <code>tsconfig.cypress.json</code> med specifik typescript konfiguration för Cypress:</p>
 
                 <div
-                    id="example-111d5e"
+                    id="example-3f39b1"
                     class="code-preview code-preview--default"
                     
                     
@@ -624,7 +624,7 @@ E2E-tester kör mot den genererade dokumentationen och kräver att den byggts oc
 <p>För att bygga och starta dokumentation:</p>
 
                 <div
-                    id="example-e011df"
+                    id="example-b17142"
                     class="code-preview code-preview--default"
                     
                     
@@ -639,7 +639,7 @@ npm start
             <p>Därefter i en annan terminal kan E2E-tester startas:</p>
 
                 <div
-                    id="example-e47f6b"
+                    id="example-6d51d8"
                     class="code-preview code-preview--default"
                     
                     
@@ -661,13 +661,14 @@ npm start
 <p>Samtliga verktyg körs och är konfigurerade från root men i undantagsfall konfigureras verktygen om i respektive paket.
 Flera verktyg använder färdiga mallar för sin konfiguration, se respektive konfigurationsfil och dokumentation för detaljer.</p>
 <p>Vid commit anropas både Prettier och ESLint via husky (konfigurerat i <code>.husky/pre-commit</code>). Läs mer om git hooks.</p>
-<h3 id="eslint"><a class="header-anchor" href="#eslint">Eslint</a></h3>
+<h3 id="eslint"><a class="header-anchor" href="#eslint">ESLint</a></h3>
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">WARNING</p>
                 <p>Ej migrerat till Eslint v9 och flat config!</p>
 
             </div>
-        <p>Använder <a href="https://github.com/Forsakringskassan/eslint-config"><code>@forsakringskassan/eslint-config</code></a> och tillhörande paket.
+        <p>ESLint körs på alla källkodsfiler i repository.</p>
+<p>Använder <a href="https://github.com/Forsakringskassan/eslint-config"><code>@forsakringskassan/eslint-config</code></a> och tillhörande paket.
 Konfiguration hittas i <code>.eslintrc.cjs</code> samt <code>.eslintignore</code>.</p>
 <p>Utöver standardkonfigurationen så är exempel och testfall konfigurerade med en snällare konfiguration.</p>
 
@@ -677,9 +678,39 @@ Konfiguration hittas i <code>.eslintrc.cjs</code> samt <code>.eslintignore</code
 Det är kodskuld som bör migreras.</p>
 
             </div>
-        <h3 id="prettier"><a class="header-anchor" href="#prettier">Prettier</a></h3><p>Använder <a href="https://github.com/Forsakringskassan/prettier-config"><code>@forsakringskassan/prettier-config</code></a>.
+        <h3 id="prettier"><a class="header-anchor" href="#prettier">Prettier</a></h3><p>Prettier körs på alla filer i repository.</p>
+<p>Använder <a href="https://github.com/Forsakringskassan/prettier-config"><code>@forsakringskassan/prettier-config</code></a>.
 Konfiguration hittas i <code>package.json</code> samt <code>.prettierignore</code>.</p>
-<h3 id="html_validate"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><h3 id="stylelint"><a class="header-anchor" href="#stylelint">Stylelint</a></h3>
+<h3 id="html_validate"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><p>Körs på alla källkodsfiler och exempel i repository, vid Cypress komponenttester och E2E samt på den genererade dokumentationen i <code>public</code> katalogen.</p>
+<p>Konfigurerat i:</p>
+<ul>
+<li><code>.htmlvalidate.json</code> för källkodsfiler och exempel.</li>
+<li><code>.htmlvalidate-public.js</code> för genererad dokumentation.</li>
+<li><code>cypress.config.ts</code> för Cypress.</li>
+</ul>
+<p>Använder följande plugins:</p>
+<ul>
+<li><a href="https://gitlab.com/html-validate/html-validate-vue"><code>html-validate-vue</code></a> för <code>*.vue</code>.</li>
+<li><a href="https://github.com/OlofFredriksson/html-validate-markdown"><code>html-validate-markdown</code></a> för <code>*.md</code>.</li>
+<li><code>@fkui/vue/htmlvalidate</code> för FKUI specifika regler och konfigurationer.</li>
+</ul>
+<p>Utöver konfiguration så levererar <code>@fkui/vue</code> en rekommenderad html-validate plugin.</p>
+
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">WARNING</p>
+                <p>Teknisk skuld: html-validate konfiguration från <code>@fkui/vue/htmlvalidate</code> är odokumenterad!</p>
+
+            </div>
+        <h3 id="stylelint"><a class="header-anchor" href="#stylelint">Stylelint</a></h3><p>Använder <a href="https://github.com/Forsakringskassan/stylelint-config"><code>@forsakringskassan/stylelint-config</code></a>.
+Konfiguration hittas i <code>package.json</code>.</p>
+<p>Utöver standardkonfiguration så levererar <code>@fkui/design</code> en rekommenderad stylelint-konfiguration.</p>
+
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">WARNING</p>
+                <p>Teknisk skuld: stylelint konfiguration från <code>@fkui/design/stylelint</code> är odokumenterad!</p>
+
+            </div>
+        
 
                     </div>
                 </main>
@@ -700,9 +731,9 @@ Konfiguration hittas i <code>package.json</code> samt <code>.prettierignore</cod
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/toolchain-testing (<a href="https://github.com/Forsakringskassan/designsystem/commits/2dd74098397d5343424425fcfa4e4ba0baa8a1d2">2dd7409</a>)<br />
+    docs/toolchain-testing (<a href="https://github.com/Forsakringskassan/designsystem/commits/efe4daacc1a356ff2278a659ccb4ec22470ffa24">efe4daa</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/166">PR 166</a><br />
-        2024-12-11 09:37
+        2024-12-11 10:02
 </div>
 <div class="toolbar__item">
     <form id="version">
