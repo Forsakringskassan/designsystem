@@ -1,4 +1,6 @@
-$asset-path: "@fkui/design";
+@use "@fkui/design/src/core/config-variables" with (
+    $asset-path: "@fkui/design"
+);
 
-@import "@fkui/design/src/fonts";
-@import "@fkui/design/src/fkui";
+@use "@fkui/design/src/fonts";
+@use "@fkui/design/src/fkui";

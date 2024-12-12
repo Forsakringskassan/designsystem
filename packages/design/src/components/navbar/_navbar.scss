@@ -2,8 +2,8 @@
 @use "../../core/config-variables" as config;
 @use "../../core/mixins/breakpoints" as bp;
 
-@import "navbar-header";
-@import "navbar-nav";
+@use "navbar-header";
+@use "navbar-nav";
 
 $NAVBAR_SELECTOR: ".navbar" !default;
 
