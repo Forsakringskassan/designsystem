@@ -93,7 +93,6 @@ export default defineComponent({
     components: { FModal, FValidationForm },
     mixins: [TranslationMixin],
     inheritAttrs: true,
-
     props: {
         /**
          * Enable fullscreen mode in mobile.
@@ -204,7 +203,27 @@ export default defineComponent({
             ],
         },
     },
-    emits: ["cancel", "close", "submit"],
+    emits: [
+        /**
+         * Emitted when the escape key or cancel button is pressed.
+         * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+         */
+        "cancel",
+        /**
+         * Emitted when modal is closed. Event payload contain close reason.
+         * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+         *
+         * @type { { reason: "close" | "submit" } }
+         */
+        "close",
+        /**
+         * Emitted when the submit button is pressed.
+         * The event payload is the data that has been submitted.
+         *
+         * @type { Record<string, any> }
+         */
+        "submit",
+    ],
     data() {
         return {};
     },
@@ -219,23 +238,11 @@ export default defineComponent({
     methods: {
         onClose() {
             ValidationService.resetState(this.$el);
-            /**
-             * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-             * In most use cases the isOpen prop should be set to false when this event is triggered.
-             */
             this.$emit("cancel");
-            /**
-             * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-             * In most use cases the isOpen prop should be set to false when this event is triggered.
-             */
             this.$emit("close", { reason: "close" });
         },
         async onSubmit() {
             ValidationService.resetState(this.$el);
-            /**
-             * Event that is dispatched when the submit button is is clicked.
-             * The event payload is the data that has been submitted.
-             */
             this.$emit("submit", { data: this.value });
             this.$emit("close", { reason: "submit", data: this.value });
         },

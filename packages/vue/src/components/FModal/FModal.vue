@@ -120,7 +120,13 @@ export default defineComponent({
             },
         },
     },
-    emits: ["close"],
+    emits: [
+        /**
+         * Emitted when the escape key or close button is pressed.
+         * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+         */
+        "close",
+    ],
     data(): FModalData {
         return {
             nonModalFocusableElements: [],
@@ -162,10 +168,6 @@ export default defineComponent({
     },
     methods: {
         onClose(): void {
-            /**
-             * Event that is dispatched when the escape button is pressed.
-             * In most use cases the `isOpen` prop should be set to false when this event is triggered.
-             */
             this.$emit("close");
         },
         openModal(): void {

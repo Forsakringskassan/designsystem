@@ -1,5 +1,10 @@
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example
+        :components="components"
+        :template="template"
+        :livedata="livedata"
+        :livemethods="livemethods"
+    >
         <f-select-field v-model="modalType">
             <template #label> Typ </template>
             <option value="">Standard</option>
@@ -23,7 +28,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { FCheckboxField, FModal, FSelectField } from "@fkui/vue";
+import { FCheckboxField, FModal, FSelectField, openModal } from "@fkui/vue";
+import ExampleModal from "./ExampleModal.vue";
 
 export default defineComponent({
     name: "FModalLiveExample",
@@ -48,6 +54,18 @@ export default defineComponent({
                 isOpen: false,
             };
         },
+        livemethods(): object {
+            return {
+                async onModalOpen(): Promise<void> {
+                    await openModal(this, ExampleModal, {
+                        props: {
+                            heading: "Modal title",
+                            content: "Text to display in modal",
+                        },
+                    });
+                },
+            };
+        },
         type(): string {
             return this.modalType ? `type="${this.modalType}"` : "";
         },
@@ -59,7 +77,7 @@ export default defineComponent({
         },
         button(): string {
             return /* HTML */ `
-                <button type="button" class="button button--secondary" @click="isOpen = !isOpen">
+                <button type="button" class="button button--secondary" @click="onModalOpen">
                     Öppna modal
                 </button>
             `;
@@ -79,9 +97,8 @@ export default defineComponent({
                 </template>
             `;
         },
-        template(): string {
+        modal(): string {
             return /* HTML */ `
-                ${this.button}
                 <f-modal
                     :is-open="isOpen"
                     ${this.type}
@@ -94,6 +111,9 @@ export default defineComponent({
                     ${this.footer}
                 </f-modal>
             `;
+        },
+        template(): string {
+            return /* HTML */ ` ${this.button} `;
         },
     },
 });

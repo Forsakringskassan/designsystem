@@ -29,13 +29,9 @@ För interna system följer vi Windows standard, det primära alternativet place
 
 Du styr den inbördes ordning som knapparna presenteras i med {@link config#referens konfiguration} i applikationen där modalen används.
 
-## Användning med template
+## Användning
 
-```import
-FConfirmModalExample.vue
-```
-
-## Användning med API
+todo...
 
 ```import
 FConfirmModalApiExample.vue

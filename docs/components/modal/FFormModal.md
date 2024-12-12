@@ -132,14 +132,6 @@ const result = await formModal<Person>(PersonFormModal, {
 FFormModalApiExample.vue
 ```
 
-## Öppna modal med template
-
-Komponenten kan också användas direkt i `<template>` men vi rekommenderar inte denna lösning::
-
-```import
-FFormModalExample.vue
-```
-
 ## Formulärsmodal med flera knappar
 
 Komponenten har en prop `buttons` som styr vilka knappar som finns i modalens sidfot.
