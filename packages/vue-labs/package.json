@@ -81,7 +81,7 @@
     "@fkui/logic": "^5.36.0",
     "@fkui/vue": "^5.36.0",
     "html-validate": ">= 7.9.0",
-    "vue": "^3"
+    "vue": "^3.5.0"
   },
   "peerDependenciesMeta": {
     "html-validate": {
