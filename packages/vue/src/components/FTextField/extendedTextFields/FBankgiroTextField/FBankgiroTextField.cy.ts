@@ -48,7 +48,7 @@ describe("FBankgiroTextField", () => {
         cy.get("input").blur();
         cy.get(".label__message--error").should(
             "contain.text",
-            "Skriv bankgironumret med sju eller åtta siffror och bindestreck.",
+            "Fyll i bankgironumret med sju eller åtta siffror och bindestreck.",
         );
     });
 });

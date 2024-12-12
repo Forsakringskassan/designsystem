@@ -56,7 +56,7 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 
 - bankgiro `bankgiro`: Fyll i bankgironumret.
 - organisationsnummer `organisationsnummer`: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
-- personnummer-format `personnummerFormat`: Skriv personnumret med 10 siffror.
+- personnummer-format `personnummerFormat`: Fyll i personnumret med 10 siffror.
 - plusgiro `plusgiro`: Fyll i plusgironumret.
 - postnummer `postalCode`: Fyll i ett postnummer.
 
@@ -117,7 +117,7 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - kontonummer `bankAccountNumber`: Fyll i ett kontonummer.
 - nummer `number`: Fyll i en siffra.
 - organisationsnummer `organisationsnummer`: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
-- personnummer-format `personnummerFormat`: Skriv personnumret med 10 siffror.
+- personnummer-format `personnummerFormat`: Fyll i personnumret med 10 siffror.
 - plusgiro `plusgiro`: Fyll i plusgironumret.
 - postnummer `postalCode`: Fyll i ett postnummer.
 - procent `percent`: Fyll i en siffra.
@@ -168,7 +168,7 @@ Skriv så här i kod:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:
 
-- Ange ett av alternativen i listan.
+- Välj ett av alternativen i listan.
 
 ## Datum
 
@@ -198,7 +198,7 @@ Skriv så här i kod:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har skrivit ett felaktigt datum.
+Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett felaktigt datum.
 
 Felmeddelandet när validatorn för datum `date` är kombinerad med validatorn för obligatoriskt fält `required` är:<br> Välj ett datum.
 
@@ -223,7 +223,7 @@ Skriv så här i kod:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Skriv datumet med åtta siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i datumet med åtta siffror.
 
 ### Inte valbara datum `invalidDates`
 
@@ -646,12 +646,12 @@ Skriv så här i kod när användaren ska fylla i personnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Skriv personnumret med 10 siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i personnumret med 10 siffror.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
-- obligatorisk `required`: Skriv personnumret med 10 siffror.
-- maxlängd `maxLength`: Skriv personnumret med 10 siffror.
+- obligatorisk `required`: Fyll i personnumret med 10 siffror.
+- maxlängd `maxLength`: Fyll i personnumret med 10 siffror.
 
 ### Personnummer - checksumma `personnummerLuhn`
 
@@ -790,7 +790,7 @@ Skriv så här i kod när användaren ska fylla i bankgiro:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Skriv bankgironumret med siffror och bindestreck.
+Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i bankgironumret med sju eller åtta siffror och bindestreck.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -877,7 +877,7 @@ Skriv så här i kod när användaren ska fylla i plusgiro:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Skriv plusgironumret med siffror och bindestreck.
+Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i plusgironumret med siffror och bindestreck.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 

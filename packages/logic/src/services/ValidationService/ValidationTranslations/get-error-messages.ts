@@ -14,7 +14,7 @@ export function getErrorMessages(): Record<string, string> {
 
         .map(
             "bankgiro",
-            "Skriv bankgironumret med sju eller åtta siffror och bindestreck.",
+            "Fyll i bankgironumret med sju eller åtta siffror och bindestreck.",
         )
         .mapCombined("required", "bankgiro", "Fyll i bankgironumret.")
         .mapCombined(
@@ -32,10 +32,10 @@ export function getErrorMessages(): Record<string, string> {
         .map("currency", "Fyll i ett belopp.")
         .mapCombined("required", "currency", "Fyll i ett belopp.")
 
-        .map("date", "Du har skrivit ett felaktigt datum.")
+        .map("date", "Du har fyllt i ett felaktigt datum.")
         .mapCombined("required", "date", "Välj ett datum.")
 
-        .map("dateFormat", "Skriv datumet med åtta siffror.")
+        .map("dateFormat", "Fyll i datumet med åtta siffror.")
 
         .map("decimal", "Fyll i ett värde med rätt antal decimaler.")
 
@@ -89,16 +89,16 @@ export function getErrorMessages(): Record<string, string> {
         .mapCombined("minValue", "percent", "Fyll i en högre siffra.")
         .mapCombined("maxValue", "percent", "Fyll i en lägre siffra.")
 
-        .map("personnummerFormat", "Skriv personnumret med 10 siffror.")
+        .map("personnummerFormat", "Fyll i personnumret med 10 siffror.")
         .mapCombined(
             "required",
             "personnummerFormat",
-            "Skriv personnumret med 10 siffror.",
+            "Fyll i personnumret med 10 siffror.",
         )
         .mapCombined(
             "maxLength",
             "personnummerFormat",
-            "Skriv personnumret med 10 siffror.",
+            "Fyll i personnumret med 10 siffror.",
         )
 
         .map("personnummerLuhn", "Kolla att personnumret stämmer.")
@@ -119,7 +119,7 @@ export function getErrorMessages(): Record<string, string> {
             "Kolla att telefonnumret stämmer.",
         )
 
-        .map("plusgiro", "Skriv plusgironumret med siffror och bindestreck.")
+        .map("plusgiro", "Fyll i plusgironumret med siffror och bindestreck.")
         .mapCombined("required", "plusgiro", "Fyll i plusgironumret.")
         .mapCombined(
             "maxLength",
@@ -143,7 +143,7 @@ export function getErrorMessages(): Record<string, string> {
             'Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och ".',
         )
 
-        .map("allowList", "Ange ett av alternativen i listan.")
+        .map("allowList", "Välj ett av alternativen i listan.")
 
         .build();
 }
