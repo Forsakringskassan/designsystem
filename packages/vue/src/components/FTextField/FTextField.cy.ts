@@ -207,7 +207,7 @@ describe("FTextField legacy personnummer validation compability", () => {
         textField.input().type("123456").blur();
         textField.label
             .errorMessage()
-            .should("contain.text", "Skriv personnumret med 10 siffror.");
+            .should("contain.text", "Fyll i personnumret med 10 siffror.");
     });
 
     it("should validate and format ok", () => {
