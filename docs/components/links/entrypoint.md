@@ -11,14 +11,8 @@ Startpunkt används för att framhäva en länk extra tydligt, som till exempel 
 
 Startpunkten tar upp 2/3 av tillgänglig yta i desktopläge och 100% i mobilt läge.
 
-```html
-<!-- [html-validate-disable-block fkui/prefer-ficon -- html example does not use @fkui/vue]-->
-<a class="entrypoint" href="javascript:">
-    Ansök om hundbidrag<span class="sr-only"> Till e-tjänsten</span>
-    <svg focusable="false" class="icon entrypoint__icon">
-        <use xlink:href="#f-icon-arrow-right" />
-    </svg>
-</a>
+```import live-example
+EntrypointLiveExample.vue
 ```
 
 ## Copy
@@ -32,28 +26,3 @@ En startpunkt ska alltid ha en skärmläsartext som ska förtydliga att startpun
 ## Fullbredd
 
 Vill du styra bredden med hjälp av gridsystemet använd klassen `entrypoint--full-width`.
-
-```html
-<!-- [html-validate-disable-block fkui/prefer-ficon -- html example does not use @fkui/vue]-->
-<div class="col col--md-6 example-dotted">
-    <a class="entrypoint entrypoint--full-width" href="javascript:">
-        Ansök om hundbidrag<span class="sr-only"> Till e-tjänsten</span>
-        <svg focusable="false" class="icon entrypoint__icon">
-            <use xlink:href="#f-icon-arrow-right" />
-        </svg>
-    </a>
-</div>
-
-<div class="col col--md-6 example-dotted">
-    <a class="entrypoint entrypoint--full-width" href="javascript:">
-        Exempel med väldigt lång text som troligen kommer wrappa<span
-            class="sr-only"
-        >
-            Till e-tjänsten</span
-        >
-        <svg focusable="false" class="icon entrypoint__icon">
-            <use xlink:href="#f-icon-arrow-right" />
-        </svg>
-    </a>
-</div>
-```
