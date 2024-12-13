@@ -6509,7 +6509,7 @@ input[type=search]:focus,
   opacity: 1;
 }
 .select-field__select:disabled + .select-field__icon {
-  color: var(--fkds-color-content-disabled, #8d8e91);
+  color: var(--fkds-icon-color-content-disabled, #8d8e91);
 }
 .select-field__icon-wrapper {
   position: relative;

@@ -2,7 +2,8 @@ html {
   font-size: 16px;
 }
 
-.code-preview__preview {
+.code-preview__preview,
+.live-example__example {
   --f-backdrop-modal: rgba(0, 0, 0, 0.75);
   --f-color-backdrop: rgba(0, 0, 0, 0.75);
   --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -111,7 +112,7 @@ html {
   --fkds-color-feedback-border-positive: #35805b;
   --fkds-color-feedback-border-warning: #ffbe10;
   --fkds-color-border-primary: #8d8e91;
-  --fkds-color-content-disabled: #8d8e91;
+  --fkds-icon-color-content-disabled: #8d8e91;
   --fkds-icon-color-action-content-primary-default: #4a52b6;
   --fkds-color-action-content-primary-default: #4a52b6;
   --fkds-color-text-inverted: #ffffff;
