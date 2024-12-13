@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 5.42.0 (2024-12-13)
+
+### Features
+
+* **@fkui/css-variables, @fkui/design:** semantic tokens chip (refs SFKUI-6910) e95d89c
+* **@fkui/vue:** add `IPopupListbox` component (refs SFKUI-5885) acad3b8
+
+### Bug Fixes
+
+* **@fkui/logic, @fkui/vue:** error messages validators (fixes SFKUI-6942) fd327d2
+* **@fkui/vue:** fix tooltip in fieldset (refs SFKUI-6500) a0e20ae
+* **@fkui/vue:** handle when `matchMedia` is not available (refs SFKUI-6500) 45b86b4
+* **deps:** update dependency i18next to v24.0.5 a5c9e3b
+* **deps:** use more explicit versions in peerDendencies (refs SFKUI-6500) f16db22
+
 ## 5.41.0 (2024-12-04)
 
 
