@@ -316,7 +316,9 @@ export default defineComponent({
             }
         },
         updateActiveItemFromVModel(): void {
-            if (this.active && !itemEquals(this.active, this.activeItem, this.keyAttribute)) {
+            if (this.active === undefined) {
+                this.activeItem = undefined;
+            } else if (!itemEquals(this.active, this.activeItem, this.keyAttribute)) {
                 this.activeItem = this.active;
             }
         },
