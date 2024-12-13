@@ -15917,7 +15917,8 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
     },
     anchor: {},
     numOfItems: {},
-    itemHeight: {}
+    itemHeight: {},
+    activeElement: {}
   },
   emits: ["close"],
   setup(__props, {
@@ -15933,6 +15934,15 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
     });
     let guessedItemHeight = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
+    watchEffect(() => {
+      if (wrapper2.value && __props.activeElement !== void 0) {
+        const centerPosition = __props.activeElement.offsetTop - (wrapper2.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+        wrapper2.value.scrollTo({
+          top: centerPosition,
+          behavior: "instant"
+        });
+      }
+    });
     function addListeners() {
       document.addEventListener("click", onDocumentClickHandler);
       window.addEventListener("resize", debounce(onResize, 100));
@@ -16217,6 +16227,8 @@ function useCombobox(inputRef, options, onOptionSelected) {
             flag = true;
           }
           close();
+        } else {
+          openSelected();
         }
         break;
       case "Down":
@@ -16295,6 +16307,7 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
   }) {
     const emit2 = __emit;
     const listboxNode = useTemplateRef("listboxNode");
+    const activeElement = ref();
     function isOptionActive(item) {
       return item === __props.activeOption;
     }
@@ -16309,12 +16322,7 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
       if (__props.activeOption !== null) {
         await nextTick();
         const activeOptionNode = (_a = listboxNode.value) == null ? void 0 : _a.querySelector(`#${__props.activeOptionId}`);
-        if (activeOptionNode) {
-          activeOptionNode.scrollIntoView({
-            behavior: "instant",
-            block: "center"
-          });
-        }
+        activeElement.value = activeOptionNode !== null && activeOptionNode !== void 0 ? activeOptionNode : void 0;
       }
     });
     return (_ctx, _cache) => {
@@ -16322,6 +16330,7 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
         "is-open": _ctx.isOpen,
         anchor: _ctx.inputNode,
         "num-of-items": _ctx.options.length,
+        "active-element": activeElement.value,
         class: "combobox__listbox",
         onClose: onListboxClose
       }, {
@@ -16345,7 +16354,7 @@ const _sfc_main$M = /* @__PURE__ */ defineComponent({
           }, toDisplayString(item), 11, _hoisted_3$n);
         }), 128))], 8, _hoisted_2$s)]),
         _: 1
-      }, 8, ["is-open", "anchor", "num-of-items"])]);
+      }, 8, ["is-open", "anchor", "num-of-items", "active-element"])]);
     };
   }
 });
@@ -16388,11 +16397,15 @@ function useAnimation(options) {
     if (initialized) {
       return;
     }
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    reducedMotion.value = prefersReducedMotion.matches;
-    prefersReducedMotion.addEventListener("change", (event) => {
-      reducedMotion.value = event.matches;
-    });
+    if ("matchMedia" in window) {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      reducedMotion.value = prefersReducedMotion.matches;
+      prefersReducedMotion.addEventListener("change", (event) => {
+        reducedMotion.value = event.matches;
+      });
+    } else {
+      reducedMotion.value = true;
+    }
     initialized = true;
   });
   watchEffect(() => {

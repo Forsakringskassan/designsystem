@@ -1083,9 +1083,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-ed3ca9.js"
+                    src="../../assets/vendor-fkui-vue-91b51e.js"
                     crossorigin
-                    integrity="sha384-I4mPygUfUe9iQ5Oq6JyKUrGSHrfsi2Bv90yORyZyLDSm4Wl6tdF269QuOyvAJZE6"
+                    integrity="sha384-dDZJI6BNdxfI8J48TCXGNqNMwmLpHqTflGTY0N9bXtF2FF5AwqhiE45xlO+cGsVX"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-187830.js"
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/9ebe2767b19321c898e0899f614dd5f4893aaa5e/packages/design/src/components/entrypoint/_entrypoint.scss">entrypoint</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/b4dde5c3c6497411330a1385453faaf8af90b469/packages/design/src/components/entrypoint/_entrypoint.scss">entrypoint</a>
             
         </code>
          
@@ -1145,126 +1145,28 @@
 <p>Startpunkt används för att framhäva en länk extra tydligt, som till exempel en ingång till en digital tjänst.</p>
 <p>Startpunkten tar upp 2/3 av tillgänglig yta i desktopläge och 100% i mobilt läge.</p>
 
-            <div
-                id="example-d85915"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="html"
-            >
-                
-                <div class="code-preview__preview"><!-- [html-validate-disable-block fkui/prefer-ficon -- html example does not use @fkui/vue]-->
-<a class="entrypoint" href="javascript:">
-    Ansök om hundbidrag<span class="sr-only"> Till e-tjänsten</span>
-    <svg focusable="false" class="icon entrypoint__icon">
-        <use xlink:href="#f-icon-arrow-right" />
-    </svg>
-</a>
-</div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
                 <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
+                    id="example-8cb6d8"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags=live-example
+                    data-language="vue"
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- [html-validate-disable-block fkui/prefer-ficon -- html example does not use @fkui/vue]--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;entrypoint&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>&gt;</span>
-    Ansök om hundbidrag<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Till e-tjänsten<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon entrypoint__icon&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-arrow-right&quot;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-</code></pre>
+                    
+        <div id="EntrypointLiveExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./EntrypointLiveExample-ee1e1f.js"></script>
+    
                 </div>
-            </div>
-        <h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p>Texten på en startpunkt ska vara begriplig utan någon annan kontext, men hållas så kort som möjligt. Det första ordet bör vara ett verb i imperativ som uttrycker det användaren ska göra.</p>
+            <h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p>Texten på en startpunkt ska vara begriplig utan någon annan kontext, men hållas så kort som möjligt. Det första ordet bör vara ett verb i imperativ som uttrycker det användaren ska göra.</p>
 <p>Bra texter på startpunkter är t.ex. &quot;Ansök om VAB&quot; och &quot;Ansök om sjukpenning&quot;.</p>
 <p>En startpunkt ska alltid ha en skärmläsartext som ska förtydliga att startpunkten leder till en tjänst och inte är en vanlig länk. Exempel som motsvarar texterna ovan är &quot;Till tjänsten ansök om vab&quot; och &quot;Till tjänsten ansök om sjukpenning&quot;.</p>
 <h2 id="fullbredd"><a class="header-anchor" href="#fullbredd">Fullbredd</a></h2><p>Vill du styra bredden med hjälp av gridsystemet använd klassen <code>entrypoint--full-width</code>.</p>
 
-            <div
-                id="example-005021"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="html"
-            >
-                
-                <div class="code-preview__preview"><!-- [html-validate-disable-block fkui/prefer-ficon -- html example does not use @fkui/vue]-->
-<div class="col col--md-6 example-dotted">
-    <a class="entrypoint entrypoint--full-width" href="javascript:">
-        Ansök om hundbidrag<span class="sr-only"> Till e-tjänsten</span>
-        <svg focusable="false" class="icon entrypoint__icon">
-            <use xlink:href="#f-icon-arrow-right" />
-        </svg>
-    </a>
-</div>
-
-<div class="col col--md-6 example-dotted">
-    <a class="entrypoint entrypoint--full-width" href="javascript:">
-        Exempel med väldigt lång text som troligen kommer wrappa<span
-            class="sr-only"
-        >
-            Till e-tjänsten</span
-        >
-        <svg focusable="false" class="icon entrypoint__icon">
-            <use xlink:href="#f-icon-arrow-right" />
-        </svg>
-    </a>
-</div>
-</div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- [html-validate-disable-block fkui/prefer-ficon -- html example does not use @fkui/vue]--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6 example-dotted&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;entrypoint entrypoint--full-width&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>&gt;</span>
-        Ansök om hundbidrag<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Till e-tjänsten<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon entrypoint__icon&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-arrow-right&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6 example-dotted&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;entrypoint entrypoint--full-width&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>&gt;</span>
-        Exempel med väldigt lång text som troligen kommer wrappa<span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>
-        &gt;</span>
-            Till e-tjänsten&lt;/span
-        &gt;
-        <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon entrypoint__icon&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#f-icon-arrow-right&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        
 
                     </div>
                 </main>
@@ -1285,9 +1187,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/9ebe2767b19321c898e0899f614dd5f4893aaa5e">9ebe276</a>)<br />
+    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/b4dde5c3c6497411330a1385453faaf8af90b469">b4dde5c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/88">PR 88</a><br />
-        2024-12-11 12:55
+        2024-12-13 06:37
 </div>
 <div class="toolbar__item">
     <form id="version">

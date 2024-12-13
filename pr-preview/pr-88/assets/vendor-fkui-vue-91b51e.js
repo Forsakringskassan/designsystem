@@ -7546,7 +7546,8 @@
       },
       anchor: {},
       numOfItems: {},
-      itemHeight: {}
+      itemHeight: {},
+      activeElement: {}
     },
     emits: ["close"],
     setup(__props, {
@@ -7562,6 +7563,15 @@
       });
       let guessedItemHeight = void 0;
       useEventListener(__props.anchor, "keyup", onKeyEsc);
+      (0, import_vue.watchEffect)(() => {
+        if (wrapper.value && __props.activeElement !== void 0) {
+          const centerPosition = __props.activeElement.offsetTop - (wrapper.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+          wrapper.value.scrollTo({
+            top: centerPosition,
+            behavior: "instant"
+          });
+        }
+      });
       function addListeners() {
         document.addEventListener("click", onDocumentClickHandler);
         window.addEventListener("resize", (0, import_logic.debounce)(onResize, 100));
@@ -8421,6 +8431,8 @@
               flag = true;
             }
             close();
+          } else {
+            openSelected();
           }
           break;
         case "Down":
@@ -8499,6 +8511,7 @@
     }) {
       const emit = __emit;
       const listboxNode = (0, import_vue.useTemplateRef)("listboxNode");
+      const activeElement = (0, import_vue.ref)();
       function isOptionActive(item) {
         return item === __props.activeOption;
       }
@@ -8513,12 +8526,7 @@
         if (__props.activeOption !== null) {
           await (0, import_vue.nextTick)();
           const activeOptionNode = (_a = listboxNode.value) == null ? void 0 : _a.querySelector(`#${__props.activeOptionId}`);
-          if (activeOptionNode) {
-            activeOptionNode.scrollIntoView({
-              behavior: "instant",
-              block: "center"
-            });
-          }
+          activeElement.value = activeOptionNode !== null && activeOptionNode !== void 0 ? activeOptionNode : void 0;
         }
       });
       return (_ctx, _cache) => {
@@ -8526,6 +8534,7 @@
           "is-open": _ctx.isOpen,
           anchor: _ctx.inputNode,
           "num-of-items": _ctx.options.length,
+          "active-element": activeElement.value,
           class: "combobox__listbox",
           onClose: onListboxClose
         }, {
@@ -8549,7 +8558,7 @@
             }, (0, import_vue.toDisplayString)(item), 11, _hoisted_3$n);
           }), 128))], 8, _hoisted_2$s)]),
           _: 1
-        }, 8, ["is-open", "anchor", "num-of-items"])]);
+        }, 8, ["is-open", "anchor", "num-of-items", "active-element"])]);
       };
     }
   });
@@ -8592,11 +8601,15 @@
       if (initialized) {
         return;
       }
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      reducedMotion.value = prefersReducedMotion.matches;
-      prefersReducedMotion.addEventListener("change", (event) => {
-        reducedMotion.value = event.matches;
-      });
+      if ("matchMedia" in window) {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        reducedMotion.value = prefersReducedMotion.matches;
+        prefersReducedMotion.addEventListener("change", (event) => {
+          reducedMotion.value = event.matches;
+        });
+      } else {
+        reducedMotion.value = true;
+      }
       initialized = true;
     });
     (0, import_vue.watchEffect)(() => {
