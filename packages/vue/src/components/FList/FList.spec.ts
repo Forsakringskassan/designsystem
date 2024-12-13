@@ -1,6 +1,7 @@
 import "html-validate/jest";
 import { VueWrapper, mount } from "@vue/test-utils";
-import { ListArray } from "../../types";
+import { defineComponent } from "vue";
+import { ListArray, UnknownItem } from "../../types";
 import * as ListUtils from "../../utils/ListUtils";
 import { TranslationPlugin } from "../../plugins";
 import FList from "./FList.vue";
@@ -247,6 +248,41 @@ describe("active element", () => {
               "permission": "Write",
             }
         `);
+    });
+
+    it("should reset active item", async () => {
+        let activeItem: UnknownItem | undefined;
+        const TestComponent = defineComponent({
+            name: "TestComponent",
+            components: { FList },
+            data() {
+                return { items, activeItem, selectedItems: [] };
+            },
+            template: /* HTML */ `
+                <f-list
+                    v-model="selectedItems"
+                    v-model:active="activeItem"
+                    :items="items"
+                    key-attribute="id"
+                    selectable
+                >
+                    <template #default="{ item }">
+                        <h3>{{ item.frukt }}</h3>
+                    </template>
+                    <template #screenreader="{ item }">
+                        Frukt {{ item.frukt }}
+                    </template>
+                </f-list>
+            `,
+        });
+        const wrapper = mount(TestComponent);
+        wrapper.vm.$data.activeItem = items[1];
+        await wrapper.vm.$nextTick();
+        const listItem = wrapper.findAll(".list__item")[1];
+        expect(listItem.classes()).toContain("list__item--active");
+        wrapper.vm.$data.activeItem = undefined;
+        await wrapper.vm.$nextTick();
+        expect(listItem.classes()).not.toContain("list__item--active");
     });
 });
 
