@@ -1,29 +1,9 @@
 <template>
-    <div>
-        <pre>selectedRoute: {{ selectedRoute }}</pre>
-        <f-navigation-menu
-            :routes="routes"
-            @selected-route="selectedRoute = $event"
-        ></f-navigation-menu>
-    </div>
+    <f-navigation-menu :routes></f-navigation-menu>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup>
 import { FNavigationMenu } from "@fkui/vue";
-/* same routes as used by vue-router */
+// `routes` is an array of `NavigationMenuItem`.
 import { routes } from "./router";
-
-export default defineComponent({
-    name: "FNavigationMenuExample",
-    components: { FNavigationMenu },
-    props: {},
-    data: () => {
-        return {
-            routes: routes,
-            selectedRoute: "",
-        };
-    },
-    methods: {},
-});
 </script>
