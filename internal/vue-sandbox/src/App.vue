@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "highlight.js/styles/github.min.css";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import hljs from "highlight.js";
 import { FPageLayout, FPanel, FFieldset, FSelectField, defineLayout, FNavigationMenu } from "@fkui/vue";
 import simple from "../../../packages/vue/src/components/FPageLayout/examples/FPageLayoutSimpleExample.vue?raw";
@@ -101,7 +101,7 @@ function maybeOverlay(sizes: Record<string, number>): {
     <f-page-layout :layout>
         <template #header>
             <p>header (med en tämligen skrikig men orörd FNavigationMenu under)</p>
-            <f-navigation-menu :routes v-model:route="layoutName"></f-navigation-menu>
+            <f-navigation-menu v-model:route="layoutName" :routes></f-navigation-menu>
         </template>
 
         <template #toolbar>
@@ -111,8 +111,8 @@ function maybeOverlay(sizes: Record<string, number>): {
 
         <template #left>
             <f-panel
-                :variant="leftVariant === 'expand-slot' ? 'expand' : leftVariant"
                 v-model="leftOpen"
+                :variant="leftVariant === 'expand-slot' ? 'expand' : leftVariant"
                 :class="leftType === 'custom' ? 'my-left-panel' : undefined"
                 :type="leftType !== 'custom' ? leftType : undefined"
                 :overlay="leftFlags === 'overlay'"
@@ -125,7 +125,7 @@ function maybeOverlay(sizes: Record<string, number>): {
 
                 <template #footer> Panel footer </template>
 
-                <template #collapsed v-if="leftVariant === 'expand-slot'">
+                <template v-if="leftVariant === 'expand-slot'" #collapsed>
                     <f-icon name="pen"></f-icon>
                     <f-icon name="trashcan"></f-icon>
                     <f-icon name="search"></f-icon>
@@ -138,8 +138,8 @@ function maybeOverlay(sizes: Record<string, number>): {
 
         <template #right>
             <f-panel
-                :variant="rightVariant"
                 v-model="rightOpen"
+                :variant="rightVariant"
                 :class="rightType === 'custom' ? 'my-right-panel' : undefined"
                 :type="rightType !== 'custom' ? rightType : undefined"
                 :overlay="rightFlags === 'overlay'"
@@ -151,7 +151,7 @@ function maybeOverlay(sizes: Record<string, number>): {
         </template>
 
         <template #right2>
-            <f-panel variant="toggle" v-model="right2Open" class="my-extra-right-panel" resizable>
+            <f-panel v-model="right2Open" variant="toggle" class="my-extra-right-panel" resizable>
                 En extra högerpanel
             </f-panel>
         </template>

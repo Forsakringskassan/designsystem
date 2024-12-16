@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, useSlots, onMounted, getCurrentInstance, useTemplateRef, inject, watch } from "vue";
+import { ref, computed, useSlots, onMounted, useTemplateRef, inject, watch } from "vue";
 import { debounce } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 
@@ -22,7 +22,7 @@ const {
 }>();
 const slots = useSlots();
 const root = useTemplateRef("root");
-const open = defineModel({ default: true });
+const open = defineModel<boolean>({ default: true });
 const size = inject<() => Record<string, number>>("size");
 const override = ref<{ variant?: "static" | "toggle" | "expand"; overlay?: boolean; fullscreen?: boolean }>({});
 
@@ -141,7 +141,7 @@ watch(
 
 useEventListener(window, "resize", debounce(onWindowResize, 25));
 
-function onWindowResize() {
+function onWindowResize(): void {
     if (behaviour && size) {
         const result = behaviour(size());
         override.value = result;
@@ -170,7 +170,7 @@ watch(
 let x = null as number | null;
 let r = null as number | null;
 
-function onMouseDown(event: MouseEvent) {
+function onMouseDown(event: MouseEvent): void {
     if (!root.value) {
         return;
     }
@@ -182,7 +182,7 @@ function onMouseDown(event: MouseEvent) {
     document.body.style.setProperty("user-select", "none");
 }
 
-function resize(event: MouseEvent) {
+function resize(event: MouseEvent): void {
     if (!root.value || x === null || r === null) {
         return;
     }
@@ -200,7 +200,7 @@ function resize(event: MouseEvent) {
     }
 }
 
-function stop(event: MouseEvent) {
+function stop(): void {
     window.removeEventListener("mousemove", resize);
     window.removeEventListener("mouseup", stop);
     if (!root.value) {
@@ -215,20 +215,20 @@ function stop(event: MouseEvent) {
 
 <template>
     <template v-if="resizable">
-        <div class="split-pane" v-if="isOpen">
+        <div v-if="isOpen" class="split-pane">
             <div class="split-handle">
                 <span v-if="open" class="thingy" @mousedown="onMouseDown"></span>
             </div>
-            <div class="panel split-content" :class="classes" ref="root" v-bind="$attrs">
-                <div class="panel__toolbar" v-if="haveToggle">
-                    <input type="checkbox" v-model="open" class="panel__toggle" />
+            <div ref="root" class="panel split-content" :class="classes" v-bind="$attrs">
+                <div v-if="haveToggle" class="panel__toolbar">
+                    <input v-model="open" type="checkbox" class="panel__toggle" />
                 </div>
 
-                <div class="panel__header" v-if="slots.footer">
+                <div v-if="slots.footer" class="panel__header">
                     <slot name="header"></slot>
                 </div>
 
-                <div class="panel__content" v-if="slots.default">
+                <div v-if="slots.default" class="panel__content">
                     <slot></slot>
                     <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
                         {
@@ -244,7 +244,7 @@ function stop(event: MouseEvent) {
                     }}</pre>
                 </div>
 
-                <div class="panel__footer" v-if="slots.footer">
+                <div v-if="slots.footer" class="panel__footer">
                     <slot name="footer"></slot>
                 </div>
             </div>
@@ -252,16 +252,16 @@ function stop(event: MouseEvent) {
     </template>
     <template v-else>
         <Teleport :disabled="!teleport" to="body">
-            <div class="panel" :class="classes" ref="root" v-if="isOpen" v-bind="$attrs">
-                <div class="panel__toolbar" v-if="haveToggle">
-                    <input type="checkbox" v-model="open" class="panel__toggle" />
+            <div v-if="isOpen" ref="root" class="panel" :class="classes" v-bind="$attrs">
+                <div v-if="haveToggle" class="panel__toolbar">
+                    <input v-model="open" type="checkbox" class="panel__toggle" />
                 </div>
 
-                <div class="panel__header" v-if="slots.footer">
+                <div v-if="slots.footer" class="panel__header">
                     <slot name="header"></slot>
                 </div>
 
-                <div class="panel__content" v-if="slots.default">
+                <div v-if="slots.default" class="panel__content">
                     <slot name="default"></slot>
                     <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
                         {
@@ -278,16 +278,16 @@ function stop(event: MouseEvent) {
                     }}</pre>
                 </div>
 
-                <div class="panel__footer" v-if="slots.footer">
+                <div v-if="slots.footer" class="panel__footer">
                     <slot name="footer"></slot>
                 </div>
 
-                <div class="panel__collapsed" v-if="effectiveVariant === 'expand' && slots.collapsed">
+                <div v-if="effectiveVariant === 'expand' && slots.collapsed" class="panel__collapsed">
                     <slot name="collapsed"></slot>
                 </div>
             </div>
         </Teleport>
-        <div class="spacer" v-if="effectiveVariant === 'expand' && effectiveOverlay"></div>
+        <div v-if="effectiveVariant === 'expand' && effectiveOverlay" class="spacer"></div>
     </template>
 </template>
 
