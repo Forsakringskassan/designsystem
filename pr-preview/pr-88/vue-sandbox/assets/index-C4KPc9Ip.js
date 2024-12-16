@@ -16729,7 +16729,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
         activeOption.value = dropdownOptions.value[index - 1];
       }
     } else {
-      activeOption.value = dropdownOptions.value[0];
+      activeOption.value = dropdownOptions.value[dropdownOptions.value.length - 1];
     }
   }
   function onInputClick() {

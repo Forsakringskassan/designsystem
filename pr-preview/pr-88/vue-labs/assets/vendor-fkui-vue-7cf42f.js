@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -8273,7 +8273,7 @@
           activeOption.value = dropdownOptions.value[index - 1];
         }
       } else {
-        activeOption.value = dropdownOptions.value[0];
+        activeOption.value = dropdownOptions.value[dropdownOptions.value.length - 1];
       }
     }
     function onInputClick() {
