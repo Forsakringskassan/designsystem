@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 5.43.0 (2024-12-16)
+
+### Features
+
+* **@fkui/vue:** fmodal focus strategy (refs SB-4982) ec1af56
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v24.1.0 ea567a5
+
 ## 5.42.0 (2024-12-13)
 
 ### Features
