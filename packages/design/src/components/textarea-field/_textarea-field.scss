@@ -1,6 +1,7 @@
 @use "../../core/size";
 @use "../../core";
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $TEXTAREA_FIELD_SELECTOR: ".textarea-field" !default;
 
@@ -18,10 +19,10 @@ $TEXTAREA_FIELD_SELECTOR: ".textarea-field" !default;
     }
 
     &__textarea {
-        background-color: var(--f-background-input);
+        background-color: $textareafield-color-background-default;
         box-shadow: var(--f-input-shadow-inset);
         border-radius: var(--f-border-radius-medium);
-        border: var(--f-border-width-medium) solid var(--f-border-color-input);
+        border: var(--f-border-width-medium) solid $textareafield-color-border-default;
         box-sizing: border-box;
         font-size: var(--f-font-size-standard);
         min-height: densify(var(--f-height-large));
@@ -34,14 +35,14 @@ $TEXTAREA_FIELD_SELECTOR: ".textarea-field" !default;
     }
 
     &__textarea:disabled {
-        border-color: var(--f-border-color-input-disabled);
-        color: var(--f-text-color-input-disabled);
-        background-color: var(--f-background-input-disabled);
+        border-color: $textareafield-color-border-disabled;
+        color: $textareafield-color-text-disabled;
+        background-color: $textareafield-color-background-disabled;
     }
 
     &--error {
         #{$TEXTAREA_FIELD_SELECTOR}__textarea {
-            border-color: var(--f-border-color-error);
+            border-color: $textareafield-color-border-error;
         }
     }
 

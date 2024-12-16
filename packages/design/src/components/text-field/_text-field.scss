@@ -1,6 +1,7 @@
 @use "../../core";
 @use "../../core/size";
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $TEXT_FIELD_SELECTOR: ".text-field" !default;
 
@@ -36,10 +37,10 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
     }
 
     &__input {
-        background-color: var(--f-background-input);
+        background-color: $textfield-color-background-default;
         box-shadow: var(--f-input-shadow-inset);
         border-radius: var(--f-border-radius-medium);
-        border: var(--f-border-width-medium) solid var(--f-border-color-input);
+        border: var(--f-border-width-medium) solid $textfield-color-border-default;
         min-height: densify(var(--f-height-large));
         padding: 0 0.75rem;
         width: var(--f-width-full);
@@ -79,18 +80,18 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
     }
 
     &__input:disabled + &__icon {
-        color: var(--f-text-color-button-disabled);
+        color: $textfield-icon-close-color-content-disabled;
     }
 
     &__input:disabled {
-        border-color: var(--f-border-color-input-disabled);
-        color: var(--f-text-color-input-disabled);
-        background-color: var(--f-background-input-disabled);
+        border-color: $textfield-color-border-disabled;
+        color: $textfield-color-text-disabled;
+        background-color: $textfield-color-background-disabled;
     }
 
     &--error {
         #{$TEXT_FIELD_SELECTOR}__input {
-            border-color: var(--f-border-color-error);
+            border-color: $textfield-color-border-error;
         }
     }
 
@@ -110,7 +111,7 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
         cursor: pointer;
 
         &__icon {
-            color: var(--f-text-color-discrete);
+            color: $textfield-icon-close-color-content-default;
             height: var(--f-icon-size-x-small);
             width: var(--f-icon-size-x-small);
         }
