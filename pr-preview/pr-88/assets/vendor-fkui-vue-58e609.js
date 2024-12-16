@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -8112,6 +8112,13 @@
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$F);
   }
   var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$G]]);
+  function filterOptions(options, filter2, selectMode) {
+    if ((0, import_logic.isEmpty)(filter2) || selectMode) {
+      return options;
+    }
+    const filterLowerCased = filter2.toLowerCase();
+    return options.filter((it) => it.toLowerCase().indexOf(filterLowerCased) > -1);
+  }
   var $t = useTranslate();
   function useCombobox(inputRef, options, onOptionSelected) {
     if (!options) {
@@ -8141,11 +8148,7 @@
     const selectMode = (0, import_vue.ref)(false);
     const selectedOption = (0, import_vue.ref)(null);
     const dropdownOptions = (0, import_vue.computed)(() => {
-      if ((0, import_logic.isEmpty)(filter2.value) || selectMode.value) {
-        return options;
-      }
-      const filterLowerCased = filter2.value.toLowerCase();
-      return options.filter((it) => it.toLowerCase().indexOf(filterLowerCased) > -1);
+      return filterOptions(options, filter2.value, selectMode.value);
     });
     const hasOptions = (0, import_vue.computed)(() => {
       return dropdownOptions.value.length > 0;

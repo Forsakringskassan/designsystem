@@ -16568,6 +16568,13 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
     };
   }
 });
+function filterOptions(options, filter2, selectMode) {
+  if (isEmpty(filter2) || selectMode) {
+    return options;
+  }
+  const filterLowerCased = filter2.toLowerCase();
+  return options.filter((it) => it.toLowerCase().indexOf(filterLowerCased) > -1);
+}
 const $t = useTranslate();
 function useCombobox(inputRef, options, onOptionSelected) {
   if (!options) {
@@ -16597,11 +16604,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
   const selectMode = ref(false);
   const selectedOption = ref(null);
   const dropdownOptions = computed(() => {
-    if (isEmpty(filter2.value) || selectMode.value) {
-      return options;
-    }
-    const filterLowerCased = filter2.value.toLowerCase();
-    return options.filter((it) => it.toLowerCase().indexOf(filterLowerCased) > -1);
+    return filterOptions(options, filter2.value, selectMode.value);
   });
   const hasOptions = computed(() => {
     return dropdownOptions.value.length > 0;
