@@ -12453,7 +12453,7 @@ const _export_sfc$1 = (sfc, props) => {
   return target;
 };
 const _hoisted_1$W = ["aria-hidden"];
-const _hoisted_2$G = ["xlink:href"];
+const _hoisted_2$H = ["xlink:href"];
 function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
     focusable: "false",
@@ -12461,7 +12461,7 @@ function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-hidden": _ctx.ariaHidden
   }), [renderSlot(_ctx.$slots, "default"), _cache[0] || (_cache[0] = createTextVNode()), createBaseVNode("use", {
     "xlink:href": _ctx.spriteId
-  }, null, 8, _hoisted_2$G)], 16, _hoisted_1$W);
+  }, null, 8, _hoisted_2$H)], 16, _hoisted_1$W);
 }
 const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1e, [["render", _sfc_render$10]]);
 const DATA_TEST_ATTRIBUTE_NAME = "data-test";
@@ -14622,6 +14622,19 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
       validator(value) {
         return sizes.includes(value);
       }
+    },
+    /**
+     * Default behavior is that the modal will restore focus to previous element once closed.
+     * - "on" (default) - component will set focus both when opened and closed
+     * - "off" - focus strategy disabled
+     * - "open" - focus will only be applied once modal is opened
+     */
+    focus: {
+      type: String,
+      default: "on",
+      validator(value) {
+        return ["on", "off", "open"].includes(value);
+      }
     }
   },
   emits: ["close"],
@@ -14674,8 +14687,12 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
       root.style.top = `-${scroll}px`;
       root.classList.add("modal__open");
       const focusElement2 = this.resolveFocusElement();
-      this.savedFocus = pushFocus(focusElement2);
-      this.savedScroll = scroll;
+      if (this.focus === "on") {
+        this.savedFocus = pushFocus(focusElement2);
+        this.savedScroll = scroll;
+      } else if (this.focus === "open") {
+        focus$1(focusElement2);
+      }
     },
     /**
      * Prioritises what element to initially focus on in the following order:
@@ -14695,15 +14712,15 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
       return firstTabbableChildElement !== null && firstTabbableChildElement !== void 0 ? firstTabbableChildElement : contentElement;
     },
     restoreState() {
-      if (this.savedFocus) {
-        var _this$savedScroll;
-        const root = document.documentElement;
-        root.classList.remove("modal__open");
-        root.style.removeProperty("top");
-        root.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
+      var _this$savedScroll;
+      const root = document.documentElement;
+      root.classList.remove("modal__open");
+      root.style.removeProperty("top");
+      root.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
+      this.savedScroll = null;
+      if (this.focus === "on" && this.savedFocus) {
         popFocus(this.savedFocus);
         this.savedFocus = null;
-        this.savedScroll = null;
       }
     },
     onFocusFirst() {
@@ -14719,7 +14736,7 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
   }
 });
 const _hoisted_1$V = ["id"];
-const _hoisted_2$F = {
+const _hoisted_2$G = {
   class: "modal__backdrop"
 };
 const _hoisted_3$x = {
@@ -14758,7 +14775,7 @@ function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0,
     id: _ctx.id,
     class: normalizeClass(["modal", _ctx.modalClass])
-  }, [createBaseVNode("div", _hoisted_2$F, [createBaseVNode("div", {
+  }, [createBaseVNode("div", _hoisted_2$G, [createBaseVNode("div", {
     class: "modal__outer-container scroll-target",
     tabindex: "-1",
     role: "dialog",
@@ -14877,6 +14894,19 @@ const _sfc_main$1c = /* @__PURE__ */ defineComponent({
       default: () => {
         return defaultButtons;
       }
+    },
+    /**
+     * Default behavior is that the modal will restore focus to previous element once closed.
+     * - "on" (default) - component will set focus both when opened and closed
+     * - "off" - focus strategy disabled
+     * - "open" - focus will only be applied once modal is opened
+     */
+    focus: {
+      type: String,
+      default: "on",
+      validator(value) {
+        return ["on", "off", "open"].includes(value);
+      }
     }
   },
   emits: ["close", ...defaultButtons.map((it) => {
@@ -14905,7 +14935,7 @@ const _sfc_main$1c = /* @__PURE__ */ defineComponent({
 const _hoisted_1$U = {
   class: "button-group"
 };
-const _hoisted_2$E = ["onClick"];
+const _hoisted_2$F = ["onClick"];
 const _hoisted_3$w = {
   key: 0,
   class: "sr-only"
@@ -14918,6 +14948,7 @@ function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-close-text": _ctx.ariaCloseText,
     type: "warning",
     size: _ctx.size,
+    focus: _ctx.focus,
     onClose: _ctx.onClose
   }, {
     header: withCtx(() => [renderSlot(_ctx.$slots, "heading", {}, () => [createTextVNode(toDisplayString(_ctx.heading), 1)])]),
@@ -14928,10 +14959,10 @@ function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
         type: "button",
         class: normalizeClass([button.classlist, "button-group__item"]),
         onClick: ($event) => _ctx.onClick(button)
-      }, [createBaseVNode("span", null, toDisplayString(button.label), 1), _cache[0] || (_cache[0] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$w, " " + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$E);
+      }, [createBaseVNode("span", null, toDisplayString(button.label), 1), _cache[0] || (_cache[0] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$w, " " + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$F);
     }), 128))])]),
     _: 3
-  }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "onClose"]);
+  }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
 const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1c, [["render", _sfc_render$_]]);
 const GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
@@ -15139,7 +15170,7 @@ const _sfc_main$19 = /* @__PURE__ */ defineComponent({
 const _hoisted_1$T = {
   class: "error-list"
 };
-const _hoisted_2$D = {
+const _hoisted_2$E = {
   key: 0
 };
 const _hoisted_3$v = {
@@ -15172,7 +15203,7 @@ function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
     })) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_flex_item, {
       grow: ""
     }, {
-      default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createElementBlock("div", _hoisted_2$D, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("ul", _hoisted_3$v, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item) => {
+      default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createElementBlock("div", _hoisted_2$E, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("ul", _hoisted_3$v, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item) => {
         return openBlock(), createElementBlock("li", {
           key: item.id,
           class: normalizeClass(_ctx.liClasses(item))
@@ -15439,7 +15470,7 @@ const _sfc_main$17 = /* @__PURE__ */ defineComponent({
   }
 });
 const _hoisted_1$S = ["id"];
-const _hoisted_2$C = {
+const _hoisted_2$D = {
   key: 0,
   ref: "errors",
   tabindex: "-1",
@@ -15460,7 +15491,7 @@ function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
       novalidate: "",
       autocomplete: "off",
       onSubmit: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"]))
-    }), [_ctx.displayErrors ? (openBlock(), createElementBlock("nav", _hoisted_2$C, [createVNode(_component_f_error_list, {
+    }), [_ctx.displayErrors ? (openBlock(), createElementBlock("nav", _hoisted_2$D, [createVNode(_component_f_error_list, {
       items: _ctx.errors,
       bullets: _ctx.errorListBullets,
       "before-navigate": _ctx.errorListBeforeNavigate
@@ -15627,7 +15658,7 @@ const _sfc_main$16 = /* @__PURE__ */ defineComponent({
 const _hoisted_1$R = {
   class: "button-group"
 };
-const _hoisted_2$B = ["type", "form", "onClick"];
+const _hoisted_2$C = ["type", "form", "onClick"];
 const _hoisted_3$u = {
   key: 0,
   class: "sr-only"
@@ -15666,7 +15697,7 @@ function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
         class: normalizeClass([button.classlist, "button-group__item"]),
         form: button.buttonType === "submit" ? _ctx.formId : void 0,
         onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
-      }, [createBaseVNode("span", null, toDisplayString(button.label), 1), _cache[3] || (_cache[3] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$u, " " + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$B);
+      }, [createBaseVNode("span", null, toDisplayString(button.label), 1), _cache[3] || (_cache[3] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$u, " " + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$C);
     }), 128)) : (openBlock(), createElementBlock(Fragment, {
       key: 1
     }, [createBaseVNode("button", {
@@ -16407,6 +16438,9 @@ function computeListboxRect(anchor, options, root = document.documentElement, {
   return void 0;
 }
 const _hoisted_1$I = ["onKeyup"];
+const _hoisted_2$x = {
+  ref: "content"
+};
 const teleportDisabled = false;
 const _sfc_main$W = /* @__PURE__ */ defineComponent({
   __name: "IPopupListbox",
@@ -16424,8 +16458,8 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
     emit: __emit
   }) {
     const emit2 = __emit;
-    const wrapper2 = useTemplateRef("wrapper");
-    const content = useTemplateRef("content");
+    const wrapperRef = useTemplateRef("wrapper");
+    const contentRef = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
     const teleportTarget = computed(() => {
       var _config$popupTarget;
@@ -16435,15 +16469,15 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
     watchEffect(() => {
-      if (wrapper2.value && __props.activeElement !== void 0) {
-        const centerPosition = __props.activeElement.offsetTop - (wrapper2.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
-        if (!isElementInsideVieport(wrapper2.value)) {
-          wrapper2.value.scrollIntoView({
+      if (wrapperRef.value && __props.activeElement !== void 0) {
+        const centerPosition = __props.activeElement.offsetTop - (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+        if (!isElementInsideViewport(wrapperRef.value)) {
+          wrapperRef.value.scrollIntoView({
             behavior: "instant",
             block: "nearest"
           });
         }
-        wrapper2.value.scrollTo({
+        wrapperRef.value.scrollTo({
           top: centerPosition,
           behavior: "instant"
         });
@@ -16457,7 +16491,7 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
       document.removeEventListener("click", onDocumentClickHandler);
       window.removeEventListener("resize", debounce(onResize, 100));
     }
-    function isElementInsideVieport(element) {
+    function isElementInsideViewport(element) {
       const rect = element.getBoundingClientRect();
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
       const windowWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -16502,8 +16536,8 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
     async function calculatePosition() {
       var _a;
       await nextTick();
-      const wrapperElement = wrapper2.value;
-      const contentWrapper = content.value;
+      const wrapperElement = wrapperRef.value;
+      const contentWrapper = contentRef.value;
       if (!__props.anchor || !wrapperElement || !contentWrapper) {
         return;
       }
@@ -16553,18 +16587,14 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
         ref: "popup",
         class: normalizeClass(popupClasses)
       }, [createBaseVNode("div", mergeProps({
-        ref_key: "wrapper",
-        ref: wrapper2
+        ref: "wrapper"
       }, _ctx.$attrs, {
         class: "popup__wrapper",
         tabindex: "0",
         onKeyup: withKeys(withModifiers(onKeyEsc, ["stop"]), ["esc"]),
         onClick: _cache[0] || (_cache[0] = withModifiers(() => {
         }, ["stop"]))
-      }), [createBaseVNode("div", {
-        ref_key: "content",
-        ref: content
-      }, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$I)], 512)], 8, ["to"])) : createCommentVNode("", true);
+      }), [createBaseVNode("div", _hoisted_2$x, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$I)], 512)], 8, ["to"])) : createCommentVNode("", true);
     };
   }
 });
@@ -16834,7 +16864,7 @@ const _sfc_main$S = /* @__PURE__ */ defineComponent({
     emit: __emit
   }) {
     const emit2 = __emit;
-    const listboxNode = useTemplateRef("listboxNode");
+    const listboxRef = useTemplateRef("listbox");
     const activeElement = ref();
     function isOptionActive(item) {
       return item === __props.activeOption;
@@ -16849,7 +16879,7 @@ const _sfc_main$S = /* @__PURE__ */ defineComponent({
       var _a;
       if (__props.activeOption !== null) {
         await nextTick();
-        const activeOptionNode = (_a = listboxNode.value) == null ? void 0 : _a.querySelector(`#${__props.activeOptionId}`);
+        const activeOptionNode = (_a = listboxRef.value) == null ? void 0 : _a.querySelector(`#${__props.activeOptionId}`);
         activeElement.value = activeOptionNode !== null && activeOptionNode !== void 0 ? activeOptionNode : void 0;
       }
     });
@@ -16864,8 +16894,7 @@ const _sfc_main$S = /* @__PURE__ */ defineComponent({
       }, {
         default: withCtx(() => [createBaseVNode("ul", {
           id: _ctx.id,
-          ref_key: "listboxNode",
-          ref: listboxNode,
+          ref: "listbox",
           role: "listbox",
           "aria-label": "Förslag",
           class: "combobox__listbox__list"

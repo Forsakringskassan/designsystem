@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -1587,7 +1587,7 @@
     return target;
   };
   var _hoisted_1$W = ["aria-hidden"];
-  var _hoisted_2$G = ["xlink:href"];
+  var _hoisted_2$H = ["xlink:href"];
   function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("svg", (0, import_vue.mergeProps)(_ctx.$attrs, {
       focusable: "false",
@@ -1595,7 +1595,7 @@
       "aria-hidden": _ctx.ariaHidden
     }), [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("use", {
       "xlink:href": _ctx.spriteId
-    }, null, 8, _hoisted_2$G)], 16, _hoisted_1$W);
+    }, null, 8, _hoisted_2$H)], 16, _hoisted_1$W);
   }
   var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$10]]);
   var DATA_TEST_ATTRIBUTE_NAME = "data-test";
@@ -3988,6 +3988,19 @@
         validator(value) {
           return sizes.includes(value);
         }
+      },
+      /**
+       * Default behavior is that the modal will restore focus to previous element once closed.
+       * - "on" (default) - component will set focus both when opened and closed
+       * - "off" - focus strategy disabled
+       * - "open" - focus will only be applied once modal is opened
+       */
+      focus: {
+        type: String,
+        default: "on",
+        validator(value) {
+          return ["on", "off", "open"].includes(value);
+        }
       }
     },
     emits: ["close"],
@@ -4040,8 +4053,12 @@
         root.style.top = `-${scroll}px`;
         root.classList.add("modal__open");
         const focusElement2 = this.resolveFocusElement();
-        this.savedFocus = (0, import_logic.pushFocus)(focusElement2);
-        this.savedScroll = scroll;
+        if (this.focus === "on") {
+          this.savedFocus = (0, import_logic.pushFocus)(focusElement2);
+          this.savedScroll = scroll;
+        } else if (this.focus === "open") {
+          (0, import_logic.focus)(focusElement2);
+        }
       },
       /**
        * Prioritises what element to initially focus on in the following order:
@@ -4061,15 +4078,15 @@
         return firstTabbableChildElement !== null && firstTabbableChildElement !== void 0 ? firstTabbableChildElement : contentElement;
       },
       restoreState() {
-        if (this.savedFocus) {
-          var _this$savedScroll;
-          const root = document.documentElement;
-          root.classList.remove("modal__open");
-          root.style.removeProperty("top");
-          root.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
+        var _this$savedScroll;
+        const root = document.documentElement;
+        root.classList.remove("modal__open");
+        root.style.removeProperty("top");
+        root.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
+        this.savedScroll = null;
+        if (this.focus === "on" && this.savedFocus) {
           (0, import_logic.popFocus)(this.savedFocus);
           this.savedFocus = null;
-          this.savedScroll = null;
         }
       },
       onFocusFirst() {
@@ -4085,7 +4102,7 @@
     }
   });
   var _hoisted_1$V = ["id"];
-  var _hoisted_2$F = {
+  var _hoisted_2$G = {
     class: "modal__backdrop"
   };
   var _hoisted_3$x = {
@@ -4124,7 +4141,7 @@
       key: 0,
       id: _ctx.id,
       class: (0, import_vue.normalizeClass)(["modal", _ctx.modalClass])
-    }, [(0, import_vue.createElementVNode)("div", _hoisted_2$F, [(0, import_vue.createElementVNode)("div", {
+    }, [(0, import_vue.createElementVNode)("div", _hoisted_2$G, [(0, import_vue.createElementVNode)("div", {
       class: "modal__outer-container scroll-target",
       tabindex: "-1",
       role: "dialog",
@@ -4243,6 +4260,19 @@
         default: () => {
           return defaultButtons;
         }
+      },
+      /**
+       * Default behavior is that the modal will restore focus to previous element once closed.
+       * - "on" (default) - component will set focus both when opened and closed
+       * - "off" - focus strategy disabled
+       * - "open" - focus will only be applied once modal is opened
+       */
+      focus: {
+        type: String,
+        default: "on",
+        validator(value) {
+          return ["on", "off", "open"].includes(value);
+        }
       }
     },
     emits: ["close", ...defaultButtons.map((it) => {
@@ -4271,7 +4301,7 @@
   var _hoisted_1$U = {
     class: "button-group"
   };
-  var _hoisted_2$E = ["onClick"];
+  var _hoisted_2$F = ["onClick"];
   var _hoisted_3$w = {
     key: 0,
     class: "sr-only"
@@ -4284,6 +4314,7 @@
       "aria-close-text": _ctx.ariaCloseText,
       type: "warning",
       size: _ctx.size,
+      focus: _ctx.focus,
       onClose: _ctx.onClose
     }, {
       header: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "heading", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.heading), 1)])]),
@@ -4294,10 +4325,10 @@
           type: "button",
           class: (0, import_vue.normalizeClass)([button.classlist, "button-group__item"]),
           onClick: ($event) => _ctx.onClick(button)
-        }, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(button.label), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), button.screenreader ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$w, "\xA0" + (0, import_vue.toDisplayString)(button.screenreader), 1)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$E);
+        }, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(button.label), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), button.screenreader ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$w, "\xA0" + (0, import_vue.toDisplayString)(button.screenreader), 1)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$F);
       }), 128))])]),
       _: 3
-    }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "onClose"]);
+    }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
   }
   var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$_]]);
   var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
@@ -4505,7 +4536,7 @@
   var _hoisted_1$T = {
     class: "error-list"
   };
-  var _hoisted_2$D = {
+  var _hoisted_2$E = {
     key: 0
   };
   var _hoisted_3$v = {
@@ -4538,7 +4569,7 @@
       })) : (0, import_vue.createCommentVNode)("", true), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_i_flex_item, {
         grow: ""
       }, {
-        default: (0, import_vue.withCtx)(() => [_ctx.hasTitleSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$D, [(0, import_vue.renderSlot)(_ctx.$slots, "title")])) : (0, import_vue.createCommentVNode)("", true), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("ul", _hoisted_3$v, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.items, (item) => {
+        default: (0, import_vue.withCtx)(() => [_ctx.hasTitleSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$E, [(0, import_vue.renderSlot)(_ctx.$slots, "title")])) : (0, import_vue.createCommentVNode)("", true), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("ul", _hoisted_3$v, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.items, (item) => {
           return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", {
             key: item.id,
             class: (0, import_vue.normalizeClass)(_ctx.liClasses(item))
@@ -4820,7 +4851,7 @@
     }
   });
   var _hoisted_1$S = ["id"];
-  var _hoisted_2$C = {
+  var _hoisted_2$D = {
     key: 0,
     ref: "errors",
     tabindex: "-1",
@@ -4841,7 +4872,7 @@
         novalidate: "",
         autocomplete: "off",
         onSubmit: _cache[0] || (_cache[0] = (0, import_vue.withModifiers)((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"]))
-      }), [_ctx.displayErrors ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("nav", _hoisted_2$C, [(0, import_vue.createVNode)(_component_f_error_list, {
+      }), [_ctx.displayErrors ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("nav", _hoisted_2$D, [(0, import_vue.createVNode)(_component_f_error_list, {
         items: _ctx.errors,
         bullets: _ctx.errorListBullets,
         "before-navigate": _ctx.errorListBeforeNavigate
@@ -5008,7 +5039,7 @@
   var _hoisted_1$R = {
     class: "button-group"
   };
-  var _hoisted_2$B = ["type", "form", "onClick"];
+  var _hoisted_2$C = ["type", "form", "onClick"];
   var _hoisted_3$u = {
     key: 0,
     class: "sr-only"
@@ -5047,7 +5078,7 @@
           class: (0, import_vue.normalizeClass)([button.classlist, "button-group__item"]),
           form: button.buttonType === "submit" ? _ctx.formId : void 0,
           onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
-        }, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(button.label), 1), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), button.screenreader ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$u, "\xA0" + (0, import_vue.toDisplayString)(button.screenreader), 1)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$B);
+        }, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(button.label), 1), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), button.screenreader ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$u, "\xA0" + (0, import_vue.toDisplayString)(button.screenreader), 1)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$C);
       }), 128)) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
         key: 1
       }, [(0, import_vue.createElementVNode)("button", {
@@ -5606,7 +5637,7 @@
   var _hoisted_1$P = {
     class: "calendar-navbar"
   };
-  var _hoisted_2$A = {
+  var _hoisted_2$B = {
     class: "calendar-navbar__month",
     tabindex: "-1"
   };
@@ -5620,7 +5651,7 @@
   };
   function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$P, [(0, import_vue.createElementVNode)("div", _hoisted_2$A, (0, import_vue.toDisplayString)(_ctx.currentText), 1), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$P, [(0, import_vue.createElementVNode)("div", _hoisted_2$B, (0, import_vue.toDisplayString)(_ctx.currentText), 1), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
       ref: "previousButton",
       class: "calendar-navbar__arrow calendar-navbar__arrow--previous",
       type: "button",
@@ -5724,7 +5755,7 @@
     key: 0,
     class: "calendar-month__col--week"
   };
-  var _hoisted_2$z = {
+  var _hoisted_2$A = {
     role: "presentation"
   };
   var _hoisted_3$s = {
@@ -5777,7 +5808,7 @@
       class: "calendar-month__col--day"
     }, null, -1)), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), _cache[15] || (_cache[15] = (0, import_vue.createElementVNode)("col", {
       class: "calendar-month__col--day"
-    }, null, -1))]), _cache[22] || (_cache[22] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("thead", _hoisted_2$z, [(0, import_vue.createElementVNode)("tr", _hoisted_3$s, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_4$n)) : (0, import_vue.createCommentVNode)("", true), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.weekdays, (weekday) => {
+    }, null, -1))]), _cache[22] || (_cache[22] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("thead", _hoisted_2$A, [(0, import_vue.createElementVNode)("tr", _hoisted_3$s, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_4$n)) : (0, import_vue.createCommentVNode)("", true), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.weekdays, (weekday) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", {
         key: weekday.name,
         scope: "col",
@@ -6124,13 +6155,13 @@
   var _hoisted_1$L = {
     "aria-hidden": "true"
   };
-  var _hoisted_2$y = {
+  var _hoisted_2$z = {
     class: "sr-only"
   };
   function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", {
       class: (0, import_vue.normalizeClass)(_ctx.dayClasses)
-    }, [(0, import_vue.createElementVNode)("span", _hoisted_1$L, (0, import_vue.toDisplayString)(_ctx.day.day), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_2$y, (0, import_vue.toDisplayString)(_ctx.srText), 1)], 2);
+    }, [(0, import_vue.createElementVNode)("span", _hoisted_1$L, (0, import_vue.toDisplayString)(_ctx.day.day), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_2$z, (0, import_vue.toDisplayString)(_ctx.srText), 1)], 2);
   }
   var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$N]]);
   function offset(page, el) {
@@ -6942,7 +6973,7 @@
     }
   });
   var _hoisted_1$K = ["aria-label"];
-  var _hoisted_2$x = {
+  var _hoisted_2$y = {
     ref: "contextmenu",
     role: "menu",
     tabindex: "-1",
@@ -6971,7 +7002,7 @@
         "aria-label": _ctx.ariaLabel,
         onKeyup: _cache[0] || (_cache[0] = (...args) => _ctx.onKeyUp && _ctx.onKeyUp(...args)),
         onKeydown: _cache[1] || (_cache[1] = (...args) => _ctx.onKeyDown && _ctx.onKeyDown(...args))
-      }, [(0, import_vue.createElementVNode)("ul", _hoisted_2$x, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.popupItems, (item, index) => {
+      }, [(0, import_vue.createElementVNode)("ul", _hoisted_2$y, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.popupItems, (item, index) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", {
           key: item.key,
           role: "menuitem",
@@ -7376,6 +7407,9 @@
     return void 0;
   }
   var _hoisted_1$I = ["onKeyup"];
+  var _hoisted_2$x = {
+    ref: "content"
+  };
   var teleportDisabled = false;
   var _sfc_main$W = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "IPopupListbox",
@@ -7393,8 +7427,8 @@
       emit: __emit
     }) {
       const emit = __emit;
-      const wrapper = (0, import_vue.useTemplateRef)("wrapper");
-      const content = (0, import_vue.useTemplateRef)("content");
+      const wrapperRef = (0, import_vue.useTemplateRef)("wrapper");
+      const contentRef = (0, import_vue.useTemplateRef)("content");
       const popupClasses = ["popup", "popup--overlay"];
       const teleportTarget = (0, import_vue.computed)(() => {
         var _config$popupTarget;
@@ -7404,15 +7438,15 @@
       let verticalSpacing = void 0;
       useEventListener(__props.anchor, "keyup", onKeyEsc);
       (0, import_vue.watchEffect)(() => {
-        if (wrapper.value && __props.activeElement !== void 0) {
-          const centerPosition = __props.activeElement.offsetTop - (wrapper.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
-          if (!isElementInsideVieport(wrapper.value)) {
-            wrapper.value.scrollIntoView({
+        if (wrapperRef.value && __props.activeElement !== void 0) {
+          const centerPosition = __props.activeElement.offsetTop - (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+          if (!isElementInsideViewport(wrapperRef.value)) {
+            wrapperRef.value.scrollIntoView({
               behavior: "instant",
               block: "nearest"
             });
           }
-          wrapper.value.scrollTo({
+          wrapperRef.value.scrollTo({
             top: centerPosition,
             behavior: "instant"
           });
@@ -7426,7 +7460,7 @@
         document.removeEventListener("click", onDocumentClickHandler);
         window.removeEventListener("resize", (0, import_logic.debounce)(onResize, 100));
       }
-      function isElementInsideVieport(element) {
+      function isElementInsideViewport(element) {
         const rect = element.getBoundingClientRect();
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         const windowWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -7471,8 +7505,8 @@
       async function calculatePosition() {
         var _a;
         await (0, import_vue.nextTick)();
-        const wrapperElement = wrapper.value;
-        const contentWrapper = content.value;
+        const wrapperElement = wrapperRef.value;
+        const contentWrapper = contentRef.value;
         if (!__props.anchor || !wrapperElement || !contentWrapper) {
           return;
         }
@@ -7522,18 +7556,14 @@
           ref: "popup",
           class: (0, import_vue.normalizeClass)(popupClasses)
         }, [(0, import_vue.createElementVNode)("div", (0, import_vue.mergeProps)({
-          ref_key: "wrapper",
-          ref: wrapper
+          ref: "wrapper"
         }, _ctx.$attrs, {
           class: "popup__wrapper",
           tabindex: "0",
           onKeyup: (0, import_vue.withKeys)((0, import_vue.withModifiers)(onKeyEsc, ["stop"]), ["esc"]),
           onClick: _cache[0] || (_cache[0] = (0, import_vue.withModifiers)(() => {
           }, ["stop"]))
-        }), [(0, import_vue.createElementVNode)("div", {
-          ref_key: "content",
-          ref: content
-        }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)], 16, _hoisted_1$I)], 512)], 8, ["to"])) : (0, import_vue.createCommentVNode)("", true);
+        }), [(0, import_vue.createElementVNode)("div", _hoisted_2$x, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)], 16, _hoisted_1$I)], 512)], 8, ["to"])) : (0, import_vue.createCommentVNode)("", true);
       };
     }
   });
@@ -8378,7 +8408,7 @@
       emit: __emit
     }) {
       const emit = __emit;
-      const listboxNode = (0, import_vue.useTemplateRef)("listboxNode");
+      const listboxRef = (0, import_vue.useTemplateRef)("listbox");
       const activeElement = (0, import_vue.ref)();
       function isOptionActive(item) {
         return item === __props.activeOption;
@@ -8393,7 +8423,7 @@
         var _a;
         if (__props.activeOption !== null) {
           await (0, import_vue.nextTick)();
-          const activeOptionNode = (_a = listboxNode.value) == null ? void 0 : _a.querySelector(`#${__props.activeOptionId}`);
+          const activeOptionNode = (_a = listboxRef.value) == null ? void 0 : _a.querySelector(`#${__props.activeOptionId}`);
           activeElement.value = activeOptionNode !== null && activeOptionNode !== void 0 ? activeOptionNode : void 0;
         }
       });
@@ -8408,8 +8438,7 @@
         }, {
           default: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("ul", {
             id: _ctx.id,
-            ref_key: "listboxNode",
-            ref: listboxNode,
+            ref: "listbox",
             role: "listbox",
             "aria-label": "F\xF6rslag",
             class: "combobox__listbox__list"

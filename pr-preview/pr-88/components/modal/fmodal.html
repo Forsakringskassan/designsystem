@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-f85a6f.css"
+            href="../../assets/docs-69e499.css"
             crossorigin
-            integrity="sha384-7iDuFVQVw5zFYpz/qNISAse2V1wWdS3AyuL2fJkY++vgKt+NkCYsNJbwQWhQ0x02"
+            integrity="sha384-XQiCJR8rdkZTxe5bwCPgwuB30mWBncgm1XoKmO8JenDz2l02wnCRYxEbknKJXx0b"
             
         />
         <link
@@ -1083,9 +1083,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-ca4fa6.js"
+                    src="../../assets/vendor-fkui-vue-553dde.js"
                     crossorigin
-                    integrity="sha384-RXyxoGBFCkZoEiCW8Bwa9sZM0cXVyJ9MUNXx1oXT+5jnXDlWyDsnXoXbd0cGeF/C"
+                    integrity="sha384-lQiFdp2+ejXV2iYFaMOd3mQGotNsIW9uWx3Of3FgEmX/xtDDAJWrLgrFN4q0RE1B"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-187830.js"
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6311f5fb1ea6033d3a461c01eaa752d1fde7e548/packages/vue/src/components/FModal/FModal.vue">FModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/ec2a734792bbb66e8ab8e4b58c2e11c011ba32a2/packages/vue/src/components/FModal/FModal.vue">FModal</a>
             
         </code>
          
@@ -1246,6 +1246,12 @@
 <li>Första interagerbara element i innehåll</li>
 <li>Hela innehållet</li>
 </ol>
+<h3 id="fokushantering"><a class="header-anchor" href="#fokushantering">Fokushantering</a></h3><p>Modaler hanterar som standard fokus själv där modalen flyttar fokus till rubriken vid öppning och återställer fokus till tidigare fokuserat element vid stägning. Du kan styra detta beteende med propen för focus:</p>
+<ul>
+<li>&quot;on&quot; - komponenten hanterar fokus vid både öppning och stängning</li>
+<li>&quot;off&quot; - komponenten hanterar inte fokus alls.</li>
+<li>&quot;open&quot; - komponenten hanterar enbart fokus vid öppning.</li>
+</ul>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
 </td><td><p>The id for the root element id attribute.<br>
 If the prop is not set a random value will be generated.</p>
@@ -1278,6 +1284,16 @@ Use this to toggle if the modal should be visible or not.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;&quot;</p>
+</td></tr><tr><td><p>focus</p>
+</td><td><p>Default behavior is that the modal will restore focus to previous element once closed.</p>
+<ul>
+<li>&quot;on&quot; (default) - component will set focus both when opened and closed</li>
+<li>&quot;off&quot; - focus strategy disabled</li>
+<li>&quot;open&quot; - focus will only be applied once modal is opened</li>
+</ul>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;on&quot;</p>
 </td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>close</p>
 </td><td><p>Event that is dispatched when the escape button is pressed.<br>
 In most use cases the <code>isOpen</code> prop should be set to false when this event is triggered.</p>
@@ -1312,9 +1328,9 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/6311f5fb1ea6033d3a461c01eaa752d1fde7e548">6311f5f</a>)<br />
+    combobox (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec2a734792bbb66e8ab8e4b58c2e11c011ba32a2">ec2a734</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/88">PR 88</a><br />
-        2024-12-16 09:14
+        2024-12-16 13:35
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1435,9 +1451,9 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-d38a87.js"
+            src="../../assets/processors/selectable-version/select-version-e7a130.js"
             crossorigin
-            integrity="sha384-h+ddMgyQ7IcE+SecmBvw0gBRmhpZDzZrdpFu5Csxoa+6GnktdMYR91Ea4PF1Uul1"
+            integrity="sha384-ioVz0q+o5e9xzpHcYgIMUjemejWyVXe+hmnsBFa92juxUWJaJ7JTzVMgU6A81Kgt"
             
         ></script>
         <script

@@ -347,22 +347,26 @@
         return this.isDisabled ? "disabled" : "";
       },
       required() {
-        return this.isRequired ? "v-validation.required" : "";
+        return this.isRequired ? ".required" : "";
       },
-      arbritary() {
-        return this.allowArbitrary ? "" : "v-validation.required.allowList='{ allowList: { list: land } }'";
+      arbitrary() {
+        return this.allowArbitrary ? "" : ".allowList='{ allowList: { list: land } }'";
+      },
+      validation() {
+        if (!this.required && this.allowArbitrary) {
+          return "";
+        }
+        return `v-validation${this.required}${this.arbitrary}`;
       },
       template() {
         return (
           /* HTML */
           `
                 <f-text-field
-                    id="breed"
                     v-model="valtLand"
                     ${this.disabled}
                     ${this.inline}
-                    ${this.required}
-                    ${this.arbritary}
+                    ${this.validation}
                     maxlength="100"
                     :options="land"
                 >
@@ -417,7 +421,7 @@
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
-        (0, import_vue5.createVNode)(_component_f_fieldset, { name: "SelectField-label" }, {
+        (0, import_vue5.createVNode)(_component_f_fieldset, { name: "label-settings" }, {
           label: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
             (0, import_vue5.createTextVNode)(" Etiketten ")
           ])),
