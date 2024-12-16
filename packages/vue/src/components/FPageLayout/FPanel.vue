@@ -4,11 +4,13 @@ import { debounce } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 
 const {
+    type = "none",
     variant = "static",
     overlay = false,
     resizable = false,
     behaviour,
 } = defineProps<{
+    type?: "none" | "flat" | "layer";
     variant?: "static" | "toggle" | "expand";
     overlay?: boolean;
     resizable?: boolean;
@@ -72,6 +74,19 @@ const attach = computed(() => {
     return container.dataset.attach;
 });
 
+const typeClass = ref<string>();
+
+watch(
+    () => type,
+    (value) => {
+        if (value) {
+            typeClass.value = value !== "none" ? `panel--type-${type}` : undefined;
+        } else {
+            typeClass.value = undefined;
+        }
+    },
+);
+
 const placementClass = computed(() => {
     return placement.value ? `panel--${placement.value}` : undefined;
 });
@@ -88,7 +103,7 @@ const overlayClass = computed(() => {
 });
 
 const classes = computed(() => {
-    return [variantClass.value, placementClass.value, overlayClass.value];
+    return [variantClass.value, placementClass.value, overlayClass.value, typeClass.value];
 });
 
 const haveToggle = computed(() => {
@@ -210,6 +225,7 @@ function stop(event: MouseEvent) {
                             open: isOpen,
                             variant: effectiveVariant,
                             attach,
+                            style,
                             slot: placement,
                             overlay: effectiveOverlay,
                             teleport,
@@ -243,6 +259,7 @@ function stop(event: MouseEvent) {
                             model: open,
                             variant: effectiveVariant,
                             attach,
+                            style: type,
                             slot: placement,
                             overlay: effectiveOverlay,
                             teleport,
@@ -267,6 +284,32 @@ function stop(event: MouseEvent) {
     padding-top: 0.5rem;
     display: flex;
     flex-direction: column;
+}
+
+.panel--type-flat {
+    background: #eee;
+}
+
+.attach-left .panel--type-flat {
+    border-right: 1px solid #333;
+}
+
+.attach-right .panel--type-flat {
+    border-left: 1px solid #333;
+}
+
+.panel--type-layer {
+    background: #eee;
+}
+
+.attach-left .panel--type-layer {
+    border-right: 1px solid #333;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.attach-right .panel--type-layer {
+    border-left: 1px solid #333;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .split-pane {
