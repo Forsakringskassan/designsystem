@@ -26,6 +26,7 @@
       "types": "./dist/types/pageobject.d.ts",
       "default": "./dist/cjs/pageobject.js"
     },
+    "./style.css": "./dist/esm/vue.css",
     "./htmlvalidate": "./htmlvalidate/index.js",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
     "./package.json": "./package.json",

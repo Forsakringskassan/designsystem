@@ -15481,9 +15481,9 @@ id: string;
 modelValue: string;
 disabled: boolean;
 maxlength: number;
+resizable: boolean;
 softLimit: number;
 charactersLeftWarning: string;
-resizable: boolean;
 }, {}, {
 FLabel: DefineComponent<ExtractPropTypes<    {
 for: {

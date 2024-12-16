@@ -2,10 +2,10 @@
 import { ref, computed, useSlots, onMounted, getCurrentInstance, useTemplateRef } from "vue";
 
 const {
-    variant,
+    variant = "static",
     overlay = false,
     resizable = false,
-} = defineProps<{ variant: "static" | "toggle" | "expand"; overlay?: boolean; resizable?: boolean }>();
+} = defineProps<{ variant?: "static" | "toggle" | "expand"; overlay?: boolean; resizable?: boolean }>();
 const slots = useSlots();
 const root = useTemplateRef("root");
 const open = defineModel({ default: true });
@@ -62,17 +62,23 @@ const isOpen = computed(() => {
 let x = null as number | null;
 let r = null as number | null;
 
-function onMouseDown(event) {
+function onMouseDown(event: MouseEvent) {
+    if (!root.value) {
+        return;
+    }
     x = event.clientX;
     r = root.value.offsetWidth;
     window.addEventListener("mousemove", resize);
     window.addEventListener("mouseup", stop);
     root.value.classList.add("resizing");
-    document.body.style["user-select"] = "none";
+    document.body.style.setProperty("user-select", "none");
 }
 
-function resize(event) {
-    switch (attach.value){
+function resize(event: MouseEvent) {
+    if (!root.value || x === null || r === null) {
+        return;
+    }
+    switch (attach.value) {
         case "left": {
             const dx = event.clientX - x;
             root.value.style.width = `${r + dx}px`;
@@ -86,12 +92,16 @@ function resize(event) {
     }
 }
 
-function stop(event) {
+function stop(event: MouseEvent) {
     window.removeEventListener("mousemove", resize);
     window.removeEventListener("mouseup", stop);
+    if (!root.value) {
+        return;
+    }
     root.value.classList.remove("resizing");
     document.body.style.removeProperty("user-select");
     x = null;
+    r = null;
 }
 </script>
 
@@ -109,14 +119,14 @@ function stop(event) {
                 <div class="panel__content">
                     <slot></slot>
                     <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
-                                                                                      {
-                                                                                          open: isOpen,
-                                                                                          variant,
-                                                                                          attach,
-                                                                                          slot: placement,
-                                                                                          overlay,
-                                                                                      }
-                                                                                      }}</pre>
+                        {
+                            open: isOpen,
+                            variant,
+                            attach,
+                            slot: placement,
+                            overlay,
+                        }
+                    }}</pre>
                 </div>
             </div>
         </div>
@@ -131,14 +141,14 @@ function stop(event) {
                 <slot></slot>
 
                 <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
-                                                                                  {
-                                                                                      open: isOpen,
-                                                                                      variant,
-                                                                                      attach,
-                                                                                      slot: placement,
-                                                                                      overlay,
-                                                                                  }
-                                                                                  }}</pre>
+                    {
+                        open: isOpen,
+                        variant,
+                        attach,
+                        slot: placement,
+                        overlay,
+                    }
+                }}</pre>
             </div>
         </div>
     </template>
@@ -157,49 +167,49 @@ function stop(event) {
     display: flex;
     flex-direction: row;
     flex: 1 0 auto;
+}
+
+.split-handle {
+    align-self: center;
+    width: 0;
+
+    .thingy {
+        display: inline-block;
+        position: relative;
+        width: 1rem;
+        height: 5rem;
+        left: -0.5rem;
+        background: black;
+        cursor: ew-resize;
+        z-index: 1;
+    }
+}
+
+.attach-left {
+    .split-content {
+        order: 1;
     }
 
     .split-handle {
-        align-self: center;
-        width: 0;
+        order: 2;
+    }
+}
 
-        .thingy {
-            display: inline-block;
-            position: relative;
-            width: 1rem;
-            height: 5rem;
-            left: -0.5rem;
-            background: black;
-            cursor: ew-resize;
-            z-index: 1;
-        }
+.attach-right {
+    .split-content {
+        order: 2;
     }
 
-    .attach-left {
-        .split-content {
-            order: 1;
-        }
-
-        .split-handle {
-            order: 2;
-        }
+    .split-handle {
+        order: 1;
     }
+}
 
-    .attach-right {
-        .split-content {
-            order: 2;
-        }
-
-        .split-handle {
-            order: 1;
-        }
-    }
-
-    .panel--overlay {
-        position: absolute;
-        height: 100%;
-        z-index: 1;
-    }
+.panel--overlay {
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+}
 
 .panel__content {
     padding: 1rem;
