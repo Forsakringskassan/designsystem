@@ -48,7 +48,7 @@
 
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { ElementIdService, pushFocus, popFocus, findTabbableElements } from "@fkui/logic";
+import { ElementIdService, pushFocus, popFocus, findTabbableElements, focus } from "@fkui/logic";
 import { FIcon } from "../FIcon";
 import { TranslationMixin } from "../../plugins";
 import { findElementFromVueRef, getHTMLElementFromVueRef, hasSlot } from "../../utils";
@@ -119,6 +119,19 @@ export default defineComponent({
                 return sizes.includes(value);
             },
         },
+        /**
+         * Default behavior is that the modal will restore focus to previous element once closed.
+         * - "on" (default) - component will set focus both when opened and closed
+         * - "off" - focus strategy disabled
+         * - "open" - focus will only be applied once modal is opened
+         */
+        focus: {
+            type: String as PropType<"on" | "off" | "open">,
+            default: "on",
+            validator(value: string): boolean {
+                return ["on", "off", "open"].includes(value);
+            },
+        },
     },
     emits: ["close"],
     data(): FModalData {
@@ -173,9 +186,14 @@ export default defineComponent({
             const scroll = root.scrollTop;
             root.style.top = `-${scroll}px`;
             root.classList.add("modal__open");
+
             const focusElement = this.resolveFocusElement();
-            this.savedFocus = pushFocus(focusElement);
-            this.savedScroll = scroll;
+            if (this.focus === "on") {
+                this.savedFocus = pushFocus(focusElement);
+                this.savedScroll = scroll;
+            } else if (this.focus === "open") {
+                focus(focusElement);
+            }
         },
         /**
          * Prioritises what element to initially focus on in the following order:
@@ -197,14 +215,15 @@ export default defineComponent({
             return firstTabbableChildElement ?? contentElement;
         },
         restoreState(): void {
-            if (this.savedFocus) {
-                const root = document.documentElement;
-                root.classList.remove("modal__open");
-                root.style.removeProperty("top");
-                root.scrollTop = this.savedScroll ?? 0;
+            const root = document.documentElement;
+            root.classList.remove("modal__open");
+            root.style.removeProperty("top");
+            root.scrollTop = this.savedScroll ?? 0;
+            this.savedScroll = null;
+
+            if (this.focus === "on" && this.savedFocus) {
                 popFocus(this.savedFocus);
                 this.savedFocus = null;
-                this.savedScroll = null;
             }
         },
         onFocusFirst() {

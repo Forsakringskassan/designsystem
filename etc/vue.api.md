@@ -2412,6 +2412,11 @@ type: PropType<FModalButtonDescriptor[]>;
 required: false;
 default: () => FModalButtonDescriptor[];
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>, {}, {}, {
 preparedButtons(): FModalButton[];
 }, {
@@ -2453,9 +2458,15 @@ type: PropType<FModalButtonDescriptor[]>;
 required: false;
 default: () => FModalButtonDescriptor[];
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>> & Readonly<{
 [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
 }>, {
+focus: "on" | "off" | "open";
 size: string;
 content: string;
 isOpen: boolean;
@@ -2492,6 +2503,11 @@ validator(value: string): boolean;
 };
 size: {
 type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+focus: {
+type: PropType<"on" | "off" | "open">;
 default: string;
 validator(value: string): boolean;
 };
@@ -2537,9 +2553,15 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
+focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
 size: string;
 isOpen: boolean;
@@ -3240,6 +3262,11 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>, {}, FModalData, {
 modalClass(): string[];
 containerClasses(): string[];
@@ -3282,9 +3309,15 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
+focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
 size: string;
 isOpen: boolean;
@@ -3677,6 +3710,11 @@ type: PropType<FModalButtonDescriptor[]>;
 required: false;
 default: () => FModalButtonDescriptor[];
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>, {}, {}, {
 preparedButtons(): FModalButton[];
 }, {
@@ -3718,9 +3756,15 @@ type: PropType<FModalButtonDescriptor[]>;
 required: false;
 default: () => FModalButtonDescriptor[];
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>> & Readonly<{
 [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
 }>, {
+focus: "on" | "off" | "open";
 size: string;
 content: string;
 isOpen: boolean;
@@ -3757,6 +3801,11 @@ validator(value: string): boolean;
 };
 size: {
 type: StringConstructor;
+default: string;
+validator(value: string): boolean;
+};
+focus: {
+type: PropType<"on" | "off" | "open">;
 default: string;
 validator(value: string): boolean;
 };
@@ -3802,9 +3851,15 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
+focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
 size: string;
 isOpen: boolean;
@@ -7542,6 +7597,11 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>, {}, FModalData, {
 modalClass(): string[];
 containerClasses(): string[];
@@ -7584,9 +7644,15 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
+focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
 size: string;
 isOpen: boolean;
@@ -9537,6 +9603,11 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>, {}, FModalData, {
 modalClass(): string[];
 containerClasses(): string[];
@@ -9579,9 +9650,15 @@ type: StringConstructor;
 default: string;
 validator(value: string): boolean;
 };
+focus: {
+type: PropType<"on" | "off" | "open">;
+default: string;
+validator(value: string): boolean;
+};
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
+focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
 size: string;
 isOpen: boolean;
