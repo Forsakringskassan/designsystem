@@ -45,7 +45,7 @@ const isOpen = computed(() => {
         <div class="panel__content">
             <slot></slot>
 
-            <pre style="margin-top: 2rem, overflow-x: auto">{{
+            <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
                 {
                     open: isOpen,
                     variant: variant?.slice("panel--".length),
@@ -68,12 +68,18 @@ const isOpen = computed(() => {
         display: flex;
         width: 1.5rem;
         height: 1.5rem;
-        background: darkred;
+        background: transparent;
+        border: 1px solid #000;
+        border-radius: 4px;
         align-items: center;
         justify-content: center;
 
+        &:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
         &::before {
-            color: white;
+            color: #000;
             display: block;
             content: "x";
             cursor: pointer;
@@ -111,12 +117,18 @@ const isOpen = computed(() => {
         display: flex;
         width: 1.5rem;
         height: 1.5rem;
-        background: darkred;
+        background: transparent;
+        border: 1px solid #000;
+        border-radius: 4px;
         align-items: center;
         justify-content: center;
 
+        &:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
         &::before {
-            color: white;
+            color: #000;
             display: block;
             content: "?";
             cursor: pointer;
