@@ -21,6 +21,7 @@ export * from "./FExpandableParagraph";
 export { FFieldset } from "./FFieldset";
 export { type FFileItemIconName, FFileItem } from "./FFileItem";
 export * from "./FFileSelector";
+export { FPageLayout } from "./FPageLayout";
 export * from "./FSortFilterDataset";
 export {
     type FValidationFormCallback,
