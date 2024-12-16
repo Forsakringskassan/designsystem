@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, useSlots, onMounted, getCurrentInstance, useTemplateRef } from "vue";
 
-const props = defineProps<{ variant: "static" | "toggle" | "expand" }>();
+const { variant, overlay = false } = defineProps<{ variant: "static" | "toggle" | "expand"; overlay?: boolean }>();
 const slots = useSlots();
 const root = useTemplateRef("root");
 const open = defineModel({ default: true });
@@ -15,17 +15,20 @@ const placement = computed(() => {
     return container ? `panel--${container.dataset.area}` : undefined;
 });
 
-const variant = computed(() => {
-    return props.variant ? `panel--${props.variant}` : undefined;
+const variantClass = computed(() => {
+    return variant ? `panel--${variant}` : undefined;
+});
+
+const overlayClass = computed(() => {
+    return overlay ? `panel--overlay` : undefined;
 });
 
 const haveToggle = computed(() => {
-    return props.variant ? props.variant !== "static" : false;
+    return variant ? variant !== "static" : false;
 });
 
 const isOpen = computed(() => {
-    console.log(props.variant);
-    switch (props.variant) {
+    switch (variant) {
         case "toggle":
             return open.value ?? true;
         case "expand":
@@ -37,7 +40,7 @@ const isOpen = computed(() => {
 </script>
 
 <template>
-    <div class="panel" :class="[variant, placement]" ref="root" v-if="isOpen">
+    <div class="panel" :class="[variantClass, placement, overlayClass]" ref="root" v-if="isOpen">
         <div class="panel__toolbar" v-if="haveToggle">
             <input type="checkbox" v-model="open" class="panel__toggle" />
         </div>
@@ -48,8 +51,9 @@ const isOpen = computed(() => {
             <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
                 {
                     open: isOpen,
-                    variant: variant?.slice("panel--".length),
+                    variant,
                     placement: placement?.slice("panel--".length),
+                    overlay,
                 }
             }}</pre>
         </div>
@@ -59,6 +63,18 @@ const isOpen = computed(() => {
 <style>
 .panel {
     min-width: 20ch;
+    flex: 1 0 auto;
+    padding-top: 0.5rem;
+}
+
+.panel--overlay {
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+}
+
+.panel__content {
+    padding: 1rem;
 }
 
 .panel--toggle {
@@ -73,6 +89,7 @@ const isOpen = computed(() => {
         border-radius: 4px;
         align-items: center;
         justify-content: center;
+        margin: 0 0.5rem;
 
         &:hover {
             background: rgba(0, 0, 0, 0.3);
@@ -135,6 +152,10 @@ const isOpen = computed(() => {
             line-height: 1;
             flex: 1 1 auto;
             text-align: center;
+        }
+
+        &:checked {
+            margin: 0 0.5rem;
         }
 
         &:checked::before {

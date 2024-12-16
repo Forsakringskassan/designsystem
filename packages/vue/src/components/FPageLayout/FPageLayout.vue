@@ -20,7 +20,7 @@ const slotNames = computed(() => {
             :key="name"
             :data-area="name"
             :style="`grid-area: ${name}`"
-            :class="`page-layout__${name}`"
+            :class="[`page-layout__area`, `page-layout__${name}`]"
         >
             <slot :name></slot>
         </div>
@@ -31,5 +31,10 @@ const slotNames = computed(() => {
 .page-layout {
     display: grid;
     min-height: 100vh;
+}
+.page-layout__area {
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 </style>
