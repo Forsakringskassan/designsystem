@@ -5,6 +5,13 @@
     --fkds-color-background-primary: #{$palette-color-white-100};
     --fkds-color-background-disabled: #{$palette-color-fk-black-5};
 
+    // BACKGROUND - ACTION
+    --fkds-color-action-background-select-hover: #{$palette-color-green-a-15};
+    --fkds-color-action-background-select-default: #{$palette-color-green-a-85};
+
+    // ACTION
+    --fkds-icon-color-action-content-weak-default: #{$palette-color-fk-black-70};
+
     // BACKGROUND - FEEDBACK
     --fkds-color-feedback-background-neutral: #{$palette-color-fk-black-5};
     --fkds-color-feedback-background-neutral-strong: #{$palette-color-fk-black-15};
@@ -16,10 +23,6 @@
     --fkds-color-feedback-background-positive-strong: #{$palette-color-green-a-85};
     --fkds-color-feedback-background-warning: #{$palette-color-yellow-5};
     --fkds-color-feedback-background-warning-strong: #{$palette-color-yellow-100};
-
-    // BACKGROUND - ACTION
-    --fkds-color-action-background-select-hover: #{$palette-color-green-a-15};
-    --fkds-color-action-background-select-default: #{$palette-color-green-a-85};
 
     // BORDER
     --fkds-color-border-primary: #{$palette-color-fk-black-50};
@@ -34,6 +37,7 @@
     // ICON
     --fkds-icon-color-action-content-primary-default: #{$palette-color-bluebell-100};
     --fkds-icon-color-action-content-primary-disabled: #{$palette-color-fk-black-50};
+    --fkds-icon-color-content-disabled: #{$palette-color-fk-black-50};
 
     // TEXT
     --fkds-color-text-inverted: #{$palette-color-white-100};
