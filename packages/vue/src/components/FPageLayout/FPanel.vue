@@ -11,7 +11,7 @@ const placement = computed(() => {
     if (!element) {
         return undefined;
     }
-    const container = element.closest("[data-area]");
+    const container = element.closest("[data-area]") as HTMLElement;
     return container ? `panel--${container.dataset.area}` : undefined;
 });
 

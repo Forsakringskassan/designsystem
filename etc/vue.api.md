@@ -612,6 +612,9 @@ disabled: boolean;
 export { _default_3 as FRadioField }
 export { _default_3 as FRadioGroupField }
 
+// @public (undocumented)
+export function defineLayout<T extends LayoutDefinition>(definition: T): T;
+
 // @internal
 export function dispatchComponentUnmountEvent(element: ValidatableHTMLElement): void;
 
@@ -1781,12 +1784,12 @@ selected: boolean;
 highlight: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_2" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_2" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FCard: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
+export const FCard: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
 
 // @public @deprecated (undocumented)
 export const FCheckboxGroup: DefineComponent<ExtractPropTypes<    {
@@ -7051,9 +7054,9 @@ default: string;
 validator(value: string): boolean;
 };
 }>> & Readonly<{}>, {
+layout: "standard" | "short";
 banner: boolean;
 provideScreenReaderContext: boolean;
-layout: "standard" | "short";
 }, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -9364,9 +9367,9 @@ default: string;
 validator(value: string): boolean;
 };
 }>> & Readonly<{}>, {
+layout: "standard" | "short";
 banner: boolean;
 provideScreenReaderContext: boolean;
-layout: "standard" | "short";
 }, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -11336,6 +11339,20 @@ default: string;
 href: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_2" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FPageLayout: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FPanel: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const FPercentTextField: DefineComponent<ExtractPropTypes<    {
@@ -17589,12 +17606,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_5" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, __VLS_TemplateResult_5["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
@@ -17862,6 +17879,22 @@ href: string;
 
 // @public (undocumented)
 export function itemEquals<T extends object, K extends keyof T>(item1: ListItem<T> | undefined, item2: ListItem<T> | undefined, compareAttribute: K): boolean;
+
+// @public (undocumented)
+export interface LayoutDefinition {
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    slots: Record<string, LayoutSlotDefinition>;
+}
+
+// @public (undocumented)
+export interface LayoutSlotDefinition {
+    // (undocumented)
+    attach: "none" | "left" | "right";
+    // (undocumented)
+    direction: "column" | "row";
+}
 
 // @public
 export type ListArray<T extends object = UnknownItem> = Array<ListItem<T>>;

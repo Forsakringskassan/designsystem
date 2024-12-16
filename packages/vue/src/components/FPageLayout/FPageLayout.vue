@@ -6,16 +6,16 @@ import { defaultLayouts } from "./default-layout";
 const props = defineProps<{ layout: string | LayoutDefinition }>();
 const slots = useSlots();
 
-const layoutDefinition = computed(() => {
+const layoutDefinition = computed<LayoutDefinition>(() => {
     const { layout } = props;
     const stubLayout = defineLayout({
-        name: '',
+        name: "",
         slots: {},
     });
     if (!layout) {
         return stubLayout;
     }
-    if (typeof layout === 'string') {
+    if (typeof layout === "string") {
         return defaultLayouts[layout] ?? stubLayout;
     } else {
         return layout;
@@ -27,26 +27,39 @@ const className = computed(() => {
     if (!layout) {
         return undefined;
     }
-    const name = typeof layout === 'string' ? layout : layout.name;
+    const name = typeof layout === "string" ? layout : layout.name;
     return `page-layout--${name}`;
 });
 
 const slotNames = computed(() => {
     const available = Object.keys(layoutDefinition.value.slots);
-    return Object.keys(slots).filter(it => available.includes(it));
+    return Object.keys(slots).filter((it) => available.includes(it));
+});
+
+const slotData = computed(() => {
+    const { slots } = layoutDefinition.value;
+    return slotNames.value.map((name) => {
+        const { direction } = slots[name];
+        const nameClass = `area-${name}`;
+        const directionClass = `direction-${direction}`;
+        return {
+            name,
+            classes: [`page-layout__area`, nameClass, directionClass],
+        };
+    });
 });
 </script>
 
 <template>
     <div class="page-layout" :class="className">
         <div
-            v-for="name of slotNames"
-            :key="name"
-            :data-area="name"
-            :style="`grid-area: ${name}`"
-            :class="[`page-layout__area`, `page-layout__${name}`]"
+            v-for="slot of slotData"
+            :key="slot.name"
+            :data-area="slot.name"
+            :style="`grid-area: ${slot.name}`"
+            :class="slot.classes"
         >
-            <slot :name></slot>
+            <slot :name="slot.name"></slot>
         </div>
     </div>
 </template>
@@ -59,7 +72,46 @@ const slotNames = computed(() => {
 }
 .page-layout__area {
     display: flex;
-    flex-direction: column;
     position: relative;
+
+    &.direction-column {
+        flex-direction: column;
+    }
+
+    &.direction-row {
+        flex-direction: row;
+    }
+}
+
+.page-layout--simple {
+    grid-template:
+        "header" min-content
+        "content"
+        "footer" min-content
+        / auto;
+}
+
+.page-layout--left-panel {
+    grid-template:
+        "header header" min-content
+        "left content"
+        "footer footer" min-content
+        / min-content auto;
+}
+
+.page-layout--right-panel {
+    grid-template:
+        "header header" min-content
+        "content right"
+        "footer footer" min-content
+        / auto min-content;
+}
+
+.page-layout--three-column {
+    grid-template:
+        "header header header" min-content
+        "left content right"
+        "footer footer footer" min-content
+        / min-content 1fr min-content;
 }
 </style>

@@ -3,7 +3,7 @@ export interface LayoutSlotDefinition {
     direction: "column" | "row";
 }
 
-export interface LayoutDefinition{
+export interface LayoutDefinition {
     name: string;
     slots: Record<string, LayoutSlotDefinition>;
 }
