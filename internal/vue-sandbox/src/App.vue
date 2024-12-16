@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import "highlight.js/styles/github.min.css";
+import { ref, computed, onMounted } from "vue";
+import hljs from "highlight.js";
 import { FPageLayout, FPanel, FFieldset, FSelectField, defineLayout, FNavigationMenu } from "@fkui/vue";
-import "@fkui/vue/style.css";
+import simple from "../../../packages/vue/src/components/FPageLayout/examples/FPageLayoutSimpleExample.vue?raw";
+
+const highlightedSimple = hljs.highlight(simple, { language: "html" }).value;
 
 const routes = [
-    { label: "Enkel", route: "simple" },
+    { label: "Grundmall", route: "simple" },
     { label: "Vänster panel", route: "left-panel" },
     { label: "Höger panel", route: "right-panel" },
     { label: "Båda paneler", route: "three-column" },
     { label: "Custom", route: "custom" },
 ];
 
-const layoutName = ref("left-panel");
+const layoutName = ref("simple");
 
 const leftOpen = ref(true);
-const leftVariant = ref<"static" | "toggle" | "expand">("expand");
+const leftVariant = ref<"static" | "toggle" | "expand">("static");
 const leftFlags = ref<"none" | "overlay" | "resizable">("none");
 
 const rightOpen = ref(true);
@@ -70,6 +74,22 @@ const layout = computed(() => {
             return "simple";
     }
 });
+
+function maybeOverlay(sizes: Record<string, number>): {
+    variant?: "static" | "toggle" | "expand";
+    overlay?: boolean;
+    fullscreen?: boolean;
+} {
+    const { body, left = 0, right = 0 } = sizes;
+    const width = body - left - right;
+    if (body < 500) {
+        return { variant: "toggle", fullscreen: true };
+    }
+    if (width < 500) {
+        return { variant: "expand", overlay: true };
+    }
+    return {};
+}
 </script>
 
 <template>
@@ -91,6 +111,7 @@ const layout = computed(() => {
                 class="my-left-panel"
                 :overlay="leftFlags === 'overlay'"
                 :resizable="leftFlags === 'resizable'"
+                :behaviour="leftFlags === 'responsive' ? maybeOverlay : undefined"
             >
                 left
             </f-panel>
@@ -103,6 +124,7 @@ const layout = computed(() => {
                 class="my-right-panel"
                 :overlay="rightFlags === 'overlay'"
                 :resizable="rightFlags === 'resizable'"
+                :behaviour="rightFlags === 'responsive' ? maybeOverlay : undefined"
             >
                 right
             </f-panel>
@@ -117,12 +139,40 @@ const layout = computed(() => {
         <template #content>
             <main>
                 <h1>Heading</h1>
-                <p>Lorem ipsum dolor sit amet</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+
+                <template v-if="layoutName === 'simple'">
+                    <p>Grundmall innehåller tre ytor:</p>
+                    <ul>
+                        <li><code>header</code></li>
+                        <li><code>content</code></li>
+                        <li><code>footer</code></li>
+                    </ul>
+                    <p>Navigationsmeny placeras i header-slotten, det finns ingen separat slot för navigering.</p>
+                    <p>
+                        All bakgrundsfärg, padding osv ligger i applikationen och ingår ej i
+                        <code>FPageLayout</code> eller <code>FPanel</code>.
+                    </p>
+
+                    <pre><code v-html="highlightedSimple"></code></pre>
+                </template>
 
                 <template v-if="layout !== 'simple'">
                     <div class="button-group">
-                        <button class="button" type="button" @click="leftOpen = true">Open left panel</button>
-                        <button class="button" type="button" @click="rightOpen = true">Open right panel</button>
+                        <button
+                            class="button button--secondary button-group__item"
+                            type="button"
+                            @click="leftOpen = true"
+                        >
+                            Open left panel
+                        </button>
+                        <button
+                            class="button button--secondary button-group__item"
+                            type="button"
+                            @click="rightOpen = true"
+                        >
+                            Open right panel
+                        </button>
                         <button v-if="layoutName === 'custom'" class="button" type="button" @click="right2Open = true">
                             Open extra panel
                         </button>
@@ -149,6 +199,7 @@ const layout = computed(() => {
                                             <option value="none">Fixed</option>
                                             <option value="resizable">Resizable</option>
                                             <option value="overlay">Overlay</option>
+                                            <option value="responsive">Responsive</option>
                                         </template>
                                     </f-select-field>
                                 </div>
@@ -177,6 +228,7 @@ const layout = computed(() => {
                                             <option value="none">Fixed</option>
                                             <option value="resizable">Resizable</option>
                                             <option value="overlay">Overlay</option>
+                                            <option value="responsive">Responsive</option>
                                         </template>
                                     </f-select-field>
                                 </div>
