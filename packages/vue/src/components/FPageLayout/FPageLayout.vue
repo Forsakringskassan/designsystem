@@ -15,7 +15,13 @@ const slotNames = computed(() => {
 
 <template>
     <div class="page-layout" :class="className">
-        <div v-for="name of slotNames" :key="name" :style="`grid-area: ${name}`" :class="`page-layout__${name}`">
+        <div
+            v-for="name of slotNames"
+            :key="name"
+            :data-area="name"
+            :style="`grid-area: ${name}`"
+            :class="`page-layout__${name}`"
+        >
             <slot :name></slot>
         </div>
     </div>
