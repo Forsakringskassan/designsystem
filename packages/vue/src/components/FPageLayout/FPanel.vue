@@ -16,7 +16,20 @@ const placement = computed(() => {
         return undefined;
     }
     const container = element.closest("[data-area]") as HTMLElement;
-    return container ? `panel--${container.dataset.area}` : undefined;
+    return container.dataset.area;
+});
+
+const attach = computed(() => {
+    const element = root.value;
+    if (!element) {
+        return undefined;
+    }
+    const container = element.closest("[data-attach]") as HTMLElement;
+    return container.dataset.attach;
+});
+
+const placementClass = computed(() => {
+    return placement.value ? `panel--${placement.value}` : undefined;
 });
 
 const variantClass = computed(() => {
@@ -28,7 +41,7 @@ const overlayClass = computed(() => {
 });
 
 const classes = computed(() => {
-    return [variantClass.value, placement.value, overlayClass.value];
+    return [variantClass.value, placementClass.value, overlayClass.value];
 });
 
 const haveToggle = computed(() => {
@@ -59,8 +72,18 @@ function onMouseDown(event) {
 }
 
 function resize(event) {
-    const dx = event.clientX - x;
-    root.value.style.width = `${r - dx}px`;
+    switch (attach.value){
+        case "left": {
+            const dx = event.clientX - x;
+            root.value.style.width = `${r + dx}px`;
+            break;
+        }
+        case "right": {
+            const dx = event.clientX - x;
+            root.value.style.width = `${r - dx}px`;
+            break;
+        }
+    }
 }
 
 function stop(event) {
@@ -78,13 +101,22 @@ function stop(event) {
             <div class="split-handle">
                 <span v-if="open" class="thingy" @mousedown="onMouseDown"></span>
             </div>
-            <div class="panel" :class="classes" ref="root" v-bind="$attrs">
+            <div class="panel split-content" :class="classes" ref="root" v-bind="$attrs">
                 <div class="panel__toolbar" v-if="haveToggle">
                     <input type="checkbox" v-model="open" class="panel__toggle" />
                 </div>
 
                 <div class="panel__content">
                     <slot></slot>
+                    <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
+                                                                                      {
+                                                                                          open: isOpen,
+                                                                                          variant,
+                                                                                          attach,
+                                                                                          slot: placement,
+                                                                                          overlay,
+                                                                                      }
+                                                                                      }}</pre>
                 </div>
             </div>
         </div>
@@ -99,13 +131,14 @@ function stop(event) {
                 <slot></slot>
 
                 <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
-                    {
-                        open: isOpen,
-                        variant,
-                        placement: placement?.slice("panel--".length),
-                        overlay,
-                    }
-                }}</pre>
+                                                                                  {
+                                                                                      open: isOpen,
+                                                                                      variant,
+                                                                                      attach,
+                                                                                      slot: placement,
+                                                                                      overlay,
+                                                                                  }
+                                                                                  }}</pre>
             </div>
         </div>
     </template>
@@ -124,28 +157,49 @@ function stop(event) {
     display: flex;
     flex-direction: row;
     flex: 1 0 auto;
-}
+    }
 
-.split-handle {
-    align-self: center;
+    .split-handle {
+        align-self: center;
+        width: 0;
 
-    .thingy {
-        display: inline-block;
-        position: relative;
-        left: 0.5rem;
-        width: 1rem;
-        height: 5rem;
-        background: black;
-        cursor: ew-resize;
+        .thingy {
+            display: inline-block;
+            position: relative;
+            width: 1rem;
+            height: 5rem;
+            left: -0.5rem;
+            background: black;
+            cursor: ew-resize;
+            z-index: 1;
+        }
+    }
+
+    .attach-left {
+        .split-content {
+            order: 1;
+        }
+
+        .split-handle {
+            order: 2;
+        }
+    }
+
+    .attach-right {
+        .split-content {
+            order: 2;
+        }
+
+        .split-handle {
+            order: 1;
+        }
+    }
+
+    .panel--overlay {
+        position: absolute;
+        height: 100%;
         z-index: 1;
     }
-}
-
-.panel--overlay {
-    position: absolute;
-    height: 100%;
-    z-index: 1;
-}
 
 .panel__content {
     padding: 1rem;

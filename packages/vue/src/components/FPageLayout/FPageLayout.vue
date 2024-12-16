@@ -39,12 +39,14 @@ const slotNames = computed(() => {
 const slotData = computed(() => {
     const { slots } = layoutDefinition.value;
     return slotNames.value.map((name) => {
-        const { direction } = slots[name];
+        const { attach, direction } = slots[name];
         const nameClass = `area-${name}`;
+        const attachClass = `attach-${attach}`;
         const directionClass = `direction-${direction}`;
         return {
             name,
-            classes: [`page-layout__area`, nameClass, directionClass],
+            attach,
+            classes: [`page-layout__area`, nameClass, attachClass, directionClass],
         };
     });
 });
@@ -56,6 +58,7 @@ const slotData = computed(() => {
             v-for="slot of slotData"
             :key="slot.name"
             :data-area="slot.name"
+            :data-attach="slot.attach"
             :style="`grid-area: ${slot.name}`"
             :class="slot.classes"
         >
