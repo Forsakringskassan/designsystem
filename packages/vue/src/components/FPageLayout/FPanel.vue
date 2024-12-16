@@ -1,22 +1,31 @@
 <script setup lang="ts">
 import { ref, computed, useSlots, onMounted, getCurrentInstance, useTemplateRef, inject, watch } from "vue";
-import {debounce} from "@fkui/logic";
-import {useEventListener} from "../../composables";
+import { debounce } from "@fkui/logic";
+import { useEventListener } from "../../composables";
 
 const {
     variant = "static",
     overlay = false,
     resizable = false,
     behaviour,
-} = defineProps<{ variant?: "static" | "toggle" | "expand"; overlay?: boolean; resizable?: boolean, behaviour?(sizes: Record<string, number>): { variant?: "static" | "toggle" | "expand", overlay?: boolean, fullscreen?: boolean }}>();
+} = defineProps<{
+    variant?: "static" | "toggle" | "expand";
+    overlay?: boolean;
+    resizable?: boolean;
+    behaviour?(sizes: Record<string, number>): {
+        variant?: "static" | "toggle" | "expand";
+        overlay?: boolean;
+        fullscreen?: boolean;
+    };
+}>();
 const slots = useSlots();
 const root = useTemplateRef("root");
 const open = defineModel({ default: true });
 const size = inject<() => Record<string, number>>("size");
-const override = ref<{ variant?: "static" | "toggle" | "expand", overlay?: boolean, fullscreen?: boolean }>({});
+const override = ref<{ variant?: "static" | "toggle" | "expand"; overlay?: boolean; fullscreen?: boolean }>({});
 
 const effectiveVariant = computed(() => {
-    if (override.value && typeof override.value.variant!== 'undefined') {
+    if (override.value && typeof override.value.variant !== "undefined") {
         return override.value.variant;
     } else {
         return variant;
@@ -24,7 +33,7 @@ const effectiveVariant = computed(() => {
 });
 
 const effectiveOverlay = computed(() => {
-    if (override.value && typeof override.value.overlay !== 'undefined') {
+    if (override.value && typeof override.value.overlay !== "undefined") {
         return override.value.overlay;
     } else {
         return overlay;
@@ -32,7 +41,7 @@ const effectiveOverlay = computed(() => {
 });
 
 const effectiveFullscreen = computed(() => {
-    if (override.value && typeof override.value.fullscreen !== 'undefined') {
+    if (override.value && typeof override.value.fullscreen !== "undefined") {
         return override.value.fullscreen;
     } else {
         return false;
@@ -44,7 +53,10 @@ const placement = computed(() => {
     if (!element) {
         return undefined;
     }
-    const container = element.closest("[data-area]") as HTMLElement;
+    const container = element.closest("[data-area]") as HTMLElement | undefined;
+    if (!container) {
+        return undefined;
+    }
     return container.dataset.area;
 });
 
@@ -53,7 +65,10 @@ const attach = computed(() => {
     if (!element) {
         return undefined;
     }
-    const container = element.closest("[data-attach]") as HTMLElement;
+    const container = element.closest("[data-attach]") as HTMLElement | undefined;
+    if (!container) {
+        return undefined;
+    }
     return container.dataset.attach;
 });
 
@@ -62,6 +77,9 @@ const placementClass = computed(() => {
 });
 
 const variantClass = computed(() => {
+    if (effectiveFullscreen.value) {
+        return `panel--fullscreen`;
+    }
     return effectiveVariant.value ? `panel--${effectiveVariant.value}` : undefined;
 });
 
@@ -78,6 +96,10 @@ const haveToggle = computed(() => {
 });
 
 const isOpen = computed(() => {
+    if (effectiveFullscreen.value) {
+        return open.value;
+    }
+
     switch (effectiveVariant.value) {
         case "toggle":
             return open.value ?? true;
@@ -86,6 +108,10 @@ const isOpen = computed(() => {
         default:
             return true;
     }
+});
+
+const teleport = computed(() => {
+    return open.value && effectiveFullscreen.value;
 });
 
 useEventListener(window, "resize", debounce(onWindowResize, 200));
@@ -104,14 +130,17 @@ onMounted(() => {
     }
 });
 
-watch(() => behaviour, () => {
-    if (behaviour && size) {
-        const result = behaviour(size());
-        override.value = result;
-    } else {
-        override.value = {};
-    }
-});
+watch(
+    () => behaviour,
+    () => {
+        if (behaviour && size) {
+            const result = behaviour(size());
+            override.value = result;
+        } else {
+            override.value = {};
+        }
+    },
+);
 
 let x = null as number | null;
 let r = null as number | null;
@@ -178,8 +207,9 @@ function stop(event: MouseEvent) {
                             variant: effectiveVariant,
                             attach,
                             slot: placement,
-                                                                                      overlay: effectiveOverlay,
-                                                                                      override,
+                            overlay: effectiveOverlay,
+                            teleport,
+                            override,
                         }
                     }}</pre>
                 </div>
@@ -187,26 +217,30 @@ function stop(event: MouseEvent) {
         </div>
     </template>
     <template v-else>
-        <div class="panel" :class="classes" ref="root" v-if="isOpen" v-bind="$attrs">
-            <div class="panel__toolbar" v-if="haveToggle">
-                <input type="checkbox" v-model="open" class="panel__toggle" />
-            </div>
+        <Teleport :disabled="!teleport" to="body">
+            <div class="panel" :class="classes" ref="root" v-if="isOpen" v-bind="$attrs">
+                <div class="panel__toolbar" v-if="haveToggle">
+                    <input type="checkbox" v-model="open" class="panel__toggle" />
+                </div>
 
-            <div class="panel__content">
-                <slot></slot>
+                <div class="panel__content">
+                    <slot></slot>
 
-                <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
-                    {
-                        open: isOpen,
-                        variant: effectiveVariant,
-                        attach,
-                        slot: placement,
-                                                                                  overlay: effectiveOverlay,
-                                                                                  override
-                    }
-                }}</pre>
+                    <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
+                        {
+                            open: isOpen,
+                            model: open,
+                            variant: effectiveVariant,
+                            attach,
+                            slot: placement,
+                            overlay: effectiveOverlay,
+                            teleport,
+                            override,
+                        }
+                    }}</pre>
+                </div>
             </div>
-        </div>
+        </Teleport>
         <div class="spacer" v-if="effectiveVariant === 'expand' && effectiveOverlay"></div>
     </template>
 </template>
@@ -254,30 +288,30 @@ function stop(event: MouseEvent) {
     .panel--overlay {
         left: 0;
     }
+}
+
+.attach-right {
+    .split-content {
+        order: 2;
     }
 
-    .attach-right {
-        .split-content {
-            order: 2;
-        }
-
-        .split-handle {
-            order: 1;
-        }
-
-        .panel--overlay {
-            right: 0;
-        }
+    .split-handle {
+        order: 1;
     }
 
     .panel--overlay {
-        position: absolute;
-        height: 100%;
-        z-index: 1;
+        right: 0;
+    }
 }
-        .spacer {
-            width: 1.5rem; /* size of button */
-        }
+
+.panel--overlay {
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+}
+.spacer {
+    width: 1.5rem; /* size of button */
+}
 
 .panel__content {
     padding: 1rem;
@@ -369,27 +403,66 @@ function stop(event: MouseEvent) {
             content: "";
         }
     }
+}
 
-    &.panel--left {
-        .panel__toolbar {
-            justify-content: flex-end;
-        }
-        .panel__toggle::before {
-            content: "»";
-        }
-        .panel__toggle:checked::before {
-            content: "«";
-        }
+.attach-left .panel--expand {
+    .panel__toolbar {
+        justify-content: flex-end;
     }
-    &.panel--right {
-        .panel__toolbar {
-            justify-content: flex-start;
+    .panel__toggle::before {
+        content: "»";
+    }
+    .panel__toggle:checked::before {
+        content: "«";
+    }
+}
+
+.attach-right .panel--expand {
+    .panel__toolbar {
+        justify-content: flex-start;
+    }
+    .panel__toggle::before {
+        content: "«";
+    }
+    .panel__toggle:checked::before {
+        content: "»";
+    }
+}
+
+.panel--fullscreen {
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+
+    .panel__toolbar {
+        justify-content: flex-end;
+    }
+
+    .panel__toggle {
+        appearance: none;
+        position: relative;
+        display: flex;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: transparent;
+        border: 1px solid #000;
+        border-radius: 4px;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.5rem;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.3);
         }
-        .panel__toggle::before {
-            content: "«";
-        }
-        .panel__toggle:checked::before {
-            content: "»";
+
+        &::before {
+            color: #000;
+            display: block;
+            content: "x";
+            cursor: pointer;
+            line-height: 1;
+            flex: 1 1 auto;
+            text-align: center;
         }
     }
 }
