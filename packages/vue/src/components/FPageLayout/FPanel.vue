@@ -199,7 +199,11 @@ function stop(event: MouseEvent) {
                     <input type="checkbox" v-model="open" class="panel__toggle" />
                 </div>
 
-                <div class="panel__content">
+                <div class="panel__header" v-if="slots.footer">
+                    <slot name="header"></slot>
+                </div>
+
+                <div class="panel__content" v-if="slots.default">
                     <slot></slot>
                     <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
                         {
@@ -213,6 +217,10 @@ function stop(event: MouseEvent) {
                         }
                     }}</pre>
                 </div>
+
+                <div class="panel__footer" v-if="slots.footer">
+                    <slot name="footer"></slot>
+                </div>
             </div>
         </div>
     </template>
@@ -223,9 +231,12 @@ function stop(event: MouseEvent) {
                     <input type="checkbox" v-model="open" class="panel__toggle" />
                 </div>
 
-                <div class="panel__content">
-                    <slot></slot>
+                <div class="panel__header" v-if="slots.footer">
+                    <slot name="header"></slot>
+                </div>
 
+                <div class="panel__content" v-if="slots.default">
+                    <slot name="default"></slot>
                     <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
                         {
                             open: isOpen,
@@ -238,6 +249,10 @@ function stop(event: MouseEvent) {
                             override,
                         }
                     }}</pre>
+                </div>
+
+                <div class="panel__footer" v-if="slots.footer">
+                    <slot name="footer"></slot>
                 </div>
             </div>
         </Teleport>
@@ -313,9 +328,19 @@ function stop(event: MouseEvent) {
     width: 1.5rem; /* size of button */
 }
 
+.panel__header {
+    padding: 1rem;
+    flex: 0 0 auto;
+}
+
 .panel__content {
     padding: 1rem;
     flex: 1 0 auto;
+}
+
+.panel__footer {
+    padding: 1rem;
+    flex: 0 0 auto;
 }
 
 .panel--toggle {
