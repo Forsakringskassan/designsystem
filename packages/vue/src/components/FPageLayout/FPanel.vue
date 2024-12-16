@@ -129,7 +129,16 @@ const teleport = computed(() => {
     return open.value && effectiveFullscreen.value;
 });
 
-useEventListener(window, "resize", debounce(onWindowResize, 200));
+
+watch(() => teleport.value, (value) => {
+    if (value) {
+        window.scrollTo(0,0)
+    }
+    document.body.classList.toggle("panel-fullscreen-present", value);
+});
+
+
+useEventListener(window, "resize", debounce(onWindowResize, 25));
 
 function onWindowResize() {
     if (behaviour && size) {
@@ -432,7 +441,9 @@ function stop(event: MouseEvent) {
     &:not(:has(input:checked)) {
         width: 1.5rem !important; /* size of button */
 
-        .panel__content {
+        .panel__header,
+        .panel__content,
+        .panel__footer {
             display: none;
         }
     }
@@ -537,5 +548,10 @@ function stop(event: MouseEvent) {
 
 .panel__toolbar {
     display: flex;
-}
+    }
+
+    body.panel-fullscreen-present {
+        overflow: hidden;
+    }
+
 </style>

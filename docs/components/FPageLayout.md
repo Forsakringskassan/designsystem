@@ -49,7 +49,7 @@ FPageLayoutPanelsExample.vue
 ```diff
          <template #left>
 -            <f-panel>
-+            <f-panel :behaviour=maybeOverlayOrFullscreen">
++            <f-panel :behaviour="maybeOverlayOrFullscreen">
                  Left
              </f-panel>
          </template>
@@ -68,7 +68,7 @@ function maybeOverlayOrFullscreen(sizes) {
 
     /* if the leftover width for the main container is less than 500px open
      * panel as overlay */
-    if (width < 500) {
+    if (width < 600) {
         return { variant: "expand", overlay: true };
     }
 
