@@ -1,10 +1,33 @@
 <script setup lang="ts">
-import { computed, useSlots } from "vue";
+import { computed, useSlots, provide, useTemplateRef } from "vue";
 import { type LayoutDefinition, defineLayout } from "./define-layout";
 import { defaultLayouts } from "./default-layout";
 
 const props = defineProps<{ layout: string | LayoutDefinition }>();
 const slots = useSlots();
+const areas = useTemplateRef("areas");
+
+provide("size", () => {
+    if (!areas.value) {
+        return {};
+    }
+    const elements = Array.from(areas.value) as HTMLElement[];
+    return elements.reduce<Record<string, number>>(
+        (sizes, element) => {
+            /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- know to have this data */
+            const area = element.dataset.area!;
+            const direction = element.dataset.column;
+            const widths = Array.from(element.children, (it) => (it as HTMLElement).offsetWidth);
+            if (direction === "column") {
+                sizes[area] = Math.max(...widths);
+            } else {
+                sizes[area] = widths.reduce((sum, it) => sum + it, 0);
+            }
+            return sizes;
+        },
+        { body: document.body.offsetWidth },
+    );
+});
 
 const layoutDefinition = computed<LayoutDefinition>(() => {
     const { layout } = props;
@@ -46,6 +69,7 @@ const slotData = computed(() => {
         return {
             name,
             attach,
+            direction,
             classes: [`page-layout__area`, nameClass, attachClass, directionClass],
         };
     });
@@ -56,9 +80,11 @@ const slotData = computed(() => {
     <div class="page-layout" :class="className">
         <div
             v-for="slot of slotData"
+            ref="areas"
             :key="slot.name"
             :data-area="slot.name"
             :data-attach="slot.attach"
+            :data-direction="slot.direction"
             :style="`grid-area: ${slot.name}`"
             :class="slot.classes"
         >

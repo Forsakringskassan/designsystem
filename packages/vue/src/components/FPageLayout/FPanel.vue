@@ -1,14 +1,43 @@
 <script setup lang="ts">
-import { ref, computed, useSlots, onMounted, getCurrentInstance, useTemplateRef } from "vue";
+import { ref, computed, useSlots, onMounted, getCurrentInstance, useTemplateRef, inject, watch } from "vue";
+import {debounce} from "@fkui/logic";
+import {useEventListener} from "../../composables";
 
 const {
     variant = "static",
     overlay = false,
     resizable = false,
-} = defineProps<{ variant?: "static" | "toggle" | "expand"; overlay?: boolean; resizable?: boolean }>();
+    behaviour,
+} = defineProps<{ variant?: "static" | "toggle" | "expand"; overlay?: boolean; resizable?: boolean, behaviour?(sizes: Record<string, number>): { variant?: "static" | "toggle" | "expand", overlay?: boolean, fullscreen?: boolean }}>();
 const slots = useSlots();
 const root = useTemplateRef("root");
 const open = defineModel({ default: true });
+const size = inject<() => Record<string, number>>("size");
+const override = ref<{ variant?: "static" | "toggle" | "expand", overlay?: boolean, fullscreen?: boolean }>({});
+
+const effectiveVariant = computed(() => {
+    if (override.value && typeof override.value.variant!== 'undefined') {
+        return override.value.variant;
+    } else {
+        return variant;
+    }
+});
+
+const effectiveOverlay = computed(() => {
+    if (override.value && typeof override.value.overlay !== 'undefined') {
+        return override.value.overlay;
+    } else {
+        return overlay;
+    }
+});
+
+const effectiveFullscreen = computed(() => {
+    if (override.value && typeof override.value.fullscreen !== 'undefined') {
+        return override.value.fullscreen;
+    } else {
+        return false;
+    }
+});
 
 const placement = computed(() => {
     const element = root.value;
@@ -33,11 +62,11 @@ const placementClass = computed(() => {
 });
 
 const variantClass = computed(() => {
-    return variant ? `panel--${variant}` : undefined;
+    return effectiveVariant.value ? `panel--${effectiveVariant.value}` : undefined;
 });
 
 const overlayClass = computed(() => {
-    return overlay ? `panel--overlay` : undefined;
+    return effectiveOverlay.value ? `panel--overlay` : undefined;
 });
 
 const classes = computed(() => {
@@ -45,17 +74,42 @@ const classes = computed(() => {
 });
 
 const haveToggle = computed(() => {
-    return variant ? variant !== "static" : false;
+    return effectiveVariant.value ? effectiveVariant.value !== "static" : false;
 });
 
 const isOpen = computed(() => {
-    switch (variant) {
+    switch (effectiveVariant.value) {
         case "toggle":
             return open.value ?? true;
         case "expand":
             return true;
         default:
             return true;
+    }
+});
+
+useEventListener(window, "resize", debounce(onWindowResize, 200));
+
+function onWindowResize() {
+    if (behaviour && size) {
+        const result = behaviour(size());
+        override.value = result;
+    }
+}
+
+onMounted(() => {
+    if (behaviour && size) {
+        const result = behaviour(size());
+        override.value = result;
+    }
+});
+
+watch(() => behaviour, () => {
+    if (behaviour && size) {
+        const result = behaviour(size());
+        override.value = result;
+    } else {
+        override.value = {};
     }
 });
 
@@ -121,10 +175,11 @@ function stop(event: MouseEvent) {
                     <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
                         {
                             open: isOpen,
-                            variant,
+                            variant: effectiveVariant,
                             attach,
                             slot: placement,
-                            overlay,
+                                                                                      overlay: effectiveOverlay,
+                                                                                      override,
                         }
                     }}</pre>
                 </div>
@@ -143,14 +198,16 @@ function stop(event: MouseEvent) {
                 <pre style="margin-top: 2rem; overflow-x: auto; font-size: 0.8em">{{
                     {
                         open: isOpen,
-                        variant,
+                        variant: effectiveVariant,
                         attach,
                         slot: placement,
-                        overlay,
+                                                                                  overlay: effectiveOverlay,
+                                                                                  override
                     }
                 }}</pre>
             </div>
         </div>
+        <div class="spacer" v-if="effectiveVariant === 'expand' && effectiveOverlay"></div>
     </template>
 </template>
 
@@ -193,23 +250,34 @@ function stop(event: MouseEvent) {
     .split-handle {
         order: 2;
     }
-}
 
-.attach-right {
-    .split-content {
-        order: 2;
+    .panel--overlay {
+        left: 0;
+    }
     }
 
-    .split-handle {
-        order: 1;
-    }
-}
+    .attach-right {
+        .split-content {
+            order: 2;
+        }
 
-.panel--overlay {
-    position: absolute;
-    height: 100%;
-    z-index: 1;
+        .split-handle {
+            order: 1;
+        }
+
+        .panel--overlay {
+            right: 0;
+        }
+    }
+
+    .panel--overlay {
+        position: absolute;
+        height: 100%;
+        z-index: 1;
 }
+        .spacer {
+            width: 1.5rem; /* size of button */
+        }
 
 .panel__content {
     padding: 1rem;
