@@ -81,6 +81,10 @@ const slotData = computed(() => {
     &.direction-row {
         flex-direction: row;
     }
+
+    &:empty {
+        display: none;
+    }
 }
 
 .page-layout--simple {
@@ -88,7 +92,7 @@ const slotData = computed(() => {
         "header" min-content
         "content"
         "footer" min-content
-        / auto;
+        / 1fr;
 }
 
 .page-layout--left-panel {
@@ -96,7 +100,7 @@ const slotData = computed(() => {
         "header header" min-content
         "left content"
         "footer footer" min-content
-        / min-content auto;
+        / min-content 1fr;
 }
 
 .page-layout--right-panel {
@@ -104,7 +108,7 @@ const slotData = computed(() => {
         "header header" min-content
         "content right"
         "footer footer" min-content
-        / auto min-content;
+        / 1fr min-content;
 }
 
 .page-layout--three-column {
