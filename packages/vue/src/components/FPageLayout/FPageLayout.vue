@@ -1,15 +1,39 @@
 <script setup lang="ts">
 import { computed, useSlots } from "vue";
+import { type LayoutDefinition, defineLayout } from "./define-layout";
+import { defaultLayouts } from "./default-layout";
 
-const props = defineProps<{ layout: string }>();
+const props = defineProps<{ layout: string | LayoutDefinition }>();
 const slots = useSlots();
 
+const layoutDefinition = computed(() => {
+    const { layout } = props;
+    const stubLayout = defineLayout({
+        name: '',
+        slots: {},
+    });
+    if (!layout) {
+        return stubLayout;
+    }
+    if (typeof layout === 'string') {
+        return defaultLayouts[layout] ?? stubLayout;
+    } else {
+        return layout;
+    }
+});
+
 const className = computed(() => {
-    return props.layout ? `page-layout--${props.layout}` : undefined;
+    const { layout } = props;
+    if (!layout) {
+        return undefined;
+    }
+    const name = typeof layout === 'string' ? layout : layout.name;
+    return `page-layout--${name}`;
 });
 
 const slotNames = computed(() => {
-    return Object.keys(slots);
+    const available = Object.keys(layoutDefinition.value.slots);
+    return Object.keys(slots).filter(it => available.includes(it));
 });
 </script>
 
@@ -31,6 +55,7 @@ const slotNames = computed(() => {
 .page-layout {
     display: grid;
     min-height: 100vh;
+    width: 100vw;
 }
 .page-layout__area {
     display: flex;
