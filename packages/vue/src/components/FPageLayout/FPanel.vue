@@ -129,14 +129,15 @@ const teleport = computed(() => {
     return open.value && effectiveFullscreen.value;
 });
 
-
-watch(() => teleport.value, (value) => {
-    if (value) {
-        window.scrollTo(0,0)
-    }
-    document.body.classList.toggle("panel-fullscreen-present", value);
-});
-
+watch(
+    () => teleport.value,
+    (value) => {
+        if (value) {
+            window.scrollTo(0, 0);
+        }
+        document.body.classList.toggle("panel-fullscreen-present", value);
+    },
+);
 
 useEventListener(window, "resize", debounce(onWindowResize, 25));
 
@@ -234,7 +235,7 @@ function stop(event: MouseEvent) {
                             open: isOpen,
                             variant: effectiveVariant,
                             attach,
-                            style,
+                            style: type,
                             slot: placement,
                             overlay: effectiveOverlay,
                             teleport,
@@ -279,6 +280,10 @@ function stop(event: MouseEvent) {
 
                 <div class="panel__footer" v-if="slots.footer">
                     <slot name="footer"></slot>
+                </div>
+
+                <div class="panel__collapsed" v-if="effectiveVariant === 'expand' && slots.collapsed">
+                    <slot name="collapsed"></slot>
                 </div>
             </div>
         </Teleport>
@@ -395,6 +400,10 @@ function stop(event: MouseEvent) {
     flex: 0 0 auto;
 }
 
+.panel__collapse {
+    flex: 1 0 auto;
+}
+
 .panel--toggle {
     .panel__toggle {
         appearance: none;
@@ -436,6 +445,12 @@ function stop(event: MouseEvent) {
 
     &.resizing {
         transition: none;
+    }
+
+    &:has(input:checked) {
+        .panel__collapsed {
+            display: none;
+        }
     }
 
     &:not(:has(input:checked)) {
@@ -548,10 +563,9 @@ function stop(event: MouseEvent) {
 
 .panel__toolbar {
     display: flex;
-    }
+}
 
-    body.panel-fullscreen-present {
-        overflow: hidden;
-    }
-
+body.panel-fullscreen-present {
+    overflow: hidden;
+}
 </style>

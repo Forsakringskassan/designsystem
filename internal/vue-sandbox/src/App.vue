@@ -18,14 +18,14 @@ const routes = [
 const layoutName = ref("simple");
 
 const leftOpen = ref(true);
-const leftVariant = ref<"static" | "toggle" | "expand">("static");
+const leftVariant = ref<"static" | "toggle" | "expand" | "expand-slot">("static");
 const leftType = ref<"none" | "flat" | "layer" | "custom">("custom");
-const leftFlags = ref<"none" | "overlay" | "resizable">("none");
+const leftFlags = ref<"none" | "overlay" | "resizable" | "responsive">("none");
 
 const rightOpen = ref(true);
 const rightVariant = ref<"static" | "toggle" | "expand">("static");
 const rightType = ref<"none" | "flat" | "layer" | "custom">("custom");
-const rightFlags = ref<"none" | "overlay" | "resizable">("none");
+const rightFlags = ref<"none" | "overlay" | "resizable" | "responsive">("none");
 
 const right2Open = ref(true);
 
@@ -111,7 +111,7 @@ function maybeOverlay(sizes: Record<string, number>): {
 
         <template #left>
             <f-panel
-                :variant="leftVariant"
+                :variant="leftVariant === 'expand-slot' ? 'expand' : leftVariant"
                 v-model="leftOpen"
                 :class="leftType === 'custom' ? 'my-left-panel' : undefined"
                 :type="leftType !== 'custom' ? leftType : undefined"
@@ -124,6 +124,15 @@ function maybeOverlay(sizes: Record<string, number>): {
                 <template #default> Panel body </template>
 
                 <template #footer> Panel footer </template>
+
+                <template #collapsed v-if="leftVariant === 'expand-slot'">
+                    <f-icon name="pen"></f-icon>
+                    <f-icon name="trashcan"></f-icon>
+                    <f-icon name="search"></f-icon>
+                    <f-icon name="paper-clip"></f-icon>
+                    <f-icon name="calendar"></f-icon>
+                    <f-icon name="bell"></f-icon>
+                </template>
             </f-panel>
         </template>
 
@@ -200,6 +209,7 @@ function maybeOverlay(sizes: Record<string, number>): {
                                             <option value="static">Static</option>
                                             <option value="toggle">Toggle</option>
                                             <option value="expand">Expand/Collapse</option>
+                                            <option value="expand-slot">Expand/Collapse (with slot)</option>
                                         </template>
                                     </f-select-field>
                                 </div>
@@ -272,25 +282,25 @@ function maybeOverlay(sizes: Record<string, number>): {
                     <pre>{{ { leftOpen, leftVariant, leftFlags, rightOpen, rightVariant, rightFlags } }}</pre>
                     <template v-if="leftFlags === 'responsive' || rightFlags === 'responsive'">
                         <div class="size-wrapper-wrapper">
-                        <div class="size-wrapper">
-                            <div class="body-size">{{ lastSizes.body }}px</div>
-                            <div class="body-box"></div>
-                            <div class="area-size">
-                                <div class="left-size">{{ lastSizes.left }}px</div>
-                                <div class="content-size"> = {{ lastSizes.width }}px</div>
-                                <div class="right-size">{{ lastSizes.right }}px</div>
+                            <div class="size-wrapper">
+                                <div class="body-size">{{ lastSizes.body }}px</div>
+                                <div class="body-box"></div>
+                                <div class="area-size">
+                                    <div class="left-size">{{ lastSizes.left }}px</div>
+                                    <div class="content-size">= {{ lastSizes.width }}px</div>
+                                    <div class="right-size">{{ lastSizes.right }}px</div>
+                                </div>
+                                <div class="area-box">
+                                    <div class="left-box">left</div>
+                                    <div class="content-box">content</div>
+                                    <div class="right-box">right</div>
+                                </div>
+                                <div class="area-silly">
+                                    <div class="left-silly"></div>
+                                    <div class="content-silly"></div>
+                                    <div class="right-silly"></div>
+                                </div>
                             </div>
-                            <div class="area-box">
-                                <div class="left-box">left</div>
-                                <div class="content-box">content</div>
-                                <div class="right-box">right</div>
-                            </div>
-                            <div class="area-silly">
-                                <div class="left-silly"></div>
-                                <div class="content-silly"></div>
-                                <div class="right-silly"></div>
-                            </div>
-                        </div>
                         </div>
                     </template>
                 </template>
@@ -302,134 +312,163 @@ function maybeOverlay(sizes: Record<string, number>): {
 </template>
 
 <style>
-    html,
-    body {
-        margin: 0;
-        padding: 0;
-    }
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
 
-    .page-layout--foobar {
-        grid-template:
-            "header header header header" min-content
+.page-layout--foobar {
+    grid-template:
+        "header header header header" min-content
         "left toolbar toolbar toolbar" min-content
         "left content right2 right"
         "footer footer footer footer" min-content
         / min-content 1fr min-content min-content;
-    }
+}
 
-    .area-header,
-    .area-content,
-    .area-toolbar,
-    .area-footer {
-        padding: 1rem;
-    }
+.area-header,
+.area-content,
+.area-toolbar,
+.area-footer {
+    padding: 1rem;
+}
 
-    .area-header {
-        background: lightgreen;
-        z-index: 10;
-    }
+.area-header {
+    background: lightgreen;
+    z-index: 10;
+}
 
-    .area-toolbar {
-        background: orange;
-        justify-content: space-between;
-    }
+.area-toolbar {
+    background: orange;
+    justify-content: space-between;
+}
 
-    .area-footer {
-        background: lightblue;
-        z-index: 10;
-    }
+.area-footer {
+    background: lightblue;
+    z-index: 10;
+}
 
-    .my-left-panel {
-        background: lawngreen;
-    }
+.my-left-panel {
+    background: lawngreen;
+}
 
-    .my-right-panel {
-        background: hotpink;
-    }
+.my-right-panel {
+    background: hotpink;
+}
 
-    .my-extra-right-panel {
-        background: firebrick;
-    }
+.my-extra-right-panel {
+    background: firebrick;
+}
 
-    .size-wrapper-wrapper {
-        display: flex;
-        justify-content: center;
-    }
+.panel__collapsed {
+    margin-top: 1rem;
+    font-size: 0;
+    display: flex;
+    flex-direction: column;
 
-    .size-wrapper {
-        width: 25rem;
-    }
+    svg {
+        border: 1px solid #000;
+        border-radius: 4px;
+        padding: 0.25rem;
+        height: 1.5rem;
+        width: 1.5rem;
+        margin-bottom: 4px;
+        cursor: pointer;
+        pointer-events: auto;
 
-    .body-size, .left-size, .content-size, .right-size {
-        text-align: center;
+        &:hover {
+            background: rgba(0, 0, 0, 0.25);
+        }
     }
+}
 
-    .body-box {
-        height: 1rem;
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-        margin-bottom: 0.5rem;
-    }
+.size-wrapper-wrapper {
+    display: flex;
+    justify-content: center;
+}
 
-    .area-box, .area-size, .area-silly {
-        display: flex;
-        gap: 0.5rem;
-    }
+.size-wrapper {
+    width: 25rem;
+}
 
-    .left-box,
-    .content-box,
-    .right-box {
-        height: 3rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.body-size,
+.left-size,
+.content-size,
+.right-size {
+    text-align: center;
+}
 
-    .left-silly,
-    .content-silly,
-    .right-silly {
-        height: 2rem;
-    }
+.body-box {
+    height: 1rem;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    margin-bottom: 0.5rem;
+}
 
-    .left-size,
-    .left-box,
-    .left-silly {
-        width: 25%;
-    }
+.area-box,
+.area-size,
+.area-silly {
+    display: flex;
+    gap: 0.5rem;
+}
 
-    .left-box {
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-    }
+.left-box,
+.content-box,
+.right-box {
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .left-silly, .content-silly, .right-silly {
-        border-left: 1px dashed black;
-        border-right: 1px dashed black;
-    }
+.left-silly,
+.content-silly,
+.right-silly {
+    height: 2rem;
+}
 
-    .content-size,
-    .content-box,
-    .content-silly {
-        flex: 1 0 auto;
-    }
+.left-size,
+.left-box,
+.left-silly {
+    width: 25%;
+}
 
-    .content-box {
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-    }
+.left-box {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
 
-    .right-size,
-    .right-box,
-    .right-silly {
-        width: 25%;
-    }
+.left-silly,
+.content-silly,
+.right-silly {
+    border-left: 1px dashed black;
+    border-right: 1px dashed black;
+}
 
-    .right-box {
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-    }
+.content-size,
+.content-box,
+.content-silly {
+    flex: 1 0 auto;
+}
+
+.content-box {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.right-size,
+.right-box,
+.right-silly {
+    width: 25%;
+}
+
+.right-box {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
 </style>
