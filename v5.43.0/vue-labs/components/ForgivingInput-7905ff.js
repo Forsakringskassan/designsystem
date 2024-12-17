@@ -200,10 +200,8 @@
         default: parseTimeToNumber
       }
     },
-    setup() {
-      return {
-        textFieldTableMode: (0, import_vue3.inject)("textFieldTableMode", false)
-      };
+    setup(props) {
+      return (0, import_vue4.useTextFieldSetup)(props);
     },
     mounted() {
       const inputElement = this.$el.querySelector("input");
