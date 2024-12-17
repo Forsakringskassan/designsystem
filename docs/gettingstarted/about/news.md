@@ -4,6 +4,15 @@ name: news
 layout: content-with-menu
 ---
 
+## Kombobox
+
+Version: 5.44.0 <br>
+2024-12-17
+
+Komboboxen kombinerar ett textfält med en lista som har förbestämda alternativ. Listan filtreras för att matcha det som skrivs in i textfältet och presenterar förslag. För användaren innebär detta ett smidigare sätt att göra ett val bland ett stort antal alternativ i stället för att behöva skrolla i en lång dropplista. Komboboxen kan också användas i de fall då användaren både ska kunna skriva en godtycklig fritext eller välja i en lista med förbestämda förslag.
+
+{@link combobox Läs mer om kombobox}
+
 ## Densitet
 
 Version: 5.26.0 <br>
