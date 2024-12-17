@@ -23,13 +23,14 @@
       "import": "./dist/esm/index.esm.js"
     },
     "./pageobject/*": "./pageobject/*",
-    "./style.css": "./dist/esm/vue-labs.css"
+    "./style.css": "./dummy.css"
   },
   "main": "./dist/cjs/index.cjs.js",
   "module": "./dist/esm/index.esm.js",
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist",
+    "dummy.css",
     "htmlvalidate",
     "pageobject/**/*.{js,js.map,d.ts}",
     "!**/examples/**",
