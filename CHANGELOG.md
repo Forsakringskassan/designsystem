@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 5.44.0 (2024-12-17)
+
+### Features
+
+* **@fkui/css-variables, @fkui/design, @fkui/vue-labs, @fkui/vue:** add `FTextField` combobox `options` prop (fixes SFKUI-5885) 98dcc95
+
+### Bug Fixes
+
+* **@fkui/vue:** fix resetting active item back to undefined in f-list (refs SFKUI-6941) a175535
+
 ## 5.43.0 (2024-12-16)
 
 ### Features
