@@ -202,6 +202,9 @@ export default defineComponent({
     },
     computed: {
         items(): MenuItem[] {
+            if (!this.routes || !Array.isArray(this.routes)) {
+                return [];
+            }
             return this.routes.map((i) => ({ label: i.label, key: i.route, href: i.href, target: i.target }));
         },
         overflowItems(): MenuItem[] {
