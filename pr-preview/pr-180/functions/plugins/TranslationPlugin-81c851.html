@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="sv" class="layout--example">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Translation Plugin - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-69e499.css"
+            crossorigin
+            integrity="sha384-XQiCJR8rdkZTxe5bwCPgwuB30mWBncgm1XoKmO8JenDz2l02wnCRYxEbknKJXx0b"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-exp-28253f.css"
+            crossorigin
+            integrity="sha384-CgUxDr2RiguzUtctmDim8WO++gSj9NDqUh1IUGRosbXxEFVbZeqQpgRALwe1fR0I"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-int-6aab38.css"
+            crossorigin
+            integrity="sha384-mhriD6Yk07uP6j6WA+HZmXCpAGd7V3Z3Gxsdl2lMSDhH5nW+QHh8dA68r0gYxYAU"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/bootstrap-956ec3.js"
+            crossorigin
+            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        <script src="../../assets/vendor-vue-468cb1.js"></script>
+        <script src="../../assets/vendor-fkui-logic-80bead.js"></script>
+        <script src="../../assets/vendor-fkui-date-9b7c35.js"></script>
+        <script src="../../assets/vendor-fkui-vue-c8e6c9.js"></script>
+        <script src="../../assets/vendor-forsakringskassan-docs-live-example-187830.js"></script>
+
+        <!-- prettier-ignore --><!-- prettier-ignore -->
+        <script
+            src="../../assets/processors/motd/index-8c87e1.js"
+            crossorigin
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            
+        ></script>
+        <script
+            src="../../assets/processors/selectable-version/select-version-e7a130.js"
+            crossorigin
+            integrity="sha384-ioVz0q+o5e9xzpHcYgIMUjemejWyVXe+hmnsBFa92juxUWJaJ7JTzVMgU6A81Kgt"
+            
+        ></script>
+        <script
+            src="../../assets/main-4751c4.js"
+            crossorigin
+            integrity="sha384-q15KHOoz4gQtk9HXaWqxES3YsgzEsJu3opgGi9+VKgdWVRscUrF84pZgEse5YQgN"
+            
+        ></script>
+
+        <main><p>{{ $t("fkui.example.missing", "Standardtext") }}</p>
+</main>
+    </body>
+</html>
