@@ -52,6 +52,8 @@ Skriv så här i kod för att sätta en maxlängd på tio tecken:
  ></f-text-field>
 ```
 
+Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MAXLENGTH. Undantag är om validatorn är kombinerad med någon av validatorerna som nämns nedan.
+
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
 - bankgiro `bankgiro`: Fyll i bankgironumret.
@@ -75,6 +77,8 @@ Skriv så här i kod för att sätta en minlängd på fyra tecken:
 +    v-validation.minLength="{ minLength: { length: 4 } }"
  ></f-text-field>
 ```
+
+Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MINLENGTH.
 
 ### Obligatoriskt `required`
 
