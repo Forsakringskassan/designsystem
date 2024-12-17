@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="sv" class="layout--component" data-root-url="..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Sökfält - FKUI Labs</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../assets/docs-96087f.css"
+            crossorigin
+            integrity="sha384-r2M+qPJdwU5QPa+0VDB5ylsmTFEQcGYMhTHmIkiKQX16DThuAND2Tb2PccADpJhq"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-exp-354a18.css"
+            crossorigin
+            integrity="sha384-CIMQOcQgg0rDz4B9zM3AJiOvh8tuO0vMO4rTa9NQsAFHR2nyY8jCoYoY0MxYAj/w"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-int-8a5f72.css"
+            crossorigin
+            integrity="sha384-7wMbh4joY1XivrkGZDvJR4z3zGJ1q0OKqJFQ5itLXtc2lZnKh0S8KNDlPYSbdkHQ"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../assets/bootstrap-0df2b2.js"
+            crossorigin
+            integrity="sha384-/CsPb6xxx2R6SuFD6YW8AvT0hMxEGGkO4Mh6yG04C8ck+/qIKXqKA3EALt2ADT17"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../search-data-c3ccae.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-Q31WOkcy/PABOenNR1dsDvz4/KIdPEf3MMANXZUmmkoYNIF1T96MKV/aWFG9U/Ff"
+            id="search-data"
+        />
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        
+
+        <div class="layout-wrapper">
+            <header>
+                <!-- prettier-ignore --><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../index.html">
+            <span aria-label="FKUI Labs" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../index.html"> FKUI Labs </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list">
+        <!-- prettier-ignore -->
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="./"> Komponenter </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./"> Komponenter </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <div class="select-field" style="visibility: hidden">
+        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
+        <div class="select-field__icon-wrapper">
+            <select id="fkds-theme-select" class="select-field__select">
+                <option value="exp">Försäkringskassan</option>
+                <option value="int">FK Hapo</option>
+            </select>
+            <svg focusable="false" class="icon select-field__icon">
+                <use xlink:href="#docs-icon-arrow-down"></use>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function themeSelector() {
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key) ?? "exp";
+            }
+
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
+            }
+
+            function enableTheme(theme) {
+                const style = Array.from(document.querySelectorAll("[data-theme]"));
+                for (const el of style) {
+                    el.disabled = el.dataset.theme !== theme;
+                }
+            }
+
+            const el = document.querySelector("#fkds-theme-select");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
+            el.addEventListener("change", () => {
+                const theme = el.value;
+                saveSelectedTheme("fkds-theme", theme);
+                enableTheme(theme);
+            });
+
+            const selected = getSelectedTheme("fkds-theme");
+            enableTheme(selected);
+            el.value = selected;
+
+            wrapper.style.visibility = null;
+        }
+
+        themeSelector();
+    </script>
+</div>
+<div class="toolbar__item">
+    <span class="version">
+        5.43.0
+    </span>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary">
+                <!-- prettier-ignore -->
+<div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./"
+            
+        >
+            Komponenter
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link active">
+        <!-- prettier-ignore -->
+        <a
+            href="./xsearchbar.html"
+            
+        >
+            Sökfält
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./xtimetextfield.html"
+            
+        >
+            Tidsinmatning
+        </a>
+    </li><!-- prettier-ignore --></ol>
+</nav>
+</div>
+
+
+                <!-- prettier-ignore -->
+                <script
+                    src="../assets/vendor-vue-ce6943.js"
+                    crossorigin
+                    integrity="sha384-fNTiFMLYobZ/3uPWSbkX0BoEj3ji/BINt7Jk+R8EC9LI50I0QYOiAVH7nOL2/SO9"
+                ></script>
+                <script
+                    src="../assets/vendor-fkui-logic-bba1c4.js"
+                    crossorigin
+                    integrity="sha384-HlDobkASP43W1F4v2YPf585attHiuTTV4wRHtTcUxtTVnY0KtA3KPzxdO7G4wF/n"
+                ></script>
+                <script
+                    src="../assets/vendor-fkui-date-effe99.js"
+                    crossorigin
+                    integrity="sha384-/z4bzMgu8XwRy3n16wnAGgosAHW4jBkDz+/FhfH4ahDfTiX/+QGhXb6t2HM7KnZu"
+                ></script>
+                <script
+                    src="../assets/vendor-fkui-vue-319119.js"
+                    crossorigin
+                    integrity="sha384-Ch25yLO9VNnVxGs05qFPngvmF+UgIkdsKdYs3JfBUrnQFz59DUFYt8W29qvgx5az"
+                ></script>
+
+                <!-- prettier-ignore --><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Sökfält</h1>
+
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl>
+    <!-- prettier-ignore -->
+    
+    <dt>Komponent</dt>
+    <dd>
+        
+        <code>
+             XSearchBar 
+        </code>
+         
+    </dd>
+    
+
+    <!-- prettier-ignore -->
+    
+    <dt>Status</dt>
+    <dd>
+        <div class="badge badge--error">Experimentell</div>
+    </dd>
+    
+</dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#status">Status</a></li>
+                                
+                                <li><a href="#beskrivning">Beskrivning</a></li>
+                                
+                                <li><a href="#exempel">Exempel</a></li>
+                                
+                                <li><a href="#api">API</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content">
+                        <!-- prettier-ignore -->
+<h2 id="status"><a class="header-anchor" href="#status">Status</a></h2><p>Labs</p>
+<h2 id="beskrivning"><a class="header-anchor" href="#beskrivning">Beskrivning</a></h2><p>Ett Sökfält med inputfält och knapp av typen <code>submit</code> som placeras i en <code>FValidationForm</code>.</p>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
+            <div
+                id="example-737e81"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="XSearchBarExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./XSearchBarExample-e5a7a0.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- [html-validate-disable-next wcag/h32: submit button included in x-search-bar] --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">x-search-bar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span>&gt;</span> Sökfält <span class="hljs-tag">&lt;/<span class="hljs-name">x-search-bar</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FValidationForm</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">XSearchBar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;XSearchBarExample&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">XSearchBar</span>,
+        <span class="hljs-title class_">FValidationForm</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;&quot;</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">submit</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">`Submit <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.value}</span>`</span>);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>v-model</p>
+</td><td><p>‐</p>
+</td><td><p>string</p>
+</td><td><p>true</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>maxLength</p>
+</td><td><p>‐</p>
+</td><td><p>number</p>
+</td><td><p>false</p>
+</td><td><p>20</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>update:modelValue</p>
+</td><td><p>V-model event.</p>
+</td><td><p>&lt;anonymous&gt;: string</p>
+</td></tr><tr><td><p>changedValue</p>
+</td><td><p>Event that is dispatched when the value is changed and differs from the previous value.</p>
+</td><td><p>&lt;anonymous&gt;: undefined</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
+</td><td><p>Slot for input label</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>tooltip</p>
+</td><td><p>Slot for tooltip</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>button-text</p>
+</td><td><p>Slot for text in button</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div>
+
+                    </div>
+                </main>
+            </div>
+
+            <footer>
+                <!-- prettier-ignore --><div class="footer">
+    <!-- prettier-ignore -->
+    
+</div>
+</footer>
+        </div>
+
+        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div>
+<!-- prettier-ignore -->
+        <dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label"> Sök </label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+
+        <!-- prettier-ignore -->
+        <script
+            src="../assets/main-d3a803.js"
+            crossorigin
+            integrity="sha384-m3/vMo6QtzpQvD6zZ8W18+/YLS7THOHEaha4syDznIi/F1MAboSksPxrvy3OHfxV"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/XSearchBar.md
+         Document ID: fs:docs/components/XSearchBar.md
+         Document name: XSearchBar
+         Document alias: component:XSearchBar
+
+    -->
+</html>
