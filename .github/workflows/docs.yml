@@ -2,11 +2,8 @@ name: Deploy
 concurrency: deploy-${{ github.ref }}
 
 on:
-    push:
-        tags:
-            - "v*"
     workflow_dispatch:
-
+    workflow_call:
 jobs:
     docs:
         name: Deploy
