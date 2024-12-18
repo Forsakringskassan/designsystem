@@ -1,0 +1,35 @@
+.page-layout__slot {
+    display: contents;
+}
+
+wc-page-layout::part(grid simple) {
+    grid-template:
+        "header" min-content
+        "content"
+        "footer" min-content
+        / 1fr;
+}
+
+wc-page-layout::part(grid left-panel) {
+    grid-template:
+        "header header" min-content
+        "left content"
+        "footer footer" min-content
+        / min-content 1fr;
+}
+
+wc-page-layout::part(grid right-panel) {
+    grid-template:
+        "header header" min-content
+        "content right"
+        "footer footer" min-content
+        / 1fr min-content;
+}
+
+wc-page-layout::part(grid three-column) {
+    grid-template:
+        "header header header" min-content
+        "left content right"
+        "footer footer footer" min-content
+        / min-content 1fr min-content;
+}

@@ -501,6 +501,15 @@ module.exports = defineMetadata({
         inherit: "f-label#description",
     },
 
+    "f-page-layout": {
+        flow: true,
+        attributes: {
+            layout: {
+                required: true,
+            },
+        },
+    },
+
     "f-progressbar": {
         flow: true,
         requiredAttributes: ["aria-label"],
