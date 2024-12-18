@@ -1,3 +1,4 @@
+import path from "node:path";
 import { defineConfig } from "@forsakringskassan/vite-lib-config/vite";
 
 export default defineConfig({
@@ -6,7 +7,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            "@fkui/vue": "src/index.ts",
+            "@fkui/vue": path.resolve("src/index.ts"),
         },
     },
 });
