@@ -236,6 +236,87 @@ export { _default as FCheckboxGroupField }
 
 // @public (undocumented)
 const _default_2: DefineComponent<ExtractPropTypes<    {
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+};
+value: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: true;
+};
+}>, {
+sharedName: string | undefined;
+showDetails: "always" | "never" | "when-selected";
+getFieldsetLabelText: () => string | undefined;
+}, {
+height: number;
+initialStyle: {
+overflow: string;
+transition: string;
+};
+hiddenStyle: {
+height: string;
+position: string;
+visibility: string;
+};
+visibleStyle: {
+width: string;
+position: string;
+visibility: string;
+height: string;
+};
+openedStyle: {
+height: string;
+};
+}, {
+attrs(): Record<string, unknown>;
+disabledClass(): string;
+}, {
+onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+enter(element: Element): void;
+afterEnter(element: Element): void;
+leave(element: Element): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+};
+value: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: true;
+};
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+disabled: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+export { _default_2 as FRadioField }
+export { _default_2 as FRadioGroupField }
+
+// @public (undocumented)
+const _default_3: DefineComponent<ExtractPropTypes<    {
 beforeSubmit: {
 type: PropType<FValidationFormCallback>;
 required: false;
@@ -528,89 +609,8 @@ align: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-export { _default_2 as FValidationForm }
-export { _default_2 as IValidationForm }
-
-// @public (undocumented)
-const _default_3: DefineComponent<ExtractPropTypes<    {
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: false;
-};
-value: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: true;
-};
-}>, {
-sharedName: string | undefined;
-showDetails: "always" | "never" | "when-selected";
-getFieldsetLabelText: () => string | undefined;
-}, {
-height: number;
-initialStyle: {
-overflow: string;
-transition: string;
-};
-hiddenStyle: {
-height: string;
-position: string;
-visibility: string;
-};
-visibleStyle: {
-width: string;
-position: string;
-visibility: string;
-height: string;
-};
-openedStyle: {
-height: string;
-};
-}, {
-attrs(): Record<string, unknown>;
-disabledClass(): string;
-}, {
-onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
-enter(element: Element): void;
-afterEnter(element: Element): void;
-leave(element: Element): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: false;
-};
-value: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: true;
-};
-}>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}>, {
-id: string;
-disabled: boolean;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
-export { _default_3 as FRadioField }
-export { _default_3 as FRadioGroupField }
+export { _default_3 as FValidationForm }
+export { _default_3 as IValidationForm }
 
 // @internal
 export function dispatchComponentUnmountEvent(element: ValidatableHTMLElement): void;
@@ -2986,7 +2986,7 @@ onOpen?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | null | undefined;
 viewport: HTMLElement;
-inline: "always" | "never" | "auto";
+inline: "auto" | "always" | "never";
 alwaysInline: boolean;
 container: HTMLElement | null | undefined;
 keyboardTrap: boolean;
@@ -5229,7 +5229,7 @@ onOpen?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | null | undefined;
 viewport: HTMLElement;
-inline: "always" | "never" | "auto";
+inline: "auto" | "always" | "never";
 alwaysInline: boolean;
 container: HTMLElement | null | undefined;
 keyboardTrap: boolean;
@@ -8965,17 +8965,17 @@ onClick?: ((...args: any[]) => any) | undefined;
 onSelect?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
-onUnselect?: ((...args: any[]) => any) | undefined;
 onCollapse?: ((...args: any[]) => any) | undefined;
 onExpand?: ((...args: any[]) => any) | undefined;
+onUnselect?: ((...args: any[]) => any) | undefined;
 }>, {
 scroll: TableScroll;
 modelValue: ListArray | undefined;
 striped: boolean;
-selectable: boolean;
 hover: boolean;
 expandableAttribute: string;
 expandableDescribedby: string;
+selectable: boolean;
 }, {}, {
 FCheckboxField: DefineComponent<ExtractPropTypes<    {
 disabled: {
@@ -10378,9 +10378,9 @@ onClose?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | undefined;
 modelValue: string;
-ariaLabel: string;
 focusedItem: string;
 enableKeyboardNavigation: boolean;
+ariaLabel: string;
 selectedMenuItemScreenReaderText: string;
 }, {}, {
 IPopup: DefineComponent<ExtractPropTypes<    {
@@ -10498,7 +10498,7 @@ onOpen?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | null | undefined;
 viewport: HTMLElement;
-inline: "always" | "never" | "auto";
+inline: "auto" | "always" | "never";
 alwaysInline: boolean;
 container: HTMLElement | null | undefined;
 keyboardTrap: boolean;
@@ -18453,7 +18453,7 @@ onOpen?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | null | undefined;
 viewport: HTMLElement;
-inline: "always" | "never" | "auto";
+inline: "auto" | "always" | "never";
 alwaysInline: boolean;
 container: HTMLElement | null | undefined;
 keyboardTrap: boolean;
@@ -18695,9 +18695,9 @@ onClose?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | undefined;
 modelValue: string;
-ariaLabel: string;
 focusedItem: string;
 enableKeyboardNavigation: boolean;
+ariaLabel: string;
 selectedMenuItemScreenReaderText: string;
 }, {}, {
 IPopup: DefineComponent<ExtractPropTypes<    {
@@ -18815,7 +18815,7 @@ onOpen?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | null | undefined;
 viewport: HTMLElement;
-inline: "always" | "never" | "auto";
+inline: "auto" | "always" | "never";
 alwaysInline: boolean;
 container: HTMLElement | null | undefined;
 keyboardTrap: boolean;
