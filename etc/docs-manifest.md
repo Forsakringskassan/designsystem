@@ -58,6 +58,7 @@ components/modal/fmodal.html
 components/page-layout/application-layout.html
 components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
+components/page-layout/fpagelayout.html
 components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
@@ -147,6 +148,7 @@ gettingstarted/migration/migrating-to-v6/vue.html
 gettingstarted/use-design-system/getting-started-application.html
 gettingstarted/use-design-system/getting-started.html
 gettingstarted/use-design-system/icon-library.html
+guides/custom-page-layout.html
 guides/formatting-and-parsing/custom-formatter-parser.html
 guides/formatting-and-parsing/formatter-parser.html
 guides/index.html
