@@ -1,7 +1,7 @@
-export * from "./FEmailTextField";
-export * from "./FPhoneTextField";
-export * from "./FCurrencyTextField";
-export * from "./FSearchTextField";
+export { FEmailTextField } from "./FEmailTextField";
+export { FPhoneTextField } from "./FPhoneTextField";
+export { FCurrencyTextField } from "./FCurrencyTextField";
+export { FSearchTextField } from "./FSearchTextField";
 export { default as FBankAccountNumberTextField } from "./FBankAccountNumberTextField/FBankAccountNumberTextField.vue";
 export { default as FBankgiroTextField } from "./FBankgiroTextField/FBankgiroTextField.vue";
 export { default as FClearingnumberTextField } from "./FClearingnumberTextField/FClearingnumberTextField.vue";
