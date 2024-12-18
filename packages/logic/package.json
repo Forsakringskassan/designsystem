@@ -73,7 +73,7 @@
   "devDependencies": {
     "@fkui/date": "5.44.0",
     "@fkui/test-utils": "5.44.0",
-    "@rollup/plugin-commonjs": "28.0.1",
+    "@rollup/plugin-commonjs": "28.0.2",
     "@rollup/plugin-node-resolve": "15.3.0",
     "@rollup/plugin-typescript": "12.1.1",
     "@types/lodash.clonedeep": "4.5.9",
