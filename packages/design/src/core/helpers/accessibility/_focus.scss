@@ -14,8 +14,6 @@ input[type="image"]:focus,
 input[type="search"]:focus,
 [tabindex]:focus {
     @include focus.focus-indicator;
-
-    outline: none;
 }
 
 [tabindex="-1"]:focus {
