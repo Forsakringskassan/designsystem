@@ -29,8 +29,7 @@
   }
 
   // virtual-entry:./packages/vue/src/components/FNavigationMenu/examples/FNavigationMenuOverflow.vue
-  var import_vue3 = __require("vue");
-  var import_vue4 = __require("@fkui/vue");
+  var import_vue3 = __require("@fkui/vue");
 
   // packages/vue/src/components/FNavigationMenu/examples/router.ts
   function generateExampleLabelsAndRoutes(nbRoutes) {
@@ -43,34 +42,22 @@
   var routes = generateExampleLabelsAndRoutes(10);
 
   // virtual-entry:./packages/vue/src/components/FNavigationMenu/examples/FNavigationMenuOverflow.vue
-  var import_vue5 = __require("vue");
-  var exampleComponent = (0, import_vue3.defineComponent)({
-    name: "FNavigationMenuExample",
-    components: { FNavigationMenu: import_vue4.FNavigationMenu },
-    props: {},
-    data: () => {
-      return {
-        routes,
-        selectedRoute: ""
-      };
-    },
-    methods: {}
-  });
+  var import_vue4 = __require("vue");
+  var exampleComponent = {
+    __name: "FNavigationMenuOverflow",
+    setup(__props, { expose: __expose }) {
+      __expose();
+      const __returned__ = { get FNavigationMenu() {
+        return import_vue3.FNavigationMenu;
+      }, get routes() {
+        return routes;
+      } };
+      Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+      return __returned__;
+    }
+  };
   function render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_navigation_menu = (0, import_vue5.resolveComponent)("f-navigation-menu");
-    return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
-      (0, import_vue5.createElementVNode)(
-        "pre",
-        null,
-        "selectedRoute: " + (0, import_vue5.toDisplayString)(_ctx.selectedRoute),
-        1
-        /* TEXT */
-      ),
-      (0, import_vue5.createVNode)(_component_f_navigation_menu, {
-        routes: _ctx.routes,
-        onSelectedRoute: _cache[0] || (_cache[0] = ($event) => _ctx.selectedRoute = $event)
-      }, null, 8, ["routes"])
-    ]);
+    return (0, import_vue4.openBlock)(), (0, import_vue4.createBlock)($setup["FNavigationMenu"], { routes: $setup.routes }, null, 8, ["routes"]);
   }
   exampleComponent.render = render;
   setup({
