@@ -15852,6 +15852,83 @@ const ValidationPlugin = {
     app2.directive("validationPrefix", ValidationPrefixDirective);
   }
 };
+function useEventListener(target, event, callback) {
+  onMounted(() => {
+    var _a;
+    (_a = toValue(target)) == null ? void 0 : _a.addEventListener(event, callback);
+  });
+  onUnmounted(() => {
+    var _a;
+    (_a = toValue(target)) == null ? void 0 : _a.removeEventListener(event, callback);
+  });
+}
+const _sfc_main$Z = /* @__PURE__ */ defineComponent({
+  name: "FExpand",
+  data() {
+    return {
+      height: 0,
+      initialStyle: {
+        overflow: "hidden",
+        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
+      },
+      hiddenStyle: {
+        height: "auto",
+        position: "absolute",
+        visibility: "hidden"
+      },
+      visibleStyle: {
+        width: "",
+        position: "",
+        visibility: "",
+        height: "0px"
+      },
+      openedStyle: {
+        height: "auto"
+      }
+    };
+  },
+  methods: {
+    enter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.initialStyle);
+      Object.assign(htmlElement.style, this.hiddenStyle);
+      htmlElement.style.width = getComputedStyle(element).width;
+      const height = getComputedStyle(element).height;
+      Object.assign(htmlElement.style, this.visibleStyle);
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        this.height = parseInt(height, 10);
+        htmlElement.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.openedStyle);
+    },
+    leave(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const height = getComputedStyle(element).height;
+      htmlElement.style.height = height;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        Object.assign(htmlElement.style, this.visibleStyle);
+      });
+    }
+  }
+});
+function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock(Transition, {
+    onEnter: _ctx.enter,
+    onAfterEnter: _ctx.afterEnter,
+    onLeave: _ctx.leave
+  }, {
+    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {
+      height: _ctx.height
+    })]),
+    _: 3
+  }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
+}
+const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$Z, [["render", _sfc_render$M]]);
 var Placement = /* @__PURE__ */ ((Placement2) => {
   Placement2["A"] = "A";
   Placement2["B"] = "B";
@@ -16067,73 +16144,6 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
     };
   }
 }
-const _sfc_main$Y = /* @__PURE__ */ defineComponent({
-  name: "FExpand",
-  data() {
-    return {
-      height: 0,
-      initialStyle: {
-        overflow: "hidden",
-        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
-      },
-      hiddenStyle: {
-        height: "auto",
-        position: "absolute",
-        visibility: "hidden"
-      },
-      visibleStyle: {
-        width: "",
-        position: "",
-        visibility: "",
-        height: "0px"
-      },
-      openedStyle: {
-        height: "auto"
-      }
-    };
-  },
-  methods: {
-    enter(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      Object.assign(htmlElement.style, this.initialStyle);
-      Object.assign(htmlElement.style, this.hiddenStyle);
-      htmlElement.style.width = getComputedStyle(element).width;
-      const height = getComputedStyle(element).height;
-      Object.assign(htmlElement.style, this.visibleStyle);
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        this.height = parseInt(height, 10);
-        htmlElement.style.height = height;
-      });
-    },
-    afterEnter(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      Object.assign(htmlElement.style, this.openedStyle);
-    },
-    leave(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      const height = getComputedStyle(element).height;
-      htmlElement.style.height = height;
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        Object.assign(htmlElement.style, this.visibleStyle);
-      });
-    }
-  }
-});
-function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(Transition, {
-    onEnter: _ctx.enter,
-    onAfterEnter: _ctx.afterEnter,
-    onLeave: _ctx.leave
-  }, {
-    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {
-      height: _ctx.height
-    })]),
-    _: 3
-  }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
-}
-const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$Y, [["render", _sfc_render$K]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   switch (placement) {
     case Placement.A: {
@@ -16336,7 +16346,7 @@ const _hoisted_1$J = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
-function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
     key: 0,
@@ -16360,17 +16370,7 @@ function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     class: "button__icon"
   })])], 6)], 512)], 2)], 8, ["disabled"])) : createCommentVNode("", true);
 }
-const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$X, [["render", _sfc_render$J]]);
-function useEventListener(target, event, callback) {
-  onMounted(() => {
-    var _a;
-    (_a = toValue(target)) == null ? void 0 : _a.addEventListener(event, callback);
-  });
-  onUnmounted(() => {
-    var _a;
-    (_a = toValue(target)) == null ? void 0 : _a.removeEventListener(event, callback);
-  });
-}
+const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$X, [["render", _sfc_render$K]]);
 function numItems(itemHeight, availableHeight, verticalSpacing) {
   const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
   return Math.min(itemsFit, 7);
@@ -17401,7 +17401,7 @@ const _hoisted_4$i = {
   key: 0,
   class: "checkbox__details"
 };
-function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["checkbox", _ctx.disabledClass]),
     onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -17431,7 +17431,7 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$s)], 34);
 }
-const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$O, [["render", _sfc_render$D]]);
+const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$O, [["render", _sfc_render$E]]);
 var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["ADD"] = 0] = "ADD";
   Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -17906,7 +17906,7 @@ function FSortFilterDatasetInjected() {
     registerCallbackOnMount: inject("registerCallbackOnMount", () => void 0)
   };
 }
-const _sfc_main$J = /* @__PURE__ */ defineComponent({
+const _sfc_main$I = /* @__PURE__ */ defineComponent({
   name: "FLabel",
   components: {
     FIcon
@@ -17945,15 +17945,15 @@ const _sfc_main$J = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$x = {
+const _hoisted_1$w = {
   key: 0
 };
-const _hoisted_2$q = {
+const _hoisted_2$p = {
   key: 0,
   ref: "tooltipAttachTo"
 };
-const _hoisted_3$l = ["for"];
-const _hoisted_4$h = ["for"];
+const _hoisted_3$k = ["for"];
+const _hoisted_4$g = ["for"];
 const _hoisted_5$d = {
   key: 0,
   class: "label__message label__message--error"
@@ -17965,10 +17965,10 @@ const _hoisted_7$b = {
 };
 function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$x, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$q, [createBaseVNode("label", {
+  return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$w, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$p, [createBaseVNode("label", {
     class: "label",
     for: _ctx.forProperty
-  }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$l)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
+  }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$k)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
     key: 1,
     class: "label sr-separator",
     for: _ctx.forProperty
@@ -17978,7 +17978,7 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
   }))), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$d, [createVNode(_component_f_icon, {
     class: "label__icon--left",
     name: "error"
-  }), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_4$h)) : createCommentVNode("", true)])) : (openBlock(), createElementBlock("label", {
+  }), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_4$g)) : createCommentVNode("", true)])) : (openBlock(), createElementBlock("label", {
     key: 1,
     class: "label",
     for: _ctx.forProperty
@@ -17990,11 +17990,11 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$b));
 }
-const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$J, [["render", _sfc_render$y]]);
+const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$I, [["render", _sfc_render$y]]);
 function resolveWidthClass$1(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
-const _sfc_main$I = /* @__PURE__ */ defineComponent({
+const _sfc_main$H = /* @__PURE__ */ defineComponent({
   name: "FSelectField",
   components: {
     FIcon,
@@ -18125,7 +18125,7 @@ const _sfc_main$I = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$w = ["id"];
+const _hoisted_1$v = ["id"];
 function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
@@ -18163,7 +18163,7 @@ function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
     id: _ctx.id,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event),
     class: "select-field__select"
-  }, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$w), [[vModelSelect, _ctx.vModel]]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
+  }, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$v), [[vModelSelect, _ctx.vModel]]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
     key: 0,
     ref: "icon",
     class: "text-field__icon input-icon select-field__error-popup-icon",
@@ -18173,7 +18173,7 @@ function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
     name: "arrow-down"
   })], 2)], 34);
 }
-const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$I, [["render", _sfc_render$x]]);
+const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$H, [["render", _sfc_render$x]]);
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -18217,7 +18217,7 @@ function useTextFieldSetup(props) {
     closeDropdown
   };
 }
-const _sfc_main$H = /* @__PURE__ */ defineComponent({
+const _sfc_main$G = /* @__PURE__ */ defineComponent({
   name: "FTextField",
   components: {
     FLabel,
@@ -18548,18 +18548,18 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$v = {
+const _hoisted_1$u = {
   key: 0
 };
-const _hoisted_2$p = {
+const _hoisted_2$o = {
   key: 0,
   class: "sr-only"
 };
-const _hoisted_3$k = {
+const _hoisted_3$j = {
   key: 0,
   class: "sr-only"
 };
-const _hoisted_4$g = {
+const _hoisted_4$f = {
   class: "text-field__icon-wrapper"
 };
 const _hoisted_5$c = ["id", "type"];
@@ -18585,7 +18585,7 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     for: _ctx.id,
     class: normalizeClass(_ctx.labelClass)
   }, createSlots({
-    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$v, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("", true)])]),
+    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$u, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("", true)])]),
     description: withCtx(({
       descriptionClass,
       discreteDescriptionClass
@@ -18595,10 +18595,10 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     })), () => [_ctx.descriptionText ? (openBlock(), createElementBlock("span", {
       key: 0,
       class: normalizeClass(descriptionClass)
-    }, [_ctx.descriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_2$p, toDisplayString(_ctx.descriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.descriptionText), 1)], 2)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock("span", {
+    }, [_ctx.descriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_2$o, toDisplayString(_ctx.descriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.descriptionText), 1)], 2)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock("span", {
       key: 1,
       class: normalizeClass(discreteDescriptionClass)
-    }, [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_3$k, toDisplayString(_ctx.discreteDescriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.discreteDescriptionText), 1)], 2)) : createCommentVNode("", true)])]),
+    }, [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_3$j, toDisplayString(_ctx.discreteDescriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.discreteDescriptionText), 1)], 2)) : createCommentVNode("", true)])]),
     "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
       hasError: _ctx.hasError,
       validationMessage: _ctx.validationMessage
@@ -18612,7 +18612,7 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     key: "0"
   } : void 0]), 1032, ["for", "class"])], 2), _cache[19] || (_cache[19] = createTextVNode()), createBaseVNode("div", {
     class: normalizeClass(["text-field__input-wrapper", _ctx.inputWrapperClass])
-  }, [renderSlot(_ctx.$slots, "input-left"), _cache[17] || (_cache[17] = createTextVNode()), createBaseVNode("div", _hoisted_4$g, [withDirectives(createBaseVNode("input", mergeProps({
+  }, [renderSlot(_ctx.$slots, "input-left"), _cache[17] || (_cache[17] = createTextVNode()), createBaseVNode("div", _hoisted_4$f, [withDirectives(createBaseVNode("input", mergeProps({
     id: _ctx.id,
     ref: "input",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event),
@@ -18652,7 +18652,7 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.onDropdownClose
   }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node", "onSelect", "onClose"])) : createCommentVNode("", true)], 2);
 }
-const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$H, [["render", _sfc_render$w]]);
+const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$G, [["render", _sfc_render$w]]);
 /* @__PURE__ */ defineComponent({
   name: "FEmailTextField",
   components: {
@@ -19251,35 +19251,6 @@ function filter(list, filterAttributes, searchString) {
     }
   }
 });
-class FRightPanelServiceImpl {
-  constructor() {
-    _defineProperty(this, "focusedElementBeforeOpenining", null);
-  }
-  open() {
-    this.focusedElementBeforeOpenining = window.document.activeElement;
-    this.emit("open");
-  }
-  openDialog(title) {
-    this.focusedElementBeforeOpenining = window.document.activeElement;
-    this.emit("open-dialog", title);
-  }
-  close() {
-    this.emit("close");
-    if (this.focusedElementBeforeOpenining) {
-      this.focusedElementBeforeOpenining.focus();
-    }
-  }
-  on(event, callback) {
-    EventBus.$on(`application-layout:${event}`, callback);
-  }
-  off(event, callback) {
-    EventBus.$off(`application-layout:${event}`, callback);
-  }
-  emit(event, arg) {
-    EventBus.$emit(`application-layout:${event}`, arg);
-  }
-}
-new FRightPanelServiceImpl();
 const keybindings = Object.fromEntries([["Up", focusTrAbove], ["Down", focusTrBelow], ["ArrowUp", focusTrAbove], ["ArrowDown", focusTrBelow], [" ", activateRow], ["Spacebar", activateRow]]);
 function focusTrAbove(current) {
   if (current > 0) {
@@ -19734,6 +19705,35 @@ function forceRepaintIE11(target) {
     }
   }
 });
+class FRightPanelServiceImpl {
+  constructor() {
+    _defineProperty(this, "focusedElementBeforeOpenining", null);
+  }
+  open() {
+    this.focusedElementBeforeOpenining = window.document.activeElement;
+    this.emit("open");
+  }
+  openDialog(title) {
+    this.focusedElementBeforeOpenining = window.document.activeElement;
+    this.emit("open-dialog", title);
+  }
+  close() {
+    this.emit("close");
+    if (this.focusedElementBeforeOpenining) {
+      this.focusedElementBeforeOpenining.focus();
+    }
+  }
+  on(event, callback) {
+    EventBus.$on(`application-layout:${event}`, callback);
+  }
+  off(event, callback) {
+    EventBus.$off(`application-layout:${event}`, callback);
+  }
+  emit(event, arg) {
+    EventBus.$emit(`application-layout:${event}`, arg);
+  }
+}
+new FRightPanelServiceImpl();
 /*!
   * vue-router v4.5.0
   * (c) 2024 Eduardo San Martin Morote
