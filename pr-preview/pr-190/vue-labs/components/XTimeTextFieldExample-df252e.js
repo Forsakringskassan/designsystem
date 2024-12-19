@@ -181,7 +181,7 @@
   for (const validator of validators) {
     import_logic.ValidationService.registerValidator(validator);
   }
-  var _sfc_main$1 = (0, import_vue3.defineComponent)({
+  var _sfc_main = (0, import_vue3.defineComponent)({
     name: "XTimeTextField",
     extends: import_vue4.FTextField,
     mixins: [import_vue4.TranslationMixin],
@@ -215,37 +215,6 @@
       import_logic.ValidationService.validateElement(inputElement);
     }
   });
-  var _sfc_main = (0, import_vue3.defineComponent)({
-    name: "XSearchBar",
-    components: {
-      FIcon: import_vue4.FIcon,
-      FSearchTextField: import_vue4.FSearchTextField
-    },
-    props: {
-      modelValue: {
-        type: String,
-        required: true
-      },
-      maxLength: {
-        type: Number,
-        default: 20
-      }
-    },
-    emits: ["update:modelValue", "changedValue"],
-    computed: {
-      value: {
-        get() {
-          return this.modelValue;
-        },
-        set(value) {
-          if (this.value !== value) {
-            this.$emit("changedValue", [this.value, value]);
-          }
-          this.$emit("update:modelValue", value);
-        }
-      }
-    }
-  });
 
   // virtual-entry:./src/components/XTimeTextField/examples/XTimeTextFieldExample.vue
   var import_vue5 = __require("vue");
@@ -253,7 +222,7 @@
   var exampleComponent = (0, import_vue5.defineComponent)({
     name: "XTimeComponentExample",
     components: {
-      XTimeTextField: _sfc_main$1
+      XTimeTextField: _sfc_main
     },
     data() {
       return {
