@@ -3,19 +3,19 @@
  */
 export interface NavigationMenuItem {
     /**
-     * Menu item label text
+     * Text to display for the menu item.
      */
     label: string;
     /**
-     * Menu item route used upon for example item selection
+     * Unique identifier for the menu item.
      */
     route: string;
     /**
-     * Optional href attribute to use on menu item link
+     * `href` attribute to add to menu item anchor element
      */
     href?: string;
     /**
-     * Optional target attribute on menu item link
+     * `target` attribute to add to menu item anchor element.
      */
     target?: string;
 }
