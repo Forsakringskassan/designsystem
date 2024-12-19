@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-69e499.css"
+            href="../../assets/docs-7954fa.css"
             crossorigin
-            integrity="sha384-XQiCJR8rdkZTxe5bwCPgwuB30mWBncgm1XoKmO8JenDz2l02wnCRYxEbknKJXx0b"
+            integrity="sha384-YGZ8a6JZLJKcUeup6mQV3WmLTkNcuPrITeuc4Cth+eEBHdMdXVTGq2CVly371Fx0"
             
         />
         <link
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-b866a5.json"
+            href="../../search-data-1bed6b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-QRdbQTmwZ4iC3w54yAXBaeUkCXOtpowyLi2PNobrZ5gMmDqzDcfHXuUgXXfSQMXf"
+            integrity="sha384-kf0FjsRUVKFMhw9npVxIQ3dTqmtEF4fvdH91OxK1W4XXxdRkXw+XRKD3rAKCgRL4"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/03368f0297622fb64914f98d81a572c02b4378fc/packages/vue/src/components/FNavigationMenu/FNavigationMenu.vue">FNavigationMenu</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/86135f1197af2dcdf882b67cfb7c61657c9b3adc/packages/vue/src/components/FNavigationMenu/FNavigationMenu.vue">FNavigationMenu</a>
             
         </code>
          
@@ -1132,7 +1132,7 @@
                                 
                                 <li><a href="#skapa_menyalternativ">Skapa menyalternativ</a></li>
                                 
-                                <li><a href="#navigera_programmatiskt">Navigera programmatiskt</a></li>
+                                <li><a href="#navigera_med_vue_router">Navigera med Vue Router</a></li>
                                 
                                 <li><a href="#visa_aktiv_sida">Visa aktiv sida</a></li>
                                 
@@ -1169,7 +1169,7 @@
         <script defer src="./FNavigationMenuLiveExample-d7c674.js"></script>
     
                 </div>
-            <h2 id="skapa_menyalternativ"><a class="header-anchor" href="#skapa_menyalternativ">Skapa menyalternativ</a></h2><p>För att definiera alternativ i menyn används en array av <code>NavigationMenuItem</code> objekt till <code>routes</code> prop.</p>
+            <h2 id="skapa_menyalternativ"><a class="header-anchor" href="#skapa_menyalternativ">Skapa menyalternativ</a></h2><p>För att definiera alternativ i menyn används en array av <code>NavigationMenuItem</code> objekt till <code>routes</code>-prop.</p>
 
                 <div
                     id="example-1b2b3a"
@@ -1188,17 +1188,15 @@
      */</span>
     <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
     <span class="hljs-comment">/**
-     * Unique route/path for the menu item.
-     * Used as reference for programmatic navigation on selection.
+     * Unique identifier for the menu item.
      */</span>
     <span class="hljs-attr">route</span>: <span class="hljs-built_in">string</span>;
     <span class="hljs-comment">/**
-     * Optional href attribute to add to menu item anchor element
-     * if not using programmatic navigation with `route`.
+     * `href` attribute to add to menu item anchor element
      */</span>
     href?: <span class="hljs-built_in">string</span>;
     <span class="hljs-comment">/**
-     * Optional target attribute to add to menu item anchor element.
+     * `target` attribute to add to menu item anchor element.
      */</span>
     target?: <span class="hljs-built_in">string</span>;
 }
@@ -1220,29 +1218,18 @@
 ];
 </code></pre>
                 </div>
-            <p><code>route</code> används för att identifiera olika menyalternativ samt för att <a href="./fnavigationmenu.html#navigera_programmatiskt">navigera programmatiskt</a> när ett alternativ väljs.</p>
-<p>Om du inte vill navigera programmatiskt så ska du ange <code>href</code>.
-Då kommer den att fungera som en vanlig länk med aktuellt <code>href</code> värde.</p>
-<h2 id="navigera_programmatiskt"><a class="header-anchor" href="#navigera_programmatiskt">Navigera programmatiskt</a></h2><p>För att navigera programmatiskt när ett alternativ blir valt så behöver du lyssna på <code>selectedRoute</code> eventet.
-Eventet skickar med <code>route</code> för alternativet som då kan användas för att identifiera rutten att navigera till.</p>
-
-                <div
-                    id="example-9d983a"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-navigation-menu :routes=&quot;routes&quot;&gt;</span>
-<span class="hljs-addition">+&lt;f-navigation-menu :routes=&quot;routes&quot; @selected-route=&quot;onSelectedRoute&quot;&gt;</span>
-</code></pre>
-                </div>
-            <h3 id="navigera_med_vue_router"><a class="header-anchor" href="#navigera_med_vue_router">Navigera med Vue Router</a></h3><p>Vid användning av Vue Router behöver du koppla dina <code>NavigationMenuItem</code> till de registrerade rutterna.
+            <ul>
+<li><code>label</code> sätter etiketten för menyalternativet.</li>
+<li><code>route</code> måste vara en unik sträng och används av komponenten för att identifiera olika menyalternativ.</li>
+<li><code>href</code> sätter <code>href</code>-värdet för den <code>a</code>-tag som menyalternativet innehåller.</li>
+<li><code>target</code> sätter <code>target</code>-värdet för den <code>a</code>-tag som menyalternativet innehåller.</li>
+</ul>
+<h2 id="navigera_med_vue_router"><a class="header-anchor" href="#navigera_med_vue_router">Navigera med Vue Router</a></h2><p>För att kunna navigera med Vue Router så ska du inte använda <code>href</code> eller <code>target</code> med dina <code>NavigationMenuItem</code>.</p>
+<p>Du kommer också behöva koppla dina <code>NavigationMenuItem</code> till de registrerade rutterna.
 Om du använder <a href="https://router.vuejs.org/guide/essentials/named-routes.html">named routes</a> så kan du använda ruttens namn i <code>route</code> för <code>NavigationMenuItem</code>.</p>
 
                 <div
-                    id="example-4b4585"
+                    id="example-0fb490"
                     class="code-preview code-preview--default"
                     
                     
@@ -1267,7 +1254,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             
                 <div
-                    id="example-210d5a"
+                    id="example-69e0ec"
                     class="code-preview code-preview--default"
                     
                     
@@ -1280,10 +1267,24 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
 ];
 </code></pre>
                 </div>
-            <p>I din komponent kan du sedan navigera i respons på <code>selectedRoute</code> eventet från menyn.</p>
+            <p>När ett menyalternativ blir valt så skickar komponenten eventet <code>selected-route</code> som innehåller värdet i <code>route</code>.
+Du kan då navigera i respons på detta eventet i din komponent.</p>
 
                 <div
-                    id="example-e64955"
+                    id="example-1e211b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-navigation-menu :routes=&quot;routes&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-navigation-menu :routes=&quot;routes&quot; @selected-route=&quot;onSelectedRoute&quot;&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-04b386"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1305,10 +1306,10 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             <h2 id="visa_aktiv_sida"><a class="header-anchor" href="#visa_aktiv_sida">Visa aktiv sida</a></h2><p>För att visa aktiv sida behöver du styra det valda menyalternativet programmatiskt med <code>v-model:route</code>.</p>
 <p>När modellen ändras till ett värde som matchar <code>route</code> för en <code>NavigationMenuItem</code> i <code>routes</code> så visas den som vald i menyn.
-Om värdet inte matchar nåt så visas istället inget alternativ som valt.</p>
+Om värdet inte matchar något av alternativen så visas inget som valt.</p>
 
                 <div
-                    id="example-6d1ae5"
+                    id="example-611fa1"
                     class="code-preview code-preview--default"
                     
                     
@@ -1319,12 +1320,12 @@ Om värdet inte matchar nåt så visas istället inget alternativ som valt.</p>
 <span class="hljs-addition">+&lt;f-navigation-menu v-model:route=&quot;currentRoute&quot; :routes=&quot;routes&quot;&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="overflodande_alternativ"><a class="header-anchor" href="#overflodande_alternativ">Överflödande alternativ</a></h2><p>När alla alternativ inte får plats i bredd så placeras de istället i en undermeny (endast för meny utan <code>vertical</code> prop).
+            <h2 id="overflodande_alternativ"><a class="header-anchor" href="#overflodande_alternativ">Överflödande alternativ</a></h2><p>När alla alternativ inte får plats i bredd så placeras de istället i en undermeny (endast för meny som inte har prop <code>vertical</code>).
 När detta händer placeras ett nytt alternativ i slutet på menyn som öppnar undermenyn.</p>
 <p>Justera fönstrets storlek så att alla alternativ inte får plats för att se överflödesbeteendet.</p>
 
             <div
-                id="example-07d1ec"
+                id="example-67ff6c"
                 class="code-preview code-preview--default"
                 
                 
@@ -1441,9 +1442,9 @@ In most use cases the event payload is used to call Vue <code>router.push()</cod
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    menu-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/03368f0297622fb64914f98d81a572c02b4378fc">03368f0</a>)<br />
+    menu-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/86135f1197af2dcdf882b67cfb7c61657c9b3adc">86135f1</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/111">PR 111</a><br />
-        2024-12-17 07:47
+        2024-12-19 10:40
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1564,9 +1565,9 @@ In most use cases the event payload is used to call Vue <code>router.push()</cod
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-e7a130.js"
+            src="../../assets/processors/selectable-version/select-version-5b4e65.js"
             crossorigin
-            integrity="sha384-ioVz0q+o5e9xzpHcYgIMUjemejWyVXe+hmnsBFa92juxUWJaJ7JTzVMgU6A81Kgt"
+            integrity="sha384-9hlga/vGl7mNJoNXoDuvw4YYU74V1PaTj5rmTtSAwXEVTHdcDfPKAwrUR+V8hrD0"
             
         ></script>
         <script
