@@ -5,7 +5,6 @@
         :aria-close-text="ariaCloseText"
         type="warning"
         :size="size"
-        :focus="focus"
         @close="onClose"
     >
         <template #header>
@@ -113,19 +112,6 @@ export default defineComponent({
             required: false,
             default: (): FModalButtonDescriptor[] => {
                 return defaultButtons;
-            },
-        },
-        /**
-         * Default behavior is that the modal will restore focus to previous element once closed.
-         * - "on" (default) - component will set focus both when opened and closed
-         * - "off" - focus strategy disabled
-         * - "open" - focus will only be applied once modal is opened
-         */
-        focus: {
-            type: String as PropType<"on" | "off" | "open">,
-            default: "on",
-            validator(value: string): boolean {
-                return ["on", "off", "open"].includes(value);
             },
         },
     },
