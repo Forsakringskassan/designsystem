@@ -1,6 +1,7 @@
 ---
 name: FLabelPageObject.description()
 title: FLabelPageObject description() method
+shortTitle: description
 layout: article
 ---
 
