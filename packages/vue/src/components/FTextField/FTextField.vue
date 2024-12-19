@@ -58,6 +58,7 @@
                     :id="id"
                     ref="input"
                     v-model="viewValue"
+                    :disabled
                     :type="type"
                     class="text-field__input"
                     v-bind="$attrs"
@@ -87,6 +88,7 @@
                 </div>
                 <div v-if="options" class="text-field__append-inner">
                     <i-combobox-toggle-button
+                        :disabled
                         :aria-controls="dropdownIsOpen ? dropdownId : undefined"
                         :aria-expanded="dropdownIsOpen"
                         @toggle="toggleDropdown"
@@ -232,6 +234,14 @@ export default defineComponent({
             type: Array as PropType<string[] | undefined>,
             required: false,
             default: () => undefined,
+        },
+        /**
+         * Set to `true`, empty string `""` or string `"disabled"` to disable this field.
+         */
+        disabled: {
+            type: Boolean,
+            required: false,
+            default: false,
         },
     },
     emits: ["blur", "change", "update", "update:modelValue"],

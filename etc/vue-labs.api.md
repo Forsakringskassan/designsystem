@@ -135,6 +135,11 @@ type: PropType<string[] | undefined>;
 required: false;
 default: () => undefined;
 };
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
 }>, {
 textFieldTableMode: boolean;
 viewValue: Ref<string, string>;
@@ -228,6 +233,11 @@ type: PropType<string[] | undefined>;
 required: false;
 default: () => undefined;
 };
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
@@ -238,6 +248,7 @@ type: string;
 id: string;
 modelValue: string | number;
 inline: boolean;
+disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
