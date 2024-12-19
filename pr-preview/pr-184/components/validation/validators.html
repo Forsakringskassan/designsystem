@@ -2242,7 +2242,118 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användarenn när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.</p>
+            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.</p>
+<h3 id="personnummer_inte_samma_personnummernotsame"><a class="header-anchor" href="#personnummer_inte_samma_personnummernotsame">Personnummer - inte samma <code>personnummerNotSame</code></a></h3><p>Validatorn kontrollerar att det ifyllda personnumret inte är samma som personnumret i annat fält.</p>
+<p>Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerNotSame</code>.</p>
+
+                <div
+                    id="example-ef892d"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=nomarkup
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="PersonnummerNotSameExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./PersonnummerNotSameExample-9ad45d.js"></script>
+    </div>
+                </div>
+            <p>Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
+
+                <div
+                    id="example-2bd5e8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-text-field
+<span class="hljs-addition">+    v-validation.personnummerFormat.personnummerNotSame=&quot;{ personnummerNotSame: { otherField: reference } }&quot;</span>
+ &gt;&lt;/f-text-field&gt;
+</code></pre>
+                </div>
+            <p>Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
+<h3 id="personnummer_aldre_personnummerolder"><a class="header-anchor" href="#personnummer_aldre_personnummerolder">Personnummer - äldre <code>personnummerOlder</code></a></h3><p>Validatorn kontrollerar att det ifyllda personnumret är äldre än eller är i samma ålder som personnumret i annat fält.</p>
+<p>Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerOlder</code>.</p>
+
+                <div
+                    id="example-62016e"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=nomarkup
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="PersonnummerOlderExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./PersonnummerOlderExample-2f062e.js"></script>
+    </div>
+                </div>
+            <p>Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
+
+                <div
+                    id="example-d438c9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-text-field
+<span class="hljs-addition">+    v-validation.personnummerFormat.personnummerOlder=&quot;{ personnummerOlder: { otherField: reference } }&quot;</span>
+ &gt;&lt;/f-text-field&gt;
+</code></pre>
+                </div>
+            <p>Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
+<h3 id="personnummer_yngre_personnummeryounger"><a class="header-anchor" href="#personnummer_yngre_personnummeryounger">Personnummer - yngre <code>personnummerYounger</code></a></h3><p>Validatorn kontrollerar att det ifyllda personnumret är yngre än eller är i samma ålder som personnumret i annat fält.</p>
+<p>Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerYounger</code>.</p>
+
+                <div
+                    id="example-fdea31"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=nomarkup
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="PersonnummerYoungerExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./PersonnummerYoungerExample-3c5ee9.js"></script>
+    </div>
+                </div>
+            <p>Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
+
+                <div
+                    id="example-b53f22"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-text-field
+<span class="hljs-addition">+    v-validation.personnummerFormat.personnummerYounger=&quot;{ personnummerYounger: { otherField: reference } }&quot;</span>
+ &gt;&lt;/f-text-field&gt;
+</code></pre>
+                </div>
+            <p>Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
 <h2 id="adress_och_kontaktuppgifter"><a class="header-anchor" href="#adress_och_kontaktuppgifter">Adress och kontaktuppgifter</a></h2><h3 id="mejladress_email"><a class="header-anchor" href="#mejladress_email">Mejladress <code>email</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med giltigt format för mejladress. Max antal tecken är konfigurerbart. Utgångsvärdet för max antal tecken är 64.</p>
 <p>Valideringskriterier:</p>
 <ul>
@@ -2255,7 +2366,7 @@
 </ul>
 
                 <div
-                    id="example-617d32"
+                    id="example-b58ed9"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -2275,7 +2386,7 @@
             <p>Skriv så här i kod när användaren ska fylla i mejladress:</p>
 
                 <div
-                    id="example-8fd839"
+                    id="example-141258"
                     class="code-preview code-preview--default"
                     
                     
@@ -2300,7 +2411,7 @@
 </ul>
 
                 <div
-                    id="example-85ef8f"
+                    id="example-2feefd"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -2320,7 +2431,7 @@
             <p>Skriv så här i kod när användare ska fylla i postnummer:</p>
 
                 <div
-                    id="example-9a2183"
+                    id="example-3aa801"
                     class="code-preview code-preview--default"
                     
                     
@@ -2350,7 +2461,7 @@
 </ul>
 
                 <div
-                    id="example-a44551"
+                    id="example-c2f4d7"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -2370,7 +2481,7 @@
             <p>Skriv så här i kod när användaren ska fylla i telefonnummer:</p>
 
                 <div
-                    id="example-2f8959"
+                    id="example-61b995"
                     class="code-preview code-preview--default"
                     
                     
@@ -2396,7 +2507,7 @@
 </ul>
 
                 <div
-                    id="example-f9ee28"
+                    id="example-76642e"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -2416,7 +2527,7 @@
             <p>Skriv så här i kod när användaren ska fylla i bankgiro:</p>
 
                 <div
-                    id="example-bed050"
+                    id="example-9df3e5"
                     class="code-preview code-preview--default"
                     
                     
@@ -2446,7 +2557,7 @@
 </ul>
 
                 <div
-                    id="example-24c302"
+                    id="example-c37271"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -2466,7 +2577,7 @@
             <p>Skriv så här i kod när användaren ska fylla i clearingnummer:</p>
 
                 <div
-                    id="example-8933f5"
+                    id="example-0b38f8"
                     class="code-preview code-preview--default"
                     
                     
@@ -2490,7 +2601,7 @@
 </ul>
 
                 <div
-                    id="example-ea6d80"
+                    id="example-7eaf80"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -2510,7 +2621,7 @@
             <p>Skriv så här i kod när användaren ska fylla i kontonummer:<br></p>
 
                 <div
-                    id="example-30564d"
+                    id="example-0ad077"
                     class="code-preview code-preview--default"
                     
                     
@@ -2535,7 +2646,7 @@
 </ul>
 
                 <div
-                    id="example-4fda8a"
+                    id="example-043dc9"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -2555,7 +2666,7 @@
             <p>Skriv så här i kod när användaren ska fylla i plusgiro:</p>
 
                 <div
-                    id="example-7c9c2b"
+                    id="example-71e3a0"
                     class="code-preview code-preview--default"
                     
                     
@@ -2598,9 +2709,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix/searchfield-cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/46023b11320e2e3e74977ac85fb80ebf78b449c5">46023b1</a>)<br />
+    fix/searchfield-cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/e14b6a9e5506c14b4d1003c01d43977826359d15">e14b6a9</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/184">PR 184</a><br />
-        2024-12-19 14:11
+        2024-12-19 14:19
 </div>
 <div class="toolbar__item">
     <form id="version">
