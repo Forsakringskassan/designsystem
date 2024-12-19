@@ -79,4 +79,5 @@ vue:FLabel
 
 ## Relaterat
 
-{@link FTooltip Tooltip}
+- {@link FLabelPageObject FLabelPageObject}
+- {@link FTooltip Tooltip}
