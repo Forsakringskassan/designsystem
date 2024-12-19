@@ -175,7 +175,7 @@ En pull request ska generellt sett innehålla:
     - Hur löser denna pull requesten ovan beskrivet problem?
     - Om ändringen är visuell inkludera gärna en enkel före/efter bild i beskrivningen.
 2. Välskriven kod som följer de kodstandarer vi satt upp.
-3. Testfall:
+3. Testfall, läs mer om {@link testverktyg testning}:
     - Enhetstester för logik.
     - Komponenttester för interaktion.
     - Screenshot-tester för visuellt utseende.
