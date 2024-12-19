@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-530608.json"
+            href="../../search-data-bc8279.json"
             as="fetch"
             crossorigin
-            integrity="sha384-uOSYuGEnLI+f+GINDUfwxlSzkXMqi/a4Uevi9P2TtH0uCE+y57OIX2azuwcWrxi0"
+            integrity="sha384-LMpfofUh3cNTdEIAmJyCI5lyfX5VMZczi/XG540cdoO3O+h2g6pK0S/5plcH/J00"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/a48e2764e72bdcd2ab99376706cbac851339a8d0/packages/vue/src/components/FNavigationMenu/FNavigationMenu.vue">FNavigationMenu</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/57f121eb5f18d4500e20a197c45e174b0d0ceaf9/packages/vue/src/components/FNavigationMenu/FNavigationMenu.vue">FNavigationMenu</a>
             
         </code>
          
@@ -1130,13 +1130,13 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#navigeringsmeny_i_horisontellt_lage">Navigeringsmeny i horisontellt läge</a></li>
+                                <li><a href="#skapa_menyalternativ">Skapa menyalternativ</a></li>
                                 
-                                <li><a href="#navigeringsmeny_i_vertikalt_lage">Navigeringsmeny i vertikalt läge</a></li>
+                                <li><a href="#navigera_med_vue_router">Navigera med Vue Router</a></li>
                                 
-                                <li><a href="#overflow_exempel">Overflow exempel</a></li>
+                                <li><a href="#visa_aktiv_sida">Visa aktiv sida</a></li>
                                 
-                                <li><a href="#ange_modell_v_model_route">Ange modell (v-model:route)</a></li>
+                                <li><a href="#overflodande_alternativ">Överflödande alternativ</a></li>
                                 
                                 <li><a href="#skarmlasare">Skärmläsare</a></li>
                                 
@@ -1151,81 +1151,60 @@
                     <div id="content">
                         <!-- prettier-ignore -->
 <p>Navigeringsmeny låter användaren navigera i en applikation med flera undersidor och se vilken sida användaren befinner sig på.</p>
-<h2 id="navigeringsmeny_i_horisontellt_lage"><a class="header-anchor" href="#navigeringsmeny_i_horisontellt_lage">Navigeringsmeny i horisontellt läge</a></h2>
-            <div
-                id="example-f4d257"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="FNavigationMenuHorizontal"></div>
+
+                <div
+                    id="example-45ae44"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags=live-example
+                    data-language="vue"
+                >
+                    
+        <div id="FNavigationMenuLiveExample"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FNavigationMenuHorizontal-5ac3a7.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
+        <script defer src="./FNavigationMenuLiveExample-ccfb07.js"></script>
+    
+                </div>
+            <h2 id="skapa_menyalternativ"><a class="header-anchor" href="#skapa_menyalternativ">Skapa menyalternativ</a></h2><p>För att definiera alternativ i menyn används en array av <code>NavigationMenuItem</code>-objekt till <code>routes</code>-prop.</p>
+
                 <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
+                    id="example-1b2b3a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="ts"
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>selectedRoute: {{ selectedRoute }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-navigation-menu</span>
-            <span class="hljs-attr">:routes</span>=<span class="hljs-string">&quot;routes&quot;</span>
-            @<span class="hljs-attr">selected-route</span>=<span class="hljs-string">&quot;selectedRoute = $event&quot;</span>
-        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-navigation-menu</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FNavigationMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FNavigationMenuHorizontal&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FNavigationMenu</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-comment">/** <span class="hljs-doctag">@type</span> {<span class="hljs-type">NavigationMenuItem[]</span>} */</span>
-            <span class="hljs-attr">routes</span>: [
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label1&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_1&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label2&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_2&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label3&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_3&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label4&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_4&quot;</span>, <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;&quot;</span> },
-            ],
-            <span class="hljs-attr">selectedRoute</span>: <span class="hljs-string">&quot;&quot;</span>,
-        };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@public</span>
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">NavigationMenuItem</span> {
+    <span class="hljs-comment">/**
+     * Text to display for the menu item.
+     */</span>
+    <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">/**
+     * Unique identifier for the menu item.
+     */</span>
+    <span class="hljs-attr">route</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">/**
+     * `href` attribute to add to menu item anchor element
+     */</span>
+    href?: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">/**
+     * `target` attribute to add to menu item anchor element.
+     */</span>
+    target?: <span class="hljs-built_in">string</span>;
+}
 </code></pre>
                 </div>
-            </div>
-        <p>I detta exemplet används typen <code>NavigationMenuItem</code> för att definiera länkar i menyn.
-Det finns två typer av länkar: &quot;in-app&quot; och &quot;extern&quot;.
-Om användaren väljer ett item utan <code>href</code> skickas en event <code>selectedRoute</code> med argumentet <code>route</code> som kan användas ihop med till exempel Vue router.
-Om användaren klickar på ett item med en <code>href</code> blir beteendet som att klicka på en extern länk.</p>
-
+            
                 <div
-                    id="example-024bf5"
+                    id="example-ce5758"
                     class="code-preview code-preview--default"
                     
                     
@@ -1235,103 +1214,118 @@ Om användaren klickar på ett item med en <code>href</code> blir beteendet som 
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> <span class="hljs-attr">routes</span>: <span class="hljs-title class_">NavigationMenuItem</span>[] = [
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label1&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_1&quot;</span> },
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label2&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_2&quot;</span> },
-    { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label3&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_3&quot;</span> },
-    { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label4&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_4&quot;</span>, <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;&quot;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label3&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_3&quot;</span>, <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;_blank&quot;</span> },
 ];
 </code></pre>
                 </div>
-            <h2 id="navigeringsmeny_i_vertikalt_lage"><a class="header-anchor" href="#navigeringsmeny_i_vertikalt_lage">Navigeringsmeny i vertikalt läge</a></h2><p>Du aktiverar vertikalt läge genom att använda <code>vertical</code> prop:</p>
+            <ul>
+<li><code>label</code> sätter etiketten för menyalternativet.</li>
+<li><code>route</code> måste vara en unik sträng och används av komponenten för att identifiera olika menyalternativ.</li>
+<li><code>href</code> sätter <code>href</code>-värdet för den <code>a</code>-tag som menyalternativet innehåller.</li>
+<li><code>target</code> sätter <code>target</code>-värdet för den <code>a</code>-tag som menyalternativet innehåller.</li>
+</ul>
+<h2 id="navigera_med_vue_router"><a class="header-anchor" href="#navigera_med_vue_router">Navigera med Vue Router</a></h2><p>För att kunna navigera med Vue Router så ska du inte använda <code>href</code> eller <code>target</code> med dina <code>NavigationMenuItem</code>.</p>
+<p>Du kommer också behöva koppla dina <code>NavigationMenuItem</code> till de registrerade rutterna.
+Om du använder <a href="https://router.vuejs.org/guide/essentials/named-routes.html">named routes</a> så kan du använda ruttens namn i <code>route</code> för <code>NavigationMenuItem</code>.</p>
 
                 <div
-                    id="example-816a7a"
+                    id="example-0fb490"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createRouter</span>({
+    <span class="hljs-attr">history</span>: <span class="hljs-title function_">createWebHistory</span>(),
+    <span class="hljs-attr">routes</span>: [
+        {
+            <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/my-awesome-page&quot;</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;my-awesome-page&quot;</span>,
+            <span class="hljs-attr">component</span>: <span class="hljs-title class_">AwesomePage</span>,
+        },
+    ],
+});
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>);
+app.<span class="hljs-title function_">use</span>(router);
+app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>);
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-69e0ec"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// `NavigationMenuItem.route` = `RouteRecord.name`</span>
+<span class="hljs-keyword">const</span> <span class="hljs-attr">routes</span>: <span class="hljs-title class_">NavigationMenuItem</span>[] = [
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;My awesome page&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;my-awesome-page&quot;</span> },
+];
+</code></pre>
+                </div>
+            <p>När ett menyalternativ blir valt så skickar komponenten eventet <code>selected-route</code> som innehåller värdet i <code>route</code>.
+Du kan då navigera i respons på eventet i din komponent.</p>
+
+                <div
+                    id="example-1e211b"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-navigation-menu
-    :routes=&quot;routes&quot;
-<span class="hljs-addition">+   vertical</span>
-    @selectedRoute=&quot;selectedRoute=$event&quot;
- &gt;&lt;/f-navigation-menu&gt;
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-navigation-menu :routes=&quot;routes&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-navigation-menu :routes=&quot;routes&quot; @selected-route=&quot;onSelectedRoute&quot;&gt;</span>
 </code></pre>
                 </div>
             
-            <div
-                id="example-077cac"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="FNavigationMenuVertical"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FNavigationMenuVertical-8a85cc.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
                 <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
+                    id="example-04b386"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=static
+                    data-language="vue"
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>selectedRoute: {{ selectedRoute }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-navigation-menu</span>
-            <span class="hljs-attr">vertical</span>
-            <span class="hljs-attr">:routes</span>=<span class="hljs-string">&quot;routes&quot;</span>
-            @<span class="hljs-attr">selected-route</span>=<span class="hljs-string">&quot;selectedRoute = $event&quot;</span>
-        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-navigation-menu</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { useRouter } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FNavigationMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">const</span> router = <span class="hljs-title function_">useRouter</span>();
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FNavigationMenuVertical&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FNavigationMenu</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-comment">/** <span class="hljs-doctag">@type</span> {<span class="hljs-type">NavigationMenuItem[]</span>} */</span>
-            <span class="hljs-attr">routes</span>: [
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label1&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_1&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label2&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_2&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label3&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_3&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label4&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_4&quot;</span>, <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;&quot;</span> },
-            ],
-            <span class="hljs-attr">selectedRoute</span>: <span class="hljs-string">&quot;&quot;</span>,
-        };
-    },
-});
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onSelectedRoute</span>(<span class="hljs-params">route: string</span>): <span class="hljs-keyword">void</span> {
+    router.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">name</span>: route,
+    });
+}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
-            </div>
-        <h2 id="overflow_exempel"><a class="header-anchor" href="#overflow_exempel">Overflow exempel</a></h2><p>Detta exemplet visar på hur <em>overflow</em> beter sig.
-Overflow sker då ett element, till exempel navigeringsmenyn, har för mycket innehåll i sig (består av för många menuitems) för att kunna visas inom sin tilldelade yta (bredden i den här exemplet).
-Justera fönstrets storlek för att visa beteende vid overflow.</p>
+            <h2 id="visa_aktiv_sida"><a class="header-anchor" href="#visa_aktiv_sida">Visa aktiv sida</a></h2><p>För att visa aktiv sida behöver du styra det valda menyalternativet programmatiskt med <code>v-model:route</code>.</p>
+<p>När modellen ändras till ett värde som matchar <code>route</code> för en <code>NavigationMenuItem</code> i <code>routes</code> så visas den som vald i menyn.
+Om värdet inte matchar något av alternativen visas inget som valt.</p>
+
+                <div
+                    id="example-611fa1"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-navigation-menu :routes=&quot;routes&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-navigation-menu v-model:route=&quot;currentRoute&quot; :routes=&quot;routes&quot;&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="overflodande_alternativ"><a class="header-anchor" href="#overflodande_alternativ">Överflödande alternativ</a></h2><p>När alla alternativ inte får plats i bredd så placeras de istället i en undermeny (endast för meny som inte har prop <code>vertical</code>).
+När detta händer placeras ett nytt alternativ i slutet på menyn som öppnar undermenyn.</p>
+<p>Justera fönstrets storlek så att alla alternativ inte får plats för att se överflödesbeteendet.</p>
 
             <div
-                id="example-cb5d08"
+                id="example-67ff6c"
                 class="code-preview code-preview--default"
                 
                 
@@ -1345,7 +1339,7 @@ Justera fönstrets storlek för att visa beteende vid overflow.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FNavigationMenuOverflow-5b3e8c.js"></script>
+        <script defer src="./FNavigationMenuOverflow-48e9ca.js"></script>
     </div>
                 <div>
             <button
@@ -1364,125 +1358,13 @@ Justera fönstrets storlek för att visa beteende vid overflow.</p>
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>selectedRoute: {{ selectedRoute }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-navigation-menu</span>
-            <span class="hljs-attr">:routes</span>=<span class="hljs-string">&quot;routes&quot;</span>
-            @<span class="hljs-attr">selected-route</span>=<span class="hljs-string">&quot;selectedRoute = $event&quot;</span>
-        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-navigation-menu</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-navigation-menu</span> <span class="hljs-attr">:routes</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-navigation-menu</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FNavigationMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-comment">/* same routes as used by vue-router */</span>
+<span class="hljs-comment">// `routes` is an array of `NavigationMenuItem`.</span>
 <span class="hljs-keyword">import</span> { routes } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./router&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FNavigationMenuExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FNavigationMenu</span> },
-    <span class="hljs-attr">props</span>: {},
-    <span class="hljs-attr">data</span>: <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">routes</span>: routes,
-            <span class="hljs-attr">selectedRoute</span>: <span class="hljs-string">&quot;&quot;</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {},
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="ange_modell_v_model_route"><a class="header-anchor" href="#ange_modell_v_model_route">Ange modell (v-model:route)</a></h2><p>En route-modell kan anges i navigeringsmenyn för att kunna styra vald route programmatiskt.
-Om ett värde tilldelas som inte finns i <code>routes</code> så kommer värdet att sättas om till <code>&quot;&quot;</code> och alla länkar att avmarkeras (om det inte finns en länk för route <code>&quot;&quot;</code>).
-I detta exempel kan man sätta om routen programmatiskt med hjälp av ett formulär.</p>
-
-            <div
-                id="example-59d370"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="FNavigationMenuActiveRoute"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FNavigationMenuActiveRoute-2549b7.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>selectedRoute: {{ selectedRoute }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>availableRoutes: {{ availableRoutes }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;routeInput&quot;</span>
-                <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 20 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;selectedRoute = routeInput&quot;</span>&gt;</span>Go to route<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-navigation-menu</span> <span class="hljs-attr">v-model:route</span>=<span class="hljs-string">&quot;selectedRoute&quot;</span> <span class="hljs-attr">:routes</span>=<span class="hljs-string">&quot;routes&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-navigation-menu</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FNavigationMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FNavigationMenuActiveRoute&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FNavigationMenu</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-comment">/** <span class="hljs-doctag">@type</span> {<span class="hljs-type">NavigationMenuItem[]</span>} */</span>
-            <span class="hljs-attr">routes</span>: [
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label1&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_1&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label2&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_2&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label3&quot;</span>, <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_3&quot;</span> },
-                {
-                    <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label4&quot;</span>,
-                    <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_4&quot;</span>,
-                    <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;#f-navigation-menu-active-route-qwerty&quot;</span>,
-                },
-                {
-                    <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;label5&quot;</span>,
-                    <span class="hljs-attr">route</span>: <span class="hljs-string">&quot;ROUTE_5&quot;</span>,
-                    <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;#f-navigation-menu-active-route-asdfgh&quot;</span>,
-                },
-            ],
-            <span class="hljs-attr">selectedRoute</span>: <span class="hljs-string">&quot;ROUTE_2&quot;</span>, <span class="hljs-comment">// or this.route.path (from Vue router in setup)</span>
-            <span class="hljs-attr">routeInput</span>: <span class="hljs-string">&quot;ROUTE_3&quot;</span>,
-        };
-    },
-    <span class="hljs-attr">computed</span>: {
-        <span class="hljs-title function_">availableRoutes</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">routes</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">r</span>) =&gt;</span> r.<span class="hljs-property">route</span>).<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>);
-        },
-    },
-});
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
@@ -1560,9 +1442,9 @@ In most use cases the event payload is used to call Vue <code>router.push()</cod
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/pageobject-test-f-label (<a href="https://github.com/Forsakringskassan/designsystem/commits/a48e2764e72bdcd2ab99376706cbac851339a8d0">a48e276</a>)<br />
+    docs/pageobject-test-f-label (<a href="https://github.com/Forsakringskassan/designsystem/commits/57f121eb5f18d4500e20a197c45e174b0d0ceaf9">57f121e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/190">PR 190</a><br />
-        2024-12-19 12:14
+        2024-12-19 12:36
 </div>
 <div class="toolbar__item">
     <form id="version">
