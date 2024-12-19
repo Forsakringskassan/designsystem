@@ -76,14 +76,6 @@ När modalen öppnas så sätts initialt fokus enligt denna rangordning:
 2. Första interagerbara element i innehåll
 3. Hela innehållet
 
-### Fokushantering
-
-Modaler hanterar som standard fokus själv där modalen flyttar fokus till rubriken vid öppning och återställer fokus till tidigare fokuserat element vid stägning. Du kan styra detta beteende med propen för focus:
-
-- "on" - komponenten hanterar fokus vid både öppning och stängning
-- "off" - komponenten hanterar inte fokus alls.
-- "open" - komponenten hanterar enbart fokus vid öppning.
-
 ## API
 
 :::api
