@@ -1,10 +1,8 @@
 ---
-name: FLabel
-title: FLabel
+name: FLabelPageObject
+title: FLabelPageObject
 layout: article
 ---
-
-FLabelPageObject
 
 Använd `FLabelPageObject` för att skaffa information relaterat till etikett (`label`-elementet).
 
