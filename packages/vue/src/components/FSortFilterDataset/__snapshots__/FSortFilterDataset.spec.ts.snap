@@ -35,6 +35,7 @@ exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
               name="search"
             />
             <f-text-field-stub
+              disabled="false"
               id="fkui-vue-element-0001"
               inline="true"
               inputwidth="sm-12"
