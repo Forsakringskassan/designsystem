@@ -76,7 +76,11 @@ const docs = new Generator({
     },
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
-    exampleFolders: ["./packages/vue/src", "./docs"],
+    exampleFolders: [
+        "./packages/vue/src",
+        "./docs",
+        "./cypress/e2e/Pageobject",
+    ],
     templateFolders: ["./docs-alt/templates", "./docs/templates"],
     vendor: [
         {
