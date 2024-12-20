@@ -20,7 +20,7 @@ component: FPageLayout
 FPageLayoutExample.vue
 ```
 
-Vilken layout som används bestämms av `layout`-propen:
+Vilken layout som används bestäms av `layout`-propen:
 
 ```html static
 <f-page-layout layout="three-column"></f-page-layout>
@@ -41,12 +41,12 @@ För att fylla ytan `header` med innehåll:
 </f-page-layout>
 ```
 
-Sidlayouten i sig tar upp hela skärmstorleken men inga ytor kommer med inbyggd marginal, padding, bredd eller höjd utan storlek bestämms helt av innehållet.
+Sidlayouten i sig tar upp hela skärmstorleken men inga ytor kommer med inbyggd marginal, padding, bredd eller höjd utan storlek bestäms helt av innehållet.
 Du kan med fördel använda `flew-grow: 1` för att täcka upp hela ytans maximala storlek.
 
 ## Landmärken
 
-Landmärken ingår inte i applikationslayout utan konsumenten måste själv använda lämpliga landlärken.
+Landmärken ingår inte i applikationslayout utan konsumenten måste själv använda lämpliga landmärken.
 Vi rekommenderar att använda följande landmärken i respektive yta:
 
 - `<header>` i `header` ytan.
@@ -102,7 +102,7 @@ registerLayout({
 där:
 
 - `attach` talar om var en panel kan fästas (eller inte kan fästas med `"none"`).
-- `direction` talar om ifall ytan földar horizontalt eller vertikalt.
+- `direction` talar om ifall ytan földar horisontellt eller vertikalt.
 
 Styling använder [CSS grid](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids) på `::part(grid name)` och kan se ut så här:
 
