@@ -31,9 +31,6 @@ function formModal(callingInstance, options);
     	- `"large"`
     	- `"fullscreen"
 
-    `beforeSubmit` {@optional}
-    : Optional callback passed to {@link FFormModal}.
-
     `props` {@optional}
     : Optional props to pass to modal.
 

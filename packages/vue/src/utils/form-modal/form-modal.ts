@@ -24,7 +24,6 @@ export async function formModal<T>(
 ): Promise<T> {
     const props = {
         size: options?.size ?? "",
-        beforeSubmit: options?.beforeSubmit,
         ...options?.props,
     };
     const result = await openModal<T>(callingInstance, Component, {

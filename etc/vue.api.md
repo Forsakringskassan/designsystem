@@ -391,8 +391,8 @@ default(): BeforeNavigate;
 }>> & Readonly<{
 onSubmit?: ((...args: any[]) => any) | undefined;
 }>, {
-beforeSubmit: FValidationFormCallback;
 id: string;
+beforeSubmit: FValidationFormCallback;
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 errorListBullets: boolean;
@@ -3267,9 +3267,9 @@ onCreated?: ((...args: any[]) => any) | undefined;
 onUpdated?: ((...args: any[]) => any) | undefined;
 onDeleted?: ((...args: any[]) => any) | undefined;
 }>, {
-beforeSubmit: FValidationFormCallback;
 beforeCreate: (() => ListItem) | undefined;
 modelValue: ListArray<UnknownItem>;
+beforeSubmit: FValidationFormCallback;
 beforeValidation: FValidationFormCallback;
 onCancel: () => void;
 primaryButtonRight: boolean;
@@ -3403,9 +3403,9 @@ value: Record<string, any>;
 size: string;
 isOpen: boolean;
 fullscreen: boolean;
-beforeSubmit: FValidationFormCallback;
 ariaCloseText: string;
 buttons: FModalButtonDescriptor[];
+beforeSubmit: FValidationFormCallback;
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 dataTest: string;
@@ -3635,8 +3635,8 @@ default(): BeforeNavigate;
 }>> & Readonly<{
 onSubmit?: ((...args: any[]) => any) | undefined;
 }>, {
-beforeSubmit: FValidationFormCallback;
 id: string;
+beforeSubmit: FValidationFormCallback;
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 errorListBullets: boolean;
@@ -7898,9 +7898,9 @@ value: Record<string, any>;
 size: string;
 isOpen: boolean;
 fullscreen: boolean;
-beforeSubmit: FValidationFormCallback;
 ariaCloseText: string;
 buttons: FModalButtonDescriptor[];
+beforeSubmit: FValidationFormCallback;
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 dataTest: string;
@@ -8130,8 +8130,8 @@ default(): BeforeNavigate;
 }>> & Readonly<{
 onSubmit?: ((...args: any[]) => any) | undefined;
 }>, {
-beforeSubmit: FValidationFormCallback;
 id: string;
+beforeSubmit: FValidationFormCallback;
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 errorListBullets: boolean;
@@ -11629,7 +11629,6 @@ export type FormModalMaybeOptions = Partial<FormModalModalOptions>;
 
 // @public (undocumented)
 export interface FormModalModalOptions {
-    beforeSubmit?: FValidationFormCallback;
     props: Record<string, unknown | undefined>;
     size: "large" | "fullscreen";
 }
@@ -17562,8 +17561,8 @@ default(): BeforeNavigate;
 }>> & Readonly<{
 onSubmit?: ((...args: any[]) => any) | undefined;
 }>, {
-beforeSubmit: FValidationFormCallback;
 id: string;
+beforeSubmit: FValidationFormCallback;
 beforeValidation: FValidationFormCallback;
 useErrorList: boolean;
 errorListBullets: boolean;
