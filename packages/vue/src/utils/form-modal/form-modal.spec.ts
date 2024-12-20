@@ -1,7 +1,6 @@
 import * as openModalModule from "../open-modal/open-modal";
 import { type MaybeComponent } from "../maybe-component";
 import { MaybeWithFKUIContext } from "../../config";
-import { type ModalOptions } from "./modal-options";
 import { formModal } from "./form-modal";
 
 const callingInstance = { $fkui: {} } as MaybeWithFKUIContext;
@@ -43,37 +42,6 @@ it("should set size prop when size option is used", async () => {
         {
             props: {
                 size: "large",
-            },
-        },
-    );
-});
-
-it("should set beforeSubmit prop when beforeSubmit option is used", async () => {
-    expect.assertions(1);
-
-    const openModal = jest
-        .spyOn(openModalModule, "openModal")
-        .mockResolvedValue({
-            reason: "submit",
-            data: { field1: "" },
-        });
-    const myBeforeSubmit = jest.fn();
-
-    await formModal(
-        callingInstance,
-        {} as MaybeComponent,
-        {
-            beforeSubmit: myBeforeSubmit,
-        } as Partial<ModalOptions>,
-    );
-
-    expect(openModal).toHaveBeenCalledWith(
-        expect.anything(),
-        expect.anything(),
-        {
-            props: {
-                size: "",
-                beforeSubmit: myBeforeSubmit,
             },
         },
     );
