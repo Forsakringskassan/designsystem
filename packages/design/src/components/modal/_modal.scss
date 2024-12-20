@@ -12,19 +12,6 @@ $modal-sizes: (
 ) !default;
 $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
 
-// @at-root is used to set these classes globally due to styling scope issue where the component is used out of the styling scope
-@at-root {
-    #{$MODAL_SELECTOR} {
-        &__open {
-            // both of these properties is used to prevent scrolling in the background
-            overflow: hidden;
-            position: fixed;
-            left: 0;
-            right: 0;
-        }
-    }
-}
-
 #{$MODAL_SELECTOR} {
     &__backdrop {
         background: var(--f-background-overlay);
