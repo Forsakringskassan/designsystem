@@ -275,6 +275,22 @@ export default defineComponent({
             required: false,
             default: undefined,
         },
+        /**
+         * Enable showing the active row.
+         */
+        showActive: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+        /**
+         * V-model will bind to value containing the current active row.
+         */
+        active: {
+            type: Object as PropType<ListItem | undefined>,
+            required: false,
+            default: () => undefined,
+        },
     },
     emits: [
         "change",
@@ -282,6 +298,7 @@ export default defineComponent({
         "update",
         "unselect",
         "update:modelValue",
+        "update:active",
         "select",
         /**
          * Emitted when row is expanded.
@@ -385,6 +402,20 @@ export default defineComponent({
                 }
             },
         },
+        active: {
+            immediate: true,
+            handler: function () {
+                this.updateActiveRowFromVModel();
+            },
+        },
+        showActive: {
+            immediate: true,
+            handler: function (val: boolean) {
+                if (!val) {
+                    this.$forceUpdate();
+                }
+            },
+        },
     },
     updated() {
         const tbodyElement = this.$refs["tbodyElement"] as HTMLElement;
@@ -403,6 +434,9 @@ export default defineComponent({
     },
     methods: {
         isActive(row: ListItem): boolean {
+            if (!this.showActive) {
+                return false;
+            }
             return itemEquals(row, this.activeRow, this.keyAttribute);
         },
         isSelected(row: ListItem): boolean {
@@ -575,6 +609,21 @@ export default defineComponent({
         },
         escapeNewlines(value: string): string {
             return value.replace(/\n/g, "<br/>");
+        },
+        updateActiveRowFromVModel(): void {
+            if (this.active === undefined) {
+                this.activeRow = undefined;
+            } else if (!itemEquals(this.active, this.activeRow, this.keyAttribute)) {
+                this.activeRow = this.active;
+            }
+            /**
+             * V-model active event.
+             *
+             * @event update:active
+             * @param activeItem
+             * @type {ListItem}
+             */
+            this.$emit("update:active", this.activeRow);
         },
     },
 });
