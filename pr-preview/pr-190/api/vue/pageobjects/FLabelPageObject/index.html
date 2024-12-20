@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-d002fc.json"
+            href="../../../../search-data-4b5dfc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Ywm0u1gRUF6fN5TkozIjA70l8YiJNKfZhe57hSSZrAk5Z6FEtiaOYDkRxOigXzgD"
+            integrity="sha384-Qg5VLgjCjtV8i2i3jzZUAV/N6KozLi1ex1tbmGHhg5LiJhruAzHWP/CRdvqt1D44"
             id="search-data"
         />
     </head>
@@ -316,7 +316,7 @@
     <!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable active">
         <details open>
-            <summary></summary>
+            <summary>Cypress Pageobject</summary>
             <!-- prettier-ignore -->
             
             
@@ -324,7 +324,7 @@
     <!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable active">
         <details open>
-            <summary>FLabelPageObject</summary>
+            <summary>FLabelPageObject()</summary>
             <!-- prettier-ignore -->
             
             
@@ -337,7 +337,7 @@
             href="./"
             
         >
-            FLabelPageObject
+            FLabelPageObject()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -347,7 +347,7 @@
             href="./description.html"
             
         >
-            FLabelPageObject description() method
+            description()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -357,7 +357,7 @@
             href="./discrete-description.html"
             
         >
-            FLabelPageObject discreteDescription() method
+            discreteDescription()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -367,7 +367,7 @@
             href="./error-icon.html"
             
         >
-            FLabelPageObject errorIcon() method
+            errorIcon()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -377,7 +377,7 @@
             href="./error-message.html"
             
         >
-            FLabelPageObject errorMessage() method
+            errorMessage()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -387,7 +387,7 @@
             href="./trimmed-text.html"
             
         >
-            FLabelPageObject trimmedText() method
+            trimmedText()
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -471,68 +471,49 @@ Dessa komponenter brukar därför ha en metod för att nå detta pageobjektet i 
 t ex <code>FTextFieldPageObject.label</code>.</p>
 <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-872331"
+                    id="example-7f5bd5"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">new</span> <span class="hljs-title class_">FLabelPageObject</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">new</span> <span class="hljs-title class_">FLabelPageObject</span>(selector);
 </code></pre>
                 </div>
-            <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
+            <h3 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h3><dl>
+<dt><code>selector: string</code></dt>
+<dd>Selector till <code>FLabel</code> elementet. Du kan med fördel använda <a href="../../../../functions/plugins/testplugin.html"><code>v-test</code></a> direktivet för din selector.</dd>
+</dl>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-19e230"
+                    id="example-91d6a7"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
-                    data-language="html"
+                    data-language="vue"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-label</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;awesome-label&#x27;&quot;</span>&gt;</span> Min etikett <span class="hljs-tag">&lt;/<span class="hljs-name">f-label</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-label</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;awesome-label&#x27;&quot;</span>&gt;</span> Etikett <span class="hljs-tag">&lt;/<span class="hljs-name">f-label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             
                 <div
-                    id="example-ac96a4"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> awesomeLabel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FLabelPageObject</span>(<span class="hljs-string">&quot;[data-test=awesome-label]&quot;</span>);
-
-awesomeLabel.<span class="hljs-title function_">el</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Min etikett&quot;</span>);
-</code></pre>
-                </div>
-            
-                <div
-                    id="example-f95ec8"
+                    id="example-d99ddf"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">FLabelPageObject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue/pageobject&quot;</span>;
-
-<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">() =&gt;</span> {
-    cy.<span class="hljs-title function_">visit</span>(<span class="hljs-string">&quot;/components/label.html&quot;</span>);
-});
-
-<span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should have correct label&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-comment">/* --- cut above --- */</span>
-    <span class="hljs-keyword">const</span> awesomeInput = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FLabelPageObject</span>(<span class="hljs-string">&quot;[data-test=awesome-label]&quot;</span>);
-
-    awesomeInput.<span class="hljs-title function_">el</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Min etikett&quot;</span>);
-    <span class="hljs-comment">/* --- cut below --- */</span>
-});
-</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> awesomeLabel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FLabelPageObject</span>(<span class="hljs-string">&quot;[data-test=awesome-label]&quot;</span>);
+awesomeLabel.<span class="hljs-title function_">el</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Etikett&quot;</span>);</code></pre>
                 </div>
             <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
 <li><a href="../../../../components/flabel.html"><code>FLabel</code></a></li>
+<li><a href="../../../../functions/plugins/testplugin.html">Test Plugin</a></li>
 </ul>
 
 
@@ -555,9 +536,9 @@ awesomeLabel.<span class="hljs-title function_">el</span>().<span class="hljs-ti
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/pageobject-test-f-label (<a href="https://github.com/Forsakringskassan/designsystem/commits/156da9b2366c87d0dd0b0b8581df9bfce235f050">156da9b</a>)<br />
+    docs/pageobject-test-f-label (<a href="https://github.com/Forsakringskassan/designsystem/commits/4b95e98d76ae6fa011f989725a057b2c03b2e1cc">4b95e98</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/190">PR 190</a><br />
-        2024-12-19 16:08
+        2024-12-20 02:15
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -684,9 +665,9 @@ awesomeLabel.<span class="hljs-title function_">el</span>().<span class="hljs-ti
             
         ></script>
         <script
-            src="../../../../assets/main-4751c4.js"
+            src="../../../../assets/main-31401d.js"
             crossorigin
-            integrity="sha384-q15KHOoz4gQtk9HXaWqxES3YsgzEsJu3opgGi9+VKgdWVRscUrF84pZgEse5YQgN"
+            integrity="sha384-bJFpu9DY6PkkKGSsSy/WBt9cLeRTwMIvTL16eqTkDtOjGVZnbuZuIWsFaU7rsiiw"
             
         ></script>
     </body>
