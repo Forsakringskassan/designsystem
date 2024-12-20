@@ -5020,11 +5020,11 @@ input[type=search]:focus,
 }
 .radio-button-group--chip .radio-button__label:hover {
   border-color: var(--fkds-color-border-primary, #8d8e91);
-  background-color: var(--fkds-color-action-background-select-hover, #dbe9e2);
+  background-color: var(--fkds-color-select-background-primary-hover, #dbe9e2);
   color: var(--fkds-color-text-primary, #1b1e23);
 }
 .radio-button-group--chip input[type=radio]:checked + .radio-button__label {
-  background: var(--fkds-color-action-background-select-default, #35805b);
+  background: var(--fkds-color-select-background-primary-default, #35805b);
   border-color: transparent;
   color: var(--fkds-color-text-inverted, #ffffff);
 }
@@ -5087,11 +5087,11 @@ input[type=search]:focus,
 }
 .checkbox-group--chip .checkbox__label:hover {
   border-color: var(--fkds-color-border-primary, #8d8e91);
-  background-color: var(--fkds-color-action-background-select-hover, #dbe9e2);
+  background-color: var(--fkds-color-select-background-primary-hover, #dbe9e2);
   color: var(--fkds-color-text-primary, #1b1e23);
 }
 .checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {
-  background: var(--fkds-color-action-background-select-default, #35805b);
+  background: var(--fkds-color-select-background-primary-default, #35805b);
   border-color: transparent;
   color: var(--fkds-color-text-inverted, #ffffff);
 }
@@ -5128,6 +5128,46 @@ input[type=search]:focus,
 }
 .close-button .icon {
   min-width: var(--f-icon-size-small, 1.143rem);
+}
+
+.popup .popup__wrapper.combobox__listbox {
+  background-color: var(--fkds-color-background-primary, #ffffff);
+  border: var(--f-border-width-medium, 1px) solid var(--fkds-color-border-primary, #8d8e91);
+  border-radius: var(--f-border-radius-medium, 4px);
+  box-shadow: var(--f-box-modal-shadow, 0 0 20px rgba(0, 0, 0, 0.3));
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 2px;
+}
+
+.combobox__listbox__list {
+  margin: 0;
+  padding: 0;
+}
+
+.combobox__listbox__option {
+  color: var(--fkds-color-text-primary, #1b1e23);
+  cursor: pointer;
+  list-style-type: none;
+  padding: 0.75rem;
+  white-space: nowrap;
+}
+.combobox__listbox__option:hover {
+  background-color: var(--fkds-color-select-background-primary-hover, #dbe9e2);
+  color: var(--fkds-color-text-primary, #1b1e23);
+}
+.combobox__listbox__option--highlight {
+  background-color: var(--fkds-color-select-background-primary-default, #35805b);
+  color: var(--fkds-color-text-inverted, #ffffff);
+  font-weight: var(--f-font-weight-medium, 700);
+}
+
+.combobox__button {
+  background: inherit;
+  border: none;
+  color: var(--fkds-icon-color-action-content-primary-default, #4a52b6);
+  margin: 0;
+  padding: 0;
 }
 
 .contextmenu {
