@@ -342,3 +342,17 @@ describe("Extended textfields", () => {
         cy.get(activeOption).should("have.text", "4,1");
     });
 });
+
+describe("Disabled component", () => {
+    it("should disable textfield and toggle button", () => {
+        cy.mount(FTextField, {
+            props: {
+                disabled: true,
+                options: ["foo"],
+            },
+            slots: { default: "etikett" },
+        });
+        cy.get(button).should("be.disabled");
+        cy.get(input).should("be.disabled");
+    });
+});
