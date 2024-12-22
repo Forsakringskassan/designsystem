@@ -63,6 +63,19 @@ module.exports = {
             exclude: "docs/node_modules/**",
             basePath: "docs",
             fileReader: frontMatterFileReader,
+            transform(doc) {
+                const { fullPath } = doc.fileInfo;
+                const dirname = path.dirname(fullPath);
+                const basename = path.basename(dirname);
+                const filename = path.basename(fullPath, ".md");
+
+                /* transform output path from "FoobarComponent/FoobarComponent-method.md" to "FoobarComponent/method.html" */
+                if (filename.startsWith(`${basename}-`)) {
+                    const n = basename.length + 1;
+                    doc.fileInfo.outputName = doc.fileInfo.outputName.slice(n);
+                }
+                return doc;
+            },
         },
         {
             include: "docs/*/**/*.json",
