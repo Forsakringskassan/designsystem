@@ -244,9 +244,8 @@ describe("scrollbars", () => {
             attachTo: createPlaceholderInDocument(),
         });
         await wrapper.vm.$nextTick();
-        // css class modal__open removes scrollbars
         const documentElement = document.documentElement;
-        expect(documentElement.classList).toContain("modal__open");
+        expect(documentElement.style.overflow).toBe("hidden");
     });
 
     it('should restore scrollbars in document if "isOpen" prop is false', async () => {
@@ -258,7 +257,7 @@ describe("scrollbars", () => {
         });
         await wrapper.vm.$nextTick();
         const documentElement = document.documentElement;
-        expect(documentElement.classList).not.toContain("modal__open");
+        expect(documentElement.style.overflow).not.toBe("hidden");
     });
 
     it("should restore scrollbars in document when component is unmounted", async () => {
@@ -272,11 +271,11 @@ describe("scrollbars", () => {
 
         const documentElement = document.documentElement;
 
-        expect(documentElement.classList).toContain("modal__open");
+        expect(documentElement.style.overflow).toBe("hidden");
 
         await wrapper.setProps({ isOpen: false });
         await wrapper.vm.$nextTick();
 
-        expect(documentElement.classList).not.toContain("modal__open");
+        expect(documentElement.style.overflow).not.toBe("hidden");
     });
 });
