@@ -26,7 +26,7 @@
       "types": "./dist/types/pageobject.d.ts",
       "default": "./dist/cjs/pageobject.js"
     },
-    "./htmlvalidate": "./htmlvalidate/index.js",
+    "./htmlvalidate": "./htmlvalidate/index.cjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
     "./package.json": "./package.json",
     "./tsconfig.json": "./tsconfig-consumer.json"
