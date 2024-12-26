@@ -11610,7 +11610,7 @@ export interface FormErrorList extends ErrorItem {
 export class FormErrorList implements FormErrorList {
     constructor(fields: FormErrorList);
     // (undocumented)
-    focusElementId?: string;
+    focusElementId?: string | undefined;
     // (undocumented)
     id: string;
     // (undocumented)
