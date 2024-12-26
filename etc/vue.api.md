@@ -2741,8 +2741,8 @@ validator(value: string): boolean;
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
-focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
+focus: "on" | "off" | "open";
 size: string;
 isOpen: boolean;
 fullscreen: boolean;
@@ -3497,8 +3497,8 @@ validator(value: string): boolean;
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
-focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
+focus: "on" | "off" | "open";
 size: string;
 isOpen: boolean;
 fullscreen: boolean;
@@ -4039,8 +4039,8 @@ validator(value: string): boolean;
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
-focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
+focus: "on" | "off" | "open";
 size: string;
 isOpen: boolean;
 fullscreen: boolean;
@@ -7992,8 +7992,8 @@ validator(value: string): boolean;
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
-focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
+focus: "on" | "off" | "open";
 size: string;
 isOpen: boolean;
 fullscreen: boolean;
@@ -9998,8 +9998,8 @@ validator(value: string): boolean;
 }>> & Readonly<{
 onClose?: ((...args: any[]) => any) | undefined;
 }>, {
-focus: "on" | "off" | "open";
 type: "" | "warning" | "error" | "information";
+focus: "on" | "off" | "open";
 size: string;
 isOpen: boolean;
 fullscreen: boolean;
@@ -15006,7 +15006,7 @@ labelClass(): string;
 labelWrapperClass(): string | undefined;
 selectWrapperClass(): string | undefined;
 vModel: {
-get(): string | number | boolean | Record<string, any> | unknown[] | undefined;
+get(): string | number | boolean | unknown[] | Record<string, any> | undefined;
 set(value: unknown): void;
 };
 }, {
@@ -15042,7 +15042,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
-modelValue: string | number | boolean | Record<string, any> | unknown[];
+modelValue: string | number | boolean | unknown[] | Record<string, any>;
 inline: boolean;
 labelWidth: string;
 selectWidth: string;
@@ -15319,7 +15319,7 @@ labelClass(): string;
 labelWrapperClass(): string | undefined;
 selectWrapperClass(): string | undefined;
 vModel: {
-get(): string | number | boolean | Record<string, any> | unknown[] | undefined;
+get(): string | number | boolean | unknown[] | Record<string, any> | undefined;
 set(value: unknown): void;
 };
 }, {
@@ -15355,7 +15355,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
-modelValue: string | number | boolean | Record<string, any> | unknown[];
+modelValue: string | number | boolean | unknown[] | Record<string, any>;
 inline: boolean;
 labelWidth: string;
 selectWidth: string;
