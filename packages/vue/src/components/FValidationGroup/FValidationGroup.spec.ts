@@ -3,7 +3,11 @@ import { VueWrapper, mount } from "@vue/test-utils";
 import { defineComponent } from "vue";
 import { type ValidatableHTMLElement } from "@fkui/logic";
 import flushPromises from "flush-promises";
-import { FileSystemConfigLoader, HtmlValidate } from "html-validate/node";
+import {
+    cjsResolver,
+    FileSystemConfigLoader,
+    HtmlValidate,
+} from "html-validate/node";
 import {
     type ComponentUnmountEvent,
     type ComponentValidityEvent,
@@ -323,7 +327,7 @@ describe("v-model", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader({
+    const loader = new FileSystemConfigLoader([cjsResolver()], {
         extends: [
             "html-validate:recommended",
             "html-validate-vue:recommended",

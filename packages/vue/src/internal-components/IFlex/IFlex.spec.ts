@@ -1,5 +1,9 @@
 import { mount } from "@vue/test-utils";
-import { FileSystemConfigLoader, HtmlValidate } from "html-validate/node";
+import {
+    cjsResolver,
+    FileSystemConfigLoader,
+    HtmlValidate,
+} from "html-validate/node";
 import "html-validate/jest";
 import { GAP } from "./constants";
 import IFlex from "./IFlex.vue";
@@ -107,7 +111,7 @@ it("should have collapse class when collapse is specified", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader({
+    const loader = new FileSystemConfigLoader([cjsResolver()], {
         extends: [
             "html-validate:recommended",
             "html-validate-vue:recommended",

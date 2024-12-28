@@ -1,6 +1,10 @@
 import path from "node:path";
 import "html-validate/jest";
-import { FileSystemConfigLoader, HtmlValidate } from "html-validate/node";
+import {
+    cjsResolver,
+    FileSystemConfigLoader,
+    HtmlValidate,
+} from "html-validate/node";
 import { VueWrapper, mount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { FTextField } from "../FTextField";
@@ -129,7 +133,7 @@ describe("events", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader({
+    const loader = new FileSystemConfigLoader([cjsResolver()], {
         extends: [
             "html-validate:recommended",
             "html-validate-vue:recommended",
