@@ -1,5 +1,9 @@
 import { VueWrapper, mount } from "@vue/test-utils";
-import { FileSystemConfigLoader, HtmlValidate } from "html-validate/node";
+import {
+    cjsResolver,
+    FileSystemConfigLoader,
+    HtmlValidate,
+} from "html-validate/node";
 import "html-validate/jest";
 import FTooltip from "./FTooltip.vue";
 
@@ -69,7 +73,7 @@ describe("slots", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader({
+    const loader = new FileSystemConfigLoader([cjsResolver()], {
         extends: [
             "html-validate:recommended",
             "html-validate-vue:recommended",

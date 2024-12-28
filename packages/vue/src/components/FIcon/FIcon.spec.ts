@@ -1,9 +1,13 @@
 import { VueWrapper, mount } from "@vue/test-utils";
-import { FileSystemConfigLoader, HtmlValidate } from "html-validate/node";
+import {
+    cjsResolver,
+    FileSystemConfigLoader,
+    HtmlValidate,
+} from "html-validate/node";
 import FIcon from "./FIcon.vue";
 import "html-validate/jest";
 
-const loader = new FileSystemConfigLoader({
+const loader = new FileSystemConfigLoader([cjsResolver()], {
     extends: [
         "html-validate:recommended",
         "html-validate-vue:recommended",

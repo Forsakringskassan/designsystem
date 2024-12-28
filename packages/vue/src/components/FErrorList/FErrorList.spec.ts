@@ -5,7 +5,11 @@ import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { defineComponent } from "vue";
 import flushPromises from "flush-promises";
 import logic from "@fkui/logic";
-import { FileSystemConfigLoader, HtmlValidate } from "html-validate/node";
+import {
+    cjsResolver,
+    FileSystemConfigLoader,
+    HtmlValidate,
+} from "html-validate/node";
 import { ErrorItem } from "../../types";
 import { FIcon } from "../FIcon";
 import { IFlexItem } from "../../internal-components/IFlex";
@@ -242,7 +246,7 @@ describe("navigation", () => {
 });
 
 describe("htmlvalidate", () => {
-    const loader = new FileSystemConfigLoader({
+    const loader = new FileSystemConfigLoader([cjsResolver()], {
         extends: [
             "html-validate:recommended",
             "html-validate-vue:recommended",
