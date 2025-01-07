@@ -1,11 +1,17 @@
 import { type DefineComponent, defineComponent } from "vue";
 import {
+    FConfirmModal,
+    FFormModal,
+    FModal,
+    FSelectField,
+    FValidationForm,
+} from "..";
+import {
     FModalPageObject,
     type DefaultCypressChainable,
     FSelectFieldPageObject,
+    FFormModalPageObject,
 } from "../../pageobject";
-import { FSelectField } from "../FSelectField";
-import FModal from "./FModal.vue";
 
 function generateModalMarkup(focusStrategy = "on"): string {
     return /* HTML */ `
@@ -290,4 +296,78 @@ describe("FModal", () => {
             cy.focused().should("not.exist");
         });
     });
+});
+
+it("should retain scroll by default when closed", () => {
+    const template = /* HTML */ `
+        <div class="container">
+            <div style="background-color: yellow; height: 1000px"></div>
+
+            <f-validation-form>
+                <button
+                    class="button button--medium button--secondary"
+                    data-test="open-edit-modal-button"
+                    type="submit"
+                    @click="isEditing = true"
+                >
+                    Open edit modal
+                </button>
+
+                <button
+                    class="button button--medium button--secondary"
+                    type="button"
+                    @click="isConfirming = true"
+                >
+                    Open confirm modal
+                </button>
+
+                <div v-if="isEditing || isConfirming">
+                    <f-form-modal
+                        :is-open="isEditing"
+                        @close="isEditing = false"
+                    >
+                        <template #header>Edit item</template>
+                        <template #input-text-fields></template>
+                        <template #submit-button-text>Save</template>
+                        <template #cancel-button-text>Cancel</template>
+                    </f-form-modal>
+
+                    <f-confirm-modal
+                        :is-open="isConfirming"
+                        :buttons="confirmDeleteButtons"
+                        @close="isConfirming = false"
+                    >
+                        <template #heading>Are you sure?</template>
+                        <template #content></template>
+                    </f-confirm-modal>
+                </div>
+            </f-validation-form>
+        </div>
+    `;
+
+    const testComponent = defineComponent({
+        template,
+        components: { FValidationForm, FConfirmModal, FFormModal },
+        data() {
+            return {
+                confirmDeleteButtons: [
+                    {
+                        label: "Yes",
+                        type: "primary",
+                        event: "confirm",
+                    },
+                    { label: "No", type: "secondary" },
+                ],
+                isEditing: false,
+                isConfirming: false,
+            };
+        },
+    });
+
+    cy.viewport(800, 600);
+    cy.mount(testComponent);
+    cy.get('[data-test="open-edit-modal-button"]').click();
+    const modal = new FFormModalPageObject(".modal");
+    modal.primaryButton().click();
+    cy.window().its("scrollY").should("not.equal", 0);
 });
