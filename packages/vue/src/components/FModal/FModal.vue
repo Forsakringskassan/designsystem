@@ -226,10 +226,9 @@ export default defineComponent({
             root.style.removeProperty("overflow");
             root.style.removeProperty("position");
 
-            root.scrollTop = this.savedScroll ?? 0;
-            this.savedScroll = null;
-
             if (this.focus === "on" && this.savedFocus) {
+                root.scrollTop = this.savedScroll ?? 0;
+                this.savedScroll = null;
                 popFocus(this.savedFocus);
                 this.savedFocus = null;
             }
