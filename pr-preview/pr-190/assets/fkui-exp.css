@@ -2942,13 +2942,6 @@ input[type=search]:focus,
   translate: -50% -100%;
 }
 
-.modal__open {
-  overflow: hidden;
-  position: fixed;
-  left: 0;
-  right: 0;
-}
-
 .modal__backdrop {
   background: var(--f-background-overlay, rgba(0, 0, 0, 0.75));
   display: flex;
@@ -5168,6 +5161,9 @@ input[type=search]:focus,
   color: var(--fkds-icon-color-action-content-primary-default, #4a52b6);
   margin: 0;
   padding: 0;
+}
+.combobox__button:disabled {
+  color: var(--fkds-icon-color-action-content-primary-disabled, #8d8e91);
 }
 
 .contextmenu {

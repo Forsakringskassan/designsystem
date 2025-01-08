@@ -2264,7 +2264,10 @@
         const root = document.documentElement;
         const scroll = root.scrollTop;
         root.style.top = `-${scroll}px`;
-        root.classList.add("modal__open");
+        root.style.left = "0";
+        root.style.right = "0";
+        root.style.overflow = "hidden";
+        root.style.position = "fixed";
         const focusElement3 = this.resolveFocusElement();
         if (this.focus === "on") {
           this.savedFocus = (0, import_logic7.pushFocus)(focusElement3);
@@ -2292,8 +2295,11 @@
       },
       restoreState() {
         const root = document.documentElement;
-        root.classList.remove("modal__open");
         root.style.removeProperty("top");
+        root.style.removeProperty("left");
+        root.style.removeProperty("right");
+        root.style.removeProperty("overflow");
+        root.style.removeProperty("position");
         root.scrollTop = this.savedScroll ?? 0;
         this.savedScroll = null;
         if (this.focus === "on" && this.savedFocus) {
