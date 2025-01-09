@@ -90,6 +90,9 @@
   --f-tooltip-close-button-padding: initial;
   --fkds-color-background-primary: #ffffff;
   --fkds-color-background-disabled: #f4f4f4;
+  --fkds-color-action-background-select-hover: #dbe9e2;
+  --fkds-color-action-background-select-default: #35805b;
+  --fkds-icon-color-action-content-weak-default: #5f6165;
   --fkds-color-feedback-background-neutral: #f4f4f4;
   --fkds-color-feedback-background-neutral-strong: #ddddde;
   --fkds-color-feedback-background-info: #f5f6fa;
@@ -100,8 +103,6 @@
   --fkds-color-feedback-background-positive-strong: #35805b;
   --fkds-color-feedback-background-warning: #fffcf3;
   --fkds-color-feedback-background-warning-strong: #ffbe10;
-  --fkds-color-action-background-select-hover: #dbe9e2;
-  --fkds-color-action-background-select-default: #35805b;
   --fkds-color-border-primary: #8d8e91;
   --fkds-color-feedback-border-neutral: #8d8e91;
   --fkds-color-feedback-border-info: #4a52b6;
@@ -110,6 +111,7 @@
   --fkds-color-feedback-border-warning: #ffbe10;
   --fkds-icon-color-action-content-primary-default: #4a52b6;
   --fkds-icon-color-action-content-primary-disabled: #8d8e91;
+  --fkds-icon-color-content-disabled: #8d8e91;
   --fkds-color-text-inverted: #ffffff;
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-disabled: #8d8e91;
@@ -7263,10 +7265,10 @@ input[type=search]:focus,
   }
 }
 .textarea-field__textarea {
-  background-color: var(--f-background-input);
+  background-color: var(--fkds-color-background-primary);
   box-shadow: var(--f-input-shadow-inset);
   border-radius: var(--f-border-radius-medium);
-  border: var(--f-border-width-medium) solid var(--f-border-color-input);
+  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
   box-sizing: border-box;
   font-size: var(--f-font-size-standard);
   min-height: calc(var(--f-height-large) * var(--f-density-factor));
@@ -7277,12 +7279,12 @@ input[type=search]:focus,
   height: auto;
 }
 .textarea-field__textarea:disabled {
-  border-color: var(--f-border-color-input-disabled);
-  color: var(--f-text-color-input-disabled);
-  background-color: var(--f-background-input-disabled);
+  border-color: var(--fkds-color-border-primary);
+  color: var(--fkds-color-text-disabled);
+  background-color: var(--fkds-color-background-disabled);
 }
 .textarea-field--error .textarea-field__textarea {
-  border-color: var(--f-border-color-error);
+  border-color: var(--fkds-color-feedback-border-negative);
 }
 .textarea-field__resize--none {
   resize: none;
@@ -7328,10 +7330,10 @@ input[type=search]:focus,
   gap: calc(0.5rem * var(--f-density-factor));
 }
 .text-field__input {
-  background-color: var(--f-background-input);
+  background-color: var(--fkds-color-background-primary);
   box-shadow: var(--f-input-shadow-inset);
   border-radius: var(--f-border-radius-medium);
-  border: var(--f-border-width-medium) solid var(--f-border-color-input);
+  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
   min-height: calc(var(--f-height-large) * var(--f-density-factor));
   padding: 0 0.75rem;
   width: var(--f-width-full);
@@ -7363,15 +7365,15 @@ input[type=search]:focus,
   top: 3px;
 }
 .text-field__input:disabled + .text-field__icon {
-  color: var(--f-text-color-button-disabled);
+  color: var(--fkds-icon-color-content-disabled);
 }
 .text-field__input:disabled {
-  border-color: var(--f-border-color-input-disabled);
-  color: var(--f-text-color-input-disabled);
-  background-color: var(--f-background-input-disabled);
+  border-color: var(--fkds-color-border-primary);
+  color: var(--fkds-color-text-disabled);
+  background-color: var(--fkds-color-background-disabled);
 }
 .text-field--error .text-field__input {
-  border-color: var(--f-border-color-error);
+  border-color: var(--fkds-color-feedback-border-negative);
 }
 .text-field--search + .text-field__append-inner {
   display: flex;
@@ -7388,7 +7390,7 @@ input[type=search]:focus,
   cursor: pointer;
 }
 .text-field .clear-button__icon {
-  color: var(--f-text-color-discrete);
+  color: var(--fkds-icon-color-action-content-weak-default);
   height: var(--f-icon-size-x-small);
   width: var(--f-icon-size-x-small);
 }
