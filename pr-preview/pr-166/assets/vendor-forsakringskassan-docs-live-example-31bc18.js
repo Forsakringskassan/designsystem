@@ -2419,7 +2419,7 @@ If '${e}' is a directive input, make sure the directive is imported by the curre
         function zs(t, e) {
           return Me2[e] !== void 0 ? Me2[e] || t : /^#x[a-f0-9]+$/i.test(e) ? String.fromCodePoint(parseInt(e.slice(2), 16)) : /^#\d+$/.test(e) ? String.fromCodePoint(parseInt(e.slice(1), 10)) : t;
         }
-        var rr = class extends tr2 {
+        var rr2 = class extends tr2 {
           constructor() {
             super($e);
           }
@@ -2427,7 +2427,7 @@ If '${e}' is a directive input, make sure the directive is imported by the curre
             return super.parse(e, r, n, s, i);
           }
         };
-        var zr2 = null, Do2 = () => (zr2 || (zr2 = new rr()), zr2);
+        var zr2 = null, Do2 = () => (zr2 || (zr2 = new rr2()), zr2);
         function Gr2(t, e = {}) {
           let { canSelfClose: r = false, allowHtmComponentClosingTags: n = false, isTagNameCaseSensitive: s = false, getTagContentType: i, tokenizeAngularBlocks: a = false, tokenizeAngularLetDeclaration: o = false } = e;
           return Do2().parse(t, "angular-html-parser", { tokenizeExpansionForms: a, interpolationConfig: void 0, canSelfClose: r, allowHtmComponentClosingTags: n, tokenizeBlocks: a, tokenizeLet: o }, s, i);
@@ -2460,13 +2460,13 @@ ${e}`, r), i = n;
           return { frontMatter: e, content: w2(false, r, /[^\n]/gu, " ") + t.slice(r.length) };
         }
         var Ys = wo;
-        var nr2 = { attrs: true, children: true, cases: true, expression: true }, js = /* @__PURE__ */ new Set(["parent"]), sr2 = class t {
+        var nr = { attrs: true, children: true, cases: true, expression: true }, js = /* @__PURE__ */ new Set(["parent"]), sr2 = class t {
           constructor(e = {}) {
             for (let r of /* @__PURE__ */ new Set([...js, ...Object.keys(e)])) this.setProperty(r, e[r]);
           }
           setProperty(e, r) {
             if (this[e] !== r) {
-              if (e in nr2 && (r = r.map((n) => this.createChild(n))), !js.has(e)) {
+              if (e in nr && (r = r.map((n) => this.createChild(n))), !js.has(e)) {
                 this[e] = r;
                 return;
               }
@@ -2475,18 +2475,18 @@ ${e}`, r), i = n;
           }
           map(e) {
             let r;
-            for (let n in nr2) {
+            for (let n in nr) {
               let s = this[n];
               if (s) {
                 let i = bo(s, (a) => a.map(e));
                 r !== s && (r || (r = new t({ parent: this.parent })), r.setProperty(n, i));
               }
             }
-            if (r) for (let n in this) n in nr2 || (r[n] = this[n]);
+            if (r) for (let n in this) n in nr || (r[n] = this[n]);
             return e(r || this);
           }
           walk(e) {
-            for (let r in nr2) {
+            for (let r in nr) {
               let n = this[r];
               if (n) for (let s = 0; s < n.length; s++) n[s].walk(e);
             }
@@ -2695,10 +2695,10 @@ ${e}`, r), i = n;
   var vu = Object.getOwnPropertyNames;
   var Bu = Object.getPrototypeOf;
   var wu = Object.prototype.hasOwnProperty;
-  var cr = (e) => {
+  var fr = (e) => {
     throw TypeError(e);
   };
-  var fr = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports);
+  var dr = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports);
   var Bt = (e, t) => {
     for (var r in t) vt(e, r, { get: t[r], enumerable: true });
   };
@@ -2707,17 +2707,17 @@ ${e}`, r), i = n;
     return e;
   };
   var Me = (e, t, r) => (r = e != null ? yu(Bu(e)) : {}, _u(t || !e || !e.__esModule ? vt(r, "default", { value: e, enumerable: true }) : r, e));
-  var xu = (e, t, r) => t.has(e) || cr("Cannot " + r);
-  var dr = (e, t, r) => t.has(e) ? cr("Cannot add the same private member more than once") : t instanceof WeakSet ? t.add(e) : t.set(e, r);
+  var xu = (e, t, r) => t.has(e) || fr("Cannot " + r);
+  var pr = (e, t, r) => t.has(e) ? fr("Cannot add the same private member more than once") : t instanceof WeakSet ? t.add(e) : t.set(e, r);
   var pe = (e, t, r) => (xu(e, t, "access private method"), r);
-  var st = fr((na, Fn) => {
+  var st = dr((na, Fn) => {
     "use strict";
     var pn = new Proxy(String, { get: () => pn });
     Fn.exports = pn;
   });
-  var Wn = fr((rr) => {
+  var Wn = dr((nr) => {
     "use strict";
-    Object.defineProperty(rr, "__esModule", { value: true });
+    Object.defineProperty(nr, "__esModule", { value: true });
     function Bi() {
       return new Proxy({}, { get: () => (e) => e });
     }
@@ -2758,10 +2758,10 @@ ${e}`, r), i = n;
       return r.message && !D && (f = `${" ".repeat(l + 1)}${r.message}
 ${f}`), f;
     }
-    rr.codeFrameColumns = _i;
+    nr.codeFrameColumns = _i;
   });
-  var lr = {};
-  Bt(lr, { __debug: () => Do, check: () => so, doc: () => sr, format: () => gu, formatWithCursor: () => Cu, getSupportInfo: () => ao, util: () => Dr, version: () => lu });
+  var cr = {};
+  Bt(cr, { __debug: () => Do, check: () => so, doc: () => ar, format: () => gu, formatWithCursor: () => Cu, getSupportInfo: () => ao, util: () => lr, version: () => lu });
   var bu = (e, t, r, n) => {
     if (!(e && t == null)) return t.replaceAll ? t.replaceAll(r, n) : r.global ? t.replace(r, n) : t.split(r).join(n);
   };
@@ -2781,7 +2781,7 @@ ${f}`), f;
     var a = r.length, D = t.length, l = 1, p = a + D;
     u.maxEditLength != null && (p = Math.min(p, u.maxEditLength));
     var f = (n = u.timeout) !== null && n !== void 0 ? n : 1 / 0, d = Date.now() + f, c = [{ oldPos: -1, lastComponent: void 0 }], F = this.extractCommon(c[0], r, t, 0, u);
-    if (c[0].oldPos + 1 >= D && F + 1 >= a) return s(pr(o, c[0].lastComponent, r, t, o.useLongestToken));
+    if (c[0].oldPos + 1 >= D && F + 1 >= a) return s(Fr(o, c[0].lastComponent, r, t, o.useLongestToken));
     var m = -1 / 0, h2 = 1 / 0;
     function C() {
       for (var E = Math.max(m, -l); E <= Math.min(h2, l); E += 2) {
@@ -2797,7 +2797,7 @@ ${f}`), f;
           c[E] = void 0;
           continue;
         }
-        if (!$e || X && j.oldPos < b.oldPos ? g = o.addToPath(b, true, false, 0, u) : g = o.addToPath(j, false, true, 1, u), F = o.extractCommon(g, r, t, E, u), g.oldPos + 1 >= D && F + 1 >= a) return s(pr(o, g.lastComponent, r, t, o.useLongestToken));
+        if (!$e || X && j.oldPos < b.oldPos ? g = o.addToPath(b, true, false, 0, u) : g = o.addToPath(j, false, true, 1, u), F = o.extractCommon(g, r, t, E, u), g.oldPos + 1 >= D && F + 1 >= a) return s(Fr(o, g.lastComponent, r, t, o.useLongestToken));
         c[E] = g, g.oldPos + 1 >= D && (h2 = Math.min(h2, E - 1)), F + 1 >= a && (m = Math.max(m, E + 1));
       }
       l++;
@@ -2832,7 +2832,7 @@ ${f}`), f;
   }, postProcess: function(t) {
     return t;
   } };
-  function pr(e, t, r, n, u) {
+  function Fr(e, t, r, n, u) {
     for (var i = [], o; t; ) i.push(t), o = t.previousComponent, delete t.previousComponent, t = o;
     i.reverse();
     for (var s = 0, a = i.length, D = 0, l = 0; s < a; s++) {
@@ -2852,12 +2852,12 @@ ${f}`), f;
     return i;
   }
   var Fo = new M();
-  function Fr(e, t) {
+  function mr(e, t) {
     var r;
     for (r = 0; r < e.length && r < t.length; r++) if (e[r] != t[r]) return e.slice(0, r);
     return e.slice(0, r);
   }
-  function mr(e, t) {
+  function hr(e, t) {
     var r;
     if (!e || !t || e[e.length - 1] != t[t.length - 1]) return "";
     for (r = 0; r < e.length && r < t.length; r++) if (e[e.length - (r + 1)] != t[t.length - (r + 1)]) return e.slice(-r);
@@ -2878,7 +2878,7 @@ ${f}`), f;
   function Ue(e, t) {
     return _t(e, t, "");
   }
-  function hr(e, t) {
+  function Er(e, t) {
     return t.slice(0, Nu(e, t));
   }
   function Nu(e, t) {
@@ -2927,31 +2927,31 @@ ${f}`), f;
     if (!e || t.oneChangePerToken) return e;
     var r = null, n = null, u = null;
     return e.forEach(function(i) {
-      i.added ? n = i : i.removed ? u = i : ((n || u) && Er(r, u, n, i), r = i, n = null, u = null);
-    }), (n || u) && Er(r, u, n, null), e;
+      i.added ? n = i : i.removed ? u = i : ((n || u) && Cr(r, u, n, i), r = i, n = null, u = null);
+    }), (n || u) && Cr(r, u, n, null), e;
   };
-  function Er(e, t, r, n) {
+  function Cr(e, t, r, n) {
     if (t && r) {
       var u = t.value.match(/^\s*/)[0], i = t.value.match(/\s*$/)[0], o = r.value.match(/^\s*/)[0], s = r.value.match(/\s*$/)[0];
       if (e) {
-        var a = Fr(u, o);
+        var a = mr(u, o);
         e.value = _t(e.value, o, a), t.value = we(t.value, a), r.value = we(r.value, a);
       }
       if (n) {
-        var D = mr(i, s);
+        var D = hr(i, s);
         n.value = wt(n.value, s, D), t.value = Ue(t.value, D), r.value = Ue(r.value, D);
       }
     } else if (r) e && (r.value = r.value.replace(/^\s*/, "")), n && (n.value = n.value.replace(/^\s*/, ""));
     else if (e && n) {
-      var l = n.value.match(/^\s*/)[0], p = t.value.match(/^\s*/)[0], f = t.value.match(/\s*$/)[0], d = Fr(l, p);
+      var l = n.value.match(/^\s*/)[0], p = t.value.match(/^\s*/)[0], f = t.value.match(/\s*$/)[0], d = mr(l, p);
       t.value = we(t.value, d);
-      var c = mr(we(l, d), f);
+      var c = hr(we(l, d), f);
       t.value = Ue(t.value, c), n.value = wt(n.value, l, c), e.value = _t(e.value, l, l.slice(0, l.length - c.length));
     } else if (n) {
-      var F = n.value.match(/^\s*/)[0], m = t.value.match(/\s*$/)[0], h2 = hr(m, F);
+      var F = n.value.match(/^\s*/)[0], m = t.value.match(/\s*$/)[0], h2 = Er(m, F);
       t.value = Ue(t.value, h2);
     } else if (e) {
-      var C = e.value.match(/\s*$/)[0], v = t.value.match(/^\s*/)[0], E = hr(C, v);
+      var C = e.value.match(/\s*$/)[0], v = t.value.match(/^\s*/)[0], E = Er(C, v);
       t.value = we(t.value, E);
     }
   }
@@ -3032,10 +3032,10 @@ ${f}`), f;
   ze.join = ze.removeEmpty = function(e) {
     return e;
   };
-  function Cr(e, t, r) {
+  function gr(e, t, r) {
     return ze.diff(e, t, r);
   }
-  function gr(e) {
+  function yr(e) {
     let t = e.indexOf("\r");
     return t !== -1 ? e.charAt(t + 1) === `
 ` ? "crlf" : "cr" : "lf";
@@ -3072,7 +3072,7 @@ ${f}`), f;
     let n = e.match(r);
     return n ? n.length : 0;
   }
-  function yr(e) {
+  function Ar(e) {
     return ne(false, e, /\r\n?/gu, `
 `);
   }
@@ -3119,16 +3119,16 @@ Expected it to be ${n}.`;
     }
   };
   var Q = St;
-  var Ar = {};
+  var vr = {};
   function Ru(e, t, r, n) {
     let u = [e];
     for (; u.length > 0; ) {
       let i = u.pop();
-      if (i === Ar) {
+      if (i === vr) {
         r(u.pop());
         continue;
       }
-      r && u.push(i, Ar);
+      r && u.push(i, vr);
       let o = z(i);
       if (!o) throw new Q(i);
       if ((t == null ? void 0 : t(i)) !== false) switch (o) {
@@ -3165,10 +3165,10 @@ Expected it to be ${n}.`;
     }
   }
   var be = Ru;
-  var vr = () => {
+  var Br = () => {
   };
-  var G = vr;
-  var Je = vr;
+  var G = Br;
+  var Je = Br;
   function le(e) {
     return G(e), { type: T, contents: e };
   }
@@ -3178,37 +3178,37 @@ Expected it to be ${n}.`;
   function Tt(e, t = {}) {
     return G(e), Je(t.expandedStates, true), { type: B, id: t.id, contents: e, break: !!t.shouldBreak, expandedStates: t.expandedStates };
   }
-  function Br(e) {
+  function wr(e) {
     return De(Number.NEGATIVE_INFINITY, e);
   }
-  function wr(e) {
+  function _r(e) {
     return De({ type: "root" }, e);
   }
-  function _r(e) {
+  function xr(e) {
     return De(-1, e);
   }
-  function xr(e, t) {
+  function br(e, t) {
     return Tt(e[0], { ...t, expandedStates: e });
   }
-  function br(e) {
+  function Nr(e) {
     return Je(e), { type: N, parts: e };
   }
-  function Nr(e, t = "", r = {}) {
+  function Or(e, t = "", r = {}) {
     return G(e), t !== "" && G(t), { type: w, breakContents: e, flatContents: t, groupId: r.groupId };
   }
-  function Or(e, t) {
+  function Sr(e, t) {
     return G(e), { type: P, contents: e, groupId: t.groupId, negate: t.negate };
   }
   function Ne(e) {
     return G(e), { type: I, contents: e };
   }
-  var Sr = { type: R };
+  var Tr = { type: R };
   var Fe = { type: _ };
-  var Tr = { type: L };
+  var kr = { type: L };
   var Oe = { type: A, hard: true };
   var kt = { type: A, hard: true, literal: true };
   var qe = { type: A };
-  var kr = { type: A, soft: true };
+  var Lr = { type: A, soft: true };
   var K = [Oe, Fe];
   var Xe = [kt, Fe];
   var Z = { type: V };
@@ -3227,7 +3227,7 @@ Expected it to be ${n}.`;
     }
     return n;
   }
-  function Lr(e, t) {
+  function Pr(e, t) {
     return G(t), e ? { type: O, label: e, contents: t } : t;
   }
   function ee(e) {
@@ -3244,7 +3244,7 @@ Expected it to be ${n}.`;
     }
     return e.type === w ? { ...e, breakContents: ee(e.breakContents), flatContents: ee(e.flatContents) } : e.type === B ? { ...e, contents: ee(e.contents), expandedStates: (t = e.expandedStates) == null ? void 0 : t.map(ee) } : e.type === N ? { type: "fill", parts: e.parts.map(ee) } : e.contents ? { ...e, contents: ee(e.contents) } : e;
   }
-  function Pr(e) {
+  function Ir(e) {
     let t = /* @__PURE__ */ Object.create(null), r = /* @__PURE__ */ new Set();
     return n(ee(e));
     function n(i, o, s) {
@@ -3295,23 +3295,23 @@ Expected it to be ${n}.`;
     if (!(e && t == null)) return Array.isArray(t) || typeof t == "string" ? t[r < 0 ? t.length + r : r] : t.at(r);
   };
   var y = Yu;
-  var Ir = () => /[#*0-9]\uFE0F?\u20E3|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23ED-\u23EF\u23F1\u23F2\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB\u25FC\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692\u2694-\u2697\u2699\u269B\u269C\u26A0\u26A7\u26AA\u26B0\u26B1\u26BD\u26BE\u26C4\u26C8\u26CF\u26D1\u26E9\u26F0-\u26F5\u26F7\u26F8\u26FA\u2702\u2708\u2709\u270F\u2712\u2714\u2716\u271D\u2721\u2733\u2734\u2744\u2747\u2757\u2763\u27A1\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B55\u3030\u303D\u3297\u3299]\uFE0F?|[\u261D\u270C\u270D](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\u270A\u270B](?:\uD83C[\uDFFB-\uDFFF])?|[\u23E9-\u23EC\u23F0\u23F3\u25FD\u2693\u26A1\u26AB\u26C5\u26CE\u26D4\u26EA\u26FD\u2705\u2728\u274C\u274E\u2753-\u2755\u2795-\u2797\u27B0\u27BF\u2B50]|\u26D3\uFE0F?(?:\u200D\uD83D\uDCA5)?|\u26F9(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\u2764\uFE0F?(?:\u200D(?:\uD83D\uDD25|\uD83E\uDE79))?|\uD83C(?:[\uDC04\uDD70\uDD71\uDD7E\uDD7F\uDE02\uDE37\uDF21\uDF24-\uDF2C\uDF36\uDF7D\uDF96\uDF97\uDF99-\uDF9B\uDF9E\uDF9F\uDFCD\uDFCE\uDFD4-\uDFDF\uDFF5\uDFF7]\uFE0F?|[\uDF85\uDFC2\uDFC7](?:\uD83C[\uDFFB-\uDFFF])?|[\uDFC4\uDFCA](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDFCB\uDFCC](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDCCF\uDD8E\uDD91-\uDD9A\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF43\uDF45-\uDF4A\uDF4C-\uDF7C\uDF7E-\uDF84\uDF86-\uDF93\uDFA0-\uDFC1\uDFC5\uDFC6\uDFC8\uDFC9\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF8-\uDFFF]|\uDDE6\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF]|\uDDE7\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF]|\uDDE8\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF7\uDDFA-\uDDFF]|\uDDE9\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF]|\uDDEA\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA]|\uDDEB\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7]|\uDDEC\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE]|\uDDED\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA]|\uDDEE\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9]|\uDDEF\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5]|\uDDF0\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF]|\uDDF1\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE]|\uDDF2\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF]|\uDDF3\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF]|\uDDF4\uD83C\uDDF2|\uDDF5\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE]|\uDDF6\uD83C\uDDE6|\uDDF7\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC]|\uDDF8\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF]|\uDDF9\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF]|\uDDFA\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF]|\uDDFB\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA]|\uDDFC\uD83C[\uDDEB\uDDF8]|\uDDFD\uD83C\uDDF0|\uDDFE\uD83C[\uDDEA\uDDF9]|\uDDFF\uD83C[\uDDE6\uDDF2\uDDFC]|\uDF44(?:\u200D\uD83D\uDFEB)?|\uDF4B(?:\u200D\uD83D\uDFE9)?|\uDFC3(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDFF3\uFE0F?(?:\u200D(?:\u26A7\uFE0F?|\uD83C\uDF08))?|\uDFF4(?:\u200D\u2620\uFE0F?|\uDB40\uDC67\uDB40\uDC62\uDB40(?:\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDC73\uDB40\uDC63\uDB40\uDC74|\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F)?)|\uD83D(?:[\uDC3F\uDCFD\uDD49\uDD4A\uDD6F\uDD70\uDD73\uDD76-\uDD79\uDD87\uDD8A-\uDD8D\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA\uDECB\uDECD-\uDECF\uDEE0-\uDEE5\uDEE9\uDEF0\uDEF3]\uFE0F?|[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDC8F\uDC91\uDCAA\uDD7A\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC](?:\uD83C[\uDFFB-\uDFFF])?|[\uDC6E\uDC70\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4\uDEB5](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD74\uDD90](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\uDC00-\uDC07\uDC09-\uDC14\uDC16-\uDC25\uDC27-\uDC3A\uDC3C-\uDC3E\uDC40\uDC44\uDC45\uDC51-\uDC65\uDC6A\uDC79-\uDC7B\uDC7D-\uDC80\uDC84\uDC88-\uDC8E\uDC90\uDC92-\uDCA9\uDCAB-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDDA4\uDDFB-\uDE2D\uDE2F-\uDE34\uDE37-\uDE41\uDE43\uDE44\uDE48-\uDE4A\uDE80-\uDEA2\uDEA4-\uDEB3\uDEB7-\uDEBF\uDEC1-\uDEC5\uDED0-\uDED2\uDED5-\uDED7\uDEDC-\uDEDF\uDEEB\uDEEC\uDEF4-\uDEFC\uDFE0-\uDFEB\uDFF0]|\uDC08(?:\u200D\u2B1B)?|\uDC15(?:\u200D\uD83E\uDDBA)?|\uDC26(?:\u200D(?:\u2B1B|\uD83D\uDD25))?|\uDC3B(?:\u200D\u2744\uFE0F?)?|\uDC41\uFE0F?(?:\u200D\uD83D\uDDE8\uFE0F?)?|\uDC68(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDC68\uDC69]\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE])))?))?|\uDC69(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?[\uDC68\uDC69]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?|\uDC69\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?))|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFE])))?))?|\uDC6F(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDD75(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDE2E(?:\u200D\uD83D\uDCA8)?|\uDE35(?:\u200D\uD83D\uDCAB)?|\uDE36(?:\u200D\uD83C\uDF2B\uFE0F?)?|\uDE42(?:\u200D[\u2194\u2195]\uFE0F?)?|\uDEB6(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?)|\uD83E(?:[\uDD0C\uDD0F\uDD18-\uDD1F\uDD30-\uDD34\uDD36\uDD77\uDDB5\uDDB6\uDDBB\uDDD2\uDDD3\uDDD5\uDEC3-\uDEC5\uDEF0\uDEF2-\uDEF8](?:\uD83C[\uDFFB-\uDFFF])?|[\uDD26\uDD35\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD\uDDCF\uDDD4\uDDD6-\uDDDD](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDDDE\uDDDF](?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD0D\uDD0E\uDD10-\uDD17\uDD20-\uDD25\uDD27-\uDD2F\uDD3A\uDD3F-\uDD45\uDD47-\uDD76\uDD78-\uDDB4\uDDB7\uDDBA\uDDBC-\uDDCC\uDDD0\uDDE0-\uDDFF\uDE70-\uDE7C\uDE80-\uDE89\uDE8F-\uDEC2\uDEC6\uDECE-\uDEDC\uDEDF-\uDEE9]|\uDD3C(?:\u200D[\u2640\u2642]\uFE0F?|\uD83C[\uDFFB-\uDFFF])?|\uDDCE(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDDD1(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1|\uDDD1\u200D\uD83E\uDDD2(?:\u200D\uD83E\uDDD2)?|\uDDD2(?:\u200D\uD83E\uDDD2)?))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?))?|\uDEF1(?:\uD83C(?:\uDFFB(?:\u200D\uD83E\uDEF2\uD83C[\uDFFC-\uDFFF])?|\uDFFC(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFD-\uDFFF])?|\uDFFD(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])?|\uDFFE(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFD\uDFFF])?|\uDFFF(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFE])?))?)/g;
-  function Rr(e) {
+  var Rr = () => /[#*0-9]\uFE0F?\u20E3|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23ED-\u23EF\u23F1\u23F2\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB\u25FC\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692\u2694-\u2697\u2699\u269B\u269C\u26A0\u26A7\u26AA\u26B0\u26B1\u26BD\u26BE\u26C4\u26C8\u26CF\u26D1\u26E9\u26F0-\u26F5\u26F7\u26F8\u26FA\u2702\u2708\u2709\u270F\u2712\u2714\u2716\u271D\u2721\u2733\u2734\u2744\u2747\u2757\u2763\u27A1\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B55\u3030\u303D\u3297\u3299]\uFE0F?|[\u261D\u270C\u270D](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\u270A\u270B](?:\uD83C[\uDFFB-\uDFFF])?|[\u23E9-\u23EC\u23F0\u23F3\u25FD\u2693\u26A1\u26AB\u26C5\u26CE\u26D4\u26EA\u26FD\u2705\u2728\u274C\u274E\u2753-\u2755\u2795-\u2797\u27B0\u27BF\u2B50]|\u26D3\uFE0F?(?:\u200D\uD83D\uDCA5)?|\u26F9(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\u2764\uFE0F?(?:\u200D(?:\uD83D\uDD25|\uD83E\uDE79))?|\uD83C(?:[\uDC04\uDD70\uDD71\uDD7E\uDD7F\uDE02\uDE37\uDF21\uDF24-\uDF2C\uDF36\uDF7D\uDF96\uDF97\uDF99-\uDF9B\uDF9E\uDF9F\uDFCD\uDFCE\uDFD4-\uDFDF\uDFF5\uDFF7]\uFE0F?|[\uDF85\uDFC2\uDFC7](?:\uD83C[\uDFFB-\uDFFF])?|[\uDFC4\uDFCA](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDFCB\uDFCC](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDCCF\uDD8E\uDD91-\uDD9A\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF43\uDF45-\uDF4A\uDF4C-\uDF7C\uDF7E-\uDF84\uDF86-\uDF93\uDFA0-\uDFC1\uDFC5\uDFC6\uDFC8\uDFC9\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF8-\uDFFF]|\uDDE6\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF]|\uDDE7\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF]|\uDDE8\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF7\uDDFA-\uDDFF]|\uDDE9\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF]|\uDDEA\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA]|\uDDEB\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7]|\uDDEC\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE]|\uDDED\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA]|\uDDEE\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9]|\uDDEF\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5]|\uDDF0\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF]|\uDDF1\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE]|\uDDF2\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF]|\uDDF3\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF]|\uDDF4\uD83C\uDDF2|\uDDF5\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE]|\uDDF6\uD83C\uDDE6|\uDDF7\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC]|\uDDF8\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF]|\uDDF9\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF]|\uDDFA\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF]|\uDDFB\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA]|\uDDFC\uD83C[\uDDEB\uDDF8]|\uDDFD\uD83C\uDDF0|\uDDFE\uD83C[\uDDEA\uDDF9]|\uDDFF\uD83C[\uDDE6\uDDF2\uDDFC]|\uDF44(?:\u200D\uD83D\uDFEB)?|\uDF4B(?:\u200D\uD83D\uDFE9)?|\uDFC3(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDFF3\uFE0F?(?:\u200D(?:\u26A7\uFE0F?|\uD83C\uDF08))?|\uDFF4(?:\u200D\u2620\uFE0F?|\uDB40\uDC67\uDB40\uDC62\uDB40(?:\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDC73\uDB40\uDC63\uDB40\uDC74|\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F)?)|\uD83D(?:[\uDC3F\uDCFD\uDD49\uDD4A\uDD6F\uDD70\uDD73\uDD76-\uDD79\uDD87\uDD8A-\uDD8D\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA\uDECB\uDECD-\uDECF\uDEE0-\uDEE5\uDEE9\uDEF0\uDEF3]\uFE0F?|[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDC8F\uDC91\uDCAA\uDD7A\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC](?:\uD83C[\uDFFB-\uDFFF])?|[\uDC6E\uDC70\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4\uDEB5](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD74\uDD90](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\uDC00-\uDC07\uDC09-\uDC14\uDC16-\uDC25\uDC27-\uDC3A\uDC3C-\uDC3E\uDC40\uDC44\uDC45\uDC51-\uDC65\uDC6A\uDC79-\uDC7B\uDC7D-\uDC80\uDC84\uDC88-\uDC8E\uDC90\uDC92-\uDCA9\uDCAB-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDDA4\uDDFB-\uDE2D\uDE2F-\uDE34\uDE37-\uDE41\uDE43\uDE44\uDE48-\uDE4A\uDE80-\uDEA2\uDEA4-\uDEB3\uDEB7-\uDEBF\uDEC1-\uDEC5\uDED0-\uDED2\uDED5-\uDED7\uDEDC-\uDEDF\uDEEB\uDEEC\uDEF4-\uDEFC\uDFE0-\uDFEB\uDFF0]|\uDC08(?:\u200D\u2B1B)?|\uDC15(?:\u200D\uD83E\uDDBA)?|\uDC26(?:\u200D(?:\u2B1B|\uD83D\uDD25))?|\uDC3B(?:\u200D\u2744\uFE0F?)?|\uDC41\uFE0F?(?:\u200D\uD83D\uDDE8\uFE0F?)?|\uDC68(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDC68\uDC69]\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE])))?))?|\uDC69(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?[\uDC68\uDC69]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?|\uDC69\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?))|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFE])))?))?|\uDC6F(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDD75(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDE2E(?:\u200D\uD83D\uDCA8)?|\uDE35(?:\u200D\uD83D\uDCAB)?|\uDE36(?:\u200D\uD83C\uDF2B\uFE0F?)?|\uDE42(?:\u200D[\u2194\u2195]\uFE0F?)?|\uDEB6(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?)|\uD83E(?:[\uDD0C\uDD0F\uDD18-\uDD1F\uDD30-\uDD34\uDD36\uDD77\uDDB5\uDDB6\uDDBB\uDDD2\uDDD3\uDDD5\uDEC3-\uDEC5\uDEF0\uDEF2-\uDEF8](?:\uD83C[\uDFFB-\uDFFF])?|[\uDD26\uDD35\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD\uDDCF\uDDD4\uDDD6-\uDDDD](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDDDE\uDDDF](?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD0D\uDD0E\uDD10-\uDD17\uDD20-\uDD25\uDD27-\uDD2F\uDD3A\uDD3F-\uDD45\uDD47-\uDD76\uDD78-\uDDB4\uDDB7\uDDBA\uDDBC-\uDDCC\uDDD0\uDDE0-\uDDFF\uDE70-\uDE7C\uDE80-\uDE89\uDE8F-\uDEC2\uDEC6\uDECE-\uDEDC\uDEDF-\uDEE9]|\uDD3C(?:\u200D[\u2640\u2642]\uFE0F?|\uD83C[\uDFFB-\uDFFF])?|\uDDCE(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDDD1(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1|\uDDD1\u200D\uD83E\uDDD2(?:\u200D\uD83E\uDDD2)?|\uDDD2(?:\u200D\uD83E\uDDD2)?))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?))?|\uDEF1(?:\uD83C(?:\uDFFB(?:\u200D\uD83E\uDEF2\uD83C[\uDFFC-\uDFFF])?|\uDFFC(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFD-\uDFFF])?|\uDFFD(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])?|\uDFFE(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFD\uDFFF])?|\uDFFF(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFE])?))?)/g;
+  function Yr(e) {
     return e === 12288 || e >= 65281 && e <= 65376 || e >= 65504 && e <= 65510;
   }
-  function Yr(e) {
+  function jr(e) {
     return e >= 4352 && e <= 4447 || e === 8986 || e === 8987 || e === 9001 || e === 9002 || e >= 9193 && e <= 9196 || e === 9200 || e === 9203 || e === 9725 || e === 9726 || e === 9748 || e === 9749 || e >= 9776 && e <= 9783 || e >= 9800 && e <= 9811 || e === 9855 || e >= 9866 && e <= 9871 || e === 9875 || e === 9889 || e === 9898 || e === 9899 || e === 9917 || e === 9918 || e === 9924 || e === 9925 || e === 9934 || e === 9940 || e === 9962 || e === 9970 || e === 9971 || e === 9973 || e === 9978 || e === 9981 || e === 9989 || e === 9994 || e === 9995 || e === 10024 || e === 10060 || e === 10062 || e >= 10067 && e <= 10069 || e === 10071 || e >= 10133 && e <= 10135 || e === 10160 || e === 10175 || e === 11035 || e === 11036 || e === 11088 || e === 11093 || e >= 11904 && e <= 11929 || e >= 11931 && e <= 12019 || e >= 12032 && e <= 12245 || e >= 12272 && e <= 12287 || e >= 12289 && e <= 12350 || e >= 12353 && e <= 12438 || e >= 12441 && e <= 12543 || e >= 12549 && e <= 12591 || e >= 12593 && e <= 12686 || e >= 12688 && e <= 12773 || e >= 12783 && e <= 12830 || e >= 12832 && e <= 12871 || e >= 12880 && e <= 42124 || e >= 42128 && e <= 42182 || e >= 43360 && e <= 43388 || e >= 44032 && e <= 55203 || e >= 63744 && e <= 64255 || e >= 65040 && e <= 65049 || e >= 65072 && e <= 65106 || e >= 65108 && e <= 65126 || e >= 65128 && e <= 65131 || e >= 94176 && e <= 94180 || e === 94192 || e === 94193 || e >= 94208 && e <= 100343 || e >= 100352 && e <= 101589 || e >= 101631 && e <= 101640 || e >= 110576 && e <= 110579 || e >= 110581 && e <= 110587 || e === 110589 || e === 110590 || e >= 110592 && e <= 110882 || e === 110898 || e >= 110928 && e <= 110930 || e === 110933 || e >= 110948 && e <= 110951 || e >= 110960 && e <= 111355 || e >= 119552 && e <= 119638 || e >= 119648 && e <= 119670 || e === 126980 || e === 127183 || e === 127374 || e >= 127377 && e <= 127386 || e >= 127488 && e <= 127490 || e >= 127504 && e <= 127547 || e >= 127552 && e <= 127560 || e === 127568 || e === 127569 || e >= 127584 && e <= 127589 || e >= 127744 && e <= 127776 || e >= 127789 && e <= 127797 || e >= 127799 && e <= 127868 || e >= 127870 && e <= 127891 || e >= 127904 && e <= 127946 || e >= 127951 && e <= 127955 || e >= 127968 && e <= 127984 || e === 127988 || e >= 127992 && e <= 128062 || e === 128064 || e >= 128066 && e <= 128252 || e >= 128255 && e <= 128317 || e >= 128331 && e <= 128334 || e >= 128336 && e <= 128359 || e === 128378 || e === 128405 || e === 128406 || e === 128420 || e >= 128507 && e <= 128591 || e >= 128640 && e <= 128709 || e === 128716 || e >= 128720 && e <= 128722 || e >= 128725 && e <= 128727 || e >= 128732 && e <= 128735 || e === 128747 || e === 128748 || e >= 128756 && e <= 128764 || e >= 128992 && e <= 129003 || e === 129008 || e >= 129292 && e <= 129338 || e >= 129340 && e <= 129349 || e >= 129351 && e <= 129535 || e >= 129648 && e <= 129660 || e >= 129664 && e <= 129673 || e >= 129679 && e <= 129734 || e >= 129742 && e <= 129756 || e >= 129759 && e <= 129769 || e >= 129776 && e <= 129784 || e >= 131072 && e <= 196605 || e >= 196608 && e <= 262141;
   }
-  var jr = (e) => !(Rr(e) || Yr(e));
+  var Hr = (e) => !(Yr(e) || jr(e));
   var ju = /[^\x20-\x7F]/u;
   function Hu(e) {
     if (!e) return 0;
     if (!ju.test(e)) return e.length;
-    e = e.replace(Ir(), "  ");
+    e = e.replace(Rr(), "  ");
     let t = 0;
     for (let r of e) {
       let n = r.codePointAt(0);
-      n <= 31 || n >= 127 && n <= 159 || n >= 768 && n <= 879 || (t += jr(n) ? 1 : 2);
+      n <= 31 || n >= 127 && n <= 159 || n >= 768 && n <= 879 || (t += Hr(n) ? 1 : 2);
     }
     return t;
   }
@@ -3367,36 +3367,36 @@ Expected it to be ${n}.`;
   function Wu(e) {
     if (e.type === B && e.break || e.type === A && e.hard || e.type === _) return true;
   }
-  function $r(e) {
+  function Mr(e) {
     return Ze(e, Wu, false);
   }
-  function Hr(e) {
+  function Wr(e) {
     if (e.length > 0) {
       let t = y(false, e, -1);
       !t.expandedStates && !t.break && (t.break = "propagated");
     }
     return null;
   }
-  function Mr(e) {
+  function Ur(e) {
     let t = /* @__PURE__ */ new Set(), r = [];
     function n(i) {
-      if (i.type === _ && Hr(r), i.type === B) {
+      if (i.type === _ && Wr(r), i.type === B) {
         if (r.push(i), t.has(i)) return false;
         t.add(i);
       }
     }
     function u(i) {
-      i.type === B && r.pop().break && Hr(r);
+      i.type === B && r.pop().break && Wr(r);
     }
     be(e, n, u, true);
   }
   function $u(e) {
     return e.type === A && !e.hard ? e.soft ? "" : " " : e.type === w ? e.flatContents : e;
   }
-  function Ur(e) {
+  function Vr(e) {
     return Le(e, $u);
   }
-  function Wr(e) {
+  function $r(e) {
     for (e = [...e]; e.length >= 2 && y(false, e, -2).type === A && y(false, e, -1).type === _; ) e.length -= 2;
     if (e.length > 0) {
       let t = ke(y(false, e, -1));
@@ -3417,9 +3417,9 @@ Expected it to be ${n}.`;
       case w:
         return { ...e, breakContents: ke(e.breakContents), flatContents: ke(e.flatContents) };
       case N:
-        return { ...e, parts: Wr(e.parts) };
+        return { ...e, parts: $r(e.parts) };
       case H:
-        return Wr(e);
+        return $r(e);
       case U:
         return e.replace(/[\n\r]*$/u, "");
       case k:
@@ -3480,14 +3480,14 @@ Expected it to be ${n}.`;
   function Uu(e) {
     return Le(e, (t) => Mu(t));
   }
-  function Vr(e, t = Xe) {
+  function zr(e, t = Xe) {
     return Le(e, (r) => typeof r == "string" ? Se(t, r.split(`
 `)) : r);
   }
   function Vu(e) {
     if (e.type === A) return true;
   }
-  function zr(e) {
+  function Gr(e) {
     return Ze(e, Vu, false);
   }
   function me(e, t) {
@@ -3496,17 +3496,17 @@ Expected it to be ${n}.`;
   var Y = Symbol("MODE_BREAK");
   var J = Symbol("MODE_FLAT");
   var he = Symbol("cursor");
-  var Gr = Symbol("DOC_FILL_PRINTED_LENGTH");
+  var Lt = Symbol("DOC_FILL_PRINTED_LENGTH");
   function Kr() {
     return { value: "", length: 0, queue: [] };
   }
   function zu(e, t) {
-    return Lt(e, { type: "indent" }, t);
+    return Pt(e, { type: "indent" }, t);
   }
   function Gu(e, t, r) {
-    return t === Number.NEGATIVE_INFINITY ? e.root || Kr() : t < 0 ? Lt(e, { type: "dedent" }, r) : t ? t.type === "root" ? { ...e, root: e } : Lt(e, { type: typeof t == "string" ? "stringAlign" : "numberAlign", n: t }, r) : e;
+    return t === Number.NEGATIVE_INFINITY ? e.root || Kr() : t < 0 ? Pt(e, { type: "dedent" }, r) : t ? t.type === "root" ? { ...e, root: e } : Pt(e, { type: typeof t == "string" ? "stringAlign" : "numberAlign", n: t }, r) : e;
   }
-  function Lt(e, t, r) {
+  function Pt(e, t, r) {
     let n = t.type === "dedent" ? e.queue.slice(0, -1) : [...e.queue, t], u = "", i = 0, o = 0, s = 0;
     for (let c of n) switch (c.type) {
       case "indent":
@@ -3541,7 +3541,7 @@ Expected it to be ${n}.`;
       o = 0, s = 0;
     }
   }
-  function Pt(e) {
+  function It(e) {
     let t = 0, r = 0, n = e.length;
     e: for (; n--; ) {
       let u = e[n];
@@ -3577,8 +3577,8 @@ Expected it to be ${n}.`;
           break;
         case H:
         case N: {
-          let f = p === H ? l : l.parts;
-          for (let d = f.length - 1; d >= 0; d--) s.push({ mode: D, doc: f[d] });
+          let f = p === H ? l : l.parts, d = l[Lt] ?? 0;
+          for (let c = f.length - 1; c >= d; c--) s.push({ mode: D, doc: f[c] });
           break;
         }
         case T:
@@ -3588,7 +3588,7 @@ Expected it to be ${n}.`;
           s.push({ mode: D, doc: l.contents });
           break;
         case L:
-          r += Pt(a);
+          r += It(a);
           break;
         case B: {
           if (i && l.break) return false;
@@ -3617,7 +3617,7 @@ Expected it to be ${n}.`;
   }
   function Ee(e, t) {
     let r = {}, n = t.printWidth, u = xe(t.endOfLine), i = 0, o = [{ ind: Kr(), mode: Y, doc: e }], s = [], a = false, D = [], l = 0;
-    for (Mr(e); o.length > 0; ) {
+    for (Ur(e); o.length > 0; ) {
       let { ind: f, mode: d, doc: c } = o.pop();
       switch (z(c)) {
         case U: {
@@ -3641,7 +3641,7 @@ Expected it to be ${n}.`;
           o.push({ ind: Gu(f, c.n, t), mode: d, doc: c.contents });
           break;
         case L:
-          i -= Pt(s);
+          i -= It(s);
           break;
         case B:
           switch (d) {
@@ -3676,7 +3676,7 @@ Expected it to be ${n}.`;
           c.id && (r[c.id] = y(false, o, -1).mode);
           break;
         case N: {
-          let F = n - i, m = c[Gr] ?? 0, { parts: h2 } = c, C = h2.length - m;
+          let F = n - i, m = c[Lt] ?? 0, { parts: h2 } = c, C = h2.length - m;
           if (C === 0) break;
           let v = h2[m + 0], E = h2[m + 1], g = { ind: f, mode: J, doc: v }, j = { ind: f, mode: Y, doc: v }, b = tt(g, [], F, D.length > 0, r, true);
           if (C === 1) {
@@ -3688,7 +3688,7 @@ Expected it to be ${n}.`;
             b ? o.push(X, g) : o.push(ae, j);
             break;
           }
-          let $e = h2[m + 2], At = { ind: f, mode: d, doc: { ...c, [Gr]: m + 2 } };
+          let $e = h2[m + 2], At = { ind: f, mode: d, doc: { ...c, [Lt]: m + 2 } };
           tt({ ind: f, mode: J, doc: [v, E, $e] }, [], F, D.length > 0, r, true) ? o.push(At, X, g) : b ? o.push(At, ae, g) : o.push(At, ae, j);
           break;
         }
@@ -3724,7 +3724,7 @@ Expected it to be ${n}.`;
                 o.push({ ind: f, mode: d, doc: c }, ...D.reverse()), D.length = 0;
                 break;
               }
-              c.literal ? f.root ? (s.push(u, f.root.value), i = f.root.length) : (s.push(u), i = 0) : (i -= Pt(s), s.push(u + f.value), i = f.length);
+              c.literal ? f.root ? (s.push(u, f.root.value), i = f.root.length) : (s.push(u), i = 0) : (i -= It(s), s.push(u + f.value), i = f.length);
               break;
           }
           break;
@@ -3754,11 +3754,11 @@ Expected it to be ${n}.`;
   }
   var Ce = Ku;
   var te;
-  var Rt;
+  var Yt;
   var rt;
-  var It = class {
+  var Rt = class {
     constructor(t) {
-      dr(this, te);
+      pr(this, te);
       this.stack = [t];
     }
     get key() {
@@ -3816,7 +3816,7 @@ Expected it to be ${n}.`;
       return y(false, this.stack, -1);
     }
     getNode(t = 0) {
-      let r = pe(this, te, Rt).call(this, t);
+      let r = pe(this, te, Yt).call(this, t);
       return r === -1 ? null : this.stack[r];
     }
     getParentNode(t = 0) {
@@ -3832,7 +3832,7 @@ Expected it to be ${n}.`;
       }
     }
     callParent(t, r = 0) {
-      let n = pe(this, te, Rt).call(this, r + 1), u = this.stack.splice(n + 1);
+      let n = pe(this, te, Yt).call(this, r + 1), u = this.stack.splice(n + 1);
       try {
         return t(this);
       } finally {
@@ -3872,7 +3872,7 @@ Expected it to be ${n}.`;
       return false;
     }
   };
-  te = /* @__PURE__ */ new WeakSet(), Rt = function(t) {
+  te = /* @__PURE__ */ new WeakSet(), Yt = function(t) {
     let { stack: r } = this;
     for (let n = r.length - 1; n >= 0; n -= 2) if (!Array.isArray(r[n]) && --t < 0) return n;
     return -1;
@@ -3883,7 +3883,7 @@ Expected it to be ${n}.`;
       Array.isArray(n) || (yield n);
     }
   };
-  var Jr = It;
+  var Jr = Rt;
   var qr = new Proxy(() => {
   }, { get: () => qr });
   var Pe = qr;
@@ -3954,7 +3954,7 @@ Expected it to be ${n}.`;
   function Qu(e) {
     return Array.isArray(e) && e.length > 0;
   }
-  var Yt = Qu;
+  var jt = Qu;
   var tn = /* @__PURE__ */ new Set(["tokens", "comments", "parent", "enclosingNode", "precedingNode", "followingNode"]);
   var Zu = (e) => Object.keys(e).filter((t) => !tn.has(t));
   function ei(e) {
@@ -3965,25 +3965,25 @@ Expected it to be ${n}.`;
     let t = e.type || e.kind || "(unknown type)", r = String(e.name || e.id && (typeof e.id == "object" ? e.id.name : e.id) || e.key && (typeof e.key == "object" ? e.key.name : e.key) || e.value && (typeof e.value == "object" ? "" : String(e.value)) || e.operator || "");
     return r.length > 20 && (r = r.slice(0, 19) + "\u2026"), t + (r ? " " + r : "");
   }
-  function jt(e, t) {
+  function Ht(e, t) {
     (e.comments ?? (e.comments = [])).push(t), t.printed = false, t.nodeDescription = ti(e);
   }
   function ue(e, t) {
-    t.leading = true, t.trailing = false, jt(e, t);
+    t.leading = true, t.trailing = false, Ht(e, t);
   }
   function re(e, t, r) {
-    t.leading = false, t.trailing = false, r && (t.marker = r), jt(e, t);
+    t.leading = false, t.trailing = false, r && (t.marker = r), Ht(e, t);
   }
   function ie(e, t) {
-    t.leading = false, t.trailing = true, jt(e, t);
+    t.leading = false, t.trailing = true, Ht(e, t);
   }
-  var Ht = /* @__PURE__ */ new WeakMap();
+  var Wt = /* @__PURE__ */ new WeakMap();
   function it(e, t) {
-    if (Ht.has(e)) return Ht.get(e);
+    if (Wt.has(e)) return Wt.get(e);
     let { printer: { getCommentChildNodes: r, canAttachComment: n, getVisitorKeys: u }, locStart: i, locEnd: o } = t;
     if (!n) return [];
     let s = ((r == null ? void 0 : r(e, t)) ?? [...ge(e, { getVisitorKeys: q(u) })]).flatMap((a) => n(a) ? [a] : it(a, t));
-    return s.sort((a, D) => i(a) - i(D) || o(a) - o(D)), Ht.set(e, s), s;
+    return s.sort((a, D) => i(a) - i(D) || o(a) - o(D)), Wt.set(e, s), s;
   }
   function nn(e, t, r, n) {
     let { locStart: u, locEnd: i } = r, o = u(t), s = i(t), a = it(e, r), D, l, p = 0, f = a.length;
@@ -4001,16 +4001,16 @@ Expected it to be ${n}.`;
       throw new Error("Comment location overlaps with node location");
     }
     if ((n == null ? void 0 : n.type) === "TemplateLiteral") {
-      let { quasis: d } = n, c = $t(d, t, r);
-      D && $t(d, D, r) !== c && (D = null), l && $t(d, l, r) !== c && (l = null);
+      let { quasis: d } = n, c = Mt(d, t, r);
+      D && Mt(d, D, r) !== c && (D = null), l && Mt(d, l, r) !== c && (l = null);
     }
     return { enclosingNode: n, precedingNode: D, followingNode: l };
   }
-  var Wt = () => false;
+  var $t = () => false;
   function un(e, t) {
     let { comments: r } = e;
-    if (delete e.comments, !Yt(r) || !t.printer.canAttachComment) return;
-    let n = [], { locStart: u, locEnd: i, printer: { experimentalFeatures: { avoidAstMutation: o = false } = {}, handleComments: s = {} }, originalText: a } = t, { ownLine: D = Wt, endOfLine: l = Wt, remaining: p = Wt } = s, f = r.map((d, c) => ({ ...nn(e, d, t), comment: d, text: a, options: t, ast: e, isLastComment: r.length - 1 === c }));
+    if (delete e.comments, !jt(r) || !t.printer.canAttachComment) return;
+    let n = [], { locStart: u, locEnd: i, printer: { experimentalFeatures: { avoidAstMutation: o = false } = {}, handleComments: s = {} }, originalText: a } = t, { ownLine: D = $t, endOfLine: l = $t, remaining: p = $t } = s, f = r.map((d, c) => ({ ...nn(e, d, t), comment: d, text: a, options: t, ast: e, isLastComment: r.length - 1 === c }));
     for (let [d, c] of f.entries()) {
       let { comment: F, precedingNode: m, enclosingNode: h2, followingNode: C, text: v, options: E, ast: g, isLastComment: j } = c;
       if (E.parser === "json" || E.parser === "json5" || E.parser === "jsonc" || E.parser === "__js_expression" || E.parser === "__ts_expression" || E.parser === "__vue_expression" || E.parser === "__vue_ts_expression") {
@@ -4068,7 +4068,7 @@ Expected it to be ${n}.`;
     for (let D of [n, u]) D.comments && D.comments.length > 1 && D.comments.sort((l, p) => t.locStart(l) - t.locStart(p));
     e.length = 0;
   }
-  function $t(e, t, r) {
+  function Mt(e, t, r) {
     let n = r.locStart(t) - 1;
     for (let u = 1; u < e.length; ++u) if (n < r.locStart(e[u])) return u - 1;
     return 0;
@@ -4189,10 +4189,10 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     let t = Object.keys(e);
     return t.length === 0 ? "{}" : `{ ${t.map((r) => `${oe.key(r)}: ${oe.value(e[r])}`).join(", ")} }`;
   }, pair: ({ key: e, value: t }) => oe.value({ [e]: t }) };
-  var Mt = Me(st(), 1);
+  var Ut = Me(st(), 1);
   var mn = (e, t, { descriptor: r }) => {
-    let n = [`${Mt.default.yellow(typeof e == "string" ? r.key(e) : r.pair(e))} is deprecated`];
-    return t && n.push(`we now treat it as ${Mt.default.blue(typeof t == "string" ? r.key(t) : r.pair(t))}`), n.join("; ") + ".";
+    let n = [`${Ut.default.yellow(typeof e == "string" ? r.key(e) : r.pair(e))} is deprecated`];
+    return t && n.push(`we now treat it as ${Ut.default.blue(typeof t == "string" ? r.key(t) : r.pair(t))}`), n.join("; ") + ".";
   };
   var ce = Me(st(), 1);
   var at = Symbol.for("vnopts.VALUE_NOT_EXIST");
@@ -4217,10 +4217,10 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
 `, 1)[0].length);
     return u > t && u > i ? n : r;
   }
-  var zt = Me(st(), 1);
-  var Ut = [];
+  var Gt = Me(st(), 1);
+  var Vt = [];
   var An = [];
-  function Vt(e, t) {
+  function zt(e, t) {
     if (e === t) return 0;
     let r = e;
     e.length > t.length && (e = t, t = r);
@@ -4230,13 +4230,13 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     for (; i < n && e.charCodeAt(i) === t.charCodeAt(i); ) i++;
     if (n -= i, u -= i, n === 0) return u;
     let o, s, a, D, l = 0, p = 0;
-    for (; l < n; ) An[l] = e.charCodeAt(i + l), Ut[l] = ++l;
-    for (; p < u; ) for (o = t.charCodeAt(i + p), a = p++, s = p, l = 0; l < n; l++) D = o === An[l] ? a : a + 1, a = Ut[l], s = Ut[l] = a > s ? D > s ? s + 1 : D : D > a ? a + 1 : D;
+    for (; l < n; ) An[l] = e.charCodeAt(i + l), Vt[l] = ++l;
+    for (; p < u; ) for (o = t.charCodeAt(i + p), a = p++, s = p, l = 0; l < n; l++) D = o === An[l] ? a : a + 1, a = Vt[l], s = Vt[l] = a > s ? D > s ? s + 1 : D : D > a ? a + 1 : D;
     return s;
   }
   var Dt = (e, t, { descriptor: r, logger: n, schemas: u }) => {
-    let i = [`Ignored unknown option ${zt.default.yellow(r.pair({ key: e, value: t }))}.`], o = Object.keys(u).sort().find((s) => Vt(e, s) < 3);
-    o && i.push(`Did you mean ${zt.default.blue(r.key(o))}?`), n.warn(i.join(" "));
+    let i = [`Ignored unknown option ${Gt.default.yellow(r.pair({ key: e, value: t }))}.`], o = Object.keys(u).sort().find((s) => zt(e, s) < 3);
+    o && i.push(`Did you mean ${Gt.default.blue(r.key(o))}?`), n.warn(i.join(" "));
   };
   var pi = ["default", "expected", "validate", "deprecated", "forward", "redirect", "overlap", "preprocess", "postprocess"];
   function Fi(e, t) {
@@ -4401,18 +4401,18 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       return typeof r == "string" ? new Error(r) : r;
     };
   }
-  function Gt(e) {
+  function Kt(e) {
     return e === void 0 ? {} : e;
   }
-  function Kt(e) {
+  function Jt(e) {
     if (typeof e == "string") return { text: e };
     let { text: t, list: r } = e;
-    return hi((t || r) !== void 0, "Unexpected `expected` result, there should be at least one field."), r ? { text: t, list: { title: r.title, values: r.values.map(Kt) } } : { text: t };
+    return hi((t || r) !== void 0, "Unexpected `expected` result, there should be at least one field."), r ? { text: t, list: { title: r.title, values: r.values.map(Jt) } } : { text: t };
   }
-  function Jt(e, t) {
+  function qt(e, t) {
     return e === true ? true : e === false ? { value: t } : e;
   }
-  function qt(e, t, r = false) {
+  function Xt(e, t, r = false) {
     return e === false ? false : e === true ? r ? true : [{ value: t }] : "value" in e ? [e] : e.length === 0 ? false : e;
   }
   function Bn(e, t) {
@@ -4421,7 +4421,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
   function pt(e, t) {
     return e === void 0 ? [] : Array.isArray(e) ? e.map((r) => Bn(r, t)) : [Bn(e, t)];
   }
-  function Xt(e, t) {
+  function Qt(e, t) {
     let r = pt(typeof e == "object" && "redirect" in e ? e.redirect : e, t);
     return r.length === 0 ? { remain: t, redirect: r } : typeof e == "object" && "remain" in e ? { remain: e.remain, redirect: r } : { redirect: r };
   }
@@ -4484,7 +4484,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     constructor(t, r) {
       let { logger: n = console, loggerPrintWidth: u = 80, descriptor: i = Tn, unknown: o = kn, invalid: s = Ln, deprecated: a = Pn, missing: D = () => false, required: l = () => false, preprocess: p = (d) => d, postprocess: f = () => Ae } = r || {};
       this._utils = { descriptor: i, logger: n || { warn: () => {
-      } }, loggerPrintWidth: u, schemas: wn(t, "name"), normalizeDefaultResult: Gt, normalizeExpectedResult: Kt, normalizeDeprecatedResult: qt, normalizeForwardResult: pt, normalizeRedirectResult: Xt, normalizeValidateResult: Jt }, this._unknownHandler = o, this._invalidHandler = Sn(s), this._deprecatedHandler = a, this._identifyMissing = (d, c) => !(d in c) || D(d, c), this._identifyRequired = l, this._preprocess = p, this._postprocess = f, this.cleanHistory();
+      } }, loggerPrintWidth: u, schemas: wn(t, "name"), normalizeDefaultResult: Kt, normalizeExpectedResult: Jt, normalizeDeprecatedResult: Xt, normalizeForwardResult: pt, normalizeRedirectResult: Qt, normalizeValidateResult: qt }, this._unknownHandler = o, this._invalidHandler = Sn(s), this._deprecatedHandler = a, this._identifyMissing = (d, c) => !(d in c) || D(d, c), this._identifyRequired = l, this._preprocess = p, this._postprocess = f, this.cleanHistory();
     }
     cleanHistory() {
       this._hasDeprecationWarned = xn();
@@ -4500,7 +4500,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       for (let o of Object.keys(this._utils.schemas)) {
         let s = this._utils.schemas[o];
         if (!(o in r)) {
-          let a = Gt(s.default(this._utils));
+          let a = Kt(s.default(this._utils));
           "value" in a && u.push({ [o]: a.value });
         }
       }
@@ -4520,7 +4520,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
         let D = ({ from: d, to: c }) => {
           n.push(typeof c == "string" ? { [c]: d } : { [c.key]: c.value });
         }, l = ({ value: d, redirectTo: c }) => {
-          let F = qt(s.deprecated(d, this._utils), a, true);
+          let F = Xt(s.deprecated(d, this._utils), a, true);
           if (F !== false) if (F === true) this._hasDeprecationWarned(o) || this._utils.logger.warn(this._deprecatedHandler(o, c, this._utils));
           else for (let { value: m } of F) {
             let h2 = { key: o, value: m };
@@ -4531,7 +4531,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
           }
         };
         pt(s.forward(a, this._utils), a).forEach(D);
-        let f = Xt(s.redirect(a, this._utils), a);
+        let f = Qt(s.redirect(a, this._utils), a);
         if (f.redirect.forEach(D), "remain" in f) {
           let d = f.remain;
           r[o] = o in r ? s.overlap(r[o], d, this._utils) : d, l({ value: d });
@@ -4554,7 +4554,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       return { knownKeys: r, unknownKeys: n };
     }
     _applyValidation(t, r, n) {
-      let u = Jt(n.validate(t, this._utils), t);
+      let u = qt(n.validate(t, this._utils), t);
       if (u !== true) throw this._invalidHandler(r, u.value, this._utils);
     }
     _applyUnknownHandler(t, r, n, u) {
@@ -4586,7 +4586,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       }
     }
   };
-  var Qt;
+  var Zt;
   function Ci(e, t, { logger: r = false, isCLI: n = false, passThrough: u = false, FlagSchema: i, descriptor: o } = {}) {
     if (n) {
       if (!i) throw new Error("'FlagSchema' option is required.");
@@ -4596,9 +4596,9 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       let { _: F, ...m } = c.schemas;
       return Dt(f, d, { ...c, schemas: m });
     }, a = gi(t, { isCLI: n, FlagSchema: i }), D = new Et(a, { logger: r, unknown: s, descriptor: o }), l = r !== false;
-    l && Qt && (D._hasDeprecationWarned = Qt);
+    l && Zt && (D._hasDeprecationWarned = Zt);
     let p = D.normalize(e);
-    return l && (Qt = D._hasDeprecationWarned), p;
+    return l && (Zt = D._hasDeprecationWarned), p;
   }
   function gi(e, { isCLI: t, FlagSchema: r }) {
     let n = [];
@@ -4646,26 +4646,26 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       }
     }
   };
-  var Zt = Ai;
-  function er(e, t) {
+  var er = Ai;
+  function tr(e, t) {
     if (!t) throw new Error("parserName is required.");
-    let r = Zt(false, e, (u) => u.parsers && Object.prototype.hasOwnProperty.call(u.parsers, t));
+    let r = er(false, e, (u) => u.parsers && Object.prototype.hasOwnProperty.call(u.parsers, t));
     if (r) return r;
     let n = `Couldn't resolve parser "${t}".`;
     throw n += " Plugins must be explicitly added to the standalone bundle.", new Re(n);
   }
   function Rn(e, t) {
     if (!t) throw new Error("astFormat is required.");
-    let r = Zt(false, e, (u) => u.printers && Object.prototype.hasOwnProperty.call(u.printers, t));
+    let r = er(false, e, (u) => u.printers && Object.prototype.hasOwnProperty.call(u.printers, t));
     if (r) return r;
     let n = `Couldn't find plugin for AST format "${t}".`;
     throw n += " Plugins must be explicitly added to the standalone bundle.", new Re(n);
   }
   function Ct({ plugins: e, parser: t }) {
-    let r = er(e, t);
-    return tr(r, t);
+    let r = tr(e, t);
+    return rr(r, t);
   }
-  function tr(e, t) {
+  function rr(e, t) {
     let r = e.parsers[t];
     return typeof r == "function" ? r() : r;
   }
@@ -4680,7 +4680,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     if (!r.parser) if (r.filepath) {
       if (r.parser = dn(r, { physicalFile: r.filepath }), !r.parser) throw new Ye(`No parser could be inferred for file "${r.filepath}".`);
     } else throw new Ye("No parser and no file path given, couldn't infer a parser.");
-    let n = ot({ plugins: e.plugins, showDeprecated: true }).options, u = { ...jn, ...Object.fromEntries(n.filter((f) => f.default !== void 0).map((f) => [f.name, f.default])) }, i = er(r.plugins, r.parser), o = await tr(i, r.parser);
+    let n = ot({ plugins: e.plugins, showDeprecated: true }).options, u = { ...jn, ...Object.fromEntries(n.filter((f) => f.default !== void 0).map((f) => [f.name, f.default])) }, i = tr(r.plugins, r.parser), o = await rr(i, r.parser);
     r.astFormat = o.astFormat, r.locEnd = o.locEnd, r.locStart = o.locStart;
     let s = (p = i.printers) != null && p[o.astFormat] ? i : Rn(r.plugins, o.astFormat), a = await Yn(s, o.astFormat);
     r.printer = a;
@@ -4754,7 +4754,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
   }
   var Un = Oi;
   async function He(e, t) {
-    ({ ast: e } = await nr(e, t));
+    ({ ast: e } = await ur(e, t));
     let r = /* @__PURE__ */ new Map(), n = new Jr(e), u = ln(t), i = /* @__PURE__ */ new Map();
     await Mn(n, s, t, He, i);
     let o = await Vn(n, t, s, void 0, i);
@@ -4790,7 +4790,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     }
     return o.printComment && (!o.willPrintOwnComments || !o.willPrintOwnComments(e, t)) && (s = an(e, s, t)), s;
   }
-  async function nr(e, t) {
+  async function ur(e, t) {
     let r = e.comments ?? [];
     t[Symbol.for("comments")] = r, t[Symbol.for("tokens")] = e.tokens ?? [], t[Symbol.for("printedComments")] = /* @__PURE__ */ new Set(), un(e, t);
     let { printer: { preprocess: n } } = t;
@@ -4867,11 +4867,11 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     }
     return { startNode: u, endNode: i };
   }
-  function ur(e, t, r, n, u = [], i) {
+  function ir(e, t, r, n, u = [], i) {
     let { locStart: o, locEnd: s } = r, a = o(e), D = s(e);
     if (!(t > D || t < a || i === "rangeEnd" && t === a || i === "rangeStart" && t === D)) {
       for (let l of it(e, r)) {
-        let p = ur(l, t, r, n, [e, ...u], i);
+        let p = ir(l, t, r, n, [e, ...u], i);
         if (p) return p;
       }
       if (!n || n(e, u[0])) return { node: e, parentNodes: u };
@@ -4912,7 +4912,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     Pe.ok(u > n);
     let s = e.slice(n, u).search(/\S/u), a = s === -1;
     if (!a) for (n += s; u > n && !/\S/u.test(e[u - 1]); --u) ;
-    let D = ur(r, n, t, (d, c) => qn(t, d, c), [], "rangeStart"), l = a ? D : ur(r, u, t, (d) => qn(t, d), [], "rangeEnd");
+    let D = ir(r, n, t, (d, c) => qn(t, d, c), [], "rangeStart"), l = a ? D : ir(r, u, t, (d) => qn(t, d), [], "rangeEnd");
     if (!D || !l) return { rangeStart: 0, rangeEnd: 0 };
     let p, f;
     if (Li(t)) {
@@ -4949,7 +4949,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       if (D === p) return { formatted: o.formatted, cursorOffset: l + f, comments: s };
       let d = D.split("");
       d.splice(f, 0, Zn);
-      let c = p.split(""), F = Cr(d, c), m = l;
+      let c = p.split(""), F = gr(d, c), m = l;
       for (let h2 of F) if (h2.removed) {
         if (h2.value.includes(Zn)) break;
       } else m += h2.count;
@@ -4971,19 +4971,19 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     }
     return { formatted: d, cursorOffset: f, comments: l.comments };
   }
-  function ir(e, t, r) {
+  function or(e, t, r) {
     return typeof t != "number" || Number.isNaN(t) || t < 0 || t > e.length ? r : t;
   }
   function eu(e, t) {
     let { cursorOffset: r, rangeStart: n, rangeEnd: u } = t;
-    return r = ir(e, r, -1), n = ir(e, n, 0), u = ir(e, u, e.length), { ...t, cursorOffset: r, rangeStart: n, rangeEnd: u };
+    return r = or(e, r, -1), n = or(e, n, 0), u = or(e, u, e.length), { ...t, cursorOffset: r, rangeStart: n, rangeEnd: u };
   }
   function uu(e, t) {
     let { cursorOffset: r, rangeStart: n, rangeEnd: u, endOfLine: i } = eu(e, t), o = e.charAt(0) === ru;
-    if (o && (e = e.slice(1), r--, n--, u--), i === "auto" && (i = gr(e)), e.includes("\r")) {
+    if (o && (e = e.slice(1), r--, n--, u--), i === "auto" && (i = yr(e)), e.includes("\r")) {
       let s = (a) => Ot(e.slice(0, Math.max(a, 0)), `\r
 `);
-      r -= s(r), n -= s(n), u -= s(u), e = yr(e);
+      r -= s(r), n -= s(n), u -= s(u), e = Ar(e);
     }
     return { hasBOM: o, text: e, options: eu(e, { ...t, cursorOffset: r, rangeStart: n, rangeEnd: u, endOfLine: i }) };
   }
@@ -4991,7 +4991,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     let r = await Ct(t);
     return !r.hasPragma || r.hasPragma(e);
   }
-  async function or(e, t) {
+  async function sr(e, t) {
     let { hasBOM: r, text: n, options: u } = uu(e, await se(t));
     if (u.rangeStart >= u.rangeEnd && n !== "" || u.requirePragma && !await tu(n, u)) return { formatted: e, cursorOffset: t.cursorOffset, comments: [] };
     let i;
@@ -4999,7 +4999,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
   }
   async function iu(e, t, r) {
     let { text: n, options: u } = uu(e, await se(t)), i = await fe(n, u);
-    return r && (r.preprocessForPrint && (i.ast = await nr(i.ast, u)), r.massage && (i.ast = Gn(i.ast, u))), i;
+    return r && (r.preprocessForPrint && (i.ast = await ur(i.ast, u)), r.massage && (i.ast = Gn(i.ast, u))), i;
   }
   async function ou(e, t) {
     t = await se(t);
@@ -5007,7 +5007,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     return Ee(r, t);
   }
   async function su(e, t) {
-    let r = Pr(e), { formatted: n } = await or(r, { ...t, parser: "__js_expression" });
+    let r = Ir(e), { formatted: n } = await sr(r, { ...t, parser: "__js_expression" });
     return n;
   }
   async function au(e, t) {
@@ -5018,14 +5018,14 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
   async function Du(e, t) {
     return Ee(e, await se(t));
   }
-  var sr = {};
-  Bt(sr, { builders: () => Wi, printer: () => $i, utils: () => Mi });
-  var Wi = { join: Se, line: qe, softline: kr, hardline: K, literalline: Xe, group: Tt, conditionalGroup: xr, fill: br, lineSuffix: Ne, lineSuffixBoundary: Sr, cursor: Z, breakParent: Fe, ifBreak: Nr, trim: Tr, indent: le, indentIfBreak: Or, align: De, addAlignmentToDoc: Qe, markAsRoot: wr, dedentToRoot: Br, dedent: _r, hardlineWithoutBreakParent: Oe, literallineWithoutBreakParent: kt, label: Lr, concat: (e) => e };
+  var ar = {};
+  Bt(ar, { builders: () => Wi, printer: () => $i, utils: () => Mi });
+  var Wi = { join: Se, line: qe, softline: Lr, hardline: K, literalline: Xe, group: Tt, conditionalGroup: br, fill: Nr, lineSuffix: Ne, lineSuffixBoundary: Tr, cursor: Z, breakParent: Fe, ifBreak: Or, trim: kr, indent: le, indentIfBreak: Sr, align: De, addAlignmentToDoc: Qe, markAsRoot: _r, dedentToRoot: wr, dedent: xr, hardlineWithoutBreakParent: Oe, literallineWithoutBreakParent: kt, label: Pr, concat: (e) => e };
   var $i = { printDocToString: Ee };
-  var Mi = { willBreak: $r, traverseDoc: be, findInDoc: Ze, mapDoc: Le, removeLines: Ur, stripTrailingHardline: et, replaceEndOfLine: Vr, canBreak: zr };
-  var lu = "3.4.1";
-  var Dr = {};
-  Bt(Dr, { addDanglingComment: () => re, addLeadingComment: () => ue, addTrailingComment: () => ie, getAlignmentSize: () => Ce, getIndentSize: () => cu, getMaxContinuousCount: () => fu, getNextNonSpaceNonCommentCharacter: () => du, getNextNonSpaceNonCommentCharacterIndex: () => ro, getPreferredQuote: () => Fu, getStringWidth: () => Te, hasNewline: () => $, hasNewlineInRange: () => mu, hasSpaces: () => hu, isNextLineEmpty: () => oo, isNextLineEmptyAfterIndex: () => gt, isPreviousLineEmpty: () => uo, makeString: () => Eu, skip: () => ye, skipEverythingButNewLine: () => ut, skipInlineComment: () => ve, skipNewline: () => W, skipSpaces: () => S, skipToLineEnd: () => nt, skipTrailingComment: () => Be, skipWhitespace: () => en });
+  var Mi = { willBreak: Mr, traverseDoc: be, findInDoc: Ze, mapDoc: Le, removeLines: Vr, stripTrailingHardline: et, replaceEndOfLine: zr, canBreak: Gr };
+  var lu = "3.4.2";
+  var lr = {};
+  Bt(lr, { addDanglingComment: () => re, addLeadingComment: () => ue, addTrailingComment: () => ie, getAlignmentSize: () => Ce, getIndentSize: () => cu, getMaxContinuousCount: () => fu, getNextNonSpaceNonCommentCharacter: () => du, getNextNonSpaceNonCommentCharacterIndex: () => ro, getPreferredQuote: () => Fu, getStringWidth: () => Te, hasNewline: () => $, hasNewlineInRange: () => mu, hasSpaces: () => hu, isNextLineEmpty: () => oo, isNextLineEmptyAfterIndex: () => gt, isPreviousLineEmpty: () => uo, makeString: () => Eu, skip: () => ye, skipEverythingButNewLine: () => ut, skipInlineComment: () => ve, skipNewline: () => W, skipSpaces: () => S, skipToLineEnd: () => nt, skipTrailingComment: () => Be, skipWhitespace: () => en });
   function Ui(e, t) {
     if (t === false) return false;
     if (e.charAt(t) === "/" && e.charAt(t + 1) === "*") {
@@ -5056,12 +5056,12 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
     return r === -1 ? 0 : Ce(e.slice(r + 1).match(/^[\t ]*/u)[0], t);
   }
   var cu = Ki;
-  function ar(e) {
+  function Dr(e) {
     if (typeof e != "string") throw new TypeError("Expected a string");
     return e.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
   }
   function Ji(e, t) {
-    let r = e.match(new RegExp(`(${ar(t)})+`, "gu"));
+    let r = e.match(new RegExp(`(${Dr(t)})+`, "gu"));
     return r === null ? 0 : r.reduce((n, u) => Math.max(n, u.length / t.length), 0);
   }
   var fu = Ji;
@@ -5117,7 +5117,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
       return r[t] = { ...n, plugins: Array.isArray(u) ? u : Object.values(u) }, e(...r);
     };
   }
-  var Cu = de(or);
+  var Cu = de(sr);
   async function gu(e, t) {
     let { formatted: r } = await Cu(e, { ...t, cursorOffset: -1 });
     return r;
@@ -5127,7 +5127,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
   }
   var ao = de(ot, 0);
   var Do = { parse: de(iu), formatAST: de(ou), formatDoc: de(su), printToDoc: de(au), printDocToString: de(Du) };
-  var lc = lr;
+  var lc = cr;
 
   // node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
   var import_parser_html = __toESM(require_html(), 1);
@@ -6046,7 +6046,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
         }
         return mode;
       }
-      var version = "11.10.0";
+      var version = "11.11.1";
       var HTMLInjectionError = class extends Error {
         constructor(reason, html) {
           super(reason);
@@ -6360,6 +6360,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
               }
             }
             if (match.type === "illegal" && lexeme === "") {
+              modeBuffer += "\n";
               return 1;
             }
             if (iterations > 1e5 && iterations > match.index * 3) {
@@ -6546,18 +6547,18 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
         }
         let wantsHighlight = false;
         function highlightAll() {
+          function boot() {
+            highlightAll();
+          }
           if (document.readyState === "loading") {
+            if (!wantsHighlight) {
+              window.addEventListener("DOMContentLoaded", boot, false);
+            }
             wantsHighlight = true;
             return;
           }
           const blocks = document.querySelectorAll(options.cssSelector);
           blocks.forEach(highlightElement);
-        }
-        function boot() {
-          if (wantsHighlight) highlightAll();
-        }
-        if (typeof window !== "undefined" && window.addEventListener) {
-          window.addEventListener("DOMContentLoaded", boot, false);
         }
         function registerLanguage(languageName, languageDefinition) {
           let lang = null;
