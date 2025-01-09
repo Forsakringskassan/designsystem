@@ -45,7 +45,7 @@
     "start:cypress": "node cypress/server.js",
     "start:demo": "run-s build:docs start",
     "start:sandbox": "run-s build:docs && fkui-serve public/vue-sandbox",
-    "stylelint": "stylelint \"packages/*/src/**/*.scss\" \"internal/*/src/**/*.scss\"",
+    "stylelint": "stylelint \"packages/*/src/**/*.{css,scss}\" \"internal/*/src/**/*.{css,scss}\"",
     "stylelint:fix": "npm run stylelint -- --fix",
     "pretest": "npm run lint",
     "test": "lerna run test",
