@@ -2342,6 +2342,19 @@
         validator(value) {
           return sizes.includes(value);
         }
+      },
+      /**
+       * Default behavior is that the modal will restore focus to previous element once closed.
+       * - "on" (default) - component will set focus both when opened and closed
+       * - "off" - focus strategy disabled
+       * - "open" - focus will only be applied once modal is opened
+       */
+      focus: {
+        type: String,
+        default: "on",
+        validator(value) {
+          return ["on", "off", "open"].includes(value);
+        }
       }
     },
     emits: ["close"],
@@ -2392,10 +2405,17 @@
         const root = document.documentElement;
         const scroll = root.scrollTop;
         root.style.top = `-${scroll}px`;
-        root.classList.add("modal__open");
+        root.style.left = "0";
+        root.style.right = "0";
+        root.style.overflow = "hidden";
+        root.style.position = "fixed";
         const focusElement3 = this.resolveFocusElement();
-        this.savedFocus = (0, import_logic7.pushFocus)(focusElement3);
-        this.savedScroll = scroll;
+        if (this.focus === "on") {
+          this.savedFocus = (0, import_logic7.pushFocus)(focusElement3);
+          this.savedScroll = scroll;
+        } else if (this.focus === "open") {
+          (0, import_logic7.focus)(focusElement3);
+        }
       },
       /**
        * Prioritises what element to initially focus on in the following order:
@@ -2415,14 +2435,17 @@
         return firstTabbableChildElement ?? contentElement;
       },
       restoreState() {
-        if (this.savedFocus) {
-          const root = document.documentElement;
-          root.classList.remove("modal__open");
-          root.style.removeProperty("top");
+        const root = document.documentElement;
+        root.style.removeProperty("top");
+        root.style.removeProperty("left");
+        root.style.removeProperty("right");
+        root.style.removeProperty("overflow");
+        root.style.removeProperty("position");
+        if (this.focus === "on" && this.savedFocus) {
           root.scrollTop = this.savedScroll ?? 0;
+          this.savedScroll = null;
           (0, import_logic7.popFocus)(this.savedFocus);
           this.savedFocus = null;
-          this.savedScroll = null;
         }
       },
       onFocusFirst() {
@@ -2661,6 +2684,19 @@
         default: () => {
           return defaultButtons;
         }
+      },
+      /**
+       * Default behavior is that the modal will restore focus to previous element once closed.
+       * - "on" (default) - component will set focus both when opened and closed
+       * - "off" - focus strategy disabled
+       * - "open" - focus will only be applied once modal is opened
+       */
+      focus: {
+        type: String,
+        default: "on",
+        validator(value) {
+          return ["on", "off", "open"].includes(value);
+        }
       }
     },
     emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
@@ -2700,6 +2736,7 @@
       "aria-close-text": _ctx.ariaCloseText,
       type: "warning",
       size: _ctx.size,
+      focus: _ctx.focus,
       onClose: _ctx.onClose
     }, {
       header: (0, import_vue18.withCtx)(() => [
@@ -2757,7 +2794,7 @@
       ]),
       _: 3
       /* FORWARDED */
-    }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "onClose"]);
+    }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
   }
 
   // packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue
