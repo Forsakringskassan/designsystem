@@ -427,7 +427,7 @@ class ReactiveEffect {
   }
   resume() {
     if (this.flags & 64) {
-      this.flags &= ~64;
+      this.flags &= -65;
       if (pausedQueueEffects.has(this)) {
         pausedQueueEffects.delete(this);
         this.trigger();
@@ -462,7 +462,7 @@ class ReactiveEffect {
       cleanupDeps(this);
       activeSub = prevEffect;
       shouldTrack = prevShouldTrack;
-      this.flags &= ~2;
+      this.flags &= -3;
     }
   }
   stop() {
@@ -473,7 +473,7 @@ class ReactiveEffect {
       this.deps = this.depsTail = void 0;
       cleanupEffect(this);
       this.onStop && this.onStop();
-      this.flags &= ~1;
+      this.flags &= -2;
     }
   }
   trigger() {
@@ -523,7 +523,7 @@ function endBatch() {
     while (e) {
       const next = e.next;
       e.next = void 0;
-      e.flags &= ~8;
+      e.flags &= -9;
       e = next;
     }
   }
@@ -534,7 +534,7 @@ function endBatch() {
     while (e) {
       const next = e.next;
       e.next = void 0;
-      e.flags &= ~8;
+      e.flags &= -9;
       if (e.flags & 1) {
         try {
           ;
@@ -590,7 +590,7 @@ function refreshComputed(computed2) {
   if (computed2.flags & 4 && !(computed2.flags & 16)) {
     return;
   }
-  computed2.flags &= ~16;
+  computed2.flags &= -17;
   if (computed2.globalVersion === globalVersion) {
     return;
   }
@@ -598,7 +598,7 @@ function refreshComputed(computed2) {
   const dep = computed2.dep;
   computed2.flags |= 2;
   if (dep.version > 0 && !computed2.isSSR && computed2.deps && !isDirty(computed2)) {
-    computed2.flags &= ~2;
+    computed2.flags &= -3;
     return;
   }
   const prevSub = activeSub;
@@ -619,7 +619,7 @@ function refreshComputed(computed2) {
     activeSub = prevSub;
     shouldTrack = prevShouldTrack;
     cleanupDeps(computed2);
-    computed2.flags &= ~2;
+    computed2.flags &= -3;
   }
 }
 function removeSub(link, soft = false) {
@@ -635,7 +635,7 @@ function removeSub(link, soft = false) {
   if (dep.subs === link) {
     dep.subs = prevSub;
     if (!prevSub && dep.computed) {
-      dep.computed.flags &= ~4;
+      dep.computed.flags &= -5;
       for (let l = dep.computed.deps; l; l = l.nextDep) {
         removeSub(l, true);
       }
@@ -2079,11 +2079,11 @@ function flushPreFlushCbs(instance, seen, i = flushIndex + 1) {
       queue.splice(i, 1);
       i--;
       if (cb.flags & 4) {
-        cb.flags &= ~1;
+        cb.flags &= -2;
       }
       cb();
       if (!(cb.flags & 4)) {
-        cb.flags &= ~1;
+        cb.flags &= -2;
       }
     }
   }
@@ -2102,10 +2102,10 @@ function flushPostFlushCbs(seen) {
     for (postFlushIndex = 0; postFlushIndex < activePostFlushCbs.length; postFlushIndex++) {
       const cb = activePostFlushCbs[postFlushIndex];
       if (cb.flags & 4) {
-        cb.flags &= ~1;
+        cb.flags &= -2;
       }
       if (!(cb.flags & 8)) cb();
-      cb.flags &= ~1;
+      cb.flags &= -2;
     }
     activePostFlushCbs = null;
     postFlushIndex = 0;
@@ -2135,7 +2135,7 @@ function flushJobs(seen) {
     for (; flushIndex < queue.length; flushIndex++) {
       const job = queue[flushIndex];
       if (job) {
-        job.flags &= ~1;
+        job.flags &= -2;
       }
     }
     flushIndex = -1;
@@ -3798,9 +3798,7 @@ function createAppAPI(render, hydrate) {
           } else if (namespace === false) {
             namespace = void 0;
           }
-          if (isHydrate && hydrate) {
-            hydrate(vnode, rootContainer);
-          } else {
+          {
             render(vnode, rootContainer, namespace);
           }
           isMounted = true;
@@ -4818,27 +4816,7 @@ function baseCreateRenderer(options, createHydrationFns) {
           invokeVNodeHook(vnodeHook, parent, initialVNode);
         }
         toggleRecurse(instance, true);
-        if (el && hydrateNode) {
-          const hydrateSubTree = () => {
-            instance.subTree = renderComponentRoot(instance);
-            hydrateNode(
-              el,
-              instance.subTree,
-              instance,
-              parentSuspense,
-              null
-            );
-          };
-          if (isAsyncWrapperVNode && type.__asyncHydrate) {
-            type.__asyncHydrate(
-              el,
-              instance,
-              hydrateSubTree
-            );
-          } else {
-            hydrateSubTree();
-          }
-        } else {
+        {
           if (root.ce) {
             root.ce._injectChildStyle(type);
           }
@@ -5475,11 +5453,10 @@ function baseCreateRenderer(options, createHydrationFns) {
     o: options
   };
   let hydrate;
-  let hydrateNode;
   return {
     render,
     hydrate,
-    createApp: createAppAPI(render, hydrate)
+    createApp: createAppAPI(render)
   };
 }
 function resolveChildrenNamespace({ type, props }, currentNamespace) {
@@ -5490,8 +5467,8 @@ function toggleRecurse({ effect: effect2, job }, allowed) {
     effect2.flags |= 32;
     job.flags |= 4;
   } else {
-    effect2.flags &= ~32;
-    job.flags &= ~4;
+    effect2.flags &= -33;
+    job.flags &= -5;
   }
 }
 function needTransition(parentSuspense, transition) {
@@ -6472,7 +6449,7 @@ function setupStatefulComponent(instance, isSSR) {
       setupResult.then(unsetCurrentInstance, unsetCurrentInstance);
       if (isSSR) {
         return setupResult.then((resolvedResult) => {
-          handleSetupResult(instance, resolvedResult, isSSR);
+          handleSetupResult(instance, resolvedResult);
         }).catch((e) => {
           handleError(e, instance, 0);
         });
@@ -6480,10 +6457,10 @@ function setupStatefulComponent(instance, isSSR) {
         instance.asyncDep = setupResult;
       }
     } else {
-      handleSetupResult(instance, setupResult, isSSR);
+      handleSetupResult(instance, setupResult);
     }
   } else {
-    finishComponentSetup(instance, isSSR);
+    finishComponentSetup(instance);
   }
 }
 function handleSetupResult(instance, setupResult, isSSR) {
@@ -6496,30 +6473,11 @@ function handleSetupResult(instance, setupResult, isSSR) {
   } else if (isObject$1(setupResult)) {
     instance.setupState = proxyRefs(setupResult);
   } else ;
-  finishComponentSetup(instance, isSSR);
+  finishComponentSetup(instance);
 }
-let compile;
 function finishComponentSetup(instance, isSSR, skipOptions) {
   const Component = instance.type;
   if (!instance.render) {
-    if (!isSSR && compile && !Component.render) {
-      const template = Component.template || resolveMergedOptions(instance).template;
-      if (template) {
-        const { isCustomElement, compilerOptions } = instance.appContext.config;
-        const { delimiters, compilerOptions: componentCompilerOptions } = Component;
-        const finalCompilerOptions = extend(
-          extend(
-            {
-              isCustomElement,
-              delimiters
-            },
-            compilerOptions
-          ),
-          componentCompilerOptions
-        );
-        Component.render = compile(template, finalCompilerOptions);
-      }
-    }
     instance.render = Component.render || NOOP;
   }
   {
@@ -14685,7 +14643,10 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
       const root = document.documentElement;
       const scroll = root.scrollTop;
       root.style.top = `-${scroll}px`;
-      root.classList.add("modal__open");
+      root.style.left = "0";
+      root.style.right = "0";
+      root.style.overflow = "hidden";
+      root.style.position = "fixed";
       const focusElement2 = this.resolveFocusElement();
       if (this.focus === "on") {
         this.savedFocus = pushFocus(focusElement2);
@@ -14712,13 +14673,16 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
       return firstTabbableChildElement !== null && firstTabbableChildElement !== void 0 ? firstTabbableChildElement : contentElement;
     },
     restoreState() {
-      var _this$savedScroll;
       const root = document.documentElement;
-      root.classList.remove("modal__open");
       root.style.removeProperty("top");
-      root.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
-      this.savedScroll = null;
+      root.style.removeProperty("left");
+      root.style.removeProperty("right");
+      root.style.removeProperty("overflow");
+      root.style.removeProperty("position");
       if (this.focus === "on" && this.savedFocus) {
+        var _this$savedScroll;
+        root.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
+        this.savedScroll = null;
         popFocus(this.savedFocus);
         this.savedFocus = null;
       }
@@ -16705,7 +16669,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
       close();
       filter2.value = selectedOption.value;
       selectMode.value = true;
-      if (onOptionSelected) {
+      {
         onOptionSelected(value);
       }
     }
@@ -18331,6 +18295,14 @@ const _sfc_main$G = /* @__PURE__ */ defineComponent({
       type: Array,
       required: false,
       default: () => void 0
+    },
+    /**
+     * Set to `true`, empty string `""` or string `"disabled"` to disable this field.
+     */
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   emits: ["blur", "change", "update", "update:modelValue"],
@@ -18562,7 +18534,7 @@ const _hoisted_3$j = {
 const _hoisted_4$f = {
   class: "text-field__icon-wrapper"
 };
-const _hoisted_5$c = ["id", "type"];
+const _hoisted_5$c = ["id", "disabled", "type"];
 const _hoisted_6$a = {
   key: 2,
   class: "text-field__append-inner"
@@ -18616,6 +18588,7 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     id: _ctx.id,
     ref: "input",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event),
+    disabled: _ctx.disabled,
     type: _ctx.type,
     class: "text-field__input"
   }, _ctx.$attrs, {
@@ -18637,10 +18610,11 @@ function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message": _ctx.validationMessage,
     onClose: _ctx.closePopupError
   }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$a, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), _ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$a, [createVNode(_component_i_combobox_toggle_button, {
+    disabled: _ctx.disabled,
     "aria-controls": _ctx.dropdownIsOpen ? _ctx.dropdownId : void 0,
     "aria-expanded": _ctx.dropdownIsOpen,
     onToggle: _ctx.toggleDropdown
-  }, null, 8, ["aria-controls", "aria-expanded", "onToggle"])])) : createCommentVNode("", true)]), _cache[18] || (_cache[18] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")], 2), _cache[20] || (_cache[20] = createTextVNode()), _ctx.options && _ctx.$refs.input ? (openBlock(), createBlock(_component_i_combobox_dropdown, {
+  }, null, 8, ["disabled", "aria-controls", "aria-expanded", "onToggle"])])) : createCommentVNode("", true)]), _cache[18] || (_cache[18] = createTextVNode()), renderSlot(_ctx.$slots, "input-right")], 2), _cache[20] || (_cache[20] = createTextVNode()), _ctx.options && _ctx.$refs.input ? (openBlock(), createBlock(_component_i_combobox_dropdown, {
     key: 0,
     id: _ctx.dropdownId,
     "is-open": _ctx.dropdownIsOpen,

@@ -99,6 +99,8 @@ html {
   --fkds-color-background-secondary: #f4f4f4;
   --fkds-color-background-tertiary: #ddddde;
   --fkds-color-background-disabled: #f4f4f4;
+  --fkds-color-action-background-select-hover: #dbe9e2;
+  --fkds-color-action-background-select-default: #35805b;
   --fkds-color-border-primary: #8d8e91;
   --fkds-color-border-strong: #5f6165;
   --fkds-color-border-weak: #ddddde;
@@ -161,6 +163,7 @@ html {
   --fkds-icon-color-border-primary: #1b1e23;
   --fkds-icon-color-content-disabled: #8d8e91;
   --fkds-icon-color-action-content-primary-default: #4a52b6;
+  --fkds-icon-color-action-content-primary-disabled: #8d8e91;
   --fkds-icon-color-action-content-primary-hover: #3b4292;
   --fkds-icon-color-action-content-primary-active: #3b4292;
   --fkds-icon-color-action-content-primary-focus: #3b4292;

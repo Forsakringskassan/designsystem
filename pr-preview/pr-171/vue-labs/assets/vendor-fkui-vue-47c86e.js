@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -3875,7 +3875,6 @@
     var _options$size;
     const props = {
       size: (_options$size = options == null ? void 0 : options.size) !== null && _options$size !== void 0 ? _options$size : "",
-      beforeSubmit: options == null ? void 0 : options.beforeSubmit,
       ...options == null ? void 0 : options.props
     };
     const result = await openModal(callingInstance, Component, {
@@ -4051,7 +4050,10 @@
         const root = document.documentElement;
         const scroll = root.scrollTop;
         root.style.top = `-${scroll}px`;
-        root.classList.add("modal__open");
+        root.style.left = "0";
+        root.style.right = "0";
+        root.style.overflow = "hidden";
+        root.style.position = "fixed";
         const focusElement2 = this.resolveFocusElement();
         if (this.focus === "on") {
           this.savedFocus = (0, import_logic.pushFocus)(focusElement2);
@@ -4078,13 +4080,16 @@
         return firstTabbableChildElement !== null && firstTabbableChildElement !== void 0 ? firstTabbableChildElement : contentElement;
       },
       restoreState() {
-        var _this$savedScroll;
         const root = document.documentElement;
-        root.classList.remove("modal__open");
         root.style.removeProperty("top");
-        root.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
-        this.savedScroll = null;
+        root.style.removeProperty("left");
+        root.style.removeProperty("right");
+        root.style.removeProperty("overflow");
+        root.style.removeProperty("position");
         if (this.focus === "on" && this.savedFocus) {
+          var _this$savedScroll;
+          root.scrollTop = (_this$savedScroll = this.savedScroll) !== null && _this$savedScroll !== void 0 ? _this$savedScroll : 0;
+          this.savedScroll = null;
           (0, import_logic.popFocus)(this.savedFocus);
           this.savedFocus = null;
         }
@@ -10482,6 +10487,14 @@
         type: Array,
         required: false,
         default: () => void 0
+      },
+      /**
+       * Set to `true`, empty string `""` or string `"disabled"` to disable this field.
+       */
+      disabled: {
+        type: Boolean,
+        required: false,
+        default: false
       }
     },
     emits: ["blur", "change", "update", "update:modelValue"],
@@ -10713,7 +10726,7 @@
   var _hoisted_4$f = {
     class: "text-field__icon-wrapper"
   };
-  var _hoisted_5$c = ["id", "type"];
+  var _hoisted_5$c = ["id", "disabled", "type"];
   var _hoisted_6$a = {
     key: 2,
     class: "text-field__append-inner"
@@ -10767,6 +10780,7 @@
       id: _ctx.id,
       ref: "input",
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.viewValue = $event),
+      disabled: _ctx.disabled,
       type: _ctx.type,
       class: "text-field__input"
     }, _ctx.$attrs, {
@@ -10788,10 +10802,11 @@
       "error-message": _ctx.validationMessage,
       onClose: _ctx.closePopupError
     }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : (0, import_vue.createCommentVNode)("", true), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), _ctx.$slots["append-inner"] ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_6$a, [(0, import_vue.renderSlot)(_ctx.$slots, "append-inner")])) : (0, import_vue.createCommentVNode)("", true), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), _ctx.options ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_7$a, [(0, import_vue.createVNode)(_component_i_combobox_toggle_button, {
+      disabled: _ctx.disabled,
       "aria-controls": _ctx.dropdownIsOpen ? _ctx.dropdownId : void 0,
       "aria-expanded": _ctx.dropdownIsOpen,
       onToggle: _ctx.toggleDropdown
-    }, null, 8, ["aria-controls", "aria-expanded", "onToggle"])])) : (0, import_vue.createCommentVNode)("", true)]), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-right")], 2), _cache[20] || (_cache[20] = (0, import_vue.createTextVNode)()), _ctx.options && _ctx.$refs.input ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_combobox_dropdown, {
+    }, null, 8, ["disabled", "aria-controls", "aria-expanded", "onToggle"])])) : (0, import_vue.createCommentVNode)("", true)]), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-right")], 2), _cache[20] || (_cache[20] = (0, import_vue.createTextVNode)()), _ctx.options && _ctx.$refs.input ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_combobox_dropdown, {
       key: 0,
       id: _ctx.dropdownId,
       "is-open": _ctx.dropdownIsOpen,
