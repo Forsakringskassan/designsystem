@@ -28,31 +28,46 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./packages/vue/src/components/FInteractiveTable/examples/ToBeDeleted.vue
+  // virtual-entry:./packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableExpandableExample.vue
   var import_vue3 = __require("@fkui/vue");
   var import_vue4 = __require("vue");
   var exampleComponent = {
-    __name: "ToBeDeleted",
+    __name: "FInteractiveTableExpandableExample",
     setup(__props, { expose: __expose }) {
       __expose();
       const rows = [
         {
           id: "1",
-          number: "11",
-          text: "rad 1",
-          expandable: [
-            { id: "1A", number: "111", text: "rad 1A" },
-            { id: "1B", number: "1111", text: "rad 1B" },
-            { id: "1C", number: "11111", text: "rad 1C" }
+          name: "Utbetalning",
+          date: "2023-09-27",
+          sum: 1200,
+          myExpandableRow: [
+            {
+              id: "1a",
+              name: "Barnbidrag",
+              date: "2023-09-25",
+              sum: 200
+            },
+            {
+              id: "1b",
+              name: "\xD6vrig ers\xE4ttning",
+              date: "2023-09-27",
+              sum: 1e3
+            }
           ]
         },
         {
           id: "2",
-          text: "rad 2",
-          number: "22",
-          expandable: [
-            { id: "2A", number: "222", text: "rad 2A" },
-            { id: "2B", number: "2222", text: "rad 2B" }
+          name: "Utbetalning",
+          date: "2023-12-25",
+          sum: 1e3,
+          myExpandableRow: [
+            {
+              id: "2a",
+              name: "Barnbidrag",
+              date: "2023-12-25",
+              sum: 1e3
+            }
           ]
         }
       ];
@@ -68,18 +83,39 @@
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue4.openBlock)(), (0, import_vue4.createBlock)($setup["FInteractiveTable"], {
       rows: $setup.rows,
-      "expandable-attribute": "expandable",
+      "expandable-attribute": "myExpandableRow",
       "key-attribute": "id"
     }, {
       caption: (0, import_vue4.withCtx)(() => _cache[0] || (_cache[0] = [
-        (0, import_vue4.createTextVNode)(" En tabell ")
+        (0, import_vue4.createTextVNode)(" Expanderbara rader ")
       ])),
       default: (0, import_vue4.withCtx)(({ row }) => [
         (0, import_vue4.createVNode)(
           $setup["FTableColumn"],
           {
-            name: "name1",
-            title: "Id"
+            name: "compensation",
+            title: "Ers\xE4ttning"
+          },
+          {
+            default: (0, import_vue4.withCtx)(() => [
+              (0, import_vue4.createTextVNode)(
+                (0, import_vue4.toDisplayString)(row.name),
+                1
+                /* TEXT */
+              )
+            ]),
+            _: 2
+            /* DYNAMIC */
+          },
+          1024
+          /* DYNAMIC_SLOTS */
+        ),
+        (0, import_vue4.createVNode)(
+          $setup["FTableColumn"],
+          {
+            name: "id",
+            title: "Id",
+            shrink: ""
           },
           {
             default: (0, import_vue4.withCtx)(() => [
@@ -98,15 +134,14 @@
         (0, import_vue4.createVNode)(
           $setup["FTableColumn"],
           {
-            name: "name2",
-            title: "Number",
-            type: "numeric",
-            shrink: ""
+            name: "date",
+            title: "Datum",
+            type: "date"
           },
           {
             default: (0, import_vue4.withCtx)(() => [
               (0, import_vue4.createTextVNode)(
-                (0, import_vue4.toDisplayString)(row.number),
+                (0, import_vue4.toDisplayString)(row.date),
                 1
                 /* TEXT */
               )
@@ -120,13 +155,14 @@
         (0, import_vue4.createVNode)(
           $setup["FTableColumn"],
           {
-            name: "name3",
-            title: "Text"
+            name: "amount",
+            title: "Summa",
+            type: "numeric"
           },
           {
             default: (0, import_vue4.withCtx)(() => [
               (0, import_vue4.createTextVNode)(
-                ' Lorem "' + (0, import_vue4.toDisplayString)(row.text) + '" ipsum ',
+                (0, import_vue4.toDisplayString)(row.sum) + " kronor ",
                 1
                 /* TEXT */
               )
@@ -145,6 +181,6 @@
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#ToBeDeleted"
+    selector: "#FInteractiveTableExpandableExample"
   });
 })();

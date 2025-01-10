@@ -6038,9 +6038,6 @@ input[type=search]:focus,
 .table tbody .table__column--selectable {
   padding: calc(0.2rem * var(--f-density-factor)) 0.2rem;
 }
-.table tbody .table__column--indented {
-  padding-left: 1.5rem;
-}
 .table tbody .table__column--action .button--discrete {
   border-radius: var(--f-button-discrete-table-column-action-border-radius);
   margin: var(--f-button-discrete-table-column-action-margin);

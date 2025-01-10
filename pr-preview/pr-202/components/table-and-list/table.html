@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-289fc9.css"
+            href="../../assets/docs-3f0c28.css"
             crossorigin
-            integrity="sha384-IlfVRUlkW1T2QVUZqtqNNrkgd0yMOlbBc4WRQXygfAJ2bzKFzlSlDWwTWVwBFG2X"
+            integrity="sha384-ht1HoJCw+CRBXrpPFvrLd9lTVM8vQ1xoqX5IUhkLeXi9X9dqCssXgY3fzgjx5p+I"
             
         />
         <link
@@ -1108,19 +1108,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/3008dd9c13edb7d5d2c670f4c956e46e9a773e5e/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/aecbd7966533e46e769b2e450654b20ccac8248d/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/3008dd9c13edb7d5d2c670f4c956e46e9a773e5e/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/aecbd7966533e46e769b2e450654b20ccac8248d/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/3008dd9c13edb7d5d2c670f4c956e46e9a773e5e/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/aecbd7966533e46e769b2e450654b20ccac8248d/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1315,9 +1315,12 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
                 </div>
             </div>
         <p>Även dropplista har stöd för att användas i tabellcell. I de fall en obligatorisk dropplista lämnas tom visas samma text som platshållartexten tillsammas med ikon och röd ram.</p>
-<h3 id="expanderbara_rader"><a class="header-anchor" href="#expanderbara_rader">Expanderbara rader</a></h3>
+<h3 id="expanderbara_rader"><a class="header-anchor" href="#expanderbara_rader">Expanderbara rader</a></h3><p>Med expanderbara rader går det att skapa ytterligare tabellrader som visas när man trycker på en expanderbar rad.</p>
+<p>För att skapa expanderbart innehåll som följer existerande kolumner så krävs det att <code>expandable-attribute</code> är satt och <code>expandable</code> slot inte används.
+Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
+
             <div
-                id="example-2ea0b2"
+                id="example-787c46"
                 class="code-preview code-preview--default"
                 
                 
@@ -1325,13 +1328,13 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
             >
                 
                 <div class="code-preview__preview">
-        <div id="ToBeDeleted"></div>
+        <div id="FInteractiveTableExpandableExample"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./ToBeDeleted-72c86d.js"></script>
+        <script defer src="./FInteractiveTableExpandableExample-993c4b.js"></script>
     </div>
                 <div>
             <button
@@ -1355,38 +1358,50 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
 <span class="hljs-keyword">const</span> rows = [
     {
         <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
-        <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;11&quot;</span>,
-        <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;rad 1&quot;</span>,
-
-        <span class="hljs-attr">expandable</span>: [
-            { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1A&quot;</span>, <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;111&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;rad 1A&quot;</span> },
-            { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1B&quot;</span>, <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;1111&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;rad 1B&quot;</span> },
-            { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1C&quot;</span>, <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;11111&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;rad 1C&quot;</span> },
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-27&quot;</span>,
+        <span class="hljs-attr">sum</span>: <span class="hljs-number">1200</span>,
+        <span class="hljs-attr">myExpandableRow</span>: [
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-25&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">200</span>,
+            },
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Övrig ersättning&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-27&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+            },
         ],
     },
     {
         <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>,
-        <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;rad 2&quot;</span>,
-        <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;22&quot;</span>,
-
-        <span class="hljs-attr">expandable</span>: [
-            { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2A&quot;</span>, <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;222&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;rad 2A&quot;</span> },
-            { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2B&quot;</span>, <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;2222&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;rad 2B&quot;</span> },
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-12-25&quot;</span>,
+        <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+        <span class="hljs-attr">myExpandableRow</span>: [
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2a&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-12-25&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+            },
         ],
     },
 ];
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;expandable&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> En tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;myExpandableRow&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Expanderbara rader <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name1&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Id&quot;</span>&gt;</span> {{ row.id }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name2&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Number&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;numeric&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                {{ row.number }}
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name3&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Text&quot;</span>&gt;</span>
-                Lorem &quot;{{ row.text }}&quot; ipsum
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;compensation&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Ersättning&quot;</span>&gt;</span> {{ row.name }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Id&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span> {{ row.id }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Datum&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span> {{ row.date }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;amount&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Summa&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;numeric&quot;</span>&gt;</span>
+                {{ row.sum }} kronor
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
@@ -1394,47 +1409,10 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
 </code></pre>
                 </div>
             </div>
-        <p>Med expanderbara rader går det att skapa ytterligare tabellrader som visas när man trycker på en expanderbar rad.</p>
-<p>För att skapa expanderbart innehåll som följer existerande kolumner så krävs det att <code>expandable-attribute</code> är satt och <code>expandable</code> slot inte används.
-Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
-<p>Se nedan exempel av data som kan användas för att generera en expanderbar rad som innehåller två tabellrader.</p>
+        <p>För att istället skapa expanderbara rader med valfritt innehåll används <code>expandable</code> slot.</p>
 
                 <div
-                    id="example-e7fccf"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags=static
-                    data-language="javascript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">const</span> myExpandableRows = [
-    {
-        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
-        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
-        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
-        <span class="hljs-attr">sum</span>: <span class="hljs-number">1200</span>,
-        <span class="hljs-attr">expandable</span>: [
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
-                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
-                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
-                <span class="hljs-attr">sum</span>: <span class="hljs-number">200</span>,
-            },
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
-                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Övrig ersättning&quot;</span>,
-                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
-                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
-            },
-        ],
-    },
-];
-</code></pre>
-                </div>
-            <p>För att istället skapa expanderbara rader med valfritt innehåll används <code>expandable</code> slot.</p>
-
-                <div
-                    id="example-cd962e"
+                    id="example-31ded8"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1451,7 +1429,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <p>Om tabellen har en heading i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>:</p>
 
                 <div
-                    id="example-7acfcc"
+                    id="example-2682c1"
                     class="code-preview code-preview--default"
                     
                     
@@ -1469,7 +1447,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
             <p>Använd caption om tabellen inte har en naturlig rubrik:</p>
 
                 <div
-                    id="example-6e81e0"
+                    id="example-34556f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1485,7 +1463,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
             <p>I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:</p>
 
                 <div
-                    id="example-37095a"
+                    id="example-8fb175"
                     class="code-preview code-preview--default"
                     
                     
@@ -1514,7 +1492,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p>För att lägga till skoll i tabell använder du prop <code>scroll</code>:</p>
 
                 <div
-                    id="example-9ab74b"
+                    id="example-63fe3d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1533,7 +1511,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-3aeaf6"
+                    id="example-bf06ca"
                     class="code-preview code-preview--default"
                     
                     
@@ -1761,9 +1739,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix/SFKUI-6935-expandable-row (<a href="https://github.com/Forsakringskassan/designsystem/commits/3008dd9c13edb7d5d2c670f4c956e46e9a773e5e">3008dd9</a>)<br />
+    fix/SFKUI-6935-expandable-row (<a href="https://github.com/Forsakringskassan/designsystem/commits/aecbd7966533e46e769b2e450654b20ccac8248d">aecbd79</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/202">PR 202</a><br />
-        2025-01-10 07:27
+        2025-01-10 10:02
 </div>
 <div class="toolbar__item">
     <form id="version">
