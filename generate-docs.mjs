@@ -78,6 +78,15 @@ const docs = new Generator({
     cacheFolder: "./temp/docs",
     exampleFolders: ["./packages/vue/src", "./docs"],
     templateFolders: ["./docs-alt/templates", "./docs/templates"],
+    markdown: {
+        messagebox: {
+            title: {
+                info: "Information",
+                warning: "Tänk på att",
+                danger: "Tänk på att",
+            },
+        },
+    },
     vendor: [
         {
             package: "vue",
