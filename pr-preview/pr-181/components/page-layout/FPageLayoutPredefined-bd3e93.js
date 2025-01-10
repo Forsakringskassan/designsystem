@@ -28,7 +28,7 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./docs/components/FPageLayoutPredefined.vue
+  // virtual-entry:./docs/components/page-layout/FPageLayoutPredefined.vue
   var import_vue3 = __require("vue");
   var import_vue4 = __require("@fkui/vue");
   var import_vue5 = __require("vue");

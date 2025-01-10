@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>FPageLayout - FK Designsystem</title>
+        <title>Egen layout till applicationsmall - FK Designsystem</title>
 
         <!-- prettier-ignore -->
         <link
@@ -113,53 +113,13 @@
             crossorigin
             integrity="sha384-bJFpu9DY6PkkKGSsSy/WBt9cLeRTwMIvTL16eqTkDtOjGVZnbuZuIWsFaU7rsiiw"
             
-        ></script> 
-        <div id="FPageLayoutPredefined"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-.wrapper[data-v-bd3e93] {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-}
-.layout-container[data-v-bd3e93] {
-    container-type: size;
-    aspect-ratio: 16 / 9;
-    max-height: 230px;
-    border: 2px dashed #777;
-    padding: 1px;
-}
-.area[data-v-bd3e93] {
-    padding: 0.5rem;
-    align-content: center;
-    text-align: center;
-}
-.header[data-v-bd3e93] {
-    background: darkred;
-    color: white;
-}
-.footer[data-v-bd3e93] {
-    background: cyan;
-    color: black;
-}
-.left-panel[data-v-bd3e93] {
-    background: greenyellow;
-    flex-grow: 1;
-    width: 25cqw;
-}
-.right-panel[data-v-bd3e93] {
-    background: hotpink;
-    flex-grow: 1;
-    width: 25cqw;
-}
-.content[data-v-bd3e93] {
-    flex-grow: 1;
-}
+        ></script> <f-page-layout layout="my-custom">
+    <template #header> [header] </template>
+    <template #sidebar> [sidebar] </template>
+    <template #toolbar> [toolbar] </template>
+    <template #content> [content] </template>
+    <template #footer> [footer] </template>
+</f-page-layout>
 
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FPageLayoutPredefined-bd3e93.js"></script>
-    
     </body>
 </html>
