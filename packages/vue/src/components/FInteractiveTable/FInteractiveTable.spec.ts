@@ -839,6 +839,49 @@ it("should call provided sort method when clicking columnheader that is registra
     `);
 });
 
+describe("Expandable rows", () => {
+    it("Should handle slot content in expanded rows", () => {
+        expect.assertions(3);
+        const TestComponent = defineComponent({
+            components: { FInteractiveTable, FTableColumn },
+            template: /* HTML */ `
+                <f-interactive-table
+                    :rows
+                    expandable-attribute="myExpandableRow"
+                    key-attribute="id"
+                >
+                    <template #caption> Expanderbara rader </template>
+                    <template #default="{ row }">
+                        <f-table-column name="names" title="Fruit">
+                            Juicy {{ row.name }}
+                        </f-table-column>
+                    </template>
+                </f-interactive-table>
+            `,
+            data() {
+                return {
+                    rows: [
+                        {
+                            id: 1,
+                            name: "apples",
+                            myExpandableRow: [
+                                { id: 11, name: "green apples" },
+                                { id: 12, name: "red apples" },
+                            ],
+                        },
+                    ],
+                };
+            },
+        });
+        const wrapper = mount(TestComponent);
+        const tr = wrapper.findAll("tr");
+        tr[0].element.click();
+        expect(tr[1].text()).toBe("Juicy apples");
+        expect(tr[2].text()).toBe("Juicy green apples");
+        expect(tr[3].text()).toBe("Juicy red apples");
+    });
+});
+
 describe("html-validate", () => {
     it("should require non-empty key-attribute attribute", () => {
         expect.assertions(2);
