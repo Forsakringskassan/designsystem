@@ -13372,10 +13372,14 @@
       for (const slot of _classPrivateFieldGet2(_slotNames, this)) {
         const existing = _classPrivateFieldGet2(_elements, this)[slot];
         const element = existing !== null && existing !== void 0 ? existing : document.createElement("div");
+        const area = layout.areas[slot];
+        if (!area) {
+          continue;
+        }
         const {
           attach,
           direction
-        } = layout.areas[slot];
+        } = area;
         element.className = "";
         element.classList.add("page-layout__area");
         element.setAttribute("part", ["area", slot].join(" "));
