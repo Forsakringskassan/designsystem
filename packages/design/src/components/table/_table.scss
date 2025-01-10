@@ -265,7 +265,7 @@ $table-input-offset-horizontal: 0.25rem;
                 padding: densify(0.2rem) 0.2rem;
             }
 
-            &--indented {
+            &--placeholder + .table__column {
                 padding-left: size.$padding-150;
             }
 

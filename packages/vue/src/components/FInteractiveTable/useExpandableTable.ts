@@ -1,6 +1,5 @@
 import { type ComputedRef, type Ref, type Slots, ref, computed } from "vue";
 import { type ListArray, type ListItem } from "../../types";
-import { type FTableColumnData } from "../FTableColumn";
 import { itemEquals, includeItem } from "../../utils";
 
 /**
@@ -14,7 +13,6 @@ export interface ExpandableTable {
     isExpanded(row: ListItem): boolean;
     rowAriaExpanded(row: ListItem): boolean | undefined;
     expandableRowClasses(row: ListItem, index: number): string[];
-    expandableColumnClasses(column: FTableColumnData, index: number): string[];
     getExpandableDescribedby(row: ListItem): string | undefined;
     expandableRows(row: ListItem): ListArray | undefined;
     hasExpandableContent(row: ListItem): boolean;
@@ -91,20 +89,6 @@ export function useExpandableTable(
         return ["table__expandable-row", ...border, ...expanded];
     }
 
-    function expandableColumnClasses(
-        column: FTableColumnData,
-        index: number,
-    ): string[] {
-        const indented = index === 0 ? ["table__column--indented"] : [];
-
-        return [
-            "table__column",
-            `table__column--${column.type}`,
-            column.size,
-            ...indented,
-        ];
-    }
-
     function getExpandableDescribedby(row: ListItem): string | undefined {
         if (!isExpandableTable) {
             return undefined;
@@ -145,7 +129,6 @@ export function useExpandableTable(
         isExpanded,
         rowAriaExpanded,
         expandableRowClasses,
-        expandableColumnClasses,
         getExpandableDescribedby,
         expandableRows,
         hasExpandableContent,

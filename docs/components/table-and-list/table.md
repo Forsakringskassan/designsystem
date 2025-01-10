@@ -82,6 +82,10 @@ const myExpandableRows = [
 ];
 ```
 
+```import
+FInteractiveTableExpandableExample.vue
+```
+
 För att istället skapa expanderbara rader med valfritt innehåll används `expandable` slot.
 
 ```html static

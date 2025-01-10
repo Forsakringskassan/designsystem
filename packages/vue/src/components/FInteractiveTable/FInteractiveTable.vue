@@ -92,22 +92,16 @@
                                 Expandable column placeholder.
                                 Expandable rows cannot be expanded.
                             -->
-                            <td></td>
+                            <td class="table__column--placeholder"></td>
 
                             <!--
                                 Selectable column placeholder.
                                 Expandable rows cannot be selected.
                             -->
-                            <td v-if="selectable" class="table__column--selectable"></td>
+                            <td v-if="selectable" class="table__column--placeholder"></td>
 
                             <template v-if="!hasExpandableSlot">
-                                <td
-                                    v-for="(column, columnIndex) in columns"
-                                    :key="`${rowKey(expandableRow)}${column.name}`"
-                                    :class="expandableColumnClasses(column, columnIndex)"
-                                >
-                                    {{ expandableRow[column.name] }}
-                                </td>
+                                <slot v-bind="{ row: expandableRow }"></slot>
                             </template>
                             <td v-else class="table__column table__column--indented" :colspan="columns.length">
                                 <!--

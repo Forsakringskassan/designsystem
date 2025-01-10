@@ -677,8 +677,6 @@ export interface EventBusMap {
 // @public (undocumented)
 export interface ExpandableTable {
     // (undocumented)
-    expandableColumnClasses(column: FTableColumnData, index: number): string[];
-    // (undocumented)
     expandableRowClasses(row: ListItem, index: number): string[];
     // (undocumented)
     expandableRows(row: ListItem): ListArray | undefined;
