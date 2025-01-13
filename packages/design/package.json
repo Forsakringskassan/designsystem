@@ -40,7 +40,7 @@
     "autoprefixer": "10.4.20",
     "cssnano": "7.0.6",
     "flush-promises": "1.0.2",
-    "glob": "11.0.0",
+    "glob": "11.0.1",
     "jest-light-runner": "0.6.0",
     "jest-preset-stylelint": "7.1.1",
     "picocolors": "1.1.1",
