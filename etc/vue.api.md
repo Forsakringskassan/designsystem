@@ -8954,6 +8954,16 @@ type: PropType<ListArray | undefined>;
 required: false;
 default: undefined;
 };
+showActive: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+active: {
+type: PropType<ListItem | undefined>;
+required: false;
+default: () => undefined;
+};
 }>, FSortFilterDatasetInterface & ActivateItemInterface & ExpandableTable, FInteractiveTableData, {
 hasCaption(): boolean;
 hasCheckboxDescription(): boolean;
@@ -8984,7 +8994,8 @@ callbackSortableColumns(columnNames: string[]): void;
 callbackAfterItemAdd(item: ListItem): void;
 callbackBeforeItemDelete(item: ListItem): void;
 escapeNewlines(value: string): string;
-}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect")[], "change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect", PublicProps, Readonly<ExtractPropTypes<    {
+updateActiveRowFromVModel(): void;
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect" | "update:active")[], "change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
 rows: {
 type: PropType<ListArray>;
 required: true;
@@ -9023,6 +9034,16 @@ type: PropType<ListArray | undefined>;
 required: false;
 default: undefined;
 };
+showActive: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+active: {
+type: PropType<ListItem | undefined>;
+required: false;
+default: () => undefined;
+};
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
@@ -9032,6 +9053,7 @@ onUpdate?: ((...args: any[]) => any) | undefined;
 onCollapse?: ((...args: any[]) => any) | undefined;
 onExpand?: ((...args: any[]) => any) | undefined;
 onUnselect?: ((...args: any[]) => any) | undefined;
+"onUpdate:active"?: ((...args: any[]) => any) | undefined;
 }>, {
 scroll: TableScroll;
 modelValue: ListArray | undefined;
@@ -9040,6 +9062,8 @@ hover: boolean;
 expandableAttribute: string;
 expandableDescribedby: string;
 selectable: boolean;
+showActive: boolean;
+active: UnknownItem | undefined;
 }, {}, {
 FCheckboxField: DefineComponent<ExtractPropTypes<    {
 disabled: {
