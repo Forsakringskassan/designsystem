@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 5.45.0 (2025-01-13)
+
+### Features
+
+* **@fkui/css-variables, @fkui/design:** add tokens to textfields (refs SFKUI-6900) ea35a3a
+* **@fkui/css-variables, @fkui/design:** update selectfield with tokens (refs SFKUI-6940) 72d0241
+
+### Bug Fixes
+
+* **@fkui/css-variables, @fkui/design, @fkui/vue:** disabled combobox (refs SFKUI-6956) d37c883
+* **@fkui/design, @fkui/vue:** inline global modal styling (refs SFKUI-6500) b5b7e49
+* **@fkui/vue-labs:** x-search-bar removed (fixes SFKUI-6953) 07b8744
+* **@fkui/vue:** fix wrong runtime error when missing `routes` prop on `FNavigationMenu` (refs SFKUI-6500) e18ff97
+* **@fkui/vue:** remove unnecessary beforeSubmit (refs SB-4982) ddfd67d
+* **@fkui/vue:** scroll on modal close when `focus="on"` (fixes [#187](undefined/Forsakringskassan/designsystem/issues/187)) ac43df6
+* **deps:** update dependency core-js to v3.40.0 c909b64
+* **deps:** update dependency i18next to v24.1.2 5bde548
+* **deps:** update dependency i18next to v24.2.0 0681e0d
+* **deps:** update dependency i18next to v24.2.1 8830fed
+
 ## 5.44.0 (2024-12-17)
 
 ### Features
