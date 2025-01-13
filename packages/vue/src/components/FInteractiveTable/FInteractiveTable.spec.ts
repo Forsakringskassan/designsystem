@@ -539,6 +539,56 @@ it("should add table--hover class when hover is set", async () => {
     expect(table.classes()).toContain("table--hover");
 });
 
+describe("showActive flag", () => {
+    const TestComponent = {
+        components: { FInteractiveTable, FTableColumn },
+        template: /* HTML */ `
+            <f-interactive-table
+                :rows="rows"
+                :show-active="showActive"
+                key-attribute="id"
+                selectable
+            ></f-interactive-table>
+        `,
+        data() {
+            return {
+                rows: [{ id: 1 }, { id: 2 }],
+                showActive: false,
+            };
+        },
+    };
+
+    it("should add table__row--active class when showActive is true and row is clicked", async () => {
+        const wrapper = createWrapper(TestComponent);
+        wrapper.setProps({ showActive: true });
+        await wrapper.vm.$nextTick();
+
+        const table = wrapper.getComponent(FInteractiveTable);
+        const row = table.findAll("tbody tr td")[0];
+        await row.trigger("click");
+        await wrapper.vm.$nextTick();
+
+        const rows = wrapper.findAll("tbody tr");
+        expect(rows[0].classes()).toContain("table__row--active");
+        expect(rows[1].classes()).not.toContain("table__row--active");
+    });
+
+    it("should not have table__row--active class when showActive is false and row is clicked", async () => {
+        const wrapper = createWrapper(TestComponent);
+        wrapper.setProps({ showActive: false });
+        await wrapper.vm.$nextTick();
+
+        const table = wrapper.getComponent(FInteractiveTable);
+        const row = table.findAll("tbody tr td")[0];
+        await row.trigger("click");
+        await wrapper.vm.$nextTick();
+
+        const rows = wrapper.findAll("tbody tr");
+        expect(rows[0].classes()).not.toContain("table__row--active");
+        expect(rows[1].classes()).not.toContain("table__row--active");
+    });
+});
+
 it("should add an extra column when selectable is enabled", async () => {
     expect.assertions(6);
     const TestComponent = {
@@ -680,6 +730,12 @@ it("should be transparent", async () => {
 });
 
 describe("events", () => {
+    interface TestComponentData {
+        rows: Array<Record<string, number>>;
+        selected: Array<Record<string, number>>;
+        active: Record<string, string> | undefined;
+    }
+
     const TestComponent = {
         components: { FInteractiveTable, FTableColumn },
         template: /* HTML */ `
@@ -687,6 +743,7 @@ describe("events", () => {
                 :rows="rows"
                 key-attribute="id"
                 v-model="selected"
+                v-model:active="active"
                 selectable
             ></f-interactive-table>
         `,
@@ -694,7 +751,8 @@ describe("events", () => {
             return {
                 rows: [{ id: 1 }, { id: 2 }],
                 selected: [{ id: 1 }],
-            };
+                active: undefined,
+            } as TestComponentData;
         },
     };
 
@@ -750,6 +808,18 @@ describe("events", () => {
             await column.trigger("click");
             await table.vm.$nextTick();
             expect(table.emitted("click")).toHaveLength(2);
+        });
+
+        it("should update active row when clicking on item", async () => {
+            const wrapper = mount(TestComponent);
+            const table = wrapper.getComponent(FInteractiveTable);
+            const column = table.findAll("tbody tr td")[0];
+            await column.trigger("click");
+            await table.vm.$nextTick();
+            expect(table.emitted("update:active")).toHaveLength(2);
+            expect(
+                (wrapper.vm.$data as TestComponentData)["active"],
+            ).toStrictEqual({ id: 1 });
         });
 
         it.each([" ", "Spacebar"])(
