@@ -8966,7 +8966,9 @@ type: PropType<ListItem | undefined>;
 required: false;
 default: () => undefined;
 };
-}>, FSortFilterDatasetInterface & ActivateItemInterface & ExpandableTable, FInteractiveTableData, {
+}>, FSortFilterDatasetInterface & ActivateItemInterface & ExpandableTable, FInteractiveTableData & {
+tbodyKey: number;
+}, {
 hasCaption(): boolean;
 hasCheckboxDescription(): boolean;
 isEmpty(): boolean;
@@ -8997,6 +8999,7 @@ callbackAfterItemAdd(item: ListItem): void;
 callbackBeforeItemDelete(item: ListItem): void;
 escapeNewlines(value: string): string;
 updateActiveRowFromVModel(): void;
+setActiveRow(row: ListItem | undefined): void;
 }, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect" | "update:active")[], "change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
 rows: {
 type: PropType<ListArray>;
