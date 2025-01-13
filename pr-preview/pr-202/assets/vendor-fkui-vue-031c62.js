@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -631,10 +631,10 @@
     var SHARED = "__core-js_shared__";
     var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
     (store.versions || (store.versions = [])).push({
-      version: "3.39.0",
+      version: "3.40.0",
       mode: IS_PURE ? "pure" : "global",
-      copyright: "\xA9 2014-2024 Denis Pushkarev (zloirock.ru)",
-      license: "https://github.com/zloirock/core-js/blob/v3.39.0/LICENSE",
+      copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
+      license: "https://github.com/zloirock/core-js/blob/v3.40.0/LICENSE",
       source: "https://github.com/zloirock/core-js"
     });
     return sharedStore.exports;
@@ -3000,17 +3000,13 @@
     };
     return defineBuiltInAccessor;
   }
-  var functionUncurryThisClause;
-  var hasRequiredFunctionUncurryThisClause;
-  function requireFunctionUncurryThisClause() {
-    if (hasRequiredFunctionUncurryThisClause) return functionUncurryThisClause;
-    hasRequiredFunctionUncurryThisClause = 1;
-    var classofRaw2 = requireClassofRaw();
-    var uncurryThis = requireFunctionUncurryThis();
-    functionUncurryThisClause = function(fn2) {
-      if (classofRaw2(fn2) === "Function") return uncurryThis(fn2);
-    };
-    return functionUncurryThisClause;
+  var arrayBufferBasicDetection;
+  var hasRequiredArrayBufferBasicDetection;
+  function requireArrayBufferBasicDetection() {
+    if (hasRequiredArrayBufferBasicDetection) return arrayBufferBasicDetection;
+    hasRequiredArrayBufferBasicDetection = 1;
+    arrayBufferBasicDetection = typeof ArrayBuffer != "undefined" && typeof DataView != "undefined";
+    return arrayBufferBasicDetection;
   }
   var functionUncurryThisAccessor;
   var hasRequiredFunctionUncurryThisAccessor;
@@ -3049,16 +3045,13 @@
     if (hasRequiredArrayBufferIsDetached) return arrayBufferIsDetached;
     hasRequiredArrayBufferIsDetached = 1;
     var globalThis2 = requireGlobalThis();
-    var uncurryThis = requireFunctionUncurryThisClause();
+    var NATIVE_ARRAY_BUFFER = requireArrayBufferBasicDetection();
     var arrayBufferByteLength2 = requireArrayBufferByteLength();
-    var ArrayBuffer2 = globalThis2.ArrayBuffer;
-    var ArrayBufferPrototype = ArrayBuffer2 && ArrayBuffer2.prototype;
-    var slice = ArrayBufferPrototype && uncurryThis(ArrayBufferPrototype.slice);
+    var DataView2 = globalThis2.DataView;
     arrayBufferIsDetached = function(O) {
-      if (arrayBufferByteLength2(O) !== 0) return false;
-      if (!slice) return false;
+      if (!NATIVE_ARRAY_BUFFER || arrayBufferByteLength2(O) !== 0) return false;
       try {
-        slice(O, 0, 0);
+        new DataView2(O);
         return false;
       } catch (error) {
         return true;
@@ -3245,10 +3238,10 @@
     var PROPER_STRUCTURED_CLONE_TRANSFER = requireStructuredCloneProperTransfer();
     var structuredClone = globalThis2.structuredClone;
     var ArrayBuffer2 = globalThis2.ArrayBuffer;
-    var DataView = globalThis2.DataView;
+    var DataView2 = globalThis2.DataView;
     var min = Math.min;
     var ArrayBufferPrototype = ArrayBuffer2.prototype;
-    var DataViewPrototype = DataView.prototype;
+    var DataViewPrototype = DataView2.prototype;
     var slice = uncurryThis(ArrayBufferPrototype.slice);
     var isResizable = uncurryThisAccessor(ArrayBufferPrototype, "resizable", "get");
     var maxByteLength = uncurryThisAccessor(ArrayBufferPrototype, "maxByteLength", "get");
@@ -3273,8 +3266,8 @@
           maxByteLength: maxByteLength(arrayBuffer)
         } : void 0;
         newBuffer = new ArrayBuffer2(newByteLength, options);
-        var a = new DataView(arrayBuffer);
-        var b = new DataView(newBuffer);
+        var a = new DataView2(arrayBuffer);
+        var b = new DataView2(newBuffer);
         var copyLength = min(newByteLength, byteLength);
         for (var i = 0; i < copyLength; i++) setInt8(b, i, getInt8(a, i));
       }
@@ -3324,8 +3317,8 @@
     if (hasRequired_DataView) return _DataView;
     hasRequired_DataView = 1;
     var getNative = require_getNative(), root = require_root();
-    var DataView = getNative(root, "DataView");
-    _DataView = DataView;
+    var DataView2 = getNative(root, "DataView");
+    _DataView = DataView2;
     return _DataView;
   }
   var _Promise;
@@ -3363,12 +3356,12 @@
   function require_getTag() {
     if (hasRequired_getTag) return _getTag;
     hasRequired_getTag = 1;
-    var DataView = require_DataView(), Map2 = require_Map(), Promise2 = require_Promise(), Set = require_Set(), WeakMap = require_WeakMap(), baseGetTag = require_baseGetTag(), toSource = require_toSource();
+    var DataView2 = require_DataView(), Map2 = require_Map(), Promise2 = require_Promise(), Set = require_Set(), WeakMap = require_WeakMap(), baseGetTag = require_baseGetTag(), toSource = require_toSource();
     var mapTag = "[object Map]", objectTag = "[object Object]", promiseTag = "[object Promise]", setTag = "[object Set]", weakMapTag = "[object WeakMap]";
     var dataViewTag = "[object DataView]";
-    var dataViewCtorString = toSource(DataView), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set), weakMapCtorString = toSource(WeakMap);
+    var dataViewCtorString = toSource(DataView2), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set), weakMapCtorString = toSource(WeakMap);
     var getTag = baseGetTag;
-    if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set && getTag(new Set()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
+    if (DataView2 && getTag(new DataView2(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set && getTag(new Set()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
       getTag = function(value) {
         var result = baseGetTag(value), Ctor = result == objectTag ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : "";
         if (ctorString) {
@@ -14349,7 +14342,7 @@
   };
   var _hoisted_19 = {
     key: 0,
-    class: "table__column--selectable"
+    class: "table__column--placeholder"
   };
   var _hoisted_20 = ["colspan"];
   var _hoisted_21 = {
@@ -14423,7 +14416,9 @@
           key: _ctx.rowKey(expandableRow),
           "aria-level": "2",
           class: (0, import_vue.normalizeClass)(_ctx.expandableRowClasses(row, expandableIndex))
-        }, [_cache[8] || (_cache[8] = (0, import_vue.createElementVNode)("td", null, null, -1)), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_19)) : (0, import_vue.createCommentVNode)("", true), _cache[10] || (_cache[10] = (0, import_vue.createTextVNode)()), !_ctx.hasExpandableSlot ? (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.mergeProps)({
+        }, [_cache[8] || (_cache[8] = (0, import_vue.createElementVNode)("td", {
+          class: "table__column--placeholder"
+        }, null, -1)), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_19)) : (0, import_vue.createCommentVNode)("", true), _cache[10] || (_cache[10] = (0, import_vue.createTextVNode)()), !_ctx.hasExpandableSlot ? (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.mergeProps)({
           key: 1,
           ref_for: true
         }, {

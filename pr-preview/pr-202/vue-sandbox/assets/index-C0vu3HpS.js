@@ -7757,8 +7757,8 @@ function requireLodash_clonedeep() {
     );
     var Buffer2 = moduleExports ? root.Buffer : void 0, Symbol2 = root.Symbol, Uint8Array2 = root.Uint8Array, getPrototype = overArg(Object.getPrototypeOf, Object), objectCreate = Object.create, propertyIsEnumerable = objectProto.propertyIsEnumerable, splice = arrayProto2.splice;
     var nativeGetSymbols = Object.getOwnPropertySymbols, nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : void 0, nativeKeys = overArg(Object.keys, Object);
-    var DataView = getNative(root, "DataView"), Map2 = getNative(root, "Map"), Promise2 = getNative(root, "Promise"), Set2 = getNative(root, "Set"), WeakMap2 = getNative(root, "WeakMap"), nativeCreate = getNative(Object, "create");
-    var dataViewCtorString = toSource(DataView), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set2), weakMapCtorString = toSource(WeakMap2);
+    var DataView2 = getNative(root, "DataView"), Map2 = getNative(root, "Map"), Promise2 = getNative(root, "Promise"), Set2 = getNative(root, "Set"), WeakMap2 = getNative(root, "WeakMap"), nativeCreate = getNative(Object, "create");
+    var dataViewCtorString = toSource(DataView2), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set2), weakMapCtorString = toSource(WeakMap2);
     var symbolProto = Symbol2 ? Symbol2.prototype : void 0, symbolValueOf = symbolProto ? symbolProto.valueOf : void 0;
     function Hash(entries) {
       var index = -1, length = entries ? entries.length : 0;
@@ -8090,7 +8090,7 @@ function requireLodash_clonedeep() {
     }
     var getSymbols = nativeGetSymbols ? overArg(nativeGetSymbols, Object) : stubArray;
     var getTag = baseGetTag;
-    if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap2 && getTag(new WeakMap2()) != weakMapTag) {
+    if (DataView2 && getTag(new DataView2(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap2 && getTag(new WeakMap2()) != weakMapTag) {
       getTag = function(value) {
         var result = objectToString2.call(value), Ctor = result == objectTag ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : void 0;
         if (ctorString) {
@@ -11455,10 +11455,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.39.0",
+    version: "3.40.0",
     mode: IS_PURE ? "pure" : "global",
-    copyright: "© 2014-2024 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.39.0/LICENSE",
+    copyright: "© 2014-2025 Denis Pushkarev (zloirock.ru)",
+    license: "https://github.com/zloirock/core-js/blob/v3.40.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -13819,17 +13819,13 @@ function requireDefineBuiltInAccessor() {
   };
   return defineBuiltInAccessor;
 }
-var functionUncurryThisClause;
-var hasRequiredFunctionUncurryThisClause;
-function requireFunctionUncurryThisClause() {
-  if (hasRequiredFunctionUncurryThisClause) return functionUncurryThisClause;
-  hasRequiredFunctionUncurryThisClause = 1;
-  var classofRaw2 = requireClassofRaw();
-  var uncurryThis = requireFunctionUncurryThis();
-  functionUncurryThisClause = function(fn2) {
-    if (classofRaw2(fn2) === "Function") return uncurryThis(fn2);
-  };
-  return functionUncurryThisClause;
+var arrayBufferBasicDetection;
+var hasRequiredArrayBufferBasicDetection;
+function requireArrayBufferBasicDetection() {
+  if (hasRequiredArrayBufferBasicDetection) return arrayBufferBasicDetection;
+  hasRequiredArrayBufferBasicDetection = 1;
+  arrayBufferBasicDetection = typeof ArrayBuffer != "undefined" && typeof DataView != "undefined";
+  return arrayBufferBasicDetection;
 }
 var functionUncurryThisAccessor;
 var hasRequiredFunctionUncurryThisAccessor;
@@ -13868,16 +13864,13 @@ function requireArrayBufferIsDetached() {
   if (hasRequiredArrayBufferIsDetached) return arrayBufferIsDetached;
   hasRequiredArrayBufferIsDetached = 1;
   var globalThis2 = requireGlobalThis();
-  var uncurryThis = requireFunctionUncurryThisClause();
+  var NATIVE_ARRAY_BUFFER = requireArrayBufferBasicDetection();
   var arrayBufferByteLength2 = requireArrayBufferByteLength();
-  var ArrayBuffer2 = globalThis2.ArrayBuffer;
-  var ArrayBufferPrototype = ArrayBuffer2 && ArrayBuffer2.prototype;
-  var slice = ArrayBufferPrototype && uncurryThis(ArrayBufferPrototype.slice);
+  var DataView2 = globalThis2.DataView;
   arrayBufferIsDetached = function(O) {
-    if (arrayBufferByteLength2(O) !== 0) return false;
-    if (!slice) return false;
+    if (!NATIVE_ARRAY_BUFFER || arrayBufferByteLength2(O) !== 0) return false;
     try {
-      slice(O, 0, 0);
+      new DataView2(O);
       return false;
     } catch (error) {
       return true;
@@ -14064,10 +14057,10 @@ function requireArrayBufferTransfer() {
   var PROPER_STRUCTURED_CLONE_TRANSFER = requireStructuredCloneProperTransfer();
   var structuredClone = globalThis2.structuredClone;
   var ArrayBuffer2 = globalThis2.ArrayBuffer;
-  var DataView = globalThis2.DataView;
+  var DataView2 = globalThis2.DataView;
   var min = Math.min;
   var ArrayBufferPrototype = ArrayBuffer2.prototype;
-  var DataViewPrototype = DataView.prototype;
+  var DataViewPrototype = DataView2.prototype;
   var slice = uncurryThis(ArrayBufferPrototype.slice);
   var isResizable = uncurryThisAccessor(ArrayBufferPrototype, "resizable", "get");
   var maxByteLength = uncurryThisAccessor(ArrayBufferPrototype, "maxByteLength", "get");
@@ -14092,8 +14085,8 @@ function requireArrayBufferTransfer() {
         maxByteLength: maxByteLength(arrayBuffer)
       } : void 0;
       newBuffer = new ArrayBuffer2(newByteLength, options);
-      var a = new DataView(arrayBuffer);
-      var b = new DataView(newBuffer);
+      var a = new DataView2(arrayBuffer);
+      var b = new DataView2(newBuffer);
       var copyLength = min(newByteLength, byteLength);
       for (var i = 0; i < copyLength; i++) setInt8(b, i, getInt8(a, i));
     }
@@ -14143,8 +14136,8 @@ function require_DataView() {
   if (hasRequired_DataView) return _DataView;
   hasRequired_DataView = 1;
   var getNative = require_getNative(), root = require_root();
-  var DataView = getNative(root, "DataView");
-  _DataView = DataView;
+  var DataView2 = getNative(root, "DataView");
+  _DataView = DataView2;
   return _DataView;
 }
 var _Promise;
@@ -14182,12 +14175,12 @@ var hasRequired_getTag;
 function require_getTag() {
   if (hasRequired_getTag) return _getTag;
   hasRequired_getTag = 1;
-  var DataView = require_DataView(), Map2 = require_Map(), Promise2 = require_Promise(), Set2 = require_Set(), WeakMap2 = require_WeakMap(), baseGetTag = require_baseGetTag(), toSource = require_toSource();
+  var DataView2 = require_DataView(), Map2 = require_Map(), Promise2 = require_Promise(), Set2 = require_Set(), WeakMap2 = require_WeakMap(), baseGetTag = require_baseGetTag(), toSource = require_toSource();
   var mapTag = "[object Map]", objectTag = "[object Object]", promiseTag = "[object Promise]", setTag = "[object Set]", weakMapTag = "[object WeakMap]";
   var dataViewTag = "[object DataView]";
-  var dataViewCtorString = toSource(DataView), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set2), weakMapCtorString = toSource(WeakMap2);
+  var dataViewCtorString = toSource(DataView2), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set2), weakMapCtorString = toSource(WeakMap2);
   var getTag = baseGetTag;
-  if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap2 && getTag(new WeakMap2()) != weakMapTag) {
+  if (DataView2 && getTag(new DataView2(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap2 && getTag(new WeakMap2()) != weakMapTag) {
     getTag = function(value) {
       var result = baseGetTag(value), Ctor = result == objectTag ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : "";
       if (ctorString) {

@@ -5536,9 +5536,6 @@ input[type=search]:focus,
 .table tbody .table__expandable-row--collapsed {
   visibility: collapse;
 }
-.table tbody .table__expandable-row td:nth-child(2) {
-  padding-left: 1.5rem;
-}
 .table tbody td,
 .table tbody th {
   padding: calc(var(--f-table-body-row-padding, 0.5rem) * var(--f-density-factor, 1)) var(--f-table-body-row-padding, 0.5rem);
@@ -5556,6 +5553,9 @@ input[type=search]:focus,
 }
 .table tbody .table__column--selectable {
   padding: calc(0.2rem * var(--f-density-factor, 1)) 0.2rem;
+}
+.table tbody .table__column--placeholder + .table__column {
+  padding-left: 1.5rem;
 }
 .table tbody .table__column--action .button--discrete {
   border-radius: var(--f-button-discrete-table-column-action-border-radius, 4px);

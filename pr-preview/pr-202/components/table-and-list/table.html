@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-3f0c28.css"
+            href="../../assets/docs-ae50d6.css"
             crossorigin
-            integrity="sha384-ht1HoJCw+CRBXrpPFvrLd9lTVM8vQ1xoqX5IUhkLeXi9X9dqCssXgY3fzgjx5p+I"
+            integrity="sha384-0tlpvlHX3Mywp6344+NG/eHUkyTTDGOZdR8lIuyaNiEpERYJIFHv+ToofC5szQJI"
             
         />
         <link
@@ -1083,9 +1083,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-c6c7e5.js"
+                    src="../../assets/vendor-fkui-vue-031c62.js"
                     crossorigin
-                    integrity="sha384-KuTlxFECHzCg2GwrVkdeddzaIs0ZBqhgVG61gCKkriOAXdg3K0qLfPg5khMQH0sF"
+                    integrity="sha384-M103/50ubwp7Az+TQa2BFesfixiRaUFJ0vWSUeUwfCGZ1g0Pm03eFOwx6VKzkNu8"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,19 +1108,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/aecbd7966533e46e769b2e450654b20ccac8248d/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/a6f42c1db075b41de513274e2d81841b4e0a5aba/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/aecbd7966533e46e769b2e450654b20ccac8248d/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/a6f42c1db075b41de513274e2d81841b4e0a5aba/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/aecbd7966533e46e769b2e450654b20ccac8248d/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/a6f42c1db075b41de513274e2d81841b4e0a5aba/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1318,9 +1318,43 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
 <h3 id="expanderbara_rader"><a class="header-anchor" href="#expanderbara_rader">Expanderbara rader</a></h3><p>Med expanderbara rader går det att skapa ytterligare tabellrader som visas när man trycker på en expanderbar rad.</p>
 <p>För att skapa expanderbart innehåll som följer existerande kolumner så krävs det att <code>expandable-attribute</code> är satt och <code>expandable</code> slot inte används.
 Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
+<p>Se nedan exempel av data som kan användas för att generera en expanderbar rad som innehåller två tabellrader.</p>
 
+                <div
+                    id="example-27f8b4"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=static
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">const</span> myExpandableRows = [
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
+        <span class="hljs-attr">sum</span>: <span class="hljs-number">1200</span>,
+        <span class="hljs-attr">expandable</span>: [
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">200</span>,
+            },
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Övrig ersättning&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+            },
+        ],
+    },
+];
+</code></pre>
+                </div>
+            
             <div
-                id="example-787c46"
+                id="example-e760a9"
                 class="code-preview code-preview--default"
                 
                 
@@ -1412,7 +1446,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
         <p>För att istället skapa expanderbara rader med valfritt innehåll används <code>expandable</code> slot.</p>
 
                 <div
-                    id="example-31ded8"
+                    id="example-cd962e"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1429,7 +1463,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <p>Om tabellen har en heading i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>:</p>
 
                 <div
-                    id="example-2682c1"
+                    id="example-7acfcc"
                     class="code-preview code-preview--default"
                     
                     
@@ -1447,7 +1481,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
             <p>Använd caption om tabellen inte har en naturlig rubrik:</p>
 
                 <div
-                    id="example-34556f"
+                    id="example-6e81e0"
                     class="code-preview code-preview--default"
                     
                     
@@ -1463,7 +1497,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
             <p>I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:</p>
 
                 <div
-                    id="example-8fb175"
+                    id="example-37095a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1492,7 +1526,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p>För att lägga till skoll i tabell använder du prop <code>scroll</code>:</p>
 
                 <div
-                    id="example-63fe3d"
+                    id="example-9ab74b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1511,7 +1545,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-bf06ca"
+                    id="example-3aeaf6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1739,9 +1773,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix/SFKUI-6935-expandable-row (<a href="https://github.com/Forsakringskassan/designsystem/commits/aecbd7966533e46e769b2e450654b20ccac8248d">aecbd79</a>)<br />
+    fix/SFKUI-6935-expandable-row (<a href="https://github.com/Forsakringskassan/designsystem/commits/a6f42c1db075b41de513274e2d81841b4e0a5aba">a6f42c1</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/202">PR 202</a><br />
-        2025-01-10 10:02
+        2025-01-13 14:20
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1862,9 +1896,9 @@ parentRow</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-5b4e65.js"
+            src="../../assets/processors/selectable-version/select-version-68be68.js"
             crossorigin
-            integrity="sha384-9hlga/vGl7mNJoNXoDuvw4YYU74V1PaTj5rmTtSAwXEVTHdcDfPKAwrUR+V8hrD0"
+            integrity="sha384-dl5LHxlPPCQ6JQFjWscGWw0/78EaAwZUCHXiyEmtv7CRJT/6yfsaQt23gi9uyhgS"
             
         ></script>
         <script
