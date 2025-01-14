@@ -26,6 +26,7 @@
       "types": "./dist/types/cypress.d.ts",
       "default": "./dist/cjs/cypress.js"
     },
+    "./style.css": "./dist/esm/vue.css",
     "./htmlvalidate": "./htmlvalidate/index.cjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
     "./package.json": "./package.json",
