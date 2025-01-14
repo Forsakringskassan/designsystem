@@ -103,8 +103,9 @@ export default defineComponent({
             },
         },
     },
-    setup(): FTableInterface {
-        return FTableInjected();
+    setup(): Omit<FTableInterface, "textFieldTableMode"> {
+        const { renderColumns, setVisibilityColumn, addColumn } = FTableInjected();
+        return { renderColumns, setVisibilityColumn, addColumn };
     },
     computed: {
         classes(): string[] {

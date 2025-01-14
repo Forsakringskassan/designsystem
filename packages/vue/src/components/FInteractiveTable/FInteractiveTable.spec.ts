@@ -240,6 +240,53 @@ describe("should hide or show column even when table is empty", () => {
     );
 });
 
+it("should be able to toggle column visibility when table is empty", async () => {
+    expect.assertions(2);
+    const testComponent = defineComponent({
+        name: "TestComponent",
+        components: {
+            FInteractiveTable,
+            FTableColumn,
+        },
+        template: /* HTML */ `
+            <f-interactive-table :rows="rows" key-attribute="id">
+                <template #caption> Caption </template>
+                <template #default="{ row }">
+                    <f-table-column name="col1" title="Col1">
+                        {{ row.data }}
+                    </f-table-column>
+                    <f-table-column :visible name="col2" title="Col2">
+                        {{ row.data }}
+                    </f-table-column>
+                </template>
+            </f-interactive-table>
+            <button id="button" type="button" @click="visible=!visible">
+                Toggle column
+            </button>
+        `,
+        data() {
+            return {
+                rows: [],
+                visible: true,
+            };
+        },
+    });
+
+    const wrapper = mount(testComponent);
+    const button = wrapper.find("button");
+    await wrapper.vm.$nextTick();
+
+    const thsBefore = wrapper.findAll("table thead tr th");
+    expect(thsBefore).toHaveLength(2);
+
+    //Hide Col2
+    button.trigger("click");
+    await wrapper.vm.$nextTick();
+
+    const thsAfter = wrapper.findAll("table thead tr th");
+    expect(thsAfter).toHaveLength(1);
+});
+
 describe("should match snapshot", () => {
     const TestComponent = {
         components: { FInteractiveTable, FTableColumn },

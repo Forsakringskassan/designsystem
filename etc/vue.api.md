@@ -16375,7 +16375,7 @@ required: false;
 default: FTableColumnType;
 validator(value: string): value is FTableColumnType;
 };
-}>, FTableInterface, {}, {
+}>, Omit<FTableInterface, "textFieldTableMode">, {}, {
 classes(): string[];
 scope(): "row" | null;
 tagName(): "td" | "th";
