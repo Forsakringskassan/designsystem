@@ -134,6 +134,8 @@
                             -->
                             <slot name="empty">{{ $t("fkui.interactive-table.empty", "Tabellen är tom") }}</slot>
                         </td>
+                        <!-- slot content won't be rendered, since renderColumns is false for empty table -->
+                        <slot v-bind="{ row: {} }"></slot>
                     </tr>
                 </template>
             </tbody>
@@ -354,8 +356,7 @@ export default defineComponent({
             return tableScrollClasses(this.scroll);
         },
         nbOfColumns(): number {
-            let columnCount = this.columns.length;
-
+            let columnCount = this.visibleColumns.length;
             if (this.selectable) {
                 columnCount++;
             }
