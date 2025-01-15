@@ -19422,6 +19422,22 @@ function forceRepaintIE11(target) {
       type: Array,
       required: false,
       default: void 0
+    },
+    /**
+     * Enable showing the active row.
+     */
+    showActive: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    /**
+     * V-model will bind to value containing the current active row.
+     */
+    active: {
+      type: Object,
+      required: false,
+      default: () => void 0
     }
   },
   emits: [
@@ -19430,6 +19446,7 @@ function forceRepaintIE11(target) {
     "update",
     "unselect",
     "update:modelValue",
+    "update:active",
     "select",
     /**
      * Emitted when row is expanded.
@@ -19464,7 +19481,8 @@ function forceRepaintIE11(target) {
       activeRow: void 0,
       columns: [],
       selectedRows: [],
-      tr: []
+      tr: [],
+      tbodyKey: 0
     };
   },
   computed: {
@@ -19523,6 +19541,20 @@ function forceRepaintIE11(target) {
           });
         }
       }
+    },
+    active: {
+      immediate: true,
+      handler: function() {
+        this.updateActiveRowFromVModel();
+      }
+    },
+    showActive: {
+      immediate: true,
+      handler: function(val) {
+        if (!val) {
+          this.tbodyKey ^= 1;
+        }
+      }
     }
   },
   updated() {
@@ -19541,6 +19573,9 @@ function forceRepaintIE11(target) {
   },
   methods: {
     isActive(row) {
+      if (!this.showActive) {
+        return false;
+      }
       return itemEquals(row, this.activeRow, this.keyAttribute);
     },
     isSelected(row) {
@@ -19573,7 +19608,7 @@ function forceRepaintIE11(target) {
       }
       if (!itemEquals(row, this.activeRow, this.keyAttribute)) {
         this.$emit("change", row);
-        this.activeRow = row;
+        this.setActiveRow(row);
         if (tr) {
           tr.focus();
           const td = tr.children[0];
@@ -19664,6 +19699,17 @@ function forceRepaintIE11(target) {
     },
     escapeNewlines(value) {
       return value.replace(/\n/g, "<br/>");
+    },
+    updateActiveRowFromVModel() {
+      if (this.active === void 0) {
+        this.setActiveRow(void 0);
+      } else if (!itemEquals(this.active, this.activeRow, this.keyAttribute)) {
+        this.setActiveRow(this.active);
+      }
+    },
+    setActiveRow(row) {
+      this.activeRow = row;
+      this.$emit("update:active", this.activeRow);
     }
   }
 });

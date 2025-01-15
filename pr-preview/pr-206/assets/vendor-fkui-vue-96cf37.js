@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -14033,6 +14033,22 @@
         type: Array,
         required: false,
         default: void 0
+      },
+      /**
+       * Enable showing the active row.
+       */
+      showActive: {
+        type: Boolean,
+        required: false,
+        default: true
+      },
+      /**
+       * V-model will bind to value containing the current active row.
+       */
+      active: {
+        type: Object,
+        required: false,
+        default: () => void 0
       }
     },
     emits: [
@@ -14041,6 +14057,7 @@
       "update",
       "unselect",
       "update:modelValue",
+      "update:active",
       "select",
       /**
        * Emitted when row is expanded.
@@ -14075,7 +14092,8 @@
         activeRow: void 0,
         columns: [],
         selectedRows: [],
-        tr: []
+        tr: [],
+        tbodyKey: 0
       };
     },
     computed: {
@@ -14134,6 +14152,20 @@
             });
           }
         }
+      },
+      active: {
+        immediate: true,
+        handler: function() {
+          this.updateActiveRowFromVModel();
+        }
+      },
+      showActive: {
+        immediate: true,
+        handler: function(val) {
+          if (!val) {
+            this.tbodyKey ^= 1;
+          }
+        }
       }
     },
     updated() {
@@ -14152,6 +14184,9 @@
     },
     methods: {
       isActive(row) {
+        if (!this.showActive) {
+          return false;
+        }
         return itemEquals(row, this.activeRow, this.keyAttribute);
       },
       isSelected(row) {
@@ -14184,7 +14219,7 @@
         }
         if (!itemEquals(row, this.activeRow, this.keyAttribute)) {
           this.$emit("change", row);
-          this.activeRow = row;
+          this.setActiveRow(row);
           if (tr) {
             tr.focus();
             const td = tr.children[0];
@@ -14275,6 +14310,17 @@
       },
       escapeNewlines(value) {
         return value.replace(/\n/g, "<br/>");
+      },
+      updateActiveRowFromVModel() {
+        if (this.active === void 0) {
+          this.setActiveRow(void 0);
+        } else if (!itemEquals(this.active, this.activeRow, this.keyAttribute)) {
+          this.setActiveRow(this.active);
+        }
+      },
+      setActiveRow(row) {
+        this.activeRow = row;
+        this.$emit("update:active", this.activeRow);
       }
     }
   });
@@ -14312,40 +14358,37 @@
     key: 1,
     class: "table__column__description"
   };
-  var _hoisted_12$1 = {
-    ref: "tbodyElement"
-  };
-  var _hoisted_13 = ["aria-label", "aria-expanded", "aria-level", "aria-describedby", "onKeydown", "onClick"];
-  var _hoisted_14 = {
+  var _hoisted_12$1 = ["aria-label", "aria-expanded", "aria-level", "aria-describedby", "onKeydown", "onClick"];
+  var _hoisted_13 = {
     key: 0
   };
-  var _hoisted_15 = {
+  var _hoisted_14 = {
     key: 0,
     class: "table__expand-icon"
   };
-  var _hoisted_16 = {
+  var _hoisted_15 = {
     key: 1,
     class: "table__column--selectable"
   };
-  var _hoisted_17 = {
+  var _hoisted_16 = {
     class: "table__input"
   };
-  var _hoisted_18 = {
+  var _hoisted_17 = {
     key: 0,
     class: "sr-only"
   };
-  var _hoisted_19 = {
+  var _hoisted_18 = {
     key: 0,
     class: "table__column--placeholder"
   };
-  var _hoisted_20 = ["colspan"];
-  var _hoisted_21 = {
+  var _hoisted_19 = ["colspan"];
+  var _hoisted_20 = {
     key: 0
   };
-  var _hoisted_22 = {
+  var _hoisted_21 = {
     key: 1
   };
-  var _hoisted_23 = ["colspan"];
+  var _hoisted_22 = ["colspan"];
   function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_checkbox_field = (0, import_vue.resolveComponent)("f-checkbox-field");
@@ -14373,7 +14416,10 @@
         class: (0, import_vue.normalizeClass)(_ctx.iconClasses(column)),
         name: _ctx.iconName(column)
       }, null, 8, ["class", "name"])) : (0, import_vue.createCommentVNode)("", true), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), column.description ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_11$1, (0, import_vue.toDisplayString)(column.description), 1)) : (0, import_vue.createCommentVNode)("", true)], 16);
-    }), 128))])]), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("tbody", _hoisted_12$1, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.rows, (row, index) => {
+    }), 128))])]), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tbody", {
+      ref: "tbodyElement",
+      key: _ctx.tbodyKey
+    }, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.rows, (row, index) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
         key: _ctx.rowKey(row)
       }, [(0, import_vue.createElementVNode)("tr", {
@@ -14385,15 +14431,15 @@
         tabindex: "0",
         onKeydown: (0, import_vue.withModifiers)(($event) => _ctx.onKeydown($event, index), ["self"]),
         onClick: ($event) => _ctx.onClick($event, row, index)
-      }, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_14, [_ctx.hasExpandableContent(row) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_15, [(0, import_vue.createVNode)(_component_f_icon, {
+      }, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_13, [_ctx.hasExpandableContent(row) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_14, [(0, import_vue.createVNode)(_component_f_icon, {
         name: "arrow-right",
         rotate: _ctx.isExpanded(row) ? "270" : "90"
-      }, null, 8, ["rotate"])])) : (0, import_vue.createCommentVNode)("", true)])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_16, [(0, import_vue.createElementVNode)("div", _hoisted_17, [(0, import_vue.createVNode)(_component_f_checkbox_field, {
+      }, null, 8, ["rotate"])])) : (0, import_vue.createCommentVNode)("", true)])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_15, [(0, import_vue.createElementVNode)("div", _hoisted_16, [(0, import_vue.createVNode)(_component_f_checkbox_field, {
         value: true,
         "model-value": _ctx.isSelected(row),
         onClick: (0, import_vue.withModifiers)(($event) => _ctx.onSelect(row), ["self"])
       }, {
-        default: (0, import_vue.withCtx)(() => [_ctx.hasCheckboxDescription ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_18, [(0, import_vue.renderSlot)(_ctx.$slots, "checkbox-description", (0, import_vue.mergeProps)({
+        default: (0, import_vue.withCtx)(() => [_ctx.hasCheckboxDescription ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_17, [(0, import_vue.renderSlot)(_ctx.$slots, "checkbox-description", (0, import_vue.mergeProps)({
           ref_for: true
         }, {
           row
@@ -14403,7 +14449,7 @@
         ref_for: true
       }, {
         row
-      }))], 42, _hoisted_13), _cache[11] || (_cache[11] = (0, import_vue.createTextVNode)()), _ctx.isExpandableTable && _ctx.hasExpandableContent(row) ? ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, {
+      }))], 42, _hoisted_12$1), _cache[11] || (_cache[11] = (0, import_vue.createTextVNode)()), _ctx.isExpandableTable && _ctx.hasExpandableContent(row) ? ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, {
         key: 0
       }, (0, import_vue.renderList)(_ctx.expandableRows(row), (expandableRow, expandableIndex) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", {
@@ -14412,7 +14458,7 @@
           class: (0, import_vue.normalizeClass)(_ctx.expandableRowClasses(row, expandableIndex))
         }, [_cache[8] || (_cache[8] = (0, import_vue.createElementVNode)("td", {
           class: "table__column--placeholder"
-        }, null, -1)), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_19)) : (0, import_vue.createCommentVNode)("", true), _cache[10] || (_cache[10] = (0, import_vue.createTextVNode)()), !_ctx.hasExpandableSlot ? (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.mergeProps)({
+        }, null, -1)), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_18)) : (0, import_vue.createCommentVNode)("", true), _cache[10] || (_cache[10] = (0, import_vue.createTextVNode)()), !_ctx.hasExpandableSlot ? (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.mergeProps)({
           key: 1,
           ref_for: true
         }, {
@@ -14426,14 +14472,14 @@
         }, {
           expandableRow,
           parentRow: row
-        }))], 8, _hoisted_20))], 2);
+        }))], 8, _hoisted_19))], 2);
       }), 128)) : (0, import_vue.createCommentVNode)("", true)], 64);
-    }), 128)), _cache[12] || (_cache[12] = (0, import_vue.createTextVNode)()), _ctx.isEmpty && _ctx.columns.length === 0 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_21, [(0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+    }), 128)), _cache[12] || (_cache[12] = (0, import_vue.createTextVNode)()), _ctx.isEmpty && _ctx.columns.length === 0 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_20, [(0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
       row: {}
-    })))])) : (0, import_vue.createCommentVNode)("", true), _cache[13] || (_cache[13] = (0, import_vue.createTextVNode)()), _ctx.isEmpty ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_22, [(0, import_vue.createElementVNode)("td", {
+    })))])) : (0, import_vue.createCommentVNode)("", true), _cache[13] || (_cache[13] = (0, import_vue.createTextVNode)()), _ctx.isEmpty ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_21, [(0, import_vue.createElementVNode)("td", {
       class: "table__column table__column--action",
       colspan: _ctx.nbOfColumns
-    }, [(0, import_vue.renderSlot)(_ctx.$slots, "empty", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_23)])) : (0, import_vue.createCommentVNode)("", true)], 512)], 16, _hoisted_1$f)], 2);
+    }, [(0, import_vue.renderSlot)(_ctx.$slots, "empty", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_22)])) : (0, import_vue.createCommentVNode)("", true)]))], 16, _hoisted_1$f)], 2);
   }
   var FInteractiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g]]);
   var _sfc_main$f = (0, import_vue.defineComponent)({
