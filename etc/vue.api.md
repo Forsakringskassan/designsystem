@@ -1835,6 +1835,7 @@ resizeObserver: ResizeObserver | undefined;
 internalHideWeekNumbers: boolean;
 showShortWeekdays: boolean;
 }, {
+ariaLabel(): string;
 totalCols(): number;
 weeks(): Array<{
 week: number;
@@ -5132,6 +5133,7 @@ resizeObserver: ResizeObserver | undefined;
 internalHideWeekNumbers: boolean;
 showShortWeekdays: boolean;
 }, {
+ariaLabel(): string;
 totalCols(): number;
 weeks(): Array<{
 week: number;
@@ -10444,9 +10446,9 @@ onClose?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | undefined;
 modelValue: string;
+ariaLabel: string;
 focusedItem: string;
 enableKeyboardNavigation: boolean;
-ariaLabel: string;
 selectedMenuItemScreenReaderText: string;
 }, {}, {
 IPopup: DefineComponent<ExtractPropTypes<    {
@@ -18233,6 +18235,7 @@ resizeObserver: ResizeObserver | undefined;
 internalHideWeekNumbers: boolean;
 showShortWeekdays: boolean;
 }, {
+ariaLabel(): string;
 totalCols(): number;
 weeks(): Array<{
 week: number;
@@ -18277,6 +18280,7 @@ resizeObserver: ResizeObserver | undefined;
 internalHideWeekNumbers: boolean;
 showShortWeekdays: boolean;
 }, {
+ariaLabel(): string;
 totalCols(): number;
 weeks(): Array<{
 week: number;
@@ -18870,9 +18874,9 @@ onClose?: ((...args: any[]) => any) | undefined;
 }>, {
 anchor: HTMLElement | undefined;
 modelValue: string;
+ariaLabel: string;
 focusedItem: string;
 enableKeyboardNavigation: boolean;
-ariaLabel: string;
 selectedMenuItemScreenReaderText: string;
 }, {}, {
 IPopup: DefineComponent<ExtractPropTypes<    {
