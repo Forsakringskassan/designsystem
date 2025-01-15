@@ -79,8 +79,10 @@ export {
     type LayoutAreaAttachPanel,
     type LayoutAreaDefinition,
     type LayoutAreaDirection,
+    type UseAreaData,
     FPageLayout,
     registerLayout,
+    useAreaData,
 } from "./FPageLayout";
 export { FProgressbar } from "./FProgressbar";
 export { FRadioField } from "./FRadioField";

@@ -15649,6 +15649,16 @@ export const UNHANDLED_ERROR_EVENT: "unhandled-error";
 export type UnknownItem = Record<string, unknown>;
 
 // @public (undocumented)
+export interface UseAreaData {
+    readonly area: Readonly<Ref<string | null>>;
+    readonly attachPanel: Readonly<Ref<LayoutAreaAttachPanel | null>>;
+    readonly direction: Readonly<Ref<LayoutAreaDirection | null>>;
+}
+
+// @public
+export function useAreaData(element: Readonly<ShallowRef<HTMLElement | null | undefined>>): UseAreaData;
+
+// @public (undocumented)
 export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | null>>, options: Ref<string[] | undefined>, onOptionSelected?: (value: string) => void): {
     dropdownId: string;
     dropdownIsOpen: Readonly<Ref<boolean>>;
