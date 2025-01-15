@@ -6,3 +6,4 @@ export {
     registerLayout,
 } from "./define-layout";
 export { default as FPageLayout } from "./FPageLayout.vue";
+export { type UseAreaData, useAreaData } from "./use-area-data";

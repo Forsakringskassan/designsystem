@@ -109,6 +109,7 @@ functions/functions/mount-component.html
 functions/functions/render-slot-text.html
 functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html
+functions/functions/use-area-data.html
 functions/functions/use-modal.html
 functions/helpers/accessibility.html
 functions/helpers/densify.html
