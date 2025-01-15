@@ -83,10 +83,6 @@ module.exports = defineMetadata({
         slots: ["default"],
     },
 
-    "i-calendar-month-grid#default": {
-        permittedContent: ["button"],
-    },
-
     "i-calendar-navbar": {
         flow: true,
         phrasing: true,

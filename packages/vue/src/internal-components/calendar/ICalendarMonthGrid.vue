@@ -1,5 +1,5 @@
 <template>
-    <table class="calendar-month__table" role="application" @focusin="onFocusin" @focusout="onFocusout">
+    <table class="calendar-month__table" role="grid" :aria-label @focusin="onFocusin" @focusout="onFocusout">
         <colgroup>
             <col v-if="!internalHideWeekNumbers" class="calendar-month__col--week" />
             <col class="calendar-month__col--day" />
@@ -11,8 +11,8 @@
             <col class="calendar-month__col--day" />
         </colgroup>
 
-        <thead role="presentation">
-            <tr role="presentation">
+        <thead>
+            <tr>
                 <th
                     v-if="!internalHideWeekNumbers"
                     scope="col"
@@ -20,22 +20,14 @@
                     class="calendar-month__header-cell"
                 ></th>
 
-                <th
-                    v-for="weekday in weekdays"
-                    :key="weekday.name"
-                    scope="col"
-                    role="presentation"
-                    class="calendar-month__header-cell"
-                >
-                    <abbr aria-hidden="true" :title="weekday.name">{{
-                        showShortWeekdays ? weekday.shortName : weekday.name
-                    }}</abbr>
+                <th v-for="weekday in weekdays" :key="weekday.name" scope="col" class="calendar-month__header-cell">
+                    <abbr :title="weekday.name">{{ showShortWeekdays ? weekday.shortName : weekday.name }}</abbr>
                 </th>
             </tr>
         </thead>
 
-        <tbody role="presentation">
-            <tr v-for="week in weeks" :key="week.week" role="presentation">
+        <tbody>
+            <tr v-for="week in weeks" :key="week.week">
                 <td
                     v-if="!internalHideWeekNumbers"
                     class="calendar-month__cell calendar-month__cell--week-number"
@@ -120,6 +112,9 @@ export default defineComponent({
         };
     },
     computed: {
+        ariaLabel(): string {
+            return `${this.value.monthName} ${this.value.year}`;
+        },
         totalCols(): number {
             return this.hideWeekNumbers ? 7 : 8;
         },

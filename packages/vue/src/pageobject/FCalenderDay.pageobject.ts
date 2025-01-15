@@ -32,7 +32,7 @@ export class FCalenderDayPageobject implements BasePageObject {
     }
 
     public button(): Cypress.Chainable<JQuery<HTMLButtonElement>> {
-        return this.el().parent("button");
+        return this.el().parent('[data-test="select-day-button"]');
     }
 
     public click(): Cypress.Chainable<JQuery<HTMLButtonElement>> {

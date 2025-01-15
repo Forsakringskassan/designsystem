@@ -1,19 +1,19 @@
 <template>
     <i-calendar-month-grid :value="modelValue">
         <template #default="{ date }">
-            <button
+            <div
                 :ref="date.toString()"
+                role="gridcell"
                 class="calendar-month__button"
                 data-test="select-day-button"
                 :data-date="date.toString()"
                 :tabindex="getTabindex(date)"
-                type="button"
                 @click.stop.prevent="onClickDay(date)"
                 @keydown="onKeydownDay(date, $event)"
             >
                 <!-- @slot Slot for rendering of day content. -->
                 <slot :date="date" :is-focused="isDayFocused(date)"></slot>
-            </button>
+            </div>
         </template>
     </i-calendar-month-grid>
 </template>
@@ -81,6 +81,12 @@ export default defineComponent({
             this.$emit("click", date);
         },
         async onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void> {
+            if (event.code === "Enter" || event.code === "Space") {
+                event.preventDefault();
+                this.$emit("click", date);
+                return;
+            }
+
             if (!isDayStepKey(event)) {
                 return;
             }
