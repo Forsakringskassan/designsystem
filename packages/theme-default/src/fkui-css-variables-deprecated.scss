@@ -243,6 +243,9 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-background-button-tertiary-hover: #{$palette-color-bluebell-15};
     --f-text-color-button-tertiary-inverted: #{$palette-color-white-100};
     --f-text-color-button-tertiary-inverted-disabled: #{$palette-color-fk-black-50};
+    --f-icon-color-warning: #{$palette-color-yellow-100};
+    --f-background-info: #{$palette-color-bluebell-5};
+    --f-background-warning: #{$palette-color-yellow-5};
 }
 
 @if $global {

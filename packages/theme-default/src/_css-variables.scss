@@ -57,7 +57,6 @@
     --f-icon-color-primary: #{$palette-color-bluebell-100}; // select-field, file-item, file-selector, calendar
     --f-icon-color-discrete: #{$palette-color-fk-black-70}; // wizard-step
     --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field, form-step
-    --f-icon-color-warning: #{$palette-color-yellow-100}; // message-box, modal
     --f-icon-color-error: #{$palette-color-red-100}; // message-box, text-field, textarea, modal, file-item
     --f-icon-color-input: #{$palette-color-fk-black-50}; // textfield
     --f-icon-color-notice: #{$palette-color-tegel-100}; // expandable-panel
@@ -81,8 +80,6 @@
     --f-background-input-selected: #{$palette-color-bluebell-100}; // checkbox, radiobutton
     --f-background-input-selected-disabled: #{$palette-color-fk-black-50}; // checkbox, radiobutton
     --f-background-error: #{$palette-color-red-5}; // modal, messagebox
-    --f-background-info: #{$palette-color-bluebell-5}; // modal, messagebox, tooltip
-    --f-background-warning: #{$palette-color-yellow-5}; // modal, messagebox
     --f-background-success: #{$palette-color-green-a-5}; // modal, messagebox
     --f-background-overlay: rgba(0, 0, 0, 0.75); // modal, loader
 
