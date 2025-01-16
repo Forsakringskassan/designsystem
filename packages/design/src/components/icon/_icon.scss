@@ -1,5 +1,6 @@
 @use "../../core/size";
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $ICON_SELECTOR: ".icon" !default;
 
@@ -86,8 +87,8 @@ $ICON_SELECTOR: ".icon" !default;
 
     &--tooltip {
         .f-icon-circle {
-            color: var(--f-icon-color-info);
             fill: var(--f-icon-color-info);
+            color: var(--f-icon-color-info);
         }
 
         .f-icon-i {
@@ -97,29 +98,29 @@ $ICON_SELECTOR: ".icon" !default;
 
     &--info {
         .f-icon-circle {
-            color: var(--f-icon-color-white);
-            fill: var(--f-icon-color-info);
+            color: $icon-info-color-background;
+            fill: $icon-info-color-border;
         }
     }
 
     &--warning {
         .f-icon-circle {
-            color: var(--f-icon-color-white);
-            fill: var(--f-icon-color-warning);
+            color: $icon-warning-color-background;
+            fill: $icon-warning-color-border;
         }
     }
 
     &--error {
         .f-icon-triangle {
-            color: var(--f-icon-color-white);
-            fill: var(--f-icon-color-error);
+            color: $icon-error-color-background;
+            fill: $icon-error-color-border;
         }
     }
 
     &--success {
         .f-icon-circle {
-            color: var(--f-icon-color-white);
-            fill: var(--f-icon-color-success);
+            color: $icon-success-color-background;
+            fill: $icon-success-color-border;
         }
         .f-icon-success {
             transform: scale(0.6);

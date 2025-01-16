@@ -1,6 +1,7 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $MESSAGE_BOX_SELECTOR: ".message-box" !default;
 
@@ -28,7 +29,7 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
                         transform: translateY(-0.05rem);
                     }
                     &__banner {
-                        fill: var(--f-icon-color-error);
+                        fill: $messagebox-error-icon-error-color-border;
                         color: white;
                     }
                 }
@@ -52,7 +53,7 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     border-collapse: separate;
     padding: densify(size.$padding-100) size.$padding-100;
 
-    @include make-box-variant($selector, var(--f-background-error), var(--f-border-color-error), $short-layout);
+    @include make-box-variant($selector, $messagebox-error-color-background, $messagebox-error-color-border, $short-layout);
 
     .iflex__item > p {
         margin-bottom: 0;
@@ -66,7 +67,7 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     &__heading {
         font-size: var(--f-font-size-h3);
         font-weight: var(--f-font-weight-medium);
-        color: var(--f-text-color-default);
+        color: $messagebox-info-color-heading;
         line-height: var(--f-line-height-medium);
         align-items: flex-start;
         margin-bottom: densify(size.$margin-050);
@@ -78,35 +79,35 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     }
 
     &--info {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-info), var(--f-border-color-info));
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-info-color-background, $messagebox-info-color-border);
     }
 
     &--info-short {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-info), var(--f-border-color-info), $short-layout: true);
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-info-color-background, $messagebox-info-color-border, $short-layout: true);
     }
 
     &--error {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-error), var(--f-border-color-error));
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-error-color-background, $messagebox-error-color-border);
     }
 
     &--error-short {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-error), var(--f-border-color-error), $short-layout: true);
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-error-color-background, $messagebox-error-color-border, $short-layout: true);
     }
 
     &--warning {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-warning), var(--f-border-color-warning));
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-warning-color-background, $messagebox-warning-color-border);
     }
 
     &--warning-short {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-warning), var(--f-border-color-warning), $short-layout: true);
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-warning-color-background, $messagebox-warning-color-border, $short-layout: true);
     }
 
     &--success {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-success), var(--f-border-color-success));
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-success-color-background, $messagebox-success-color-border);
     }
 
     &--success-short {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, var(--f-background-success), var(--f-border-color-success), $short-layout: true);
+        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-success-color-background, $messagebox-success-color-border, $short-layout: true);
     }
 
     &--banner {
