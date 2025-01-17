@@ -6,4 +6,6 @@ export type {
     FWizardStepDefinition,
     FWizardKey,
     StepNumber,
+    FWizardValidationCallback,
+    FWizardValidationData,
 } from "./FWizardApi";
