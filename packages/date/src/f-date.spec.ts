@@ -16,6 +16,47 @@ describe("now()", () => {
         const date = FDate.now();
         expect(date.toString()).toBe("1999-12-31");
     });
+
+    it("should still be now()", () => {
+        expect.assertions(1);
+        jest.setSystemTime(new Date(1999, 11, 31));
+        const today = FDate.now();
+        jest.advanceTimersByTime(61234);
+        const alsoToday = FDate.now();
+        expect(today.equals(alsoToday)).toBeTruthy();
+    });
+
+    it("should not be before now()", () => {
+        expect.assertions(3);
+        jest.setSystemTime(new Date(1999, 11, 31));
+        const today = FDate.now();
+        jest.advanceTimersByTime(61234);
+        const alsoToday = FDate.now();
+        expect(today.isBefore(today)).toBeFalsy();
+        expect(today.isBefore(alsoToday)).toBeFalsy();
+        expect(alsoToday.isBefore(today)).toBeFalsy();
+    });
+
+    it("should not be after now()", () => {
+        expect.assertions(3);
+        jest.setSystemTime(new Date(1999, 11, 31));
+        const today = FDate.now();
+        jest.advanceTimersByTime(61234);
+        const alsoToday = FDate.now();
+        expect(today.isAfter(today)).toBeFalsy();
+        expect(today.isAfter(alsoToday)).toBeFalsy();
+        expect(alsoToday.isAfter(today)).toBeFalsy();
+    });
+
+    it("should be equal to today Date with time", () => {
+        expect.assertions(1);
+        jest.setSystemTime(new Date(1999, 11, 31));
+        const today = FDate.now();
+        const alsoToday = FDate.fromDate(
+            new Date(1999, 11, 31, 11, 22, 33, 44),
+        );
+        expect(today.equals(alsoToday)).toBeTruthy();
+    });
 });
 
 describe("fromIso()", () => {

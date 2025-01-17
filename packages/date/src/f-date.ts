@@ -32,7 +32,7 @@ export class FDate implements IterableDate<FDate> {
     private value: Dayjs;
 
     private constructor(value?: ConfigType) {
-        this.value = dayjs(value, ISO8601_YYYY_MM_DD, true);
+        this.value = dayjs(value, ISO8601_YYYY_MM_DD, true).startOf("day");
     }
 
     /**
@@ -365,7 +365,7 @@ export class FDate implements IterableDate<FDate> {
         if (typeof rhs === "string") {
             rhs = FDate.fromIso(rhs);
         }
-        return this.value.isBefore(rhs.value);
+        return this.value.isBefore(rhs.value, "day");
     }
 
     /**
@@ -377,7 +377,7 @@ export class FDate implements IterableDate<FDate> {
         if (typeof rhs === "string") {
             rhs = FDate.fromIso(rhs);
         }
-        return this.value.isAfter(rhs.value);
+        return this.value.isAfter(rhs.value, "day");
     }
 
     /**
@@ -415,9 +415,9 @@ export class FDate implements IterableDate<FDate> {
                 return -1;
             }
         }
-        if (a.value.isSame(b.value)) {
+        if (a.equals(b)) {
             return 0;
-        } else if (a.value.isBefore(b.value)) {
+        } else if (a.isBefore(b)) {
             return -1;
         } else {
             return 1;
