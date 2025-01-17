@@ -17342,7 +17342,10 @@ export { FValidationFormAction }
 export { FValidationFormAction as FWizardStepAction }
 
 // @public (undocumented)
-export type FValidationFormCallback = () => void | FValidationFormAction | Promise<FValidationFormAction> | Promise<void>;
+export type FValidationFormCallback = () => FValidationFormResult;
+
+// @public (undocumented)
+export type FValidationFormResult = void | FValidationFormAction | Promise<FValidationFormAction> | Promise<void>;
 
 // @public (undocumented)
 export const FValidationGroup: DefineComponent<ExtractPropTypes<    {
@@ -17466,12 +17469,12 @@ type: StringConstructor;
 required: true;
 };
 beforeNext: {
-type: PropType<FValidationFormCallback>;
+type: PropType<FWizardValidationCallback>;
 required: false;
 default(): void;
 };
 beforeValidation: {
-type: PropType<FValidationFormCallback>;
+type: PropType<FWizardValidationCallback>;
 required: false;
 default(): void;
 };
@@ -17502,18 +17505,20 @@ onSubmit(): Promise<void>;
 onCancel(): void;
 beforeAnimation(open: boolean): Promise<void>;
 afterAnimation(open: boolean): Promise<void>;
+beforeNextWrapper(): FValidationFormResult;
+beforeValidationWrapper(): FValidationFormResult;
 }, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 title: {
 type: StringConstructor;
 required: true;
 };
 beforeNext: {
-type: PropType<FValidationFormCallback>;
+type: PropType<FWizardValidationCallback>;
 required: false;
 default(): void;
 };
 beforeValidation: {
-type: PropType<FValidationFormCallback>;
+type: PropType<FWizardValidationCallback>;
 required: false;
 default(): void;
 };
@@ -17523,9 +17528,9 @@ required: false;
 default: boolean;
 };
 }>> & Readonly<{}>, {
-beforeValidation: FValidationFormCallback;
+beforeValidation: FWizardValidationCallback;
 useErrorList: boolean;
-beforeNext: FValidationFormCallback;
+beforeNext: FWizardValidationCallback;
 }, {}, {
 IAnimateExpand: DefineComponent<ExtractPropTypes<    {
 animate: {
@@ -18047,6 +18052,19 @@ export interface FWizardStepDefinition {
     key: FWizardKey;
     // (undocumented)
     stepNumber: number;
+}
+
+// @public (undocumented)
+export type FWizardValidationCallback = (wizardData?: FWizardValidationData) => FValidationFormResult;
+
+// @public (undocumented)
+export interface FWizardValidationData {
+    // (undocumented)
+    key: FWizardKey;
+    // (undocumented)
+    stepNumber: number;
+    // (undocumented)
+    totalSteps: number;
 }
 
 // @internal

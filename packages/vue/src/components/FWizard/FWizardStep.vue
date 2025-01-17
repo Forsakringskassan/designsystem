@@ -66,14 +66,14 @@
         >
             <f-validation-form
                 :id="formId"
-                :before-submit="beforeNext"
-                :before-validation="beforeValidation"
+                :before-submit="beforeNextWrapper"
+                :before-validation="beforeValidationWrapper"
                 :use-error-list="useErrorList"
                 class="wizard-step-body"
                 @submit="onSubmit"
             >
                 <template #error-message>
-                    <slot name="error-message">
+                    <slot name="error-message" v-bind="{ stepNumber, totalSteps }">
                         {{ $t("fkui.wizard-step.errorlist.title", "Oj, du har glömt att fylla i något. Gå till:") }}
                     </slot>
                 </template>
@@ -88,7 +88,7 @@
                             type="submit"
                             class="button button--primary button-group__item button--large"
                         >
-                            <slot name="next-button-text">
+                            <slot name="next-button-text" v-bind="{ stepNumber, totalSteps }">
                                 <template v-if="isFinalStep">
                                     {{ $t("fkui.wizard-step.button.next.text-final", "Gå vidare och granska") }}
                                 </template>
@@ -124,9 +124,9 @@ import { TranslationMixin } from "../../plugins";
 import { GroupValidityEvent } from "../../types";
 import { getHTMLElementFromVueRef } from "../../utils";
 import { IAnimateExpand, IFlex, IFlexItem } from "../../internal-components";
-import { FValidationForm, type FValidationFormCallback } from "../FValidationForm";
+import { FValidationForm, type FValidationFormResult } from "../FValidationForm";
 import { FIcon } from "../FIcon";
-import { FWizardApi, FWizardApiInjected, FWizardStepDefinition } from "./FWizardApi";
+import { FWizardApi, FWizardApiInjected, FWizardStepDefinition, type FWizardValidationCallback } from "./FWizardApi";
 
 const SCROLL_DURATION = 500;
 
@@ -157,7 +157,7 @@ export default defineComponent({
          * before allowing navigation to the next step.
          */
         beforeNext: {
-            type: Function as PropType<FValidationFormCallback>,
+            type: Function as PropType<FWizardValidationCallback>,
             required: false,
             default() {
                 /* do nothing */
@@ -172,7 +172,7 @@ export default defineComponent({
          * When cancelled, the consumer is responsible to indicate why this happened.
          */
         beforeValidation: {
-            type: Function as PropType<FValidationFormCallback>,
+            type: Function as PropType<FWizardValidationCallback>,
             required: false,
             default() {
                 /* do nothing */
@@ -311,6 +311,20 @@ export default defineComponent({
                 await DomUtils.scrollTo(headerElement, { duration: SCROLL_DURATION, offset: 10 });
             }
             DomUtils.focus(headerElement);
+        },
+        beforeNextWrapper(): FValidationFormResult {
+            return this.beforeNext({
+                key: this.step.key,
+                stepNumber: this.stepNumber,
+                totalSteps: this.totalSteps,
+            });
+        },
+        beforeValidationWrapper(): FValidationFormResult {
+            return this.beforeValidation({
+                key: this.step.key,
+                stepNumber: this.stepNumber,
+                totalSteps: this.totalSteps,
+            });
         },
     },
 });

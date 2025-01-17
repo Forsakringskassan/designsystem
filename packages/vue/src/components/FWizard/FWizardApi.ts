@@ -1,5 +1,6 @@
 import { documentOrderComparator } from "@fkui/logic";
 import { inject } from "vue";
+import { type FValidationFormResult } from "../FValidationForm";
 
 /**
  * @public
@@ -23,6 +24,22 @@ export interface FWizardStepDefinition {
     /** Current open step or -1 if no step is open */
     currentOpen: StepNumber | -1;
 }
+
+/**
+ * @public
+ */
+export interface FWizardValidationData {
+    key: FWizardKey;
+    totalSteps: number;
+    stepNumber: number;
+}
+
+/**
+ * @public
+ */
+export type FWizardValidationCallback = (
+    wizardData?: FWizardValidationData,
+) => FValidationFormResult;
 
 /**
  * @public

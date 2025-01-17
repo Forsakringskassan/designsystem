@@ -142,6 +142,7 @@ export { FTextareaField } from "./FTextareaField";
 export { FTooltip, tooltipAttachTo } from "./FTooltip";
 export {
     type FValidationFormCallback,
+    type FValidationFormResult,
     FValidationForm,
     FValidationFormAction,
     IValidationForm,
@@ -152,6 +153,8 @@ export {
     type FWizardStepDefinition,
     type FWizardKey,
     type StepNumber,
+    type FWizardValidationData,
+    type FWizardValidationCallback,
     FWizard,
     FWizardStep,
     FWizardStepAction,

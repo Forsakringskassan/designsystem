@@ -1,6 +1,7 @@
 import "html-validate/jest";
 import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
+import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import flushPromises from "flush-promises";
 import FWizard from "./FWizard.vue";
 import FWizardStep from "./FWizardStep.vue";
@@ -40,6 +41,80 @@ it("should use header tag provided from FWizard", async () => {
     wrapper.setProps({ headerTag: "h5" });
     await flushPromises();
     expect(wrapper.get(selector).element.tagName).toBe("H5");
+});
+
+it("should call beforeNext with data including key, totalSteps and stepNumber", async () => {
+    expect.assertions(1);
+    const beforeNextMock = jest.fn();
+    const TestComponent = defineComponent({
+        components: {
+            FWizard,
+            FWizardStep,
+        },
+        props: {
+            beforeNext: Function,
+        },
+        template: /* HTML */ `
+            <f-wizard header-tag="h2">
+                <f-wizard-step
+                    key="step1"
+                    title="step1"
+                    :before-next
+                ></f-wizard-step>
+            </f-wizard>
+        `,
+    });
+    const wrapper = mount(TestComponent, {
+        props: {
+            beforeNext: beforeNextMock,
+        },
+        attachTo: createPlaceholderInDocument(),
+    });
+    await wrapper.find("[type='submit']").trigger("click");
+    await wrapper.vm.$nextTick();
+    await flushPromises();
+    expect(beforeNextMock).toHaveBeenCalledWith({
+        key: "step1",
+        stepNumber: 1,
+        totalSteps: 1,
+    });
+});
+
+it("should call beforeValidation with data including key, totalSteps and stepNumber", async () => {
+    expect.assertions(1);
+    const beforeValidationMock = jest.fn();
+    const TestComponent = defineComponent({
+        components: {
+            FWizard,
+            FWizardStep,
+        },
+        props: {
+            beforeValidation: Function,
+        },
+        template: /* HTML */ `
+            <f-wizard header-tag="h2">
+                <f-wizard-step
+                    key="step1"
+                    title="step1"
+                    :before-validation
+                ></f-wizard-step>
+            </f-wizard>
+        `,
+    });
+    const wrapper = mount(TestComponent, {
+        props: {
+            beforeValidation: beforeValidationMock,
+        },
+        attachTo: createPlaceholderInDocument(),
+    });
+    await wrapper.find("[type='submit']").trigger("click");
+    await wrapper.vm.$nextTick();
+    await flushPromises();
+    expect(beforeValidationMock).toHaveBeenCalledWith({
+        key: "step1",
+        stepNumber: 1,
+        totalSteps: 1,
+    });
 });
 
 describe("html-validate", () => {
