@@ -118,7 +118,7 @@
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "lerna": "8.1.9",
-    "lint-staged": "15.4.0",
+    "lint-staged": "15.4.1",
     "mocha-junit-reporter": "2.2.1",
     "mocha-multi-reporters": "1.5.1",
     "npm-pkg-lint": "3.10.7",
