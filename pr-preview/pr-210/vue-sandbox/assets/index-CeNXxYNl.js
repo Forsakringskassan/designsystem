@@ -8762,8 +8762,7 @@ const formatter = {
 class FDate {
   constructor(value) {
     __publicField(this, "value");
-    this.value = dayjs$1(value, ISO8601_YYYY_MM_DD$1, true);
-    this.value.set("hour", 0).set("minute", 0).set("second", 0).set("millisecond", 0);
+    this.value = dayjs$1(value, ISO8601_YYYY_MM_DD$1, true).startOf("day");
   }
   /**
    * Create {@link FDate} with an invalid state.
@@ -17815,7 +17814,16 @@ function FTableInjected() {
     }
   },
   setup() {
-    return FTableInjected();
+    const {
+      renderColumns,
+      setVisibilityColumn: setVisibilityColumn2,
+      addColumn: addColumn2
+    } = FTableInjected();
+    return {
+      renderColumns,
+      setVisibilityColumn: setVisibilityColumn2,
+      addColumn: addColumn2
+    };
   },
   computed: {
     classes() {
@@ -19521,7 +19529,7 @@ function forceRepaintIE11(target) {
       return tableScrollClasses(this.scroll);
     },
     nbOfColumns() {
-      let columnCount = this.columns.length;
+      let columnCount = this.visibleColumns.length;
       if (this.selectable) {
         columnCount++;
       }

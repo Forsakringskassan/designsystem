@@ -1352,8 +1352,7 @@ Caused by: ${cause.stack}`;
   var FDate = class _FDate {
     value;
     constructor(value) {
-      this.value = dayjs(value, ISO8601_YYYY_MM_DD, true);
-      this.value.set("hour", 0).set("minute", 0).set("second", 0).set("millisecond", 0);
+      this.value = dayjs(value, ISO8601_YYYY_MM_DD, true).startOf("day");
     }
     /**
      * Create {@link FDate} with an invalid state.
