@@ -1,4 +1,5 @@
 @use "focus";
+@use "variables" as *;
 
 @mixin make-button-variant(
     $name,
@@ -8,18 +9,18 @@
     $color,
     $color--hover: $color,
     $color--focus: $color--hover,
-    $color--disabled: var(--f-text-color-button-disabled),
+    $color--disabled: $button-color-text-disabled,
     $icon-color: $color,
     $icon-color--hover: $color--hover,
     $icon-color--focus: $color--focus,
     $icon-color--disabled: $color--disabled,
     $background-color--hover: $background-color,
     $background-color--focus: $background-color--hover,
-    $background-color--disabled: var(--f-background-button-disabled),
-    $border-color: transparent,
+    $background-color--disabled: $button-color-background-disabled,
+    $border-color: $button-color-border-default,
     $border-color--hover: $border-color,
     $border-color--focus: $border-color--hover,
-    $border-color--disabled: var(--f-border-color-button-disabled),
+    $border-color--disabled: $button-color-border-disabled,
     $border-width: var(--f-border-width-medium),
     $padding-top,
     $padding-right,

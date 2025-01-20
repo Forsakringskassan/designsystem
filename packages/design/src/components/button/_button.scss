@@ -3,6 +3,7 @@ $BUTTON_SELECTOR: ".button" !default;
 @use "../../core";
 @use "../../core/size";
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 @mixin button-group-margin($margin-bottom, $margin-right) {
     margin-bottom: $margin-bottom;
@@ -85,9 +86,9 @@ $BUTTON_SELECTOR: ".button" !default;
 
 /// Primary button
 $button--primary: (
-    background-color: var(--f-background-button-primary),
-    background-color--hover: var(--f-background-button-primary-hover),
-    color: var(--f-text-color-button-primary),
+    background-color: $button-primary-color-background-default,
+    background-color--hover: $button-primary-color-background-hover,
+    color: $button-primary-color-text-default,
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-primary-padding-top)),
@@ -98,10 +99,10 @@ $button--primary: (
 
 /// Secondary button
 $button--secondary: (
-    background-color--hover: var(--f-background-button-secondary-hover),
-    background-color: var(--f-background-button-secondary),
-    border-color: var(--f-border-color-button-secondary),
-    color: var(--f-text-color-button-secondary),
+    background-color--hover: $button-secondary-color-background-hover,
+    background-color: $button-secondary-color-background-default,
+    border-color: $button-secondary-color-border-default,
+    color: $button-secondary-color-text-default,
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-secondary-padding-top)),
@@ -112,9 +113,9 @@ $button--secondary: (
 
 /// Standard button
 $button--standard: (
-    background-color--hover: var(--f-background-button-standard-hover),
-    background-color: var(--f-background-button-standard),
-    border-color: var(--f-border-color-button-standard),
+    background-color--hover: $button-secondary-color-background-hover,
+    background-color: $button-secondary-color-background-default,
+    border-color: $button-secondary-color-border-default,
     color: var(--f-text-color-button-standard),
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
@@ -161,13 +162,13 @@ $button--discrete-inverted: (
 
 /// Tertiary button
 $button--tertiary: (
-    color: var(--f-text-color-button-tertiary),
-    color--hover: var(--f-text-color-button-tertiary-hover),
-    color--disabled: var(--f-text-color-button-tertiary-disabled),
-    background-color--hover: var(--f-background-button-tertiary-hover),
-    background-color: transparent,
-    background-color--disabled: transparent,
-    border-color--disabled: transparent,
+    color: $button-tertiary-color-text-default,
+    color--hover: $button-tertiary-color-text-hover,
+    color--disabled: $button-tertiary-color-text-disabled,
+    background-color--hover: $button-tertiary-color-background-hover,
+    background-color: $button-tertiary-color-background-default,
+    background-color--disabled: $button-tertiary-color-background-disabled,
+    border-color--disabled: $button-tertiary-color-border-disabled,
     border-width: 0,
     shadow: none,
     shadow-hover: none,
@@ -317,48 +318,48 @@ $button--tertiary: (
         }
 
         &--black {
-            color: var(--f-text-color-default);
+            color: $button-tertiary-black-color-text-default;
 
             & > .button__icon {
-                color: var(--f-icon-color-black);
+                color: $button-tertiary-black-icon-color-content-default;
             }
 
             &:hover,
             &:active,
             &:focus {
-                color: var(--f-text-color-default);
+                color: $button-tertiary-black-color-text-focus;
 
                 & > .button__icon {
-                    color: var(--f-icon-color-black);
+                    color: $button-tertiary-black-icon-color-content-focus;
                 }
             }
         }
 
         &--inverted {
-            color: var(--f-text-color-button-tertiary-inverted);
+            color: $button-tertiary-inverted-color-text-default;
 
             & > .button__icon {
-                color: var(--f-text-color-button-tertiary-inverted);
+                color: $button-tertiary-inverted-icon-color-content-default;
             }
 
             &:hover,
             &:active,
             &:focus {
-                color: var(--f-text-color-button-tertiary-inverted-hover);
-                background-color: transparent;
+                color: $button-tertiary-inverted-color-text-focus;
+                background-color: $button-tertiary-inverted-color-background-focus;
 
                 & > .button__icon {
-                    color: var(--f-text-color-button-tertiary-inverted-hover);
+                    color: $button-tertiary-inverted-icon-color-content-focus;
                 }
             }
 
             &:disabled {
-                color: var(--f-text-color-button-tertiary-disabled);
+                color: $button-tertiary-inverted-color-text-disabled;
                 border-width: 0;
-                background-color: transparent;
+                background-color: $button-tertiary-inverted-color-background-disabled;
 
                 & > .button__icon {
-                    color: var(--f-text-color-button-tertiary-disabled);
+                    color: $button-tertiary-inverted-icon-color-content-disabled;
                 }
             }
         }

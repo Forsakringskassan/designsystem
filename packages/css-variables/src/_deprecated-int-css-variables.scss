@@ -218,4 +218,20 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-background-input-disabled: #{$palette-color-fk-black-5};
     --f-background-input-hover: #{$palette-color-bluebell-15};
     --f-border-color-input-disabled: #{$palette-color-fk-black-50};
+
+    // Deprecated since 6.0.0
+    --f-text-color-button-disabled: #{$palette-color-fk-black-50};
+    --f-text-color-button-primary: #{$palette-color-white-100};
+    --f-text-color-button-tertiary-disabled: #{$palette-color-fk-black-50};
+    --f-text-color-button-tertiary-inverted-hover: #{$palette-color-fk-black-5};
+    --f-background-button-standard: #{$palette-color-bluebell-5};
+    --f-background-button-standard-hover: #{$palette-color-bluebell-15};
+    --f-background-button-primary-hover: #{$palette-color-green-a-120};
+    --f-background-button-secondary: #{$palette-color-bluebell-5};
+    --f-background-button-secondary-hover: #{$palette-color-bluebell-15};
+    --f-background-button-disabled: #{$palette-color-fk-black-5};
+    --f-border-color-button-disabled: #{$palette-color-fk-black-50};
+    --f-border-color-button-standard: #{$palette-color-fk-black-50};
+    --f-background-button-primary: #{$palette-color-green-a-100};
+    --f-border-color-button-secondary: #{$palette-color-fk-black-50};
 }
