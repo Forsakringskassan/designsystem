@@ -13,6 +13,13 @@ $global: true !default;
     @include semantic-tokens.css-variables;
     @include default-variables.css-variables;
 
+    // ********
+    // SEMANTIC
+    // ********
+    --fkds-color-action-border-primary-default: #{$palette-color-fk-black-50};
+    --fkds-color-action-background-primary-default: #{$palette-color-green-a-100};
+    --fkds-color-action-background-primary-hover: #{$palette-color-green-a-120};
+
     // ***********
     // TEXT COLORS
     // ***********
@@ -25,13 +32,13 @@ $global: true !default;
     --f-text-color-navbar: #{$palette-color-green-b-15};
     --f-text-color-heading-expandable-panel: #{$palette-color-fk-black-100};
     --f-text-color-button-standard: #{$palette-color-fk-black-100};
-    --f-text-color-button-secondary: #{$palette-color-fk-black-100};
+    --f-text-color-button-secondary: #{$palette-color-fk-black-100}; // avvaktar konflikt
     --f-text-color-button-discrete: #{$palette-color-green-a-100};
     --f-text-color-button-discrete-hover: #{$palette-color-green-a-100};
     --f-text-color-button-discrete-inverted: #{$palette-color-fk-black-5};
     --f-text-color-button-discrete-inverted-hover: #{$palette-color-bluebell-5};
-    --f-text-color-button-tertiary: #{$palette-color-green-a-100};
-    --f-text-color-button-tertiary-hover: #{$palette-color-green-a-100};
+    --f-text-color-button-tertiary: #{$palette-color-green-a-100}; // avvaktar konflikt
+    --f-text-color-button-tertiary-hover: #{$palette-color-green-a-100}; // avvaktar konflikt
     --f-text-color-button-tertiary-inverted-disabled: #{$palette-color-bluebell-15};
 
     // ***********
@@ -51,7 +58,7 @@ $global: true !default;
     --f-background-button-primary: #{$palette-color-green-a-100};
     --f-background-button-primary-hover: #{$palette-color-green-a-120};
     --f-background-button-discrete-hover: #{$palette-color-fk-black-5};
-    --f-background-button-tertiary-hover: #{$palette-color-fk-black-5};
+    --f-background-button-tertiary-hover: #{$palette-color-fk-black-5}; // avvaktar, används utöver knappar i select-field
     --f-background-sidepanel-button-tertiary-hover: #{$palette-color-fk-black-15};
     --f-background-grid-selected: #{$palette-color-green-a-5};
     --f-background-grid-active: #{$palette-color-green-a-15};

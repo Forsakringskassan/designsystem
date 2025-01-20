@@ -1,0 +1,35 @@
+// PRIMARY
+$button-primary-color-background-default: var(--fkds-color-action-background-primary-default);
+$button-primary-color-background-hover: var(--fkds-color-action-background-primary-hover);
+$button-primary-color-text-default: var(--fkds-color-action-text-inverted-default);
+
+// SECONDARY
+$button-secondary-color-background-default: var(--fkds-color-action-background-secondary-default);
+$button-secondary-color-border-default: var(--fkds-color-action-border-primary-default);
+$button-secondary-color-text-default: var(--fkds-color-action-text-primary-default);
+$button-secondary-color-background-hover: var(--fkds-color-action-background-secondary-hover);
+
+// TERTIARY
+$button-tertiary-color-text-default: var(--fkds-color-action-text-primary-default);
+$button-tertiary-color-background-default: transparent;
+$button-tertiary-color-background-disabled: transparent;
+$button-tertiary-color-border-disabled: transparent;
+$button-tertiary-color-text-disabled: var(--fkds-color-text-disabled);
+$button-tertiary-color-background-hover: var(--fkds-color-action-background-secondary-hover);
+$button-tertiary-color-text-hover: var(--fkds-color-action-text-primary-default);
+
+// TERTIARY - black
+$button-tertiary-black-color-text-default: var(--fkds-color-action-text-secondary-default);
+$button-tertiary-black-icon-color-content-default: var(--fkds-icon-color-action-content-secondary-default);
+$button-tertiary-black-color-text-focus: var(--fkds-color-action-text-secondary-default);
+$button-tertiary-black-icon-color-content-focus: var(--fkds-icon-color-action-content-secondary-default);
+
+// TERTIARY - inverted
+$button-tertiary-inverted-color-text-default: var(--fkds-color-action-text-inverted-default);
+$button-tertiary-inverted-icon-color-content-default: var(--fkds-icon-color-action-content-inverted-default);
+$button-tertiary-inverted-color-text-focus: var(--fkds-color-action-text-inverted-focus);
+$button-tertiary-inverted-icon-color-content-focus: var(--fkds-icon-color-action-content-inverted-default);
+$button-tertiary-inverted-color-background-focus: transparent;
+$button-tertiary-inverted-color-background-disabled: transparent;
+$button-tertiary-inverted-color-text-disabled: var(--fkds-color-text-disabled);
+$button-tertiary-inverted-icon-color-content-disabled: var(--fkds-icon-color-action-content-primary-disabled);

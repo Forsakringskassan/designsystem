@@ -32,21 +32,17 @@ $global: true !default;
     --f-text-color-heading-expandable-panel: #{$palette-color-white-100};
     --f-text-color-wizard-step-done: #{$palette-color-green-a-85}; // wizard-step
 
-    --f-text-color-button-disabled: #{$palette-color-fk-black-50};
     --f-text-color-button-standard: #{$palette-color-bluebell-100};
-    --f-text-color-button-primary: #{$palette-color-white-100};
-    --f-text-color-button-secondary: #{$palette-color-bluebell-100};
+    --f-text-color-button-secondary: #{$palette-color-bluebell-100}; // avvaktar konflikt
     --f-text-color-button-discrete: #{$palette-color-bluebell-100};
     --f-text-color-button-discrete-disabled: #{$palette-color-fk-black-50};
     --f-text-color-button-discrete-hover: #{$palette-color-bluebell-120};
     --f-text-color-button-discrete-inverted: #{$palette-color-white-100};
     --f-text-color-button-discrete-inverted-hover: #{$palette-color-white-100};
     --f-text-color-button-discrete-inverted-disabled: #{$palette-color-bluebell-15};
-    --f-text-color-button-tertiary: #{$palette-color-bluebell-100};
-    --f-text-color-button-tertiary-hover: #{$palette-color-bluebell-100};
-    --f-text-color-button-tertiary-disabled: #{$palette-color-fk-black-50};
+    --f-text-color-button-tertiary: #{$palette-color-bluebell-100}; // avvaktar konflikt
+    --f-text-color-button-tertiary-hover: #{$palette-color-bluebell-100}; // avvaktar konflikt
     --f-text-color-button-tertiary-inverted: #{$palette-color-white-100};
-    --f-text-color-button-tertiary-inverted-hover: #{$palette-color-fk-black-5};
     --f-text-color-button-tertiary-inverted-disabled: #{$palette-color-fk-black-50};
 
     --f-text-color-menu: #{$palette-color-fk-black-100};
@@ -114,15 +110,8 @@ $global: true !default;
     --f-background-code: #{$palette-color-fk-black-5};
     --f-background-wizard-step-line: #{$palette-color-fk-black-70}; // wizard-step
 
-    --f-background-button-standard: #{$palette-color-bluebell-5};
-    --f-background-button-standard-hover: #{$palette-color-bluebell-15};
-    --f-background-button-primary: #{$palette-color-bluebell-100};
-    --f-background-button-primary-hover: #{$palette-color-bluebell-120};
-    --f-background-button-secondary: #{$palette-color-bluebell-5};
-    --f-background-button-secondary-hover: #{$palette-color-bluebell-15};
-    --f-background-button-disabled: #{$palette-color-fk-black-5};
     --f-background-button-discrete-hover: none;
-    --f-background-button-tertiary-hover: #{$palette-color-bluebell-15};
+    --f-background-button-tertiary-hover: #{$palette-color-bluebell-15}; // avvaktar, används utöver knappar i select-field
     --f-background-sidepanel-button-tertiary-hover: #{$palette-color-bluebell-15}; //  FLeftPanel and FRightPanel
 
     --f-background-grid-default: #{$palette-color-white-100}; // list, table
@@ -194,10 +183,6 @@ $global: true !default;
     --f-border-color-link-hover: #{$palette-color-fk-black-50};
     --f-border-color-link-discrete: #{$palette-color-fk-black-50};
     --f-border-color-link-discrete-hover: #{$palette-color-bluebell-100};
-
-    --f-border-color-button-disabled: #{$palette-color-fk-black-50};
-    --f-border-color-button-standard: #{$palette-color-bluebell-100};
-    --f-border-color-button-secondary: #{$palette-color-bluebell-100};
 
     --f-border-color-grid: #{$palette-color-fk-black-50}; // list, table
     --f-border-color-grid-header: #{$palette-color-fk-black-50}; // list, table

@@ -113,5 +113,19 @@
     "--f-border-color-chip-hover",
     "--f-background-input-disabled",
     "--f-background-input-hover",
-    "--f-border-color-input-disabled"
+    "--f-border-color-input-disabled",
+    "--f-text-color-button-disabled",
+    "--f-text-color-button-primary",
+    "--f-text-color-button-tertiary-disabled",
+    "--f-text-color-button-tertiary-inverted-hover",
+    "--f-background-button-standard",
+    "--f-background-button-standard-hover",
+    "--f-background-button-primary-hover",
+    "--f-background-button-secondary",
+    "--f-background-button-secondary-hover",
+    "--f-background-button-disabled",
+    "--f-border-color-button-disabled",
+    "--f-border-color-button-standard",
+    "--f-background-button-primary",
+    "--f-border-color-button-secondary"
 ]
