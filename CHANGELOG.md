@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 5.45.1 (2025-01-20)
+
+### Bug Fixes
+
+* **@fkui/date:** `FDate` comparsion should not be affected by time (fixes SFKUI-6987) abd720d
+* **@fkui/design, @fkui/vue:** use slot content for expandable rows in FInteractiveTable (refs SFKUI-6935) 76a1403, closes #157
+* **@fkui/vue:** add v-model and flag for showing the active row (refs SFKUI-5545) 1008caa
+* **@fkui/vue:** toggable visability for columns in empty `FInteractiveTable` (fixes SFKUI-6899) e906362
+* add new api definition (refs SFKUI-5545) 57990c5
+
 ## 5.45.0 (2025-01-13)
 
 ### Features

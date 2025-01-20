@@ -1,6 +1,6 @@
 {
   "name": "@fkui/logic",
-  "version": "5.45.0",
+  "version": "5.45.1",
   "description": "Logic",
   "keywords": [
     "fkui",
@@ -71,7 +71,7 @@
     "lodash.clonedeep": "4.5.0"
   },
   "devDependencies": {
-    "@fkui/date": "5.45.0",
+    "@fkui/date": "5.45.1",
     "@fkui/test-utils": "5.45.0",
     "@rollup/plugin-commonjs": "28.0.2",
     "@rollup/plugin-node-resolve": "16.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue",
-  "version": "5.45.0",
+  "version": "5.45.1",
   "description": "Vue implementation of FKUI components",
   "keywords": [
     "fkui",
@@ -76,11 +76,11 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@fkui/css-variables": "5.45.0",
-    "@fkui/date": "5.45.0",
-    "@fkui/design": "5.45.0",
-    "@fkui/icon-lib-default": "5.45.0",
-    "@fkui/logic": "5.45.0",
+    "@fkui/css-variables": "5.45.1",
+    "@fkui/date": "5.45.1",
+    "@fkui/design": "5.45.1",
+    "@fkui/icon-lib-default": "5.45.1",
+    "@fkui/logic": "5.45.1",
     "@fkui/test-utils": "5.45.0",
     "@forsakringskassan/vite-lib-config": "3.2.1",
     "@vue/test-utils": "2.4.6",
