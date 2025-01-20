@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -9993,7 +9993,16 @@
       }
     },
     setup() {
-      return FTableInjected();
+      const {
+        renderColumns,
+        setVisibilityColumn: setVisibilityColumn2,
+        addColumn: addColumn2
+      } = FTableInjected();
+      return {
+        renderColumns,
+        setVisibilityColumn: setVisibilityColumn2,
+        addColumn: addColumn2
+      };
     },
     computed: {
       classes() {
@@ -14137,7 +14146,7 @@
         return tableScrollClasses(this.scroll);
       },
       nbOfColumns() {
-        let columnCount = this.columns.length;
+        let columnCount = this.visibleColumns.length;
         if (this.selectable) {
           columnCount++;
         }
@@ -14403,12 +14412,12 @@
     }, [(0, import_vue.createElementVNode)("table", (0, import_vue.mergeProps)({
       class: ["table", _ctx.tableClasses],
       role: _ctx.tableRole
-    }, _ctx.$attrs), [_ctx.hasCaption ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("caption", _hoisted_2$d, [(0, import_vue.renderSlot)(_ctx.$slots, "caption")])) : (0, import_vue.createCommentVNode)("", true), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("colgroup", null, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_3$9)) : (0, import_vue.createCommentVNode)("", true), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_4$8)) : (0, import_vue.createCommentVNode)("", true), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.columns, (column) => {
+    }, _ctx.$attrs), [_ctx.hasCaption ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("caption", _hoisted_2$d, [(0, import_vue.renderSlot)(_ctx.$slots, "caption")])) : (0, import_vue.createCommentVNode)("", true), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("colgroup", null, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_3$9)) : (0, import_vue.createCommentVNode)("", true), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_4$8)) : (0, import_vue.createCommentVNode)("", true), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.columns, (column) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", {
         key: column.id,
         class: (0, import_vue.normalizeClass)(column.size)
       }, null, 2);
-    }), 128))]), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("thead", null, [(0, import_vue.createElementVNode)("tr", _hoisted_5$6, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_6$4, [(0, import_vue.createElementVNode)("span", _hoisted_7$4, (0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.select", "Expandera")), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_8$4, [(0, import_vue.createElementVNode)("span", _hoisted_9$3, (0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.select", "Markera")), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.visibleColumns, (column) => {
+    }), 128))]), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("thead", null, [(0, import_vue.createElementVNode)("tr", _hoisted_5$6, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_6$4, [(0, import_vue.createElementVNode)("span", _hoisted_7$4, (0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.select", "Expandera")), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_8$4, [(0, import_vue.createElementVNode)("span", _hoisted_9$3, (0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.select", "Markera")), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.visibleColumns, (column) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", (0, import_vue.mergeProps)({
         key: column.id,
         scope: "col",
@@ -14422,7 +14431,7 @@
         class: (0, import_vue.normalizeClass)(_ctx.iconClasses(column)),
         name: _ctx.iconName(column)
       }, null, 8, ["class", "name"])) : (0, import_vue.createCommentVNode)("", true), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), column.description ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_11$1, (0, import_vue.toDisplayString)(column.description), 1)) : (0, import_vue.createCommentVNode)("", true)], 16);
-    }), 128))])]), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tbody", {
+    }), 128))])]), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tbody", {
       ref: "tbodyElement",
       key: _ctx.tbodyKey
     }, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.rows, (row, index) => {
@@ -14480,12 +14489,14 @@
           parentRow: row
         }))], 8, _hoisted_19))], 2);
       }), 128)) : (0, import_vue.createCommentVNode)("", true)], 64);
-    }), 128)), _cache[12] || (_cache[12] = (0, import_vue.createTextVNode)()), _ctx.isEmpty && _ctx.columns.length === 0 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_20, [(0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+    }), 128)), _cache[13] || (_cache[13] = (0, import_vue.createTextVNode)()), _ctx.isEmpty && _ctx.columns.length === 0 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_20, [(0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
       row: {}
-    })))])) : (0, import_vue.createCommentVNode)("", true), _cache[13] || (_cache[13] = (0, import_vue.createTextVNode)()), _ctx.isEmpty ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_21, [(0, import_vue.createElementVNode)("td", {
+    })))])) : (0, import_vue.createCommentVNode)("", true), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), _ctx.isEmpty ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_21, [(0, import_vue.createElementVNode)("td", {
       class: "table__column table__column--action",
       colspan: _ctx.nbOfColumns
-    }, [(0, import_vue.renderSlot)(_ctx.$slots, "empty", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_22)])) : (0, import_vue.createCommentVNode)("", true)]))], 16, _hoisted_1$f)], 2);
+    }, [(0, import_vue.renderSlot)(_ctx.$slots, "empty", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_22), _cache[12] || (_cache[12] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+      row: {}
+    })))])) : (0, import_vue.createCommentVNode)("", true)]))], 16, _hoisted_1$f)], 2);
   }
   var FInteractiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g]]);
   var _sfc_main$f = (0, import_vue.defineComponent)({
@@ -17226,6 +17237,13 @@
           stepNumber: this.stepNumber,
           totalSteps: this.totalSteps
         });
+      },
+      beforeValidationWrapper() {
+        return this.beforeValidation({
+          key: this.step.key,
+          stepNumber: this.stepNumber,
+          totalSteps: this.totalSteps
+        });
       }
     }
   });
@@ -17342,7 +17360,7 @@
       default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)(_component_f_validation_form, {
         id: _ctx.formId,
         "before-submit": _ctx.beforeNextWrapper,
-        "before-validation": _ctx.beforeValidation,
+        "before-validation": _ctx.beforeValidationWrapper,
         "use-error-list": _ctx.useErrorList,
         class: "wizard-step-body",
         onSubmit: _ctx.onSubmit

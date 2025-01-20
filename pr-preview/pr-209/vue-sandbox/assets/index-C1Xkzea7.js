@@ -17814,7 +17814,16 @@ function FTableInjected() {
     }
   },
   setup() {
-    return FTableInjected();
+    const {
+      renderColumns,
+      setVisibilityColumn: setVisibilityColumn2,
+      addColumn: addColumn2
+    } = FTableInjected();
+    return {
+      renderColumns,
+      setVisibilityColumn: setVisibilityColumn2,
+      addColumn: addColumn2
+    };
   },
   computed: {
     classes() {
@@ -19520,7 +19529,7 @@ function forceRepaintIE11(target) {
       return tableScrollClasses(this.scroll);
     },
     nbOfColumns() {
-      let columnCount = this.columns.length;
+      let columnCount = this.visibleColumns.length;
       if (this.selectable) {
         columnCount++;
       }
