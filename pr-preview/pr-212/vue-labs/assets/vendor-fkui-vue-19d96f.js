@@ -17230,6 +17230,20 @@
           });
         }
         import_logic.DomUtils.focus(headerElement);
+      },
+      beforeNextWrapper() {
+        return this.beforeNext({
+          key: this.step.key,
+          stepNumber: this.stepNumber,
+          totalSteps: this.totalSteps
+        });
+      },
+      beforeValidationWrapper() {
+        return this.beforeValidation({
+          key: this.step.key,
+          stepNumber: this.stepNumber,
+          totalSteps: this.totalSteps
+        });
       }
     }
   });
@@ -17345,19 +17359,25 @@
     }, {
       default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)(_component_f_validation_form, {
         id: _ctx.formId,
-        "before-submit": _ctx.beforeNext,
-        "before-validation": _ctx.beforeValidation,
+        "before-submit": _ctx.beforeNextWrapper,
+        "before-validation": _ctx.beforeValidationWrapper,
         "use-error-list": _ctx.useErrorList,
         class: "wizard-step-body",
         onSubmit: _ctx.onSubmit
       }, {
-        "error-message": (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.wizard-step.errorlist.title", "Oj, du har gl\xF6mt att fylla i n\xE5got. G\xE5 till:")), 1)])]),
+        "error-message": (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+          stepNumber: _ctx.stepNumber,
+          totalSteps: _ctx.totalSteps
+        })), () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.wizard-step.errorlist.title", "Oj, du har gl\xF6mt att fylla i n\xE5got. G\xE5 till:")), 1)])]),
         default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_10, [(0, import_vue.createElementVNode)("button", {
           "data-test": "submit-button",
           "data-disabled": _ctx.ignoreClick ? "true" : "false",
           type: "submit",
           class: "button button--primary button-group__item button--large"
-        }, [(0, import_vue.renderSlot)(_ctx.$slots, "next-button-text", {}, () => [_ctx.isFinalStep ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
+        }, [(0, import_vue.renderSlot)(_ctx.$slots, "next-button-text", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+          stepNumber: _ctx.stepNumber,
+          totalSteps: _ctx.totalSteps
+        })), () => [_ctx.isFinalStep ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
           key: 0
         }, [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.wizard-step.button.next.text-final", "G\xE5 vidare och granska")), 1)], 64)) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
           key: 1
