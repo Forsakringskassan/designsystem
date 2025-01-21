@@ -19,6 +19,7 @@
             </button>
         </div>
 
+        <!-- [html-validate-disable-block fkui/no-template-modal -- technical debt] -->
         <f-form-modal
             :is-open="isFormModalOpen"
             :aria-close-text="$t('fkui.crud-dataset.modal.close', 'Stäng')"
