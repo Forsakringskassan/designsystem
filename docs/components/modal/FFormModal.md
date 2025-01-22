@@ -109,7 +109,10 @@ const result = await formModal<Person>(this, PersonFormModal);
 
 // composition api
 const { formModal } = useModal();
-const result = await formModal<Person>(PersonFormModal);
+
+async function onOpen(): Promise<void> {
+    const result = await formModal<Person>(PersonFormModal);
+}
 ```
 
 Returvärdet är `Promise` som löses ut med `resolve(value)` (det objekt som ligger lagrat i `value` när modalen stängs).
