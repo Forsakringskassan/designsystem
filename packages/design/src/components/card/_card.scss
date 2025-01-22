@@ -1,5 +1,6 @@
 @use "../../core/size";
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $CARD_SELECTOR: ".card" !default;
 
@@ -10,6 +11,11 @@ $CARD_SELECTOR: ".card" !default;
     &--default {
         border-radius: var(--f-border-radius-medium);
         border: var(--f-border-width-medium) solid var(--f-border-color-card);
+    }
+
+    &--error {
+        border-radius: var(--f-border-radius-medium);
+        border: var(--f-border-width-medium) solid $card-color-border-error;
     }
 
     &__content {
@@ -47,5 +53,9 @@ $CARD_SELECTOR: ".card" !default;
                 margin-bottom: 0 !important;
             }
         }
+    }
+
+    &__error-message {
+        color: $card-color-text-error;
     }
 }

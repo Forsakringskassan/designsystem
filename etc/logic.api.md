@@ -512,7 +512,7 @@ export interface TranslationServiceInterface {
 }
 
 // @public (undocumented)
-export type ValidatableHTMLElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | HTMLFieldSetElement;
+export type ValidatableHTMLElement = HTMLDivElement | HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | HTMLFieldSetElement;
 
 // @public
 export interface ValidateEvent {
