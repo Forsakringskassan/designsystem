@@ -1,11 +1,11 @@
 import { ValidationService } from "./ValidationService";
 import {
+    type ValidatableHTMLElement,
+    type ValidationState,
     type ValidatorConfig,
     type ValidatorConfigs,
     type ValidatorOptions,
-    type ValidatableHTMLElement,
     type ValidityEvent,
-    type ValidationState,
 } from "./ValidationServiceInterface";
 import { type Validator, type ValidatorName } from "./Validator";
 import "./Validators";
@@ -1286,7 +1286,7 @@ describe("isAnyTouched", () => {
             </div>
         `;
 
-        for (const id in ["test-element", "test-element2"]) {
+        for (const id of ["test-element", "test-element2"]) {
             const element = document.getElementById(id) as HTMLInputElement;
             ValidationService.addValidatorsToElement(
                 element,

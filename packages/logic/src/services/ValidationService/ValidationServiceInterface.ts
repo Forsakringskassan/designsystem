@@ -4,6 +4,7 @@ import { type Validator, type ValidatorName } from "./Validator";
  * @public
  */
 export type ValidatableHTMLElement =
+    | HTMLDivElement
     | HTMLInputElement
     | HTMLTextAreaElement
     | HTMLSelectElement

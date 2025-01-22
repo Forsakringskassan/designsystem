@@ -3,6 +3,7 @@
 exports[`snapshots should match snapshot 1`] = `
 <div
   class="card card--default"
+  id="fkui-vue-element-0001"
 >
   <div
     class="card__header"
@@ -11,6 +12,9 @@ exports[`snapshots should match snapshot 1`] = `
     Header slot
     
   </div>
+  
+  <!--v-if-->
+  
   <div
     class="card__content"
   >
