@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 $CALENDAR_NAVBAR_SELECTOR: ".calendar-navbar" !default;
 $calendar-icon-padding: 5px;
 $calendar-icon-disabled-border-width: 1px;
@@ -9,7 +11,7 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    border-bottom: 1px solid var(--f-border-color-calendar-navbar);
+    border-bottom: var(--f-border-width-medium) solid $calendarnavbar-color-border;
     padding: 1rem;
     margin-bottom: 0.75rem;
     font-size: var(--f-font-size-h4);
@@ -28,8 +30,8 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
     }
 
     &__icon {
-        color: var(--f-icon-color-white);
-        background-color: var(--f-icon-color-primary);
+        color: $calendarnavbar-f-icon-arrow-color-content;
+        background-color: $calendarnavbar-button-color-background;
         width: var(--f-icon-size-large);
         height: var(--f-icon-size-large);
         padding: $calendar-icon-padding;
@@ -37,10 +39,10 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 
         &--disabled {
-            color: var(--f-icon-color-discrete);
-            background-color: var(--f-icon-color-white);
+            color: $calendarnavbar-f-icon-arrow-color-content-disabled;
+            background-color: $calendarnavbar-button-color-background-disabled;
             padding: $calendar-icon-disabled-padding;
-            border: $calendar-icon-disabled-border-width solid var(--f-border-color-calendar-navbar);
+            border: $calendar-icon-disabled-border-width solid $calendarnavbar-button-color-border-disabled;
             box-shadow: none;
         }
     }
