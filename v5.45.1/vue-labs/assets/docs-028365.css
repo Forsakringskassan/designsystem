@@ -2490,6 +2490,10 @@ input[type=search]:focus,
   border-radius: var(--f-border-radius-medium);
   border: var(--f-border-width-medium) solid var(--f-border-color-card);
 }
+.card--error {
+  border-radius: var(--f-border-radius-medium);
+  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-negative);
+}
 .card__content > p:last-child,
 .card__content > div:last-child {
   margin-bottom: 0;
@@ -2514,6 +2518,9 @@ input[type=search]:focus,
 }
 .card__footer > .button-group .button-group__item {
   margin-bottom: 0 !important;
+}
+.card__error-message {
+  color: var(--f-text-color-error);
 }
 
 .anchor, .file-item__file-open {

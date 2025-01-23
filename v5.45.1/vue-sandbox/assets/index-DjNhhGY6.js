@@ -9631,6 +9631,9 @@ function getElementType(element) {
   }
 }
 function isValidatableHTMLElement(element) {
+  if (element.classList.contains("card")) {
+    return true;
+  }
   return element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement || element instanceof HTMLSelectElement || element instanceof HTMLFieldSetElement;
 }
 function hasValidators(element) {
@@ -10000,10 +10003,17 @@ class ValidationServiceImpl {
         return this.hasValue(fieldsetInputElement);
       });
     }
+    if (element instanceof HTMLDivElement) {
+      return false;
+    }
     return Boolean(isRadiobuttonOrCheckbox(element) ? element.checked : element.value);
   }
   getValue(element) {
-    return element instanceof HTMLFieldSetElement || !element.value ? "" : element.value.trim();
+    if ("value" in element) {
+      return element.value.trim();
+    } else {
+      return "";
+    }
   }
   validateAll(element, validationState, validators, validatorConfigs) {
     if (validationState.serverError) {
@@ -10012,7 +10022,7 @@ class ValidationServiceImpl {
         validationMessage: validationState.serverError
       };
     }
-    if (element.disabled) {
+    if ("disabled" in element && element.disabled) {
       return {
         isValid: true,
         validationMessage: ""
@@ -10065,7 +10075,9 @@ class ValidationServiceImpl {
       detail: validityEvent
     });
     for (const affectedElement of affectedElements) {
-      affectedElement.setCustomValidity(validityEvent.validationMessage);
+      if ("setCustomValidity" in affectedElement) {
+        affectedElement.setCustomValidity(validityEvent.validationMessage);
+      }
       affectedElement.setAttribute("aria-invalid", validField.toString());
     }
     element.dispatchEvent(event);
