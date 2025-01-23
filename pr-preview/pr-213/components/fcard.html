@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../search-data-6b0cff.json"
+            href="../search-data-687c72.json"
             as="fetch"
             crossorigin
-            integrity="sha384-5PeUeVJu3N9KJ7m6O29Yifq6Kqyeu/Atg+uNvBTu+YJi5LoZbC/9QO9bOFHWzuZJ"
+            integrity="sha384-9iqta6quWCuArFExakpnJqmLcDz6ExjbrG6vuRRQUmYbRAY0Wj1Qj/eIuDiDtflZ"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/10eca9a2b14d75cf943e5d7109f309f568143413/packages/vue/src/components/FCard/FCard.vue">FCard</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0ca1457deff06f233172e161b923f0e8cef1f516/packages/vue/src/components/FCard/FCard.vue">FCard</a>
             
         </code>
          
@@ -1264,10 +1264,12 @@ Det går inte att lägga på enskilda validatorer, utan status hanteras helt man
 </code></pre>
                 </div>
             <p>Konsumenten behöver ange det element som ska fokuseras på kopplat till ett fel (<code>focus-ref</code>).
-Vanligtvis är detta en knapp för att redigera ett korts innehåll.</p>
+Vanligtvis är detta en knapp för att redigera ett korts innehåll.
+Fokus sätts vanligtvis på elementet av omkringliggande formulär vid submit, lite beroende på
+vad man satt för felhantering på formuläret (visa fellista eller fokus på första fel).</p>
 
                 <div
-                    id="example-ee3f63"
+                    id="example-6bad07"
                     class="code-preview code-preview--default"
                     
                     
@@ -1283,7 +1285,7 @@ skärmläsaranvändare om att det finns felaktiga uppgifter i kortet.
 Komponenten förser <code>footer</code>-slotten med detaljer om felet.</p>
 
                 <div
-                    id="example-e34203"
+                    id="example-2a97d7"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1302,7 +1304,7 @@ Komponenten förser <code>footer</code>-slotten med detaljer om felet.</p>
 Använd <code>error-message</code>-slotten för att definiera ett eget beteende.</p>
 
                 <div
-                    id="example-d34673"
+                    id="example-adb016"
                     class="code-preview code-preview--default"
                     
                     
@@ -1319,7 +1321,7 @@ Använd <code>error-message</code>-slotten för att definiera ett eget beteende.
             <p>Felstatus sätts manuellt av konsumenten genom att anropa metoder i <code>ValidationService</code>.</p>
 
                 <div
-                    id="example-7b6c86"
+                    id="example-3e8b57"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1338,7 +1340,7 @@ Använd <code>error-message</code>-slotten för att definiera ett eget beteende.
                 </div>
             
             <div
-                id="example-94affb"
+                id="example-49c53b"
                 class="code-preview code-preview--default"
                 
                 
@@ -1501,9 +1503,9 @@ validationMessage</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/validate-card (<a href="https://github.com/Forsakringskassan/designsystem/commits/10eca9a2b14d75cf943e5d7109f309f568143413">10eca9a</a>)<br />
+    feature/validate-card (<a href="https://github.com/Forsakringskassan/designsystem/commits/0ca1457deff06f233172e161b923f0e8cef1f516">0ca1457</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/213">PR 213</a><br />
-        2025-01-23 09:23
+        2025-01-23 09:43
 </div>
 <div class="toolbar__item">
     <form id="version">
