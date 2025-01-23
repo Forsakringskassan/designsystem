@@ -2,6 +2,7 @@
 @use "../../core/size";
 @use "../../core/config-variables";
 @use "../../core/mixins/breakpoints";
+@use "variables" as *;
 
 $DATEPICKER_FIELD_SELECTOR: ".datepicker-field" !default;
 $POPUP_SELECTOR: ".popup" !default;
@@ -14,12 +15,13 @@ $calendar-width: calc(100vw - #{$popup-spacing});
     &__button {
         background: transparent;
         border: 0;
+        border-radius: var(--f-border-radius-medium);
         flex: 0 0 auto;
         padding: 0;
         cursor: pointer;
 
         .icon {
-            color: var(--f-icon-color-primary);
+            color: $datepickerfield-f-icon-calendar-color-content-default;
             min-height: var(--f-icon-size-large);
             min-width: var(--f-icon-size-large);
             height: core.densify(var(--f-icon-size-x-large));
@@ -27,8 +29,13 @@ $calendar-width: calc(100vw - #{$popup-spacing});
             vertical-align: middle;
         }
 
+        &:hover {
+            .icon {
+                color: $datepickerfield-f-icon-calendar-color-content-hover;
+            }
+        }
         &:disabled .icon {
-            color: var(--f-icon-color-discrete);
+            color: $datepickerfield-f-icon-calendar-color-content-disabled;
         }
     }
 
@@ -36,8 +43,8 @@ $calendar-width: calc(100vw - #{$popup-spacing});
         // 16px = popup spacing (20px) - 4px
         margin-top: -16px;
         border-radius: var(--f-border-radius-medium);
-        border: var(--f-border-width-small) solid var(--f-border-color-modal);
-        background-color: var(--f-background-content);
+        border: var(--f-border-width-medium) solid $datepickerfield-popup-color-border;
+        background-color: $datepickerfield-popup-color-background;
     }
 
     &__close {
