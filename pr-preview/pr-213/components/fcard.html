@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/4b41fc813c621eda6928b5602b92f722b07a7260/packages/vue/src/components/FCard/FCard.vue">FCard</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/10eca9a2b14d75cf943e5d7109f309f568143413/packages/vue/src/components/FCard/FCard.vue">FCard</a>
             
         </code>
          
@@ -1249,13 +1249,96 @@
 <li>Gruppera inte information eller formulärskomponeter med kort.</li>
 </ul>
 <h2 id="felstatus_pa_kort"><a class="header-anchor" href="#felstatus_pa_kort">Felstatus på kort</a></h2><p>Det är möjligt att indikera om ett kort är felaktigt genom att aktivera validering (<code>v-validation</code>).
-Det går inte att lägga på enskilda validatorer, utan status hanteras helt manuellt av konsumenten.
-Indikering av status sker direkt.</p>
-<p>Konsumenten behöver ange det element som ska fokuseras på kopplat till ett fel (<code>focus-ref</code>).
+Det går inte att lägga på enskilda validatorer, utan status hanteras helt manuellt av konsumenten.</p>
+
+                <div
+                    id="example-010bcb"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-card&gt;</span>
+<span class="hljs-addition">+&lt;f-card v-validation&gt;</span>
+</code></pre>
+                </div>
+            <p>Konsumenten behöver ange det element som ska fokuseras på kopplat till ett fel (<code>focus-ref</code>).
 Vanligtvis är detta en knapp för att redigera ett korts innehåll.</p>
 
+                <div
+                    id="example-ee3f63"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-card&gt;</span>
+<span class="hljs-addition">+&lt;f-card :focus-ref=&quot;editButton&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p>När fokus hamnar på angivet <code>focus-ref</code>-element har konsumenten ansvar att informera
+skärmläsaranvändare om att det finns felaktiga uppgifter i kortet.
+Komponenten förser <code>footer</code>-slotten med detaljer om felet.</p>
+
+                <div
+                    id="example-e34203"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=static
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>=<span class="hljs-string">&quot;{ hasError, validationMessage }&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Ändra<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;hasError&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ validationMessage }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            <p>Som standard visas ett felmeddelande tillsammans med en felikon under kortets rubrik.
+Använd <code>error-message</code>-slotten för att definiera ett eget beteende.</p>
+
+                <div
+                    id="example-d34673"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">&lt;f-card&gt;
+<span class="hljs-addition">+    &lt;template #error-message=&quot;{ hasError, validationMessage }&quot;&gt;</span>
+<span class="hljs-addition">+        Egen visning av felmeddelande</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+/&lt;f-card&gt;
+</code></pre>
+                </div>
+            <p>Felstatus sätts manuellt av konsumenten genom att anropa metoder i <code>ValidationService</code>.</p>
+
+                <div
+                    id="example-7b6c86"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=static
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-comment">/* sätter ogiltig status */</span>
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(element, <span class="hljs-string">&quot;Felmeddelande&quot;</span>);
+
+<span class="hljs-comment">/* nollställer till giltig status */</span>
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">resetState</span>(element);
+
+<span class="hljs-comment">/* omvaliderar så att ändrad status återspeglas direkt */</span>
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">validateElement</span>(element);
+</code></pre>
+                </div>
+            
             <div
-                id="example-a911ab"
+                id="example-94affb"
                 class="code-preview code-preview--default"
                 
                 
@@ -1269,7 +1352,7 @@ Vanligtvis är detta en knapp för att redigera ett korts innehåll.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FCardValidationExample-2bb88d.js"></script>
+        <script defer src="./FCardValidationExample-8d7e04.js"></script>
     </div>
                 <div>
             <button
@@ -1344,8 +1427,8 @@ Vanligtvis är detta en knapp för att redigera ett korts innehåll.</p>
                         <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>
                             Ändra
                             <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;hasError&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>
-                                på kortet, det innehåller fel&lt;/span
-                            &gt;
+                                på kortet, det innehåller fel
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                         <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1418,9 +1501,9 @@ validationMessage</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/validate-card (<a href="https://github.com/Forsakringskassan/designsystem/commits/4b41fc813c621eda6928b5602b92f722b07a7260">4b41fc8</a>)<br />
+    feature/validate-card (<a href="https://github.com/Forsakringskassan/designsystem/commits/10eca9a2b14d75cf943e5d7109f309f568143413">10eca9a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/213">PR 213</a><br />
-        2025-01-23 07:30
+        2025-01-23 09:23
 </div>
 <div class="toolbar__item">
     <form id="version">

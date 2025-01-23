@@ -148,7 +148,7 @@
                       (0, import_vue6.createVNode)($setup["FIcon"], { name: "pen" }),
                       (0, import_vue6.createElementVNode)("span", null, [
                         _cache[2] || (_cache[2] = (0, import_vue6.createTextVNode)(" \xC4ndra ")),
-                        hasError ? ((0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("span", _hoisted_4, " p\xE5 kortet, det inneh\xE5ller fel")) : (0, import_vue6.createCommentVNode)("v-if", true)
+                        hasError ? ((0, import_vue6.openBlock)(), (0, import_vue6.createElementBlock)("span", _hoisted_4, " p\xE5 kortet, det inneh\xE5ller fel ")) : (0, import_vue6.createCommentVNode)("v-if", true)
                       ])
                     ],
                     512
