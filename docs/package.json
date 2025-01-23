@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "5.45.1",
+  "version": "5.46.0",
   "private": true,
   "homepage": "https://forsakringskassan.github.io/designsystem/",
   "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
@@ -14,8 +14,8 @@
     "clean": "rimraf -g *.tsbuildinfo"
   },
   "dependencies": {
-    "@fkui/icon-lib-default": "5.45.1",
-    "@fkui/vue": "5.45.1"
+    "@fkui/icon-lib-default": "5.46.0",
+    "@fkui/vue": "5.46.0"
   },
   "devDependencies": {
     "@forsakringskassan/docs-generator": "2.15.4",

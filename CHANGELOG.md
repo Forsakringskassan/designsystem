@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 5.46.0 (2025-01-23)
+
+### Features
+
+* **@fkui/design, @fkui/logic, @fkui/vue:** support validation on `FCard` (fixes SFKUI-6983) cda8ecb
+* **@fkui/vue:** expose stepNumber in slots and beforeNext in FWizardStep (refs SFKUI-6500) 2437bc1
+
+### Bug Fixes
+
+* **@fkui/vue:** switch to role grid in calendar (fixes SFKUI-6943) 87e31fd, closes #172
+
 ## 5.45.1 (2025-01-20)
 
 ### Bug Fixes
