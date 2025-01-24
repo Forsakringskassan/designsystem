@@ -190,4 +190,21 @@ $palette-color-hav-20: #dbe0ec !default;
 
     /// Deprecated since 5.32.0
     --f-tooltip-close-button-padding: initial;
+
+    /// Deprecated since 5.46.0
+    --f-background-badge-default: #{$palette-color-fk-black-15};
+    --f-background-badge-default-inverted: #{$palette-color-fk-black-5};
+    --f-border-color-badge-default: #{$palette-color-fk-black-50};
+    --f-background-badge-warning: #{$palette-color-yellow-100};
+    --f-background-badge-warning-inverted: #{$palette-color-yellow-5};
+    --f-border-color-badge-warning: #{$palette-color-yellow-100};
+    --f-background-badge-error: #{$palette-color-red-100};
+    --f-background-badge-error-inverted: #{$palette-color-red-5};
+    --f-border-color-badge-error: #{$palette-color-red-100};
+    --f-background-badge-success: #{$palette-color-green-a-85};
+    --f-background-badge-success-inverted: #{$palette-color-green-a-5};
+    --f-border-color-badge-success: #{$palette-color-green-a-85};
+    --f-background-badge-info: #{$palette-color-bluebell-100};
+    --f-background-badge-info-inverted: #{$palette-color-bluebell-5};
+    --f-border-color-badge-info: #{$palette-color-bluebell-100};
 }
