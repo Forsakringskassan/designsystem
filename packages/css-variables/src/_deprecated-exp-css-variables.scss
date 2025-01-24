@@ -207,4 +207,12 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-background-badge-info: #{$palette-color-bluebell-100};
     --f-background-badge-info-inverted: #{$palette-color-bluebell-5};
     --f-border-color-badge-info: #{$palette-color-bluebell-100};
+    --f-text-color-chip: #{$palette-color-fk-black-100};
+    --f-text-color-chip-active: #{$palette-color-white-100};
+    --f-text-color-chip-hover: #{$palette-color-fk-black-100};
+    --f-background-chip: #{$palette-color-white-100};
+    --f-background-chip-active: #{$palette-color-green-a-85};
+    --f-background-chip-hover: #{$palette-color-green-a-5};
+    --f-border-color-chip-active: #{$palette-color-green-a-85};
+    --f-border-color-chip-hover: #{$palette-color-green-a-85};
 }
