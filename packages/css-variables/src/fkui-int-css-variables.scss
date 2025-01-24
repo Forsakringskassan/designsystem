@@ -97,8 +97,6 @@ $global: true !default;
     --f-background-content: #{$palette-color-white-100}; // modal, expandable, navbar content
     --f-background-form-step: #{$palette-color-fk-black-5}; // form-step
     --f-background-input: #{$palette-color-white-100}; // input element
-    --f-background-input-disabled: #{$palette-color-fk-black-5}; // textfield, textareafield
-    --f-background-input-hover: #{$palette-color-bluebell-15}; // select-field
     --f-background-input-selected: #{$palette-color-green-a-100}; // checkbox, radiobutton
     --f-background-input-selected-disabled: #{$palette-color-green-b-15}; // checkbox, radiobutton
     --f-background-error: #{$palette-color-red-5}; // modal, messagebox
@@ -173,7 +171,6 @@ $global: true !default;
     --f-border-color-warning: #{$palette-color-yellow-100}; // message-box, modal
     --f-border-color-error: #{$palette-color-red-100}; // message-box, modal, textfield, textarea
     --f-border-color-input: #{$palette-color-fk-black-50};
-    --f-border-color-input-disabled: #{$palette-color-fk-black-50}; // disabled input field
     --f-border-color-input-inner: #{$palette-color-white-100}; // radiobutton
     --f-border-color-input-inner-selected: #{$palette-color-green-a-5}; // radiobutton
     --f-border-color-input-inner-disabled: #{$palette-color-white-100}; // radiobutton
