@@ -5708,6 +5708,9 @@
       };
     },
     computed: {
+      ariaLabel() {
+        return `${this.value.monthName} ${this.value.year}`;
+      },
       totalCols() {
         return this.hideWeekNumbers ? 7 : 8;
       },
@@ -5749,50 +5752,43 @@
       }
     }
   });
-  var _hoisted_1$O = {
+  var _hoisted_1$O = ["aria-label"];
+  var _hoisted_2$A = {
     key: 0,
     class: "calendar-month__col--week"
   };
-  var _hoisted_2$A = {
-    role: "presentation"
-  };
   var _hoisted_3$s = {
-    role: "presentation"
-  };
-  var _hoisted_4$n = {
     key: 0,
     scope: "col",
     "aria-hidden": "true",
     class: "calendar-month__header-cell"
   };
-  var _hoisted_5$i = ["title"];
-  var _hoisted_6$e = {
-    role: "presentation"
-  };
-  var _hoisted_7$d = {
+  var _hoisted_4$n = ["title"];
+  var _hoisted_5$i = {
     key: 0,
     class: "calendar-month__cell calendar-month__cell--week-number",
     "aria-hidden": "true"
   };
-  var _hoisted_8$8 = ["colspan"];
-  var _hoisted_9$5 = ["colspan"];
-  var _hoisted_10$3 = {
+  var _hoisted_6$e = ["colspan"];
+  var _hoisted_7$d = ["colspan"];
+  var _hoisted_8$8 = {
     key: 0,
     "aria-hidden": "true"
   };
-  var _hoisted_11$2 = ["colspan"];
-  var _hoisted_12$2 = {
+  var _hoisted_9$5 = ["colspan"];
+  var _hoisted_10$3 = {
     key: 1,
     "aria-hidden": "true"
   };
-  var _hoisted_13$1 = ["colspan"];
+  var _hoisted_11$2 = ["colspan"];
   function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("table", {
       class: "calendar-month__table",
-      role: "application",
+      role: "grid",
+      "aria-label": _ctx.ariaLabel,
       onFocusin: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusin && _ctx.onFocusin(...args)),
       onFocusout: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusout && _ctx.onFocusout(...args))
-    }, [(0, import_vue.createElementVNode)("colgroup", null, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_1$O)) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _cache[3] || (_cache[3] = (0, import_vue.createElementVNode)("col", {
+    }, [(0, import_vue.createElementVNode)("colgroup", null, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_2$A)) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _cache[3] || (_cache[3] = (0, import_vue.createElementVNode)("col", {
       class: "calendar-month__col--day"
     }, null, -1)), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _cache[5] || (_cache[5] = (0, import_vue.createElementVNode)("col", {
       class: "calendar-month__col--day"
@@ -5806,26 +5802,23 @@
       class: "calendar-month__col--day"
     }, null, -1)), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), _cache[15] || (_cache[15] = (0, import_vue.createElementVNode)("col", {
       class: "calendar-month__col--day"
-    }, null, -1))]), _cache[22] || (_cache[22] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("thead", _hoisted_2$A, [(0, import_vue.createElementVNode)("tr", _hoisted_3$s, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_4$n)) : (0, import_vue.createCommentVNode)("", true), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.weekdays, (weekday) => {
+    }, null, -1))]), _cache[22] || (_cache[22] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("thead", null, [(0, import_vue.createElementVNode)("tr", null, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_3$s)) : (0, import_vue.createCommentVNode)("", true), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.weekdays, (weekday) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", {
         key: weekday.name,
         scope: "col",
-        role: "presentation",
         class: "calendar-month__header-cell"
       }, [(0, import_vue.createElementVNode)("abbr", {
-        "aria-hidden": "true",
         title: weekday.name
-      }, (0, import_vue.toDisplayString)(_ctx.showShortWeekdays ? weekday.shortName : weekday.name), 9, _hoisted_5$i)]);
-    }), 128))])]), _cache[23] || (_cache[23] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("tbody", _hoisted_6$e, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.weeks, (week) => {
+      }, (0, import_vue.toDisplayString)(_ctx.showShortWeekdays ? weekday.shortName : weekday.name), 9, _hoisted_4$n)]);
+    }), 128))])]), _cache[23] || (_cache[23] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("tbody", null, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.weeks, (week) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", {
-        key: week.week,
-        role: "presentation"
-      }, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_7$d, (0, import_vue.toDisplayString)(week.week), 1)) : (0, import_vue.createCommentVNode)("", true), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), _ctx.getDayStartOffset(week.days) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", {
+        key: week.week
+      }, [!_ctx.internalHideWeekNumbers ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_5$i, (0, import_vue.toDisplayString)(week.week), 1)) : (0, import_vue.createCommentVNode)("", true), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), _ctx.getDayStartOffset(week.days) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", {
         key: 1,
         class: "calendar-month__cell",
         colspan: _ctx.getDayStartOffset(week.days),
         "aria-hidden": "true"
-      }, null, 8, _hoisted_8$8)) : (0, import_vue.createCommentVNode)("", true), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(week.days, (day) => {
+      }, null, 8, _hoisted_6$e)) : (0, import_vue.createCommentVNode)("", true), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(week.days, (day) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", {
           key: day.toString(),
           class: "calendar-month__cell",
@@ -5839,16 +5832,16 @@
         class: "calendar-month__cell",
         colspan: _ctx.getDayEndOffset(week.days),
         "aria-hidden": "true"
-      }, null, 8, _hoisted_9$5)) : (0, import_vue.createCommentVNode)("", true)]);
-    }), 128)), _cache[20] || (_cache[20] = (0, import_vue.createTextVNode)()), _ctx.weeks.length < 5 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_10$3, [(0, import_vue.createElementVNode)("td", {
+      }, null, 8, _hoisted_7$d)) : (0, import_vue.createCommentVNode)("", true)]);
+    }), 128)), _cache[20] || (_cache[20] = (0, import_vue.createTextVNode)()), _ctx.weeks.length < 5 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_8$8, [(0, import_vue.createElementVNode)("td", {
       class: "calendar-month__cell",
       colspan: _ctx.totalCols,
       "aria-hidden": "true"
-    }, null, 8, _hoisted_11$2)])) : (0, import_vue.createCommentVNode)("", true), _cache[21] || (_cache[21] = (0, import_vue.createTextVNode)()), _ctx.weeks.length < 6 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_12$2, [(0, import_vue.createElementVNode)("td", {
+    }, null, 8, _hoisted_9$5)])) : (0, import_vue.createCommentVNode)("", true), _cache[21] || (_cache[21] = (0, import_vue.createTextVNode)()), _ctx.weeks.length < 6 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_10$3, [(0, import_vue.createElementVNode)("td", {
       class: "calendar-month__cell",
       colspan: _ctx.totalCols,
       "aria-hidden": "true"
-    }, null, 8, _hoisted_13$1)])) : (0, import_vue.createCommentVNode)("", true)])], 32);
+    }, null, 8, _hoisted_11$2)])) : (0, import_vue.createCommentVNode)("", true)])], 40, _hoisted_1$O);
   }
   var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$Q]]);
   var DayStep = {
@@ -5921,6 +5914,11 @@
         this.$emit("click", date);
       },
       async onKeydownDay(date, event) {
+        if (event.code === "Enter" || event.code === "Space") {
+          event.preventDefault();
+          this.$emit("click", date);
+          return;
+        }
         if (!isDayStepKey(event)) {
           return;
         }
@@ -5968,13 +5966,13 @@
     }, {
       default: (0, import_vue.withCtx)(({
         date
-      }) => [(0, import_vue.createElementVNode)("button", {
+      }) => [(0, import_vue.createElementVNode)("div", {
         ref: date.toString(),
+        role: "gridcell",
         class: "calendar-month__button",
         "data-test": "select-day-button",
         "data-date": date.toString(),
         tabindex: _ctx.getTabindex(date),
-        type: "button",
         onClick: (0, import_vue.withModifiers)(($event) => _ctx.onClickDay(date), ["stop", "prevent"]),
         onKeydown: ($event) => _ctx.onKeydownDay(date, $event)
       }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {
@@ -6182,9 +6180,7 @@
       }
     };
   }
-  var _hoisted_1$K = {
-    class: "card card--default"
-  };
+  var _hoisted_1$K = ["id"];
   var _hoisted_2$y = {
     key: 0,
     class: "card__header"
@@ -6198,16 +6194,91 @@
   };
   var _sfc_main$_ = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "FCard",
+    props: {
+      /**
+       * Element to focus on when card is invalid. Set when using validation.
+       */
+      focusRef: {
+        type: Object,
+        required: false,
+        default: null
+      },
+      /**
+       * Optional id (generated by default).
+       */
+      id: {
+        type: String,
+        required: false,
+        default: () => import_logic.ElementIdService.generateElementId()
+      }
+    },
     setup(__props) {
       const {
         hasSlot: hasSlot2
       } = useSlotUtils();
+      const validationMessage = (0, import_vue.ref)("");
+      const hasError = (0, import_vue.ref)(false);
+      const isMounted = (0, import_vue.ref)(false);
       const hasHeaderSlot = (0, import_vue.computed)(() => hasSlot2("header"));
       const hasFooterSlot = (0, import_vue.computed)(() => hasSlot2("footer"));
+      const cardClass = (0, import_vue.computed)(() => `card card--${hasError.value ? "error" : "default"}`);
+      const props = __props;
+      (0, import_vue.onMounted)(() => isMounted.value = true);
+      async function onValidity({
+        detail
+      }) {
+        if (!isMounted.value) {
+          return;
+        }
+        if (!props.focusRef) {
+          throw new Error("Element to focus on when card is invalid (`focusRef`) is required when using card validation.");
+        }
+        const focusElementId = props.focusRef.id;
+        if (!focusElementId) {
+          throw new Error("An id must be set on the card's focus element.");
+        }
+        hasError.value = !detail.isValid;
+        validationMessage.value = detail.validationMessage;
+        dispatchComponentValidityEvent(props.focusRef, {
+          ...detail,
+          errorMessage: validationMessage.value,
+          focusElementId
+        });
+      }
       return (_ctx, _cache) => {
-        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$K, [hasHeaderSlot.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$y, [(0, import_vue.renderSlot)(_ctx.$slots, "header", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
+          id: __props.id,
+          class: (0, import_vue.normalizeClass)(cardClass.value),
+          onValidity
+        }, [hasHeaderSlot.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$y, [(0, import_vue.renderSlot)(_ctx.$slots, "header", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
           headingSlotClass: "card__header-label"
-        })))])) : (0, import_vue.createCommentVNode)("", true), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_3$r, [(0, import_vue.renderSlot)(_ctx.$slots, "default")]), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), hasFooterSlot.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_4$m, [(0, import_vue.renderSlot)(_ctx.$slots, "footer")])) : (0, import_vue.createCommentVNode)("", true)]);
+        })))])) : (0, import_vue.createCommentVNode)("", true), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+          hasError: hasError.value,
+          validationMessage: validationMessage.value
+        })), () => [hasError.value ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.unref)(IFlex), {
+          key: 0,
+          gap: "1x",
+          class: "card__error-message"
+        }, {
+          default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)((0, import_vue.unref)(IFlexItem), {
+            shrink: "",
+            align: "center"
+          }, {
+            default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)((0, import_vue.unref)(FIcon), {
+              name: "error"
+            })]),
+            _: 1
+          }), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)((0, import_vue.unref)(IFlexItem), {
+            grow: ""
+          }, {
+            default: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(validationMessage.value), 1)]),
+            _: 1
+          })]),
+          _: 1
+        })) : (0, import_vue.createCommentVNode)("", true)]), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_3$r, [(0, import_vue.renderSlot)(_ctx.$slots, "default")]), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), hasFooterSlot.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_4$m, [(0, import_vue.renderSlot)(_ctx.$slots, "footer", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+          hasError: hasError.value,
+          validationMessage: validationMessage.value
+        })))])) : (0, import_vue.createCommentVNode)("", true)], 42, _hoisted_1$K);
       };
     }
   });

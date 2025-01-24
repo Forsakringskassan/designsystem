@@ -6,7 +6,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../logic/lib/esm/index.js
+  // packages/logic/lib/esm/index.js
   var esm_exports = {};
   __export(esm_exports, {
     DATE_REGEXP_WITH_DASH: () => DATE_REGEXP_WITH_DASH,
@@ -2334,6 +2334,9 @@ Caused by: ${cause.stack}`;
     }
   }
   function isValidatableHTMLElement(element) {
+    if (element.classList.contains("card")) {
+      return true;
+    }
     return element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement || element instanceof HTMLSelectElement || element instanceof HTMLFieldSetElement;
   }
   function isFieldset(element) {
@@ -2706,10 +2709,17 @@ Caused by: ${cause.stack}`;
           return this.hasValue(fieldsetInputElement);
         });
       }
+      if (element instanceof HTMLDivElement) {
+        return false;
+      }
       return Boolean(isRadiobuttonOrCheckbox(element) ? element.checked : element.value);
     }
     getValue(element) {
-      return element instanceof HTMLFieldSetElement || !element.value ? "" : element.value.trim();
+      if ("value" in element) {
+        return element.value.trim();
+      } else {
+        return "";
+      }
     }
     validateAll(element, validationState, validators, validatorConfigs) {
       if (validationState.serverError) {
@@ -2718,7 +2728,7 @@ Caused by: ${cause.stack}`;
           validationMessage: validationState.serverError
         };
       }
-      if (element.disabled) {
+      if ("disabled" in element && element.disabled) {
         return {
           isValid: true,
           validationMessage: ""
@@ -2771,7 +2781,9 @@ Caused by: ${cause.stack}`;
         detail: validityEvent
       });
       for (const affectedElement of affectedElements) {
-        affectedElement.setCustomValidity(validityEvent.validationMessage);
+        if ("setCustomValidity" in affectedElement) {
+          affectedElement.setCustomValidity(validityEvent.validationMessage);
+        }
         affectedElement.setAttribute("aria-invalid", validField.toString());
       }
       element.dispatchEvent(event);
