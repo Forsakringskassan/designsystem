@@ -87,5 +87,20 @@
     "--f-button-tertiary-padding",
     "--f-button-discrete-padding",
     "--f-button-discrete-black-padding",
-    "--f-button-discrete-table-column-action-padding"
+    "--f-button-discrete-table-column-action-padding",
+    "--f-background-badge-default",
+    "--f-background-badge-default-inverted",
+    "--f-border-color-badge-default",
+    "--f-background-badge-warning",
+    "--f-background-badge-warning-inverted",
+    "--f-border-color-badge-warning",
+    "--f-background-badge-error",
+    "--f-background-badge-error-inverted",
+    "--f-border-color-badge-error",
+    "--f-background-badge-success",
+    "--f-background-badge-success-inverted",
+    "--f-border-color-badge-success",
+    "--f-background-badge-info",
+    "--f-background-badge-info-inverted",
+    "--f-border-color-badge-info"
 ]
