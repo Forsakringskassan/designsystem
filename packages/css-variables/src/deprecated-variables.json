@@ -102,5 +102,16 @@
     "--f-border-color-badge-success",
     "--f-background-badge-info",
     "--f-background-badge-info-inverted",
-    "--f-border-color-badge-info"
+    "--f-border-color-badge-info",
+    "--f-text-color-chip",
+    "--f-text-color-chip-active",
+    "--f-text-color-chip-hover",
+    "--f-background-chip",
+    "--f-background-chip-active",
+    "--f-background-chip-hover",
+    "--f-border-color-chip-active",
+    "--f-border-color-chip-hover",
+    "--f-background-input-disabled",
+    "--f-background-input-hover",
+    "--f-border-color-input-disabled"
 ]

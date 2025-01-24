@@ -36,9 +36,6 @@ $global: true !default;
     --f-text-color-navbar: #{$palette-color-white-100}; // navbar
     --f-text-color-navbar-active: #{$palette-color-white-100}; // navbar
     --f-text-color-heading-expandable-panel: #{$palette-color-white-100};
-    --f-text-color-chip: #{$palette-color-fk-black-100}; // chip
-    --f-text-color-chip-active: #{$palette-color-white-100}; // chip
-    --f-text-color-chip-hover: #{$palette-color-fk-black-100}; // chip
     --f-text-color-wizard-step-done: #{$palette-color-green-a-85}; // wizard-step
 
     --f-text-color-button-disabled: #{$palette-color-fk-black-50};
@@ -123,9 +120,6 @@ $global: true !default;
     --f-background-navbar: #{$palette-color-green-a-100};
     --f-background-navbar-hover: #{$palette-color-green-b-100};
     --f-background-code: #{$palette-color-fk-black-5};
-    --f-background-chip: #{$palette-color-white-100}; // chip
-    --f-background-chip-active: #{$palette-color-green-a-85}; // chip
-    --f-background-chip-hover: #{$palette-color-green-a-5}; // chip
     --f-background-wizard-step-line: #{$palette-color-fk-black-70}; // wizard-step
 
     --f-background-button-standard: #{$palette-color-bluebell-5};
@@ -204,8 +198,6 @@ $global: true !default;
     --f-border-color-separator-contextmenu: #{$palette-color-fk-black-50};
     --f-border-color-navbar-active: #{$palette-color-white-100};
     --f-border-color-navbar-hover: #{$palette-color-white-100};
-    --f-border-color-chip-active: #{$palette-color-green-a-85}; // chip
-    --f-border-color-chip-hover: #{$palette-color-green-a-85}; // chip
     --f-border-color-wizard-step-line: #{$palette-color-fk-black-70}; // wizard-step
     --f-border-color-link: #{$palette-color-bluebell-100};
     --f-border-color-link-hover: #{$palette-color-fk-black-50};
