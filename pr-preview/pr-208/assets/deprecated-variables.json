@@ -87,5 +87,8 @@
     "--f-button-tertiary-padding",
     "--f-button-discrete-padding",
     "--f-button-discrete-black-padding",
-    "--f-button-discrete-table-column-action-padding"
+    "--f-button-discrete-table-column-action-padding",
+    "--f-icon-color-warning",
+    "--f-background-info",
+    "--f-background-warning"
 ]

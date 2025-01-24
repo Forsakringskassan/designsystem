@@ -1,5 +1,5 @@
 :root {
-  --f-css-variables-version: "5.45.1";
+  --f-css-variables-version: "5.46.0";
   --f-backdrop-modal: rgba(0, 0, 0, 0.75);
   --f-color-backdrop: rgba(0, 0, 0, 0.75);
   --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -87,6 +87,9 @@
   --f-button-discrete-black-padding: initial;
   --f-button-discrete-table-column-action-padding: 0.571rem;
   --f-tooltip-close-button-padding: initial;
+  --f-icon-color-warning: #ffbe10;
+  --f-background-info: #f5f6fa;
+  --f-background-warning: #fffcf3;
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff;
@@ -236,7 +239,6 @@
   --f-icon-color-primary: #4a52b6;
   --f-icon-color-discrete: #5f6165;
   --f-icon-color-success: #35805b;
-  --f-icon-color-warning: #ffbe10;
   --f-icon-color-error: #ca1515;
   --f-icon-color-input: #8d8e91;
   --f-icon-color-notice: #d34503;
@@ -258,8 +260,6 @@
   --f-background-input-selected: #4a52b6;
   --f-background-input-selected-disabled: #8d8e91;
   --f-background-error: #fcf3f3;
-  --f-background-info: #f5f6fa;
-  --f-background-warning: #fffcf3;
   --f-background-success: #f3f8f5;
   --f-background-overlay: rgba(0, 0, 0, 0.75);
   --f-background-progress: #ddddde;
