@@ -1,13 +1,13 @@
 import { type DefineComponent, defineComponent } from "vue";
-import { FRadioGroup, FRadioGroupField, FTooltip } from "../components";
+import { FFieldset, FRadioField, FTooltip } from "../components";
 import { FRadioGroupPageObject } from "./FRadioGroup.pageobject";
 
 function createComponent(template: string): DefineComponent {
     return defineComponent({
         template,
         components: {
-            FRadioGroup,
-            FRadioGroupField,
+            FFieldset,
+            FRadioField,
             FTooltip,
         },
         data() {
@@ -29,25 +29,21 @@ describe("FRadioGroupPageObject", () => {
 
     describe("Without tooltip", () => {
         const template = /* HTML */ `
-            <f-radio-group name="radio-name">
+            <f-fieldset name="radio-name">
                 <template #label> Label text </template>
                 <template #description="{ descriptionClass }">
                     <span :class="descriptionClass"> Description text </span>
                 </template>
-                <f-radio-group-field v-model="radioModel" :value="true">
+                <f-radio-field v-model="radioModel" :value="true">
                     Yes
-                </f-radio-group-field>
-                <f-radio-group-field v-model="radioModel" :value="false">
+                </f-radio-field>
+                <f-radio-field v-model="radioModel" :value="false">
                     No
-                </f-radio-group-field>
-                <f-radio-group-field
-                    v-model="radioModel"
-                    :value="true"
-                    disabled
-                >
+                </f-radio-field>
+                <f-radio-field v-model="radioModel" :value="true" disabled>
                     Maybe
-                </f-radio-group-field>
-            </f-radio-group>
+                </f-radio-field>
+            </f-fieldset>
         `;
 
         beforeEach(() => {
@@ -94,7 +90,7 @@ describe("FRadioGroupPageObject", () => {
 
     describe("With tooltip", () => {
         const template = /* HTML */ `
-            <f-radio-group name="radio-name">
+            <f-fieldset name="radio-name">
                 <template #label> Label text </template>
                 <template #description="{ descriptionClass }">
                     <span :class="descriptionClass"> Description text </span>
@@ -105,20 +101,16 @@ describe("FRadioGroupPageObject", () => {
                         <template #body> Body </template>
                     </f-tooltip>
                 </template>
-                <f-radio-group-field v-model="radioModel" :value="true">
+                <f-radio-field v-model="radioModel" :value="true">
                     Yes
-                </f-radio-group-field>
-                <f-radio-group-field v-model="radioModel" :value="false">
+                </f-radio-field>
+                <f-radio-field v-model="radioModel" :value="false">
                     No
-                </f-radio-group-field>
-                <f-radio-group-field
-                    v-model="radioModel"
-                    :value="true"
-                    disabled
-                >
+                </f-radio-field>
+                <f-radio-field v-model="radioModel" :value="true" disabled>
                     Maybe
-                </f-radio-group-field>
-            </f-radio-group>
+                </f-radio-field>
+            </f-fieldset>
         `;
 
         beforeEach(() => {

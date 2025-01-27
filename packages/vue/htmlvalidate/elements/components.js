@@ -1040,40 +1040,6 @@ module.exports = defineMetadata({
         requiredAncestors: ["f-crud-dataset"],
     },
 
-    "f-radio-group": {
-        inherit: "f-fieldset",
-        attributes: {
-            "is-horizontal": {
-                boolean: true,
-            },
-        },
-        deprecated: {
-            message:
-                "<f-radio-group> is deprecated: use <f-fieldset> instead. See migration guide: https://forsakringskassan.github.io/latest/guide/migration/migrating-to-fieldset.html",
-            source: "@fkui/vue",
-        },
-    },
-
-    "f-radio-group#default": {
-        inherit: "f-fieldset#default",
-    },
-
-    "f-radio-group#label": {
-        inherit: "f-fieldset#label",
-    },
-
-    "f-radio-group#tooltip": {
-        inherit: "f-fieldset#tooltip",
-    },
-
-    "f-radio-group#description": {
-        inherit: "f-fieldset#description",
-    },
-
-    "f-radio-group#error-message": {
-        inherit: "f-fieldset#error-message",
-    },
-
     "f-radio-field": {
         flow: true,
         phrasing: true,
@@ -1086,19 +1052,6 @@ module.exports = defineMetadata({
     },
 
     "f-radio-field#default": {
-        inherit: "label",
-    },
-
-    "f-radio-group-field": {
-        inherit: "f-radio-field",
-        deprecated: {
-            message:
-                "<f-radio-group-field> is deprecated: rename to <f-radio-field>. See migration guide: https://forsakringskassan.github.io/latest/guide/migration/migrating-to-fieldset.html",
-            source: "@fkui/vue",
-        },
-    },
-
-    "f-radio-group-field#default": {
         inherit: "label",
     },
 
