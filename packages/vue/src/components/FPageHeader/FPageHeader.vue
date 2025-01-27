@@ -59,27 +59,12 @@ export default defineComponent({
          * When set to a non-empty string thethe skiplink feature is enabled.
          * The string is the id of the element to move focus to.
          *
-         * When set to `true` the deprecated `skipLinkHref` prop is used to
-         * set the element id to move focus to.
-         *
-         * When set to `false` or empty string the skiplink feature is disabled.
-         *
-         * Using a boolean is deprecated. Leave unset or a non-empty string.
+         * When set to empty string (default) the skiplink feature is disabled.
          */
         skipLink: {
-            type: [String, Boolean] as PropType<string | boolean>,
+            type: String as PropType<string>,
             required: false,
             default: "",
-        },
-        /**
-         * Target for skiplink.
-         *
-         * @deprecated Use `skipLink` prop with a non-empty string instead.
-         */
-        skipLinkHref: {
-            type: String,
-            required: false,
-            default: "#applicationlayout-main-content",
         },
         /**
          * HTML element type for header.
@@ -136,11 +121,9 @@ export default defineComponent({
             return null;
         },
         skipLinkAnchor(): string | null {
-            const { skipLink, skipLinkHref } = this;
-            if (skipLink === false || skipLink === "") {
+            const { skipLink } = this;
+            if (skipLink === "") {
                 return null;
-            } else if (skipLink === true) {
-                return skipLinkHref;
             } else {
                 return `#${skipLink}`;
             }
