@@ -1,0 +1,5 @@
+---
+title: Version 6 migreringsguide
+name: migrating-to-v6
+layout: article
+---
