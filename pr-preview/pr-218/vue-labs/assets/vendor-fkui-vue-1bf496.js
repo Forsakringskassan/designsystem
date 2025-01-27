@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -9614,11 +9614,18 @@
       };
     },
     computed: {
-      confirmButtonText() {
-        return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-      },
-      cancelButtonText() {
-        return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+      formModalButtons() {
+        const confirmButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+        const cancelButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+        return [{
+          label: confirmButtonText,
+          event: "confirm",
+          type: "primary"
+        }, {
+          label: cancelButtonText,
+          event: "dismiss",
+          type: "secondary"
+        }];
       },
       confirmDeleteButtons() {
         return [{
@@ -9746,7 +9753,7 @@
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_form_modal = (0, import_vue.resolveComponent)("f-form-modal");
     const _component_f_confirm_modal = (0, import_vue.resolveComponent)("f-confirm-modal");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$y, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), _ctx.hasAddSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$q, [(0, import_vue.createElementVNode)("button", {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$y, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), _ctx.hasAddSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$q, [(0, import_vue.createElementVNode)("button", {
       "data-test": "f-crud-dataset-add-button",
       type: "button",
       class: "button button--tertiary crud-dataset__add-button",
@@ -9754,7 +9761,7 @@
     }, [(0, import_vue.createVNode)(_component_f_icon, {
       class: "button__icon",
       name: "plus"
-    }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_form_modal, {
+    }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_form_modal, {
       "is-open": _ctx.isFormModalOpen,
       "aria-close-text": _ctx.$t("fkui.crud-dataset.modal.close", "St\xE4ng"),
       "use-error-list": false,
@@ -9775,10 +9782,8 @@
       }, {
         item: _ctx.item
       }))) : (0, import_vue.createCommentVNode)("", true)]),
-      "submit-button-text": (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.confirmButtonText), 1)]),
-      "cancel-button-text": (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.cancelButtonText), 1)]),
       _: 3
-    }, 8, ["is-open", "aria-close-text", "before-submit", "before-validation", "on-cancel", "onClose", "onCancel", "onSubmit"]), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_confirm_modal, {
+    }, 8, ["is-open", "aria-close-text", "before-submit", "before-validation", "on-cancel", "onClose", "onCancel", "onSubmit"]), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_confirm_modal, {
       "is-open": _ctx.isConfirmModalOpen,
       buttons: _ctx.confirmDeleteButtons,
       onConfirm: _ctx.onDeleteConfirm,

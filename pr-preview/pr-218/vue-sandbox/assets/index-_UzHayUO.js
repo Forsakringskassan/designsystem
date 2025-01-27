@@ -17513,11 +17513,18 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
     };
   },
   computed: {
-    confirmButtonText() {
-      return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-    },
-    cancelButtonText() {
-      return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+    formModalButtons() {
+      const confirmButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+      const cancelButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+      return [{
+        label: confirmButtonText,
+        event: "confirm",
+        type: "primary"
+      }, {
+        label: cancelButtonText,
+        event: "dismiss",
+        type: "secondary"
+      }];
     },
     confirmDeleteButtons() {
       return [{
