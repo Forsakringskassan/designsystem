@@ -62,8 +62,6 @@ Ersätt `FCheckboxGroupField` med `FCheckboxField`.
 +<f-checkbox-field>
 ```
 
-Se {@link FCheckboxGroupDeprecated Kryssruta (deprekerad)} för tidigare API.
-
 ## Komplett exempel
 
 ```diff

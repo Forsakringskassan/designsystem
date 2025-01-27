@@ -1,11 +1,7 @@
 export { FBadge } from "./FBadge";
 export { FCalendar, FCalendarDay } from "./FCalendar";
 export { FCard } from "./FCard";
-export {
-    FCheckboxField,
-    FCheckboxGroup,
-    FCheckboxGroupField,
-} from "./FCheckboxField";
+export { FCheckboxField } from "./FCheckboxField";
 export {
     type ContextMenuItem,
     type ContextMenuSeparatorItem,

@@ -954,35 +954,6 @@ module.exports = defineMetadata({
         inherit: "f-label#error-message",
     },
 
-    "f-checkbox-group": {
-        inherit: "f-fieldset",
-        deprecated: {
-            message:
-                "<f-checkbox-group> is deprecated: use <f-fieldset> instead. See migration guide: https://forsakringskassan.github.io/latest/guide/migration/migrating-to-fieldset.html",
-            source: "@fkui/vue",
-        },
-    },
-
-    "f-checkbox-group#default": {
-        inherit: "f-fieldset#default",
-    },
-
-    "f-checkbox-group#label": {
-        inherit: "f-fieldset#label",
-    },
-
-    "f-checkbox-group#tooltip": {
-        inherit: "f-fieldset#tooltip",
-    },
-
-    "f-checkbox-group#description": {
-        inherit: "f-fieldset#description",
-    },
-
-    "f-checkbox-group#error-message": {
-        inherit: "f-fieldset#error-message",
-    },
-
     "f-checkbox-field": {
         flow: true,
         phrasing: true,
@@ -995,19 +966,6 @@ module.exports = defineMetadata({
     },
 
     "f-checkbox-field#default": {
-        inherit: "label",
-    },
-
-    "f-checkbox-group-field": {
-        inherit: "f-checkbox-field",
-        deprecated: {
-            message:
-                "<f-checkbox-group-field> is deprecated: rename to <f-checkbox-field>. See migration guide: https://forsakringskassan.github.io/latest/guide/migration/migrating-to-fieldset.html",
-            source: "@fkui/vue",
-        },
-    },
-
-    "f-checkbox-group-field#default": {
         inherit: "label",
     },
 
