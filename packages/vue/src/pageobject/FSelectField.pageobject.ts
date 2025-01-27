@@ -48,6 +48,13 @@ export class FSelectFieldPageObject implements BasePageObject {
             .then(() => listItem);
     }
 
+    /**
+     * Get the currently selected `<option>` element.
+     */
+    public selectedOption(): Cypress.Chainable<JQuery<HTMLOptionElement>> {
+        return cy.get<HTMLOptionElement>(`${this.selector} option:selected`);
+    }
+
     public selectedValue(): Cypress.Chainable<string> {
         return this.dropdown().then((el) => {
             return el.get(0).value;
