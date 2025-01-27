@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-1da008.json"
+            href="../../search-data-2c8401.json"
             as="fetch"
             crossorigin
-            integrity="sha384-EfQUMCIDOYQ6ebzIh0Yw7iOnwyQJz3M6+BnJo5je3GlqJwIc3m+oSZvqLNH40JKF"
+            integrity="sha384-sQnJv80Kmws9z9cXc4N9uFhM85xB/bEwRWXzdLvmPzyp0uhkvoo0ZX5HZkW5WV3r"
             id="search-data"
         />
     </head>
@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-180ddb.js"
+                    src="../../assets/vendor-fkui-vue-5dc29c.js"
                     crossorigin
-                    integrity="sha384-P07D20yTvLV+IbdN2ZmcoDiK//S+IwF0ZNOUhd6EBnCp5/4cyQc9eiHFVMOJk4/Q"
+                    integrity="sha384-RsOuEH9gqXz8mGzueJ3YYl2r4r0whOSvvQ95vASZIvzQTGIWMslzjBp3XqV+H90s"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -575,6 +575,8 @@
                             <ul>
                                 
                                 <li><a href="#fformmodal_slots">FFormModal slots</a></li>
+                                
+                                <li><a href="#gettextfromscopedslot">`getTextFromScopedSlot`</a></li>
                                 
                             </ul>
                         </details>
@@ -621,7 +623,27 @@
                 </div>
             <p>Om du använder <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal(..)</code></a> (rekommenderat) för att anropa modalen behövs inga ändringar.</p>
 <p>Om du använder template-syntax för att anropa <code>FFormModal</code> direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.</p>
+<h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
+                <div
+                    id="example-0d510b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const textContent = getTextFromScopedSlot(slot);</span>
+<span class="hljs-addition">+const textContent = renderSlotText(slot);</span>
+</code></pre>
+                </div>
+            
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p>Tänk på att <code>renderSlotText(..)</code> returnerar <code>null</code> om slotten inte finns eller är tom till skillnad från <code>getTextFromScopedSlot(..)</code> som returnerar en tom sträng <code>&quot;&quot;</code> istället.</p>
+
+            </div>
+        
 
                     </div>
                 </main>
@@ -642,9 +664,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/20a0154fd1990c41f85fd3e608f2221605446706">20a0154</a>)<br />
+    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbd4b8fa82ad97d0e0003f2fb15b5c12fd9af0da">fbd4b8f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/218">PR 218</a><br />
-        2025-01-27 11:59
+        2025-01-27 12:34
 </div>
 <div class="toolbar__item">
     <form id="version">
