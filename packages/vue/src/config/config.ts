@@ -10,8 +10,6 @@ let production = true;
 export const config: FKUIConfig = {
     buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
     teleportTarget: document.body,
-    modalTarget: null,
-    popupTarget: null,
 
     get popupContainer(): HTMLElement {
         if (typeof popupContainer === "string") {

@@ -18,6 +18,7 @@ Följande deprekerade komponenter har tagits bort:
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
 - `getTextFromScopedSlot`: funktionen är borttagen.
+- Konfiguration: `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna.
 
 För Cypress pageobjekt:
 
@@ -102,6 +103,18 @@ Den deprekerade funktionen `getTextFromScopedSlot(..)` har tagits bort och är e
 Tänk på att `renderSlotText(..)` returnerar `null` om slotten inte finns eller är tom till skillnad från `getTextFromScopedSlot(..)` som returnerar en tom sträng `""` istället.
 
 :::
+
+## `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget`
+
+De deprekerade egenskaperna `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna och ersatta med den kombinerade `FKUIConfig.teleportTarget`.
+
+```diff
+ import { config } from "@fkui/vue";
+
+-config.modalTarget = "my > selector";
+-config.popupTarget = "my > selector";
++config.teleportTarget = "my > selector";
+```
 
 ## Pageobjects
 

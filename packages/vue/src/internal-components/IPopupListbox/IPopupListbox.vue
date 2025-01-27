@@ -21,7 +21,7 @@ const contentRef = useTemplateRef("content");
 
 const teleportDisabled = false;
 const popupClasses = ["popup", "popup--overlay"];
-const teleportTarget = computed(() => config.popupTarget ?? config.teleportTarget);
+const teleportTarget = computed(() => config.teleportTarget);
 let guessedItemHeight: number | undefined = undefined;
 let verticalSpacing: number | undefined = undefined;
 
