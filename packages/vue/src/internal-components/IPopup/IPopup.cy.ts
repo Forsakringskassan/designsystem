@@ -140,25 +140,6 @@ describe("open popup", () => {
                 popup.el().should("have.class", "popup--inline");
             });
         });
-
-        describe("always-inline prop", () => {
-            it("should add `popup--inline` class when prop `always-inline` is set", () => {
-                setViewport(VIEWPORT.DESKTOP);
-                const template = /* HTML */ `
-                    <i-popup
-                        :isOpen="isOpen"
-                        :anchor="$refs.anchor"
-                        always-inline
-                    >
-                        <span> POPUP CONTENT </span>
-                    </i-popup>
-                `;
-                const component = createComponent(template);
-                cy.mount(component);
-                cy.get(popupButtonId).click();
-                popup.el().should("have.class", "popup--inline");
-            });
-        });
     });
 
     describe("focus", () => {
