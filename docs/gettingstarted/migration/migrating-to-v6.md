@@ -23,6 +23,10 @@ Följande deprekerade komponenter har tagits bort:
 För Cypress pageobjekt:
 
 - `trimmedText()` metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
+- `FMessageBoxPageObject.title()` och `FMessageBoxPageObject.body()` metoderna är borttagna.
+- `FLoaderPageobject.loader()` metoden är borttagen.
+- `FNavigationMenuPageobject.menu()` metoden är borttagen.
+- `FTooltipPageObject.content()` metoden är borttagen.
 
 Följande deprekerade validatorer har tagits bort:
 
@@ -136,6 +140,67 @@ Specifikt, för varje pageobjekt kan `.trimmedText().should(..)` ersättas med:
 - För `FLabelPageObject` ersätt med `.el().should(..)`
 - För `FRadioFieldPageObject` ersätt med `.label().should(..)`.
 - För `FSelectFieldPageObject` ersätt med `.selectedOption().should(..)`.
+
+### `FLoaderPageobject.loader()` metoden
+
+Den deprekerade metoden `FLoaderPageobject.loader()` är borttagen.
+Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda `.el()`.
+
+```diff
+-const loader = new FLoaderPageObject("#parent-element");
+-loader.loader().should("be.visible");
++const loader = new FLoaderPageObject("#loader-element");
++loader.el().should("be.visible");
+```
+
+### `FMessageBoxPageObject`
+
+De deprekerade metoderna `FMessageBoxPageObject.title()` och `FMessageBoxPageObject.body()` är borttagna.
+Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda `.content()` för att hämta ut hela innehållet i slotten eller använda en egen selector.
+
+```diff
+-messagebox.title().should("have.text", "..");
++messagebox.content().should("contain.text", "..");
+```
+
+### `FNavigationMenuPageobject.menu()` metoden
+
+Den deprekerade metoden `FNavigationMenuPageobject.menu()` är borttagen och ersatt med direkta metoder på `FNavigationMenuPageobject`.
+
+```diff
+-nav.menu().item(0).click();
++nav.item(0).click();
+```
+
+### `FTooltipPageObject.content()` methoden
+
+Den deprekerade metoden `FTooltipPageObject.content()` har tagits bort och är ersatt med direkta metoder på `FTooltipPageObject`.
+
+```diff
+-tooltip.content().closeButtonTop().click();
++tooltip.closeButton().click();
+```
+
+```diff
+-tooltip.content().closeButtonBottom().click();
++tooltip.closeButton().click();
+```
+
+```diff
+-tooltip.content().heading().should("have.text", "Lorem ipsum");
++tooltip.heading().should("have.text", "Lorem ipsum");
+```
+
+```diff
+-tooltip.content().brodtext().should("have.text", "Lorem ipsum");
++tooltip.body().should("have.text", "Lorem ipsum");
+```
+
+::: warning Notera
+
+Både `closeButtonBottom()` och `closeButtonTop()` är ersatt med `closeButton()` då det inte längre finns två separata knappar.
+
+:::
 
 ## ValidationService
 

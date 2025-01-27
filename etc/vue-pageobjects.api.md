@@ -421,8 +421,6 @@ export class FLoaderPageObject implements BasePageObject {
     constructor(selector?: string);
     // (undocumented)
     el(): DefaultCypressChainable;
-    // @deprecated
-    loader(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
     // (undocumented)
@@ -434,8 +432,6 @@ export class FLoaderPageObject implements BasePageObject {
 // @public (undocumented)
 export class FMessageBoxPageObject implements BasePageObject {
     constructor(selector: string);
-    // @deprecated (undocumented)
-    body(): DefaultCypressChainable;
     // (undocumented)
     content(): DefaultCypressChainable;
     // (undocumented)
@@ -446,8 +442,6 @@ export class FMessageBoxPageObject implements BasePageObject {
     icon(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    // @deprecated (undocumented)
-    title(): DefaultCypressChainable;
     // (undocumented)
     typeOfMessage(): Cypress.Chainable<string>;
 }
@@ -481,8 +475,6 @@ export class FNavigationMenuPageobject implements BasePageObject {
     item(index: number): DefaultCypressChainable;
     itemLink(index: number): DefaultCypressChainable;
     items(): DefaultCypressChainable;
-    // @deprecated
-    menu(): IMenuPageObject;
     overflowItems(): DefaultCypressChainable;
     popupItem(): DefaultCypressChainable;
     popupMenu(): IPopupMenuPageObject;
@@ -705,13 +697,6 @@ export class FTooltipPageObject implements BasePageObject {
     body(): DefaultCypressChainable;
     // (undocumented)
     closeButton(): DefaultCypressChainable;
-    // @deprecated (undocumented)
-    content(): {
-        closeButtonTop: () => DefaultCypressChainable;
-        heading: () => DefaultCypressChainable;
-        brodtext: () => DefaultCypressChainable;
-        closeButtonBottom: () => DefaultCypressChainable;
-    };
     // (undocumented)
     el(): DefaultCypressChainable;
     // (undocumented)
@@ -793,23 +778,6 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     selector: string;
     // (undocumented)
     text(): DefaultCypressChainable;
-}
-
-// @public @deprecated
-export class IMenuPageObject implements BasePageObject {
-    constructor(selector?: string);
-    // (undocumented)
-    el(): DefaultCypressChainable;
-    // @deprecated
-    getItemLink(index: number): DefaultCypressChainable;
-    // @deprecated
-    getSelectedItem(): DefaultCypressChainable;
-    // @deprecated
-    item(index: number): DefaultCypressChainable;
-    // @deprecated
-    items(): DefaultCypressChainable;
-    // (undocumented)
-    selector: string;
 }
 
 // @public (undocumented)

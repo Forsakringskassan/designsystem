@@ -17,16 +17,6 @@ export class FLoaderPageObject implements BasePageObject {
         return cy.get(this.selector);
     }
 
-    /**
-     * Get loader root.
-     * Only applicable if selector is a parent of loader.
-     *
-     * @deprecated Use a direct selector and `el()` instead.
-     */
-    public loader(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .loader`);
-    }
-
     public wrapper(): DefaultCypressChainable {
         return cy.get(`${this.selector} .loader__wrapper`);
     }

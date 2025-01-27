@@ -128,36 +128,3 @@ describe("unattached", () => {
         pageobject.closeButton().should("exist");
     });
 });
-
-describe("deprecated methods", () => {
-    beforeEach(() => {
-        cy.mount(FTooltip, {
-            props: {
-                modelValue: true,
-                screenReaderText: "Lorem ipsum dolor sit amet",
-            },
-            slots: {
-                header: "Header slot",
-                body: "Body slot",
-            },
-        });
-    });
-
-    it("content().closeButtonTop()", () => {
-        pageobject.content().closeButtonTop().should("exist");
-    });
-
-    it("content().closeButtonBottom()", () => {
-        pageobject.content().closeButtonBottom().should("exist");
-    });
-
-    it("content().heading()", () => {
-        pageobject.content().heading().should("exist");
-        pageobject.content().heading().should("contain.text", "Header slot");
-    });
-
-    it("content().brodtext()", () => {
-        pageobject.content().brodtext().should("exist");
-        pageobject.content().brodtext().should("contain.text", "Body slot");
-    });
-});

@@ -18,22 +18,8 @@ export class FMessageBoxPageObject implements BasePageObject {
         this.errors = new FErrorListPageObject(`${this.selector}`);
     }
 
-    /**
-     * @deprecated Access using `content()` instead. It is not guaranteed that provided heading class is used.
-     */
-    public title(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .message-box__heading`);
-    }
-
     public icon(): DefaultCypressChainable {
         return cy.get(`${this.selector} .message-box__icon`);
-    }
-
-    /**
-     * @deprecated Access using `content()` instead. It is not guaranteed that `p`-tag is used.
-     */
-    public body(): DefaultCypressChainable {
-        return cy.get(`${this.selector} p`);
     }
 
     public content(): DefaultCypressChainable {
