@@ -16,6 +16,7 @@ Följande deprekerade komponenter har tagits bort:
 Ändringar i komponenter och funktioner:
 
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
+- `getTextFromScopedSlot`: funktionen är borttagen.
 
 För Cypress pageobjekt:
 
@@ -69,6 +70,21 @@ Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med pr
 Om du använder {@link form-modal `formModal(..)`} (rekommenderat) för att anropa modalen behövs inga ändringar.
 
 Om du använder template-syntax för att anropa `FFormModal` direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.
+
+## `getTextFromScopedSlot`
+
+Den deprekerade funktionen `getTextFromScopedSlot(..)` har tagits bort och är ersatt med {@link renderSlotText `renderSlotText(..)`}.
+
+```diff
+-const textContent = getTextFromScopedSlot(slot);
++const textContent = renderSlotText(slot);
+```
+
+::: warning
+
+Tänk på att `renderSlotText(..)` returnerar `null` om slotten inte finns eller är tom till skillnad från `getTextFromScopedSlot(..)` som returnerar en tom sträng `""` istället.
+
+:::
 
 ## Pageobjects
 

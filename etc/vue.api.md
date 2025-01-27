@@ -17691,9 +17691,6 @@ export const getRef: unique symbol;
 // @public
 export function getSortedHTMLElementsFromVueRef(ref: unknown): HTMLElement[];
 
-// @public @deprecated
-export function getTextFromScopedSlot(slot: Slot): string;
-
 // @public (undocumented)
 export interface GroupValidityEvent {
     // (undocumented)
