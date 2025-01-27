@@ -14377,10 +14377,7 @@ function getHTMLElementFromVueRef(ref2) {
 }
 function lazyLoad(fn2) {
   let cache;
-  return () => {
-    var _cache;
-    return (_cache = cache) !== null && _cache !== void 0 ? _cache : cache = fn2();
-  };
+  return () => cache !== null && cache !== void 0 ? cache : cache = fn2();
 }
 const eventTarget = lazyLoad(() => new EventTarget());
 const fn = /* @__PURE__ */ new Map();
@@ -17514,11 +17511,13 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
       return [{
         label: confirmButtonText,
         event: "confirm",
-        type: "primary"
+        type: "primary",
+        submitButton: true
       }, {
         label: cancelButtonText,
         event: "dismiss",
-        type: "secondary"
+        type: "secondary",
+        submitButton: false
       }];
     },
     confirmDeleteButtons() {

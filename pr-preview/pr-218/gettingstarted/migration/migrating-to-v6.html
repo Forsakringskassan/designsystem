@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-e98249.js"
+                    src="../../assets/vendor-fkui-vue-ab12b6.js"
                     crossorigin
-                    integrity="sha384-rKJRzN6RNVvd249KVrT1rewxtceNBCEKjACP5Xvrk6e7rPHcTLdzDiO1kH/mnT1c"
+                    integrity="sha384-ckdT/yG4Q4AGXluey58nlLQBBMllXeG3bkPJHANAPX2fexbQQ7XcRTAvmqVqP2zv"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -574,11 +574,17 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
+                                <li><a href="#summary">Summary</a></li>
+                                
                                 <li><a href="#fformmodal_slots">FFormModal slots</a></li>
                                 
                                 <li><a href="#gettextfromscopedslot">`getTextFromScopedSlot`</a></li>
                                 
                                 <li><a href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget">`FKUIConfig.modalTarget` och `FKUIConfig.popupTarget`</a></li>
+                                
+                                <li><a href="#fpageheader_skiplink">`FPageHeader` skiplink</a></li>
+                                
+                                <li><a href="#pageobjects">Pageobjects</a></li>
                                 
                             </ul>
                         </details>
@@ -588,11 +594,15 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
+<h2 id="summary"><a class="header-anchor" href="#summary">Summary</a></h2><p>The following components have breaking changes:</p>
+<ul>
+<li><code>FPageHeader</code> - the <code>skipLinkHref</code> prop has been removed.</li>
+</ul>
 <h2 id="fformmodal_slots"><a class="header-anchor" href="#fformmodal_slots">FFormModal slots</a></h2><p>De deprekerade slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna och ersatta med <code>buttons</code> propen.</p>
 <p>I din modalkomponent, om du använder någon av dessa slottar ersätt med propen:</p>
 
                 <div
-                    id="example-6b8b2a"
+                    id="example-23ef83"
                     class="code-preview code-preview--default"
                     
                     
@@ -605,11 +615,13 @@
 <span class="hljs-addition">+        label: &quot;Submit&quot;,</span>
 <span class="hljs-addition">+        event: &quot;confirm&quot;,</span>
 <span class="hljs-addition">+        type: &quot;primary&quot;,</span>
+<span class="hljs-addition">+        submitButton: true,</span>
 <span class="hljs-addition">+    },</span>
 <span class="hljs-addition">+    {</span>
 <span class="hljs-addition">+        label: &quot;Cancel&quot;,</span>
 <span class="hljs-addition">+        event: &quot;dismiss&quot;,</span>
 <span class="hljs-addition">+        type: &quot;secondary&quot;,</span>
+<span class="hljs-addition">+        submitButton: false,</span>
 <span class="hljs-addition">+    },</span>
 <span class="hljs-addition">+];</span>
 <span class="hljs-addition">+&lt;/script&gt;</span>
@@ -628,7 +640,7 @@
 <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
                 <div
-                    id="example-0d510b"
+                    id="example-63949a"
                     class="code-preview code-preview--default"
                     
                     
@@ -648,7 +660,7 @@
         <h2 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
 
                 <div
-                    id="example-f91695"
+                    id="example-14b180"
                     class="code-preview code-preview--default"
                     
                     
@@ -662,7 +674,95 @@
 <span class="hljs-addition">+config.teleportTarget = &quot;my &gt; selector&quot;;</span>
 </code></pre>
                 </div>
+            <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>The deprecated <code>skipLinkHref</code> prop has been removed and replaced by the <code>skipLink</code> prop.</p>
+
+                <div
+                    id="example-3c869b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-page-header skip-link skip-link-href=&quot;awesome-id&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-page-header skip-link=&quot;awesome-id&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p>The <code>skipLink</code> prop used to accept a <code>boolean</code> value to enable/disable the skiplink feature but now only accepts a <code>string</code> (the id of the element to skip to).
+If you need to dynamically enable/disable skiplink set the value to the empty string <code>&quot;&quot;</code> to disable.</p>
+<h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="the_trimmedtext_method"><a class="header-anchor" href="#the_trimmedtext_method">The <code>trimmedText()</code> method</a></h3><p>The deprecated <code>trimmedText()</code> method has been removed from all pageobjects.</p>
+<p>As replacement one of the following methods can be used:</p>
+<ul>
+<li><code>cy.get(..).should(&quot;have.text&quot;, &quot;...&quot;)</code> - assuming there is no leading or trailing whitespace the native <code>have.text</code> assertion can be used.</li>
+<li><code>cy.get(..).should(&quot;contain.text&quot;, &quot;...&quot;)</code> - assuming you are asserting the full text content the native <code>contain.text</code> assertion can be used.</li>
+<li><code>cy.get(..).should(&quot;trimmedText&quot;, &quot;...&quot;)</code> - third-party assertion providing the same functionallity.</li>
+</ul>
+<p>Specifically, for each pageobject <code>.trimmedText().should(..)</code> should be replaced with:</p>
+<ul>
+<li>For <code>FCheckboxFieldPageObject</code> replace with <code>.label().should(..)</code>.</li>
+<li>For <code>FLabelPageObject</code> replace with <code>.el().should(..)</code></li>
+<li>For <code>FRadioFieldPageObject</code> replace with <code>.label().should(..)</code>.</li>
+</ul>
+<h3 id="ftooltippageobject_content_method"><a class="header-anchor" href="#ftooltippageobject_content_method"><code>FTooltipPageObject.content()</code> method</a></h3><p>The deprecated <code>FTooltipPageObject.content()</code> method has been removed and replaced with direct methods on <code>FTooltipPageObject</code>.</p>
+
+                <div
+                    id="example-e6102f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-tooltip.content().closeButtonTop().click();</span>
+<span class="hljs-addition">+tooltip.closeButton().click();</span>
+</code></pre>
+                </div>
             
+                <div
+                    id="example-1f0ced"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-tooltip.content().closeButtonBottom().click();</span>
+<span class="hljs-addition">+tooltip.closeButton().click();</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-7a33b9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-tooltip.content().heading().should(&quot;have.text&quot;, &quot;Lorem ipsum&quot;);</span>
+<span class="hljs-addition">+tooltip.heading().should(&quot;have.text&quot;, &quot;Lorem ipsum&quot;);</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-e434e1"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-tooltip.content().brodtext().should(&quot;have.text&quot;, &quot;Lorem ipsum&quot;);</span>
+<span class="hljs-addition">+tooltip.body().should(&quot;have.text&quot;, &quot;Lorem ipsum&quot;);</span>
+</code></pre>
+                </div>
+            
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Notera</p>
+                <p>Både <code>closeButtonBottom()</code> och <code>closeButtonTop()</code> är ersatt med <code>closeButton()</code> då det inte längre finns två separata knappar.</p>
+
+            </div>
+        
 
                     </div>
                 </main>
@@ -683,9 +783,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/e27f1bf7dc73c3c4e86017c083e961e7b49e1048">e27f1bf</a>)<br />
+    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/e63eddb458a9ad2a2911a0bcb77cb7f6500deee0">e63eddb</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/218">PR 218</a><br />
-        2025-01-27 13:24
+        2025-01-27 19:30
 </div>
 <div class="toolbar__item">
     <form id="version">

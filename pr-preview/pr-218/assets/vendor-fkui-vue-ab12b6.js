@@ -3633,10 +3633,7 @@
   }
   function lazyLoad(fn2) {
     let cache;
-    return () => {
-      var _cache;
-      return (_cache = cache) !== null && _cache !== void 0 ? _cache : cache = fn2();
-    };
+    return () => cache !== null && cache !== void 0 ? cache : cache = fn2();
   }
   var eventTarget = lazyLoad(() => new EventTarget());
   var fn = /* @__PURE__ */ new Map();
@@ -6641,15 +6638,6 @@
         default: "auto"
       },
       /**
-       * Force popup to always display inline.
-       * @deprecated Use `inline="always"` instead.
-       */
-      alwaysInline: {
-        type: Boolean,
-        required: false,
-        default: false
-      },
-      /**
        * Which element to use as container.
        */
       container: {
@@ -6726,7 +6714,7 @@
         return isInline;
       },
       forceInline() {
-        return this.alwaysInline || this.inline === "always";
+        return this.inline === "always";
       },
       forceOverlay() {
         return this.inline === "never";
@@ -9608,11 +9596,13 @@
         return [{
           label: confirmButtonText,
           event: "confirm",
-          type: "primary"
+          type: "primary",
+          submitButton: true
         }, {
           label: cancelButtonText,
           event: "dismiss",
-          type: "secondary"
+          type: "secondary",
+          submitButton: false
         }];
       },
       confirmDeleteButtons() {
@@ -16187,27 +16177,12 @@
        * When set to a non-empty string thethe skiplink feature is enabled.
        * The string is the id of the element to move focus to.
        *
-       * When set to `true` the deprecated `skipLinkHref` prop is used to
-       * set the element id to move focus to.
-       *
-       * When set to `false` or empty string the skiplink feature is disabled.
-       *
-       * Using a boolean is deprecated. Leave unset or a non-empty string.
+       * When set to empty string (default) the skiplink feature is disabled.
        */
       skipLink: {
-        type: [String, Boolean],
-        required: false,
-        default: ""
-      },
-      /**
-       * Target for skiplink.
-       *
-       * @deprecated Use `skipLink` prop with a non-empty string instead.
-       */
-      skipLinkHref: {
         type: String,
         required: false,
-        default: "#applicationlayout-main-content"
+        default: ""
       },
       /**
        * HTML element type for header.
@@ -16272,13 +16247,10 @@
       },
       skipLinkAnchor() {
         const {
-          skipLink,
-          skipLinkHref
+          skipLink
         } = this;
-        if (skipLink === false || skipLink === "") {
+        if (skipLink === "") {
           return null;
-        } else if (skipLink === true) {
-          return skipLinkHref;
         } else {
           return `#${skipLink}`;
         }
