@@ -16,6 +16,7 @@ Följande deprekerade komponenter har tagits bort:
 Ändringar i komponenter och funktioner:
 
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
+- `FPageHeader`: propen `skipLinkHref` är borttagen
 - `getTextFromScopedSlot`: funktionen är borttagen.
 - Konfiguration: `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna.
 
@@ -98,6 +99,18 @@ De deprekerade egenskaperna `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget
 -config.popupTarget = "my > selector";
 +config.teleportTarget = "my > selector";
 ```
+
+## `FPageHeader` skiplink
+
+Den deprekerade propen `skipLinkHref` är borttagen och ersatt med propen `skipLink`.
+
+```diff
+-<f-page-header skip-link skip-link-href="awesome-id">
++<f-page-header skip-link="awesome-id">
+```
+
+`skipLink` kunde tidigare ta ett `boolean` värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
+Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng `""` för att stänga av.
 
 ## Pageobjects
 

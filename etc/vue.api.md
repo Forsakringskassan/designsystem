@@ -11600,12 +11600,7 @@ required: false;
 validator(value: string): boolean;
 };
 skipLink: {
-type: PropType<string | boolean>;
-required: false;
-default: string;
-};
-skipLinkHref: {
-type: StringConstructor;
+type: PropType<string>;
 required: false;
 default: string;
 };
@@ -11643,12 +11638,7 @@ required: false;
 validator(value: string): boolean;
 };
 skipLink: {
-type: PropType<string | boolean>;
-required: false;
-default: string;
-};
-skipLinkHref: {
-type: StringConstructor;
+type: PropType<string>;
 required: false;
 default: string;
 };
@@ -11675,8 +11665,7 @@ default: string;
 }>> & Readonly<{}>, {
 headerTag: string;
 logoSize: string;
-skipLink: string | boolean;
-skipLinkHref: string;
+skipLink: string;
 routerLinkPath: string;
 routerLinkName: string;
 routerLinkLabel: string;
