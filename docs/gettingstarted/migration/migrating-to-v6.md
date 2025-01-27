@@ -17,6 +17,7 @@ Följande deprekerade komponenter har tagits bort:
 
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
+- `getTextFromScopedSlot`: funktionen är borttagen.
 
 För Cypress pageobjekt:
 
@@ -86,6 +87,21 @@ Den deprekerade propen `skipLinkHref` är borttagen och ersatt med propen `skipL
 
 `skipLink` kunde tidigare ta ett `boolean` värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng `""` för att stänga av.
+
+## `getTextFromScopedSlot`
+
+Den deprekerade funktionen `getTextFromScopedSlot(..)` har tagits bort och är ersatt med {@link renderSlotText `renderSlotText(..)`}.
+
+```diff
+-const textContent = getTextFromScopedSlot(slot);
++const textContent = renderSlotText(slot);
+```
+
+::: warning
+
+Tänk på att `renderSlotText(..)` returnerar `null` om slotten inte finns eller är tom till skillnad från `getTextFromScopedSlot(..)` som returnerar en tom sträng `""` istället.
+
+:::
 
 ## Pageobjects
 
