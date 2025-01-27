@@ -156,7 +156,7 @@ export default defineComponent({
             return this.inline === "never";
         },
         teleportTarget() {
-            return config.popupTarget ?? config.teleportTarget;
+            return config.teleportTarget;
         },
     },
     watch: {

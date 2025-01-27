@@ -70,7 +70,7 @@ export function openModal<T = void>(
     }
 
     const defaultOptions: ModalOptions = {
-        attachTo: config.modalTarget ?? config.teleportTarget,
+        attachTo: config.teleportTarget,
         props: {},
     };
     const { attachTo, props } = { ...defaultOptions, ...options };
