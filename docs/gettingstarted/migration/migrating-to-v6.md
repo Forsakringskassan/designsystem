@@ -16,6 +16,7 @@ Följande deprekerade komponenter har tagits bort:
 Ändringar i komponenter och funktioner:
 
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
+- `FPageHeader`: propen `skipLinkHref` är borttagen
 
 För Cypress pageobjekt:
 
@@ -69,6 +70,18 @@ Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med pr
 Om du använder {@link form-modal `formModal(..)`} (rekommenderat) för att anropa modalen behövs inga ändringar.
 
 Om du använder template-syntax för att anropa `FFormModal` direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.
+
+## `FPageHeader` skiplink
+
+Den deprekerade propen `skipLinkHref` är borttagen och ersatt med propen `skipLink`.
+
+```diff
+-<f-page-header skip-link skip-link-href="awesome-id">
++<f-page-header skip-link="awesome-id">
+```
+
+`skipLink` kunde tidigare ta ett `boolean` värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
+Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng `""` för att stänga av.
 
 ## Pageobjects
 
