@@ -106,7 +106,7 @@
     "autoprefixer": "10.4.20",
     "cli-table": "0.3.11",
     "core-js": "3.40.0",
-    "cypress": "13.17.0",
+    "cypress": "14.0.0",
     "cypress-html-validate": "7.1.0",
     "esbuild": "0.24.2",
     "flush-promises": "1.0.2",
