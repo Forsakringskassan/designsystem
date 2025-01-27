@@ -23,6 +23,7 @@ Följande deprekerade komponenter har tagits bort:
 För Cypress pageobjekt:
 
 - `trimmedText()` metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
+- `FTooltipPageObject.content()` metoden är borttagen.
 
 ## `FCheckboxGroup` och `FCheckboxGroupField`
 
@@ -132,3 +133,33 @@ Specifikt, för varje pageobjekt kan `.trimmedText().should(..)` ersättas med:
 - För `FLabelPageObject` ersätt med `.el().should(..)`
 - För `FRadioFieldPageObject` ersätt med `.label().should(..)`.
 - För `FSelectFieldPageObject` ersätt med `.selectedOption().should(..)`.
+
+### `FTooltipPageObject.content()` methoden
+
+Den deprekerade metoden `FTooltipPageObject.content()` har tagits bort och är ersatt med direkta metoder på `FTooltipPageObject`.
+
+```diff
+-tooltip.content().closeButtonTop().click();
++tooltip.closeButton().click();
+```
+
+```diff
+-tooltip.content().closeButtonBottom().click();
++tooltip.closeButton().click();
+```
+
+```diff
+-tooltip.content().heading().should("have.text", "Lorem ipsum");
++tooltip.heading().should("have.text", "Lorem ipsum");
+```
+
+```diff
+-tooltip.content().brodtext().should("have.text", "Lorem ipsum");
++tooltip.body().should("have.text", "Lorem ipsum");
+```
+
+::: warning Notera
+
+Både `closeButtonBottom()` och `closeButtonTop()` är ersatt med `closeButton()` då det inte längre finns två separata knappar.
+
+:::

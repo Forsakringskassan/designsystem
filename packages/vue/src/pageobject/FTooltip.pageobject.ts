@@ -40,25 +40,4 @@ export class FTooltipPageObject implements BasePageObject {
     public closeButton(): DefaultCypressChainable {
         return cy.get(`${this.selector} .close-button`);
     }
-
-    /**
-     * @deprecated Use `closeButton()`, `header()`, or `body()` instead.
-     */
-    public content(): {
-        closeButtonTop: () => DefaultCypressChainable;
-        heading: () => DefaultCypressChainable;
-        brodtext: () => DefaultCypressChainable;
-        closeButtonBottom: () => DefaultCypressChainable;
-    } {
-        return {
-            closeButtonTop: (): DefaultCypressChainable =>
-                cy.get(`${this.selector} .close-button`),
-            closeButtonBottom: (): DefaultCypressChainable =>
-                cy.get(`${this.selector} .close-button`),
-            heading: (): DefaultCypressChainable =>
-                cy.get(`${this.selector} .tooltip__header`),
-            brodtext: (): DefaultCypressChainable =>
-                cy.get(`${this.selector} .tooltip__body`),
-        };
-    }
 }
