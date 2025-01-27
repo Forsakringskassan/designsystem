@@ -3669,8 +3669,6 @@
   var config = {
     buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
     teleportTarget: document.body,
-    modalTarget: null,
-    popupTarget: null,
     get popupContainer() {
       if (typeof popupContainer === "string") {
         const element = document.querySelector(popupContainer);
@@ -3773,7 +3771,6 @@
     };
   }
   function openModal(callingInstance, Component, options) {
-    var _config$modalTarget;
     if (typeof options === "string") {
       return openModal(callingInstance, Component, {
         props: {
@@ -3782,7 +3779,7 @@
       });
     }
     const defaultOptions2 = {
-      attachTo: (_config$modalTarget = config.modalTarget) !== null && _config$modalTarget !== void 0 ? _config$modalTarget : config.teleportTarget,
+      attachTo: config.teleportTarget,
       props: {}
     };
     const {
@@ -6735,8 +6732,7 @@
         return this.inline === "never";
       },
       teleportTarget() {
-        var _config$popupTarget;
-        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
+        return config.teleportTarget;
       }
     },
     watch: {
@@ -7240,10 +7236,7 @@
       const wrapperRef = (0, import_vue.useTemplateRef)("wrapper");
       const contentRef = (0, import_vue.useTemplateRef)("content");
       const popupClasses = ["popup", "popup--overlay"];
-      const teleportTarget = (0, import_vue.computed)(() => {
-        var _config$popupTarget;
-        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
-      });
+      const teleportTarget = (0, import_vue.computed)(() => config.teleportTarget);
       let guessedItemHeight = void 0;
       let verticalSpacing = void 0;
       useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -9759,6 +9752,7 @@
     }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_form_modal, {
       "is-open": _ctx.isFormModalOpen,
       "aria-close-text": _ctx.$t("fkui.crud-dataset.modal.close", "St\xE4ng"),
+      buttons: _ctx.formModalButtons,
       "use-error-list": false,
       "before-submit": _ctx.beforeSubmit,
       "before-validation": _ctx.beforeValidation,
@@ -9778,7 +9772,7 @@
         item: _ctx.item
       }))) : (0, import_vue.createCommentVNode)("", true)]),
       _: 3
-    }, 8, ["is-open", "aria-close-text", "before-submit", "before-validation", "on-cancel", "onClose", "onCancel", "onSubmit"]), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_confirm_modal, {
+    }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onClose", "onCancel", "onSubmit"]), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_confirm_modal, {
       "is-open": _ctx.isConfirmModalOpen,
       buttons: _ctx.confirmDeleteButtons,
       onConfirm: _ctx.onDeleteConfirm,

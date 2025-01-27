@@ -1673,8 +1673,6 @@
   var config = {
     buttonOrder: 0 /* LEFT_TO_RIGHT */,
     teleportTarget: document.body,
-    modalTarget: null,
-    popupTarget: null,
     get popupContainer() {
       if (typeof popupContainer === "string") {
         const element = document.querySelector(popupContainer);
@@ -4057,7 +4055,7 @@
         return this.inline === "never";
       },
       teleportTarget() {
-        return config.popupTarget ?? config.teleportTarget;
+        return config.teleportTarget;
       }
     },
     watch: {

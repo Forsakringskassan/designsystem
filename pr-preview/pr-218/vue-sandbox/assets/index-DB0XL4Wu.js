@@ -14413,8 +14413,6 @@ let production = true;
 const config = {
   buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
   teleportTarget: document.body,
-  modalTarget: null,
-  popupTarget: null,
   get popupContainer() {
     if (typeof popupContainer === "string") {
       const element = document.querySelector(popupContainer);
@@ -16412,10 +16410,7 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
     const wrapperRef = useTemplateRef("wrapper");
     const contentRef = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
-    const teleportTarget = computed(() => {
-      var _config$popupTarget;
-      return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
-    });
+    const teleportTarget = computed(() => config.teleportTarget);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
