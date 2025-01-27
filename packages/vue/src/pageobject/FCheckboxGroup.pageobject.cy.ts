@@ -1,13 +1,13 @@
 import { type DefineComponent, defineComponent } from "vue";
-import { FCheckboxGroup, FCheckboxGroupField, FTooltip } from "../components";
+import { FCheckboxField, FFieldset, FTooltip } from "../components";
 import { FCheckboxGroupPageObject } from "./FCheckboxGroup.pageobject";
 
 function createComponent(template: string): DefineComponent {
     return defineComponent({
         template,
         components: {
-            FCheckboxGroup,
-            FCheckboxGroupField,
+            FCheckboxField,
+            FFieldset,
             FTooltip,
         },
         data() {
@@ -29,29 +29,25 @@ describe("FCheckboxGroupPageObject", () => {
 
     describe("Without tooltip", () => {
         const template = /* HTML */ `
-            <f-checkbox-group name="djur">
+            <f-fieldset name="djur">
                 <template #label> Label text </template>
 
                 <template #description="{ descriptionClass }">
                     <span :class="descriptionClass"> Description </span>
                 </template>
 
-                <f-checkbox-group-field v-model="checkboxModel" value="Hund">
+                <f-checkbox-field v-model="checkboxModel" value="Hund">
                     Hund
-                </f-checkbox-group-field>
+                </f-checkbox-field>
 
-                <f-checkbox-group-field v-model="checkboxModel" value="Katt">
+                <f-checkbox-field v-model="checkboxModel" value="Katt">
                     Katt
-                </f-checkbox-group-field>
+                </f-checkbox-field>
 
-                <f-checkbox-group-field
-                    v-model="checkboxModel"
-                    value="Fisk"
-                    disabled
-                >
+                <f-checkbox-field v-model="checkboxModel" value="Fisk" disabled>
                     Fisk
-                </f-checkbox-group-field>
-            </f-checkbox-group>
+                </f-checkbox-field>
+            </f-fieldset>
         `;
 
         beforeEach(() => {
@@ -98,7 +94,7 @@ describe("FCheckboxGroupPageObject", () => {
 
     describe("With tooltip", () => {
         const template = /* HTML */ `
-            <f-checkbox-group name="djur">
+            <f-fieldset name="djur">
                 <template #label> Label text </template>
 
                 <template #tooltip>
@@ -112,22 +108,18 @@ describe("FCheckboxGroupPageObject", () => {
                     <span :class="descriptionClass"> Description </span>
                 </template>
 
-                <f-checkbox-group-field v-model="checkboxModel" value="Hund">
+                <f-checkbox-field v-model="checkboxModel" value="Hund">
                     Hund
-                </f-checkbox-group-field>
+                </f-checkbox-field>
 
-                <f-checkbox-group-field v-model="checkboxModel" value="Katt">
+                <f-checkbox-field v-model="checkboxModel" value="Katt">
                     Katt
-                </f-checkbox-group-field>
+                </f-checkbox-field>
 
-                <f-checkbox-group-field
-                    v-model="checkboxModel"
-                    value="Fisk"
-                    disabled
-                >
+                <f-checkbox-field v-model="checkboxModel" value="Fisk" disabled>
                     Fisk
-                </f-checkbox-group-field>
-            </f-checkbox-group>
+                </f-checkbox-field>
+            </f-fieldset>
         `;
 
         beforeEach(() => {

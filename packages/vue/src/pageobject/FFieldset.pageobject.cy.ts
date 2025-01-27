@@ -1,7 +1,6 @@
 import { type DefineComponent, defineComponent } from "vue";
 import {
-    FCheckboxGroup,
-    FCheckboxGroupField,
+    FCheckboxField,
     FFieldset,
     FRadioField,
     FTextField,
@@ -13,8 +12,7 @@ function createComponent(template: string): DefineComponent {
     return defineComponent({
         template,
         components: {
-            FCheckboxGroup,
-            FCheckboxGroupField,
+            FCheckboxField,
             FFieldset,
             FRadioField,
             FTextField,
@@ -117,7 +115,7 @@ describe("FFieldsetPageObject", () => {
 
         describe("Checkbox", () => {
             const template = /* HTML */ `
-                <f-checkbox-group name="djur">
+                <f-fieldset name="djur">
                     <template #label> Label text </template>
 
                     <template #tooltip>
@@ -146,10 +144,10 @@ describe("FFieldsetPageObject", () => {
                     >
                         Fisk
                     </f-checkbox-field>
-                </f-checkbox-group>
+                </f-fieldset>
             `;
 
-            const checkboxField = new FFieldsetPageObject(".checkbox-group");
+            const checkboxField = new FFieldsetPageObject("fieldset");
 
             beforeEach(() => {
                 cy.mount(createComponent(template));
@@ -300,7 +298,7 @@ describe("FFieldsetPageObject", () => {
 
         describe("Checkbox", () => {
             const template = /* HTML */ `
-                <f-checkbox-group name="djur">
+                <f-fieldset name="djur">
                     <template #label> Label text </template>
 
                     <template #description="{ descriptionClass }">
@@ -322,9 +320,9 @@ describe("FFieldsetPageObject", () => {
                     >
                         Fisk
                     </f-checkbox-field>
-                </f-checkbox-group>
+                </f-fieldset>
             `;
-            const checkboxField = new FFieldsetPageObject(".checkbox-group");
+            const checkboxField = new FFieldsetPageObject("fieldset");
 
             beforeEach(() => {
                 cy.mount(createComponent(template));

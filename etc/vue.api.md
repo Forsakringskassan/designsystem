@@ -151,91 +151,6 @@ export function createFFormProvideOptions(vm: {
 
 // @public (undocumented)
 const _default: DefineComponent<ExtractPropTypes<    {
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: false;
-};
-value: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: true;
-};
-}>, {
-showDetails: "always" | "never" | "when-selected";
-getFieldsetLabelText: () => string | undefined;
-}, {
-expanded: boolean;
-height: number;
-initialStyle: {
-overflow: string;
-transition: string;
-};
-hiddenStyle: {
-height: string;
-position: string;
-visibility: string;
-};
-visibleStyle: {
-width: string;
-position: string;
-visibility: string;
-height: string;
-};
-openedStyle: {
-height: string;
-};
-}, {
-attrs(): Record<string, unknown>;
-disabledClass(): string;
-injected(): any;
-}, {
-updateExpandedFlag(): void;
-emitVModelEvent(event: Event): void;
-onKeydown(event: Event): void;
-onValidity({ detail }: CustomEvent<ValidityEvent>): void;
-enter(element: Element): void;
-afterEnter(element: Element): void;
-leave(element: Element): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: false;
-};
-value: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: true;
-};
-}>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}>, {
-id: string;
-disabled: boolean;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
-export { _default as FCheckboxField }
-export { _default as FCheckboxGroupField }
-
-// @public (undocumented)
-const _default_2: DefineComponent<ExtractPropTypes<    {
 beforeSubmit: {
 type: PropType<FValidationFormCallback>;
 required: false;
@@ -528,8 +443,8 @@ align: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
-export { _default_2 as FValidationForm }
-export { _default_2 as IValidationForm }
+export { _default as FValidationForm }
+export { _default as IValidationForm }
 
 // @internal
 export function dispatchComponentUnmountEvent(element: ValidatableHTMLElement): void;
@@ -1848,205 +1763,88 @@ highlight: boolean;
 // @public (undocumented)
 export const FCard: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
 
-// @public @deprecated (undocumented)
-export const FCheckboxGroup: DefineComponent<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-name: {
-type: StringConstructor;
-required: true;
-};
-}>, {}, {}, {}, {}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-name: {
-type: StringConstructor;
-required: true;
-};
-}>> & Readonly<{}>, {
-id: string;
-}, {}, {
-FFieldset: DefineComponent<ExtractPropTypes<    {
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-name: {
-type: StringConstructor;
-required: false;
-default: undefined;
-};
-labelClass: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-contentClass: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-horizontal: {
-type: BooleanConstructor;
-required: false;
-};
-chip: {
+// @public (undocumented)
+export const FCheckboxField: DefineComponent<ExtractPropTypes<    {
+disabled: {
 type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-border: {
-type: BooleanConstructor;
-required: false;
-};
-showDetails: {
-type: PropType<"never" | "when-selected" | "always">;
-default: string;
-validator(value: string): boolean;
-};
-}>, void, {
-validity: ValidityEvent;
-descriptionClass: string[];
-discreteDescriptionClass: string[];
-validityElement: HTMLElement | null;
-dispatchObject: ComponentValidityEvent;
-detail: ValidityEvent;
-hasDocumentListener: boolean;
-legendKey: number;
-oldMessage: string;
-children: HTMLInputElement[];
-hasCheckbox: boolean;
-hasRadiobutton: boolean;
-}, {
-hasError(): boolean;
-hasErrorMessageSlot(): boolean;
-hasTooltipSlot(): boolean;
-hasDescriptionSlot(): boolean;
-legendClass(): string[];
-groupLabelClass(): string[];
-groupContentClass(): string[];
-classes(): Record<string, boolean>;
-checkedChildren(): HTMLInputElement[];
-debouncedUpdateChildren(): () => void;
-checkboxCheckedScreenReaderText(): string;
-numberOfCheckboxesScreenReaderText(): string;
-numberOfCheckedCheckboxesScreenText(): string;
-}, {
-onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
-forceLegendUpdate(): void;
-updateCheckboxChildren(): Promise<void>;
-}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
 default: () => string;
 };
-name: {
-type: StringConstructor;
-required: false;
-default: undefined;
-};
-labelClass: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-contentClass: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-horizontal: {
-type: BooleanConstructor;
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
 required: false;
 };
-chip: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
+value: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: true;
 };
-border: {
-type: BooleanConstructor;
-required: false;
-};
-showDetails: {
-type: PropType<"never" | "when-selected" | "always">;
-default: string;
-validator(value: string): boolean;
-};
-}>> & Readonly<{}>, {
-horizontal: boolean;
-name: string;
-id: string;
-labelClass: string;
-contentClass: string;
+}>, {
 showDetails: "always" | "never" | "when-selected";
-chip: boolean;
-border: boolean;
-}, {}, {
-FIcon: DefineComponent<ExtractPropTypes<    {
-name: {
+getFieldsetLabelText: () => string | undefined;
+}, {
+expanded: boolean;
+height: number;
+initialStyle: {
+overflow: string;
+transition: string;
+};
+hiddenStyle: {
+height: string;
+position: string;
+visibility: string;
+};
+visibleStyle: {
+width: string;
+position: string;
+visibility: string;
+height: string;
+};
+openedStyle: {
+height: string;
+};
+}, {
+attrs(): Record<string, unknown>;
+disabledClass(): string;
+injected(): any;
+}, {
+updateExpandedFlag(): void;
+emitVModelEvent(event: Event): void;
+onKeydown(event: Event): void;
+onValidity({ detail }: CustomEvent<ValidityEvent>): void;
+enter(element: Element): void;
+afterEnter(element: Element): void;
+leave(element: Element): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+disabled: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
 type: StringConstructor;
+required: false;
+default: () => string;
+};
+modelValue: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+required: false;
+};
+value: {
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
 required: true;
 };
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>, {}, {}, {
-spriteKey(): string;
-spriteId(): string;
-modifiers(): string[];
-ariaHidden(): "true" | undefined;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>> & Readonly<{}>, {
-library: string;
-flip: string;
-rotate: string;
+}>> & Readonly<{
+onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+disabled: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
-}, {}, string, ComponentProvideOptions, true, {}, any>;
-}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export const FClearingnumberTextField: DefineComponent<ExtractPropTypes<    {
