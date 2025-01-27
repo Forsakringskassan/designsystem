@@ -1,7 +1,7 @@
 ---
 title: Fieldset migreringsguide
 name: migrating-to-fieldset
-layout: pattern
+layout: article
 ---
 
 Från och med release 5.17.0 (2024-03-02) är gruppkomponenter för radio och kryssruta deprekerade.
@@ -45,8 +45,6 @@ Ersätt `FRadioGroupField` med `FRadioField`.
 -<f-radio-group-field>
 +<f-radio-field>
 ```
-
-Se {@link FRadioGroupDeprecated Radioknapp (deprekerad)} för tidigare API.
 
 ## Kryssruta
 
