@@ -615,6 +615,7 @@ export class FSelectFieldPageObject implements BasePageObject {
     listOfOptions(): Cypress.Chainable<string[]>;
     // (undocumented)
     numberOfOptions(): Cypress.Chainable<number>;
+    selectedOption(): Cypress.Chainable<JQuery<HTMLOptionElement>>;
     // (undocumented)
     selectedValue(): Cypress.Chainable<string>;
     // (undocumented)
