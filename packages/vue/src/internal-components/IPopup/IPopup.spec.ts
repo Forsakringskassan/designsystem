@@ -155,16 +155,6 @@ describe("html-validate", () => {
         });
     });
 
-    it("should not allow setting always-inline value", () => {
-        const markup = /* HTML */ `
-            <i-popup anchor="anchorref" is-open always-inline=""></i-popup>
-        `;
-        expect(markup).not.toHTMLValidate({
-            ruleId: "attribute-boolean-style",
-            message: 'Attribute "always-inline" should omit value',
-        });
-    });
-
     it("should allow setting viewport value", () => {
         const markup = /* HTML */ `
             <i-popup

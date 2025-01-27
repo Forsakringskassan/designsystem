@@ -163,12 +163,6 @@ module.exports = defineMetadata({
             anchor: {
                 required: true,
             },
-            "always-inline": {
-                boolean: true,
-                required: false,
-                deprecated:
-                    '`always-inline` is deprecated: use `inline="always"` instead.',
-            },
             inline: {
                 required: false,
                 enum: ["always", "never", "auto"],
