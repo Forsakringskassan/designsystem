@@ -8,7 +8,7 @@
 import { type PropType, defineComponent } from "vue";
 import { documentOrderComparator } from "@fkui/logic";
 import { type ComponentUnmountEvent, type ComponentValidityEvent, type GroupValidityEvent } from "../../types";
-import { cleanUpElements } from "../FForm/FormUtils";
+import { cleanUpElements } from "./FormUtils";
 
 export default defineComponent({
     name: "FValidationGroup",

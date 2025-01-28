@@ -374,13 +374,6 @@ export type PostalCodeString = string;
 // @public
 export function pushFocus(element?: Element | null): StackHandle;
 
-// @public (undocumented)
-export class Reference<T extends Record<string, any>> {
-    constructor(ref: T);
-    // (undocumented)
-    readonly ref: T;
-}
-
 // @public
 export function removeFocusListener(elements: HTMLElement[], listener: ((event: Event) => unknown) | (() => unknown)): void;
 

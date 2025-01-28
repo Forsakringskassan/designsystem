@@ -6,6 +6,7 @@ import { execSync } from "node:child_process";
 import isCI from "is-ci";
 import {
     Generator,
+    htmlRedirectProcessor,
     matomoProcessor,
     searchProcessor,
     selectableVersionProcessor,
@@ -122,6 +123,7 @@ const docs = new Generator({
             urlFormat: DOCS_SOURCE_URL_FORMAT,
         }),
         cookieProcessor(),
+        htmlRedirectProcessor(),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
