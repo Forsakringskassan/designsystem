@@ -32,6 +32,10 @@ module.exports = {
         {
             files: "*.vue",
             extends: ["@forsakringskassan/vue"],
+            rules: {
+                /* technical debt */
+                "vue/block-order": "off",
+            },
         },
 
         {
