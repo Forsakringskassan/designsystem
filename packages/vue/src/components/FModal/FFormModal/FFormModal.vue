@@ -35,7 +35,7 @@
         <template #footer>
             <div class="button-group">
                 <button
-                    v-for="button in preparedButtons"
+                    v-for="button in normalizedButtons"
                     :key="button.label"
                     :type="button.buttonType"
                     :class="button.classlist"
@@ -58,7 +58,7 @@ import FModal from "../FModal.vue";
 import { FValidationForm, type FValidationFormCallback } from "../../FValidationForm";
 import { TranslationMixin } from "../../../plugins/translation";
 import { sizes } from "../sizes";
-import { FModalButton, FModalButtonDescriptor, prepareButtonList } from "../modal-button";
+import { FModalButton, FModalButtonDescriptor, normalizeButtonList } from "../modal-button";
 import { FKUIConfigButtonOrder } from "../../../config";
 
 export default defineComponent({
@@ -182,8 +182,10 @@ export default defineComponent({
         return {};
     },
     computed: {
-        preparedButtons(): FModalButton[] {
-            return prepareButtonList(this.buttons, FKUIConfigButtonOrder.LEFT_TO_RIGHT);
+        normalizedButtons(): FModalButton[] {
+            return normalizeButtonList(this.buttons, FKUIConfigButtonOrder.LEFT_TO_RIGHT, {
+                submit: "auto",
+            });
         },
     },
     methods: {

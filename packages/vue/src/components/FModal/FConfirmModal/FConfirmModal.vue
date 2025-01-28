@@ -20,7 +20,7 @@
         <template #footer>
             <div class="button-group">
                 <button
-                    v-for="button in preparedButtons"
+                    v-for="button in normalizedButtons"
                     :key="button.label"
                     type="button"
                     :class="button.classlist"
@@ -40,7 +40,7 @@ import { defineComponent, type PropType } from "vue";
 import FModal from "../FModal.vue";
 import { sizes } from "../sizes";
 
-import { FModalButton, FModalButtonDescriptor, prepareButtonList } from "../modal-button";
+import { FModalButton, FModalButtonDescriptor, normalizeButtonList } from "../modal-button";
 
 const defaultButtons: FModalButtonDescriptor[] = [
     { label: "Primärknapp", event: "confirm", type: "primary" },
@@ -131,8 +131,8 @@ export default defineComponent({
     },
     emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
     computed: {
-        preparedButtons(): FModalButton[] {
-            return prepareButtonList(this.buttons);
+        normalizedButtons(): FModalButton[] {
+            return normalizeButtonList(this.buttons);
         },
     },
     methods: {
