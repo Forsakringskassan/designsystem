@@ -325,41 +325,6 @@ export class FFormModalPageObject extends FModalPageObject implements BasePageOb
 }
 
 // @public (undocumented)
-export class FFormPageObject implements BasePageObject {
-    constructor(selector: string);
-    // (undocumented)
-    components: Record<string, BasePageObject>;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
-    // (undocumented)
-    errorMessageBox(): FMessageBoxPageObject;
-    // (undocumented)
-    selector: string;
-}
-
-// @public (undocumented)
-export class FFormStepPageObject implements BasePageObject {
-    constructor(selector: string);
-    // (undocumented)
-    body(): DefaultCypressChainable;
-    // (undocumented)
-    editConfirmButton(): DefaultCypressChainable;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
-    // (undocumented)
-    errors: FErrorListPageObject;
-    header(): DefaultCypressChainable;
-    // (undocumented)
-    isOpen(): Cypress.Chainable<boolean>;
-    // (undocumented)
-    selector: string;
-    // (undocumented)
-    title(): DefaultCypressChainable;
-    // (undocumented)
-    validIcon(): DefaultCypressChainable;
-}
-
-// @public (undocumented)
 export class FInteractiveTablePageObject implements BasePageObject {
     constructor(selector: string);
     // (undocumented)

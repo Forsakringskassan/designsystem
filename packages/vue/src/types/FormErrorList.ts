@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-declaration-merging -- technical
  * debt, the class and the interface should not have the same name */
 
-import { ErrorItem } from "../FErrorList";
+import { ErrorItem } from "./FErrorList";
 
 /**
  * @public

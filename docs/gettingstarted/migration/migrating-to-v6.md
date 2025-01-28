@@ -2,6 +2,9 @@
 title: Version 6 migreringsguide
 name: migrating-to-v6
 layout: article
+redirect_from:
+    - components/fform.html
+    - components/fformdeprecated.html
 ---
 
 ## Summering
@@ -12,6 +15,24 @@ Följande deprekerade komponenter har tagits bort:
 - `FCheckboxGroupField`
 - `FRadioGroup`
 - `FRadioGroupField`
+- `FForm`
+- `FFormStep`
+- `FFormStepButton`
+
+Följande komponenter, funktioner och typer är även de borttagna:
+
+- `createFFormProvideOptions`
+- `FFormData`
+- `FFormPageObject`
+- `FFormProvider`
+- `FFormStepPageObject`
+- `FormStepFields`
+- `getRef`
+- `isFormStepReference`
+- `Reference`
+- `setIsOpen`
+- `setRef`
+- `sortComponentsWithErrorsOnDOMOrder`
 
 Ändringar i komponenter och funktioner:
 
@@ -183,6 +204,16 @@ De deprekerade egenskaperna `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget
 -config.popupTarget = "my > selector";
 +config.teleportTarget = "my > selector";
 ```
+
+## `FForm`, `FFormStep` och `FFormStepButton`
+
+De deprekerade komponenterna `FForm`, `FFormStep` och `FFormStepButton` har tagits bort.
+Som ersättare till `FForm` finns `FWizard` alternativt `FValidationForm`, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av `FForm`.
+
+Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:
+
+- {@link FWizard}
+- {@link FValidationForm}
 
 ## Pageobjects
 
