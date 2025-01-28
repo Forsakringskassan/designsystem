@@ -485,7 +485,7 @@ från-datumet och mindre eller likamed det absoluta maxdatumet.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./CrossValidateDates-7c9ae4.js"></script>
+        <script defer src="./CrossValidateDates-7d92a9.js"></script>
     </div>
                 <div>
             <button
@@ -503,42 +503,7 @@ från-datumet och mindre eller likamed det absoluta maxdatumet.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span>, <span class="hljs-title class_">Weekday</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
-<span class="hljs-keyword">import</span> { isEmpty } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ComponentValidityEvent</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FFieldset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MIN_DATE</span> = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">addMonths</span>(-<span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>();
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_DATE</span> = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">addMonths</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>();
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FFieldset</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">fromDate</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">toDate</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">toMinLimit</span>: <span class="hljs-variable constant_">MIN_DATE</span>,
-            <span class="hljs-title class_">Weekday</span>,
-            <span class="hljs-variable constant_">MIN_DATE</span>,
-            <span class="hljs-variable constant_">MAX_DATE</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">getMinToDate</span>(<span class="hljs-attr">validFromDate</span>: boolean): string {
-            <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEmpty</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">fromDate</span>) || !validFromDate) {
-                <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">MIN_DATE</span>;
-            }
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fromDate</span>;
-        },
-        <span class="hljs-title function_">onValidityFromDate</span>({ <span class="hljs-attr">detail</span>: { isValid } }: <span class="hljs-title class_">CustomEvent</span>&lt;<span class="hljs-title class_">ComponentValidityEvent</span>&gt;): <span class="hljs-keyword">void</span> {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">toMinLimit</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMinToDate</span>(isValid);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Anställningsperiod <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-datepicker-field</span>
@@ -574,6 +539,41 @@ från-datumet och mindre eller likamed det absoluta maxdatumet.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-datepicker-field</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span>, <span class="hljs-title class_">Weekday</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
+<span class="hljs-keyword">import</span> { isEmpty } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ComponentValidityEvent</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FFieldset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MIN_DATE</span> = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">addMonths</span>(-<span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>();
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_DATE</span> = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">addMonths</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>();
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FFieldset</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">fromDate</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">toDate</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">toMinLimit</span>: <span class="hljs-variable constant_">MIN_DATE</span>,
+            <span class="hljs-title class_">Weekday</span>,
+            <span class="hljs-variable constant_">MIN_DATE</span>,
+            <span class="hljs-variable constant_">MAX_DATE</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">getMinToDate</span>(<span class="hljs-attr">validFromDate</span>: boolean): string {
+            <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEmpty</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">fromDate</span>) || !validFromDate) {
+                <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">MIN_DATE</span>;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fromDate</span>;
+        },
+        <span class="hljs-title function_">onValidityFromDate</span>({ <span class="hljs-attr">detail</span>: { isValid } }: <span class="hljs-title class_">CustomEvent</span>&lt;<span class="hljs-title class_">ComponentValidityEvent</span>&gt;): <span class="hljs-keyword">void</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">toMinLimit</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMinToDate</span>(isValid);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -596,7 +596,7 @@ som det som anges i fältet minimumlängd.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./ValidationPluginDynamicValidation-33bcf0.js"></script>
+        <script defer src="./ValidationPluginDynamicValidation-9349e3.js"></script>
     </div>
                 <div>
             <button
@@ -614,35 +614,7 @@ som det som anges i fältet minimumlängd.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-comment">/* register a new validator named &quot;notShorter&quot; */</span>
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">registerValidator</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;notShorter&quot;</span>,
-    <span class="hljs-title function_">validation</span>(<span class="hljs-params">value, element, config</span>) {
-        <span class="hljs-keyword">return</span> value.<span class="hljs-property">length</span> &gt;= config.<span class="hljs-property">minLength</span>;
-    },
-});
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginDynamicValidation&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FValidationForm</span>,
-        <span class="hljs-title class_">FTextField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">minLength</span>: <span class="hljs-string">&quot;8&quot;</span>,
-        };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> <span class="hljs-attr">:use-error-list</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Namn får inte vara kortare än minsta längd.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
@@ -676,6 +648,34 @@ som det som anges i fältet minimumlängd.</p>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Signera<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-comment">/* register a new validator named &quot;notShorter&quot; */</span>
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">registerValidator</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;notShorter&quot;</span>,
+    <span class="hljs-title function_">validation</span>(<span class="hljs-params">value, element, config</span>) {
+        <span class="hljs-keyword">return</span> value.<span class="hljs-property">length</span> &gt;= config.<span class="hljs-property">minLength</span>;
+    },
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginDynamicValidation&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FValidationForm</span>,
+        <span class="hljs-title class_">FTextField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">minLength</span>: <span class="hljs-string">&quot;8&quot;</span>,
+        };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -700,9 +700,9 @@ som det som anges i fältet minimumlängd.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/973dc6f181bb2cce6a65eca39c604dfd447a0236">973dc6f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 12:02
+        2025-01-28 13:09
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -1085,7 +1085,7 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./TestPluginExample-e9067b.js"></script>
+        <script defer src="./TestPluginExample-b705eb.js"></script>
     </div>
                 <div>
             <button
@@ -1103,7 +1103,13 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;child-name&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>&gt;</span>
+        Barnets namn
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1112,12 +1118,6 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
     <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;child-name&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>&gt;</span>
-        Barnets namn
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1137,7 +1137,7 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./TestPluginHidden-3021fd.js"></script>
+        <script defer src="./TestPluginHidden-f06540.js"></script>
     </div>
                 <div>
             <button
@@ -1155,20 +1155,7 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;TestPluginHidden&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> { <span class="hljs-attr">isVisible</span>: <span class="hljs-literal">false</span> };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
             <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isVisible&quot;</span>
@@ -1183,6 +1170,19 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;TestPluginHidden&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">isVisible</span>: <span class="hljs-literal">false</span> };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1207,9 +1207,9 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/973dc6f181bb2cce6a65eca39c604dfd447a0236">973dc6f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 12:02
+        2025-01-28 13:09
 </div>
 <div class="toolbar__item">
     <form id="version">

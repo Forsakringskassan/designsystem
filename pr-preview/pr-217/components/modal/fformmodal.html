@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/973dc6f181bb2cce6a65eca39c604dfd447a0236/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
             
         </code>
          
@@ -1331,7 +1331,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FFormModalApiExample-0e9b81.js"></script>
+        <script defer src="./FFormModalApiExample-8796bc.js"></script>
     </div>
                 <div>
             <button
@@ -1349,7 +1349,24 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-example&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;form-modal-api-example-button&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
+            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
+        &gt;</span>
+            Öppna Modal
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Modalen stängdes med resultatet:<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;api-result&quot;</span>&gt;</span>{{ result }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { formModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">ExampleModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ExampleModal.vue&quot;</span>;
@@ -1378,23 +1395,6 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-example&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;form-modal-api-example-button&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
-            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
-        &gt;</span>
-            Öppna Modal
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Modalen stängdes med resultatet:<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;api-result&quot;</span>&gt;</span>{{ result }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1415,7 +1415,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FFormModalExample-d4dc37.js"></script>
+        <script defer src="./FFormModalExample-3e9dce.js"></script>
     </div>
                 <div>
             <button
@@ -1433,27 +1433,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFormModal</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFormModalExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FFormModal</span>, <span class="hljs-title class_">FTextField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">closeModal</span>(): <span class="hljs-keyword">void</span> {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-form-modal</span>
         <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
         @<span class="hljs-attr">cancel</span>=<span class="hljs-string">&quot;closeModal()&quot;</span>
@@ -1478,6 +1458,26 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
         Öppna modal
     <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFormModal</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFormModalExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FFormModal</span>, <span class="hljs-title class_">FTextField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">closeModal</span>(): <span class="hljs-keyword">void</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1570,7 +1570,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FFormModalExampleCustomButtons-b6c89b.js"></script>
+        <script defer src="./FFormModalExampleCustomButtons-8ec248.js"></script>
     </div>
                 <div>
             <button
@@ -1588,7 +1588,26 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-custom-buttons&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Öppna Modal<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-example&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">example-modal</span>
+                <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
+                <span class="hljs-attr">:buttons</span>=<span class="hljs-string">&quot;buttons&quot;</span>
+                @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>
+                @<span class="hljs-attr">cancel</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
+                @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+            &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">example-modal</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;field1 || field2&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Modalen stängdes med resultatet:<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Förnamn: {{ field1 }}, Efternamn: {{ field2 }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">ExampleModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ExampleModal.vue&quot;</span>;
 
@@ -1627,25 +1646,6 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-custom-buttons&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Öppna Modal<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-example&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">example-modal</span>
-                <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
-                <span class="hljs-attr">:buttons</span>=<span class="hljs-string">&quot;buttons&quot;</span>
-                @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>
-                @<span class="hljs-attr">cancel</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
-                @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
-            &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">example-modal</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;field1 || field2&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Modalen stängdes med resultatet:<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Förnamn: {{ field1 }}, Efternamn: {{ field2 }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1835,9 +1835,9 @@ The event payload is the data that has been submitted.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/973dc6f181bb2cce6a65eca39c604dfd447a0236">973dc6f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 12:02
+        2025-01-28 13:09
 </div>
 <div class="toolbar__item">
     <form id="version">

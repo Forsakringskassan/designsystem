@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FProgressbar/FProgressbar.vue">FProgressbar</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/973dc6f181bb2cce6a65eca39c604dfd447a0236/packages/vue/src/components/FProgressbar/FProgressbar.vue">FProgressbar</a>
             
         </code>
          
@@ -1157,7 +1157,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FProgressbarExample-539457.js"></script>
+        <script defer src="./FProgressbarExample-80c9c7.js"></script>
     </div>
                 <div>
             <button
@@ -1175,7 +1175,28 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-progressbar</span>
+            <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;currentProgress&quot;</span>
+            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Progressbar&quot;</span>
+            <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Progressbar&quot;</span>
+            <span class="hljs-attr">value-text</span>=<span class="hljs-string">&quot;You have uploaded %VALUE% %.&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-progressbar</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-data&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Debug-data: <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>value: {{currentProgress}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>Decrease<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+            Progress:
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">&quot;currentProgress&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FProgressbar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1197,27 +1218,6 @@
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-progressbar</span>
-            <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;currentProgress&quot;</span>
-            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Progressbar&quot;</span>
-            <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Progressbar&quot;</span>
-            <span class="hljs-attr">value-text</span>=<span class="hljs-string">&quot;You have uploaded %VALUE% %.&quot;</span>
-        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-progressbar</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-data&quot;</span>
-        &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Debug-data: <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>value: {{currentProgress}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>Decrease<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-            Progress:
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">&quot;currentProgress&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1257,9 +1257,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/973dc6f181bb2cce6a65eca39c604dfd447a0236">973dc6f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 12:02
+        2025-01-28 13:09
 </div>
 <div class="toolbar__item">
     <form id="version">

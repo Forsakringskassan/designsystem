@@ -497,7 +497,7 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FValidationFormDefault-4c94f9.js"></script>
+        <script defer src="./FValidationFormDefault-0e113b.js"></script>
     </div>
                 <div>
             <button
@@ -515,48 +515,7 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCheckboxField</span>,
-    <span class="hljs-title class_">FEmailTextField</span>,
-    <span class="hljs-title class_">FFieldset</span>,
-    <span class="hljs-title class_">FRadioField</span>,
-    <span class="hljs-title class_">FPhoneTextField</span>,
-    <span class="hljs-title class_">FValidationForm</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FValidationFormDefault&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCheckboxField</span>,
-        <span class="hljs-title class_">FEmailTextField</span>,
-        <span class="hljs-title class_">FFieldset</span>,
-        <span class="hljs-title class_">FRadioField</span>,
-        <span class="hljs-title class_">FPhoneTextField</span>,
-        <span class="hljs-title class_">FValidationForm</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">phone</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">phoneAlt</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">info</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">tips</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">news</span>: <span class="hljs-literal">false</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Spara&quot;</span>);
-        },
-        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Avbryt&quot;</span>);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">error-message</span>&gt;</span> Oj, du har glömt fylla i något. Gå till: <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
@@ -604,6 +563,47 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCheckboxField</span>,
+    <span class="hljs-title class_">FEmailTextField</span>,
+    <span class="hljs-title class_">FFieldset</span>,
+    <span class="hljs-title class_">FRadioField</span>,
+    <span class="hljs-title class_">FPhoneTextField</span>,
+    <span class="hljs-title class_">FValidationForm</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FValidationFormDefault&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCheckboxField</span>,
+        <span class="hljs-title class_">FEmailTextField</span>,
+        <span class="hljs-title class_">FFieldset</span>,
+        <span class="hljs-title class_">FRadioField</span>,
+        <span class="hljs-title class_">FPhoneTextField</span>,
+        <span class="hljs-title class_">FValidationForm</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">phone</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">phoneAlt</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">info</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">tips</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">news</span>: <span class="hljs-literal">false</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Spara&quot;</span>);
+        },
+        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Avbryt&quot;</span>);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -663,9 +663,9 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/973dc6f181bb2cce6a65eca39c604dfd447a0236">973dc6f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 12:02
+        2025-01-28 13:09
 </div>
 <div class="toolbar__item">
     <form id="version">

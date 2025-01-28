@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">IPopupMenu</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/973dc6f181bb2cce6a65eca39c604dfd447a0236/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">IPopupMenu</a>
             
         </code>
          
@@ -1156,7 +1156,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./IPopupMenuExample-707d3b.js"></script>
+        <script defer src="./IPopupMenuExample-bdff6d.js"></script>
     </div>
                 <div>
             <button
@@ -1174,7 +1174,36 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;popup-menu-open-button&quot;</span>
+            <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;popup-anchor&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
+            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
+            @<span class="hljs-attr">keyup</span>=<span class="hljs-string">&quot;onKeyUp&quot;</span>
+            @<span class="hljs-attr">keydown</span>=<span class="hljs-string">&quot;onKeyDown&quot;</span>
+        &gt;</span>
+            Öppna popupmeny
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">i-popup-menu</span>
+            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;popup-menu&quot;</span>
+            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;selectedItem&quot;</span>
+            <span class="hljs-attr">v-model:focused-item</span>=<span class="hljs-string">&quot;focusedItem&quot;</span>
+            <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;items&quot;</span>
+            <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;popupOpen&quot;</span>
+            <span class="hljs-attr">:anchor</span>=<span class="hljs-string">&quot;getAnchor()&quot;</span>
+            <span class="hljs-attr">enable-keyboard-navigation</span>
+            @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i-popup-menu</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Selected item: {{ selectedItem }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">IPopupMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;..&quot;</span>;
 
@@ -1247,35 +1276,6 @@
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;popup-menu-open-button&quot;</span>
-            <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;popup-anchor&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
-            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
-            @<span class="hljs-attr">keyup</span>=<span class="hljs-string">&quot;onKeyUp&quot;</span>
-            @<span class="hljs-attr">keydown</span>=<span class="hljs-string">&quot;onKeyDown&quot;</span>
-        &gt;</span>
-            Öppna popupmeny
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">i-popup-menu</span>
-            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;popup-menu&quot;</span>
-            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;selectedItem&quot;</span>
-            <span class="hljs-attr">v-model:focused-item</span>=<span class="hljs-string">&quot;focusedItem&quot;</span>
-            <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;items&quot;</span>
-            <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;popupOpen&quot;</span>
-            <span class="hljs-attr">:anchor</span>=<span class="hljs-string">&quot;getAnchor()&quot;</span>
-            <span class="hljs-attr">enable-keyboard-navigation</span>
-            @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
-        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i-popup-menu</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Selected item: {{ selectedItem }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1354,9 +1354,9 @@ Sets focus on matching item element when value changes.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/973dc6f181bb2cce6a65eca39c604dfd447a0236">973dc6f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 12:02
+        2025-01-28 13:09
 </div>
 <div class="toolbar__item">
     <form id="version">
