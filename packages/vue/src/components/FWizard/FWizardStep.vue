@@ -73,7 +73,7 @@
                 @submit="onSubmit"
             >
                 <template #error-message>
-                    <slot name="error-message" v-bind="{ stepNumber, totalSteps }">
+                    <slot name="error-message">
                         {{ $t("fkui.wizard-step.errorlist.title", "Oj, du har glömt att fylla i något. Gå till:") }}
                     </slot>
                 </template>
@@ -106,7 +106,7 @@
                             class="button button--secondary button-group__item button--large"
                             @click="onCancel"
                         >
-                            <slot name="cancel-button-text">
+                            <slot name="cancel-button-text" v-bind="{ stepNumber, totalSteps }">
                                 {{ $t("fkui.wizard-step.button.cancel.text", "Avbryt") }}
                             </slot>
                         </button>
