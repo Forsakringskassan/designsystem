@@ -13,6 +13,10 @@ Följande deprekerade komponenter har tagits bort:
 - `FRadioGroup`
 - `FRadioGroupField`
 
+Ändringar i komponenter och funktioner:
+
+- `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
+
 För Cypress pageobjekt:
 
 - `trimmedText()` metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
@@ -28,6 +32,43 @@ Det deprekerade aliaset `FCheckboxGroupField` har tagits bort och är ersatt med
 Den deprekerade komponenten `FRadioGroup` har tagits bort och är ersatt med `FFieldset`, se separat {@link migrating-to-fieldset migreringsguide för fieldset}.
 
 Det deprekerade aliaset `FRadioGroupField` har tagits bort och är ersatt med `FRadioField`.
+
+## FFormModal slots
+
+De deprekerade slottarna `submit-button-text` och `cancel-button-text` är borttagna och ersatta med propen `buttons`.
+
+Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:
+
+```diff
++<script setup>
++const buttons = [
++    {
++        label: "Submit",
++        event: "confirm",
++        type: "primary",
++        submitButton: true,
++    },
++    {
++        label: "Cancel",
++        event: "dismiss",
++        type: "secondary",
++        submitButton: false,
++    },
++];
++</script>
+
+ <template>
+-    <f-form-modal>
++    <f-form-modal :buttons></f-form-modal>
+-        <template #submit-button-text> Submit </template>
+-        <template #cancel-button-text> Cancel </template>
+    </f-form-modal>
+</template>
+```
+
+Om du använder {@link form-modal `formModal(..)`} (rekommenderat) för att anropa modalen behövs inga ändringar.
+
+Om du använder template-syntax för att anropa `FFormModal` direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.
 
 ## Pageobjects
 
