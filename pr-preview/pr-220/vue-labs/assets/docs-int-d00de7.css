@@ -2,8 +2,7 @@ html {
   font-size: 14px;
 }
 
-.code-preview__preview,
-.live-example__example {
+.code-preview__preview {
   --f-color-backdrop: rgba(0, 0, 0, 0.75);
   --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3);
   --f-backdrop-modal: rgba(0, 0, 0, 0.75);
@@ -521,10 +520,12 @@ html {
   --f-background-grid-striped: #f5f6fa;
   --f-background-grid-header: #f5f6fa;
   --f-background-menu-vertical-highlight: #dbe9e2;
+  --f-background-popupmenu-vertical-hover: #d9d9d9;
   --f-background-popupmenu-vertical-highlight: #dbe9e2;
   --f-border-color-input-inner: #ffffff;
   --f-border-color-input-inner-selected: #f3f8f5;
   --f-border-color-card: #ddddde;
+  --f-border-color-calendar-disabled: #bbbbbd;
   --f-border-color-panel: #ddddde;
   --f-border-color-button-standard: #8d8e91;
   --f-border-color-button-secondary: #8d8e91;
