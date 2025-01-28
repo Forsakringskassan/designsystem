@@ -75,6 +75,7 @@ module.exports = {
             },
         ],
         "input-missing-label": "off",
+        "long-title": ["error", { maxlength: 80 }],
         "no-inline-style": "off",
         "no-trailing-whitespace": "off",
         "no-unused-disable": "off",

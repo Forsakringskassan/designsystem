@@ -73,6 +73,10 @@ functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html
 functions/cypress/pageobjects/FLabelPageObject/format-description.html
 functions/cypress/pageobjects/FLabelPageObject/index.html
+functions/cypress/pageobjects/FProgressbarPageObject/el.html
+functions/cypress/pageobjects/FProgressbarPageObject/index.html
+functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html
+functions/cypress/pageobjects/FProgressbarPageObject/value.html
 functions/functions/dispatch-component-validity-event.html
 functions/functions/dom-functions/find-element-from-vue-ref.html
 functions/functions/dom-functions/find-html-element-from-vue-ref.html
