@@ -2,16 +2,18 @@
 title: Fieldset migreringsguide
 name: migrating-to-fieldset
 layout: pattern
-component:
-    - FRadioGroupField
-    - FCheckboxGroup
-    - FCheckboxGroupField
-    - FCheckboxField
 ---
 
-## Deprekering av gruppkomponenter för radio och kryssruta
+Från och med release 5.17.0 (2024-03-02) är gruppkomponenter för radio och kryssruta deprekerade.
 
-### Radio
+- `FRadioGroup`
+- `FRadioGroupField`
+- `FCheckboxGroup`
+- `FCheckboxGroupField`
+
+Den här migreringsuiden ger information om hur du ersätter dem med `FFieldset`.
+
+## Radioknapp
 
 Ersätt `FRadioGroup` med `FFieldset`.
 
@@ -46,7 +48,7 @@ Ersätt `FRadioGroupField` med `FRadioField`.
 
 Se {@link FRadioGroupDeprecated Radioknapp (deprekerad)} för tidigare API.
 
-### Kryssruta
+## Kryssruta
 
 Ersätt `FCheckboxGroup` med `FFieldset`.
 
@@ -64,7 +66,7 @@ Ersätt `FCheckboxGroupField` med `FCheckboxField`.
 
 Se {@link FCheckboxGroupDeprecated Kryssruta (deprekerad)} för tidigare API.
 
-### Komplett exempel
+## Komplett exempel
 
 ```diff
 -<f-radio-group name="barn-over-18" is-horizontal>
