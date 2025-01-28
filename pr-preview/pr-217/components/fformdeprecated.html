@@ -1108,19 +1108,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FForm/FForm.vue">FForm</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FForm/FForm.vue">FForm</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FForm/FFormStep.vue">FFormStep</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FForm/FFormStep.vue">FFormStep</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FForm/FFormStepButton.vue">FFormStepButton</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FForm/FFormStepButton.vue">FFormStepButton</a>
             
         </code>
          
@@ -1189,7 +1189,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FFormExample-2b1173.js"></script>
+        <script defer src="./FFormExample-0444a3.js"></script>
     </div>
                 <div>
             <button
@@ -1207,7 +1207,204 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCheckboxField</span>,
+    <span class="hljs-title class_">FEmailTextField</span>,
+    <span class="hljs-title class_">FForm</span>,
+    <span class="hljs-title class_">FFormStep</span>,
+    <span class="hljs-title class_">FFormStepButton</span>,
+    <span class="hljs-title class_">FIcon</span>,
+    <span class="hljs-title class_">FOrganisationsnummerTextField</span>,
+    <span class="hljs-title class_">FPhoneTextField</span>,
+    <span class="hljs-title class_">FFieldset</span>,
+    <span class="hljs-title class_">FRadioField</span>,
+    <span class="hljs-title class_">FSelectField</span>,
+    <span class="hljs-title class_">FStaticField</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+    <span class="hljs-title class_">FTooltip</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">ExampleKostnad</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ExampleKostnad.vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span> = <span class="hljs-string">&quot;FKUI_VUE_FORM_OPTIONS_EXAMPLE&quot;</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">FORM_DATA_KEY</span> = <span class="hljs-string">&quot;FKUI_VUE_FORM_DATA_EXAMPLE&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFormExample&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCheckboxField</span>,
+        <span class="hljs-title class_">FForm</span>,
+        <span class="hljs-title class_">FFormStep</span>,
+        <span class="hljs-title class_">FFormStepButton</span>,
+        <span class="hljs-title class_">FFieldset</span>,
+        <span class="hljs-title class_">FIcon</span>,
+        <span class="hljs-title class_">FRadioField</span>,
+        <span class="hljs-title class_">FSelectField</span>,
+        <span class="hljs-title class_">FStaticField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FEmailTextField</span>,
+        <span class="hljs-title class_">FOrganisationsnummerTextField</span>,
+        <span class="hljs-title class_">FPhoneTextField</span>,
+        <span class="hljs-title class_">ExampleKostnad</span>,
+        <span class="hljs-title class_">FTooltip</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">costs</span>: [],
+            <span class="hljs-attr">exampleOptions</span>: {
+                <span class="hljs-attr">errorMessageTitleForm</span>: <span class="hljs-string">&quot;Innan du går vidare...&quot;</span>,
+                <span class="hljs-attr">errorMessageForm</span>: <span class="hljs-string">&quot;Du har några fel, glöm inte att titta i följande steg:&quot;</span>,
+                <span class="hljs-attr">errorMessageFormStep</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">displayError</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">errorScroll</span>: <span class="hljs-string">&quot;center&quot;</span>,
+                <span class="hljs-attr">numberOfSteps</span>: <span class="hljs-number">2</span>,
+                <span class="hljs-attr">dataMissing</span>: <span class="hljs-string">&quot;Information saknas.&quot;</span>,
+            },
+
+            <span class="hljs-attr">renderData</span>: {
+                <span class="hljs-attr">fruits</span>: [
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;BANAN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Banan 🍌&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ÄPPLE&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Äpple 🍏&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MANDARIN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Mandarin 🍊&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANANAS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Ananas 🍍&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;VATTENMELON&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Vattenmelon 🍉&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANDRA_FRUKTER&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Andra frukter&quot;</span> },
+                ],
+                <span class="hljs-attr">sweets</span>: [
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;CHOKLAD&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Choklad 🍫&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MUNK&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Munk 🍩&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MJUKGLASS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Mjukglass 🍦&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;KAKA&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Kaka 🍪&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;LÖSGODIS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Lösgodis 🍬&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANDRA_SÖTSAKER&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Andra sötsaker&quot;</span> },
+                ],
+            },
+
+            <span class="hljs-attr">formData</span>: {
+                <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">orgnummer</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">phone</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">martialStatus</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">martialStatusOther</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">fruitsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">sweetsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">consumedFruits</span>: [],
+                <span class="hljs-attr">consumedSweets</span>: [],
+                <span class="hljs-attr">consumptionDescription</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">hasSigned</span>: <span class="hljs-literal">false</span>,
+            },
+        };
+    },
+    <span class="hljs-attr">computed</span>: {
+        <span class="hljs-title function_">containerTitle</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.costs.length + <span class="hljs-number">2</span>}</span>. Konsumtion`</span>;
+        },
+        <span class="hljs-title function_">martialStatusText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">const</span> martialStatuses = {
+                <span class="hljs-attr">SINGEL</span>: <span class="hljs-string">&quot;Singel&quot;</span>,
+                <span class="hljs-attr">SAMBO</span>: <span class="hljs-string">&quot;Sambo&quot;</span>,
+                <span class="hljs-attr">GIFT</span>: <span class="hljs-string">&quot;Gift&quot;</span>,
+                <span class="hljs-attr">ANNAT</span>: <span class="hljs-string">`Annat, <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.martialStatusOther}</span>`</span>,
+                <span class="hljs-attr">VILL_INTE_SVARA</span>: <span class="hljs-string">&quot;Vill inte svara&quot;</span>,
+            };
+            <span class="hljs-keyword">return</span> martialStatuses[<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatus</span>];
+        },
+        <span class="hljs-title function_">fruitsPerWeekText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">const</span> suffix = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">fruitsPerWeek</span> === <span class="hljs-number">1</span> ? <span class="hljs-string">&quot;gång&quot;</span> : <span class="hljs-string">&quot;gånger&quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">fruitsPerWeek</span>
+                ? <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.fruitsPerWeek}</span> <span class="hljs-subst">${suffix}</span>`</span>
+                : <span class="hljs-literal">undefined</span>;
+        },
+        <span class="hljs-title function_">sweetsPerWeekText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">const</span> suffix = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">sweetsPerWeek</span> === <span class="hljs-number">1</span> ? <span class="hljs-string">&quot;gång&quot;</span> : <span class="hljs-string">&quot;gånger&quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">sweetsPerWeek</span>
+                ? <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.sweetsPerWeek}</span> <span class="hljs-subst">${suffix}</span>`</span>
+                : <span class="hljs-literal">undefined</span>;
+        },
+        <span class="hljs-title function_">consumedFruitsText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedFruits</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>
+                ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">renderData</span>.<span class="hljs-property">fruits</span>
+                      .<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">fruit</span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedFruits</span>.<span class="hljs-title function_">includes</span>(fruit.<span class="hljs-property">value</span>))
+                      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">fruit</span>) =&gt;</span> fruit.<span class="hljs-property">text</span>)
+                      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>)
+                : <span class="hljs-literal">undefined</span>;
+        },
+        <span class="hljs-title function_">consumedSweetsText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedSweets</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>
+                ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">renderData</span>.<span class="hljs-property">sweets</span>
+                      .<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">sweet</span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedSweets</span>.<span class="hljs-title function_">includes</span>(sweet.<span class="hljs-property">value</span>))
+                      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">sweet</span>) =&gt;</span> sweet.<span class="hljs-property">text</span>)
+                      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>)
+                : <span class="hljs-literal">undefined</span>;
+        },
+    },
+    <span class="hljs-attr">watch</span>: {
+        <span class="hljs-attr">exampleOptions</span>: {
+            <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) {
+                <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleOptions</span>));
+            },
+        },
+        <span class="hljs-attr">formData</span>: {
+            <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) {
+                <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-variable constant_">FORM_DATA_KEY</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>));
+            },
+        },
+    },
+    <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> exampleOptions = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span>);
+        <span class="hljs-keyword">if</span> (exampleOptions) {
+            <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleOptions</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(exampleOptions));
+        }
+        <span class="hljs-keyword">const</span> formData = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-variable constant_">FORM_DATA_KEY</span>);
+        <span class="hljs-keyword">if</span> (formData) {
+            <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(formData));
+        }
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">laggTillContainer</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">costs</span>.<span class="hljs-title function_">push</span>({
+                <span class="hljs-attr">kostnad</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">belopp</span>: <span class="hljs-literal">undefined</span>,
+                <span class="hljs-attr">beskrivning</span>: <span class="hljs-string">&quot;&quot;</span>,
+            });
+        },
+        <span class="hljs-title function_">onChangeResetMartialStatusOther</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatus</span> !== <span class="hljs-string">&quot;ANNAT&quot;</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatusOther</span> = <span class="hljs-string">&quot;&quot;</span>;
+            }
+        },
+        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Du skickade in formuläret. Varsågod och ta en 🍪!&quot;</span>);
+        },
+        <span class="hljs-title function_">onClickClearFormData</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span> = {
+                <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">martialStatus</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">martialStatusOther</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">fruitsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">sweetsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">consumedFruits</span>: [],
+                <span class="hljs-attr">consumedSweets</span>: [],
+                <span class="hljs-attr">consumptionDescription</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">hasSigned</span>: <span class="hljs-literal">false</span>,
+            };
+            <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-title function_">reload</span>();
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Exempel-alternativ<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Glöm inte att ladda om sidan om du ändrar alternativen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -1652,203 +1849,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-form</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCheckboxField</span>,
-    <span class="hljs-title class_">FEmailTextField</span>,
-    <span class="hljs-title class_">FForm</span>,
-    <span class="hljs-title class_">FFormStep</span>,
-    <span class="hljs-title class_">FFormStepButton</span>,
-    <span class="hljs-title class_">FIcon</span>,
-    <span class="hljs-title class_">FOrganisationsnummerTextField</span>,
-    <span class="hljs-title class_">FPhoneTextField</span>,
-    <span class="hljs-title class_">FFieldset</span>,
-    <span class="hljs-title class_">FRadioField</span>,
-    <span class="hljs-title class_">FSelectField</span>,
-    <span class="hljs-title class_">FStaticField</span>,
-    <span class="hljs-title class_">FTextField</span>,
-    <span class="hljs-title class_">FTextareaField</span>,
-    <span class="hljs-title class_">FTooltip</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-title class_">ExampleKostnad</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ExampleKostnad.vue&quot;</span>;
-
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span> = <span class="hljs-string">&quot;FKUI_VUE_FORM_OPTIONS_EXAMPLE&quot;</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">FORM_DATA_KEY</span> = <span class="hljs-string">&quot;FKUI_VUE_FORM_DATA_EXAMPLE&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFormExample&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCheckboxField</span>,
-        <span class="hljs-title class_">FForm</span>,
-        <span class="hljs-title class_">FFormStep</span>,
-        <span class="hljs-title class_">FFormStepButton</span>,
-        <span class="hljs-title class_">FFieldset</span>,
-        <span class="hljs-title class_">FIcon</span>,
-        <span class="hljs-title class_">FRadioField</span>,
-        <span class="hljs-title class_">FSelectField</span>,
-        <span class="hljs-title class_">FStaticField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FEmailTextField</span>,
-        <span class="hljs-title class_">FOrganisationsnummerTextField</span>,
-        <span class="hljs-title class_">FPhoneTextField</span>,
-        <span class="hljs-title class_">ExampleKostnad</span>,
-        <span class="hljs-title class_">FTooltip</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">costs</span>: [],
-            <span class="hljs-attr">exampleOptions</span>: {
-                <span class="hljs-attr">errorMessageTitleForm</span>: <span class="hljs-string">&quot;Innan du går vidare...&quot;</span>,
-                <span class="hljs-attr">errorMessageForm</span>: <span class="hljs-string">&quot;Du har några fel, glöm inte att titta i följande steg:&quot;</span>,
-                <span class="hljs-attr">errorMessageFormStep</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">displayError</span>: <span class="hljs-literal">true</span>,
-                <span class="hljs-attr">errorScroll</span>: <span class="hljs-string">&quot;center&quot;</span>,
-                <span class="hljs-attr">numberOfSteps</span>: <span class="hljs-number">2</span>,
-                <span class="hljs-attr">dataMissing</span>: <span class="hljs-string">&quot;Information saknas.&quot;</span>,
-            },
-
-            <span class="hljs-attr">renderData</span>: {
-                <span class="hljs-attr">fruits</span>: [
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;BANAN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Banan 🍌&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ÄPPLE&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Äpple 🍏&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MANDARIN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Mandarin 🍊&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANANAS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Ananas 🍍&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;VATTENMELON&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Vattenmelon 🍉&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANDRA_FRUKTER&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Andra frukter&quot;</span> },
-                ],
-                <span class="hljs-attr">sweets</span>: [
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;CHOKLAD&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Choklad 🍫&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MUNK&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Munk 🍩&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MJUKGLASS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Mjukglass 🍦&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;KAKA&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Kaka 🍪&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;LÖSGODIS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Lösgodis 🍬&quot;</span> },
-                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANDRA_SÖTSAKER&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Andra sötsaker&quot;</span> },
-                ],
-            },
-
-            <span class="hljs-attr">formData</span>: {
-                <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">orgnummer</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">phone</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">martialStatus</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">martialStatusOther</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">fruitsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">sweetsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">consumedFruits</span>: [],
-                <span class="hljs-attr">consumedSweets</span>: [],
-                <span class="hljs-attr">consumptionDescription</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">hasSigned</span>: <span class="hljs-literal">false</span>,
-            },
-        };
-    },
-    <span class="hljs-attr">computed</span>: {
-        <span class="hljs-title function_">containerTitle</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.costs.length + <span class="hljs-number">2</span>}</span>. Konsumtion`</span>;
-        },
-        <span class="hljs-title function_">martialStatusText</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">const</span> martialStatuses = {
-                <span class="hljs-attr">SINGEL</span>: <span class="hljs-string">&quot;Singel&quot;</span>,
-                <span class="hljs-attr">SAMBO</span>: <span class="hljs-string">&quot;Sambo&quot;</span>,
-                <span class="hljs-attr">GIFT</span>: <span class="hljs-string">&quot;Gift&quot;</span>,
-                <span class="hljs-attr">ANNAT</span>: <span class="hljs-string">`Annat, <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.martialStatusOther}</span>`</span>,
-                <span class="hljs-attr">VILL_INTE_SVARA</span>: <span class="hljs-string">&quot;Vill inte svara&quot;</span>,
-            };
-            <span class="hljs-keyword">return</span> martialStatuses[<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatus</span>];
-        },
-        <span class="hljs-title function_">fruitsPerWeekText</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">const</span> suffix = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">fruitsPerWeek</span> === <span class="hljs-number">1</span> ? <span class="hljs-string">&quot;gång&quot;</span> : <span class="hljs-string">&quot;gånger&quot;</span>;
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">fruitsPerWeek</span>
-                ? <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.fruitsPerWeek}</span> <span class="hljs-subst">${suffix}</span>`</span>
-                : <span class="hljs-literal">undefined</span>;
-        },
-        <span class="hljs-title function_">sweetsPerWeekText</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">const</span> suffix = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">sweetsPerWeek</span> === <span class="hljs-number">1</span> ? <span class="hljs-string">&quot;gång&quot;</span> : <span class="hljs-string">&quot;gånger&quot;</span>;
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">sweetsPerWeek</span>
-                ? <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.sweetsPerWeek}</span> <span class="hljs-subst">${suffix}</span>`</span>
-                : <span class="hljs-literal">undefined</span>;
-        },
-        <span class="hljs-title function_">consumedFruitsText</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedFruits</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>
-                ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">renderData</span>.<span class="hljs-property">fruits</span>
-                      .<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">fruit</span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedFruits</span>.<span class="hljs-title function_">includes</span>(fruit.<span class="hljs-property">value</span>))
-                      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">fruit</span>) =&gt;</span> fruit.<span class="hljs-property">text</span>)
-                      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>)
-                : <span class="hljs-literal">undefined</span>;
-        },
-        <span class="hljs-title function_">consumedSweetsText</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedSweets</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>
-                ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">renderData</span>.<span class="hljs-property">sweets</span>
-                      .<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">sweet</span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedSweets</span>.<span class="hljs-title function_">includes</span>(sweet.<span class="hljs-property">value</span>))
-                      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">sweet</span>) =&gt;</span> sweet.<span class="hljs-property">text</span>)
-                      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>)
-                : <span class="hljs-literal">undefined</span>;
-        },
-    },
-    <span class="hljs-attr">watch</span>: {
-        <span class="hljs-attr">exampleOptions</span>: {
-            <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) {
-                <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleOptions</span>));
-            },
-        },
-        <span class="hljs-attr">formData</span>: {
-            <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) {
-                <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-variable constant_">FORM_DATA_KEY</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>));
-            },
-        },
-    },
-    <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">const</span> exampleOptions = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span>);
-        <span class="hljs-keyword">if</span> (exampleOptions) {
-            <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleOptions</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(exampleOptions));
-        }
-        <span class="hljs-keyword">const</span> formData = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-variable constant_">FORM_DATA_KEY</span>);
-        <span class="hljs-keyword">if</span> (formData) {
-            <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(formData));
-        }
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">laggTillContainer</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">costs</span>.<span class="hljs-title function_">push</span>({
-                <span class="hljs-attr">kostnad</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">belopp</span>: <span class="hljs-literal">undefined</span>,
-                <span class="hljs-attr">beskrivning</span>: <span class="hljs-string">&quot;&quot;</span>,
-            });
-        },
-        <span class="hljs-title function_">onChangeResetMartialStatusOther</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatus</span> !== <span class="hljs-string">&quot;ANNAT&quot;</span>) {
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatusOther</span> = <span class="hljs-string">&quot;&quot;</span>;
-            }
-        },
-        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Du skickade in formuläret. Varsågod och ta en 🍪!&quot;</span>);
-        },
-        <span class="hljs-title function_">onClickClearFormData</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span> = {
-                <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">martialStatus</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">martialStatusOther</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">fruitsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">sweetsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">consumedFruits</span>: [],
-                <span class="hljs-attr">consumedSweets</span>: [],
-                <span class="hljs-attr">consumptionDescription</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">hasSigned</span>: <span class="hljs-literal">false</span>,
-            };
-            <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-title function_">reload</span>();
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1997,9 +1997,9 @@ v-bind</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b">cb5026b</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 11:52
+        2025-01-28 12:02
 </div>
 <div class="toolbar__item">
     <form id="version">

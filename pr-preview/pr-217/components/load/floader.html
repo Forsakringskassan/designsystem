@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FLoader/FLoader.vue">FLoader</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FLoader/FLoader.vue">FLoader</a>
             
         </code>
          
@@ -1159,7 +1159,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FLoaderExample-692824.js"></script>
+        <script defer src="./FLoaderExample-b6abeb.js"></script>
     </div>
                 <div>
             <button
@@ -1177,7 +1177,59 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FLoader</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> defaultTimer = <span class="hljs-number">10</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FLoaderExample&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FLoader</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">overlay</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">delay</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">customText</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">time</span>: defaultTimer,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">toggleLoader</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span>) {
+                <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span>) {
+                    <span class="hljs-built_in">clearInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">interval</span>);
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">interval</span> = <span class="hljs-built_in">setInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">countdown</span>, <span class="hljs-number">1000</span>);
+                }
+            }
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span>;
+        },
+        <span class="hljs-title function_">toggleOverlay</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span>;
+        },
+        <span class="hljs-title function_">toggleDelay</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">delay</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">delay</span> ? <span class="hljs-literal">false</span> : <span class="hljs-literal">true</span>;
+        },
+
+        <span class="hljs-title function_">toggleCloseText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">customText</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">customText</span>;
+        },
+        <span class="hljs-title function_">countdown</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> = <span class="hljs-built_in">parseInt</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>, <span class="hljs-number">10</span>) - <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> === <span class="hljs-number">0</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleLoader</span>();
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> = defaultTimer;
+            }
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-loader</span> <span class="hljs-attr">:show</span>=<span class="hljs-string">&quot;show&quot;</span> <span class="hljs-attr">:overlay</span>=<span class="hljs-string">&quot;overlay&quot;</span> <span class="hljs-attr">:delay</span>=<span class="hljs-string">&quot;delay&quot;</span>&gt;</span>
@@ -1237,58 +1289,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FLoader</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">const</span> defaultTimer = <span class="hljs-number">10</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FLoaderExample&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FLoader</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">overlay</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">delay</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">customText</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">time</span>: defaultTimer,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">toggleLoader</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span>) {
-                <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span>) {
-                    <span class="hljs-built_in">clearInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">interval</span>);
-                } <span class="hljs-keyword">else</span> {
-                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">interval</span> = <span class="hljs-built_in">setInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">countdown</span>, <span class="hljs-number">1000</span>);
-                }
-            }
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span>;
-        },
-        <span class="hljs-title function_">toggleOverlay</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span>;
-        },
-        <span class="hljs-title function_">toggleDelay</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">delay</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">delay</span> ? <span class="hljs-literal">false</span> : <span class="hljs-literal">true</span>;
-        },
-
-        <span class="hljs-title function_">toggleCloseText</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">customText</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">customText</span>;
-        },
-        <span class="hljs-title function_">countdown</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> = <span class="hljs-built_in">parseInt</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>, <span class="hljs-number">10</span>) - <span class="hljs-number">1</span>;
-            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> === <span class="hljs-number">0</span>) {
-                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleLoader</span>();
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> = defaultTimer;
-            }
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1358,9 +1358,9 @@ text keys have been downloaded</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b">cb5026b</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 11:52
+        2025-01-28 12:02
 </div>
 <div class="toolbar__item">
     <form id="version">

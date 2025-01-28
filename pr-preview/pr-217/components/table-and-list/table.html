@@ -1108,19 +1108,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1185,7 +1185,7 @@
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FDataTableLiveExample-e354fa.js"></script>
+        <script defer src="./FDataTableLiveExample-d9316f.js"></script>
     
                 </div>
             <h2 id="interaktiv_tabell"><a class="header-anchor" href="#interaktiv_tabell">Interaktiv tabell</a></h2><p><code>FInteractiveTable</code></p>
@@ -1205,7 +1205,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FInteractiveTableLiveExample-9ae584.js"></script>
+        <script defer src="./FInteractiveTableLiveExample-d61f91.js"></script>
     
                 </div>
             <h3 id="hantera_rader"><a class="header-anchor" href="#hantera_rader">Hantera rader</a></h3><p>Med Datamängsredigeraren kan du lägga till funktionalitet för att skapa, ändra och ta bort rader i tabellen. Se komponent <a href="./fcruddataset.html">Datamängdredigeraren</a></p>
@@ -1227,7 +1227,7 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FInteractiveTableInputExample-b7941c.js"></script>
+        <script defer src="./FInteractiveTableInputExample-40526e.js"></script>
     </div>
                 <div>
             <button
@@ -1245,35 +1245,7 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--lg-10&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;betalningar&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Justera betalningar <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;beskrivning&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.beskrivning }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Utbetalningsdatum&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-datepicker-field</span>
-                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.date&quot;</span>
-                            <span class="hljs-attr">v-validation.required</span>
-                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-datepicker-field</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;belopp&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Utbetalat belopp&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-numeric-text-field</span>
-                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.belopp&quot;</span>
-                            <span class="hljs-attr">v-validation.required</span>
-                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-numeric-text-field</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FNumericTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1311,6 +1283,34 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--lg-10&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;betalningar&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Justera betalningar <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;beskrivning&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                        {{ row.beskrivning }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Utbetalningsdatum&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-datepicker-field</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.date&quot;</span>
+                            <span class="hljs-attr">v-validation.required</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-datepicker-field</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;belopp&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Utbetalat belopp&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-numeric-text-field</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.belopp&quot;</span>
+                            <span class="hljs-attr">v-validation.required</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-numeric-text-field</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1786,9 +1786,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b">cb5026b</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 11:52
+        2025-01-28 12:02
 </div>
 <div class="toolbar__item">
     <form id="version">

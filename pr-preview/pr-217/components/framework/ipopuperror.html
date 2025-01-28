@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/internal-components/IPopupError/IPopupError.vue">IPopupError</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/internal-components/IPopupError/IPopupError.vue">IPopupError</a>
             
         </code>
          
@@ -1170,7 +1170,7 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./IPopupErrorExample-219f2a.js"></script>
+        <script defer src="./IPopupErrorExample-f0a9aa.js"></script>
     </div>
                 <div>
             <button
@@ -1188,31 +1188,7 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> <span class="hljs-attr">:use-error-list</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;insatser&quot;</span> <span class="hljs-attr">hover</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> PopupError example <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;epost&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Epost&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-email-text-field</span>
-                        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.email&quot;</span>
-                        <span class="hljs-attr">v-validation.required</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-email-text-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;postnr&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Postnummer&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-postal-code-text-field</span>
-                        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.postnr&quot;</span>
-                        <span class="hljs-attr">v-validation.required</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-postal-code-text-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FInteractiveTable</span>,
@@ -1254,6 +1230,30 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> <span class="hljs-attr">:use-error-list</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;insatser&quot;</span> <span class="hljs-attr">hover</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> PopupError example <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;epost&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Epost&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-email-text-field</span>
+                        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.email&quot;</span>
+                        <span class="hljs-attr">v-validation.required</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-email-text-field</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;postnr&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Postnummer&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-postal-code-text-field</span>
+                        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.postnr&quot;</span>
+                        <span class="hljs-attr">v-validation.required</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-postal-code-text-field</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1296,9 +1296,9 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b">cb5026b</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 11:52
+        2025-01-28 12:02
 </div>
 <div class="toolbar__item">
     <form id="version">

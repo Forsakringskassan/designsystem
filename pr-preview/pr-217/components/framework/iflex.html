@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/internal-components/IFlex/IFlex.vue">IFlex</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/internal-components/IFlex/IFlex.vue">IFlex</a>
             
         </code>
          
@@ -1158,7 +1158,7 @@ Den är en ramverkskomponent för enkel hantering av en horisontal flexbox.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./IFlexExample-ca0c96.js"></script>
+        <script defer src="./IFlexExample-02f6f2.js"></script>
     </div>
                 <div>
             <button
@@ -1176,7 +1176,17 @@ Den är en ramverkskomponent för enkel hantering av en horisontal flexbox.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">IFlex</span>, <span class="hljs-title class_">IFlexItem</span>, <span class="hljs-title class_">FIcon</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;IFlexExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">IFlex</span>, <span class="hljs-title class_">IFlexItem</span> },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">i-flex</span> <span class="hljs-attr">gap</span>=<span class="hljs-string">&quot;1x&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">i-flex-item</span> <span class="hljs-attr">shrink</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>
@@ -1188,16 +1198,6 @@ Den är en ramverkskomponent för enkel hantering av en horisontal flexbox.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">i-flex</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">IFlex</span>, <span class="hljs-title class_">IFlexItem</span>, <span class="hljs-title class_">FIcon</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;IFlexExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">IFlex</span>, <span class="hljs-title class_">IFlexItem</span> },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1261,9 +1261,9 @@ stacked on top of each other when breakpoint is small (aka mobile).</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b">cb5026b</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 11:52
+        2025-01-28 12:02
 </div>
 <div class="toolbar__item">
     <form id="version">

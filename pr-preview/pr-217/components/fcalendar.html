@@ -1108,13 +1108,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FCalendar/FCalendar.vue">FCalendar</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FCalendar/FCalendar.vue">FCalendar</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b/packages/vue/src/components/FCalendar/FCalendarDay.vue">FCalendarDay</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624/packages/vue/src/components/FCalendar/FCalendarDay.vue">FCalendarDay</a>
             
         </code>
          
@@ -1175,7 +1175,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FCalendarDefault-7ba8cb.js"></script>
+        <script defer src="./FCalendarDefault-020f1f.js"></script>
     </div>
                 <div>
             <button
@@ -1193,15 +1193,7 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ date, isFocused }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar-day</span> <span class="hljs-attr">:day</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">:focused</span>=<span class="hljs-string">&quot;isFocused&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar-day</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCalendar</span>, <span class="hljs-title class_">FCalendarDay</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
@@ -1221,6 +1213,14 @@
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ date, isFocused }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar-day</span> <span class="hljs-attr">:day</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">:focused</span>=<span class="hljs-string">&quot;isFocused&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar-day</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1316,7 +1316,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FCalendarCustom-640558.js"></script>
+        <script defer src="./FCalendarCustom-2f5e78.js"></script>
     </div>
                 <div>
             <button
@@ -1334,24 +1334,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span>
-        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span>
-        <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span>
-        <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>
-        <span class="hljs-attr">:tab-date</span>=<span class="hljs-string">&quot;tabDay&quot;</span>
-        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onSelectDay&quot;</span>
-    &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ date }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;dayClasses(date)&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span> {{ date.day }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;eventClasses(date)&quot;</span>&gt;</span> {{ getEvents(date) }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCalendar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
@@ -1450,6 +1433,23 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span>
+        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span>
+        <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span>
+        <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>
+        <span class="hljs-attr">:tab-date</span>=<span class="hljs-string">&quot;tabDay&quot;</span>
+        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onSelectDay&quot;</span>
+    &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ date }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;dayClasses(date)&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span> {{ date.day }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;eventClasses(date)&quot;</span>&gt;</span> {{ getEvents(date) }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
 <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
 <span class="hljs-selector-class">.my-custom-day</span> {
     <span class="hljs-attribute">display</span>: flex;
@@ -1523,7 +1523,7 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FCalendarSelectDays-b4ec62.js"></script>
+        <script defer src="./FCalendarSelectDays-de9768.js"></script>
     </div>
                 <div>
             <button
@@ -1541,24 +1541,7 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onSelectDay&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ date, isFocused }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar-day</span>
-                    <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;multiple-days&quot;</span>
-                    <span class="hljs-attr">:day</span>=<span class="hljs-string">&quot;date&quot;</span>
-                    <span class="hljs-attr">:focused</span>=<span class="hljs-string">&quot;isFocused&quot;</span>
-                    <span class="hljs-attr">:selected</span>=<span class="hljs-string">&quot;isSelected(date)&quot;</span>
-                &gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar-day</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;days-array&quot;</span>&gt;</span> Valda dagar: {{ selected }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCalendar</span>, <span class="hljs-title class_">FCalendarDay</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
@@ -1592,6 +1575,23 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onSelectDay&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ date, isFocused }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar-day</span>
+                    <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;multiple-days&quot;</span>
+                    <span class="hljs-attr">:day</span>=<span class="hljs-string">&quot;date&quot;</span>
+                    <span class="hljs-attr">:focused</span>=<span class="hljs-string">&quot;isFocused&quot;</span>
+                    <span class="hljs-attr">:selected</span>=<span class="hljs-string">&quot;isSelected(date)&quot;</span>
+                &gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar-day</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;days-array&quot;</span>&gt;</span> Valda dagar: {{ selected }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1676,9 +1676,9 @@ is-focused</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/cb5026b7f961bfa9f7d3ba8bb43fbeb5c742c98b">cb5026b</a>)<br />
+    renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/designsystem/commits/35fe6eebf7c1ffcbd54c09aa5301a95bdd7cd624">35fe6ee</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/217">PR 217</a><br />
-        2025-01-28 11:52
+        2025-01-28 12:02
 </div>
 <div class="toolbar__item">
     <form id="version">
