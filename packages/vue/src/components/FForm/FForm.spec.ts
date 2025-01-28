@@ -6,7 +6,7 @@ import { VueWrapper, mount } from "@vue/test-utils";
 import { ValidationService, Reference } from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { FTextField } from "../FTextField";
-import { FormStep, FormErrorList } from "../../types";
+import { FormErrorList } from "../../types";
 import { ValidationPlugin } from "../../plugins";
 import FForm from "./FForm.vue";
 
@@ -132,9 +132,7 @@ describe("submit", () => {
         const components = fForm.vm.$data.components;
         const numberOfTimesSubmitted = Object.entries(components).map(
             ([name, component]) => {
-                const { ref } = component as Reference<
-                    FormErrorList | FormStep
-                >;
+                const { ref } = component as Reference<FormErrorList>;
                 return [name, ref.numberOfTimesSubmitted];
             },
         );

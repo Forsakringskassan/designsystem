@@ -14,7 +14,6 @@ export {
     type ComponentUnmountEvent,
     type ComponentValidityEvent,
     type ErrorItem,
-    type FormStepFields,
     type GroupValidityEvent,
     type ListArray,
     type ListItem,
@@ -22,7 +21,6 @@ export {
     ErrorData,
     ErrorViewData,
     FormErrorList,
-    FormStep,
     MenuAction,
 } from "./types";
 export * from "./utils";

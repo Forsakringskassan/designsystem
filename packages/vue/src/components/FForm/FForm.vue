@@ -28,11 +28,11 @@ The following properties are available:
 <script lang="ts">
 import { ElementIdService, focus, Reference, ValidationService } from "@fkui/logic";
 import { defineComponent, type PropType } from "vue";
-import { ComponentValidityEvent, FormErrorList, FormStep } from "../../types";
+import { ComponentValidityEvent, FormErrorList } from "../../types";
 import { FMessageBox } from "../FMessageBox";
 import { FErrorList } from "../FErrorList";
 import { type FFormProvider, createFFormProvideOptions } from "./FFormProvide";
-import { cleanUpElements, isFormStepReference, sortComponentsWithErrorsOnDOMOrder } from "./FormUtils";
+import { cleanUpElements, sortComponentsWithErrorsOnDOMOrder } from "./FormUtils";
 import { type FFormData } from "./fform-data";
 
 /**
@@ -109,7 +109,7 @@ export default defineComponent({
             return attrs;
         },
         numberOfTimesSubmitted(): number {
-            const components: Array<Reference<FormErrorList | FormStep>> = Object.values(this.components);
+            const components: Array<Reference<FormErrorList>> = Object.values(this.components);
             return Math.max(0, ...components.map((it) => it.ref.numberOfTimesSubmitted));
         },
         isSubmitted(): boolean {
@@ -119,13 +119,13 @@ export default defineComponent({
             if (Object.values(this.components).length === 0) {
                 return false;
             } else {
-                const components: Array<Reference<FormErrorList | FormStep>> = Object.values(this.components);
+                const components: Array<Reference<FormErrorList>> = Object.values(this.components);
                 return components.some((component) => component.ref.isValid === false);
             }
         },
-        componentsWithErrors(): Array<FormErrorList | FormStep> {
+        componentsWithErrors(): FormErrorList[] {
             const sortedComponents = sortComponentsWithErrorsOnDOMOrder(this.components) as Array<
-                Reference<FormErrorList | FormStep>
+                Reference<FormErrorList>
             >;
 
             return sortedComponents.map((c) => c.ref);
@@ -155,14 +155,11 @@ export default defineComponent({
         async onSubmit(event: Event): Promise<boolean> {
             event.preventDefault();
 
-            const components: Array<Reference<FormErrorList | FormStep>> = Object.values(this.components);
+            const components: Array<Reference<FormErrorList>> = Object.values(this.components);
             components.forEach((component) => {
                 component.ref.numberOfTimesSubmitted++;
-
-                if (!isFormStepReference(component)) {
-                    ValidationService.setTouched(component.ref.id);
-                    ValidationService.setSubmitted(component.ref.id);
-                }
+                ValidationService.setTouched(component.ref.id);
+                ValidationService.setSubmitted(component.ref.id);
             });
 
             await cleanUpElements(this);
@@ -178,7 +175,7 @@ export default defineComponent({
             return this.hasError === false;
         },
         async onComponentValidity(event: CustomEvent<ComponentValidityEvent>): Promise<void> {
-            const reference = new Reference<FormErrorList | FormStep>({
+            const reference = new Reference<FormErrorList>({
                 id: event.detail.elementId,
                 focusElementId: event.detail.focusElementId,
                 title: event.detail.errorMessage,
@@ -187,8 +184,6 @@ export default defineComponent({
             });
 
             this.components[event.detail.elementId] = reference;
-
-            // required for components not within formsteps
             await cleanUpElements(this);
         },
     },

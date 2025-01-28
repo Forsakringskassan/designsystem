@@ -1,6 +1,5 @@
 import { Reference } from "@fkui/logic";
-import { FormErrorList, FormStep } from "../../types";
-import { isFormStepReference } from "./FormUtils";
+import { FormErrorList } from "../../types";
 
 /**
  * @public
@@ -23,35 +22,23 @@ export const setIsOpen = Symbol("setIsOpen");
  * @public
  */
 export interface FFormProvider {
-    [setRef](id: string, data: FormErrorList | FormStep): void;
-    [getRef](id: string): Reference<FormErrorList | FormStep>;
-    [setIsOpen](id: string, isOpen: boolean): void;
+    [setRef](id: string, data: FormErrorList): void;
+    [getRef](id: string): Reference<FormErrorList>;
 }
 
 /**
  * @public
  */
 export function createFFormProvideOptions(vm: {
-    components: Record<string, Reference<FormErrorList | FormStep>>;
+    components: Record<string, Reference<FormErrorList>>;
 }): FFormProvider {
     const { components } = vm;
     return {
-        [setRef](id: string, data: FormErrorList | FormStep): void {
+        [setRef](id: string, data: FormErrorList): void {
             components[id] = new Reference(data);
         },
-        [getRef](id: string): Reference<FormErrorList | FormStep> {
+        [getRef](id: string): Reference<FormErrorList> {
             return components[id];
-        },
-        [setIsOpen](id: string, isOpen: boolean): void {
-            const steps = Object.values(components).filter(isFormStepReference);
-            for (const step of steps) {
-                step.ref.isOpen = false;
-            }
-
-            const step = components[id];
-            if (isFormStepReference(step)) {
-                step.ref.isOpen = isOpen;
-            }
         },
     };
 }
