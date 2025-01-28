@@ -417,25 +417,6 @@ module.exports = defineMetadata({
         permittedContent: ["@flow"],
     },
 
-    "f-form-step-button": {
-        inherit: "button",
-        textContent: "none",
-        attributes: {
-            id: {},
-            "is-open": {},
-            "is-any-field-touched": {},
-            "additional-screenreader-text": {},
-            type: {
-                required: false,
-            },
-        },
-        deprecated: {
-            message:
-                "See migration guide: https://forsakringskassan.github.io/latest/components/fform.html",
-            source: "@fkui/vue",
-        },
-    },
-
     "f-interactive-table": {
         flow: true,
         attributes: {
