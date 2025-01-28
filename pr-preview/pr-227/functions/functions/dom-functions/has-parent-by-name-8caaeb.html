@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="sv" class="layout--example" data-root-url="../../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>hasParentByName - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../../../assets/docs-c04aff.css"
+            crossorigin
+            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../../assets/docs-exp-279088.css"
+            crossorigin
+            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../../../assets/docs-int-292562.css"
+            crossorigin
+            integrity="sha384-tZxJwf0152/w7R1AKolqYqlP3uBMkygz7Lwf+FRI5DDwZzVTDPt+v87q78ASMH40"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../../assets/bootstrap-956ec3.js"
+            crossorigin
+            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        <script src="../../../assets/vendor-vue-468cb1.js"></script>
+        <script src="../../../assets/vendor-fkui-logic-ba7196.js"></script>
+        <script src="../../../assets/vendor-fkui-date-7710bf.js"></script>
+        <script src="../../../assets/vendor-fkui-vue-8c3b9f.js"></script>
+        <script src="../../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"></script>
+
+        <!-- prettier-ignore --><!-- prettier-ignore -->
+        <script
+            src="../../../assets/processors/motd/index-8c87e1.js"
+            crossorigin
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            
+        ></script>
+        <script
+            src="../../../assets/processors/selectable-version/select-version-dac30b.js"
+            crossorigin
+            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            
+        ></script>
+        <script
+            src="../../../assets/main-623313.js"
+            crossorigin
+            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            
+        ></script> <my-root-component>
+    ...
+    <my-parent-component>
+        ...
+        <my-child-component></my-child-component>
+    </my-parent-component>
+</my-root-component>
+
+    </body>
+</html>
