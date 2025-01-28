@@ -1217,14 +1217,7 @@ module.exports = defineMetadata({
         flow: true,
         interactive: true,
         phrasing: false,
-        slots: [
-            "default",
-            "header",
-            "error-message",
-            "input-text-fields",
-            "submit-button-text",
-            "cancel-button-text",
-        ],
+        slots: ["default", "header", "error-message", "input-text-fields"],
         permittedContent: ["@flow", "template"],
         attributes: {
             "aria-close-text": {},

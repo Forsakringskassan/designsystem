@@ -215,34 +215,6 @@ describe("events", () => {
     });
 });
 
-describe("deprecated slots", () => {
-    it("should change cancel button text via slot", () => {
-        const cancelButtonText = "test cancel";
-        const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
-            slots: { "cancel-button-text": cancelButtonText },
-        });
-
-        const button = wrapper.find('[data-test="cancel-button"]');
-        expect(button.text()).toBe(cancelButtonText);
-    });
-
-    it("should change submit button text via slot", () => {
-        const submitButtonText = "test submit";
-        const wrapper = mount(FFormModal, {
-            props: {
-                isOpen: true,
-            },
-            slots: { "submit-button-text": submitButtonText },
-        });
-
-        const button = wrapper.find('[data-test="submit-button"]');
-        expect(button.text()).toBe(submitButtonText);
-    });
-});
-
 describe("slots", () => {
     it("should change header via slot", () => {
         const headerText = "foo header";
@@ -477,12 +449,10 @@ describe("html-validate", () => {
     });
 
     it.each`
-        slotName                | html
-        ${"header"}             | ${"<f-form-modal><template #header>Header</template></f-form-modal>"}
-        ${"error-message"}      | ${"<f-form-modal><template #error-message>Error</template></f-form-modal>"}
-        ${"input-text-fields"}  | ${"<f-form-modal><template #input-text-fields></template></f-form-modal>"}
-        ${"submit-button-text"} | ${"<f-form-modal><template #submit-button-text></template></f-form-modal>"}
-        ${"cancel-button-text"} | ${"<f-form-modal><template #cancel-button-text></template></f-form-modal>"}
+        slotName               | html
+        ${"header"}            | ${"<f-form-modal><template #header>Header</template></f-form-modal>"}
+        ${"error-message"}     | ${"<f-form-modal><template #error-message>Error</template></f-form-modal>"}
+        ${"input-text-fields"} | ${"<f-form-modal><template #input-text-fields></template></f-form-modal>"}
     `("should allow $slotName slot", ({ html }) => {
         expect.assertions(1);
 
