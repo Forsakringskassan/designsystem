@@ -1,6 +1,5 @@
 export { default as FForm } from "./FForm.vue";
 export { default as FFormStep } from "./FFormStep.vue";
-export { default as FFormStepButton } from "./FFormStepButton.vue";
 export {
     type FFormProvider,
     setRef,
