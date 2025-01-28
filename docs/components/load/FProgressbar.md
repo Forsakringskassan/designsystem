@@ -16,3 +16,7 @@ FProgressbarExample.vue
 :::api
 vue:FProgressbar
 :::
+
+## Relaterat
+
+- {@link FProgressbarPageObject FProgressbarPageObject}
