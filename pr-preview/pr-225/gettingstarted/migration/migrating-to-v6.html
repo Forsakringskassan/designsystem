@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-8e0041.json"
+            href="../../search-data-e13f90.json"
             as="fetch"
             crossorigin
-            integrity="sha384-5OzH8Gp3QxlWTQUWC34SjV/X1rf8Zxs9xY1JUAe2hLf16ZHt35MXaIoUWFl94f/o"
+            integrity="sha384-bd6kJY/JSitcBq9nS6mR6rwObpHCokncNLjvdVB3XcoCZHn4993gudtAF/obB6DO"
             id="search-data"
         />
     </head>
@@ -570,11 +570,46 @@
 
 
                         
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#fform_fformstep_och_fformstepbutton">`FForm`, `FFormStep` och `FFormStepButton`</a></li>
+                                
+                            </ul>
+                        </details>
+                        
                     </div>
                     
 
                     <div id="content">
                         <!-- prettier-ignore -->
+<ul>
+<li><code>FForm</code></li>
+<li><code>FFormStep</code></li>
+<li><code>FFormStepButton</code></li>
+</ul>
+<h2 id="fform_fformstep_och_fformstepbutton"><a class="header-anchor" href="#fform_fformstep_och_fformstepbutton"><code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code></a></h2><p>De deprekerade komponenterna <code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code> har tagits bort.
+Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <code>FValidationForm</code>, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av <code>FForm</code>.</p>
+<p>Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:</p>
+<ul>
+<li><a href="../../components/fwizard.html"><code>FWizard</code></a></li>
+<li><a href="../../components/validation/fvalidationform.html"><code>FValidationForm</code></a></li>
+</ul>
+<p>Följande komponenter, funktioner och typer är även de borttagna:</p>
+<ul>
+<li><code>FFormPageObject</code></li>
+<li><code>FFormStepPageObject</code></li>
+<li><code>FFormData</code></li>
+<li><code>FFormProvider</code></li>
+<li><code>FormStepFields</code></li>
+<li><code>setRef</code></li>
+<li><code>getRef</code></li>
+<li><code>setIsOpen</code></li>
+<li><code>createFFormProvideOptions</code></li>
+<li><code>isFormStepReference</code></li>
+<li><code>sortComponentsWithErrorsOnDOMOrder</code></li>
+</ul>
 
 
                     </div>
@@ -596,9 +631,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/0955b634deae07df5ae61834fff2b8db66d668b1">0955b63</a>)<br />
+    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/903c885d9ac1a4a08eef10251438bf46a38e7490">903c885</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/225">PR 225</a><br />
-        2025-01-28 13:10
+        2025-01-28 14:12
 </div>
 <div class="toolbar__item">
     <form id="version">
