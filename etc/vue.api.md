@@ -2947,8 +2947,7 @@ required: false;
 default: string;
 };
 }>, {}, FCrudDatasetData, {
-confirmButtonText(): string;
-cancelButtonText(): string;
+formModalButtons(): FModalButtonDescriptor[];
 confirmDeleteButtons(): FModalButtonDescriptor[];
 hasAddSlot(): boolean;
 hasDeleteSlot(): boolean;
@@ -3083,7 +3082,6 @@ default: () => FModalButtonDescriptor[];
 };
 }>, {}, {}, {
 preparedButtons(): FModalButton[];
-hasDeprecatedSlots(): boolean;
 }, {
 onClose(): void;
 onSubmit(): Promise<void>;
@@ -7612,7 +7610,6 @@ default: () => FModalButtonDescriptor[];
 };
 }>, {}, {}, {
 preparedButtons(): FModalButton[];
-hasDeprecatedSlots(): boolean;
 }, {
 onClose(): void;
 onSubmit(): Promise<void>;

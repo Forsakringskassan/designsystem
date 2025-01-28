@@ -22,6 +22,7 @@
         <f-form-modal
             :is-open="isFormModalOpen"
             :aria-close-text="$t('fkui.crud-dataset.modal.close', 'Stäng')"
+            :buttons="formModalButtons"
             :use-error-list="false"
             :before-submit="beforeSubmit"
             :before-validation="beforeValidation"
@@ -44,8 +45,6 @@ The item being modified is available through `v-slot="{ item }"`
                     -->
                 <slot v-if="operation === Operation.MODIFY" name="modify" v-bind="{ item: item }" />
             </template>
-            <template #submit-button-text>{{ confirmButtonText }}</template>
-            <template #cancel-button-text>{{ cancelButtonText }}</template>
         </f-form-modal>
 
         <f-confirm-modal
@@ -211,15 +210,29 @@ export default defineComponent({
         };
     },
     computed: {
-        confirmButtonText(): string {
-            return this.operation === Operation.ADD
-                ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till")
-                : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-        },
-        cancelButtonText(): string {
-            return this.operation === Operation.ADD
-                ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt")
-                : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+        formModalButtons(): FModalButtonDescriptor[] {
+            const confirmButtonText =
+                this.operation === Operation.ADD
+                    ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till")
+                    : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+            const cancelButtonText =
+                this.operation === Operation.ADD
+                    ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt")
+                    : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+            return [
+                {
+                    label: confirmButtonText,
+                    event: "confirm",
+                    type: "primary",
+                    submitButton: true,
+                },
+                {
+                    label: cancelButtonText,
+                    event: "dismiss",
+                    type: "secondary",
+                    submitButton: false,
+                },
+            ];
         },
         confirmDeleteButtons(): FModalButtonDescriptor[] {
             return [
@@ -228,7 +241,10 @@ export default defineComponent({
                     type: "primary",
                     event: "confirm",
                 },
-                { label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"), type: "secondary" },
+                {
+                    label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
+                    type: "secondary",
+                },
             ];
         },
         hasAddSlot(): boolean {

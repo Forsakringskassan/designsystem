@@ -325,13 +325,7 @@ it("should retain scroll by default when closed", () => {
                     <f-form-modal
                         :is-open="isEditing"
                         @close="isEditing = false"
-                    >
-                        <template #header>Edit item</template>
-                        <template #input-text-fields></template>
-                        <template #submit-button-text>Save</template>
-                        <template #cancel-button-text>Cancel</template>
-                    </f-form-modal>
-
+                    ></f-form-modal>
                     <f-confirm-modal
                         :is-open="isConfirming"
                         :buttons="confirmDeleteButtons"
