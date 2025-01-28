@@ -1,13 +1,13 @@
 import { Reference } from "@fkui/logic";
 import { defineComponent } from "vue";
 import { mount, VueWrapper } from "@vue/test-utils";
-import { ComponentValidityEvent, FormErrorList, FormStep } from "../../types";
+import { ComponentValidityEvent, FormErrorList } from "../../types";
 import { cleanUpElements } from "./FormUtils";
 
-type ComponentReference = Record<string, Reference<FormStep | FormErrorList>>;
+type ComponentReference = Record<string, Reference<FormErrorList>>;
 type ComponentReferences =
     | Record<string, ComponentValidityEvent>
-    | Record<string, Reference<FormStep | FormErrorList>>;
+    | Record<string, Reference<FormErrorList>>;
 interface Special {
     $el: Element;
     components: ComponentReferences;

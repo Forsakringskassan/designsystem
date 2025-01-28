@@ -12,7 +12,6 @@ export { FFieldsetPageObject } from "./FFieldset.pageobject";
 export { FFileItemPageObject } from "./FFileItem.pageobject";
 export { FFileSelectorPageObject } from "./FFileSelector.pageobject";
 export { FFormPageObject } from "./FForm.pageobject";
-export { FFormStepPageObject } from "./FFormStep.pageobject";
 export { FLabelPageObject } from "./FLabel.pageobject";
 export { FListPageObject } from "./FList.pageobject";
 export { FListItemPageObject } from "./FListItem.pageobject";

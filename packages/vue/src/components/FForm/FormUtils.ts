@@ -1,5 +1,5 @@
 import { Reference, documentOrderComparator } from "@fkui/logic";
-import { ComponentValidityEvent, FormErrorList, FormStep } from "../../types";
+import { ComponentValidityEvent, FormErrorList } from "../../types";
 
 /**
  * @public
@@ -73,15 +73,4 @@ export function sortComponentsWithErrorsOnDOMOrder(
         return documentOrderComparator(elementToCompareA, elementToCompareB);
     });
     return errorList;
-}
-
-/**
- * Checks if reference is FormStep
- *
- * @public
- */
-export function isFormStepReference(
-    reference: Reference<FormErrorList | FormStep>,
-): reference is Reference<FormStep> {
-    return "isOpen" in reference.ref;
 }

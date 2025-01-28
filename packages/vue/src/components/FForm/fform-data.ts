@@ -1,10 +1,10 @@
 import { Reference } from "@fkui/logic";
-import { FormErrorList, FormStep } from "../../types";
+import { FormErrorList } from "../../types";
 
 /**
  * @public
  */
 export interface FFormData {
     errorMessageSlotClass: string[];
-    components: Record<string, Reference<FormErrorList | FormStep>>;
+    components: Record<string, Reference<FormErrorList>>;
 }

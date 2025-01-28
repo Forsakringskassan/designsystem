@@ -31,9 +31,7 @@ function getValidatableElement(element: HTMLElement): ValidatableHTMLElement {
     }
 }
 
-function triggerInitialValidationToSupportFFormStepValidation(
-    el: HTMLElement,
-): void {
+function triggerInitialValidation(el: HTMLElement): void {
     const target = getValidatableElement(el);
     ValidationService.validateElement(target);
 }
@@ -82,7 +80,7 @@ const ValidationDirective: Directive<
         }
     },
     mounted(el: HTMLElement) {
-        triggerInitialValidationToSupportFFormStepValidation(el);
+        triggerInitialValidation(el);
     },
 };
 

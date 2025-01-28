@@ -389,34 +389,6 @@ module.exports = defineMetadata({
         permittedContent: ["@flow"],
     },
 
-    "f-form-step": {
-        flow: true,
-        phrasing: true,
-        slots: ["default", "header", "error-message"],
-        permittedDescendants: [
-            {
-                exclude: "f-progressbar",
-            },
-        ],
-        deprecated: {
-            message:
-                "See migration guide: https://forsakringskassan.github.io/latest/components/fform.html",
-            source: "@fkui/vue",
-        },
-    },
-
-    "f-form-step#default": {
-        permittedContent: ["@flow"],
-    },
-
-    "f-form-step#header": {
-        permittedContent: ["@flow"],
-    },
-
-    "f-form-step#error-message": {
-        permittedContent: ["@flow"],
-    },
-
     "f-interactive-table": {
         flow: true,
         attributes: {
