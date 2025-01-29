@@ -11,7 +11,7 @@ Use {@link useModal useModal()} with Composition API.
 
 ## Syntax
 
-```ts
+```ts nocompile
 function confirmModal(callingInstance, texts);
 ```
 
@@ -42,15 +42,32 @@ A `Promise` resolving to `true` if the user confirms the action and `false` if t
 ## Exempel
 
 ```ts
-const confirmed = await confirmModal(this, {
-    heading: "Ta bort arbetsgivare",
-    content: `Är du säker att du vill ta bort "${arbetsgivare.namn}"?`,
-    confirm: "Ja, ta bort",
-    dismiss: "Nej, behåll",
+import { defineComponent } from "vue";
+import { confirmModal } from "@fkui/vue";
+
+const arbetsgivare = {
+    namn: "",
+};
+
+defineComponent({
+    methods: {
+        async dummy() {
+            /* --- cut above --- */
+
+            const confirmed = await confirmModal(this, {
+                heading: "Ta bort arbetsgivare",
+                content: `Är du säker att du vill ta bort "${arbetsgivare.namn}"?`,
+                confirm: "Ja, ta bort",
+                dismiss: "Nej, behåll",
+            });
+            if (confirmed) {
+                /* ... */
+            }
+
+            /* --- cut below --- */
+        },
+    },
 });
-if (confirmed) {
-    /* ... */
-}
 ```
 
 ## Relaterat

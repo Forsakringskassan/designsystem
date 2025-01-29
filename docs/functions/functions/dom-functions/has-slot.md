@@ -9,7 +9,7 @@ Check if slot is implemented by the user.
 
 ## Syntax
 
-```ts
+```ts nocompile
 function hasSlot(vm, name, props, options);
 ```
 
@@ -48,9 +48,22 @@ Given the following markup:
 ```
 
 ```ts
-hasSlot(this, "foo"); // --> true
-hasSlot(this, "bar"); // --> false
-hasSlot(this, "baz"); // --> false
+import { defineComponent } from "vue";
+import { hasSlot } from "@fkui/vue";
+
+defineComponent({
+    methods: {
+        dummy() {
+            /* --- cut above --- */
+
+            hasSlot(this, "foo"); // --> true
+            hasSlot(this, "bar"); // --> false
+            hasSlot(this, "baz"); // --> false
+
+            /* --- cut below --- */
+        },
+    },
+});
 ```
 
 If you use scoped slots you need to pass in the scope:
@@ -62,7 +75,20 @@ If you use scoped slots you need to pass in the scope:
 ```
 
 ```ts
-hasSlot(this, "foo", { name: "World" }); // --> true
+import { defineComponent } from "vue";
+import { hasSlot } from "@fkui/vue";
+
+defineComponent({
+    methods: {
+        dummy() {
+            /* --- cut above --- */
+
+            hasSlot(this, "foo", { name: "World" }); // --> true
+
+            /* --- cut below --- */
+        },
+    },
+});
 ```
 
 By default text wrapped by the `sr-only` class is ignored.
@@ -77,6 +103,19 @@ This can be changed by setting the `stripClasses` option to `[]`
 ```
 
 ```ts
-hasSlot(this, "foo"); // --> false
-hasSlot(this, "foo", {}, { stripClasses: [] }); // --> true
+import { defineComponent } from "vue";
+import { hasSlot } from "@fkui/vue";
+
+defineComponent({
+    methods: {
+        dummy() {
+            /* --- cut above --- */
+
+            hasSlot(this, "foo"); // --> false
+            hasSlot(this, "foo", {}, { stripClasses: [] }); // --> true
+
+            /* --- cut below --- */
+        },
+    },
+});
 ```

@@ -11,7 +11,7 @@ Use {@link useModal useModal()} with Composition API.
 
 ## Syntax
 
-```ts
+```ts nocompile
 function formModal(callingInstance, options);
 ```
 
@@ -52,36 +52,81 @@ interface MyFormInterface {
 ```
 
 ```ts
-let result: MyFormInterface;
-try {
-    result = await formModal<MyFormInterface>(MyFormModalComponent);
-} catch (err) {
-    /* handle cancel/close case */
-    return;
-}
-/* handle submit case */
-console.log("Modal closed with result", result);
-// Modal closed with result `data`
+import { defineComponent } from "vue";
+import { formModal } from "@fkui/vue";
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface MyFormInterface {}
+
+const MyFormModalComponent = defineComponent({});
+
+defineComponent({
+    methods: {
+        async dummy() {
+            /* --- cut above --- */
+
+            let result: MyFormInterface;
+            try {
+                result = await formModal<MyFormInterface>(
+                    this,
+                    MyFormModalComponent,
+                );
+            } catch (err) {
+                /* handle cancel/close case */
+                return;
+            }
+
+            /* handle submit case */
+            console.log("Modal closed with result", result);
+            // Modal closed with result `data`
+
+            /* --- cut below --- */
+        },
+    },
+});
 ```
 
 The example below is for sending `size`, and custom Vue props to the component `MyFormModalComponent`.
 
 ```ts
-let result: MyFormInterface;
-try {
-    result = await formModal<MyFormInterface>(MyFormModalComponent, {
-        size: "large"
-        props: {
-            myCustomProp: "myCustomProp",
+import { defineComponent } from "vue";
+import { formModal } from "@fkui/vue";
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface MyFormInterface {}
+
+const MyFormModalComponent = defineComponent({});
+
+defineComponent({
+    methods: {
+        async dummy() {
+            /* --- cut above --- */
+
+            let result: MyFormInterface;
+            try {
+                result = await formModal<MyFormInterface>(
+                    this,
+                    MyFormModalComponent,
+                    {
+                        size: "large",
+                        props: {
+                            myCustomProp: "myCustomProp",
+                        },
+                    },
+                );
+            } catch (err) {
+                /* handle cancel/close case */
+                return;
+            }
+
+            /* handle submit case */
+            console.log("Modal closed with result", result);
+            // Modal closed with result `data`
+
+            /* --- cut below --- */
         },
-    });
-} catch (err) {
-    /* handle cancel/close case */
-    return;
-}
-/* handle submit case */
-console.log("Modal closed with result", result);
-// Modal closed with result `data`
+    },
+});
 ```
 
 ## Relaterat

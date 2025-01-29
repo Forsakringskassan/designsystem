@@ -14,7 +14,7 @@ t ex `FTextFieldPageObject.label`.
 
 ## Syntax
 
-```ts
+```ts nocompile nolint
 new FLabelPageObject(selector);
 ```
 

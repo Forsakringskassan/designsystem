@@ -3,26 +3,31 @@ title: openModal
 layout: content-with-menu
 ---
 
-```ts
-export interface ModalOptions {
+```ts nocompile
+interface ModalOptions {
     attachTo: string | Element;
     props: Record<string, string | undefined>;
 }
+```
 
-export interface ModalResult<T> {
+```ts nocompile
+interface ModalResult<T> {
     reason: ModalReason | string;
     data: T;
 }
+```
 
-export type AsyncModalResult<T> = Promise<ModalResult<T>>;
+```ts nocompile
+type AsyncModalResult<T> = Promise<ModalResult<T>>;
+```
 
-export function openModal<T>(
+```ts nocompile
+function openModal<T>(
     callingInstance: MaybeWithFKUIContext,
     Component: MaybeComponent,
     text: string,
 ): AsyncModalResult<T>;
-
-export function openModal<T>(
+function openModal<T>(
     callingInstance: MaybeWithFKUIContext,
     Component: MaybeComponent,
     options?: Partial<ModalOptions>,
@@ -34,14 +39,29 @@ Provides an API to pragmatically open modal dialogs.
 ## Usage
 
 ```ts
-const result = await openModal(this, MyModalComponent, {
-    props: {
-        heading: "Modal title",
-        content: "Text to display in modal",
+import { defineComponent } from "vue";
+import { openModal } from "@fkui/vue";
+
+const MyModalComponent = defineComponent({});
+
+defineComponent({
+    methods: {
+        async foo() {
+            /* --- cut above --- */
+
+            const result = await openModal(this, MyModalComponent, {
+                props: {
+                    heading: "Modal title",
+                    content: "Text to display in modal",
+                },
+            });
+            console.log("Modal closed with result", result);
+            // Modal closed with result { reason: "close", data: undefined }
+
+            /* --- cut below --- */
+        },
     },
 });
-console.log("Modal closed with result", result);
-// Modal closed with result { reason: "close", data: undefined }
 ```
 
 ## API for custom modals
