@@ -6,8 +6,8 @@ layout: content-with-menu
 
 (Odokumenterad funktion)
 
-```ts
-export function handleKeyboardFocusNavigation(
+```ts nocompile
+function handleKeyboardFocusNavigation(
     key: string,
     focusedElement: HTMLElement,
     focusableElements: Element[],

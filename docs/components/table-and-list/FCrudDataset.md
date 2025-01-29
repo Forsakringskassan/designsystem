@@ -29,6 +29,11 @@ Callback anropas innan modalen visas.
 ```
 
 ```ts
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface MyInterface {}
+
+/* --- cut above --- */
+
 function onBeforeCreate(): MyInterface {
     return {
         /* ... */

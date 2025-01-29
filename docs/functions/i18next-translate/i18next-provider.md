@@ -9,7 +9,7 @@ Skapar en ny {@link I18nextProvider} för användning med `TranslationService`.
 
 ## Syntax
 
-```ts
+```ts nocompile
 i18nextProvider(options);
 ```
 

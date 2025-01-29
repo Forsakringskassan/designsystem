@@ -6,10 +6,8 @@ layout: content-with-menu
 
 Verifies that a ref is an array containing at least one Vue component.
 
-```ts
-export function refIsVueArray(
-    value: unknown,
-): value is ComponentPublicInstance[];
+```ts nocompile
+function refIsVueArray(value: unknown): value is ComponentPublicInstance[];
 ```
 
 - `value` - The value to type check.

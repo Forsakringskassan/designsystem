@@ -22,19 +22,44 @@ FConfirmModalApiExample.vue
 
 För att öppna en bekräftelsemodal använder du {@link confirm-modal `confirmModal()`} (options API) eller {@link useModal `useModal()`} (composition API).
 
-```ts
-// options api
-const confirmed = await confirmModal(this, {
-    heading: "Ta bort frukt",
-    content: `Är du säker att du vill ta bort "${frukt.namn}"?`,
-    confirm: "Ja, ta bort",
-    dismiss: "Nej, behåll",
-});
-if (confirmed) {
-    /* do something */
-}
+**Options API:**
 
-// composition api
+```ts
+import { defineComponent } from "vue";
+import { confirmModal } from "@fkui/vue";
+
+const frukt = { namn: "Frukt" };
+
+defineComponent({
+    methods: {
+        async onOpen(): Promise<void> {
+            /* --- cut above --- */
+
+            const confirmed = await confirmModal(this, {
+                heading: "Ta bort frukt",
+                content: `Är du säker att du vill ta bort "${frukt.namn}"?`,
+                confirm: "Ja, ta bort",
+                dismiss: "Nej, behåll",
+            });
+            if (confirmed) {
+                /* do something */
+            }
+
+            /* --- cut below --- */
+        },
+    },
+});
+```
+
+**Composition API:**
+
+```ts
+const frukt = { namn: "Frukt" };
+
+/* --- cut above --- */
+
+import { useModal } from "@fkui/vue";
+
 const { confirmModal } = useModal();
 
 async function onOpen(): Promise<void> {
