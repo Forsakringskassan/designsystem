@@ -574,7 +574,11 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#deprekering_av_gruppkomponenter_for_radio_och_kryssruta">Deprekering av gruppkomponenter för radio och kryssruta</a></li>
+                                <li><a href="#radioknapp">Radioknapp</a></li>
+                                
+                                <li><a href="#kryssruta">Kryssruta</a></li>
+                                
+                                <li><a href="#komplett_exempel">Komplett exempel</a></li>
                                 
                             </ul>
                         </details>
@@ -584,10 +588,18 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="deprekering_av_gruppkomponenter_for_radio_och_kryssruta"><a class="header-anchor" href="#deprekering_av_gruppkomponenter_for_radio_och_kryssruta">Deprekering av gruppkomponenter för radio och kryssruta</a></h2><h3 id="radio"><a class="header-anchor" href="#radio">Radio</a></h3><p>Ersätt <code>FRadioGroup</code> med <code>FFieldset</code>.</p>
+<p>Från och med release 5.17.0 (2024-03-02) är gruppkomponenter för radio och kryssruta deprekerade.</p>
+<ul>
+<li><code>FRadioGroup</code></li>
+<li><code>FRadioGroupField</code></li>
+<li><code>FCheckboxGroup</code></li>
+<li><code>FCheckboxGroupField</code></li>
+</ul>
+<p>Den här migreringsuiden ger information om hur du ersätter dem med <code>FFieldset</code>.</p>
+<h2 id="radioknapp"><a class="header-anchor" href="#radioknapp">Radioknapp</a></h2><p>Ersätt <code>FRadioGroup</code> med <code>FFieldset</code>.</p>
 
                 <div
-                    id="example-8135a0"
+                    id="example-9669b6"
                     class="code-preview code-preview--default"
                     
                     
@@ -601,7 +613,7 @@
             <p>Ersätt attributet <code>is-horizontal</code> med <code>horizontal</code>.</p>
 
                 <div
-                    id="example-092eac"
+                    id="example-0e12f2"
                     class="code-preview code-preview--default"
                     
                     
@@ -615,7 +627,7 @@
             <p>Indentering är inte längre kopplat till komponenten, utan sker fristående genom att ange klassen <code>indent</code>.</p>
 
                 <div
-                    id="example-0a618c"
+                    id="example-850db7"
                     class="code-preview code-preview--default"
                     
                     
@@ -632,7 +644,7 @@
             <p>Ersätt <code>FRadioGroupField</code> med <code>FRadioField</code>.</p>
 
                 <div
-                    id="example-e7f9cd"
+                    id="example-eab1e7"
                     class="code-preview code-preview--default"
                     
                     
@@ -643,10 +655,10 @@
 <span class="hljs-addition">+&lt;f-radio-field&gt;</span>
 </code></pre>
                 </div>
-            <h3 id="kryssruta"><a class="header-anchor" href="#kryssruta">Kryssruta</a></h3><p>Ersätt <code>FCheckboxGroup</code> med <code>FFieldset</code>.</p>
+            <h2 id="kryssruta"><a class="header-anchor" href="#kryssruta">Kryssruta</a></h2><p>Ersätt <code>FCheckboxGroup</code> med <code>FFieldset</code>.</p>
 
                 <div
-                    id="example-bda363"
+                    id="example-4be7fb"
                     class="code-preview code-preview--default"
                     
                     
@@ -660,7 +672,7 @@
             <p>Ersätt <code>FCheckboxGroupField</code> med <code>FCheckboxField</code>.</p>
 
                 <div
-                    id="example-c0d9ca"
+                    id="example-3ed699"
                     class="code-preview code-preview--default"
                     
                     
@@ -671,9 +683,9 @@
 <span class="hljs-addition">+&lt;f-checkbox-field&gt;</span>
 </code></pre>
                 </div>
-            <h3 id="komplett_exempel"><a class="header-anchor" href="#komplett_exempel">Komplett exempel</a></h3>
+            <h2 id="komplett_exempel"><a class="header-anchor" href="#komplett_exempel">Komplett exempel</a></h2>
                 <div
-                    id="example-861af2"
+                    id="example-82c96a"
                     class="code-preview code-preview--default"
                     
                     
@@ -717,9 +729,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/radio-checkbox-deprecated (<a href="https://github.com/Forsakringskassan/designsystem/commits/0a631b91e16e7ef640e8eb9d68e36f7e2aa64a50">0a631b9</a>)<br />
+    feature/radio-checkbox-deprecated (<a href="https://github.com/Forsakringskassan/designsystem/commits/361d55df47a6607494d74e1b1982261c8cc645b2">361d55d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/221">PR 221</a><br />
-        2025-01-29 11:23
+        2025-01-29 11:41
 </div>
 <div class="toolbar__item">
     <form id="version">
