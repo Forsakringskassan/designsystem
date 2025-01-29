@@ -23,6 +23,7 @@ Följande deprekerade komponenter har tagits bort:
 För Cypress pageobjekt:
 
 - `trimmedText()` metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
+  -``FMessageBoxPageObject.title()` och `FMessageBoxPageObject.body()` metoderna är borttagna.
 - `FNavigationMenuPageobject.menu()` metoden är borttagen.
 - `FTooltipPageObject.content()` metoden är borttagen.
 
@@ -134,6 +135,16 @@ Specifikt, för varje pageobjekt kan `.trimmedText().should(..)` ersättas med:
 - För `FLabelPageObject` ersätt med `.el().should(..)`
 - För `FRadioFieldPageObject` ersätt med `.label().should(..)`.
 - För `FSelectFieldPageObject` ersätt med `.selectedOption().should(..)`.
+
+### `FMessageBoxPageObject`
+
+De deprekerade metoderna `FMessageBoxPageObject.title()` och `FMessageBoxPageObject.body()` är borttagna.
+Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda `.content()` för att hämta ut hela innehållet i slotten eller använda en egen selector.
+
+```diff
+-messagebox.title().should("have.text", "..");
++messagebox.content().should("contain.text", "..");
+```
 
 ### `FNavigationMenuPageobject.menu()` metoden
 

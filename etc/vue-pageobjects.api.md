@@ -434,8 +434,6 @@ export class FLoaderPageObject implements BasePageObject {
 // @public (undocumented)
 export class FMessageBoxPageObject implements BasePageObject {
     constructor(selector: string);
-    // @deprecated (undocumented)
-    body(): DefaultCypressChainable;
     // (undocumented)
     content(): DefaultCypressChainable;
     // (undocumented)
@@ -446,8 +444,6 @@ export class FMessageBoxPageObject implements BasePageObject {
     icon(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    // @deprecated (undocumented)
-    title(): DefaultCypressChainable;
     // (undocumented)
     typeOfMessage(): Cypress.Chainable<string>;
 }
