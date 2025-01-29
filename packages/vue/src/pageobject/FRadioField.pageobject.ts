@@ -29,13 +29,6 @@ export class FRadioFieldPageObject implements BasePageObject {
         return cy.get(`${this.selector} .radio-button__label`);
     }
 
-    /**
-     * @deprecated Use assertion `label().should('trimmedText', '...')` instead.
-     */
-    public trimmedText(): Cypress.Chainable<string> {
-        return cy.get(`${this.selector} label`).__fkui_internal_trimmedText();
-    }
-
     public select(): DefaultCypressChainable {
         return cy.get(`${this.selector} label`).click();
     }

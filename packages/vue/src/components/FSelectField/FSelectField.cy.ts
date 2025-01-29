@@ -86,7 +86,7 @@ describe("FSelectField", () => {
             .should("contain", "Foo label");
 
         selectField.label.errorMessage().should("not.exist");
-        selectField.trimmedText().should("be.equal", "Foo label");
+        selectField.selectedOption().should("have.text", "Foo label");
         selectField.selectedValue().should("be.equal", "foo-value");
         selectField.numberOfOptions().should("be.equal", 2);
 

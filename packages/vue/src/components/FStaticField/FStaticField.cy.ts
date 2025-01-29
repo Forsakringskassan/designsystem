@@ -20,7 +20,7 @@ describe("FStaticField", () => {
         const staticFieldWithTooltip = new FStaticFieldPageObject(
             "[data-test] .output-field",
         );
-        staticFieldWithTooltip.label.trimmedText().should("equal", "Etikett");
+        staticFieldWithTooltip.label.el().should("contain.text", "Etikett");
         staticFieldWithTooltip.tooltip.el().should("not.be.visible");
         staticFieldWithTooltip.tooltip.iButton().click();
         staticFieldWithTooltip.tooltip.el().should("be.visible");

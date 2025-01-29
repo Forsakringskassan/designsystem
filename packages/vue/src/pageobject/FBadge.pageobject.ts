@@ -1,5 +1,4 @@
 import { type DefaultCypressChainable, type BasePageObject } from "./common";
-import "./trimmed-text";
 
 /**
  * @public
@@ -16,13 +15,6 @@ export class FBadgePageObject implements BasePageObject {
 
     public el(): DefaultCypressChainable {
         return cy.get(this.selector);
-    }
-
-    /**
-     * @deprecated Use assertion `label().should('trimmedText', '...')` instead.
-     */
-    public trimmedText(): Cypress.Chainable<string> {
-        return this.el().__fkui_internal_trimmedText();
     }
 
     public status(): Cypress.Chainable<string> {

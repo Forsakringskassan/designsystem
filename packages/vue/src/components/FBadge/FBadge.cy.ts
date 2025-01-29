@@ -43,7 +43,6 @@ describe("FBadge", () => {
         cy.mount(createComponent(false));
         const badge = new FBadgePageObject('[data-test="badge-default"]');
         badge.el().should("contain.text", "Lorem ipsum dolor sit amet");
-        badge.trimmedText().should("be.equal", "Lorem ipsum dolor sit amet");
         badge.status().should("be.equal", "default");
         badge.isInverted().should("be.equal", false);
     });
@@ -52,7 +51,6 @@ describe("FBadge", () => {
         cy.mount(createComponent(true));
         const badge = new FBadgePageObject('[data-test="badge-default"]');
         badge.el().should("contain.text", "Lorem ipsum dolor sit amet");
-        badge.trimmedText().should("be.equal", "Lorem ipsum dolor sit amet");
         badge.status().should("be.equal", "default");
         badge.isInverted().should("be.equal", true);
     });

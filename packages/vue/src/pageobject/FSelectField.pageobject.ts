@@ -60,19 +60,4 @@ export class FSelectFieldPageObject implements BasePageObject {
             return el.get(0).value;
         });
     }
-
-    public trimmedText(): Cypress.Chainable<string> {
-        return this.dropdown().then((el) => {
-            return el.get(0).options.selectedIndex >= 0
-                ? el
-                      .get(0)
-                      [el.get(0).options.selectedIndex].innerText.replace(
-                          /[\n\r]/gm,
-                          "",
-                      )
-                      .replace(/\s+/g, " ")
-                      .replace(/(^\s|\s$)*/g, "")
-                : "";
-        });
-    }
 }

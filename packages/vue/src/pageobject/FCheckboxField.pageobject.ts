@@ -1,5 +1,4 @@
 import { type DefaultCypressChainable, type BasePageObject } from "./common";
-import "./trimmed-text";
 
 /**
  * @public
@@ -28,13 +27,6 @@ export class FCheckboxFieldPageObject implements BasePageObject {
 
     public label(): DefaultCypressChainable {
         return cy.get(`${this.selector} .checkbox__label`);
-    }
-
-    /**
-     * @deprecated Use assertion `label().should('trimmedText', '...')` instead.
-     */
-    public trimmedText(): Cypress.Chainable<string> {
-        return cy.get(`${this.selector} label`).__fkui_internal_trimmedText();
     }
 
     public select(): DefaultCypressChainable {

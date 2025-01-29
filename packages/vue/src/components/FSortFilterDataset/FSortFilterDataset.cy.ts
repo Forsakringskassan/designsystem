@@ -171,8 +171,8 @@ describe("sort", () => {
         table.getColumnSortedByIcon(COLUMN_YEAR, "unsorted").should("exist");
 
         sortFilterDataset.selectField
-            .trimmedText()
-            .should("equals", "Text (stigande)");
+            .selectedOption()
+            .should("contain.text", "Text (stigande)");
 
         table.headerRowItem().tableRowHeaderContent().eq(COLUMN_YEAR).click();
         table.headerRowItem().tableRowHeaderContent().eq(COLUMN_YEAR).click();
@@ -181,8 +181,8 @@ describe("sort", () => {
         table.getColumnSortedByIcon(COLUMN_YEAR, "descending").should("exist");
 
         sortFilterDataset.selectField
-            .trimmedText()
-            .should("equals", "År (fallande)");
+            .selectedOption()
+            .should("contain.text", "År (fallande)");
     });
 });
 
@@ -232,8 +232,8 @@ describe("sort & filter in combination", () => {
         assertTable(["2023", "2022", "2021", "2020"], COLUMN_YEAR);
 
         sortFilterDataset.selectField
-            .trimmedText()
-            .should("equals", "År (fallande)");
+            .selectedOption()
+            .should("contain.text", "År (fallande)");
     });
 
     it("should keep filter when sorting date by selectfield", () => {
@@ -252,8 +252,8 @@ describe("sort & filter in combination", () => {
         assertTable(["bbb", "aba", "aAc", "Aab"], COLUMN_TEXT);
 
         sortFilterDataset.selectField
-            .trimmedText()
-            .should("equals", "Text (fallande)");
+            .selectedOption()
+            .should("contain.text", "Text (fallande)");
     });
 });
 

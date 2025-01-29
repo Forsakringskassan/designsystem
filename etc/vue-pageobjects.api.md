@@ -60,8 +60,6 @@ export class FBadgePageObject implements BasePageObject {
     selector: string;
     // (undocumented)
     status(): Cypress.Chainable<string>;
-    // @deprecated (undocumented)
-    trimmedText(): Cypress.Chainable<string>;
 }
 
 // @public (undocumented)
@@ -98,8 +96,6 @@ class FCheckboxFieldPageObject implements BasePageObject {
     select(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    // @deprecated (undocumented)
-    trimmedText(): Cypress.Chainable<string>;
     // (undocumented)
     value(): Cypress.Chainable<string>;
 }
@@ -393,7 +389,6 @@ export class FLabelPageObject implements BasePageObject {
     errorMessage(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    trimmedText(): Cypress.Chainable<string>;
 }
 
 // @public (undocumented)
@@ -573,8 +568,6 @@ class FRadioFieldPageObject implements BasePageObject {
     select(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    // @deprecated (undocumented)
-    trimmedText(): Cypress.Chainable<string>;
     // (undocumented)
     value(): Cypress.Chainable<string>;
 }
@@ -622,8 +615,6 @@ export class FSelectFieldPageObject implements BasePageObject {
     selector: string;
     // (undocumented)
     tooltip: FTooltipPageObject;
-    // (undocumented)
-    trimmedText(): Cypress.Chainable<string>;
 }
 
 // @public (undocumented)
