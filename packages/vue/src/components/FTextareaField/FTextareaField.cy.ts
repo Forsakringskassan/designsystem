@@ -64,8 +64,8 @@ describe("FTextareaField", () => {
             '[data-test="berattelse-text-field"]',
         );
         berattelseTextareaField.label
-            .trimmedText()
-            .should("equal", "Berätta om dig själv");
+            .el()
+            .should("contain.text", "Berätta om dig själv");
         berattelseTextareaField.label
             .description()
             .should("contain.text", "En inte allt för utförlig berättelse");

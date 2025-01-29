@@ -16,23 +16,6 @@ export class FLabelPageObject implements BasePageObject {
     }
 
     /**
-     * Label heading
-     */
-    public trimmedText(): Cypress.Chainable<string> {
-        return this.el().then((el) => {
-            const textNode = el.get(0).childNodes[0] as Text;
-            if (!textNode.wholeText) {
-                return "";
-            }
-
-            return textNode.wholeText
-                .replace(/[\n\r]/gm, "")
-                .replace(/\s+/g, " ")
-                .replace(/(^\s|\s$)*/g, "");
-        });
-    }
-
-    /**
      * Hjälptext
      */
     public description(): DefaultCypressChainable {

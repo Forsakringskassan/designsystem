@@ -1,5 +1,3 @@
-import "./trimmedText";
-
 export type DefaultCypressChainable = Cypress.Chainable<JQuery<HTMLElement>>;
 
 export interface BasePageObject {
