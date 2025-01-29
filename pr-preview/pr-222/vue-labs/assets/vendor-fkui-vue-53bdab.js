@@ -3684,7 +3684,10 @@
   }
   function lazyLoad(fn2) {
     let cache;
-    return () => cache !== null && cache !== void 0 ? cache : cache = fn2();
+    return () => {
+      var _cache;
+      return (_cache = cache) !== null && _cache !== void 0 ? _cache : cache = fn2();
+    };
   }
   var eventTarget = lazyLoad(() => new EventTarget());
   var fn = /* @__PURE__ */ new Map();
