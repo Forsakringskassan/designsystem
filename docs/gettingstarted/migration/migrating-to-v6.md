@@ -41,6 +41,7 @@ Följande komponenter, funktioner och typer är även de borttagna:
 - `@fkui/logic`: funktioner `applyValidationMessages()`, `ìsRadiobuttonOrCheckbox()` är borttagna.
 - `@fkui/logic`: funktionen `setCookie(..)` tar inte längre `timeLimitMillis` parametern.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
+- `FModal`: CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
 - `getTextFromScopedSlot`: funktionen är borttagen.
 - Konfiguration: `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna.
@@ -177,6 +178,17 @@ Den deprekerade propen `skipLinkHref` är borttagen och ersatt med propen `skipL
 
 `skipLink` kunde tidigare ta ett `boolean` värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng `""` för att stänga av.
+
+## `FModal` deprekerade CSS-klasser
+
+De deprekerade CSS klasserna `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
+Detta påverkar endast dig som använder stylingen direkt, använder man `@fkui/vue` komponenten `FModal` påverkas man inte.
+Klasserna är ersatta med `modal__dialog-container--large` respektive `modal__dialog-container--fullscreen`.
+
+```diff
+-<div class="modal__dialog-container modal__dialog-container-large">
++<div class="modal__dialog-container modal__dialog-container--large">
+```
 
 ## `getTextFromScopedSlot`
 
