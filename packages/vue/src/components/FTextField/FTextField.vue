@@ -228,6 +228,8 @@ export default defineComponent({
          *
          * When set, the user can select a value from the list of options and filter while typing.
          *
+         * If options will be set at a later time, initially specify as an empty array.
+         *
          * If a formatter is used by the component, make sure the options are formatted as well.
          */
         options: {

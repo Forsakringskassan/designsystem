@@ -19342,7 +19342,7 @@ export const UNHANDLED_ERROR_EVENT: "unhandled-error";
 export type UnknownItem = Record<string, unknown>;
 
 // @public (undocumented)
-export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | null>>, options: string[] | undefined, onOptionSelected?: (value: string) => void): {
+export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | null>>, options: Ref<string[] | undefined>, onOptionSelected?: (value: string) => void): {
     dropdownId: string;
     dropdownIsOpen: Readonly<Ref<boolean>>;
     dropdownOptions: Readonly<Ref<string[]>>;
