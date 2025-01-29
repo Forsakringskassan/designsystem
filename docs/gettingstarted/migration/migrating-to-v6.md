@@ -24,6 +24,7 @@ För Cypress pageobjekt:
 
 - `trimmedText()` metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
   -``FMessageBoxPageObject.title()` och `FMessageBoxPageObject.body()` metoderna är borttagna.
+- `FLoaderPageobject.loader()` metoden är borttagen.
 - `FNavigationMenuPageobject.menu()` metoden är borttagen.
 - `FTooltipPageObject.content()` metoden är borttagen.
 
@@ -135,6 +136,18 @@ Specifikt, för varje pageobjekt kan `.trimmedText().should(..)` ersättas med:
 - För `FLabelPageObject` ersätt med `.el().should(..)`
 - För `FRadioFieldPageObject` ersätt med `.label().should(..)`.
 - För `FSelectFieldPageObject` ersätt med `.selectedOption().should(..)`.
+
+### `FLoaderPageobject.loader()` metoden
+
+Den deprekerade metoden `FLoaderPageobject.loader()` är borttagen.
+Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda `.el()`.
+
+```diff
+-const loader = new FLoaderPageObject("#parent-element");
+-loader.loader().should("be.visible");
++const loader = new FLoaderPageObject("#loader-element");
++loader.el().should("be.visible");
+```
 
 ### `FMessageBoxPageObject`
 

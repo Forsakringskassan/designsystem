@@ -421,8 +421,6 @@ export class FLoaderPageObject implements BasePageObject {
     constructor(selector?: string);
     // (undocumented)
     el(): DefaultCypressChainable;
-    // @deprecated
-    loader(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
     // (undocumented)
