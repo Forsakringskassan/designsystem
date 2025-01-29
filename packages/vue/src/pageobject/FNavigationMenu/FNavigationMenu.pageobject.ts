@@ -1,6 +1,5 @@
 import { type BasePageObject, type DefaultCypressChainable } from "../common";
 import { IPopupMenuPageObject } from "../IPopupMenu.pageobject";
-import { IMenuPageObject } from "./IMenu.pageobject";
 
 /**
  * Represents `f-navigation-menu` with access to its elements
@@ -90,14 +89,5 @@ export class FNavigationMenuPageobject implements BasePageObject {
     public popupMenu(): IPopupMenuPageObject {
         // Popup menu may have teleported outside of current selector, so it can't be used.
         return new IPopupMenuPageObject(`.ipopupmenu > ul.ipopupmenu__list`);
-    }
-
-    /**
-     * Returns `IMenu` page object.
-     *
-     * @deprecated `IMenuPageObject` is deprecated and equivalent methods are available for `FNavigationMenuPageobject`.
-     */
-    public menu(): IMenuPageObject {
-        return new IMenuPageObject(`${this.selector}.imenu`);
     }
 }

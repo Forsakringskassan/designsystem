@@ -23,6 +23,7 @@ Följande deprekerade komponenter har tagits bort:
 För Cypress pageobjekt:
 
 - `trimmedText()` metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
+- `FNavigationMenuPageobject.menu()` metoden är borttagen.
 - `FTooltipPageObject.content()` metoden är borttagen.
 
 ## `FCheckboxGroup` och `FCheckboxGroupField`
@@ -133,6 +134,15 @@ Specifikt, för varje pageobjekt kan `.trimmedText().should(..)` ersättas med:
 - För `FLabelPageObject` ersätt med `.el().should(..)`
 - För `FRadioFieldPageObject` ersätt med `.label().should(..)`.
 - För `FSelectFieldPageObject` ersätt med `.selectedOption().should(..)`.
+
+### `FNavigationMenuPageobject.menu()` metoden
+
+Den deprekerade metoden `FNavigationMenuPageobject.menu()` är borttagen och ersatt med direkta metoder på `FNavigationMenuPageobject`.
+
+```diff
+-nav.menu().item(0).click();
++nav.item(0).click();
+```
 
 ### `FTooltipPageObject.content()` methoden
 

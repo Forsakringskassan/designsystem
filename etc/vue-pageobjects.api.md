@@ -481,8 +481,6 @@ export class FNavigationMenuPageobject implements BasePageObject {
     item(index: number): DefaultCypressChainable;
     itemLink(index: number): DefaultCypressChainable;
     items(): DefaultCypressChainable;
-    // @deprecated
-    menu(): IMenuPageObject;
     overflowItems(): DefaultCypressChainable;
     popupItem(): DefaultCypressChainable;
     popupMenu(): IPopupMenuPageObject;
@@ -786,23 +784,6 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     selector: string;
     // (undocumented)
     text(): DefaultCypressChainable;
-}
-
-// @public @deprecated
-export class IMenuPageObject implements BasePageObject {
-    constructor(selector?: string);
-    // (undocumented)
-    el(): DefaultCypressChainable;
-    // @deprecated
-    getItemLink(index: number): DefaultCypressChainable;
-    // @deprecated
-    getSelectedItem(): DefaultCypressChainable;
-    // @deprecated
-    item(index: number): DefaultCypressChainable;
-    // @deprecated
-    items(): DefaultCypressChainable;
-    // (undocumented)
-    selector: string;
 }
 
 // @public (undocumented)
