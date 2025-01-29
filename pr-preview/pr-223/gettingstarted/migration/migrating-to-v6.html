@@ -23,9 +23,9 @@
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-292562.css"
+            href="../../assets/docs-int-0f5026.css"
             crossorigin
-            integrity="sha384-tZxJwf0152/w7R1AKolqYqlP3uBMkygz7Lwf+FRI5DDwZzVTDPt+v87q78ASMH40"
+            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
             data-theme="int" disabled
         />
 
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-734e41.json"
+            href="../../search-data-b3d80d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-MOnYTvMYQEJnrFNlaK78V1SsoknZSLLHDoRr6bTrt13/2JP4SU3jHQxD53SJ1QI/"
+            integrity="sha384-xEpFA3Dy/CcQCZQMmjnF26w7qdkIrWbqSHtABglAfYz4SGZUP0fuBFK1/mJRHE8M"
             id="search-data"
         />
     </head>
@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-8c3b9f.js"
+                    src="../../assets/vendor-fkui-vue-a71cb7.js"
                     crossorigin
-                    integrity="sha384-ofSMuWZV+5iDcscHT0fNHzXfdel6fgcnhfV27rV0IubBhRgbMGYBdaTGvcyoTQFg"
+                    integrity="sha384-5LvMNx6oIu716YTM7MHeJn5v4Zui1CzwshmzGuUL9b+hLHj+8pMVlavB7Zqy4xZT"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -574,7 +574,11 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#overblick">Överblick</a></li>
+                                <li><a href="#summering">Summering</a></li>
+                                
+                                <li><a href="#fcheckboxgroup_och_fcheckboxgroupfield">`FCheckboxGroup` och `FCheckboxGroupField`</a></li>
+                                
+                                <li><a href="#fradiogroup_och_fradiogroupfield">`FRadioGroup` och `FRadioGroupField`</a></li>
                                 
                                 <li><a href="#pageobjects">Pageobjects</a></li>
                                 
@@ -586,11 +590,22 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="overblick"><a class="header-anchor" href="#overblick">Överblick</a></h2><p>För Cypress pageobjekt:</p>
+<h2 id="summering"><a class="header-anchor" href="#summering">Summering</a></h2><p>Följande deprekerade komponenter har tagits bort:</p>
+<ul>
+<li><code>FCheckboxGroup</code></li>
+<li><code>FCheckboxGroupField</code></li>
+<li><code>FRadioGroup</code></li>
+<li><code>FRadioGroupField</code></li>
+</ul>
+<p>För Cypress pageobjekt:</p>
 <ul>
 <li><code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).</li>
 </ul>
-<h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="the_trimmedtext_method"><a class="header-anchor" href="#the_trimmedtext_method">The <code>trimmedText()</code> method</a></h3><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
+<h2 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h2><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<p>Det deprekerade aliaset <code>FCheckboxGroupField</code> har tagits bort och är ersatt med <code>FCheckboxField</code>.</p>
+<h2 id="fradiogroup_och_fradiogroupfield"><a class="header-anchor" href="#fradiogroup_och_fradiogroupfield"><code>FRadioGroup</code> och <code>FRadioGroupField</code></a></h2><p>Den deprekerade komponenten <code>FRadioGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<p>Det deprekerade aliaset <code>FRadioGroupField</code> har tagits bort och är ersatt med <code>FRadioField</code>.</p>
+<h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="trimmedtext_metoden"><a class="header-anchor" href="#trimmedtext_metoden"><code>trimmedText()</code> metoden</a></h3><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
 Ej att förväxla med tredjeparts kommando/assertion med samma namn som med fördel kan användas som ersättare.</p>
 <p>Som förslag till ersättare kan någon av följande tekniker användas:</p>
 <ul>
@@ -627,9 +642,9 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/trimmed-text (<a href="https://github.com/Forsakringskassan/designsystem/commits/fa0a7474bb42c02a4d5f6a807aae5b09f5cbcb3f">fa0a747</a>)<br />
+    feature/trimmed-text (<a href="https://github.com/Forsakringskassan/designsystem/commits/4b66fd66fbbf8a61e6ff9a0d2e8ebf6887f37d01">4b66fd6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/223">PR 223</a><br />
-        2025-01-28 11:48
+        2025-01-29 15:26
 </div>
 <div class="toolbar__item">
     <form id="version">

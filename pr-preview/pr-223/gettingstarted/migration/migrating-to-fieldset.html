@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sv" class="layout--pattern" data-root-url="../..">
+<html lang="sv" class="layout--article" data-root-url="../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,9 +23,9 @@
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-292562.css"
+            href="../../assets/docs-int-0f5026.css"
             crossorigin
-            integrity="sha384-tZxJwf0152/w7R1AKolqYqlP3uBMkygz7Lwf+FRI5DDwZzVTDPt+v87q78ASMH40"
+            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
             data-theme="int" disabled
         />
 
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-734e41.json"
+            href="../../search-data-b3d80d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-MOnYTvMYQEJnrFNlaK78V1SsoknZSLLHDoRr6bTrt13/2JP4SU3jHQxD53SJ1QI/"
+            integrity="sha384-xEpFA3Dy/CcQCZQMmjnF26w7qdkIrWbqSHtABglAfYz4SGZUP0fuBFK1/mJRHE8M"
             id="search-data"
         />
     </head>
@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-8c3b9f.js"
+                    src="../../assets/vendor-fkui-vue-a71cb7.js"
                     crossorigin
-                    integrity="sha384-ofSMuWZV+5iDcscHT0fNHzXfdel6fgcnhfV27rV0IubBhRgbMGYBdaTGvcyoTQFg"
+                    integrity="sha384-5LvMNx6oIu716YTM7MHeJn5v4Zui1CzwshmzGuUL9b+hLHj+8pMVlavB7Zqy4xZT"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -566,19 +566,7 @@
                     
                     <div id="aside">
                         <!-- prettier-ignore -->
-<dl>
-    <!-- prettier-ignore -->
-    
-    <dt>Komponent</dt>
-    <dd>
-        
-        <code>[object Object]</code>,  
-        <code>[object Object]</code>,  
-        <code>[object Object]</code>,  
-        <code>[object Object]</code> 
-    </dd>
-    
-</dl>
+<dl></dl>
 
 
                         
@@ -586,7 +574,11 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#deprekering_av_gruppkomponenter_for_radio_och_kryssruta">Deprekering av gruppkomponenter för radio och kryssruta</a></li>
+                                <li><a href="#radioknapp">Radioknapp</a></li>
+                                
+                                <li><a href="#kryssruta">Kryssruta</a></li>
+                                
+                                <li><a href="#komplett_exempel">Komplett exempel</a></li>
                                 
                             </ul>
                         </details>
@@ -596,10 +588,18 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="deprekering_av_gruppkomponenter_for_radio_och_kryssruta"><a class="header-anchor" href="#deprekering_av_gruppkomponenter_for_radio_och_kryssruta">Deprekering av gruppkomponenter för radio och kryssruta</a></h2><h3 id="radio"><a class="header-anchor" href="#radio">Radio</a></h3><p>Ersätt <code>FRadioGroup</code> med <code>FFieldset</code>.</p>
+<p>Från och med release 5.17.0 (2024-03-02) är gruppkomponenter för radio och kryssruta deprekerade.</p>
+<ul>
+<li><code>FRadioGroup</code></li>
+<li><code>FRadioGroupField</code></li>
+<li><code>FCheckboxGroup</code></li>
+<li><code>FCheckboxGroupField</code></li>
+</ul>
+<p>Den här migreringsuiden ger information om hur du ersätter dem med <code>FFieldset</code>.</p>
+<h2 id="radioknapp"><a class="header-anchor" href="#radioknapp">Radioknapp</a></h2><p>Ersätt <code>FRadioGroup</code> med <code>FFieldset</code>.</p>
 
                 <div
-                    id="example-8135a0"
+                    id="example-9669b6"
                     class="code-preview code-preview--default"
                     
                     
@@ -613,7 +613,7 @@
             <p>Ersätt attributet <code>is-horizontal</code> med <code>horizontal</code>.</p>
 
                 <div
-                    id="example-092eac"
+                    id="example-0e12f2"
                     class="code-preview code-preview--default"
                     
                     
@@ -627,7 +627,7 @@
             <p>Indentering är inte längre kopplat till komponenten, utan sker fristående genom att ange klassen <code>indent</code>.</p>
 
                 <div
-                    id="example-0a618c"
+                    id="example-850db7"
                     class="code-preview code-preview--default"
                     
                     
@@ -644,7 +644,7 @@
             <p>Ersätt <code>FRadioGroupField</code> med <code>FRadioField</code>.</p>
 
                 <div
-                    id="example-e7f9cd"
+                    id="example-eab1e7"
                     class="code-preview code-preview--default"
                     
                     
@@ -655,11 +655,10 @@
 <span class="hljs-addition">+&lt;f-radio-field&gt;</span>
 </code></pre>
                 </div>
-            <p>Se <a href="../../components/input/fradiogroupdeprecated.html">Radioknapp (deprekerad)</a> för tidigare API.</p>
-<h3 id="kryssruta"><a class="header-anchor" href="#kryssruta">Kryssruta</a></h3><p>Ersätt <code>FCheckboxGroup</code> med <code>FFieldset</code>.</p>
+            <h2 id="kryssruta"><a class="header-anchor" href="#kryssruta">Kryssruta</a></h2><p>Ersätt <code>FCheckboxGroup</code> med <code>FFieldset</code>.</p>
 
                 <div
-                    id="example-17ca13"
+                    id="example-4be7fb"
                     class="code-preview code-preview--default"
                     
                     
@@ -673,7 +672,7 @@
             <p>Ersätt <code>FCheckboxGroupField</code> med <code>FCheckboxField</code>.</p>
 
                 <div
-                    id="example-be60ca"
+                    id="example-3ed699"
                     class="code-preview code-preview--default"
                     
                     
@@ -684,10 +683,9 @@
 <span class="hljs-addition">+&lt;f-checkbox-field&gt;</span>
 </code></pre>
                 </div>
-            <p>Se <a href="../../components/input/fcheckboxgroupdeprecated.html">Kryssruta (deprekerad)</a> för tidigare API.</p>
-<h3 id="komplett_exempel"><a class="header-anchor" href="#komplett_exempel">Komplett exempel</a></h3>
+            <h2 id="komplett_exempel"><a class="header-anchor" href="#komplett_exempel">Komplett exempel</a></h2>
                 <div
-                    id="example-56e15f"
+                    id="example-82c96a"
                     class="code-preview code-preview--default"
                     
                     
@@ -731,9 +729,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/trimmed-text (<a href="https://github.com/Forsakringskassan/designsystem/commits/fa0a7474bb42c02a4d5f6a807aae5b09f5cbcb3f">fa0a747</a>)<br />
+    feature/trimmed-text (<a href="https://github.com/Forsakringskassan/designsystem/commits/4b66fd66fbbf8a61e6ff9a0d2e8ebf6887f37d01">4b66fd6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/223">PR 223</a><br />
-        2025-01-28 11:48
+        2025-01-29 15:26
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -872,7 +870,7 @@
          Source file: docs/gettingstarted/migration/migrating-to-fieldset.md
          Document ID: fs:docs/gettingstarted/migration/migrating-to-fieldset.md
          Document name: migrating-to-fieldset
-         Document alias: component:FRadioGroupField, component:FCheckboxGroup, component:FCheckboxGroupField, component:FCheckboxField
+         Document alias: 
 
     -->
 </html>
