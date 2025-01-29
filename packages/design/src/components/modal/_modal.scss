@@ -77,16 +77,6 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
                     max-width: $size;
                 }
             }
-
-            // @deprecated alias, use --large (to be removed in fkui 4.x)
-            &-large {
-                max-width: map.get($modal-sizes, "large");
-            }
-
-            // @deprecated alias, use --fullwidth (to be removed in fkui 4.x)
-            &-fullscreen {
-                max-width: map.get($modal-sizes, "fullwidth");
-            }
         }
 
         // mobile sizes
