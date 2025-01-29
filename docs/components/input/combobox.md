@@ -15,6 +15,10 @@ Komboboxen kombinerar ett textfält med en lista med förbestämda alternativ. L
 ComboboxExample.vue
 ```
 
+## Dynamiska alternativ
+
+Om det exempelvis är alternativ som ska hämtas från en server, börja med att initialisera `options` till en tom lista.
+
 ## Använd
 
 - Istället för en dropplista när det finns ett stort antal alternativ att välja mellan.

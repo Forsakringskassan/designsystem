@@ -19,7 +19,7 @@ const $t = useTranslate();
  */
 export function useCombobox(
     inputRef: Readonly<ShallowRef<HTMLInputElement | null>>,
-    options: string[] | undefined,
+    options: Ref<string[] | undefined>,
     onOptionSelected?: (value: string) => void,
 ): {
     dropdownId: string;
@@ -31,7 +31,7 @@ export function useCombobox(
     selectOption: (value: string) => void;
     closeDropdown: () => void;
 } {
-    if (!options) {
+    if (options.value === undefined) {
         return {
             dropdownId: "",
             dropdownIsOpen: ref(false),
@@ -64,7 +64,11 @@ export function useCombobox(
     const selectedOption: Ref<string | null> = ref(null);
 
     const dropdownOptions = computed(() => {
-        return filterOptions(options, filter.value, selectMode.value);
+        return filterOptions(
+            options.value ?? [],
+            filter.value,
+            selectMode.value,
+        );
     });
 
     const hasOptions = computed(() => {
@@ -119,7 +123,7 @@ export function useCombobox(
             description += $t(
                 "fkui.combobox.listDetails",
                 `Det finns {{ count }} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`,
-                { count: options.length },
+                { count: options.value ? options.value.length : 0 },
             );
         } else if (hasOptions.value) {
             description += $t(
@@ -246,7 +250,9 @@ export function useCombobox(
         await nextTick(); // wait for any formatting
 
         filter.value = inputRef.value?.value ?? "";
-        selectMode.value = options?.includes(filter.value) ?? false;
+        selectMode.value = options.value
+            ? options.value.includes(filter.value)
+            : false;
     }
 
     async function onInputKeyDown(event: KeyboardEvent): Promise<void> {
