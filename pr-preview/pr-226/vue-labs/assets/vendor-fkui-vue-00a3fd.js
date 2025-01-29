@@ -20,21 +20,19 @@
     ErrorPlugin: () => ErrorPlugin,
     ErrorViewData: () => ErrorViewData,
     EventBus: () => EventBus,
-    FBadge: () => _sfc_main$1f,
-    FBankAccountNumberTextField: () => _sfc_main$B,
-    FBankgiroTextField: () => _sfc_main$A,
+    FBadge: () => _sfc_main$1d,
+    FBankAccountNumberTextField: () => _sfc_main$A,
+    FBankgiroTextField: () => _sfc_main$z,
     FCalendar: () => FCalendar,
     FCalendarDay: () => FCalendarDay,
-    FCard: () => _sfc_main$_,
+    FCard: () => _sfc_main$Y,
     FCheckboxField: () => FCheckboxField,
-    FCheckboxGroup: () => FCheckboxGroup,
-    FCheckboxGroupField: () => FCheckboxField,
-    FClearingnumberTextField: () => _sfc_main$z,
+    FClearingnumberTextField: () => _sfc_main$y,
     FConfirmModal: () => FConfirmModal,
     FContextMenu: () => FContextMenu,
     FCrudButton: () => FCrudButton,
     FCrudDataset: () => FCrudDataset,
-    FCurrencyTextField: () => _sfc_main$D,
+    FCurrencyTextField: () => _sfc_main$C,
     FDataTable: () => FDataTable,
     FDatepickerField: () => FDatepickerField,
     FDialogueTree: () => FDialogueTree,
@@ -65,20 +63,18 @@
     FMessageBox: () => FMessageBox,
     FModal: () => FModal,
     FNavigationMenu: () => FNavigationMenu,
-    FNumericTextField: () => _sfc_main$y,
+    FNumericTextField: () => _sfc_main$x,
     FOffline: () => FOffline,
-    FOrganisationsnummerTextField: () => _sfc_main$t,
+    FOrganisationsnummerTextField: () => _sfc_main$s,
     FOutputField: () => FOutputField,
     FPageHeader: () => FPageHeader,
-    FPercentTextField: () => _sfc_main$u,
-    FPersonnummerTextField: () => _sfc_main$x,
+    FPercentTextField: () => _sfc_main$t,
+    FPersonnummerTextField: () => _sfc_main$w,
     FPhoneTextField: () => FPhoneTextField,
-    FPlusgiroTextField: () => _sfc_main$w,
-    FPostalCodeTextField: () => _sfc_main$v,
+    FPlusgiroTextField: () => _sfc_main$v,
+    FPostalCodeTextField: () => _sfc_main$u,
     FProgressbar: () => FProgressbar,
     FRadioField: () => FRadioField,
-    FRadioGroup: () => FRadioGroup,
-    FRadioGroupField: () => FRadioField,
     FSearchTextField: () => FSearchTextField,
     FSelectField: () => FSelectField,
     FSortFilterDataset: () => FSortFilterDataset,
@@ -103,13 +99,13 @@
     ICalendarMonth: () => ICalendarMonth,
     ICalendarMonthGrid: () => ICalendarMonthGrid,
     ICalendarNavbar: () => ICalendarNavbar,
-    IComboboxDropdown: () => _sfc_main$S,
-    IComboboxToggleButton: () => _sfc_main$R,
+    IComboboxDropdown: () => _sfc_main$Q,
+    IComboboxToggleButton: () => _sfc_main$P,
     IFlex: () => IFlex,
     IFlexItem: () => IFlexItem,
     IPopup: () => IPopup,
     IPopupError: () => IPopupError,
-    IPopupListbox: () => _sfc_main$W,
+    IPopupListbox: () => _sfc_main$U,
     IPopupMenu: () => IPopupMenu,
     ISkipLink: () => ISkipLink,
     IValidationForm: () => FValidationForm,
@@ -180,7 +176,7 @@
   var import_logic = __require("@fkui/logic");
   var import_date = __require("@fkui/date");
   var statuses = ["default", "warning", "error", "success", "info"];
-  var _sfc_main$1f = /* @__PURE__ */ (0, import_vue.defineComponent)({
+  var _sfc_main$1d = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "FBadge",
     props: {
       /**
@@ -1498,7 +1494,7 @@
   requireEs_array_push();
   var Flip = ["horizontal", "vertical"];
   var Rotate = ["90", "180", "270"];
-  var _sfc_main$1e = (0, import_vue.defineComponent)({
+  var _sfc_main$1c = (0, import_vue.defineComponent)({
     name: "FIcon",
     inheritAttrs: false,
     props: {
@@ -1588,7 +1584,7 @@
   };
   var _hoisted_1$W = ["aria-hidden"];
   var _hoisted_2$H = ["xlink:href"];
-  function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("svg", (0, import_vue.mergeProps)(_ctx.$attrs, {
       focusable: "false",
       class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
@@ -1597,7 +1593,7 @@
       "xlink:href": _ctx.spriteId
     }, null, 8, _hoisted_2$H)], 16, _hoisted_1$W);
   }
-  var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$10]]);
+  var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$_]]);
   var DATA_TEST_ATTRIBUTE_NAME = "data-test";
   function throwErrorIfEmpty(value) {
     if (!value) {
@@ -3916,7 +3912,7 @@
   function isHTMLInputElement(element) {
     return element instanceof HTMLInputElement;
   }
-  var _sfc_main$1d = (0, import_vue.defineComponent)({
+  var _sfc_main$1b = (0, import_vue.defineComponent)({
     name: "FModal",
     components: {
       FIcon
@@ -4130,7 +4126,7 @@
     class: "modal__shelf"
   };
   var _hoisted_11$3 = ["aria-label"];
-  function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       key: 0,
@@ -4160,7 +4156,7 @@
       onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
     }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$V)) : (0, import_vue.createCommentVNode)("", true);
   }
-  var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$$]]);
+  var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$Z]]);
   function prepareButtonList(src, buttonOrder = config.buttonOrder) {
     const list = src.map((it) => {
       var _it$event, _ref, _it$reason, _it$type;
@@ -4189,7 +4185,7 @@
     event: "dismiss",
     type: "secondary"
   }];
-  var _sfc_main$1c = (0, import_vue.defineComponent)({
+  var _sfc_main$1a = (0, import_vue.defineComponent)({
     name: "FConfirmModal",
     components: {
       FModal
@@ -4301,7 +4297,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_modal, {
       fullscreen: _ctx.fullscreen,
@@ -4325,11 +4321,11 @@
       _: 3
     }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
   }
-  var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$_]]);
+  var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$Y]]);
   var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
   var ALIGNMENT = ["top", "center", "bottom"];
   var FLOAT = ["left", "center", "right"];
-  var _sfc_main$1b = (0, import_vue.defineComponent)({
+  var _sfc_main$19 = (0, import_vue.defineComponent)({
     name: "IFlex",
     inheritAttrs: true,
     props: {
@@ -4404,13 +4400,13 @@
       }
     }
   });
-  function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["iflex", _ctx.classList])
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2);
   }
-  var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$Z]]);
-  var _sfc_main$1a = (0, import_vue.defineComponent)({
+  var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$X]]);
+  var _sfc_main$18 = (0, import_vue.defineComponent)({
     name: "IFlexItem",
     inheritAttrs: true,
     props: {
@@ -4457,12 +4453,12 @@
       }
     }
   });
-  function _sfc_render$Y(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["iflex__item", _ctx.classList])
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2);
   }
-  var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$Y]]);
+  var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$W]]);
   function focusError(item) {
     const element = document.querySelector(`#${item.id}`);
     if (!element) {
@@ -4472,7 +4468,7 @@
     (0, import_logic.scrollTo)(element, window.innerHeight * 0.25);
     (0, import_logic.focus)(focusElement2 ? focusElement2 : element);
   }
-  var _sfc_main$19 = (0, import_vue.defineComponent)({
+  var _sfc_main$17 = (0, import_vue.defineComponent)({
     name: "FErrorList",
     components: {
       FIcon,
@@ -4541,7 +4537,7 @@
   var _hoisted_5$k = {
     class: "error-list__link"
   };
-  function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
@@ -4595,7 +4591,7 @@
       _: 3
     })]);
   }
-  var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$X]]);
+  var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$V]]);
   function cleanUpElements(vm) {
     return new Promise((resolve) => {
       window.setTimeout(() => {
@@ -4624,7 +4620,7 @@
   function isFormStepReference(reference) {
     return "isOpen" in reference.ref;
   }
-  var _sfc_main$18 = (0, import_vue.defineComponent)({
+  var _sfc_main$16 = (0, import_vue.defineComponent)({
     name: "FValidationGroup",
     props: {
       /**
@@ -4694,19 +4690,19 @@
       }
     }
   });
-  function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
       onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 32);
   }
-  var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$W]]);
+  var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$U]]);
   var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
     FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
     FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
     return FValidationFormAction2;
   })(FValidationFormAction || {});
-  var _sfc_main$17 = (0, import_vue.defineComponent)({
+  var _sfc_main$15 = (0, import_vue.defineComponent)({
     name: "FValidationForm",
     components: {
       FValidationGroup,
@@ -4852,7 +4848,7 @@
     tabindex: "-1",
     role: "group"
   };
-  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue.resolveComponent)("f-error-list");
     const _component_f_validation_group = (0, import_vue.resolveComponent)("f-validation-group");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_validation_group, {
@@ -4878,8 +4874,8 @@
       _: 3
     }, 8, ["modelValue"]);
   }
-  var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$V]]);
-  var _sfc_main$16 = (0, import_vue.defineComponent)({
+  var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$T]]);
+  var _sfc_main$14 = (0, import_vue.defineComponent)({
     name: "FFormModal",
     components: {
       FModal,
@@ -5036,7 +5032,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_validation_form = (0, import_vue.resolveComponent)("f-validation-form");
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_modal, {
@@ -5072,7 +5068,7 @@
       _: 3
     }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
   }
-  var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$U]]);
+  var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$S]]);
   async function confirmModal(callingInstance, texts) {
     const buttons = [{
       label: texts.confirm,
@@ -5398,7 +5394,7 @@
       }
     }
   };
-  var _sfc_main$15 = (0, import_vue.defineComponent)({
+  var _sfc_main$13 = (0, import_vue.defineComponent)({
     name: "FErrorPage",
     props: {
       payload: {
@@ -5411,13 +5407,13 @@
   var _hoisted_1$Q = {
     "data-test": "f-error-page"
   };
-  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$Q, _cache[0] || (_cache[0] = [(0, import_vue.createElementVNode)("h1", null, "Fel", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("p", null, "Ett fel har uppst\xE5tt.", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("a", {
       href: "/"
     }, "G\xE5 till startsidan", -1)]));
   }
-  var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$T]]);
-  var _sfc_main$14 = (0, import_vue.defineComponent)({
+  var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$R]]);
+  var _sfc_main$12 = (0, import_vue.defineComponent)({
     name: "FErrorHandlingApp",
     props: {
       defaultComponent: {
@@ -5446,7 +5442,7 @@
       });
     }
   });
-  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(_ctx.errorComponent), {
       key: 0,
       payload: _ctx.payload
@@ -5456,7 +5452,7 @@
       key: 2
     })]);
   }
-  var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$S]]);
+  var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$Q]]);
   function isMonthBefore(date, minDate) {
     return Boolean(minDate && date.isBefore(minDate.startOfMonth()));
   }
@@ -5497,7 +5493,7 @@
       });
     }
   }
-  var _sfc_main$13 = (0, import_vue.defineComponent)({
+  var _sfc_main$11 = (0, import_vue.defineComponent)({
     name: "ICalendarNavbar",
     components: {
       FIcon
@@ -5626,7 +5622,7 @@
   var _hoisted_6$f = {
     class: "sr-only"
   };
-  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$P, [(0, import_vue.createElementVNode)("div", _hoisted_2$B, (0, import_vue.toDisplayString)(_ctx.currentText), 1), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
       ref: "previousButton",
@@ -5650,14 +5646,14 @@
       name: "arrow-right"
     }, null, 8, ["class"])], 8, _hoisted_5$j)]);
   }
-  var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$R]]);
+  var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$P]]);
   function getDayStartOffset(days) {
     return days[0].weekDay - 1;
   }
   function getDayEndOffset(days) {
     return 7 - days[days.length - 1].weekDay;
   }
-  var _sfc_main$12 = (0, import_vue.defineComponent)({
+  var _sfc_main$10 = (0, import_vue.defineComponent)({
     name: "ICalendarMonthGrid",
     props: {
       /**
@@ -5760,7 +5756,7 @@
     "aria-hidden": "true"
   };
   var _hoisted_11$2 = ["colspan"];
-  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("table", {
       class: "calendar-month__table",
       role: "grid",
@@ -5822,7 +5818,7 @@
       "aria-hidden": "true"
     }, null, 8, _hoisted_11$2)])) : (0, import_vue.createCommentVNode)("", true)])], 40, _hoisted_1$O);
   }
-  var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$Q]]);
+  var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$O]]);
   var DayStep = {
     ArrowRight: 1,
     ArrowLeft: -1,
@@ -5846,7 +5842,7 @@
       return date.day === 1 ? 0 : -1;
     }
   }
-  var _sfc_main$11 = (0, import_vue.defineComponent)({
+  var _sfc_main$$ = (0, import_vue.defineComponent)({
     name: "ICalendarMonth",
     components: {
       ICalendarMonthGrid
@@ -5938,7 +5934,7 @@
     }
   });
   var _hoisted_1$N = ["data-date", "tabindex", "onClick", "onKeydown"];
-  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_month_grid = (0, import_vue.resolveComponent)("i-calendar-month-grid");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_calendar_month_grid, {
       value: _ctx.modelValue
@@ -5961,8 +5957,8 @@
       _: 3
     }, 8, ["value"]);
   }
-  var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$P]]);
-  var _sfc_main$10 = (0, import_vue.defineComponent)({
+  var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$N]]);
+  var _sfc_main$_ = (0, import_vue.defineComponent)({
     name: "FCalendar",
     components: {
       ICalendarNavbar,
@@ -6017,7 +6013,7 @@
   var _hoisted_1$M = {
     class: "calendar__wrapper"
   };
-  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_navbar = (0, import_vue.resolveComponent)("i-calendar-navbar");
     const _component_i_calendar_month = (0, import_vue.resolveComponent)("i-calendar-month");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$M, [(0, import_vue.createVNode)(_component_i_calendar_navbar, {
@@ -6043,7 +6039,7 @@
       _: 3
     }, 8, ["model-value", "min-date", "max-date", "tab-date", "onClick", "onUpdate:modelValue"])]);
   }
-  var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$O]]);
+  var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$M]]);
   function getCalendarDaySrText(day, enabled, selected, t) {
     const parts = [];
     if (!enabled) {
@@ -6062,7 +6058,7 @@
     parts.push(day.toString(import_date.DateFormat.FULL));
     return parts.join(" ");
   }
-  var _sfc_main$$ = (0, import_vue.defineComponent)({
+  var _sfc_main$Z = (0, import_vue.defineComponent)({
     name: "FCalendarDay",
     mixins: [TranslationMixin],
     props: {
@@ -6133,12 +6129,12 @@
   var _hoisted_2$z = {
     class: "sr-only"
   };
-  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", {
       class: (0, import_vue.normalizeClass)(_ctx.dayClasses)
     }, [(0, import_vue.createElementVNode)("span", _hoisted_1$L, (0, import_vue.toDisplayString)(_ctx.day.day), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_2$z, (0, import_vue.toDisplayString)(_ctx.srText), 1)], 2);
   }
-  var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$N]]);
+  var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$L]]);
   function useEventListener(target, event, callback) {
     (0, import_vue.onMounted)(() => {
       var _a;
@@ -6171,7 +6167,7 @@
     key: 1,
     class: "card__footer"
   };
-  var _sfc_main$_ = /* @__PURE__ */ (0, import_vue.defineComponent)({
+  var _sfc_main$Y = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "FCard",
     props: {
       /**
@@ -6261,7 +6257,7 @@
       };
     }
   });
-  var _sfc_main$Z = (0, import_vue.defineComponent)({
+  var _sfc_main$X = (0, import_vue.defineComponent)({
     name: "FExpand",
     data() {
       return {
@@ -6315,7 +6311,7 @@
       }
     }
   });
-  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Transition, {
       onEnter: _ctx.enter,
       onAfterEnter: _ctx.afterEnter,
@@ -6327,7 +6323,7 @@
       _: 3
     }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
   }
-  var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$M]]);
+  var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$K]]);
   function offset(page, el) {
     const rect = el.getBoundingClientRect();
     return {
@@ -6612,7 +6608,7 @@
     }
     return disableTeleport;
   }
-  var _sfc_main$Y = (0, import_vue.defineComponent)({
+  var _sfc_main$W = (0, import_vue.defineComponent)({
     name: "IPopup",
     inheritAttrs: false,
     props: {
@@ -6903,7 +6899,7 @@
       }
     }
   });
-  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       key: 0,
       to: _ctx.teleportTarget,
@@ -6924,7 +6920,7 @@
       placement: _ctx.placement
     })))], 544)], 16)], 8, ["to", "disabled"])) : (0, import_vue.createCommentVNode)("", true);
   }
-  var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$L]]);
+  var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$J]]);
   function computeArrowOffset(placement, inputIconRect, wrapperRect) {
     switch (placement) {
       case Placement.A: {
@@ -6988,7 +6984,7 @@
     }
   }
   var POPUP_SPACING = 10;
-  var _sfc_main$X = (0, import_vue.defineComponent)({
+  var _sfc_main$V = (0, import_vue.defineComponent)({
     name: "IPopupError",
     components: {
       FIcon
@@ -7127,7 +7123,7 @@
     ref: "wrapper",
     class: "popup-error__wrapper"
   };
-  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       key: 0,
@@ -7151,7 +7147,7 @@
       class: "button__icon"
     })])], 6)], 512)], 2)], 8, ["disabled"])) : (0, import_vue.createCommentVNode)("", true);
   }
-  var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$K]]);
+  var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$I]]);
   function numItems(itemHeight, availableHeight, verticalSpacing) {
     const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
     return Math.min(itemsFit, 7);
@@ -7223,7 +7219,7 @@
     ref: "content"
   };
   var teleportDisabled = false;
-  var _sfc_main$W = /* @__PURE__ */ (0, import_vue.defineComponent)({
+  var _sfc_main$U = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "IPopupListbox",
     props: {
       isOpen: {
@@ -7419,7 +7415,7 @@
     }
   }
   var preventKeys$2 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
-  var _sfc_main$V = (0, import_vue.defineComponent)({
+  var _sfc_main$T = (0, import_vue.defineComponent)({
     name: "IPopupMenu",
     components: {
       IPopup
@@ -7686,7 +7682,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_popup = (0, import_vue.resolveComponent)("i-popup");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup, {
       class: "ipopupmenu",
@@ -7722,13 +7718,13 @@
       _: 1
     }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
   }
-  var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$J]]);
+  var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$H]]);
   var ANIMATION_DURATION = 500;
   var NO_CSS_CLASSES = "";
   var CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
   var CLOSED_CSS_CLASS = "animate-expand";
   var ANIMATION_CSS_CLASSES = "animate-expand animate-expand--expanded";
-  var _sfc_main$U = (0, import_vue.defineComponent)({
+  var _sfc_main$S = (0, import_vue.defineComponent)({
     name: "IAnimateExpand",
     props: {
       /**
@@ -7925,14 +7921,14 @@
     ref: "content",
     "data-test": "animation-content"
   };
-  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.animationClasses),
       style: (0, import_vue.normalizeStyle)(_ctx.heightStyle)
     }, [_ctx.shouldVIf ? (0, import_vue.withDirectives)(((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$G, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)), [[import_vue.vShow, _ctx.shouldVShow]]) : (0, import_vue.createCommentVNode)("", true)], 6);
   }
-  var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$I]]);
-  var _sfc_main$T = (0, import_vue.defineComponent)({
+  var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$G]]);
+  var _sfc_main$R = (0, import_vue.defineComponent)({
     name: "ISkipLink",
     mixins: [TranslationMixin],
     props: {
@@ -7947,13 +7943,13 @@
     }
   });
   var _hoisted_1$F = ["href"];
-  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("a", {
       class: "iskiplink",
       href: _ctx.href
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$F);
   }
-  var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$H]]);
+  var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$F]]);
   function filterOptions(options, filter2, selectMode) {
     if ((0, import_logic.isEmpty)(filter2) || selectMode) {
       return options;
@@ -8203,7 +8199,7 @@
   };
   var _hoisted_2$v = ["id"];
   var _hoisted_3$p = ["id", "aria-selected", "onClick"];
-  var _sfc_main$S = /* @__PURE__ */ (0, import_vue.defineComponent)({
+  var _sfc_main$Q = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "IComboboxDropdown",
     props: {
       id: {},
@@ -8240,7 +8236,7 @@
         }
       });
       return (_ctx, _cache) => {
-        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$E, [(0, import_vue.createVNode)((0, import_vue.unref)(_sfc_main$W), {
+        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$E, [(0, import_vue.createVNode)((0, import_vue.unref)(_sfc_main$U), {
           "is-open": _ctx.isOpen,
           anchor: _ctx.inputNode,
           "num-of-items": _ctx.options.length,
@@ -8272,7 +8268,7 @@
     }
   });
   var _hoisted_1$D = ["aria-label"];
-  var _sfc_main$R = /* @__PURE__ */ (0, import_vue.defineComponent)({
+  var _sfc_main$P = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "IComboboxToggleButton",
     emits: ["toggle"],
     setup(__props, {
@@ -8393,7 +8389,7 @@
       }, 0);
     }
   }
-  var _sfc_main$Q = (0, import_vue.defineComponent)({
+  var _sfc_main$O = (0, import_vue.defineComponent)({
     name: "FTooltip",
     components: {
       FExpand,
@@ -8566,7 +8562,7 @@
   var _hoisted_6$d = {
     class: "tooltip__footer"
   };
-  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, null, [((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       disabled: _ctx.iconTarget === null,
@@ -8599,7 +8595,7 @@
       name: "close"
     })])])])) : (0, import_vue.createCommentVNode)("", true)], 16)], 64);
   }
-  var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$G]]);
+  var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$E]]);
   function* labelClasses(options) {
     const {
       labelClass
@@ -8640,7 +8636,7 @@
     }
     return a.every((_, i) => a[i] === b[i]);
   }
-  var _sfc_main$P = (0, import_vue.defineComponent)({
+  var _sfc_main$N = (0, import_vue.defineComponent)({
     name: "FFieldset",
     components: {
       FIcon
@@ -8900,7 +8896,7 @@
     key: 0,
     class: "label__message label__message--error"
   };
-  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("fieldset", {
       id: _ctx.id,
@@ -8937,9 +8933,9 @@
       class: (0, import_vue.normalizeClass)(_ctx.groupContentClass)
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2)], 42, _hoisted_1$B);
   }
-  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$F]]);
+  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$D]]);
   var anyType$1 = [String, Object, Array, Number, Date, Boolean];
-  var _sfc_main$O = (0, import_vue.defineComponent)({
+  var _sfc_main$M = (0, import_vue.defineComponent)({
     name: "FCheckboxField",
     inheritAttrs: false,
     props: {
@@ -9135,7 +9131,7 @@
     key: 0,
     class: "checkbox__details"
   };
-  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["checkbox", _ctx.disabledClass]),
       onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -9165,57 +9161,7 @@
       _: 3
     }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : (0, import_vue.createCommentVNode)("", true)], 64)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$s)], 34);
   }
-  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$E]]);
-  var _sfc_main$N = (0, import_vue.defineComponent)({
-    name: "FCheckboxGroup",
-    components: {
-      FFieldset
-    },
-    mixins: [TranslationMixin],
-    inheritAttrs: false,
-    props: {
-      /**
-       * The id for the fieldset id attribute.
-       * If the prop is not set the id will be generated.
-       */
-      id: {
-        type: String,
-        required: false,
-        default: () => import_logic.ElementIdService.generateElementId()
-      },
-      /**
-       * The name of the checkbox group.
-       */
-      name: {
-        type: String,
-        required: true
-      }
-    }
-  });
-  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_fieldset = (0, import_vue.resolveComponent)("f-fieldset");
-    return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_fieldset, (0, import_vue.mergeProps)({
-      id: _ctx.id,
-      name: _ctx.name
-    }, _ctx.$attrs), (0, import_vue.createSlots)({
-      label: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "label")]),
-      description: (0, import_vue.withCtx)(({
-        descriptionClass,
-        discreteDescriptionClass
-      }) => [(0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-        descriptionClass,
-        discreteDescriptionClass
-      })))]),
-      "error-message": (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message")]),
-      default: (0, import_vue.withCtx)(() => [_cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default")]),
-      _: 2
-    }, [_ctx.$slots.tooltip ? {
-      name: "tooltip",
-      fn: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "tooltip")]),
-      key: "0"
-    } : void 0]), 1040, ["id", "name"]);
-  }
-  var FCheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$D]]);
+  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$C]]);
   function isContextMenuTextItem(value) {
     return typeof value.key === "string";
   }
@@ -9263,7 +9209,7 @@
   }
   var preventKeys$1 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter", "Escape"];
   var keyUp = ["ArrowUp", "Up"];
-  var _sfc_main$M = (0, import_vue.defineComponent)({
+  var _sfc_main$L = (0, import_vue.defineComponent)({
     name: "FContextMenu",
     components: {
       IPopup,
@@ -9440,7 +9386,7 @@
     key: 0,
     class: "contextmenu__separator"
   };
-  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup = (0, import_vue.resolveComponent)("i-popup");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup, {
@@ -9480,7 +9426,7 @@
       _: 1
     }, 8, ["is-open", "anchor", "focus-element"]);
   }
-  var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$C]]);
+  var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$B]]);
   var Operation = /* @__PURE__ */ ((Operation2) => {
     Operation2[Operation2["ADD"] = 0] = "ADD";
     Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -9488,7 +9434,7 @@
     Operation2[Operation2["NONE"] = 3] = "NONE";
     return Operation2;
   })(Operation || {});
-  var _sfc_main$L = (0, import_vue.defineComponent)({
+  var _sfc_main$K = (0, import_vue.defineComponent)({
     name: "FCrudDataset",
     components: {
       FFormModal,
@@ -9748,7 +9694,7 @@
   var _hoisted_2$q = {
     key: 0
   };
-  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_form_modal = (0, import_vue.resolveComponent)("f-form-modal");
     const _component_f_confirm_modal = (0, import_vue.resolveComponent)("f-confirm-modal");
@@ -9796,14 +9742,14 @@
       _: 3
     }, 8, ["is-open", "buttons", "onConfirm", "onClose"])]);
   }
-  var FCrudDataset = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$B]]);
+  var FCrudDataset = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$A]]);
   function FCrudDatasetInjected() {
     return {
       delete: (0, import_vue.inject)("delete"),
       modify: (0, import_vue.inject)("modify")
     };
   }
-  var _sfc_main$K = (0, import_vue.defineComponent)({
+  var _sfc_main$J = (0, import_vue.defineComponent)({
     name: "FCrudButton",
     components: {
       FIcon
@@ -9863,7 +9809,7 @@
     key: 1,
     class: "sr-only"
   };
-  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", {
       type: "button",
@@ -9877,7 +9823,7 @@
       key: 2
     }, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.buttonText), 1)]) : (0, import_vue.createCommentVNode)("", true)]);
   }
-  var FCrudButton = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$A]]);
+  var FCrudButton = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$z]]);
   function ActivateItemInjected() {
     return {
       registerCallbackAfterItemAdd: (0, import_vue.inject)("registerCallbackAfterItemAdd", () => void 0),
@@ -9961,7 +9907,7 @@
       renderColumns: (0, import_vue.inject)("renderColumns", false)
     };
   }
-  var _sfc_main$J = (0, import_vue.defineComponent)({
+  var _sfc_main$I = (0, import_vue.defineComponent)({
     name: "FTableColumn",
     inheritAttrs: false,
     props: {
@@ -10102,7 +10048,7 @@
       });
     }
   });
-  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.renderColumns && _ctx.visible ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(_ctx.tagName), (0, import_vue.mergeProps)({
       key: 0,
       class: _ctx.classes,
@@ -10114,7 +10060,7 @@
       _: 3
     }, 16, ["class", "scope"])) : (0, import_vue.createCommentVNode)("", true);
   }
-  var FTableColumn = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$z]]);
+  var FTableColumn = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$y]]);
   function FSortFilterDatasetInjected() {
     return {
       sort: (0, import_vue.inject)("sort", () => void 0),
@@ -10122,7 +10068,7 @@
       registerCallbackOnMount: (0, import_vue.inject)("registerCallbackOnMount", () => void 0)
     };
   }
-  var _sfc_main$I = (0, import_vue.defineComponent)({
+  var _sfc_main$H = (0, import_vue.defineComponent)({
     name: "FLabel",
     components: {
       FIcon
@@ -10179,7 +10125,7 @@
     key: 0,
     class: "label__message label__message--error"
   };
-  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.$slots.tooltip ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$w, [_ctx.hasDefaultSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$p, [(0, import_vue.createElementVNode)("label", {
       class: "label",
@@ -10206,11 +10152,11 @@
       name: "error"
     }), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "error-message")])) : (0, import_vue.createCommentVNode)("", true)], 8, _hoisted_6$b));
   }
-  var FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$y]]);
+  var FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$x]]);
   function resolveWidthClass$1(words, inline) {
     return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
   }
-  var _sfc_main$H = (0, import_vue.defineComponent)({
+  var _sfc_main$G = (0, import_vue.defineComponent)({
     name: "FSelectField",
     components: {
       FIcon,
@@ -10342,7 +10288,7 @@
     }
   });
   var _hoisted_1$v = ["id"];
-  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_label = (0, import_vue.resolveComponent)("f-label");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
@@ -10389,7 +10335,7 @@
       name: "arrow-down"
     })], 2)], 34);
   }
-  var FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$x]]);
+  var FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$w]]);
   function resolveWidthClass(words, inline) {
     return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
   }
@@ -10433,14 +10379,14 @@
       closeDropdown
     };
   }
-  var _sfc_main$G = (0, import_vue.defineComponent)({
+  var _sfc_main$F = (0, import_vue.defineComponent)({
     name: "FTextField",
     components: {
       FLabel,
       FIcon,
       IPopupError,
-      IComboboxDropdown: _sfc_main$S,
-      IComboboxToggleButton: _sfc_main$R
+      IComboboxDropdown: _sfc_main$Q,
+      IComboboxToggleButton: _sfc_main$P
     },
     inheritAttrs: false,
     props: {
@@ -10795,7 +10741,7 @@
     key: 3,
     class: "text-field__append-inner"
   };
-  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_label = (0, import_vue.resolveComponent)("f-label");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup_error = (0, import_vue.resolveComponent)("i-popup-error");
@@ -10878,8 +10824,8 @@
       onClose: _ctx.onDropdownClose
     }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node", "onSelect", "onClose"])) : (0, import_vue.createCommentVNode)("", true)], 2);
   }
-  var FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$w]]);
-  var _sfc_main$F = (0, import_vue.defineComponent)({
+  var FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$v]]);
+  var _sfc_main$E = (0, import_vue.defineComponent)({
     name: "FEmailTextField",
     components: {
       FTextField
@@ -10999,7 +10945,7 @@
   var _hoisted_1$t = {
     key: 0
   };
-  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -11029,8 +10975,8 @@
       _: 3
     }, 8, ["modelValue", "maxlength", "onPaste"])) : (0, import_vue.createCommentVNode)("", true)]);
   }
-  var FEmailTextField = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$v]]);
-  var _sfc_main$E = (0, import_vue.defineComponent)({
+  var FEmailTextField = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$u]]);
+  var _sfc_main$D = (0, import_vue.defineComponent)({
     name: "FPhoneTextField",
     components: {
       FTextField
@@ -11131,7 +11077,7 @@
       }
     }
   });
-  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -11158,8 +11104,8 @@
       _: 3
     }, 8, ["modelValue", "maxlength"])) : (0, import_vue.createCommentVNode)("", true)]);
   }
-  var FPhoneTextField = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$u]]);
-  var _sfc_main$D = (0, import_vue.defineComponent)({
+  var FPhoneTextField = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$t]]);
+  var _sfc_main$C = (0, import_vue.defineComponent)({
     name: "FCurrencyTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11194,7 +11140,7 @@
       import_logic.ValidationService.validateElement(inputElement);
     }
   });
-  var _sfc_main$C = (0, import_vue.defineComponent)({
+  var _sfc_main$B = (0, import_vue.defineComponent)({
     name: "FSearchTextField",
     components: {
       FTextField,
@@ -11257,7 +11203,7 @@
   var _hoisted_1$s = {
     class: "sr-only"
   };
-  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({
@@ -11307,8 +11253,8 @@
       key: "1"
     } : void 0]), 1040, ["id", "maxlength", "model-value", "onChange", "onInput", "onBlur", "onUpdate"])]);
   }
-  var FSearchTextField = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$t]]);
-  var _sfc_main$B = (0, import_vue.defineComponent)({
+  var FSearchTextField = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$s]]);
+  var _sfc_main$A = (0, import_vue.defineComponent)({
     name: "FBankAccountNumberTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11337,7 +11283,7 @@
       import_logic.ValidationService.validateElement(inputElement);
     }
   });
-  var _sfc_main$A = (0, import_vue.defineComponent)({
+  var _sfc_main$z = (0, import_vue.defineComponent)({
     name: "FBankgiroTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11369,7 +11315,7 @@
       import_logic.ValidationService.validateElement(inputElement);
     }
   });
-  var _sfc_main$z = (0, import_vue.defineComponent)({
+  var _sfc_main$y = (0, import_vue.defineComponent)({
     name: "FClearingnumberTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11401,7 +11347,7 @@
   function defaultFormatter$1(modelValue) {
     return (0, import_logic.formatNumber)(modelValue, this.decimals);
   }
-  var _sfc_main$y = (0, import_vue.defineComponent)({
+  var _sfc_main$x = (0, import_vue.defineComponent)({
     name: "FNumericTextField",
     extends: FTextField,
     props: {
@@ -11438,7 +11384,7 @@
       import_logic.ValidationService.validateElement(inputElement);
     }
   });
-  var _sfc_main$x = (0, import_vue.defineComponent)({
+  var _sfc_main$w = (0, import_vue.defineComponent)({
     name: "FPersonnummerTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11478,7 +11424,7 @@
       import_logic.ValidationService.validateElement(inputElement);
     }
   });
-  var _sfc_main$w = (0, import_vue.defineComponent)({
+  var _sfc_main$v = (0, import_vue.defineComponent)({
     name: "FPlusgiroTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11510,7 +11456,7 @@
       import_logic.ValidationService.validateElement(inputElement);
     }
   });
-  var _sfc_main$v = (0, import_vue.defineComponent)({
+  var _sfc_main$u = (0, import_vue.defineComponent)({
     name: "FPostalCodeTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11547,7 +11493,7 @@
   function defaultFormatter(modelValue) {
     return (0, import_logic.formatPercent)(modelValue, this.decimals);
   }
-  var _sfc_main$u = (0, import_vue.defineComponent)({
+  var _sfc_main$t = (0, import_vue.defineComponent)({
     name: "FPercentTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11595,7 +11541,7 @@
       import_logic.ValidationService.validateElement(inputElement);
     }
   });
-  var _sfc_main$t = (0, import_vue.defineComponent)({
+  var _sfc_main$s = (0, import_vue.defineComponent)({
     name: "FOrganisationsnummerTextField",
     extends: FTextField,
     mixins: [TranslationMixin],
@@ -11703,7 +11649,7 @@
     const searchTerms = searchString.split(/\s+/).map((word) => word.toLocaleLowerCase());
     return list.filter((item) => includesAllSearchTerms(item, filterAttributes, searchTerms));
   }
-  var _sfc_main$s = (0, import_vue.defineComponent)({
+  var _sfc_main$r = (0, import_vue.defineComponent)({
     name: "FSortFilterDataset",
     components: {
       FSelectField,
@@ -11925,7 +11871,7 @@
     }
   };
   var _hoisted_7$9 = ["value"];
-  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
@@ -12011,8 +11957,8 @@
       sortFilterResult: _ctx.sortFilterResult
     })))]);
   }
-  var FSortFilterDataset = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$s]]);
-  var _sfc_main$r = (0, import_vue.defineComponent)({
+  var FSortFilterDataset = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r]]);
+  var _sfc_main$q = (0, import_vue.defineComponent)({
     name: "FDataTable",
     components: {
       FIcon
@@ -12176,7 +12122,7 @@
     key: 1
   };
   var _hoisted_8$6 = ["colspan"];
-  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.wrapperClasses)
@@ -12218,7 +12164,7 @@
       }))]);
     }), 128))])], 16, _hoisted_1$q)], 2);
   }
-  var FDataTable = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r]]);
+  var FDataTable = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q]]);
   function isDayEnabled(day, config2) {
     return passesMinDate(day, config2.minDate) && passesMaxDate(day, config2.maxDate) && passesInvalidDates(day, config2.invalidDates) && passesInvalidWeekdays(day, config2.invalidWeekdays);
   }
@@ -12294,7 +12240,7 @@
     }
     return month || import_date.FDate.now().startOfMonth();
   }
-  var _sfc_main$q = (0, import_vue.defineComponent)({
+  var _sfc_main$p = (0, import_vue.defineComponent)({
     name: "FDatepickerField",
     components: {
       FCalendar,
@@ -12563,7 +12509,7 @@
   var _hoisted_4$c = {
     class: "datepicker-field__close"
   };
-  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     const _component_f_calendar_day = (0, import_vue.resolveComponent)("f-calendar-day");
@@ -12659,11 +12605,11 @@
       _: 1
     }, 8, ["is-open", "anchor", "inline", "onOpen", "onClose"])], 512);
   }
-  var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q]]);
+  var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p]]);
   function isDialogueTreeEndQuestion(value) {
     return Boolean(value.userData);
   }
-  var _sfc_main$p = (0, import_vue.defineComponent)({
+  var _sfc_main$o = (0, import_vue.defineComponent)({
     name: "FDialogueTree",
     components: {
       FIcon
@@ -12750,7 +12696,7 @@
     class: "dialogue-tree__list"
   };
   var _hoisted_3$f = ["onClick"];
-  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$o, [_ctx.options.length > 0 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("ul", _hoisted_2$k, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.options, (option, index) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", {
@@ -12770,8 +12716,8 @@
       userData: _ctx.userData
     })))]);
   }
-  var FDialogueTree = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p]]);
-  var _sfc_main$o = (0, import_vue.defineComponent)({
+  var FDialogueTree = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o]]);
+  var _sfc_main$n = (0, import_vue.defineComponent)({
     name: "FExpandablePanel",
     components: {
       FIcon,
@@ -12864,7 +12810,7 @@
     key: 0,
     class: "expandable-panel__outside"
   };
-  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_expand = (0, import_vue.resolveComponent)("f-expand");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
@@ -12901,8 +12847,8 @@
       _: 3
     })], 2);
   }
-  var FExpandablePanel = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$o]]);
-  var _sfc_main$n = (0, import_vue.defineComponent)({
+  var FExpandablePanel = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n]]);
+  var _sfc_main$m = (0, import_vue.defineComponent)({
     name: "FExpandableParagraph",
     components: {
       FIcon,
@@ -13003,7 +12949,7 @@
     key: 0,
     class: "expandable-paragraph__separator"
   };
-  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_expand = (0, import_vue.resolveComponent)("f-expand");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
@@ -13034,7 +12980,7 @@
       _: 3
     })], 2);
   }
-  var FExpandableParagraph = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$n]]);
+  var FExpandableParagraph = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m]]);
   var DEFAULT_ICON = "file";
   var iconMap = {
     "image/*": "pic",
@@ -13043,7 +12989,7 @@
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "doc",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.template": "doc"
   };
-  var _sfc_main$m = (0, import_vue.defineComponent)({
+  var _sfc_main$l = (0, import_vue.defineComponent)({
     name: "FFileItem",
     components: {
       FIcon
@@ -13142,7 +13088,7 @@
     key: 0,
     class: "file-item__change-info"
   };
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$l, [(0, import_vue.createElementVNode)("div", _hoisted_2$h, [(0, import_vue.createElementVNode)("a", (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -13155,8 +13101,8 @@
       class: "file-item__separator"
     }, null, -1))]);
   }
-  var FFileItem = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$m]]);
-  var _sfc_main$l = (0, import_vue.defineComponent)({
+  var FFileItem = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l]]);
+  var _sfc_main$k = (0, import_vue.defineComponent)({
     name: "FFileSelector",
     components: {
       FIcon
@@ -13222,7 +13168,7 @@
   };
   var _hoisted_2$g = ["id", "aria-labelledby", "aria-disabled"];
   var _hoisted_3$b = ["id", "for"];
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$k, [(0, import_vue.createElementVNode)("input", (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -13243,7 +13189,7 @@
       name: "paper-clip"
     }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 10, _hoisted_3$b)]);
   }
-  var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l]]);
+  var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k]]);
   var iconClasses = {
     success: {
       symbol: "circle",
@@ -13270,7 +13216,7 @@
       screenReaderContextDefault: "Informationsmeddelande"
     }
   };
-  var _sfc_main$k = (0, import_vue.defineComponent)({
+  var _sfc_main$j = (0, import_vue.defineComponent)({
     name: "FMessageBox",
     components: {
       FIcon,
@@ -13364,7 +13310,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
@@ -13402,7 +13348,7 @@
       _: 3
     })], 2);
   }
-  var FMessageBox = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k]]);
+  var FMessageBox = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j]]);
   var setRef = Symbol("setRef");
   var getRef = Symbol("getRef");
   var setIsOpen = Symbol("setIsOpen");
@@ -13429,7 +13375,7 @@
       }
     };
   }
-  var _sfc_main$j = (0, import_vue.defineComponent)({
+  var _sfc_main$i = (0, import_vue.defineComponent)({
     name: "FForm",
     components: {
       FMessageBox,
@@ -13583,7 +13529,7 @@
     }
   });
   var _hoisted_1$i = ["id"];
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue.resolveComponent)("f-error-list");
     const _component_f_message_box = (0, import_vue.resolveComponent)("f-message-box");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("form", (0, import_vue.mergeProps)({
@@ -13605,8 +13551,8 @@
       _: 3
     })) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 16, _hoisted_1$i);
   }
-  var FForm = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j]]);
-  var _sfc_main$i = (0, import_vue.defineComponent)({
+  var FForm = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i]]);
+  var _sfc_main$h = (0, import_vue.defineComponent)({
     name: "FFormStep",
     components: {
       FIcon,
@@ -13803,7 +13749,7 @@
     key: 0,
     class: "form-step__arrow"
   };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_error_list = (0, import_vue.resolveComponent)("f-error-list");
     const _component_f_validation_group = (0, import_vue.resolveComponent)("f-validation-group");
@@ -13847,8 +13793,8 @@
       _: 3
     }, 16, ["id", "modelValue"]);
   }
-  var FFormStep = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i]]);
-  var _sfc_main$h = (0, import_vue.defineComponent)({
+  var FFormStep = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h]]);
+  var _sfc_main$g = (0, import_vue.defineComponent)({
     name: "FFormStepButton",
     components: {
       FIcon
@@ -13880,7 +13826,7 @@
   var _hoisted_2$e = {
     class: "sr-only"
   };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -13901,7 +13847,7 @@
       class: "button__icon"
     }), (0, import_vue.createTextVNode)(" " + (0, import_vue.toDisplayString)(_ctx.isAnyFieldTouched ? _ctx.$t("fkui.form-step-button.edit", "\xC4ndra") : _ctx.$t("fkui.form-step-button.open", "Fyll i")), 1)], 64)), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_2$e, (0, import_vue.toDisplayString)(_ctx.additionalScreenreaderText), 1)], 16, _hoisted_1$g);
   }
-  var FFormStepButton = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h]]);
+  var FFormStepButton = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g]]);
   var keybindings = Object.fromEntries([["Up", focusTrAbove], ["Down", focusTrBelow], ["ArrowUp", focusTrAbove], ["ArrowDown", focusTrBelow], [" ", activateRow], ["Spacebar", activateRow]]);
   function focusTrAbove(current) {
     if (current > 0) {
@@ -14009,7 +13955,7 @@
       target.style.removeProperty("display");
     }
   }
-  var _sfc_main$g = (0, import_vue.defineComponent)({
+  var _sfc_main$f = (0, import_vue.defineComponent)({
     name: "FInteractiveTable",
     components: {
       FCheckboxField,
@@ -14462,7 +14408,7 @@
     key: 1
   };
   var _hoisted_22 = ["colspan"];
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_checkbox_field = (0, import_vue.resolveComponent)("f-checkbox-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
@@ -14556,8 +14502,8 @@
       row: {}
     })))])) : (0, import_vue.createCommentVNode)("", true)]))], 16, _hoisted_1$f)], 2);
   }
-  var FInteractiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g]]);
-  var _sfc_main$f = (0, import_vue.defineComponent)({
+  var FInteractiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f]]);
+  var _sfc_main$e = (0, import_vue.defineComponent)({
     name: "FLayoutApplicationTemplate",
     computed: {
       showHeader() {
@@ -14601,12 +14547,12 @@
     key: 0,
     class: "layout-application-template__footer"
   };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$e, [_ctx.showHeader || _ctx.showTopNavigation ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("header", _hoisted_2$c, [_ctx.showHeader ? (0, import_vue.renderSlot)(_ctx.$slots, "header", {
       key: 0
     }) : (0, import_vue.createCommentVNode)("", true), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), _ctx.showTopNavigation ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("nav", _hoisted_3$8, [(0, import_vue.renderSlot)(_ctx.$slots, "top-navigation")])) : (0, import_vue.createCommentVNode)("", true)], 512)) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("main", _hoisted_4$7, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _ctx.showFooter ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("footer", _hoisted_5$5, [(0, import_vue.renderSlot)(_ctx.$slots, "footer")])) : (0, import_vue.createCommentVNode)("", true)], 512)]);
   }
-  var FLayoutApplicationTemplate = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f]]);
+  var FLayoutApplicationTemplate = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e]]);
   function getGridClasses(target) {
     if (target === null) {
       return {};
@@ -14707,7 +14653,7 @@
       rightPrimaryClasses
     };
   }
-  var _sfc_main$e = (0, import_vue.defineComponent)({
+  var _sfc_main$d = (0, import_vue.defineComponent)({
     name: "FLayoutLeftPanel",
     components: {
       FIcon
@@ -14803,7 +14749,7 @@
     key: 1,
     class: "layout-navigation__navigation__inner--minimized"
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$d, [(0, import_vue.createElementVNode)("nav", {
       id: "layout-navigation__navigation",
@@ -14854,7 +14800,7 @@
       style: (0, import_vue.normalizeStyle)(_ctx.primaryStyle)
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 6)]);
   }
-  var FLayoutLeftPanel = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e]]);
+  var FLayoutLeftPanel = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d]]);
   var FRightPanelServiceImpl = class {
     constructor() {
       _defineProperty(this, "focusedElementBeforeOpenining", null);
@@ -14884,7 +14830,7 @@
     }
   };
   var FLayoutRightPanelService = new FRightPanelServiceImpl();
-  var _sfc_main$d = (0, import_vue.defineComponent)({
+  var _sfc_main$c = (0, import_vue.defineComponent)({
     name: "FLayoutRightPanel",
     components: {
       FIcon
@@ -15007,7 +14953,7 @@
   var _hoisted_2$a = {
     class: "layout-secondary__secondary__inner"
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$c, [(0, import_vue.createElementVNode)("div", {
       id: "layout-secondary__primary",
@@ -15046,8 +14992,8 @@
       name: "close"
     })])], 6)])], 4)) : (0, import_vue.createCommentVNode)("", true)]);
   }
-  var FLayoutRightPanel = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d]]);
-  var _sfc_main$c = (0, import_vue.defineComponent)({
+  var FLayoutRightPanel = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c]]);
+  var _sfc_main$b = (0, import_vue.defineComponent)({
     name: "FList",
     components: {
       FCheckboxField
@@ -15315,7 +15261,7 @@
   var _hoisted_10$1 = {
     class: "list__item__itempane"
   };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue.resolveComponent)("f-checkbox-field");
     return !_ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("ul", _hoisted_1$b, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.items, (item) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", {
@@ -15379,8 +15325,8 @@
       }, 1032, ["href", "onClick"]))], 42, _hoisted_5$4);
     }), 128)), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _ctx.isEmpty ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", _hoisted_9$2, [(0, import_vue.createElementVNode)("div", _hoisted_10$1, [(0, import_vue.renderSlot)(_ctx.$slots, "empty", {}, () => [(0, import_vue.createElementVNode)("em", null, (0, import_vue.toDisplayString)(_ctx.$t("fkui.list.empty", "Listan \xE4r tom")), 1)])])])) : (0, import_vue.createCommentVNode)("", true)], 8, _hoisted_4$5));
   }
-  var FList = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c]]);
-  var _sfc_main$b = (0, import_vue.defineComponent)({
+  var FList = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b]]);
+  var _sfc_main$a = (0, import_vue.defineComponent)({
     name: "FLoader",
     mixins: [TranslationMixin],
     inheritAttrs: false,
@@ -15498,7 +15444,7 @@
   var _hoisted_2$8 = {
     role: "alert"
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       to: _ctx.teleportTarget,
       disabled: _ctx.teleportDisabled
@@ -15544,7 +15490,7 @@
       tabindex: "-1"
     }, [(0, import_vue.createElementVNode)("span", _hoisted_2$8, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.loader.wait.text", _ctx.defaultLoadingText)), 1)])])], 2)])], 16), [[import_vue.vShow, _ctx.show]])], 8, ["to", "disabled"]);
   }
-  var FLoader = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b]]);
+  var FLoader = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a]]);
   function findOverflowIndex(totalWidth, elements) {
     let sum = 0;
     const index = elements.findIndex((element) => {
@@ -15594,7 +15540,7 @@
   var downKeys = ["Down", "ArrowDown"];
   var verticalKeys = [...upKeys, ...downKeys];
   var preventKeys = ["Tab", "Left", "Right", "ArrowLeft", "ArrowRight", "Home", "End", " ", "Spacebar", "Enter", ...verticalKeys];
-  var _sfc_main$a = (0, import_vue.defineComponent)({
+  var _sfc_main$9 = (0, import_vue.defineComponent)({
     name: "FNavigationMenu",
     components: {
       FIcon,
@@ -15949,7 +15895,7 @@
   var _hoisted_9$1 = {
     class: "sr-only"
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup_menu = (0, import_vue.resolveComponent)("i-popup-menu");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("nav", {
@@ -16010,9 +15956,9 @@
       onClose: _cache[5] || (_cache[5] = ($event) => _ctx.togglePopup(false))
     }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "selected-menu-item-screen-reader-text", "aria-label", "onSelect"])], 10, _hoisted_1$9);
   }
-  var FNavigationMenu = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a]]);
+  var FNavigationMenu = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9]]);
   var EVENTS = ["online", "offline"];
-  var _sfc_main$9 = (0, import_vue.defineComponent)({
+  var _sfc_main$8 = (0, import_vue.defineComponent)({
     name: "FOffline",
     components: {
       FIcon,
@@ -16072,7 +16018,7 @@
     class: "offline__content"
   };
   var _hoisted_5$2 = ["aria-hidden"];
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
@@ -16108,8 +16054,8 @@
       "aria-hidden": _ctx.shouldNotRead ? "true" : void 0
     }, "\n            Din internetuppkoppling fungerar igen\n        ", 8, _hoisted_5$2), [[import_vue.vShow, _ctx.isOnline]])], 8, _hoisted_1$8);
   }
-  var FOffline = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9]]);
-  var _sfc_main$8 = (0, import_vue.defineComponent)({
+  var FOffline = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8]]);
+  var _sfc_main$7 = (0, import_vue.defineComponent)({
     name: "FOutputField",
     components: {
       FLabel
@@ -16146,7 +16092,7 @@
     class: "output-field"
   };
   var _hoisted_2$5 = ["id", "for"];
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_label = (0, import_vue.resolveComponent)("f-label");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$7, [(0, import_vue.createVNode)(_component_f_label, {
       for: _ctx.id
@@ -16163,7 +16109,7 @@
       class: "output-field__output"
     }, _ctx.$attrs), [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 16, _hoisted_2$5)]);
   }
-  var FOutputField = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8]]);
+  var FOutputField = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7]]);
   function getAltLogoText(hasRouterLink, routerLinkLabel, t) {
     const srStdLogoAltText = t("fkui.page-header.logo.alt-text", "F\xF6rs\xE4kringskassan");
     const srStdRouterLinkLabel = t("fkui.page-header.router.link.label", "g\xE5 till startsidan");
@@ -16175,7 +16121,7 @@
       return srStdLogoAltText;
     }
   }
-  var _sfc_main$7 = (0, import_vue.defineComponent)({
+  var _sfc_main$6 = (0, import_vue.defineComponent)({
     name: "FPageHeader",
     components: {
       ISkipLink
@@ -16320,7 +16266,7 @@
   var _hoisted_8$1 = {
     class: "page-header__right-slot"
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_skip_link = (0, import_vue.resolveComponent)("i-skip-link");
     const _component_router_link = (0, import_vue.resolveComponent)("router-link");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$6, [_ctx.skipLinkAnchor ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("nav", _hoisted_2$4, [(0, import_vue.createVNode)(_component_i_skip_link, {
@@ -16350,13 +16296,13 @@
       _: 3
     })), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_7$1, [(0, import_vue.createElementVNode)("div", _hoisted_8$1, [(0, import_vue.renderSlot)(_ctx.$slots, "right")])])], 512)]);
   }
-  var FPageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7]]);
+  var FPageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6]]);
   var MIN_VALUE = 0;
   var MAX_VALUE = 100;
   function clamp(val) {
     return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
   }
-  var _sfc_main$6 = (0, import_vue.defineComponent)({
+  var _sfc_main$5 = (0, import_vue.defineComponent)({
     name: "FProgressbar",
     props: {
       /**
@@ -16413,7 +16359,7 @@
   var _hoisted_3$2 = {
     class: "sr-only"
   };
-  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$5, [(0, import_vue.createElementVNode)("span", {
       class: (0, import_vue.normalizeClass)(["progress__meter", _ctx.progressBarClass]),
       role: "progressbar",
@@ -16425,9 +16371,9 @@
       style: (0, import_vue.normalizeStyle)(_ctx.cssWidth)
     }, [(0, import_vue.createElementVNode)("span", _hoisted_3$2, (0, import_vue.toDisplayString)(_ctx.progressText), 1)], 14, _hoisted_2$3)]);
   }
-  var FProgressbar = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6]]);
+  var FProgressbar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
   var anyType = [String, Object, Array, Number, Date, Boolean];
-  var _sfc_main$5 = (0, import_vue.defineComponent)({
+  var _sfc_main$4 = (0, import_vue.defineComponent)({
     name: "FRadioField",
     inheritAttrs: false,
     props: {
@@ -16593,7 +16539,7 @@
     key: 0,
     class: "radio-button__details"
   };
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["radio-button", _ctx.disabledClass]),
       onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -16619,70 +16565,7 @@
       _: 3
     }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : (0, import_vue.createCommentVNode)("", true)], 64)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$2)], 34);
   }
-  var FRadioField = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
-  var _sfc_main$4 = (0, import_vue.defineComponent)({
-    name: "FRadioGroup",
-    components: {
-      FFieldset
-    },
-    inheritAttrs: false,
-    props: {
-      /**
-       * The id for the fieldset id attribute.
-       * If the prop is not set the id will be generated.
-       */
-      id: {
-        type: String,
-        required: false,
-        default: () => import_logic.ElementIdService.generateElementId()
-      },
-      /**
-       * The name of the radio group.
-       * The radio group fields in the group will use the same name.
-       */
-      name: {
-        type: String,
-        required: true
-      },
-      /**
-       * If radio buttons should be aligned horizontally.
-       * If the prop is not set the radio buttons will be aligned vertically.
-       * Default: `false`
-       */
-      isHorizontal: {
-        type: Boolean,
-        required: false
-      }
-    }
-  });
-  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_fieldset = (0, import_vue.resolveComponent)("f-fieldset");
-    return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_fieldset, (0, import_vue.mergeProps)({
-      id: _ctx.id,
-      name: _ctx.name
-    }, _ctx.$attrs, {
-      horizontal: _ctx.isHorizontal
-    }), (0, import_vue.createSlots)({
-      label: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "label")]),
-      description: (0, import_vue.withCtx)(({
-        descriptionClass,
-        discreteDescriptionClass
-      }) => [(0, import_vue.renderSlot)(_ctx.$slots, "description", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-        descriptionClass,
-        discreteDescriptionClass
-      })))]),
-      "error-message": (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message")]),
-      default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-        indentClass: "indent"
-      })))]),
-      _: 2
-    }, [_ctx.$slots.tooltip ? {
-      name: "tooltip",
-      fn: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "tooltip")]),
-      key: "0"
-    } : void 0]), 1040, ["id", "name", "horizontal"]);
-  }
-  var FRadioGroup = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
+  var FRadioField = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
   var _sfc_main$3 = (0, import_vue.defineComponent)({
     name: "FStaticField",
     components: {

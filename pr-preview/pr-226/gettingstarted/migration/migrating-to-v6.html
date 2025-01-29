@@ -23,9 +23,9 @@
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-292562.css"
+            href="../../assets/docs-int-0f5026.css"
             crossorigin
-            integrity="sha384-tZxJwf0152/w7R1AKolqYqlP3uBMkygz7Lwf+FRI5DDwZzVTDPt+v87q78ASMH40"
+            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
             data-theme="int" disabled
         />
 
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-fb2652.json"
+            href="../../search-data-ff5959.json"
             as="fetch"
             crossorigin
-            integrity="sha384-FTBlI0ZbIwVsXuC0Ljp1PHiXMt8lbkE44t6W1XXMNH165iNCmY+au48+Cmj9WOWS"
+            integrity="sha384-MXma5GMvU3q+YMB/t6bKb1Q/1T995jNmT5UJz50h+GN6yoa31EJ+lmEFN8J+N581"
             id="search-data"
         />
     </head>
@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-092d93.js"
+                    src="../../assets/vendor-fkui-vue-987552.js"
                     crossorigin
-                    integrity="sha384-7DvPVQvnT6dOphTlGHvlOoht0SjhPGAxU1Gnkun11chsFnq8j2AN29A3slFigkv5"
+                    integrity="sha384-Jn3JIXXzG2jo7yivkYBqKXMlIyNdobAkUgd9/VtYEuEwkekUB03JnXhyD2ReNiKm"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -574,9 +574,15 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#overblick">Överblick</a></li>
+                                <li><a href="#summering">Summering</a></li>
+                                
+                                <li><a href="#fcheckboxgroup_och_fcheckboxgroupfield">`FCheckboxGroup` och `FCheckboxGroupField`</a></li>
+                                
+                                <li><a href="#fradiogroup_och_fradiogroupfield">`FRadioGroup` och `FRadioGroupField`</a></li>
                                 
                                 <li><a href="#fformmodal_slots">FFormModal slots</a></li>
+                                
+                                <li><a href="#pageobjects">Pageobjects</a></li>
                                 
                             </ul>
                         </details>
@@ -586,15 +592,30 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="overblick"><a class="header-anchor" href="#overblick">Överblick</a></h2><p>Ändringar i komponenter och funktioner:</p>
+<h2 id="summering"><a class="header-anchor" href="#summering">Summering</a></h2><p>Följande deprekerade komponenter har tagits bort:</p>
+<ul>
+<li><code>FCheckboxGroup</code></li>
+<li><code>FCheckboxGroupField</code></li>
+<li><code>FRadioGroup</code></li>
+<li><code>FRadioGroupField</code></li>
+</ul>
+<p>Ändringar i komponenter och funktioner:</p>
 <ul>
 <li><code>FFormModal</code>: slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna.</li>
 </ul>
+<p>För Cypress pageobjekt:</p>
+<ul>
+<li><code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).</li>
+</ul>
+<h2 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h2><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<p>Det deprekerade aliaset <code>FCheckboxGroupField</code> har tagits bort och är ersatt med <code>FCheckboxField</code>.</p>
+<h2 id="fradiogroup_och_fradiogroupfield"><a class="header-anchor" href="#fradiogroup_och_fradiogroupfield"><code>FRadioGroup</code> och <code>FRadioGroupField</code></a></h2><p>Den deprekerade komponenten <code>FRadioGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<p>Det deprekerade aliaset <code>FRadioGroupField</code> har tagits bort och är ersatt med <code>FRadioField</code>.</p>
 <h2 id="fformmodal_slots"><a class="header-anchor" href="#fformmodal_slots">FFormModal slots</a></h2><p>De deprekerade slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna och ersatta med propen <code>buttons</code>.</p>
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-23ef83"
+                    id="example-f2dd9e"
                     class="code-preview code-preview--default"
                     
                     
@@ -629,6 +650,22 @@
                 </div>
             <p>Om du använder <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal(..)</code></a> (rekommenderat) för att anropa modalen behövs inga ändringar.</p>
 <p>Om du använder template-syntax för att anropa <code>FFormModal</code> direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.</p>
+<h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="trimmedtext_metoden"><a class="header-anchor" href="#trimmedtext_metoden"><code>trimmedText()</code> metoden</a></h3><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
+Ej att förväxla med tredjeparts kommando/assertion med samma namn som med fördel kan användas som ersättare.</p>
+<p>Som förslag till ersättare kan någon av följande tekniker användas:</p>
+<ul>
+<li><code>cy.get(..).should(&quot;have.text&quot;, &quot;...&quot;)</code> - givet att det inte finns inledande eller efterföljande whitespace kan native <code>have.text</code> användas.</li>
+<li><code>cy.get(..).should(&quot;contain.text&quot;, &quot;...&quot;)</code> - givet att du testar hela textens innehåll kan native <code>contain.text</code> användas.</li>
+<li><code>cy.get(..).should(&quot;trimmedText&quot;, &quot;...&quot;)</code> - tredjeparts assertion som tillhandhåller motsvarande (och buggfri) lösning kan användas.</li>
+</ul>
+<p>Specifikt, för varje pageobjekt kan <code>.trimmedText().should(..)</code> ersättas med:</p>
+<ul>
+<li>För <code>FBadgePageObject</code> ersätt med <code>.el().should(..)</code>.-</li>
+<li>För <code>FCheckboxFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
+<li>För <code>FLabelPageObject</code> ersätt med <code>.el().should(..)</code></li>
+<li>För <code>FRadioFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
+<li>För <code>FSelectFieldPageObject</code> ersätt med <code>.selectedOption().should(..)</code>.</li>
+</ul>
 
 
                     </div>
@@ -650,9 +687,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/form-modal-slots (<a href="https://github.com/Forsakringskassan/designsystem/commits/5a2366d6bda3584b4883a4098707272ad4072cd2">5a2366d</a>)<br />
+    feature/form-modal-slots (<a href="https://github.com/Forsakringskassan/designsystem/commits/cca1124d9388f3500e04c2fad6f181dca2fed89b">cca1124</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/226">PR 226</a><br />
-        2025-01-28 14:01
+        2025-01-29 18:04
 </div>
 <div class="toolbar__item">
     <form id="version">
