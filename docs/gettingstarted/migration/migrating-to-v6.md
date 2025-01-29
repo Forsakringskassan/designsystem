@@ -15,6 +15,7 @@ Följande deprekerade komponenter har tagits bort:
 
 Ändringar i komponenter och funktioner:
 
+- `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: deprekerade CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
@@ -28,6 +29,17 @@ För Cypress pageobjekt:
 - `FLoaderPageobject.loader()` metoden är borttagen.
 - `FNavigationMenuPageobject.menu()` metoden är borttagen.
 - `FTooltipPageObject.content()` metoden är borttagen.
+
+## `@fkui/logic`
+
+### Polyfill
+
+Den deprekerade entrypointen `@fkui/logic/lib/polyfills` är borttagen och ersatt med `@fkui/logic/polyfills`.
+
+```diff
+-import "@fkui/logic/lib/polyfills";
++import "@fkui/logic/polyfills";
+```
 
 ## `FCheckboxGroup` och `FCheckboxGroupField`
 
