@@ -41,8 +41,7 @@
     return null;
   }
   function padInitialZeros(value, maxLength = 2) {
-    var _value;
-    value = (_value = value) !== null && _value !== void 0 ? _value : "";
+    value = value !== null && value !== void 0 ? value : "";
     return value.padStart(maxLength, "0");
   }
   function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {

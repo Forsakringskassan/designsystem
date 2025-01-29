@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -3680,10 +3680,7 @@
   }
   function lazyLoad(fn2) {
     let cache;
-    return () => {
-      var _cache;
-      return (_cache = cache) !== null && _cache !== void 0 ? _cache : cache = fn2();
-    };
+    return () => cache !== null && cache !== void 0 ? cache : cache = fn2();
   }
   var eventTarget = lazyLoad(() => new EventTarget());
   var fn = /* @__PURE__ */ new Map();
