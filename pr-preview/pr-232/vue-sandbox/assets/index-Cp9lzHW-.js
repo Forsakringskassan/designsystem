@@ -19751,84 +19751,6 @@ class FRightPanelServiceImpl {
   }
 }
 new FRightPanelServiceImpl();
-const _hoisted_1$5 = {
-  class: "progress"
-};
-const _hoisted_2$3 = ["aria-label", "aria-valuenow", "aria-valuetext"];
-const _hoisted_3$2 = {
-  class: "sr-only"
-};
-const MIN_VALUE = 0;
-const MAX_VALUE = 100;
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
-  __name: "FProgressbar",
-  props: {
-    /**
-     * Sets the progress. Higher value indicates further progress.
-     *
-     * Value must be in range 0-100.
-     */
-    value: {
-      type: Number,
-      required: true,
-      validator(value) {
-        return value >= 0 && value <= 100;
-      }
-    },
-    /**
-     * Text that the screenreader will read.
-     *
-     * `%VALUE` can be used as a placeholder for the actual value e.g `"You have uploaded %VALUE% percent"`.
-     */
-    valueText: {
-      type: String,
-      required: false,
-      default: "Du har slutfört %VALUE% %."
-    },
-    /**
-     * Accessible name for this progressbar. Should describe the purpose of this
-     * progressbar.
-     */
-    /* eslint-disable-next-line vue/prop-name-casing -- vue does not allow ariaLabel as a prop as it collides with internal types */
-    "aria-label": {
-      type: String,
-      required: true
-    }
-  },
-  setup(__props) {
-    const props = __props;
-    const ariaLabel = props.ariaLabel;
-    function clamp(val) {
-      return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
-    }
-    const progressValueNow = computed(() => clamp(props.value));
-    const cssWidth = computed(() => `width: ${progressValueNow.value}%`);
-    const progressBarClass = computed(() => {
-      if (progressValueNow.value === MIN_VALUE) {
-        return "progress__meter--pending";
-      } else if (progressValueNow.value === MAX_VALUE) {
-        return "progress__meter--finished";
-      } else {
-        return "progress__meter--inprogress";
-      }
-    });
-    const progressText = computed(() => {
-      return `${props.valueText.replace("%VALUE%", progressValueNow.value.toString())}`;
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$5, [createBaseVNode("span", {
-        class: normalizeClass(["progress__meter", progressBarClass.value]),
-        role: "progressbar",
-        "aria-label": unref(ariaLabel),
-        "aria-valuemin": "0",
-        "aria-valuemax": "100",
-        "aria-valuenow": progressValueNow.value,
-        "aria-valuetext": progressText.value,
-        style: normalizeStyle(cssWidth.value)
-      }, [createBaseVNode("span", _hoisted_3$2, toDisplayString(progressText.value), 1)], 14, _hoisted_2$3)]);
-    };
-  }
-});
 /*!
   * vue-router v4.5.0
   * (c) 2024 Eduardo San Martin Morote
@@ -21691,7 +21613,7 @@ function extractChangingRecords(to, from) {
   return [leavingRecords, updatingRecords, enteringRecords];
 }
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
-  components: { FTextField, FProgressbar: _sfc_main$5 },
+  components: { FTextField },
   data() {
     return {
       awesomeModel: ""
@@ -21707,15 +21629,10 @@ const _export_sfc = (sfc, props) => {
 };
 const _hoisted_1 = { class: "sandbox-root" };
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_progressbar = resolveComponent("f-progressbar");
   const _component_f_text_field = resolveComponent("f-text-field");
   const _directive_validation = resolveDirective("validation");
   return openBlock(), createElementBlock("div", _hoisted_1, [
     _cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
-    createVNode(_component_f_progressbar, {
-      value: 40,
-      "aria-label": "asdf"
-    }),
     _cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
     _cache[4] || (_cache[4] = createBaseVNode("p", null, [
       createBaseVNode("strong", null, "Ändra och labba gärna här men glöm inte återställa innan merge!")

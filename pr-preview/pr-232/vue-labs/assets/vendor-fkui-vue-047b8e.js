@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -16324,7 +16324,8 @@
       /**
        * Text that the screenreader will read.
        *
-       * `%VALUE` can be used as a placeholder for the actual value e.g `"You have uploaded %VALUE% percent"`.
+       * `%VALUE%` can be used as a placeholder for the actual value e.g
+       * `"You have uploaded %VALUE% percent"`.
        */
       valueText: {
         type: String,
