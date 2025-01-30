@@ -22,6 +22,10 @@ För Cypress pageobjekt:
 
 - `trimmedText()` metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
 
+Följande deprekerade validatorer har tagits bort:
+
+- `personnummer`
+
 ## `FCheckboxGroup` och `FCheckboxGroupField`
 
 Den deprekerade komponenten `FCheckboxGroup` har tagits bort och är ersatt med `FFieldset`, se separat {@link migrating-to-fieldset migreringsguide för fieldset}.
@@ -103,3 +107,17 @@ Specifikt, för varje pageobjekt kan `.trimmedText().should(..)` ersättas med:
 - För `FLabelPageObject` ersätt med `.el().should(..)`
 - För `FRadioFieldPageObject` ersätt med `.label().should(..)`.
 - För `FSelectFieldPageObject` ersätt med `.selectedOption().should(..)`.
+
+## ValidationService
+
+### Validator `personnummer`
+
+Den deprekerade validatorn `personnummer` är borttagen och ersätts med validatorerna {@link validators#personnummer_format_personnummerformat `personnummerFormat`} och {@link validators#personnummer_checksumma_personnummerluhn `personnummerLuhn`}.
+
+```diff
+    <f-text-field
+        v-model="personnummerModel"
+-       v-validation.personnummer
++       v-validation.personnummerFormat.personnummerLuhn
+    >
+```

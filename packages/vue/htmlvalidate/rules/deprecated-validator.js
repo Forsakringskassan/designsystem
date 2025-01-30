@@ -2,7 +2,7 @@ const { Rule, sliceLocation } = require("html-validate");
 const { getDocumentationUrl } = require("./common");
 
 const replacements = {
-    personnummer: ["personnummerLuhn", "personnummerFormat"],
+    dummy: ["dummyReplacements"],
 };
 const deprecated = Object.keys(replacements);
 
