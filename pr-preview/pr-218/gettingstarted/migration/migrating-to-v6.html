@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-22eb7c.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-6zNt6feEzfHkhL88mPu2sFhjWF1qAH4NWpplffCib5pYj/bBCPeBkO1+VdjGyIb2"
             
         />
         <link
@@ -576,11 +576,15 @@
                                 
                                 <li><a href="#summering">Summering</a></li>
                                 
+                                <li><a href="#fkui_logic">`@fkui/logic`</a></li>
+                                
                                 <li><a href="#fcheckboxgroup_och_fcheckboxgroupfield">`FCheckboxGroup` och `FCheckboxGroupField`</a></li>
                                 
                                 <li><a href="#fradiogroup_och_fradiogroupfield">`FRadioGroup` och `FRadioGroupField`</a></li>
                                 
                                 <li><a href="#fformmodal_slots">FFormModal slots</a></li>
+                                
+                                <li><a href="#fmodal_deprekerade_css_klasser">`FModal` deprekerade CSS-klasser</a></li>
                                 
                                 <li><a href="#gettextfromscopedslot">`getTextFromScopedSlot`</a></li>
                                 
@@ -607,17 +611,36 @@
 </ul>
 <p>Ändringar i komponenter och funktioner:</p>
 <ul>
+<li><code>@fkui/logic</code>: importen <code>@fkui/logic/lib/polyfills</code> är borttagen.</li>
 <li><code>FFormModal</code>: slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna.</li>
+<li><code>FModal</code>: deprekerade CSS klassalias <code>modal__dialog-container-large</code> och <code>modal__dialog-container-fullscreen</code> är borttagna.</li>
 <li><code>FPageHeader</code>: propen <code>skipLinkHref</code> är borttagen</li>
 <li><code>getTextFromScopedSlot</code>: funktionen är borttagen.</li>
 <li>Konfiguration: <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna.</li>
 </ul>
 <p>För Cypress pageobjekt:</p>
 <ul>
-<li><code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).</li>
+<li><code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
+-``FMessageBoxPageObject.title()<code>och</code>FMessageBoxPageObject.body()` metoderna är borttagna.</li>
+<li><code>FLoaderPageobject.loader()</code> metoden är borttagen.</li>
+<li><code>FNavigationMenuPageobject.menu()</code> metoden är borttagen.</li>
 <li><code>FTooltipPageObject.content()</code> metoden är borttagen.</li>
 </ul>
-<h2 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h2><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<h2 id="fkui_logic"><a class="header-anchor" href="#fkui_logic"><code>@fkui/logic</code></a></h2><h3 id="polyfill"><a class="header-anchor" href="#polyfill">Polyfill</a></h3><p>Den deprekerade entrypointen <code>@fkui/logic/lib/polyfills</code> är borttagen och ersatt med <code>@fkui/logic/polyfills</code>.</p>
+
+                <div
+                    id="example-4b91fe"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-import &quot;@fkui/logic/lib/polyfills&quot;;</span>
+<span class="hljs-addition">+import &quot;@fkui/logic/polyfills&quot;;</span>
+</code></pre>
+                </div>
+            <h2 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h2><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
 <p>Det deprekerade aliaset <code>FCheckboxGroupField</code> har tagits bort och är ersatt med <code>FCheckboxField</code>.</p>
 <h2 id="fradiogroup_och_fradiogroupfield"><a class="header-anchor" href="#fradiogroup_och_fradiogroupfield"><code>FRadioGroup</code> och <code>FRadioGroupField</code></a></h2><p>Den deprekerade komponenten <code>FRadioGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
 <p>Det deprekerade aliaset <code>FRadioGroupField</code> har tagits bort och är ersatt med <code>FRadioField</code>.</p>
@@ -625,7 +648,7 @@
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-6ae8ba"
+                    id="example-a0792e"
                     class="code-preview code-preview--default"
                     
                     
@@ -660,10 +683,26 @@
                 </div>
             <p>Om du använder <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal(..)</code></a> (rekommenderat) för att anropa modalen behövs inga ändringar.</p>
 <p>Om du använder template-syntax för att anropa <code>FFormModal</code> direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.</p>
-<h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+<h2 id="fmodal_deprekerade_css_klasser"><a class="header-anchor" href="#fmodal_deprekerade_css_klasser"><code>FModal</code> deprekerade CSS-klasser</a></h2><p>De deprekerade CSS klasserna <code>modal__dialog-container-large</code> och <code>modal__dialog-container-fullscreen</code> är borttagna.
+Detta påverkar endast dig som använder stylingen direkt, använder man <code>@fkui/vue</code> komponenten <code>FModal</code> påverkas man inte.
+Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive <code>modal__dialog-container--fullscreen</code>.</p>
 
                 <div
-                    id="example-2b554a"
+                    id="example-cda1ad"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;div class=&quot;modal__dialog-container modal__dialog-container-large&quot;&gt;</span>
+<span class="hljs-addition">+&lt;div class=&quot;modal__dialog-container modal__dialog-container--large&quot;&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+
+                <div
+                    id="example-be176d"
                     class="code-preview code-preview--default"
                     
                     
@@ -683,7 +722,7 @@
         <h2 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
 
                 <div
-                    id="example-3aa0c6"
+                    id="example-65422e"
                     class="code-preview code-preview--default"
                     
                     
@@ -700,7 +739,7 @@
             <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-379e02"
+                    id="example-15c2b3"
                     class="code-preview code-preview--default"
                     
                     
@@ -729,10 +768,56 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 <li>För <code>FRadioFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
 <li>För <code>FSelectFieldPageObject</code> ersätt med <code>.selectedOption().should(..)</code>.</li>
 </ul>
-<h3 id="ftooltippageobject_content_methoden"><a class="header-anchor" href="#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code> methoden</a></h3><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
+<h3 id="floaderpageobject_loader_metoden"><a class="header-anchor" href="#floaderpageobject_loader_metoden"><code>FLoaderPageobject.loader()</code> metoden</a></h3><p>Den deprekerade metoden <code>FLoaderPageobject.loader()</code> är borttagen.
+Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda <code>.el()</code>.</p>
 
                 <div
-                    id="example-7fc793"
+                    id="example-85a8de"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const loader = new FLoaderPageObject(&quot;#parent-element&quot;);</span>
+<span class="hljs-deletion">-loader.loader().should(&quot;be.visible&quot;);</span>
+<span class="hljs-addition">+const loader = new FLoaderPageObject(&quot;#loader-element&quot;);</span>
+<span class="hljs-addition">+loader.el().should(&quot;be.visible&quot;);</span>
+</code></pre>
+                </div>
+            <h3 id="fmessageboxpageobject"><a class="header-anchor" href="#fmessageboxpageobject"><code>FMessageBoxPageObject</code></a></h3><p>De deprekerade metoderna <code>FMessageBoxPageObject.title()</code> och <code>FMessageBoxPageObject.body()</code> är borttagna.
+Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda <code>.content()</code> för att hämta ut hela innehållet i slotten eller använda en egen selector.</p>
+
+                <div
+                    id="example-8cc038"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-messagebox.title().should(&quot;have.text&quot;, &quot;..&quot;);</span>
+<span class="hljs-addition">+messagebox.content().should(&quot;contain.text&quot;, &quot;..&quot;);</span>
+</code></pre>
+                </div>
+            <h3 id="fnavigationmenupageobject_menu_metoden"><a class="header-anchor" href="#fnavigationmenupageobject_menu_metoden"><code>FNavigationMenuPageobject.menu()</code> metoden</a></h3><p>Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
+
+                <div
+                    id="example-f38613"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-nav.menu().item(0).click();</span>
+<span class="hljs-addition">+nav.item(0).click();</span>
+</code></pre>
+                </div>
+            <h3 id="ftooltippageobject_content_methoden"><a class="header-anchor" href="#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code> methoden</a></h3><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
+
+                <div
+                    id="example-f06e32"
                     class="code-preview code-preview--default"
                     
                     
@@ -745,7 +830,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
                 </div>
             
                 <div
-                    id="example-e32142"
+                    id="example-b26819"
                     class="code-preview code-preview--default"
                     
                     
@@ -758,7 +843,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
                 </div>
             
                 <div
-                    id="example-bf6158"
+                    id="example-7c48de"
                     class="code-preview code-preview--default"
                     
                     
@@ -771,7 +856,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
                 </div>
             
                 <div
-                    id="example-fe4e82"
+                    id="example-82d45e"
                     class="code-preview code-preview--default"
                     
                     
@@ -809,9 +894,9 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/806454408155ae41f73b134fd64cb99c269643e3">8064544</a>)<br />
+    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/03d2c1b989348c012cfe088310676e367c376529">03d2c1b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/218">PR 218</a><br />
-        2025-01-29 18:47
+        2025-01-30 07:26
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -938,9 +1023,9 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
             
         ></script>
         <script
-            src="../../assets/main-623313.js"
+            src="../../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>
