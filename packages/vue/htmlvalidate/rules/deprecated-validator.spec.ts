@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-disabled-tests -- not currently in use */
 import "html-validate/jest";
 import { HtmlValidate } from "html-validate";
 import plugin from "../index";
@@ -7,7 +8,7 @@ const htmlvalidate = new HtmlValidate({
     rules: { "fkui/deprecated-validator": "error" },
 });
 
-it("should report when using deprecated validator", async () => {
+it.skip("should report when using deprecated validator", async () => {
     expect.assertions(2);
     const markup = /* HTML */ `
         <f-text-field v-validation.dummy></f-text-field>
@@ -24,7 +25,7 @@ it("should report when using deprecated validator", async () => {
     `);
 });
 
-it("should not report when not using deprecated validators", async () => {
+it.skip("should not report when not using deprecated validators", async () => {
     expect.assertions(2);
     const markup = /* HTML */ `
         <f-text-field v-validation.personnummerFormat></f-text-field>
@@ -34,7 +35,7 @@ it("should not report when not using deprecated validators", async () => {
     expect(report).toMatchInlineCodeframe(`""`);
 });
 
-it("should set correct error location", async () => {
+it.skip("should set correct error location", async () => {
     expect.assertions(2);
     const markup = /* HTML */ `
         <f-text-field v-validation.dummy.foo.bar></f-text-field>
@@ -70,7 +71,7 @@ it("should set correct error location", async () => {
     `);
 });
 
-it("should contain contextual documentation", async () => {
+it.skip("should contain contextual documentation", async () => {
     const context = "dummy";
     const docs = await htmlvalidate.getContextualDocumentation({
         ruleId: "fkui/deprecated-validator",
