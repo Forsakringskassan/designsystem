@@ -1041,8 +1041,14 @@
                     <div id="content">
                         <!-- prettier-ignore -->
 
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p>This function is not yet available for usage with Vue Composition API!</p>
+
+            </div>
+        
                 <div
-                    id="example-fe147b"
+                    id="example-9ad03c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1064,15 +1070,15 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">mountComponent</span>(<span class="hljs-params">
     <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
     <span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
-    <span class="hljs-attr">options</span>: <span class="hljs-title class_">VNodeData</span> &amp; <span class="hljs-title class_">MountOptions</span>,
-</span>): <span class="hljs-title class_">Vue</span>;
+    <span class="hljs-attr">options</span>?: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">unknown</span>&gt; &amp; <span class="hljs-title class_">MountOptions</span>,
+</span>): <span class="hljs-title class_">App</span>&lt;<span class="hljs-title class_">Element</span>&gt;;
 </code></pre>
                 </div>
             <p>Mount a VUE component using API.
 The component will be mounted as a child of the target element and not onto the element itself.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-2beed7"
+                    id="example-3d6316"
                     class="code-preview code-preview--default"
                     
                     
@@ -1091,7 +1097,7 @@ app.<span class="hljs-title function_">unmount</span>();
                 </div>
             
             <div
-                id="example-dd8142"
+                id="example-7f0a11"
                 class="code-preview code-preview--default"
                 
                 
@@ -1151,7 +1157,7 @@ app.<span class="hljs-title function_">unmount</span>();
         <h2 id="passing_props_and_listeners"><a class="header-anchor" href="#passing_props_and_listeners">Passing props and listeners</a></h2><p>Props and listeners can be passed in the options object:</p>
 
                 <div
-                    id="example-5b87bb"
+                    id="example-4ead1c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1192,9 +1198,9 @@ app.<span class="hljs-title function_">unmount</span>();
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    modal-deprecate-template (<a href="https://github.com/Forsakringskassan/designsystem/commits/3683eb477406499a1ddaa52712ff38093724ccb1">3683eb4</a>)<br />
+    modal-deprecate-template (<a href="https://github.com/Forsakringskassan/designsystem/commits/869d9544745c8179ca89411aa0040c56b432f8c3">869d954</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/214">PR 214</a><br />
-        2025-01-30 07:16
+        2025-01-30 20:08
 </div>
 <div class="toolbar__item">
     <form id="version">

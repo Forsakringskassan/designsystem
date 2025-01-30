@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/3683eb477406499a1ddaa52712ff38093724ccb1/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/869d9544745c8179ca89411aa0040c56b432f8c3/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
             
         </code>
          
@@ -1463,18 +1463,18 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
 <p>Båda hooks kan avbryta flödet genom att returnera <code>FValidationFormAction.ABORT</code>:</p>
 
                 <div
-                    id="example-2ddbcf"
+                    id="example-e24d81"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-meta">@onBeforeSubmit</span>() {
-  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">awesomeServerValidation</span>();
-  <span class="hljs-keyword">if</span> (result === <span class="hljs-string">&#x27;fail&#x27;</span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-title class_">FValidationFormAction</span>.<span class="hljs-property">CANCEL</span>;
-  }
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onBeforeSubmit</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FValidationFormAction</span> | <span class="hljs-literal">undefined</span>&gt; {
+    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">awesomeServerValidation</span>();
+    <span class="hljs-keyword">if</span> (result === <span class="hljs-string">&quot;fail&quot;</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">FValidationFormAction</span>.<span class="hljs-property">CANCEL</span>;
+    }
 }
 </code></pre>
                 </div>
@@ -1664,9 +1664,9 @@ return () =&gt; {<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    modal-deprecate-template (<a href="https://github.com/Forsakringskassan/designsystem/commits/3683eb477406499a1ddaa52712ff38093724ccb1">3683eb4</a>)<br />
+    modal-deprecate-template (<a href="https://github.com/Forsakringskassan/designsystem/commits/869d9544745c8179ca89411aa0040c56b432f8c3">869d954</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/214">PR 214</a><br />
-        2025-01-30 07:16
+        2025-01-30 20:08
 </div>
 <div class="toolbar__item">
     <form id="version">
