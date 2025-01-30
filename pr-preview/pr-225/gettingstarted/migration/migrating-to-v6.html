@@ -23,9 +23,9 @@
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-292562.css"
+            href="../../assets/docs-int-0f5026.css"
             crossorigin
-            integrity="sha384-tZxJwf0152/w7R1AKolqYqlP3uBMkygz7Lwf+FRI5DDwZzVTDPt+v87q78ASMH40"
+            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
             data-theme="int" disabled
         />
 
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-e13f90.json"
+            href="../../search-data-7db53a.json"
             as="fetch"
             crossorigin
-            integrity="sha384-bd6kJY/JSitcBq9nS6mR6rwObpHCokncNLjvdVB3XcoCZHn4993gudtAF/obB6DO"
+            integrity="sha384-o2vIGMIwnrMb8P4Bx5vYiR7bM+OMsPvyGdqGN9vaBn+oeYtN4zNffSotH51yRxwx"
             id="search-data"
         />
     </head>
@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-a7a2ec.js"
+                    src="../../assets/vendor-fkui-vue-484a18.js"
                     crossorigin
-                    integrity="sha384-jKSfJMq8aqPvU01lgzXCbOUl0ZSxvFlBFeacXYaAPpBSGN1I/UKIo9zWtOGpllOo"
+                    integrity="sha384-eBkjZ6qfelqhxL8+2ZbGwETPtrT3YzwBMR1WeS4RrX5F0YVTu5F3drXeZ7p4EcOT"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -574,7 +574,17 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
+                                <li><a href="#summering">Summering</a></li>
+                                
+                                <li><a href="#fcheckboxgroup_och_fcheckboxgroupfield">`FCheckboxGroup` och `FCheckboxGroupField`</a></li>
+                                
+                                <li><a href="#fradiogroup_och_fradiogroupfield">`FRadioGroup` och `FRadioGroupField`</a></li>
+                                
+                                <li><a href="#fformmodal_slots">FFormModal slots</a></li>
+                                
                                 <li><a href="#fform_fformstep_och_fformstepbutton">`FForm`, `FFormStep` och `FFormStepButton`</a></li>
+                                
+                                <li><a href="#pageobjects">Pageobjects</a></li>
                                 
                             </ul>
                         </details>
@@ -584,11 +594,81 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
+<h2 id="summering"><a class="header-anchor" href="#summering">Summering</a></h2><p>Följande deprekerade komponenter har tagits bort:</p>
 <ul>
+<li><code>FCheckboxGroup</code></li>
+<li><code>FCheckboxGroupField</code></li>
+<li><code>FRadioGroup</code></li>
+<li><code>FRadioGroupField</code></li>
 <li><code>FForm</code></li>
 <li><code>FFormStep</code></li>
 <li><code>FFormStepButton</code></li>
 </ul>
+<p>Följande komponenter, funktioner och typer är även de borttagna:</p>
+<ul>
+<li><code>createFFormProvideOptions</code></li>
+<li><code>FFormData</code></li>
+<li><code>FFormPageObject</code></li>
+<li><code>FFormProvider</code></li>
+<li><code>FFormStepPageObject</code></li>
+<li><code>FormStepFields</code></li>
+<li><code>getRef</code></li>
+<li><code>isFormStepReference</code></li>
+<li><code>setIsOpen</code></li>
+<li><code>setRef</code></li>
+<li><code>sortComponentsWithErrorsOnDOMOrder</code></li>
+</ul>
+<p>Ändringar i komponenter och funktioner:</p>
+<ul>
+<li><code>FFormModal</code>: slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna.</li>
+</ul>
+<p>För Cypress pageobjekt:</p>
+<ul>
+<li><code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).</li>
+</ul>
+<h2 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h2><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<p>Det deprekerade aliaset <code>FCheckboxGroupField</code> har tagits bort och är ersatt med <code>FCheckboxField</code>.</p>
+<h2 id="fradiogroup_och_fradiogroupfield"><a class="header-anchor" href="#fradiogroup_och_fradiogroupfield"><code>FRadioGroup</code> och <code>FRadioGroupField</code></a></h2><p>Den deprekerade komponenten <code>FRadioGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<p>Det deprekerade aliaset <code>FRadioGroupField</code> har tagits bort och är ersatt med <code>FRadioField</code>.</p>
+<h2 id="fformmodal_slots"><a class="header-anchor" href="#fformmodal_slots">FFormModal slots</a></h2><p>De deprekerade slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna och ersatta med propen <code>buttons</code>.</p>
+<p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
+
+                <div
+                    id="example-1c59b6"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+&lt;script setup&gt;</span>
+<span class="hljs-addition">+const buttons = [</span>
+<span class="hljs-addition">+    {</span>
+<span class="hljs-addition">+        label: &quot;Submit&quot;,</span>
+<span class="hljs-addition">+        event: &quot;confirm&quot;,</span>
+<span class="hljs-addition">+        type: &quot;primary&quot;,</span>
+<span class="hljs-addition">+        submitButton: true,</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+    {</span>
+<span class="hljs-addition">+        label: &quot;Cancel&quot;,</span>
+<span class="hljs-addition">+        event: &quot;dismiss&quot;,</span>
+<span class="hljs-addition">+        type: &quot;secondary&quot;,</span>
+<span class="hljs-addition">+        submitButton: false,</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+];</span>
+<span class="hljs-addition">+&lt;/script&gt;</span>
+
+ &lt;template&gt;
+<span class="hljs-deletion">-    &lt;f-form-modal&gt;</span>
+<span class="hljs-addition">+    &lt;f-form-modal :buttons&gt;&lt;/f-form-modal&gt;</span>
+<span class="hljs-deletion">-        &lt;template #submit-button-text&gt; Submit &lt;/template&gt;</span>
+<span class="hljs-deletion">-        &lt;template #cancel-button-text&gt; Cancel &lt;/template&gt;</span>
+    &lt;/f-form-modal&gt;
+&lt;/template&gt;
+</code></pre>
+                </div>
+            <p>Om du använder <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal(..)</code></a> (rekommenderat) för att anropa modalen behövs inga ändringar.</p>
+<p>Om du använder template-syntax för att anropa <code>FFormModal</code> direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.</p>
 <h2 id="fform_fformstep_och_fformstepbutton"><a class="header-anchor" href="#fform_fformstep_och_fformstepbutton"><code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code></a></h2><p>De deprekerade komponenterna <code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code> har tagits bort.
 Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <code>FValidationForm</code>, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av <code>FForm</code>.</p>
 <p>Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:</p>
@@ -596,19 +676,21 @@ Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <c
 <li><a href="../../components/fwizard.html"><code>FWizard</code></a></li>
 <li><a href="../../components/validation/fvalidationform.html"><code>FValidationForm</code></a></li>
 </ul>
-<p>Följande komponenter, funktioner och typer är även de borttagna:</p>
+<h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="trimmedtext_metoden"><a class="header-anchor" href="#trimmedtext_metoden"><code>trimmedText()</code> metoden</a></h3><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
+Ej att förväxla med tredjeparts kommando/assertion med samma namn som med fördel kan användas som ersättare.</p>
+<p>Som förslag till ersättare kan någon av följande tekniker användas:</p>
 <ul>
-<li><code>FFormPageObject</code></li>
-<li><code>FFormStepPageObject</code></li>
-<li><code>FFormData</code></li>
-<li><code>FFormProvider</code></li>
-<li><code>FormStepFields</code></li>
-<li><code>setRef</code></li>
-<li><code>getRef</code></li>
-<li><code>setIsOpen</code></li>
-<li><code>createFFormProvideOptions</code></li>
-<li><code>isFormStepReference</code></li>
-<li><code>sortComponentsWithErrorsOnDOMOrder</code></li>
+<li><code>cy.get(..).should(&quot;have.text&quot;, &quot;...&quot;)</code> - givet att det inte finns inledande eller efterföljande whitespace kan native <code>have.text</code> användas.</li>
+<li><code>cy.get(..).should(&quot;contain.text&quot;, &quot;...&quot;)</code> - givet att du testar hela textens innehåll kan native <code>contain.text</code> användas.</li>
+<li><code>cy.get(..).should(&quot;trimmedText&quot;, &quot;...&quot;)</code> - tredjeparts assertion som tillhandhåller motsvarande (och buggfri) lösning kan användas.</li>
+</ul>
+<p>Specifikt, för varje pageobjekt kan <code>.trimmedText().should(..)</code> ersättas med:</p>
+<ul>
+<li>För <code>FBadgePageObject</code> ersätt med <code>.el().should(..)</code>.-</li>
+<li>För <code>FCheckboxFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
+<li>För <code>FLabelPageObject</code> ersätt med <code>.el().should(..)</code></li>
+<li>För <code>FRadioFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
+<li>För <code>FSelectFieldPageObject</code> ersätt med <code>.selectedOption().should(..)</code>.</li>
 </ul>
 
 
@@ -631,9 +713,9 @@ Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <c
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/903c885d9ac1a4a08eef10251438bf46a38e7490">903c885</a>)<br />
+    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/7f0f644c6881cdef444b670f1b456a8f8cfd924c">7f0f644</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/225">PR 225</a><br />
-        2025-01-28 14:12
+        2025-01-30 07:24
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -760,9 +842,9 @@ Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <c
             
         ></script>
         <script
-            src="../../assets/main-623313.js"
+            src="../../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>

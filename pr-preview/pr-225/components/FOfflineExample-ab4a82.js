@@ -3461,9 +3461,6 @@
     computed: {
       preparedButtons() {
         return prepareButtonList(this.buttons, 0 /* LEFT_TO_RIGHT */);
-      },
-      hasDeprecatedSlots() {
-        return hasSlot(this, "cancel-button-text") || hasSlot(this, "submit-button-text");
       }
     },
     methods: {
@@ -3493,7 +3490,6 @@
     key: 0,
     class: "sr-only"
   };
-  var _hoisted_43 = ["form"];
   function render11(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_validation_form = (0, import_vue26.resolveComponent)("f-validation-form");
     const _component_f_modal = (0, import_vue26.resolveComponent)("f-modal");
@@ -3535,9 +3531,9 @@
       ]),
       footer: (0, import_vue26.withCtx)(() => [
         (0, import_vue26.createElementVNode)("div", _hoisted_17, [
-          !_ctx.hasDeprecatedSlots ? ((0, import_vue26.openBlock)(true), (0, import_vue26.createElementBlock)(
+          ((0, import_vue26.openBlock)(true), (0, import_vue26.createElementBlock)(
             import_vue26.Fragment,
-            { key: 0 },
+            null,
             (0, import_vue26.renderList)(_ctx.preparedButtons, (button) => {
               return (0, import_vue26.openBlock)(), (0, import_vue26.createElementBlock)("button", {
                 key: button.label,
@@ -3564,43 +3560,6 @@
             }),
             128
             /* KEYED_FRAGMENT */
-          )) : ((0, import_vue26.openBlock)(), (0, import_vue26.createElementBlock)(
-            import_vue26.Fragment,
-            { key: 1 },
-            [
-              (0, import_vue26.createElementVNode)("button", {
-                form: _ctx.formId,
-                "data-test": "submit-button",
-                type: "submit",
-                class: "button button--primary button-group__item button--large"
-              }, [
-                (0, import_vue26.createCommentVNode)(' @slot - @deprecated Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
-                (0, import_vue26.renderSlot)(_ctx.$slots, "submit-button-text", {}, () => [
-                  (0, import_vue26.createTextVNode)(
-                    (0, import_vue26.toDisplayString)(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")),
-                    1
-                    /* TEXT */
-                  )
-                ])
-              ], 8, _hoisted_43),
-              (0, import_vue26.createElementVNode)("button", {
-                "data-test": "cancel-button",
-                type: "button",
-                class: "button button--secondary button-group__item button--large",
-                onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
-              }, [
-                (0, import_vue26.createCommentVNode)(' @slot - @deprecated Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
-                (0, import_vue26.renderSlot)(_ctx.$slots, "cancel-button-text", {}, () => [
-                  (0, import_vue26.createTextVNode)(
-                    (0, import_vue26.toDisplayString)(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")),
-                    1
-                    /* TEXT */
-                  )
-                ])
-              ])
-            ],
-            64
-            /* STABLE_FRAGMENT */
           ))
         ])
       ]),
@@ -3684,7 +3643,7 @@
     class: "offline"
   };
   var _hoisted_35 = { class: "icon-stack icon-stack--error" };
-  var _hoisted_44 = { class: "offline__content" };
+  var _hoisted_43 = { class: "offline__content" };
   var _hoisted_53 = ["aria-hidden"];
   function render12(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue29.resolveComponent)("f-icon");
@@ -3718,7 +3677,7 @@
               align: "center"
             }, {
               default: (0, import_vue29.withCtx)(() => [
-                (0, import_vue29.createElementVNode)("p", _hoisted_44, [
+                (0, import_vue29.createElementVNode)("p", _hoisted_43, [
                   (0, import_vue29.createCommentVNode)(" @slot Slot for customizing text message. "),
                   (0, import_vue29.renderSlot)(_ctx.$slots, "default", {}, () => [
                     _cache[0] || (_cache[0] = (0, import_vue29.createTextVNode)(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu "))
