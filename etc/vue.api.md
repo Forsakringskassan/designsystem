@@ -14075,7 +14075,7 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-ariaLabel: {
+"aria-label": {
 type: StringConstructor;
 required: true;
 };
@@ -14098,13 +14098,13 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-ariaLabel: {
+"aria-label": {
 type: StringConstructor;
 required: true;
 };
 }>> & Readonly<{}>, {
 valueText: string;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLDivElement>;
 
 // @public (undocumented)
 export const FRadioField: DefineComponent<ExtractPropTypes<    {
