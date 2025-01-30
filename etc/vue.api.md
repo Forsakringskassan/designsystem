@@ -14079,15 +14079,7 @@ default: string;
 type: StringConstructor;
 required: true;
 };
-}>, {}, {}, {
-progressValueNow(): number;
-isFinished(): boolean;
-isInProgress(): boolean;
-isPending(): boolean;
-cssWidth(): string;
-progressBarClass(): string;
-progressText(): string;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 value: {
 type: NumberConstructor;
 required: true;
