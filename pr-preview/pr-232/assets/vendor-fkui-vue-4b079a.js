@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -16306,56 +16306,35 @@
   };
   var MIN_VALUE = 0;
   var MAX_VALUE = 100;
-  function clamp(val) {
-    return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
-  }
-  var __default__ = (0, import_vue.defineComponent)({
-    name: "FProgressbar",
-    computed: {
-      progressValueNow() {
-        return clamp(this.value);
-      },
-      isFinished() {
-        return this.progressValueNow === MAX_VALUE;
-      },
-      isInProgress() {
-        return this.progressValueNow > MIN_VALUE && this.progressValueNow < MAX_VALUE;
-      },
-      isPending() {
-        return this.progressValueNow === MIN_VALUE;
-      },
-      cssWidth() {
-        return `width: ${this.progressValueNow}%`;
-      },
-      progressBarClass() {
-        return `${this.isInProgress ? "progress__meter--inprogress" : ""} ${this.isPending ? "progress__meter--pending" : ""} ${this.isFinished ? "progress__meter--finished" : ""}`;
-      },
-      progressText() {
-        return `${this.valueText.replace("%VALUE%", this.progressValueNow.toString())}`;
-      }
-    }
-  });
   var _sfc_main$5 = /* @__PURE__ */ (0, import_vue.defineComponent)({
-    ...__default__,
+    __name: "FProgressbar",
     props: {
       /**
-       * Sets the progress. Higher value indicates further progress. Value must be in range 0-100.
+       * Sets the progress. Higher value indicates further progress.
+       *
+       * Value must be in range 0-100.
        */
       value: {
         type: Number,
         required: true,
         validator(value) {
-          return value >= MIN_VALUE && value <= MAX_VALUE;
+          return value >= 0 && value <= 100;
         }
       },
       /**
-       * Text that the screenreader will read, the actual value will be replaced with %VALUE%  e.g  You have uploaded %VALUE% percent
+       * Text that the screenreader will read.
+       *
+       * `%VALUE` can be used as a placeholder for the actual value e.g `"You have uploaded %VALUE% percent"`.
        */
       valueText: {
         type: String,
         required: false,
         default: "Du har slutf\xF6rt %VALUE% %."
       },
+      /**
+       * Accessible name for this progressbar. Should describe the purpose of this
+       * progressbar.
+       */
       /* eslint-disable-next-line vue/prop-name-casing -- vue does not allow ariaLabel as a prop as it collides with internal types */
       "aria-label": {
         type: String,
@@ -16364,18 +16343,35 @@
     },
     setup(__props) {
       const props = __props;
-      const ariaLabel = props["aria-label"];
+      const ariaLabel = props.ariaLabel;
+      function clamp(val) {
+        return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
+      }
+      const progressValueNow = (0, import_vue.computed)(() => clamp(props.value));
+      const cssWidth = (0, import_vue.computed)(() => `width: ${progressValueNow.value}%`);
+      const progressBarClass = (0, import_vue.computed)(() => {
+        if (progressValueNow.value === MIN_VALUE) {
+          return "progress__meter--pending";
+        } else if (progressValueNow.value === MAX_VALUE) {
+          return "progress__meter--finished";
+        } else {
+          return "progress__meter--inprogress";
+        }
+      });
+      const progressText = (0, import_vue.computed)(() => {
+        return `${props.valueText.replace("%VALUE%", progressValueNow.value.toString())}`;
+      });
       return (_ctx, _cache) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$5, [(0, import_vue.createElementVNode)("span", {
-          class: (0, import_vue.normalizeClass)(["progress__meter", _ctx.progressBarClass]),
+          class: (0, import_vue.normalizeClass)(["progress__meter", progressBarClass.value]),
           role: "progressbar",
           "aria-label": (0, import_vue.unref)(ariaLabel),
           "aria-valuemin": "0",
           "aria-valuemax": "100",
-          "aria-valuenow": _ctx.progressValueNow,
-          "aria-valuetext": _ctx.progressText,
-          style: (0, import_vue.normalizeStyle)(_ctx.cssWidth)
-        }, [(0, import_vue.createElementVNode)("span", _hoisted_3$2, (0, import_vue.toDisplayString)(_ctx.progressText), 1)], 14, _hoisted_2$3)]);
+          "aria-valuenow": progressValueNow.value,
+          "aria-valuetext": progressText.value,
+          style: (0, import_vue.normalizeStyle)(cssWidth.value)
+        }, [(0, import_vue.createElementVNode)("span", _hoisted_3$2, (0, import_vue.toDisplayString)(progressText.value), 1)], 14, _hoisted_2$3)]);
       };
     }
   });

@@ -74,10 +74,12 @@
         )
       ]),
       (0, import_vue5.createElementVNode)("button", {
+        "data-test": "increase",
         type: "button",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.increase())
       }, "Increase"),
       (0, import_vue5.createElementVNode)("button", {
+        "data-test": "decrease",
         type: "button",
         onClick: _cache[1] || (_cache[1] = ($event) => _ctx.decrease())
       }, "Decrease"),

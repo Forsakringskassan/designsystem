@@ -19760,56 +19760,35 @@ const _hoisted_3$2 = {
 };
 const MIN_VALUE = 0;
 const MAX_VALUE = 100;
-function clamp(val) {
-  return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
-}
-const __default__ = /* @__PURE__ */ defineComponent({
-  name: "FProgressbar",
-  computed: {
-    progressValueNow() {
-      return clamp(this.value);
-    },
-    isFinished() {
-      return this.progressValueNow === MAX_VALUE;
-    },
-    isInProgress() {
-      return this.progressValueNow > MIN_VALUE && this.progressValueNow < MAX_VALUE;
-    },
-    isPending() {
-      return this.progressValueNow === MIN_VALUE;
-    },
-    cssWidth() {
-      return `width: ${this.progressValueNow}%`;
-    },
-    progressBarClass() {
-      return `${this.isInProgress ? "progress__meter--inprogress" : ""} ${this.isPending ? "progress__meter--pending" : ""} ${this.isFinished ? "progress__meter--finished" : ""}`;
-    },
-    progressText() {
-      return `${this.valueText.replace("%VALUE%", this.progressValueNow.toString())}`;
-    }
-  }
-});
 const _sfc_main$5 = /* @__PURE__ */ defineComponent({
-  ...__default__,
+  __name: "FProgressbar",
   props: {
     /**
-     * Sets the progress. Higher value indicates further progress. Value must be in range 0-100.
+     * Sets the progress. Higher value indicates further progress.
+     *
+     * Value must be in range 0-100.
      */
     value: {
       type: Number,
       required: true,
       validator(value) {
-        return value >= MIN_VALUE && value <= MAX_VALUE;
+        return value >= 0 && value <= 100;
       }
     },
     /**
-     * Text that the screenreader will read, the actual value will be replaced with %VALUE%  e.g  You have uploaded %VALUE% percent
+     * Text that the screenreader will read.
+     *
+     * `%VALUE` can be used as a placeholder for the actual value e.g `"You have uploaded %VALUE% percent"`.
      */
     valueText: {
       type: String,
       required: false,
       default: "Du har slutfört %VALUE% %."
     },
+    /**
+     * Accessible name for this progressbar. Should describe the purpose of this
+     * progressbar.
+     */
     /* eslint-disable-next-line vue/prop-name-casing -- vue does not allow ariaLabel as a prop as it collides with internal types */
     "aria-label": {
       type: String,
@@ -19818,18 +19797,35 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const props = __props;
-    const ariaLabel = props["aria-label"];
+    const ariaLabel = props.ariaLabel;
+    function clamp(val) {
+      return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
+    }
+    const progressValueNow = computed(() => clamp(props.value));
+    const cssWidth = computed(() => `width: ${progressValueNow.value}%`);
+    const progressBarClass = computed(() => {
+      if (progressValueNow.value === MIN_VALUE) {
+        return "progress__meter--pending";
+      } else if (progressValueNow.value === MAX_VALUE) {
+        return "progress__meter--finished";
+      } else {
+        return "progress__meter--inprogress";
+      }
+    });
+    const progressText = computed(() => {
+      return `${props.valueText.replace("%VALUE%", progressValueNow.value.toString())}`;
+    });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1$5, [createBaseVNode("span", {
-        class: normalizeClass(["progress__meter", _ctx.progressBarClass]),
+        class: normalizeClass(["progress__meter", progressBarClass.value]),
         role: "progressbar",
         "aria-label": unref(ariaLabel),
         "aria-valuemin": "0",
         "aria-valuemax": "100",
-        "aria-valuenow": _ctx.progressValueNow,
-        "aria-valuetext": _ctx.progressText,
-        style: normalizeStyle(_ctx.cssWidth)
-      }, [createBaseVNode("span", _hoisted_3$2, toDisplayString(_ctx.progressText), 1)], 14, _hoisted_2$3)]);
+        "aria-valuenow": progressValueNow.value,
+        "aria-valuetext": progressText.value,
+        style: normalizeStyle(cssWidth.value)
+      }, [createBaseVNode("span", _hoisted_3$2, toDisplayString(progressText.value), 1)], 14, _hoisted_2$3)]);
     };
   }
 });
