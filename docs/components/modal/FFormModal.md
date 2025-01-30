@@ -43,7 +43,7 @@ Din komponent ska innehålla en prop `value` motsvarande ett objekt av interface
 Template använder `FFormModal` och binder `value` dels som `value`-propen men också som `v-model` för respektive inmatningsfält.
 Inmatningsfälten läggs in i `#input-text-fields`-slotten.
 
-```html static
+```vue static
 <template>
     <f-form-modal :value>
         <template #header> Awesome Modal </template>
@@ -99,9 +99,9 @@ Du kan antingen låta din formulärsmodal hantera detta genom att internt kopier
 
 :::
 
-## Öppna modal med API
+## Öppna modal
 
-Det rekommenderade sättet att använda formulärsmodalen är med {@link form-modal `formModal()`} (options API) eller {@link useModal `useModal()`} (composition API).
+Du öppnar modalen med {@link form-modal `formModal()`} (options API) eller {@link useModal `useModal()`} (composition API).
 
 ```ts
 // options api
@@ -109,7 +109,10 @@ const result = await formModal<Person>(this, PersonFormModal);
 
 // composition api
 const { formModal } = useModal();
-const result = await formModal<Person>(PersonFormModal);
+
+async function onOpen(): Promise<void> {
+    const result = await formModal<Person>(PersonFormModal);
+}
 ```
 
 Returvärdet är `Promise` som löses ut med `resolve(value)` (det objekt som ligger lagrat i `value` när modalen stängs).
@@ -132,20 +135,25 @@ const result = await formModal<Person>(PersonFormModal, {
 FFormModalApiExample.vue
 ```
 
-## Öppna modal med template
+## Användning med template (deprekerad)
 
-Komponenten kan också användas direkt i `<template>` men vi rekommenderar inte denna lösning::
+Att använda `FFormModal` nästlad i template är deprekerat.
+Vi rekommenderar att du flyttar den till en egen Vue komponent och använder API för att öppna den.
+Se {@link FFormModal#anvandning `Användning`} för hur du använder `FFormModal` med API.
 
-```import
-FFormModalExample.vue
+```diff
+ <template>
+     <div>
+         <button type="button" @click="onClick">Open modal</button>
+-        <f-form-modal></f-form-modal>
+     </div>
+ </template>
 ```
 
 ## Formulärsmodal med flera knappar
 
 Komponenten har en prop `buttons` som styr vilka knappar som finns i modalens sidfot.
 Med den kan du ta bort existerande knappar eller använda en helt egen uppsättning.
-
-**Med API:**
 
 ```ts
 const formdata = await formModal(this, MyAwesomeModal, {
@@ -189,12 +197,6 @@ Du kan lägga till extra skärmläsartext på knappar med `screenreader` propert
 ```
 
 Om du använder `screenreader` för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i `label`. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.
-
-## Template
-
-```import
-FFormModalExampleCustomButtons.vue
-```
 
 ### Validering av inmatad data
 

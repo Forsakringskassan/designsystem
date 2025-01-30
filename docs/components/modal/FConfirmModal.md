@@ -14,6 +14,58 @@ En bekräftelsemodal har
 - en knapptext för den destruktiva handlingen, till exempel för att ta bort uppgifter
 - en knapptext för att ångra och gå tillbaka.
 
+```import
+FConfirmModalApiExample.vue
+```
+
+## Användning
+
+För att öppna en bekräftelsemodal använder du {@link confirm-modal `confirmModal()`} (options API) eller {@link useModal `useModal()`} (composition API).
+
+```ts
+// options api
+const confirmed = await confirmModal(this, {
+    heading: "Ta bort frukt",
+    content: `Är du säker att du vill ta bort "${frukt.namn}"?`,
+    confirm: "Ja, ta bort",
+    dismiss: "Nej, behåll",
+});
+if (confirmed) {
+    /* do something */
+}
+
+// composition api
+const { confirmModal } = useModal();
+
+async function onOpen(): Promise<void> {
+    const confirmed = await confirmModal({
+        heading: "Ta bort frukt",
+        content: `Är du säker att du vill ta bort "${frukt.namn}"?`,
+        confirm: "Ja, ta bort",
+        dismiss: "Nej, behåll",
+    });
+    if (confirmed) {
+        /* do something */
+    }
+}
+```
+
+### Användning med template (deprekerad)
+
+Att använda `FConfirmModal` i template är deprekerat.
+Om du använder detta rekommenderar vi att du tar bort `f-confirm-modal` och istället använder API för att öppna modalen.
+
+Se {@link FConfirmModal#anvandning `Användning`} för hur du använder `FConfirmModal` med API.
+
+```diff
+ <template>
+     <div>
+         <button type="button" @click="onClick">Open modal</button>
+-        <f-confirm-modal></f-confirm-modal>
+     </div>
+ </template>
+```
+
 ## Knapparna
 
 En {@link button#sekundar_knapp sekundär knapp} används för att ångra och gå tillbaka.
@@ -28,18 +80,6 @@ På Försäkringskassan.se placeras den sekundära knappen först, följt av den
 För interna system följer vi Windows standard, det primära alternativet placeras först.
 
 Du styr den inbördes ordning som knapparna presenteras i med {@link config#referens konfiguration} i applikationen där modalen används.
-
-## Användning med template
-
-```import
-FConfirmModalExample.vue
-```
-
-## Användning med API
-
-```import
-FConfirmModalApiExample.vue
-```
 
 ## Bekräftelsemodal med tre knappar
 
