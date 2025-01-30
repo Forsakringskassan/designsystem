@@ -197,14 +197,6 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         }
         this.setRequiredAttribute(element, validatorConfigs);
 
-        // Deprecated: SFKUI-4412 personnummerValidator is deprecated. Replace with personnummerFormat and personnummerLuhn
-        // Legacy compability tests cant be found here: @fkui/vue:src\components\FTextField\FTextField.cy.ts
-        if (validatorConfigs["personnummer"] !== undefined) {
-            const oldConfig = validatorConfigs["personnummer"];
-            validatorConfigs["personnummerFormat"] = oldConfig;
-            validatorConfigs["personnummerLuhn"] = oldConfig;
-            delete validatorConfigs.personnummer;
-        }
         const foundValidators = this.getValidators(validatorConfigs);
 
         // set data-validation attribute to indicate that validation is activated on the element

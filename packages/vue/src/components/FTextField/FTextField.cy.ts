@@ -1,4 +1,3 @@
-import { parsePersonnummer } from "@fkui/logic";
 import { defineComponent } from "vue";
 import {
     DensityWrapper,
@@ -108,29 +107,6 @@ const SizesButtonsComponent = defineComponent({
     },
 });
 
-const PersonnummerComponent = defineComponent({
-    template: /* HTML */ `
-        <div id="personnummer">
-            <f-text-field
-                v-model="personnummerModel"
-                v-validation.personnummer=""
-                :formatter="parsePersonnummer"
-            >
-                Personnummer
-            </f-text-field>
-        </div>
-    `,
-    components: {
-        FTextField,
-    },
-    data() {
-        return {
-            personnummerModel: "",
-            parsePersonnummer,
-        };
-    },
-});
-
 /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
 it.skip(`should contain input field with label`, () => {
     cy.viewport(sizeWrapperWidth, sizeWrapperHeight);
@@ -197,27 +173,6 @@ it("should expose error label with hidden text when emitting componentValidity e
     cy.get("@onComponentValidity").should("have.been.calledWithMatch", {
         isValid: false,
         errorMessage: "lorem ipsum",
-    });
-});
-
-describe("FTextField legacy personnummer validation compability", () => {
-    it("should use personnummerFormat for validation", () => {
-        cy.mount(PersonnummerComponent);
-        const textField = new FTextFieldPageObject("#personnummer");
-        textField.input().type("123456").blur();
-        textField.label
-            .errorMessage()
-            .should("contain.text", "Fyll i personnumret med 10 siffror.");
-    });
-
-    it("should validate and format ok", () => {
-        cy.mount(PersonnummerComponent);
-        const textField = new FTextFieldPageObject("#personnummer");
-        textField
-            .input()
-            .type("191202119150")
-            .blur()
-            .should("have.value", "19120211-9150");
     });
 });
 
