@@ -17,6 +17,36 @@
     </div>
 </template>
 
+<script setup lang="ts">
+const props = defineProps({
+    /**
+     * Sets the progress. Higher value indicates further progress. Value must be in range 0-100.
+     */
+    value: {
+        type: Number,
+        required: true,
+        validator(value: number) {
+            return value >= MIN_VALUE && value <= MAX_VALUE;
+        },
+    },
+    /**
+     * Text that the screenreader will read, the actual value will be replaced with %VALUE%  e.g  You have uploaded %VALUE% percent
+     */
+    valueText: {
+        type: String,
+        required: false,
+        default: "Du har slutfört %VALUE% %.",
+    },
+    /* eslint-disable-next-line vue/prop-name-casing -- vue does not allow ariaLabel as a prop as it collides with internal types */
+    "aria-label": {
+        type: String,
+        required: true,
+    },
+});
+/* @ts-expect-error The prop name is actually normalized to ariaLabel but the type system does not realize */
+const ariaLabel = props.ariaLabel;
+</script>
+
 <script lang="ts">
 import { defineComponent } from "vue";
 
@@ -29,32 +59,6 @@ function clamp(val: number): number {
 
 export default defineComponent({
     name: "FProgressbar",
-
-    props: {
-        /**
-         * Sets the progress. Higher value indicates further progress. Value must be in range 0-100.
-         */
-        value: {
-            type: Number,
-            required: true,
-            validator(value: number) {
-                return value >= MIN_VALUE && value <= MAX_VALUE;
-            },
-        },
-        /**
-         * Text that the screenreader will read, the actual value will be replaced with %VALUE%  e.g  You have uploaded %VALUE% percent
-         */
-        valueText: {
-            type: String,
-            required: false,
-            default: "Du har slutfört %VALUE% %.",
-        },
-        ariaLabel: {
-            type: String,
-            required: true,
-        },
-    },
-
     computed: {
         progressValueNow(): number {
             return clamp(this.value);
