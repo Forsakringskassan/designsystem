@@ -1063,7 +1063,7 @@
 <p>Provider till <code>TranslationService</code> som använder <a href="https://www.i18next.com/"><code>i18next</code></a> för översättningar.</p>
 <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2>
                 <div
-                    id="example-0a07e9"
+                    id="example-63cb2b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1074,7 +1074,7 @@
 <span class="hljs-keyword">import</span> { i18nextProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/i18next-translate&quot;</span>;
 
 <span class="hljs-comment">/* create a new 18next translation provider */</span>
-<span class="hljs-keyword">const</span> provider = <span class="hljs-title function_">i18nextProvider</span>({
+<span class="hljs-keyword">const</span> provider = <span class="hljs-keyword">await</span> <span class="hljs-title function_">i18nextProvider</span>({
     <span class="hljs-attr">defaultLanguage</span>: <span class="hljs-string">&quot;sv&quot;</span>,
     <span class="hljs-keyword">async</span> <span class="hljs-title function_">loadLanguage</span>(<span class="hljs-params">lang</span>) {
         <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`/texts/<span class="hljs-subst">${lang}</span>.json`</span>);
@@ -1127,9 +1127,9 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    combobox-reactive-options (<a href="https://github.com/Forsakringskassan/designsystem/commits/6559e9d2433a093954e0a9f22484dee668fb551a">6559e9d</a>)<br />
+    combobox-reactive-options (<a href="https://github.com/Forsakringskassan/designsystem/commits/e30265a84c9ed3ec0c871f05abac03382492f677">e30265a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/229">PR 229</a><br />
-        2025-01-30 13:31
+        2025-01-30 14:14
 </div>
 <div class="toolbar__item">
     <form id="version">

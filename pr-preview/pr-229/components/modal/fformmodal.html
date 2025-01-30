@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6559e9d2433a093954e0a9f22484dee668fb551a/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/e30265a84c9ed3ec0c871f05abac03382492f677/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
             
         </code>
          
@@ -1672,15 +1672,15 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-adab5c"
+                    id="example-b41838"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
-    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refs</span>.<span class="hljs-property">myField</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">myField</span>);
     <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
 },
 </code></pre>
@@ -1688,14 +1688,14 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
 
                 <div
-                    id="example-3526cb"
+                    id="example-a8125d"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FFormModalAction</span>&gt; {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">FFormModalAction</span> {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-title class_">FFormModalAction</span>.<span class="hljs-property">CANCEL</span>;
 },
@@ -1825,9 +1825,9 @@ The event payload is the data that has been submitted.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    combobox-reactive-options (<a href="https://github.com/Forsakringskassan/designsystem/commits/6559e9d2433a093954e0a9f22484dee668fb551a">6559e9d</a>)<br />
+    combobox-reactive-options (<a href="https://github.com/Forsakringskassan/designsystem/commits/e30265a84c9ed3ec0c871f05abac03382492f677">e30265a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/229">PR 229</a><br />
-        2025-01-30 13:31
+        2025-01-30 14:14
 </div>
 <div class="toolbar__item">
     <form id="version">

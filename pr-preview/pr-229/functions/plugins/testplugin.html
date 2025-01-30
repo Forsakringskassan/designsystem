@@ -1042,18 +1042,22 @@
                         <!-- prettier-ignore -->
 <p><em>TestPlugin</em> lägger till stöd för att lägga till <code>data-test</code> attribute dynamiskt på HTML element.
 Plugin:et är tänkt att användas vid testautomation, enhets- och e2e-tester.</p>
-<p><em>ValidationPlugin</em> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
+<p><em>TestPlugin</em> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
 
                 <div
-                    id="example-a97138"
+                    id="example-1c77cf"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">TestPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">TestPlugin</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">TestPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>);
+app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">TestPlugin</span>);
+app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>);
 </code></pre>
                 </div>
             <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>Lägg till direktivet <code>v-test</code> till elementet som ska få <code>data-test</code> attributet.</p>
@@ -1061,7 +1065,7 @@ Plugin:et är tänkt att användas vid testautomation, enhets- och e2e-tester.</
 Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalueras som JavaScript.</p>
 
             <div
-                id="example-2990c7"
+                id="example-1cf03c"
                 class="code-preview code-preview--default"
                 
                 
@@ -1113,7 +1117,7 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
             </div>
         <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
             <div
-                id="example-beabf3"
+                id="example-ac4e5b"
                 class="code-preview code-preview--default"
                 
                 
@@ -1197,9 +1201,9 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    combobox-reactive-options (<a href="https://github.com/Forsakringskassan/designsystem/commits/6559e9d2433a093954e0a9f22484dee668fb551a">6559e9d</a>)<br />
+    combobox-reactive-options (<a href="https://github.com/Forsakringskassan/designsystem/commits/e30265a84c9ed3ec0c871f05abac03382492f677">e30265a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/229">PR 229</a><br />
-        2025-01-30 13:31
+        2025-01-30 14:14
 </div>
 <div class="toolbar__item">
     <form id="version">
