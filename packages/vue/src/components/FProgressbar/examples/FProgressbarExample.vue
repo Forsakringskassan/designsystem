@@ -10,8 +10,8 @@
         <pre
             class="debug-data"
         ><span class="sr-only">Debug-data: </span>value: {{currentProgress}}</pre>
-        <button type="button" @click="increase()">Increase</button>
-        <button type="button" @click="decrease()">Decrease</button>
+        <button data-test="increase" type="button" @click="increase()">Increase</button>
+        <button data-test="decrease" type="button" @click="decrease()">Decrease</button>
         <label>
             Progress:
             <input v-model.number="currentProgress" type="number" />
