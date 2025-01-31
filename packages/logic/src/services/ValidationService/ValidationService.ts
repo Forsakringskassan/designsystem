@@ -46,13 +46,6 @@ export function isValidatableHTMLElement(
     );
 }
 
-/**
- * @internal
- */
-export function isFieldset(element: Element): element is HTMLFieldSetElement {
-    return element instanceof HTMLFieldSetElement;
-}
-
 function hasValidators(element: HTMLElement): boolean {
     return typeof element.dataset.validation === "string";
 }

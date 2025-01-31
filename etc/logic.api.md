@@ -230,9 +230,6 @@ export interface InvalidWeekdaysValidatorConfig extends ValidatorOptions {
 // @public
 export function isEmpty(value: string | undefined | null): value is "" | undefined | null;
 
-// @internal (undocumented)
-export function isFieldset(element: Element): element is HTMLFieldSetElement;
-
 // @public
 export function isFocusable(element: Element): boolean;
 
