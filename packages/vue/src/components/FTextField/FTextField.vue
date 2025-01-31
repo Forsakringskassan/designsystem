@@ -244,7 +244,7 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["blur", "change", "update", "update:modelValue"],
+    emits: ["blur", "change", "update:modelValue"],
     setup(props) {
         // a shared setup is used because components extending this component need to redeclare the same setup
         const {
