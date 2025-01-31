@@ -17,6 +17,7 @@ Följande deprekerade komponenter har tagits bort:
 
 - `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
 - `@fkui/logic`: konstanterna `DATE_REGEXP_WITH_DASH`, `WHITESPACE_PATTERN` och `FORMAT_3_DIGITS_GROUP` är borttagen.
+- `@fkui/logic`: funktionen `applyValidationMessages()` är borttagen.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: deprekerade CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
@@ -59,6 +60,11 @@ Om du använder den för andra ändamål ersätt med reguljära uttrycket `\s+` 
 Den deprekerade konstanten `FORMAT_3_DIGITS_GROUP` är borttagen utan ersättare.
 
 Om du använder den behöver du använda ett eget reguljärt uttryck.
+
+### `applyValidationMessages`
+
+Den deprekerade funktionen `applyValidationMessages()` är borttagen utan ersättare.
+Funktionen var en placeholder som inte gjorde något och anrop kan därför tas bort.
 
 ### Polyfill
 
