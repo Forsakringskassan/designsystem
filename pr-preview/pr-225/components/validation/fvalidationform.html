@@ -1063,9 +1063,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-ba7196.js"
+                    src="../../assets/vendor-fkui-logic-03946e.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-MjbLaPh5Rj6KDj3grAadA2u3HUe627gTHTAhzmAjneRxHA0b/I+3qdeyZy7Nw1PY"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1073,9 +1073,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-484a18.js"
+                    src="../../assets/vendor-fkui-vue-5f6dbc.js"
                     crossorigin
-                    integrity="sha384-eBkjZ6qfelqhxL8+2ZbGwETPtrT3YzwBMR1WeS4RrX5F0YVTu5F3drXeZ7p4EcOT"
+                    integrity="sha384-aUS6XrGR/dL69Omuc/idNDJ5bs2pqgfayXCwymEtlZLoiYz+yNmlWVg4x1NKSeYU"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1098,7 +1098,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/7f0f644c6881cdef444b670f1b456a8f8cfd924c/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/bb6cce2d558936082ff68ca27883fe869debf034/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
             
         </code>
          
@@ -1453,18 +1453,18 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
 <p>Båda hooks kan avbryta flödet genom att returnera <code>FValidationFormAction.ABORT</code>:</p>
 
                 <div
-                    id="example-2ddbcf"
+                    id="example-e24d81"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-meta">@onBeforeSubmit</span>() {
-  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">awesomeServerValidation</span>();
-  <span class="hljs-keyword">if</span> (result === <span class="hljs-string">&#x27;fail&#x27;</span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-title class_">FValidationFormAction</span>.<span class="hljs-property">CANCEL</span>;
-  }
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onBeforeSubmit</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FValidationFormAction</span> | <span class="hljs-literal">undefined</span>&gt; {
+    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">awesomeServerValidation</span>();
+    <span class="hljs-keyword">if</span> (result === <span class="hljs-string">&quot;fail&quot;</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">FValidationFormAction</span>.<span class="hljs-property">CANCEL</span>;
+    }
 }
 </code></pre>
                 </div>
@@ -1654,9 +1654,9 @@ return () =&gt; {<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/7f0f644c6881cdef444b670f1b456a8f8cfd924c">7f0f644</a>)<br />
+    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/bb6cce2d558936082ff68ca27883fe869debf034">bb6cce2</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/225">PR 225</a><br />
-        2025-01-30 07:24
+        2025-01-31 11:45
 </div>
 <div class="toolbar__item">
     <form id="version">

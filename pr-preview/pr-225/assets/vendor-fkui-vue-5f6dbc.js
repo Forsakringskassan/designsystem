@@ -116,7 +116,6 @@
     UNHANDLED_ERROR_EVENT: () => UNHANDLED_ERROR_EVENT,
     ValidationPlugin: () => ValidationPlugin,
     actionFromKeyboardEvent: () => actionFromKeyboardEvent,
-    cleanUpElements: () => cleanUpElements,
     config: () => config,
     confirmModal: () => confirmModal,
     dispatchComponentUnmountEvent: () => dispatchComponentUnmountEvent,

@@ -6,7 +6,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../logic/lib/esm/index.js
+  // packages/logic/lib/esm/index.js
   var esm_exports = {};
   __export(esm_exports, {
     DATE_REGEXP_WITH_DASH: () => DATE_REGEXP_WITH_DASH,
@@ -17,7 +17,6 @@
     MissingValueError: () => MissingValueError,
     POSTAL_CODE_REGEXP: () => POSTAL_CODE_REGEXP,
     PersistenceService: () => PersistenceService,
-    Reference: () => Reference,
     SCREEN_READER_DELAY: () => SCREEN_READER_DELAY,
     SimplePersistenceService: () => SimplePersistenceService,
     TranslationService: () => TranslationService,
@@ -3299,12 +3298,6 @@ Caused by: ${cause.stack}`;
     }
     remove() {
       this.persistenceService.remove(this.key);
-    }
-  };
-  var Reference = class {
-    ref = {};
-    constructor(ref) {
-      Object.assign(this.ref, ref);
     }
   };
   var SCREEN_READER_DELAY = 100;
