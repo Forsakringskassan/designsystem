@@ -18,6 +18,7 @@ Följande deprekerade komponenter har tagits bort:
 - `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
 - `@fkui/logic`: konstanterna `DATE_REGEXP_WITH_DASH`, `WHITESPACE_PATTERN` och `FORMAT_3_DIGITS_GROUP` är borttagen.
 - `@fkui/logic`: funktionen `applyValidationMessages()` är borttagen.
+- `@fkui/logic`: funktionen `setCookie(..)` tar inte längre `timeLimitMillis` parametern.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: deprekerade CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
@@ -61,10 +62,15 @@ Den deprekerade konstanten `FORMAT_3_DIGITS_GROUP` är borttagen utan ersättare
 
 Om du använder den behöver du använda ett eget reguljärt uttryck.
 
-### `applyValidationMessages`
+### `applyValidationMessages()`
 
 Den deprekerade funktionen `applyValidationMessages()` är borttagen utan ersättare.
 Funktionen var en placeholder som inte gjorde något och anrop kan därför tas bort.
+
+### `setCookie()`
+
+Funktionen `setCookie(..)` tar inte längre den deprekerade parametern `timeLimitMillis`.
+Använd `timeLimitSeconds` istället.
 
 ### Polyfill
 
