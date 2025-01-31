@@ -14064,19 +14064,11 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-ariaLabel: {
+"aria-label": {
 type: StringConstructor;
 required: true;
 };
-}>, {}, {}, {
-progressValueNow(): number;
-isFinished(): boolean;
-isInProgress(): boolean;
-isPending(): boolean;
-cssWidth(): string;
-progressBarClass(): string;
-progressText(): string;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 value: {
 type: NumberConstructor;
 required: true;
@@ -14087,13 +14079,13 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-ariaLabel: {
+"aria-label": {
 type: StringConstructor;
 required: true;
 };
 }>> & Readonly<{}>, {
 valueText: string;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLDivElement>;
 
 // @public (undocumented)
 export const FRadioField: DefineComponent<ExtractPropTypes<    {

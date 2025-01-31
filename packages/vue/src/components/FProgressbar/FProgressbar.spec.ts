@@ -10,21 +10,21 @@ afterEach(() => {
 describe("FProgressbar", () => {
     it("should show progress", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 25, ariaLabel },
+            props: { value: 25, "aria-label": ariaLabel },
         });
         expect(wrapper.get(".progress__meter--inprogress")).toBeTruthy();
     });
 
     it("should not show progress", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 0, ariaLabel },
+            props: { value: 0, "aria-label": ariaLabel },
         });
         expect(wrapper.get(".progress__meter--pending")).toBeTruthy();
     });
 
     it("should set aria-valuenow", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 27, ariaLabel },
+            props: { value: 27, "aria-label": ariaLabel },
         });
         expect(
             wrapper.get(".progress__meter").attributes("aria-valuenow"),
@@ -33,7 +33,7 @@ describe("FProgressbar", () => {
 
     it("should set aria-valuetext", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 35, ariaLabel },
+            props: { value: 35, "aria-label": ariaLabel },
         });
         expect(
             wrapper.get(".progress__meter").attributes("aria-valuetext"),
@@ -45,7 +45,7 @@ describe("FProgressbar", () => {
             props: {
                 value: 42,
                 valueText: "Talet %VALUE% är svaret.",
-                ariaLabel,
+                "aria-label": ariaLabel,
             },
         });
         expect(
@@ -55,7 +55,7 @@ describe("FProgressbar", () => {
 
     it("should round to integer", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 33.33, ariaLabel },
+            props: { value: 33.33, "aria-label": ariaLabel },
         });
         expect(wrapper.get(".progress__meter").attributes().style).toBe(
             "width: 33%;",
@@ -66,7 +66,7 @@ describe("FProgressbar", () => {
         // prevent vue error logging due to value validator
         jest.spyOn(console, "error").mockImplementation(jest.fn());
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: -5, ariaLabel },
+            props: { value: -5, "aria-label": ariaLabel },
             global: {
                 config: {
                     warnHandler() {
@@ -81,7 +81,7 @@ describe("FProgressbar", () => {
 
     it("should not go above 100%", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 105, ariaLabel },
+            props: { value: 105, "aria-label": ariaLabel },
             global: {
                 config: {
                     warnHandler() {
@@ -96,7 +96,7 @@ describe("FProgressbar", () => {
 
     it("should set class pending when progress not started", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 0, ariaLabel },
+            props: { value: 0, "aria-label": ariaLabel },
         });
 
         expect(wrapper.get(".progress__meter--pending")).toBeTruthy();
@@ -108,7 +108,7 @@ describe("FProgressbar", () => {
 
     it("should set class in-progress when progress has started", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 42, ariaLabel },
+            props: { value: 42, "aria-label": ariaLabel },
         });
 
         expect(wrapper.find(".progress__meter--pending").exists()).toBeFalsy();
@@ -118,7 +118,7 @@ describe("FProgressbar", () => {
 
     it("should set class finished when progress has completed", () => {
         const wrapper = shallowMount(FProgressbar, {
-            props: { value: 100, ariaLabel },
+            props: { value: 100, "aria-label": ariaLabel },
         });
 
         expect(wrapper.find(".progress__meter--pending").exists()).toBeFalsy();
