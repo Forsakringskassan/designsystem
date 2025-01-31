@@ -1,27 +1,14 @@
 /**
  * @public
  */
-export type CookieLifetimeOption =
-    | {
-          /**
-           * @deprecated Use timeLimitSeconds instead. Will be rounded to nearest second.
-           */
-          timeLimitMillis?: number;
-          timeLimitSeconds?: never;
-      }
-    | {
-          timeLimitMillis?: never;
-          timeLimitSeconds?: number;
-      };
-
-/**
- * @public
- */
-export type CookieOptions = {
+export interface CookieOptions {
     name: string;
     value: string;
     keepAnyExistingCookie?: boolean;
-} & CookieLifetimeOption;
+
+    /** `max-age` parameter, default: 12h */
+    timeLimitSeconds?: number;
+}
 
 const TWELVE_HOURS = 12 * 60 * 60;
 
@@ -29,21 +16,16 @@ const TWELVE_HOURS = 12 * 60 * 60;
  * @public
  */
 export function setCookie(options: CookieOptions): void {
+    const { name, value, keepAnyExistingCookie, timeLimitSeconds } = options;
+
     const shouldKeepTheExistingCookie =
-        options.keepAnyExistingCookie && findCookie(options.name);
+        keepAnyExistingCookie && findCookie(name);
     if (shouldKeepTheExistingCookie) {
         return;
     }
 
-    let cookieString = `${options.name}=${encodeURIComponent(
-        options.value,
-    )}; path=/;`;
-
-    const timeLimitSeconds = options.timeLimitMillis
-        ? Math.round(options.timeLimitMillis / 1000)
-        : options.timeLimitSeconds;
     const timeout = timeLimitSeconds ?? TWELVE_HOURS;
-    cookieString += `max-age=${timeout};`;
+    const cookieString = `${name}=${encodeURIComponent(value)}; path=/; max-age=${timeout};`;
 
     document.cookie = cookieString;
 }

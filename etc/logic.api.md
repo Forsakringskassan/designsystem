@@ -42,20 +42,15 @@ export type ClearingnumberString = string;
 export const configLogic: FKUIConfigLogic;
 
 // @public (undocumented)
-export type CookieLifetimeOption = {
-    timeLimitMillis?: number;
-    timeLimitSeconds?: never;
-} | {
-    timeLimitMillis?: never;
-    timeLimitSeconds?: number;
-};
-
-// @public (undocumented)
-export type CookieOptions = {
-    name: string;
-    value: string;
+export interface CookieOptions {
+    // (undocumented)
     keepAnyExistingCookie?: boolean;
-} & CookieLifetimeOption;
+    // (undocumented)
+    name: string;
+    timeLimitSeconds?: number;
+    // (undocumented)
+    value: string;
+}
 
 // @public
 export type DateString = string;

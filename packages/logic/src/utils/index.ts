@@ -12,7 +12,6 @@ export { validChecksum } from "./PersonnummerUtils";
 export { testLuhnChecksum } from "./test-luhn-checksum";
 export {
     type CookieOptions,
-    type CookieLifetimeOption,
     setCookie,
     deleteCookie,
     findCookie,
