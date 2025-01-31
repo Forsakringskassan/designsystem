@@ -13,12 +13,6 @@ export interface ConfirmModalTexts {
 }
 
 /**
- * @public
- * @deprecated Deprecated alias, use [[ConfirmModalTexts]].
- */
-export type confirmModalObject = ConfirmModalTexts;
-
-/**
  * Open a confirmation modal with given text.
  *
  * @public
