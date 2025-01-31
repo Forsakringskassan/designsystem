@@ -16,7 +16,7 @@ Följande deprekerade komponenter har tagits bort:
 Ändringar i komponenter och funktioner:
 
 - `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
-- `@fkui/logic`: konstanterna `DATE_REGEXP_WITH_DASH` och `WHITESPACE_PATTERN` är borttagen.
+- `@fkui/logic`: konstanterna `DATE_REGEXP_WITH_DASH`, `WHITESPACE_PATTERN` och `FORMAT_3_DIGITS_GROUP` är borttagen.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
 - `getTextFromScopedSlot`: funktionen är borttagen.
@@ -58,6 +58,10 @@ Om du använder den för att ta bort whitespace från text ersätt med `stripWhi
 ```
 
 Om du använder den för andra ändamål ersätt med reguljära uttrycket `\s+` (med eller utan global flaggan).
+
+Den deprekerade konstanten `FORMAT_3_DIGITS_GROUP` är borttagen utan ersättare.
+
+Om du använder den behöver du använda ett eget reguljärt uttryck.
 
 ### Polyfill
 

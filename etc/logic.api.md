@@ -185,9 +185,6 @@ interface FocusOptions_2 {
 }
 export { FocusOptions_2 as FocusOptions }
 
-// @public @deprecated (undocumented)
-export const FORMAT_3_DIGITS_GROUPS: RegExp;
-
 // @public (undocumented)
 export function formatClearingNumberForBackend(value: ClearingnumberString): string | undefined;
 
