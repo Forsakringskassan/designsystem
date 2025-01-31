@@ -60,9 +60,6 @@ export type CookieOptions = {
     keepAnyExistingCookie?: boolean;
 } & CookieLifetimeOption;
 
-// @public @deprecated (undocumented)
-export const DATE_REGEXP_WITH_DASH: RegExp;
-
 // @public
 export type DateString = string;
 
