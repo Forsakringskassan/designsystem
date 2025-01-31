@@ -16,6 +16,7 @@ Följande deprekerade komponenter har tagits bort:
 Ändringar i komponenter och funktioner:
 
 - `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
+- `@fkui/logic`: `DATE_REGEXP_WITH_DASH` är borttagen.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: deprekerade CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
@@ -31,6 +32,18 @@ För Cypress pageobjekt:
 - `FTooltipPageObject.content()` metoden är borttagen.
 
 ## `@fkui/logic`
+
+Den deprekerade konstanten `DATE_REGEXP_WITH_DASH` är borttagen och ersatt med `FDate` klassen från `@fkui/date`.
+
+Exempelvis om du använder konstanten för att testa om ett datum är giltigt format använd `.isValid(..)` metoden:
+
+```diff
+-if (DATE_REGEXP_WITH_DASH.test(value)) {
++const parsed = FDate.fromIso(value);
++if (parsed.isValid()) {
+    /* ... */
+}
+```
 
 ### Polyfill
 

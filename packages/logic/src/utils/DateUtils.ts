@@ -1,10 +1,6 @@
 import { isEmpty } from "./is";
 
-/**
- * @public
- * @deprecated Use `FDate` instead.
- */
-export const DATE_REGEXP_WITH_DASH = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
+const DATE_REGEXP_WITH_DASH = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
 
 /**
  * @public
