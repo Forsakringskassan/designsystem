@@ -1,7 +1,7 @@
 /**
  * Check if element is of type radiobutton or checkbox
  *
- * @public
+ * @internal
  */
 export function isRadiobuttonOrCheckbox(
     element: Element,

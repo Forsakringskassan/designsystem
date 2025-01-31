@@ -228,7 +228,7 @@ export function isInvalidDatesConfig(value: Partial<InvalidDatesValidatorConfig>
 // @public (undocumented)
 export function isInvalidWeekdaysConfig(value: Partial<InvalidWeekdaysValidatorConfig>): value is InvalidWeekdaysValidatorConfig;
 
-// @public
+// @internal
 export function isRadiobuttonOrCheckbox(element: Element): element is HTMLInputElement;
 
 // @public

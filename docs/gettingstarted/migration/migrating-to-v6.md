@@ -17,7 +17,7 @@ Följande deprekerade komponenter har tagits bort:
 
 - `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
 - `@fkui/logic`: konstanterna `DATE_REGEXP_WITH_DASH`, `WHITESPACE_PATTERN` och `FORMAT_3_DIGITS_GROUP` är borttagen.
-- `@fkui/logic`: funktionen `applyValidationMessages()` är borttagen.
+- `@fkui/logic`: funktioner `applyValidationMessages()`, `ìsRadiobuttonOrCheckbox()` är borttagna.
 - `@fkui/logic`: funktionen `setCookie(..)` tar inte längre `timeLimitMillis` parametern.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: deprekerade CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
@@ -43,8 +43,8 @@ Exempelvis om du använder konstanten för att testa om ett datum är giltigt fo
 -if (DATE_REGEXP_WITH_DASH.test(value)) {
 +const parsed = FDate.fromIso(value);
 +if (parsed.isValid()) {
-    /* ... */
-}
+     /* ... */
+ }
 ```
 
 Den deprekerade konstanten `WHITESPACE_PATTERN` är borttagen och delvis ersatt med `stripWhitespace`.
@@ -66,6 +66,18 @@ Om du använder den behöver du använda ett eget reguljärt uttryck.
 
 Den deprekerade funktionen `applyValidationMessages()` är borttagen utan ersättare.
 Funktionen var en placeholder som inte gjorde något och anrop kan därför tas bort.
+
+### `isRadiobuttonOrCheckbox()`
+
+Intern funktion som ej var tänkt för allmän konsumption.
+Om du använder denna behöver du implementera logiken själv:
+
+```diff
+-if (isRadiobuttonOrCheckbox(element)) {
++if (element instanceof HTMLElement && ["radio", "checkbox"].includes(element.type)) {
+     /* ... */
+ }
+```
 
 ### `setCookie()`
 
