@@ -11,6 +11,10 @@ export {
     parsePersonnummerLuhn,
 } from "./PersonnummerConverter";
 export * from "./PlusgiroConverter/plusgiroConverter";
-export * from "./PostalCodeConverter/postalCodeConverter";
+export {
+    type PostalCodeString,
+    formatPostalCode,
+    parsePostalCode,
+} from "./PostalCodeConverter/postalCodeConverter";
 export * from "./OrganisationsnummerConverter/organisationsnummerConverter";
 export * from "./PercentConverter";

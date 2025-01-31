@@ -382,9 +382,6 @@ export type PlusgiroString = string;
 // @public
 export function popFocus(handle: StackHandle): void;
 
-// @internal (undocumented)
-export const POSTAL_CODE_REGEXP: RegExp;
-
 // @public
 export type PostalCodeString = string;
 
