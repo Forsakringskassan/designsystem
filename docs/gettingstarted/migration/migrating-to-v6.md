@@ -16,7 +16,7 @@ Följande deprekerade komponenter har tagits bort:
 Ändringar i komponenter och funktioner:
 
 - `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
-- `@fkui/logic`: `DATE_REGEXP_WITH_DASH` är borttagen.
+- `@fkui/logic`: konstanterna `DATE_REGEXP_WITH_DASH` och `WHITESPACE_PATTERN` är borttagen.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: deprekerade CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
@@ -44,6 +44,17 @@ Exempelvis om du använder konstanten för att testa om ett datum är giltigt fo
     /* ... */
 }
 ```
+
+Den deprekerade konstanten `WHITESPACE_PATTERN` är borttagen och delvis ersatt med `stripWhitespace`.
+
+Om du använder den för att ta bort whitespace från text ersätt med `stripWhitespace`:
+
+```diff
+-const stripped = text.replace(WHITESPACE_PATTERN, "");
++const stripped = stripWhitespace(text);
+```
+
+Om du använder den för andra ändamål ersätt med reguljära uttrycket `\s+` (med eller utan global flaggan).
 
 ### Polyfill
 

@@ -627,9 +627,6 @@ export function validLimit(limit: unknown): string;
 // @public
 export function waitForScreenReader<TReturn = void>(callback: () => TReturn, delay?: number): Promise<TReturn>;
 
-// @public @deprecated
-export const WHITESPACE_PATTERN: RegExp;
-
 // (No @packageDocumentation comment for this package)
 
 ```
