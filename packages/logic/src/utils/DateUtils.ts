@@ -21,8 +21,3 @@ export function validLimit(limit: unknown): string {
 
     return limitAsString;
 }
-
-/**
- * @internal
- */
-export type DateFormat = "YYYY-MM-DD" | "YYYYMMDD" | "YYYY/MM/DD";

@@ -1,1 +1,5 @@
-export * from "./postalCodeConverter";
+export {
+    type PostalCodeString,
+    formatPostalCode,
+    parsePostalCode,
+} from "./postalCodeConverter";

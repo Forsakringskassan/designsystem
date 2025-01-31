@@ -63,9 +63,6 @@ export type CookieOptions = {
 // @public @deprecated (undocumented)
 export const DATE_REGEXP_WITH_DASH: RegExp;
 
-// @internal (undocumented)
-export type DateFormat = "YYYY-MM-DD" | "YYYYMMDD" | "YYYY/MM/DD";
-
 // @public
 export type DateString = string;
 
@@ -233,9 +230,6 @@ export interface InvalidWeekdaysValidatorConfig extends ValidatorOptions {
 // @public
 export function isEmpty(value: string | undefined | null): value is "" | undefined | null;
 
-// @internal (undocumented)
-export function isFieldset(element: Element): element is HTMLFieldSetElement;
-
 // @public
 export function isFocusable(element: Element): boolean;
 
@@ -262,9 +256,6 @@ export function isValidatableFormElement(element: Element): element is HTMLInput
 
 // @public
 export function isValidatableHTMLElement(element: Element): element is ValidatableHTMLElement;
-
-// @internal
-export function isValidDate(date: FDate, now: FDate): boolean;
 
 // @public
 export function isVisible(element: HTMLElement): boolean;
@@ -390,9 +381,6 @@ export type PlusgiroString = string;
 
 // @public
 export function popFocus(handle: StackHandle): void;
-
-// @internal (undocumented)
-export const POSTAL_CODE_REGEXP: RegExp;
 
 // @public
 export type PostalCodeString = string;

@@ -42,7 +42,9 @@ Open a simple modal:
 ```ts
 const { openModal } = useModal();
 
-const result = await openModal(MyAwesomeModal);
+async function onOpen(): Promise<void> {
+    const result = await openModal(MyAwesomeModal);
+}
 ```
 
 Open a confirmation modal:
@@ -50,14 +52,16 @@ Open a confirmation modal:
 ```ts
 const { confirmModal } = useModal();
 
-const confirmed = await confirmModal({
-    heading: "Ta bort arbetsgivare",
-    content: `Är du säker att du vill ta bort "${arbetsgivare.namn}"?`,
-    confirm: "Ja, ta bort",
-    dismiss: "Nej, behåll",
-});
-if (confirmed) {
-    /* ... */
+async function onOpen(): Promise<void> {
+    const confirmed = await confirmModal({
+        heading: "Ta bort arbetsgivare",
+        content: `Är du säker att du vill ta bort "${arbetsgivare.namn}"?`,
+        confirm: "Ja, ta bort",
+        dismiss: "Nej, behåll",
+    });
+    if (confirmed) {
+        /* ... */
+    }
 }
 ```
 
@@ -66,7 +70,9 @@ Open a form modal:
 ```ts
 const { formModal } = useModal();
 
-const result = await formModal<MyAwesomeData>(MyAwesomeModal);
+async function onOpen(): Promise<void> {
+    const result = await formModal<MyAwesomeData>(MyAwesomeModal);
+}
 ```
 
 ## Related

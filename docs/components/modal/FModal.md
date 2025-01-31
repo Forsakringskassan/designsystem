@@ -24,6 +24,35 @@ Modala dialogrutor finns i fyra varianter:
 - varning
 - fel.
 
+## Användning
+
+Skapa en ny Vue-komponent där `f-modal` används:
+
+```import static
+MyAwesomeModal.vue
+```
+
+Du kan sedan öppna din modal genom att använda {@link useModal `useModal()`} (composition API) eller {@link form-modal `openModal()`} (options API).
+
+```import static
+FModalUsage.vue
+```
+
+### Användning med template (deprekerad)
+
+Att använda `FModal` nästlad i template är deprekerat.
+Om du använder detta rekommenderar vi att du flyttar den till en egen Vue komponent och använder API för att öppna den.
+Se {@link FModal#anvandning `Användning`} för hur du använder `FModal` med API.
+
+```diff
+ <template>
+     <div>
+         <button type="button" @click="onClick">Open modal</button>
+-        <f-modal></f-modal>
+     </div>
+ </template>
+```
+
 ## Storlek
 
 Modalens höjd anpassas utifrån innehållet. I desktop (>639px) kan modalens bredd anpassas till
