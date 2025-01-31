@@ -364,13 +364,6 @@ export default defineComponent({
                  */
                 this.$emit("update:modelValue", this.viewValue);
 
-                /* Vue2 v-model event.
-                 * @deprecated
-                 * @event update
-                 * @type {string}
-                 */
-                this.$emit("update", this.viewValue);
-
                 await this.$nextTick(); // wait for model update before triggering change event
                 /**
                  * @event change

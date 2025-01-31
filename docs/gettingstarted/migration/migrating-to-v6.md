@@ -23,6 +23,7 @@ Följande deprekerade komponenter har tagits bort:
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: deprekerade CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
+- `FTextField`: `update` eventet emittas inte längre.
 - `getTextFromScopedSlot`: funktionen är borttagen.
 - Konfiguration: `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna.
 
@@ -197,6 +198,16 @@ Den deprekerade propen `skipLinkHref` är borttagen och ersatt med propen `skipL
 
 `skipLink` kunde tidigare ta ett `boolean` värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng `""` för att stänga av.
+
+## `FTextField`
+
+Eventet `update` emittas inte längre.
+Använd `change` eventet eller `v-model` istället.
+
+```diff
+-<f-text-field @update="doSomething">
++<f-text-field @change="doSomething">
+```
 
 ## Pageobjects
 
