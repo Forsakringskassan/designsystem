@@ -127,5 +127,11 @@
     "--f-border-color-button-disabled",
     "--f-border-color-button-standard",
     "--f-background-button-primary",
-    "--f-border-color-button-secondary"
+    "--f-border-color-button-secondary",
+    "--f-text-color-button-secondary",
+    "--f-text-color-button-tertiary",
+    "--f-text-color-button-tertiary-hover",
+    "--f-background-button-tertiary-hover",
+    "--f-text-color-button-tertiary-inverted",
+    "--f-text-color-button-tertiary-inverted-disabled"
 ]
