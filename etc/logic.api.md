@@ -257,9 +257,6 @@ export function isValidatableFormElement(element: Element): element is HTMLInput
 // @public
 export function isValidatableHTMLElement(element: Element): element is ValidatableHTMLElement;
 
-// @internal
-export function isValidDate(date: FDate, now: FDate): boolean;
-
 // @public
 export function isVisible(element: HTMLElement): boolean;
 
