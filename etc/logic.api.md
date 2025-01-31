@@ -60,9 +60,6 @@ export type CookieOptions = {
     keepAnyExistingCookie?: boolean;
 } & CookieLifetimeOption;
 
-// @internal (undocumented)
-export type DateFormat = "YYYY-MM-DD" | "YYYYMMDD" | "YYYY/MM/DD";
-
 // @public
 export type DateString = string;
 

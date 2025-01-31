@@ -3,7 +3,7 @@ export * from "./RegExpUtils";
 export * from "./StripNull";
 export * from "./exceptions";
 
-export { type DateFormat, validLimit } from "./DateUtils";
+export { validLimit } from "./DateUtils";
 export { debounce } from "./debounce";
 export { deepClone } from "./deep-clone";
 export { ensureSet, MissingValueError } from "./ensure-set";
