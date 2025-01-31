@@ -234,4 +234,10 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-border-color-button-standard: #{$palette-color-fk-black-50};
     --f-background-button-primary: #{$palette-color-green-a-100};
     --f-border-color-button-secondary: #{$palette-color-fk-black-50};
+    --f-text-color-button-secondary: #{$palette-color-fk-black-100};
+    --f-text-color-button-tertiary: #{$palette-color-green-a-100};
+    --f-text-color-button-tertiary-hover: #{$palette-color-green-a-100};
+    --f-background-button-tertiary-hover: #{$palette-color-fk-black-5};
+    --f-text-color-button-tertiary-inverted: #{$palette-color-white-100};
+    --f-text-color-button-tertiary-inverted-disabled: #{$palette-color-bluebell-15};
 }
