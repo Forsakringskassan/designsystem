@@ -539,9 +539,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-ba7196.js"
+                    src="../../assets/vendor-fkui-logic-75ce62.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-WGFzSYCiUGr3256eX2LBAFXyrX6lFXjWElNZ+G/+R+vlFYftDFpRV/pUDiOQjShU"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -612,6 +612,9 @@
 <p>Ändringar i komponenter och funktioner:</p>
 <ul>
 <li><code>@fkui/logic</code>: importen <code>@fkui/logic/lib/polyfills</code> är borttagen.</li>
+<li><code>@fkui/logic</code>: konstanterna <code>DATE_REGEXP_WITH_DASH</code>, <code>WHITESPACE_PATTERN</code> och <code>FORMAT_3_DIGITS_GROUP</code> är borttagen.</li>
+<li><code>@fkui/logic</code>: funktionen <code>applyValidationMessages()</code> är borttagen.</li>
+<li><code>@fkui/logic</code>: funktionen <code>setCookie(..)</code> tar inte längre <code>timeLimitMillis</code> parametern.</li>
 <li><code>FFormModal</code>: slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna.</li>
 <li><code>FModal</code>: deprekerade CSS klassalias <code>modal__dialog-container-large</code> och <code>modal__dialog-container-fullscreen</code> är borttagna.</li>
 <li><code>FPageHeader</code>: propen <code>skipLinkHref</code> är borttagen</li>
@@ -626,10 +629,50 @@
 <li><code>FNavigationMenuPageobject.menu()</code> metoden är borttagen.</li>
 <li><code>FTooltipPageObject.content()</code> metoden är borttagen.</li>
 </ul>
-<h2 id="fkui_logic"><a class="header-anchor" href="#fkui_logic"><code>@fkui/logic</code></a></h2><h3 id="polyfill"><a class="header-anchor" href="#polyfill">Polyfill</a></h3><p>Den deprekerade entrypointen <code>@fkui/logic/lib/polyfills</code> är borttagen och ersatt med <code>@fkui/logic/polyfills</code>.</p>
+<h2 id="fkui_logic"><a class="header-anchor" href="#fkui_logic"><code>@fkui/logic</code></a></h2><p>Den deprekerade konstanten <code>DATE_REGEXP_WITH_DASH</code> är borttagen och ersatt med <code>FDate</code> klassen från <code>@fkui/date</code>.</p>
+<p>Exempelvis om du använder konstanten för att testa om ett datum är giltigt format använd <code>.isValid(..)</code> metoden:</p>
 
                 <div
-                    id="example-4b91fe"
+                    id="example-a8971c"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-if (DATE_REGEXP_WITH_DASH.test(value)) {</span>
+<span class="hljs-addition">+const parsed = FDate.fromIso(value);</span>
+<span class="hljs-addition">+if (parsed.isValid()) {</span>
+    /* ... */
+}
+</code></pre>
+                </div>
+            <p>Den deprekerade konstanten <code>WHITESPACE_PATTERN</code> är borttagen och delvis ersatt med <code>stripWhitespace</code>.</p>
+<p>Om du använder den för att ta bort whitespace från text ersätt med <code>stripWhitespace</code>:</p>
+
+                <div
+                    id="example-823439"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const stripped = text.replace(WHITESPACE_PATTERN, &quot;&quot;);</span>
+<span class="hljs-addition">+const stripped = stripWhitespace(text);</span>
+</code></pre>
+                </div>
+            <p>Om du använder den för andra ändamål ersätt med reguljära uttrycket <code>\s+</code> (med eller utan global flaggan).</p>
+<p>Den deprekerade konstanten <code>FORMAT_3_DIGITS_GROUP</code> är borttagen utan ersättare.</p>
+<p>Om du använder den behöver du använda ett eget reguljärt uttryck.</p>
+<h3 id="applyvalidationmessages"><a class="header-anchor" href="#applyvalidationmessages"><code>applyValidationMessages()</code></a></h3><p>Den deprekerade funktionen <code>applyValidationMessages()</code> är borttagen utan ersättare.
+Funktionen var en placeholder som inte gjorde något och anrop kan därför tas bort.</p>
+<h3 id="setcookie"><a class="header-anchor" href="#setcookie"><code>setCookie()</code></a></h3><p>Funktionen <code>setCookie(..)</code> tar inte längre den deprekerade parametern <code>timeLimitMillis</code>.
+Använd <code>timeLimitSeconds</code> istället.</p>
+<h3 id="polyfill"><a class="header-anchor" href="#polyfill">Polyfill</a></h3><p>Den deprekerade entrypointen <code>@fkui/logic/lib/polyfills</code> är borttagen och ersatt med <code>@fkui/logic/polyfills</code>.</p>
+
+                <div
+                    id="example-a6afe1"
                     class="code-preview code-preview--default"
                     
                     
@@ -648,7 +691,7 @@
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-a0792e"
+                    id="example-014bd1"
                     class="code-preview code-preview--default"
                     
                     
@@ -688,7 +731,7 @@ Detta påverkar endast dig som använder stylingen direkt, använder man <code>@
 Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive <code>modal__dialog-container--fullscreen</code>.</p>
 
                 <div
-                    id="example-cda1ad"
+                    id="example-b54942"
                     class="code-preview code-preview--default"
                     
                     
@@ -702,7 +745,7 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
             <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
                 <div
-                    id="example-be176d"
+                    id="example-183dc3"
                     class="code-preview code-preview--default"
                     
                     
@@ -722,7 +765,7 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
         <h2 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
 
                 <div
-                    id="example-65422e"
+                    id="example-979809"
                     class="code-preview code-preview--default"
                     
                     
@@ -739,7 +782,7 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
             <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-15c2b3"
+                    id="example-d6fa7a"
                     class="code-preview code-preview--default"
                     
                     
@@ -772,7 +815,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda <code>.el()</code>.</p>
 
                 <div
-                    id="example-85a8de"
+                    id="example-4d6a3e"
                     class="code-preview code-preview--default"
                     
                     
@@ -789,7 +832,7 @@ Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man a
 Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda <code>.content()</code> för att hämta ut hela innehållet i slotten eller använda en egen selector.</p>
 
                 <div
-                    id="example-8cc038"
+                    id="example-c13072"
                     class="code-preview code-preview--default"
                     
                     
@@ -803,7 +846,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="fnavigationmenupageobject_menu_metoden"><a class="header-anchor" href="#fnavigationmenupageobject_menu_metoden"><code>FNavigationMenuPageobject.menu()</code> metoden</a></h3><p>Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
 
                 <div
-                    id="example-f38613"
+                    id="example-49e9dd"
                     class="code-preview code-preview--default"
                     
                     
@@ -817,7 +860,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="ftooltippageobject_content_methoden"><a class="header-anchor" href="#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code> methoden</a></h3><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
 
                 <div
-                    id="example-f06e32"
+                    id="example-548ea8"
                     class="code-preview code-preview--default"
                     
                     
@@ -830,7 +873,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-b26819"
+                    id="example-9d3383"
                     class="code-preview code-preview--default"
                     
                     
@@ -843,7 +886,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-7c48de"
+                    id="example-b2333f"
                     class="code-preview code-preview--default"
                     
                     
@@ -856,7 +899,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-82d45e"
+                    id="example-38e067"
                     class="code-preview code-preview--default"
                     
                     
@@ -894,9 +937,9 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/03d2c1b989348c012cfe088310676e367c376529">03d2c1b</a>)<br />
+    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/01d356c2fd2ecb2af7ba054baf6f7adae319bdd3">01d356c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/218">PR 218</a><br />
-        2025-01-30 07:26
+        2025-01-31 08:46
 </div>
 <div class="toolbar__item">
     <form id="version">
