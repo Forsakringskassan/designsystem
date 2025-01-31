@@ -3,7 +3,7 @@ export * from "./RegExpUtils";
 export * from "./StripNull";
 export * from "./exceptions";
 
-export { DATE_REGEXP_WITH_DASH, validLimit } from "./DateUtils";
+export { validLimit } from "./DateUtils";
 export { debounce } from "./debounce";
 export { deepClone } from "./deep-clone";
 export { ensureSet, MissingValueError } from "./ensure-set";

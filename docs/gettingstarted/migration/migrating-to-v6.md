@@ -16,6 +16,7 @@ Följande deprekerade komponenter har tagits bort:
 Ändringar i komponenter och funktioner:
 
 - `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
+- `@fkui/logic`: `DATE_REGEXP_WITH_DASH` är borttagen.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
 - `getTextFromScopedSlot`: funktionen är borttagen.
@@ -34,6 +35,18 @@ Följande deprekerade validatorer har tagits bort:
 - `personnummer`
 
 ## `@fkui/logic`
+
+Den deprekerade konstanten `DATE_REGEXP_WITH_DASH` är borttagen och ersatt med `FDate` klassen från `@fkui/date`.
+
+Exempelvis om du använder konstanten för att testa om ett datum är giltigt format använd `.isValid(..)` metoden:
+
+```diff
+-if (DATE_REGEXP_WITH_DASH.test(value)) {
++const parsed = FDate.fromIso(value);
++if (parsed.isValid()) {
+    /* ... */
+}
+```
 
 ### Polyfill
 
