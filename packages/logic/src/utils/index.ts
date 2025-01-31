@@ -1,5 +1,4 @@
 export * from "./is";
-export * from "./RegExpUtils";
 export * from "./StripNull";
 export * from "./exceptions";
 
