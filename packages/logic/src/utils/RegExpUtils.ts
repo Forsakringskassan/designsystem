@@ -1,12 +1,4 @@
 /**
- * Matches a single whitespace globally.
- *
- * @public
- * @deprecated Use {@link stripWhitespace} instead
- */
-export const WHITESPACE_PATTERN = /\s/g;
-
-/**
  * @public
  * @deprecated Use {@link formatNumber} instead.
  */
