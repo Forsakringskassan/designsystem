@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-bac81f.css"
+            href="../../assets/docs-92f169.css"
             crossorigin
-            integrity="sha384-EZtvltKn1OxEnPj/h+NjnTSlc2QHMdgcY2emFUH7lXXuFgRgvd8lV24tSlghz0LC"
+            integrity="sha384-YUf5fNZAUNvCYz0XPySYVIexCyskGUz8ussvP9s02bZFXuBvAKgl9pvRfVc44FTl"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-ae42ea.css"
+            href="../../assets/docs-exp-1f978a.css"
             crossorigin
-            integrity="sha384-KBVPWAXfkpXGf7AO+YQYius3Gs02NOq5aLzPwwN+711/aC4NTxWbJE+RGVPI7Rvi"
+            integrity="sha384-sVsT/YtfQGpb4fDVOiAi663KLzJRUh20cud2WlA5tvQ2y1FqpxgOOg0Qo9lK4aVE"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-a267b9.css"
+            href="../../assets/docs-int-687271.css"
             crossorigin
-            integrity="sha384-tZyNF0ipPWq6HglLS9xEKEKxN7rEemy/TmkOjYjPTHVRIjpgvWJOMVSmQyIiSG/o"
+            integrity="sha384-u3iuCXs7zAL/D4Lkne1lq4vQW5fiDt22ue0DwbbrLU3zzcrXmhteIYEuD9Skr79M"
             data-theme="int" disabled
         />
 
@@ -1045,39 +1045,50 @@ Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.
 <p><code>ValidationPlugin</code> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
 
                 <div
-                    id="example-fb5ee0"
+                    id="example-e44823"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ValidationPlugin</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">App</span> = <span class="hljs-title function_">defineComponent</span>({});
+
+<span class="hljs-comment">/* --- cut above ---*/</span>
+
+<span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>);
+app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ValidationPlugin</span>);
+app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>);
 </code></pre>
                 </div>
             <p>Via <code>ValidationService.addValidationErrorMessages</code> kan man specificera översättningar av validator fel.
 I nedan exempel anges ett objekt med validatornamnet som nyckel och översättning som värde (om översättning saknas så kommer validatornamnet istället användas).</p>
 
                 <div
-                    id="example-38c2f1"
+                    id="example-fba356"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>({
-    <span class="hljs-string">&#x27;required&#x27;</span>, <span class="hljs-string">&#x27;Fältet krävs&#x27;</span>,
-    <span class="hljs-string">&#x27;personnummerFormat&#x27;</span>, <span class="hljs-string">&#x27;Felaktigt format på personnummer&#x27;</span>,
+    <span class="hljs-attr">required</span>: <span class="hljs-string">&quot;Fältet krävs&quot;</span>,
+    <span class="hljs-attr">personnummerFormat</span>: <span class="hljs-string">&quot;Felaktigt format på personnummer&quot;</span>,
 });
 </code></pre>
                 </div>
             <p>För att få <em>autocompletion</em> av validatornamn så rekommenderas att använda <code>ValidationErrorMessageBuilder</code>:</p>
 
                 <div
-                    id="example-12196d"
+                    id="example-d97d41"
                     class="code-preview code-preview--default"
                     
                     
@@ -1086,17 +1097,17 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(
-    <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
-        .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;The field is required&quot;</span>)
-        .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;personnummerFormat&quot;</span>, <span class="hljs-string">&quot;Bad formatted social security number&quot;</span>)
-        .<span class="hljs-title function_">mapCombined</span>(
-            <span class="hljs-string">&quot;required&quot;</span>,
-            <span class="hljs-string">&quot;personnummerFormat&quot;</span>,
-            <span class="hljs-string">&quot;You must enter a social security number&quot;</span>,
-        )
-        .<span class="hljs-title function_">build</span>(),
-);
+<span class="hljs-keyword">const</span> messages = <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
+    .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;The field is required&quot;</span>)
+    .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;personnummerFormat&quot;</span>, <span class="hljs-string">&quot;Bad formatted social security number&quot;</span>)
+    .<span class="hljs-title function_">mapCombined</span>(
+        <span class="hljs-string">&quot;required&quot;</span>,
+        <span class="hljs-string">&quot;personnummerFormat&quot;</span>,
+        <span class="hljs-string">&quot;You must enter a social security number&quot;</span>,
+    )
+    .<span class="hljs-title function_">build</span>();
+
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(messages);
 </code></pre>
                 </div>
             <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.</p>
@@ -1104,7 +1115,7 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
 Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den <code>required</code> validatorn att köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.</p>
 
             <div
-                id="example-b20fbd"
+                id="example-085b97"
                 class="code-preview code-preview--default"
                 
                 
@@ -1162,7 +1173,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
         <p>Valideringsdirektivet är även reaktivt vilket betyder att man kan binda variabler i konfigurationen och när variablerna uppdateras i runtime så kommer valideringen hantera detta.</p>
 
             <div
-                id="example-aaa01a"
+                id="example-02fce1"
                 class="code-preview code-preview--default"
                 
                 
@@ -1227,7 +1238,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
 <code>ValidityEvent</code> innehåller information om valideringens status.</p>
 
             <div
-                id="example-7cae6a"
+                id="example-0aea31"
                 class="code-preview code-preview--default"
                 
                 
@@ -1296,7 +1307,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
         <h2 id="utokade_komponenter_med_default_validering"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p>Om man behöver utveckla en egen komponent med inbyggd validering som standard-beteende så måste man lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
 
                 <div
-                    id="example-b84de5"
+                    id="example-006020"
                     class="code-preview code-preview--default"
                     
                     
@@ -1316,7 +1327,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
 <h2 id="applikationsspecifikt_felmeddelande"><a class="header-anchor" href="#applikationsspecifikt_felmeddelande">Applikationsspecifikt felmeddelande</a></h2><p>Alla validatorers konfiguration tar attributet <code>errorMessage</code> som ersätter felmeddelandet som definieras med <code>ValidatorService.addValidationErrorMessages</code> funktionen.</p>
 
             <div
-                id="example-1236c0"
+                id="example-3f3d85"
                 class="code-preview code-preview--default"
                 
                 
@@ -1381,7 +1392,7 @@ Vue-direktivet <code>v-validation-prefix</code> plockar ut <code>errorMessage</c
 Det innebär att man kan lägga direktivet på flera platser för att kontinuerligt lägga på fler prefix.</p>
 
             <div
-                id="example-b226cc"
+                id="example-d00f92"
                 class="code-preview code-preview--default"
                 
                 
@@ -1461,7 +1472,7 @@ Det innebär att man kan lägga direktivet på flera platser för att kontinuerl
 Ett use-case för detta är tex om ett fält längre ned skall vara required baserat på val som tidigare har gjorts.</p>
 
                 <div
-                    id="example-0323ed"
+                    id="example-4e6d15"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1479,7 +1490,7 @@ Ett use-case för detta är tex om ett fält längre ned skall vara required bas
                 </div>
             
             <div
-                id="example-a17631"
+                id="example-659a40"
                 class="code-preview code-preview--default"
                 
                 
@@ -1558,7 +1569,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
 <h2 id="revalidera_falt"><a class="header-anchor" href="#revalidera_falt">Revalidera fält</a></h2><p>Exempel på revalidering av all fält på denna sida.</p>
 
             <div
-                id="example-1e62bb"
+                id="example-45c37d"
                 class="code-preview code-preview--default"
                 
                 
@@ -1620,7 +1631,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
         <h2 id="server_fel"><a class="header-anchor" href="#server_fel">Server-fel</a></h2><p>Exempel på att sätta serverfel på all fält på denna sida.</p>
 
             <div
-                id="example-232a6e"
+                id="example-a89c1d"
                 class="code-preview code-preview--default"
                 
                 
@@ -1687,7 +1698,7 @@ Detta eftersom användaren inte har möjlighet att interagera med inaktiva fält
 Det rekommenderade sättet är att använda sig av event listeners för <code>change</code>, <code>click</code> osv och validera om därifrån.</p>
 
             <div
-                id="example-1fe25d"
+                id="example-37c0d8"
                 class="code-preview code-preview--default"
                 
                 
@@ -1818,9 +1829,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/834701e32f1a393c120cb4e8f2301f087b2142b4">834701e</a>)<br />
+    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/0840b67b9437105fc75d6b51a705604837d1b330">0840b67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/212">PR 212</a><br />
-        2025-01-30 09:41
+        2025-01-31 11:21
 </div>
 <div class="toolbar__item">
     <form id="version">

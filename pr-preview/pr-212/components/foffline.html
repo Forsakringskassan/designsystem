@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-bac81f.css"
+            href="../assets/docs-92f169.css"
             crossorigin
-            integrity="sha384-EZtvltKn1OxEnPj/h+NjnTSlc2QHMdgcY2emFUH7lXXuFgRgvd8lV24tSlghz0LC"
+            integrity="sha384-YUf5fNZAUNvCYz0XPySYVIexCyskGUz8ussvP9s02bZFXuBvAKgl9pvRfVc44FTl"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-ae42ea.css"
+            href="../assets/docs-exp-1f978a.css"
             crossorigin
-            integrity="sha384-KBVPWAXfkpXGf7AO+YQYius3Gs02NOq5aLzPwwN+711/aC4NTxWbJE+RGVPI7Rvi"
+            integrity="sha384-sVsT/YtfQGpb4fDVOiAi663KLzJRUh20cud2WlA5tvQ2y1FqpxgOOg0Qo9lK4aVE"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-int-a267b9.css"
+            href="../assets/docs-int-687271.css"
             crossorigin
-            integrity="sha384-tZyNF0ipPWq6HglLS9xEKEKxN7rEemy/TmkOjYjPTHVRIjpgvWJOMVSmQyIiSG/o"
+            integrity="sha384-u3iuCXs7zAL/D4Lkne1lq4vQW5fiDt22ue0DwbbrLU3zzcrXmhteIYEuD9Skr79M"
             data-theme="int" disabled
         />
 
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/834701e32f1a393c120cb4e8f2301f087b2142b4/packages/vue/src/components/FOffline/FOffline.vue">FOffline</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0840b67b9437105fc75d6b51a705604837d1b330/packages/vue/src/components/FOffline/FOffline.vue">FOffline</a>
             
         </code>
          
@@ -1142,9 +1142,10 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Offline används när användaren saknar internetuppkoppling. Ett felmeddelande visas som uppmärksammar användaren om detta. 
-Offline är en overlay som lägger sig högst upp över övrigt innehåll när internetanslutningen går ner. Den försvinner igen när anslutningen är tillbaka.
-Den mountas med funktionen mountFOffline så tidigt som möjligt för att autoinkluderas i applikationen. Komponenten kan även läggas in på enstaka sidor där det är extra viktigt att internetanslutningen behöver fungera.</p>
+<p>Offline används när användaren saknar internetuppkoppling.
+Ett felmeddelande visas som uppmärksammar användaren om detta.
+Offline är en overlay som lägger sig högst upp över övrigt innehåll när internetanslutningen går ner.
+Den försvinner igen när anslutningen är tillbaka.</p>
 <p>Det finns ett par alternativ för att få komponenten att visa sig:</p>
 <ul>
 <li>Aktivera &quot;offline-läge&quot; i browsern</li>
@@ -1155,7 +1156,7 @@ Den mountas med funktionen mountFOffline så tidigt som möjligt för att autoin
 Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om du byter sida när FOffline-komponenten visas.</p>
 
             <div
-                id="example-66152f"
+                id="example-54ee29"
                 class="code-preview code-preview--default"
                 
                 
@@ -1226,34 +1227,75 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
             </div>
         <h2 id="anvandning_av_komponent"><a class="header-anchor" href="#anvandning_av_komponent">Användning av komponent</a></h2><p>Användning med standardtext</p>
 
+            <div
+                id="example-6be1d9"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="html"
+            >
+                
+                <div class="code-preview__preview"><f-offline></f-offline>
+</div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
                 <div
-                    id="example-e0e953"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="javascript"
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
                 >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-title function_">mountFOffline</span>(<span class="hljs-variable language_">this</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-offline</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-offline</span>&gt;</span>
 </code></pre>
                 </div>
-            <p>Användning med en egen text</p>
+            </div>
+        <p>Användning med en egen text</p>
 
+            <div
+                id="example-e7af59"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="html"
+            >
+                
+                <div class="code-preview__preview"><f-offline>
+    Det verkar som att du inte har någon internetuppkoppling just nu. Tänk på
+    att du behöver uppkoppling för att kunna signera
+</f-offline>
+</div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
                 <div
-                    id="example-2c6022"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="javascript"
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
                 >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-title function_">mountFOffline</span>(
-    <span class="hljs-variable language_">this</span>,
-    <span class="hljs-string">&quot;Det verkar som att du inte har någon internetuppkoppling just nu. Tänk på att du behöver uppkoppling för att kunna signera&quot;</span>,
-);
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-offline</span>&gt;</span>
+    Det verkar som att du inte har någon internetuppkoppling just nu. Tänk på
+    att du behöver uppkoppling för att kunna signera
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-offline</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
+            </div>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
 </td><td><p>Slot for customizing text message.</p>
 </td><td><p>‐</p>
 </td></tr></tbody></table></div>
@@ -1277,9 +1319,9 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/834701e32f1a393c120cb4e8f2301f087b2142b4">834701e</a>)<br />
+    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/0840b67b9437105fc75d6b51a705604837d1b330">0840b67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/212">PR 212</a><br />
-        2025-01-30 09:41
+        2025-01-31 11:21
 </div>
 <div class="toolbar__item">
     <form id="version">

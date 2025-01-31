@@ -98,6 +98,7 @@
           /* HTML */
           `
                 ${this.button}
+                <!-- Example using modal with deprecated template method. This is not recommended. -->
                 <f-modal
                     :is-open="isOpen"
                     ${this.type}

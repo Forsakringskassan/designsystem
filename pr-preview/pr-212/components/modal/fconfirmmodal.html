@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-bac81f.css"
+            href="../../assets/docs-92f169.css"
             crossorigin
-            integrity="sha384-EZtvltKn1OxEnPj/h+NjnTSlc2QHMdgcY2emFUH7lXXuFgRgvd8lV24tSlghz0LC"
+            integrity="sha384-YUf5fNZAUNvCYz0XPySYVIexCyskGUz8ussvP9s02bZFXuBvAKgl9pvRfVc44FTl"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-ae42ea.css"
+            href="../../assets/docs-exp-1f978a.css"
             crossorigin
-            integrity="sha384-KBVPWAXfkpXGf7AO+YQYius3Gs02NOq5aLzPwwN+711/aC4NTxWbJE+RGVPI7Rvi"
+            integrity="sha384-sVsT/YtfQGpb4fDVOiAi663KLzJRUh20cud2WlA5tvQ2y1FqpxgOOg0Qo9lK4aVE"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-a267b9.css"
+            href="../../assets/docs-int-687271.css"
             crossorigin
-            integrity="sha384-tZyNF0ipPWq6HglLS9xEKEKxN7rEemy/TmkOjYjPTHVRIjpgvWJOMVSmQyIiSG/o"
+            integrity="sha384-u3iuCXs7zAL/D4Lkne1lq4vQW5fiDt22ue0DwbbrLU3zzcrXmhteIYEuD9Skr79M"
             data-theme="int" disabled
         />
 
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/834701e32f1a393c120cb4e8f2301f087b2142b4/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">FConfirmModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0840b67b9437105fc75d6b51a705604837d1b330/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">FConfirmModal</a>
             
         </code>
          
@@ -1130,11 +1130,9 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
+                                <li><a href="#anvandning">Användning</a></li>
+                                
                                 <li><a href="#knapparna">Knapparna</a></li>
-                                
-                                <li><a href="#anvandning_med_template">Användning med template</a></li>
-                                
-                                <li><a href="#anvandning_med_api">Användning med API</a></li>
                                 
                                 <li><a href="#bekraftelsemodal_med_tre_knappar">Bekräftelsemodal med tre knappar</a></li>
                                 
@@ -1160,116 +1158,9 @@
 <li>en knapptext för den destruktiva handlingen, till exempel för att ta bort uppgifter</li>
 <li>en knapptext för att ångra och gå tillbaka.</li>
 </ul>
-<h2 id="knapparna"><a class="header-anchor" href="#knapparna">Knapparna</a></h2><p>En <a href="../button.html#sekundar_knapp">sekundär knapp</a> används för att ångra och gå tillbaka.
-En <a href="../button.html#primar_knapp">primärknapp</a> används för att utföra den destruktiva handlingen.</p>
-<p>En bekräftelsemodal kan även ha en tredje knapp.</p>
-<h3 id="placering_av_knapparna"><a class="header-anchor" href="#placering_av_knapparna">Placering av knapparna</a></h3><p>På Försäkringskassan.se placeras den sekundära knappen först, följt av den primära. Eftersom det primära alternativet att bekräfta tidigare val är &quot;destruktivt&quot; placeras den sist för att minimera risken att användaren råkar välja det av misstag.</p>
-<p>För interna system följer vi Windows standard, det primära alternativet placeras först.</p>
-<p>Du styr den inbördes ordning som knapparna presenteras i med <a href="../../functions/config.html#referens">konfiguration</a> i applikationen där modalen används.</p>
-<h2 id="anvandning_med_template"><a class="header-anchor" href="#anvandning_med_template">Användning med template</a></h2>
-            <div
-                id="example-38306e"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="FConfirmModalExample"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FConfirmModalExample-2b4d4a.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-confirm-modal&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Öppna Modal<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span> Resultat: {{ result }} <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-confirm-modal</span>
-                <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
-                <span class="hljs-attr">:buttons</span>=<span class="hljs-string">&quot;buttons&quot;</span>
-                @<span class="hljs-attr">confirm</span>=<span class="hljs-string">&quot;confirm&quot;</span>
-                @<span class="hljs-attr">dismiss</span>=<span class="hljs-string">&quot;dismiss&quot;</span>
-                @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">heading</span>&gt;</span> Träutensilierna <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span>
-                    Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor, för trevnadens,
-                    ordningens och ekonomiens upprätthållande, och dock är det icke sällan som
-                    sorgliga erfarenheter göras på grund af det oförstånd med hvilket kaster,
-                    formbräden och regaler tillverkas och försäljas Kaster som äro dåligt hopkomna
-                    och af otillräckligt.
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-confirm-modal</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FConfirmModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FConfirmModal</span> },
-    <span class="hljs-attr">inheritAttrs</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">action</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">result</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">buttons</span>: [
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ja, gör detta&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;confirm&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;primary&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Nej, gör inte detta&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;dismiss&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;secondary&quot;</span> },
-            ],
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">true</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">result</span> = <span class="hljs-string">&quot;&quot;</span>;
-        },
-        <span class="hljs-title function_">confirm</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">result</span> = <span class="hljs-string">&quot;bekräftade&quot;</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-        <span class="hljs-title function_">dismiss</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">result</span> = <span class="hljs-string">&quot;avböjde&quot;</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-        <span class="hljs-title function_">close</span>(<span class="hljs-params">reason</span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">action</span> = reason;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="anvandning_med_api"><a class="header-anchor" href="#anvandning_med_api">Användning med API</a></h2>
             <div
-                id="example-a27415"
+                id="example-4ad607"
                 class="code-preview code-preview--default"
                 
                 
@@ -1283,7 +1174,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FConfirmModalApiExample-c4c574.js"></script>
+        <script defer src="./FConfirmModalApiExample-95075b.js"></script>
     </div>
                 <div>
             <button
@@ -1302,7 +1193,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-confirm-modal&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Ta bort<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1312,7 +1203,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 <span class="hljs-keyword">import</span> { confirmModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalExample&quot;</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalApiExample&quot;</span>,
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">frukt</span>: {
@@ -1340,9 +1231,72 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 </code></pre>
                 </div>
             </div>
-        <h2 id="bekraftelsemodal_med_tre_knappar"><a class="header-anchor" href="#bekraftelsemodal_med_tre_knappar">Bekräftelsemodal med tre knappar</a></h2>
+        <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>För att öppna en bekräftelsemodal använder du <a href="../../functions/functions/modal-functions/confirm-modal.html"><code>confirmModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
+
+                <div
+                    id="example-7f4f85"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// options api</span>
+<span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
+    <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt&quot;</span>,
+    <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${frukt.namn}</span>&quot;?`</span>,
+    <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+    <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
+});
+<span class="hljs-keyword">if</span> (confirmed) {
+    <span class="hljs-comment">/* do something */</span>
+}
+
+<span class="hljs-comment">// composition api</span>
+<span class="hljs-keyword">const</span> { confirmModal } = <span class="hljs-title function_">useModal</span>();
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
+        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt&quot;</span>,
+        <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${frukt.namn}</span>&quot;?`</span>,
+        <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+        <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
+    });
+    <span class="hljs-keyword">if</span> (confirmed) {
+        <span class="hljs-comment">/* do something */</span>
+    }
+}
+</code></pre>
+                </div>
+            <h3 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h3><p>Att använda <code>FConfirmModal</code> i template är deprekerat.
+Om du använder detta rekommenderar vi att du tar bort <code>f-confirm-modal</code> och istället använder API för att öppna modalen.</p>
+<p>Se <a href="./fconfirmmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FConfirmModal</code> med API.</p>
+
+                <div
+                    id="example-fbf1d0"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;template&gt;
+     &lt;div&gt;
+         &lt;button type=&quot;button&quot; @click=&quot;onClick&quot;&gt;Open modal&lt;/button&gt;
+<span class="hljs-deletion">-        &lt;f-confirm-modal&gt;&lt;/f-confirm-modal&gt;</span>
+     &lt;/div&gt;
+ &lt;/template&gt;
+</code></pre>
+                </div>
+            <h2 id="knapparna"><a class="header-anchor" href="#knapparna">Knapparna</a></h2><p>En <a href="../button.html#sekundar_knapp">sekundär knapp</a> används för att ångra och gå tillbaka.
+En <a href="../button.html#primar_knapp">primärknapp</a> används för att utföra den destruktiva handlingen.</p>
+<p>En bekräftelsemodal kan även ha en tredje knapp.</p>
+<h3 id="placering_av_knapparna"><a class="header-anchor" href="#placering_av_knapparna">Placering av knapparna</a></h3><p>På Försäkringskassan.se placeras den sekundära knappen först, följt av den primära. Eftersom det primära alternativet att bekräfta tidigare val är &quot;destruktivt&quot; placeras den sist för att minimera risken att användaren råkar välja det av misstag.</p>
+<p>För interna system följer vi Windows standard, det primära alternativet placeras först.</p>
+<p>Du styr den inbördes ordning som knapparna presenteras i med <a href="../../functions/config.html#referens">konfiguration</a> i applikationen där modalen används.</p>
+<h2 id="bekraftelsemodal_med_tre_knappar"><a class="header-anchor" href="#bekraftelsemodal_med_tre_knappar">Bekräftelsemodal med tre knappar</a></h2>
             <div
-                id="example-fee22b"
+                id="example-40661f"
                 class="code-preview code-preview--default"
                 
                 
@@ -1356,7 +1310,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FConfirmModalCustomButtons-d3a9d7.js"></script>
+        <script defer src="./FConfirmModalCustomButtons-f95b47.js"></script>
     </div>
                 <div>
             <button
@@ -1375,7 +1329,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-confirm-modal&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Tre knappar<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span> Modalen stängdes med resultatet: {{ action }} <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1386,7 +1340,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ModalResult</span>, openModal, <span class="hljs-title class_">FConfirmModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalExample&quot;</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalCustomButtons&quot;</span>,
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">action</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ModalResult</span>&lt;<span class="hljs-keyword">void</span>&gt; | <span class="hljs-literal">undefined</span>,
@@ -1423,7 +1377,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
         <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p>Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code>-property:</p>
 
                 <div
-                    id="example-8507ff"
+                    id="example-141d8a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1516,9 +1470,9 @@ return defaultButtons;<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/834701e32f1a393c120cb4e8f2301f087b2142b4">834701e</a>)<br />
+    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/0840b67b9437105fc75d6b51a705604837d1b330">0840b67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/212">PR 212</a><br />
-        2025-01-30 09:41
+        2025-01-31 11:21
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-bac81f.css"
+            href="../../assets/docs-92f169.css"
             crossorigin
-            integrity="sha384-EZtvltKn1OxEnPj/h+NjnTSlc2QHMdgcY2emFUH7lXXuFgRgvd8lV24tSlghz0LC"
+            integrity="sha384-YUf5fNZAUNvCYz0XPySYVIexCyskGUz8ussvP9s02bZFXuBvAKgl9pvRfVc44FTl"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-ae42ea.css"
+            href="../../assets/docs-exp-1f978a.css"
             crossorigin
-            integrity="sha384-KBVPWAXfkpXGf7AO+YQYius3Gs02NOq5aLzPwwN+711/aC4NTxWbJE+RGVPI7Rvi"
+            integrity="sha384-sVsT/YtfQGpb4fDVOiAi663KLzJRUh20cud2WlA5tvQ2y1FqpxgOOg0Qo9lK4aVE"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-a267b9.css"
+            href="../../assets/docs-int-687271.css"
             crossorigin
-            integrity="sha384-tZyNF0ipPWq6HglLS9xEKEKxN7rEemy/TmkOjYjPTHVRIjpgvWJOMVSmQyIiSG/o"
+            integrity="sha384-u3iuCXs7zAL/D4Lkne1lq4vQW5fiDt22ue0DwbbrLU3zzcrXmhteIYEuD9Skr79M"
             data-theme="int" disabled
         />
 
@@ -1093,7 +1093,7 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
 <h2 id="example"><a class="header-anchor" href="#example">Example</a></h2><p>Open a simple modal:</p>
 
                 <div
-                    id="example-2ae789"
+                    id="example-aadc80"
                     class="code-preview code-preview--default"
                     
                     
@@ -1102,13 +1102,15 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> { openModal } = <span class="hljs-title function_">useModal</span>();
 
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">openModal</span>(<span class="hljs-title class_">MyAwesomeModal</span>);
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">openModal</span>(<span class="hljs-title class_">MyAwesomeModal</span>);
+}
 </code></pre>
                 </div>
             <p>Open a confirmation modal:</p>
 
                 <div
-                    id="example-cfc16e"
+                    id="example-03bc44"
                     class="code-preview code-preview--default"
                     
                     
@@ -1117,21 +1119,23 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> { confirmModal } = <span class="hljs-title function_">useModal</span>();
 
-<span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
-    <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort arbetsgivare&quot;</span>,
-    <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${arbetsgivare.namn}</span>&quot;?`</span>,
-    <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
-    <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
-});
-<span class="hljs-keyword">if</span> (confirmed) {
-    <span class="hljs-comment">/* ... */</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
+        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort arbetsgivare&quot;</span>,
+        <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${arbetsgivare.namn}</span>&quot;?`</span>,
+        <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+        <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
+    });
+    <span class="hljs-keyword">if</span> (confirmed) {
+        <span class="hljs-comment">/* ... */</span>
+    }
 }
 </code></pre>
                 </div>
             <p>Open a form modal:</p>
 
                 <div
-                    id="example-93f1f4"
+                    id="example-ba9474"
                     class="code-preview code-preview--default"
                     
                     
@@ -1140,7 +1144,9 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> { formModal } = <span class="hljs-title function_">useModal</span>();
 
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">MyAwesomeData</span>&gt;(<span class="hljs-title class_">MyAwesomeModal</span>);
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">MyAwesomeData</span>&gt;(<span class="hljs-title class_">MyAwesomeModal</span>);
+}
 </code></pre>
                 </div>
             <h2 id="related"><a class="header-anchor" href="#related">Related</a></h2><ul>
@@ -1169,9 +1175,9 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/834701e32f1a393c120cb4e8f2301f087b2142b4">834701e</a>)<br />
+    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/0840b67b9437105fc75d6b51a705604837d1b330">0840b67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/212">PR 212</a><br />
-        2025-01-30 09:41
+        2025-01-31 11:21
 </div>
 <div class="toolbar__item">
     <form id="version">

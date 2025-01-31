@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-bac81f.css"
+            href="../../assets/docs-92f169.css"
             crossorigin
-            integrity="sha384-EZtvltKn1OxEnPj/h+NjnTSlc2QHMdgcY2emFUH7lXXuFgRgvd8lV24tSlghz0LC"
+            integrity="sha384-YUf5fNZAUNvCYz0XPySYVIexCyskGUz8ussvP9s02bZFXuBvAKgl9pvRfVc44FTl"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-ae42ea.css"
+            href="../../assets/docs-exp-1f978a.css"
             crossorigin
-            integrity="sha384-KBVPWAXfkpXGf7AO+YQYius3Gs02NOq5aLzPwwN+711/aC4NTxWbJE+RGVPI7Rvi"
+            integrity="sha384-sVsT/YtfQGpb4fDVOiAi663KLzJRUh20cud2WlA5tvQ2y1FqpxgOOg0Qo9lK4aVE"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-a267b9.css"
+            href="../../assets/docs-int-687271.css"
             crossorigin
-            integrity="sha384-tZyNF0ipPWq6HglLS9xEKEKxN7rEemy/TmkOjYjPTHVRIjpgvWJOMVSmQyIiSG/o"
+            integrity="sha384-u3iuCXs7zAL/D4Lkne1lq4vQW5fiDt22ue0DwbbrLU3zzcrXmhteIYEuD9Skr79M"
             data-theme="int" disabled
         />
 
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/834701e32f1a393c120cb4e8f2301f087b2142b4/packages/design/src/components/group/_group.scss">group</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0840b67b9437105fc75d6b51a705604837d1b330/packages/design/src/components/group/_group.scss">group</a>
             
         </code>
          
@@ -1132,8 +1132,6 @@
                                 
                                 <li><a href="#exempel">Exempel</a></li>
                                 
-                                <li><a href="#ovrigt">Övrigt</a></li>
-                                
                             </ul>
                         </details>
                         
@@ -1146,29 +1144,29 @@
 <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><h3 id="ett_antal_komponenter_som_grupperas_visuellt"><a class="header-anchor" href="#ett_antal_komponenter_som_grupperas_visuellt">Ett antal komponenter som grupperas visuellt.</a></h3><p>Avstånd justeras mellan komponenter och efter gruppen genom att lägga på klassen &quot;component-group&quot; på ett överliggande element och &quot;component-group__item&quot; på komponenterna i gruppen.</p>
 
                 <div
-                    id="example-856286"
+                    id="example-e184f0"
                     class="code-preview code-preview--default"
                     
-                    
-                    data-language="typescript"
+                    data-tags=static
+                    data-language="html"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;component-group&quot;</span>&gt;
-    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group__item&quot;</span>&gt;</span>Komponent 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group__item&quot;</span>&gt;</span>Komponent 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-&lt;/div&gt;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group__item&quot;</span>&gt;</span>Komponent 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group__item&quot;</span>&gt;</span>Komponent 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
                 </div>
             
-            <div
-                id="example-fc6813"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="html"
-            >
-                
-                <div class="code-preview__preview"><div class="component-group">
+                <div
+                    id="example-d5a5d9"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags=nomarkup
+                    data-language="html"
+                >
+                    
+                    <div class="code-preview__preview"><div class="component-group">
     <div class="component-group__item">
         <label for="field-1" class="label">Komponent 1</label>
         <div class="text-field__icon-wrapper">
@@ -1183,40 +1181,8 @@
     </div>
 </div>
 </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;field-1&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Komponent 1<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__icon-wrapper&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;field-1&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__input&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;field-2&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Komponent 2<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__icon-wrapper&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;field-2&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-field__input&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
                 </div>
-            </div>
-        <h2 id="ovrigt"><a class="header-anchor" href="#ovrigt">Övrigt</a></h2>
+            
 
                     </div>
                 </main>
@@ -1237,9 +1203,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/834701e32f1a393c120cb4e8f2301f087b2142b4">834701e</a>)<br />
+    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/0840b67b9437105fc75d6b51a705604837d1b330">0840b67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/212">PR 212</a><br />
-        2025-01-30 09:41
+        2025-01-31 11:21
 </div>
 <div class="toolbar__item">
     <form id="version">

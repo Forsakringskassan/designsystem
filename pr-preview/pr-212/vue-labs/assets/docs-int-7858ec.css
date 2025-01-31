@@ -2,8 +2,7 @@ html {
   font-size: 14px;
 }
 
-.code-preview__preview,
-.live-example__example {
+.code-preview__preview {
   --f-color-backdrop: rgba(0, 0, 0, 0.75);
   --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3);
   --f-backdrop-modal: rgba(0, 0, 0, 0.75);
@@ -131,6 +130,12 @@ html {
   --f-border-color-button-standard: #8d8e91;
   --f-background-button-primary: #116a3e;
   --f-border-color-button-secondary: #8d8e91;
+  --f-text-color-button-secondary: #1b1e23;
+  --f-text-color-button-tertiary: #116a3e;
+  --f-text-color-button-tertiary-hover: #116a3e;
+  --f-background-button-tertiary-hover: #f4f4f4;
+  --f-text-color-button-tertiary-inverted: #ffffff;
+  --f-text-color-button-tertiary-inverted-disabled: #e5e5f5;
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff;
@@ -252,17 +257,12 @@ html {
   --f-text-color-heading-expandable-panel: #ffffff;
   --f-text-color-wizard-step-done: #35805b;
   --f-text-color-button-standard: #4a52b6;
-  --f-text-color-button-secondary: #4a52b6;
   --f-text-color-button-discrete: #4a52b6;
   --f-text-color-button-discrete-disabled: #8d8e91;
   --f-text-color-button-discrete-hover: #3b4292;
   --f-text-color-button-discrete-inverted: #ffffff;
   --f-text-color-button-discrete-inverted-hover: #ffffff;
   --f-text-color-button-discrete-inverted-disabled: #e5e5f5;
-  --f-text-color-button-tertiary: #4a52b6;
-  --f-text-color-button-tertiary-hover: #4a52b6;
-  --f-text-color-button-tertiary-inverted: #ffffff;
-  --f-text-color-button-tertiary-inverted-disabled: #8d8e91;
   --f-text-color-menu: #1b1e23;
   --f-text-color-menu-hover: #1b1e23;
   --f-text-color-menu-horizontal-highlight: #1b1e23;
@@ -316,7 +316,6 @@ html {
   --f-background-code: #f4f4f4;
   --f-background-wizard-step-line: #5f6165;
   --f-background-button-discrete-hover: none;
-  --f-background-button-tertiary-hover: #e5e5f5;
   --f-background-sidepanel-button-tertiary-hover: #e5e5f5;
   --f-background-grid-default: #ffffff;
   --f-background-grid-selected: #f5f6fa;
@@ -492,6 +491,7 @@ html {
   --fkds-color-action-border-primary-default: #8d8e91;
   --fkds-color-action-background-primary-default: #116a3e;
   --fkds-color-action-background-primary-hover: #0e5532;
+  --fkds-color-action-text-primary-default: #116a3e;
   --f-text-color-heading-1: #116a3e;
   --f-text-color-heading-2: #35805b;
   --f-text-color-heading-3: #1b1e23;
@@ -501,14 +501,10 @@ html {
   --f-text-color-navbar: #e7f0e9;
   --f-text-color-heading-expandable-panel: #1b1e23;
   --f-text-color-button-standard: #1b1e23;
-  --f-text-color-button-secondary: #1b1e23;
   --f-text-color-button-discrete: #116a3e;
   --f-text-color-button-discrete-hover: #116a3e;
   --f-text-color-button-discrete-inverted: #f4f4f4;
   --f-text-color-button-discrete-inverted-hover: #f5f6fa;
-  --f-text-color-button-tertiary: #116a3e;
-  --f-text-color-button-tertiary-hover: #116a3e;
-  --f-text-color-button-tertiary-inverted-disabled: #e5e5f5;
   --f-icon-color-primary: #116a3e;
   --f-icon-color-expandable-panel: #35805b;
   --f-background-input-selected: #116a3e;
@@ -519,7 +515,6 @@ html {
   --f-background-button-primary: #116a3e;
   --f-background-button-primary-hover: #0e5532;
   --f-background-button-discrete-hover: #f4f4f4;
-  --f-background-button-tertiary-hover: #f4f4f4;
   --f-background-sidepanel-button-tertiary-hover: #ddddde;
   --f-background-grid-selected: #f3f8f5;
   --f-background-grid-active: #dbe9e2;
@@ -601,4 +596,10 @@ html {
   --f-table-body-row-padding: 0.4rem;
   --f-tooltip-border-width: var(--f-border-width-small);
   --i-popup-error-offset: 16px;
+}
+.code-preview__preview .button--secondary {
+  --fkds-color-action-text-primary-default: #1b1e23;
+}
+.code-preview__preview .button--tertiary:hover {
+  --fkds-color-action-background-secondary-hover: #f4f4f4;
 }

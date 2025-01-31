@@ -9,23 +9,23 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-bac81f.css"
+            href="../../assets/docs-92f169.css"
             crossorigin
-            integrity="sha384-EZtvltKn1OxEnPj/h+NjnTSlc2QHMdgcY2emFUH7lXXuFgRgvd8lV24tSlghz0LC"
+            integrity="sha384-YUf5fNZAUNvCYz0XPySYVIexCyskGUz8ussvP9s02bZFXuBvAKgl9pvRfVc44FTl"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-ae42ea.css"
+            href="../../assets/docs-exp-1f978a.css"
             crossorigin
-            integrity="sha384-KBVPWAXfkpXGf7AO+YQYius3Gs02NOq5aLzPwwN+711/aC4NTxWbJE+RGVPI7Rvi"
+            integrity="sha384-sVsT/YtfQGpb4fDVOiAi663KLzJRUh20cud2WlA5tvQ2y1FqpxgOOg0Qo9lK4aVE"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-a267b9.css"
+            href="../../assets/docs-int-687271.css"
             crossorigin
-            integrity="sha384-tZyNF0ipPWq6HglLS9xEKEKxN7rEemy/TmkOjYjPTHVRIjpgvWJOMVSmQyIiSG/o"
+            integrity="sha384-u3iuCXs7zAL/D4Lkne1lq4vQW5fiDt22ue0DwbbrLU3zzcrXmhteIYEuD9Skr79M"
             data-theme="int" disabled
         />
 
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/834701e32f1a393c120cb4e8f2301f087b2142b4/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0840b67b9437105fc75d6b51a705604837d1b330/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
             
         </code>
          
@@ -1321,26 +1321,31 @@ Callback anropas innan modalen visas.</p>
                 </div>
             
                 <div
-                    id="example-4cce20"
+                    id="example-7ca9f4"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeCreate</span>(): <span class="hljs-title class_">UnknownItem</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">onBeforeCreate</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">UnknownItem</span> {
     <span class="hljs-keyword">const</span> <span class="hljs-attr">item</span>: <span class="hljs-title class_">MyInterface</span> = {
         <span class="hljs-comment">/* ... */</span>
-    }
+    };
     <span class="hljs-keyword">return</span> item <span class="hljs-keyword">as</span> <span class="hljs-built_in">unknown</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">UnknownItem</span>;
 }
 </code></pre>
                 </div>
-            <p><strong>Notera</strong>: då <code>FCrudDataset</code> inte är typsäker måste man casta objektet till <code>UnknownItem</code>.</p>
-<h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p>Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
+            
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p><strong>Notera</strong>: då <code>FCrudDataset</code> inte är typsäker måste man casta objektet till <code>UnknownItem</code>.</p>
+
+            </div>
+        <h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p>Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
 
             <div
-                id="example-c0a0d9"
+                id="example-dacf2a"
                 class="code-preview code-preview--default"
                 
                 
@@ -1509,7 +1514,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
-                id="example-b4b9af"
+                id="example-edcf7a"
                 class="code-preview code-preview--default"
                 
                 
@@ -1618,7 +1623,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="interaktiv_tabell_med_knapp"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
             <div
-                id="example-86d85a"
+                id="example-1c967f"
                 class="code-preview code-preview--default"
                 
                 
@@ -1716,7 +1721,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="lista_med_redigering"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-b2c463"
+                id="example-8f750e"
                 class="code-preview code-preview--default"
                 
                 
@@ -1882,7 +1887,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-2f0e71"
+                id="example-e489c8"
                 class="code-preview code-preview--default"
                 
                 
@@ -2150,9 +2155,9 @@ return undefined;<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/834701e32f1a393c120cb4e8f2301f087b2142b4">834701e</a>)<br />
+    feature/tokens_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/0840b67b9437105fc75d6b51a705604837d1b330">0840b67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/212">PR 212</a><br />
-        2025-01-30 09:41
+        2025-01-31 11:21
 </div>
 <div class="toolbar__item">
     <form id="version">
