@@ -63,9 +63,6 @@ export type CookieOptions = {
 // @public @deprecated (undocumented)
 export const DATE_REGEXP_WITH_DASH: RegExp;
 
-// @internal (undocumented)
-export type DateFormat = "YYYY-MM-DD" | "YYYYMMDD" | "YYYY/MM/DD";
-
 // @public
 export type DateString = string;
 
