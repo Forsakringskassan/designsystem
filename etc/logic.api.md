@@ -23,9 +23,6 @@ export interface AllowListValidatorConfig extends ValidatorOptions {
     list: string[];
 }
 
-// @public @deprecated
-export function applyValidationMessages(): void;
-
 // @public
 export type BankAccountNumberString = string;
 
