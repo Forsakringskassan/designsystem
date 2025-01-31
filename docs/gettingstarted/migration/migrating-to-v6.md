@@ -19,6 +19,7 @@ Följande deprekerade komponenter har tagits bort:
 - `@fkui/logic`: konstanterna `DATE_REGEXP_WITH_DASH`, `WHITESPACE_PATTERN` och `FORMAT_3_DIGITS_GROUP` är borttagen.
 - `@fkui/logic`: funktioner `applyValidationMessages()`, `ìsRadiobuttonOrCheckbox()` är borttagna.
 - `@fkui/logic`: funktionen `setCookie(..)` tar inte längre `timeLimitMillis` parametern.
+- `FCalendar`: `change` eventet emittas inte längre.
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: deprekerade CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
@@ -92,6 +93,11 @@ Den deprekerade entrypointen `@fkui/logic/lib/polyfills` är borttagen och ersat
 -import "@fkui/logic/lib/polyfills";
 +import "@fkui/logic/polyfills";
 ```
+
+## `FCalendar`
+
+Tidigare emittades eventet `change` när man ändrar månad i kalendern.
+Det eventet är nu borttaget och ersatt med `v-model`.
 
 ## `FCheckboxGroup` och `FCheckboxGroupField`
 
