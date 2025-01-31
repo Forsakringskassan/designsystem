@@ -28,61 +28,47 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./packages/vue/src/components/FModal/examples/FConfirmModalCustomButtons.vue
+  // virtual-entry:./packages/vue/src/components/FModal/examples/FConfirmModalApiExample.vue
   var import_vue3 = __require("vue");
   var import_vue4 = __require("@fkui/vue");
   var import_vue5 = __require("vue");
   var exampleComponent = (0, import_vue3.defineComponent)({
-    name: "FConfirmModalExample",
+    name: "FConfirmModalApiExample",
     data() {
       return {
-        action: void 0,
-        isOpen: false,
-        threeButtons: [
-          {
-            label: "Ja, ta bort",
-            type: "primary",
-            screenreader: "telefonnumret",
-            event: "confirm"
-          },
-          { label: "Nej, uppdatera telefonnumret", event: "update" },
-          { label: "Nej, ta inte bort", screenreader: "telefonnumret", event: "dismiss" }
-        ]
+        frukt: {
+          namn: "Mango"
+        }
       };
     },
     methods: {
-      async onClick() {
-        this.action = await (0, import_vue4.openModal)(this, import_vue4.FConfirmModal, {
-          props: {
-            heading: "Ta bort telefonnummer",
-            content: "Vill du ta bort ditt telefonnummer?",
-            buttons: this.threeButtons,
-            size: "large"
-          }
+      confirmRemove(frukt) {
+        return (0, import_vue4.confirmModal)(this, {
+          heading: "Ta bort frukt",
+          content: `\xC4r du s\xE4ker att du vill ta bort "${frukt.namn}"?`,
+          confirm: "Ja, ta bort",
+          dismiss: "Nej, beh\xE5ll"
         });
+      },
+      async onClick() {
+        if (await this.confirmRemove(this.frukt)) {
+          alert("Bekr\xE4ftade");
+        }
       }
     }
   });
-  var _hoisted_1 = { class: "f-confirm-modal" };
   function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", _hoisted_1, [
+    return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
       (0, import_vue5.createElementVNode)("button", {
         type: "button",
         class: "button button--secondary",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
-      }, "Tre knappar"),
-      (0, import_vue5.createElementVNode)(
-        "pre",
-        null,
-        " Modalen st\xE4ngdes med resultatet: " + (0, import_vue5.toDisplayString)(_ctx.action) + " ",
-        1
-        /* TEXT */
-      )
+      }, "Ta bort")
     ]);
   }
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#FConfirmModalCustomButtons"
+    selector: "#FConfirmModalApiExample"
   });
 })();
