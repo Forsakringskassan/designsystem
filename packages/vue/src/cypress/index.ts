@@ -22,7 +22,7 @@ export { FNavigationMenuPageobject } from "./FNavigationMenu/FNavigationMenu.pag
 export { FOfflinePageObject } from "./FOffline.pageobject";
 export { FOutputFieldPageobject } from "./FOutputField.pageobject";
 export { FDatepickerFieldPageobject } from "./FDatepickerField.pageobject";
-export { FPageHeaderPageobject } from "./FPageHeader/pageheader.pageobject";
+export { FPageHeaderPageobject } from "./FPageHeader/FPageHeader.pageobject";
 export {
     type ProgressbarStatus,
     FProgressbarPageObject,
