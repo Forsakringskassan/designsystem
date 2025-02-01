@@ -84,7 +84,7 @@
     "@fkui/test-utils": "5.46.0",
     "@forsakringskassan/vite-lib-config": "3.4.0",
     "@vue/test-utils": "2.4.6",
-    "cypress": "14.0.0",
+    "cypress": "14.0.1",
     "flush-promises": "1.0.2",
     "vite": "6.0.11",
     "vue": "3.5.13",
