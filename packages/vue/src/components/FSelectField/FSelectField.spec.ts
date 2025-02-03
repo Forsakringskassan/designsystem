@@ -155,7 +155,7 @@ describe("events", () => {
             { props: { modelValue: "banana" } },
         );
         const select = wrapper.get("select");
-        const htmlSelect = select.element as HTMLSelectElement;
+        const htmlSelect = select.element;
 
         expect(htmlSelect.value).toBe("banana");
         select.setValue("apple");

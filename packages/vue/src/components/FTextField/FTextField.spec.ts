@@ -70,7 +70,7 @@ describe("snapshots", () => {
             });
 
             const input = wrapper.get("input");
-            const htmlInput = input.element as HTMLInputElement;
+            const htmlInput = input.element;
 
             htmlInput.dispatchEvent(
                 new CustomEvent<ValidityEvent>("validity", {
@@ -216,7 +216,7 @@ describe("events", () => {
         });
 
         const input = wrapper.get("input");
-        const htmlInput = input.element as HTMLInputElement;
+        const htmlInput = input.element;
 
         htmlInput.dispatchEvent(
             new CustomEvent<ValidityEvent>("validity", {
@@ -255,7 +255,7 @@ describe("validation", () => {
         const input = wrapper.get("input");
         const validatorConfigs: ValidatorConfigs = { number: {}, integer: {} };
         ValidationService.addValidatorsToElement(
-            input.element as HTMLInputElement,
+            input.element,
             validatorConfigs,
         );
 
@@ -297,7 +297,7 @@ describe("formatting and parsing combined with validation", () => {
             });
 
             const input = wrapper.get("input");
-            const htmlInput = input.element as HTMLInputElement;
+            const htmlInput = input.element;
             input.setValue("qweRTY");
 
             htmlInput.dispatchEvent(
@@ -362,7 +362,7 @@ describe("formatting and parsing combined with validation", () => {
             });
 
             const input = wrapper.get("input");
-            const htmlInput = input.element as HTMLInputElement;
+            const htmlInput = input.element;
             input.setValue(inputValue);
 
             htmlInput.dispatchEvent(
@@ -416,7 +416,7 @@ describe("formatting and parsing combined with validation", () => {
             });
 
             const input = wrapper.get("input");
-            const htmlInput = input.element as HTMLInputElement;
+            const htmlInput = input.element;
             input.setValue(inputValue);
 
             htmlInput.dispatchEvent(
@@ -459,7 +459,7 @@ describe("set v-model programmatic", () => {
             const input = wrapper.get("input");
             input.setValue("original input");
 
-            const htmlInput = input.element as HTMLInputElement;
+            const htmlInput = input.element;
 
             htmlInput.dispatchEvent(
                 new CustomEvent<ValidityEvent>("validity", {
