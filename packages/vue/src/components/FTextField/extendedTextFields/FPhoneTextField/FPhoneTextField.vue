@@ -8,7 +8,7 @@
             :model-value="modelValue"
             @change="onChange"
             @blur="onBlur"
-            @update="onUpdate"
+            @update:model-value="onUpdate"
             @validity="onValidity"
             @pending-validity="onPendingValidity"
             ><slot name="default">{{ defaultText }}</slot></f-text-field
@@ -60,7 +60,7 @@ export default defineComponent({
         },
         extendedValidation: { type: Boolean, default: false },
     },
-    emits: ["blur", "change", "update", "update:modelValue"],
+    emits: ["blur", "change", "update:modelValue"],
     data() {
         return {
             validityMode: "INITIAL" as string,
@@ -93,14 +93,6 @@ export default defineComponent({
              * @type {string}
              */
             this.$emit("update:modelValue", event);
-
-            /**
-             * Vue2 v-model event.
-             * @deprecated
-             * @event update
-             * @type {string}
-             */
-            this.$emit("update", event);
         },
         onValidity({ detail }: CustomEvent<ValidityEvent>): void {
             this.validityMode = detail.validityMode;

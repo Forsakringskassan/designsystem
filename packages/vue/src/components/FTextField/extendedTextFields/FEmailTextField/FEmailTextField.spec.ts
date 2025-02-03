@@ -151,9 +151,9 @@ describe("events", () => {
         expect(htmlInput.value).toBe("bar@example.net");
 
         await input.trigger("change");
-        expect(wrapper.emitted("update")![0][0]).toMatchInlineSnapshot(
-            `"bar@example.net"`,
-        );
+        expect(
+            wrapper.emitted("update:modelValue")![0][0],
+        ).toMatchInlineSnapshot(`"bar@example.net"`);
     });
 
     it("should pass listeners", async () => {

@@ -8,7 +8,7 @@
             :model-value="modelValue"
             @change="onChange"
             @blur="onBlur"
-            @update="onUpdate"
+            @update:model-value="onUpdate"
             @validity="onValidity"
             @pending-validity="onPendingValidity"
         >
@@ -91,7 +91,7 @@ export default defineComponent({
             ),
         },
     },
-    emits: ["blur", "change", "update", "update:modelValue"],
+    emits: ["blur", "change", "update:modelValue"],
     data() {
         return {
             validityMode: "INITIAL" as string,
@@ -126,14 +126,6 @@ export default defineComponent({
              * @type {string}
              */
             this.$emit("update:modelValue", event);
-
-            /**
-             * Vue2 v-model event.
-             * @deprecated
-             * @event update
-             * @type {string}
-             */
-            this.$emit("update", event);
         },
         onPaste(event: Event): boolean {
             this.showPasteErrorMessage = true;
