@@ -14,6 +14,7 @@ FTooltipLiveExample.vue
 - Informationsrutan kan innehålla länkar och expanderbara fält.
 - Upprepa inte information som redan finns i rubrik eller brödtext.
 - Använd inte rubriken i tooltip om den inte verkligen behövs.
+    - Om rubrik används behöver även header-tag anges.
 - Flera informationsrutor kan vara öppna samtidigt.
 - Sträva efter att minimera användning av tooltip. Information som alla behöver veta ska visas med etiketten.
 

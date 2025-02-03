@@ -20,7 +20,7 @@ describe("FSelectField", () => {
                 >
                     <template #label> Dropplista </template>
                     <template #tooltip>
-                        <f-tooltip screen-reader-text="sr-text">
+                        <f-tooltip screen-reader-text="sr-text" header-tag="h1">
                             <template #header> Tooltip header </template>
                             <template #body> Tooltip body </template>
                         </f-tooltip>

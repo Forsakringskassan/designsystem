@@ -15,6 +15,7 @@ describe("attached to label", () => {
                             <f-tooltip
                                 :model-value="true"
                                 screen-reader-text="Lorem ipsum dolor sit amet"
+                                header-tag="h1"
                             >
                                 <template #header> Header slot </template>
                                 <template #body> body slot </template>
@@ -60,6 +61,7 @@ describe("attached to heading", () => {
                         :attach-to="attach"
                         :model-value="true"
                         screen-reader-text="Lorem ipsum dolor sit amet"
+                        header-tag="h1"
                     >
                         <template #header> Header slot </template>
                         <template #body> body slot </template>
@@ -100,6 +102,7 @@ describe("unattached", () => {
             props: {
                 modelValue: true,
                 screenReaderText: "Lorem ipsum dolor sit amet",
+                headerTag: "h1",
             },
             slots: {
                 header: "Header slot",

@@ -29,6 +29,9 @@ export default defineComponent({
         header(): string {
             return this.hasHeader ? "<template #header> Lär dig mer om [..] </template>" : "";
         },
+        headerTag(): string {
+            return this.hasHeader ? 'header-tag="h2"' : "";
+        },
         template(): string {
             const { longText } = this;
             const text = longText
@@ -38,7 +41,10 @@ export default defineComponent({
                 <f-label>
                     <template #default> ${text} </template>
                     <template #tooltip>
-                        <f-tooltip screen-reader-text="Denna text syns bara för skärmläsare">
+                        <f-tooltip
+                            screen-reader-text="Denna text syns bara för skärmläsare"
+                            ${this.headerTag}
+                        >
                             ${this.header}
                             <template #body> Lorem ipsum dolor sit amet. </template>
                         </f-tooltip>

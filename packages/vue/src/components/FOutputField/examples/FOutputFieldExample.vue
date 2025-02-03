@@ -17,7 +17,7 @@
         <f-output-field id="calculated" for="one two">
             <template #label> Summa </template>
             <template #tooltip>
-                <f-tooltip screen-reader-text="Läs mer om avancerat fält">
+                <f-tooltip screen-reader-text="Läs mer om avancerat fält" header-tag="h2">
                     <template #header> Mer om summa-fältet </template>
                     <template #body> Detta fältet är en summa av nummer 1 och nummer 2. </template>
                 </f-tooltip>

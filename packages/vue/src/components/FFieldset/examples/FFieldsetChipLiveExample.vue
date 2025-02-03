@@ -56,7 +56,7 @@ export default defineComponent({
         tooltip(): string {
             const template = /* HTML */ `
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="Läs mer om Broschyrer">
+                    <f-tooltip screen-reader-text="Läs mer om Broschyrer" header-tag="h2">
                         <template #header> Header </template>
                         <template #body> Body </template>
                     </f-tooltip>
@@ -99,7 +99,7 @@ export default defineComponent({
                 >
                     Ytterligare alternativ
                 </${this.componentType}>
-                
+
                 <${this.componentType}
                     v-model="choices"
                     value="Sista"

@@ -38,6 +38,7 @@ describe("FTextareaField", () => {
                 <template #tooltip>
                     <f-tooltip
                         screen-reader-text="Läs mer om berätta om dig själv"
+                        header-tag="h1"
                     >
                         <template #header>
                             Mer om berätta om dig själv
