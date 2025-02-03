@@ -47,9 +47,7 @@ it.each`
             },
         });
 
-        expect((wrapper.get("input").element as HTMLInputElement).checked).toBe(
-            expected,
-        );
+        expect(wrapper.get("input").element.checked).toBe(expected);
     },
 );
 
@@ -89,7 +87,7 @@ describe("disabled", () => {
                     disabled,
                 },
             });
-            const input = wrapper.get("input").element as HTMLInputElement;
+            const input = wrapper.get("input").element;
             expect(input.disabled).toBe(expectedResult);
             expect(wrapper.classes("disabled")).toBe(expectedResult);
         },
@@ -104,7 +102,7 @@ describe("events", () => {
 
         const input = wrapper.get("input");
 
-        const htmlInput = input.element as HTMLInputElement;
+        const htmlInput = input.element;
 
         expect(htmlInput.checked).toBe(true);
         await wrapper.setProps({ modelValue: undefined });
@@ -135,7 +133,7 @@ describe("events", () => {
         });
 
         const input = wrapper.get("input");
-        const htmlInput = input.element as HTMLInputElement;
+        const htmlInput = input.element;
         htmlInput.focus = jest.fn();
 
         await input.trigger("click");

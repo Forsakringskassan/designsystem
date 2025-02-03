@@ -72,7 +72,7 @@ describe("snapshots", () => {
             });
 
             const input = wrapper.get("input");
-            const htmlInput = input.element as HTMLInputElement;
+            const htmlInput = input.element;
 
             htmlInput.dispatchEvent(
                 new CustomEvent<ValidityEvent>("validity", {
@@ -145,7 +145,7 @@ describe("events", () => {
             props: { modelValue: "888" },
         });
         const input = wrapper.get("input");
-        const htmlInput = input.element as HTMLInputElement;
+        const htmlInput = input.element;
         expect(htmlInput.value).toBe("888");
 
         input.setValue("888-888");
@@ -184,7 +184,7 @@ describe("events", () => {
         });
 
         const input = wrapper.get("input");
-        const htmlInput = input.element as HTMLInputElement;
+        const htmlInput = input.element;
 
         htmlInput.dispatchEvent(
             new CustomEvent<ValidityEvent>("validity", {
@@ -222,7 +222,7 @@ describe("validation", () => {
         const input = wrapper.get("input");
         const validatorConfigs: ValidatorConfigs = { required: {} };
         ValidationService.addValidatorsToElement(
-            input.element as HTMLInputElement,
+            input.element,
             validatorConfigs,
         );
 

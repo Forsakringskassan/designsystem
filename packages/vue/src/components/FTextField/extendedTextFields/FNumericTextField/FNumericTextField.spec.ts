@@ -97,7 +97,7 @@ describe("format", () => {
         const wrapper = createWrapper(markup, 3);
 
         const input = wrapper.get("input");
-        const inputElement = input.element as HTMLInputElement;
+        const inputElement = input.element;
 
         expect(inputElement.value).toBe("3,00");
 
