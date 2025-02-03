@@ -2,8 +2,6 @@
 
 @use "palette-variables" as *;
 
-$global: true !default;
-
 @mixin css-variables {
     // ***********
     // TEXT COLORS

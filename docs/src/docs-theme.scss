@@ -1,11 +1,11 @@
-@use "@fkui/css-variables/dist/fkui-exp-css-variables";
-@use "@fkui/css-variables/src/palette-variables" as palette;
+@use "@fkui/theme-default/dist/fkui-css-variables";
+@use "@fkui/theme-default/src/palette-variables" as palette;
 @use "@fkui/design/src/core/config-variables" with (
     $asset-path: ".",
     $asset-path-images: "./images"
 );
 @use "@fkui/design/src/core/mixins/breakpoints";
-@use "@fkui/design/src/fkui-exp";
+@use "@fkui/design/src/fkui";
 @use "@forsakringskassan/docs-generator/style";
 @use "@forsakringskassan/docs-live-example/dist/main";
 
@@ -29,7 +29,7 @@
 
 footer {
     background: palette.$palette-color-green-a-85;
-    color: var(--f-color-white);
+    color: var(--fkds-color-text-inverted);
     padding: 3rem;
 
     @include breakpoints.breakpoint-up(lg) {
@@ -54,9 +54,9 @@ footer {
     }
 
     .anchor {
-        color: var(--f-color-white);
+        color: var(--fkds-color-text-inverted);
         font-weight: var(--f-font-weight-normal);
-        text-decoration-color: var(--f-color-white);
+        text-decoration-color: var(--fkds-color-text-inverted);
     }
 
     .footer__left {
@@ -72,7 +72,7 @@ footer {
     }
 
     .version {
-        color: var(--f-color-white);
+        color: var(--fkds-color-text-inverted);
         margin-left: 0;
     }
 

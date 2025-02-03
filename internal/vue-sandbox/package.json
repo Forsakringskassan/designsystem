@@ -20,10 +20,10 @@
     "start": "vite --"
   },
   "dependencies": {
-    "@fkui/css-variables": "5.46.0",
     "@fkui/date": "5.46.0",
     "@fkui/design": "5.46.0",
     "@fkui/logic": "5.46.0",
+    "@fkui/theme-default": "5.46.0",
     "@fkui/vue": "5.46.0",
     "core-js": "3.40.0",
     "vue": "3.5.13",

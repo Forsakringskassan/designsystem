@@ -1,5 +1,5 @@
 const stylelint = require("stylelint");
-const deprecatedVariables = require("@fkui/css-variables/dist/deprecated-variables.json");
+const deprecatedVariables = require("@fkui/theme-default/dist/deprecated-variables.json");
 
 /**
  * @typedef { import("postcss").Root } Root

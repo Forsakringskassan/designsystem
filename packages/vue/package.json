@@ -76,12 +76,12 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@fkui/css-variables": "5.46.0",
     "@fkui/date": "5.46.0",
     "@fkui/design": "5.46.0",
     "@fkui/icon-lib-default": "5.46.0",
     "@fkui/logic": "5.46.0",
     "@fkui/test-utils": "5.46.0",
+    "@fkui/theme-default": "5.46.0",
     "@forsakringskassan/vite-lib-config": "3.4.0",
     "@vue/test-utils": "2.4.6",
     "cypress": "14.0.1",

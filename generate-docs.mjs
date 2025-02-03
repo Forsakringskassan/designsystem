@@ -12,7 +12,6 @@ import {
     searchProcessor,
     selectableVersionProcessor,
     sourceUrlProcessor,
-    themeSelectProcessor,
     topnavProcessor,
     versionProcessor,
     cookieProcessor,
@@ -99,7 +98,6 @@ const docs = new Generator({
     ],
     processors: [
         searchProcessor(),
-        themeSelectProcessor(),
         versionProcessor(pkg, "footer:right", {
             scm: isRelease
                 ? undefined
@@ -137,21 +135,11 @@ docs.compileStyle("docs", "./docs/src/docs-theme.scss", {
     appendTo: "head",
 });
 
-docs.compileStyle("docs-exp", "./docs/src/exp-theme.scss", {
+docs.compileStyle("docs-fkui", "./docs/src/fkui-theme.scss", {
     appendTo: "head",
     attributes: {
         data: {
-            theme: "exp",
-        },
-        disabled: true,
-    },
-});
-
-docs.compileStyle("docs-int", "./docs/src/int-theme.scss", {
-    appendTo: "head",
-    attributes: {
-        data: {
-            theme: "int",
+            theme: "fkui",
         },
         disabled: true,
     },

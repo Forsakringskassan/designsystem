@@ -1,9 +1,9 @@
-@use "@fkui/css-variables/src/fkui-int-css-variables" as fkui with (
+@use "@fkui/theme-default/src/fkui-css-variables" as fkui with (
     $global: false
 );
 
 html {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .code-preview__preview,

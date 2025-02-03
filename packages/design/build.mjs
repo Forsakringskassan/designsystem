@@ -12,13 +12,11 @@ import cssnano from "cssnano";
 import postcssUrl from "postcss-url";
 import varFuncFallback from "postcss-var-func-fallback";
 
-/* fkui themes */
-import expTheme from "@fkui/css-variables/dist/fkui-exp-css-variables.js";
-import intTheme from "@fkui/css-variables/dist/fkui-int-css-variables.js";
+/* fkui theme */
+import fkuiTheme from "@fkui/theme-default/dist/fkui-css-variables.js";
 
 const themes = {
-    exp: expTheme,
-    int: intTheme,
+    fkui: fkuiTheme,
 };
 
 async function optimzeAssets(src, dst) {
@@ -153,11 +151,8 @@ await fs.mkdir("lib", { recursive: true });
 console.group();
 await optimzeAssets("src/assets", "temp/assets");
 try {
-    await compileSass("src/fkui-exp.scss", "lib/fkui-exp.css", {
-        theme: "exp",
-    });
-    await compileSass("src/fkui-int.scss", "lib/fkui-int.css", {
-        theme: "int",
+    await compileSass("src/fkui.scss", "lib/fkui.css", {
+        theme: "fkui",
     });
     await compileSass("src/fonts.scss", "lib/fonts.css");
 } catch (err) {
