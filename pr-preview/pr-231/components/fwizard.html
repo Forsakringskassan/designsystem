@@ -1073,9 +1073,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-logic-54a64f.js"
+                    src="../assets/vendor-fkui-logic-e3607c.js"
                     crossorigin
-                    integrity="sha384-AIXlylzdDhEKY5vjGLnNvrpQJq5fvrBVKnSBXCzuCpJJ/wvWEEImW2ldXtb9HrnN"
+                    integrity="sha384-iQLsx5Pzvf0T3hyQQX7dQlR2MzN7Xt9oKEBu4bP2lvMkFGERmABwfb5gWAEL8qZR"
                 ></script>
                 <script
                     src="../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1083,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-987552.js"
+                    src="../assets/vendor-fkui-vue-c60019.js"
                     crossorigin
-                    integrity="sha384-Jn3JIXXzG2jo7yivkYBqKXMlIyNdobAkUgd9/VtYEuEwkekUB03JnXhyD2ReNiKm"
+                    integrity="sha384-WztoOMnHZhIPSaYeJozwYuARn4khlOtGjoitk8Bh5Ml1bM/j1lACBHaMZEFSFmpW"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,13 +1108,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/0162d7f8520ba2ca80c71c29c222a234dee15c66/packages/vue/src/components/FWizard/FWizard.vue">FWizard</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/05173dd3b88330d56e29260c249756162634e167/packages/vue/src/components/FWizard/FWizard.vue">FWizard</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/0162d7f8520ba2ca80c71c29c222a234dee15c66/packages/vue/src/components/FWizard/FWizardStep.vue">FWizardStep</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/05173dd3b88330d56e29260c249756162634e167/packages/vue/src/components/FWizard/FWizardStep.vue">FWizardStep</a>
             
         </code>
          
@@ -1315,15 +1315,15 @@
 I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-c2d84a"
+                    id="example-5c9e01"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
-    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refs</span>.<span class="hljs-property">myField</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">myField</span>);
     <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
 },
 </code></pre>
@@ -1331,14 +1331,14 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FWizardStepAction.CANCEL</code> från <code>onBeforeNext</code>:</p>
 
                 <div
-                    id="example-741843"
+                    id="example-4bab73"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FWizardStepAction</span>&gt; {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-title class_">FWizardStepAction</span> {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-title class_">FWizardStepAction</span>.<span class="hljs-property">CANCEL</span>;
 },
@@ -1605,9 +1605,9 @@ totalSteps</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feat/remove-pnr-validator (<a href="https://github.com/Forsakringskassan/designsystem/commits/0162d7f8520ba2ca80c71c29c222a234dee15c66">0162d7f</a>)<br />
+    feat/remove-pnr-validator (<a href="https://github.com/Forsakringskassan/designsystem/commits/05173dd3b88330d56e29260c249756162634e167">05173dd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/231">PR 231</a><br />
-        2025-01-30 12:41
+        2025-02-03 06:15
 </div>
 <div class="toolbar__item">
     <form id="version">

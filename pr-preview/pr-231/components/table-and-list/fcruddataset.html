@@ -1073,9 +1073,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-54a64f.js"
+                    src="../../assets/vendor-fkui-logic-e3607c.js"
                     crossorigin
-                    integrity="sha384-AIXlylzdDhEKY5vjGLnNvrpQJq5fvrBVKnSBXCzuCpJJ/wvWEEImW2ldXtb9HrnN"
+                    integrity="sha384-iQLsx5Pzvf0T3hyQQX7dQlR2MzN7Xt9oKEBu4bP2lvMkFGERmABwfb5gWAEL8qZR"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1083,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-987552.js"
+                    src="../../assets/vendor-fkui-vue-c60019.js"
                     crossorigin
-                    integrity="sha384-Jn3JIXXzG2jo7yivkYBqKXMlIyNdobAkUgd9/VtYEuEwkekUB03JnXhyD2ReNiKm"
+                    integrity="sha384-WztoOMnHZhIPSaYeJozwYuARn4khlOtGjoitk8Bh5Ml1bM/j1lACBHaMZEFSFmpW"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/0162d7f8520ba2ca80c71c29c222a234dee15c66/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/05173dd3b88330d56e29260c249756162634e167/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
             
         </code>
          
@@ -1321,26 +1321,31 @@ Callback anropas innan modalen visas.</p>
                 </div>
             
                 <div
-                    id="example-4cce20"
+                    id="example-7ca9f4"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeCreate</span>(): <span class="hljs-title class_">UnknownItem</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">onBeforeCreate</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">UnknownItem</span> {
     <span class="hljs-keyword">const</span> <span class="hljs-attr">item</span>: <span class="hljs-title class_">MyInterface</span> = {
         <span class="hljs-comment">/* ... */</span>
-    }
+    };
     <span class="hljs-keyword">return</span> item <span class="hljs-keyword">as</span> <span class="hljs-built_in">unknown</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">UnknownItem</span>;
 }
 </code></pre>
                 </div>
-            <p><strong>Notera</strong>: då <code>FCrudDataset</code> inte är typsäker måste man casta objektet till <code>UnknownItem</code>.</p>
-<h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p>Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
+            
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p><strong>Notera</strong>: då <code>FCrudDataset</code> inte är typsäker måste man casta objektet till <code>UnknownItem</code>.</p>
+
+            </div>
+        <h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p>Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
 
             <div
-                id="example-c0a0d9"
+                id="example-dacf2a"
                 class="code-preview code-preview--default"
                 
                 
@@ -1509,7 +1514,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
-                id="example-b4b9af"
+                id="example-edcf7a"
                 class="code-preview code-preview--default"
                 
                 
@@ -1618,7 +1623,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="interaktiv_tabell_med_knapp"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
             <div
-                id="example-86d85a"
+                id="example-1c967f"
                 class="code-preview code-preview--default"
                 
                 
@@ -1716,7 +1721,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="lista_med_redigering"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-b2c463"
+                id="example-8f750e"
                 class="code-preview code-preview--default"
                 
                 
@@ -1882,7 +1887,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-2f0e71"
+                id="example-e489c8"
                 class="code-preview code-preview--default"
                 
                 
@@ -2150,9 +2155,9 @@ return undefined;<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feat/remove-pnr-validator (<a href="https://github.com/Forsakringskassan/designsystem/commits/0162d7f8520ba2ca80c71c29c222a234dee15c66">0162d7f</a>)<br />
+    feat/remove-pnr-validator (<a href="https://github.com/Forsakringskassan/designsystem/commits/05173dd3b88330d56e29260c249756162634e167">05173dd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/231">PR 231</a><br />
-        2025-01-30 12:41
+        2025-02-03 06:15
 </div>
 <div class="toolbar__item">
     <form id="version">

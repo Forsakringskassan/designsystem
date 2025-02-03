@@ -15,7 +15,6 @@
     ElementIdService: () => ElementIdService,
     FORMAT_3_DIGITS_GROUPS: () => FORMAT_3_DIGITS_GROUPS,
     MissingValueError: () => MissingValueError,
-    POSTAL_CODE_REGEXP: () => POSTAL_CODE_REGEXP,
     PersistenceService: () => PersistenceService,
     Reference: () => Reference,
     SCREEN_READER_DELAY: () => SCREEN_READER_DELAY,
@@ -48,7 +47,6 @@
     getErrorMessages: () => getErrorMessages,
     handleTab: () => handleTab,
     isEmpty: () => isEmpty,
-    isFieldset: () => isFieldset,
     isFocusable: () => isFocusable,
     isInvalidDatesConfig: () => isInvalidDatesConfig,
     isInvalidWeekdaysConfig: () => isInvalidWeekdaysConfig,
@@ -56,7 +54,6 @@
     isSet: () => isSet,
     isString: () => isString,
     isTabbable: () => isTabbable,
-    isValidDate: () => isValidDate,
     isValidatableFormElement: () => isValidatableFormElement,
     isValidatableHTMLElement: () => isValidatableHTMLElement,
     isVisible: () => isVisible,
@@ -2338,9 +2335,6 @@ Caused by: ${cause.stack}`;
       return true;
     }
     return element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement || element instanceof HTMLSelectElement || element instanceof HTMLFieldSetElement;
-  }
-  function isFieldset(element) {
-    return element instanceof HTMLFieldSetElement;
   }
   function hasValidators(element) {
     return typeof element.dataset.validation === "string";

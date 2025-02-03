@@ -413,9 +413,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-54a64f.js"
+                    src="../../assets/vendor-fkui-logic-e3607c.js"
                     crossorigin
-                    integrity="sha384-AIXlylzdDhEKY5vjGLnNvrpQJq5fvrBVKnSBXCzuCpJJ/wvWEEImW2ldXtb9HrnN"
+                    integrity="sha384-iQLsx5Pzvf0T3hyQQX7dQlR2MzN7Xt9oKEBu4bP2lvMkFGERmABwfb5gWAEL8qZR"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -423,9 +423,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-987552.js"
+                    src="../../assets/vendor-fkui-vue-c60019.js"
                     crossorigin
-                    integrity="sha384-Jn3JIXXzG2jo7yivkYBqKXMlIyNdobAkUgd9/VtYEuEwkekUB03JnXhyD2ReNiKm"
+                    integrity="sha384-WztoOMnHZhIPSaYeJozwYuARn4khlOtGjoitk8Bh5Ml1bM/j1lACBHaMZEFSFmpW"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -476,17 +476,24 @@
 <p>Om ingen av de fördefinerade validatorerna passar dina behov så går det bra att skapa en egen validator i din applikation.</p>
 <p>Låt oss utgå från att du vill ha en validator som verifierar att texten i ett input-fält börjar med ett konfigurerbart värde.
 Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas när valideringen inte är rätt.</p>
-<h2 id="validatorn"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p>Logiken som utför valideringen skrivs i metoden:</p>
+<h2 id="validatorn"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p>En validator implementeras genom att skapa ett objekt som uppfyller interfacet <code>Validator</code>:</p>
 
                 <div
-                    id="example-2f329e"
+                    id="example-73226e"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">validation</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">element</span>: <span class="hljs-title class_">ValidatableHTMLElement</span>, <span class="hljs-attr">config</span>: <span class="hljs-title class_">TConfig</span>): <span class="hljs-built_in">boolean</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Validator</span>&lt;<span class="hljs-title class_">TConfig</span>&gt; {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-title function_">validation</span>(
+        <span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>,
+        <span class="hljs-attr">element</span>: <span class="hljs-title class_">ValidatableHTMLElement</span>,
+        <span class="hljs-attr">config</span>: <span class="hljs-title class_">TConfig</span>,
+    ): <span class="hljs-built_in">boolean</span>;
+}
 </code></pre>
                 </div>
             <p>där:</p>
@@ -510,7 +517,7 @@ Den kontrollen görs enklast tidigt i din validator-logik med hjälp av metoden 
 Validatorns <code>name</code> är det som sedan används för att aktivera validatorn på ett input-fält.</p>
 
                 <div
-                    id="example-e7d946"
+                    id="example-95508d"
                     class="code-preview code-preview--default"
                     
                     
@@ -534,7 +541,7 @@ Validatorns <code>name</code> är det som sedan används för att aktivera valid
 Förslagsvis genom att bryta ut logiken till en egen funktion, då blir den enkel att testa med Jest.</p>
 
                 <div
-                    id="example-87103f"
+                    id="example-3eae65"
                     class="code-preview code-preview--default"
                     
                     
@@ -562,7 +569,7 @@ Det gör du genom att ge den stöd för att ta emot en konfiguration från konsu
 Om konsumenten inte förser validatorn med konfiguration så sätter du även ett standardvärde &quot;demo&quot;.</p>
 
                 <div
-                    id="example-b67be5"
+                    id="example-7646cc"
                     class="code-preview code-preview--default"
                     
                     
@@ -599,7 +606,7 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
             <p>Om det finns möjlighet till felaktig konfiguration eller om standardvärden inte används måste du införa felhantering:</p>
 
                 <div
-                    id="example-cbf8e7"
+                    id="example-12e08c"
                     class="code-preview code-preview--default"
                     
                     
@@ -609,11 +616,16 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">startsWithValidator</span>: <span class="hljs-title class_">Validator</span>&lt;<span class="hljs-title class_">StartsWithConfig</span>&gt; = {
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;startsWith&quot;</span>,
     <span class="hljs-title function_">validation</span>(<span class="hljs-params">value, element, configuration</span>) {
-        <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">isSet</span>(configuration.<span class="hljs-property">startString</span>)) {
+        <span class="hljs-keyword">const</span> { startString } = configuration;
+        <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">isSet</span>(startString)) {
             <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(
                 <span class="hljs-string">&quot;startsWithValidator: configuration.startString is missing!&quot;</span>,
             );
         }
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEmpty</span>(value)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">startsWith</span>(startString);
     },
 };
 </code></pre>
@@ -622,7 +634,7 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
 Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m. i t.ex. <code>main.ts</code>. Gör det inte i en komponents lifecycle-hooks så som <code>created</code>, <code>mounted</code> m.fl.</p>
 
                 <div
-                    id="example-5fce09"
+                    id="example-af95fe"
                     class="code-preview code-preview--default"
                     
                     
@@ -637,7 +649,7 @@ Tänk på att bara registrera validatorn en gång, förslagsvis görs det global
 I exemplet nedan så anger du värdet <code>test</code> till konfigurationens attribut <code>startString</code>. Nu kommer validatorn validera att input-fältets värde börjar med &quot;test&quot;.</p>
 
                 <div
-                    id="example-692d88"
+                    id="example-57755b"
                     class="code-preview code-preview--default"
                     
                     
@@ -662,7 +674,7 @@ Antigen sätter man en global standardtext (rekomenderat) eller så sätter man 
 Det gör du genom att lägga till attributet <code>errorMessage</code> till validatorns konfiguration, med en tillhörande text.</p>
 
                 <div
-                    id="example-df85a1"
+                    id="example-96c576"
                     class="code-preview code-preview--default"
                     
                     
@@ -687,7 +699,7 @@ Det gör du genom att lägga till attributet <code>errorMessage</code> till vali
 Då behöver <code>errorMessage</code> användas och felmeddelande blir samma på alla ställen i applikationen där validatorn används.</p>
 
                 <div
-                    id="example-3e464d"
+                    id="example-8bea13"
                     class="code-preview code-preview--default"
                     
                     
@@ -706,7 +718,7 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
             <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p>Här nedan visas ett komplett exempel med tre input-fält.</p>
 
             <div
-                id="example-b1492a"
+                id="example-b25816"
                 class="code-preview code-preview--default"
                 
                 
@@ -861,9 +873,9 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feat/remove-pnr-validator (<a href="https://github.com/Forsakringskassan/designsystem/commits/0162d7f8520ba2ca80c71c29c222a234dee15c66">0162d7f</a>)<br />
+    feat/remove-pnr-validator (<a href="https://github.com/Forsakringskassan/designsystem/commits/05173dd3b88330d56e29260c249756162634e167">05173dd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/231">PR 231</a><br />
-        2025-01-30 12:41
+        2025-02-03 06:15
 </div>
 <div class="toolbar__item">
     <form id="version">
