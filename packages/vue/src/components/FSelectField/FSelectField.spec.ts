@@ -146,7 +146,7 @@ describe("events", () => {
         expect(foobar).toHaveBeenCalled();
     });
 
-    it("should support v-model by emitting change event with string", () => {
+    it("should support v-model by emitting update:modelValue event with string", () => {
         const wrapper = mount(
             createTestComponentWithOptions([
                 { text: "Banana", value: "banana" },
@@ -161,11 +161,13 @@ describe("events", () => {
         select.setValue("apple");
         expect(htmlSelect.value).toBe("apple");
         expect(
-            wrapper.findComponent(FSelectField).emitted("change")![0][0],
+            wrapper
+                .findComponent(FSelectField)
+                .emitted("update:modelValue")![0][0],
         ).toMatchInlineSnapshot(`"apple"`);
     });
 
-    it("should support v-model by emitting change event with object", async () => {
+    it("should support v-model by emitting update:modelValue event with object", async () => {
         const wrapper = mount(
             createTestComponentWithOptions([
                 { text: "BananaObject", value: { id: 1, fruit: "banana" } },
