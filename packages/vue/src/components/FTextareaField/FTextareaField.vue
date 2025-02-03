@@ -204,8 +204,6 @@ export default defineComponent({
                 this.$emit("update:modelValue", event.target.value);
 
                 /**
-                 * Vue2 v-model event.
-                 * @deprecated
                  * @event input
                  * @type {string}
                  */

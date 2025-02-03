@@ -5707,7 +5707,7 @@ onValidity({ detail }: CustomEvent<ValidityEvent>): void;
 onPendingValidity(): void;
 configureValidators(): void;
 configureExtendedValidation(elements: HTMLInputElement[]): void;
-}, ComponentOptions, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue")[], "blur" | "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -5735,7 +5735,6 @@ default: string;
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUpdate?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
 modelValue: string;
@@ -12670,7 +12669,7 @@ onValidity({ detail }: CustomEvent<ValidityEvent>): void;
 onPendingValidity(): void;
 configureValidators(): void;
 configureExtendedValidation(elements: HTMLInputElement[]): void;
-}, ComponentOptions, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue" | "update")[], "blur" | "change" | "update:modelValue" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue")[], "blur" | "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -12693,7 +12692,6 @@ default: boolean;
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUpdate?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
 modelValue: string;

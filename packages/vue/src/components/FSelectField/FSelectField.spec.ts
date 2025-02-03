@@ -182,6 +182,21 @@ describe("events", () => {
 
         expect(vModelValue).toEqual({ id: 1, fruit: "banana" });
     });
+
+    it("should emit change event with when value changes", () => {
+        const wrapper = mount(
+            createTestComponentWithOptions([
+                { text: "Banana", value: "banana" },
+                { text: "Apple", value: "apple" },
+            ]),
+            { props: { modelValue: "banana" } },
+        );
+        const select = wrapper.get("select");
+        select.setValue("apple");
+        expect(
+            wrapper.findComponent(FSelectField).emitted("change")![0][0],
+        ).toMatchInlineSnapshot(`"apple"`);
+    });
 });
 
 describe("html-validate", () => {

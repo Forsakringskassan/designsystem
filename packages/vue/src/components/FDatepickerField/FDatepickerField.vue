@@ -308,8 +308,8 @@ export default defineComponent({
             this.$emit("update:modelValue", this.textFieldValue);
 
             /**
-             * Vue2 `v-model` event.
-             * @deprecated
+             * Emitted when the value of the checkbox changes.
+             *
              * @event change
              * @type {string}
              */

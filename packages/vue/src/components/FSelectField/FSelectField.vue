@@ -167,8 +167,8 @@ export default defineComponent({
                 this.$emit("update:modelValue", value);
 
                 /**
-                 * Vue2 v-model event.
-                 * @deprecated
+                 * Emitted when the value of the dropdown changes.
+                 *
                  * @event change
                  * @type {string}
                  */

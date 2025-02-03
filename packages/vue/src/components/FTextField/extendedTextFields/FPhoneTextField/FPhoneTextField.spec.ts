@@ -152,9 +152,9 @@ describe("events", () => {
         expect(htmlInput.value).toBe("888-888");
 
         await input.trigger("change");
-        expect(wrapper.emitted("update")![0][0]).toMatchInlineSnapshot(
-            `"888-888"`,
-        );
+        expect(
+            wrapper.emitted("update:modelValue")![0][0],
+        ).toMatchInlineSnapshot(`"888-888"`);
     });
 
     it("should pass listeners", async () => {

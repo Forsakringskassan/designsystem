@@ -125,8 +125,8 @@ export default defineComponent({
                         this.$emit("update:modelValue", this.value);
 
                         /**
-                         * Vue2 v-model event.
-                         * @deprecated
+                         * Emitted when the value of the radiobutton changes.
+                         *
                          * @event change
                          * @type {anyType}
                          */

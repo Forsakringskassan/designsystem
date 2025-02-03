@@ -107,6 +107,21 @@ describe("events", () => {
         ).toMatchInlineSnapshot(`"Some value"`);
     });
 
+    it("should emit change event when input value changes", async () => {
+        const wrapper = createWrapper({
+            props: { value: true, modelValue: false },
+        });
+
+        const input = wrapper.get("input");
+
+        await input.trigger("click");
+        expect(wrapper.emitted("change")![0]).toMatchInlineSnapshot(`
+            [
+              true,
+            ]
+        `);
+    });
+
     describe("should support v-model as array", () => {
         it("should add value to array", async () => {
             const wrapper = createWrapper({
