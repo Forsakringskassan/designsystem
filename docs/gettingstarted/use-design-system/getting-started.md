@@ -34,14 +34,14 @@ Vi rekommenderar att du har följande utvecklingsverktyg
 
 Installera FKUI-paket. Vanlig uppsättning av paket är:
 
-- `@fkui/css-variables` (css-variabler)
-- `@fkui/design` (styling)
 - `@fkui/date` (datum)
+- `@fkui/design` (styling)
 - `@fkui/logic` (funktioner)
+- `@fkui/theme-default` (standardtema)
 - `@fkui/vue` (ramverkspecifika komponenter, plugins)
 
 ```bash
-npm install @fkui/css-variables @fkui/design @fkui/date @fkui/logic @fkui/vue
+npm install @fkui/theme-default @fkui/design @fkui/date @fkui/logic @fkui/vue
 ```
 
 ## Hjälp och support

@@ -31,18 +31,18 @@ Det andra sättet är att använda en förkompilerad CSS-fil.
 Gå in i din main.scss-fil eller motsvarande och lägg in följande rader:
 
 ```scss
-@use "@fkui/css-variables/dist/fkui-exp-css-variables";
-@use "@fkui/design/src/fkui-exp";
+@use "@fkui/theme-default/src/fkui-css-variables";
+@use "@fkui/design/src/fkui";
 ```
 
-I exemplet ovan, ersätt `fkui-exp` och `fkui-exp-css-variables` med de filer som din applikation ska ha.
+Uppdatera exemplet ovan med de filer som din applikation ska använda.
 
 Om du inte vill använda styling på alla komponenter utan bara specifika, skriv in nedan i din SCSS-fil.
 I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt inmatningsfält.
 
 ```diff
- @use "@fkui/css-variables/dist/fkui-exp-css-variables";
--@use "@fkui/design/src/fkui-exp";
+ @use "@fkui/theme-default/dist/fkui-css-variables";
+-@use "@fkui/design/src/fkui";
 +@use "@fkui/design/src/components/text-field/text-field";
 +@use "@fkui/design/src/components/textarea-field/textarea-field";
 ```
@@ -52,15 +52,15 @@ Om du behöver applicera tema på en egen selector (exempelvis kanske du har fle
 Vid import:
 
 ```diff
--@use "@fkui/css-variables/dist/fkui-int-css-variables";
--@use "@fkui/design/src/fkui-exp";
-+@use "@fkui/css-variables/src/fkui-fktema-css-variables" as fkui with (
+-@use "@fkui/theme-default/dist/fkui-css-variables";
+-@use "@fkui/design/src/fkui";
++@use "@fkui/theme-default/src/fkui-css-variables" as fkui with (
 +    $global: false
 +);
 
 .my-scope {
 +    @include fkui.css-variables;
-+    @import "@fkui/design/src/fkui-exp";
++    @import "@fkui/design/src/fkui";
 }
 ```
 
@@ -68,22 +68,22 @@ Notera: variabeln `$global` måste sättas till `false` annars sätts samtliga v
 
 ### CSS
 
-Om din applikation inte använder Sass ska du istället placera `@fkui/design/lib/fkui-exp.min.css` i en assets-katalog.
+Om din applikation inte använder Sass ska du istället placera `@fkui/design/lib/fkui.min.css` i en assets-katalog.
 Du behöver sedan referera till filen i assets-katalogen för varje sida.
 
 ```html static
-<link rel="stylesheet" href="assets/fkui-exp.min.css" />
+<link rel="stylesheet" href="assets/fkui.min.css" />
 ```
 
 Om du behöver importera styling till javascript:
 
 ```js
-import "@fkui/design/lib/fkui-exp.min.css";
+import "@fkui/design/lib/fkui.min.css";
 ```
 
 ### Eget tema
 
-Utgå från tema `fk-exp` och skriv över de variabler som ska ändras.
+Utgå från standardtemat och skriv över de variabler som ska ändras.
 
 ## Importera ikonbibliotek
 

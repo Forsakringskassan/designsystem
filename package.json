@@ -24,7 +24,7 @@
     "build:public": "node scripts/postbuild.js && html-validate --formatter stylish,codeframe --config .htmlvalidate-public.js public",
     "preclean": "rimraf -g .eslintcache *.tgz public temp test-results",
     "clean": "npm run --workspaces --if-present clean",
-    "css-variables": "npm run --workspace packages/css-variables --",
+    "theme-default": "npm run --workspace packages/theme-default --",
     "cypress": "cypress",
     "date": "npm run --workspace packages/date --",
     "design": "npm run --workspace packages/design --",

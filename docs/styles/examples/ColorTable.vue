@@ -19,7 +19,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { type ListArray, type UnknownItem, FDataTable, FTableColumn } from "@fkui/vue";
-import { type SassVariable } from "@fkui/css-variables/dist/palette.json";
+import { type SassVariable } from "@fkui/theme-default/dist/palette.json";
 
 export default defineComponent({
     components: { FDataTable, FTableColumn },

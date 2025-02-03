@@ -1,18 +1,8 @@
 // stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
 
 @use "palette-variables" as *;
-@use "version" as *;
-@use "deprecated-int-css-variables" as *;
-@use "semantic-tokens" as semantic-tokens;
-@use "default-variables" as default-variables;
-
-$global: true !default;
 
 @mixin css-variables {
-    @include deprecated-variables;
-    @include semantic-tokens.css-variables;
-    @include default-variables.css-variables;
-
     // ********
     // SEMANTIC
     // ********
@@ -176,12 +166,4 @@ $global: true !default;
     --f-tooltip-border-width: var(--f-border-width-small);
 
     --i-popup-error-offset: 16px;
-}
-
-@if $global {
-    :root {
-        --f-css-variables-version: "#{$version}";
-
-        @include css-variables;
-    }
 }

@@ -7,7 +7,7 @@ import {
     ValidationPlugin,
 } from "../../packages/vue/src/plugins";
 import { config, setRunningContext } from "../../packages/vue/src/config";
-import "@fkui/css-variables/src/fkui-exp-css-variables.scss";
+import "@fkui/theme-default/src/fkui-css-variables.scss";
 
 import "./main.scss";
 import "./common";

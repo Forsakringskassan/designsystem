@@ -24,10 +24,10 @@ Det finns också ett antal kortkommando-skript för att du ska kunna köra paket
 
 [Läs mer i dokumentation om Lerna hur kommadon fungerar och se hela listan med kommandon](https://github.com/lerna/lerna)
 
-Om du vill installera ett specifikt paket som till exempel css-variables skriv:
+Om du vill installera ett specifikt paket som till exempel design skriv:
 
 ```bash
-npm  install --save-dev @fkui/css-variables
+npm  install --save-dev @fkui/design
 ```
 
 ## Kommandon
@@ -122,7 +122,7 @@ npm pack --workspaces --pack-destination dist/
 
 ### Länkning
 
-Länka alla paket (css-variables, logic, design, vue) så at de kan länkas till andra lokala repon genom att skriva:
+Länka alla paket (theme-default, logic, design, vue) så att de kan länkas till andra lokala repon genom att skriva:
 
 ```bash
 npm run link-all

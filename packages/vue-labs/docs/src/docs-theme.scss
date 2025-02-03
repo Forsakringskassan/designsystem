@@ -1,7 +1,7 @@
-@use "@fkui/css-variables/dist/fkui-exp-css-variables";
+@use "@fkui/theme-default/dist/fkui-css-variables";
 @use "@fkui/design/src/core/config-variables" with (
     $asset-path: ".",
     $asset-path-images: "./images"
 );
-@use "@fkui/design/src/fkui-exp";
+@use "@fkui/design/src/fkui";
 @use "@forsakringskassan/docs-generator/docs";

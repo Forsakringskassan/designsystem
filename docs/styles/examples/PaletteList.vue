@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import palette from "@fkui/css-variables/dist/palette.json";
+import palette from "@fkui/theme-default/dist/palette.json";
 import ColorTable from "./ColorTable.vue";
 
 export default defineComponent({

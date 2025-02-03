@@ -58,6 +58,11 @@ Följande deprekerade validatorer har tagits bort:
 
 - `personnummer`
 
+Tillämpnings-specifika leverabler (internt, externt, HAPO) har ersatts av rena FKUI-leverabler:
+
+- paketet `@fkui/css-variables` har bytt namn till `@fkui/theme-default` och levererar ett standardtema
+- paketet `@fkui/design` levererar enbart standarddesign
+
 ## `@fkui/logic`
 
 Den deprekerade konstanten `DATE_REGEXP_WITH_DASH` är borttagen och ersatt med `FDate` klassen från `@fkui/date`.
@@ -321,4 +326,33 @@ Den deprekerade validatorn `personnummer` är borttagen och ersätts med validat
 -       v-validation.personnummer
 +       v-validation.personnummerFormat.personnummerLuhn
     >
+```
+
+## Tillämpnings-specifika leverabler borttagna
+
+FKUI tillhandahåller istället standardleverabler för tema, design.
+Som konsument finns det möjlighet att själv tillhandahålla specifika tillämpningar.
+
+````diff
+@import "@fkui/design/src/fkui-int";
+@import "@fkui/css-variables/dist/fkui-int-css-variables";
+
+```diff
+-@use "@fkui/css-variables/dist/fkui-int-css-variables";
++@use "@fkui/theme-default/dist/fkui-css-variables";
+
+-@use "@fkui/design/src/fkui-int";
++@use "@fkui/design/src/fkui";
+````
+
+### Deprekerade CSS-variabler exluderade från standardtema
+
+Möjlighet finns att importera separat vid behov.
+
+```scss
+@use "@fkui/theme-default/src/deprecated-css-variables" as *;
+
+:root {
+    @include deprecated-variables;
+}
 ```

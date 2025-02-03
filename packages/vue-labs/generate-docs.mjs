@@ -6,7 +6,6 @@ import {
     Generator,
     versionProcessor,
     searchProcessor,
-    themeSelectProcessor,
 } from "@forsakringskassan/docs-generator";
 
 const require = module.createRequire(import.meta.url);
@@ -27,11 +26,7 @@ const docs = new Generator({
     cacheFolder: "./temp/docs",
     exampleFolders: ["./src"],
     vendor: ["vue", "@fkui/logic", "@fkui/date", "@fkui/vue"],
-    processors: [
-        searchProcessor(),
-        themeSelectProcessor(),
-        versionProcessor(pkg, "toolbar"),
-    ],
+    processors: [searchProcessor(), versionProcessor(pkg, "toolbar")],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
 
@@ -43,21 +38,11 @@ docs.compileStyle("docs", "./docs/src/docs-theme.scss", {
     appendTo: "head",
 });
 
-docs.compileStyle("docs-exp", "./docs/src/exp-theme.scss", {
+docs.compileStyle("docs-fkui", "./docs/src/fkui-theme.scss", {
     appendTo: "head",
     attributes: {
         data: {
-            theme: "exp",
-        },
-        disabled: true,
-    },
-});
-
-docs.compileStyle("docs-int", "./docs/src/int-theme.scss", {
-    appendTo: "head",
-    attributes: {
-        data: {
-            theme: "int",
+            theme: "fkui",
         },
         disabled: true,
     },

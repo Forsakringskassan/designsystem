@@ -2,8 +2,8 @@ import { createApp } from "vue";
 import { type SetupOptions } from "@forsakringskassan/vite-lib-config";
 
 import "@fkui/icon-lib-default/dist/f";
-import "@fkui/css-variables/dist/fkui-exp-css-variables.css";
-import "@fkui/design/lib/fkui-exp.css";
+import "@fkui/theme-default/dist/fkui-css-variables.css";
+import "@fkui/design/lib/fkui.css";
 import "@fkui/design/lib/fonts.css";
 
 import {

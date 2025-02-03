@@ -13,7 +13,7 @@ async function generatePublic() {
 
     /* copy docs from each package */
     await Promise.all([
-        fse.copy("packages/css-variables/dist", "public/assets"),
+        fse.copy("packages/theme-default/dist", "public/assets"),
         fse.copy("packages/design/lib", "public/assets"),
         fse.copy("packages/date/typedoc", "public/date"),
         fse.copy("packages/logic/typedoc", "public/logic"),
