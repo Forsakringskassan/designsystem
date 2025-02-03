@@ -1,35 +1,8 @@
 {
     "folders": [
         {
-            "name": "FKUI",
+            "name": "@fkui",
             "path": ".",
-        },
-        {
-            "name": "@fkui/css-variables",
-            "path": "packages\\css-variables",
-        },
-        {
-            "name": "@fkui/design",
-            "path": "packages\\design",
-        },
-        {
-            "name": "@fkui/date",
-            "path": "packages\\date",
-        },
-        {
-            "name": "@fkui/logic",
-            "path": "packages\\logic",
-        },
-        {
-            "name": "@fkui/vue",
-            "path": "packages\\vue",
-        },
-        {
-            "name": "@fkui/vue-labs",
-            "path": "packages\\vue-labs",
-        },
-        {
-            "path": "docs",
         },
     ],
     "settings": {
@@ -38,38 +11,9 @@
         "scss.validate": false,
         "editor.formatOnSave": true,
         "editor.formatOnPaste": true,
-        "eslint.autoFixOnSave": true,
         "eslint.enable": true,
         "prettier.requireConfig": true,
         "editor.renderWhitespace": "boundary",
-        "eslint.alwaysShowStatus": true,
-        "prettier.disableLanguages": [],
-        "eslint.validate": [
-            {
-                "language": "javascript",
-                "autoFix": true,
-            },
-            {
-                "language": "javascriptreact",
-                "autoFix": true,
-            },
-            {
-                "language": "typescript",
-                "autoFix": true,
-            },
-            {
-                "language": "typescriptreact",
-                "autoFix": true,
-            },
-            {
-                "language": "vue",
-                "autoFix": true,
-            },
-            {
-                "language": "html",
-                "autoFix": true,
-            },
-        ],
         "[vue]": {
             "editor.defaultFormatter": "esbenp.prettier-vscode",
         },
