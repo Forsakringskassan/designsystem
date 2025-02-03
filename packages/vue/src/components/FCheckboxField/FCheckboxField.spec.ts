@@ -89,7 +89,7 @@ describe("disabled", () => {
 });
 
 describe("events", () => {
-    it("should support v-model by emitting change event with value", async () => {
+    it("should support v-model by emitting update:modelValue event with value", async () => {
         const wrapper = createWrapper({
             props: { value: "Some value", modelValue: "Some value" },
         });
@@ -102,9 +102,9 @@ describe("events", () => {
         expect(htmlInput.checked).toBe(false);
 
         await input.trigger("click");
-        expect(wrapper.emitted("change")![0][0]).toMatchInlineSnapshot(
-            `"Some value"`,
-        );
+        expect(
+            wrapper.emitted("update:modelValue")![0][0],
+        ).toMatchInlineSnapshot(`"Some value"`);
     });
 
     describe("should support v-model as array", () => {
@@ -117,7 +117,8 @@ describe("events", () => {
             });
 
             await wrapper.get("input").trigger("click");
-            expect(wrapper.emitted("change")![0][0]).toMatchInlineSnapshot(`
+            expect(wrapper.emitted("update:modelValue")![0][0])
+                .toMatchInlineSnapshot(`
                 [
                   "Another checkbox",
                   "This checkbox",
@@ -134,7 +135,8 @@ describe("events", () => {
             });
 
             await wrapper.get("input").trigger("click");
-            expect(wrapper.emitted("change")![0][0]).toMatchInlineSnapshot(`
+            expect(wrapper.emitted("update:modelValue")![0][0])
+                .toMatchInlineSnapshot(`
                 [
                   "Another checkbox",
                 ]
@@ -150,7 +152,8 @@ describe("events", () => {
             });
 
             await wrapper.get("input").trigger("click");
-            expect(wrapper.emitted("change")![0][0]).toMatchInlineSnapshot(`
+            expect(wrapper.emitted("update:modelValue")![0][0])
+                .toMatchInlineSnapshot(`
                 [
                   "Another checkbox",
                   [
@@ -169,7 +172,8 @@ describe("events", () => {
             });
 
             await wrapper.get("input").trigger("click");
-            expect(wrapper.emitted("change")![0][0]).toMatchInlineSnapshot(`
+            expect(wrapper.emitted("update:modelValue")![0][0])
+                .toMatchInlineSnapshot(`
                 [
                   "Another checkbox",
                 ]
@@ -185,7 +189,8 @@ describe("events", () => {
             });
 
             await wrapper.get("input").trigger("click");
-            expect(wrapper.emitted("change")![0][0]).toMatchInlineSnapshot(`
+            expect(wrapper.emitted("update:modelValue")![0][0])
+                .toMatchInlineSnapshot(`
                 [
                   "Another checkbox",
                   {
@@ -204,7 +209,8 @@ describe("events", () => {
             });
 
             await wrapper.get("input").trigger("click");
-            expect(wrapper.emitted("change")![0][0]).toMatchInlineSnapshot(`
+            expect(wrapper.emitted("update:modelValue")![0][0])
+                .toMatchInlineSnapshot(`
                 [
                   "Another checkbox",
                 ]
