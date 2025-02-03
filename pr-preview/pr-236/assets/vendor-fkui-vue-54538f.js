@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -8449,8 +8449,8 @@
        * - `h6`
        */
       headerTag: {
-        required: false,
         default: "",
+        required: false,
         validator(value) {
           return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
         }

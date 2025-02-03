@@ -17046,8 +17046,8 @@ function useHorizontalOffset(options) {
      * - `h6`
      */
     headerTag: {
-      required: false,
       default: "",
+      required: false,
       validator(value) {
         return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
       }
