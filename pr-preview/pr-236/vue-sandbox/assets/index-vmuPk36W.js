@@ -17035,9 +17035,6 @@ function useHorizontalOffset(options) {
      * Element to render for the header element inside the tooltip.
      *
      * Must be set to one of:
-     *
-     * - `div` (default)
-     * - `span`
      * - `h1`
      * - `h2`
      * - `h3`
@@ -17049,7 +17046,7 @@ function useHorizontalOffset(options) {
       default: "",
       required: false,
       validator(value) {
-        return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
+        return ["h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
       }
     }
   },

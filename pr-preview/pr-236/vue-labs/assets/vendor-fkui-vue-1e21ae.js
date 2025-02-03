@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -8438,9 +8438,6 @@
        * Element to render for the header element inside the tooltip.
        *
        * Must be set to one of:
-       *
-       * - `div` (default)
-       * - `span`
        * - `h1`
        * - `h2`
        * - `h3`
@@ -8452,7 +8449,7 @@
         default: "",
         required: false,
         validator(value) {
-          return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
+          return ["h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
         }
       }
     },
