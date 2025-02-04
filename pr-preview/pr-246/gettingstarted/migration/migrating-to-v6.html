@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-e12a32.json"
+            href="../../search-data-3e04d6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-t1FC3K6Fj4IukCu/x75Iv43cxD25rGJErIJPpz33wAu3EGTzdv/HNdhxwJT5Sswo"
+            integrity="sha384-zjxPnDGLUuxA9c9j8qF7VU5c5eOR7I7YKz9dlpmzVgE8wEvjUj/Sm4YvxQyYb2Ps"
             id="search-data"
         />
     </head>
@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-6466e2.js"
+                    src="../../assets/vendor-fkui-vue-731c21.js"
                     crossorigin
-                    integrity="sha384-sMWZO+QG9WIQjoeqOoUpfiTAjRmC246vLeiuPM2ta2dnAd/HMzrC2DdfDOshjx+V"
+                    integrity="sha384-ykgluyV2zIabOsAWQjXFoapkOBQ/VrNF2JuoRq8AvlMKDtYOIs4AFU/DWHS1ALoP"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -584,6 +584,8 @@
                                 
                                 <li><a href="#fpageheader_skiplink">`FPageHeader` skiplink</a></li>
                                 
+                                <li><a href="#gettextfromscopedslot">`getTextFromScopedSlot`</a></li>
+                                
                                 <li><a href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget">`FKUIConfig.modalTarget` och `FKUIConfig.popupTarget`</a></li>
                                 
                                 <li><a href="#pageobjects">Pageobjects</a></li>
@@ -609,6 +611,7 @@
 <ul>
 <li><code>FFormModal</code>: slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna.</li>
 <li><code>FPageHeader</code>: propen <code>skipLinkHref</code> är borttagen</li>
+<li><code>getTextFromScopedSlot</code>: funktionen är borttagen.</li>
 <li>Konfiguration: <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna.</li>
 </ul>
 <p>För Cypress pageobjekt:</p>
@@ -627,7 +630,7 @@
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-48cf07"
+                    id="example-55bcc5"
                     class="code-preview code-preview--default"
                     
                     
@@ -665,7 +668,7 @@
 <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-68ec17"
+                    id="example-c23618"
                     class="code-preview code-preview--default"
                     
                     
@@ -678,10 +681,30 @@
                 </div>
             <p><code>skipLink</code> kunde tidigare ta ett <code>boolean</code> värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng <code>&quot;&quot;</code> för att stänga av.</p>
-<h2 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
+<h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
                 <div
-                    id="example-b251e6"
+                    id="example-236e54"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const textContent = getTextFromScopedSlot(slot);</span>
+<span class="hljs-addition">+const textContent = renderSlotText(slot);</span>
+</code></pre>
+                </div>
+            
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p>Tänk på att <code>renderSlotText(..)</code> returnerar <code>null</code> om slotten inte finns eller är tom till skillnad från <code>getTextFromScopedSlot(..)</code> som returnerar en tom sträng <code>&quot;&quot;</code> istället.</p>
+
+            </div>
+        <h2 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
+
+                <div
+                    id="example-9bfa94"
                     class="code-preview code-preview--default"
                     
                     
@@ -714,7 +737,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 <h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><h3 id="validator_personnummer"><a class="header-anchor" href="#validator_personnummer">Validator <code>personnummer</code></a></h3><p>Den deprekerade validatorn <code>personnummer</code> är borttagen och ersätts med validatorerna <a href="../../components/validation/validators.html#personnummer_format_personnummerformat"><code>personnummerFormat</code></a> och <a href="../../components/validation/validators.html#personnummer_checksumma_personnummerluhn"><code>personnummerLuhn</code></a>.</p>
 
                 <div
-                    id="example-0ee191"
+                    id="example-f6c863"
                     class="code-preview code-preview--default"
                     
                     
@@ -749,9 +772,9 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/config-changes (<a href="https://github.com/Forsakringskassan/designsystem/commits/cdba05796e28848f4cb8edb46cc702484da5ed92">cdba057</a>)<br />
+    feature/config-changes (<a href="https://github.com/Forsakringskassan/designsystem/commits/d10ff42cc53a17d3afd0fba5300615066a7f890d">d10ff42</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/246">PR 246</a><br />
-        2025-02-03 17:51
+        2025-02-04 07:58
 </div>
 <div class="toolbar__item">
     <form id="version">

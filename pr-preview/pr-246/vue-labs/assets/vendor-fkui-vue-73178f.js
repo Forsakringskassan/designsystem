@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -142,7 +142,6 @@
     getParentByName: () => getParentByName,
     getRef: () => getRef,
     getSortedHTMLElementsFromVueRef: () => getSortedHTMLElementsFromVueRef,
-    getTextFromScopedSlot: () => getTextFromScopedSlot,
     handleKeyboardFocusNavigation: () => handleKeyboardFocusNavigation,
     hasParentByName: () => hasParentByName,
     hasSlot: () => hasSlot,
@@ -3522,56 +3521,6 @@
   function tableScrollClasses(val) {
     return scrollClasses[val];
   }
-  var defaultOptions = {
-    stripClasses: ["sr-only"]
-  };
-  function collapseWhitespace(text) {
-    return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
-  }
-  function intersection(a, b) {
-    return a.filter((it) => b.includes(it));
-  }
-  function excludeClass(exclude) {
-    return (node) => {
-      var _a;
-      if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
-        return true;
-      }
-      const classes = node.props.class.split(/\s+/);
-      const matches = intersection(classes, exclude);
-      return matches.length === 0;
-    };
-  }
-  function excludeComment(node) {
-    return node.type !== import_vue.Comment;
-  }
-  function getTextContent(children, options) {
-    return children.filter(import_vue.isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
-      if (Array.isArray(child.children)) {
-        return getTextContent(child.children, options);
-      }
-      if (typeof child.children === "string") {
-        return child.children;
-      }
-    }).join("");
-  }
-  function renderSlotText(render, props = {}, options) {
-    if (!render) {
-      return void 0;
-    }
-    const nodes = render(props);
-    if (nodes.length === 0) {
-      return void 0;
-    }
-    return collapseWhitespace(getTextContent(nodes, {
-      ...defaultOptions,
-      ...options
-    }));
-  }
-  function getTextFromScopedSlot(slot) {
-    var _renderSlotText;
-    return (_renderSlotText = renderSlotText(slot)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
-  }
   function dispatchComponentValidityEvent(element, detail) {
     element.dispatchEvent(new CustomEvent("component-validity", {
       detail,
@@ -5113,6 +5062,52 @@
       throw new Error(`Could not find input element from element "${tag}#${id}"`);
     }
     return inputElement;
+  }
+  var defaultOptions = {
+    stripClasses: ["sr-only"]
+  };
+  function collapseWhitespace(text) {
+    return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+  }
+  function intersection(a, b) {
+    return a.filter((it) => b.includes(it));
+  }
+  function excludeClass(exclude) {
+    return (node) => {
+      var _a;
+      if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
+        return true;
+      }
+      const classes = node.props.class.split(/\s+/);
+      const matches = intersection(classes, exclude);
+      return matches.length === 0;
+    };
+  }
+  function excludeComment(node) {
+    return node.type !== import_vue.Comment;
+  }
+  function getTextContent(children, options) {
+    return children.filter(import_vue.isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
+      if (Array.isArray(child.children)) {
+        return getTextContent(child.children, options);
+      }
+      if (typeof child.children === "string") {
+        return child.children;
+      }
+    }).join("");
+  }
+  function renderSlotText(render, props = {}, options) {
+    if (!render) {
+      return void 0;
+    }
+    const nodes = render(props);
+    if (nodes.length === 0) {
+      return void 0;
+    }
+    return collapseWhitespace(getTextContent(nodes, {
+      ...defaultOptions,
+      ...options
+    }));
   }
   function hasSlot(vm, name, props = {}, options = {}) {
     const slot = vm.$slots[name];
