@@ -8679,3 +8679,18 @@ footer .version {
 footer #version-dialog .list__item {
   margin: 0;
 }
+
+.table_row_removed {
+  background: #e48a8a;
+  color: #1b1e23;
+}
+
+.table_row_support {
+  background: #ffdf87;
+  color: #1b1e23;
+}
+
+.table_row_active {
+  background: #88b49f;
+  color: #1b1e23;
+}

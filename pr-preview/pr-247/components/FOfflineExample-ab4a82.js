@@ -2026,8 +2026,6 @@
   var config = {
     buttonOrder: 0 /* LEFT_TO_RIGHT */,
     teleportTarget: document.body,
-    modalTarget: null,
-    popupTarget: null,
     get popupContainer() {
       if (typeof popupContainer === "string") {
         const element = document.querySelector(popupContainer);
