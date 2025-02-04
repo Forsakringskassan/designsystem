@@ -18660,7 +18660,7 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$F, [["render", _sfc_r
       default: TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du måste skriva in den igen.")
     }
   },
-  emits: ["blur", "change", "update", "update:modelValue"],
+  emits: ["blur", "change", "update:modelValue"],
   data() {
     return {
       validityMode: "INITIAL",
@@ -18681,7 +18681,6 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$F, [["render", _sfc_r
     },
     onUpdate(event) {
       this.$emit("update:modelValue", event);
-      this.$emit("update", event);
     },
     onPaste(event) {
       this.showPasteErrorMessage = true;
