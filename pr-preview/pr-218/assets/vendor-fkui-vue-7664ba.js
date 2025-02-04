@@ -3658,7 +3658,6 @@
     return FKUIConfigButtonOrder2;
   })(FKUIConfigButtonOrder || {});
   var popupContainer = document.body;
-  var production = true;
   var config = {
     buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
     teleportTarget: document.body,
@@ -3675,13 +3674,6 @@
     },
     set popupContainer(value) {
       popupContainer = value;
-    },
-    set production(value) {
-      production = value;
-      import_logic.configLogic.production = value;
-    },
-    get production() {
-      return production;
     }
   };
   function setRunningContext(app) {
@@ -5165,7 +5157,7 @@
     if ("object" != _typeof(t) || !t) return t;
     var e = t[Symbol.toPrimitive];
     if (void 0 !== e) {
-      var i = e.call(t, r || "default");
+      var i = e.call(t, r);
       if ("object" != _typeof(i)) return i;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
