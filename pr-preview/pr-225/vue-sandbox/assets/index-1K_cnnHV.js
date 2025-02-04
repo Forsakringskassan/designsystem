@@ -14396,7 +14396,6 @@ let popupContainer = document.body;
 const config = {
   buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
   teleportTarget: document.body,
-  popupTarget: null,
   get popupContainer() {
     if (typeof popupContainer === "string") {
       const element = document.querySelector(popupContainer);
@@ -16387,10 +16386,7 @@ const _sfc_main$R = /* @__PURE__ */ defineComponent({
     const wrapperRef = useTemplateRef("wrapper");
     const contentRef = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
-    const teleportTarget = computed(() => {
-      var _config$popupTarget;
-      return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
-    });
+    const teleportTarget = computed(() => config.teleportTarget);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -18653,7 +18649,7 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$C, [["render", _sfc_r
       default: TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du måste skriva in den igen.")
     }
   },
-  emits: ["blur", "change", "update", "update:modelValue"],
+  emits: ["blur", "change", "update:modelValue"],
   data() {
     return {
       validityMode: "INITIAL",
@@ -18674,7 +18670,6 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$C, [["render", _sfc_r
     },
     onUpdate(event) {
       this.$emit("update:modelValue", event);
-      this.$emit("update", event);
     },
     onPaste(event) {
       this.showPasteErrorMessage = true;

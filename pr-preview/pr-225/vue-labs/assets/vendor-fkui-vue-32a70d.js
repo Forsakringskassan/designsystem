@@ -3650,8 +3650,6 @@
   var config = {
     buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
     teleportTarget: document.body,
-    modalTarget: null,
-    popupTarget: null,
     get popupContainer() {
       if (typeof popupContainer === "string") {
         const element = document.querySelector(popupContainer);
@@ -3747,7 +3745,6 @@
     };
   }
   function openModal(callingInstance, Component, options) {
-    var _config$modalTarget;
     if (typeof options === "string") {
       return openModal(callingInstance, Component, {
         props: {
@@ -3756,7 +3753,7 @@
       });
     }
     const defaultOptions2 = {
-      attachTo: (_config$modalTarget = config.modalTarget) !== null && _config$modalTarget !== void 0 ? _config$modalTarget : config.teleportTarget,
+      attachTo: config.teleportTarget,
       props: {}
     };
     const {
@@ -6682,8 +6679,7 @@
         return this.inline === "never";
       },
       teleportTarget() {
-        var _config$popupTarget;
-        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
+        return config.teleportTarget;
       }
     },
     watch: {
@@ -7187,10 +7183,7 @@
       const wrapperRef = (0, import_vue.useTemplateRef)("wrapper");
       const contentRef = (0, import_vue.useTemplateRef)("content");
       const popupClasses = ["popup", "popup--overlay"];
-      const teleportTarget = (0, import_vue.computed)(() => {
-        var _config$popupTarget;
-        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
-      });
+      const teleportTarget = (0, import_vue.computed)(() => config.teleportTarget);
       let guessedItemHeight = void 0;
       let verticalSpacing = void 0;
       useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -10820,7 +10813,7 @@
         default: import_logic.TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du m\xE5ste skriva in den igen.")
       }
     },
-    emits: ["blur", "change", "update", "update:modelValue"],
+    emits: ["blur", "change", "update:modelValue"],
     data() {
       return {
         validityMode: "INITIAL",
@@ -10841,7 +10834,6 @@
       },
       onUpdate(event) {
         this.$emit("update:modelValue", event);
-        this.$emit("update", event);
       },
       onPaste(event) {
         this.showPasteErrorMessage = true;
@@ -10904,14 +10896,14 @@
       "model-value": _ctx.modelValue,
       onChange: _ctx.onChange,
       onBlur: _ctx.onBlur,
-      onUpdate: _ctx.onUpdate,
+      "onUpdate:modelValue": _ctx.onUpdate,
       onValidity: _ctx.onValidity,
       onPendingValidity: _ctx.onPendingValidity
     }), {
       "error-message": (0, import_vue.withCtx)(() => [_ctx.showPasteErrorMessage ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_1$q, (0, import_vue.toDisplayString)(_ctx.pasteErrorText), 1)) : (0, import_vue.createCommentVNode)("", true)]),
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.defaultText), 1)]), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)())]),
       _: 3
-    }, 16, ["id", "maxlength", "model-value", "onChange", "onBlur", "onUpdate", "onValidity", "onPendingValidity"]), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), _ctx.extendedValidation ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_text_field, {
+    }, 16, ["id", "maxlength", "model-value", "onChange", "onBlur", "onUpdate:modelValue", "onValidity", "onPendingValidity"]), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), _ctx.extendedValidation ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_text_field, {
       key: 0,
       modelValue: _ctx.secondEmail,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.secondEmail = $event),
@@ -10962,7 +10954,7 @@
         default: false
       }
     },
-    emits: ["blur", "change", "update", "update:modelValue"],
+    emits: ["blur", "change", "update:modelValue"],
     data() {
       return {
         validityMode: "INITIAL",
@@ -10982,7 +10974,6 @@
       },
       onUpdate(event) {
         this.$emit("update:modelValue", event);
-        this.$emit("update", event);
       },
       onValidity({
         detail
@@ -11036,13 +11027,13 @@
       "model-value": _ctx.modelValue,
       onChange: _ctx.onChange,
       onBlur: _ctx.onBlur,
-      onUpdate: _ctx.onUpdate,
+      "onUpdate:modelValue": _ctx.onUpdate,
       onValidity: _ctx.onValidity,
       onPendingValidity: _ctx.onPendingValidity
     }), {
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.defaultText), 1)])]),
       _: 3
-    }, 16, ["id", "maxlength", "model-value", "onChange", "onBlur", "onUpdate", "onValidity", "onPendingValidity"]), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _ctx.extendedValidation ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_text_field, {
+    }, 16, ["id", "maxlength", "model-value", "onChange", "onBlur", "onUpdate:modelValue", "onValidity", "onPendingValidity"]), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _ctx.extendedValidation ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_text_field, {
       key: 0,
       modelValue: _ctx.secondPhone,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.secondPhone = $event),
