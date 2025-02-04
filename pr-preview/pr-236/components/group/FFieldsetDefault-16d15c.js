@@ -61,7 +61,10 @@
         )
       ]),
       tooltip: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createVNode)(_component_f_tooltip, { "screen-reader-text": "L\xE4s mer om Bor det barn som har fyllt 18 \xE5r i bostaden?" }, {
+        (0, import_vue5.createVNode)(_component_f_tooltip, {
+          "screen-reader-text": "L\xE4s mer om Bor det barn som har fyllt 18 \xE5r i bostaden?",
+          "header-tag": "h2"
+        }, {
           header: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)(" Lite allm\xE4n information ")
           ])),

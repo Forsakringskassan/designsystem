@@ -70,6 +70,7 @@
                 <template #tooltip>
                     <f-tooltip
                         screen-reader-text="L\xE4s mer om Bor det barn som har fyllt 18 \xE5r i bostaden?"
+                        header-tag="h2"
                     >
                         <template #header> Bor det barn som har fyllt 18 \xE5r i bostaden? </template>
                         <template #body>

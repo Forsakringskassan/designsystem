@@ -805,7 +805,10 @@
                         (0, import_vue8.createTextVNode)(" Civiltillst\xE5nd ")
                       ])),
                       tooltip: (0, import_vue8.withCtx)(() => [
-                        (0, import_vue8.createVNode)(_component_f_tooltip, { "screen-reader-text": "L\xE4s mer om civiltillst\xE5nd" }, {
+                        (0, import_vue8.createVNode)(_component_f_tooltip, {
+                          "screen-reader-text": "L\xE4s mer om civiltillst\xE5nd",
+                          "header-tag": "h2"
+                        }, {
                           header: (0, import_vue8.withCtx)(() => _cache[46] || (_cache[46] = [
                             (0, import_vue8.createTextVNode)(" Civiltillst\xE5nd ")
                           ])),

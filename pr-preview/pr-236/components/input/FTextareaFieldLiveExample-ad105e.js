@@ -79,7 +79,7 @@
           /* HTML */
           `
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="Text f\xF6r sk\xE4rml\xE4sare">
+                    <f-tooltip screen-reader-text="Text f\xF6r sk\xE4rml\xE4sare" header-tag="h2">
                         <template #header> Header </template>
                         <template #body> Body </template>
                     </f-tooltip>

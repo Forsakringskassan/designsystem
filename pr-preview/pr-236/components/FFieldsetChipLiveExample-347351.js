@@ -65,7 +65,7 @@
           /* HTML */
           `
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="L\xE4s mer om Broschyrer">
+                    <f-tooltip screen-reader-text="L\xE4s mer om Broschyrer" header-tag="h2">
                         <template #header> Header </template>
                         <template #body> Body </template>
                     </f-tooltip>
@@ -112,7 +112,7 @@
                 >
                     Ytterligare alternativ
                 </${this.componentType}>
-                
+
                 <${this.componentType}
                     v-model="choices"
                     value="Sista"
