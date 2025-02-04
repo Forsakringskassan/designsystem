@@ -7602,9 +7602,6 @@ if (document.readyState === "loading") {
 } else {
   injectSpritesheet();
 }
-const configLogic = {
-  production: true
-};
 function isEmpty(value) {
   return !value;
 }
@@ -9435,21 +9432,17 @@ function pushFocus(element) {
 function popFocus(handle) {
   if (_focusElementStack.length === 0) {
     const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
-    if (configLogic.production) {
+    {
       console.error(emptyStackErrorMsg);
       return;
-    } else {
-      throw new Error(emptyStackErrorMsg);
     }
   }
   const top = _focusElementStack.pop();
   if ((top == null ? void 0 : top.id) !== handle[sym]) {
     const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top == null ? void 0 : top.id} but got ${handle[sym]}`;
-    if (configLogic.production) {
+    {
       console.error(outOfOrderErrorMsg);
       return;
-    } else {
-      throw new Error(outOfOrderErrorMsg);
     }
   }
   focus$1(top == null ? void 0 : top.element);
@@ -9704,12 +9697,6 @@ class ValidationServiceImpl {
       createFieldsetValidator(element, this);
     }
     this.setRequiredAttribute(element, validatorConfigs);
-    if (validatorConfigs["personnummer"] !== void 0) {
-      const oldConfig = validatorConfigs["personnummer"];
-      validatorConfigs["personnummerFormat"] = oldConfig;
-      validatorConfigs["personnummerLuhn"] = oldConfig;
-      delete validatorConfigs.personnummer;
-    }
     const foundValidators = this.getValidators(validatorConfigs);
     if (foundValidators.length > 0) {
       element.dataset.validation = "";
@@ -12424,7 +12411,7 @@ const _export_sfc$1 = (sfc, props) => {
 };
 const _hoisted_1$T = ["aria-hidden"];
 const _hoisted_2$F = ["xlink:href"];
-function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
     focusable: "false",
     class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
@@ -12433,7 +12420,7 @@ function _sfc_render$X(_ctx, _cache, $props, $setup, $data, $options) {
     "xlink:href": _ctx.spriteId
   }, null, 8, _hoisted_2$F)], 16, _hoisted_1$T);
 }
-const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$X]]);
+const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$W]]);
 const DATA_TEST_ATTRIBUTE_NAME = "data-test";
 function throwErrorIfEmpty(value) {
   if (!value) {
@@ -14337,52 +14324,6 @@ const scrollClasses = {
 function tableScrollClasses(val) {
   return scrollClasses[val];
 }
-const defaultOptions = {
-  stripClasses: ["sr-only"]
-};
-function collapseWhitespace(text) {
-  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
-}
-function intersection(a, b) {
-  return a.filter((it) => b.includes(it));
-}
-function excludeClass(exclude) {
-  return (node) => {
-    var _a;
-    if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
-      return true;
-    }
-    const classes = node.props.class.split(/\s+/);
-    const matches = intersection(classes, exclude);
-    return matches.length === 0;
-  };
-}
-function excludeComment(node) {
-  return node.type !== Comment;
-}
-function getTextContent(children, options) {
-  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
-    if (Array.isArray(child.children)) {
-      return getTextContent(child.children, options);
-    }
-    if (typeof child.children === "string") {
-      return child.children;
-    }
-  }).join("");
-}
-function renderSlotText(render, props = {}, options) {
-  if (!render) {
-    return void 0;
-  }
-  const nodes = render(props);
-  if (nodes.length === 0) {
-    return void 0;
-  }
-  return collapseWhitespace(getTextContent(nodes, {
-    ...defaultOptions,
-    ...options
-  }));
-}
 function dispatchComponentValidityEvent(element, detail) {
   element.dispatchEvent(new CustomEvent("component-validity", {
     detail,
@@ -14452,11 +14393,9 @@ var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
   return FKUIConfigButtonOrder2;
 })(FKUIConfigButtonOrder || {});
 let popupContainer = document.body;
-let production = true;
 const config = {
   buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
   teleportTarget: document.body,
-  modalTarget: null,
   popupTarget: null,
   get popupContainer() {
     if (typeof popupContainer === "string") {
@@ -14471,13 +14410,6 @@ const config = {
   },
   set popupContainer(value) {
     popupContainer = value;
-  },
-  set production(value) {
-    production = value;
-    configLogic.production = value;
-  },
-  get production() {
-    return production;
   }
 };
 function setRunningContext(app2) {
@@ -14735,7 +14667,7 @@ const _hoisted_10$4 = {
   class: "modal__shelf"
 };
 const _hoisted_11$3 = ["aria-label"];
-function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -14765,7 +14697,7 @@ function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
     onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$S)) : createCommentVNode("", true);
 }
-const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$W]]);
+const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$V]]);
 function prepareButtonList(src, buttonOrder = config.buttonOrder) {
   const list = src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
@@ -14906,7 +14838,7 @@ const _hoisted_3$v = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
     fullscreen: _ctx.fullscreen,
@@ -14930,7 +14862,7 @@ function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
-const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$V]]);
+const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$U]]);
 const GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 const ALIGNMENT = ["top", "center", "bottom"];
 const FLOAT = ["left", "center", "right"];
@@ -15009,12 +14941,12 @@ const _sfc_main$16 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$U]]);
+const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$T]]);
 const _sfc_main$15 = /* @__PURE__ */ defineComponent({
   name: "IFlexItem",
   inheritAttrs: true,
@@ -15062,12 +14994,12 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex__item", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$T]]);
+const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$S]]);
 function focusError(item) {
   const element = document.querySelector(`#${item.id}`);
   if (!element) {
@@ -15146,7 +15078,7 @@ const _hoisted_4$p = ["onClick"];
 const _hoisted_5$k = {
   class: "error-list__link"
 };
-function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
@@ -15200,7 +15132,7 @@ function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })]);
 }
-const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$S]]);
+const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$R]]);
 function cleanUpElements(vm) {
   return new Promise((resolve2) => {
     window.setTimeout(() => {
@@ -15284,13 +15216,13 @@ const _sfc_main$13 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
     onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
   }, [renderSlot(_ctx.$slots, "default")], 32);
 }
-const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$R]]);
+const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$Q]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -15442,7 +15374,7 @@ const _hoisted_2$B = {
   tabindex: "-1",
   role: "group"
 };
-function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = resolveComponent("f-error-list");
   const _component_f_validation_group = resolveComponent("f-validation-group");
   return openBlock(), createBlock(_component_f_validation_group, {
@@ -15468,7 +15400,7 @@ function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["modelValue"]);
 }
-const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$12, [["render", _sfc_render$Q]]);
+const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$12, [["render", _sfc_render$P]]);
 const _sfc_main$11 = /* @__PURE__ */ defineComponent({
   name: "FFormModal",
   components: {
@@ -15626,7 +15558,7 @@ const _hoisted_3$t = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = resolveComponent("f-validation-form");
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
@@ -15662,7 +15594,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
-const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$11, [["render", _sfc_render$P]]);
+const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$11, [["render", _sfc_render$O]]);
 function isVueComponent(element) {
   return Boolean(element && typeof element === "object" && "$el" in element);
 }
@@ -15681,6 +15613,52 @@ function focus(element, options = {}) {
   }
   return false;
 }
+const defaultOptions = {
+  stripClasses: ["sr-only"]
+};
+function collapseWhitespace(text) {
+  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+}
+function intersection(a, b) {
+  return a.filter((it) => b.includes(it));
+}
+function excludeClass(exclude) {
+  return (node) => {
+    var _a;
+    if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
+      return true;
+    }
+    const classes = node.props.class.split(/\s+/);
+    const matches = intersection(classes, exclude);
+    return matches.length === 0;
+  };
+}
+function excludeComment(node) {
+  return node.type !== Comment;
+}
+function getTextContent(children, options) {
+  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
+    if (Array.isArray(child.children)) {
+      return getTextContent(child.children, options);
+    }
+    if (typeof child.children === "string") {
+      return child.children;
+    }
+  }).join("");
+}
+function renderSlotText(render, props = {}, options) {
+  if (!render) {
+    return void 0;
+  }
+  const nodes = render(props);
+  if (nodes.length === 0) {
+    return void 0;
+  }
+  return collapseWhitespace(getTextContent(nodes, {
+    ...defaultOptions,
+    ...options
+  }));
+}
 function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
   return Boolean(renderSlotText(slot, props, options));
@@ -15697,7 +15675,7 @@ function toPrimitive(t, r) {
   if ("object" != _typeof(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r || "default");
+    var i = e.call(t, r);
     if ("object" != _typeof(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
@@ -15864,7 +15842,7 @@ const _sfc_main$U = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Transition, {
     onEnter: _ctx.enter,
     onAfterEnter: _ctx.afterEnter,
@@ -15876,7 +15854,7 @@ function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
-const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$U, [["render", _sfc_render$H]]);
+const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$U, [["render", _sfc_render$G]]);
 var Placement = /* @__PURE__ */ ((Placement2) => {
   Placement2["A"] = "A";
   Placement2["B"] = "B";
@@ -16294,7 +16272,7 @@ const _hoisted_1$G = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
-function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
     key: 0,
@@ -16318,7 +16296,7 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     class: "button__icon"
   })])], 6)], 512)], 2)], 8, ["disabled"])) : createCommentVNode("", true);
 }
-const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$S, [["render", _sfc_render$F]]);
+const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$S, [["render", _sfc_render$E]]);
 function numItems(itemHeight, availableHeight, verticalSpacing) {
   const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
   return Math.min(itemsFit, 7);
@@ -16653,7 +16631,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
       close();
       filter2.value = selectedOption.value;
       selectMode.value = true;
-      {
+      if (onOptionSelected) {
         onOptionSelected(value);
       }
     }
@@ -17349,7 +17327,7 @@ const _hoisted_4$i = {
   key: 0,
   class: "checkbox__details"
 };
-function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["checkbox", _ctx.disabledClass]),
     onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -17379,7 +17357,7 @@ function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$q)], 34);
 }
-const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$J, [["render", _sfc_render$z]]);
+const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$J, [["render", _sfc_render$y]]);
 var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["ADD"] = 0] = "ADD";
   Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -17929,7 +17907,7 @@ const _hoisted_7$b = {
   key: 0,
   class: "label__message label__message--error"
 };
-function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$t, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$n, [createBaseVNode("label", {
     class: "label",
@@ -17956,7 +17934,7 @@ function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$b));
 }
-const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_render$u]]);
+const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_render$t]]);
 function resolveWidthClass$1(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -18092,7 +18070,7 @@ const _sfc_main$D = /* @__PURE__ */ defineComponent({
   }
 });
 const _hoisted_1$s = ["id"];
-function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   return openBlock(), createElementBlock("div", {
@@ -18139,7 +18117,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     name: "arrow-down"
   })], 2)], 34);
 }
-const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$D, [["render", _sfc_render$t]]);
+const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$D, [["render", _sfc_render$s]]);
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -18545,7 +18523,7 @@ const _hoisted_7$a = {
   key: 3,
   class: "text-field__append-inner"
 };
-function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_popup_error = resolveComponent("i-popup-error");
@@ -18628,7 +18606,7 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.onDropdownClose
   }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node", "onSelect", "onClose"])) : createCommentVNode("", true)], 2);
 }
-const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$C, [["render", _sfc_render$s]]);
+const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$C, [["render", _sfc_render$r]]);
 /* @__PURE__ */ defineComponent({
   name: "FEmailTextField",
   components: {

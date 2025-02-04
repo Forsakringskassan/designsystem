@@ -1063,9 +1063,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-03946e.js"
+                    src="../../assets/vendor-fkui-logic-6f2b47.js"
                     crossorigin
-                    integrity="sha384-MjbLaPh5Rj6KDj3grAadA2u3HUe627gTHTAhzmAjneRxHA0b/I+3qdeyZy7Nw1PY"
+                    integrity="sha384-JTgf5ROK4c7RrscL6b36jJvv8rfbKKXNoFSxQ15246OKnSARP2cw0TToVuWhV60u"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1073,9 +1073,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-5f6dbc.js"
+                    src="../../assets/vendor-fkui-vue-221e40.js"
                     crossorigin
-                    integrity="sha384-aUS6XrGR/dL69Omuc/idNDJ5bs2pqgfayXCwymEtlZLoiYz+yNmlWVg4x1NKSeYU"
+                    integrity="sha384-/+ZqOKC9yECA04+y/oLwU3Fx9TYK2jvYcd6LmgP2hQv42RTa7q+eFshoo+lT/4x4"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1098,7 +1098,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/bb6cce2d558936082ff68ca27883fe869debf034/packages/vue/src/components/FProgressbar/FProgressbar.vue">FProgressbar</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/018b30242f6aba62550471349485bfc5b87b1c95/packages/vue/src/components/FProgressbar/FProgressbar.vue">FProgressbar</a>
             
         </code>
          
@@ -1147,7 +1147,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FProgressbarExample-80c9c7.js"></script>
+        <script defer src="./FProgressbarExample-970bb6.js"></script>
     </div>
                 <div>
             <button
@@ -1177,8 +1177,8 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>
             <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-data&quot;</span>
         &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Debug-data: <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>value: {{currentProgress}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>Decrease<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;increase&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;decrease&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>Decrease<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
             Progress:
             <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">&quot;currentProgress&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
@@ -1212,17 +1212,21 @@
                 </div>
             </div>
         <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>value</p>
-</td><td><p>Sets the progress. Higher value indicates further progress. Value must be in range 0-100.</p>
+</td><td><p>Sets the progress. Higher value indicates further progress.</p>
+<p>Value must be in range 0-100.</p>
 </td><td><p>number</p>
 </td><td><p>true</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>valueText</p>
-</td><td><p>Text that the screenreader will read, the actual value will be replaced with %VALUE%  e.g  You have uploaded %VALUE% percent</p>
+</td><td><p>Text that the screenreader will read.</p>
+<p><code>%VALUE%</code> can be used as a placeholder for the actual value e.g<br>
+<code>&quot;You have uploaded %VALUE% percent&quot;</code>.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;Du har slutfört %VALUE% %.&quot;</p>
-</td></tr><tr><td><p>ariaLabel</p>
-</td><td><p>‐</p>
+</td></tr><tr><td><p>aria-label</p>
+</td><td><p>Accessible name for this progressbar. Should describe the purpose of this<br>
+progressbar.</p>
 </td><td><p>string</p>
 </td><td><p>true</p>
 </td><td><p>‐</p>
@@ -1247,9 +1251,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/bb6cce2d558936082ff68ca27883fe869debf034">bb6cce2</a>)<br />
+    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/018b30242f6aba62550471349485bfc5b87b1c95">018b302</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/225">PR 225</a><br />
-        2025-01-31 11:45
+        2025-02-04 08:21
 </div>
 <div class="toolbar__item">
     <form id="version">

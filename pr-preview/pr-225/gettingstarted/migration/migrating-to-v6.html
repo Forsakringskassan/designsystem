@@ -539,9 +539,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-03946e.js"
+                    src="../../assets/vendor-fkui-logic-6f2b47.js"
                     crossorigin
-                    integrity="sha384-MjbLaPh5Rj6KDj3grAadA2u3HUe627gTHTAhzmAjneRxHA0b/I+3qdeyZy7Nw1PY"
+                    integrity="sha384-JTgf5ROK4c7RrscL6b36jJvv8rfbKKXNoFSxQ15246OKnSARP2cw0TToVuWhV60u"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-5f6dbc.js"
+                    src="../../assets/vendor-fkui-vue-221e40.js"
                     crossorigin
-                    integrity="sha384-aUS6XrGR/dL69Omuc/idNDJ5bs2pqgfayXCwymEtlZLoiYz+yNmlWVg4x1NKSeYU"
+                    integrity="sha384-/+ZqOKC9yECA04+y/oLwU3Fx9TYK2jvYcd6LmgP2hQv42RTa7q+eFshoo+lT/4x4"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -582,9 +582,15 @@
                                 
                                 <li><a href="#fformmodal_slots">FFormModal slots</a></li>
                                 
+                                <li><a href="#fpageheader_skiplink">`FPageHeader` skiplink</a></li>
+                                
+                                <li><a href="#gettextfromscopedslot">`getTextFromScopedSlot`</a></li>
+                                
                                 <li><a href="#fform_fformstep_och_fformstepbutton">`FForm`, `FFormStep` och `FFormStepButton`</a></li>
                                 
                                 <li><a href="#pageobjects">Pageobjects</a></li>
+                                
+                                <li><a href="#validationservice">ValidationService</a></li>
                                 
                             </ul>
                         </details>
@@ -622,10 +628,16 @@
 <p>Ändringar i komponenter och funktioner:</p>
 <ul>
 <li><code>FFormModal</code>: slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna.</li>
+<li><code>FPageHeader</code>: propen <code>skipLinkHref</code> är borttagen</li>
+<li><code>getTextFromScopedSlot</code>: funktionen är borttagen.</li>
 </ul>
 <p>För Cypress pageobjekt:</p>
 <ul>
 <li><code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).</li>
+</ul>
+<p>Följande deprekerade validatorer har tagits bort:</p>
+<ul>
+<li><code>personnummer</code></li>
 </ul>
 <h2 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h2><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
 <p>Det deprekerade aliaset <code>FCheckboxGroupField</code> har tagits bort och är ersatt med <code>FCheckboxField</code>.</p>
@@ -635,7 +647,7 @@
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-dc84d9"
+                    id="example-040137"
                     class="code-preview code-preview--default"
                     
                     
@@ -670,7 +682,43 @@
                 </div>
             <p>Om du använder <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal(..)</code></a> (rekommenderat) för att anropa modalen behövs inga ändringar.</p>
 <p>Om du använder template-syntax för att anropa <code>FFormModal</code> direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.</p>
-<h2 id="fform_fformstep_och_fformstepbutton"><a class="header-anchor" href="#fform_fformstep_och_fformstepbutton"><code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code></a></h2><p>De deprekerade komponenterna <code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code> har tagits bort.
+<h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
+
+                <div
+                    id="example-049eff"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-page-header skip-link skip-link-href=&quot;awesome-id&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-page-header skip-link=&quot;awesome-id&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p><code>skipLink</code> kunde tidigare ta ett <code>boolean</code> värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
+Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng <code>&quot;&quot;</code> för att stänga av.</p>
+<h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+
+                <div
+                    id="example-ce8930"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const textContent = getTextFromScopedSlot(slot);</span>
+<span class="hljs-addition">+const textContent = renderSlotText(slot);</span>
+</code></pre>
+                </div>
+            
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p>Tänk på att <code>renderSlotText(..)</code> returnerar <code>null</code> om slotten inte finns eller är tom till skillnad från <code>getTextFromScopedSlot(..)</code> som returnerar en tom sträng <code>&quot;&quot;</code> istället.</p>
+
+            </div>
+        <h2 id="fform_fformstep_och_fformstepbutton"><a class="header-anchor" href="#fform_fformstep_och_fformstepbutton"><code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code></a></h2><p>De deprekerade komponenterna <code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code> har tagits bort.
 Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <code>FValidationForm</code>, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av <code>FForm</code>.</p>
 <p>Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:</p>
 <ul>
@@ -693,7 +741,24 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 <li>För <code>FRadioFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
 <li>För <code>FSelectFieldPageObject</code> ersätt med <code>.selectedOption().should(..)</code>.</li>
 </ul>
+<h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><h3 id="validator_personnummer"><a class="header-anchor" href="#validator_personnummer">Validator <code>personnummer</code></a></h3><p>Den deprekerade validatorn <code>personnummer</code> är borttagen och ersätts med validatorerna <a href="../../components/validation/validators.html#personnummer_format_personnummerformat"><code>personnummerFormat</code></a> och <a href="../../components/validation/validators.html#personnummer_checksumma_personnummerluhn"><code>personnummerLuhn</code></a>.</p>
 
+                <div
+                    id="example-254f6b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">    &lt;f-text-field
+        v-model=&quot;personnummerModel&quot;
+<span class="hljs-deletion">-       v-validation.personnummer</span>
+<span class="hljs-addition">+       v-validation.personnummerFormat.personnummerLuhn</span>
+    &gt;
+</code></pre>
+                </div>
+            
 
                     </div>
                 </main>
@@ -714,9 +779,9 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/bb6cce2d558936082ff68ca27883fe869debf034">bb6cce2</a>)<br />
+    feature/remove-fform (<a href="https://github.com/Forsakringskassan/designsystem/commits/018b30242f6aba62550471349485bfc5b87b1c95">018b302</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/225">PR 225</a><br />
-        2025-01-31 11:45
+        2025-02-04 08:21
 </div>
 <div class="toolbar__item">
     <form id="version">
