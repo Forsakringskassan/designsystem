@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -3658,12 +3658,9 @@
     return FKUIConfigButtonOrder2;
   })(FKUIConfigButtonOrder || {});
   var popupContainer = document.body;
-  var production = true;
   var config = {
     buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
     teleportTarget: document.body,
-    modalTarget: null,
-    popupTarget: null,
     get popupContainer() {
       if (typeof popupContainer === "string") {
         const element = document.querySelector(popupContainer);
@@ -3677,13 +3674,6 @@
     },
     set popupContainer(value) {
       popupContainer = value;
-    },
-    set production(value) {
-      production = value;
-      import_logic.configLogic.production = value;
-    },
-    get production() {
-      return production;
     }
   };
   function setRunningContext(app) {
@@ -3766,7 +3756,6 @@
     };
   }
   function openModal(callingInstance, Component, options) {
-    var _config$modalTarget;
     if (typeof options === "string") {
       return openModal(callingInstance, Component, {
         props: {
@@ -3775,7 +3764,7 @@
       });
     }
     const defaultOptions2 = {
-      attachTo: (_config$modalTarget = config.modalTarget) !== null && _config$modalTarget !== void 0 ? _config$modalTarget : config.teleportTarget,
+      attachTo: config.teleportTarget,
       props: {}
     };
     const {
@@ -5168,7 +5157,7 @@
     if ("object" != _typeof(t) || !t) return t;
     var e = t[Symbol.toPrimitive];
     if (void 0 !== e) {
-      var i = e.call(t, r || "default");
+      var i = e.call(t, r);
       if ("object" != _typeof(i)) return i;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
@@ -6728,8 +6717,7 @@
         return this.inline === "never";
       },
       teleportTarget() {
-        var _config$popupTarget;
-        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
+        return config.teleportTarget;
       }
     },
     watch: {
@@ -7233,10 +7221,7 @@
       const wrapperRef = (0, import_vue.useTemplateRef)("wrapper");
       const contentRef = (0, import_vue.useTemplateRef)("content");
       const popupClasses = ["popup", "popup--overlay"];
-      const teleportTarget = (0, import_vue.computed)(() => {
-        var _config$popupTarget;
-        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
-      });
+      const teleportTarget = (0, import_vue.computed)(() => config.teleportTarget);
       let guessedItemHeight = void 0;
       let verticalSpacing = void 0;
       useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -8441,10 +8426,11 @@
        * - `h6`
        */
       headerTag: {
-        default: "",
+        type: String,
+        default: void 0,
         required: false,
         validator(value) {
-          return ["h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
+          return [void 0, "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
         }
       }
     },
