@@ -4,6 +4,38 @@ name: news
 layout: content-with-menu
 ---
 
+## Ny release med brytande ändringar
+
+Version: 6.0.0 <br>
+2025-02-10
+
+Releasen innehåller bland annat följande uppdateringar:
+
+- Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
+  De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.
+
+- Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället {@link migrating-to-fieldset FFieldset}.
+
+- Modal: De deprekerade slottarna submit-button-text och cancel-button-text är borttagna och ersatt med propen buttons.
+  Ett antal deprekerade CSS-klasser är också borttagna.
+  Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+  Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.
+
+- Sidhuvud: Den deprekerade propen skipLinkHref är borttagen och ersatt med propen skipLink.
+
+- Ett antal andra funktioner, typer och komponenter är också borttagna.
+
+- Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).
+
+- Valideringsservice: Den deprekerade validatorn peronnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.
+
+- Tema och variabler: Vi har uppdaterat tema och variabler och FKUI tillhandahåller nu standardleverabler för tema.
+  Som konsument har du möjlighet att själv tillhandahålla specifika tillämpningar.
+
+- Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.
+
+{@link migrating-to-v6 Läs mer i migreringsguiden för version 6}
+
 ## Kombobox
 
 Version: 5.44.0 <br>
@@ -60,7 +92,10 @@ Version: 5.16.0 <br>
 
 {@link table#interaktiv_tabell Interaktiva tabeller } kan ha expanderbara rader för att visa ytterligare rader eller valfritt innehåll.
 
-## Validering och visning av status (5.15.0)
+## Validering och visning av status
+
+Version: 5.15.0 <br>
+2024-02-09
 
 Ett obligatoriskt inmatningsfält som lämnas tomt när användaren tabbar förbi fältet visas inte längre som felaktigt. Istället visas de som felaktiga först när användaren
 försöker skicka in formuläret.
@@ -73,11 +108,17 @@ Istället förblir ett ifyllt fält neutralt när det är ifyllt. Notera att det
 Innan den här ändringen visades inmatningsfält som OK när uppgifterna som användaren matade in uppfyllde formatregler eller när ett fält utan formatregler helt enkelt bara
 blev ifyllt (t.ex. ett fält för att ange ett namn).
 
-## Förlåtande personnummer (5.10.0)
+## Förlåtande personnummer
+
+Version: 5-10.0 <br>
+2023-12-14
 
 Det {@link textfield-specialized#personnummer specialiserade inmatningsfältet för personnummer} har uppdaterats med förlåtande inmatning. Användaren kan skriva in personnummer med både 10 siffror eller 12 siffror. Det inmatade värdet kommer efter godkänd validering att formateras enligt [Skatteverkets regler](https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html) för personnummer. Från och med det år en person fyller 100 år har personnumret plustecken istället för bindestreck.
 
-## Vue3 (5.0.0.)
+## Vue3
+
+Version: 5.0.0 <br>
+2023-09-22
 
 FKUI har uppdaterats till Vue3.
 

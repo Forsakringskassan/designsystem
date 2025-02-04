@@ -87,3 +87,22 @@ footer {
         margin: 0;
     }
 }
+
+.support-table {
+    .table__row {
+        &.obsolete {
+            background: #e48a8a;
+            color: #1b1e23;
+        }
+
+        &.supported {
+            background: #ffdf87;
+            color: #1b1e23;
+        }
+
+        &.active {
+            background: #88b49f;
+            color: #1b1e23;
+        }
+    }
+}
