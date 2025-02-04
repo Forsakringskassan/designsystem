@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -142,7 +142,6 @@
     getParentByName: () => getParentByName,
     getRef: () => getRef,
     getSortedHTMLElementsFromVueRef: () => getSortedHTMLElementsFromVueRef,
-    getTextFromScopedSlot: () => getTextFromScopedSlot,
     handleKeyboardFocusNavigation: () => handleKeyboardFocusNavigation,
     hasParentByName: () => hasParentByName,
     hasSlot: () => hasSlot,
@@ -3522,56 +3521,6 @@
   function tableScrollClasses(val) {
     return scrollClasses[val];
   }
-  var defaultOptions = {
-    stripClasses: ["sr-only"]
-  };
-  function collapseWhitespace(text) {
-    return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
-  }
-  function intersection(a, b) {
-    return a.filter((it) => b.includes(it));
-  }
-  function excludeClass(exclude) {
-    return (node) => {
-      var _a;
-      if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
-        return true;
-      }
-      const classes = node.props.class.split(/\s+/);
-      const matches = intersection(classes, exclude);
-      return matches.length === 0;
-    };
-  }
-  function excludeComment(node) {
-    return node.type !== import_vue.Comment;
-  }
-  function getTextContent(children, options) {
-    return children.filter(import_vue.isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
-      if (Array.isArray(child.children)) {
-        return getTextContent(child.children, options);
-      }
-      if (typeof child.children === "string") {
-        return child.children;
-      }
-    }).join("");
-  }
-  function renderSlotText(render, props = {}, options) {
-    if (!render) {
-      return void 0;
-    }
-    const nodes = render(props);
-    if (nodes.length === 0) {
-      return void 0;
-    }
-    return collapseWhitespace(getTextContent(nodes, {
-      ...defaultOptions,
-      ...options
-    }));
-  }
-  function getTextFromScopedSlot(slot) {
-    var _renderSlotText;
-    return (_renderSlotText = renderSlotText(slot)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
-  }
   function dispatchComponentValidityEvent(element, detail) {
     element.dispatchEvent(new CustomEvent("component-validity", {
       detail,
@@ -3709,12 +3658,9 @@
     return FKUIConfigButtonOrder2;
   })(FKUIConfigButtonOrder || {});
   var popupContainer = document.body;
-  var production = true;
   var config = {
     buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
     teleportTarget: document.body,
-    modalTarget: null,
-    popupTarget: null,
     get popupContainer() {
       if (typeof popupContainer === "string") {
         const element = document.querySelector(popupContainer);
@@ -3728,13 +3674,6 @@
     },
     set popupContainer(value) {
       popupContainer = value;
-    },
-    set production(value) {
-      production = value;
-      import_logic.configLogic.production = value;
-    },
-    get production() {
-      return production;
     }
   };
   function setRunningContext(app) {
@@ -3817,7 +3756,6 @@
     };
   }
   function openModal(callingInstance, Component, options) {
-    var _config$modalTarget;
     if (typeof options === "string") {
       return openModal(callingInstance, Component, {
         props: {
@@ -3826,7 +3764,7 @@
       });
     }
     const defaultOptions2 = {
-      attachTo: (_config$modalTarget = config.modalTarget) !== null && _config$modalTarget !== void 0 ? _config$modalTarget : config.teleportTarget,
+      attachTo: config.teleportTarget,
       props: {}
     };
     const {
@@ -5117,6 +5055,52 @@
     }
     return inputElement;
   }
+  var defaultOptions = {
+    stripClasses: ["sr-only"]
+  };
+  function collapseWhitespace(text) {
+    return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+  }
+  function intersection(a, b) {
+    return a.filter((it) => b.includes(it));
+  }
+  function excludeClass(exclude) {
+    return (node) => {
+      var _a;
+      if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
+        return true;
+      }
+      const classes = node.props.class.split(/\s+/);
+      const matches = intersection(classes, exclude);
+      return matches.length === 0;
+    };
+  }
+  function excludeComment(node) {
+    return node.type !== import_vue.Comment;
+  }
+  function getTextContent(children, options) {
+    return children.filter(import_vue.isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
+      if (Array.isArray(child.children)) {
+        return getTextContent(child.children, options);
+      }
+      if (typeof child.children === "string") {
+        return child.children;
+      }
+    }).join("");
+  }
+  function renderSlotText(render, props = {}, options) {
+    if (!render) {
+      return void 0;
+    }
+    const nodes = render(props);
+    if (nodes.length === 0) {
+      return void 0;
+    }
+    return collapseWhitespace(getTextContent(nodes, {
+      ...defaultOptions,
+      ...options
+    }));
+  }
   function hasSlot(vm, name, props = {}, options = {}) {
     const slot = vm.$slots[name];
     return Boolean(renderSlotText(slot, props, options));
@@ -5173,7 +5157,7 @@
     if ("object" != _typeof(t) || !t) return t;
     var e = t[Symbol.toPrimitive];
     if (void 0 !== e) {
-      var i = e.call(t, r || "default");
+      var i = e.call(t, r);
       if ("object" != _typeof(i)) return i;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
@@ -6733,8 +6717,7 @@
         return this.inline === "never";
       },
       teleportTarget() {
-        var _config$popupTarget;
-        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
+        return config.teleportTarget;
       }
     },
     watch: {
@@ -7238,10 +7221,7 @@
       const wrapperRef = (0, import_vue.useTemplateRef)("wrapper");
       const contentRef = (0, import_vue.useTemplateRef)("content");
       const popupClasses = ["popup", "popup--overlay"];
-      const teleportTarget = (0, import_vue.computed)(() => {
-        var _config$popupTarget;
-        return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
-      });
+      const teleportTarget = (0, import_vue.computed)(() => config.teleportTarget);
       let guessedItemHeight = void 0;
       let verticalSpacing = void 0;
       useEventListener(__props.anchor, "keyup", onKeyEsc);

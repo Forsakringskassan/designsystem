@@ -7602,9 +7602,6 @@ if (document.readyState === "loading") {
 } else {
   injectSpritesheet();
 }
-const configLogic = {
-  production: true
-};
 function isEmpty(value) {
   return !value;
 }
@@ -9435,21 +9432,17 @@ function pushFocus(element) {
 function popFocus(handle) {
   if (_focusElementStack.length === 0) {
     const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
-    if (configLogic.production) {
+    {
       console.error(emptyStackErrorMsg);
       return;
-    } else {
-      throw new Error(emptyStackErrorMsg);
     }
   }
   const top = _focusElementStack.pop();
   if ((top == null ? void 0 : top.id) !== handle[sym]) {
     const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top == null ? void 0 : top.id} but got ${handle[sym]}`;
-    if (configLogic.production) {
+    {
       console.error(outOfOrderErrorMsg);
       return;
-    } else {
-      throw new Error(outOfOrderErrorMsg);
     }
   }
   focus$1(top == null ? void 0 : top.element);
@@ -14331,52 +14324,6 @@ const scrollClasses = {
 function tableScrollClasses(val) {
   return scrollClasses[val];
 }
-const defaultOptions = {
-  stripClasses: ["sr-only"]
-};
-function collapseWhitespace(text) {
-  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
-}
-function intersection(a, b) {
-  return a.filter((it) => b.includes(it));
-}
-function excludeClass(exclude) {
-  return (node) => {
-    var _a;
-    if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
-      return true;
-    }
-    const classes = node.props.class.split(/\s+/);
-    const matches = intersection(classes, exclude);
-    return matches.length === 0;
-  };
-}
-function excludeComment(node) {
-  return node.type !== Comment;
-}
-function getTextContent(children, options) {
-  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
-    if (Array.isArray(child.children)) {
-      return getTextContent(child.children, options);
-    }
-    if (typeof child.children === "string") {
-      return child.children;
-    }
-  }).join("");
-}
-function renderSlotText(render, props = {}, options) {
-  if (!render) {
-    return void 0;
-  }
-  const nodes = render(props);
-  if (nodes.length === 0) {
-    return void 0;
-  }
-  return collapseWhitespace(getTextContent(nodes, {
-    ...defaultOptions,
-    ...options
-  }));
-}
 function dispatchComponentValidityEvent(element, detail) {
   element.dispatchEvent(new CustomEvent("component-validity", {
     detail,
@@ -14446,12 +14393,9 @@ var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
   return FKUIConfigButtonOrder2;
 })(FKUIConfigButtonOrder || {});
 let popupContainer = document.body;
-let production = true;
 const config = {
   buttonOrder: FKUIConfigButtonOrder.LEFT_TO_RIGHT,
   teleportTarget: document.body,
-  modalTarget: null,
-  popupTarget: null,
   get popupContainer() {
     if (typeof popupContainer === "string") {
       const element = document.querySelector(popupContainer);
@@ -14465,13 +14409,6 @@ const config = {
   },
   set popupContainer(value) {
     popupContainer = value;
-  },
-  set production(value) {
-    production = value;
-    configLogic.production = value;
-  },
-  get production() {
-    return production;
   }
 };
 function setRunningContext(app2) {
@@ -15675,6 +15612,52 @@ function focus(element, options = {}) {
   }
   return false;
 }
+const defaultOptions = {
+  stripClasses: ["sr-only"]
+};
+function collapseWhitespace(text) {
+  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+}
+function intersection(a, b) {
+  return a.filter((it) => b.includes(it));
+}
+function excludeClass(exclude) {
+  return (node) => {
+    var _a;
+    if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
+      return true;
+    }
+    const classes = node.props.class.split(/\s+/);
+    const matches = intersection(classes, exclude);
+    return matches.length === 0;
+  };
+}
+function excludeComment(node) {
+  return node.type !== Comment;
+}
+function getTextContent(children, options) {
+  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
+    if (Array.isArray(child.children)) {
+      return getTextContent(child.children, options);
+    }
+    if (typeof child.children === "string") {
+      return child.children;
+    }
+  }).join("");
+}
+function renderSlotText(render, props = {}, options) {
+  if (!render) {
+    return void 0;
+  }
+  const nodes = render(props);
+  if (nodes.length === 0) {
+    return void 0;
+  }
+  return collapseWhitespace(getTextContent(nodes, {
+    ...defaultOptions,
+    ...options
+  }));
+}
 function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
   return Boolean(renderSlotText(slot, props, options));
@@ -15691,7 +15674,7 @@ function toPrimitive(t, r) {
   if ("object" != _typeof(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r || "default");
+    var i = e.call(t, r);
     if ("object" != _typeof(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
@@ -16403,10 +16386,7 @@ const _sfc_main$U = /* @__PURE__ */ defineComponent({
     const wrapperRef = useTemplateRef("wrapper");
     const contentRef = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
-    const teleportTarget = computed(() => {
-      var _config$popupTarget;
-      return (_config$popupTarget = config.popupTarget) !== null && _config$popupTarget !== void 0 ? _config$popupTarget : config.teleportTarget;
-    });
+    const teleportTarget = computed(() => config.teleportTarget);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -16647,7 +16627,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
       close();
       filter2.value = selectedOption.value;
       selectMode.value = true;
-      {
+      if (onOptionSelected) {
         onOptionSelected(value);
       }
     }
