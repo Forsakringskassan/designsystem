@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-ff5959.json"
+            href="../../search-data-24069d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-MXma5GMvU3q+YMB/t6bKb1Q/1T995jNmT5UJz50h+GN6yoa31EJ+lmEFN8J+N581"
+            integrity="sha384-nrfqECHFiwhNwSCZrfPbwJOXhpF5cQuL+wCclt87jZfMXF3LNtdOuS4EYVRv0nMR"
             id="search-data"
         />
     </head>
@@ -549,9 +549,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-6169da.js"
+                    src="../../assets/vendor-fkui-vue-c45698.js"
                     crossorigin
-                    integrity="sha384-RhMPtAiDlFM9gayGoR+wxXH8x+2O33/8SHFtOzF0jLPEd/90v4WQVtkWyHmr/qjK"
+                    integrity="sha384-9p6J3D8mhdlJLJ22Zs/3CRBC7kgjMTq/lwEy+XSEsv7qe8q3sbXVXpLFu6CuTcY9"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -584,6 +584,8 @@
                                 
                                 <li><a href="#fpageheader_skiplink">`FPageHeader` skiplink</a></li>
                                 
+                                <li><a href="#gettextfromscopedslot">`getTextFromScopedSlot`</a></li>
+                                
                                 <li><a href="#pageobjects">Pageobjects</a></li>
                                 
                                 <li><a href="#validationservice">ValidationService</a></li>
@@ -607,6 +609,7 @@
 <ul>
 <li><code>FFormModal</code>: slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna.</li>
 <li><code>FPageHeader</code>: propen <code>skipLinkHref</code> är borttagen</li>
+<li><code>getTextFromScopedSlot</code>: funktionen är borttagen.</li>
 </ul>
 <p>För Cypress pageobjekt:</p>
 <ul>
@@ -624,7 +627,7 @@
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-860813"
+                    id="example-48cf07"
                     class="code-preview code-preview--default"
                     
                     
@@ -662,7 +665,7 @@
 <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-867904"
+                    id="example-68ec17"
                     class="code-preview code-preview--default"
                     
                     
@@ -675,7 +678,27 @@
                 </div>
             <p><code>skipLink</code> kunde tidigare ta ett <code>boolean</code> värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng <code>&quot;&quot;</code> för att stänga av.</p>
-<h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="trimmedtext_metoden"><a class="header-anchor" href="#trimmedtext_metoden"><code>trimmedText()</code> metoden</a></h3><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
+<h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+
+                <div
+                    id="example-c15fdf"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const textContent = getTextFromScopedSlot(slot);</span>
+<span class="hljs-addition">+const textContent = renderSlotText(slot);</span>
+</code></pre>
+                </div>
+            
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p>Tänk på att <code>renderSlotText(..)</code> returnerar <code>null</code> om slotten inte finns eller är tom till skillnad från <code>getTextFromScopedSlot(..)</code> som returnerar en tom sträng <code>&quot;&quot;</code> istället.</p>
+
+            </div>
+        <h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="trimmedtext_metoden"><a class="header-anchor" href="#trimmedtext_metoden"><code>trimmedText()</code> metoden</a></h3><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
 Ej att förväxla med tredjeparts kommando/assertion med samma namn som med fördel kan användas som ersättare.</p>
 <p>Som förslag till ersättare kan någon av följande tekniker användas:</p>
 <ul>
@@ -694,7 +717,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 <h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><h3 id="validator_personnummer"><a class="header-anchor" href="#validator_personnummer">Validator <code>personnummer</code></a></h3><p>Den deprekerade validatorn <code>personnummer</code> är borttagen och ersätts med validatorerna <a href="../../components/validation/validators.html#personnummer_format_personnummerformat"><code>personnummerFormat</code></a> och <a href="../../components/validation/validators.html#personnummer_checksumma_personnummerluhn"><code>personnummerLuhn</code></a>.</p>
 
                 <div
-                    id="example-315df2"
+                    id="example-530435"
                     class="code-preview code-preview--default"
                     
                     
@@ -729,9 +752,9 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    bugfix/tooltip-required-headertag (<a href="https://github.com/Forsakringskassan/designsystem/commits/1833a8a00b7602bbce18a2d469393d37124f3437">1833a8a</a>)<br />
+    bugfix/tooltip-required-headertag (<a href="https://github.com/Forsakringskassan/designsystem/commits/8eb1a6db41a8fd33ea2b6ee663f7df9e16f78ddd">8eb1a6d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/236">PR 236</a><br />
-        2025-02-03 13:13
+        2025-02-04 07:32
 </div>
 <div class="toolbar__item">
     <form id="version">
