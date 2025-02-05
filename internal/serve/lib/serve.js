@@ -13,41 +13,48 @@ function statusColor(text, statusCode) {
     }
 }
 
-function logger(req, res, next) {
-    const originalEnd = res.end;
-    const ip = req.socket.remoteAddress;
-    const time = dayjs().format("YYYY-MM-DD HH:mm:ss");
+/**
+ * @param {{ verbose: boolean, silent: boolean }} options
+ */
+function logger(options) {
+    return (req, res, next) => {
+        const originalEnd = res.end;
+        const ip = req.socket.remoteAddress;
+        const time = dayjs().format("YYYY-MM-DD HH:mm:ss");
 
-    res.end = function (...args) {
-        const { method, url } = req;
-        const { statusCode } = res;
-        const userAgent = `(${req.header("user-agent")})`;
-        const separator = " - ";
-        const request = `${method} ${url} ${statusCode}`;
-        const message = [
-            ip,
-            time,
-            statusColor(request, statusCode),
-            userAgent,
-        ].join(separator);
-        console.log("  ", message);
-        originalEnd.apply(res, args);
+        res.end = function (...args) {
+            const { method, url } = req;
+            const { statusCode } = res;
+            const userAgent = `(${req.header("user-agent")})`;
+            const separator = " - ";
+            const request = `${method} ${url} ${statusCode}`;
+            const message = [
+                ip,
+                time,
+                statusColor(request, statusCode),
+                userAgent,
+            ].join(separator);
+            if (statusCode >= 400 || options.verbose) {
+                console.log("  ", message);
+            }
+            originalEnd.apply(res, args);
+        };
+
+        next();
     };
-
-    next();
 }
 
 /**
  * @param {number} port
  * @param {string[] | Record<string, string>} folders
- * @param {{ verbose: boolean, onReady: (addr) => void }} options
+ * @param {{ verbose: boolean, silent: boolean, onReady: (addr) => void }} options
  * @returns {void}
  */
 function serve(port, folders, options) {
     const app = express();
 
-    if (options.verbose) {
-        app.use(logger);
+    if (!options.silent) {
+        app.use(logger(options));
     }
 
     if (Array.isArray(folders)) {
