@@ -1,7 +1,7 @@
 ---
 title: Error Plugin
 layout: content-with-menu
-components:
+component:
     - ErrorPlugin
     - FErrorHandlingApp
 ---
