@@ -62,15 +62,6 @@ export default defineComponent({
             default: "auto",
         },
         /**
-         * Force popup to always display inline.
-         * @deprecated Use `inline="always"` instead.
-         */
-        alwaysInline: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-        /**
          * Which element to use as container.
          */
         container: {
@@ -150,7 +141,7 @@ export default defineComponent({
             return isInline;
         },
         forceInline(): boolean {
-            return this.alwaysInline || this.inline === "always";
+            return this.inline === "always";
         },
         forceOverlay(): boolean {
             return this.inline === "never";

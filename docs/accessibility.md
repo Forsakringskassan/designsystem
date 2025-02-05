@@ -2,7 +2,7 @@
 title: Tillgänglighets&shy;redogörelse
 name: accessibility
 layout: pattern
-hidden: true
+visible: false
 ---
 
 ## Tillgänglighet för webbplats
