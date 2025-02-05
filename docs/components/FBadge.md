@@ -42,3 +42,7 @@ FBadgeLiveExample.vue
 :::api
 vue:FBadge
 :::
+
+## Relaterat
+
+- {@link FBadgePageObject FBadgePageObject}
