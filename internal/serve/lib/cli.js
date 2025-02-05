@@ -25,7 +25,7 @@ function CLI(argv) {
             const table = new Table({
                 head: ["URL", "Path"],
                 style: { compact: true, head: ["cyan"] },
-                rows: Object.entries(paths),
+                rows: paths,
             });
             console.log();
             console.log(`Server started at http://localhost:${addr.port}`);
