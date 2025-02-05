@@ -1660,11 +1660,11 @@
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
   var import_vue30 = __require("vue");
-  var import_logic16 = __require("@fkui/logic");
+  var import_logic15 = __require("@fkui/logic");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
   var import_vue28 = __require("vue");
-  var import_logic15 = __require("@fkui/logic");
+  var import_logic14 = __require("@fkui/logic");
 
   // packages/vue/src/config/config.ts
   var import_logic = __require("@fkui/logic");
@@ -2613,11 +2613,11 @@
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=script
   var import_vue24 = __require("vue");
-  var import_logic12 = __require("@fkui/logic");
+  var import_logic11 = __require("@fkui/logic");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
   var import_vue22 = __require("vue");
-  var import_logic11 = __require("@fkui/logic");
+  var import_logic10 = __require("@fkui/logic");
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
   var import_vue18 = __require("vue");
@@ -3037,10 +3037,9 @@
 
   // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationGroup/FValidationGroup.vue?type=script
   var import_vue20 = __require("vue");
-  var import_logic10 = __require("@fkui/logic");
-
-  // packages/vue/src/components/FForm/FormUtils.ts
   var import_logic9 = __require("@fkui/logic");
+
+  // packages/vue/src/components/FValidationGroup/FormUtils.ts
   function cleanUpElements(vm) {
     return new Promise((resolve) => {
       window.setTimeout(() => {
@@ -3108,7 +3107,7 @@
         const components = Object.values(this.components);
         const isValid = components.every((component) => component.isValid);
         const componentsWithError = components.filter((component) => component.validityMode === "ERROR");
-        componentsWithError.sort((a, b) => (0, import_logic10.documentOrderComparator)(a.target, b.target));
+        componentsWithError.sort((a, b) => (0, import_logic9.documentOrderComparator)(a.target, b.target));
         this.$emit("update:modelValue", { isValid, componentsWithError, componentCount: components.length });
         this.$emit("group-validity", { isValid, componentsWithError, componentCount: components.length });
       }
@@ -3180,7 +3179,7 @@
       id: {
         type: String,
         required: false,
-        default: () => import_logic11.ElementIdService.generateElementId()
+        default: () => import_logic10.ElementIdService.generateElementId()
       },
       /**
        * Include the error list component.
@@ -3234,19 +3233,19 @@
     },
     methods: {
       async hasFormErrors() {
-        import_logic11.ValidationService.setSubmitted(this.id);
-        await import_logic11.ValidationService.validateAllElements(this.id);
+        import_logic10.ValidationService.setSubmitted(this.id);
+        await import_logic10.ValidationService.validateAllElements(this.id);
         await this.$nextTick();
         await new Promise((resolve) => window.setTimeout(resolve, 0));
         if (this.validity.isValid) {
           return false;
         }
         if (this.useErrorList) {
-          (0, import_logic11.focus)(this.$refs.errors);
+          (0, import_logic10.focus)(this.$refs.errors);
         } else {
           const firstError = this.validity.componentsWithError[0];
           const element = document.getElementById(firstError.focusElementId);
-          (0, import_logic11.focus)(element);
+          (0, import_logic10.focus)(element);
         }
         return true;
       },
@@ -3396,7 +3395,7 @@
       formId: {
         type: String,
         required: false,
-        default: () => import_logic12.ElementIdService.generateElementId()
+        default: () => import_logic11.ElementIdService.generateElementId()
       },
       /**
        * The aria-label attribute text for the top right close button.
@@ -3431,13 +3430,13 @@
         required: false,
         default: () => [
           {
-            label: import_logic12.TranslationService.provider.translate("fkui.form-modal.button.submit.text", "Spara"),
+            label: import_logic11.TranslationService.provider.translate("fkui.form-modal.button.submit.text", "Spara"),
             event: "submit",
             type: "primary",
             submitButton: true
           },
           {
-            label: import_logic12.TranslationService.provider.translate("fkui.form-modal.button.cancel.text", "Avbryt"),
+            label: import_logic11.TranslationService.provider.translate("fkui.form-modal.button.cancel.text", "Avbryt"),
             event: "dismiss",
             type: "secondary"
           }
@@ -3455,17 +3454,17 @@
     },
     methods: {
       onClose() {
-        import_logic12.ValidationService.resetState(this.$el);
+        import_logic11.ValidationService.resetState(this.$el);
         this.$emit("cancel");
         this.$emit("close", { reason: "close" });
       },
       async onSubmit() {
-        import_logic12.ValidationService.resetState(this.$el);
+        import_logic11.ValidationService.resetState(this.$el);
         this.$emit("submit", { data: this.value });
         this.$emit("close", { reason: "submit", data: this.value });
       },
       onCancel() {
-        import_logic12.ValidationService.resetState(this.$el);
+        import_logic11.ValidationService.resetState(this.$el);
         this.$emit("cancel");
         this.$emit("close", { reason: "close" });
       }
@@ -3563,7 +3562,7 @@
   FFormModal_default.__file = "packages/vue/src/components/FModal/FFormModal/FFormModal.vue";
 
   // packages/vue/src/utils/focus.ts
-  var import_logic13 = __require("@fkui/logic");
+  var import_logic12 = __require("@fkui/logic");
 
   // packages/vue/src/utils/render-slot-text.ts
   var import_vue26 = __require("vue");
@@ -3900,13 +3899,13 @@
   }
 
   // packages/vue/src/internal-components/IPopup/get-focusable-element.ts
-  var import_logic14 = __require("@fkui/logic");
+  var import_logic13 = __require("@fkui/logic");
   function getFocusableElement(rootElement, callback) {
     if (callback) {
       return callback();
     }
     const popupElement = getHTMLElementFromVueRef(rootElement);
-    const elements = (0, import_logic14.findTabbableElements)(popupElement);
+    const elements = (0, import_logic13.findTabbableElements)(popupElement);
     return elements[0] ?? null;
   }
 
@@ -4071,7 +4070,7 @@
       }
     },
     created() {
-      this.onWindowResizeDebounced = (0, import_logic15.debounce)(this.onWindowResize, 100).bind(this);
+      this.onWindowResizeDebounced = (0, import_logic14.debounce)(this.onWindowResize, 100).bind(this);
     },
     unmounted() {
       document.removeEventListener("click", this.onDocumentClickHandler);
@@ -4082,7 +4081,7 @@
         if (!isOpen) {
           this.placement = "NotCalculated" /* NotCalculated */;
           if (this.focus) {
-            (0, import_logic15.popFocus)(this.focus);
+            (0, import_logic14.popFocus)(this.focus);
             this.focus = null;
           }
           return;
@@ -4147,7 +4146,7 @@
           return;
         }
         const focusableElement = getFocusableElement(wrapper, this.focusElement);
-        this.focus = (0, import_logic15.pushFocus)(focusableElement);
+        this.focus = (0, import_logic14.pushFocus)(focusableElement);
       },
       isMobileSize() {
         return window.innerWidth < MIN_DESKTOP_WIDTH;
@@ -4185,7 +4184,7 @@
       onKeyTab(event) {
         if (this.keyboardTrap) {
           const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-          (0, import_logic15.handleTab)(event, wrapper);
+          (0, import_logic14.handleTab)(event, wrapper);
         }
       }
     }
@@ -4480,7 +4479,7 @@
           return;
         }
         const itemAnchor = anchors[index];
-        (0, import_logic16.focus)(itemAnchor, { preventScroll: true });
+        (0, import_logic15.focus)(itemAnchor, { preventScroll: true });
         const key = this.items[index].key;
         this.$emit("update:focusedItem", key);
       },

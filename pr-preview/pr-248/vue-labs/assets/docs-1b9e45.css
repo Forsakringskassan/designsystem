@@ -5283,12 +5283,6 @@ input[type=search]:focus,
   .modal__dialog-container--fullwidth {
     max-width: var(--f-modal-size-fullwidth);
   }
-  .modal__dialog-container-large {
-    max-width: var(--f-modal-size-large);
-  }
-  .modal__dialog-container-fullscreen {
-    max-width: var(--f-modal-size-fullwidth);
-  }
 }
 @media (max-width: 639.98px) {
   .modal__dialog-container--fullscreen {

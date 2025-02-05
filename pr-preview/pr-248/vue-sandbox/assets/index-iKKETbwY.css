@@ -5288,12 +5288,6 @@ input[type=search]:focus,
   .modal__dialog-container--fullwidth {
     max-width: var(--f-modal-size-fullwidth, 100%);
   }
-  .modal__dialog-container-large {
-    max-width: var(--f-modal-size-large, 1200px);
-  }
-  .modal__dialog-container-fullscreen {
-    max-width: var(--f-modal-size-fullwidth, 100%);
-  }
 }
 @media (max-width: 639.98px) {
   .modal__dialog-container--fullscreen {
