@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-22eb7c.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-6zNt6feEzfHkhL88mPu2sFhjWF1qAH4NWpplffCib5pYj/bBCPeBkO1+VdjGyIb2"
             
         />
         <link
@@ -586,6 +586,8 @@
                                 
                                 <li><a href="#fpageheader_skiplink">`FPageHeader` skiplink</a></li>
                                 
+                                <li><a href="#fmodal_deprekerade_css_klasser">`FModal` deprekerade CSS-klasser</a></li>
+                                
                                 <li><a href="#gettextfromscopedslot">`getTextFromScopedSlot`</a></li>
                                 
                                 <li><a href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget">`FKUIConfig.modalTarget` och `FKUIConfig.popupTarget`</a></li>
@@ -636,6 +638,7 @@
 <li><code>@fkui/logic</code>: funktioner <code>applyValidationMessages()</code>, <code>ìsRadiobuttonOrCheckbox()</code> är borttagna.</li>
 <li><code>@fkui/logic</code>: funktionen <code>setCookie(..)</code> tar inte längre <code>timeLimitMillis</code> parametern.</li>
 <li><code>FFormModal</code>: slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna.</li>
+<li><code>FModal</code>: CSS klassalias <code>modal__dialog-container-large</code> och <code>modal__dialog-container-fullscreen</code> är borttagna.</li>
 <li><code>FPageHeader</code>: propen <code>skipLinkHref</code> är borttagen</li>
 <li><code>getTextFromScopedSlot</code>: funktionen är borttagen.</li>
 <li>Konfiguration: <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna.</li>
@@ -656,7 +659,7 @@
 <p>Exempelvis om du använder konstanten för att testa om ett datum är giltigt format använd <code>.isValid(..)</code> metoden:</p>
 
                 <div
-                    id="example-f1da94"
+                    id="example-3d90bc"
                     class="code-preview code-preview--default"
                     
                     
@@ -674,7 +677,7 @@
 <p>Om du använder den för att ta bort whitespace från text ersätt med <code>stripWhitespace</code>:</p>
 
                 <div
-                    id="example-8fb1b7"
+                    id="example-8ac47a"
                     class="code-preview code-preview--default"
                     
                     
@@ -694,7 +697,7 @@ Funktionen var en placeholder som inte gjorde något och anrop kan därför tas 
 Om du använder denna behöver du implementera logiken själv:</p>
 
                 <div
-                    id="example-224cd8"
+                    id="example-573ad7"
                     class="code-preview code-preview--default"
                     
                     
@@ -712,7 +715,7 @@ Använd <code>timeLimitSeconds</code> istället.</p>
 <h3 id="polyfill"><a class="header-anchor" href="#polyfill">Polyfill</a></h3><p>Den deprekerade entrypointen <code>@fkui/logic/lib/polyfills</code> är borttagen och ersatt med <code>@fkui/logic/polyfills</code>.</p>
 
                 <div
-                    id="example-fe6f3f"
+                    id="example-9fbf11"
                     class="code-preview code-preview--default"
                     
                     
@@ -731,7 +734,7 @@ Använd <code>timeLimitSeconds</code> istället.</p>
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-815fe5"
+                    id="example-be20d4"
                     class="code-preview code-preview--default"
                     
                     
@@ -769,7 +772,7 @@ Använd <code>timeLimitSeconds</code> istället.</p>
 <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-e17ae2"
+                    id="example-c58f3f"
                     class="code-preview code-preview--default"
                     
                     
@@ -782,10 +785,26 @@ Använd <code>timeLimitSeconds</code> istället.</p>
                 </div>
             <p><code>skipLink</code> kunde tidigare ta ett <code>boolean</code> värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng <code>&quot;&quot;</code> för att stänga av.</p>
-<h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+<h2 id="fmodal_deprekerade_css_klasser"><a class="header-anchor" href="#fmodal_deprekerade_css_klasser"><code>FModal</code> deprekerade CSS-klasser</a></h2><p>De deprekerade CSS klasserna <code>modal__dialog-container-large</code> och <code>modal__dialog-container-fullscreen</code> är borttagna.
+Detta påverkar endast dig som använder stylingen direkt, använder man <code>@fkui/vue</code> komponenten <code>FModal</code> påverkas man inte.
+Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive <code>modal__dialog-container--fullscreen</code>.</p>
 
                 <div
-                    id="example-2781a3"
+                    id="example-9881e9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;div class=&quot;modal__dialog-container modal__dialog-container-large&quot;&gt;</span>
+<span class="hljs-addition">+&lt;div class=&quot;modal__dialog-container modal__dialog-container--large&quot;&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+
+                <div
+                    id="example-1255dd"
                     class="code-preview code-preview--default"
                     
                     
@@ -805,7 +824,7 @@ Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng 
         <h2 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
 
                 <div
-                    id="example-2433ef"
+                    id="example-4b06b7"
                     class="code-preview code-preview--default"
                     
                     
@@ -846,7 +865,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda <code>.el()</code>.</p>
 
                 <div
-                    id="example-9b126c"
+                    id="example-068288"
                     class="code-preview code-preview--default"
                     
                     
@@ -863,7 +882,7 @@ Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man a
 Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda <code>.content()</code> för att hämta ut hela innehållet i slotten eller använda en egen selector.</p>
 
                 <div
-                    id="example-bb86a2"
+                    id="example-5ef737"
                     class="code-preview code-preview--default"
                     
                     
@@ -877,7 +896,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="fnavigationmenupageobject_menu_metoden"><a class="header-anchor" href="#fnavigationmenupageobject_menu_metoden"><code>FNavigationMenuPageobject.menu()</code> metoden</a></h3><p>Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
 
                 <div
-                    id="example-5749ef"
+                    id="example-e42496"
                     class="code-preview code-preview--default"
                     
                     
@@ -891,7 +910,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="ftooltippageobject_content_methoden"><a class="header-anchor" href="#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code> methoden</a></h3><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
 
                 <div
-                    id="example-7a6092"
+                    id="example-68a1af"
                     class="code-preview code-preview--default"
                     
                     
@@ -904,7 +923,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-5f5c46"
+                    id="example-f8165b"
                     class="code-preview code-preview--default"
                     
                     
@@ -917,7 +936,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-715434"
+                    id="example-1f5a6f"
                     class="code-preview code-preview--default"
                     
                     
@@ -930,7 +949,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-4a3ca7"
+                    id="example-03eef0"
                     class="code-preview code-preview--default"
                     
                     
@@ -950,7 +969,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
         <h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><h3 id="validator_personnummer"><a class="header-anchor" href="#validator_personnummer">Validator <code>personnummer</code></a></h3><p>Den deprekerade validatorn <code>personnummer</code> är borttagen och ersätts med validatorerna <a href="../../components/validation/validators.html#personnummer_format_personnummerformat"><code>personnummerFormat</code></a> och <a href="../../components/validation/validators.html#personnummer_checksumma_personnummerluhn"><code>personnummerLuhn</code></a>.</p>
 
                 <div
-                    id="example-b33f92"
+                    id="example-888b28"
                     class="code-preview code-preview--default"
                     
                     
@@ -985,9 +1004,9 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    bugfix/tooltip-required-headertag (<a href="https://github.com/Forsakringskassan/designsystem/commits/d242b10e984a0993ea3adcda0c16f8e591fbca6c">d242b10</a>)<br />
+    bugfix/tooltip-required-headertag (<a href="https://github.com/Forsakringskassan/designsystem/commits/fef3c34c465bc54a1b9cd3bbf9a6f031748d6b34">fef3c34</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/236">PR 236</a><br />
-        2025-02-05 10:15
+        2025-02-05 13:37
 </div>
 <div class="toolbar__item">
     <form id="version">
