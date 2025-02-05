@@ -33,7 +33,7 @@
     "@fkui/icon-lib-default": "5.46.0",
     "@vitejs/plugin-vue": "5.2.1",
     "autoprefixer": "10.4.20",
-    "html-validate": "9.2.0",
+    "html-validate": "9.2.1",
     "postcss": "8.5.1",
     "vite": "6.0.11"
   },
