@@ -23,7 +23,6 @@ const require = module.createRequire(import.meta.url);
 
 const pkg = require("./package.json");
 
-let createVersionMock = false;
 const DEFAULT_MATOMO_CONFIG = {
     trackerUrl: "https://webstats.forsakringskassan.se/matomo/",
     hostname: [
@@ -66,8 +65,6 @@ if (isCI) {
     console.log("Source url format: ", DOCS_SOURCE_URL_FORMAT);
     console.groupEnd();
     console.log();
-} else {
-    createVersionMock = true;
 }
 
 const docs = new Generator({
@@ -161,19 +158,17 @@ docs.copyResource("images", path.join(fkuiDesign, "assets/images"));
 try {
     await docs.build(config.sourceFiles);
 
-    if (createVersionMock) {
-        await fs.mkdir("public/latest", { recursive: true });
-        const latest = `v${pkg.version}`;
-        const versions = JSON.stringify(
-            {
-                latest,
-                versions: [latest],
-            },
-            null,
-            2,
-        );
-        await fs.writeFile("public/versions.json", versions, "utf-8");
-    }
+    const latest = `v${pkg.version}`;
+    const versions = JSON.stringify(
+        {
+            latest,
+            versions: [latest],
+        },
+        null,
+        2,
+    );
+    await fs.mkdir("temp/docs", { recursive: true });
+    await fs.writeFile("temp/docs/versions.json", versions, "utf-8");
 } catch (err) {
     console.error(err.prettyError ? err.prettyError() : err);
     process.exitCode = 1;

@@ -41,7 +41,7 @@
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "sandbox": "npm run --workspace internal/vue-sandbox --",
-    "start": "fkui-serve public",
+    "start": "fkui-serve public temp/docs",
     "start:cypress": "node cypress/server.js",
     "start:demo": "run-s build:docs start",
     "start:sandbox": "run-s build:docs && fkui-serve public/vue-sandbox",

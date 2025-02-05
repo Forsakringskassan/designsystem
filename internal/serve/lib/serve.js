@@ -45,9 +45,28 @@ function logger(options) {
 }
 
 /**
+ * @param {string[] | Record<string, string>} folders
+ * @returns {Array<[string, string]>}
+ */
+function normalizeFolders(folders) {
+    if (Array.isArray(folders)) {
+        return folders.map((it) => {
+            if (it.includes(":")) {
+                const [folder, url] = it.split(":");
+                return [`/${url}`, folder];
+            } else {
+                return ["/", it];
+            }
+        });
+    } else {
+        return Object.entries(folders);
+    }
+}
+
+/**
  * @param {number} port
  * @param {string[] | Record<string, string>} folders
- * @param {{ verbose: boolean, silent: boolean, onReady: (addr) => void }} options
+ * @param {{ verbose: boolean, silent: boolean, onReady: (addr, folders) => void }} options
  * @returns {void}
  */
 function serve(port, folders, options) {
@@ -57,17 +76,14 @@ function serve(port, folders, options) {
         app.use(logger(options));
     }
 
-    if (Array.isArray(folders)) {
-        folders = Object.fromEntries(folders.map((it) => ["/", it]));
-    }
-
-    for (const [path, folder] of Object.entries(folders)) {
+    const normalized = normalizeFolders(folders);
+    for (const [path, folder] of normalized) {
         app.use(path, express.static(folder));
     }
 
     const server = app.listen(port, "::", () => {
         if (options.onReady) {
-            options.onReady(server.address(), folders);
+            options.onReady(server.address(), normalized);
         }
     });
 }
