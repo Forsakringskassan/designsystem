@@ -7,6 +7,7 @@ import isCI from "is-ci";
 import {
     Generator,
     htmlRedirectProcessor,
+    manifestProcessor,
     matomoProcessor,
     searchProcessor,
     selectableVersionProcessor,
@@ -106,6 +107,9 @@ const docs = new Generator({
                       commitUrlFormat: "{{ repository }}/commits/{{ hash }}",
                       prUrlFormat: "{{ repository }}/pull/{{ pr }}",
                   },
+        }),
+        manifestProcessor({
+            markdown: "etc/docs-manifest.md",
         }),
         motdProcessor(),
         selectableVersionProcessor(pkg, "footer:right"),
