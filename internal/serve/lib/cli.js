@@ -1,6 +1,6 @@
 /* eslint-disable no-console -- expected to log */
-const { serve } = require("./serve");
 const Table = require("cli-table");
+const { serve } = require("./serve");
 
 const defaultPort = 8080;
 
