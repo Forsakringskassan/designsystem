@@ -1,6 +1,6 @@
 /* eslint-disable no-console -- expected to log */
-const { serve } = require("./serve");
 const Table = require("cli-table");
+const { serve } = require("./serve");
 
 const defaultPort = 8080;
 
@@ -14,20 +14,23 @@ function CLI(argv) {
     const port = process.env.HTTP_PORT
         ? parseInt(process.env.HTTP_PORT, 10)
         : defaultPort;
-    const verbose = !flags.includes("-s") && !flags.includes("--silent");
+    const verbose = flags.includes("-v") || flags.includes("--verbose");
+    const silent =
+        !verbose && (flags.includes("-s") || flags.includes("--silent"));
     const folders = positionals;
     serve(port, folders, {
         verbose,
+        silent,
         onReady(addr, paths) {
             const table = new Table({
                 head: ["URL", "Path"],
                 style: { compact: true, head: ["cyan"] },
-                rows: Object.entries(paths),
+                rows: paths,
             });
             console.log();
             console.log(`Server started at http://localhost:${addr.port}`);
             console.log();
-            if (verbose) {
+            if (!silent) {
                 console.table(table.toString());
                 console.log();
             }
