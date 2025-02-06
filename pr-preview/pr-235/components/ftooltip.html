@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-131fe9.css"
+            href="../assets/docs-84ca37.css"
             crossorigin
-            integrity="sha384-LeUekSbCTqv8nQ4PGC3vXj6XdacGu4QlK8p40pdc7oGmuxlu510xDkl3sF+qULKQ"
+            integrity="sha384-zxtVJvraYvtVgXoygg14dWX55o7ZVbZhaR367Y1ajQfsYiJJUDVl9dAYMaJChFtI"
             
         />
         <link
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-8e1c8b.js"
+                    src="../assets/vendor-fkui-vue-fcdafa.js"
                     crossorigin
-                    integrity="sha384-UlorJ3NjROqjHTdZvvVlg/GnB1nLb4uK21vlzWLrCv2dM6lUR/Glv72ZKzQHMHZt"
+                    integrity="sha384-+xBdr4yeHm8YpUSPghV4/Gt8lDbpe5kLUjmvnOAzEQ+y6GO6KQ/IlUnqueJtH5ba"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/b8c362ff39b863bcccd2b9ba61d8eff96e70e4c6/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/27ba01b5aabee7eec5f27d893e2fbc5fd88c6435/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
             
         </code>
          
@@ -1093,13 +1093,17 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FTooltipLiveExample-18f99f.js"></script>
+        <script defer src="./FTooltipLiveExample-5dcacd.js"></script>
     
                 </div>
             <ul>
 <li>Informationsrutan kan innehålla länkar och expanderbara fält.</li>
 <li>Upprepa inte information som redan finns i rubrik eller brödtext.</li>
-<li>Använd inte rubriken i tooltip om den inte verkligen behövs.</li>
+<li>Använd inte rubriken i tooltip om den inte verkligen behövs.
+<ul>
+<li>Om rubrik används behöver även header-tag anges.</li>
+</ul>
+</li>
 <li>Flera informationsrutor kan vara öppna samtidigt.</li>
 <li>Sträva efter att minimera användning av tooltip. Information som alla behöver veta ska visas med etiketten.</li>
 </ul>
@@ -1114,7 +1118,7 @@ Om informationen är viktig för alla, men så pass omfattande att den inte kan 
 <h3 id="rubriksniva"><a class="header-anchor" href="#rubriksniva">Rubriksnivå</a></h3><p>Om du behöver använda en semantisk rubriksnivå använd <code>header-tag</code> parametern för att sätta (som standard används ingen semantisk rubrik):</p>
 
                 <div
-                    id="example-ac8017"
+                    id="example-ffc07b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1130,7 +1134,7 @@ Om informationen är viktig för alla, men så pass omfattande att den inte kan 
 Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachTo</code> propen.</p>
 
                 <div
-                    id="example-c0dc0b"
+                    id="example-c91fde"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1155,7 +1159,7 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
                 </div>
             
                 <div
-                    id="example-0d3c78"
+                    id="example-33936c"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1202,8 +1206,6 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
 </td><td><p>Element to render for the header element inside the tooltip.</p>
 <p>Must be set to one of:</p>
 <ul>
-<li><code>div</code> (default)</li>
-<li><code>span</code></li>
 <li><code>h1</code></li>
 <li><code>h2</code></li>
 <li><code>h3</code></li>
@@ -1213,7 +1215,7 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
 </ul>
 </td><td><p>string</p>
 </td><td><p>false</p>
-</td><td><p>&quot;div&quot;</p>
+</td><td><p>undefined</p>
 </td><td><p>‐</p>
 </td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>update:modelValue</p>
 </td><td><p>v-model event.</p>
@@ -1252,9 +1254,9 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/b8c362ff39b863bcccd2b9ba61d8eff96e70e4c6">b8c362f</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/27ba01b5aabee7eec5f27d893e2fbc5fd88c6435">27ba01b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 12:17
+        2025-02-06 13:22
 </div>
 <div class="toolbar__item">
     <form id="version">

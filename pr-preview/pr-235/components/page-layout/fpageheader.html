@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-131fe9.css"
+            href="../../assets/docs-84ca37.css"
             crossorigin
-            integrity="sha384-LeUekSbCTqv8nQ4PGC3vXj6XdacGu4QlK8p40pdc7oGmuxlu510xDkl3sF+qULKQ"
+            integrity="sha384-zxtVJvraYvtVgXoygg14dWX55o7ZVbZhaR367Y1ajQfsYiJJUDVl9dAYMaJChFtI"
             
         />
         <link
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-8e1c8b.js"
+                    src="../../assets/vendor-fkui-vue-fcdafa.js"
                     crossorigin
-                    integrity="sha384-UlorJ3NjROqjHTdZvvVlg/GnB1nLb4uK21vlzWLrCv2dM6lUR/Glv72ZKzQHMHZt"
+                    integrity="sha384-+xBdr4yeHm8YpUSPghV4/Gt8lDbpe5kLUjmvnOAzEQ+y6GO6KQ/IlUnqueJtH5ba"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/b8c362ff39b863bcccd2b9ba61d8eff96e70e4c6/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/27ba01b5aabee7eec5f27d893e2fbc5fd88c6435/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
             
         </code>
          
@@ -1063,7 +1063,7 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#egen_logotyp_och_brytpunkt">Egen logotyp och brytpunkt</a></li>
+                                <li><a href="#logotyp">Logotyp</a></li>
                                 
                                 <li><a href="#skiplink">Skiplink</a></li>
                                 
@@ -1077,10 +1077,11 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Sidhuvud ska visas längst upp på applikationer som öppnas i ett eget webbläsarfönster. Den innehåller alltid Försäkringskassans logotyp och namnet på applikationen</p>
+<p>Sidhuvud ska visas längst upp på applikationer som öppnas i ett eget webbläsarfönster.
+Den kan innehålla en logotyp, applikationsnamn samt användarinformation.</p>
 
             <div
-                id="example-5e2100"
+                id="example-af6f09"
                 class="code-preview code-preview--default"
                 
                 
@@ -1094,7 +1095,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FPageHeaderDefault-9b834b.js"></script>
+        <script defer src="./FPageHeaderDefault-ad64ec.js"></script>
     </div>
                 <div>
             <button
@@ -1115,28 +1116,47 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-page-header</span>&gt;</span>
         Exempelapplikation
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">logo</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-logo</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;example logo text&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-logo</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">right</span>&gt;</span> Namn Namnsson <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-header</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FPageHeader</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FPageHeader</span>, <span class="hljs-title class_">FLogo</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FPageHeaderDefault&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FPageHeader</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FPageHeader</span>, <span class="hljs-title class_">FLogo</span> },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <p>Vid större skärmstorlekar visas hela Försäkringskassans logotyp med text och vid mindre visas en komprimerad variant med endast symbol.</p>
-<p>I fall där applikationen innehåller flera olika sidor kan logotypen göras till en klickbar länk som leder användaren tillbaka till applikationens förstasida</p>
-<p>Sidhuvudet kan också visa sekundär information till höger.</p>
-<h2 id="egen_logotyp_och_brytpunkt"><a class="header-anchor" href="#egen_logotyp_och_brytpunkt">Egen logotyp och brytpunkt</a></h2>
+        <h2 id="logotyp"><a class="header-anchor" href="#logotyp">Logotyp</a></h2><p>För att lägga till en logotyp använd slot <code>logo</code>.
+Du kan med fördel använda <a href="../flogo.html"><code>FLogo</code></a> för att ange logotyp.</p>
+
+                <div
+                    id="example-b4ef23"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
+<span class="hljs-addition">+    &lt;template #logo&gt;</span>
+<span class="hljs-addition">+        &lt;f-logo aria-label=&quot;awesome logo&quot;&gt;&lt;/f-logo&gt;</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <p>Se även nedan exempel för hur du kan göra en egen logotyp med brytpunkt utan att använda <code>FLogo</code>.</p>
+
             <div
-                id="example-d2617d"
+                id="example-2d0135"
                 class="code-preview code-preview--default"
                 
                 
@@ -1237,7 +1257,7 @@ Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det 
 <p>Skiplink aktiveras genom att sätta <code>skipLink</code> till det id som innehåller det primära innehållet:</p>
 
                 <div
-                    id="example-f40bb2"
+                    id="example-b5883f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1255,15 +1275,9 @@ Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det 
 </code></pre>
                 </div>
             <p>Notera att elementet måste vara fokuserbart.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>logoSize</p>
-</td><td><p>Setting the logo sizes small, large or responsive.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;responsive&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>skipLink</p>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>skipLink</p>
 </td><td><p>Render skiplink.</p>
-<p>When set to a non-empty string thethe skiplink feature is enabled.<br>
+<p>When set to a non-empty string the skiplink feature is enabled.<br>
 The string is the id of the element to move focus to.</p>
 <p>When set to empty string (default) the skiplink feature is disabled.</p>
 </td><td><p>string</p>
@@ -1275,26 +1289,6 @@ The string is the id of the element to move focus to.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;span&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>routerLinkPath</p>
-</td><td><p>Target for router-link via path.<br>
-(Behaviour from using both name and path in combination is undefined.)</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>routerLinkName</p>
-</td><td><p>Target for router-link via name.<br>
-(Behaviour from using both name and path in combination is undefined.)</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>routerLinkLabel</p>
-</td><td><p>Label to override the router-link label when router-link is present.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
 </td><td><p>‐</p>
 </td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>skip-link-text</p>
 </td><td><p>Slot for skip link text.</p>
@@ -1333,9 +1327,9 @@ The string is the id of the element to move focus to.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/b8c362ff39b863bcccd2b9ba61d8eff96e70e4c6">b8c362f</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/27ba01b5aabee7eec5f27d893e2fbc5fd88c6435">27ba01b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 12:17
+        2025-02-06 13:22
 </div>
 <div class="toolbar__item">
     <form id="version">
