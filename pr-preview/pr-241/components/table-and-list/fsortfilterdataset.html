@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-fc70a0.css"
+            href="../../assets/docs-1ad388.css"
             crossorigin
-            integrity="sha384-moWClooPmCZQVQl4lhP5gBberK+LePg8rlcCiBgNKnvEIYLuIuoUXbS0utB6faSS"
+            integrity="sha384-nhi7MKWWdsgEwxiStc9mFn19zlD/D1Ds6v1l649UchTqWzYbAeD0lo57tFhFzDr1"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-ea1075.css"
+            href="../../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-Ij5zrGBXy3MP91JpDsklhd0dcaCc4e8yxtvWt8zkBkCjd3m/Ie7B4GVsuGNavb0r"
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
             data-theme="fkui" disabled
         />
 
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7db53a.json"
+            href="../../search-data-3578c6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-o2vIGMIwnrMb8P4Bx5vYiR7bM+OMsPvyGdqGN9vaBn+oeYtN4zNffSotH51yRxwx"
+            integrity="sha384-/HqnRGV/WfoJaaro5B2FPO7uNZRyOPiDnbFXAtKeXfLu159gigITDqTQGAMueqBw"
             id="search-data"
         />
     </head>
@@ -1006,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
+                    src="../../assets/vendor-fkui-vue-627963.js"
                     crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
+                    integrity="sha384-nvTNATUDKTIHm2Z9upZLDIfnKQdf/F8ZkVvLCxP05hJauF4WbxcMUqGpBUySJLSz"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/8c1ccc3f3be766184b4b7e3245181a1cd242a618/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">FSortFilterDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/79c17a0cccbbcdfcab5976cdb242330080d6b828/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">FSortFilterDataset</a>
             
         </code>
          
@@ -1084,7 +1084,7 @@
                     id="example-b73b01"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1621,7 +1621,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
                     id="example-702d87"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1635,55 +1635,66 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
         <script defer src="./FSortFilterDatasetEmptySlot-5000f7.js"></script>
     </div>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>data</p>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>data</p>
 </td><td><p>The data that you wish to sort or filter.</p>
 </td><td><p>ListArray&lt;ListItem&gt;</p>
 </td><td><p>true</p>
 </td><td><p>() =&gt; []</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>sortableAttributes</p>
 </td><td><p>All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.<br>
 Structured as <code>{attributeName: &quot;Name for dropdown&quot;, secondAttributeName: &quot;Name for dropdown&quot;}</code></p>
 </td><td><p>Record&lt;string, string&gt;</p>
 </td><td><p>true</p>
 </td><td><p>‐</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>defaultSortAttribute</p>
 </td><td><p>If set the data will be sorted by this attribute by default.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>() =&gt; &quot;&quot;</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>showSort</p>
 </td><td><p>Show/hides the sort dropdown.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>true</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>showFilter</p>
 </td><td><p>Show/hides the filter input.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>true</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>placeholderFilter</p>
 </td><td><p>Set placeholder text in filter input field.<br>
 Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>TranslationMixin.methods.$t(&quot;fkui.sort-filter-dataset.placeholder.filter&quot;, &quot;Sök&quot;)</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>defaultSortAscending</p>
 </td><td><p>The order the data will be sorted by if defaultSortAttribute has been set.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>() =&gt; true</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>datasetSorted</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>datasetSorted</p>
 </td><td><p>Emitted when the data is sorted.</p>
 </td><td><p>sortFilterResult: ListArray — The sorted data.</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>usedSortAttributes</p>
 </td><td><p>Emits the used sorting attributes.</p>
 </td><td><p>sortAttribute: SortOrder — The attributes used when sorting the data.</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>header</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>header</p>
 </td><td><p>Slot for header to the left of the filter dropdown.</p>
 </td><td><p>slotClass</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>default</p>
 </td><td><p>Slot for displaying the data.</p>
 </td><td><p>sortFilterResult</p>
+</td><td><p>‐</p>
 </td></tr></tbody></table></div>
 
                     </div>
@@ -1705,9 +1716,9 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    theme-default (<a href="https://github.com/Forsakringskassan/designsystem/commits/8c1ccc3f3be766184b4b7e3245181a1cd242a618">8c1ccc3</a>)<br />
+    theme-default (<a href="https://github.com/Forsakringskassan/designsystem/commits/79c17a0cccbbcdfcab5976cdb242330080d6b828">79c17a0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/241">PR 241</a><br />
-        2025-02-05 07:32
+        2025-02-06 07:09
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1828,9 +1839,9 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script

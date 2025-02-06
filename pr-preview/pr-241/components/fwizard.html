@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-fc70a0.css"
+            href="../assets/docs-1ad388.css"
             crossorigin
-            integrity="sha384-moWClooPmCZQVQl4lhP5gBberK+LePg8rlcCiBgNKnvEIYLuIuoUXbS0utB6faSS"
+            integrity="sha384-nhi7MKWWdsgEwxiStc9mFn19zlD/D1Ds6v1l649UchTqWzYbAeD0lo57tFhFzDr1"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-ea1075.css"
+            href="../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-Ij5zrGBXy3MP91JpDsklhd0dcaCc4e8yxtvWt8zkBkCjd3m/Ie7B4GVsuGNavb0r"
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
             data-theme="fkui" disabled
         />
 
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../search-data-7db53a.json"
+            href="../search-data-3578c6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-o2vIGMIwnrMb8P4Bx5vYiR7bM+OMsPvyGdqGN9vaBn+oeYtN4zNffSotH51yRxwx"
+            integrity="sha384-/HqnRGV/WfoJaaro5B2FPO7uNZRyOPiDnbFXAtKeXfLu159gigITDqTQGAMueqBw"
             id="search-data"
         />
     </head>
@@ -1006,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-60b632.js"
+                    src="../assets/vendor-fkui-vue-627963.js"
                     crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
+                    integrity="sha384-nvTNATUDKTIHm2Z9upZLDIfnKQdf/F8ZkVvLCxP05hJauF4WbxcMUqGpBUySJLSz"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1031,13 +1031,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/8c1ccc3f3be766184b4b7e3245181a1cd242a618/packages/vue/src/components/FWizard/FWizard.vue">FWizard</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/79c17a0cccbbcdfcab5976cdb242330080d6b828/packages/vue/src/components/FWizard/FWizard.vue">FWizard</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/8c1ccc3f3be766184b4b7e3245181a1cd242a618/packages/vue/src/components/FWizard/FWizardStep.vue">FWizardStep</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/79c17a0cccbbcdfcab5976cdb242330080d6b828/packages/vue/src/components/FWizard/FWizardStep.vue">FWizardStep</a>
             
         </code>
          
@@ -1204,7 +1204,7 @@
                     id="example-41ae0d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1221,7 +1221,7 @@
                     id="example-8009a6"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1423,15 +1423,17 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
 </code></pre>
                 </div>
             </div>
-        <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fwizard"><a class="header-anchor" href="#fwizard">FWizard</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>v-model</p>
+        <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fwizard"><a class="header-anchor" href="#fwizard">FWizard</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>v-model</p>
 </td><td><p>‐</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>null</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>headerTag</p>
 </td><td><p>Element to render for the header element inside the wizard steps.</p>
 </td><td><p>string</p>
 </td><td><p>true</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>disableInitialFocus</p>
 </td><td><p>When the first wizard step is registered, it is opened and focused by default.<br>
@@ -1439,28 +1441,35 @@ Set this property to disable that behaviour.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>false</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>cancel</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>cancel</p>
 </td><td><p>Emitted when wizard is canceled, i.e.<br>
 user pressing 'Avbryt' button.</p>
 <p>Passes a boolean indicating if it was cancelled on the final step.</p>
 </td><td><p>&lt;anonymous&gt;: undefined</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>change</p>
 </td><td><p>Vue2 v-model event.</p>
 </td><td><p>&lt;anonymous&gt;: FWizardKey</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>completed</p>
 </td><td><p>Emitted when wizard is finished, i.e.<br>
 user pressing 'Fortsätt' button in last step.</p>
 </td><td><p>‐</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>update:modelValue</p>
 </td><td><p>V-model event.</p>
 </td><td><p>&lt;anonymous&gt;: FWizardKey</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
 </td><td><p>One or more &lt;f-wizard-step&gt; elements</p>
 </td><td><p>‐</p>
-</td></tr></tbody></table></div><h3 id="fwizardstep"><a class="header-anchor" href="#fwizardstep">FWizardStep</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>title</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><h3 id="fwizardstep"><a class="header-anchor" href="#fwizardstep">FWizardStep</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>title</p>
 </td><td><p>‐</p>
 </td><td><p>string</p>
 </td><td><p>true</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>beforeNext</p>
 </td><td><p>Supply this function in order to run actions before navigating to the next step.</p>
@@ -1473,6 +1482,7 @@ before allowing navigation to the next step.</p>
 </td><td><p>function() {<br>
 /* do nothing */<br>
 }</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>beforeValidation</p>
 </td><td><p>Supply this function in order to run actions before <code>FWizardStep</code> checks validity.</p>
 <p><code>beforeValidation</code> is used by <a href="validation/fvalidationform.html"><code>FValidationForm</code></a>.</p>
@@ -1483,28 +1493,35 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
 </td><td><p>function() {<br>
 /* do nothing */<br>
 }</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>useErrorList</p>
 </td><td><p>Include the error list component.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>true</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>step-of</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>step-of</p>
 </td><td><p>‐</p>
 </td><td><p>headerClass<br>
 stepNumber<br>
 totalSteps</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>error-message</p>
 </td><td><p>‐</p>
 </td><td><p>stepNumber<br>
 totalSteps</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>default</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>next-button-text</p>
 </td><td><p>‐</p>
 </td><td><p>stepNumber<br>
 totalSteps</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>cancel-button-text</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr></tbody></table></div>
@@ -1528,9 +1545,9 @@ totalSteps</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    theme-default (<a href="https://github.com/Forsakringskassan/designsystem/commits/8c1ccc3f3be766184b4b7e3245181a1cd242a618">8c1ccc3</a>)<br />
+    theme-default (<a href="https://github.com/Forsakringskassan/designsystem/commits/79c17a0cccbbcdfcab5976cdb242330080d6b828">79c17a0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/241">PR 241</a><br />
-        2025-02-05 07:32
+        2025-02-06 07:09
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1651,9 +1668,9 @@ totalSteps</p>
             
         ></script>
         <script
-            src="../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script

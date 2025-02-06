@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-fc70a0.css"
+            href="../../assets/docs-1ad388.css"
             crossorigin
-            integrity="sha384-moWClooPmCZQVQl4lhP5gBberK+LePg8rlcCiBgNKnvEIYLuIuoUXbS0utB6faSS"
+            integrity="sha384-nhi7MKWWdsgEwxiStc9mFn19zlD/D1Ds6v1l649UchTqWzYbAeD0lo57tFhFzDr1"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-ea1075.css"
+            href="../../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-Ij5zrGBXy3MP91JpDsklhd0dcaCc4e8yxtvWt8zkBkCjd3m/Ie7B4GVsuGNavb0r"
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
             data-theme="fkui" disabled
         />
 
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7db53a.json"
+            href="../../search-data-3578c6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-o2vIGMIwnrMb8P4Bx5vYiR7bM+OMsPvyGdqGN9vaBn+oeYtN4zNffSotH51yRxwx"
+            integrity="sha384-/HqnRGV/WfoJaaro5B2FPO7uNZRyOPiDnbFXAtKeXfLu159gigITDqTQGAMueqBw"
             id="search-data"
         />
     </head>
@@ -1006,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
+                    src="../../assets/vendor-fkui-vue-627963.js"
                     crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
+                    integrity="sha384-nvTNATUDKTIHm2Z9upZLDIfnKQdf/F8ZkVvLCxP05hJauF4WbxcMUqGpBUySJLSz"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/8c1ccc3f3be766184b4b7e3245181a1cd242a618/packages/vue/src/components/FSelectField/FSelectField.vue">FSelectField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/79c17a0cccbbcdfcab5976cdb242330080d6b828/packages/vue/src/components/FSelectField/FSelectField.vue">FSelectField</a>
             
         </code>
          
@@ -1073,7 +1073,7 @@
                     id="example-c6f911"
                     class="code-preview code-preview--borderless"
                     data-test="live"
-                    data-tags=live-example
+                    data-tags="live-example"
                     data-language="vue"
                 >
                     
@@ -1154,24 +1154,27 @@
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>id</p>
 </td><td><p>The id for the select id attribute.<br>
 The id for the label for attribute.<br>
 If the prop is not set a random value will be generated.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>() =&gt; ElementIdService.generateElementId()</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>inline</p>
 </td><td><p>Show the component inline.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>false</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>v-model</p>
 </td><td><p>The value for the input.<br>
 If the prop is not set undefined will be used.</p>
 </td><td><p>string|number|object|array|boolean</p>
 </td><td><p>false</p>
 </td><td><p>undefined</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>labelWidth</p>
 </td><td><p>Set responsive width for label section.</p>
 <pre><code>label-width=&quot;md-9 lg-6&quot;
@@ -1179,6 +1182,7 @@ If the prop is not set undefined will be used.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;sm-12&quot;</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>selectWidth</p>
 </td><td><p>Set responsive width for select section that wraps select element and icons.</p>
 <pre><code>select-width=&quot;md-6 lg-3&quot;
@@ -1186,27 +1190,35 @@ If the prop is not set undefined will be used.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;sm-12&quot;</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>change</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>change</p>
 </td><td><p>Emitted when the value of the dropdown changes.</p>
 </td><td><p>&lt;anonymous&gt;: string</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>update:modelValue</p>
 </td><td><p>V-model event.</p>
 </td><td><p>&lt;anonymous&gt;: string</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>label</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>label</p>
 </td><td><p>Slot for label content.</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>tooltip</p>
 </td><td><p>Slot for tooltip.</p>
 </td><td><p>‐</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>description</p>
 </td><td><p>Optional slot for description. See <a href="#/Components/FLabel">FLabel</a> for details.</p>
-</td><td><p>descriptionClass<br>
-discreteDescriptionClass</p>
+</td><td><p>descriptionClass: string[] — CSS classes for primary description content.<br>
+discreteDescriptionClass: string[] — CSS classes for format description.</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>error-message</p>
 </td><td><p>Slot for displaying single or several error messages.</p>
-</td><td><p>hasError<br>
-validationMessage</p>
+</td><td><p>hasError: boolean — Set to true when a validation error is present<br>
+validationMessage: string — Descriptive validation error message for current error</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>default</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr></tbody></table></div>
@@ -1230,9 +1242,9 @@ validationMessage</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    theme-default (<a href="https://github.com/Forsakringskassan/designsystem/commits/8c1ccc3f3be766184b4b7e3245181a1cd242a618">8c1ccc3</a>)<br />
+    theme-default (<a href="https://github.com/Forsakringskassan/designsystem/commits/79c17a0cccbbcdfcab5976cdb242330080d6b828">79c17a0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/241">PR 241</a><br />
-        2025-02-05 07:32
+        2025-02-06 07:09
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1353,9 +1365,9 @@ validationMessage</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script

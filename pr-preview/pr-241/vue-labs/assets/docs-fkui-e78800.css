@@ -2,8 +2,7 @@ html {
   font-size: 16px;
 }
 
-.code-preview__preview,
-.live-example__example {
+.code-preview__preview {
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff;
@@ -89,6 +88,8 @@ html {
   --fkds-icon-color-action-content-accent-active: #0e5532;
   --fkds-icon-color-action-content-accent-focus: #0e5532;
   --fkds-icon-color-action-content-weak-default: #5f6165;
+  --fkds-icon-color-action-content-inverted-default: #ffffff;
+  --fkds-icon-color-action-content-inverted-hover: #ffffff;
   --fkds-icon-color-feedback-content-info: #1b1e23;
   --fkds-icon-color-feedback-content-positive: #1b1e23;
   --fkds-icon-color-feedback-content-warning: #1b1e23;
@@ -122,22 +123,13 @@ html {
   --f-text-color-navbar-active: #ffffff;
   --f-text-color-heading-expandable-panel: #ffffff;
   --f-text-color-wizard-step-done: #35805b;
-  --f-text-color-button-disabled: #8d8e91;
   --f-text-color-button-standard: #4a52b6;
-  --f-text-color-button-primary: #ffffff;
-  --f-text-color-button-secondary: #4a52b6;
   --f-text-color-button-discrete: #4a52b6;
   --f-text-color-button-discrete-disabled: #8d8e91;
   --f-text-color-button-discrete-hover: #3b4292;
   --f-text-color-button-discrete-inverted: #ffffff;
   --f-text-color-button-discrete-inverted-hover: #ffffff;
   --f-text-color-button-discrete-inverted-disabled: #e5e5f5;
-  --f-text-color-button-tertiary: #4a52b6;
-  --f-text-color-button-tertiary-hover: #4a52b6;
-  --f-text-color-button-tertiary-disabled: #8d8e91;
-  --f-text-color-button-tertiary-inverted: #ffffff;
-  --f-text-color-button-tertiary-inverted-hover: #f4f4f4;
-  --f-text-color-button-tertiary-inverted-disabled: #8d8e91;
   --f-text-color-menu: #1b1e23;
   --f-text-color-menu-hover: #1b1e23;
   --f-text-color-menu-horizontal-highlight: #1b1e23;
@@ -190,15 +182,7 @@ html {
   --f-background-navbar-hover: #5f9e6c;
   --f-background-code: #f4f4f4;
   --f-background-wizard-step-line: #5f6165;
-  --f-background-button-standard: #f5f6fa;
-  --f-background-button-standard-hover: #e5e5f5;
-  --f-background-button-primary: #4a52b6;
-  --f-background-button-primary-hover: #3b4292;
-  --f-background-button-secondary: #f5f6fa;
-  --f-background-button-secondary-hover: #e5e5f5;
-  --f-background-button-disabled: #f4f4f4;
   --f-background-button-discrete-hover: none;
-  --f-background-button-tertiary-hover: #e5e5f5;
   --f-background-sidepanel-button-tertiary-hover: #e5e5f5;
   --f-background-grid-default: #ffffff;
   --f-background-grid-selected: #f5f6fa;
@@ -256,9 +240,6 @@ html {
   --f-border-color-link-hover: #8d8e91;
   --f-border-color-link-discrete: #8d8e91;
   --f-border-color-link-discrete-hover: #4a52b6;
-  --f-border-color-button-disabled: #8d8e91;
-  --f-border-color-button-standard: #4a52b6;
-  --f-border-color-button-secondary: #4a52b6;
   --f-border-color-grid: #8d8e91;
   --f-border-color-grid-header: #8d8e91;
   --f-border-color-grid-hover: #8d8e91;
