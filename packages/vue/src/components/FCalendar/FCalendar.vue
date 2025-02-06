@@ -70,7 +70,7 @@ export default defineComponent({
             required: true,
         },
     },
-    emits: ["click", "change", "update:modelValue"],
+    emits: ["click", "update:modelValue"],
     methods: {
         onClickDay(date: FDate): void {
             /**
@@ -87,14 +87,6 @@ export default defineComponent({
              * @type {FDate}
              */
             this.$emit("update:modelValue", date);
-
-            /**
-             * Vue2 `v-model` event. Emitted when changing to a different month in the calendar.
-             * @deprecated
-             * @event change
-             * @type {FDate}
-             */
-            this.$emit("change", date);
         },
     },
 });

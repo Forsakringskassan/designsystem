@@ -1459,7 +1459,7 @@ required: true;
 }>, {}, {}, {}, {
 onClickDay(date: FDate): void;
 onChangeMonth(date: FDate): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("click" | "update:modelValue")[], "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -1478,7 +1478,6 @@ type: PropType<FDate>;
 required: true;
 };
 }>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
@@ -4627,7 +4626,7 @@ required: true;
 }>, {}, {}, {}, {
 onClickDay(date: FDate): void;
 onChangeMonth(date: FDate): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("click" | "update:modelValue")[], "click" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -4646,7 +4645,6 @@ type: PropType<FDate>;
 required: true;
 };
 }>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
