@@ -29,7 +29,7 @@ describe("FSelectField", () => {
                         <span :class="$scope.descriptionClass">
                             Hjälptext
                         </span>
-                        <span :class="$scope.discreteDescriptionClass">
+                        <span :class="$scope.formatDescriptionClass">
                             Formatbeskrivning
                         </span>
                     </template>
@@ -66,7 +66,7 @@ describe("FSelectField", () => {
         selectField.label.el().should("contain.text", "Dropplista");
         selectField.label.description().should("contain.text", "Hjälptext");
         selectField.label
-            .discreteDescription()
+            .formatDescription()
             .should("contain.text", "Formatbeskrivning");
         selectField.arrowIcon().should("exist");
 

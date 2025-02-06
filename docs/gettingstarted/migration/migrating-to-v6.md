@@ -356,3 +356,33 @@ Möjlighet finns att importera separat vid behov.
     @include deprecated-variables;
 }
 ```
+
+## Formatbeskrivning på etikett
+
+Använder du formatbeskrivning på {@link FLabel} eller en komponent som nyttjar den (exempelvis {@link FTextField} måste du ändra namnet på bindings:
+
+```diff
+ <f-text-field>
+-    <template #description="{ discreteDescriptionClass }">
+-        <span :class="discreteDescriptionClass"> Formatbeskrivning </span>
++    <template #description="{ formatDescriptionClass }">
++        <span :class="formatDescriptionClass"> Formatbeskrivning </span>
+     </template>
+ </f-text-field>
+```
+
+Det gamla namnet fortsätter att fungera på obestämd tid.
+
+Klassnamnet för formatbeskrivning på etikett är ändrat.
+
+```diff
+-<div class="label__description--discrete">
++<div class="label__description--format">
+```
+
+`FLabelPageObject` metoden är också ändrad att matcha:
+
+```diff
+-label.discreteDescription().should("have.text", "...");
++label.formatDescription().should("have.text", "...");
+```

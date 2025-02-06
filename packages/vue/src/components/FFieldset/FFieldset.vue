@@ -8,11 +8,11 @@
                 <span>{{ numberOfCheckboxesScreenReaderText }}</span>
             </span>
             <!--
-                @slot Optional slot for description. See [FLabel](#/Components/FLabel) for details.
+                @slot Optional slot for description. See {@link FLabel} for details.
                 @binding {string[]} descriptionClass CSS classes for primary description content.
-                @binding {string[]} discreteDescriptionClass CSS classes for format description.
+                @binding {string[]} formatDescriptionClass CSS classes for format description.
             -->
-            <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+            <slot name="description" :description-class :format-description-class></slot>
 
             <!--
                 @slot Slot for displaying single or several error messages.
@@ -54,11 +54,11 @@
                 :class="groupLabelClass"
             >
                 <!--
-                    @slot Optional slot for description. See [FLabel](#/Components/FLabel) for details.
+                    @slot Optional slot for description. See {@link FLabel} for details.
                     @binding {string[]} descriptionClass CSS classes for primary description content.
-                    @binding {string[]} discreteDescriptionClass CSS classes for format description.
+                    @binding {string[]} formatDescriptionClass CSS classes for format description.
                 -->
-                <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+                <slot name="description" :description-class :format-description-class></slot>
 
                 <slot name="error-message" v-bind="{ hasError, validationMessage: validity.validationMessage }">
                     <template v-if="hasError">
@@ -192,7 +192,7 @@ export default defineComponent({
                 validityMode: "INITIAL",
             } as ValidityEvent,
             descriptionClass: ["label__description"],
-            discreteDescriptionClass: ["label__description", "label__description--discrete"],
+            formatDescriptionClass: ["label__description", "label__description--format"],
             validityElement: null as HTMLElement | null,
             dispatchObject: {} as unknown as ComponentValidityEvent,
             detail: {} as unknown as ValidityEvent,

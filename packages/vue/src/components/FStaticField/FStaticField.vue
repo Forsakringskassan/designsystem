@@ -10,13 +10,13 @@
                 <slot name="tooltip"></slot>
             </template>
 
-            <template #description="{ descriptionClass, discreteDescriptionClass }">
+            <template #description="{ descriptionClass, formatDescriptionClass }">
                 <!--
-                    @slot Optional slot for description. See [FLabel](#/Components/FLabel) for details.
+                    @slot Optional slot for description. See {@link FLabel} for details.
                     @binding {string[]} descriptionClass CSS classes for primary description content.
-                    @binding {string[]} discreteDescriptionClass CSS classes for format description.
+                    @binding {string[]} formatDescriptionClass CSS classes for format description.
                 -->
-                <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+                <slot name="description" :description-class :format-description-class></slot>
             </template>
         </f-label>
         <p class="output-field__output">

@@ -716,7 +716,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -1174,7 +1174,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -2023,7 +2023,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -4107,7 +4107,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -5129,7 +5129,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -5876,7 +5876,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -6738,7 +6738,7 @@ validator(value: string): boolean;
 }>, void, {
 validity: ValidityEvent;
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 validityElement: HTMLElement | null;
 dispatchObject: ComponentValidityEvent;
 detail: ValidityEvent;
@@ -8065,7 +8065,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -9615,7 +9615,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -10236,7 +10236,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -10577,7 +10577,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -10950,7 +10950,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -11427,7 +11427,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -11931,7 +11931,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -12382,7 +12382,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -12842,7 +12842,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -13455,7 +13455,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -13908,7 +13908,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -14221,7 +14221,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -14466,7 +14466,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -14883,7 +14883,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -15212,7 +15212,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
@@ -15459,7 +15459,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;
