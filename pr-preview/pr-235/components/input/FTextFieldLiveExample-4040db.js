@@ -41,7 +41,7 @@
         type: "f-text-field",
         tooltipVisible: false,
         descriptionVisible: false,
-        discreteDescriptionVisible: false,
+        formatDescriptionVisible: false,
         customLabel: false,
         isInline: false,
         maxLength: 0,
@@ -114,16 +114,16 @@
       },
       description() {
         const description = this.descriptionVisible ? `<span :class="descriptionClass">Hj\xE4lptext</span>` : "";
-        const discreteDescription = this.discreteDescriptionVisible ? `<span :class="discreteDescriptionClass">Formatbeskrivning</span>` : "";
+        const formatDescription = this.formatDescriptionVisible ? `<span :class="formatDescriptionClass">Formatbeskrivning</span>` : "";
         const template = (
           /* HTML */
           `
-                <template #description="{ descriptionClass, discreteDescriptionClass }">
-                    ${description} ${discreteDescription}
+                <template #description="{ descriptionClass, formatDescriptionClass }">
+                    ${description} ${formatDescription}
                 </template>
             `
         );
-        return this.descriptionVisible || this.discreteDescriptionVisible ? template : "";
+        return this.descriptionVisible || this.formatDescriptionVisible ? template : "";
       },
       tooltip() {
         const template = (
@@ -188,7 +188,7 @@
           }
           if (this.isEmail) {
             this.tooltipVisible = false;
-            this.discreteDescriptionVisible = false;
+            this.formatDescriptionVisible = false;
             this.descriptionVisible = false;
           }
         }
@@ -403,8 +403,8 @@
             }, 8, ["modelValue"])) : (0, import_vue5.createCommentVNode)("v-if", true),
             _ctx.supportDescription ? ((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_checkbox_field, {
               key: 1,
-              modelValue: _ctx.discreteDescriptionVisible,
-              "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.discreteDescriptionVisible = $event),
+              modelValue: _ctx.formatDescriptionVisible,
+              "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.formatDescriptionVisible = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[34] || (_cache[34] = [

@@ -3913,7 +3913,7 @@ input[type=search]:focus,
   display: block;
   font-weight: var(--f-font-weight-normal);
 }
-.label__description--discrete {
+.label__description--format {
   color: var(--f-text-color-discrete);
 }
 

@@ -92,9 +92,9 @@
         const template = (
           /* HTML */
           `
-                <template #description="{ descriptionClass, discreteDescriptionClass }">
+                <template #description="{ descriptionClass, formatDescriptionClass }">
                     <span :class="descriptionClass"> En inte allt f\xF6r utf\xF6rlig ber\xE4ttelse </span>
-                    <span :class="discreteDescriptionClass"> (max 100 tecken) </span>
+                    <span :class="formatDescriptionClass"> (max 100 tecken) </span>
                 </template>
             `
         );

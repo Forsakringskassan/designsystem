@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-84ca37.css"
+            href="../../assets/docs-86e69d.css"
             crossorigin
-            integrity="sha384-zxtVJvraYvtVgXoygg14dWX55o7ZVbZhaR367Y1ajQfsYiJJUDVl9dAYMaJChFtI"
+            integrity="sha384-KZOTUGWzd80/sqt3FP6mAi1u2CTmuleQLGN9qoxyEPLONtfZO9R2aQiRlTqJAoFZ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-1f799b.json"
+            href="../../search-data-0ba283.json"
             as="fetch"
             crossorigin
-            integrity="sha384-UzDyaX1nc6umN2mwufr5bqk07KVXa/06mNO4RoSQaQmUpji/7j4Gbfi3AnTPRPCE"
+            integrity="sha384-H2gAytAUv2im9ryg0VntcUfgMLwroNcbREVT3/NIoqhYB+hvgTFNneL4oEbsEfqI"
             id="search-data"
         />
     </head>
@@ -482,9 +482,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-1b1af6.js"
+                    src="../../assets/vendor-fkui-vue-a208fa.js"
                     crossorigin
-                    integrity="sha384-pVuDOF0XrzrcrsZ7iKabskC0/C+NwUocWlz8URJebDIOX1raOIukBpahXod0IKsx"
+                    integrity="sha384-KNr2avTFjccMjo4824CCigQwtKaqtgOGSlVha8PgV9+TqiI09Tfp9b/2rwetCTl6"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -532,6 +532,8 @@
                                 <li><a href="#validationservice">ValidationService</a></li>
                                 
                                 <li><a href="#tillampnings_specifika_leverabler_borttagna">Tillämpnings-specifika leverabler borttagna</a></li>
+                                
+                                <li><a href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></li>
                                 
                             </ul>
                         </details>
@@ -1023,6 +1025,54 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
 }
 </code></pre>
                 </div>
+            <h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../components/input/ftextfield.html"><code>FTextField</code></a> måste du ändra namnet på bindings:</p>
+
+                <div
+                    id="example-dfe985"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-text-field&gt;
+<span class="hljs-deletion">-    &lt;template #description=&quot;{ discreteDescriptionClass }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;span :class=&quot;discreteDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
+<span class="hljs-addition">+    &lt;template #description=&quot;{ formatDescriptionClass }&quot;&gt;</span>
+<span class="hljs-addition">+        &lt;span :class=&quot;formatDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
+     &lt;/template&gt;
+ &lt;/f-text-field&gt;
+</code></pre>
+                </div>
+            <p>Det gamla namnet fortsätter att fungera på obestämd tid.</p>
+<p>Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+
+                <div
+                    id="example-16afab"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;div class=&quot;label__description--discrete&quot;&gt;</span>
+<span class="hljs-addition">+&lt;div class=&quot;label__description--format&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p><code>FLabelPageObject</code> metoden är också ändrad att matcha:</p>
+
+                <div
+                    id="example-33eb6e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-label.discreteDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
+<span class="hljs-addition">+label.formatDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
+</code></pre>
+                </div>
             
 
                     </div>
@@ -1044,9 +1094,9 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/b11d65c5a611dfb4461d333ec0d52113e3919bf1">b11d65c</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/c97d3537107cb126068b8d19475c68d91aafb386">c97d353</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 14:30
+        2025-02-06 14:36
 </div>
 <div class="toolbar__item">
     <form id="version">

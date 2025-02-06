@@ -28,7 +28,7 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-discrete-description.vue
+  // virtual-entry:./docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-format-description.vue
   var import_vue3 = __require("vue");
   var exampleComponent = {};
   function render(_ctx, _cache) {
@@ -38,11 +38,11 @@
       default: (0, import_vue3.withCtx)(() => _cache[0] || (_cache[0] = [
         (0, import_vue3.createTextVNode)(" Etikett ")
       ])),
-      description: (0, import_vue3.withCtx)(({ discreteDescriptionClass }) => [
+      description: (0, import_vue3.withCtx)(({ formatDescriptionClass }) => [
         (0, import_vue3.createElementVNode)(
           "span",
           {
-            class: (0, import_vue3.normalizeClass)(discreteDescriptionClass)
+            class: (0, import_vue3.normalizeClass)(formatDescriptionClass)
           },
           " Formatbeskrivning ",
           2
@@ -58,6 +58,6 @@
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#FLabelPageObject-discrete-description"
+    selector: "#FLabelPageObject-format-description"
   });
 })();
