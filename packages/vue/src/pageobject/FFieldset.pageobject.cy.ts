@@ -213,9 +213,9 @@ describe("FFieldsetPageObject", () => {
                     </template>
 
                     <template
-                        #description="{ descriptionClass, discreteDescriptionClass }"
+                        #description="{ descriptionClass, formatDescriptionClass }"
                     >
-                        <span :class="discreteDescriptionClass">
+                        <span :class="formatDescriptionClass">
                             Formatbeskrivning
                         </span>
                     </template>
@@ -380,9 +380,9 @@ describe("FFieldsetPageObject", () => {
                 <f-text-field v-model="textModel">
                     <template #default> Etikett </template>
                     <template
-                        #description="{ descriptionClass, discreteDescriptionClass }"
+                        #description="{ descriptionClass, formatDescriptionClass }"
                     >
-                        <span :class="discreteDescriptionClass">
+                        <span :class="formatDescriptionClass">
                             Formatbeskrivning
                         </span>
                     </template>

@@ -5,7 +5,7 @@
             <f-checkbox-field v-model="descriptionVisible" :value="true">
                 Hjälptext
             </f-checkbox-field>
-            <f-checkbox-field v-model="discreteDescriptionVisible" :value="true">
+            <f-checkbox-field v-model="formatDescriptionVisible" :value="true">
                 Formatbeskrivning
             </f-checkbox-field>
             <f-checkbox-field v-model="tooltipVisible" :value="true"> Tooltip </f-checkbox-field>
@@ -28,7 +28,7 @@ export default defineComponent({
         return {
             tooltipVisible: false,
             descriptionVisible: false,
-            discreteDescriptionVisible: false,
+            formatDescriptionVisible: false,
             errorMessageVisible: false,
         };
     },
@@ -46,17 +46,17 @@ export default defineComponent({
             const description = this.descriptionVisible
                 ? `<span :class="descriptionClass">Hjälptext</span>`
                 : "";
-            const discreteDescription = this.discreteDescriptionVisible
-                ? `<span :class="discreteDescriptionClass">Formatbeskrivning</span>`
+            const formatDescription = this.formatDescriptionVisible
+                ? `<span :class="formatDescriptionClass">Formatbeskrivning</span>`
                 : "";
 
             const template = /* HTML */ `
-                <template #description="{ descriptionClass, discreteDescriptionClass }">
-                    ${description} ${discreteDescription}
+                <template #description="{ descriptionClass, formatDescriptionClass }">
+                    ${description} ${formatDescription}
                 </template>
             `;
 
-            return this.descriptionVisible || this.discreteDescriptionVisible ? template : "";
+            return this.descriptionVisible || this.formatDescriptionVisible ? template : "";
         },
         tooltip(): string {
             const template = /* HTML */ `

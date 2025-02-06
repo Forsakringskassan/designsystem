@@ -8,9 +8,9 @@
                     <template #body> Detta fältet kräver lite närmare förklaring. </template>
                 </f-tooltip>
             </template>
-            <template #description="{ descriptionClass, discreteDescriptionClass }">
+            <template #description="{ descriptionClass, formatDescriptionClass }">
                 <span :class="descriptionClass"> Beskrivning av etikett </span>
-                <span :class="discreteDescriptionClass"> (format) </span>
+                <span :class="formatDescriptionClass"> (format) </span>
             </template>
             <template #default> En liten statisk text. </template>
         </f-static-field>

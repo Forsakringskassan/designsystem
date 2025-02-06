@@ -89,9 +89,9 @@ export default defineComponent({
         },
         description(): string {
             const template = /* HTML */ `
-                <template #description="{ descriptionClass, discreteDescriptionClass }">
+                <template #description="{ descriptionClass, formatDescriptionClass }">
                     <span :class="descriptionClass"> En inte allt för utförlig berättelse </span>
-                    <span :class="discreteDescriptionClass"> (max 100 tecken) </span>
+                    <span :class="formatDescriptionClass"> (max 100 tecken) </span>
                 </template>
             `;
 

@@ -32,9 +32,9 @@ export class FLabelPageObject implements BasePageObject {
     /**
      * Formatbeskrivning
      */
-    public discreteDescription(): DefaultCypressChainable {
+    public formatDescription(): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .label__description.label__description--discrete`,
+            `${this.selector} .label__description.label__description--format`,
         );
     }
 

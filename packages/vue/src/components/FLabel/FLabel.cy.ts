@@ -19,9 +19,9 @@ function createComponent(template: string): DefineComponent {
 const defaultTemplate = /* HTML */ `
     <f-label id="label" for="input-field">
         Etikett
-        <template #description="{ descriptionClass, discreteDescriptionClass }">
+        <template #description="{ descriptionClass, formatDescriptionClass }">
             <span :class="descriptionClass"> Hjälptext </span>
-            <span :class="discreteDescriptionClass"> Formatbeskrivning </span>
+            <span :class="formatDescriptionClass"> Formatbeskrivning </span>
         </template>
         <template #error-message> Felmeddelande </template>
     </f-label>
@@ -37,7 +37,7 @@ describe("FLabel", () => {
         const label = new FLabelPageObject("#label");
         label.el().should("contain.text", "Etikett");
         label.description().should("contain.text", "Hjälptext");
-        label.discreteDescription().should("contain.text", "Formatbeskrivning");
+        label.formatDescription().should("contain.text", "Formatbeskrivning");
         label.errorMessage().should("contain.text", "Felmeddelande");
     });
 
@@ -53,12 +53,12 @@ describe("FLabel", () => {
                         >
                             Etikett
                             <template
-                                #description="{ descriptionClass, discreteDescriptionClass }"
+                                #description="{ descriptionClass, formatDescriptionClass }"
                             >
                                 <span :class="descriptionClass">
                                     Hjälptext
                                 </span>
-                                <span :class="discreteDescriptionClass">
+                                <span :class="formatDescriptionClass">
                                     Formatbeskrivning
                                 </span>
                             </template>

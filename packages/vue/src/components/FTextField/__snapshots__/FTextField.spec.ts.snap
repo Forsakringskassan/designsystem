@@ -33,7 +33,7 @@ exports[`snapshots should match snapshot when label and description slots are no
         </span>
       </span>
       <span
-        class="label__description label__description--discrete"
+        class="label__description label__description--format"
       >
         <span
           class="sr-only"

@@ -16,8 +16,8 @@
             :parser="parser"
         >
             Ange arbetstid
-            <template #description="{ discreteDescriptionClass }">
-                <span :class="discreteDescriptionClass">(tt:mm)</span>
+            <template #description="{ formatDescriptionClass }">
+                <span :class="formatDescriptionClass">(tt:mm)</span>
             </template>
         </x-time-text-field>
         <p>

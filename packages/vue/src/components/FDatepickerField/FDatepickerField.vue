@@ -21,9 +21,14 @@
                     <slot name="tooltip"></slot>
                 </template>
 
-                <template #description="{ descriptionClass, discreteDescriptionClass }">
+                <template #description="{ descriptionClass, formatDescriptionClass }">
                     <!-- @slot **Optional** Slot for displaying description. The contents are passed to the description-slot of {@link FLabel}. -->
-                    <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+                    <!--
+                         @slot Optional slot for description. See {@link FLabel} for details.
+                         @binding {string[]} descriptionClass CSS classes for primary description content.
+                         @binding {string[]} formatDescriptionClass CSS classes for format description.
+                    -->
+                    <slot name="description" :description-class :format-description-class></slot>
                 </template>
 
                 <template #error-message="{ hasError, validationMessage }">
