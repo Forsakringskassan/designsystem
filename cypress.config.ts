@@ -48,6 +48,8 @@ const htmlValidateOptions: CypressHtmlValidateOptions = {
         "#__cy_vue_root > div",
         /* @forsakringskassan/docs-generator examples */
         ".code-preview__preview",
+        /* @forsakringskassan/docs-live-example examples */
+        ".live-example__example",
     ],
     exclude,
 };
