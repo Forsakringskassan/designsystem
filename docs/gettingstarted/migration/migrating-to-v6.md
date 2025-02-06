@@ -46,7 +46,11 @@ Följande komponenter, funktioner och typer är även de borttagna:
 - `FPageHeader`: propen `skipLinkHref` är borttagen
 - `FTextField`: `update` eventet emittas inte längre.
 - `getTextFromScopedSlot`: funktionen är borttagen.
-- Konfiguration: `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna.
+
+Ändringar i konfiguration:
+
+- `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna.
+- `FKUIConfig.buttonOrder` byter standardvärde till `RIGHT_TO_LEFT`.
 
 För Cypress pageobjekt:
 

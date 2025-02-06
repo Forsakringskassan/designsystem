@@ -183,7 +183,7 @@ export default defineComponent({
     },
     computed: {
         preparedButtons(): FModalButton[] {
-            return prepareButtonList(this.buttons, FKUIConfigButtonOrder.LEFT_TO_RIGHT);
+            return prepareButtonList(this.buttons, FKUIConfigButtonOrder.RIGHT_TO_LEFT);
         },
     },
     methods: {
