@@ -21,6 +21,7 @@ components/ficon.html
 components/file-upload/ffileitem.html
 components/file-upload/ffileselector.html
 components/flabel.html
+components/flogo.html
 components/fmessagebox.html
 components/foffline.html
 components/framework/ianimateexpand.html
