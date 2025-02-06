@@ -4356,10 +4356,9 @@
        */
       "close",
       /**
-       * Vue 2 V-model event. Emitted when an item is selected.
+       * Emitted when an item is selected.
        *
        * @event select
-       * @deprecated
        * @type {string} item key
        */
       "select",
