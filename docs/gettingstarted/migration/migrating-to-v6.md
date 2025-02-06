@@ -7,58 +7,25 @@ redirect_from:
     - components/fformdeprecated.html
 ---
 
-## Summering
+<!-- [html-validate-disable-next element-permitted-content -- temp workaround] -->
+<style>
+h2 code {
+	font-size: 1.5rem;
+}
 
-Följande deprekerade komponenter har tagits bort:
+h3 code {
+	font-size: 1.2rem;
+}
+</style>
 
-- `FCheckboxGroup`
-- `FCheckboxGroupField`
-- `FRadioGroup`
-- `FRadioGroupField`
-- `FForm`
-- `FFormStep`
-- `FFormStepButton`
-
-Följande komponenter, funktioner och typer är även de borttagna:
-
-- `createFFormProvideOptions`
-- `FFormData`
-- `FFormPageObject`
-- `FFormProvider`
-- `FFormStepPageObject`
-- `FormStepFields`
-- `getRef`
-- `isFormStepReference`
-- `Reference`
-- `setIsOpen`
-- `setRef`
-- `sortComponentsWithErrorsOnDOMOrder`
-
-Ändringar i komponenter och funktioner:
-
-- `@fkui/logic`: importen `@fkui/logic/lib/polyfills` är borttagen.
-- `@fkui/logic`: konstanterna `DATE_REGEXP_WITH_DASH`, `WHITESPACE_PATTERN` och `FORMAT_3_DIGITS_GROUP` är borttagen.
-- `@fkui/logic`: funktioner `applyValidationMessages()`, `ìsRadiobuttonOrCheckbox()` är borttagna.
-- `@fkui/logic`: funktionen `setCookie(..)` tar inte längre `timeLimitMillis` parametern.
-- `FCalendar`: `change` eventet emittas inte längre.
-- `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
-- `FModal`: CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
-- `FPageHeader`: propen `skipLinkHref` är borttagen
-- `FTextField`: `update` eventet emittas inte längre.
-- `getTextFromScopedSlot`: funktionen är borttagen.
-- Konfiguration: `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna.
-
-För Cypress pageobjekt:
-
-- `trimmedText()` metoden är borttagen från samtliga pageobjekt (ej att förväxla med tredjeparts kommando/assertion med samma namn).
-- `FMessageBoxPageObject.title()` och `FMessageBoxPageObject.body()` metoderna är borttagna.
-- `FLoaderPageobject.loader()` metoden är borttagen.
-- `FNavigationMenuPageobject.menu()` metoden är borttagen.
-- `FTooltipPageObject.content()` metoden är borttagen.
-
-Följande deprekerade validatorer har tagits bort:
-
-- `personnummer`
+<script>
+setTimeout(() => {
+  const outline = document.querySelector('#outline');
+  for (const link of Array.from(outline.querySelectorAll('li a'))) {
+    link.textContent = link.textContent.replace(/`/g, "");
+  }
+}, 0);
+</script>
 
 Tillämpnings-specifika leverabler (internt, externt, HAPO) har ersatts av rena FKUI-leverabler:
 
@@ -125,44 +92,71 @@ Den deprekerade entrypointen `@fkui/logic/lib/polyfills` är borttagen och ersat
 +import "@fkui/logic/polyfills";
 ```
 
-## `FCalendar`
+### `personnummer` validator
+
+Den deprekerade validatorn `personnummer` är borttagen och ersätts med validatorerna {@link validators#personnummer_format_personnummerformat `personnummerFormat`} och {@link validators#personnummer_checksumma_personnummerluhn `personnummerLuhn`}.
+
+```diff
+    <f-text-field
+        v-model="personnummerModel"
+-       v-validation.personnummer
++       v-validation.personnummerFormat.personnummerLuhn
+    >
+```
+
+## `@fkui/design`
+
+### `FModal` deprekerade CSS-klasser
+
+De deprekerade CSS klasserna `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
+Detta påverkar endast dig som använder stylingen direkt, använder man `@fkui/vue` komponenten `FModal` påverkas man inte.
+Klasserna är ersatta med `modal__dialog-container--large` respektive `modal__dialog-container--fullscreen`.
+
+```diff
+-<div class="modal__dialog-container modal__dialog-container-large">
++<div class="modal__dialog-container modal__dialog-container--large">
+```
+
+## `@fkui/vue`
+
+### `FCalendar`
 
 Tidigare emittades eventet `change` när man ändrar månad i kalendern.
 Det eventet är nu borttaget och ersatt med `v-model`.
 
-## `FCheckboxGroup` och `FCheckboxGroupField`
+### `FCheckboxGroup` och `FCheckboxGroupField`
 
 Den deprekerade komponenten `FCheckboxGroup` har tagits bort och är ersatt med `FFieldset`, se separat {@link migrating-to-fieldset migreringsguide för fieldset}.
 
 Det deprekerade aliaset `FCheckboxGroupField` har tagits bort och är ersatt med `FCheckboxField`.
 
-## `FCrudDataset`
+### `FCrudDataset`
 
 Tidigare emittades eventet `change` när man ändrar lägger till eller ändrar rader.
 Det eventet är nu borttaget och ersatt med `v-model` alternativt de mer specifika eventen `created`, `updated` and `deleted`.
 
-## `FDialogueTree`
+### `FDialogueTree`
 
 Tidigare emittades eventet `change` när man ändrar val.
 Det eventet är nu borttaget och ersatt med `v-model`.
 
-## `FInteractiveTable`
+### `FInteractiveTable`
 
 Tidigare emittades eventet `update` när man ändrar vald tabellrad.
 Det eventet är nu borttaget och ersatt med `v-model`.
 
-## `FList`
+### `FList`
 
 Tidigare emittades eventet `update` när man ändrar valda kort.
 Det eventet är nu borttaget och ersatt med `v-model`.
 
-## `FRadioGroup` och `FRadioGroupField`
+### `FRadioGroup` och `FRadioGroupField`
 
 Den deprekerade komponenten `FRadioGroup` har tagits bort och är ersatt med `FFieldset`, se separat {@link migrating-to-fieldset migreringsguide för fieldset}.
 
 Det deprekerade aliaset `FRadioGroupField` har tagits bort och är ersatt med `FRadioField`.
 
-## FFormModal slots
+### `FFormModal` slots
 
 De deprekerade slottarna `submit-button-text` och `cancel-button-text` är borttagna och ersatta med propen `buttons`.
 
@@ -199,7 +193,7 @@ Om du använder {@link form-modal `formModal(..)`} (rekommenderat) för att anro
 
 Om du använder template-syntax för att anropa `FFormModal` direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.
 
-## `FPageHeader` skiplink
+### `FPageHeader` skiplink
 
 Den deprekerade propen `skipLinkHref` är borttagen och ersatt med propen `skipLink`.
 
@@ -211,18 +205,7 @@ Den deprekerade propen `skipLinkHref` är borttagen och ersatt med propen `skipL
 `skipLink` kunde tidigare ta ett `boolean` värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng `""` för att stänga av.
 
-## `FModal` deprekerade CSS-klasser
-
-De deprekerade CSS klasserna `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
-Detta påverkar endast dig som använder stylingen direkt, använder man `@fkui/vue` komponenten `FModal` påverkas man inte.
-Klasserna är ersatta med `modal__dialog-container--large` respektive `modal__dialog-container--fullscreen`.
-
-```diff
--<div class="modal__dialog-container modal__dialog-container-large">
-+<div class="modal__dialog-container modal__dialog-container--large">
-```
-
-## `getTextFromScopedSlot`
+### `getTextFromScopedSlot`
 
 Den deprekerade funktionen `getTextFromScopedSlot(..)` har tagits bort och är ersatt med {@link renderSlotText `renderSlotText(..)`}.
 
@@ -237,7 +220,7 @@ Tänk på att `renderSlotText(..)` returnerar `null` om slotten inte finns eller
 
 :::
 
-## `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget`
+### `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget`
 
 De deprekerade egenskaperna `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna och ersatta med den kombinerade `FKUIConfig.teleportTarget`.
 
@@ -249,7 +232,7 @@ De deprekerade egenskaperna `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget
 +config.teleportTarget = "my > selector";
 ```
 
-## `FForm`, `FFormStep` och `FFormStepButton`
+### `FForm`, `FFormStep` och `FFormStepButton`
 
 De deprekerade komponenterna `FForm`, `FFormStep` och `FFormStepButton` har tagits bort.
 Som ersättare till `FForm` finns `FWizard` alternativt `FValidationForm`, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av `FForm`.
@@ -259,7 +242,7 @@ Se dokumentationen för respektive komponent för att avgöra vad som passar bä
 - {@link FWizard}
 - {@link FValidationForm}
 
-## `FTextField`
+### `FTextField`
 
 Eventet `update` emittas inte längre.
 Använd `change` eventet eller `v-model` istället.
@@ -269,7 +252,7 @@ Använd `change` eventet eller `v-model` istället.
 +<f-text-field @change="doSomething">
 ```
 
-## Pageobjects
+## Cypress Pageobjects
 
 ### Paketnamn
 
@@ -383,20 +366,6 @@ Den deprekerade metoden `FTooltipPageObject.content()` har tagits bort och är e
 Både `closeButtonBottom()` och `closeButtonTop()` är ersatt med `closeButton()` då det inte längre finns två separata knappar.
 
 :::
-
-## ValidationService
-
-### Validator `personnummer`
-
-Den deprekerade validatorn `personnummer` är borttagen och ersätts med validatorerna {@link validators#personnummer_format_personnummerformat `personnummerFormat`} och {@link validators#personnummer_checksumma_personnummerluhn `personnummerLuhn`}.
-
-```diff
-    <f-text-field
-        v-model="personnummerModel"
--       v-validation.personnummer
-+       v-validation.personnummerFormat.personnummerLuhn
-    >
-```
 
 ## Tillämpnings-specifika leverabler borttagna
 
