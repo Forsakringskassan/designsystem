@@ -476,20 +476,13 @@ export class FOutputFieldPageobject implements BasePageObject {
 
 // @public (undocumented)
 export class FPageHeaderPageobject implements BasePageObject {
-    constructor(selector: string);
-    // (undocumented)
+    constructor(selector?: string);
     applicationName(): DefaultCypressChainable;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
-    // (undocumented)
-    logoRouterLink(): DefaultCypressChainable;
-    // (undocumented)
+    el(): DefaultCypressChainable;
     logoSlot(): DefaultCypressChainable;
-    // (undocumented)
     rightSlot(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    // (undocumented)
     skipLink(): DefaultCypressChainable;
 }
 

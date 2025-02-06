@@ -15,6 +15,7 @@ layout: article
 - `@fkui/css-variables` har bytt namn till `@fkui/theme-default` och levererar ett standardtema.
 - `@fkui/design` levererar enbart standarddesign.
 - Standard knappordning i modal har ändrats, se avsnitt {@link migrating-to-v6-vue#konfiguration Konfiguration} .
+- `FPageHeader` `logo` slot innehåller inte längre `router-link` eller logotyp som standard.
 
 ## `@fkui/design`
 
@@ -63,7 +64,7 @@ layout: article
 
 - {@link migrating-to-v6-vue#fcalendar `FCalendar`}
 - {@link migrating-to-v6-vue#fformmodal_slots `FFormModal`}
-- {@link migrating-to-v6-vue#fpageheader_skiplink `FPageHeader`}
+- {@link migrating-to-v6-vue#fpageheader `FPageHeader`}
 - {@link migrating-to-v6-vue#ftextfield `FTextField`}
 
 ## Cypress

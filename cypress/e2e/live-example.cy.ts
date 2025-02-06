@@ -30,11 +30,6 @@ describe("should visit all pages and ensure examples load properly", () => {
         const liveExamples = examples.filter(isLiveExample);
         const vuePreviewExamples = examples.filter(isVuePreviewExample);
 
-        /* Skip FPageHeader due to known bug in documentation, `Failed to resolve component: router-link`. */
-        if (path.endsWith("fpageheader.html")) {
-            return;
-        }
-
         if (liveExamples.length === 0 && vuePreviewExamples.length === 0) {
             return;
         }

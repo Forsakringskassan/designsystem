@@ -1206,23 +1206,12 @@ module.exports = defineMetadata({
         slots: ["default", "skip-link-text", "logo", "right"],
         permittedContent: ["@flow", "template"],
         attributes: {
-            "logo-size": {
-                enum: ["small", "large", "responsive"],
-            },
             "skip-link": {
                 enum: ["/.+/"],
                 required: false,
             },
             "header-tag": {
                 enum: ["span", "h1"],
-                required: false,
-            },
-            "router-link-path": {
-                enum: ["/.*/"],
-                required: false,
-            },
-            "router-link-name": {
-                enum: ["/.*/"],
                 required: false,
             },
         },
