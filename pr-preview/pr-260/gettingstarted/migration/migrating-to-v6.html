@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-1ad388.css"
+            href="../../assets/docs-decd43.css"
             crossorigin
-            integrity="sha384-nhi7MKWWdsgEwxiStc9mFn19zlD/D1Ds6v1l649UchTqWzYbAeD0lo57tFhFzDr1"
+            integrity="sha384-QeA2UArWgZF2+Zqqhn3lPqylKhrXTjB7uxCtR6Y077OG2gAM9mpjw1uNWHx+4H4b"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-ab24fc.json"
+            href="../../search-data-61df4e.json"
             as="fetch"
             crossorigin
-            integrity="sha384-TANJrMslqYI9enIqNrKzEAi+vzno86w73+9IlvDlusUjITD7d+6MWOHH0oyC1rvG"
+            integrity="sha384-xxaddNBUmyaYYmNORPcimKNQKGU3DUzEpO8bdSvorPS66VEil85eg7XFnBnOqmA3"
             id="search-data"
         />
     </head>
@@ -482,9 +482,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-627963.js"
+                    src="../../assets/vendor-fkui-vue-2f2efa.js"
                     crossorigin
-                    integrity="sha384-nvTNATUDKTIHm2Z9upZLDIfnKQdf/F8ZkVvLCxP05hJauF4WbxcMUqGpBUySJLSz"
+                    integrity="sha384-l1ZZKHdEgXQ9GLhr6oeBFlKsX4zQVcr8BQVdVZMH9MeZYkNGppEzTSRhaYnLcbaL"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -532,6 +532,8 @@
                                 <li><a href="#validationservice">ValidationService</a></li>
                                 
                                 <li><a href="#tillampnings_specifika_leverabler_borttagna">Tillämpnings-specifika leverabler borttagna</a></li>
+                                
+                                <li><a href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></li>
                                 
                             </ul>
                         </details>
@@ -785,7 +787,40 @@ Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <c
 <li><a href="../../components/fwizard.html"><code>FWizard</code></a></li>
 <li><a href="../../components/validation/fvalidationform.html"><code>FValidationForm</code></a></li>
 </ul>
-<h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="trimmedtext_metoden"><a class="header-anchor" href="#trimmedtext_metoden"><code>trimmedText()</code> metoden</a></h3><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
+<h2 id="pageobjects"><a class="header-anchor" href="#pageobjects">Pageobjects</a></h2><h3 id="paketnamn"><a class="header-anchor" href="#paketnamn">Paketnamn</a></h3>
+                <div
+                    id="example-9fe1de"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-import { ... } from &quot;@fkui/vue/pageobject&quot;</span>
+<span class="hljs-addition">+import { ... } from &quot;@fkui/vue/cypress&quot;</span>
+</code></pre>
+                </div>
+            <p>Använder du TypeScript med Cypress behöver du sätta två inställningar i din <code>cypress/tsconfig.json</code>:</p>
+
+                <div
+                    id="example-6c2904"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> {
+     &quot;compilerOptions&quot;: {
+<span class="hljs-addition">+        &quot;module&quot;: &quot;node16&quot;,</span>
+<span class="hljs-addition">+        &quot;moduleResolution&quot;: &quot;node16&quot;,</span>
+         &quot;target&quot;: &quot;es6&quot;,
+         &quot;lib&quot;: [&quot;es6&quot;, &quot;dom&quot;],
+         &quot;types&quot;: [&quot;cypress&quot;, &quot;node&quot;]
+     },
+</code></pre>
+                </div>
+            <h3 id="trimmedtext_metoden"><a class="header-anchor" href="#trimmedtext_metoden"><code>trimmedText()</code> metoden</a></h3><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
 Ej att förväxla med tredjeparts kommando/assertion med samma namn som med fördel kan användas som ersättare.</p>
 <p>Som förslag till ersättare kan någon av följande tekniker användas:</p>
 <ul>
@@ -805,7 +840,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda <code>.el()</code>.</p>
 
                 <div
-                    id="example-eedf95"
+                    id="example-809fe0"
                     class="code-preview code-preview--default"
                     
                     
@@ -822,7 +857,7 @@ Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man a
 Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda <code>.content()</code> för att hämta ut hela innehållet i slotten eller använda en egen selector.</p>
 
                 <div
-                    id="example-75912f"
+                    id="example-66ceaf"
                     class="code-preview code-preview--default"
                     
                     
@@ -836,7 +871,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="fnavigationmenupageobject_menu_metoden"><a class="header-anchor" href="#fnavigationmenupageobject_menu_metoden"><code>FNavigationMenuPageobject.menu()</code> metoden</a></h3><p>Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
 
                 <div
-                    id="example-f1b2a0"
+                    id="example-5d08f2"
                     class="code-preview code-preview--default"
                     
                     
@@ -850,7 +885,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="ftooltippageobject_content_methoden"><a class="header-anchor" href="#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code> methoden</a></h3><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
 
                 <div
-                    id="example-2faf4e"
+                    id="example-46ccf5"
                     class="code-preview code-preview--default"
                     
                     
@@ -863,7 +898,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-d04666"
+                    id="example-b3f2c7"
                     class="code-preview code-preview--default"
                     
                     
@@ -876,7 +911,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-68c24e"
+                    id="example-3c7090"
                     class="code-preview code-preview--default"
                     
                     
@@ -889,7 +924,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-9ae058"
+                    id="example-a2aa5b"
                     class="code-preview code-preview--default"
                     
                     
@@ -909,7 +944,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
         <h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><h3 id="validator_personnummer"><a class="header-anchor" href="#validator_personnummer">Validator <code>personnummer</code></a></h3><p>Den deprekerade validatorn <code>personnummer</code> är borttagen och ersätts med validatorerna <a href="../../components/validation/validators.html#personnummer_format_personnummerformat"><code>personnummerFormat</code></a> och <a href="../../components/validation/validators.html#personnummer_checksumma_personnummerluhn"><code>personnummerLuhn</code></a>.</p>
 
                 <div
-                    id="example-8e9960"
+                    id="example-d45ef6"
                     class="code-preview code-preview--default"
                     
                     
@@ -927,7 +962,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
 Som konsument finns det möjlighet att själv tillhandahålla specifika tillämpningar.</p>
 
                 <div
-                    id="example-424144"
+                    id="example-a777f5"
                     class="code-preview code-preview--default"
                     
                     
@@ -948,7 +983,7 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
             <h3 id="deprekerade_css_variabler_exluderade_fran_standardtema"><a class="header-anchor" href="#deprekerade_css_variabler_exluderade_fran_standardtema">Deprekerade CSS-variabler exluderade från standardtema</a></h3><p>Möjlighet finns att importera separat vid behov.</p>
 
                 <div
-                    id="example-ce372d"
+                    id="example-f4635b"
                     class="code-preview code-preview--default"
                     
                     
@@ -960,6 +995,54 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
 <span class="hljs-selector-pseudo">:root</span> {
     <span class="hljs-keyword">@include</span> deprecated-variables;
 }
+</code></pre>
+                </div>
+            <h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../components/input/ftextfield.html"><code>FTextField</code></a> måste du ändra namnet på bindings:</p>
+
+                <div
+                    id="example-c6972a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-text-field&gt;
+<span class="hljs-deletion">-    &lt;template #description=&quot;{ discreteDescriptionClass }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;span :class=&quot;discreteDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
+<span class="hljs-addition">+    &lt;template #description=&quot;{ formatDescriptionClass }&quot;&gt;</span>
+<span class="hljs-addition">+        &lt;span :class=&quot;formatDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
+     &lt;/template&gt;
+ &lt;/f-text-field&gt;
+</code></pre>
+                </div>
+            <p>Det gamla namnet fortsätter att fungera på obestämd tid.</p>
+<p>Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+
+                <div
+                    id="example-182300"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;div class=&quot;label__description--discrete&quot;&gt;</span>
+<span class="hljs-addition">+&lt;div class=&quot;label__description--format&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p><code>FLabelPageObject</code> metoden är också ändrad att matcha:</p>
+
+                <div
+                    id="example-7b7f0f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-label.discreteDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
+<span class="hljs-addition">+label.formatDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
 </code></pre>
                 </div>
             
@@ -983,9 +1066,9 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    deprecated-css-dist (<a href="https://github.com/Forsakringskassan/designsystem/commits/d60e1f0429ffaff660e5c61618e2e67759db0ab7">d60e1f0</a>)<br />
+    deprecated-css-dist (<a href="https://github.com/Forsakringskassan/designsystem/commits/66b797892e73fe9da5b3ce478474c5b4a91dd345">66b7978</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/260">PR 260</a><br />
-        2025-02-06 13:04
+        2025-02-06 15:27
 </div>
 <div class="toolbar__item">
     <form id="version">
