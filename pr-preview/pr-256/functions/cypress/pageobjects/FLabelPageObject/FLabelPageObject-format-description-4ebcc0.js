@@ -38,11 +38,11 @@
       default: (0, import_vue3.withCtx)(() => _cache[0] || (_cache[0] = [
         (0, import_vue3.createTextVNode)(" Etikett ")
       ])),
-      description: (0, import_vue3.withCtx)(({ discreteDescriptionClass }) => [
+      description: (0, import_vue3.withCtx)(({ formatDescriptionClass }) => [
         (0, import_vue3.createElementVNode)(
           "span",
           {
-            class: (0, import_vue3.normalizeClass)(discreteDescriptionClass)
+            class: (0, import_vue3.normalizeClass)(formatDescriptionClass)
           },
           " Formatbeskrivning ",
           2

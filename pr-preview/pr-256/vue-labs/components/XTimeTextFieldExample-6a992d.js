@@ -248,11 +248,11 @@
         modelValue: _ctx.time,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.time = $event)
       }, {
-        description: (0, import_vue6.withCtx)(({ discreteDescriptionClass }) => [
+        description: (0, import_vue6.withCtx)(({ formatDescriptionClass }) => [
           (0, import_vue6.createElementVNode)(
             "span",
             {
-              class: (0, import_vue6.normalizeClass)(discreteDescriptionClass)
+              class: (0, import_vue6.normalizeClass)(formatDescriptionClass)
             },
             "(tt:mm)",
             2
