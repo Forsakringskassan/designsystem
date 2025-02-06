@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { IPopupMenuPageObject } from "../../pageobject";
+import { IPopupMenuPageObject } from "../../cypress";
 import IPopupMenu from "./IPopupMenu.vue";
 import IPopupMenuExample from "./examples/IPopupMenuExample.vue";
 

@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { FContextMenuPageObject } from "../../pageobject";
+import { FContextMenuPageObject } from "../../cypress";
 import FContextMenu from "./FContextMenu.vue";
 
 const VIEWPORT = {

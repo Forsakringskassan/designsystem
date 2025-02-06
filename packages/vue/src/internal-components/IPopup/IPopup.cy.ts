@@ -1,5 +1,5 @@
 import { type DefineComponent, defineComponent } from "vue";
-import { IPopupPageObject } from "../../pageobject";
+import { IPopupPageObject } from "../../cypress";
 import IPopup from "./IPopup.vue";
 
 const popup = new IPopupPageObject();

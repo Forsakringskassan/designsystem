@@ -24,8 +24,8 @@ export default defineConfig({
             vue: "vue/dist/vue.esm-bundler.js",
 
             /* alias packages to source folders instead of compiled versions */
-            "@fkui/vue/pageobject": path.resolve(
-                "packages/vue/src/pageobject/index.ts",
+            "@fkui/vue/cypress": path.resolve(
+                "packages/vue/src/cypress/index.ts",
             ),
             "@fkui/vue": "packages/vue/src/index.ts",
             "@fkui/vue-labs": "packages/vue-labs/src/index.ts",

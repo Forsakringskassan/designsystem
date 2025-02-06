@@ -1,5 +1,5 @@
 import { type DefineComponent, defineComponent } from "vue";
-import { FFileSelectorPageObject } from "../../pageobject";
+import { FFileSelectorPageObject } from "../../cypress";
 import FFileSelector from "./FFileSelector.vue";
 
 function createComponent(template: string): DefineComponent {

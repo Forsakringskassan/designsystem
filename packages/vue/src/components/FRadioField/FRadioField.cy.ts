@@ -5,7 +5,7 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FFieldsetPageObject } from "../../pageobject";
+import { FFieldsetPageObject } from "../../cypress";
 import { FTooltip } from "../FTooltip";
 import FFieldset from "../FFieldset/FFieldset.vue";
 import FRadioField from "./FRadioField.vue";

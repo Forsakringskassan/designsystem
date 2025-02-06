@@ -1,4 +1,4 @@
-import { FDialogueTreePageObject } from "../../pageobject";
+import { FDialogueTreePageObject } from "../../cypress";
 import FDialogueTreeExample from "./examples/ExampleFDialogueTree.vue";
 
 function mount(): FDialogueTreePageObject {

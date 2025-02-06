@@ -1,7 +1,7 @@
 import { type DefineComponent, defineComponent, provide } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FTextField } from "../../components";
-import { FTextFieldPageObject } from "../../pageobject";
+import { FTextFieldPageObject } from "../../cypress";
 import IPopupError from "./IPopupError.vue";
 
 const textfield = new FTextFieldPageObject(".text-field");

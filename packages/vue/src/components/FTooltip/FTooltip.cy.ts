@@ -4,7 +4,7 @@ import {
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
 import { defineComponent, useTemplateRef } from "vue";
-import { FTooltipPageObject } from "../../pageobject";
+import { FTooltipPageObject } from "../../cypress";
 import { FLabel } from "../FLabel";
 import { FTextField } from "../FTextField";
 import FTooltip from "./FTooltip.vue";

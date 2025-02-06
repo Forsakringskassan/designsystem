@@ -2,7 +2,7 @@ import {
     FCrudDatasetPageObject,
     FTextareaFieldPageObject,
     FListPageObject,
-} from "@fkui/vue/pageobject";
+} from "@fkui/vue/cypress";
 
 describe("FCrudDataset", () => {
     beforeEach(() => {

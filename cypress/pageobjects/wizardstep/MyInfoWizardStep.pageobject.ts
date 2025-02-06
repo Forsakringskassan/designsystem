@@ -1,7 +1,7 @@
 import {
     type DefaultCypressChainable,
     FWizardStepPageobject,
-} from "../../../packages/vue/pageobject";
+} from "@fkui/vue/cypress";
 
 export class MyInfoWizardStepPageobject extends FWizardStepPageobject {
     public myAddress: () => DefaultCypressChainable;

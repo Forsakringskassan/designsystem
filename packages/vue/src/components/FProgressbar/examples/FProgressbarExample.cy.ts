@@ -1,4 +1,4 @@
-import { FProgressbarPageObject } from "../../../pageobject";
+import { FProgressbarPageObject } from "../../../cypress";
 import FProgressbarExample from "./FProgressbarExample.vue";
 
 const increase = "[data-test=increase]";

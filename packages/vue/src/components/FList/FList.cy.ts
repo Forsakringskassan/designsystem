@@ -4,7 +4,7 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FListPageObject } from "../../pageobject";
+import { FListPageObject } from "../../cypress";
 import FList from "./FList.vue";
 
 interface Item {

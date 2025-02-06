@@ -1,7 +1,7 @@
 import {
     type DefaultCypressChainable,
     FWizardStepPageobject,
-} from "../../../packages/vue/pageobject";
+} from "@fkui/vue/cypress";
 
 export class MyOrderWizardStepPageobject extends FWizardStepPageobject {
     public addBasket: () => DefaultCypressChainable;

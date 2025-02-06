@@ -234,6 +234,39 @@ Se dokumentationen för respektive komponent för att avgöra vad som passar bä
 
 ## Pageobjects
 
+### Paketnamn
+
+```diff
+-import { ... } from "@fkui/vue/pageobject"
++import { ... } from "@fkui/vue/cypress"
+```
+
+Använder du TypeScript med Cypress behöver du sätta två inställningar i din `cypress/tsconfig.json`:
+
+```json name=tsconfig.json.orig hidden
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": ["es6", "dom"],
+        "types": ["cypress", "node"]
+    },
+    "include": ["**/*.ts"]
+}
+```
+
+```json compare=tsconfig.json.orig
+{
+    "compilerOptions": {
+        "module": "node16",
+        "moduleResolution": "node16",
+        "target": "es6",
+        "lib": ["es6", "dom"],
+        "types": ["cypress", "node"]
+    },
+    "include": ["**/*.ts"]
+}
+```
+
 ### `trimmedText()` metoden
 
 Den deprekerade `trimmedText()` metoden är borttagen från samtliga pageobjekt.

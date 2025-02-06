@@ -8,7 +8,7 @@ import { FTooltip } from "../../../FTooltip";
 import {
     AlertScreenReaderPageObject,
     FTextFieldPageObject,
-} from "../../../../pageobject";
+} from "../../../../cypress";
 import FSearchTextField from "./FSearchTextField.vue";
 
 const alertScreenReader = new AlertScreenReaderPageObject();

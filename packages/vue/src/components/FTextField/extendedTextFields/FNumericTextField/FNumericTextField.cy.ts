@@ -1,5 +1,5 @@
 import { defineComponent, type Component } from "vue";
-import { FTextFieldPageObject } from "../../../../pageobject";
+import { FTextFieldPageObject } from "../../../../cypress";
 import FNumericTextField from "./FNumericTextField.vue";
 
 function defineTestComponent(

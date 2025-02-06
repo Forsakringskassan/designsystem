@@ -4,7 +4,7 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FLabelPageObject } from "../../pageobject";
+import { FLabelPageObject } from "../../cypress";
 import FLabel from "./FLabel.vue";
 
 function createComponent(template: string): DefineComponent {

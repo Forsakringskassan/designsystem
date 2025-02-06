@@ -2,7 +2,7 @@ import {
     FDialogueTreePageObject,
     FModalPageObject,
     FTextFieldPageObject,
-} from "../../pageobject";
+} from "../../cypress";
 import FlerstegsModalExample from "./examples/FlerstegsModalExample.vue";
 
 const modal = new FModalPageObject("body");

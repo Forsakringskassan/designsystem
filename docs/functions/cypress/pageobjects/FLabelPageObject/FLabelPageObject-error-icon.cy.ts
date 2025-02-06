@@ -1,4 +1,4 @@
-import { FLabelPageObject } from "@fkui/vue/pageobject";
+import { FLabelPageObject } from "@fkui/vue/cypress";
 import Example from "./FLabelPageObject-error-icon.vue";
 
 it("errorIcon() should select correct element", () => {

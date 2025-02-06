@@ -1,4 +1,4 @@
-import { type DefaultCypressChainable } from "@fkui/vue/pageobject";
+import { type DefaultCypressChainable } from "@fkui/vue/cypress";
 
 export class FOfflineLocalePageobject {
     public selector: string;

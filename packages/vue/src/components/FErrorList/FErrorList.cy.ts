@@ -4,7 +4,7 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FErrorListPageObject } from "../../pageobject";
+import { FErrorListPageObject } from "../../cypress";
 import FErrorList from "./FErrorList.vue";
 
 const errorlist = new FErrorListPageObject(".error-list");

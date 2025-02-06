@@ -1,4 +1,4 @@
-import { STATUS, FWizardPageobject } from "@fkui/vue/pageobject";
+import { STATUS, FWizardPageobject } from "@fkui/vue/cypress";
 import { MyOrderWizardStepPageobject } from "../pageobjects/wizardstep/MyOrderWizardStep.pageobject";
 import { MyInfoWizardStepPageobject } from "../pageobjects/wizardstep/MyInfoWizardStep.pageobject";
 import {

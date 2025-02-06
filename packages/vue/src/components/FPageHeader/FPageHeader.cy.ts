@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
-import { FPageHeaderPageobject } from "../../pageobject";
+import { FPageHeaderPageobject } from "../../cypress";
 import FPageHeader from "./FPageHeader.vue";
 
 const router = createRouter({

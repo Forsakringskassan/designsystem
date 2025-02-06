@@ -1,7 +1,7 @@
 import {
     FValidationFormPageObject,
     type DefaultCypressChainable,
-} from "../../../pageobject";
+} from "../../../cypress";
 
 export class ExamplePageobject extends FValidationFormPageObject {
     public constructor(selector: string) {

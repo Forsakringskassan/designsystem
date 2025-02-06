@@ -1,6 +1,6 @@
 import { type DefineComponent, defineComponent } from "vue";
 import { FDate } from "@fkui/date";
-import { CalendarPageObject } from "../../pageobject";
+import { CalendarPageObject } from "../../cypress";
 import FCalendar from "./FCalendar.vue";
 import FCalendarDay from "./FCalendarDay.vue";
 

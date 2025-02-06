@@ -15,10 +15,9 @@
     "include": ["src/**/*.ts", "src/**/*.vue"],
     "exclude": [
         "src/@types/cypress.d.ts",
-        "src/pageobject/**/*.ts",
+        "src/cypress/**/*.ts",
         "src/stub.d.ts",
         "src/**/*.cy.ts",
-        "src/**/*.pageobject.ts",
-        "src/**/pageobjects.ts"
+        "src/**/*.pageobject.ts"
     ]
 }

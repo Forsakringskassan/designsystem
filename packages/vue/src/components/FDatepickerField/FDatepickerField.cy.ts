@@ -9,7 +9,7 @@ import {
 import {
     AlertScreenReaderPageObject,
     FDatepickerFieldPageobject,
-} from "../../pageobject";
+} from "../../cypress";
 import FDatepickerField from "./FDatepickerField.vue";
 
 const datepickerField = new FDatepickerFieldPageobject(".datepicker-field");
