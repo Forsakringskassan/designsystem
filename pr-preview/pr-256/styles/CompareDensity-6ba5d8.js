@@ -254,7 +254,10 @@
                     (0, import_vue5.createTextVNode)(" Presentationsf\xE4lt - statiskt ")
                   ])]),
                   tooltip: (0, import_vue5.withCtx)(() => [
-                    (0, import_vue5.createVNode)(_component_f_tooltip, { "screen-reader-text": "Sk\xE4rml\xE4sartext" }, {
+                    (0, import_vue5.createVNode)(_component_f_tooltip, {
+                      "screen-reader-text": "Sk\xE4rml\xE4sartext",
+                      "header-tag": "h2"
+                    }, {
                       header: (0, import_vue5.withCtx)(() => [..._cache[29] || (_cache[29] = [
                         (0, import_vue5.createTextVNode)(" Rubrik ")
                       ])]),

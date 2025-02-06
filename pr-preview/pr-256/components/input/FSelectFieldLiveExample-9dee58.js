@@ -64,7 +64,7 @@
           /* HTML */
           `
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="L\xE4s mer h\xE4r">
+                    <f-tooltip screen-reader-text="L\xE4s mer h\xE4r" header-tag="h1">
                         <template #header> Header </template>
                         <template #body> Body </template>
                     </f-tooltip>

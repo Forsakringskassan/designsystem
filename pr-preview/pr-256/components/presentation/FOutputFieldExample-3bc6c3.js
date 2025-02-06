@@ -89,7 +89,10 @@
           (0, import_vue5.createTextVNode)(" Summa ")
         ])),
         tooltip: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createVNode)(_component_f_tooltip, { "screen-reader-text": "L\xE4s mer om avancerat f\xE4lt" }, {
+          (0, import_vue5.createVNode)(_component_f_tooltip, {
+            "screen-reader-text": "L\xE4s mer om avancerat f\xE4lt",
+            "header-tag": "h2"
+          }, {
             header: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
               (0, import_vue5.createTextVNode)(" Mer om summa-f\xE4ltet ")
             ])),

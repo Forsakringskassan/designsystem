@@ -1006,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-64da57.js"
+                    src="../assets/vendor-fkui-vue-2b6d3e.js"
                     crossorigin
-                    integrity="sha384-19C3wbQuaQQW69hpM1Fk+jjZD2CCETB8uuImnQDvgeHOxDmU33DpxHIafPetVHR5"
+                    integrity="sha384-x1e0IGXB04pDV0BQ0Aa2o1+akkdqlohBCMArsfcTXNvTCeMfsPOpYrJhNpLSK4sc"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/d05c7bbc7ec57abe626d4eb981a820ab0ae1aa4e/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/dd3a17fc3111d9e9febbb36db0d01015c98dccc4/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
             
         </code>
          
@@ -1083,13 +1083,17 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FTooltipLiveExample-18f99f.js"></script>
+        <script defer src="./FTooltipLiveExample-5dcacd.js"></script>
     
                 </div>
             <ul>
 <li>Informationsrutan kan innehålla länkar och expanderbara fält.</li>
 <li>Upprepa inte information som redan finns i rubrik eller brödtext.</li>
-<li>Använd inte rubriken i tooltip om den inte verkligen behövs.</li>
+<li>Använd inte rubriken i tooltip om den inte verkligen behövs.
+<ul>
+<li>Om rubrik används behöver även header-tag anges.</li>
+</ul>
+</li>
 <li>Flera informationsrutor kan vara öppna samtidigt.</li>
 <li>Sträva efter att minimera användning av tooltip. Information som alla behöver veta ska visas med etiketten.</li>
 </ul>
@@ -1104,7 +1108,7 @@ Om informationen är viktig för alla, men så pass omfattande att den inte kan 
 <h3 id="rubriksniva"><a class="header-anchor" href="#rubriksniva">Rubriksnivå</a></h3><p>Om du behöver använda en semantisk rubriksnivå använd <code>header-tag</code> parametern för att sätta (som standard används ingen semantisk rubrik):</p>
 
                 <div
-                    id="example-ac8017"
+                    id="example-ffc07b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1120,7 +1124,7 @@ Om informationen är viktig för alla, men så pass omfattande att den inte kan 
 Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachTo</code> propen.</p>
 
                 <div
-                    id="example-c0dc0b"
+                    id="example-c91fde"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1145,7 +1149,7 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
                 </div>
             
                 <div
-                    id="example-0d3c78"
+                    id="example-33936c"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1192,8 +1196,6 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
 </td><td><p>Element to render for the header element inside the tooltip.</p>
 <p>Must be set to one of:</p>
 <ul>
-<li><code>div</code> (default)</li>
-<li><code>span</code></li>
 <li><code>h1</code></li>
 <li><code>h2</code></li>
 <li><code>h3</code></li>
@@ -1203,7 +1205,7 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
 </ul>
 </td><td><p>string</p>
 </td><td><p>false</p>
-</td><td><p>&quot;div&quot;</p>
+</td><td><p>undefined</p>
 </td><td><p>‐</p>
 </td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>update:modelValue</p>
 </td><td><p>v-model event.</p>
@@ -1242,9 +1244,9 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/discrete-format (<a href="https://github.com/Forsakringskassan/designsystem/commits/d05c7bbc7ec57abe626d4eb981a820ab0ae1aa4e">d05c7bb</a>)<br />
+    feature/discrete-format (<a href="https://github.com/Forsakringskassan/designsystem/commits/dd3a17fc3111d9e9febbb36db0d01015c98dccc4">dd3a17f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/256">PR 256</a><br />
-        2025-02-06 10:22
+        2025-02-06 13:11
 </div>
 <div class="toolbar__item">
     <form id="version">

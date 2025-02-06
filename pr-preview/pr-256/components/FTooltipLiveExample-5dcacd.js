@@ -52,6 +52,9 @@
       header() {
         return this.hasHeader ? "<template #header> L\xE4r dig mer om [..] </template>" : "";
       },
+      headerTag() {
+        return this.hasHeader ? 'header-tag="h2"' : "";
+      },
       template() {
         const { longText } = this;
         const text = longText ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit in elit nunc, iaculis sit amet consequat vel, placerat et purus" : "Etikett";
@@ -61,7 +64,10 @@
                 <f-label>
                     <template #default> ${text} </template>
                     <template #tooltip>
-                        <f-tooltip screen-reader-text="Denna text syns bara f\xF6r sk\xE4rml\xE4sare">
+                        <f-tooltip
+                            screen-reader-text="Denna text syns bara f\xF6r sk\xE4rml\xE4sare"
+                            ${this.headerTag}
+                        >
                             ${this.header}
                             <template #body> Lorem ipsum dolor sit amet. </template>
                         </f-tooltip>

@@ -3365,6 +3365,13 @@ const PublicInstanceProxyHandlers = {
     return Reflect.defineProperty(target, key, descriptor);
   }
 };
+function useSlots() {
+  return getContext().slots;
+}
+function getContext() {
+  const i = getCurrentInstance();
+  return i.setupContext || (i.setupContext = createSetupContext(i));
+}
 function normalizePropsOrEmits(props) {
   return isArray$2(props) ? props.reduce(
     (normalized, p2) => (normalized[p2] = null, normalized),
@@ -17008,9 +17015,6 @@ function useHorizontalOffset(options) {
      * Element to render for the header element inside the tooltip.
      *
      * Must be set to one of:
-     *
-     * - `div` (default)
-     * - `span`
      * - `h1`
      * - `h2`
      * - `h3`
@@ -17019,10 +17023,11 @@ function useHorizontalOffset(options) {
      * - `h6`
      */
     headerTag: {
-      default: "div",
+      type: String,
+      default: void 0,
       required: false,
       validator(value) {
-        return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
+        return [void 0, "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
       }
     }
   },
@@ -17091,6 +17096,12 @@ function useHorizontalOffset(options) {
         this.isOpen = value;
         this.animate(value ? "expand" : "collapse");
       }
+    }
+  },
+  created() {
+    const slots = useSlots();
+    if (slots.header && !this.headerTag) {
+      throw new Error("Tooltip with header must define headerTag");
     }
   },
   methods: {

@@ -64,7 +64,7 @@
           /* HTML */
           `
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="L\xE4s mer om Broschyrer">
+                    <f-tooltip screen-reader-text="L\xE4s mer om Broschyrer" header-tag="h2">
                         <template #header> Broschyrer </template>
                         <template #body>
                             H\xE4r v\xE4ljer du om du vill ha broschyrer eller faktablad och vilka omr\xE5den

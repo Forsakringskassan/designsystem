@@ -8371,9 +8371,6 @@
        * Element to render for the header element inside the tooltip.
        *
        * Must be set to one of:
-       *
-       * - `div` (default)
-       * - `span`
        * - `h1`
        * - `h2`
        * - `h3`
@@ -8382,10 +8379,11 @@
        * - `h6`
        */
       headerTag: {
-        default: "div",
+        type: String,
+        default: void 0,
         required: false,
         validator(value) {
-          return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
+          return [void 0, "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
         }
       }
     },
@@ -8454,6 +8452,12 @@
           this.isOpen = value;
           this.animate(value ? "expand" : "collapse");
         }
+      }
+    },
+    created() {
+      const slots = (0, import_vue.useSlots)();
+      if (slots.header && !this.headerTag) {
+        throw new Error("Tooltip with header must define headerTag");
       }
     },
     methods: {
