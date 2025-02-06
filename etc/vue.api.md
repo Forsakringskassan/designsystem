@@ -16017,7 +16017,7 @@ openStep(step: FWizardStepDefinition): void;
 openNext(step: FWizardStepDefinition): Promise<void>;
 doOpen(open: StepNumber | -1): Promise<void>;
 cancel(isFinalStep: boolean): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("cancel" | "change" | "update:modelValue" | "completed")[], "cancel" | "change" | "update:modelValue" | "completed", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("cancel" | "update:modelValue" | "completed")[], "cancel" | "update:modelValue" | "completed", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: StringConstructor;
 default: null;
@@ -16033,7 +16033,6 @@ required: false;
 default: boolean;
 };
 }>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onCancel?: ((...args: any[]) => any) | undefined;
 onCompleted?: ((...args: any[]) => any) | undefined;

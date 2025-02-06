@@ -58,7 +58,7 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["cancel", "change", "completed", "update:modelValue"],
+    emits: ["cancel", "completed", "update:modelValue"],
     data() {
         return {
             steps: [] as FWizardStepDefinition[],
@@ -155,17 +155,8 @@ export default defineComponent({
                  * @type {FWizardKey}
                  */
                 this.$emit("update:modelValue", step.key);
-
-                /**
-                 * Vue2 v-model event.
-                 * @deprecated
-                 * @event change
-                 * @type {FWizardKey}
-                 */
-                this.$emit("change", step.key);
             } else {
                 this.$emit("update:modelValue", null);
-                this.$emit("change", null);
             }
         },
         cancel(isFinalStep: boolean): void {
