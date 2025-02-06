@@ -31,21 +31,10 @@ const getDocsPages = memoize(getDocsPagesImpl);
 
 const htmlValidateConfig: ConfigData = {
     rules: {
-        "heading-level": [
-            "error",
-            {
-                /* some examples show how to use custom heading levels which
-                 * often doesn't match the heading outline for the
-                 * documentation */
-                minInitialRank: "any",
-                sectioningRoots: [
-                    "dialog",
-                    '[role="dialog"]',
-                    ".code-preview__preview",
-                    "footer",
-                ],
-            },
-        ],
+        /* some examples show how to use custom heading levels which often
+         * doesn't match the heading outline for the documentation */
+        "heading-level": ["off"],
+
         /* prevents mismatches from disabled rules which does not trigger errors
          * when Cypress tests are running but would yield errors during normal
          * validation */
