@@ -75,8 +75,8 @@ export default defineComponent({
             this.$emit("update:modelValue", { isValid, componentsWithError, componentCount: components.length });
 
             /**
-             * Vue2 v-model event.
-             * @deprecated
+             * Emitted when validation group has been updated.
+             *
              * @event group-validity
              * @type {GroupValidityEvent}
              */
