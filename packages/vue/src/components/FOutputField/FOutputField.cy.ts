@@ -7,7 +7,7 @@ import {
     densityWrapperWidth,
     densityWrapperHeight,
 } from "@fkui/test-utils/vue";
-import { FOutputFieldPageobject } from "../../pageobject";
+import { FOutputFieldPageobject } from "../../cypress";
 import { FTextField } from "../FTextField";
 import FOutputField from "./FOutputField.vue";
 

@@ -4,7 +4,7 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FExpandablePanelPageObject } from "../../pageobject";
+import { FExpandablePanelPageObject } from "../../cypress";
 import FExpandablePanel from "./FExpandablePanel.vue";
 
 function createComponent(template: string): DefineComponent {

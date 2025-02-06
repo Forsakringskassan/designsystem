@@ -1,4 +1,4 @@
-import { FCalenderDayPageobject } from "../../../pageobject/FCalenderDay.pageobject";
+import { FCalenderDayPageobject } from "../../../cypress";
 import FCalendarSelectDays from "./FCalendarSelectDays.vue";
 
 function mount(): FCalenderDayPageobject {

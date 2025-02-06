@@ -1,4 +1,4 @@
-import { FTextFieldPageObject } from "../../../../pageobject/FTextField.pageobject";
+import { FTextFieldPageObject } from "../../../../cypress/FTextField.pageobject";
 import FEmailTextField from "./FEmailTextField.vue";
 
 function mount(): FTextFieldPageObject {

@@ -8,7 +8,7 @@ import {
     sizeWrapperWidth,
 } from "@fkui/test-utils/vue";
 import { FIcon } from "../FIcon";
-import { FTextFieldPageObject } from "../../pageobject";
+import { FTextFieldPageObject } from "../../cypress";
 import FTextFieldGridExample from "./examples/FTextFieldGrid.vue";
 import FTextField from "./FTextField.vue";
 

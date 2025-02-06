@@ -1,4 +1,4 @@
-import { FStaticFieldPageObject } from "../../pageobject";
+import { FStaticFieldPageObject } from "../../cypress";
 import FStaticFieldInput from "./examples/FStaticFieldInput.vue";
 import FStaticFieldTooltipDescription from "./examples/FStaticFieldTooltipDescription.vue";
 

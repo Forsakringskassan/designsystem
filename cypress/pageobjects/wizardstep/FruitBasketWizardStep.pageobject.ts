@@ -2,7 +2,7 @@ import {
     FWizardStepPageobject,
     FFieldsetPageObject,
     FTextFieldPageObject,
-} from "@fkui/vue/pageobject";
+} from "@fkui/vue/cypress";
 
 export enum FRUIT {
     banana = ".checkbox:nth(0)",

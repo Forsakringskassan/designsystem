@@ -4,7 +4,7 @@ import { FTableColumn } from "../FTableColumn";
 import {
     FInteractiveTablePageObject,
     FSortFilterDatasetPageObject,
-} from "../../pageobject";
+} from "../../cypress";
 import FSortFilterDataset from "./FSortFilterDataset.vue";
 import FSortFilterDatasetEmptySlot from "./examples/FSortFilterDatasetEmptySlot.vue";
 

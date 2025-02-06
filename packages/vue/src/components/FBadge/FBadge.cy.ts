@@ -4,7 +4,7 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FBadgePageObject } from "../../pageobject";
+import { FBadgePageObject } from "../../cypress";
 import FBadge from "./FBadge.vue";
 
 function createComponent(inverted: boolean): DefineComponent {

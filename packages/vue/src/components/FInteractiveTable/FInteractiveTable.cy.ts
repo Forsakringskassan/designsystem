@@ -1,6 +1,6 @@
 /* axelinter:disable:prefer-native-element */
 import { type DefineComponent, defineComponent } from "vue";
-import { FInteractiveTablePageObject } from "../../pageobject";
+import { FInteractiveTablePageObject } from "../../cypress";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";
 

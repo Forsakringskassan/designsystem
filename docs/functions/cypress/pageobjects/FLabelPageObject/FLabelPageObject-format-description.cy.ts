@@ -1,4 +1,4 @@
-import { FLabelPageObject } from "@fkui/vue/pageobject";
+import { FLabelPageObject } from "@fkui/vue/cypress";
 import Example from "./FLabelPageObject-format-description.vue";
 
 it("formatDescription() should select correct element", () => {

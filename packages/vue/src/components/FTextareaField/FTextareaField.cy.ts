@@ -4,7 +4,7 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FTextareaFieldPageObject } from "../../pageobject";
+import { FTextareaFieldPageObject } from "../../cypress";
 import { FTooltip } from "../FTooltip";
 import FTextareaField from "./FTextareaField.vue";
 

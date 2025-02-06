@@ -10,9 +10,9 @@
         "skipLibCheck": true
     },
     "include": [
-        "src/pageobject/**/*.ts",
-        "src/**/pageobjects.ts",
+        "src/cypress/**/*.ts",
+        "s../../cypresss.ts",
         "src/**/*.pageobject.ts"
     ],
-    "exclude": ["src/pageobject/**/*cy.ts"]
+    "exclude": ["src/cypress/**/*.cy.ts"]
 }

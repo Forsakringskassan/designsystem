@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { FLoaderPageObject } from "../../pageobject";
+import { FLoaderPageObject } from "../../cypress";
 import FLoader from "./FLoader.vue";
 
 const loader = new FLoaderPageObject();

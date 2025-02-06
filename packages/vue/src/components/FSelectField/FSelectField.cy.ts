@@ -5,7 +5,7 @@ import {
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
 import { ValidationService } from "@fkui/logic";
-import { FSelectFieldPageObject } from "../../pageobject";
+import { FSelectFieldPageObject } from "../../cypress";
 import FTooltip from "../FTooltip/FTooltip.vue";
 import FSelectField from "./FSelectField.vue";
 

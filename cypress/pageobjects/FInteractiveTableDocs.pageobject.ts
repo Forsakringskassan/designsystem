@@ -1,4 +1,4 @@
-import { FInteractiveTablePageObject } from "@fkui/vue/pageobject";
+import { FInteractiveTablePageObject } from "@fkui/vue/cypress";
 
 export class FInteractiveTableDocsPageObject {
     public route: string = "/#/Components/FInteractiveTable";

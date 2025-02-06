@@ -1,4 +1,4 @@
-import { FLabelPageObject } from "@fkui/vue/pageobject";
+import { FLabelPageObject } from "@fkui/vue/cypress";
 import Example from "./FLabelPageObject-description.vue";
 
 it("description() should select correct element", () => {

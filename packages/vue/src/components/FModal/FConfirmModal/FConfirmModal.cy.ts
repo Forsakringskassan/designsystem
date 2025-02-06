@@ -1,4 +1,4 @@
-import { FModalPageObject } from "../../../pageobjects";
+import { FModalPageObject } from "../../../cypress";
 import FConfirmModalApiExample from "../examples/FConfirmModalApiExample.vue";
 import FConfirmModalCustomButtons from "../examples/FConfirmModalCustomButtons.vue";
 

@@ -22,9 +22,9 @@
       "require": "./dist/cjs/index.cjs.js",
       "import": "./dist/esm/index.esm.js"
     },
-    "./pageobject": {
-      "types": "./dist/types/pageobject.d.ts",
-      "default": "./dist/cjs/pageobject.js"
+    "./cypress": {
+      "types": "./dist/types/cypress.d.ts",
+      "default": "./dist/cjs/cypress.js"
     },
     "./htmlvalidate": "./htmlvalidate/index.cjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
@@ -38,7 +38,6 @@
     "dist",
     "htmlvalidate",
     "tsconfig-consumer.json",
-    "pageobject.{js,d.ts}",
     "!**/*.spec.{js,ts,d.ts}",
     "!**/.eslintrc.json",
     "!htmlvalidate/tsconfig.json"
@@ -49,7 +48,7 @@
     "build:api": "fk-api-extractor --patch-augmentations api-extractor.*.json",
     "build:dts": "vue-tsc -b",
     "build:lib": "fk-build-vue-lib",
-    "build:pageobjects": "esbuild --bundle --platform=node --target=node12.0 --sourcemap --outfile=dist/cjs/pageobject.js ./src/pageobjects.ts",
+    "build:pageobjects": "esbuild --bundle --platform=node --target=node12.0 --sourcemap --outfile=dist/cjs/cypress.js ./src/cypress/index.ts",
     "clean": "rimraf -g .jest-cache *.tsbuildinfo coverage dist public temp test-results",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",

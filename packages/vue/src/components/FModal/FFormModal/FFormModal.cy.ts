@@ -1,9 +1,9 @@
 import { defineComponent } from "vue";
 import {
-    FFormModalPageObject,
     type DefaultCypressChainable,
+    FFormModalPageObject,
     FTextFieldPageObject,
-} from "../../../pageobjects";
+} from "../../../cypress";
 import { FTextField } from "../../FTextField";
 import { formModal } from "../../../utils/form-modal/form-modal";
 import ExampleModal from "../examples/ExampleModal.vue";

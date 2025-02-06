@@ -1,4 +1,4 @@
-import { FOfflinePageObject } from "@fkui/vue/pageobject";
+import { FOfflinePageObject } from "@fkui/vue/cypress";
 import { FOfflineLocalePageobject } from "../pageobjects/FOfflineLocale.pageobject";
 
 describe("FOffline", () => {

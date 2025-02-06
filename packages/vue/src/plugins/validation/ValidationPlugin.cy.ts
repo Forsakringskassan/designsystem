@@ -1,4 +1,4 @@
-import { FRadioFieldPageObject, FTextFieldPageObject } from "../../pageobject";
+import { FRadioFieldPageObject, FTextFieldPageObject } from "../../cypress";
 import ValidationPluginDynamicValidation from "./examples/ValidationPluginDynamicValidation.vue";
 import ValidationPluginFormValidation from "./examples/ValidationPluginFormValidation.vue";
 import ValidationPluginToggleDisable from "./examples/ValidationPluginToggleDisable.vue";

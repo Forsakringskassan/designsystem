@@ -11,7 +11,7 @@ import {
     type DefaultCypressChainable,
     FSelectFieldPageObject,
     FFormModalPageObject,
-} from "../../pageobject";
+} from "../../cypress";
 
 function generateModalMarkup(focusStrategy = "on"): string {
     return /* HTML */ `

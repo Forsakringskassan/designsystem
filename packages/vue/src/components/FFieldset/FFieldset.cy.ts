@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { FFieldsetPageObject } from "../../pageobject";
+import { FFieldsetPageObject } from "../../cypress";
 import { FCheckboxField } from "../FCheckboxField";
 import { FRadioField } from "../FRadioField";
 import FFieldset from "./FFieldset.vue";

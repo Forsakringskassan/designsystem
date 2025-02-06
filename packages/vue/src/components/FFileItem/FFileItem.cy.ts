@@ -1,5 +1,5 @@
 import { type DefineComponent, defineComponent } from "vue";
-import { FFileItemPageObject } from "../../pageobject";
+import { FFileItemPageObject } from "../../cypress";
 import { FIcon } from "../FIcon";
 import { FProgressbar } from "../FProgressbar";
 import FFileItem from "./FFileItem.vue";

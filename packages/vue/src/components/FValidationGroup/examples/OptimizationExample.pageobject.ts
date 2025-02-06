@@ -3,7 +3,7 @@ import {
     FRadioFieldPageObject,
     FTextFieldPageObject,
     type DefaultCypressChainable,
-} from "../../../pageobject";
+} from "../../../cypress";
 
 export class OptimizationExamplePageobject {
     public valRadioGroup: FRadioGroupPageObject;

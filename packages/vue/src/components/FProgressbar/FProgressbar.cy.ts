@@ -1,4 +1,4 @@
-import { FProgressbarPageObject } from "../../pageobject";
+import { FProgressbarPageObject } from "../../cypress";
 import FProgressbar from "./FProgressbar.vue";
 
 describe("FProgressbar", () => {

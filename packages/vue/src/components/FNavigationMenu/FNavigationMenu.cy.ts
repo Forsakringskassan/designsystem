@@ -1,5 +1,5 @@
 import { type DefineComponent, defineComponent } from "vue";
-import { FNavigationMenuPageobject } from "../../pageobject";
+import { FNavigationMenuPageobject } from "../../cypress";
 import FNavigationMenu from "./FNavigationMenu.vue";
 
 const navMenu = new FNavigationMenuPageobject();
