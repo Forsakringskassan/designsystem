@@ -18,7 +18,7 @@
             <f-output-field for="combined-formatter-example">
                 <template #label> modelValue </template>
                 <template #default>
-                    <pre>{{ JSON.stringify(modelValue) }}</pre>
+                    <span class="docs-pre">{{ JSON.stringify(modelValue) }}</span>
                 </template>
             </f-output-field>
         </div>

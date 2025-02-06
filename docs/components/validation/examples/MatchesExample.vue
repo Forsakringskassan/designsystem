@@ -5,7 +5,7 @@
         </div>
         <div id="input-wrapper" class="col col--md-6">
             <f-text-field
-                id="input"
+                id="other"
                 v-model="model"
                 v-validation.matches="{ matches: { id: 'reference' } }"
             >

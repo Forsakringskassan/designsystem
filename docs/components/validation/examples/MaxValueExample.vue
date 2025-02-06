@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.maxValue="{ maxValue: { maxValue: 50 } }">
+    <f-text-field v-model="model" v-validation.maxValue="{ maxValue: { maxValue: 50 } }">
         Fyll i ett tal som är högst 50
     </f-text-field>
 </template>

@@ -1,6 +1,5 @@
 <template>
     <f-text-field
-        id="input"
         v-model="model"
         v-validation.date.invalidDates="{
             invalidDates: { dates: ['2022-01-01', '2022-05-05', '2022-06-20'] },

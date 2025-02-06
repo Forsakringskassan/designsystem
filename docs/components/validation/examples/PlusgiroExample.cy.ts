@@ -1,7 +1,7 @@
 import PlusgiroExample from "./PlusgiroExample.vue";
 
-const input = `.text-field:has(#input) input`;
-const error = `.text-field:has(#input) .label__message--error`;
+const input = `.text-field input`;
+const error = `.text-field .label__message--error`;
 
 // These fake plusgiro values are as of this writing 2024-05-27 verified as non-existing,
 // but are not provided as official fake sample numbers by plusgirot.se

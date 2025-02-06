@@ -1,7 +1,7 @@
 import PersonnummerLuhnExample from "./PersonnummerLuhnExample.vue";
 
-const input = `.text-field:has(#input) input`;
-const error = `.text-field:has(#input) .label__message--error`;
+const input = `.text-field input`;
+const error = `.text-field .label__message--error`;
 
 // The test social security numbers(personnummer) used is approved by Skatteverket.
 

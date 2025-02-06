@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.maxLength="{ maxLength: { length: 10 } }">
+    <f-text-field v-model="model" v-validation.maxLength="{ maxLength: { length: 10 } }">
         Fyll i ett ord som innehåller max 10 tecken
     </f-text-field>
 </template>

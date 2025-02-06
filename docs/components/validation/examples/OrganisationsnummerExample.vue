@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.organisationsnummer>
+    <f-text-field v-model="model" v-validation.organisationsnummer>
         Fyll i ett organisationsnummer
     </f-text-field>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.minLength="{ minLength: { length: 4 } }">
+    <f-text-field v-model="model" v-validation.minLength="{ minLength: { length: 4 } }">
         Fyll i ett ord som innehåller minst 4 tecken
     </f-text-field>
 </template>

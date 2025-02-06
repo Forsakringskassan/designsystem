@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.lessThan="{ lessThan: { limit: 100 } }">
+    <f-text-field v-model="model" v-validation.lessThan="{ lessThan: { limit: 100 } }">
         Fyll i ett tal som är mindre än 100
     </f-text-field>
 </template>

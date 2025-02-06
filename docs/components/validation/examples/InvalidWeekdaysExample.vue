@@ -1,6 +1,5 @@
 <template>
     <f-text-field
-        id="input"
         v-model="model"
         v-validation.date.invalidWeekdays="{ invalidWeekdays: { days: [1, 2, 3, 4] } }"
     >

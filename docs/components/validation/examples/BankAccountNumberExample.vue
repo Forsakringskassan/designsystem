@@ -1,7 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.bankAccountNumber>
-        Fyll i kontonummer
-    </f-text-field>
+    <f-text-field v-model="model" v-validation.bankAccountNumber> Fyll i kontonummer </f-text-field>
 </template>
 
 <script lang="ts">

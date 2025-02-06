@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
-        <label> Begränsa till: </label>
-        <select v-model="constraint" @change="onChangeConstraint">
+        <label for="constraint"> Begränsa till: </label>
+        <select id="constraint" v-model="constraint" @change="onChangeConstraint">
             <option value="viewport">Viewport</option>
             <option value="container">Container</option>
             <option value="combo">Viewport + container</option>

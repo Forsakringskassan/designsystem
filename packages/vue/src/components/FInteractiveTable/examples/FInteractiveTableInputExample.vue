@@ -8,17 +8,15 @@
                         {{ row.beskrivning }}
                     </f-table-column>
                     <f-table-column name="date" title="Utbetalningsdatum" type="text" shrink>
-                        <f-datepicker-field
-                            v-model="row.date"
-                            v-validation.required
-                        ></f-datepicker-field>
+                        <f-datepicker-field v-model="row.date" v-validation.required>
+                            Utbetalningsdatum
+                        </f-datepicker-field>
                     </f-table-column>
 
                     <f-table-column name="belopp" title="Utbetalat belopp" type="text" shrink>
-                        <f-numeric-text-field
-                            v-model="row.belopp"
-                            v-validation.required
-                        ></f-numeric-text-field>
+                        <f-numeric-text-field v-model="row.belopp" v-validation.required>
+                            Utbetalt belopp
+                        </f-numeric-text-field>
                     </f-table-column>
                 </template>
             </f-interactive-table>

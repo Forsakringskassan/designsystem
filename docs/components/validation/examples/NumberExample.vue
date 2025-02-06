@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.number> Fyll i ett tal </f-text-field>
+    <f-text-field v-model="model" v-validation.number> Fyll i ett tal </f-text-field>
 </template>
 
 <script lang="ts">

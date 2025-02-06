@@ -7,7 +7,7 @@
             @completed="onCompleted"
             @cancel="onCancel"
         >
-            <f-wizard-step key="foo" v-test="'myOrderStep'" title="Min beställning">
+            <f-wizard-step key="fruktkorg-antal" v-test="'myOrderStep'" title="Min beställning">
                 <h3>Fruktkorg</h3>
                 <button type="button" class="button button--discrete" @click="addBasket">
                     <f-icon class="button__icon" name="plus" /> Lägg till fruktkorg
