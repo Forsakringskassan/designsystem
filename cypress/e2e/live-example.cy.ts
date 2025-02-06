@@ -17,6 +17,13 @@ function isVuePreviewExample(example: ManifestExample): boolean {
     );
 }
 
+beforeEach(() => {
+    cy.session("cookie-warning", () => {
+        cy.visit("/");
+        cy.setCookie("doc-hide-cookie-warning", "");
+    });
+});
+
 it("should visit all pages and ensure examples load properly", () => {
     cy.task<ManifestPage[]>("getDocsPages").then((pages) => {
         for (const page of pages) {
