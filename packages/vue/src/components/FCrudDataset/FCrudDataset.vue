@@ -192,7 +192,7 @@ export default defineComponent({
             ),
         },
     },
-    emits: ["change", "created", "deleted", "updated", "update:modelValue"],
+    emits: ["created", "deleted", "updated", "update:modelValue"],
     data(): FCrudDatasetData {
         return {
             result: [],
@@ -312,13 +312,6 @@ export default defineComponent({
              */
             this.$emit("update:modelValue", this.result);
 
-            /**
-             * Vue2 v-model event.
-             * @deprecated
-             * @event change
-             */
-            this.$emit("change", this.result);
-
             alertScreenReader(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
                 assertive: true,
             });
@@ -347,7 +340,6 @@ export default defineComponent({
                  */
                 this.$emit("created", this.item);
                 this.$emit("update:modelValue", this.result);
-                this.$emit("change", this.result);
 
                 this.callbackAfterItemAdd(this.item);
                 alertScreenReader(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
@@ -366,7 +358,6 @@ export default defineComponent({
                  */
                 this.$emit("updated", this.originalItemToUpdate);
                 this.$emit("update:modelValue", this.result);
-                this.$emit("change", this.result);
 
                 alertScreenReader(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
                     assertive: true,

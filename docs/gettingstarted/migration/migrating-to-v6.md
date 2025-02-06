@@ -136,6 +136,11 @@ Den deprekerade komponenten `FCheckboxGroup` har tagits bort och är ersatt med 
 
 Det deprekerade aliaset `FCheckboxGroupField` har tagits bort och är ersatt med `FCheckboxField`.
 
+## `FCrudDataset`
+
+Tidigare emittades eventet `change` när man ändrar lägger till eller ändrar rader.
+Det eventet är nu borttaget och ersatt med `v-model` alternativt de mer specifika eventen `created`, `updated` and `deleted`.
+
 ## `FDialogueTree`
 
 Tidigare emittades eventet `change` när man ändrar val.
