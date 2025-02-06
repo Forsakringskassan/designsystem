@@ -88,7 +88,13 @@ Den deprekerade metoden `FNavigationMenuPageobject.menu()` är borttagen och ers
 +nav.item(0).click();
 ```
 
-### `FProgressbarPageObject`
+## `FPageHeaderPageobject`
+
+Metoden `FPageHeaderPageobject.logoRouterLink` är borttagen.
+Eftersom `FPageHeader` inte längre tillhandahåller en `router-link` så finns det ingen direkt ersättare.
+Du får istället använda selector för egen implementerad `router-link` i `FPageHeader` `logo` slot.
+
+## `FProgressbarPageObject`
 
 Metoden `ariaValueNow()` har ändrats till `value()` och returnerar nu `number` istället för `string`.
 

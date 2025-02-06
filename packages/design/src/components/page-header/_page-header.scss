@@ -1,14 +1,7 @@
 @use "../../core/size";
-@use "../../core/mixins/breakpoints";
-@use "../../core/config-variables";
 
-$assets-primary-logo-path: "#{config-variables.$asset-path}/infrastructure/web/assets/images" !default;
 $PAGE_HEADER_SELECTOR: ".page-header" !default;
 $page-header-separator-width: 1px !default;
-$page-header-logo-small-size: 0.8rem;
-$page-header-logo-large-size: 12.39rem;
-$fk-logo-small: "fk-logo-primary-small.svg";
-$fk-logo-large: "fk-logo-primary-large.svg";
 
 #{$PAGE_HEADER_SELECTOR} {
     display: flex;
@@ -26,35 +19,7 @@ $fk-logo-large: "fk-logo-primary-large.svg";
         padding: 0;
         align-items: center;
         box-sizing: border-box;
-        &--small {
-            display: inline-block;
-            background-repeat: no-repeat;
-            background-position: center;
-            padding: $page-header-logo-small-size;
-            background-image: url("#{config-variables.$asset-path-images}/#{$fk-logo-small}");
-        }
-        &--large {
-            display: inline-block;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: var(--f-background-pageheader-primary);
-            padding: $page-header-logo-small-size calc($page-header-logo-large-size / 2);
-            background-image: url("#{config-variables.$asset-path-images}/#{$fk-logo-large}");
-        }
-        &--responsive {
-            display: inline-block;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: var(--f-background-pageheader-primary);
-            padding: $page-header-logo-small-size calc($page-header-logo-large-size / 2);
-            background-image: url("#{config-variables.$asset-path-images}/#{$fk-logo-large}");
 
-            @include breakpoints.breakpoint-only(sm) {
-                min-width: $page-header-logo-small-size;
-                padding: $page-header-logo-small-size;
-                background-image: url("#{config-variables.$asset-path-images}/#{$fk-logo-small}");
-            }
-        }
         & > a {
             display: inline-flex;
         }

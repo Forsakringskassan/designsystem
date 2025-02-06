@@ -5,22 +5,54 @@ layout: component
 component: FPageHeader
 ---
 
-Sidhuvud ska visas längst upp på applikationer som öppnas i ett eget webbläsarfönster. Den innehåller alltid Försäkringskassans logotyp och namnet på applikationen
+Sidhuvud ska visas längst upp på applikationer som öppnas i ett eget webbläsarfönster.
+Den kan innehålla en logotyp, applikationsnamn samt sekundär information.
 
 ```import
 FPageHeaderDefault.vue
 ```
 
-Vid större skärmstorlekar visas hela Försäkringskassans logotyp med text och vid mindre visas en komprimerad variant med endast symbol.
+## Logotyp
 
-I fall där applikationen innehåller flera olika sidor kan logotypen göras till en klickbar länk som leder användaren tillbaka till applikationens förstasida
+För att lägga till en logotyp använd slot `logo`.
+Du kan med fördel använda {@link FLogo `FLogo`} för att ange logotyp.
 
-Sidhuvudet kan också visa sekundär information till höger.
+```diff
+ <f-page-header>
++    <template #logo>
++        <f-logo>Awesome logo</f-logo>
++    </template>
+ </f-page-header>
+```
 
-## Egen logotyp och brytpunkt
+Du kan också göra en länkad logo med att använda en `a`-tagg (eller `router-link` om du använder Vue Router).
+
+```diff
+ <f-page-header>
+     <template #logo>
++        <a href="/">
+             <f-logo>Awesome logo</f-logo>
++        </a>
+     </template>
+ </f-page-header>
+```
+
+Se även nedan exempel för hur du kan göra en egen logotyp med brytpunkt utan att använda `FLogo`.
 
 ```import
 FPageHeaderCustomLogo.vue
+```
+
+## Sekundär information
+
+Slotten `right` kan användas för att visa information som till exempel namn på inloggad användare.
+
+```diff
+ <f-page-header>
++    <template #right>
++        Namn Namnsson
++    </template>
+ </f-page-header>
 ```
 
 ## Skiplink
