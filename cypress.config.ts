@@ -10,24 +10,13 @@ import exclude from "./packages/vue/htmlvalidate/cypress";
 
 import config from "./docs.config";
 
-async function getDocsPagesImpl(): Promise<Manifest["pages"]> {
+async function getDocsPages(): Promise<Manifest["pages"]> {
     const docs = new Generator(config);
     const manifest = await docs.manifest(config.sourceFiles);
     return manifest.pages.filter((it) => {
         return it.path.endsWith(".html");
     });
 }
-
-function memoize<T>(fn: (() => T) & { cache?: T }): () => T {
-    return () => {
-        if (!fn.cache) {
-            fn.cache = fn();
-        }
-        return fn.cache;
-    };
-}
-
-const getDocsPages = memoize(getDocsPagesImpl);
 
 const htmlValidateConfig: ConfigData = {
     rules: {
@@ -78,12 +67,8 @@ export default defineConfig({
     },
     e2e: {
         baseUrl: "http://localhost:8080",
-        setupNodeEvents(on, config) {
-            on("task", {
-                getDocsPages(): Promise<Manifest["pages"]> {
-                    return getDocsPages();
-                },
-            });
+        async setupNodeEvents(on, config) {
+            config.env.pages = await getDocsPages();
 
             getToMatchScreenshotsPlugin(on, config);
             return install(on, config);
