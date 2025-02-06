@@ -136,6 +136,11 @@ Den deprekerade komponenten `FCheckboxGroup` har tagits bort och är ersatt med 
 
 Det deprekerade aliaset `FCheckboxGroupField` har tagits bort och är ersatt med `FCheckboxField`.
 
+## `FList`
+
+Tidigare emittades eventet `update` när man ändrar valda kort.
+Det eventet är nu borttaget och ersatt med `v-model`.
+
 ## `FRadioGroup` och `FRadioGroupField`
 
 Den deprekerade komponenten `FRadioGroup` har tagits bort och är ersatt med `FFieldset`, se separat {@link migrating-to-fieldset migreringsguide för fieldset}.
