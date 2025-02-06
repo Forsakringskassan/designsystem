@@ -52,7 +52,10 @@ describe("FFieldsetPageObject", () => {
                         </span>
                     </template>
                     <template #tooltip>
-                        <f-tooltip screen-reader-text="Screen reader text">
+                        <f-tooltip
+                            screen-reader-text="Screen reader text"
+                            header-tag="h1"
+                        >
                             <template #header> Header </template>
                             <template #body> Body </template>
                         </f-tooltip>
@@ -119,7 +122,10 @@ describe("FFieldsetPageObject", () => {
                     <template #label> Label text </template>
 
                     <template #tooltip>
-                        <f-tooltip screen-reader-text="Screen reader text">
+                        <f-tooltip
+                            screen-reader-text="Screen reader text"
+                            header-tag="h1"
+                        >
                             <template #header> Header </template>
                             <template #body> Body </template>
                         </f-tooltip>
@@ -197,16 +203,19 @@ describe("FFieldsetPageObject", () => {
                     <template #default> Etikett </template>
 
                     <template #tooltip>
-                        <f-tooltip screen-reader-text="Läs mer här">
+                        <f-tooltip
+                            screen-reader-text="Läs mer här"
+                            header-tag="h1"
+                        >
                             <template #header> Header </template>
                             <template #body> Body </template>
                         </f-tooltip>
                     </template>
 
                     <template
-                        #description="{ descriptionClass, discreteDescriptionClass }"
+                        #description="{ descriptionClass, formatDescriptionClass }"
                     >
-                        <span :class="discreteDescriptionClass">
+                        <span :class="formatDescriptionClass">
                             Formatbeskrivning
                         </span>
                     </template>
@@ -371,9 +380,9 @@ describe("FFieldsetPageObject", () => {
                 <f-text-field v-model="textModel">
                     <template #default> Etikett </template>
                     <template
-                        #description="{ descriptionClass, discreteDescriptionClass }"
+                        #description="{ descriptionClass, formatDescriptionClass }"
                     >
-                        <span :class="discreteDescriptionClass">
+                        <span :class="formatDescriptionClass">
                             Formatbeskrivning
                         </span>
                     </template>

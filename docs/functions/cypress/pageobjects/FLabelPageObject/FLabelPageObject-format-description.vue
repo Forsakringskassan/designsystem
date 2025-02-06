@@ -7,8 +7,8 @@ import { FLabel } from "@fkui/vue";
     <f-label v-test="'awesome-label'">
         <template #default> Etikett </template>
 
-        <template #description="{ discreteDescriptionClass }">
-            <span :class="discreteDescriptionClass"> Formatbeskrivning </span>
+        <template #description="{ formatDescriptionClass }">
+            <span :class="formatDescriptionClass"> Formatbeskrivning </span>
         </template>
     </f-label>
 </template>

@@ -21,7 +21,10 @@ const component = defineComponent({
             label="Search"
         >
             <template #tooltip>
-                <f-tooltip screen-reader-text="tooltip info screen reader">
+                <f-tooltip
+                    screen-reader-text="tooltip info screen reader"
+                    header-tag="h1"
+                >
                     <template #header> Header </template>
                     <template #body> Body text </template>
                 </f-tooltip>

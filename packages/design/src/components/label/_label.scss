@@ -40,7 +40,7 @@ $LABEL_SELECTOR: ".label" !default;
         display: block;
         font-weight: var(--f-font-weight-normal);
 
-        &--discrete {
+        &--format {
             color: var(--f-text-color-discrete);
         }
     }

@@ -5,7 +5,10 @@
             <span :class="descriptionClass"> Vi behöver veta om du jobbar 100% eller ej </span>
         </template>
         <template #tooltip>
-            <f-tooltip screen-reader-text="Läs mer om Bor det barn som har fyllt 18 år i bostaden?">
+            <f-tooltip
+                screen-reader-text="Läs mer om Bor det barn som har fyllt 18 år i bostaden?"
+                header-tag="h2"
+            >
                 <template #header> Lite allmän information </template>
                 <template #body>
                     Här kan man skriva lite extra information om man nu önskar det!

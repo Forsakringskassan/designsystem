@@ -18,6 +18,7 @@ describe("FTooltip", () => {
             },
             props: {
                 screenReaderText: "Screen reader text",
+                headerTag: "h3",
             },
         });
         const tooltip = new FTooltipPageObject(".tooltip");

@@ -38,7 +38,7 @@
             </f-checkbox-field>
             <f-checkbox-field
                 v-if="supportDescription"
-                v-model="discreteDescriptionVisible"
+                v-model="formatDescriptionVisible"
                 :value="true"
             >
                 Formatbeskrivning
@@ -86,7 +86,7 @@ export default defineComponent({
             type: "f-text-field",
             tooltipVisible: false,
             descriptionVisible: false,
-            discreteDescriptionVisible: false,
+            formatDescriptionVisible: false,
             customLabel: false,
             isInline: false,
             maxLength: 0,
@@ -165,22 +165,22 @@ export default defineComponent({
             const description = this.descriptionVisible
                 ? `<span :class="descriptionClass">Hjälptext</span>`
                 : "";
-            const discreteDescription = this.discreteDescriptionVisible
-                ? `<span :class="discreteDescriptionClass">Formatbeskrivning</span>`
+            const formatDescription = this.formatDescriptionVisible
+                ? `<span :class="formatDescriptionClass">Formatbeskrivning</span>`
                 : "";
 
             const template = /* HTML */ `
-                <template #description="{ descriptionClass, discreteDescriptionClass }">
-                    ${description} ${discreteDescription}
+                <template #description="{ descriptionClass, formatDescriptionClass }">
+                    ${description} ${formatDescription}
                 </template>
             `;
 
-            return this.descriptionVisible || this.discreteDescriptionVisible ? template : "";
+            return this.descriptionVisible || this.formatDescriptionVisible ? template : "";
         },
         tooltip(): string {
             const template = /* HTML */ `
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="Läs mer här">
+                    <f-tooltip screen-reader-text="Läs mer här" header-tag="h2">
                         <template #header> Header </template>
                         <template #body> Body </template>
                     </f-tooltip>
@@ -232,7 +232,7 @@ export default defineComponent({
 
                 if (this.isEmail) {
                     this.tooltipVisible = false;
-                    this.discreteDescriptionVisible = false;
+                    this.formatDescriptionVisible = false;
                     this.descriptionVisible = false;
                 }
             },

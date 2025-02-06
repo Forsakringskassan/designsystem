@@ -96,7 +96,10 @@ describe("FRadioGroupPageObject", () => {
                     <span :class="descriptionClass"> Description text </span>
                 </template>
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="Screen reader text">
+                    <f-tooltip
+                        screen-reader-text="Screen reader text"
+                        header-tag="h1"
+                    >
                         <template #header> Header </template>
                         <template #body> Body </template>
                     </f-tooltip>

@@ -347,11 +347,11 @@ export class FInteractiveTablePageObject implements BasePageObject {
 export class FLabelPageObject implements BasePageObject {
     constructor(selector: string);
     description(): DefaultCypressChainable;
-    discreteDescription(): DefaultCypressChainable;
     // (undocumented)
     el: () => DefaultCypressChainable;
     errorIcon(): DefaultCypressChainable;
     errorMessage(): DefaultCypressChainable;
+    formatDescription(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
 }

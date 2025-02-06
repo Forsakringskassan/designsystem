@@ -263,7 +263,7 @@ default: undefined;
 };
 }>, void, {
 descriptionClass: string[];
-discreteDescriptionClass: string[];
+formatDescriptionClass: string[];
 }, {
 forProperty(): string | undefined;
 hasDefaultSlot(): boolean;

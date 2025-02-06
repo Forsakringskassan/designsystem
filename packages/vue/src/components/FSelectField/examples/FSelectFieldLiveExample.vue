@@ -47,7 +47,7 @@ export default defineComponent({
         tooltip(): string {
             const template = /* HTML */ `
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="Läs mer här">
+                    <f-tooltip screen-reader-text="Läs mer här" header-tag="h1">
                         <template #header> Header </template>
                         <template #body> Body </template>
                     </f-tooltip>

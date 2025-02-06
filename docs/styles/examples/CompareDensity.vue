@@ -46,7 +46,7 @@
                 <f-static-field>
                     <template #label> Presentationsfält - statiskt </template>
                     <template #tooltip>
-                        <f-tooltip screen-reader-text="Skärmläsartext">
+                        <f-tooltip screen-reader-text="Skärmläsartext" header-tag="h2">
                             <template #header> Rubrik </template>
                             <template #body> Brödtext </template>
                         </f-tooltip>

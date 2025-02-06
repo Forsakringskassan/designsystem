@@ -38,6 +38,7 @@ describe("FTextareaField", () => {
                 <template #tooltip>
                     <f-tooltip
                         screen-reader-text="Läs mer om berätta om dig själv"
+                        header-tag="h1"
                     >
                         <template #header>
                             Mer om berätta om dig själv
@@ -48,12 +49,12 @@ describe("FTextareaField", () => {
                     </f-tooltip>
                 </template>
                 <template
-                    #description="{ descriptionClass, discreteDescriptionClass }"
+                    #description="{ descriptionClass, formatDescriptionClass }"
                 >
                     <span :class="descriptionClass">
                         En inte allt för utförlig berättelse
                     </span>
-                    <span :class="discreteDescriptionClass">
+                    <span :class="formatDescriptionClass">
                         (max 100 tecken)
                     </span>
                 </template>
@@ -70,7 +71,7 @@ describe("FTextareaField", () => {
             .description()
             .should("contain.text", "En inte allt för utförlig berättelse");
         berattelseTextareaField.label
-            .discreteDescription()
+            .formatDescription()
             .should("contain.text", "(max 100 tecken)");
         berattelseTextareaField.label.errorMessage().should("not.exist");
         berattelseTextareaField.label.errorIcon().should("not.exist");

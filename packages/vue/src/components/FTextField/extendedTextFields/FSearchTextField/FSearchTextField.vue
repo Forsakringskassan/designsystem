@@ -25,8 +25,13 @@
             <template #error-message="{ hasError, validationMessage }">
                 <slot name="error-message" v-bind="{ hasError, validationMessage }"></slot>
             </template>
-            <template #description="{ descriptionClass, discreteDescriptionClass }">
-                <slot name="description" v-bind="{ descriptionClass, discreteDescriptionClass }"></slot>
+            <template #description="{ descriptionClass, formatDescriptionClass }">
+                <!--
+                     @slot Optional slot for description. See {@link FLabel} for details.
+                     @binding {string[]} descriptionClass CSS classes for primary description content.
+                     @binding {string[]} formatDescriptionClass CSS classes for format description.
+                -->
+                <slot name="description" :description-class :format-description-class></slot>
             </template>
             <template v-if="canClear" #append-inner>
                 <button class="text-field__icon clear-button" type="button" @click.self="clear">

@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, ref, toRef, useTemplateRef, watchEffect } from "vue";
+import { computed, defineComponent, inject, ref, toRef, useTemplateRef, watchEffect, useSlots } from "vue";
 import { TranslationService } from "@fkui/logic";
 import { FExpand } from "../FExpand";
 import { IFlex, IFlexItem } from "../../internal-components";
@@ -87,9 +87,6 @@ export default defineComponent({
          * Element to render for the header element inside the tooltip.
          *
          * Must be set to one of:
-         *
-         * - `div` (default)
-         * - `span`
          * - `h1`
          * - `h2`
          * - `h3`
@@ -98,10 +95,11 @@ export default defineComponent({
          * - `h6`
          */
         headerTag: {
-            default: "div",
+            type: String,
+            default: undefined,
             required: false,
-            validator(value: string): boolean {
-                return ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
+            validator(value: string | undefined): boolean {
+                return [undefined, "h1", "h2", "h3", "h4", "h5", "h6"].includes(value);
             },
         },
     },
@@ -160,6 +158,12 @@ export default defineComponent({
                 this.animate(value ? "expand" : "collapse");
             },
         },
+    },
+    created() {
+        const slots = useSlots();
+        if (slots.header && !this.headerTag) {
+            throw new Error("Tooltip with header must define headerTag");
+        }
     },
     methods: {
         /**

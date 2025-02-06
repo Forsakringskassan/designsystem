@@ -57,10 +57,26 @@ describe("slots", () => {
             slots: {
                 header: `Tooltip`,
             },
+            props: {
+                headerTag: "h3",
+            },
         });
         await wrapper.get(tooltipButtonClass).trigger("click");
         const header = wrapper.get(headerClass);
         expect(header.text()).toBe("Tooltip");
+    });
+
+    it("should throw error if has slot for header but no header-tag", async () => {
+        expect.assertions(1);
+        expect(() => {
+            createWrapper({
+                slots: {
+                    header: `Tooltip`,
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Tooltip with header must define headerTag"`,
+        );
     });
 
     it("should not render header if header slot isn't used", async () => {
@@ -140,8 +156,6 @@ describe("html-validate", () => {
             <f-tooltip header-tag="" screen-reader-text="foo"></f-tooltip>
 
             <!-- valid header-tag -->
-            <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
-            <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
             <f-tooltip header-tag="h1" screen-reader-text="foo"></f-tooltip>
             <f-tooltip header-tag="h2" screen-reader-text="foo"></f-tooltip>
             <f-tooltip header-tag="h3" screen-reader-text="foo"></f-tooltip>
@@ -151,6 +165,8 @@ describe("html-validate", () => {
 
             <!-- invalid header-tag -->
             <f-tooltip header-tag="foobar" screen-reader-text="foo"></f-tooltip>
+            <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
+            <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
         `;
         const report = htmlvalidate.validateString(markup);
         expect(report).toMatchInlineCodeframe(`
@@ -170,13 +186,30 @@ describe("html-validate", () => {
                  |                        ^^^^^^^^^^
               10 |
               11 |             <!-- valid header-tag -->
-              12 |             <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
+              12 |             <f-tooltip header-tag="h1" screen-reader-text="foo"></f-tooltip>
             Selector: f-tooltip:nth-child(3)
-            error: Attribute "header-tag" has invalid value "foobar" (attribute-allowed-values) at inline:22:36:
-              20 |
-              21 |             <!-- invalid header-tag -->
-            > 22 |             <f-tooltip header-tag="foobar" screen-reader-text="foo"></f-tooltip>
+            error: Attribute "header-tag" has invalid value "foobar" (attribute-allowed-values) at inline:20:36:
+              18 |
+              19 |             <!-- invalid header-tag -->
+            > 20 |             <f-tooltip header-tag="foobar" screen-reader-text="foo"></f-tooltip>
                  |                                    ^^^^^^
+              21 |             <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
+              22 |             <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
+              23 |
+            Selector: f-tooltip:nth-child(10)
+            error: Attribute "header-tag" has invalid value "div" (attribute-allowed-values) at inline:21:36:
+              19 |             <!-- invalid header-tag -->
+              20 |             <f-tooltip header-tag="foobar" screen-reader-text="foo"></f-tooltip>
+            > 21 |             <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
+                 |                                    ^^^
+              22 |             <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
+              23 |
+            Selector: f-tooltip:nth-child(11)
+            error: Attribute "header-tag" has invalid value "span" (attribute-allowed-values) at inline:22:36:
+              20 |             <f-tooltip header-tag="foobar" screen-reader-text="foo"></f-tooltip>
+              21 |             <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
+            > 22 |             <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
+                 |                                    ^^^^
               23 |
             Selector: f-tooltip:nth-child(12)"
         `);

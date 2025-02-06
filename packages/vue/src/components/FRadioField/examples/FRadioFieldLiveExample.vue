@@ -74,6 +74,7 @@ export default defineComponent({
                 <template #tooltip>
                     <f-tooltip
                         screen-reader-text="Läs mer om Bor det barn som har fyllt 18 år i bostaden?"
+                        header-tag="h2"
                     >
                         <template #header> Bor det barn som har fyllt 18 år i bostaden? </template>
                         <template #body>
