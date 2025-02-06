@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-22eb7c.css"
+            href="../../assets/docs-decd43.css"
             crossorigin
-            integrity="sha384-6zNt6feEzfHkhL88mPu2sFhjWF1qAH4NWpplffCib5pYj/bBCPeBkO1+VdjGyIb2"
+            integrity="sha384-QeA2UArWgZF2+Zqqhn3lPqylKhrXTjB7uxCtR6Y077OG2gAM9mpjw1uNWHx+4H4b"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0662eb.json"
+            href="../../search-data-543fa6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dytHdmaYqn8yY8w6AKx9iPQ4XrSqW/Ku/vfpStLDW1TBN1NDXchG93zY9y5oVwWx"
+            integrity="sha384-Y6c11j/G8LUhNHm19kxw6RwqMUYTT8VEiw89934/j1Z+ehzLsTaHPCfX9RMpTanC"
             id="search-data"
         />
     </head>
@@ -242,55 +224,6 @@
             >Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
-</div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
 </div>
 </div>
             </div>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-681d70.js"
+                    src="../../assets/vendor-fkui-vue-188fea.js"
                     crossorigin
-                    integrity="sha384-3mwpxX4kUcp24e93J0bKGOwNVCNgwU4387FOlvxzc50VnQHXRvp3uKiuAQg2W8nj"
+                    integrity="sha384-KJgWFzGM0o8Nah0Zx7zksLFPMNFIH75TIy28DJrFrZC4jEL7AtYyI2pR6R9yD5gr"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1098,13 +1031,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/83f317fa8e20efce462dd8fde39965a190cac194/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/25dc1e49fde6fa1011c5ea5685d07715834dae53/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/83f317fa8e20efce462dd8fde39965a190cac194/packages/vue/src/components/FCheckboxField/FCheckboxField.vue">FCheckboxField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/25dc1e49fde6fa1011c5ea5685d07715834dae53/packages/vue/src/components/FCheckboxField/FCheckboxField.vue">FCheckboxField</a>
             
         </code>
          
@@ -1150,7 +1083,7 @@
                     id="example-b2ad43"
                     class="code-preview code-preview--borderless"
                     data-test="live"
-                    data-tags=live-example
+                    data-tags="live-example"
                     data-language="vue"
                 >
                     
@@ -1326,12 +1259,13 @@
                 </div>
             </div>
         <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><h3 id="ffieldset"><a class="header-anchor" href="#ffieldset">FFieldset</a></h3><p>Ersätter <code>FCheckboxGroup</code>.</p>
-<div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
+<div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>id</p>
 </td><td><p>The id for the fieldset id attribute.<br>
 If the prop is not set a random value will be generated.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>() =&gt; ElementIdService.generateElementId()</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>name</p>
 </td><td><p>Name provided to child content as <code>sharedName</code> for optional usage (it will not be set on the fieldset element).<br>
 For radio inputs this is a shortcut to specify the shared name attribute at one place,<br>
@@ -1339,31 +1273,37 @@ instead of repeatedly setting the name attribute on each radio input.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>undefined</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>labelClass</p>
 </td><td><p>The CSS classes for the label, description and error-message slot.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;&quot;</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>contentClass</p>
 </td><td><p>The CSS classes for the default slot.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;&quot;</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>horizontal</p>
 </td><td><p>Aligns underlying items horizontally.<br>
 Supported by radiobuttons and chip layout.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>‐</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>chip</p>
 </td><td><p>Displays radio and checkbox content with chip layout.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>false</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>border</p>
 </td><td><p>Displays a box with border around radiobuttons and checkboxes.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>showDetails</p>
 </td><td><p>Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.</p>
@@ -1377,29 +1317,37 @@ Supported by radiobuttons and chip layout.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>&quot;never&quot;</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>label</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>label</p>
 </td><td><p>Slot for label content. This slot is required.</p>
 </td><td><p>‐</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>description</p>
-</td><td><p>Optional slot for description. See <a href="#/Components/FLabel">FLabel</a> for details.</p>
-</td><td><p>descriptionClass<br>
-discreteDescriptionClass</p>
+</td><td><p>Optional slot for description. See <a href="../flabel.html"><code>FLabel</code></a> for details.</p>
+</td><td><p>description-class<br>
+format-description-class<br>
+discrete-description-class</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>error-message</p>
 </td><td><p>Slot for displaying single or several error messages.</p>
 </td><td><p>hasError<br>
 validationMessage</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>tooltip</p>
 </td><td><p>Slot for tooltip.</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>default</p>
 </td><td><p>Slot for fieldset content.</p>
 </td><td><p>‐</p>
+</td><td><p>‐</p>
 </td></tr></tbody></table></div><h3 id="fcheckboxfield"><a class="header-anchor" href="#fcheckboxfield">FCheckboxField</a></h3><p>Ersätter <code>FCheckboxGroupField</code>.</p>
-<div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>disabled</p>
+<div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>disabled</p>
 </td><td><p>Set to <code>true</code>, empty string <code>&quot;&quot;</code> or string <code>&quot;disabled&quot;</code> to disable this input field.</p>
 </td><td><p>boolean</p>
 </td><td><p>false</p>
 </td><td><p>false</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>id</p>
 </td><td><p>The id for the input id attribute.<br>
 The id for the label for attribute.<br>
@@ -1407,28 +1355,35 @@ If the prop is not set a random value will be generated.</p>
 </td><td><p>string</p>
 </td><td><p>false</p>
 </td><td><p>() =&gt; ElementIdService.generateElementId()</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>v-model</p>
 </td><td><p>The value for the input checked attribute.</p>
 </td><td><p>anyType</p>
 </td><td><p>false</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>value</p>
 </td><td><p>The value for the input.</p>
 </td><td><p>anyType</p>
 </td><td><p>true</p>
 </td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>change</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>change</p>
 </td><td><p>Emitted when the value of the checkbox changes.</p>
 </td><td><p>&lt;anonymous&gt;: anyType | anyType[]</p>
+</td><td><p>‐</p>
 </td></tr><tr><td><p>update:modelValue</p>
 </td><td><p>V-model event.</p>
 </td><td><p>&lt;anonymous&gt;: anyType | anyType[]</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
 </td><td><p>Slot for label content.</p>
+</td><td><p>‐</p>
 </td><td><p>‐</p>
 </td></tr><tr><td><p>details</p>
 </td><td><p>Slot for extended label, should only contain short text</p>
 </td><td><p>height</p>
+</td><td><p>‐</p>
 </td></tr></tbody></table></div>
 
                     </div>
@@ -1450,9 +1405,9 @@ If the prop is not set a random value will be generated.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/83f317fa8e20efce462dd8fde39965a190cac194">83f317f</a>)<br />
+    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/25dc1e49fde6fa1011c5ea5685d07715834dae53">25dc1e4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/218">PR 218</a><br />
-        2025-02-05 14:18
+        2025-02-06 08:17
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1573,9 +1528,9 @@ If the prop is not set a random value will be generated.</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script

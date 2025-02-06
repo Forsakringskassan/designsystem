@@ -324,6 +324,17 @@
         // preminor will bump the version up to the next minor release, and immediately
         // down to pre-release. premajor and prepatch work the same way.
         inc(release, identifier, identifierBase) {
+          if (release.startsWith("pre")) {
+            if (!identifier && identifierBase === false) {
+              throw new Error("invalid increment argument: identifier is empty");
+            }
+            if (identifier) {
+              const match = `-${identifier}`.match(this.options.loose ? re[t.PRERELEASELOOSE] : re[t.PRERELEASE]);
+              if (!match || match[1] !== identifier) {
+                throw new Error(`invalid identifier: ${identifier}`);
+              }
+            }
+          }
           switch (release) {
             case "premajor":
               this.prerelease.length = 0;
@@ -351,6 +362,12 @@
               }
               this.inc("pre", identifier, identifierBase);
               break;
+            case "release":
+              if (this.prerelease.length === 0) {
+                throw new Error(`version ${this.raw} is not a prerelease`);
+              }
+              this.prerelease.length = 0;
+              break;
             case "major":
               if (this.minor !== 0 || this.patch !== 0 || this.prerelease.length === 0) {
                 this.major++;
@@ -376,9 +393,6 @@
             // 1.0.0 'pre' would become 1.0.0-0 which is the wrong direction.
             case "pre": {
               const base = Number(identifierBase) ? 1 : 0;
-              if (!identifier && identifierBase === false) {
-                throw new Error("invalid increment argument: identifier is empty");
-              }
               if (this.prerelease.length === 0) {
                 this.prerelease = [base];
               } else {
@@ -503,13 +517,12 @@
           if (!lowVersion.patch && !lowVersion.minor) {
             return "major";
           }
-          if (highVersion.patch) {
+          if (lowVersion.compareMain(highVersion) === 0) {
+            if (lowVersion.minor && !lowVersion.patch) {
+              return "minor";
+            }
             return "patch";
           }
-          if (highVersion.minor) {
-            return "minor";
-          }
-          return "major";
         }
         const prefix = highHasPre ? "pre" : "";
         if (v1.major !== v2.major) {

@@ -57,7 +57,7 @@
             /* STABLE */
           })
         ]),
-        description: (0, import_vue5.withCtx)(({ descriptionClass, discreteDescriptionClass }) => [
+        description: (0, import_vue5.withCtx)(({ descriptionClass, formatDescriptionClass }) => [
           (0, import_vue5.createElementVNode)(
             "span",
             {
@@ -70,7 +70,7 @@
           (0, import_vue5.createElementVNode)(
             "span",
             {
-              class: (0, import_vue5.normalizeClass)(discreteDescriptionClass)
+              class: (0, import_vue5.normalizeClass)(formatDescriptionClass)
             },
             " (format) ",
             2

@@ -28,7 +28,7 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-discrete-description.vue
+  // virtual-entry:./docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-format-description.vue
   var import_vue3 = __require("vue");
   var exampleComponent = {};
   function render(_ctx, _cache) {
@@ -58,6 +58,6 @@
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#FLabelPageObject-discrete-description"
+    selector: "#FLabelPageObject-format-description"
   });
 })();

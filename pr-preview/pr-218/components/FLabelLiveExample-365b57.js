@@ -40,7 +40,7 @@
       return {
         tooltipVisible: false,
         descriptionVisible: false,
-        discreteDescriptionVisible: false,
+        formatDescriptionVisible: false,
         errorMessageVisible: false
       };
     },
@@ -56,16 +56,16 @@
       },
       description() {
         const description = this.descriptionVisible ? `<span :class="descriptionClass">Hj\xE4lptext</span>` : "";
-        const discreteDescription = this.discreteDescriptionVisible ? `<span :class="discreteDescriptionClass">Formatbeskrivning</span>` : "";
+        const formatDescription = this.formatDescriptionVisible ? `<span :class="formatDescriptionClass">Formatbeskrivning</span>` : "";
         const template = (
           /* HTML */
           `
-                <template #description="{ descriptionClass, discreteDescriptionClass }">
-                    ${description} ${discreteDescription}
+                <template #description="{ descriptionClass, formatDescriptionClass }">
+                    ${description} ${formatDescription}
                 </template>
             `
         );
-        return this.descriptionVisible || this.discreteDescriptionVisible ? template : "";
+        return this.descriptionVisible || this.formatDescriptionVisible ? template : "";
       },
       tooltip() {
         const template = (
@@ -129,8 +129,8 @@
               /* STABLE */
             }, 8, ["modelValue"]),
             (0, import_vue5.createVNode)(_component_f_checkbox_field, {
-              modelValue: _ctx.discreteDescriptionVisible,
-              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.discreteDescriptionVisible = $event),
+              modelValue: _ctx.formatDescriptionVisible,
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.formatDescriptionVisible = $event),
               value: true
             }, {
               default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
