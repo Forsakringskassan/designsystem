@@ -2930,7 +2930,7 @@ reason: string;
 onModalClose(): void;
 onFormModalSubmit(): void;
 updateItem(item: ListItem): void;
-}, ComponentOptions, ComponentOptionsMixin, ("change" | "created" | "updated" | "update:modelValue" | "deleted")[], "change" | "created" | "updated" | "update:modelValue" | "deleted", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("created" | "updated" | "update:modelValue" | "deleted")[], "created" | "updated" | "update:modelValue" | "deleted", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<ListArray<ListItem>>;
 required: false;
@@ -2976,7 +2976,6 @@ required: false;
 default: string;
 };
 }>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 onCreated?: ((...args: any[]) => any) | undefined;
 onUpdated?: ((...args: any[]) => any) | undefined;
