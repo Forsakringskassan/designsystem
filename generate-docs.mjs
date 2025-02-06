@@ -108,6 +108,7 @@ const docs = new Generator({
         }),
         manifestProcessor({
             markdown: "etc/docs-manifest.md",
+            verify: isCI,
         }),
         motdProcessor(),
         selectableVersionProcessor(pkg, "footer:right"),
