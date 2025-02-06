@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.minValue="{ minValue: { minValue: 10 } }">
+    <f-text-field v-model="model" v-validation.minValue="{ minValue: { minValue: 10 } }">
         Fyll i ett tal som är lägst 10
     </f-text-field>
 </template>

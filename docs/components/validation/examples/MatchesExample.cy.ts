@@ -1,8 +1,8 @@
 import MatchesExample from "./MatchesExample.vue";
 
 const reference = `.text-field:has(#reference) input`;
-const input = `.text-field:has(#input) input`;
-const error = `.text-field:has(#input) .label__message--error`;
+const input = `.text-field:has(#other) input`;
+const error = `.text-field:has(#other) .label__message--error`;
 
 it("should validate ok when value is empty", () => {
     cy.mount(MatchesExample);

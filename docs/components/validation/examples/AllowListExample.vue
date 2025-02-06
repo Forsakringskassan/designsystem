@@ -1,6 +1,5 @@
 <template>
     <f-text-field
-        id="input"
         v-model="model"
         v-validation.allowList="{ allowList: { list: ['foo', 'bar', 'baz'] } }"
     >

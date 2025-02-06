@@ -2,8 +2,8 @@ import PersonnummerFormatExample from "./PersonnummerFormatExample.vue";
 
 // The test social security numbers(personnummer) used is approved by Skatteverket.
 
-const input = `.text-field:has(#input) input`;
-const error = `.text-field:has(#input) .label__message--error`;
+const input = `.text-field input`;
+const error = `.text-field .label__message--error`;
 
 it("should allow empty input", () => {
     cy.mount(PersonnummerFormatExample);

@@ -2,15 +2,6 @@ module.exports = {
     extends: ["@fkui/vue:recommended"],
     plugins: ["@fkui/vue/htmlvalidate"],
 
-    elements: [
-        {
-            "f-output-field#default": {
-                /* technical debt: should probably allow <pre> in component definition */
-                permittedContent: ["@phrasing", "pre"],
-            },
-        },
-    ],
-
     rules: {
         /* disabled as way to many examples does not include this validator
          * (most of them are reasonable as to not include way to much details

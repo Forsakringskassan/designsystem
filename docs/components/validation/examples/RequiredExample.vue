@@ -1,8 +1,6 @@
 <template>
     <f-validation-form :use-error-list="false" @submit="onSubmit">
-        <f-text-field id="input" v-model="model" v-validation.required>
-            Fyll i minst ett tecken
-        </f-text-field>
+        <f-text-field v-model="model" v-validation.required> Fyll i minst ett tecken </f-text-field>
         <div class="button-group">
             <button
                 id="submit"

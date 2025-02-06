@@ -1,7 +1,7 @@
 <template>
     <div>
         <button type="button" @click="toggle = !toggle">Toggle</button>
-        <input v-model="opacity" type="checkbox" /> Toning
+        <label><input v-model="opacity" type="checkbox" /> Toning</label>
 
         <i-animate-expand :opacity="opacity" :expanded="toggle">
             <!-- [html-validate-disable-next no-inline-style] -->

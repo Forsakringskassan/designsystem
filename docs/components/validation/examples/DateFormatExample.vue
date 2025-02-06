@@ -1,7 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.dateFormat>
-        Fyll i ett datum
-    </f-text-field>
+    <f-text-field v-model="model" v-validation.dateFormat> Fyll i ett datum </f-text-field>
 </template>
 
 <script lang="ts">

@@ -37,7 +37,11 @@ export default defineComponent({
         },
         template(): string {
             return /* HTML */ `
-                <f-navigation-menu :routes="routes" ${this.vertical}></f-navigation-menu>
+                <f-navigation-menu
+                    aria-label="Example navigation"
+                    :routes="routes"
+                    ${this.vertical}
+                ></f-navigation-menu>
             `;
         },
     },

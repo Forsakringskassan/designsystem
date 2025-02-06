@@ -1,7 +1,7 @@
 import RequiredExample from "./RequiredExample.vue";
 
-const input = `.text-field:has(#input) input`;
-const error = `.text-field:has(#input) .label__message--error`;
+const input = `.text-field input`;
+const error = `.text-field .label__message--error`;
 const submit = `button#submit`;
 
 it("should not show error if input has any text", () => {

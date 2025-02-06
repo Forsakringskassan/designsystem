@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.bankgiro> Fyll i bankgiro </f-text-field>
+    <f-text-field v-model="model" v-validation.bankgiro> Fyll i bankgiro </f-text-field>
 </template>
 
 <script lang="ts">

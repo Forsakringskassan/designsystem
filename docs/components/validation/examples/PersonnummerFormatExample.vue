@@ -1,5 +1,5 @@
 <template>
-    <f-text-field id="input" v-model="model" v-validation.personnummerFormat>
+    <f-text-field v-model="model" v-validation.personnummerFormat>
         Fyll i ett personnummer
     </f-text-field>
 </template>

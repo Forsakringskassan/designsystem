@@ -27,6 +27,13 @@
     border: 1px solid #000;
 }
 
+.docs-pre {
+    display: inline-block;
+    white-space: pre;
+    font-family: monospace;
+    margin: 1em 0px;
+}
+
 footer {
     background: palette.$palette-color-green-a-85;
     color: var(--fkds-color-text-inverted);
