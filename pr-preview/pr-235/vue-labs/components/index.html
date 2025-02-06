@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-14c0c6.css"
+            href="../assets/docs-849366.css"
             crossorigin
-            integrity="sha384-r+NSLFv6XrngSmltzmYr8QlwUvMG0w9awGiy2jbmGssQkug1I1wBb05Bm6XM4nFp"
+            integrity="sha384-2F4wnhSr8a0r+RMnC3zmuht3k2+zJj6zB4CWYSrxhMtPQRPyvdxHAjmhkC6OG0Mr"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-3e2c1f.css"
+            href="../assets/docs-fkui-0be50d.css"
             crossorigin
-            integrity="sha384-wbFaRH1oFM7zXiZQtQawD5wJ/07rBIzHxNKWMxXWMlr6TzkOMJYomBubNiETvezB"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../assets/docs-int-d00de7.css"
-            crossorigin
-            integrity="sha384-YFhTliWLMuGdwtPh4aQ8h5fYgrBlqMPzjEPjuIxOo3mFlt5FiNVrCdBS/xPDQuNA"
-            data-theme="int" disabled
+            integrity="sha384-Qr28s929AasaI2KZz0XfHtCTBcBZlcdDGFgbeVF87H+gHsXF/2Wq/Qh4YkOc/h++"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -38,18 +31,7 @@
         ></script>
 
         <!-- prettier-ignore -->
-        <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-
+        
 
         <link
             rel="preload"
@@ -114,55 +96,6 @@
     </form>
 </div>
 <div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
-<div class="toolbar__item">
     <span class="version">
         5.46.0
     </span>
@@ -212,9 +145,9 @@
                     integrity="sha384-fNTiFMLYobZ/3uPWSbkX0BoEj3ji/BINt7Jk+R8EC9LI50I0QYOiAVH7nOL2/SO9"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-logic-5a07de.js"
+                    src="../assets/vendor-fkui-logic-23d238.js"
                     crossorigin
-                    integrity="sha384-Dq/fV6wHLTZNFE1QX6uSiBEnIFrkGTSwhRUdeT+9MFhWgnMWZXtMfccxqNiPJwJO"
+                    integrity="sha384-X1qPShbahkLWp9YEty8N8CTv/9JBV8zVJ3cqP7ZD65iKdSXjXzpjd5P+k4OQFz2t"
                 ></script>
                 <script
                     src="../assets/vendor-fkui-date-0b5d4b.js"
@@ -222,9 +155,9 @@
                     integrity="sha384-qFl9sMVllZVSUjaXJ/tZ+Ayl7zK2wrSuXSQwO1c0tsifkdsaXN4RIMRsbm/1skJH"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-14a9e7.js"
+                    src="../assets/vendor-fkui-vue-a36d76.js"
                     crossorigin
-                    integrity="sha384-ngVBoKnuhOCrEwm9RmA09ogQYsF+R+9Wet2UWl1edXRiyVyqQngJIr/KLEzJNQE3"
+                    integrity="sha384-WfH+uXlFlzdTY2luhnVtLsk1QxGxRiZ1xjzL+d7g3aO4fJ+TFr04DVo6r0n+7oxR"
                 ></script>
 
                 <!-- prettier-ignore --><main>
