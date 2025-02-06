@@ -66,6 +66,7 @@
       ]),
       (0, import_vue5.createElementVNode)("div", _hoisted_3, [
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
+          id: "other",
           modelValue: _ctx.model,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.model = $event)
         }, {
