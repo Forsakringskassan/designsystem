@@ -109,14 +109,6 @@ export default defineComponent({
              */
             this.$emit("update:modelValue", navigatedMonth);
 
-            /**
-             * Vue2 `v-model` event.
-             * @deprecated
-             * @event change
-             * @type {string}
-             */
-            this.$emit("change", navigatedMonth);
-
             if (navigatedDay.month !== date.month) {
                 await this.$nextTick(); // required for refs to be updated when navigating to another month
             }

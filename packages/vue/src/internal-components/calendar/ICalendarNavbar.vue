@@ -117,15 +117,6 @@ export default defineComponent({
                  */
                 this.$emit("update:modelValue", this.previousValue);
 
-                /**
-                 * Vue2 v-model event.
-                 * @deprecated
-                 * @event change
-                 * @param value
-                 * @type {FDate}
-                 */
-                this.$emit("change", this.previousValue);
-
                 const previousMonth = this.getDateText(this.previousValue);
                 const previousMonthText = this.$t("fkui.calendar-navbar.previous-month", "{{ previousMonth }} visas", {
                     previousMonth,
