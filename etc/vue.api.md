@@ -5507,7 +5507,7 @@ options(): FDialogueTreeOption[];
 }, {
 onClickedOption(option: FDialogueTreeOption, index: number): Promise<void>;
 emitChange(lastStep: boolean): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDialogueTreeUserProgress>;
 required: true;
@@ -5517,7 +5517,6 @@ type: PropType<FDialogueTreeQuestion>;
 required: true;
 };
 }>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {}, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {

@@ -136,6 +136,11 @@ Den deprekerade komponenten `FCheckboxGroup` har tagits bort och är ersatt med 
 
 Det deprekerade aliaset `FCheckboxGroupField` har tagits bort och är ersatt med `FCheckboxField`.
 
+## `FDialogueTree`
+
+Tidigare emittades eventet `change` när man ändrar val.
+Det eventet är nu borttaget och ersatt med `v-model`.
+
 ## `FInteractiveTable`
 
 Tidigare emittades eventet `update` när man ändrar vald tabellrad.

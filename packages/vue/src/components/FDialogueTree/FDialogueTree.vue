@@ -56,7 +56,7 @@ export default defineComponent({
             required: true,
         },
     },
-    emits: ["change", "update:modelValue"],
+    emits: ["update:modelValue"],
     data(): FDialogueTreeData {
         return {
             currentStep: this.dialogueTree,
@@ -117,16 +117,6 @@ export default defineComponent({
              * @type {FDialogueTreeUserProgress}
              */
             this.$emit("update:modelValue", emit);
-
-            /**
-             * Change event
-             * Triggered once user clicks on option
-             * Vue2 `v-model` event.
-             * @deprecated
-             * @event change
-             * @type {FDialogueTreeUserProgress}
-             */
-            this.$emit("change", emit);
         },
     },
 });
