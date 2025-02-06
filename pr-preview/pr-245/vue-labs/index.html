@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="./assets/docs-14c0c6.css"
+            href="./assets/docs-c28b93.css"
             crossorigin
-            integrity="sha384-r+NSLFv6XrngSmltzmYr8QlwUvMG0w9awGiy2jbmGssQkug1I1wBb05Bm6XM4nFp"
+            integrity="sha384-nhn00S0rX+XYvQrJQlDWzHMXlcjAlUMwyJWO9xqsn3lxlfR/4pz8NCe3a+2GG2kh"
             
         />
         <link
             rel="stylesheet"
-            href="./assets/docs-exp-3e2c1f.css"
+            href="./assets/docs-fkui-e78800.css"
             crossorigin
-            integrity="sha384-wbFaRH1oFM7zXiZQtQawD5wJ/07rBIzHxNKWMxXWMlr6TzkOMJYomBubNiETvezB"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="./assets/docs-int-d00de7.css"
-            crossorigin
-            integrity="sha384-YFhTliWLMuGdwtPh4aQ8h5fYgrBlqMPzjEPjuIxOo3mFlt5FiNVrCdBS/xPDQuNA"
-            data-theme="int" disabled
+            integrity="sha384-9OM4p0GBh6DbWvV7w1eKGnby+VOitoZhMhGGb/r3vN4H8fgWs7N0rAK6QDCYK8VG"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -38,18 +31,7 @@
         ></script>
 
         <!-- prettier-ignore -->
-        <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-
+        
 
         <link
             rel="preload"
@@ -114,55 +96,6 @@
     </form>
 </div>
 <div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
-<div class="toolbar__item">
     <span class="version">
         5.46.0
     </span>
@@ -195,9 +128,9 @@
                     integrity="sha384-qFl9sMVllZVSUjaXJ/tZ+Ayl7zK2wrSuXSQwO1c0tsifkdsaXN4RIMRsbm/1skJH"
                 ></script>
                 <script
-                    src="./assets/vendor-fkui-vue-32a70d.js"
+                    src="./assets/vendor-fkui-vue-c4baec.js"
                     crossorigin
-                    integrity="sha384-Dq7Uf6fqZJRE0ON5zru1kLlQYlLkXdsyBGgwwdd8anWpw+Fmwk3cr/NTSYqvgnMC"
+                    integrity="sha384-VShg42UBO9zgUNX2yDECb3xZa1H6Ex9iLSGPbZMKcfbbPLKjR4/2juDBxW8xJeLV"
                 ></script>
 
                 <!-- prettier-ignore --><main>

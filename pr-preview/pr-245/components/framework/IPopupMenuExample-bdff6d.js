@@ -3963,15 +3963,6 @@
         default: "auto"
       },
       /**
-       * Force popup to always display inline.
-       * @deprecated Use `inline="always"` instead.
-       */
-      alwaysInline: {
-        type: Boolean,
-        required: false,
-        default: false
-      },
-      /**
        * Which element to use as container.
        */
       container: {
@@ -4048,7 +4039,7 @@
         return isInline;
       },
       forceInline() {
-        return this.alwaysInline || this.inline === "always";
+        return this.inline === "always";
       },
       forceOverlay() {
         return this.inline === "never";
@@ -4365,10 +4356,9 @@
        */
       "close",
       /**
-       * Vue 2 V-model event. Emitted when an item is selected.
+       * Emitted when an item is selected.
        *
        * @event select
-       * @deprecated
        * @type {string} item key
        */
       "select",

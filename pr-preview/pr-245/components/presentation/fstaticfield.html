@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-6c552f.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-A2w0gDkbX9N/NiOy0WaifkRycVxST1jAdfb0EAVxVcESWHwcV1p+vRqQK1O5W6+b"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7db53a.json"
+            href="../../search-data-01da9b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-o2vIGMIwnrMb8P4Bx5vYiR7bM+OMsPvyGdqGN9vaBn+oeYtN4zNffSotH51yRxwx"
+            integrity="sha384-VothMi9Wmjd3b2OLOlv7cOu0NRtCSk2IIUBkjhR7kGehYC35QIJpkWN1k436f1a2"
             id="search-data"
         />
     </head>
@@ -242,55 +224,6 @@
             >Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
-</div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
 </div>
 </div>
             </div>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
+                    src="../../assets/vendor-fkui-vue-fe0474.js"
                     crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
+                    integrity="sha384-IvTPcmOwijNjJpgGyzV0Lq+nMHMSjWu81vcGQfxkhp94vgbmJD6RWqwjM6lFl3Wn"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1098,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/f756041ba46ac621ac56abfa5b235b6d4679d329/packages/vue/src/components/FStaticField/FStaticField.vue">FStaticField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/c32d0501faca8a9b2f8e1cf18cbe8a8eb600bc4d/packages/vue/src/components/FStaticField/FStaticField.vue">FStaticField</a>
             
         </code>
          
@@ -1217,7 +1150,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FStaticFieldTooltipDescription-9ae54b.js"></script>
+        <script defer src="./FStaticFieldTooltipDescription-3f86cd.js"></script>
     </div>
                 <div>
             <button
@@ -1240,14 +1173,14 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Etikett <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">tooltip</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-tooltip</span> <span class="hljs-attr">screen-reader-text</span>=<span class="hljs-string">&quot;Läs mer om avancerat fält&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-tooltip</span> <span class="hljs-attr">screen-reader-text</span>=<span class="hljs-string">&quot;Läs mer om avancerat fält&quot;</span> <span class="hljs-attr">header-tag</span>=<span class="hljs-string">&quot;h2&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span> Mer om avancerat fält <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">body</span>&gt;</span> Detta fältet kräver lite närmare förklaring. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-tooltip</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass, discreteDescriptionClass }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass, formatDescriptionClass }&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Beskrivning av etikett <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;discreteDescriptionClass&quot;</span>&gt;</span> (format) <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;formatDescriptionClass&quot;</span>&gt;</span> (format) <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> En liten statisk text. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
@@ -1266,20 +1199,90 @@
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>label</p>
-</td><td><p>Slot for label content.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>tooltip</p>
-</td><td><p>Slot primarily for tooltip.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>description</p>
-</td><td><p>Optional slot for description. See <a href="#/Components/FLabel">FLabel</a> for details.</p>
-</td><td><p>descriptionClass<br>
-discreteDescriptionClass</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for text content.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fstaticfield-slots">
+            <a class="header-anchor" href="#fstaticfield-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fstaticfield-slot-label"
+                                ><a class="docs-api__anchor" href="#fstaticfield-slot-label"
+                                    ><span class="docs-api__name"
+                                        >label</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for label content.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fstaticfield-slot-tooltip"
+                                ><a class="docs-api__anchor" href="#fstaticfield-slot-tooltip"
+                                    ><span class="docs-api__name"
+                                        >tooltip</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot primarily for tooltip.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fstaticfield-slot-description"
+                                ><a class="docs-api__anchor" href="#fstaticfield-slot-description"
+                                    ><span class="docs-api__name"
+                                        >description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional slot for description. See <a href="../flabel.html"><code>FLabel</code></a> for details.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>description-class: unknown</code></li><li><code>format-description-class: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fstaticfield-slot-default"
+                                ><a class="docs-api__anchor" href="#fstaticfield-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for text content.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1300,9 +1303,9 @@ discreteDescriptionClass</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/compile-examples (<a href="https://github.com/Forsakringskassan/designsystem/commits/f756041ba46ac621ac56abfa5b235b6d4679d329">f756041</a>)<br />
+    docs/compile-examples (<a href="https://github.com/Forsakringskassan/designsystem/commits/c32d0501faca8a9b2f8e1cf18cbe8a8eb600bc4d">c32d050</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/245">PR 245</a><br />
-        2025-02-04 15:38
+        2025-02-06 23:51
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1423,9 +1426,9 @@ discreteDescriptionClass</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script

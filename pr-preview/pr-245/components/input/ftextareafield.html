@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-6c552f.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-A2w0gDkbX9N/NiOy0WaifkRycVxST1jAdfb0EAVxVcESWHwcV1p+vRqQK1O5W6+b"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7db53a.json"
+            href="../../search-data-01da9b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-o2vIGMIwnrMb8P4Bx5vYiR7bM+OMsPvyGdqGN9vaBn+oeYtN4zNffSotH51yRxwx"
+            integrity="sha384-VothMi9Wmjd3b2OLOlv7cOu0NRtCSk2IIUBkjhR7kGehYC35QIJpkWN1k436f1a2"
             id="search-data"
         />
     </head>
@@ -242,55 +224,6 @@
             >Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
-</div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
 </div>
 </div>
             </div>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
+                    src="../../assets/vendor-fkui-vue-fe0474.js"
                     crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
+                    integrity="sha384-IvTPcmOwijNjJpgGyzV0Lq+nMHMSjWu81vcGQfxkhp94vgbmJD6RWqwjM6lFl3Wn"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1098,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/f756041ba46ac621ac56abfa5b235b6d4679d329/packages/vue/src/components/FTextareaField/FTextareaField.vue">FTextareaField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/c32d0501faca8a9b2f8e1cf18cbe8a8eb600bc4d/packages/vue/src/components/FTextareaField/FTextareaField.vue">FTextareaField</a>
             
         </code>
          
@@ -1141,7 +1074,7 @@ Flerradigt inmatningsfält har alltid en etikett som beskriver vad användaren s
                     id="example-f0459f"
                     class="code-preview code-preview--borderless"
                     
-                    data-tags=live-example
+                    data-tags="live-example"
                     data-language="vue"
                 >
                     
@@ -1151,7 +1084,7 @@ Flerradigt inmatningsfält har alltid en etikett som beskriver vad användaren s
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FTextareaFieldLiveExample-949d60.js"></script>
+        <script defer src="./FTextareaFieldLiveExample-46d886.js"></script>
     
                 </div>
             <h2 id="begransa_antal_tecken"><a class="header-anchor" href="#begransa_antal_tecken">Begränsa antal tecken</a></h2><p>Etikettens formatbeskrivning ska visa antalet tecken som användaren kan skriva i ett flerradigt inmatningsfält.</p>
@@ -1212,71 +1145,276 @@ får användaren dålig överblick om inmatningsfältet är placerat i ett formu
 </code></pre>
                 </div>
             <p>Fyra rader visas som standard om inget anges.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
-</td><td><p>The id for the input id attribute.<br>
-The id for the label for attribute.<br>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="ftextareafield-props">
+            <a class="header-anchor" href="#ftextareafield-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftextareafield-prop-id"
+                                ><a class="docs-api__anchor" href="#ftextareafield-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the input id attribute.
+The id for the label for attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td></tr><tr><td><p>v-model</p>
-</td><td><p>The value for the input.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-prop-v-model"
+                                ><a class="docs-api__anchor" href="#ftextareafield-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The value for the input.
 If the prop is not set undefined will be used.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td></tr><tr><td><p>softLimit</p>
-</td><td><p>The number of characters for when the &quot;characters left&quot; warning should be shown.<br>
-A value of 100 means that when 100 or less characters is left the warning is shown.<br>
-If softLimit is used, then maxlength is required.<br>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-prop-softlimit"
+                                ><a class="docs-api__anchor" href="#ftextareafield-prop-softlimit"
+                                    ><span class="docs-api__name"
+                                        >softLimit</span
+                                    >: number</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The number of characters for when the &quot;characters left&quot; warning should be shown.
+A value of 100 means that when 100 or less characters is left the warning is shown.
+If softLimit is used, then maxlength is required.
 If the prop is not set undefined will be used, which means that no warning will be shown.</p>
-</td><td><p>number</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td></tr><tr><td><p>maxlength</p>
-</td><td><p>The maximum amount of characters permitted in the textarea.<br>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-prop-maxlength"
+                                ><a class="docs-api__anchor" href="#ftextareafield-prop-maxlength"
+                                    ><span class="docs-api__name"
+                                        >maxlength</span
+                                    >: number</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The maximum amount of characters permitted in the textarea.
 If the prop is not set undefined will be used, which means unlimited.</p>
-</td><td><p>number</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td></tr><tr><td><p>charactersLeftWarning</p>
-</td><td><p>The string that should be shown in the &quot;characters left&quot; warning.<br>
-Must contain the word %charactersLeft% which is used to interpolate the number of characters left into the warning string.<br>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-prop-charactersleftwarning"
+                                ><a class="docs-api__anchor" href="#ftextareafield-prop-charactersleftwarning"
+                                    ><span class="docs-api__name"
+                                        >charactersLeftWarning</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The string that should be shown in the &quot;characters left&quot; warning.
+Must contain the word %charactersLeft% which is used to interpolate the number of characters left into the warning string.
 If the prop is not set &quot;Antal tecken kvar: %charactersLeft%&quot; will be used.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;Antal tecken kvar: %charactersLeft%&quot;</p>
-</td></tr><tr><td><p>disabled</p>
-</td><td><p>Specifies that the component should be disabled, i.e. unusable.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td></tr><tr><td><p>resizable</p>
-</td><td><p>Enabling vertical resizing of the textarea</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>input</p>
-</td><td><p>‐</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p>V-model event.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>Slot for label content.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>tooltip</p>
-</td><td><p>Slot for tooltip.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>description</p>
-</td><td><p>Optional slot for description. See <a href="#/Components/FLabel">FLabel</a> for details.</p>
-</td><td><p>descriptionClass<br>
-discreteDescriptionClass</p>
-</td></tr><tr><td><p>error-message</p>
-</td><td><p>Slot for displaying single or several error messages.</p>
-</td><td><p>hasError<br>
-validationMessage</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;Antal tecken kvar: %charactersLeft%&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-prop-disabled"
+                                ><a class="docs-api__anchor" href="#ftextareafield-prop-disabled"
+                                    ><span class="docs-api__name"
+                                        >disabled</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Specifies that the component should be disabled, i.e. unusable.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-prop-resizable"
+                                ><a class="docs-api__anchor" href="#ftextareafield-prop-resizable"
+                                    ><span class="docs-api__name"
+                                        >resizable</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enabling vertical resizing of the textarea</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ftextareafield-events">
+            <a class="header-anchor" href="#ftextareafield-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="ftextareafield-event-input"
+                                ><a class="docs-api__anchor" href="#ftextareafield-event-input"
+                                    ><span class="docs-api__name"
+                                        >input</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#ftextareafield-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ftextareafield-slots">
+            <a class="header-anchor" href="#ftextareafield-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftextareafield-slot-default"
+                                ><a class="docs-api__anchor" href="#ftextareafield-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for label content.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-slot-tooltip"
+                                ><a class="docs-api__anchor" href="#ftextareafield-slot-tooltip"
+                                    ><span class="docs-api__name"
+                                        >tooltip</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for tooltip.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-slot-description"
+                                ><a class="docs-api__anchor" href="#ftextareafield-slot-description"
+                                    ><span class="docs-api__name"
+                                        >description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional slot for description. See <a href="../flabel.html"><code>FLabel</code></a> for details.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>description-class: unknown</code></li><li><code>format-description-class: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftextareafield-slot-error-message"
+                                ><a class="docs-api__anchor" href="#ftextareafield-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying single or several error messages.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1297,9 +1435,9 @@ validationMessage</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/compile-examples (<a href="https://github.com/Forsakringskassan/designsystem/commits/f756041ba46ac621ac56abfa5b235b6d4679d329">f756041</a>)<br />
+    docs/compile-examples (<a href="https://github.com/Forsakringskassan/designsystem/commits/c32d0501faca8a9b2f8e1cf18cbe8a8eb600bc4d">c32d050</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/245">PR 245</a><br />
-        2025-02-04 15:38
+        2025-02-06 23:51
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1420,9 +1558,9 @@ validationMessage</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script
