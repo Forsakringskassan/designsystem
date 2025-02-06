@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -14785,17 +14785,22 @@
           return ["small", "large", "responsive"].includes(value);
         }
       },
-      ariaLabel: {
+      /**
+       * Accessible name for the logo.
+       */
+      /* eslint-disable-next-line vue/prop-name-casing -- vue does not allow ariaLabel as a prop as it collides with internal types */
+      "aria-label": {
         type: String,
         required: true
       }
     },
     setup(__props) {
       const props = __props;
+      const ariaLabel = props.ariaLabel;
       return (_ctx, _cache) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", {
           class: (0, import_vue.normalizeClass)(`logo logo--${props.size}`),
-          "aria-label": __props.ariaLabel,
+          "aria-label": (0, import_vue.unref)(ariaLabel),
           role: "img"
         }, null, 10, _hoisted_1$b);
       };
