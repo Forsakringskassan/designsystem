@@ -44,6 +44,7 @@ Följande komponenter, funktioner och typer är även de borttagna:
 - `FFormModal`: slottarna `submit-button-text` och `cancel-button-text` är borttagna.
 - `FModal`: CSS klassalias `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 - `FPageHeader`: propen `skipLinkHref` är borttagen
+- `FTextField`: `update` eventet emittas inte längre.
 - `getTextFromScopedSlot`: funktionen är borttagen.
 - Konfiguration: `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna.
 
@@ -237,6 +238,16 @@ Se dokumentationen för respektive komponent för att avgöra vad som passar bä
 
 - {@link FWizard}
 - {@link FValidationForm}
+
+## `FTextField`
+
+Eventet `update` emittas inte längre.
+Använd `change` eventet eller `v-model` istället.
+
+```diff
+-<f-text-field @update="doSomething">
++<f-text-field @change="doSomething">
+```
 
 ## Pageobjects
 
