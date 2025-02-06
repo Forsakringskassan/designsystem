@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -6588,15 +6588,6 @@
         default: "auto"
       },
       /**
-       * Force popup to always display inline.
-       * @deprecated Use `inline="always"` instead.
-       */
-      alwaysInline: {
-        type: Boolean,
-        required: false,
-        default: false
-      },
-      /**
        * Which element to use as container.
        */
       container: {
@@ -6673,7 +6664,7 @@
         return isInline;
       },
       forceInline() {
-        return this.alwaysInline || this.inline === "always";
+        return this.inline === "always";
       },
       forceOverlay() {
         return this.inline === "never";

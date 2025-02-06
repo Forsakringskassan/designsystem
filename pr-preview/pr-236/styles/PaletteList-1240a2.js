@@ -31,7 +31,7 @@
   // virtual-entry:./docs/styles/examples/PaletteList.vue
   var import_vue6 = __require("vue");
 
-  // packages/css-variables/dist/palette.json
+  // packages/theme-default/dist/palette.json
   var palette_default = [
     {
       name: "FK-Black",
