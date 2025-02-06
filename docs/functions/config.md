@@ -18,14 +18,14 @@ Görs lämpligtvis i applikationens `main.ts`.
 ```js
 import { config, FKUIConfigButtonOrder } from "@fkui/vue";
 
-config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
+config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
 ```
 
 ## Referens
 
 ### `buttonOrder`
 
-- default: `LEFT_TO_RIGHT`
+- default: `RIGHT_TO_LEFT`
 - type: `FKUIConfigButtonOrder`
 
 Anger i vilken ordning man vill visa knappar.
