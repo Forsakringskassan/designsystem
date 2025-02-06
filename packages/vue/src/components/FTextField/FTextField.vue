@@ -246,7 +246,7 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["blur", "change", "update", "update:modelValue"],
+    emits: ["blur", "change", "update:modelValue"],
     setup(props) {
         // a shared setup is used because components extending this component need to redeclare the same setup
         const {
@@ -366,13 +366,6 @@ export default defineComponent({
                  */
                 this.$emit("update:modelValue", this.viewValue);
 
-                /* Vue2 v-model event.
-                 * @deprecated
-                 * @event update
-                 * @type {string}
-                 */
-                this.$emit("update", this.viewValue);
-
                 await this.$nextTick(); // wait for model update before triggering change event
                 /**
                  * @event change
@@ -394,7 +387,6 @@ export default defineComponent({
             // trigger v-model update when not handled by onValidity event
             if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
                 this.$emit("update:modelValue", this.viewValue);
-                this.$emit("update", this.viewValue);
                 await this.$nextTick(); // wait for model update before triggering blur event
                 /**
                  * @event blur
@@ -417,7 +409,6 @@ export default defineComponent({
                 this.lastModelValue = newModelValue;
 
                 this.$emit("update:modelValue", newModelValue);
-                this.$emit("update", newModelValue);
                 await this.$nextTick(); // wait for model update before triggering change, blur event
 
                 this.$emit(detail.nativeEvent, newModelValue);

@@ -184,8 +184,15 @@ describe("events", () => {
         const input = wrapper.get("input");
         input.setValue("foo");
         await input.trigger("change");
+        expect(wrapper.emitted("update:modelValue")![0][0]).toBe("foo");
+    });
 
-        expect(wrapper.emitted("update")![0][0]).toBe("foo");
+    it("should emit change event when no validation is used", async () => {
+        const wrapper = createWrapper();
+        const input = wrapper.get("input");
+        input.setValue("foo");
+        await input.trigger("change");
+        expect(wrapper.emitted("update:modelValue")![0][0]).toBe("foo");
     });
 
     it("should pass listeners", async () => {
@@ -287,7 +294,7 @@ describe("formatting and parsing combined with validation", () => {
         ${true}  | ${"blur"}   | ${"trigger"}
         ${false} | ${"input"}  | ${"not trigger"}
     `(
-        'should $expected update event when valid="$valid" and nativeEvent="$nativeEvent"',
+        'should $expected update:modelValue event when valid="$valid" and nativeEvent="$nativeEvent"',
         async ({ valid, nativeEvent, expected }) => {
             const wrapper = createWrapper({
                 attrs: {
@@ -316,13 +323,13 @@ describe("formatting and parsing combined with validation", () => {
             await flushPromises();
             wrapper.vm.$forceUpdate();
 
+            /* eslint-disable jest/no-conditional-expect -- technical debt */
             if (expected === "trigger") {
-                /* eslint-disable-next-line jest/no-conditional-expect -- technical debt */
-                expect(wrapper.emitted().update).toBeTruthy();
+                expect(wrapper.emitted()["update:modelValue"]).toBeTruthy();
             } else {
-                /* eslint-disable-next-line jest/no-conditional-expect -- technical debt */
-                expect(wrapper.emitted().update).toBeFalsy();
+                expect(wrapper.emitted()["update:modelValue"]).toBeFalsy();
             }
+            /* eslint-enable jest/no-conditional-expect */
         },
     );
 
@@ -381,7 +388,9 @@ describe("formatting and parsing combined with validation", () => {
             await flushPromises();
             wrapper.vm.$forceUpdate();
 
-            expect(wrapper.emitted("update")![0][0]).toEqual(expectedModel);
+            expect(wrapper.emitted("update:modelValue")![0][0]).toEqual(
+                expectedModel,
+            );
             expect(htmlInput.value).toEqual(expectedValue);
         },
     );
@@ -435,7 +444,9 @@ describe("formatting and parsing combined with validation", () => {
             await flushPromises();
             wrapper.vm.$forceUpdate();
 
-            expect(wrapper.emitted("update")![0][0]).toEqual(expectedModel);
+            expect(wrapper.emitted("update:modelValue")![0][0]).toEqual(
+                expectedModel,
+            );
             expect(htmlInput.value).toEqual(expectedValue);
         },
     );
