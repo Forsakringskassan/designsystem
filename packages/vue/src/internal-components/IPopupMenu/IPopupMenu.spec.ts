@@ -104,20 +104,38 @@ describe("events", () => {
 });
 
 describe("v-model", () => {
-    it("should test that v-model is set when item is highlighted", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+    it("should update v-model when item is selected", async () => {
+        const testWrapper = await mountPopup();
+        await openPopup(testWrapper);
 
-        const wrapper = await mountPopup();
-        await openPopup(wrapper);
+        const wrapper = testWrapper.getComponent(IPopupMenu);
+        const items = wrapper.findAll("a");
+        await items.at(1)!.trigger("click");
 
-        const imenuList = wrapper.get(".ipopupmenu__list");
-        const secondItem = imenuList.findAll(".ipopupmenu__list__item > a")[1];
+        expect(wrapper.emitted("update:modelValue")).toMatchInlineSnapshot(`
+            [
+              [
+                "MENU_2",
+              ],
+            ]
+        `);
+    });
 
-        await secondItem.trigger("click");
-        await wrapper.vm.$nextTick();
+    it("should emit select event when item is selected", async () => {
+        const testWrapper = await mountPopup();
+        await openPopup(testWrapper);
 
-        const secondTestItemKey = testItems[1].key;
-        expect(wrapper.vm.$data.selectedItem).toBe(secondTestItemKey);
+        const wrapper = testWrapper.getComponent(IPopupMenu);
+        const items = wrapper.findAll("a");
+        await items.at(0)!.trigger("click");
+
+        expect(wrapper.emitted("select")).toMatchInlineSnapshot(`
+            [
+              [
+                "MENU_1",
+              ],
+            ]
+        `);
     });
 
     it("should test that focus is set on first item and not on previously highlighted item", async () => {
