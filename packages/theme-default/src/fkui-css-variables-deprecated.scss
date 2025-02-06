@@ -1,5 +1,8 @@
+// stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
+
 @use "./palette-variables" as *;
 
+$global: true !default;
 $palette-color-red-10: #fdeaea !default;
 $palette-color-black-5: #f2f2f2 !default;
 $palette-color-black-10: #e5e5e5 !default;
@@ -240,4 +243,10 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-background-button-tertiary-hover: #{$palette-color-bluebell-15};
     --f-text-color-button-tertiary-inverted: #{$palette-color-white-100};
     --f-text-color-button-tertiary-inverted-disabled: #{$palette-color-fk-black-50};
+}
+
+@if $global {
+    :root {
+        @include deprecated-variables;
+    }
 }
