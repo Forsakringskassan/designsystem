@@ -291,7 +291,6 @@ export default defineComponent({
     emits: [
         "change",
         "click",
-        "update",
         "unselect",
         "update:modelValue",
         "update:active",
@@ -534,13 +533,6 @@ export default defineComponent({
                  * @event update:modelValue
                  */
                 this.$emit("update:modelValue", this.selectedRows);
-
-                /**
-                 * Vue2 v-model event to update value property.
-                 * @deprecated
-                 * @event update
-                 */
-                this.$emit("update", this.selectedRows);
             }
         },
         rowClasses(row: ListItem, index: number): string[] {

@@ -7802,7 +7802,7 @@ callbackBeforeItemDelete(item: ListItem): void;
 escapeNewlines(value: string): string;
 updateActiveRowFromVModel(): void;
 setActiveRow(row: ListItem | undefined): void;
-}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect" | "update:active")[], "change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "update" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "unselect" | "update:active")[], "change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
 rows: {
 type: PropType<ListArray>;
 required: true;
@@ -7856,7 +7856,6 @@ onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 onSelect?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUpdate?: ((...args: any[]) => any) | undefined;
 onCollapse?: ((...args: any[]) => any) | undefined;
 onExpand?: ((...args: any[]) => any) | undefined;
 onUnselect?: ((...args: any[]) => any) | undefined;

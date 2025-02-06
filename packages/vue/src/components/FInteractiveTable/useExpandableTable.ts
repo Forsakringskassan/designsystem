@@ -23,7 +23,6 @@ type InteractiveTableEmit = (
         | "change"
         | "update:modelValue"
         | "click"
-        | "update"
         | "unselect"
         | "select"
         | "expand"

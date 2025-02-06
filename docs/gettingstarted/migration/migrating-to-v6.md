@@ -136,6 +136,11 @@ Den deprekerade komponenten `FCheckboxGroup` har tagits bort och är ersatt med 
 
 Det deprekerade aliaset `FCheckboxGroupField` har tagits bort och är ersatt med `FCheckboxField`.
 
+## `FInteractiveTable`
+
+Tidigare emittades eventet `update` när man ändrar vald tabellrad.
+Det eventet är nu borttaget och ersatt med `v-model`.
+
 ## `FList`
 
 Tidigare emittades eventet `update` när man ändrar valda kort.
