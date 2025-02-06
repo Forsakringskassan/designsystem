@@ -67,51 +67,58 @@
         type: "button",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.isExpanded = !_ctx.isExpanded)
       }, "\xD6ppna/st\xE4ng animering"),
-      (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
-        "input",
-        {
-          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isAnimated = $event),
-          type: "checkbox"
-        },
-        null,
-        512
-        /* NEED_PATCH */
-      ), [
-        [import_vue5.vModelCheckbox, _ctx.isAnimated]
+      (0, import_vue5.createElementVNode)("label", null, [
+        (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
+          "input",
+          {
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isAnimated = $event),
+            type: "checkbox"
+          },
+          null,
+          512
+          /* NEED_PATCH */
+        ), [
+          [import_vue5.vModelCheckbox, _ctx.isAnimated]
+        ]),
+        _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)(" Animera"))
       ]),
-      _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)(" Animera ")),
-      (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
-        "input",
-        {
-          "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasOpacity = $event),
-          type: "checkbox"
-        },
-        null,
-        512
-        /* NEED_PATCH */
-      ), [
-        [import_vue5.vModelCheckbox, _ctx.hasOpacity]
+      (0, import_vue5.createElementVNode)("label", null, [
+        (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
+          "input",
+          {
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasOpacity = $event),
+            type: "checkbox"
+          },
+          null,
+          512
+          /* NEED_PATCH */
+        ), [
+          [import_vue5.vModelCheckbox, _ctx.hasOpacity]
+        ]),
+        _cache[6] || (_cache[6] = (0, import_vue5.createTextVNode)(" Opacitet"))
       ]),
-      _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)(" Opacitet ")),
-      (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
-        "input",
-        {
-          "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.useVShow = $event),
-          type: "checkbox"
-        },
-        null,
-        512
-        /* NEED_PATCH */
-      ), [
-        [import_vue5.vModelCheckbox, _ctx.useVShow]
+      (0, import_vue5.createElementVNode)("label", null, [
+        (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
+          "input",
+          {
+            "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.useVShow = $event),
+            type: "checkbox"
+          },
+          null,
+          512
+          /* NEED_PATCH */
+        ), [
+          [import_vue5.vModelCheckbox, _ctx.useVShow]
+        ]),
+        _cache[7] || (_cache[7] = (0, import_vue5.createTextVNode)(" Use v-show instead of v-if"))
       ]),
-      _cache[8] || (_cache[8] = (0, import_vue5.createTextVNode)(" Use v-show instead of v-if ")),
       (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
         "select",
         {
+          "aria-label": "H\xF6jd",
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.style = $event)
         },
-        _cache[5] || (_cache[5] = [
+        _cache[8] || (_cache[8] = [
           (0, import_vue5.createElementVNode)(
             "option",
             { value: "height: 200px; background: hotpink" },

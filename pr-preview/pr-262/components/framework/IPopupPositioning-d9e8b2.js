@@ -3907,7 +3907,7 @@
     return (0, import_vue29.openBlock)(), (0, import_vue29.createElementBlock)("div", _hoisted_18, [
       _cache[4] || (_cache[4] = (0, import_vue29.createElementVNode)(
         "label",
-        null,
+        { for: "constraint" },
         " Begr\xE4nsa till: ",
         -1
         /* HOISTED */
@@ -3915,6 +3915,7 @@
       (0, import_vue29.withDirectives)((0, import_vue29.createElementVNode)(
         "select",
         {
+          id: "constraint",
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.constraint = $event),
           onChange: _cache[1] || (_cache[1] = (...args) => _ctx.onChangeConstraint && _ctx.onChangeConstraint(...args))
         },

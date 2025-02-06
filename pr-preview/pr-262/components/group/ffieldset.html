@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
             
         </code>
          
@@ -1463,54 +1463,155 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>id</p>
-</td><td><p>The id for the fieldset id attribute.<br>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="ffieldset-props">
+            <a class="header-anchor" href="#ffieldset-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ffieldset-prop-id"
+                                ><a class="docs-api__anchor" href="#ffieldset-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the fieldset id attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>name</p>
-</td><td><p>Name provided to child content as <code>sharedName</code> for optional usage (it will not be set on the fieldset element).<br>
-For radio inputs this is a shortcut to specify the shared name attribute at one place,<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-prop-name"
+                                ><a class="docs-api__anchor" href="#ffieldset-prop-name"
+                                    ><span class="docs-api__name"
+                                        >name</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Name provided to child content as <code>sharedName</code> for optional usage (it will not be set on the fieldset element).
+For radio inputs this is a shortcut to specify the shared name attribute at one place,
 instead of repeatedly setting the name attribute on each radio input.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>labelClass</p>
-</td><td><p>The CSS classes for the label, description and error-message slot.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>contentClass</p>
-</td><td><p>The CSS classes for the default slot.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>horizontal</p>
-</td><td><p>Aligns underlying items horizontally.<br>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-prop-labelclass"
+                                ><a class="docs-api__anchor" href="#ffieldset-prop-labelclass"
+                                    ><span class="docs-api__name"
+                                        >labelClass</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The CSS classes for the label, description and error-message slot.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-prop-contentclass"
+                                ><a class="docs-api__anchor" href="#ffieldset-prop-contentclass"
+                                    ><span class="docs-api__name"
+                                        >contentClass</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The CSS classes for the default slot.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-prop-horizontal"
+                                ><a class="docs-api__anchor" href="#ffieldset-prop-horizontal"
+                                    ><span class="docs-api__name"
+                                        >horizontal</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Aligns underlying items horizontally.
 Supported by radiobuttons and chip layout.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>chip</p>
-</td><td><p>Displays radio and checkbox content with chip layout.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>border</p>
-</td><td><p>Displays a box with border around radiobuttons and checkboxes.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>showDetails</p>
-</td><td><p>Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-prop-chip"
+                                ><a class="docs-api__anchor" href="#ffieldset-prop-chip"
+                                    ><span class="docs-api__name"
+                                        >chip</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Displays radio and checkbox content with chip layout.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-prop-border"
+                                ><a class="docs-api__anchor" href="#ffieldset-prop-border"
+                                    ><span class="docs-api__name"
+                                        >border</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Displays a box with border around radiobuttons and checkboxes.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-prop-showdetails"
+                                ><a class="docs-api__anchor" href="#ffieldset-prop-showdetails"
+                                    ><span class="docs-api__name"
+                                        >showDetails</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.</p>
 <ul>
 <li><code>never</code> (default) - Never show item details.</li>
 </ul>
@@ -1518,33 +1619,115 @@ Supported by radiobuttons and chip layout.</p>
 <li><code>when-selected</code> - Show item details when selected.</li>
 <li><code>always</code> - Always show item details.</li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;never&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>label</p>
-</td><td><p>Slot for label content. This slot is required.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>description</p>
-</td><td><p>Optional slot for description. See <a href="../flabel.html"><code>FLabel</code></a> for details.</p>
-</td><td><p>description-class<br>
-format-description-class</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>error-message</p>
-</td><td><p>Slot for displaying single or several error messages.</p>
-</td><td><p>hasError<br>
-validationMessage</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>tooltip</p>
-</td><td><p>Slot for tooltip.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for fieldset content.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;never&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ffieldset-slots">
+            <a class="header-anchor" href="#ffieldset-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ffieldset-slot-label"
+                                ><a class="docs-api__anchor" href="#ffieldset-slot-label"
+                                    ><span class="docs-api__name"
+                                        >label</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for label content. This slot is required.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-slot-description"
+                                ><a class="docs-api__anchor" href="#ffieldset-slot-description"
+                                    ><span class="docs-api__name"
+                                        >description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional slot for description. See <a href="../flabel.html"><code>FLabel</code></a> for details.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>description-class: unknown</code></li><li><code>format-description-class: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-slot-error-message"
+                                ><a class="docs-api__anchor" href="#ffieldset-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying single or several error messages.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>hasError: unknown</code></li><li><code>validationMessage: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-slot-tooltip"
+                                ><a class="docs-api__anchor" href="#ffieldset-slot-tooltip"
+                                    ><span class="docs-api__name"
+                                        >tooltip</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for tooltip.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffieldset-slot-default"
+                                ><a class="docs-api__anchor" href="#ffieldset-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for fieldset content.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1565,9 +1748,9 @@ validationMessage</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

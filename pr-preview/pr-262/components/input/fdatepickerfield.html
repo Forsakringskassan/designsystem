@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">FDatepickerField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">FDatepickerField</a>
             
         </code>
          
@@ -1266,80 +1266,273 @@ har valt en månad som inte har några valbara datum.</p>
  &gt;&lt;/f-datepicker-field&gt;
 </code></pre>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>v-model</p>
-</td><td><p>Selected day.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>initialMonth</p>
-</td><td><p>Initial month. Applies when no day is selected.<br>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fdatepickerfield-props">
+            <a class="header-anchor" href="#fdatepickerfield-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fdatepickerfield-prop-v-model"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Selected day.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-initialmonth"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-initialmonth"
+                                    ><span class="docs-api__name"
+                                        >initialMonth</span
+                                    >: FDate | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Initial month. Applies when no day is selected.
 If unspecified, todays month will be shown when no day is selected.</p>
-</td><td><p>FDate | undefined</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>highlightToday</p>
-</td><td><p>Highlight today.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>alwaysInline</p>
-</td><td><p>Always display inline.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>labelWidth</p>
-</td><td><p>Set responsive width for label section.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-highlighttoday"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-highlighttoday"
+                                    ><span class="docs-api__name"
+                                        >highlightToday</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Highlight today.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-alwaysinline"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-alwaysinline"
+                                    ><span class="docs-api__name"
+                                        >alwaysInline</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Always display inline.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-labelwidth"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-labelwidth"
+                                    ><span class="docs-api__name"
+                                        >labelWidth</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set responsive width for label section.</p>
 <pre><code>label-width=&quot;md-9 lg-6&quot;
 </code></pre>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;sm-12&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>inputWidth</p>
-</td><td><p>Set responsive width for input section that wraps input element and icons.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;sm-12&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-inputwidth"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-inputwidth"
+                                    ><span class="docs-api__name"
+                                        >inputWidth</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set responsive width for input section that wraps input element and icons.</p>
 <pre><code>input-width=&quot;md-6 lg-3&quot;
 </code></pre>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;sm-12&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>disabled</p>
-</td><td><p>Set to <code>true</code>, empty string <code>&quot;&quot;</code> or string <code>&quot;disabled&quot;</code> to disable this field.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>change</p>
-</td><td><p>Emitted when the value of the checkbox changes.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p><code>v-model</code> event.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p><strong>Optional</strong> Slot for setting the label. Default value &quot;Datum&quot;</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>tooltip</p>
-</td><td><p><strong>Optional</strong> Slot for tooltip. May only contain an <a href="../ftooltip.html"><code>FTooltip</code></a>.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>description</p>
-</td><td><p><strong>Optional</strong> Slot for displaying description. The contents are passed to the description-slot of <a href="../flabel.html"><code>FLabel</code></a>.</p>
-</td><td><p>description-class<br>
-format-description-class</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>error-message</p>
-</td><td><p><strong>Optional</strong> Slot for error message(s). The contents are passed to the error message-slot of <a href="../flabel.html"><code>FLabel</code></a>.</p>
-</td><td><p>hasError: boolean — Set to true when a validation error is present<br>
-validationMessage: string — Descriptive validation error message for current error</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;sm-12&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-disabled"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-disabled"
+                                    ><span class="docs-api__name"
+                                        >disabled</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set to <code>true</code>, empty string <code>&quot;&quot;</code> or string <code>&quot;disabled&quot;</code> to disable this field.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fdatepickerfield-events">
+            <a class="header-anchor" href="#fdatepickerfield-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fdatepickerfield-event-change"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-event-change"
+                                    ><span class="docs-api__name"
+                                        >change</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when the value of the checkbox changes.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><code>v-model</code> event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fdatepickerfield-slots">
+            <a class="header-anchor" href="#fdatepickerfield-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fdatepickerfield-slot-default"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>Optional</strong> Slot for setting the label. Default value &quot;Datum&quot;</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-slot-tooltip"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-slot-tooltip"
+                                    ><span class="docs-api__name"
+                                        >tooltip</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>Optional</strong> Slot for tooltip. May only contain an <a href="../ftooltip.html"><code>FTooltip</code></a>.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-slot-description"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-slot-description"
+                                    ><span class="docs-api__name"
+                                        >description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>Optional</strong> Slot for displaying description. The contents are passed to the description-slot of <a href="../flabel.html"><code>FLabel</code></a>.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>description-class: unknown</code></li><li><code>format-description-class: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-slot-error-message"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>Optional</strong> Slot for error message(s). The contents are passed to the error message-slot of <a href="../flabel.html"><code>FLabel</code></a>.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1360,9 +1553,9 @@ validationMessage: string — Descriptive validation error message for current e
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

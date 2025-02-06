@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
             
         </code>
          
@@ -1969,110 +1969,374 @@ Callback anropas innan modalen visas.</p>
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>v-model</p>
-</td><td><p>The list of items that should be deleted, modified or added to.<br>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fcruddataset-props">
+            <a class="header-anchor" href="#fcruddataset-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fcruddataset-prop-v-model"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: ListArray&lt;ListItem&gt;</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The list of items that should be deleted, modified or added to.
 If the prop is not set an empty array will be used.</p>
-</td><td><p>ListArray&lt;ListItem&gt;</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; []</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>beforeCreate</p>
-</td><td><p>A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; []</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-prop-beforecreate"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-beforecreate"
+                                    ><span class="docs-api__name"
+                                        >beforeCreate</span
+                                    >: (() =&gt; ListItem) | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.
 Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.</p>
-</td><td><p>(() =&gt; ListItem) | undefined</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>primaryButtonRight</p>
-</td><td><p>If <code>true</code> the primary button in the modals will be placed to the right side instead of to the left.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>beforeSubmit</p>
-</td><td><p>If given, this function is called before the [[submit]] event is emitted.<br>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-prop-primarybuttonright"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-primarybuttonright"
+                                    ><span class="docs-api__name"
+                                        >primaryButtonRight</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If <code>true</code> the primary button in the modals will be placed to the right side instead of to the left.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-prop-beforesubmit"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-beforesubmit"
+                                    ><span class="docs-api__name"
+                                        >beforeSubmit</span
+                                    >: FValidationFormCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called before the [[submit]] event is emitted.
 See &lt;f-validation-form&gt; <code>beforeSubmit</code> props for more info.</p>
-</td><td><p>FValidationFormCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-/* do nothing */<br>
-}</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>beforeValidation</p>
-</td><td><p>If given, this function is called before the form data is validated and the [[submit]] event is emitted.<br>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    /* do nothing */
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-prop-beforevalidation"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-beforevalidation"
+                                    ><span class="docs-api__name"
+                                        >beforeValidation</span
+                                    >: FValidationFormCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called before the form data is validated and the [[submit]] event is emitted.
 See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.</p>
-</td><td><p>FValidationFormCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-/* do nothing */<br>
-}</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>onCancel</p>
-</td><td><p>If given, this function is called after the modal has been closed.</p>
-</td><td><p>() =&gt; void</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-return undefined;<br>
-}</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>addNewModalHeader</p>
-</td><td><p>Property for changing the &quot;add new&quot; modal heading</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>TranslationService.provider.translate(&quot;fkui.crud-dataset.modal.header.add&quot;, &quot;Lägg till rad&quot;)</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>modifyModalHeader</p>
-</td><td><p>Property for changing the &quot;modify&quot; modal heading</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>TranslationService.provider.translate(&quot;fkui.crud-dataset.modal.header.modify&quot;, &quot;Ändra rad&quot;)</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>deleteModalHeader</p>
-</td><td><p>Property for changing the &quot;delete&quot; modal heading</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>TranslationService.provider.translate(<br>
-&quot;fkui.crud-dataset.modal.header.delete&quot;,<br>
-&quot;Är du säker på att du vill ta bort raden?&quot;,<br>
-)</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>created</p>
-</td><td><p>Emitted when an item is added.</p>
-</td><td><p>item: mixed — the added item.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>deleted</p>
-</td><td><p>Emitted when an item is deleted.</p>
-</td><td><p>item: mixed — the deleted item.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>updated</p>
-</td><td><p>Emitted when an item is updated.</p>
-</td><td><p>item: mixed — the updated item.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p>V-model event.</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>Slot for displaying the data.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>add-button</p>
-</td><td><p>Slot for changing the text in &quot;Add new&quot; button`</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>add</p>
-</td><td><p>Slot for inputs when creating a new item.</p>
-</td><td><p>item</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>modify</p>
-</td><td><p>Slot for inputs when modifying an item.</p>
-</td><td><p>item</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>delete</p>
-</td><td><p>Slot for displaying a warning message before an item is deleted.</p>
-</td><td><p>item</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    /* do nothing */
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-prop-oncancel"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-oncancel"
+                                    ><span class="docs-api__name"
+                                        >onCancel</span
+                                    >: () =&gt; void</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called after the modal has been closed.</p>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    return undefined;
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-prop-addnewmodalheader"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-addnewmodalheader"
+                                    ><span class="docs-api__name"
+                                        >addNewModalHeader</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Property for changing the &quot;add new&quot; modal heading</p>
+
+                            <p class="doc-api__item">Default: <code>TranslationService.provider.translate(&quot;fkui.crud-dataset.modal.header.add&quot;, &quot;Lägg till rad&quot;)</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-prop-modifymodalheader"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-modifymodalheader"
+                                    ><span class="docs-api__name"
+                                        >modifyModalHeader</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Property for changing the &quot;modify&quot; modal heading</p>
+
+                            <p class="doc-api__item">Default: <code>TranslationService.provider.translate(&quot;fkui.crud-dataset.modal.header.modify&quot;, &quot;Ändra rad&quot;)</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-prop-deletemodalheader"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-deletemodalheader"
+                                    ><span class="docs-api__name"
+                                        >deleteModalHeader</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Property for changing the &quot;delete&quot; modal heading</p>
+
+                            <p class="doc-api__item">Default: <code>TranslationService.provider.translate(
+    &quot;fkui.crud-dataset.modal.header.delete&quot;,
+    &quot;Är du säker på att du vill ta bort raden?&quot;,
+)</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fcruddataset-events">
+            <a class="header-anchor" href="#fcruddataset-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fcruddataset-event-created"
+                                ><a class="docs-api__anchor" href="#fcruddataset-event-created"
+                                    ><span class="docs-api__name"
+                                        >created</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when an item is added.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>item: mixed</code> <span role="presentation">&mdash;</span> the added item.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-event-deleted"
+                                ><a class="docs-api__anchor" href="#fcruddataset-event-deleted"
+                                    ><span class="docs-api__name"
+                                        >deleted</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when an item is deleted.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>item: mixed</code> <span role="presentation">&mdash;</span> the deleted item.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-event-updated"
+                                ><a class="docs-api__anchor" href="#fcruddataset-event-updated"
+                                    ><span class="docs-api__name"
+                                        >updated</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when an item is updated.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>item: mixed</code> <span role="presentation">&mdash;</span> the updated item.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#fcruddataset-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fcruddataset-slots">
+            <a class="header-anchor" href="#fcruddataset-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fcruddataset-slot-default"
+                                ><a class="docs-api__anchor" href="#fcruddataset-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying the data.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-slot-add-button"
+                                ><a class="docs-api__anchor" href="#fcruddataset-slot-add-button"
+                                    ><span class="docs-api__name"
+                                        >add-button</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for changing the text in &quot;Add new&quot; button`</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-slot-add"
+                                ><a class="docs-api__anchor" href="#fcruddataset-slot-add"
+                                    ><span class="docs-api__name"
+                                        >add</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for inputs when creating a new item.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>item: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-slot-modify"
+                                ><a class="docs-api__anchor" href="#fcruddataset-slot-modify"
+                                    ><span class="docs-api__name"
+                                        >modify</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for inputs when modifying an item.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>item: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-slot-delete"
+                                ><a class="docs-api__anchor" href="#fcruddataset-slot-delete"
+                                    ><span class="docs-api__name"
+                                        >delete</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying a warning message before an item is deleted.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>item: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -2093,9 +2357,9 @@ return undefined;<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-a0787d.css"
+            href="../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../search-data-645304.json"
+            href="../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FIcon/FIcon.vue">FIcon</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FIcon/FIcon.vue">FIcon</a>
             
         </code>
          
@@ -1647,46 +1647,122 @@ interface <span class="hljs-title class_">IconEntry</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>name</p>
-</td><td><p>Icon name.</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>library</p>
-</td><td><p>fk-icon library</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;f&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>flip</p>
-</td><td><p>Flip icon horizontally or vertically.</p>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="ficon-props">
+            <a class="header-anchor" href="#ficon-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ficon-prop-name"
+                                ><a class="docs-api__anchor" href="#ficon-prop-name"
+                                    ><span class="docs-api__name"
+                                        >name</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Icon name.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ficon-prop-library"
+                                ><a class="docs-api__anchor" href="#ficon-prop-library"
+                                    ><span class="docs-api__name"
+                                        >library</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>fk-icon library</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;f&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ficon-prop-flip"
+                                ><a class="docs-api__anchor" href="#ficon-prop-flip"
+                                    ><span class="docs-api__name"
+                                        >flip</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Flip icon horizontally or vertically.</p>
 <p>Must be set to one of:</p>
 <ul>
 <li><code>horizontal</code></li>
 <li><code>vertical</code></li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>null</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>rotate</p>
-</td><td><p>Rotate icon.</p>
+
+                            <p class="doc-api__item">Default: <code>null</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ficon-prop-rotate"
+                                ><a class="docs-api__anchor" href="#ficon-prop-rotate"
+                                    ><span class="docs-api__name"
+                                        >rotate</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Rotate icon.</p>
 <p>Must be set to one of:</p>
 <ul>
 <li><code>90</code></li>
 <li><code>180</code></li>
 <li><code>270</code></li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>null</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>null</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ficon-slots">
+            <a class="header-anchor" href="#ficon-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ficon-slot-default"
+                                ><a class="docs-api__anchor" href="#ficon-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1707,9 +1783,9 @@ interface <span class="hljs-title class_">IconEntry</span> {
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

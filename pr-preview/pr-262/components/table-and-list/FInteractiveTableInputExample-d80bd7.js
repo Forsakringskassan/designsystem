@@ -115,10 +115,16 @@
               },
               {
                 default: (0, import_vue5.withCtx)(() => [
-                  (0, import_vue5.withDirectives)((0, import_vue5.createVNode)(_component_f_datepicker_field, {
+                  (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_datepicker_field, {
                     modelValue: row.date,
                     "onUpdate:modelValue": ($event) => row.date = $event
-                  }, null, 8, ["modelValue", "onUpdate:modelValue"]), [
+                  }, {
+                    default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+                      (0, import_vue5.createTextVNode)(" Utbetalningsdatum ")
+                    ])),
+                    _: 2
+                    /* DYNAMIC */
+                  }, 1032, ["modelValue", "onUpdate:modelValue"])), [
                     [
                       _directive_validation,
                       void 0,
@@ -143,10 +149,16 @@
               },
               {
                 default: (0, import_vue5.withCtx)(() => [
-                  (0, import_vue5.withDirectives)((0, import_vue5.createVNode)(_component_f_numeric_text_field, {
+                  (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_numeric_text_field, {
                     modelValue: row.belopp,
                     "onUpdate:modelValue": ($event) => row.belopp = $event
-                  }, null, 8, ["modelValue", "onUpdate:modelValue"]), [
+                  }, {
+                    default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+                      (0, import_vue5.createTextVNode)(" Utbetalt belopp ")
+                    ])),
+                    _: 2
+                    /* DYNAMIC */
+                  }, 1032, ["modelValue", "onUpdate:modelValue"])), [
                     [
                       _directive_validation,
                       void 0,

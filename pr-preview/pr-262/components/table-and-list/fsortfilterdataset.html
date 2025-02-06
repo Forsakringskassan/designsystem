@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">FSortFilterDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">FSortFilterDataset</a>
             
         </code>
          
@@ -1635,67 +1635,232 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
         <script defer src="./FSortFilterDatasetEmptySlot-5000f7.js"></script>
     </div>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>data</p>
-</td><td><p>The data that you wish to sort or filter.</p>
-</td><td><p>ListArray&lt;ListItem&gt;</p>
-</td><td><p>true</p>
-</td><td><p>() =&gt; []</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>sortableAttributes</p>
-</td><td><p>All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.<br>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fsortfilterdataset-props">
+            <a class="header-anchor" href="#fsortfilterdataset-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fsortfilterdataset-prop-data"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-data"
+                                    ><span class="docs-api__name"
+                                        >data</span
+                                    >: ListArray&lt;ListItem&gt;</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The data that you wish to sort or filter.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; []</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-sortableattributes"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-sortableattributes"
+                                    ><span class="docs-api__name"
+                                        >sortableAttributes</span
+                                    >: Record&lt;string, string&gt;</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
 Structured as <code>{attributeName: &quot;Name for dropdown&quot;, secondAttributeName: &quot;Name for dropdown&quot;}</code></p>
-</td><td><p>Record&lt;string, string&gt;</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>defaultSortAttribute</p>
-</td><td><p>If set the data will be sorted by this attribute by default.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; &quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>showSort</p>
-</td><td><p>Show/hides the sort dropdown.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>showFilter</p>
-</td><td><p>Show/hides the filter input.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>placeholderFilter</p>
-</td><td><p>Set placeholder text in filter input field.<br>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-defaultsortattribute"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-defaultsortattribute"
+                                    ><span class="docs-api__name"
+                                        >defaultSortAttribute</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If set the data will be sorted by this attribute by default.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; &quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-showsort"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-showsort"
+                                    ><span class="docs-api__name"
+                                        >showSort</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Show/hides the sort dropdown.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-showfilter"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-showfilter"
+                                    ><span class="docs-api__name"
+                                        >showFilter</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Show/hides the filter input.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-placeholderfilter"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-placeholderfilter"
+                                    ><span class="docs-api__name"
+                                        >placeholderFilter</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set placeholder text in filter input field.
 Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>TranslationMixin.methods.$t(&quot;fkui.sort-filter-dataset.placeholder.filter&quot;, &quot;Sök&quot;)</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>defaultSortAscending</p>
-</td><td><p>The order the data will be sorted by if defaultSortAttribute has been set.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; true</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>datasetSorted</p>
-</td><td><p>Emitted when the data is sorted.</p>
-</td><td><p>sortFilterResult: ListArray — The sorted data.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>usedSortAttributes</p>
-</td><td><p>Emits the used sorting attributes.</p>
-</td><td><p>sortAttribute: SortOrder — The attributes used when sorting the data.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Slot for header to the left of the filter dropdown.</p>
-</td><td><p>slotClass</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for displaying the data.</p>
-</td><td><p>sortFilterResult</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>TranslationMixin.methods.$t(&quot;fkui.sort-filter-dataset.placeholder.filter&quot;, &quot;Sök&quot;)</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-defaultsortascending"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-defaultsortascending"
+                                    ><span class="docs-api__name"
+                                        >defaultSortAscending</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The order the data will be sorted by if defaultSortAttribute has been set.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; true</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fsortfilterdataset-events">
+            <a class="header-anchor" href="#fsortfilterdataset-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fsortfilterdataset-event-datasetsorted"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-event-datasetsorted"
+                                    ><span class="docs-api__name"
+                                        >datasetSorted</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when the data is sorted.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>sortFilterResult: ListArray</code> <span role="presentation">&mdash;</span> The sorted data.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-event-usedsortattributes"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-event-usedsortattributes"
+                                    ><span class="docs-api__name"
+                                        >usedSortAttributes</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emits the used sorting attributes.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>sortAttribute: SortOrder</code> <span role="presentation">&mdash;</span> The attributes used when sorting the data.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fsortfilterdataset-slots">
+            <a class="header-anchor" href="#fsortfilterdataset-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fsortfilterdataset-slot-header"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for header to the left of the filter dropdown.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>slotClass: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-slot-default"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying the data.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>sortFilterResult: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1716,9 +1881,9 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">IPopupMenu</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">IPopupMenu</a>
             
         </code>
          
@@ -1208,66 +1208,224 @@ Detta kan ändras till valfritt element genom att ändra värdet för <code>conf
 Detta kan du göra genom att ange en <code>key</code> i <code>v-model:focused-item</code> som matchar ett objekt i <code>items</code>.
 Komponenten kommer då sätta fokus på det elementet som matchade objektet.</p>
 <p>Se koden för ovan exempel för hur man kan hantera fokus till menyn i samband med tangentbordsnavigering.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>v-model</p>
-</td><td><p>Key of the currently focused item.<br>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="ipopupmenu-props">
+            <a class="header-anchor" href="#ipopupmenu-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ipopupmenu-prop-v-model"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Key of the currently focused item.
 Sets focus on matching item element when value changes.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>isOpen</p>
-</td><td><p>Toggle open/closed popup.</p>
-</td><td><p>boolean</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>anchor</p>
-</td><td><p>DOM element to position popup at.</p>
-</td><td><p>HTMLElement | undefined</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>items</p>
-</td><td><p>The items to be diplayed in the menu</p>
-</td><td><p>MenuItem[]</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>enableKeyboardNavigation</p>
-</td><td><p>If true, enable built-in keyboard navigation</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>ariaLabel</p>
-</td><td><p>Unique accessible name for navigation landmark.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;Popupmeny&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>selectedMenuItemScreenReaderText</p>
-</td><td><p>Text for selected item for screen reader</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;vald nu&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>close</p>
-</td><td><p>Emitted when an item is selected and when tabbing out of the popup.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>select</p>
-</td><td><p>Emitted when an item is selected.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p>V-model event. Emitted when an item is selected.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:focusedItem</p>
-</td><td><p>V-model event. Emitted when item focus changes.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-prop-isopen"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-isopen"
+                                    ><span class="docs-api__name"
+                                        >isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Toggle open/closed popup.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-prop-anchor"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-anchor"
+                                    ><span class="docs-api__name"
+                                        >anchor</span
+                                    >: HTMLElement | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>DOM element to position popup at.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-prop-items"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-items"
+                                    ><span class="docs-api__name"
+                                        >items</span
+                                    >: MenuItem[]</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The items to be diplayed in the menu</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-prop-enablekeyboardnavigation"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-enablekeyboardnavigation"
+                                    ><span class="docs-api__name"
+                                        >enableKeyboardNavigation</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If true, enable built-in keyboard navigation</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-prop-arialabel"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-arialabel"
+                                    ><span class="docs-api__name"
+                                        >ariaLabel</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique accessible name for navigation landmark.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;Popupmeny&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-prop-selectedmenuitemscreenreadertext"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-selectedmenuitemscreenreadertext"
+                                    ><span class="docs-api__name"
+                                        >selectedMenuItemScreenReaderText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Text for selected item for screen reader</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;vald nu&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ipopupmenu-events">
+            <a class="header-anchor" href="#ipopupmenu-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="ipopupmenu-event-close"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when an item is selected and when tabbing out of the popup.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-event-select"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-event-select"
+                                    ><span class="docs-api__name"
+                                        >select</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when an item is selected.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event. Emitted when an item is selected.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopupmenu-event-update-focuseditem"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-event-update-focuseditem"
+                                    ><span class="docs-api__name"
+                                        >update:focusedItem</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event. Emitted when item focus changes.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1288,9 +1446,9 @@ Sets focus on matching item element when value changes.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

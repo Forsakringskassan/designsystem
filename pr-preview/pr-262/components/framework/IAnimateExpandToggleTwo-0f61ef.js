@@ -49,24 +49,26 @@
         type: "button",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.toggle = !_ctx.toggle)
       }, "Toggle"),
-      (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
-        "input",
-        {
-          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.opacity = $event),
-          type: "checkbox"
-        },
-        null,
-        512
-        /* NEED_PATCH */
-      ), [
-        [import_vue5.vModelCheckbox, _ctx.opacity]
+      (0, import_vue5.createElementVNode)("label", null, [
+        (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
+          "input",
+          {
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.opacity = $event),
+            type: "checkbox"
+          },
+          null,
+          512
+          /* NEED_PATCH */
+        ), [
+          [import_vue5.vModelCheckbox, _ctx.opacity]
+        ]),
+        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)(" Toning"))
       ]),
-      _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)(" Toning ")),
       (0, import_vue5.createVNode)(_component_i_animate_expand, {
         opacity: _ctx.opacity,
         expanded: _ctx.toggle
       }, {
-        default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+        default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createElementVNode)(
             "div",
             { style: { "background-color": "yellow", "height": "200px", "position": "relative" } },
@@ -82,7 +84,7 @@
         opacity: _ctx.opacity,
         expanded: !_ctx.toggle
       }, {
-        default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+        default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
           (0, import_vue5.createElementVNode)(
             "div",
             { style: { "background-color": "hotpink", "height": "300px", "position": "relative" } },

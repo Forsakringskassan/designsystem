@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/internal-components/IFlex/IFlex.vue">IFlex</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/internal-components/IFlex/IFlex.vue">IFlex</a>
             
         </code>
          
@@ -1124,8 +1124,25 @@ Den är en ramverkskomponent för enkel hantering av en horisontal flexbox.</p>
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>gap</p>
-</td><td><p>Set gap (gutter) between items.</p>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="iflex-props">
+            <a class="header-anchor" href="#iflex-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="iflex-prop-gap"
+                                ><a class="docs-api__anchor" href="#iflex-prop-gap"
+                                    ><span class="docs-api__name"
+                                        >gap</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set gap (gutter) between items.</p>
 <p>Must be one of:</p>
 <ul>
 <li><code>&quot;1x&quot;</code></li>
@@ -1135,40 +1152,100 @@ Den är en ramverkskomponent för enkel hantering av en horisontal flexbox.</p>
 <li><code>&quot;8x&quot;</code></li>
 </ul>
 <p>Example: a value of <code>&quot;3x&quot;</code> corresponds to a gap of <code>3 * 0.25 = 0.75rem</code>.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>collapse</p>
-</td><td><p>If set the IFlexItems will be fullwidth and<br>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="iflex-prop-collapse"
+                                ><a class="docs-api__anchor" href="#iflex-prop-collapse"
+                                    ><span class="docs-api__name"
+                                        >collapse</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If set the IFlexItems will be fullwidth and
 stacked on top of each other when breakpoint is small (aka mobile).</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>wrap</p>
-</td><td><p>If set the IFlexItems will wrap when out of space</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>float</p>
-</td><td><p>Set how IFlexItems should float.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="iflex-prop-wrap"
+                                ><a class="docs-api__anchor" href="#iflex-prop-wrap"
+                                    ><span class="docs-api__name"
+                                        >wrap</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If set the IFlexItems will wrap when out of space</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="iflex-prop-float"
+                                ><a class="docs-api__anchor" href="#iflex-prop-float"
+                                    ><span class="docs-api__name"
+                                        >float</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set how IFlexItems should float.</p>
 <p>Must be one of:</p>
 <ul>
 <li><code>&quot;left&quot;</code></li>
 <li><code>&quot;center&quot;</code></li>
 <li><code>&quot;right&quot;</code></li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>Slot for IFlexItem's</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="iflex-slots">
+            <a class="header-anchor" href="#iflex-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="iflex-slot-default"
+                                ><a class="docs-api__anchor" href="#iflex-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for IFlexItem's</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1189,9 +1266,9 @@ stacked on top of each other when breakpoint is small (aka mobile).</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1393,64 +1393,216 @@
 </code></pre>
                 </div>
             </div>
-        <h3 id="api--21"><a class="header-anchor" href="#api--21">API</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>id</p>
-</td><td><p>The id for the input id attribute.<br>
-The id for the label for attribute.<br>
+        <h3 id="api--21"><a class="header-anchor" href="#api--21">API</a></h3>
+        <h4 id="femailtextfield-props">
+            <a class="header-anchor" href="#femailtextfield-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="femailtextfield-prop-id"
+                                ><a class="docs-api__anchor" href="#femailtextfield-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the input id attribute.
+The id for the label for attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>v-model</p>
-</td><td><p>The value for the input.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="femailtextfield-prop-v-model"
+                                ><a class="docs-api__anchor" href="#femailtextfield-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The value for the input.
 If the prop is not set undefined will be used.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>maxLength</p>
-</td><td><p>‐</p>
-</td><td><p>number</p>
-</td><td><p>false</p>
-</td><td><p>80</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>extendedValidation</p>
-</td><td><p>‐</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>pasteErrorText</p>
-</td><td><p>The error message to be displayed on paste<br>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="femailtextfield-prop-maxlength"
+                                ><a class="docs-api__anchor" href="#femailtextfield-prop-maxlength"
+                                    ><span class="docs-api__name"
+                                        >maxLength</span
+                                    >: number</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: <code>80</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="femailtextfield-prop-extendedvalidation"
+                                ><a class="docs-api__anchor" href="#femailtextfield-prop-extendedvalidation"
+                                    ><span class="docs-api__name"
+                                        >extendedValidation</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="femailtextfield-prop-pasteerrortext"
+                                ><a class="docs-api__anchor" href="#femailtextfield-prop-pasteerrortext"
+                                    ><span class="docs-api__name"
+                                        >pasteErrorText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The error message to be displayed on paste
 If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. Du måste skriva in den igen.&quot; will be set</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>TranslationService.provider.translate(<br>
-&quot;fkui.email-text-field.error.pasting&quot;,<br>
-&quot;Du kan inte kopiera mejladressen. Du måste skriva in den igen.&quot;,<br>
-)</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>blur</p>
-</td><td><p>‐</p>
-</td><td><p>&lt;anonymous&gt;: string | number</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>change</p>
-</td><td><p>‐</p>
-</td><td><p>&lt;anonymous&gt;: string | number</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p>V-model event.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>Optional slot for label content.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>extended-label</p>
-</td><td><p>Optional slot for label content of extended field.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h2 id="numeriskt"><a class="header-anchor" href="#numeriskt">Numeriskt</a></h2><p><code>FNumericTextField</code></p>
+
+                            <p class="doc-api__item">Default: <code>TranslationService.provider.translate(
+    &quot;fkui.email-text-field.error.pasting&quot;,
+    &quot;Du kan inte kopiera mejladressen. Du måste skriva in den igen.&quot;,
+)</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="femailtextfield-events">
+            <a class="header-anchor" href="#femailtextfield-events">Events</a>
+        </h4>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="femailtextfield-event-blur"
+                                ><a class="docs-api__anchor" href="#femailtextfield-event-blur"
+                                    ><span class="docs-api__name"
+                                        >blur</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string | number</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="femailtextfield-event-change"
+                                ><a class="docs-api__anchor" href="#femailtextfield-event-change"
+                                    ><span class="docs-api__name"
+                                        >change</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string | number</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="femailtextfield-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#femailtextfield-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="femailtextfield-slots">
+            <a class="header-anchor" href="#femailtextfield-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="femailtextfield-slot-default"
+                                ><a class="docs-api__anchor" href="#femailtextfield-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional slot for label content.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="femailtextfield-slot-extended-label"
+                                ><a class="docs-api__anchor" href="#femailtextfield-slot-extended-label"
+                                    ><span class="docs-api__name"
+                                        >extended-label</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional slot for label content of extended field.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="numeriskt"><a class="header-anchor" href="#numeriskt">Numeriskt</a></h2><p><code>FNumericTextField</code></p>
 <p>Inmatningsfält används när användaren ska fylla i ett tal. Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskiljare och kommatecken som decimalpunkt. Utvecklaren behöver själv lägga till lämpliga numeriska validatorer som till exempel <code>_v-validation.required.decimal.maxValue.minValue=&quot; ... &quot;</code>.</p>
 <h3 id="format--22"><a class="header-anchor" href="#format--22">Format</a></h3><table class="table">
 <thead>
@@ -1979,54 +2131,192 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </code></pre>
                 </div>
             </div>
-        <h3 id="api--70"><a class="header-anchor" href="#api--70">API</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>id</p>
-</td><td><p>The id for the input id attribute.<br>
-The id for the label for attribute.<br>
+        <h3 id="api--70"><a class="header-anchor" href="#api--70">API</a></h3>
+        <h4 id="fphonetextfield-props">
+            <a class="header-anchor" href="#fphonetextfield-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fphonetextfield-prop-id"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the input id attribute.
+The id for the label for attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>v-model</p>
-</td><td><p>The value for the input.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fphonetextfield-prop-v-model"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The value for the input.
 If the prop is not set undefined will be used.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>maxLength</p>
-</td><td><p>‐</p>
-</td><td><p>number</p>
-</td><td><p>false</p>
-</td><td><p>80</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>extendedValidation</p>
-</td><td><p>‐</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>blur</p>
-</td><td><p>‐</p>
-</td><td><p>&lt;anonymous&gt;: string | number</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>change</p>
-</td><td><p>‐</p>
-</td><td><p>&lt;anonymous&gt;: string | number</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p>V-model event.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>extendedLabel</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h2 id="valuta"><a class="header-anchor" href="#valuta">Valuta</a></h2><p><code>FCurrencyTextField</code></p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fphonetextfield-prop-maxlength"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-prop-maxlength"
+                                    ><span class="docs-api__name"
+                                        >maxLength</span
+                                    >: number</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: <code>80</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fphonetextfield-prop-extendedvalidation"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-prop-extendedvalidation"
+                                    ><span class="docs-api__name"
+                                        >extendedValidation</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fphonetextfield-events">
+            <a class="header-anchor" href="#fphonetextfield-events">Events</a>
+        </h4>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fphonetextfield-event-blur"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-event-blur"
+                                    ><span class="docs-api__name"
+                                        >blur</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string | number</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fphonetextfield-event-change"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-event-change"
+                                    ><span class="docs-api__name"
+                                        >change</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string | number</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fphonetextfield-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fphonetextfield-slots">
+            <a class="header-anchor" href="#fphonetextfield-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fphonetextfield-slot-default"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fphonetextfield-slot-extendedlabel"
+                                ><a class="docs-api__anchor" href="#fphonetextfield-slot-extendedlabel"
+                                    ><span class="docs-api__name"
+                                        >extendedLabel</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="valuta"><a class="header-anchor" href="#valuta">Valuta</a></h2><p><code>FCurrencyTextField</code></p>
 <p>Inmatningsfält för valuta används när modellen (<code>v-model</code>) är av typen <code>number</code>.
 Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskiljare och kommatecken som decimalpunkt. Utvecklaren behöver själv lägga till ytterligare lämpliga numeriska validatorer som till exempel <code>_v-validation.required.maxValue=&quot; ... &quot;</code>.</p>
 <h3 id="format--71"><a class="header-anchor" href="#format--71">Format</a></h3><table class="table">
@@ -2088,9 +2378,9 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

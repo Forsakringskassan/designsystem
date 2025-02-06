@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,19 +1031,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1150,7 +1150,7 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FInteractiveTableInputExample-b7941c.js"></script>
+        <script defer src="./FInteractiveTableInputExample-d80bd7.js"></script>
     </div>
                 <div>
             <button
@@ -1178,17 +1178,15 @@ Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att p
                         {{ row.beskrivning }}
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Utbetalningsdatum&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-datepicker-field</span>
-                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.date&quot;</span>
-                            <span class="hljs-attr">v-validation.required</span>
-                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-datepicker-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-datepicker-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.date&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
+                            Utbetalningsdatum
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-datepicker-field</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
 
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;belopp&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Utbetalat belopp&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-numeric-text-field</span>
-                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.belopp&quot;</span>
-                            <span class="hljs-attr">v-validation.required</span>
-                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-numeric-text-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-numeric-text-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.belopp&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
+                            Utbetalt belopp
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-numeric-text-field</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
@@ -1485,27 +1483,80 @@ Texten sätts i slot <code>#empty</code>:</p>
 </code></pre>
                 </div>
             <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fdatatable"><a class="header-anchor" href="#fdatatable">FDataTable</a></h3><p>Används för att presentera information</p>
-<div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>rows</p>
-</td><td><p>The rows to be listed.<br>
+
+        <h4 id="fdatatable-props">
+            <a class="header-anchor" href="#fdatatable-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fdatatable-prop-rows"
+                                ><a class="docs-api__anchor" href="#fdatatable-prop-rows"
+                                    ><span class="docs-api__name"
+                                        >rows</span
+                                    >: ListArray</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The rows to be listed.
 The rows will be listed in the given array order.</p>
-</td><td><p>ListArray</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>keyAttribute</p>
-</td><td><p>Unique attribute in rows.</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>striped</p>
-</td><td><p>If <code>true</code> alternating rows will use a different background color.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>scroll</p>
-</td><td><p>Enable scrolling inside table.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-prop-keyattribute"
+                                ><a class="docs-api__anchor" href="#fdatatable-prop-keyattribute"
+                                    ><span class="docs-api__name"
+                                        >keyAttribute</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique attribute in rows.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-prop-striped"
+                                ><a class="docs-api__anchor" href="#fdatatable-prop-striped"
+                                    ><span class="docs-api__name"
+                                        >striped</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If <code>true</code> alternating rows will use a different background color.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-prop-scroll"
+                                ><a class="docs-api__anchor" href="#fdatatable-prop-scroll"
+                                    ><span class="docs-api__name"
+                                        >scroll</span
+                                    >: TableScroll</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable scrolling inside table.</p>
 <p>Can be one of the following values:</p>
 <ul>
 <li><code>&quot;horizontal&quot;</code>: Enables horizontal scrolling</li>
@@ -1513,73 +1564,228 @@ The rows will be listed in the given array order.</p>
 <li><code>&quot;both&quot;</code>: Enables scrolling in both directions</li>
 <li><code>&quot;none&quot;</code>: Disables scrolling (default)</li>
 </ul>
-</td><td><p>TableScroll</p>
-</td><td><p>false</p>
-</td><td><p>TableScroll.NONE</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>caption</p>
-</td><td><p>Slot for table caption.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for table row.</p>
-</td><td><p>row</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>empty</p>
-</td><td><p>Slot for displaying a message when table is empty.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h3 id="ftablecolumn"><a class="header-anchor" href="#ftablecolumn">FTableColumn</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>name</p>
-</td><td><p>Unique (per-table) identifier.</p>
-<p>Typically set to the row property displayed but any unique string can<br>
+
+                            <p class="doc-api__item">Default: <code>TableScroll.NONE</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fdatatable-slots">
+            <a class="header-anchor" href="#fdatatable-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fdatatable-slot-caption"
+                                ><a class="docs-api__anchor" href="#fdatatable-slot-caption"
+                                    ><span class="docs-api__name"
+                                        >caption</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for table caption.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-slot-default"
+                                ><a class="docs-api__anchor" href="#fdatatable-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for table row.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>row: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-slot-empty"
+                                ><a class="docs-api__anchor" href="#fdatatable-slot-empty"
+                                    ><span class="docs-api__name"
+                                        >empty</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying a message when table is empty.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h3 id="ftablecolumn"><a class="header-anchor" href="#ftablecolumn">FTableColumn</a></h3>
+        <h4 id="ftablecolumn-props">
+            <a class="header-anchor" href="#ftablecolumn-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftablecolumn-prop-name"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-name"
+                                    ><span class="docs-api__name"
+                                        >name</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique (per-table) identifier.</p>
+<p>Typically set to the row property displayed but any unique string can
 be used.</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>visible</p>
-</td><td><p>If set to true, display the column, set to false to hide it.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>rowHeader</p>
-</td><td><p>If <code>true</code> this cell will be a row header (<code>&lt;th&gt;</code> as opposed to<br>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-visible"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-visible"
+                                    ><span class="docs-api__name"
+                                        >visible</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If set to true, display the column, set to false to hide it.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-rowheader"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-rowheader"
+                                    ><span class="docs-api__name"
+                                        >rowHeader</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If <code>true</code> this cell will be a row header (<code>&lt;th&gt;</code> as opposed to
 <code>&lt;td&gt;</code>).</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>title</p>
-</td><td><p>Text to show in column header. In order to force newlines use <code>\n</code>.</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>description</p>
-</td><td><p>Additional column description.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>shrink</p>
-</td><td><p>Set this column to shrink as small as possible.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-title"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-title"
+                                    ><span class="docs-api__name"
+                                        >title</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Text to show in column header. In order to force newlines use <code>\n</code>.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-description"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-description"
+                                    ><span class="docs-api__name"
+                                        >description</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Additional column description.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-shrink"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-shrink"
+                                    ><span class="docs-api__name"
+                                        >shrink</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set this column to shrink as small as possible.</p>
 <p>Cannot be combined with <code>expand</code></p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>expand</p>
-</td><td><p>Set this column to expand as large as possible.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-expand"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-expand"
+                                    ><span class="docs-api__name"
+                                        >expand</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set this column to expand as large as possible.</p>
 <p>Cannot be combined with <code>shrink</code></p>
 <p>Default if neither <code>expand</code> or <code>shrink</code> is set.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>type</p>
-</td><td><p>Type of data the rows contains.</p>
-<p>Applies proper alignment and some styling (e.g. &quot;numeric&quot; uses fixed<br>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-type"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-type"
+                                    ><span class="docs-api__name"
+                                        >type</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Type of data the rows contains.</p>
+<p>Applies proper alignment and some styling (e.g. &quot;numeric&quot; uses fixed
 width numbers).</p>
 <p>Can be one of the following values:</p>
 <ul>
@@ -1588,60 +1794,184 @@ width numbers).</p>
 <li><code>&quot;numeric&quot;</code>: numeric data</li>
 <li><code>&quot;action&quot;</code>: buttons to perform actions on row</li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>FTableColumnType.TEXT</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h3 id="finteractivetable"><a class="header-anchor" href="#finteractivetable">FInteractiveTable</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>rows</p>
-</td><td><p>The rows to be listed.<br>
+
+                            <p class="doc-api__item">Default: <code>FTableColumnType.TEXT</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="ftablecolumn-slots">
+            <a class="header-anchor" href="#ftablecolumn-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftablecolumn-slot-default"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h3 id="finteractivetable"><a class="header-anchor" href="#finteractivetable">FInteractiveTable</a></h3>
+        <h4 id="finteractivetable-props">
+            <a class="header-anchor" href="#finteractivetable-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="finteractivetable-prop-rows"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-rows"
+                                    ><span class="docs-api__name"
+                                        >rows</span
+                                    >: ListArray</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The rows to be listed.
 The rows will be listed in the given array order.</p>
-</td><td><p>ListArray</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>hover</p>
-</td><td><p>If <code>true</code> hovering over a row will be highlighted</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>keyAttribute</p>
-</td><td><p>Unique attribute in rows.</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>expandableAttribute</p>
-</td><td><p>Attribute of expandable content in rows.<br>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-hover"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-hover"
+                                    ><span class="docs-api__name"
+                                        >hover</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If <code>true</code> hovering over a row will be highlighted</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-keyattribute"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-keyattribute"
+                                    ><span class="docs-api__name"
+                                        >keyAttribute</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique attribute in rows.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-expandableattribute"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-expandableattribute"
+                                    ><span class="docs-api__name"
+                                        >expandableAttribute</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Attribute of expandable content in rows.
 If provided, the table can contain expandable rows.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>expandableDescribedby</p>
-</td><td><p>Element id for aria-describedby on expandable rows to describe expanded content.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>selectable</p>
-</td><td><p>If <code>true</code> the table rows will be selectable.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>striped</p>
-</td><td><p>If <code>true</code> alternating rows will use a different background color.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>scroll</p>
-</td><td><p>Enable scrolling inside table.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-expandabledescribedby"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-expandabledescribedby"
+                                    ><span class="docs-api__name"
+                                        >expandableDescribedby</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Element id for aria-describedby on expandable rows to describe expanded content.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-selectable"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-selectable"
+                                    ><span class="docs-api__name"
+                                        >selectable</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If <code>true</code> the table rows will be selectable.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-striped"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-striped"
+                                    ><span class="docs-api__name"
+                                        >striped</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If <code>true</code> alternating rows will use a different background color.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-scroll"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-scroll"
+                                    ><span class="docs-api__name"
+                                        >scroll</span
+                                    >: TableScroll</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable scrolling inside table.</p>
 <p>Can be one of the following values:</p>
 <ul>
 <li><code>&quot;horizontal&quot;</code>: Enables horizontal scrolling</li>
@@ -1649,83 +1979,327 @@ If provided, the table can contain expandable rows.</p>
 <li><code>&quot;both&quot;</code>: Enables scrolling in both directions</li>
 <li><code>&quot;none&quot;</code>: Disables scrolling (default)</li>
 </ul>
-</td><td><p>TableScroll</p>
-</td><td><p>false</p>
-</td><td><p>TableScroll.NONE</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>v-model</p>
-</td><td><p>V-model will bind to value containing selected rows.</p>
-</td><td><p>ListArray | undefined</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>showActive</p>
-</td><td><p>Enable showing the active row.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>v-model:active</p>
-</td><td><p>V-model will bind to value containing the current active row.</p>
-</td><td><p>ListItem | undefined</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; undefined</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>change</p>
-</td><td><p>Emitted when row is activated.</p>
-</td><td><p>row: ListItem</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>click</p>
-</td><td><p>Emitted when row is clicked.</p>
-</td><td><p>row: ListItem</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>unselect</p>
-</td><td><p>Emitted when row is unselected.</p>
-</td><td><p>row: ListItem</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p>V-model event to update value property.</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:active</p>
-</td><td><p>V-model active event.</p>
-</td><td><p>activeItem: ListItem</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>select</p>
-</td><td><p>Emitted when row is selected.</p>
-</td><td><p>row: ListItem<br>
-selectedRows: ListArray</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>expand</p>
-</td><td><p>Emitted when row is expanded.</p>
-</td><td><p>row: ListItem</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>collapse</p>
-</td><td><p>Emitted when row is collapsed.</p>
-</td><td><p>row: ListItem</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>caption</p>
-</td><td><p>Slot for table caption.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>checkbox-description</p>
-</td><td><p>‐</p>
-</td><td><p>row</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for table row.</p>
-</td><td><p>row</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>expandable</p>
-</td><td><p>Slot for expandable table row.</p>
-</td><td><p>expandableRow<br>
-parentRow</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>empty</p>
-</td><td><p>Slot for displaying a message when table is empty.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>TableScroll.NONE</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-v-model"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: ListArray | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model will bind to value containing selected rows.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-showactive"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-showactive"
+                                    ><span class="docs-api__name"
+                                        >showActive</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable showing the active row.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-v-model-active"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-v-model-active"
+                                    ><span class="docs-api__name"
+                                        >v-model:active</span
+                                    >: ListItem | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model will bind to value containing the current active row.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; undefined</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="finteractivetable-events">
+            <a class="header-anchor" href="#finteractivetable-events">Events</a>
+        </h4>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="finteractivetable-event-change"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-change"
+                                    ><span class="docs-api__name"
+                                        >change</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is activated.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: ListItem</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-click"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-click"
+                                    ><span class="docs-api__name"
+                                        >click</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is clicked.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: ListItem</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-unselect"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-unselect"
+                                    ><span class="docs-api__name"
+                                        >unselect</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is unselected.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: ListItem</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event to update value property.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-update-active"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-update-active"
+                                    ><span class="docs-api__name"
+                                        >update:active</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model active event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>activeItem: ListItem</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-select"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-select"
+                                    ><span class="docs-api__name"
+                                        >select</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is selected.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: ListItem</code></li><li><code>selectedRows: ListArray</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-expand"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-expand"
+                                    ><span class="docs-api__name"
+                                        >expand</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is expanded.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: ListItem</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-collapse"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-collapse"
+                                    ><span class="docs-api__name"
+                                        >collapse</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is collapsed.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: ListItem</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="finteractivetable-slots">
+            <a class="header-anchor" href="#finteractivetable-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="finteractivetable-slot-caption"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-caption"
+                                    ><span class="docs-api__name"
+                                        >caption</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for table caption.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-checkbox-description"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-checkbox-description"
+                                    ><span class="docs-api__name"
+                                        >checkbox-description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>row: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-default"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for table row.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>row: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-expandable"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-expandable"
+                                    ><span class="docs-api__name"
+                                        >expandable</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for expandable table row.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>expandableRow: unknown</code></li><li><code>parentRow: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-empty"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-empty"
+                                    ><span class="docs-api__name"
+                                        >empty</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying a message when table is empty.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1746,9 +2320,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a0787d.css"
+            href="../../assets/docs-09a125.css"
             crossorigin
-            integrity="sha384-ttum+crsnRDB/6mEL6tL3CK20D0SUYk5tH7kVBdhZIrBf2gSNwb29hx/qA563RiP"
+            integrity="sha384-pMe3EHYQYhfqh5utsigXk4FqVpFnHVIhrA7ntQFLAGZKKQ91g95iryzJFUP7KCRJ"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-645304.json"
+            href="../../search-data-182dc3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-haxP92v572gxjg4Mk8BmpmsUcsfgvHXT9pNGseNHUM+H/tbvY2JC8J45YWFFkNRy"
+            integrity="sha384-L8Gfg2GeKcTUKeZoo/HmBGKi6+LNgxjf5WUHZHyUqLM/z/yhd7QDe9cqdKFODfYz"
             id="search-data"
         />
     </head>
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6e3fa07d0e5f705c37e9e01610311088085a30db/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85aec0409638911da6007fbd4e732157ecfba696/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
             
         </code>
          
@@ -1245,64 +1245,210 @@ Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det 
 </code></pre>
                 </div>
             <p>Notera att elementet måste vara fokuserbart.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>logoSize</p>
-</td><td><p>Setting the logo sizes small, large or responsive.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;responsive&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>skipLink</p>
-</td><td><p>Render skiplink.</p>
-<p>When set to a non-empty string thethe skiplink feature is enabled.<br>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fpageheader-props">
+            <a class="header-anchor" href="#fpageheader-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fpageheader-prop-logosize"
+                                ><a class="docs-api__anchor" href="#fpageheader-prop-logosize"
+                                    ><span class="docs-api__name"
+                                        >logoSize</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Setting the logo sizes small, large or responsive.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;responsive&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-prop-skiplink"
+                                ><a class="docs-api__anchor" href="#fpageheader-prop-skiplink"
+                                    ><span class="docs-api__name"
+                                        >skipLink</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Render skiplink.</p>
+<p>When set to a non-empty string thethe skiplink feature is enabled.
 The string is the id of the element to move focus to.</p>
 <p>When set to empty string (default) the skiplink feature is disabled.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>headerTag</p>
-</td><td><p>HTML element type for header.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;span&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>routerLinkPath</p>
-</td><td><p>Target for router-link via path.<br>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-prop-headertag"
+                                ><a class="docs-api__anchor" href="#fpageheader-prop-headertag"
+                                    ><span class="docs-api__name"
+                                        >headerTag</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>HTML element type for header.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;span&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-prop-routerlinkpath"
+                                ><a class="docs-api__anchor" href="#fpageheader-prop-routerlinkpath"
+                                    ><span class="docs-api__name"
+                                        >routerLinkPath</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Target for router-link via path.
 (Behaviour from using both name and path in combination is undefined.)</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>routerLinkName</p>
-</td><td><p>Target for router-link via name.<br>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-prop-routerlinkname"
+                                ><a class="docs-api__anchor" href="#fpageheader-prop-routerlinkname"
+                                    ><span class="docs-api__name"
+                                        >routerLinkName</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Target for router-link via name.
 (Behaviour from using both name and path in combination is undefined.)</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>routerLinkLabel</p>
-</td><td><p>Label to override the router-link label when router-link is present.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>skip-link-text</p>
-</td><td><p>Slot for skip link text.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>logo</p>
-</td><td><p>Slot for custom logo.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for application title.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>right</p>
-</td><td><p>Slot for user/custom information display.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-prop-routerlinklabel"
+                                ><a class="docs-api__anchor" href="#fpageheader-prop-routerlinklabel"
+                                    ><span class="docs-api__name"
+                                        >routerLinkLabel</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Label to override the router-link label when router-link is present.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fpageheader-slots">
+            <a class="header-anchor" href="#fpageheader-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fpageheader-slot-skip-link-text"
+                                ><a class="docs-api__anchor" href="#fpageheader-slot-skip-link-text"
+                                    ><span class="docs-api__name"
+                                        >skip-link-text</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for skip link text.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-slot-logo"
+                                ><a class="docs-api__anchor" href="#fpageheader-slot-logo"
+                                    ><span class="docs-api__name"
+                                        >logo</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for custom logo.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-slot-default"
+                                ><a class="docs-api__anchor" href="#fpageheader-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for application title.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-slot-right"
+                                ><a class="docs-api__anchor" href="#fpageheader-slot-right"
+                                    ><span class="docs-api__name"
+                                        >right</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for user/custom information display.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1323,9 +1469,9 @@ The string is the id of the element to move focus to.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e3fa07d0e5f705c37e9e01610311088085a30db">6e3fa07</a>)<br />
+    docs/validate-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/85aec0409638911da6007fbd4e732157ecfba696">85aec04</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/262">PR 262</a><br />
-        2025-02-06 18:10
+        2025-02-06 21:11
 </div>
 <div class="toolbar__item">
     <form id="version">
