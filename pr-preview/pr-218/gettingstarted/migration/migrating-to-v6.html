@@ -658,13 +658,21 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
 Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <h3 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h3><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
 <p>Det deprekerade aliaset <code>FCheckboxGroupField</code> har tagits bort och är ersatt med <code>FCheckboxField</code>.</p>
+<h3 id="fcruddataset"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h3><p>Tidigare emittades eventet <code>change</code> när man ändrar lägger till eller ändrar rader.
+Det eventet är nu borttaget och ersatt med <code>v-model</code> alternativt de mer specifika eventen <code>created</code>, <code>updated</code> and <code>deleted</code>.</p>
+<h3 id="fdialoguetree"><a class="header-anchor" href="#fdialoguetree"><code>FDialogueTree</code></a></h3><p>Tidigare emittades eventet <code>change</code> när man ändrar val.
+Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
+<h3 id="finteractivetable"><a class="header-anchor" href="#finteractivetable"><code>FInteractiveTable</code></a></h3><p>Tidigare emittades eventet <code>update</code> när man ändrar vald tabellrad.
+Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
+<h3 id="flist"><a class="header-anchor" href="#flist"><code>FList</code></a></h3><p>Tidigare emittades eventet <code>update</code> när man ändrar valda kort.
+Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <h3 id="fradiogroup_och_fradiogroupfield"><a class="header-anchor" href="#fradiogroup_och_fradiogroupfield"><code>FRadioGroup</code> och <code>FRadioGroupField</code></a></h3><p>Den deprekerade komponenten <code>FRadioGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="./migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
 <p>Det deprekerade aliaset <code>FRadioGroupField</code> har tagits bort och är ersatt med <code>FRadioField</code>.</p>
 <h3 id="fformmodal_slots"><a class="header-anchor" href="#fformmodal_slots"><code>FFormModal</code> slots</a></h3><p>De deprekerade slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna och ersatta med propen <code>buttons</code>.</p>
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-6ec951"
+                    id="example-ef6755"
                     class="code-preview code-preview--default"
                     
                     
@@ -702,7 +710,7 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <h3 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h3><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-c6ed2a"
+                    id="example-d0d606"
                     class="code-preview code-preview--default"
                     
                     
@@ -718,7 +726,7 @@ Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng 
 <h3 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h3><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
                 <div
-                    id="example-17d5e5"
+                    id="example-ce6e69"
                     class="code-preview code-preview--default"
                     
                     
@@ -738,7 +746,7 @@ Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng 
         <h3 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h3><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
 
                 <div
-                    id="example-38d0b2"
+                    id="example-1c5b22"
                     class="code-preview code-preview--default"
                     
                     
@@ -763,7 +771,7 @@ Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <c
 Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
 
                 <div
-                    id="example-ecf23c"
+                    id="example-0771db"
                     class="code-preview code-preview--default"
                     
                     
@@ -776,7 +784,7 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
                 </div>
             <h2 id="cypress_pageobjects"><a class="header-anchor" href="#cypress_pageobjects">Cypress Pageobjects</a></h2><h3 id="paketnamn"><a class="header-anchor" href="#paketnamn">Paketnamn</a></h3>
                 <div
-                    id="example-9fe1de"
+                    id="example-b1efdc"
                     class="code-preview code-preview--default"
                     
                     
@@ -790,7 +798,7 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
             <p>Använder du TypeScript med Cypress behöver du sätta två inställningar i din <code>cypress/tsconfig.json</code>:</p>
 
                 <div
-                    id="example-6c2904"
+                    id="example-8ab603"
                     class="code-preview code-preview--default"
                     
                     
@@ -827,7 +835,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda <code>.el()</code>.</p>
 
                 <div
-                    id="example-809fe0"
+                    id="example-224be1"
                     class="code-preview code-preview--default"
                     
                     
@@ -844,7 +852,7 @@ Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man a
 Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda <code>.content()</code> för att hämta ut hela innehållet i slotten eller använda en egen selector.</p>
 
                 <div
-                    id="example-66ceaf"
+                    id="example-c2c5c2"
                     class="code-preview code-preview--default"
                     
                     
@@ -858,7 +866,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="fnavigationmenupageobject_menu_metoden"><a class="header-anchor" href="#fnavigationmenupageobject_menu_metoden"><code>FNavigationMenuPageobject.menu()</code> metoden</a></h3><p>Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
 
                 <div
-                    id="example-5d08f2"
+                    id="example-d3d4fb"
                     class="code-preview code-preview--default"
                     
                     
@@ -872,7 +880,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="ftooltippageobject_content_methoden"><a class="header-anchor" href="#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code> methoden</a></h3><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
 
                 <div
-                    id="example-46ccf5"
+                    id="example-7aa463"
                     class="code-preview code-preview--default"
                     
                     
@@ -885,7 +893,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-b3f2c7"
+                    id="example-9b26ae"
                     class="code-preview code-preview--default"
                     
                     
@@ -898,7 +906,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-3c7090"
+                    id="example-b406db"
                     class="code-preview code-preview--default"
                     
                     
@@ -911,7 +919,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-a2aa5b"
+                    id="example-a0ca3f"
                     class="code-preview code-preview--default"
                     
                     
@@ -932,7 +940,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
 Som konsument finns det möjlighet att själv tillhandahålla specifika tillämpningar.</p>
 
                 <div
-                    id="example-2055df"
+                    id="example-b0e99f"
                     class="code-preview code-preview--default"
                     
                     
@@ -953,7 +961,7 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
             <h3 id="deprekerade_css_variabler_exluderade_fran_standardtema"><a class="header-anchor" href="#deprekerade_css_variabler_exluderade_fran_standardtema">Deprekerade CSS-variabler exluderade från standardtema</a></h3><p>Möjlighet finns att importera separat vid behov.</p>
 
                 <div
-                    id="example-07f583"
+                    id="example-391329"
                     class="code-preview code-preview--default"
                     
                     
@@ -970,7 +978,7 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
             <h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../components/input/ftextfield.html"><code>FTextField</code></a> måste du ändra namnet på bindings:</p>
 
                 <div
-                    id="example-3ee2c9"
+                    id="example-f89db9"
                     class="code-preview code-preview--default"
                     
                     
@@ -990,7 +998,7 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
 <p>Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
 
                 <div
-                    id="example-57b761"
+                    id="example-eb03d0"
                     class="code-preview code-preview--default"
                     
                     
@@ -1004,7 +1012,7 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
             <p><code>FLabelPageObject</code> metoden är också ändrad att matcha:</p>
 
                 <div
-                    id="example-ec417f"
+                    id="example-8be612"
                     class="code-preview code-preview--default"
                     
                     
@@ -1036,9 +1044,9 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/6ded496e19459170e6f0df82c9b9ffddced0732e">6ded496</a>)<br />
+    feature/cleanup (<a href="https://github.com/Forsakringskassan/designsystem/commits/92c83e444fe0c1d83d4393a5e601a3801f49e0b1">92c83e4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/218">PR 218</a><br />
-        2025-02-06 15:35
+        2025-02-06 15:58
 </div>
 <div class="toolbar__item">
     <form id="version">
