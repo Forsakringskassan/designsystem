@@ -152,7 +152,7 @@ export default defineComponent({
             default: () => ElementIdService.generateElementId(),
         },
     },
-    emits: ["change", "click", "update", "unselect", "update:modelValue", "select", "update:active"],
+    emits: ["change", "click", "unselect", "update:modelValue", "select", "update:active"],
     setup(): ActivateItemInterface {
         return ActivateItemInjected();
     },
@@ -296,13 +296,6 @@ export default defineComponent({
                  * @event update:modelValue
                  */
                 this.$emit("update:modelValue", this.selectedItems);
-
-                /**
-                 * Vue2 v-model event to update value properity.
-                 * @deprecated
-                 * @event update
-                 */
-                this.$emit("update", this.selectedItems);
             }
         },
         updateSelectedItemsFromVModel(): void {

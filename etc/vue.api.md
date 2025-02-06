@@ -8397,7 +8397,7 @@ onItemBlur(event: FocusEvent): void;
 callbackAfterItemAdd(item: ListItem): void;
 callbackBeforeItemDelete(item: ListItem): void;
 isActive(item: ListItem): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "update:modelValue" | "update" | "unselect" | "update:active")[], "change" | "click" | "select" | "update:modelValue" | "update" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "update:modelValue" | "unselect" | "update:active")[], "change" | "click" | "select" | "update:modelValue" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
 items: {
 type: PropType<ListArray>;
 required: true;
@@ -8433,7 +8433,6 @@ onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 onSelect?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUpdate?: ((...args: any[]) => any) | undefined;
 onUnselect?: ((...args: any[]) => any) | undefined;
 "onUpdate:active"?: ((...args: any[]) => any) | undefined;
 }>, {

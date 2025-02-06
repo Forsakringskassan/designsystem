@@ -340,7 +340,8 @@ describe("v-model (update event)", () => {
         const secondCheckbox = wrapper.findAll("input")[1];
 
         await secondCheckbox.trigger("click");
-        expect(wrapper.emitted("update")![0][0]).toMatchInlineSnapshot(`
+        expect(wrapper.emitted("update:modelValue")![0][0])
+            .toMatchInlineSnapshot(`
             [
               {
                 "id": "2",
@@ -351,7 +352,9 @@ describe("v-model (update event)", () => {
         `);
 
         await secondCheckbox.trigger("click");
-        expect(wrapper.emitted("update")![1][0]).toMatchInlineSnapshot(`[]`);
+        expect(
+            wrapper.emitted("update:modelValue")![1][0],
+        ).toMatchInlineSnapshot(`[]`);
     });
 
     it("should upate v-model when selecting two different items", async () => {
@@ -367,7 +370,7 @@ describe("v-model (update event)", () => {
         const secondCheckbox = wrapper.findAll("input")[1];
 
         await firstCheckbox.trigger("click");
-        expect(wrapper.emitted("update")![0][0]).toEqual([
+        expect(wrapper.emitted("update:modelValue")![0][0]).toEqual([
             {
                 id: "1",
                 name: "TEST 1",
@@ -376,7 +379,7 @@ describe("v-model (update event)", () => {
         ]);
 
         await secondCheckbox.trigger("click");
-        expect(wrapper.emitted("update")![1][0]).toEqual([
+        expect(wrapper.emitted("update:modelValue")![1][0]).toEqual([
             {
                 id: "1",
                 name: "TEST 1",
@@ -405,7 +408,7 @@ describe("v-model (update event)", () => {
         await firstCheckbox.trigger("click");
         await secondCheckbox.trigger("click");
 
-        expect(wrapper.emitted("update")![0][0]).toEqual([
+        expect(wrapper.emitted("update:modelValue")![0][0]).toEqual([
             {
                 id: "1",
                 name: "TEST 1",
@@ -421,7 +424,9 @@ describe("v-model (update event)", () => {
         await firstCheckbox.trigger("click");
         await secondCheckbox.trigger("click");
 
-        expect(wrapper.emitted("update")![3][0]).toMatchInlineSnapshot(`[]`);
+        expect(
+            wrapper.emitted("update:modelValue")![3][0],
+        ).toMatchInlineSnapshot(`[]`);
     });
 
     it("should select items when updating v-model", async () => {
