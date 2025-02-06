@@ -3,7 +3,7 @@
         <f-static-field>
             <template #label> Etikett </template>
             <template #tooltip>
-                <f-tooltip screen-reader-text="Läs mer om avancerat fält">
+                <f-tooltip screen-reader-text="Läs mer om avancerat fält" header-tag="h2">
                     <template #header> Mer om avancerat fält </template>
                     <template #body> Detta fältet kräver lite närmare förklaring. </template>
                 </f-tooltip>

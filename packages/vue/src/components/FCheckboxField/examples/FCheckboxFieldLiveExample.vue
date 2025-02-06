@@ -53,7 +53,7 @@ export default defineComponent({
         tooltip(): string {
             const template = /* HTML */ `
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="Läs mer om Broschyrer">
+                    <f-tooltip screen-reader-text="Läs mer om Broschyrer" header-tag="h2">
                         <template #header> Broschyrer </template>
                         <template #body>
                             Här väljer du om du vill ha broschyrer eller faktablad och vilka områden

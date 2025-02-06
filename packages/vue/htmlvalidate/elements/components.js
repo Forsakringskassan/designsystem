@@ -492,7 +492,7 @@ module.exports = defineMetadata({
                 enum: ["/.+/"],
             },
             "header-tag": {
-                enum: ["div", "span", "h1", "h2", "h3", "h4", "h5", "h6"],
+                enum: ["h1", "h2", "h3", "h4", "h5", "h6"],
             },
             "screen-reader-text": {
                 enum: ["/.+/"],

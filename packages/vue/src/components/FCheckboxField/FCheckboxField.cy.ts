@@ -147,7 +147,10 @@ describe("FCheckboxField", () => {
             <f-fieldset name="checkbox-name">
                 <template #label> Label text </template>
                 <template #tooltip>
-                    <f-tooltip screen-reader-text="Läs mer om Broschyrer">
+                    <f-tooltip
+                        screen-reader-text="Läs mer om Broschyrer"
+                        header-tag="h1"
+                    >
                         <template #header> Tooltip header text </template>
                         <template #body> Tooltip body text </template>
                     </f-tooltip>

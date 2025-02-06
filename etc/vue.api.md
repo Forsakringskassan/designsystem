@@ -15738,9 +15738,10 @@ required: false;
 default: string;
 };
 headerTag: {
-default: string;
+type: StringConstructor;
+default: undefined;
 required: false;
-validator(value: string): boolean;
+validator(value: string | undefined): boolean;
 };
 }>, {
 animate: (state: "expand" | "collapse") => void;
@@ -15775,9 +15776,10 @@ required: false;
 default: string;
 };
 headerTag: {
-default: string;
+type: StringConstructor;
+default: undefined;
 required: false;
-validator(value: string): boolean;
+validator(value: string | undefined): boolean;
 };
 }>> & Readonly<{
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
