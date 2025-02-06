@@ -17878,8 +17878,7 @@ const _sfc_main$E = /* @__PURE__ */ defineComponent({
   data() {
     return {
       descriptionClass: ["label__description"],
-      formatDescriptionClass: ["label__description", "label__description--format"],
-      discreteDescriptionClass: ["label__description", "label__description--format"]
+      formatDescriptionClass: ["label__description", "label__description--format"]
     };
   },
   computed: {
@@ -17926,8 +17925,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     for: _ctx.forProperty
   }, [renderSlot(_ctx.$slots, "description", {
     descriptionClass: _ctx.descriptionClass,
-    formatDescriptionClass: _ctx.formatDescriptionClass,
-    discreteDescriptionClass: _ctx.discreteDescriptionClass
+    formatDescriptionClass: _ctx.formatDescriptionClass
   }), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$d, [createVNode(_component_f_icon, {
     class: "label__icon--left",
     name: "error"
@@ -17937,8 +17935,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     for: _ctx.forProperty
   }, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "description", {
     descriptionClass: _ctx.descriptionClass,
-    formatDescriptionClass: _ctx.formatDescriptionClass,
-    discreteDescriptionClass: _ctx.discreteDescriptionClass
+    formatDescriptionClass: _ctx.formatDescriptionClass
   }), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$b, [createVNode(_component_f_icon, {
     class: "label__icon--left",
     name: "error"
@@ -18095,12 +18092,10 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [renderSlot(_ctx.$slots, "label")]),
     description: withCtx(({
       descriptionClass,
-      formatDescriptionClass,
-      discreteDescriptionClass
+      formatDescriptionClass
     }) => [renderSlot(_ctx.$slots, "description", {
       descriptionClass,
-      formatDescriptionClass,
-      discreteDescriptionClass
+      formatDescriptionClass
     })]),
     "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
       hasError: _ctx.hasError,
@@ -18552,12 +18547,10 @@ function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$r, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("", true)])]),
     description: withCtx(({
       descriptionClass,
-      formatDescriptionClass,
-      discreteDescriptionClass
+      formatDescriptionClass
     }) => [renderSlot(_ctx.$slots, "description", {
       descriptionClass,
-      formatDescriptionClass,
-      discreteDescriptionClass
+      formatDescriptionClass
     }, () => [_ctx.descriptionText ? (openBlock(), createElementBlock("span", {
       key: 0,
       class: normalizeClass(descriptionClass)

@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -8669,7 +8669,6 @@
         },
         descriptionClass: ["label__description"],
         formatDescriptionClass: ["label__description", "label__description--format"],
-        discreteDescriptionClass: ["label__description", "label__description--format"],
         validityElement: null,
         dispatchObject: {},
         detail: {},
@@ -8845,8 +8844,7 @@
       class: (0, import_vue.normalizeClass)(["label", _ctx.legendClass])
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "label"), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _ctx.hasCheckbox && _ctx.children.length > 1 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_2$r, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(_ctx.numberOfCheckboxesScreenReaderText), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "description", {
       descriptionClass: _ctx.descriptionClass,
-      formatDescriptionClass: _ctx.formatDescriptionClass,
-      discreteDescriptionClass: _ctx.discreteDescriptionClass
+      formatDescriptionClass: _ctx.formatDescriptionClass
     }), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
       hasError: _ctx.hasError,
       validationMessage: _ctx.validity.validationMessage
@@ -8861,8 +8859,7 @@
       "aria-hidden": "true"
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "description", {
       descriptionClass: _ctx.descriptionClass,
-      formatDescriptionClass: _ctx.formatDescriptionClass,
-      discreteDescriptionClass: _ctx.discreteDescriptionClass
+      formatDescriptionClass: _ctx.formatDescriptionClass
     }), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
       hasError: _ctx.hasError,
       validationMessage: _ctx.validity.validationMessage
@@ -10029,8 +10026,7 @@
     data() {
       return {
         descriptionClass: ["label__description"],
-        formatDescriptionClass: ["label__description", "label__description--format"],
-        discreteDescriptionClass: ["label__description", "label__description--format"]
+        formatDescriptionClass: ["label__description", "label__description--format"]
       };
     },
     computed: {
@@ -10077,8 +10073,7 @@
       for: _ctx.forProperty
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "description", {
       descriptionClass: _ctx.descriptionClass,
-      formatDescriptionClass: _ctx.formatDescriptionClass,
-      discreteDescriptionClass: _ctx.discreteDescriptionClass
+      formatDescriptionClass: _ctx.formatDescriptionClass
     }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), _ctx.hasErrorMessageSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_5$d, [(0, import_vue.createVNode)(_component_f_icon, {
       class: "label__icon--left",
       name: "error"
@@ -10088,8 +10083,7 @@
       for: _ctx.forProperty
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "description", {
       descriptionClass: _ctx.descriptionClass,
-      formatDescriptionClass: _ctx.formatDescriptionClass,
-      discreteDescriptionClass: _ctx.discreteDescriptionClass
+      formatDescriptionClass: _ctx.formatDescriptionClass
     }), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), _ctx.hasErrorMessageSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_7$b, [(0, import_vue.createVNode)(_component_f_icon, {
       class: "label__icon--left",
       name: "error"
@@ -10246,12 +10240,10 @@
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "label")]),
       description: (0, import_vue.withCtx)(({
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       }) => [(0, import_vue.renderSlot)(_ctx.$slots, "description", {
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       })]),
       "error-message": (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
         hasError: _ctx.hasError,
@@ -10703,12 +10695,10 @@
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_1$r, (0, import_vue.toDisplayString)(_ctx.defaultText), 1)) : (0, import_vue.createCommentVNode)("", true)])]),
       description: (0, import_vue.withCtx)(({
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       }) => [(0, import_vue.renderSlot)(_ctx.$slots, "description", {
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       }, () => [_ctx.descriptionText ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", {
         key: 0,
         class: (0, import_vue.normalizeClass)(descriptionClass)
@@ -11174,12 +11164,10 @@
       })))]),
       description: (0, import_vue.withCtx)(({
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       }) => [(0, import_vue.renderSlot)(_ctx.$slots, "description", {
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       })]),
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.defaultText), 1)]), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)())]),
       _: 2
@@ -12479,12 +12467,10 @@
     }), (0, import_vue.createSlots)({
       description: (0, import_vue.withCtx)(({
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       }) => [(0, import_vue.renderSlot)(_ctx.$slots, "description", {
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       })]),
       "error-message": (0, import_vue.withCtx)(({
         hasError,
@@ -16020,12 +16006,10 @@
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "label")]),
       description: (0, import_vue.withCtx)(({
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       }) => [(0, import_vue.renderSlot)(_ctx.$slots, "description", {
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       })]),
       _: 2
     }, [_ctx.$slots.tooltip ? {
@@ -16202,12 +16186,10 @@
       default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "default")]),
       description: (0, import_vue.withCtx)(({
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       }) => [(0, import_vue.renderSlot)(_ctx.$slots, "description", {
         descriptionClass,
-        formatDescriptionClass,
-        discreteDescriptionClass
+        formatDescriptionClass
       })]),
       "error-message": (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
         hasError: _ctx.hasError,
