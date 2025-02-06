@@ -16536,7 +16536,7 @@ function filterOptions(options, filter2, selectMode) {
 }
 const $t = useTranslate();
 function useCombobox(inputRef, options, onOptionSelected) {
-  if (!options) {
+  if (options.value === void 0) {
     return {
       dropdownId: "",
       dropdownIsOpen: ref(false),
@@ -16563,7 +16563,8 @@ function useCombobox(inputRef, options, onOptionSelected) {
   const selectMode = ref(false);
   const selectedOption = ref(null);
   const dropdownOptions = computed(() => {
-    return filterOptions(options, filter2.value, selectMode.value);
+    var _options$value;
+    return filterOptions((_options$value = options.value) !== null && _options$value !== void 0 ? _options$value : [], filter2.value, selectMode.value);
   });
   const hasOptions = computed(() => {
     return dropdownOptions.value.length > 0;
@@ -16599,7 +16600,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
     let description = selectMode.value ? `${$t("fkui.combobox.selected", "Valt förslag")} ` : "";
     if (isEmpty(filter2.value) || selectMode.value) {
       description += $t("fkui.combobox.listDetails", `Det finns {{ count }} förslag. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`, {
-        count: options.length
+        count: options.value ? options.value.length : 0
       });
     } else if (hasOptions.value) {
       description += $t("fkui.combobox.matchesListDetails", `Det finns {{ count }} förslag som matchar. Använd uppåtpil och nedåtpil för att navigera bland förslagen.`, {
@@ -16696,10 +16697,10 @@ function useCombobox(inputRef, options, onOptionSelected) {
   }
   async function onInputFocus() {
     var _a;
-    var _inputRef$value$value, _options$includes;
+    var _inputRef$value$value;
     await nextTick();
     filter2.value = (_inputRef$value$value = (_a = inputRef.value) == null ? void 0 : _a.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
-    selectMode.value = (_options$includes = options == null ? void 0 : options.includes(filter2.value)) !== null && _options$includes !== void 0 ? _options$includes : false;
+    selectMode.value = options.value ? options.value.includes(filter2.value) : false;
   }
   async function onInputKeyDown(event) {
     let flag = false;
@@ -18150,7 +18151,7 @@ function useTextFieldSetup(props) {
     toggleDropdown,
     selectOption,
     closeDropdown
-  } = useCombobox(inputNode, props.options, onOptionSelected);
+  } = useCombobox(inputNode, toRef(props, "options"), onOptionSelected);
   return {
     textFieldTableMode,
     viewValue,
@@ -18272,6 +18273,8 @@ const _sfc_main$C = /* @__PURE__ */ defineComponent({
      * List of options.
      *
      * When set, the user can select a value from the list of options and filter while typing.
+     *
+     * If options will be set at a later time, initially specify as an empty array.
      *
      * If a formatter is used by the component, make sure the options are formatted as well.
      */

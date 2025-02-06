@@ -1006,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-e12e8c.js"
+                    src="../../assets/vendor-fkui-vue-fe0474.js"
                     crossorigin
-                    integrity="sha384-sL6szYkgQlM/DSXQcxuUxSA0q2oPlGDeRP/sh6k2JPM1tpP7KA+a3XBfxZeJyHN5"
+                    integrity="sha384-IvTPcmOwijNjJpgGyzV0Lq+nMHMSjWu81vcGQfxkhp94vgbmJD6RWqwjM6lFl3Wn"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/d7ac1fd22f7593d8b139242d0e0e261426538d63/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/360b3e7668c20615c768dcd7043407dff8c1aa6d/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
             
         </code>
          
@@ -1054,6 +1054,8 @@
                             <ul>
                                 
                                 <li><a href="#exempel">Exempel</a></li>
+                                
+                                <li><a href="#dynamiska_alternativ">Dynamiska alternativ</a></li>
                                 
                                 <li><a href="#anvand">Använd</a></li>
                                 
@@ -1089,7 +1091,8 @@
         <script defer src="./ComboboxExample-d12852.js"></script>
     
                 </div>
-            <h2 id="anvand"><a class="header-anchor" href="#anvand">Använd</a></h2><ul>
+            <h2 id="dynamiska_alternativ"><a class="header-anchor" href="#dynamiska_alternativ">Dynamiska alternativ</a></h2><p>Om det exempelvis är alternativ som ska hämtas från en server, börja med att initialisera <code>options</code> till en tom lista.</p>
+<h2 id="anvand"><a class="header-anchor" href="#anvand">Använd</a></h2><ul>
 <li>Istället för en dropplista när det finns ett stort antal alternativ att välja mellan.</li>
 <li>När användaren både ska kunna skriva en godtycklig fritext eller välja bland förbestämda förslag i listan.</li>
 </ul>
@@ -1198,6 +1201,7 @@ If the prop is not set text will be used.</p>
 </td></tr><tr><td><p>options</p>
 </td><td><p>List of options.</p>
 <p>When set, the user can select a value from the list of options and filter while typing.</p>
+<p>If options will be set at a later time, initially specify as an empty array.</p>
 <p>If a formatter is used by the component, make sure the options are formatted as well.</p>
 </td><td><p>string[] | undefined</p>
 </td><td><p>false</p>
@@ -1272,9 +1276,9 @@ validationMessage: string — Descriptive validation error message for current e
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/remove-events (<a href="https://github.com/Forsakringskassan/designsystem/commits/d7ac1fd22f7593d8b139242d0e0e261426538d63">d7ac1fd</a>)<br />
+    feature/remove-events (<a href="https://github.com/Forsakringskassan/designsystem/commits/360b3e7668c20615c768dcd7043407dff8c1aa6d">360b3e7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/259">PR 259</a><br />
-        2025-02-06 15:12
+        2025-02-06 15:27
 </div>
 <div class="toolbar__item">
     <form id="version">
