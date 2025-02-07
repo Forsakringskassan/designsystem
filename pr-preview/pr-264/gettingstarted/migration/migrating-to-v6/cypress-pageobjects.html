@@ -535,9 +535,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../../assets/vendor-fkui-vue-746138.js"
+                    src="../../../assets/vendor-fkui-vue-0b465e.js"
                     crossorigin
-                    integrity="sha384-GDnaDsNhdFL35qw02+i3l4I4uU46/IwdUHdC8vwQ4BRnc+C10pd0Ey9XBNB/ZBS8"
+                    integrity="sha384-6LsaSlLyLzyHmnxZufSHkO1D/CO1hid1dUzCs/TFtqcjcOQ50lHPm5vc27yTP/Cl"
                 ></script>
                 <script
                     src="../../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -562,15 +562,15 @@
                                 
                                 <li><a href="#paketets_namn">Paketets namn</a></li>
                                 
-                                <li><a href="#trimmedtext_metoden">trimmedText() metoden</a></li>
+                                <li><a href="#trimmedtext">trimmedText()</a></li>
                                 
-                                <li><a href="#floaderpageobject_loader_metoden">FLoaderPageobject.loader() metoden</a></li>
+                                <li><a href="#floaderpageobject">FLoaderPageobject</a></li>
                                 
                                 <li><a href="#fmessageboxpageobject">FMessageBoxPageObject</a></li>
                                 
-                                <li><a href="#fnavigationmenupageobject_menu_metoden">FNavigationMenuPageobject.menu() metoden</a></li>
+                                <li><a href="#fnavigationmenupageobject">FNavigationMenuPageobject</a></li>
                                 
-                                <li><a href="#ftooltippageobject_content_methoden">FTooltipPageObject.content() methoden</a></li>
+                                <li><a href="#ftooltippageobject">FTooltipPageObject</a></li>
                                 
                             </ul>
                         </details>
@@ -612,7 +612,7 @@
          &quot;types&quot;: [&quot;cypress&quot;, &quot;node&quot;]
 </code></pre>
                 </div>
-            <h2 id="trimmedtext_metoden"><a class="header-anchor" href="#trimmedtext_metoden"><code>trimmedText()</code> metoden</a></h2><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
+            <h2 id="trimmedtext"><a class="header-anchor" href="#trimmedtext"><code>trimmedText()</code></a></h2><p>Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
 Ej att förväxla med tredjeparts kommando/assertion med samma namn som med fördel kan användas som ersättare.</p>
 <p>Som förslag till ersättare kan någon av följande tekniker användas:</p>
 <ul>
@@ -628,7 +628,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 <li>För <code>FRadioFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
 <li>För <code>FSelectFieldPageObject</code> ersätt med <code>.selectedOption().should(..)</code>.</li>
 </ul>
-<h2 id="floaderpageobject_loader_metoden"><a class="header-anchor" href="#floaderpageobject_loader_metoden"><code>FLoaderPageobject.loader()</code> metoden</a></h2><p>Den deprekerade metoden <code>FLoaderPageobject.loader()</code> är borttagen.
+<h2 id="floaderpageobject"><a class="header-anchor" href="#floaderpageobject"><code>FLoaderPageobject</code></a></h2><p>Den deprekerade metoden <code>FLoaderPageobject.loader()</code> är borttagen.
 Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda <code>.el()</code>.</p>
 
                 <div
@@ -660,7 +660,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
 <span class="hljs-addition">+messagebox.content().should(&quot;contain.text&quot;, &quot;..&quot;);</span>
 </code></pre>
                 </div>
-            <h2 id="fnavigationmenupageobject_menu_metoden"><a class="header-anchor" href="#fnavigationmenupageobject_menu_metoden"><code>FNavigationMenuPageobject.menu()</code> metoden</a></h2><p>Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
+            <h2 id="fnavigationmenupageobject"><a class="header-anchor" href="#fnavigationmenupageobject"><code>FNavigationMenuPageobject</code></a></h2><p>Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
 
                 <div
                     id="example-64e507"
@@ -674,7 +674,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
 <span class="hljs-addition">+nav.item(0).click();</span>
 </code></pre>
                 </div>
-            <h2 id="ftooltippageobject_content_methoden"><a class="header-anchor" href="#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code> methoden</a></h2><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
+            <h2 id="ftooltippageobject"><a class="header-anchor" href="#ftooltippageobject"><code>FTooltipPageObject</code></a></h2><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
 
                 <div
                     id="example-a38472"
@@ -754,9 +754,9 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    migrationguide-v6 (<a href="https://github.com/Forsakringskassan/designsystem/commits/aad5c2c4664d5762d30fbc1883dbd8bdaabf914c">aad5c2c</a>)<br />
+    migrationguide-v6 (<a href="https://github.com/Forsakringskassan/designsystem/commits/86b8169759d4b75d6ee7f8c58ecbe76cb51bb993">86b8169</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/264">PR 264</a><br />
-        2025-02-07 09:57
+        2025-02-07 11:52
 </div>
 <div class="toolbar__item">
     <form id="version">

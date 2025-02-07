@@ -3647,6 +3647,7 @@
     return FKUIConfigButtonOrder2;
   })(FKUIConfigButtonOrder || {});
   var popupContainer = document.body;
+  var production = true;
   var config = {
     buttonOrder: FKUIConfigButtonOrder.RIGHT_TO_LEFT,
     teleportTarget: document.body,
@@ -3663,6 +3664,13 @@
     },
     set popupContainer(value) {
       popupContainer = value;
+    },
+    set production(value) {
+      production = value;
+      import_logic.configLogic.production = value;
+    },
+    get production() {
+      return production;
     }
   };
   function setRunningContext(app) {

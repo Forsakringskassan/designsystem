@@ -535,9 +535,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../../assets/vendor-fkui-vue-746138.js"
+                    src="../../../assets/vendor-fkui-vue-0b465e.js"
                     crossorigin
-                    integrity="sha384-GDnaDsNhdFL35qw02+i3l4I4uU46/IwdUHdC8vwQ4BRnc+C10pd0Ey9XBNB/ZBS8"
+                    integrity="sha384-6LsaSlLyLzyHmnxZufSHkO1D/CO1hid1dUzCs/TFtqcjcOQ50lHPm5vc27yTP/Cl"
                 ></script>
                 <script
                     src="../../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -560,6 +560,10 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
+                                <li><a href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></li>
+                                
+                                <li><a href="#konfiguration">Konfiguration</a></li>
+                                
                                 <li><a href="#fcalendar">FCalendar</a></li>
                                 
                                 <li><a href="#fcheckboxgroup_och_fcheckboxgroupfield">FCheckboxGroup och FCheckboxGroupField</a></li>
@@ -567,6 +571,8 @@
                                 <li><a href="#fcruddataset">FCrudDataset</a></li>
                                 
                                 <li><a href="#fdialoguetree">FDialogueTree</a></li>
+                                
+                                <li><a href="#fform_fformstep_och_fformstepbutton">FForm, FFormStep och FFormStepButton</a></li>
                                 
                                 <li><a href="#finteractivetable">FInteractiveTable</a></li>
                                 
@@ -578,15 +584,11 @@
                                 
                                 <li><a href="#fpageheader_skiplink">FPageHeader skiplink</a></li>
                                 
+                                <li><a href="#ftextfield">FTextField</a></li>
+                                
                                 <li><a href="#gettextfromscopedslot">getTextFromScopedSlot</a></li>
                                 
-                                <li><a href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></li>
-                                
-                                <li><a href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget">FKUIConfig.modalTarget och FKUIConfig.popupTarget</a></li>
-                                
-                                <li><a href="#fform_fformstep_och_fformstepbutton">FForm, FFormStep och FFormStepButton</a></li>
-                                
-                                <li><a href="#ftextfield">FTextField</a></li>
+                                <li><a href="#ovrigt">Övrigt</a></li>
                                 
                             </ul>
                         </details>
@@ -596,7 +598,88 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="fcalendar"><a class="header-anchor" href="#fcalendar"><code>FCalendar</code></a></h2><p>Tidigare emittades eventet <code>change</code> när man ändrar månad i kalendern.
+<h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../../components/input/ftextfield.html"><code>FTextField</code></a> måste du ändra namnet på bindings:</p>
+
+                <div
+                    id="example-47ccdd"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-text-field&gt;
+<span class="hljs-deletion">-    &lt;template #description=&quot;{ discreteDescriptionClass }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;span :class=&quot;discreteDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
+<span class="hljs-addition">+    &lt;template #description=&quot;{ formatDescriptionClass }&quot;&gt;</span>
+<span class="hljs-addition">+        &lt;span :class=&quot;formatDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
+     &lt;/template&gt;
+ &lt;/f-text-field&gt;
+</code></pre>
+                </div>
+            <p>Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+
+                <div
+                    id="example-6c622a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;div class=&quot;label__description--discrete&quot;&gt;</span>
+<span class="hljs-addition">+&lt;div class=&quot;label__description--format&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p><code>FLabelPageObject</code> metoden är också ändrad att matcha:</p>
+
+                <div
+                    id="example-7e084e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-label.discreteDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
+<span class="hljs-addition">+label.formatDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
+</code></pre>
+                </div>
+            <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
+
+                <div
+                    id="example-e215c9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> import { config } from &quot;@fkui/vue&quot;;
+
+<span class="hljs-deletion">-config.modalTarget = &quot;my &gt; selector&quot;;</span>
+<span class="hljs-deletion">-config.popupTarget = &quot;my &gt; selector&quot;;</span>
+<span class="hljs-addition">+config.teleportTarget = &quot;my &gt; selector&quot;;</span>
+</code></pre>
+                </div>
+            <p>Den inbördes ordning som knapparna presenteras i har ändrats, <code>FKUIConfig.buttonOrder</code> byter standardvärde till <code>RIGHT_TO_LEFT</code>.
+För att behålla tidigare ordning behöver applikationens konfiguration uppdateras.</p>
+<p>Görs lämpligtvis i applikationens <code>main.ts</code>.</p>
+
+                <div
+                    id="example-a239ad"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> { config, <span class="hljs-title class_">FKUIConfigButtonOrder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title class_">FKUIConfigButtonOrder</span>.<span class="hljs-property">LEFT_TO_RIGHT</span>;
+</code></pre>
+                </div>
+            <h2 id="fcalendar"><a class="header-anchor" href="#fcalendar"><code>FCalendar</code></a></h2><p>Tidigare emittades eventet <code>change</code> när man ändrar månad i kalendern.
 Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <h2 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h2><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="../migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
 <p>Det deprekerade aliaset <code>FCheckboxGroupField</code> har tagits bort och är ersatt med <code>FCheckboxField</code>.</p>
@@ -604,6 +687,13 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 Det eventet är nu borttaget och ersatt med <code>v-model</code> alternativt de mer specifika eventen <code>created</code>, <code>updated</code> and <code>deleted</code>.</p>
 <h2 id="fdialoguetree"><a class="header-anchor" href="#fdialoguetree"><code>FDialogueTree</code></a></h2><p>Tidigare emittades eventet <code>change</code> när man ändrar val.
 Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
+<h2 id="fform_fformstep_och_fformstepbutton"><a class="header-anchor" href="#fform_fformstep_och_fformstepbutton"><code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code></a></h2><p>De deprekerade komponenterna <code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code> har tagits bort.
+Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <code>FValidationForm</code>, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av <code>FForm</code>.</p>
+<p>Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:</p>
+<ul>
+<li><a href="../../../components/fwizard.html"><code>FWizard</code></a></li>
+<li><a href="../../../components/validation/fvalidationform.html"><code>FValidationForm</code></a></li>
+</ul>
 <h2 id="finteractivetable"><a class="header-anchor" href="#finteractivetable"><code>FInteractiveTable</code></a></h2><p>Tidigare emittades eventet <code>update</code> när man ändrar vald tabellrad.
 Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <h2 id="flist"><a class="header-anchor" href="#flist"><code>FList</code></a></h2><p>Tidigare emittades eventet <code>update</code> när man ändrar valda kort.
@@ -614,7 +704,7 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-61cb0e"
+                    id="example-2409bc"
                     class="code-preview code-preview--default"
                     
                     
@@ -652,7 +742,7 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-47acd7"
+                    id="example-d84a96"
                     class="code-preview code-preview--default"
                     
                     
@@ -665,10 +755,25 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
                 </div>
             <p><code>skipLink</code> kunde tidigare ta ett <code>boolean</code> värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng <code>&quot;&quot;</code> för att stänga av.</p>
-<h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+<h2 id="ftextfield"><a class="header-anchor" href="#ftextfield"><code>FTextField</code></a></h2><p>Eventet <code>update</code> emittas inte längre.
+Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
 
                 <div
-                    id="example-9ffe14"
+                    id="example-a8339b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-text-field @update=&quot;doSomething&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-text-field @change=&quot;doSomething&quot;&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+
+                <div
+                    id="example-7086e2"
                     class="code-preview code-preview--default"
                     
                     
@@ -685,94 +790,22 @@ Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng 
                 <p>Tänk på att <code>renderSlotText(..)</code> returnerar <code>null</code> om slotten inte finns eller är tom till skillnad från <code>getTextFromScopedSlot(..)</code> som returnerar en tom sträng <code>&quot;&quot;</code> istället.</p>
 
             </div>
-        <h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../../components/input/ftextfield.html"><code>FTextField</code></a> måste du ändra namnet på bindings:</p>
-
-                <div
-                    id="example-064c92"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-text-field&gt;
-<span class="hljs-deletion">-    &lt;template #description=&quot;{ discreteDescriptionClass }&quot;&gt;</span>
-<span class="hljs-deletion">-        &lt;span :class=&quot;discreteDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
-<span class="hljs-addition">+    &lt;template #description=&quot;{ formatDescriptionClass }&quot;&gt;</span>
-<span class="hljs-addition">+        &lt;span :class=&quot;formatDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
-     &lt;/template&gt;
- &lt;/f-text-field&gt;
-</code></pre>
-                </div>
-            <p>Det gamla namnet fortsätter att fungera på obestämd tid.</p>
-<p>Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
-
-                <div
-                    id="example-b2fb54"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;div class=&quot;label__description--discrete&quot;&gt;</span>
-<span class="hljs-addition">+&lt;div class=&quot;label__description--format&quot;&gt;</span>
-</code></pre>
-                </div>
-            <p><code>FLabelPageObject</code> metoden är också ändrad att matcha:</p>
-
-                <div
-                    id="example-9f0b9e"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-label.discreteDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
-<span class="hljs-addition">+label.formatDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
-</code></pre>
-                </div>
-            <h2 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
-
-                <div
-                    id="example-e55b04"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> import { config } from &quot;@fkui/vue&quot;;
-
-<span class="hljs-deletion">-config.modalTarget = &quot;my &gt; selector&quot;;</span>
-<span class="hljs-deletion">-config.popupTarget = &quot;my &gt; selector&quot;;</span>
-<span class="hljs-addition">+config.teleportTarget = &quot;my &gt; selector&quot;;</span>
-</code></pre>
-                </div>
-            <h2 id="fform_fformstep_och_fformstepbutton"><a class="header-anchor" href="#fform_fformstep_och_fformstepbutton"><code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code></a></h2><p>De deprekerade komponenterna <code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code> har tagits bort.
-Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <code>FValidationForm</code>, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av <code>FForm</code>.</p>
-<p>Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:</p>
+        <h2 id="ovrigt"><a class="header-anchor" href="#ovrigt">Övrigt</a></h2><p>Övriga komponenter, funktioner och typer som även de är borttagna:</p>
 <ul>
-<li><a href="../../../components/fwizard.html"><code>FWizard</code></a></li>
-<li><a href="../../../components/validation/fvalidationform.html"><code>FValidationForm</code></a></li>
+<li><code>createFFormProvideOptions</code></li>
+<li><code>FFormData</code></li>
+<li><code>FFormPageObject</code></li>
+<li><code>FFormProvider</code></li>
+<li><code>FFormStepPageObject</code></li>
+<li><code>FormStepFields</code></li>
+<li><code>getRef</code></li>
+<li><code>isFormStepReference</code></li>
+<li><code>Reference</code></li>
+<li><code>setIsOpen</code></li>
+<li><code>setRef</code></li>
+<li><code>sortComponentsWithErrorsOnDOMOrder</code></li>
 </ul>
-<h2 id="ftextfield"><a class="header-anchor" href="#ftextfield"><code>FTextField</code></a></h2><p>Eventet <code>update</code> emittas inte längre.
-Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
 
-                <div
-                    id="example-112d98"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-text-field @update=&quot;doSomething&quot;&gt;</span>
-<span class="hljs-addition">+&lt;f-text-field @change=&quot;doSomething&quot;&gt;</span>
-</code></pre>
-                </div>
-            
 
                     </div>
                 </main>
@@ -793,9 +826,9 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    migrationguide-v6 (<a href="https://github.com/Forsakringskassan/designsystem/commits/aad5c2c4664d5762d30fbc1883dbd8bdaabf914c">aad5c2c</a>)<br />
+    migrationguide-v6 (<a href="https://github.com/Forsakringskassan/designsystem/commits/86b8169759d4b75d6ee7f8c58ecbe76cb51bb993">86b8169</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/264">PR 264</a><br />
-        2025-02-07 09:57
+        2025-02-07 11:52
 </div>
 <div class="toolbar__item">
     <form id="version">
