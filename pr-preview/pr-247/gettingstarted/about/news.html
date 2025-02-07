@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-170771.json"
+            href="../../search-data-98fcf6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-9D9PgGsH+q2AwCQk5iLX5I8sRL/pvjzb61NIJbzXi9c7QXQVOJ7M580GGpkOrcy2"
+            integrity="sha384-CNlPcQDskqCVzUrxrFqFhHj4z5uwUzKvIzKTsLLMopGrPSw84RCpTCMKr1C0FNfN"
             id="search-data"
         />
     </head>
@@ -553,6 +553,44 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
+<h2 id="ny_release_med_brytande_andringar"><a class="header-anchor" href="#ny_release_med_brytande_andringar">Ny release med brytande ändringar</a></h2><p>Version: 6.0.0 <br>
+2025-02-10</p>
+<p>Releasen innehåller bland annat följande uppdateringar:</p>
+<ul>
+<li>
+<p>Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
+De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.</p>
+</li>
+<li>
+<p>Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migration/migrating-to-fieldset.html">FFieldset</a>.</p>
+</li>
+<li>
+<p>Modal: De deprekerade slottarna submit-button-text och cancel-button-text är borttagna och ersatt med propen buttons.
+Ett antal deprekerade CSS-klasser är också borttagna.
+Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.</p>
+</li>
+<li>
+<p>Sidhuvud: Den deprekerade propen skipLinkHref är borttagen och ersatt med propen skipLink.</p>
+</li>
+<li>
+<p>Ett antal andra funktioner, typer och komponenter är också borttagna.</p>
+</li>
+<li>
+<p>Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).</p>
+</li>
+<li>
+<p>Valideringsservice: Den deprekerade validatorn peronnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.</p>
+</li>
+<li>
+<p>Tema och variabler: Vi har uppdaterat tema och variabler och FKUI tillhandahåller nu standardleverabler för tema.
+Som konsument har du möjlighet att själv tillhandahålla specifika tillämpningar.</p>
+</li>
+<li>
+<p>Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+</li>
+</ul>
+<p><a href="../migration/migrating-to-v6/overview.html">Läs mer i migreringsguiden för version 6</a></p>
 <h2 id="kombobox"><a class="header-anchor" href="#kombobox">Kombobox</a></h2><p>Version: 5.44.0 <br>
 2024-12-17</p>
 <p>Komboboxen kombinerar ett textfält med en lista som har förbestämda alternativ. Listan filtreras för att matcha det som skrivs in i textfältet och presenterar förslag. För användaren innebär detta ett smidigare sätt att göra ett val bland ett stort antal alternativ i stället för att behöva skrolla i en lång dropplista. Komboboxen kan också användas i de fall då användaren både ska kunna skriva en godtycklig fritext eller välja i en lista med förbestämda förslag.</p>
@@ -581,7 +619,9 @@
 <h2 id="expanderbara_rader_i_tabeller"><a class="header-anchor" href="#expanderbara_rader_i_tabeller">Expanderbara rader i tabeller</a></h2><p>Version: 5.16.0 <br>
 2024-03-11</p>
 <p><a href="../../components/table-and-list/table.html#interaktiv_tabell">Interaktiva tabeller</a> kan ha expanderbara rader för att visa ytterligare rader eller valfritt innehåll.</p>
-<h2 id="validering_och_visning_av_status_5_15_0"><a class="header-anchor" href="#validering_och_visning_av_status_5_15_0">Validering och visning av status (5.15.0)</a></h2><p>Ett obligatoriskt inmatningsfält som lämnas tomt när användaren tabbar förbi fältet visas inte längre som felaktigt. Istället visas de som felaktiga först när användaren
+<h2 id="validering_och_visning_av_status"><a class="header-anchor" href="#validering_och_visning_av_status">Validering och visning av status</a></h2><p>Version: 5.15.0 <br>
+2024-02-09</p>
+<p>Ett obligatoriskt inmatningsfält som lämnas tomt när användaren tabbar förbi fältet visas inte längre som felaktigt. Istället visas de som felaktiga först när användaren
 försöker skicka in formuläret.
 Det här underlättar främst för skärmläsaranvändare som ofta tabbar igenom formulär för att skapa sig en överblick innan de börjar fylla i information. De användarna slipper alltså att få fel presenterade för sig när de shift-tabbar tillbaka till första fältet igen.
 Det här är en ändring som följer Arbetsförmedlingens designmönster. Eftersom vi dessutom strävar efter att bara be om information som vi verkligen behöver och därmed bara använder frivilliga fält i undantagsfall känns ändringen än mer motiverad. Oberoende av om användaren har en skärmläsare eller inte.
@@ -590,8 +630,12 @@ En användare som väljer att klicka sig igenom ett formulär och fylla i uppgif
 Istället förblir ett ifyllt fält neutralt när det är ifyllt. Notera att det är så som dropplistor redan beter sig.
 Innan den här ändringen visades inmatningsfält som OK när uppgifterna som användaren matade in uppfyllde formatregler eller när ett fält utan formatregler helt enkelt bara
 blev ifyllt (t.ex. ett fält för att ange ett namn).</p>
-<h2 id="forlatande_personnummer_5_10_0"><a class="header-anchor" href="#forlatande_personnummer_5_10_0">Förlåtande personnummer (5.10.0)</a></h2><p>Det <a href="../../components/input/textfield-specialized.html#personnummer">specialiserade inmatningsfältet för personnummer</a> har uppdaterats med förlåtande inmatning. Användaren kan skriva in personnummer med både 10 siffror eller 12 siffror. Det inmatade värdet kommer efter godkänd validering att formateras enligt <a href="https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html">Skatteverkets regler</a> för personnummer. Från och med det år en person fyller 100 år har personnumret plustecken istället för bindestreck.</p>
-<h2 id="vue3_5_0_0"><a class="header-anchor" href="#vue3_5_0_0">Vue3 (5.0.0.)</a></h2><p>FKUI har uppdaterats till Vue3.</p>
+<h2 id="forlatande_personnummer"><a class="header-anchor" href="#forlatande_personnummer">Förlåtande personnummer</a></h2><p>Version: 5-10.0 <br>
+2023-12-14</p>
+<p>Det <a href="../../components/input/textfield-specialized.html#personnummer">specialiserade inmatningsfältet för personnummer</a> har uppdaterats med förlåtande inmatning. Användaren kan skriva in personnummer med både 10 siffror eller 12 siffror. Det inmatade värdet kommer efter godkänd validering att formateras enligt <a href="https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html">Skatteverkets regler</a> för personnummer. Från och med det år en person fyller 100 år har personnumret plustecken istället för bindestreck.</p>
+<h2 id="vue3"><a class="header-anchor" href="#vue3">Vue3</a></h2><p>Version: 5.0.0 <br>
+2023-09-22</p>
+<p>FKUI har uppdaterats till Vue3.</p>
 <p><a href="../migration/migrating-to-v5.html">Läs mer om hur du migrerar din applikation till Vue3</a></p>
 
 
@@ -614,9 +658,9 @@ blev ifyllt (t.ex. ett fält för att ange ett namn).</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/update-release-plan (<a href="https://github.com/Forsakringskassan/designsystem/commits/1792f4ef06546ed0952fdd32267edd2a00042d08">1792f4e</a>)<br />
+    docs/update-release-plan (<a href="https://github.com/Forsakringskassan/designsystem/commits/cc996ac70b6e7557ef8cbbe18e5622006fe3319d">cc996ac</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/247">PR 247</a><br />
-        2025-02-07 14:31
+        2025-02-07 15:24
 </div>
 <div class="toolbar__item">
     <form id="version">

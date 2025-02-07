@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-170771.json"
+            href="../../../search-data-98fcf6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-9D9PgGsH+q2AwCQk5iLX5I8sRL/pvjzb61NIJbzXi9c7QXQVOJ7M580GGpkOrcy2"
+            integrity="sha384-CNlPcQDskqCVzUrxrFqFhHj4z5uwUzKvIzKTsLLMopGrPSw84RCpTCMKr1C0FNfN"
             id="search-data"
         />
     </head>
@@ -674,10 +674,24 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
 <span class="hljs-addition">+nav.item(0).click();</span>
 </code></pre>
                 </div>
+            <h3 id="fprogressbarpageobject"><a class="header-anchor" href="#fprogressbarpageobject"><code>FProgressbarPageObject</code></a></h3><p>Metoden <code>ariaValueNow()</code> har ändrats till <code>value()</code> och returnerar nu <code>number</code> istället för <code>string</code>.</p>
+
+                <div
+                    id="example-996d46"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-progressbar.ariaValueNow().should(&quot;equal&quot;, &quot;40&quot;);</span>
+<span class="hljs-addition">+progressbar.value().should(&quot;equal&quot;, 40);</span>
+</code></pre>
+                </div>
             <h2 id="ftooltippageobject"><a class="header-anchor" href="#ftooltippageobject"><code>FTooltipPageObject</code></a></h2><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
 
                 <div
-                    id="example-a38472"
+                    id="example-8c2c19"
                     class="code-preview code-preview--default"
                     
                     
@@ -690,7 +704,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-66f7bb"
+                    id="example-96f671"
                     class="code-preview code-preview--default"
                     
                     
@@ -703,7 +717,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-951d9c"
+                    id="example-26b384"
                     class="code-preview code-preview--default"
                     
                     
@@ -716,7 +730,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-b8e3a5"
+                    id="example-4f29da"
                     class="code-preview code-preview--default"
                     
                     
@@ -754,9 +768,9 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/update-release-plan (<a href="https://github.com/Forsakringskassan/designsystem/commits/1792f4ef06546ed0952fdd32267edd2a00042d08">1792f4e</a>)<br />
+    docs/update-release-plan (<a href="https://github.com/Forsakringskassan/designsystem/commits/cc996ac70b6e7557ef8cbbe18e5622006fe3319d">cc996ac</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/247">PR 247</a><br />
-        2025-02-07 14:31
+        2025-02-07 15:24
 </div>
 <div class="toolbar__item">
     <form id="version">

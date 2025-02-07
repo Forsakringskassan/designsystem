@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-170771.json"
+            href="../../search-data-98fcf6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-9D9PgGsH+q2AwCQk5iLX5I8sRL/pvjzb61NIJbzXi9c7QXQVOJ7M580GGpkOrcy2"
+            integrity="sha384-CNlPcQDskqCVzUrxrFqFhHj4z5uwUzKvIzKTsLLMopGrPSw84RCpTCMKr1C0FNfN"
             id="search-data"
         />
     </head>
@@ -583,9 +583,40 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="nyligen_slappt"><a class="header-anchor" href="#nyligen_slappt">Nyligen släppt</a></h2><p>I den senaste releasen, <a href="https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0">6.0.0</a>, infördes följande uppdateringar:</p>
+<h2 id="nyligen_slappt"><a class="header-anchor" href="#nyligen_slappt">Nyligen släppt</a></h2><p>I den senaste releasen, <a href="https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0">6.0.0</a>, infördes bland annat följande uppdateringar:</p>
 <ul>
-<li>Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet. De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) och formulärstegsknapp (FFormStepButton) har tagits bort. Vi rekommenderar att du istället använder en <a href="../../components/fwizard.html">steg för steg-guide</a> (FWizard) eller <a href="../../components/validation/fvalidationform.html">valideringsformulär</a> (FValidationForm).</li>
+<li>
+<p>Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
+De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.</p>
+</li>
+<li>
+<p>Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migration/migrating-to-fieldset.html">FFieldset</a>.</p>
+</li>
+<li>
+<p>Modal: De deprekerade slottarna submit-button-text och cancel-button-text är borttagna och ersatt med propen buttons.
+Ett antal deprekerade CSS-klasser är också borttagna.
+Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.</p>
+</li>
+<li>
+<p>Sidhuvud: Den deprekerade propen skipLinkHref är borttagen och ersatt med propen skipLink.</p>
+</li>
+<li>
+<p>Ett antal andra funktioner, typer och komponenter är också borttagna.</p>
+</li>
+<li>
+<p>Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).</p>
+</li>
+<li>
+<p>Valideringsservice: Den deprekerade validatorn peronnummer är borttagen och ersätts nu med validatorerna personnummerFormat och personnummerLuhn.</p>
+</li>
+<li>
+<p>Tema och variabler: Vi har uppdaterat tema och variabler och FKUI tillhandahåller nu standardleverabler för tema.
+Som konsument har du möjlighet att själv tillhandahålla specifika tillämpningar.</p>
+</li>
+<li>
+<p>Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+</li>
 </ul>
 <p>I den föregående releasen <a href="https://github.com/Forsakringskassan/designsystem/releases/tag/v5.46.0">5.46.0</a> infördes följande uppdateringar:</p>
 <ul>
@@ -686,6 +717,7 @@ Vanligtvis fixar vi kritiska buggar upp till ett år efter att ny release är sl
 <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="./news.html">Nyheter</a></p>
 <p><a href="../migration/migrating-to-fieldset.html">Fieldset migreringsguide</a></p>
 <p><a href="../migration/migrating-to-v5.html">Version 5 migreringsguide</a></p>
+<p><a href="../migration/migrating-to-v6/overview.html">Version 6 migreringsguide</a></p>
 
 
                     </div>
@@ -707,9 +739,9 @@ Vanligtvis fixar vi kritiska buggar upp till ett år efter att ny release är sl
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/update-release-plan (<a href="https://github.com/Forsakringskassan/designsystem/commits/1792f4ef06546ed0952fdd32267edd2a00042d08">1792f4e</a>)<br />
+    docs/update-release-plan (<a href="https://github.com/Forsakringskassan/designsystem/commits/cc996ac70b6e7557ef8cbbe18e5622006fe3319d">cc996ac</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/247">PR 247</a><br />
-        2025-02-07 14:31
+        2025-02-07 15:24
 </div>
 <div class="toolbar__item">
     <form id="version">
