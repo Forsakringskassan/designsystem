@@ -4,7 +4,7 @@
         <label><input v-model="isAnimated" type="checkbox" /> Animera</label>
         <label><input v-model="hasOpacity" type="checkbox" /> Opacitet</label>
         <label><input v-model="useVShow" type="checkbox" /> Use v-show instead of v-if</label>
-        <select aria-label="Höjd" v-model="style">
+        <select v-model="style" aria-label="Höjd">
             <option value="height: 200px; background: hotpink">200px höjd</option>
             <option value="height: 600px; background: cyan">600px höjd</option>
             <option value="height: 1200px; background: yellow">1200px höjd</option>
