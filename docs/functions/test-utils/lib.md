@@ -12,8 +12,8 @@ Anroparen ansvarar för att städa upp elementet.
 
 Måste köras i en miljö där DOM finns tillgängligt, exempelvis en browser eller JSDOM.
 
-```ts
-declare function createPlaceholderInDocument(): HTMLElement;
+```ts nocompile nolint
+function createPlaceholderInDocument(): HTMLElement;
 ```
 
 ### Användning
@@ -41,8 +41,8 @@ Genererar en CSS selector för givet element.
 
 Måste köras i en miljö där DOM finns tillgängligt, exempelvis en browser eller JSDOM.
 
-```ts
-declare function generateSelector(element: Element | null): string;
+```ts nocompile nolint
+function generateSelector(element: Element | null): string;
 ```
 
 - `element` - Elementet att generera selector för.

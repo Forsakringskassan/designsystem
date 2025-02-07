@@ -11,8 +11,8 @@ Testar om en komponent har fokus eller ej.
 
 Motsvarar `expect(document.activeElement).toBe(element)` fast med bättre felmeddelande.
 
-```ts
-declare function toHaveFocus(element: HTMLElement): void;
+```ts nocompile nolint
+function toHaveFocus(element: HTMLElement): void;
 ```
 
 ### Användning
