@@ -56,7 +56,7 @@ const isRelease = (() => {
 
 const fkuiDesign = path.relative(
     rootDir,
-    path.dirname(require.resolve("@fkui/design")),
+    path.dirname(require.resolve("@fkui/design/package.json")),
 );
 
 if (isCI) {
@@ -146,7 +146,7 @@ docs.compileStyle("docs-fkui", "./docs/src/fkui-theme.scss", {
     },
 });
 
-docs.copyResource("images", path.join(fkuiDesign, "assets/images"));
+docs.copyResource("images", path.join(fkuiDesign, "src/assets/images"));
 
 try {
     await docs.build(config.sourceFiles);
