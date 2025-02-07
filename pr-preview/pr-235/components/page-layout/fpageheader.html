@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-68daa8.css"
+            href="../../assets/docs-8cf0c3.css"
             crossorigin
-            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
+            integrity="sha384-RuF0RUpObeEDaA6roXPyI71BIi8B88c+yJlgBWsrjICftzJ5sBjacDe5ZoFMusz6"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0ba283.json"
+            href="../../search-data-0b5684.json"
             as="fetch"
             crossorigin
-            integrity="sha384-H2gAytAUv2im9ryg0VntcUfgMLwroNcbREVT3/NIoqhYB+hvgTFNneL4oEbsEfqI"
+            integrity="sha384-F9AMK4fvSiHO0qOYnUyQhvQuiNUtq6l/LzRB4WvsvpgueInOQcHKnMDBbIXFESAs"
             id="search-data"
         />
     </head>
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/1d3f27b6d456878cb6afa8ddf1e2a4131be17bf5/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/8627d02726288d2822cef05c6cfa349d9794f6b6/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
             
         </code>
          
@@ -1065,6 +1065,8 @@
                                 
                                 <li><a href="#logotyp">Logotyp</a></li>
                                 
+                                <li><a href="#sekundar_information">Sekundär information</a></li>
+                                
                                 <li><a href="#skiplink">Skiplink</a></li>
                                 
                                 <li><a href="#api">API</a></li>
@@ -1078,7 +1080,7 @@
                     <div id="content">
                         <!-- prettier-ignore -->
 <p>Sidhuvud ska visas längst upp på applikationer som öppnas i ett eget webbläsarfönster.
-Den kan innehålla en logotyp, applikationsnamn samt användarinformation.</p>
+Den kan innehålla en logotyp, applikationsnamn samt sekundär information.</p>
 
             <div
                 id="example-af6f09"
@@ -1271,12 +1273,29 @@ Du kan med fördel använda <a href="../flogo.html"><code>FLogo</code></a> för 
 </code></pre>
                 </div>
             </div>
-        <h2 id="skiplink"><a class="header-anchor" href="#skiplink">Skiplink</a></h2><p>Skiplink är en särskild länk som fungerar som det första tabbningsbara elementet och visas endast när det fokuserats.
+        <h2 id="sekundar_information"><a class="header-anchor" href="#sekundar_information">Sekundär information</a></h2><p>Slotten <code>right</code> kan användas för att visa information som till exempel namn på inloggad användare.</p>
+
+                <div
+                    id="example-205702"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
+<span class="hljs-addition">+    &lt;template #right&gt;</span>
+<span class="hljs-addition">+        Namn Namnsson</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <h2 id="skiplink"><a class="header-anchor" href="#skiplink">Skiplink</a></h2><p>Skiplink är en särskild länk som fungerar som det första tabbningsbara elementet och visas endast när det fokuserats.
 Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det primära innehållet utan att navigera genom navigeringsmenyer osv.</p>
 <p>Skiplink aktiveras genom att sätta <code>skipLink</code> till det id som innehåller det primära innehållet:</p>
 
                 <div
-                    id="example-5146d3"
+                    id="example-349387"
                     class="code-preview code-preview--default"
                     
                     
@@ -1444,9 +1463,9 @@ The string is the id of the element to move focus to.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/1d3f27b6d456878cb6afa8ddf1e2a4131be17bf5">1d3f27b</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/8627d02726288d2822cef05c6cfa349d9794f6b6">8627d02</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-07 13:42
+        2025-02-07 16:00
 </div>
 <div class="toolbar__item">
     <form id="version">

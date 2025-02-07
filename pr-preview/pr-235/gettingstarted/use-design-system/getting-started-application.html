@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-68daa8.css"
+            href="../../assets/docs-8cf0c3.css"
             crossorigin
-            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
+            integrity="sha384-RuF0RUpObeEDaA6roXPyI71BIi8B88c+yJlgBWsrjICftzJ5sBjacDe5ZoFMusz6"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0ba283.json"
+            href="../../search-data-0b5684.json"
             as="fetch"
             crossorigin
-            integrity="sha384-H2gAytAUv2im9ryg0VntcUfgMLwroNcbREVT3/NIoqhYB+hvgTFNneL4oEbsEfqI"
+            integrity="sha384-F9AMK4fvSiHO0qOYnUyQhvQuiNUtq6l/LzRB4WvsvpgueInOQcHKnMDBbIXFESAs"
             id="search-data"
         />
     </head>
@@ -400,7 +400,7 @@
             href="../about/release-plan.html"
             
         >
-            Releaseplan
+            På gång
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -446,16 +446,69 @@
             Version 5 migreringsguide
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Version 6 migreringsguide</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="../migration/migrating-to-v6.html"
+            href="../migration/migrating-to-v6/overview.html"
             
         >
-            Version 6 migreringsguide
+            Sammanfattning
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/logic.html"
+            
+        >
+            @fkui/logic
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/cypress-pageobjects.html"
+            
+        >
+            Cypress Pageobjects
         </a>
     </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
 
             
         </details>
@@ -539,15 +592,15 @@ På så sätt får du tillgång till de mixins och Sass-funktioner som finns i F
 <h3 id="sass"><a class="header-anchor" href="#sass">Sass</a></h3><p>Gå in i din main.scss-fil eller motsvarande och lägg in följande rader:</p>
 
                 <div
-                    id="example-1f2e6c"
+                    id="example-7ad41e"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="scss"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/theme-default/src/fkui-css-variables&quot;</span>;
-<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/design/src/fkui&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/theme-default&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
 </code></pre>
                 </div>
             <p>Uppdatera exemplet ovan med de filer som din applikation ska använda.</p>
@@ -555,15 +608,15 @@ På så sätt får du tillgång till de mixins och Sass-funktioner som finns i F
 I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt inmatningsfält.</p>
 
                 <div
-                    id="example-87e87e"
+                    id="example-1150f5"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> @use &quot;@fkui/theme-default/dist/fkui-css-variables&quot;;
-<span class="hljs-deletion">-@use &quot;@fkui/design/src/fkui&quot;;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> @use &quot;@fkui/theme-default&quot;;
+<span class="hljs-deletion">-@use &quot;@fkui/design&quot;;</span>
 <span class="hljs-addition">+@use &quot;@fkui/design/src/components/text-field/text-field&quot;;</span>
 <span class="hljs-addition">+@use &quot;@fkui/design/src/components/textarea-field/textarea-field&quot;;</span>
 </code></pre>
@@ -572,22 +625,22 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
 <p>Vid import:</p>
 
                 <div
-                    id="example-6a8fb0"
+                    id="example-011c5c"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/theme-default/dist/fkui-css-variables&quot;;</span>
-<span class="hljs-deletion">-@use &quot;@fkui/design/src/fkui&quot;;</span>
-<span class="hljs-addition">+@use &quot;@fkui/theme-default/src/fkui-css-variables&quot; as fkui with (</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/theme-default&quot;;</span>
+<span class="hljs-deletion">-@use &quot;@fkui/design&quot;;</span>
+<span class="hljs-addition">+@use &quot;@fkui/theme-default&quot; as fkui with (</span>
 <span class="hljs-addition">+    $global: false</span>
 <span class="hljs-addition">+);</span>
 
 .my-scope {
 <span class="hljs-addition">+    @include fkui.css-variables;</span>
-<span class="hljs-addition">+    @import &quot;@fkui/design/src/fkui&quot;;</span>
+<span class="hljs-addition">+    @import &quot;@fkui/design&quot;;</span>
 }
 </code></pre>
                 </div>
@@ -609,14 +662,14 @@ Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
             <p>Om du behöver importera styling till javascript:</p>
 
                 <div
-                    id="example-681113"
+                    id="example-16aa46"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="javascript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design/lib/fkui.min.css&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
 </code></pre>
                 </div>
             <h3 id="eget_tema"><a class="header-anchor" href="#eget_tema">Eget tema</a></h3><p>Utgå från standardtemat och skriv över de variabler som ska ändras.</p>
@@ -676,9 +729,9 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/1d3f27b6d456878cb6afa8ddf1e2a4131be17bf5">1d3f27b</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/8627d02726288d2822cef05c6cfa349d9794f6b6">8627d02</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-07 13:42
+        2025-02-07 16:00
 </div>
 <div class="toolbar__item">
     <form id="version">

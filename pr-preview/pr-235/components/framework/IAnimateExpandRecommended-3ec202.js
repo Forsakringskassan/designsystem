@@ -115,8 +115,8 @@
       (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
         "select",
         {
-          "aria-label": "H\xF6jd",
-          "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.style = $event)
+          "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.style = $event),
+          "aria-label": "H\xF6jd"
         },
         _cache[8] || (_cache[8] = [
           (0, import_vue5.createElementVNode)(
