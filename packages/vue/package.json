@@ -81,7 +81,7 @@
     "@fkui/logic": "5.46.0",
     "@fkui/test-utils": "5.46.0",
     "@fkui/theme-default": "5.46.0",
-    "@forsakringskassan/vite-lib-config": "3.4.0",
+    "@forsakringskassan/vite-lib-config": "3.4.1",
     "@vue/test-utils": "2.4.6",
     "cypress": "14.0.1",
     "flush-promises": "1.0.2",
