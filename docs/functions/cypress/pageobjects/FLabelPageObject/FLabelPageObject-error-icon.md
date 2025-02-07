@@ -14,7 +14,7 @@ Om du behöver testa valideringsfel använd {@link FLabelPageObject.errorMessage
 
 ## Syntax
 
-```ts
+```ts nolint nocompile
 errorIcon();
 ```
 

@@ -6,8 +6,8 @@ layout: content-with-menu
 
 Verifies that a ref is an array containing at least one `Element`.
 
-```ts
-export function refIsElementArray(value: unknown): value is Element[];
+```ts nocompile
+function refIsElementArray(value: unknown): value is Element[];
 ```
 
 - `value` - The value to type check.

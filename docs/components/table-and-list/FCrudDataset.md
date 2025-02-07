@@ -27,6 +27,13 @@ Callback anropas innan modalen visas.
 ```
 
 ```ts
+import { type UnknownItem } from "@fkui/vue";
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface MyInterface {}
+
+/* --- cut above --- */
+
 function onBeforeCreate(): UnknownItem {
     const item: MyInterface = {
         /* ... */

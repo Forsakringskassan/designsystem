@@ -8,8 +8,8 @@ Find and return the parent of given Vue component that matches given name.
 
 ## API
 
-```ts
-export function findParentByName(
+```ts nocompile
+function findParentByName(
     vm: ComponentPublicInstance | undefined | null,
     name: string,
 ): ComponentPublicInstance | undefined;
@@ -37,7 +37,20 @@ Given the following markup:
 And given `this` is the `MyChildComponent` instance:
 
 ```ts
-findParentByName(this, "MyChildComponent"); // --> MyChildComponent
-findParentByName(this, "MyParentComponent"); // --> MyParentComponent
-findParentByName(this, "NowhereToBeFound"); // --> undefined
+import { defineComponent } from "vue";
+import { findParentByName } from "@fkui/vue";
+
+defineComponent({
+    methods: {
+        dummy() {
+            /* --- cut above --- */
+
+            findParentByName(this, "MyChildComponent"); // --> MyChildComponent
+            findParentByName(this, "MyParentComponent"); // --> MyParentComponent
+            findParentByName(this, "NowhereToBeFound"); // --> undefined
+
+            /* --- cut below --- */
+        },
+    },
+});
 ```

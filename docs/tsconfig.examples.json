@@ -7,5 +7,5 @@
         "skipLibCheck": true
     },
     "include": ["**/*.ts", "**/*.vue"],
-    "exclude": ["node_modules/**", "src/**", "**/*.cy.ts"]
+    "exclude": ["node_modules/**", "examples/**", "src/**", "**/*.cy.ts"]
 }

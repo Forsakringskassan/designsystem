@@ -15,9 +15,13 @@ Renderar upp innehållet i default slotten i olika upplösningar:
 - 1024px (desktop)
 
 ```ts
-const sizeWrapperWidth: number;
-const sizeWrapperHeight: number;
-const SizeWrapper: DefineComponent;
+import { type DefineComponent } from "vue";
+
+/* --- cut above --- */
+
+declare const sizeWrapperWidth: number;
+declare const sizeWrapperHeight: number;
+declare const SizeWrapper: DefineComponent;
 ```
 
 ### Användning
@@ -25,6 +29,24 @@ const SizeWrapper: DefineComponent;
 Kan användas i Cypress för att montera upp en komponent och direkt jämföra hur den beteer sig i olika storlekar och/eller ta skärmdumpar.
 
 ```ts
+/// <reference types="cypress"/>
+
+import { defineComponent } from "vue";
+import { mount } from "cypress/vue";
+
+declare global {
+    /* eslint-disable-next-line @typescript-eslint/no-namespace -- module augmentation */
+    namespace Cypress {
+        interface Chainable {
+            mount: typeof mount;
+        }
+    }
+}
+
+const AwesomeComponent = defineComponent({});
+
+/* --- cut above --- */
+
 import {
     sizeWrapperWidth,
     sizeWrapperHeight,
@@ -58,9 +80,13 @@ Renderar upp innehållet i default slotten i olika densiteter:
 - Extra kompakt (`density-densest`)
 
 ```ts
-const densityWrapperWidth: number;
-const densityWrapperHeight: number;
-const DensityWrapper: DefineComponent;
+import { type DefineComponent } from "vue";
+
+/* --- cut above --- */
+
+declare const densityWrapperWidth: number;
+declare const densityWrapperHeight: number;
+declare const DensityWrapper: DefineComponent;
 ```
 
 ### Användning
@@ -68,6 +94,24 @@ const DensityWrapper: DefineComponent;
 Kan användas i Cypress för att montera upp en komponent som använder densitet och direkt jämföra hur den beteer sig i olika densiteter och/eller ta skärmdumpar.
 
 ```ts
+/// <reference types="cypress">
+
+import { defineComponent } from "vue";
+import { mount } from "cypress/vue";
+
+declare global {
+    /* eslint-disable-next-line @typescript-eslint/no-namespace -- module augmentation */
+    namespace Cypress {
+        interface Chainable {
+            mount: typeof mount;
+        }
+    }
+}
+
+const AwesomeComponent = defineComponent({});
+
+/* --- cut above --- */
+
 import {
     densityWrapperHeight,
     densityWrapperWidth,

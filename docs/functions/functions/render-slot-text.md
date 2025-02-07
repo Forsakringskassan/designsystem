@@ -9,7 +9,7 @@ Leading and trailing whitespace is trimmed and internal whitespace is collapsed.
 Any elements with the `sr-only` class will be ignored.
 
 ```ts
-export interface RenderSlotOptions {
+interface RenderSlotOptions {
     /**
      * List of classes to exclude when extracting slot text.
      *
@@ -19,8 +19,8 @@ export interface RenderSlotOptions {
 }
 ```
 
-```ts
-export function renderSlotText(
+```ts nocompile
+function renderSlotText(
     render: Slot | undefined,
     props?: Record<string, unknown>,
     options?: Partial<RenderSlotOptions>,
@@ -38,7 +38,13 @@ Given the following markup:
 ```
 
 ```ts
-renderSlotText(this.$slots.foo);
+import { useSlots } from "vue";
+import { renderSlotText } from "@fkui/vue";
+
+/* --- cut above --- */
+
+const slots = useSlots();
+renderSlotText(slots.foo);
 // --> "Lorem ipsum dolor sit amet"
 ```
 
@@ -51,7 +57,13 @@ If you use scoped slots you need to pass in the scope:
 ```
 
 ```ts
-renderSlotText(this.$slots.foo, { name: "World" });
+import { useSlots } from "vue";
+import { renderSlotText } from "@fkui/vue";
+
+/* --- cut above --- */
+
+const slots = useSlots();
+renderSlotText(slots.foo, { name: "World" });
 // --> "Hello World!"
 ```
 

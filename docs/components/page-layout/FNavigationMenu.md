@@ -20,6 +20,10 @@ navigation-menu-item.ts
 ```
 
 ```ts
+import { type NavigationMenuItem } from "@fkui/vue";
+
+/* --- cut above --- */
+
 const routes: NavigationMenuItem[] = [
     { label: "label1", route: "ROUTE_1" },
     { label: "label2", route: "ROUTE_2" },
@@ -40,6 +44,14 @@ Du kommer också behöva koppla dina `NavigationMenuItem` till de registrerade r
 Om du använder [named routes](https://router.vuejs.org/guide/essentials/named-routes.html) så kan du använda ruttens namn i `route` för `NavigationMenuItem`.
 
 ```ts
+import { createApp, defineComponent } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
+
+const App = defineComponent({});
+const AwesomePage = defineComponent({});
+
+/* --- cut above --- */
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -57,6 +69,10 @@ app.mount("#app");
 ```
 
 ```ts
+import { type NavigationMenuItem } from "@fkui/vue";
+
+/* --- cut above --- */
+
 // `NavigationMenuItem.route` = `RouteRecord.name`
 const routes: NavigationMenuItem[] = [
     { label: "My awesome page", route: "my-awesome-page" },

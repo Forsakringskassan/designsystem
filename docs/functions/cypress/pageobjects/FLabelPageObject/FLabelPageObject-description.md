@@ -9,7 +9,7 @@ Hämtar elementet med etikettens hjälptext.
 
 ## Syntax
 
-```ts
+```ts nolint nocompile
 description();
 ```
 

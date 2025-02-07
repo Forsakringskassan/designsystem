@@ -419,7 +419,7 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
 
 Möjlighet finns att importera separat vid behov.
 
-```scss
+```scss nocompile
 @use "@fkui/theme-default/src/deprecated-css-variables" as *;
 
 :root {

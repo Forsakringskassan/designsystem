@@ -9,7 +9,7 @@ Hämtar elementet med etikettens felmeddelande.
 
 ## Syntax
 
-```ts
+```ts nolint nocompile
 errorMessage();
 ```
 
