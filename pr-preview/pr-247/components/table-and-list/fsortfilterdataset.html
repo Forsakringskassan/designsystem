@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-69d92f.css"
+            href="../../assets/docs-6a45b1.css"
             crossorigin
-            integrity="sha384-NaEYQzjvU5nTcnFph4BfsjYsSzM1zklXaExqmWYtKlg/gndBGf85G/Iv/KlwZSSJ"
+            integrity="sha384-28RtVIfDTDHqXpEdNmN4MtHpyHE3bh1HM+qFEMStuWOxe6HVU233ya5qj4sMvOe8"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-d577d9.json"
+            href="../../search-data-443174.json"
             as="fetch"
             crossorigin
-            integrity="sha384-At9elRvBsiJJzvFqkO1g8UqfW0z0G8EWEVhaecBp0GTbnhT3KeFX2/SHHZVT+Xbq"
+            integrity="sha384-66fVj9QzvHzg05a4GBFfdIiktxFwKFZU40EWmYdZYWOVTGeKGiP8tOYlOTJ5CDEu"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -1073,9 +996,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-8bce71.js"
+                    src="../../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-SEKeIQjNcCbqmqADdp6CDZBq8X9Wuk+7yGJl/rVd0TIpRawDDVLgPNKOs3RtUZIl"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-1d02ba.js"
+                    src="../../assets/vendor-fkui-vue-746138.js"
                     crossorigin
-                    integrity="sha384-Xkxo1B9nXadlNQFBzVay6ugUlQtnJakowxHQ4rAI/xA8GAugVgDkMLoyGU9p3qIw"
+                    integrity="sha384-GDnaDsNhdFL35qw02+i3l4I4uU46/IwdUHdC8vwQ4BRnc+C10pd0Ey9XBNB/ZBS8"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/4b68672fab3bd5a02806ba83e57d8840f2e9e4af/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">FSortFilterDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0d6899e6c274ac7026dd2a1759ed318c06c7fb37/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">FSortFilterDataset</a>
             
         </code>
          
@@ -1161,7 +1084,7 @@
                     id="example-b73b01"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1698,7 +1621,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
                     id="example-702d87"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1712,56 +1635,232 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
         <script defer src="./FSortFilterDatasetEmptySlot-5000f7.js"></script>
     </div>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>data</p>
-</td><td><p>The data that you wish to sort or filter.</p>
-</td><td><p>ListArray&lt;ListItem&gt;</p>
-</td><td><p>true</p>
-</td><td><p>() =&gt; []</p>
-</td></tr><tr><td><p>sortableAttributes</p>
-</td><td><p>All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.<br>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fsortfilterdataset-props">
+            <a class="header-anchor" href="#fsortfilterdataset-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fsortfilterdataset-prop-data"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-data"
+                                    ><span class="docs-api__name"
+                                        >data</span
+                                    >: ListArray&lt;ListItem&gt;</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The data that you wish to sort or filter.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; []</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-sortableattributes"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-sortableattributes"
+                                    ><span class="docs-api__name"
+                                        >sortableAttributes</span
+                                    >: Record&lt;string, string&gt;</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
 Structured as <code>{attributeName: &quot;Name for dropdown&quot;, secondAttributeName: &quot;Name for dropdown&quot;}</code></p>
-</td><td><p>Record&lt;string, string&gt;</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>defaultSortAttribute</p>
-</td><td><p>If set the data will be sorted by this attribute by default.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; &quot;&quot;</p>
-</td></tr><tr><td><p>showSort</p>
-</td><td><p>Show/hides the sort dropdown.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>showFilter</p>
-</td><td><p>Show/hides the filter input.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>placeholderFilter</p>
-</td><td><p>Set placeholder text in filter input field.<br>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-defaultsortattribute"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-defaultsortattribute"
+                                    ><span class="docs-api__name"
+                                        >defaultSortAttribute</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If set the data will be sorted by this attribute by default.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; &quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-showsort"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-showsort"
+                                    ><span class="docs-api__name"
+                                        >showSort</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Show/hides the sort dropdown.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-showfilter"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-showfilter"
+                                    ><span class="docs-api__name"
+                                        >showFilter</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Show/hides the filter input.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-placeholderfilter"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-placeholderfilter"
+                                    ><span class="docs-api__name"
+                                        >placeholderFilter</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set placeholder text in filter input field.
 Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>TranslationMixin.methods.$t(&quot;fkui.sort-filter-dataset.placeholder.filter&quot;, &quot;Sök&quot;)</p>
-</td></tr><tr><td><p>defaultSortAscending</p>
-</td><td><p>The order the data will be sorted by if defaultSortAttribute has been set.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; true</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>datasetSorted</p>
-</td><td><p>Emitted when the data is sorted.</p>
-</td><td><p>sortFilterResult: ListArray — The sorted data.</p>
-</td></tr><tr><td><p>usedSortAttributes</p>
-</td><td><p>Emits the used sorting attributes.</p>
-</td><td><p>sortAttribute: SortOrder — The attributes used when sorting the data.</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Slot for header to the left of the filter dropdown.</p>
-</td><td><p>slotClass</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for displaying the data.</p>
-</td><td><p>sortFilterResult</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>TranslationMixin.methods.$t(&quot;fkui.sort-filter-dataset.placeholder.filter&quot;, &quot;Sök&quot;)</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-prop-defaultsortascending"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-defaultsortascending"
+                                    ><span class="docs-api__name"
+                                        >defaultSortAscending</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The order the data will be sorted by if defaultSortAttribute has been set.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; true</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fsortfilterdataset-events">
+            <a class="header-anchor" href="#fsortfilterdataset-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fsortfilterdataset-event-datasetsorted"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-event-datasetsorted"
+                                    ><span class="docs-api__name"
+                                        >datasetSorted</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when the data is sorted.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>sortFilterResult: ListArray</code> <span role="presentation">&mdash;</span> The sorted data.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-event-usedsortattributes"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-event-usedsortattributes"
+                                    ><span class="docs-api__name"
+                                        >usedSortAttributes</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emits the used sorting attributes.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>sortAttribute: SortOrder</code> <span role="presentation">&mdash;</span> The attributes used when sorting the data.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fsortfilterdataset-slots">
+            <a class="header-anchor" href="#fsortfilterdataset-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fsortfilterdataset-slot-header"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for header to the left of the filter dropdown.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>slotClass: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fsortfilterdataset-slot-default"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying the data.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>sortFilterResult: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1782,9 +1881,9 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/update-release-plan (<a href="https://github.com/Forsakringskassan/designsystem/commits/4b68672fab3bd5a02806ba83e57d8840f2e9e4af">4b68672</a>)<br />
+    docs/update-release-plan (<a href="https://github.com/Forsakringskassan/designsystem/commits/0d6899e6c274ac7026dd2a1759ed318c06c7fb37">0d6899e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/247">PR 247</a><br />
-        2025-02-04 12:28
+        2025-02-07 08:07
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1905,9 +2004,9 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script
