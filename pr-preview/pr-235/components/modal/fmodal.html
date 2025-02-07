@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-86e69d.css"
+            href="../../assets/docs-68daa8.css"
             crossorigin
-            integrity="sha384-KZOTUGWzd80/sqt3FP6mAi1u2CTmuleQLGN9qoxyEPLONtfZO9R2aQiRlTqJAoFZ"
+            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-d96cb0.css"
+            href="../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-OxODyIqt/73SRb0umHHJR/mqDLOCDa0ejnchYwIj5e8eFS39m2ShXFOg7r+N/P/T"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-a208fa.js"
+                    src="../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-KNr2avTFjccMjo4824CCigQwtKaqtgOGSlVha8PgV9+TqiI09Tfp9b/2rwetCTl6"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/c97d3537107cb126068b8d19475c68d91aafb386/packages/vue/src/components/FModal/FModal.vue">FModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/5f40f79268c77a3cceb40c6a0508d79af766eef8/packages/vue/src/components/FModal/FModal.vue">FModal</a>
             
         </code>
          
@@ -1270,73 +1270,238 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 <li>&quot;off&quot; - komponenten hanterar inte fokus alls.</li>
 <li>&quot;open&quot; - komponenten hanterar enbart fokus vid öppning.</li>
 </ul>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>id</p>
-</td><td><p>The id for the root element id attribute.<br>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fmodal-props">
+            <a class="header-anchor" href="#fmodal-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fmodal-prop-id"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the root element id attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>isOpen</p>
-</td><td><p>If the modal is open.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-isopen"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-isopen"
+                                    ><span class="docs-api__name"
+                                        >isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If the modal is open.
 Use this to toggle if the modal should be visible or not.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>ariaCloseText</p>
-</td><td><p>The aria-label attribute text for the top right close button.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>fullscreen</p>
-</td><td><p>Enable fullscreen mode in mobile.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>type</p>
-</td><td><p>The type of modal. 'information', 'warning' and 'error' is valid.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>size</p>
-</td><td><p>The size of modal in desktop mode.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>focus</p>
-</td><td><p>Default behavior is that the modal will restore focus to previous element once closed.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-ariaclosetext"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-ariaclosetext"
+                                    ><span class="docs-api__name"
+                                        >ariaCloseText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The aria-label attribute text for the top right close button.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-fullscreen"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-fullscreen"
+                                    ><span class="docs-api__name"
+                                        >fullscreen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable fullscreen mode in mobile.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-type"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-type"
+                                    ><span class="docs-api__name"
+                                        >type</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The type of modal. 'information', 'warning' and 'error' is valid.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-size"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-size"
+                                    ><span class="docs-api__name"
+                                        >size</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The size of modal in desktop mode.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-focus"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-focus"
+                                    ><span class="docs-api__name"
+                                        >focus</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Default behavior is that the modal will restore focus to previous element once closed.</p>
 <ul>
 <li>&quot;on&quot; (default) - component will set focus both when opened and closed</li>
 <li>&quot;off&quot; - focus strategy disabled</li>
 <li>&quot;open&quot; - focus will only be applied once modal is opened</li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;on&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>close</p>
-</td><td><p>Event that is dispatched when the escape button is pressed.<br>
+
+                            <p class="doc-api__item">Default: <code>&quot;on&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fmodal-events">
+            <a class="header-anchor" href="#fmodal-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fmodal-event-close"
+                                ><a class="docs-api__anchor" href="#fmodal-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when the escape button is pressed.
 In most use cases the <code>isOpen</code> prop should be set to false when this event is triggered.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Slot for the header.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>content</p>
-</td><td><p>Slot for the main content, e.g. paragraphs, input fields, etc.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>footer</p>
-</td><td><p>Slot the footer content, i.e. buttons.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fmodal-slots">
+            <a class="header-anchor" href="#fmodal-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fmodal-slot-header"
+                                ><a class="docs-api__anchor" href="#fmodal-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for the header.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-slot-content"
+                                ><a class="docs-api__anchor" href="#fmodal-slot-content"
+                                    ><span class="docs-api__name"
+                                        >content</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for the main content, e.g. paragraphs, input fields, etc.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-slot-footer"
+                                ><a class="docs-api__anchor" href="#fmodal-slot-footer"
+                                    ><span class="docs-api__name"
+                                        >footer</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot the footer content, i.e. buttons.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1357,9 +1522,9 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/c97d3537107cb126068b8d19475c68d91aafb386">c97d353</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/5f40f79268c77a3cceb40c6a0508d79af766eef8">5f40f79</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 14:36
+        2025-02-07 13:37
 </div>
 <div class="toolbar__item">
     <form id="version">

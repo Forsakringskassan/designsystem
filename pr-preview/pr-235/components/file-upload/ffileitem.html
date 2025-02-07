@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-86e69d.css"
+            href="../../assets/docs-68daa8.css"
             crossorigin
-            integrity="sha384-KZOTUGWzd80/sqt3FP6mAi1u2CTmuleQLGN9qoxyEPLONtfZO9R2aQiRlTqJAoFZ"
+            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-d96cb0.css"
+            href="../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-OxODyIqt/73SRb0umHHJR/mqDLOCDa0ejnchYwIj5e8eFS39m2ShXFOg7r+N/P/T"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-a208fa.js"
+                    src="../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-KNr2avTFjccMjo4824CCigQwtKaqtgOGSlVha8PgV9+TqiI09Tfp9b/2rwetCTl6"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/c97d3537107cb126068b8d19475c68d91aafb386/packages/vue/src/components/FFileItem/FFileItem.vue">FFileItem</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/5f40f79268c77a3cceb40c6a0508d79af766eef8/packages/vue/src/components/FFileItem/FFileItem.vue">FFileItem</a>
             
         </code>
          
@@ -1304,47 +1304,150 @@
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>id</p>
-</td><td><p>The id for the input id attribute.<br>
-The id for the label for attribute.<br>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="ffileitem-props">
+            <a class="header-anchor" href="#ffileitem-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ffileitem-prop-id"
+                                ><a class="docs-api__anchor" href="#ffileitem-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the input id attribute.
+The id for the label for attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>fileName</p>
-</td><td><p>The file name.</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>mimeType</p>
-</td><td><p>The mime type, can be changed if i.e server change the name.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>originalMimeType</p>
-</td><td><p>The name of the file uploaded</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>changedMimeTypeText</p>
-</td><td><p>If file name changed, this info will be displayed, placeholder %before% and %after% will be replaced with originalMimeType and mimeType</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>row</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for any type of content. Elements placed in this slot will be position after the file icon and file name.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffileitem-prop-filename"
+                                ><a class="docs-api__anchor" href="#ffileitem-prop-filename"
+                                    ><span class="docs-api__name"
+                                        >fileName</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The file name.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffileitem-prop-mimetype"
+                                ><a class="docs-api__anchor" href="#ffileitem-prop-mimetype"
+                                    ><span class="docs-api__name"
+                                        >mimeType</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The mime type, can be changed if i.e server change the name.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffileitem-prop-originalmimetype"
+                                ><a class="docs-api__anchor" href="#ffileitem-prop-originalmimetype"
+                                    ><span class="docs-api__name"
+                                        >originalMimeType</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The name of the file uploaded</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffileitem-prop-changedmimetypetext"
+                                ><a class="docs-api__anchor" href="#ffileitem-prop-changedmimetypetext"
+                                    ><span class="docs-api__name"
+                                        >changedMimeTypeText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If file name changed, this info will be displayed, placeholder %before% and %after% will be replaced with originalMimeType and mimeType</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ffileitem-slots">
+            <a class="header-anchor" href="#ffileitem-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ffileitem-slot-row"
+                                ><a class="docs-api__anchor" href="#ffileitem-slot-row"
+                                    ><span class="docs-api__name"
+                                        >row</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ffileitem-slot-default"
+                                ><a class="docs-api__anchor" href="#ffileitem-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for any type of content. Elements placed in this slot will be position after the file icon and file name.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1365,9 +1468,9 @@ If the prop is not set a random value will be generated.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/c97d3537107cb126068b8d19475c68d91aafb386">c97d353</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/5f40f79268c77a3cceb40c6a0508d79af766eef8">5f40f79</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 14:36
+        2025-02-07 13:37
 </div>
 <div class="toolbar__item">
     <form id="version">

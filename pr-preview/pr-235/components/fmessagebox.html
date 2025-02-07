@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-86e69d.css"
+            href="../assets/docs-68daa8.css"
             crossorigin
-            integrity="sha384-KZOTUGWzd80/sqt3FP6mAi1u2CTmuleQLGN9qoxyEPLONtfZO9R2aQiRlTqJAoFZ"
+            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-d96cb0.css"
+            href="../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-OxODyIqt/73SRb0umHHJR/mqDLOCDa0ejnchYwIj5e8eFS39m2ShXFOg7r+N/P/T"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-a208fa.js"
+                    src="../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-KNr2avTFjccMjo4824CCigQwtKaqtgOGSlVha8PgV9+TqiI09Tfp9b/2rwetCTl6"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/c97d3537107cb126068b8d19475c68d91aafb386/packages/vue/src/components/FMessageBox/FMessageBox.vue">FMessageBox</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/5f40f79268c77a3cceb40c6a0508d79af766eef8/packages/vue/src/components/FMessageBox/FMessageBox.vue">FMessageBox</a>
             
         </code>
          
@@ -1432,43 +1432,120 @@ Om applikationen inte önskar detta beteende och själv vill redogöra för dett
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>type</p>
-</td><td><p>Type of message-box. 'success', 'error', 'warning' and 'info' is valid.</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>banner</p>
-</td><td><p>If message-box should be a banner.<br>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fmessagebox-props">
+            <a class="header-anchor" href="#fmessagebox-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fmessagebox-prop-type"
+                                ><a class="docs-api__anchor" href="#fmessagebox-prop-type"
+                                    ><span class="docs-api__name"
+                                        >type</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Type of message-box. 'success', 'error', 'warning' and 'info' is valid.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmessagebox-prop-banner"
+                                ><a class="docs-api__anchor" href="#fmessagebox-prop-banner"
+                                    ><span class="docs-api__name"
+                                        >banner</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If message-box should be a banner.
 If prop is not used message-box will have default styling.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>provideScreenReaderContext</p>
-</td><td><p>It is important to provide a context for a screenreader, similar to a modal that initially outputs it is a dialog.<br>
-Type-specific screenreader context is output by default in this component.<br>
-By setting this property to false no context will be output.<br>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmessagebox-prop-providescreenreadercontext"
+                                ><a class="docs-api__anchor" href="#fmessagebox-prop-providescreenreadercontext"
+                                    ><span class="docs-api__name"
+                                        >provideScreenReaderContext</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>It is important to provide a context for a screenreader, similar to a modal that initially outputs it is a dialog.
+Type-specific screenreader context is output by default in this component.
+By setting this property to false no context will be output.
 Note that by doing this, it is the applications responsiblity to provide a clear context.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>layout</p>
-</td><td><p>Select standard or short layout.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmessagebox-prop-layout"
+                                ><a class="docs-api__anchor" href="#fmessagebox-prop-layout"
+                                    ><span class="docs-api__name"
+                                        >layout</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Select standard or short layout.</p>
 <ul>
 <li>'normal' - Use normal layout when need for heading and/or longer text/multiple sentences</li>
 <li>'short' - Use short layout when only need for shorter text</li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;standard&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>Slot for displaying content.</p>
-</td><td><p>headingSlotClass</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;standard&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fmessagebox-slots">
+            <a class="header-anchor" href="#fmessagebox-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fmessagebox-slot-default"
+                                ><a class="docs-api__anchor" href="#fmessagebox-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying content.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>headingSlotClass: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1489,9 +1566,9 @@ Note that by doing this, it is the applications responsiblity to provide a clear
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/c97d3537107cb126068b8d19475c68d91aafb386">c97d353</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/5f40f79268c77a3cceb40c6a0508d79af766eef8">5f40f79</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 14:36
+        2025-02-07 13:37
 </div>
 <div class="toolbar__item">
     <form id="version">

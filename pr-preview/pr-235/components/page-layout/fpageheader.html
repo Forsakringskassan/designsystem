@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-86e69d.css"
+            href="../../assets/docs-68daa8.css"
             crossorigin
-            integrity="sha384-KZOTUGWzd80/sqt3FP6mAi1u2CTmuleQLGN9qoxyEPLONtfZO9R2aQiRlTqJAoFZ"
+            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-d96cb0.css"
+            href="../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-OxODyIqt/73SRb0umHHJR/mqDLOCDa0ejnchYwIj5e8eFS39m2ShXFOg7r+N/P/T"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-a208fa.js"
+                    src="../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-KNr2avTFjccMjo4824CCigQwtKaqtgOGSlVha8PgV9+TqiI09Tfp9b/2rwetCTl6"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/c97d3537107cb126068b8d19475c68d91aafb386/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/5f40f79268c77a3cceb40c6a0508d79af766eef8/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
             
         </code>
          
@@ -1095,7 +1095,7 @@ Den kan innehålla en logotyp, applikationsnamn samt användarinformation.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FPageHeaderDefault-ad64ec.js"></script>
+        <script defer src="./FPageHeaderDefault-41d2f6.js"></script>
     </div>
                 <div>
             <button
@@ -1117,7 +1117,7 @@ Den kan innehålla en logotyp, applikationsnamn samt användarinformation.</p>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-page-header</span>&gt;</span>
         Exempelapplikation
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">logo</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-logo</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;example logo text&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-logo</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-logo</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>Example logo text<span class="hljs-tag">&lt;/<span class="hljs-name">f-logo</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">right</span>&gt;</span> Namn Namnsson <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-header</span>&gt;</span>
@@ -1139,7 +1139,7 @@ Den kan innehålla en logotyp, applikationsnamn samt användarinformation.</p>
 Du kan med fördel använda <a href="../flogo.html"><code>FLogo</code></a> för att ange logotyp.</p>
 
                 <div
-                    id="example-b4ef23"
+                    id="example-f0ddb5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1148,15 +1148,34 @@ Du kan med fördel använda <a href="../flogo.html"><code>FLogo</code></a> för 
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
 <span class="hljs-addition">+    &lt;template #logo&gt;</span>
-<span class="hljs-addition">+        &lt;f-logo aria-label=&quot;awesome logo&quot;&gt;&lt;/f-logo&gt;</span>
+<span class="hljs-addition">+        &lt;f-logo&gt;Awesome logo&lt;/f-logo&gt;</span>
 <span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <p>Du kan också göra en länkad logo med en ankarlänk (eller <code>router-link</code> om du använder Vue Router).</p>
+
+                <div
+                    id="example-a53490"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
+     &lt;template #logo&gt;
+<span class="hljs-addition">+        &lt;a href=&quot;/&quot;&gt;</span>
+             &lt;f-logo&gt;Awesome logo&lt;/f-logo&gt;
+<span class="hljs-addition">+        &lt;/a&gt;</span>
+     &lt;/template&gt;
  &lt;/f-page-header&gt;
 </code></pre>
                 </div>
             <p>Se även nedan exempel för hur du kan göra en egen logotyp med brytpunkt utan att använda <code>FLogo</code>.</p>
 
             <div
-                id="example-2d0135"
+                id="example-226737"
                 class="code-preview code-preview--default"
                 
                 
@@ -1257,7 +1276,7 @@ Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det 
 <p>Skiplink aktiveras genom att sätta <code>skipLink</code> till det id som innehåller det primära innehållet:</p>
 
                 <div
-                    id="example-b5883f"
+                    id="example-5146d3"
                     class="code-preview code-preview--default"
                     
                     
@@ -1275,38 +1294,136 @@ Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det 
 </code></pre>
                 </div>
             <p>Notera att elementet måste vara fokuserbart.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>skipLink</p>
-</td><td><p>Render skiplink.</p>
-<p>When set to a non-empty string the skiplink feature is enabled.<br>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fpageheader-props">
+            <a class="header-anchor" href="#fpageheader-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fpageheader-prop-skiplink"
+                                ><a class="docs-api__anchor" href="#fpageheader-prop-skiplink"
+                                    ><span class="docs-api__name"
+                                        >skipLink</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Render skiplink.</p>
+<p>When set to a non-empty string the skiplink feature is enabled.
 The string is the id of the element to move focus to.</p>
 <p>When set to empty string (default) the skiplink feature is disabled.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>headerTag</p>
-</td><td><p>HTML element type for header.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;span&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>skip-link-text</p>
-</td><td><p>Slot for skip link text.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>logo</p>
-</td><td><p>Slot for custom logo.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for application title.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>right</p>
-</td><td><p>Slot for user/custom information display.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-prop-headertag"
+                                ><a class="docs-api__anchor" href="#fpageheader-prop-headertag"
+                                    ><span class="docs-api__name"
+                                        >headerTag</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>HTML element type for header.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;span&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fpageheader-slots">
+            <a class="header-anchor" href="#fpageheader-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fpageheader-slot-skip-link-text"
+                                ><a class="docs-api__anchor" href="#fpageheader-slot-skip-link-text"
+                                    ><span class="docs-api__name"
+                                        >skip-link-text</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for skip link text.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-slot-logo"
+                                ><a class="docs-api__anchor" href="#fpageheader-slot-logo"
+                                    ><span class="docs-api__name"
+                                        >logo</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for custom logo.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-slot-default"
+                                ><a class="docs-api__anchor" href="#fpageheader-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for application title.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fpageheader-slot-right"
+                                ><a class="docs-api__anchor" href="#fpageheader-slot-right"
+                                    ><span class="docs-api__name"
+                                        >right</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for user/custom information display.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1327,9 +1444,9 @@ The string is the id of the element to move focus to.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/c97d3537107cb126068b8d19475c68d91aafb386">c97d353</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/5f40f79268c77a3cceb40c6a0508d79af766eef8">5f40f79</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 14:36
+        2025-02-07 13:37
 </div>
 <div class="toolbar__item">
     <form id="version">

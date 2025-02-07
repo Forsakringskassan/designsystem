@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-86e69d.css"
+            href="../assets/docs-68daa8.css"
             crossorigin
-            integrity="sha384-KZOTUGWzd80/sqt3FP6mAi1u2CTmuleQLGN9qoxyEPLONtfZO9R2aQiRlTqJAoFZ"
+            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-d96cb0.css"
+            href="../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-OxODyIqt/73SRb0umHHJR/mqDLOCDa0ejnchYwIj5e8eFS39m2ShXFOg7r+N/P/T"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-a208fa.js"
+                    src="../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-KNr2avTFjccMjo4824CCigQwtKaqtgOGSlVha8PgV9+TqiI09Tfp9b/2rwetCTl6"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,13 +1041,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/c97d3537107cb126068b8d19475c68d91aafb386/packages/vue/src/components/FCalendar/FCalendar.vue">FCalendar</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/5f40f79268c77a3cceb40c6a0508d79af766eef8/packages/vue/src/components/FCalendar/FCalendar.vue">FCalendar</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/c97d3537107cb126068b8d19475c68d91aafb386/packages/vue/src/components/FCalendar/FCalendarDay.vue">FCalendarDay</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/5f40f79268c77a3cceb40c6a0508d79af766eef8/packages/vue/src/components/FCalendar/FCalendarDay.vue">FCalendarDay</a>
             
         </code>
          
@@ -1528,80 +1528,256 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
 </code></pre>
                 </div>
             </div>
-        <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fcalendar"><a class="header-anchor" href="#fcalendar">FCalendar</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>v-model</p>
-</td><td><p>Active month.</p>
-</td><td><p>FDate</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>tabDate</p>
-</td><td><p>Date to set tabindex on when component gains focus.</p>
-<p>Consumers can update this related to active month.<br>
+        <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fcalendar"><a class="header-anchor" href="#fcalendar">FCalendar</a></h3>
+        <h4 id="fcalendar-props">
+            <a class="header-anchor" href="#fcalendar-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fcalendar-prop-v-model"
+                                ><a class="docs-api__anchor" href="#fcalendar-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: FDate</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Active month.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendar-prop-tabdate"
+                                ><a class="docs-api__anchor" href="#fcalendar-prop-tabdate"
+                                    ><span class="docs-api__name"
+                                        >tabDate</span
+                                    >: FDate | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Date to set tabindex on when component gains focus.</p>
+<p>Consumers can update this related to active month.
 If undefined, the first day of the month will gain focus.</p>
-</td><td><p>FDate | undefined</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>minDate</p>
-</td><td><p>Min date.</p>
-</td><td><p>FDate</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>maxDate</p>
-</td><td><p>Max date.</p>
-</td><td><p>FDate</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>click</p>
-</td><td><p><code>click</code> event. Emitted when a calendar day is clicked.</p>
-</td><td><p>&lt;anonymous&gt;: FDate</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>change</p>
-</td><td><p>Vue2 <code>v-model</code> event. Emitted when changing to a different month in the calendar.</p>
-</td><td><p>&lt;anonymous&gt;: FDate</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p><code>v-model</code> event. Emitted when changing to a different month in the calendar.</p>
-</td><td><p>&lt;anonymous&gt;: FDate</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>Slot for calendar day.</p>
-</td><td><p>date<br>
-is-focused</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h3 id="fcalendarday"><a class="header-anchor" href="#fcalendarday">FCalendarDay</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>day</p>
-</td><td><p>Day to render.</p>
-</td><td><p>FDate</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>enabled</p>
-</td><td><p>Set to <code>true</code> if day is enabled.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>focused</p>
-</td><td><p>Set to <code>true</code> if day is focused.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>selected</p>
-</td><td><p>Set to <code>true</code> if day is selected.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>highlight</p>
-</td><td><p>Set to <code>true</code> if day should be highlighted.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendar-prop-mindate"
+                                ><a class="docs-api__anchor" href="#fcalendar-prop-mindate"
+                                    ><span class="docs-api__name"
+                                        >minDate</span
+                                    >: FDate</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Min date.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendar-prop-maxdate"
+                                ><a class="docs-api__anchor" href="#fcalendar-prop-maxdate"
+                                    ><span class="docs-api__name"
+                                        >maxDate</span
+                                    >: FDate</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Max date.</p>
+
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fcalendar-events">
+            <a class="header-anchor" href="#fcalendar-events">Events</a>
+        </h4>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fcalendar-event-click"
+                                ><a class="docs-api__anchor" href="#fcalendar-event-click"
+                                    ><span class="docs-api__name"
+                                        >click</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><code>click</code> event. Emitted when a calendar day is clicked.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: FDate</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendar-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#fcalendar-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><code>v-model</code> event. Emitted when changing to a different month in the calendar.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: FDate</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fcalendar-slots">
+            <a class="header-anchor" href="#fcalendar-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fcalendar-slot-default"
+                                ><a class="docs-api__anchor" href="#fcalendar-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for calendar day.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>date: unknown</code></li><li><code>is-focused: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    <h3 id="fcalendarday"><a class="header-anchor" href="#fcalendarday">FCalendarDay</a></h3>
+        <h4 id="fcalendarday-props">
+            <a class="header-anchor" href="#fcalendarday-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fcalendarday-prop-day"
+                                ><a class="docs-api__anchor" href="#fcalendarday-prop-day"
+                                    ><span class="docs-api__name"
+                                        >day</span
+                                    >: FDate</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Day to render.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendarday-prop-enabled"
+                                ><a class="docs-api__anchor" href="#fcalendarday-prop-enabled"
+                                    ><span class="docs-api__name"
+                                        >enabled</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set to <code>true</code> if day is enabled.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendarday-prop-focused"
+                                ><a class="docs-api__anchor" href="#fcalendarday-prop-focused"
+                                    ><span class="docs-api__name"
+                                        >focused</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set to <code>true</code> if day is focused.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendarday-prop-selected"
+                                ><a class="docs-api__anchor" href="#fcalendarday-prop-selected"
+                                    ><span class="docs-api__name"
+                                        >selected</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set to <code>true</code> if day is selected.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendarday-prop-highlight"
+                                ><a class="docs-api__anchor" href="#fcalendarday-prop-highlight"
+                                    ><span class="docs-api__name"
+                                        >highlight</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set to <code>true</code> if day should be highlighted.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1622,9 +1798,9 @@ is-focused</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/c97d3537107cb126068b8d19475c68d91aafb386">c97d353</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/5f40f79268c77a3cceb40c6a0508d79af766eef8">5f40f79</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 14:36
+        2025-02-07 13:37
 </div>
 <div class="toolbar__item">
     <form id="version">

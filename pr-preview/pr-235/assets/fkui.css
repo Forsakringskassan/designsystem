@@ -4505,20 +4505,20 @@ input[type=search]:focus,
 }
 .logo--small {
   padding: var(--f-logo-size-small, 0.8rem);
-  background-image: var(--f-logo-image-small, none);
+  background: var(--f-logo-image-small, none);
 }
 .logo--large {
   padding: var(--f-logo-size-large, 0.8rem 6.195rem);
-  background-image: var(--f-logo-image-large, none);
+  background: var(--f-logo-image-large, none);
 }
 .logo--responsive {
   padding: var(--f-logo-size-large, 0.8rem 6.195rem);
-  background-image: var(--f-logo-image-large, none);
+  background: var(--f-logo-image-large, none);
 }
 @media (max-width: 639.98px) {
   .logo--responsive {
     padding: var(--f-logo-size-small, 0.8rem);
-    background-image: var(--f-logo-image-small, none);
+    background: var(--f-logo-image-small, none);
   }
 }
 

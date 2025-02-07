@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-86e69d.css"
+            href="../../assets/docs-68daa8.css"
             crossorigin
-            integrity="sha384-KZOTUGWzd80/sqt3FP6mAi1u2CTmuleQLGN9qoxyEPLONtfZO9R2aQiRlTqJAoFZ"
+            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-d96cb0.css"
+            href="../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-OxODyIqt/73SRb0umHHJR/mqDLOCDa0ejnchYwIj5e8eFS39m2ShXFOg7r+N/P/T"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-a208fa.js"
+                    src="../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-KNr2avTFjccMjo4824CCigQwtKaqtgOGSlVha8PgV9+TqiI09Tfp9b/2rwetCTl6"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/c97d3537107cb126068b8d19475c68d91aafb386/packages/vue/src/components/FNavigationMenu/FNavigationMenu.vue">FNavigationMenu</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/5f40f79268c77a3cceb40c6a0508d79af766eef8/packages/vue/src/components/FNavigationMenu/FNavigationMenu.vue">FNavigationMenu</a>
             
         </code>
          
@@ -1099,7 +1099,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FNavigationMenuLiveExample-ccfb07.js"></script>
+        <script defer src="./FNavigationMenuLiveExample-5545b0.js"></script>
     
                 </div>
             <h2 id="skapa_menyalternativ"><a class="header-anchor" href="#skapa_menyalternativ">Skapa menyalternativ</a></h2><p>För att definiera alternativ i menyn används en array av <code>NavigationMenuItem</code>-objekt till <code>routes</code>-prop.</p>
@@ -1307,64 +1307,204 @@ Som standard är namnet i <code>aria-label</code> <code>Navigeringsmeny</code> f
 För att ändra dessa namn använd props <code>menu-aria-label</code> och <code>popup-aria-label</code>.</p>
 <p>Se till att du använder tydliga namn som beskriver syftet för respektive navigering.
 Om flera navigeringsmenyer eller <code>nav</code>-element används samtidigt, se till att de alla har unika namn.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>v-model:route</p>
-</td><td><p>Current route.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>routes</p>
-</td><td><p>The route items to be diplayed in the menu</p>
-</td><td><p>NavigationMenuItem[]</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>vertical</p>
-</td><td><p>If true, show the menu vertically</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>selectedMenuItemScreenReaderText</p>
-</td><td><p>Screen reader text for selected item</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>menuMoreScreenReaderText</p>
-</td><td><p>Screen reader text for the more menu item</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>menuMoreWithSelectedItemsScreenReaderText</p>
-</td><td><p>Screen reader text for the more menu with selected items</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>menuAriaLabel</p>
-</td><td><p>Unique accessible name for navigation landmark in menu.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;Navigeringsmeny&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>popupAriaLabel</p>
-</td><td><p>Unique accessible name for navigation landmark in popup.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;Popupmeny&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>selectedRoute</p>
-</td><td><p>Event that is dispatched when a menu item is selected, for example, by clicking on the item.<br>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fnavigationmenu-props">
+            <a class="header-anchor" href="#fnavigationmenu-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fnavigationmenu-prop-v-model-route"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-prop-v-model-route"
+                                    ><span class="docs-api__name"
+                                        >v-model:route</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Current route.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fnavigationmenu-prop-routes"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-prop-routes"
+                                    ><span class="docs-api__name"
+                                        >routes</span
+                                    >: NavigationMenuItem[]</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The route items to be diplayed in the menu</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fnavigationmenu-prop-vertical"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-prop-vertical"
+                                    ><span class="docs-api__name"
+                                        >vertical</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If true, show the menu vertically</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fnavigationmenu-prop-selectedmenuitemscreenreadertext"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-prop-selectedmenuitemscreenreadertext"
+                                    ><span class="docs-api__name"
+                                        >selectedMenuItemScreenReaderText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Screen reader text for selected item</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fnavigationmenu-prop-menumorescreenreadertext"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-prop-menumorescreenreadertext"
+                                    ><span class="docs-api__name"
+                                        >menuMoreScreenReaderText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Screen reader text for the more menu item</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fnavigationmenu-prop-menumorewithselecteditemsscreenreadertext"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-prop-menumorewithselecteditemsscreenreadertext"
+                                    ><span class="docs-api__name"
+                                        >menuMoreWithSelectedItemsScreenReaderText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Screen reader text for the more menu with selected items</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fnavigationmenu-prop-menuarialabel"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-prop-menuarialabel"
+                                    ><span class="docs-api__name"
+                                        >menuAriaLabel</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique accessible name for navigation landmark in menu.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;Navigeringsmeny&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fnavigationmenu-prop-popuparialabel"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-prop-popuparialabel"
+                                    ><span class="docs-api__name"
+                                        >popupAriaLabel</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique accessible name for navigation landmark in popup.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;Popupmeny&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fnavigationmenu-events">
+            <a class="header-anchor" href="#fnavigationmenu-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fnavigationmenu-event-selectedroute"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-event-selectedroute"
+                                    ><span class="docs-api__name"
+                                        >selectedRoute</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when a menu item is selected, for example, by clicking on the item.
 In most use cases the event payload is used to call Vue <code>router.push()</code> from the consumer code.</p>
-</td><td><p>route: string</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:route</p>
-</td><td><p>V-model event to update route property.</p>
-</td><td><p>route: string</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>route: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fnavigationmenu-event-update-route"
+                                ><a class="docs-api__anchor" href="#fnavigationmenu-event-update-route"
+                                    ><span class="docs-api__name"
+                                        >update:route</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event to update route property.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>route: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1385,9 +1525,9 @@ In most use cases the event payload is used to call Vue <code>router.push()</cod
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/c97d3537107cb126068b8d19475c68d91aafb386">c97d353</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/5f40f79268c77a3cceb40c6a0508d79af766eef8">5f40f79</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 14:36
+        2025-02-07 13:37
 </div>
 <div class="toolbar__item">
     <form id="version">

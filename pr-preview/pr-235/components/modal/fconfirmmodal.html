@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-86e69d.css"
+            href="../../assets/docs-68daa8.css"
             crossorigin
-            integrity="sha384-KZOTUGWzd80/sqt3FP6mAi1u2CTmuleQLGN9qoxyEPLONtfZO9R2aQiRlTqJAoFZ"
+            integrity="sha384-gIuHELzUylcm0pdgAq9qC1ce1X5/EItTY/nVOwEyxj4j9x45W79z+lr5+MP2JGcC"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-d96cb0.css"
+            href="../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-OxODyIqt/73SRb0umHHJR/mqDLOCDa0ejnchYwIj5e8eFS39m2ShXFOg7r+N/P/T"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-a208fa.js"
+                    src="../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-KNr2avTFjccMjo4824CCigQwtKaqtgOGSlVha8PgV9+TqiI09Tfp9b/2rwetCTl6"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/c97d3537107cb126068b8d19475c68d91aafb386/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">FConfirmModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/5f40f79268c77a3cceb40c6a0508d79af766eef8/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">FConfirmModal</a>
             
         </code>
          
@@ -1322,78 +1322,255 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 </code></pre>
                 </div>
             <p>Om du använder <code>screenreader</code> för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i <code>label</code>. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>fullscreen</p>
-</td><td><p>Enable fullscreen mode in mobile.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>isOpen</p>
-</td><td><p>Prop for opening modal</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>content</p>
-</td><td><p>Simple text content</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;Brödtext&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>heading</p>
-</td><td><p>Simple text header</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;Rubrik&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>size</p>
-</td><td><p>The size of modal. 'large' and 'fullscreen' is valid.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>ariaCloseText</p>
-</td><td><p>The aria-label attribute text for the top right close button.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>buttons</p>
-</td><td><p>List of buttons</p>
-</td><td><p>FModalButtonDescriptor[]</p>
-</td><td><p>false</p>
-</td><td><p>(): FModalButtonDescriptor[] =&gt; {<br>
-return defaultButtons;<br>
-}</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>focus</p>
-</td><td><p>Default behavior is that the modal will restore focus to previous element once closed.</p>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fconfirmmodal-props">
+            <a class="header-anchor" href="#fconfirmmodal-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fconfirmmodal-prop-fullscreen"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-fullscreen"
+                                    ><span class="docs-api__name"
+                                        >fullscreen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable fullscreen mode in mobile.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-isopen"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-isopen"
+                                    ><span class="docs-api__name"
+                                        >isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Prop for opening modal</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-content"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-content"
+                                    ><span class="docs-api__name"
+                                        >content</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Simple text content</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;Brödtext&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-heading"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-heading"
+                                    ><span class="docs-api__name"
+                                        >heading</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Simple text header</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;Rubrik&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-size"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-size"
+                                    ><span class="docs-api__name"
+                                        >size</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The size of modal. 'large' and 'fullscreen' is valid.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-ariaclosetext"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-ariaclosetext"
+                                    ><span class="docs-api__name"
+                                        >ariaCloseText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The aria-label attribute text for the top right close button.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-buttons"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-buttons"
+                                    ><span class="docs-api__name"
+                                        >buttons</span
+                                    >: FModalButtonDescriptor[]</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>List of buttons</p>
+
+                            <p class="doc-api__item">Default: <code>(): FModalButtonDescriptor[] =&gt; {
+    return defaultButtons;
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-focus"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-focus"
+                                    ><span class="docs-api__name"
+                                        >focus</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Default behavior is that the modal will restore focus to previous element once closed.</p>
 <ul>
 <li>&quot;on&quot; (default) - component will set focus both when opened and closed</li>
 <li>&quot;off&quot; - focus strategy disabled</li>
 <li>&quot;open&quot; - focus will only be applied once modal is opened</li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;on&quot;</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>close</p>
-</td><td><p>Emits reason for closing modal</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>button.event</p>
-</td><td><p>Emits specified button event when clicked</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>heading</p>
-</td><td><p>Slot for advanced header.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>content</p>
-</td><td><p>Slot for advanced content.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="./fmodal.html">Modal dialogruta</a></p>
+
+                            <p class="doc-api__item">Default: <code>&quot;on&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fconfirmmodal-events">
+            <a class="header-anchor" href="#fconfirmmodal-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fconfirmmodal-event-close"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emits reason for closing modal</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-event-button-event"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-event-button-event"
+                                    ><span class="docs-api__name"
+                                        >button.event</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emits specified button event when clicked</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fconfirmmodal-slots">
+            <a class="header-anchor" href="#fconfirmmodal-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fconfirmmodal-slot-heading"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-slot-heading"
+                                    ><span class="docs-api__name"
+                                        >heading</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for advanced header.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-slot-content"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-slot-content"
+                                    ><span class="docs-api__name"
+                                        >content</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for advanced content.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="./fmodal.html">Modal dialogruta</a></p>
 
 
                     </div>
@@ -1415,9 +1592,9 @@ return defaultButtons;<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/c97d3537107cb126068b8d19475c68d91aafb386">c97d353</a>)<br />
+    pageheader-router (<a href="https://github.com/Forsakringskassan/designsystem/commits/5f40f79268c77a3cceb40c6a0508d79af766eef8">5f40f79</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/235">PR 235</a><br />
-        2025-02-06 14:36
+        2025-02-07 13:37
 </div>
 <div class="toolbar__item">
     <form id="version">

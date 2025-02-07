@@ -2024,7 +2024,7 @@
   var popupContainer = document.body;
   var production = true;
   var config = {
-    buttonOrder: 0 /* LEFT_TO_RIGHT */,
+    buttonOrder: 1 /* RIGHT_TO_LEFT */,
     teleportTarget: document.body,
     get popupContainer() {
       if (typeof popupContainer === "string") {
@@ -3411,7 +3411,7 @@
     },
     computed: {
       preparedButtons() {
-        return prepareButtonList(this.buttons, 0 /* LEFT_TO_RIGHT */);
+        return prepareButtonList(this.buttons, 1 /* RIGHT_TO_LEFT */);
       }
     },
     methods: {
