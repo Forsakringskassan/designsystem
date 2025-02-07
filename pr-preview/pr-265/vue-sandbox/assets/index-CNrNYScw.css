@@ -353,9 +353,7 @@
   --f-tooltip-offset: 0px;
   --f-tooltip-icon-size: 0px;
 }
-body {
-  font-family: var(--f-font-family);
-}
+
 *,
 *::before,
 *::after {
@@ -6914,6 +6912,8 @@ input[type=search]:focus,
   clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--f-border-width-medium, 2px)) min(100% - var(--f-border-width-medium, 2px), 100% - var(--i-popup-error-offset, 24px) + 5.7735026919px - var(--f-border-width-medium, 2px) * 0.5773502692), calc(100% + 10px - var(--f-border-width-medium, 2px) / 0.5) calc(100% - var(--i-popup-error-offset, 24px)), calc(100% - var(--f-border-width-medium, 2px)) max(var(--f-border-width-medium, 2px), 100% - var(--i-popup-error-offset, 24px) - 5.7735026919px + var(--f-border-width-medium, 2px) * 0.5773502692));
   -o-border-image: conic-gradient(var(--f-background-error, #fcf3f3) 0 0) 0/max(var(--f-border-width-medium, 2px), 100% - var(--i-popup-error-offset, 24px) - 5.7735026919px) 0 max(var(--f-border-width-medium, 2px), 100% - (100% - var(--i-popup-error-offset, 24px)) - 5.7735026919px) 0.2em/0 10px 0 0;
      border-image: conic-gradient(var(--f-background-error, #fcf3f3) 0 0) fill 0/max(var(--f-border-width-medium, 2px), 100% - var(--i-popup-error-offset, 24px) - 5.7735026919px) 0 max(var(--f-border-width-medium, 2px), 100% - (100% - var(--i-popup-error-offset, 24px)) - 5.7735026919px) 0.2em/0 10px 0 0;
+}body {
+  font-family: var(--f-font-family);
 }
 .sandbox-root {
     width: min(100% - 2rem, 80ch);
