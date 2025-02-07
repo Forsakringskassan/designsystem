@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-decd43.css"
+            href="../assets/docs-6c552f.css"
             crossorigin
-            integrity="sha384-QeA2UArWgZF2+Zqqhn3lPqylKhrXTjB7uxCtR6Y077OG2gAM9mpjw1uNWHx+4H4b"
+            integrity="sha384-A2w0gDkbX9N/NiOy0WaifkRycVxST1jAdfb0EAVxVcESWHwcV1p+vRqQK1O5W6+b"
             
         />
         <link
@@ -1006,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-118647.js"
+                    src="../assets/vendor-fkui-vue-746138.js"
                     crossorigin
-                    integrity="sha384-xLeQEivnnRGhbwvTJqHoa07vkPJBoir34TLQh0BVelmp8r4GUPkxU8T3EmE+Gidu"
+                    integrity="sha384-GDnaDsNhdFL35qw02+i3l4I4uU46/IwdUHdC8vwQ4BRnc+C10pd0Ey9XBNB/ZBS8"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/ea3182d88e4bfa5719a7a2a48bd4209f9808cf84/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/3bd0a3d36641e238cc8de12b818a3f0a84dfedbc/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
             
         </code>
          
@@ -1166,34 +1166,99 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
         <script defer src="./FTooltipHeadingExample-98656a.js"></script>
     </div>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>attachTo</p>
-</td><td><p>Element to attach tooltip toggle button.</p>
-<p>Only needed when using with arbitrary elements, e.g. when using with<br>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="ftooltip-props">
+            <a class="header-anchor" href="#ftooltip-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftooltip-prop-attachto"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-attachto"
+                                    ><span class="docs-api__name"
+                                        >attachTo</span
+                                    >: HTMLElement</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Element to attach tooltip toggle button.</p>
+<p>Only needed when using with arbitrary elements, e.g. when using with
 <code>FLabel</code> you do not need to set this prop.</p>
-</td><td><p>HTMLElement</p>
-</td><td><p>false</p>
-</td><td><p>null</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>v-model</p>
-</td><td><p>State (expanded or collapsed) of the tooltip. The value is <code>true</code> if the tooltip is expanded.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>screenReaderText</p>
-</td><td><p>Screen reader text for toggle button</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>closeButtonText</p>
-</td><td><p>Close button text</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>TranslationService.provider.translate(&quot;fkui.tooltip.close&quot;, &quot;Stäng&quot;)</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>headerTag</p>
-</td><td><p>Element to render for the header element inside the tooltip.</p>
+
+                            <p class="doc-api__item">Default: <code>null</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-prop-v-model"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>State (expanded or collapsed) of the tooltip. The value is <code>true</code> if the tooltip is expanded.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-prop-screenreadertext"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-screenreadertext"
+                                    ><span class="docs-api__name"
+                                        >screenReaderText</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Screen reader text for toggle button</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-prop-closebuttontext"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-closebuttontext"
+                                    ><span class="docs-api__name"
+                                        >closeButtonText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Close button text</p>
+
+                            <p class="doc-api__item">Default: <code>TranslationService.provider.translate(&quot;fkui.tooltip.close&quot;, &quot;Stäng&quot;)</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-prop-headertag"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-headertag"
+                                    ><span class="docs-api__name"
+                                        >headerTag</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Element to render for the header element inside the tooltip.</p>
 <p>Must be set to one of:</p>
 <ul>
 <li><code>h1</code></li>
@@ -1203,27 +1268,103 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
 <li><code>h5</code></li>
 <li><code>h6</code></li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>update:modelValue</p>
-</td><td><p>v-model event.</p>
-</td><td><p>value: boolean — Model value</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>toggle</p>
-</td><td><p>Emitted when the state of the tooltip (collapsed/expanded) changes.</p>
-</td><td><p>event: { isOpen: boolean } — New state of tooltip.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Tooltip header content</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>body</p>
-</td><td><p>Tooltip body content</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ftooltip-events">
+            <a class="header-anchor" href="#ftooltip-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="ftooltip-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#ftooltip-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>v-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>value: boolean</code> <span role="presentation">&mdash;</span> Model value</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-event-toggle"
+                                ><a class="docs-api__anchor" href="#ftooltip-event-toggle"
+                                    ><span class="docs-api__name"
+                                        >toggle</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when the state of the tooltip (collapsed/expanded) changes.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>event: { isOpen: boolean }</code> <span role="presentation">&mdash;</span> New state of tooltip.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ftooltip-slots">
+            <a class="header-anchor" href="#ftooltip-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftooltip-slot-header"
+                                ><a class="docs-api__anchor" href="#ftooltip-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Tooltip header content</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-slot-body"
+                                ><a class="docs-api__anchor" href="#ftooltip-slot-body"
+                                    ><span class="docs-api__name"
+                                        >body</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Tooltip body content</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1244,9 +1385,9 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    change-default-button-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/ea3182d88e4bfa5719a7a2a48bd4209f9808cf84">ea3182d</a>)<br />
+    change-default-button-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/3bd0a3d36641e238cc8de12b818a3f0a84dfedbc">3bd0a3d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/261">PR 261</a><br />
-        2025-02-06 15:19
+        2025-02-07 07:37
 </div>
 <div class="toolbar__item">
     <form id="version">

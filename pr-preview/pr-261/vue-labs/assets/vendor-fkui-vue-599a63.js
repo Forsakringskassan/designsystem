@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -5508,7 +5508,6 @@
       onClickPreviousButton() {
         if (!this.previousDisabled) {
           this.$emit("update:modelValue", this.previousValue);
-          this.$emit("change", this.previousValue);
           const previousMonth = this.getDateText(this.previousValue);
           const previousMonthText = this.$t("fkui.calendar-navbar.previous-month", "{{ previousMonth }} visas", {
             previousMonth
@@ -5855,7 +5854,6 @@
           return;
         }
         this.$emit("update:modelValue", navigatedMonth);
-        this.$emit("change", navigatedMonth);
         if (navigatedDay.month !== date.month) {
           await this.$nextTick();
         }
@@ -5945,14 +5943,13 @@
         required: true
       }
     },
-    emits: ["click", "change", "update:modelValue"],
+    emits: ["click", "update:modelValue"],
     methods: {
       onClickDay(date) {
         this.$emit("click", date);
       },
       onChangeMonth(date) {
         this.$emit("update:modelValue", date);
-        this.$emit("change", date);
       }
     }
   });
@@ -7891,7 +7888,7 @@
   }
   var $t = useTranslate();
   function useCombobox(inputRef, options, onOptionSelected) {
-    if (!options) {
+    if (options.value === void 0) {
       return {
         dropdownId: "",
         dropdownIsOpen: (0, import_vue.ref)(false),
@@ -7918,7 +7915,8 @@
     const selectMode = (0, import_vue.ref)(false);
     const selectedOption = (0, import_vue.ref)(null);
     const dropdownOptions = (0, import_vue.computed)(() => {
-      return filterOptions(options, filter2.value, selectMode.value);
+      var _options$value;
+      return filterOptions((_options$value = options.value) !== null && _options$value !== void 0 ? _options$value : [], filter2.value, selectMode.value);
     });
     const hasOptions = (0, import_vue.computed)(() => {
       return dropdownOptions.value.length > 0;
@@ -7954,7 +7952,7 @@
       let description = selectMode.value ? `${$t("fkui.combobox.selected", "Valt f\xF6rslag")} ` : "";
       if ((0, import_logic.isEmpty)(filter2.value) || selectMode.value) {
         description += $t("fkui.combobox.listDetails", `Det finns {{ count }} f\xF6rslag. Anv\xE4nd upp\xE5tpil och ned\xE5tpil f\xF6r att navigera bland f\xF6rslagen.`, {
-          count: options.length
+          count: options.value ? options.value.length : 0
         });
       } else if (hasOptions.value) {
         description += $t("fkui.combobox.matchesListDetails", `Det finns {{ count }} f\xF6rslag som matchar. Anv\xE4nd upp\xE5tpil och ned\xE5tpil f\xF6r att navigera bland f\xF6rslagen.`, {
@@ -8051,10 +8049,10 @@
     }
     async function onInputFocus() {
       var _a;
-      var _inputRef$value$value, _options$includes;
+      var _inputRef$value$value;
       await (0, import_vue.nextTick)();
       filter2.value = (_inputRef$value$value = (_a = inputRef.value) == null ? void 0 : _a.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
-      selectMode.value = (_options$includes = options == null ? void 0 : options.includes(filter2.value)) !== null && _options$includes !== void 0 ? _options$includes : false;
+      selectMode.value = options.value ? options.value.includes(filter2.value) : false;
     }
     async function onInputKeyDown(event) {
       let flag = false;
@@ -9476,7 +9474,7 @@
         default: import_logic.TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "\xC4r du s\xE4ker p\xE5 att du vill ta bort raden?")
       }
     },
-    emits: ["change", "created", "deleted", "updated", "update:modelValue"],
+    emits: ["created", "deleted", "updated", "update:modelValue"],
     data() {
       return {
         result: [],
@@ -9570,7 +9568,6 @@
         this.result = this.result.filter((item) => item !== this.item);
         this.$emit("deleted", this.item);
         this.$emit("update:modelValue", this.result);
-        this.$emit("change", this.result);
         (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
           assertive: true
         });
@@ -9593,7 +9590,6 @@
           this.result.push(this.item);
           this.$emit("created", this.item);
           this.$emit("update:modelValue", this.result);
-          this.$emit("change", this.result);
           this.callbackAfterItemAdd(this.item);
           (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
             assertive: true
@@ -9606,7 +9602,6 @@
           }
           this.$emit("updated", this.originalItemToUpdate);
           this.$emit("update:modelValue", this.result);
-          this.$emit("change", this.result);
           (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har \xE4ndrats"), {
             assertive: true
           });
@@ -10300,7 +10295,7 @@
       toggleDropdown,
       selectOption,
       closeDropdown
-    } = useCombobox(inputNode, props.options, onOptionSelected);
+    } = useCombobox(inputNode, (0, import_vue.toRef)(props, "options"), onOptionSelected);
     return {
       textFieldTableMode,
       viewValue,
@@ -10423,6 +10418,8 @@
        *
        * When set, the user can select a value from the list of options and filter while typing.
        *
+       * If options will be set at a later time, initially specify as an empty array.
+       *
        * If a formatter is used by the component, make sure the options are formatted as well.
        */
       options: {
@@ -10439,7 +10436,7 @@
         default: false
       }
     },
-    emits: ["blur", "change", "update", "update:modelValue"],
+    emits: ["blur", "change", "update:modelValue"],
     setup(props) {
       const {
         textFieldTableMode,
@@ -10548,7 +10545,6 @@
       async onChange() {
         if (!this.$refs.input.hasAttribute("data-validation")) {
           this.$emit("update:modelValue", this.viewValue);
-          this.$emit("update", this.viewValue);
           await this.$nextTick();
           this.$emit("change", this.viewValue);
         }
@@ -10563,7 +10559,6 @@
         }
         if (!this.$refs.input.hasAttribute("data-validation")) {
           this.$emit("update:modelValue", this.viewValue);
-          this.$emit("update", this.viewValue);
           await this.$nextTick();
           this.$emit("blur", this.viewValue);
         }
@@ -10582,7 +10577,6 @@
           }
           this.lastModelValue = newModelValue;
           this.$emit("update:modelValue", newModelValue);
-          this.$emit("update", newModelValue);
           await this.$nextTick();
           this.$emit(detail.nativeEvent, newModelValue);
           if (detail.isValid) {
@@ -12565,7 +12559,7 @@
         required: true
       }
     },
-    emits: ["change", "update:modelValue"],
+    emits: ["update:modelValue"],
     data() {
       return {
         currentStep: this.dialogueTree,
@@ -12618,7 +12612,6 @@
           steps: this.steps
         };
         this.$emit("update:modelValue", emit);
-        this.$emit("change", emit);
       }
     }
   });
@@ -13349,7 +13342,6 @@
     emits: [
       "change",
       "click",
-      "update",
       "unselect",
       "update:modelValue",
       "update:active",
@@ -13542,7 +13534,6 @@
       updateVModelWithSelectedRows() {
         if (this.modelValue) {
           this.$emit("update:modelValue", this.selectedRows);
-          this.$emit("update", this.selectedRows);
         }
       },
       rowClasses(row, index) {
@@ -14334,7 +14325,7 @@
         default: () => import_logic.ElementIdService.generateElementId()
       }
     },
-    emits: ["change", "click", "update", "unselect", "update:modelValue", "select", "update:active"],
+    emits: ["change", "click", "unselect", "update:modelValue", "select", "update:active"],
     setup() {
       return ActivateItemInjected();
     },
@@ -14432,7 +14423,6 @@
       updateVModelWithSelectedItems() {
         if (this.modelValue) {
           this.$emit("update:modelValue", this.selectedItems);
-          this.$emit("update", this.selectedItems);
         }
       },
       updateSelectedItemsFromVModel() {
@@ -16312,7 +16302,7 @@
         default: false
       }
     },
-    emits: ["cancel", "change", "completed", "update:modelValue"],
+    emits: ["cancel", "completed", "update:modelValue"],
     data() {
       return {
         steps: []
@@ -16391,10 +16381,8 @@
         if (open >= 0) {
           const step = this.steps[open - 1];
           this.$emit("update:modelValue", step.key);
-          this.$emit("change", step.key);
         } else {
           this.$emit("update:modelValue", null);
-          this.$emit("change", null);
         }
       },
       cancel(isFinalStep) {

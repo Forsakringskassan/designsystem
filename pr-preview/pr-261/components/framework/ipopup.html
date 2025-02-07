@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-decd43.css"
+            href="../../assets/docs-6c552f.css"
             crossorigin
-            integrity="sha384-QeA2UArWgZF2+Zqqhn3lPqylKhrXTjB7uxCtR6Y077OG2gAM9mpjw1uNWHx+4H4b"
+            integrity="sha384-A2w0gDkbX9N/NiOy0WaifkRycVxST1jAdfb0EAVxVcESWHwcV1p+vRqQK1O5W6+b"
             
         />
         <link
@@ -1006,9 +1006,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-118647.js"
+                    src="../../assets/vendor-fkui-vue-746138.js"
                     crossorigin
-                    integrity="sha384-xLeQEivnnRGhbwvTJqHoa07vkPJBoir34TLQh0BVelmp8r4GUPkxU8T3EmE+Gidu"
+                    integrity="sha384-GDnaDsNhdFL35qw02+i3l4I4uU46/IwdUHdC8vwQ4BRnc+C10pd0Ey9XBNB/ZBS8"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1031,7 +1031,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/ea3182d88e4bfa5719a7a2a48bd4209f9808cf84/packages/vue/src/internal-components/IPopup/IPopup.vue">IPopup</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/3bd0a3d36641e238cc8de12b818a3f0a84dfedbc/packages/vue/src/internal-components/IPopup/IPopup.vue">IPopup</a>
             
         </code>
          
@@ -1562,75 +1562,235 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
         <h2 id="skrollning"><a class="header-anchor" href="#skrollning">Skrollning</a></h2><p>När popup öppnas som inline kommer den att skrolla så att den är synlig i fönstret.</p>
 <p>Popup använder först och främst sin närmaste förälder med klassen <code>scroll-target</code> som skrollyta.
 Om popup inte hittar en förälder med <code>scroll-target</code> så kommer den istället använda fönstret (<code>window</code>).</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>isOpen</p>
-</td><td><p>Toggle open/closed popup.</p>
-</td><td><p>boolean</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>anchor</p>
-</td><td><p>DOM element to position popup at.</p>
-</td><td><p>HTMLElement | null | undefined</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>inline</p>
-</td><td><p>Type of inline behaviour.</p>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="ipopup-props">
+            <a class="header-anchor" href="#ipopup-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ipopup-prop-isopen"
+                                ><a class="docs-api__anchor" href="#ipopup-prop-isopen"
+                                    ><span class="docs-api__name"
+                                        >isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Toggle open/closed popup.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopup-prop-anchor"
+                                ><a class="docs-api__anchor" href="#ipopup-prop-anchor"
+                                    ><span class="docs-api__name"
+                                        >anchor</span
+                                    >: HTMLElement | null | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>DOM element to position popup at.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopup-prop-inline"
+                                ><a class="docs-api__anchor" href="#ipopup-prop-inline"
+                                    ><span class="docs-api__name"
+                                        >inline</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Type of inline behaviour.</p>
 <ul>
 <li><code>&quot;auto&quot;</code> changes between overlay or inline depending on window size.</li>
 <li><code>&quot;always&quot;</code> forces the popup to always be inline.</li>
 <li><code>&quot;never&quot;</code> forces the popup to never be inline.</li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;auto&quot;</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>container</p>
-</td><td><p>Which element to use as container.</p>
-</td><td><p>HTMLElement | null | undefined</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>viewport</p>
-</td><td><p>Which element to use as viewport.</p>
-</td><td><p>HTMLElement</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-return document.documentElement;<br>
-}</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>keyboardTrap</p>
-</td><td><p>Prevents tabbing outside of component.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>focusElement</p>
-</td><td><p>Function that returns the element that will receive focus</p>
-</td><td><p>() =&gt; HTMLElement | null</p>
-</td><td><p>false</p>
-</td><td><p>null</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>setFocus</p>
-</td><td><p>Set focus on first tabbable element (or element in the <code>focusElement</code> prop if provided) when opened.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>open</p>
-</td><td><p>Emitted when popup is visible and placement is fully calculated.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>close</p>
-</td><td><p>Emitted when clicked outside of popup.</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th><th>Deprecated</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>‐</p>
-</td><td><p>toggleIsOpen<br>
-placement</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;auto&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopup-prop-container"
+                                ><a class="docs-api__anchor" href="#ipopup-prop-container"
+                                    ><span class="docs-api__name"
+                                        >container</span
+                                    >: HTMLElement | null | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Which element to use as container.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopup-prop-viewport"
+                                ><a class="docs-api__anchor" href="#ipopup-prop-viewport"
+                                    ><span class="docs-api__name"
+                                        >viewport</span
+                                    >: HTMLElement</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Which element to use as viewport.</p>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    return document.documentElement;
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopup-prop-keyboardtrap"
+                                ><a class="docs-api__anchor" href="#ipopup-prop-keyboardtrap"
+                                    ><span class="docs-api__name"
+                                        >keyboardTrap</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Prevents tabbing outside of component.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopup-prop-focuselement"
+                                ><a class="docs-api__anchor" href="#ipopup-prop-focuselement"
+                                    ><span class="docs-api__name"
+                                        >focusElement</span
+                                    >: () =&gt; HTMLElement | null</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Function that returns the element that will receive focus</p>
+
+                            <p class="doc-api__item">Default: <code>null</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopup-prop-setfocus"
+                                ><a class="docs-api__anchor" href="#ipopup-prop-setfocus"
+                                    ><span class="docs-api__name"
+                                        >setFocus</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set focus on first tabbable element (or element in the <code>focusElement</code> prop if provided) when opened.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ipopup-events">
+            <a class="header-anchor" href="#ipopup-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="ipopup-event-open"
+                                ><a class="docs-api__anchor" href="#ipopup-event-open"
+                                    ><span class="docs-api__name"
+                                        >open</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when popup is visible and placement is fully calculated.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ipopup-event-close"
+                                ><a class="docs-api__anchor" href="#ipopup-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when clicked outside of popup.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ipopup-slots">
+            <a class="header-anchor" href="#ipopup-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ipopup-slot-default"
+                                ><a class="docs-api__anchor" href="#ipopup-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>toggleIsOpen: unknown</code></li><li><code>placement: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1651,9 +1811,9 @@ placement</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    change-default-button-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/ea3182d88e4bfa5719a7a2a48bd4209f9808cf84">ea3182d</a>)<br />
+    change-default-button-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/3bd0a3d36641e238cc8de12b818a3f0a84dfedbc">3bd0a3d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/261">PR 261</a><br />
-        2025-02-06 15:19
+        2025-02-07 07:37
 </div>
 <div class="toolbar__item">
     <form id="version">
