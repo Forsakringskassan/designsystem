@@ -20,7 +20,7 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
 +@use "@fkui/theme-default";
 
 -@use "@fkui/design/src/fkui-int";
-+@use "@fkui/design/src/fkui";
++@use "@fkui/design";
 ```
 
 ## Deprekerade CSS-variabler excluderade från standardtema
