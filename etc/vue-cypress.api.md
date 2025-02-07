@@ -493,19 +493,16 @@ export class FPageHeaderPageobject implements BasePageObject {
     skipLink(): DefaultCypressChainable;
 }
 
-// @public (undocumented)
+// @public
 export class FProgressbarPageObject implements BasePageObject {
-    constructor(selector: string);
+    constructor(selector?: string);
+    el(): DefaultCypressChainable;
+    // @internal (undocumented)
+    progressMeter(): DefaultCypressChainable;
+    progressStatus(): Cypress.Chainable<ProgressbarStatus>;
     // (undocumented)
-    ariaValueNow(): Cypress.Chainable<string | undefined>;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
-    // (undocumented)
-    progressMeter: () => DefaultCypressChainable;
-    // (undocumented)
-    progressStatus(): Cypress.Chainable<string>;
-    // (undocumented)
-    selector: string;
+    readonly selector: string;
+    value(): Cypress.Chainable<number>;
 }
 
 // @public (undocumented)
@@ -781,6 +778,9 @@ export class IPopupPageObject implements BasePageObject {
     // (undocumented)
     selector: string;
 }
+
+// @public (undocumented)
+export type ProgressbarStatus = "pending" | "inprogress" | "finished";
 
 // @public
 export enum STATUS {
