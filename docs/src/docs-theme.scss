@@ -1,4 +1,4 @@
-@use "@fkui/theme-default/dist/fkui-css-variables";
+@use "pkg:@fkui/theme-default";
 @use "@fkui/theme-default/src/palette-variables" as palette;
 @use "@fkui/design/src/core/config-variables" with (
     $asset-path: ".",
