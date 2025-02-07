@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-543fa6.json"
+            href="../../../search-data-2a28f6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Y6c11j/G8LUhNHm19kxw6RwqMUYTT8VEiw89934/j1Z+ehzLsTaHPCfX9RMpTanC"
+            integrity="sha384-wKSLF09w79ktUX5cjTb8INMhfIAnQdV+1vQ9sJ9xRYGspi8NqKOwC5YqDv3FDstE"
             id="search-data"
         />
     </head>
@@ -461,7 +461,7 @@
             href="./overview.html"
             
         >
-            Överblick
+            Sammanfattning
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -662,12 +662,11 @@
 <span class="hljs-addition">+config.teleportTarget = &quot;my &gt; selector&quot;;</span>
 </code></pre>
                 </div>
-            <p>Den inbördes ordning som knapparna presenteras i har ändrats, <code>FKUIConfig.buttonOrder</code> byter standardvärde till <code>RIGHT_TO_LEFT</code>.
-För att behålla tidigare ordning behöver applikationens konfiguration uppdateras.</p>
+            <p>Den inbördes ordning som knapparna presenteras i har ändrats, <code>FKUIConfig.buttonOrder</code> byter standardvärde till <code>RIGHT_TO_LEFT</code>. Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta <code>LEFT_TO_RIGHT</code>.</p>
 <p>Görs lämpligtvis i applikationens <code>main.ts</code>.</p>
 
                 <div
-                    id="example-a239ad"
+                    id="example-daf606"
                     class="code-preview code-preview--default"
                     
                     
@@ -704,7 +703,7 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-2409bc"
+                    id="example-9646dc"
                     class="code-preview code-preview--default"
                     
                     
@@ -742,7 +741,7 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-d84a96"
+                    id="example-e2b7d5"
                     class="code-preview code-preview--default"
                     
                     
@@ -759,7 +758,7 @@ Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng 
 Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
 
                 <div
-                    id="example-a8339b"
+                    id="example-28e37d"
                     class="code-preview code-preview--default"
                     
                     
@@ -773,7 +772,7 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
             <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
                 <div
-                    id="example-7086e2"
+                    id="example-f758a1"
                     class="code-preview code-preview--default"
                     
                     
@@ -826,9 +825,9 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    migrationguide-v6 (<a href="https://github.com/Forsakringskassan/designsystem/commits/86b8169759d4b75d6ee7f8c58ecbe76cb51bb993">86b8169</a>)<br />
+    migrationguide-v6 (<a href="https://github.com/Forsakringskassan/designsystem/commits/a2e23cac3c9e901454a4b941c80a40842f4c3516">a2e23ca</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/264">PR 264</a><br />
-        2025-02-07 11:52
+        2025-02-07 14:03
 </div>
 <div class="toolbar__item">
     <form id="version">
