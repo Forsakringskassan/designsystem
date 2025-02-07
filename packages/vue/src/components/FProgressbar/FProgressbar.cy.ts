@@ -2,7 +2,7 @@ import { FProgressbarPageObject } from "../../cypress";
 import FProgressbar from "./FProgressbar.vue";
 
 describe("FProgressbar", () => {
-    const progressbar = new FProgressbarPageObject(".progress");
+    const progressbar = new FProgressbarPageObject();
 
     it("should have aria-label", () => {
         const text = "Lorem ipsum dolor sit amet";
@@ -23,7 +23,7 @@ describe("FProgressbar", () => {
             },
         });
         progressbar.progressStatus().should("be.equal", "pending");
-        progressbar.ariaValueNow().should("be.equal", "0");
+        progressbar.value().should("be.equal", 0);
     });
 
     it("should have state inprogress when value is between 1 to 99", () => {
@@ -34,7 +34,7 @@ describe("FProgressbar", () => {
             },
         });
         progressbar.progressStatus().should("be.equal", "inprogress");
-        progressbar.ariaValueNow().should("be.equal", "40");
+        progressbar.value().should("be.equal", 40);
     });
 
     it("should have state finished when value is 100", () => {
@@ -45,6 +45,6 @@ describe("FProgressbar", () => {
             },
         });
         progressbar.progressStatus().should("be.equal", "finished");
-        progressbar.ariaValueNow().should("be.equal", "100");
+        progressbar.value().should("be.equal", 100);
     });
 });

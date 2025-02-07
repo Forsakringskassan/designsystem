@@ -88,6 +88,18 @@ Den deprekerade metoden `FNavigationMenuPageobject.menu()` är borttagen och ers
 +nav.item(0).click();
 ```
 
+### `FProgressbarPageObject`
+
+Metoden `ariaValueNow()` har ändrats till `value()` och returnerar nu `number` istället för `string`.
+
+```ts name=progressbar-ariavaluenow nocompile hidden
+progressbar.ariaValueNow().should("equal", "40");
+```
+
+```ts compare=progressbar-ariavaluenow
+progressbar.value().should("equal", 40);
+```
+
 ## `FTooltipPageObject`
 
 Den deprekerade metoden `FTooltipPageObject.content()` har tagits bort och är ersatt med direkta metoder på `FTooltipPageObject`.
