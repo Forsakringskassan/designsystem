@@ -15,8 +15,8 @@ components/fcalendar.html
 components/fcard.html
 components/fcontextmenu.html
 components/fdialoguetree.html
-components/fform.html -> gettingstarted/migration/migrating-to-v6.html
-components/fformdeprecated.html -> gettingstarted/migration/migrating-to-v6.html
+components/fform.html -> gettingstarted/migration/migrating-to-v6/vue.html
+components/fformdeprecated.html -> gettingstarted/migration/migrating-to-v6/vue.html
 components/ficon.html
 components/file-upload/ffileitem.html
 components/file-upload/ffileselector.html
@@ -133,7 +133,11 @@ gettingstarted/help-and-support.html
 gettingstarted/index.html
 gettingstarted/migration/migrating-to-fieldset.html
 gettingstarted/migration/migrating-to-v5.html
-gettingstarted/migration/migrating-to-v6.html
+gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html
+gettingstarted/migration/migrating-to-v6/design.html
+gettingstarted/migration/migrating-to-v6/logic.html
+gettingstarted/migration/migrating-to-v6/overview.html
+gettingstarted/migration/migrating-to-v6/vue.html
 gettingstarted/use-design-system/getting-started-application.html
 gettingstarted/use-design-system/getting-started.html
 gettingstarted/use-design-system/icon-library.html
