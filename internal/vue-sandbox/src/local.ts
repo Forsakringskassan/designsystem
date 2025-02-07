@@ -1,4 +1,4 @@
-import "@fkui/theme-default/dist/fkui-css-variables.css";
+import "@fkui/theme-default";
 import "@fkui/design/lib/fonts.css";
 import "@fkui/design/lib/fkui.css";
 

@@ -15,17 +15,13 @@ Tillämpnings-specifika leverabler (internt, externt, HAPO) har ersatts av rena 
 FKUI tillhandahåller istället standardleverabler för tema, design.
 Som konsument finns det möjlighet att själv tillhandahålla specifika tillämpningar.
 
-````diff
-@import "@fkui/design/src/fkui-int";
-@import "@fkui/css-variables/dist/fkui-int-css-variables";
-
 ```diff
 -@use "@fkui/css-variables/dist/fkui-int-css-variables";
-+@use "@fkui/theme-default/dist/fkui-css-variables";
++@use "@fkui/theme-default";
 
 -@use "@fkui/design/src/fkui-int";
 +@use "@fkui/design/src/fkui";
-````
+```
 
 ## Deprekerade CSS-variabler excluderade från standardtema
 

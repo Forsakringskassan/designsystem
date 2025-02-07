@@ -16,6 +16,8 @@
   },
   "license": "MIT",
   "author": "Försäkringskassan",
+  "main": "./dist/fkui-css-variables.css",
+  "sass": "./src/fkui-css-variables.scss",
   "files": [
     "dist",
     "src"
