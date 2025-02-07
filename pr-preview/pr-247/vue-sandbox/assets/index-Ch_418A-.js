@@ -7609,6 +7609,9 @@ if (document.readyState === "loading") {
 } else {
   injectSpritesheet();
 }
+const configLogic = {
+  production: true
+};
 function isEmpty(value) {
   return !value;
 }
@@ -9439,17 +9442,21 @@ function pushFocus(element) {
 function popFocus(handle) {
   if (_focusElementStack.length === 0) {
     const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
-    {
+    if (configLogic.production) {
       console.error(emptyStackErrorMsg);
       return;
+    } else {
+      throw new Error(emptyStackErrorMsg);
     }
   }
   const top = _focusElementStack.pop();
   if ((top == null ? void 0 : top.id) !== handle[sym]) {
     const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top == null ? void 0 : top.id} but got ${handle[sym]}`;
-    {
+    if (configLogic.production) {
       console.error(outOfOrderErrorMsg);
       return;
+    } else {
+      throw new Error(outOfOrderErrorMsg);
     }
   }
   focus$1(top == null ? void 0 : top.element);
@@ -14400,6 +14407,7 @@ var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
   return FKUIConfigButtonOrder2;
 })(FKUIConfigButtonOrder || {});
 let popupContainer = document.body;
+let production = true;
 const config = {
   buttonOrder: FKUIConfigButtonOrder.RIGHT_TO_LEFT,
   teleportTarget: document.body,
@@ -14416,6 +14424,13 @@ const config = {
   },
   set popupContainer(value) {
     popupContainer = value;
+  },
+  set production(value) {
+    production = value;
+    configLogic.production = value;
+  },
+  get production() {
+    return production;
   }
 };
 function setRunningContext(app2) {
