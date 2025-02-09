@@ -114,7 +114,7 @@
     "glob": "11.0.1",
     "html-validate": "9.2.1",
     "html-validate-markdown": "5.0.0",
-    "html-validate-vue": "7.1.4",
+    "html-validate-vue": "7.1.5",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "lerna": "8.1.9",
