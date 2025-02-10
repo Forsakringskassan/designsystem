@@ -10,7 +10,7 @@ redirect_from:
 
 ## Formatbeskrivning på etikett
 
-Använder du formatbeskrivning på {@link FLabel} eller en komponent som nyttjar den (exempelvis {@link FTextField} måste du ändra namnet på bindings:
+Använder du formatbeskrivning på {@link FLabel} eller en komponent som nyttjar den (exempelvis {@link FTextField}) måste du ändra namnet på bindings:
 
 ```diff
  <f-text-field>
@@ -38,15 +38,7 @@ Klassnamnet för formatbeskrivning på etikett är ändrat.
 
 ## Konfiguration
 
-De deprekerade egenskaperna `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna och ersatta med den kombinerade `FKUIConfig.teleportTarget`.
-
-```diff
- import { config } from "@fkui/vue";
-
--config.modalTarget = "my > selector";
--config.popupTarget = "my > selector";
-+config.teleportTarget = "my > selector";
-```
+### Förändrad knappordning
 
 Den inbördes ordning som knapparna presenteras i har ändrats, `FKUIConfig.buttonOrder` byter standardvärde till `RIGHT_TO_LEFT`. Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta `LEFT_TO_RIGHT`.
 
@@ -56,6 +48,18 @@ Görs lämpligtvis i applikationens `main.ts`.
 import { config, FKUIConfigButtonOrder } from "@fkui/vue";
 
 config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
+```
+
+### Teleport target
+
+De deprekerade egenskaperna `FKUIConfig.modalTarget` och `FKUIConfig.popupTarget` är borttagna och ersatta med den kombinerade `FKUIConfig.teleportTarget`.
+
+```diff
+ import { config } from "@fkui/vue";
+
+-config.modalTarget = "my > selector";
+-config.popupTarget = "my > selector";
++config.teleportTarget = "my > selector";
 ```
 
 ## `FCalendar`

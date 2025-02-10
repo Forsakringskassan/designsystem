@@ -8,14 +8,26 @@ layout: article
 
 ## Sammanfattning
 
-- Det tidigare deprekerade formulärskomponenter "containermanér" (`FForm` och `FFormStep`) är nu borttagna.
-- Uppstädning bland tidigare deprekerade funktioner, komponenter, osv.
-- Klassnamn och bindings för formatbeskrivning på {@link FLabel} och komponenter baserade på den är ändrat.
-- Cypress ändrar namn från `@fkui/vue/pageobject` till `@fkui/vue/cypress`.
-- `@fkui/css-variables` har bytt namn till `@fkui/theme-default` och levererar ett standardtema.
-- `@fkui/design` levererar enbart standarddesign.
-- Standard knappordning i modal har ändrats, se avsnitt {@link migrating-to-v6-vue#konfiguration Konfiguration} .
-- `FPageHeader` `logo` slot innehåller inte längre `router-link` eller logotyp som standard.
+- Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
+  De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.
+
+- Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+  Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.
+
+- Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället {@link migrating-to-fieldset FFieldset}.
+
+- Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.
+
+- Ett antal andra funktioner, typer och komponenter är också borttagna.
+
+- Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).
+
+- Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.
+
+- Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
+  Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.
+
+- Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.
 
 ## `@fkui/design`
 
@@ -71,9 +83,9 @@ layout: article
 
 **Borttaget:**
 
-- {@link migrating-to-v6-cypress-pageobjects#trimmedtext_metoden `trimmedText()`}
+- {@link migrating-to-v6-cypress-pageobjects#trimmedtext `trimmedText()`}
 - {@link migrating-to-v6-cypress-pageobjects#fmessageboxpageobject `FMessageBoxPageObject.title()`}
-- {@link migrating-to-v6-cypress-pageobjects#fmessageboxpageobject`FMessageBoxPageObject.body()`}
-- {@link migrating-to-v6-cypress-pageobjects#floaderpageobject_loader_metoden `FLoaderPageobject.loader()`}
-- {@link migrating-to-v6-cypress-pageobjects#fnavigationmenupageobject_menu_metoden `FNavigationMenuPageobject.menu()`}
-- {@link migrating-to-v6-cypress-pageobjects#ftooltippageobject_content_methoden `FTooltipPageObject.content()`}
+- {@link migrating-to-v6-cypress-pageobjects#fmessageboxpageobject `FMessageBoxPageObject.body()`}
+- {@link migrating-to-v6-cypress-pageobjects#floaderpageobject `FLoaderPageobject.loader()`}
+- {@link migrating-to-v6-cypress-pageobjects#fnavigationmenupageobject `FNavigationMenuPageobject.menu()`}
+- {@link migrating-to-v6-cypress-pageobjects#ftooltippageobject `FTooltipPageObject.content()`}
