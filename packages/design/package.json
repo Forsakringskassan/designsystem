@@ -1,6 +1,6 @@
 {
   "name": "@fkui/design",
-  "version": "5.46.0",
+  "version": "6.0.0",
   "description": "fkui design",
   "keywords": [
     "fkui",
@@ -36,8 +36,8 @@
     "runner": "jest-light-runner"
   },
   "devDependencies": {
-    "@fkui/icon-lib-default": "5.46.0",
-    "@fkui/theme-default": "5.46.0",
+    "@fkui/icon-lib-default": "6.0.0",
+    "@fkui/theme-default": "6.0.0",
     "autoprefixer": "10.4.20",
     "cssnano": "7.0.6",
     "flush-promises": "1.0.2",
