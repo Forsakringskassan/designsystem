@@ -11,8 +11,18 @@ Startpunkt används för att framhäva en länk extra tydligt, som till exempel 
 
 Startpunkten tar alltid upp 100% tillgänglig yta.
 
-```import live-example
-EntrypointLiveExample.vue
+```vue
+<script setup>
+import { FIcon } from "@fkui/vue";
+</script>
+
+<template>
+    <a class="entrypoint" href="javascript:">
+        Ansök om hundbidrag
+        <span class="sr-only"> Till tjänsten ansök om hundbidrag </span>
+        <f-icon name="arrow-right" class="entrypoint__icon"></f-icon>
+    </a>
+</template>
 ```
 
 ## Copy
