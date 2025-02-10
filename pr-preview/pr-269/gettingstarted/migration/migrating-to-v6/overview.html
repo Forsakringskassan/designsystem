@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-a9cef3.css"
+            href="../../../assets/docs-055f1d.css"
             crossorigin
-            integrity="sha384-iAOkUQ1Kj7CBs2J9a41CqnbmnKFNCCTVpolqdBzUvsKZ6t2aDHL7/Jl+rJkG4XLs"
+            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
             
         />
         <link
@@ -579,14 +579,36 @@
                     <div id="content">
                         <!-- prettier-ignore -->
 <h2 id="sammanfattning"><a class="header-anchor" href="#sammanfattning">Sammanfattning</a></h2><ul>
-<li>Det tidigare deprekerade formulärskomponenter &quot;containermanér&quot; (<code>FForm</code> och <code>FFormStep</code>) är nu borttagna.</li>
-<li>Uppstädning bland tidigare deprekerade funktioner, komponenter, osv.</li>
-<li>Klassnamn och bindings för formatbeskrivning på <a href="../../../components/flabel.html"><code>FLabel</code></a> och komponenter baserade på den är ändrat.</li>
-<li>Cypress ändrar namn från <code>@fkui/vue/pageobject</code> till <code>@fkui/vue/cypress</code>.</li>
-<li><code>@fkui/css-variables</code> har bytt namn till <code>@fkui/theme-default</code> och levererar ett standardtema.</li>
-<li><code>@fkui/design</code> levererar enbart standarddesign.</li>
-<li>Standard knappordning i modal har ändrats, se avsnitt <a href="./vue.html#konfiguration">Konfiguration</a> .</li>
-<li><code>FPageHeader</code> <code>logo</code> slot innehåller inte längre <code>router-link</code> eller logotyp som standard.</li>
+<li>
+<p>Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
+De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.</p>
+</li>
+<li>
+<p>Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.</p>
+</li>
+<li>
+<p>Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migrating-to-fieldset.html">FFieldset</a>.</p>
+</li>
+<li>
+<p>Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.</p>
+</li>
+<li>
+<p>Ett antal andra funktioner, typer och komponenter är också borttagna.</p>
+</li>
+<li>
+<p>Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).</p>
+</li>
+<li>
+<p>Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.</p>
+</li>
+<li>
+<p>Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
+Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.</p>
+</li>
+<li>
+<p>Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+</li>
 </ul>
 <h2 id="fkui_design"><a class="header-anchor" href="#fkui_design"><code>@fkui/design</code></a></h2><p><strong>Borttaget</strong>:</p>
 <ul>
@@ -635,12 +657,12 @@
 </ul>
 <h2 id="cypress"><a class="header-anchor" href="#cypress">Cypress</a></h2><p><strong>Borttaget:</strong></p>
 <ul>
-<li><a href="./cypress-pageobjects.html#trimmedtext_metoden"><code>trimmedText()</code></a></li>
+<li><a href="./cypress-pageobjects.html#trimmedtext"><code>trimmedText()</code></a></li>
 <li><a href="./cypress-pageobjects.html#fmessageboxpageobject"><code>FMessageBoxPageObject.title()</code></a></li>
-<li><a href="./cypress-pageobjects.html#fmessageboxpageobject<code>FMessageBoxPageObject.body()</code>">Version 6 migreringsguide: Cypress Pageobjects</a></li>
-<li><a href="./cypress-pageobjects.html#floaderpageobject_loader_metoden"><code>FLoaderPageobject.loader()</code></a></li>
-<li><a href="./cypress-pageobjects.html#fnavigationmenupageobject_menu_metoden"><code>FNavigationMenuPageobject.menu()</code></a></li>
-<li><a href="./cypress-pageobjects.html#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code></a></li>
+<li><a href="./cypress-pageobjects.html#fmessageboxpageobject"><code>FMessageBoxPageObject.body()</code></a></li>
+<li><a href="./cypress-pageobjects.html#floaderpageobject"><code>FLoaderPageobject.loader()</code></a></li>
+<li><a href="./cypress-pageobjects.html#fnavigationmenupageobject"><code>FNavigationMenuPageobject.menu()</code></a></li>
+<li><a href="./cypress-pageobjects.html#ftooltippageobject"><code>FTooltipPageObject.content()</code></a></li>
 </ul>
 
 
@@ -663,9 +685,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    remove-logo (<a href="https://github.com/Forsakringskassan/designsystem/commits/f1ceb9b09735d89d47ae338c2fddff1f34421533">f1ceb9b</a>)<br />
+    remove-logo (<a href="https://github.com/Forsakringskassan/designsystem/commits/f17468190ffc2870cb0339a07b29dfa374a90076">f174681</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/269">PR 269</a><br />
-        2025-02-10 14:12
+        2025-02-10 14:24
 </div>
 <div class="toolbar__item">
     <form id="version">

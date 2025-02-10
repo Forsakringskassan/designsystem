@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-a9cef3.css"
+            href="../../../assets/docs-055f1d.css"
             crossorigin
-            integrity="sha384-iAOkUQ1Kj7CBs2J9a41CqnbmnKFNCCTVpolqdBzUvsKZ6t2aDHL7/Jl+rJkG4XLs"
+            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
             
         />
         <link
@@ -562,9 +562,9 @@
                                 
                                 <li><a href="#tillampnings_specifika_leverabler_borttagna">Tillämpnings-specifika leverabler borttagna</a></li>
                                 
-                                <li><a href="#deprekerade_css_variabler_excluderade_fran_standardtema">Deprekerade CSS-variabler excluderade från standardtema</a></li>
+                                <li><a href="#deprekerade_css_variabler_borttagna">Deprekerade CSS-variabler borttagna</a></li>
                                 
-                                <li><a href="#fmodal_deprekerade_css_klasser">FModal deprekerade CSS-klasser</a></li>
+                                <li><a href="#fmodal_borttagna_css_klasser">FModal borttagna CSS-klasser</a></li>
                                 
                                 <li><a href="#entrypoint_tar_alltid_upp_100_yta">Entrypoint tar alltid upp 100% yta</a></li>
                                 
@@ -578,34 +578,36 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Tillämpnings-specifika leverabler (internt, externt, HAPO) har ersatts av rena FKUI-leverabler:</p>
+<p>Från version 6.0.0 levereras bara ett tema, det som tidigare hette EXP är nu standard.
+INT-temat är utbrutet och levereras inte av designsystemet längre.</p>
 <ul>
-<li>paketet <code>@fkui/css-variables</code> har bytt namn till <code>@fkui/theme-default</code> och levererar ett standardtema</li>
-<li>paketet <code>@fkui/design</code> levererar enbart standarddesign</li>
-<li>paketet <code>@fkui/design</code> leverar inte längre logotyper</li>
+<li><code>@fkui/css-variables</code> har bytt namn till <code>@fkui/theme-default</code>.</li>
+<li><code>@fkui/design</code> levererar nu enbart ett tema.</li>
+<li>paketet <code>@fkui/design</code> levererar inte längre logotyper</li>
 </ul>
-<h2 id="tillampnings_specifika_leverabler_borttagna"><a class="header-anchor" href="#tillampnings_specifika_leverabler_borttagna">Tillämpnings-specifika leverabler borttagna</a></h2><p>FKUI tillhandahåller istället standardleverabler för tema, design.
-Som konsument finns det möjlighet att själv tillhandahålla specifika tillämpningar.</p>
+<h2 id="tillampnings_specifika_leverabler_borttagna"><a class="header-anchor" href="#tillampnings_specifika_leverabler_borttagna">Tillämpnings-specifika leverabler borttagna</a></h2><p>Designsystemet tillhandahåller nu endast ett tema.
+Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.</p>
 
                 <div
-                    id="example-2a6dba"
+                    id="example-36eab3"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/css-variables/dist/fkui-int-css-variables&quot;;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/css-variables/dist/fkui-exp-css-variables&quot;;</span>
 <span class="hljs-addition">+@use &quot;@fkui/theme-default&quot;;</span>
 
-<span class="hljs-deletion">-@use &quot;@fkui/design/src/fkui-int&quot;;</span>
+<span class="hljs-deletion">-@use &quot;@fkui/design/src/fkui-exp&quot;;</span>
 <span class="hljs-addition">+@use &quot;@fkui/design&quot;;</span>
 </code></pre>
                 </div>
-            <h2 id="deprekerade_css_variabler_excluderade_fran_standardtema"><a class="header-anchor" href="#deprekerade_css_variabler_excluderade_fran_standardtema">Deprekerade CSS-variabler excluderade från standardtema</a></h2><p>Möjlighet finns att importera separat vid behov.</p>
+            <p><a href="../../use-design-system/getting-started-application.html">Läs mer om att använda ett eget tema.</a></p>
+<h2 id="deprekerade_css_variabler_borttagna"><a class="header-anchor" href="#deprekerade_css_variabler_borttagna">Deprekerade CSS-variabler borttagna</a></h2><p>Möjlighet finns att importera separat vid behov.</p>
 
                 <div
-                    id="example-031fc1"
+                    id="example-c7fe9d"
                     class="code-preview code-preview--default"
                     
                     
@@ -619,12 +621,12 @@ Som konsument finns det möjlighet att själv tillhandahålla specifika tillämp
 }
 </code></pre>
                 </div>
-            <h2 id="fmodal_deprekerade_css_klasser"><a class="header-anchor" href="#fmodal_deprekerade_css_klasser"><code>FModal</code> deprekerade CSS-klasser</a></h2><p>De deprekerade CSS klasserna <code>modal__dialog-container-large</code> och <code>modal__dialog-container-fullscreen</code> är borttagna.
+            <h2 id="fmodal_borttagna_css_klasser"><a class="header-anchor" href="#fmodal_borttagna_css_klasser"><code>FModal</code> borttagna CSS-klasser</a></h2><p>De deprekerade CSS klasserna <code>modal__dialog-container-large</code> och <code>modal__dialog-container-fullscreen</code> är borttagna.
 Detta påverkar endast dig som använder stylingen direkt, använder man <code>@fkui/vue</code> komponenten <code>FModal</code> påverkas man inte.
 Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive <code>modal__dialog-container--fullscreen</code>.</p>
 
                 <div
-                    id="example-a3c8bf"
+                    id="example-2d565d"
                     class="code-preview code-preview--default"
                     
                     
@@ -638,7 +640,7 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
             <h2 id="entrypoint_tar_alltid_upp_100_yta"><a class="header-anchor" href="#entrypoint_tar_alltid_upp_100_yta">Entrypoint tar alltid upp 100% yta</a></h2><p>Tidigare tog komponenten enbart upp 66% bredd i desktop, om du vill återskapa det beteendet kan du exempelvis nyttja grid'en:</p>
 
                 <div
-                    id="example-6cdfe4"
+                    id="example-f0171e"
                     class="code-preview code-preview--default"
                     
                     
@@ -675,9 +677,9 @@ De som behöver dessa bilder behöver lägga in dem själv.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    remove-logo (<a href="https://github.com/Forsakringskassan/designsystem/commits/f1ceb9b09735d89d47ae338c2fddff1f34421533">f1ceb9b</a>)<br />
+    remove-logo (<a href="https://github.com/Forsakringskassan/designsystem/commits/f17468190ffc2870cb0339a07b29dfa374a90076">f174681</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/269">PR 269</a><br />
-        2025-02-10 14:12
+        2025-02-10 14:24
 </div>
 <div class="toolbar__item">
     <form id="version">

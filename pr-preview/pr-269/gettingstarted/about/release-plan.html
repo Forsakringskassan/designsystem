@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-a9cef3.css"
+            href="../../assets/docs-055f1d.css"
             crossorigin
-            integrity="sha384-iAOkUQ1Kj7CBs2J9a41CqnbmnKFNCCTVpolqdBzUvsKZ6t2aDHL7/Jl+rJkG4XLs"
+            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
             
         />
         <link
@@ -590,16 +590,14 @@
 De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.</p>
 </li>
 <li>
-<p>Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migration/migrating-to-fieldset.html">FFieldset</a>.</p>
-</li>
-<li>
-<p>Modal: De deprekerade slottarna submit-button-text och cancel-button-text är borttagna och ersatt med propen buttons.
-Ett antal deprekerade CSS-klasser är också borttagna.
-Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+<p>Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
 Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.</p>
 </li>
 <li>
-<p>Sidhuvud: Den deprekerade propen skipLinkHref är borttagen och ersatt med propen skipLink.</p>
+<p>Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migration/migrating-to-fieldset.html">FFieldset</a>.</p>
+</li>
+<li>
+<p>Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.</p>
 </li>
 <li>
 <p>Ett antal andra funktioner, typer och komponenter är också borttagna.</p>
@@ -608,11 +606,11 @@ Anledningen är att användare inte ska ändra något av misstag, till exempel t
 <p>Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).</p>
 </li>
 <li>
-<p>Valideringsservice: Den deprekerade validatorn peronnummer är borttagen och ersätts nu med validatorerna personnummerFormat och personnummerLuhn.</p>
+<p>Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.</p>
 </li>
 <li>
-<p>Tema och variabler: Vi har uppdaterat tema och variabler och FKUI tillhandahåller nu standardleverabler för tema.
-Som konsument har du möjlighet att själv tillhandahålla specifika tillämpningar.</p>
+<p>Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
+Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.</p>
 </li>
 <li>
 <p>Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
@@ -633,7 +631,7 @@ Som konsument har du möjlighet att själv tillhandahålla specifika tillämpnin
 <li>Fortsatt uppdatering av semantiska tokens för färger.
 Det är en förutsättning för att kunna ha dark mode, men underlättar framför allt för dig som vill sätta eget tema eller ändra på specifika variabler.</li>
 <li>Uppdatering av komponenter för applikationslayout.
-På sikt kommer dagens komponenter för applikationslayout (<a href="../../components/page-layout/application-layout.html">applikationsmall</a>, <a href="../../components/page-layout/application-layout.html">högeryta</a> och <a href="../../components/page-layout/application-layout.html">vänsteryta</a>) ersättas med nya.
+På sikt kommer dagens komponenter för applikationslayout (<a href="../../components/page-layout/application-layout.html">applikationsmall</a>, <a href="../../components/page-layout/application-layout.html#hogeryta">högeryta</a> och <a href="../../components/page-layout/application-layout.html#vansteryta">vänsteryta</a>) ersättas med nya.
 De nya komponenterna kommer vara mer flexibla, till exempel kan du fylla en yta med valfritt innehåll oberoende var den ligger.
 Till att börja med kommer ett antal olika varianter av layouter släppas.</li>
 </ul>
@@ -739,9 +737,9 @@ Vanligtvis fixar vi kritiska buggar upp till ett år efter att ny release är sl
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    remove-logo (<a href="https://github.com/Forsakringskassan/designsystem/commits/f1ceb9b09735d89d47ae338c2fddff1f34421533">f1ceb9b</a>)<br />
+    remove-logo (<a href="https://github.com/Forsakringskassan/designsystem/commits/f17468190ffc2870cb0339a07b29dfa374a90076">f174681</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/269">PR 269</a><br />
-        2025-02-10 14:12
+        2025-02-10 14:24
 </div>
 <div class="toolbar__item">
     <form id="version">

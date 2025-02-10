@@ -8574,14 +8574,14 @@ footer #version-dialog .list__item {
 }
 
 .support-table .table__row.obsolete {
-  background: #e48a8a;
+  background: #f7dcdc;
   color: #1b1e23;
 }
 .support-table .table__row.supported {
-  background: #ffdf87;
+  background: #fff5db;
   color: #1b1e23;
 }
 .support-table .table__row.active {
-  background: #88b49f;
+  background: #dbe9e2;
   color: #1b1e23;
 }
