@@ -1,7 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import module from "node:module";
-import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
 import isCI from "is-ci";
 import {
@@ -41,7 +40,6 @@ const {
 const matomoConfig = MATOMO_CONFIG
     ? JSON.parse(MATOMO_CONFIG)
     : DEFAULT_MATOMO_CONFIG;
-const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 const isRelease = (() => {
     try {
@@ -53,11 +51,6 @@ const isRelease = (() => {
         return false;
     }
 })();
-
-const fkuiDesign = path.relative(
-    rootDir,
-    path.dirname(require.resolve("@fkui/design/package.json")),
-);
 
 if (isCI) {
     console.group("Configuration");
@@ -146,7 +139,7 @@ docs.compileStyle("docs-fkui", "./docs/src/fkui-theme.scss", {
     },
 });
 
-docs.copyResource("images", path.join(fkuiDesign, "src/assets/images"));
+docs.copyResource("images", "docs/src/assets/images");
 
 try {
     await docs.build(config.sourceFiles);
