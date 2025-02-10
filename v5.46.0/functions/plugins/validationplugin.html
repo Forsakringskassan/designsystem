@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-10d056.css"
+            href="../../assets/docs-055f1d.css"
             crossorigin
-            integrity="sha384-bdaMX/cDglsFkn12JytzZhmIRkQ6KA7wXnd8n/XgzU5jnSrzHrIggkKFAAUFOTFX"
+            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-20bffd.css"
+            href="../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-6BYFbCDF9Kpkrzho3lx0NSarN4IA63v7JvNMIIePBpnokKAl9zFH1vuQ/ma+hR6q"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-eb68cb.css"
-            crossorigin
-            integrity="sha384-ODo1c8cooTCxBx4YigL/vwFNWOW1pD+yHqLYtWPL0jknUfY51p4y8o6380l8Okei"
-            data-theme="int" disabled
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-6b0cff.json"
+            href="../../search-data-0b5684.json"
             as="fetch"
             crossorigin
-            integrity="sha384-5PeUeVJu3N9KJ7m6O29Yifq6Kqyeu/Atg+uNvBTu+YJi5LoZbC/9QO9bOFHWzuZJ"
+            integrity="sha384-F9AMK4fvSiHO0qOYnUyQhvQuiNUtq6l/LzRB4WvsvpgueInOQcHKnMDBbIXFESAs"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -321,6 +254,59 @@
             
             
 <ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>FProgressbarPageObject</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../cypress/pageobjects/FProgressbarPageObject/"
+            
+        >
+            FProgressbarPageObject
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../cypress/pageobjects/FProgressbarPageObject/el.html"
+            
+        >
+            el()
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../cypress/pageobjects/FProgressbarPageObject/progress-status.html"
+            
+        >
+            progressStatus()
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../cypress/pageobjects/FProgressbarPageObject/value.html"
+            
+        >
+            value()
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
@@ -354,16 +340,6 @@
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="../cypress/pageobjects/FLabelPageObject/discrete-description.html"
-            
-        >
-            discreteDescription()
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
             href="../cypress/pageobjects/FLabelPageObject/error-icon.html"
             
         >
@@ -384,10 +360,10 @@
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="../cypress/pageobjects/FLabelPageObject/trimmed-text.html"
+            href="../cypress/pageobjects/FLabelPageObject/format-description.html"
             
         >
-            trimmedText()
+            formatDescription()
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -1022,9 +998,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-ba7196.js"
+                    src="../../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1032,9 +1008,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-2c462c.js"
+                    src="../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-84TNQ43eRb2WiHecVxFJJYrdsybu08IzifUv1kKNUUt/jSA/+R8RhtyeW/2q86tw"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1055,39 +1031,50 @@ Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.
 <p><code>ValidationPlugin</code> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
 
                 <div
-                    id="example-fb5ee0"
+                    id="example-e44823"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ValidationPlugin</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">App</span> = <span class="hljs-title function_">defineComponent</span>({});
+
+<span class="hljs-comment">/* --- cut above ---*/</span>
+
+<span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>);
+app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ValidationPlugin</span>);
+app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>);
 </code></pre>
                 </div>
             <p>Via <code>ValidationService.addValidationErrorMessages</code> kan man specificera översättningar av validator fel.
 I nedan exempel anges ett objekt med validatornamnet som nyckel och översättning som värde (om översättning saknas så kommer validatornamnet istället användas).</p>
 
                 <div
-                    id="example-38c2f1"
+                    id="example-fba356"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>({
-    <span class="hljs-string">&#x27;required&#x27;</span>, <span class="hljs-string">&#x27;Fältet krävs&#x27;</span>,
-    <span class="hljs-string">&#x27;personnummerFormat&#x27;</span>, <span class="hljs-string">&#x27;Felaktigt format på personnummer&#x27;</span>,
+    <span class="hljs-attr">required</span>: <span class="hljs-string">&quot;Fältet krävs&quot;</span>,
+    <span class="hljs-attr">personnummerFormat</span>: <span class="hljs-string">&quot;Felaktigt format på personnummer&quot;</span>,
 });
 </code></pre>
                 </div>
             <p>För att få <em>autocompletion</em> av validatornamn så rekommenderas att använda <code>ValidationErrorMessageBuilder</code>:</p>
 
                 <div
-                    id="example-12196d"
+                    id="example-d97d41"
                     class="code-preview code-preview--default"
                     
                     
@@ -1096,17 +1083,17 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(
-    <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
-        .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;The field is required&quot;</span>)
-        .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;personnummerFormat&quot;</span>, <span class="hljs-string">&quot;Bad formatted social security number&quot;</span>)
-        .<span class="hljs-title function_">mapCombined</span>(
-            <span class="hljs-string">&quot;required&quot;</span>,
-            <span class="hljs-string">&quot;personnummerFormat&quot;</span>,
-            <span class="hljs-string">&quot;You must enter a social security number&quot;</span>,
-        )
-        .<span class="hljs-title function_">build</span>(),
-);
+<span class="hljs-keyword">const</span> messages = <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
+    .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;The field is required&quot;</span>)
+    .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;personnummerFormat&quot;</span>, <span class="hljs-string">&quot;Bad formatted social security number&quot;</span>)
+    .<span class="hljs-title function_">mapCombined</span>(
+        <span class="hljs-string">&quot;required&quot;</span>,
+        <span class="hljs-string">&quot;personnummerFormat&quot;</span>,
+        <span class="hljs-string">&quot;You must enter a social security number&quot;</span>,
+    )
+    .<span class="hljs-title function_">build</span>();
+
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(messages);
 </code></pre>
                 </div>
             <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.</p>
@@ -1114,7 +1101,7 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
 Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den <code>required</code> validatorn att köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.</p>
 
             <div
-                id="example-b20fbd"
+                id="example-085b97"
                 class="code-preview code-preview--default"
                 
                 
@@ -1172,7 +1159,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
         <p>Valideringsdirektivet är även reaktivt vilket betyder att man kan binda variabler i konfigurationen och när variablerna uppdateras i runtime så kommer valideringen hantera detta.</p>
 
             <div
-                id="example-aaa01a"
+                id="example-02fce1"
                 class="code-preview code-preview--default"
                 
                 
@@ -1237,7 +1224,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
 <code>ValidityEvent</code> innehåller information om valideringens status.</p>
 
             <div
-                id="example-7cae6a"
+                id="example-0aea31"
                 class="code-preview code-preview--default"
                 
                 
@@ -1306,7 +1293,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
         <h2 id="utokade_komponenter_med_default_validering"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p>Om man behöver utveckla en egen komponent med inbyggd validering som standard-beteende så måste man lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
 
                 <div
-                    id="example-b84de5"
+                    id="example-006020"
                     class="code-preview code-preview--default"
                     
                     
@@ -1326,7 +1313,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
 <h2 id="applikationsspecifikt_felmeddelande"><a class="header-anchor" href="#applikationsspecifikt_felmeddelande">Applikationsspecifikt felmeddelande</a></h2><p>Alla validatorers konfiguration tar attributet <code>errorMessage</code> som ersätter felmeddelandet som definieras med <code>ValidatorService.addValidationErrorMessages</code> funktionen.</p>
 
             <div
-                id="example-1236c0"
+                id="example-3f3d85"
                 class="code-preview code-preview--default"
                 
                 
@@ -1391,7 +1378,7 @@ Vue-direktivet <code>v-validation-prefix</code> plockar ut <code>errorMessage</c
 Det innebär att man kan lägga direktivet på flera platser för att kontinuerligt lägga på fler prefix.</p>
 
             <div
-                id="example-b226cc"
+                id="example-d00f92"
                 class="code-preview code-preview--default"
                 
                 
@@ -1471,10 +1458,10 @@ Det innebär att man kan lägga direktivet på flera platser för att kontinuerl
 Ett use-case för detta är tex om ett fält längre ned skall vara required baserat på val som tidigare har gjorts.</p>
 
                 <div
-                    id="example-0323ed"
+                    id="example-4e6d15"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1489,7 +1476,7 @@ Ett use-case för detta är tex om ett fält längre ned skall vara required bas
                 </div>
             
             <div
-                id="example-a17631"
+                id="example-659a40"
                 class="code-preview code-preview--default"
                 
                 
@@ -1568,7 +1555,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
 <h2 id="revalidera_falt"><a class="header-anchor" href="#revalidera_falt">Revalidera fält</a></h2><p>Exempel på revalidering av all fält på denna sida.</p>
 
             <div
-                id="example-1e62bb"
+                id="example-45c37d"
                 class="code-preview code-preview--default"
                 
                 
@@ -1630,7 +1617,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
         <h2 id="server_fel"><a class="header-anchor" href="#server_fel">Server-fel</a></h2><p>Exempel på att sätta serverfel på all fält på denna sida.</p>
 
             <div
-                id="example-232a6e"
+                id="example-a89c1d"
                 class="code-preview code-preview--default"
                 
                 
@@ -1697,7 +1684,7 @@ Detta eftersom användaren inte har möjlighet att interagera med inaktiva fält
 Det rekommenderade sättet är att använda sig av event listeners för <code>change</code>, <code>click</code> osv och validera om därifrån.</p>
 
             <div
-                id="example-1fe25d"
+                id="example-37c0d8"
                 class="code-preview code-preview--default"
                 
                 
@@ -1828,9 +1815,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    release/5.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/d91aeaacbd14e761667784555ccab70db1c6dafb">d91aeaa</a>)<br />
+    main (<a href="https://github.com/Forsakringskassan/designsystem/commits/90ef626da60361d0ba1a9ca56064458f11c4364b">90ef626</a>)<br />
         
-        2025-01-29 15:39
+        2025-02-10 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1951,15 +1938,15 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script
-            src="../../assets/main-623313.js"
+            src="../../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>

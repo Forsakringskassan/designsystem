@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-10d056.css"
+            href="../../assets/docs-055f1d.css"
             crossorigin
-            integrity="sha384-bdaMX/cDglsFkn12JytzZhmIRkQ6KA7wXnd8n/XgzU5jnSrzHrIggkKFAAUFOTFX"
+            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-20bffd.css"
+            href="../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-6BYFbCDF9Kpkrzho3lx0NSarN4IA63v7JvNMIIePBpnokKAl9zFH1vuQ/ma+hR6q"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-eb68cb.css"
-            crossorigin
-            integrity="sha384-ODo1c8cooTCxBx4YigL/vwFNWOW1pD+yHqLYtWPL0jknUfY51p4y8o6380l8Okei"
-            data-theme="int" disabled
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-6b0cff.json"
+            href="../../search-data-0b5684.json"
             as="fetch"
             crossorigin
-            integrity="sha384-5PeUeVJu3N9KJ7m6O29Yifq6Kqyeu/Atg+uNvBTu+YJi5LoZbC/9QO9bOFHWzuZJ"
+            integrity="sha384-F9AMK4fvSiHO0qOYnUyQhvQuiNUtq6l/LzRB4WvsvpgueInOQcHKnMDBbIXFESAs"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -641,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-ba7196.js"
+                    src="../../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-2c462c.js"
+                    src="../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-84TNQ43eRb2WiHecVxFJJYrdsybu08IzifUv1kKNUUt/jSA/+R8RhtyeW/2q86tw"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/d91aeaacbd14e761667784555ccab70db1c6dafb/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/90ef626da60361d0ba1a9ca56064458f11c4364b/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
             
         </code>
          
@@ -1132,15 +1065,13 @@
                                 
                                 <li><a href="#anvandning">Användning</a></li>
                                 
-                                <li><a href="#oppna_modal_med_api">Öppna modal med API</a></li>
+                                <li><a href="#oppna_modal">Öppna modal</a></li>
                                 
-                                <li><a href="#oppna_modal_med_template">Öppna modal med template</a></li>
+                                <li><a href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></li>
                                 
                                 <li><a href="#formularsmodal_med_flera_knappar">Formulärsmodal med flera knappar</a></li>
                                 
                                 <li><a href="#skarmlasare">Skärmläsare</a></li>
-                                
-                                <li><a href="#template">Template</a></li>
                                 
                                 <li><a href="#api">API</a></li>
                                 
@@ -1168,7 +1099,7 @@
                     id="example-06d914"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="typescript"
                 >
                     
@@ -1202,11 +1133,11 @@
 Inmatningsfälten läggs in i <code>#input-text-fields</code>-slotten.</p>
 
                 <div
-                    id="example-7b1fe7"
+                    id="example-388e80"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
-                    data-language="html"
+                    data-tags="static"
+                    data-language="vue"
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
@@ -1230,7 +1161,7 @@ Inmatningsfälten läggs in i <code>#input-text-fields</code>-slotten.</p>
                     id="example-ace641"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="vue"
                 >
                     
@@ -1275,10 +1206,10 @@ Det kan leda till oönskade konsekvenser om konsumenten skickas in existernade r
 Du kan antingen låta din formulärsmodal hantera detta genom att internt kopiera <code>value</code> eller tydligt dokumentera att konsumenten måste skicka in en kopia.</p>
 
             </div>
-        <h2 id="oppna_modal_med_api"><a class="header-anchor" href="#oppna_modal_med_api">Öppna modal med API</a></h2><p>Det rekommenderade sättet att använda formulärsmodalen är med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
+        <h2 id="oppna_modal"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p>Du öppnar modalen med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
 
                 <div
-                    id="example-94ef83"
+                    id="example-a68277"
                     class="code-preview code-preview--default"
                     
                     
@@ -1290,7 +1221,10 @@ Du kan antingen låta din formulärsmodal hantera detta genom att internt kopier
 
 <span class="hljs-comment">// composition api</span>
 <span class="hljs-keyword">const</span> { formModal } = <span class="hljs-title function_">useModal</span>();
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>);
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>);
+}
 </code></pre>
                 </div>
             <p>Returvärdet är <code>Promise</code> som löses ut med <code>resolve(value)</code> (det objekt som ligger lagrat i <code>value</code> när modalen stängs).
@@ -1298,7 +1232,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
 <p>Förifylld data kan skickas in med propen <code>value</code>:</p>
 
                 <div
-                    id="example-db282a"
+                    id="example-0119fc"
                     class="code-preview code-preview--default"
                     
                     
@@ -1317,7 +1251,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                 </div>
             
             <div
-                id="example-73372a"
+                id="example-d6429b"
                 class="code-preview code-preview--default"
                 
                 
@@ -1398,95 +1332,31 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
 </code></pre>
                 </div>
             </div>
-        <h2 id="oppna_modal_med_template"><a class="header-anchor" href="#oppna_modal_med_template">Öppna modal med template</a></h2><p>Komponenten kan också användas direkt i <code>&lt;template&gt;</code> men vi rekommenderar inte denna lösning::</p>
+        <h2 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h2><p>Att använda <code>FFormModal</code> nästlad i template är deprekerat.
+Vi rekommenderar att du flyttar den till en egen Vue komponent och använder API för att öppna den.
+Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FFormModal</code> med API.</p>
 
-            <div
-                id="example-58032d"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="FFormModalExample"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FFormModalExample-3e9dce.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
                 <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
+                    id="example-88944e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-form-modal</span>
-        <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
-        @<span class="hljs-attr">cancel</span>=<span class="hljs-string">&quot;closeModal()&quot;</span>
-        @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;closeModal()&quot;</span>
-        @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;closeModal()&quot;</span>
-    &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span> Rubrik <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Ingress<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">input-text-fields</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{
-                    maxLength: { length: 32 },
-                }&quot;</span>
-            &gt;</span>
-                Etikett
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-form-modal</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;isOpen = true&quot;</span>&gt;</span>
-        Öppna modal
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFormModal</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFormModalExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FFormModal</span>, <span class="hljs-title class_">FTextField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">closeModal</span>(): <span class="hljs-keyword">void</span> {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;template&gt;
+     &lt;div&gt;
+         &lt;button type=&quot;button&quot; @click=&quot;onClick&quot;&gt;Open modal&lt;/button&gt;
+<span class="hljs-deletion">-        &lt;f-form-modal&gt;&lt;/f-form-modal&gt;</span>
+     &lt;/div&gt;
+ &lt;/template&gt;
 </code></pre>
                 </div>
-            </div>
-        <h2 id="formularsmodal_med_flera_knappar"><a class="header-anchor" href="#formularsmodal_med_flera_knappar">Formulärsmodal med flera knappar</a></h2><p>Komponenten har en prop <code>buttons</code> som styr vilka knappar som finns i modalens sidfot.
+            <h2 id="formularsmodal_med_flera_knappar"><a class="header-anchor" href="#formularsmodal_med_flera_knappar">Formulärsmodal med flera knappar</a></h2><p>Komponenten har en prop <code>buttons</code> som styr vilka knappar som finns i modalens sidfot.
 Med den kan du ta bort existerande knappar eller använda en helt egen uppsättning.</p>
-<p><strong>Med API:</strong></p>
 
                 <div
-                    id="example-a62485"
+                    id="example-34ba24"
                     class="code-preview code-preview--default"
                     
                     
@@ -1505,7 +1375,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
             <p><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
 
                 <div
-                    id="example-c75c3e"
+                    id="example-8575fa"
                     class="code-preview code-preview--default"
                     
                     
@@ -1524,7 +1394,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 </div>
             
                 <div
-                    id="example-d1c966"
+                    id="example-9effe9"
                     class="code-preview code-preview--default"
                     
                     
@@ -1542,7 +1412,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p>Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code> property:</p>
 
                 <div
-                    id="example-d7f4f3"
+                    id="example-d1d32d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1554,108 +1424,13 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 </code></pre>
                 </div>
             <p>Om du använder <code>screenreader</code> för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i <code>label</code>. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.</p>
-<h2 id="template"><a class="header-anchor" href="#template">Template</a></h2>
-            <div
-                id="example-7d3084"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="FFormModalExampleCustomButtons"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FFormModalExampleCustomButtons-8ec248.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-custom-buttons&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Öppna Modal<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-example&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">example-modal</span>
-                <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
-                <span class="hljs-attr">:buttons</span>=<span class="hljs-string">&quot;buttons&quot;</span>
-                @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>
-                @<span class="hljs-attr">cancel</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
-                @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
-            &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">example-modal</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;field1 || field2&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Modalen stängdes med resultatet:<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Förnamn: {{ field1 }}, Efternamn: {{ field2 }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-title class_">ExampleModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ExampleModal.vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFormModalExampleCustomButtons&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">ExampleModal</span> },
-    <span class="hljs-attr">props</span>: {},
-    <span class="hljs-attr">data</span>: <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">field1</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">field2</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">buttons</span>: [{ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Stäng&quot;</span>, <span class="hljs-attr">screenreader</span>: <span class="hljs-string">&quot;formuläret&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;dismiss&quot;</span> }],
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">true</span>;
-        },
-        <span class="hljs-title function_">onClose</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params">event</span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">field1</span> = event.<span class="hljs-property">data</span>.<span class="hljs-property">field1</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">field2</span> = event.<span class="hljs-property">data</span>.<span class="hljs-property">field2</span>;
-            <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;onSubmit&quot;</span>);
-        },
-        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">resetFields</span>();
-            <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;onCancel&quot;</span>);
-        },
-        <span class="hljs-title function_">resetFields</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">field1</span> = <span class="hljs-string">&quot;&quot;</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">field2</span> = <span class="hljs-string">&quot;&quot;</span>;
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p>Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
+<h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p>Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
 
                 <div
-                    id="example-0ae814"
+                    id="example-420a28"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1672,15 +1447,15 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-adab5c"
+                    id="example-cd7465"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
-    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refs</span>.<span class="hljs-property">myField</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">myField</span>);
     <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
 },
 </code></pre>
@@ -1688,129 +1463,393 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
 
                 <div
-                    id="example-3526cb"
+                    id="example-ce25cb"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FFormModalAction</span>&gt; {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">FFormModalAction</span> {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-title class_">FFormModalAction</span>.<span class="hljs-property">CANCEL</span>;
 },
 </code></pre>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>fullscreen</p>
-</td><td><p>Enable fullscreen mode in mobile.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>isOpen</p>
-</td><td><p>If the modal is open.<br>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fformmodal-props">
+            <a class="header-anchor" href="#fformmodal-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fformmodal-prop-fullscreen"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-fullscreen"
+                                    ><span class="docs-api__name"
+                                        >fullscreen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable fullscreen mode in mobile.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-isopen"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-isopen"
+                                    ><span class="docs-api__name"
+                                        >isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If the modal is open.
 Use this to toggle if the modal should be visible or not.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>size</p>
-</td><td><p>See &lt;f-modal&gt; <code>size</code> props.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td></tr><tr><td><p>dataTest</p>
-</td><td><p>‐</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td></tr><tr><td><p>value</p>
-</td><td><p>The data that has been submitted.</p>
-</td><td><p>object</p>
-</td><td><p>false</p>
-</td><td><p>{}</p>
-</td></tr><tr><td><p>useErrorList</p>
-</td><td><p>Include the error list component.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>formId</p>
-</td><td><p>The id for the form id attribute.<br>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-size"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-size"
+                                    ><span class="docs-api__name"
+                                        >size</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>See &lt;f-modal&gt; <code>size</code> props.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-datatest"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-datatest"
+                                    ><span class="docs-api__name"
+                                        >dataTest</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-value"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-value"
+                                    ><span class="docs-api__name"
+                                        >value</span
+                                    >: object</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The data that has been submitted.</p>
+
+                            <p class="doc-api__item">Default: <code>{}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-useerrorlist"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-useerrorlist"
+                                    ><span class="docs-api__name"
+                                        >useErrorList</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Include the error list component.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-formid"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-formid"
+                                    ><span class="docs-api__name"
+                                        >formId</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the form id attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td></tr><tr><td><p>ariaCloseText</p>
-</td><td><p>The aria-label attribute text for the top right close button.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td></tr><tr><td><p>beforeSubmit</p>
-</td><td><p>If given, this function is called before the [[submit]] event is emitted.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-ariaclosetext"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-ariaclosetext"
+                                    ><span class="docs-api__name"
+                                        >ariaCloseText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The aria-label attribute text for the top right close button.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-beforesubmit"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-beforesubmit"
+                                    ><span class="docs-api__name"
+                                        >beforeSubmit</span
+                                    >: FValidationFormCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called before the [[submit]] event is emitted.
 See &lt;f-validation-form&gt; <code>beforeSubmit</code> props for more info.</p>
-</td><td><p>FValidationFormCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-/* do nothing */<br>
-}</p>
-</td></tr><tr><td><p>beforeValidation</p>
-</td><td><p>If given, this function is called before the form data is validated and the [[submit]] event is emitted.<br>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    /* do nothing */
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-beforevalidation"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-beforevalidation"
+                                    ><span class="docs-api__name"
+                                        >beforeValidation</span
+                                    >: FValidationFormCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called before the form data is validated and the [[submit]] event is emitted.
 See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.</p>
-</td><td><p>FValidationFormCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-/* do nothing */<br>
-}</p>
-</td></tr><tr><td><p>buttons</p>
-</td><td><p>‐</p>
-</td><td><p>FModalButtonDescriptor[]</p>
-</td><td><p>false</p>
-</td><td><p>(): FModalButtonDescriptor[] =&gt; [<br>
-{<br>
-label: TranslationService.provider.translate(&quot;fkui.form-modal.button.submit.text&quot;, &quot;Spara&quot;),<br>
-event: &quot;submit&quot;,<br>
-type: &quot;primary&quot;,<br>
-submitButton: true,<br>
-},<br>
-{<br>
-label: TranslationService.provider.translate(&quot;fkui.form-modal.button.cancel.text&quot;, &quot;Avbryt&quot;),<br>
-event: &quot;dismiss&quot;,<br>
-type: &quot;secondary&quot;,<br>
-},<br>
-]</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>cancel</p>
-</td><td><p>Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.<br>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    /* do nothing */
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-buttons"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-buttons"
+                                    ><span class="docs-api__name"
+                                        >buttons</span
+                                    >: FModalButtonDescriptor[]</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: <code>(): FModalButtonDescriptor[] =&gt; [
+    {
+        label: TranslationService.provider.translate(&quot;fkui.form-modal.button.submit.text&quot;, &quot;Spara&quot;),
+        event: &quot;submit&quot;,
+        type: &quot;primary&quot;,
+        submitButton: true,
+    },
+    {
+        label: TranslationService.provider.translate(&quot;fkui.form-modal.button.cancel.text&quot;, &quot;Avbryt&quot;),
+        event: &quot;dismiss&quot;,
+        type: &quot;secondary&quot;,
+    },
+]</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fformmodal-events">
+            <a class="header-anchor" href="#fformmodal-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fformmodal-event-cancel"
+                                ><a class="docs-api__anchor" href="#fformmodal-event-cancel"
+                                    ><span class="docs-api__name"
+                                        >cancel</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
 In most use cases the isOpen prop should be set to false when this event is triggered.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>close</p>
-</td><td><p>Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.<br>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-event-close"
+                                ><a class="docs-api__anchor" href="#fformmodal-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
 In most use cases the isOpen prop should be set to false when this event is triggered.</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td></tr><tr><td><p>submit</p>
-</td><td><p>Event that is dispatched when the submit button is is clicked.<br>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-event-submit"
+                                ><a class="docs-api__anchor" href="#fformmodal-event-submit"
+                                    ><span class="docs-api__name"
+                                        >submit</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when the submit button is is clicked.
 The event payload is the data that has been submitted.</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Slot for the header.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for main content above text fields and buttons.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>error-message</p>
-</td><td><p>Slot for error message</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>input-text-fields</p>
-</td><td><p>Slot for input text fields for entering text.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>submit-button-text</p>
-</td><td><ul>
-<li>@deprecated Slot for submit button text. If you want to modify the footer section, see prop &quot;buttons&quot;</li>
-</ul>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>cancel-button-text</p>
-</td><td><ul>
-<li>@deprecated Slot for cancel button text. If you want to modify the footer section, see prop &quot;buttons&quot;</li>
-</ul>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fformmodal-slots">
+            <a class="header-anchor" href="#fformmodal-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fformmodal-slot-header"
+                                ><a class="docs-api__anchor" href="#fformmodal-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for the header.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-slot-default"
+                                ><a class="docs-api__anchor" href="#fformmodal-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for main content above text fields and buttons.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-slot-error-message"
+                                ><a class="docs-api__anchor" href="#fformmodal-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for error message</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-slot-input-text-fields"
+                                ><a class="docs-api__anchor" href="#fformmodal-slot-input-text-fields"
+                                    ><span class="docs-api__name"
+                                        >input-text-fields</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for input text fields for entering text.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
 <li><a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) för programatiskt användande av formulärsmodal.</li>
 <li><a href="./fmodal.html">Modal</a> för mer information om modaler.</li>
 </ul>
@@ -1835,9 +1874,9 @@ The event payload is the data that has been submitted.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    release/5.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/d91aeaacbd14e761667784555ccab70db1c6dafb">d91aeaa</a>)<br />
+    main (<a href="https://github.com/Forsakringskassan/designsystem/commits/90ef626da60361d0ba1a9ca56064458f11c4364b">90ef626</a>)<br />
         
-        2025-01-29 15:39
+        2025-02-10 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1958,15 +1997,15 @@ The event payload is the data that has been submitted.</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-d22575.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
             
         ></script>
         <script
-            src="../../assets/main-623313.js"
+            src="../../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>
