@@ -9,17 +9,24 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-055f1d.css"
+            href="../../assets/docs-10d056.css"
             crossorigin
-            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
+            integrity="sha384-bdaMX/cDglsFkn12JytzZhmIRkQ6KA7wXnd8n/XgzU5jnSrzHrIggkKFAAUFOTFX"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-c47cdf.css"
+            href="../../assets/docs-exp-20bffd.css"
             crossorigin
-            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
-            data-theme="fkui" disabled
+            integrity="sha384-6BYFbCDF9Kpkrzho3lx0NSarN4IA63v7JvNMIIePBpnokKAl9zFH1vuQ/ma+hR6q"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-int-eb68cb.css"
+            crossorigin
+            integrity="sha384-ODo1c8cooTCxBx4YigL/vwFNWOW1pD+yHqLYtWPL0jknUfY51p4y8o6380l8Okei"
+            data-theme="int" disabled
         />
 
         <!-- prettier-ignore -->
@@ -32,6 +39,17 @@
 
         <!-- prettier-ignore -->
         <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -72,9 +90,9 @@
     <body>
         <!-- prettier-ignore -->
         <script src="../../assets/vendor-vue-468cb1.js"></script>
-        <script src="../../assets/vendor-fkui-logic-62a69f.js"></script>
+        <script src="../../assets/vendor-fkui-logic-ba7196.js"></script>
         <script src="../../assets/vendor-fkui-date-7710bf.js"></script>
-        <script src="../../assets/vendor-fkui-vue-0b31a1.js"></script>
+        <script src="../../assets/vendor-fkui-vue-2c462c.js"></script>
         <script src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"></script>
 
         <!-- prettier-ignore --><!-- prettier-ignore -->
@@ -85,15 +103,15 @@
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-d22575.js"
+            src="../../assets/processors/selectable-version/select-version-dac30b.js"
             crossorigin
-            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
+            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
             
         ></script>
         <script
-            src="../../assets/main-7b9d0f.js"
+            src="../../assets/main-623313.js"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
             
         ></script> <my-awesome-component>
     <template #foo> Lorem ipsum dolor sit amet </template>

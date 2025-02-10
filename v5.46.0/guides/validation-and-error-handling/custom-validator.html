@@ -9,17 +9,24 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-055f1d.css"
+            href="../../assets/docs-10d056.css"
             crossorigin
-            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
+            integrity="sha384-bdaMX/cDglsFkn12JytzZhmIRkQ6KA7wXnd8n/XgzU5jnSrzHrIggkKFAAUFOTFX"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-c47cdf.css"
+            href="../../assets/docs-exp-20bffd.css"
             crossorigin
-            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
-            data-theme="fkui" disabled
+            integrity="sha384-6BYFbCDF9Kpkrzho3lx0NSarN4IA63v7JvNMIIePBpnokKAl9zFH1vuQ/ma+hR6q"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-int-eb68cb.css"
+            crossorigin
+            integrity="sha384-ODo1c8cooTCxBx4YigL/vwFNWOW1pD+yHqLYtWPL0jknUfY51p4y8o6380l8Okei"
+            data-theme="int" disabled
         />
 
         <!-- prettier-ignore -->
@@ -32,6 +39,17 @@
 
         <!-- prettier-ignore -->
         <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -71,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0b5684.json"
+            href="../../search-data-6b0cff.json"
             as="fetch"
             crossorigin
-            integrity="sha384-F9AMK4fvSiHO0qOYnUyQhvQuiNUtq6l/LzRB4WvsvpgueInOQcHKnMDBbIXFESAs"
+            integrity="sha384-5PeUeVJu3N9KJ7m6O29Yifq6Kqyeu/Atg+uNvBTu+YJi5LoZbC/9QO9bOFHWzuZJ"
             id="search-data"
         />
     </head>
@@ -225,6 +243,55 @@
         </button>
     </form>
 </div>
+<div class="toolbar__item">
+    <div class="select-field" style="visibility: hidden">
+        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
+        <div class="select-field__icon-wrapper">
+            <select id="fkds-theme-select" class="select-field__select">
+                <option value="exp">Försäkringskassan</option>
+                <option value="int">FK Hapo</option>
+            </select>
+            <svg focusable="false" class="icon select-field__icon">
+                <use xlink:href="#docs-icon-arrow-down"></use>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function themeSelector() {
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key) ?? "exp";
+            }
+
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
+            }
+
+            function enableTheme(theme) {
+                const style = Array.from(document.querySelectorAll("[data-theme]"));
+                for (const el of style) {
+                    el.disabled = el.dataset.theme !== theme;
+                }
+            }
+
+            const el = document.querySelector("#fkds-theme-select");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
+            el.addEventListener("change", () => {
+                const theme = el.value;
+                saveSelectedTheme("fkds-theme", theme);
+                enableTheme(theme);
+            });
+
+            const selected = getSelectedTheme("fkds-theme");
+            enableTheme(selected);
+            el.value = selected;
+
+            wrapper.style.visibility = null;
+        }
+
+        themeSelector();
+    </script>
+</div>
 </div>
             </div>
         </div>
@@ -346,9 +413,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-62a69f.js"
+                    src="../../assets/vendor-fkui-logic-ba7196.js"
                     crossorigin
-                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
+                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -356,9 +423,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-0b31a1.js"
+                    src="../../assets/vendor-fkui-vue-2c462c.js"
                     crossorigin
-                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
+                    integrity="sha384-84TNQ43eRb2WiHecVxFJJYrdsybu08IzifUv1kKNUUt/jSA/+R8RhtyeW/2q86tw"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -409,24 +476,17 @@
 <p>Om ingen av de fördefinerade validatorerna passar dina behov så går det bra att skapa en egen validator i din applikation.</p>
 <p>Låt oss utgå från att du vill ha en validator som verifierar att texten i ett input-fält börjar med ett konfigurerbart värde.
 Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas när valideringen inte är rätt.</p>
-<h2 id="validatorn"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p>En validator implementeras genom att skapa ett objekt som uppfyller interfacet <code>Validator</code>:</p>
+<h2 id="validatorn"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p>Logiken som utför valideringen skrivs i metoden:</p>
 
                 <div
-                    id="example-73226e"
+                    id="example-2f329e"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Validator</span>&lt;<span class="hljs-title class_">TConfig</span>&gt; {
-    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-title function_">validation</span>(
-        <span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>,
-        <span class="hljs-attr">element</span>: <span class="hljs-title class_">ValidatableHTMLElement</span>,
-        <span class="hljs-attr">config</span>: <span class="hljs-title class_">TConfig</span>,
-    ): <span class="hljs-built_in">boolean</span>;
-}
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">validation</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">element</span>: <span class="hljs-title class_">ValidatableHTMLElement</span>, <span class="hljs-attr">config</span>: <span class="hljs-title class_">TConfig</span>): <span class="hljs-built_in">boolean</span>
 </code></pre>
                 </div>
             <p>där:</p>
@@ -450,7 +510,7 @@ Den kontrollen görs enklast tidigt i din validator-logik med hjälp av metoden 
 Validatorns <code>name</code> är det som sedan används för att aktivera validatorn på ett input-fält.</p>
 
                 <div
-                    id="example-95508d"
+                    id="example-e7d946"
                     class="code-preview code-preview--default"
                     
                     
@@ -474,7 +534,7 @@ Validatorns <code>name</code> är det som sedan används för att aktivera valid
 Förslagsvis genom att bryta ut logiken till en egen funktion, då blir den enkel att testa med Jest.</p>
 
                 <div
-                    id="example-3eae65"
+                    id="example-87103f"
                     class="code-preview code-preview--default"
                     
                     
@@ -502,7 +562,7 @@ Det gör du genom att ge den stöd för att ta emot en konfiguration från konsu
 Om konsumenten inte förser validatorn med konfiguration så sätter du även ett standardvärde &quot;demo&quot;.</p>
 
                 <div
-                    id="example-7646cc"
+                    id="example-b67be5"
                     class="code-preview code-preview--default"
                     
                     
@@ -539,7 +599,7 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
             <p>Om det finns möjlighet till felaktig konfiguration eller om standardvärden inte används måste du införa felhantering:</p>
 
                 <div
-                    id="example-12e08c"
+                    id="example-cbf8e7"
                     class="code-preview code-preview--default"
                     
                     
@@ -549,16 +609,11 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">startsWithValidator</span>: <span class="hljs-title class_">Validator</span>&lt;<span class="hljs-title class_">StartsWithConfig</span>&gt; = {
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;startsWith&quot;</span>,
     <span class="hljs-title function_">validation</span>(<span class="hljs-params">value, element, configuration</span>) {
-        <span class="hljs-keyword">const</span> { startString } = configuration;
-        <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">isSet</span>(startString)) {
+        <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">isSet</span>(configuration.<span class="hljs-property">startString</span>)) {
             <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(
                 <span class="hljs-string">&quot;startsWithValidator: configuration.startString is missing!&quot;</span>,
             );
         }
-        <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEmpty</span>(value)) {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        }
-        <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">startsWith</span>(startString);
     },
 };
 </code></pre>
@@ -567,7 +622,7 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
 Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m. i t.ex. <code>main.ts</code>. Gör det inte i en komponents lifecycle-hooks så som <code>created</code>, <code>mounted</code> m.fl.</p>
 
                 <div
-                    id="example-af95fe"
+                    id="example-5fce09"
                     class="code-preview code-preview--default"
                     
                     
@@ -582,7 +637,7 @@ Tänk på att bara registrera validatorn en gång, förslagsvis görs det global
 I exemplet nedan så anger du värdet <code>test</code> till konfigurationens attribut <code>startString</code>. Nu kommer validatorn validera att input-fältets värde börjar med &quot;test&quot;.</p>
 
                 <div
-                    id="example-57755b"
+                    id="example-692d88"
                     class="code-preview code-preview--default"
                     
                     
@@ -607,7 +662,7 @@ Antigen sätter man en global standardtext (rekomenderat) eller så sätter man 
 Det gör du genom att lägga till attributet <code>errorMessage</code> till validatorns konfiguration, med en tillhörande text.</p>
 
                 <div
-                    id="example-96c576"
+                    id="example-df85a1"
                     class="code-preview code-preview--default"
                     
                     
@@ -632,7 +687,7 @@ Det gör du genom att lägga till attributet <code>errorMessage</code> till vali
 Då behöver <code>errorMessage</code> användas och felmeddelande blir samma på alla ställen i applikationen där validatorn används.</p>
 
                 <div
-                    id="example-8bea13"
+                    id="example-3e464d"
                     class="code-preview code-preview--default"
                     
                     
@@ -651,7 +706,7 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
             <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p>Här nedan visas ett komplett exempel med tre input-fält.</p>
 
             <div
-                id="example-b25816"
+                id="example-b1492a"
                 class="code-preview code-preview--default"
                 
                 
@@ -806,9 +861,9 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    main (<a href="https://github.com/Forsakringskassan/designsystem/commits/90ef626da60361d0ba1a9ca56064458f11c4364b">90ef626</a>)<br />
+    release/5.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/d91aeaacbd14e761667784555ccab70db1c6dafb">d91aeaa</a>)<br />
         
-        2025-02-10 14:41
+        2025-01-29 15:39
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -929,15 +984,15 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-d22575.js"
+            src="../../assets/processors/selectable-version/select-version-dac30b.js"
             crossorigin
-            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
+            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
             
         ></script>
         <script
-            src="../../assets/main-7b9d0f.js"
+            src="../../assets/main-623313.js"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
             
         ></script>
     </body>

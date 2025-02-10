@@ -9,17 +9,24 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-055f1d.css"
+            href="../../assets/docs-10d056.css"
             crossorigin
-            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
+            integrity="sha384-bdaMX/cDglsFkn12JytzZhmIRkQ6KA7wXnd8n/XgzU5jnSrzHrIggkKFAAUFOTFX"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-c47cdf.css"
+            href="../../assets/docs-exp-20bffd.css"
             crossorigin
-            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
-            data-theme="fkui" disabled
+            integrity="sha384-6BYFbCDF9Kpkrzho3lx0NSarN4IA63v7JvNMIIePBpnokKAl9zFH1vuQ/ma+hR6q"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-int-eb68cb.css"
+            crossorigin
+            integrity="sha384-ODo1c8cooTCxBx4YigL/vwFNWOW1pD+yHqLYtWPL0jknUfY51p4y8o6380l8Okei"
+            data-theme="int" disabled
         />
 
         <!-- prettier-ignore -->
@@ -32,6 +39,17 @@
 
         <!-- prettier-ignore -->
         <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -71,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0b5684.json"
+            href="../../search-data-6b0cff.json"
             as="fetch"
             crossorigin
-            integrity="sha384-F9AMK4fvSiHO0qOYnUyQhvQuiNUtq6l/LzRB4WvsvpgueInOQcHKnMDBbIXFESAs"
+            integrity="sha384-5PeUeVJu3N9KJ7m6O29Yifq6Kqyeu/Atg+uNvBTu+YJi5LoZbC/9QO9bOFHWzuZJ"
             id="search-data"
         />
     </head>
@@ -225,6 +243,55 @@
         </button>
     </form>
 </div>
+<div class="toolbar__item">
+    <div class="select-field" style="visibility: hidden">
+        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
+        <div class="select-field__icon-wrapper">
+            <select id="fkds-theme-select" class="select-field__select">
+                <option value="exp">Försäkringskassan</option>
+                <option value="int">FK Hapo</option>
+            </select>
+            <svg focusable="false" class="icon select-field__icon">
+                <use xlink:href="#docs-icon-arrow-down"></use>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function themeSelector() {
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key) ?? "exp";
+            }
+
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
+            }
+
+            function enableTheme(theme) {
+                const style = Array.from(document.querySelectorAll("[data-theme]"));
+                for (const el of style) {
+                    el.disabled = el.dataset.theme !== theme;
+                }
+            }
+
+            const el = document.querySelector("#fkds-theme-select");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
+            el.addEventListener("change", () => {
+                const theme = el.value;
+                saveSelectedTheme("fkds-theme", theme);
+                enableTheme(theme);
+            });
+
+            const selected = getSelectedTheme("fkds-theme");
+            enableTheme(selected);
+            el.value = selected;
+
+            wrapper.style.visibility = null;
+        }
+
+        themeSelector();
+    </script>
+</div>
 </div>
             </div>
         </div>
@@ -355,6 +422,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fform.html"
+            
+        >
+            Formulär
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -564,16 +641,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../flogo.html"
-            
-        >
-            Logotyp
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1006,9 +1073,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-62a69f.js"
+                    src="../../assets/vendor-fkui-logic-ba7196.js"
                     crossorigin
-                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
+                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1016,9 +1083,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-0b31a1.js"
+                    src="../../assets/vendor-fkui-vue-2c462c.js"
                     crossorigin
-                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
+                    integrity="sha384-84TNQ43eRb2WiHecVxFJJYrdsybu08IzifUv1kKNUUt/jSA/+R8RhtyeW/2q86tw"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/90ef626da60361d0ba1a9ca56064458f11c4364b/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/d91aeaacbd14e761667784555ccab70db1c6dafb/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
             
         </code>
          
@@ -1091,7 +1158,7 @@
                     id="example-a6eec4"
                     class="code-preview code-preview--borderless"
                     
-                    data-tags="live-example"
+                    data-tags=live-example
                     data-language="vue"
                 >
                     
@@ -1101,7 +1168,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FTextFieldLiveExample-4040db.js"></script>
+        <script defer src="./FTextFieldLiveExample-4b7372.js"></script>
     
                 </div>
             <p>Ett inmatningsfält har alltid en <a href="../flabel.html">etikett</a> som beskriver vad användaren ska fylla i. Etiketten kan också visa ett felmeddelande, en formatbeskrivning och en hjälptext.</p>
@@ -1183,101 +1250,32 @@
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
-        <h3 id="ftextfield-props">
-            <a class="header-anchor" href="#ftextfield-props">Props</a>
-        </h3>
-        <dl class="docs-api docs-api--slots">
-            
-                        <dt>
-                            <code id="ftextfield-prop-id"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-id"
-                                    ><span class="docs-api__name"
-                                        >id</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>The id for the input id attribute.
-The id for the label for attribute.
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
+</td><td><p>The id for the input id attribute.<br>
+The id for the label for attribute.<br>
 If the prop is not set a random value will be generated.</p>
-
-                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-inline"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-inline"
-                                    ><span class="docs-api__name"
-                                        >inline</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Show the component inline.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-v-model"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-v-model"
-                                    ><span class="docs-api__name"
-                                        >v-model</span
-                                    >: string|number</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>The value for the input.
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
+</td></tr><tr><td><p>inline</p>
+</td><td><p>Show the component inline.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>false</p>
+</td></tr><tr><td><p>v-model</p>
+</td><td><p>The value for the input.<br>
 If the prop is not set undefined will be used.</p>
-
-                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-type"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-type"
-                                    ><span class="docs-api__name"
-                                        >type</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>The type used for the input.
+</td><td><p>string|number</p>
+</td><td><p>false</p>
+</td><td><p>&quot;&quot;</p>
+</td></tr><tr><td><p>type</p>
+</td><td><p>The type used for the input.<br>
 If the prop is not set text will be used.</p>
-
-                            <p class="doc-api__item">Default: <code>&quot;text&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-formatter"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-formatter"
-                                    ><span class="docs-api__name"
-                                        >formatter</span
-                                    >: FormatFunction&lt;any&gt;</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <ul>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;text&quot;</p>
+</td></tr><tr><td><p>formatter</p>
+</td><td><ul>
 <li>The <code>formatter</code> function must only be used on a component that uses validation.</li>
 <li>The <code>formatter</code> function acts differently depending on if the <code>parser</code> function is defined or not.</li>
 </ul>
@@ -1299,24 +1297,11 @@ If the prop is not set text will be used.</p>
 </tr>
 </tbody>
 </table>
-
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-parser"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-parser"
-                                    ><span class="docs-api__name"
-                                        >parser</span
-                                    >: ParseFunction&lt;any&gt;</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <ul>
+</td><td><p>FormatFunction&lt;any&gt;</p>
+</td><td><p>false</p>
+</td><td><p>undefined</p>
+</td></tr><tr><td><p>parser</p>
+</td><td><ul>
 <li>The <code>parser</code> function must only be used on a component that uses validation.</li>
 <li>The <code>parser</code> function acts differently depending on if the <code>formatter</code> function is defined or not.
 <ul>
@@ -1339,293 +1324,71 @@ If the prop is not set text will be used.</p>
 </tr>
 </tbody>
 </table>
-
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-labelwidth"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-labelwidth"
-                                    ><span class="docs-api__name"
-                                        >labelWidth</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Set responsive width for label section.</p>
+</td><td><p>ParseFunction&lt;any&gt;</p>
+</td><td><p>false</p>
+</td><td><p>undefined</p>
+</td></tr><tr><td><p>labelWidth</p>
+</td><td><p>Set responsive width for label section.</p>
 <pre><code>label-width=&quot;md-9 lg-6&quot;
 </code></pre>
-
-                            <p class="doc-api__item">Default: <code>&quot;sm-12&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-inputwidth"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-inputwidth"
-                                    ><span class="docs-api__name"
-                                        >inputWidth</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Set responsive width for input section that wraps input element and icons.</p>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;sm-12&quot;</p>
+</td></tr><tr><td><p>inputWidth</p>
+</td><td><p>Set responsive width for input section that wraps input element and icons.</p>
 <pre><code>input-width=&quot;md-6 lg-3&quot;
 </code></pre>
-
-                            <p class="doc-api__item">Default: <code>&quot;sm-12&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-options"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-options"
-                                    ><span class="docs-api__name"
-                                        >options</span
-                                    >: string[] | undefined</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>List of options.</p>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;sm-12&quot;</p>
+</td></tr><tr><td><p>options</p>
+</td><td><p>List of options.</p>
 <p>When set, the user can select a value from the list of options and filter while typing.</p>
-<p>If options will be set at a later time, initially specify as an empty array.</p>
 <p>If a formatter is used by the component, make sure the options are formatted as well.</p>
-
-                            <p class="doc-api__item">Default: <code>() =&gt; undefined</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-prop-disabled"
-                                ><a class="docs-api__anchor" href="#ftextfield-prop-disabled"
-                                    ><span class="docs-api__name"
-                                        >disabled</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Set to <code>true</code>, empty string <code>&quot;&quot;</code> or string <code>&quot;disabled&quot;</code> to disable this field.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
-                            
-                        </dd>
-                    
-        </dl>
-    
-        <h3 id="ftextfield-events">
-            <a class="header-anchor" href="#ftextfield-events">Events</a>
-        </h3>
-        <dl class="docs-api docs-api--events">
-            
-                        <dt>
-                            <code id="ftextfield-event-blur"
-                                ><a class="docs-api__anchor" href="#ftextfield-event-blur"
-                                    ><span class="docs-api__name"
-                                        >blur</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            &#8208;
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: string</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-event-change"
-                                ><a class="docs-api__anchor" href="#ftextfield-event-change"
-                                    ><span class="docs-api__name"
-                                        >change</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            &#8208;
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: string</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-event-update-modelvalue"
-                                ><a class="docs-api__anchor" href="#ftextfield-event-update-modelvalue"
-                                    ><span class="docs-api__name"
-                                        >update:modelValue</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            &#8208;
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: undefined</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
-        </dl>
-    
-        <h3 id="ftextfield-slots">
-            <a class="header-anchor" href="#ftextfield-slots">Slots</a>
-        </h3>
-        <dl class="docs-api docs-api--slots">
-            
-                        <dt>
-                            <code id="ftextfield-slot-default"
-                                ><a class="docs-api__anchor" href="#ftextfield-slot-default"
-                                    ><span class="docs-api__name"
-                                        >default</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Slot for label content.</p>
-
-                            
-                            
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-slot-tooltip"
-                                ><a class="docs-api__anchor" href="#ftextfield-slot-tooltip"
-                                    ><span class="docs-api__name"
-                                        >tooltip</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Slot for tooltip.</p>
-
-                            
-                            
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-slot-description"
-                                ><a class="docs-api__anchor" href="#ftextfield-slot-description"
-                                    ><span class="docs-api__name"
-                                        >description</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Optional slot for description. See <a href="../flabel.html"><code>FLabel</code></a> for details.</p>
-
-                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>description-class: unknown</code></li><li><code>format-description-class: unknown</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-slot-error-message"
-                                ><a class="docs-api__anchor" href="#ftextfield-slot-error-message"
-                                    ><span class="docs-api__name"
-                                        >error-message</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Slot for displaying single or several error messages.</p>
-
-                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-slot-input-left"
-                                ><a class="docs-api__anchor" href="#ftextfield-slot-input-left"
-                                    ><span class="docs-api__name"
-                                        >input-left</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Slot for adding content to the left of the input element.</p>
-
-                            
-                            
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-slot-append-inner"
-                                ><a class="docs-api__anchor" href="#ftextfield-slot-append-inner"
-                                    ><span class="docs-api__name"
-                                        >append-inner</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Slot for add content inside the input to the right</p>
-
-                            
-                            
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftextfield-slot-input-right"
-                                ><a class="docs-api__anchor" href="#ftextfield-slot-input-right"
-                                    ><span class="docs-api__name"
-                                        >input-right</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Slot for adding content to the right of the input element.</p>
-
-                            
-                            
-                            
-                            
-                        </dd>
-                    
-        </dl>
-    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../flabel.html">Etikett</a></p>
+</td><td><p>string[] | undefined</p>
+</td><td><p>false</p>
+</td><td><p>() =&gt; undefined</p>
+</td></tr><tr><td><p>disabled</p>
+</td><td><p>Set to <code>true</code>, empty string <code>&quot;&quot;</code> or string <code>&quot;disabled&quot;</code> to disable this field.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>false</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>blur</p>
+</td><td><p>‐</p>
+</td><td><p>&lt;anonymous&gt;: string</p>
+</td></tr><tr><td><p>change</p>
+</td><td><p>‐</p>
+</td><td><p>&lt;anonymous&gt;: string</p>
+</td></tr><tr><td><p>update</p>
+</td><td><p>‐</p>
+</td><td><p>&lt;anonymous&gt;: undefined</p>
+</td></tr><tr><td><p>update:modelValue</p>
+</td><td><p>‐</p>
+</td><td><p>&lt;anonymous&gt;: undefined</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
+</td><td><p>Slot for label content.</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>tooltip</p>
+</td><td><p>Slot for tooltip.</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>description</p>
+</td><td><p>Optional slot for description. See <a href="#/Components/FLabel">FLabel</a> for details.</p>
+</td><td><p>descriptionClass<br>
+discreteDescriptionClass</p>
+</td></tr><tr><td><p>error-message</p>
+</td><td><p>Slot for displaying single or several error messages.</p>
+</td><td><p>hasError<br>
+validationMessage</p>
+</td></tr><tr><td><p>input-left</p>
+</td><td><p>Slot for adding content to the left of the input element.</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>append-inner</p>
+</td><td><p>Slot for add content inside the input to the right</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>input-right</p>
+</td><td><p>Slot for adding content to the right of the input element.</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../flabel.html">Etikett</a></p>
 <p><a href="../../guides/formatting-and-parsing/formatter-parser.html">Formatering och parsning</a></p>
 <p><a href="./textfield-specialized.html">Specialiserade inmatningsfält</a></p>
 <p><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p>
@@ -1650,9 +1413,9 @@ If the prop is not set text will be used.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    main (<a href="https://github.com/Forsakringskassan/designsystem/commits/90ef626da60361d0ba1a9ca56064458f11c4364b">90ef626</a>)<br />
+    release/5.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/d91aeaacbd14e761667784555ccab70db1c6dafb">d91aeaa</a>)<br />
         
-        2025-02-10 14:41
+        2025-01-29 15:39
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1773,15 +1536,15 @@ If the prop is not set text will be used.</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-d22575.js"
+            src="../../assets/processors/selectable-version/select-version-dac30b.js"
             crossorigin
-            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
+            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
             
         ></script>
         <script
-            src="../../assets/main-7b9d0f.js"
+            src="../../assets/main-623313.js"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
             
         ></script>
     </body>

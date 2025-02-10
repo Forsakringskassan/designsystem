@@ -9,17 +9,24 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-055f1d.css"
+            href="../../assets/docs-10d056.css"
             crossorigin
-            integrity="sha384-YwqnhSGkAFLBuYs50aMEtp6+Ej+k4v7sV0pmubD3y4ZSxnWzod6eE6twddafCaPX"
+            integrity="sha384-bdaMX/cDglsFkn12JytzZhmIRkQ6KA7wXnd8n/XgzU5jnSrzHrIggkKFAAUFOTFX"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-c47cdf.css"
+            href="../../assets/docs-exp-20bffd.css"
             crossorigin
-            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
-            data-theme="fkui" disabled
+            integrity="sha384-6BYFbCDF9Kpkrzho3lx0NSarN4IA63v7JvNMIIePBpnokKAl9zFH1vuQ/ma+hR6q"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-int-eb68cb.css"
+            crossorigin
+            integrity="sha384-ODo1c8cooTCxBx4YigL/vwFNWOW1pD+yHqLYtWPL0jknUfY51p4y8o6380l8Okei"
+            data-theme="int" disabled
         />
 
         <!-- prettier-ignore -->
@@ -32,6 +39,17 @@
 
         <!-- prettier-ignore -->
         <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -71,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0b5684.json"
+            href="../../search-data-6b0cff.json"
             as="fetch"
             crossorigin
-            integrity="sha384-F9AMK4fvSiHO0qOYnUyQhvQuiNUtq6l/LzRB4WvsvpgueInOQcHKnMDBbIXFESAs"
+            integrity="sha384-5PeUeVJu3N9KJ7m6O29Yifq6Kqyeu/Atg+uNvBTu+YJi5LoZbC/9QO9bOFHWzuZJ"
             id="search-data"
         />
     </head>
@@ -225,6 +243,55 @@
         </button>
     </form>
 </div>
+<div class="toolbar__item">
+    <div class="select-field" style="visibility: hidden">
+        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
+        <div class="select-field__icon-wrapper">
+            <select id="fkds-theme-select" class="select-field__select">
+                <option value="exp">Försäkringskassan</option>
+                <option value="int">FK Hapo</option>
+            </select>
+            <svg focusable="false" class="icon select-field__icon">
+                <use xlink:href="#docs-icon-arrow-down"></use>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function themeSelector() {
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key) ?? "exp";
+            }
+
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
+            }
+
+            function enableTheme(theme) {
+                const style = Array.from(document.querySelectorAll("[data-theme]"));
+                for (const el of style) {
+                    el.disabled = el.dataset.theme !== theme;
+                }
+            }
+
+            const el = document.querySelector("#fkds-theme-select");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
+            el.addEventListener("change", () => {
+                const theme = el.value;
+                saveSelectedTheme("fkds-theme", theme);
+                enableTheme(theme);
+            });
+
+            const selected = getSelectedTheme("fkds-theme");
+            enableTheme(selected);
+            el.value = selected;
+
+            wrapper.style.visibility = null;
+        }
+
+        themeSelector();
+    </script>
+</div>
 </div>
             </div>
         </div>
@@ -355,6 +422,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fform.html"
+            
+        >
+            Formulär
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -564,16 +641,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../flogo.html"
-            
-        >
-            Logotyp
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1006,9 +1073,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-62a69f.js"
+                    src="../../assets/vendor-fkui-logic-ba7196.js"
                     crossorigin
-                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
+                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1016,9 +1083,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-0b31a1.js"
+                    src="../../assets/vendor-fkui-vue-2c462c.js"
                     crossorigin
-                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
+                    integrity="sha384-84TNQ43eRb2WiHecVxFJJYrdsybu08IzifUv1kKNUUt/jSA/+R8RhtyeW/2q86tw"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1041,7 +1108,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/90ef626da60361d0ba1a9ca56064458f11c4364b/packages/vue/src/internal-components/IPopup/IPopup.vue">IPopup</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/d91aeaacbd14e761667784555ccab70db1c6dafb/packages/vue/src/internal-components/IPopup/IPopup.vue">IPopup</a>
             
         </code>
          
@@ -1361,7 +1428,7 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./IPopupPositioning-d9e8b2.js"></script>
+        <script defer src="./IPopupPositioning-55d684.js"></script>
     </div>
                 <div>
             <button
@@ -1381,8 +1448,8 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrapper&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;constraint&quot;</span>&gt;</span> Begränsa till: <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;constraint&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;constraint&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChangeConstraint&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> Begränsa till: <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;constraint&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChangeConstraint&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;viewport&quot;</span>&gt;</span>Viewport<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>Container<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;combo&quot;</span>&gt;</span>Viewport + container<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
@@ -1572,235 +1639,69 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
         <h2 id="skrollning"><a class="header-anchor" href="#skrollning">Skrollning</a></h2><p>När popup öppnas som inline kommer den att skrolla så att den är synlig i fönstret.</p>
 <p>Popup använder först och främst sin närmaste förälder med klassen <code>scroll-target</code> som skrollyta.
 Om popup inte hittar en förälder med <code>scroll-target</code> så kommer den istället använda fönstret (<code>window</code>).</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
-        <h3 id="ipopup-props">
-            <a class="header-anchor" href="#ipopup-props">Props</a>
-        </h3>
-        <dl class="docs-api docs-api--slots">
-            
-                        <dt>
-                            <code id="ipopup-prop-isopen"
-                                ><a class="docs-api__anchor" href="#ipopup-prop-isopen"
-                                    ><span class="docs-api__name"
-                                        >isOpen</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            
-                            
-                        </dt>
-                        <dd>
-                            <p>Toggle open/closed popup.</p>
-
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopup-prop-anchor"
-                                ><a class="docs-api__anchor" href="#ipopup-prop-anchor"
-                                    ><span class="docs-api__name"
-                                        >anchor</span
-                                    >: HTMLElement | null | undefined</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>DOM element to position popup at.</p>
-
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopup-prop-inline"
-                                ><a class="docs-api__anchor" href="#ipopup-prop-inline"
-                                    ><span class="docs-api__name"
-                                        >inline</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Type of inline behaviour.</p>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>isOpen</p>
+</td><td><p>Toggle open/closed popup.</p>
+</td><td><p>boolean</p>
+</td><td><p>true</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>anchor</p>
+</td><td><p>DOM element to position popup at.</p>
+</td><td><p>HTMLElement | null | undefined</p>
+</td><td><p>false</p>
+</td><td><p>undefined</p>
+</td></tr><tr><td><p>inline</p>
+</td><td><p>Type of inline behaviour.</p>
 <ul>
 <li><code>&quot;auto&quot;</code> changes between overlay or inline depending on window size.</li>
 <li><code>&quot;always&quot;</code> forces the popup to always be inline.</li>
 <li><code>&quot;never&quot;</code> forces the popup to never be inline.</li>
 </ul>
-
-                            <p class="doc-api__item">Default: <code>&quot;auto&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopup-prop-container"
-                                ><a class="docs-api__anchor" href="#ipopup-prop-container"
-                                    ><span class="docs-api__name"
-                                        >container</span
-                                    >: HTMLElement | null | undefined</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Which element to use as container.</p>
-
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopup-prop-viewport"
-                                ><a class="docs-api__anchor" href="#ipopup-prop-viewport"
-                                    ><span class="docs-api__name"
-                                        >viewport</span
-                                    >: HTMLElement</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Which element to use as viewport.</p>
-
-                            <p class="doc-api__item">Default: <code>function() {
-    return document.documentElement;
-}</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopup-prop-keyboardtrap"
-                                ><a class="docs-api__anchor" href="#ipopup-prop-keyboardtrap"
-                                    ><span class="docs-api__name"
-                                        >keyboardTrap</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Prevents tabbing outside of component.</p>
-
-                            <p class="doc-api__item">Default: <code>true</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopup-prop-focuselement"
-                                ><a class="docs-api__anchor" href="#ipopup-prop-focuselement"
-                                    ><span class="docs-api__name"
-                                        >focusElement</span
-                                    >: () =&gt; HTMLElement | null</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Function that returns the element that will receive focus</p>
-
-                            <p class="doc-api__item">Default: <code>null</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopup-prop-setfocus"
-                                ><a class="docs-api__anchor" href="#ipopup-prop-setfocus"
-                                    ><span class="docs-api__name"
-                                        >setFocus</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Set focus on first tabbable element (or element in the <code>focusElement</code> prop if provided) when opened.</p>
-
-                            <p class="doc-api__item">Default: <code>true</code></p>
-                            
-                        </dd>
-                    
-        </dl>
-    
-        <h3 id="ipopup-events">
-            <a class="header-anchor" href="#ipopup-events">Events</a>
-        </h3>
-        <dl class="docs-api docs-api--events">
-            
-                        <dt>
-                            <code id="ipopup-event-open"
-                                ><a class="docs-api__anchor" href="#ipopup-event-open"
-                                    ><span class="docs-api__name"
-                                        >open</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Emitted when popup is visible and placement is fully calculated.</p>
-
-                            
-                            
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopup-event-close"
-                                ><a class="docs-api__anchor" href="#ipopup-event-close"
-                                    ><span class="docs-api__name"
-                                        >close</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Emitted when clicked outside of popup.</p>
-
-                            
-                            
-                            
-                            
-                        </dd>
-                    
-        </dl>
-    
-        <h3 id="ipopup-slots">
-            <a class="header-anchor" href="#ipopup-slots">Slots</a>
-        </h3>
-        <dl class="docs-api docs-api--slots">
-            
-                        <dt>
-                            <code id="ipopup-slot-default"
-                                ><a class="docs-api__anchor" href="#ipopup-slot-default"
-                                    ><span class="docs-api__name"
-                                        >default</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            &#8208;
-                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>toggleIsOpen: unknown</code></li><li><code>placement: unknown</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
-        </dl>
-    
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;auto&quot;</p>
+</td></tr><tr><td><p>alwaysInline</p>
+</td><td><p>Force popup to always display inline.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>false</p>
+</td></tr><tr><td><p>container</p>
+</td><td><p>Which element to use as container.</p>
+</td><td><p>HTMLElement | null | undefined</p>
+</td><td><p>false</p>
+</td><td><p>undefined</p>
+</td></tr><tr><td><p>viewport</p>
+</td><td><p>Which element to use as viewport.</p>
+</td><td><p>HTMLElement</p>
+</td><td><p>false</p>
+</td><td><p>function() {<br>
+return document.documentElement;<br>
+}</p>
+</td></tr><tr><td><p>keyboardTrap</p>
+</td><td><p>Prevents tabbing outside of component.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>true</p>
+</td></tr><tr><td><p>focusElement</p>
+</td><td><p>Function that returns the element that will receive focus</p>
+</td><td><p>() =&gt; HTMLElement | null</p>
+</td><td><p>false</p>
+</td><td><p>null</p>
+</td></tr><tr><td><p>setFocus</p>
+</td><td><p>Set focus on first tabbable element (or element in the <code>focusElement</code> prop if provided) when opened.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>true</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>open</p>
+</td><td><p>Emitted when popup is visible and placement is fully calculated.</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>close</p>
+</td><td><p>Emitted when clicked outside of popup.</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
+</td><td><p>‐</p>
+</td><td><p>toggleIsOpen<br>
+placement</p>
+</td></tr></tbody></table></div>
 
                     </div>
                 </main>
@@ -1821,9 +1722,9 @@ Om popup inte hittar en förälder med <code>scroll-target</code> så kommer den
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    main (<a href="https://github.com/Forsakringskassan/designsystem/commits/90ef626da60361d0ba1a9ca56064458f11c4364b">90ef626</a>)<br />
+    release/5.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/d91aeaacbd14e761667784555ccab70db1c6dafb">d91aeaa</a>)<br />
         
-        2025-02-10 14:41
+        2025-01-29 15:39
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1944,15 +1845,15 @@ Om popup inte hittar en förälder med <code>scroll-target</code> så kommer den
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-d22575.js"
+            src="../../assets/processors/selectable-version/select-version-dac30b.js"
             crossorigin
-            integrity="sha384-ald9ZVTR9kBhq22tQfGrf/lr/MJXPUxborQyhSBHBXA+8RzTgsYY5RYMePg2khfT"
+            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
             
         ></script>
         <script
-            src="../../assets/main-7b9d0f.js"
+            src="../../assets/main-623313.js"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
             
         ></script>
     </body>
