@@ -33,5 +33,6 @@ jobs:
                   npm install --no-save "@forsakringskassan/semantic-release-monorepo-config"
                   npm exec semantic-release
     deploy-documentation:
+        needs: [release]
         name: Deploy new documentation
         uses: ./.github/workflows/docs.yml
