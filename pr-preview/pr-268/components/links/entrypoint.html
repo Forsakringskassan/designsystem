@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/7b3bfd08efa78643b06bed42634ece42a15405d0/packages/design/src/components/entrypoint/_entrypoint.scss">entrypoint</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/b58de82deed824b904ff8e100d8559ae1505c4cf/packages/design/src/components/entrypoint/_entrypoint.scss">entrypoint</a>
             
         </code>
          
@@ -1076,24 +1076,54 @@
 <p>Startpunkt används för att framhäva en länk extra tydligt, som till exempel en ingång till en digital tjänst.</p>
 <p>Startpunkten tar alltid upp 100% tillgänglig yta.</p>
 
-                <div
-                    id="example-8cb6d8"
-                    class="code-preview code-preview--borderless"
-                    
-                    data-tags="live-example"
-                    data-language="vue"
-                >
-                    
-        <div id="EntrypointLiveExample"></div>
+            <div
+                id="example-e69202"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="entrypoint"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./EntrypointLiveExample-4a7b21.js"></script>
-    
+        <script defer src="./entrypoint-d0aac2.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FIcon</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;entrypoint&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>&gt;</span>
+        Ansök om hundbidrag
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Till tjänsten ansök om hundbidrag <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;arrow-right&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;entrypoint__icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-icon</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
                 </div>
-            <h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p>Texten på en startpunkt ska vara begriplig utan någon annan kontext, men hållas så kort som möjligt. Det första ordet bör vara ett verb i imperativ som uttrycker det användaren ska göra.</p>
+            </div>
+        <h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p>Texten på en startpunkt ska vara begriplig utan någon annan kontext, men hållas så kort som möjligt. Det första ordet bör vara ett verb i imperativ som uttrycker det användaren ska göra.</p>
 <p>Bra texter på startpunkter är t.ex. &quot;Ansök om VAB&quot; och &quot;Ansök om sjukpenning&quot;.</p>
 <p>En startpunkt ska alltid ha en skärmläsartext som ska förtydliga att startpunkten leder till en tjänst och inte är en vanlig länk. Exempel som motsvarar texterna ovan är &quot;Till tjänsten ansök om vab&quot; och &quot;Till tjänsten ansök om sjukpenning&quot;.</p>
 
@@ -1117,9 +1147,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    migration-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/7b3bfd08efa78643b06bed42634ece42a15405d0">7b3bfd0</a>)<br />
+    migration-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/b58de82deed824b904ff8e100d8559ae1505c4cf">b58de82</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/268">PR 268</a><br />
-        2025-02-10 13:10
+        2025-02-10 14:09
 </div>
 <div class="toolbar__item">
     <form id="version">
