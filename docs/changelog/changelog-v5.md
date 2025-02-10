@@ -6,6 +6,12 @@ name: changelog-v5
 Detta är Changelog för version 5.x.
 För senaste version se {@link changelog ordinarie Changelog}.
 
+## 5.46.1 (2025-02-10)
+
+### Bug Fixes
+
+- **@fkui/vue:** stepNumber for cancel button slot in FWizardStep (refs SFKUI-6500) d91aeaa
+
 ## 5.46.0 (2025-01-23)
 
 ### Features
