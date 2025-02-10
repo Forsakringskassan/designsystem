@@ -10,6 +10,7 @@ INT-temat är utbrutet och levereras inte av designsystemet längre.
 
 - `@fkui/css-variables` har bytt namn till `@fkui/theme-default`.
 - `@fkui/design` levererar nu enbart ett tema.
+- `@fkui/design` levererar inte längre logotyper
 
 ## Tillämpnings-specifika leverabler borttagna
 
@@ -60,3 +61,8 @@ Tidigare tog komponenten enbart upp 66% bredd i desktop, om du vill återskapa d
 +    </div>
 + </div>
 ```
+
+## Logotyper borttagna
+
+Alla logotyp-bilder är borttagna från `@fkui/design` utan ersättare.
+De som behöver dessa bilder behöver lägga in dem själv.

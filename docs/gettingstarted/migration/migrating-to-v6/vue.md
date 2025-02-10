@@ -202,6 +202,8 @@ För att ändra storlek på logotypen som med tidigare `logoSize`, använd `size
  </f-page-header>
 ```
 
+Notera att eftersom `@fkui/design` inte längre tillhandahåller logotyper i olika storlekar och inga ersättare finns så behövs dessa logotyp-bilder läggas till själv för att bibehålla utseendet.
+
 ## `FTextField`
 
 Eventet `update` emittas inte längre.

@@ -12,11 +12,6 @@ const require = module.createRequire(import.meta.url);
 
 const pkg = require("./package.json");
 
-const fkuiDesign = path.relative(
-    process.cwd(),
-    path.dirname(require.resolve("@fkui/design/package.json")),
-);
-
 const docs = new Generator({
     site: {
         name: "FKUI Labs",
@@ -47,8 +42,6 @@ docs.compileStyle("docs-fkui", "./docs/src/fkui-theme.scss", {
         disabled: true,
     },
 });
-
-docs.copyResource("images", path.join(fkuiDesign, "src/assets/images"));
 
 try {
     await docs.build([
