@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue",
-  "version": "5.46.0",
+  "version": "5.46.1",
   "description": "Vue implementation of FKUI components",
   "keywords": [
     "fkui",

@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue-labs",
-  "version": "5.46.0",
+  "version": "5.46.1",
   "description": "Experimental and unstable FKUI components",
   "keywords": [
     "fkui",
@@ -68,7 +68,7 @@
     "@fkui/icon-lib-default": "5.46.0",
     "@fkui/logic": "5.46.0",
     "@fkui/test-utils": "5.46.0",
-    "@fkui/vue": "5.46.0",
+    "@fkui/vue": "5.46.1",
     "@forsakringskassan/docs-generator": "2.15.4",
     "@forsakringskassan/vite-lib-config": "3.2.1",
     "@vue/test-utils": "2.4.6",
