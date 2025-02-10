@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-028afd.css"
+            href="../../../assets/docs-d5e006.css"
             crossorigin
-            integrity="sha384-u2v6PC9OGTvLkJelFfyL756GvZEAZUSHuXlHvSdMzN3Ts7HJ3NOL6JwRpt2JgSSW"
+            integrity="sha384-Z/JIJRwqAuWvyQ3vaShmy+1gm3L8jBsfpgec4uO9T1LEeQNkVbtB7hm6ln7sSub/"
             
         />
         <link
@@ -566,6 +566,8 @@
                                 
                                 <li><a href="#fmodal_borttagna_css_klasser">FModal borttagna CSS-klasser</a></li>
                                 
+                                <li><a href="#entrypoint_tar_alltid_upp_100_yta">Entrypoint tar alltid upp 100% yta</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -632,6 +634,23 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
 <span class="hljs-addition">+&lt;div class=&quot;modal__dialog-container modal__dialog-container--large&quot;&gt;</span>
 </code></pre>
                 </div>
+            <h2 id="entrypoint_tar_alltid_upp_100_yta"><a class="header-anchor" href="#entrypoint_tar_alltid_upp_100_yta">Entrypoint tar alltid upp 100% yta</a></h2><p>Tidigare tog komponenten enbart upp 66% bredd i desktop, om du vill återskapa det beteendet kan du exempelvis nyttja grid'en:</p>
+
+                <div
+                    id="example-a76e89"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+ &lt;div class=&quot;row&quot;&gt;</span>
+<span class="hljs-addition">+    &lt;div class=&quot;col col--md-8&quot;&gt;</span>
+        &lt;a class=&quot;entrypoint&quot; href=&quot;javascript:&quot;&gt;...&lt;/a&gt;
+<span class="hljs-addition">+    &lt;/div&gt;</span>
+<span class="hljs-addition">+ &lt;/div&gt;</span>
+</code></pre>
+                </div>
             
 
                     </div>
@@ -653,9 +672,9 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    migration-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/d2bd61dc728ecc5bf8d5f2307686f6018eeb9698">d2bd61d</a>)<br />
+    migration-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/7b3bfd08efa78643b06bed42634ece42a15405d0">7b3bfd0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/268">PR 268</a><br />
-        2025-02-10 11:05
+        2025-02-10 13:10
 </div>
 <div class="toolbar__item">
     <form id="version">
