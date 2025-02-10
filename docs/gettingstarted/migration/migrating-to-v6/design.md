@@ -5,25 +5,28 @@ name: migrating-to-v6-design
 layout: article
 ---
 
-Tillämpnings-specifika leverabler (internt, externt, HAPO) har ersatts av rena FKUI-leverabler:
+Från version 6.0.0 levereras bara ett tema, det som tidigare hette EXP är nu standard.
+INT-temat är utbrutet och levereras inte av designsystemet längre.
 
-- paketet `@fkui/css-variables` har bytt namn till `@fkui/theme-default` och levererar ett standardtema
-- paketet `@fkui/design` levererar enbart standarddesign
+- `@fkui/css-variables` har bytt namn till `@fkui/theme-default`.
+- `@fkui/design` levererar nu enbart ett tema.
 
 ## Tillämpnings-specifika leverabler borttagna
 
-FKUI tillhandahåller istället standardleverabler för tema, design.
-Som konsument finns det möjlighet att själv tillhandahålla specifika tillämpningar.
+Designsystemet tillhandahåller nu endast ett tema.
+Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.
 
 ```diff
--@use "@fkui/css-variables/dist/fkui-int-css-variables";
+-@use "@fkui/css-variables/dist/fkui-exp-css-variables";
 +@use "@fkui/theme-default";
 
--@use "@fkui/design/src/fkui-int";
+-@use "@fkui/design/src/fkui-exp";
 +@use "@fkui/design";
 ```
 
-## Deprekerade CSS-variabler excluderade från standardtema
+{@link getting-started-application Läs mer om att använda ett eget tema.}
+
+## Deprekerade CSS-variabler borttagna
 
 Möjlighet finns att importera separat vid behov.
 
@@ -35,7 +38,7 @@ Möjlighet finns att importera separat vid behov.
 }
 ```
 
-## `FModal` deprekerade CSS-klasser
+## `FModal` borttagna CSS-klasser
 
 De deprekerade CSS klasserna `modal__dialog-container-large` och `modal__dialog-container-fullscreen` är borttagna.
 Detta påverkar endast dig som använder stylingen direkt, använder man `@fkui/vue` komponenten `FModal` påverkas man inte.

@@ -11,23 +11,21 @@ I den senaste releasen, [6.0.0](https://github.com/Forsakringskassan/designsyste
 - Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
   De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.
 
-- Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället {@link migrating-to-fieldset FFieldset}.
-
-- Modal: De deprekerade slottarna submit-button-text och cancel-button-text är borttagna och ersatt med propen buttons.
-  Ett antal deprekerade CSS-klasser är också borttagna.
-  Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+- Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
   Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.
 
-- Sidhuvud: Den deprekerade propen skipLinkHref är borttagen och ersatt med propen skipLink.
+- Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället {@link migrating-to-fieldset FFieldset}.
+
+- Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.
 
 - Ett antal andra funktioner, typer och komponenter är också borttagna.
 
 - Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).
 
-- Valideringsservice: Den deprekerade validatorn peronnummer är borttagen och ersätts nu med validatorerna personnummerFormat och personnummerLuhn.
+- Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.
 
-- Tema och variabler: Vi har uppdaterat tema och variabler och FKUI tillhandahåller nu standardleverabler för tema.
-  Som konsument har du möjlighet att själv tillhandahålla specifika tillämpningar.
+- Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
+  Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.
 
 - Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.
 
@@ -47,7 +45,7 @@ Vi har också nyligen släppt följande:
 - Fortsatt uppdatering av semantiska tokens för färger.
   Det är en förutsättning för att kunna ha dark mode, men underlättar framför allt för dig som vill sätta eget tema eller ändra på specifika variabler.
 - Uppdatering av komponenter för applikationslayout.
-  På sikt kommer dagens komponenter för applikationslayout ({@link application-layout applikationsmall}, {@link application-layout högeryta} och {@link application-layout vänsteryta}) ersättas med nya.
+  På sikt kommer dagens komponenter för applikationslayout ({@link application-layout applikationsmall}, {@link application-layout#hogeryta högeryta} och {@link application-layout#vansteryta vänsteryta}) ersättas med nya.
   De nya komponenterna kommer vara mer flexibla, till exempel kan du fylla en yta med valfritt innehåll oberoende var den ligger.
   Till att börja med kommer ett antal olika varianter av layouter släppas.
 

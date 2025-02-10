@@ -57,12 +57,11 @@ Om du använder den för att ta bort whitespace från text ersätt med `stripWhi
 +const stripped = stripWhitespace(text);
 ```
 
-## `FORMAT_3_DIGITS_GROUP`
-
 Om du använder den för andra ändamål ersätt med reguljära uttrycket `\s+` (med eller utan global flaggan).
 
-Den deprekerade konstanten `FORMAT_3_DIGITS_GROUP` är borttagen utan ersättare.
+## `FORMAT_3_DIGITS_GROUP`
 
+Den deprekerade konstanten `FORMAT_3_DIGITS_GROUP` är borttagen utan ersättare.
 Om du använder den behöver du använda ett eget reguljärt uttryck.
 
 ## `applyValidationMessages()`

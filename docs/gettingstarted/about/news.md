@@ -4,7 +4,7 @@ name: news
 layout: content-with-menu
 ---
 
-## Ny release med brytande ändringar
+## Ny release med brytande ändringar &#127881;
 
 Version: 6.0.0 <br>
 2025-02-10
@@ -14,23 +14,21 @@ Releasen innehåller bland annat följande uppdateringar:
 - Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
   De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.
 
-- Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället {@link migrating-to-fieldset FFieldset}.
-
-- Modal: De deprekerade slottarna submit-button-text och cancel-button-text är borttagna och ersatt med propen buttons.
-  Ett antal deprekerade CSS-klasser är också borttagna.
-  Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+- Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
   Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.
 
-- Sidhuvud: Den deprekerade propen skipLinkHref är borttagen och ersatt med propen skipLink.
+- Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället {@link migrating-to-fieldset FFieldset}.
+
+- Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.
 
 - Ett antal andra funktioner, typer och komponenter är också borttagna.
 
 - Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).
 
-- Valideringsservice: Den deprekerade validatorn peronnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.
+- Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.
 
-- Tema och variabler: Vi har uppdaterat tema och variabler och FKUI tillhandahåller nu standardleverabler för tema.
-  Som konsument har du möjlighet att själv tillhandahålla specifika tillämpningar.
+- Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
+  Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.
 
 - Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.
 
