@@ -48,3 +48,15 @@ Klasserna är ersatta med `modal__dialog-container--large` respektive `modal__di
 -<div class="modal__dialog-container modal__dialog-container-large">
 +<div class="modal__dialog-container modal__dialog-container--large">
 ```
+
+## Entrypoint tar alltid upp 100% yta
+
+Tidigare tog komponenten enbart upp 66% bredd i desktop, om du vill återskapa det beteendet kan du exempelvis nyttja grid'en:
+
+```diff
++ <div class="row">
++    <div class="col col--md-8">
+        <a class="entrypoint" href="javascript:">...</a>
++    </div>
++ </div>
+```
