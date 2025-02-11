@@ -266,7 +266,7 @@ input[type=search]:focus,
 [tabindex]:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
-  outline: none;
+  outline: 2px solid transparent;
 }
 
 [tabindex="-1"]:focus {
@@ -1451,6 +1451,7 @@ input[type=search]:focus,
 .button:active, .entrypoint:active, .button:focus, .entrypoint:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover, #e5e5f5);
   border-color: var(--fkds-color-action-border-primary-default, #4a52b6);
   color: var(--f-text-color-button-standard, #4a52b6);
@@ -1489,6 +1490,7 @@ input[type=search]:focus,
 .button.button--primary:active, .button--primary.entrypoint:active, .button.button--primary:focus, .button--primary.entrypoint:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
   background-color: var(--fkds-color-action-background-primary-hover, #3b4292);
   border-color: transparent;
   color: var(--fkds-color-action-text-inverted-default, #ffffff);
@@ -1527,6 +1529,7 @@ input[type=search]:focus,
 .button.button--secondary:active, .button--secondary.entrypoint:active, .button.button--secondary:focus, .button--secondary.entrypoint:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover, #e5e5f5);
   border-color: var(--fkds-color-action-border-primary-default, #4a52b6);
   color: var(--fkds-color-action-text-primary-default, #4a52b6);
@@ -1570,6 +1573,7 @@ input[type=search]:focus,
 .button.button--discrete:active, .button--discrete.entrypoint:active, .button.button--text:active, .button--text.entrypoint:active, .button.button--discrete:focus, .button--discrete.entrypoint:focus, .button.button--text:focus, .button--text.entrypoint:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
   background-color: var(--f-background-button-discrete-hover, none);
   border-color: transparent;
   color: var(--f-text-color-button-discrete-hover, #3b4292);
@@ -1643,6 +1647,7 @@ input[type=search]:focus,
 .button.button--discrete-inverted:active, .button--discrete-inverted.entrypoint:active, .button.button--discrete-inverted:focus, .button--discrete-inverted.entrypoint:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
   background-color: transparent;
   border-color: transparent;
   color: var(--f-text-color-button-discrete-inverted-hover, #ffffff);
@@ -1693,6 +1698,7 @@ input[type=search]:focus,
 .button.button--tertiary:active, .button--tertiary.entrypoint:active, .button.button--tertiary:focus, .button--tertiary.entrypoint:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover, #e5e5f5);
   border-color: transparent;
   color: var(--fkds-color-action-text-primary-default, #4a52b6);
@@ -1874,6 +1880,7 @@ input[type=search]:focus,
 .entrypoint:active, .entrypoint:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
   background-color: var(--fkds-color-action-background-primary-hover, #3b4292);
   border-color: transparent;
   color: var(--fkds-color-action-text-inverted-default, #ffffff);
@@ -2824,6 +2831,7 @@ input[type=search]:focus,
 .checkbox input[type=checkbox]:focus + .checkbox__label {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
 }
 
 .radio-button-group--chip .radio-button-group__label {
@@ -3373,6 +3381,7 @@ input[type=search]:focus,
 .file-selector input[type=file]:focus + label {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
 }
 .file-selector label {
   cursor: pointer;
@@ -5259,6 +5268,7 @@ input[type=search]:focus,
 .radio-button input[type=radio]:focus + label {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow, 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff);
+  outline: 2px solid transparent;
 }
 
 .radio-button-group__content {
