@@ -130,15 +130,11 @@
     --f-background-dialogue-tree: #{$palette-color-white-100};
     --f-background-dialogue-tree-hover: #{$palette-color-bluebell-15};
 
-    --f-background-modal-shelf: #{$palette-color-white-100};
-
     // *************
     // BORDER COLORS
     // *************
     --f-border-color-modal: #{$palette-color-fk-black-50};
-    --f-border-color-info: #{$palette-color-bluebell-100}; // message-box, modal
     --f-border-color-success: #{$palette-color-green-a-85}; // message-box, textfield, textarea, form-step
-    --f-border-color-warning: #{$palette-color-yellow-100}; // message-box, modal
     --f-border-color-error: #{$palette-color-red-100}; // message-box, modal, textfield, textarea
     --f-border-color-input: #{$palette-color-fk-black-50};
     --f-border-color-input-inner: #{$palette-color-bluebell-15}; // radiobutton

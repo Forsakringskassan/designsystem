@@ -246,6 +246,9 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-icon-color-warning: #{$palette-color-yellow-100};
     --f-background-info: #{$palette-color-bluebell-5};
     --f-background-warning: #{$palette-color-yellow-5};
+    --f-background-modal-shelf: #{$palette-color-white-100};
+    --f-border-color-info: #{$palette-color-bluebell-100};
+    --f-border-color-warning: #{$palette-color-yellow-100};
 }
 
 @if $global {
