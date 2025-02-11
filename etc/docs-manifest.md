@@ -5,6 +5,7 @@
 ```
 accessibility.html
 changelog.html
+changelog/v5.html
 components/button.html
 components/chip.html
 components/expandable/fexpand.html
