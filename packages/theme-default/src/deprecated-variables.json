@@ -136,5 +136,8 @@
     "--f-text-color-button-tertiary-inverted-disabled",
     "--f-icon-color-warning",
     "--f-background-info",
-    "--f-background-warning"
+    "--f-background-warning",
+    "--f-background-modal-shelf",
+    "--f-border-color-info",
+    "--f-border-color-warning"
 ]
