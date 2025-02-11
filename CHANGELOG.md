@@ -6,6 +6,9 @@ För äldre versioner se:
 
 ## 6.0.0 (2025-02-10)
 
+Denna release innehåller brytande ändringar.
+Läs mer om hur du {@link migrating-to-v6 migrerar till version 6}.
+
 ### ⚠ BREAKING CHANGES
 
 * **@fkui/design, @fkui/vue-labs:** `@fkui/design` no longer provides logotype images.
