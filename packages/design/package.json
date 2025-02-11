@@ -51,7 +51,7 @@
     "svgo": "3.3.2"
   },
   "peerDependencies": {
-    "@fkui/theme-default": "^5.36.0",
+    "@fkui/theme-default": "^6.0.0",
     "sass": "^1.40.0",
     "stylelint": ">= 14"
   },

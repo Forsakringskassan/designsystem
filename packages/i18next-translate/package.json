@@ -56,7 +56,7 @@
     "rollup": "4.34.6"
   },
   "peerDependencies": {
-    "@fkui/logic": "^5.36.0"
+    "@fkui/logic": "^6.0.0"
   },
   "engines": {
     "node": ">= 20",
