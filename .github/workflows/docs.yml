@@ -58,7 +58,7 @@ jobs:
             - name: Create version metadata (maintenance)
               if: github.ref != 'refs/heads/main'
               run: |
-                  export CURRENT=$(jq -r .latest < versions.json)
+                  export CURRENT=$(jq -r .latest < pages/versions.json)
                   ls -d pages/v*.*.* | sed "s#pages/##g" | jq -Rn "{ \"versions\": [inputs], \"latest\": \"${CURRENT}\" }" | tee pages/versions.json
                   git add -f pages/versions.json
             - name: Symlink latest to tagged release
