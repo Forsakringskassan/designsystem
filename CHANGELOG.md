@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.0.1 (2025-02-11)
+
+### Bug Fixes
+
+* **@fkui/design:** focus in highcontrast mode (refs SFKUI-6909) a0e5ea6
+* **@fkui/vue:** stepNumber for cancel button slot in FWizardStep (refs SFKUI-6500) 7a9928f
+* **deps:** fix broken peerDependencies (refs SFKUI-6500) 6a4a995
+
 För äldre versioner se:
 
 - {@link changelog-v5 Changelog för v5}
