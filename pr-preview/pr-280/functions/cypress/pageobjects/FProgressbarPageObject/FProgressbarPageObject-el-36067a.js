@@ -28,25 +28,39 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject.vue
+  // virtual-entry:./docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject-el.vue
   var import_vue3 = __require("vue");
-  var exampleComponent = {};
-  function render(_ctx, _cache) {
-    const _component_f_label = (0, import_vue3.resolveComponent)("f-label");
-    const _directive_test = (0, import_vue3.resolveDirective)("test");
-    return (0, import_vue3.withDirectives)(((0, import_vue3.openBlock)(), (0, import_vue3.createBlock)(_component_f_label, null, {
-      default: (0, import_vue3.withCtx)(() => _cache[0] || (_cache[0] = [
-        (0, import_vue3.createTextVNode)(" Etikett ")
-      ])),
-      _: 1
-      /* STABLE */
-    })), [
-      [_directive_test, "awesome-label"]
+  var import_vue4 = __require("@fkui/vue");
+  var import_vue5 = __require("vue");
+  var exampleComponent = /* @__PURE__ */ (0, import_vue3.defineComponent)({
+    __name: "FProgressbarPageObject-el",
+    setup(__props, { expose: __expose }) {
+      __expose();
+      const __returned__ = { get FProgressbar() {
+        return import_vue4.FProgressbar;
+      } };
+      Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+      return __returned__;
+    }
+  });
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _directive_test = (0, import_vue5.resolveDirective)("test");
+    return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(
+      $setup["FProgressbar"],
+      {
+        value: 40,
+        "aria-label": "Progressbar"
+      },
+      null,
+      512
+      /* NEED_PATCH */
+    )), [
+      [_directive_test, "progressbar"]
     ]);
   }
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#FLabelPageObject"
+    selector: "#FProgressbarPageObject-el"
   });
 })();
