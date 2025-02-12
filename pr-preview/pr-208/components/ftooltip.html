@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-8338a5.css"
+            href="../assets/docs-100f9a.css"
             crossorigin
-            integrity="sha384-L/3SH/ZMmCoPmz7+YA7q82VP4zg4kLpbLravO3tBYa8Gtb7+EMmJBm3ElYbUOM/t"
+            integrity="sha384-hHO9xZrgz5JAiAyRpVw17qKEuT3MCfrK8HDNH2aMVPVZBVqg5SnUkJuVtjsmcCRV"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-97b0a8.css"
+            href="../assets/docs-fkui-246b4b.css"
             crossorigin
-            integrity="sha384-qF3O+PgA/R88iaWdSzOpgpX98ZYt1WSAbgu3lV5a/CGSrF7yJcyeIts62Y6RVLka"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../assets/docs-int-35323f.css"
-            crossorigin
-            integrity="sha384-AUEZ5bT9cw+MeWX40jjUndr5jRm96ujCJHGSlcRBXhp1PLumjouwFjHGR8Rh7Yu0"
-            data-theme="int" disabled
+            integrity="sha384-k8fYVntISJE7fhYQ5On6zFO2zOoqaKCccb3TWD7PhKyL4LyV5OeK7Nmp6Ls6wZ9O"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../search-data-20dcd8.json"
+            href="../search-data-51767f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dNrfl6hl9gGG6iqNxy3tYaa66T0Yt2/YSfmPDS4+7SMpNKFFxgh8M3cIaM3R1ouH"
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="./fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -641,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-logic-ba7196.js"
+                    src="../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
                     src="../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-d1f2e9.js"
+                    src="../assets/vendor-fkui-vue-d9de5d.js"
                     crossorigin
-                    integrity="sha384-J5VZDmPv8DF/F5GUtgXTDcjZt9BYSTFn7n5g8DAP/73Xh3Rjy16OGf0NnJmli4OA"
+                    integrity="sha384-EyNIVTQNB2lrFjJQp8nMiF4++DHXtIqO6haZVgTcnsxnGzZRKtwY5PZaJQzACT5T"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/43321c8bc82dabd063ca89374c753d2faa05f63d/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/58f3463807d1ced959e80d92c378113c7e9a13ec/packages/vue/src/components/FTooltip/FTooltip.vue">FTooltip</a>
             
         </code>
          
@@ -1150,7 +1083,7 @@
                     id="example-74b6dc"
                     class="code-preview code-preview--borderless"
                     
-                    data-tags=live-example
+                    data-tags="live-example"
                     data-language="vue"
                 >
                     
@@ -1160,13 +1093,17 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FTooltipLiveExample-18f99f.js"></script>
+        <script defer src="./FTooltipLiveExample-5dcacd.js"></script>
     
                 </div>
             <ul>
 <li>Informationsrutan kan innehålla länkar och expanderbara fält.</li>
 <li>Upprepa inte information som redan finns i rubrik eller brödtext.</li>
-<li>Använd inte rubriken i tooltip om den inte verkligen behövs.</li>
+<li>Använd inte rubriken i tooltip om den inte verkligen behövs.
+<ul>
+<li>Om rubrik används behöver även header-tag anges.</li>
+</ul>
+</li>
 <li>Flera informationsrutor kan vara öppna samtidigt.</li>
 <li>Sträva efter att minimera användning av tooltip. Information som alla behöver veta ska visas med etiketten.</li>
 </ul>
@@ -1181,7 +1118,7 @@ Om informationen är viktig för alla, men så pass omfattande att den inte kan 
 <h3 id="rubriksniva"><a class="header-anchor" href="#rubriksniva">Rubriksnivå</a></h3><p>Om du behöver använda en semantisk rubriksnivå använd <code>header-tag</code> parametern för att sätta (som standard används ingen semantisk rubrik):</p>
 
                 <div
-                    id="example-ac8017"
+                    id="example-ffc07b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1197,10 +1134,10 @@ Om informationen är viktig för alla, men så pass omfattande att den inte kan 
 Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachTo</code> propen.</p>
 
                 <div
-                    id="example-c0dc0b"
+                    id="example-c91fde"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="vue"
                 >
                     
@@ -1222,10 +1159,10 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
                 </div>
             
                 <div
-                    id="example-0d3c78"
+                    id="example-33936c"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1239,34 +1176,101 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
         <script defer src="./FTooltipHeadingExample-98656a.js"></script>
     </div>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>attachTo</p>
-</td><td><p>Element to attach tooltip toggle button.</p>
-<p>Only needed when using with arbitrary elements, e.g. when using with<br>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="ftooltip-props">
+            <a class="header-anchor" href="#ftooltip-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftooltip-prop-attachto"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-attachto"
+                                    ><span class="docs-api__name"
+                                        >attachTo</span
+                                    >: HTMLElement</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Element to attach tooltip toggle button.</p>
+<p>Only needed when using with arbitrary elements, e.g. when using with
 <code>FLabel</code> you do not need to set this prop.</p>
-</td><td><p>HTMLElement</p>
-</td><td><p>false</p>
-</td><td><p>null</p>
-</td></tr><tr><td><p>v-model</p>
-</td><td><p>State (expanded or collapsed) of the tooltip. The value is <code>true</code> if the tooltip is expanded.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>screenReaderText</p>
-</td><td><p>Screen reader text for toggle button</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>closeButtonText</p>
-</td><td><p>Close button text</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>TranslationService.provider.translate(&quot;fkui.tooltip.close&quot;, &quot;Stäng&quot;)</p>
-</td></tr><tr><td><p>headerTag</p>
-</td><td><p>Element to render for the header element inside the tooltip.</p>
+
+                            <p class="doc-api__item">Default: <code>null</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-prop-v-model"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>State (expanded or collapsed) of the tooltip. The value is <code>true</code> if the tooltip is expanded.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-prop-screenreadertext"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-screenreadertext"
+                                    ><span class="docs-api__name"
+                                        >screenReaderText</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Screen reader text for toggle button</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-prop-closebuttontext"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-closebuttontext"
+                                    ><span class="docs-api__name"
+                                        >closeButtonText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Close button text</p>
+
+                            <p class="doc-api__item">Default: <code>TranslationService.provider.translate(&quot;fkui.tooltip.close&quot;, &quot;Stäng&quot;)</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-prop-headertag"
+                                ><a class="docs-api__anchor" href="#ftooltip-prop-headertag"
+                                    ><span class="docs-api__name"
+                                        >headerTag</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Element to render for the header element inside the tooltip.</p>
 <p>Must be set to one of:</p>
 <ul>
-<li><code>div</code> (default)</li>
-<li><code>span</code></li>
 <li><code>h1</code></li>
 <li><code>h2</code></li>
 <li><code>h3</code></li>
@@ -1274,22 +1278,103 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
 <li><code>h5</code></li>
 <li><code>h6</code></li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;div&quot;</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>update:modelValue</p>
-</td><td><p>v-model event.</p>
-</td><td><p>value: boolean — Model value</p>
-</td></tr><tr><td><p>toggle</p>
-</td><td><p>Emitted when the state of the tooltip (collapsed/expanded) changes.</p>
-</td><td><p>event: { isOpen: boolean } — New state of tooltip.</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Tooltip header content</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>body</p>
-</td><td><p>Tooltip body content</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ftooltip-events">
+            <a class="header-anchor" href="#ftooltip-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="ftooltip-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#ftooltip-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>v-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>value: boolean</code> <span role="presentation">&mdash;</span> Model value</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-event-toggle"
+                                ><a class="docs-api__anchor" href="#ftooltip-event-toggle"
+                                    ><span class="docs-api__name"
+                                        >toggle</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when the state of the tooltip (collapsed/expanded) changes.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>event: { isOpen: boolean }</code> <span role="presentation">&mdash;</span> New state of tooltip.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ftooltip-slots">
+            <a class="header-anchor" href="#ftooltip-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftooltip-slot-header"
+                                ><a class="docs-api__anchor" href="#ftooltip-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Tooltip header content</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftooltip-slot-body"
+                                ><a class="docs-api__anchor" href="#ftooltip-slot-body"
+                                    ><span class="docs-api__name"
+                                        >body</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Tooltip body content</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1310,9 +1395,9 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/43321c8bc82dabd063ca89374c753d2faa05f63d">43321c8</a>)<br />
+    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/58f3463807d1ced959e80d92c378113c7e9a13ec">58f3463</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/208">PR 208</a><br />
-        2025-01-24 12:19
+        2025-02-12 10:37
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1433,15 +1518,15 @@ Lägg en <code>&lt;div&gt;</code> runt elementet och passa in till <code>attachT
             
         ></script>
         <script
-            src="../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../assets/main-623313.js"
+            src="../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>

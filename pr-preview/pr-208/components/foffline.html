@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-8338a5.css"
+            href="../assets/docs-100f9a.css"
             crossorigin
-            integrity="sha384-L/3SH/ZMmCoPmz7+YA7q82VP4zg4kLpbLravO3tBYa8Gtb7+EMmJBm3ElYbUOM/t"
+            integrity="sha384-hHO9xZrgz5JAiAyRpVw17qKEuT3MCfrK8HDNH2aMVPVZBVqg5SnUkJuVtjsmcCRV"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-97b0a8.css"
+            href="../assets/docs-fkui-246b4b.css"
             crossorigin
-            integrity="sha384-qF3O+PgA/R88iaWdSzOpgpX98ZYt1WSAbgu3lV5a/CGSrF7yJcyeIts62Y6RVLka"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../assets/docs-int-35323f.css"
-            crossorigin
-            integrity="sha384-AUEZ5bT9cw+MeWX40jjUndr5jRm96ujCJHGSlcRBXhp1PLumjouwFjHGR8Rh7Yu0"
-            data-theme="int" disabled
+            integrity="sha384-k8fYVntISJE7fhYQ5On6zFO2zOoqaKCccb3TWD7PhKyL4LyV5OeK7Nmp6Ls6wZ9O"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../search-data-20dcd8.json"
+            href="../search-data-51767f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dNrfl6hl9gGG6iqNxy3tYaa66T0Yt2/YSfmPDS4+7SMpNKFFxgh8M3cIaM3R1ouH"
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="./fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -641,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-logic-ba7196.js"
+                    src="../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
                     src="../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-d1f2e9.js"
+                    src="../assets/vendor-fkui-vue-d9de5d.js"
                     crossorigin
-                    integrity="sha384-J5VZDmPv8DF/F5GUtgXTDcjZt9BYSTFn7n5g8DAP/73Xh3Rjy16OGf0NnJmli4OA"
+                    integrity="sha384-EyNIVTQNB2lrFjJQp8nMiF4++DHXtIqO6haZVgTcnsxnGzZRKtwY5PZaJQzACT5T"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/43321c8bc82dabd063ca89374c753d2faa05f63d/packages/vue/src/components/FOffline/FOffline.vue">FOffline</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/58f3463807d1ced959e80d92c378113c7e9a13ec/packages/vue/src/components/FOffline/FOffline.vue">FOffline</a>
             
         </code>
          
@@ -1142,9 +1075,10 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Offline används när användaren saknar internetuppkoppling. Ett felmeddelande visas som uppmärksammar användaren om detta. 
-Offline är en overlay som lägger sig högst upp över övrigt innehåll när internetanslutningen går ner. Den försvinner igen när anslutningen är tillbaka.
-Den mountas med funktionen mountFOffline så tidigt som möjligt för att autoinkluderas i applikationen. Komponenten kan även läggas in på enstaka sidor där det är extra viktigt att internetanslutningen behöver fungera.</p>
+<p>Offline används när användaren saknar internetuppkoppling.
+Ett felmeddelande visas som uppmärksammar användaren om detta.
+Offline är en overlay som lägger sig högst upp över övrigt innehåll när internetanslutningen går ner.
+Den försvinner igen när anslutningen är tillbaka.</p>
 <p>Det finns ett par alternativ för att få komponenten att visa sig:</p>
 <ul>
 <li>Aktivera &quot;offline-läge&quot; i browsern</li>
@@ -1155,7 +1089,7 @@ Den mountas med funktionen mountFOffline så tidigt som möjligt för att autoin
 Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om du byter sida när FOffline-komponenten visas.</p>
 
             <div
-                id="example-66152f"
+                id="example-54ee29"
                 class="code-preview code-preview--default"
                 
                 
@@ -1226,37 +1160,101 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
             </div>
         <h2 id="anvandning_av_komponent"><a class="header-anchor" href="#anvandning_av_komponent">Användning av komponent</a></h2><p>Användning med standardtext</p>
 
+            <div
+                id="example-6be1d9"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="html"
+            >
+                
+                <div class="code-preview__preview"><f-offline></f-offline>
+</div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
                 <div
-                    id="example-e0e953"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="javascript"
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
                 >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-title function_">mountFOffline</span>(<span class="hljs-variable language_">this</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-offline</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-offline</span>&gt;</span>
 </code></pre>
                 </div>
-            <p>Användning med en egen text</p>
+            </div>
+        <p>Användning med en egen text</p>
 
+            <div
+                id="example-e7af59"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="html"
+            >
+                
+                <div class="code-preview__preview"><f-offline>
+    Det verkar som att du inte har någon internetuppkoppling just nu. Tänk på
+    att du behöver uppkoppling för att kunna signera
+</f-offline>
+</div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
                 <div
-                    id="example-2c6022"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="javascript"
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
                 >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-title function_">mountFOffline</span>(
-    <span class="hljs-variable language_">this</span>,
-    <span class="hljs-string">&quot;Det verkar som att du inte har någon internetuppkoppling just nu. Tänk på att du behöver uppkoppling för att kunna signera&quot;</span>,
-);
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-offline</span>&gt;</span>
+    Det verkar som att du inte har någon internetuppkoppling just nu. Tänk på
+    att du behöver uppkoppling för att kunna signera
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-offline</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>Slot for customizing text message.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+            </div>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="foffline-slots">
+            <a class="header-anchor" href="#foffline-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="foffline-slot-default"
+                                ><a class="docs-api__anchor" href="#foffline-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for customizing text message.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1277,9 +1275,9 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/43321c8bc82dabd063ca89374c753d2faa05f63d">43321c8</a>)<br />
+    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/58f3463807d1ced959e80d92c378113c7e9a13ec">58f3463</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/208">PR 208</a><br />
-        2025-01-24 12:19
+        2025-02-12 10:37
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1400,15 +1398,15 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
             
         ></script>
         <script
-            src="../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../assets/main-623313.js"
+            src="../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>

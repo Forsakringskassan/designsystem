@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-8338a5.css"
+            href="../../assets/docs-100f9a.css"
             crossorigin
-            integrity="sha384-L/3SH/ZMmCoPmz7+YA7q82VP4zg4kLpbLravO3tBYa8Gtb7+EMmJBm3ElYbUOM/t"
+            integrity="sha384-hHO9xZrgz5JAiAyRpVw17qKEuT3MCfrK8HDNH2aMVPVZBVqg5SnUkJuVtjsmcCRV"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-97b0a8.css"
+            href="../../assets/docs-fkui-246b4b.css"
             crossorigin
-            integrity="sha384-qF3O+PgA/R88iaWdSzOpgpX98ZYt1WSAbgu3lV5a/CGSrF7yJcyeIts62Y6RVLka"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-35323f.css"
-            crossorigin
-            integrity="sha384-AUEZ5bT9cw+MeWX40jjUndr5jRm96ujCJHGSlcRBXhp1PLumjouwFjHGR8Rh7Yu0"
-            data-theme="int" disabled
+            integrity="sha384-k8fYVntISJE7fhYQ5On6zFO2zOoqaKCccb3TWD7PhKyL4LyV5OeK7Nmp6Ls6wZ9O"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-20dcd8.json"
+            href="../../search-data-51767f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dNrfl6hl9gGG6iqNxy3tYaa66T0Yt2/YSfmPDS4+7SMpNKFFxgh8M3cIaM3R1ouH"
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -641,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-ba7196.js"
+                    src="../../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-d1f2e9.js"
+                    src="../../assets/vendor-fkui-vue-d9de5d.js"
                     crossorigin
-                    integrity="sha384-J5VZDmPv8DF/F5GUtgXTDcjZt9BYSTFn7n5g8DAP/73Xh3Rjy16OGf0NnJmli4OA"
+                    integrity="sha384-EyNIVTQNB2lrFjJQp8nMiF4++DHXtIqO6haZVgTcnsxnGzZRKtwY5PZaJQzACT5T"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1142,7 +1075,7 @@
                     id="example-30fe57"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1153,7 +1086,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MatchesExample-c74304.js"></script>
+        <script defer src="./MatchesExample-f6b2ac.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod för att jämföra med ett inmatningsfält med <code>id=&quot;reference&quot;</code>:</p>
@@ -1199,7 +1132,7 @@
                     id="example-399de9"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1210,7 +1143,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MaxLengthExample-555f2f.js"></script>
+        <script defer src="./MaxLengthExample-8ddeca.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod för att sätta en maxlängd på tio tecken:</p>
@@ -1243,7 +1176,7 @@
                     id="example-868d3d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1254,7 +1187,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MinLengthExample-2d4047.js"></script>
+        <script defer src="./MinLengthExample-044741.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod för att sätta en minlängd på fyra tecken:</p>
@@ -1289,7 +1222,7 @@
                     id="example-40e161"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1300,7 +1233,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./RequiredExample-0c4bd4.js"></script>
+        <script defer src="./RequiredExample-b7b3cf.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod:</p>
@@ -1348,7 +1281,7 @@
                     id="example-f8e639"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1359,7 +1292,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./WhitelistExample-0f5d25.js"></script>
+        <script defer src="./WhitelistExample-322eb6.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod:</p>
@@ -1388,7 +1321,7 @@
                     id="example-3803fe"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1399,7 +1332,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./AllowListExample-ad5819.js"></script>
+        <script defer src="./AllowListExample-167552.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod:</p>
@@ -1436,7 +1369,7 @@
                     id="example-a89a16"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1447,7 +1380,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./DateExample-000022.js"></script>
+        <script defer src="./DateExample-6ce38b.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod:</p>
@@ -1479,7 +1412,7 @@
                     id="example-bd1221"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1490,7 +1423,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./DateFormatExample-11c33f.js"></script>
+        <script defer src="./DateFormatExample-212d9b.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod:</p>
@@ -1515,7 +1448,7 @@
                     id="example-01d0fa"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1526,7 +1459,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./InvalidDatesExample-4a8bfe.js"></script>
+        <script defer src="./InvalidDatesExample-3ca727.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod för att 1 januari 2022, 5 maj 2022 och 20 juni 2022 inte ska vara valbara datum:</p>
@@ -1551,7 +1484,7 @@
                     id="example-094547"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1562,7 +1495,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./InvalidWeekdaysExample-2ef8ba.js"></script>
+        <script defer src="./InvalidWeekdaysExample-5c2d09.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod för att sätta måndagar, tisdagar, onsdagar och torsdagar som inte valbara veckodagar:</p>
@@ -1591,7 +1524,7 @@
                     id="example-746e3d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1602,7 +1535,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MaxDateExample-2ed264.js"></script>
+        <script defer src="./MaxDateExample-75a14a.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska välja ett datum fram till och med 30 januari 2020:</p>
@@ -1631,7 +1564,7 @@
                     id="example-3659d9"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1642,7 +1575,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MinDateExample-d075fa.js"></script>
+        <script defer src="./MinDateExample-ca1b79.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska välja ett datum från och med 1 januari 2020:</p>
@@ -1676,7 +1609,7 @@
                     id="example-ba866c"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1687,7 +1620,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./NumberExample-eab19c.js"></script>
+        <script defer src="./NumberExample-7767d1.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod:</p>
@@ -1724,7 +1657,7 @@
                     id="example-6d2aad"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1735,7 +1668,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./IntegerExample-f75054.js"></script>
+        <script defer src="./IntegerExample-c7b594.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren måste fylla i ett heltal:</p>
@@ -1777,7 +1710,7 @@
                     id="example-7dad05"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1788,7 +1721,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./DecimalExample-b14c37.js"></script>
+        <script defer src="./DecimalExample-9175ec.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren måste fylla i ett tal med minst en decimal och max sex decimaler:</p>
@@ -1824,7 +1757,7 @@
                     id="example-c089b0"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1835,7 +1768,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MaxValueExample-205022.js"></script>
+        <script defer src="./MaxValueExample-fb072d.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren måste fylla i ett tal som inte överstiger 50:</p>
@@ -1877,7 +1810,7 @@
                     id="example-19dcf0"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1888,7 +1821,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MinValueExample-f48d09.js"></script>
+        <script defer src="./MinValueExample-7c4077.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i ett tal som inte understiger 10:</p>
@@ -1930,7 +1863,7 @@
                     id="example-d0978a"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1941,7 +1874,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./LessThanExample-6dde42.js"></script>
+        <script defer src="./LessThanExample-6f57fe.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren fylla i ett tal som är mindre än 100:</p>
@@ -1977,7 +1910,7 @@
                     id="example-72185e"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -1988,7 +1921,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./GreaterThanExample-aeb8ec.js"></script>
+        <script defer src="./GreaterThanExample-bb8d69.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i ett tal som är större än 0.123:</p>
@@ -2021,7 +1954,7 @@
                     id="example-06b64f"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2032,7 +1965,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PercentExample-470afc.js"></script>
+        <script defer src="./PercentExample-b9d58d.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i ett tal i procent:</p>
@@ -2064,7 +1997,7 @@
                     id="example-0ddea0"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2075,7 +2008,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./CurrencyExample-ebac30.js"></script>
+        <script defer src="./CurrencyExample-737bb9.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i ett valutabelopp:</p>
@@ -2114,7 +2047,7 @@
                     id="example-5a9865"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2125,7 +2058,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./OrganisationsnummerExample-c60954.js"></script>
+        <script defer src="./OrganisationsnummerExample-ffa567.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i organisationsnummer:</p>
@@ -2171,7 +2104,7 @@
                     id="example-499179"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2182,7 +2115,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PersonnummerFormatExample-39ea75.js"></script>
+        <script defer src="./PersonnummerFormatExample-337112.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i personnummer:</p>
@@ -2213,7 +2146,7 @@
                     id="example-a45913"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2224,7 +2157,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PersonnummerLuhnExample-7ee579.js"></script>
+        <script defer src="./PersonnummerLuhnExample-a0b3f4.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i personnummer:</p>
@@ -2250,7 +2183,7 @@
                     id="example-ef892d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2287,7 +2220,7 @@
                     id="example-62016e"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2324,7 +2257,7 @@
                     id="example-fdea31"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2369,7 +2302,7 @@
                     id="example-b58ed9"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2380,7 +2313,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./EmailExample-626323.js"></script>
+        <script defer src="./EmailExample-23ee0b.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i mejladress:</p>
@@ -2414,7 +2347,7 @@
                     id="example-2feefd"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2425,7 +2358,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PostalCodeExample-256bf7.js"></script>
+        <script defer src="./PostalCodeExample-74adec.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användare ska fylla i postnummer:</p>
@@ -2464,7 +2397,7 @@
                     id="example-c2f4d7"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2475,7 +2408,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PhoneNumberExample-5d663d.js"></script>
+        <script defer src="./PhoneNumberExample-34dd1e.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i telefonnummer:</p>
@@ -2510,7 +2443,7 @@
                     id="example-76642e"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2521,7 +2454,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./BankgiroExample-689182.js"></script>
+        <script defer src="./BankgiroExample-8e96de.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i bankgiro:</p>
@@ -2560,7 +2493,7 @@
                     id="example-c37271"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2571,7 +2504,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./ClearingNumberExample-c519a2.js"></script>
+        <script defer src="./ClearingNumberExample-fb3341.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i clearingnummer:</p>
@@ -2604,7 +2537,7 @@
                     id="example-7eaf80"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2615,7 +2548,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./BankAccountNumberExample-38b17c.js"></script>
+        <script defer src="./BankAccountNumberExample-672338.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i kontonummer:<br></p>
@@ -2649,7 +2582,7 @@
                     id="example-043dc9"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
@@ -2660,7 +2593,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PlusgiroExample-637367.js"></script>
+        <script defer src="./PlusgiroExample-6467b6.js"></script>
     </div>
                 </div>
             <p>Skriv så här i kod när användaren ska fylla i plusgiro:</p>
@@ -2709,9 +2642,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/43321c8bc82dabd063ca89374c753d2faa05f63d">43321c8</a>)<br />
+    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/58f3463807d1ced959e80d92c378113c7e9a13ec">58f3463</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/208">PR 208</a><br />
-        2025-01-24 12:19
+        2025-02-12 10:37
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2832,15 +2765,15 @@
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../../assets/main-623313.js"
+            src="../../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>

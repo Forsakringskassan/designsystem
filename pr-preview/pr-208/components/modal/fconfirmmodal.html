@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-8338a5.css"
+            href="../../assets/docs-100f9a.css"
             crossorigin
-            integrity="sha384-L/3SH/ZMmCoPmz7+YA7q82VP4zg4kLpbLravO3tBYa8Gtb7+EMmJBm3ElYbUOM/t"
+            integrity="sha384-hHO9xZrgz5JAiAyRpVw17qKEuT3MCfrK8HDNH2aMVPVZBVqg5SnUkJuVtjsmcCRV"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-97b0a8.css"
+            href="../../assets/docs-fkui-246b4b.css"
             crossorigin
-            integrity="sha384-qF3O+PgA/R88iaWdSzOpgpX98ZYt1WSAbgu3lV5a/CGSrF7yJcyeIts62Y6RVLka"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-35323f.css"
-            crossorigin
-            integrity="sha384-AUEZ5bT9cw+MeWX40jjUndr5jRm96ujCJHGSlcRBXhp1PLumjouwFjHGR8Rh7Yu0"
-            data-theme="int" disabled
+            integrity="sha384-k8fYVntISJE7fhYQ5On6zFO2zOoqaKCccb3TWD7PhKyL4LyV5OeK7Nmp6Ls6wZ9O"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-20dcd8.json"
+            href="../../search-data-51767f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dNrfl6hl9gGG6iqNxy3tYaa66T0Yt2/YSfmPDS4+7SMpNKFFxgh8M3cIaM3R1ouH"
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -641,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-ba7196.js"
+                    src="../../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
                     src="../../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-d1f2e9.js"
+                    src="../../assets/vendor-fkui-vue-d9de5d.js"
                     crossorigin
-                    integrity="sha384-J5VZDmPv8DF/F5GUtgXTDcjZt9BYSTFn7n5g8DAP/73Xh3Rjy16OGf0NnJmli4OA"
+                    integrity="sha384-EyNIVTQNB2lrFjJQp8nMiF4++DHXtIqO6haZVgTcnsxnGzZRKtwY5PZaJQzACT5T"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/43321c8bc82dabd063ca89374c753d2faa05f63d/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">FConfirmModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/58f3463807d1ced959e80d92c378113c7e9a13ec/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">FConfirmModal</a>
             
         </code>
          
@@ -1130,11 +1063,9 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
+                                <li><a href="#anvandning">Användning</a></li>
+                                
                                 <li><a href="#knapparna">Knapparna</a></li>
-                                
-                                <li><a href="#anvandning_med_template">Användning med template</a></li>
-                                
-                                <li><a href="#anvandning_med_api">Användning med API</a></li>
                                 
                                 <li><a href="#bekraftelsemodal_med_tre_knappar">Bekräftelsemodal med tre knappar</a></li>
                                 
@@ -1160,116 +1091,9 @@
 <li>en knapptext för den destruktiva handlingen, till exempel för att ta bort uppgifter</li>
 <li>en knapptext för att ångra och gå tillbaka.</li>
 </ul>
-<h2 id="knapparna"><a class="header-anchor" href="#knapparna">Knapparna</a></h2><p>En <a href="../button.html#sekundar_knapp">sekundär knapp</a> används för att ångra och gå tillbaka.
-En <a href="../button.html#primar_knapp">primärknapp</a> används för att utföra den destruktiva handlingen.</p>
-<p>En bekräftelsemodal kan även ha en tredje knapp.</p>
-<h3 id="placering_av_knapparna"><a class="header-anchor" href="#placering_av_knapparna">Placering av knapparna</a></h3><p>På Försäkringskassan.se placeras den sekundära knappen först, följt av den primära. Eftersom det primära alternativet att bekräfta tidigare val är &quot;destruktivt&quot; placeras den sist för att minimera risken att användaren råkar välja det av misstag.</p>
-<p>För interna system följer vi Windows standard, det primära alternativet placeras först.</p>
-<p>Du styr den inbördes ordning som knapparna presenteras i med <a href="../../functions/config.html#referens">konfiguration</a> i applikationen där modalen används.</p>
-<h2 id="anvandning_med_template"><a class="header-anchor" href="#anvandning_med_template">Användning med template</a></h2>
-            <div
-                id="example-38306e"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="FConfirmModalExample"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FConfirmModalExample-2b4d4a.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-confirm-modal&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Öppna Modal<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span> Resultat: {{ result }} <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-confirm-modal</span>
-                <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
-                <span class="hljs-attr">:buttons</span>=<span class="hljs-string">&quot;buttons&quot;</span>
-                @<span class="hljs-attr">confirm</span>=<span class="hljs-string">&quot;confirm&quot;</span>
-                @<span class="hljs-attr">dismiss</span>=<span class="hljs-string">&quot;dismiss&quot;</span>
-                @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">heading</span>&gt;</span> Träutensilierna <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span>
-                    Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor, för trevnadens,
-                    ordningens och ekonomiens upprätthållande, och dock är det icke sällan som
-                    sorgliga erfarenheter göras på grund af det oförstånd med hvilket kaster,
-                    formbräden och regaler tillverkas och försäljas Kaster som äro dåligt hopkomna
-                    och af otillräckligt.
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-confirm-modal</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FConfirmModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FConfirmModal</span> },
-    <span class="hljs-attr">inheritAttrs</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">action</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">result</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">buttons</span>: [
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ja, gör detta&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;confirm&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;primary&quot;</span> },
-                { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Nej, gör inte detta&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;dismiss&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;secondary&quot;</span> },
-            ],
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">true</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">result</span> = <span class="hljs-string">&quot;&quot;</span>;
-        },
-        <span class="hljs-title function_">confirm</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">result</span> = <span class="hljs-string">&quot;bekräftade&quot;</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-        <span class="hljs-title function_">dismiss</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">result</span> = <span class="hljs-string">&quot;avböjde&quot;</span>;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-        <span class="hljs-title function_">close</span>(<span class="hljs-params">reason</span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">action</span> = reason;
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="anvandning_med_api"><a class="header-anchor" href="#anvandning_med_api">Användning med API</a></h2>
             <div
-                id="example-a27415"
+                id="example-4ad607"
                 class="code-preview code-preview--default"
                 
                 
@@ -1283,7 +1107,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FConfirmModalApiExample-c4c574.js"></script>
+        <script defer src="./FConfirmModalApiExample-95075b.js"></script>
     </div>
                 <div>
             <button
@@ -1302,7 +1126,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-confirm-modal&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Ta bort<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1312,7 +1136,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 <span class="hljs-keyword">import</span> { confirmModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalExample&quot;</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalApiExample&quot;</span>,
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">frukt</span>: {
@@ -1340,9 +1164,72 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 </code></pre>
                 </div>
             </div>
-        <h2 id="bekraftelsemodal_med_tre_knappar"><a class="header-anchor" href="#bekraftelsemodal_med_tre_knappar">Bekräftelsemodal med tre knappar</a></h2>
+        <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>För att öppna en bekräftelsemodal använder du <a href="../../functions/functions/modal-functions/confirm-modal.html"><code>confirmModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
+
+                <div
+                    id="example-7f4f85"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// options api</span>
+<span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
+    <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt&quot;</span>,
+    <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${frukt.namn}</span>&quot;?`</span>,
+    <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+    <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
+});
+<span class="hljs-keyword">if</span> (confirmed) {
+    <span class="hljs-comment">/* do something */</span>
+}
+
+<span class="hljs-comment">// composition api</span>
+<span class="hljs-keyword">const</span> { confirmModal } = <span class="hljs-title function_">useModal</span>();
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
+        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt&quot;</span>,
+        <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${frukt.namn}</span>&quot;?`</span>,
+        <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+        <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
+    });
+    <span class="hljs-keyword">if</span> (confirmed) {
+        <span class="hljs-comment">/* do something */</span>
+    }
+}
+</code></pre>
+                </div>
+            <h3 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h3><p>Att använda <code>FConfirmModal</code> i template är deprekerat.
+Om du använder detta rekommenderar vi att du tar bort <code>f-confirm-modal</code> och istället använder API för att öppna modalen.</p>
+<p>Se <a href="./fconfirmmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FConfirmModal</code> med API.</p>
+
+                <div
+                    id="example-fbf1d0"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;template&gt;
+     &lt;div&gt;
+         &lt;button type=&quot;button&quot; @click=&quot;onClick&quot;&gt;Open modal&lt;/button&gt;
+<span class="hljs-deletion">-        &lt;f-confirm-modal&gt;&lt;/f-confirm-modal&gt;</span>
+     &lt;/div&gt;
+ &lt;/template&gt;
+</code></pre>
+                </div>
+            <h2 id="knapparna"><a class="header-anchor" href="#knapparna">Knapparna</a></h2><p>En <a href="../button.html#sekundar_knapp">sekundär knapp</a> används för att ångra och gå tillbaka.
+En <a href="../button.html#primar_knapp">primärknapp</a> används för att utföra den destruktiva handlingen.</p>
+<p>En bekräftelsemodal kan även ha en tredje knapp.</p>
+<h3 id="placering_av_knapparna"><a class="header-anchor" href="#placering_av_knapparna">Placering av knapparna</a></h3><p>På Försäkringskassan.se placeras den sekundära knappen först, följt av den primära. Eftersom det primära alternativet att bekräfta tidigare val är &quot;destruktivt&quot; placeras den sist för att minimera risken att användaren råkar välja det av misstag.</p>
+<p>För interna system följer vi Windows standard, det primära alternativet placeras först.</p>
+<p>Du styr den inbördes ordning som knapparna presenteras i med <a href="../../functions/config.html#referens">konfiguration</a> i applikationen där modalen används.</p>
+<h2 id="bekraftelsemodal_med_tre_knappar"><a class="header-anchor" href="#bekraftelsemodal_med_tre_knappar">Bekräftelsemodal med tre knappar</a></h2>
             <div
-                id="example-fee22b"
+                id="example-40661f"
                 class="code-preview code-preview--default"
                 
                 
@@ -1356,7 +1243,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FConfirmModalCustomButtons-d3a9d7.js"></script>
+        <script defer src="./FConfirmModalCustomButtons-f95b47.js"></script>
     </div>
                 <div>
             <button
@@ -1375,7 +1262,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-confirm-modal&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Tre knappar<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span> Modalen stängdes med resultatet: {{ action }} <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1386,7 +1273,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ModalResult</span>, openModal, <span class="hljs-title class_">FConfirmModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalExample&quot;</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalCustomButtons&quot;</span>,
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">action</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ModalResult</span>&lt;<span class="hljs-keyword">void</span>&gt; | <span class="hljs-literal">undefined</span>,
@@ -1423,7 +1310,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
         <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p>Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code>-property:</p>
 
                 <div
-                    id="example-8507ff"
+                    id="example-141d8a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1435,66 +1322,255 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 </code></pre>
                 </div>
             <p>Om du använder <code>screenreader</code> för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i <code>label</code>. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>fullscreen</p>
-</td><td><p>Enable fullscreen mode in mobile.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td></tr><tr><td><p>isOpen</p>
-</td><td><p>Prop for opening modal</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td></tr><tr><td><p>content</p>
-</td><td><p>Simple text content</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;Brödtext&quot;</p>
-</td></tr><tr><td><p>heading</p>
-</td><td><p>Simple text header</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;Rubrik&quot;</p>
-</td></tr><tr><td><p>size</p>
-</td><td><p>The size of modal. 'large' and 'fullscreen' is valid.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td></tr><tr><td><p>ariaCloseText</p>
-</td><td><p>The aria-label attribute text for the top right close button.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td></tr><tr><td><p>buttons</p>
-</td><td><p>List of buttons</p>
-</td><td><p>FModalButtonDescriptor[]</p>
-</td><td><p>false</p>
-</td><td><p>(): FModalButtonDescriptor[] =&gt; {<br>
-return defaultButtons;<br>
-}</p>
-</td></tr><tr><td><p>focus</p>
-</td><td><p>Default behavior is that the modal will restore focus to previous element once closed.</p>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fconfirmmodal-props">
+            <a class="header-anchor" href="#fconfirmmodal-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fconfirmmodal-prop-fullscreen"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-fullscreen"
+                                    ><span class="docs-api__name"
+                                        >fullscreen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable fullscreen mode in mobile.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-isopen"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-isopen"
+                                    ><span class="docs-api__name"
+                                        >isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Prop for opening modal</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-content"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-content"
+                                    ><span class="docs-api__name"
+                                        >content</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Simple text content</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;Brödtext&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-heading"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-heading"
+                                    ><span class="docs-api__name"
+                                        >heading</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Simple text header</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;Rubrik&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-size"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-size"
+                                    ><span class="docs-api__name"
+                                        >size</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The size of modal. 'large' and 'fullscreen' is valid.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-ariaclosetext"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-ariaclosetext"
+                                    ><span class="docs-api__name"
+                                        >ariaCloseText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The aria-label attribute text for the top right close button.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-buttons"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-buttons"
+                                    ><span class="docs-api__name"
+                                        >buttons</span
+                                    >: FModalButtonDescriptor[]</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>List of buttons</p>
+
+                            <p class="doc-api__item">Default: <code>(): FModalButtonDescriptor[] =&gt; {
+    return defaultButtons;
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-prop-focus"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-prop-focus"
+                                    ><span class="docs-api__name"
+                                        >focus</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Default behavior is that the modal will restore focus to previous element once closed.</p>
 <ul>
 <li>&quot;on&quot; (default) - component will set focus both when opened and closed</li>
 <li>&quot;off&quot; - focus strategy disabled</li>
 <li>&quot;open&quot; - focus will only be applied once modal is opened</li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;on&quot;</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>close</p>
-</td><td><p>Emits reason for closing modal</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td></tr><tr><td><p>button.event</p>
-</td><td><p>Emits specified button event when clicked</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>heading</p>
-</td><td><p>Slot for advanced header.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>content</p>
-</td><td><p>Slot for advanced content.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="./fmodal.html">Modal dialogruta</a></p>
+
+                            <p class="doc-api__item">Default: <code>&quot;on&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fconfirmmodal-events">
+            <a class="header-anchor" href="#fconfirmmodal-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fconfirmmodal-event-close"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emits reason for closing modal</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-event-button-event"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-event-button-event"
+                                    ><span class="docs-api__name"
+                                        >button.event</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emits specified button event when clicked</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fconfirmmodal-slots">
+            <a class="header-anchor" href="#fconfirmmodal-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fconfirmmodal-slot-heading"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-slot-heading"
+                                    ><span class="docs-api__name"
+                                        >heading</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for advanced header.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fconfirmmodal-slot-content"
+                                ><a class="docs-api__anchor" href="#fconfirmmodal-slot-content"
+                                    ><span class="docs-api__name"
+                                        >content</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for advanced content.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="./fmodal.html">Modal dialogruta</a></p>
 
 
                     </div>
@@ -1516,9 +1592,9 @@ return defaultButtons;<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/43321c8bc82dabd063ca89374c753d2faa05f63d">43321c8</a>)<br />
+    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/58f3463807d1ced959e80d92c378113c7e9a13ec">58f3463</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/208">PR 208</a><br />
-        2025-01-24 12:19
+        2025-02-12 10:37
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1639,15 +1715,15 @@ return defaultButtons;<br>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../../assets/main-623313.js"
+            src="../../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>

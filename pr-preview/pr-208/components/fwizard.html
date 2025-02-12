@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-8338a5.css"
+            href="../assets/docs-100f9a.css"
             crossorigin
-            integrity="sha384-L/3SH/ZMmCoPmz7+YA7q82VP4zg4kLpbLravO3tBYa8Gtb7+EMmJBm3ElYbUOM/t"
+            integrity="sha384-hHO9xZrgz5JAiAyRpVw17qKEuT3MCfrK8HDNH2aMVPVZBVqg5SnUkJuVtjsmcCRV"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-97b0a8.css"
+            href="../assets/docs-fkui-246b4b.css"
             crossorigin
-            integrity="sha384-qF3O+PgA/R88iaWdSzOpgpX98ZYt1WSAbgu3lV5a/CGSrF7yJcyeIts62Y6RVLka"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../assets/docs-int-35323f.css"
-            crossorigin
-            integrity="sha384-AUEZ5bT9cw+MeWX40jjUndr5jRm96ujCJHGSlcRBXhp1PLumjouwFjHGR8Rh7Yu0"
-            data-theme="int" disabled
+            integrity="sha384-k8fYVntISJE7fhYQ5On6zFO2zOoqaKCccb3TWD7PhKyL4LyV5OeK7Nmp6Ls6wZ9O"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../search-data-20dcd8.json"
+            href="../search-data-51767f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dNrfl6hl9gGG6iqNxy3tYaa66T0Yt2/YSfmPDS4+7SMpNKFFxgh8M3cIaM3R1ouH"
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="./fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -641,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1073,9 +1006,9 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-logic-ba7196.js"
+                    src="../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-qtVkTu10IcAv9SgVW+zwpchlfD3CZe2+v2LK/M4hinApZgG0ZA0pSufD9sgTZdkA"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
                     src="../assets/vendor-fkui-date-7710bf.js"
@@ -1083,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-d1f2e9.js"
+                    src="../assets/vendor-fkui-vue-d9de5d.js"
                     crossorigin
-                    integrity="sha384-J5VZDmPv8DF/F5GUtgXTDcjZt9BYSTFn7n5g8DAP/73Xh3Rjy16OGf0NnJmli4OA"
+                    integrity="sha384-EyNIVTQNB2lrFjJQp8nMiF4++DHXtIqO6haZVgTcnsxnGzZRKtwY5PZaJQzACT5T"
                 ></script>
                 <script
                     src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,13 +1041,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/43321c8bc82dabd063ca89374c753d2faa05f63d/packages/vue/src/components/FWizard/FWizard.vue">FWizard</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/58f3463807d1ced959e80d92c378113c7e9a13ec/packages/vue/src/components/FWizard/FWizard.vue">FWizard</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/43321c8bc82dabd063ca89374c753d2faa05f63d/packages/vue/src/components/FWizard/FWizardStep.vue">FWizardStep</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/58f3463807d1ced959e80d92c378113c7e9a13ec/packages/vue/src/components/FWizard/FWizardStep.vue">FWizardStep</a>
             
         </code>
          
@@ -1281,7 +1214,7 @@
                     id="example-41ae0d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1298,7 +1231,7 @@
                     id="example-8009a6"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1315,15 +1248,15 @@
 I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-c2d84a"
+                    id="example-5c9e01"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
-    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refs</span>.<span class="hljs-property">myField</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">myField</span>);
     <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
 },
 </code></pre>
@@ -1331,14 +1264,14 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FWizardStepAction.CANCEL</code> från <code>onBeforeNext</code>:</p>
 
                 <div
-                    id="example-741843"
+                    id="example-4bab73"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FWizardStepAction</span>&gt; {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-title class_">FWizardStepAction</span> {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-title class_">FWizardStepAction</span>.<span class="hljs-property">CANCEL</span>;
 },
@@ -1360,7 +1293,7 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FWizardExampleAddStep-212739.js"></script>
+        <script defer src="./FWizardExampleAddStep-9956b7.js"></script>
     </div>
                 <div>
             <button
@@ -1387,7 +1320,7 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
             @<span class="hljs-attr">completed</span>=<span class="hljs-string">&quot;onCompleted&quot;</span>
             @<span class="hljs-attr">cancel</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
         &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;foo&quot;</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myOrderStep&#x27;&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Min beställning&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;fruktkorg-antal&quot;</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myOrderStep&#x27;&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Min beställning&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Fruktkorg<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--discrete&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;addBasket&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button__icon&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span> /&gt;</span> Lägg till fruktkorg
@@ -1500,91 +1433,347 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
 </code></pre>
                 </div>
             </div>
-        <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fwizard"><a class="header-anchor" href="#fwizard">FWizard</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>v-model</p>
-</td><td><p>‐</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>null</p>
-</td></tr><tr><td><p>headerTag</p>
-</td><td><p>Element to render for the header element inside the wizard steps.</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>disableInitialFocus</p>
-</td><td><p>When the first wizard step is registered, it is opened and focused by default.<br>
+        <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fwizard"><a class="header-anchor" href="#fwizard">FWizard</a></h3>
+        <h4 id="fwizard-props">
+            <a class="header-anchor" href="#fwizard-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fwizard-prop-v-model"
+                                ><a class="docs-api__anchor" href="#fwizard-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: <code>null</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizard-prop-headertag"
+                                ><a class="docs-api__anchor" href="#fwizard-prop-headertag"
+                                    ><span class="docs-api__name"
+                                        >headerTag</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Element to render for the header element inside the wizard steps.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizard-prop-disableinitialfocus"
+                                ><a class="docs-api__anchor" href="#fwizard-prop-disableinitialfocus"
+                                    ><span class="docs-api__name"
+                                        >disableInitialFocus</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>When the first wizard step is registered, it is opened and focused by default.
 Set this property to disable that behaviour.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>cancel</p>
-</td><td><p>Emitted when wizard is canceled, i.e.<br>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fwizard-events">
+            <a class="header-anchor" href="#fwizard-events">Events</a>
+        </h4>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fwizard-event-cancel"
+                                ><a class="docs-api__anchor" href="#fwizard-event-cancel"
+                                    ><span class="docs-api__name"
+                                        >cancel</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when wizard is canceled, i.e.
 user pressing 'Avbryt' button.</p>
 <p>Passes a boolean indicating if it was cancelled on the final step.</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td></tr><tr><td><p>change</p>
-</td><td><p>Vue2 v-model event.</p>
-</td><td><p>&lt;anonymous&gt;: FWizardKey</p>
-</td></tr><tr><td><p>completed</p>
-</td><td><p>Emitted when wizard is finished, i.e.<br>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizard-event-completed"
+                                ><a class="docs-api__anchor" href="#fwizard-event-completed"
+                                    ><span class="docs-api__name"
+                                        >completed</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when wizard is finished, i.e.
 user pressing 'Fortsätt' button in last step.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p>V-model event.</p>
-</td><td><p>&lt;anonymous&gt;: FWizardKey</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>One or more &lt;f-wizard-step&gt; elements</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h3 id="fwizardstep"><a class="header-anchor" href="#fwizardstep">FWizardStep</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>title</p>
-</td><td><p>‐</p>
-</td><td><p>string</p>
-</td><td><p>true</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>beforeNext</p>
-</td><td><p>Supply this function in order to run actions before navigating to the next step.</p>
-<p>It is possible to cancel the navigation by returning <code>BeforeNextAction.CANCEL</code>.<br>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizard-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#fwizard-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: FWizardKey</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fwizard-slots">
+            <a class="header-anchor" href="#fwizard-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fwizard-slot-default"
+                                ><a class="docs-api__anchor" href="#fwizard-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>One or more &lt;f-wizard-step&gt; elements</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h3 id="fwizardstep"><a class="header-anchor" href="#fwizardstep">FWizardStep</a></h3>
+        <h4 id="fwizardstep-props">
+            <a class="header-anchor" href="#fwizardstep-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fwizardstep-prop-title"
+                                ><a class="docs-api__anchor" href="#fwizardstep-prop-title"
+                                    ><span class="docs-api__name"
+                                        >title</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-prop-beforenext"
+                                ><a class="docs-api__anchor" href="#fwizardstep-prop-beforenext"
+                                    ><span class="docs-api__name"
+                                        >beforeNext</span
+                                    >: FWizardValidationCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Supply this function in order to run actions before navigating to the next step.</p>
+<p>It is possible to cancel the navigation by returning <code>BeforeNextAction.CANCEL</code>.
 When cancelled, the consumer is responsible to indicate why this happened.</p>
-<p>Note that <code>FWizardStep</code> already checks validity of contained fields using <code>v-validation</code><br>
+<p>Note that <code>FWizardStep</code> already checks validity of contained fields using <code>v-validation</code>
 before allowing navigation to the next step.</p>
-</td><td><p>FWizardValidationCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-/* do nothing */<br>
-}</p>
-</td></tr><tr><td><p>beforeValidation</p>
-</td><td><p>Supply this function in order to run actions before <code>FWizardStep</code> checks validity.</p>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    /* do nothing */
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-prop-beforevalidation"
+                                ><a class="docs-api__anchor" href="#fwizardstep-prop-beforevalidation"
+                                    ><span class="docs-api__name"
+                                        >beforeValidation</span
+                                    >: FWizardValidationCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Supply this function in order to run actions before <code>FWizardStep</code> checks validity.</p>
 <p><code>beforeValidation</code> is used by <a href="validation/fvalidationform.html"><code>FValidationForm</code></a>.</p>
-<p>It is possible to cancel the navigation by returning <code>BeforeNextAction.CANCEL</code>.<br>
+<p>It is possible to cancel the navigation by returning <code>BeforeNextAction.CANCEL</code>.
 When cancelled, the consumer is responsible to indicate why this happened.</p>
-</td><td><p>FWizardValidationCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-/* do nothing */<br>
-}</p>
-</td></tr><tr><td><p>useErrorList</p>
-</td><td><p>Include the error list component.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>step-of</p>
-</td><td><p>‐</p>
-</td><td><p>headerClass<br>
-stepNumber<br>
-totalSteps</p>
-</td></tr><tr><td><p>error-message</p>
-</td><td><p>‐</p>
-</td><td><p>stepNumber<br>
-totalSteps</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>next-button-text</p>
-</td><td><p>‐</p>
-</td><td><p>stepNumber<br>
-totalSteps</p>
-</td></tr><tr><td><p>cancel-button-text</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    /* do nothing */
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-prop-useerrorlist"
+                                ><a class="docs-api__anchor" href="#fwizardstep-prop-useerrorlist"
+                                    ><span class="docs-api__name"
+                                        >useErrorList</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Include the error list component.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fwizardstep-slots">
+            <a class="header-anchor" href="#fwizardstep-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fwizardstep-slot-step-of"
+                                ><a class="docs-api__anchor" href="#fwizardstep-slot-step-of"
+                                    ><span class="docs-api__name"
+                                        >step-of</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>headerClass: unknown</code></li><li><code>stepNumber: unknown</code></li><li><code>totalSteps: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-slot-error-message"
+                                ><a class="docs-api__anchor" href="#fwizardstep-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-slot-default"
+                                ><a class="docs-api__anchor" href="#fwizardstep-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-slot-next-button-text"
+                                ><a class="docs-api__anchor" href="#fwizardstep-slot-next-button-text"
+                                    ><span class="docs-api__name"
+                                        >next-button-text</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>stepNumber: unknown</code></li><li><code>totalSteps: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-slot-cancel-button-text"
+                                ><a class="docs-api__anchor" href="#fwizardstep-slot-cancel-button-text"
+                                    ><span class="docs-api__name"
+                                        >cancel-button-text</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>stepNumber: unknown</code></li><li><code>totalSteps: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1605,9 +1794,9 @@ totalSteps</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/43321c8bc82dabd063ca89374c753d2faa05f63d">43321c8</a>)<br />
+    feature/tokens_messagebox (<a href="https://github.com/Forsakringskassan/designsystem/commits/58f3463807d1ced959e80d92c378113c7e9a13ec">58f3463</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/208">PR 208</a><br />
-        2025-01-24 12:19
+        2025-02-12 10:37
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1728,15 +1917,15 @@ totalSteps</p>
             
         ></script>
         <script
-            src="../assets/processors/selectable-version/select-version-dac30b.js"
+            src="../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../assets/main-623313.js"
+            src="../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-0vO5d86exgiRpIf6UFnt0ktejQxZ59Cvb2U7bUj9NZ3Dzkg6mbGylTBjr6+JeZ8I"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>
