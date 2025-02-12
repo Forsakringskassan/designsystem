@@ -28,14 +28,25 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject-value.vue
+  // virtual-entry:./docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject-progress-status.vue
   var import_vue3 = __require("vue");
-  var exampleComponent = {};
-  function render(_ctx, _cache) {
-    const _component_f_progressbar = (0, import_vue3.resolveComponent)("f-progressbar");
-    const _directive_test = (0, import_vue3.resolveDirective)("test");
-    return (0, import_vue3.withDirectives)(((0, import_vue3.openBlock)(), (0, import_vue3.createBlock)(
-      _component_f_progressbar,
+  var import_vue4 = __require("@fkui/vue");
+  var import_vue5 = __require("vue");
+  var exampleComponent = /* @__PURE__ */ (0, import_vue3.defineComponent)({
+    __name: "FProgressbarPageObject-progress-status",
+    setup(__props, { expose: __expose }) {
+      __expose();
+      const __returned__ = { get FProgressbar() {
+        return import_vue4.FProgressbar;
+      } };
+      Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+      return __returned__;
+    }
+  });
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _directive_test = (0, import_vue5.resolveDirective)("test");
+    return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(
+      $setup["FProgressbar"],
       {
         value: 40,
         "aria-label": "Progressbar"
@@ -50,6 +61,6 @@
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#FProgressbarPageObject-value"
+    selector: "#FProgressbarPageObject-progress-status"
   });
 })();

@@ -132,4 +132,10 @@
   --f-background-button-tertiary-hover: #e5e5f5;
   --f-text-color-button-tertiary-inverted: #ffffff;
   --f-text-color-button-tertiary-inverted-disabled: #8d8e91;
+  --f-icon-color-warning: #ffbe10;
+  --f-background-info: #f5f6fa;
+  --f-background-warning: #fffcf3;
+  --f-background-modal-shelf: #ffffff;
+  --f-border-color-info: #4a52b6;
+  --f-border-color-warning: #ffbe10;
 }

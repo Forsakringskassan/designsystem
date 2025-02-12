@@ -28,23 +28,34 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-description.vue
+  // virtual-entry:./docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-format-description.vue
   var import_vue3 = __require("vue");
-  var exampleComponent = {};
-  function render(_ctx, _cache) {
-    const _component_f_label = (0, import_vue3.resolveComponent)("f-label");
-    const _directive_test = (0, import_vue3.resolveDirective)("test");
-    return (0, import_vue3.withDirectives)(((0, import_vue3.openBlock)(), (0, import_vue3.createBlock)(_component_f_label, null, {
-      default: (0, import_vue3.withCtx)(() => _cache[0] || (_cache[0] = [
-        (0, import_vue3.createTextVNode)(" Etikett ")
+  var import_vue4 = __require("@fkui/vue");
+  var import_vue5 = __require("vue");
+  var exampleComponent = /* @__PURE__ */ (0, import_vue3.defineComponent)({
+    __name: "FLabelPageObject-format-description",
+    setup(__props, { expose: __expose }) {
+      __expose();
+      const __returned__ = { get FLabel() {
+        return import_vue4.FLabel;
+      } };
+      Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+      return __returned__;
+    }
+  });
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _directive_test = (0, import_vue5.resolveDirective)("test");
+    return (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)($setup["FLabel"], null, {
+      default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+        (0, import_vue5.createTextVNode)(" Etikett ")
       ])),
-      description: (0, import_vue3.withCtx)(({ descriptionClass }) => [
-        (0, import_vue3.createElementVNode)(
+      description: (0, import_vue5.withCtx)(({ formatDescriptionClass }) => [
+        (0, import_vue5.createElementVNode)(
           "span",
           {
-            class: (0, import_vue3.normalizeClass)(descriptionClass)
+            class: (0, import_vue5.normalizeClass)(formatDescriptionClass)
           },
-          " Hj\xE4lptext ",
+          " Formatbeskrivning ",
           2
           /* CLASS */
         )
@@ -58,6 +69,6 @@
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#FLabelPageObject-description"
+    selector: "#FLabelPageObject-format-description"
   });
 })();

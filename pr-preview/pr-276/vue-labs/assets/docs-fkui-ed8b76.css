@@ -142,7 +142,6 @@ html {
   --f-icon-color-primary: #4a52b6;
   --f-icon-color-discrete: #5f6165;
   --f-icon-color-success: #35805b;
-  --f-icon-color-warning: #ffbe10;
   --f-icon-color-error: #ca1515;
   --f-icon-color-input: #8d8e91;
   --f-icon-color-notice: #d34503;
@@ -162,8 +161,6 @@ html {
   --f-background-input-selected: #4a52b6;
   --f-background-input-selected-disabled: #8d8e91;
   --f-background-error: #fcf3f3;
-  --f-background-info: #f5f6fa;
-  --f-background-warning: #fffcf3;
   --f-background-success: #f3f8f5;
   --f-background-overlay: rgba(0, 0, 0, 0.75);
   --f-background-progress: #ddddde;
@@ -205,11 +202,8 @@ html {
   --f-background-month: #f4f4f4;
   --f-background-dialogue-tree: #ffffff;
   --f-background-dialogue-tree-hover: #e5e5f5;
-  --f-background-modal-shelf: #ffffff;
   --f-border-color-modal: #8d8e91;
-  --f-border-color-info: #4a52b6;
   --f-border-color-success: #35805b;
-  --f-border-color-warning: #ffbe10;
   --f-border-color-error: #ca1515;
   --f-border-color-input: #8d8e91;
   --f-border-color-input-inner: #e5e5f5;
