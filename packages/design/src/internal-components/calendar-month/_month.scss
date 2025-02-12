@@ -28,7 +28,8 @@ $day-width: calc((100% - $week-width) / $days);
         text-align: center;
         background-color: white;
 
-        abbr {
+        abbr,
+        span {
             font-weight: var(--f-font-weight-normal);
             text-decoration: none;
             border-bottom: none;

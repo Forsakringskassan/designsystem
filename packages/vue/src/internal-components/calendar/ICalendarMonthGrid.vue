@@ -20,8 +20,15 @@
                     class="calendar-month__header-cell"
                 ></th>
 
-                <th v-for="weekday in weekdays" :key="weekday.name" scope="col" class="calendar-month__header-cell">
-                    <abbr :title="weekday.name">{{ showShortWeekdays ? weekday.shortName : weekday.name }}</abbr>
+                <th
+                    v-for="weekday in weekdays"
+                    :key="weekday.name"
+                    scope="col"
+                    aria-hidden="true"
+                    class="calendar-month__header-cell"
+                >
+                    <abbr v-if="showShortWeekdays" :title="weekday.name">{{ weekday.shortName }}</abbr>
+                    <span v-else>{{ weekday.name }}</span>
                 </th>
             </tr>
         </thead>
@@ -40,7 +47,6 @@
                     v-if="getDayStartOffset(week.days)"
                     class="calendar-month__cell"
                     :colspan="getDayStartOffset(week.days)"
-                    aria-hidden="true"
                 ></td>
 
                 <td v-for="day in week.days" :key="day.toString()" class="calendar-month__cell" role="presentation">

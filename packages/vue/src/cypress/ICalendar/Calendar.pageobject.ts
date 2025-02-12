@@ -48,7 +48,7 @@ export class CalendarPageObject implements BasePageObject {
      */
     public headerCells(): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .calendar-month__header-cell:not([aria-hidden="true"])`,
+            `${this.selector} .calendar-month__header-cell  > :is(abbr, span)`,
         );
     }
 
