@@ -85,3 +85,7 @@ FTooltipHeadingExample.vue
 :::api
 vue:FTooltip
 :::
+
+## Relaterat
+
+- {@link FTooltipPageObject FTooltipPageObject}
