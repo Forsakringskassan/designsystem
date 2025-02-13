@@ -395,6 +395,8 @@ export default defineComponent({
                         return includeItem(row, this.rows, this.keyAttribute);
                     });
                 }
+
+                this.confirmUniqueKey();
             },
         },
         active: {
@@ -615,6 +617,49 @@ export default defineComponent({
              * @type {ListItem}
              */
             this.$emit("update:active", this.activeRow);
+        },
+        confirmUniqueKey(): void {
+            const seenKeys: Record<string, boolean> = {};
+
+            for (const row of this.rows) {
+                const rowKey = String(row[this.keyAttribute]);
+                if (seenKeys[rowKey]) {
+                    const index = this.rows.indexOf(row);
+                    const msg =
+                        `Expected each row to have a unique key attribute but ` +
+                        `encountered duplicate of "${rowKey}" in row index ${index}.`;
+
+                    throw new Error(msg);
+                }
+
+                seenKeys[rowKey] = true;
+            }
+
+            if (!this.isExpandableTable) {
+                return;
+            }
+
+            for (const row of this.rows) {
+                const expandableRows = this.expandableRows(row);
+                if (expandableRows === undefined) {
+                    continue;
+                }
+
+                for (const expandableRow of expandableRows) {
+                    const rowKey = String(expandableRow[this.keyAttribute]);
+                    if (seenKeys[rowKey]) {
+                        const index = this.rows.indexOf(row);
+                        const expandableIndex = expandableRows.indexOf(expandableRow);
+                        const msg =
+                            `Expected each row to have a unique key attribute but encountered duplicate` +
+                            ` of "${rowKey}" in expandable row index ${expandableIndex} of row index ${index}.`;
+
+                        throw new Error(msg);
+                    }
+
+                    seenKeys[rowKey] = true;
+                }
+            }
         },
     },
 });

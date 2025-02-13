@@ -176,6 +176,26 @@ export default defineComponent({
             return this.scroll !== TableScroll.NONE ? 0 : undefined;
         },
     },
+    watch: {
+        rows: {
+            deep: true,
+            immediate: true,
+            handler: function () {
+                const seenKeys: Record<string, boolean> = {};
+                for (const row of this.rows) {
+                    const rowKey = String(row[this.keyAttribute]);
+                    if (seenKeys[rowKey]) {
+                        const index = this.rows.indexOf(row);
+                        throw new Error(
+                            `Expected each table row to have a unique key attribute but encountered duplicate of "${rowKey}" in row index ${index}.`,
+                        );
+                    }
+
+                    seenKeys[rowKey] = true;
+                }
+            },
+        },
+    },
     mounted() {
         this.registerCallbackOnSort(this.callbackOnSort);
         this.registerCallbackOnMount(this.callbackSortableColumns);

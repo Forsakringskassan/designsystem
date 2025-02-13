@@ -956,6 +956,37 @@ it("should call provided sort method when clicking columnheader that is registra
     `);
 });
 
+describe("`keyAttribute` prop", () => {
+    it("should throw error if not unique in row", async () => {
+        expect.assertions(1);
+        expect(() => {
+            mount(FInteractiveTable, {
+                props: {
+                    rows: [{ id: "a" }, { id: "b" }, { id: "b" }],
+                    keyAttribute: "id",
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Expected each row to have a unique key attribute but encountered duplicate of "b" in row index 2."`,
+        );
+    });
+
+    it("should throw error if not unique in expandable row", async () => {
+        expect.assertions(1);
+        expect(() => {
+            mount(FInteractiveTable, {
+                props: {
+                    rows: [{ id: "a" }, { id: "b", more: [{ id: "a" }] }],
+                    keyAttribute: "id",
+                    expandableAttribute: "more",
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Expected each row to have a unique key attribute but encountered duplicate of "a" in expandable row index 0 of row index 1."`,
+        );
+    });
+});
+
 describe("Expandable rows", () => {
     it("Should handle slot content in expanded rows", () => {
         expect.assertions(3);
