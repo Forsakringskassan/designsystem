@@ -10,12 +10,4 @@ export default defineConfig({
     build: {
         minify: false,
     },
-    optimizeDeps: {
-        /**
-         * Vite treats monorepo packages as sourcecode and performs no prebundling by default.
-         * See https://vitejs.dev/guide/dep-pre-bundling.html#monorepos-and-linked-dependencies
-         */
-        include: ["@fkui/date", "@fkui/logic", "@fkui/vue"],
-        force: false,
-    },
 });
