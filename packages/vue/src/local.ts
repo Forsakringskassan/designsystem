@@ -2,9 +2,7 @@ import { createApp } from "vue";
 import { type SetupOptions } from "@forsakringskassan/vite-lib-config";
 
 import "@fkui/icon-lib-default/dist/f";
-import "@fkui/theme-default/dist/fkui-css-variables.css";
-import "@fkui/design/src/fkui.scss";
-import "@fkui/design/lib/fonts.css";
+import "./local.scss";
 
 import { TestPlugin, TranslationPlugin, ValidationPlugin } from "./plugins";
 import { setRunningContext } from "./config";
