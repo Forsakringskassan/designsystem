@@ -1,31 +1,54 @@
-const { Rule } = require("html-validate");
+const { Rule, DOMTokenList } = require("html-validate");
 const { getDocumentationUrl } = require("./common");
 
+const deprecatedClasses = [
+    {
+        name: "navbar",
+        description:
+            "`.navbar` and related classes are deprecated and should be replaced with Vue components `FPageHeader` and `FNavigationMenu` or their HTML and style.",
+        url: "/components/page-layout/fpageheader.html",
+    },
+    {
+        name: "button--text",
+        description:
+            "`.button--text` class is deprecated and should be replaced with `button--discrete`",
+        url: "/components/button.html",
+    },
+];
+
 class ClassDeprecated extends Rule {
-    documentation() {
+    documentation({ description, url }) {
         return {
-            description:
-                "The class button--text is deprecated and should be replaced with button--discrete",
-            url: getDocumentationUrl("/components/button.html"),
+            description,
+            url: getDocumentationUrl(url),
         };
     }
 
     setup() {
-        /* listen on dom ready event */
-        this.on("dom:ready", (event) => {
-            this.reportDeprecatedClass(event);
+        this.on("attr", (event) => {
+            const { key, value, valueLocation } = event;
+            const hasClassValue = key === "class" && typeof value === "string";
+            if (!hasClassValue) {
+                return;
+            }
+
+            const tokens = new DOMTokenList(event.value, valueLocation);
+
+            for (const { item, location } of tokens.iterator()) {
+                for (const deprecatedClass of deprecatedClasses) {
+                    if (deprecatedClass.name !== item) {
+                        continue;
+                    }
+
+                    this.report({
+                        node: event.target,
+                        location,
+                        message: "`.{{ name }}` class is deprecated.",
+                        context: deprecatedClass,
+                    });
+                }
+            }
         });
-    }
-
-    reportDeprecatedClass(event) {
-        const buttons = event.document.querySelectorAll(".button--text");
-
-        for (const button of buttons) {
-            this.report(
-                button,
-                "['button--text'] is deprecated, please use ['button--discrete'] instead",
-            );
-        }
     }
 }
 
