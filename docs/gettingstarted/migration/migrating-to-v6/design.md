@@ -66,3 +66,64 @@ Tidigare tog komponenten enbart upp 66% bredd i desktop, om du vill återskapa d
 
 Alla logotyp-bilder är borttagna från `@fkui/design` utan ersättare.
 De som behöver dessa bilder behöver lägga in dem själv.
+
+## Navbar borttagen
+
+Styling och klasser för navbar är borttagen och har ersatts av Vue-komponenterna {@link FPageHeader `FPageHeader`} och {@link FNavigationMenu `FNavigationMenu`}.
+
+Även tillhörande CSS-variabler är borttagna:
+
+- `--f-text-color-pageheader`
+- `--f-text-color-navbar`
+- `--f-text-color-navbar-active`
+- `--f-background-pageheader-standard`
+- `--f-background-pageheader-secondary`
+- `--f-background-navbar`
+- `--f-background-navbar-hover`
+- `--f-border-color-separator-pageheader-standard`
+- `--f-border-color-separator-pageheader-secondary`
+- `--f-border-color-navbar-active`
+- `--f-border-color-navbar-hover`
+
+Komponenten `FPageHeader` ersätter det som tidigare bestod av `.navbar__header`, och `FNavigationMenu` ersätter `.navbar__nav`.
+För att behålla samma funktionalitet behövs båda dessa komponenter användas. Besök respektive sida för ytterligare information om dessa komponenter och för exempel om hur du ska använda komponenterna.
+
+För att migrera till endast HTML och CSS, se nedan för ett exempel med liten logo samt första menyalternativ valt.
+
+```html static
+<header>
+    <div class="page-header__root">
+        <div class="page-header">
+            <div class="page-header__logo">
+                <span
+                    class="logo logo--small"
+                    aria-label="my awesome logo"
+                    role="img"
+                ></span>
+            </div>
+            <span class="page-header__app-name"> Exempelapplikation </span>
+            <div class="page-header__right">
+                <div class="page-header__right-slot">Namn Namnsson</div>
+            </div>
+        </div>
+    </div>
+</header>
+<nav aria-label="my awesome navigation" class="imenu imenu--horizontal">
+    <ul class="imenu__list" role="menubar">
+        <li class="imenu__list__item" role="none">
+            <div class="imenu__list__anchor-container">
+                <a tabindex="0" class="imenu__list__anchor" role="menuitem">
+                    Home
+                </a>
+            </div>
+        </li>
+        <li class="imenu__list__item" role="none">
+            <div class="imenu__list__anchor-container">
+                <a tabindex="0" class="imenu__list__anchor" role="menuitem">
+                    About
+                </a>
+            </div>
+        </li>
+    </ul>
+</nav>
+```
