@@ -24,9 +24,6 @@
     --f-text-color-heading-5: inherit;
     --f-text-color-heading-6: inherit;
     --f-text-color-input-disabled: #{$palette-color-fk-black-50}; // checkbox
-    --f-text-color-pageheader: #{$palette-color-green-a-100}; // navbar
-    --f-text-color-navbar: #{$palette-color-white-100}; // navbar
-    --f-text-color-navbar-active: #{$palette-color-white-100}; // navbar
     --f-text-color-heading-expandable-panel: #{$palette-color-white-100};
     --f-text-color-wizard-step-done: #{$palette-color-green-a-85}; // wizard-step
 
@@ -87,16 +84,12 @@
     --f-background-progress-ongoing: #{$palette-color-yellow-85};
     --f-background-progress-file-item-ongoing: #{$palette-color-yellow-85};
     --f-background-progress-finished: #{$palette-color-green-b-85};
-    --f-background-pageheader-standard: #{$palette-color-white-100}; // navbar
-    --f-background-pageheader-primary: #{$palette-color-green-a-100}; // navbar
-    --f-background-pageheader-secondary: #{$palette-color-green-b-15}; // navbar
+    --f-background-pageheader-primary: #{$palette-color-green-a-100}; // page-header
     --f-background-skiplink-focus: #{$palette-color-bluebell-5};
     --f-background-heading-expandable-panel: #{$palette-color-green-a-100};
     --f-background-heading-expandable-panel-hover: #{$palette-color-green-a-85};
     --f-background-expandable-panel: #{$palette-color-white-100};
     --f-background-heading-static-panel: #{$palette-color-green-b-50};
-    --f-background-navbar: #{$palette-color-green-a-100};
-    --f-background-navbar-hover: #{$palette-color-green-b-100};
     --f-background-code: #{$palette-color-fk-black-5};
     --f-background-wizard-step-line: #{$palette-color-fk-black-70}; // wizard-step
 
@@ -157,12 +150,8 @@
     --f-border-color-static-panel: #{$palette-color-green-b-50};
 
     --f-border-color-separator: #{$palette-color-fk-black-15}; // radio-button-group, file-item, expandable-paragraph
-    --f-border-color-separator-pageheader-standard: #{$palette-color-green-a-100};
-    --f-border-color-separator-pageheader-primary: #{$palette-color-white-100};
-    --f-border-color-separator-pageheader-secondary: #{$palette-color-green-a-100};
+    --f-border-color-separator-pageheader-primary: #{$palette-color-white-100}; // page-header
     --f-border-color-separator-contextmenu: #{$palette-color-fk-black-50};
-    --f-border-color-navbar-active: #{$palette-color-white-100};
-    --f-border-color-navbar-hover: #{$palette-color-white-100};
     --f-border-color-wizard-step-line: #{$palette-color-fk-black-70}; // wizard-step
     --f-border-color-link: #{$palette-color-bluebell-100};
     --f-border-color-link-hover: #{$palette-color-fk-black-50};
