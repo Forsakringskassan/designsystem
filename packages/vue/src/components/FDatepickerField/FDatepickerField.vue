@@ -66,16 +66,14 @@
             @close="onClosePopup"
         >
             <div ref="popup" :class="popupClass">
-                <!-- eslint-disable vue/no-deprecated-v-on-native-modifier -- technical debt -->
                 <f-calendar
                     v-model="calendarMonth"
                     :tab-date="calendarValue"
                     :min-date="minDate"
                     :max-date="maxDate"
                     @click="onSelectCalendarDay"
-                    @keyup.esc.stop.native="onKeyupEsc"
+                    @keyup.esc.stop="onKeyupEsc"
                 >
-                    <!-- eslint-enable vue/no-deprecated-v-on-native-modifier -->
                     <template #default="{ date, isFocused }">
                         <f-calendar-day
                             :day="date"
