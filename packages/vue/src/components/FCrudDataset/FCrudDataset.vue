@@ -1,74 +1,3 @@
-<template>
-    <div class="crud-dataset">
-        <!--
-@slot Slot for displaying the data.
-    -->
-        <slot></slot>
-        <div v-if="hasAddSlot">
-            <button
-                data-test="f-crud-dataset-add-button"
-                type="button"
-                class="button button--tertiary crud-dataset__add-button"
-                @click="createItem()"
-            >
-                <f-icon class="button__icon" name="plus" />
-                <!--
-@slot Slot for changing the text in "Add new" button`
-                    -->
-                <slot name="add-button">{{ $t("fkui.crud-dataset.button.add", "Lägg till ny") }}</slot>
-            </button>
-        </div>
-
-        <!-- [html-validate-disable-block fkui/no-template-modal -- technical debt] -->
-        <f-form-modal
-            :is-open="isFormModalOpen"
-            :aria-close-text="$t('fkui.crud-dataset.modal.close', 'Stäng')"
-            :buttons="formModalButtons"
-            :use-error-list="false"
-            :before-submit="beforeSubmit"
-            :before-validation="beforeValidation"
-            :on-cancel="onCancel"
-            @close="onModalClose"
-            @cancel="onCancel"
-            @submit="onFormModalSubmit"
-        >
-            <template #header>{{ formModalHeader }}</template>
-            <template #input-text-fields>
-                <!--
-@slot Slot for inputs when creating a new item.
-The new item is available through `v-slot="{ item }"`
-If any data in the item should be set not by the user the prop beforeCreate can be used to set that data.
-                    -->
-                <slot v-if="operation === Operation.ADD" name="add" v-bind="{ item: item }" />
-                <!--
-@slot Slot for inputs when modifying an item.
-The item being modified is available through `v-slot="{ item }"`
-                    -->
-                <slot v-if="operation === Operation.MODIFY" name="modify" v-bind="{ item: item }" />
-            </template>
-        </f-form-modal>
-
-        <f-confirm-modal
-            :is-open="isConfirmModalOpen"
-            :buttons="confirmDeleteButtons"
-            @confirm="onDeleteConfirm"
-            @close="onDeleteClose"
-        >
-            <template #heading>
-                {{ deleteModalHeader }}
-            </template>
-
-            <template #content>
-                <!--
-@slot Slot for displaying a warning message before an item is deleted.
-The item being deleted is available through `v-slot="{ item }"`
-                    -->
-                <slot name="delete" v-bind="{ item: item }" />
-            </template>
-        </f-confirm-modal>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { deepClone, alertScreenReader, TranslationService } from "@fkui/logic";
@@ -377,3 +306,74 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="crud-dataset">
+        <!--
+@slot Slot for displaying the data.
+    -->
+        <slot></slot>
+        <div v-if="hasAddSlot">
+            <button
+                data-test="f-crud-dataset-add-button"
+                type="button"
+                class="button button--tertiary crud-dataset__add-button"
+                @click="createItem()"
+            >
+                <f-icon class="button__icon" name="plus" />
+                <!--
+@slot Slot for changing the text in "Add new" button`
+                    -->
+                <slot name="add-button">{{ $t("fkui.crud-dataset.button.add", "Lägg till ny") }}</slot>
+            </button>
+        </div>
+
+        <!-- [html-validate-disable-block fkui/no-template-modal -- technical debt] -->
+        <f-form-modal
+            :is-open="isFormModalOpen"
+            :aria-close-text="$t('fkui.crud-dataset.modal.close', 'Stäng')"
+            :buttons="formModalButtons"
+            :use-error-list="false"
+            :before-submit="beforeSubmit"
+            :before-validation="beforeValidation"
+            :on-cancel="onCancel"
+            @close="onModalClose"
+            @cancel="onCancel"
+            @submit="onFormModalSubmit"
+        >
+            <template #header>{{ formModalHeader }}</template>
+            <template #input-text-fields>
+                <!--
+@slot Slot for inputs when creating a new item.
+The new item is available through `v-slot="{ item }"`
+If any data in the item should be set not by the user the prop beforeCreate can be used to set that data.
+                    -->
+                <slot v-if="operation === Operation.ADD" name="add" v-bind="{ item: item }" />
+                <!--
+@slot Slot for inputs when modifying an item.
+The item being modified is available through `v-slot="{ item }"`
+                    -->
+                <slot v-if="operation === Operation.MODIFY" name="modify" v-bind="{ item: item }" />
+            </template>
+        </f-form-modal>
+
+        <f-confirm-modal
+            :is-open="isConfirmModalOpen"
+            :buttons="confirmDeleteButtons"
+            @confirm="onDeleteConfirm"
+            @close="onDeleteClose"
+        >
+            <template #heading>
+                {{ deleteModalHeader }}
+            </template>
+
+            <template #content>
+                <!--
+@slot Slot for displaying a warning message before an item is deleted.
+The item being deleted is available through `v-slot="{ item }"`
+                    -->
+                <slot name="delete" v-bind="{ item: item }" />
+            </template>
+        </f-confirm-modal>
+    </div>
+</template>
