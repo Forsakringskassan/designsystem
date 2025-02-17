@@ -16,9 +16,11 @@ html {
 .code-preview__preview,
 .live-example__example {
     @include fkui.css-variables();
-    --f-logo-image-small: url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
+    --f-logo-image-small:
+        url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
         linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 
-    --f-logo-image-large: url("#{config-variables.$asset-path-images}/#{$fk-logo-large}"),
+    --f-logo-image-large:
+        url("#{config-variables.$asset-path-images}/#{$fk-logo-large}"),
         linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 }
