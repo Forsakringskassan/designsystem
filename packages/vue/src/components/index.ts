@@ -13,7 +13,6 @@ export {
 export {
     type ActivateItemCallback,
     type ActivateItemInterface,
-    type FCrudDatasetData,
     type FCrudDatasetInterface,
     ActivateItemInjected,
     FCrudButton,

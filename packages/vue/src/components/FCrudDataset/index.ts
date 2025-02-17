@@ -6,5 +6,4 @@ export {
     ActivateItemInjected,
 } from "./ActivateItemInterface";
 export { type FCrudDatasetInterface } from "./FCrudDatasetInterface";
-export { type FCrudDatasetData } from "./fcruddataset-data";
 export { Operation } from "./operation";
