@@ -8512,9 +8512,11 @@ body {
   --docs-font-family: arial, "Helvetica Neue", sans-serif;
   --docs-heading-family: arial, "Helvetica Neue", sans-serif;
   --docs-heading-font-weight: 700;
-  --f-logo-image-small: url("./images/fk-logo-primary-small.svg"),
+  --f-logo-image-small:
+      url("./images/fk-logo-primary-small.svg"),
       linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
-  --f-logo-image-large: url("./images/fk-logo-primary-large.svg"),
+  --f-logo-image-large:
+      url("./images/fk-logo-primary-large.svg"),
       linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 }
 
