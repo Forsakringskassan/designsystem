@@ -261,6 +261,11 @@ $table-input-offset-horizontal: 0.25rem;
                 @extend %table-monospace;
             }
 
+            // only tbody rows should have nowrap, thead should still be the same
+            &--action {
+                white-space: nowrap;
+            }
+
             &--selectable {
                 padding: densify(0.2rem) 0.2rem;
             }
