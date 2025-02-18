@@ -4,8 +4,19 @@ import { hasSlot } from "../utils/has-slot";
 /**
  * @public
  */
+export type WithoutInstance<F> = F extends (
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- can be anything */
+    vm: any,
+    ...rest: infer R
+) => infer T
+    ? (...args: R) => T
+    : never;
+
+/**
+ * @public
+ */
 export interface UseSlotUtils {
-    hasSlot(name: string): boolean;
+    hasSlot: WithoutInstance<typeof hasSlot>;
 }
 
 /**
@@ -14,8 +25,8 @@ export interface UseSlotUtils {
 export function useSlotUtils(): UseSlotUtils {
     const $slots = useSlots();
     return {
-        hasSlot(name) {
-            return hasSlot({ $slots }, name);
+        hasSlot(...args) {
+            return hasSlot({ $slots }, ...args);
         },
     };
 }

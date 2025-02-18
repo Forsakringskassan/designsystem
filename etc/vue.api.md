@@ -16084,7 +16084,7 @@ export function useModal(): UseModal;
 // @public (undocumented)
 export interface UseSlotUtils {
     // (undocumented)
-    hasSlot(name: string): boolean;
+    hasSlot: WithoutInstance<typeof hasSlot>;
 }
 
 // @public (undocumented)
@@ -16118,6 +16118,9 @@ export interface VueLike {
     // (undocumented)
     focusTarget?: VueLike | Element | Array<VueLike | Element> | null;
 }
+
+// @public (undocumented)
+export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer T ? (...args: R) => T : never;
 
 // (No @packageDocumentation comment for this package)
 
