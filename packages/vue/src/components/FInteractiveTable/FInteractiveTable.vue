@@ -1,148 +1,3 @@
-<template>
-    <div :class="wrapperClasses">
-        <table class="table" :role="tableRole" :class="tableClasses" v-bind="$attrs">
-            <caption v-if="hasCaption">
-                <!-- @slot Slot for table caption. -->
-                <slot name="caption"></slot>
-            </caption>
-            <colgroup>
-                <col v-if="isExpandableTable" class="table__column--shrink" />
-                <col v-if="selectable" class="table__column--shrink" />
-                <col v-for="column in columns" :key="column.id" :class="column.size" />
-            </colgroup>
-            <thead>
-                <tr class="table__row">
-                    <th v-if="isExpandableTable" scope="col">
-                        <span class="sr-only">{{ $t("fkui.interactive-table.select", "Expandera") }}</span>
-                    </th>
-
-                    <th v-if="selectable" scope="col">
-                        <span class="sr-only">{{ $t("fkui.interactive-table.select", "Markera") }}</span>
-                    </th>
-
-                    <th
-                        v-for="column in visibleColumns"
-                        :key="column.id"
-                        scope="col"
-                        :class="columnClasses(column)"
-                        v-on="column.sortable ? { click: () => onClickColumnHeader(column) } : {}"
-                    >
-                        <!-- eslint-disable-next-line vue/no-v-html -->
-                        <span v-html="escapeNewlines(column.title)"></span>
-                        <f-icon v-if="column.sortable" :class="iconClasses(column)" :name="iconName(column)" />
-                        <span v-if="column.description" class="table__column__description">{{
-                            column.description
-                        }}</span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody ref="tbodyElement" :key="tbodyKey">
-                <template v-for="(row, index) in rows" :key="rowKey(row)">
-                    <tr
-                        :class="rowClasses(row, index)"
-                        :aria-label="rowDescription(row)"
-                        :aria-expanded="rowAriaExpanded(row)"
-                        :aria-level="isExpandableTable ? 1 : undefined"
-                        :aria-describedby="getExpandableDescribedby(row)"
-                        tabindex="0"
-                        @keydown.self="onKeydown($event, index)"
-                        @click="onClick($event, row, index)"
-                    >
-                        <td v-if="isExpandableTable">
-                            <div v-if="hasExpandableContent(row)" class="table__expand-icon">
-                                <f-icon name="arrow-right" :rotate="isExpanded(row) ? '270' : '90'"></f-icon>
-                            </div>
-                        </td>
-
-                        <td v-if="selectable" class="table__column--selectable">
-                            <div class="table__input">
-                                <f-checkbox-field
-                                    :value="true"
-                                    :model-value="isSelected(row)"
-                                    @click.self="onSelect(row)"
-                                >
-                                    <span v-if="hasCheckboxDescription" class="sr-only">
-                                        <slot name="checkbox-description" v-bind="{ row }" />
-                                    </span>
-                                </f-checkbox-field>
-                            </div>
-                        </td>
-
-                        <!--
-                            @slot Slot for table row.
-
-                            The row object is available through `v-slot="{ <propertyName> }"`, e.g.
-                            `v-slot="{ row }"`.
-
-                            The following properties are available:
-
-                            * `row: ListItem;` The object to be visualized.
-                        -->
-                        <slot v-bind="{ row }" />
-                    </tr>
-
-                    <template v-if="isExpandableTable && hasExpandableContent(row)">
-                        <tr
-                            v-for="(expandableRow, expandableIndex) in expandableRows(row)"
-                            :key="rowKey(expandableRow)"
-                            aria-level="2"
-                            :class="expandableRowClasses(row, expandableIndex)"
-                        >
-                            <!--
-                                Expandable column placeholder.
-                                Expandable rows cannot be expanded.
-                            -->
-                            <td class="table__column--placeholder"></td>
-
-                            <!--
-                                Selectable column placeholder.
-                                Expandable rows cannot be selected.
-                            -->
-                            <td v-if="selectable" class="table__column--placeholder"></td>
-
-                            <template v-if="!hasExpandableSlot">
-                                <slot v-bind="{ row: expandableRow }"></slot>
-                            </template>
-                            <td v-else class="table__column table__column--indented" :colspan="columns.length">
-                                <!--
-                                    @slot Slot for expandable table row.
-
-                                    The row object is available through `v-slot="{ <propertyName> }"`, e.g.
-                                    `v-slot="{ expandableRow }"`.
-
-                                    The following properties are available:
-
-                                    * `expandableRow: ListItem;` The object to be visualized.
-                                    * `parentRow: ListItem;` The parent row of the expandable rows.
-                                -->
-                                <slot name="expandable" v-bind="{ expandableRow, parentRow: row }" />
-                            </td>
-                        </tr>
-                    </template>
-                </template>
-
-                <tr v-if="isEmpty && columns.length === 0">
-                    <slot v-bind="{ row: {} }"></slot>
-                </tr>
-
-                <template v-if="isEmpty">
-                    <tr>
-                        <td class="table__column table__column--action" :colspan="nbOfColumns">
-                            <!--
-                                @slot Slot for displaying a message when table is empty.
-                                Default text is 'Tabellen är tom' (key fkui.interactive-table.empty).
-                            -->
-                            <slot name="empty">{{ $t("fkui.interactive-table.empty", "Tabellen är tom") }}</slot>
-                        </td>
-                        <!-- slot content won't be rendered, since renderColumns is false for empty table -->
-                        <slot v-bind="{ row: {} }"></slot>
-                    </tr>
-                </template>
-            </tbody>
-        </table>
-    </div>
-</template>
-
 <script lang="ts">
 import { type PropType, computed, defineComponent, provide } from "vue";
 import { type ListArray, type ListItem } from "../../types";
@@ -619,3 +474,148 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div :class="wrapperClasses">
+        <table class="table" :role="tableRole" :class="tableClasses" v-bind="$attrs">
+            <caption v-if="hasCaption">
+                <!-- @slot Slot for table caption. -->
+                <slot name="caption"></slot>
+            </caption>
+            <colgroup>
+                <col v-if="isExpandableTable" class="table__column--shrink" />
+                <col v-if="selectable" class="table__column--shrink" />
+                <col v-for="column in columns" :key="column.id" :class="column.size" />
+            </colgroup>
+            <thead>
+                <tr class="table__row">
+                    <th v-if="isExpandableTable" scope="col">
+                        <span class="sr-only">{{ $t("fkui.interactive-table.select", "Expandera") }}</span>
+                    </th>
+
+                    <th v-if="selectable" scope="col">
+                        <span class="sr-only">{{ $t("fkui.interactive-table.select", "Markera") }}</span>
+                    </th>
+
+                    <th
+                        v-for="column in visibleColumns"
+                        :key="column.id"
+                        scope="col"
+                        :class="columnClasses(column)"
+                        v-on="column.sortable ? { click: () => onClickColumnHeader(column) } : {}"
+                    >
+                        <!-- eslint-disable-next-line vue/no-v-html -->
+                        <span v-html="escapeNewlines(column.title)"></span>
+                        <f-icon v-if="column.sortable" :class="iconClasses(column)" :name="iconName(column)" />
+                        <span v-if="column.description" class="table__column__description">{{
+                            column.description
+                        }}</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody ref="tbodyElement" :key="tbodyKey">
+                <template v-for="(row, index) in rows" :key="rowKey(row)">
+                    <tr
+                        :class="rowClasses(row, index)"
+                        :aria-label="rowDescription(row)"
+                        :aria-expanded="rowAriaExpanded(row)"
+                        :aria-level="isExpandableTable ? 1 : undefined"
+                        :aria-describedby="getExpandableDescribedby(row)"
+                        tabindex="0"
+                        @keydown.self="onKeydown($event, index)"
+                        @click="onClick($event, row, index)"
+                    >
+                        <td v-if="isExpandableTable">
+                            <div v-if="hasExpandableContent(row)" class="table__expand-icon">
+                                <f-icon name="arrow-right" :rotate="isExpanded(row) ? '270' : '90'"></f-icon>
+                            </div>
+                        </td>
+
+                        <td v-if="selectable" class="table__column--selectable">
+                            <div class="table__input">
+                                <f-checkbox-field
+                                    :value="true"
+                                    :model-value="isSelected(row)"
+                                    @click.self="onSelect(row)"
+                                >
+                                    <span v-if="hasCheckboxDescription" class="sr-only">
+                                        <slot name="checkbox-description" v-bind="{ row }" />
+                                    </span>
+                                </f-checkbox-field>
+                            </div>
+                        </td>
+
+                        <!--
+                            @slot Slot for table row.
+
+                            The row object is available through `v-slot="{ <propertyName> }"`, e.g.
+                            `v-slot="{ row }"`.
+
+                            The following properties are available:
+
+                            * `row: ListItem;` The object to be visualized.
+                        -->
+                        <slot v-bind="{ row }" />
+                    </tr>
+
+                    <template v-if="isExpandableTable && hasExpandableContent(row)">
+                        <tr
+                            v-for="(expandableRow, expandableIndex) in expandableRows(row)"
+                            :key="rowKey(expandableRow)"
+                            aria-level="2"
+                            :class="expandableRowClasses(row, expandableIndex)"
+                        >
+                            <!--
+                                Expandable column placeholder.
+                                Expandable rows cannot be expanded.
+                            -->
+                            <td class="table__column--placeholder"></td>
+
+                            <!--
+                                Selectable column placeholder.
+                                Expandable rows cannot be selected.
+                            -->
+                            <td v-if="selectable" class="table__column--placeholder"></td>
+
+                            <template v-if="!hasExpandableSlot">
+                                <slot v-bind="{ row: expandableRow }"></slot>
+                            </template>
+                            <td v-else class="table__column table__column--indented" :colspan="columns.length">
+                                <!--
+                                    @slot Slot for expandable table row.
+
+                                    The row object is available through `v-slot="{ <propertyName> }"`, e.g.
+                                    `v-slot="{ expandableRow }"`.
+
+                                    The following properties are available:
+
+                                    * `expandableRow: ListItem;` The object to be visualized.
+                                    * `parentRow: ListItem;` The parent row of the expandable rows.
+                                -->
+                                <slot name="expandable" v-bind="{ expandableRow, parentRow: row }" />
+                            </td>
+                        </tr>
+                    </template>
+                </template>
+
+                <tr v-if="isEmpty && columns.length === 0">
+                    <slot v-bind="{ row: {} }"></slot>
+                </tr>
+
+                <template v-if="isEmpty">
+                    <tr>
+                        <td class="table__column table__column--action" :colspan="nbOfColumns">
+                            <!--
+                                @slot Slot for displaying a message when table is empty.
+                                Default text is 'Tabellen är tom' (key fkui.interactive-table.empty).
+                            -->
+                            <slot name="empty">{{ $t("fkui.interactive-table.empty", "Tabellen är tom") }}</slot>
+                        </td>
+                        <!-- slot content won't be rendered, since renderColumns is false for empty table -->
+                        <slot v-bind="{ row: {} }"></slot>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>
