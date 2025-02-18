@@ -6,7 +6,6 @@ import { itemEquals, includeItem } from "../../utils";
  * @public
  */
 export interface ExpandableTable {
-    expandedRows: Ref<ListArray>;
     isExpandableTable: ComputedRef<boolean>;
     hasExpandableSlot: ComputedRef<boolean>;
     toggleExpanded(row: ListItem): void;
@@ -121,7 +120,6 @@ export function useExpandableTable(
     }
 
     return {
-        expandedRows,
         isExpandableTable,
         hasExpandableSlot,
         toggleExpanded,
