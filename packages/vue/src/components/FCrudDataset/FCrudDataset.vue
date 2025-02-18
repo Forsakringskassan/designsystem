@@ -1,11 +1,10 @@
-<script setup lang="ts">
-import { type PropType, computed, onMounted, provide, ref, useSlots, watch } from "vue";
+<script setup lang="ts" generic="T">
+import { type PropType, type Ref, computed, onMounted, provide, ref, useSlots, watch } from "vue";
 import { deepClone, alertScreenReader, TranslationService } from "@fkui/logic";
 
 import { FIcon } from "../FIcon";
 import { FFormModal, FConfirmModal } from "../FModal";
 import { FModalButtonDescriptor } from "../FModal/modal-button";
-import { type ListItem, type ListArray } from "../../types";
 import { useTranslate } from "../../plugins";
 import { type FValidationFormCallback } from "../FValidationForm";
 import { Operation } from "./operation";
@@ -13,14 +12,14 @@ import { Operation } from "./operation";
 const $t = useTranslate();
 const slots = useSlots();
 
-const result = ref<ListArray>([]);
+const result = ref<T[]>([]) as Ref<T[]>;
 const operation = ref<Operation>(Operation.NONE);
-const item = ref<ListItem | null>(null);
-const originalItemToUpdate = ref<ListItem | null>(null);
+const item = ref<T | null>(null);
+const originalItemToUpdate = ref<T | null>(null);
 const isFormModalOpen = ref(false);
 const isConfirmModalOpen = ref(false);
-const callbackAfterItemAdd = ref<(item: ListItem) => void>(() => ({}));
-const callbackBeforeItemDelete = ref<(item: ListItem) => void>(() => ({}));
+const callbackAfterItemAdd = ref<(item: T) => void>(() => ({}));
+const callbackBeforeItemDelete = ref<(item: T) => void>(() => ({}));
 
 const props = defineProps({
     /**
@@ -29,7 +28,7 @@ const props = defineProps({
      * @model
      */
     modelValue: {
-        type: Array as PropType<ListArray<ListItem>>,
+        type: Array as PropType<T[]>,
         required: false,
         default: () => [],
     },
@@ -38,7 +37,7 @@ const props = defineProps({
      * Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.
      */
     beforeCreate: {
-        type: Function as PropType<(() => ListItem) | undefined>,
+        type: Function as PropType<(() => T) | undefined>,
         required: false,
         default: undefined,
     },
@@ -111,7 +110,36 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["created", "deleted", "updated", "update:modelValue"]);
+const emit = defineEmits<{
+    /**
+     * Emitted when an item is added.
+     *
+     * @arg item - the added item.
+     */
+    created: [item: T];
+
+    /**
+     * Emitted when an item is deleted.
+     *
+     * @arg item - the deleted item.
+     */
+    deleted: [item: T];
+
+    /**
+     * Emitted when an item is updated.
+     *
+     * @arg item - the updated item.
+     */
+    updated: [item: T];
+
+    /**
+     * V-model event.
+     *
+     * @ignore
+     * @arg items - updated list of items.
+     */
+    "update:modelValue": [items: T[]];
+}>();
 
 const formModalButtons = computed((): FModalButtonDescriptor[] => {
     const confirmButtonText =
@@ -168,25 +196,20 @@ const formModalHeader = computed((): string => {
     return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
 });
 
-provide("delete", (item: ListItem) => {
-    deleteItem(item);
-});
+provide("delete", deleteItem);
+provide("modify", updateItem);
 
-provide("modify", (item: ListItem) => {
-    updateItem(item);
-});
-
-provide("registerCallbackAfterItemAdd", (callback: (item: ListItem) => void) => {
+provide("registerCallbackAfterItemAdd", (callback: (item: T) => void) => {
     callbackAfterItemAdd.value = callback;
 });
 
-provide("registerCallbackBeforeItemDelete", (callback: (item: ListItem) => void) => {
+provide("registerCallbackBeforeItemDelete", (callback: (item: T) => void) => {
     callbackBeforeItemDelete.value = callback;
 });
 
 onMounted(() => {
     if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
-        throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
+        throw Error("At least one template of the following must be defined. #add, #delete or #modify");
     }
 });
 
@@ -207,7 +230,7 @@ function createItem(): void {
     isFormModalOpen.value = true;
 }
 
-function deleteItem(current: ListItem): void {
+function deleteItem(current: T): void {
     if (!hasDeleteSlot.value) {
         throw Error("No template is defined for #delete");
     }
@@ -223,17 +246,7 @@ function onDeleteConfirm(): void {
     callbackBeforeItemDelete.value(item.value);
     result.value = result.value.filter((it) => it !== item.value);
 
-    /**
-     * Emitted when an item is deleted.
-     * @event deleted
-     * @param item - the deleted item.
-     */
     emit("deleted", item.value);
-
-    /**
-     * V-model event.
-     * @event update:modelValue
-     */
     emit("update:modelValue", result.value);
 
     alertScreenReader($t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
@@ -259,11 +272,6 @@ function onFormModalSubmit(): void {
     }
     if (operation.value === Operation.ADD) {
         result.value.push(item.value);
-        /**
-         * Emitted when an item is added.
-         * @event created
-         * @param item - the added item.
-         */
         emit("created", item.value);
         emit("update:modelValue", result.value);
 
@@ -277,11 +285,6 @@ function onFormModalSubmit(): void {
         } else {
             originalItemToUpdate.value = item.value;
         }
-        /**
-         * Emitted when an item is updated.
-         * @event updated
-         * @param item - the updated item.
-         */
         emit("updated", originalItemToUpdate.value);
         emit("update:modelValue", result.value);
 
@@ -292,7 +295,7 @@ function onFormModalSubmit(): void {
     isFormModalOpen.value = false;
 }
 
-function updateItem(current: ListItem): void {
+function updateItem(current: T): void {
     if (!hasModifySlot.value) {
         throw Error("No template is defined for #modify");
     }
@@ -318,8 +321,8 @@ function updateItem(current: ListItem): void {
             >
                 <f-icon class="button__icon" name="plus" />
                 <!--
-@slot Slot for changing the text in "Add new" button`
-                    -->
+                     @slot Slot for changing the text in "Add new" button`
+                -->
                 <slot name="add-button">{{ $t("fkui.crud-dataset.button.add", "Lägg till ny") }}</slot>
             </button>
         </div>
@@ -340,16 +343,15 @@ function updateItem(current: ListItem): void {
             <template #header>{{ formModalHeader }}</template>
             <template #input-text-fields>
                 <!--
-@slot Slot for inputs when creating a new item.
-The new item is available through `v-slot="{ item }"`
-If any data in the item should be set not by the user the prop beforeCreate can be used to set that data.
-                    -->
-                <slot v-if="operation === Operation.ADD" name="add" v-bind="{ item: item as any }" />
+                     @slot Slot for inputs when creating a new item. The new item is available through `v-slot="{ item }"`. If any data in the item should be set not by the user the prop `beforeCreate` can be used to set that data.
+                     @binding {T} item Item returned by `beforeCreate` or an empty object.
+                -->
+                <slot v-if="operation === Operation.ADD" name="add" v-bind="{ item: item! }" />
                 <!--
-@slot Slot for inputs when modifying an item.
-The item being modified is available through `v-slot="{ item }"`
-                    -->
-                <slot v-if="operation === Operation.MODIFY" name="modify" v-bind="{ item: item as any }" />
+                     @slot Slot for inputs when modifying an item. The item being modified is available through `v-slot="{ item }"`.
+                     @binding {T} item A clone of the current item.
+                -->
+                <slot v-if="operation === Operation.MODIFY" name="modify" v-bind="{ item: item! }" />
             </template>
         </f-form-modal>
 
@@ -365,10 +367,10 @@ The item being modified is available through `v-slot="{ item }"`
 
             <template #content>
                 <!--
-@slot Slot for displaying a warning message before an item is deleted.
-The item being deleted is available through `v-slot="{ item }"`
-                    -->
-                <slot name="delete" v-bind="{ item: item as any }" />
+                     @slot Slot for displaying a warning message before an item is deleted. The item being deleted is available through `v-slot="{ item }"`.
+                     @binding {T} item Item about to be deleted.
+                -->
+                <slot name="delete" v-bind="{ item: item! }" />
             </template>
         </f-confirm-modal>
     </div>
