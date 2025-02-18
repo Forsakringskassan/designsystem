@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-e0340d.css"
+            href="../../assets/docs-2349f5.css"
             crossorigin
-            integrity="sha384-smlrMBfvoL0wlSlp2WfbyMfsTNVIeguTCveS5kBS8vnlDLgNmknojOd2o34hD4Yz"
+            integrity="sha384-F9+OZj2jIxTjVxKIG64TJ2rBBaTQgq7VtjiRhdNGh1LvZ5On2A7l6XL8RI+bpCiK"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-20bffd.css"
+            href="../../assets/docs-fkui-5b626e.css"
             crossorigin
-            integrity="sha384-6BYFbCDF9Kpkrzho3lx0NSarN4IA63v7JvNMIIePBpnokKAl9zFH1vuQ/ma+hR6q"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-eb68cb.css"
-            crossorigin
-            integrity="sha384-ODo1c8cooTCxBx4YigL/vwFNWOW1pD+yHqLYtWPL0jknUfY51p4y8o6380l8Okei"
-            data-theme="int" disabled
+            integrity="sha384-wyIvqBEczityL7K81fuXSFDtOYyioQTOBJatxV3nlRbkJNIl+8h8bjBaxBNypRtV"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-75110c.json"
+            href="../../search-data-4e3fb6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8HVIWLGVebLze2Xn0lKhUq7cjxZXBpq+Z4jP61PFwHCqclOk0n6P08XKu8opAX5Q"
+            integrity="sha384-rIQ9crmz+hiszkrORUKj/MijLcBZdyPqUOjycVrpP4J53iB+gCoMI7u3wVZMrgkV"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -641,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1083,24 +1016,24 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-logic-80bead.js"
+                    src="../../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-Z2/NqF6ePc4T4iMz6PwSDLkLmvLhbK5QZLGHd8KpTPVYnnXi2X3zc0IfKPQ5pE07"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-date-9b7c35.js"
+                    src="../../assets/vendor-fkui-date-7710bf.js"
                     crossorigin
-                    integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
+                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-4ccb72.js"
+                    src="../../assets/vendor-fkui-vue-14e167.js"
                     crossorigin
-                    integrity="sha384-aujXW8TJOKV3V1yxjI41mek+wZkqFxqAWXShfxOLL1NzYnD16mwZCn24H/KK+Ve1"
+                    integrity="sha384-5YQLNUcYLdheo8QstgXyEAwRRRLZKjYCmmxfrS3yZKP4V7VxZJ2/6nLsM0SBDi7L"
                 ></script>
                 <script
-                    src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
+                    src="../../assets/vendor-forsakringskassan-docs-live-example-e5b7e3.js"
                     crossorigin
-                    integrity="sha384-nSXnCy3XWIIfbEbIXNEJqSLQAEcC9s8jxUGnIw/HClLMcJP8KJDSvkJw7vxe9PgF"
+                    integrity="sha384-xCPY57XKJObfTlktCk3lVaqN1q5FE+90De/IQXXP9Bk65E1+4M1AMGUg1mpBmyNJ"
                 ></script>
 
                 <!-- prettier-ignore --><main>
@@ -1118,7 +1051,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/a9f52b682865f06b5b9294c1f5fe5ac7626a618f/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/22e0c73cb6448c5f320293c64a24da65153005d8/packages/vue/src/components/FValidationForm/FValidationForm.vue">FValidationForm</a>
             
         </code>
          
@@ -1473,18 +1406,18 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
 <p>Båda hooks kan avbryta flödet genom att returnera <code>FValidationFormAction.ABORT</code>:</p>
 
                 <div
-                    id="example-2ddbcf"
+                    id="example-e24d81"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-meta">@onBeforeSubmit</span>() {
-  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">awesomeServerValidation</span>();
-  <span class="hljs-keyword">if</span> (result === <span class="hljs-string">&#x27;fail&#x27;</span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-title class_">FValidationFormAction</span>.<span class="hljs-property">CANCEL</span>;
-  }
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onBeforeSubmit</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FValidationFormAction</span> | <span class="hljs-literal">undefined</span>&gt; {
+    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">awesomeServerValidation</span>();
+    <span class="hljs-keyword">if</span> (result === <span class="hljs-string">&quot;fail&quot;</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">FValidationFormAction</span>.<span class="hljs-property">CANCEL</span>;
+    }
 }
 </code></pre>
                 </div>
@@ -1598,62 +1531,209 @@ Första inmatningsfältet kommer alltid få ett fel när man försöker skicka i
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>beforeSubmit</p>
-</td><td><p>If given, this function is called before the <code>submit</code> event is emitted.</p>
-<p>Optionally this callback may return <code>FValidationFormAction</code>. If<br>
-<code>FValidationFormAction.CANCEL</code> is returned the submission is<br>
-cancelled and no event will be emitted. The consumer should make it<br>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fvalidationform-props">
+            <a class="header-anchor" href="#fvalidationform-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fvalidationform-prop-beforesubmit"
+                                ><a class="docs-api__anchor" href="#fvalidationform-prop-beforesubmit"
+                                    ><span class="docs-api__name"
+                                        >beforeSubmit</span
+                                    >: FValidationFormCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called before the <code>submit</code> event is emitted.</p>
+<p>Optionally this callback may return <code>FValidationFormAction</code>. If
+<code>FValidationFormAction.CANCEL</code> is returned the submission is
+cancelled and no event will be emitted. The consumer should make it
 clear why the action was cancelled.</p>
 <p>If a promise is returned it will be awaited.</p>
-<p>The consumer does not need to validate form data, it is handled<br>
+<p>The consumer does not need to validate form data, it is handled
 internally by the component.</p>
-</td><td><p>FValidationFormCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-return () =&gt; undefined;<br>
-}</p>
-</td></tr><tr><td><p>beforeValidation</p>
-</td><td><p>If given, this function is called before the form data is validated and the <code>submit</code> event is emitted.</p>
-</td><td><p>FValidationFormCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-return () =&gt; undefined;<br>
-}</p>
-</td></tr><tr><td><p>id</p>
-</td><td><p>The id for the form id attribute.<br>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    return () =&gt; undefined;
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fvalidationform-prop-beforevalidation"
+                                ><a class="docs-api__anchor" href="#fvalidationform-prop-beforevalidation"
+                                    ><span class="docs-api__name"
+                                        >beforeValidation</span
+                                    >: FValidationFormCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called before the form data is validated and the <code>submit</code> event is emitted.</p>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    return () =&gt; undefined;
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fvalidationform-prop-id"
+                                ><a class="docs-api__anchor" href="#fvalidationform-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the form id attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td></tr><tr><td><p>useErrorList</p>
-</td><td><p>Include the error list component.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>errorListBullets</p>
-</td><td><p>Display bullets in the error list component.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>errorListBeforeNavigate</p>
-</td><td><p>Optional callback function to the error list component for performing actions before navigation.</p>
-</td><td><p>BeforeNavigate</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-return () =&gt; {<br>
-/* do nothing */<br>
-};<br>
-}</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>submit</p>
-</td><td><p>V-model event.</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>error-message</p>
-</td><td><p><strong>optional</strong> Slot for displaying error description.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for content, i.e. input elements.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fvalidationform-prop-useerrorlist"
+                                ><a class="docs-api__anchor" href="#fvalidationform-prop-useerrorlist"
+                                    ><span class="docs-api__name"
+                                        >useErrorList</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Include the error list component.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fvalidationform-prop-errorlistbullets"
+                                ><a class="docs-api__anchor" href="#fvalidationform-prop-errorlistbullets"
+                                    ><span class="docs-api__name"
+                                        >errorListBullets</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Display bullets in the error list component.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fvalidationform-prop-errorlistbeforenavigate"
+                                ><a class="docs-api__anchor" href="#fvalidationform-prop-errorlistbeforenavigate"
+                                    ><span class="docs-api__name"
+                                        >errorListBeforeNavigate</span
+                                    >: BeforeNavigate</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional callback function to the error list component for performing actions before navigation.</p>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    return () =&gt; {
+        /* do nothing */
+    };
+}</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fvalidationform-events">
+            <a class="header-anchor" href="#fvalidationform-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fvalidationform-event-submit"
+                                ><a class="docs-api__anchor" href="#fvalidationform-event-submit"
+                                    ><span class="docs-api__name"
+                                        >submit</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fvalidationform-slots">
+            <a class="header-anchor" href="#fvalidationform-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fvalidationform-slot-error-message"
+                                ><a class="docs-api__anchor" href="#fvalidationform-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>optional</strong> Slot for displaying error description.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fvalidationform-slot-default"
+                                ><a class="docs-api__anchor" href="#fvalidationform-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for content, i.e. input elements.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1674,9 +1754,9 @@ return () =&gt; {<br>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/f-page-layout (<a href="https://github.com/Forsakringskassan/designsystem/commits/a9f52b682865f06b5b9294c1f5fe5ac7626a618f">a9f52b6</a>)<br />
+    feature/f-page-layout (<a href="https://github.com/Forsakringskassan/designsystem/commits/22e0c73cb6448c5f320293c64a24da65153005d8">22e0c73</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/181">PR 181</a><br />
-        2025-01-10 20:13
+        2025-02-18 16:12
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1797,15 +1877,15 @@ return () =&gt; {<br>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-5b4e65.js"
+            src="../../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-9hlga/vGl7mNJoNXoDuvw4YYU74V1PaTj5rmTtSAwXEVTHdcDfPKAwrUR+V8hrD0"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../../assets/main-31401d.js"
+            src="../../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-bJFpu9DY6PkkKGSsSy/WBt9cLeRTwMIvTL16eqTkDtOjGVZnbuZuIWsFaU7rsiiw"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>

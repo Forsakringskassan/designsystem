@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-e0340d.css"
+            href="../assets/docs-2349f5.css"
             crossorigin
-            integrity="sha384-smlrMBfvoL0wlSlp2WfbyMfsTNVIeguTCveS5kBS8vnlDLgNmknojOd2o34hD4Yz"
+            integrity="sha384-F9+OZj2jIxTjVxKIG64TJ2rBBaTQgq7VtjiRhdNGh1LvZ5On2A7l6XL8RI+bpCiK"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-20bffd.css"
+            href="../assets/docs-fkui-5b626e.css"
             crossorigin
-            integrity="sha384-6BYFbCDF9Kpkrzho3lx0NSarN4IA63v7JvNMIIePBpnokKAl9zFH1vuQ/ma+hR6q"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../assets/docs-int-eb68cb.css"
-            crossorigin
-            integrity="sha384-ODo1c8cooTCxBx4YigL/vwFNWOW1pD+yHqLYtWPL0jknUfY51p4y8o6380l8Okei"
-            data-theme="int" disabled
+            integrity="sha384-wyIvqBEczityL7K81fuXSFDtOYyioQTOBJatxV3nlRbkJNIl+8h8bjBaxBNypRtV"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../search-data-75110c.json"
+            href="../search-data-4e3fb6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8HVIWLGVebLze2Xn0lKhUq7cjxZXBpq+Z4jP61PFwHCqclOk0n6P08XKu8opAX5Q"
+            integrity="sha384-rIQ9crmz+hiszkrORUKj/MijLcBZdyPqUOjycVrpP4J53iB+gCoMI7u3wVZMrgkV"
             id="search-data"
         />
     </head>
@@ -243,55 +225,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -422,16 +355,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="./fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -641,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1083,24 +1016,24 @@
                     integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-logic-80bead.js"
+                    src="../assets/vendor-fkui-logic-62a69f.js"
                     crossorigin
-                    integrity="sha384-Z2/NqF6ePc4T4iMz6PwSDLkLmvLhbK5QZLGHd8KpTPVYnnXi2X3zc0IfKPQ5pE07"
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-date-9b7c35.js"
+                    src="../assets/vendor-fkui-date-7710bf.js"
                     crossorigin
-                    integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
+                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../assets/vendor-fkui-vue-4ccb72.js"
+                    src="../assets/vendor-fkui-vue-14e167.js"
                     crossorigin
-                    integrity="sha384-aujXW8TJOKV3V1yxjI41mek+wZkqFxqAWXShfxOLL1NzYnD16mwZCn24H/KK+Ve1"
+                    integrity="sha384-5YQLNUcYLdheo8QstgXyEAwRRRLZKjYCmmxfrS3yZKP4V7VxZJ2/6nLsM0SBDi7L"
                 ></script>
                 <script
-                    src="../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
+                    src="../assets/vendor-forsakringskassan-docs-live-example-e5b7e3.js"
                     crossorigin
-                    integrity="sha384-nSXnCy3XWIIfbEbIXNEJqSLQAEcC9s8jxUGnIw/HClLMcJP8KJDSvkJw7vxe9PgF"
+                    integrity="sha384-xCPY57XKJObfTlktCk3lVaqN1q5FE+90De/IQXXP9Bk65E1+4M1AMGUg1mpBmyNJ"
                 ></script>
 
                 <!-- prettier-ignore --><main>
@@ -1118,7 +1051,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/a9f52b682865f06b5b9294c1f5fe5ac7626a618f/packages/vue/src/components/FCard/FCard.vue">FCard</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/22e0c73cb6448c5f320293c64a24da65153005d8/packages/vue/src/components/FCard/FCard.vue">FCard</a>
             
         </code>
          
@@ -1143,6 +1076,8 @@
                                 <li><a href="#innehall">Innehåll</a></li>
                                 
                                 <li><a href="#nar_du_inte_ska_anvanda_kort">När du inte ska använda kort</a></li>
+                                
+                                <li><a href="#felstatus_pa_kort">Felstatus på kort</a></li>
                                 
                                 <li><a href="#api">API</a></li>
                                 
@@ -1240,7 +1175,7 @@
 </code></pre>
                 </div>
             </div>
-        <p>Ett kort innehåller information och åtgärder. Ett kort ska kunna stå ensamt utan att förlita sig på sammanhanget, till exempel rubriker. Ett kort kan inte slås samman med ett annat kort, eller delas upp i flera. Om du behöver en underrubrik i ett kort så är det ett tecken på att du borde del upp kortet i flera kort.</p>
+        <p>Ett kort innehåller information och åtgärder. Ett kort ska kunna stå ensamt utan att förlita sig på sammanhanget, till exempel rubriker. Ett kort kan inte slås samman med ett annat kort, eller delas upp i flera. Om du behöver en underrubrik i ett kort så är det ett tecken på att du borde dela upp kortet i flera kort.</p>
 <p>Om det är mycket information som ska presenteras kan kortet visa en sammanfattning medan all information visas på en egen sida som öppnas från kortet. Undvik att expanderbara kort för att visa ytterligare information. Ett kort ska aldrig öppna ytterligare kort.</p>
 <p>Ett kort kan innehålla flera knappar eller länkar, till exempel för att visa detaljer, redigera uppgifter eller för att radera objektet eller personens uppgifter.</p>
 <h2 id="innehall"><a class="header-anchor" href="#innehall">Innehåll</a></h2><p>Ett kort har tre ytor där innehåll kan placeras:</p>
@@ -1256,16 +1191,343 @@
 <li>Placera inte långa listor eller mycket omfattande information i kort.</li>
 <li>Gruppera inte information eller formulärskomponeter med kort.</li>
 </ul>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Slot for the title.</p>
-</td><td><p>headingSlotClass</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for the main content, e.g. paragraphs, input fields, etc.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>footer</p>
-</td><td><p>Slot the footer content, i.e. buttons.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+<h2 id="felstatus_pa_kort"><a class="header-anchor" href="#felstatus_pa_kort">Felstatus på kort</a></h2><p>Det är möjligt att indikera om ett kort är felaktigt genom att aktivera validering (<code>v-validation</code>).
+Det går inte att lägga på enskilda validatorer, utan status hanteras helt manuellt av konsumenten.</p>
+
+                <div
+                    id="example-010bcb"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-card&gt;</span>
+<span class="hljs-addition">+&lt;f-card v-validation&gt;</span>
+</code></pre>
+                </div>
+            <p>Konsumenten behöver ange det element som ska fokuseras på kopplat till ett fel (<code>focus-ref</code>).
+Vanligtvis är detta en knapp för att redigera ett korts innehåll.
+Fokus sätts vanligtvis på elementet av omkringliggande formulär vid submit, lite beroende på
+vad man satt för felhantering på formuläret (visa fellista eller fokus på första fel).</p>
+
+                <div
+                    id="example-6bad07"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-card&gt;</span>
+<span class="hljs-addition">+&lt;f-card :focus-ref=&quot;editButton&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p>När fokus hamnar på angivet <code>focus-ref</code>-element har konsumenten ansvar att informera
+skärmläsaranvändare om att det finns felaktiga uppgifter i kortet.
+Komponenten förser <code>footer</code>-slotten med detaljer om felet.</p>
+
+                <div
+                    id="example-2a97d7"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>=<span class="hljs-string">&quot;{ hasError, validationMessage }&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Ändra<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;hasError&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ validationMessage }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            <p>Som standard visas ett felmeddelande tillsammans med en felikon under kortets rubrik.
+Använd <code>error-message</code>-slotten för att definiera ett eget beteende.</p>
+
+                <div
+                    id="example-adb016"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">&lt;f-card&gt;
+<span class="hljs-addition">+    &lt;template #error-message=&quot;{ hasError, validationMessage }&quot;&gt;</span>
+<span class="hljs-addition">+        Egen visning av felmeddelande</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+/&lt;f-card&gt;
+</code></pre>
+                </div>
+            <p>Felstatus sätts manuellt av konsumenten genom att anropa metoder i <code>ValidationService</code>.</p>
+
+                <div
+                    id="example-3e8b57"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-comment">/* sätter ogiltig status */</span>
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(element, <span class="hljs-string">&quot;Felmeddelande&quot;</span>);
+
+<span class="hljs-comment">/* nollställer till giltig status */</span>
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">resetState</span>(element);
+
+<span class="hljs-comment">/* omvaliderar så att ändrad status återspeglas direkt */</span>
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">validateElement</span>(element);
+</code></pre>
+                </div>
+            
+            <div
+                id="example-49c53b"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="FCardValidationExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./FCardValidationExample-8d7e04.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FValidationForm</span>, getElementFromVueRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> cardRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;card&quot;</span>);
+<span class="hljs-keyword">const</span> focusRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;focus&quot;</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">setInvalid</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(<span class="hljs-title function_">getElementFromVueRef</span>(cardRef.<span class="hljs-property">value</span>), <span class="hljs-string">&quot;Uppgifter saknas&quot;</span>);
+    <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">validateElement</span>(<span class="hljs-title function_">getElementFromVueRef</span>(cardRef.<span class="hljs-property">value</span>));
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">setValid</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">resetState</span>(<span class="hljs-title function_">getElementFromVueRef</span>(cardRef.<span class="hljs-property">value</span>));
+    <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">validateElement</span>(<span class="hljs-title function_">getElementFromVueRef</span>(cardRef.<span class="hljs-property">value</span>));
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> <span class="hljs-attr">:use-error-list</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-card</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;card&quot;</span> <span class="hljs-attr">v-validation</span> <span class="hljs-attr">:focus-ref</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>=<span class="hljs-string">&quot;{ headingSlotClass }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;headingSlotClass&quot;</span>&gt;</span>Arbete<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Arbetsgivare<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                    Gatan 1 <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                    123 45 Staden <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                    Sverige
+                <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span> Telefonnummer <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> 0109999999 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>=<span class="hljs-string">&quot;{ hasError }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--tertiary button--medium button--align-text&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    &gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trashcan&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-icon</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> Ta bort <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;focus&quot;</span>
+                        <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;focus&quot;</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--tertiary button--medium button--align-text&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    &gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;pen&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-icon</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>
+                            Ändra
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;hasError&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>
+                                på kortet, det innehåller fel
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-card</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span>&gt;</span>Simulera inskick av formulär<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--tertiary button--large&quot;</span>
+        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;setInvalid&quot;</span>
+    &gt;</span>
+        Markera kort som felaktigt
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--tertiary button--large&quot;</span>
+        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;setValid&quot;</span>
+    &gt;</span>
+        Markera kort som giltigt
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fcard-props">
+            <a class="header-anchor" href="#fcard-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fcard-prop-focusref"
+                                ><a class="docs-api__anchor" href="#fcard-prop-focusref"
+                                    ><span class="docs-api__name"
+                                        >focusRef</span
+                                    >: HTMLElement | null</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Element to focus on when card is invalid. Set when using validation.</p>
+
+                            <p class="doc-api__item">Default: <code>null</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcard-prop-id"
+                                ><a class="docs-api__anchor" href="#fcard-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional id (generated by default).</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fcard-slots">
+            <a class="header-anchor" href="#fcard-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fcard-slot-header"
+                                ><a class="docs-api__anchor" href="#fcard-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for the title.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>headingSlotClass: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcard-slot-error-message"
+                                ><a class="docs-api__anchor" href="#fcard-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying error message.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>hasError: unknown</code></li><li><code>validationMessage: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcard-slot-default"
+                                ><a class="docs-api__anchor" href="#fcard-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for the main content, e.g. paragraphs, input fields, etc.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcard-slot-footer"
+                                ><a class="docs-api__anchor" href="#fcard-slot-footer"
+                                    ><span class="docs-api__name"
+                                        >footer</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot the footer content, i.e. buttons.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>hasError: unknown</code></li><li><code>validationMessage: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1286,9 +1548,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/f-page-layout (<a href="https://github.com/Forsakringskassan/designsystem/commits/a9f52b682865f06b5b9294c1f5fe5ac7626a618f">a9f52b6</a>)<br />
+    feature/f-page-layout (<a href="https://github.com/Forsakringskassan/designsystem/commits/22e0c73cb6448c5f320293c64a24da65153005d8">22e0c73</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/181">PR 181</a><br />
-        2025-01-10 20:13
+        2025-02-18 16:12
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1409,15 +1671,15 @@
             
         ></script>
         <script
-            src="../assets/processors/selectable-version/select-version-5b4e65.js"
+            src="../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-9hlga/vGl7mNJoNXoDuvw4YYU74V1PaTj5rmTtSAwXEVTHdcDfPKAwrUR+V8hrD0"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../assets/main-31401d.js"
+            src="../assets/main-7b9d0f.js"
             crossorigin
-            integrity="sha384-bJFpu9DY6PkkKGSsSy/WBt9cLeRTwMIvTL16eqTkDtOjGVZnbuZuIWsFaU7rsiiw"
+            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
             
         ></script>
     </body>
