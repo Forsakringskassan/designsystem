@@ -1,7 +1,7 @@
 <template>
     <f-sort-filter-dataset :data="fruits" :sortable-attributes="sortableAttributes">
         <template #default="{ sortFilterResult }">
-            <pre v-for="item in sortFilterResult" :key="item.id">{{ item }}</pre>
+            <pre v-for="item in sortFilterResult" :key="item.id as string">{{ item }}</pre>
         </template>
     </f-sort-filter-dataset>
 </template>
