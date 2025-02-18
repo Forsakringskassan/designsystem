@@ -1,6 +1,6 @@
 ---
 title: Applikationslayout
-status: Preliminär
+status: Produktionsklar
 layout: component
 component:
     - FLayoutApplicationTemplate

@@ -1,6 +1,6 @@
 ---
 title: Expanderbar panel
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FExpandablePanel
 ---
