@@ -27,19 +27,12 @@ Callback anropas innan modalen visas.
 ```
 
 ```ts
-function onBeforeCreate(): UnknownItem {
-    const item: MyInterface = {
+function onBeforeCreate(): MyInterface {
+    return {
         /* ... */
     };
-    return item as unknown as UnknownItem;
 }
 ```
-
-::: warning
-
-**Notera**: då `FCrudDataset` inte är typsäker måste man casta objektet till `UnknownItem`.
-
-:::
 
 ## Anpassade texter
 

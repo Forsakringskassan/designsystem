@@ -4,24 +4,28 @@
 
 ```ts
 
+import { AllowedComponentProps } from 'vue';
 import { App } from 'vue';
 import { AppContext } from 'vue';
 import { BankAccountNumberString } from '@fkui/logic';
 import { BankgiroString } from '@fkui/logic';
 import { ClearingnumberString } from '@fkui/logic';
 import { Component } from 'vue';
+import { ComponentCustomProps } from 'vue';
 import { ComponentOptions } from 'vue';
 import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
 import { ComponentPublicInstance } from 'vue';
 import { ComputedRef } from 'vue';
 import { DefineComponent } from 'vue';
+import { DistributeRef } from '@vue/reactivity';
 import { ExtractPropTypes } from 'vue';
 import { FDate } from '@fkui/date';
 import { FocusOptions as FocusOptions_2 } from '@fkui/logic';
 import { formatNumber } from '@fkui/logic';
 import { formatPersonnummer } from '@fkui/logic';
 import { formatPostalCode } from '@fkui/logic';
+import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
 import { OrganisationsnummerString } from '@fkui/logic';
 import { parseBankAccountNumber } from '@fkui/logic';
@@ -41,13 +45,17 @@ import { PropType } from 'vue';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
 import { ShallowRef } from 'vue';
+import { ShallowUnwrapRef } from 'vue';
 import { Slot } from 'vue';
 import { Slots } from 'vue';
 import { StackHandle } from '@fkui/logic';
+import { UnwrapRef } from 'vue';
 import { ValidatableHTMLElement } from '@fkui/logic';
 import { ValidationConfigUpdateDetail } from '@fkui/logic';
 import { ValidatorConfigs } from '@fkui/logic';
 import { ValidityEvent } from '@fkui/logic';
+import { VNode } from 'vue';
+import { VNodeProps } from 'vue';
 import { WeekdayNaming } from '@fkui/date';
 
 // @internal (undocumented)
@@ -2865,12 +2873,54 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FCrudDataset: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal<Pick<Partial<{
+        beforeCreate: (() => T) | undefined;
+        modelValue: T[];
+        beforeSubmit: FValidationFormCallback;
+        beforeValidation: FValidationFormCallback;
+        onCancel: () => void;
+        primaryButtonRight: boolean;
+        addNewModalHeader: string;
+        modifyModalHeader: string;
+        deleteModalHeader: string;
+    }> & Omit<{
+        readonly modelValue: T[];
+        readonly beforeSubmit: FValidationFormCallback;
+        readonly beforeValidation: FValidationFormCallback;
+        readonly primaryButtonRight: boolean;
+        readonly addNewModalHeader: string;
+        readonly modifyModalHeader: string;
+        readonly deleteModalHeader: string;
+        readonly beforeCreate?: (() => T) | undefined;
+        readonly onCancel?: (() => void) | undefined;
+        readonly onCreated?: ((item: T) => any) | undefined;
+        readonly onUpdated?: ((item: T) => any) | undefined;
+        readonly "onUpdate:modelValue"?: ((items: T[]) => any) | undefined;
+        readonly onDeleted?: ((item: T) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "primaryButtonRight" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader">, "onUpdate:modelValue" | "onCreated" | "onUpdated" | "onDeleted" | ("beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "primaryButtonRight" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader")> & {} & Partial<{}>> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        default?(_: {}): any;
+        'add-button'?(_: {}): any;
+        add?(_: {
+            item: NonNullable<DistributeRef<[T | null] extends [Ref<any, any>] ? IfAny<Ref<any, any> & T, Ref<Ref<any, any> & T, Ref<any, any> & T>, Ref<any, any> & T> : Ref<UnwrapRef<T> | null, T | UnwrapRef<T> | null>>>;
+        }): any;
+        modify?(_: {
+            item: NonNullable<DistributeRef<[T | null] extends [Ref<any, any>] ? IfAny<Ref<any, any> & T, Ref<Ref<any, any> & T, Ref<any, any> & T>, Ref<any, any> & T> : Ref<UnwrapRef<T> | null, T | UnwrapRef<T> | null>>>;
+        }): any;
+        delete?(_: {
+            item: NonNullable<DistributeRef<[T | null] extends [Ref<any, any>] ? IfAny<Ref<any, any> & T, Ref<Ref<any, any> & T, Ref<any, any> & T>, Ref<any, any> & T> : Ref<UnwrapRef<T> | null, T | UnwrapRef<T> | null>>>;
+        }): any;
+    };
+    emit: ((evt: "created", item: T) => void) & ((evt: "updated", item: T) => void) & ((evt: "update:modelValue", items: T[]) => void) & ((evt: "deleted", item: T) => void);
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
 
 // @public (undocumented)
 export interface FCrudDatasetInterface {
@@ -16338,12 +16388,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
