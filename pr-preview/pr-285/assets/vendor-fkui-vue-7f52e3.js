@@ -13358,7 +13358,7 @@
         "min-date": _ctx.minDate,
         "max-date": _ctx.maxDate,
         onClick: _ctx.onSelectCalendarDay,
-        onKeyup: (0, import_vue.withKeys)((0, import_vue.withModifiers)(_ctx.onKeyupEsc, ["stop"]), ["esc", "native"])
+        onKeyup: (0, import_vue.withKeys)((0, import_vue.withModifiers)(_ctx.onKeyupEsc, ["stop"]), ["esc"])
       }, {
         default: (0, import_vue.withCtx)(({
           date,
