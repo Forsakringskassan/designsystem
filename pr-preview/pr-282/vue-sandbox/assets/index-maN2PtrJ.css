@@ -1,4 +1,5 @@
-@charset "UTF-8";:root {
+@charset "UTF-8";
+:root {
   --fkui-theme-default-version: "6.0.0";
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-secondary: #5f6165;
@@ -6895,7 +6896,9 @@ input[type=search]:focus,
 .popup-error--right::before {
   clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--f-border-width-medium)) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(100% + 10px - var(--f-border-width-medium) / 0.5) calc(100% - var(--i-popup-error-offset)), calc(100% - var(--f-border-width-medium)) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));
   border-image: conic-gradient(var(--f-background-error) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;
-}body {
+}
+
+body {
   font-family: var(--f-font-family);
 }
 .sandbox-root {
