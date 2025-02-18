@@ -33,7 +33,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FInteractiveTable, FTableColumn, FCheckboxField, FRadioField, FFieldset } from "@fkui/vue";
+import {
+    FIcon,
+    FInteractiveTable,
+    FTableColumn,
+    FCheckboxField,
+    FRadioField,
+    FFieldset,
+} from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
@@ -158,7 +165,7 @@ export default defineComponent({
             };
         },
         components(): object {
-            return { FInteractiveTable, FTableColumn };
+            return { FIcon, FInteractiveTable, FTableColumn };
         },
         items(): string {
             return this.isEmpty ? `:rows="[]"` : `:rows="items"`;
@@ -209,26 +216,14 @@ export default defineComponent({
                         class="button button--tertiary button--small"
                         type="button"
                     >
-                        <svg
-                            aria-hidden="true"
-                            class="icon button__icon button__pen"
-                            focusable="false"
-                        >
-                            <use xlink:href="#f-icon-pen" />
-                        </svg>
+                        <f-icon name="pen"></f-icon>
                     </button>
                     <button
                         aria-label="Ta bort"
                         class="button button--tertiary button--small"
                         type="button"
                     >
-                        <svg
-                            aria-hidden="true"
-                            class="icon button__icon button__trashcan"
-                            focusable="false"
-                        >
-                            <use xlink:href="#f-icon-trashcan" />
-                        </svg>
+                        <f-icon name="trashcan"></f-icon>
                     </button>
                 </f-table-column>
             `;
