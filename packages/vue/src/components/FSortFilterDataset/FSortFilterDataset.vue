@@ -1,86 +1,3 @@
-<template>
-    <div class="sort-filter-dataset">
-        <i-flex collapse gap="3x" wrap>
-            <i-flex-item shrink align="center">
-                <!--
-@slot Slot for header to the left of the filter dropdown.
-
-Slot content is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ slotClass }"`.
-
-The following properties are available:
-
-* `slotClass: string[];` CSS classes to use for the SortFilter header element. Use with `:class="slotClass"`.
-      -->
-                <slot name="header" v-bind="{ slotClass: 'sort-filter-dataset__toolbar__header' }"></slot>
-            </i-flex-item>
-
-            <i-flex-item grow>
-                <i-flex collapse float="right">
-                    <i-flex-item v-if="showFilter" shrink align="center">
-                        <div class="sort-filter-dataset__search">
-                            <f-icon name="search" class="sort-filter-dataset__search__magnify-icon" />
-
-                            <f-text-field
-                                v-model="searchString"
-                                inline
-                                :placeholder="placeholderFilter"
-                                maxlength="64"
-                                @input="onSearchInput"
-                            >
-                                <span class="sr-only">{{ placeholderFilter }}</span>
-                            </f-text-field>
-
-                            <button
-                                v-if="showClearButton"
-                                type="button"
-                                class="button button--discrete sort-filter-dataset__search__close-icon"
-                                :title="$t('fkui.sort-filter-dataset.clear.filter', 'Rensa sökfält')"
-                                @click="onClickClearSearch"
-                            >
-                                <f-icon name="close" />
-                                <span class="sr-only">{{
-                                    $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält")
-                                }}</span>
-                            </button>
-                        </div>
-                    </i-flex-item>
-
-                    <i-flex-item v-if="showSort" shrink align="center">
-                        <f-select-field
-                            v-model="sortAttribute"
-                            class="sort-filter-dataset__sort"
-                            inline
-                            @change="onChangeSortAttribute"
-                        >
-                            <template #label>{{
-                                $t("fkui.sort-filter-dataset.label.sort", "Sortera\u00A0på")
-                            }}</template>
-
-                            <option :value="{ attribute: '', ascending: false }">
-                                {{ $t("fkui.sort-filter-dataset.label.unsorted", "Välj") }}
-                            </option>
-
-                            <option v-for="sortOrder in sortOrders" :key="sortOrder.id" :value="sortOrder">
-                                {{ sortOrder.name }} ({{ sortOrder.ascendingName }})
-                            </option>
-                        </f-select-field>
-                    </i-flex-item>
-                </i-flex>
-            </i-flex-item>
-        </i-flex>
-        <!--
-@slot Slot for displaying the data.
-
-The data is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ sortFilterResult }"`.
-
-The following properties are available:
-
-* `sortFilterResult: ListArray<ListItem>;` The sorted or filtered data.
-    -->
-        <slot v-bind="{ sortFilterResult }"></slot>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { focus, debounce, alertScreenReader } from "@fkui/logic";
@@ -327,3 +244,86 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="sort-filter-dataset">
+        <i-flex collapse gap="3x" wrap>
+            <i-flex-item shrink align="center">
+                <!--
+@slot Slot for header to the left of the filter dropdown.
+
+Slot content is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ slotClass }"`.
+
+The following properties are available:
+
+* `slotClass: string[];` CSS classes to use for the SortFilter header element. Use with `:class="slotClass"`.
+      -->
+                <slot name="header" v-bind="{ slotClass: 'sort-filter-dataset__toolbar__header' }"></slot>
+            </i-flex-item>
+
+            <i-flex-item grow>
+                <i-flex collapse float="right">
+                    <i-flex-item v-if="showFilter" shrink align="center">
+                        <div class="sort-filter-dataset__search">
+                            <f-icon name="search" class="sort-filter-dataset__search__magnify-icon" />
+
+                            <f-text-field
+                                v-model="searchString"
+                                inline
+                                :placeholder="placeholderFilter"
+                                maxlength="64"
+                                @input="onSearchInput"
+                            >
+                                <span class="sr-only">{{ placeholderFilter }}</span>
+                            </f-text-field>
+
+                            <button
+                                v-if="showClearButton"
+                                type="button"
+                                class="button button--discrete sort-filter-dataset__search__close-icon"
+                                :title="$t('fkui.sort-filter-dataset.clear.filter', 'Rensa sökfält')"
+                                @click="onClickClearSearch"
+                            >
+                                <f-icon name="close" />
+                                <span class="sr-only">{{
+                                    $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält")
+                                }}</span>
+                            </button>
+                        </div>
+                    </i-flex-item>
+
+                    <i-flex-item v-if="showSort" shrink align="center">
+                        <f-select-field
+                            v-model="sortAttribute"
+                            class="sort-filter-dataset__sort"
+                            inline
+                            @change="onChangeSortAttribute"
+                        >
+                            <template #label>{{
+                                $t("fkui.sort-filter-dataset.label.sort", "Sortera\u00A0på")
+                            }}</template>
+
+                            <option :value="{ attribute: '', ascending: false }">
+                                {{ $t("fkui.sort-filter-dataset.label.unsorted", "Välj") }}
+                            </option>
+
+                            <option v-for="sortOrder in sortOrders" :key="sortOrder.id" :value="sortOrder">
+                                {{ sortOrder.name }} ({{ sortOrder.ascendingName }})
+                            </option>
+                        </f-select-field>
+                    </i-flex-item>
+                </i-flex>
+            </i-flex-item>
+        </i-flex>
+        <!--
+@slot Slot for displaying the data.
+
+The data is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ sortFilterResult }"`.
+
+The following properties are available:
+
+* `sortFilterResult: ListArray<ListItem>;` The sorted or filtered data.
+    -->
+        <slot v-bind="{ sortFilterResult }"></slot>
+    </div>
+</template>
