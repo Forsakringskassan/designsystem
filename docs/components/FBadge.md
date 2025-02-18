@@ -1,6 +1,6 @@
 ---
 title: Bricka
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FBadge
 ---

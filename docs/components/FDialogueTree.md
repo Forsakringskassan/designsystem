@@ -1,6 +1,6 @@
 ---
 title: Dialogträd
-status: Utkast
+status: Produktionsklar
 layout: component
 component: FDialogueTree
 ---
