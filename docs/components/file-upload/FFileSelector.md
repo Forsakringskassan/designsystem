@@ -1,6 +1,6 @@
 ---
 title: Filväljare
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FFileSelector
 ---

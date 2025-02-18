@@ -1,6 +1,6 @@
 ---
 title: Expanderbart stycke
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FExpandableParagraph
 ---

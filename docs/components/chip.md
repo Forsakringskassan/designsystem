@@ -1,6 +1,6 @@
 ---
 title: Chip
-status: Preliminär
+status: Produktionsklar
 layout: component
 component:
     - name: chip
