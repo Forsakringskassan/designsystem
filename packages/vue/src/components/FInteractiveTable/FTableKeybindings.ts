@@ -1,62 +1,64 @@
+import { type ShallowRef } from "vue";
 import { type ListArray, type ListItem } from "../../types";
 
 interface FTableKeyboardAdapter {
-    rows: ListArray;
-    tr: HTMLElement[];
-
+    readonly rows: ListArray;
+    readonly tr: ShallowRef<HTMLElement[]>;
     activate(row: ListItem, element: HTMLElement): void;
 }
 
-type Callback = (this: FTableKeyboardAdapter, current: number) => void;
+type Callback = (table: FTableKeyboardAdapter, current: number) => void;
 
-const keybindings: Record<string, Callback> = Object.fromEntries([
-    ["Up", focusTrAbove],
-    ["Down", focusTrBelow],
-    ["ArrowUp", focusTrAbove],
-    ["ArrowDown", focusTrBelow],
-    [" ", activateRow],
-    ["Spacebar", activateRow],
-]);
+const keybindings: Partial<Record<string, Callback>> = {
+    Up: focusTrAbove,
+    Down: focusTrBelow,
+    ArrowUp: focusTrAbove,
+    ArrowDown: focusTrBelow,
+    " ": activateRow,
+    Spacebar: activateRow,
+};
 
 export function focusTrAbove(
-    this: FTableKeyboardAdapter,
+    table: FTableKeyboardAdapter,
     current: number,
 ): void {
+    const tr = table.tr.value;
     if (current > 0) {
-        this.tr[current - 1].focus();
+        tr[current - 1].focus();
     } else {
-        this.tr[this.tr.length - 1].focus();
+        tr[tr.length - 1].focus();
     }
 }
 
 export function focusTrBelow(
-    this: FTableKeyboardAdapter,
+    table: FTableKeyboardAdapter,
     current: number,
 ): void {
-    if (current < this.tr.length - 1) {
-        this.tr[current + 1].focus();
+    const tr = table.tr.value;
+    if (current < tr.length - 1) {
+        tr[current + 1].focus();
     } else {
-        this.tr[0].focus();
+        tr[0].focus();
     }
 }
 
 export function activateRow(
-    this: FTableKeyboardAdapter,
+    table: FTableKeyboardAdapter,
     current: number,
 ): void {
-    const row = this.rows[current];
-    const element = this.tr[current];
-    this.activate(row, element);
+    const row = table.rows[current];
+    const element = table.tr.value[current];
+    table.activate(row, element);
 }
 
 export function onKeydown(
-    this: FTableKeyboardAdapter,
+    table: FTableKeyboardAdapter,
     event: KeyboardEvent,
     current: number,
 ): void {
     const fn = keybindings[event.key];
     if (fn) {
         event.preventDefault();
-        fn.call(this, current);
+        fn(table, current);
     }
 }

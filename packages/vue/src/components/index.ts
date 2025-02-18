@@ -39,11 +39,7 @@ export { FFieldset } from "./FFieldset";
 export { type FFileItemIconName, FFileItem } from "./FFileItem";
 export { FFileSelector } from "./FFileSelector";
 export { FIcon } from "./FIcon";
-export {
-    type ExpandableTable,
-    type FInteractiveTableData,
-    FInteractiveTable,
-} from "./FInteractiveTable";
+export { type ExpandableTable, FInteractiveTable } from "./FInteractiveTable";
 export { FLabel } from "./FLabel";
 export { FLayoutApplicationTemplate } from "./FLayoutApplicationTemplate";
 export {
