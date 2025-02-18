@@ -78,6 +78,16 @@ export {
 export { FOffline } from "./FOffline";
 export { FOutputField } from "./FOutputField";
 export { FPageHeader } from "./FPageHeader";
+export {
+    type LayoutDefinition,
+    type LayoutAreaAttachPanel,
+    type LayoutAreaDefinition,
+    type LayoutAreaDirection,
+    type UseAreaData,
+    FPageLayout,
+    registerLayout,
+    useAreaData,
+} from "./FPageLayout";
 export { FProgressbar } from "./FProgressbar";
 export { FRadioField } from "./FRadioField";
 export { FSelectField } from "./FSelectField";

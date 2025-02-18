@@ -58,6 +58,7 @@ components/modal/fmodal.html
 components/page-layout/application-layout.html
 components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
+components/page-layout/fpagelayout.html
 components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
@@ -108,6 +109,7 @@ functions/functions/mount-component.html
 functions/functions/render-slot-text.html
 functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html
+functions/functions/use-area-data.html
 functions/functions/use-modal.html
 functions/helpers/accessibility.html
 functions/helpers/densify.html
@@ -147,6 +149,7 @@ gettingstarted/migration/migrating-to-v6/vue.html
 gettingstarted/use-design-system/getting-started-application.html
 gettingstarted/use-design-system/getting-started.html
 gettingstarted/use-design-system/icon-library.html
+guides/custom-page-layout.html
 guides/formatting-and-parsing/custom-formatter-parser.html
 guides/formatting-and-parsing/formatter-parser.html
 guides/index.html

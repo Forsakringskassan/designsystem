@@ -9731,6 +9731,13 @@ href: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FPageLayout: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+
 // @public (undocumented)
 export const FPercentTextField: DefineComponent<ExtractPropTypes<    {
 decimals: {
@@ -16042,13 +16049,13 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_Props" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Props_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IComboboxDropdown: DefineComponent<__VLS_Props, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxDropdown: DefineComponent<__VLS_Props_2, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<__VLS_Props> & Readonly<{
+}, string, PublicProps, Readonly<__VLS_Props_2> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -16388,12 +16395,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
@@ -16648,6 +16655,27 @@ href: string;
 // @public (undocumented)
 export function itemEquals<T extends object, K extends keyof T>(item1: ListItem<T> | undefined, item2: ListItem<T> | undefined, compareAttribute: K): boolean;
 
+// @public (undocumented)
+export type LayoutAreaAttachPanel = "none" | "left" | "right";
+
+// @public (undocumented)
+export interface LayoutAreaDefinition {
+    attachPanel: LayoutAreaAttachPanel;
+    direction: LayoutAreaDirection;
+    scroll?: boolean;
+}
+
+// @public (undocumented)
+export type LayoutAreaDirection = "column" | "row";
+
+// @public
+export interface LayoutDefinition {
+    // (undocumented)
+    areas: Record<string, LayoutAreaDefinition>;
+    // (undocumented)
+    name: string;
+}
+
 // @public
 export type ListArray<T extends object = UnknownItem> = Array<ListItem<T>>;
 
@@ -16807,6 +16835,9 @@ export function refIsVue(value: unknown): value is ComponentPublicInstance;
 // @public
 export function refIsVueArray(value: unknown): value is ComponentPublicInstance[];
 
+// @public
+export function registerLayout<T extends LayoutDefinition>(definition: T): void;
+
 // @public (undocumented)
 export interface RenderSlotOptions {
     stripClasses: string[];
@@ -16897,6 +16928,16 @@ export const UNHANDLED_ERROR_EVENT: "unhandled-error";
 
 // @public (undocumented)
 export type UnknownItem = Record<string, unknown>;
+
+// @public (undocumented)
+export interface UseAreaData {
+    readonly area: Readonly<Ref<string | null>>;
+    readonly attachPanel: Readonly<Ref<LayoutAreaAttachPanel | null>>;
+    readonly direction: Readonly<Ref<LayoutAreaDirection | null>>;
+}
+
+// @public
+export function useAreaData(element: Readonly<ShallowRef<HTMLElement | null>>): UseAreaData;
 
 // @public (undocumented)
 export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | null>>, options: Ref<string[] | undefined>, onOptionSelected?: (value: string) => void): {

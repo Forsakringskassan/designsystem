@@ -69,7 +69,10 @@
     "preset": "@forsakringskassan/jest-config-vue",
     "setupFilesAfterEnv": [
       "./jest.setup.ts"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^(.+\\.css)\\?raw$": "$1"
+    }
   },
   "dependencies": {
     "lodash": "4.17.21"
