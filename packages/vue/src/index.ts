@@ -1,5 +1,9 @@
 export * from "./components";
-export { useSlotUtils, type UseSlotUtils } from "./composables";
+export {
+    type UseSlotUtils,
+    type WithoutInstance,
+    useSlotUtils,
+} from "./composables";
 export {
     config,
     type FKUIConfig,
