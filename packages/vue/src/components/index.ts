@@ -52,7 +52,7 @@ export {
     FLayoutRightPanel,
     FLayoutRightPanelService,
 } from "./FLayoutRightPanel";
-export { type FListData, FList } from "./FList";
+export { FList } from "./FList";
 export { FLoader } from "./FLoader";
 export { FLogo } from "./FLogo";
 export { FMessageBox } from "./FMessageBox";

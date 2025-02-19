@@ -1,301 +1,308 @@
-<script lang="ts">
-import { defineComponent, type PropType } from "vue";
+<script setup lang="ts">
+import { computed, getCurrentInstance, onMounted, ref, useSlots, useTemplateRef, watch, type PropType } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import { FCheckboxField } from "../FCheckboxField";
 import { type ListItem, type ListArray } from "../../types";
 import { itemEquals, includeItem, handleKeyboardFocusNavigation, getElementFromVueRef } from "../../utils";
-import { TranslationMixin } from "../../plugins";
-import { ActivateItemInjected, ActivateItemInterface } from "../FCrudDataset";
-import { type FListData } from "./flist-data";
+import { useTranslate } from "../../plugins";
+import { ActivateItemInjected } from "../FCrudDataset";
 
-export default defineComponent({
-    name: "FList",
-    components: { FCheckboxField },
-    mixins: [TranslationMixin],
-    props: {
-        /**
-         * The items to be listed.
-         * The items will be listed in the given array order.
-         */
-        items: {
-            type: Array as PropType<ListArray>,
-            required: true,
-        },
-        /**
-         * Unique attribute in items.
-         * V-for directive in vue requires a unique key to
-         * be able to optimize reuse of components.
-         */
-        keyAttribute: {
-            type: String,
-            required: true,
-        },
-        /**
-         * If `true` the list will be selectable.
-         * @see 'select' and 'unselect' events.
-         */
-        selectable: {
-            type: Boolean,
-            default: false,
-        },
-        /**
-         * Only applies if selectable:true
-         * Disable checkbox in interactive list and create a <a>-wrapper for each item, making them clickable
-         * @see 'select' and 'unselect' events.
-         */
-        checkbox: {
-            type: Boolean,
-            default: true,
-        },
-        /**
-         * V-model will bind to value containing selected items.
-         */
-        modelValue: {
-            type: Array as PropType<ListArray | undefined>,
-            required: false,
-            default: () => undefined,
-        },
-        /**
-         * V-model will bind to value containing the current active item.
-         */
-        active: {
-            type: Object as PropType<ListItem | undefined>,
-            required: false,
-            default: () => undefined,
-        },
-        /**
-         * Unique item id that will be used instead of the automatically generated one.
-         */
-        elementId: {
-            type: String,
-            default: () => ElementIdService.generateElementId(),
-        },
-    },
-    emits: ["change", "click", "unselect", "update:modelValue", "select", "update:active"],
-    setup(): ActivateItemInterface<ListItem> {
-        return ActivateItemInjected();
-    },
-    data(): FListData {
-        return {
-            selectedItems: [],
-            activeItem: undefined,
-        };
-    },
-    computed: {
-        isEmpty(): boolean {
-            return this.items.length === 0;
-        },
-        ariaActiveDescendant(): string | undefined {
-            return this.activeItem ? this.getItemId(this.activeItem) : undefined;
-        },
-    },
-    watch: {
-        items: {
-            deep: true,
-            immediate: true,
-            handler: function () {
-                this.updateSelectedItemsFromVModel();
-            },
-        },
-        modelValue: {
-            deep: true,
-            immediate: true,
-            handler: function () {
-                this.updateSelectedItemsFromVModel();
-            },
-        },
-        active: {
-            immediate: true,
-            handler: function () {
-                this.updateActiveItemFromVModel();
-            },
-        },
-    },
-    mounted() {
-        if (this.selectable && this.checkbox) {
-            if (!this.$slots["screenreader"]) {
-                throw Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
-            }
-            this.registerCallbackAfterItemAdd(this.callbackAfterItemAdd);
-            this.registerCallbackBeforeItemDelete(this.callbackBeforeItemDelete);
-        }
-    },
-    methods: {
-        getLiElements(): Element[] {
-            const ulElement = getElementFromVueRef(this.$refs["ulElement"]);
-            return Array.from(ulElement.children);
-        },
-        itemKey(item: ListItem): string {
-            const key = item[this.keyAttribute];
-            if (typeof key === "undefined") {
-                throw new Error(`Key attribute [${this.keyAttribute}]' is missing in item`);
-            }
-            return String(key);
-        },
-        isSelected(item: ListItem): boolean {
-            return includeItem(item, this.selectedItems, this.keyAttribute);
-        },
-        itemClasses(item: ListItem): Record<string, boolean> {
-            return {
-                "list__item--selected": this.isSelected(item),
-                "list__item--active": this.isActive(item),
-            };
-        },
-        getAriaSelected(item: ListItem): string {
-            return String(itemEquals(this.activeItem, item, this.keyAttribute));
-        },
-        onSelect(item: ListItem): void {
-            if (includeItem(item, this.selectedItems, this.keyAttribute)) {
-                this.selectedItems = this.selectedItems.filter((i) => !itemEquals(i, item, this.keyAttribute));
-                /**
-                 * Emitted when item is unselected.
-                 *
-                 * @event unselect
-                 * @param item
-                 * @type {ListItem}
-                 * @param selectedItems
-                 * @type {ListArray}
-                 *
-                 */
-                this.$emit("unselect", item);
-            } else {
-                this.selectedItems.push(item);
-                /**
-                 * Emitted when item is selected.
-                 *
-                 * @event select
-                 * @param item
-                 * @type {ListItem}
-                 * @param selectedItems
-                 * @type {ListArray}
-                 */
-                this.$emit("select", item);
-            }
+const $t = useTranslate();
+const slots = useSlots();
+const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<ListItem>();
 
-            this.updateVModelWithSelectedItems();
-            this.$forceUpdate();
-        },
-        setActiveItem(item: ListItem): void {
-            /**
-             * Emitted when item is activated, i.e. clicked
-             *
-             * @event click
-             * @param item
-             * @type {ListItem}
-             */
-            this.$emit("click", item);
+const selectedItems = ref<ListArray>([]);
+const activeItem = ref<ListItem | undefined>(undefined);
 
-            if (!itemEquals(item, this.activeItem, this.keyAttribute)) {
-                /**
-                 * Emitted when item is activated, i.e. clicked
-                 *
-                 * @event change
-                 * @param item
-                 * @type {ListItem}
-                 */
-                this.$emit("change", item);
-                this.activeItem = item;
-                /**
-                 * V-model active event.
-                 *
-                 * @event update:active
-                 * @param activeItem
-                 * @type {ListItem}
-                 */
-                this.$emit("update:active", this.activeItem);
-            }
-        },
-        onItemClick(event: Event, index: number, item: ListItem): void {
-            this.setActiveItem(item);
-        },
-        updateVModelWithSelectedItems(): void {
-            if (this.modelValue) {
-                /**
-                 * V-model event to update value property.
-                 * @event update:modelValue
-                 */
-                this.$emit("update:modelValue", this.selectedItems);
-            }
-        },
-        updateSelectedItemsFromVModel(): void {
-            if (Array.isArray(this.modelValue)) {
-                // Remove old selected items that may not exists in items.
-                this.selectedItems = this.modelValue.filter((item: ListItem) => {
-                    return includeItem(item, this.items, this.keyAttribute);
-                });
-            } else {
-                this.selectedItems = [];
-            }
-        },
-        updateActiveItemFromVModel(): void {
-            if (this.active === undefined) {
-                this.activeItem = undefined;
-            } else if (!itemEquals(this.active, this.activeItem, this.keyAttribute)) {
-                this.activeItem = this.active;
-            }
-        },
-        onItemKeyDown(event: KeyboardEvent, item: ListItem): void {
-            switch (event.key) {
-                case "Up":
-                case "Down":
-                case "ArrowUp":
-                case "ArrowDown":
-                    event.preventDefault();
-                    handleKeyboardFocusNavigation(event.key, event.target as HTMLElement, this.getLiElements());
-                    break;
-
-                case " ":
-                case "Spacebar":
-                    event.preventDefault();
-                    this.setActiveItem(item);
-                    break;
-            }
-        },
-        // Unique id to connect aria-labelledby with readonly label
-        getAriaLabelledbyId(item: ListItem): string {
-            return `${this.elementId}_${this.itemKey(item)}`;
-        },
-        // Unique id to connect aria-labelledby with readonly label
-        getItemId(item: ListItem): string {
-            return `${this.elementId}_item_${this.itemKey(item)}`;
-        },
-        // Focus effect is done with box-shadow.
-        // By setting position to relative the
-        // item and box-shadow is drawn with a higher z-index,
-        // thus no focus border under other list items.
-        onItemFocus(event: FocusEvent): void {
-            if (event && event.target) {
-                (event.target as HTMLElement).style.position = "relative";
-            }
-        },
-        onItemBlur(event: FocusEvent): void {
-            if (event && event.target) {
-                (event.target as HTMLElement).style.position = "static";
-            }
-        },
-        callbackAfterItemAdd(item: ListItem): void {
-            this.setActiveItem(item);
-        },
-        callbackBeforeItemDelete(item: ListItem): void {
-            if (this.items.length === 0) {
-                return;
-            }
-            let targetIndex = this.items.indexOf(item) - 1;
-            if (targetIndex < 0 && this.items.length > 1) {
-                targetIndex = 1;
-            } else if (targetIndex < 0) {
-                targetIndex = 0;
-            }
-            this.setActiveItem(this.items[targetIndex]);
-            if (this.getLiElements()[targetIndex]) {
-                (this.getLiElements()[targetIndex] as HTMLElement).focus();
-            }
-        },
-        isActive(item: ListItem): boolean {
-            return this.checkbox && itemEquals(this.activeItem, item, this.keyAttribute);
-        },
+const props = defineProps({
+    /**
+     * The items to be listed.
+     * The items will be listed in the given array order.
+     */
+    items: {
+        type: Array as PropType<ListArray>,
+        required: true,
+    },
+    /**
+     * Unique attribute in items.
+     * V-for directive in vue requires a unique key to
+     * be able to optimize reuse of components.
+     */
+    keyAttribute: {
+        type: String,
+        required: true,
+    },
+    /**
+     * If `true` the list will be selectable.
+     * @see 'select' and 'unselect' events.
+     */
+    selectable: {
+        type: Boolean,
+        default: false,
+    },
+    /**
+     * Only applies if selectable:true
+     * Disable checkbox in interactive list and create a <a>-wrapper for each item, making them clickable
+     * @see 'select' and 'unselect' events.
+     */
+    checkbox: {
+        type: Boolean,
+        default: true,
+    },
+    /**
+     * V-model will bind to value containing selected items.
+     */
+    modelValue: {
+        type: Array as PropType<ListArray | undefined>,
+        required: false,
+        default: () => undefined,
+    },
+    /**
+     * V-model will bind to value containing the current active item.
+     */
+    active: {
+        type: Object as PropType<ListItem | undefined>,
+        required: false,
+        default: () => undefined,
+    },
+    /**
+     * Unique item id that will be used instead of the automatically generated one.
+     */
+    elementId: {
+        type: String,
+        default: () => ElementIdService.generateElementId(),
     },
 });
+
+const emit = defineEmits(["change", "click", "unselect", "update:modelValue", "select", "update:active"]);
+
+const isEmpty = computed((): boolean => {
+    return props.items.length === 0;
+});
+
+watch(
+    () => props.items,
+    () => {
+        updateSelectedItemsFromVModel();
+    },
+    { deep: true, immediate: true },
+);
+
+watch(
+    () => props.modelValue,
+    () => {
+        updateSelectedItemsFromVModel();
+    },
+    { deep: true, immediate: true },
+);
+
+watch(
+    () => props.active,
+    () => {
+        updateActiveItemFromVModel();
+    },
+    { immediate: true },
+);
+
+onMounted(() => {
+    if (props.selectable && props.checkbox) {
+        if (!slots["screenreader"]) {
+            throw Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
+        }
+        registerCallbackAfterItemAdd(callbackAfterItemAdd);
+        registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
+    }
+});
+
+function getLiElements(): HTMLElement[] {
+    const templateRef = useTemplateRef("ulElement");
+    const ulElement = getElementFromVueRef(templateRef);
+    return Array.from(ulElement.children) as HTMLElement[];
+}
+
+function itemKey(item: ListItem): string {
+    const key = item[props.keyAttribute];
+    if (typeof key === "undefined") {
+        throw new Error(`Key attribute [${props.keyAttribute}]' is missing in item`);
+    }
+    return String(key);
+}
+
+function isSelected(item: ListItem): boolean {
+    return includeItem(item, selectedItems.value, props.keyAttribute);
+}
+
+function itemClasses(item: ListItem): Record<string, boolean> {
+    return {
+        "list__item--selected": isSelected(item),
+        "list__item--active": isActive(item),
+    };
+}
+
+function onSelect(item: ListItem): void {
+    if (includeItem(item, selectedItems.value, props.keyAttribute)) {
+        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, props.keyAttribute));
+        /**
+         * Emitted when item is unselected.
+         *
+         * @event unselect
+         * @param item
+         * @type {ListItem}
+         * @param selectedItems
+         * @type {ListArray}
+         *
+         */
+        emit("unselect", item);
+    } else {
+        selectedItems.value.push(item);
+        /**
+         * Emitted when item is selected.
+         *
+         * @event select
+         * @param item
+         * @type {ListItem}
+         * @param selectedItems
+         * @type {ListArray}
+         */
+        emit("select", item);
+    }
+
+    updateVModelWithSelectedItems();
+    getCurrentInstance()?.proxy?.$forceUpdate();
+}
+
+function setActiveItem(item: ListItem): void {
+    /**
+     * Emitted when item is activated, i.e. clicked
+     *
+     * @event click
+     * @param item
+     * @type {ListItem}
+     */
+    emit("click", item);
+
+    if (!itemEquals(item, activeItem.value, props.keyAttribute)) {
+        /**
+         * Emitted when item is activated, i.e. clicked
+         *
+         * @event change
+         * @param item
+         * @type {ListItem}
+         */
+        emit("change", item);
+        activeItem.value = item;
+        /**
+         * V-model active event.
+         *
+         * @event update:active
+         * @param activeItem
+         * @type {ListItem}
+         */
+        emit("update:active", activeItem.value);
+    }
+}
+
+function onItemClick(event: Event, index: number, item: ListItem): void {
+    setActiveItem(item);
+}
+
+function updateVModelWithSelectedItems(): void {
+    if (props.modelValue) {
+        /**
+         * V-model event to update value property.
+         * @event update:modelValue
+         */
+        emit("update:modelValue", selectedItems.value);
+    }
+}
+
+function updateSelectedItemsFromVModel(): void {
+    if (Array.isArray(props.modelValue)) {
+        // Remove old selected items that may not exists in items.
+        selectedItems.value = props.modelValue.filter((item: ListItem) => {
+            return includeItem(item, props.items, props.keyAttribute);
+        });
+    } else {
+        selectedItems.value = [];
+    }
+}
+
+function updateActiveItemFromVModel(): void {
+    if (props.active === undefined) {
+        activeItem.value = undefined;
+    } else if (!itemEquals(props.active, activeItem.value, props.keyAttribute)) {
+        activeItem.value = props.active;
+    }
+}
+
+function onItemKeyDown(event: KeyboardEvent, item: ListItem): void {
+    switch (event.key) {
+        case "Up":
+        case "Down":
+        case "ArrowUp":
+        case "ArrowDown":
+            event.preventDefault();
+            handleKeyboardFocusNavigation(event.key, event.target as HTMLElement, getLiElements());
+            break;
+
+        case " ":
+        case "Spacebar":
+            event.preventDefault();
+            setActiveItem(item);
+            break;
+    }
+}
+
+// Unique id to connect aria-labelledby with readonly label
+function getAriaLabelledbyId(item: ListItem): string {
+    return `${props.elementId}_${itemKey(item)}`;
+}
+
+// Unique id to connect aria-labelledby with readonly label
+function getItemId(item: ListItem): string {
+    return `${props.elementId}_item_${itemKey(item)}`;
+}
+
+// Focus effect is done with box-shadow.
+// By setting position to relative the
+// item and box-shadow is drawn with a higher z-index,
+// thus no focus border under other list items.
+function onItemFocus(event: FocusEvent): void {
+    if (event && event.target) {
+        (event.target as HTMLElement).style.position = "relative";
+    }
+}
+
+function onItemBlur(event: FocusEvent): void {
+    if (event && event.target) {
+        (event.target as HTMLElement).style.position = "static";
+    }
+}
+
+function callbackAfterItemAdd(item: ListItem): void {
+    setActiveItem(item);
+}
+
+function callbackBeforeItemDelete(item: ListItem): void {
+    if (props.items.length === 0) {
+        return;
+    }
+    let targetIndex = props.items.indexOf(item) - 1;
+    if (targetIndex < 0 && props.items.length > 1) {
+        targetIndex = 1;
+    } else if (targetIndex < 0) {
+        targetIndex = 0;
+    }
+    setActiveItem(props.items[targetIndex]);
+    const targetElement = getLiElements()[targetIndex];
+    if (targetElement) {
+        targetElement.focus();
+    }
+}
+
+function isActive(item: ListItem): boolean {
+    return props.checkbox && itemEquals(activeItem.value, item, props.keyAttribute);
+}
 </script>
 
 <template>
