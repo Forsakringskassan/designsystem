@@ -1016,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-7f52e3.js"
+                    src="../../assets/vendor-fkui-vue-728383.js"
                     crossorigin
-                    integrity="sha384-T9DUSzmLZtxmkgRQmpYciV9pGV9Kpv35xfW/D8Di2QuaQ9iO9ogvlpPOBlfNvfxF"
+                    integrity="sha384-l57h1xgURgDuyJ+5ag/OVKGnliHPC1L3pvRXKp7K8RImsrqpUER8LrO1Tq9U8U0A"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-e5b7e3.js"
@@ -1041,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/d656963452f878702fe38fb6c14f381772aa5830/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/78ca67dfdcef8854ab4684a48f584e76cfa2b458/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
             
         </code>
          
@@ -1254,31 +1254,24 @@ Callback anropas innan modalen visas.</p>
                 </div>
             
                 <div
-                    id="example-7ca9f4"
+                    id="example-456bd7"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">onBeforeCreate</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">UnknownItem</span> {
-    <span class="hljs-keyword">const</span> <span class="hljs-attr">item</span>: <span class="hljs-title class_">MyInterface</span> = {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">onBeforeCreate</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">MyInterface</span> {
+    <span class="hljs-keyword">return</span> {
         <span class="hljs-comment">/* ... */</span>
     };
-    <span class="hljs-keyword">return</span> item <span class="hljs-keyword">as</span> <span class="hljs-built_in">unknown</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">UnknownItem</span>;
 }
 </code></pre>
                 </div>
-            
-            <div class="docs-messagebox docs-messagebox--warning">
-                <p class="docs-messagebox__title">Tänk på att</p>
-                <p><strong>Notera</strong>: då <code>FCrudDataset</code> inte är typsäker måste man casta objektet till <code>UnknownItem</code>.</p>
-
-            </div>
-        <h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p>Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
+            <h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p>Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
 
             <div
-                id="example-dacf2a"
+                id="example-0dcf92"
                 class="code-preview code-preview--default"
                 
                 
@@ -1292,7 +1285,7 @@ Callback anropas innan modalen visas.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FCrudDatasetCustomTextExample-a2ab37.js"></script>
+        <script defer src="./FCrudDatasetCustomTextExample-ff94e9.js"></script>
     </div>
                 <div>
             <button
@@ -1395,7 +1388,6 @@ Callback anropas innan modalen visas.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
-    type <span class="hljs-title class_">UnknownItem</span>,
     <span class="hljs-title class_">FCrudDataset</span>,
     <span class="hljs-title class_">FCrudButton</span>,
     <span class="hljs-title class_">FList</span>,
@@ -1422,14 +1414,13 @@ Callback anropas innan modalen visas.</p>
     },
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
-        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">UnknownItem</span> {
-            <span class="hljs-keyword">const</span> <span class="hljs-attr">fruit</span>: <span class="hljs-title class_">FruitData</span> = {
+        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
+            <span class="hljs-keyword">return</span> {
                 <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
                 <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
                 <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
                 <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
             };
-            <span class="hljs-keyword">return</span> fruit <span class="hljs-keyword">as</span> unknown <span class="hljs-keyword">as</span> <span class="hljs-title class_">UnknownItem</span>;
         },
         <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
@@ -1447,7 +1438,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
-                id="example-edcf7a"
+                id="example-918336"
                 class="code-preview code-preview--default"
                 
                 
@@ -1556,7 +1547,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="interaktiv_tabell_med_knapp"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
             <div
-                id="example-1c967f"
+                id="example-3aeb78"
                 class="code-preview code-preview--default"
                 
                 
@@ -1654,7 +1645,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="lista_med_redigering"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-8f750e"
+                id="example-e8997c"
                 class="code-preview code-preview--default"
                 
                 
@@ -1668,7 +1659,7 @@ Callback anropas innan modalen visas.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FCrudDatasetListExample-25421f.js"></script>
+        <script defer src="./FCrudDatasetListExample-64c2d4.js"></script>
     </div>
                 <div>
             <button
@@ -1769,7 +1760,6 @@ Callback anropas innan modalen visas.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
-    type <span class="hljs-title class_">UnknownItem</span>,
     <span class="hljs-title class_">FCrudDataset</span>,
     <span class="hljs-title class_">FCrudButton</span>,
     <span class="hljs-title class_">FList</span>,
@@ -1795,14 +1785,13 @@ Callback anropas innan modalen visas.</p>
     },
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
-        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">UnknownItem</span> {
-            <span class="hljs-keyword">const</span> <span class="hljs-attr">fruit</span>: <span class="hljs-title class_">FruitData</span> = {
+        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
+            <span class="hljs-keyword">return</span> {
                 <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
                 <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
                 <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
                 <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
             };
-            <span class="hljs-keyword">return</span> fruit <span class="hljs-keyword">as</span> unknown <span class="hljs-keyword">as</span> <span class="hljs-title class_">UnknownItem</span>;
         },
         <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
@@ -1820,7 +1809,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-e489c8"
+                id="example-2a3fd3"
                 class="code-preview code-preview--default"
                 
                 
@@ -1834,7 +1823,7 @@ Callback anropas innan modalen visas.</p>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FCrudDatasetSortListExample-716ddd.js"></script>
+        <script defer src="./FCrudDatasetSortListExample-c61afd.js"></script>
     </div>
                 <div>
             <button
@@ -1931,7 +1920,6 @@ Callback anropas innan modalen visas.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
-    type <span class="hljs-title class_">UnknownItem</span>,
     <span class="hljs-title class_">FCrudButton</span>,
     <span class="hljs-title class_">FCrudDataset</span>,
     <span class="hljs-title class_">FList</span>,
@@ -1959,14 +1947,13 @@ Callback anropas innan modalen visas.</p>
     },
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
-        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">UnknownItem</span> {
-            <span class="hljs-keyword">const</span> <span class="hljs-attr">fruit</span>: <span class="hljs-title class_">FruitData</span> = {
+        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
+            <span class="hljs-keyword">return</span> {
                 <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
                 <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
                 <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
                 <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
             };
-            <span class="hljs-keyword">return</span> fruit <span class="hljs-keyword">as</span> unknown <span class="hljs-keyword">as</span> <span class="hljs-title class_">UnknownItem</span>;
         },
         <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
@@ -1990,7 +1977,7 @@ Callback anropas innan modalen visas.</p>
                                 ><a class="docs-api__anchor" href="#fcruddataset-prop-v-model"
                                     ><span class="docs-api__name"
                                         >v-model</span
-                                    >: ListArray&lt;ListItem&gt;</a
+                                    >: T[]</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -2009,7 +1996,7 @@ If the prop is not set an empty array will be used.</p>
                                 ><a class="docs-api__anchor" href="#fcruddataset-prop-beforecreate"
                                     ><span class="docs-api__name"
                                         >beforeCreate</span
-                                    >: (() =&gt; ListItem) | undefined</a
+                                    >: (() =&gt; T) | undefined</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -2181,7 +2168,7 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             <p>Emitted when an item is added.</p>
 
                             <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>item: mixed</code> <span role="presentation">&mdash;</span> the added item.</li>
+                            <li><code>item: T</code> <span role="presentation">&mdash;</span> the added item.</li>
                             </ul>
                             
                         </dd>
@@ -2200,7 +2187,7 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             <p>Emitted when an item is deleted.</p>
 
                             <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>item: mixed</code> <span role="presentation">&mdash;</span> the deleted item.</li>
+                            <li><code>item: T</code> <span role="presentation">&mdash;</span> the deleted item.</li>
                             </ul>
                             
                         </dd>
@@ -2219,7 +2206,7 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             <p>Emitted when an item is updated.</p>
 
                             <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>item: mixed</code> <span role="presentation">&mdash;</span> the updated item.</li>
+                            <li><code>item: T</code> <span role="presentation">&mdash;</span> the updated item.</li>
                             </ul>
                             
                         </dd>
@@ -2238,7 +2225,7 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             <p>V-model event.</p>
 
                             <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            <li><code>items: Array</code> <span role="presentation">&mdash;</span> updated list of items.</li>
                             </ul>
                             
                         </dd>
@@ -2299,10 +2286,10 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             
                         </dt>
                         <dd>
-                            <p>Slot for inputs when creating a new item.</p>
+                            <p>Slot for inputs when creating a new item. The new item is available through <code>v-slot=&quot;{ item }&quot;</code>. If any data in the item should be set not by the user the prop <code>beforeCreate</code> can be used to set that data.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>item: unknown</code></li>
+                            <li><code>item: T</code> <span role="presentation">&mdash;</span> Item returned by <code>beforeCreate</code> or an empty object.</li>
                             </ul>
                             
                         </dd>
@@ -2318,10 +2305,10 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             
                         </dt>
                         <dd>
-                            <p>Slot for inputs when modifying an item.</p>
+                            <p>Slot for inputs when modifying an item. The item being modified is available through <code>v-slot=&quot;{ item }&quot;</code>.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>item: unknown</code></li>
+                            <li><code>item: T</code> <span role="presentation">&mdash;</span> A clone of the current item.</li>
                             </ul>
                             
                         </dd>
@@ -2337,10 +2324,10 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             
                         </dt>
                         <dd>
-                            <p>Slot for displaying a warning message before an item is deleted.</p>
+                            <p>Slot for displaying a warning message before an item is deleted. The item being deleted is available through <code>v-slot=&quot;{ item }&quot;</code>.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>item: unknown</code></li>
+                            <li><code>item: T</code> <span role="presentation">&mdash;</span> Item about to be deleted.</li>
                             </ul>
                             
                         </dd>
@@ -2367,9 +2354,9 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    bugfix/table-action-wrap (<a href="https://github.com/Forsakringskassan/designsystem/commits/d656963452f878702fe38fb6c14f381772aa5830">d656963</a>)<br />
+    bugfix/table-action-wrap (<a href="https://github.com/Forsakringskassan/designsystem/commits/78ca67dfdcef8854ab4684a48f584e76cfa2b458">78ca67d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/299">PR 299</a><br />
-        2025-02-18 23:01
+        2025-02-19 08:27
 </div>
 <div class="toolbar__item">
     <form id="version">
