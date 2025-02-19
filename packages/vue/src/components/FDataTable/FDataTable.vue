@@ -39,7 +39,7 @@ Default text is 'Tabellen är tom' (key fkui.data-table.empty).
                         <slot name="empty">{{ $t("fkui.data-table.empty", "Tabellen är tom") }}</slot>
                     </td>
                 </tr>
-                <tr v-for="row in rows" :key="rowKey(row)" class="table__row">
+                <tr v-for="row in internalRows" :key="rowKey(row)" class="table__row">
                     <!--
                      @slot Slot for table row.
 
@@ -59,7 +59,7 @@ Default text is 'Tabellen är tom' (key fkui.data-table.empty).
 
 <script lang="ts">
 import { type PropType, computed, defineComponent, provide } from "vue";
-import { type ListArray, type ListItem } from "../../types";
+import { type ListItem } from "../../types";
 import { TableScroll, tableScrollClasses, hasSlot } from "../../utils";
 import {
     FTableColumnData,
@@ -76,6 +76,17 @@ import {
 import { FSortFilterDatasetInjected, FSortFilterDatasetInterface } from "../FSortFilterDataset";
 import { FIcon } from "../FIcon";
 import { TranslationMixin } from "../../plugins";
+
+interface InternalListItem extends ListItem {
+    [internalKey]: string;
+}
+interface MapItem {
+    id: string;
+    item: InternalListItem;
+}
+
+const internalKey = Symbol("table-key");
+let internalIndex = 0;
 
 export default defineComponent({
     name: "FDataTable",
@@ -104,7 +115,7 @@ export default defineComponent({
          * The rows will be listed in the given array order.
          */
         rows: {
-            type: Array as PropType<ListArray>,
+            type: Array as PropType<ListItem[]>,
             required: true,
         },
         /**
@@ -112,7 +123,8 @@ export default defineComponent({
          */
         keyAttribute: {
             type: String,
-            required: true,
+            required: false,
+            default: undefined,
         },
         /**
          * If `true` alternating rows will use a different background color.
@@ -150,6 +162,7 @@ export default defineComponent({
     data() {
         return {
             columns: [] as FTableColumnData[],
+            map: [] as MapItem[],
         };
     },
     computed: {
@@ -175,25 +188,46 @@ export default defineComponent({
         tabindex(): number | undefined {
             return this.scroll !== TableScroll.NONE ? 0 : undefined;
         },
-    },
-    watch: {
-        rows: {
-            deep: true,
-            immediate: true,
-            handler: function () {
-                const seenKeys: Record<string, boolean> = {};
-                for (const row of this.rows) {
-                    const rowKey = String(row[this.keyAttribute]);
-                    if (seenKeys[rowKey]) {
-                        const index = this.rows.indexOf(row);
+        internalRows(): InternalListItem[] {
+            const { keyAttribute } = this;
+            if (keyAttribute) {
+                const seenKeys: Set<unknown> = new Set<unknown>();
+
+                return this.rows.map((row, index) => {
+                    const key = row[keyAttribute];
+                    if (key === undefined) {
+                        throw new Error(`Key attribute [${this.keyAttribute}]' is missing in row index ${index}`);
+                    }
+
+                    const rowKey = String(key);
+                    if (seenKeys.has(rowKey)) {
                         throw new Error(
                             `Expected each table row to have a unique key attribute but encountered duplicate of "${rowKey}" in row index ${index}.`,
                         );
                     }
 
-                    seenKeys[rowKey] = true;
+                    seenKeys.add(rowKey);
+
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- dsad
+                    // @ts-ignore -- dsad
+                    row[internalKey] = rowKey;
+
+                    return row as InternalListItem;
+                });
+            }
+
+            return this.rows.map((row) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- dsad
+                // @ts-ignore -- dsad
+                if (row[internalKey] === undefined) {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- dsad
+                    // @ts-ignore -- dsad
+                    row[internalKey] = String(internalIndex++);
                 }
-            },
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- dsad
+                // @ts-ignore -- dsad
+                return row as InternalListItem;
+            });
         },
     },
     mounted() {
@@ -201,12 +235,8 @@ export default defineComponent({
         this.registerCallbackOnMount(this.callbackSortableColumns);
     },
     methods: {
-        rowKey(item: ListItem): string {
-            const key = item[this.keyAttribute];
-            if (typeof key === "undefined") {
-                throw new Error(`Key attribute [${this.keyAttribute}]' is missing in row`);
-            }
-            return String(key);
+        rowKey(item: InternalListItem): string {
+            return item[internalKey];
         },
         columnClasses(column: FTableColumnData): string[] {
             const classes = ["table__column", `table__column--${column.type}`, column.size];
