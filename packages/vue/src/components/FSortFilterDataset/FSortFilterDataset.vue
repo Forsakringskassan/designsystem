@@ -1,11 +1,10 @@
-<script setup lang="ts">
-import { type PropType, computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from "vue";
+<script setup lang="ts" generic="T">
+import { type PropType, type Ref, computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from "vue";
 import { focus, debounce, alertScreenReader, TranslationService } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { FSelectField } from "../FSelectField";
 import { FIcon } from "../FIcon";
 import { FTextField } from "../FTextField";
-import { ListItem, ListArray } from "../../types";
 import { useTranslate } from "../../plugins";
 import { FSortFilterDatasetSortCallback, FSortFilterDatasetMountCallback } from "./FSortFilterDatasetInterface";
 import { sort } from "./FSortFilterSorter";
@@ -16,7 +15,7 @@ const $t = useTranslate();
 
 const searchString = ref("");
 const sortAttribute = ref<SortOrder>({ attribute: "", name: "", ascendingName: "", ascending: false, id: 0 });
-const sortFilterResult = ref<ListArray<ListItem>>([]);
+const sortFilterResult = ref<T[]>([]) as Ref<T[]>;
 const debouncedFilterResultset = debounce(filterResultset, 250);
 
 let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {
@@ -32,7 +31,7 @@ const props = defineProps({
      * The data that you wish to sort or filter.
      */
     data: {
-        type: Array as PropType<ListArray<ListItem>>,
+        type: Array as PropType<T[]>,
         required: true,
         default: () => [],
     },
@@ -87,9 +86,23 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["datasetSorted", "usedSortAttributes"]);
+const emit = defineEmits<{
+    /**
+     * Emitted when the data is sorted.
+     *
+     * @arg items - The sorted data.
+     */
+    datasetSorted: [items: T[]];
 
-const showClearButton = computed((): boolean => {
+    /**
+     * Emits the used sorting attributes.
+     *
+     * @arg sortAttribute - The attributes used when sorting the data.
+     */
+    usedSortAttributes: [sortAttribute: SortOrder];
+}>();
+
+const showClearButton = computed(() => {
     return searchString.value.length > 0;
 });
 
@@ -115,7 +128,7 @@ const sortOrders = computed((): SortOrder[] => {
     return arr;
 });
 
-const filterAttributes = computed((): string[] => {
+const filterAttributes = computed(() => {
     return Object.keys(props.sortableAttributes);
 });
 
@@ -132,12 +145,6 @@ provide("sort", (attribute: string, ascending: boolean) => {
 
     sortFilterData();
 
-    /**
-     * Emits the used sorting attributes.
-     * @event usedSortAttributes
-     * @param sortAttribute - The attributes used when sorting the data.
-     * @type {SortOrder}
-     */
     emit("usedSortAttributes", sortAttribute.value);
 });
 
@@ -181,23 +188,11 @@ function sortFilterData(): void {
     nextTick(() => {
         tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
     });
-    /**
-     * Emitted when the data is sorted.
-     * @event datasetSorted
-     * @param sortFilterResult - The sorted data.
-     * @type {ListArray}
-     */
     emit("datasetSorted", sortFilterResult.value);
 }
 
 function onChangeSortAttribute(): void {
     sortFilterData();
-    /**
-     * Emits the used sorting attributes.
-     * @event usedSortAttributes
-     * @param sortAttribute - The attributes used when sorting the data.
-     * @type {SortOrder}
-     */
     emit("usedSortAttributes", sortAttribute.value);
 }
 
@@ -237,14 +232,9 @@ function filterResultset(): void {
         <i-flex collapse gap="3x" wrap>
             <i-flex-item shrink align="center">
                 <!--
-@slot Slot for header to the left of the filter dropdown.
-
-Slot content is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ slotClass }"`.
-
-The following properties are available:
-
-* `slotClass: string[];` CSS classes to use for the SortFilter header element. Use with `:class="slotClass"`.
-      -->
+                     @slot Slot for header to the left of the filter dropdown. Slot content is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ slotClass }"`.
+                     @binding {string[]} slotClass - CSS classes to use for the SortFilter header element. Use with `:class="slotClass"`.
+                -->
                 <slot name="header" v-bind="{ slotClass: 'sort-filter-dataset__toolbar__header' }"></slot>
             </i-flex-item>
 
@@ -304,14 +294,9 @@ The following properties are available:
             </i-flex-item>
         </i-flex>
         <!--
-@slot Slot for displaying the data.
-
-The data is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ sortFilterResult }"`.
-
-The following properties are available:
-
-* `sortFilterResult: ListArray<ListItem>;` The sorted or filtered data.
-    -->
+             @slot Slot for displaying the data. The data is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ sortFilterResult }"`.
+             @binding {T[]} sortFilterResult - The sorted or filtered data.
+        -->
         <slot v-bind="{ sortFilterResult }"></slot>
     </div>
 </template>

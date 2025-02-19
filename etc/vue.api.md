@@ -17,7 +17,6 @@ import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
 import { ComponentPublicInstance } from 'vue';
 import { ComputedRef } from 'vue';
-import { CreateComponentPublicInstanceWithMixins } from 'vue';
 import { DefineComponent } from 'vue';
 import { DistributeRef } from '@vue/reactivity';
 import { ExtractPropTypes } from 'vue';
@@ -26,8 +25,6 @@ import { FocusOptions as FocusOptions_2 } from '@fkui/logic';
 import { formatNumber } from '@fkui/logic';
 import { formatPersonnummer } from '@fkui/logic';
 import { formatPostalCode } from '@fkui/logic';
-import { GlobalComponents } from 'vue';
-import { GlobalDirectives } from 'vue';
 import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
 import { OrganisationsnummerString } from '@fkui/logic';
@@ -12963,12 +12960,42 @@ rotate: string;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FSortFilterDataset: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_2<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_2<Pick<Partial<{
+        data: T[];
+        defaultSortAttribute: string;
+        showSort: boolean;
+        showFilter: boolean;
+        placeholderFilter: string;
+        defaultSortAscending: boolean;
+    }> & Omit<{
+        readonly data: T[];
+        readonly sortableAttributes: Record<string, string>;
+        readonly defaultSortAttribute: string;
+        readonly showSort: boolean;
+        readonly showFilter: boolean;
+        readonly placeholderFilter: string;
+        readonly defaultSortAscending: boolean;
+        readonly onDatasetSorted?: ((items: T[]) => any) | undefined;
+        readonly onUsedSortAttributes?: ((sortAttribute: SortOrder) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "data" | "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending">, "sortableAttributes" | "onDatasetSorted" | "onUsedSortAttributes" | ("data" | "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending")> & {} & Partial<{}>> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        header?(_: {
+            slotClass: string;
+        }): any;
+        default?(_: {
+            sortFilterResult: T[];
+        }): any;
+    };
+    emit: ((evt: "datasetSorted", items: T[]) => void) & ((evt: "usedSortAttributes", sortAttribute: SortOrder) => void);
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
 
 // @public
 export function FSortFilterDatasetInjected(): FSortFilterDatasetInterface;
@@ -15522,12 +15549,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {

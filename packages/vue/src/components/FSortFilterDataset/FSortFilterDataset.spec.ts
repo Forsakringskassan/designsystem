@@ -26,9 +26,7 @@ const ATTRIBUTES = {
     b: "Column B",
 };
 
-function createWrapper({ slots = {} } = {}): VueWrapper<
-    InstanceType<typeof FSortFilterDataset>
-> {
+function createWrapper({ slots = {} } = {}): VueWrapper {
     return mount(FSortFilterDataset, {
         props: {
             data: DATA,
@@ -341,30 +339,21 @@ it("should emit event with used attributes when sorting using dropdown", async (
     ]);
 });
 
-/* eslint-disable-next-line jest/no-disabled-tests -- test actually fails because we can no longer mutate internal state */
-it.skip("should throw error when sorting objects", async () => {
-    const wrapper = createWrapper();
-    await wrapper.vm.$nextTick();
-
-    let gotException = undefined;
-    try {
-        // Sort by Column d that contains objects
-        /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should not mutate internal state from outside */
-        (wrapper.vm.$data as any).sortAttribute = {
-            id: 0,
-            name: "",
-            ascendingName: "",
-            attribute: "d",
-            ascending: false,
-        };
-        /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should not call internal functions */
-        (wrapper.vm as any).sortFilterData();
-    } catch (error) {
-        gotException = error;
-    }
-    expect(gotException).toMatchInlineSnapshot(`
-        [Error: Sorting is only supported for types number, string and boolean.
-                    Attribute 'd' comparsion of types 'object' and 'object' is not supported.]
+it("should throw error when sorting objects", () => {
+    const mountInvalidSort = (): void => {
+        mount(FSortFilterDataset, {
+            props: {
+                data: DATA,
+                sortableAttributes: {
+                    d: "Column with objects",
+                },
+                defaultSortAttribute: "d",
+            },
+        });
+    };
+    expect(mountInvalidSort).toThrowErrorMatchingInlineSnapshot(`
+        "Sorting is only supported for types number, string and boolean.
+                    Attribute 'd' comparsion of types 'object' and 'object' is not supported."
     `);
 });
 
