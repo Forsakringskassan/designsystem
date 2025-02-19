@@ -1,6 +1,6 @@
 ---
 title: Datumväljare
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FDatepickerField
 ---

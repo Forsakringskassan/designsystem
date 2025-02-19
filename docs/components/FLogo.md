@@ -1,6 +1,6 @@
 ---
 title: Logotyp
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FLogo
 ---

@@ -1,6 +1,6 @@
 ---
 title: Komponentgrupp
-status: Preliminär
+status: Produktionsklar
 layout: component
 component:
     - name: group
