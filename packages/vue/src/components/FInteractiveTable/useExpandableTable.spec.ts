@@ -1,5 +1,6 @@
 import "html-validate/jest";
 import { mount } from "@vue/test-utils";
+import { defineComponent } from "vue";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";
 
@@ -93,7 +94,9 @@ describe("useExpandableTable", () => {
         expect.assertions(2);
         const wrapper = mount(UnslottedComponent);
         await wrapper.vm.$nextTick();
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const rows = table.findAll("tbody tr");
 
         expect(rows[0].attributes()["aria-level"]).toBe("1");
@@ -104,7 +107,9 @@ describe("useExpandableTable", () => {
         expect.assertions(1);
         const wrapper = mount(UnexpandableComponent);
         await wrapper.vm.$nextTick();
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const rows = table.findAll("tbody tr");
 
         expect(rows[0].attributes()["aria-level"]).toBeUndefined();
@@ -114,7 +119,9 @@ describe("useExpandableTable", () => {
         expect.assertions(3);
         const wrapper = mount(UnslottedComponent);
         await wrapper.vm.$nextTick();
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const expandedRow = table.findAll("tbody tr")[1];
         const expandableColumns = expandedRow.findAll("td");
 
@@ -127,7 +134,9 @@ describe("useExpandableTable", () => {
         expect.assertions(3);
         const wrapper = mount(SlottedComponent);
         await wrapper.vm.$nextTick();
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const expandedRow = table.findAll("tbody tr")[1];
         const expandableColumns = expandedRow.findAll("td");
 
@@ -140,7 +149,9 @@ describe("useExpandableTable", () => {
         expect.assertions(2);
         const wrapper = mount(UnslottedComponent);
         await wrapper.vm.$nextTick();
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const rows = table.findAll("tbody tr");
 
         expect(rows[1].classes()).toContain("table__expandable-row--collapsed");
@@ -157,7 +168,9 @@ describe("useExpandableTable", () => {
         expect.assertions(2);
         const wrapper = mount(UnslottedComponent);
         await wrapper.vm.$nextTick();
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const rows = table.findAll("tbody tr");
 
         expect(rows[1].classes()).toContain("table__expandable-row--collapsed");

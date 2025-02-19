@@ -153,7 +153,7 @@ export default defineComponent({
         },
     },
     emits: ["change", "click", "unselect", "update:modelValue", "select", "update:active"],
-    setup(): ActivateItemInterface {
+    setup(): ActivateItemInterface<ListItem> {
         return ActivateItemInjected();
     },
     data(): FListData {

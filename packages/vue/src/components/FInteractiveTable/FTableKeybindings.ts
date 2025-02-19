@@ -1,13 +1,15 @@
 import { type ShallowRef } from "vue";
-import { type ListArray, type ListItem } from "../../types";
 
-interface FTableKeyboardAdapter {
-    readonly rows: ListArray;
+interface FTableKeyboardAdapter<T> {
+    readonly rows: T[];
     readonly tr: ShallowRef<HTMLElement[]>;
-    activate(row: ListItem, element: HTMLElement): void;
+    activate(row: T, element: HTMLElement): void;
 }
 
-type Callback = (table: FTableKeyboardAdapter, current: number) => void;
+type Callback = (
+    table: FTableKeyboardAdapter<unknown>,
+    current: number,
+) => void;
 
 const keybindings: Partial<Record<string, Callback>> = {
     Up: focusTrAbove,
@@ -19,7 +21,7 @@ const keybindings: Partial<Record<string, Callback>> = {
 };
 
 export function focusTrAbove(
-    table: FTableKeyboardAdapter,
+    table: FTableKeyboardAdapter<unknown>,
     current: number,
 ): void {
     const tr = table.tr.value;
@@ -31,7 +33,7 @@ export function focusTrAbove(
 }
 
 export function focusTrBelow(
-    table: FTableKeyboardAdapter,
+    table: FTableKeyboardAdapter<unknown>,
     current: number,
 ): void {
     const tr = table.tr.value;
@@ -43,7 +45,7 @@ export function focusTrBelow(
 }
 
 export function activateRow(
-    table: FTableKeyboardAdapter,
+    table: FTableKeyboardAdapter<unknown>,
     current: number,
 ): void {
     const row = table.rows[current];
@@ -51,8 +53,8 @@ export function activateRow(
     table.activate(row, element);
 }
 
-export function onKeydown(
-    table: FTableKeyboardAdapter,
+export function onKeydown<T>(
+    table: FTableKeyboardAdapter<T>,
     event: KeyboardEvent,
     current: number,
 ): void {

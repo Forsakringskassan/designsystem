@@ -41,6 +41,7 @@ import { PersonnummerString } from '@fkui/logic';
 import { Plugin as Plugin_2 } from 'vue';
 import { PlusgiroString } from '@fkui/logic';
 import { PostalCodeString } from '@fkui/logic';
+import { Prop } from 'vue';
 import { PropType } from 'vue';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
@@ -62,17 +63,17 @@ import { WeekdayNaming } from '@fkui/date';
 export function actionFromKeyboardEvent(event: KeyboardEvent): MenuAction | null;
 
 // @public (undocumented)
-export type ActivateItemCallback = (item: ListItem) => void;
+export type ActivateItemCallback<T> = (item: T) => void;
 
 // @public (undocumented)
-export function ActivateItemInjected(): ActivateItemInterface;
+export function ActivateItemInjected<T>(): ActivateItemInterface<T>;
 
 // @public (undocumented)
-export interface ActivateItemInterface {
+export interface ActivateItemInterface<T> {
     // (undocumented)
-    registerCallbackAfterItemAdd(callback: ActivateItemCallback): void;
+    registerCallbackAfterItemAdd(callback: ActivateItemCallback<T>): void;
     // (undocumented)
-    registerCallbackBeforeItemDelete(callback: ActivateItemCallback): void;
+    registerCallbackBeforeItemDelete(callback: ActivateItemCallback<T>): void;
 }
 
 // @public
@@ -494,28 +495,6 @@ export const EventBus: EventBus;
 
 // @public
 export interface EventBusMap {
-}
-
-// @public (undocumented)
-export interface ExpandableTable {
-    // (undocumented)
-    expandableRowClasses(row: ListItem, index: number): string[];
-    // (undocumented)
-    expandableRows(row: ListItem): ListArray | undefined;
-    // (undocumented)
-    getExpandableDescribedby(row: ListItem): string | undefined;
-    // (undocumented)
-    hasExpandableContent(row: ListItem): boolean;
-    // (undocumented)
-    hasExpandableSlot: ComputedRef<boolean>;
-    // (undocumented)
-    isExpandableTable: ComputedRef<boolean>;
-    // (undocumented)
-    isExpanded(row: ListItem): boolean;
-    // (undocumented)
-    rowAriaExpanded(row: ListItem): boolean | undefined;
-    // (undocumented)
-    toggleExpanded(row: ListItem): void;
 }
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots" needs to be exported by the entry point index.d.ts
@@ -6742,12 +6721,87 @@ export function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined
 // @public
 export function findParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | undefined;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FInteractiveTable: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_2<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_2<Pick<Partial<{
+        scroll: TableScroll;
+        modelValue: T[] | undefined;
+        striped: boolean;
+        hover: boolean;
+        expandableAttribute: string;
+        expandableDescribedby: string;
+        selectable: boolean;
+        showActive: boolean;
+        active: [{
+            type: PropType<T | undefined>;
+            required: false;
+            default: () => undefined;
+        }] extends [Prop<infer V, infer D>] ? unknown extends V ? keyof V extends never ? IfAny<V, V, D> : V : V : {
+            type: PropType<T | undefined>;
+            required: false;
+            default: () => undefined;
+        };
+    }> & Omit<{
+        readonly scroll: TableScroll;
+        readonly rows: T[];
+        readonly keyAttribute: string;
+        readonly striped: boolean;
+        readonly hover: boolean;
+        readonly expandableAttribute: string;
+        readonly expandableDescribedby: string;
+        readonly selectable: boolean;
+        readonly showActive: boolean;
+        readonly modelValue?: T[] | undefined;
+        readonly active?: ([{
+            type: PropType<T | undefined>;
+            required: false;
+            default: () => undefined;
+        }] extends [Prop<infer V, infer D>] ? unknown extends V ? keyof V extends never ? IfAny<V, V, D> : V : V : {
+            type: PropType<T | undefined>;
+            required: false;
+            default: () => undefined;
+        }) | undefined;
+        readonly onChange?: ((row: T) => any) | undefined;
+        readonly onClick?: ((row: T) => any) | undefined;
+        readonly onSelect?: ((row: T) => any) | undefined;
+        readonly onCollapse?: ((row: T) => any) | undefined;
+        readonly "onUpdate:modelValue"?: ((rows: T[]) => any) | undefined;
+        readonly onExpand?: ((row: T) => any) | undefined;
+        readonly onUnselect?: ((row: T) => any) | undefined;
+        readonly "onUpdate:active"?: ((row: T) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "keyAttribute" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & Partial<{}>> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        'row-description'?(_: {}): any;
+        caption?(_: {}): any;
+        'checkbox-description'?(_: {
+            row: T;
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
+        expandable?(_: {
+            expandableRow: T;
+            parentRow: T;
+        }): any;
+        empty?(_: {}): any;
+    };
+    emit: ((evt: "change", row: T) => void) & ((evt: "click", row: T) => void) & ((evt: "select", row: T) => void) & ((evt: "collapse", row: T) => void) & ((evt: "update:modelValue", rows: T[]) => void) & ((evt: "expand", row: T) => void) & ((evt: "unselect", row: T) => void) & ((evt: "update:active", row: T) => void);
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
 
 // @public (undocumented)
 export interface FKUIConfig {
@@ -7102,7 +7156,7 @@ elementId: {
 type: StringConstructor;
 default: () => string;
 };
-}>, ActivateItemInterface, FListData, {
+}>, ActivateItemInterface<UnknownItem>, FListData, {
 isEmpty(): boolean;
 ariaActiveDescendant(): string | undefined;
 }, {
@@ -12663,11 +12717,11 @@ rotate: string;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_2<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
-    props: __VLS_PrettifyLocal_2<Pick<Partial<{
+export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_3<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_3<Pick<Partial<{
         data: T[];
         defaultSortAttribute: string;
         showSort: boolean;
@@ -15012,7 +15066,7 @@ align: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export function includeItem<T extends object, K extends keyof T>(item: ListItem<T> | undefined, itemList: ListArray<T> | undefined, compareAttribute: K): boolean;
+export function includeItem<T extends object, K extends keyof T>(item: T | undefined, itemList: T[] | undefined, compareAttribute: K): boolean;
 
 // @public (undocumented)
 export const IPopup: DefineComponent<ExtractPropTypes<    {
@@ -15252,12 +15306,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
@@ -15510,7 +15564,7 @@ href: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
-export function itemEquals<T extends object, K extends keyof T>(item1: ListItem<T> | undefined, item2: ListItem<T> | undefined, compareAttribute: K): boolean;
+export function itemEquals<T extends object, K extends keyof T>(item1: T | undefined, item2: T | undefined, compareAttribute: K): boolean;
 
 // @public
 export type ListArray<T extends object = UnknownItem> = Array<ListItem<T>>;
