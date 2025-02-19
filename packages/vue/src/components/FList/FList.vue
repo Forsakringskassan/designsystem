@@ -176,6 +176,19 @@ export default defineComponent({
             immediate: true,
             handler: function () {
                 this.updateSelectedItemsFromVModel();
+
+                const seenKeys: Record<string, boolean> = {};
+                for (const item of this.items) {
+                    const rowKey = String(item[this.keyAttribute]);
+                    if (seenKeys[rowKey]) {
+                        const index = this.items.indexOf(item);
+                        throw new Error(
+                            `Expected each list item to have a unique key attribute but encountered duplicate of "${rowKey}" in item index ${index}.`,
+                        );
+                    }
+
+                    seenKeys[rowKey] = true;
+                }
             },
         },
         modelValue: {

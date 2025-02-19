@@ -1,37 +1,105 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTextField } from "../components";
+import { FDataTable, FTableColumn, FSortFilterDataset } from "../components";
 
-const namn = ref("World");
+const items = ref([
+    {
+        id: "1",
+        start: "2022-04-10",
+        end: "2022-04-25",
+        level: "Sjukpenning",
+        antal: "15",
+        anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+        id: "2",
+        start: "2022-05-06",
+        end: "2022-05-10",
+        level: "Lägstanivå",
+        antal: "4",
+        anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+        id: "3",
+        start: "2022-05-20",
+        end: "2022-05-31",
+        level: "Sjukpenning",
+        antal: "11",
+        anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+]);
+
+const itemstwo = ref([
+    {
+        id: "1",
+        start: "2022-04-10",
+        end: "2022-04-25",
+        level: "Sjukpenning",
+        antal: "15",
+        anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+        id: "2",
+        start: "2022-05-06",
+        end: "2022-05-10",
+        level: "Lägstanivå",
+        antal: "4",
+        anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+        id: "3",
+        start: "2022-05-20",
+        end: "2022-05-31",
+        level: "Sjukpenning",
+        antal: "11",
+        anteckning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+]);
 </script>
 
 <template>
     <div class="container">
-        <h1>@fkui/vue</h1>
+        <button @click="console.log(items, itemstwo)">dsad</button>
+        <f-data-table :rows="items" key-attribute="id">
+            <template #caption> Föräldrapenning </template>
+            <template #default="{ row }">
+                <f-table-column name="level" title="Nivå" type="text">
+                    {{ row.level }}
+                </f-table-column>
+                <f-table-column name="start" title="Från och med" type="text" expand>
+                    <span class="nowrap">{{ row.start }}</span>
+                </f-table-column>
+                <f-table-column name="end" title="Till och med" type="text">
+                    <span class="nowrap">{{ row.end }}</span>
+                </f-table-column>
+                <f-table-column name="antal" title="Antal dagar" type="numeric">
+                    {{ row.antal }}
+                </f-table-column>
+                <f-table-column name="anteckning" title="Anteckning" type="text">
+                    {{ row.anteckning }}
+                </f-table-column>
+            </template>
+        </f-data-table>
 
-        <p>A few common commands to keep track of:</p>
-        <dl>
-            <dt><code>npm run vue unit</code></dt>
-            <dd>Run Jest unit tests</dd>
-            <dt><code>npm run vue unit -- Foobar</code></dt>
-            <dd>Run unit tests matching "Foobar"</dd>
-            <dt><code>npm run vue unit -- -u</code></dt>
-            <dd>Update snapshots</dd>
-            <dt><code>npm exec cypress -- open --component</code></dt>
-            <dd>Run Cypress Component Tests</dd>
-            <dt><code>npm run prettier:write</code></dt>
-            <dd>Reformat files</dd>
-            <dt><code>npm run lint</code></dt>
-            <dd>Run all linting and static analyzis</dd>
-            <dt><code>npm test</code></dt>
-            <dd>Run all tests</dd>
-        </dl>
-
-        <hr />
-
-        <h2>Sandbox</h2>
-
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
+        <f-data-table :rows="itemstwo">
+            <template #caption> Föräldrapenning </template>
+            <template #default="{ row }">
+                <f-table-column name="level" title="Nivå" type="text">
+                    {{ row.level }}
+                </f-table-column>
+                <f-table-column name="start" title="Från och med" type="text" expand>
+                    <span class="nowrap">{{ row.start }}</span>
+                </f-table-column>
+                <f-table-column name="end" title="Till och med" type="text">
+                    <span class="nowrap">{{ row.end }}</span>
+                </f-table-column>
+                <f-table-column name="antal" title="Antal dagar" type="numeric">
+                    {{ row.antal }}
+                </f-table-column>
+                <f-table-column name="anteckning" title="Anteckning" type="text">
+                    {{ row.anteckning }}
+                </f-table-column>
+            </template>
+        </f-data-table>
     </div>
 </template>

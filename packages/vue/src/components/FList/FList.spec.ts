@@ -526,6 +526,22 @@ describe("screenreader slot", () => {
     });
 });
 
+describe("`keyAttribute` prop", () => {
+    it("should throw error if `keyAttribute` is not unique", async () => {
+        expect.assertions(1);
+        expect(() => {
+            mount(FList, {
+                props: {
+                    items: [{ id: "a" }, { id: "b" }, { id: "b" }],
+                    keyAttribute: "id",
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Expected each list item to have a unique key attribute but encountered duplicate of "b" in item index 2."`,
+        );
+    });
+});
+
 describe("html-validate", () => {
     it("should require non-empty key-attribute attribute", () => {
         expect.assertions(2);

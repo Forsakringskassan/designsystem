@@ -411,6 +411,20 @@ it("should call provided sort method when clicking columnheader that is registra
     `);
 });
 
+it("should throw error if `keyAttribute` is not unique", async () => {
+    expect.assertions(1);
+    expect(() => {
+        mount(FDataTable, {
+            props: {
+                rows: [{ id: "a" }, { id: "b" }, { id: "b" }],
+                keyAttribute: "id",
+            },
+        });
+    }).toThrowErrorMatchingInlineSnapshot(
+        `"Expected each table row to have a unique key attribute but encountered duplicate of "b" in row index 2."`,
+    );
+});
+
 describe("html-validate", () => {
     it("should require non-empty key-attribute attribute", () => {
         expect.assertions(2);

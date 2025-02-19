@@ -6828,6 +6828,7 @@ callbackBeforeItemDelete(item: ListItem): void;
 escapeNewlines(value: string): string;
 updateActiveRowFromVModel(): void;
 setActiveRow(row: ListItem | undefined): void;
+confirmUniqueKey(): void;
 }, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "unselect" | "update:active")[], "change" | "click" | "select" | "collapse" | "update:modelValue" | "expand" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
 rows: {
 type: PropType<ListArray>;
