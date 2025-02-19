@@ -37,6 +37,7 @@ layout: article
 - {@link migrating-to-v6-design#fmodal_deprekerade_css_klasser `modal__dialog-container-fullscreen`}
 - {@link migrating-to-v6-design#deprekerade_css_variabler_exluderade_fran_standardtema `@fkui/css-variables`}
 - {@link migrating-to-v6-design#logotyper_borttagna `@fkui/design/src/assets/images`}
+- {@link migrating-to-v6-design#navbar_borttagen `navbar`}
 
 **Ändrat:**
 
