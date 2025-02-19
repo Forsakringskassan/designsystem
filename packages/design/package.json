@@ -18,10 +18,12 @@
   "author": "Försäkringskassan",
   "main": "./lib/fkui.css",
   "sass": "./src/fkui.scss",
+  "types": "type-stub.d.ts",
   "files": [
     "lib",
     "src",
     "stylelint",
+    "type-stub.d.ts",
     "!**/*.spec.js"
   ],
   "scripts": {
