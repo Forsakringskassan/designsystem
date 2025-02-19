@@ -7039,196 +7039,12 @@ export interface FLayoutRightPanelInteface {
 // @public (undocumented)
 export const FLayoutRightPanelService: FLayoutRightPanelInteface;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export const FList: DefineComponent<ExtractPropTypes<    {
-items: {
-type: PropType<ListArray>;
-required: true;
-};
-keyAttribute: {
-type: StringConstructor;
-required: true;
-};
-selectable: {
-type: BooleanConstructor;
-default: boolean;
-};
-checkbox: {
-type: BooleanConstructor;
-default: boolean;
-};
-modelValue: {
-type: PropType<ListArray | undefined>;
-required: false;
-default: () => undefined;
-};
-active: {
-type: PropType<ListItem | undefined>;
-required: false;
-default: () => undefined;
-};
-elementId: {
-type: StringConstructor;
-default: () => string;
-};
-}>, ActivateItemInterface<UnknownItem>, FListData, {
-isEmpty(): boolean;
-ariaActiveDescendant(): string | undefined;
-}, {
-getLiElements(): Element[];
-itemKey(item: ListItem): string;
-isSelected(item: ListItem): boolean;
-itemClasses(item: ListItem): Record<string, boolean>;
-getAriaSelected(item: ListItem): string;
-onSelect(item: ListItem): void;
-setActiveItem(item: ListItem): void;
-onItemClick(event: Event, index: number, item: ListItem): void;
-updateVModelWithSelectedItems(): void;
-updateSelectedItemsFromVModel(): void;
-updateActiveItemFromVModel(): void;
-onItemKeyDown(event: KeyboardEvent, item: ListItem): void;
-getAriaLabelledbyId(item: ListItem): string;
-getItemId(item: ListItem): string;
-onItemFocus(event: FocusEvent): void;
-onItemBlur(event: FocusEvent): void;
-callbackAfterItemAdd(item: ListItem): void;
-callbackBeforeItemDelete(item: ListItem): void;
-isActive(item: ListItem): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("change" | "click" | "select" | "update:modelValue" | "unselect" | "update:active")[], "change" | "click" | "select" | "update:modelValue" | "unselect" | "update:active", PublicProps, Readonly<ExtractPropTypes<    {
-items: {
-type: PropType<ListArray>;
-required: true;
-};
-keyAttribute: {
-type: StringConstructor;
-required: true;
-};
-selectable: {
-type: BooleanConstructor;
-default: boolean;
-};
-checkbox: {
-type: BooleanConstructor;
-default: boolean;
-};
-modelValue: {
-type: PropType<ListArray | undefined>;
-required: false;
-default: () => undefined;
-};
-active: {
-type: PropType<ListItem | undefined>;
-required: false;
-default: () => undefined;
-};
-elementId: {
-type: StringConstructor;
-default: () => string;
-};
-}>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
-onClick?: ((...args: any[]) => any) | undefined;
-onSelect?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUnselect?: ((...args: any[]) => any) | undefined;
-"onUpdate:active"?: ((...args: any[]) => any) | undefined;
-}>, {
-elementId: string;
-modelValue: ListArray | undefined;
-checkbox: boolean;
-selectable: boolean;
-active: UnknownItem | undefined;
-}, {}, {
-FCheckboxField: DefineComponent<ExtractPropTypes<    {
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: false;
-};
-value: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: true;
-};
-}>, {
-showDetails: "always" | "never" | "when-selected";
-getFieldsetLabelText: () => string | undefined;
-}, {
-expanded: boolean;
-height: number;
-initialStyle: {
-overflow: string;
-transition: string;
-};
-hiddenStyle: {
-height: string;
-position: string;
-visibility: string;
-};
-visibleStyle: {
-width: string;
-position: string;
-visibility: string;
-height: string;
-};
-openedStyle: {
-height: string;
-};
-}, {
-attrs(): Record<string, unknown>;
-disabledClass(): string;
-injected(): any;
-}, {
-updateExpandedFlag(): void;
-emitVModelEvent(event: Event): void;
-onKeydown(event: Event): void;
-onValidity({ detail }: CustomEvent<ValidityEvent>): void;
-enter(element: Element): void;
-afterEnter(element: Element): void;
-leave(element: Element): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
-disabled: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-id: {
-type: StringConstructor;
-required: false;
-default: () => string;
-};
-modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: false;
-};
-value: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
-required: true;
-};
-}>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}>, {
-id: string;
-disabled: boolean;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
-}, {}, string, ComponentProvideOptions, true, {}, any>;
-
-// @public (undocumented)
-export interface FListData {
-    // (undocumented)
-    activeItem: ListItem | undefined;
-    // (undocumented)
-    selectedItems: ListArray;
-}
+export const FList: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const FLoader: DefineComponent<ExtractPropTypes<    {
@@ -15221,12 +15037,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
