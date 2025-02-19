@@ -18386,12 +18386,8 @@ const _hoisted_2$o = {
     const formModalHeader = computed(() => {
       return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
     });
-    provide("delete", (item2) => {
-      deleteItem(item2);
-    });
-    provide("modify", (item2) => {
-      updateItem(item2);
-    });
+    provide("delete", deleteItem);
+    provide("modify", updateItem);
     provide("registerCallbackAfterItemAdd", (callback) => {
       callbackAfterItemAdd.value = callback;
     });
@@ -18400,7 +18396,7 @@ const _hoisted_2$o = {
     });
     onMounted(() => {
       if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
-        throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
+        throw Error("At least one template of the following must be defined. #add, #delete or #modify");
       }
     });
     watch(() => props.modelValue, (data) => {

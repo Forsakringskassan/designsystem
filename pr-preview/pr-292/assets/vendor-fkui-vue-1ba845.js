@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -10362,12 +10362,8 @@
       const formModalHeader = (0, import_vue.computed)(() => {
         return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
       });
-      (0, import_vue.provide)("delete", (item2) => {
-        deleteItem(item2);
-      });
-      (0, import_vue.provide)("modify", (item2) => {
-        updateItem(item2);
-      });
+      (0, import_vue.provide)("delete", deleteItem);
+      (0, import_vue.provide)("modify", updateItem);
       (0, import_vue.provide)("registerCallbackAfterItemAdd", (callback) => {
         callbackAfterItemAdd.value = callback;
       });
@@ -10376,7 +10372,7 @@
       });
       (0, import_vue.onMounted)(() => {
         if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
-          throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
+          throw Error("At least one template of the following must be defined. #add, #delete or #modify");
         }
       });
       (0, import_vue.watch)(() => props.modelValue, (data) => {
@@ -13318,7 +13314,7 @@
         "min-date": _ctx.minDate,
         "max-date": _ctx.maxDate,
         onClick: _ctx.onSelectCalendarDay,
-        onKeyup: (0, import_vue.withKeys)((0, import_vue.withModifiers)(_ctx.onKeyupEsc, ["stop"]), ["esc", "native"])
+        onKeyup: (0, import_vue.withKeys)((0, import_vue.withModifiers)(_ctx.onKeyupEsc, ["stop"]), ["esc"])
       }, {
         default: (0, import_vue.withCtx)(({
           date,
