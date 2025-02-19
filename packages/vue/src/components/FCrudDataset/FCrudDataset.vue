@@ -1,3 +1,311 @@
+<script setup lang="ts" generic="T">
+import { type PropType, type Ref, computed, onMounted, provide, ref, useSlots, watch } from "vue";
+import { deepClone, alertScreenReader, TranslationService } from "@fkui/logic";
+
+import { FIcon } from "../FIcon";
+import { FFormModal, FConfirmModal } from "../FModal";
+import { FModalButtonDescriptor } from "../FModal/modal-button";
+import { useTranslate } from "../../plugins";
+import { type FValidationFormCallback } from "../FValidationForm";
+import { Operation } from "./operation";
+
+const $t = useTranslate();
+const slots = useSlots();
+
+const result = ref<T[]>([]) as Ref<T[]>;
+const operation = ref<Operation>(Operation.NONE);
+const item = ref<T | null>(null);
+const originalItemToUpdate = ref<T | null>(null);
+const isFormModalOpen = ref(false);
+const isConfirmModalOpen = ref(false);
+const callbackAfterItemAdd = ref<(item: T) => void>(() => ({}));
+const callbackBeforeItemDelete = ref<(item: T) => void>(() => ({}));
+
+const props = defineProps({
+    /**
+     * The list of items that should be deleted, modified or added to.
+     * If the prop is not set an empty array will be used.
+     * @model
+     */
+    modelValue: {
+        type: Array as PropType<T[]>,
+        required: false,
+        default: () => [],
+    },
+    /**
+     * A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.
+     * Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.
+     */
+    beforeCreate: {
+        type: Function as PropType<(() => T) | undefined>,
+        required: false,
+        default: undefined,
+    },
+    /**
+     * If `true` the primary button in the modals will be placed to the right side instead of to the left.
+     */
+    primaryButtonRight: {
+        type: Boolean,
+        default: false,
+    },
+    /**
+     * If given, this function is called before the [[submit]] event is emitted.
+     * See <f-validation-form> `beforeSubmit` props for more info.
+     */
+    beforeSubmit: {
+        type: Function as PropType<FValidationFormCallback>,
+        required: false,
+        default(): void {
+            /* do nothing */
+        },
+    },
+    /**
+     * If given, this function is called before the form data is validated and the [[submit]] event is emitted.
+     * See <f-validation-form> `beforeValidation` props for more info.
+     */
+    beforeValidation: {
+        type: Function as PropType<FValidationFormCallback>,
+        required: false,
+        default(): void {
+            /* do nothing */
+        },
+    },
+    /**
+     * If given, this function is called after the modal has been closed.
+     */
+    onCancel: {
+        type: Function as PropType<() => void>,
+        required: false,
+        default() {
+            return undefined;
+        },
+    },
+
+    /**
+     * Property for changing the "add new" modal heading
+     */
+    addNewModalHeader: {
+        type: String,
+        required: false,
+        default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"),
+    },
+    /**
+     * Property for changing the "modify" modal heading
+     */
+    modifyModalHeader: {
+        type: String,
+        required: false,
+        default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"),
+    },
+    /**
+     * Property for changing the "delete" modal heading
+     */
+    deleteModalHeader: {
+        type: String,
+        required: false,
+        default: TranslationService.provider.translate(
+            "fkui.crud-dataset.modal.header.delete",
+            "Är du säker på att du vill ta bort raden?",
+        ),
+    },
+});
+
+const emit = defineEmits<{
+    /**
+     * Emitted when an item is added.
+     *
+     * @arg item - the added item.
+     */
+    created: [item: T];
+
+    /**
+     * Emitted when an item is deleted.
+     *
+     * @arg item - the deleted item.
+     */
+    deleted: [item: T];
+
+    /**
+     * Emitted when an item is updated.
+     *
+     * @arg item - the updated item.
+     */
+    updated: [item: T];
+
+    /**
+     * V-model event.
+     *
+     * @ignore
+     * @arg items - updated list of items.
+     */
+    "update:modelValue": [items: T[]];
+}>();
+
+const formModalButtons = computed((): FModalButtonDescriptor[] => {
+    const confirmButtonText =
+        operation.value === Operation.ADD
+            ? $t("fkui.crud-dataset.modal.confirm.add", "Lägg till")
+            : $t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+    const cancelButtonText =
+        operation.value === Operation.ADD
+            ? $t("fkui.crud-dataset.modal.cancel.add", "Avbryt")
+            : $t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+    return [
+        {
+            label: confirmButtonText,
+            event: "confirm",
+            type: "primary",
+            submitButton: true,
+        },
+        {
+            label: cancelButtonText,
+            event: "dismiss",
+            type: "secondary",
+            submitButton: false,
+        },
+    ];
+});
+
+const confirmDeleteButtons = computed((): FModalButtonDescriptor[] => {
+    return [
+        {
+            label: $t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
+            type: "primary",
+            event: "confirm",
+        },
+        {
+            label: $t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
+            type: "secondary",
+        },
+    ];
+});
+
+const hasAddSlot = computed((): boolean => {
+    return Boolean(slots.add);
+});
+
+const hasDeleteSlot = computed((): boolean => {
+    return Boolean(slots.delete);
+});
+
+const hasModifySlot = computed((): boolean => {
+    return Boolean(slots.modify);
+});
+
+const formModalHeader = computed((): string => {
+    return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
+});
+
+provide("delete", deleteItem);
+provide("modify", updateItem);
+
+provide("registerCallbackAfterItemAdd", (callback: (item: T) => void) => {
+    callbackAfterItemAdd.value = callback;
+});
+
+provide("registerCallbackBeforeItemDelete", (callback: (item: T) => void) => {
+    callbackBeforeItemDelete.value = callback;
+});
+
+onMounted(() => {
+    if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
+        throw Error("At least one template of the following must be defined. #add, #delete or #modify");
+    }
+});
+
+watch(
+    () => props.modelValue,
+    (data) => {
+        result.value = [...data];
+    },
+    { immediate: true, deep: true },
+);
+
+function createItem(): void {
+    if (!hasAddSlot.value) {
+        throw Error("No template is defined for #add");
+    }
+    operation.value = Operation.ADD;
+    item.value = props.beforeCreate ? props.beforeCreate() : {};
+    isFormModalOpen.value = true;
+}
+
+function deleteItem(current: T): void {
+    if (!hasDeleteSlot.value) {
+        throw Error("No template is defined for #delete");
+    }
+    operation.value = Operation.DELETE;
+    item.value = current;
+    isConfirmModalOpen.value = true;
+}
+
+function onDeleteConfirm(): void {
+    if (!item.value) {
+        return;
+    }
+    callbackBeforeItemDelete.value(item.value);
+    result.value = result.value.filter((it) => it !== item.value);
+
+    emit("deleted", item.value);
+    emit("update:modelValue", result.value);
+
+    alertScreenReader($t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
+        assertive: true,
+    });
+}
+
+function onDeleteClose(e: { reason: string }): void {
+    onModalClose();
+    if (e.reason === "close" && props.onCancel) {
+        props.onCancel();
+    }
+}
+
+function onModalClose(): void {
+    isFormModalOpen.value = false;
+    isConfirmModalOpen.value = false;
+}
+
+function onFormModalSubmit(): void {
+    if (!item.value) {
+        return;
+    }
+    if (operation.value === Operation.ADD) {
+        result.value.push(item.value);
+        emit("created", item.value);
+        emit("update:modelValue", result.value);
+
+        callbackAfterItemAdd.value(item.value);
+        alertScreenReader($t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
+            assertive: true,
+        });
+    } else if (operation.value === Operation.MODIFY) {
+        if (originalItemToUpdate.value) {
+            Object.assign(originalItemToUpdate.value, item.value);
+        } else {
+            originalItemToUpdate.value = item.value;
+        }
+        emit("updated", originalItemToUpdate.value);
+        emit("update:modelValue", result.value);
+
+        alertScreenReader($t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
+            assertive: true,
+        });
+    }
+    isFormModalOpen.value = false;
+}
+
+function updateItem(current: T): void {
+    if (!hasModifySlot.value) {
+        throw Error("No template is defined for #modify");
+    }
+    operation.value = Operation.MODIFY;
+    originalItemToUpdate.value = current;
+    item.value = deepClone(current);
+    isFormModalOpen.value = true;
+}
+</script>
+
 <template>
     <div class="crud-dataset">
         <!--
@@ -13,8 +321,8 @@
             >
                 <f-icon class="button__icon" name="plus" />
                 <!--
-@slot Slot for changing the text in "Add new" button`
-                    -->
+                     @slot Slot for changing the text in "Add new" button`
+                -->
                 <slot name="add-button">{{ $t("fkui.crud-dataset.button.add", "Lägg till ny") }}</slot>
             </button>
         </div>
@@ -35,16 +343,15 @@
             <template #header>{{ formModalHeader }}</template>
             <template #input-text-fields>
                 <!--
-@slot Slot for inputs when creating a new item.
-The new item is available through `v-slot="{ item }"`
-If any data in the item should be set not by the user the prop beforeCreate can be used to set that data.
-                    -->
-                <slot v-if="operation === Operation.ADD" name="add" v-bind="{ item: item }" />
+                     @slot Slot for inputs when creating a new item. The new item is available through `v-slot="{ item }"`. If any data in the item should be set not by the user the prop `beforeCreate` can be used to set that data.
+                     @binding {T} item Item returned by `beforeCreate` or an empty object.
+                -->
+                <slot v-if="operation === Operation.ADD" name="add" v-bind="{ item: item! }" />
                 <!--
-@slot Slot for inputs when modifying an item.
-The item being modified is available through `v-slot="{ item }"`
-                    -->
-                <slot v-if="operation === Operation.MODIFY" name="modify" v-bind="{ item: item }" />
+                     @slot Slot for inputs when modifying an item. The item being modified is available through `v-slot="{ item }"`.
+                     @binding {T} item A clone of the current item.
+                -->
+                <slot v-if="operation === Operation.MODIFY" name="modify" v-bind="{ item: item! }" />
             </template>
         </f-form-modal>
 
@@ -60,320 +367,11 @@ The item being modified is available through `v-slot="{ item }"`
 
             <template #content>
                 <!--
-@slot Slot for displaying a warning message before an item is deleted.
-The item being deleted is available through `v-slot="{ item }"`
-                    -->
-                <slot name="delete" v-bind="{ item: item }" />
+                     @slot Slot for displaying a warning message before an item is deleted. The item being deleted is available through `v-slot="{ item }"`.
+                     @binding {T} item Item about to be deleted.
+                -->
+                <slot name="delete" v-bind="{ item: item! }" />
             </template>
         </f-confirm-modal>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import { deepClone, alertScreenReader, TranslationService } from "@fkui/logic";
-
-import { FIcon } from "../FIcon";
-import { FFormModal, FConfirmModal } from "../FModal";
-import { FModalButtonDescriptor } from "../FModal/modal-button";
-import { type ListItem, type ListArray } from "../../types";
-import { TranslationMixin } from "../../plugins";
-import { type FValidationFormCallback } from "../FValidationForm";
-import { FCrudDatasetInterface } from "./FCrudDatasetInterface";
-import { ActivateItemInterface } from "./ActivateItemInterface";
-import { type FCrudDatasetData } from "./fcruddataset-data";
-import { Operation } from "./operation";
-
-export default defineComponent({
-    name: "FCrudDataset",
-    components: { FFormModal, FConfirmModal, FIcon },
-    mixins: [TranslationMixin],
-    provide(): FCrudDatasetInterface & ActivateItemInterface {
-        return {
-            delete: (item: ListItem) => {
-                this.deleteItem(item);
-            },
-            modify: (item: ListItem) => {
-                this.updateItem(item);
-            },
-            registerCallbackAfterItemAdd: (callback: (item: ListItem) => void) => {
-                this.callbackAfterItemAdd = callback;
-            },
-            registerCallbackBeforeItemDelete: (callback: (item: ListItem) => void) => {
-                this.callbackBeforeItemDelete = callback;
-            },
-        };
-    },
-    props: {
-        /**
-         * The list of items that should be deleted, modified or added to.
-         * If the prop is not set an empty array will be used.
-         * @model
-         */
-        modelValue: {
-            type: Array as PropType<ListArray<ListItem>>,
-            required: false,
-            default: () => [],
-        },
-        /**
-         * A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.
-         * Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.
-         */
-        beforeCreate: {
-            type: Function as PropType<(() => ListItem) | undefined>,
-            required: false,
-            default: undefined,
-        },
-        /**
-         * If `true` the primary button in the modals will be placed to the right side instead of to the left.
-         */
-        primaryButtonRight: {
-            type: Boolean,
-            default: false,
-        },
-        /**
-         * If given, this function is called before the [[submit]] event is emitted.
-         * See <f-validation-form> `beforeSubmit` props for more info.
-         */
-        beforeSubmit: {
-            type: Function as PropType<FValidationFormCallback>,
-            required: false,
-            default(): void {
-                /* do nothing */
-            },
-        },
-        /**
-         * If given, this function is called before the form data is validated and the [[submit]] event is emitted.
-         * See <f-validation-form> `beforeValidation` props for more info.
-         */
-        beforeValidation: {
-            type: Function as PropType<FValidationFormCallback>,
-            required: false,
-            default(): void {
-                /* do nothing */
-            },
-        },
-        /**
-         * If given, this function is called after the modal has been closed.
-         */
-        onCancel: {
-            type: Function as PropType<() => void>,
-            required: false,
-            default() {
-                return undefined;
-            },
-        },
-
-        /**
-         * Property for changing the "add new" modal heading
-         */
-        addNewModalHeader: {
-            type: String,
-            required: false,
-            default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"),
-        },
-        /**
-         * Property for changing the "modify" modal heading
-         */
-        modifyModalHeader: {
-            type: String,
-            required: false,
-            default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"),
-        },
-        /**
-         * Property for changing the "delete" modal heading
-         */
-        deleteModalHeader: {
-            type: String,
-            required: false,
-            default: TranslationService.provider.translate(
-                "fkui.crud-dataset.modal.header.delete",
-                "Är du säker på att du vill ta bort raden?",
-            ),
-        },
-    },
-    emits: ["created", "deleted", "updated", "update:modelValue"],
-    data(): FCrudDatasetData {
-        return {
-            result: [],
-            Operation,
-            operation: Operation.NONE,
-            item: null,
-            originalItemToUpdate: null,
-            isFormModalOpen: false,
-            isConfirmModalOpen: false,
-            callbackAfterItemAdd() {
-                // dummy method when not provided by underlying component
-            },
-            callbackBeforeItemDelete() {
-                // dummy method when not provided by underlying component
-            },
-        };
-    },
-    computed: {
-        formModalButtons(): FModalButtonDescriptor[] {
-            const confirmButtonText =
-                this.operation === Operation.ADD
-                    ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till")
-                    : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-            const cancelButtonText =
-                this.operation === Operation.ADD
-                    ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt")
-                    : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
-            return [
-                {
-                    label: confirmButtonText,
-                    event: "confirm",
-                    type: "primary",
-                    submitButton: true,
-                },
-                {
-                    label: cancelButtonText,
-                    event: "dismiss",
-                    type: "secondary",
-                    submitButton: false,
-                },
-            ];
-        },
-        confirmDeleteButtons(): FModalButtonDescriptor[] {
-            return [
-                {
-                    label: this.$t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
-                    type: "primary",
-                    event: "confirm",
-                },
-                {
-                    label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
-                    type: "secondary",
-                },
-            ];
-        },
-        hasAddSlot(): boolean {
-            return Boolean(this.$slots.add);
-        },
-        hasDeleteSlot(): boolean {
-            return Boolean(this.$slots.delete);
-        },
-        hasModifySlot(): boolean {
-            return Boolean(this.$slots.modify);
-        },
-        formModalHeader(): string {
-            return this.operation === Operation.ADD ? this.addNewModalHeader : this.modifyModalHeader;
-        },
-    },
-    watch: {
-        modelValue: {
-            immediate: true,
-            deep: true,
-            handler(data: ListItem[]) {
-                this.result = [...data];
-            },
-        },
-    },
-    mounted(): void {
-        if (!this.hasAddSlot && !this.hasDeleteSlot && !this.hasModifySlot) {
-            throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
-        }
-    },
-    methods: {
-        createItem(): void {
-            if (!this.hasAddSlot) {
-                throw Error("No template is defined for #add");
-            }
-            this.operation = Operation.ADD;
-            this.item = this.beforeCreate ? this.beforeCreate() : {};
-            this.isFormModalOpen = true;
-        },
-        deleteItem(item: ListItem) {
-            if (!this.hasDeleteSlot) {
-                throw Error("No template is defined for #delete");
-            }
-            this.operation = Operation.DELETE;
-            this.item = item;
-            this.isConfirmModalOpen = true;
-        },
-        onDeleteConfirm(): void {
-            if (!this.item) {
-                return;
-            }
-            this.callbackBeforeItemDelete(this.item);
-            this.result = this.result.filter((item: ListItem) => item !== this.item);
-
-            /**
-             * Emitted when an item is deleted.
-             * @event deleted
-             * @param item - the deleted item.
-             */
-            this.$emit("deleted", this.item);
-
-            /**
-             * V-model event.
-             * @event update:modelValue
-             */
-            this.$emit("update:modelValue", this.result);
-
-            alertScreenReader(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
-                assertive: true,
-            });
-        },
-        onDeleteClose(e: { reason: string }) {
-            this.onModalClose();
-            if (e.reason === "close" && this.onCancel) {
-                this.onCancel();
-            }
-        },
-
-        onModalClose(): void {
-            this.isFormModalOpen = false;
-            this.isConfirmModalOpen = false;
-        },
-        onFormModalSubmit(): void {
-            if (!this.item) {
-                return;
-            }
-            if (this.operation === Operation.ADD) {
-                this.result.push(this.item);
-                /**
-                 * Emitted when an item is added.
-                 * @event created
-                 * @param item - the added item.
-                 */
-                this.$emit("created", this.item);
-                this.$emit("update:modelValue", this.result);
-
-                this.callbackAfterItemAdd(this.item);
-                alertScreenReader(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
-                    assertive: true,
-                });
-            } else if (this.operation === Operation.MODIFY) {
-                if (this.originalItemToUpdate) {
-                    Object.assign(this.originalItemToUpdate, this.item);
-                } else {
-                    this.originalItemToUpdate = this.item;
-                }
-                /**
-                 * Emitted when an item is updated.
-                 * @event updated
-                 * @param item - the updated item.
-                 */
-                this.$emit("updated", this.originalItemToUpdate);
-                this.$emit("update:modelValue", this.result);
-
-                alertScreenReader(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
-                    assertive: true,
-                });
-            }
-            this.isFormModalOpen = false;
-        },
-        updateItem(item: ListItem): void {
-            if (!this.hasModifySlot) {
-                throw Error("No template is defined for #modify");
-            }
-            this.operation = Operation.MODIFY;
-            this.originalItemToUpdate = item;
-            this.item = deepClone(item);
-            this.isFormModalOpen = true;
-        },
-    },
-});
-</script>

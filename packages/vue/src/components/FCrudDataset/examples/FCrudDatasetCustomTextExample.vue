@@ -83,7 +83,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
-    type UnknownItem,
     FCrudDataset,
     FCrudButton,
     FList,
@@ -110,14 +109,13 @@ export default defineComponent({
     },
     methods: {
         // Förpopulera ett objekt med värden
-        beforeCreate(): UnknownItem {
-            const fruit: FruitData = {
+        beforeCreate(): FruitData {
+            return {
                 id: String(this.getMaxId() + 1),
                 name: "",
                 origin: "",
                 description: "",
             };
-            return fruit as unknown as UnknownItem;
         },
         getMaxId() {
             return this.fruits.reduce((max, item) => {
