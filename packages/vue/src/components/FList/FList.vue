@@ -1,84 +1,3 @@
-<template>
-    <ul v-if="!selectable" class="list">
-        <li v-for="item in items" :key="itemKey(item)" class="list__item">
-            <div ref="listItemPanes" class="list__item__itempane">
-                <!--
-@slot Slot for displaying an item.
-
-The item object is available through `v-slot="{ <propertyName> }"`, e.g.
-`v-slot="{ item }"`.
-
-The following properties are available:
-
-* `item: ListItem;` The object to be visualized."`.
-        -->
-                <slot v-bind="{ item }" />
-            </div>
-        </li>
-        <li v-if="isEmpty" class="list__item">
-            <div class="list__item__itempane">
-                <!--
-@slot Slot for displaying a message when list is empty.
-Default text is 'Listan är tom' (key fkui.list.empty).
-        -->
-                <slot name="empty">
-                    <em>{{ $t("fkui.list.empty", "Listan är tom") }}</em>
-                </slot>
-            </div>
-        </li>
-    </ul>
-    <ul v-else ref="ulElement" class="list list--hover" :tabindex="checkbox ? 0 : undefined">
-        <li
-            v-for="(item, index) in items"
-            :id="getItemId(item)"
-            :key="itemKey(item)"
-            :aria-labelledby="getItemId(item)"
-            :class="itemClasses(item)"
-            class="list__item"
-            :tabindex="checkbox ? 0 : undefined"
-            @keydown.self="onItemKeyDown($event, item)"
-            @focus.self="onItemFocus"
-            @blur.self="onItemBlur"
-        >
-            <div v-if="checkbox" class="list__item__selectpane" @click.self="onSelect(item)">
-                <div class="list__item__selectpane__input">
-                    <f-checkbox-field :value="true" :model-value="isSelected(item)" @click.self="onSelect(item)">
-                        <span :id="getAriaLabelledbyId(item)" class="sr-only">
-                            <!--
-@slot Slot for screen reader text when checkbox (to selecte item) get focus.
-
-The item object is available through `v-slot="{ <propertyName> }"`, e.g.
-`v-slot="{ item }"`.
-
-The following properties are available:
-
-* `item: ListItem;` The object to be screen read."`.
-            -->
-                            <slot name="screenreader" v-bind="{ item }" />
-                        </span>
-                    </f-checkbox-field>
-                </div>
-            </div>
-            <component
-                :is="checkbox ? 'div' : 'a'"
-                ref="listItemPanes"
-                :href="!checkbox ? 'javascript:' : undefined"
-                class="list__item__itempane"
-                @click="onItemClick($event, index, item)"
-            >
-                <slot v-bind="{ item }" />
-            </component>
-        </li>
-        <li v-if="isEmpty" class="list__item">
-            <div class="list__item__itempane">
-                <slot name="empty">
-                    <em>{{ $t("fkui.list.empty", "Listan är tom") }}</em>
-                </slot>
-            </div>
-        </li>
-    </ul>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { ElementIdService } from "@fkui/logic";
@@ -378,3 +297,84 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <ul v-if="!selectable" class="list">
+        <li v-for="item in items" :key="itemKey(item)" class="list__item">
+            <div ref="listItemPanes" class="list__item__itempane">
+                <!--
+@slot Slot for displaying an item.
+
+The item object is available through `v-slot="{ <propertyName> }"`, e.g.
+`v-slot="{ item }"`.
+
+The following properties are available:
+
+* `item: ListItem;` The object to be visualized."`.
+        -->
+                <slot v-bind="{ item }" />
+            </div>
+        </li>
+        <li v-if="isEmpty" class="list__item">
+            <div class="list__item__itempane">
+                <!--
+@slot Slot for displaying a message when list is empty.
+Default text is 'Listan är tom' (key fkui.list.empty).
+        -->
+                <slot name="empty">
+                    <em>{{ $t("fkui.list.empty", "Listan är tom") }}</em>
+                </slot>
+            </div>
+        </li>
+    </ul>
+    <ul v-else ref="ulElement" class="list list--hover" :tabindex="checkbox ? 0 : undefined">
+        <li
+            v-for="(item, index) in items"
+            :id="getItemId(item)"
+            :key="itemKey(item)"
+            :aria-labelledby="getItemId(item)"
+            :class="itemClasses(item)"
+            class="list__item"
+            :tabindex="checkbox ? 0 : undefined"
+            @keydown.self="onItemKeyDown($event, item)"
+            @focus.self="onItemFocus"
+            @blur.self="onItemBlur"
+        >
+            <div v-if="checkbox" class="list__item__selectpane" @click.self="onSelect(item)">
+                <div class="list__item__selectpane__input">
+                    <f-checkbox-field :value="true" :model-value="isSelected(item)" @click.self="onSelect(item)">
+                        <span :id="getAriaLabelledbyId(item)" class="sr-only">
+                            <!--
+@slot Slot for screen reader text when checkbox (to selecte item) get focus.
+
+The item object is available through `v-slot="{ <propertyName> }"`, e.g.
+`v-slot="{ item }"`.
+
+The following properties are available:
+
+* `item: ListItem;` The object to be screen read."`.
+            -->
+                            <slot name="screenreader" v-bind="{ item }" />
+                        </span>
+                    </f-checkbox-field>
+                </div>
+            </div>
+            <component
+                :is="checkbox ? 'div' : 'a'"
+                ref="listItemPanes"
+                :href="!checkbox ? 'javascript:' : undefined"
+                class="list__item__itempane"
+                @click="onItemClick($event, index, item)"
+            >
+                <slot v-bind="{ item }" />
+            </component>
+        </li>
+        <li v-if="isEmpty" class="list__item">
+            <div class="list__item__itempane">
+                <slot name="empty">
+                    <em>{{ $t("fkui.list.empty", "Listan är tom") }}</em>
+                </slot>
+            </div>
+        </li>
+    </ul>
+</template>
