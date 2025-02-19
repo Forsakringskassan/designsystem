@@ -1,62 +1,3 @@
-<template>
-    <div :class="wrapperClasses">
-        <table class="table" :class="tableClasses" :tabindex="tabindex" v-bind="$attrs">
-            <caption v-if="hasCaption">
-                <!-- @slot Slot for table caption. -->
-                <slot name="caption"></slot>
-            </caption>
-            <colgroup>
-                <col v-for="column in columns" :key="column.id" :class="column.size" />
-            </colgroup>
-            <thead>
-                <tr class="table__row">
-                    <th
-                        v-for="column in visibleColumns"
-                        :key="column.id"
-                        scope="col"
-                        :class="columnClasses(column)"
-                        v-on="column.sortable ? { click: () => onClickColumnHeader(column) } : {}"
-                    >
-                        <!-- eslint-disable-next-line vue/no-v-html -->
-                        <span v-html="escapeNewlines(column.title)"></span>
-                        <f-icon v-if="column.sortable" :class="iconClasses(column)" :name="iconName(column)" />
-                        <span v-if="column.description" class="table__column__description">{{
-                            column.description
-                        }}</span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-if="isEmpty && columns.length === 0">
-                    <slot v-bind="{ row: {} }"></slot>
-                </tr>
-                <tr v-if="isEmpty">
-                    <td class="table__column table__column--action" :colspan="columns.length">
-                        <!--
-@slot Slot for displaying a message when table is empty.
-Default text is 'Tabellen är tom' (key fkui.data-table.empty).
-            -->
-                        <slot name="empty">{{ $t("fkui.data-table.empty", "Tabellen är tom") }}</slot>
-                    </td>
-                </tr>
-                <tr v-for="row in rows" :key="rowKey(row)" class="table__row">
-                    <!--
-                     @slot Slot for table row.
-
-                     The item object is available through `v-slot="{ <propertyName> }"`, e.g.
-                     `v-slot="{ row }"`.
-
-                     The following properties are available:
-
-                     * `row: ListItem;` The object to be visualized..
-          -->
-                    <slot v-bind="{ row }" />
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</template>
-
 <script lang="ts">
 import { type PropType, computed, defineComponent, provide } from "vue";
 import { type ListArray, type ListItem } from "../../types";
@@ -225,3 +166,62 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div :class="wrapperClasses">
+        <table class="table" :class="tableClasses" :tabindex="tabindex" v-bind="$attrs">
+            <caption v-if="hasCaption">
+                <!-- @slot Slot for table caption. -->
+                <slot name="caption"></slot>
+            </caption>
+            <colgroup>
+                <col v-for="column in columns" :key="column.id" :class="column.size" />
+            </colgroup>
+            <thead>
+                <tr class="table__row">
+                    <th
+                        v-for="column in visibleColumns"
+                        :key="column.id"
+                        scope="col"
+                        :class="columnClasses(column)"
+                        v-on="column.sortable ? { click: () => onClickColumnHeader(column) } : {}"
+                    >
+                        <!-- eslint-disable-next-line vue/no-v-html -->
+                        <span v-html="escapeNewlines(column.title)"></span>
+                        <f-icon v-if="column.sortable" :class="iconClasses(column)" :name="iconName(column)" />
+                        <span v-if="column.description" class="table__column__description">{{
+                            column.description
+                        }}</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-if="isEmpty && columns.length === 0">
+                    <slot v-bind="{ row: {} }"></slot>
+                </tr>
+                <tr v-if="isEmpty">
+                    <td class="table__column table__column--action" :colspan="columns.length">
+                        <!--
+@slot Slot for displaying a message when table is empty.
+Default text is 'Tabellen är tom' (key fkui.data-table.empty).
+            -->
+                        <slot name="empty">{{ $t("fkui.data-table.empty", "Tabellen är tom") }}</slot>
+                    </td>
+                </tr>
+                <tr v-for="row in rows" :key="rowKey(row)" class="table__row">
+                    <!--
+                     @slot Slot for table row.
+
+                     The item object is available through `v-slot="{ <propertyName> }"`, e.g.
+                     `v-slot="{ row }"`.
+
+                     The following properties are available:
+
+                     * `row: ListItem;` The object to be visualized..
+          -->
+                    <slot v-bind="{ row }" />
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
