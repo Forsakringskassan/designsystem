@@ -1,5 +1,5 @@
 <template>
-    <teleport v-if="isOpen" to="body" :disabled="teleportDisabled">
+    <teleport v-if="isOpen" :to="teleportTarget" :disabled="teleportDisabled">
         <div ref="popup" :class="popupClasses" aria-hidden="true">
             <div ref="wrapper" class="popup-error__wrapper">
                 <!-- [html-validate-disable-next no-inline-style] -->
@@ -28,6 +28,7 @@
 import { type PropType, defineComponent } from "vue";
 import { FIcon } from "../../components/FIcon";
 import { CandidateOrder, Placement, fitInsideArea } from "../IPopup/IPopupUtils";
+import { config } from "../../config";
 import { computeArrowOffset } from "./compute-arrow-offset";
 import { type IPopupErrorData } from "./ipopuperror-data";
 
@@ -82,6 +83,9 @@ export default defineComponent({
         },
         errorStyle(): string {
             return `--i-popup-error-offset: ${this.arrowOffset}px`;
+        },
+        teleportTarget() {
+            return config.teleportTarget;
         },
     },
     watch: {
