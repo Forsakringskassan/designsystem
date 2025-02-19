@@ -28,7 +28,7 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./packages/vue/src/components/FCrudDataset/examples/FCrudDatasetCustomTextExample.vue
+  // virtual-entry:./packages/vue/src/components/FCrudDataset/examples/FCrudDatasetListExample.vue
   var import_vue3 = __require("vue");
   var import_vue4 = __require("@fkui/vue");
 
@@ -60,10 +60,9 @@
     }
   ];
 
-  // virtual-entry:./packages/vue/src/components/FCrudDataset/examples/FCrudDatasetCustomTextExample.vue
+  // virtual-entry:./packages/vue/src/components/FCrudDataset/examples/FCrudDatasetListExample.vue
   var import_vue5 = __require("vue");
   var exampleComponent = (0, import_vue3.defineComponent)({
-    name: "ExampleApp",
     components: {
       FCrudDataset: import_vue4.FCrudDataset,
       FCrudButton: import_vue4.FCrudButton,
@@ -80,13 +79,12 @@
     methods: {
       // Förpopulera ett objekt med värden
       beforeCreate() {
-        const fruit = {
+        return {
           id: String(this.getMaxId() + 1),
           name: "",
           origin: "",
           description: ""
         };
-        return fruit;
       },
       getMaxId() {
         return this.fruits.reduce((max, item) => {
@@ -99,11 +97,9 @@
     }
   });
   var _hoisted_1 = { class: "row" };
-  var _hoisted_2 = { class: "col col--lg-7 col--md-6" };
-  var _hoisted_3 = { class: "col col--lg-5 col--md-6" };
-  var _hoisted_4 = { class: "row row--align-end" };
-  var _hoisted_5 = { class: "col" };
-  var _hoisted_6 = { class: "col" };
+  var _hoisted_2 = { class: "col col--md-7" };
+  var _hoisted_3 = { class: "col col--md-5" };
+  var _hoisted_4 = { class: "button-list" };
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_crud_button = (0, import_vue5.resolveComponent)("f-crud-button");
     const _component_f_list = (0, import_vue5.resolveComponent)("f-list");
@@ -115,10 +111,8 @@
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_crud_dataset, {
       modelValue: _ctx.fruits,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.fruits = $event),
+      "data-test": "f-crud-dataset-list-example",
       "before-create": _ctx.beforeCreate,
-      "add-new-modal-header": "L\xE4gg till ny frukt",
-      "modify-modal-header": "\xC4ndra land",
-      "delete-modal-header": "Vill du ta bort frukten?",
       onCreated: _ctx.saveModel,
       onUpdated: _ctx.saveModel,
       onDeleted: _ctx.saveModel
@@ -127,18 +121,19 @@
         (0, import_vue5.createVNode)(_component_f_list, {
           items: _ctx.fruits,
           "element-id": "example",
-          "key-attribute": "id"
+          "key-attribute": "id",
+          selectable: ""
         }, {
           default: (0, import_vue5.withCtx)(({ item }) => [
+            (0, import_vue5.createElementVNode)(
+              "h3",
+              null,
+              (0, import_vue5.toDisplayString)(item.name),
+              1
+              /* TEXT */
+            ),
             (0, import_vue5.createElementVNode)("div", _hoisted_1, [
               (0, import_vue5.createElementVNode)("div", _hoisted_2, [
-                (0, import_vue5.createElementVNode)(
-                  "h3",
-                  null,
-                  (0, import_vue5.toDisplayString)(item.name),
-                  1
-                  /* TEXT */
-                ),
                 (0, import_vue5.createElementVNode)("p", null, [
                   _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)(" Land: ")),
                   (0, import_vue5.createElementVNode)(
@@ -173,8 +168,8 @@
                 ])
               ]),
               (0, import_vue5.createElementVNode)("div", _hoisted_3, [
-                (0, import_vue5.createElementVNode)("div", _hoisted_4, [
-                  (0, import_vue5.createElementVNode)("div", _hoisted_5, [
+                (0, import_vue5.createElementVNode)("ul", _hoisted_4, [
+                  (0, import_vue5.createElementVNode)("li", null, [
                     (0, import_vue5.createVNode)(_component_f_crud_button, {
                       action: "modify",
                       item,
@@ -182,7 +177,7 @@
                       label: ""
                     }, null, 8, ["item"])
                   ]),
-                  (0, import_vue5.createElementVNode)("div", _hoisted_6, [
+                  (0, import_vue5.createElementVNode)("li", null, [
                     (0, import_vue5.createVNode)(_component_f_crud_button, {
                       action: "delete",
                       item,
@@ -205,23 +200,13 @@
           /* STABLE */
         }, 8, ["items"])
       ]),
-      "add-button": (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
-        (0, import_vue5.createTextVNode)(" L\xE4gg till ny "),
-        (0, import_vue5.createElementVNode)(
-          "span",
-          { class: "sr-only" },
-          " frukt ",
-          -1
-          /* HOISTED */
-        )
-      ])),
       add: (0, import_vue5.withCtx)(({ item }) => [
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
           modelValue: item.name,
           "onUpdate:modelValue": ($event) => item.name = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
+          default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
             (0, import_vue5.createTextVNode)(" Namn ")
           ])),
           _: 2
@@ -242,7 +227,7 @@
           "onUpdate:modelValue": ($event) => item.origin = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
+          default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
             (0, import_vue5.createTextVNode)(" Land ")
           ])),
           _: 2
@@ -262,7 +247,7 @@
           modelValue: item.description,
           "onUpdate:modelValue": ($event) => item.description = $event
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
+          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
             (0, import_vue5.createTextVNode)(" Beskrivning ")
           ])),
           _: 2
@@ -282,7 +267,7 @@
           "onUpdate:modelValue": ($event) => item.name = $event,
           type: "text"
         }, {
-          label: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
+          label: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
             (0, import_vue5.createTextVNode)(" Namn ")
           ])),
           default: (0, import_vue5.withCtx)(() => [
@@ -300,7 +285,7 @@
           "onUpdate:modelValue": ($event) => item.origin = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
+          default: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
             (0, import_vue5.createTextVNode)(" Land ")
           ])),
           _: 2
@@ -319,7 +304,7 @@
       ]),
       delete: (0, import_vue5.withCtx)(({ item }) => [
         (0, import_vue5.createTextVNode)(
-          ' Vill du verkligen ta bort frukten "' + (0, import_vue5.toDisplayString)(item.name) + '" med ID ' + (0, import_vue5.toDisplayString)(item.id),
+          ' Vill du verkligen radera frukten "' + (0, import_vue5.toDisplayString)(item.name) + '" med ID ' + (0, import_vue5.toDisplayString)(item.id),
           1
           /* TEXT */
         )
@@ -331,6 +316,6 @@
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#FCrudDatasetCustomTextExample"
+    selector: "#FCrudDatasetListExample"
   });
 })();

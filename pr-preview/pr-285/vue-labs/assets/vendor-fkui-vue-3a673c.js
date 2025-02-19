@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -31,7 +31,7 @@
     FConfirmModal: () => FConfirmModal,
     FContextMenu: () => FContextMenu,
     FCrudButton: () => FCrudButton,
-    FCrudDataset: () => FCrudDataset,
+    FCrudDataset: () => _sfc_main$I,
     FCurrencyTextField: () => _sfc_main$A,
     FDataTable: () => FDataTable,
     FDatepickerField: () => FDatepickerField,
@@ -48,7 +48,7 @@
     FFormModal: () => FFormModal,
     FFormModalAction: () => FValidationFormAction,
     FIcon: () => FIcon,
-    FInteractiveTable: () => FInteractiveTable,
+    FInteractiveTable: () => _sfc_main$h,
     FKUIConfigButtonOrder: () => FKUIConfigButtonOrder,
     FLabel: () => FLabel,
     FLayoutApplicationTemplate: () => FLayoutApplicationTemplate,
@@ -75,7 +75,7 @@
     FRadioField: () => FRadioField,
     FSearchTextField: () => FSearchTextField,
     FSelectField: () => FSelectField,
-    FSortFilterDataset: () => FSortFilterDataset,
+    FSortFilterDataset: () => _sfc_main$p,
     FSortFilterDatasetInjected: () => FSortFilterDatasetInjected,
     FStaticField: () => FStaticField,
     FTableColumn: () => FTableColumn,
@@ -2134,7 +2134,7 @@
   };
   var _hoisted_1$U = ["aria-hidden"];
   var _hoisted_2$F = ["xlink:href"];
-  function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("svg", (0, import_vue.mergeProps)(_ctx.$attrs, {
       focusable: "false",
       class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
@@ -2143,7 +2143,7 @@
       "xlink:href": _ctx.spriteId
     }, null, 8, _hoisted_2$F)], 16, _hoisted_1$U);
   }
-  var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$W]]);
+  var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$T]]);
   var DATA_TEST_ATTRIBUTE_NAME = "data-test";
   function throwErrorIfEmpty(value) {
     if (!value) {
@@ -4795,7 +4795,7 @@
     class: "modal__shelf"
   };
   var _hoisted_11$3 = ["aria-label"];
-  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       key: 0,
@@ -4825,7 +4825,7 @@
       onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
     }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$T)) : (0, import_vue.createCommentVNode)("", true);
   }
-  var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$V]]);
+  var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$S]]);
   function prepareButtonList(src, buttonOrder = config.buttonOrder) {
     const list = src.map((it) => {
       var _it$event, _ref, _it$reason, _it$type;
@@ -4966,7 +4966,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_modal, {
       fullscreen: _ctx.fullscreen,
@@ -4990,7 +4990,7 @@
       _: 3
     }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
   }
-  var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$U]]);
+  var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$R]]);
   var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
   var ALIGNMENT = ["top", "center", "bottom"];
   var FLOAT = ["left", "center", "right"];
@@ -5069,12 +5069,12 @@
       }
     }
   });
-  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["iflex", _ctx.classList])
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2);
   }
-  var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$T]]);
+  var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$Q]]);
   var _sfc_main$16 = (0, import_vue.defineComponent)({
     name: "IFlexItem",
     inheritAttrs: true,
@@ -5122,12 +5122,12 @@
       }
     }
   });
-  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["iflex__item", _ctx.classList])
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2);
   }
-  var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$S]]);
+  var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$P]]);
   function focusError(item) {
     const element = document.querySelector(`#${item.id}`);
     if (!element) {
@@ -5206,7 +5206,7 @@
   var _hoisted_5$k = {
     class: "error-list__link"
   };
-  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
@@ -5260,7 +5260,7 @@
       _: 3
     })]);
   }
-  var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$R]]);
+  var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$O]]);
   var es_iterator_every = {};
   var hasRequiredEs_iterator_every;
   function requireEs_iterator_every() {
@@ -5418,13 +5418,13 @@
       }
     }
   });
-  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
       onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 32);
   }
-  var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$Q]]);
+  var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$N]]);
   var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
     FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
     FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -5576,7 +5576,7 @@
     tabindex: "-1",
     role: "group"
   };
-  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue.resolveComponent)("f-error-list");
     const _component_f_validation_group = (0, import_vue.resolveComponent)("f-validation-group");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_validation_group, {
@@ -5602,7 +5602,7 @@
       _: 3
     }, 8, ["modelValue"]);
   }
-  var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$P]]);
+  var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$M]]);
   var _sfc_main$12 = (0, import_vue.defineComponent)({
     name: "FFormModal",
     components: {
@@ -5760,7 +5760,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_validation_form = (0, import_vue.resolveComponent)("f-validation-form");
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_modal, {
@@ -5796,7 +5796,7 @@
       _: 3
     }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
   }
-  var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$O]]);
+  var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$L]]);
   async function confirmModal(callingInstance, texts) {
     const buttons = [{
       label: texts.confirm,
@@ -6169,12 +6169,12 @@
   var _hoisted_1$O = {
     "data-test": "f-error-page"
   };
-  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$O, _cache[0] || (_cache[0] = [(0, import_vue.createElementVNode)("h1", null, "Fel", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("p", null, "Ett fel har uppst\xE5tt.", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("a", {
       href: "/"
     }, "G\xE5 till startsidan", -1)]));
   }
-  var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$N]]);
+  var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$K]]);
   var _sfc_main$10 = (0, import_vue.defineComponent)({
     name: "FErrorHandlingApp",
     props: {
@@ -6204,7 +6204,7 @@
       });
     }
   });
-  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(_ctx.errorComponent), {
       key: 0,
       payload: _ctx.payload
@@ -6214,7 +6214,7 @@
       key: 2
     })]);
   }
-  var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$M]]);
+  var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$J]]);
   function isMonthBefore(date, minDate) {
     return Boolean(minDate && date.isBefore(minDate.startOfMonth()));
   }
@@ -6383,7 +6383,7 @@
   var _hoisted_6$f = {
     class: "sr-only"
   };
-  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$N, [(0, import_vue.createElementVNode)("div", _hoisted_2$z, (0, import_vue.toDisplayString)(_ctx.currentText), 1), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
       ref: "previousButton",
@@ -6407,7 +6407,7 @@
       name: "arrow-right"
     }, null, 8, ["class"])], 8, _hoisted_5$j)]);
   }
-  var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$L]]);
+  var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$I]]);
   function getDayStartOffset(days) {
     return days[0].weekDay - 1;
   }
@@ -6520,7 +6520,7 @@
     "aria-hidden": "true"
   };
   var _hoisted_12$2 = ["colspan"];
-  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("table", {
       class: "calendar-month__table",
       role: "grid",
@@ -6583,7 +6583,7 @@
       "aria-hidden": "true"
     }, null, 8, _hoisted_12$2)])) : (0, import_vue.createCommentVNode)("", true)])], 40, _hoisted_1$M);
   }
-  var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$K]]);
+  var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$H]]);
   var DayStep = {
     ArrowRight: 1,
     ArrowLeft: -1,
@@ -6698,7 +6698,7 @@
     }
   });
   var _hoisted_1$L = ["data-date", "tabindex", "onClick", "onKeydown"];
-  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_month_grid = (0, import_vue.resolveComponent)("i-calendar-month-grid");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_calendar_month_grid, {
       value: _ctx.modelValue
@@ -6721,7 +6721,7 @@
       _: 3
     }, 8, ["value"]);
   }
-  var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$J]]);
+  var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$G]]);
   var _sfc_main$Y = (0, import_vue.defineComponent)({
     name: "FCalendar",
     components: {
@@ -6776,7 +6776,7 @@
   var _hoisted_1$K = {
     class: "calendar__wrapper"
   };
-  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_navbar = (0, import_vue.resolveComponent)("i-calendar-navbar");
     const _component_i_calendar_month = (0, import_vue.resolveComponent)("i-calendar-month");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$K, [(0, import_vue.createVNode)(_component_i_calendar_navbar, {
@@ -6802,7 +6802,7 @@
       _: 3
     }, 8, ["model-value", "min-date", "max-date", "tab-date", "onClick", "onUpdate:modelValue"])]);
   }
-  var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$I]]);
+  var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$F]]);
   function getCalendarDaySrText(day, enabled, selected, t) {
     const parts = [];
     if (!enabled) {
@@ -6892,12 +6892,12 @@
   var _hoisted_2$x = {
     class: "sr-only"
   };
-  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", {
       class: (0, import_vue.normalizeClass)(_ctx.dayClasses)
     }, [(0, import_vue.createElementVNode)("span", _hoisted_1$J, (0, import_vue.toDisplayString)(_ctx.day.day), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_2$x, (0, import_vue.toDisplayString)(_ctx.srText), 1)], 2);
   }
-  var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$H]]);
+  var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$E]]);
   function useEventListener(target, event, callback) {
     (0, import_vue.onMounted)(() => {
       var _a;
@@ -6911,10 +6911,10 @@
   function useSlotUtils() {
     const $slots = (0, import_vue.useSlots)();
     return {
-      hasSlot(name) {
+      hasSlot(...args) {
         return hasSlot({
           $slots
-        }, name);
+        }, ...args);
       }
     };
   }
@@ -7074,7 +7074,7 @@
       }
     }
   });
-  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Transition, {
       onEnter: _ctx.enter,
       onAfterEnter: _ctx.afterEnter,
@@ -7086,7 +7086,7 @@
       _: 3
     }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
   }
-  var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$G]]);
+  var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$D]]);
   function offset(page, el) {
     const rect = el.getBoundingClientRect();
     return {
@@ -7652,7 +7652,7 @@
       }
     }
   });
-  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       key: 0,
       to: _ctx.teleportTarget,
@@ -7673,7 +7673,7 @@
       placement: _ctx.placement
     })))], 544)], 16)], 8, ["to", "disabled"])) : (0, import_vue.createCommentVNode)("", true);
   }
-  var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$F]]);
+  var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$C]]);
   function computeArrowOffset(placement, inputIconRect, wrapperRect) {
     switch (placement) {
       case Placement.A: {
@@ -7876,7 +7876,7 @@
     ref: "wrapper",
     class: "popup-error__wrapper"
   };
-  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       key: 0,
@@ -7900,7 +7900,7 @@
       class: "button__icon"
     })])], 6)], 512)], 2)], 8, ["disabled"])) : (0, import_vue.createCommentVNode)("", true);
   }
-  var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$E]]);
+  var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$B]]);
   function numItems(itemHeight, availableHeight, verticalSpacing) {
     const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
     return Math.min(itemsFit, 7);
@@ -8431,7 +8431,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_popup = (0, import_vue.resolveComponent)("i-popup");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup, {
       class: "ipopupmenu",
@@ -8467,7 +8467,7 @@
       _: 1
     }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
   }
-  var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$D]]);
+  var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$A]]);
   var ANIMATION_DURATION = 500;
   var NO_CSS_CLASSES = "";
   var CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
@@ -8670,13 +8670,13 @@
     ref: "content",
     "data-test": "animation-content"
   };
-  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.animationClasses),
       style: (0, import_vue.normalizeStyle)(_ctx.heightStyle)
     }, [_ctx.shouldVIf ? (0, import_vue.withDirectives)(((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$E, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)), [[import_vue.vShow, _ctx.shouldVShow]]) : (0, import_vue.createCommentVNode)("", true)], 6);
   }
-  var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$C]]);
+  var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$z]]);
   var _sfc_main$P = (0, import_vue.defineComponent)({
     name: "ISkipLink",
     mixins: [TranslationMixin],
@@ -8692,13 +8692,13 @@
     }
   });
   var _hoisted_1$D = ["href"];
-  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("a", {
       class: "iskiplink",
       href: _ctx.href
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$D);
   }
-  var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$B]]);
+  var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$y]]);
   function filterOptions(options, filter2, selectMode) {
     if ((0, import_logic.isEmpty)(filter2) || selectMode) {
       return options;
@@ -9316,7 +9316,7 @@
   var _hoisted_6$d = {
     class: "tooltip__footer"
   };
-  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, null, [((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       disabled: _ctx.iconTarget === null,
@@ -9349,7 +9349,7 @@
       name: "close"
     })])])])) : (0, import_vue.createCommentVNode)("", true)], 16)], 64);
   }
-  var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$A]]);
+  var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$x]]);
   function* labelClasses(options) {
     const {
       labelClass
@@ -9650,7 +9650,7 @@
     key: 0,
     class: "label__message label__message--error"
   };
-  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("fieldset", {
       id: _ctx.id,
@@ -9687,7 +9687,7 @@
       class: (0, import_vue.normalizeClass)(_ctx.groupContentClass)
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2)], 42, _hoisted_1$z);
   }
-  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$z]]);
+  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$w]]);
   var anyType$1 = [String, Object, Array, Number, Date, Boolean];
   var _sfc_main$K = (0, import_vue.defineComponent)({
     name: "FCheckboxField",
@@ -9885,7 +9885,7 @@
     key: 0,
     class: "checkbox__details"
   };
-  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["checkbox", _ctx.disabledClass]),
       onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -9915,7 +9915,7 @@
       _: 3
     }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : (0, import_vue.createCommentVNode)("", true)], 64)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$q)], 34);
   }
-  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$y]]);
+  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$v]]);
   var es_iterator_some = {};
   var hasRequiredEs_iterator_some;
   function requireEs_iterator_some() {
@@ -10171,7 +10171,7 @@
     key: 0,
     class: "contextmenu__separator"
   };
-  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup = (0, import_vue.resolveComponent)("i-popup");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup, {
@@ -10211,7 +10211,7 @@
       _: 1
     }, 8, ["is-open", "anchor", "focus-element"]);
   }
-  var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$x]]);
+  var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$u]]);
   var Operation = /* @__PURE__ */ ((Operation2) => {
     Operation2[Operation2["ADD"] = 0] = "ADD";
     Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -10219,30 +10219,14 @@
     Operation2[Operation2["NONE"] = 3] = "NONE";
     return Operation2;
   })(Operation || {});
-  var _sfc_main$I = (0, import_vue.defineComponent)({
-    name: "FCrudDataset",
-    components: {
-      FFormModal,
-      FConfirmModal,
-      FIcon
-    },
-    mixins: [TranslationMixin],
-    provide() {
-      return {
-        delete: (item) => {
-          this.deleteItem(item);
-        },
-        modify: (item) => {
-          this.updateItem(item);
-        },
-        registerCallbackAfterItemAdd: (callback) => {
-          this.callbackAfterItemAdd = callback;
-        },
-        registerCallbackBeforeItemDelete: (callback) => {
-          this.callbackBeforeItemDelete = callback;
-        }
-      };
-    },
+  var _hoisted_1$w = {
+    class: "crud-dataset"
+  };
+  var _hoisted_2$o = {
+    key: 0
+  };
+  var _sfc_main$I = /* @__PURE__ */ (0, import_vue.defineComponent)({
+    __name: "FCrudDataset",
     props: {
       /**
        * The list of items that should be deleted, modified or added to.
@@ -10326,25 +10310,24 @@
       }
     },
     emits: ["created", "deleted", "updated", "update:modelValue"],
-    data() {
-      return {
-        result: [],
-        Operation,
-        operation: Operation.NONE,
-        item: null,
-        originalItemToUpdate: null,
-        isFormModalOpen: false,
-        isConfirmModalOpen: false,
-        callbackAfterItemAdd() {
-        },
-        callbackBeforeItemDelete() {
-        }
-      };
-    },
-    computed: {
-      formModalButtons() {
-        const confirmButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-        const cancelButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+    setup(__props, {
+      emit: __emit
+    }) {
+      const $t2 = useTranslate();
+      const slots = (0, import_vue.useSlots)();
+      const result = (0, import_vue.ref)([]);
+      const operation = (0, import_vue.ref)(Operation.NONE);
+      const item = (0, import_vue.ref)(null);
+      const originalItemToUpdate = (0, import_vue.ref)(null);
+      const isFormModalOpen = (0, import_vue.ref)(false);
+      const isConfirmModalOpen = (0, import_vue.ref)(false);
+      const callbackAfterItemAdd = (0, import_vue.ref)(() => ({}));
+      const callbackBeforeItemDelete = (0, import_vue.ref)(() => ({}));
+      const props = __props;
+      const emit = __emit;
+      const formModalButtons = (0, import_vue.computed)(() => {
+        const confirmButtonText = operation.value === Operation.ADD ? $t2("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : $t2("fkui.crud-dataset.modal.confirm.modify", "Spara");
+        const cancelButtonText = operation.value === Operation.ADD ? $t2("fkui.crud-dataset.modal.cancel.add", "Avbryt") : $t2("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
         return [{
           label: confirmButtonText,
           event: "confirm",
@@ -10356,175 +10339,168 @@
           type: "secondary",
           submitButton: false
         }];
-      },
-      confirmDeleteButtons() {
+      });
+      const confirmDeleteButtons = (0, import_vue.computed)(() => {
         return [{
-          label: this.$t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
+          label: $t2("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
           type: "primary",
           event: "confirm"
         }, {
-          label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
+          label: $t2("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
           type: "secondary"
         }];
-      },
-      hasAddSlot() {
-        return Boolean(this.$slots.add);
-      },
-      hasDeleteSlot() {
-        return Boolean(this.$slots.delete);
-      },
-      hasModifySlot() {
-        return Boolean(this.$slots.modify);
-      },
-      formModalHeader() {
-        return this.operation === Operation.ADD ? this.addNewModalHeader : this.modifyModalHeader;
-      }
-    },
-    watch: {
-      modelValue: {
-        immediate: true,
-        deep: true,
-        handler(data) {
-          this.result = [...data];
+      });
+      const hasAddSlot = (0, import_vue.computed)(() => {
+        return Boolean(slots.add);
+      });
+      const hasDeleteSlot = (0, import_vue.computed)(() => {
+        return Boolean(slots.delete);
+      });
+      const hasModifySlot = (0, import_vue.computed)(() => {
+        return Boolean(slots.modify);
+      });
+      const formModalHeader = (0, import_vue.computed)(() => {
+        return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
+      });
+      (0, import_vue.provide)("delete", deleteItem);
+      (0, import_vue.provide)("modify", updateItem);
+      (0, import_vue.provide)("registerCallbackAfterItemAdd", (callback) => {
+        callbackAfterItemAdd.value = callback;
+      });
+      (0, import_vue.provide)("registerCallbackBeforeItemDelete", (callback) => {
+        callbackBeforeItemDelete.value = callback;
+      });
+      (0, import_vue.onMounted)(() => {
+        if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
+          throw Error("At least one template of the following must be defined. #add, #delete or #modify");
         }
-      }
-    },
-    mounted() {
-      if (!this.hasAddSlot && !this.hasDeleteSlot && !this.hasModifySlot) {
-        throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
-      }
-    },
-    methods: {
-      createItem() {
-        if (!this.hasAddSlot) {
+      });
+      (0, import_vue.watch)(() => props.modelValue, (data) => {
+        result.value = [...data];
+      }, {
+        immediate: true,
+        deep: true
+      });
+      function createItem() {
+        if (!hasAddSlot.value) {
           throw Error("No template is defined for #add");
         }
-        this.operation = Operation.ADD;
-        this.item = this.beforeCreate ? this.beforeCreate() : {};
-        this.isFormModalOpen = true;
-      },
-      deleteItem(item) {
-        if (!this.hasDeleteSlot) {
+        operation.value = Operation.ADD;
+        item.value = props.beforeCreate ? props.beforeCreate() : {};
+        isFormModalOpen.value = true;
+      }
+      function deleteItem(current) {
+        if (!hasDeleteSlot.value) {
           throw Error("No template is defined for #delete");
         }
-        this.operation = Operation.DELETE;
-        this.item = item;
-        this.isConfirmModalOpen = true;
-      },
-      onDeleteConfirm() {
-        if (!this.item) {
+        operation.value = Operation.DELETE;
+        item.value = current;
+        isConfirmModalOpen.value = true;
+      }
+      function onDeleteConfirm() {
+        if (!item.value) {
           return;
         }
-        this.callbackBeforeItemDelete(this.item);
-        this.result = this.result.filter((item) => item !== this.item);
-        this.$emit("deleted", this.item);
-        this.$emit("update:modelValue", this.result);
-        (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
+        callbackBeforeItemDelete.value(item.value);
+        result.value = result.value.filter((it) => it !== item.value);
+        emit("deleted", item.value);
+        emit("update:modelValue", result.value);
+        (0, import_logic.alertScreenReader)($t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
           assertive: true
         });
-      },
-      onDeleteClose(e) {
-        this.onModalClose();
-        if (e.reason === "close" && this.onCancel) {
-          this.onCancel();
+      }
+      function onDeleteClose(e) {
+        onModalClose();
+        if (e.reason === "close" && props.onCancel) {
+          props.onCancel();
         }
-      },
-      onModalClose() {
-        this.isFormModalOpen = false;
-        this.isConfirmModalOpen = false;
-      },
-      onFormModalSubmit() {
-        if (!this.item) {
+      }
+      function onModalClose() {
+        isFormModalOpen.value = false;
+        isConfirmModalOpen.value = false;
+      }
+      function onFormModalSubmit() {
+        if (!item.value) {
           return;
         }
-        if (this.operation === Operation.ADD) {
-          this.result.push(this.item);
-          this.$emit("created", this.item);
-          this.$emit("update:modelValue", this.result);
-          this.callbackAfterItemAdd(this.item);
-          (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
+        if (operation.value === Operation.ADD) {
+          result.value.push(item.value);
+          emit("created", item.value);
+          emit("update:modelValue", result.value);
+          callbackAfterItemAdd.value(item.value);
+          (0, import_logic.alertScreenReader)($t2("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
             assertive: true
           });
-        } else if (this.operation === Operation.MODIFY) {
-          if (this.originalItemToUpdate) {
-            Object.assign(this.originalItemToUpdate, this.item);
+        } else if (operation.value === Operation.MODIFY) {
+          if (originalItemToUpdate.value) {
+            Object.assign(originalItemToUpdate.value, item.value);
           } else {
-            this.originalItemToUpdate = this.item;
+            originalItemToUpdate.value = item.value;
           }
-          this.$emit("updated", this.originalItemToUpdate);
-          this.$emit("update:modelValue", this.result);
-          (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har \xE4ndrats"), {
+          emit("updated", originalItemToUpdate.value);
+          emit("update:modelValue", result.value);
+          (0, import_logic.alertScreenReader)($t2("fkui.crud-dataset.aria-live.modify", "Raden har \xE4ndrats"), {
             assertive: true
           });
         }
-        this.isFormModalOpen = false;
-      },
-      updateItem(item) {
-        if (!this.hasModifySlot) {
+        isFormModalOpen.value = false;
+      }
+      function updateItem(current) {
+        if (!hasModifySlot.value) {
           throw Error("No template is defined for #modify");
         }
-        this.operation = Operation.MODIFY;
-        this.originalItemToUpdate = item;
-        this.item = (0, import_logic.deepClone)(item);
-        this.isFormModalOpen = true;
+        operation.value = Operation.MODIFY;
+        originalItemToUpdate.value = current;
+        item.value = (0, import_logic.deepClone)(current);
+        isFormModalOpen.value = true;
       }
+      return (_ctx, _cache) => {
+        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$w, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), hasAddSlot.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$o, [(0, import_vue.createElementVNode)("button", {
+          "data-test": "f-crud-dataset-add-button",
+          type: "button",
+          class: "button button--tertiary crud-dataset__add-button",
+          onClick: _cache[0] || (_cache[0] = ($event) => createItem())
+        }, [(0, import_vue.createVNode)((0, import_vue.unref)(FIcon), {
+          class: "button__icon",
+          name: "plus"
+        }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)((0, import_vue.unref)($t2)("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)((0, import_vue.unref)(FFormModal), {
+          "is-open": isFormModalOpen.value,
+          "aria-close-text": (0, import_vue.unref)($t2)("fkui.crud-dataset.modal.close", "St\xE4ng"),
+          buttons: formModalButtons.value,
+          "use-error-list": false,
+          "before-submit": __props.beforeSubmit,
+          "before-validation": __props.beforeValidation,
+          "on-cancel": __props.onCancel,
+          onClose: onModalClose,
+          onCancel: __props.onCancel,
+          onSubmit: onFormModalSubmit
+        }, {
+          header: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(formModalHeader.value), 1)]),
+          "input-text-fields": (0, import_vue.withCtx)(() => [operation.value === (0, import_vue.unref)(Operation).ADD ? (0, import_vue.renderSlot)(_ctx.$slots, "add", (0, import_vue.normalizeProps)((0, import_vue.mergeProps)({
+            key: 0
+          }, {
+            item: item.value
+          }))) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), operation.value === (0, import_vue.unref)(Operation).MODIFY ? (0, import_vue.renderSlot)(_ctx.$slots, "modify", (0, import_vue.normalizeProps)((0, import_vue.mergeProps)({
+            key: 1
+          }, {
+            item: item.value
+          }))) : (0, import_vue.createCommentVNode)("", true)]),
+          _: 3
+        }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)((0, import_vue.unref)(FConfirmModal), {
+          "is-open": isConfirmModalOpen.value,
+          buttons: confirmDeleteButtons.value,
+          onConfirm: onDeleteConfirm,
+          onClose: onDeleteClose
+        }, {
+          heading: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(__props.deleteModalHeader), 1)]),
+          content: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "delete", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+            item: item.value
+          })))]),
+          _: 3
+        }, 8, ["is-open", "buttons"])]);
+      };
     }
   });
-  var _hoisted_1$w = {
-    class: "crud-dataset"
-  };
-  var _hoisted_2$o = {
-    key: 0
-  };
-  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
-    const _component_f_form_modal = (0, import_vue.resolveComponent)("f-form-modal");
-    const _component_f_confirm_modal = (0, import_vue.resolveComponent)("f-confirm-modal");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$w, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), _ctx.hasAddSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$o, [(0, import_vue.createElementVNode)("button", {
-      "data-test": "f-crud-dataset-add-button",
-      type: "button",
-      class: "button button--tertiary crud-dataset__add-button",
-      onClick: _cache[0] || (_cache[0] = ($event) => _ctx.createItem())
-    }, [(0, import_vue.createVNode)(_component_f_icon, {
-      class: "button__icon",
-      name: "plus"
-    }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_form_modal, {
-      "is-open": _ctx.isFormModalOpen,
-      "aria-close-text": _ctx.$t("fkui.crud-dataset.modal.close", "St\xE4ng"),
-      buttons: _ctx.formModalButtons,
-      "use-error-list": false,
-      "before-submit": _ctx.beforeSubmit,
-      "before-validation": _ctx.beforeValidation,
-      "on-cancel": _ctx.onCancel,
-      onClose: _ctx.onModalClose,
-      onCancel: _ctx.onCancel,
-      onSubmit: _ctx.onFormModalSubmit
-    }, {
-      header: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.formModalHeader), 1)]),
-      "input-text-fields": (0, import_vue.withCtx)(() => [_ctx.operation === _ctx.Operation.ADD ? (0, import_vue.renderSlot)(_ctx.$slots, "add", (0, import_vue.normalizeProps)((0, import_vue.mergeProps)({
-        key: 0
-      }, {
-        item: _ctx.item
-      }))) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _ctx.operation === _ctx.Operation.MODIFY ? (0, import_vue.renderSlot)(_ctx.$slots, "modify", (0, import_vue.normalizeProps)((0, import_vue.mergeProps)({
-        key: 1
-      }, {
-        item: _ctx.item
-      }))) : (0, import_vue.createCommentVNode)("", true)]),
-      _: 3
-    }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onClose", "onCancel", "onSubmit"]), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_confirm_modal, {
-      "is-open": _ctx.isConfirmModalOpen,
-      buttons: _ctx.confirmDeleteButtons,
-      onConfirm: _ctx.onDeleteConfirm,
-      onClose: _ctx.onDeleteClose
-    }, {
-      heading: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.deleteModalHeader), 1)]),
-      content: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "delete", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-        item: _ctx.item
-      })))]),
-      _: 3
-    }, 8, ["is-open", "buttons", "onConfirm", "onClose"])]);
-  }
-  var FCrudDataset = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$w]]);
   function FCrudDatasetInjected() {
     return {
       delete: (0, import_vue.inject)("delete"),
@@ -10591,7 +10567,7 @@
     key: 1,
     class: "sr-only"
   };
-  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", {
       type: "button",
@@ -10605,7 +10581,7 @@
       key: 2
     }, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.buttonText), 1)]) : (0, import_vue.createCommentVNode)("", true)]);
   }
-  var FCrudButton = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$v]]);
+  var FCrudButton = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$t]]);
   function ActivateItemInjected() {
     return {
       registerCallbackAfterItemAdd: (0, import_vue.inject)("registerCallbackAfterItemAdd", () => void 0),
@@ -10830,7 +10806,7 @@
       });
     }
   });
-  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.renderColumns && _ctx.visible ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(_ctx.tagName), (0, import_vue.mergeProps)({
       key: 0,
       class: _ctx.classes,
@@ -10842,7 +10818,7 @@
       _: 3
     }, 16, ["class", "scope"])) : (0, import_vue.createCommentVNode)("", true);
   }
-  var FTableColumn = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$u]]);
+  var FTableColumn = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$s]]);
   function FSortFilterDatasetInjected() {
     return {
       sort: (0, import_vue.inject)("sort", () => void 0),
@@ -10907,7 +10883,7 @@
     key: 0,
     class: "label__message label__message--error"
   };
-  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.$slots.tooltip ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$u, [_ctx.hasDefaultSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$n, [(0, import_vue.createElementVNode)("label", {
       class: "label",
@@ -10934,7 +10910,7 @@
       name: "error"
     }), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "error-message")])) : (0, import_vue.createCommentVNode)("", true)], 8, _hoisted_6$b));
   }
-  var FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$t]]);
+  var FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$r]]);
   function resolveWidthClass$1(words, inline) {
     return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
   }
@@ -11070,7 +11046,7 @@
     }
   });
   var _hoisted_1$t = ["id"];
-  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_label = (0, import_vue.resolveComponent)("f-label");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
@@ -11117,7 +11093,7 @@
       name: "arrow-down"
     })], 2)], 34);
   }
-  var FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$s]]);
+  var FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$q]]);
   function resolveWidthClass(words, inline) {
     return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
   }
@@ -11522,7 +11498,7 @@
     key: 3,
     class: "text-field__append-inner"
   };
-  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_label = (0, import_vue.resolveComponent)("f-label");
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup_error = (0, import_vue.resolveComponent)("i-popup-error");
@@ -11605,7 +11581,7 @@
       onClose: _ctx.onDropdownClose
     }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node", "onSelect", "onClose"])) : (0, import_vue.createCommentVNode)("", true)], 2);
   }
-  var FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$r]]);
+  var FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$p]]);
   var _sfc_main$C = (0, import_vue.defineComponent)({
     name: "FEmailTextField",
     components: {
@@ -11725,7 +11701,7 @@
   var _hoisted_1$r = {
     key: 0
   };
-  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -11755,7 +11731,7 @@
       _: 3
     }, 8, ["modelValue", "maxlength", "onPaste"])) : (0, import_vue.createCommentVNode)("", true)]);
   }
-  var FEmailTextField = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$q]]);
+  var FEmailTextField = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$o]]);
   var _sfc_main$B = (0, import_vue.defineComponent)({
     name: "FPhoneTextField",
     components: {
@@ -11856,7 +11832,7 @@
       }
     }
   });
-  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -11883,7 +11859,7 @@
       _: 3
     }, 8, ["modelValue", "maxlength"])) : (0, import_vue.createCommentVNode)("", true)]);
   }
-  var FPhoneTextField = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$p]]);
+  var FPhoneTextField = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$n]]);
   var _sfc_main$A = (0, import_vue.defineComponent)({
     name: "FCurrencyTextField",
     extends: FTextField,
@@ -11982,7 +11958,7 @@
   var _hoisted_1$q = {
     class: "sr-only"
   };
-  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [(0, import_vue.createVNode)(_component_f_text_field, (0, import_vue.mergeProps)({
@@ -12032,7 +12008,7 @@
       key: "1"
     } : void 0]), 1040, ["id", "maxlength", "model-value", "onChange", "onInput", "onBlur", "onUpdate"])]);
   }
-  var FSearchTextField = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$o]]);
+  var FSearchTextField = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$m]]);
   var _sfc_main$y = (0, import_vue.defineComponent)({
     name: "FBankAccountNumberTextField",
     extends: FTextField,
@@ -12428,39 +12404,28 @@
     const searchTerms = searchString.split(/\s+/).map((word) => word.toLocaleLowerCase());
     return list.filter((item) => includesAllSearchTerms(item, filterAttributes, searchTerms));
   }
-  var _sfc_main$p = (0, import_vue.defineComponent)({
-    name: "FSortFilterDataset",
-    components: {
-      FSelectField,
-      FTextField,
-      FIcon,
-      IFlex,
-      IFlexItem
-    },
-    mixins: [TranslationMixin],
-    provide() {
-      return {
-        sort: (attribute, ascending) => {
-          const foundAttribute = this.sortOrders.find((item) => item.attribute === attribute && item.ascending === ascending);
-          if (foundAttribute) {
-            this.sortAttribute = foundAttribute;
-          } else {
-            this.sortAttribute = {
-              attribute: "",
-              ascending: false
-            };
-          }
-          this.sortFilterData();
-          this.$emit("usedSortAttributes", this.sortAttribute);
-        },
-        registerCallbackOnSort: (callback) => {
-          this.tableCallbackOnSort = callback;
-        },
-        registerCallbackOnMount: (callback) => {
-          this.tableCallbackSortableColumns = callback;
-        }
-      };
-    },
+  var _hoisted_1$p = {
+    class: "sort-filter-dataset"
+  };
+  var _hoisted_2$l = {
+    class: "sort-filter-dataset__search"
+  };
+  var _hoisted_3$h = {
+    class: "sr-only"
+  };
+  var _hoisted_4$e = ["title"];
+  var _hoisted_5$b = {
+    class: "sr-only"
+  };
+  var _hoisted_6$9 = {
+    value: {
+      attribute: "",
+      ascending: false
+    }
+  };
+  var _hoisted_7$8 = ["value"];
+  var _sfc_main$p = /* @__PURE__ */ (0, import_vue.defineComponent)({
+    __name: "FSortFilterDataset",
     props: {
       /**
        * The data that you wish to sort or filter.
@@ -12509,7 +12474,7 @@
       placeholderFilter: {
         type: String,
         required: false,
-        default: TranslationMixin.methods.$t("fkui.sort-filter-dataset.placeholder.filter", "S\xF6k")
+        default: import_logic.TranslationService.provider.translate("fkui.sort-filter-dataset.placeholder.filter", "S\xF6k")
       },
       /**
        * The order the data will be sorted by if defaultSortAttribute has been set.
@@ -12521,222 +12486,213 @@
       }
     },
     emits: ["datasetSorted", "usedSortAttributes"],
-    data() {
-      return {
-        searchString: "",
-        sortAttribute: {
-          attribute: "",
-          ascending: false
-        },
-        sortFilterResult: [],
-        tableCallbackOnSort: () => {
-          return;
-        },
-        tableCallbackSortableColumns: () => {
-          return;
-        }
+    setup(__props, {
+      emit: __emit
+    }) {
+      const $t2 = useTranslate();
+      const searchString = (0, import_vue.ref)("");
+      const sortAttribute = (0, import_vue.ref)({
+        attribute: "",
+        name: "",
+        ascendingName: "",
+        ascending: false,
+        id: 0
+      });
+      const sortFilterResult = (0, import_vue.ref)([]);
+      const debouncedFilterResultset = (0, import_logic.debounce)(filterResultset, 250);
+      let tableCallbackOnSort = () => {
       };
-    },
-    computed: {
-      showClearButton() {
-        return this.searchString.length > 0;
-      },
-      sortOrders() {
+      let tableCallbackSortableColumns = () => {
+      };
+      const props = __props;
+      const emit = __emit;
+      const showClearButton = (0, import_vue.computed)(() => {
+        return searchString.value.length > 0;
+      });
+      const sortOrders = (0, import_vue.computed)(() => {
         const arr = [];
         let id = 0;
-        Object.keys(this.sortableAttributes).forEach((key) => {
+        Object.keys(props.sortableAttributes).forEach((key) => {
           arr.push({
             attribute: key,
-            name: this.sortableAttributes[key],
-            ascendingName: this.$t("fkui.sort-filter-dataset.label.ascending", "stigande"),
+            name: props.sortableAttributes[key],
+            ascendingName: $t2("fkui.sort-filter-dataset.label.ascending", "stigande"),
             ascending: true,
             id: id++
           });
           arr.push({
             attribute: key,
-            name: this.sortableAttributes[key],
-            ascendingName: this.$t("fkui.sort-filter-dataset.label.descending", "fallande"),
+            name: props.sortableAttributes[key],
+            ascendingName: $t2("fkui.sort-filter-dataset.label.descending", "fallande"),
             ascending: false,
             id: id++
           });
         });
         return arr;
-      },
-      filterAttributes() {
-        return Object.keys(this.sortableAttributes);
-      }
-    },
-    watch: {
-      data: {
-        immediate: true,
-        deep: true,
-        handler: function() {
-          if (this.defaultSortAttribute !== "") {
-            const foundAttribute = this.sortOrders.find((item) => item.attribute === this.defaultSortAttribute && item.ascending === this.defaultSortAscending);
-            if (foundAttribute) {
-              this.sortAttribute = foundAttribute;
-            }
-          }
-          this.sortFilterData();
-        }
-      }
-    },
-    created() {
-      this.debouncedFilterResultset = (0, import_logic.debounce)(this.filterResultset, 250).bind(this);
-    },
-    mounted() {
-      this.tableCallbackSortableColumns(Object.keys(this.sortableAttributes));
-    },
-    methods: {
-      sortFilterData() {
-        const filteredData = filter(this.data, this.filterAttributes, this.searchString);
-        if (this.sortAttribute.attribute === "") {
-          this.sortFilterResult = filteredData;
-        } else {
-          this.sortFilterResult = sort([...filteredData], this.sortAttribute.attribute, this.sortAttribute.ascending);
-        }
-        this.$nextTick(() => {
-          this.tableCallbackOnSort(this.sortAttribute.attribute, this.sortAttribute.ascending);
+      });
+      const filterAttributes = (0, import_vue.computed)(() => {
+        return Object.keys(props.sortableAttributes);
+      });
+      (0, import_vue.provide)("sort", (attribute, ascending) => {
+        const foundAttribute = sortOrders.value.find((item) => {
+          return item.attribute === attribute && item.ascending === ascending;
         });
-        this.$emit("datasetSorted", this.sortFilterResult);
-      },
-      onChangeSortAttribute() {
-        this.sortFilterData();
-        this.$emit("usedSortAttributes", this.sortAttribute);
-      },
-      onSearchInput(event) {
-        this.searchString = event.target.value;
-        this.debouncedFilterResultset();
-      },
-      onClickClearSearch() {
-        this.searchString = "";
-        this.sortFilterData();
-        const input = this.$el.querySelector(".text-field--inline input");
-        (0, import_logic.focus)(input);
-      },
-      debouncedFilterResultset() {
-      },
-      filterResultset() {
-        this.sortFilterData();
-        if (this.searchString === "") {
-          (0, import_logic.alertScreenReader)(this.$t("fkui.sort-filter-dataset.aria-live.empty", "S\xF6k redigera S\xF6k tom"));
+        if (foundAttribute) {
+          sortAttribute.value = foundAttribute;
         } else {
-          const searchAriaLive = this.$t("fkui.sort-filter-dataset.aria-live.search", `Din s\xF6kning p\xE5 "{{ search }}" gav {{ result }} tr\xE4ffar.`, {
-            result: this.sortFilterResult.length,
-            search: this.searchString
+          sortAttribute.value = {
+            attribute: "",
+            ascending: false
+          };
+        }
+        sortFilterData();
+        emit("usedSortAttributes", sortAttribute.value);
+      });
+      (0, import_vue.provide)("registerCallbackOnSort", (callback) => {
+        tableCallbackOnSort = callback;
+      });
+      (0, import_vue.provide)("registerCallbackOnMount", (callback) => {
+        tableCallbackSortableColumns = callback;
+      });
+      (0, import_vue.onMounted)(() => {
+        tableCallbackSortableColumns(Object.keys(props.sortableAttributes));
+      });
+      (0, import_vue.watch)(() => props.data, () => {
+        if (props.defaultSortAttribute !== "") {
+          const foundAttribute = sortOrders.value.find((item) => {
+            return item.attribute === props.defaultSortAttribute && item.ascending === props.defaultSortAscending;
+          });
+          if (foundAttribute) {
+            sortAttribute.value = foundAttribute;
+          }
+        }
+        sortFilterData();
+      }, {
+        immediate: true,
+        deep: true
+      });
+      function sortFilterData() {
+        const filteredData = filter(props.data, filterAttributes.value, searchString.value);
+        if (sortAttribute.value.attribute === "") {
+          sortFilterResult.value = filteredData;
+        } else {
+          sortFilterResult.value = sort([...filteredData], sortAttribute.value.attribute, sortAttribute.value.ascending);
+        }
+        (0, import_vue.nextTick)(() => {
+          tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
+        });
+        emit("datasetSorted", sortFilterResult.value);
+      }
+      function onChangeSortAttribute() {
+        sortFilterData();
+        emit("usedSortAttributes", sortAttribute.value);
+      }
+      function onSearchInput(event) {
+        searchString.value = event.target.value;
+        debouncedFilterResultset();
+      }
+      function onClickClearSearch() {
+        searchString.value = "";
+        sortFilterData();
+        const input = (0, import_vue.useTemplateRef)("search-field").value;
+        (0, import_logic.focus)(input);
+      }
+      function filterResultset() {
+        sortFilterData();
+        if (searchString.value === "") {
+          (0, import_logic.alertScreenReader)($t2("fkui.sort-filter-dataset.aria-live.empty", "S\xF6k redigera S\xF6k tom"));
+        } else {
+          const searchAriaLive = $t2("fkui.sort-filter-dataset.aria-live.search", `Din s\xF6kning p\xE5 "{{ search }}" gav {{ result }} tr\xE4ffar.`, {
+            result: sortFilterResult.value.length,
+            search: searchString.value
           });
           (0, import_logic.alertScreenReader)(searchAriaLive);
         }
       }
+      return (_ctx, _cache) => {
+        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$p, [(0, import_vue.createVNode)((0, import_vue.unref)(IFlex), {
+          collapse: "",
+          gap: "3x",
+          wrap: ""
+        }, {
+          default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)((0, import_vue.unref)(IFlexItem), {
+            shrink: "",
+            align: "center"
+          }, {
+            default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "header", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+              slotClass: "sort-filter-dataset__toolbar__header"
+            })))]),
+            _: 3
+          }), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)((0, import_vue.unref)(IFlexItem), {
+            grow: ""
+          }, {
+            default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)((0, import_vue.unref)(IFlex), {
+              collapse: "",
+              float: "right"
+            }, {
+              default: (0, import_vue.withCtx)(() => [__props.showFilter ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.unref)(IFlexItem), {
+                key: 0,
+                shrink: "",
+                align: "center"
+              }, {
+                default: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", _hoisted_2$l, [(0, import_vue.createVNode)((0, import_vue.unref)(FIcon), {
+                  name: "search",
+                  class: "sort-filter-dataset__search__magnify-icon"
+                }), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)((0, import_vue.unref)(FTextField), {
+                  ref: "search-field",
+                  modelValue: searchString.value,
+                  "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => searchString.value = $event),
+                  inline: "",
+                  placeholder: __props.placeholderFilter,
+                  maxlength: "64",
+                  onInput: onSearchInput
+                }, {
+                  default: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("span", _hoisted_3$h, (0, import_vue.toDisplayString)(__props.placeholderFilter), 1)]),
+                  _: 1
+                }, 8, ["modelValue", "placeholder"]), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), showClearButton.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", {
+                  key: 0,
+                  type: "button",
+                  class: "button button--discrete sort-filter-dataset__search__close-icon",
+                  title: (0, import_vue.unref)($t2)("fkui.sort-filter-dataset.clear.filter", "Rensa s\xF6kf\xE4lt"),
+                  onClick: onClickClearSearch
+                }, [(0, import_vue.createVNode)((0, import_vue.unref)(FIcon), {
+                  name: "close"
+                }), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_5$b, (0, import_vue.toDisplayString)((0, import_vue.unref)($t2)("fkui.sort-filter-dataset.clear.filter", "Rensa s\xF6kf\xE4lt")), 1)], 8, _hoisted_4$e)) : (0, import_vue.createCommentVNode)("", true)])]),
+                _: 1
+              })) : (0, import_vue.createCommentVNode)("", true), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), __props.showSort ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.unref)(IFlexItem), {
+                key: 1,
+                shrink: "",
+                align: "center"
+              }, {
+                default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)((0, import_vue.unref)(FSelectField), {
+                  modelValue: sortAttribute.value,
+                  "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => sortAttribute.value = $event),
+                  class: "sort-filter-dataset__sort",
+                  inline: "",
+                  onChange: onChangeSortAttribute
+                }, {
+                  label: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)((0, import_vue.unref)($t2)("fkui.sort-filter-dataset.label.sort", "Sortera\xA0p\xE5")), 1)]),
+                  default: (0, import_vue.withCtx)(() => [_cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("option", _hoisted_6$9, (0, import_vue.toDisplayString)((0, import_vue.unref)($t2)("fkui.sort-filter-dataset.label.unsorted", "V\xE4lj")), 1), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(sortOrders.value, (sortOrder) => {
+                    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("option", {
+                      key: sortOrder.id,
+                      value: sortOrder
+                    }, (0, import_vue.toDisplayString)(sortOrder.name) + " (" + (0, import_vue.toDisplayString)(sortOrder.ascendingName) + ")\n                            ", 9, _hoisted_7$8);
+                  }), 128))]),
+                  _: 1
+                }, 8, ["modelValue"])]),
+                _: 1
+              })) : (0, import_vue.createCommentVNode)("", true)]),
+              _: 1
+            })]),
+            _: 1
+          })]),
+          _: 3
+        }), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+          sortFilterResult: sortFilterResult.value
+        })))]);
+      };
     }
   });
-  var _hoisted_1$p = {
-    class: "sort-filter-dataset"
-  };
-  var _hoisted_2$l = {
-    class: "sort-filter-dataset__search"
-  };
-  var _hoisted_3$h = {
-    class: "sr-only"
-  };
-  var _hoisted_4$e = ["title"];
-  var _hoisted_5$b = {
-    class: "sr-only"
-  };
-  var _hoisted_6$9 = {
-    value: {
-      attribute: "",
-      ascending: false
-    }
-  };
-  var _hoisted_7$8 = ["value"];
-  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
-    const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
-    const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
-    const _component_f_select_field = (0, import_vue.resolveComponent)("f-select-field");
-    const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$p, [(0, import_vue.createVNode)(_component_i_flex, {
-      collapse: "",
-      gap: "3x",
-      wrap: ""
-    }, {
-      default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)(_component_i_flex_item, {
-        shrink: "",
-        align: "center"
-      }, {
-        default: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "header", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-          slotClass: "sort-filter-dataset__toolbar__header"
-        })))]),
-        _: 3
-      }), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_i_flex_item, {
-        grow: ""
-      }, {
-        default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)(_component_i_flex, {
-          collapse: "",
-          float: "right"
-        }, {
-          default: (0, import_vue.withCtx)(() => [_ctx.showFilter ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_flex_item, {
-            key: 0,
-            shrink: "",
-            align: "center"
-          }, {
-            default: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", _hoisted_2$l, [(0, import_vue.createVNode)(_component_f_icon, {
-              name: "search",
-              class: "sort-filter-dataset__search__magnify-icon"
-            }), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_text_field, {
-              modelValue: _ctx.searchString,
-              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.searchString = $event),
-              inline: "",
-              placeholder: _ctx.placeholderFilter,
-              maxlength: "64",
-              onInput: _ctx.onSearchInput
-            }, {
-              default: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("span", _hoisted_3$h, (0, import_vue.toDisplayString)(_ctx.placeholderFilter), 1)]),
-              _: 1
-            }, 8, ["modelValue", "placeholder", "onInput"]), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), _ctx.showClearButton ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", {
-              key: 0,
-              type: "button",
-              class: "button button--discrete sort-filter-dataset__search__close-icon",
-              title: _ctx.$t("fkui.sort-filter-dataset.clear.filter", "Rensa s\xF6kf\xE4lt"),
-              onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClickClearSearch && _ctx.onClickClearSearch(...args))
-            }, [(0, import_vue.createVNode)(_component_f_icon, {
-              name: "close"
-            }), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_5$b, (0, import_vue.toDisplayString)(_ctx.$t("fkui.sort-filter-dataset.clear.filter", "Rensa s\xF6kf\xE4lt")), 1)], 8, _hoisted_4$e)) : (0, import_vue.createCommentVNode)("", true)])]),
-            _: 1
-          })) : (0, import_vue.createCommentVNode)("", true), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), _ctx.showSort ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_flex_item, {
-            key: 1,
-            shrink: "",
-            align: "center"
-          }, {
-            default: (0, import_vue.withCtx)(() => [(0, import_vue.createVNode)(_component_f_select_field, {
-              modelValue: _ctx.sortAttribute,
-              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.sortAttribute = $event),
-              class: "sort-filter-dataset__sort",
-              inline: "",
-              onChange: _ctx.onChangeSortAttribute
-            }, {
-              label: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.sort-filter-dataset.label.sort", "Sortera\xA0p\xE5")), 1)]),
-              default: (0, import_vue.withCtx)(() => [_cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("option", _hoisted_6$9, (0, import_vue.toDisplayString)(_ctx.$t("fkui.sort-filter-dataset.label.unsorted", "V\xE4lj")), 1), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.sortOrders, (sortOrder) => {
-                return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("option", {
-                  key: sortOrder.id,
-                  value: sortOrder
-                }, (0, import_vue.toDisplayString)(sortOrder.name) + " (" + (0, import_vue.toDisplayString)(sortOrder.ascendingName) + ")\n                            ", 9, _hoisted_7$8);
-              }), 128))]),
-              _: 1
-            }, 8, ["modelValue", "onChange"])]),
-            _: 1
-          })) : (0, import_vue.createCommentVNode)("", true)]),
-          _: 1
-        })]),
-        _: 1
-      })]),
-      _: 3
-    }), _cache[10] || (_cache[10] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-      sortFilterResult: _ctx.sortFilterResult
-    })))]);
-  }
-  var FSortFilterDataset = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$n]]);
   var _sfc_main$o = (0, import_vue.defineComponent)({
     name: "FDataTable",
     components: {
@@ -12901,7 +12857,7 @@
     key: 1
   };
   var _hoisted_8$5 = ["colspan"];
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.wrapperClasses)
@@ -12943,7 +12899,7 @@
       }))]);
     }), 128))])], 16, _hoisted_1$o)], 2);
   }
-  var FDataTable = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$m]]);
+  var FDataTable = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$l]]);
   function isDayEnabled(day, config2) {
     return passesMinDate(day, config2.minDate) && passesMaxDate(day, config2.maxDate) && passesInvalidDates(day, config2.invalidDates) && passesInvalidWeekdays(day, config2.invalidWeekdays);
   }
@@ -13288,7 +13244,7 @@
   var _hoisted_4$c = {
     class: "datepicker-field__close"
   };
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_text_field = (0, import_vue.resolveComponent)("f-text-field");
     const _component_f_calendar_day = (0, import_vue.resolveComponent)("f-calendar-day");
@@ -13384,7 +13340,7 @@
       _: 1
     }, 8, ["is-open", "anchor", "inline", "onOpen", "onClose"])], 512);
   }
-  var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$l]]);
+  var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$k]]);
   function isDialogueTreeEndQuestion(value) {
     return Boolean(value.userData);
   }
@@ -13474,7 +13430,7 @@
     class: "dialogue-tree__list"
   };
   var _hoisted_3$e = ["onClick"];
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$m, [_ctx.options.length > 0 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("ul", _hoisted_2$i, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.options, (option, index) => {
       return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("li", {
@@ -13494,7 +13450,7 @@
       userData: _ctx.userData
     })))]);
   }
-  var FDialogueTree = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$k]]);
+  var FDialogueTree = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$j]]);
   var _sfc_main$l = (0, import_vue.defineComponent)({
     name: "FExpandablePanel",
     components: {
@@ -13588,7 +13544,7 @@
     key: 0,
     class: "expandable-panel__outside"
   };
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_expand = (0, import_vue.resolveComponent)("f-expand");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
@@ -13625,7 +13581,7 @@
       _: 3
     })], 2);
   }
-  var FExpandablePanel = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$j]]);
+  var FExpandablePanel = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$i]]);
   var _sfc_main$k = (0, import_vue.defineComponent)({
     name: "FExpandableParagraph",
     components: {
@@ -13727,7 +13683,7 @@
     key: 0,
     class: "expandable-paragraph__separator"
   };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_expand = (0, import_vue.resolveComponent)("f-expand");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
@@ -13758,7 +13714,7 @@
       _: 3
     })], 2);
   }
-  var FExpandableParagraph = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$i]]);
+  var FExpandableParagraph = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$h]]);
   var DEFAULT_ICON = "file";
   var iconMap = {
     "image/*": "pic",
@@ -13866,7 +13822,7 @@
     key: 0,
     class: "file-item__change-info"
   };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$j, [(0, import_vue.createElementVNode)("div", _hoisted_2$f, [(0, import_vue.createElementVNode)("a", (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -13879,7 +13835,7 @@
       class: "file-item__separator"
     }, null, -1))]);
   }
-  var FFileItem = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$h]]);
+  var FFileItem = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$g]]);
   var _sfc_main$i = (0, import_vue.defineComponent)({
     name: "FFileSelector",
     components: {
@@ -13946,7 +13902,7 @@
   };
   var _hoisted_2$e = ["id", "aria-labelledby", "aria-disabled"];
   var _hoisted_3$a = ["id", "for"];
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$i, [(0, import_vue.createElementVNode)("input", (0, import_vue.mergeProps)({
       id: _ctx.id,
@@ -13967,32 +13923,41 @@
       name: "paper-clip"
     }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default")], 10, _hoisted_3$a)]);
   }
-  var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$g]]);
-  var keybindings = Object.fromEntries([["Up", focusTrAbove], ["Down", focusTrBelow], ["ArrowUp", focusTrAbove], ["ArrowDown", focusTrBelow], [" ", activateRow], ["Spacebar", activateRow]]);
-  function focusTrAbove(current) {
+  var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$f]]);
+  var keybindings = {
+    Up: focusTrAbove,
+    Down: focusTrBelow,
+    ArrowUp: focusTrAbove,
+    ArrowDown: focusTrBelow,
+    " ": activateRow,
+    Spacebar: activateRow
+  };
+  function focusTrAbove(table, current) {
+    const tr = table.tr.value;
     if (current > 0) {
-      this.tr[current - 1].focus();
+      tr[current - 1].focus();
     } else {
-      this.tr[this.tr.length - 1].focus();
+      tr[tr.length - 1].focus();
     }
   }
-  function focusTrBelow(current) {
-    if (current < this.tr.length - 1) {
-      this.tr[current + 1].focus();
+  function focusTrBelow(table, current) {
+    const tr = table.tr.value;
+    if (current < tr.length - 1) {
+      tr[current + 1].focus();
     } else {
-      this.tr[0].focus();
+      tr[0].focus();
     }
   }
-  function activateRow(current) {
-    const row = this.rows[current];
-    const element = this.tr[current];
-    this.activate(row, element);
+  function activateRow(table, current) {
+    const row = table.rows[current];
+    const element = table.tr.value[current];
+    table.activate(row, element);
   }
-  function onKeydown(event, current) {
+  function onKeydown(table, event, current) {
     const fn2 = keybindings[event.key];
     if (fn2) {
       event.preventDefault();
-      fn2.call(this, current);
+      fn2(table, current);
     }
   }
   function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit, slots) {
@@ -14056,7 +14021,6 @@
       return Boolean(expandableRows(row));
     }
     return {
-      expandedRows,
       isExpandableTable,
       hasExpandableSlot,
       toggleExpanded,
@@ -14068,32 +14032,76 @@
       hasExpandableContent
     };
   }
-  function forceRepaintIE11(target) {
-    if (navigator.userAgent.includes("Trident")) {
-      target.style.display = "none";
-      target.offsetHeight;
-      target.style.removeProperty("display");
-    }
-  }
-  var _sfc_main$h = (0, import_vue.defineComponent)({
-    name: "FInteractiveTable",
-    components: {
-      FCheckboxField,
-      FIcon
+  var _hoisted_1$h = ["role"];
+  var _hoisted_2$d = {
+    key: 0
+  };
+  var _hoisted_3$9 = {
+    key: 0,
+    class: "table__column--shrink"
+  };
+  var _hoisted_4$8 = {
+    key: 1,
+    class: "table__column--shrink"
+  };
+  var _hoisted_5$6 = {
+    class: "table__row"
+  };
+  var _hoisted_6$4 = {
+    key: 0,
+    scope: "col"
+  };
+  var _hoisted_7$3 = {
+    class: "sr-only"
+  };
+  var _hoisted_8$3 = {
+    key: 1,
+    scope: "col"
+  };
+  var _hoisted_9$3 = {
+    class: "sr-only"
+  };
+  var _hoisted_10$2 = ["innerHTML"];
+  var _hoisted_11$1 = {
+    key: 1,
+    class: "table__column__description"
+  };
+  var _hoisted_12$1 = ["aria-label", "aria-expanded", "aria-level", "aria-describedby", "onKeydown", "onClick"];
+  var _hoisted_13 = {
+    key: 0
+  };
+  var _hoisted_14 = {
+    key: 0,
+    class: "table__expand-icon"
+  };
+  var _hoisted_15 = {
+    key: 1,
+    class: "table__column--selectable"
+  };
+  var _hoisted_16 = {
+    class: "table__input"
+  };
+  var _hoisted_17 = {
+    key: 0,
+    class: "sr-only"
+  };
+  var _hoisted_18 = {
+    key: 0,
+    class: "table__column--placeholder"
+  };
+  var _hoisted_19 = ["colspan"];
+  var _hoisted_20 = {
+    key: 0
+  };
+  var _hoisted_21 = {
+    key: 1
+  };
+  var _hoisted_22 = ["colspan"];
+  var _sfc_main$h = /* @__PURE__ */ (0, import_vue.defineComponent)({
+    ...{
+      inheritAttrs: false
     },
-    mixins: [TranslationMixin],
-    provide() {
-      return {
-        addColumn: (column) => {
-          this.columns = addColumn(this.columns, column);
-        },
-        setVisibilityColumn: (id, visible) => {
-          setVisibilityColumn(this.columns, id, visible);
-        },
-        textFieldTableMode: true
-      };
-    },
-    inheritAttrs: false,
+    __name: "FInteractiveTable",
     props: {
       /**
        * The rows to be listed.
@@ -14190,230 +14198,237 @@
         default: () => void 0
       }
     },
-    emits: [
-      "change",
-      "click",
-      "unselect",
-      "update:modelValue",
-      "update:active",
-      "select",
-      /**
-       * Emitted when row is expanded.
-       *
-       * @event expand
-       * @param row
-       * @type {ListItem}
-       */
-      "expand",
-      /**
-       * Emitted when row is collapsed.
-       *
-       * @event collapse
-       * @param row
-       * @type {ListItem}
-       */
-      "collapse"
-    ],
-    setup(props, context) {
-      (0, import_vue.provide)("renderColumns", (0, import_vue.computed)(() => props.rows.length > 0));
-      const sortFilterDatasetInjected = FSortFilterDatasetInjected();
-      const activateItemInjected = ActivateItemInjected();
-      const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, context.emit, context.slots);
-      return {
-        ...sortFilterDatasetInjected,
-        ...activateItemInjected,
-        ...expandableTable
-      };
-    },
-    data() {
-      return {
-        activeRow: void 0,
-        columns: [],
-        selectedRows: [],
-        tr: [],
-        tbodyKey: 0
-      };
-    },
-    computed: {
-      hasCaption() {
-        return hasSlot(this, "caption", {}, {
+    emits: ["change", "click", "unselect", "update:modelValue", "update:active", "select", "expand", "collapse"],
+    setup(__props, {
+      emit: __emit
+    }) {
+      const $t2 = useTranslate();
+      const slots = (0, import_vue.useSlots)();
+      const {
+        hasSlot: hasSlot2
+      } = useSlotUtils();
+      const {
+        sort: sort2,
+        registerCallbackOnSort,
+        registerCallbackOnMount
+      } = FSortFilterDatasetInjected();
+      const {
+        registerCallbackAfterItemAdd,
+        registerCallbackBeforeItemDelete
+      } = ActivateItemInjected();
+      const activeRow = (0, import_vue.ref)(void 0);
+      const columns = (0, import_vue.ref)([]);
+      const selectedRows = (0, import_vue.ref)([]);
+      const tr = (0, import_vue.shallowRef)([]);
+      const tbodyKey = (0, import_vue.ref)(0);
+      const props = __props;
+      const emit = __emit;
+      const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, emit, slots);
+      const {
+        isExpandableTable,
+        hasExpandableSlot,
+        toggleExpanded,
+        isExpanded,
+        rowAriaExpanded,
+        expandableRowClasses,
+        getExpandableDescribedby,
+        expandableRows,
+        hasExpandableContent
+      } = expandableTable;
+      const hasCaption = (0, import_vue.computed)(() => {
+        return hasSlot2("caption", {}, {
           stripClasses: []
         });
-      },
-      hasCheckboxDescription() {
-        const firstRow = this.rows[0];
-        return hasSlot(this, "checkbox-description", {
+      });
+      const hasCheckboxDescription = (0, import_vue.computed)(() => {
+        const firstRow = props.rows[0];
+        return hasSlot2("checkbox-description", {
           row: firstRow
         });
-      },
-      isEmpty() {
-        return this.rows.length === 0;
-      },
-      visibleColumns() {
-        return this.columns.filter((col) => col.visible);
-      },
-      tableClasses() {
+      });
+      const isEmpty2 = (0, import_vue.computed)(() => {
+        return props.rows.length === 0;
+      });
+      const visibleColumns = (0, import_vue.computed)(() => {
+        return columns.value.filter((col) => col.visible);
+      });
+      const tableClasses = (0, import_vue.computed)(() => {
         const classes = [];
-        if (this.selectable) {
+        if (props.selectable) {
           classes.push("table--selectable");
         }
-        if (this.hover) {
+        if (props.hover) {
           classes.push("table--hover");
         }
         return classes;
-      },
-      tableRole() {
-        return this.isExpandableTable ? "treegrid" : "grid";
-      },
-      wrapperClasses() {
-        return tableScrollClasses(this.scroll);
-      },
-      nbOfColumns() {
-        let columnCount = this.visibleColumns.length;
-        if (this.selectable) {
+      });
+      const tableRole = (0, import_vue.computed)(() => {
+        return isExpandableTable.value ? "treegrid" : "grid";
+      });
+      const wrapperClasses = (0, import_vue.computed)(() => {
+        return tableScrollClasses(props.scroll);
+      });
+      const nbOfColumns = (0, import_vue.computed)(() => {
+        let columnCount = visibleColumns.value.length;
+        if (props.selectable) {
           columnCount++;
         }
-        if (this.isExpandableTable) {
+        if (isExpandableTable.value) {
           columnCount++;
         }
         return columnCount;
-      }
-    },
-    watch: {
-      rows: {
-        immediate: true,
-        deep: true,
-        handler: function() {
-          if (this.modelValue) {
-            this.selectedRows = this.modelValue.filter((row) => {
-              return includeItem(row, this.rows, this.keyAttribute);
-            });
-          }
-        }
-      },
-      active: {
-        immediate: true,
-        handler: function() {
-          this.updateActiveRowFromVModel();
-        }
-      },
-      showActive: {
-        immediate: true,
-        handler: function(val) {
-          if (!val) {
-            this.tbodyKey ^= 1;
-          }
-        }
-      }
-    },
-    updated() {
-      const tbodyElement = this.$refs["tbodyElement"];
-      const trElements = [].slice.call(tbodyElement.children);
-      const trInteractableElements = trElements.filter((tr) => {
-        return tr.tabIndex === 0;
       });
-      this.tr = trInteractableElements;
-    },
-    mounted() {
-      this.registerCallbackOnSort(this.callbackOnSort);
-      this.registerCallbackOnMount(this.callbackSortableColumns);
-      this.registerCallbackAfterItemAdd(this.callbackAfterItemAdd);
-      this.registerCallbackBeforeItemDelete(this.callbackBeforeItemDelete);
-    },
-    methods: {
-      isActive(row) {
-        if (!this.showActive) {
+      (0, import_vue.provide)("addColumn", (column) => {
+        columns.value = addColumn(columns.value, column);
+      });
+      (0, import_vue.provide)("setVisibilityColumn", (id, visible) => {
+        setVisibilityColumn(columns.value, id, visible);
+      });
+      (0, import_vue.provide)("textFieldTableMode", true);
+      (0, import_vue.provide)("renderColumns", (0, import_vue.computed)(() => props.rows.length > 0));
+      (0, import_vue.watch)(() => props.rows, () => {
+        if (props.modelValue) {
+          selectedRows.value = props.modelValue.filter((row) => {
+            return includeItem(row, props.rows, props.keyAttribute);
+          });
+        }
+      }, {
+        immediate: true,
+        deep: true
+      });
+      (0, import_vue.watch)(() => props.active, () => {
+        updateActiveRowFromVModel();
+      }, {
+        immediate: true
+      });
+      (0, import_vue.watch)(() => props.showActive, (val) => {
+        if (!val) {
+          tbodyKey.value ^= 1;
+        }
+      }, {
+        immediate: true
+      });
+      function updateTr(tbodyElement) {
+        const trElements = [].slice.call(tbodyElement.children);
+        const trInteractableElements = trElements.filter((tr2) => {
+          return tr2.tabIndex === 0;
+        });
+        tr.value = trInteractableElements;
+      }
+      (0, import_vue.onUpdated)(() => {
+        const tbodyElement = (0, import_vue.useTemplateRef)("tbodyElement");
+        if (tbodyElement.value) {
+          updateTr(tbodyElement.value);
+        }
+      });
+      (0, import_vue.onMounted)(() => {
+        const tbodyElement = (0, import_vue.useTemplateRef)("tbodyElement");
+        if (tbodyElement.value) {
+          updateTr(tbodyElement.value);
+        }
+        registerCallbackOnSort(callbackOnSort);
+        registerCallbackOnMount(callbackSortableColumns);
+        registerCallbackAfterItemAdd(callbackAfterItemAdd);
+        registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
+      });
+      function forceRepaintIE11(target) {
+        if (navigator.userAgent.includes("Trident")) {
+          target.style.display = "none";
+          target.offsetHeight;
+          target.style.removeProperty("display");
+        }
+      }
+      function isActive(row) {
+        if (!props.showActive) {
           return false;
         }
-        return itemEquals(row, this.activeRow, this.keyAttribute);
-      },
-      isSelected(row) {
-        return includeItem(row, this.selectedRows, this.keyAttribute);
-      },
-      onKeydownExpandable(event, index) {
-        if (event.key === " " || event.key === "Spacebar") {
-          event.preventDefault();
-          return;
-        }
-        onKeydown.call(this, event, index);
-      },
-      onKeydown(event, index) {
-        onKeydown.call(this, event, index);
-      },
-      onClick(event, row) {
+        return itemEquals(row, activeRow.value, props.keyAttribute);
+      }
+      function isSelected(row) {
+        return includeItem(row, selectedRows.value, props.keyAttribute);
+      }
+      function onKeydown$1(event, index) {
+        onKeydown({
+          rows: props.rows,
+          tr,
+          activate
+        }, event, index);
+      }
+      function onClick(event, row) {
         const {
           target
         } = event;
         const isRelevant = ["TD", "TH"].includes(target.nodeName);
         if (isRelevant) {
           const parent = target.parentElement;
-          this.activate(row, parent);
+          activate(row, parent);
         }
-      },
-      activate(row, tr) {
-        this.$emit("click", row);
-        if (this.isExpandableTable && this.hasExpandableContent(row)) {
-          this.toggleExpanded(row);
+      }
+      function activate(row, tr2) {
+        emit("click", row);
+        if (isExpandableTable.value && hasExpandableContent(row)) {
+          toggleExpanded(row);
         }
-        if (!itemEquals(row, this.activeRow, this.keyAttribute)) {
-          this.$emit("change", row);
-          this.setActiveRow(row);
-          if (tr) {
-            tr.focus();
-            const td = tr.children[0];
+        if (!itemEquals(row, activeRow.value, props.keyAttribute)) {
+          emit("change", row);
+          setActiveRow(row);
+          if (tr2) {
+            tr2.focus();
+            const td = tr2.children[0];
             forceRepaintIE11(td);
           }
         }
-      },
-      rowDescription(row) {
-        const slot = this.$slots["row-description"];
+      }
+      function rowDescription(row) {
+        const slot = slots["row-description"];
         return renderSlotText(slot, {
           row
         });
-      },
-      onSelect(row) {
-        if (includeItem(row, this.selectedRows, this.keyAttribute)) {
-          this.selectedRows = this.selectedRows.filter((i) => !itemEquals(i, row, this.keyAttribute));
-          this.$emit("unselect", row);
+      }
+      function onSelect(row) {
+        var _a, _b;
+        if (includeItem(row, selectedRows.value, props.keyAttribute)) {
+          selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, props.keyAttribute));
+          emit("unselect", row);
         } else {
-          this.selectedRows.push(row);
-          this.$emit("select", row);
+          selectedRows.value.push(row);
+          emit("select", row);
         }
-        this.updateVModelWithSelectedRows();
-        this.$forceUpdate();
-      },
-      updateVModelWithSelectedRows() {
-        if (this.modelValue) {
-          this.$emit("update:modelValue", this.selectedRows);
+        updateVModelWithSelectedRows();
+        (_b = (_a = (0, import_vue.getCurrentInstance)()) == null ? void 0 : _a.proxy) == null ? void 0 : _b.$forceUpdate();
+      }
+      function updateVModelWithSelectedRows() {
+        if (props.modelValue) {
+          emit("update:modelValue", selectedRows.value);
         }
-      },
-      rowClasses(row, index) {
-        const active = this.isActive(row) ? ["table__row--active"] : [];
-        const selected = this.isSelected(row) ? ["table__row--selected"] : [];
-        const isExpandableRow = this.isExpandableTable && this.hasExpandableContent(row);
+      }
+      function rowClasses(row, index) {
+        const active = isActive(row) ? ["table__row--active"] : [];
+        const selected = isSelected(row) ? ["table__row--selected"] : [];
+        const isExpandableRow = isExpandableTable.value && hasExpandableContent(row);
         const expandable = isExpandableRow ? ["table__row--expandable"] : [];
-        const expanded = this.isExpanded(row) ? ["table__row--expanded-border"] : [];
-        const striped = this.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
+        const expanded = isExpanded(row) ? ["table__row--expanded-border"] : [];
+        const striped = props.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
         return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
-      },
-      rowKey(row) {
-        const key = row[this.keyAttribute];
+      }
+      function rowKey(row) {
+        const key = row[props.keyAttribute];
         if (typeof key === "undefined") {
-          throw new Error(`Key attribute [${this.keyAttribute}]' is missing in row`);
+          throw new Error(`Key attribute [${props.keyAttribute}]' is missing in row`);
         }
         return String(key);
-      },
-      columnClasses(column) {
+      }
+      function columnClasses(column) {
         const sortable = column.sortable ? ["table__column--sortable"] : [];
         return ["table__column", `table__column--${column.type}`, ...sortable, column.size];
-      },
-      iconClasses(column) {
+      }
+      function iconClasses2(column) {
         return getSortableIconClasses(column);
-      },
-      iconName(column) {
+      }
+      function iconName(column) {
         return getSortableIconName(column);
-      },
-      onClickColumnHeader(column) {
+      }
+      function onClickColumnHeader(column) {
         if (!column.sortable) {
           return;
         }
@@ -14422,205 +14437,137 @@
           columnName = "";
           column.sort = FTableColumnSort.UNSORTED;
         }
-        this.sort(columnName, column.sort !== FTableColumnSort.ASCENDING);
-      },
-      callbackOnSort(columnName, ascending) {
-        updateSortOrder(this.columns, columnName, ascending);
-      },
-      callbackSortableColumns(columnNames) {
-        setSortableColumns(this.columns, columnNames);
-      },
-      callbackAfterItemAdd(item) {
-        this.activate(item, null);
-      },
-      callbackBeforeItemDelete(item) {
-        if (this.rows.length === 0) {
+        sort2(columnName, column.sort !== FTableColumnSort.ASCENDING);
+      }
+      function callbackOnSort(columnName, ascending) {
+        updateSortOrder(columns.value, columnName, ascending);
+      }
+      function callbackSortableColumns(columnNames) {
+        setSortableColumns(columns.value, columnNames);
+      }
+      function callbackAfterItemAdd(item) {
+        activate(item, null);
+      }
+      function callbackBeforeItemDelete(item) {
+        if (props.rows.length === 0) {
           return;
         }
-        let targetIndex = this.rows.indexOf(item) - 1;
-        if (targetIndex < 0 && this.rows.length > 1) {
+        let targetIndex = props.rows.indexOf(item) - 1;
+        if (targetIndex < 0 && props.rows.length > 1) {
           targetIndex = 1;
         } else if (targetIndex < 0) {
           targetIndex = 0;
         }
-        this.activate(this.rows[targetIndex], this.tr[targetIndex]);
-      },
-      escapeNewlines(value) {
-        return value.replace(/\n/g, "<br/>");
-      },
-      updateActiveRowFromVModel() {
-        if (this.active === void 0) {
-          this.setActiveRow(void 0);
-        } else if (!itemEquals(this.active, this.activeRow, this.keyAttribute)) {
-          this.setActiveRow(this.active);
-        }
-      },
-      setActiveRow(row) {
-        this.activeRow = row;
-        this.$emit("update:active", this.activeRow);
+        activate(props.rows[targetIndex], tr.value[targetIndex]);
       }
+      function escapeNewlines(value) {
+        return value.replace(/\n/g, "<br/>");
+      }
+      function updateActiveRowFromVModel() {
+        if (props.active === void 0) {
+          setActiveRow(void 0);
+        } else if (!itemEquals(props.active, activeRow.value, props.keyAttribute)) {
+          setActiveRow(props.active);
+        }
+      }
+      function setActiveRow(row) {
+        activeRow.value = row;
+        emit("update:active", activeRow.value);
+      }
+      return (_ctx, _cache) => {
+        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
+          class: (0, import_vue.normalizeClass)(wrapperClasses.value)
+        }, [(0, import_vue.createCommentVNode)("", true), _cache[18] || (_cache[18] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("table", (0, import_vue.mergeProps)({
+          class: ["table", tableClasses.value],
+          role: tableRole.value
+        }, _ctx.$attrs), [hasCaption.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("caption", _hoisted_2$d, [(0, import_vue.renderSlot)(_ctx.$slots, "caption")])) : (0, import_vue.createCommentVNode)("", true), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("colgroup", null, [(0, import_vue.unref)(isExpandableTable) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_3$9)) : (0, import_vue.createCommentVNode)("", true), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), __props.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_4$8)) : (0, import_vue.createCommentVNode)("", true), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(columns.value, (column) => {
+          return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", {
+            key: column.id,
+            class: (0, import_vue.normalizeClass)(column.size)
+          }, null, 2);
+        }), 128))]), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("thead", null, [(0, import_vue.createElementVNode)("tr", _hoisted_5$6, [(0, import_vue.unref)(isExpandableTable) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_6$4, [(0, import_vue.createElementVNode)("span", _hoisted_7$3, (0, import_vue.toDisplayString)((0, import_vue.unref)($t2)("fkui.interactive-table.select", "Expandera")), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), __props.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_8$3, [(0, import_vue.createElementVNode)("span", _hoisted_9$3, (0, import_vue.toDisplayString)((0, import_vue.unref)($t2)("fkui.interactive-table.select", "Markera")), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(visibleColumns.value, (column) => {
+          return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", (0, import_vue.mergeProps)({
+            key: column.id,
+            scope: "col",
+            class: columnClasses(column)
+          }, (0, import_vue.toHandlers)(column.sortable ? {
+            click: () => onClickColumnHeader(column)
+          } : {}, true)), [(0, import_vue.createElementVNode)("span", {
+            innerHTML: escapeNewlines(column.title)
+          }, null, 8, _hoisted_10$2), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), column.sortable ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.unref)(FIcon), {
+            key: 0,
+            class: (0, import_vue.normalizeClass)(iconClasses2(column)),
+            name: iconName(column)
+          }, null, 8, ["class", "name"])) : (0, import_vue.createCommentVNode)("", true), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), column.description ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_11$1, (0, import_vue.toDisplayString)(column.description), 1)) : (0, import_vue.createCommentVNode)("", true)], 16);
+        }), 128))])]), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tbody", {
+          ref: "tbodyElement",
+          key: tbodyKey.value
+        }, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(__props.rows, (row, index) => {
+          return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
+            key: rowKey(row)
+          }, [(0, import_vue.createElementVNode)("tr", {
+            class: (0, import_vue.normalizeClass)(rowClasses(row, index)),
+            "aria-label": rowDescription(row),
+            "aria-expanded": (0, import_vue.unref)(rowAriaExpanded)(row),
+            "aria-level": (0, import_vue.unref)(isExpandableTable) ? 1 : void 0,
+            "aria-describedby": (0, import_vue.unref)(getExpandableDescribedby)(row),
+            tabindex: "0",
+            onKeydown: (0, import_vue.withModifiers)(($event) => onKeydown$1($event, index), ["self"]),
+            onClick: ($event) => onClick($event, row)
+          }, [(0, import_vue.unref)(isExpandableTable) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_13, [(0, import_vue.unref)(hasExpandableContent)(row) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_14, [(0, import_vue.createVNode)((0, import_vue.unref)(FIcon), {
+            name: "arrow-right",
+            rotate: (0, import_vue.unref)(isExpanded)(row) ? "270" : "90"
+          }, null, 8, ["rotate"])])) : (0, import_vue.createCommentVNode)("", true)])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), __props.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_15, [(0, import_vue.createElementVNode)("div", _hoisted_16, [(0, import_vue.createVNode)((0, import_vue.unref)(FCheckboxField), {
+            value: true,
+            "model-value": isSelected(row),
+            onClick: (0, import_vue.withModifiers)(($event) => onSelect(row), ["self"])
+          }, {
+            default: (0, import_vue.withCtx)(() => [hasCheckboxDescription.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_17, [(0, import_vue.renderSlot)(_ctx.$slots, "checkbox-description", (0, import_vue.mergeProps)({
+              ref_for: true
+            }, {
+              row
+            }))])) : (0, import_vue.createCommentVNode)("", true)]),
+            _: 2
+          }, 1032, ["model-value", "onClick"])])])) : (0, import_vue.createCommentVNode)("", true), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.mergeProps)({
+            ref_for: true
+          }, {
+            row
+          }))], 42, _hoisted_12$1), _cache[11] || (_cache[11] = (0, import_vue.createTextVNode)()), (0, import_vue.unref)(isExpandableTable) && (0, import_vue.unref)(hasExpandableContent)(row) ? ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, {
+            key: 0
+          }, (0, import_vue.renderList)((0, import_vue.unref)(expandableRows)(row), (expandableRow, expandableIndex) => {
+            return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", {
+              key: rowKey(expandableRow),
+              "aria-level": "2",
+              class: (0, import_vue.normalizeClass)((0, import_vue.unref)(expandableRowClasses)(row, expandableIndex))
+            }, [_cache[8] || (_cache[8] = (0, import_vue.createElementVNode)("td", {
+              class: "table__column--placeholder"
+            }, null, -1)), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), __props.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_18)) : (0, import_vue.createCommentVNode)("", true), _cache[10] || (_cache[10] = (0, import_vue.createTextVNode)()), !(0, import_vue.unref)(hasExpandableSlot) ? (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.mergeProps)({
+              key: 1,
+              ref_for: true
+            }, {
+              row: expandableRow
+            })) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", {
+              key: 2,
+              class: "table__column table__column--indented",
+              colspan: columns.value.length
+            }, [(0, import_vue.renderSlot)(_ctx.$slots, "expandable", (0, import_vue.mergeProps)({
+              ref_for: true
+            }, {
+              expandableRow,
+              parentRow: row
+            }))], 8, _hoisted_19))], 2);
+          }), 128)) : (0, import_vue.createCommentVNode)("", true)], 64);
+        }), 128)), _cache[13] || (_cache[13] = (0, import_vue.createTextVNode)()), isEmpty2.value && columns.value.length === 0 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_20, [(0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+          row: {}
+        })))])) : (0, import_vue.createCommentVNode)("", true), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), isEmpty2.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_21, [(0, import_vue.createElementVNode)("td", {
+          class: "table__column table__column--action",
+          colspan: nbOfColumns.value
+        }, [(0, import_vue.renderSlot)(_ctx.$slots, "empty", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)((0, import_vue.unref)($t2)("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_22), _cache[12] || (_cache[12] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+          row: {}
+        })))])) : (0, import_vue.createCommentVNode)("", true)]))], 16, _hoisted_1$h)], 2);
+      };
     }
   });
-  var _hoisted_1$h = ["role"];
-  var _hoisted_2$d = {
-    key: 0
-  };
-  var _hoisted_3$9 = {
-    key: 0,
-    class: "table__column--shrink"
-  };
-  var _hoisted_4$8 = {
-    key: 1,
-    class: "table__column--shrink"
-  };
-  var _hoisted_5$6 = {
-    class: "table__row"
-  };
-  var _hoisted_6$4 = {
-    key: 0,
-    scope: "col"
-  };
-  var _hoisted_7$3 = {
-    class: "sr-only"
-  };
-  var _hoisted_8$3 = {
-    key: 1,
-    scope: "col"
-  };
-  var _hoisted_9$3 = {
-    class: "sr-only"
-  };
-  var _hoisted_10$2 = ["innerHTML"];
-  var _hoisted_11$1 = {
-    key: 1,
-    class: "table__column__description"
-  };
-  var _hoisted_12$1 = ["aria-label", "aria-expanded", "aria-level", "aria-describedby", "onKeydown", "onClick"];
-  var _hoisted_13 = {
-    key: 0
-  };
-  var _hoisted_14 = {
-    key: 0,
-    class: "table__expand-icon"
-  };
-  var _hoisted_15 = {
-    key: 1,
-    class: "table__column--selectable"
-  };
-  var _hoisted_16 = {
-    class: "table__input"
-  };
-  var _hoisted_17 = {
-    key: 0,
-    class: "sr-only"
-  };
-  var _hoisted_18 = {
-    key: 0,
-    class: "table__column--placeholder"
-  };
-  var _hoisted_19 = ["colspan"];
-  var _hoisted_20 = {
-    key: 0
-  };
-  var _hoisted_21 = {
-    key: 1
-  };
-  var _hoisted_22 = ["colspan"];
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
-    const _component_f_checkbox_field = (0, import_vue.resolveComponent)("f-checkbox-field");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
-      class: (0, import_vue.normalizeClass)(_ctx.wrapperClasses)
-    }, [(0, import_vue.createElementVNode)("table", (0, import_vue.mergeProps)({
-      class: ["table", _ctx.tableClasses],
-      role: _ctx.tableRole
-    }, _ctx.$attrs), [_ctx.hasCaption ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("caption", _hoisted_2$d, [(0, import_vue.renderSlot)(_ctx.$slots, "caption")])) : (0, import_vue.createCommentVNode)("", true), _cache[15] || (_cache[15] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("colgroup", null, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_3$9)) : (0, import_vue.createCommentVNode)("", true), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", _hoisted_4$8)) : (0, import_vue.createCommentVNode)("", true), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.columns, (column) => {
-      return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("col", {
-        key: column.id,
-        class: (0, import_vue.normalizeClass)(column.size)
-      }, null, 2);
-    }), 128))]), _cache[16] || (_cache[16] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("thead", null, [(0, import_vue.createElementVNode)("tr", _hoisted_5$6, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_6$4, [(0, import_vue.createElementVNode)("span", _hoisted_7$3, (0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.select", "Expandera")), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", _hoisted_8$3, [(0, import_vue.createElementVNode)("span", _hoisted_9$3, (0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.select", "Markera")), 1)])) : (0, import_vue.createCommentVNode)("", true), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.visibleColumns, (column) => {
-      return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("th", (0, import_vue.mergeProps)({
-        key: column.id,
-        scope: "col",
-        class: _ctx.columnClasses(column)
-      }, (0, import_vue.toHandlers)(column.sortable ? {
-        click: () => _ctx.onClickColumnHeader(column)
-      } : {}, true)), [(0, import_vue.createElementVNode)("span", {
-        innerHTML: _ctx.escapeNewlines(column.title)
-      }, null, 8, _hoisted_10$2), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), column.sortable ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_icon, {
-        key: 0,
-        class: (0, import_vue.normalizeClass)(_ctx.iconClasses(column)),
-        name: _ctx.iconName(column)
-      }, null, 8, ["class", "name"])) : (0, import_vue.createCommentVNode)("", true), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), column.description ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_11$1, (0, import_vue.toDisplayString)(column.description), 1)) : (0, import_vue.createCommentVNode)("", true)], 16);
-    }), 128))])]), _cache[17] || (_cache[17] = (0, import_vue.createTextVNode)()), ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tbody", {
-      ref: "tbodyElement",
-      key: _ctx.tbodyKey
-    }, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.rows, (row, index) => {
-      return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
-        key: _ctx.rowKey(row)
-      }, [(0, import_vue.createElementVNode)("tr", {
-        class: (0, import_vue.normalizeClass)(_ctx.rowClasses(row, index)),
-        "aria-label": _ctx.rowDescription(row),
-        "aria-expanded": _ctx.rowAriaExpanded(row),
-        "aria-level": _ctx.isExpandableTable ? 1 : void 0,
-        "aria-describedby": _ctx.getExpandableDescribedby(row),
-        tabindex: "0",
-        onKeydown: (0, import_vue.withModifiers)(($event) => _ctx.onKeydown($event, index), ["self"]),
-        onClick: ($event) => _ctx.onClick($event, row, index)
-      }, [_ctx.isExpandableTable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_13, [_ctx.hasExpandableContent(row) ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_14, [(0, import_vue.createVNode)(_component_f_icon, {
-        name: "arrow-right",
-        rotate: _ctx.isExpanded(row) ? "270" : "90"
-      }, null, 8, ["rotate"])])) : (0, import_vue.createCommentVNode)("", true)])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_15, [(0, import_vue.createElementVNode)("div", _hoisted_16, [(0, import_vue.createVNode)(_component_f_checkbox_field, {
-        value: true,
-        "model-value": _ctx.isSelected(row),
-        onClick: (0, import_vue.withModifiers)(($event) => _ctx.onSelect(row), ["self"])
-      }, {
-        default: (0, import_vue.withCtx)(() => [_ctx.hasCheckboxDescription ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_17, [(0, import_vue.renderSlot)(_ctx.$slots, "checkbox-description", (0, import_vue.mergeProps)({
-          ref_for: true
-        }, {
-          row
-        }))])) : (0, import_vue.createCommentVNode)("", true)]),
-        _: 2
-      }, 1032, ["model-value", "onClick"])])])) : (0, import_vue.createCommentVNode)("", true), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.mergeProps)({
-        ref_for: true
-      }, {
-        row
-      }))], 42, _hoisted_12$1), _cache[11] || (_cache[11] = (0, import_vue.createTextVNode)()), _ctx.isExpandableTable && _ctx.hasExpandableContent(row) ? ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, {
-        key: 0
-      }, (0, import_vue.renderList)(_ctx.expandableRows(row), (expandableRow, expandableIndex) => {
-        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", {
-          key: _ctx.rowKey(expandableRow),
-          "aria-level": "2",
-          class: (0, import_vue.normalizeClass)(_ctx.expandableRowClasses(row, expandableIndex))
-        }, [_cache[8] || (_cache[8] = (0, import_vue.createElementVNode)("td", {
-          class: "table__column--placeholder"
-        }, null, -1)), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), _ctx.selectable ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", _hoisted_18)) : (0, import_vue.createCommentVNode)("", true), _cache[10] || (_cache[10] = (0, import_vue.createTextVNode)()), !_ctx.hasExpandableSlot ? (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.mergeProps)({
-          key: 1,
-          ref_for: true
-        }, {
-          row: expandableRow
-        })) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("td", {
-          key: 2,
-          class: "table__column table__column--indented",
-          colspan: _ctx.columns.length
-        }, [(0, import_vue.renderSlot)(_ctx.$slots, "expandable", (0, import_vue.mergeProps)({
-          ref_for: true
-        }, {
-          expandableRow,
-          parentRow: row
-        }))], 8, _hoisted_19))], 2);
-      }), 128)) : (0, import_vue.createCommentVNode)("", true)], 64);
-    }), 128)), _cache[13] || (_cache[13] = (0, import_vue.createTextVNode)()), _ctx.isEmpty && _ctx.columns.length === 0 ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_20, [(0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-      row: {}
-    })))])) : (0, import_vue.createCommentVNode)("", true), _cache[14] || (_cache[14] = (0, import_vue.createTextVNode)()), _ctx.isEmpty ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("tr", _hoisted_21, [(0, import_vue.createElementVNode)("td", {
-      class: "table__column table__column--action",
-      colspan: _ctx.nbOfColumns
-    }, [(0, import_vue.renderSlot)(_ctx.$slots, "empty", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_22), _cache[12] || (_cache[12] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "default", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-      row: {}
-    })))])) : (0, import_vue.createCommentVNode)("", true)]))], 16, _hoisted_1$h)], 2);
-  }
-  var FInteractiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$f]]);
   var _sfc_main$g = (0, import_vue.defineComponent)({
     name: "FLayoutApplicationTemplate",
     computed: {

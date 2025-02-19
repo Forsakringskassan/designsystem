@@ -3237,6 +3237,13 @@ function ensureValidVNode(vnodes) {
     return true;
   }) ? vnodes : null;
 }
+function toHandlers(obj, preserveCaseIfNecessary) {
+  const ret = {};
+  for (const key in obj) {
+    ret[/[A-Z]/.test(key) ? `on:${key}` : toHandlerKey(key)] = obj[key];
+  }
+  return ret;
+}
 const getPublicInstance = (i) => {
   if (!i) return null;
   if (isStatefulComponent(i)) return getComponentPublicInstance(i);
@@ -12986,7 +12993,7 @@ const _export_sfc$1 = (sfc, props) => {
 };
 const _hoisted_1$U = ["aria-hidden"];
 const _hoisted_2$F = ["xlink:href"];
-function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
     focusable: "false",
     class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
@@ -12995,7 +13002,7 @@ function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
     "xlink:href": _ctx.spriteId
   }, null, 8, _hoisted_2$F)], 16, _hoisted_1$U);
 }
-const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$W]]);
+const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$T]]);
 const DATA_TEST_ATTRIBUTE_NAME = "data-test";
 function throwErrorIfEmpty(value) {
   if (!value) {
@@ -15421,7 +15428,7 @@ const _hoisted_10$4 = {
   class: "modal__shelf"
 };
 const _hoisted_11$3 = ["aria-label"];
-function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -15451,7 +15458,7 @@ function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$T)) : createCommentVNode("", true);
 }
-const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$V]]);
+const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$S]]);
 function prepareButtonList(src, buttonOrder = config.buttonOrder) {
   const list = src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
@@ -15592,7 +15599,7 @@ const _hoisted_3$v = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
     fullscreen: _ctx.fullscreen,
@@ -15616,7 +15623,7 @@ function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
-const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$U]]);
+const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$R]]);
 const GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 const ALIGNMENT = ["top", "center", "bottom"];
 const FLOAT = ["left", "center", "right"];
@@ -15695,12 +15702,12 @@ const _sfc_main$17 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$T]]);
+const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$Q]]);
 const _sfc_main$16 = /* @__PURE__ */ defineComponent({
   name: "IFlexItem",
   inheritAttrs: true,
@@ -15748,12 +15755,12 @@ const _sfc_main$16 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex__item", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$S]]);
+const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$P]]);
 function focusError(item) {
   const element = document.querySelector(`#${item.id}`);
   if (!element) {
@@ -15832,7 +15839,7 @@ const _hoisted_4$p = ["onClick"];
 const _hoisted_5$k = {
   class: "error-list__link"
 };
-function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
@@ -15886,7 +15893,7 @@ function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })]);
 }
-const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$R]]);
+const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$O]]);
 var es_iterator_every = {};
 var hasRequiredEs_iterator_every;
 function requireEs_iterator_every() {
@@ -16044,13 +16051,13 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
     onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
   }, [renderSlot(_ctx.$slots, "default")], 32);
 }
-const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$Q]]);
+const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$N]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -16202,7 +16209,7 @@ const _hoisted_2$B = {
   tabindex: "-1",
   role: "group"
 };
-function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = resolveComponent("f-error-list");
   const _component_f_validation_group = resolveComponent("f-validation-group");
   return openBlock(), createBlock(_component_f_validation_group, {
@@ -16228,7 +16235,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["modelValue"]);
 }
-const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$P]]);
+const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$M]]);
 const _sfc_main$12 = /* @__PURE__ */ defineComponent({
   name: "FFormModal",
   components: {
@@ -16386,7 +16393,7 @@ const _hoisted_3$t = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = resolveComponent("f-validation-form");
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
@@ -16422,7 +16429,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
-const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$12, [["render", _sfc_render$O]]);
+const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$12, [["render", _sfc_render$L]]);
 function isVueComponent(element) {
   return Boolean(element && typeof element === "object" && "$el" in element);
 }
@@ -16616,6 +16623,16 @@ function useEventListener(target, event, callback) {
     (_a = toValue(target)) == null ? void 0 : _a.removeEventListener(event, callback);
   });
 }
+function useSlotUtils() {
+  const $slots = useSlots();
+  return {
+    hasSlot(...args) {
+      return hasSlot({
+        $slots
+      }, ...args);
+    }
+  };
+}
 const _sfc_main$V = /* @__PURE__ */ defineComponent({
   name: "FExpand",
   data() {
@@ -16670,7 +16687,7 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Transition, {
     onEnter: _ctx.enter,
     onAfterEnter: _ctx.afterEnter,
@@ -16682,7 +16699,7 @@ function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
-const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$V, [["render", _sfc_render$G]]);
+const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$V, [["render", _sfc_render$D]]);
 var Placement = /* @__PURE__ */ ((Placement2) => {
   Placement2["A"] = "A";
   Placement2["B"] = "B";
@@ -17100,7 +17117,7 @@ const _hoisted_1$H = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
-function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
     key: 0,
@@ -17124,7 +17141,7 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     class: "button__icon"
   })])], 6)], 512)], 2)], 8, ["disabled"])) : createCommentVNode("", true);
 }
-const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$T, [["render", _sfc_render$E]]);
+const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$T, [["render", _sfc_render$B]]);
 function numItems(itemHeight, availableHeight, verticalSpacing) {
   const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
   return Math.min(itemsFit, 7);
@@ -18157,7 +18174,7 @@ const _hoisted_4$i = {
   key: 0,
   class: "checkbox__details"
 };
-function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["checkbox", _ctx.disabledClass]),
     onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -18187,7 +18204,7 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$q)], 34);
 }
-const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$K, [["render", _sfc_render$y]]);
+const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$K, [["render", _sfc_render$v]]);
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
 function requireEs_iterator_some() {
@@ -18226,30 +18243,14 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["NONE"] = 3] = "NONE";
   return Operation2;
 })(Operation || {});
+const _hoisted_1$w = {
+  class: "crud-dataset"
+};
+const _hoisted_2$o = {
+  key: 0
+};
 /* @__PURE__ */ defineComponent({
-  name: "FCrudDataset",
-  components: {
-    FFormModal,
-    FConfirmModal,
-    FIcon
-  },
-  mixins: [TranslationMixin],
-  provide() {
-    return {
-      delete: (item) => {
-        this.deleteItem(item);
-      },
-      modify: (item) => {
-        this.updateItem(item);
-      },
-      registerCallbackAfterItemAdd: (callback) => {
-        this.callbackAfterItemAdd = callback;
-      },
-      registerCallbackBeforeItemDelete: (callback) => {
-        this.callbackBeforeItemDelete = callback;
-      }
-    };
-  },
+  __name: "FCrudDataset",
   props: {
     /**
      * The list of items that should be deleted, modified or added to.
@@ -18333,25 +18334,24 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
     }
   },
   emits: ["created", "deleted", "updated", "update:modelValue"],
-  data() {
-    return {
-      result: [],
-      Operation,
-      operation: Operation.NONE,
-      item: null,
-      originalItemToUpdate: null,
-      isFormModalOpen: false,
-      isConfirmModalOpen: false,
-      callbackAfterItemAdd() {
-      },
-      callbackBeforeItemDelete() {
-      }
-    };
-  },
-  computed: {
-    formModalButtons() {
-      const confirmButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-      const cancelButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+  setup(__props, {
+    emit: __emit
+  }) {
+    const $t2 = useTranslate();
+    const slots = useSlots();
+    const result = ref([]);
+    const operation = ref(Operation.NONE);
+    const item = ref(null);
+    const originalItemToUpdate = ref(null);
+    const isFormModalOpen = ref(false);
+    const isConfirmModalOpen = ref(false);
+    const callbackAfterItemAdd = ref(() => ({}));
+    const callbackBeforeItemDelete = ref(() => ({}));
+    const props = __props;
+    const emit2 = __emit;
+    const formModalButtons = computed(() => {
+      const confirmButtonText = operation.value === Operation.ADD ? $t2("fkui.crud-dataset.modal.confirm.add", "Lägg till") : $t2("fkui.crud-dataset.modal.confirm.modify", "Spara");
+      const cancelButtonText = operation.value === Operation.ADD ? $t2("fkui.crud-dataset.modal.cancel.add", "Avbryt") : $t2("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
       return [{
         label: confirmButtonText,
         event: "confirm",
@@ -18363,118 +18363,166 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
         type: "secondary",
         submitButton: false
       }];
-    },
-    confirmDeleteButtons() {
+    });
+    const confirmDeleteButtons = computed(() => {
       return [{
-        label: this.$t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
+        label: $t2("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
         type: "primary",
         event: "confirm"
       }, {
-        label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
+        label: $t2("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
         type: "secondary"
       }];
-    },
-    hasAddSlot() {
-      return Boolean(this.$slots.add);
-    },
-    hasDeleteSlot() {
-      return Boolean(this.$slots.delete);
-    },
-    hasModifySlot() {
-      return Boolean(this.$slots.modify);
-    },
-    formModalHeader() {
-      return this.operation === Operation.ADD ? this.addNewModalHeader : this.modifyModalHeader;
-    }
-  },
-  watch: {
-    modelValue: {
-      immediate: true,
-      deep: true,
-      handler(data) {
-        this.result = [...data];
+    });
+    const hasAddSlot = computed(() => {
+      return Boolean(slots.add);
+    });
+    const hasDeleteSlot = computed(() => {
+      return Boolean(slots.delete);
+    });
+    const hasModifySlot = computed(() => {
+      return Boolean(slots.modify);
+    });
+    const formModalHeader = computed(() => {
+      return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
+    });
+    provide("delete", deleteItem);
+    provide("modify", updateItem);
+    provide("registerCallbackAfterItemAdd", (callback) => {
+      callbackAfterItemAdd.value = callback;
+    });
+    provide("registerCallbackBeforeItemDelete", (callback) => {
+      callbackBeforeItemDelete.value = callback;
+    });
+    onMounted(() => {
+      if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
+        throw Error("At least one template of the following must be defined. #add, #delete or #modify");
       }
-    }
-  },
-  mounted() {
-    if (!this.hasAddSlot && !this.hasDeleteSlot && !this.hasModifySlot) {
-      throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
-    }
-  },
-  methods: {
-    createItem() {
-      if (!this.hasAddSlot) {
+    });
+    watch(() => props.modelValue, (data) => {
+      result.value = [...data];
+    }, {
+      immediate: true,
+      deep: true
+    });
+    function createItem() {
+      if (!hasAddSlot.value) {
         throw Error("No template is defined for #add");
       }
-      this.operation = Operation.ADD;
-      this.item = this.beforeCreate ? this.beforeCreate() : {};
-      this.isFormModalOpen = true;
-    },
-    deleteItem(item) {
-      if (!this.hasDeleteSlot) {
+      operation.value = Operation.ADD;
+      item.value = props.beforeCreate ? props.beforeCreate() : {};
+      isFormModalOpen.value = true;
+    }
+    function deleteItem(current) {
+      if (!hasDeleteSlot.value) {
         throw Error("No template is defined for #delete");
       }
-      this.operation = Operation.DELETE;
-      this.item = item;
-      this.isConfirmModalOpen = true;
-    },
-    onDeleteConfirm() {
-      if (!this.item) {
+      operation.value = Operation.DELETE;
+      item.value = current;
+      isConfirmModalOpen.value = true;
+    }
+    function onDeleteConfirm() {
+      if (!item.value) {
         return;
       }
-      this.callbackBeforeItemDelete(this.item);
-      this.result = this.result.filter((item) => item !== this.item);
-      this.$emit("deleted", this.item);
-      this.$emit("update:modelValue", this.result);
-      alertScreenReader(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
+      callbackBeforeItemDelete.value(item.value);
+      result.value = result.value.filter((it) => it !== item.value);
+      emit2("deleted", item.value);
+      emit2("update:modelValue", result.value);
+      alertScreenReader($t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
         assertive: true
       });
-    },
-    onDeleteClose(e) {
-      this.onModalClose();
-      if (e.reason === "close" && this.onCancel) {
-        this.onCancel();
+    }
+    function onDeleteClose(e) {
+      onModalClose();
+      if (e.reason === "close" && props.onCancel) {
+        props.onCancel();
       }
-    },
-    onModalClose() {
-      this.isFormModalOpen = false;
-      this.isConfirmModalOpen = false;
-    },
-    onFormModalSubmit() {
-      if (!this.item) {
+    }
+    function onModalClose() {
+      isFormModalOpen.value = false;
+      isConfirmModalOpen.value = false;
+    }
+    function onFormModalSubmit() {
+      if (!item.value) {
         return;
       }
-      if (this.operation === Operation.ADD) {
-        this.result.push(this.item);
-        this.$emit("created", this.item);
-        this.$emit("update:modelValue", this.result);
-        this.callbackAfterItemAdd(this.item);
-        alertScreenReader(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
+      if (operation.value === Operation.ADD) {
+        result.value.push(item.value);
+        emit2("created", item.value);
+        emit2("update:modelValue", result.value);
+        callbackAfterItemAdd.value(item.value);
+        alertScreenReader($t2("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
           assertive: true
         });
-      } else if (this.operation === Operation.MODIFY) {
-        if (this.originalItemToUpdate) {
-          Object.assign(this.originalItemToUpdate, this.item);
+      } else if (operation.value === Operation.MODIFY) {
+        if (originalItemToUpdate.value) {
+          Object.assign(originalItemToUpdate.value, item.value);
         } else {
-          this.originalItemToUpdate = this.item;
+          originalItemToUpdate.value = item.value;
         }
-        this.$emit("updated", this.originalItemToUpdate);
-        this.$emit("update:modelValue", this.result);
-        alertScreenReader(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
+        emit2("updated", originalItemToUpdate.value);
+        emit2("update:modelValue", result.value);
+        alertScreenReader($t2("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
           assertive: true
         });
       }
-      this.isFormModalOpen = false;
-    },
-    updateItem(item) {
-      if (!this.hasModifySlot) {
+      isFormModalOpen.value = false;
+    }
+    function updateItem(current) {
+      if (!hasModifySlot.value) {
         throw Error("No template is defined for #modify");
       }
-      this.operation = Operation.MODIFY;
-      this.originalItemToUpdate = item;
-      this.item = deepClone(item);
-      this.isFormModalOpen = true;
+      operation.value = Operation.MODIFY;
+      originalItemToUpdate.value = current;
+      item.value = deepClone(current);
+      isFormModalOpen.value = true;
     }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1$w, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), hasAddSlot.value ? (openBlock(), createElementBlock("div", _hoisted_2$o, [createBaseVNode("button", {
+        "data-test": "f-crud-dataset-add-button",
+        type: "button",
+        class: "button button--tertiary crud-dataset__add-button",
+        onClick: _cache[0] || (_cache[0] = ($event) => createItem())
+      }, [createVNode(unref(FIcon), {
+        class: "button__icon",
+        name: "plus"
+      }), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "add-button", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.crud-dataset.button.add", "Lägg till ny")), 1)])])])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createVNode(unref(FFormModal), {
+        "is-open": isFormModalOpen.value,
+        "aria-close-text": unref($t2)("fkui.crud-dataset.modal.close", "Stäng"),
+        buttons: formModalButtons.value,
+        "use-error-list": false,
+        "before-submit": __props.beforeSubmit,
+        "before-validation": __props.beforeValidation,
+        "on-cancel": __props.onCancel,
+        onClose: onModalClose,
+        onCancel: __props.onCancel,
+        onSubmit: onFormModalSubmit
+      }, {
+        header: withCtx(() => [createTextVNode(toDisplayString(formModalHeader.value), 1)]),
+        "input-text-fields": withCtx(() => [operation.value === unref(Operation).ADD ? renderSlot(_ctx.$slots, "add", normalizeProps(mergeProps({
+          key: 0
+        }, {
+          item: item.value
+        }))) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), operation.value === unref(Operation).MODIFY ? renderSlot(_ctx.$slots, "modify", normalizeProps(mergeProps({
+          key: 1
+        }, {
+          item: item.value
+        }))) : createCommentVNode("", true)]),
+        _: 3
+      }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[7] || (_cache[7] = createTextVNode()), createVNode(unref(FConfirmModal), {
+        "is-open": isConfirmModalOpen.value,
+        buttons: confirmDeleteButtons.value,
+        onConfirm: onDeleteConfirm,
+        onClose: onDeleteClose
+      }, {
+        heading: withCtx(() => [createTextVNode(toDisplayString(__props.deleteModalHeader), 1)]),
+        content: withCtx(() => [renderSlot(_ctx.$slots, "delete", normalizeProps(guardReactiveProps({
+          item: item.value
+        })))]),
+        _: 3
+      }, 8, ["is-open", "buttons"])]);
+    };
   }
 });
 function ActivateItemInjected() {
@@ -18765,7 +18813,7 @@ const _hoisted_7$a = {
   key: 0,
   class: "label__message label__message--error"
 };
-function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$u, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$n, [createBaseVNode("label", {
     class: "label",
@@ -18792,7 +18840,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$b));
 }
-const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$F, [["render", _sfc_render$t]]);
+const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$F, [["render", _sfc_render$r]]);
 function resolveWidthClass$1(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -18928,7 +18976,7 @@ const _sfc_main$E = /* @__PURE__ */ defineComponent({
   }
 });
 const _hoisted_1$t = ["id"];
-function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   return openBlock(), createElementBlock("div", {
@@ -18975,7 +19023,7 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     name: "arrow-down"
   })], 2)], 34);
 }
-const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_render$s]]);
+const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_render$q]]);
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -19380,7 +19428,7 @@ const _hoisted_7$9 = {
   key: 3,
   class: "text-field__append-inner"
 };
-function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_popup_error = resolveComponent("i-popup-error");
@@ -19463,7 +19511,7 @@ function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.onDropdownClose
   }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node", "onSelect", "onClose"])) : createCommentVNode("", true)], 2);
 }
-const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$D, [["render", _sfc_render$r]]);
+const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$D, [["render", _sfc_render$p]]);
 /* @__PURE__ */ defineComponent({
   name: "FEmailTextField",
   components: {
@@ -19714,39 +19762,28 @@ function filter(list, filterAttributes, searchString) {
   const searchTerms = searchString.split(/\s+/).map((word) => word.toLocaleLowerCase());
   return list.filter((item) => includesAllSearchTerms(item, filterAttributes, searchTerms));
 }
+const _hoisted_1$p = {
+  class: "sort-filter-dataset"
+};
+const _hoisted_2$l = {
+  class: "sort-filter-dataset__search"
+};
+const _hoisted_3$h = {
+  class: "sr-only"
+};
+const _hoisted_4$e = ["title"];
+const _hoisted_5$b = {
+  class: "sr-only"
+};
+const _hoisted_6$9 = {
+  value: {
+    attribute: "",
+    ascending: false
+  }
+};
+const _hoisted_7$8 = ["value"];
 /* @__PURE__ */ defineComponent({
-  name: "FSortFilterDataset",
-  components: {
-    FSelectField,
-    FTextField,
-    FIcon,
-    IFlex,
-    IFlexItem
-  },
-  mixins: [TranslationMixin],
-  provide() {
-    return {
-      sort: (attribute, ascending) => {
-        const foundAttribute = this.sortOrders.find((item) => item.attribute === attribute && item.ascending === ascending);
-        if (foundAttribute) {
-          this.sortAttribute = foundAttribute;
-        } else {
-          this.sortAttribute = {
-            attribute: "",
-            ascending: false
-          };
-        }
-        this.sortFilterData();
-        this.$emit("usedSortAttributes", this.sortAttribute);
-      },
-      registerCallbackOnSort: (callback) => {
-        this.tableCallbackOnSort = callback;
-      },
-      registerCallbackOnMount: (callback) => {
-        this.tableCallbackSortableColumns = callback;
-      }
-    };
-  },
+  __name: "FSortFilterDataset",
   props: {
     /**
      * The data that you wish to sort or filter.
@@ -19795,7 +19832,7 @@ function filter(list, filterAttributes, searchString) {
     placeholderFilter: {
       type: String,
       required: false,
-      default: TranslationMixin.methods.$t("fkui.sort-filter-dataset.placeholder.filter", "Sök")
+      default: TranslationService.provider.translate("fkui.sort-filter-dataset.placeholder.filter", "Sök")
     },
     /**
      * The order the data will be sorted by if defaultSortAttribute has been set.
@@ -19807,113 +19844,211 @@ function filter(list, filterAttributes, searchString) {
     }
   },
   emits: ["datasetSorted", "usedSortAttributes"],
-  data() {
-    return {
-      searchString: "",
-      sortAttribute: {
-        attribute: "",
-        ascending: false
-      },
-      sortFilterResult: [],
-      tableCallbackOnSort: () => {
-        return;
-      },
-      tableCallbackSortableColumns: () => {
-        return;
-      }
+  setup(__props, {
+    emit: __emit
+  }) {
+    const $t2 = useTranslate();
+    const searchString = ref("");
+    const sortAttribute = ref({
+      attribute: "",
+      name: "",
+      ascendingName: "",
+      ascending: false,
+      id: 0
+    });
+    const sortFilterResult = ref([]);
+    const debouncedFilterResultset = debounce(filterResultset, 250);
+    let tableCallbackOnSort = () => {
     };
-  },
-  computed: {
-    showClearButton() {
-      return this.searchString.length > 0;
-    },
-    sortOrders() {
+    let tableCallbackSortableColumns = () => {
+    };
+    const props = __props;
+    const emit2 = __emit;
+    const showClearButton = computed(() => {
+      return searchString.value.length > 0;
+    });
+    const sortOrders = computed(() => {
       const arr = [];
       let id = 0;
-      Object.keys(this.sortableAttributes).forEach((key) => {
+      Object.keys(props.sortableAttributes).forEach((key) => {
         arr.push({
           attribute: key,
-          name: this.sortableAttributes[key],
-          ascendingName: this.$t("fkui.sort-filter-dataset.label.ascending", "stigande"),
+          name: props.sortableAttributes[key],
+          ascendingName: $t2("fkui.sort-filter-dataset.label.ascending", "stigande"),
           ascending: true,
           id: id++
         });
         arr.push({
           attribute: key,
-          name: this.sortableAttributes[key],
-          ascendingName: this.$t("fkui.sort-filter-dataset.label.descending", "fallande"),
+          name: props.sortableAttributes[key],
+          ascendingName: $t2("fkui.sort-filter-dataset.label.descending", "fallande"),
           ascending: false,
           id: id++
         });
       });
       return arr;
-    },
-    filterAttributes() {
-      return Object.keys(this.sortableAttributes);
-    }
-  },
-  watch: {
-    data: {
-      immediate: true,
-      deep: true,
-      handler: function() {
-        if (this.defaultSortAttribute !== "") {
-          const foundAttribute = this.sortOrders.find((item) => item.attribute === this.defaultSortAttribute && item.ascending === this.defaultSortAscending);
-          if (foundAttribute) {
-            this.sortAttribute = foundAttribute;
-          }
-        }
-        this.sortFilterData();
-      }
-    }
-  },
-  created() {
-    this.debouncedFilterResultset = debounce(this.filterResultset, 250).bind(this);
-  },
-  mounted() {
-    this.tableCallbackSortableColumns(Object.keys(this.sortableAttributes));
-  },
-  methods: {
-    sortFilterData() {
-      const filteredData = filter(this.data, this.filterAttributes, this.searchString);
-      if (this.sortAttribute.attribute === "") {
-        this.sortFilterResult = filteredData;
-      } else {
-        this.sortFilterResult = sort([...filteredData], this.sortAttribute.attribute, this.sortAttribute.ascending);
-      }
-      this.$nextTick(() => {
-        this.tableCallbackOnSort(this.sortAttribute.attribute, this.sortAttribute.ascending);
+    });
+    const filterAttributes = computed(() => {
+      return Object.keys(props.sortableAttributes);
+    });
+    provide("sort", (attribute, ascending) => {
+      const foundAttribute = sortOrders.value.find((item) => {
+        return item.attribute === attribute && item.ascending === ascending;
       });
-      this.$emit("datasetSorted", this.sortFilterResult);
-    },
-    onChangeSortAttribute() {
-      this.sortFilterData();
-      this.$emit("usedSortAttributes", this.sortAttribute);
-    },
-    onSearchInput(event) {
-      this.searchString = event.target.value;
-      this.debouncedFilterResultset();
-    },
-    onClickClearSearch() {
-      this.searchString = "";
-      this.sortFilterData();
-      const input = this.$el.querySelector(".text-field--inline input");
-      focus$1(input);
-    },
-    debouncedFilterResultset() {
-    },
-    filterResultset() {
-      this.sortFilterData();
-      if (this.searchString === "") {
-        alertScreenReader(this.$t("fkui.sort-filter-dataset.aria-live.empty", "Sök redigera Sök tom"));
+      if (foundAttribute) {
+        sortAttribute.value = foundAttribute;
       } else {
-        const searchAriaLive = this.$t("fkui.sort-filter-dataset.aria-live.search", `Din sökning på "{{ search }}" gav {{ result }} träffar.`, {
-          result: this.sortFilterResult.length,
-          search: this.searchString
+        sortAttribute.value = {
+          attribute: "",
+          ascending: false
+        };
+      }
+      sortFilterData();
+      emit2("usedSortAttributes", sortAttribute.value);
+    });
+    provide("registerCallbackOnSort", (callback) => {
+      tableCallbackOnSort = callback;
+    });
+    provide("registerCallbackOnMount", (callback) => {
+      tableCallbackSortableColumns = callback;
+    });
+    onMounted(() => {
+      tableCallbackSortableColumns(Object.keys(props.sortableAttributes));
+    });
+    watch(() => props.data, () => {
+      if (props.defaultSortAttribute !== "") {
+        const foundAttribute = sortOrders.value.find((item) => {
+          return item.attribute === props.defaultSortAttribute && item.ascending === props.defaultSortAscending;
+        });
+        if (foundAttribute) {
+          sortAttribute.value = foundAttribute;
+        }
+      }
+      sortFilterData();
+    }, {
+      immediate: true,
+      deep: true
+    });
+    function sortFilterData() {
+      const filteredData = filter(props.data, filterAttributes.value, searchString.value);
+      if (sortAttribute.value.attribute === "") {
+        sortFilterResult.value = filteredData;
+      } else {
+        sortFilterResult.value = sort([...filteredData], sortAttribute.value.attribute, sortAttribute.value.ascending);
+      }
+      nextTick(() => {
+        tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
+      });
+      emit2("datasetSorted", sortFilterResult.value);
+    }
+    function onChangeSortAttribute() {
+      sortFilterData();
+      emit2("usedSortAttributes", sortAttribute.value);
+    }
+    function onSearchInput(event) {
+      searchString.value = event.target.value;
+      debouncedFilterResultset();
+    }
+    function onClickClearSearch() {
+      searchString.value = "";
+      sortFilterData();
+      const input = useTemplateRef("search-field").value;
+      focus$1(input);
+    }
+    function filterResultset() {
+      sortFilterData();
+      if (searchString.value === "") {
+        alertScreenReader($t2("fkui.sort-filter-dataset.aria-live.empty", "Sök redigera Sök tom"));
+      } else {
+        const searchAriaLive = $t2("fkui.sort-filter-dataset.aria-live.search", `Din sökning på "{{ search }}" gav {{ result }} träffar.`, {
+          result: sortFilterResult.value.length,
+          search: searchString.value
         });
         alertScreenReader(searchAriaLive);
       }
     }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1$p, [createVNode(unref(IFlex), {
+        collapse: "",
+        gap: "3x",
+        wrap: ""
+      }, {
+        default: withCtx(() => [createVNode(unref(IFlexItem), {
+          shrink: "",
+          align: "center"
+        }, {
+          default: withCtx(() => [renderSlot(_ctx.$slots, "header", normalizeProps(guardReactiveProps({
+            slotClass: "sort-filter-dataset__toolbar__header"
+          })))]),
+          _: 3
+        }), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(IFlexItem), {
+          grow: ""
+        }, {
+          default: withCtx(() => [createVNode(unref(IFlex), {
+            collapse: "",
+            float: "right"
+          }, {
+            default: withCtx(() => [__props.showFilter ? (openBlock(), createBlock(unref(IFlexItem), {
+              key: 0,
+              shrink: "",
+              align: "center"
+            }, {
+              default: withCtx(() => [createBaseVNode("div", _hoisted_2$l, [createVNode(unref(FIcon), {
+                name: "search",
+                class: "sort-filter-dataset__search__magnify-icon"
+              }), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref(FTextField), {
+                ref: "search-field",
+                modelValue: searchString.value,
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => searchString.value = $event),
+                inline: "",
+                placeholder: __props.placeholderFilter,
+                maxlength: "64",
+                onInput: onSearchInput
+              }, {
+                default: withCtx(() => [createBaseVNode("span", _hoisted_3$h, toDisplayString(__props.placeholderFilter), 1)]),
+                _: 1
+              }, 8, ["modelValue", "placeholder"]), _cache[4] || (_cache[4] = createTextVNode()), showClearButton.value ? (openBlock(), createElementBlock("button", {
+                key: 0,
+                type: "button",
+                class: "button button--discrete sort-filter-dataset__search__close-icon",
+                title: unref($t2)("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält"),
+                onClick: onClickClearSearch
+              }, [createVNode(unref(FIcon), {
+                name: "close"
+              }), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode("span", _hoisted_5$b, toDisplayString(unref($t2)("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält")), 1)], 8, _hoisted_4$e)) : createCommentVNode("", true)])]),
+              _: 1
+            })) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), __props.showSort ? (openBlock(), createBlock(unref(IFlexItem), {
+              key: 1,
+              shrink: "",
+              align: "center"
+            }, {
+              default: withCtx(() => [createVNode(unref(FSelectField), {
+                modelValue: sortAttribute.value,
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => sortAttribute.value = $event),
+                class: "sort-filter-dataset__sort",
+                inline: "",
+                onChange: onChangeSortAttribute
+              }, {
+                label: withCtx(() => [createTextVNode(toDisplayString(unref($t2)("fkui.sort-filter-dataset.label.sort", "Sortera på")), 1)]),
+                default: withCtx(() => [_cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("option", _hoisted_6$9, toDisplayString(unref($t2)("fkui.sort-filter-dataset.label.unsorted", "Välj")), 1), _cache[6] || (_cache[6] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(sortOrders.value, (sortOrder) => {
+                  return openBlock(), createElementBlock("option", {
+                    key: sortOrder.id,
+                    value: sortOrder
+                  }, toDisplayString(sortOrder.name) + " (" + toDisplayString(sortOrder.ascendingName) + ")\n                            ", 9, _hoisted_7$8);
+                }), 128))]),
+                _: 1
+              }, 8, ["modelValue"])]),
+              _: 1
+            })) : createCommentVNode("", true)]),
+            _: 1
+          })]),
+          _: 1
+        })]),
+        _: 3
+      }), _cache[9] || (_cache[9] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        sortFilterResult: sortFilterResult.value
+      })))]);
+    };
   }
 });
 /* @__PURE__ */ defineComponent({
@@ -20061,31 +20196,40 @@ function filter(list, filterAttributes, searchString) {
     }
   }
 });
-const keybindings = Object.fromEntries([["Up", focusTrAbove], ["Down", focusTrBelow], ["ArrowUp", focusTrAbove], ["ArrowDown", focusTrBelow], [" ", activateRow], ["Spacebar", activateRow]]);
-function focusTrAbove(current) {
+const keybindings = {
+  Up: focusTrAbove,
+  Down: focusTrBelow,
+  ArrowUp: focusTrAbove,
+  ArrowDown: focusTrBelow,
+  " ": activateRow,
+  Spacebar: activateRow
+};
+function focusTrAbove(table, current) {
+  const tr = table.tr.value;
   if (current > 0) {
-    this.tr[current - 1].focus();
+    tr[current - 1].focus();
   } else {
-    this.tr[this.tr.length - 1].focus();
+    tr[tr.length - 1].focus();
   }
 }
-function focusTrBelow(current) {
-  if (current < this.tr.length - 1) {
-    this.tr[current + 1].focus();
+function focusTrBelow(table, current) {
+  const tr = table.tr.value;
+  if (current < tr.length - 1) {
+    tr[current + 1].focus();
   } else {
-    this.tr[0].focus();
+    tr[0].focus();
   }
 }
-function activateRow(current) {
-  const row = this.rows[current];
-  const element = this.tr[current];
-  this.activate(row, element);
+function activateRow(table, current) {
+  const row = table.rows[current];
+  const element = table.tr.value[current];
+  table.activate(row, element);
 }
-function onKeydown(event, current) {
+function onKeydown(table, event, current) {
   const fn2 = keybindings[event.key];
   if (fn2) {
     event.preventDefault();
-    fn2.call(this, current);
+    fn2(table, current);
   }
 }
 function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit2, slots) {
@@ -20149,7 +20293,6 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
     return Boolean(expandableRows(row));
   }
   return {
-    expandedRows,
     isExpandableTable,
     hasExpandableSlot,
     toggleExpanded,
@@ -20161,32 +20304,76 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
     hasExpandableContent
   };
 }
-function forceRepaintIE11(target) {
-  if (navigator.userAgent.includes("Trident")) {
-    target.style.display = "none";
-    target.offsetHeight;
-    target.style.removeProperty("display");
-  }
-}
+const _hoisted_1$h = ["role"];
+const _hoisted_2$d = {
+  key: 0
+};
+const _hoisted_3$9 = {
+  key: 0,
+  class: "table__column--shrink"
+};
+const _hoisted_4$8 = {
+  key: 1,
+  class: "table__column--shrink"
+};
+const _hoisted_5$6 = {
+  class: "table__row"
+};
+const _hoisted_6$4 = {
+  key: 0,
+  scope: "col"
+};
+const _hoisted_7$3 = {
+  class: "sr-only"
+};
+const _hoisted_8$3 = {
+  key: 1,
+  scope: "col"
+};
+const _hoisted_9$3 = {
+  class: "sr-only"
+};
+const _hoisted_10$2 = ["innerHTML"];
+const _hoisted_11$1 = {
+  key: 1,
+  class: "table__column__description"
+};
+const _hoisted_12$1 = ["aria-label", "aria-expanded", "aria-level", "aria-describedby", "onKeydown", "onClick"];
+const _hoisted_13 = {
+  key: 0
+};
+const _hoisted_14 = {
+  key: 0,
+  class: "table__expand-icon"
+};
+const _hoisted_15 = {
+  key: 1,
+  class: "table__column--selectable"
+};
+const _hoisted_16 = {
+  class: "table__input"
+};
+const _hoisted_17 = {
+  key: 0,
+  class: "sr-only"
+};
+const _hoisted_18 = {
+  key: 0,
+  class: "table__column--placeholder"
+};
+const _hoisted_19 = ["colspan"];
+const _hoisted_20 = {
+  key: 0
+};
+const _hoisted_21 = {
+  key: 1
+};
+const _hoisted_22 = ["colspan"];
 /* @__PURE__ */ defineComponent({
-  name: "FInteractiveTable",
-  components: {
-    FCheckboxField,
-    FIcon
+  ...{
+    inheritAttrs: false
   },
-  mixins: [TranslationMixin],
-  provide() {
-    return {
-      addColumn: (column) => {
-        this.columns = addColumn(this.columns, column);
-      },
-      setVisibilityColumn: (id, visible) => {
-        setVisibilityColumn(this.columns, id, visible);
-      },
-      textFieldTableMode: true
-    };
-  },
-  inheritAttrs: false,
+  __name: "FInteractiveTable",
   props: {
     /**
      * The rows to be listed.
@@ -20283,230 +20470,237 @@ function forceRepaintIE11(target) {
       default: () => void 0
     }
   },
-  emits: [
-    "change",
-    "click",
-    "unselect",
-    "update:modelValue",
-    "update:active",
-    "select",
-    /**
-     * Emitted when row is expanded.
-     *
-     * @event expand
-     * @param row
-     * @type {ListItem}
-     */
-    "expand",
-    /**
-     * Emitted when row is collapsed.
-     *
-     * @event collapse
-     * @param row
-     * @type {ListItem}
-     */
-    "collapse"
-  ],
-  setup(props, context) {
-    provide("renderColumns", computed(() => props.rows.length > 0));
-    const sortFilterDatasetInjected = FSortFilterDatasetInjected();
-    const activateItemInjected = ActivateItemInjected();
-    const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, context.emit, context.slots);
-    return {
-      ...sortFilterDatasetInjected,
-      ...activateItemInjected,
-      ...expandableTable
-    };
-  },
-  data() {
-    return {
-      activeRow: void 0,
-      columns: [],
-      selectedRows: [],
-      tr: [],
-      tbodyKey: 0
-    };
-  },
-  computed: {
-    hasCaption() {
-      return hasSlot(this, "caption", {}, {
+  emits: ["change", "click", "unselect", "update:modelValue", "update:active", "select", "expand", "collapse"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const $t2 = useTranslate();
+    const slots = useSlots();
+    const {
+      hasSlot: hasSlot2
+    } = useSlotUtils();
+    const {
+      sort: sort2,
+      registerCallbackOnSort,
+      registerCallbackOnMount
+    } = FSortFilterDatasetInjected();
+    const {
+      registerCallbackAfterItemAdd,
+      registerCallbackBeforeItemDelete
+    } = ActivateItemInjected();
+    const activeRow = ref(void 0);
+    const columns = ref([]);
+    const selectedRows = ref([]);
+    const tr = shallowRef([]);
+    const tbodyKey = ref(0);
+    const props = __props;
+    const emit2 = __emit;
+    const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, emit2, slots);
+    const {
+      isExpandableTable,
+      hasExpandableSlot,
+      toggleExpanded,
+      isExpanded,
+      rowAriaExpanded,
+      expandableRowClasses,
+      getExpandableDescribedby,
+      expandableRows,
+      hasExpandableContent
+    } = expandableTable;
+    const hasCaption = computed(() => {
+      return hasSlot2("caption", {}, {
         stripClasses: []
       });
-    },
-    hasCheckboxDescription() {
-      const firstRow = this.rows[0];
-      return hasSlot(this, "checkbox-description", {
+    });
+    const hasCheckboxDescription = computed(() => {
+      const firstRow = props.rows[0];
+      return hasSlot2("checkbox-description", {
         row: firstRow
       });
-    },
-    isEmpty() {
-      return this.rows.length === 0;
-    },
-    visibleColumns() {
-      return this.columns.filter((col) => col.visible);
-    },
-    tableClasses() {
+    });
+    const isEmpty2 = computed(() => {
+      return props.rows.length === 0;
+    });
+    const visibleColumns = computed(() => {
+      return columns.value.filter((col) => col.visible);
+    });
+    const tableClasses = computed(() => {
       const classes = [];
-      if (this.selectable) {
+      if (props.selectable) {
         classes.push("table--selectable");
       }
-      if (this.hover) {
+      if (props.hover) {
         classes.push("table--hover");
       }
       return classes;
-    },
-    tableRole() {
-      return this.isExpandableTable ? "treegrid" : "grid";
-    },
-    wrapperClasses() {
-      return tableScrollClasses(this.scroll);
-    },
-    nbOfColumns() {
-      let columnCount = this.visibleColumns.length;
-      if (this.selectable) {
+    });
+    const tableRole = computed(() => {
+      return isExpandableTable.value ? "treegrid" : "grid";
+    });
+    const wrapperClasses = computed(() => {
+      return tableScrollClasses(props.scroll);
+    });
+    const nbOfColumns = computed(() => {
+      let columnCount = visibleColumns.value.length;
+      if (props.selectable) {
         columnCount++;
       }
-      if (this.isExpandableTable) {
+      if (isExpandableTable.value) {
         columnCount++;
       }
       return columnCount;
-    }
-  },
-  watch: {
-    rows: {
-      immediate: true,
-      deep: true,
-      handler: function() {
-        if (this.modelValue) {
-          this.selectedRows = this.modelValue.filter((row) => {
-            return includeItem(row, this.rows, this.keyAttribute);
-          });
-        }
-      }
-    },
-    active: {
-      immediate: true,
-      handler: function() {
-        this.updateActiveRowFromVModel();
-      }
-    },
-    showActive: {
-      immediate: true,
-      handler: function(val) {
-        if (!val) {
-          this.tbodyKey ^= 1;
-        }
-      }
-    }
-  },
-  updated() {
-    const tbodyElement = this.$refs["tbodyElement"];
-    const trElements = [].slice.call(tbodyElement.children);
-    const trInteractableElements = trElements.filter((tr) => {
-      return tr.tabIndex === 0;
     });
-    this.tr = trInteractableElements;
-  },
-  mounted() {
-    this.registerCallbackOnSort(this.callbackOnSort);
-    this.registerCallbackOnMount(this.callbackSortableColumns);
-    this.registerCallbackAfterItemAdd(this.callbackAfterItemAdd);
-    this.registerCallbackBeforeItemDelete(this.callbackBeforeItemDelete);
-  },
-  methods: {
-    isActive(row) {
-      if (!this.showActive) {
+    provide("addColumn", (column) => {
+      columns.value = addColumn(columns.value, column);
+    });
+    provide("setVisibilityColumn", (id, visible) => {
+      setVisibilityColumn(columns.value, id, visible);
+    });
+    provide("textFieldTableMode", true);
+    provide("renderColumns", computed(() => props.rows.length > 0));
+    watch(() => props.rows, () => {
+      if (props.modelValue) {
+        selectedRows.value = props.modelValue.filter((row) => {
+          return includeItem(row, props.rows, props.keyAttribute);
+        });
+      }
+    }, {
+      immediate: true,
+      deep: true
+    });
+    watch(() => props.active, () => {
+      updateActiveRowFromVModel();
+    }, {
+      immediate: true
+    });
+    watch(() => props.showActive, (val) => {
+      if (!val) {
+        tbodyKey.value ^= 1;
+      }
+    }, {
+      immediate: true
+    });
+    function updateTr(tbodyElement) {
+      const trElements = [].slice.call(tbodyElement.children);
+      const trInteractableElements = trElements.filter((tr2) => {
+        return tr2.tabIndex === 0;
+      });
+      tr.value = trInteractableElements;
+    }
+    onUpdated(() => {
+      const tbodyElement = useTemplateRef("tbodyElement");
+      if (tbodyElement.value) {
+        updateTr(tbodyElement.value);
+      }
+    });
+    onMounted(() => {
+      const tbodyElement = useTemplateRef("tbodyElement");
+      if (tbodyElement.value) {
+        updateTr(tbodyElement.value);
+      }
+      registerCallbackOnSort(callbackOnSort);
+      registerCallbackOnMount(callbackSortableColumns);
+      registerCallbackAfterItemAdd(callbackAfterItemAdd);
+      registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
+    });
+    function forceRepaintIE11(target) {
+      if (navigator.userAgent.includes("Trident")) {
+        target.style.display = "none";
+        target.offsetHeight;
+        target.style.removeProperty("display");
+      }
+    }
+    function isActive(row) {
+      if (!props.showActive) {
         return false;
       }
-      return itemEquals(row, this.activeRow, this.keyAttribute);
-    },
-    isSelected(row) {
-      return includeItem(row, this.selectedRows, this.keyAttribute);
-    },
-    onKeydownExpandable(event, index) {
-      if (event.key === " " || event.key === "Spacebar") {
-        event.preventDefault();
-        return;
-      }
-      onKeydown.call(this, event, index);
-    },
-    onKeydown(event, index) {
-      onKeydown.call(this, event, index);
-    },
-    onClick(event, row) {
+      return itemEquals(row, activeRow.value, props.keyAttribute);
+    }
+    function isSelected(row) {
+      return includeItem(row, selectedRows.value, props.keyAttribute);
+    }
+    function onKeydown$1(event, index) {
+      onKeydown({
+        rows: props.rows,
+        tr,
+        activate
+      }, event, index);
+    }
+    function onClick(event, row) {
       const {
         target
       } = event;
       const isRelevant = ["TD", "TH"].includes(target.nodeName);
       if (isRelevant) {
         const parent = target.parentElement;
-        this.activate(row, parent);
+        activate(row, parent);
       }
-    },
-    activate(row, tr) {
-      this.$emit("click", row);
-      if (this.isExpandableTable && this.hasExpandableContent(row)) {
-        this.toggleExpanded(row);
+    }
+    function activate(row, tr2) {
+      emit2("click", row);
+      if (isExpandableTable.value && hasExpandableContent(row)) {
+        toggleExpanded(row);
       }
-      if (!itemEquals(row, this.activeRow, this.keyAttribute)) {
-        this.$emit("change", row);
-        this.setActiveRow(row);
-        if (tr) {
-          tr.focus();
-          const td = tr.children[0];
+      if (!itemEquals(row, activeRow.value, props.keyAttribute)) {
+        emit2("change", row);
+        setActiveRow(row);
+        if (tr2) {
+          tr2.focus();
+          const td = tr2.children[0];
           forceRepaintIE11(td);
         }
       }
-    },
-    rowDescription(row) {
-      const slot = this.$slots["row-description"];
+    }
+    function rowDescription(row) {
+      const slot = slots["row-description"];
       return renderSlotText(slot, {
         row
       });
-    },
-    onSelect(row) {
-      if (includeItem(row, this.selectedRows, this.keyAttribute)) {
-        this.selectedRows = this.selectedRows.filter((i) => !itemEquals(i, row, this.keyAttribute));
-        this.$emit("unselect", row);
+    }
+    function onSelect(row) {
+      var _a, _b;
+      if (includeItem(row, selectedRows.value, props.keyAttribute)) {
+        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, props.keyAttribute));
+        emit2("unselect", row);
       } else {
-        this.selectedRows.push(row);
-        this.$emit("select", row);
+        selectedRows.value.push(row);
+        emit2("select", row);
       }
-      this.updateVModelWithSelectedRows();
-      this.$forceUpdate();
-    },
-    updateVModelWithSelectedRows() {
-      if (this.modelValue) {
-        this.$emit("update:modelValue", this.selectedRows);
+      updateVModelWithSelectedRows();
+      (_b = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy) == null ? void 0 : _b.$forceUpdate();
+    }
+    function updateVModelWithSelectedRows() {
+      if (props.modelValue) {
+        emit2("update:modelValue", selectedRows.value);
       }
-    },
-    rowClasses(row, index) {
-      const active = this.isActive(row) ? ["table__row--active"] : [];
-      const selected = this.isSelected(row) ? ["table__row--selected"] : [];
-      const isExpandableRow = this.isExpandableTable && this.hasExpandableContent(row);
+    }
+    function rowClasses(row, index) {
+      const active = isActive(row) ? ["table__row--active"] : [];
+      const selected = isSelected(row) ? ["table__row--selected"] : [];
+      const isExpandableRow = isExpandableTable.value && hasExpandableContent(row);
       const expandable = isExpandableRow ? ["table__row--expandable"] : [];
-      const expanded = this.isExpanded(row) ? ["table__row--expanded-border"] : [];
-      const striped = this.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
+      const expanded = isExpanded(row) ? ["table__row--expanded-border"] : [];
+      const striped = props.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
       return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
-    },
-    rowKey(row) {
-      const key = row[this.keyAttribute];
+    }
+    function rowKey(row) {
+      const key = row[props.keyAttribute];
       if (typeof key === "undefined") {
-        throw new Error(`Key attribute [${this.keyAttribute}]' is missing in row`);
+        throw new Error(`Key attribute [${props.keyAttribute}]' is missing in row`);
       }
       return String(key);
-    },
-    columnClasses(column) {
+    }
+    function columnClasses(column) {
       const sortable = column.sortable ? ["table__column--sortable"] : [];
       return ["table__column", `table__column--${column.type}`, ...sortable, column.size];
-    },
-    iconClasses(column) {
+    }
+    function iconClasses2(column) {
       return getSortableIconClasses(column);
-    },
-    iconName(column) {
+    }
+    function iconName(column) {
       return getSortableIconName(column);
-    },
-    onClickColumnHeader(column) {
+    }
+    function onClickColumnHeader(column) {
       if (!column.sortable) {
         return;
       }
@@ -20515,43 +20709,135 @@ function forceRepaintIE11(target) {
         columnName = "";
         column.sort = FTableColumnSort.UNSORTED;
       }
-      this.sort(columnName, column.sort !== FTableColumnSort.ASCENDING);
-    },
-    callbackOnSort(columnName, ascending) {
-      updateSortOrder(this.columns, columnName, ascending);
-    },
-    callbackSortableColumns(columnNames) {
-      setSortableColumns(this.columns, columnNames);
-    },
-    callbackAfterItemAdd(item) {
-      this.activate(item, null);
-    },
-    callbackBeforeItemDelete(item) {
-      if (this.rows.length === 0) {
+      sort2(columnName, column.sort !== FTableColumnSort.ASCENDING);
+    }
+    function callbackOnSort(columnName, ascending) {
+      updateSortOrder(columns.value, columnName, ascending);
+    }
+    function callbackSortableColumns(columnNames) {
+      setSortableColumns(columns.value, columnNames);
+    }
+    function callbackAfterItemAdd(item) {
+      activate(item, null);
+    }
+    function callbackBeforeItemDelete(item) {
+      if (props.rows.length === 0) {
         return;
       }
-      let targetIndex = this.rows.indexOf(item) - 1;
-      if (targetIndex < 0 && this.rows.length > 1) {
+      let targetIndex = props.rows.indexOf(item) - 1;
+      if (targetIndex < 0 && props.rows.length > 1) {
         targetIndex = 1;
       } else if (targetIndex < 0) {
         targetIndex = 0;
       }
-      this.activate(this.rows[targetIndex], this.tr[targetIndex]);
-    },
-    escapeNewlines(value) {
-      return value.replace(/\n/g, "<br/>");
-    },
-    updateActiveRowFromVModel() {
-      if (this.active === void 0) {
-        this.setActiveRow(void 0);
-      } else if (!itemEquals(this.active, this.activeRow, this.keyAttribute)) {
-        this.setActiveRow(this.active);
-      }
-    },
-    setActiveRow(row) {
-      this.activeRow = row;
-      this.$emit("update:active", this.activeRow);
+      activate(props.rows[targetIndex], tr.value[targetIndex]);
     }
+    function escapeNewlines(value) {
+      return value.replace(/\n/g, "<br/>");
+    }
+    function updateActiveRowFromVModel() {
+      if (props.active === void 0) {
+        setActiveRow(void 0);
+      } else if (!itemEquals(props.active, activeRow.value, props.keyAttribute)) {
+        setActiveRow(props.active);
+      }
+    }
+    function setActiveRow(row) {
+      activeRow.value = row;
+      emit2("update:active", activeRow.value);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(wrapperClasses.value)
+      }, [createCommentVNode("", true), _cache[18] || (_cache[18] = createTextVNode()), createBaseVNode("table", mergeProps({
+        class: ["table", tableClasses.value],
+        role: tableRole.value
+      }, _ctx.$attrs), [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$d, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), createBaseVNode("colgroup", null, [unref(isExpandableTable) ? (openBlock(), createElementBlock("col", _hoisted_3$9)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("col", _hoisted_4$8)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+        return openBlock(), createElementBlock("col", {
+          key: column.id,
+          class: normalizeClass(column.size)
+        }, null, 2);
+      }), 128))]), _cache[16] || (_cache[16] = createTextVNode()), createBaseVNode("thead", null, [createBaseVNode("tr", _hoisted_5$6, [unref(isExpandableTable) ? (openBlock(), createElementBlock("th", _hoisted_6$4, [createBaseVNode("span", _hoisted_7$3, toDisplayString(unref($t2)("fkui.interactive-table.select", "Expandera")), 1)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$3, [createBaseVNode("span", _hoisted_9$3, toDisplayString(unref($t2)("fkui.interactive-table.select", "Markera")), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
+        return openBlock(), createElementBlock("th", mergeProps({
+          key: column.id,
+          scope: "col",
+          class: columnClasses(column)
+        }, toHandlers(column.sortable ? {
+          click: () => onClickColumnHeader(column)
+        } : {})), [createBaseVNode("span", {
+          innerHTML: escapeNewlines(column.title)
+        }, null, 8, _hoisted_10$2), _cache[2] || (_cache[2] = createTextVNode()), column.sortable ? (openBlock(), createBlock(unref(FIcon), {
+          key: 0,
+          class: normalizeClass(iconClasses2(column)),
+          name: iconName(column)
+        }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_11$1, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
+      }), 128))])]), _cache[17] || (_cache[17] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
+        ref: "tbodyElement",
+        key: tbodyKey.value
+      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.rows, (row, index) => {
+        return openBlock(), createElementBlock(Fragment, {
+          key: rowKey(row)
+        }, [createBaseVNode("tr", {
+          class: normalizeClass(rowClasses(row, index)),
+          "aria-label": rowDescription(row),
+          "aria-expanded": unref(rowAriaExpanded)(row),
+          "aria-level": unref(isExpandableTable) ? 1 : void 0,
+          "aria-describedby": unref(getExpandableDescribedby)(row),
+          tabindex: "0",
+          onKeydown: withModifiers(($event) => onKeydown$1($event, index), ["self"]),
+          onClick: ($event) => onClick($event, row)
+        }, [unref(isExpandableTable) ? (openBlock(), createElementBlock("td", _hoisted_13, [unref(hasExpandableContent)(row) ? (openBlock(), createElementBlock("div", _hoisted_14, [createVNode(unref(FIcon), {
+          name: "arrow-right",
+          rotate: unref(isExpanded)(row) ? "270" : "90"
+        }, null, 8, ["rotate"])])) : createCommentVNode("", true)])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_15, [createBaseVNode("div", _hoisted_16, [createVNode(unref(FCheckboxField), {
+          value: true,
+          "model-value": isSelected(row),
+          onClick: withModifiers(($event) => onSelect(row), ["self"])
+        }, {
+          default: withCtx(() => [hasCheckboxDescription.value ? (openBlock(), createElementBlock("span", _hoisted_17, [renderSlot(_ctx.$slots, "checkbox-description", mergeProps({
+            ref_for: true
+          }, {
+            row
+          }))])) : createCommentVNode("", true)]),
+          _: 2
+        }, 1032, ["model-value", "onClick"])])])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), renderSlot(_ctx.$slots, "default", mergeProps({
+          ref_for: true
+        }, {
+          row
+        }))], 42, _hoisted_12$1), _cache[11] || (_cache[11] = createTextVNode()), unref(isExpandableTable) && unref(hasExpandableContent)(row) ? (openBlock(true), createElementBlock(Fragment, {
+          key: 0
+        }, renderList(unref(expandableRows)(row), (expandableRow, expandableIndex) => {
+          return openBlock(), createElementBlock("tr", {
+            key: rowKey(expandableRow),
+            "aria-level": "2",
+            class: normalizeClass(unref(expandableRowClasses)(row, expandableIndex))
+          }, [_cache[8] || (_cache[8] = createBaseVNode("td", {
+            class: "table__column--placeholder"
+          }, null, -1)), _cache[9] || (_cache[9] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_18)) : createCommentVNode("", true), _cache[10] || (_cache[10] = createTextVNode()), !unref(hasExpandableSlot) ? renderSlot(_ctx.$slots, "default", mergeProps({
+            key: 1,
+            ref_for: true
+          }, {
+            row: expandableRow
+          })) : (openBlock(), createElementBlock("td", {
+            key: 2,
+            class: "table__column table__column--indented",
+            colspan: columns.value.length
+          }, [renderSlot(_ctx.$slots, "expandable", mergeProps({
+            ref_for: true
+          }, {
+            expandableRow,
+            parentRow: row
+          }))], 8, _hoisted_19))], 2);
+        }), 128)) : createCommentVNode("", true)], 64);
+      }), 128)), _cache[13] || (_cache[13] = createTextVNode()), isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_20, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        row: {}
+      })))])) : createCommentVNode("", true), _cache[14] || (_cache[14] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_21, [createBaseVNode("td", {
+        class: "table__column table__column--action",
+        colspan: nbOfColumns.value
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.interactive-table.empty", "Tabellen är tom")), 1)])], 8, _hoisted_22), _cache[12] || (_cache[12] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        row: {}
+      })))])) : createCommentVNode("", true)]))], 16, _hoisted_1$h)], 2);
+    };
   }
 });
 class FRightPanelServiceImpl {
