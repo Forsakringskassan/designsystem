@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-79e1ad.json"
+            href="../../../search-data-3846a3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-HJw2mWgKCI60AEFtA+eXzzJfzTcNmukNxvpPuY6HSMeu7latrdoe2boY1yoEgpiT"
+            integrity="sha384-NoLoL9NQdEzUjK0Lf2jF5DSs+0DGb3X8Ow2aq4Lr0lBN0J3HazQ6KatjLJVNz+Mk"
             id="search-data"
         />
     </head>
@@ -673,12 +673,12 @@ De som behöver dessa bilder behöver lägga in dem själv.</p>
 <li><code>--f-border-color-navbar-active</code></li>
 <li><code>--f-border-color-navbar-hover</code></li>
 </ul>
-<p>Komponenten <code>FPageHeader</code> ersätter det som tidigare bestod av <code>navbar__header</code>, och <code>FNavigationMenu</code> ersätter <code>navbar__nav</code>.
+<p>Komponenten <code>FPageHeader</code> ersätter det som tidigare bestod av <code>.navbar__header</code>, och <code>FNavigationMenu</code> ersätter <code>.navbar__nav</code>.
 För att behålla samma funktionalitet behövs båda dessa komponenter användas. Besök respektive sida för ytterligare information om dessa komponenter och för exempel om hur du ska använda komponenterna.</p>
 <p>För att migrera till endast HTML och CSS, se nedan för ett exempel med liten logo samt första menyalternativ valt.</p>
 
                 <div
-                    id="example-f7187c"
+                    id="example-132d06"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -704,26 +704,16 @@ För att behålla samma funktionalitet behövs båda dessa komponenter användas
 <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;my awesome navigation&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu imenu--horizontal&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menubar&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-ref-index</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor-container&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
-                    <span class="hljs-attr">data-ref-index</span>=<span class="hljs-string">&quot;0&quot;</span>
-                    <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>
-                    <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menuitem&quot;</span>
-                &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menuitem&quot;</span>&gt;</span>
                     Home
                 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-ref-index</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor-container&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
-                    <span class="hljs-attr">data-ref-index</span>=<span class="hljs-string">&quot;1&quot;</span>
-                    <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span>
-                    <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menuitem&quot;</span>
-                &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menuitem&quot;</span>&gt;</span>
                     About
                 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -753,9 +743,9 @@ För att behålla samma funktionalitet behövs båda dessa komponenter användas
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    rip-navbar (<a href="https://github.com/Forsakringskassan/designsystem/commits/7129a1286c7148c47b1c7e5b2dad80275087c434">7129a12</a>)<br />
+    rip-navbar (<a href="https://github.com/Forsakringskassan/designsystem/commits/bff8af550d2c0e278c79ed0660084e3487071543">bff8af5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/285">PR 285</a><br />
-        2025-02-19 21:27
+        2025-02-19 22:24
 </div>
 <div class="toolbar__item">
     <form id="version">
