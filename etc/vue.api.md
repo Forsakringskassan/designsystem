@@ -3375,120 +3375,12 @@ formatter: FormatFunction<number>;
 parser: ParseFunction<number>;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export const FDataTable: DefineComponent<ExtractPropTypes<    {
-rows: {
-type: PropType<ListArray>;
-required: true;
-};
-keyAttribute: {
-type: StringConstructor;
-required: true;
-};
-striped: {
-type: BooleanConstructor;
-default: boolean;
-};
-scroll: {
-type: PropType<TableScroll>;
-default: TableScroll;
-validator(value: string): boolean;
-};
-}>, FSortFilterDatasetInterface, {
-columns: FTableColumnData[];
-}, {
-hasCaption(): boolean;
-tableClasses(): string[];
-isEmpty(): boolean;
-visibleColumns(): FTableColumnData[];
-wrapperClasses(): string[];
-tabindex(): number | undefined;
-}, {
-rowKey(item: ListItem): string;
-columnClasses(column: FTableColumnData): string[];
-iconClasses(column: FTableColumnData): string[];
-iconName(column: FTableColumnData): string;
-onClickColumnHeader(column: FTableColumnData): void;
-callbackOnSort(columnName: string, ascending: boolean): void;
-callbackSortableColumns(columnNames: string[]): void;
-escapeNewlines(value: string): string;
-}, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-rows: {
-type: PropType<ListArray>;
-required: true;
-};
-keyAttribute: {
-type: StringConstructor;
-required: true;
-};
-striped: {
-type: BooleanConstructor;
-default: boolean;
-};
-scroll: {
-type: PropType<TableScroll>;
-default: TableScroll;
-validator(value: string): boolean;
-};
-}>> & Readonly<{}>, {
-scroll: TableScroll;
-striped: boolean;
-}, {}, {
-FIcon: DefineComponent<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>, {}, {}, {
-spriteKey(): string;
-spriteId(): string;
-modifiers(): string[];
-ariaHidden(): "true" | undefined;
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-library: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-flip: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-rotate: {
-type: PropType<string>;
-default: null;
-required: false;
-validator(value: string): boolean;
-};
-}>> & Readonly<{}>, {
-library: string;
-flip: string;
-rotate: string;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
-}, {}, string, () => Omit<FTableInterface, "renderColumns">, true, {}, any>;
+export const FDataTable: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const FDatepickerField: DefineComponent<ExtractPropTypes<    {
@@ -15306,12 +15198,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
