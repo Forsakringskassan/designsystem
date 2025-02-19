@@ -12986,7 +12986,7 @@ const _export_sfc$1 = (sfc, props) => {
 };
 const _hoisted_1$U = ["aria-hidden"];
 const _hoisted_2$F = ["xlink:href"];
-function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
     focusable: "false",
     class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
@@ -12995,7 +12995,7 @@ function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
     "xlink:href": _ctx.spriteId
   }, null, 8, _hoisted_2$F)], 16, _hoisted_1$U);
 }
-const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$W]]);
+const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$V]]);
 const DATA_TEST_ATTRIBUTE_NAME = "data-test";
 function throwErrorIfEmpty(value) {
   if (!value) {
@@ -15421,7 +15421,7 @@ const _hoisted_10$4 = {
   class: "modal__shelf"
 };
 const _hoisted_11$3 = ["aria-label"];
-function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -15451,7 +15451,7 @@ function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$T)) : createCommentVNode("", true);
 }
-const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$V]]);
+const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$U]]);
 function prepareButtonList(src, buttonOrder = config.buttonOrder) {
   const list = src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
@@ -15592,7 +15592,7 @@ const _hoisted_3$v = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
     fullscreen: _ctx.fullscreen,
@@ -15616,7 +15616,7 @@ function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
-const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$U]]);
+const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$T]]);
 const GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 const ALIGNMENT = ["top", "center", "bottom"];
 const FLOAT = ["left", "center", "right"];
@@ -15695,12 +15695,12 @@ const _sfc_main$17 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$T]]);
+const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$S]]);
 const _sfc_main$16 = /* @__PURE__ */ defineComponent({
   name: "IFlexItem",
   inheritAttrs: true,
@@ -15748,12 +15748,12 @@ const _sfc_main$16 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex__item", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$S]]);
+const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$R]]);
 function focusError(item) {
   const element = document.querySelector(`#${item.id}`);
   if (!element) {
@@ -15832,7 +15832,7 @@ const _hoisted_4$p = ["onClick"];
 const _hoisted_5$k = {
   class: "error-list__link"
 };
-function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
@@ -15886,7 +15886,7 @@ function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })]);
 }
-const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$R]]);
+const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$Q]]);
 var es_iterator_every = {};
 var hasRequiredEs_iterator_every;
 function requireEs_iterator_every() {
@@ -16044,13 +16044,13 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
     onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
   }, [renderSlot(_ctx.$slots, "default")], 32);
 }
-const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$Q]]);
+const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$14, [["render", _sfc_render$P]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -16202,7 +16202,7 @@ const _hoisted_2$B = {
   tabindex: "-1",
   role: "group"
 };
-function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = resolveComponent("f-error-list");
   const _component_f_validation_group = resolveComponent("f-validation-group");
   return openBlock(), createBlock(_component_f_validation_group, {
@@ -16228,7 +16228,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["modelValue"]);
 }
-const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$P]]);
+const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$O]]);
 const _sfc_main$12 = /* @__PURE__ */ defineComponent({
   name: "FFormModal",
   components: {
@@ -16386,7 +16386,7 @@ const _hoisted_3$t = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = resolveComponent("f-validation-form");
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
@@ -16422,7 +16422,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
-const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$12, [["render", _sfc_render$O]]);
+const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$12, [["render", _sfc_render$N]]);
 function isVueComponent(element) {
   return Boolean(element && typeof element === "object" && "$el" in element);
 }
@@ -16670,7 +16670,7 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
     }
   }
 });
-function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Transition, {
     onEnter: _ctx.enter,
     onAfterEnter: _ctx.afterEnter,
@@ -16682,7 +16682,7 @@ function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
-const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$V, [["render", _sfc_render$G]]);
+const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$V, [["render", _sfc_render$F]]);
 var Placement = /* @__PURE__ */ ((Placement2) => {
   Placement2["A"] = "A";
   Placement2["B"] = "B";
@@ -17100,7 +17100,7 @@ const _hoisted_1$H = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
-function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
     key: 0,
@@ -17124,7 +17124,7 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     class: "button__icon"
   })])], 6)], 512)], 2)], 8, ["disabled"])) : createCommentVNode("", true);
 }
-const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$T, [["render", _sfc_render$E]]);
+const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$T, [["render", _sfc_render$D]]);
 function numItems(itemHeight, availableHeight, verticalSpacing) {
   const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
   return Math.min(itemsFit, 7);
@@ -18157,7 +18157,7 @@ const _hoisted_4$i = {
   key: 0,
   class: "checkbox__details"
 };
-function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["checkbox", _ctx.disabledClass]),
     onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -18187,7 +18187,7 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$q)], 34);
 }
-const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$K, [["render", _sfc_render$y]]);
+const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$K, [["render", _sfc_render$x]]);
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
 function requireEs_iterator_some() {
@@ -18226,30 +18226,14 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["NONE"] = 3] = "NONE";
   return Operation2;
 })(Operation || {});
+const _hoisted_1$w = {
+  class: "crud-dataset"
+};
+const _hoisted_2$o = {
+  key: 0
+};
 /* @__PURE__ */ defineComponent({
-  name: "FCrudDataset",
-  components: {
-    FFormModal,
-    FConfirmModal,
-    FIcon
-  },
-  mixins: [TranslationMixin],
-  provide() {
-    return {
-      delete: (item) => {
-        this.deleteItem(item);
-      },
-      modify: (item) => {
-        this.updateItem(item);
-      },
-      registerCallbackAfterItemAdd: (callback) => {
-        this.callbackAfterItemAdd = callback;
-      },
-      registerCallbackBeforeItemDelete: (callback) => {
-        this.callbackBeforeItemDelete = callback;
-      }
-    };
-  },
+  __name: "FCrudDataset",
   props: {
     /**
      * The list of items that should be deleted, modified or added to.
@@ -18333,25 +18317,24 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
     }
   },
   emits: ["created", "deleted", "updated", "update:modelValue"],
-  data() {
-    return {
-      result: [],
-      Operation,
-      operation: Operation.NONE,
-      item: null,
-      originalItemToUpdate: null,
-      isFormModalOpen: false,
-      isConfirmModalOpen: false,
-      callbackAfterItemAdd() {
-      },
-      callbackBeforeItemDelete() {
-      }
-    };
-  },
-  computed: {
-    formModalButtons() {
-      const confirmButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-      const cancelButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+  setup(__props, {
+    emit: __emit
+  }) {
+    const $t2 = useTranslate();
+    const slots = useSlots();
+    const result = ref([]);
+    const operation = ref(Operation.NONE);
+    const item = ref(null);
+    const originalItemToUpdate = ref(null);
+    const isFormModalOpen = ref(false);
+    const isConfirmModalOpen = ref(false);
+    const callbackAfterItemAdd = ref(() => ({}));
+    const callbackBeforeItemDelete = ref(() => ({}));
+    const props = __props;
+    const emit2 = __emit;
+    const formModalButtons = computed(() => {
+      const confirmButtonText = operation.value === Operation.ADD ? $t2("fkui.crud-dataset.modal.confirm.add", "Lägg till") : $t2("fkui.crud-dataset.modal.confirm.modify", "Spara");
+      const cancelButtonText = operation.value === Operation.ADD ? $t2("fkui.crud-dataset.modal.cancel.add", "Avbryt") : $t2("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
       return [{
         label: confirmButtonText,
         event: "confirm",
@@ -18363,118 +18346,166 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
         type: "secondary",
         submitButton: false
       }];
-    },
-    confirmDeleteButtons() {
+    });
+    const confirmDeleteButtons = computed(() => {
       return [{
-        label: this.$t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
+        label: $t2("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
         type: "primary",
         event: "confirm"
       }, {
-        label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
+        label: $t2("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
         type: "secondary"
       }];
-    },
-    hasAddSlot() {
-      return Boolean(this.$slots.add);
-    },
-    hasDeleteSlot() {
-      return Boolean(this.$slots.delete);
-    },
-    hasModifySlot() {
-      return Boolean(this.$slots.modify);
-    },
-    formModalHeader() {
-      return this.operation === Operation.ADD ? this.addNewModalHeader : this.modifyModalHeader;
-    }
-  },
-  watch: {
-    modelValue: {
-      immediate: true,
-      deep: true,
-      handler(data) {
-        this.result = [...data];
+    });
+    const hasAddSlot = computed(() => {
+      return Boolean(slots.add);
+    });
+    const hasDeleteSlot = computed(() => {
+      return Boolean(slots.delete);
+    });
+    const hasModifySlot = computed(() => {
+      return Boolean(slots.modify);
+    });
+    const formModalHeader = computed(() => {
+      return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
+    });
+    provide("delete", deleteItem);
+    provide("modify", updateItem);
+    provide("registerCallbackAfterItemAdd", (callback) => {
+      callbackAfterItemAdd.value = callback;
+    });
+    provide("registerCallbackBeforeItemDelete", (callback) => {
+      callbackBeforeItemDelete.value = callback;
+    });
+    onMounted(() => {
+      if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
+        throw Error("At least one template of the following must be defined. #add, #delete or #modify");
       }
-    }
-  },
-  mounted() {
-    if (!this.hasAddSlot && !this.hasDeleteSlot && !this.hasModifySlot) {
-      throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
-    }
-  },
-  methods: {
-    createItem() {
-      if (!this.hasAddSlot) {
+    });
+    watch(() => props.modelValue, (data) => {
+      result.value = [...data];
+    }, {
+      immediate: true,
+      deep: true
+    });
+    function createItem() {
+      if (!hasAddSlot.value) {
         throw Error("No template is defined for #add");
       }
-      this.operation = Operation.ADD;
-      this.item = this.beforeCreate ? this.beforeCreate() : {};
-      this.isFormModalOpen = true;
-    },
-    deleteItem(item) {
-      if (!this.hasDeleteSlot) {
+      operation.value = Operation.ADD;
+      item.value = props.beforeCreate ? props.beforeCreate() : {};
+      isFormModalOpen.value = true;
+    }
+    function deleteItem(current) {
+      if (!hasDeleteSlot.value) {
         throw Error("No template is defined for #delete");
       }
-      this.operation = Operation.DELETE;
-      this.item = item;
-      this.isConfirmModalOpen = true;
-    },
-    onDeleteConfirm() {
-      if (!this.item) {
+      operation.value = Operation.DELETE;
+      item.value = current;
+      isConfirmModalOpen.value = true;
+    }
+    function onDeleteConfirm() {
+      if (!item.value) {
         return;
       }
-      this.callbackBeforeItemDelete(this.item);
-      this.result = this.result.filter((item) => item !== this.item);
-      this.$emit("deleted", this.item);
-      this.$emit("update:modelValue", this.result);
-      alertScreenReader(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
+      callbackBeforeItemDelete.value(item.value);
+      result.value = result.value.filter((it) => it !== item.value);
+      emit2("deleted", item.value);
+      emit2("update:modelValue", result.value);
+      alertScreenReader($t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
         assertive: true
       });
-    },
-    onDeleteClose(e) {
-      this.onModalClose();
-      if (e.reason === "close" && this.onCancel) {
-        this.onCancel();
+    }
+    function onDeleteClose(e) {
+      onModalClose();
+      if (e.reason === "close" && props.onCancel) {
+        props.onCancel();
       }
-    },
-    onModalClose() {
-      this.isFormModalOpen = false;
-      this.isConfirmModalOpen = false;
-    },
-    onFormModalSubmit() {
-      if (!this.item) {
+    }
+    function onModalClose() {
+      isFormModalOpen.value = false;
+      isConfirmModalOpen.value = false;
+    }
+    function onFormModalSubmit() {
+      if (!item.value) {
         return;
       }
-      if (this.operation === Operation.ADD) {
-        this.result.push(this.item);
-        this.$emit("created", this.item);
-        this.$emit("update:modelValue", this.result);
-        this.callbackAfterItemAdd(this.item);
-        alertScreenReader(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
+      if (operation.value === Operation.ADD) {
+        result.value.push(item.value);
+        emit2("created", item.value);
+        emit2("update:modelValue", result.value);
+        callbackAfterItemAdd.value(item.value);
+        alertScreenReader($t2("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
           assertive: true
         });
-      } else if (this.operation === Operation.MODIFY) {
-        if (this.originalItemToUpdate) {
-          Object.assign(this.originalItemToUpdate, this.item);
+      } else if (operation.value === Operation.MODIFY) {
+        if (originalItemToUpdate.value) {
+          Object.assign(originalItemToUpdate.value, item.value);
         } else {
-          this.originalItemToUpdate = this.item;
+          originalItemToUpdate.value = item.value;
         }
-        this.$emit("updated", this.originalItemToUpdate);
-        this.$emit("update:modelValue", this.result);
-        alertScreenReader(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
+        emit2("updated", originalItemToUpdate.value);
+        emit2("update:modelValue", result.value);
+        alertScreenReader($t2("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
           assertive: true
         });
       }
-      this.isFormModalOpen = false;
-    },
-    updateItem(item) {
-      if (!this.hasModifySlot) {
+      isFormModalOpen.value = false;
+    }
+    function updateItem(current) {
+      if (!hasModifySlot.value) {
         throw Error("No template is defined for #modify");
       }
-      this.operation = Operation.MODIFY;
-      this.originalItemToUpdate = item;
-      this.item = deepClone(item);
-      this.isFormModalOpen = true;
+      operation.value = Operation.MODIFY;
+      originalItemToUpdate.value = current;
+      item.value = deepClone(current);
+      isFormModalOpen.value = true;
     }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1$w, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), hasAddSlot.value ? (openBlock(), createElementBlock("div", _hoisted_2$o, [createBaseVNode("button", {
+        "data-test": "f-crud-dataset-add-button",
+        type: "button",
+        class: "button button--tertiary crud-dataset__add-button",
+        onClick: _cache[0] || (_cache[0] = ($event) => createItem())
+      }, [createVNode(unref(FIcon), {
+        class: "button__icon",
+        name: "plus"
+      }), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "add-button", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.crud-dataset.button.add", "Lägg till ny")), 1)])])])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createVNode(unref(FFormModal), {
+        "is-open": isFormModalOpen.value,
+        "aria-close-text": unref($t2)("fkui.crud-dataset.modal.close", "Stäng"),
+        buttons: formModalButtons.value,
+        "use-error-list": false,
+        "before-submit": __props.beforeSubmit,
+        "before-validation": __props.beforeValidation,
+        "on-cancel": __props.onCancel,
+        onClose: onModalClose,
+        onCancel: __props.onCancel,
+        onSubmit: onFormModalSubmit
+      }, {
+        header: withCtx(() => [createTextVNode(toDisplayString(formModalHeader.value), 1)]),
+        "input-text-fields": withCtx(() => [operation.value === unref(Operation).ADD ? renderSlot(_ctx.$slots, "add", normalizeProps(mergeProps({
+          key: 0
+        }, {
+          item: item.value
+        }))) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), operation.value === unref(Operation).MODIFY ? renderSlot(_ctx.$slots, "modify", normalizeProps(mergeProps({
+          key: 1
+        }, {
+          item: item.value
+        }))) : createCommentVNode("", true)]),
+        _: 3
+      }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[7] || (_cache[7] = createTextVNode()), createVNode(unref(FConfirmModal), {
+        "is-open": isConfirmModalOpen.value,
+        buttons: confirmDeleteButtons.value,
+        onConfirm: onDeleteConfirm,
+        onClose: onDeleteClose
+      }, {
+        heading: withCtx(() => [createTextVNode(toDisplayString(__props.deleteModalHeader), 1)]),
+        content: withCtx(() => [renderSlot(_ctx.$slots, "delete", normalizeProps(guardReactiveProps({
+          item: item.value
+        })))]),
+        _: 3
+      }, 8, ["is-open", "buttons"])]);
+    };
   }
 });
 function ActivateItemInjected() {

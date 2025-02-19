@@ -31,7 +31,7 @@
     FConfirmModal: () => FConfirmModal,
     FContextMenu: () => FContextMenu,
     FCrudButton: () => FCrudButton,
-    FCrudDataset: () => FCrudDataset,
+    FCrudDataset: () => _sfc_main$I,
     FCurrencyTextField: () => _sfc_main$A,
     FDataTable: () => FDataTable,
     FDatepickerField: () => FDatepickerField,
@@ -2134,7 +2134,7 @@
   };
   var _hoisted_1$U = ["aria-hidden"];
   var _hoisted_2$F = ["xlink:href"];
-  function _sfc_render$W(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("svg", (0, import_vue.mergeProps)(_ctx.$attrs, {
       focusable: "false",
       class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
@@ -2143,7 +2143,7 @@
       "xlink:href": _ctx.spriteId
     }, null, 8, _hoisted_2$F)], 16, _hoisted_1$U);
   }
-  var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$W]]);
+  var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$V]]);
   var DATA_TEST_ATTRIBUTE_NAME = "data-test";
   function throwErrorIfEmpty(value) {
     if (!value) {
@@ -4795,7 +4795,7 @@
     class: "modal__shelf"
   };
   var _hoisted_11$3 = ["aria-label"];
-  function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       key: 0,
@@ -4825,7 +4825,7 @@
       onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
     }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$T)) : (0, import_vue.createCommentVNode)("", true);
   }
-  var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$V]]);
+  var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$U]]);
   function prepareButtonList(src, buttonOrder = config.buttonOrder) {
     const list = src.map((it) => {
       var _it$event, _ref, _it$reason, _it$type;
@@ -4966,7 +4966,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$U(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_modal, {
       fullscreen: _ctx.fullscreen,
@@ -4990,7 +4990,7 @@
       _: 3
     }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
   }
-  var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$U]]);
+  var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$T]]);
   var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
   var ALIGNMENT = ["top", "center", "bottom"];
   var FLOAT = ["left", "center", "right"];
@@ -5069,12 +5069,12 @@
       }
     }
   });
-  function _sfc_render$T(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["iflex", _ctx.classList])
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2);
   }
-  var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$T]]);
+  var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$S]]);
   var _sfc_main$16 = (0, import_vue.defineComponent)({
     name: "IFlexItem",
     inheritAttrs: true,
@@ -5122,12 +5122,12 @@
       }
     }
   });
-  function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["iflex__item", _ctx.classList])
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2);
   }
-  var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$S]]);
+  var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$R]]);
   function focusError(item) {
     const element = document.querySelector(`#${item.id}`);
     if (!element) {
@@ -5206,7 +5206,7 @@
   var _hoisted_5$k = {
     class: "error-list__link"
   };
-  function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_flex_item = (0, import_vue.resolveComponent)("i-flex-item");
     const _component_i_flex = (0, import_vue.resolveComponent)("i-flex");
@@ -5260,7 +5260,7 @@
       _: 3
     })]);
   }
-  var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$R]]);
+  var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$Q]]);
   var es_iterator_every = {};
   var hasRequiredEs_iterator_every;
   function requireEs_iterator_every() {
@@ -5418,13 +5418,13 @@
       }
     }
   });
-  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
       onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 32);
   }
-  var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$Q]]);
+  var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$P]]);
   var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
     FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
     FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -5576,7 +5576,7 @@
     tabindex: "-1",
     role: "group"
   };
-  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_error_list = (0, import_vue.resolveComponent)("f-error-list");
     const _component_f_validation_group = (0, import_vue.resolveComponent)("f-validation-group");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_validation_group, {
@@ -5602,7 +5602,7 @@
       _: 3
     }, 8, ["modelValue"]);
   }
-  var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$P]]);
+  var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$O]]);
   var _sfc_main$12 = (0, import_vue.defineComponent)({
     name: "FFormModal",
     components: {
@@ -5760,7 +5760,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_validation_form = (0, import_vue.resolveComponent)("f-validation-form");
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_f_modal, {
@@ -5796,7 +5796,7 @@
       _: 3
     }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
   }
-  var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$O]]);
+  var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$N]]);
   async function confirmModal(callingInstance, texts) {
     const buttons = [{
       label: texts.confirm,
@@ -6169,12 +6169,12 @@
   var _hoisted_1$O = {
     "data-test": "f-error-page"
   };
-  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$O, _cache[0] || (_cache[0] = [(0, import_vue.createElementVNode)("h1", null, "Fel", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("p", null, "Ett fel har uppst\xE5tt.", -1), (0, import_vue.createTextVNode)(), (0, import_vue.createElementVNode)("a", {
       href: "/"
     }, "G\xE5 till startsidan", -1)]));
   }
-  var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$N]]);
+  var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$M]]);
   var _sfc_main$10 = (0, import_vue.defineComponent)({
     name: "FErrorHandlingApp",
     props: {
@@ -6204,7 +6204,7 @@
       });
     }
   });
-  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", null, [_ctx.hasError ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(_ctx.errorComponent), {
       key: 0,
       payload: _ctx.payload
@@ -6214,7 +6214,7 @@
       key: 2
     })]);
   }
-  var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$M]]);
+  var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$L]]);
   function isMonthBefore(date, minDate) {
     return Boolean(minDate && date.isBefore(minDate.startOfMonth()));
   }
@@ -6383,7 +6383,7 @@
   var _hoisted_6$f = {
     class: "sr-only"
   };
-  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$N, [(0, import_vue.createElementVNode)("div", _hoisted_2$z, (0, import_vue.toDisplayString)(_ctx.currentText), 1), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
       ref: "previousButton",
@@ -6407,7 +6407,7 @@
       name: "arrow-right"
     }, null, 8, ["class"])], 8, _hoisted_5$j)]);
   }
-  var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$L]]);
+  var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$K]]);
   function getDayStartOffset(days) {
     return days[0].weekDay - 1;
   }
@@ -6520,7 +6520,7 @@
     "aria-hidden": "true"
   };
   var _hoisted_12$2 = ["colspan"];
-  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("table", {
       class: "calendar-month__table",
       role: "grid",
@@ -6583,7 +6583,7 @@
       "aria-hidden": "true"
     }, null, 8, _hoisted_12$2)])) : (0, import_vue.createCommentVNode)("", true)])], 40, _hoisted_1$M);
   }
-  var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$K]]);
+  var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$J]]);
   var DayStep = {
     ArrowRight: 1,
     ArrowLeft: -1,
@@ -6698,7 +6698,7 @@
     }
   });
   var _hoisted_1$L = ["data-date", "tabindex", "onClick", "onKeydown"];
-  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_month_grid = (0, import_vue.resolveComponent)("i-calendar-month-grid");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_calendar_month_grid, {
       value: _ctx.modelValue
@@ -6721,7 +6721,7 @@
       _: 3
     }, 8, ["value"]);
   }
-  var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$J]]);
+  var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$I]]);
   var _sfc_main$Y = (0, import_vue.defineComponent)({
     name: "FCalendar",
     components: {
@@ -6776,7 +6776,7 @@
   var _hoisted_1$K = {
     class: "calendar__wrapper"
   };
-  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_calendar_navbar = (0, import_vue.resolveComponent)("i-calendar-navbar");
     const _component_i_calendar_month = (0, import_vue.resolveComponent)("i-calendar-month");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$K, [(0, import_vue.createVNode)(_component_i_calendar_navbar, {
@@ -6802,7 +6802,7 @@
       _: 3
     }, 8, ["model-value", "min-date", "max-date", "tab-date", "onClick", "onUpdate:modelValue"])]);
   }
-  var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$I]]);
+  var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$H]]);
   function getCalendarDaySrText(day, enabled, selected, t) {
     const parts = [];
     if (!enabled) {
@@ -6892,12 +6892,12 @@
   var _hoisted_2$x = {
     class: "sr-only"
   };
-  function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", {
       class: (0, import_vue.normalizeClass)(_ctx.dayClasses)
     }, [(0, import_vue.createElementVNode)("span", _hoisted_1$J, (0, import_vue.toDisplayString)(_ctx.day.day), 1), _cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_2$x, (0, import_vue.toDisplayString)(_ctx.srText), 1)], 2);
   }
-  var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$H]]);
+  var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$G]]);
   function useEventListener(target, event, callback) {
     (0, import_vue.onMounted)(() => {
       var _a;
@@ -7074,7 +7074,7 @@
       }
     }
   });
-  function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Transition, {
       onEnter: _ctx.enter,
       onAfterEnter: _ctx.afterEnter,
@@ -7086,7 +7086,7 @@
       _: 3
     }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
   }
-  var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$G]]);
+  var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$F]]);
   function offset(page, el) {
     const rect = el.getBoundingClientRect();
     return {
@@ -7652,7 +7652,7 @@
       }
     }
   });
-  function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       key: 0,
       to: _ctx.teleportTarget,
@@ -7673,7 +7673,7 @@
       placement: _ctx.placement
     })))], 544)], 16)], 8, ["to", "disabled"])) : (0, import_vue.createCommentVNode)("", true);
   }
-  var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$F]]);
+  var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$E]]);
   function computeArrowOffset(placement, inputIconRect, wrapperRect) {
     switch (placement) {
       case Placement.A: {
@@ -7876,7 +7876,7 @@
     ref: "wrapper",
     class: "popup-error__wrapper"
   };
-  function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return _ctx.isOpen ? ((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       key: 0,
@@ -7900,7 +7900,7 @@
       class: "button__icon"
     })])], 6)], 512)], 2)], 8, ["disabled"])) : (0, import_vue.createCommentVNode)("", true);
   }
-  var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$E]]);
+  var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$D]]);
   function numItems(itemHeight, availableHeight, verticalSpacing) {
     const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
     return Math.min(itemsFit, 7);
@@ -8431,7 +8431,7 @@
     key: 0,
     class: "sr-only"
   };
-  function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_i_popup = (0, import_vue.resolveComponent)("i-popup");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup, {
       class: "ipopupmenu",
@@ -8467,7 +8467,7 @@
       _: 1
     }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
   }
-  var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$D]]);
+  var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$C]]);
   var ANIMATION_DURATION = 500;
   var NO_CSS_CLASSES = "";
   var CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
@@ -8670,13 +8670,13 @@
     ref: "content",
     "data-test": "animation-content"
   };
-  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(_ctx.animationClasses),
       style: (0, import_vue.normalizeStyle)(_ctx.heightStyle)
     }, [_ctx.shouldVIf ? (0, import_vue.withDirectives)(((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$E, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 512)), [[import_vue.vShow, _ctx.shouldVShow]]) : (0, import_vue.createCommentVNode)("", true)], 6);
   }
-  var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$C]]);
+  var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$B]]);
   var _sfc_main$P = (0, import_vue.defineComponent)({
     name: "ISkipLink",
     mixins: [TranslationMixin],
@@ -8692,13 +8692,13 @@
     }
   });
   var _hoisted_1$D = ["href"];
-  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("a", {
       class: "iskiplink",
       href: _ctx.href
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$D);
   }
-  var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$B]]);
+  var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$A]]);
   function filterOptions(options, filter2, selectMode) {
     if ((0, import_logic.isEmpty)(filter2) || selectMode) {
       return options;
@@ -9316,7 +9316,7 @@
   var _hoisted_6$d = {
     class: "tooltip__footer"
   };
-  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, null, [((0, import_vue.openBlock)(), (0, import_vue.createBlock)(import_vue.Teleport, {
       disabled: _ctx.iconTarget === null,
@@ -9349,7 +9349,7 @@
       name: "close"
     })])])])) : (0, import_vue.createCommentVNode)("", true)], 16)], 64);
   }
-  var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$A]]);
+  var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$z]]);
   function* labelClasses(options) {
     const {
       labelClass
@@ -9650,7 +9650,7 @@
     key: 0,
     class: "label__message label__message--error"
   };
-  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("fieldset", {
       id: _ctx.id,
@@ -9687,7 +9687,7 @@
       class: (0, import_vue.normalizeClass)(_ctx.groupContentClass)
     }, [(0, import_vue.renderSlot)(_ctx.$slots, "default")], 2)], 42, _hoisted_1$z);
   }
-  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$z]]);
+  var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$y]]);
   var anyType$1 = [String, Object, Array, Number, Date, Boolean];
   var _sfc_main$K = (0, import_vue.defineComponent)({
     name: "FCheckboxField",
@@ -9885,7 +9885,7 @@
     key: 0,
     class: "checkbox__details"
   };
-  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
       class: (0, import_vue.normalizeClass)(["checkbox", _ctx.disabledClass]),
       onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -9915,7 +9915,7 @@
       _: 3
     }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : (0, import_vue.createCommentVNode)("", true)], 64)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$q)], 34);
   }
-  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$y]]);
+  var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$x]]);
   var es_iterator_some = {};
   var hasRequiredEs_iterator_some;
   function requireEs_iterator_some() {
@@ -10171,7 +10171,7 @@
     key: 0,
     class: "contextmenu__separator"
   };
-  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_i_popup = (0, import_vue.resolveComponent)("i-popup");
     return (0, import_vue.openBlock)(), (0, import_vue.createBlock)(_component_i_popup, {
@@ -10211,7 +10211,7 @@
       _: 1
     }, 8, ["is-open", "anchor", "focus-element"]);
   }
-  var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$x]]);
+  var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$w]]);
   var Operation = /* @__PURE__ */ ((Operation2) => {
     Operation2[Operation2["ADD"] = 0] = "ADD";
     Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -10219,30 +10219,14 @@
     Operation2[Operation2["NONE"] = 3] = "NONE";
     return Operation2;
   })(Operation || {});
-  var _sfc_main$I = (0, import_vue.defineComponent)({
-    name: "FCrudDataset",
-    components: {
-      FFormModal,
-      FConfirmModal,
-      FIcon
-    },
-    mixins: [TranslationMixin],
-    provide() {
-      return {
-        delete: (item) => {
-          this.deleteItem(item);
-        },
-        modify: (item) => {
-          this.updateItem(item);
-        },
-        registerCallbackAfterItemAdd: (callback) => {
-          this.callbackAfterItemAdd = callback;
-        },
-        registerCallbackBeforeItemDelete: (callback) => {
-          this.callbackBeforeItemDelete = callback;
-        }
-      };
-    },
+  var _hoisted_1$w = {
+    class: "crud-dataset"
+  };
+  var _hoisted_2$o = {
+    key: 0
+  };
+  var _sfc_main$I = /* @__PURE__ */ (0, import_vue.defineComponent)({
+    __name: "FCrudDataset",
     props: {
       /**
        * The list of items that should be deleted, modified or added to.
@@ -10326,25 +10310,24 @@
       }
     },
     emits: ["created", "deleted", "updated", "update:modelValue"],
-    data() {
-      return {
-        result: [],
-        Operation,
-        operation: Operation.NONE,
-        item: null,
-        originalItemToUpdate: null,
-        isFormModalOpen: false,
-        isConfirmModalOpen: false,
-        callbackAfterItemAdd() {
-        },
-        callbackBeforeItemDelete() {
-        }
-      };
-    },
-    computed: {
-      formModalButtons() {
-        const confirmButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-        const cancelButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+    setup(__props, {
+      emit: __emit
+    }) {
+      const $t2 = useTranslate();
+      const slots = (0, import_vue.useSlots)();
+      const result = (0, import_vue.ref)([]);
+      const operation = (0, import_vue.ref)(Operation.NONE);
+      const item = (0, import_vue.ref)(null);
+      const originalItemToUpdate = (0, import_vue.ref)(null);
+      const isFormModalOpen = (0, import_vue.ref)(false);
+      const isConfirmModalOpen = (0, import_vue.ref)(false);
+      const callbackAfterItemAdd = (0, import_vue.ref)(() => ({}));
+      const callbackBeforeItemDelete = (0, import_vue.ref)(() => ({}));
+      const props = __props;
+      const emit = __emit;
+      const formModalButtons = (0, import_vue.computed)(() => {
+        const confirmButtonText = operation.value === Operation.ADD ? $t2("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : $t2("fkui.crud-dataset.modal.confirm.modify", "Spara");
+        const cancelButtonText = operation.value === Operation.ADD ? $t2("fkui.crud-dataset.modal.cancel.add", "Avbryt") : $t2("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
         return [{
           label: confirmButtonText,
           event: "confirm",
@@ -10356,175 +10339,168 @@
           type: "secondary",
           submitButton: false
         }];
-      },
-      confirmDeleteButtons() {
+      });
+      const confirmDeleteButtons = (0, import_vue.computed)(() => {
         return [{
-          label: this.$t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
+          label: $t2("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
           type: "primary",
           event: "confirm"
         }, {
-          label: this.$t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
+          label: $t2("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
           type: "secondary"
         }];
-      },
-      hasAddSlot() {
-        return Boolean(this.$slots.add);
-      },
-      hasDeleteSlot() {
-        return Boolean(this.$slots.delete);
-      },
-      hasModifySlot() {
-        return Boolean(this.$slots.modify);
-      },
-      formModalHeader() {
-        return this.operation === Operation.ADD ? this.addNewModalHeader : this.modifyModalHeader;
-      }
-    },
-    watch: {
-      modelValue: {
-        immediate: true,
-        deep: true,
-        handler(data) {
-          this.result = [...data];
+      });
+      const hasAddSlot = (0, import_vue.computed)(() => {
+        return Boolean(slots.add);
+      });
+      const hasDeleteSlot = (0, import_vue.computed)(() => {
+        return Boolean(slots.delete);
+      });
+      const hasModifySlot = (0, import_vue.computed)(() => {
+        return Boolean(slots.modify);
+      });
+      const formModalHeader = (0, import_vue.computed)(() => {
+        return operation.value === Operation.ADD ? props.addNewModalHeader : props.modifyModalHeader;
+      });
+      (0, import_vue.provide)("delete", deleteItem);
+      (0, import_vue.provide)("modify", updateItem);
+      (0, import_vue.provide)("registerCallbackAfterItemAdd", (callback) => {
+        callbackAfterItemAdd.value = callback;
+      });
+      (0, import_vue.provide)("registerCallbackBeforeItemDelete", (callback) => {
+        callbackBeforeItemDelete.value = callback;
+      });
+      (0, import_vue.onMounted)(() => {
+        if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
+          throw Error("At least one template of the following must be defined. #add, #delete or #modify");
         }
-      }
-    },
-    mounted() {
-      if (!this.hasAddSlot && !this.hasDeleteSlot && !this.hasModifySlot) {
-        throw Error("Atleast one template of the following must be defined. #add, #delete or #modify");
-      }
-    },
-    methods: {
-      createItem() {
-        if (!this.hasAddSlot) {
+      });
+      (0, import_vue.watch)(() => props.modelValue, (data) => {
+        result.value = [...data];
+      }, {
+        immediate: true,
+        deep: true
+      });
+      function createItem() {
+        if (!hasAddSlot.value) {
           throw Error("No template is defined for #add");
         }
-        this.operation = Operation.ADD;
-        this.item = this.beforeCreate ? this.beforeCreate() : {};
-        this.isFormModalOpen = true;
-      },
-      deleteItem(item) {
-        if (!this.hasDeleteSlot) {
+        operation.value = Operation.ADD;
+        item.value = props.beforeCreate ? props.beforeCreate() : {};
+        isFormModalOpen.value = true;
+      }
+      function deleteItem(current) {
+        if (!hasDeleteSlot.value) {
           throw Error("No template is defined for #delete");
         }
-        this.operation = Operation.DELETE;
-        this.item = item;
-        this.isConfirmModalOpen = true;
-      },
-      onDeleteConfirm() {
-        if (!this.item) {
+        operation.value = Operation.DELETE;
+        item.value = current;
+        isConfirmModalOpen.value = true;
+      }
+      function onDeleteConfirm() {
+        if (!item.value) {
           return;
         }
-        this.callbackBeforeItemDelete(this.item);
-        this.result = this.result.filter((item) => item !== this.item);
-        this.$emit("deleted", this.item);
-        this.$emit("update:modelValue", this.result);
-        (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
+        callbackBeforeItemDelete.value(item.value);
+        result.value = result.value.filter((it) => it !== item.value);
+        emit("deleted", item.value);
+        emit("update:modelValue", result.value);
+        (0, import_logic.alertScreenReader)($t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
           assertive: true
         });
-      },
-      onDeleteClose(e) {
-        this.onModalClose();
-        if (e.reason === "close" && this.onCancel) {
-          this.onCancel();
+      }
+      function onDeleteClose(e) {
+        onModalClose();
+        if (e.reason === "close" && props.onCancel) {
+          props.onCancel();
         }
-      },
-      onModalClose() {
-        this.isFormModalOpen = false;
-        this.isConfirmModalOpen = false;
-      },
-      onFormModalSubmit() {
-        if (!this.item) {
+      }
+      function onModalClose() {
+        isFormModalOpen.value = false;
+        isConfirmModalOpen.value = false;
+      }
+      function onFormModalSubmit() {
+        if (!item.value) {
           return;
         }
-        if (this.operation === Operation.ADD) {
-          this.result.push(this.item);
-          this.$emit("created", this.item);
-          this.$emit("update:modelValue", this.result);
-          this.callbackAfterItemAdd(this.item);
-          (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
+        if (operation.value === Operation.ADD) {
+          result.value.push(item.value);
+          emit("created", item.value);
+          emit("update:modelValue", result.value);
+          callbackAfterItemAdd.value(item.value);
+          (0, import_logic.alertScreenReader)($t2("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
             assertive: true
           });
-        } else if (this.operation === Operation.MODIFY) {
-          if (this.originalItemToUpdate) {
-            Object.assign(this.originalItemToUpdate, this.item);
+        } else if (operation.value === Operation.MODIFY) {
+          if (originalItemToUpdate.value) {
+            Object.assign(originalItemToUpdate.value, item.value);
           } else {
-            this.originalItemToUpdate = this.item;
+            originalItemToUpdate.value = item.value;
           }
-          this.$emit("updated", this.originalItemToUpdate);
-          this.$emit("update:modelValue", this.result);
-          (0, import_logic.alertScreenReader)(this.$t("fkui.crud-dataset.aria-live.modify", "Raden har \xE4ndrats"), {
+          emit("updated", originalItemToUpdate.value);
+          emit("update:modelValue", result.value);
+          (0, import_logic.alertScreenReader)($t2("fkui.crud-dataset.aria-live.modify", "Raden har \xE4ndrats"), {
             assertive: true
           });
         }
-        this.isFormModalOpen = false;
-      },
-      updateItem(item) {
-        if (!this.hasModifySlot) {
+        isFormModalOpen.value = false;
+      }
+      function updateItem(current) {
+        if (!hasModifySlot.value) {
           throw Error("No template is defined for #modify");
         }
-        this.operation = Operation.MODIFY;
-        this.originalItemToUpdate = item;
-        this.item = (0, import_logic.deepClone)(item);
-        this.isFormModalOpen = true;
+        operation.value = Operation.MODIFY;
+        originalItemToUpdate.value = current;
+        item.value = (0, import_logic.deepClone)(current);
+        isFormModalOpen.value = true;
       }
+      return (_ctx, _cache) => {
+        return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$w, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), hasAddSlot.value ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$o, [(0, import_vue.createElementVNode)("button", {
+          "data-test": "f-crud-dataset-add-button",
+          type: "button",
+          class: "button button--tertiary crud-dataset__add-button",
+          onClick: _cache[0] || (_cache[0] = ($event) => createItem())
+        }, [(0, import_vue.createVNode)((0, import_vue.unref)(FIcon), {
+          class: "button__icon",
+          name: "plus"
+        }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)((0, import_vue.unref)($t2)("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)((0, import_vue.unref)(FFormModal), {
+          "is-open": isFormModalOpen.value,
+          "aria-close-text": (0, import_vue.unref)($t2)("fkui.crud-dataset.modal.close", "St\xE4ng"),
+          buttons: formModalButtons.value,
+          "use-error-list": false,
+          "before-submit": __props.beforeSubmit,
+          "before-validation": __props.beforeValidation,
+          "on-cancel": __props.onCancel,
+          onClose: onModalClose,
+          onCancel: __props.onCancel,
+          onSubmit: onFormModalSubmit
+        }, {
+          header: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(formModalHeader.value), 1)]),
+          "input-text-fields": (0, import_vue.withCtx)(() => [operation.value === (0, import_vue.unref)(Operation).ADD ? (0, import_vue.renderSlot)(_ctx.$slots, "add", (0, import_vue.normalizeProps)((0, import_vue.mergeProps)({
+            key: 0
+          }, {
+            item: item.value
+          }))) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), operation.value === (0, import_vue.unref)(Operation).MODIFY ? (0, import_vue.renderSlot)(_ctx.$slots, "modify", (0, import_vue.normalizeProps)((0, import_vue.mergeProps)({
+            key: 1
+          }, {
+            item: item.value
+          }))) : (0, import_vue.createCommentVNode)("", true)]),
+          _: 3
+        }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)((0, import_vue.unref)(FConfirmModal), {
+          "is-open": isConfirmModalOpen.value,
+          buttons: confirmDeleteButtons.value,
+          onConfirm: onDeleteConfirm,
+          onClose: onDeleteClose
+        }, {
+          heading: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(__props.deleteModalHeader), 1)]),
+          content: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "delete", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
+            item: item.value
+          })))]),
+          _: 3
+        }, 8, ["is-open", "buttons"])]);
+      };
     }
   });
-  var _hoisted_1$w = {
-    class: "crud-dataset"
-  };
-  var _hoisted_2$o = {
-    key: 0
-  };
-  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
-    const _component_f_form_modal = (0, import_vue.resolveComponent)("f-form-modal");
-    const _component_f_confirm_modal = (0, import_vue.resolveComponent)("f-confirm-modal");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$w, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), _ctx.hasAddSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$o, [(0, import_vue.createElementVNode)("button", {
-      "data-test": "f-crud-dataset-add-button",
-      type: "button",
-      class: "button button--tertiary crud-dataset__add-button",
-      onClick: _cache[0] || (_cache[0] = ($event) => _ctx.createItem())
-    }, [(0, import_vue.createVNode)(_component_f_icon, {
-      class: "button__icon",
-      name: "plus"
-    }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_form_modal, {
-      "is-open": _ctx.isFormModalOpen,
-      "aria-close-text": _ctx.$t("fkui.crud-dataset.modal.close", "St\xE4ng"),
-      buttons: _ctx.formModalButtons,
-      "use-error-list": false,
-      "before-submit": _ctx.beforeSubmit,
-      "before-validation": _ctx.beforeValidation,
-      "on-cancel": _ctx.onCancel,
-      onClose: _ctx.onModalClose,
-      onCancel: _ctx.onCancel,
-      onSubmit: _ctx.onFormModalSubmit
-    }, {
-      header: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.formModalHeader), 1)]),
-      "input-text-fields": (0, import_vue.withCtx)(() => [_ctx.operation === _ctx.Operation.ADD ? (0, import_vue.renderSlot)(_ctx.$slots, "add", (0, import_vue.normalizeProps)((0, import_vue.mergeProps)({
-        key: 0
-      }, {
-        item: _ctx.item
-      }))) : (0, import_vue.createCommentVNode)("", true), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), _ctx.operation === _ctx.Operation.MODIFY ? (0, import_vue.renderSlot)(_ctx.$slots, "modify", (0, import_vue.normalizeProps)((0, import_vue.mergeProps)({
-        key: 1
-      }, {
-        item: _ctx.item
-      }))) : (0, import_vue.createCommentVNode)("", true)]),
-      _: 3
-    }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onClose", "onCancel", "onSubmit"]), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_confirm_modal, {
-      "is-open": _ctx.isConfirmModalOpen,
-      buttons: _ctx.confirmDeleteButtons,
-      onConfirm: _ctx.onDeleteConfirm,
-      onClose: _ctx.onDeleteClose
-    }, {
-      heading: (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.deleteModalHeader), 1)]),
-      content: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "delete", (0, import_vue.normalizeProps)((0, import_vue.guardReactiveProps)({
-        item: _ctx.item
-      })))]),
-      _: 3
-    }, 8, ["is-open", "buttons", "onConfirm", "onClose"])]);
-  }
-  var FCrudDataset = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$w]]);
   function FCrudDatasetInjected() {
     return {
       delete: (0, import_vue.inject)("delete"),
