@@ -3375,12 +3375,35 @@ formatter: FormatFunction<number>;
 parser: ParseFunction<number>;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FDataTable: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const FDataTable: <T extends object>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_2<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_2<Pick<Partial<{
+        scroll: TableScroll;
+        striped: boolean;
+    }> & Omit<{
+        readonly scroll: TableScroll;
+        readonly rows: T[];
+        readonly keyAttribute: string;
+        readonly striped: boolean;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "striped">, "rows" | "keyAttribute" | ("scroll" | "striped")> & {} & Partial<{}>> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        caption?(_: {}): any;
+        default?(_: {
+            row: T;
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
+        empty?(_: {}): any;
+    };
+    emit: {};
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
 
 // @public (undocumented)
 export const FDatepickerField: DefineComponent<ExtractPropTypes<    {
@@ -6613,11 +6636,11 @@ export function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined
 // @public
 export function findParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | undefined;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_2<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
-    props: __VLS_PrettifyLocal_2<Pick<Partial<{
+export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_3<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_3<Pick<Partial<{
         scroll: TableScroll;
         modelValue: T[] | undefined;
         striped: boolean;
@@ -12609,11 +12632,11 @@ rotate: string;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_3<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
-    props: __VLS_PrettifyLocal_3<Pick<Partial<{
+export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_4<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_4<Pick<Partial<{
         data: T[];
         defaultSortAttribute: string;
         showSort: boolean;
@@ -15198,12 +15221,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {

@@ -1,6 +1,5 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends object">
 import { type PropType, computed, onMounted, provide, ref } from "vue";
-import { type ListArray, type ListItem } from "../../types";
 import { TableScroll, tableScrollClasses } from "../../utils";
 import {
     FTableColumnData,
@@ -34,7 +33,7 @@ const props = defineProps({
      * The rows will be listed in the given array order.
      */
     rows: {
-        type: Array as PropType<ListArray>,
+        type: Array as PropType<T[]>,
         required: true,
     },
     /**
@@ -71,11 +70,11 @@ const props = defineProps({
     },
 });
 
-const hasCaption = computed((): boolean => {
+const hasCaption = computed(() => {
     return hasSlot("caption", {}, { stripClasses: [] });
 });
 
-const tableClasses = computed((): string[] => {
+const tableClasses = computed(() => {
     const classes = [];
     if (props.striped) {
         classes.push("table--striped");
@@ -83,7 +82,7 @@ const tableClasses = computed((): string[] => {
     return classes;
 });
 
-const isEmpty = computed((): boolean => {
+const isEmpty = computed(() => {
     return props.rows.length === 0;
 });
 
@@ -91,11 +90,11 @@ const visibleColumns = computed((): FTableColumnData[] => {
     return columns.value.filter((col) => col.visible);
 });
 
-const wrapperClasses = computed((): string[] => {
+const wrapperClasses = computed(() => {
     return tableScrollClasses(props.scroll);
 });
 
-const tabindex = computed((): number | undefined => {
+const tabindex = computed(() => {
     return props.scroll !== TableScroll.NONE ? 0 : undefined;
 });
 
@@ -124,8 +123,8 @@ onMounted(() => {
     registerCallbackOnMount(callbackSortableColumns);
 });
 
-function rowKey(item: ListItem): string {
-    const key = item[props.keyAttribute];
+function rowKey(item: T): string {
+    const key = item[props.keyAttribute as keyof T];
     if (typeof key === "undefined") {
         throw new Error(`Key attribute [${props.keyAttribute}]' is missing in row`);
     }
@@ -204,7 +203,7 @@ function escapeNewlines(value: string): string {
             </thead>
             <tbody>
                 <tr v-if="isEmpty && columns.length === 0">
-                    <slot v-bind="{ row: {} as any }"></slot>
+                    <slot v-bind="{ row: {} as T }"></slot>
                 </tr>
                 <tr v-if="isEmpty">
                     <td class="table__column table__column--action" :colspan="columns.length">
@@ -217,9 +216,9 @@ function escapeNewlines(value: string): string {
                 <tr v-for="row in rows" :key="rowKey(row)" class="table__row">
                     <!--
                          @slot Slot for table row. The item object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ row }"`.
-                         @binding {ListItem} row - The object to be visualized..
+                         @binding {T} row - The object to be visualized..
                     -->
-                    <slot v-bind="{ row: row as any }" />
+                    <slot v-bind="{ row }" />
                 </tr>
             </tbody>
         </table>

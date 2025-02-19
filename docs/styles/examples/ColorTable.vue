@@ -1,5 +1,5 @@
 <template>
-    <f-data-table :rows="typeWorkaround" key-attribute="name">
+    <f-data-table :rows="colors" key-attribute="name">
         <template #caption> <span class="sr-only"> Färgpaletten </span> </template>
         <template #default="{ row }">
             <f-table-column name="name" title="Namn" type="text" shrink>
@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
-import { type ListArray, type UnknownItem, FDataTable, FTableColumn } from "@fkui/vue";
+import { FDataTable, FTableColumn } from "@fkui/vue";
 import { type SassVariable } from "@fkui/theme-default/dist/palette.json";
 
 export default defineComponent({
@@ -27,11 +27,6 @@ export default defineComponent({
         colors: {
             type: Array as PropType<SassVariable[]>,
             required: true,
-        },
-    },
-    computed: {
-        typeWorkaround(): ListArray<UnknownItem> {
-            return this.colors as unknown as ListArray<UnknownItem>;
         },
     },
 });
