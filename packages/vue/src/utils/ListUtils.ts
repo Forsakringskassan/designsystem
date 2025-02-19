@@ -1,12 +1,11 @@
 import { isSet } from "@fkui/logic";
-import { type ListItem, type ListArray } from "../types";
 
 /**
  * @public
  */
 export function itemEquals<T extends object, K extends keyof T>(
-    item1: ListItem<T> | undefined,
-    item2: ListItem<T> | undefined,
+    item1: T | undefined,
+    item2: T | undefined,
     compareAttribute: K,
 ): boolean {
     if (!isSet(item1) || !isSet(item2)) {
@@ -24,8 +23,8 @@ export function itemEquals<T extends object, K extends keyof T>(
  * @public
  */
 export function includeItem<T extends object, K extends keyof T>(
-    item: ListItem<T> | undefined,
-    itemList: ListArray<T> | undefined,
+    item: T | undefined,
+    itemList: T[] | undefined,
     compareAttribute: K,
 ): boolean {
     if (!isSet(item) || !isSet(itemList)) {

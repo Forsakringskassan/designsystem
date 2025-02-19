@@ -610,7 +610,9 @@ describe("showActive flag", () => {
         wrapper.setProps({ showActive: true });
         await wrapper.vm.$nextTick();
 
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const row = table.findAll("tbody tr td")[0];
         await row.trigger("click");
         await wrapper.vm.$nextTick();
@@ -625,7 +627,9 @@ describe("showActive flag", () => {
         wrapper.setProps({ showActive: false });
         await wrapper.vm.$nextTick();
 
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const row = table.findAll("tbody tr td")[0];
         await row.trigger("click");
         await wrapper.vm.$nextTick();
@@ -828,7 +832,9 @@ describe("events", () => {
 
     it("should emit click event when row is clicked", async () => {
         const wrapper = mount(TestComponent);
-        const table = wrapper.getComponent(FInteractiveTable);
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
         const row = table.findAll("tbody tr td")[0];
         await row.trigger("click");
         await table.vm.$nextTick();
@@ -839,7 +845,9 @@ describe("events", () => {
         "should activate row and emit click event when item getting space key (%s) down event",
         async (key: string) => {
             const wrapper = mount(TestComponent);
-            const table = wrapper.getComponent(FInteractiveTable);
+            const table = wrapper.getComponent(
+                FInteractiveTable as ReturnType<typeof defineComponent>,
+            );
             const row = table.findAll("tbody tr")[0];
             await row.trigger("keydown", { key });
             expect(table.emitted("click")).toHaveLength(1);
@@ -849,7 +857,9 @@ describe("events", () => {
     describe("active row", () => {
         it("should emit click event when clicking on active item", async () => {
             const wrapper = mount(TestComponent);
-            const table = wrapper.getComponent(FInteractiveTable);
+            const table = wrapper.getComponent(
+                FInteractiveTable as ReturnType<typeof defineComponent>,
+            );
             const column = table.findAll("tbody tr td")[0];
             await column.trigger("click");
             await column.trigger("click");
@@ -859,7 +869,9 @@ describe("events", () => {
 
         it("should update active row when clicking on item", async () => {
             const wrapper = mount(TestComponent);
-            const table = wrapper.getComponent(FInteractiveTable);
+            const table = wrapper.getComponent(
+                FInteractiveTable as ReturnType<typeof defineComponent>,
+            );
             const column = table.findAll("tbody tr td")[0];
             await column.trigger("click");
             await table.vm.$nextTick();
@@ -873,7 +885,9 @@ describe("events", () => {
             "should emit click event when active item getting space key (%s) down event",
             async (key: string) => {
                 const wrapper = mount(TestComponent);
-                const table = wrapper.getComponent(FInteractiveTable);
+                const table = wrapper.getComponent(
+                    FInteractiveTable as ReturnType<typeof defineComponent>,
+                );
                 const row = table.findAll("tbody tr")[0];
                 await row.trigger("keydown", { key });
                 await row.trigger("keydown", { key });

@@ -1,6 +1,7 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends object, K extends keyof T">
 import {
     type PropType,
+    type Ref,
     computed,
     onUpdated,
     onMounted,
@@ -13,7 +14,6 @@ import {
     watch,
 } from "vue";
 import { useSlotUtils } from "../../composables";
-import { type ListArray, type ListItem } from "../../types";
 import { TableScroll, tableScrollClasses, itemEquals, includeItem, renderSlotText } from "../../utils";
 import {
     FTableColumnData,
@@ -31,17 +31,17 @@ import { FCheckboxField } from "../FCheckboxField";
 import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
-import { useExpandableTable } from "./useExpandableTable";
+import { ExpandableTable, useExpandableTable } from "./useExpandableTable";
 
 const $t = useTranslate();
 const slots = useSlots();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
-const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected();
+const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
 
-const activeRow = ref<ListItem | undefined>(undefined);
+const activeRow = ref<T | undefined>(undefined);
 const columns = ref<FTableColumnData[]>([]);
-const selectedRows = ref<ListArray>([]);
+const selectedRows = ref<T[]>([]) as Ref<T[]>;
 const tr = shallowRef<HTMLElement[]>([]);
 const tbodyKey = ref(0);
 
@@ -55,7 +55,7 @@ const props = defineProps({
      * The rows will be listed in the given array order.
      */
     rows: {
-        type: Array as PropType<ListArray>,
+        type: Array as PropType<T[]>,
         required: true,
     },
     /**
@@ -124,7 +124,7 @@ const props = defineProps({
      * V-model will bind to value containing selected rows.
      */
     modelValue: {
-        type: Array as PropType<ListArray | undefined>,
+        type: Array as PropType<T[] | undefined>,
         required: false,
         default: undefined,
     },
@@ -140,36 +140,54 @@ const props = defineProps({
      * V-model will bind to value containing the current active row.
      */
     active: {
-        type: Object as PropType<ListItem | undefined>,
+        type: Object as PropType<T | undefined>,
         required: false,
         default: () => undefined,
     },
 });
 
-const emit = defineEmits([
-    "change",
-    "click",
-    "unselect",
-    "update:modelValue",
-    "update:active",
-    "select",
+const emit = defineEmits<{
+    /**
+     * Emitted when row is activated.
+     */
+    change: [row: T];
+    /**
+     * Emitted when row is clicked.
+     */
+    click: [row: T];
+    /**
+     * Emitted when row is unselected.
+     */
+    unselect: [row: T];
+    /**
+     * V-model event to update value property.
+     */
+    "update:modelValue": [rows: T[]];
+    /**
+     * V-model active event.
+     */
+    "update:active": [row: T];
+    /**
+     * Emitted when row is selected.
+     */
+    select: [row: T];
     /**
      * Emitted when row is expanded.
-     *
-     * @event expand
-     * @param row
-     * @type {ListItem}
      */
-    "expand",
+    expand: [row: T];
     /**
      * Emitted when row is collapsed.
-     *
-     * @event collapse
-     * @param row
-     * @type {ListItem}
      */
-    "collapse",
-]);
+    collapse: [row: T];
+}>();
+
+const expandableTable: ExpandableTable<T> = useExpandableTable(
+    props.expandableAttribute,
+    props.keyAttribute,
+    props.expandableDescribedby,
+    emit,
+    slots,
+);
 
 const {
     isExpandableTable,
@@ -181,7 +199,7 @@ const {
     getExpandableDescribedby,
     expandableRows,
     hasExpandableContent,
-} = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, emit, slots);
+} = expandableTable;
 
 const hasCaption = computed((): boolean => {
     return hasSlot("caption", {}, { stripClasses: [] });
@@ -255,8 +273,8 @@ watch(
     () => {
         if (props.modelValue) {
             // Remove old selected rows that may not exists in rows.
-            selectedRows.value = props.modelValue.filter((row: ListItem) => {
-                return includeItem(row, props.rows, props.keyAttribute);
+            selectedRows.value = props.modelValue.filter((row: T) => {
+                return includeItem<T, K>(row, props.rows, props.keyAttribute as K);
             });
         }
     },
@@ -316,22 +334,22 @@ function forceRepaintIE11(target: HTMLElement): void {
     }
 }
 
-function isActive(row: ListItem): boolean {
+function isActive(row: T): boolean {
     if (!props.showActive) {
         return false;
     }
     return itemEquals(row, activeRow.value, props.keyAttribute);
 }
 
-function isSelected(row: ListItem): boolean {
-    return includeItem(row, selectedRows.value, props.keyAttribute);
+function isSelected(row: T): boolean {
+    return includeItem(row, selectedRows.value, props.keyAttribute as keyof T);
 }
 
 function onKeydown(event: KeyboardEvent, index: number): void {
     onKeydown2({ rows: props.rows, tr, activate }, event, index);
 }
 
-function onClick(event: MouseEvent, row: ListItem): void {
+function onClick(event: MouseEvent, row: T): void {
     const { target } = event as MouseEvent & { target: HTMLElement };
     const isRelevant = ["TD", "TH"].includes(target.nodeName);
 
@@ -342,14 +360,7 @@ function onClick(event: MouseEvent, row: ListItem): void {
     }
 }
 
-function activate(row: ListItem, tr: HTMLElement | null): void {
-    /**
-     * Emitted when row is clicked.
-     *
-     * @event click
-     * @param row
-     * @type {ListItem}
-     */
+function activate(row: T, tr: HTMLElement | null): void {
     emit("click", row);
 
     if (isExpandableTable.value && hasExpandableContent(row)) {
@@ -357,13 +368,6 @@ function activate(row: ListItem, tr: HTMLElement | null): void {
     }
 
     if (!itemEquals(row, activeRow.value, props.keyAttribute)) {
-        /**
-         * Emitted when row is activated.
-         *
-         * @event change
-         * @param row
-         * @type {ListItem}
-         */
         emit("change", row);
         setActiveRow(row);
 
@@ -379,33 +383,17 @@ function activate(row: ListItem, tr: HTMLElement | null): void {
     }
 }
 
-function rowDescription(row: ListItem): string | undefined {
+function rowDescription(row: T): string | undefined {
     const slot = slots["row-description"];
     return renderSlotText(slot, { row });
 }
 
-function onSelect(row: ListItem): void {
-    if (includeItem(row, selectedRows.value, props.keyAttribute)) {
-        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, props.keyAttribute));
-        /**
-         * Emitted when row is unselected.
-         *
-         * @event unselect
-         * @param row
-         * @type {ListItem}
-         */
+function onSelect(row: T): void {
+    if (includeItem(row, selectedRows.value, props.keyAttribute as keyof T)) {
+        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, props.keyAttribute as keyof T));
         emit("unselect", row);
     } else {
         selectedRows.value.push(row);
-        /**
-         * Emitted when row is selected.
-         *
-         * @event select
-         * @param row
-         * @type {ListItem}
-         * @param selectedRows
-         * @type {ListArray}
-         */
         emit("select", row);
     }
 
@@ -415,15 +403,11 @@ function onSelect(row: ListItem): void {
 
 function updateVModelWithSelectedRows(): void {
     if (props.modelValue) {
-        /**
-         * V-model event to update value property.
-         * @event update:modelValue
-         */
         emit("update:modelValue", selectedRows.value);
     }
 }
 
-function rowClasses(row: ListItem, index: number): string[] {
+function rowClasses(row: T, index: number): string[] {
     const active = isActive(row) ? ["table__row--active"] : [];
     const selected = isSelected(row) ? ["table__row--selected"] : [];
     const isExpandableRow = isExpandableTable.value && hasExpandableContent(row);
@@ -433,8 +417,8 @@ function rowClasses(row: ListItem, index: number): string[] {
     return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
 }
 
-function rowKey(row: ListItem): string {
-    const key = row[props.keyAttribute];
+function rowKey(row: T): string {
+    const key = row[props.keyAttribute as keyof T];
     if (typeof key === "undefined") {
         throw new Error(`Key attribute [${props.keyAttribute}]' is missing in row`);
     }
@@ -474,11 +458,11 @@ function callbackSortableColumns(columnNames: string[]): void {
     setSortableColumns(columns.value, columnNames);
 }
 
-function callbackAfterItemAdd(item: ListItem): void {
+function callbackAfterItemAdd(item: T): void {
     activate(item, null);
 }
 
-function callbackBeforeItemDelete(item: ListItem): void {
+function callbackBeforeItemDelete(item: T): void {
     if (props.rows.length === 0) {
         return;
     }
@@ -500,19 +484,12 @@ function updateActiveRowFromVModel(): void {
     if (props.active === undefined) {
         setActiveRow(undefined);
     } else if (!itemEquals(props.active, activeRow.value, props.keyAttribute)) {
-        setActiveRow(props.active);
+        setActiveRow(props.active as T);
     }
 }
 
-function setActiveRow(row: ListItem | undefined): void {
+function setActiveRow(row: T | undefined): void {
     activeRow.value = row;
-    /**
-     * V-model active event.
-     *
-     * @event update:active
-     * @param activeItem
-     * @type {ListItem}
-     */
     emit("update:active", activeRow.value);
 }
 </script>
@@ -599,7 +576,7 @@ function setActiveRow(row: ListItem | undefined): void {
 
                             * `row: ListItem;` The object to be visualized.
                         -->
-                        <slot v-bind="{ row: row as any }" />
+                        <slot v-bind="{ row }" />
                     </tr>
 
                     <template v-if="isExpandableTable && hasExpandableContent(row)">
@@ -622,7 +599,7 @@ function setActiveRow(row: ListItem | undefined): void {
                             <td v-if="selectable" class="table__column--placeholder"></td>
 
                             <template v-if="!hasExpandableSlot">
-                                <slot v-bind="{ row: expandableRow as any }"></slot>
+                                <slot v-bind="{ row: expandableRow as T }"></slot>
                             </template>
                             <td v-else class="table__column table__column--indented" :colspan="columns.length">
                                 <!--
@@ -643,7 +620,7 @@ function setActiveRow(row: ListItem | undefined): void {
                 </template>
 
                 <tr v-if="isEmpty && columns.length === 0">
-                    <slot v-bind="{ row: {} as any }"></slot>
+                    <slot v-bind="{ row: {} as T }"></slot>
                 </tr>
 
                 <template v-if="isEmpty">
@@ -656,7 +633,7 @@ function setActiveRow(row: ListItem | undefined): void {
                             <slot name="empty">{{ $t("fkui.interactive-table.empty", "Tabellen är tom") }}</slot>
                         </td>
                         <!-- slot content won't be rendered, since renderColumns is false for empty table -->
-                        <slot v-bind="{ row: {} as any }"></slot>
+                        <slot v-bind="{ row: {} as T }"></slot>
                     </tr>
                 </template>
             </tbody>
