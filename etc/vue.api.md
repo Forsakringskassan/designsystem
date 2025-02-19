@@ -7039,12 +7039,66 @@ export interface FLayoutRightPanelInteface {
 // @public (undocumented)
 export const FLayoutRightPanelService: FLayoutRightPanelInteface;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FList: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_4<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_4<Pick<Partial<{
+        elementId: string;
+        modelValue: T[] | undefined;
+        checkbox: boolean;
+        selectable: boolean;
+        active: [{
+            type: PropType<T | undefined>;
+            required: false;
+            default: () => undefined;
+        }] extends [Prop<infer V, infer D>] ? unknown extends V ? keyof V extends never ? IfAny<V, V, D> : V : V : {
+            type: PropType<T | undefined>;
+            required: false;
+            default: () => undefined;
+        };
+    }> & Omit<{
+        readonly elementId: string;
+        readonly items: T[];
+        readonly checkbox: boolean;
+        readonly keyAttribute: string;
+        readonly selectable: boolean;
+        readonly modelValue?: T[] | undefined;
+        readonly active?: ([{
+            type: PropType<T | undefined>;
+            required: false;
+            default: () => undefined;
+        }] extends [Prop<infer V, infer D>] ? unknown extends V ? keyof V extends never ? IfAny<V, V, D> : V : V : {
+            type: PropType<T | undefined>;
+            required: false;
+            default: () => undefined;
+        }) | undefined;
+        readonly onChange?: ((item: T) => any) | undefined;
+        readonly onClick?: ((item: T) => any) | undefined;
+        readonly onSelect?: ((item: T) => any) | undefined;
+        readonly "onUpdate:modelValue"?: ((item: T[]) => any) | undefined;
+        readonly onUnselect?: ((item: T) => any) | undefined;
+        readonly "onUpdate:active"?: ((item: T) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "elementId" | "modelValue" | "checkbox" | "selectable" | "active">, "onChange" | "onClick" | "onSelect" | "items" | "onUpdate:modelValue" | "keyAttribute" | "onUnselect" | "onUpdate:active" | ("elementId" | "modelValue" | "checkbox" | "selectable" | "active")> & {} & Partial<{}>> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        default?(_: {
+            item: T;
+        }): any;
+        default?(_: {
+            item: T;
+        }): any;
+        empty?(_: {}): any;
+        empty?(_: {}): any;
+        screenreader?(_: {
+            item: T;
+        }): any;
+    };
+    emit: ((evt: "change", item: T) => void) & ((evt: "click", item: T) => void) & ((evt: "select", item: T) => void) & ((evt: "update:modelValue", item: T[]) => void) & ((evt: "unselect", item: T) => void) & ((evt: "update:active", item: T) => void);
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
 
 // @public (undocumented)
 export const FLoader: DefineComponent<ExtractPropTypes<    {
@@ -12448,11 +12502,11 @@ rotate: string;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_5" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_4<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
-    props: __VLS_PrettifyLocal_4<Pick<Partial<{
+export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_5<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_5<Pick<Partial<{
         data: T[];
         defaultSortAttribute: string;
         showSort: boolean;
@@ -15037,12 +15091,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {

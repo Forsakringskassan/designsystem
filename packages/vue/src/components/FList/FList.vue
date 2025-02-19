@@ -1,18 +1,18 @@
-<script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, ref, useSlots, useTemplateRef, watch, type PropType } from "vue";
+<script setup lang="ts" generic="T extends object">
+import { type Ref, computed, getCurrentInstance, onMounted, ref, useSlots, watch, type PropType } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import { FCheckboxField } from "../FCheckboxField";
-import { type ListItem, type ListArray } from "../../types";
 import { itemEquals, includeItem, handleKeyboardFocusNavigation, getElementFromVueRef } from "../../utils";
 import { useTranslate } from "../../plugins";
 import { ActivateItemInjected } from "../FCrudDataset";
 
 const $t = useTranslate();
 const slots = useSlots();
-const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<ListItem>();
+const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
 
-const selectedItems = ref<ListArray>([]);
-const activeItem = ref<ListItem | undefined>(undefined);
+const selectedItems: Ref<T[]> = ref([]);
+const activeItem = ref<T | undefined>(undefined);
+const ulElement = ref<HTMLElement | null>();
 
 const props = defineProps({
     /**
@@ -20,7 +20,7 @@ const props = defineProps({
      * The items will be listed in the given array order.
      */
     items: {
-        type: Array as PropType<ListArray>,
+        type: Array as PropType<T[]>,
         required: true,
     },
     /**
@@ -53,7 +53,7 @@ const props = defineProps({
      * V-model will bind to value containing selected items.
      */
     modelValue: {
-        type: Array as PropType<ListArray | undefined>,
+        type: Array as PropType<T[] | undefined>,
         required: false,
         default: () => undefined,
     },
@@ -61,7 +61,7 @@ const props = defineProps({
      * V-model will bind to value containing the current active item.
      */
     active: {
-        type: Object as PropType<ListItem | undefined>,
+        type: Object as PropType<T | undefined>,
         required: false,
         default: () => undefined,
     },
@@ -74,7 +74,32 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["change", "click", "unselect", "update:modelValue", "select", "update:active"]);
+const emit = defineEmits<{
+    /**
+     * Emitted when item is activated, i.e. clicked
+     */
+    change: [item: T];
+    /**
+     * Emitted when item is activated, i.e. clicked
+     */
+    click: [item: T];
+    /**
+     * Emitted when item is selected.
+     */
+    select: [item: T];
+    /**
+     * Emitted when item is unselected.
+     */
+    unselect: [item: T];
+    /**
+     * V-model active event.
+     */
+    "update:active": [item: T];
+    /**
+     * V-model event to update value property.
+     */
+    "update:modelValue": [item: T[]];
+}>();
 
 const isEmpty = computed((): boolean => {
     return props.items.length === 0;
@@ -115,55 +140,35 @@ onMounted(() => {
 });
 
 function getLiElements(): HTMLElement[] {
-    const templateRef = useTemplateRef("ulElement");
-    const ulElement = getElementFromVueRef(templateRef);
-    return Array.from(ulElement.children) as HTMLElement[];
+    const element = getElementFromVueRef(ulElement.value);
+    return Array.from(element.children) as HTMLElement[];
 }
 
-function itemKey(item: ListItem): string {
-    const key = item[props.keyAttribute];
+function itemKey(item: T): string {
+    const key = item[props.keyAttribute as keyof T];
     if (typeof key === "undefined") {
         throw new Error(`Key attribute [${props.keyAttribute}]' is missing in item`);
     }
     return String(key);
 }
 
-function isSelected(item: ListItem): boolean {
-    return includeItem(item, selectedItems.value, props.keyAttribute);
+function isSelected(item: T): boolean {
+    return includeItem(item, selectedItems.value, props.keyAttribute as keyof T);
 }
 
-function itemClasses(item: ListItem): Record<string, boolean> {
+function itemClasses(item: T): Record<string, boolean> {
     return {
         "list__item--selected": isSelected(item),
         "list__item--active": isActive(item),
     };
 }
 
-function onSelect(item: ListItem): void {
-    if (includeItem(item, selectedItems.value, props.keyAttribute)) {
-        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, props.keyAttribute));
-        /**
-         * Emitted when item is unselected.
-         *
-         * @event unselect
-         * @param item
-         * @type {ListItem}
-         * @param selectedItems
-         * @type {ListArray}
-         *
-         */
+function onSelect(item: T): void {
+    if (includeItem(item, selectedItems.value, props.keyAttribute as keyof T)) {
+        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, props.keyAttribute as keyof T));
         emit("unselect", item);
     } else {
         selectedItems.value.push(item);
-        /**
-         * Emitted when item is selected.
-         *
-         * @event select
-         * @param item
-         * @type {ListItem}
-         * @param selectedItems
-         * @type {ListArray}
-         */
         emit("select", item);
     }
 
@@ -171,47 +176,22 @@ function onSelect(item: ListItem): void {
     getCurrentInstance()?.proxy?.$forceUpdate();
 }
 
-function setActiveItem(item: ListItem): void {
-    /**
-     * Emitted when item is activated, i.e. clicked
-     *
-     * @event click
-     * @param item
-     * @type {ListItem}
-     */
+function setActiveItem(item: T): void {
     emit("click", item);
 
     if (!itemEquals(item, activeItem.value, props.keyAttribute)) {
-        /**
-         * Emitted when item is activated, i.e. clicked
-         *
-         * @event change
-         * @param item
-         * @type {ListItem}
-         */
         emit("change", item);
         activeItem.value = item;
-        /**
-         * V-model active event.
-         *
-         * @event update:active
-         * @param activeItem
-         * @type {ListItem}
-         */
         emit("update:active", activeItem.value);
     }
 }
 
-function onItemClick(event: Event, index: number, item: ListItem): void {
+function onItemClick(event: Event, index: number, item: T): void {
     setActiveItem(item);
 }
 
 function updateVModelWithSelectedItems(): void {
     if (props.modelValue) {
-        /**
-         * V-model event to update value property.
-         * @event update:modelValue
-         */
         emit("update:modelValue", selectedItems.value);
     }
 }
@@ -219,8 +199,8 @@ function updateVModelWithSelectedItems(): void {
 function updateSelectedItemsFromVModel(): void {
     if (Array.isArray(props.modelValue)) {
         // Remove old selected items that may not exists in items.
-        selectedItems.value = props.modelValue.filter((item: ListItem) => {
-            return includeItem(item, props.items, props.keyAttribute);
+        selectedItems.value = props.modelValue.filter((item) => {
+            return includeItem(item, props.items, props.keyAttribute as keyof T);
         });
     } else {
         selectedItems.value = [];
@@ -235,7 +215,7 @@ function updateActiveItemFromVModel(): void {
     }
 }
 
-function onItemKeyDown(event: KeyboardEvent, item: ListItem): void {
+function onItemKeyDown(event: KeyboardEvent, item: T): void {
     switch (event.key) {
         case "Up":
         case "Down":
@@ -254,12 +234,12 @@ function onItemKeyDown(event: KeyboardEvent, item: ListItem): void {
 }
 
 // Unique id to connect aria-labelledby with readonly label
-function getAriaLabelledbyId(item: ListItem): string {
+function getAriaLabelledbyId(item: T): string {
     return `${props.elementId}_${itemKey(item)}`;
 }
 
 // Unique id to connect aria-labelledby with readonly label
-function getItemId(item: ListItem): string {
+function getItemId(item: T): string {
     return `${props.elementId}_item_${itemKey(item)}`;
 }
 
@@ -279,11 +259,11 @@ function onItemBlur(event: FocusEvent): void {
     }
 }
 
-function callbackAfterItemAdd(item: ListItem): void {
+function callbackAfterItemAdd(item: T): void {
     setActiveItem(item);
 }
 
-function callbackBeforeItemDelete(item: ListItem): void {
+function callbackBeforeItemDelete(item: T): void {
     if (props.items.length === 0) {
         return;
     }
@@ -300,7 +280,7 @@ function callbackBeforeItemDelete(item: ListItem): void {
     }
 }
 
-function isActive(item: ListItem): boolean {
+function isActive(item: T): boolean {
     return props.checkbox && itemEquals(activeItem.value, item, props.keyAttribute);
 }
 </script>
@@ -310,24 +290,17 @@ function isActive(item: ListItem): boolean {
         <li v-for="item in items" :key="itemKey(item)" class="list__item">
             <div ref="listItemPanes" class="list__item__itempane">
                 <!--
-@slot Slot for displaying an item.
-
-The item object is available through `v-slot="{ <propertyName> }"`, e.g.
-`v-slot="{ item }"`.
-
-The following properties are available:
-
-* `item: ListItem;` The object to be visualized."`.
-        -->
+                     @slot Slot for displaying an item. The item object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ item }"`.
+                     @binding {T} item - The object to be visualized.
+                -->
                 <slot v-bind="{ item }" />
             </div>
         </li>
         <li v-if="isEmpty" class="list__item">
             <div class="list__item__itempane">
                 <!--
-@slot Slot for displaying a message when list is empty.
-Default text is 'Listan är tom' (key fkui.list.empty).
-        -->
+                     @slot Slot for displaying a message when list is empty. Default text is 'Listan är tom' (key fkui.list.empty).
+                -->
                 <slot name="empty">
                     <em>{{ $t("fkui.list.empty", "Listan är tom") }}</em>
                 </slot>
@@ -352,15 +325,9 @@ Default text is 'Listan är tom' (key fkui.list.empty).
                     <f-checkbox-field :value="true" :model-value="isSelected(item)" @click.self="onSelect(item)">
                         <span :id="getAriaLabelledbyId(item)" class="sr-only">
                             <!--
-@slot Slot for screen reader text when checkbox (to selecte item) get focus.
-
-The item object is available through `v-slot="{ <propertyName> }"`, e.g.
-`v-slot="{ item }"`.
-
-The following properties are available:
-
-* `item: ListItem;` The object to be screen read."`.
-            -->
+                                 @slot Slot for screen reader text when checkbox (to selecte item) get focus. The item object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ item }"`.
+                                 @binding {T} item - The object to be screen read.
+                            -->
                             <slot name="screenreader" v-bind="{ item }" />
                         </span>
                     </f-checkbox-field>
