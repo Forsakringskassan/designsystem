@@ -14198,30 +14198,7 @@
         default: () => void 0
       }
     },
-    emits: [
-      "change",
-      "click",
-      "unselect",
-      "update:modelValue",
-      "update:active",
-      "select",
-      /**
-       * Emitted when row is expanded.
-       *
-       * @event expand
-       * @param row
-       * @type {T}
-       */
-      "expand",
-      /**
-       * Emitted when row is collapsed.
-       *
-       * @event collapse
-       * @param row
-       * @type {T}
-       */
-      "collapse"
-    ],
+    emits: ["change", "click", "unselect", "update:modelValue", "update:active", "select", "expand", "collapse"],
     setup(__props, {
       emit: __emit
     }) {
