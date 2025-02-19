@@ -5559,6 +5559,9 @@ input[type=search]:focus,
   font-weight: var(--f-font-weight-medium, 700);
   line-height: calc(1.5rem * var(--f-density-factor, 1));
 }
+.table tbody .table__column--action {
+  white-space: nowrap;
+}
 .table tbody .table__column--selectable {
   padding: calc(0.2rem * var(--f-density-factor, 1)) 0.2rem;
 }
