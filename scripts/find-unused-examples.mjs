@@ -57,7 +57,12 @@ async function findDocsImported() {
         const matches = content.matchAll(/```import[^\n]*([^`]*)```/gm);
         for (const match of matches) {
             const block = match[1];
-            const stripped = block.replace(/<!--.*-->/g, "");
+            let stripped = block;
+            let previous;
+            do {
+                previous = stripped;
+                stripped = stripped.replace(/<!--[\s\S]*?-->/g, "");
+            } while (stripped !== previous);
             const filename = stripped.trim();
             found.add(filename);
         }
