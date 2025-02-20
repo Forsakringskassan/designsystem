@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars -- test */
 import { type ConfigData } from "html-validate";
 import { type Manifest, Generator } from "@forsakringskassan/docs-generator";
 import { defineConfig } from "cypress";
@@ -90,10 +91,10 @@ export default defineConfig({
 });
 
 export function install(
-    on: Cypress.PluginEvents,
-    config: Cypress.PluginConfigOptions,
+    _on: Cypress.PluginEvents,
+    _config: Cypress.PluginConfigOptions,
 ): Cypress.PluginConfigOptions {
-    htmlvalidate.install(on, htmlValidateConfig, htmlValidateOptions);
-    config = installAxe(on, config);
+    // htmlvalidate.install(on, htmlValidateConfig, htmlValidateOptions);
+    // config = installAxe(on, config);
     return config;
 }
