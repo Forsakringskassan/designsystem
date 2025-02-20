@@ -32,6 +32,9 @@ jobs:
                   npm config set access public
                   npm install --no-save "@forsakringskassan/semantic-release-monorepo-config"
                   npm exec semantic-release
+                  git log -n 1
+                  git status
+                  sleep 5
     deploy-documentation:
         needs: [release]
         name: Deploy new documentation
