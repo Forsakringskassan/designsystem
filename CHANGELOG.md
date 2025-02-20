@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 5.46.2 (2025-02-20)
+
+### Bug Fixes
+
+* **@fkui/vue:** use `teleportTarget` in `IPopupError` (refs SFKUI-7050) 3795b2f
+
 ## 5.46.1 (2025-02-10)
 
 ### Bug Fixes
