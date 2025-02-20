@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-70a679.css"
+            href="../../../assets/docs-35a8a4.css"
             crossorigin
-            integrity="sha384-P2ir0ybKqVloiYhR7E8h2cyEQimNhtEZ6Zuf0zYPzWA/oDqz6DGPEYF1wkGIZxyl"
+            integrity="sha384-OnELbByE+uEQmshA8rWYhUnR872au2X2qUhb1h0C2KMSk5rLItd1YprwK4QU9diW"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-5b626e.css"
+            href="../../../assets/docs-fkui-e2698c.css"
             crossorigin
-            integrity="sha384-wyIvqBEczityL7K81fuXSFDtOYyioQTOBJatxV3nlRbkJNIl+8h8bjBaxBNypRtV"
+            integrity="sha384-CDETmTgs3T+qNHOzq5hdY4geLicEn7YRUvbZ9nxWDXhP0fudtNatvzjzTMeroJda"
             data-theme="fkui" disabled
         />
 
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-b304c5.json"
+            href="../../../search-data-51767f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Bd2ZG+rYU39YxN7UQxdh/6nslCc0ja9SvCbXkCy2zNkffQtWf3N/Z1wCNYCxGgSx"
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
             id="search-data"
         />
     </head>
@@ -570,6 +570,8 @@
                                 
                                 <li><a href="#logotyper_borttagna">Logotyper borttagna</a></li>
                                 
+                                <li><a href="#navbar_borttagen">Navbar borttagen</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -656,7 +658,71 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
                 </div>
             <h2 id="logotyper_borttagna"><a class="header-anchor" href="#logotyper_borttagna">Logotyper borttagna</a></h2><p>Alla logotyp-bilder är borttagna från <code>@fkui/design</code> utan ersättare.
 De som behöver dessa bilder behöver lägga in dem själv.</p>
+<h2 id="navbar_borttagen"><a class="header-anchor" href="#navbar_borttagen">Navbar borttagen</a></h2><p>Styling och klasser för navbar är borttagen och har ersatts av Vue-komponenterna <a href="../../../components/page-layout/fpageheader.html"><code>FPageHeader</code></a> och <a href="../../../components/page-layout/fnavigationmenu.html"><code>FNavigationMenu</code></a>.</p>
+<p>Även tillhörande CSS-variabler är borttagna:</p>
+<ul>
+<li><code>--f-text-color-pageheader</code></li>
+<li><code>--f-text-color-navbar</code></li>
+<li><code>--f-text-color-navbar-active</code></li>
+<li><code>--f-background-pageheader-standard</code></li>
+<li><code>--f-background-pageheader-secondary</code></li>
+<li><code>--f-background-navbar</code></li>
+<li><code>--f-background-navbar-hover</code></li>
+<li><code>--f-border-color-separator-pageheader-standard</code></li>
+<li><code>--f-border-color-separator-pageheader-secondary</code></li>
+<li><code>--f-border-color-navbar-active</code></li>
+<li><code>--f-border-color-navbar-hover</code></li>
+</ul>
+<p>Komponenten <code>FPageHeader</code> ersätter det som tidigare bestod av <code>.navbar__header</code>, och <code>FNavigationMenu</code> ersätter <code>.navbar__nav</code>.
+För att behålla samma funktionalitet behövs båda dessa komponenter användas. Besök respektive sida för ytterligare information om dessa komponenter och för exempel om hur du ska använda komponenterna.</p>
+<p>För att migrera till endast HTML och CSS, se nedan för ett exempel med liten logo samt första menyalternativ valt.</p>
 
+                <div
+                    id="example-132d06"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-header__root&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-header&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-header__logo&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;logo logo--small&quot;</span>
+                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;my awesome logo&quot;</span>
+                    <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;img&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-header__app-name&quot;</span>&gt;</span> Exempelapplikation <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-header__right&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-header__right-slot&quot;</span>&gt;</span>Namn Namnsson<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;my awesome navigation&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu imenu--horizontal&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menubar&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor-container&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menuitem&quot;</span>&gt;</span>
+                    Home
+                <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor-container&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;imenu__list__anchor&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;menuitem&quot;</span>&gt;</span>
+                    About
+                <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+</code></pre>
+                </div>
+            
 
                     </div>
                 </main>
@@ -677,9 +743,9 @@ De som behöver dessa bilder behöver lägga in dem själv.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/list-generics (<a href="https://github.com/Forsakringskassan/designsystem/commits/f3fd5902d881d098a1df0ab5178ec85593a61fc9">f3fd590</a>)<br />
+    feature/list-generics (<a href="https://github.com/Forsakringskassan/designsystem/commits/9cb4e439b4208c21139d72e0d333d484a4f37b34">9cb4e43</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/303">PR 303</a><br />
-        2025-02-19 22:36
+        2025-02-20 11:08
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -806,9 +872,9 @@ De som behöver dessa bilder behöver lägga in dem själv.</p>
             
         ></script>
         <script
-            src="../../../assets/main-7b9d0f.js"
+            src="../../../assets/main-a42003.js"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-x2SQET46c/KcCVPl9j9im2cY+og5S7eYArRrQQxTLOpOGETP3s9r5bCSxKrnzGbP"
             
         ></script>
     </body>
