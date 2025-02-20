@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="sv" class="layout--article" data-root-url="../../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Version 6 migreringsguide: @fkui/vue - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../../../assets/docs-3c5333.css"
+            crossorigin
+            integrity="sha384-zGGe26cG+yxHhHNJD1nLxuNvSKPtCFcBhoXKNB8DwrpeRrKbncJA1Y4+zm84Sor0"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../../assets/docs-fkui-e2698c.css"
+            crossorigin
+            integrity="sha384-CDETmTgs3T+qNHOzq5hdY4geLicEn7YRUvbZ9nxWDXhP0fudtNatvzjzTMeroJda"
+            data-theme="fkui" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../../assets/bootstrap-956ec3.js"
+            crossorigin
+            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../../search-data-51767f.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
+            id="search-data"
+        />
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header>
+                <!-- prettier-ignore --><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list">
+        <!-- prettier-ignore -->
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../../"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../components/"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../components/"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary">
+                <!-- prettier-ignore -->
+<div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Använda designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../use-design-system/getting-started.html"
+            
+        >
+            Kom igång
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../use-design-system/getting-started-application.html"
+            
+        >
+            Ta fram applikation
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../use-design-system/icon-library.html"
+            
+        >
+            Skapa eget ikonbibliotek
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Bidra till designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../contribute-to-fkds/"
+            
+        >
+            Bidra till designsystemet
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../contribute-to-fkds/contributing-developers.html"
+            
+        >
+            För utvecklare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../contribute-to-fkds/release.html"
+            
+        >
+            Releaseprocess
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../contribute-to-fkds/testing.html"
+            
+        >
+            Automatisk testning
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../contribute-to-fkds/checklist-publication.html"
+            
+        >
+            Checklista vid publicering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../contribute-to-fkds/commits.html"
+            
+        >
+            Commits och commitmeddelanden
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../contribute-to-fkds/testverktyg.html"
+            
+        >
+            Testverktyg
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Om designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../about/"
+            
+        >
+            Designsystemet
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../about/news.html"
+            
+        >
+            Nyheter
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../about/release-plan.html"
+            
+        >
+            På gång
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../help-and-support.html"
+            
+        >
+            Hjälp och support
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable active">
+        <details open>
+            <summary>Migreringsguider</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migrating-to-fieldset.html"
+            
+        >
+            Fieldset migreringsguide
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migrating-to-v5.html"
+            
+        >
+            Version 5 migreringsguide
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable active">
+        <details open>
+            <summary>Version 6 migreringsguide</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./overview.html"
+            
+        >
+            Sammanfattning
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./logic.html"
+            
+        >
+            @fkui/logic
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link active">
+        <!-- prettier-ignore -->
+        <a
+            href="./vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./cypress-pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
+</nav>
+</div>
+
+
+                <!-- prettier-ignore -->
+                <script
+                    src="../../../assets/vendor-vue-468cb1.js"
+                    crossorigin
+                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
+                ></script>
+                <script
+                    src="../../../assets/vendor-fkui-logic-62a69f.js"
+                    crossorigin
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
+                ></script>
+                <script
+                    src="../../../assets/vendor-fkui-date-7710bf.js"
+                    crossorigin
+                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
+                ></script>
+                <script
+                    src="../../../assets/vendor-fkui-vue-407f5a.js"
+                    crossorigin
+                    integrity="sha384-UVL5Z/5ZlzgvRIzq8eeAqHOooWaLccRtZaR5o02owDzdKT/3C5G3itBRHwZ5iNiL"
+                ></script>
+                <script
+                    src="../../../assets/vendor-forsakringskassan-docs-live-example-e5b7e3.js"
+                    crossorigin
+                    integrity="sha384-xCPY57XKJObfTlktCk3lVaqN1q5FE+90De/IQXXP9Bk65E1+4M1AMGUg1mpBmyNJ"
+                ></script>
+
+                <!-- prettier-ignore --><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Version 6 migreringsguide: @fkui/vue</h1>
+
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></li>
+                                
+                                <li><a href="#konfiguration">Konfiguration</a></li>
+                                
+                                <li><a href="#fcalendar">FCalendar</a></li>
+                                
+                                <li><a href="#fcheckboxgroup_och_fcheckboxgroupfield">FCheckboxGroup och FCheckboxGroupField</a></li>
+                                
+                                <li><a href="#fcruddataset">FCrudDataset</a></li>
+                                
+                                <li><a href="#fdialoguetree">FDialogueTree</a></li>
+                                
+                                <li><a href="#fform_fformstep_och_fformstepbutton">FForm, FFormStep och FFormStepButton</a></li>
+                                
+                                <li><a href="#finteractivetable">FInteractiveTable</a></li>
+                                
+                                <li><a href="#flist">FList</a></li>
+                                
+                                <li><a href="#fradiogroup_och_fradiogroupfield">FRadioGroup och FRadioGroupField</a></li>
+                                
+                                <li><a href="#fformmodal_slots">FFormModal slots</a></li>
+                                
+                                <li><a href="#fpageheader">FPageHeader</a></li>
+                                
+                                <li><a href="#ftextfield">FTextField</a></li>
+                                
+                                <li><a href="#gettextfromscopedslot">getTextFromScopedSlot</a></li>
+                                
+                                <li><a href="#ovrigt">Övrigt</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content">
+                        <!-- prettier-ignore -->
+<h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../../components/input/ftextfield.html"><code>FTextField</code></a>) måste du ändra namnet på bindings:</p>
+
+                <div
+                    id="example-47ccdd"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-text-field&gt;
+<span class="hljs-deletion">-    &lt;template #description=&quot;{ discreteDescriptionClass }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;span :class=&quot;discreteDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
+<span class="hljs-addition">+    &lt;template #description=&quot;{ formatDescriptionClass }&quot;&gt;</span>
+<span class="hljs-addition">+        &lt;span :class=&quot;formatDescriptionClass&quot;&gt; Formatbeskrivning &lt;/span&gt;</span>
+     &lt;/template&gt;
+ &lt;/f-text-field&gt;
+</code></pre>
+                </div>
+            <p>Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+
+                <div
+                    id="example-6c622a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;div class=&quot;label__description--discrete&quot;&gt;</span>
+<span class="hljs-addition">+&lt;div class=&quot;label__description--format&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p><code>FLabelPageObject</code> metoden är också ändrad att matcha:</p>
+
+                <div
+                    id="example-7e084e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-label.discreteDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
+<span class="hljs-addition">+label.formatDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
+</code></pre>
+                </div>
+            <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><h3 id="forandrad_knappordning"><a class="header-anchor" href="#forandrad_knappordning">Förändrad knappordning</a></h3><p>Den inbördes ordning som knapparna presenteras i har ändrats, <code>FKUIConfig.buttonOrder</code> byter standardvärde till <code>RIGHT_TO_LEFT</code>. Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta <code>LEFT_TO_RIGHT</code>.</p>
+<p>Görs lämpligtvis i applikationens <code>main.ts</code>.</p>
+
+                <div
+                    id="example-e7e1a5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> { config, <span class="hljs-title class_">FKUIConfigButtonOrder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title class_">FKUIConfigButtonOrder</span>.<span class="hljs-property">LEFT_TO_RIGHT</span>;
+</code></pre>
+                </div>
+            <h3 id="teleport_target"><a class="header-anchor" href="#teleport_target">Teleport target</a></h3><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
+
+                <div
+                    id="example-c87612"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> import { config } from &quot;@fkui/vue&quot;;
+
+<span class="hljs-deletion">-config.modalTarget = &quot;my &gt; selector&quot;;</span>
+<span class="hljs-deletion">-config.popupTarget = &quot;my &gt; selector&quot;;</span>
+<span class="hljs-addition">+config.teleportTarget = &quot;my &gt; selector&quot;;</span>
+</code></pre>
+                </div>
+            <h2 id="fcalendar"><a class="header-anchor" href="#fcalendar"><code>FCalendar</code></a></h2><p>Tidigare emittades eventet <code>change</code> när man ändrar månad i kalendern.
+Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
+<h2 id="fcheckboxgroup_och_fcheckboxgroupfield"><a class="header-anchor" href="#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code> och <code>FCheckboxGroupField</code></a></h2><p>Den deprekerade komponenten <code>FCheckboxGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="../migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<p>Det deprekerade aliaset <code>FCheckboxGroupField</code> har tagits bort och är ersatt med <code>FCheckboxField</code>.</p>
+<h2 id="fcruddataset"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h2><p>Tidigare emittades eventet <code>change</code> när man ändrar lägger till eller ändrar rader.
+Det eventet är nu borttaget och ersatt med <code>v-model</code> alternativt de mer specifika eventen <code>created</code>, <code>updated</code> and <code>deleted</code>.</p>
+<h2 id="fdialoguetree"><a class="header-anchor" href="#fdialoguetree"><code>FDialogueTree</code></a></h2><p>Tidigare emittades eventet <code>change</code> när man ändrar val.
+Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
+<h2 id="fform_fformstep_och_fformstepbutton"><a class="header-anchor" href="#fform_fformstep_och_fformstepbutton"><code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code></a></h2><p>De deprekerade komponenterna <code>FForm</code>, <code>FFormStep</code> och <code>FFormStepButton</code> har tagits bort.
+Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <code>FValidationForm</code>, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av <code>FForm</code>.</p>
+<p>Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:</p>
+<ul>
+<li><a href="../../../components/fwizard.html"><code>FWizard</code></a></li>
+<li><a href="../../../components/validation/fvalidationform.html"><code>FValidationForm</code></a></li>
+</ul>
+<h2 id="finteractivetable"><a class="header-anchor" href="#finteractivetable"><code>FInteractiveTable</code></a></h2><p>Tidigare emittades eventet <code>update</code> när man ändrar vald tabellrad.
+Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
+<h2 id="flist"><a class="header-anchor" href="#flist"><code>FList</code></a></h2><p>Tidigare emittades eventet <code>update</code> när man ändrar valda kort.
+Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
+<h2 id="fradiogroup_och_fradiogroupfield"><a class="header-anchor" href="#fradiogroup_och_fradiogroupfield"><code>FRadioGroup</code> och <code>FRadioGroupField</code></a></h2><p>Den deprekerade komponenten <code>FRadioGroup</code> har tagits bort och är ersatt med <code>FFieldset</code>, se separat <a href="../migrating-to-fieldset.html">migreringsguide för fieldset</a>.</p>
+<p>Det deprekerade aliaset <code>FRadioGroupField</code> har tagits bort och är ersatt med <code>FRadioField</code>.</p>
+<h2 id="fformmodal_slots"><a class="header-anchor" href="#fformmodal_slots">FFormModal slots</a></h2><p>De deprekerade slottarna <code>submit-button-text</code> och <code>cancel-button-text</code> är borttagna och ersatta med propen <code>buttons</code>.</p>
+<p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
+
+                <div
+                    id="example-7c7162"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+&lt;script setup&gt;</span>
+<span class="hljs-addition">+const buttons = [</span>
+<span class="hljs-addition">+    {</span>
+<span class="hljs-addition">+        label: &quot;Submit&quot;,</span>
+<span class="hljs-addition">+        event: &quot;confirm&quot;,</span>
+<span class="hljs-addition">+        type: &quot;primary&quot;,</span>
+<span class="hljs-addition">+        submitButton: true,</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+    {</span>
+<span class="hljs-addition">+        label: &quot;Cancel&quot;,</span>
+<span class="hljs-addition">+        event: &quot;dismiss&quot;,</span>
+<span class="hljs-addition">+        type: &quot;secondary&quot;,</span>
+<span class="hljs-addition">+        submitButton: false,</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+];</span>
+<span class="hljs-addition">+&lt;/script&gt;</span>
+
+ &lt;template&gt;
+<span class="hljs-deletion">-    &lt;f-form-modal&gt;</span>
+<span class="hljs-addition">+    &lt;f-form-modal :buttons&gt;&lt;/f-form-modal&gt;</span>
+<span class="hljs-deletion">-        &lt;template #submit-button-text&gt; Submit &lt;/template&gt;</span>
+<span class="hljs-deletion">-        &lt;template #cancel-button-text&gt; Cancel &lt;/template&gt;</span>
+    &lt;/f-form-modal&gt;
+&lt;/template&gt;
+</code></pre>
+                </div>
+            <p>Om du använder <a href="../../../functions/functions/modal-functions/form-modal.html"><code>formModal(..)</code></a> (rekommenderat) för att anropa modalen behövs inga ändringar.</p>
+<p>Om du använder template-syntax för att anropa <code>FFormModal</code> direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.</p>
+<h2 id="fpageheader"><a class="header-anchor" href="#fpageheader"><code>FPageHeader</code></a></h2><h3 id="skiplink"><a class="header-anchor" href="#skiplink">skiplink</a></h3><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
+
+                <div
+                    id="example-7d31e6"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-page-header skip-link skip-link-href=&quot;awesome-id&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-page-header skip-link=&quot;awesome-id&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p><code>skipLink</code> kunde tidigare ta ett <code>boolean</code> värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
+Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng <code>&quot;&quot;</code> för att stänga av.</p>
+<h3 id="logo_slot"><a class="header-anchor" href="#logo_slot"><code>logo</code> slot</a></h3><p><code>FPageHeader</code> tillhandahåller inte längre en logotyp eller <code>router-link</code> inom <code>logo</code> slot som standard.
+Logo och länkning måste därför skapas själv.</p>
+<p>Borttagna props:</p>
+<ul>
+<li><code>logoSize</code></li>
+<li><code>routerLinkPath</code></li>
+<li><code>routerLinkName</code></li>
+<li><code>routerLinkLabel</code></li>
+</ul>
+<p>Om du använt standardlogo med länkning och vill att det ska fungera som tidigare kan du använda <a href="../../../components/flogo.html"><code>FLogo</code></a> och göra följande ändringar:</p>
+
+                <div
+                    id="example-7583d7"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
+<span class="hljs-addition">+    &lt;template #logo&gt;</span>
+<span class="hljs-addition">+        &lt;router-link :to=&quot;logoRoute&quot;&gt;</span>
+<span class="hljs-addition">+            &lt;f-logo&gt;{{ logoLabel }}&lt;/f-logo&gt;</span>
+<span class="hljs-addition">+        &lt;/router-link&gt;</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <p>Du behöver också ange url till logo-bilden med CSS variabler:</p>
+
+                <div
+                    id="example-c62e14"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+--f-logo-image-small: url(path/to/image-small.svg)</span>
+<span class="hljs-addition">+--f-logo-image-large: url(path/to/image-large.svg)</span>
+</code></pre>
+                </div>
+            <p>För att ändra storlek på logotypen som med tidigare <code>logoSize</code>, använd <code>size</code> prop på <code>FLogo</code> med samma värden.</p>
+
+                <div
+                    id="example-56f5f3"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-page-header logoSize=&quot;small&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-page-header&gt;</span>
+<span class="hljs-addition">+    &lt;template #logo&gt;</span>
+<span class="hljs-addition">+        f-logo size=&quot;small&quot;&gt;{{ logoLabel }}&lt;/f-logo&gt;</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <p>Notera att eftersom <code>@fkui/design</code> inte längre tillhandahåller logotyper i olika storlekar och inga ersättare finns så behövs dessa logotyp-bilder läggas till själv för att bibehålla utseendet.</p>
+<h2 id="ftextfield"><a class="header-anchor" href="#ftextfield"><code>FTextField</code></a></h2><p>Eventet <code>update</code> emittas inte längre.
+Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
+
+                <div
+                    id="example-113244"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-text-field @update=&quot;doSomething&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-text-field @change=&quot;doSomething&quot;&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
+
+                <div
+                    id="example-d8a8e7"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-const textContent = getTextFromScopedSlot(slot);</span>
+<span class="hljs-addition">+const textContent = renderSlotText(slot);</span>
+</code></pre>
+                </div>
+            
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p>Tänk på att <code>renderSlotText(..)</code> returnerar <code>null</code> om slotten inte finns eller är tom till skillnad från <code>getTextFromScopedSlot(..)</code> som returnerar en tom sträng <code>&quot;&quot;</code> istället.</p>
+
+            </div>
+        <h2 id="ovrigt"><a class="header-anchor" href="#ovrigt">Övrigt</a></h2><p>Övriga komponenter, funktioner och typer som även de är borttagna:</p>
+<ul>
+<li><code>createFFormProvideOptions</code></li>
+<li><code>FFormData</code></li>
+<li><code>FFormPageObject</code></li>
+<li><code>FFormProvider</code></li>
+<li><code>FFormStepPageObject</code></li>
+<li><code>FormStepFields</code></li>
+<li><code>getRef</code></li>
+<li><code>isFormStepReference</code></li>
+<li><code>Reference</code></li>
+<li><code>setIsOpen</code></li>
+<li><code>setRef</code></li>
+<li><code>sortComponentsWithErrorsOnDOMOrder</code></li>
+</ul>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer>
+                <!-- prettier-ignore --><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../../about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right">
+    <!-- prettier-ignore -->
+    <div class="version">
+    <!-- prettier-ignore -->
+    <div class="heading--h1">FKDS version 6.1.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../../../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div>
+
+        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div>
+<!-- prettier-ignore -->
+        <dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label"> Sök </label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../../assets/processors/motd/index-8c87e1.js"
+            crossorigin
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            
+        ></script>
+        <script
+            src="../../../assets/processors/selectable-version/select-version-004ae0.js"
+            crossorigin
+            integrity="sha384-7p7yp5B/6hnfSpcM6RQpE7QmYzHtNN2tiNGlUV+SJojwaK3TFPppMyMvb5s9ML+h"
+            
+        ></script>
+        <script
+            src="../../../assets/main-a42003.js"
+            crossorigin
+            integrity="sha384-x2SQET46c/KcCVPl9j9im2cY+og5S7eYArRrQQxTLOpOGETP3s9r5bCSxKrnzGbP"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/gettingstarted/migration/migrating-to-v6/vue.md
+         Document ID: fs:docs/gettingstarted/migration/migrating-to-v6/vue.md
+         Document name: migrating-to-v6-vue
+         Document alias: 
+
+    -->
+</html>
