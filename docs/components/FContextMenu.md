@@ -1,6 +1,6 @@
 ---
 title: Kontextmeny
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FContextMenu
 ---

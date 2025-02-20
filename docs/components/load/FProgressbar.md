@@ -1,6 +1,6 @@
 ---
 title: Förloppsindikator
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FProgressbar
 ---

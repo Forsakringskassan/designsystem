@@ -1,6 +1,6 @@
 ---
 title: Filpresentatör
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FFileItem
 ---

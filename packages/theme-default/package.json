@@ -16,11 +16,17 @@
   },
   "license": "MIT",
   "author": "Försäkringskassan",
+  "sideEffects": [
+    "./dist/**/*.css",
+    "./src/**/*.scss"
+  ],
   "main": "./dist/fkui-css-variables.css",
   "sass": "./src/fkui-css-variables.scss",
+  "types": "type-stub.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "type-stub.d.ts"
   ],
   "scripts": {
     "build": "run-s clean sass extract-variables",

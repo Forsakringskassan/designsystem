@@ -16,12 +16,18 @@
   },
   "license": "MIT",
   "author": "Försäkringskassan",
+  "sideEffects": [
+    "./dist/**/*.css",
+    "./src/**/*.scss"
+  ],
   "main": "./lib/fkui.css",
   "sass": "./src/fkui.scss",
+  "types": "type-stub.d.ts",
   "files": [
     "lib",
     "src",
     "stylelint",
+    "type-stub.d.ts",
     "!**/*.spec.js"
   ],
   "scripts": {

@@ -1,6 +1,6 @@
 ---
 title: Kalender
-status: Preliminär
+status: Produktionsklar
 layout: component
 component:
     - FCalendar

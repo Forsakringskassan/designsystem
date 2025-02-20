@@ -1,6 +1,6 @@
 ---
 title: Kombobox
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FTextField
 ---
