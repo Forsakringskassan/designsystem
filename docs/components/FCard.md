@@ -1,6 +1,6 @@
 ---
 title: Kort
-status: Preliminär
+status: Produktionsklar
 layout: component
 component: FCard
 ---
