@@ -405,6 +405,7 @@ default: undefined;
 popupClasses(): string[];
 arrowClass(): string;
 errorStyle(): string;
+teleportTarget(): string | Element;
 }, {
 onResize(): void;
 onKeyEsc(event: KeyboardEvent): void;
