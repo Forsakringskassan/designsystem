@@ -21,6 +21,10 @@ jobs:
               run: |
                   git config --global user.email "${{ vars.DOCS_DEPLOY_EMAIL }}"
                   git config --global user.name "${{ vars.DOCS_DEPLOY_NAME }}"
+            - name: Sanity check
+              run: |
+                  git log -n 1
+                  git status
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
