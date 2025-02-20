@@ -82,6 +82,9 @@
     --fkds-color-feedback-border-warning: #{$palette-color-yellow-100};
     --fkds-color-feedback-border-negative: #{$palette-color-red-100};
 
+    // FEEDBACK - TEXT
+    --fkds-color-feedback-text-negative: #{$palette-color-red-100};
+
     // SELECT - BACKGROUND
     --fkds-color-select-background-primary-default: #{$palette-color-green-a-85};
     --fkds-color-select-background-primary-hover: #{$palette-color-green-a-15};

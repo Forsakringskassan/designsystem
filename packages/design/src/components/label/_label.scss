@@ -1,11 +1,12 @@
 @use "../../core/size";
 @use "../icon/icon";
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $LABEL_SELECTOR: ".label" !default;
 
 #{$LABEL_SELECTOR} {
-    color: var(--f-text-color-default);
+    color: $label-color-text;
     display: inline-block;
     font-size: var(--f-font-size-standard);
     font-weight: var(--f-font-weight-medium);
@@ -19,7 +20,7 @@ $LABEL_SELECTOR: ".label" !default;
         margin-top: var(--f-label-message-margin-top);
 
         &--error {
-            color: var(--f-text-color-error);
+            color: $label-color-text-message-error;
         }
     }
 
@@ -39,9 +40,10 @@ $LABEL_SELECTOR: ".label" !default;
     &__description {
         display: block;
         font-weight: var(--f-font-weight-normal);
+        color: $label-color-text-description;
 
         &--format {
-            color: var(--f-text-color-discrete);
+            color: $label-color-text-description-format;
         }
     }
 }
