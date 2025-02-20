@@ -6,6 +6,12 @@ name: changelog-v5
 Detta är Changelog för version 5.x.
 För senaste version se {@link changelog ordinarie Changelog}.
 
+## 5.46.2 (2025-02-20)
+
+### Bug Fixes
+
+- **@fkui/vue:** use `teleportTarget` in `IPopupError` (refs SFKUI-7050) 3795b2f
+
 ## 5.46.1 (2025-02-10)
 
 ### Bug Fixes
