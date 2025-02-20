@@ -8,7 +8,7 @@ Vi strävar efter att alla komponenter ska uppfylla WCAG 2.2 AA (eller högre)
 och EU:s tillgänglighetsdirektiv (EN301549).
 Komponenterna är testade både manuellt och med hjälp av automatiserade verktyg på ett brett urval av enheter.
 
-{@link guide Läs mer om designsystemet}
+{@link about Läs mer om designsystemet}
 
 ## Kom igång
 
@@ -21,3 +21,7 @@ Komponenterna är testade både manuellt och med hjälp av automatiserade verkty
 ## Nyheter
 
 {@link news Läs om senaste nytt i designsystemet}
+
+## På gång i designsystemet
+
+{@link release-plan Läs om vad som är på gång i designsystemet}

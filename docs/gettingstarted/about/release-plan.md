@@ -6,37 +6,34 @@ layout: pattern
 
 ## Nyligen släppt
 
-I den senaste releasen, [6.0.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0), infördes bland annat följande uppdateringar:
+I release [6.1.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.1.0) infördes bland annat följande uppdateringar:
+
+- Tabell och lista med tillhörande komponenter (datamängdredigeraren och datamängdsorteraren): Vi har infört generics, vilket innebär att det går att använda egna datatyper i listor och tabeller.
+
+- Vi har fixat så att det nu går att bygga vid import av scss-filer från designpaketet efter införandet av v6.0.0 (bugg).
+
+- Ett antal andra buggar är också fixade.
+
+I release [6.0.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0) släppte vi bland annat följande uppdateringar:
 
 - Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
   De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.
-
 - Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
   Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.
-
 - Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället {@link migrating-to-fieldset FFieldset}.
-
 - Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.
-
 - Ett antal andra funktioner, typer och komponenter är också borttagna.
-
 - Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).
-
 - Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.
-
 - Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
   Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.
-
 - Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.
 
-I den föregående releasen [5.46.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v5.46.0) infördes följande uppdateringar:
+Vi har också nyligen släppt följande:
 
 - Vi har lagt till stöd för validering av {@link FCard kort} (FCard).
 - För {@link FWizard guidesteg} (FWizardStep) har vi lagt till stöd för att exponera stegnummer i slottar och att kunna köra åtgärder innan navigering till nästa steg.
 - I {@link FCalendar kalender} (FCalendar) har vi ändrat från role:applikation till role:grid för att förbättra tillgängligheten (buggfix).
-
-Vi har också nyligen släppt följande:
-
 - Uppdatering av semantiska tokens för färger är påbörjad och komponenter uppdateras kontinuerligt över kommande releaser.
 - Inmatningsfält har fått ett tillägg så att den kan användas som en {@link news#kombobox kombobox}.
 
@@ -48,6 +45,7 @@ Vi har också nyligen släppt följande:
   På sikt kommer dagens komponenter för applikationslayout ({@link application-layout applikationsmall}, {@link application-layout#hogeryta högeryta} och {@link application-layout#vansteryta vänsteryta}) ersättas med nya.
   De nya komponenterna kommer vara mer flexibla, till exempel kan du fylla en yta med valfritt innehåll oberoende var den ligger.
   Till att börja med kommer ett antal olika varianter av layouter släppas.
+- Möjlighet för användare att snabbt kunna byta till annat år i kalender.
 
 ## Planerat arbete
 

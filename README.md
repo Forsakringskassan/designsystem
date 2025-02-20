@@ -14,6 +14,10 @@ Läs mer om hur du kommer igång med att använda FKUI: https://forsakringskassa
 
 Läs mer om hur du bidrar till FKUI: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/contribute-to-fkds/
 
+## På gång i designsystemet
+
+Läser mer om vad som är på gång i designsystemet: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/about/release-plan.html
+
 ## Kontakta oss
 
 Har du några övergripande funderingar på designsystemet och FKUI hör av dig till oss på
@@ -35,6 +39,10 @@ The component framework was initially released internally in October 2019. It ha
 Getting started: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/
 
 How to contribute: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/contribute-to-fkds/
+
+## Coming up next
+
+What we are working on: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/about/release-plan.html
 
 ## Contact us
 
