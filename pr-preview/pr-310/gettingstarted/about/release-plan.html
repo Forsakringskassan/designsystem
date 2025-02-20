@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-35a8a4.css"
+            href="../../assets/docs-3c5333.css"
             crossorigin
-            integrity="sha384-OnELbByE+uEQmshA8rWYhUnR872au2X2qUhb1h0C2KMSk5rLItd1YprwK4QU9diW"
+            integrity="sha384-zGGe26cG+yxHhHNJD1nLxuNvSKPtCFcBhoXKNB8DwrpeRrKbncJA1Y4+zm84Sor0"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-b4e2a4.json"
+            href="../../search-data-51767f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-UmhjUwanzLcVzEE1dke8pg7CjFYH8eKZzi30qK/EBFAg1waugWWDXaJdfF4xIU2o"
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
             id="search-data"
         />
     </head>
@@ -583,47 +583,38 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="nyligen_slappt"><a class="header-anchor" href="#nyligen_slappt">Nyligen släppt</a></h2><p>I den senaste releasen, <a href="https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0">6.0.0</a>, infördes bland annat följande uppdateringar:</p>
+<h2 id="nyligen_slappt"><a class="header-anchor" href="#nyligen_slappt">Nyligen släppt</a></h2><p>I release <a href="https://github.com/Forsakringskassan/designsystem/releases/tag/v6.1.0">6.1.0</a> infördes bland annat följande uppdateringar:</p>
 <ul>
 <li>
-<p>Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
-De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.</p>
+<p>Tabell och lista med tillhörande komponenter (datamängdredigeraren och datamängdsorteraren): Vi har infört generics, vilket innebär att det går att använda egna datatyper i listor och tabeller.</p>
 </li>
 <li>
-<p>Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
-Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.</p>
+<p>Vi har fixat så att det nu går att bygga vid import av scss-filer från designpaketet efter införandet av v6.0.0 (bugg).</p>
 </li>
 <li>
-<p>Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migration/migrating-to-fieldset.html">FFieldset</a>.</p>
-</li>
-<li>
-<p>Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.</p>
-</li>
-<li>
-<p>Ett antal andra funktioner, typer och komponenter är också borttagna.</p>
-</li>
-<li>
-<p>Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).</p>
-</li>
-<li>
-<p>Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.</p>
-</li>
-<li>
-<p>Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
-Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.</p>
-</li>
-<li>
-<p>Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+<p>Ett antal andra buggar är också fixade.</p>
 </li>
 </ul>
-<p>I den föregående releasen <a href="https://github.com/Forsakringskassan/designsystem/releases/tag/v5.46.0">5.46.0</a> infördes följande uppdateringar:</p>
+<p>I release <a href="https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0">6.0.0</a> släppte vi bland annat följande uppdateringar:</p>
+<ul>
+<li>Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
+De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.</li>
+<li>Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
+Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.</li>
+<li>Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migration/migrating-to-fieldset.html">FFieldset</a>.</li>
+<li>Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.</li>
+<li>Ett antal andra funktioner, typer och komponenter är också borttagna.</li>
+<li>Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).</li>
+<li>Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.</li>
+<li>Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
+Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.</li>
+<li>Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.</li>
+</ul>
+<p>Vi har också nyligen släppt följande:</p>
 <ul>
 <li>Vi har lagt till stöd för validering av <a href="../../components/fcard.html">kort</a> (FCard).</li>
 <li>För <a href="../../components/fwizard.html">guidesteg</a> (FWizardStep) har vi lagt till stöd för att exponera stegnummer i slottar och att kunna köra åtgärder innan navigering till nästa steg.</li>
 <li>I <a href="../../components/fcalendar.html">kalender</a> (FCalendar) har vi ändrat från role:applikation till role:grid för att förbättra tillgängligheten (buggfix).</li>
-</ul>
-<p>Vi har också nyligen släppt följande:</p>
-<ul>
 <li>Uppdatering av semantiska tokens för färger är påbörjad och komponenter uppdateras kontinuerligt över kommande releaser.</li>
 <li>Inmatningsfält har fått ett tillägg så att den kan användas som en <a href="./news.html#kombobox">kombobox</a>.</li>
 </ul>
@@ -634,6 +625,7 @@ Det är en förutsättning för att kunna ha dark mode, men underlättar framfö
 På sikt kommer dagens komponenter för applikationslayout (<a href="../../components/page-layout/application-layout.html">applikationsmall</a>, <a href="../../components/page-layout/application-layout.html#hogeryta">högeryta</a> och <a href="../../components/page-layout/application-layout.html#vansteryta">vänsteryta</a>) ersättas med nya.
 De nya komponenterna kommer vara mer flexibla, till exempel kan du fylla en yta med valfritt innehåll oberoende var den ligger.
 Till att börja med kommer ett antal olika varianter av layouter släppas.</li>
+<li>Möjlighet för användare att snabbt kunna byta till annat år i kalender.</li>
 </ul>
 <h2 id="planerat_arbete"><a class="header-anchor" href="#planerat_arbete">Planerat arbete</a></h2><p>Kommande arbete som vi planerar:</p>
 <ul>
@@ -737,9 +729,9 @@ Vanligtvis fixar vi kritiska buggar upp till ett år efter att ny release är sl
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/multiline-comment (<a href="https://github.com/Forsakringskassan/designsystem/commits/2cb6d74432c224ec185cce9d1792e382ecce8d7c">2cb6d74</a>)<br />
+    docs/multiline-comment (<a href="https://github.com/Forsakringskassan/designsystem/commits/b52396b04b613ad227e9711cd1a4c2b8dffe838e">b52396b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/310">PR 310</a><br />
-        2025-02-20 14:09
+        2025-02-20 14:39
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -860,9 +852,9 @@ Vanligtvis fixar vi kritiska buggar upp till ett år efter att ny release är sl
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-6067be.js"
+            src="../../assets/processors/selectable-version/select-version-004ae0.js"
             crossorigin
-            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
+            integrity="sha384-7p7yp5B/6hnfSpcM6RQpE7QmYzHtNN2tiNGlUV+SJojwaK3TFPppMyMvb5s9ML+h"
             
         ></script>
         <script
