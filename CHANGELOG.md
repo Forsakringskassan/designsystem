@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 6.1.0 (2025-02-20)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** added semantic tokens to Messagebox (refs SFKUI-6986) 3472153
+* **@fkui/design, @fkui/theme-default:** update Modal with semantic tokens  (refs SFKUI-7034) b759bc0
+* **@fkui/vue:** `FCrudDataset` generic and type-safe (refs SFKUI-6500) 5fa2d7b
+* **@fkui/vue:** `FDataTable` generic and type-safe (refs SFKUI-6500) 3381443
+* **@fkui/vue:** `FInteractiveTable` generic and type-safe (refs SFKUI-6500) 908146a
+* **@fkui/vue:** `FList` generic and type-safe (refs SFKUI-6500) 21bf92e
+* **@fkui/vue:** `FSortFilterDataset` generic and type-safe (refs SFKUI-6500) 4b27b43
+* **@fkui/vue:** `useSlotUtils.hasSlot()` takes same arguments options api `hasSlot()` (refs SFKUI-6500) 14707dd
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** remove `navbar` styles (refs SFKUI-7039) 058eee5
+* **@fkui/design, @fkui/theme-default:** set sideEffects field for css packages (refs SFKUI-6500) d7b993f
+* **@fkui/design, @fkui/vue:** `FCalendar` improved accessablility (fixes SFKUI-7011) 6fa234d
+* **@fkui/design:** fix action buttons wrapping in `FInteractiveTable` (fixes SFKUI-6902) 36ec7ef, closes #296
+* **@fkui/design:** fix missing type declaration for `@fkui/design` (refs SFKUI-6500) a711cc6, closes #288
+* **@fkui/theme-default:** fix missing type declaration for `@fkui/theme-default` (refs SFKUI-6500) a6c7a6e, closes #287
+* **@fkui/vue:** use `teleportTarget` in `IPopupError` (refs SFKUI-7050) 3314ba7
+
 ## 6.0.1 (2025-02-11)
 
 ### Bug Fixes
