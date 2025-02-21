@@ -1,32 +1,36 @@
-@use "../button/button";
-@use "../../core/mixins";
 @use "../../core/size";
+@use "variables" as *;
+@use "../../core/utils/functions" as *;
 
 $ENTRYPOINT_SELECTOR: ".entrypoint" !default;
 
 #{$ENTRYPOINT_SELECTOR} {
     /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
-    @extend .button;
-    @include mixins.make-button-variant($ENTRYPOINT_SELECTOR, button.$button--primary...);
-
-    & {
-        text-align: left;
-        padding: size.$padding-100 calc(size.$padding-200 * 2) size.$padding-100 size.$padding-100;
-        line-height: var(--f-line-height-large);
-        width: 100%;
-    }
+    background-color: $entrypoint-color-background-default;
+    color: $entrypoint-color-text-default;
+    border: var(--f-border-width-medium) solid transparent; // forced-colors mode
+    border-radius: var(--f-border-radius-medium);
+    box-shadow: var(--f-button-shadow);
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-medium);
+    transition: background-color var(--f-animation-duration-medium) ease-out;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: densify(size.$margin-150);
+    margin-top: densify(size.$margin-025);
+    text-align: left;
+    padding: densify(size.$padding-100) size.$padding-100;
+    line-height: var(--f-line-height-large);
+    width: 100%;
 
     &__icon {
-        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
-        @extend .button__icon--end;
-
-        color: var(--f-icon-color-white);
-        top: 50%;
-        transform: translate(0, -50%);
+        margin-left: 2rem;
+        flex-shrink: 0;
     }
 
     &:hover {
-        // override anchor's underline hover effect
-        padding-bottom: size.$padding-100;
+        background-color: $entrypoint-color-background-hover;
     }
 }
