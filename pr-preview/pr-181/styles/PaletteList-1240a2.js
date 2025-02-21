@@ -406,11 +406,6 @@
         type: Array,
         required: true
       }
-    },
-    computed: {
-      typeWorkaround() {
-        return this.colors;
-      }
     }
   });
 
@@ -420,7 +415,7 @@
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_data_table = (0, import_vue5.resolveComponent)("f-data-table");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_data_table, {
-      rows: _ctx.typeWorkaround,
+      rows: _ctx.colors,
       "key-attribute": "name"
     }, {
       caption: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
