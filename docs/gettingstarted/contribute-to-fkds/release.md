@@ -31,7 +31,9 @@ För större ändringar utser vi en kontaktperson i FKDS-teamet som hjälper til
 Efter att du kommunicerat med teamet och fått en kontaktperson kan du börja implementera.
 
 Vi använder `main` som primär branch och du utgår vanligtvis från den branchen.
-Gäller det en buggrättning som ska ut mot en äldre version utgår du från `release/N.x` (exempelvis `release/4.x` för v4).
+Gäller det en buggrättning som ska ut mot en äldre version (maintenance release) utgår du från `release/N.x` (exempelvis `release/4.x` för v4).
+
+Läs mer om {@link monorepo#maintenance maintenance releases}.
 
 ### Branchnamn
 
@@ -54,7 +56,8 @@ Om det finns ett JIRA- eller GitHub-ärende kan du använda det i branchens namn
 
 Commitmeddelanden skrivs i ett format baserat på [Conventional Commits][conventional-commits] och ligger som grund för release och changelog.
 
-- Läs mer om {@link commits commitmeddelanden}.
+- Läs mer om {@link monorepo#commits commitmeddelanden}.
+- Läs mer om {@link monorepo#changelog Changelog}.
 
 [conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
 
@@ -131,7 +134,7 @@ Exempel på åtgärder du kan göra för att behålla bakåtkompatibilitet:
 Går det inte lösa utan att bryta kompatibilitet så gäller följande:
 
 - Vi tillsammans samlar ihop flera brytande ändringar i samma release.
-- Vi tillsammans går igenom kodbasen och tar nuvarande deprekerad funktionalitet.
+- Vi tillsammans går igenom kodbasen och tar bort nuvarande deprekerad funktionalitet.
 - Vi tillsammans uppdaterar {@link release-plan Release planen}.
 - Vi tillsammans arbetar fram ett nyhetsmeddelande.
 - Din commit ska använda `!` efter type samt en trailer med `BREAKING CHANGE:` och kortfattade förklaring och instruktioner till migrering.
@@ -179,7 +182,7 @@ En pull request ska generellt sett innehålla:
     - Enhetstester för logik.
     - Komponenttester för interaktion.
     - Screenshot-tester för visuellt utseende.
-4. Dokumentation:
+4. Dokumentation, läs mer om {@link dokumentation dokumentation}:
     - Behöverer live-exempel uppdateras?
     - Behövs nytt stycke som förklarar vad ändringen är?
     - Behövs en guide som lär ut hur man använder ändringen?
@@ -239,6 +242,8 @@ Texten ska innehålla en kortfattad beskrivning av ändringen.
 
 Release byggs från CI-miljö för att säkerställa att vi har reproducerbara byggen och transparens i hur releasen är gjord.
 Bygg inte release från lokal utvecklingsmiljö.
+
+Läs mer om hur {@link monorepo#release toolchain för releasejobb fungerar}.
 
 Checklista innan release:
 
