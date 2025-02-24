@@ -21277,7 +21277,52 @@ function useAreaData(element) {
     direction
   };
 }
+const keymap = {
+  left: {
+    ArrowLeft: "decrease",
+    ArrowRight: "increase",
+    Home: "minimize",
+    End: "maximize"
+  },
+  right: {
+    ArrowLeft: "increase",
+    ArrowRight: "decrease",
+    Home: "minimize",
+    End: "maximize"
+  },
+  top: {
+    ArrowUp: "decrease",
+    ArrowDown: "increase",
+    Home: "minimize",
+    End: "maximize"
+  },
+  bottom: {
+    ArrowUp: "increase",
+    ArrowDown: "decrease",
+    Home: "minimize",
+    End: "maximize"
+  },
+  none: {}
+};
+function useKeyboardHandler(options) {
+  const {
+    attachment
+  } = options;
+  return {
+    onKeydown(event) {
+      if (!attachment.value) {
+        return;
+      }
+      const action = keymap[attachment.value][event.key];
+      if (action) {
+        event.preventDefault();
+        options[action]();
+      }
+    }
+  };
+}
 const _hoisted_1$4 = ["aria-orientation"];
+const STEP_SIZE = 10;
 const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "FResize",
   props: {
@@ -21295,9 +21340,31 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const root = shallowRef();
     const content = ref();
     const separator = ref();
+    const state = ref({
+      min: 0,
+      max: 0,
+      value: 0
+    });
     const {
       attachPanel
     } = useAreaData(root);
+    const {
+      onKeydown: onKeydown2
+    } = useKeyboardHandler({
+      increase() {
+        state.value.value = Math.min(state.value.value + STEP_SIZE, state.value.max);
+      },
+      decrease() {
+        state.value.value = Math.max(state.value.value - STEP_SIZE, state.value.min);
+      },
+      maximize() {
+        state.value.value = state.value.max;
+      },
+      minimize() {
+        state.value.value = state.value.min;
+      },
+      attachment: attachPanel
+    });
     const orientation = computed(() => {
       if (attachPanel.value === "top" || attachPanel.value === "bottom") {
         return "horizontal";
@@ -21342,6 +21409,21 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     function clamp(value, min, max) {
       return Math.min(Math.max(value, min), max);
     }
+    watchEffect(() => {
+      const {
+        min,
+        max,
+        value
+      } = state.value;
+      if (root.value) {
+        root.value.style.setProperty("--size", `${String(value)}px`);
+      }
+      if (separator.value) {
+        separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
+        separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
+        separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
+      }
+    });
     onMounted(() => {
       if (root.value && content.value && separator.value) {
         const style = getComputedStyle(root.value);
@@ -21349,20 +21431,14 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         const separatorSize = parseSize(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
         const minValue = parseSizeMultiple(__props.min, total, 0, Math.max) + separatorSize;
         const maxValue = parseSizeMultiple(__props.max, total, total, Math.min) + separatorSize;
-        console.log({
-          min: __props.min,
-          max: __props.max,
-          minValue,
-          maxValue
-        });
         const value = clamp(parseSize(__props.initial, total, total * 0.5), minValue, maxValue);
         root.value.style.setProperty("--min", `${minValue}px`);
         root.value.style.setProperty("--max", `${maxValue}px`);
-        update(root.value, separator.value, {
+        state.value = {
           min: minValue,
           max: maxValue,
           value
-        });
+        };
       }
     });
     useEventListener(window, "resize", debounce(() => {
@@ -21375,11 +21451,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         const value = clamp(parseSize(__props.initial, total, total * 0.5), minValue, maxValue);
         root.value.style.setProperty("--min", `${minValue}px`);
         root.value.style.setProperty("--max", `${maxValue}px`);
-        update(root.value, separator.value, {
+        state.value = {
           min: minValue,
           max: maxValue,
           value
-        });
+        };
       }
     }, 20));
     useEventListener(window, "pointerdown", (event) => {
@@ -21423,17 +21499,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         value
       } = getMinMaxSize(root2, content2, orientation2);
       return (movement) => {
-        const updatedValue = clamp(value + movement * invert.value, min, max);
-        update(root2, separator2, {
-          min,
-          max,
-          value: updatedValue
-        });
-        return {
-          min,
-          max,
-          value
-        };
+        state.value.value = clamp(value + movement * invert.value, min, max);
       };
     }
     function getMinMaxSize(root2, content2, orientation2) {
@@ -21470,16 +21536,6 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         }
       }
     }
-    function update(root2, separator2, {
-      min,
-      max,
-      value
-    }) {
-      root2.style.setProperty("--size", `${String(value)}px`);
-      separator2.setAttribute("aria-valuemin", String(min));
-      separator2.setAttribute("aria-valuemax", String(max));
-      separator2.setAttribute("aria-valuenow", String(value));
-    }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
         ref_key: "root",
@@ -21489,13 +21545,16 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         ref_key: "content",
         ref: content,
         class: "resize__content"
-      }, [renderSlot(_ctx.$slots, "default")], 512), _cache[0] || (_cache[0] = createTextVNode()), createBaseVNode("div", {
+      }, [renderSlot(_ctx.$slots, "default")], 512), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", {
         ref_key: "separator",
         ref: separator,
         role: "separator",
         class: "resize__handle",
-        "aria-orientation": orientation.value
-      }, null, 8, _hoisted_1$4)], 2);
+        tabindex: "0",
+        "aria-orientation": orientation.value,
+        onKeydown: _cache[0] || (_cache[0] = //@ts-ignore
+        (...args) => unref(onKeydown2) && unref(onKeydown2)(...args))
+      }, null, 40, _hoisted_1$4)], 2);
     };
   }
 });

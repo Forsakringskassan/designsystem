@@ -92,11 +92,11 @@
   --fkds-icon-color-feedback-content-positive: #1b1e23;
   --fkds-icon-color-feedback-content-warning: #1b1e23;
   --fkds-icon-color-feedback-content-negative: #1b1e23;
-  --fkds-icon-color-feedback-background-info: #ffffff;
-  --fkds-icon-color-feedback-background-positive: #ffffff;
-  --fkds-icon-color-feedback-background-warning: #ffffff;
-  --fkds-icon-color-feedback-background-negative: #ffffff;
-  --fkds-icon-color-feedback-border-info: #1b1e23;
+  --fkds-icon-color-feedback-background-info: #f5f6fa;
+  --fkds-icon-color-feedback-background-positive: #f3f8f5;
+  --fkds-icon-color-feedback-background-warning: #fffcf3;
+  --fkds-icon-color-feedback-background-negative: #fcf3f3;
+  --fkds-icon-color-feedback-border-info: #4a52b6;
   --fkds-icon-color-feedback-border-positive: #35805b;
   --fkds-icon-color-feedback-border-warning: #ffbe10;
   --fkds-icon-color-feedback-border-negative: #ca1515;
@@ -1496,23 +1496,23 @@ input[type=search]:focus,
 }
 .icon-stack--info .f-icon-circle,
 .icon--stack--info .f-icon-circle {
-  color: var(--fkds-icon-color-background-primary);
-  fill: var(--fkds-color-feedback-border-info);
+  color: var(--fkds-icon-color-feedback-background-info);
+  fill: var(--fkds-icon-color-feedback-border-info);
 }
 .icon-stack--warning .f-icon-circle,
 .icon--stack--warning .f-icon-circle {
-  color: var(--fkds-icon-color-background-primary);
-  fill: var(--fkds-color-feedback-border-warning);
+  color: var(--fkds-icon-color-feedback-background-warning);
+  fill: var(--fkds-icon-color-feedback-border-warning);
 }
 .icon-stack--error .f-icon-triangle,
 .icon--stack--error .f-icon-triangle {
-  color: var(--fkds-icon-color-background-primary);
-  fill: var(--fkds-color-feedback-border-negative);
+  color: var(--fkds-icon-color-feedback-background-negative);
+  fill: var(--fkds-icon-color-feedback-border-negative);
 }
 .icon-stack--success .f-icon-circle,
 .icon--stack--success .f-icon-circle {
-  color: var(--fkds-icon-color-background-primary);
-  fill: var(--fkds-color-feedback-border-positive);
+  color: var(--fkds-icon-color-feedback-background-positive);
+  fill: var(--fkds-icon-color-feedback-border-positive);
 }
 .icon-stack--success .f-icon-success,
 .icon--stack--success .f-icon-success {
@@ -6863,10 +6863,15 @@ body {
     background-color: transparent;
     transition: background-color var(--f-resize-handle-duration) ease-in;
   }
+  &:focus::before,
   &:hover::before,
   &.drag::before {
     background-color: var(--f-resize-handle-highlight);
     transition-delay: var(--f-resize-handle-delay);
+  }
+  &:focus::before {
+    /* when focus by keyboard we dont want the delay or transition */
+    transition: none;
   }
   &::after {
     display: var(--f-resize-handle-ugly-block);
