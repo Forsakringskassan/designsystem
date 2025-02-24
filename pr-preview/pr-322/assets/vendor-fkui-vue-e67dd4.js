@@ -16788,10 +16788,10 @@
     setup(__props) {
       const props = __props;
       const ariaLabel = props.ariaLabel;
-      function clamp(val) {
+      function clamp2(val) {
         return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
       }
-      const progressValueNow = (0, import_vue.computed)(() => clamp(props.value));
+      const progressValueNow = (0, import_vue.computed)(() => clamp2(props.value));
       const cssWidth = (0, import_vue.computed)(() => `width: ${progressValueNow.value}%`);
       const progressBarClass = (0, import_vue.computed)(() => {
         if (progressValueNow.value === MIN_VALUE) {
@@ -17057,6 +17057,95 @@
       }
     };
   }
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
+  function usePointerHandler(options) {
+    const {
+      separator,
+      attachment
+    } = options;
+    const invert = (0, import_vue.computed)(() => {
+      if (attachment.value === "right" || attachment.value === "bottom") {
+        return -1;
+      }
+      return 1;
+    });
+    const orientation = (0, import_vue.computed)(() => {
+      if (attachment.value === "top" || attachment.value === "bottom") {
+        return "horizontal";
+      } else {
+        return "vertical";
+      }
+    });
+    useEventListener(window, "pointerdown", (event) => {
+      const {
+        isPrimary,
+        button,
+        target,
+        pointerId
+      } = event;
+      if (!separator.value) {
+        return;
+      }
+      if (!isPrimary || button !== 0 || target !== separator.value) {
+        return;
+      }
+      const separatorElement = separator.value;
+      const property = orientation.value === "horizontal" ? "clientY" : "clientX";
+      const reference = event[property];
+      const resize = createResizer();
+      function onPointerMove(event2) {
+        if (event2.pointerId === pointerId) {
+          resize(event2[property] - reference);
+        }
+      }
+      function onLostPointerCapture(event2) {
+        if (event2.pointerId === pointerId) {
+          separatorElement.removeEventListener("pointermove", onPointerMove);
+          separatorElement.removeEventListener("lostpointercapture", onLostPointerCapture);
+        }
+      }
+      onPointerMove(event);
+      separatorElement.addEventListener("lostpointercapture", onLostPointerCapture);
+      separatorElement.addEventListener("pointermove", onPointerMove);
+      separatorElement.setPointerCapture(pointerId);
+      event.preventDefault();
+    });
+    function createResizer() {
+      const {
+        min,
+        max,
+        value
+      } = options.state.value;
+      return (amount) => {
+        options.movement(clamp(value + amount * invert.value, min, max));
+      };
+    }
+  }
+  function computeCssValue(raw, total, auto) {
+    if (raw.endsWith("px")) {
+      return parseInt(raw.slice(0, -2), 10);
+    } else if (raw.endsWith("%")) {
+      const value = parseInt(raw.slice(0, -1), 10);
+      const percent = value / 100;
+      return percent * total;
+    } else if (raw === "0") {
+      return 0;
+    } else if (raw === "auto") {
+      return auto;
+    } else {
+      throw new Error(`Cant parse size from "${raw}"`);
+    }
+  }
+  function aggregateCssValue(raw, total, auto, take) {
+    if (raw === "auto") {
+      return auto;
+    }
+    const parts = raw.split(",").map((it) => it.trim());
+    const parsed = parts.map((it) => computeCssValue(it, total, auto));
+    return take(...parsed);
+  }
   var _hoisted_1$4 = ["aria-orientation"];
   var STEP_SIZE = 10;
   var _sfc_main$4 = /* @__PURE__ */ (0, import_vue.defineComponent)({
@@ -17066,13 +17155,14 @@
         default: "0"
       },
       max: {
-        default: "100px"
+        default: "100%"
       },
       initial: {
         default: "50%"
       }
     },
     setup(__props) {
+      const props = __props;
       const root = (0, import_vue.shallowRef)();
       const content = (0, import_vue.ref)();
       const separator = (0, import_vue.ref)();
@@ -17081,8 +17171,10 @@
         max: 0,
         value: 0
       });
+      const separatorSize = (0, import_vue.ref)(0);
+      const layoutSize = (0, import_vue.ref)(0);
       const {
-        attachPanel
+        attachPanel: attachment
       } = useAreaData(root);
       const {
         onKeydown: onKeydown2
@@ -17099,52 +17191,40 @@
         minimize() {
           state.value.value = state.value.min;
         },
-        attachment: attachPanel
+        attachment
+      });
+      usePointerHandler({
+        movement(value) {
+          state.value.value = value;
+        },
+        separator,
+        state,
+        attachment
+      });
+      const min2 = (0, import_vue.computed)(() => {
+        const total = layoutSize.value;
+        return aggregateCssValue(props.min, total, 0, Math.max) + separatorSize.value;
+      });
+      const max2 = (0, import_vue.computed)(() => {
+        const total = layoutSize.value;
+        return aggregateCssValue(props.max, total, total, Math.min) + separatorSize.value;
+      });
+      const initial2 = (0, import_vue.computed)(() => {
+        const total = layoutSize.value;
+        return clamp(computeCssValue(props.initial, total, total * 0.5), min2.value, max2.value);
       });
       const orientation = (0, import_vue.computed)(() => {
-        if (attachPanel.value === "top" || attachPanel.value === "bottom") {
+        if (attachment.value === "top" || attachment.value === "bottom") {
           return "horizontal";
         } else {
           return "vertical";
         }
       });
-      const invert = (0, import_vue.computed)(() => {
-        if (attachPanel.value === "right" || attachPanel.value === "bottom") {
-          return -1;
-        }
-        return 1;
-      });
-      const layout = (0, import_vue.computed)(() => {
+      const layoutElement = (0, import_vue.computed)(() => {
         var _a;
         var _root$value$closest;
         return (_root$value$closest = (_a = root.value) == null ? void 0 : _a.closest("ce-page-layout")) !== null && _root$value$closest !== void 0 ? _root$value$closest : void 0;
       });
-      function parseSize(raw, total, auto) {
-        if (raw.endsWith("px")) {
-          return parseInt(raw.slice(0, -2), 10);
-        } else if (raw.endsWith("%")) {
-          const value = parseInt(raw.slice(0, -1), 10);
-          const percent = value / 100;
-          return percent * total;
-        } else if (raw === "0") {
-          return 0;
-        } else if (raw === "auto") {
-          return auto;
-        } else {
-          throw new Error(`Cant parse size from "${raw}"`);
-        }
-      }
-      function parseSizeMultiple(raw, total, auto, take) {
-        if (raw === "auto") {
-          return auto;
-        }
-        const parts = raw.split(",").map((it) => it.trim());
-        const parsed = parts.map((it) => parseSize(it, total, auto));
-        return take(...parsed);
-      }
-      function clamp(value, min, max) {
-        return Math.min(Math.max(value, min), max);
-      }
       (0, import_vue.watchEffect)(() => {
         const {
           min,
@@ -17153,6 +17233,8 @@
         } = state.value;
         if (root.value) {
           root.value.style.setProperty("--size", `${String(value)}px`);
+          root.value.style.setProperty("--min", `${min}px`);
+          root.value.style.setProperty("--max", `${max}px`);
         }
         if (separator.value) {
           separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
@@ -17161,114 +17243,33 @@
         }
       });
       (0, import_vue.onMounted)(() => {
-        if (root.value && content.value && separator.value) {
-          const style = getComputedStyle(root.value);
-          const total = getTotalSize(root.value, orientation.value);
-          const separatorSize = parseSize(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
-          const minValue = parseSizeMultiple(__props.min, total, 0, Math.max) + separatorSize;
-          const maxValue = parseSizeMultiple(__props.max, total, total, Math.min) + separatorSize;
-          const value = clamp(parseSize(__props.initial, total, total * 0.5), minValue, maxValue);
-          root.value.style.setProperty("--min", `${minValue}px`);
-          root.value.style.setProperty("--max", `${maxValue}px`);
-          state.value = {
-            min: minValue,
-            max: maxValue,
-            value
-          };
-        }
+        const style = getComputedStyle(document.body);
+        separatorSize.value = computeCssValue(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
+        layoutSize.value = getLayoutSize();
+        state.value = {
+          min: min2.value,
+          max: max2.value,
+          value: initial2.value
+        };
       });
       useEventListener(window, "resize", (0, import_logic.debounce)(() => {
-        if (root.value && content.value && separator.value) {
-          const style = getComputedStyle(root.value);
-          const total = getTotalSize(root.value, orientation.value);
-          const separatorSize = parseSize(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
-          const minValue = parseSizeMultiple(__props.min, total, 0, Math.max) + separatorSize;
-          const maxValue = parseSizeMultiple(__props.max, total, total, Math.min) + separatorSize;
-          const value = clamp(parseSize(__props.initial, total, total * 0.5), minValue, maxValue);
-          root.value.style.setProperty("--min", `${minValue}px`);
-          root.value.style.setProperty("--max", `${maxValue}px`);
-          state.value = {
-            min: minValue,
-            max: maxValue,
-            value
-          };
-        }
-      }, 20));
-      useEventListener(window, "pointerdown", (event) => {
-        const {
-          isPrimary,
-          button,
-          target,
-          pointerId
-        } = event;
-        if (!root.value || !content.value || !separator.value) {
-          return;
-        }
-        if (!isPrimary || button !== 0 || target !== separator.value) {
-          return;
-        }
-        const separatorElement = separator.value;
-        const property = orientation.value === "horizontal" ? "clientY" : "clientX";
-        const reference = event[property];
-        const resize = createResizer(root.value, content.value, separator.value, orientation.value);
-        function onPointerMove(event2) {
-          if (event2.pointerId === pointerId) {
-            resize(event2[property] - reference);
-          }
-        }
-        function onLostPointerCapture(event2) {
-          if (event2.pointerId === pointerId) {
-            separatorElement.removeEventListener("pointermove", onPointerMove);
-            separatorElement.removeEventListener("lostpointercapture", onLostPointerCapture);
-          }
-        }
-        onPointerMove(event);
-        separatorElement.addEventListener("lostpointercapture", onLostPointerCapture);
-        separatorElement.addEventListener("pointermove", onPointerMove);
-        separatorElement.setPointerCapture(pointerId);
-        event.preventDefault();
-      });
-      function createResizer(root2, content2, separator2, orientation2) {
-        const {
-          min,
-          max,
-          value
-        } = getMinMaxSize(root2, content2, orientation2);
-        return (movement) => {
-          state.value.value = clamp(value + movement * invert.value, min, max);
+        layoutSize.value = getLayoutSize();
+        state.value = {
+          min: min2.value,
+          max: max2.value,
+          value: initial2.value
         };
-      }
-      function getMinMaxSize(root2, content2, orientation2) {
-        const style = getComputedStyle(content2);
-        const min = parseInt(style.getPropertyValue("--min"), 10);
-        const max = parseInt(style.getPropertyValue("--max"), 10);
-        switch (orientation2) {
-          case "horizontal": {
-            const value = content2.offsetHeight;
-            return {
-              min,
-              max,
-              value
-            };
-          }
-          case "vertical": {
-            const value = content2.offsetWidth;
-            return {
-              min,
-              max,
-              value
-            };
-          }
+      }, 20));
+      function getLayoutSize() {
+        if (!layoutElement.value) {
+          return 0;
         }
-      }
-      function getTotalSize(root2, orientation2) {
-        const element = layout.value;
-        switch (orientation2) {
+        switch (orientation.value) {
           case "horizontal": {
-            return element.offsetHeight;
+            return layoutElement.value.offsetHeight;
           }
           case "vertical": {
-            return element.offsetWidth;
+            return layoutElement.value.offsetWidth;
           }
         }
       }
@@ -17276,7 +17277,7 @@
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
           ref_key: "root",
           ref: root,
-          class: (0, import_vue.normalizeClass)(["resize", `resize--${(0, import_vue.unref)(attachPanel)}`])
+          class: (0, import_vue.normalizeClass)(["resize", `resize--${(0, import_vue.unref)(attachment)}`])
         }, [(0, import_vue.createElementVNode)("div", {
           ref_key: "content",
           ref: content,
