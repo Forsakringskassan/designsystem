@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -16553,7 +16553,7 @@
     name: "three-column",
     areas: {
       header: {
-        attachPanel: "none",
+        attachPanel: "top",
         direction: "column"
       },
       left: {
@@ -16570,7 +16570,7 @@
         scroll: true
       },
       footer: {
-        attachPanel: "none",
+        attachPanel: "bottom",
         direction: "column"
       }
     }

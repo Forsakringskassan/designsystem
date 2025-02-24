@@ -21059,7 +21059,7 @@ registerLayout({
   name: "three-column",
   areas: {
     header: {
-      attachPanel: "none",
+      attachPanel: "top",
       direction: "column"
     },
     left: {
@@ -21076,7 +21076,7 @@ registerLayout({
       scroll: true
     },
     footer: {
-      attachPanel: "none",
+      attachPanel: "bottom",
       direction: "column"
     }
   }

@@ -94,11 +94,11 @@ html {
   --fkds-icon-color-feedback-content-positive: #1b1e23;
   --fkds-icon-color-feedback-content-warning: #1b1e23;
   --fkds-icon-color-feedback-content-negative: #1b1e23;
-  --fkds-icon-color-feedback-background-info: #ffffff;
-  --fkds-icon-color-feedback-background-positive: #ffffff;
-  --fkds-icon-color-feedback-background-warning: #ffffff;
-  --fkds-icon-color-feedback-background-negative: #ffffff;
-  --fkds-icon-color-feedback-border-info: #1b1e23;
+  --fkds-icon-color-feedback-background-info: #f5f6fa;
+  --fkds-icon-color-feedback-background-positive: #f3f8f5;
+  --fkds-icon-color-feedback-background-warning: #fffcf3;
+  --fkds-icon-color-feedback-background-negative: #fcf3f3;
+  --fkds-icon-color-feedback-border-info: #4a52b6;
   --fkds-icon-color-feedback-border-positive: #35805b;
   --fkds-icon-color-feedback-border-warning: #ffbe10;
   --fkds-icon-color-feedback-border-negative: #ca1515;
