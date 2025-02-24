@@ -21331,6 +21331,14 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         throw new Error(`Cant parse size from "${raw}"`);
       }
     }
+    function parseSizeMultiple(raw, total, auto, take) {
+      if (raw === "auto") {
+        return auto;
+      }
+      const parts = raw.split(",").map((it) => it.trim());
+      const parsed = parts.map((it) => parseSize(it, total, auto));
+      return take(...parsed);
+    }
     function clamp(value, min, max) {
       return Math.min(Math.max(value, min), max);
     }
@@ -21339,8 +21347,14 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         const style = getComputedStyle(root.value);
         const total = getTotalSize(root.value, orientation.value);
         const separatorSize = parseSize(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
-        const minValue = parseSize(__props.min, total, 0) + separatorSize;
-        const maxValue = parseSize(__props.max, total, total) + separatorSize;
+        const minValue = parseSizeMultiple(__props.min, total, 0, Math.max) + separatorSize;
+        const maxValue = parseSizeMultiple(__props.max, total, total, Math.min) + separatorSize;
+        console.log({
+          min: __props.min,
+          max: __props.max,
+          minValue,
+          maxValue
+        });
         const value = clamp(parseSize(__props.initial, total, total * 0.5), minValue, maxValue);
         root.value.style.setProperty("--min", `${minValue}px`);
         root.value.style.setProperty("--max", `${maxValue}px`);
@@ -21356,8 +21370,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         const style = getComputedStyle(root.value);
         const total = getTotalSize(root.value, orientation.value);
         const separatorSize = parseSize(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
-        const minValue = parseSize(__props.min, total, 0) + separatorSize;
-        const maxValue = parseSize(__props.max, total, total) + separatorSize;
+        const minValue = parseSizeMultiple(__props.min, total, 0, Math.max) + separatorSize;
+        const maxValue = parseSizeMultiple(__props.max, total, total, Math.min) + separatorSize;
         const value = clamp(parseSize(__props.initial, total, total * 0.5), minValue, maxValue);
         root.value.style.setProperty("--min", `${minValue}px`);
         root.value.style.setProperty("--max", `${maxValue}px`);
@@ -23361,11 +23375,11 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _hoisted_1 = { class: "sandbox-root" };
+const _hoisted_1$1 = { class: "sandbox-root" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = resolveComponent("f-text-field");
   const _directive_validation = resolveDirective("validation");
-  return openBlock(), createElementBlock("div", _hoisted_1, [
+  return openBlock(), createElementBlock("div", _hoisted_1$1, [
     _cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
     _cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
     _cache[4] || (_cache[4] = createBaseVNode("p", null, [
@@ -23404,9 +23418,39 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [{ path: "/", name: "", component: DefaultView }]
 });
+const _hoisted_1 = { class: "center" };
+const _hoisted_2 = { class: "center" };
+const _hoisted_3 = { class: "center" };
+const _hoisted_4 = { class: "center" };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
+    const left = shallowRef();
+    const right = shallowRef();
+    const top = shallowRef();
+    const bottom = shallowRef();
+    function getData(elementRef) {
+      const element = elementRef.value;
+      if (!element) {
+        return { min: null, max: null, size: null };
+      }
+      const style = getComputedStyle(element);
+      return {
+        min: style.getPropertyValue("--min"),
+        max: style.getPropertyValue("--max"),
+        size: style.getPropertyValue("--size")
+      };
+    }
+    const leftData = ref({ min: null, max: null, size: null });
+    const rightData = ref({ min: null, max: null, size: null });
+    const topData = ref({ min: null, max: null, size: null });
+    const bottomData = ref({ min: null, max: null, size: null });
+    setInterval(() => {
+      leftData.value = getData(left);
+      rightData.value = getData(right);
+      topData.value = getData(top);
+      bottomData.value = getData(bottom);
+    }, 1e3);
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(_sfc_main$7), { layout: "three-column" }, {
         header: withCtx(() => [
@@ -23416,26 +23460,35 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               max: "200px",
               initial: "100%"
             }, {
-              default: withCtx(() => _cache[0] || (_cache[0] = [
-                createBaseVNode("div", { class: "center" }, [
-                  createBaseVNode("p", null, "lorem ipsum dolor sit amet")
-                ], -1)
-              ])),
+              default: withCtx(() => [
+                createBaseVNode("div", _hoisted_1, [
+                  _cache[0] || (_cache[0] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+                  createBaseVNode("pre", {
+                    ref_key: "top",
+                    ref: top
+                  }, toDisplayString(JSON.stringify(topData.value, null, 2)), 513)
+                ])
+              ]),
               _: 1
             })
           ])
         ]),
         left: withCtx(() => [
           createVNode(unref(_sfc_main$4), {
-            min: "25%",
-            max: "40%",
+            min: "200px, 10%",
+            max: "600px, 40%",
             initial: "400px"
           }, {
-            default: withCtx(() => _cache[1] || (_cache[1] = [
-              createBaseVNode("div", { class: "center" }, [
-                createBaseVNode("p", null, "lorem ipsum dolor sit amet")
-              ], -1)
-            ])),
+            default: withCtx(() => [
+              createBaseVNode("div", _hoisted_2, [
+                _cache[1] || (_cache[1] = createBaseVNode("h2", null, "Vänster", -1)),
+                _cache[2] || (_cache[2] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+                createBaseVNode("pre", {
+                  ref_key: "left",
+                  ref: left
+                }, toDisplayString(JSON.stringify(leftData.value, null, 2)), 513)
+              ])
+            ]),
             _: 1
           })
         ]),
@@ -23445,18 +23498,78 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             max: "40%",
             initial: "400px"
           }, {
-            default: withCtx(() => _cache[2] || (_cache[2] = [
-              createBaseVNode("div", { class: "center" }, [
-                createBaseVNode("p", null, "lorem ipsum dolor sit amet")
-              ], -1)
-            ])),
+            default: withCtx(() => [
+              createBaseVNode("div", _hoisted_3, [
+                _cache[3] || (_cache[3] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+                createBaseVNode("pre", {
+                  ref_key: "right",
+                  ref: right
+                }, toDisplayString(JSON.stringify(rightData.value, null, 2)), 513)
+              ])
+            ]),
             _: 1
           })
         ]),
-        content: withCtx(() => _cache[3] || (_cache[3] = [
+        content: withCtx(() => _cache[4] || (_cache[4] = [
           createBaseVNode("main", null, [
             createBaseVNode("h1", null, "Lorem ipsum"),
-            createBaseVNode("p", null, "dolor sit amet")
+            createBaseVNode("p", null, "dolor sit amet"),
+            createBaseVNode("p", null, [
+              createTextVNode(" Attributen "),
+              createBaseVNode("code", null, 'min=".."'),
+              createTextVNode(" och "),
+              createBaseVNode("code", null, 'max=".."'),
+              createTextVNode(" anger minsta respektive största storleken en yta kan få. Båda kan sättas antingen till ett eller flera värden. ")
+            ]),
+            createBaseVNode("ul", null, [
+              createBaseVNode("li", null, [
+                createTextVNode(" Om "),
+                createBaseVNode("code", null, "min"),
+                createTextVNode(" utelämnas är default "),
+                createBaseVNode("code", null, "0"),
+                createTextVNode(", effektivt sett ingen nedgre gräns för minsta storlek. ")
+              ]),
+              createBaseVNode("li", null, [
+                createTextVNode(" Om "),
+                createBaseVNode("code", null, "max"),
+                createTextVNode(" utelämnas är default fönstrets totala storlek, effektivt sett ingen övre gränst för största storlek. ")
+              ])
+            ]),
+            createBaseVNode("p", null, [
+              createTextVNode(" Värden kan vara i pixlar ("),
+              createBaseVNode("code", null, "px"),
+              createTextVNode(") eller procent ("),
+              createBaseVNode("code", null, "%"),
+              createTextVNode("). För att sätta flera värden använd ett kommatecken "),
+              createBaseVNode("code", null, ","),
+              createTextVNode(" som separator. ")
+            ]),
+            createBaseVNode("ul", null, [
+              createBaseVNode("li", null, [
+                createBaseVNode("code", null, "200px"),
+                createTextVNode(" - min/max storlek satt till exakt 200px.")
+              ]),
+              createBaseVNode("li", null, [
+                createBaseVNode("code", null, "25%"),
+                createTextVNode(" - min/max storlek satt till 25% av fönstrets storlek.")
+              ]),
+              createBaseVNode("li", null, [
+                createBaseVNode("code", null, "200px, 25%"),
+                createTextVNode(" - min/max storlek satt till minsta/största av 200px eller 25%.")
+              ])
+            ]),
+            createBaseVNode("p", null, [
+              createBaseVNode("strong", null, "Notera!"),
+              createTextVNode(" Storlekarna i debug-utskrift inkluderar storleken på handtaget man drar i. Just nu idag är den 4px så sätter man "),
+              createBaseVNode("code", null, "min"),
+              createTextVNode(" till "),
+              createBaseVNode("code", null, "200px"),
+              createTextVNode(" rapporteras det som "),
+              createBaseVNode("code", null, "204px"),
+              createTextVNode(" dvs "),
+              createBaseVNode("code", null, "200px + 4px"),
+              createTextVNode(". Det är förväntat beteende. ")
+            ])
           ], -1)
         ])),
         footer: withCtx(() => [
@@ -23466,11 +23579,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               max: "200px",
               initial: "100%"
             }, {
-              default: withCtx(() => _cache[4] || (_cache[4] = [
-                createBaseVNode("div", { class: "center" }, [
-                  createBaseVNode("p", null, "lorem ipsum dolor sit amet")
-                ], -1)
-              ])),
+              default: withCtx(() => [
+                createBaseVNode("div", _hoisted_4, [
+                  _cache[5] || (_cache[5] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+                  createBaseVNode("pre", {
+                    ref_key: "bottom",
+                    ref: bottom
+                  }, toDisplayString(JSON.stringify(bottomData.value, null, 2)), 513)
+                ])
+              ]),
               _: 1
             })
           ])

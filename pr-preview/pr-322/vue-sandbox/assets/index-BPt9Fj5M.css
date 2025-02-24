@@ -6760,6 +6760,127 @@ input[type=search]:focus,
 body {
   font-family: var(--f-font-family);
 }
+
+@property --size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+:root {
+  /* background color */
+  --f-resize-handle-background: #ccc;
+  /* highlight color */
+  --f-resize-handle-highlight: hotpink;
+  /* the width of the handle */
+  --f-resize-handle-size: 4px;
+  /* how much extra space the handle occupies when hovering */
+  --f-resize-handle-expand: 2px;
+  /* how long before visually indicating the hover state */
+  --f-resize-handle-delay: 400ms;
+  /* how long the animation for the visual indicator is */
+  --f-resize-handle-duration: 200ms;
+  /* how long the animation for the visual indicator is */
+  --f-resize-handle-ugly-block: none;
+}
+
+.resize {
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
+  background: rgb(144, 255, 255);
+  &.resize--left {
+    flex-direction: row;
+    width: var(--size);
+    .resize__content {
+      min-width: calc(var(--min) - var(--f-resize-handle-size));
+      max-width: calc(var(--max) - var(--f-resize-handle-size));
+    }
+    .resize__handle {
+      left: calc((var(--f-resize-handle-size) + var(--f-resize-handle-expand)) * 0.5);
+    }
+  }
+  &.resize--right {
+    flex-direction: row-reverse;
+    width: var(--size);
+    .resize__content {
+      min-width: calc(var(--min) - var(--f-resize-handle-size));
+      max-width: calc(var(--max) - var(--f-resize-handle-size));
+    }
+    .resize__handle {
+      right: calc((var(--f-resize-handle-size) + var(--f-resize-handle-expand)) * 0.5);
+    }
+  }
+  &.resize--top {
+    flex-direction: column;
+    height: var(--size);
+    .resize__content {
+      min-height: calc(var(--min) - var(--f-resize-handle-size));
+      max-height: calc(var(--max) - var(--f-resize-handle-size));
+    }
+    .resize__handle {
+      top: calc((var(--f-resize-handle-size) + var(--f-resize-handle-expand)) * 0.5);
+    }
+  }
+  &.resize--bottom {
+    flex-direction: column-reverse;
+    height: var(--size);
+    .resize__content {
+      min-height: calc(var(--min) - var(--f-resize-handle-size));
+      max-height: calc(var(--max) - var(--f-resize-handle-size));
+    }
+    .resize__handle {
+      bottom: calc((var(--f-resize-handle-size) + var(--f-resize-handle-expand)) * 0.5);
+    }
+  }
+}
+
+.resize__content {
+  flex: 1 1 auto;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.resize__handle {
+  flex: 0 0 var(--f-resize-handle-size);
+  touch-action: none;
+  user-select: none;
+  z-index: 1;
+  background: var(--f-resize-handle-background);
+  position: relative;
+  &[aria-orientation=horizontal] {
+    cursor: row-resize;
+    height: var(--f-resize-handle-size);
+  }
+  &[aria-orientation=vertical] {
+    cursor: col-resize;
+    width: var(--f-resize-handle-size);
+  }
+  &::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0 calc(var(--f-resize-handle-expand) * -1);
+    background-color: transparent;
+    transition: background-color var(--f-resize-handle-duration) ease-in;
+  }
+  &:hover::before,
+  &.drag::before {
+    background-color: var(--f-resize-handle-highlight);
+    transition-delay: var(--f-resize-handle-delay);
+  }
+  &::after {
+    display: var(--f-resize-handle-ugly-block);
+    content: "";
+    width: 20px;
+    height: 50px;
+    background: red;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+}
 .sandbox-root {
     width: min(100% - 2rem, 80ch);
     margin: auto;

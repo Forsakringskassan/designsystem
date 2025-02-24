@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -17067,6 +17067,14 @@
           throw new Error(`Cant parse size from "${raw}"`);
         }
       }
+      function parseSizeMultiple(raw, total, auto, take) {
+        if (raw === "auto") {
+          return auto;
+        }
+        const parts = raw.split(",").map((it) => it.trim());
+        const parsed = parts.map((it) => parseSize(it, total, auto));
+        return take(...parsed);
+      }
       function clamp(value, min, max) {
         return Math.min(Math.max(value, min), max);
       }
@@ -17075,8 +17083,14 @@
           const style = getComputedStyle(root.value);
           const total = getTotalSize(root.value, orientation.value);
           const separatorSize = parseSize(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
-          const minValue = parseSize(__props.min, total, 0) + separatorSize;
-          const maxValue = parseSize(__props.max, total, total) + separatorSize;
+          const minValue = parseSizeMultiple(__props.min, total, 0, Math.max) + separatorSize;
+          const maxValue = parseSizeMultiple(__props.max, total, total, Math.min) + separatorSize;
+          console.log({
+            min: __props.min,
+            max: __props.max,
+            minValue,
+            maxValue
+          });
           const value = clamp(parseSize(__props.initial, total, total * 0.5), minValue, maxValue);
           root.value.style.setProperty("--min", `${minValue}px`);
           root.value.style.setProperty("--max", `${maxValue}px`);
@@ -17092,8 +17106,8 @@
           const style = getComputedStyle(root.value);
           const total = getTotalSize(root.value, orientation.value);
           const separatorSize = parseSize(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
-          const minValue = parseSize(__props.min, total, 0) + separatorSize;
-          const maxValue = parseSize(__props.max, total, total) + separatorSize;
+          const minValue = parseSizeMultiple(__props.min, total, 0, Math.max) + separatorSize;
+          const maxValue = parseSizeMultiple(__props.max, total, total, Math.min) + separatorSize;
           const value = clamp(parseSize(__props.initial, total, total * 0.5), minValue, maxValue);
           root.value.style.setProperty("--min", `${minValue}px`);
           root.value.style.setProperty("--max", `${maxValue}px`);
