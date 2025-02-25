@@ -11,7 +11,7 @@ import { useAreaData } from "../FPageLayout/use-area-data";
 import { usePageWidth } from "../../composables";
 
 const root = useTemplateRef("root");
-const { attach } = useAreaData(root);
+const { attachPanel } = useAreaData(root);
 
 const { isDesktop } = usePageWidth({
     onModeChange() {
@@ -26,7 +26,7 @@ const expandedClass = computed(() => {
 });
 
 const attachClass = computed(() => {
-    switch (attach.value) {
+    switch (attachPanel.value) {
         case "left":
             return "attach-left";
         case "right":

@@ -5,13 +5,13 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts" generic="T">
-import { computed, defineComponent, onUnmounted, ref, useTemplateRef } from "vue";
+import { computed, defineComponent, onUnmounted, useTemplateRef } from "vue";
 import { FIcon } from "../FIcon";
 import { useAreaData } from "../FPageLayout/use-area-data";
 import { createClosablePanel } from "./use-panel";
 
 const root = useTemplateRef("root");
-const { attach } = useAreaData(root);
+const { attachPanel } = useAreaData(root);
 
 const props = defineProps<{
     name: string;
@@ -20,7 +20,7 @@ const props = defineProps<{
 const panel = createClosablePanel<T>(props.name);
 
 const attachClass = computed(() => {
-    switch (attach.value) {
+    switch (attachPanel.value) {
         case "left":
             return "attach-left";
         case "right":
