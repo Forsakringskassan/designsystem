@@ -18,12 +18,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <component :is="tagName" :layout class="page-layout">
-        <template v-for="slot of slotNames" :key="slot">
-            <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -- false postive, this is the native slot attribute -->
-            <div :slot class="page-layout__slot">
-                <slot :name="slot"></slot>
-            </div>
-        </template>
+    <component :is="tagName" :layout>
+        <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -- false positive, this is the native slot attribute -->
+        <div v-for="slot of slotNames" :key="slot" :slot>
+            <slot :name="slot"></slot>
+        </div>
     </component>
 </template>
