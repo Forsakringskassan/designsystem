@@ -6763,6 +6763,16 @@ body {
 
 @property --size {
   syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --min {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+@property --max {
+  syntax: "<length>";
   inherits: true;
   initial-value: 0px;
 }
@@ -6779,8 +6789,6 @@ body {
   --f-resize-handle-delay: 400ms;
   /* how long the animation for the visual indicator is */
   --f-resize-handle-duration: 200ms;
-  /* how long the animation for the visual indicator is */
-  --f-resize-handle-ugly-block: none;
 }
 
 .resize {
@@ -6842,26 +6850,43 @@ body {
 
 .resize__handle {
   flex: 0 0 var(--f-resize-handle-size);
+  background: var(--f-resize-handle-background);
   touch-action: none;
   user-select: none;
   z-index: 1;
-  background: var(--f-resize-handle-background);
   position: relative;
+  transition: z-index 0s var(--f-resize-handle-duration);
   &[aria-orientation=horizontal] {
     cursor: row-resize;
     height: var(--f-resize-handle-size);
+    &::before {
+      inset: calc(var(--f-resize-handle-expand) * -1) 0;
+    }
   }
   &[aria-orientation=vertical] {
     cursor: col-resize;
     width: var(--f-resize-handle-size);
+    &::before {
+      inset: 0 calc(var(--f-resize-handle-expand) * -1);
+    }
   }
   &::before {
     content: "";
     pointer-events: none;
     position: absolute;
-    inset: 0 calc(var(--f-resize-handle-expand) * -1);
     background-color: transparent;
     transition: background-color var(--f-resize-handle-duration) ease-in;
+  }
+  &:focus {
+    /* disable regular focus indicator as this component has its own */
+    outline: none;
+    box-shadow: none;
+  }
+  &:hover,
+  &:focus,
+  &.drag {
+    z-index: 2;
+    transition: z-index 0s 0s;
   }
   &:focus::before,
   &:hover::before,
@@ -6872,18 +6897,6 @@ body {
   &:focus::before {
     /* when focus by keyboard we dont want the delay or transition */
     transition: none;
-  }
-  &::after {
-    display: var(--f-resize-handle-ugly-block);
-    content: "";
-    width: 20px;
-    height: 50px;
-    background: red;
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
   }
 }
 .sandbox-root {

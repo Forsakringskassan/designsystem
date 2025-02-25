@@ -21380,7 +21380,7 @@ function usePointerHandler(options) {
     const {
       min,
       max,
-      value
+      current: value
     } = options.state.value;
     return (amount) => {
       options.movement(clamp(value + amount * invert.value, min, max));
@@ -21433,7 +21433,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const state = ref({
       min: 0,
       max: 0,
-      value: 0
+      current: 0
     });
     const separatorSize = ref(0);
     const layoutSize = ref(0);
@@ -21444,38 +21444,38 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       onKeydown: onKeydown2
     } = useKeyboardHandler({
       increase() {
-        state.value.value = Math.min(state.value.value + STEP_SIZE, state.value.max);
+        state.value.current = Math.min(state.value.current + STEP_SIZE, state.value.max);
       },
       decrease() {
-        state.value.value = Math.max(state.value.value - STEP_SIZE, state.value.min);
+        state.value.current = Math.max(state.value.current - STEP_SIZE, state.value.min);
       },
       maximize() {
-        state.value.value = state.value.max;
+        state.value.current = state.value.max;
       },
       minimize() {
-        state.value.value = state.value.min;
+        state.value.current = state.value.min;
       },
       attachment
     });
     usePointerHandler({
       movement(value) {
-        state.value.value = value;
+        state.value.current = value;
       },
       separator,
       state,
       attachment
     });
-    const min2 = computed(() => {
+    const minSize = computed(() => {
       const total = layoutSize.value;
-      return aggregateCssValue(props.min, total, 0, Math.max) + separatorSize.value;
+      return Math.floor(aggregateCssValue(props.min, total, 0, Math.max) + separatorSize.value);
     });
-    const max2 = computed(() => {
+    const maxSize = computed(() => {
       const total = layoutSize.value;
-      return aggregateCssValue(props.max, total, total, Math.min) + separatorSize.value;
+      return Math.floor(aggregateCssValue(props.max, total, total, Math.min) + separatorSize.value);
     });
-    const initial2 = computed(() => {
+    const initialSize = computed(() => {
       const total = layoutSize.value;
-      return clamp(computeCssValue(props.initial, total, total * 0.5), min2.value, max2.value);
+      return clamp(Math.floor(computeCssValue(props.initial, total, total * 0.5)), minSize.value, maxSize.value);
     });
     const orientation = computed(() => {
       if (attachment.value === "top" || attachment.value === "bottom") {
@@ -21493,7 +21493,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       const {
         min,
         max,
-        value
+        current: value
       } = state.value;
       if (root.value) {
         root.value.style.setProperty("--size", `${String(value)}px`);
@@ -21511,17 +21511,17 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       separatorSize.value = computeCssValue(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
       layoutSize.value = getLayoutSize();
       state.value = {
-        min: min2.value,
-        max: max2.value,
-        value: initial2.value
+        min: minSize.value,
+        max: maxSize.value,
+        current: initialSize.value
       };
     });
     useEventListener(window, "resize", debounce(() => {
       layoutSize.value = getLayoutSize();
       state.value = {
-        min: min2.value,
-        max: max2.value,
-        value: initial2.value
+        min: minSize.value,
+        max: maxSize.value,
+        current: initialSize.value
       };
     }, 20));
     function getLayoutSize() {
@@ -21546,7 +21546,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         ref_key: "content",
         ref: content,
         class: "resize__content"
-      }, [renderSlot(_ctx.$slots, "default")], 512), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", {
+      }, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        min: state.value.min,
+        max: state.value.max,
+        current: state.value.current
+      })))], 512), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", {
         ref_key: "separator",
         ref: separator,
         role: "separator",
