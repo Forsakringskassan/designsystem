@@ -6436,3 +6436,121 @@ input[type=search]:focus,
   -o-border-image: conic-gradient(var(--f-background-error, #fcf3f3) 0 0) 0/max(var(--f-border-width-medium, 2px), 100% - var(--i-popup-error-offset, 24px) - 5.7735026919px) 0 max(var(--f-border-width-medium, 2px), 100% - (100% - var(--i-popup-error-offset, 24px)) - 5.7735026919px) 0.2em/0 10px 0 0;
      border-image: conic-gradient(var(--f-background-error, #fcf3f3) 0 0) fill 0/max(var(--f-border-width-medium, 2px), 100% - var(--i-popup-error-offset, 24px) - 5.7735026919px) 0 max(var(--f-border-width-medium, 2px), 100% - (100% - var(--i-popup-error-offset, 24px)) - 5.7735026919px) 0.2em/0 10px 0 0;
 }
+
+/* background color */
+/* highlight color */
+/* the width of the handle */
+/* how much extra space the handle occupies when hovering */
+/* how long before visually indicating the hover state */
+/* how long the animation for the visual indicator is */
+.resize__handle {
+  flex: 0 0 4px;
+  background: #ccc;
+  touch-action: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  z-index: 1;
+  position: relative;
+  transition: z-index 0s 200ms;
+  /* disable regular focus indicator as this component has its own */
+  /* when focus by keyboard we dont want the delay or transition */
+  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */
+}
+@media (forced-colors: active) {
+  .resize__handle {
+    background: CanvasText;
+  }
+}
+.resize__handle[aria-orientation=horizontal] {
+  cursor: row-resize;
+  height: 4px;
+}
+.resize__handle[aria-orientation=horizontal]::before {
+  inset: -2px 0;
+}
+.resize__handle[aria-orientation=vertical] {
+  cursor: col-resize;
+  width: 4px;
+}
+.resize__handle[aria-orientation=vertical]::before {
+  inset: 0 -2px;
+}
+.resize__handle::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  background-color: transparent;
+  transition: background-color 200ms ease-in;
+}
+.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
+  background-color: hotpink;
+  transition-delay: 400ms;
+}
+@media (forced-colors: active) {
+  .resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
+    background-color: Highlight;
+  }
+}
+.resize__handle:focus {
+  outline: none;
+  box-shadow: none;
+}
+.resize__handle:focus::before {
+  transition: none;
+}
+.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {
+  z-index: 2;
+  transition: z-index 0s 0s;
+}
+
+.resize--left .resize__handle {
+  left: 3px;
+}
+
+.resize--right .resize__handle {
+  right: 3px;
+}
+
+.resize--top .resize__handle {
+  top: 3px;
+}
+
+.resize--bottom .resize__handle {
+  bottom: 3px;
+}
+
+.resize {
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
+}
+.resize--left {
+  flex-direction: row;
+  width: var(--size, 0);
+}
+.resize--right {
+  flex-direction: row-reverse;
+  width: var(--size, 0);
+}
+.resize--top {
+  flex-direction: column;
+  height: var(--size, 0);
+}
+.resize--bottom {
+  flex-direction: column-reverse;
+  height: var(--size, 0);
+}
+.resize__content {
+  flex: 1 1 auto;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.resize--left .resize__content, .resize--right .resize__content {
+  min-width: calc(var(--min, 0) - 4px);
+  max-width: calc(var(--max, 0) - 4px);
+}
+.resize--top .resize__content, .resize--bottom .resize__content {
+  min-height: calc(var(--min, 0) - 4px);
+  max-height: calc(var(--max, 0) - 4px);
+}

@@ -21113,7 +21113,7 @@ registerLayout({
     }
   }
 });
-const styleContent = '.page-layout {\n    display: grid;\n    height: 100cqh;\n    width: min(100%, 100cqw);\n\n    &[part~="simple"] {\n        grid-template:\n            "header" min-content\n            "content" 1fr\n            "footer" min-content\n            / 1fr;\n    }\n\n    &[part~="left-panel"] {\n        grid-template:\n            "header header" min-content\n            "left content" 1fr\n            "footer footer" min-content\n            / min-content 1fr;\n    }\n\n    &[part~="right-panel"] {\n        grid-template:\n            "header header" min-content\n            "content right" 1fr\n            "footer footer" min-content\n            / 1fr min-content;\n    }\n\n    &[part~="three-column"] {\n        grid-template:\n            "header header header" min-content\n            "left content right" 1fr\n            "footer footer footer" min-content\n            / min-content 1fr min-content;\n    }\n}\n\n.page-layout__area {\n    display: flex;\n    position: relative;\n\n    &[data-direction="column"] {\n        flex-direction: column;\n    }\n\n    &[data-direction="row"] {\n        flex-direction: row;\n    }\n\n    &[data-scroll] {\n        overflow-y: auto;\n    }\n\n    &:empty {\n        display: none;\n    }\n}\n\n::slotted(.page-layout__slot) {\n    display: contents;\n}\n';
+const styleContent = '.page-layout {\n    display: grid;\n    height: 100cqh;\n    width: min(100%, 100cqw);\n\n    &[part~="simple"] {\n        grid-template:\n            "header" min-content\n            "content" 1fr\n            "footer" min-content\n            / 1fr;\n    }\n\n    &[part~="left-panel"] {\n        grid-template:\n            "header header" min-content\n            "left content" 1fr\n            "footer footer" min-content\n            / min-content 1fr;\n    }\n\n    &[part~="right-panel"] {\n        grid-template:\n            "header header" min-content\n            "content right" 1fr\n            "footer footer" min-content\n            / 1fr min-content;\n    }\n\n    &[part~="three-column"] {\n        grid-template:\n            "header header header" min-content\n            "left content right" 1fr\n            "footer footer footer" min-content\n            / min-content 1fr min-content;\n    }\n}\n\n.page-layout__area {\n    display: flex;\n    position: relative;\n\n    &[data-direction="column"] {\n        flex-direction: column;\n    }\n\n    &[data-direction="row"] {\n        flex-direction: row;\n    }\n\n    &[data-scroll] {\n        overflow-y: auto;\n    }\n\n    &:empty {\n        display: none;\n    }\n}\n\n:host ::slotted(*) {\n    display: contents;\n}\n';
 const stubLayout = defineLayout({
   name: "",
   areas: {}
@@ -21236,14 +21236,12 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(tagName), {
-        layout: _ctx.layout,
-        class: "page-layout"
+        layout: _ctx.layout
       }, {
         default: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(slotNames.value, (slot) => {
           return openBlock(), createElementBlock("div", {
             key: slot,
-            slot,
-            class: "page-layout__slot"
+            slot
           }, [renderSlot(_ctx.$slots, slot)], 8, _hoisted_1$7);
         }), 128))]),
         _: 3
@@ -21507,8 +21505,12 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       }
     });
     onMounted(() => {
-      const style = getComputedStyle(document.body);
-      separatorSize.value = computeCssValue(style.getPropertyValue("--f-resize-handle-size"), 0, 0);
+      if (separator.value) {
+        const {
+          flexBasis
+        } = getComputedStyle(separator.value);
+        separatorSize.value = computeCssValue(flexBasis, 0, 0);
+      }
       layoutSize.value = getLayoutSize();
       state.value = {
         min: minSize.value,
@@ -23439,11 +23441,11 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _hoisted_1$1 = { class: "sandbox-root" };
+const _hoisted_1 = { class: "sandbox-root" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = resolveComponent("f-text-field");
   const _directive_validation = resolveDirective("validation");
-  return openBlock(), createElementBlock("div", _hoisted_1$1, [
+  return openBlock(), createElementBlock("div", _hoisted_1, [
     _cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
     _cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
     _cache[4] || (_cache[4] = createBaseVNode("p", null, [
@@ -23482,39 +23484,9 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [{ path: "/", name: "", component: DefaultView }]
 });
-const _hoisted_1 = { class: "center" };
-const _hoisted_2 = { class: "center" };
-const _hoisted_3 = { class: "center" };
-const _hoisted_4 = { class: "center" };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
-    const left = shallowRef();
-    const right = shallowRef();
-    const top = shallowRef();
-    const bottom = shallowRef();
-    function getData(elementRef) {
-      const element = elementRef.value;
-      if (!element) {
-        return { min: null, max: null, size: null };
-      }
-      const style = getComputedStyle(element);
-      return {
-        min: style.getPropertyValue("--min"),
-        max: style.getPropertyValue("--max"),
-        size: style.getPropertyValue("--size")
-      };
-    }
-    const leftData = ref({ min: null, max: null, size: null });
-    const rightData = ref({ min: null, max: null, size: null });
-    const topData = ref({ min: null, max: null, size: null });
-    const bottomData = ref({ min: null, max: null, size: null });
-    setInterval(() => {
-      leftData.value = getData(left);
-      rightData.value = getData(right);
-      topData.value = getData(top);
-      bottomData.value = getData(bottom);
-    }, 1e3);
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(_sfc_main$7), { layout: "three-column" }, {
         header: withCtx(() => [
@@ -23524,14 +23496,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               max: "200px",
               initial: "100%"
             }, {
-              default: withCtx(() => [
-                createBaseVNode("div", _hoisted_1, [
-                  _cache[0] || (_cache[0] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
-                  createBaseVNode("pre", {
-                    ref_key: "top",
-                    ref: top
-                  }, toDisplayString(JSON.stringify(topData.value, null, 2)), 513)
-                ])
+              default: withCtx((bindings) => [
+                _cache[0] || (_cache[0] = createBaseVNode("h2", null, "Sidhuvud", -1)),
+                _cache[1] || (_cache[1] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+                createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
               ]),
               _: 1
             })
@@ -23543,15 +23511,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             max: "600px, 40%",
             initial: "400px"
           }, {
-            default: withCtx(() => [
-              createBaseVNode("div", _hoisted_2, [
-                _cache[1] || (_cache[1] = createBaseVNode("h2", null, "Vänster", -1)),
-                _cache[2] || (_cache[2] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
-                createBaseVNode("pre", {
-                  ref_key: "left",
-                  ref: left
-                }, toDisplayString(JSON.stringify(leftData.value, null, 2)), 513)
-              ])
+            default: withCtx((bindings) => [
+              _cache[2] || (_cache[2] = createBaseVNode("h2", null, "Vänsterpanel", -1)),
+              _cache[3] || (_cache[3] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+              createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
             ]),
             _: 1
           })
@@ -23562,22 +23525,18 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             max: "40%",
             initial: "400px"
           }, {
-            default: withCtx(() => [
-              createBaseVNode("div", _hoisted_3, [
-                _cache[3] || (_cache[3] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
-                createBaseVNode("pre", {
-                  ref_key: "right",
-                  ref: right
-                }, toDisplayString(JSON.stringify(rightData.value, null, 2)), 513)
-              ])
+            default: withCtx((bindings) => [
+              _cache[4] || (_cache[4] = createBaseVNode("h2", null, "Högerpanel", -1)),
+              _cache[5] || (_cache[5] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+              createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
             ]),
             _: 1
           })
         ]),
-        content: withCtx(() => _cache[4] || (_cache[4] = [
+        content: withCtx(() => _cache[6] || (_cache[6] = [
           createBaseVNode("main", null, [
             createBaseVNode("h1", null, "Lorem ipsum"),
-            createBaseVNode("p", null, "dolor sit amet"),
+            createBaseVNode("p", null, "Dolor sit amet"),
             createBaseVNode("p", null, [
               createTextVNode(" Attributen "),
               createBaseVNode("code", null, 'min=".."'),
@@ -23643,14 +23602,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               max: "200px",
               initial: "100%"
             }, {
-              default: withCtx(() => [
-                createBaseVNode("div", _hoisted_4, [
-                  _cache[5] || (_cache[5] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
-                  createBaseVNode("pre", {
-                    ref_key: "bottom",
-                    ref: bottom
-                  }, toDisplayString(JSON.stringify(bottomData.value, null, 2)), 513)
-                ])
+              default: withCtx((bindings) => [
+                _cache[7] || (_cache[7] = createBaseVNode("h2", null, "Sidfot", -1)),
+                _cache[8] || (_cache[8] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+                createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
               ]),
               _: 1
             })
