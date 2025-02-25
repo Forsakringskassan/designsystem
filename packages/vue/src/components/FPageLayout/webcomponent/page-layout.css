@@ -57,6 +57,6 @@
     }
 }
 
-::slotted(.page-layout__slot) {
+:host ::slotted(*) {
     display: contents;
 }
