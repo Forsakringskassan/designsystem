@@ -4,6 +4,32 @@ import { FInteractiveTablePageObject } from "../../cypress";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";
 
+const items = [
+    {
+        id: "1",
+        start: "2022-04-10",
+        end: "2022-04-25",
+        level: "Sjukpenning",
+        antal: "15",
+    },
+    {
+        id: "2",
+        start: "2022-05-06",
+        end: "2022-05-10",
+        level: "Lägstanivå",
+        antal: "4",
+    },
+    {
+        id: "3",
+        start: "2022-05-20",
+        end: "2022-05-31",
+        level: "Sjukpenning",
+        antal: "11",
+    },
+];
+
+const selectedItems = [items[0], items[2]];
+
 function createComponent(template: string): DefineComponent {
     return defineComponent({
         template,
@@ -13,45 +39,8 @@ function createComponent(template: string): DefineComponent {
         },
         data() {
             return {
-                selectedItems: [
-                    {
-                        id: "1",
-                        start: "2022-04-10",
-                        end: "2022-04-25",
-                        level: "Sjukpenning",
-                        antal: "15",
-                    },
-                    {
-                        id: "3",
-                        start: "2022-05-20",
-                        end: "2022-05-31",
-                        level: "Sjukpenning",
-                        antal: "11",
-                    },
-                ],
-                items: [
-                    {
-                        id: "1",
-                        start: "2022-04-10",
-                        end: "2022-04-25",
-                        level: "Sjukpenning",
-                        antal: "15",
-                    },
-                    {
-                        id: "2",
-                        start: "2022-05-06",
-                        end: "2022-05-10",
-                        level: "Lägstanivå",
-                        antal: "4",
-                    },
-                    {
-                        id: "3",
-                        start: "2022-05-20",
-                        end: "2022-05-31",
-                        level: "Sjukpenning",
-                        antal: "11",
-                    },
-                ],
+                items,
+                selectedItems,
             };
         },
     });

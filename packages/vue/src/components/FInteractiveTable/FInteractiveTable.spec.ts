@@ -684,6 +684,10 @@ it("should add an extra column when selectable is enabled", async () => {
 
 it("should mark initial rows as selected", async () => {
     expect.assertions(2);
+
+    const rows = [{ id: 1 }, { id: 2 }];
+    const selected = [rows[0]];
+
     const TestComponent = {
         components: { FInteractiveTable, FTableColumn },
         template: /* HTML */ `
@@ -696,8 +700,8 @@ it("should mark initial rows as selected", async () => {
         `,
         data() {
             return {
-                rows: [{ id: 1 }, { id: 2 }],
-                selected: [{ id: 1 }],
+                rows,
+                selected,
             };
         },
     };
@@ -707,9 +711,9 @@ it("should mark initial rows as selected", async () => {
         },
     });
     await wrapper.vm.$nextTick();
-    const rows = wrapper.findAll("tbody tr");
-    expect(rows[0].classes()).toContain("table__row--selected");
-    expect(rows[1].classes()).not.toContain("table__row--selected");
+    const allRows = wrapper.findAll("tbody tr");
+    expect(allRows[0].classes()).toContain("table__row--selected");
+    expect(allRows[1].classes()).not.toContain("table__row--selected");
 });
 
 it("should set row-description as aria-label", async () => {
@@ -1013,15 +1017,51 @@ describe("Expandable rows", () => {
     });
 });
 
+describe("`keyAttribute`", () => {
+    it("should not throw if valid and unique", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FInteractiveTable, {
+                props: {
+                    keyAttribute: "id",
+                    rows: [{ id: "a" }, { id: "b" }, { id: "c" }],
+                },
+            });
+        }).not.toThrow();
+    });
+
+    it("should throw error if not unique in items", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FInteractiveTable, {
+                props: {
+                    keyAttribute: "id",
+                    rows: [{ id: "a" }, { id: "b" }, { id: "b" }],
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Expected each item to have key [id] with unique value but encountered duplicate of "b" in item index 2."`,
+        );
+    });
+
+    it("should be optional", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FInteractiveTable, {
+                props: {
+                    rows: [{ id: "a" }, { id: "b" }, { id: "c" }],
+                },
+            });
+        }).not.toThrow();
+    });
+});
+
 describe("html-validate", () => {
-    it("should require non-empty key-attribute attribute", () => {
-        expect.assertions(2);
-        expect(
-            "<f-interactive-table></f-interactive-table>",
-        ).not.toHTMLValidate({
-            message:
-                '<f-interactive-table> is missing required "key-attribute" attribute',
-        });
+    it("should require `key-attribute` to be non-empty if used", () => {
+        expect.assertions(1);
         expect(
             '<f-interactive-table key-attribute=""></f-interactive-table>',
         ).not.toHTMLValidate({
