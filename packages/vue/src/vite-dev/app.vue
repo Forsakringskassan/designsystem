@@ -8,6 +8,7 @@ import {
     FPageLayout,
     FInteractiveTable,
     FTableColumn,
+    FIcon,
 } from "../components";
 import { usePanel } from "../components/FPageClosablePanel/use-panel";
 import MyAwesomePanel from "./my-awesome-panel.vue";
@@ -46,22 +47,34 @@ function onClick(item: number | Ankeborgare): void {
         <template #header> [header] </template>
         <template #left>
             <Component :is="leftVariant" v-if="leftVariant.name !== FPageClosablePanel.name">
-                <template #header> [panel header] </template>
-                <template #default>
-                    <p>[panel content]</p>
-                    <p>[panel content]</p>
-                    <p>[panel content]</p>
-                    <p>{{ leftVariant.name }}</p>
-                    <f-select-field v-model="leftVariant">
-                        <template #label>Variant</template>
-                        <template #default>
-                            <option :value="FPageMenuPanel">Meny</option>
-                            <option :value="FPageExpandablePanel">Hopfällbar</option>
-                            <option :value="FPageClosablePanel">Stängbar</option>
-                        </template>
-                    </f-select-field>
+                <template #icon="{ isOpen }">
+                    <f-icon :name="isOpen ? 'plus' : 'triangle'"> <title>Plusmeny</title> </f-icon>
                 </template>
-                <template #footer> [panel footer] </template>
+                <template #header="{ isOpen }">
+                    <template v-if="isOpen"> [panel header] </template>
+                    <!-- <template v-else> [foo] </template> -->
+                </template>
+                <template #default="{ isOpen }">
+                    <template v-if="isOpen">
+                        <p>[panel content]</p>
+                        <p>[panel content]</p>
+                        <p>[panel content]</p>
+                        <p>{{ leftVariant.name }}</p>
+                        <f-select-field v-model="leftVariant">
+                            <template #label>Variant</template>
+                            <template #default>
+                                <option :value="FPageMenuPanel">Meny</option>
+                                <option :value="FPageExpandablePanel">Hopfällbar</option>
+                                <option :value="FPageClosablePanel">Stängbar</option>
+                            </template>
+                        </f-select-field>
+                    </template>
+                    <template v-else> bar bar bar bar foobar foobarbaz </template>
+                </template>
+                <template #footer="{ isOpen }">
+                    <template v-if="isOpen">[panel footer]</template>
+                    <template v-else> baz </template>
+                </template>
             </Component>
             <MyAwesomePanel v-if="leftVariant.name === FPageClosablePanel.name" name="left-object"></MyAwesomePanel>
             <f-page-closable-panel v-if="leftVariant.name === FPageClosablePanel.name" name="left-number">

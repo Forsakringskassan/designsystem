@@ -44,20 +44,22 @@ function onToggle(): void {
     <div ref="root" class="panel__wrapper">
         <div class="panel panel--menu" :class="[expandedClass, attachClass]">
             <div class="panel__header">
-                <div v-if="isOpen" class="panel__title">
-                    <slot name="header"></slot>
+                <div class="panel__title">
+                    <slot name="header" v-bind="{ isOpen }"></slot>
                 </div>
                 <div class="panel__collapse">
-                    <button type="button" @click="onToggle()">
-                        <f-icon name="bars"> <title>Toggle</title> </f-icon>
+                    <button type="button" @click="onToggle">
+                        <slot name="icon" v-bind="{ isOpen }">
+                            <f-icon name="bars"> <title>Toggle</title> </f-icon>
+                        </slot>
                     </button>
                 </div>
             </div>
-            <div v-if="isOpen" class="panel__content">
-                <slot name="default"></slot>
+            <div class="panel__content">
+                <slot name="default" v-bind="{ isOpen }"></slot>
             </div>
-            <div v-if="isOpen" class="panel__footer">
-                <slot name="footer"></slot>
+            <div class="panel__footer">
+                <slot name="footer" v-bind="{ isOpen }"></slot>
             </div>
         </div>
     </div>
