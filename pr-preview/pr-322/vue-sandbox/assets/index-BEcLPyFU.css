@@ -6901,9 +6901,6 @@ main {
 .container {
     background: #fff;
 }
-.center {
-    align-content: center;
-}
 .resize {
     background: rgb(144, 255, 255);
 }

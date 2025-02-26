@@ -17975,6 +17975,28 @@ function useHorizontalOffset(options) {
     }
   }
 });
+function* labelClasses(options) {
+  const {
+    labelClass
+  } = options;
+  yield "fieldset__label";
+  yield labelClass;
+}
+function* contentClasses(options) {
+  const {
+    hasRadiobutton,
+    hasCheckbox,
+    contentClass
+  } = options;
+  yield "fieldset__content";
+  if (hasRadiobutton) {
+    yield "radio-button-group__content";
+  }
+  if (hasCheckbox) {
+    yield "checkbox-group__content";
+  }
+  yield contentClass;
+}
 const injectionKeys = {
   sharedName: Symbol("sharedName"),
   showDetails: Symbol("showDetails"),
@@ -17987,6 +18009,310 @@ function useFieldset() {
     getFieldsetLabelText: inject(injectionKeys.getFieldsetLabelText, () => void 0)
   };
 }
+function isEqual(a, b) {
+  if (a.length !== b.length) {
+    return false;
+  }
+  return a.every((_, i) => a[i] === b[i]);
+}
+const _sfc_main$N = /* @__PURE__ */ defineComponent({
+  name: "FFieldset",
+  components: {
+    FIcon
+  },
+  mixins: [TranslationMixin],
+  props: {
+    /**
+     * The id for the fieldset id attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * Name provided to child content as `sharedName` for optional usage (it will not be set on the fieldset element).
+     * For radio inputs this is a shortcut to specify the shared name attribute at one place,
+     * instead of repeatedly setting the name attribute on each radio input.
+     */
+    name: {
+      type: String,
+      required: false,
+      default: void 0
+    },
+    /**
+     * The CSS classes for the label, description and error-message slot.
+     */
+    labelClass: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * The CSS classes for the default slot.
+     */
+    contentClass: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * Aligns underlying items horizontally.
+     * Supported by radiobuttons and chip layout.
+     */
+    horizontal: {
+      type: Boolean,
+      required: false
+    },
+    /**
+     * Displays radio and checkbox content with chip layout.
+     */
+    chip: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    /**
+     * Displays a box with border around radiobuttons and checkboxes.
+     */
+    border: {
+      type: Boolean,
+      required: false
+    },
+    /**
+     * Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.
+     *
+     * * `never` (default) - Never show item details.
+     * - `when-selected` - Show item details when selected.
+     * - `always` - Always show item details.
+     */
+    showDetails: {
+      type: String,
+      default: "never",
+      validator(value) {
+        return ["never", "when-selected", "always"].includes(value);
+      }
+    }
+  },
+  setup(props) {
+    const slots = useSlots();
+    provide(injectionKeys.sharedName, props.name);
+    provide(injectionKeys.showDetails, props.showDetails);
+    provide(injectionKeys.getFieldsetLabelText, () => {
+      return renderSlotText(slots.label);
+    });
+    provide(tooltipAttachTo, useTemplateRef("tooltipAttachTo"));
+  },
+  data() {
+    return {
+      validity: {
+        validityMode: "INITIAL"
+      },
+      descriptionClass: ["label__description"],
+      formatDescriptionClass: ["label__description", "label__description--format"],
+      validityElement: null,
+      dispatchObject: {},
+      detail: {},
+      hasDocumentListener: false,
+      legendKey: 1,
+      oldMessage: "",
+      children: new Array(),
+      hasCheckbox: false,
+      hasRadiobutton: false
+    };
+  },
+  computed: {
+    hasError() {
+      return this.validity.validityMode === "ERROR";
+    },
+    hasErrorMessageSlot() {
+      return hasSlot(this, "error-message");
+    },
+    hasTooltipSlot() {
+      return Boolean(this.$slots.tooltip);
+    },
+    hasDescriptionSlot() {
+      return hasSlot(this, "description");
+    },
+    legendClass() {
+      return this.hasTooltipSlot ? ["sr-only"] : this.groupLabelClass;
+    },
+    groupLabelClass() {
+      return Array.from(labelClasses(this));
+    },
+    groupContentClass() {
+      return Array.from(contentClasses(this));
+    },
+    classes() {
+      const {
+        hasRadiobutton,
+        hasCheckbox,
+        horizontal,
+        chip,
+        border
+      } = this;
+      return {
+        "radio-button-group": hasRadiobutton,
+        "radio-button-group--chip": chip && hasRadiobutton,
+        "radio-button-group--horizontal": horizontal && hasRadiobutton,
+        "radio-button-group--border": border && hasRadiobutton,
+        "checkbox-group": hasCheckbox,
+        "checkbox-group--chip": chip && hasCheckbox,
+        "checkbox-group--horizontal": horizontal && hasCheckbox,
+        "checkbox-group--border": border && hasCheckbox
+      };
+    },
+    checkedChildren() {
+      return this.children.filter((child) => child.checked);
+    },
+    debouncedUpdateChildren() {
+      return debounce(this.updateCheckboxChildren.bind(this), 150);
+    },
+    checkboxCheckedScreenReaderText() {
+      return this.checkedChildren.length === 1 ? this.$t("fkui.checkbox-group.checkbox.checked", "Kryssruta kryssad") : this.$t("fkui.checkbox-group.checkbox.not.checked", "Kryssruta ej kryssad");
+    },
+    numberOfCheckboxesScreenReaderText() {
+      return this.$t("fkui.checkbox-group.count", "Grupp med {{ count }} kryssrutor", {
+        count: String(this.children.length)
+      });
+    },
+    numberOfCheckedCheckboxesScreenText() {
+      return this.$t("fkui.checkbox-group.checked", "{{ checked }} kryssad av {{ count }}", {
+        checked: String(this.checkedChildren.length),
+        count: String(this.children.length)
+      });
+    }
+  },
+  async mounted() {
+    await this.$nextTick();
+    const types = Array.from(this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`), (it) => it.getAttribute("type"));
+    this.hasCheckbox = types.includes("checkbox");
+    this.hasRadiobutton = types.includes("radio");
+    if (this.hasCheckbox) {
+      this.updateCheckboxChildren();
+    }
+  },
+  updated() {
+    if (this.hasCheckbox) {
+      this.debouncedUpdateChildren();
+    }
+  },
+  methods: {
+    async onValidity({
+      detail
+    }) {
+      var _renderSlotText;
+      if (detail.target !== this.$el) {
+        return;
+      }
+      this.detail = detail;
+      await this.$nextTick();
+      const errorMessage = (_renderSlotText = renderSlotText(this.$slots.label)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
+      const firstFocusableElement = this.$el.querySelector("input:not(disabled), select:not(disabled), textarea:not(disabled)");
+      const focusElementId = firstFocusableElement ? firstFocusableElement.id : this.id;
+      this.validityElement = this.$el;
+      this.dispatchObject = {
+        ...detail,
+        errorMessage,
+        focusElementId
+      };
+      this.validity = this.detail;
+      if (this.validityElement) {
+        dispatchComponentValidityEvent(this.validityElement, this.dispatchObject);
+      }
+      const message = detail.validityMode === "INITIAL" ? "" : detail.validationMessage;
+      if (message !== this.oldMessage) {
+        this.forceLegendUpdate();
+        this.oldMessage = message;
+      }
+    },
+    /**
+     * Workaround for NVDA-bug. Force re rendering of legend element due to NVDA not recognizing innerHTML changes.
+     * NVDA has closed the bug as it is related to the browser (works in FF): https://github.com/nvaccess/nvda/issues/13162
+     */
+    forceLegendUpdate() {
+      this.legendKey++;
+    },
+    async updateCheckboxChildren() {
+      await this.$nextTick();
+      const checkboxes = Array.from(this.$el.querySelectorAll('input[type="checkbox"]'));
+      if (!isEqual(this.children, checkboxes)) {
+        this.children = checkboxes;
+      }
+    }
+  }
+});
+const _hoisted_1$B = ["id"];
+const _hoisted_2$r = {
+  key: 0,
+  class: "sr-only"
+};
+const _hoisted_3$m = {
+  key: 0,
+  class: "label__message label__message--error"
+};
+const _hoisted_4$j = {
+  key: 0,
+  "data-test": "checked-boxes",
+  class: "sr-only",
+  "aria-live": "polite"
+};
+const _hoisted_5$f = {
+  key: 0
+};
+const _hoisted_6$c = {
+  key: 1
+};
+const _hoisted_7$b = {
+  ref: "tooltipAttachTo",
+  class: "label"
+};
+const _hoisted_8$6 = {
+  "aria-hidden": "true"
+};
+const _hoisted_9$4 = {
+  key: 0,
+  class: "label__message label__message--error"
+};
+function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_icon = resolveComponent("f-icon");
+  return openBlock(), createElementBlock("fieldset", {
+    id: _ctx.id,
+    class: normalizeClass(["fieldset", _ctx.classes]),
+    onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
+  }, [(openBlock(), createElementBlock("legend", {
+    key: _ctx.legendKey,
+    class: normalizeClass(["label", _ctx.legendClass])
+  }, [renderSlot(_ctx.$slots, "label"), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasCheckbox && _ctx.children.length > 1 ? (openBlock(), createElementBlock("span", _hoisted_2$r, [createBaseVNode("span", null, toDisplayString(_ctx.numberOfCheckboxesScreenReaderText), 1)])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "description", {
+    descriptionClass: _ctx.descriptionClass,
+    formatDescriptionClass: _ctx.formatDescriptionClass
+  }), _cache[3] || (_cache[3] = createTextVNode()), renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
+    hasError: _ctx.hasError,
+    validationMessage: _ctx.validity.validationMessage
+  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_3$m, [createVNode(_component_f_icon, {
+    class: "label__icon--left",
+    name: "error"
+  }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)), _cache[7] || (_cache[7] = createTextVNode()), _ctx.hasCheckbox ? (openBlock(), createElementBlock("span", _hoisted_4$j, [_ctx.children.length === 1 ? (openBlock(), createElementBlock("span", _hoisted_5$f, toDisplayString(_ctx.checkboxCheckedScreenReaderText), 1)) : (openBlock(), createElementBlock("span", _hoisted_6$c, toDisplayString(_ctx.numberOfCheckedCheckboxesScreenText), 1))])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.hasTooltipSlot ? (openBlock(), createElementBlock(Fragment, {
+    key: 1
+  }, [createBaseVNode("div", _hoisted_7$b, [createBaseVNode("span", _hoisted_8$6, [renderSlot(_ctx.$slots, "label")])], 512), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(["label", _ctx.groupLabelClass]),
+    "aria-hidden": "true"
+  }, [renderSlot(_ctx.$slots, "description", {
+    descriptionClass: _ctx.descriptionClass,
+    formatDescriptionClass: _ctx.formatDescriptionClass
+  }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
+    hasError: _ctx.hasError,
+    validationMessage: _ctx.validity.validationMessage
+  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_9$4, [createVNode(_component_f_icon, {
+    class: "label__icon--left",
+    name: "error"
+  }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", {
+    class: normalizeClass(_ctx.groupContentClass)
+  }, [renderSlot(_ctx.$slots, "default")], 2)], 42, _hoisted_1$B);
+}
+const FFieldset = /* @__PURE__ */ _export_sfc$1(_sfc_main$N, [["render", _sfc_render$u]]);
 const anyType$1 = [String, Object, Array, Number, Date, Boolean];
 const _sfc_main$M = /* @__PURE__ */ defineComponent({
   name: "FCheckboxField",
@@ -21408,11 +21734,49 @@ function aggregateCssValue(raw, total, auto, take) {
   const parsed = parts.map((it) => computeCssValue(it, total, auto));
   return take(...parsed);
 }
+function useStorage(options) {
+  const {
+    state,
+    storageKey
+  } = options;
+  const loaded = ref(false);
+  let last = -1;
+  watchEffect(() => {
+    if (!loaded.value) {
+      return;
+    }
+    if (!storageKey.value) {
+      return;
+    }
+    if (state.value.current < 0 || state.value.current === last) {
+      return;
+    }
+    const json = JSON.stringify(state.value.current);
+    window.localStorage.setItem(storageKey.value, json);
+    last = state.value.current;
+  });
+  watchEffect(() => {
+    if (!storageKey.value) {
+      return;
+    }
+    const json = window.localStorage.getItem(storageKey.value);
+    if (json) {
+      const value = JSON.parse(json);
+      state.value.current = clamp(value, state.value.min, state.value.max);
+      last = value;
+    }
+    loaded.value = true;
+  });
+}
 const _hoisted_1$4 = ["aria-orientation"];
 const STEP_SIZE = 10;
 const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "FResize",
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     min: {
       default: "0"
     },
@@ -21429,14 +21793,16 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const content = ref();
     const separator = ref();
     const state = ref({
-      min: 0,
-      max: 0,
-      current: 0
+      min: -1,
+      max: -1,
+      current: -1
     });
     const separatorSize = ref(0);
     const layoutSize = ref(0);
+    const storageKey = computed(() => area.value ? `layout/${area.value}/size` : null);
     const {
-      attachPanel: attachment
+      attachPanel: attachment,
+      area
     } = useAreaData(root);
     const {
       onKeydown: onKeydown2
@@ -21454,6 +21820,10 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         state.value.current = state.value.min;
       },
       attachment
+    });
+    useStorage({
+      state,
+      storageKey
     });
     usePointerHandler({
       movement(value) {
@@ -21473,7 +21843,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     });
     const initialSize = computed(() => {
       const total = layoutSize.value;
-      return clamp(Math.floor(computeCssValue(props.initial, total, total * 0.5)), minSize.value, maxSize.value);
+      return Math.floor(computeCssValue(props.initial, total, total * 0.5));
     });
     const orientation = computed(() => {
       if (attachment.value === "top" || attachment.value === "bottom") {
@@ -21515,17 +21885,18 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       state.value = {
         min: minSize.value,
         max: maxSize.value,
-        current: initialSize.value
+        current: clamp(initialSize.value, minSize.value, maxSize.value)
       };
     });
-    useEventListener(window, "resize", debounce(() => {
+    useEventListener(window, "resize", debounce(onResize, 20));
+    function onResize() {
       layoutSize.value = getLayoutSize();
       state.value = {
         min: minSize.value,
         max: maxSize.value,
         current: initialSize.value
       };
-    }, 20));
+    }
     function getLayoutSize() {
       if (!layoutElement.value) {
         return 0;
@@ -21552,7 +21923,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         min: state.value.min,
         max: state.value.max,
         current: state.value.current
-      })))], 512), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", {
+      })))], 512), _cache[1] || (_cache[1] = createTextVNode()), !props.disabled ? (openBlock(), createElementBlock("div", {
+        key: 0,
         ref_key: "separator",
         ref: separator,
         role: "separator",
@@ -21561,7 +21933,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         "aria-orientation": orientation.value,
         onKeydown: _cache[0] || (_cache[0] = //@ts-ignore
         (...args) => unref(onKeydown2) && unref(onKeydown2)(...args))
-      }, null, 40, _hoisted_1$4)], 2);
+      }, null, 40, _hoisted_1$4)) : createCommentVNode("", true)], 2);
     };
   }
 });
@@ -23441,11 +23813,11 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _hoisted_1 = { class: "sandbox-root" };
+const _hoisted_1$1 = { class: "sandbox-root" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = resolveComponent("f-text-field");
   const _directive_validation = resolveDirective("validation");
-  return openBlock(), createElementBlock("div", _hoisted_1, [
+  return openBlock(), createElementBlock("div", _hoisted_1$1, [
     _cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
     _cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
     _cache[4] || (_cache[4] = createBaseVNode("p", null, [
@@ -23484,67 +23856,145 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [{ path: "/", name: "", component: DefaultView }]
 });
+const _hoisted_1 = { key: 0 };
+const _hoisted_2 = { key: 0 };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
+    const disabled = ref(false);
+    const enableLeft = ref(true);
+    const enableRight = ref(true);
+    const enableTop = ref(true);
+    const enableBottom = ref(true);
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(_sfc_main$7), { layout: "three-column" }, {
         header: withCtx(() => [
-          createBaseVNode("header", null, [
+          enableTop.value ? (openBlock(), createElementBlock("header", _hoisted_1, [
             createVNode(unref(_sfc_main$4), {
+              disabled: disabled.value,
               min: "100px",
               max: "200px",
               initial: "100%"
             }, {
               default: withCtx((bindings) => [
-                _cache[0] || (_cache[0] = createBaseVNode("h2", null, "Sidhuvud", -1)),
-                _cache[1] || (_cache[1] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+                _cache[5] || (_cache[5] = createBaseVNode("h2", null, "Sidhuvud", -1)),
+                _cache[6] || (_cache[6] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
                 createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
               ]),
               _: 1
-            })
-          ])
+            }, 8, ["disabled"])
+          ])) : createCommentVNode("", true)
         ]),
         left: withCtx(() => [
-          createVNode(unref(_sfc_main$4), {
-            min: "200px, 10%",
-            max: "600px, 40%",
-            initial: "400px"
-          }, {
-            default: withCtx((bindings) => [
-              _cache[2] || (_cache[2] = createBaseVNode("h2", null, "Vänsterpanel", -1)),
-              _cache[3] || (_cache[3] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
-              createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
-            ]),
-            _: 1
-          })
-        ]),
-        right: withCtx(() => [
-          createVNode(unref(_sfc_main$4), {
+          enableLeft.value ? (openBlock(), createBlock(unref(_sfc_main$4), {
+            key: 0,
+            disabled: disabled.value,
             min: "25%",
             max: "40%",
             initial: "400px"
           }, {
             default: withCtx((bindings) => [
-              _cache[4] || (_cache[4] = createBaseVNode("h2", null, "Högerpanel", -1)),
-              _cache[5] || (_cache[5] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+              _cache[7] || (_cache[7] = createBaseVNode("h2", null, "Vänsterpanel", -1)),
+              _cache[8] || (_cache[8] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
               createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
             ]),
             _: 1
-          })
+          }, 8, ["disabled"])) : createCommentVNode("", true)
         ]),
-        content: withCtx(() => _cache[6] || (_cache[6] = [
+        right: withCtx(() => [
+          enableRight.value ? (openBlock(), createBlock(unref(_sfc_main$4), {
+            key: 0,
+            disabled: disabled.value,
+            min: "25%",
+            max: "40%",
+            initial: "400px"
+          }, {
+            default: withCtx((bindings) => [
+              _cache[9] || (_cache[9] = createBaseVNode("h2", null, "Högerpanel", -1)),
+              _cache[10] || (_cache[10] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1)),
+              createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
+            ]),
+            _: 1
+          }, 8, ["disabled"])) : createCommentVNode("", true)
+        ]),
+        content: withCtx(() => [
           createBaseVNode("main", null, [
-            createBaseVNode("h1", null, "Lorem ipsum"),
-            createBaseVNode("p", null, "Dolor sit amet"),
-            createBaseVNode("p", null, [
+            _cache[18] || (_cache[18] = createBaseVNode("h1", null, "Lorem ipsum", -1)),
+            _cache[19] || (_cache[19] = createBaseVNode("p", null, "Dolor sit amet.", -1)),
+            createVNode(unref(FFieldset), null, {
+              label: withCtx(() => _cache[11] || (_cache[11] = [
+                createTextVNode("Areas")
+              ])),
+              default: withCtx(() => [
+                createVNode(unref(FCheckboxField), {
+                  modelValue: enableTop.value,
+                  "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => enableTop.value = $event),
+                  value: true
+                }, {
+                  default: withCtx(() => _cache[12] || (_cache[12] = [
+                    createTextVNode("Header")
+                  ])),
+                  _: 1
+                }, 8, ["modelValue"]),
+                createVNode(unref(FCheckboxField), {
+                  modelValue: enableLeft.value,
+                  "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => enableLeft.value = $event),
+                  value: true
+                }, {
+                  default: withCtx(() => _cache[13] || (_cache[13] = [
+                    createTextVNode("Left panel")
+                  ])),
+                  _: 1
+                }, 8, ["modelValue"]),
+                createVNode(unref(FCheckboxField), {
+                  modelValue: enableRight.value,
+                  "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => enableRight.value = $event),
+                  value: true
+                }, {
+                  default: withCtx(() => _cache[14] || (_cache[14] = [
+                    createTextVNode("Right panel")
+                  ])),
+                  _: 1
+                }, 8, ["modelValue"]),
+                createVNode(unref(FCheckboxField), {
+                  modelValue: enableBottom.value,
+                  "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => enableBottom.value = $event),
+                  value: true
+                }, {
+                  default: withCtx(() => _cache[15] || (_cache[15] = [
+                    createTextVNode("Bottom")
+                  ])),
+                  _: 1
+                }, 8, ["modelValue"])
+              ]),
+              _: 1
+            }),
+            createVNode(unref(FFieldset), null, {
+              label: withCtx(() => _cache[16] || (_cache[16] = [
+                createTextVNode("Settings")
+              ])),
+              default: withCtx(() => [
+                createVNode(unref(FCheckboxField), {
+                  modelValue: disabled.value,
+                  "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => disabled.value = $event),
+                  value: true
+                }, {
+                  default: withCtx(() => _cache[17] || (_cache[17] = [
+                    createTextVNode("Disabled")
+                  ])),
+                  _: 1
+                }, 8, ["modelValue"])
+              ]),
+              _: 1
+            }),
+            _cache[20] || (_cache[20] = createBaseVNode("p", null, [
               createTextVNode(" Attributen "),
               createBaseVNode("code", null, 'min=".."'),
               createTextVNode(" och "),
               createBaseVNode("code", null, 'max=".."'),
               createTextVNode(" anger minsta respektive största storleken en yta kan få. Båda kan sättas antingen till ett eller flera värden. ")
-            ]),
-            createBaseVNode("ul", null, [
+            ], -1)),
+            _cache[21] || (_cache[21] = createBaseVNode("ul", null, [
               createBaseVNode("li", null, [
                 createTextVNode(" Om "),
                 createBaseVNode("code", null, "min"),
@@ -23557,8 +24007,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 createBaseVNode("code", null, "max"),
                 createTextVNode(" utelämnas är default fönstrets totala storlek, effektivt sett ingen övre gränst för största storlek. ")
               ])
-            ]),
-            createBaseVNode("p", null, [
+            ], -1)),
+            _cache[22] || (_cache[22] = createBaseVNode("p", null, [
               createTextVNode(" Värden kan vara i pixlar ("),
               createBaseVNode("code", null, "px"),
               createTextVNode(") eller procent ("),
@@ -23566,8 +24016,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               createTextVNode("). För att sätta flera värden använd ett kommatecken "),
               createBaseVNode("code", null, ","),
               createTextVNode(" som separator. ")
-            ]),
-            createBaseVNode("ul", null, [
+            ], -1)),
+            _cache[23] || (_cache[23] = createBaseVNode("ul", null, [
               createBaseVNode("li", null, [
                 createBaseVNode("code", null, "200px"),
                 createTextVNode(" - min/max storlek satt till exakt 200px.")
@@ -23580,8 +24030,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 createBaseVNode("code", null, "200px, 25%"),
                 createTextVNode(" - min/max storlek satt till minsta/största av 200px eller 25%.")
               ])
-            ]),
-            createBaseVNode("p", null, [
+            ], -1)),
+            _cache[24] || (_cache[24] = createBaseVNode("p", null, [
               createBaseVNode("strong", null, "Notera!"),
               createTextVNode(" Storlekarna i debug-utskrift inkluderar storleken på handtaget man drar i. Just nu idag är den 4px så sätter man "),
               createBaseVNode("code", null, "min"),
@@ -23592,24 +24042,25 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               createTextVNode(" dvs "),
               createBaseVNode("code", null, "200px + 4px"),
               createTextVNode(". Det är förväntat beteende. ")
-            ])
-          ], -1)
-        ])),
+            ], -1))
+          ])
+        ]),
         footer: withCtx(() => [
-          createBaseVNode("footer", null, [
+          enableBottom.value ? (openBlock(), createElementBlock("footer", _hoisted_2, [
             createVNode(unref(_sfc_main$4), {
+              disabled: disabled.value,
               min: "100px",
               max: "200px",
               initial: "100%"
             }, {
               default: withCtx((bindings) => [
-                _cache[7] || (_cache[7] = createBaseVNode("h2", null, "Sidfot", -1)),
-                _cache[8] || (_cache[8] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
+                _cache[25] || (_cache[25] = createBaseVNode("h2", null, "Sidfot", -1)),
+                _cache[26] || (_cache[26] = createBaseVNode("p", null, "lorem ipsum dolor sit amet", -1)),
                 createBaseVNode("pre", null, toDisplayString(JSON.stringify(bindings, null, 2)), 1)
               ]),
               _: 1
-            })
-          ])
+            }, 8, ["disabled"])
+          ])) : createCommentVNode("", true)
         ]),
         _: 1
       });

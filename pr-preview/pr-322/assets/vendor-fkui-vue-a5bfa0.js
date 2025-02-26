@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -17144,11 +17144,49 @@
     const parsed = parts.map((it) => computeCssValue(it, total, auto));
     return take(...parsed);
   }
+  function useStorage(options) {
+    const {
+      state,
+      storageKey
+    } = options;
+    const loaded = (0, import_vue.ref)(false);
+    let last = -1;
+    (0, import_vue.watchEffect)(() => {
+      if (!loaded.value) {
+        return;
+      }
+      if (!storageKey.value) {
+        return;
+      }
+      if (state.value.current < 0 || state.value.current === last) {
+        return;
+      }
+      const json = JSON.stringify(state.value.current);
+      window.localStorage.setItem(storageKey.value, json);
+      last = state.value.current;
+    });
+    (0, import_vue.watchEffect)(() => {
+      if (!storageKey.value) {
+        return;
+      }
+      const json = window.localStorage.getItem(storageKey.value);
+      if (json) {
+        const value = JSON.parse(json);
+        state.value.current = clamp(value, state.value.min, state.value.max);
+        last = value;
+      }
+      loaded.value = true;
+    });
+  }
   var _hoisted_1$4 = ["aria-orientation"];
   var STEP_SIZE = 10;
   var _sfc_main$4 = /* @__PURE__ */ (0, import_vue.defineComponent)({
     __name: "FResize",
     props: {
+      disabled: {
+        type: Boolean,
+        default: false
+      },
       min: {
         default: "0"
       },
@@ -17165,14 +17203,16 @@
       const content = (0, import_vue.ref)();
       const separator = (0, import_vue.ref)();
       const state = (0, import_vue.ref)({
-        min: 0,
-        max: 0,
-        current: 0
+        min: -1,
+        max: -1,
+        current: -1
       });
       const separatorSize = (0, import_vue.ref)(0);
       const layoutSize = (0, import_vue.ref)(0);
+      const storageKey = (0, import_vue.computed)(() => area.value ? `layout/${area.value}/size` : null);
       const {
-        attachPanel: attachment
+        attachPanel: attachment,
+        area
       } = useAreaData(root);
       const {
         onKeydown: onKeydown2
@@ -17190,6 +17230,10 @@
           state.value.current = state.value.min;
         },
         attachment
+      });
+      useStorage({
+        state,
+        storageKey
       });
       usePointerHandler({
         movement(value) {
@@ -17209,7 +17253,7 @@
       });
       const initialSize = (0, import_vue.computed)(() => {
         const total = layoutSize.value;
-        return clamp(Math.floor(computeCssValue(props.initial, total, total * 0.5)), minSize.value, maxSize.value);
+        return Math.floor(computeCssValue(props.initial, total, total * 0.5));
       });
       const orientation = (0, import_vue.computed)(() => {
         if (attachment.value === "top" || attachment.value === "bottom") {
@@ -17251,17 +17295,18 @@
         state.value = {
           min: minSize.value,
           max: maxSize.value,
-          current: initialSize.value
+          current: clamp(initialSize.value, minSize.value, maxSize.value)
         };
       });
-      useEventListener(window, "resize", (0, import_logic.debounce)(() => {
+      useEventListener(window, "resize", (0, import_logic.debounce)(onResize, 20));
+      function onResize() {
         layoutSize.value = getLayoutSize();
         state.value = {
           min: minSize.value,
           max: maxSize.value,
           current: initialSize.value
         };
-      }, 20));
+      }
       function getLayoutSize() {
         if (!layoutElement.value) {
           return 0;
@@ -17288,7 +17333,8 @@
           min: state.value.min,
           max: state.value.max,
           current: state.value.current
-        })))], 512), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", {
+        })))], 512), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), !props.disabled ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
+          key: 0,
           ref_key: "separator",
           ref: separator,
           role: "separator",
@@ -17297,7 +17343,7 @@
           "aria-orientation": orientation.value,
           onKeydown: _cache[0] || (_cache[0] = //@ts-ignore
           (...args) => (0, import_vue.unref)(onKeydown2) && (0, import_vue.unref)(onKeydown2)(...args))
-        }, null, 40, _hoisted_1$4)], 2);
+        }, null, 40, _hoisted_1$4)) : (0, import_vue.createCommentVNode)("", true)], 2);
       };
     }
   });
