@@ -6650,6 +6650,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
     props: __VLS_PrettifyLocal_3<Pick<Partial<{
         scroll: TableScroll;
         modelValue: T[] | undefined;
+        keyAttribute: string;
         striped: boolean;
         hover: boolean;
         expandableAttribute: string;
@@ -6668,7 +6669,6 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
     }> & Omit<{
         readonly scroll: TableScroll;
         readonly rows: T[];
-        readonly keyAttribute: string;
         readonly striped: boolean;
         readonly hover: boolean;
         readonly expandableAttribute: string;
@@ -6676,6 +6676,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly selectable: boolean;
         readonly showActive: boolean;
         readonly modelValue?: T[] | undefined;
+        readonly keyAttribute?: string | undefined;
         readonly active?: ([{
             type: PropType<T | undefined>;
             required: false;
@@ -6693,7 +6694,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly onExpand?: ((row: T) => any) | undefined;
         readonly onUnselect?: ((row: T) => any) | undefined;
         readonly "onUpdate:active"?: ((row: T) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "keyAttribute" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "modelValue" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("scroll" | "modelValue" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
