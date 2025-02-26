@@ -96,7 +96,7 @@
     "@forsakringskassan/prettier-config": "3.0.3",
     "@forsakringskassan/stylelint-config": "2.3.4",
     "@forsakringskassan/vite-lib-config": "3.4.3",
-    "@html-validate/release-scripts": "6.7.5",
+    "@html-validate/release-scripts": "6.8.0",
     "@types/estree": "1.0.6",
     "@types/glob": "8.1.0",
     "@types/jest": "29.5.14",
