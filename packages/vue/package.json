@@ -24,7 +24,8 @@
     },
     "./cypress": {
       "types": "./dist/types/cypress.d.ts",
-      "default": "./dist/cjs/cypress.js"
+      "require": "./dist/cjs/cypress.cjs.js",
+      "import": "./dist/esm/cypress.esm.js"
     },
     "./htmlvalidate": "./htmlvalidate/index.cjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
@@ -48,7 +49,7 @@
     "build:api": "fk-api-extractor --patch-augmentations api-extractor.*.json",
     "build:dts": "vue-tsc -b",
     "build:lib": "fk-build-vue-lib",
-    "build:pageobjects": "esbuild --bundle --platform=node --target=node12.0 --sourcemap --outfile=dist/cjs/cypress.js ./src/cypress/index.ts",
+    "build:pageobjects": "node build-pageobjects.mjs",
     "clean": "rimraf -g .jest-cache *.tsbuildinfo coverage dist public temp test-results",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
@@ -87,6 +88,7 @@
     "@forsakringskassan/vite-lib-config": "3.4.3",
     "@vue/test-utils": "2.4.6",
     "cypress": "14.0.3",
+    "esbuild": "0.25.0",
     "flush-promises": "1.0.2",
     "vite": "6.1.1",
     "vue": "3.5.13",
