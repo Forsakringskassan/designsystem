@@ -1,5 +1,5 @@
 :root {
-  --fkui-theme-default-version: "6.0.0";
+  --fkui-theme-default-version: "6.1.0";
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff;
@@ -91,11 +91,11 @@
   --fkds-icon-color-feedback-content-positive: #1b1e23;
   --fkds-icon-color-feedback-content-warning: #1b1e23;
   --fkds-icon-color-feedback-content-negative: #1b1e23;
-  --fkds-icon-color-feedback-background-info: #ffffff;
-  --fkds-icon-color-feedback-background-positive: #ffffff;
-  --fkds-icon-color-feedback-background-warning: #ffffff;
-  --fkds-icon-color-feedback-background-negative: #ffffff;
-  --fkds-icon-color-feedback-border-info: #1b1e23;
+  --fkds-icon-color-feedback-background-info: #f5f6fa;
+  --fkds-icon-color-feedback-background-positive: #f3f8f5;
+  --fkds-icon-color-feedback-background-warning: #fffcf3;
+  --fkds-icon-color-feedback-background-negative: #fcf3f3;
+  --fkds-icon-color-feedback-border-info: #4a52b6;
   --fkds-icon-color-feedback-border-positive: #35805b;
   --fkds-icon-color-feedback-border-warning: #ffbe10;
   --fkds-icon-color-feedback-border-negative: #ca1515;
@@ -115,9 +115,6 @@
   --f-text-color-heading-5: inherit;
   --f-text-color-heading-6: inherit;
   --f-text-color-input-disabled: #8d8e91;
-  --f-text-color-pageheader: #116a3e;
-  --f-text-color-navbar: #ffffff;
-  --f-text-color-navbar-active: #ffffff;
   --f-text-color-heading-expandable-panel: #ffffff;
   --f-text-color-wizard-step-done: #35805b;
   --f-text-color-button-standard: #4a52b6;
@@ -164,16 +161,12 @@
   --f-background-progress-ongoing: #ffc834;
   --f-background-progress-file-item-ongoing: #ffc834;
   --f-background-progress-finished: #77ad82;
-  --f-background-pageheader-standard: #ffffff;
   --f-background-pageheader-primary: #116a3e;
-  --f-background-pageheader-secondary: #e7f0e9;
   --f-background-skiplink-focus: #f5f6fa;
   --f-background-heading-expandable-panel: #116a3e;
   --f-background-heading-expandable-panel-hover: #35805b;
   --f-background-expandable-panel: #ffffff;
   --f-background-heading-static-panel: #afcfb5;
-  --f-background-navbar: #116a3e;
-  --f-background-navbar-hover: #5f9e6c;
   --f-background-code: #f4f4f4;
   --f-background-wizard-step-line: #5f6165;
   --f-background-button-discrete-hover: none;
@@ -220,12 +213,8 @@
   --f-border-color-expandable-panel: #116a3e;
   --f-border-color-static-panel: #afcfb5;
   --f-border-color-separator: #ddddde;
-  --f-border-color-separator-pageheader-standard: #116a3e;
   --f-border-color-separator-pageheader-primary: #ffffff;
-  --f-border-color-separator-pageheader-secondary: #116a3e;
   --f-border-color-separator-contextmenu: #8d8e91;
-  --f-border-color-navbar-active: #ffffff;
-  --f-border-color-navbar-hover: #ffffff;
   --f-border-color-wizard-step-line: #5f6165;
   --f-border-color-link: #4a52b6;
   --f-border-color-link-hover: #8d8e91;
