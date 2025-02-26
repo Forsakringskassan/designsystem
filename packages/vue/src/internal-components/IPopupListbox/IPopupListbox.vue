@@ -129,7 +129,8 @@ async function calculatePosition(): Promise<void> {
     }
     if (verticalSpacing === undefined) {
         const absWrapper = getAbsolutePosition(wrapperElement);
-        const marginTotal = absWrapper.y * 2; // margin-top + margin-bottom
+        const { marginTop, marginBottom } = getComputedStyle(wrapperElement);
+        const marginTotal = parseInt(marginTop, 10) + parseInt(marginBottom, 10); // margin-top + margin-bottom
         verticalSpacing = Math.ceil(absWrapper.height - contentItemHeigth * numOfItems) + marginTotal;
     }
 
@@ -142,7 +143,8 @@ async function calculatePosition(): Promise<void> {
         const { top, left, width, height } = rect;
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
         const offsetLeft = offsetRect?.x ?? 0;
-        wrapperElement.style.top = `${top}px`;
+        const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
+        wrapperElement.style.top = `${top - offSetTop}px`;
         wrapperElement.style.left = `${left - offsetLeft}px`;
         wrapperElement.style.width = `${width}px`;
         contentWrapper.style.maxHeight = `${height}px`;
