@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // ../vue/dist/esm/index.esm.js
+  // packages/vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -11125,7 +11125,7 @@
     });
   }
   function setInternalKeys(items, key) {
-    if (!key) {
+    if (key === void 0) {
       return items.map((item) => {
         setInternalKey(item);
         return item;
@@ -11135,7 +11135,8 @@
     return items.map((item, index) => {
       const value = item[key];
       const keyString = String(key);
-      if ((0, import_logic.isEmpty)(value)) {
+      const invalidValue = value === void 0 || value === null || String(value).length === 0;
+      if (invalidValue) {
         throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${index}`);
       }
       if (seenValues.has(value)) {
@@ -15784,8 +15785,8 @@
       }
       function onSelect(item) {
         var _a, _b;
-        if (includeItem(item, selectedItems.value, props.keyAttribute)) {
-          selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, props.keyAttribute));
+        if (includeItem(item, selectedItems.value, internalKey2)) {
+          selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, internalKey2));
           emit("unselect", item);
         } else {
           selectedItems.value.push(item);

@@ -20678,7 +20678,7 @@ function setInternalKey(item, value) {
   });
 }
 function setInternalKeys(items, key) {
-  if (!key) {
+  if (key === void 0) {
     return items.map((item) => {
       setInternalKey(item);
       return item;
@@ -20688,7 +20688,8 @@ function setInternalKeys(items, key) {
   return items.map((item, index) => {
     const value = item[key];
     const keyString = String(key);
-    if (isEmpty(value)) {
+    const invalidValue = value === void 0 || value === null || String(value).length === 0;
+    if (invalidValue) {
       throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${index}`);
     }
     if (seenValues.has(value)) {
@@ -23721,8 +23722,8 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     }
     function onSelect(item) {
       var _a, _b;
-      if (includeItem(item, selectedItems.value, props.keyAttribute)) {
-        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, props.keyAttribute));
+      if (includeItem(item, selectedItems.value, internalKey2)) {
+        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, internalKey2));
         emit2("unselect", item);
       } else {
         selectedItems.value.push(item);
@@ -26061,11 +26062,15 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
               default: withCtx(({ sortFilterResult }) => [
                 createVNode(unref(_sfc_main$e), {
                   items: sortFilterResult,
-                  "key-attribute": "id"
+                  "key-attribute": "id",
+                  selectable: ""
                 }, {
                   default: withCtx(({ item }) => [
                     createBaseVNode("h3", null, toDisplayString(item.name) + " (ID: " + toDisplayString(item.id) + ")", 1),
                     createBaseVNode("span", null, "Inköpsdatum: " + toDisplayString(item.date), 1)
+                  ]),
+                  screenreader: withCtx(({ item }) => [
+                    createTextVNode(" Frukt " + toDisplayString(item.name), 1)
                   ]),
                   _: 2
                 }, 1032, ["items"])
@@ -26451,10 +26456,16 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                 }, "FList", 2)
               ]),
               default: withCtx(({ sortFilterResult }) => [
-                createVNode(unref(_sfc_main$e), { items: sortFilterResult }, {
+                createVNode(unref(_sfc_main$e), {
+                  items: sortFilterResult,
+                  selectable: ""
+                }, {
                   default: withCtx(({ item }) => [
                     createBaseVNode("h3", null, toDisplayString(item.name) + " (ID: " + toDisplayString(item.id) + ")", 1),
                     createBaseVNode("span", null, "Inköpsdatum: " + toDisplayString(item.date), 1)
+                  ]),
+                  screenreader: withCtx(({ item }) => [
+                    createTextVNode(" Frukt " + toDisplayString(item.name), 1)
                   ]),
                   _: 2
                 }, 1032, ["items"])
