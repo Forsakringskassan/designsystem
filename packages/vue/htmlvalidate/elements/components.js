@@ -125,7 +125,7 @@ module.exports = defineMetadata({
             "key-attribute": ["/.+/"],
             scroll: ["horizontal", "vertical", "both", "none"],
         },
-        requiredAttributes: ["key-attribute", "rows"],
+        requiredAttributes: ["rows"],
         slots: ["default", "caption", "empty"],
         requiredSlots: ["default", "caption"],
     },
