@@ -7053,6 +7053,7 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
         elementId: string;
         modelValue: T[] | undefined;
         checkbox: boolean;
+        keyAttribute: string;
         selectable: boolean;
         active: [{
             type: PropType<T | undefined>;
@@ -7067,9 +7068,9 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
         readonly elementId: string;
         readonly items: T[];
         readonly checkbox: boolean;
-        readonly keyAttribute: string;
         readonly selectable: boolean;
         readonly modelValue?: T[] | undefined;
+        readonly keyAttribute?: string | undefined;
         readonly active?: ([{
             type: PropType<T | undefined>;
             required: false;
@@ -7085,7 +7086,7 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
         readonly "onUpdate:modelValue"?: ((item: T[]) => any) | undefined;
         readonly onUnselect?: ((item: T) => any) | undefined;
         readonly "onUpdate:active"?: ((item: T) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "elementId" | "modelValue" | "checkbox" | "selectable" | "active">, "onChange" | "onClick" | "onSelect" | "items" | "onUpdate:modelValue" | "keyAttribute" | "onUnselect" | "onUpdate:active" | ("elementId" | "modelValue" | "checkbox" | "selectable" | "active")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "elementId" | "modelValue" | "checkbox" | "keyAttribute" | "selectable" | "active">, "onChange" | "onClick" | "onSelect" | "items" | "onUpdate:modelValue" | "onUnselect" | "onUpdate:active" | ("elementId" | "modelValue" | "checkbox" | "keyAttribute" | "selectable" | "active")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
