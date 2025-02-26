@@ -180,7 +180,7 @@
         return this.isSelectable ? "selectable" : "";
       },
       resizable() {
-        return this.isResizable ? "resizable" : "";
+        return this.isResizable ? "resizable-columns" : "";
       },
       expandable() {
         const expandableType = this.hasCustomExpandContent ? "expandableContent" : "expandableRows";
