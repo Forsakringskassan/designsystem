@@ -321,7 +321,7 @@ module.exports = defineMetadata({
         inherit: "ul",
         flow: true,
         phrasing: true,
-        requiredAttributes: ["items", "key-attribute"],
+        requiredAttributes: ["items"],
         attributes: {
             selectable: ["/^[a-zA-Z][\\w\\d-_.:]+$/", "", "false", "true"],
             value: ["/.*/"],
