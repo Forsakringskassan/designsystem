@@ -180,6 +180,10 @@ const emit = defineEmits<{
      */
     select: [row: T];
     /**
+     * Emitted when loading state changes.
+     */
+    loading: [isLoading: boolean];
+    /**
      * Emitted when row is expanded.
      */
     expand: [row: T];
@@ -187,13 +191,9 @@ const emit = defineEmits<{
      * Emitted when row is collapsed.
      */
     collapse: [row: T];
-    /**
-     * Emitted when loading state changes.
-     */
-    loading: [isLoading: boolean];
 }>();
 
-const expandableTable: ExpandableTable<T> = useExpandableTable(
+const expandableTable: ExpandableTable<T> = useExpandableTable<T>(
     props.expandableAttribute,
     props.keyAttribute,
     props.expandableDescribedby,
@@ -533,10 +533,10 @@ function resizableColumn(): void {
         } else {
             let startX = 0;
             let dragX = 0;
-            const onMouseDown = (e: MouseEvent) => {
+            const onMouseDown = (e: MouseEvent): void => {
                 columnWidth = columnHeader.clientWidth;
                 startX = e.clientX;
-                const resizeHandler = (e: MouseEvent) => {
+                const resizeHandler = (e: MouseEvent): void => {
                     const newDragX = e.clientX - startX;
                     if (newDragX !== dragX) {
                         dragX = newDragX;
@@ -550,7 +550,7 @@ function resizableColumn(): void {
                     }
                     e.preventDefault();
                 };
-                const onMouseUp = () => {
+                const onMouseUp = (): void => {
                     window.removeEventListener("mousemove", resizeHandler);
                     window.removeEventListener("mouseup", onMouseUp);
                 };
@@ -558,7 +558,7 @@ function resizableColumn(): void {
                 window.addEventListener("mouseup", onMouseUp, { once: true });
                 e.preventDefault();
             };
-            const onDoubleClick = () => {
+            const onDoubleClick = (): void => {
                 columnHeader.style.maxWidth = "initial";
                 columnHeader.style.width = "initial";
                 columnHeader.setAttribute("data-column-width", "auto");
@@ -570,20 +570,28 @@ function resizableColumn(): void {
 }
 
 function selectAll(): void {
-    const uncheckedBoxes = document.querySelectorAll('.table__column--selectable input[type="checkbox"]:not(:checked)');
-    uncheckedBoxes.forEach((checkbox: HTMLInputElement) => checkbox.click());
+    const uncheckedBoxes = document.querySelectorAll<HTMLInputElement>(
+        '.table__column--selectable input[type="checkbox"]:not(:checked)',
+    );
+    Array.from(uncheckedBoxes).forEach((checkbox: HTMLInputElement) => checkbox.click());
 }
 
 function unselectAll(): void {
-    const checkedBoxes = document.querySelectorAll('.table__column--selectable input[type="checkbox"]:checked');
-    checkedBoxes.forEach((checkbox: HTMLInputElement) => checkbox.click());
+    const checkedBoxes = document.querySelectorAll<HTMLInputElement>(
+        '.table__column--selectable input[type="checkbox"]:checked',
+    );
+    Array.from(checkedBoxes).forEach((checkbox: HTMLInputElement) => checkbox.click());
 }
 
 async function onChangeSelectAll(value: boolean): Promise<void> {
     try {
         emit("loading", true);
         await delay(10);
-        value ? await selectAll() : await unselectAll();
+        if (value) {
+            selectAll();
+        } else {
+            unselectAll();
+        }
     } finally {
         emit("loading", false);
     }
@@ -596,6 +604,8 @@ function delay(ms: number): Promise<void> {
 
 <template>
     <div :class="wrapperClasses">
+        <!-- technical debt / fulhack: this is to make sure the typing understands there is an undocumented slot  -->
+        <slot v-if="false" name="row-description"></slot>
         <table class="table" :role="tableRole" :class="tableClasses" v-bind="$attrs">
             <caption v-if="hasCaption">
                 <!-- @slot Slot for table caption. -->
@@ -615,10 +625,10 @@ function delay(ms: number): Promise<void> {
                     <th v-if="selectable" scope="col">
                         <div class="table__input" title="Välj alla">
                             <f-checkbox-field
+                                v-model="selectAllItems"
                                 :disabled="rows.length === 0"
                                 :value="true"
                                 @change="onChangeSelectAll"
-                                v-model="selectAllItems"
                             >
                                 <span class="sr-only">Välj alla</span>
                             </f-checkbox-field>
@@ -630,11 +640,11 @@ function delay(ms: number): Promise<void> {
                         :key="column.id"
                         scope="col"
                         :class="[columnClasses(column), resizableColumns ? 'resizable' : '']"
-                        v-on="column.sortable ? { click: () => onClickColumnHeader(column) } : {}"
                         class="table-grid"
                         :data-grid-column="index + (selectable ? 2 : 1)"
                         data-column-size="auto"
                         :data-grid-locked="index === 0 ? true : null"
+                        v-on="column.sortable ? { click: () => onClickColumnHeader(column) } : {}"
                     >
                         <!-- eslint-disable-next-line vue/no-v-html -->
                         <span v-html="escapeNewlines(column.title)"></span>

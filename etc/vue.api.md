@@ -6664,6 +6664,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
             required: false;
             default: () => undefined;
         };
+        resizableColumns: boolean;
     }> & Omit<{
         readonly scroll: TableScroll;
         readonly rows: T[];
@@ -6674,6 +6675,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly expandableDescribedby: string;
         readonly selectable: boolean;
         readonly showActive: boolean;
+        readonly resizableColumns: boolean;
         readonly modelValue?: T[] | undefined;
         readonly active?: ([{
             type: PropType<T | undefined>;
@@ -6692,7 +6694,8 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly onExpand?: ((row: T) => any) | undefined;
         readonly onUnselect?: ((row: T) => any) | undefined;
         readonly "onUpdate:active"?: ((row: T) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "keyAttribute" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & Partial<{}>> & PublicProps;
+        readonly onLoading?: ((isLoading: boolean) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active" | "resizableColumns">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "keyAttribute" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | "onLoading" | ("scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active" | "resizableColumns")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -6719,7 +6722,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         }): any;
         empty?(_: {}): any;
     };
-    emit: ((evt: "change", row: T) => void) & ((evt: "click", row: T) => void) & ((evt: "select", row: T) => void) & ((evt: "collapse", row: T) => void) & ((evt: "update:modelValue", rows: T[]) => void) & ((evt: "expand", row: T) => void) & ((evt: "unselect", row: T) => void) & ((evt: "update:active", row: T) => void);
+    emit: ((evt: "change", row: T) => void) & ((evt: "click", row: T) => void) & ((evt: "select", row: T) => void) & ((evt: "collapse", row: T) => void) & ((evt: "update:modelValue", rows: T[]) => void) & ((evt: "expand", row: T) => void) & ((evt: "unselect", row: T) => void) & ((evt: "update:active", row: T) => void) & ((evt: "loading", isLoading: boolean) => void);
 }>) => VNode & {
     __ctx?: Awaited<typeof __VLS_setup>;
 };
@@ -12903,9 +12906,9 @@ id: string;
 modelValue: string;
 disabled: boolean;
 maxlength: number;
+resizable: boolean;
 softLimit: number;
 charactersLeftWarning: string;
-resizable: boolean;
 }, {}, {
 FLabel: DefineComponent<ExtractPropTypes<    {
 for: {
