@@ -6824,6 +6824,12 @@ input[type=search]:focus,
   z-index: 2;
   transition: z-index 0s 0s;
 }
+.resize__handle.disabled {
+  cursor: auto;
+}
+.resize__handle.disabled::before {
+  display: none;
+}
 
 .resize--left .resize__handle {
   left: 3px;
@@ -6903,4 +6909,10 @@ main {
 }
 .resize {
     background: rgb(144, 255, 255);
+}
+kbd {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.25rem;
+    background: #fff;
 }
