@@ -17804,7 +17804,7 @@ function aggregateCssValue(raw, total, auto, take) {
   if (raw === "auto") {
     return auto;
   }
-  const parts = raw.split(",").map((it) => it.trim());
+  const parts = raw.split(/\s+/).map((it) => it.trim());
   const parsed = parts.map((it) => computeCssValue(it, total, auto));
   return take(...parsed);
 }

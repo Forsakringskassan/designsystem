@@ -12,7 +12,7 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
-  // packages/vue/dist/esm/index.esm.js
+  // ../vue/dist/esm/index.esm.js
   var index_esm_exports = {};
   __export(index_esm_exports, {
     ActivateItemInjected: () => ActivateItemInjected,
@@ -8903,7 +8903,7 @@
     if (raw === "auto") {
       return auto;
     }
-    const parts = raw.split(",").map((it) => it.trim());
+    const parts = raw.split(/\s+/).map((it) => it.trim());
     const parsed = parts.map((it) => computeCssValue(it, total, auto));
     return take(...parsed);
   }
