@@ -376,7 +376,7 @@ module.exports = defineMetadata({
             "expandable-describedby": ["/.+/"],
             scroll: ["horizontal", "vertical", "both", "none"],
         },
-        requiredAttributes: ["key-attribute", "rows"],
+        requiredAttributes: ["rows"],
         slots: [
             "default",
             "caption",
