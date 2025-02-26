@@ -24,7 +24,7 @@ type Emit<T> = ((evt: "expand", row: T) => void) &
  */
 export function useExpandableTable<T extends object>(
     expandableAttribute: string,
-    keyAttribute: string,
+    keyAttribute: keyof T,
     describedby: string | undefined,
     emit: Emit<T>,
     slots: Slots,
@@ -42,7 +42,7 @@ export function useExpandableTable<T extends object>(
     function toggleExpanded(row: T): void {
         if (isExpanded(row)) {
             expandedRows.value = expandedRows.value.filter(
-                (it) => !itemEquals(it, row, keyAttribute as keyof T),
+                (it) => !itemEquals(it, row, keyAttribute),
             );
             emit("collapse", row);
         } else {
@@ -52,7 +52,7 @@ export function useExpandableTable<T extends object>(
     }
 
     function isExpanded(row: T): boolean {
-        return includeItem(row, expandedRows.value, keyAttribute as keyof T);
+        return includeItem(row, expandedRows.value, keyAttribute);
     }
 
     function rowAriaExpanded(row: T): boolean | undefined {
