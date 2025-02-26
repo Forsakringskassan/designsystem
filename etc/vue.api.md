@@ -3385,13 +3385,14 @@ parser: ParseFunction<number>;
 export const FDataTable: <T extends object>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_2<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
     props: __VLS_PrettifyLocal_2<Pick<Partial<{
         scroll: TableScroll;
+        keyAttribute: string;
         striped: boolean;
     }> & Omit<{
         readonly scroll: TableScroll;
         readonly rows: T[];
-        readonly keyAttribute: string;
         readonly striped: boolean;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "striped">, "rows" | "keyAttribute" | ("scroll" | "striped")> & {} & Partial<{}>> & PublicProps;
+        readonly keyAttribute?: string | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "keyAttribute" | "striped">, "rows" | ("scroll" | "keyAttribute" | "striped")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
