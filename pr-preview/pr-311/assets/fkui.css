@@ -1153,23 +1153,23 @@ input[type=search]:focus,
 }
 .icon-stack--info .f-icon-circle,
 .icon--stack--info .f-icon-circle {
-  color: var(--fkds-icon-color-background-primary, #ffffff);
-  fill: var(--fkds-color-feedback-border-info, #4a52b6);
+  color: var(--fkds-icon-color-feedback-background-info, #f5f6fa);
+  fill: var(--fkds-icon-color-feedback-border-info, #4a52b6);
 }
 .icon-stack--warning .f-icon-circle,
 .icon--stack--warning .f-icon-circle {
-  color: var(--fkds-icon-color-background-primary, #ffffff);
-  fill: var(--fkds-color-feedback-border-warning, #ffbe10);
+  color: var(--fkds-icon-color-feedback-background-warning, #fffcf3);
+  fill: var(--fkds-icon-color-feedback-border-warning, #ffbe10);
 }
 .icon-stack--error .f-icon-triangle,
 .icon--stack--error .f-icon-triangle {
-  color: var(--fkds-icon-color-background-primary, #ffffff);
-  fill: var(--fkds-color-feedback-border-negative, #ca1515);
+  color: var(--fkds-icon-color-feedback-background-negative, #fcf3f3);
+  fill: var(--fkds-icon-color-feedback-border-negative, #ca1515);
 }
 .icon-stack--success .f-icon-circle,
 .icon--stack--success .f-icon-circle {
-  color: var(--fkds-icon-color-background-primary, #ffffff);
-  fill: var(--fkds-color-feedback-border-positive, #35805b);
+  color: var(--fkds-icon-color-feedback-background-positive, #f3f8f5);
+  fill: var(--fkds-icon-color-feedback-border-positive, #35805b);
 }
 .icon-stack--success .f-icon-success,
 .icon--stack--success .f-icon-success {
@@ -1328,6 +1328,10 @@ input[type=search]:focus,
 }
 .entrypoint__icon {
   color: currentcolor;
+  margin-left: 2rem;
+  flex-shrink: 0;
+  height: var(--f-icon-size-small, 1rem);
+  width: var(--f-icon-size-small, 1rem);
 }
 .entrypoint:hover {
   background-color: var(--fkds-color-action-background-primary-hover, #3b4292);
