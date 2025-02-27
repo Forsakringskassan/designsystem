@@ -1327,11 +1327,8 @@ input[type=search]:focus,
   width: 100%;
 }
 .entrypoint__icon {
-  color: currentcolor;
   margin-left: 2rem;
   flex-shrink: 0;
-  height: var(--f-icon-size-small, 1rem);
-  width: var(--f-icon-size-small, 1rem);
 }
 .entrypoint:hover {
   background-color: var(--fkds-color-action-background-primary-hover, #3b4292);
