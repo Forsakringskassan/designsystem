@@ -1,0 +1,19 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "emitDeclarationOnly": true,
+        "paths": {
+            "@fkui/vue-labs": ["./src/index.ts"]
+        },
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.vue"],
+    "exclude": [
+        "src/@types/cypress.d.ts",
+        "src/cypress/**/*.ts",
+        "src/stub.d.ts",
+        "src/**/*.cy.ts",
+        "src/**/*.pageobject.ts"
+    ]
+}

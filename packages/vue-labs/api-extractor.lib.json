@@ -3,5 +3,12 @@
     "extends": "../../api-extractor.json",
     "dtsRollup": {
         "publicTrimmedFilePath": "<projectFolder>/dist/types/index.d.ts"
+    },
+    "messages": {
+        "compilerMessageReporting": {
+            "default": {
+                "logLevel": "none"
+            }
+        }
     }
 }
