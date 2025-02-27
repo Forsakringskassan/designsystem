@@ -1,5 +1,8 @@
 import { type DefaultCypressChainable, type BasePageObject } from "./common";
 
+/**
+ * @public
+ */
 export class XDummyPageObject implements BasePageObject {
     public selector: string;
     public el: () => DefaultCypressChainable;

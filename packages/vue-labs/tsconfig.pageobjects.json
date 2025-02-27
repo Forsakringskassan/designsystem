@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "types": ["cypress"],
+        "target": "es2021",
+        "emitDeclarationOnly": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/cypress/**/*.ts",
+        "s../../cypresss.ts",
+        "src/**/*.pageobject.ts"
+    ],
+    "exclude": ["src/cypress/**/*.cy.ts"]
+}
