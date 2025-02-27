@@ -3,9 +3,7 @@
         "experimentalModelPropName": {
             "": {
                 "f-radio-field": true,
-                "f-radio-group-field": true,
-                "f-checkbox-field": true,
-                "f-checkbox-group-field": true
+                "f-checkbox-field": true
             }
         }
     }
