@@ -2,12 +2,7 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "types": ["node", "jest"],
-        "outDir": "./lib",
-        "rootDir": "./src",
-        "emitDeclarationOnly": true,
-        "declaration": true,
-        "declarationMap": true,
-        "declarationDir": "temp/types/"
+        "emitDeclarationOnly": true
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "**/*.spec.ts"],
