@@ -8084,7 +8084,11 @@
         }
         if (verticalSpacing === void 0) {
           const absWrapper = getAbsolutePosition(wrapperElement);
-          const marginTotal = absWrapper.y * 2;
+          const {
+            marginTop,
+            marginBottom
+          } = getComputedStyle(wrapperElement);
+          const marginTotal = parseInt(marginTop, 10) + parseInt(marginBottom, 10);
           verticalSpacing = Math.ceil(absWrapper.height - contentItemHeigth * __props.numOfItems) + marginTotal;
         }
         wrapperElement.style.overflowY = "auto";
@@ -8096,7 +8100,7 @@
           verticalSpacing
         });
         if (rect) {
-          var _offsetRect$x;
+          var _offsetRect$x, _offsetRect$top;
           const {
             top,
             left,
@@ -8105,7 +8109,8 @@
           } = rect;
           const offsetRect = (_a = wrapperElement == null ? void 0 : wrapperElement.offsetParent) == null ? void 0 : _a.getBoundingClientRect();
           const offsetLeft = (_offsetRect$x = offsetRect == null ? void 0 : offsetRect.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
-          wrapperElement.style.top = `${top}px`;
+          const offSetTop = Math.floor(((_offsetRect$top = offsetRect == null ? void 0 : offsetRect.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
+          wrapperElement.style.top = `${top - offSetTop}px`;
           wrapperElement.style.left = `${left - offsetLeft}px`;
           wrapperElement.style.width = `${width}px`;
           contentWrapper.style.maxHeight = `${height}px`;
