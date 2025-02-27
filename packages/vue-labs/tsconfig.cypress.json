@@ -1,0 +1,24 @@
+{
+    "extends": "../../cypress/tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "outDir": "temp",
+        "rootDir": "src",
+        "target": "es2021",
+        "emitDeclarationOnly": true,
+        "allowSyntheticDefaultImports": true,
+        "declarationDir": "temp/cypress",
+        "allowJs": true,
+        "paths": {
+            "@fkui/vue-labs": ["./src/index.ts"]
+        },
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/@types/cypress.d.ts",
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "src/**/*.cy.ts"
+    ],
+    "exclude": ["src/**/*.spec.ts"]
+}

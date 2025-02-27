@@ -22,7 +22,11 @@
       "require": "./dist/cjs/index.cjs.js",
       "import": "./dist/esm/index.esm.js"
     },
-    "./pageobject/*": "./pageobject/*",
+    "./cypress": {
+      "types": "./dist/types/cypress.d.ts",
+      "require": "./dist/cjs/cypress.cjs.js",
+      "import": "./dist/esm/cypress.esm.js"
+    },
     "./style.css": "./dummy.css"
   },
   "main": "./dist/cjs/index.cjs.js",
@@ -32,19 +36,18 @@
     "dist",
     "dummy.css",
     "htmlvalidate",
-    "pageobject/**/*.{js,js.map,d.ts}",
     "!**/examples/**",
     "!**/*.spec.{js,ts,d.ts,d.ts.map}",
     "!**/.eslintrc.json"
   ],
   "scripts": {
     "prebuild": "run-s clean",
-    "build": "run-s build:lib build:pageobject build:dts build:api",
+    "build": "run-s build:lib build:pageobjects build:dts build:api",
     "build:api": "fk-api-extractor --patch-augmentations api-extractor.*.json",
     "build:docs": "node generate-docs.mjs",
-    "build:dts": "vue-tsc --emitDeclarationOnly",
+    "build:dts": "vue-tsc -b",
     "build:lib": "fk-build-vue-lib",
-    "build:pageobject": "tsc --build pageobject/",
+    "build:pageobjects": "node build-pageobjects.mjs",
     "clean": "rimraf -g .jest-cache *.tsbuildinfo coverage dist public temp test-results",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
@@ -72,6 +75,7 @@
     "@forsakringskassan/docs-generator": "2.19.1",
     "@forsakringskassan/vite-lib-config": "3.4.3",
     "@vue/test-utils": "2.4.6",
+    "esbuild": "0.25.0",
     "vite": "6.1.1",
     "vue": "3.5.13",
     "vue-router": "4.5.0"
