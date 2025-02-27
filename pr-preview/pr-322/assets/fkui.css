@@ -6444,8 +6444,8 @@ input[type=search]:focus,
 /* how long before visually indicating the hover state */
 /* how long the animation for the visual indicator is */
 .resize__handle {
-  flex: 0 0 4px;
-  background: #ccc;
+  flex: 0 0 2px;
+  background: var(--fkds-color-border-primary, #8d8e91);
   touch-action: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -6464,14 +6464,14 @@ input[type=search]:focus,
 }
 .resize__handle[aria-orientation=horizontal] {
   cursor: row-resize;
-  height: 4px;
+  height: 2px;
 }
 .resize__handle[aria-orientation=horizontal]::before {
   inset: -2px 0;
 }
 .resize__handle[aria-orientation=vertical] {
   cursor: col-resize;
-  width: 4px;
+  width: 2px;
 }
 .resize__handle[aria-orientation=vertical]::before {
   inset: 0 -2px;
@@ -6484,8 +6484,8 @@ input[type=search]:focus,
   transition: background-color 200ms ease-in;
 }
 .resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
-  background-color: hotpink;
-  transition-delay: 400ms;
+  background-color: var(--fkds-color-action-border-primary-hover, #3b4292);
+  transition-delay: 200ms;
 }
 @media (forced-colors: active) {
   .resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
@@ -6511,19 +6511,19 @@ input[type=search]:focus,
 }
 
 .resize--left .resize__handle {
-  left: 3px;
+  left: 2px;
 }
 
 .resize--right .resize__handle {
-  right: 3px;
+  right: 2px;
 }
 
 .resize--top .resize__handle {
-  top: 3px;
+  top: 2px;
 }
 
 .resize--bottom .resize__handle {
-  bottom: 3px;
+  bottom: 2px;
 }
 
 .resize {
@@ -6553,10 +6553,10 @@ input[type=search]:focus,
   box-sizing: border-box;
 }
 .resize--left .resize__content, .resize--right .resize__content {
-  min-width: calc(var(--min, 0) - 4px);
-  max-width: calc(var(--max, 0) - 4px);
+  min-width: calc(var(--min, 0) - 2px);
+  max-width: calc(var(--max, 0) - 2px);
 }
 .resize--top .resize__content, .resize--bottom .resize__content {
-  min-height: calc(var(--min, 0) - 4px);
-  max-height: calc(var(--max, 0) - 4px);
+  min-height: calc(var(--min, 0) - 2px);
+  max-height: calc(var(--max, 0) - 2px);
 }
