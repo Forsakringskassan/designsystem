@@ -13,7 +13,6 @@
         "declarationMap": true,
         "strict": true,
         "jsx": "preserve",
-        "noImplicitAny": true,
         "moduleResolution": "node",
         "isolatedModules": true,
         "esModuleInterop": true,
