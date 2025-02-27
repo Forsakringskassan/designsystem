@@ -5,6 +5,10 @@
         "module": "esnext",
         "lib": ["es2023", "dom", "dom.iterable"],
 
+        "rootDir": "${configDir}/src",
+        "outDir": "${configDir}/dist",
+        "declarationDir": "${configDir}/temp/types/",
+
         "declaration": true,
         "declarationMap": true,
         "strict": true,

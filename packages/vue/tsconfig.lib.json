@@ -2,11 +2,7 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "composite": true,
-        "outDir": "temp",
-        "rootDir": "src",
         "emitDeclarationOnly": true,
-        "declarationDir": "temp/types",
-        "allowJs": true,
         "paths": {
             "@fkui/vue": ["./src/index.ts"]
         },

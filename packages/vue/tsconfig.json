@@ -2,8 +2,6 @@
     /* this config is picked up by vue3-jest which just refuses to read any
      * other file or config */
     "compilerOptions": {
-        "outDir": "temp",
-        "rootDir": "src",
         "target": "es2021",
         "module": "esnext",
         "moduleResolution": "node",
