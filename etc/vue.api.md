@@ -3385,13 +3385,14 @@ parser: ParseFunction<number>;
 export const FDataTable: <T extends object>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_2<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
     props: __VLS_PrettifyLocal_2<Pick<Partial<{
         scroll: TableScroll;
+        keyAttribute: string;
         striped: boolean;
     }> & Omit<{
         readonly scroll: TableScroll;
         readonly rows: T[];
-        readonly keyAttribute: string;
         readonly striped: boolean;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "striped">, "rows" | "keyAttribute" | ("scroll" | "striped")> & {} & Partial<{}>> & PublicProps;
+        readonly keyAttribute?: string | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "keyAttribute" | "striped">, "rows" | ("scroll" | "keyAttribute" | "striped")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -6649,6 +6650,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
     props: __VLS_PrettifyLocal_3<Pick<Partial<{
         scroll: TableScroll;
         modelValue: T[] | undefined;
+        keyAttribute: string;
         striped: boolean;
         hover: boolean;
         expandableAttribute: string;
@@ -6667,7 +6669,6 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
     }> & Omit<{
         readonly scroll: TableScroll;
         readonly rows: T[];
-        readonly keyAttribute: string;
         readonly striped: boolean;
         readonly hover: boolean;
         readonly expandableAttribute: string;
@@ -6675,6 +6676,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly selectable: boolean;
         readonly showActive: boolean;
         readonly modelValue?: T[] | undefined;
+        readonly keyAttribute?: string | undefined;
         readonly active?: ([{
             type: PropType<T | undefined>;
             required: false;
@@ -6692,7 +6694,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly onExpand?: ((row: T) => any) | undefined;
         readonly onUnselect?: ((row: T) => any) | undefined;
         readonly "onUpdate:active"?: ((row: T) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "keyAttribute" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("scroll" | "modelValue" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "modelValue" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("scroll" | "modelValue" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -7053,6 +7055,7 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
         elementId: string;
         modelValue: T[] | undefined;
         checkbox: boolean;
+        keyAttribute: string;
         selectable: boolean;
         active: [{
             type: PropType<T | undefined>;
@@ -7067,9 +7070,9 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
         readonly elementId: string;
         readonly items: T[];
         readonly checkbox: boolean;
-        readonly keyAttribute: string;
         readonly selectable: boolean;
         readonly modelValue?: T[] | undefined;
+        readonly keyAttribute?: string | undefined;
         readonly active?: ([{
             type: PropType<T | undefined>;
             required: false;
@@ -7085,7 +7088,7 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
         readonly "onUpdate:modelValue"?: ((item: T[]) => any) | undefined;
         readonly onUnselect?: ((item: T) => any) | undefined;
         readonly "onUpdate:active"?: ((item: T) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "elementId" | "modelValue" | "checkbox" | "selectable" | "active">, "onChange" | "onClick" | "onSelect" | "items" | "onUpdate:modelValue" | "keyAttribute" | "onUnselect" | "onUpdate:active" | ("elementId" | "modelValue" | "checkbox" | "selectable" | "active")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "elementId" | "modelValue" | "checkbox" | "keyAttribute" | "selectable" | "active">, "onChange" | "onClick" | "onSelect" | "items" | "onUpdate:modelValue" | "onUnselect" | "onUpdate:active" | ("elementId" | "modelValue" | "checkbox" | "keyAttribute" | "selectable" | "active")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {

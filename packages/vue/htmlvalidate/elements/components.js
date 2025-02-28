@@ -125,7 +125,7 @@ module.exports = defineMetadata({
             "key-attribute": ["/.+/"],
             scroll: ["horizontal", "vertical", "both", "none"],
         },
-        requiredAttributes: ["key-attribute", "rows"],
+        requiredAttributes: ["rows"],
         slots: ["default", "caption", "empty"],
         requiredSlots: ["default", "caption"],
     },
@@ -321,7 +321,7 @@ module.exports = defineMetadata({
         inherit: "ul",
         flow: true,
         phrasing: true,
-        requiredAttributes: ["items", "key-attribute"],
+        requiredAttributes: ["items"],
         attributes: {
             selectable: ["/^[a-zA-Z][\\w\\d-_.:]+$/", "", "false", "true"],
             value: ["/.*/"],
@@ -376,7 +376,7 @@ module.exports = defineMetadata({
             "expandable-describedby": ["/.+/"],
             scroll: ["horizontal", "vertical", "both", "none"],
         },
-        requiredAttributes: ["key-attribute", "rows"],
+        requiredAttributes: ["rows"],
         slots: [
             "default",
             "caption",

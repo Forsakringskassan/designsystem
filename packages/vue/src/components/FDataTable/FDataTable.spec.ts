@@ -412,12 +412,8 @@ it("should call provided sort method when clicking columnheader that is registra
 });
 
 describe("html-validate", () => {
-    it("should require non-empty key-attribute attribute", () => {
-        expect.assertions(2);
-        expect("<f-data-table></f-data-table>").not.toHTMLValidate({
-            message:
-                '<f-data-table> is missing required "key-attribute" attribute',
-        });
+    it("should require `key-attribute` to be non-empty if used", () => {
+        expect.assertions(1);
         expect(
             '<f-data-table key-attribute=""></f-data-table>',
         ).not.toHTMLValidate({
