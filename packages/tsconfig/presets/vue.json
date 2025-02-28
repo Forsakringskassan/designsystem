@@ -1,0 +1,18 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "@fkui/tsconfig/vue",
+
+    "compilerOptions": {
+        "emitDeclarationOnly": true,
+        "skipLibCheck": true
+    },
+
+    "vueCompilerOptions": {
+        "experimentalModelPropName": {
+            "": {
+                "f-radio-field": true,
+                "f-checkbox-field": true
+            }
+        }
+    }
+}
