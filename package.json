@@ -94,7 +94,7 @@
     "@forsakringskassan/jest-config": "29.6.1",
     "@forsakringskassan/jest-config-vue": "29.6.1",
     "@forsakringskassan/prettier-config": "3.0.4",
-    "@forsakringskassan/stylelint-config": "2.3.4",
+    "@forsakringskassan/stylelint-config": "2.4.0",
     "@forsakringskassan/vite-lib-config": "3.4.4",
     "@html-validate/release-scripts": "6.8.0",
     "@types/estree": "1.0.6",
@@ -128,7 +128,7 @@
     "sass": "1.85.1",
     "typedoc": "0.27.9",
     "typescript": "5.7.3",
-    "vite": "6.1.1",
+    "vite": "6.2.0",
     "vue": "3.5.13",
     "vue-tsc": "2.2.0"
   },
