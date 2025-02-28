@@ -35,7 +35,7 @@
     "autoprefixer": "10.4.20",
     "html-validate": "9.4.1",
     "postcss": "8.5.3",
-    "vite": "6.1.1"
+    "vite": "6.2.0"
   },
   "engines": {
     "node": ">= 20",
