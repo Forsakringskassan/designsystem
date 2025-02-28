@@ -18853,7 +18853,11 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
       }
       if (verticalSpacing === void 0) {
         const absWrapper = getAbsolutePosition(wrapperElement);
-        const marginTotal = absWrapper.y * 2;
+        const {
+          marginTop,
+          marginBottom
+        } = getComputedStyle(wrapperElement);
+        const marginTotal = parseInt(marginTop, 10) + parseInt(marginBottom, 10);
         verticalSpacing = Math.ceil(absWrapper.height - contentItemHeigth * __props.numOfItems) + marginTotal;
       }
       wrapperElement.style.overflowY = "auto";
@@ -18865,7 +18869,7 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
         verticalSpacing
       });
       if (rect) {
-        var _offsetRect$x;
+        var _offsetRect$x, _offsetRect$top;
         const {
           top,
           left,
@@ -18874,7 +18878,8 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
         } = rect;
         const offsetRect = (_a = wrapperElement == null ? void 0 : wrapperElement.offsetParent) == null ? void 0 : _a.getBoundingClientRect();
         const offsetLeft = (_offsetRect$x = offsetRect == null ? void 0 : offsetRect.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
-        wrapperElement.style.top = `${top}px`;
+        const offSetTop = Math.floor(((_offsetRect$top = offsetRect == null ? void 0 : offsetRect.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
+        wrapperElement.style.top = `${top - offSetTop}px`;
         wrapperElement.style.left = `${left - offsetLeft}px`;
         wrapperElement.style.width = `${width}px`;
         contentWrapper.style.maxHeight = `${height}px`;
@@ -22326,7 +22331,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
       return classes;
     });
     const isEmpty2 = computed(() => {
-      return props.rows.length === 0;
+      return internalRows.value.length === 0;
     });
     const visibleColumns = computed(() => {
       return columns.value.filter((col) => col.visible);
@@ -22357,7 +22362,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
     });
     provide("textFieldTableMode", true);
     provide("renderColumns", computed(() => {
-      return props.rows.length > 0;
+      return internalRows.value.length > 0;
     }));
     onMounted(() => {
       registerCallbackOnSort(callbackOnSort);
@@ -23202,13 +23207,13 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
       });
     });
     const hasCheckboxDescription = computed(() => {
-      const firstRow = props.rows[0];
+      const firstRow = internalRows.value[0];
       return hasSlot2("checkbox-description", {
         row: firstRow
       });
     });
     const isEmpty2 = computed(() => {
-      return props.rows.length === 0;
+      return internalRows.value.length === 0;
     });
     const visibleColumns = computed(() => {
       return columns.value.filter((col) => col.visible);
@@ -23255,11 +23260,11 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
       setVisibilityColumn(columns.value, id, visible);
     });
     provide("textFieldTableMode", true);
-    provide("renderColumns", computed(() => props.rows.length > 0));
+    provide("renderColumns", computed(() => internalRows.value.length > 0));
     watch(() => props.rows, () => {
       if (props.modelValue) {
         selectedRows.value = props.modelValue.filter((row) => {
-          return includeItem(row, props.rows, internalKey2);
+          return includeItem(row, internalRows.value, internalKey2);
         });
       }
     }, {
@@ -23319,7 +23324,7 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
     }
     function onKeydown$1(event, index) {
       onKeydown({
-        rows: props.rows,
+        rows: internalRows.value,
         tr,
         activate
       }, event, index);
@@ -23415,16 +23420,16 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
       activate(item, null);
     }
     function callbackBeforeItemDelete(item) {
-      if (props.rows.length === 0) {
+      if (internalRows.value.length === 0) {
         return;
       }
-      let targetIndex = props.rows.indexOf(item) - 1;
-      if (targetIndex < 0 && props.rows.length > 1) {
+      let targetIndex = internalRows.value.indexOf(item) - 1;
+      if (targetIndex < 0 && internalRows.value.length > 1) {
         targetIndex = 1;
       } else if (targetIndex < 0) {
         targetIndex = 0;
       }
-      activate(props.rows[targetIndex], tr.value[targetIndex]);
+      activate(internalRows.value[targetIndex], tr.value[targetIndex]);
     }
     function escapeNewlines(value) {
       return value.replace(/\n/g, "<br/>");
@@ -23667,7 +23672,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     const props = __props;
     const emit2 = __emit;
     const isEmpty2 = computed(() => {
-      return props.items.length === 0;
+      return internalItems.value.length === 0;
     });
     const internalItems = computed(() => {
       const {
@@ -23751,7 +23756,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     function updateSelectedItemsFromVModel() {
       if (Array.isArray(props.modelValue)) {
         selectedItems.value = props.modelValue.filter((item) => {
-          return includeItem(item, props.items, internalKey2);
+          return includeItem(item, internalItems.value, internalKey2);
         });
       } else {
         selectedItems.value = [];
@@ -23800,16 +23805,16 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
       setActiveItem(item);
     }
     function callbackBeforeItemDelete(item) {
-      if (props.items.length === 0) {
+      if (internalItems.value.length === 0) {
         return;
       }
-      let targetIndex = props.items.indexOf(item) - 1;
-      if (targetIndex < 0 && props.items.length > 1) {
+      let targetIndex = internalItems.value.indexOf(item) - 1;
+      if (targetIndex < 0 && internalItems.value.length > 1) {
         targetIndex = 1;
       } else if (targetIndex < 0) {
         targetIndex = 0;
       }
-      setActiveItem(props.items[targetIndex]);
+      setActiveItem(internalItems.value[targetIndex]);
       const targetElement = getLiElements()[targetIndex];
       if (targetElement) {
         targetElement.focus();

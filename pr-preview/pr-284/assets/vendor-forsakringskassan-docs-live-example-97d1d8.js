@@ -751,7 +751,7 @@ Expected it to be ${n}.`;
           return Ee2(t) ? Lt2(t.parent, e) : rt2(t) ? Ft2(t.next, e) : "";
         }
         function Lt2(t, e) {
-          if (xr2(!t.isSelfClosing), os(t, e)) return "";
+          if (xr2.ok(!t.isSelfClosing), os(t, e)) return "";
           switch (t.type) {
             case "ieConditionalComment":
               return "<!";
@@ -848,7 +848,7 @@ Expected it to be ${n}.`;
           }
         }
         function Nt2(t) {
-          switch (xr2(!t.isSelfClosing), t.type) {
+          switch (xr2.ok(!t.isSelfClosing), t.type) {
             case "ieConditionalComment":
               return "]>";
             case "element":
@@ -4738,7 +4738,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
   async function Vn(e, t, r, n, u) {
     let { embeddedLanguageFormatting: i, printer: { embed: o, hasPrettierIgnore: s = () => false, getVisitorKeys: a } } = r;
     if (!o || i !== "auto") return;
-    if (o.length > 2) throw new Error("printer.embed has too many parameters. The API changed in Prettier v3. Please update your plugin. See https://prettier.io/docs/en/plugins.html#optional-embed");
+    if (o.length > 2) throw new Error("printer.embed has too many parameters. The API changed in Prettier v3. Please update your plugin. See https://prettier.io/docs/plugins#optional-embed");
     let D = q(o.getVisitorKeys ?? a), l = [];
     d();
     let p = e.stack;
@@ -5047,7 +5047,7 @@ in order for it to be formatted.`, cliCategory: "Other" }, tabWidth: { type: "in
   var $i = { join: Se, line: Qe, softline: $r, hardline: K, literalline: Xe, group: kt, conditionalGroup: Ir, fill: Rr, lineSuffix: Te, lineSuffixBoundary: Hr, cursor: Z, breakParent: he, ifBreak: Yr, trim: Wr, indent: le, indentIfBreak: jr, align: De, addAlignmentToDoc: Ze, markAsRoot: Lr, dedentToRoot: kr, dedent: Pr, hardlineWithoutBreakParent: ke, literallineWithoutBreakParent: Lt, label: Mr, concat: (e) => e };
   var Mi = { printDocToString: Ce };
   var Vi = { willBreak: xr, traverseDoc: Fe, findInDoc: Je, mapDoc: Oe, removeLines: Nr, stripTrailingHardline: qe, replaceEndOfLine: Or, canBreak: Sr };
-  var cu = "3.5.1";
+  var cu = "3.5.2";
   var cr = {};
   vt(cr, { addDanglingComment: () => re, addLeadingComment: () => ue, addTrailingComment: () => ie, getAlignmentSize: () => ge, getIndentSize: () => fu, getMaxContinuousCount: () => du, getNextNonSpaceNonCommentCharacter: () => pu, getNextNonSpaceNonCommentCharacterIndex: () => no, getPreferredQuote: () => mu, getStringWidth: () => Le, hasNewline: () => V, hasNewlineInRange: () => hu, hasSpaces: () => Eu, isNextLineEmpty: () => so, isNextLineEmptyAfterIndex: () => Ct, isPreviousLineEmpty: () => io, makeString: () => Cu, skip: () => Ae, skipEverythingButNewLine: () => nt, skipInlineComment: () => Be, skipNewline: () => W, skipSpaces: () => S, skipToLineEnd: () => rt, skipTrailingComment: () => we, skipWhitespace: () => tn });
   function Ui(e, t) {
