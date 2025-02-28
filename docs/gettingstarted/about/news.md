@@ -4,6 +4,17 @@ name: news
 layout: content-with-menu
 ---
 
+## Betaversion ny applikationslayout
+
+Version: 6.2.0 <br>
+2025-02-28
+
+Vi har släppt en ny komponent för applikationslayout i betaversion (applikationsmall).
+Den går inte att använda än då det behövs fler komponeter (paneler) som är under utveckling.
+Komponenter som har status beta kan eller ska inte användas i produktion.
+
+{@link about#status-for-komponenter Läs mer om olika status för komponenter}
+
 ## Ny release med brytande ändringar &#127881;
 
 Version: 6.0.0 <br>
