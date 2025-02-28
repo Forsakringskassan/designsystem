@@ -17946,14 +17946,6 @@ const _sfc_main$R = /* @__PURE__ */ defineComponent({
         max,
         current: value
       } = state.value;
-      if (value < min || value > max) {
-        console.log({
-          min,
-          max,
-          value
-        });
-        debugger;
-      }
       if (root.value) {
         root.value.style.setProperty("--size", `${String(value)}px`);
         root.value.style.setProperty("--min", `${min}px`);
@@ -17972,12 +17964,7 @@ const _sfc_main$R = /* @__PURE__ */ defineComponent({
         } = getComputedStyle(separator.value);
         separatorSize.value = computeCssValue(flexBasis, 0, 0);
       }
-      const size = getLayoutSize();
-      if (size === 0) {
-        console.log("size is 0 when it shouldnt be");
-        debugger;
-      }
-      layoutSize.value = size;
+      layoutSize.value = getLayoutSize();
       state.value = {
         min: minSize.value,
         max: maxSize.value,
