@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 6.2.0 (2025-02-28)
+
+### Features
+
+* **@fkui/vue:** add `useAreaData()` composable (refs SFKUI-6992) 8e62c60
+* **@fkui/vue:** cypress pageobjects as esm hybrid package (refs SFKUI-6500) a3bfe08
+* **@fkui/vue:** new `FPageLayout` component (refs SFKUI-6992) 26f0d41
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default:** changed semantic tokens for icons and color for some semantic tokens  (refs SFKUI-7038) 98e7a6c
+* **@fkui/vue:** add offset top to IPopupListbox (refs SFKUI-6500) cabd15b
+
 ## 6.1.0 (2025-02-20)
 
 ### Features
