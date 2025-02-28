@@ -1,0 +1,35 @@
+{
+  "name": "@fkui/tsconfig",
+  "version": "6.1.0",
+  "description": "Shared tsconfig.json presets for libraries and applications based on FKUI",
+  "keywords": [
+    "fkui",
+    "tsconfig"
+  ],
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/tsconfig"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    "./cypress": "./presets/cypress.json",
+    "./recommended": "./presets/recommended.json",
+    "./vue": "./presets/vue.json"
+  },
+  "files": [
+    "presets"
+  ],
+  "scripts": {
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}
