@@ -7254,9 +7254,9 @@ default: string;
 validator(value: string): boolean;
 };
 }>> & Readonly<{}>, {
+layout: "standard" | "short";
 banner: boolean;
 provideScreenReaderContext: boolean;
-layout: "standard" | "short";
 }, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -14767,13 +14767,13 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_Props_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Props_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IComboboxDropdown: DefineComponent<__VLS_Props_2, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxDropdown: DefineComponent<__VLS_Props_3, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 close: () => any;
 select: (option: string) => any;
-}, string, PublicProps, Readonly<__VLS_Props_2> & Readonly<{
+}, string, PublicProps, Readonly<__VLS_Props_3> & Readonly<{
 onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
@@ -15340,6 +15340,13 @@ focusElement: () => HTMLElement | null;
 setFocus: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_5" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const IResizePane: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, __VLS_TemplateResult_5["slots"]>;
 
 // @public (undocumented)
 export function isContextMenuSeparatorItem(value: ContextMenuItem & {
