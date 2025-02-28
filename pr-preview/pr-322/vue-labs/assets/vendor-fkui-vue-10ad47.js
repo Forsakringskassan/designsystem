@@ -8740,7 +8740,10 @@
       });
       return (_ctx, _cache) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createBlock)((0, import_vue.resolveDynamicComponent)(tagName), {
-          layout: _ctx.layout
+          layout: _ctx.layout,
+          style: {
+            "display": "block"
+          }
         }, {
           default: (0, import_vue.withCtx)(() => [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(slotNames.value, (slot) => {
             return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", {
