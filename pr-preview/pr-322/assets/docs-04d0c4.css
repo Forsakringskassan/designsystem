@@ -6762,8 +6762,9 @@ input[type=search]:focus,
 
 /* background color */
 /* highlight color */
-/* the width of the handle */
-/* how much extra space the handle occupies when hovering */
+/* the width of the visible handle */
+/* how much extra click/hover area the handle has */
+/* how much extra space the handle occupies when hovering (not counting the click area)*/
 /* how long before visually indicating the hover state */
 /* how long the animation for the visual indicator is */
 .resize__handle {
@@ -6790,6 +6791,9 @@ input[type=search]:focus,
 .resize__handle[aria-orientation=horizontal]::before {
   inset: -2px 0;
 }
+.resize__handle[aria-orientation=horizontal]::after {
+  inset: -4px 0;
+}
 .resize__handle[aria-orientation=vertical] {
   cursor: col-resize;
   width: 2px;
@@ -6797,12 +6801,19 @@ input[type=search]:focus,
 .resize__handle[aria-orientation=vertical]::before {
   inset: 0 -2px;
 }
+.resize__handle[aria-orientation=vertical]::after {
+  inset: 0 -4px;
+}
 .resize__handle::before {
   content: "";
   pointer-events: none;
   position: absolute;
   background-color: transparent;
   transition: background-color 200ms ease-in;
+}
+.resize__handle::after {
+  content: "";
+  position: absolute;
 }
 .resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
   background-color: var(--fkds-color-action-border-primary-hover);
