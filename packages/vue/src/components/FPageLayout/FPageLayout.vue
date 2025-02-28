@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <component :is="tagName" :layout>
+    <component :is="tagName" :layout style="display: block">
         <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -- false positive, this is the native slot attribute -->
         <div v-for="slot of slotNames" :key="slot" :slot>
             <slot :name="slot"></slot>
