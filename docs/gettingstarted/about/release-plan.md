@@ -6,15 +6,21 @@ layout: pattern
 
 ## Nyligen släppt
 
+I release [6.2.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.2.0) infördes bland annat följande uppdateringar:
+
+- {@link news#beta-version-ny-applikationslayout betaversion} av nya komponenter för applikationslayout.
+  Observera att de inte går att använda förrän de ligger i status produktionsklar.
+
+- diverse buggrättningar
+
 I release [6.1.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.1.0) infördes bland annat följande uppdateringar:
 
 - Tabell och lista med tillhörande komponenter (datamängdredigeraren och datamängdsorteraren): Vi har infört generics, vilket innebär att det går att använda egna datatyper i listor och tabeller.
 
 - Vi har fixat så att det nu går att bygga vid import av scss-filer från designpaketet efter införandet av v6.0.0 (bugg).
-
 - Ett antal andra buggar är också fixade.
 
-I release [6.0.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0) släppte vi bland annat följande uppdateringar:
+Vi har också nyligen släppt release [6.0.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0) med bland annat följande uppdateringar:
 
 - Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
   De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.
@@ -28,14 +34,6 @@ I release [6.0.0](https://github.com/Forsakringskassan/designsystem/releases/tag
 - Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
   Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.
 - Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.
-
-Vi har också nyligen släppt följande:
-
-- Vi har lagt till stöd för validering av {@link FCard kort} (FCard).
-- För {@link FWizard guidesteg} (FWizardStep) har vi lagt till stöd för att exponera stegnummer i slottar och att kunna köra åtgärder innan navigering till nästa steg.
-- I {@link FCalendar kalender} (FCalendar) har vi ändrat från role:applikation till role:grid för att förbättra tillgängligheten (buggfix).
-- Uppdatering av semantiska tokens för färger är påbörjad och komponenter uppdateras kontinuerligt över kommande releaser.
-- Inmatningsfält har fått ett tillägg så att den kan användas som en {@link news#kombobox kombobox}.
 
 ## Pågående arbete
 
