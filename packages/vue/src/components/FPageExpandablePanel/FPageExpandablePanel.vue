@@ -5,21 +5,20 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
-import { computed, defineComponent, ref, useTemplateRef } from "vue";
+import { computed, defineComponent, ref, useTemplateRef, watchEffect } from "vue";
+import { useMediaQuery } from "@vueuse/core";
 import { FIcon } from "../FIcon";
 import { useAreaData } from "../FPageLayout/use-area-data";
-import { usePageWidth } from "../../composables";
 
 const root = useTemplateRef("root");
 const { attachPanel } = useAreaData(root);
 
-const { isDesktop } = usePageWidth({
-    onModeChange() {
-        isOpen.value = isDesktop.value;
-    },
-});
-
+const isDesktop = useMediaQuery("(width >= 640px)");
 const isOpen = ref<boolean>(isDesktop.value);
+
+watchEffect(() => {
+    isOpen.value = isDesktop.value;
+});
 
 const expandedClass = computed(() => {
     return isOpen.value ? "expanded" : "collapsed";

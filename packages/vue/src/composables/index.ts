@@ -4,4 +4,3 @@ export {
     type WithoutInstance,
     useSlotUtils,
 } from "./useSlotUtils";
-export { usePageWidth } from "./use-page-width";
