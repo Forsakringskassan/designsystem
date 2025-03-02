@@ -1,114 +1,114 @@
-"use strict";
-(() => {
-  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-  }) : x)(function(x) {
-    if (typeof require !== "undefined") return require.apply(this, arguments);
-    throw Error('Dynamic require of "' + x + '" is not supported');
-  });
-
-  // docs/src/setup.ts
-  var import_vue = __require("vue");
-  var import_vue2 = __require("@fkui/vue");
-  function setup(options) {
-    const { rootComponent, selector } = options;
-    const app = (0, import_vue.createApp)({
-      render() {
-        return (0, import_vue.h)(import_vue2.FErrorHandlingApp, { defaultComponent: rootComponent });
-      }
-    });
-    (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin, {
-      captureWarnings: true,
-      logToConsole: true
-    });
-    app.use(import_vue2.ValidationPlugin);
-    app.use(import_vue2.TestPlugin);
-    app.use(import_vue2.TranslationPlugin);
-    app.mount(selector);
-  }
-
-  // virtual-entry:./packages/vue/src/components/FModal/examples/FModalUsage.vue
-  var import_vue6 = __require("vue");
-  var import_vue7 = __require("@fkui/vue");
-
-  // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/MyAwesomeModal.vue?type=script
-  var import_vue3 = __require("vue");
-  var import_vue4 = __require("@fkui/vue");
-  var MyAwesomeModal_default = /* @__PURE__ */ (0, import_vue3.defineComponent)({
-    __name: "MyAwesomeModal",
-    emits: ["close"],
-    setup(__props, { expose: __expose, emit: __emit }) {
-      __expose();
-      const emit = __emit;
-      const __returned__ = { emit, get FModal() {
-        return import_vue4.FModal;
-      } };
-      Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
-      return __returned__;
+// docs/src/setup.ts
+import { createApp, h } from "vue";
+import {
+  ErrorPlugin,
+  FErrorHandlingApp,
+  TestPlugin,
+  TranslationPlugin,
+  ValidationPlugin,
+  setRunningContext
+} from "@fkui/vue";
+function setup(options) {
+  const { rootComponent, selector } = options;
+  const app = createApp({
+    render() {
+      return h(FErrorHandlingApp, { defaultComponent: rootComponent });
     }
   });
+  setRunningContext(app);
+  app.use(ErrorPlugin, {
+    captureWarnings: true,
+    logToConsole: true
+  });
+  app.use(ValidationPlugin);
+  app.use(TestPlugin);
+  app.use(TranslationPlugin);
+  app.mount(selector);
+}
 
-  // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/MyAwesomeModal.vue?type=template
-  var import_vue5 = __require("vue");
-  var _hoisted_1 = { class: "button-group" };
-  function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)($setup["FModal"], {
-      "is-open": "",
-      onClose: _cache[1] || (_cache[1] = ($event) => $setup.emit("close"))
-    }, {
-      header: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
-        (0, import_vue5.createTextVNode)(" My awesome modal ")
-      ])),
-      content: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
-        (0, import_vue5.createTextVNode)(" My awesome content ")
-      ])),
-      footer: (0, import_vue5.withCtx)(() => [
-        (0, import_vue5.createElementVNode)("div", _hoisted_1, [
-          (0, import_vue5.createElementVNode)("button", {
-            type: "button",
-            class: "button button--primary button-group__item button--large",
-            onClick: _cache[0] || (_cache[0] = ($event) => $setup.emit("close"))
-          }, " Close ")
-        ])
-      ]),
-      _: 1
-      /* STABLE */
-    });
+// virtual-entry:./packages/vue/src/components/FModal/examples/FModalUsage.vue
+import { defineComponent as _defineComponent2 } from "vue";
+import { useModal } from "@fkui/vue";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/MyAwesomeModal.vue?type=script
+import { defineComponent as _defineComponent } from "vue";
+import { FModal } from "@fkui/vue";
+var MyAwesomeModal_default = /* @__PURE__ */ _defineComponent({
+  __name: "MyAwesomeModal",
+  emits: ["close"],
+  setup(__props, { expose: __expose, emit: __emit }) {
+    __expose();
+    const emit = __emit;
+    const __returned__ = { emit, get FModal() {
+      return FModal;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
+});
 
-  // packages/vue/src/components/FModal/examples/MyAwesomeModal.vue
-  MyAwesomeModal_default.render = render;
-  MyAwesomeModal_default.__file = "packages/vue/src/components/FModal/examples/MyAwesomeModal.vue";
-  var MyAwesomeModal_default2 = MyAwesomeModal_default;
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/MyAwesomeModal.vue?type=template
+import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+var _hoisted_1 = { class: "button-group" };
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock(), _createBlock($setup["FModal"], {
+    "is-open": "",
+    onClose: _cache[1] || (_cache[1] = ($event) => $setup.emit("close"))
+  }, {
+    header: _withCtx(() => _cache[2] || (_cache[2] = [
+      _createTextVNode(" My awesome modal ")
+    ])),
+    content: _withCtx(() => _cache[3] || (_cache[3] = [
+      _createTextVNode(" My awesome content ")
+    ])),
+    footer: _withCtx(() => [
+      _createElementVNode("div", _hoisted_1, [
+        _createElementVNode("button", {
+          type: "button",
+          class: "button button--primary button-group__item button--large",
+          onClick: _cache[0] || (_cache[0] = ($event) => $setup.emit("close"))
+        }, " Close ")
+      ])
+    ]),
+    _: 1
+    /* STABLE */
+  });
+}
 
-  // virtual-entry:./packages/vue/src/components/FModal/examples/FModalUsage.vue
-  var import_vue8 = __require("vue");
-  var exampleComponent = /* @__PURE__ */ (0, import_vue6.defineComponent)({
-    __name: "FModalUsage",
-    setup(__props, { expose: __expose }) {
-      __expose();
-      const { openModal } = (0, import_vue7.useModal)();
-      async function onClick() {
-        await openModal(MyAwesomeModal_default2);
-      }
-      const __returned__ = { openModal, onClick };
-      Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
-      return __returned__;
+// packages/vue/src/components/FModal/examples/MyAwesomeModal.vue
+MyAwesomeModal_default.render = render;
+MyAwesomeModal_default.__file = "packages/vue/src/components/FModal/examples/MyAwesomeModal.vue";
+var MyAwesomeModal_default2 = MyAwesomeModal_default;
+
+// virtual-entry:./packages/vue/src/components/FModal/examples/FModalUsage.vue
+import { createElementVNode as _createElementVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock } from "vue";
+var exampleComponent = /* @__PURE__ */ _defineComponent2({
+  __name: "FModalUsage",
+  setup(__props, { expose: __expose }) {
+    __expose();
+    const { openModal } = useModal();
+    async function onClick() {
+      await openModal(MyAwesomeModal_default2);
     }
-  });
-  function render2(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue8.openBlock)(), (0, import_vue8.createElementBlock)("div", null, [
-      (0, import_vue8.createElementVNode)("button", {
-        type: "button",
-        class: "button button--secondary",
-        onClick: $setup.onClick
-      }, "Open")
-    ]);
+    const __returned__ = { openModal, onClick };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
-  exampleComponent.render = render2;
-  setup({
-    rootComponent: exampleComponent,
-    selector: "#FModalUsage"
-  });
-})();
+});
+function render2(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock2(), _createElementBlock("div", null, [
+    _createElementVNode2("button", {
+      type: "button",
+      class: "button button--secondary",
+      onClick: $setup.onClick
+    }, "Open")
+  ]);
+}
+exampleComponent.render = render2;
+setup({
+  rootComponent: exampleComponent,
+  selector: "#FModalUsage"
+});
+export {
+  render2 as render
+};

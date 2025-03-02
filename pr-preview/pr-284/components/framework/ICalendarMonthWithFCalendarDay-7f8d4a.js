@@ -1,80 +1,80 @@
-"use strict";
-(() => {
-  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-  }) : x)(function(x) {
-    if (typeof require !== "undefined") return require.apply(this, arguments);
-    throw Error('Dynamic require of "' + x + '" is not supported');
-  });
-
-  // docs/src/setup.ts
-  var import_vue = __require("vue");
-  var import_vue2 = __require("@fkui/vue");
-  function setup(options) {
-    const { rootComponent, selector } = options;
-    const app = (0, import_vue.createApp)({
-      render() {
-        return (0, import_vue.h)(import_vue2.FErrorHandlingApp, { defaultComponent: rootComponent });
-      }
-    });
-    (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin, {
-      captureWarnings: true,
-      logToConsole: true
-    });
-    app.use(import_vue2.ValidationPlugin);
-    app.use(import_vue2.TestPlugin);
-    app.use(import_vue2.TranslationPlugin);
-    app.mount(selector);
-  }
-
-  // virtual-entry:./packages/vue/src/internal-components/calendar/examples/ICalendarMonthWithFCalendarDay.vue
-  var import_vue3 = __require("vue");
-  var import_vue4 = __require("@fkui/vue");
-  var import_date = __require("@fkui/date");
-  var import_vue5 = __require("vue");
-  var exampleComponent = (0, import_vue3.defineComponent)({
-    name: "ICalendarMonthWithFCalendarDayExample",
-    components: {
-      ICalendarMonth: import_vue4.ICalendarMonth,
-      FCalendarDay: import_vue4.FCalendarDay
-    },
-    data() {
-      return {
-        month: (0, import_vue3.shallowRef)(import_date.FDate.fromIso("2022-10-01")),
-        minDate: (0, import_vue3.shallowRef)(import_date.FDate.fromIso("2020-01-01")),
-        maxDate: (0, import_vue3.shallowRef)(import_date.FDate.fromIso("2029-01-30"))
-      };
-    },
-    methods: {
-      onClick(date) {
-        alert(`Du klickade p\xE5 dag ${date.day}`);
-      }
+// docs/src/setup.ts
+import { createApp, h } from "vue";
+import {
+  ErrorPlugin,
+  FErrorHandlingApp,
+  TestPlugin,
+  TranslationPlugin,
+  ValidationPlugin,
+  setRunningContext
+} from "@fkui/vue";
+function setup(options) {
+  const { rootComponent, selector } = options;
+  const app = createApp({
+    render() {
+      return h(FErrorHandlingApp, { defaultComponent: rootComponent });
     }
   });
-  function render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_calendar_day = (0, import_vue5.resolveComponent)("f-calendar-day");
-    const _component_i_calendar_month = (0, import_vue5.resolveComponent)("i-calendar-month");
-    return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_i_calendar_month, {
-      modelValue: _ctx.month,
-      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.month = $event),
-      "min-date": _ctx.minDate,
-      "max-date": _ctx.maxDate,
-      onClick: _ctx.onClick
-    }, {
-      default: (0, import_vue5.withCtx)(({ date, isFocused }) => [
-        (0, import_vue5.createVNode)(_component_f_calendar_day, {
-          day: date,
-          focused: isFocused
-        }, null, 8, ["day", "focused"])
-      ]),
-      _: 1
-      /* STABLE */
-    }, 8, ["modelValue", "min-date", "max-date", "onClick"]);
-  }
-  exampleComponent.render = render;
-  setup({
-    rootComponent: exampleComponent,
-    selector: "#ICalendarMonthWithFCalendarDay"
+  setRunningContext(app);
+  app.use(ErrorPlugin, {
+    captureWarnings: true,
+    logToConsole: true
   });
-})();
+  app.use(ValidationPlugin);
+  app.use(TestPlugin);
+  app.use(TranslationPlugin);
+  app.mount(selector);
+}
+
+// virtual-entry:./packages/vue/src/internal-components/calendar/examples/ICalendarMonthWithFCalendarDay.vue
+import { defineComponent, shallowRef } from "vue";
+import { ICalendarMonth, FCalendarDay } from "@fkui/vue";
+import { FDate } from "@fkui/date";
+import { resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+var exampleComponent = defineComponent({
+  name: "ICalendarMonthWithFCalendarDayExample",
+  components: {
+    ICalendarMonth,
+    FCalendarDay
+  },
+  data() {
+    return {
+      month: shallowRef(FDate.fromIso("2022-10-01")),
+      minDate: shallowRef(FDate.fromIso("2020-01-01")),
+      maxDate: shallowRef(FDate.fromIso("2029-01-30"))
+    };
+  },
+  methods: {
+    onClick(date) {
+      alert(`Du klickade p\xE5 dag ${date.day}`);
+    }
+  }
+});
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_calendar_day = _resolveComponent("f-calendar-day");
+  const _component_i_calendar_month = _resolveComponent("i-calendar-month");
+  return _openBlock(), _createBlock(_component_i_calendar_month, {
+    modelValue: _ctx.month,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.month = $event),
+    "min-date": _ctx.minDate,
+    "max-date": _ctx.maxDate,
+    onClick: _ctx.onClick
+  }, {
+    default: _withCtx(({ date, isFocused }) => [
+      _createVNode(_component_f_calendar_day, {
+        day: date,
+        focused: isFocused
+      }, null, 8, ["day", "focused"])
+    ]),
+    _: 1
+    /* STABLE */
+  }, 8, ["modelValue", "min-date", "max-date", "onClick"]);
+}
+exampleComponent.render = render;
+setup({
+  rootComponent: exampleComponent,
+  selector: "#ICalendarMonthWithFCalendarDay"
+});
+export {
+  render
+};
