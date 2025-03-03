@@ -1,58 +1,58 @@
-"use strict";
-(() => {
-  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-  }) : x)(function(x) {
-    if (typeof require !== "undefined") return require.apply(this, arguments);
-    throw Error('Dynamic require of "' + x + '" is not supported');
+// docs/src/setup.ts
+import { createApp, h } from "vue";
+import {
+  ErrorPlugin,
+  FErrorHandlingApp,
+  TestPlugin,
+  TranslationPlugin,
+  ValidationPlugin,
+  setRunningContext
+} from "@fkui/vue";
+function setup(options) {
+  const { rootComponent, selector } = options;
+  const app = createApp({
+    render() {
+      return h(FErrorHandlingApp, { defaultComponent: rootComponent });
+    }
   });
+  setRunningContext(app);
+  app.use(ErrorPlugin, {
+    captureWarnings: true,
+    logToConsole: true
+  });
+  app.use(ValidationPlugin);
+  app.use(TestPlugin);
+  app.use(TranslationPlugin);
+  app.mount(selector);
+}
 
-  // docs/src/setup.ts
-  var import_vue = __require("vue");
-  var import_vue2 = __require("@fkui/vue");
-  function setup(options) {
-    const { rootComponent, selector } = options;
-    const app = (0, import_vue.createApp)({
-      render() {
-        return (0, import_vue.h)(import_vue2.FErrorHandlingApp, { defaultComponent: rootComponent });
-      }
-    });
-    (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin, {
-      captureWarnings: true,
-      logToConsole: true
-    });
-    app.use(import_vue2.ValidationPlugin);
-    app.use(import_vue2.TestPlugin);
-    app.use(import_vue2.TranslationPlugin);
-    app.mount(selector);
-  }
-
-  // virtual-entry:./packages/vue/src/components/FFileSelector/examples/FFileSelectorDisabled.vue
-  var import_vue3 = __require("vue");
-  var import_vue4 = __require("@fkui/vue");
-  var import_vue5 = __require("vue");
-  var exampleComponent = (0, import_vue3.defineComponent)({
-    name: "FFileSelectorDisabled",
-    components: { FFileSelector: import_vue4.FFileSelector }
+// virtual-entry:./packages/vue/src/components/FFileSelector/examples/FFileSelectorDisabled.vue
+import { defineComponent } from "vue";
+import { FFileSelector } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+var exampleComponent = defineComponent({
+  name: "FFileSelectorDisabled",
+  components: { FFileSelector }
+});
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_file_selector = _resolveComponent("f-file-selector");
+  return _openBlock(), _createBlock(_component_f_file_selector, {
+    id: "dis",
+    accept: "image/jpeg, image/tiff",
+    disabled: ""
+  }, {
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" L\xE4gg till fil ")
+    ])),
+    _: 1
+    /* STABLE */
   });
-  function render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_file_selector = (0, import_vue5.resolveComponent)("f-file-selector");
-    return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_file_selector, {
-      id: "dis",
-      accept: "image/jpeg, image/tiff",
-      disabled: ""
-    }, {
-      default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
-        (0, import_vue5.createTextVNode)(" L\xE4gg till fil ")
-      ])),
-      _: 1
-      /* STABLE */
-    });
-  }
-  exampleComponent.render = render;
-  setup({
-    rootComponent: exampleComponent,
-    selector: "#FFileSelectorDisabled"
-  });
-})();
+}
+exampleComponent.render = render;
+setup({
+  rootComponent: exampleComponent,
+  selector: "#FFileSelectorDisabled"
+});
+export {
+  render
+};
