@@ -101,7 +101,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -199,7 +199,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -245,7 +245,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;

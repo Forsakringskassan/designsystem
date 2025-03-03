@@ -9,7 +9,7 @@ import { type ParseFunction } from "./ParseFunction";
 export interface TextFieldSetupProps {
     id: string;
     inline: boolean;
-    modelValue: string | number;
+    modelValue: string | number | null;
     type: string;
     formatter?: FormatFunction<unknown>;
     parser?: ParseFunction<unknown>;

@@ -59,7 +59,7 @@ export default defineComponent({
             default: () => ElementIdService.generateElementId(),
         },
         modelValue: {
-            type: String,
+            type: [String, null],
             required: false,
             default: "",
         },
@@ -84,7 +84,9 @@ export default defineComponent({
     },
     computed: {
         canClear(): boolean {
-            return this.modelValue !== "";
+            const isEmpty = this.modelValue === undefined || this.modelValue === null || this.modelValue === "";
+
+            return !isEmpty;
         },
     },
     methods: {
