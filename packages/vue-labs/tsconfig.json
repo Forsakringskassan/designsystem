@@ -1,12 +1,34 @@
 {
-    "extends": "../../tsconfig.json",
+    /* this config is picked up by vue3-jest which just refuses to read any
+     * other file or config */
     "compilerOptions": {
-        "outDir": "temp",
-        "rootDir": "src",
+        "target": "es2021",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true,
+        "lib": ["es2021", "dom", "dom.iterable"],
         "emitDeclarationOnly": true,
-        "declarationDir": "temp/types",
-        "allowJs": true,
-        "skipLibCheck": true
+        "declaration": true,
+        "declarationMap": true,
+        "declarationDir": "temp/jest",
+        "paths": {
+            "@fkui/vue-labs": ["./src/index.ts"]
+        }
     },
-    "include": ["src/**/*.ts", "src/**/*.vue"]
+    /* this is also needed for vue3-jest to allow typescript to handle *.vue
+     * files imported from the spec-files */
+    "include": ["src/@types/*.ts", "src/stub.ts"],
+    "exclude": ["src/@types/cypress.d.ts"],
+    "references": [
+        {
+            "path": "./tsconfig.lib.json"
+        },
+        {
+            "path": "./tsconfig.pageobjects.json"
+        },
+        {
+            "path": "./tsconfig.cypress.json"
+        }
+    ]
 }

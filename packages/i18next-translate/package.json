@@ -1,6 +1,6 @@
 {
   "name": "@fkui/i18next-translate",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "description": "i18next translation provider for FKUI TranslationService",
   "keywords": [
     "fkui",
@@ -49,14 +49,14 @@
     "i18next": "24.2.2"
   },
   "devDependencies": {
-    "@fkui/logic": "6.1.0",
+    "@fkui/logic": "6.2.0",
     "@rollup/plugin-commonjs": "28.0.2",
     "@rollup/plugin-node-resolve": "16.0.0",
     "@rollup/plugin-typescript": "12.1.2",
     "rollup": "4.34.8"
   },
   "peerDependencies": {
-    "@fkui/logic": "^6.1.0"
+    "@fkui/logic": "^6.2.0"
   },
   "engines": {
     "node": ">= 20",

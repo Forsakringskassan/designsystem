@@ -1,7 +1,6 @@
 {
     "extends": ["../../tsconfig.json", "@fkui/vue/tsconfig.json"],
     "compilerOptions": {
-        "rootDir": "./src",
         "allowJs": true,
         "noEmit": true,
         "skipLibCheck": true

@@ -3,6 +3,7 @@
     "compilerOptions": {
         "composite": true,
         "types": ["cypress"],
+        "target": "es2021",
         "emitDeclarationOnly": true,
         "skipLibCheck": true
     },
