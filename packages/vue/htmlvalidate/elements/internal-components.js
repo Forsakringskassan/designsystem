@@ -240,6 +240,26 @@ module.exports = defineMetadata({
             },
         },
     },
+
+    "i-resize-pane": {
+        flow: true,
+        attributes: {
+            min: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+                list: true,
+            },
+            max: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+                list: true,
+            },
+            initial: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+            },
+            disabled: {
+                boolean: true,
+            },
+        },
+    },
     "i-combobox-dropdown": {
         flow: true,
         interactive: true,
