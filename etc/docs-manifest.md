@@ -127,6 +127,7 @@ functions/test-utils/index.html
 functions/test-utils/jest.html
 functions/test-utils/lib.html
 functions/test-utils/vue.html
+functions/tsconfig.html
 gettingstarted/about/index.html
 gettingstarted/about/news.html
 gettingstarted/about/release-plan.html
