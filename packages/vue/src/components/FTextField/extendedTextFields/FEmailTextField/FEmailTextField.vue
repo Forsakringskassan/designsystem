@@ -69,7 +69,7 @@ export default defineComponent({
          * @model
          */
         modelValue: {
-            type: String,
+            type: [String, null],
             required: false,
             default: undefined,
         },

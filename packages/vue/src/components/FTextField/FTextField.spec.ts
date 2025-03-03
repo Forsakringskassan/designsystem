@@ -454,12 +454,14 @@ describe("formatting and parsing combined with validation", () => {
 
 describe("set v-model programmatic", () => {
     it.each`
-        vModel
-        ${""}
-        ${"an initial value"}
+        modelValue            | viewValue
+        ${""}                 | ${""}
+        ${"an initial value"} | ${"an initial value"}
+        ${undefined}          | ${""}
+        ${null}               | ${""}
     `(
-        "should set viewModel to '$vModel' when setting v-model to '$vModel'",
-        async ({ vModel }) => {
+        "should set viewValue to '$viewValue' when setting v-model to '$modelValue'",
+        async ({ modelValue, viewValue }) => {
             const wrapper = createWrapper({
                 attrs: { id: "elementId" },
                 props: {
@@ -491,9 +493,9 @@ describe("set v-model programmatic", () => {
             expect(wrapper.vm.viewValue).toBe("original input");
             expect(wrapper.vm.$data.lastModelValue).toBe("original input");
 
-            await wrapper.setProps({ modelValue: vModel });
+            await wrapper.setProps({ modelValue });
 
-            expect(wrapper.vm.viewValue).toBe(vModel);
+            expect(wrapper.vm.viewValue).toBe(viewValue);
         },
     );
 

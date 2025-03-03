@@ -46,11 +46,12 @@ export default defineComponent({
         },
         /**
          * The value for the input.
-         * If the prop is not set undefined will be used.
+         * If the prop is not used or set to undefined
+         * or null then the default value will be used.
          * @model
          */
         modelValue: {
-            type: String,
+            type: [String, null],
             required: false,
             default: undefined,
         },

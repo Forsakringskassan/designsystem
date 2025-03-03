@@ -537,7 +537,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -635,7 +635,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -681,7 +681,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -995,7 +995,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -1093,7 +1093,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -1139,7 +1139,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -1843,7 +1843,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -1941,7 +1941,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -1987,7 +1987,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -2948,7 +2948,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -3046,7 +3046,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -3092,7 +3092,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -3884,7 +3884,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -3982,7 +3982,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -4028,7 +4028,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -4552,7 +4552,7 @@ required: false;
 default: () => string;
 };
 modelValue: {
-type: StringConstructor;
+type: (StringConstructor | null)[];
 required: false;
 default: undefined;
 };
@@ -4590,7 +4590,7 @@ required: false;
 default: () => string;
 };
 modelValue: {
-type: StringConstructor;
+type: (StringConstructor | null)[];
 required: false;
 default: undefined;
 };
@@ -4613,7 +4613,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
-modelValue: string;
+modelValue: string | null;
 maxLength: number;
 extendedValidation: boolean;
 pasteErrorText: string;
@@ -4630,7 +4630,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -4728,7 +4728,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -4774,7 +4774,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -8038,7 +8038,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -8136,7 +8136,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -8182,7 +8182,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -8659,7 +8659,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -8757,7 +8757,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -8803,7 +8803,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -9331,7 +9331,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -9429,7 +9429,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -9475,7 +9475,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -9808,7 +9808,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -9906,7 +9906,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -9952,7 +9952,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -10247,7 +10247,7 @@ required: false;
 default: () => string;
 };
 modelValue: {
-type: StringConstructor;
+type: (StringConstructor | null)[];
 required: false;
 default: undefined;
 };
@@ -10278,7 +10278,7 @@ required: false;
 default: () => string;
 };
 modelValue: {
-type: StringConstructor;
+type: (StringConstructor | null)[];
 required: false;
 default: undefined;
 };
@@ -10296,7 +10296,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
-modelValue: string;
+modelValue: string | null;
 maxLength: number;
 extendedValidation: boolean;
 }, {}, {
@@ -10312,7 +10312,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -10410,7 +10410,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -10456,7 +10456,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -10763,7 +10763,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -10861,7 +10861,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -10907,7 +10907,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -11223,7 +11223,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -11321,7 +11321,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -11367,7 +11367,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -11770,7 +11770,7 @@ required: false;
 default: () => string;
 };
 modelValue: {
-type: StringConstructor;
+type: (StringConstructor | null)[];
 required: false;
 default: string;
 };
@@ -11800,7 +11800,7 @@ required: false;
 default: () => string;
 };
 modelValue: {
-type: StringConstructor;
+type: (StringConstructor | null)[];
 required: false;
 default: string;
 };
@@ -11820,7 +11820,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 onUpdate?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
-modelValue: string;
+modelValue: string | null;
 maxLength: number;
 clearableScreenReaderText: string;
 }, {}, {
@@ -11836,7 +11836,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -11934,7 +11934,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -11980,7 +11980,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -13000,7 +13000,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -13098,7 +13098,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | NumberConstructor)[];
+type: (StringConstructor | NumberConstructor | null)[];
 required: false;
 default: string;
 };
@@ -13144,7 +13144,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
 id: string;
-modelValue: string | number;
+modelValue: string | number | null;
 inline: boolean;
 disabled: boolean;
 options: string[] | undefined;
@@ -15616,7 +15616,7 @@ export interface TextFieldSetupProps {
     // (undocumented)
     labelWidth: string;
     // (undocumented)
-    modelValue: string | number;
+    modelValue: string | number | null;
     // (undocumented)
     options?: string[];
     // (undocumented)
