@@ -44,6 +44,7 @@ const columns = ref<FTableColumnData[]>([]);
 const selectedRows = ref<T[]>([]) as Ref<T[]>;
 const tr = shallowRef<HTMLElement[]>([]);
 const tbodyKey = ref(0);
+const selectAllItems = ref(false);
 
 defineOptions({
     inheritAttrs: false,
@@ -144,6 +145,13 @@ const props = defineProps({
         required: false,
         default: () => undefined,
     },
+    /**
+     * If `true`, columns can be resized by dragging their edges.
+     */
+    resizableColumns: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const emit = defineEmits<{
@@ -172,6 +180,10 @@ const emit = defineEmits<{
      */
     select: [row: T];
     /**
+     * Emitted when loading state changes.
+     */
+    loading: [isLoading: boolean];
+    /**
      * Emitted when row is expanded.
      */
     expand: [row: T];
@@ -181,7 +193,7 @@ const emit = defineEmits<{
     collapse: [row: T];
 }>();
 
-const expandableTable: ExpandableTable<T> = useExpandableTable(
+const expandableTable: ExpandableTable<T> = useExpandableTable<T>(
     props.expandableAttribute,
     props.keyAttribute,
     props.expandableDescribedby,
@@ -323,6 +335,10 @@ onMounted(() => {
     registerCallbackOnMount(callbackSortableColumns);
     registerCallbackAfterItemAdd(callbackAfterItemAdd);
     registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
+
+    if (props.resizableColumns) {
+        resizableColumn();
+    }
 });
 
 function forceRepaintIE11(target: HTMLElement): void {
@@ -492,6 +508,98 @@ function setActiveRow(row: T | undefined): void {
     activeRow.value = row;
     emit("update:active", activeRow.value);
 }
+
+function resizableColumn(): void {
+    const gridCells = document.querySelectorAll<HTMLTableCellElement>(".table thead .table-grid");
+    gridCells.forEach((cell) => {
+        const gridColumn = cell.getAttribute("data-grid-column");
+        if (!gridColumn) {
+            return;
+        }
+        const columnHeader = cell.closest("tr")?.querySelector<HTMLTableCellElement>(`th:nth-of-type(${gridColumn})`);
+        if (!columnHeader) {
+            return;
+        }
+        let columnWidth = columnHeader.clientWidth;
+        const isGridLocked = cell.hasAttribute("data-grid-locked");
+        if (isGridLocked) {
+            const width = columnHeader.getAttribute("data-column-width");
+            if (width) {
+                columnWidth = parseInt(width, 10);
+            }
+            columnHeader.style.maxWidth = `${columnWidth}px`;
+            columnHeader.style.minWidth = `${columnWidth}px`;
+            columnHeader.style.width = `${columnWidth}px`;
+        } else {
+            let startX = 0;
+            let dragX = 0;
+            const onMouseDown = (e: MouseEvent): void => {
+                columnWidth = columnHeader.clientWidth;
+                startX = e.clientX;
+                const resizeHandler = (e: MouseEvent): void => {
+                    const newDragX = e.clientX - startX;
+                    if (newDragX !== dragX) {
+                        dragX = newDragX;
+                        let width = columnWidth + dragX;
+                        if (width < 10) {
+                            width = 10;
+                        }
+                        columnHeader.style.maxWidth = `${width}px`;
+                        columnHeader.style.width = `${width}px`;
+                        columnHeader.setAttribute("data-column-width", width.toString());
+                    }
+                    e.preventDefault();
+                };
+                const onMouseUp = (): void => {
+                    window.removeEventListener("mousemove", resizeHandler);
+                    window.removeEventListener("mouseup", onMouseUp);
+                };
+                window.addEventListener("mousemove", resizeHandler);
+                window.addEventListener("mouseup", onMouseUp, { once: true });
+                e.preventDefault();
+            };
+            const onDoubleClick = (): void => {
+                columnHeader.style.maxWidth = "initial";
+                columnHeader.style.width = "initial";
+                columnHeader.setAttribute("data-column-width", "auto");
+            };
+            cell.addEventListener("mousedown", onMouseDown);
+            cell.addEventListener("dblclick", onDoubleClick);
+        }
+    });
+}
+
+function selectAll(): void {
+    const uncheckedBoxes = document.querySelectorAll<HTMLInputElement>(
+        '.table__column--selectable input[type="checkbox"]:not(:checked)',
+    );
+    Array.from(uncheckedBoxes).forEach((checkbox: HTMLInputElement) => checkbox.click());
+}
+
+function unselectAll(): void {
+    const checkedBoxes = document.querySelectorAll<HTMLInputElement>(
+        '.table__column--selectable input[type="checkbox"]:checked',
+    );
+    Array.from(checkedBoxes).forEach((checkbox: HTMLInputElement) => checkbox.click());
+}
+
+async function onChangeSelectAll(value: boolean): Promise<void> {
+    try {
+        emit("loading", true);
+        await delay(10);
+        if (value) {
+            selectAll();
+        } else {
+            unselectAll();
+        }
+    } finally {
+        emit("loading", false);
+    }
+}
+
+function delay(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 </script>
 
 <template>
@@ -515,14 +623,27 @@ function setActiveRow(row: T | undefined): void {
                     </th>
 
                     <th v-if="selectable" scope="col">
-                        <span class="sr-only">{{ $t("fkui.interactive-table.select", "Markera") }}</span>
+                        <div class="table__input" title="Välj alla">
+                            <f-checkbox-field
+                                v-model="selectAllItems"
+                                :disabled="rows.length === 0"
+                                :value="true"
+                                @change="onChangeSelectAll"
+                            >
+                                <span class="sr-only">Välj alla</span>
+                            </f-checkbox-field>
+                        </div>
                     </th>
 
                     <th
-                        v-for="column in visibleColumns"
+                        v-for="(column, index) in visibleColumns"
                         :key="column.id"
                         scope="col"
-                        :class="columnClasses(column)"
+                        :class="[columnClasses(column), resizableColumns ? 'resizable' : '']"
+                        class="table-grid"
+                        :data-grid-column="index + (selectable ? 2 : 1)"
+                        data-column-size="auto"
+                        :data-grid-locked="index === 0 ? true : null"
                         v-on="column.sortable ? { click: () => onClickColumnHeader(column) } : {}"
                     >
                         <!-- eslint-disable-next-line vue/no-v-html -->
@@ -640,3 +761,9 @@ function setActiveRow(row: T | undefined): void {
         </table>
     </div>
 </template>
+
+<style scoped>
+.table th.table-grid:not([data-grid-locked]).resizable {
+    cursor: col-resize;
+}
+</style>
