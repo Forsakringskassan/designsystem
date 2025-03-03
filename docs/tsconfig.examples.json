@@ -1,5 +1,5 @@
 {
-    "extends": "../tsconfig.json",
+    "extends": "@fkui/tsconfig/recommended",
     "compilerOptions": {
         "composite": true,
         "rootDir": ".",
