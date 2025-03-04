@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FPageLayout, FFieldset, FCheckboxField } from "../components";
+import { FPageLayout, FFieldset, FCheckboxField, FDetailsPanel, useDetailsPanel } from "../components";
 import { IResizePane } from "../internal-components";
 
 const disabled = ref(false);
@@ -8,50 +8,48 @@ const enableLeft = ref(true);
 const enableRight = ref(true);
 const enableTop = ref(true);
 const enableBottom = ref(true);
+
+interface Item {
+    name: string;
+}
+
+const details = useDetailsPanel<Item>("awesome-panel");
+
+const AwesomePanel = FDetailsPanel<Item>;
+
+function openItem(): void {
+    details.open({ name: "Kalle Anka" });
+}
 </script>
 
 <template>
     <f-page-layout layout="three-column">
-        <template #header>
-            <header v-if="enableTop">
-                <i-resize-pane :disabled min="100px" max="200px" initial="100%">
-                    <template #default="bindings">
-                        <h2>Sidhuvud</h2>
-                        <p>lorem ipsum dolor sit amet</p>
-                        <pre>{{ JSON.stringify(bindings, null, 2) }}</pre>
-                    </template>
-                </i-resize-pane>
-            </header>
-        </template>
-
-        <template #left>
-            <template v-if="enableLeft">
-                <i-resize-pane :disabled min="25%" max="40%" initial="400px">
-                    <template #default="bindings">
-                        <h2>Vänsterpanel</h2>
-                        <p>lorem ipsum dolor sit amet</p>
-                        <pre>{{ JSON.stringify(bindings, null, 2) }}</pre>
-                    </template>
-                </i-resize-pane>
-            </template>
-        </template>
-
         <template #right>
-            <template v-if="enableRight">
-                <i-resize-pane :disabled min="25%" max="40%" initial="400px">
-                    <template #default="bindings">
-                        <h2>Högerpanel</h2>
-                        <p>Lorem ipsum dolor sit amet</p>
-                        <pre>{{ JSON.stringify(bindings, null, 2) }}</pre>
-                    </template>
-                </i-resize-pane>
-            </template>
+            <awesome-panel name="awesome-panel" resizable :disabled min="20%" max="50%" initial="40%">
+                <template #default="{ item }">
+                    <h2>Vänsterpanel</h2>
+                    <dl>
+                        <dt>Namn</dt>
+                        <dd>{{ item.name }}</dd>
+                    </dl>
+                </template>
+            </awesome-panel>
+            <f-details-panel name="another-panel" resizable :disabled min="20%" max="50%" initial="40%">
+                <template #default="{ item }">
+                    <h2>Vänsterpanel</h2>
+                    <dl>
+                        <dt>Namn</dt>
+                        <dd>{{ item.name }}</dd>
+                    </dl>
+                </template>
+            </f-details-panel>
         </template>
 
         <template #content>
             <main>
                 <h1>Lorem ipsum</h1>
                 <p>Dolor sit amet.</p>
+                <button type="button" @click="openItem">Öppna</button>
                 <h3>Inställningar</h3>
                 <f-fieldset>
                     <template #label>Areas</template>
@@ -117,18 +115,6 @@ const enableBottom = ref(true);
                     <li><kbd>End</kbd> ökar ytan till största möjliga.</li>
                 </ul>
             </main>
-        </template>
-
-        <template #footer>
-            <footer v-if="enableBottom">
-                <i-resize-pane :disabled min="100px" max="200px" initial="100%">
-                    <template #default="bindings">
-                        <h2>Sidfot</h2>
-                        <p>lorem ipsum dolor sit amet</p>
-                        <pre>{{ JSON.stringify(bindings, null, 2) }}</pre>
-                    </template>
-                </i-resize-pane>
-            </footer>
         </template>
     </f-page-layout>
 </template>
