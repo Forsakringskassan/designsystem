@@ -19545,7 +19545,7 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_r
      * @model
      */
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: void 0
     },
@@ -19650,7 +19650,7 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_r
       default: () => ElementIdService.generateElementId()
     },
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: ""
     },
@@ -19672,7 +19672,8 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_r
   },
   computed: {
     canClear() {
-      return this.modelValue !== "";
+      const isEmpty2 = this.modelValue === void 0 || this.modelValue === null || this.modelValue === "";
+      return !isEmpty2;
     }
   },
   methods: {

@@ -11453,7 +11453,7 @@ var _sfc_main$D = defineComponent({
      * @model
      */
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: void 0
     },
@@ -11599,11 +11599,12 @@ var _sfc_main$C = defineComponent({
     },
     /**
      * The value for the input.
-     * If the prop is not set undefined will be used.
+     * If the prop is not used or set to undefined
+     * or null then the default value will be used.
      * @model
      */
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: void 0
     },
@@ -11755,7 +11756,7 @@ var _sfc_main$A = defineComponent({
       default: () => ElementIdService.generateElementId()
     },
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: ""
     },
@@ -11777,7 +11778,8 @@ var _sfc_main$A = defineComponent({
   },
   computed: {
     canClear() {
-      return this.modelValue !== "";
+      const isEmpty2 = this.modelValue === void 0 || this.modelValue === null || this.modelValue === "";
+      return !isEmpty2;
     }
   },
   methods: {
