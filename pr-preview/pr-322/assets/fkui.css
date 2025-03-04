@@ -6441,7 +6441,7 @@ input[type=search]:focus,
 /* highlight color */
 /* the width of the visible handle */
 /* how much extra click/hover area the handle has */
-/* how much extra space the handle occupies when hovering (not counting the click area)*/
+/* how much extra space the handle occupies when hovering (not counting the click area) */
 /* how long before visually indicating the hover state */
 /* how long the animation for the visual indicator is */
 .resize__handle {
