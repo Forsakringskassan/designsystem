@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="sv" class="layout--content-with-menu" data-root-url="..">
+<html lang="sv" class="layout--article" data-root-url="..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Funktioner - FK Designsystem</title>
+        <title>@fkui/tsconfig - FK Designsystem</title>
 
         <!-- prettier-ignore -->
         <link
@@ -1017,7 +1017,7 @@
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
-    <li class="link ">
+    <li class="link active">
         <!-- prettier-ignore -->
         <a
             href="./tsconfig.html"
@@ -1032,14 +1032,91 @@
 
                 <!-- prettier-ignore --><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Funktioner</h1>
+                    <h1 id="title">@fkui/tsconfig</h1>
 
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#anvandning">Användning</a></li>
+                                
+                                <li><a href="#cypress">Cypress</a></li>
+                                
+                                <li><a href="#vue">Vue</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
                     
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Här kan du som utvecklare hitta funktioner, hjälpklasser och annat som du behöver när du utvecklar din applikation. Du kan använda det här som en formelsamling.</p>
+<p>Rekommenderad konfiguration för TypeScript (<code>tsconfig.json</code>).</p>
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>Lägg till i din <code>tsconfig.json</code>:</p>
 
+                <div
+                    id="example-c32f19"
+                    class="code-preview code-preview--default"
+                    data-test="recommended"
+                    data-tags="context=5"
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> {
+<span class="hljs-addition">+    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;],</span>
+     &quot;compilerOptions&quot;: {
+         /* ... */
+     }
+ }
+</code></pre>
+                </div>
+            <h2 id="cypress"><a class="header-anchor" href="#cypress">Cypress</a></h2><p>Utöver den rekommenderade konfigurationen använd konfigurationen för Cypress:</p>
+
+                <div
+                    id="example-264ec9"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="context=5"
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> {
+<span class="hljs-deletion">-    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;],</span>
+<span class="hljs-addition">+    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;, &quot;@fkui/tsconfig/cypress&quot;],</span>
+     &quot;compilerOptions&quot;: {
+         /* ... */
+     }
+ }
+</code></pre>
+                </div>
+            <h2 id="vue"><a class="header-anchor" href="#vue">Vue</a></h2><p>Utöver den rekommenderade konfigurationen använd konfigurationen för Vue:</p>
+
+                <div
+                    id="example-b0aa5d"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="context=5"
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> {
+<span class="hljs-deletion">-    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;],</span>
+<span class="hljs-addition">+    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;, &quot;@fkui/tsconfig/vue&quot;],</span>
+     &quot;compilerOptions&quot;: {
+         /* ... */
+     }
+ }
+</code></pre>
+                </div>
+            
 
                     </div>
                 </main>
@@ -1198,9 +1275,9 @@
 
     <!--
 
-         Source file: docs/functions/index.md
-         Document ID: fs:docs/functions/index.md
-         Document name: functions
+         Source file: docs/functions/tsconfig.md
+         Document ID: fs:docs/functions/tsconfig.md
+         Document name: tsconfig
          Document alias: 
 
     -->
