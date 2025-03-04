@@ -1,31 +1,198 @@
 <script setup lang="ts">
-import { FPageExpandablePanel, FPageLayout } from "@fkui/vue";
+import { shallowRef } from "vue";
+import {
+    FPageClosablePanel,
+    FPageExpandablePanel,
+    FPageMenuPanel,
+    FSelectField,
+    FPageLayout,
+    FInteractiveTable,
+    FTableColumn,
+    FIcon,
+} from "@fkui/vue";
+// import { usePanel } from "../components/FPageClosablePanel/use-panel";
+// import MyAwesomePanel from "./my-awesome-panel.vue";
+// import { Ankeborgare } from "./ankeborgare";
+
+// import { defineCustomElement, ref } from "vue";
+// import wcHello from "./wc-hello.ce.vue";
+// customElements.define("f-page-menu-panel-ce", defineCustomElement(FPageMenuPanelCe));
+
+import { type Ref, ref } from "vue";
+
+type PanelCallback<T> = (data: { item: T; reason: string }) => void;
+
+interface ClosablePanelControl<T> {
+    readonly name: Readonly<Ref<string>>;
+    item: Ref<T | null>;
+    callback: Ref<PanelCallback<T> | null>;
+    open(item: T, options?: { onClose?: PanelCallback<T> }): void;
+    close(): void;
+    destroy(): void;
+}
+
+interface ClosablePanel<T = unknown> {
+    open(item: T, options?: { onClose?: PanelCallback<T> }): void;
+    close(): void;
+}
+
+const panels: Array<ClosablePanelControl<unknown>> = [];
+
+function createClosablePanel<T>(name: string): ClosablePanelControl<T> {
+    const control: ClosablePanelControl<unknown> = {
+        name: ref(name),
+        item: ref(null),
+        callback: ref(null),
+        open(item, options) {
+            this.item.value = item;
+            this.callback.value = options?.onClose ?? null;
+        },
+        close() {
+            this.item.value = null;
+            this.callback.value = null;
+        },
+        destroy() {
+            /* do nothing */
+        },
+    };
+    panels.push(control);
+    return control as ClosablePanelControl<T>;
+}
+
+function usePanel<T = unknown>(name: string): ClosablePanel<T> {
+    return {
+        open(item, options) {
+            const panel = panels.find((it) => it.name.value === name);
+            if (panel) {
+                panel.open(item, options);
+            }
+        },
+        close() {
+            const panel = panels.find((it) => it.name.value === name);
+            if (panel) {
+                panel.close();
+            }
+        },
+    };
+}
+
+export interface Ankeborgare {
+    namn: string;
+}
+
+type PanelVariant = typeof FPageExpandablePanel | typeof FPageMenuPanel | typeof FPageClosablePanel;
+
+const leftObjectPanel = usePanel<Ankeborgare>("left-object");
+const leftNumberPanel = usePanel("left-number");
+const rightPanel = usePanel("right");
+const leftVariant = shallowRef<PanelVariant>(FPageMenuPanel);
+const rightVariant = shallowRef<PanelVariant>(FPageExpandablePanel);
+
+const rows = [
+    { id: 1, namn: "Kalle Anka" },
+    { id: 2, namn: "Kajsa Anka" },
+    { id: 3, namn: "Hortensia Anka" },
+];
+
+function onClick(item: number | Ankeborgare): void {
+    if (typeof item === "number") {
+        leftNumberPanel.open(item);
+    } else {
+        leftObjectPanel.open(item, {
+            onClose({ item, reason }) {
+                console.log("onclose", { item, reason });
+            },
+        });
+    }
+    rightPanel.open(item);
+}
 </script>
 
 <template>
     <f-page-layout layout="three-column">
         <template #header> [header] </template>
         <template #left>
-            <f-page-expandable-panel>
-                <template #header> [panel header] </template>
-                <template #default>
-                    <p>[panel content]</p>
-                    <p>[panel content]</p>
-                    <p>[panel content]</p>
+            <f-page-menu-panel v-if="leftVariant.name !== FPageClosablePanel.name">
+                <template #icon="{ isOpen }">
+                    <f-icon :name="isOpen ? 'plus' : 'triangle'"> <title>Plusmeny</title> </f-icon>
                 </template>
-                <template #footer> [panel footer] </template>
-            </f-page-expandable-panel>
+                <template #header="{ isOpen }">
+                    <template v-if="isOpen"> [panel header] </template>
+                    <!-- <template v-else> [foo] </template> -->
+                </template>
+                <template #default="{ isOpen }">
+                    <template v-if="isOpen">
+                        <p>[panel content]</p>
+                        <p>[panel content]</p>
+                        <p>[panel content]</p>
+                        <p>{{ leftVariant.name }}</p>
+                        <f-select-field v-model="leftVariant">
+                            <template #label>Variant</template>
+                            <template #default>
+                                <option :value="FPageMenuPanel">Meny</option>
+                                <option :value="FPageExpandablePanel">Hopfällbar</option>
+                                <option :value="FPageClosablePanel">Stängbar</option>
+                            </template>
+                        </f-select-field>
+                    </template>
+                    <template v-else> bar bar bar bar foobar foobarbaz </template>
+                </template>
+                <template #footer="{ isOpen }">
+                    <template v-if="isOpen">[panel footer]</template>
+                    <template v-else> baz </template>
+                </template>
+            </f-page-menu-panel>
+            <!-- <MyAwesomePanel v-if="leftVariant.name === FPageClosablePanel.name" name="left-object"></MyAwesomePanel> -->
+            <f-page-closable-panel v-if="leftVariant.name === FPageClosablePanel.name" name="left-number">
+                <template #default="{ item }">
+                    <p>En annan panel.</p>
+                    <pre>{{ JSON.stringify({ item }, null, 2) }}</pre>
+
+                    <p>{{ leftVariant.name }}</p>
+                    <f-select-field v-model="leftVariant">
+                        <template #label>Variant</template>
+                        <template #default>
+                            <option :value="FPageMenuPanel">Meny</option>
+                            <option :value="FPageExpandablePanel">Hopfällbar</option>
+                            <option :value="FPageClosablePanel">Stängbar</option>
+                        </template>
+                    </f-select-field>
+                </template>
+            </f-page-closable-panel>
         </template>
         <template #right>
-            <f-page-expandable-panel>
+            <Component :is="rightVariant" v-if="rightVariant !== FPageClosablePanel">
                 <template #header> [panel header] </template>
                 <template #default>
                     <p>[panel content]</p>
                     <p>[panel content]</p>
                     <p>[panel content]</p>
+                    <f-select-field v-model="rightVariant">
+                        <template #label>Variant</template>
+                        <template #default>
+                            <option :value="FPageMenuPanel">Meny</option>
+                            <option :value="FPageExpandablePanel">Hopfällbar</option>
+                            <option :value="FPageClosablePanel">Stängbar</option>
+                        </template>
+                    </f-select-field>
                 </template>
                 <template #footer> [panel footer] </template>
-            </f-page-expandable-panel>
+            </Component>
+            <f-page-closable-panel v-if="rightVariant.name === FPageClosablePanel.name" name="right">
+                <template #default="{ item }">
+                    <pre>{{ JSON.stringify({ item }, null, 2) }}</pre>
+
+                    <p>{{ rightVariant.name }}</p>
+                    <f-select-field v-model="rightVariant">
+                        <template #label>Variant</template>
+                        <template #default>
+                            <option :value="FPageMenuPanel">Meny</option>
+                            <option :value="FPageExpandablePanel">Hopfällbar</option>
+                            <option :value="FPageClosablePanel">Stängbar</option>
+                        </template>
+                    </f-select-field>
+                </template>
+            </f-page-closable-panel>
         </template>
         <template #content>
             <!-- [html-validate-disable-next no-inline-style -- for testing only]-->
@@ -41,6 +208,21 @@ import { FPageExpandablePanel, FPageLayout } from "@fkui/vue";
                     Maecenas rhoncus felis tincidunt dui faucibus, nec rhoncus tellus mollis. Phasellus vitae magna
                     turpis. Etiam in mattis mi. Duis at justo finibus, tristique lacus nec, lobortis dui.
                 </p>
+                <div
+                    v-if="leftVariant.name === FPageClosablePanel.name || rightVariant.name === FPageClosablePanel.name"
+                >
+                    Öppnas till vänster
+                    <f-interactive-table :rows key-attribute="id" @change="onClick($event)">
+                        <template #caption> Kända ankeborgare </template>
+                        <template #default="{ row }">
+                            <f-table-column name="name" title="Namn">
+                                {{ row.namn }}
+                            </f-table-column>
+                        </template>
+                    </f-interactive-table>
+                    <button type="button" class="button button--secondary" @click="onClick(1)">Öppna grunka</button>
+                    <button type="button" class="button button--secondary" @click="onClick(2)">Öppna mojäng</button>
+                </div>
                 <p>
                     Ut placerat consectetur pretium. Proin luctus neque vitae consequat pellentesque. Aliquam arcu arcu,
                     auctor ac ipsum aliquet, bibendum pretium est. Integer sit amet mattis dolor, quis volutpat justo.

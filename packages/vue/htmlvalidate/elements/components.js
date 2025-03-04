@@ -439,6 +439,10 @@ module.exports = defineMetadata({
         },
     },
 
+    "ce-page-menu-panel": {
+        flow: true,
+    },
+
     "f-page-expandable-panel": {
         flow: true,
     },

@@ -14,6 +14,10 @@ import { usePanel } from "../components/FPageClosablePanel/use-panel";
 import MyAwesomePanel from "./my-awesome-panel.vue";
 import { Ankeborgare } from "./ankeborgare";
 
+// import { defineCustomElement, ref } from "vue";
+// import wcHello from "./wc-hello.ce.vue";
+// customElements.define("f-page-menu-panel-ce", defineCustomElement(FPageMenuPanelCe));
+
 type PanelVariant = typeof FPageExpandablePanel | typeof FPageMenuPanel | typeof FPageClosablePanel;
 
 const leftObjectPanel = usePanel<Ankeborgare>("left-object");
@@ -46,7 +50,7 @@ function onClick(item: number | Ankeborgare): void {
     <f-page-layout layout="three-column">
         <template #header> [header] </template>
         <template #left>
-            <Component :is="leftVariant" v-if="leftVariant.name !== FPageClosablePanel.name">
+            <f-page-menu-panel v-if="leftVariant.name !== FPageClosablePanel.name">
                 <template #icon="{ isOpen }">
                     <f-icon :name="isOpen ? 'plus' : 'triangle'"> <title>Plusmeny</title> </f-icon>
                 </template>
@@ -75,7 +79,7 @@ function onClick(item: number | Ankeborgare): void {
                     <template v-if="isOpen">[panel footer]</template>
                     <template v-else> baz </template>
                 </template>
-            </Component>
+            </f-page-menu-panel>
             <MyAwesomePanel v-if="leftVariant.name === FPageClosablePanel.name" name="left-object"></MyAwesomePanel>
             <f-page-closable-panel v-if="leftVariant.name === FPageClosablePanel.name" name="left-number">
                 <template #default="{ item }">
