@@ -25,7 +25,7 @@
     "@fkui/logic": "6.2.0",
     "@fkui/theme-default": "6.2.0",
     "@fkui/vue": "6.2.0",
-    "core-js": "3.40.0",
+    "core-js": "3.41.0",
     "vue": "3.5.13",
     "vue-router": "4.5.0"
   },
