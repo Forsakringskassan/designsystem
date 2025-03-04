@@ -75,6 +75,7 @@ export { FOffline } from "./FOffline";
 export { FOutputField } from "./FOutputField";
 export { FPageExpandablePanel } from "./FPageExpandablePanel";
 export { FPageHeader } from "./FPageHeader";
+export { FPageMenuPanel } from "./FPageMenuPanel";
 export {
     type LayoutDefinition,
     type LayoutAreaAttachPanel,
