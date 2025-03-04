@@ -219,6 +219,16 @@ module.exports = defineMetadata({
         slots: ["default"],
     },
 
+    "f-details-panel": {
+        flow: true,
+        attributes: {
+            name: {
+                enum: ["/.+/"],
+                required: true,
+            },
+        },
+    },
+
     "f-expand": {
         flow: true,
         transparent: true,
