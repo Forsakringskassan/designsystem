@@ -430,6 +430,14 @@ module.exports = defineMetadata({
         inherit: "f-label#description",
     },
 
+    "ce-page-menu-panel": {
+        flow: true,
+    },
+
+    "f-page-menu-panel": {
+        flow: true,
+    },
+
     "f-page-layout": {
         flow: true,
         attributes: {

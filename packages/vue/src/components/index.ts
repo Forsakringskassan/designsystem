@@ -84,6 +84,7 @@ export {
     registerLayout,
     useAreaData,
 } from "./FPageLayout";
+export { FPageMenuPanel } from "./FPageMenuPanel";
 export { FProgressbar } from "./FProgressbar";
 export { FRadioField } from "./FRadioField";
 export { FSelectField } from "./FSelectField";

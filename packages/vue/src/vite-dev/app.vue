@@ -1,37 +1,72 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { FTextField } from "../components";
-
-const namn = ref("World");
+import { FPageLayout, FPageMenuPanel } from "@fkui/vue";
 </script>
 
 <template>
-    <div class="container">
-        <h1>@fkui/vue</h1>
-
-        <p>A few common commands to keep track of:</p>
-        <dl>
-            <dt><code>npm run vue unit</code></dt>
-            <dd>Run Jest unit tests</dd>
-            <dt><code>npm run vue unit -- Foobar</code></dt>
-            <dd>Run unit tests matching "Foobar"</dd>
-            <dt><code>npm run vue unit -- -u</code></dt>
-            <dd>Update snapshots</dd>
-            <dt><code>npm exec cypress -- open --component</code></dt>
-            <dd>Run Cypress Component Tests</dd>
-            <dt><code>npm run prettier:write</code></dt>
-            <dd>Reformat files</dd>
-            <dt><code>npm run lint</code></dt>
-            <dd>Run all linting and static analyzis</dd>
-            <dt><code>npm test</code></dt>
-            <dd>Run all tests</dd>
-        </dl>
-
-        <hr />
-
-        <h2>Sandbox</h2>
-
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
-    </div>
+    <f-page-layout layout="three-column">
+        <template #header>
+            <header class="my-header">[header]</header>
+        </template>
+        <template #left>
+            <f-page-menu-panel>
+                <template #header="{ isOpen }">
+                    <template v-if="isOpen"> [panel header] </template>
+                </template>
+                <template #default="{ isOpen }">
+                    <template v-if="isOpen">
+                        <p>[panel content]</p>
+                        <p>[panel content]</p>
+                        <p>[panel content]</p>
+                    </template>
+                    <template v-else> [closed mode] </template>
+                </template>
+                <template #footer="{ isOpen }">
+                    <template v-if="isOpen">[panel footer]</template>
+                    <template v-else> [closed mode] </template>
+                </template>
+            </f-page-menu-panel>
+        </template>
+        <template #right>
+            <div class="my-right-panel">[right]</div>
+        </template>
+        <template #content>
+            <main class="my-content">[main]</main>
+        </template>
+        <template #footer>
+            <footer class="my-footer">[footer]</footer>
+        </template>
+    </f-page-layout>
 </template>
+
+<style scoped>
+.my-header {
+    background: darkred;
+    color: white;
+    padding: 1rem;
+}
+
+.my-footer {
+    background: cyan;
+    color: black;
+    padding: 1rem;
+}
+
+.my-left-panel {
+    background: greenyellow;
+    padding: 1rem;
+    flex-grow: 1;
+    width: 25cqw;
+}
+
+.my-right-panel {
+    background: hotpink;
+    padding: 1rem;
+    flex-grow: 1;
+    width: 25cqw;
+}
+
+.my-content {
+    flex-grow: 1;
+    padding: 1rem;
+}
+</style>
