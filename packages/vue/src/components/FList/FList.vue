@@ -307,7 +307,7 @@ function isActive(item: T): boolean {
             </div>
         </li>
     </ul>
-    <ul v-else ref="ulElement" class="list list--hover" :tabindex="checkbox ? 0 : undefined">
+    <ul v-else ref="ulElement" class="list list--hover">
         <li
             v-for="(item, index) in items"
             :id="getItemId(item)"

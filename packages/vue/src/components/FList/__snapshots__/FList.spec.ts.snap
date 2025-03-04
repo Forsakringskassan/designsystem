@@ -112,7 +112,6 @@ exports[`snapshots should match snapshot with a list containg three items 1`] = 
 exports[`snapshots should match snapshot with list being selectable with first and second item selected 1`] = `
 <ul
   class="list list--hover"
-  tabindex="0"
 >
   
   <li
@@ -213,7 +212,6 @@ exports[`snapshots should match snapshot with list being selectable with first a
 exports[`snapshots should match snapshot with list being selectable with second item active 1`] = `
 <ul
   class="list list--hover"
-  tabindex="0"
 >
   
   <li
