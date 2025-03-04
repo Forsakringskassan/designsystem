@@ -27,6 +27,7 @@
       "require": "./dist/cjs/cypress.cjs.js",
       "import": "./dist/esm/cypress.esm.js"
     },
+    "./style.css": "./dist/esm/vue.css",
     "./htmlvalidate": "./htmlvalidate/index.cjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
     "./package.json": "./package.json",
