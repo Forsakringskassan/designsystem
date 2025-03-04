@@ -439,6 +439,10 @@ module.exports = defineMetadata({
         },
     },
 
+    "f-page-expandable-panel": {
+        flow: true,
+    },
+
     "f-progressbar": {
         flow: true,
         requiredAttributes: ["aria-label"],

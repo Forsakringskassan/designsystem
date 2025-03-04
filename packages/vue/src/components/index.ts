@@ -73,6 +73,7 @@ export {
 } from "./FNavigationMenu";
 export { FOffline } from "./FOffline";
 export { FOutputField } from "./FOutputField";
+export { FPageExpandablePanel } from "./FPageExpandablePanel";
 export { FPageHeader } from "./FPageHeader";
 export {
     type LayoutDefinition,
