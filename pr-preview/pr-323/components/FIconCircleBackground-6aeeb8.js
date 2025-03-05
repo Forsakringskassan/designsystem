@@ -1,73 +1,73 @@
-"use strict";
-(() => {
-  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-  }) : x)(function(x) {
-    if (typeof require !== "undefined") return require.apply(this, arguments);
-    throw Error('Dynamic require of "' + x + '" is not supported');
+// docs/src/setup.ts
+import { createApp, h } from "vue";
+import {
+  ErrorPlugin,
+  FErrorHandlingApp,
+  TestPlugin,
+  TranslationPlugin,
+  ValidationPlugin,
+  setRunningContext
+} from "@fkui/vue";
+function setup(options) {
+  const { rootComponent, selector } = options;
+  const app = createApp({
+    render() {
+      return h(FErrorHandlingApp, { defaultComponent: rootComponent });
+    }
   });
-
-  // docs/src/setup.ts
-  var import_vue = __require("vue");
-  var import_vue2 = __require("@fkui/vue");
-  function setup(options) {
-    const { rootComponent, selector } = options;
-    const app = (0, import_vue.createApp)({
-      render() {
-        return (0, import_vue.h)(import_vue2.FErrorHandlingApp, { defaultComponent: rootComponent });
-      }
-    });
-    (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin, {
-      captureWarnings: true,
-      logToConsole: true
-    });
-    app.use(import_vue2.ValidationPlugin);
-    app.use(import_vue2.TestPlugin);
-    app.use(import_vue2.TranslationPlugin);
-    app.mount(selector);
-  }
-
-  // virtual-entry:./packages/vue/src/components/FIcon/examples/FIconCircleBackground.vue
-  var import_vue3 = __require("vue");
-  var import_vue4 = __require("@fkui/vue");
-  var import_vue5 = __require("vue");
-  var exampleComponent = (0, import_vue3.defineComponent)({
-    name: "FIconCircleBackground",
-    components: { FIcon: import_vue4.FIcon }
+  setRunningContext(app);
+  app.use(ErrorPlugin, {
+    captureWarnings: true,
+    logToConsole: true
   });
-  var _hoisted_1 = { class: "icon-stack icon-stack--circle" };
-  var _hoisted_2 = { class: "icon-stack icon-stack--circle" };
-  var _hoisted_3 = { class: "icon-stack icon-stack--circle-bottom" };
-  var _hoisted_4 = { class: "icon-stack icon-stack--circle-bottom" };
-  function render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
-    return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
-      (0, import_vue5.createElementVNode)("div", null, [
-        (0, import_vue5.createElementVNode)("div", _hoisted_1, [
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "circle" }),
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "success" })
-        ]),
-        (0, import_vue5.createElementVNode)("div", _hoisted_2, [
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "circle" }),
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "bell" })
-        ])
+  app.use(ValidationPlugin);
+  app.use(TestPlugin);
+  app.use(TranslationPlugin);
+  app.mount(selector);
+}
+
+// virtual-entry:./packages/vue/src/components/FIcon/examples/FIconCircleBackground.vue
+import { defineComponent } from "vue";
+import { FIcon } from "@fkui/vue";
+import { resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+var exampleComponent = defineComponent({
+  name: "FIconCircleBackground",
+  components: { FIcon }
+});
+var _hoisted_1 = { class: "icon-stack icon-stack--circle" };
+var _hoisted_2 = { class: "icon-stack icon-stack--circle" };
+var _hoisted_3 = { class: "icon-stack icon-stack--circle-bottom" };
+var _hoisted_4 = { class: "icon-stack icon-stack--circle-bottom" };
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_icon = _resolveComponent("f-icon");
+  return _openBlock(), _createElementBlock("div", null, [
+    _createElementVNode("div", null, [
+      _createElementVNode("div", _hoisted_1, [
+        _createVNode(_component_f_icon, { name: "circle" }),
+        _createVNode(_component_f_icon, { name: "success" })
       ]),
-      (0, import_vue5.createElementVNode)("div", null, [
-        (0, import_vue5.createElementVNode)("div", _hoisted_3, [
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "circle" }),
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "success" })
-        ]),
-        (0, import_vue5.createElementVNode)("div", _hoisted_4, [
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "circle" }),
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "bell" })
-        ])
+      _createElementVNode("div", _hoisted_2, [
+        _createVNode(_component_f_icon, { name: "circle" }),
+        _createVNode(_component_f_icon, { name: "bell" })
       ])
-    ]);
-  }
-  exampleComponent.render = render;
-  setup({
-    rootComponent: exampleComponent,
-    selector: "#FIconCircleBackground"
-  });
-})();
+    ]),
+    _createElementVNode("div", null, [
+      _createElementVNode("div", _hoisted_3, [
+        _createVNode(_component_f_icon, { name: "circle" }),
+        _createVNode(_component_f_icon, { name: "success" })
+      ]),
+      _createElementVNode("div", _hoisted_4, [
+        _createVNode(_component_f_icon, { name: "circle" }),
+        _createVNode(_component_f_icon, { name: "bell" })
+      ])
+    ])
+  ]);
+}
+exampleComponent.render = render;
+setup({
+  rootComponent: exampleComponent,
+  selector: "#FIconCircleBackground"
+});
+export {
+  render
+};
