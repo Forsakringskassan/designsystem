@@ -64,6 +64,7 @@
   --fkds-color-feedback-border-positive: #35805b;
   --fkds-color-feedback-border-warning: #ffbe10;
   --fkds-color-feedback-border-negative: #ca1515;
+  --fkds-color-feedback-text-negative: #ca1515;
   --fkds-color-select-background-primary-default: #35805b;
   --fkds-color-select-background-primary-hover: #dbe9e2;
   --fkds-color-select-background-primary-active: #dbe9e2;
@@ -3870,7 +3871,7 @@ input[type=search]:focus,
 }
 
 .label {
-  color: var(--f-text-color-default);
+  color: var(--fkds-color-text-primary);
   display: inline-block;
   font-size: var(--f-font-size-standard);
   font-weight: var(--f-font-weight-medium);
@@ -3884,7 +3885,7 @@ input[type=search]:focus,
   margin-top: var(--f-label-message-margin-top);
 }
 .label__message--error {
-  color: var(--f-text-color-error);
+  color: var(--fkds-color-feedback-text-negative);
 }
 .label__icon-wrapper {
   position: relative;
@@ -3896,9 +3897,10 @@ input[type=search]:focus,
 .label__description {
   display: block;
   font-weight: var(--f-font-weight-normal);
+  color: var(--fkds-color-text-primary);
 }
 .label__description--format {
-  color: var(--f-text-color-discrete);
+  color: var(--fkds-color-text-secondary);
 }
 
 .layout-application-template {

@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
@@ -450,10 +450,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.40.0",
+    version: "3.41.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.40.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.41.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -11014,11 +11014,12 @@ var _sfc_main$E = defineComponent({
     },
     /**
      * The value for the input.
-     * If the prop is not set undefined will be used.
+     * If the prop is not used or set to undefined
+     * or null then the default value will be used.
      * @model
      */
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, null],
       required: false,
       default: ""
     },
@@ -11452,7 +11453,7 @@ var _sfc_main$D = defineComponent({
      * @model
      */
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: void 0
     },
@@ -11598,11 +11599,12 @@ var _sfc_main$C = defineComponent({
     },
     /**
      * The value for the input.
-     * If the prop is not set undefined will be used.
+     * If the prop is not used or set to undefined
+     * or null then the default value will be used.
      * @model
      */
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: void 0
     },
@@ -11754,7 +11756,7 @@ var _sfc_main$A = defineComponent({
       default: () => ElementIdService.generateElementId()
     },
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: ""
     },
@@ -11776,7 +11778,8 @@ var _sfc_main$A = defineComponent({
   },
   computed: {
     canClear() {
-      return this.modelValue !== "";
+      const isEmpty2 = this.modelValue === void 0 || this.modelValue === null || this.modelValue === "";
+      return !isEmpty2;
     }
   },
   methods: {

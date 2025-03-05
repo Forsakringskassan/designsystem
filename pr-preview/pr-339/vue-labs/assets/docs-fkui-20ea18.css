@@ -66,6 +66,7 @@ html {
   --fkds-color-feedback-border-positive: #35805b;
   --fkds-color-feedback-border-warning: #ffbe10;
   --fkds-color-feedback-border-negative: #ca1515;
+  --fkds-color-feedback-text-negative: #ca1515;
   --fkds-color-select-background-primary-default: #35805b;
   --fkds-color-select-background-primary-hover: #dbe9e2;
   --fkds-color-select-background-primary-active: #dbe9e2;

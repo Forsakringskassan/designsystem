@@ -11471,10 +11471,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.40.0",
+    version: "3.41.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "© 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.40.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.41.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -19106,11 +19106,12 @@ const _sfc_main$E = /* @__PURE__ */ defineComponent({
     },
     /**
      * The value for the input.
-     * If the prop is not set undefined will be used.
+     * If the prop is not used or set to undefined
+     * or null then the default value will be used.
      * @model
      */
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, null],
       required: false,
       default: ""
     },
@@ -19544,7 +19545,7 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_r
      * @model
      */
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: void 0
     },
@@ -19649,7 +19650,7 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_r
       default: () => ElementIdService.generateElementId()
     },
     modelValue: {
-      type: String,
+      type: [String, null],
       required: false,
       default: ""
     },
@@ -19671,7 +19672,8 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$E, [["render", _sfc_r
   },
   computed: {
     canClear() {
-      return this.modelValue !== "";
+      const isEmpty2 = this.modelValue === void 0 || this.modelValue === null || this.modelValue === "";
+      return !isEmpty2;
     }
   },
   methods: {
