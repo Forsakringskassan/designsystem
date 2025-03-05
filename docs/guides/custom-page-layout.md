@@ -8,6 +8,8 @@ Registrera en ny layout med `registerLayout(..)`.
 Anropet kan exempelvis göras från din `main.ts`eller i root-komponenten som monterar applikationslayouten.
 Namnet som anges är vad som senare används i `layout`-propen till `FPageLayout`.
 
+## Registrera tema
+
 ```ts
 registerLayout({
     name: "my-custom",
@@ -43,10 +45,12 @@ där:
 - `direction` talar om ifall ytan flödar horisontellt eller vertikalt.
 - `scroll` talar om ifall ytan ska scrolla (i den riktning som `direction` talar om).
 
-Styling använder [CSS grid](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids) på `::part(grid name)` och kan se ut så här:
+## Positionering och storlek
+
+För positionering och storlek används [CSS grid](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids) på `::part(grid name)` och kan se ut så här:
 
 ```css
-.page-layout::part(grid my-custom) {
+::part(grid my-custom) {
     grid-template:
         "sidebar header" min-content
         "sidebar toolbar" min-content
@@ -55,6 +59,26 @@ Styling använder [CSS grid](https://developer.mozilla.org/en-US/docs/Learn_web_
         / min-content 1fr;
 }
 ```
+
+Namn motsvarar de ytor som registrerats tidigare med `registerLayout()`.
+
+## Färger
+
+Färg och bakgrundsfärg sätts med `::part(area name)`:
+
+```css
+::part(area toolbar) {
+    background: var(--fkds-color-background-secondary);
+}
+```
+
+Namn motsvarar de ytor som registrerats tidigare med `registerLayout()`.
+
+Vi rekommenderar att använda semantiska färger.
+
+- Läs mer om {@link colors semantiska färger}.
+
+## Använd eget tema
 
 Slutligen används layouten genom att sätta det nya registrerade namnet som `layout` attributet samt implementera de ytor som definierats med hjälp av Vue slots.
 

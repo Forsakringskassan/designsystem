@@ -9,6 +9,17 @@
             "content" 1fr
             "footer" min-content
             / 1fr;
+
+        [part="area header"],
+        [part="area footer"] {
+            background: var(--f-background-pageheader-primary);
+            color: var(--fkds-color-text-inverted);
+        }
+
+        [part="area content"] {
+            background: var(--fkds-color-background-primary);
+            color: var(--fkds-color-text-primary);
+        }
     }
 
     &[part~="left-panel"] {
@@ -17,6 +28,21 @@
             "left content" 1fr
             "footer footer" min-content
             / min-content 1fr;
+
+        [part="area header"],
+        [part="area footer"] {
+            background: var(--f-background-pageheader-primary);
+            color: var(--fkds-color-text-inverted);
+        }
+
+        [part="area left"] {
+            background: var(--fkds-color-background-secondary);
+        }
+
+        [part="area content"] {
+            background: var(--fkds-color-background-primary);
+            color: var(--fkds-color-text-primary);
+        }
     }
 
     &[part~="right-panel"] {
@@ -25,6 +51,22 @@
             "content right" 1fr
             "footer footer" min-content
             / 1fr min-content;
+
+        [part="area header"],
+        [part="area footer"] {
+            background: var(--f-background-pageheader-primary);
+            color: var(--fkds-color-text-inverted);
+        }
+
+        [part="area right"] {
+            background: var(--fkds-color-background-secondary);
+            color: var(--fkds-color-text-primary);
+        }
+
+        [part="area content"] {
+            background: var(--fkds-color-background-primary);
+            color: var(--fkds-color-text-primary);
+        }
     }
 
     &[part~="three-column"] {
@@ -33,6 +75,23 @@
             "left content right" 1fr
             "footer footer footer" min-content
             / min-content 1fr min-content;
+
+        [part="area header"],
+        [part="area footer"] {
+            background: var(--f-background-pageheader-primary);
+            color: var(--fkds-color-text-inverted);
+        }
+
+        [part="area left"],
+        [part="area right"] {
+            background: var(--fkds-color-background-secondary);
+            color: var(--fkds-color-text-primary);
+        }
+
+        [part="area content"] {
+            background: var(--fkds-color-background-primary);
+            color: var(--fkds-color-text-primary);
+        }
     }
 }
 
