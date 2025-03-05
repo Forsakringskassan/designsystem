@@ -3,12 +3,14 @@ import { type Ref, computed, getCurrentInstance, onMounted, ref, useSlots, watch
 import { ElementIdService } from "@fkui/logic";
 import { FCheckboxField } from "../FCheckboxField";
 import { itemEquals, includeItem, handleKeyboardFocusNavigation, getElementFromVueRef } from "../../utils";
+import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import { useTranslate } from "../../plugins";
 import { ActivateItemInjected } from "../FCrudDataset";
 
 const $t = useTranslate();
 const slots = useSlots();
 const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
+const internalKey = getInternalKey<T>();
 
 const selectedItems: Ref<T[]> = ref([]);
 const activeItem = ref<T | undefined>(undefined);
@@ -30,7 +32,8 @@ const props = defineProps({
      */
     keyAttribute: {
         type: String,
-        required: true,
+        required: false,
+        default: undefined,
     },
     /**
      * If `true` the list will be selectable.
@@ -102,7 +105,16 @@ const emit = defineEmits<{
 }>();
 
 const isEmpty = computed((): boolean => {
-    return props.items.length === 0;
+    return internalItems.value.length === 0;
+});
+
+const internalItems = computed((): T[] => {
+    const { keyAttribute } = props;
+    if (keyAttribute) {
+        return setInternalKeys(props.items, keyAttribute as keyof T);
+    }
+
+    return setInternalKeys(props.items);
 });
 
 watch(
@@ -145,15 +157,11 @@ function getLiElements(): HTMLElement[] {
 }
 
 function itemKey(item: T): string {
-    const key = item[props.keyAttribute as keyof T];
-    if (typeof key === "undefined") {
-        throw new Error(`Key attribute [${props.keyAttribute}]' is missing in item`);
-    }
-    return String(key);
+    return String(item[internalKey]);
 }
 
 function isSelected(item: T): boolean {
-    return includeItem(item, selectedItems.value, props.keyAttribute as keyof T);
+    return includeItem(item, selectedItems.value, internalKey);
 }
 
 function itemClasses(item: T): Record<string, boolean> {
@@ -164,8 +172,8 @@ function itemClasses(item: T): Record<string, boolean> {
 }
 
 function onSelect(item: T): void {
-    if (includeItem(item, selectedItems.value, props.keyAttribute as keyof T)) {
-        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, props.keyAttribute as keyof T));
+    if (includeItem(item, selectedItems.value, internalKey)) {
+        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, internalKey));
         emit("unselect", item);
     } else {
         selectedItems.value.push(item);
@@ -179,7 +187,7 @@ function onSelect(item: T): void {
 function setActiveItem(item: T): void {
     emit("click", item);
 
-    if (!itemEquals(item, activeItem.value, props.keyAttribute)) {
+    if (!itemEquals(item, activeItem.value, internalKey)) {
         emit("change", item);
         activeItem.value = item;
         emit("update:active", activeItem.value);
@@ -200,7 +208,7 @@ function updateSelectedItemsFromVModel(): void {
     if (Array.isArray(props.modelValue)) {
         // Remove old selected items that may not exists in items.
         selectedItems.value = props.modelValue.filter((item) => {
-            return includeItem(item, props.items, props.keyAttribute as keyof T);
+            return includeItem(item, internalItems.value, internalKey);
         });
     } else {
         selectedItems.value = [];
@@ -210,7 +218,7 @@ function updateSelectedItemsFromVModel(): void {
 function updateActiveItemFromVModel(): void {
     if (props.active === undefined) {
         activeItem.value = undefined;
-    } else if (!itemEquals(props.active, activeItem.value, props.keyAttribute)) {
+    } else if (!itemEquals(props.active, activeItem.value, internalKey)) {
         activeItem.value = props.active;
     }
 }
@@ -264,16 +272,16 @@ function callbackAfterItemAdd(item: T): void {
 }
 
 function callbackBeforeItemDelete(item: T): void {
-    if (props.items.length === 0) {
+    if (internalItems.value.length === 0) {
         return;
     }
-    let targetIndex = props.items.indexOf(item) - 1;
-    if (targetIndex < 0 && props.items.length > 1) {
+    let targetIndex = internalItems.value.indexOf(item) - 1;
+    if (targetIndex < 0 && internalItems.value.length > 1) {
         targetIndex = 1;
     } else if (targetIndex < 0) {
         targetIndex = 0;
     }
-    setActiveItem(props.items[targetIndex]);
+    setActiveItem(internalItems.value[targetIndex]);
     const targetElement = getLiElements()[targetIndex];
     if (targetElement) {
         targetElement.focus();
@@ -281,13 +289,13 @@ function callbackBeforeItemDelete(item: T): void {
 }
 
 function isActive(item: T): boolean {
-    return props.checkbox && itemEquals(activeItem.value, item, props.keyAttribute);
+    return props.checkbox && itemEquals(activeItem.value, item, internalKey);
 }
 </script>
 
 <template>
     <ul v-if="!selectable" class="list">
-        <li v-for="item in items" :key="itemKey(item)" class="list__item">
+        <li v-for="item in internalItems" :key="itemKey(item)" class="list__item">
             <div ref="listItemPanes" class="list__item__itempane">
                 <!--
                      @slot Slot for displaying an item. The item object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ item }"`.
@@ -309,7 +317,7 @@ function isActive(item: T): boolean {
     </ul>
     <ul v-else ref="ulElement" class="list list--hover">
         <li
-            v-for="(item, index) in items"
+            v-for="(item, index) in internalItems"
             :id="getItemId(item)"
             :key="itemKey(item)"
             :aria-labelledby="getItemId(item)"
