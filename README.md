@@ -10,13 +10,13 @@ Komponenterna är testade både manuellt och med hjälp av automatiserade verkty
 
 ## Kom igång
 
-Läs mer om hur du kommer igång med att använda FKUI: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/
+Läs mer om hur du kommer igång med att använda FKUI: https://designsystem.forsakringskassan.se/latest/gettingstarted/
 
-Läs mer om hur du bidrar till FKUI: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/contribute-to-fkds/
+Läs mer om hur du bidrar till FKUI: https://designsystem.forsakringskassan.se/latest/gettingstarted/contribute-to-fkds/
 
 ## På gång i designsystemet
 
-Läser mer om vad som är på gång i designsystemet: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/about/release-plan.html
+Läser mer om vad som är på gång i designsystemet: https://designsystem.forsakringskassan.se/latest/gettingstarted/about/release-plan.html
 
 ## Kontakta oss
 
@@ -36,13 +36,13 @@ The component framework was initially released internally in October 2019. It ha
 
 ## Getting started
 
-Getting started: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/
+Getting started: https://designsystem.forsakringskassan.se/latest/gettingstarted/
 
-How to contribute: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/contribute-to-fkds/
+How to contribute: https://designsystem.forsakringskassan.se/latest/gettingstarted/contribute-to-fkds/
 
 ## Coming up next
 
-What we are working on: https://forsakringskassan.github.io/designsystem/latest/gettingstarted/about/release-plan.html
+What we are working on: https://designsystem.forsakringskassan.se/latest/gettingstarted/about/release-plan.html
 
 ## Contact us
 
