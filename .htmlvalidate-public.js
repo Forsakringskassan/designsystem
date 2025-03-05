@@ -30,7 +30,7 @@ module.exports = {
                         "^https://developer.mozilla.org/",
                         "^https://docs.cypress.io/",
                         "^https://docs.npmjs.com",
-                        "^https://forsakringskassan.github.io/designsystem/",
+                        "^https://designsystem.forsakringskassan.se/",
                         "^https://foundation.zurb.com/",
                         "^https://getbem.com/",
                         "^https://getbootstrap.com/",
