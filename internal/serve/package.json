@@ -2,7 +2,7 @@
   "name": "@fkui/serve",
   "version": "6.2.0",
   "private": true,
-  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "homepage": "https://designsystem.forsakringskassan.se/",
   "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
