@@ -1,7 +1,7 @@
 $anchor-underline-width: 2px !default;
 
 @mixin anchor() {
-    $anchor-underline-offset: 0.25rem;
+    $anchor-underline-offset: 0.25em;
 
     color: var(--f-text-color-link);
     text-decoration: underline;
