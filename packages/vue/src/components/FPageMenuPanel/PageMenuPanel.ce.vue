@@ -60,7 +60,9 @@ function onToggle(): void {
     </div>
 </template>
 
-<style>
+<style lang="scss">
+@use "variables" as *;
+
 .panel__wrapper {
     min-width: 24px;
     flex-grow: 1;
@@ -69,13 +71,16 @@ function onToggle(): void {
 
 .panel {
     flex-grow: 1;
-    background: lightskyblue;
+    flex-shrink: 0;
+    background: $pagemenupanel-background;
 
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
     gap: 0.5rem;
+}
 
+.panel.expanded {
     @media (width < 640px) {
         position: absolute;
         top: 0;
@@ -122,12 +127,6 @@ function onToggle(): void {
     flex: 0 0 auto;
 }
 
-@media (width >= 640px) {
-    .panel__collapse {
-        display: none;
-    }
-}
-
 .panel__content {
     flex: 1 0 auto;
 }
@@ -143,5 +142,25 @@ function onToggle(): void {
     background: transparent;
     border: 0;
     cursor: pointer;
+}
+
+.expanded.attach-left .panel__collapse svg {
+    transform: scaleX(1);
+}
+
+.collapsed.attach-left .panel__collapse svg {
+    transform: scaleX(-1);
+}
+
+.expanded.attach-right .panel__collapse svg {
+    transform: scaleX(-1);
+}
+
+.collapsed.attach-right .panel__collapse svg {
+    transform: scaleX(1);
+}
+
+:host ::slotted(*) {
+    display: contents;
 }
 </style>
