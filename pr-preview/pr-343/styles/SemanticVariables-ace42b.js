@@ -656,7 +656,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FDataTable"], {
     rows: $setup.rows,
     "key-attribute": "name",
-    "aria-labelledby": "variabler",
     striped: "",
     class: "density-densest"
   }, {
@@ -770,7 +769,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["rows"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-ded423";
+exampleComponent.__scopeId = "data-v-ace42b";
 setup({
   rootComponent: exampleComponent,
   selector: "#SemanticVariables"
