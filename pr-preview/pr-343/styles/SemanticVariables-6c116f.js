@@ -762,7 +762,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["data"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-ec0eb6";
+exampleComponent.__scopeId = "data-v-6c116f";
 setup({
   rootComponent: exampleComponent,
   selector: "#SemanticVariables"
