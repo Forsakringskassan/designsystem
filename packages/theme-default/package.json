@@ -29,7 +29,8 @@
     "type-stub.d.ts"
   ],
   "scripts": {
-    "build": "run-s clean sass extract-variables",
+    "build": "run-s clean sass extract-variables build:metadata",
+    "build:metadata": "node build.mjs",
     "clean": "rimraf dist src/_version.scss",
     "extract-variables": "node extractVariables.js",
     "prepack": "npm run build",
@@ -38,6 +39,7 @@
     "postsass": "node scripts/extract-sass-variables.mjs src/_palette-variables.scss dist/palette.json"
   },
   "devDependencies": {
+    "@adobe/css-tools": "4.4.2",
     "get-css-variables": "1.0.0",
     "glob": "11.0.1",
     "npm-run-all2": "7.0.2",
