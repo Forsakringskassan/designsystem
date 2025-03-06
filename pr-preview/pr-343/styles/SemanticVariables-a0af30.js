@@ -667,7 +667,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     header: _withCtx(() => _cache[0] || (_cache[0] = [
       _createElementVNode(
         "h2",
-        null,
+        { id: "semantiska_farger" },
         "Semantiska f\xE4rger",
         -1
         /* HOISTED */
@@ -771,7 +771,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["data"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-eb8cb3";
+exampleComponent.__scopeId = "data-v-a0af30";
 setup({
   rootComponent: exampleComponent,
   selector: "#SemanticVariables"
