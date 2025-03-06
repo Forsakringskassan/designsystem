@@ -636,7 +636,7 @@ var metadata_default = {
 };
 
 // virtual-entry:./docs/styles/examples/SemanticVariables.vue
-import { FDataTable, FTableColumn } from "@fkui/vue";
+import { FDataTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "SemanticVariables",
@@ -645,6 +645,8 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     const rows = metadata_default.tokens;
     const __returned__ = { rows, get FDataTable() {
       return FDataTable;
+    }, get FSortFilterDataset() {
+      return FSortFilterDataset;
     }, get FTableColumn() {
       return FTableColumn;
     } };
@@ -653,123 +655,115 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FDataTable"], {
-    rows: $setup.rows,
-    "key-attribute": "name",
-    striped: "",
-    class: "density-densest"
+  return _openBlock(), _createBlock($setup["FSortFilterDataset"], {
+    data: $setup.rows,
+    "sortable-attributes": {
+      name: "Semantisk variabel",
+      palette: "Palettf\xE4rg",
+      value: "F\xE4rgkod"
+    }
   }, {
-    caption: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode("Tillg\xE4ngliga semantiska f\xE4rger")
-    ])),
-    default: _withCtx(({ row }) => [
-      _createVNode(
-        $setup["FTableColumn"],
-        {
-          name: "name",
-          title: "Namn",
-          shrink: ""
-        },
-        {
-          default: _withCtx(() => [
-            _createElementVNode(
-              "code",
-              null,
-              _toDisplayString(row.name),
-              1
-              /* TEXT */
-            )
-          ]),
-          _: 2
-          /* DYNAMIC */
-        },
-        1024
-        /* DYNAMIC_SLOTS */
-      ),
-      _createVNode(
-        $setup["FTableColumn"],
-        {
-          name: "value",
-          title: "Standardf\xE4rg",
-          shrink: ""
-        },
-        {
-          default: _withCtx(() => [
-            _createElementVNode(
-              "span",
-              {
-                class: "color",
-                style: _normalizeStyle(`--value: ${row.value}`)
-              },
-              null,
-              4
-              /* STYLE */
-            ),
-            _createElementVNode(
-              "code",
-              null,
-              _toDisplayString(row.value),
-              1
-              /* TEXT */
-            )
-          ]),
-          _: 2
-          /* DYNAMIC */
-        },
-        1024
-        /* DYNAMIC_SLOTS */
-      ),
-      _createVNode(
-        $setup["FTableColumn"],
-        {
-          name: "palette",
-          title: "Palettf\xE4rg",
-          expand: ""
-        },
-        {
-          default: _withCtx(() => [
-            _createElementVNode(
-              "code",
-              null,
-              _toDisplayString(row.palette),
-              1
-              /* TEXT */
-            )
-          ]),
-          _: 2
-          /* DYNAMIC */
-        },
-        1024
-        /* DYNAMIC_SLOTS */
-      ),
-      _createVNode(
-        $setup["FTableColumn"],
-        {
-          name: "comment",
-          title: "Beskrivning",
-          expand: ""
-        },
-        {
-          default: _withCtx(() => [
-            _createTextVNode(
-              _toDisplayString(row.comment),
-              1
-              /* TEXT */
-            )
-          ]),
-          _: 2
-          /* DYNAMIC */
-        },
-        1024
-        /* DYNAMIC_SLOTS */
-      )
+    default: _withCtx(({ sortFilterResult }) => [
+      _createVNode($setup["FDataTable"], {
+        rows: sortFilterResult,
+        "key-attribute": "name",
+        striped: "",
+        class: "density-densest"
+      }, {
+        caption: _withCtx(() => _cache[0] || (_cache[0] = [
+          _createTextVNode("Tillg\xE4ngliga semantiska f\xE4rger")
+        ])),
+        default: _withCtx(({ row }) => [
+          _createVNode(
+            $setup["FTableColumn"],
+            {
+              name: "name",
+              title: "Semantisk variabel",
+              shrink: ""
+            },
+            {
+              default: _withCtx(() => [
+                _createElementVNode(
+                  "code",
+                  null,
+                  _toDisplayString(row.name),
+                  1
+                  /* TEXT */
+                )
+              ]),
+              _: 2
+              /* DYNAMIC */
+            },
+            1024
+            /* DYNAMIC_SLOTS */
+          ),
+          _createVNode(
+            $setup["FTableColumn"],
+            {
+              name: "palette",
+              title: "Palettf\xE4rg",
+              expand: ""
+            },
+            {
+              default: _withCtx(() => [
+                _createElementVNode(
+                  "code",
+                  null,
+                  _toDisplayString(row.palette),
+                  1
+                  /* TEXT */
+                )
+              ]),
+              _: 2
+              /* DYNAMIC */
+            },
+            1024
+            /* DYNAMIC_SLOTS */
+          ),
+          _createVNode(
+            $setup["FTableColumn"],
+            {
+              name: "value",
+              title: "F\xE4rgkod",
+              shrink: ""
+            },
+            {
+              default: _withCtx(() => [
+                _createElementVNode(
+                  "span",
+                  {
+                    class: "color",
+                    style: _normalizeStyle(`--value: ${row.value}`)
+                  },
+                  null,
+                  4
+                  /* STYLE */
+                ),
+                _createElementVNode(
+                  "code",
+                  null,
+                  _toDisplayString(row.value),
+                  1
+                  /* TEXT */
+                )
+              ]),
+              _: 2
+              /* DYNAMIC */
+            },
+            1024
+            /* DYNAMIC_SLOTS */
+          )
+        ]),
+        _: 2
+        /* DYNAMIC */
+      }, 1032, ["rows"])
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["rows"]);
+  }, 8, ["data"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-ace42b";
+exampleComponent.__scopeId = "data-v-7f280e";
 setup({
   rootComponent: exampleComponent,
   selector: "#SemanticVariables"
