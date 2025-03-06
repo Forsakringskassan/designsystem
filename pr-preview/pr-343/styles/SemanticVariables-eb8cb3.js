@@ -637,7 +637,7 @@ var metadata_default = {
 
 // virtual-entry:./docs/styles/examples/SemanticVariables.vue
 import { FDataTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
-import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "SemanticVariables",
   setup(__props, { expose: __expose }) {
@@ -664,6 +664,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: "F\xE4rgkod"
     }
   }, {
+    header: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createElementVNode(
+        "h2",
+        null,
+        "Semantiska f\xE4rger",
+        -1
+        /* HOISTED */
+      )
+    ])),
     default: _withCtx(({ sortFilterResult }) => [
       _createVNode($setup["FDataTable"], {
         rows: sortFilterResult,
@@ -762,7 +771,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["data"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-6c116f";
+exampleComponent.__scopeId = "data-v-eb8cb3";
 setup({
   rootComponent: exampleComponent,
   selector: "#SemanticVariables"
