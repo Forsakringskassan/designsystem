@@ -637,7 +637,7 @@ var metadata_default = {
 
 // virtual-entry:./docs/styles/examples/SemanticVariables.vue
 import { FDataTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "SemanticVariables",
   setup(__props, { expose: __expose }) {
@@ -657,6 +657,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FSortFilterDataset"], {
     data: $setup.rows,
+    "show-sort": false,
     "sortable-attributes": {
       name: "Semantisk variabel",
       palette: "Palettf\xE4rg",
@@ -668,11 +669,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         rows: sortFilterResult,
         "key-attribute": "name",
         striped: "",
-        class: "density-densest"
+        class: "density-densest",
+        "aria-labelledby": "semantiska_farger"
       }, {
-        caption: _withCtx(() => _cache[0] || (_cache[0] = [
-          _createTextVNode("Tillg\xE4ngliga semantiska f\xE4rger")
-        ])),
         default: _withCtx(({ row }) => [
           _createVNode(
             $setup["FTableColumn"],
@@ -763,7 +762,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["data"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-7f280e";
+exampleComponent.__scopeId = "data-v-ec0eb6";
 setup({
   rootComponent: exampleComponent,
   selector: "#SemanticVariables"
