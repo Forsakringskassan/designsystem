@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-e83a5b.css"
+            href="../assets/docs-fa5d71.css"
             crossorigin
-            integrity="sha384-HsrTH1BB4LiCj/bNCFbucT3Y55gSnOliOnSZAhnlZ/yZ8IfJlpudbgWLvLYwMb24"
+            integrity="sha384-MCMjlKHb03yf1BClcwQymllf7nfwYcCjpjfAq5q3Ixf6Dbrr8SGemRh/4GYc6ztN"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-3874a1.css"
+            href="../assets/docs-fkui-16f276.css"
             crossorigin
-            integrity="sha384-e68A8FXdGUKNYfD0CcdbTXUspjVnU36z1QXzwdSNWaZB6tI2pQ+nHOGd7NR6Dy0D"
+            integrity="sha384-NzYnZcVacTILXYsdq/ZufpOOikro7fqNAtK6a3SySiqSSrwZ8S+EVdk1YzU4fpwi"
             data-theme="fkui" disabled
         />
 
@@ -28,14 +28,14 @@
     "vue": "../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-53a5b8.js",
     "@fkui/date": "../assets/vendor-fkui-date-137268.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-8605e2.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-f0a850.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-5e2f10.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../assets/vendor-fkui-logic-53a5b8.js": "sha384-T9chgQ15ogd6zjYhmGgRdHmhwfpHf+XYNrdxmNJBIjhA6TRWRfKFtDmppFNUlakN",
     "../assets/vendor-fkui-date-137268.js": "sha384-UbOEWpOpf24qbX6KkKB4K9LhJsAkmXFVHisfpicUcstiWcZwPwdDm8SUX4z8+bt8",
-    "../assets/vendor-fkui-vue-8605e2.js": "sha384-L940jmLQByy/AgJAJB2mZ9ND+0NDJbRc0n4q39+8eJx3yYxYyC4ySesflcNH9p2O",
+    "../assets/vendor-fkui-vue-f0a850.js": "sha384-/zHeJWlaa+38Z1IZqZUMm2pVlQvzXIl5OW5zXPKivXlhEE9JEI5gi2IKQGa9Ab+w",
     "../assets/vendor-forsakringskassan-docs-live-example-5e2f10.js": "sha384-yp8Fvbn9AfV9Mo0qJzUZGtbgg/uLuGXbLr9S1MCR8Cff6WvDw1Elv3l2HXV5/FnF"
   }
 }
@@ -90,10 +90,10 @@
 
         <link
             rel="preload"
-            href="../search-data-5342e1.json"
+            href="../search-data-854e3d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ZwXzuBBhPLea5ZEV8QHAWJDUGCb2GpZh9YU6imAQwfokTrI2+yv8f0wFYysew/JO"
+            integrity="sha384-wfF+PzEc3GC2b92Ovhp5FxtgxA1cUklZkrZ21jFvn3AfXdWERr1w0JQ0a/gI5F1t"
             id="search-data"
         />
     </head>
@@ -369,6 +369,21 @@
 
 
                         
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#registrera_tema">Registrera tema</a></li>
+                                
+                                <li><a href="#positionering_och_storlek">Positionering och storlek</a></li>
+                                
+                                <li><a href="#farger">Färger</a></li>
+                                
+                                <li><a href="#anvand_eget_tema">Använd eget tema</a></li>
+                                
+                            </ul>
+                        </details>
+                        
                     </div>
                     
 
@@ -377,9 +392,9 @@
 <p>Registrera en ny layout med <code>registerLayout(..)</code>.
 Anropet kan exempelvis göras från din <code>main.ts</code>eller i root-komponenten som monterar applikationslayouten.
 Namnet som anges är vad som senare används i <code>layout</code>-propen till <code>FPageLayout</code>.</p>
-
+<h2 id="registrera_tema"><a class="header-anchor" href="#registrera_tema">Registrera tema</a></h2>
                 <div
-                    id="example-6f5376"
+                    id="example-3e30f9"
                     class="code-preview code-preview--default"
                     
                     
@@ -420,17 +435,17 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <li><code>direction</code> talar om ifall ytan flödar horisontellt eller vertikalt.</li>
 <li><code>scroll</code> talar om ifall ytan ska scrolla (i den riktning som <code>direction</code> talar om).</li>
 </ul>
-<p>Styling använder <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids">CSS grid</a> på <code>::part(grid name)</code> och kan se ut så här:</p>
+<h2 id="positionering_och_storlek"><a class="header-anchor" href="#positionering_och_storlek">Positionering och storlek</a></h2><p>För positionering och storlek används <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids">CSS grid</a> på <code>::part(grid name)</code> och kan se ut så här:</p>
 
                 <div
-                    id="example-26166c"
+                    id="example-7ebb55"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="css"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-class">.page-layout</span><span class="hljs-selector-pseudo">::part</span>(<span class="hljs-attribute">grid</span> my-custom) {
+                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-pseudo">::part</span>(<span class="hljs-attribute">grid</span> my-custom) {
     <span class="hljs-attribute">grid-template</span>:
         <span class="hljs-string">&quot;sidebar header&quot;</span> min-content
         <span class="hljs-string">&quot;sidebar toolbar&quot;</span> min-content
@@ -440,10 +455,31 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 }
 </code></pre>
                 </div>
-            <p>Slutligen används layouten genom att sätta det nya registrerade namnet som <code>layout</code> attributet samt implementera de ytor som definierats med hjälp av Vue slots.</p>
+            <p>Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p>
+<h2 id="farger"><a class="header-anchor" href="#farger">Färger</a></h2><p>Färg och bakgrundsfärg sätts med <code>::part(area name)</code>:</p>
 
                 <div
-                    id="example-4f7433"
+                    id="example-928f44"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="css"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-pseudo">::part</span>(area toolbar) {
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--fkds-color-background-secondary);
+}
+</code></pre>
+                </div>
+            <p>Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p>
+<p>Vi rekommenderar att använda semantiska färger.</p>
+<ul>
+<li>Läs mer om <a href="../styles/colors.html">semantiska färger</a>.</li>
+</ul>
+<h2 id="anvand_eget_tema"><a class="header-anchor" href="#anvand_eget_tema">Använd eget tema</a></h2><p>Slutligen används layouten genom att sätta det nya registrerade namnet som <code>layout</code> attributet samt implementera de ytor som definierats med hjälp av Vue slots.</p>
+
+                <div
+                    id="example-6b834a"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -480,9 +516,9 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/url (<a href="https://github.com/Forsakringskassan/designsystem/commits/3039a2d13c3e501b2fe432f7e4a496eebff36aa8">3039a2d</a>)<br />
+    docs/url (<a href="https://github.com/Forsakringskassan/designsystem/commits/30016eb4ac08fbf88862bf825671bf245ce90cd9">30016eb</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/341">PR 341</a><br />
-        2025-03-05 15:29
+        2025-03-06 15:10
 </div>
 <div class="toolbar__item">
     <form id="version">

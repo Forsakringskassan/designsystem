@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sv" class="layout--content-with-menu" data-root-url="..">
+<html lang="sv" class="layout--article" data-root-url="..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-e83a5b.css"
+            href="../assets/docs-fa5d71.css"
             crossorigin
-            integrity="sha384-HsrTH1BB4LiCj/bNCFbucT3Y55gSnOliOnSZAhnlZ/yZ8IfJlpudbgWLvLYwMb24"
+            integrity="sha384-MCMjlKHb03yf1BClcwQymllf7nfwYcCjpjfAq5q3Ixf6Dbrr8SGemRh/4GYc6ztN"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-3874a1.css"
+            href="../assets/docs-fkui-16f276.css"
             crossorigin
-            integrity="sha384-e68A8FXdGUKNYfD0CcdbTXUspjVnU36z1QXzwdSNWaZB6tI2pQ+nHOGd7NR6Dy0D"
+            integrity="sha384-NzYnZcVacTILXYsdq/ZufpOOikro7fqNAtK6a3SySiqSSrwZ8S+EVdk1YzU4fpwi"
             data-theme="fkui" disabled
         />
 
@@ -28,14 +28,14 @@
     "vue": "../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-53a5b8.js",
     "@fkui/date": "../assets/vendor-fkui-date-137268.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-8605e2.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-f0a850.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-5e2f10.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../assets/vendor-fkui-logic-53a5b8.js": "sha384-T9chgQ15ogd6zjYhmGgRdHmhwfpHf+XYNrdxmNJBIjhA6TRWRfKFtDmppFNUlakN",
     "../assets/vendor-fkui-date-137268.js": "sha384-UbOEWpOpf24qbX6KkKB4K9LhJsAkmXFVHisfpicUcstiWcZwPwdDm8SUX4z8+bt8",
-    "../assets/vendor-fkui-vue-8605e2.js": "sha384-L940jmLQByy/AgJAJB2mZ9ND+0NDJbRc0n4q39+8eJx3yYxYyC4ySesflcNH9p2O",
+    "../assets/vendor-fkui-vue-f0a850.js": "sha384-/zHeJWlaa+38Z1IZqZUMm2pVlQvzXIl5OW5zXPKivXlhEE9JEI5gi2IKQGa9Ab+w",
     "../assets/vendor-forsakringskassan-docs-live-example-5e2f10.js": "sha384-yp8Fvbn9AfV9Mo0qJzUZGtbgg/uLuGXbLr9S1MCR8Cff6WvDw1Elv3l2HXV5/FnF"
   }
 }
@@ -90,10 +90,10 @@
 
         <link
             rel="preload"
-            href="../search-data-5342e1.json"
+            href="../search-data-854e3d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ZwXzuBBhPLea5ZEV8QHAWJDUGCb2GpZh9YU6imAQwfokTrI2+yv8f0wFYysew/JO"
+            integrity="sha384-wfF+PzEc3GC2b92Ovhp5FxtgxA1cUklZkrZ21jFvn3AfXdWERr1w0JQ0a/gI5F1t"
             id="search-data"
         />
     </head>
@@ -327,16 +327,68 @@
                     <h1 id="title">Färger</h1>
 
                     
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#fargpaletten">Färgpaletten</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
 
                     <div id="content">
                         <!-- prettier-ignore -->
 <p>Försäkringskassans digitala färgpalett är baserad på färgerna som finns i den grafiska profilen.
-Dessa färger har tagits fram för att skapa ett konsekvent och inbjudande UI för alla Försäkringskassans digitala kanaler.</p>
-<h2 id="fargpaletten"><a class="header-anchor" href="#fargpaletten">Färgpaletten</a></h2><p>Våra färger är uppdelade i primära, gråskala, text, komplement och förmånsfärger.
+Dessa färger har tagits fram för att skapa ett konsekvent och inbjudande gränssnitt för alla Försäkringskassans digitala kanaler.</p>
+
+                <div
+                    id="example-7e258e"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags="nomarkup borderless"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="SemanticVariables"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+code[data-v-a0af30] {
+    background: transparent;
+}
+.table__column[data-v-a0af30] {
+    white-space: nowrap;
+}
+.color[data-v-a0af30] {
+    background: var(--value);
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid black;
+    vertical-align: text-bottom;
+}
+
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./SemanticVariables-a0af30.js"></script>
+    </div>
+                </div>
+            <h2 id="fargpaletten"><a class="header-anchor" href="#fargpaletten">Färgpaletten</a></h2><p>Våra färger är uppdelade i primära, gråskala, text, komplement och förmånsfärger.
 Flera av färgerna finns i olika nyanser för att hjälpa till att markera eller organisera information genom våra gränssnitt.</p>
 
                 <div
-                    id="example-fd37b8"
+                    id="example-e8e902"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="nomarkup borderless"
@@ -374,9 +426,9 @@ Flera av färgerna finns i olika nyanser för att hjälpa till att markera eller
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/url (<a href="https://github.com/Forsakringskassan/designsystem/commits/3039a2d13c3e501b2fe432f7e4a496eebff36aa8">3039a2d</a>)<br />
+    docs/url (<a href="https://github.com/Forsakringskassan/designsystem/commits/30016eb4ac08fbf88862bf825671bf245ce90cd9">30016eb</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/341">PR 341</a><br />
-        2025-03-05 15:29
+        2025-03-06 15:10
 </div>
 <div class="toolbar__item">
     <form id="version">

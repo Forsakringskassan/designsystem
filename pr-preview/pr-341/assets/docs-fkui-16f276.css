@@ -1,12 +1,13 @@
+@charset "UTF-8";
 html {
   font-size: 16px;
 }
 
 .code-preview__preview,
 .live-example__example {
-  --fkds-color-text-primary: #1b1e23;
+  --fkds-color-text-primary: #1b1e23; /* Standard text färg */
   --fkds-color-text-secondary: #5f6165;
-  --fkds-color-text-inverted: #ffffff;
+  --fkds-color-text-inverted: #ffffff; /* Inverterad text färg */
   --fkds-color-text-disabled: #8d8e91;
   --fkds-color-background-primary: #ffffff;
   --fkds-color-background-secondary: #f4f4f4;
