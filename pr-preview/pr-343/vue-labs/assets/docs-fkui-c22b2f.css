@@ -1,9 +1,12 @@
-/* packages/theme-default/dist/fkui-css-variables.css */
-:root {
-  --fkui-theme-default-version: "6.2.0";
-  --fkds-color-text-primary: #1b1e23;
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+.code-preview__preview {
+  --fkds-color-text-primary: #1b1e23; /* Standard text färg */
   --fkds-color-text-secondary: #5f6165;
-  --fkds-color-text-inverted: #ffffff;
+  --fkds-color-text-inverted: #ffffff; /* Inverterad text färg */
   --fkds-color-text-disabled: #8d8e91;
   --fkds-color-background-primary: #ffffff;
   --fkds-color-background-secondary: #f4f4f4;
@@ -233,19 +236,8 @@
   --f-border-color-popupmenu: #ddddde;
   --f-box-modal-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   --f-input-shadow-inset: inset 0 2px 3px rgba(0, 0, 0, 0.1);
-  --f-font-family:
-    "ExpFont",
-    "NeueHass",
-    "Helvetica Neue",
-    "Helvetica",
-    "Roboto",
-    "Arial",
-    sans-serif;
-  --f-font-family-code:
-    "Consolas",
-    "Liberation Mono",
-    "Courier",
-    monospace;
+  --f-font-family: "ExpFont", "NeueHass", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  --f-font-family-code: "Consolas", "Liberation Mono", "Courier", monospace;
   --f-font-size-default-rem: 16px;
   --f-font-size-default-large-up-rem: 16px;
   --f-font-weight-normal: 400;
@@ -277,10 +269,7 @@
   --f-margin-component-bottom: 1.5rem;
   --padding-input-fields: 0 2.25rem 0 0.75rem;
   --f-color-focus: #1b1e23;
-  --f-focus-box-shadow:
-    0 0 0 2px #ffffff,
-    0 0 0 4px #1b1e23,
-    0 0 0 6px #ffffff;
+  --f-focus-box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff;
   --f-animation-duration-short: 150ms;
   --f-animation-duration-medium: 350ms;
   --f-animation-duration-long: 500ms;
