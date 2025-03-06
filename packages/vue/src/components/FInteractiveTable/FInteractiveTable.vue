@@ -270,14 +270,7 @@ provide(
 
 watch(
     () => props.rows,
-    () => {
-        if (props.modelValue) {
-            // Remove old selected rows that may not exists in rows.
-            selectedRows.value = props.modelValue.filter((row: T) => {
-                return includeItem<T, K>(row, props.rows, props.keyAttribute as K);
-            });
-        }
-    },
+    () => setSelectedRows(),
     { immediate: true, deep: true },
 );
 
@@ -297,6 +290,12 @@ watch(
         }
     },
     { immediate: true },
+);
+
+watch(
+    () => props.modelValue,
+    () => setSelectedRows(),
+    { immediate: true, deep: true },
 );
 
 function updateTr(tbodyElement: HTMLElement): void {
@@ -399,6 +398,16 @@ function onSelect(row: T): void {
 
     updateVModelWithSelectedRows();
     getCurrentInstance()?.proxy?.$forceUpdate();
+}
+
+function setSelectedRows(): void {
+    if (!props.modelValue || !props.modelValue.length) {
+        selectedRows.value = [];
+        return;
+    }
+    selectedRows.value = props.modelValue.filter((row: T) => {
+        return includeItem<T, K>(row, props.rows, props.keyAttribute as K);
+    });
 }
 
 function updateVModelWithSelectedRows(): void {
