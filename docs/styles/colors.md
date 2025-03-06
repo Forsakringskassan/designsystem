@@ -1,10 +1,14 @@
 ---
 title: Färger
-layout: content-with-menu
+layout: article
 ---
 
 Försäkringskassans digitala färgpalett är baserad på färgerna som finns i den grafiska profilen.
-Dessa färger har tagits fram för att skapa ett konsekvent och inbjudande UI för alla Försäkringskassans digitala kanaler.
+Dessa färger har tagits fram för att skapa ett konsekvent och inbjudande gränssnitt för alla Försäkringskassans digitala kanaler.
+
+```import nomarkup borderless
+SemanticVariables.vue
+```
 
 ## Färgpaletten
 
