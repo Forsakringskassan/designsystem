@@ -6772,30 +6772,3 @@ h1 {
 hr {
     margin-bottom: 2rem;
 }
-
-html,
-body {
-    padding: 0;
-    margin: 0;
-}
-
-.my-header[data-v-ad264347] {
-    padding: 1rem;
-}
-.my-footer[data-v-ad264347] {
-    padding: 1rem;
-}
-.my-left-panel[data-v-ad264347] {
-    padding: 1rem;
-    flex-grow: 1;
-    width: 25cqw;
-}
-.my-right-panel[data-v-ad264347] {
-    padding: 1rem;
-    flex-grow: 1;
-    width: 25cqw;
-}
-.my-content[data-v-ad264347] {
-    flex-grow: 1;
-    padding: 1rem;
-}

@@ -3100,13 +3100,6 @@ function resolveComponent(name, maybeSelfReference) {
   return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
 }
 const NULL_DYNAMIC_COMPONENT = Symbol.for("v-ndc");
-function resolveDynamicComponent(component) {
-  if (isString$1(component)) {
-    return resolveAsset(COMPONENTS, component, false) || component;
-  } else {
-    return component || NULL_DYNAMIC_COMPONENT;
-  }
-}
 function resolveDirective(name) {
   return resolveAsset(DIRECTIVES, name);
 }
@@ -7490,8 +7483,8 @@ const vModelDynamic = {
     callModelHook(el, binding, vnode, prevVNode, "updated");
   }
 };
-function resolveDynamicModel(tagName2, type) {
-  switch (tagName2) {
+function resolveDynamicModel(tagName, type) {
+  switch (tagName) {
     case "SELECT":
       return vModelSelect;
     case "TEXTAREA":
@@ -9832,8 +9825,8 @@ class ValidationServiceImpl {
       src = element2;
     }
     if (!isValidatableHTMLElement(src)) {
-      const tagName2 = src.tagName.toLowerCase();
-      const ref2 = `${tagName2}#${src.id}`;
+      const tagName = src.tagName.toLowerCase();
+      const ref2 = `${tagName}#${src.id}`;
       throw new Error(`Element "${ref2}" is not a validatable element`);
     }
     const element = src;
@@ -9864,8 +9857,8 @@ class ValidationServiceImpl {
       };
       element.addEventListener("validity", once);
       const watchdog = setTimeout(() => {
-        const tagName2 = element.tagName.toLowerCase();
-        const ref2 = `${tagName2}#${element.id}`;
+        const tagName = element.tagName.toLowerCase();
+        const ref2 = `${tagName}#${element.id}`;
         element.removeEventListener("validity", once);
         reject(`Element "${ref2}" did not respond with validity event after 500ms`);
       }, 500);
@@ -20983,13 +20976,7 @@ const __default__ = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const layoutRegister = {};
-function getLayout(name) {
-  var _layoutRegister$name;
-  return (_layoutRegister$name = layoutRegister[name]) !== null && _layoutRegister$name !== void 0 ? _layoutRegister$name : null;
-}
 function setLayout(name, layout) {
-  layoutRegister[name] = layout;
 }
 function defineLayout(definition) {
   return normalizeDefinition(definition);
@@ -21013,25 +21000,6 @@ function normalizeAreasDefinition(areas) {
     }];
   }));
 }
-function _checkPrivateRedeclaration(e, t) {
-  if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object");
-}
-function _classPrivateFieldInitSpec(e, t, a) {
-  _checkPrivateRedeclaration(e, t), t.set(e, a);
-}
-function _assertClassBrand(e, t, n) {
-  if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n;
-  throw new TypeError("Private element is not present on this object");
-}
-function _classPrivateFieldGet2(s, a) {
-  return s.get(_assertClassBrand(s, a));
-}
-function _classPrivateFieldSet2(s, a, r) {
-  return s.set(_assertClassBrand(s, a), r), r;
-}
-const VAR_NAME_AREA = "--f-layout-area";
-const VAR_NAME_ATTACH_PANEL = "--f-layout-panel";
-const VAR_NAME_DIRECTION = "--f-layout-direction";
 registerLayout({
   name: "simple",
   areas: {
@@ -21120,141 +21088,9 @@ registerLayout({
     }
   }
 });
-const styleContent = '.page-layout {\n    display: grid;\n    height: 100cqh;\n    width: min(100%, 100cqw);\n\n    &[part~="simple"] {\n        grid-template:\n            "header" min-content\n            "content" 1fr\n            "footer" min-content\n            / 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="left-panel"] {\n        grid-template:\n            "header header" min-content\n            "left content" 1fr\n            "footer footer" min-content\n            / min-content 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"] {\n            background: var(--fkds-color-background-secondary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="right-panel"] {\n        grid-template:\n            "header header" min-content\n            "content right" 1fr\n            "footer footer" min-content\n            / 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area right"] {\n            background: var(--fkds-color-background-secondary);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="three-column"] {\n        grid-template:\n            "header header header" min-content\n            "left content right" 1fr\n            "footer footer footer" min-content\n            / min-content 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"],\n        [part="area right"] {\n            background: var(--fkds-color-background-secondary);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n}\n\n.page-layout__area {\n    display: flex;\n    position: relative;\n\n    &[data-direction="column"] {\n        flex-direction: column;\n    }\n\n    &[data-direction="row"] {\n        flex-direction: row;\n    }\n\n    &[data-scroll] {\n        overflow-y: auto;\n    }\n\n    &:empty {\n        display: none;\n    }\n}\n\n:host ::slotted(*) {\n    display: contents;\n}\n';
-const stubLayout = defineLayout({
+defineLayout({
   name: "",
   areas: {}
-});
-function getSlotNames(element) {
-  return Array.from(element.querySelectorAll(":scope > [slot]"), (it) => it.slot);
-}
-var _wrapper = /* @__PURE__ */ new WeakMap();
-var _elements = /* @__PURE__ */ new WeakMap();
-var _layout = /* @__PURE__ */ new WeakMap();
-var _observer = /* @__PURE__ */ new WeakMap();
-var _slotNames = /* @__PURE__ */ new WeakMap();
-class PageLayout extends HTMLElement {
-  constructor() {
-    super();
-    _classPrivateFieldInitSpec(this, _wrapper, void 0);
-    _classPrivateFieldInitSpec(this, _elements, {});
-    _classPrivateFieldInitSpec(this, _layout, stubLayout);
-    _classPrivateFieldInitSpec(this, _observer, void 0);
-    _classPrivateFieldInitSpec(this, _slotNames, []);
-    _classPrivateFieldSet2(_wrapper, this, document.createElement("div"));
-    _classPrivateFieldSet2(_observer, this, new MutationObserver(() => {
-      this.slotNames = getSlotNames(this);
-    }));
-  }
-  /* eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- this one is better to infer or each attribute would have to be duplicated */
-  static get observedAttributes() {
-    return ["layout"];
-  }
-  connectedCallback() {
-    this.slotNames = getSlotNames(this);
-    _classPrivateFieldGet2(_observer, this).observe(this, {
-      childList: true
-    });
-    const shadow = this.attachShadow({
-      mode: "open"
-    });
-    const style = document.createElement("style");
-    style.textContent = styleContent;
-    shadow.append(style);
-    shadow.append(_classPrivateFieldGet2(_wrapper, this));
-  }
-  disconnectedCallback() {
-    _classPrivateFieldGet2(_observer, this).disconnect();
-  }
-  attributeChangedCallback(name, _oldValue, value) {
-    switch (name) {
-      case "layout": {
-        var _getLayout;
-        const part = ["grid", value].filter(Boolean).join(" ");
-        _classPrivateFieldGet2(_wrapper, this).className = "page-layout";
-        _classPrivateFieldGet2(_wrapper, this).setAttribute("part", part);
-        _classPrivateFieldSet2(_layout, this, (_getLayout = getLayout(value)) !== null && _getLayout !== void 0 ? _getLayout : stubLayout);
-        this.updateSlotElements();
-        break;
-      }
-    }
-  }
-  get slotNames() {
-    return _classPrivateFieldGet2(_slotNames, this);
-  }
-  set slotNames(slots) {
-    _classPrivateFieldSet2(_slotNames, this, slots);
-    this.updateSlotElements();
-  }
-  updateSlotElements() {
-    const wrapper2 = _classPrivateFieldGet2(_wrapper, this);
-    const layout = _classPrivateFieldGet2(_layout, this);
-    for (const slot of _classPrivateFieldGet2(_slotNames, this)) {
-      const existing = _classPrivateFieldGet2(_elements, this)[slot];
-      const element = existing !== null && existing !== void 0 ? existing : document.createElement("div");
-      const area = layout.areas[slot];
-      if (!area) {
-        continue;
-      }
-      const {
-        attachPanel: attach,
-        direction,
-        scroll
-      } = area;
-      element.className = "";
-      element.classList.add("page-layout__area");
-      element.setAttribute("part", ["area", slot].join(" "));
-      element.setAttribute("data-direction", direction);
-      if (scroll) {
-        element.setAttribute("data-scroll", "true");
-      } else {
-        element.removeAttribute("data-scroll");
-      }
-      element.style.setProperty("grid-area", slot);
-      element.style.setProperty(VAR_NAME_AREA, `"${slot}"`);
-      element.style.setProperty(VAR_NAME_ATTACH_PANEL, `"${attach}"`);
-      element.style.setProperty(VAR_NAME_DIRECTION, `"${direction}"`);
-      if (!existing) {
-        const slotElement = document.createElement("slot");
-        slotElement.name = slot;
-        element.append(slotElement);
-        wrapper2.append(element);
-        _classPrivateFieldGet2(_elements, this)[slot] = element;
-      }
-    }
-  }
-}
-const _hoisted_1$6 = ["slot"];
-const tagName = `ce-page-layout`;
-const _sfc_main$6 = /* @__PURE__ */ defineComponent({
-  __name: "FPageLayout",
-  props: {
-    layout: {}
-  },
-  setup(__props) {
-    const slots = useSlots();
-    const slotNames = computed(() => {
-      return Object.keys(slots);
-    });
-    onMounted(() => {
-      if (!customElements.get(tagName)) {
-        customElements.define(tagName, PageLayout);
-      }
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(resolveDynamicComponent(tagName), {
-        layout: _ctx.layout
-      }, {
-        default: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(slotNames.value, (slot) => {
-          return openBlock(), createElementBlock("div", {
-            key: slot,
-            slot
-          }, [renderSlot(_ctx.$slots, slot)], 8, _hoisted_1$6);
-        }), 128))]),
-        _: 3
-      }, 8, ["layout"]);
-    };
-  }
 });
 /*!
   * vue-router v4.5.0
@@ -23133,7 +22969,7 @@ const _export_sfc = (sfc, props) => {
   return target;
 };
 const _hoisted_1 = { class: "sandbox-root" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = resolveComponent("f-text-field");
   const _directive_validation = resolveDirective("validation");
   return openBlock(), createElementBlock("div", _hoisted_1, [
@@ -23170,37 +23006,17 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-const DefaultView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
+const DefaultView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [{ path: "/", name: "", component: DefaultView }]
 });
-const _sfc_main = /* @__PURE__ */ defineComponent({
-  __name: "App",
-  setup(__props) {
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(unref(_sfc_main$6), { layout: "three-column" }, {
-        header: withCtx(() => _cache[0] || (_cache[0] = [
-          createBaseVNode("header", { class: "my-header" }, "[header]", -1)
-        ])),
-        left: withCtx(() => _cache[1] || (_cache[1] = [
-          createBaseVNode("div", { class: "my-left-panel" }, "[left]", -1)
-        ])),
-        right: withCtx(() => _cache[2] || (_cache[2] = [
-          createBaseVNode("div", { class: "my-right-panel" }, "[right]", -1)
-        ])),
-        content: withCtx(() => _cache[3] || (_cache[3] = [
-          createBaseVNode("main", { class: "my-content" }, "[main]", -1)
-        ])),
-        footer: withCtx(() => _cache[4] || (_cache[4] = [
-          createBaseVNode("footer", { class: "my-footer" }, "[footer]", -1)
-        ])),
-        _: 1
-      });
-    };
-  }
-});
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-ad264347"]]);
+const _sfc_main = {};
+function _sfc_render(_ctx, _cache) {
+  const _component_router_view = resolveComponent("router-view");
+  return openBlock(), createBlock(_component_router_view);
+}
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 config.production = false;
 config.popupContainer = "#app";
 const app = createApp(App);
