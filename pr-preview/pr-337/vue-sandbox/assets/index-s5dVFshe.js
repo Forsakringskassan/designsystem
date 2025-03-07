@@ -20625,13 +20625,7 @@ const _hoisted_22 = ["colspan"];
     });
     provide("textFieldTableMode", true);
     provide("renderColumns", computed(() => props.rows.length > 0));
-    watch(() => props.rows, () => {
-      if (props.modelValue) {
-        selectedRows.value = props.modelValue.filter((row) => {
-          return includeItem(row, props.rows, props.keyAttribute);
-        });
-      }
-    }, {
+    watch(() => props.rows, () => setSelectedRows(), {
       immediate: true,
       deep: true
     });
@@ -20646,6 +20640,10 @@ const _hoisted_22 = ["colspan"];
       }
     }, {
       immediate: true
+    });
+    watch(() => props.modelValue, () => setSelectedRows(), {
+      immediate: true,
+      deep: true
     });
     function updateTr(tbodyElement) {
       const trElements = [].slice.call(tbodyElement.children);
@@ -20735,6 +20733,15 @@ const _hoisted_22 = ["colspan"];
       }
       updateVModelWithSelectedRows();
       (_b = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy) == null ? void 0 : _b.$forceUpdate();
+    }
+    function setSelectedRows() {
+      if (!props.modelValue || !props.modelValue.length) {
+        selectedRows.value = [];
+        return;
+      }
+      selectedRows.value = props.modelValue.filter((row) => {
+        return includeItem(row, props.rows, props.keyAttribute);
+      });
     }
     function updateVModelWithSelectedRows() {
       if (props.modelValue) {
