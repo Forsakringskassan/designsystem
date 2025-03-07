@@ -59,6 +59,7 @@ components/page-layout/application-layout.html
 components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
 components/page-layout/fpagelayout.html
+components/page-layout/fresizepane.html
 components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
