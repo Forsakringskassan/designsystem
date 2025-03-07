@@ -3,6 +3,7 @@
         <f-select-field v-model="type">
             <template #label> Typ </template>
             <option value="f-text-field">Fritext</option>
+            <option value="f-bankgiro-text-field">Bankgiro</option>
             <option value="f-clearingnumber-text-field">Clearingnummer</option>
             <option value="f-bank-account-number-text-field">Kontonummer</option>
             <option value="f-email-text-field">Mejladress</option>
@@ -58,6 +59,7 @@
 import { defineComponent } from "vue";
 import {
     FBankAccountNumberTextField,
+    FBankgiroTextField,
     FFieldset,
     FCheckboxField,
     FClearingnumberTextField,
@@ -124,6 +126,7 @@ export default defineComponent({
                 FTextField,
                 FClearingnumberTextField,
                 FBankAccountNumberTextField,
+                FBankgiroTextField,
                 FEmailTextField,
                 FNumericTextField,
                 FOrganisationsnummerTextField,
