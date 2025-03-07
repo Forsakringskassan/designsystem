@@ -18,6 +18,7 @@
         <f-checkbox-field v-model="hasActions" :value="true"> Åtgärdsknappar </f-checkbox-field>
         <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
         <f-checkbox-field v-model="hasHiddenCaption" :value="true"> Dold caption </f-checkbox-field>
+        <f-checkbox-field v-model="isResizable" :value="true"> Resizable </f-checkbox-field>
         <f-checkbox-field v-model="isEmpty" :value="true"> Tom tabell </f-checkbox-field>
         <f-fieldset v-if="isEmpty" name="radio-empty-text">
             <template #label> Meddelande för tom tabell </template>
@@ -57,6 +58,7 @@ export default defineComponent({
             hasRowHeader: false,
             isSelectable: true,
             isExpandable: false,
+            isResizable: false,
             hasCustomExpandContent: false,
             hasHover: false,
             emptyItems: [],
@@ -190,6 +192,9 @@ export default defineComponent({
         selectable(): string {
             return this.isSelectable ? "selectable" : "";
         },
+        resizable(): string {
+            return this.isResizable ? "resizable-columns" : "";
+        },
         expandable(): string {
             const expandableType = this.hasCustomExpandContent
                 ? "expandableContent"
@@ -236,6 +241,7 @@ export default defineComponent({
                     ${this.striped}
                     ${this.hover}
                     ${this.selectable}
+                    ${this.resizable}
                     ${this.expandable}
                     key-attribute="id"
                 >
