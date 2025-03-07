@@ -5030,7 +5030,7 @@ vt(Dr, { builders: () => $i, printer: () => Mi, utils: () => Vi });
 var $i = { join: Se, line: Qe, softline: $r, hardline: K, literalline: Xe, group: kt, conditionalGroup: Ir, fill: Rr, lineSuffix: Te, lineSuffixBoundary: Hr, cursor: Z, breakParent: he, ifBreak: Yr, trim: Wr, indent: le, indentIfBreak: jr, align: De, addAlignmentToDoc: Ze, markAsRoot: Lr, dedentToRoot: kr, dedent: Pr, hardlineWithoutBreakParent: ke, literallineWithoutBreakParent: Lt, label: Mr, concat: (e) => e };
 var Mi = { printDocToString: Ce };
 var Vi = { willBreak: xr, traverseDoc: Fe, findInDoc: Je, mapDoc: Oe, removeLines: Nr, stripTrailingHardline: qe, replaceEndOfLine: Or, canBreak: Sr };
-var cu = "3.5.2";
+var cu = "3.5.3";
 var cr = {};
 vt(cr, { addDanglingComment: () => re, addLeadingComment: () => ue, addTrailingComment: () => ie, getAlignmentSize: () => ge, getIndentSize: () => fu, getMaxContinuousCount: () => du, getNextNonSpaceNonCommentCharacter: () => pu, getNextNonSpaceNonCommentCharacterIndex: () => no, getPreferredQuote: () => mu, getStringWidth: () => Le, hasNewline: () => V, hasNewlineInRange: () => hu, hasSpaces: () => Eu, isNextLineEmpty: () => so, isNextLineEmptyAfterIndex: () => Ct, isPreviousLineEmpty: () => io, makeString: () => Cu, skip: () => Ae, skipEverythingButNewLine: () => nt, skipInlineComment: () => Be, skipNewline: () => W, skipSpaces: () => S, skipToLineEnd: () => rt, skipTrailingComment: () => we, skipWhitespace: () => tn });
 function Ui(e, t) {
