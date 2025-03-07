@@ -1,11 +1,21 @@
 @use "palette-variables" as *;
 
 @mixin css-variables {
+    // COLOR
+
     // TEXT
     --fkds-color-text-primary: #{$palette-color-fk-black-100}; /* Standard text färg */
     --fkds-color-text-secondary: #{$palette-color-fk-black-70};
     --fkds-color-text-inverted: #{$palette-color-white-100}; /* Inverterad text färg */
     --fkds-color-text-disabled: #{$palette-color-fk-black-50};
+
+    // LINK TEXT
+    --fkds-link-color-text-primary-default: #{$palette-color-bluebell-100};
+    --fkds-link-color-text-primary-hover: #{$palette-color-bluebell-120};
+    --fkds-link-color-text-secondary-default: #{$palette-color-fk-black-100};
+    --fkds-link-color-text-secondary-hover: #{$palette-color-fk-black-100};
+    --fkds-color-link-text-inverted-default: #{$palette-color-white-100};
+    --fkds-color-link-text-inverted-hover: #{$palette-color-white-100};
 
     // BACKGROUND
     --fkds-color-background-primary: #{$palette-color-white-100};
