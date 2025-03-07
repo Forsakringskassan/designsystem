@@ -10,6 +10,7 @@ async function generatePublic() {
 
     const haveLabs = existsSync("packages/vue-labs/public");
     const haveSandbox = existsSync("internal/vue-sandbox/dist");
+    const haveTestbed = existsSync("internal/testbed-page-layout/dist");
 
     /* copy docs from each package */
     await Promise.all([
@@ -25,6 +26,13 @@ async function generatePublic() {
 
     if (haveSandbox) {
         await fse.copy("internal/vue-sandbox/dist", "public/vue-sandbox");
+    }
+
+    if (haveTestbed) {
+        await fse.copy(
+            "internal/testbed-page-layout/dist",
+            "public/testbed-page-layout",
+        );
     }
 }
 

@@ -1,0 +1,9 @@
+{
+    "x-context-bar": {
+        "flow": true
+    },
+
+    "x-toolbar": {
+        "flow": true
+    }
+}
