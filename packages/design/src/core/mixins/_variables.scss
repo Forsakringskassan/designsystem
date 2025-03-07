@@ -1,4 +1,17 @@
+// BUTTON
 $button-color-border-default: transparent;
 $button-color-background-disabled: var(--fkds-color-action-background-disabled);
 $button-color-border-disabled: var(--fkds-color-action-border-disabled);
 $button-color-text-disabled: var(--fkds-color-action-text-disabled);
+
+// ANCHOR - COLOR - STANDARD
+$anchor-color-text-default: var(--fkds-link-color-text-primary-default);
+$anchor-color-text-hover: var(--fkds-link-color-text-primary-hover);
+$anchor-color-text-decoration-default: var(--fkds-link-color-text-primary-default);
+$anchor-color-text-decoration-hover: var(--fkds-link-color-text-primary-hover);
+
+// ANCHOR - TYPOGRAPHY
+$anchor-text-underline-offset: var(--fkds-link-text-decoration-offset-default);
+$anchor-text-underline-width-default: var(--fkds-link-text-decoration-thickness-default);
+$anchor-text-underline-width-hover: var(--fkds-link-text-decoration-thickness-hover);
+$anchor-text-weight-default: var(--fkds-link-font-weight-default);

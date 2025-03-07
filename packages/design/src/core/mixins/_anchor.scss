@@ -1,17 +1,16 @@
-$anchor-underline-width: 2px !default;
+@use "variables" as *;
 
 @mixin anchor() {
-    $anchor-underline-offset: 0.25em;
-
-    color: var(--f-text-color-link);
+    color: $anchor-color-text-default;
     text-decoration: underline;
-    text-decoration-thickness: $anchor-underline-width;
-    text-underline-offset: $anchor-underline-offset;
-    text-decoration-color: var(--f-text-color-link);
-    font-weight: var(--f-font-weight-medium);
+    text-decoration-thickness: $anchor-text-underline-width-default;
+    text-underline-offset: $anchor-text-underline-offset;
+    text-decoration-color: $anchor-color-text-decoration-default;
+    font-weight: $anchor-text-weight-default;
 
     &:hover {
-        color: var(--f-text-color-link-hover);
-        text-decoration-color: var(--f-border-color-link-hover);
+        color: $anchor-color-text-hover;
+        text-decoration-color: $anchor-color-text-decoration-hover;
+        text-decoration-thickness: $anchor-text-underline-width-hover;
     }
 }

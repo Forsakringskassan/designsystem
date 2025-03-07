@@ -1,13 +1,15 @@
 // stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
 
 @use "version" as *;
-@use "semantic-tokens" as semantic-tokens;
+@use "semantic-tokens-colors" as semantic-tokens-colors;
+@use "semantic-tokens-typography" as semantic-tokens-typography;
 @use "css-variables" as css-variables;
 
 $global: true !default;
 
 @mixin css-variables {
-    @include semantic-tokens.css-variables;
+    @include semantic-tokens-colors.css-variables;
+    @include semantic-tokens-typography.css-variables;
     @include css-variables.css-variables;
 }
 

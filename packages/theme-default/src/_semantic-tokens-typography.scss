@@ -1,0 +1,9 @@
+@mixin css-variables {
+    // TYPOGRAPHY
+
+    // LINK
+    --fkds-link-text-decoration-thickness-default: 1px;
+    --fkds-link-text-decoration-thickness-hover: 2px;
+    --fkds-link-text-decoration-offset-default: 0.25em;
+    --fkds-link-font-weight-default: 500;
+}
