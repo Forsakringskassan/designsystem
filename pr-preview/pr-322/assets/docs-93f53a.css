@@ -5505,6 +5505,140 @@ input[type=search]:focus,
     margin-bottom: 1rem;
   }
 }
+/* background color */
+/* highlight color */
+/* the width of the visible handle */
+/* how much extra click/hover area the handle has */
+/* how much extra space the handle occupies when hovering (not counting the click area) */
+/* how long before visually indicating the hover state */
+/* how long the animation for the visual indicator is */
+.resize__handle {
+  flex: 0 0 2px;
+  background: var(--fkds-color-border-primary);
+  touch-action: none;
+  user-select: none;
+  z-index: 1;
+  position: relative;
+  transition: z-index 0s 200ms;
+  /* disable regular focus indicator as this component has its own */
+  /* when focus by keyboard we dont want the delay or transition */
+  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */
+}
+@media (forced-colors: active) {
+  .resize__handle {
+    background: CanvasText;
+  }
+}
+.resize__handle[aria-orientation=horizontal] {
+  cursor: row-resize;
+  height: 2px;
+}
+.resize__handle[aria-orientation=horizontal]::before {
+  inset: -2px 0;
+}
+.resize__handle[aria-orientation=horizontal]::after {
+  inset: -4px 0;
+}
+.resize__handle[aria-orientation=vertical] {
+  cursor: col-resize;
+  width: 2px;
+}
+.resize__handle[aria-orientation=vertical]::before {
+  inset: 0 -2px;
+}
+.resize__handle[aria-orientation=vertical]::after {
+  inset: 0 -4px;
+}
+.resize__handle::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  background-color: transparent;
+  transition: background-color 200ms ease-in;
+}
+.resize__handle::after {
+  content: "";
+  position: absolute;
+}
+.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
+  background-color: var(--fkds-color-action-border-primary-hover);
+  transition-delay: 200ms;
+}
+@media (forced-colors: active) {
+  .resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
+    background-color: Highlight;
+  }
+}
+.resize__handle:focus {
+  outline: none;
+  box-shadow: none;
+}
+.resize__handle:focus::before {
+  transition: none;
+}
+.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {
+  z-index: 2;
+  transition: z-index 0s 0s;
+}
+.resize__handle.disabled {
+  cursor: auto;
+}
+.resize__handle.disabled::before {
+  display: none;
+}
+
+.resize--left .resize__handle {
+  left: 2px;
+}
+
+.resize--right .resize__handle {
+  right: 2px;
+}
+
+.resize--top .resize__handle {
+  top: 2px;
+}
+
+.resize--bottom .resize__handle {
+  bottom: 2px;
+}
+
+.resize {
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
+}
+.resize--left {
+  flex-direction: row;
+  width: var(--size);
+}
+.resize--right {
+  flex-direction: row-reverse;
+  width: var(--size);
+}
+.resize--top {
+  flex-direction: column;
+  height: var(--size);
+}
+.resize--bottom {
+  flex-direction: column-reverse;
+  height: var(--size);
+}
+.resize__content {
+  flex: 1 1 auto;
+  overflow: auto;
+  box-sizing: border-box;
+  display: flex;
+}
+.resize--left .resize__content, .resize--right .resize__content {
+  min-width: calc(var(--min) - 2px);
+  max-width: calc(var(--max) - 2px);
+}
+.resize--top .resize__content, .resize--bottom .resize__content {
+  min-height: calc(var(--min) - 2px);
+  max-height: calc(var(--max) - 2px);
+}
+
 .select-field {
   display: flex;
   flex-direction: column;
@@ -6760,140 +6894,6 @@ input[type=search]:focus,
 .popup-error--right::before {
   clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--f-border-width-medium)) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(100% + 10px - var(--f-border-width-medium) / 0.5) calc(100% - var(--i-popup-error-offset)), calc(100% - var(--f-border-width-medium)) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));
   border-image: conic-gradient(var(--f-background-error) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;
-}
-
-/* background color */
-/* highlight color */
-/* the width of the visible handle */
-/* how much extra click/hover area the handle has */
-/* how much extra space the handle occupies when hovering (not counting the click area) */
-/* how long before visually indicating the hover state */
-/* how long the animation for the visual indicator is */
-.resize__handle {
-  flex: 0 0 2px;
-  background: var(--fkds-color-border-primary);
-  touch-action: none;
-  user-select: none;
-  z-index: 1;
-  position: relative;
-  transition: z-index 0s 200ms;
-  /* disable regular focus indicator as this component has its own */
-  /* when focus by keyboard we dont want the delay or transition */
-  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */
-}
-@media (forced-colors: active) {
-  .resize__handle {
-    background: CanvasText;
-  }
-}
-.resize__handle[aria-orientation=horizontal] {
-  cursor: row-resize;
-  height: 2px;
-}
-.resize__handle[aria-orientation=horizontal]::before {
-  inset: -2px 0;
-}
-.resize__handle[aria-orientation=horizontal]::after {
-  inset: -4px 0;
-}
-.resize__handle[aria-orientation=vertical] {
-  cursor: col-resize;
-  width: 2px;
-}
-.resize__handle[aria-orientation=vertical]::before {
-  inset: 0 -2px;
-}
-.resize__handle[aria-orientation=vertical]::after {
-  inset: 0 -4px;
-}
-.resize__handle::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  background-color: transparent;
-  transition: background-color 200ms ease-in;
-}
-.resize__handle::after {
-  content: "";
-  position: absolute;
-}
-.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
-  background-color: var(--fkds-color-action-border-primary-hover);
-  transition-delay: 200ms;
-}
-@media (forced-colors: active) {
-  .resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {
-    background-color: Highlight;
-  }
-}
-.resize__handle:focus {
-  outline: none;
-  box-shadow: none;
-}
-.resize__handle:focus::before {
-  transition: none;
-}
-.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {
-  z-index: 2;
-  transition: z-index 0s 0s;
-}
-.resize__handle.disabled {
-  cursor: auto;
-}
-.resize__handle.disabled::before {
-  display: none;
-}
-
-.resize--left .resize__handle {
-  left: 2px;
-}
-
-.resize--right .resize__handle {
-  right: 2px;
-}
-
-.resize--top .resize__handle {
-  top: 2px;
-}
-
-.resize--bottom .resize__handle {
-  bottom: 2px;
-}
-
-.resize {
-  flex-grow: 1;
-  display: flex;
-  align-items: stretch;
-}
-.resize--left {
-  flex-direction: row;
-  width: var(--size);
-}
-.resize--right {
-  flex-direction: row-reverse;
-  width: var(--size);
-}
-.resize--top {
-  flex-direction: column;
-  height: var(--size);
-}
-.resize--bottom {
-  flex-direction: column-reverse;
-  height: var(--size);
-}
-.resize__content {
-  flex: 1 1 auto;
-  overflow: auto;
-  box-sizing: border-box;
-  display: flex;
-}
-.resize--left .resize__content, .resize--right .resize__content {
-  min-width: calc(var(--min) - 2px);
-  max-width: calc(var(--max) - 2px);
-}
-.resize--top .resize__content, .resize--bottom .resize__content {
-  min-height: calc(var(--min) - 2px);
-  max-height: calc(var(--max) - 2px);
 }
 
 .docs-api dt code {
