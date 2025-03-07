@@ -1,14 +1,14 @@
 {
-  "name": "@fkui/vue-sandbox",
+  "name": "@fkui/testbed-page-layout",
   "version": "6.3.0",
   "private": true,
-  "description": "fkui-vue-sandbox",
+  "description": "An example and testbed for application layout components",
   "homepage": "https://designsystem.forsakringskassan.se/",
   "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Forsakringskassan/designsystem.git",
-    "directory": "internal/vue-sandbox"
+    "directory": "internal/testbed-page-layout"
   },
   "license": "MIT",
   "author": "Försäkringskassan",
@@ -19,9 +19,7 @@
     "start": "vite --"
   },
   "dependencies": {
-    "@fkui/date": "6.3.0",
     "@fkui/design": "6.3.0",
-    "@fkui/logic": "6.3.0",
     "@fkui/icon-lib-default": "6.3.0",
     "@fkui/theme-default": "6.3.0",
     "@fkui/vue": "6.3.0",
@@ -30,7 +28,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "5.2.1",
-    "vite": "6.2.1"
+    "vite": "6.2.0"
   },
   "engines": {
     "node": ">= 20",
