@@ -59,7 +59,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         <div class="layout-container">
             <f-page-layout layout="${layout.value}">
                 <template #${slot.value}>
-                    <f-resize-pane min="10%" max="50%" initial="25%">
+                    <f-resize-pane min="200px 20%" max="50%" initial="25%">
                         <div class="content">
                             <p>Panel</p>
                         </div>
