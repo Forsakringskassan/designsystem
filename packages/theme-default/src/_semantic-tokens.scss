@@ -1,11 +1,21 @@
 @use "palette-variables" as *;
 
 @mixin css-variables {
+    // COLOR
+
     // TEXT
     --fkds-color-text-primary: #{$palette-color-fk-black-100};
     --fkds-color-text-secondary: #{$palette-color-fk-black-70};
     --fkds-color-text-inverted: #{$palette-color-white-100};
     --fkds-color-text-disabled: #{$palette-color-fk-black-50};
+
+    // LINK TEXT
+    --fkds-link-color-text-primary-default: #{$palette-color-bluebell-100};
+    --fkds-link-color-text-primary-hover: #{$palette-color-bluebell-120};
+    --fkds-link-color-text-secondary-default: #{$palette-color-fk-black-100};
+    --fkds-link-color-text-secondary-hover: #{$palette-color-bluebell-120};
+    --fkds-color-link-text-inverted-default: #{$palette-color-white-100};
+    --fkds-color-link-text-inverted-hover: #{$palette-color-white-100};
 
     // BACKGROUND
     --fkds-color-background-primary: #{$palette-color-white-100};
@@ -128,4 +138,14 @@
     --fkds-icon-color-feedback-border-positive: #{$palette-color-green-a-85};
     --fkds-icon-color-feedback-border-warning: #{$palette-color-yellow-100};
     --fkds-icon-color-feedback-border-negative: #{$palette-color-red-100};
+
+    // TYPOGRAPHY
+
+    // LINK
+    --fkds-link-text-decoration-thickness-default: 1px;
+    --fkds-link-text-decoration-thickness-hover: 3px;
+    --fkds-link-text-decoration-offset-default: 0.25em;
+    --fkds-link-text-decoration-thickness-default: 1px;
+    --fkds-link-text-decoration-thickness-hover: 3px;
+    --fkds-link-font-weight-default: 500;
 }
