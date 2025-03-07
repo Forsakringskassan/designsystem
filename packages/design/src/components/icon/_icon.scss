@@ -57,6 +57,31 @@ $ICON_SELECTOR: ".icon" !default;
     &--rotate-270 {
         transform: rotate(270deg);
     }
+
+    &--x-small {
+        height: var(--f-icon-size-x-small);
+        width: var(--f-icon-size-x-small);
+    }
+
+    &--small {
+        height: var(--f-icon-size-small);
+        width: var(--f-icon-size-small);
+    }
+
+    &--medium {
+        height: var(--f-icon-size-medium);
+        width: var(--f-icon-size-medium);
+    }
+
+    &--large {
+        height: var(--f-icon-size-large);
+        width: var(--f-icon-size-large);
+    }
+
+    &--x-large {
+        height: var(--f-icon-size-x-large);
+        width: var(--f-icon-size-x-large);
+    }
 }
 
 #{$ICON_SELECTOR}-stack,
