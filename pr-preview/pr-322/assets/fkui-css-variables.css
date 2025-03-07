@@ -1,8 +1,9 @@
+@charset "UTF-8";
 :root {
   --fkui-theme-default-version: "6.2.0";
-  --fkds-color-text-primary: #1b1e23;
+  --fkds-color-text-primary: #1b1e23; /* Standard text färg */
   --fkds-color-text-secondary: #5f6165;
-  --fkds-color-text-inverted: #ffffff;
+  --fkds-color-text-inverted: #ffffff; /* Inverterad text färg */
   --fkds-color-text-disabled: #8d8e91;
   --fkds-color-background-primary: #ffffff;
   --fkds-color-background-secondary: #f4f4f4;
@@ -63,6 +64,7 @@
   --fkds-color-feedback-border-positive: #35805b;
   --fkds-color-feedback-border-warning: #ffbe10;
   --fkds-color-feedback-border-negative: #ca1515;
+  --fkds-color-feedback-text-negative: #ca1515;
   --fkds-color-select-background-primary-default: #35805b;
   --fkds-color-select-background-primary-hover: #dbe9e2;
   --fkds-color-select-background-primary-active: #dbe9e2;
