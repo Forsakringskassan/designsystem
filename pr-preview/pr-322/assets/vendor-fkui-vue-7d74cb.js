@@ -1,9 +1,9 @@
 // packages/vue/dist/esm/index.esm.js
-import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs } from "vue";
+import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
 var statuses = ["default", "warning", "error", "success", "info"];
-var _sfc_main$1d = /* @__PURE__ */ defineComponent({
+var _sfc_main$1e = /* @__PURE__ */ defineComponent({
   __name: "FBadge",
   props: {
     /**
@@ -161,10 +161,10 @@ function requireClassofRaw() {
   if (hasRequiredClassofRaw) return classofRaw;
   hasRequiredClassofRaw = 1;
   var uncurryThis = requireFunctionUncurryThis();
-  var toString = uncurryThis({}.toString);
+  var toString2 = uncurryThis({}.toString);
   var stringSlice = uncurryThis("".slice);
   classofRaw = function(it) {
-    return stringSlice(toString(it), 8, -1);
+    return stringSlice(toString2(it), 8, -1);
   };
   return classofRaw;
 }
@@ -233,16 +233,16 @@ function requireIsCallable() {
   };
   return isCallable;
 }
-var isObject;
+var isObject$1;
 var hasRequiredIsObject$1;
 function requireIsObject$1() {
-  if (hasRequiredIsObject$1) return isObject;
+  if (hasRequiredIsObject$1) return isObject$1;
   hasRequiredIsObject$1 = 1;
   var isCallable2 = requireIsCallable();
-  isObject = function(it) {
+  isObject$1 = function(it) {
     return typeof it == "object" ? it !== null : isCallable2(it);
   };
-  return isObject;
+  return isObject$1;
 }
 var getBuiltIn;
 var hasRequiredGetBuiltIn;
@@ -502,9 +502,9 @@ function requireUid() {
   var uncurryThis = requireFunctionUncurryThis();
   var id = 0;
   var postfix = Math.random();
-  var toString = uncurryThis(1 .toString);
+  var toString2 = uncurryThis(1 .toString);
   uid = function(key) {
-    return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString(++id + postfix, 36);
+    return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString2(++id + postfix, 36);
   };
   return uid;
 }
@@ -919,7 +919,7 @@ function requireMakeBuiltIn() {
     }
     return value;
   };
-  Function.prototype.toString = makeBuiltIn$1(function toString() {
+  Function.prototype.toString = makeBuiltIn$1(function toString2() {
     return isCallable2(this) && getInternalState(this).source || inspectSource2(this);
   }, "toString");
   return makeBuiltIn.exports;
@@ -1882,7 +1882,7 @@ function requireEs_array_push() {
 requireEs_array_push();
 var Flip = ["horizontal", "vertical"];
 var Rotate = ["90", "180", "270"];
-var _sfc_main$1c = defineComponent({
+var _sfc_main$1d = defineComponent({
   name: "FIcon",
   inheritAttrs: false,
   props: {
@@ -1970,7 +1970,7 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-var _hoisted_1$W = ["aria-hidden"];
+var _hoisted_1$X = ["aria-hidden"];
 var _hoisted_2$G = ["xlink:href"];
 function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
@@ -1979,9 +1979,9 @@ function _sfc_render$R(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-hidden": _ctx.ariaHidden
   }), [renderSlot(_ctx.$slots, "default"), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("use", {
     "xlink:href": _ctx.spriteId
-  }, null, 8, _hoisted_2$G)], 16, _hoisted_1$W);
+  }, null, 8, _hoisted_2$G)], 16, _hoisted_1$X);
 }
-var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$R]]);
+var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$R]]);
 var DATA_TEST_ATTRIBUTE_NAME = "data-test";
 function throwErrorIfEmpty(value) {
   if (!value) {
@@ -4419,7 +4419,7 @@ function elementIsRadioButton(element) {
 function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
 }
-var _sfc_main$1b = defineComponent({
+var _sfc_main$1c = defineComponent({
   name: "FModal",
   components: {
     FIcon
@@ -4599,7 +4599,7 @@ var _sfc_main$1b = defineComponent({
     }
   }
 });
-var _hoisted_1$V = ["id"];
+var _hoisted_1$W = ["id"];
 var _hoisted_2$F = {
   class: "modal__backdrop"
 };
@@ -4661,9 +4661,9 @@ function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
   })], 8, _hoisted_11$3), _cache[8] || (_cache[8] = createTextVNode()), createElementVNode("div", {
     tabindex: "0",
     onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
-  }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$V)) : createCommentVNode("", true);
+  }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$W)) : createCommentVNode("", true);
 }
-var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$Q]]);
+var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$Q]]);
 function prepareButtonList(src, buttonOrder = config.buttonOrder) {
   const list = src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
@@ -4692,7 +4692,7 @@ var defaultButtons = [{
   event: "dismiss",
   type: "secondary"
 }];
-var _sfc_main$1a = defineComponent({
+var _sfc_main$1b = defineComponent({
   name: "FConfirmModal",
   components: {
     FModal
@@ -4796,7 +4796,7 @@ var _sfc_main$1a = defineComponent({
     }
   }
 });
-var _hoisted_1$U = {
+var _hoisted_1$V = {
   class: "button-group"
 };
 var _hoisted_2$E = ["onClick"];
@@ -4817,7 +4817,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     header: withCtx(() => [renderSlot(_ctx.$slots, "heading", {}, () => [createTextVNode(toDisplayString(_ctx.heading), 1)])]),
     content: withCtx(() => [renderSlot(_ctx.$slots, "content", {}, () => [createTextVNode(toDisplayString(_ctx.content), 1)])]),
-    footer: withCtx(() => [createElementVNode("div", _hoisted_1$U, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
+    footer: withCtx(() => [createElementVNode("div", _hoisted_1$V, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
       return openBlock(), createElementBlock("button", {
         key: button.label,
         type: "button",
@@ -4828,11 +4828,11 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
-var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$P]]);
+var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$P]]);
 var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 var ALIGNMENT = ["top", "center", "bottom"];
 var FLOAT = ["left", "center", "right"];
-var _sfc_main$19 = defineComponent({
+var _sfc_main$1a = defineComponent({
   name: "IFlex",
   inheritAttrs: true,
   props: {
@@ -4912,8 +4912,8 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass(["iflex", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$O]]);
-var _sfc_main$18 = defineComponent({
+var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$O]]);
+var _sfc_main$19 = defineComponent({
   name: "IFlexItem",
   inheritAttrs: true,
   props: {
@@ -4965,7 +4965,7 @@ function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass(["iflex__item", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$N]]);
+var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$N]]);
 function focusError(item) {
   const element = document.querySelector(`#${item.id}`);
   if (!element) {
@@ -4975,7 +4975,7 @@ function focusError(item) {
   scrollTo(element, window.innerHeight * 0.25);
   focus$1(focusElement2 ? focusElement2 : element);
 }
-var _sfc_main$17 = defineComponent({
+var _sfc_main$18 = defineComponent({
   name: "FErrorList",
   components: {
     FIcon,
@@ -5031,7 +5031,7 @@ var _sfc_main$17 = defineComponent({
     }
   }
 });
-var _hoisted_1$T = {
+var _hoisted_1$U = {
   class: "error-list"
 };
 var _hoisted_2$D = {
@@ -5048,7 +5048,7 @@ function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
-  return openBlock(), createElementBlock("div", _hoisted_1$T, [createVNode(_component_i_flex, null, {
+  return openBlock(), createElementBlock("div", _hoisted_1$U, [createVNode(_component_i_flex, null, {
     default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, {
       key: 0,
       shrink: ""
@@ -5098,7 +5098,7 @@ function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })]);
 }
-var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$M]]);
+var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$M]]);
 var es_iterator_every = {};
 var hasRequiredEs_iterator_every;
 function requireEs_iterator_every() {
@@ -5186,7 +5186,7 @@ function cleanUpElements(vm) {
     }, 0);
   });
 }
-var _sfc_main$16 = defineComponent({
+var _sfc_main$17 = defineComponent({
   name: "FValidationGroup",
   props: {
     /**
@@ -5262,13 +5262,13 @@ function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
   }, [renderSlot(_ctx.$slots, "default")], 32);
 }
-var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$L]]);
+var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$L]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
   return FValidationFormAction2;
 })(FValidationFormAction || {});
-var _sfc_main$15 = defineComponent({
+var _sfc_main$16 = defineComponent({
   name: "FValidationForm",
   components: {
     FValidationGroup,
@@ -5407,7 +5407,7 @@ var _sfc_main$15 = defineComponent({
     }
   }
 });
-var _hoisted_1$S = ["id"];
+var _hoisted_1$T = ["id"];
 var _hoisted_2$C = {
   key: 0,
   ref: "errors",
@@ -5436,12 +5436,12 @@ function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       title: withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
       _: 3
-    }, 8, ["items", "bullets", "before-navigate"])], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$S)]),
+    }, 8, ["items", "bullets", "before-navigate"])], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$T)]),
     _: 3
   }, 8, ["modelValue"]);
 }
-var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$K]]);
-var _sfc_main$14 = defineComponent({
+var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$K]]);
+var _sfc_main$15 = defineComponent({
   name: "FFormModal",
   components: {
     FModal,
@@ -5590,7 +5590,7 @@ var _sfc_main$14 = defineComponent({
     }
   }
 });
-var _hoisted_1$R = {
+var _hoisted_1$S = {
   class: "button-group"
 };
 var _hoisted_2$B = ["type", "form", "onClick"];
@@ -5622,7 +5622,7 @@ function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
       default: withCtx(() => [_cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "input-text-fields")]),
       _: 3
     }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])]),
-    footer: withCtx(() => [createElementVNode("div", _hoisted_1$R, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
+    footer: withCtx(() => [createElementVNode("div", _hoisted_1$S, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
       return openBlock(), createElementBlock("button", {
         key: button.label,
         type: button.buttonType,
@@ -5634,7 +5634,7 @@ function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
-var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$J]]);
+var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$J]]);
 async function confirmModal(callingInstance, texts) {
   const buttons = [{
     label: texts.confirm,
@@ -5994,7 +5994,7 @@ var ErrorPlugin = {
     }
   }
 };
-var _sfc_main$13 = defineComponent({
+var _sfc_main$14 = defineComponent({
   name: "FErrorPage",
   props: {
     payload: {
@@ -6004,16 +6004,16 @@ var _sfc_main$13 = defineComponent({
     }
   }
 });
-var _hoisted_1$Q = {
+var _hoisted_1$R = {
   "data-test": "f-error-page"
 };
 function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$Q, _cache[0] || (_cache[0] = [createElementVNode("h1", null, "Fel", -1), createTextVNode(), createElementVNode("p", null, "Ett fel har uppst\xE5tt.", -1), createTextVNode(), createElementVNode("a", {
+  return openBlock(), createElementBlock("div", _hoisted_1$R, _cache[0] || (_cache[0] = [createElementVNode("h1", null, "Fel", -1), createTextVNode(), createElementVNode("p", null, "Ett fel har uppst\xE5tt.", -1), createTextVNode(), createElementVNode("a", {
     href: "/"
   }, "G\xE5 till startsidan", -1)]));
 }
-var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$I]]);
-var _sfc_main$12 = defineComponent({
+var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$I]]);
+var _sfc_main$13 = defineComponent({
   name: "FErrorHandlingApp",
   props: {
     defaultComponent: {
@@ -6052,7 +6052,7 @@ function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
     key: 2
   })]);
 }
-var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$H]]);
+var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$H]]);
 function isMonthBefore(date, minDate) {
   return Boolean(minDate && date.isBefore(minDate.startOfMonth()));
 }
@@ -6093,7 +6093,7 @@ function getMessage($t2, date, minDate, maxDate) {
     });
   }
 }
-var _sfc_main$11 = defineComponent({
+var _sfc_main$12 = defineComponent({
   name: "ICalendarNavbar",
   components: {
     FIcon
@@ -6206,7 +6206,7 @@ var _sfc_main$11 = defineComponent({
     }
   }
 });
-var _hoisted_1$P = {
+var _hoisted_1$Q = {
   class: "calendar-navbar"
 };
 var _hoisted_2$A = {
@@ -6223,7 +6223,7 @@ var _hoisted_6$f = {
 };
 function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$P, [createElementVNode("div", _hoisted_2$A, toDisplayString(_ctx.currentText), 1), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("button", {
+  return openBlock(), createElementBlock("div", _hoisted_1$Q, [createElementVNode("div", _hoisted_2$A, toDisplayString(_ctx.currentText), 1), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("button", {
     ref: "previousButton",
     class: "calendar-navbar__arrow calendar-navbar__arrow--previous",
     type: "button",
@@ -6245,14 +6245,14 @@ function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
     name: "arrow-right"
   }, null, 8, ["class"])], 8, _hoisted_5$j)]);
 }
-var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$G]]);
+var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$G]]);
 function getDayStartOffset(days) {
   return days[0].weekDay - 1;
 }
 function getDayEndOffset(days) {
   return 7 - days[days.length - 1].weekDay;
 }
-var _sfc_main$10 = defineComponent({
+var _sfc_main$11 = defineComponent({
   name: "ICalendarMonthGrid",
   props: {
     /**
@@ -6326,7 +6326,7 @@ var _sfc_main$10 = defineComponent({
     }
   }
 });
-var _hoisted_1$O = ["aria-label"];
+var _hoisted_1$P = ["aria-label"];
 var _hoisted_2$z = {
   key: 0,
   class: "calendar-month__col--week"
@@ -6419,9 +6419,9 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     class: "calendar-month__cell",
     colspan: _ctx.totalCols,
     "aria-hidden": "true"
-  }, null, 8, _hoisted_12$2)])) : createCommentVNode("", true)])], 40, _hoisted_1$O);
+  }, null, 8, _hoisted_12$2)])) : createCommentVNode("", true)])], 40, _hoisted_1$P);
 }
-var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$F]]);
+var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$F]]);
 var DayStep = {
   ArrowRight: 1,
   ArrowLeft: -1,
@@ -6445,7 +6445,7 @@ function getDayTabindex(date, active, entry) {
     return date.day === 1 ? 0 : -1;
   }
 }
-var _sfc_main$$ = defineComponent({
+var _sfc_main$10 = defineComponent({
   name: "ICalendarMonth",
   components: {
     ICalendarMonthGrid
@@ -6535,7 +6535,7 @@ var _sfc_main$$ = defineComponent({
     }
   }
 });
-var _hoisted_1$N = ["data-date", "tabindex", "onClick", "onKeydown"];
+var _hoisted_1$O = ["data-date", "tabindex", "onClick", "onKeydown"];
 function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_calendar_month_grid = resolveComponent("i-calendar-month-grid");
   return openBlock(), createBlock(_component_i_calendar_month_grid, {
@@ -6555,12 +6555,12 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     }, [renderSlot(_ctx.$slots, "default", {
       date,
       isFocused: _ctx.isDayFocused(date)
-    })], 40, _hoisted_1$N)]),
+    })], 40, _hoisted_1$O)]),
     _: 3
   }, 8, ["value"]);
 }
-var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$E]]);
-var _sfc_main$_ = defineComponent({
+var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$E]]);
+var _sfc_main$$ = defineComponent({
   name: "FCalendar",
   components: {
     ICalendarNavbar,
@@ -6611,13 +6611,13 @@ var _sfc_main$_ = defineComponent({
     }
   }
 });
-var _hoisted_1$M = {
+var _hoisted_1$N = {
   class: "calendar__wrapper"
 };
 function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_calendar_navbar = resolveComponent("i-calendar-navbar");
   const _component_i_calendar_month = resolveComponent("i-calendar-month");
-  return openBlock(), createElementBlock("div", _hoisted_1$M, [createVNode(_component_i_calendar_navbar, {
+  return openBlock(), createElementBlock("div", _hoisted_1$N, [createVNode(_component_i_calendar_navbar, {
     "model-value": _ctx.modelValue,
     "min-date": _ctx.minDate,
     "max-date": _ctx.maxDate,
@@ -6640,7 +6640,7 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["model-value", "min-date", "max-date", "tab-date", "onClick", "onUpdate:modelValue"])]);
 }
-var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$D]]);
+var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$D]]);
 function getCalendarDaySrText(day, enabled, selected, t) {
   const parts = [];
   if (!enabled) {
@@ -6659,7 +6659,7 @@ function getCalendarDaySrText(day, enabled, selected, t) {
   parts.push(day.toString(DateFormat.FULL));
   return parts.join(" ");
 }
-var _sfc_main$Z = defineComponent({
+var _sfc_main$_ = defineComponent({
   name: "FCalendarDay",
   mixins: [TranslationMixin],
   props: {
@@ -6724,7 +6724,7 @@ var _sfc_main$Z = defineComponent({
     }
   }
 });
-var _hoisted_1$L = {
+var _hoisted_1$M = {
   "aria-hidden": "true"
 };
 var _hoisted_2$y = {
@@ -6733,10 +6733,10 @@ var _hoisted_2$y = {
 function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass(_ctx.dayClasses)
-  }, [createElementVNode("span", _hoisted_1$L, toDisplayString(_ctx.day.day), 1), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$y, toDisplayString(_ctx.srText), 1)], 2);
+  }, [createElementVNode("span", _hoisted_1$M, toDisplayString(_ctx.day.day), 1), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$y, toDisplayString(_ctx.srText), 1)], 2);
 }
-var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$C]]);
-function useEventListener(target, event, callback) {
+var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$C]]);
+function useEventListener$1(target, event, callback) {
   onMounted(() => {
     var _a;
     (_a = toValue(target)) == null ? void 0 : _a.addEventListener(event, callback);
@@ -6756,7 +6756,7 @@ function useSlotUtils() {
     }
   };
 }
-var _hoisted_1$K = ["id"];
+var _hoisted_1$L = ["id"];
 var _hoisted_2$x = {
   key: 0,
   class: "card__header"
@@ -6768,7 +6768,7 @@ var _hoisted_4$m = {
   key: 1,
   class: "card__footer"
 };
-var _sfc_main$Y = /* @__PURE__ */ defineComponent({
+var _sfc_main$Z = /* @__PURE__ */ defineComponent({
   __name: "FCard",
   props: {
     /**
@@ -6854,11 +6854,11 @@ var _sfc_main$Y = /* @__PURE__ */ defineComponent({
       })) : createCommentVNode("", true)]), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_3$q, [renderSlot(_ctx.$slots, "default")]), _cache[3] || (_cache[3] = createTextVNode()), hasFooterSlot.value ? (openBlock(), createElementBlock("div", _hoisted_4$m, [renderSlot(_ctx.$slots, "footer", normalizeProps(guardReactiveProps({
         hasError: hasError.value,
         validationMessage: validationMessage.value
-      })))])) : createCommentVNode("", true)], 42, _hoisted_1$K);
+      })))])) : createCommentVNode("", true)], 42, _hoisted_1$L);
     };
   }
 });
-var _sfc_main$X = defineComponent({
+var _sfc_main$Y = defineComponent({
   name: "FExpand",
   data() {
     return {
@@ -6924,7 +6924,7 @@ function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
-var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$B]]);
+var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$B]]);
 function offset(page, el) {
   const rect = el.getBoundingClientRect();
   return {
@@ -7209,7 +7209,7 @@ function isTeleportDisabled(options) {
   }
   return disableTeleport;
 }
-var _sfc_main$W = defineComponent({
+var _sfc_main$X = defineComponent({
   name: "IPopup",
   inheritAttrs: false,
   props: {
@@ -7511,7 +7511,7 @@ function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     placement: _ctx.placement
   })))], 544)], 16)], 8, ["to", "disabled"])) : createCommentVNode("", true);
 }
-var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$A]]);
+var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$A]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   switch (placement) {
     case Placement.A: {
@@ -7575,7 +7575,7 @@ function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   }
 }
 var POPUP_SPACING = 10;
-var _sfc_main$V = defineComponent({
+var _sfc_main$W = defineComponent({
   name: "IPopupError",
   components: {
     FIcon
@@ -7713,7 +7713,7 @@ var _sfc_main$V = defineComponent({
     }
   }
 });
-var _hoisted_1$J = {
+var _hoisted_1$K = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
@@ -7727,7 +7727,7 @@ function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "popup",
     class: normalizeClass(_ctx.popupClasses),
     "aria-hidden": "true"
-  }, [createElementVNode("div", _hoisted_1$J, [createElementVNode("div", {
+  }, [createElementVNode("div", _hoisted_1$K, [createElementVNode("div", {
     class: normalizeClass(_ctx.arrowClass),
     style: normalizeStyle(_ctx.errorStyle)
   }, [createElementVNode("span", null, toDisplayString(_ctx.errorMessage), 1), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("button", {
@@ -7741,7 +7741,7 @@ function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
     class: "button__icon"
   })])], 6)], 512)], 2)], 8, ["to", "disabled"])) : createCommentVNode("", true);
 }
-var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$z]]);
+var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$z]]);
 function numItems(itemHeight, availableHeight, verticalSpacing) {
   const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
   return Math.min(itemsFit, 7);
@@ -7808,12 +7808,12 @@ function computeListboxRect(anchor, options, root = document.documentElement, {
   }
   return void 0;
 }
-var _hoisted_1$I = ["onKeyup"];
+var _hoisted_1$J = ["onKeyup"];
 var _hoisted_2$w = {
   ref: "content"
 };
 var teleportDisabled = false;
-var _sfc_main$U = /* @__PURE__ */ defineComponent({
+var _sfc_main$V = /* @__PURE__ */ defineComponent({
   __name: "IPopupListbox",
   props: {
     isOpen: {
@@ -7835,7 +7835,7 @@ var _sfc_main$U = /* @__PURE__ */ defineComponent({
     const teleportTarget = computed(() => config.teleportTarget);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
-    useEventListener(__props.anchor, "keyup", onKeyEsc);
+    useEventListener$1(__props.anchor, "keyup", onKeyEsc);
     watchEffect(() => {
       if (wrapperRef.value && __props.activeElement !== void 0) {
         const centerPosition = __props.activeElement.offsetTop - (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
@@ -7967,7 +7967,7 @@ var _sfc_main$U = /* @__PURE__ */ defineComponent({
         onKeyup: withKeys(withModifiers(onKeyEsc, ["stop"]), ["esc"]),
         onClick: _cache[0] || (_cache[0] = withModifiers(() => {
         }, ["stop"]))
-      }), [createElementVNode("div", _hoisted_2$w, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$I)], 512)], 8, ["to"])) : createCommentVNode("", true);
+      }), [createElementVNode("div", _hoisted_2$w, [renderSlot(_ctx.$slots, "default")], 512)], 16, _hoisted_1$J)], 512)], 8, ["to"])) : createCommentVNode("", true);
     };
   }
 });
@@ -8011,7 +8011,7 @@ async function doMenuAction$2(action, target) {
   }
 }
 var preventKeys$2 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
-var _sfc_main$T = defineComponent({
+var _sfc_main$U = defineComponent({
   name: "IPopupMenu",
   components: {
     IPopup
@@ -8266,7 +8266,7 @@ var _sfc_main$T = defineComponent({
     }
   }
 });
-var _hoisted_1$H = ["aria-label"];
+var _hoisted_1$I = ["aria-label"];
 var _hoisted_2$v = {
   role: "menu",
   class: "ipopupmenu__list"
@@ -8309,17 +8309,17 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
         target: item.target,
         tabindex: "0"
       }, [_ctx.isSelected(index) ? (openBlock(), createElementBlock("span", _hoisted_5$h, [createElementVNode("span", null, toDisplayString(_ctx.selectedMenuItemScreenReaderText) + "\xA0", 1)])) : createCommentVNode("", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$l)], 10, _hoisted_3$p);
-    }), 128))])], 8, _hoisted_1$H)]),
+    }), 128))])], 8, _hoisted_1$I)]),
     _: 1
   }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
 }
-var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$y]]);
+var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$y]]);
 var ANIMATION_DURATION = 500;
 var NO_CSS_CLASSES = "";
 var CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
 var CLOSED_CSS_CLASS = "animate-expand";
 var ANIMATION_CSS_CLASSES = "animate-expand animate-expand--expanded";
-var _sfc_main$S = defineComponent({
+var _sfc_main$T = defineComponent({
   name: "IAnimateExpand",
   props: {
     /**
@@ -8511,7 +8511,7 @@ var _sfc_main$S = defineComponent({
     }
   }
 });
-var _hoisted_1$G = {
+var _hoisted_1$H = {
   key: 0,
   ref: "content",
   "data-test": "animation-content"
@@ -8520,10 +8520,10 @@ function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.animationClasses),
     style: normalizeStyle(_ctx.heightStyle)
-  }, [_ctx.shouldVIf ? withDirectives((openBlock(), createElementBlock("div", _hoisted_1$G, [renderSlot(_ctx.$slots, "default")], 512)), [[vShow, _ctx.shouldVShow]]) : createCommentVNode("", true)], 6);
+  }, [_ctx.shouldVIf ? withDirectives((openBlock(), createElementBlock("div", _hoisted_1$H, [renderSlot(_ctx.$slots, "default")], 512)), [[vShow, _ctx.shouldVShow]]) : createCommentVNode("", true)], 6);
 }
-var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$x]]);
-var _sfc_main$R = defineComponent({
+var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$x]]);
+var _sfc_main$S = defineComponent({
   name: "ISkipLink",
   mixins: [TranslationMixin],
   props: {
@@ -8537,14 +8537,14 @@ var _sfc_main$R = defineComponent({
     }
   }
 });
-var _hoisted_1$F = ["href"];
+var _hoisted_1$G = ["href"];
 function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("a", {
     class: "iskiplink",
     href: _ctx.href
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$F);
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$G);
 }
-var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$w]]);
+var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$w]]);
 function filterOptions(options, filter2, selectMode) {
   if (isEmpty(filter2) || selectMode) {
     return options;
@@ -8569,10 +8569,10 @@ function useCombobox(inputRef, options, onOptionSelected) {
       }
     };
   }
-  useEventListener(inputRef, "click", onInputClick);
-  useEventListener(inputRef, "focus", onInputFocus);
-  useEventListener(inputRef, "keydown", onInputKeyDown);
-  useEventListener(inputRef, "keyup", onInputKeyUp);
+  useEventListener$1(inputRef, "click", onInputClick);
+  useEventListener$1(inputRef, "focus", onInputFocus);
+  useEventListener$1(inputRef, "keydown", onInputKeyDown);
+  useEventListener$1(inputRef, "keyup", onInputKeyUp);
   const dropdownId = ElementIdService.generateElementId();
   const dropdownIsOpen = ref(false);
   const activeOptionId = ElementIdService.generateElementId();
@@ -8790,12 +8790,12 @@ function useCombobox(inputRef, options, onOptionSelected) {
     }
   }
 }
-var _hoisted_1$E = {
+var _hoisted_1$F = {
   class: "combobox"
 };
 var _hoisted_2$u = ["id"];
 var _hoisted_3$o = ["id", "aria-selected", "onClick"];
-var _sfc_main$Q = /* @__PURE__ */ defineComponent({
+var _sfc_main$R = /* @__PURE__ */ defineComponent({
   __name: "IComboboxDropdown",
   props: {
     id: {},
@@ -8832,7 +8832,7 @@ var _sfc_main$Q = /* @__PURE__ */ defineComponent({
       }
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$E, [createVNode(unref(_sfc_main$U), {
+      return openBlock(), createElementBlock("div", _hoisted_1$F, [createVNode(unref(_sfc_main$V), {
         "is-open": _ctx.isOpen,
         anchor: _ctx.inputNode,
         "num-of-items": _ctx.options.length,
@@ -8863,8 +8863,8 @@ var _sfc_main$Q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$D = ["aria-label"];
-var _sfc_main$P = /* @__PURE__ */ defineComponent({
+var _hoisted_1$E = ["aria-label"];
+var _sfc_main$Q = /* @__PURE__ */ defineComponent({
   __name: "IComboboxToggleButton",
   emits: ["toggle"],
   setup(__props, {
@@ -8883,7 +8883,7 @@ var _sfc_main$P = /* @__PURE__ */ defineComponent({
       }, [createVNode(unref(FIcon), {
         name: "arrow-down",
         class: "text-field__icon"
-      })], 8, _hoisted_1$D);
+      })], 8, _hoisted_1$E);
     };
   }
 });
@@ -8985,7 +8985,7 @@ function useHorizontalOffset(options) {
     }, 0);
   }
 }
-var _sfc_main$O = defineComponent({
+var _sfc_main$P = defineComponent({
   name: "FTooltip",
   components: {
     FExpand,
@@ -9144,7 +9144,7 @@ var _sfc_main$O = defineComponent({
     }
   }
 });
-var _hoisted_1$C = ["aria-expanded"];
+var _hoisted_1$D = ["aria-expanded"];
 var _hoisted_2$t = {
   class: "icon-stack icon-stack--tooltip"
 };
@@ -9177,7 +9177,7 @@ function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
     name: "circle"
   }), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_f_icon, {
     name: "i"
-  }), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_3$n, toDisplayString(_ctx.screenReaderText), 1)])], 8, _hoisted_1$C)], 8, ["disabled", "to"])), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("div", mergeProps({
+  }), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_3$n, toDisplayString(_ctx.screenReaderText), 1)])], 8, _hoisted_1$D)], 8, ["disabled", "to"])), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("div", mergeProps({
     ref: "wrapper",
     class: "tooltip"
   }, _ctx.$attrs), [_ctx.ready ? (openBlock(), createElementBlock("div", _hoisted_4$k, [_ctx.hasHeader ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), {
@@ -9195,7 +9195,7 @@ function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
     name: "close"
   })])])])) : createCommentVNode("", true)], 16)], 64);
 }
-var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$v]]);
+var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$v]]);
 function* labelClasses(options) {
   const {
     labelClass
@@ -9236,7 +9236,7 @@ function isEqual(a, b) {
   }
   return a.every((_, i) => a[i] === b[i]);
 }
-var _sfc_main$N = defineComponent({
+var _sfc_main$O = defineComponent({
   name: "FFieldset",
   components: {
     FIcon
@@ -9464,7 +9464,7 @@ var _sfc_main$N = defineComponent({
     }
   }
 });
-var _hoisted_1$B = ["id"];
+var _hoisted_1$C = ["id"];
 var _hoisted_2$s = {
   key: 0,
   class: "sr-only"
@@ -9531,11 +9531,11 @@ function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", {
     class: normalizeClass(_ctx.groupContentClass)
-  }, [renderSlot(_ctx.$slots, "default")], 2)], 42, _hoisted_1$B);
+  }, [renderSlot(_ctx.$slots, "default")], 2)], 42, _hoisted_1$C);
 }
-var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$u]]);
+var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$u]]);
 var anyType$1 = [String, Object, Array, Number, Date, Boolean];
-var _sfc_main$M = defineComponent({
+var _sfc_main$N = defineComponent({
   name: "FCheckboxField",
   inheritAttrs: false,
   props: {
@@ -9721,7 +9721,7 @@ var _sfc_main$M = defineComponent({
     }
   }
 });
-var _hoisted_1$A = ["id", "disabled"];
+var _hoisted_1$B = ["id", "disabled"];
 var _hoisted_2$r = ["for"];
 var _hoisted_3$l = {
   key: 0,
@@ -9744,7 +9744,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: _ctx.disabled,
     onKeydown: _cache[0] || (_cache[0] = withKeys((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])),
     onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag())
-  }), null, 16, _hoisted_1$A), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("label", {
+  }), null, 16, _hoisted_1$B), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("label", {
     class: normalizeClass(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
     for: _ctx.id
   }, [renderSlot(_ctx.$slots, "default"), _cache[8] || (_cache[8] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
@@ -9761,7 +9761,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$r)], 34);
 }
-var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$t]]);
+var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$t]]);
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
 function requireEs_iterator_some() {
@@ -9840,7 +9840,7 @@ async function doMenuAction$1(action, target) {
 }
 var preventKeys$1 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter", "Escape"];
 var keyUp = ["ArrowUp", "Up"];
-var _sfc_main$L = defineComponent({
+var _sfc_main$M = defineComponent({
   name: "FContextMenu",
   components: {
     IPopup,
@@ -10004,7 +10004,7 @@ var _sfc_main$L = defineComponent({
     }
   }
 });
-var _hoisted_1$z = ["aria-label"];
+var _hoisted_1$A = ["aria-label"];
 var _hoisted_2$q = {
   ref: "contextmenu",
   role: "menu",
@@ -10053,11 +10053,11 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
         ref_for: true,
         ref: "anchors"
       }, toDisplayString(item.label), 513)], 8, _hoisted_4$h), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$e)) : createCommentVNode("", true)], 8, _hoisted_3$k);
-    }), 128))], 512)], 40, _hoisted_1$z)]),
+    }), 128))], 512)], 40, _hoisted_1$A)]),
     _: 1
   }, 8, ["is-open", "anchor", "focus-element"]);
 }
-var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$s]]);
+var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$s]]);
 var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["ADD"] = 0] = "ADD";
   Operation2[Operation2["DELETE"] = 1] = "DELETE";
@@ -10065,13 +10065,13 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["NONE"] = 3] = "NONE";
   return Operation2;
 })(Operation || {});
-var _hoisted_1$y = {
+var _hoisted_1$z = {
   class: "crud-dataset"
 };
 var _hoisted_2$p = {
   key: 0
 };
-var _sfc_main$K = /* @__PURE__ */ defineComponent({
+var _sfc_main$L = /* @__PURE__ */ defineComponent({
   __name: "FCrudDataset",
   props: {
     /**
@@ -10301,7 +10301,7 @@ var _sfc_main$K = /* @__PURE__ */ defineComponent({
       isFormModalOpen.value = true;
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$y, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), hasAddSlot.value ? (openBlock(), createElementBlock("div", _hoisted_2$p, [createElementVNode("button", {
+      return openBlock(), createElementBlock("div", _hoisted_1$z, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), hasAddSlot.value ? (openBlock(), createElementBlock("div", _hoisted_2$p, [createElementVNode("button", {
         "data-test": "f-crud-dataset-add-button",
         type: "button",
         class: "button button--tertiary crud-dataset__add-button",
@@ -10353,7 +10353,7 @@ function FCrudDatasetInjected() {
     modify: inject("modify")
   };
 }
-var _sfc_main$J = defineComponent({
+var _sfc_main$K = defineComponent({
   name: "FCrudButton",
   components: {
     FIcon
@@ -10409,7 +10409,7 @@ var _sfc_main$J = defineComponent({
     }
   }
 });
-var _hoisted_1$x = {
+var _hoisted_1$y = {
   key: 1,
   class: "sr-only"
 };
@@ -10423,11 +10423,11 @@ function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0,
     class: "button__icon",
     name: _ctx.iconName
-  }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), !_ctx.label ? (openBlock(), createElementBlock("span", _hoisted_1$x, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.buttonText), 1)])])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), _ctx.label ? renderSlot(_ctx.$slots, "default", {
+  }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), !_ctx.label ? (openBlock(), createElementBlock("span", _hoisted_1$y, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.buttonText), 1)])])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), _ctx.label ? renderSlot(_ctx.$slots, "default", {
     key: 2
   }, () => [createTextVNode(toDisplayString(_ctx.buttonText), 1)]) : createCommentVNode("", true)]);
 }
-var FCrudButton = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$r]]);
+var FCrudButton = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$r]]);
 function ActivateItemInjected() {
   return {
     registerCallbackAfterItemAdd: inject("registerCallbackAfterItemAdd", () => void 0),
@@ -10511,7 +10511,7 @@ function FTableInjected() {
     renderColumns: inject("renderColumns", false)
   };
 }
-var _sfc_main$I = defineComponent({
+var _sfc_main$J = defineComponent({
   name: "FTableColumn",
   inheritAttrs: false,
   props: {
@@ -10664,7 +10664,7 @@ function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 16, ["class", "scope"])) : createCommentVNode("", true);
 }
-var FTableColumn = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$q]]);
+var FTableColumn = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$q]]);
 function FSortFilterDatasetInjected() {
   return {
     sort: inject("sort", () => void 0),
@@ -10672,7 +10672,7 @@ function FSortFilterDatasetInjected() {
     registerCallbackOnMount: inject("registerCallbackOnMount", () => void 0)
   };
 }
-var _sfc_main$H = defineComponent({
+var _sfc_main$I = defineComponent({
   name: "FLabel",
   components: {
     FIcon
@@ -10711,7 +10711,7 @@ var _sfc_main$H = defineComponent({
     }
   }
 });
-var _hoisted_1$w = {
+var _hoisted_1$x = {
   key: 0
 };
 var _hoisted_2$o = {
@@ -10731,7 +10731,7 @@ var _hoisted_7$a = {
 };
 function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$w, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$o, [createElementVNode("label", {
+  return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$x, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$o, [createElementVNode("label", {
     class: "label",
     for: _ctx.forProperty
   }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$j)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
@@ -10756,11 +10756,11 @@ function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$b));
 }
-var FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$p]]);
+var FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$p]]);
 function resolveWidthClass$1(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
-var _sfc_main$G = defineComponent({
+var _sfc_main$H = defineComponent({
   name: "FSelectField",
   components: {
     FIcon,
@@ -10891,7 +10891,7 @@ var _sfc_main$G = defineComponent({
     }
   }
 });
-var _hoisted_1$v = ["id"];
+var _hoisted_1$w = ["id"];
 function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
   const _component_f_icon = resolveComponent("f-icon");
@@ -10929,7 +10929,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     id: _ctx.id,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event),
     class: "select-field__select"
-  }, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$v), [[vModelSelect, _ctx.vModel]]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
+  }, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$w), [[vModelSelect, _ctx.vModel]]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
     key: 0,
     ref: "icon",
     class: "text-field__icon input-icon select-field__error-popup-icon",
@@ -10939,7 +10939,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     name: "arrow-down"
   })], 2)], 34);
 }
-var FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$o]]);
+var FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$o]]);
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -10983,14 +10983,14 @@ function useTextFieldSetup(props) {
     closeDropdown
   };
 }
-var _sfc_main$F = defineComponent({
+var _sfc_main$G = defineComponent({
   name: "FTextField",
   components: {
     FLabel,
     FIcon,
     IPopupError,
-    IComboboxDropdown: _sfc_main$Q,
-    IComboboxToggleButton: _sfc_main$P
+    IComboboxDropdown: _sfc_main$R,
+    IComboboxToggleButton: _sfc_main$Q
   },
   inheritAttrs: false,
   props: {
@@ -11322,7 +11322,7 @@ var _sfc_main$F = defineComponent({
     }
   }
 });
-var _hoisted_1$u = {
+var _hoisted_1$v = {
   key: 0
 };
 var _hoisted_2$n = {
@@ -11359,7 +11359,7 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     for: _ctx.id,
     class: normalizeClass(_ctx.labelClass)
   }, createSlots({
-    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$u, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("", true)])]),
+    default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.defaultText !== "" ? (openBlock(), createElementBlock("span", _hoisted_1$v, toDisplayString(_ctx.defaultText), 1)) : createCommentVNode("", true)])]),
     description: withCtx(({
       descriptionClass,
       formatDescriptionClass
@@ -11428,8 +11428,8 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.onDropdownClose
   }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node", "onSelect", "onClose"])) : createCommentVNode("", true)], 2);
 }
-var FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$n]]);
-var _sfc_main$E = defineComponent({
+var FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$n]]);
+var _sfc_main$F = defineComponent({
   name: "FEmailTextField",
   components: {
     FTextField
@@ -11545,7 +11545,7 @@ var _sfc_main$E = defineComponent({
     }
   }
 });
-var _hoisted_1$t = {
+var _hoisted_1$u = {
   key: 0
 };
 function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11562,7 +11562,7 @@ function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
     onValidity: _ctx.onValidity,
     onPendingValidity: _ctx.onPendingValidity
   }), {
-    "error-message": withCtx(() => [_ctx.showPasteErrorMessage ? (openBlock(), createElementBlock("span", _hoisted_1$t, toDisplayString(_ctx.pasteErrorText), 1)) : createCommentVNode("", true)]),
+    "error-message": withCtx(() => [_ctx.showPasteErrorMessage ? (openBlock(), createElementBlock("span", _hoisted_1$u, toDisplayString(_ctx.pasteErrorText), 1)) : createCommentVNode("", true)]),
     default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.defaultText), 1)]), _cache[2] || (_cache[2] = createTextVNode())]),
     _: 3
   }, 16, ["id", "maxlength", "model-value", "onChange", "onBlur", "onUpdate:modelValue", "onValidity", "onPendingValidity"]), _cache[3] || (_cache[3] = createTextVNode()), _ctx.extendedValidation ? (openBlock(), createBlock(_component_f_text_field, {
@@ -11578,8 +11578,8 @@ function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["modelValue", "maxlength", "onPaste"])) : createCommentVNode("", true)]);
 }
-var FEmailTextField = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$m]]);
-var _sfc_main$D = defineComponent({
+var FEmailTextField = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$m]]);
+var _sfc_main$E = defineComponent({
   name: "FPhoneTextField",
   components: {
     FTextField
@@ -11707,8 +11707,8 @@ function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["modelValue", "maxlength"])) : createCommentVNode("", true)]);
 }
-var FPhoneTextField = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$l]]);
-var _sfc_main$C = defineComponent({
+var FPhoneTextField = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$l]]);
+var _sfc_main$D = defineComponent({
   name: "FCurrencyTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -11743,7 +11743,7 @@ var _sfc_main$C = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
-var _sfc_main$B = defineComponent({
+var _sfc_main$C = defineComponent({
   name: "FSearchTextField",
   components: {
     FTextField,
@@ -11804,7 +11804,7 @@ var _sfc_main$B = defineComponent({
     }
   }
 });
-var _hoisted_1$s = {
+var _hoisted_1$t = {
   class: "sr-only"
 };
 function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11853,12 +11853,12 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
     }, [createVNode(_component_f_icon, {
       name: "cross",
       class: "clear-button__icon"
-    }), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_1$s, toDisplayString(_ctx.clearableScreenReaderText), 1)])]),
+    }), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_1$t, toDisplayString(_ctx.clearableScreenReaderText), 1)])]),
     key: "1"
   } : void 0]), 1040, ["id", "maxlength", "model-value", "onChange", "onInput", "onBlur", "onUpdate"])]);
 }
-var FSearchTextField = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$k]]);
-var _sfc_main$A = defineComponent({
+var FSearchTextField = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$k]]);
+var _sfc_main$B = defineComponent({
   name: "FBankAccountNumberTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -11887,7 +11887,7 @@ var _sfc_main$A = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
-var _sfc_main$z = defineComponent({
+var _sfc_main$A = defineComponent({
   name: "FBankgiroTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -11919,7 +11919,7 @@ var _sfc_main$z = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
-var _sfc_main$y = defineComponent({
+var _sfc_main$z = defineComponent({
   name: "FClearingnumberTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -11951,7 +11951,7 @@ var _sfc_main$y = defineComponent({
 function defaultFormatter$1(modelValue) {
   return formatNumber(modelValue, this.decimals);
 }
-var _sfc_main$x = defineComponent({
+var _sfc_main$y = defineComponent({
   name: "FNumericTextField",
   extends: FTextField,
   props: {
@@ -11988,7 +11988,7 @@ var _sfc_main$x = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
-var _sfc_main$w = defineComponent({
+var _sfc_main$x = defineComponent({
   name: "FPersonnummerTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -12028,7 +12028,7 @@ var _sfc_main$w = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
-var _sfc_main$v = defineComponent({
+var _sfc_main$w = defineComponent({
   name: "FPlusgiroTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -12060,7 +12060,7 @@ var _sfc_main$v = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
-var _sfc_main$u = defineComponent({
+var _sfc_main$v = defineComponent({
   name: "FPostalCodeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -12097,7 +12097,7 @@ var _sfc_main$u = defineComponent({
 function defaultFormatter(modelValue) {
   return formatPercent(modelValue, this.decimals);
 }
-var _sfc_main$t = defineComponent({
+var _sfc_main$u = defineComponent({
   name: "FPercentTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -12145,7 +12145,7 @@ var _sfc_main$t = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
-var _sfc_main$s = defineComponent({
+var _sfc_main$t = defineComponent({
   name: "FOrganisationsnummerTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -12253,7 +12253,7 @@ function filter(list, filterAttributes, searchString) {
   const searchTerms = searchString.split(/\s+/).map((word) => word.toLocaleLowerCase());
   return list.filter((item) => includesAllSearchTerms(item, filterAttributes, searchTerms));
 }
-var _hoisted_1$r = {
+var _hoisted_1$s = {
   class: "sort-filter-dataset"
 };
 var _hoisted_2$m = {
@@ -12273,7 +12273,7 @@ var _hoisted_6$9 = {
   }
 };
 var _hoisted_7$8 = ["value"];
-var _sfc_main$r = /* @__PURE__ */ defineComponent({
+var _sfc_main$s = /* @__PURE__ */ defineComponent({
   __name: "FSortFilterDataset",
   props: {
     /**
@@ -12459,7 +12459,7 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
       }
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$r, [createVNode(unref(IFlex), {
+      return openBlock(), createElementBlock("div", _hoisted_1$s, [createVNode(unref(IFlex), {
         collapse: "",
         gap: "3x",
         wrap: ""
@@ -12542,7 +12542,7 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$q = ["tabindex"];
+var _hoisted_1$r = ["tabindex"];
 var _hoisted_2$l = {
   key: 0
 };
@@ -12561,7 +12561,7 @@ var _hoisted_7$7 = {
   key: 1
 };
 var _hoisted_8$5 = ["colspan"];
-var _sfc_main$q = /* @__PURE__ */ defineComponent({
+var _sfc_main$r = /* @__PURE__ */ defineComponent({
   ...{
     inheritAttrs: false
   },
@@ -12740,7 +12740,7 @@ var _sfc_main$q = /* @__PURE__ */ defineComponent({
         }, {
           row
         }))]);
-      }), 128))])], 16, _hoisted_1$q)], 2);
+      }), 128))])], 16, _hoisted_1$r)], 2);
     };
   }
 });
@@ -12819,7 +12819,7 @@ function getDisplayMonth(minDate, maxDate, selectedDate, initialMonth) {
   }
   return month || FDate.now().startOfMonth();
 }
-var _sfc_main$p = defineComponent({
+var _sfc_main$q = defineComponent({
   name: "FDatepickerField",
   components: {
     FCalendar,
@@ -13077,7 +13077,7 @@ var _sfc_main$p = defineComponent({
     }
   }
 });
-var _hoisted_1$p = {
+var _hoisted_1$q = {
   ref: "component",
   class: "datepicker-field"
 };
@@ -13094,7 +13094,7 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_calendar_day = resolveComponent("f-calendar-day");
   const _component_f_calendar = resolveComponent("f-calendar");
   const _component_i_popup = resolveComponent("i-popup");
-  return openBlock(), createElementBlock("div", _hoisted_1$p, [createElementVNode("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$q, [createElementVNode("div", {
     ref: "calendarInputs",
     onFocusout: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusoutTextFieldButton && _ctx.onFocusoutTextFieldButton(...args))
   }, [createVNode(_component_f_text_field, mergeProps(_ctx.$attrs, {
@@ -13184,11 +13184,11 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   }, 8, ["is-open", "anchor", "inline", "onOpen", "onClose"])], 512);
 }
-var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$j]]);
+var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$j]]);
 function isDialogueTreeEndQuestion(value) {
   return Boolean(value.userData);
 }
-var _sfc_main$o = defineComponent({
+var _sfc_main$p = defineComponent({
   name: "FDialogueTree",
   components: {
     FIcon
@@ -13266,7 +13266,7 @@ var _sfc_main$o = defineComponent({
     }
   }
 });
-var _hoisted_1$o = {
+var _hoisted_1$p = {
   class: "dialogue-tree"
 };
 var _hoisted_2$j = {
@@ -13276,7 +13276,7 @@ var _hoisted_2$j = {
 var _hoisted_3$e = ["onClick"];
 function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$o, [_ctx.options.length > 0 ? (openBlock(), createElementBlock("ul", _hoisted_2$j, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
+  return openBlock(), createElementBlock("div", _hoisted_1$p, [_ctx.options.length > 0 ? (openBlock(), createElementBlock("ul", _hoisted_2$j, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
     return openBlock(), createElementBlock("li", {
       key: option.label,
       class: "dialogue-tree__list-item"
@@ -13294,8 +13294,8 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     userData: _ctx.userData
   })))]);
 }
-var FDialogueTree = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$i]]);
-var _sfc_main$n = defineComponent({
+var FDialogueTree = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$i]]);
+var _sfc_main$o = defineComponent({
   name: "FExpandablePanel",
   components: {
     FIcon,
@@ -13369,7 +13369,7 @@ var _sfc_main$n = defineComponent({
     }
   }
 });
-var _hoisted_1$n = ["aria-expanded", "aria-controls"];
+var _hoisted_1$o = ["aria-expanded", "aria-controls"];
 var _hoisted_2$i = {
   class: "expandable-panel__icon"
 };
@@ -13415,7 +13415,7 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
       })
     }, [createElementVNode("span", _hoisted_5$9, toDisplayString(_ctx.screenReaderNotificationText), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_f_icon, {
       name: "bell"
-    })], 8, _hoisted_4$b)) : createCommentVNode("", true)], 16, _hoisted_1$n)]),
+    })], 8, _hoisted_4$b)) : createCommentVNode("", true)], 16, _hoisted_1$o)]),
     _: 3
   })), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_expand, null, {
     default: withCtx(() => [withDirectives(createElementVNode("div", {
@@ -13425,8 +13425,8 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })], 2);
 }
-var FExpandablePanel = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$h]]);
-var _sfc_main$m = defineComponent({
+var FExpandablePanel = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$h]]);
+var _sfc_main$n = defineComponent({
   name: "FExpandableParagraph",
   components: {
     FIcon,
@@ -13508,7 +13508,7 @@ var _sfc_main$m = defineComponent({
     }
   }
 });
-var _hoisted_1$m = ["aria-expanded", "aria-controls"];
+var _hoisted_1$n = ["aria-expanded", "aria-controls"];
 var _hoisted_2$h = {
   class: "expandable-paragraph__icon"
 };
@@ -13548,7 +13548,7 @@ function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
       name: "dash"
     }), _cache[1] || (_cache[1] = createTextVNode()), createVNode(_component_f_icon, {
       name: "dash"
-    })])]), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "title")], 16, _hoisted_1$m)]),
+    })])]), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "title")], 16, _hoisted_1$n)]),
     _: 3
   }, 8, ["class"])), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasRelatedSlot ? (openBlock(), createElementBlock("div", _hoisted_4$a, [renderSlot(_ctx.$slots, "related")])) : createCommentVNode("", true)], 2), _cache[5] || (_cache[5] = createTextVNode()), createVNode(_component_f_expand, null, {
     default: withCtx(() => [withDirectives(createElementVNode("div", {
@@ -13558,7 +13558,7 @@ function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })], 2);
 }
-var FExpandableParagraph = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$g]]);
+var FExpandableParagraph = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$g]]);
 var DEFAULT_ICON = "file";
 var iconMap = {
   "image/*": "pic",
@@ -13567,7 +13567,7 @@ var iconMap = {
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "doc",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.template": "doc"
 };
-var _sfc_main$l = defineComponent({
+var _sfc_main$m = defineComponent({
   name: "FFileItem",
   components: {
     FIcon
@@ -13646,7 +13646,7 @@ var _sfc_main$l = defineComponent({
     }
   }
 });
-var _hoisted_1$l = {
+var _hoisted_1$m = {
   class: "file-item"
 };
 var _hoisted_2$g = {
@@ -13668,7 +13668,7 @@ var _hoisted_7$4 = {
 };
 function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$l, [createElementVNode("div", _hoisted_2$g, [createElementVNode("a", mergeProps({
+  return openBlock(), createElementBlock("div", _hoisted_1$m, [createElementVNode("div", _hoisted_2$g, [createElementVNode("a", mergeProps({
     id: _ctx.id,
     class: "file-item__file-open"
   }, _ctx.$attrs), [createElementVNode("div", _hoisted_4$9, [createVNode(_component_f_icon, {
@@ -13679,8 +13679,8 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     class: "file-item__separator"
   }, null, -1))]);
 }
-var FFileItem = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$f]]);
-var _sfc_main$k = defineComponent({
+var FFileItem = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$f]]);
+var _sfc_main$l = defineComponent({
   name: "FFileSelector",
   components: {
     FIcon
@@ -13741,14 +13741,14 @@ var _sfc_main$k = defineComponent({
     }
   }
 });
-var _hoisted_1$k = {
+var _hoisted_1$l = {
   class: "file-selector"
 };
 var _hoisted_2$f = ["id", "aria-labelledby", "aria-disabled"];
 var _hoisted_3$a = ["id", "for"];
 function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$k, [createElementVNode("input", mergeProps({
+  return openBlock(), createElementBlock("div", _hoisted_1$l, [createElementVNode("input", mergeProps({
     id: _ctx.id,
     ref: "file-selector",
     type: "file",
@@ -13767,7 +13767,7 @@ function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     name: "paper-clip"
   }), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 10, _hoisted_3$a)]);
 }
-var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$e]]);
+var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$e]]);
 var keybindings = {
   Up: focusTrAbove,
   Down: focusTrBelow,
@@ -13876,7 +13876,7 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
     hasExpandableContent
   };
 }
-var _hoisted_1$j = ["role"];
+var _hoisted_1$k = ["role"];
 var _hoisted_2$e = {
   key: 0
 };
@@ -13941,7 +13941,7 @@ var _hoisted_21 = {
   key: 1
 };
 var _hoisted_22 = ["colspan"];
-var _sfc_main$j = /* @__PURE__ */ defineComponent({
+var _sfc_main$k = /* @__PURE__ */ defineComponent({
   ...{
     inheritAttrs: false
   },
@@ -14415,11 +14415,11 @@ var _sfc_main$j = /* @__PURE__ */ defineComponent({
         colspan: nbOfColumns.value
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_22), _cache[12] || (_cache[12] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         row: {}
-      })))])) : createCommentVNode("", true)]))], 16, _hoisted_1$j)], 2);
+      })))])) : createCommentVNode("", true)]))], 16, _hoisted_1$k)], 2);
     };
   }
 });
-var _sfc_main$i = defineComponent({
+var _sfc_main$j = defineComponent({
   name: "FLayoutApplicationTemplate",
   computed: {
     showHeader() {
@@ -14444,7 +14444,7 @@ var _sfc_main$i = defineComponent({
     }
   }
 });
-var _hoisted_1$i = {
+var _hoisted_1$j = {
   class: "layout-application-template"
 };
 var _hoisted_2$d = {
@@ -14464,11 +14464,11 @@ var _hoisted_5$5 = {
   class: "layout-application-template__footer"
 };
 function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$i, [_ctx.showHeader || _ctx.showTopNavigation ? (openBlock(), createElementBlock("header", _hoisted_2$d, [_ctx.showHeader ? renderSlot(_ctx.$slots, "header", {
+  return openBlock(), createElementBlock("div", _hoisted_1$j, [_ctx.showHeader || _ctx.showTopNavigation ? (openBlock(), createElementBlock("header", _hoisted_2$d, [_ctx.showHeader ? renderSlot(_ctx.$slots, "header", {
     key: 0
   }) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), _ctx.showTopNavigation ? (openBlock(), createElementBlock("nav", _hoisted_3$8, [renderSlot(_ctx.$slots, "top-navigation")])) : createCommentVNode("", true)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("main", _hoisted_4$7, [renderSlot(_ctx.$slots, "default"), _cache[1] || (_cache[1] = createTextVNode()), _ctx.showFooter ? (openBlock(), createElementBlock("footer", _hoisted_5$5, [renderSlot(_ctx.$slots, "footer")])) : createCommentVNode("", true)], 512)]);
 }
-var FLayoutApplicationTemplate = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$d]]);
+var FLayoutApplicationTemplate = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$d]]);
 function getGridClasses(target) {
   if (target === null) {
     return {};
@@ -14569,7 +14569,7 @@ function useLayoutPanel(options) {
     rightPrimaryClasses
   };
 }
-var _sfc_main$h = defineComponent({
+var _sfc_main$i = defineComponent({
   name: "FLayoutLeftPanel",
   components: {
     FIcon
@@ -14654,7 +14654,7 @@ var _sfc_main$h = defineComponent({
     }
   }
 });
-var _hoisted_1$h = {
+var _hoisted_1$i = {
   class: "layout-navigation"
 };
 var _hoisted_2$c = ["aria-expanded"];
@@ -14667,7 +14667,7 @@ var _hoisted_4$6 = {
 };
 function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$h, [createElementVNode("nav", {
+  return openBlock(), createElementBlock("div", _hoisted_1$i, [createElementVNode("nav", {
     id: "layout-navigation__navigation",
     class: "layout-navigation__navigation",
     style: normalizeStyle(_ctx.navigationStyle),
@@ -14716,7 +14716,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     style: normalizeStyle(_ctx.primaryStyle)
   }, [renderSlot(_ctx.$slots, "default")], 6)]);
 }
-var FLayoutLeftPanel = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$c]]);
+var FLayoutLeftPanel = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$c]]);
 var FRightPanelServiceImpl = class {
   constructor() {
     _defineProperty(this, "focusedElementBeforeOpenining", null);
@@ -14746,7 +14746,7 @@ var FRightPanelServiceImpl = class {
   }
 };
 var FLayoutRightPanelService = new FRightPanelServiceImpl();
-var _sfc_main$g = defineComponent({
+var _sfc_main$h = defineComponent({
   name: "FLayoutRightPanel",
   components: {
     FIcon
@@ -14863,7 +14863,7 @@ var _sfc_main$g = defineComponent({
     }
   }
 });
-var _hoisted_1$g = {
+var _hoisted_1$h = {
   class: "layout-secondary"
 };
 var _hoisted_2$b = {
@@ -14871,7 +14871,7 @@ var _hoisted_2$b = {
 };
 function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$g, [createElementVNode("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$h, [createElementVNode("div", {
     id: "layout-secondary__primary",
     class: normalizeClass(["layout-secondary__primary", _ctx.rightPrimaryClasses]),
     style: normalizeStyle(_ctx.primaryStyle)
@@ -14908,8 +14908,8 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     name: "close"
   })])], 6)])], 4)) : createCommentVNode("", true)]);
 }
-var FLayoutRightPanel = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$b]]);
-var _hoisted_1$f = {
+var FLayoutRightPanel = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$b]]);
+var _hoisted_1$g = {
   key: 0,
   class: "list"
 };
@@ -14933,7 +14933,7 @@ var _hoisted_8$2 = {
 var _hoisted_9$2 = {
   class: "list__item__itempane"
 };
-var _sfc_main$f = /* @__PURE__ */ defineComponent({
+var _sfc_main$g = /* @__PURE__ */ defineComponent({
   __name: "FList",
   props: {
     /**
@@ -15157,7 +15157,7 @@ var _sfc_main$f = /* @__PURE__ */ defineComponent({
       return props.checkbox && itemEquals(activeItem.value, item, props.keyAttribute);
     }
     return (_ctx, _cache) => {
-      return !__props.selectable ? (openBlock(), createElementBlock("ul", _hoisted_1$f, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.items, (item) => {
+      return !__props.selectable ? (openBlock(), createElementBlock("ul", _hoisted_1$g, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.items, (item) => {
         return openBlock(), createElementBlock("li", {
           key: itemKey(item),
           class: "list__item"
@@ -15221,7 +15221,7 @@ var _sfc_main$f = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _sfc_main$e = defineComponent({
+var _sfc_main$f = defineComponent({
   name: "FLoader",
   mixins: [TranslationMixin],
   inheritAttrs: false,
@@ -15333,7 +15333,7 @@ var _sfc_main$e = defineComponent({
     }
   }
 });
-var _hoisted_1$e = {
+var _hoisted_1$f = {
   class: "loader__backdrop"
 };
 var _hoisted_2$9 = {
@@ -15345,7 +15345,7 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: _ctx.teleportDisabled
   }, [withDirectives(createElementVNode("div", mergeProps(_ctx.$attrs, {
     class: ["loader", _ctx.classes]
-  }), [createElementVNode("div", _hoisted_1$e, [_cache[0] || (_cache[0] = createElementVNode("div", {
+  }), [createElementVNode("div", _hoisted_1$f, [_cache[0] || (_cache[0] = createElementVNode("div", {
     class: "loader__wrapper"
   }, [createElementVNode("div", {
     class: "loader__spinner-1 loader__spinner"
@@ -15385,8 +15385,8 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     tabindex: "-1"
   }, [createElementVNode("span", _hoisted_2$9, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.loader.wait.text", _ctx.defaultLoadingText)), 1)])])], 2)])], 16), [[vShow, _ctx.show]])], 8, ["to", "disabled"]);
 }
-var FLoader = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$a]]);
-var _hoisted_1$d = ["aria-label"];
+var FLoader = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$a]]);
+var _hoisted_1$e = ["aria-label"];
 var __default__ = defineComponent({
   computed: {
     ariaLabel() {
@@ -15398,7 +15398,7 @@ var __default__ = defineComponent({
     }
   }
 });
-var _sfc_main$d = /* @__PURE__ */ defineComponent({
+var _sfc_main$e = /* @__PURE__ */ defineComponent({
   ...__default__,
   __name: "FLogo",
   props: {
@@ -15422,7 +15422,7 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent({
         class: normalizeClass(`logo logo--${props.size}`),
         "aria-label": _ctx.ariaLabel,
         role: "img"
-      }, null, 10, _hoisted_1$d);
+      }, null, 10, _hoisted_1$e);
     };
   }
 });
@@ -15452,7 +15452,7 @@ var iconClasses = {
     screenReaderContextDefault: "Informationsmeddelande"
   }
 };
-var _sfc_main$c = defineComponent({
+var _sfc_main$d = defineComponent({
   name: "FMessageBox",
   components: {
     FIcon,
@@ -15542,7 +15542,7 @@ var _sfc_main$c = defineComponent({
     }
   }
 });
-var _hoisted_1$c = {
+var _hoisted_1$d = {
   key: 0,
   class: "sr-only"
 };
@@ -15552,7 +15552,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_flex = resolveComponent("i-flex");
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["message-box", [_ctx.messageBoxType, _ctx.bannerType]])
-  }, [_ctx.provideScreenReaderContext ? (openBlock(), createElementBlock("span", _hoisted_1$c, toDisplayString(_ctx.screenReaderContext()), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_i_flex, {
+  }, [_ctx.provideScreenReaderContext ? (openBlock(), createElementBlock("span", _hoisted_1$d, toDisplayString(_ctx.screenReaderContext()), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_i_flex, {
     gap: "2x"
   }, {
     default: withCtx(() => [_ctx.layout === "short" ? (openBlock(), createBlock(_component_i_flex_item, {
@@ -15584,7 +15584,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })], 2);
 }
-var FMessageBox = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$9]]);
+var FMessageBox = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$9]]);
 function findOverflowIndex(totalWidth, elements) {
   let sum = 0;
   const index = elements.findIndex((element) => {
@@ -15634,7 +15634,7 @@ var upKeys = ["Up", "ArrowUp"];
 var downKeys = ["Down", "ArrowDown"];
 var verticalKeys = [...upKeys, ...downKeys];
 var preventKeys = ["Tab", "Left", "Right", "ArrowLeft", "ArrowRight", "Home", "End", " ", "Spacebar", "Enter", ...verticalKeys];
-var _sfc_main$b = defineComponent({
+var _sfc_main$c = defineComponent({
   name: "FNavigationMenu",
   components: {
     FIcon,
@@ -15967,7 +15967,7 @@ var _sfc_main$b = defineComponent({
     }
   }
 });
-var _hoisted_1$b = ["aria-label"];
+var _hoisted_1$c = ["aria-label"];
 var _hoisted_2$8 = ["data-ref-index", "onClick"];
 var _hoisted_3$5 = {
   class: "imenu__list__anchor-container"
@@ -16048,11 +16048,11 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     "enable-keyboard-navigation": "",
     onSelect: _ctx.onPopupMenuItemSelected,
     onClose: _cache[5] || (_cache[5] = ($event) => _ctx.togglePopup(false))
-  }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "selected-menu-item-screen-reader-text", "aria-label", "onSelect"])], 10, _hoisted_1$b);
+  }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "selected-menu-item-screen-reader-text", "aria-label", "onSelect"])], 10, _hoisted_1$c);
 }
-var FNavigationMenu = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$8]]);
+var FNavigationMenu = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$8]]);
 var EVENTS = ["online", "offline"];
-var _sfc_main$a = defineComponent({
+var _sfc_main$b = defineComponent({
   name: "FOffline",
   components: {
     FIcon,
@@ -16100,7 +16100,7 @@ var _sfc_main$a = defineComponent({
     }
   }
 });
-var _hoisted_1$a = ["role"];
+var _hoisted_1$b = ["role"];
 var _hoisted_2$7 = {
   key: 0,
   class: "offline"
@@ -16146,10 +16146,10 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
   })])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("span", {
     class: "sr-only",
     "aria-hidden": _ctx.shouldNotRead ? "true" : void 0
-  }, "\n            Din internetuppkoppling fungerar igen\n        ", 8, _hoisted_5$2), [[vShow, _ctx.isOnline]])], 8, _hoisted_1$a);
+  }, "\n            Din internetuppkoppling fungerar igen\n        ", 8, _hoisted_5$2), [[vShow, _ctx.isOnline]])], 8, _hoisted_1$b);
 }
-var FOffline = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$7]]);
-var _sfc_main$9 = defineComponent({
+var FOffline = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$7]]);
+var _sfc_main$a = defineComponent({
   name: "FOutputField",
   components: {
     FLabel
@@ -16182,13 +16182,13 @@ var _sfc_main$9 = defineComponent({
     }
   }
 });
-var _hoisted_1$9 = {
+var _hoisted_1$a = {
   class: "output-field"
 };
 var _hoisted_2$6 = ["id", "for"];
 function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_label = resolveComponent("f-label");
-  return openBlock(), createElementBlock("div", _hoisted_1$9, [createVNode(_component_f_label, {
+  return openBlock(), createElementBlock("div", _hoisted_1$a, [createVNode(_component_f_label, {
     for: _ctx.id
   }, createSlots({
     default: withCtx(() => [renderSlot(_ctx.$slots, "label")]),
@@ -16203,8 +16203,8 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     class: "output-field__output"
   }, _ctx.$attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_2$6)]);
 }
-var FOutputField = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$6]]);
-var _sfc_main$8 = defineComponent({
+var FOutputField = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$6]]);
+var _sfc_main$9 = defineComponent({
   name: "FPageHeader",
   components: {
     ISkipLink
@@ -16251,7 +16251,7 @@ var _sfc_main$8 = defineComponent({
     }
   }
 });
-var _hoisted_1$8 = {
+var _hoisted_1$9 = {
   class: "page-header__root"
 };
 var _hoisted_2$5 = {
@@ -16273,7 +16273,7 @@ var _hoisted_6$1 = {
 };
 function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_skip_link = resolveComponent("i-skip-link");
-  return openBlock(), createElementBlock("div", _hoisted_1$8, [_ctx.skipLinkAnchor ? (openBlock(), createElementBlock("nav", _hoisted_2$5, [createVNode(_component_i_skip_link, {
+  return openBlock(), createElementBlock("div", _hoisted_1$9, [_ctx.skipLinkAnchor ? (openBlock(), createElementBlock("nav", _hoisted_2$5, [createVNode(_component_i_skip_link, {
     href: _ctx.skipLinkAnchor
   }, {
     default: withCtx(() => [renderSlot(_ctx.$slots, "skip-link-text")]),
@@ -16285,7 +16285,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("div", _hoisted_5$1, [createElementVNode("div", _hoisted_6$1, [renderSlot(_ctx.$slots, "right")])])], 512)]);
 }
-var FPageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$5]]);
+var FPageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
 var layoutRegister = {};
 function getLayout(name) {
   var _layoutRegister$name;
@@ -16527,9 +16527,9 @@ var PageLayout = class extends HTMLElement {
     }
   }
 };
-var _hoisted_1$7 = ["slot"];
-var tagName = `ce-page-layout`;
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _hoisted_1$8 = ["slot"];
+var tagName$1 = `ce-page-layout`;
+var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "FPageLayout",
   props: {
     layout: {}
@@ -16540,19 +16540,19 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
       return Object.keys(slots);
     });
     onMounted(() => {
-      if (!customElements.get(tagName)) {
-        customElements.define(tagName, PageLayout);
+      if (!customElements.get(tagName$1)) {
+        customElements.define(tagName$1, PageLayout);
       }
     });
     return (_ctx, _cache) => {
-      return openBlock(), createBlock(resolveDynamicComponent(tagName), {
+      return openBlock(), createBlock(resolveDynamicComponent(tagName$1), {
         layout: _ctx.layout
       }, {
         default: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(slotNames.value, (slot) => {
           return openBlock(), createElementBlock("div", {
             key: slot,
             slot
-          }, [renderSlot(_ctx.$slots, slot)], 8, _hoisted_1$7);
+          }, [renderSlot(_ctx.$slots, slot)], 8, _hoisted_1$8);
         }), 128))]),
         _: 3
       }, 8, ["layout"]);
@@ -16585,7 +16585,7 @@ function useAreaData(element) {
     direction
   };
 }
-var _hoisted_1$6 = {
+var _hoisted_1$7 = {
   class: "progress"
 };
 var _hoisted_2$4 = ["aria-label", "aria-valuenow", "aria-valuetext"];
@@ -16594,7 +16594,7 @@ var _hoisted_3$2 = {
 };
 var MIN_VALUE = 0;
 var MAX_VALUE = 100;
-var _sfc_main$6 = /* @__PURE__ */ defineComponent({
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "FProgressbar",
   props: {
     /**
@@ -16651,7 +16651,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
       return `${props.valueText.replace("%VALUE%", progressValueNow.value.toString())}`;
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$6, [createElementVNode("span", {
+      return openBlock(), createElementBlock("div", _hoisted_1$7, [createElementVNode("span", {
         class: normalizeClass(["progress__meter", progressBarClass.value]),
         role: "progressbar",
         "aria-label": unref(ariaLabel),
@@ -16665,7 +16665,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   }
 });
 var anyType = [String, Object, Array, Number, Date, Boolean];
-var _sfc_main$5 = defineComponent({
+var _sfc_main$6 = defineComponent({
   name: "FRadioField",
   inheritAttrs: false,
   props: {
@@ -16821,7 +16821,7 @@ var _sfc_main$5 = defineComponent({
     }
   }
 });
-var _hoisted_1$5 = ["id", "disabled"];
+var _hoisted_1$6 = ["id", "disabled"];
 var _hoisted_2$3 = ["for"];
 var _hoisted_3$1 = {
   key: 0,
@@ -16840,7 +16840,7 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     type: "radio",
     class: "radio-button__input",
     disabled: _ctx.disabled
-  }, _ctx.attrs), null, 16, _hoisted_1$5), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("label", {
+  }, _ctx.attrs), null, 16, _hoisted_1$6), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("label", {
     class: normalizeClass(_ctx.$slots.details ? "radio-button__label radio-button__width" : "radio-button__label"),
     for: _ctx.id
   }, [renderSlot(_ctx.$slots, "default"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
@@ -16857,7 +16857,84 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$3)], 34);
 }
-var FRadioField = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4]]);
+var FRadioField = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$4]]);
+function tryOnScopeDispose(fn2) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn2);
+    return true;
+  }
+  return false;
+}
+var isClient = typeof window !== "undefined" && typeof document !== "undefined";
+typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
+var toString = Object.prototype.toString;
+var isObject = (val) => toString.call(val) === "[object Object]";
+function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+function watchImmediate(source, cb, options) {
+  return watch(
+    source,
+    cb,
+    {
+      ...options,
+      immediate: true
+    }
+  );
+}
+var defaultWindow = isClient ? window : void 0;
+function unrefElement(elRef) {
+  var _a;
+  const plain = toValue(elRef);
+  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
+}
+function useEventListener(...args) {
+  const cleanups = [];
+  const cleanup = () => {
+    cleanups.forEach((fn2) => fn2());
+    cleanups.length = 0;
+  };
+  const register = (el, event, listener, options) => {
+    el.addEventListener(event, listener, options);
+    return () => el.removeEventListener(event, listener, options);
+  };
+  const firstParamTargets = computed(() => {
+    const test = toArray(toValue(args[0])).filter((e) => e != null);
+    return test.every((e) => typeof e !== "string") ? test : void 0;
+  });
+  const stopWatch = watchImmediate(
+    () => {
+      var _a, _b;
+      return [
+        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
+        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
+        toArray(unref(firstParamTargets.value ? args[2] : args[1])),
+        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
+        toValue(firstParamTargets.value ? args[3] : args[2])
+      ];
+    },
+    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
+      cleanup();
+      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
+        return;
+      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
+      cleanups.push(
+        ...raw_targets.flatMap(
+          (el) => raw_events.flatMap(
+            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
+          )
+        )
+      );
+    },
+    { flush: "post" }
+  );
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(cleanup);
+  return stop;
+}
 var keymap = {
   left: {
     ArrowLeft: "decrease",
@@ -16887,20 +16964,19 @@ var keymap = {
 };
 function useKeyboardHandler(options) {
   const {
-    attachment
+    attachment,
+    separator
   } = options;
-  return {
-    onKeydown(event) {
-      if (!attachment.value) {
-        return;
-      }
-      const action = keymap[attachment.value][event.key];
-      if (action) {
-        event.preventDefault();
-        options[action]();
-      }
+  useEventListener(separator, "keydown", (event) => {
+    if (!attachment.value) {
+      return;
     }
-  };
+    const action = keymap[attachment.value][event.key];
+    if (action) {
+      event.preventDefault();
+      options[action]();
+    }
+  });
 }
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
@@ -16923,7 +16999,7 @@ function usePointerHandler(options) {
       return "vertical";
     }
   });
-  useEventListener(window, "pointerdown", (event) => {
+  useEventListener(separator, "pointerdown", (event) => {
     const {
       isPrimary,
       button,
@@ -17025,24 +17101,27 @@ function useStorage(options) {
     loaded.value = true;
   });
 }
-var _hoisted_1$4 = ["aria-orientation"];
+var _hoisted_1$5 = ["aria-orientation"];
 var _hoisted_2$2 = ["aria-orientation"];
 var STEP_SIZE = 10;
-var _sfc_main$4 = /* @__PURE__ */ defineComponent({
-  __name: "FResizePane",
+var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  __name: "FResizePane.ce",
   props: {
     disabled: {
       type: Boolean,
       default: false
     },
     min: {
-      default: "0"
+      default: "0",
+      type: String
     },
     max: {
-      default: "100%"
+      default: "100%",
+      type: String
     },
     initial: {
-      default: "50%"
+      default: "50%",
+      type: String
     }
   },
   setup(__props) {
@@ -17062,9 +17141,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
       attachPanel: attachment,
       area
     } = useAreaData(root);
-    const {
-      onKeydown: onKeydown2
-    } = useKeyboardHandler({
+    useKeyboardHandler({
       increase() {
         state.value.current = Math.min(state.value.current + STEP_SIZE, state.value.max);
       },
@@ -17077,7 +17154,8 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
       minimize() {
         state.value.current = state.value.min;
       },
-      attachment
+      attachment,
+      separator
     });
     useStorage({
       state,
@@ -17111,9 +17189,13 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
       }
     });
     const layoutElement = computed(() => {
-      var _a;
-      var _root$value$closest;
-      return (_root$value$closest = (_a = root.value) == null ? void 0 : _a.closest("ce-page-layout")) !== null && _root$value$closest !== void 0 ? _root$value$closest : void 0;
+      var _host$closest;
+      if (!root.value) {
+        return void 0;
+      }
+      const shadow = root.value.getRootNode();
+      const host = shadow.host;
+      return (_host$closest = host.closest("ce-page-layout")) !== null && _host$closest !== void 0 ? _host$closest : void 0;
     });
     watchEffect(() => {
       const {
@@ -17146,7 +17228,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         current: clamp(initialSize.value, minSize.value, maxSize.value)
       };
     });
-    useEventListener(window, "resize", debounce(onResize, 20));
+    useEventListener$1(window, "resize", debounce(onResize, 20));
     function onResize() {
       layoutSize.value = getLayoutSize();
       state.value = {
@@ -17177,26 +17259,56 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         ref_key: "content",
         ref: content,
         class: "resize__content"
-      }, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
-        min: state.value.min,
-        max: state.value.max,
-        current: state.value.current
-      })))], 512), _cache[1] || (_cache[1] = createTextVNode()), !props.disabled ? (openBlock(), createElementBlock("div", {
+      }, [renderSlot(_ctx.$slots, "content")], 512), _cache[0] || (_cache[0] = createTextVNode()), !props.disabled ? (openBlock(), createElementBlock("div", {
         key: 0,
         ref_key: "separator",
         ref: separator,
         role: "separator",
         class: "resize__handle",
         tabindex: "0",
-        "aria-orientation": orientation.value,
-        onKeydown: _cache[0] || (_cache[0] = //@ts-ignore
-        (...args) => unref(onKeydown2) && unref(onKeydown2)(...args))
-      }, null, 40, _hoisted_1$4)) : (openBlock(), createElementBlock("div", {
+        "aria-orientation": orientation.value
+      }, null, 8, _hoisted_1$5)) : (openBlock(), createElementBlock("div", {
         key: 1,
         role: "separator",
         class: "resize__handle disabled",
         "aria-orientation": orientation.value
       }, null, 8, _hoisted_2$2))], 2);
+    };
+  }
+});
+var _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n  width: var(--size);\n}\n.resize--right {\n  flex-direction: row-reverse;\n  width: var(--size);\n}\n.resize--top {\n  flex-direction: column;\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--left .resize__content, .resize--right .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top .resize__content, .resize--bottom .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
+var FResizePane = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["styles", [_style_0]]]);
+var _hoisted_1$4 = {
+  slot: "content"
+};
+var tagName = "ce-resize-pane";
+var _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  __name: "FResizePane",
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    min: {
+      default: "0"
+    },
+    max: {
+      default: "100%"
+    },
+    initial: {
+      default: "50%"
+    }
+  },
+  setup(__props) {
+    if (!customElements.get(tagName)) {
+      customElements.define(tagName, defineCustomElement(FResizePane));
+    }
+    const props = __props;
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(resolveDynamicComponent(tagName), normalizeProps(guardReactiveProps(props)), {
+        default: withCtx(() => [createElementVNode("div", _hoisted_1$4, [renderSlot(_ctx.$slots, "default")])]),
+        _: 3
+      }, 16);
     };
   }
 });
@@ -17972,20 +18084,20 @@ export {
   ErrorPlugin,
   ErrorViewData,
   EventBus,
-  _sfc_main$1d as FBadge,
-  _sfc_main$A as FBankAccountNumberTextField,
-  _sfc_main$z as FBankgiroTextField,
+  _sfc_main$1e as FBadge,
+  _sfc_main$B as FBankAccountNumberTextField,
+  _sfc_main$A as FBankgiroTextField,
   FCalendar,
   FCalendarDay,
-  _sfc_main$Y as FCard,
+  _sfc_main$Z as FCard,
   FCheckboxField,
-  _sfc_main$y as FClearingnumberTextField,
+  _sfc_main$z as FClearingnumberTextField,
   FConfirmModal,
   FContextMenu,
   FCrudButton,
-  _sfc_main$K as FCrudDataset,
-  _sfc_main$C as FCurrencyTextField,
-  _sfc_main$q as FDataTable,
+  _sfc_main$L as FCrudDataset,
+  _sfc_main$D as FCurrencyTextField,
+  _sfc_main$r as FDataTable,
   FDatepickerField,
   FDialogueTree,
   FEmailTextField,
@@ -18000,36 +18112,36 @@ export {
   FFormModal,
   FValidationFormAction as FFormModalAction,
   FIcon,
-  _sfc_main$j as FInteractiveTable,
+  _sfc_main$k as FInteractiveTable,
   FKUIConfigButtonOrder,
   FLabel,
   FLayoutApplicationTemplate,
   FLayoutLeftPanel,
   FLayoutRightPanel,
   FLayoutRightPanelService,
-  _sfc_main$f as FList,
+  _sfc_main$g as FList,
   FLoader,
-  _sfc_main$d as FLogo,
+  _sfc_main$e as FLogo,
   FMessageBox,
   FModal,
   FNavigationMenu,
-  _sfc_main$x as FNumericTextField,
+  _sfc_main$y as FNumericTextField,
   FOffline,
-  _sfc_main$s as FOrganisationsnummerTextField,
+  _sfc_main$t as FOrganisationsnummerTextField,
   FOutputField,
   FPageHeader,
-  _sfc_main$7 as FPageLayout,
-  _sfc_main$t as FPercentTextField,
-  _sfc_main$w as FPersonnummerTextField,
+  _sfc_main$8 as FPageLayout,
+  _sfc_main$u as FPercentTextField,
+  _sfc_main$x as FPersonnummerTextField,
   FPhoneTextField,
-  _sfc_main$v as FPlusgiroTextField,
-  _sfc_main$u as FPostalCodeTextField,
-  _sfc_main$6 as FProgressbar,
+  _sfc_main$w as FPlusgiroTextField,
+  _sfc_main$v as FPostalCodeTextField,
+  _sfc_main$7 as FProgressbar,
   FRadioField,
   _sfc_main$4 as FResizePane,
   FSearchTextField,
   FSelectField,
-  _sfc_main$r as FSortFilterDataset,
+  _sfc_main$s as FSortFilterDataset,
   FSortFilterDatasetInjected,
   FStaticField,
   FTableColumn,
@@ -18050,13 +18162,13 @@ export {
   ICalendarMonth,
   ICalendarMonthGrid,
   ICalendarNavbar,
-  _sfc_main$Q as IComboboxDropdown,
-  _sfc_main$P as IComboboxToggleButton,
+  _sfc_main$R as IComboboxDropdown,
+  _sfc_main$Q as IComboboxToggleButton,
   IFlex,
   IFlexItem,
   IPopup,
   IPopupError,
-  _sfc_main$U as IPopupListbox,
+  _sfc_main$V as IPopupListbox,
   IPopupMenu,
   ISkipLink,
   FValidationForm as IValidationForm,
