@@ -16546,10 +16546,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(tagName), {
-        layout: _ctx.layout,
-        style: {
-          "display": "block"
-        }
+        layout: _ctx.layout
       }, {
         default: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(slotNames.value, (slot) => {
           return openBlock(), createElementBlock("div", {
