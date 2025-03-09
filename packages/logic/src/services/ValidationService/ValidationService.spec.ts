@@ -103,10 +103,10 @@ function triggerValidityEvent(
     type: "text" | "radio" = "text",
     validityConfigs = lazyValidatorConfigs,
     initialState: ValidationState = { touched: false, submitted: false },
-): ValidityEvent {
+): ValidityEvent | undefined {
     const element = mountInputElementAndAddValidators(type, validityConfigs);
     ValidationService.setState("test-element", initialState);
-    const listener = jest.fn();
+    const listener = jest.fn<undefined, [CustomEvent<ValidityEvent>]>();
     element.addEventListener("validity", listener);
 
     if (type === "radio" && typeof inputValue === "boolean") {
@@ -116,9 +116,12 @@ function triggerValidityEvent(
     element.value = inputValue as string;
     dispatchEvent(eventName, element);
 
-    return listener.mock.calls.length
-        ? listener.mock.calls[listener.mock.calls.length - 1][0].detail
-        : undefined;
+    if (listener.mock.calls.length === 0) {
+        return undefined;
+    }
+
+    const args = listener.mock.calls[listener.mock.calls.length - 1];
+    return args[0].detail;
 }
 
 afterEach(() => {
@@ -985,7 +988,7 @@ describe("ValidityEvents", () => {
 describe("Error message", () => {
     it("should fallback to the validator name if no translations are defined", () => {
         const validityEvent = triggerValidityEvent("change", "");
-        expect(validityEvent.validationMessage).toBe("Fyll i text.");
+        expect(validityEvent?.validationMessage).toBe("Fyll i text.");
     });
 
     it("should use message defined in validation error messages", () => {
@@ -993,7 +996,7 @@ describe("Error message", () => {
             required: "The field is required",
         };
         const validityEvent = triggerValidityEvent("change", "");
-        expect(validityEvent.validationMessage).toBe("The field is required");
+        expect(validityEvent?.validationMessage).toBe("The field is required");
     });
 
     it("should use type-specific message defined in validation error messages", () => {
@@ -1004,19 +1007,19 @@ describe("Error message", () => {
         };
 
         const validityEventText = triggerValidityEvent("change", "", "text");
-        expect(validityEventText.validationMessage).toBe(
+        expect(validityEventText?.validationMessage).toBe(
             "My required textfield",
         );
 
         const validityEventRadio = triggerValidityEvent("change", "", "radio");
-        expect(validityEventRadio.validationMessage).toBe(
+        expect(validityEventRadio?.validationMessage).toBe(
             "My required radiofield",
         );
     });
 
     it("should use errorMessage in validatorconfig", () => {
         const validityEvent = triggerValidityEvent("change", "x");
-        expect(validityEvent.validationMessage).toBe(
+        expect(validityEvent?.validationMessage).toBe(
             "An overridden message in minLength validator",
         );
     });
@@ -1066,7 +1069,7 @@ describe("ValidityMode", () => {
                 "text",
                 validatorConfigs,
             );
-            expect(validityEvent.validityMode).toBe(expected);
+            expect(validityEvent?.validityMode).toBe(expected);
         },
     );
 
@@ -1183,8 +1186,8 @@ describe("initial state", () => {
             lazyValidatorConfigs,
             { serverError: "Some backend error" },
         );
-        expect(validityEvent.validityMode).toBe("ERROR");
-        expect(validityEvent.validationMessage).toBe("Some backend error");
+        expect(validityEvent?.validityMode).toBe("ERROR");
+        expect(validityEvent?.validationMessage).toBe("Some backend error");
     });
 
     describe("validityMode", () => {
@@ -1203,7 +1206,7 @@ describe("initial state", () => {
                     "validate",
                     inputValue,
                 );
-                expect(validityEvent.validityMode).toBe(validityMode);
+                expect(validityEvent?.validityMode).toBe(validityMode);
             },
         );
     });
