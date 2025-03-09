@@ -179,4 +179,42 @@ describe("useExpandableTable", () => {
             "table__expandable-row--collapsed",
         );
     });
+
+    it("should not render as expandable row if `expandableAttribute` of row is empty", async () => {
+        expect.assertions(2);
+        const wrapper = mount({
+            components: { FInteractiveTable, FTableColumn },
+            template: /* HTML */ `
+                <f-interactive-table
+                    :rows="rows"
+                    key-attribute="id"
+                    expandable-attribute="expandable"
+                >
+                    <template #default="{ row }">
+                        <f-table-column name="name" title="Name">
+                            {{ row.name }}
+                        </f-table-column>
+                    </template>
+                </f-interactive-table>
+            `,
+            data() {
+                return {
+                    rows: [
+                        { id: "1", name: "A", expandable: undefined },
+                        { id: "2", name: "B", expandable: null },
+                        { id: "3", name: "C", expandable: [] },
+                    ],
+                };
+            },
+        });
+        await wrapper.vm.$nextTick();
+        const table = wrapper.getComponent(
+            FInteractiveTable as ReturnType<typeof defineComponent>,
+        );
+        const expandableRows = table.findAll("table__expandable-row");
+        const expandIcons = table.findAll("table__expand-icon");
+
+        expect(expandableRows).toHaveLength(0);
+        expect(expandIcons).toHaveLength(0);
+    });
 });
