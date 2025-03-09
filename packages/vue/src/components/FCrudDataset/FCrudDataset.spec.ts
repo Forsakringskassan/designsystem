@@ -207,13 +207,61 @@ describe("snapshot", () => {
     });
 });
 
+it("should not show add button when #add slot is absent", () => {
+    const template = /* HTML */ `
+        <f-crud-dataset>
+            <template #modify></template>
+            <template #buttons="{ buttonClasses }">
+                <button type="button" :class="buttonClasses">Foo</button>
+                <button type="button" :class="buttonClasses">Bar</button>
+            </template>
+        </f-crud-dataset>
+    `;
+    const TestComponent = defineComponent({
+        components: { FCrudDataset },
+        template,
+    });
+    const wrapper = mount(TestComponent, { stubs: ["FConfirmModal", "FIcon"] });
+    const buttons = wrapper.findAll(".crud-dataset__add-button");
+    expect(buttons).toHaveLength(0);
+});
+
 it("should show add button when #add slot is present", () => {
-    const wrapper = createWrapper([ADD_TEMPLATE], { stubs: ["FConfirmModal"] });
-    expect(wrapper.find(".crud-dataset__add-button")).toMatchInlineSnapshot(`
-        <button type="button" class="button button--tertiary crud-dataset__add-button">
-          <f-icon-stub name="plus" library="f" class="button__icon"></f-icon-stub>Lägg till ny
-        </button>
-    `);
+    const template = /* HTML */ `
+        <f-crud-dataset>
+            <template #add></template>
+        </f-crud-dataset>
+    `;
+    const TestComponent = defineComponent({
+        components: { FCrudDataset },
+        template,
+    });
+    const wrapper = mount(TestComponent, { stubs: ["FConfirmModal", "FIcon"] });
+    const buttons = wrapper.findAll(".crud-dataset__add-button");
+    expect(buttons).toHaveLength(1);
+    expect(buttons.at(0)?.text()).toBe("Lägg till ny");
+});
+
+it("should show custom buttons when #add slot is present", () => {
+    const template = /* HTML */ `
+        <f-crud-dataset>
+            <template #add></template>
+            <template #buttons="{ buttonClasses }">
+                <button type="button" :class="buttonClasses">Foo</button>
+                <button type="button" :class="buttonClasses">Bar</button>
+            </template>
+        </f-crud-dataset>
+    `;
+    const TestComponent = defineComponent({
+        components: { FCrudDataset },
+        template,
+    });
+    const wrapper = mount(TestComponent, { stubs: ["FConfirmModal", "FIcon"] });
+    const buttons = wrapper.findAll(".crud-dataset__add-button");
+    expect(buttons).toHaveLength(3);
+    expect(buttons.at(0)?.text()).toBe("Lägg till ny");
+    expect(buttons.at(1)?.text()).toBe("Foo");
+    expect(buttons.at(2)?.text()).toBe("Bar");
 });
 
 it("should show add modal when the add button is pressed", async () => {
