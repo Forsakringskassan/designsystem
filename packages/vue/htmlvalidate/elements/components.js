@@ -910,7 +910,7 @@ module.exports = defineMetadata({
     "f-crud-dataset": {
         flow: true,
         interactive: true,
-        slots: ["default", "add", "delete", "modify", "add-button"],
+        slots: ["default", "add", "delete", "modify", "add-button", "buttons"],
         requiredSlots: ["default"],
         attributes: {
             value: ["/.*/"],
