@@ -27,15 +27,23 @@ export function setInternalKey<T extends object>(
 export function setInternalKeys<T extends object>(
     items: T[],
     key?: keyof T,
+    nestedKey?: keyof T,
+    seenValues = new Set<unknown>(),
 ): T[] {
     if (key === undefined) {
         return items.map((item) => {
             setInternalKey(item);
+
+            if (nestedKey !== undefined) {
+                const nestedItem = item[nestedKey];
+                if (Array.isArray(nestedItem)) {
+                    setInternalKeys(nestedItem);
+                }
+            }
+
             return item;
         });
     }
-
-    const seenValues: Set<unknown> = new Set<unknown>();
 
     return items.map((item, index) => {
         const value = item[key];
@@ -56,6 +64,13 @@ export function setInternalKeys<T extends object>(
 
         setInternalKey(item, String(value));
         seenValues.add(value);
+
+        if (nestedKey !== undefined) {
+            const nestedItem = item[nestedKey];
+            if (Array.isArray(nestedItem)) {
+                setInternalKeys(nestedItem, key, undefined, seenValues);
+            }
+        }
 
         return item;
     });

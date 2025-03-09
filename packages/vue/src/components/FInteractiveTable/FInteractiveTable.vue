@@ -258,12 +258,12 @@ const nbOfColumns = computed((): number => {
 });
 
 const internalRows = computed((): T[] => {
-    const { keyAttribute } = props;
-    if (keyAttribute) {
-        return setInternalKeys(props.rows, keyAttribute as K);
-    }
+    const { keyAttribute, expandableAttribute } = props;
 
-    return setInternalKeys(props.rows);
+    if (isExpandableTable) {
+        return setInternalKeys(props.rows, keyAttribute as K, expandableAttribute as K);
+    }
+    return setInternalKeys(props.rows, keyAttribute as K);
 });
 
 provide("addColumn", (column: FTableColumnData) => {
@@ -600,7 +600,7 @@ function setActiveRow(row: T | undefined): void {
                     <template v-if="isExpandableTable && hasExpandableContent(row)">
                         <tr
                             v-for="(expandableRow, expandableIndex) in expandableRows(row)"
-                            :key="`${rowKey(row)}-${expandableIndex}`"
+                            :key="rowKey(expandableRow)"
                             aria-level="2"
                             :class="expandableRowClasses(row, expandableIndex)"
                         >
