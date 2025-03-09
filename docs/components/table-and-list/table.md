@@ -48,6 +48,36 @@ FInteractiveTableInputExample.vue
 
 Även dropplista har stöd för att användas i tabellcell. I de fall en obligatorisk dropplista lämnas tom visas samma text som platshållartexten tillsammas med ikon och röd ram.
 
+### Välja rader
+
+En interaktiv tabell med `selectable` prop lägger till kryssrutor som kan användas för att välja rader.
+När en rad väljs uppdateras `v-model` med referens till alla rader som är valda.
+
+```diff
+-<f-interactive-table :rows="myRows">
+ <f-interactive-table
++   v-model="selectedRows"
+    :rows="myRows"
++   selectable
+ >
+```
+
+Du kan även lägga till eller ta bort valda rader genom att ändra referenserna som skickas till `v-model`.
+På så sätt kan du till exempel förvälja vissa rader eller skapa bulk-åtgärder som väljer vissa typer av rader.
+Notera att `v-model` kräver referenser till objekt som du skickat till `rows` prop för att kunna välja dessa.
+
+```js
+const rows = ref([
+    { name: "Banan", type: "Frukt" },
+    { name: "Äpple", type: "Frukt" },
+    { name: "Vitkål", type: "Grönsak" },
+    { name: "Spenat", type: "Grönsak" },
+]);
+
+// Preselect all rows that are fruit type.
+const selectedRows = ref(rows.value.filter((row) => row.type === "Frukt"));
+```
+
 ### Expanderbara rader
 
 Med expanderbara rader går det att skapa ytterligare tabellrader som visas när man trycker på en expanderbar rad.

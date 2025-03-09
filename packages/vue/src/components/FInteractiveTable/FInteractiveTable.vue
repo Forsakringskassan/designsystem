@@ -124,7 +124,8 @@ const props = defineProps({
         },
     },
     /**
-     * V-model will bind to value containing selected rows.
+     * Currently selected rows.
+     * Requires `selectable` to be set.
      */
     modelValue: {
         type: Array as PropType<T[] | undefined>,
