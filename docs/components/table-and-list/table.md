@@ -126,6 +126,27 @@ För att istället skapa expanderbara rader med valfritt innehåll används `exp
 
 Observera att det inte är rekommenderat att skapa för komplext expanderat innehåll, så som att placera ytterligare expanderbara tabeller inuti.
 
+## Ange nyckel (`keyAttribute`)
+
+Med `keyAttribute` så kan du ange namnet för en nyckel (`key`) som finns i varje rad-ojekt och innehåller ett värde som kan användas för att identifiera olika rader.
+Om detta anges, så måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.
+
+Att använda `keyAttribute` är valfritt och behövs inte anges om du inte har nåt naturligt id att ange för dina rader.
+Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande så måste du använda `keyAttribute` för att aktuell status för raderna ska kunna bibehållas.
+
+```diff
+-<f-interactive-table :rows="myRows">
++<f-interactive-table :rows="myRows" key-attribute="id">
+```
+
+```js
+// The key "id" is used for "keyAttribute".
+const myRows = ref([
+    { id: "a", name: "Banan" },
+    { id: "b", name: "Äpple" },
+]);
+```
+
 ## Tabellrubrik
 
 En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad heading.
