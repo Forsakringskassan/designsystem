@@ -1,0 +1,24 @@
+{
+  "name": "@fkui/publiccode",
+  "version": "6.2.0",
+  "private": true,
+  "description": "Sets version and date in publiccode.yml",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "internal/publiccode"
+  },
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  },
+  "devDependencies": {
+    "yaml": "2.7.0"
+  }
+}
