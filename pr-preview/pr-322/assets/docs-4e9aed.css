@@ -2356,7 +2356,7 @@ input[type=search]:focus,
   color: var(--f-text-color-link);
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 0.25rem;
+  text-underline-offset: 0.25em;
   text-decoration-color: var(--f-text-color-link);
   font-weight: var(--f-font-weight-medium);
 }
@@ -8286,4 +8286,178 @@ body {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* sfc-style:/home/runner/work/docs-live-example/docs-live-example/src/LiveExampleSourcecode.vue?type=style&index=0 */
+.collapsed[data-v-7a98eb26] {
+  display: none;
+}
+
+.collapsed[aria-expanded=true][data-v-7a98eb26] {
+  display: block;
+}
+
+:root {
+  --live-example-space: 1.5rem;
+  --live-example-controls-width: 17rem;
+}
+
+.code-preview {
+  container-type: inline-size;
+  container-name: example-container;
+}
+
+.live-example__container {
+  border: var(--f-border-width-small) solid #ddddde;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "example" "controls" "code";
+}
+
+@container example-container (width >= 43.0379746835rem) {
+  .live-example__container {
+    grid-template-columns: 1fr var(--live-example-controls-width);
+    grid-template-areas: "example controls" "code code";
+  }
+}
+.live-example__example {
+  grid-area: example;
+  padding: var(--live-example-space);
+  background: repeating-conic-gradient(#fff 0 90deg, rgb(235, 235, 235) 0 180deg) 0 0/20px 20px round;
+  overflow: auto;
+}
+
+.live-example__controls {
+  grid-area: controls;
+  padding: var(--live-example-space);
+  border-left: var(--f-border-width-small) solid #ddddde;
+}
+
+.live-example__code {
+  grid-area: code;
+  border-top: var(--f-border-width-small) solid #ddddde;
+  background-color: #f4f4f4;
+}
+
+.live-example__code pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+.live-example__code pre code {
+  margin: 0;
+  padding: var(--live-example-space);
+}
+
+.live-example__code-toggle {
+  padding-left: var(--live-example-space);
+}
+
+.live-example__code .live-example__code-toggle button {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+  margin-left: -0.5rem;
+  padding: 0.5rem;
+  font-weight: 600;
+  color: var(--f-text-color-default);
+}
+
+.live-example__code-languages {
+  display: flex;
+  align-items: center;
+  margin: 0.75rem var(--live-example-space) 0 var(--live-example-space);
+  border-bottom: var(--f-border-width-small) solid #ddddde;
+}
+
+:root {
+  --docs-font-family: arial, "Helvetica Neue", sans-serif;
+  --docs-heading-family: arial, "Helvetica Neue", sans-serif;
+  --docs-heading-font-weight: 700;
+  --f-logo-image-small:
+      url("./images/fk-logo-primary-small.svg"),
+      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+  --f-logo-image-large:
+      url("./images/fk-logo-primary-large.svg"),
+      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+}
+
+.mermaid p {
+  margin-bottom: 0;
+}
+
+.color-table__color {
+  display: inline-block;
+  width: 3rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: 1px solid #000;
+}
+
+.docs-pre {
+  display: inline-block;
+  white-space: pre;
+  font-family: monospace;
+  margin: 1em 0px;
+}
+
+footer {
+  background: #35805b;
+  color: var(--fkds-color-text-inverted);
+  padding: 3rem;
+}
+@media (min-width: 1024px) {
+  footer {
+    display: flex;
+    gap: 5rem;
+  }
+}
+footer h1,
+footer .heading--h1 {
+  font-size: 1.5rem;
+  font-weight: var(--f-font-weight-medium);
+}
+footer ul {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+footer li {
+  margin-bottom: 0.5rem;
+}
+footer .anchor {
+  color: var(--fkds-color-text-inverted);
+  font-weight: var(--f-font-weight-normal);
+  text-decoration-color: var(--fkds-color-text-inverted);
+}
+footer .footer__left {
+  flex: 0 0 auto;
+}
+footer .footer__center {
+  flex: 1 1 auto;
+}
+footer .footer__right {
+  flex: 0 0 auto;
+}
+footer .version {
+  color: var(--fkds-color-text-inverted);
+  margin-left: 0;
+}
+footer #version-dialog .list__item {
+  margin: 0;
+}
+
+.support-table .table__row.obsolete {
+  background: #f7dcdc;
+  color: #1b1e23;
+}
+.support-table .table__row.supported {
+  background: #fff5db;
+  color: #1b1e23;
+}
+.support-table .table__row.active {
+  background: #dbe9e2;
+  color: #1b1e23;
 }
