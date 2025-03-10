@@ -97,11 +97,14 @@ export function useExpandableTable<T extends object>(
     function expandableRows(row: T): T[] | undefined {
         const expandableRows = row[expandableAttribute as keyof T];
 
-        if (typeof expandableRows === "undefined") {
+        if (expandableRows === undefined || expandableRows === null) {
             return undefined;
         }
         if (!Array.isArray(expandableRows)) {
-            throw new Error(`Expandable rows must be a ListArray`);
+            throw new Error(`Expandable rows must be an array`);
+        }
+        if (expandableRows.length === 0) {
+            return undefined;
         }
 
         return expandableRows;
