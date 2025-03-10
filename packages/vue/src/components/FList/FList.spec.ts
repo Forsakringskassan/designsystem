@@ -328,7 +328,7 @@ describe("select events", () => {
 });
 
 describe("v-model (update event)", () => {
-    it("should upate v-model when selecting and unselecting same item", async () => {
+    it("should update v-model when selecting and unselecting same item", async () => {
         const modelValue: ListArray = [];
         const wrapper = createWrapper({
             props: {
@@ -357,7 +357,7 @@ describe("v-model (update event)", () => {
         ).toMatchInlineSnapshot(`[]`);
     });
 
-    it("should upate v-model when selecting two different items", async () => {
+    it("should update v-model when selecting two different items", async () => {
         const modelValue: ListArray = [];
         const wrapper = createWrapper({
             props: {
@@ -393,7 +393,7 @@ describe("v-model (update event)", () => {
         ]);
     });
 
-    it("should upate v-model when selecting and unselecting two items", async () => {
+    it("should update v-model when selecting and unselecting two items", async () => {
         const modelValue: ListArray = [];
         const wrapper = createWrapper({
             props: {
@@ -451,7 +451,7 @@ describe("v-model (update event)", () => {
         expect(allInputs[2].checked).toBeTruthy();
     });
 
-    it("should upate activeItem from v-model if provided or changed", async () => {
+    it("should update activeItem from v-model if provided or changed", async () => {
         const active = items[1];
         const wrapper = createWrapper({
             props: {
@@ -472,6 +472,63 @@ describe("v-model (update event)", () => {
         expect(Array.from(liItems[2].element.classList.values())).toContain(
             "list__item--active",
         );
+    });
+
+    it("should be able to preselect items", () => {
+        const wrapper = createWrapper({
+            props: {
+                items,
+                selectable: true,
+                modelValue: [items[0], items[2]],
+            },
+        });
+
+        const allInputs = wrapper.element.querySelectorAll("input");
+        expect(allInputs[0].checked).toBeTruthy();
+        expect(allInputs[1].checked).toBeFalsy();
+        expect(allInputs[2].checked).toBeTruthy();
+    });
+});
+
+describe("`keyAttribute`", () => {
+    it("should not throw if valid and unique", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FList, {
+                props: {
+                    keyAttribute: "id",
+                    items: [{ id: "a" }, { id: "b" }, { id: "c" }],
+                },
+            });
+        }).not.toThrow();
+    });
+
+    it("should throw error if not unique in items", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FList, {
+                props: {
+                    keyAttribute: "id",
+                    items: [{ id: "a" }, { id: "b" }, { id: "b" }],
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Expected each item to have key [id] with unique value but encountered duplicate of "b" in item index 2."`,
+        );
+    });
+
+    it("should be optional", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FList, {
+                props: {
+                    items: [{ id: "a" }, { id: "b" }, { id: "c" }],
+                },
+            });
+        }).not.toThrow();
     });
 });
 
@@ -527,11 +584,8 @@ describe("screenreader slot", () => {
 });
 
 describe("html-validate", () => {
-    it("should require non-empty key-attribute attribute", () => {
-        expect.assertions(2);
-        expect("<f-list></f-list>").not.toHTMLValidate({
-            message: '<f-list> is missing required "key-attribute" attribute',
-        });
+    it("should require `key-attribute` to be non-empty if used", () => {
+        expect.assertions(1);
         expect('<f-list key-attribute=""></f-list>').not.toHTMLValidate({
             message: 'Attribute "key-attribute" has invalid value ""',
         });

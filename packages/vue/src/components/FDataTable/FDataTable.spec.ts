@@ -411,13 +411,51 @@ it("should call provided sort method when clicking columnheader that is registra
     `);
 });
 
+describe("`keyAttribute`", () => {
+    it("should not throw if valid and unique", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FDataTable, {
+                props: {
+                    keyAttribute: "id",
+                    rows: [{ id: "a" }, { id: "b" }, { id: "c" }],
+                },
+            });
+        }).not.toThrow();
+    });
+
+    it("should throw error if not unique in items", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FDataTable, {
+                props: {
+                    keyAttribute: "id",
+                    rows: [{ id: "a" }, { id: "b" }, { id: "b" }],
+                },
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Expected each item to have key [id] with unique value but encountered duplicate of "b" in item index 2."`,
+        );
+    });
+
+    it("should be optional", async () => {
+        expect.assertions(1);
+
+        expect(() => {
+            mount(FDataTable, {
+                props: {
+                    rows: [{ id: "a" }, { id: "b" }, { id: "c" }],
+                },
+            });
+        }).not.toThrow();
+    });
+});
+
 describe("html-validate", () => {
-    it("should require non-empty key-attribute attribute", () => {
-        expect.assertions(2);
-        expect("<f-data-table></f-data-table>").not.toHTMLValidate({
-            message:
-                '<f-data-table> is missing required "key-attribute" attribute',
-        });
+    it("should require `key-attribute` to be non-empty if used", () => {
+        expect.assertions(1);
         expect(
             '<f-data-table key-attribute=""></f-data-table>',
         ).not.toHTMLValidate({

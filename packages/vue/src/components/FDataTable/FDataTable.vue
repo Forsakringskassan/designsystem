@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T extends object">
 import { type PropType, computed, onMounted, provide, ref } from "vue";
 import { TableScroll, tableScrollClasses } from "../../utils";
+import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import {
     FTableColumnData,
     FTableColumnSort,
@@ -20,6 +21,7 @@ import { useSlotUtils } from "../../composables";
 const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
+const internalKey = getInternalKey<T>();
 
 const columns = ref<FTableColumnData[]>([]);
 
@@ -41,7 +43,8 @@ const props = defineProps({
      */
     keyAttribute: {
         type: String,
-        required: true,
+        required: false,
+        default: undefined,
     },
     /**
      * If `true` alternating rows will use a different background color.
@@ -83,7 +86,7 @@ const tableClasses = computed(() => {
 });
 
 const isEmpty = computed(() => {
-    return props.rows.length === 0;
+    return internalRows.value.length === 0;
 });
 
 const visibleColumns = computed((): FTableColumnData[] => {
@@ -96,6 +99,15 @@ const wrapperClasses = computed(() => {
 
 const tabindex = computed(() => {
     return props.scroll !== TableScroll.NONE ? 0 : undefined;
+});
+
+const internalRows = computed((): T[] => {
+    const { keyAttribute } = props;
+    if (keyAttribute) {
+        return setInternalKeys(props.rows, keyAttribute as keyof T);
+    }
+
+    return setInternalKeys(props.rows);
 });
 
 provide("addColumn", (column: FTableColumnData) => {
@@ -114,7 +126,7 @@ provide("textFieldTableMode", true);
 provide(
     "renderColumns",
     computed(() => {
-        return props.rows.length > 0;
+        return internalRows.value.length > 0;
     }),
 );
 
@@ -124,11 +136,7 @@ onMounted(() => {
 });
 
 function rowKey(item: T): string {
-    const key = item[props.keyAttribute as keyof T];
-    if (typeof key === "undefined") {
-        throw new Error(`Key attribute [${props.keyAttribute}]' is missing in row`);
-    }
-    return String(key);
+    return String(item[internalKey]);
 }
 
 function columnClasses(column: FTableColumnData): string[] {
@@ -213,7 +221,7 @@ function escapeNewlines(value: string): string {
                         <slot name="empty">{{ $t("fkui.data-table.empty", "Tabellen är tom") }}</slot>
                     </td>
                 </tr>
-                <tr v-for="row in rows" :key="rowKey(row)" class="table__row">
+                <tr v-for="row in internalRows" :key="rowKey(row)" class="table__row">
                     <!--
                          @slot Slot for table row. The item object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ row }"`.
                          @binding {T} row - The object to be visualized..
