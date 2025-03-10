@@ -240,6 +240,7 @@ module.exports = defineMetadata({
             },
         },
     },
+
     "i-combobox-dropdown": {
         flow: true,
         interactive: true,
