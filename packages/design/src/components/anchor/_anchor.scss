@@ -16,12 +16,6 @@ $anchor-svg-margin: 0.25rem;
     }
 
     &#{$ANCHOR_SELECTOR}--discrete {
-        color: var(--f-text-color-link-discrete);
-        text-decoration-color: var(--f-border-color-link-discrete);
-
-        &:hover {
-            color: var(--f-text-color-link-discrete-hover);
-            text-decoration-color: var(--f-text-color-link-discrete-hover);
-        }
+        @include anchor.anchor-discrete(false);
     }
 }
