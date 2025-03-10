@@ -445,6 +445,26 @@ module.exports = defineMetadata({
         permittedContent: [],
     },
 
+    "f-resize-pane": {
+        flow: true,
+        attributes: {
+            min: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+                list: true,
+            },
+            max: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+                list: true,
+            },
+            initial: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+            },
+            disabled: {
+                boolean: true,
+            },
+        },
+    },
+
     "f-sort-filter-dataset": {
         flow: true,
         interactive: true,

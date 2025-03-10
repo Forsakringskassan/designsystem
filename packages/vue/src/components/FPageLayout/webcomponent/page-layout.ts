@@ -122,5 +122,10 @@ export class PageLayout extends HTMLElement {
                 this.#elements[slot] = element;
             }
         }
+
+        /* tell useAreaData() there is new data */
+        setTimeout(() => {
+            this.dispatchEvent(new CustomEvent("update:areaData"));
+        }, 0);
     }
 }

@@ -1,3 +1,7 @@
+:host {
+    display: block;
+}
+
 .page-layout {
     display: grid;
     height: 100cqh;

@@ -1,4 +1,5 @@
 import { type Ref, ref, type ShallowRef, watchEffect } from "vue";
+import { useEventListener } from "@vueuse/core";
 import { LayoutAreaAttachPanel, LayoutAreaDirection } from "./define-layout";
 import {
     VAR_NAME_AREA,
@@ -40,11 +41,27 @@ export function useAreaData(
     const direction = ref<LayoutAreaDirection | null>(null);
 
     watchEffect(() => {
-        if (element.value) {
-            const style = getComputedStyle(element.value);
-            area.value = getProperty(style, VAR_NAME_AREA);
-            attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
-            direction.value = getProperty(style, VAR_NAME_DIRECTION);
+        const value = element.value;
+        if (value) {
+            const root = value.getRootNode() as Element;
+            const host = root instanceof ShadowRoot ? root.host : root;
+            const slot = host.closest("[slot]");
+            const ancestor = host.closest("ce-page-layout");
+            if (ancestor) {
+                useEventListener(ancestor, "update:areaData", () => {
+                    ancestor.addEventListener("update:areaData", () => {
+                        console.log("areadata updated by ancestor");
+                        update(value);
+                    });
+                });
+            }
+            if (slot) {
+                console.log("slot", slot);
+                useEventListener(slot, "slotchange", () => {
+                    console.log("slotchange");
+                });
+            }
+            update(value);
         }
     });
 
@@ -53,4 +70,12 @@ export function useAreaData(
         attachPanel,
         direction,
     };
+
+    function update(element: HTMLElement): void {
+        const style = getComputedStyle(element);
+        area.value = getProperty(style, VAR_NAME_AREA);
+        attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
+        console.log("area", area.value);
+        direction.value = getProperty(style, VAR_NAME_DIRECTION);
+    }
 }
