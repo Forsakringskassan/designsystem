@@ -2009,7 +2009,7 @@ input[type=search]:focus,
   color: var(--f-text-color-link, #4a52b6);
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 0.25rem;
+  text-underline-offset: 0.25em;
   text-decoration-color: var(--f-text-color-link, #4a52b6);
   font-weight: var(--f-font-weight-medium, 700);
 }

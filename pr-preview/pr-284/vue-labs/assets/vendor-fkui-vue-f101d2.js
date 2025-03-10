@@ -14425,11 +14425,14 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
   }
   function expandableRows(row) {
     const expandableRows2 = row[expandableAttribute];
-    if (typeof expandableRows2 === "undefined") {
+    if (expandableRows2 === void 0 || expandableRows2 === null) {
       return void 0;
     }
     if (!Array.isArray(expandableRows2)) {
-      throw new Error(`Expandable rows must be a ListArray`);
+      throw new Error(`Expandable rows must be an array`);
+    }
+    if (expandableRows2.length === 0) {
+      return void 0;
     }
     return expandableRows2;
   }
