@@ -20354,7 +20354,7 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
     if (!Array.isArray(expandableRows2)) {
       throw new Error(`Expandable rows must be an array`);
     }
-    if (!expandableRows2.length) {
+    if (expandableRows2.length === 0) {
       return void 0;
     }
     return expandableRows2;
