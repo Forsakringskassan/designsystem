@@ -353,6 +353,12 @@
     --f-logo-size-small: 0.8rem;
     --f-logo-size-large: 0.8rem 6.195rem;
 
+    // Workaround: used and always set by IResizePane so the fallback plugin
+    // shouldn't even consider these but there is no way to disable (yet)
+    --size: 0;
+    --min: 0;
+    --max: 0;
+
     // ********************************
     // COMPONENT SPECIFIC VARIABLES END
     // ********************************
