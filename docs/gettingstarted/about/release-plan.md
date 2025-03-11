@@ -6,19 +6,18 @@ layout: pattern
 
 ## Nyligen släppt
 
+I release [6.3.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.3.0) infördes bland annat följande uppdateringar:
+
+- nytt paket `@fkui/tsconfig` med rekommenderad konfiguration för TypeScript och FKUI. Läs mer om {@link tsconfig}.
+- inmatningsfält (FTextField) hanterar `null` som modellvärde.
+- uppdaterarar av {@link FPageLayout} och relaterade komponenter (fortfarande i beta).
+- diverse buggrättningar.
+
 I release [6.2.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.2.0) infördes bland annat följande uppdateringar:
 
 - {@link news#beta-version-ny-applikationslayout betaversion} av nya komponenter för applikationslayout.
   Observera att de inte går att använda förrän de ligger i status produktionsklar.
-
 - diverse buggrättningar
-
-I release [6.1.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.1.0) infördes bland annat följande uppdateringar:
-
-- Tabell och lista med tillhörande komponenter (datamängdredigeraren och datamängdsorteraren): Vi har infört generics, vilket innebär att det går att använda egna datatyper i listor och tabeller.
-
-- Vi har fixat så att det nu går att bygga vid import av scss-filer från designpaketet efter införandet av v6.0.0 (bugg).
-- Ett antal andra buggar är också fixade.
 
 Vi har också nyligen släppt release [6.0.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0) med bland annat följande uppdateringar:
 
