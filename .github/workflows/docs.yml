@@ -28,7 +28,7 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 20.x
+                  node-version: 22.x
             - name: Determine version
               run: echo "VERSION=v$(npm pkg get version | jq -r)" | tee -a $GITHUB_ENV
             - name: Install dependencies
