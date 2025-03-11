@@ -2016,7 +2016,7 @@ input[type=search]:focus,
 .anchor:hover, .file-item__file-open:hover {
   color: var(--fkds-link-color-text-primary-hover, #3b4292);
   text-decoration-color: var(--fkds-link-color-text-primary-hover, #3b4292);
-  text-decoration-thickness: var(--fkds-link-text-decoration-thickness-hover, 3px);
+  text-decoration-thickness: var(--fkds-link-text-decoration-thickness-hover, 2px);
 }
 .anchor.anchor--block, .file-item__file-open {
   display: inline-flex;
@@ -2030,8 +2030,8 @@ input[type=search]:focus,
   text-decoration-color: var(--fkds-link-color-text-secondary-default, #1b1e23);
 }
 .anchor.anchor--discrete:hover, .anchor--discrete.file-item__file-open:hover {
-  color: var(--fkds-link-color-text-secondary-hover, #3b4292);
-  text-decoration-color: var(--fkds-link-color-text-secondary-hover, #3b4292);
+  color: var(--fkds-link-color-text-secondary-hover, #1b1e23);
+  text-decoration-color: var(--fkds-link-color-text-secondary-hover, #1b1e23);
 }
 .anchor.anchor--inverted, .anchor--inverted.file-item__file-open {
   color: var(--fkds-color-link-text-inverted-default, #ffffff);

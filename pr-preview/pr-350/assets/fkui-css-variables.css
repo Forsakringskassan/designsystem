@@ -8,7 +8,7 @@
   --fkds-link-color-text-primary-default: #4a52b6;
   --fkds-link-color-text-primary-hover: #3b4292;
   --fkds-link-color-text-secondary-default: #1b1e23;
-  --fkds-link-color-text-secondary-hover: #3b4292;
+  --fkds-link-color-text-secondary-hover: #1b1e23;
   --fkds-color-link-text-inverted-default: #ffffff;
   --fkds-color-link-text-inverted-hover: #ffffff;
   --fkds-color-background-primary: #ffffff;
@@ -108,10 +108,8 @@
   --fkds-icon-color-feedback-border-warning: #ffbe10;
   --fkds-icon-color-feedback-border-negative: #ca1515;
   --fkds-link-text-decoration-thickness-default: 1px;
-  --fkds-link-text-decoration-thickness-hover: 3px;
+  --fkds-link-text-decoration-thickness-hover: 2px;
   --fkds-link-text-decoration-offset-default: 0.25em;
-  --fkds-link-text-decoration-thickness-default: 1px;
-  --fkds-link-text-decoration-thickness-hover: 3px;
   --fkds-link-font-weight-default: 500;
   --f-text-color-default: #1b1e23;
   --f-text-color-default-inverted: #ffffff;

@@ -44,8 +44,8 @@ export default {
     },
     {
       "name": "--fkds-link-color-text-secondary-hover",
-      "value": "#3b4292",
-      "palette": "bluebell-120",
+      "value": "#1b1e23",
+      "palette": "fk-black-100",
       "comment": null
     },
     {
@@ -644,25 +644,13 @@ export default {
     },
     {
       "name": "--fkds-link-text-decoration-thickness-hover",
-      "value": "3px",
+      "value": "2px",
       "palette": null,
       "comment": null
     },
     {
       "name": "--fkds-link-text-decoration-offset-default",
       "value": "0.25em",
-      "palette": null,
-      "comment": null
-    },
-    {
-      "name": "--fkds-link-text-decoration-thickness-default",
-      "value": "1px",
-      "palette": null,
-      "comment": null
-    },
-    {
-      "name": "--fkds-link-text-decoration-thickness-hover",
-      "value": "3px",
       "palette": null,
       "comment": null
     },
