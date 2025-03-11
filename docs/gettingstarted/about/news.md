@@ -4,16 +4,13 @@ name: news
 layout: content-with-menu
 ---
 
-## Betaversion ny applikationslayout
+## TypeScript konfiguration
 
-Version: 6.2.0 <br>
-2025-02-28
+Version: 6.3.0 <br>
+2025-03-11
 
-Vi har släppt en ny komponent för applikationslayout i betaversion (applikationsmall).
-Den går inte att använda än då det behövs fler komponeter (paneler) som är under utveckling.
-Komponenter som har status beta kan eller ska inte användas i produktion.
-
-{@link about#status-for-komponenter Läs mer om olika status för komponenter}
+Designsystemet levererar nu ett nytt paket `@fkui/tsconfig` med rekommenderad konfiguration för TypeScript och FKUI.
+Läs mer om {@link tsconfig}.
 
 ## Ny release med brytande ändringar &#127881;
 
