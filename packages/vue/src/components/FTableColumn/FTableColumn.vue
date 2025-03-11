@@ -1,13 +1,3 @@
-<template>
-    <component :is="tagName" v-if="renderColumns && visible" :class="classes" :scope="scope" v-bind="$attrs">
-        <slot></slot>
-        <!-- Extra space between columns for screen reader. Otherwise it can sometimes read two numbers as one longer number.
-            For example a table with | 2 | 200 | can be read as 2200 in some languages.
-         -->
-        <span class="sr-only">&nbsp;</span>
-    </component>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { ElementIdService } from "@fkui/logic";
@@ -149,3 +139,13 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <component :is="tagName" v-if="renderColumns && visible" :class="classes" :scope="scope" v-bind="$attrs">
+        <slot></slot>
+        <!-- Extra space between columns for screen reader. Otherwise it can sometimes read two numbers as one longer number.
+            For example a table with | 2 | 200 | can be read as 2200 in some languages.
+         -->
+        <span class="sr-only">&nbsp;</span>
+    </component>
+</template>
