@@ -25,7 +25,7 @@ module.exports = {
         },
 
         {
-            files: "*.ts",
+            files: ["*.ts", "*.mts"],
             extends: ["@forsakringskassan/typescript"],
         },
 
