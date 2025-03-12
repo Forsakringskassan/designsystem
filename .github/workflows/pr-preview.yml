@@ -25,8 +25,38 @@ jobs:
                   npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/vue-labs --scope=@fkui/testbed-page-layout build
                   npm run build:docs
             - uses: rossjrw/pr-preview-action@v1
+              id: preview
               with:
                   source-dir: ./public/
                   preview-branch: gh-pages
                   umbrella-dir: pr-preview
                   action: auto
+                  comment: false
+            - name: Leave a comment after deployment
+              if: steps.preview.outputs.deployment-action == 'deploy' && env.deployment_status == 'success'
+              uses: marocchino/sticky-pull-request-comment@v2
+              with:
+                  header: pr-preview
+                  message: |
+                      ##  Förhandsgranskning :bug: :mag:
+
+                      Dokumentation och exampel applikationer finns att förhandsgranska på:
+
+                      | Sida | URL |
+                      |-|-
+                      | Dokumentation | ${{ steps.preview.outputs.preview-url }} |
+                      | Vue Sandbox | ${{ steps.preview.outputs.preview-url }}/vue-sandbox |
+                      | Applikationsmall | ${{ steps.preview.outputs.preview-url }}/testbed-page-layout |
+
+                      ---
+
+                      ###### Senast uppdaterad ${{ steps.preview.outputs.action-start-time }} i [gh-pages](${{ github.server_url }}/${{ github.repository }}/tree/gh-pages).
+
+            - uses: marocchino/sticky-pull-request-comment@v2
+              if: steps.preview-step.outputs.deployment-action == 'remove' && env.deployment_status == 'success'
+              with:
+                  header: pr-preview
+                  message: |
+                      ##  Förhandsgranskning :bug: :mag:
+
+                      Förhandsgranskning borttagen då pull request är stängd.
