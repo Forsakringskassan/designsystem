@@ -122,5 +122,11 @@ export class PageLayout extends HTMLElement {
                 this.#elements[slot] = element;
             }
         }
+
+        /* allow slots to settle before we dispatch the update event otherwise
+         * the updated data will not yet be available */
+        setTimeout(() => {
+            this.dispatchEvent(new CustomEvent("update"));
+        }, 0);
     }
 }
