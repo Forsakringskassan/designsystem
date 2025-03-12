@@ -23,18 +23,14 @@
     "@fkui/date": "6.3.0",
     "@fkui/design": "6.3.0",
     "@fkui/logic": "6.3.0",
+    "@fkui/icon-lib-default": "6.3.0",
     "@fkui/theme-default": "6.3.0",
     "@fkui/vue": "6.3.0",
-    "core-js": "3.41.0",
     "vue": "3.5.13",
     "vue-router": "4.5.0"
   },
   "devDependencies": {
-    "@fkui/icon-lib-default": "6.3.0",
     "@vitejs/plugin-vue": "5.2.1",
-    "autoprefixer": "10.4.21",
-    "html-validate": "9.5.0",
-    "postcss": "8.5.3",
     "vite": "6.2.1"
   },
   "engines": {
