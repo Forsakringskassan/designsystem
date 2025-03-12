@@ -32,7 +32,7 @@
   "devDependencies": {
     "@fkui/icon-lib-default": "6.3.0",
     "@vitejs/plugin-vue": "5.2.1",
-    "autoprefixer": "10.4.20",
+    "autoprefixer": "10.4.21",
     "html-validate": "9.5.0",
     "postcss": "8.5.3",
     "vite": "6.2.1"
