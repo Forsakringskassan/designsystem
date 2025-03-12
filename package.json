@@ -63,9 +63,6 @@
     ]
   },
   "prettier": "@forsakringskassan/prettier-config",
-  "release": {
-    "extends": "@forsakringskassan/semantic-release-monorepo-config"
-  },
   "stylelint": {
     "extends": [
       "@forsakringskassan/stylelint-config",
