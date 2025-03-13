@@ -3862,8 +3862,8 @@ function require_Set() {
   if (hasRequired_Set) return _Set;
   hasRequired_Set = 1;
   var getNative = require_getNative(), root = require_root();
-  var Set = getNative(root, "Set");
-  _Set = Set;
+  var Set2 = getNative(root, "Set");
+  _Set = Set2;
   return _Set;
 }
 var _WeakMap;
@@ -3881,12 +3881,12 @@ var hasRequired_getTag;
 function require_getTag() {
   if (hasRequired_getTag) return _getTag;
   hasRequired_getTag = 1;
-  var DataView2 = require_DataView(), Map2 = require_Map(), Promise2 = require_Promise(), Set = require_Set(), WeakMap2 = require_WeakMap(), baseGetTag = require_baseGetTag(), toSource = require_toSource();
+  var DataView2 = require_DataView(), Map2 = require_Map(), Promise2 = require_Promise(), Set2 = require_Set(), WeakMap2 = require_WeakMap(), baseGetTag = require_baseGetTag(), toSource = require_toSource();
   var mapTag = "[object Map]", objectTag = "[object Object]", promiseTag = "[object Promise]", setTag = "[object Set]", weakMapTag = "[object WeakMap]";
   var dataViewTag = "[object DataView]";
-  var dataViewCtorString = toSource(DataView2), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set), weakMapCtorString = toSource(WeakMap2);
+  var dataViewCtorString = toSource(DataView2), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set2), weakMapCtorString = toSource(WeakMap2);
   var getTag = baseGetTag;
-  if (DataView2 && getTag(new DataView2(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set && getTag(new Set()) != setTag || WeakMap2 && getTag(new WeakMap2()) != weakMapTag) {
+  if (DataView2 && getTag(new DataView2(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap2 && getTag(new WeakMap2()) != weakMapTag) {
     getTag = function(value) {
       var result = baseGetTag(value), Ctor = result == objectTag ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : "";
       if (ctorString) {
@@ -10434,6 +10434,571 @@ function ActivateItemInjected() {
     registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0)
   };
 }
+var es_set_difference_v2 = {};
+var setHelpers;
+var hasRequiredSetHelpers;
+function requireSetHelpers() {
+  if (hasRequiredSetHelpers) return setHelpers;
+  hasRequiredSetHelpers = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var SetPrototype = Set.prototype;
+  setHelpers = {
+    // eslint-disable-next-line es/no-set -- safe
+    Set,
+    add: uncurryThis(SetPrototype.add),
+    has: uncurryThis(SetPrototype.has),
+    remove: uncurryThis(SetPrototype["delete"]),
+    proto: SetPrototype
+  };
+  return setHelpers;
+}
+var aSet;
+var hasRequiredASet;
+function requireASet() {
+  if (hasRequiredASet) return aSet;
+  hasRequiredASet = 1;
+  var has = requireSetHelpers().has;
+  aSet = function(it) {
+    has(it);
+    return it;
+  };
+  return aSet;
+}
+var iterateSimple;
+var hasRequiredIterateSimple;
+function requireIterateSimple() {
+  if (hasRequiredIterateSimple) return iterateSimple;
+  hasRequiredIterateSimple = 1;
+  var call = requireFunctionCall();
+  iterateSimple = function(record, fn2, ITERATOR_INSTEAD_OF_RECORD) {
+    var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
+    var next = record.next;
+    var step, result;
+    while (!(step = call(next, iterator)).done) {
+      result = fn2(step.value);
+      if (result !== void 0) return result;
+    }
+  };
+  return iterateSimple;
+}
+var setIterate;
+var hasRequiredSetIterate;
+function requireSetIterate() {
+  if (hasRequiredSetIterate) return setIterate;
+  hasRequiredSetIterate = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var iterateSimple2 = requireIterateSimple();
+  var SetHelpers = requireSetHelpers();
+  var Set2 = SetHelpers.Set;
+  var SetPrototype = SetHelpers.proto;
+  var forEach = uncurryThis(SetPrototype.forEach);
+  var keys = uncurryThis(SetPrototype.keys);
+  var next = keys(new Set2()).next;
+  setIterate = function(set, fn2, interruptible) {
+    return interruptible ? iterateSimple2({
+      iterator: keys(set),
+      next
+    }, fn2) : forEach(set, fn2);
+  };
+  return setIterate;
+}
+var setClone;
+var hasRequiredSetClone;
+function requireSetClone() {
+  if (hasRequiredSetClone) return setClone;
+  hasRequiredSetClone = 1;
+  var SetHelpers = requireSetHelpers();
+  var iterate2 = requireSetIterate();
+  var Set2 = SetHelpers.Set;
+  var add = SetHelpers.add;
+  setClone = function(set) {
+    var result = new Set2();
+    iterate2(set, function(it) {
+      add(result, it);
+    });
+    return result;
+  };
+  return setClone;
+}
+var setSize;
+var hasRequiredSetSize;
+function requireSetSize() {
+  if (hasRequiredSetSize) return setSize;
+  hasRequiredSetSize = 1;
+  var uncurryThisAccessor = requireFunctionUncurryThisAccessor();
+  var SetHelpers = requireSetHelpers();
+  setSize = uncurryThisAccessor(SetHelpers.proto, "size", "get") || function(set) {
+    return set.size;
+  };
+  return setSize;
+}
+var getSetRecord;
+var hasRequiredGetSetRecord;
+function requireGetSetRecord() {
+  if (hasRequiredGetSetRecord) return getSetRecord;
+  hasRequiredGetSetRecord = 1;
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var call = requireFunctionCall();
+  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var INVALID_SIZE = "Invalid size";
+  var $RangeError = RangeError;
+  var $TypeError = TypeError;
+  var max = Math.max;
+  var SetRecord = function(set, intSize) {
+    this.set = set;
+    this.size = max(intSize, 0);
+    this.has = aCallable2(set.has);
+    this.keys = aCallable2(set.keys);
+  };
+  SetRecord.prototype = {
+    getIterator: function() {
+      return getIteratorDirect2(anObject2(call(this.keys, this.set)));
+    },
+    includes: function(it) {
+      return call(this.has, this.set, it);
+    }
+  };
+  getSetRecord = function(obj) {
+    anObject2(obj);
+    var numSize = +obj.size;
+    if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
+    var intSize = toIntegerOrInfinity2(numSize);
+    if (intSize < 0) throw new $RangeError(INVALID_SIZE);
+    return new SetRecord(obj, intSize);
+  };
+  return getSetRecord;
+}
+var setDifference;
+var hasRequiredSetDifference;
+function requireSetDifference() {
+  if (hasRequiredSetDifference) return setDifference;
+  hasRequiredSetDifference = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var clone = requireSetClone();
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var has = SetHelpers.has;
+  var remove = SetHelpers.remove;
+  setDifference = function difference(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    var result = clone(O);
+    if (size(O) <= otherRec.size) iterateSet(O, function(e) {
+      if (otherRec.includes(e)) remove(result, e);
+    });
+    else iterateSimple2(otherRec.getIterator(), function(e) {
+      if (has(O, e)) remove(result, e);
+    });
+    return result;
+  };
+  return setDifference;
+}
+var setMethodAcceptSetLike;
+var hasRequiredSetMethodAcceptSetLike;
+function requireSetMethodAcceptSetLike() {
+  if (hasRequiredSetMethodAcceptSetLike) return setMethodAcceptSetLike;
+  hasRequiredSetMethodAcceptSetLike = 1;
+  var getBuiltIn2 = requireGetBuiltIn();
+  var createSetLike = function(size) {
+    return {
+      size,
+      has: function() {
+        return false;
+      },
+      keys: function() {
+        return {
+          next: function() {
+            return {
+              done: true
+            };
+          }
+        };
+      }
+    };
+  };
+  var createSetLikeWithInfinitySize = function(size) {
+    return {
+      size,
+      has: function() {
+        return true;
+      },
+      keys: function() {
+        throw new Error("e");
+      }
+    };
+  };
+  setMethodAcceptSetLike = function(name, callback) {
+    var Set2 = getBuiltIn2("Set");
+    try {
+      new Set2()[name](createSetLike(0));
+      try {
+        new Set2()[name](createSetLike(-1));
+        return false;
+      } catch (error2) {
+        if (!callback) return true;
+        try {
+          new Set2()[name](createSetLikeWithInfinitySize(-Infinity));
+          return false;
+        } catch (error) {
+          var set = new Set2();
+          set.add(1);
+          set.add(2);
+          return callback(set[name](createSetLikeWithInfinitySize(Infinity)));
+        }
+      }
+    } catch (error) {
+      return false;
+    }
+  };
+  return setMethodAcceptSetLike;
+}
+var hasRequiredEs_set_difference_v2;
+function requireEs_set_difference_v2() {
+  if (hasRequiredEs_set_difference_v2) return es_set_difference_v2;
+  hasRequiredEs_set_difference_v2 = 1;
+  var $ = require_export();
+  var difference = requireSetDifference();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("difference", function(result) {
+    return result.size === 0;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    difference
+  });
+  return es_set_difference_v2;
+}
+requireEs_set_difference_v2();
+var es_set_intersection_v2 = {};
+var setIntersection;
+var hasRequiredSetIntersection;
+function requireSetIntersection() {
+  if (hasRequiredSetIntersection) return setIntersection;
+  hasRequiredSetIntersection = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var Set2 = SetHelpers.Set;
+  var add = SetHelpers.add;
+  var has = SetHelpers.has;
+  setIntersection = function intersection2(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    var result = new Set2();
+    if (size(O) > otherRec.size) {
+      iterateSimple2(otherRec.getIterator(), function(e) {
+        if (has(O, e)) add(result, e);
+      });
+    } else {
+      iterateSet(O, function(e) {
+        if (otherRec.includes(e)) add(result, e);
+      });
+    }
+    return result;
+  };
+  return setIntersection;
+}
+var hasRequiredEs_set_intersection_v2;
+function requireEs_set_intersection_v2() {
+  if (hasRequiredEs_set_intersection_v2) return es_set_intersection_v2;
+  hasRequiredEs_set_intersection_v2 = 1;
+  var $ = require_export();
+  var fails2 = requireFails();
+  var intersection2 = requireSetIntersection();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("intersection", function(result) {
+    return result.size === 2 && result.has(1) && result.has(2);
+  }) || fails2(function() {
+    return String(Array.from((/* @__PURE__ */ new Set([1, 2, 3])).intersection(/* @__PURE__ */ new Set([3, 2])))) !== "3,2";
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    intersection: intersection2
+  });
+  return es_set_intersection_v2;
+}
+requireEs_set_intersection_v2();
+var es_set_isDisjointFrom_v2 = {};
+var setIsDisjointFrom;
+var hasRequiredSetIsDisjointFrom;
+function requireSetIsDisjointFrom() {
+  if (hasRequiredSetIsDisjointFrom) return setIsDisjointFrom;
+  hasRequiredSetIsDisjointFrom = 1;
+  var aSet2 = requireASet();
+  var has = requireSetHelpers().has;
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var iteratorClose2 = requireIteratorClose();
+  setIsDisjointFrom = function isDisjointFrom(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) <= otherRec.size) return iterateSet(O, function(e) {
+      if (otherRec.includes(e)) return false;
+    }, true) !== false;
+    var iterator = otherRec.getIterator();
+    return iterateSimple2(iterator, function(e) {
+      if (has(O, e)) return iteratorClose2(iterator, "normal", false);
+    }) !== false;
+  };
+  return setIsDisjointFrom;
+}
+var hasRequiredEs_set_isDisjointFrom_v2;
+function requireEs_set_isDisjointFrom_v2() {
+  if (hasRequiredEs_set_isDisjointFrom_v2) return es_set_isDisjointFrom_v2;
+  hasRequiredEs_set_isDisjointFrom_v2 = 1;
+  var $ = require_export();
+  var isDisjointFrom = requireSetIsDisjointFrom();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isDisjointFrom", function(result) {
+    return !result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isDisjointFrom
+  });
+  return es_set_isDisjointFrom_v2;
+}
+requireEs_set_isDisjointFrom_v2();
+var es_set_isSubsetOf_v2 = {};
+var setIsSubsetOf;
+var hasRequiredSetIsSubsetOf;
+function requireSetIsSubsetOf() {
+  if (hasRequiredSetIsSubsetOf) return setIsSubsetOf;
+  hasRequiredSetIsSubsetOf = 1;
+  var aSet2 = requireASet();
+  var size = requireSetSize();
+  var iterate2 = requireSetIterate();
+  var getSetRecord2 = requireGetSetRecord();
+  setIsSubsetOf = function isSubsetOf(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) > otherRec.size) return false;
+    return iterate2(O, function(e) {
+      if (!otherRec.includes(e)) return false;
+    }, true) !== false;
+  };
+  return setIsSubsetOf;
+}
+var hasRequiredEs_set_isSubsetOf_v2;
+function requireEs_set_isSubsetOf_v2() {
+  if (hasRequiredEs_set_isSubsetOf_v2) return es_set_isSubsetOf_v2;
+  hasRequiredEs_set_isSubsetOf_v2 = 1;
+  var $ = require_export();
+  var isSubsetOf = requireSetIsSubsetOf();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isSubsetOf", function(result) {
+    return result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isSubsetOf
+  });
+  return es_set_isSubsetOf_v2;
+}
+requireEs_set_isSubsetOf_v2();
+var es_set_isSupersetOf_v2 = {};
+var setIsSupersetOf;
+var hasRequiredSetIsSupersetOf;
+function requireSetIsSupersetOf() {
+  if (hasRequiredSetIsSupersetOf) return setIsSupersetOf;
+  hasRequiredSetIsSupersetOf = 1;
+  var aSet2 = requireASet();
+  var has = requireSetHelpers().has;
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  var iteratorClose2 = requireIteratorClose();
+  setIsSupersetOf = function isSupersetOf(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) < otherRec.size) return false;
+    var iterator = otherRec.getIterator();
+    return iterateSimple2(iterator, function(e) {
+      if (!has(O, e)) return iteratorClose2(iterator, "normal", false);
+    }) !== false;
+  };
+  return setIsSupersetOf;
+}
+var hasRequiredEs_set_isSupersetOf_v2;
+function requireEs_set_isSupersetOf_v2() {
+  if (hasRequiredEs_set_isSupersetOf_v2) return es_set_isSupersetOf_v2;
+  hasRequiredEs_set_isSupersetOf_v2 = 1;
+  var $ = require_export();
+  var isSupersetOf = requireSetIsSupersetOf();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isSupersetOf", function(result) {
+    return !result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isSupersetOf
+  });
+  return es_set_isSupersetOf_v2;
+}
+requireEs_set_isSupersetOf_v2();
+var es_set_symmetricDifference_v2 = {};
+var setSymmetricDifference;
+var hasRequiredSetSymmetricDifference;
+function requireSetSymmetricDifference() {
+  if (hasRequiredSetSymmetricDifference) return setSymmetricDifference;
+  hasRequiredSetSymmetricDifference = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var clone = requireSetClone();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  var add = SetHelpers.add;
+  var has = SetHelpers.has;
+  var remove = SetHelpers.remove;
+  setSymmetricDifference = function symmetricDifference(other) {
+    var O = aSet2(this);
+    var keysIter = getSetRecord2(other).getIterator();
+    var result = clone(O);
+    iterateSimple2(keysIter, function(e) {
+      if (has(O, e)) remove(result, e);
+      else add(result, e);
+    });
+    return result;
+  };
+  return setSymmetricDifference;
+}
+var hasRequiredEs_set_symmetricDifference_v2;
+function requireEs_set_symmetricDifference_v2() {
+  if (hasRequiredEs_set_symmetricDifference_v2) return es_set_symmetricDifference_v2;
+  hasRequiredEs_set_symmetricDifference_v2 = 1;
+  var $ = require_export();
+  var symmetricDifference = requireSetSymmetricDifference();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !setMethodAcceptSetLike2("symmetricDifference")
+  }, {
+    symmetricDifference
+  });
+  return es_set_symmetricDifference_v2;
+}
+requireEs_set_symmetricDifference_v2();
+var es_set_union_v2 = {};
+var setUnion;
+var hasRequiredSetUnion;
+function requireSetUnion() {
+  if (hasRequiredSetUnion) return setUnion;
+  hasRequiredSetUnion = 1;
+  var aSet2 = requireASet();
+  var add = requireSetHelpers().add;
+  var clone = requireSetClone();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  setUnion = function union(other) {
+    var O = aSet2(this);
+    var keysIter = getSetRecord2(other).getIterator();
+    var result = clone(O);
+    iterateSimple2(keysIter, function(it) {
+      add(result, it);
+    });
+    return result;
+  };
+  return setUnion;
+}
+var hasRequiredEs_set_union_v2;
+function requireEs_set_union_v2() {
+  if (hasRequiredEs_set_union_v2) return es_set_union_v2;
+  hasRequiredEs_set_union_v2 = 1;
+  var $ = require_export();
+  var union = requireSetUnion();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !setMethodAcceptSetLike2("union")
+  }, {
+    union
+  });
+  return es_set_union_v2;
+}
+requireEs_set_union_v2();
+var internalKey = Symbol("internal-key");
+var internalIndex = 0;
+function getInternalKey() {
+  return internalKey;
+}
+function setInternalKey(item, value) {
+  if (item[internalKey]) {
+    return;
+  }
+  Object.defineProperty(item, internalKey, {
+    value: value !== null && value !== void 0 ? value : String(internalIndex++),
+    enumerable: false,
+    writable: true
+  });
+}
+function setInternalKeys(items, key, nestedKey, seenValues = /* @__PURE__ */ new Set()) {
+  if (key === void 0) {
+    return items.map((item) => {
+      setInternalKey(item);
+      if (nestedKey !== void 0) {
+        const nestedItem = item[nestedKey];
+        if (Array.isArray(nestedItem)) {
+          setInternalKeys(nestedItem);
+        }
+      }
+      return item;
+    });
+  }
+  return items.map((item, index) => {
+    const value = item[key];
+    const keyString = String(key);
+    const invalidValue = value === void 0 || value === null || String(value).length === 0;
+    if (invalidValue) {
+      throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${index}`);
+    }
+    if (seenValues.has(value)) {
+      throw new Error(`Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${value}" in item index ${index}.`);
+    }
+    setInternalKey(item, String(value));
+    seenValues.add(value);
+    if (nestedKey !== void 0) {
+      const nestedItem = item[nestedKey];
+      if (Array.isArray(nestedItem)) {
+        setInternalKeys(nestedItem, key, void 0, seenValues);
+      }
+    }
+    return item;
+  });
+}
 var FTableColumnType = /* @__PURE__ */ ((FTableColumnType2) => {
   FTableColumnType2["TEXT"] = "text";
   FTableColumnType2["DATE"] = "date";
@@ -12580,7 +13145,8 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
      */
     keyAttribute: {
       type: String,
-      required: true
+      required: false,
+      default: void 0
     },
     /**
      * If `true` alternating rows will use a different background color.
@@ -12618,6 +13184,7 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
       registerCallbackOnSort,
       registerCallbackOnMount
     } = FSortFilterDatasetInjected();
+    const internalKey2 = getInternalKey();
     const columns = ref([]);
     const props = __props;
     const hasCaption = computed(() => {
@@ -12633,7 +13200,7 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
       return classes;
     });
     const isEmpty2 = computed(() => {
-      return props.rows.length === 0;
+      return internalRows.value.length === 0;
     });
     const visibleColumns = computed(() => {
       return columns.value.filter((col) => col.visible);
@@ -12643,6 +13210,15 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
     });
     const tabindex = computed(() => {
       return props.scroll !== TableScroll.NONE ? 0 : void 0;
+    });
+    const internalRows = computed(() => {
+      const {
+        keyAttribute
+      } = props;
+      if (keyAttribute) {
+        return setInternalKeys(props.rows, keyAttribute);
+      }
+      return setInternalKeys(props.rows);
     });
     provide("addColumn", (column) => {
       if (column.type === FTableColumnType.ACTION) {
@@ -12655,18 +13231,14 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
     });
     provide("textFieldTableMode", true);
     provide("renderColumns", computed(() => {
-      return props.rows.length > 0;
+      return internalRows.value.length > 0;
     }));
     onMounted(() => {
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
     });
     function rowKey(item) {
-      const key = item[props.keyAttribute];
-      if (typeof key === "undefined") {
-        throw new Error(`Key attribute [${props.keyAttribute}]' is missing in row`);
-      }
-      return String(key);
+      return String(item[internalKey2]);
     }
     function columnClasses(column) {
       const classes = ["table__column", `table__column--${column.type}`, column.size];
@@ -12731,7 +13303,7 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
       })))])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$7, [createElementVNode("td", {
         class: "table__column table__column--action",
         colspan: columns.value.length
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.data-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(__props.rows, (row) => {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.data-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
         return openBlock(), createElementBlock("tr", {
           key: rowKey(row),
           class: "table__row"
@@ -13970,7 +14542,8 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
      */
     keyAttribute: {
       type: String,
-      required: true
+      required: false,
+      default: void 0
     },
     /**
      * Attribute of expandable content in rows.
@@ -14021,7 +14594,8 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       }
     },
     /**
-     * V-model will bind to value containing selected rows.
+     * Currently selected rows.
+     * Requires `selectable` to be set.
      */
     modelValue: {
       type: Array,
@@ -14063,6 +14637,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       registerCallbackAfterItemAdd,
       registerCallbackBeforeItemDelete
     } = ActivateItemInjected();
+    const internalKey2 = getInternalKey();
     const activeRow = ref(void 0);
     const columns = ref([]);
     const selectedRows = ref([]);
@@ -14070,7 +14645,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
     const tbodyKey = ref(0);
     const props = __props;
     const emit = __emit;
-    const expandableTable = useExpandableTable(props.expandableAttribute, props.keyAttribute, props.expandableDescribedby, emit, slots);
+    const expandableTable = useExpandableTable(props.expandableAttribute, internalKey2, props.expandableDescribedby, emit, slots);
     const {
       isExpandableTable,
       hasExpandableSlot,
@@ -14088,13 +14663,13 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       });
     });
     const hasCheckboxDescription = computed(() => {
-      const firstRow = props.rows[0];
+      const firstRow = internalRows.value[0];
       return hasSlot2("checkbox-description", {
         row: firstRow
       });
     });
     const isEmpty2 = computed(() => {
-      return props.rows.length === 0;
+      return internalRows.value.length === 0;
     });
     const visibleColumns = computed(() => {
       return columns.value.filter((col) => col.visible);
@@ -14125,6 +14700,16 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       }
       return columnCount;
     });
+    const internalRows = computed(() => {
+      const {
+        keyAttribute,
+        expandableAttribute
+      } = props;
+      if (isExpandableTable) {
+        return setInternalKeys(props.rows, keyAttribute, expandableAttribute);
+      }
+      return setInternalKeys(props.rows, keyAttribute);
+    });
     provide("addColumn", (column) => {
       columns.value = addColumn(columns.value, column);
     });
@@ -14132,7 +14717,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       setVisibilityColumn(columns.value, id, visible);
     });
     provide("textFieldTableMode", true);
-    provide("renderColumns", computed(() => props.rows.length > 0));
+    provide("renderColumns", computed(() => internalRows.value.length > 0));
     watch(() => props.rows, () => setSelectedRows(), {
       immediate: true,
       deep: true
@@ -14187,14 +14772,14 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       if (!props.showActive) {
         return false;
       }
-      return itemEquals(row, activeRow.value, props.keyAttribute);
+      return itemEquals(row, activeRow.value, internalKey2);
     }
     function isSelected(row) {
-      return includeItem(row, selectedRows.value, props.keyAttribute);
+      return includeItem(row, selectedRows.value, internalKey2);
     }
     function onKeydown$1(event, index) {
       onKeydown({
-        rows: props.rows,
+        rows: internalRows.value,
         tr,
         activate
       }, event, index);
@@ -14214,7 +14799,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       if (isExpandableTable.value && hasExpandableContent(row)) {
         toggleExpanded(row);
       }
-      if (!itemEquals(row, activeRow.value, props.keyAttribute)) {
+      if (!itemEquals(row, activeRow.value, internalKey2)) {
         emit("change", row);
         setActiveRow(row);
         if (tr2) {
@@ -14232,8 +14817,8 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
     }
     function onSelect(row) {
       var _a, _b;
-      if (includeItem(row, selectedRows.value, props.keyAttribute)) {
-        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, props.keyAttribute));
+      if (includeItem(row, selectedRows.value, internalKey2)) {
+        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey2));
         emit("unselect", row);
       } else {
         selectedRows.value.push(row);
@@ -14248,7 +14833,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
         return;
       }
       selectedRows.value = props.modelValue.filter((row) => {
-        return includeItem(row, props.rows, props.keyAttribute);
+        return includeItem(row, internalRows.value, internalKey2);
       });
     }
     function updateVModelWithSelectedRows() {
@@ -14266,11 +14851,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
     }
     function rowKey(row) {
-      const key = row[props.keyAttribute];
-      if (typeof key === "undefined") {
-        throw new Error(`Key attribute [${props.keyAttribute}]' is missing in row`);
-      }
-      return String(key);
+      return String(row[internalKey2]);
     }
     function columnClasses(column) {
       const sortable = column.sortable ? ["table__column--sortable"] : [];
@@ -14303,16 +14884,16 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       activate(item, null);
     }
     function callbackBeforeItemDelete(item) {
-      if (props.rows.length === 0) {
+      if (internalRows.value.length === 0) {
         return;
       }
-      let targetIndex = props.rows.indexOf(item) - 1;
-      if (targetIndex < 0 && props.rows.length > 1) {
+      let targetIndex = internalRows.value.indexOf(item) - 1;
+      if (targetIndex < 0 && internalRows.value.length > 1) {
         targetIndex = 1;
       } else if (targetIndex < 0) {
         targetIndex = 0;
       }
-      activate(props.rows[targetIndex], tr.value[targetIndex]);
+      activate(internalRows.value[targetIndex], tr.value[targetIndex]);
     }
     function escapeNewlines(value) {
       return value.replace(/\n/g, "<br/>");
@@ -14320,7 +14901,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
     function updateActiveRowFromVModel() {
       if (props.active === void 0) {
         setActiveRow(void 0);
-      } else if (!itemEquals(props.active, activeRow.value, props.keyAttribute)) {
+      } else if (!itemEquals(props.active, activeRow.value, internalKey2)) {
         setActiveRow(props.active);
       }
     }
@@ -14356,7 +14937,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       }), 128))])]), _cache[17] || (_cache[17] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
         ref: "tbodyElement",
         key: tbodyKey.value
-      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.rows, (row, index) => {
+      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row, index) => {
         return openBlock(), createElementBlock(Fragment, {
           key: rowKey(row)
         }, [createElementVNode("tr", {
@@ -14954,7 +15535,8 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
      */
     keyAttribute: {
       type: String,
-      required: true
+      required: false,
+      default: void 0
     },
     /**
      * If `true` the list will be selectable.
@@ -15007,13 +15589,23 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       registerCallbackAfterItemAdd,
       registerCallbackBeforeItemDelete
     } = ActivateItemInjected();
+    const internalKey2 = getInternalKey();
     const selectedItems = ref([]);
     const activeItem = ref(void 0);
     const ulElement = ref();
     const props = __props;
     const emit = __emit;
     const isEmpty2 = computed(() => {
-      return props.items.length === 0;
+      return internalItems.value.length === 0;
+    });
+    const internalItems = computed(() => {
+      const {
+        keyAttribute
+      } = props;
+      if (keyAttribute) {
+        return setInternalKeys(props.items, keyAttribute);
+      }
+      return setInternalKeys(props.items);
     });
     watch(() => props.items, () => {
       updateSelectedItemsFromVModel();
@@ -15046,14 +15638,10 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       return Array.from(element.children);
     }
     function itemKey(item) {
-      const key = item[props.keyAttribute];
-      if (typeof key === "undefined") {
-        throw new Error(`Key attribute [${props.keyAttribute}]' is missing in item`);
-      }
-      return String(key);
+      return String(item[internalKey2]);
     }
     function isSelected(item) {
-      return includeItem(item, selectedItems.value, props.keyAttribute);
+      return includeItem(item, selectedItems.value, internalKey2);
     }
     function itemClasses(item) {
       return {
@@ -15063,8 +15651,8 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     }
     function onSelect(item) {
       var _a, _b;
-      if (includeItem(item, selectedItems.value, props.keyAttribute)) {
-        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, props.keyAttribute));
+      if (includeItem(item, selectedItems.value, internalKey2)) {
+        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, internalKey2));
         emit("unselect", item);
       } else {
         selectedItems.value.push(item);
@@ -15075,7 +15663,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     }
     function setActiveItem(item) {
       emit("click", item);
-      if (!itemEquals(item, activeItem.value, props.keyAttribute)) {
+      if (!itemEquals(item, activeItem.value, internalKey2)) {
         emit("change", item);
         activeItem.value = item;
         emit("update:active", activeItem.value);
@@ -15092,7 +15680,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     function updateSelectedItemsFromVModel() {
       if (Array.isArray(props.modelValue)) {
         selectedItems.value = props.modelValue.filter((item) => {
-          return includeItem(item, props.items, props.keyAttribute);
+          return includeItem(item, internalItems.value, internalKey2);
         });
       } else {
         selectedItems.value = [];
@@ -15101,7 +15689,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     function updateActiveItemFromVModel() {
       if (props.active === void 0) {
         activeItem.value = void 0;
-      } else if (!itemEquals(props.active, activeItem.value, props.keyAttribute)) {
+      } else if (!itemEquals(props.active, activeItem.value, internalKey2)) {
         activeItem.value = props.active;
       }
     }
@@ -15141,26 +15729,26 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       setActiveItem(item);
     }
     function callbackBeforeItemDelete(item) {
-      if (props.items.length === 0) {
+      if (internalItems.value.length === 0) {
         return;
       }
-      let targetIndex = props.items.indexOf(item) - 1;
-      if (targetIndex < 0 && props.items.length > 1) {
+      let targetIndex = internalItems.value.indexOf(item) - 1;
+      if (targetIndex < 0 && internalItems.value.length > 1) {
         targetIndex = 1;
       } else if (targetIndex < 0) {
         targetIndex = 0;
       }
-      setActiveItem(props.items[targetIndex]);
+      setActiveItem(internalItems.value[targetIndex]);
       const targetElement = getLiElements()[targetIndex];
       if (targetElement) {
         targetElement.focus();
       }
     }
     function isActive(item) {
-      return props.checkbox && itemEquals(activeItem.value, item, props.keyAttribute);
+      return props.checkbox && itemEquals(activeItem.value, item, internalKey2);
     }
     return (_ctx, _cache) => {
-      return !__props.selectable ? (openBlock(), createElementBlock("ul", _hoisted_1$g, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.items, (item) => {
+      return !__props.selectable ? (openBlock(), createElementBlock("ul", _hoisted_1$g, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalItems.value, (item) => {
         return openBlock(), createElementBlock("li", {
           key: itemKey(item),
           class: "list__item"
@@ -15178,7 +15766,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
         ref_key: "ulElement",
         ref: ulElement,
         class: "list list--hover"
-      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.items, (item, index) => {
+      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalItems.value, (item, index) => {
         return openBlock(), createElementBlock("li", {
           id: getItemId(item),
           key: itemKey(item),
@@ -16528,6 +17116,9 @@ var PageLayout = class extends HTMLElement {
         _classPrivateFieldGet2(_elements, this)[slot] = element;
       }
     }
+    setTimeout(() => {
+      this.dispatchEvent(new CustomEvent("update"));
+    }, 0);
   }
 };
 var _hoisted_1$8 = ["slot"];
@@ -16537,7 +17128,11 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   props: {
     layout: {}
   },
-  setup(__props) {
+  emits: ["update"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit = __emit;
     const slots = useSlots();
     const slotNames = computed(() => {
       return Object.keys(slots);
@@ -16547,9 +17142,13 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         customElements.define(tagName$1, PageLayout);
       }
     });
+    function onUpdate() {
+      emit("update");
+    }
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(tagName$1), {
-        layout: _ctx.layout
+        layout: _ctx.layout,
+        onUpdate
       }, {
         default: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(slotNames.value, (slot) => {
           return openBlock(), createElementBlock("div", {
@@ -16558,10 +17157,87 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
           }, [renderSlot(_ctx.$slots, slot)], 8, _hoisted_1$8);
         }), 128))]),
         _: 3
-      }, 8, ["layout"]);
+      }, 40, ["layout"]);
     };
   }
 });
+function tryOnScopeDispose(fn2) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn2);
+    return true;
+  }
+  return false;
+}
+var isClient = typeof window !== "undefined" && typeof document !== "undefined";
+typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
+var toString = Object.prototype.toString;
+var isObject = (val) => toString.call(val) === "[object Object]";
+function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+function watchImmediate(source, cb, options) {
+  return watch(
+    source,
+    cb,
+    {
+      ...options,
+      immediate: true
+    }
+  );
+}
+var defaultWindow = isClient ? window : void 0;
+function unrefElement(elRef) {
+  var _a;
+  const plain = toValue(elRef);
+  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
+}
+function useEventListener(...args) {
+  const cleanups = [];
+  const cleanup = () => {
+    cleanups.forEach((fn2) => fn2());
+    cleanups.length = 0;
+  };
+  const register = (el, event, listener, options) => {
+    el.addEventListener(event, listener, options);
+    return () => el.removeEventListener(event, listener, options);
+  };
+  const firstParamTargets = computed(() => {
+    const test = toArray(toValue(args[0])).filter((e) => e != null);
+    return test.every((e) => typeof e !== "string") ? test : void 0;
+  });
+  const stopWatch = watchImmediate(
+    () => {
+      var _a, _b;
+      return [
+        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
+        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
+        toArray(unref(firstParamTargets.value ? args[2] : args[1])),
+        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
+        toValue(firstParamTargets.value ? args[3] : args[2])
+      ];
+    },
+    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
+      cleanup();
+      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
+        return;
+      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
+      cleanups.push(
+        ...raw_targets.flatMap(
+          (el) => raw_events.flatMap(
+            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
+          )
+        )
+      );
+    },
+    { flush: "post" }
+  );
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(cleanup);
+  return stop;
+}
 function getProperty(style, key) {
   const value = style.getPropertyValue(key);
   if (value === "") {
@@ -16570,16 +17246,33 @@ function getProperty(style, key) {
     return JSON.parse(value);
   }
 }
+function findLayoutElement(element) {
+  if (!element) {
+    return null;
+  }
+  const parent = element.closest("ce-page-layout");
+  if (parent) {
+    return parent;
+  }
+  const root = element.getRootNode();
+  if (root instanceof ShadowRoot) {
+    return findLayoutElement(root.host);
+  }
+  return null;
+}
 function useAreaData(element) {
   const area = ref(null);
   const attachPanel = ref(null);
   const direction = ref(null);
+  const layoutElement = computed(() => findLayoutElement(toValue(element)));
+  useEventListener(layoutElement, "update", () => {
+    if (element.value) {
+      update(element.value);
+    }
+  });
   watchEffect(() => {
     if (element.value) {
-      const style = getComputedStyle(element.value);
-      area.value = getProperty(style, VAR_NAME_AREA);
-      attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
-      direction.value = getProperty(style, VAR_NAME_DIRECTION);
+      update(element.value);
     }
   });
   return {
@@ -16587,6 +17280,12 @@ function useAreaData(element) {
     attachPanel,
     direction
   };
+  function update(element2) {
+    const style = getComputedStyle(element2);
+    area.value = getProperty(style, VAR_NAME_AREA);
+    attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
+    direction.value = getProperty(style, VAR_NAME_DIRECTION);
+  }
 }
 var _hoisted_1$7 = {
   class: "progress"
@@ -16861,83 +17560,6 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$3)], 34);
 }
 var FRadioField = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$4]]);
-function tryOnScopeDispose(fn2) {
-  if (getCurrentScope()) {
-    onScopeDispose(fn2);
-    return true;
-  }
-  return false;
-}
-var isClient = typeof window !== "undefined" && typeof document !== "undefined";
-typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
-var toString = Object.prototype.toString;
-var isObject = (val) => toString.call(val) === "[object Object]";
-function toArray(value) {
-  return Array.isArray(value) ? value : [value];
-}
-function watchImmediate(source, cb, options) {
-  return watch(
-    source,
-    cb,
-    {
-      ...options,
-      immediate: true
-    }
-  );
-}
-var defaultWindow = isClient ? window : void 0;
-function unrefElement(elRef) {
-  var _a;
-  const plain = toValue(elRef);
-  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
-}
-function useEventListener(...args) {
-  const cleanups = [];
-  const cleanup = () => {
-    cleanups.forEach((fn2) => fn2());
-    cleanups.length = 0;
-  };
-  const register = (el, event, listener, options) => {
-    el.addEventListener(event, listener, options);
-    return () => el.removeEventListener(event, listener, options);
-  };
-  const firstParamTargets = computed(() => {
-    const test = toArray(toValue(args[0])).filter((e) => e != null);
-    return test.every((e) => typeof e !== "string") ? test : void 0;
-  });
-  const stopWatch = watchImmediate(
-    () => {
-      var _a, _b;
-      return [
-        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
-        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
-        toArray(unref(firstParamTargets.value ? args[2] : args[1])),
-        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
-        toValue(firstParamTargets.value ? args[3] : args[2])
-      ];
-    },
-    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
-      cleanup();
-      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
-        return;
-      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
-      cleanups.push(
-        ...raw_targets.flatMap(
-          (el) => raw_events.flatMap(
-            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
-          )
-        )
-      );
-    },
-    { flush: "post" }
-  );
-  const stop = () => {
-    stopWatch();
-    cleanup();
-  };
-  tryOnScopeDispose(cleanup);
-  return stop;
-}
 var keymap = {
   left: {
     ArrowLeft: "decrease",
