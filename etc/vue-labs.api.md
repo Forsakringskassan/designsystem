@@ -187,7 +187,7 @@ resolveNewModelValue(viewValue: string): unknown;
 syncViewValueAfterModelUpdate(newModelValue: unknown): void | never;
 triggerComponentValidityEvent(validityEvent: ValidityEvent): void;
 setViewValueToFormattedValueOrFallbackToValue(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("blur" | "change" | "update:modelValue")[], "blur" | "change" | "update:modelValue", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur")[], "update:modelValue" | "change" | "blur", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -496,8 +496,8 @@ activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
 }, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-close: () => any;
 select: (option: string) => any;
+close: () => any;
 }, string, PublicProps, Readonly<{
 id: string;
 isOpen: boolean;
@@ -506,8 +506,8 @@ activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
 }> & Readonly<{
-onClose?: (() => any) | undefined;
 onSelect?: ((option: string) => any) | undefined;
+onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
 listbox: HTMLUListElement;
 }, HTMLDivElement>;

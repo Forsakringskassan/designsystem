@@ -29,7 +29,7 @@ Använder du TypeScript med Cypress behöver du sätta två inställningar i din
 {
     "compilerOptions": {
         "module": "node16",
-        "moduleResolution": "node16",
+        "moduleResolution": "bundler",
         "target": "es6",
         "lib": ["es6", "dom"],
         "types": ["cypress", "node"]
@@ -37,6 +37,12 @@ Använder du TypeScript med Cypress behöver du sätta två inställningar i din
     "include": ["**/*.ts"]
 }
 ```
+
+`moduleResolution` kan sättas till något av:
+
+- `bundler`
+- `node16`
+- `nodenext`
 
 ## `trimmedText()`
 
