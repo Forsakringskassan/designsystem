@@ -1055,7 +1055,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/32295c647799fb1a09b6d585be993be6c385cee2/packages/vue/src/components/FList/FList.vue">FList</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/086627bd744b19a8abf032dbd131dbe616014b47/packages/vue/src/components/FList/FList.vue">FList</a>
             
         </code>
          
@@ -1125,6 +1125,22 @@ Men om det är tänkt att objekten ska laddas om från REST-api eller liknande s
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-list :items=&quot;myitems&quot;&gt;</span>
 <span class="hljs-addition">+&lt;f-list :items=&quot;myitems&quot; key-attribute=&quot;id&quot;&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-c275b8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-comment">// The key &quot;id&quot; is used for &quot;keyAttribute&quot;.</span>
+<span class="hljs-keyword">const</span> myItems = <span class="hljs-title function_">ref</span>([
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Banan&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Äpple&quot;</span> },
+]);
 </code></pre>
                 </div>
             <h2 id="anvandning_av_komponent"><a class="header-anchor" href="#anvandning_av_komponent">Användning av komponent</a></h2><p><strong>Komponent motsvarar följande HTML element:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">Unordered List</a></p>
@@ -1471,9 +1487,9 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    table-key-attribute (<a href="https://github.com/Forsakringskassan/designsystem/commits/32295c647799fb1a09b6d585be993be6c385cee2">32295c6</a>)<br />
+    table-key-attribute (<a href="https://github.com/Forsakringskassan/designsystem/commits/086627bd744b19a8abf032dbd131dbe616014b47">086627b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/284">PR 284</a><br />
-        2025-03-13 09:52
+        2025-03-13 10:41
 </div>
 <div class="toolbar__item">
     <form id="version">
