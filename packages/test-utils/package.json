@@ -22,6 +22,7 @@
   "sideEffects": [
     "./dist/cjs/jest.js",
     "./dist/esm/jest.js",
+    "./src/matchers/augmentations.ts",
     "./src/matchers/index.ts"
   ],
   "exports": {
@@ -51,7 +52,7 @@
   "scripts": {
     "prebuild": "rimraf dist temp && tsc",
     "build": "node build.js",
-    "postbuild": "fk-api-extractor api-extractor.json api-extractor-*.json",
+    "postbuild": "fk-api-extractor --patch-augmentations api-extractor.json api-extractor-*.json",
     "clean": "rimraf .jest-cache dist temp test-results",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
