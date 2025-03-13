@@ -57,6 +57,15 @@ Specifikt, för varje pageobjekt kan `.trimmedText().should(..)` ersättas med:
 - För `FRadioFieldPageObject` ersätt med `.label().should(..)`.
 - För `FSelectFieldPageObject` ersätt med `.selectedOption().should(..)`.
 
+## `FLabelPageobject`
+
+Metoden `discreteDescription` har ändrat namn till `formatDescription` för att matcha motsvarande ändringar på FLabel komponenten.
+
+```diff
+-label.discreteDescription().should("have.text", "...");
++label.formatDescription().should("have.text", "...");
+```
+
 ## `FLoaderPageobject`
 
 Den deprekerade metoden `FLoaderPageobject.loader()` är borttagen.
