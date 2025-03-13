@@ -1,6 +1,6 @@
 @charset "UTF-8";
 :root {
-  --fkui-theme-default-version: "6.2.0";
+  --fkui-theme-default-version: "6.3.0";
   --fkds-color-text-primary: #1b1e23; /* Standard text färg */
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff; /* Inverterad text färg */
@@ -341,6 +341,9 @@
   --f-logo-image-large: none;
   --f-logo-size-small: 0.8rem;
   --f-logo-size-large: 0.8rem 6.195rem;
+  --size: 0;
+  --min: 0;
+  --max: 0;
 }
 
 *,
