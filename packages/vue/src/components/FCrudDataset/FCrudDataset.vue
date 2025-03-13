@@ -325,6 +325,17 @@ function updateItem(current: T): void {
                 -->
                 <slot name="add-button">{{ $t("fkui.crud-dataset.button.add", "Lägg till ny") }}</slot>
             </button>
+
+            <!--
+                @slot Slot for additional add buttons
+                @binding {string[]} buttonClasses Default button classes.
+            -->
+            <slot
+                name="buttons"
+                v-bind="{
+                    buttonClasses: ['button', 'button--tertiary', 'crud-dataset__add-button'],
+                }"
+            ></slot>
         </div>
 
         <!-- [html-validate-disable-block fkui/no-template-modal -- technical debt] -->
