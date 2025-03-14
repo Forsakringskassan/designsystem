@@ -81,7 +81,7 @@
     "@babel/core": "7.26.9",
     "@babel/preset-env": "7.26.9",
     "@forsakringskassan/commitlint-config": "1.4.2",
-    "@forsakringskassan/cypress-axe": "3.2.0",
+    "@forsakringskassan/cypress-axe": "3.2.1",
     "@forsakringskassan/cypress-visual-regression": "2.4.0",
     "@forsakringskassan/docs-generator": "2.21.2",
     "@forsakringskassan/docs-live-example": "1.5.6",
