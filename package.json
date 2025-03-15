@@ -127,7 +127,7 @@
     "typescript": "5.8.2",
     "vite": "6.2.1",
     "vue": "3.5.13",
-    "vue-tsc": "2.2.0"
+    "vue-tsc": "2.2.8"
   },
   "engines": {
     "node": ">= 20",
