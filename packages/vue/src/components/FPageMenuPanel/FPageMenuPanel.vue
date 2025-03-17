@@ -22,11 +22,11 @@ function onToggle(e: CustomEvent<[boolean]>): void {
     <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
     <ce-page-menu-panel @toggle="onToggle">
         <div slot="header">
-            <slot name="header" v-bind="{ isOpen }"></slot>
+            <slot name="header"></slot>
         </div>
         <div slot="icon">
             <slot name="icon" v-bind="{ isOpen }">
-                <f-icon name="bars">
+                <f-icon name="chevrons-left">
                     <title v-if="isOpen">{{ $t("fkui.pagemenupanel.hide", "Dölj meny") }}</title>
                     <title v-else>{{ $t("fkui.pagemenupanel.show", "Visa meny") }}</title>
                 </f-icon>

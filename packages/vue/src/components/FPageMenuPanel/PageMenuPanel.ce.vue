@@ -41,7 +41,7 @@ function onToggle(): void {
     <div ref="root" class="panel__wrapper">
         <div class="panel panel--menu" :class="[expandedClass, attachClass]">
             <div class="panel__header">
-                <div class="panel__title">
+                <div v-if="isOpen" class="panel__title">
                     <slot name="header"></slot>
                 </div>
                 <div class="panel__collapse">
@@ -61,106 +61,5 @@ function onToggle(): void {
 </template>
 
 <style lang="scss">
-@use "variables" as *;
-
-.panel__wrapper {
-    min-width: 24px;
-    flex-grow: 1;
-    display: flex;
-}
-
-.panel {
-    flex-grow: 1;
-    flex-shrink: 0;
-    background: $pagemenupanel-background;
-
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    gap: 0.5rem;
-}
-
-.panel.expanded {
-    @media (width < 640px) {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        z-index: 1;
-
-        &.attach-left {
-            left: 0;
-        }
-
-        &.attach-right {
-            right: 0;
-        }
-    }
-}
-
-.expanded {
-    min-width: 25ch;
-}
-
-.panel__header {
-    flex: 0 0 auto;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
-
-    .attach-left & {
-        flex-direction: row;
-    }
-
-    .attach-right & {
-        flex-direction: row-reverse;
-    }
-}
-
-.panel__title {
-    flex: 1 0 auto;
-    font-weight: 600;
-    font-size: 1.2em;
-}
-
-.panel__collapse {
-    flex: 0 0 auto;
-}
-
-.panel__content {
-    flex: 1 0 auto;
-}
-
-.panel__footer {
-    flex: 0 0 auto;
-}
-
-.panel__collapse button {
-    appearance: none;
-    padding: 0;
-    line-height: 1;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-}
-
-.expanded.attach-left .panel__collapse svg {
-    transform: scaleX(1);
-}
-
-.collapsed.attach-left .panel__collapse svg {
-    transform: scaleX(-1);
-}
-
-.expanded.attach-right .panel__collapse svg {
-    transform: scaleX(-1);
-}
-
-.collapsed.attach-right .panel__collapse svg {
-    transform: scaleX(1);
-}
-
-:host ::slotted(*) {
-    display: contents;
-}
+@use "page-menu-panel";
 </style>

@@ -5,26 +5,26 @@ import { FPageLayout, FPageMenuPanel } from "@fkui/vue";
 <template>
     <f-page-layout layout="three-column">
         <template #header>
-            <header class="my-header">[header]</header>
+            <header>[header]</header>
         </template>
         <template #left>
-            <f-page-menu-panel>
-                <template #header="{ isOpen }">
-                    <template v-if="isOpen"> [panel header] </template>
-                </template>
-                <template #default="{ isOpen }">
-                    <template v-if="isOpen">
-                        <p>[panel content]</p>
-                        <p>[panel content]</p>
-                        <p>[panel content]</p>
+            <div class="my-left-panel">
+                <f-page-menu-panel>
+                    <!-- <template #header> Rubrik lång lång super </template> -->
+                    <template #default="{ isOpen }">
+                        <template v-if="isOpen">
+                            <p>Meny foo bar baz innehåll</p>
+                        </template>
+                        <!-- <template v-else></template> -->
                     </template>
-                    <template v-else> [closed mode] </template>
-                </template>
-                <template #footer="{ isOpen }">
-                    <template v-if="isOpen">[panel footer]</template>
-                    <template v-else> [closed mode] </template>
-                </template>
-            </f-page-menu-panel>
+                    <template #footer="{ isOpen }">
+                        <template v-if="isOpen">
+                            <p>Sidfot</p>
+                        </template>
+                        <!-- <template v-else> F.. </template> -->
+                    </template>
+                </f-page-menu-panel>
+            </div>
         </template>
         <template #right>
             <div class="my-right-panel">[right]</div>
@@ -38,35 +38,34 @@ import { FPageLayout, FPageMenuPanel } from "@fkui/vue";
     </f-page-layout>
 </template>
 
-<style scoped>
+<style>
 .my-header {
     background: darkred;
     color: white;
-    padding: 1rem;
 }
 
 .my-footer {
     background: cyan;
     color: black;
-    padding: 1rem;
 }
 
 .my-left-panel {
     background: greenyellow;
-    padding: 1rem;
     flex-grow: 1;
-    width: 25cqw;
+    display: flex;
 }
 
 .my-right-panel {
     background: hotpink;
-    padding: 1rem;
     flex-grow: 1;
-    width: 25cqw;
 }
 
 .my-content {
     flex-grow: 1;
-    padding: 1rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
 </style>
