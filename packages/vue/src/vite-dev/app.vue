@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPageLayout, FPageMenuPanel } from "@fkui/vue";
+import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
 </script>
 
 <template>
@@ -9,8 +9,8 @@ import { FPageLayout, FPageMenuPanel } from "@fkui/vue";
         </template>
         <template #left>
             <div class="my-left-panel">
-                <f-page-menu-panel>
-                    <!-- <template #header> Rubrik lång lång super </template> -->
+                <f-minimizable-panel>
+                    <template #header> Rubrik lång lång super </template>
                     <template #default="{ isOpen }">
                         <template v-if="isOpen">
                             <p>Meny foo bar baz innehåll</p>
@@ -23,7 +23,7 @@ import { FPageLayout, FPageMenuPanel } from "@fkui/vue";
                         </template>
                         <!-- <template v-else> F.. </template> -->
                     </template>
-                </f-page-menu-panel>
+                </f-minimizable-panel>
             </div>
         </template>
         <template #right>

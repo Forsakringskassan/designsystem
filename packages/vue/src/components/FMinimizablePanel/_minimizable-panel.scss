@@ -1,7 +1,9 @@
 @use "variables" as *;
 
 :host {
-    display: block;
+    // display: flex;
+    // flex-grow: 1;
+    display: contents;
 }
 
 .panel__wrapper {
@@ -11,7 +13,7 @@
 }
 
 .panel {
-    background: $pagemenupanel-background;
+    background: $minimizable-panel-background;
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;

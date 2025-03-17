@@ -61,5 +61,5 @@ function onToggle(): void {
 </template>
 
 <style lang="scss">
-@use "page-menu-panel";
+@use "minimizable-panel";
 </style>

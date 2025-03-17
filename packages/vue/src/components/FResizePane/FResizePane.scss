@@ -6,6 +6,10 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
     display: contents;
 }
 
+:host ::slotted(*) {
+    display: contents;
+}
+
 .resize {
     flex-grow: 1;
     display: flex;

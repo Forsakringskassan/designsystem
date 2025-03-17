@@ -84,7 +84,7 @@ export {
     registerLayout,
     useAreaData,
 } from "./FPageLayout";
-export { FPageMenuPanel } from "./FPageMenuPanel";
+export { FMinimizablePanel } from "./FMinimizablePanel";
 export { FProgressbar } from "./FProgressbar";
 export { FRadioField } from "./FRadioField";
 export { FResizePane } from "./FResizePane";

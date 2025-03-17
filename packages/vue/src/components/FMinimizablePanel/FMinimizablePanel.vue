@@ -2,11 +2,11 @@
 import { defineCustomElement, ref } from "vue";
 import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
-import PageMenuPanel from "./PageMenuPanel.ce.vue";
+import MinimizablePanel from "./MinimizablePanel.ce.vue";
 
-const ceTag = "ce-page-menu-panel";
+const ceTag = "ce-minimizable-panel";
 if (!customElements.get(ceTag)) {
-    customElements.define(ceTag, defineCustomElement(PageMenuPanel));
+    customElements.define(ceTag, defineCustomElement(MinimizablePanel));
 }
 
 const $t = useTranslate();
@@ -20,15 +20,15 @@ function onToggle(e: CustomEvent<[boolean]>): void {
 <template>
     <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
     <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
-    <ce-page-menu-panel @toggle="onToggle">
+    <ce-minimizable-panel @toggle="onToggle">
         <div slot="header">
             <slot name="header"></slot>
         </div>
         <div slot="icon">
             <slot name="icon" v-bind="{ isOpen }">
                 <f-icon name="chevrons-left">
-                    <title v-if="isOpen">{{ $t("fkui.pagemenupanel.hide", "Dölj meny") }}</title>
-                    <title v-else>{{ $t("fkui.pagemenupanel.show", "Visa meny") }}</title>
+                    <title v-if="isOpen">{{ $t("fkui.minimizablepanel.hide", "Dölj meny") }}</title>
+                    <title v-else>{{ $t("fkui.minimizablepanel.show", "Visa meny") }}</title>
                 </f-icon>
             </slot>
         </div>
@@ -38,5 +38,5 @@ function onToggle(e: CustomEvent<[boolean]>): void {
         <div slot="footer">
             <slot name="footer" v-bind="{ isOpen }"></slot>
         </div>
-    </ce-page-menu-panel>
+    </ce-minimizable-panel>
 </template>
