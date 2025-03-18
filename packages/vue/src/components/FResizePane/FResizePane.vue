@@ -8,16 +8,23 @@ if (!customElements.get(tagName)) {
 }
 
 const element = useTemplateRef("element");
+const content = useTemplateRef("content");
 const refCount = ref(0);
 
 provide("resize", {
     ref() {
         refCount.value++;
         console.log("inc refcount to", refCount.value);
+        setTimeout(() => {
+            console.log("num slotted elements", content.value?.childElementCount);
+        }, 0);
     },
     unref() {
         refCount.value--;
         console.log("dec refcount to", refCount.value);
+        setTimeout(() => {
+            console.log("num slotted elements", content.value?.childElementCount);
+        }, 0);
     },
 });
 
@@ -68,7 +75,7 @@ const props = withDefaults(
     <component :is="tagName" ref="element" :disabled v-bind="props">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
         <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
-        <div slot="content">
+        <div slot="content" ref="content">
             <!-- @slot Pane content -->
             <slot name="default"></slot>
         </div>
