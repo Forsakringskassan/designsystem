@@ -14,11 +14,19 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
     &--left {
         flex-direction: row;
         width: var(--size);
+
+        .resize__content {
+            flex-direction: row;
+        }
     }
 
     &--right {
         flex-direction: row-reverse;
         width: var(--size);
+
+        .resize__content {
+            flex-direction: row;
+        }
     }
 
     &--top {
@@ -36,6 +44,14 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
         overflow: auto;
         box-sizing: border-box;
         display: flex;
+    }
+
+    &--column &__content {
+        flex-direction: column;
+    }
+
+    &--row &__content {
+        flex-direction: row;
     }
 
     &--left,
