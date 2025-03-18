@@ -17,6 +17,13 @@ interface DetailsPanelControl<T> {
     destroy(): void;
 }
 
+interface UseDetailsPanelOptions {
+    /**
+     * When set this creates an exclusive group where only one details panel can be open at the same time (within the group).
+     */
+    exclusive?: string | symbol;
+}
+
 /**
  * @public
  */
@@ -26,22 +33,41 @@ export interface UseDetailsPanel<T = unknown> {
 }
 
 const panels: Array<DetailsPanelControl<unknown>> = [];
+const exclusiveGroups = new Map<string | symbol, { closeMeMaybe(): void }>();
 
 /**
  * @internal
  */
-export function createDetailsPanel<T>(name: string): DetailsPanelControl<T> {
+export function createDetailsPanel<T>(
+    name: string,
+    options: { exclusive: string | undefined },
+): DetailsPanelControl<T> {
+    const { exclusive } = options;
     const control: DetailsPanelControl<unknown> = {
         name: ref(name),
         item: ref(null),
         callback: ref(null),
         open(item, options) {
+            if (exclusive) {
+                const existing = exclusiveGroups.get(exclusive);
+                if (existing) {
+                    existing.closeMeMaybe();
+                }
+                exclusiveGroups.set(exclusive, {
+                    closeMeMaybe: () => this.close(),
+                });
+            }
+
             this.item.value = item;
             this.callback.value = options?.onClose ?? null;
         },
         close() {
             this.item.value = null;
             this.callback.value = null;
+
+            if (exclusive) {
+                exclusiveGroups.delete(exclusive);
+            }
         },
         destroy() {
             /* do nothing */

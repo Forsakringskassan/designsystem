@@ -7,11 +7,12 @@ import { createDetailsPanel } from "./use-details-panel";
 const root = useTemplateRef("root");
 const { attachPanel } = useAreaData(root);
 
-const { name } = defineProps<{
+const { name, exclusive } = defineProps<{
     name: string;
+    exclusive?: string;
 }>();
 
-const panel = createDetailsPanel<T>(name);
+const panel = createDetailsPanel<T>(name, { exclusive });
 
 const resize = inject("resize", {
     ref() {
@@ -40,14 +41,21 @@ onUnmounted(() => {
 watch(
     () => panel.item.value,
     (newValue, oldValue) => {
+        if (Boolean(newValue) === Boolean(oldValue)) {
+            return;
+        }
+
+        if (root.value) {
+            console.log('emitting');
+            root.value.dispatchEvent(new CustomEvent("foobar", { bubbles: true }));
+        }
+
         /* closing details panel */
         if (oldValue && !newValue) {
-            console.log("closing details panel");
             resize.unref();
         }
         /* opening new panel (after being closed) */
         if (newValue && !oldValue) {
-            console.log("opening details panel");
             resize.ref();
         }
     },

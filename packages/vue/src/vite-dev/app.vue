@@ -47,7 +47,7 @@ function openThing(): void {
     <f-page-layout layout="three-column">
         <template #right>
             <f-resize-pane min="20%" max="50%" initial="40%">
-                <awesome-panel name="awesome-panel">
+                <awesome-panel name="awesome-panel" exclusive="right">
                     <template #default="{ item }">
                         <h2>Detaljer om person</h2>
                         <dl>
@@ -62,7 +62,7 @@ function openThing(): void {
                         </dl>
                     </template>
                 </awesome-panel>
-                <another-panel name="another-panel">
+                <another-panel name="another-panel" exclusive="right">
                     <template #default="{ item }">
                         <h2>Detaljer om utgift</h2>
                         <dl>
