@@ -110,3 +110,9 @@ function onResize(event: CustomEvent<[size: number]>): void {
         </div>
     </component>
 </template>
+
+<style scoped>
+[slot="content"] {
+    display: contents;
+}
+</style>
