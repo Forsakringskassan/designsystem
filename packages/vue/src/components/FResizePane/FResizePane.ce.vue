@@ -58,7 +58,7 @@ const separatorSize = ref(0);
 const layoutSize = ref(0);
 const storageKey = computed(() => (area.value ? `layout/${area.value}/size` : null));
 
-const { attachPanel: attachment, area } = useAreaData(root);
+const { attachPanel: attachment, direction, area } = useAreaData(root);
 
 useKeyboardHandler({
     increase() {
@@ -112,6 +112,10 @@ const orientation = computed((): Orientation => {
     } else {
         return "vertical";
     }
+});
+
+const classes = computed(() => {
+    return [`resize--${attachment.value}`, `resize--${direction.value}`];
 });
 
 const layoutElement = computed(() => {
@@ -177,7 +181,7 @@ function getLayoutSize(): number {
 </script>
 
 <template>
-    <div ref="root" class="resize" :class="`resize--${attachment}`">
+    <div ref="root" class="resize" :class="classes">
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->
             <slot name="content"></slot>
