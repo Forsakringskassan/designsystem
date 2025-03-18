@@ -177,7 +177,11 @@ function getLayoutSize(): number {
 </script>
 
 <template>
-    <div ref="root" class="resize" :class="[`resize--${attachment}`, `resize--${direction}`]">
+    <div
+        ref="root"
+        class="resize"
+        :class="[`resize--${attachment}`, `resize--${direction}`, props.disabled ? 'resize--disabled' : undefined]"
+    >
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->
             <slot name="content"></slot>
@@ -190,7 +194,6 @@ function getLayoutSize(): number {
             tabindex="0"
             :aria-orientation="orientation"
         ></div>
-        <div v-else role="separator" class="resize__handle disabled" :aria-orientation="orientation"></div>
     </div>
 </template>
 

@@ -1,118 +1,105 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { FPageLayout, FFieldset, FCheckboxField, FDetailsPanel, FResizePane, useDetailsPanel } from "../components";
-
-const disabled = ref(false);
-const enableLeft = ref(true);
-const enableRight = ref(true);
-const enableTop = ref(true);
-const enableBottom = ref(true);
+import {
+    FPageLayout,
+    FDetailsPanel,
+    FResizePane,
+    useDetailsPanel,
+    FInteractiveTable,
+    FTableColumn,
+} from "../components";
 
 interface Item {
     name: string;
+    adress: string | null;
+    city: string;
+    car: string | null;
 }
 
-const details = useDetailsPanel<Item>("awesome-panel");
+interface Expense {
+    id: number;
+    description: string;
+    amount: number;
+}
 
 const AwesomePanel = FDetailsPanel<Item>;
+const AnotherPanel = FDetailsPanel<Expense>;
 
-function openItem(): void {
-    details.open({ name: "Kalle Anka" });
+const awesomePanelApi = useDetailsPanel<Item>("awesome-panel");
+const anotherPanelApi = useDetailsPanel<Expense>("another-panel");
+
+const ankeborgare: Item[] = [
+    { name: "Kalle Anka", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: "Skruttomobil" },
+    { name: "Kajsa Anka", adress: null, city: "Ankeborg", car: null },
+    { name: "Magica De Hex", adress: "Vulkanen", city: "Vesivius", car: null },
+    { name: "Bolivar", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: null },
+];
+
+function showPerson(item: Item): void {
+    awesomePanelApi.open(item);
+}
+
+function openThing(): void {
+    anotherPanelApi.open({ id: 1, description: "Hallonsoda", amount: 25 });
 }
 </script>
 
 <template>
     <f-page-layout layout="three-column">
         <template #right>
-            <awesome-panel name="awesome-panel" resizable :disabled min="20%" max="50%" initial="40%">
-                <template #default="{ item }">
-                    <h2>Vänsterpanel</h2>
-                    <dl>
-                        <dt>Namn</dt>
-                        <dd>{{ item.name }}</dd>
-                    </dl>
-                </template>
-            </awesome-panel>
-            <f-details-panel name="another-panel" resizable :disabled min="20%" max="50%" initial="40%">
-                <template #default="{ item }">
-                    <h2>Vänsterpanel</h2>
-                    <dl>
-                        <dt>Namn</dt>
-                        <dd>{{ item }}</dd>
-                    </dl>
-                </template>
-            </f-details-panel>
+            <f-resize-pane min="20%" max="50%" initial="40%">
+                <awesome-panel name="awesome-panel">
+                    <template #default="{ item }">
+                        <h2>Detaljer om person</h2>
+                        <dl>
+                            <dt>Namn</dt>
+                            <dd>{{ item.name }}</dd>
+                            <dt>Address</dt>
+                            <dd>{{ item.adress ?? "-" }}</dd>
+                            <dt>Stad</dt>
+                            <dd>{{ item.city ?? "-" }}</dd>
+                            <dt>Bil</dt>
+                            <dd>{{ item.car ?? "-" }}</dd>
+                        </dl>
+                    </template>
+                </awesome-panel>
+                <another-panel name="another-panel">
+                    <template #default="{ item }">
+                        <h2>Detaljer om utgift</h2>
+                        <dl>
+                            <dt>ID</dt>
+                            <dd>{{ item.id }}</dd>
+                            <dt>Beskrivning</dt>
+                            <dd>{{ item.description }}</dd>
+                            <dt>Belopp</dt>
+                            <dd>{{ item.amount }} kr</dd>
+                        </dl>
+                    </template>
+                </another-panel>
+            </f-resize-pane>
         </template>
 
         <template #content>
             <main>
                 <h1>Lorem ipsum</h1>
                 <p>Dolor sit amet.</p>
-                <button type="button" @click="openItem">Öppna</button>
-                <h3>Inställningar</h3>
-                <f-fieldset>
-                    <template #label>Areas</template>
-                    <template #default>
-                        <f-checkbox-field v-model="enableTop" :value="true">
-                            <template #default>Header</template>
-                        </f-checkbox-field>
-                        <f-checkbox-field v-model="enableLeft" :value="true">
-                            <template #default>Left panel</template>
-                        </f-checkbox-field>
-                        <f-checkbox-field v-model="enableRight" :value="true">
-                            <template #default>Right panel</template>
-                        </f-checkbox-field>
-                        <f-checkbox-field v-model="enableBottom" :value="true">
-                            <template #default>Bottom</template>
-                        </f-checkbox-field>
+                <button type="button" @click="openThing">Öppna 2</button>
+
+                <h2 id="ankeborgare">Ankeborgare</h2>
+                <f-interactive-table
+                    :rows="ankeborgare"
+                    key-attribute="name"
+                    @click="showPerson($event)"
+                    aria-labelledby="ankeborgare"
+                >
+                    <template #default="{ row }">
+                        <f-table-column name="name" title="Namn">
+                            {{ row.name }}
+                        </f-table-column>
+                        <f-table-column name="adress" title="Address">
+                            {{ row.adress }}
+                        </f-table-column>
                     </template>
-                </f-fieldset>
-                <f-fieldset>
-                    <template #label>Settings</template>
-                    <template #default>
-                        <f-checkbox-field v-model="disabled" :value="true">
-                            <template #default>Disabled</template>
-                        </f-checkbox-field>
-                    </template>
-                </f-fieldset>
-                <h3>Begränsa storlek</h3>
-                <p>
-                    Attributen <code>min=".."</code> och <code>max=".."</code> anger minsta respektive största storleken
-                    en yta kan få. Båda kan sättas antingen till ett eller flera värden.
-                </p>
-                <ul>
-                    <li>
-                        Om <code>min</code> utelämnas är default <code>0</code>, effektivt sett ingen nedgre gräns för
-                        minsta storlek.
-                    </li>
-                    <li>
-                        Om <code>max</code> utelämnas är default fönstrets totala storlek, effektivt sett ingen övre
-                        gränst för största storlek.
-                    </li>
-                </ul>
-                <p>
-                    Värden kan vara i pixlar (<code>px</code>) eller procent (<code>%</code>). För att sätta flera
-                    värden använd mellanslag som separator.
-                </p>
-                <ul>
-                    <li><code>200px</code> - min/max storlek satt till exakt 200px.</li>
-                    <li><code>25%</code> - min/max storlek satt till 25% av fönstrets storlek.</li>
-                    <li><code>200px 25%</code> - min/max storlek satt till minsta/största av 200px eller 25%.</li>
-                </ul>
-                <p>
-                    <strong>Notera!</strong> Storlekarna i debug-utskrift inkluderar storleken på handtaget man drar i.
-                    Just nu idag är den 4px så sätter man <code>min</code> till <code>200px</code> rapporteras det som
-                    <code>204px</code> dvs <code>200px + 4px</code>. Det är förväntat beteende.
-                </p>
-                <h3>Tangentbord</h3>
-                <ul>
-                    <li><kbd>Vänster</kbd> ökar/minskar en vertikal panel.</li>
-                    <li><kbd>Höger</kbd> ökar/minskar en vertikal panel.</li>
-                    <li><kbd>Upp</kbd> ökar/minskar en horizontal panel.</li>
-                    <li><kbd>Ner</kbd> ökar/minskar en horizontal panel.</li>
-                    <li><kbd>Home</kbd> minskar ytan till minsta möjliga.</li>
-                    <li><kbd>End</kbd> ökar ytan till största möjliga.</li>
-                </ul>
+                </f-interactive-table>
             </main>
         </template>
     </f-page-layout>

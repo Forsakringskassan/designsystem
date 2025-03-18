@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineCustomElement } from "vue";
+import { computed, defineCustomElement, onMounted, provide, ref, useTemplateRef } from "vue";
 import FResizePane from "./FResizePane.ce.vue";
 
 const tagName = "ce-resize-pane";
@@ -7,12 +7,32 @@ if (!customElements.get(tagName)) {
     customElements.define(tagName, defineCustomElement(FResizePane));
 }
 
+const element = useTemplateRef("element");
+const refCount = ref(0);
+
+provide("resize", {
+    ref() {
+        refCount.value++;
+        console.log("inc refcount to", refCount.value);
+    },
+    unref() {
+        refCount.value--;
+        console.log("dec refcount to", refCount.value);
+    },
+});
+
+onMounted(() => {
+    console.log("element", element.value);
+});
+
+const disabled = computed(() => refCount.value === 0);
+
 const props = withDefaults(
     defineProps<{
         /**
          * Disables resizing. The current size is locked.
          */
-        disabled?: boolean;
+        //disabled?: boolean;
         /**
          * Minimal size of pane.
          *
@@ -45,7 +65,7 @@ const props = withDefaults(
 </script>
 
 <template>
-    <component :is="tagName" v-bind="props">
+    <component :is="tagName" ref="element" :disabled v-bind="props">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
         <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
         <div slot="content">

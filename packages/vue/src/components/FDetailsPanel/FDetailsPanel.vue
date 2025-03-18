@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { computed, onUnmounted, useTemplateRef } from "vue";
+import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } from "vue";
 import { FIcon } from "../FIcon";
 import { useAreaData } from "../FPageLayout/use-area-data";
 import { createDetailsPanel } from "./use-details-panel";
@@ -13,6 +13,15 @@ const { name } = defineProps<{
 
 const panel = createDetailsPanel<T>(name);
 
+const resize = inject("resize", {
+    ref() {
+        /* do nothing */
+    },
+    unref() {
+        /* do nothing */
+    },
+});
+
 const attachClass = computed(() => {
     switch (attachPanel.value) {
         case "left":
@@ -25,7 +34,25 @@ const attachClass = computed(() => {
 
 onUnmounted(() => {
     panel.destroy();
+    resize.unref();
 });
+
+watch(
+    () => panel.item.value,
+    (newValue, oldValue) => {
+        /* closing details panel */
+        if (oldValue && !newValue) {
+            console.log("closing details panel");
+            resize.unref();
+        }
+        /* opening new panel (after being closed) */
+        if (newValue && !oldValue) {
+            console.log("opening details panel");
+            resize.ref();
+        }
+    },
+    { immediate: true },
+);
 
 function onToggle(): void {
     panel.close();
