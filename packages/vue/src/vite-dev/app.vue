@@ -1,37 +1,133 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { FTextField } from "../components";
+import {
+    FPageLayout,
+    FDetailsPanel,
+    FResizePane,
+    useDetailsPanel,
+    FInteractiveTable,
+    FTableColumn,
+} from "../components";
 
-const namn = ref("World");
+interface Item {
+    name: string;
+    adress: string | null;
+    city: string;
+    car: string | null;
+}
+
+interface Expense {
+    id: number;
+    description: string;
+    amount: number;
+}
+
+const AwesomePanel = FDetailsPanel<Item>;
+const AnotherPanel = FDetailsPanel<Expense>;
+
+const awesomePanelApi = useDetailsPanel<Item>("awesome-panel");
+const anotherPanelApi = useDetailsPanel<Expense>("another-panel");
+
+const ankeborgare: Item[] = [
+    { name: "Kalle Anka", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: "Skruttomobil" },
+    { name: "Kajsa Anka", adress: null, city: "Ankeborg", car: null },
+    { name: "Magica De Hex", adress: "Vulkanen", city: "Vesivius", car: null },
+    { name: "Bolivar", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: null },
+];
+
+function showPerson(item: Item): void {
+    awesomePanelApi.open(item);
+}
+
+function openThing(): void {
+    anotherPanelApi.open({ id: 1, description: "Hallonsoda", amount: 25 });
+}
 </script>
 
 <template>
-    <div class="container">
-        <h1>@fkui/vue</h1>
+    <f-page-layout layout="three-column">
+        <template #right>
+            <f-resize-pane min="20%" max="50%" initial="40%">
+                <awesome-panel name="awesome-panel" exclusive="right">
+                    <template #default="{ item }">
+                        <h2>Detaljer om person</h2>
+                        <dl>
+                            <dt>Namn</dt>
+                            <dd>{{ item.name }}</dd>
+                            <dt>Address</dt>
+                            <dd>{{ item.adress ?? "-" }}</dd>
+                            <dt>Stad</dt>
+                            <dd>{{ item.city ?? "-" }}</dd>
+                            <dt>Bil</dt>
+                            <dd>{{ item.car ?? "-" }}</dd>
+                        </dl>
+                    </template>
+                </awesome-panel>
+                <another-panel name="another-panel" exclusive="right">
+                    <template #default="{ item }">
+                        <h2>Detaljer om utgift</h2>
+                        <dl>
+                            <dt>ID</dt>
+                            <dd>{{ item.id }}</dd>
+                            <dt>Beskrivning</dt>
+                            <dd>{{ item.description }}</dd>
+                            <dt>Belopp</dt>
+                            <dd>{{ item.amount }} kr</dd>
+                        </dl>
+                    </template>
+                </another-panel>
+            </f-resize-pane>
+        </template>
 
-        <p>A few common commands to keep track of:</p>
-        <dl>
-            <dt><code>npm run vue unit</code></dt>
-            <dd>Run Jest unit tests</dd>
-            <dt><code>npm run vue unit -- Foobar</code></dt>
-            <dd>Run unit tests matching "Foobar"</dd>
-            <dt><code>npm run vue unit -- -u</code></dt>
-            <dd>Update snapshots</dd>
-            <dt><code>npm exec cypress -- open --component</code></dt>
-            <dd>Run Cypress Component Tests</dd>
-            <dt><code>npm run prettier:write</code></dt>
-            <dd>Reformat files</dd>
-            <dt><code>npm run lint</code></dt>
-            <dd>Run all linting and static analyzis</dd>
-            <dt><code>npm test</code></dt>
-            <dd>Run all tests</dd>
-        </dl>
+        <template #content>
+            <main>
+                <h1>Lorem ipsum</h1>
+                <p>Dolor sit amet.</p>
+                <button type="button" @click="openThing">Öppna 2</button>
 
-        <hr />
-
-        <h2>Sandbox</h2>
-
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
-    </div>
+                <h2 id="ankeborgare">Ankeborgare</h2>
+                <f-interactive-table
+                    :rows="ankeborgare"
+                    key-attribute="name"
+                    @click="showPerson($event)"
+                    aria-labelledby="ankeborgare"
+                >
+                    <template #default="{ row }">
+                        <f-table-column name="name" title="Namn">
+                            {{ row.name }}
+                        </f-table-column>
+                        <f-table-column name="adress" title="Address">
+                            {{ row.adress }}
+                        </f-table-column>
+                    </template>
+                </f-interactive-table>
+            </main>
+        </template>
+    </f-page-layout>
 </template>
+
+<style>
+body {
+    background: #eee;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 1rem;
+}
+
+.container {
+    background: #fff;
+}
+
+.resize {
+    background: rgb(144, 255, 255);
+}
+
+kbd {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.25rem;
+    background: #fff;
+}
+</style>
