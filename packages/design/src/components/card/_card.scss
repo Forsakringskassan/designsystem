@@ -9,8 +9,9 @@ $CARD_SELECTOR: ".card" !default;
     margin: densify(size.$margin-100) 0;
 
     &--default {
+        background-color: $card-color-background;
         border-radius: var(--f-border-radius-medium);
-        border: var(--f-border-width-medium) solid var(--f-border-color-card);
+        border: var(--f-border-width-medium) solid $card-color-border;
     }
 
     &--error {
@@ -19,6 +20,7 @@ $CARD_SELECTOR: ".card" !default;
     }
 
     &__content {
+        color: $card-color-text;
         > p,
         > div {
             &:last-child {
@@ -34,7 +36,7 @@ $CARD_SELECTOR: ".card" !default;
 
     &__header {
         &-label {
-            color: var(--f-text-color-default);
+            color: $card-color-heading;
             font-size: var(--f-font-size-large);
             font-weight: var(--f-font-weight-bold);
             line-height: var(--f-line-height-large);
