@@ -1,7 +1,8 @@
 <script setup lang="ts" generic="T">
-import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } from "vue";
+import { computed, onUnmounted, useTemplateRef } from "vue";
 import { FIcon } from "../FIcon";
 import { useAreaData } from "../FPageLayout/use-area-data";
+import { useResize } from "../FResizePane";
 import { createDetailsPanel } from "./use-details-panel";
 
 const root = useTemplateRef("root");
@@ -14,13 +15,8 @@ const { name, exclusive } = defineProps<{
 
 const panel = createDetailsPanel<T>(name, { exclusive });
 
-const resize = inject("resize", {
-    ref() {
-        /* do nothing */
-    },
-    unref() {
-        /* do nothing */
-    },
+useResize({
+    visible: computed(() => Boolean(panel.item.value)),
 });
 
 const attachClass = computed(() => {
@@ -35,32 +31,7 @@ const attachClass = computed(() => {
 
 onUnmounted(() => {
     panel.destroy();
-    resize.unref();
 });
-
-watch(
-    () => panel.item.value,
-    (newValue, oldValue) => {
-        if (Boolean(newValue) === Boolean(oldValue)) {
-            return;
-        }
-
-        if (root.value) {
-            console.log('emitting');
-            root.value.dispatchEvent(new CustomEvent("foobar", { bubbles: true }));
-        }
-
-        /* closing details panel */
-        if (oldValue && !newValue) {
-            resize.unref();
-        }
-        /* opening new panel (after being closed) */
-        if (newValue && !oldValue) {
-            resize.ref();
-        }
-    },
-    { immediate: true },
-);
 
 function onToggle(): void {
     panel.close();

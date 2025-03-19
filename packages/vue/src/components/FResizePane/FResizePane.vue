@@ -1,38 +1,48 @@
 <script setup lang="ts">
-import { computed, defineCustomElement, onMounted, provide, ref, useTemplateRef, watchEffect } from "vue";
+import { type Ref, computed, defineCustomElement, effectScope, provide, ref, useTemplateRef, watchEffect } from "vue";
 import FResizePane from "./FResizePane.ce.vue";
+import { injectionKey } from "./use-resize";
 
 const tagName = "ce-resize-pane";
 if (!customElements.get(tagName)) {
     customElements.define(tagName, defineCustomElement(FResizePane));
 }
 
+interface Component {
+    readonly enabled?: Readonly<Ref<boolean>>;
+    readonly visible?: Readonly<Ref<boolean>>;
+    id: number;
+}
+
 const element = useTemplateRef("element");
 const content = useTemplateRef("content");
-const refCount = ref(0);
+const anyEnabled = ref(false);
+const anyVisible = ref(false);
 
-provide("resize", {
-    ref() {
-        setTimeout(() => {
-            refCount.value = content.value?.childElementCount ?? 0;
-        }, 0);
-    },
-    unref() {
-        setTimeout(() => {
-            refCount.value = content.value?.childElementCount ?? 0;
-        }, 0);
+let components: Component[] = [];
+let n = 0;
+
+provide(injectionKey, {
+    register(options) {
+        const component = { ...options, id: n++ };
+        components.push(component);
+        const scope = effectScope();
+        scope.run(() => {
+            watchEffect(() => {
+                anyEnabled.value = components.some((it) => it.enabled?.value ?? true);
+            });
+            watchEffect(() => {
+                anyVisible.value = components.some((it) => it.visible?.value ?? true);
+            });
+        });
+        return () => {
+            components = components.filter((it) => it.id !== component.id);
+            scope.stop();
+        };
     },
 });
 
-watchEffect(() => {
-    console.log('refcount', refCount.value);
-})
-
-onMounted(() => {
-    console.log("element", element.value);
-});
-
-const disabled = computed(() => refCount.value === 0);
+const disabled = computed(() => anyVisible.value === false);
 
 const props = withDefaults(
     defineProps<{
@@ -69,18 +79,13 @@ const props = withDefaults(
         initial: "50%",
     },
 );
-
-function onFoobar() {
-    console.log('onFoobar', content.value?.childElementCount);
-    refCount.value = content.value?.childElementCount ?? 0;
-}
 </script>
 
 <template>
     <component :is="tagName" ref="element" :disabled v-bind="props">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
         <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
-        <div slot="content" ref="content" @foobar="onFoobar">
+        <div slot="content" ref="content">
             <!-- @slot Pane content -->
             <slot name="default"></slot>
         </div>
