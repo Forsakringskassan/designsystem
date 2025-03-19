@@ -404,6 +404,9 @@ class EffectScope {
     }
   }
 }
+function effectScope(detached) {
+  return new EffectScope(detached);
+}
 function getCurrentScope() {
   return activeEffectScope;
 }
@@ -9828,22 +9831,22 @@ const _export_sfc$1 = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$7 = {};
+const _sfc_main$5 = {};
 function _sfc_render$3(_ctx, _cache) {
   return openBlock(), createElementBlock(Fragment, null, [
     _cache[0] || (_cache[0] = createBaseVNode("h1", null, "Dokument", -1)),
     _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))
   ], 64);
 }
-const XDocumentView = /* @__PURE__ */ _export_sfc$1(_sfc_main$7, [["render", _sfc_render$3]]);
-const _sfc_main$6 = {};
+const XDocumentView = /* @__PURE__ */ _export_sfc$1(_sfc_main$5, [["render", _sfc_render$3]]);
+const _sfc_main$4 = {};
 function _sfc_render$2(_ctx, _cache) {
   return openBlock(), createElementBlock(Fragment, null, [
     _cache[0] || (_cache[0] = createBaseVNode("h1", null, "Journal", -1)),
     _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))
   ], 64);
 }
-const XJournalView = /* @__PURE__ */ _export_sfc$1(_sfc_main$6, [["render", _sfc_render$2]]);
+const XJournalView = /* @__PURE__ */ _export_sfc$1(_sfc_main$4, [["render", _sfc_render$2]]);
 const _sfc_main$3 = {};
 function _sfc_render$1(_ctx, _cache) {
   return openBlock(), createElementBlock(Fragment, null, [
@@ -23921,6 +23924,699 @@ function useAreaData(element) {
     direction.value = getProperty(style, VAR_NAME_DIRECTION);
   }
 }
+const layoutRegister = {};
+function getLayout(name) {
+  var _layoutRegister$name;
+  return (_layoutRegister$name = layoutRegister[name]) !== null && _layoutRegister$name !== void 0 ? _layoutRegister$name : null;
+}
+function setLayout(name, layout) {
+  layoutRegister[name] = layout;
+}
+function defineLayout(definition) {
+  return normalizeDefinition(definition);
+}
+function registerLayout(definition) {
+  setLayout(definition.name, normalizeDefinition(definition));
+}
+function normalizeDefinition(definition) {
+  return {
+    name: definition.name,
+    areas: normalizeAreasDefinition(definition.areas)
+  };
+}
+function normalizeAreasDefinition(areas) {
+  return Object.fromEntries(Object.entries(areas).map(([key, area]) => {
+    var _area$scroll;
+    return [key, {
+      attachPanel: area.attachPanel,
+      direction: area.direction,
+      scroll: (_area$scroll = area.scroll) !== null && _area$scroll !== void 0 ? _area$scroll : false
+    }];
+  }));
+}
+function _checkPrivateRedeclaration(e, t) {
+  if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object");
+}
+function _classPrivateFieldInitSpec(e, t, a) {
+  _checkPrivateRedeclaration(e, t), t.set(e, a);
+}
+function _assertClassBrand(e, t, n) {
+  if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n;
+  throw new TypeError("Private element is not present on this object");
+}
+function _classPrivateFieldGet2(s, a) {
+  return s.get(_assertClassBrand(s, a));
+}
+function _classPrivateFieldSet2(s, a, r) {
+  return s.set(_assertClassBrand(s, a), r), r;
+}
+registerLayout({
+  name: "simple",
+  areas: {
+    header: {
+      attachPanel: "none",
+      direction: "column"
+    },
+    content: {
+      attachPanel: "none",
+      direction: "column",
+      scroll: true
+    },
+    footer: {
+      attachPanel: "none",
+      direction: "column"
+    }
+  }
+});
+registerLayout({
+  name: "left-panel",
+  areas: {
+    header: {
+      attachPanel: "none",
+      direction: "column"
+    },
+    left: {
+      attachPanel: "left",
+      direction: "column"
+    },
+    content: {
+      attachPanel: "none",
+      direction: "column",
+      scroll: true
+    },
+    footer: {
+      attachPanel: "none",
+      direction: "column"
+    }
+  }
+});
+registerLayout({
+  name: "right-panel",
+  areas: {
+    header: {
+      attachPanel: "none",
+      direction: "column"
+    },
+    right: {
+      attachPanel: "right",
+      direction: "column"
+    },
+    content: {
+      attachPanel: "none",
+      direction: "column",
+      scroll: true
+    },
+    footer: {
+      attachPanel: "none",
+      direction: "column"
+    }
+  }
+});
+registerLayout({
+  name: "three-column",
+  areas: {
+    header: {
+      attachPanel: "top",
+      direction: "column"
+    },
+    left: {
+      attachPanel: "left",
+      direction: "column"
+    },
+    right: {
+      attachPanel: "right",
+      direction: "column"
+    },
+    content: {
+      attachPanel: "none",
+      direction: "column",
+      scroll: true
+    },
+    footer: {
+      attachPanel: "bottom",
+      direction: "column"
+    }
+  }
+});
+const styleContent = ':host {\n    display: block;\n}\n\n.page-layout {\n    display: grid;\n    height: 100cqh;\n    width: min(100%, 100cqw);\n\n    &[part~="simple"] {\n        grid-template:\n            "header" min-content\n            "content" 1fr\n            "footer" min-content\n            / 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="left-panel"] {\n        grid-template:\n            "header header" min-content\n            "left content" 1fr\n            "footer footer" min-content\n            / min-content 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"] {\n            background: var(--fkds-color-background-secondary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="right-panel"] {\n        grid-template:\n            "header header" min-content\n            "content right" 1fr\n            "footer footer" min-content\n            / 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area right"] {\n            background: var(--fkds-color-background-secondary);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="three-column"] {\n        grid-template:\n            "header header header" min-content\n            "left content right" 1fr\n            "footer footer footer" min-content\n            / min-content 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"],\n        [part="area right"] {\n            background: var(--fkds-color-background-secondary);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n}\n\n.page-layout__area {\n    display: flex;\n    position: relative;\n\n    &[data-direction="column"] {\n        flex-direction: column;\n    }\n\n    &[data-direction="row"] {\n        flex-direction: row;\n    }\n\n    &[data-scroll] {\n        overflow-y: auto;\n    }\n\n    &:empty {\n        display: none;\n    }\n}\n\n:host ::slotted(*) {\n    display: contents;\n}\n';
+const stubLayout = defineLayout({
+  name: "",
+  areas: {}
+});
+function getSlotNames(element) {
+  return Array.from(element.querySelectorAll(":scope > [slot]"), (it) => it.slot);
+}
+var _wrapper = /* @__PURE__ */ new WeakMap();
+var _elements = /* @__PURE__ */ new WeakMap();
+var _layout = /* @__PURE__ */ new WeakMap();
+var _observer = /* @__PURE__ */ new WeakMap();
+var _slotNames = /* @__PURE__ */ new WeakMap();
+class PageLayout extends HTMLElement {
+  constructor() {
+    super();
+    _classPrivateFieldInitSpec(this, _wrapper, void 0);
+    _classPrivateFieldInitSpec(this, _elements, {});
+    _classPrivateFieldInitSpec(this, _layout, stubLayout);
+    _classPrivateFieldInitSpec(this, _observer, void 0);
+    _classPrivateFieldInitSpec(this, _slotNames, []);
+    _classPrivateFieldSet2(_wrapper, this, document.createElement("div"));
+    _classPrivateFieldSet2(_observer, this, new MutationObserver(() => {
+      this.slotNames = getSlotNames(this);
+    }));
+  }
+  /* eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- this one is better to infer or each attribute would have to be duplicated */
+  static get observedAttributes() {
+    return ["layout"];
+  }
+  connectedCallback() {
+    this.slotNames = getSlotNames(this);
+    _classPrivateFieldGet2(_observer, this).observe(this, {
+      childList: true
+    });
+    const shadow = this.attachShadow({
+      mode: "open"
+    });
+    const style = document.createElement("style");
+    style.textContent = styleContent;
+    shadow.append(style);
+    shadow.append(_classPrivateFieldGet2(_wrapper, this));
+  }
+  disconnectedCallback() {
+    _classPrivateFieldGet2(_observer, this).disconnect();
+  }
+  attributeChangedCallback(name, _oldValue, value) {
+    switch (name) {
+      case "layout": {
+        var _getLayout;
+        const part = ["grid", value].filter(Boolean).join(" ");
+        _classPrivateFieldGet2(_wrapper, this).className = "page-layout";
+        _classPrivateFieldGet2(_wrapper, this).setAttribute("part", part);
+        _classPrivateFieldSet2(_layout, this, (_getLayout = getLayout(value)) !== null && _getLayout !== void 0 ? _getLayout : stubLayout);
+        this.updateSlotElements();
+        break;
+      }
+    }
+  }
+  get slotNames() {
+    return _classPrivateFieldGet2(_slotNames, this);
+  }
+  set slotNames(slots) {
+    _classPrivateFieldSet2(_slotNames, this, slots);
+    this.updateSlotElements();
+  }
+  updateSlotElements() {
+    const wrapper2 = _classPrivateFieldGet2(_wrapper, this);
+    const layout = _classPrivateFieldGet2(_layout, this);
+    for (const slot of _classPrivateFieldGet2(_slotNames, this)) {
+      const existing = _classPrivateFieldGet2(_elements, this)[slot];
+      const element = existing !== null && existing !== void 0 ? existing : document.createElement("div");
+      const area = layout.areas[slot];
+      if (!area) {
+        continue;
+      }
+      const {
+        attachPanel: attach,
+        direction,
+        scroll
+      } = area;
+      element.className = "";
+      element.classList.add("page-layout__area");
+      element.setAttribute("part", ["area", slot].join(" "));
+      element.setAttribute("data-direction", direction);
+      if (scroll) {
+        element.setAttribute("data-scroll", "true");
+      } else {
+        element.removeAttribute("data-scroll");
+      }
+      element.style.setProperty("grid-area", slot);
+      element.style.setProperty(VAR_NAME_AREA, `"${slot}"`);
+      element.style.setProperty(VAR_NAME_ATTACH_PANEL, `"${attach}"`);
+      element.style.setProperty(VAR_NAME_DIRECTION, `"${direction}"`);
+      if (!existing) {
+        const slotElement = document.createElement("slot");
+        slotElement.name = slot;
+        element.append(slotElement);
+        wrapper2.append(element);
+        _classPrivateFieldGet2(_elements, this)[slot] = element;
+      }
+    }
+    setTimeout(() => {
+      this.dispatchEvent(new CustomEvent("update"));
+    }, 0);
+  }
+}
+const _hoisted_1$p = ["slot"];
+const tagName$1 = `ce-page-layout`;
+const _sfc_main$q = /* @__PURE__ */ defineComponent({
+  __name: "FPageLayout",
+  props: {
+    layout: {}
+  },
+  emits: ["update"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit2 = __emit;
+    const slots = useSlots();
+    const slotNames = computed(() => {
+      return Object.keys(slots);
+    });
+    onMounted(() => {
+      if (!customElements.get(tagName$1)) {
+        customElements.define(tagName$1, PageLayout);
+      }
+    });
+    function onUpdate() {
+      emit2("update");
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(resolveDynamicComponent(tagName$1), {
+        layout: _ctx.layout,
+        onUpdate
+      }, {
+        default: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(slotNames.value, (slot) => {
+          return openBlock(), createElementBlock("div", {
+            key: slot,
+            slot
+          }, [renderSlot(_ctx.$slots, slot)], 8, _hoisted_1$p);
+        }), 128))]),
+        _: 3
+      }, 40, ["layout"]);
+    };
+  }
+});
+const keymap = {
+  left: {
+    ArrowLeft: "decrease",
+    ArrowRight: "increase",
+    Home: "minimize",
+    End: "maximize"
+  },
+  right: {
+    ArrowLeft: "increase",
+    ArrowRight: "decrease",
+    Home: "minimize",
+    End: "maximize"
+  },
+  top: {
+    ArrowUp: "decrease",
+    ArrowDown: "increase",
+    Home: "minimize",
+    End: "maximize"
+  },
+  bottom: {
+    ArrowUp: "increase",
+    ArrowDown: "decrease",
+    Home: "minimize",
+    End: "maximize"
+  },
+  none: {}
+};
+function useKeyboardHandler(options) {
+  const {
+    attachment,
+    separator
+  } = options;
+  useEventListener(separator, "keydown", (event) => {
+    if (!attachment.value) {
+      return;
+    }
+    const action = keymap[attachment.value][event.key];
+    if (action) {
+      event.preventDefault();
+      options[action]();
+    }
+  });
+}
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+function usePointerHandler(options) {
+  const {
+    separator,
+    attachment
+  } = options;
+  const invert = computed(() => {
+    if (attachment.value === "right" || attachment.value === "bottom") {
+      return -1;
+    }
+    return 1;
+  });
+  const orientation = computed(() => {
+    if (attachment.value === "top" || attachment.value === "bottom") {
+      return "horizontal";
+    } else {
+      return "vertical";
+    }
+  });
+  useEventListener(separator, "pointerdown", (event) => {
+    const {
+      isPrimary,
+      button,
+      target,
+      pointerId
+    } = event;
+    if (!separator.value) {
+      return;
+    }
+    if (!isPrimary || button !== 0 || target !== separator.value) {
+      return;
+    }
+    const separatorElement = separator.value;
+    const property = orientation.value === "horizontal" ? "clientY" : "clientX";
+    const reference = event[property];
+    const resize = createResizer();
+    function onPointerMove(event2) {
+      if (event2.pointerId === pointerId) {
+        resize(event2[property] - reference);
+      }
+    }
+    function onLostPointerCapture(event2) {
+      if (event2.pointerId === pointerId) {
+        separatorElement.removeEventListener("pointermove", onPointerMove);
+        separatorElement.removeEventListener("lostpointercapture", onLostPointerCapture);
+      }
+    }
+    onPointerMove(event);
+    separatorElement.addEventListener("lostpointercapture", onLostPointerCapture);
+    separatorElement.addEventListener("pointermove", onPointerMove);
+    separatorElement.setPointerCapture(pointerId);
+    event.preventDefault();
+  });
+  function createResizer() {
+    const {
+      min,
+      max,
+      current: value
+    } = options.state.value;
+    return (amount) => {
+      options.movement(clamp(value + amount * invert.value, min, max));
+    };
+  }
+}
+function computeCssValue(raw, total, auto) {
+  if (raw.endsWith("px")) {
+    return parseInt(raw.slice(0, -2), 10);
+  } else if (raw.endsWith("%")) {
+    const value = parseInt(raw.slice(0, -1), 10);
+    const percent = value / 100;
+    return percent * total;
+  } else if (raw === "0") {
+    return 0;
+  } else if (raw === "auto") {
+    return auto;
+  } else {
+    throw new Error(`Cant parse size from "${raw}"`);
+  }
+}
+function aggregateCssValue(raw, total, auto, take) {
+  if (raw === "auto") {
+    return auto;
+  }
+  const parts = raw.split(/\s+/).map((it) => it.trim());
+  const parsed = parts.map((it) => computeCssValue(it, total, auto));
+  return take(...parsed);
+}
+function useStorage(options) {
+  const {
+    state,
+    storageKey
+  } = options;
+  const loaded = ref(false);
+  let last = -1;
+  watchEffect(() => {
+    if (!loaded.value) {
+      return;
+    }
+    if (!storageKey.value) {
+      return;
+    }
+    if (state.value.current < 0 || state.value.current === last) {
+      return;
+    }
+    const json = JSON.stringify(state.value.current);
+    window.localStorage.setItem(storageKey.value, json);
+    last = state.value.current;
+  });
+  watchEffect(() => {
+    if (!storageKey.value) {
+      return;
+    }
+    const json = window.localStorage.getItem(storageKey.value);
+    if (json) {
+      const value = JSON.parse(json);
+      state.value.current = clamp(value, state.value.min, state.value.max);
+      last = value;
+    }
+    loaded.value = true;
+  });
+}
+const _hoisted_1$o = ["aria-orientation"];
+const STEP_SIZE = 10;
+const _sfc_main$p = /* @__PURE__ */ defineComponent({
+  __name: "FResizePane.ce",
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    min: {
+      default: "0",
+      type: String
+    },
+    max: {
+      default: "100%",
+      type: String
+    },
+    initial: {
+      default: "50%",
+      type: String
+    }
+  },
+  setup(__props) {
+    const props = __props;
+    const root = shallowRef();
+    const content = ref();
+    const separator = ref();
+    const state = ref({
+      min: -1,
+      max: -1,
+      current: -1
+    });
+    const separatorSize = ref(0);
+    const layoutSize = ref(0);
+    const storageKey = computed(() => area.value ? `layout/${area.value}/size` : null);
+    const {
+      attachPanel: attachment,
+      direction,
+      area
+    } = useAreaData(root);
+    useKeyboardHandler({
+      increase() {
+        state.value.current = Math.min(state.value.current + STEP_SIZE, state.value.max);
+      },
+      decrease() {
+        state.value.current = Math.max(state.value.current - STEP_SIZE, state.value.min);
+      },
+      maximize() {
+        state.value.current = state.value.max;
+      },
+      minimize() {
+        state.value.current = state.value.min;
+      },
+      attachment,
+      separator
+    });
+    useStorage({
+      state,
+      storageKey
+    });
+    usePointerHandler({
+      movement(value) {
+        state.value.current = value;
+      },
+      separator,
+      state,
+      attachment
+    });
+    const minSize = computed(() => {
+      const total = layoutSize.value;
+      return Math.floor(aggregateCssValue(props.min, total, 0, Math.max) + separatorSize.value);
+    });
+    const maxSize = computed(() => {
+      const total = layoutSize.value;
+      return Math.floor(aggregateCssValue(props.max, total, total, Math.min) + separatorSize.value);
+    });
+    const initialSize = computed(() => {
+      const total = layoutSize.value;
+      return Math.floor(computeCssValue(props.initial, total, total * 0.5));
+    });
+    const orientation = computed(() => {
+      if (attachment.value === "top" || attachment.value === "bottom") {
+        return "horizontal";
+      } else {
+        return "vertical";
+      }
+    });
+    const layoutElement = computed(() => {
+      var _host$closest;
+      if (!root.value) {
+        return void 0;
+      }
+      const shadow = root.value.getRootNode();
+      const host = shadow.host;
+      return (_host$closest = host.closest("ce-page-layout")) !== null && _host$closest !== void 0 ? _host$closest : void 0;
+    });
+    watchEffect(() => {
+      const {
+        min,
+        max,
+        current: value
+      } = state.value;
+      if (root.value) {
+        root.value.style.setProperty("--size", `${String(value)}px`);
+        root.value.style.setProperty("--min", `${min}px`);
+        root.value.style.setProperty("--max", `${max}px`);
+      }
+      if (separator.value) {
+        separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
+        separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
+        separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
+      }
+    });
+    onMounted(() => {
+      if (separator.value) {
+        const {
+          flexBasis
+        } = getComputedStyle(separator.value);
+        separatorSize.value = computeCssValue(flexBasis, 0, 0);
+      }
+      layoutSize.value = getLayoutSize();
+      state.value = {
+        min: minSize.value,
+        max: maxSize.value,
+        current: clamp(initialSize.value, minSize.value, maxSize.value)
+      };
+    });
+    useEventListener$1(window, "resize", debounce(onResize, 20));
+    function onResize() {
+      layoutSize.value = getLayoutSize();
+      state.value = {
+        min: minSize.value,
+        max: maxSize.value,
+        current: initialSize.value
+      };
+    }
+    function getLayoutSize() {
+      if (!layoutElement.value) {
+        return 0;
+      }
+      switch (orientation.value) {
+        case "horizontal": {
+          return layoutElement.value.offsetHeight;
+        }
+        case "vertical": {
+          return layoutElement.value.offsetWidth;
+        }
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        ref_key: "root",
+        ref: root,
+        class: normalizeClass(["resize", [`resize--${unref(attachment)}`, `resize--${unref(direction)}`, props.disabled ? "resize--disabled" : void 0]])
+      }, [createBaseVNode("div", {
+        ref_key: "content",
+        ref: content,
+        class: "resize__content"
+      }, [renderSlot(_ctx.$slots, "content")], 512), _cache[0] || (_cache[0] = createTextVNode()), !props.disabled ? (openBlock(), createElementBlock("div", {
+        key: 0,
+        ref_key: "separator",
+        ref: separator,
+        role: "separator",
+        class: "resize__handle",
+        tabindex: "0",
+        "aria-orientation": orientation.value
+      }, null, 8, _hoisted_1$o)) : createCommentVNode("", true)], 2);
+    };
+  }
+});
+const _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
+const FResizePane$1 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["styles", [_style_0]]]);
+const injectionKey = Symbol("resize");
+const tagName = "ce-resize-pane";
+const _sfc_main$o = /* @__PURE__ */ defineComponent({
+  __name: "FResizePane",
+  props: {
+    min: {
+      default: "0"
+    },
+    max: {
+      default: "100%"
+    },
+    initial: {
+      default: "50%"
+    }
+  },
+  setup(__props) {
+    if (!customElements.get(tagName)) {
+      customElements.define(tagName, /* @__PURE__ */ defineCustomElement(FResizePane$1));
+    }
+    const element = useTemplateRef("element");
+    const content = useTemplateRef("content");
+    const anyEnabled = ref(false);
+    const anyVisible = ref(false);
+    let components = [];
+    let n = 0;
+    provide(injectionKey, {
+      register(options) {
+        const component = {
+          ...options,
+          id: n++
+        };
+        components.push(component);
+        const scope = effectScope();
+        scope.run(() => {
+          watchEffect(() => {
+            anyEnabled.value = components.some((it) => {
+              var _a;
+              var _it$enabled$value;
+              return (_it$enabled$value = (_a = it.enabled) == null ? void 0 : _a.value) !== null && _it$enabled$value !== void 0 ? _it$enabled$value : true;
+            });
+          });
+          watchEffect(() => {
+            anyVisible.value = components.some((it) => {
+              var _a;
+              var _it$visible$value;
+              return (_it$visible$value = (_a = it.visible) == null ? void 0 : _a.value) !== null && _it$visible$value !== void 0 ? _it$visible$value : true;
+            });
+          });
+        });
+        return () => {
+          components = components.filter((it) => it.id !== component.id);
+          scope.stop();
+        };
+      }
+    });
+    const disabled = computed(() => anyVisible.value === false);
+    const props = __props;
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(resolveDynamicComponent(tagName), mergeProps({
+        ref_key: "element",
+        ref: element,
+        disabled: disabled.value
+      }, props), {
+        default: withCtx(() => [createBaseVNode("div", {
+          slot: "content",
+          ref_key: "content",
+          ref: content
+        }, [renderSlot(_ctx.$slots, "default", {}, void 0, true)], 512)]),
+        _: 3
+      }, 16, ["disabled"]);
+    };
+  }
+});
+const FResizePane = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-6845b9cf"]]);
 const keybindings = {
   Up: focusTrAbove,
   Down: focusTrBelow,
@@ -24032,7 +24728,7 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
     hasExpandableContent
   };
 }
-const _hoisted_1$j = ["role"];
+const _hoisted_1$h = ["role"];
 const _hoisted_2$d = {
   key: 0
 };
@@ -24580,7 +25276,7 @@ const _hoisted_22 = ["colspan"];
         colspan: nbOfColumns.value
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.interactive-table.empty", "Tabellen är tom")), 1)])], 8, _hoisted_22), _cache[12] || (_cache[12] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         row: {}
-      })))])) : createCommentVNode("", true)]))], 16, _hoisted_1$j)], 2);
+      })))])) : createCommentVNode("", true)]))], 16, _hoisted_1$h)], 2);
     };
   }
 });
@@ -24613,7 +25309,7 @@ class FRightPanelServiceImpl {
   }
 }
 new FRightPanelServiceImpl();
-const _hoisted_1$d = ["aria-label"];
+const _hoisted_1$b = ["aria-label"];
 const __default__ = /* @__PURE__ */ defineComponent({
   computed: {
     ariaLabel() {
@@ -24625,7 +25321,7 @@ const __default__ = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _sfc_main$e = /* @__PURE__ */ defineComponent({
+const _sfc_main$b = /* @__PURE__ */ defineComponent({
   ...__default__,
   __name: "FLogo",
   props: {
@@ -24649,7 +25345,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
         class: normalizeClass(`logo logo--${props.size}`),
         "aria-label": _ctx.ariaLabel,
         role: "img"
-      }, null, 10, _hoisted_1$d);
+      }, null, 10, _hoisted_1$b);
     };
   }
 });
@@ -24702,7 +25398,7 @@ const upKeys = ["Up", "ArrowUp"];
 const downKeys = ["Down", "ArrowDown"];
 const verticalKeys = [...upKeys, ...downKeys];
 const preventKeys = ["Tab", "Left", "Right", "ArrowLeft", "ArrowRight", "Home", "End", " ", "Spacebar", "Enter", ...verticalKeys];
-const _sfc_main$c = /* @__PURE__ */ defineComponent({
+const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   name: "FNavigationMenu",
   components: {
     FIcon,
@@ -25035,7 +25731,7 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$b = ["aria-label"];
+const _hoisted_1$9 = ["aria-label"];
 const _hoisted_2$7 = ["data-ref-index", "onClick"];
 const _hoisted_3$5 = {
   class: "imenu__list__anchor-container"
@@ -25116,10 +25812,10 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     "enable-keyboard-navigation": "",
     onSelect: _ctx.onPopupMenuItemSelected,
     onClose: _cache[5] || (_cache[5] = ($event) => _ctx.togglePopup(false))
-  }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "selected-menu-item-screen-reader-text", "aria-label", "onSelect"])], 10, _hoisted_1$b);
+  }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "selected-menu-item-screen-reader-text", "aria-label", "onSelect"])], 10, _hoisted_1$9);
 }
-const FNavigationMenu = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$8]]);
-const _sfc_main$9 = /* @__PURE__ */ defineComponent({
+const FNavigationMenu = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8]]);
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   name: "FPageHeader",
   components: {
     ISkipLink
@@ -25166,7 +25862,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$8 = {
+const _hoisted_1$6 = {
   class: "page-header__root"
 };
 const _hoisted_2$4 = {
@@ -25188,7 +25884,7 @@ const _hoisted_6$1 = {
 };
 function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_skip_link = resolveComponent("i-skip-link");
-  return openBlock(), createElementBlock("div", _hoisted_1$8, [_ctx.skipLinkAnchor ? (openBlock(), createElementBlock("nav", _hoisted_2$4, [createVNode(_component_i_skip_link, {
+  return openBlock(), createElementBlock("div", _hoisted_1$6, [_ctx.skipLinkAnchor ? (openBlock(), createElementBlock("nav", _hoisted_2$4, [createVNode(_component_i_skip_link, {
     href: _ctx.skipLinkAnchor
   }, {
     default: withCtx(() => [renderSlot(_ctx.$slots, "skip-link-text")]),
@@ -25200,687 +25896,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", _hoisted_5$1, [createBaseVNode("div", _hoisted_6$1, [renderSlot(_ctx.$slots, "right")])])], 512)]);
 }
-const FPageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
-const layoutRegister = {};
-function getLayout(name) {
-  var _layoutRegister$name;
-  return (_layoutRegister$name = layoutRegister[name]) !== null && _layoutRegister$name !== void 0 ? _layoutRegister$name : null;
-}
-function setLayout(name, layout) {
-  layoutRegister[name] = layout;
-}
-function defineLayout(definition) {
-  return normalizeDefinition(definition);
-}
-function registerLayout(definition) {
-  setLayout(definition.name, normalizeDefinition(definition));
-}
-function normalizeDefinition(definition) {
-  return {
-    name: definition.name,
-    areas: normalizeAreasDefinition(definition.areas)
-  };
-}
-function normalizeAreasDefinition(areas) {
-  return Object.fromEntries(Object.entries(areas).map(([key, area]) => {
-    var _area$scroll;
-    return [key, {
-      attachPanel: area.attachPanel,
-      direction: area.direction,
-      scroll: (_area$scroll = area.scroll) !== null && _area$scroll !== void 0 ? _area$scroll : false
-    }];
-  }));
-}
-function _checkPrivateRedeclaration(e, t) {
-  if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object");
-}
-function _classPrivateFieldInitSpec(e, t, a) {
-  _checkPrivateRedeclaration(e, t), t.set(e, a);
-}
-function _assertClassBrand(e, t, n) {
-  if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n;
-  throw new TypeError("Private element is not present on this object");
-}
-function _classPrivateFieldGet2(s, a) {
-  return s.get(_assertClassBrand(s, a));
-}
-function _classPrivateFieldSet2(s, a, r) {
-  return s.set(_assertClassBrand(s, a), r), r;
-}
-registerLayout({
-  name: "simple",
-  areas: {
-    header: {
-      attachPanel: "none",
-      direction: "column"
-    },
-    content: {
-      attachPanel: "none",
-      direction: "column",
-      scroll: true
-    },
-    footer: {
-      attachPanel: "none",
-      direction: "column"
-    }
-  }
-});
-registerLayout({
-  name: "left-panel",
-  areas: {
-    header: {
-      attachPanel: "none",
-      direction: "column"
-    },
-    left: {
-      attachPanel: "left",
-      direction: "column"
-    },
-    content: {
-      attachPanel: "none",
-      direction: "column",
-      scroll: true
-    },
-    footer: {
-      attachPanel: "none",
-      direction: "column"
-    }
-  }
-});
-registerLayout({
-  name: "right-panel",
-  areas: {
-    header: {
-      attachPanel: "none",
-      direction: "column"
-    },
-    right: {
-      attachPanel: "right",
-      direction: "column"
-    },
-    content: {
-      attachPanel: "none",
-      direction: "column",
-      scroll: true
-    },
-    footer: {
-      attachPanel: "none",
-      direction: "column"
-    }
-  }
-});
-registerLayout({
-  name: "three-column",
-  areas: {
-    header: {
-      attachPanel: "top",
-      direction: "column"
-    },
-    left: {
-      attachPanel: "left",
-      direction: "column"
-    },
-    right: {
-      attachPanel: "right",
-      direction: "column"
-    },
-    content: {
-      attachPanel: "none",
-      direction: "column",
-      scroll: true
-    },
-    footer: {
-      attachPanel: "bottom",
-      direction: "column"
-    }
-  }
-});
-const styleContent = ':host {\n    display: block;\n}\n\n.page-layout {\n    display: grid;\n    height: 100cqh;\n    width: min(100%, 100cqw);\n\n    &[part~="simple"] {\n        grid-template:\n            "header" min-content\n            "content" 1fr\n            "footer" min-content\n            / 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="left-panel"] {\n        grid-template:\n            "header header" min-content\n            "left content" 1fr\n            "footer footer" min-content\n            / min-content 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"] {\n            background: var(--fkds-color-background-secondary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="right-panel"] {\n        grid-template:\n            "header header" min-content\n            "content right" 1fr\n            "footer footer" min-content\n            / 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area right"] {\n            background: var(--fkds-color-background-secondary);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="three-column"] {\n        grid-template:\n            "header header header" min-content\n            "left content right" 1fr\n            "footer footer footer" min-content\n            / min-content 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"],\n        [part="area right"] {\n            background: var(--fkds-color-background-secondary);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n}\n\n.page-layout__area {\n    display: flex;\n    position: relative;\n\n    &[data-direction="column"] {\n        flex-direction: column;\n    }\n\n    &[data-direction="row"] {\n        flex-direction: row;\n    }\n\n    &[data-scroll] {\n        overflow-y: auto;\n    }\n\n    &:empty {\n        display: none;\n    }\n}\n\n:host ::slotted(*) {\n    display: contents;\n}\n';
-const stubLayout = defineLayout({
-  name: "",
-  areas: {}
-});
-function getSlotNames(element) {
-  return Array.from(element.querySelectorAll(":scope > [slot]"), (it) => it.slot);
-}
-var _wrapper = /* @__PURE__ */ new WeakMap();
-var _elements = /* @__PURE__ */ new WeakMap();
-var _layout = /* @__PURE__ */ new WeakMap();
-var _observer = /* @__PURE__ */ new WeakMap();
-var _slotNames = /* @__PURE__ */ new WeakMap();
-class PageLayout extends HTMLElement {
-  constructor() {
-    super();
-    _classPrivateFieldInitSpec(this, _wrapper, void 0);
-    _classPrivateFieldInitSpec(this, _elements, {});
-    _classPrivateFieldInitSpec(this, _layout, stubLayout);
-    _classPrivateFieldInitSpec(this, _observer, void 0);
-    _classPrivateFieldInitSpec(this, _slotNames, []);
-    _classPrivateFieldSet2(_wrapper, this, document.createElement("div"));
-    _classPrivateFieldSet2(_observer, this, new MutationObserver(() => {
-      this.slotNames = getSlotNames(this);
-    }));
-  }
-  /* eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- this one is better to infer or each attribute would have to be duplicated */
-  static get observedAttributes() {
-    return ["layout"];
-  }
-  connectedCallback() {
-    this.slotNames = getSlotNames(this);
-    _classPrivateFieldGet2(_observer, this).observe(this, {
-      childList: true
-    });
-    const shadow = this.attachShadow({
-      mode: "open"
-    });
-    const style = document.createElement("style");
-    style.textContent = styleContent;
-    shadow.append(style);
-    shadow.append(_classPrivateFieldGet2(_wrapper, this));
-  }
-  disconnectedCallback() {
-    _classPrivateFieldGet2(_observer, this).disconnect();
-  }
-  attributeChangedCallback(name, _oldValue, value) {
-    switch (name) {
-      case "layout": {
-        var _getLayout;
-        const part = ["grid", value].filter(Boolean).join(" ");
-        _classPrivateFieldGet2(_wrapper, this).className = "page-layout";
-        _classPrivateFieldGet2(_wrapper, this).setAttribute("part", part);
-        _classPrivateFieldSet2(_layout, this, (_getLayout = getLayout(value)) !== null && _getLayout !== void 0 ? _getLayout : stubLayout);
-        this.updateSlotElements();
-        break;
-      }
-    }
-  }
-  get slotNames() {
-    return _classPrivateFieldGet2(_slotNames, this);
-  }
-  set slotNames(slots) {
-    _classPrivateFieldSet2(_slotNames, this, slots);
-    this.updateSlotElements();
-  }
-  updateSlotElements() {
-    const wrapper2 = _classPrivateFieldGet2(_wrapper, this);
-    const layout = _classPrivateFieldGet2(_layout, this);
-    for (const slot of _classPrivateFieldGet2(_slotNames, this)) {
-      const existing = _classPrivateFieldGet2(_elements, this)[slot];
-      const element = existing !== null && existing !== void 0 ? existing : document.createElement("div");
-      const area = layout.areas[slot];
-      if (!area) {
-        continue;
-      }
-      const {
-        attachPanel: attach,
-        direction,
-        scroll
-      } = area;
-      element.className = "";
-      element.classList.add("page-layout__area");
-      element.setAttribute("part", ["area", slot].join(" "));
-      element.setAttribute("data-direction", direction);
-      if (scroll) {
-        element.setAttribute("data-scroll", "true");
-      } else {
-        element.removeAttribute("data-scroll");
-      }
-      element.style.setProperty("grid-area", slot);
-      element.style.setProperty(VAR_NAME_AREA, `"${slot}"`);
-      element.style.setProperty(VAR_NAME_ATTACH_PANEL, `"${attach}"`);
-      element.style.setProperty(VAR_NAME_DIRECTION, `"${direction}"`);
-      if (!existing) {
-        const slotElement = document.createElement("slot");
-        slotElement.name = slot;
-        element.append(slotElement);
-        wrapper2.append(element);
-        _classPrivateFieldGet2(_elements, this)[slot] = element;
-      }
-    }
-    setTimeout(() => {
-      this.dispatchEvent(new CustomEvent("update"));
-    }, 0);
-  }
-}
-const _hoisted_1$7 = ["slot"];
-const tagName$1 = `ce-page-layout`;
-const _sfc_main$8 = /* @__PURE__ */ defineComponent({
-  __name: "FPageLayout",
-  props: {
-    layout: {}
-  },
-  emits: ["update"],
-  setup(__props, {
-    emit: __emit
-  }) {
-    const emit2 = __emit;
-    const slots = useSlots();
-    const slotNames = computed(() => {
-      return Object.keys(slots);
-    });
-    onMounted(() => {
-      if (!customElements.get(tagName$1)) {
-        customElements.define(tagName$1, PageLayout);
-      }
-    });
-    function onUpdate() {
-      emit2("update");
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(resolveDynamicComponent(tagName$1), {
-        layout: _ctx.layout,
-        onUpdate
-      }, {
-        default: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(slotNames.value, (slot) => {
-          return openBlock(), createElementBlock("div", {
-            key: slot,
-            slot
-          }, [renderSlot(_ctx.$slots, slot)], 8, _hoisted_1$7);
-        }), 128))]),
-        _: 3
-      }, 40, ["layout"]);
-    };
-  }
-});
-const keymap = {
-  left: {
-    ArrowLeft: "decrease",
-    ArrowRight: "increase",
-    Home: "minimize",
-    End: "maximize"
-  },
-  right: {
-    ArrowLeft: "increase",
-    ArrowRight: "decrease",
-    Home: "minimize",
-    End: "maximize"
-  },
-  top: {
-    ArrowUp: "decrease",
-    ArrowDown: "increase",
-    Home: "minimize",
-    End: "maximize"
-  },
-  bottom: {
-    ArrowUp: "increase",
-    ArrowDown: "decrease",
-    Home: "minimize",
-    End: "maximize"
-  },
-  none: {}
-};
-function useKeyboardHandler(options) {
-  const {
-    attachment,
-    separator
-  } = options;
-  useEventListener(separator, "keydown", (event) => {
-    if (!attachment.value) {
-      return;
-    }
-    const action = keymap[attachment.value][event.key];
-    if (action) {
-      event.preventDefault();
-      options[action]();
-    }
-  });
-}
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
-function usePointerHandler(options) {
-  const {
-    separator,
-    attachment
-  } = options;
-  const invert = computed(() => {
-    if (attachment.value === "right" || attachment.value === "bottom") {
-      return -1;
-    }
-    return 1;
-  });
-  const orientation = computed(() => {
-    if (attachment.value === "top" || attachment.value === "bottom") {
-      return "horizontal";
-    } else {
-      return "vertical";
-    }
-  });
-  useEventListener(separator, "pointerdown", (event) => {
-    const {
-      isPrimary,
-      button,
-      target,
-      pointerId
-    } = event;
-    if (!separator.value) {
-      return;
-    }
-    if (!isPrimary || button !== 0 || target !== separator.value) {
-      return;
-    }
-    const separatorElement = separator.value;
-    const property = orientation.value === "horizontal" ? "clientY" : "clientX";
-    const reference = event[property];
-    const resize = createResizer();
-    function onPointerMove(event2) {
-      if (event2.pointerId === pointerId) {
-        resize(event2[property] - reference);
-      }
-    }
-    function onLostPointerCapture(event2) {
-      if (event2.pointerId === pointerId) {
-        separatorElement.removeEventListener("pointermove", onPointerMove);
-        separatorElement.removeEventListener("lostpointercapture", onLostPointerCapture);
-      }
-    }
-    onPointerMove(event);
-    separatorElement.addEventListener("lostpointercapture", onLostPointerCapture);
-    separatorElement.addEventListener("pointermove", onPointerMove);
-    separatorElement.setPointerCapture(pointerId);
-    event.preventDefault();
-  });
-  function createResizer() {
-    const {
-      min,
-      max,
-      current: value
-    } = options.state.value;
-    return (amount) => {
-      options.movement(clamp(value + amount * invert.value, min, max));
-    };
-  }
-}
-function computeCssValue(raw, total, auto) {
-  if (raw.endsWith("px")) {
-    return parseInt(raw.slice(0, -2), 10);
-  } else if (raw.endsWith("%")) {
-    const value = parseInt(raw.slice(0, -1), 10);
-    const percent = value / 100;
-    return percent * total;
-  } else if (raw === "0") {
-    return 0;
-  } else if (raw === "auto") {
-    return auto;
-  } else {
-    throw new Error(`Cant parse size from "${raw}"`);
-  }
-}
-function aggregateCssValue(raw, total, auto, take) {
-  if (raw === "auto") {
-    return auto;
-  }
-  const parts = raw.split(/\s+/).map((it) => it.trim());
-  const parsed = parts.map((it) => computeCssValue(it, total, auto));
-  return take(...parsed);
-}
-function useStorage(options) {
-  const {
-    state,
-    storageKey
-  } = options;
-  const loaded = ref(false);
-  let last = -1;
-  watchEffect(() => {
-    if (!loaded.value) {
-      return;
-    }
-    if (!storageKey.value) {
-      return;
-    }
-    if (state.value.current < 0 || state.value.current === last) {
-      return;
-    }
-    const json = JSON.stringify(state.value.current);
-    window.localStorage.setItem(storageKey.value, json);
-    last = state.value.current;
-  });
-  watchEffect(() => {
-    if (!storageKey.value) {
-      return;
-    }
-    const json = window.localStorage.getItem(storageKey.value);
-    if (json) {
-      const value = JSON.parse(json);
-      state.value.current = clamp(value, state.value.min, state.value.max);
-      last = value;
-    }
-    loaded.value = true;
-  });
-}
-const _hoisted_1$4 = ["aria-orientation"];
-const STEP_SIZE = 10;
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
-  __name: "FResizePane.ce",
-  props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    min: {
-      default: "0",
-      type: String
-    },
-    max: {
-      default: "100%",
-      type: String
-    },
-    initial: {
-      default: "50%",
-      type: String
-    }
-  },
-  setup(__props) {
-    const props = __props;
-    const root = shallowRef();
-    const content = ref();
-    const separator = ref();
-    const state = ref({
-      min: -1,
-      max: -1,
-      current: -1
-    });
-    const separatorSize = ref(0);
-    const layoutSize = ref(0);
-    const storageKey = computed(() => area.value ? `layout/${area.value}/size` : null);
-    const {
-      attachPanel: attachment,
-      direction,
-      area
-    } = useAreaData(root);
-    useKeyboardHandler({
-      increase() {
-        state.value.current = Math.min(state.value.current + STEP_SIZE, state.value.max);
-      },
-      decrease() {
-        state.value.current = Math.max(state.value.current - STEP_SIZE, state.value.min);
-      },
-      maximize() {
-        state.value.current = state.value.max;
-      },
-      minimize() {
-        state.value.current = state.value.min;
-      },
-      attachment,
-      separator
-    });
-    useStorage({
-      state,
-      storageKey
-    });
-    usePointerHandler({
-      movement(value) {
-        state.value.current = value;
-      },
-      separator,
-      state,
-      attachment
-    });
-    const minSize = computed(() => {
-      const total = layoutSize.value;
-      return Math.floor(aggregateCssValue(props.min, total, 0, Math.max) + separatorSize.value);
-    });
-    const maxSize = computed(() => {
-      const total = layoutSize.value;
-      return Math.floor(aggregateCssValue(props.max, total, total, Math.min) + separatorSize.value);
-    });
-    const initialSize = computed(() => {
-      const total = layoutSize.value;
-      return Math.floor(computeCssValue(props.initial, total, total * 0.5));
-    });
-    const orientation = computed(() => {
-      if (attachment.value === "top" || attachment.value === "bottom") {
-        return "horizontal";
-      } else {
-        return "vertical";
-      }
-    });
-    const layoutElement = computed(() => {
-      var _host$closest;
-      if (!root.value) {
-        return void 0;
-      }
-      const shadow = root.value.getRootNode();
-      const host = shadow.host;
-      return (_host$closest = host.closest("ce-page-layout")) !== null && _host$closest !== void 0 ? _host$closest : void 0;
-    });
-    watchEffect(() => {
-      const {
-        min,
-        max,
-        current: value
-      } = state.value;
-      if (root.value) {
-        root.value.style.setProperty("--size", `${String(value)}px`);
-        root.value.style.setProperty("--min", `${min}px`);
-        root.value.style.setProperty("--max", `${max}px`);
-      }
-      if (separator.value) {
-        separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
-        separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
-        separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
-      }
-    });
-    onMounted(() => {
-      if (separator.value) {
-        const {
-          flexBasis
-        } = getComputedStyle(separator.value);
-        separatorSize.value = computeCssValue(flexBasis, 0, 0);
-      }
-      layoutSize.value = getLayoutSize();
-      state.value = {
-        min: minSize.value,
-        max: maxSize.value,
-        current: clamp(initialSize.value, minSize.value, maxSize.value)
-      };
-    });
-    useEventListener$1(window, "resize", debounce(onResize, 20));
-    function onResize() {
-      layoutSize.value = getLayoutSize();
-      state.value = {
-        min: minSize.value,
-        max: maxSize.value,
-        current: initialSize.value
-      };
-    }
-    function getLayoutSize() {
-      if (!layoutElement.value) {
-        return 0;
-      }
-      switch (orientation.value) {
-        case "horizontal": {
-          return layoutElement.value.offsetHeight;
-        }
-        case "vertical": {
-          return layoutElement.value.offsetWidth;
-        }
-      }
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        ref_key: "root",
-        ref: root,
-        class: normalizeClass(["resize", [`resize--${unref(attachment)}`, `resize--${unref(direction)}`, props.disabled ? "resize--disabled" : void 0]])
-      }, [createBaseVNode("div", {
-        ref_key: "content",
-        ref: content,
-        class: "resize__content"
-      }, [renderSlot(_ctx.$slots, "content")], 512), _cache[0] || (_cache[0] = createTextVNode()), !props.disabled ? (openBlock(), createElementBlock("div", {
-        key: 0,
-        ref_key: "separator",
-        ref: separator,
-        role: "separator",
-        class: "resize__handle",
-        tabindex: "0",
-        "aria-orientation": orientation.value
-      }, null, 8, _hoisted_1$4)) : createCommentVNode("", true)], 2);
-    };
-  }
-});
-const _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
-const FResizePane$1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["styles", [_style_0]]]);
-const tagName = "ce-resize-pane";
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
-  __name: "FResizePane",
-  props: {
-    min: {
-      default: "0"
-    },
-    max: {
-      default: "100%"
-    },
-    initial: {
-      default: "50%"
-    }
-  },
-  setup(__props) {
-    if (!customElements.get(tagName)) {
-      customElements.define(tagName, /* @__PURE__ */ defineCustomElement(FResizePane$1));
-    }
-    const element = useTemplateRef("element");
-    const content = useTemplateRef("content");
-    const refCount = ref(0);
-    provide("resize", {
-      ref() {
-        refCount.value++;
-        console.log("inc refcount to", refCount.value);
-        setTimeout(() => {
-          var _a;
-          console.log("num slotted elements", (_a = content.value) == null ? void 0 : _a.childElementCount);
-        }, 0);
-      },
-      unref() {
-        refCount.value--;
-        console.log("dec refcount to", refCount.value);
-        setTimeout(() => {
-          var _a;
-          console.log("num slotted elements", (_a = content.value) == null ? void 0 : _a.childElementCount);
-        }, 0);
-      }
-    });
-    onMounted(() => {
-      console.log("element", element.value);
-    });
-    const disabled = computed(() => refCount.value === 0);
-    const props = __props;
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(resolveDynamicComponent(tagName), mergeProps({
-        ref_key: "element",
-        ref: element,
-        disabled: disabled.value
-      }, props), {
-        default: withCtx(() => [createBaseVNode("div", {
-          slot: "content",
-          ref_key: "content",
-          ref: content
-        }, [renderSlot(_ctx.$slots, "default", {}, void 0, true)], 512)]),
-        _: 3
-      }, 16, ["disabled"]);
-    };
-  }
-});
-const FResizePane = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-0198e20e"]]);
+const FPageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5]]);
 const _sfc_main$2 = {};
 const _hoisted_1$1 = { class: "contextbar" };
 function _sfc_render(_ctx, _cache) {
@@ -25963,12 +25979,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       const _component_router_view = resolveComponent("router-view");
-      return openBlock(), createBlock(unref(_sfc_main$8), { layout: "awesome-layout" }, {
+      return openBlock(), createBlock(unref(_sfc_main$q), { layout: "awesome-layout" }, {
         header: withCtx(() => [
           createBaseVNode("header", null, [
             createVNode(unref(FPageHeader), null, {
               logo: withCtx(() => [
-                createVNode(unref(_sfc_main$e), { size: "small" }, {
+                createVNode(unref(_sfc_main$b), { size: "small" }, {
                   default: withCtx(() => _cache[0] || (_cache[0] = [
                     createTextVNode("Logo")
                   ])),
