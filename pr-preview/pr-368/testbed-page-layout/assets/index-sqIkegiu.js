@@ -25868,7 +25868,7 @@ function _sfc_render(_ctx, _cache) {
     createBaseVNode("div", { clas: "contextbar__name" }, "Test Testorsson", -1)
   ]));
 }
-const XContextBar = /* @__PURE__ */ _export_sfc$1(_sfc_main$2, [["render", _sfc_render], ["__scopeId", "data-v-f3c4fc0f"]]);
+const XContextBar = /* @__PURE__ */ _export_sfc$1(_sfc_main$2, [["render", _sfc_render], ["__scopeId", "data-v-25649e36"]]);
 const _hoisted_1 = { class: "toolbar" };
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "XToolbar",
@@ -26004,7 +26004,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-30826b30"]]);
+const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-13ee230b"]]);
 const app = createApp(App);
 app.use(router);
 app.mount("#app");
