@@ -29,7 +29,7 @@
     "vue-router": "4.5.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "5.2.2",
+    "@vitejs/plugin-vue": "5.2.3",
     "vite": "6.2.2"
   },
   "engines": {
