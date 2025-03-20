@@ -1,0 +1,12 @@
+name: Branches
+
+on:
+    push:
+        branches:
+            - "**"
+    pull_request:
+
+jobs:
+    lint:
+        name: Lint
+        uses: Forsakringskassan/actions/.github/workflows/lint.yml@main
