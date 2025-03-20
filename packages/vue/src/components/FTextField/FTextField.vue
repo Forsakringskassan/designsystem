@@ -107,7 +107,7 @@
             :options="dropdownOptions"
             :active-option
             :active-option-id
-            :input-node="$refs.input"
+            :input-node="$refs.input as HTMLInputElement"
             @select="onDropdownSelect"
             @close="onDropdownClose"
         ></i-combobox-dropdown>
