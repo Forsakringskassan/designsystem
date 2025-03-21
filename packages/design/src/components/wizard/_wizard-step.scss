@@ -1,4 +1,5 @@
 @use "../../core";
+@use "variables" as *;
 
 $WIZARD_STEP_SELECTOR: ".wizard-step" !default;
 
@@ -82,7 +83,7 @@ $icon-size: 30px;
     }
 
     #{$step-of-selector} {
-        color: var(--f-text-color-discrete);
+        color: $wizardstep-stepofselector-color-text;
         font-weight: normal;
         font-size: 1rem;
     }
@@ -94,7 +95,7 @@ $icon-size: 30px;
         height: #{$line-down-length};
         margin-top: $line-gap-to-circle;
         width: #{$line-width};
-        background-color: var(--f-background-wizard-step-line);
+        background-color: $wizardstep-line-color;
     }
 
     #{$line-up-selector} {
@@ -103,7 +104,14 @@ $icon-size: 30px;
         width: #{$line-width};
         margin-top: #{$line-gap-to-circle};
         margin-bottom: #{$line-up-adjustment-down};
-        background-color: var(--f-background-wizard-step-line);
+        background-color: $wizardstep-line-color;
+    }
+
+    @media (forced-colors: active) {
+        #{$line-up-selector,
+        $line-down-selector} {
+            background-color: CanvasText;
+        }
     }
     @include core.breakpoint-up(md) {
         #{$line-up-selector} {
@@ -112,7 +120,7 @@ $icon-size: 30px;
     }
     @include core.breakpoint-up(md) {
         &__connector {
-            border-left: #{$line-width} solid var(--f-border-color-wizard-step-line);
+            border-left: #{$line-width} solid $wizardstep-line-color;
             padding-left: #{$line-desktop-push-content-right};
             margin-top: #{$line-desktop-adjustment-up};
             margin-left: #{$line-desktop-align-line};
@@ -123,12 +131,12 @@ $icon-size: 30px;
 
     &--open #{$header-selector} {
         #{$title-selector} {
-            color: var(--f-text-color-default);
+            color: $wizardstep-heading-color-default;
         }
 
         #{$icon-circle-selector} {
-            fill: var(--f-icon-color-discrete);
-            color: var(--f-icon-color-white);
+            fill: $wizardstep-circle-color-border;
+            color: $wizardstep-circle-color-background-open;
         }
 
         #{$icon-number-selector} {
@@ -150,18 +158,29 @@ $icon-size: 30px;
         #{$line-down-selector} {
             margin-bottom: 0;
         }
+
+        @media (forced-colors: active) {
+            #{$icon-circle-selector} {
+                fill: CanvasText; // circle border
+                color: Canvas; // circle background
+            }
+        }
     }
 
     &--done #{$header-selector} {
         margin-top: $line-gap-to-circle;
 
         #{$title-selector} {
-            color: var(--f-text-color-wizard-step-done);
-            text-decoration-color: var(--f-text-color-wizard-step-done);
+            color: $wizardstep-heading-color-done;
+            text-decoration-color: $wizardstep-heading-color-done;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 0.25em;
         }
 
         #{$title-selector}:hover {
-            text-decoration-color: var(--f-text-color-link-hover);
+            text-decoration-color: $wizardstep-heading-decoration-color-done-hover;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 0.25em;
         }
 
         #{$line-up-selector} {
@@ -173,8 +192,8 @@ $icon-size: 30px;
         }
 
         #{$icon-circle-selector} {
-            fill: var(--f-icon-color-wizard-step-done);
-            color: var(--f-icon-color-wizard-step-done);
+            fill: $wizardstep-circle-color-border-done;
+            color: $wizardstep-circle-color-background-done;
         }
 
         #{$icon-number-selector} {
@@ -183,7 +202,7 @@ $icon-size: 30px;
 
         #{$icon-success-selector} {
             display: block;
-            color: var(--f-icon-color-white);
+            color: $wizardstep-success-color;
             width: 20px;
             height: 20px;
             left: 5px;
@@ -192,6 +211,17 @@ $icon-size: 30px;
 
         #{$line-adjustment-selector} {
             height: calc(#{$line-down-length} + #{$line-gap-to-circle});
+        }
+
+        @media (forced-colors: active) {
+            #{$icon-circle-selector} {
+                fill: CanvasText; // circle border
+                color: Canvas; // circle background
+            }
+
+            #{$icon-success-selector} {
+                color: CanvasText;
+            }
         }
     }
 
@@ -205,8 +235,8 @@ $icon-size: 30px;
         }
 
         #{$icon-circle-selector} {
-            color: var(--f-icon-color-wizard-step-pending);
-            fill: var(--f-text-color-discrete);
+            fill: $wizardstep-circle-color-border;
+            color: $wizardstep-circle-color-background-pending;
         }
 
         #{$title-placeholder-selector} {
@@ -215,6 +245,13 @@ $icon-size: 30px;
 
         #{$line-adjustment-selector} {
             height: calc(#{$line-down-length} + (#{$line-gap-to-circle} * 2));
+        }
+
+        @media (forced-colors: active) {
+            #{$icon-circle-selector} {
+                fill: CanvasText; // circle border
+                color: Canvas; // circle background
+            }
         }
     }
 }
