@@ -2887,6 +2887,9 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
     slots: {
         default?(_: {}): any;
         'add-button'?(_: {}): any;
+        buttons?(_: {
+            buttonClasses: string[];
+        }): any;
         add?(_: {
             item: NonNullable<DistributeRef<[T | null] extends [Ref<any, any>] ? IfAny<Ref<any, any> & T, Ref<Ref<any, any> & T, Ref<any, any> & T>, Ref<any, any> & T> : Ref<UnwrapRef<T> | null, T | UnwrapRef<T> | null>>>;
         }): any;
