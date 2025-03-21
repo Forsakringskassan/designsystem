@@ -73,7 +73,7 @@
     "@fkui/theme-default": "6.3.0",
     "@fkui/vue": "6.3.0",
     "@forsakringskassan/docs-generator": "2.21.3",
-    "@forsakringskassan/vite-lib-config": "3.6.0",
+    "@forsakringskassan/vite-lib-config": "3.6.1",
     "@vue/test-utils": "2.4.6",
     "esbuild": "0.25.1",
     "vite": "6.2.2",
