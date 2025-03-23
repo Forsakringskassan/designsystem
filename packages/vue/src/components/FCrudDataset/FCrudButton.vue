@@ -1,6 +1,9 @@
 <template>
     <button type="button" class="button button--small button--tertiary" @click="executeAction">
         <f-icon v-if="icon" class="button__icon" :name="iconName"></f-icon>
+        <!--
+             @slot Slot used to provide custom content for the button text.
+        -->
         <span v-if="!label" class="sr-only">
             <slot> {{ buttonText }} </slot>
         </span>
@@ -19,6 +22,10 @@ export default defineComponent({
     components: { FIcon },
     mixins: [TranslationMixin],
     props: {
+        /**
+         * The action to be performed by the button.
+         * Must be one of the following values: "delete" or "modify".
+         */
         action: {
             type: String,
             required: true,
@@ -26,14 +33,24 @@ export default defineComponent({
                 return ["delete", "modify"].includes(value);
             },
         },
+        /**
+         * Determines if an icon should be displayed on the button.
+         */
         icon: {
             type: Boolean,
             default: false,
         },
+        /**
+         * The item that the action will be performed on.
+         */
         item: {
             type: Object,
             required: true,
         },
+        /**
+         * Determines if the button should display a label.
+         * If false, the button will use a visually hidden text for accessibility.
+         */
         label: {
             type: Boolean,
             default: false,
