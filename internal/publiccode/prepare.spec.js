@@ -2,6 +2,12 @@ import os from "node:os";
 import fs from "node:fs";
 import path from "node:path";
 import { jest } from "@jest/globals";
+import { gitAdd } from "./git-add";
+
+jest.mock("./git-add", () => ({
+    gitAdd: jest.fn(),
+}));
+
 import { verifyConditions, prepare } from "./index";
 
 const tempdir = fs.realpathSync(os.tmpdir());
@@ -15,7 +21,7 @@ dummy: dummy
 fs.writeFileSync(mockfile, mockdata);
 
 it("should prepare file with date and version", async () => {
-    expect.assertions(1);
+    expect.assertions(2);
     jest.useFakeTimers();
     jest.setSystemTime(new Date("2001-02-03"));
 
@@ -38,4 +44,5 @@ releaseDate: 2001-02-03
 dummy: dummy
 `;
     expect(result).toBe(expectedResult);
+    expect(gitAdd).toHaveBeenCalled();
 });
