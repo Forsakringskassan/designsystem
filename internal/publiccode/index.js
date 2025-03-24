@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { parse, stringify } from "yaml";
 import prettier from "prettier";
+import { gitAdd } from "./git-add";
 
 let verified = false;
 const filename = "publiccode.yml";
@@ -46,6 +47,7 @@ export async function prepare(_pluginConfig, context) {
             filepath: filePath,
         });
         fs.writeFileSync(filePath, formatted);
+        gitAdd(filePath);
         logger.log(`${filePath} updated.`);
     } else {
         logger.error(`publiccode not verified.`);
