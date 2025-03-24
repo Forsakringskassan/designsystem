@@ -19,7 +19,7 @@ export function computeCssValue(
         return percent * total;
     } else if (raw === "0") {
         return 0;
-    } else if (raw === "auto") {
+    } else if (raw === "auto" || raw === "") {
         return auto;
     } else {
         throw new Error(`Cant parse size from "${raw}"`);
