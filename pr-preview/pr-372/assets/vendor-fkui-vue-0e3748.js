@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
@@ -14657,6 +14657,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       expandableRows,
       hasExpandableContent
     } = expandableTable;
+    const tbodyElement = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
         stripClasses: []
@@ -14738,21 +14739,19 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       immediate: true,
       deep: true
     });
-    function updateTr(tbodyElement) {
-      const trElements = [].slice.call(tbodyElement.children);
+    function updateTr(tbodyElement2) {
+      const trElements = [].slice.call(tbodyElement2.children);
       const trInteractableElements = trElements.filter((tr2) => {
         return tr2.tabIndex === 0;
       });
       tr.value = trInteractableElements;
     }
     onUpdated(() => {
-      const tbodyElement = useTemplateRef("tbodyElement");
       if (tbodyElement.value) {
         updateTr(tbodyElement.value);
       }
     });
     onMounted(() => {
-      const tbodyElement = useTemplateRef("tbodyElement");
       if (tbodyElement.value) {
         updateTr(tbodyElement.value);
       }
@@ -14935,7 +14934,8 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
           name: iconName(column)
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_11$1, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
       }), 128))])]), _cache[17] || (_cache[17] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
-        ref: "tbodyElement",
+        ref_key: "tbodyElement",
+        ref: tbodyElement,
         key: tbodyKey.value
       }, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row, index) => {
         return openBlock(), createElementBlock(Fragment, {

@@ -24109,6 +24109,7 @@ const _hoisted_22 = ["colspan"];
       expandableRows,
       hasExpandableContent
     } = expandableTable;
+    const tbodyElement = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
         stripClasses: []
@@ -24190,21 +24191,19 @@ const _hoisted_22 = ["colspan"];
       immediate: true,
       deep: true
     });
-    function updateTr(tbodyElement) {
-      const trElements = [].slice.call(tbodyElement.children);
+    function updateTr(tbodyElement2) {
+      const trElements = [].slice.call(tbodyElement2.children);
       const trInteractableElements = trElements.filter((tr2) => {
         return tr2.tabIndex === 0;
       });
       tr.value = trInteractableElements;
     }
     onUpdated(() => {
-      const tbodyElement = useTemplateRef("tbodyElement");
       if (tbodyElement.value) {
         updateTr(tbodyElement.value);
       }
     });
     onMounted(() => {
-      const tbodyElement = useTemplateRef("tbodyElement");
       if (tbodyElement.value) {
         updateTr(tbodyElement.value);
       }
@@ -24387,7 +24386,8 @@ const _hoisted_22 = ["colspan"];
           name: iconName(column)
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_11$1, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
       }), 128))])]), _cache[17] || (_cache[17] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
-        ref: "tbodyElement",
+        ref_key: "tbodyElement",
+        ref: tbodyElement,
         key: tbodyKey.value
       }, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row, index) => {
         return openBlock(), createElementBlock(Fragment, {
