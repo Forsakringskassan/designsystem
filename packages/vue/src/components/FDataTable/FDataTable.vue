@@ -193,6 +193,8 @@ function escapeNewlines(value: string): string {
             </colgroup>
             <thead>
                 <tr class="table__row">
+                    <slot v-bind="{ row: {} }" />
+
                     <th
                         v-for="column in visibleColumns"
                         :key="column.id"
