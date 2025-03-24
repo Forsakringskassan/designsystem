@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { type PropType, computed, onMounted, watch } from "vue";
+import { type PropType, computed, onMounted, ref, useTemplateRef, watch } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import { FTableInjected } from "./FTableInterface";
 import { FTableColumnType, FTableColumnSize, FTableColumnSort, isTableColumnType } from "./FTableColumnData";
 
 const { renderColumns, setVisibilityColumn, addColumn } = FTableInjected();
+
+// Always render/visible element until `onMounted` finished to determine if it's a header.
+const internalVisible = ref(true);
+const renderElement = ref(true);
+
+const el = useTemplateRef("el");
 
 defineOptions({
     inheritAttrs: false,
@@ -115,7 +121,10 @@ const tagName = computed(() => {
 
 watch(
     () => props.visible,
-    () => setVisibilityColumn(props.name, props.visible),
+    () => {
+        internalVisible.value = props.visible;
+        setVisibilityColumn(props.name, props.visible);
+    },
 );
 
 onMounted(() => {
@@ -124,26 +133,50 @@ onMounted(() => {
     }
 
     const size = props.shrink ? FTableColumnSize.SHRINK : FTableColumnSize.EXPAND;
-    addColumn({
-        name: props.name,
-        title: props.title,
-        description: props.description || undefined,
-        id: ElementIdService.generateElementId("column"),
-        size,
-        type: props.type as FTableColumnType,
-        visible: props.visible,
-        sortable: false,
-        sort: FTableColumnSort.UNSORTED,
-    });
+
+    const header = isHeader();
+    if (header) {
+        addColumn({
+            name: props.name,
+            title: props.title,
+            description: props.description || undefined,
+            id: ElementIdService.generateElementId("column"),
+            size,
+            type: props.type as FTableColumnType,
+            visible: props.visible,
+            sortable: false,
+            sort: FTableColumnSort.UNSORTED,
+        });
+    }
+
+    renderElement.value = renderColumns && !header;
+    internalVisible.value = props.visible;
 });
+
+function isHeader(): boolean {
+    if (!el.value || !(el.value instanceof HTMLElement)) {
+        return false;
+    }
+    const closest = el.value.closest("thead, tbody");
+    return closest?.tagName === "THEAD";
+}
 </script>
 
 <template>
-    <component :is="tagName" v-if="renderColumns && visible" :class="classes" :scope="scope" v-bind="$attrs">
-        <slot></slot>
-        <!-- Extra space between columns for screen reader. Otherwise it can sometimes read two numbers as one longer number.
+    <component
+        :is="tagName"
+        v-if="renderElement && internalVisible"
+        ref="el"
+        :class="classes"
+        :scope="scope"
+        v-bind="$attrs"
+    >
+        <template v-if="renderColumns">
+            <slot></slot>
+            <!-- Extra space between columns for screen reader. Otherwise it can sometimes read two numbers as one longer number.
             For example a table with | 2 | 200 | can be read as 2200 in some languages.
-         -->
-        <span class="sr-only">&nbsp;</span>
+            -->
+            <span class="sr-only">&nbsp;</span>
+        </template>
     </component>
 </template>
