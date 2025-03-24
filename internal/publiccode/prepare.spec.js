@@ -2,13 +2,14 @@ import os from "node:os";
 import fs from "node:fs";
 import path from "node:path";
 import { jest } from "@jest/globals";
-import { gitAdd } from "./git-add";
 
-jest.mock("./git-add", () => ({
-    gitAdd: jest.fn(),
+const mockGitAdd = jest.fn();
+
+jest.unstable_mockModule("./git-add", () => ({
+    gitAdd: mockGitAdd,
 }));
 
-import { verifyConditions, prepare } from "./index";
+const { verifyConditions, prepare } = await import("./index");
 
 const tempdir = fs.realpathSync(os.tmpdir());
 const mockfile = path.join(tempdir, "publiccode.yml");
@@ -44,5 +45,5 @@ releaseDate: 2001-02-03
 dummy: dummy
 `;
     expect(result).toBe(expectedResult);
-    expect(gitAdd).toHaveBeenCalled();
+    expect(mockGitAdd).toHaveBeenCalled();
 });
