@@ -1,6 +1,6 @@
 {
   "name": "@fkui/logic",
-  "version": "6.3.0",
+  "version": "6.3.1",
   "description": "Logic",
   "keywords": [
     "fkui",
@@ -71,8 +71,8 @@
     "lodash.clonedeep": "4.5.0"
   },
   "devDependencies": {
-    "@fkui/date": "6.3.0",
-    "@fkui/test-utils": "6.3.0",
+    "@fkui/date": "6.3.1",
+    "@fkui/test-utils": "6.3.1",
     "@rollup/plugin-commonjs": "28.0.3",
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-typescript": "12.1.2",
@@ -83,7 +83,7 @@
     "rollup-plugin-dts": "6.2.1"
   },
   "peerDependencies": {
-    "@fkui/date": "^6.3.0"
+    "@fkui/date": "^6.3.1"
   },
   "engines": {
     "node": ">= 20",
