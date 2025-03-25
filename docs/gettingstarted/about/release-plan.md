@@ -17,7 +17,7 @@ I release [6.2.0](https://github.com/Forsakringskassan/designsystem/releases/tag
 
 - {@link news#beta-version-ny-applikationslayout betaversion} av nya komponenter för applikationslayout.
   Observera att de inte går att använda förrän de ligger i status produktionsklar.
-- diverse buggrättningar
+- diverse buggrättningar.
 
 Vi har också nyligen släppt release [6.0.0](https://github.com/Forsakringskassan/designsystem/releases/tag/v6.0.0) med bland annat följande uppdateringar:
 
@@ -43,6 +43,7 @@ Vi har också nyligen släppt release [6.0.0](https://github.com/Forsakringskass
   De nya komponenterna kommer vara mer flexibla, till exempel kan du fylla en yta med valfritt innehåll oberoende var den ligger.
   Till att börja med kommer ett antal olika varianter av layouter släppas.
 - Möjlighet för användare att snabbt kunna byta till annat år i kalender.
+- Genomlysning av komponent tabell. Vi kommer rätta buggar, uppdatera dokumentation och lägga till mindre förbättringar för tabell.
 
 ## Planerat arbete
 
