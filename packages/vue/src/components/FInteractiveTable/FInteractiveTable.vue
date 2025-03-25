@@ -205,6 +205,8 @@ const {
     hasExpandableContent,
 } = expandableTable;
 
+const tbodyElement = useTemplateRef<HTMLElement>("tbodyElement");
+
 const hasCaption = computed((): boolean => {
     return hasSlot("caption", {}, { stripClasses: [] });
 });
@@ -320,14 +322,12 @@ function updateTr(tbodyElement: HTMLElement): void {
 }
 
 onUpdated(() => {
-    const tbodyElement = useTemplateRef<HTMLElement>("tbodyElement");
     if (tbodyElement.value) {
         updateTr(tbodyElement.value);
     }
 });
 
 onMounted(() => {
-    const tbodyElement = useTemplateRef<HTMLElement>("tbodyElement");
     if (tbodyElement.value) {
         updateTr(tbodyElement.value);
     }

@@ -340,6 +340,8 @@ export class FInteractiveTablePageObject implements BasePageObject {
     // (undocumented)
     headersRow(): DefaultCypressChainable;
     // (undocumented)
+    row(index: number): DefaultCypressChainable;
+    // (undocumented)
     selector: string;
 }
 
