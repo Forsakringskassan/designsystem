@@ -808,8 +808,8 @@ Valideringskriterier:
 - Plustecken får bara stå först.
 - Minsta antal tecken är tre.
 - Det måste vara minst tre siffror.
-- Max antal tecken är 20.
-- Det får max vara 15 siffror.
+- Max antal tecken är 21.
+- Det får max vara 17 siffror.
 
 ```import nomarkup
 PhoneNumberExample.vue
