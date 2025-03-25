@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { parse, stringify } from "yaml";
 import prettier from "prettier";
-import { gitAdd } from "./git-add";
+// eslint-disable-next-line import/extensions -- esm needs extensions
+import { gitAdd } from "./git-add.js";
 
 let verified = false;
 const filename = "publiccode.yml";
