@@ -18600,7 +18600,7 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, config.buttonOrder);
+      return prepareButtonList(this.buttons, FKUIConfigButtonOrder.RIGHT_TO_LEFT);
     }
   },
   methods: {
