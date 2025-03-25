@@ -12668,97 +12668,12 @@ rotate: string;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_5" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export const FTableColumn: DefineComponent<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-visible: {
-type: BooleanConstructor;
-default: boolean;
-};
-rowHeader: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-title: {
-type: StringConstructor;
-required: true;
-};
-description: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-shrink: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-expand: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-type: {
-type: PropType<"text" | "date" | "numeric" | "action">;
-required: false;
-default: FTableColumnType;
-validator(value: string): value is FTableColumnType;
-};
-}>, Omit<FTableInterface, "textFieldTableMode">, {}, {
-classes(): string[];
-scope(): "row" | null;
-tagName(): "td" | "th";
-}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
-name: {
-type: StringConstructor;
-required: true;
-};
-visible: {
-type: BooleanConstructor;
-default: boolean;
-};
-rowHeader: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-title: {
-type: StringConstructor;
-required: true;
-};
-description: {
-type: StringConstructor;
-required: false;
-default: string;
-};
-shrink: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-expand: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
-type: {
-type: PropType<"text" | "date" | "numeric" | "action">;
-required: false;
-default: FTableColumnType;
-validator(value: string): value is FTableColumnType;
-};
-}>> & Readonly<{}>, {
-type: "text" | "date" | "action" | "numeric";
-description: string;
-shrink: boolean;
-expand: boolean;
-visible: boolean;
-rowHeader: boolean;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+export const FTableColumn: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, __VLS_TemplateResult_5["slots"]>;
 
 // @public (undocumented)
 export interface FTableColumnData {
@@ -15124,12 +15039,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_5" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_5" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_6" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_6" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_6" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, __VLS_TemplateResult_5["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_6<typeof __VLS_component_6, __VLS_TemplateResult_6["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
