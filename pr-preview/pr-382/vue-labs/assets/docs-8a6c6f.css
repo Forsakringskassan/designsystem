@@ -3179,7 +3179,7 @@ input[type=search]:focus,
 @media (forced-colors: active) and (prefers-color-scheme: light) {
   .checkbox input[type=checkbox]:checked + label::before {
     forced-color-adjust: none;
-    background-color: currentColor;
+    background-color: currentcolor;
   }
 }
 .checkbox input[type=checkbox]:checked + .checkbox__label::after {
