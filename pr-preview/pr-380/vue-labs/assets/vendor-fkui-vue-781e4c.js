@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
@@ -10360,6 +10360,10 @@ var _sfc_main$K = defineComponent({
   },
   mixins: [TranslationMixin],
   props: {
+    /**
+     * The action to be performed by the button.
+     * Must be one of the following values: "delete" or "modify".
+     */
     action: {
       type: String,
       required: true,
@@ -10367,14 +10371,24 @@ var _sfc_main$K = defineComponent({
         return ["delete", "modify"].includes(value);
       }
     },
+    /**
+     * Determines if an icon should be displayed on the button.
+     */
     icon: {
       type: Boolean,
       default: false
     },
+    /**
+     * The item that the action will be performed on.
+     */
     item: {
       type: Object,
       required: true
     },
+    /**
+     * Determines if the button should display a label.
+     * If false, the button will use a visually hidden text for accessibility.
+     */
     label: {
       type: Boolean,
       default: false
