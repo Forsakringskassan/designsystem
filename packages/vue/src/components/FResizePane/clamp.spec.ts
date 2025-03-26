@@ -1,4 +1,4 @@
-import { clamp } from "lodash";
+import { clamp } from "./clamp";
 
 const min = 20;
 const max = 25;
