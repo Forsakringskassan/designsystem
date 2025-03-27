@@ -26068,19 +26068,21 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock(Fragment, null, [
-        _cache[1] || (_cache[1] = createBaseVNode("h1", null, "Översikt", -1)),
-        _cache[2] || (_cache[2] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1)),
+        _cache[2] || (_cache[2] = createBaseVNode("h1", null, "Översikt", -1)),
+        _cache[3] || (_cache[3] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1)),
         createBaseVNode("button", {
           type: "button",
           onClick: openThing
         }, "Öppna 2"),
-        _cache[3] || (_cache[3] = createBaseVNode("h2", { id: "ankeborgare" }, "Ankeborgare", -1)),
         createVNode(unref(_sfc_main$h), {
           rows: ankeborgare,
           "key-attribute": "name",
-          onClick: _cache[0] || (_cache[0] = ($event) => showPerson($event)),
-          "aria-labelledby": "ankeborgare"
+          "aria-labelledby": "ankeborgare",
+          onClick: _cache[0] || (_cache[0] = ($event) => showPerson($event))
         }, {
+          caption: withCtx(() => _cache[1] || (_cache[1] = [
+            createTextVNode("Ankeborgare")
+          ])),
           default: withCtx(({ row }) => [
             createVNode(unref(_sfc_main$K), {
               name: "name",
@@ -26287,7 +26289,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-2ec09ed6"]]);
+const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-77bd8edb"]]);
 const app = createApp(App);
 app.use(router);
 app.mount("#app");
