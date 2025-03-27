@@ -132,5 +132,5 @@ it("should not have tabindex when disabled", async () => {
     await wrapper.vm.$nextTick();
     const shadowRoot = wrapper.get("ce-resize-pane").element.shadowRoot!;
     const separator = shadowRoot.querySelector<HTMLElement>("[role=separator]");
-    expect(separator?.tabIndex).toBeUndefined();
+    expect(separator?.tabIndex).toBe(-1);
 });

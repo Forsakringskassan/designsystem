@@ -6,6 +6,10 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
     display: contents;
 }
 
+:host([hidden]) {
+    display: none;
+}
+
 :host ::slotted(*) {
     display: contents;
 }
@@ -17,7 +21,10 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
 
     &--left {
         flex-direction: row;
-        width: var(--size);
+
+        &:not(.resize--disabled) {
+            width: var(--size);
+        }
 
         .resize__content {
             flex-direction: row;
@@ -26,7 +33,10 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
 
     &--right {
         flex-direction: row-reverse;
-        width: var(--size);
+
+        &:not(.resize--disabled) {
+            width: var(--size);
+        }
 
         .resize__content {
             flex-direction: row;
@@ -35,12 +45,18 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
 
     &--top {
         flex-direction: column;
-        height: var(--size);
+
+        &:not(.resize--disabled) {
+            height: var(--size);
+        }
     }
 
     &--bottom {
         flex-direction: column-reverse;
-        height: var(--size);
+
+        &:not(.resize--disabled) {
+            height: var(--size);
+        }
     }
 
     &__content {
@@ -60,17 +76,21 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
 
     &--left,
     &--right {
-        .resize__content {
-            min-width: calc(var(--min) - $handle-size);
-            max-width: calc(var(--max) - $handle-size);
+        &:not(.resize--disabled) {
+            .resize__content {
+                min-width: calc(var(--min) - $handle-size);
+                max-width: calc(var(--max) - $handle-size);
+            }
         }
     }
 
     &--top,
     &--bottom {
-        .resize__content {
-            min-height: calc(var(--min) - $handle-size);
-            max-height: calc(var(--max) - $handle-size);
+        &:not(.resize--disabled) {
+            .resize__content {
+                min-height: calc(var(--min) - $handle-size);
+                max-height: calc(var(--max) - $handle-size);
+            }
         }
     }
 }

@@ -91,3 +91,9 @@ Slutligen används layouten genom att sätta det nya registrerade namnet som `la
     <template #footer> [footer] </template>
 </f-page-layout>
 ```
+
+## Justerbara ytor och paneler
+
+Komponenten {@link FResizePane} kan användas för att skapa en yta vars storlek kan justeras av slutanvändaren.
+
+Använd {@link useResize} för att styra {@link FResizePane} om du skapar egna paneler.
