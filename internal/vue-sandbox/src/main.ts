@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import "@fkui/icon-lib-default/dist/f";
 import {
+    FormatPlugin,
     TestPlugin,
     ValidationPlugin,
     config,
@@ -17,5 +18,6 @@ const app = createApp(App);
 app.use(router);
 app.use(ValidationPlugin);
 app.use(TestPlugin);
+app.use(FormatPlugin);
 app.mount("#app");
 setRunningContext(app);
