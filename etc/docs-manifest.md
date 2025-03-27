@@ -56,6 +56,7 @@ components/modal/fconfirmmodal.html
 components/modal/fformmodal.html
 components/modal/fmodal.html
 components/page-layout/application-layout.html
+components/page-layout/fdetailspanel.html
 components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
 components/page-layout/fpagelayout.html
@@ -75,6 +76,12 @@ functions/config.html
 functions/cypress/pageobjects/FBadgePageObject/index.html
 functions/cypress/pageobjects/FBadgePageObject/is-inverted.html
 functions/cypress/pageobjects/FBadgePageObject/status.html
+functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html
+functions/cypress/pageobjects/FDetailsPanelPageObject/content.html
+functions/cypress/pageobjects/FDetailsPanelPageObject/el.html
+functions/cypress/pageobjects/FDetailsPanelPageObject/footer.html
+functions/cypress/pageobjects/FDetailsPanelPageObject/header.html
+functions/cypress/pageobjects/FDetailsPanelPageObject/index.html
 functions/cypress/pageobjects/FFileItemPageObject/filename.html
 functions/cypress/pageobjects/FFileItemPageObject/index.html
 functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html
@@ -118,6 +125,7 @@ functions/functions/render-slot-text.html
 functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html
 functions/functions/use-area-data.html
+functions/functions/use-details-panel.html
 functions/functions/use-modal.html
 functions/functions/use-resize.html
 functions/helpers/accessibility.html

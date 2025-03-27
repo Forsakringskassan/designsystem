@@ -1,0 +1,11 @@
+/* spacing around the panel (space from layout area/resize handle to header, content, footer) */
+$details-panel-padding: 0.5rem;
+
+/* distance between each slot: header, content, footer) */
+$details-panel-gap: 0.5rem;
+
+/* panel background color */
+$details-panel-background: var(--f-page-layout-background);
+
+/* button background color when hovering */
+$details-panel-icon-hover: var(--fkds-color-action-background-secondary-hover);

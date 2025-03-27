@@ -2,3 +2,9 @@
 @use "@fkui/design";
 @use "@fkui/design/lib/fonts.css";
 @use "@forsakringskassan/docs-live-example";
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}

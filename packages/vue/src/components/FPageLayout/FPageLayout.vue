@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted, useSlots } from "vue";
+import { computed, onUnmounted, useSlots } from "vue";
+import { resetDetailPanels } from "../FDetailsPanel/use-details-panel";
 import { PageLayout } from "./webcomponent";
+
+const tagName = `ce-page-layout`;
+if (!customElements.get(tagName)) {
+    customElements.define(tagName, PageLayout);
+}
 
 const emit = defineEmits<{
     /** Emitted when the layout has been recalculated */
@@ -9,21 +15,18 @@ const emit = defineEmits<{
 
 const { layout } = defineProps<{ layout: string }>();
 const slots = useSlots();
-const tagName = `ce-page-layout`;
 
 const slotNames = computed((): string[] => {
     return Object.keys(slots);
 });
 
-onMounted(() => {
-    if (!customElements.get(tagName)) {
-        customElements.define(tagName, PageLayout);
-    }
-});
-
 function onUpdate(): void {
     emit("update");
 }
+
+onUnmounted(() => {
+    resetDetailPanels();
+});
 </script>
 
 <template>
