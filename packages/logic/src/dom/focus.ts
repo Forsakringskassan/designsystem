@@ -2,7 +2,7 @@ import { configLogic } from "../config";
 import { isVisible } from "./is-visible";
 import { scrollTo } from "./scroll-to";
 
-const sym = Symbol("focus-stack");
+const sym = /* @__PURE__ */ Symbol("focus-stack");
 
 /**
  * @public
@@ -49,7 +49,7 @@ export interface FocusOptions {
     scrollToTop?: boolean;
 }
 
-const TABBABLE_ELEMENT_SELECTOR = [
+const TABBABLE_ELEMENT_SELECTOR = /* @__PURE__ */ [
     "a[href]",
     "area[href]",
     "input",
