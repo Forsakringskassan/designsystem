@@ -10360,6 +10360,10 @@ var _sfc_main$K = defineComponent({
   },
   mixins: [TranslationMixin],
   props: {
+    /**
+     * The action to be performed by the button.
+     * Must be one of the following values: "delete" or "modify".
+     */
     action: {
       type: String,
       required: true,
@@ -10367,14 +10371,24 @@ var _sfc_main$K = defineComponent({
         return ["delete", "modify"].includes(value);
       }
     },
+    /**
+     * Determines if an icon should be displayed on the button.
+     */
     icon: {
       type: Boolean,
       default: false
     },
+    /**
+     * The item that the action will be performed on.
+     */
     item: {
       type: Object,
       required: true
     },
+    /**
+     * Determines if the button should display a label.
+     * If false, the button will use a visually hidden text for accessibility.
+     */
     label: {
       type: Boolean,
       default: false
@@ -17907,9 +17921,7 @@ function useResize(options = {}) {
     enabled: options.enabled,
     visible: options.visible
   });
-  onUnmounted(() => {
-    unregister();
-  });
+  onUnmounted(unregister);
 }
 var _hoisted_1$4 = {
   slot: "content"
