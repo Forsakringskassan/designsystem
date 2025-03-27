@@ -502,14 +502,18 @@ function callbackBeforeItemDelete(item: T): void {
     if (internalRows.value.length === 0) {
         return;
     }
-    // Activate the item above the deleted one if it exists
+    // Focus the item above the deleted one if it exists
     let targetIndex = internalRows.value.indexOf(item) - 1;
     if (targetIndex < 0 && internalRows.value.length > 1) {
         targetIndex = 1;
     } else if (targetIndex < 0) {
         targetIndex = 0;
     }
-    activate(internalRows.value[targetIndex], tr.value[targetIndex]);
+
+    const target = tr.value[targetIndex];
+    if (target) {
+        target.focus();
+    }
 }
 
 function escapeNewlines(value: string): string {
