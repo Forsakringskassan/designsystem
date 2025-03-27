@@ -24549,9 +24549,7 @@ function useResize(options = {}) {
     enabled: options.enabled,
     visible: options.visible
   });
-  onUnmounted(() => {
-    unregister();
-  });
+  onUnmounted(unregister);
 }
 const _hoisted_1$o = {
   slot: "content"
@@ -26289,7 +26287,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-77bd8edb"]]);
+const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-0c51a777"]]);
 const app = createApp(App);
 app.use(router);
 app.mount("#app");
