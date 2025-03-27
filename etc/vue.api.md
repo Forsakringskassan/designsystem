@@ -15605,6 +15605,15 @@ export interface UseModal {
 // @public (undocumented)
 export function useModal(): UseModal;
 
+// @public
+export function useResize(options?: UseResizeOptions): void;
+
+// @public
+export interface UseResizeOptions {
+    readonly enabled?: Readonly<Ref<boolean>>;
+    readonly visible?: Readonly<Ref<boolean>>;
+}
+
 // @public (undocumented)
 export interface UseSlotUtils {
     // (undocumented)

@@ -115,7 +115,11 @@ const orientation = computed((): Orientation => {
 });
 
 const classes = computed(() => {
-    return [`resize--${attachment.value}`, `resize--${direction.value}`];
+    return [
+        `resize--${attachment.value}`,
+        `resize--${direction.value}`,
+        props.disabled ? "resize--disabled" : undefined,
+    ];
 });
 
 const layoutElement = computed(() => {

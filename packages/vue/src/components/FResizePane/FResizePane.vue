@@ -1,18 +1,54 @@
 <script setup lang="ts">
-import { defineCustomElement } from "vue";
+import { type Ref, computed, defineCustomElement, effectScope, provide, ref, watchEffect } from "vue";
 import FResizePane from "./FResizePane.ce.vue";
+import { injectionKey } from "./use-resize";
 
 const tagName = "ce-resize-pane";
 if (!customElements.get(tagName)) {
     customElements.define(tagName, defineCustomElement(FResizePane));
 }
 
+interface Component {
+    readonly enabled?: Readonly<Ref<boolean>>;
+    readonly visible?: Readonly<Ref<boolean>>;
+    id: number;
+}
+
+const anyEnabled = ref(true);
+const anyVisible = ref(true);
+
+let components: Component[] = [];
+let n = 0;
+
+function any<T>(src: T[], predicate: (it: T) => boolean): boolean {
+    return src.length === 0 || src.some(predicate);
+}
+
+provide(injectionKey, {
+    register(options) {
+        const component = { ...options, id: n++ };
+        components.push(component);
+        const scope = effectScope();
+        scope.run(() => {
+            watchEffect(() => {
+                anyEnabled.value = any(components, (it) => it.enabled?.value ?? true);
+            });
+            watchEffect(() => {
+                anyVisible.value = any(components, (it) => it.visible?.value ?? true);
+            });
+        });
+        return () => {
+            components = components.filter((it) => it.id !== component.id);
+            scope.stop();
+        };
+    },
+});
+
+const disabled = computed(() => anyEnabled.value === false);
+const hidden = computed(() => anyVisible.value === false);
+
 const props = withDefaults(
     defineProps<{
-        /**
-         * Disables resizing. The current size is locked.
-         */
-        disabled?: boolean;
         /**
          * Minimal size of pane.
          *
@@ -45,7 +81,7 @@ const props = withDefaults(
 </script>
 
 <template>
-    <component :is="tagName" v-bind="props">
+    <component :is="tagName" :disabled :hidden v-bind="props">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
         <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
         <div slot="content">
