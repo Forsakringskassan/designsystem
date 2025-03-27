@@ -40,6 +40,7 @@ module.exports = {
                         "^https://github.com/semantic-release/",
                         "^https://gitlab.com/html-validate/",
                         "^https://help.figma.com/",
+                        "^https://html-validate.org/",
                         "^https://www.i18next.com/",
                         "^https://support.atlassian.com/",
                         "^https://typedoc.org/",
