@@ -24536,7 +24536,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
+const _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted(*) {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
 const FResizePane$1 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["styles", [_style_0]]]);
 const injectionKey = Symbol("FResizePane");
 function useResize(options = {}) {
@@ -26070,8 +26070,9 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
         _cache[3] || (_cache[3] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1)),
         createBaseVNode("button", {
           type: "button",
+          class: "button button--secondary",
           onClick: openThing
-        }, "Öppna 2"),
+        }, "Öppna en helt annan detaljpanel"),
         createVNode(unref(_sfc_main$h), {
           rows: ankeborgare,
           "key-attribute": "name",
@@ -26246,38 +26247,47 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           ])
         ]),
         right: withCtx(() => [
-          createVNode(unref(XPersonPanel), {
-            name: "person-panel",
-            exclusive: "right"
+          createVNode(unref(FResizePane), {
+            min: "200px",
+            max: "40%",
+            initial: "200px"
           }, {
-            default: withCtx(({ item }) => [
-              _cache[8] || (_cache[8] = createBaseVNode("h2", null, "Detaljer om person", -1)),
-              createBaseVNode("dl", null, [
-                _cache[4] || (_cache[4] = createBaseVNode("dt", null, "Namn", -1)),
-                createBaseVNode("dd", null, toDisplayString(item.name), 1),
-                _cache[5] || (_cache[5] = createBaseVNode("dt", null, "Address", -1)),
-                createBaseVNode("dd", null, toDisplayString(item.adress ?? "-"), 1),
-                _cache[6] || (_cache[6] = createBaseVNode("dt", null, "Stad", -1)),
-                createBaseVNode("dd", null, toDisplayString(item.city ?? "-"), 1),
-                _cache[7] || (_cache[7] = createBaseVNode("dt", null, "Bil", -1)),
-                createBaseVNode("dd", null, toDisplayString(item.car ?? "-"), 1)
-              ])
-            ]),
-            _: 1
-          }),
-          createVNode(unref(XExpensePanel), {
-            name: "expense-panel",
-            exclusive: "right"
-          }, {
-            default: withCtx(({ item }) => [
-              createBaseVNode("dl", null, [
-                _cache[9] || (_cache[9] = createBaseVNode("dt", null, "ID", -1)),
-                createBaseVNode("dd", null, toDisplayString(item.id), 1),
-                _cache[10] || (_cache[10] = createBaseVNode("dt", null, "Beskrivning", -1)),
-                createBaseVNode("dd", null, toDisplayString(item.description), 1),
-                _cache[11] || (_cache[11] = createBaseVNode("dt", null, "Belopp", -1)),
-                createBaseVNode("dd", null, toDisplayString(item.amount) + " kr", 1)
-              ])
+            default: withCtx(() => [
+              createVNode(unref(XPersonPanel), {
+                name: "person-panel",
+                exclusive: "right"
+              }, {
+                default: withCtx(({ item }) => [
+                  _cache[8] || (_cache[8] = createBaseVNode("h2", null, "Detaljer om person", -1)),
+                  createBaseVNode("dl", null, [
+                    _cache[4] || (_cache[4] = createBaseVNode("dt", null, "Namn", -1)),
+                    createBaseVNode("dd", null, toDisplayString(item.name), 1),
+                    _cache[5] || (_cache[5] = createBaseVNode("dt", null, "Address", -1)),
+                    createBaseVNode("dd", null, toDisplayString(item.adress ?? "-"), 1),
+                    _cache[6] || (_cache[6] = createBaseVNode("dt", null, "Stad", -1)),
+                    createBaseVNode("dd", null, toDisplayString(item.city ?? "-"), 1),
+                    _cache[7] || (_cache[7] = createBaseVNode("dt", null, "Bil", -1)),
+                    createBaseVNode("dd", null, toDisplayString(item.car ?? "-"), 1)
+                  ])
+                ]),
+                _: 1
+              }),
+              createVNode(unref(XExpensePanel), {
+                name: "expense-panel",
+                exclusive: "right"
+              }, {
+                default: withCtx(({ item }) => [
+                  createBaseVNode("dl", null, [
+                    _cache[9] || (_cache[9] = createBaseVNode("dt", null, "ID", -1)),
+                    createBaseVNode("dd", null, toDisplayString(item.id), 1),
+                    _cache[10] || (_cache[10] = createBaseVNode("dt", null, "Beskrivning", -1)),
+                    createBaseVNode("dd", null, toDisplayString(item.description), 1),
+                    _cache[11] || (_cache[11] = createBaseVNode("dt", null, "Belopp", -1)),
+                    createBaseVNode("dd", null, toDisplayString(item.amount) + " kr", 1)
+                  ])
+                ]),
+                _: 1
+              })
             ]),
             _: 1
           })
@@ -26287,7 +26297,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-0c51a777"]]);
+const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-57a38cc1"]]);
 const app = createApp(App);
 app.use(router);
 app.mount("#app");

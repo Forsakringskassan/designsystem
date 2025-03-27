@@ -6790,7 +6790,7 @@ main {
     width: 100%;
 }
 
-[data-v-0c51a777]::part(grid awesome-layout) {
+[data-v-57a38cc1]::part(grid awesome-layout) {
     grid-template:
         "header header header" min-content
         "left contextbar contextbar" min-content
@@ -6798,19 +6798,19 @@ main {
         "left content right" 1fr
         / min-content 1fr;
 }
-[data-v-0c51a777]::part(area header) {
+[data-v-57a38cc1]::part(area header) {
     background: var(--f-background-pageheader-primary);
     color: var(--fkds-color-text-inverted);
 }
-[data-v-0c51a777]::part(area contextbar) {
+[data-v-57a38cc1]::part(area contextbar) {
     background: var(--fkds-color-background-secondary);
 }
-[data-v-0c51a777]::part(area toolbar) {
+[data-v-57a38cc1]::part(area toolbar) {
     background: var(--fkds-color-background-secondary);
 }
-[data-v-0c51a777]::part(area left) {
+[data-v-57a38cc1]::part(area left) {
     background: var(--fkds-color-background-secondary);
 }
-[data-v-0c51a777]::part(area right) {
+[data-v-57a38cc1]::part(area right) {
     background: var(--fkds-color-background-secondary);
 }
