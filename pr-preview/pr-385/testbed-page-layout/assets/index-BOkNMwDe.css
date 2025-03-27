@@ -1,4 +1,14 @@
 @charset "UTF-8";
+.format__date,
+.format__date-full,
+.format__date-long {
+    white-space: nowrap;
+}
+.format__number {
+    white-space: nowrap;
+    font-feature-settings: "tnum";
+}
+
 :root {
   --fkui-theme-default-version: "6.3.1";
   --fkds-color-text-primary: #1b1e23; /* Standard text färg */
