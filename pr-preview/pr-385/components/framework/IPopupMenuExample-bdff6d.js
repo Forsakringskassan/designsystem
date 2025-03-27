@@ -2045,7 +2045,7 @@ FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlin
 
 // packages/vue/src/plugins/format/FormatPlugin.ts
 import { DateFormat, FDate } from "@fkui/date";
-import { formatNumber, parseDate } from "@fkui/logic";
+import { formatNumber, parseBankgiro, parseDate } from "@fkui/logic";
 
 // packages/vue/src/components/FModal/sizes.ts
 var sizes = [
