@@ -1,6 +1,6 @@
 name: npm-pkg-lint
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
     npm-pkg-lint:

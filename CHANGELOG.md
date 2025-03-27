@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.3.1 (2025-03-25)
+
+### Bug Fixes
+
+* **@fkui/test-utils, @fkui/tsconfig:** use `moduleResolution` `bundler` instead of `node16` (refs SFKUI-6500) effa960
+* **@fkui/vue:** move focus with arrow keys in `FInteractiveTable` (fixes SFKUI-7136) 2231d03
+* **@fkui/vue:** set `keyAttribute` as optional for `FDataTable` (fixes SFKUI-6936) 3c64d99, closes #158
+* **@fkui/vue:** set `keyAttribute` as optional for `FInteractiveTable` (fixes SFKUI-6936) 2f8d465, closes #158
+* **@fkui/vue:** set `keyAttribute` as optional for `FList` (fixes SFKUI-6936) bb28be4, closes #158
+* **deps:** update dependency i18next to v24.2.3 ac251de
+* stage `publiccode.yml` after prepare (refs SFKUI-6500) fe63716
+
 ## 6.3.0 (2025-03-11)
 
 ### Features
