@@ -6,6 +6,7 @@ import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { ValidationPlugin } from "../../../plugins";
 import { FTextField } from "../../FTextField";
 import FModal from "../FModal.vue";
+import { config, FKUIConfigButtonOrder } from "../../../config";
 import { FFormModalAction } from "./action";
 import FFormModal from "./FFormModal.vue";
 
@@ -212,6 +213,32 @@ describe("events", () => {
 
         expect(wrapper.vm.$data["field1"]).toBe("foo");
         expect(wrapper.vm.$data["field2"]).toBe("bar");
+    });
+});
+
+describe("button order", () => {
+    it("should display buttons left to right", () => {
+        config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
+        const wrapper = mount(FFormModal, {
+            props: {
+                isOpen: true,
+            },
+        });
+        const buttonsGroup = wrapper.get(".modal__footer");
+        const primary = buttonsGroup.findAll("button")[0];
+        expect(primary.classes()).toContain("button--primary");
+    });
+
+    it("should display buttons right to left", () => {
+        config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
+        const wrapper = mount(FFormModal, {
+            props: {
+                isOpen: true,
+            },
+        });
+        const buttonsGroup = wrapper.get(".modal__footer");
+        const primary = buttonsGroup.findAll("button")[1];
+        expect(primary.classes()).toContain("button--primary");
     });
 });
 
