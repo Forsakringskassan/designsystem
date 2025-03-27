@@ -365,15 +365,6 @@ onMounted(() => {
     registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
 });
 
-function forceRepaintIE11(target: HTMLElement): void {
-    if (navigator.userAgent.includes("Trident")) {
-        target.style.display = "none";
-        /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, this function is probably not needed any longer */
-        target.offsetHeight;
-        target.style.removeProperty("display");
-    }
-}
-
 function isActive(row: T): boolean {
     if (!props.showActive) {
         return false;
@@ -412,13 +403,7 @@ function activate(row: T, tr: HTMLElement | null): void {
         setActiveRow(row);
 
         if (tr) {
-            /* ie11: force focus on <tr> instead of <td> */
             tr.focus();
-
-            /* ie11 also needs to force repaint or the outline will not
-             * be rendered properly */
-            const td = tr.children[0] as HTMLElement;
-            forceRepaintIE11(td);
         }
     }
 }
