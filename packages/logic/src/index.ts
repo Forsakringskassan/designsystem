@@ -41,6 +41,7 @@ export {
     TranslationService,
     ValidationErrorMessageBuilder,
     ValidationService,
+    availableValidators,
     getErrorMessages,
     isInvalidDatesConfig,
     isInvalidWeekdaysConfig,

@@ -1,6 +1,8 @@
-import "./Validators";
+import { requiredValidator } from "./Validators/RequiredValidator";
 import { ValidationService } from "./ValidationService";
 import { type ValidatableHTMLElement } from "./ValidationServiceInterface";
+
+ValidationService.registerValidator(requiredValidator);
 
 let fieldset: HTMLFieldSetElement;
 
