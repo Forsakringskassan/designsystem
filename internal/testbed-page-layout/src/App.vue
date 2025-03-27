@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo } from "@fkui/vue";
+import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo, FDetailsPanel } from "@fkui/vue";
 import { XContextBar, XToolbar } from "./components";
+import { type Expense } from "./expense";
+import { type Person } from "./person";
+
+const XPersonPanel = FDetailsPanel<Person>;
+const XExpensePanel = FDetailsPanel<Expense>;
 
 registerLayout({
     name: "awesome-layout",
@@ -67,7 +72,40 @@ registerLayout({
             </main>
         </template>
         <template #right>
-            <f-resize-pane min="200px" max="40%" initial="200px"> [Detaljpanel här] </f-resize-pane>
+            <f-resize-pane min="250px" max="40%" initial="200px">
+                <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
+                <x-person-panel name="person-panel" exclusive="right" heading-tag="h2">
+                    <template #default="{ item, header, content }">
+                        <h2 :slot="header">Detaljer om person</h2>
+                        <div :slot="content">
+                            <dl>
+                                <dt>Namn</dt>
+                                <dd>{{ item.name }}</dd>
+                                <dt>Address</dt>
+                                <dd>{{ item.adress ?? "-" }}</dd>
+                                <dt>Stad</dt>
+                                <dd>{{ item.city ?? "-" }}</dd>
+                                <dt>Bil</dt>
+                                <dd>{{ item.car ?? "-" }}</dd>
+                            </dl>
+                        </div>
+                    </template>
+                </x-person-panel>
+                <x-expense-panel name="expense-panel" exclusive="right" heading-tag="h2">
+                    <template #default="{ item, content }">
+                        <div :slot="content">
+                            <dl>
+                                <dt>ID</dt>
+                                <dd>{{ item.id }}</dd>
+                                <dt>Beskrivning</dt>
+                                <dd>{{ item.description }}</dd>
+                                <dt>Belopp</dt>
+                                <dd>{{ item.amount }} kr</dd>
+                            </dl>
+                        </div>
+                    </template>
+                </x-expense-panel>
+            </f-resize-pane>
         </template>
     </f-page-layout>
 </template>
