@@ -1076,7 +1076,7 @@
 <li>Om ytan ska vara justerbar eller ej.</li>
 <li>Om ytan ska visas eller ej.</li>
 </ul>
-<p>Om flera komponenter nyttjar denna i samma justerbara yta gäller att minst en utav dem aktiverar en egenskap, exempelvis om minst en komponent sätter <code>enabled</code> så är den justerbara ytan justerbar.</p>
+<p>Om flera komponenter nyttjar <code>useResize()</code> i samma justerbara yta och minst en av dem aktiverar en egenskap, exempelvis om minst en komponent sätter <code>enabled</code>, så är den justerbara ytan justerbar.</p>
 <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
                     id="example-58c82a"
@@ -1153,9 +1153,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/resize-fixes (<a href="https://github.com/Forsakringskassan/designsystem/commits/e17382851b65fcd3f3432f8bdc85cc00c3008a5b">e173828</a>)<br />
+    feature/resize-fixes (<a href="https://github.com/Forsakringskassan/designsystem/commits/940f2af1c23e0526fb75d17ce67fcd6940589f55">940f2af</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/374">PR 374</a><br />
-        2025-03-27 08:46
+        2025-03-27 08:50
 </div>
 <div class="toolbar__item">
     <form id="version">
