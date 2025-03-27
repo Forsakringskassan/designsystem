@@ -3231,7 +3231,7 @@ function renderSlot(slots, name, props = {}, fallback, noSlotted) {
     validSlotContent || (fallback ? fallback() : []),
     validSlotContent && slots._ === 1 ? 64 : -2
   );
-  if (!noSlotted && rendered.scopeId) {
+  if (rendered.scopeId) {
     rendered.slotScopeIds = [rendered.scopeId + "-s"];
   }
   if (slot && slot._c) {
@@ -25832,8 +25832,8 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
-const FResizePane$1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["styles", [_style_0]]]);
+const _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted(*) {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
+const FResizePane = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["styles", [_style_0]]]);
 const injectionKey = Symbol("FResizePane");
 const _hoisted_1$4 = {
   slot: "content"
@@ -25854,7 +25854,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     if (!customElements.get(tagName)) {
-      customElements.define(tagName, /* @__PURE__ */ defineCustomElement(FResizePane$1));
+      customElements.define(tagName, /* @__PURE__ */ defineCustomElement(FResizePane));
     }
     const anyEnabled = ref(true);
     const anyVisible = ref(true);
@@ -25901,13 +25901,12 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         disabled: disabled.value,
         hidden: hidden.value
       }, props), {
-        default: withCtx(() => [createBaseVNode("div", _hoisted_1$4, [renderSlot(_ctx.$slots, "default", {}, void 0, true)])]),
+        default: withCtx(() => [createBaseVNode("div", _hoisted_1$4, [renderSlot(_ctx.$slots, "default")])]),
         _: 3
       }, 16, ["disabled", "hidden"]);
     };
   }
 });
-const FResizePane = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-083850c7"]]);
 const _sfc_main$2 = {};
 const _hoisted_1$1 = { class: "contextbar" };
 function _sfc_render(_ctx, _cache) {
@@ -26019,7 +26018,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           createVNode(unref(_sfc_main$1))
         ]),
         left: withCtx(() => [
-          createVNode(unref(FResizePane), {
+          createVNode(unref(_sfc_main$4), {
             min: "200px",
             max: "40%",
             initial: "200px"
@@ -26037,7 +26036,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           ])
         ]),
         right: withCtx(() => [
-          createVNode(unref(FResizePane), {
+          createVNode(unref(_sfc_main$4), {
             min: "200px",
             max: "40%",
             initial: "200px"
