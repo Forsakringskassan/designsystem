@@ -44,6 +44,7 @@ export {
     type ValidityNativeEvent,
     ValidationErrorMessageBuilder,
     ValidationService,
+    availableValidators,
     getErrorMessages,
     isInvalidDatesConfig,
     isInvalidWeekdaysConfig,

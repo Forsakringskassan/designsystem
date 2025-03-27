@@ -32,6 +32,7 @@ export {
     type MaxLengthValidatorConfig,
     type MinDateValidatorConfig,
     type MinLengthValidatorConfig,
+    availableValidators,
     isInvalidDatesConfig,
     isInvalidWeekdaysConfig,
 } from "./Validators";
