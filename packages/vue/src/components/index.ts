@@ -22,6 +22,12 @@ export {
 export { FDataTable } from "./FDataTable";
 export { FDatepickerField } from "./FDatepickerField";
 export {
+    type DetailsPanelCloseCallback,
+    type UseDetailsPanel,
+    FDetailsPanel,
+    useDetailsPanel,
+} from "./FDetailsPanel";
+export {
     type FDialogueTreeData,
     type FDialogueTreeEndQuestion,
     type FDialogueTreeOption,

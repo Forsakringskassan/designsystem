@@ -435,6 +435,12 @@ align: string;
 export { _default as FValidationForm }
 export { _default as IValidationForm }
 
+// @public (undocumented)
+export type DetailsPanelCloseCallback<T> = (data: {
+    item: T;
+    reason: string;
+}) => void;
+
 // @internal
 export function dispatchComponentUnmountEvent(element: ValidatableHTMLElement): void;
 
@@ -4416,6 +4422,35 @@ highlight: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_3" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FDetailsPanel: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_3<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_3<Pick<Partial<{}> & Omit<{} & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, never> & {
+        name: string;
+        exclusive?: string;
+    } & Partial<{}>> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        header?(_: {
+            item: T;
+            close: (reason?: string) => void;
+        }): any;
+        default?(_: {
+            item: T;
+            close: (reason?: string) => void;
+        }): any;
+        footer?(_: {
+            item: T;
+            close: (reason?: string) => void;
+        }): any;
+    };
+    emit: {};
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
+
 // @public (undocumented)
 export const FDialogueTree: DefineComponent<ExtractPropTypes<    {
 modelValue: {
@@ -6643,11 +6678,11 @@ export function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined
 // @public
 export function findParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | undefined;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_3<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
-    props: __VLS_PrettifyLocal_3<Pick<Partial<{
+export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_4<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_4<Pick<Partial<{
         modelValue: T[] | undefined;
         scroll: TableScroll;
         keyAttribute: string;
@@ -7047,11 +7082,11 @@ export interface FLayoutRightPanelInteface {
 // @public (undocumented)
 export const FLayoutRightPanelService: FLayoutRightPanelInteface;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_5" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_4<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
-    props: __VLS_PrettifyLocal_4<Pick<Partial<{
+export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_5<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_5<Pick<Partial<{
         elementId: string;
         modelValue: T[] | undefined;
         checkbox: boolean;
@@ -7257,9 +7292,9 @@ default: string;
 validator(value: string): boolean;
 };
 }>> & Readonly<{}>, {
+layout: "standard" | "short";
 banner: boolean;
 provideScreenReaderContext: boolean;
-layout: "standard" | "short";
 }, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -12533,11 +12568,11 @@ rotate: string;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_6" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_5<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
-    props: __VLS_PrettifyLocal_5<Pick<Partial<{
+export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_6<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_6<Pick<Partial<{
         data: T[];
         defaultSortAttribute: string;
         showSort: boolean;
@@ -15594,6 +15629,19 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
     selectOption: (value: string) => void;
     closeDropdown: () => void;
 };
+
+// @public (undocumented)
+export interface UseDetailsPanel<T = unknown> {
+    // (undocumented)
+    close(): void;
+    // (undocumented)
+    open(item: T, options?: {
+        onClose?: DetailsPanelCloseCallback<T>;
+    }): void;
+}
+
+// @public
+export function useDetailsPanel<T = unknown>(name: string): UseDetailsPanel<T>;
 
 // @public
 export interface UseModal {
