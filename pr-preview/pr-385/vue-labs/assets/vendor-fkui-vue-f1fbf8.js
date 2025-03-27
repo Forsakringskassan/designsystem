@@ -6053,29 +6053,43 @@ function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
   })]);
 }
 var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$G]]);
+function formatNumbers(el, number) {
+  var _formatNumber;
+  el.innerText = (_formatNumber = formatNumber(number)) !== null && _formatNumber !== void 0 ? _formatNumber : "";
+  el.classList.add("format__number");
+}
+function formatDate(el, date) {
+  var _parseDate;
+  el.innerText = (_parseDate = parseDate(date)) !== null && _parseDate !== void 0 ? _parseDate : "";
+  el.classList.add("format__date");
+}
+function formatDateFull(el, date) {
+  var _parseDate2;
+  const dateString = (_parseDate2 = parseDate(date)) !== null && _parseDate2 !== void 0 ? _parseDate2 : "";
+  el.innerText = FDate.fromIso(dateString).toString(DateFormat.FULL);
+  el.classList.add("format__date-full");
+}
+function formatDateLong(el, date) {
+  var _parseDate3;
+  const dateString = (_parseDate3 = parseDate(date)) !== null && _parseDate3 !== void 0 ? _parseDate3 : "";
+  el.innerText = FDate.fromIso(dateString).toString(DateFormat.LONG);
+  el.classList.add("format__date-long");
+}
 var FormatPlugin = {
   install(app) {
     app.directive("format", (el, binding) => {
-      var _formatNumber, _parseDate, _parseDate2, _parseDate3;
-      let dateString = "";
       switch (binding.arg) {
         case "number":
-          el.innerText = (_formatNumber = formatNumber(binding.value)) !== null && _formatNumber !== void 0 ? _formatNumber : "";
-          el.classList.add("format__number");
+          formatNumbers(el, binding.value);
           break;
         case "date":
-          el.innerText = (_parseDate = parseDate(binding.value)) !== null && _parseDate !== void 0 ? _parseDate : "";
-          el.classList.add("format__date");
+          formatDate(el, binding.value);
           break;
         case "date-full":
-          dateString = (_parseDate2 = parseDate(binding.value)) !== null && _parseDate2 !== void 0 ? _parseDate2 : "";
-          el.innerText = FDate.fromIso(dateString).toString(DateFormat.FULL);
-          el.classList.add("format__date-full");
+          formatDateFull(el, binding.value);
           break;
         case "date-long":
-          dateString = (_parseDate3 = parseDate(binding.value)) !== null && _parseDate3 !== void 0 ? _parseDate3 : "";
-          el.innerText = FDate.fromIso(dateString).toString(DateFormat.LONG);
-          el.classList.add("format__date-long");
+          formatDateLong(el, binding.value);
           break;
       }
     });
