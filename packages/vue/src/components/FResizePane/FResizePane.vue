@@ -90,3 +90,9 @@ const props = withDefaults(
         </div>
     </component>
 </template>
+
+<style scoped>
+[slot="content"] {
+    display: contents;
+}
+</style>
