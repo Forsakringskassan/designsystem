@@ -8,8 +8,20 @@ import {
     type ValidityEvent,
 } from "./ValidationServiceInterface";
 import { type Validator, type ValidatorName } from "./Validator";
-import "./Validators";
+import { dateValidator } from "./Validators/DateValidator";
+import { emailValidator } from "./Validators/EmailValidator";
+import { maxLengthValidator } from "./Validators/MaxLengthValidator";
+import { minLengthValidator } from "./Validators/MinLengthValidator";
+import { requiredValidator } from "./Validators/RequiredValidator";
+import { whitelistValidator } from "./Validators/WhitelistValidator";
 import { registry } from "./registry";
+
+ValidationService.registerValidator(dateValidator);
+ValidationService.registerValidator(emailValidator);
+ValidationService.registerValidator(requiredValidator);
+ValidationService.registerValidator(maxLengthValidator);
+ValidationService.registerValidator(minLengthValidator);
+ValidationService.registerValidator(whitelistValidator);
 
 function setBodyInnerHTML(html: string): void {
     document.body.innerHTML = html;

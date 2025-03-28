@@ -1,7 +1,7 @@
 import { PersistenceServiceInterface } from "./PersistenceServiceInterface";
 
 /* istanbul ignore next: manually tested */
-const haveSessionStorage = (() => {
+const haveSessionStorage = /* @__PURE__ */ (() => {
     const test = "fkui.sessionstorage.test";
     try {
         if (window.sessionStorage) {

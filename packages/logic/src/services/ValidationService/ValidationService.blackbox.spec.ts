@@ -1,5 +1,7 @@
-import "./Validators";
+import { requiredValidator } from "./Validators/RequiredValidator";
 import { ValidationService } from "./ValidationService";
+
+ValidationService.registerValidator(requiredValidator);
 
 it("should set isTouched on blur", async () => {
     expect.assertions(2);

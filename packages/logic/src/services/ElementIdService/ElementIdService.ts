@@ -39,4 +39,5 @@ class ElementIdServiceImpl implements ElementIdServiceInterface {
  * @public
  */
 export const ElementIdService: ElementIdServiceInterface =
+    /* @__PURE__ */
     new ElementIdServiceImpl();

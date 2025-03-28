@@ -24,6 +24,9 @@ export interface AllowListValidatorConfig extends ValidatorOptions {
 }
 
 // @public
+export const availableValidators: Validator[];
+
+// @public
 export type BankAccountNumberString = string;
 
 // @public
