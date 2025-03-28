@@ -6698,7 +6698,6 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        'row-description'?(_: {}): any;
         caption?(_: {}): any;
         'checkbox-description'?(_: {
             row: T;
@@ -6713,6 +6712,10 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
             row: T;
         }): any;
         default?(_: {
+            row: T;
+        }): any;
+        'row-description'?(_: {
+            class: string;
             row: T;
         }): any;
         expandable?(_: {
