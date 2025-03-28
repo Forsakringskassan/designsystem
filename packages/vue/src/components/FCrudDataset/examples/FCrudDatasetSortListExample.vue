@@ -4,7 +4,7 @@
             <f-sort-filter-dataset
                 :data="fruits"
                 :sortable-attributes="{
-                    namn: 'Namn',
+                    name: 'Namn',
                     origin: 'Land',
                 }"
             >
