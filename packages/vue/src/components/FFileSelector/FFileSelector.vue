@@ -49,6 +49,9 @@ export default defineComponent({
             required: false,
             default: () => ElementIdService.generateElementId(),
         },
+        /**
+         * Disables the file selector.
+         */
         disabled: {
             type: Boolean,
             required: false,
