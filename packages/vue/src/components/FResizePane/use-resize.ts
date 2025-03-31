@@ -6,6 +6,8 @@ import { type InjectionKey, inject, onUnmounted, type Ref } from "vue";
 export interface ResizeParams {
     readonly enabled?: Readonly<Ref<boolean>>;
     readonly visible?: Readonly<Ref<boolean>>;
+    readonly offset?: Readonly<Ref<number>>;
+    readonly overlay?: Readonly<Ref<boolean>>;
 }
 
 /**
@@ -33,6 +35,9 @@ export interface UseResizeOptions {
 
     /** When one or more compoents set `visible` to `true` the resize pane is visible */
     readonly visible?: Readonly<Ref<boolean>>;
+
+    readonly offset?: Readonly<Ref<number>>;
+    readonly overlay?: Readonly<Ref<boolean>>;
 }
 
 /**
@@ -52,6 +57,8 @@ export function useResize(options: UseResizeOptions = {}): void {
     const unregister = api.register({
         enabled: options.enabled,
         visible: options.visible,
+        overlay: options.overlay,
+        offset: options.offset,
     });
 
     onUnmounted(unregister);

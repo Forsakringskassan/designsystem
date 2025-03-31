@@ -14,6 +14,10 @@ import { useStorage } from "./use-storage";
 
 const STEP_SIZE = 10;
 
+defineOptions({
+    inheritAttrs: false,
+})
+
 const props = withDefaults(
     defineProps<{
         overlay?: boolean;
@@ -46,6 +50,7 @@ const props = withDefaults(
     }>(),
     {
         overlay: false,
+        offset: 0,
         disabled: false,
         min: "0",
         max: "100%",
@@ -190,7 +195,7 @@ function getLayoutSize(): number {
 
 <template>
     <div class="resize__offset" :style="{ width: `${offset}px` }" v-if="overlay && offset"></div>
-    <div ref="root" class="resize" :class="classes">
+    <div ref="root" class="resize" :class="classes" v-bind="$attrs">
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->
             <slot name="content"></slot>

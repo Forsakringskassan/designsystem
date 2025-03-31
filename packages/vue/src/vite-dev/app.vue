@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineComponent, h, ref } from "vue";
+import { computed, defineComponent, h, ref, useTemplateRef } from "vue";
 import { FPageLayout, FResizePane, FDetailsPanel, useDetailsPanel, useResize } from "../components";
 
 interface Item {
@@ -16,20 +16,26 @@ const awesomeItem: Item = {
 };
 
 const open = ref(false);
-const enabled = ref(true);
 const visible = ref(true);
+const offset = ref(0);
+const element = useTemplateRef("collapsed");
 
 const MenuPanel = defineComponent({
     setup(_props, { slots }) {
         useResize({
             enabled: open,
             visible,
+            overlay: open,
+            offset,
         });
         return () => h("div", slots.default?.());
     },
 });
 
 function toggle(): void {
+    if (element.value) {
+        offset.value = element.value.getBoundingClientRect().width + 2;
+    }
     open.value = !open.value;
 }
 </script>
@@ -37,11 +43,11 @@ function toggle(): void {
 <template>
     <f-page-layout layout="three-column">
         <template #left>
-            <f-resize-pane min="10%" max="50%" initial="25%" overlay :offset="50">
+            <f-resize-pane min="10%" max="50%" initial="25%">
                 <menu-panel>
                     <template v-if="open"> opened <button type="button" @click="toggle">&lt;&lt;</button> </template>
                     <template v-else>
-                        <div style="width: 50px">
+                        <div ref="collapsed">
                             <button type="button" @click="toggle">&gt;&gt;</button>
                         </div>
                     </template>
