@@ -507,7 +507,7 @@ module.exports = defineMetadata({
             description: ["/.+/"],
             type: ["text", "date", "numeric", "action"],
         },
-        requiredAttributes: ["name", "title"],
+        requiredAttributes: ["title"],
         permittedContent: ["@phrasing", "button", "f-badge"],
     },
 

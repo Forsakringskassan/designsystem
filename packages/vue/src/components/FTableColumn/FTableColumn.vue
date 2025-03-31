@@ -10,6 +10,7 @@ const { renderColumns, setVisibilityColumn, addColumn } = FTableInjected();
 const internalVisible = ref(true);
 const renderElement = ref(true);
 
+const id = ElementIdService.generateElementId("column");
 const el = useTemplateRef("el");
 
 defineOptions({
@@ -18,14 +19,14 @@ defineOptions({
 
 const props = defineProps({
     /**
-     * Unique (per-table) identifier.
+     * Unique (per-table) identifier. Typically set to the row
+     * property displayed but any unique string can be used.
      *
-     * Typically set to the row property displayed but any unique string can
-     * be used.
+     * Only required when used with `FSortFilterDataset`.
      */
     name: {
         type: String,
-        required: true,
+        default: undefined,
     },
     /**
      * If set to true, display the column, set to false to hide it.
@@ -123,7 +124,7 @@ watch(
     () => props.visible,
     () => {
         internalVisible.value = props.visible;
-        setVisibilityColumn(props.name, props.visible);
+        setVisibilityColumn(id, props.visible);
     },
 );
 
@@ -140,7 +141,7 @@ onMounted(() => {
             name: props.name,
             title: props.title,
             description: props.description || undefined,
-            id: ElementIdService.generateElementId("column"),
+            id,
             size,
             type: props.type as FTableColumnType,
             visible: props.visible,

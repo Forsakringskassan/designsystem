@@ -74,7 +74,7 @@ describe("addColumn()", () => {
         ]);
     });
 
-    it("should not add duplicates", () => {
+    it("should throw error if name already exists", () => {
         expect.assertions(1);
         const src: FTableColumnData[] = [
             {
@@ -88,28 +88,20 @@ describe("addColumn()", () => {
                 sort: FTableColumnSort.UNSORTED,
             },
         ];
-        const dst = addColumn(src, {
-            id: "column-test-id-1",
-            name: "1",
-            title: "bar",
-            size: FTableColumnSize.EXPAND,
-            type: FTableColumnType.NUMERIC,
-            visible: true,
-            sortable: false,
-            sort: FTableColumnSort.UNSORTED,
-        });
-        expect(dst).toEqual([
-            {
+        expect(() => {
+            addColumn(src, {
                 id: "column-test-id-1",
                 name: "1",
-                title: "foo",
+                title: "bar",
                 size: FTableColumnSize.EXPAND,
-                type: FTableColumnType.TEXT,
+                type: FTableColumnType.NUMERIC,
                 visible: true,
                 sortable: false,
                 sort: FTableColumnSort.UNSORTED,
-            },
-        ]);
+            });
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Expected FTableColumn to have a unique name but encountered duplicate of "1""`,
+        );
     });
 });
 
@@ -127,7 +119,7 @@ it("should hide column", async () => {
             sort: FTableColumnSort.UNSORTED,
         },
     ];
-    setVisibilityColumn(src, "1", false);
+    setVisibilityColumn(src, "column-test-id-1", false);
 
     expect(src).toEqual([
         {
