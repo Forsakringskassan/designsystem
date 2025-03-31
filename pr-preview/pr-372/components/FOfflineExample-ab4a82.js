@@ -3413,7 +3413,7 @@ var FFormModal_default = defineComponent11({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, config.buttonOrder);
+      return prepareButtonList(this.buttons);
     }
   },
   methods: {
