@@ -129,8 +129,8 @@ it("should add table colum headers to <thead> with correct classes", async () =>
     );
 });
 
-it("should not add duplicate table colums", async () => {
-    expect.assertions(2);
+it("should throw error if `FTableColumn.name` is duplicated", async () => {
+    expect.assertions(1);
     const TestComponent = {
         components: { FDataTable, FTableColumn },
         template: /* HTML */ `
@@ -147,11 +147,11 @@ it("should not add duplicate table colums", async () => {
             };
         },
     };
-    const wrapper = mount(TestComponent);
-    await wrapper.vm.$nextTick();
-    const th = wrapper.findAll("thead th");
-    expect(th).toHaveLength(1); /* should only be added once */
-    expect(th[0].text()).toBe("A");
+    expect(() => {
+        mount(TestComponent);
+    }).toThrowErrorMatchingInlineSnapshot(
+        `"Expected FTableColumn to have a unique name but encountered duplicate of "a""`,
+    );
 });
 
 it("should set scope on table columns", async () => {
