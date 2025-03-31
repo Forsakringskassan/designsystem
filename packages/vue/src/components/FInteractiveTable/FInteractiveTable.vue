@@ -460,7 +460,12 @@ function onClickColumnHeader(column: FTableColumnData): void {
     if (!column.sortable) {
         return;
     }
+
     let columnName = column.name;
+    if (!columnName) {
+        throw new Error("`FTableColumn` must have a unique `name` when used with `FSortFilterDataset`");
+    }
+
     if (column.sort === FTableColumnSort.DESCENDING) {
         columnName = "";
         column.sort = FTableColumnSort.UNSORTED;

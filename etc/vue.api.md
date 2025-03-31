@@ -12688,7 +12688,7 @@ export interface FTableColumnData {
     // (undocumented)
     id: string;
     // (undocumented)
-    name: string;
+    name?: string;
     // (undocumented)
     size: FTableColumnSize;
     // (undocumented)
