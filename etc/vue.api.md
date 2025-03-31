@@ -6714,13 +6714,13 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         default?(_: {
             row: T;
         }): any;
-        'row-description'?(_: {
-            class: string;
-            row: T;
-        }): any;
         expandable?(_: {
             expandableRow: T;
             parentRow: T;
+        }): any;
+        'row-description'?(_: {
+            class: string;
+            row: T;
         }): any;
         empty?(_: {}): any;
     };

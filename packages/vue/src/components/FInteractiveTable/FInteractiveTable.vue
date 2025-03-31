@@ -593,16 +593,6 @@ function setActiveRow(row: T | undefined): void {
                             * `row: ListItem;` The object to be visualized.
                         -->
                         <slot v-bind="{ row }" />
-
-                        <!--
-                            @slot Slot for screen reader text when row get focus. The row object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ row }"`.
-
-                            The following properties are available:
-
-                            * `row: ListItem;` The object to be visualized.
-                            @binding {T} row - The object to be screen read.
-                        -->
-                        <slot name="row-description" v-bind="{ row }" class="sr-only"></slot>
                     </tr>
 
                     <template v-if="isExpandableTable && hasExpandableContent(row)">
@@ -643,6 +633,16 @@ function setActiveRow(row: T | undefined): void {
                             </td>
                         </tr>
                     </template>
+
+                    <!--
+                        @slot Slot for screen reader text when row get focus. The row object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ row }"`.
+
+                        The following properties are available:
+
+                        * `row: ListItem;` The object to be visualized.
+                        @binding {T} row - The object to be screen read.
+                    -->
+                    <slot name="row-description" v-bind="{ row }" class="sr-only"></slot>
                 </template>
 
                 <tr v-if="isEmpty && columns.length === 0">
