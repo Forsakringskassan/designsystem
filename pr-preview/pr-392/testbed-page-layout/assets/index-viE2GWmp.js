@@ -24424,22 +24424,16 @@ const _hoisted_22 = ["colspan"];
           ref_for: true
         }, {
           row
-        })), _cache[8] || (_cache[8] = createTextVNode()), renderSlot(_ctx.$slots, "row-description", mergeProps({
-          ref_for: true
-        }, {
-          row
-        }, {
-          class: "sr-only"
-        }))], 42, _hoisted_12$1), _cache[12] || (_cache[12] = createTextVNode()), unref(isExpandableTable) && unref(hasExpandableContent)(row) ? (openBlock(true), createElementBlock(Fragment, {
+        }))], 42, _hoisted_12$1), _cache[11] || (_cache[11] = createTextVNode()), unref(isExpandableTable) && unref(hasExpandableContent)(row) ? (openBlock(true), createElementBlock(Fragment, {
           key: 0
         }, renderList(unref(expandableRows)(row), (expandableRow, expandableIndex) => {
           return openBlock(), createElementBlock("tr", {
             key: rowKey(expandableRow),
             "aria-level": "2",
             class: normalizeClass(unref(expandableRowClasses)(row, expandableIndex))
-          }, [_cache[9] || (_cache[9] = createBaseVNode("td", {
+          }, [_cache[8] || (_cache[8] = createBaseVNode("td", {
             class: "table__column--placeholder"
-          }, null, -1)), _cache[10] || (_cache[10] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_18)) : createCommentVNode("", true), _cache[11] || (_cache[11] = createTextVNode()), !unref(hasExpandableSlot) ? renderSlot(_ctx.$slots, "default", mergeProps({
+          }, null, -1)), _cache[9] || (_cache[9] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_18)) : createCommentVNode("", true), _cache[10] || (_cache[10] = createTextVNode()), !unref(hasExpandableSlot) ? renderSlot(_ctx.$slots, "default", mergeProps({
             key: 1,
             ref_for: true
           }, {
@@ -24454,7 +24448,13 @@ const _hoisted_22 = ["colspan"];
             expandableRow,
             parentRow: row
           }))], 8, _hoisted_19))], 2);
-        }), 128)) : createCommentVNode("", true)], 64);
+        }), 128)) : createCommentVNode("", true), _cache[12] || (_cache[12] = createTextVNode()), renderSlot(_ctx.$slots, "row-description", mergeProps({
+          ref_for: true
+        }, {
+          row
+        }, {
+          class: "sr-only"
+        }))], 64);
       }), 128)), _cache[14] || (_cache[14] = createTextVNode()), isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_20, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         row: {}
       })))])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_21, [createBaseVNode("td", {
