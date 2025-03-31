@@ -14,10 +14,6 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
     display: contents;
 }
 
-.resize__offset {
-    /* empty stub */
-}
-
 .resize {
     flex-grow: 1;
     display: flex;
@@ -25,7 +21,6 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
 
     &--overlay {
         position: absolute;
-        //inset: 0;
         z-index: 1;
         background: var(--background);
     }

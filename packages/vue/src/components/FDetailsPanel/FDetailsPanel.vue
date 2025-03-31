@@ -85,21 +85,6 @@ function onClose(reason: string = "close"): void {
     padding: 0.5rem;
     gap: 0.5rem;
     min-width: 25ch;
-
-    @media (width < 640px) {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        z-index: 1;
-
-        &.attach-left {
-            left: 0;
-        }
-
-        &.attach-right {
-            right: 0;
-        }
-    }
 }
 
 .panel__header {
