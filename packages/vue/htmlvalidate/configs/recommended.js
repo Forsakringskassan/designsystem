@@ -13,5 +13,6 @@ module.exports = {
         "fkui/required-max-length": "error",
         "fkui/ftextfield-formatter-validation": "error",
         "fkui/no-template-modal": "error",
+        "fkui/ftablecolumn-name": "error",
     },
 };

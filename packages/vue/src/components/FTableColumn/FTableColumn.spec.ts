@@ -311,16 +311,6 @@ describe("when in `<thead>`", () => {
 });
 
 describe("html-validate", () => {
-    it("should require name attribute", () => {
-        expect.assertions(2);
-        expect("<f-table-column></f-table-column>").not.toHTMLValidate({
-            message: '<f-table-column> is missing required "name" attribute',
-        });
-        expect('<f-table-column name=""></f-table-column>').not.toHTMLValidate({
-            message: 'Attribute "name" has invalid value ""',
-        });
-    });
-
     it("should require title attribute", () => {
         expect.assertions(2);
         expect("<f-table-column></f-table-column>").not.toHTMLValidate({
