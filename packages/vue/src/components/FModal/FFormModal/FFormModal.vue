@@ -59,7 +59,6 @@ import { FValidationForm, type FValidationFormCallback } from "../../FValidation
 import { TranslationMixin } from "../../../plugins/translation";
 import { sizes } from "../sizes";
 import { FModalButton, FModalButtonDescriptor, prepareButtonList } from "../modal-button";
-import { FKUIConfigButtonOrder } from "../../../config";
 
 export default defineComponent({
     name: "FFormModal",
@@ -183,7 +182,7 @@ export default defineComponent({
     },
     computed: {
         preparedButtons(): FModalButton[] {
-            return prepareButtonList(this.buttons, FKUIConfigButtonOrder.RIGHT_TO_LEFT);
+            return prepareButtonList(this.buttons);
         },
     },
     methods: {
