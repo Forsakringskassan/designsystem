@@ -49,6 +49,8 @@ const hidden = computed(() => anyVisible.value === false);
 
 const props = withDefaults(
     defineProps<{
+        overlay?: boolean;
+        offset?: number;
         /**
          * Minimal size of pane.
          *
@@ -72,7 +74,7 @@ const props = withDefaults(
         initial?: string;
     }>(),
     {
-        disabled: false,
+        overlay: false,
         min: "0",
         max: "100%",
         initial: "50%",

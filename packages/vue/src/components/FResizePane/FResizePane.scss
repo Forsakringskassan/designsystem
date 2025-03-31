@@ -14,10 +14,21 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
     display: contents;
 }
 
+.resize__offset {
+    /* empty stub */
+}
+
 .resize {
     flex-grow: 1;
     display: flex;
     align-items: stretch;
+
+    &--overlay {
+        position: absolute;
+        //inset: 0;
+        z-index: 1;
+        background: var(--background);
+    }
 
     &--left {
         flex-direction: row;
@@ -28,6 +39,12 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
 
         .resize__content {
             flex-direction: row;
+        }
+
+        &.resize--overlay {
+            left: 0;
+            top: 0;
+            bottom: 0;
         }
     }
 
@@ -41,6 +58,13 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
         .resize__content {
             flex-direction: row;
         }
+
+        &.resize--overlay {
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
     }
 
     &--top {

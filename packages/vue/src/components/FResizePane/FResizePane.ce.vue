@@ -16,6 +16,8 @@ const STEP_SIZE = 10;
 
 const props = withDefaults(
     defineProps<{
+        overlay?: boolean;
+        offset?: number;
         /**
          * Disables resizing. The current size is locked.
          */
@@ -43,6 +45,7 @@ const props = withDefaults(
         initial?: string;
     }>(),
     {
+        overlay: false,
         disabled: false,
         min: "0",
         max: "100%",
@@ -118,6 +121,7 @@ const classes = computed(() => {
     return [
         `resize--${attachment.value}`,
         `resize--${direction.value}`,
+        props.overlay ? "resize--overlay" : undefined,
         props.disabled ? "resize--disabled" : undefined,
     ];
 });
@@ -185,6 +189,7 @@ function getLayoutSize(): number {
 </script>
 
 <template>
+    <div class="resize__offset" :style="{ width: `${offset}px` }" v-if="overlay && offset"></div>
     <div ref="root" class="resize" :class="classes">
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->
