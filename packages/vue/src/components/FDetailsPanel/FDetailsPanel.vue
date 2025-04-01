@@ -8,9 +8,10 @@ import { createDetailsPanel } from "./use-details-panel";
 const root = useTemplateRef("root");
 const { attachPanel } = useAreaData(root);
 
-const { name, exclusive } = defineProps<{
+const { name, exclusive, headingTag } = defineProps<{
     name: string;
     exclusive?: string;
+    headingTag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }>();
 
 const panel = createDetailsPanel<T>(name, { exclusive });
@@ -49,19 +50,17 @@ function onClose(reason: string = "close"): void {
 
 <template>
     <div v-if="panel.item.value" ref="root" class="panel__wrapper">
-        <div class="panel panel--closable" :class="[attachClass]">
+        <div class="panel" :class="[attachClass]">
             <div class="panel__header">
-                <div class="panel__title">
+                <component :is="headingTag" class="panel__title">
                     <slot name="header" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
-                </div>
-                <div class="panel__collapse">
-                    <button type="button" @click="onToggle()">
-                        <f-icon name="close"> <title>Stäng</title> </f-icon>
-                    </button>
-                </div>
+                </component>
+                <button class="panel__close-button" type="button" @click="onToggle()">
+                    <f-icon name="close"> <title>Stäng</title> </f-icon>
+                </button>
             </div>
             <div class="panel__content">
-                <slot name="default" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
+                <slot name="content" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
             </div>
             <div class="panel__footer">
                 <slot name="footer" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
@@ -70,7 +69,10 @@ function onClose(reason: string = "close"): void {
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+$detail-panel-padding: 0.5rem;
+$detail-panel-gap: 0.5rem;
+
 .panel__wrapper {
     flex-grow: 1;
     display: flex;
@@ -82,30 +84,15 @@ function onClose(reason: string = "close"): void {
 
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
-    gap: 0.5rem;
+    padding: $detail-panel-padding;
+    gap: $detail-panel-gap;
     min-width: 25ch;
-
-    @media (width < 640px) {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        z-index: 1;
-
-        &.attach-left {
-            left: 0;
-        }
-
-        &.attach-right {
-            right: 0;
-        }
-    }
 }
 
 .panel__header {
     flex: 0 0 auto;
     display: flex;
-    gap: 0.5rem;
+    gap: 0.25rem;
     align-items: center;
     justify-content: center;
 
@@ -118,10 +105,25 @@ function onClose(reason: string = "close"): void {
     }
 }
 
+.panel__close-button {
+    display: inline-flex;
+    line-height: 1;
+    width: 2em;
+    height: 2em;
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
 .panel__title {
     flex: 1 0 auto;
-    font-weight: 600;
-    font-size: 1.2em;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 0;
 }
 
 .panel__content {
@@ -130,14 +132,5 @@ function onClose(reason: string = "close"): void {
 
 .panel__footer {
     flex: 0 0 auto;
-}
-
-button {
-    appearance: none;
-    padding: 0;
-    line-height: 1;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
 }
 </style>

@@ -1,3 +1,8 @@
 @use "@fkui/theme-default";
 @use "@fkui/design";
 @use "@fkui/design/lib/fonts.css";
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
