@@ -1,80 +1,80 @@
-"use strict";
-(() => {
-  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-  }) : x)(function(x) {
-    if (typeof require !== "undefined") return require.apply(this, arguments);
-    throw Error('Dynamic require of "' + x + '" is not supported');
+// docs/src/setup.ts
+import { createApp, h } from "vue";
+import {
+  ErrorPlugin,
+  FErrorHandlingApp,
+  TestPlugin,
+  TranslationPlugin,
+  ValidationPlugin,
+  setRunningContext
+} from "@fkui/vue";
+function setup(options) {
+  const { rootComponent, selector } = options;
+  const app = createApp({
+    render() {
+      return h(FErrorHandlingApp, { defaultComponent: rootComponent });
+    }
   });
-
-  // docs/src/setup.ts
-  var import_vue = __require("vue");
-  var import_vue2 = __require("@fkui/vue");
-  function setup(options) {
-    const { rootComponent, selector } = options;
-    const app = (0, import_vue.createApp)({
-      render() {
-        return (0, import_vue.h)(import_vue2.FErrorHandlingApp, { defaultComponent: rootComponent });
-      }
-    });
-    (0, import_vue2.setRunningContext)(app);
-    app.use(import_vue2.ErrorPlugin, {
-      captureWarnings: true,
-      logToConsole: true
-    });
-    app.use(import_vue2.ValidationPlugin);
-    app.use(import_vue2.TestPlugin);
-    app.use(import_vue2.TranslationPlugin);
-    app.mount(selector);
-  }
-
-  // virtual-entry:./packages/vue/src/components/FMessageBox/examples/FMessageBoxIconLink.vue
-  var import_vue3 = __require("vue");
-  var import_vue4 = __require("@fkui/vue");
-  var import_vue5 = __require("vue");
-  var exampleComponent = (0, import_vue3.defineComponent)({
-    name: "FMessageBoxIconLink",
-    components: { FMessageBox: import_vue4.FMessageBox, FIcon: import_vue4.FIcon }
+  setRunningContext(app);
+  app.use(ErrorPlugin, {
+    captureWarnings: true,
+    logToConsole: true
   });
-  function render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
-    const _component_f_message_box = (0, import_vue5.resolveComponent)("f-message-box");
-    return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_message_box, { type: "info" }, {
-      default: (0, import_vue5.withCtx)(({ headingSlotClass }) => [
-        (0, import_vue5.createElementVNode)(
-          "h2",
+  app.use(ValidationPlugin);
+  app.use(TestPlugin);
+  app.use(TranslationPlugin);
+  app.mount(selector);
+}
+
+// virtual-entry:./packages/vue/src/components/FMessageBox/examples/FMessageBoxIconLink.vue
+import { defineComponent } from "vue";
+import { FMessageBox, FIcon } from "@fkui/vue";
+import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+var exampleComponent = defineComponent({
+  name: "FMessageBoxIconLink",
+  components: { FMessageBox, FIcon }
+});
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_icon = _resolveComponent("f-icon");
+  const _component_f_message_box = _resolveComponent("f-message-box");
+  return _openBlock(), _createBlock(_component_f_message_box, { type: "info" }, {
+    default: _withCtx(({ headingSlotClass }) => [
+      _createElementVNode(
+        "h2",
+        {
+          class: _normalizeClass(headingSlotClass)
+        },
+        "Meddelanderuta med l\xE4nk och ikon i meddelande",
+        2
+        /* CLASS */
+      ),
+      _createElementVNode("p", null, [
+        _cache[0] || (_cache[0] = _createElementVNode(
+          "a",
           {
-            class: (0, import_vue5.normalizeClass)(headingSlotClass)
+            class: "anchor",
+            href: "javascript:",
+            target: "_blank"
           },
-          "Meddelanderuta med l\xE4nk och ikon i meddelande",
-          2
-          /* CLASS */
-        ),
-        (0, import_vue5.createElementVNode)("p", null, [
-          _cache[0] || (_cache[0] = (0, import_vue5.createElementVNode)(
-            "a",
-            {
-              class: "anchor",
-              href: "javascript:",
-              target: "_blank"
-            },
-            [
-              (0, import_vue5.createTextVNode)(" L\xE4nk "),
-              (0, import_vue5.createElementVNode)("span", { class: "sr-only" }, " \xF6ppnas i nytt f\xF6nster ")
-            ],
-            -1
-            /* HOISTED */
-          )),
-          (0, import_vue5.createVNode)(_component_f_icon, { name: "new-window" })
-        ])
-      ]),
-      _: 1
-      /* STABLE */
-    });
-  }
-  exampleComponent.render = render;
-  setup({
-    rootComponent: exampleComponent,
-    selector: "#FMessageBoxIconLink"
+          [
+            _createTextVNode(" L\xE4nk "),
+            _createElementVNode("span", { class: "sr-only" }, " \xF6ppnas i nytt f\xF6nster ")
+          ],
+          -1
+          /* HOISTED */
+        )),
+        _createVNode(_component_f_icon, { name: "new-window" })
+      ])
+    ]),
+    _: 1
+    /* STABLE */
   });
-})();
+}
+exampleComponent.render = render;
+setup({
+  rootComponent: exampleComponent,
+  selector: "#FMessageBoxIconLink"
+});
+export {
+  render
+};

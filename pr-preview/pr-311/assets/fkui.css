@@ -1431,7 +1431,7 @@ input[type=search]:focus,
   color: var(--f-text-color-link, #4a52b6);
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 0.25rem;
+  text-underline-offset: 0.25em;
   text-decoration-color: var(--f-text-color-link, #4a52b6);
   font-weight: var(--f-font-weight-medium, 700);
 }
@@ -3504,7 +3504,7 @@ input[type=search]:focus,
 }
 
 .label {
-  color: var(--f-text-color-default, #1b1e23);
+  color: var(--fkds-color-text-primary, #1b1e23);
   display: inline-block;
   font-size: var(--f-font-size-standard, 1rem);
   font-weight: var(--f-font-weight-medium, 700);
@@ -3518,7 +3518,7 @@ input[type=search]:focus,
   margin-top: var(--f-label-message-margin-top, 0.25rem);
 }
 .label__message--error {
-  color: var(--f-text-color-error, #d23838);
+  color: var(--fkds-color-feedback-text-negative, #ca1515);
 }
 .label__icon-wrapper {
   position: relative;
@@ -3530,9 +3530,10 @@ input[type=search]:focus,
 .label__description {
   display: block;
   font-weight: var(--f-font-weight-normal, 400);
+  color: var(--fkds-color-text-primary, #1b1e23);
 }
 .label__description--format {
-  color: var(--f-text-color-discrete, #5f6165);
+  color: var(--fkds-color-text-secondary, #5f6165);
 }
 
 .layout-application-template {
