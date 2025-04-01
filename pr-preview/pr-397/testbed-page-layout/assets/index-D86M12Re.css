@@ -5736,6 +5736,7 @@ input[type=search]:focus,
   font-weight: var(--f-font-weight-medium);
   line-height: var(--f-line-height-large);
   padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;
+  text-align: left;
   vertical-align: top;
 }
 .table thead th:last-child {
