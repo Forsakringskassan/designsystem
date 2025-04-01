@@ -1,5 +1,5 @@
 // packages/vue/dist/esm/index.esm.js
-import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, hasInjectionContext, getCurrentScope, onScopeDispose, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
+import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
 var statuses = ["default", "warning", "error", "success", "info"];
@@ -13760,6 +13760,155 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["is-open", "anchor", "inline", "onOpen", "onClose"])], 512);
 }
 var FDatepickerField = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$j]]);
+function tryOnScopeDispose(fn2) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn2);
+    return true;
+  }
+  return false;
+}
+var localProvidedStateMap = /* @__PURE__ */ new WeakMap();
+var injectLocal = (...args) => {
+  var _a;
+  const key = args[0];
+  const instance = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy;
+  if (instance == null && !hasInjectionContext())
+    throw new Error("injectLocal must be called in setup");
+  if (instance && localProvidedStateMap.has(instance) && key in localProvidedStateMap.get(instance))
+    return localProvidedStateMap.get(instance)[key];
+  return inject(...args);
+};
+var isClient = typeof window !== "undefined" && typeof document !== "undefined";
+typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
+var toString = Object.prototype.toString;
+var isObject = (val) => toString.call(val) === "[object Object]";
+function pxValue(px) {
+  return px.endsWith("rem") ? Number.parseFloat(px) * 16 : Number.parseFloat(px);
+}
+function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+function watchImmediate(source, cb, options) {
+  return watch(
+    source,
+    cb,
+    {
+      ...options,
+      immediate: true
+    }
+  );
+}
+var defaultWindow = isClient ? window : void 0;
+function unrefElement(elRef) {
+  var _a;
+  const plain = toValue(elRef);
+  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
+}
+function useEventListener(...args) {
+  const cleanups = [];
+  const cleanup = () => {
+    cleanups.forEach((fn2) => fn2());
+    cleanups.length = 0;
+  };
+  const register = (el, event, listener, options) => {
+    el.addEventListener(event, listener, options);
+    return () => el.removeEventListener(event, listener, options);
+  };
+  const firstParamTargets = computed(() => {
+    const test = toArray(toValue(args[0])).filter((e) => e != null);
+    return test.every((e) => typeof e !== "string") ? test : void 0;
+  });
+  const stopWatch = watchImmediate(
+    () => {
+      var _a, _b;
+      return [
+        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
+        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
+        toArray(unref(firstParamTargets.value ? args[2] : args[1])),
+        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
+        toValue(firstParamTargets.value ? args[3] : args[2])
+      ];
+    },
+    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
+      cleanup();
+      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
+        return;
+      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
+      cleanups.push(
+        ...raw_targets.flatMap(
+          (el) => raw_events.flatMap(
+            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
+          )
+        )
+      );
+    },
+    { flush: "post" }
+  );
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(cleanup);
+  return stop;
+}
+function useMounted() {
+  const isMounted = shallowRef(false);
+  const instance = getCurrentInstance();
+  if (instance) {
+    onMounted(() => {
+      isMounted.value = true;
+    }, instance);
+  }
+  return isMounted;
+}
+function useSupported(callback) {
+  const isMounted = useMounted();
+  return computed(() => {
+    isMounted.value;
+    return Boolean(callback());
+  });
+}
+var ssrWidthSymbol = Symbol("vueuse-ssr-width");
+function useSSRWidth() {
+  const ssrWidth = hasInjectionContext() ? injectLocal(ssrWidthSymbol, null) : null;
+  return typeof ssrWidth === "number" ? ssrWidth : void 0;
+}
+function useMediaQuery(query, options = {}) {
+  const { window: window2 = defaultWindow, ssrWidth = useSSRWidth() } = options;
+  const isSupported = useSupported(() => window2 && "matchMedia" in window2 && typeof window2.matchMedia === "function");
+  const ssrSupport = shallowRef(typeof ssrWidth === "number");
+  const mediaQuery = shallowRef();
+  const matches = shallowRef(false);
+  const handler = (event) => {
+    matches.value = event.matches;
+  };
+  watchEffect(() => {
+    if (ssrSupport.value) {
+      ssrSupport.value = !isSupported.value;
+      const queryStrings = toValue(query).split(",");
+      matches.value = queryStrings.some((queryString) => {
+        const not = queryString.includes("not all");
+        const minWidth = queryString.match(/\(\s*min-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
+        const maxWidth = queryString.match(/\(\s*max-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
+        let res = Boolean(minWidth || maxWidth);
+        if (minWidth && res) {
+          res = ssrWidth >= pxValue(minWidth[1]);
+        }
+        if (maxWidth && res) {
+          res = ssrWidth <= pxValue(maxWidth[1]);
+        }
+        return not ? !res : res;
+      });
+      return;
+    }
+    if (!isSupported.value)
+      return;
+    mediaQuery.value = window2.matchMedia(toValue(query));
+    matches.value = mediaQuery.value.matches;
+  });
+  useEventListener(mediaQuery, "change", handler, { passive: true });
+  return computed(() => matches.value);
+}
 var VAR_NAME_AREA = "--f-layout-area";
 var VAR_NAME_ATTACH_PANEL = "--f-layout-panel";
 var VAR_NAME_DIRECTION = "--f-layout-direction";
@@ -13771,20 +13920,33 @@ function getProperty(style, key) {
     return JSON.parse(value);
   }
 }
+function findLayoutElement(element) {
+  if (!element) {
+    return null;
+  }
+  const parent = element.closest("ce-page-layout");
+  if (parent) {
+    return parent;
+  }
+  const root = element.getRootNode();
+  if (root instanceof ShadowRoot) {
+    return findLayoutElement(root.host);
+  }
+  return null;
+}
 function useAreaData(element) {
   const area = ref(null);
   const attachPanel = ref(null);
   const direction = ref(null);
-  const ready = ref(false);
-  nextTick(() => {
-    ready.value = true;
+  const layoutElement = computed(() => findLayoutElement(toValue(element)));
+  useEventListener(layoutElement, "update", () => {
+    if (element.value) {
+      update(element.value);
+    }
   });
   watchEffect(() => {
-    if (ready.value && element.value) {
-      const style = getComputedStyle(element.value);
-      area.value = getProperty(style, VAR_NAME_AREA);
-      attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
-      direction.value = getProperty(style, VAR_NAME_DIRECTION);
+    if (element.value) {
+      update(element.value);
     }
   });
   return {
@@ -13792,6 +13954,12 @@ function useAreaData(element) {
     attachPanel,
     direction
   };
+  function update(element2) {
+    const style = getComputedStyle(element2);
+    area.value = getProperty(style, VAR_NAME_AREA);
+    attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
+    direction.value = getProperty(style, VAR_NAME_DIRECTION);
+  }
 }
 var layoutRegister = {};
 function getLayout(name) {
@@ -14074,155 +14242,6 @@ var _sfc_main$s = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function tryOnScopeDispose(fn2) {
-  if (getCurrentScope()) {
-    onScopeDispose(fn2);
-    return true;
-  }
-  return false;
-}
-var localProvidedStateMap = /* @__PURE__ */ new WeakMap();
-var injectLocal = (...args) => {
-  var _a;
-  const key = args[0];
-  const instance = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy;
-  if (instance == null && !hasInjectionContext())
-    throw new Error("injectLocal must be called in setup");
-  if (instance && localProvidedStateMap.has(instance) && key in localProvidedStateMap.get(instance))
-    return localProvidedStateMap.get(instance)[key];
-  return inject(...args);
-};
-var isClient = typeof window !== "undefined" && typeof document !== "undefined";
-typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
-var toString = Object.prototype.toString;
-var isObject = (val) => toString.call(val) === "[object Object]";
-function pxValue(px) {
-  return px.endsWith("rem") ? Number.parseFloat(px) * 16 : Number.parseFloat(px);
-}
-function toArray(value) {
-  return Array.isArray(value) ? value : [value];
-}
-function watchImmediate(source, cb, options) {
-  return watch(
-    source,
-    cb,
-    {
-      ...options,
-      immediate: true
-    }
-  );
-}
-var defaultWindow = isClient ? window : void 0;
-function unrefElement(elRef) {
-  var _a;
-  const plain = toValue(elRef);
-  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
-}
-function useEventListener(...args) {
-  const cleanups = [];
-  const cleanup = () => {
-    cleanups.forEach((fn2) => fn2());
-    cleanups.length = 0;
-  };
-  const register = (el, event, listener, options) => {
-    el.addEventListener(event, listener, options);
-    return () => el.removeEventListener(event, listener, options);
-  };
-  const firstParamTargets = computed(() => {
-    const test = toArray(toValue(args[0])).filter((e) => e != null);
-    return test.every((e) => typeof e !== "string") ? test : void 0;
-  });
-  const stopWatch = watchImmediate(
-    () => {
-      var _a, _b;
-      return [
-        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
-        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
-        toArray(unref(firstParamTargets.value ? args[2] : args[1])),
-        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
-        toValue(firstParamTargets.value ? args[3] : args[2])
-      ];
-    },
-    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
-      cleanup();
-      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
-        return;
-      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
-      cleanups.push(
-        ...raw_targets.flatMap(
-          (el) => raw_events.flatMap(
-            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
-          )
-        )
-      );
-    },
-    { flush: "post" }
-  );
-  const stop = () => {
-    stopWatch();
-    cleanup();
-  };
-  tryOnScopeDispose(cleanup);
-  return stop;
-}
-function useMounted() {
-  const isMounted = shallowRef(false);
-  const instance = getCurrentInstance();
-  if (instance) {
-    onMounted(() => {
-      isMounted.value = true;
-    }, instance);
-  }
-  return isMounted;
-}
-function useSupported(callback) {
-  const isMounted = useMounted();
-  return computed(() => {
-    isMounted.value;
-    return Boolean(callback());
-  });
-}
-var ssrWidthSymbol = Symbol("vueuse-ssr-width");
-function useSSRWidth() {
-  const ssrWidth = hasInjectionContext() ? injectLocal(ssrWidthSymbol, null) : null;
-  return typeof ssrWidth === "number" ? ssrWidth : void 0;
-}
-function useMediaQuery(query, options = {}) {
-  const { window: window2 = defaultWindow, ssrWidth = useSSRWidth() } = options;
-  const isSupported = useSupported(() => window2 && "matchMedia" in window2 && typeof window2.matchMedia === "function");
-  const ssrSupport = shallowRef(typeof ssrWidth === "number");
-  const mediaQuery = shallowRef();
-  const matches = shallowRef(false);
-  const handler = (event) => {
-    matches.value = event.matches;
-  };
-  watchEffect(() => {
-    if (ssrSupport.value) {
-      ssrSupport.value = !isSupported.value;
-      const queryStrings = toValue(query).split(",");
-      matches.value = queryStrings.some((queryString) => {
-        const not = queryString.includes("not all");
-        const minWidth = queryString.match(/\(\s*min-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
-        const maxWidth = queryString.match(/\(\s*max-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
-        let res = Boolean(minWidth || maxWidth);
-        if (minWidth && res) {
-          res = ssrWidth >= pxValue(minWidth[1]);
-        }
-        if (maxWidth && res) {
-          res = ssrWidth <= pxValue(maxWidth[1]);
-        }
-        return not ? !res : res;
-      });
-      return;
-    }
-    if (!isSupported.value)
-      return;
-    mediaQuery.value = window2.matchMedia(toValue(query));
-    matches.value = mediaQuery.value.matches;
-  });
-  useEventListener(mediaQuery, "change", handler, { passive: true });
-  return computed(() => matches.value);
-}
 var keymap = {
   left: {
     ArrowLeft: "decrease",
