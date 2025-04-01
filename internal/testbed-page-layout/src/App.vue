@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo, FDetailsPanel } from "@fkui/vue";
+import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo, FMinimizablePanel } from "@fkui/vue";
 import { XContextBar, XToolbar } from "./components";
-import { type Expense } from "./expense";
-import { type Person } from "./person";
-
-const XPersonPanel = FDetailsPanel<Person>;
-const XExpensePanel = FDetailsPanel<Expense>;
 
 registerLayout({
     name: "awesome-layout",
@@ -61,9 +56,20 @@ registerLayout({
             <x-toolbar></x-toolbar>
         </template>
         <template #left>
-            <f-resize-pane min="200px" max="40%" initial="200px">
-                <h2>Mina uppgifter</h2>
-                <p>[Menypanel här]</p>
+            <f-resize-pane min="150px" max="40%" initial="600px">
+                <f-minimizable-panel>
+                    <template #header> Mina uppgifter </template>
+                    <template #default="{ isOpen }">
+                        <template v-if="isOpen">
+                            <p>[Minimerbar innehåll]</p>
+                        </template>
+                    </template>
+                    <template #footer="{ isOpen }">
+                        <template v-if="isOpen">
+                            <p>[Minimerbar fot]</p>
+                        </template>
+                    </template>
+                </f-minimizable-panel>
             </f-resize-pane>
         </template>
         <template #content>
@@ -72,35 +78,7 @@ registerLayout({
             </main>
         </template>
         <template #right>
-            <f-resize-pane min="200px" max="40%" initial="200px">
-                <x-person-panel name="person-panel" exclusive="right">
-                    <template #default="{ item }">
-                        <h2>Detaljer om person</h2>
-                        <dl>
-                            <dt>Namn</dt>
-                            <dd>{{ item.name }}</dd>
-                            <dt>Address</dt>
-                            <dd>{{ item.adress ?? "-" }}</dd>
-                            <dt>Stad</dt>
-                            <dd>{{ item.city ?? "-" }}</dd>
-                            <dt>Bil</dt>
-                            <dd>{{ item.car ?? "-" }}</dd>
-                        </dl>
-                    </template>
-                </x-person-panel>
-                <x-expense-panel name="expense-panel" exclusive="right">
-                    <template #default="{ item }">
-                        <dl>
-                            <dt>ID</dt>
-                            <dd>{{ item.id }}</dd>
-                            <dt>Beskrivning</dt>
-                            <dd>{{ item.description }}</dd>
-                            <dt>Belopp</dt>
-                            <dd>{{ item.amount }} kr</dd>
-                        </dl>
-                    </template>
-                </x-expense-panel>
-            </f-resize-pane>
+            <f-resize-pane min="200px" max="40%" initial="200px"> [detaljpanel] </f-resize-pane>
         </template>
     </f-page-layout>
 </template>
