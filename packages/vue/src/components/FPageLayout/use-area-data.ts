@@ -1,4 +1,12 @@
-import { nextTick, type Ref, ref, type ShallowRef, watchEffect } from "vue";
+import {
+    computed,
+    type Ref,
+    ref,
+    type ShallowRef,
+    toValue,
+    watchEffect,
+} from "vue";
+import { useEventListener } from "@vueuse/core";
 import { LayoutAreaAttachPanel, LayoutAreaDirection } from "./define-layout";
 import {
     VAR_NAME_AREA,
@@ -56,18 +64,17 @@ export function useAreaData(
     const area = ref<string | null>(null);
     const attachPanel = ref<LayoutAreaAttachPanel | null>(null);
     const direction = ref<LayoutAreaDirection | null>(null);
-    const ready = ref(false);
+    const layoutElement = computed(() => findLayoutElement(toValue(element)));
 
-    nextTick(() => {
-        ready.value = true;
+    useEventListener(layoutElement, "update", () => {
+        if (element.value) {
+            update(element.value);
+        }
     });
 
     watchEffect(() => {
-        if (ready.value && element.value) {
-            const style = getComputedStyle(element.value);
-            area.value = getProperty(style, VAR_NAME_AREA);
-            attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
-            direction.value = getProperty(style, VAR_NAME_DIRECTION);
+        if (element.value) {
+            update(element.value);
         }
     });
 
