@@ -68,7 +68,8 @@ Färg och bakgrundsfärg sätts med `::part(area name)`:
 
 ```css
 ::part(area toolbar) {
-    background: var(--fkds-color-background-secondary);
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
 }
 ```
 
