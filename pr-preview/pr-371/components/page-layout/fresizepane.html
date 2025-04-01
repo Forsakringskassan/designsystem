@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-53a5b8.js",
     "@fkui/date": "../../assets/vendor-fkui-date-137268.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-f1dda3.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-67d616.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-53a5b8.js": "sha384-T9chgQ15ogd6zjYhmGgRdHmhwfpHf+XYNrdxmNJBIjhA6TRWRfKFtDmppFNUlakN",
     "../../assets/vendor-fkui-date-137268.js": "sha384-UbOEWpOpf24qbX6KkKB4K9LhJsAkmXFVHisfpicUcstiWcZwPwdDm8SUX4z8+bt8",
-    "../../assets/vendor-fkui-vue-f1dda3.js": "sha384-jJx5D7IjkHRO8TZnOJBhXsFm5c2fojm5aFSScP7BqVkSVGscbMVbXKMKsfMX6fNB",
+    "../../assets/vendor-fkui-vue-67d616.js": "sha384-okwHYrAUCPG0BhmDkGJz7EGU80wFTc/n9xk1Iwq+drLwaejOl557eXP+fnmoKTKL",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-111d15.json"
+            href="../../search-data-48184b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-q7ghhkZ7+QHTImdrS0vQOVoi1sdpBambSpfg8Do+fY/JY5QR917RXCXMBANLwZ8f"
+            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
             id="search-data"
         />
     </head>
@@ -1055,7 +1055,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/3c882bb40765a24eb6b61b175f9cf42b4b964abf/packages/vue/src/components/FResizePane/FResizePane.vue">FResizePane</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/d6bdf0294bf9c2985fdcda7dd2e7db42516c5175/packages/vue/src/components/FResizePane/FResizePane.vue">FResizePane</a>
             
         </code>
          
@@ -1082,6 +1082,8 @@
                                 <li><a href="#begransa_storlek">Begränsa storlek</a></li>
                                 
                                 <li><a href="#initial_storlek">Initial storlek</a></li>
+                                
+                                <li><a href="#anpassad_panel">Anpassad panel</a></li>
                                 
                                 <li><a href="#props_events_slots">Props, Events &amp; Slots</a></li>
                                 
@@ -1162,30 +1164,69 @@ Värde kan anges antingen som absolut storlek i pixlar (<code>px</code>) eller i
 <li><code>200px</code> - initial storlek är 200px</li>
 <li><code>20%</code> - initial storlek är 20% av applikationslayoutens totala bredd.</li>
 </ul>
+<h2 id="anpassad_panel"><a class="header-anchor" href="#anpassad_panel">Anpassad panel</a></h2>
+                <div
+                    id="example-fc35c0"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags="live-example"
+                    data-language="vue"
+                >
+                    
+        <div id="CustomPanelExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+.layout-container {
+    container-type: size;
+    height: 230px;
+}
+.content {
+    padding: 1rem;
+}
+
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./CustomPanelExample-e0011d.js"></script>
+    
+                </div>
+            <p>En anpassad panel använder composable <a href="../../functions/functions/use-resize.html">useResize() composable</a> för att få tillgång till det API som exponeras från justerbar yta.
+Som konsument kan du styra om ytan ska</p>
+<ul>
+<li>vara justerbar</li>
+<li>visas.</li>
+</ul>
+<p>Samtliga är valfria och aktiverade som standard.</p>
+
+                <div
+                    id="example-599195"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { useResize } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> enabled = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>);
+<span class="hljs-keyword">const</span> visible = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>);
+
+<span class="hljs-title function_">useResize</span>({
+    enabled,
+    visible,
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+                </div>
+            <p><a href="../../functions/functions/use-resize.html">Läs mer om useResize</a>.</p>
 <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2>
         <h3 id="fresizepane-props">
             <a class="header-anchor" href="#fresizepane-props">Props</a>
         </h3>
         <dl class="docs-api docs-api--slots">
             
-                        <dt>
-                            <code id="fresizepane-prop-disabled"
-                                ><a class="docs-api__anchor" href="#fresizepane-prop-disabled"
-                                    ><span class="docs-api__name"
-                                        >disabled</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Disables resizing. The current size is locked.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
-                            
-                        </dd>
-                    
                         <dt>
                             <code id="fresizepane-prop-min"
                                 ><a class="docs-api__anchor" href="#fresizepane-prop-min"
@@ -1246,6 +1287,23 @@ size)</p>
                             
                         </dd>
                     
+                        <dt>
+                            <code id="fresizepane-prop-disabled"
+                                ><a class="docs-api__anchor" href="#fresizepane-prop-disabled"
+                                    ><span class="docs-api__name"
+                                        >disabled</span
+                                    >: unknown</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
         </dl>
     
         <h3 id="fresizepane-slots">
@@ -1294,9 +1352,9 @@ size)</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/always-left-align-table-header (<a href="https://github.com/Forsakringskassan/designsystem/commits/3c882bb40765a24eb6b61b175f9cf42b4b964abf">3c882bb</a>)<br />
+    feature/always-left-align-table-header (<a href="https://github.com/Forsakringskassan/designsystem/commits/d6bdf0294bf9c2985fdcda7dd2e7db42516c5175">d6bdf02</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/371">PR 371</a><br />
-        2025-03-27 07:40
+        2025-04-01 11:11
 </div>
 <div class="toolbar__item">
     <form id="version">

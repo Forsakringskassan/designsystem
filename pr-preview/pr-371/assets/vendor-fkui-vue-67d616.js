@@ -1,5 +1,5 @@
-// ../vue/dist/esm/index.esm.js
-import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement } from "vue";
+// packages/vue/dist/esm/index.esm.js
+import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement, effectScope } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
 var statuses = ["default", "warning", "error", "success", "info"];
@@ -17681,7 +17681,7 @@ function computeCssValue(raw, total, auto) {
     return percent * total;
   } else if (raw === "0") {
     return 0;
-  } else if (raw === "auto") {
+  } else if (raw === "auto" || raw === "") {
     return auto;
   } else {
     throw new Error(`Cant parse size from "${raw}"`);
@@ -17767,6 +17767,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     const storageKey = computed(() => area.value ? `layout/${area.value}/size` : null);
     const {
       attachPanel: attachment,
+      direction,
       area
     } = useAreaData(root);
     useKeyboardHandler({
@@ -17815,6 +17816,9 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       } else {
         return "vertical";
       }
+    });
+    const classes = computed(() => {
+      return [`resize--${attachment.value}`, `resize--${direction.value}`, props.disabled ? "resize--disabled" : void 0];
     });
     const layoutElement = computed(() => {
       var _host$closest;
@@ -17882,7 +17886,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("div", {
         ref_key: "root",
         ref: root,
-        class: normalizeClass(["resize", `resize--${unref(attachment)}`])
+        class: normalizeClass(["resize", classes.value])
       }, [createElementVNode("div", {
         ref_key: "content",
         ref: content,
@@ -17904,8 +17908,21 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n  width: var(--size);\n}\n.resize--right {\n  flex-direction: row-reverse;\n  width: var(--size);\n}\n.resize--top {\n  flex-direction: column;\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--left .resize__content, .resize--right .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top .resize__content, .resize--bottom .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
+var _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted(*) {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
 var FResizePane = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["styles", [_style_0]]]);
+var injectionKey = Symbol("FResizePane");
+function useResize(options = {}) {
+  const api = inject(injectionKey, {
+    register() {
+      return () => void 0;
+    }
+  });
+  const unregister = api.register({
+    enabled: options.enabled,
+    visible: options.visible
+  });
+  onUnmounted(unregister);
+}
 var _hoisted_1$4 = {
   slot: "content"
 };
@@ -17913,10 +17930,6 @@ var tagName = "ce-resize-pane";
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "FResizePane",
   props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    },
     min: {
       default: "0"
     },
@@ -17931,12 +17944,54 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
     if (!customElements.get(tagName)) {
       customElements.define(tagName, defineCustomElement(FResizePane));
     }
+    const anyEnabled = ref(true);
+    const anyVisible = ref(true);
+    let components = [];
+    let n = 0;
+    function any(src, predicate) {
+      return src.length === 0 || src.some(predicate);
+    }
+    provide(injectionKey, {
+      register(options) {
+        const component = {
+          ...options,
+          id: n++
+        };
+        components.push(component);
+        const scope = effectScope();
+        scope.run(() => {
+          watchEffect(() => {
+            anyEnabled.value = any(components, (it) => {
+              var _a;
+              var _it$enabled$value;
+              return (_it$enabled$value = (_a = it.enabled) == null ? void 0 : _a.value) !== null && _it$enabled$value !== void 0 ? _it$enabled$value : true;
+            });
+          });
+          watchEffect(() => {
+            anyVisible.value = any(components, (it) => {
+              var _a;
+              var _it$visible$value;
+              return (_it$visible$value = (_a = it.visible) == null ? void 0 : _a.value) !== null && _it$visible$value !== void 0 ? _it$visible$value : true;
+            });
+          });
+        });
+        return () => {
+          components = components.filter((it) => it.id !== component.id);
+          scope.stop();
+        };
+      }
+    });
+    const disabled = computed(() => anyEnabled.value === false);
+    const hidden = computed(() => anyVisible.value === false);
     const props = __props;
     return (_ctx, _cache) => {
-      return openBlock(), createBlock(resolveDynamicComponent(tagName), normalizeProps(guardReactiveProps(props)), {
+      return openBlock(), createBlock(resolveDynamicComponent(tagName), mergeProps({
+        disabled: disabled.value,
+        hidden: hidden.value
+      }, props), {
         default: withCtx(() => [createElementVNode("div", _hoisted_1$4, [renderSlot(_ctx.$slots, "default")])]),
         _: 3
-      }, 16);
+      }, 16, ["disabled", "hidden"]);
     };
   }
 });
@@ -18853,6 +18908,7 @@ export {
   useAreaData,
   useCombobox,
   useModal,
+  useResize,
   useSlotUtils,
   useTextFieldSetup,
   useTranslate

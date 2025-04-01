@@ -122,7 +122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(_component_f_sort_filter_dataset, {
         data: _ctx.fruits,
         "sortable-attributes": {
-          namn: "Namn",
+          name: "Namn",
           origin: "Land"
         }
       }, {
