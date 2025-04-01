@@ -5,13 +5,11 @@ import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
 <template>
     <f-page-layout layout="three-column">
         <template #left>
-            <!-- eslint-disable vue/no-deprecated-slot-attribute -->
             <f-minimizable-panel>
-                <template #default="{ isOpen, header, footer, content }">
+                <template #header> Minimerbar panel </template>
+                <template #default="{ isOpen }">
                     <template v-if="isOpen">
-                        <h1 :slot="header">Min rubrik</h1>
-                        <p :slot="content">Innehåll</p>
-                        <div :slot="footer">Min fot</div>
+                        <p>Innehåll</p>
                     </template>
                 </template>
             </f-minimizable-panel>
@@ -19,10 +17,3 @@ import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
         <template #content>[Applikationsyta]</template>
     </f-page-layout>
 </template>
-
-<style>
-body {
-    margin: 0;
-    padding: 0;
-}
-</style>

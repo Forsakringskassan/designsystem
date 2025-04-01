@@ -1,0 +1,86 @@
+@use "variables" as *;
+
+:host {
+    display: contents;
+}
+
+::slotted([slot="header"]) {
+    font-weight: 700 !important;
+    font-size: 1.258rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+}
+
+.panel__wrapper {
+    flex-grow: 1;
+    display: flex;
+    height: 100%;
+}
+
+.panel {
+    background: $minimizable-panel-background;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.panel__header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .attach-left & {
+        flex-direction: row;
+    }
+
+    .attach-right & {
+        flex-direction: row-reverse;
+    }
+}
+
+.panel__title {
+    flex: 1 1 auto;
+}
+
+.panel__collapse {
+    flex: 0 0 auto;
+}
+
+.panel__content {
+    flex: 1 0 auto;
+}
+
+.panel__footer {
+    flex: 0 0 auto;
+}
+
+.panel__collapse button {
+    appearance: none;
+    line-height: 1;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 1rem;
+    width: max-content;
+}
+
+.expanded.attach-left .panel__collapse {
+    transform: scaleX(1);
+}
+
+.collapsed.attach-left .panel__collapse {
+    transform: scaleX(-1);
+}
+
+.expanded.attach-right .panel__collapse {
+    transform: scaleX(-1);
+}
+
+.collapsed.attach-right .panel__collapse {
+    transform: scaleX(1);
+}

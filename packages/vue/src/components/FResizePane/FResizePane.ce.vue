@@ -16,7 +16,7 @@ const STEP_SIZE = 10;
 
 defineOptions({
     inheritAttrs: false,
-})
+});
 
 const props = withDefaults(
     defineProps<{
@@ -194,7 +194,7 @@ function getLayoutSize(): number {
 </script>
 
 <template>
-    <div class="resize__offset" :style="{ width: `${offset}px` }" v-if="overlay && offset"></div>
+    <div v-if="overlay && offset" class="resize__offset" :style="{ width: `${offset}px` }"></div>
     <div ref="root" class="resize" :class="classes" v-bind="$attrs">
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->

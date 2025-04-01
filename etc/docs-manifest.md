@@ -56,6 +56,7 @@ components/modal/fconfirmmodal.html
 components/modal/fformmodal.html
 components/modal/fmodal.html
 components/page-layout/application-layout.html
+components/page-layout/fminimizablepanel.html
 components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
 components/page-layout/fpagelayout.html
