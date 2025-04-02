@@ -1,33 +1,37 @@
 <script setup lang="ts" generic="T">
-import { computed, onUnmounted, useTemplateRef } from "vue";
+import { computed, defineCustomElement, onUnmounted } from "vue";
+import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
-import { useAreaData } from "../FPageLayout/use-area-data";
 import { useResize } from "../FResizePane";
 import { createDetailsPanel } from "./use-details-panel";
+import FDetailsPanel from "./FDetailsPanel.ce.vue";
 
-const root = useTemplateRef("root");
-const { attachPanel } = useAreaData(root);
+const tagName = "ce-details-panel";
+if (!customElements.get(tagName)) {
+    customElements.define(tagName, defineCustomElement(FDetailsPanel));
+}
 
 const { name, exclusive, headingTag } = defineProps<{
+    /**
+     * Name of this panel. Used when referencing the panel in {@link useDetailsPanel}.
+     */
     name: string;
+    /**
+     * An optional identifier to prevent other panels with the same identifier
+     * from being open at the same time.
+     */
     exclusive?: string;
+    /**
+     * Header tag.
+     */
     headingTag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }>();
 
 const panel = createDetailsPanel<T>(name, { exclusive });
+const $t = useTranslate();
 
 useResize({
     visible: computed(() => Boolean(panel.item.value)),
-});
-
-const attachClass = computed(() => {
-    switch (attachPanel.value) {
-        case "left":
-            return "attach-left";
-        case "right":
-            return "attach-right";
-    }
-    return undefined;
 });
 
 onUnmounted(() => {
@@ -45,88 +49,38 @@ function onClose(reason: string = "close"): void {
 </script>
 
 <template>
-    <div v-if="panel.item.value" ref="root" class="panel__wrapper">
-        <div class="panel" :class="[attachClass]">
-            <div class="panel__header">
-                <component :is="headingTag" class="panel__title">
-                    <slot name="header" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
-                </component>
-                <button class="panel__close-button" type="button" @click="onClose()">
-                    <f-icon name="close"> <title>Stäng</title> </f-icon>
-                </button>
-            </div>
-            <div class="panel__content">
-                <slot name="content" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
-            </div>
-            <div class="panel__footer">
-                <slot name="footer" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
-            </div>
+    <component :is="tagName" v-if="panel.item.value" :heading-tag @closed="onClose()">
+        <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
+        <!-- [html-validate-disable-block vue/prefer-slot-shorthand -- native slot] -->
+        <div slot="header">
+            <!--
+                @slot Panel footer.
+                @binding {T} item Object the panel was opened with.
+                @binding {(reason?: string) => void} close Callback to close the panel. The optional reason will be passed to the `onClose()` callback.
+            -->
+            <slot name="header" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
         </div>
-    </div>
+        <div slot="content">
+            <!--
+                @slot Panel footer.
+                @binding {T} item Object the panel was opened with.
+                @binding {(reason?: string) => void} close Callback to close the panel. The optional reason will be passed to the `onClose()` callback.
+            -->
+            <slot name="content" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
+        </div>
+        <div slot="footer">
+            <!--
+                @slot Panel footer.
+                @binding {T} item Object the panel was opened with.
+                @binding {(reason?: string) => void} close Callback to close the panel. The optional reason will be passed to the `onClose()` callback.
+            -->
+            <slot name="footer" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
+        </div>
+        <div slot="icon">
+            <!-- TODO textnyckel -->
+            <f-icon name="close">
+                <title>{{ $t("fkui.details-panel.close", "Stäng") }}</title>
+            </f-icon>
+        </div>
+    </component>
 </template>
-
-<style scoped lang="scss">
-$detail-panel-padding: 0.5rem;
-$detail-panel-gap: 0.5rem;
-
-.panel__wrapper {
-    flex-grow: 1;
-    display: flex;
-}
-
-.panel {
-    flex-grow: 1;
-    background: lightskyblue;
-
-    display: flex;
-    flex-direction: column;
-    padding: $detail-panel-padding;
-    gap: $detail-panel-gap;
-    min-width: 25ch;
-}
-
-.panel__header {
-    flex: 0 0 auto;
-    display: flex;
-    gap: 0.25rem;
-    align-items: center;
-    justify-content: center;
-
-    .attach-left & {
-        flex-direction: row;
-    }
-
-    .attach-right & {
-        flex-direction: row-reverse;
-    }
-}
-
-.panel__close-button {
-    display: inline-flex;
-    line-height: 1;
-    width: 2em;
-    height: 2em;
-    justify-content: center;
-    align-items: center;
-    appearance: none;
-    padding: 0;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-}
-
-.panel__title {
-    flex: 1 0 auto;
-    font-weight: 700;
-    font-size: 1.258rem;
-    margin-bottom: 0;
-}
-
-.panel__content {
-    flex: 1 0 auto;
-}
-
-.panel__footer {
-    flex: 0 0 auto;
-}
-</style>
