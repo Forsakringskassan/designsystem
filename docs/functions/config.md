@@ -23,44 +23,46 @@ config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
 
 ## Referens
 
-### `buttonOrder`
+### Knappordning bekräftelsemodal (`buttonOrder`)
 
-- default: `RIGHT_TO_LEFT`
+- default: Höger till vänster (`RIGHT_TO_LEFT`)
 - type: `FKUIConfigButtonOrder`
 
-Anger i vilken ordning man vill visa knappar.
+Anger i vilken ordning man vill visa knappar i bekräftelsemodal.
 
 `LEFT_TO_RIGHT`: Vänster till höger
 
-```jsx nomarkup
-<div class="button-group">
-    <button type="button" class="button button--primary button-group__item">
-        1
-    </button>
-    <button type="button" class="button button--secondary button-group__item">
-        2
-    </button>
-    <button type="button" class="button button--secondary button-group__item">
-        3
-    </button>
-</div>
+```html nomarkup borderless
+<button inert type="button" class="docs-example-button button--primary">
+    Ta bort
+</button>
+<button inert type="button" class="docs-example-button button--secondary">
+    Avbryt
+</button>
 ```
 
 `RIGHT_TO_LEFT`: Höger till vänster
 
-```jsx nomarkup
-<div class="button-group">
-    <button type="button" class="button button--secondary button-group__item">
-        3
-    </button>
-    <button type="button" class="button button--secondary button-group__item">
-        2
-    </button>
-    <button type="button" class="button button--primary button-group__item">
-        1
-    </button>
-</div>
+```html nomarkup borderless
+<button inert type="button" class="docs-example-button button--secondary">
+    Avbryt
+</button>
+<button inert type="button" class="docs-example-button button--primary">
+    Ta bort
+</button>
 ```
+
+#### Modaler med inbyggd knappordning
+
+| Komponent                                      | Inställning   | Knappordning                                                                                                                                                                        |
+| ---------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bekräftelsemodal (FConfirmModal)               | LEFT_TO_RIGHT | <button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button>     |
+| Bekräftelsemodal (FConfirmModal)               | RIGHT_TO_LEFT | <button inert type="button" class="docs-example-button button--secondary">Avbryt</button><button inert type="button" class="docs-example-button button--primary">Spara</button>     |
+| Formulärsmodal (FFormModal)                    | \*            | <button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button>     |
+| Datamängdredigerare (FCrudDataset) - Lägg till | \*            | <button inert type="button" class="docs-example-button button--primary">Lägg till</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button> |
+| Datamängdredigerare (FCrudDataset) - Ändra     | \*            | <button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button>     |
+| Datamängdredigerare (FCrudDataset) - Ta bort   | LEFT_TO_RIGHT | <button inert type="button" class="docs-example-button button--primary">Ta bort</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button>   |
+| Datamängdredigerare (FCrudDataset) - Ta bort   | RIGHT_TO_LEFT | <button inert type="button" class="docs-example-button button--secondary">Avbryt</button><button inert type="button" class="docs-example-button button--primary">Ta bort</button>   |
 
 ### `teleportTarget`
 

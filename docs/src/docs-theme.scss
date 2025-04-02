@@ -116,3 +116,11 @@ footer {
         }
     }
 }
+
+.docs-example-button {
+    @extend .button;
+    @extend .button--small;
+
+    margin: 0 0.75rem 0 0;
+    padding: 0.25rem 0.75rem !important;
+}

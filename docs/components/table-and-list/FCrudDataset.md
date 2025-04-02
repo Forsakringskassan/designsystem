@@ -47,6 +47,12 @@ function onBeforeCreate(): MyInterface {
 }
 ```
 
+## Knappordning
+
+Standardinställningen för knappordningen i modalerna för "Lägg till" och "Ändra" är att primärknappen ligger först följt av sekundärknappen.
+Standardinställningen för modalen "Ta bort" är att sekundärknappen ligger först följt av primärknappen.
+Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappordningen för modalen "Ta bort" genom inställning av {@link config#referens buttonOrder} i konfigurationen.
+
 ## Anpassade texter
 
 Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för "lägg till"-knapp kan ändras via slot add-button.
