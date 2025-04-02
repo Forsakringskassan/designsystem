@@ -1,4 +1,4 @@
-export * from "./SimplePersistenceService";
-export * from "./SimplePersistenceServiceInterface";
-export * from "./PersistenceService";
-export * from "./PersistenceServiceInterface";
+export { SimplePersistenceService } from "./SimplePersistenceService";
+export { type SimplePersistenceServiceInterface } from "./SimplePersistenceServiceInterface";
+export { PersistenceService } from "./PersistenceService";
+export { type PersistenceServiceInterface } from "./PersistenceServiceInterface";

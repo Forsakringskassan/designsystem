@@ -9,6 +9,7 @@ import {
 import flushPromises from "flush-promises";
 import { mount, VueWrapper } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { ValidationPlugin } from "../../plugins";
 import FTextField from "./FTextField.vue";
 
 function createWrapper({
@@ -25,6 +26,7 @@ function createWrapper({
         ...options,
         global: {
             stubs: ["f-icon"],
+            plugins: [ValidationPlugin],
         },
     });
 }
