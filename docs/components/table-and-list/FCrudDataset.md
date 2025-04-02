@@ -11,6 +11,12 @@ Datamändgredigeraren används för att erbjuda användare funktionerna "lägg t
 Komponenten ansvarar inte för hur datamängden och åtgärderna "lägg till", "ändra" och "ta bort" presenteras.
 Vanligtvis används lista eller tabell för presentation men kan även vara egenutvecklad.
 
+```html name=base hidden
+<f-crud-dataset>
+    <template #default> ... </template>
+</f-crud-dataset>
+```
+
 ## Interaktiv tabell med redigering
 
 ```import
@@ -42,6 +48,26 @@ Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, �
 
 ```import
 FCrudDatasetCustomTextExample.vue
+```
+
+## Egna lägg till knappar
+
+Använd slotten `#buttons` för att lägga till egna anpassade lägg-till knappar.
+Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.
+
+```html compare=base
+<f-crud-dataset>
+    <template #default> ... </template>
+    <template #buttons="{ buttonClasses }">
+        <button type="button" :class="buttonClasses" @click="onClick">
+            My button
+        </button>
+    </template>
+</f-crud-dataset>
+```
+
+```import nomarkup
+FCrudDatasetAdditionalButtons.vue
 ```
 
 ## Datatabell med lägg till-knapp
