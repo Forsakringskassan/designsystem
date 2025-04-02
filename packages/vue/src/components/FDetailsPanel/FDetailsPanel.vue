@@ -122,7 +122,7 @@ $detail-panel-gap: 0.5rem;
 .panel__title {
     flex: 1 0 auto;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.258rem;
     margin-bottom: 0;
 }
 
