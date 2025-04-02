@@ -13,10 +13,17 @@ FDetailsPanelExample.vue
 
 ## Användning
 
+## Flera detaljpaneler i samma yta
 
 exclusive
 
-## Begränsa storlek
+## Anpassa texter
+
+Komponenten använder följande texter:
+
+| Textnyckel                 | Standardtext | Beskrivning                                |
+| -------------------------- | ------------ | ------------------------------------------ |
+| `fkui.details-panel.close` | Stäng        | Skärmläsartext för stäng-krysset i header. |
 
 ## Props, Events & Slots
 
