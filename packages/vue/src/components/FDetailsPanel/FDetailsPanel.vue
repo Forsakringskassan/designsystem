@@ -34,10 +34,6 @@ onUnmounted(() => {
     panel.destroy();
 });
 
-function onToggle(): void {
-    panel.close();
-}
-
 function onClose(reason: string = "close"): void {
     if (panel.callback.value) {
         /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- value must be set when this code is reached */
@@ -55,7 +51,7 @@ function onClose(reason: string = "close"): void {
                 <component :is="headingTag" class="panel__title">
                     <slot name="header" v-bind="{ item: panel.item.value as T, close: onClose }"></slot>
                 </component>
-                <button class="panel__close-button" type="button" @click="onToggle()">
+                <button class="panel__close-button" type="button" @click="onClose()">
                     <f-icon name="close"> <title>Stäng</title> </f-icon>
                 </button>
             </div>

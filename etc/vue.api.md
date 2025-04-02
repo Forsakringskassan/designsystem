@@ -4432,6 +4432,7 @@ export const FDetailsPanel: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_se
     props: __VLS_PrettifyLocal_3<Pick<Partial<{}> & Omit<{} & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, never> & {
         name: string;
         exclusive?: string;
+        headingTag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     } & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
@@ -4440,7 +4441,7 @@ export const FDetailsPanel: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_se
             item: T;
             close: (reason?: string) => void;
         }): any;
-        default?(_: {
+        content?(_: {
             item: T;
             close: (reason?: string) => void;
         }): any;
