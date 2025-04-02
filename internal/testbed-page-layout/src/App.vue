@@ -73,8 +73,8 @@ registerLayout({
         </template>
         <template #right>
             <f-resize-pane min="200px" max="40%" initial="200px">
-                <x-person-panel name="person-panel" exclusive="right">
-                    <template #default="{ item }">
+                <x-person-panel name="person-panel" exclusive="right" heading-tag="h2">
+                    <template #content="{ item }">
                         <h2>Detaljer om person</h2>
                         <dl>
                             <dt>Namn</dt>
@@ -88,8 +88,8 @@ registerLayout({
                         </dl>
                     </template>
                 </x-person-panel>
-                <x-expense-panel name="expense-panel" exclusive="right">
-                    <template #default="{ item }">
+                <x-expense-panel name="expense-panel" exclusive="right" heading-tag="h2">
+                    <template #content="{ item }">
                         <dl>
                             <dt>ID</dt>
                             <dd>{{ item.id }}</dd>
