@@ -1,6 +1,6 @@
 // packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
-import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
+import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
 var statuses = ["default", "warning", "error", "success", "info"];
 var _sfc_main$1h = /* @__PURE__ */ defineComponent({
@@ -5539,6 +5539,14 @@ var _sfc_main$18 = defineComponent({
       default() {
       }
     },
+    /**
+     * List of buttons to display in the modal.
+     * Each button is defined as an FModalButtonDescriptor with the following properties:
+     * - `label` (String): The text displayed on the button.
+     * - `event` (String): The event emitted when the button is clicked.
+     * - `type` (String): The button type. Valid values are: "primary" or "secondary".
+     * - `submitButton` (Boolean): Whether the button is a submit button.
+     */
     buttons: {
       type: Array,
       required: false,
@@ -5951,6 +5959,9 @@ var ValidationPrefixDirective = {
 };
 var ValidationPlugin = {
   install(app) {
+    for (const validator of availableValidators) {
+      ValidationService.registerValidator(validator);
+    }
     app.directive("validation", ValidationDirective);
     app.directive("validationPrefix", ValidationPrefixDirective);
   }
@@ -14095,7 +14106,7 @@ registerLayout({
     }
   }
 });
-var styleContent = ':host {\n    display: block;\n}\n\n.page-layout {\n    display: grid;\n    height: 100cqh;\n    width: min(100%, 100cqw);\n\n    &[part~="simple"] {\n        grid-template:\n            "header" min-content\n            "content" 1fr\n            "footer" min-content\n            / 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="left-panel"] {\n        grid-template:\n            "header header" min-content\n            "left content" 1fr\n            "footer footer" min-content\n            / min-content 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"] {\n            --background: var(--fkds-color-background-secondary);\n            background: var(--background);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="right-panel"] {\n        grid-template:\n            "header header" min-content\n            "content right" 1fr\n            "footer footer" min-content\n            / 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area right"] {\n            background: var(--fkds-color-background-secondary);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="three-column"] {\n        grid-template:\n            "header header header" min-content\n            "left content right" 1fr\n            "footer footer footer" min-content\n            / min-content 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"],\n        [part="area right"] {\n            --background: var(--fkds-color-background-secondary);\n            background: var(--background);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n}\n\n.page-layout__area {\n    display: flex;\n    position: relative;\n\n    &[data-direction="column"] {\n        flex-direction: column;\n    }\n\n    &[data-direction="row"] {\n        flex-direction: row;\n    }\n\n    &[data-scroll] {\n        overflow-y: auto;\n    }\n\n    &:empty {\n        display: none;\n    }\n}\n\n:host ::slotted(*) {\n    display: contents;\n}\n';
+var styleContent = ':host {\n    display: block;\n}\n\n.page-layout {\n    display: grid;\n    height: 100cqh;\n    width: min(100%, 100cqw);\n\n    &[part~="simple"] {\n        grid-template:\n            "header" min-content\n            "content" 1fr\n            "footer" min-content\n            / 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="left-panel"] {\n        grid-template:\n            "header header" min-content\n            "left content" 1fr\n            "footer footer" min-content\n            / min-content 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"] {\n            --background: var(--fkds-color-background-secondary);\n\n            background: var(--background);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="right-panel"] {\n        grid-template:\n            "header header" min-content\n            "content right" 1fr\n            "footer footer" min-content\n            / 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area right"] {\n            background: var(--fkds-color-background-secondary);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="three-column"] {\n        grid-template:\n            "header header header" min-content\n            "left content right" 1fr\n            "footer footer footer" min-content\n            / min-content 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            background: var(--f-background-pageheader-primary);\n            color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"],\n        [part="area right"] {\n            --background: var(--fkds-color-background-secondary);\n\n            background: var(--background);\n            color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            background: var(--fkds-color-background-primary);\n            color: var(--fkds-color-text-primary);\n        }\n    }\n}\n\n.page-layout__area {\n    display: flex;\n    position: relative;\n\n    &[data-direction="column"] {\n        flex-direction: column;\n    }\n\n    &[data-direction="row"] {\n        flex-direction: row;\n    }\n\n    &[data-scroll] {\n        overflow-y: auto;\n    }\n\n    &:empty {\n        display: none;\n    }\n}\n\n:host ::slotted(*) {\n    display: contents;\n}\n';
 var stubLayout = defineLayout({
   name: "",
   areas: {}
@@ -15375,6 +15386,9 @@ var _sfc_main$k = defineComponent({
       required: false,
       default: () => ElementIdService.generateElementId()
     },
+    /**
+     * Disables the file selector.
+     */
     disabled: {
       type: Boolean,
       required: false,
@@ -18826,6 +18840,10 @@ var _sfc_main = defineComponent({
   mixins: [TranslationMixin],
   inheritAttrs: true,
   props: {
+    /**
+     * The title of the wizard step.
+     * This will be displayed as the step's header.
+     */
     title: {
       type: String,
       required: true
