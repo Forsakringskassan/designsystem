@@ -13,7 +13,7 @@
         <template v-else>
             <!--
                 @slot Slot for last dialogue step.
-                @binding {userData} Step information
+                @binding {userData} userData Step information
             -->
             <slot v-bind="{ userData: userData }"></slot>
         </template>
