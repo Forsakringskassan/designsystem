@@ -1738,12 +1738,16 @@ input[type=search]:focus,
   margin: calc(1rem * var(--f-density-factor)) 0;
 }
 .card--default {
+  background-color: var(--fkds-color-background-primary);
   border-radius: var(--f-border-radius-medium);
-  border: var(--f-border-width-medium) solid var(--f-border-color-card);
+  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
 }
 .card--error {
   border-radius: var(--f-border-radius-medium);
   border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-negative);
+}
+.card__content {
+  color: var(--fkds-color-text-primary);
 }
 .card__content > p:last-child,
 .card__content > div:last-child {
@@ -1754,7 +1758,7 @@ input[type=search]:focus,
   margin-bottom: 0;
 }
 .card__header-label {
-  color: var(--f-text-color-default);
+  color: var(--fkds-color-text-primary);
   font-size: var(--f-font-size-large);
   font-weight: var(--f-font-weight-bold);
   line-height: var(--f-line-height-large);

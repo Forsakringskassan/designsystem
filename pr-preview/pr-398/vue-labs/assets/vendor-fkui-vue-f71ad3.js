@@ -1,6 +1,6 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement, effectScope } from "vue";
-import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
+import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
 var statuses = ["default", "warning", "error", "success", "info"];
 var _sfc_main$1e = /* @__PURE__ */ defineComponent({
@@ -5539,6 +5539,14 @@ var _sfc_main$15 = defineComponent({
       default() {
       }
     },
+    /**
+     * List of buttons to display in the modal.
+     * Each button is defined as an FModalButtonDescriptor with the following properties:
+     * - `label` (String): The text displayed on the button.
+     * - `event` (String): The event emitted when the button is clicked.
+     * - `type` (String): The button type. Valid values are: "primary" or "secondary".
+     * - `submitButton` (Boolean): Whether the button is a submit button.
+     */
     buttons: {
       type: Array,
       required: false,
@@ -5951,6 +5959,9 @@ var ValidationPrefixDirective = {
 };
 var ValidationPlugin = {
   install(app) {
+    for (const validator of availableValidators) {
+      ValidationService.registerValidator(validator);
+    }
     app.directive("validation", ValidationDirective);
     app.directive("validationPrefix", ValidationPrefixDirective);
   }
@@ -14276,6 +14287,9 @@ var _sfc_main$l = defineComponent({
       required: false,
       default: () => ElementIdService.generateElementId()
     },
+    /**
+     * Disables the file selector.
+     */
     disabled: {
       type: Boolean,
       required: false,
@@ -18429,6 +18443,10 @@ var _sfc_main = defineComponent({
   mixins: [TranslationMixin],
   inheritAttrs: true,
   props: {
+    /**
+     * The title of the wizard step.
+     * This will be displayed as the step's header.
+     */
     title: {
       type: String,
       required: true

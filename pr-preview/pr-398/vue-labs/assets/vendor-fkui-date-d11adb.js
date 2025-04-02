@@ -1,4 +1,4 @@
-// packages/date/lib/esm/index.js
+// ../date/lib/esm/index.js
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
@@ -358,7 +358,7 @@ var Locale;
 function getDefaultLocale() {
   return Locale.SWEDISH;
 }
-var _locale = getDefaultLocale();
+var _locale = /* @__PURE__ */ getDefaultLocale();
 function resetLocale() {
   _locale = getDefaultLocale();
 }
