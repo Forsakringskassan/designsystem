@@ -41,6 +41,7 @@
 
         [part="area left"] {
             --background: var(--fkds-color-background-secondary);
+
             background: var(--background);
         }
 
@@ -90,6 +91,7 @@
         [part="area left"],
         [part="area right"] {
             --background: var(--fkds-color-background-secondary);
+
             background: var(--background);
             color: var(--fkds-color-text-primary);
         }

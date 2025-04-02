@@ -1,71 +1,37 @@
 <script setup lang="ts">
-import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
+import { ref } from "vue";
+import { FTextField } from "../components";
+
+const namn = ref("World");
 </script>
 
 <template>
-    <f-page-layout layout="three-column">
-        <template #header>
-            <header>[header]</header>
-        </template>
-        <template #left>
-            <div class="my-left-panel">
-                <f-minimizable-panel>
-                    <template #header> Rubrik lång lång super </template>
-                    <template #default="{ isOpen }">
-                        <template v-if="isOpen">
-                            <p>Meny foo bar baz innehåll</p>
-                        </template>
-                        <!-- <template v-else></template> -->
-                    </template>
-                    <template #footer="{ isOpen }">
-                        <template v-if="isOpen">
-                            <p>Sidfot</p>
-                        </template>
-                        <!-- <template v-else> F.. </template> -->
-                    </template>
-                </f-minimizable-panel>
-            </div>
-        </template>
-        <template #right>
-            <div class="my-right-panel">[right]</div>
-        </template>
-        <template #content>
-            <main class="my-content">[main]</main>
-        </template>
-        <template #footer>
-            <footer class="my-footer">[footer]</footer>
-        </template>
-    </f-page-layout>
+    <div class="container">
+        <h1>@fkui/vue</h1>
+
+        <p>A few common commands to keep track of:</p>
+        <dl>
+            <dt><code>npm run vue unit</code></dt>
+            <dd>Run Jest unit tests</dd>
+            <dt><code>npm run vue unit -- Foobar</code></dt>
+            <dd>Run unit tests matching "Foobar"</dd>
+            <dt><code>npm run vue unit -- -u</code></dt>
+            <dd>Update snapshots</dd>
+            <dt><code>npm exec cypress -- open --component</code></dt>
+            <dd>Run Cypress Component Tests</dd>
+            <dt><code>npm run prettier:write</code></dt>
+            <dd>Reformat files</dd>
+            <dt><code>npm run lint</code></dt>
+            <dd>Run all linting and static analyzis</dd>
+            <dt><code>npm test</code></dt>
+            <dd>Run all tests</dd>
+        </dl>
+
+        <hr />
+
+        <h2>Sandbox</h2>
+
+        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
+        <pre>Hello {{ namn }}!</pre>
+    </div>
 </template>
-
-<style>
-.my-header {
-    background: darkred;
-    color: white;
-}
-
-.my-footer {
-    background: cyan;
-    color: black;
-}
-
-.my-left-panel {
-    background: greenyellow;
-    flex-grow: 1;
-    display: flex;
-}
-
-.my-right-panel {
-    background: hotpink;
-    flex-grow: 1;
-}
-
-.my-content {
-    flex-grow: 1;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-</style>
