@@ -9,7 +9,9 @@ Formulärsmodal är en standardmodal som kan presentera formulärsfält och hant
 
 Formulärsmodalen baseras på en modal dialogruta av typen standard och visas i fullskärm i mobil (<640px).
 
-Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra. Alla fält valideras när användaren trycker på primärknappen.
+Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra.
+Standardinställning för knappordning i modaler är att primärknappen ligger först följt av sekundärknappen.
+Alla fält valideras när användaren trycker på primärknappen.
 
 - Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.
 - Öppna inte ytterligare modaler från en modal.
