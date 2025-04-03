@@ -2071,6 +2071,7 @@ var TranslationMixin = {
 // packages/vue/src/plugins/validation/ValidationPlugin.ts
 var import_isEqual = __toESM(require_isEqual());
 import {
+  availableValidators,
   isValidatableHTMLElement,
   ValidationService
 } from "@fkui/logic";
@@ -2184,9 +2185,15 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
 FErrorHandlingApp_default.render = render5;
 FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
 
-// packages/vue/src/plugins/format/FormatPlugin.ts
+// packages/vue/src/plugins/format/formatters.ts
 import { DateFormat, FDate } from "@fkui/date";
-import { formatNumber, parseBankgiro, parseDate } from "@fkui/logic";
+import {
+  formatNumber as numberFormater,
+  parseBankgiro,
+  parseDate,
+  parseOrganisationsnummer,
+  parsePersonnummer
+} from "@fkui/logic";
 
 // packages/vue/src/components/FModal/sizes.ts
 var sizes = [
@@ -3393,6 +3400,14 @@ var FFormModal_default = defineComponent11({
       default() {
       }
     },
+    /**
+     * List of buttons to display in the modal.
+     * Each button is defined as an FModalButtonDescriptor with the following properties:
+     * - `label` (String): The text displayed on the button.
+     * - `event` (String): The event emitted when the button is clicked.
+     * - `type` (String): The button type. Valid values are: "primary" or "secondary".
+     * - `submitButton` (Boolean): Whether the button is a submit button.
+     */
     buttons: {
       type: Array,
       required: false,

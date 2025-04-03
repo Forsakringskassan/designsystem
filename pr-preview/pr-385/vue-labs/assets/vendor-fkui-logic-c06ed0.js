@@ -1153,7 +1153,7 @@ var Locale;
 function getDefaultLocale() {
   return Locale.SWEDISH;
 }
-var _locale = getDefaultLocale();
+var _locale = /* @__PURE__ */ getDefaultLocale();
 function getLocale() {
   return _locale;
 }
@@ -1908,10 +1908,10 @@ function scrollToSlow(element, duration, offset = 0) {
     }, interval);
   });
 }
-var sym = Symbol("focus-stack");
+var sym = /* @__PURE__ */ Symbol("focus-stack");
 var _stackHandleCounter = 0;
 var _focusElementStack = [];
-var TABBABLE_ELEMENT_SELECTOR = [
+var TABBABLE_ELEMENT_SELECTOR = /* @__PURE__ */ [
   "a[href]",
   "area[href]",
   "input",
@@ -2076,6 +2076,113 @@ var index = /* @__PURE__ */ Object.freeze({
   saveFocus,
   scrollTo
 });
+var ElementIdServiceImpl = class {
+  elementIdMap = /* @__PURE__ */ new Map();
+  generateElementId(prefix = "fkui") {
+    const id = this.nextId(prefix);
+    if (document.getElementById(id) === null) {
+      return id;
+    }
+    return this.generateElementId(prefix);
+  }
+  nextId(prefix) {
+    let elementIdWithPadding = String(this.getIdFromMap(prefix));
+    while (elementIdWithPadding.length < 4) {
+      elementIdWithPadding = `0${elementIdWithPadding}`;
+    }
+    return `${prefix}-vue-element-${elementIdWithPadding}`;
+  }
+  getIdFromMap(prefix) {
+    const elementId = this.elementIdMap.get(prefix);
+    if (!elementId) {
+      this.elementIdMap.set(prefix, { count: 1 });
+      return 1;
+    }
+    elementId.count++;
+    return elementId.count;
+  }
+  reset() {
+    this.elementIdMap = /* @__PURE__ */ new Map();
+  }
+};
+var ElementIdService = /* @__PURE__ */ new ElementIdServiceImpl();
+var haveSessionStorage = /* @__PURE__ */ (() => {
+  const test = "fkui.sessionstorage.test";
+  try {
+    if (window.sessionStorage) {
+      window.sessionStorage.setItem(test, "test");
+      window.sessionStorage.removeItem(test);
+      return true;
+    } else {
+      return false;
+    }
+  } catch {
+    return false;
+  }
+})();
+var PersistenceService = class {
+  cache;
+  constructor() {
+    this.cache = /* @__PURE__ */ new Map();
+  }
+  set(key, value) {
+    if (this.isSessionPresent) {
+      window.sessionStorage.setItem(key, JSON.stringify(value));
+    }
+    this.cache.set(key, value);
+  }
+  get(key) {
+    const found = this.find(key);
+    if (typeof found !== "undefined") {
+      return found;
+    }
+    throw Error(`PersistenceService cannot find entry with key "${key}"`);
+  }
+  find(key) {
+    if (this.cache.has(key)) {
+      return this.cache.get(key);
+    }
+    const persisted = this.isSessionPresent ? window.sessionStorage.getItem(key) : null;
+    if (persisted) {
+      const value = JSON.parse(persisted);
+      this.cache.set(key, value);
+    }
+    return this.cache.get(key);
+  }
+  remove(key) {
+    if (this.isSessionPresent) {
+      window.sessionStorage.removeItem(key);
+    }
+    this.cache.delete(key);
+  }
+  /**
+   * @internal
+   */
+  /* istanbul ignore next: for mocking in unittests */
+  get isSessionPresent() {
+    return haveSessionStorage;
+  }
+};
+var SimplePersistenceService = class {
+  persistenceService;
+  key;
+  constructor(key) {
+    this.key = key;
+    this.persistenceService = new PersistenceService();
+  }
+  set(value) {
+    this.persistenceService.set(this.key, value);
+  }
+  get() {
+    return this.persistenceService.get(this.key);
+  }
+  find() {
+    return this.persistenceService.find(this.key);
+  }
+  remove() {
+    this.persistenceService.remove(this.key);
+  }
+};
 var DefaultTranslationProvider = class {
   language = "sv";
   get currentLanguage() {
@@ -2105,7 +2212,7 @@ var TranslationServiceImpl = class {
     this.provider = newProvider;
   }
 };
-var TranslationService = new TranslationServiceImpl();
+var TranslationService = /* @__PURE__ */ new TranslationServiceImpl();
 var ValidationErrorMessageBuilder = class _ValidationErrorMessageBuilder {
   /**
    * Create a new builder.
@@ -2692,7 +2799,7 @@ var ValidationServiceImpl = class {
     this.validationStates = {};
   }
 };
-var ValidationService = new ValidationServiceImpl();
+var ValidationService = /* @__PURE__ */ new ValidationServiceImpl();
 var allowListValidator = {
   name: "allowList",
   validation(value, element, config) {
@@ -3057,148 +3164,43 @@ var whitelistValidator = {
     return isEmpty(value) || WHITELIST_REGEXP.test(value);
   }
 };
-ValidationService.registerValidator(allowListValidator);
-ValidationService.registerValidator(bankAccountNumberValidator);
-ValidationService.registerValidator(bankgiroValidator);
-ValidationService.registerValidator(blacklistValidator);
-ValidationService.registerValidator(clearingNumberValidator);
-ValidationService.registerValidator(currencyValidator);
-ValidationService.registerValidator(dateFormatValidator);
-ValidationService.registerValidator(dateValidator);
-ValidationService.registerValidator(decimalValidator);
-ValidationService.registerValidator(emailValidator);
-ValidationService.registerValidator(greaterThanValidator);
-ValidationService.registerValidator(integerValidator);
-ValidationService.registerValidator(invalidDatesValidator);
-ValidationService.registerValidator(invalidWeekdaysValidator);
-ValidationService.registerValidator(lessThanValidator);
-ValidationService.registerValidator(matchesValidator);
-ValidationService.registerValidator(maxDateValidator);
-ValidationService.registerValidator(maxLengthValidator);
-ValidationService.registerValidator(maxValueValidator);
-ValidationService.registerValidator(minDateValidator);
-ValidationService.registerValidator(minLengthValidator);
-ValidationService.registerValidator(minValueValidator);
-ValidationService.registerValidator(numberValidator);
-ValidationService.registerValidator(organisationsnummerValidator);
-ValidationService.registerValidator(percentValidator);
-ValidationService.registerValidator(personnummerFormatValidator);
-ValidationService.registerValidator(personnummerLuhnValidator);
-ValidationService.registerValidator(personnummerNotSame);
-ValidationService.registerValidator(personnummerOlder);
-ValidationService.registerValidator(personnummerYounger);
-ValidationService.registerValidator(phoneNumberValidator);
-ValidationService.registerValidator(plusgiroValidator);
-ValidationService.registerValidator(postalCodeValidator);
-ValidationService.registerValidator(requiredValidator);
-ValidationService.registerValidator(whitelistValidator);
-var ElementIdServiceImpl = class {
-  elementIdMap = /* @__PURE__ */ new Map();
-  generateElementId(prefix = "fkui") {
-    const id = this.nextId(prefix);
-    if (document.getElementById(id) === null) {
-      return id;
-    }
-    return this.generateElementId(prefix);
-  }
-  nextId(prefix) {
-    let elementIdWithPadding = String(this.getIdFromMap(prefix));
-    while (elementIdWithPadding.length < 4) {
-      elementIdWithPadding = `0${elementIdWithPadding}`;
-    }
-    return `${prefix}-vue-element-${elementIdWithPadding}`;
-  }
-  getIdFromMap(prefix) {
-    const elementId = this.elementIdMap.get(prefix);
-    if (!elementId) {
-      this.elementIdMap.set(prefix, { count: 1 });
-      return 1;
-    }
-    elementId.count++;
-    return elementId.count;
-  }
-  reset() {
-    this.elementIdMap = /* @__PURE__ */ new Map();
-  }
-};
-var ElementIdService = new ElementIdServiceImpl();
-var haveSessionStorage = (() => {
-  const test = "fkui.sessionstorage.test";
-  try {
-    if (window.sessionStorage) {
-      window.sessionStorage.setItem(test, "test");
-      window.sessionStorage.removeItem(test);
-      return true;
-    } else {
-      return false;
-    }
-  } catch {
-    return false;
-  }
-})();
-var PersistenceService = class {
-  cache;
-  constructor() {
-    this.cache = /* @__PURE__ */ new Map();
-  }
-  set(key, value) {
-    if (this.isSessionPresent) {
-      window.sessionStorage.setItem(key, JSON.stringify(value));
-    }
-    this.cache.set(key, value);
-  }
-  get(key) {
-    const found = this.find(key);
-    if (typeof found !== "undefined") {
-      return found;
-    }
-    throw Error(`PersistenceService cannot find entry with key "${key}"`);
-  }
-  find(key) {
-    if (this.cache.has(key)) {
-      return this.cache.get(key);
-    }
-    const persisted = this.isSessionPresent ? window.sessionStorage.getItem(key) : null;
-    if (persisted) {
-      const value = JSON.parse(persisted);
-      this.cache.set(key, value);
-    }
-    return this.cache.get(key);
-  }
-  remove(key) {
-    if (this.isSessionPresent) {
-      window.sessionStorage.removeItem(key);
-    }
-    this.cache.delete(key);
-  }
-  /**
-   * @internal
-   */
-  /* istanbul ignore next: for mocking in unittests */
-  get isSessionPresent() {
-    return haveSessionStorage;
-  }
-};
-var SimplePersistenceService = class {
-  persistenceService;
-  key;
-  constructor(key) {
-    this.key = key;
-    this.persistenceService = new PersistenceService();
-  }
-  set(value) {
-    this.persistenceService.set(this.key, value);
-  }
-  get() {
-    return this.persistenceService.get(this.key);
-  }
-  find() {
-    return this.persistenceService.find(this.key);
-  }
-  remove() {
-    this.persistenceService.remove(this.key);
-  }
-};
+var availableValidators = [
+  allowListValidator,
+  bankAccountNumberValidator,
+  bankgiroValidator,
+  blacklistValidator,
+  clearingNumberValidator,
+  currencyValidator,
+  dateFormatValidator,
+  dateValidator,
+  decimalValidator,
+  emailValidator,
+  greaterThanValidator,
+  integerValidator,
+  invalidDatesValidator,
+  invalidWeekdaysValidator,
+  lessThanValidator,
+  matchesValidator,
+  maxDateValidator,
+  maxLengthValidator,
+  maxValueValidator,
+  minDateValidator,
+  minLengthValidator,
+  minValueValidator,
+  numberValidator,
+  organisationsnummerValidator,
+  percentValidator,
+  personnummerFormatValidator,
+  personnummerLuhnValidator,
+  personnummerNotSame,
+  personnummerOlder,
+  personnummerYounger,
+  phoneNumberValidator,
+  plusgiroValidator,
+  postalCodeValidator,
+  requiredValidator,
+  whitelistValidator
+];
 var SCREEN_READER_DELAY = 100;
 function waitForScreenReader(callback, delay = SCREEN_READER_DELAY) {
   return new Promise((resolve, reject) => {
@@ -3268,6 +3270,7 @@ export {
   ValidationService,
   addFocusListener,
   alertScreenReader,
+  availableValidators,
   configLogic,
   debounce,
   deepClone,

@@ -72,7 +72,7 @@ const isMap = (val) => toTypeString(val) === "[object Map]";
 const isSet$1 = (val) => toTypeString(val) === "[object Set]";
 const isDate = (val) => toTypeString(val) === "[object Date]";
 const isFunction = (val) => typeof val === "function";
-const isString$1 = (val) => typeof val === "string";
+const isString = (val) => typeof val === "string";
 const isSymbol$1 = (val) => typeof val === "symbol";
 const isObject$2 = (val) => val !== null && typeof val === "object";
 const isPromise = (val) => {
@@ -84,7 +84,7 @@ const toRawType = (value) => {
   return toTypeString(value).slice(8, -1);
 };
 const isPlainObject = (val) => toTypeString(val) === "[object Object]";
-const isIntegerKey = (key) => isString$1(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
+const isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 const isReservedProp = /* @__PURE__ */ makeMap(
   // the leading comma is intentional so empty string "" is also included
   ",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"
@@ -134,7 +134,7 @@ const looseToNumber = (val) => {
   return isNaN(n) ? val : n;
 };
 const toNumber = (val) => {
-  const n = isString$1(val) ? Number(val) : NaN;
+  const n = isString(val) ? Number(val) : NaN;
   return isNaN(n) ? val : n;
 };
 let _globalThis;
@@ -146,7 +146,7 @@ function normalizeStyle(value) {
     const res = {};
     for (let i = 0; i < value.length; i++) {
       const item = value[i];
-      const normalized = isString$1(item) ? parseStringStyle(item) : normalizeStyle(item);
+      const normalized = isString(item) ? parseStringStyle(item) : normalizeStyle(item);
       if (normalized) {
         for (const key in normalized) {
           res[key] = normalized[key];
@@ -154,7 +154,7 @@ function normalizeStyle(value) {
       }
     }
     return res;
-  } else if (isString$1(value) || isObject$2(value)) {
+  } else if (isString(value) || isObject$2(value)) {
     return value;
   }
 }
@@ -173,7 +173,7 @@ function parseStringStyle(cssText) {
 }
 function normalizeClass(value) {
   let res = "";
-  if (isString$1(value)) {
+  if (isString(value)) {
     res = value;
   } else if (isArray$2(value)) {
     for (let i = 0; i < value.length; i++) {
@@ -194,7 +194,7 @@ function normalizeClass(value) {
 function normalizeProps(props) {
   if (!props) return null;
   let { class: klass, style } = props;
-  if (klass && !isString$1(klass)) {
+  if (klass && !isString(klass)) {
     props.class = normalizeClass(klass);
   }
   if (style) {
@@ -260,7 +260,7 @@ const isRef$1 = (val) => {
   return !!(val && val["__v_isRef"] === true);
 };
 const toDisplayString = (val) => {
-  return isString$1(val) ? val : val == null ? "" : isArray$2(val) || isObject$2(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+  return isString(val) ? val : val == null ? "" : isArray$2(val) || isObject$2(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
 };
 const replacer = (_key, val) => {
   if (isRef$1(val)) {
@@ -1941,7 +1941,7 @@ function formatProps(props) {
   return res;
 }
 function formatProp(key, value, raw) {
-  if (isString$1(value)) {
+  if (isString(value)) {
     value = JSON.stringify(value);
     return raw ? value : [`${key}=${value}`];
   } else if (typeof value === "number" || typeof value === "boolean" || value == null) {
@@ -2248,7 +2248,7 @@ const isTargetSVG = (target) => typeof SVGElement !== "undefined" && target inst
 const isTargetMathML = (target) => typeof MathMLElement === "function" && target instanceof MathMLElement;
 const resolveTarget = (props, select) => {
   const targetSelector = props && props.to;
-  if (isString$1(targetSelector)) {
+  if (isString(targetSelector)) {
     if (!select) {
       return null;
     } else {
@@ -2962,7 +2962,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
     return hasOwn(rawSetupState, key);
   };
   if (oldRef != null && oldRef !== ref3) {
-    if (isString$1(oldRef)) {
+    if (isString(oldRef)) {
       refs[oldRef] = null;
       if (canSetSetupRef(oldRef)) {
         setupState[oldRef] = null;
@@ -2974,7 +2974,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   if (isFunction(ref3)) {
     callWithErrorHandling(ref3, owner, 12, [value, refs]);
   } else {
-    const _isString = isString$1(ref3);
+    const _isString = isString(ref3);
     const _isRef = isRef(ref3);
     if (_isString || _isRef) {
       const doSet = () => {
@@ -3109,7 +3109,7 @@ function resolveComponent(name, maybeSelfReference) {
 }
 const NULL_DYNAMIC_COMPONENT = Symbol.for("v-ndc");
 function resolveDynamicComponent(component) {
-  if (isString$1(component)) {
+  if (isString(component)) {
     return resolveAsset(COMPONENTS, component, false) || component;
   } else {
     return component || NULL_DYNAMIC_COMPONENT;
@@ -3150,7 +3150,7 @@ function renderList(source, renderItem, cache, index) {
   let ret;
   const cached = cache;
   const sourceIsArray = isArray$2(source);
-  if (sourceIsArray || isString$1(source)) {
+  if (sourceIsArray || isString(source)) {
     const sourceIsReactiveArray = sourceIsArray && isReactive(source);
     let needsWrap = false;
     if (sourceIsReactiveArray) {
@@ -3580,7 +3580,7 @@ function callHook$1(hook, instance, type) {
 }
 function createWatcher(raw, ctx, publicThis, key) {
   let getter = key.includes(".") ? createPathGetter(publicThis, key) : () => publicThis[key];
-  if (isString$1(raw)) {
+  if (isString(raw)) {
     const handler = ctx[raw];
     if (isFunction(handler)) {
       {
@@ -5652,7 +5652,7 @@ function doWatch(source, cb, options = EMPTY_OBJ) {
 }
 function instanceWatch(source, value, options) {
   const publicThis = this.proxy;
-  const getter = isString$1(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
+  const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
   let cb;
   if (isFunction(value)) {
     cb = value;
@@ -5686,7 +5686,7 @@ function emit(instance, event, ...rawArgs) {
   const modifiers = isModelListener2 && getModelModifiers(props, event.slice(7));
   if (modifiers) {
     if (modifiers.trim) {
-      args = rawArgs.map((a) => isString$1(a) ? a.trim() : a);
+      args = rawArgs.map((a) => isString(a) ? a.trim() : a);
     }
     if (modifiers.number) {
       args = rawArgs.map(looseToNumber);
@@ -6044,7 +6044,7 @@ const normalizeRef = ({
   if (typeof ref3 === "number") {
     ref3 = "" + ref3;
   }
-  return ref3 != null ? isString$1(ref3) || isRef(ref3) || isFunction(ref3) ? { i: currentRenderingInstance, r: ref3, k: ref_key, f: !!ref_for } : ref3 : null;
+  return ref3 != null ? isString(ref3) || isRef(ref3) || isFunction(ref3) ? { i: currentRenderingInstance, r: ref3, k: ref_key, f: !!ref_for } : ref3 : null;
 };
 function createBaseVNode(type, props = null, children = null, patchFlag = 0, dynamicProps = null, shapeFlag = type === Fragment ? 0 : 1, isBlockNode = false, needFullChildrenNormalization = false) {
   const vnode = {
@@ -6082,7 +6082,7 @@ function createBaseVNode(type, props = null, children = null, patchFlag = 0, dyn
       type.normalize(vnode);
     }
   } else if (children) {
-    vnode.shapeFlag |= isString$1(children) ? 8 : 16;
+    vnode.shapeFlag |= isString(children) ? 8 : 16;
   }
   if (isBlockTreeEnabled > 0 && // avoid a block node from tracking itself
   !isBlockNode && // has current parent block
@@ -6128,7 +6128,7 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
   if (props) {
     props = guardReactiveProps(props);
     let { class: klass, style } = props;
-    if (klass && !isString$1(klass)) {
+    if (klass && !isString(klass)) {
       props.class = normalizeClass(klass);
     }
     if (isObject$2(style)) {
@@ -6138,7 +6138,7 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
       props.style = normalizeStyle(style);
     }
   }
-  const shapeFlag = isString$1(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$2(type) ? 4 : isFunction(type) ? 2 : 0;
+  const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$2(type) ? 4 : isFunction(type) ? 2 : 0;
   return createBaseVNode(
     type,
     props,
@@ -6991,11 +6991,11 @@ const CSS_VAR_TEXT = Symbol("");
 const displayRE = /(^|;)\s*display\s*:/;
 function patchStyle(el, prev, next) {
   const style = el.style;
-  const isCssString = isString$1(next);
+  const isCssString = isString(next);
   let hasControlledDisplay = false;
   if (next && !isCssString) {
     if (prev) {
-      if (!isString$1(prev)) {
+      if (!isString(prev)) {
         for (const key in prev) {
           if (next[key] == null) {
             setStyle(style, key, "");
@@ -7236,7 +7236,7 @@ const patchProp = (el, key, prevValue, nextValue, namespace, parentComponent) =>
     }
   } else if (
     // #11081 force set props for possible async custom element
-    el._isVueCE && (/[A-Z]/.test(key) || !isString$1(nextValue))
+    el._isVueCE && (/[A-Z]/.test(key) || !isString(nextValue))
   ) {
     patchDOMProp(el, camelize(key), nextValue, parentComponent, key);
   } else {
@@ -7276,7 +7276,7 @@ function shouldSetAsProp(el, key, value, isSVG) {
       return false;
     }
   }
-  if (isNativeOn(key) && isString$1(value)) {
+  if (isNativeOn(key) && isString(value)) {
     return false;
   }
   return key in el;
@@ -7941,7 +7941,7 @@ function resolveRootNamespace(container) {
   }
 }
 function normalizeContainer(container) {
-  if (isString$1(container)) {
+  if (isString(container)) {
     const res = document.querySelector(container);
     return res;
   }
@@ -7969,20 +7969,6 @@ function isEmpty(value) {
 }
 function isSet(value) {
   return value !== void 0 && value !== null;
-}
-function isString(value) {
-  return typeof value === "string" || value instanceof String;
-}
-const DATE_REGEXP_WITH_DASH = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-function validLimit(limit) {
-  if (typeof limit !== "string" || isEmpty(limit)) {
-    throw new Error(`limit must be a non-empty string`);
-  }
-  const limitAsString = limit;
-  if (!DATE_REGEXP_WITH_DASH.test(limitAsString)) {
-    throw new Error(`limit has invalid format`);
-  }
-  return limitAsString;
 }
 function debounce(func, delay, immediate = false) {
   let timeout = null;
@@ -8617,19 +8603,6 @@ function testLuhnChecksum(inputString) {
   });
   return sum % 10 === 0;
 }
-function validChecksum(value) {
-  const yymmddxxxx = value.slice(2).replace(/-/g, "");
-  return testLuhnChecksum(yymmddxxxx);
-}
-const BANK_ACCOUNT_NUMBER_REGEXP = /^\d{3,16}$/;
-const BANK_ACCOUNT_NUMBER_TRIM_REGEXP = /[- .,]+/g;
-function parseBankAccountNumber(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  const trimmedValue = value.replace(BANK_ACCOUNT_NUMBER_TRIM_REGEXP, "");
-  return BANK_ACCOUNT_NUMBER_REGEXP.test(trimmedValue) ? trimmedValue : void 0;
-}
 const BANKGIRO_REGEXP_HYPHEN = /^(\d{3,4})[-]?(\d{4})$/;
 function parseBankgiro(value) {
   if (isEmpty(value)) {
@@ -8643,16 +8616,6 @@ function parseBankgiro(value) {
     return void 0;
   }
   return `${match[1]}-${match[2]}`;
-}
-const CLEARINGNUMBER_REGEXP = /^\d{4}([-\s]?\d)?$/;
-function parseClearingNumber(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  if (!CLEARINGNUMBER_REGEXP.test(value)) {
-    return void 0;
-  }
-  return value.length === 5 ? `${value.substring(0, 4)}-${value.substring(4, 5)}` : value;
 }
 function getDefaultExportFromCjs$2(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
@@ -9013,7 +8976,7 @@ var Locale$1;
 function getDefaultLocale$1() {
   return Locale$1.SWEDISH;
 }
-let _locale$1 = getDefaultLocale$1();
+let _locale$1 = /* @__PURE__ */ getDefaultLocale$1();
 function getLocale$1() {
   return _locale$1;
 }
@@ -9543,7 +9506,7 @@ function formatSwedishNotation(value, decimals) {
     minimumFractionDigits: decimals
   }));
 }
-function formatNumber(value, decimals) {
+function formatNumber$1(value, decimals) {
   if (typeof value === "string") {
     value = parseNumber(value) ?? "";
   }
@@ -9617,65 +9580,6 @@ function parsePersonnummer(value, now = FDate$1.now()) {
   }
   return getPersonnummerString(century, year, month, day, check);
 }
-function parsePersonnummerLuhn(value) {
-  const parsed = parsePersonnummer(value);
-  if (!parsed) {
-    return void 0;
-  }
-  if (!validChecksum(parsed)) {
-    return void 0;
-  }
-  return parsed;
-}
-function formatPersonnummerToDate(value) {
-  var _a;
-  const datePart = parseDate(((_a = parsePersonnummer(value)) == null ? void 0 : _a.slice(0, 8)) || "");
-  if (!datePart) {
-    return void 0;
-  }
-  return FDate$1.fromIso(datePart);
-}
-const PLUSGIRO_REGEXP = /^\d{1,7}[-]?\d{1}$/;
-function hyphenShouldBeAdded(value) {
-  return value.length >= 2 && value.length <= 8;
-}
-function parsePlusgiro(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  value = value.replace(/ /g, "");
-  value = value.replace(/\D/g, "");
-  if (!PLUSGIRO_REGEXP.test(value) || !testLuhnChecksum(value.replace(/\D/g, ""))) {
-    return void 0;
-  }
-  if (hyphenShouldBeAdded(value)) {
-    value = `${value.substring(0, value.length - 1)}-${value[value.length - 1]}`;
-  }
-  const startOffset = 4;
-  let formattedString = value.substring(value.length - startOffset, value.length);
-  const step = 2;
-  for (let i = value.length - startOffset; i >= (value.length === 9 ? 3 : 1); i -= step) {
-    formattedString = `${value.substring(Math.max(i - step, 0), i)} ${formattedString}`;
-  }
-  if (value.length === 9) {
-    formattedString = value.substring(0, 1) + formattedString;
-  }
-  return formattedString;
-}
-const POSTAL_CODE_REGEXP = /^([1-9]{1}\d{2}) ?(\d{2})$/;
-function formatPostalCode(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  const match = value.match(POSTAL_CODE_REGEXP);
-  if (match === null) {
-    return void 0;
-  }
-  return `${match[1]} ${match[2]}`;
-}
-function parsePostalCode(value) {
-  return formatPostalCode(value);
-}
 const ORGANISATIONSNUMMER_REGEXP = /^([0-9]{6})-?([0-9]{4})$/;
 function parseOrganisationsnummer(value) {
   if (isEmpty(value)) {
@@ -9748,10 +9652,10 @@ function scrollToSlow(element, duration, offset2 = 0) {
     }, interval);
   });
 }
-const sym = Symbol("focus-stack");
+const sym = /* @__PURE__ */ Symbol("focus-stack");
 let _stackHandleCounter = 0;
 const _focusElementStack = [];
-const TABBABLE_ELEMENT_SELECTOR = [
+const TABBABLE_ELEMENT_SELECTOR = /* @__PURE__ */ [
   "a[href]",
   "area[href]",
   "input",
@@ -9851,6 +9755,38 @@ function isRadiobuttonOrCheckbox(element) {
 function isValidatableFormElement(element) {
   return element instanceof HTMLInputElement || element instanceof HTMLSelectElement || element instanceof HTMLTextAreaElement;
 }
+class ElementIdServiceImpl {
+  constructor() {
+    __publicField(this, "elementIdMap", /* @__PURE__ */ new Map());
+  }
+  generateElementId(prefix = "fkui") {
+    const id = this.nextId(prefix);
+    if (document.getElementById(id) === null) {
+      return id;
+    }
+    return this.generateElementId(prefix);
+  }
+  nextId(prefix) {
+    let elementIdWithPadding = String(this.getIdFromMap(prefix));
+    while (elementIdWithPadding.length < 4) {
+      elementIdWithPadding = `0${elementIdWithPadding}`;
+    }
+    return `${prefix}-vue-element-${elementIdWithPadding}`;
+  }
+  getIdFromMap(prefix) {
+    const elementId = this.elementIdMap.get(prefix);
+    if (!elementId) {
+      this.elementIdMap.set(prefix, { count: 1 });
+      return 1;
+    }
+    elementId.count++;
+    return elementId.count;
+  }
+  reset() {
+    this.elementIdMap = /* @__PURE__ */ new Map();
+  }
+}
+const ElementIdService = /* @__PURE__ */ new ElementIdServiceImpl();
 class DefaultTranslationProvider {
   constructor() {
     __publicField(this, "language", "sv");
@@ -9884,7 +9820,7 @@ class TranslationServiceImpl {
     this.provider = newProvider;
   }
 }
-const TranslationService = new TranslationServiceImpl();
+const TranslationService = /* @__PURE__ */ new TranslationServiceImpl();
 class ValidationErrorMessageBuilder {
   constructor() {
     __publicField(this, "validatorMessageMap");
@@ -10471,452 +10407,7 @@ class ValidationServiceImpl {
     this.validationStates = {};
   }
 }
-const ValidationService = new ValidationServiceImpl();
-const allowListValidator = {
-  name: "allowList",
-  validation(value, element, config2) {
-    if (isEmpty(value) || config2.list === void 0 || config2.list.length === 0) {
-      return true;
-    }
-    return config2.list.includes(value);
-  }
-};
-const bankAccountNumberValidator = {
-  name: "bankAccountNumber",
-  validation(value) {
-    return isEmpty(value) || isSet(parseBankAccountNumber(value));
-  }
-};
-const bankgiroValidator = {
-  name: "bankgiro",
-  validation(value) {
-    return isEmpty(value) || isSet(parseBankgiro(value));
-  }
-};
-function toArray$1(value) {
-  if (Array.isArray(value)) {
-    return value;
-  } else {
-    return [value];
-  }
-}
-const blacklistValidator = {
-  name: "blacklist",
-  validation(value, _element, config2) {
-    if (!config2.values) {
-      throw new Error("config.exclude must have values");
-    }
-    const values = toArray$1(config2.values);
-    const found = values.some((it) => String(it) === value);
-    return !found;
-  }
-};
-const clearingNumberValidator = {
-  name: "clearingNumber",
-  validation(value) {
-    return isEmpty(value) || isSet(parseClearingNumber(value));
-  }
-};
-const currencyValidator = {
-  name: "currency",
-  validation(value) {
-    return isEmpty(value) || isSet(parseNumber(value));
-  }
-};
-const dateValidator = {
-  name: "date",
-  validation(value) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalized = normalizeDateFormat(value);
-    if (!normalized) {
-      return false;
-    }
-    const parsed = FDate$1.fromIso(normalized);
-    return parsed.isValid();
-  }
-};
-const dateFormatValidator = {
-  name: "dateFormat",
-  validation(value) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalized = normalizeDateFormat(value);
-    return Boolean(normalized);
-  }
-};
-function createNumberRegexp(minDecimals = 0, maxDecimals = 2) {
-  return new RegExp(`^([-−]?[0-9]+)([,.][0-9]{${minDecimals},${maxDecimals}})(?<![,.])$`);
-}
-const decimalValidator = {
-  name: "decimal",
-  validation(value, _element, config2) {
-    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
-    const minDecimalsAsNumber = isSet(config2.minDecimals) ? Number(config2.minDecimals) : void 0;
-    const maxDecimalsAsNumber = isSet(config2.maxDecimals) ? Number(config2.maxDecimals) : void 0;
-    if (config2.minDecimals && isNaN(minDecimalsAsNumber)) {
-      throw new Error("config.minDecimals must be a number");
-    }
-    if (config2.maxDecimals && isNaN(maxDecimalsAsNumber)) {
-      throw new Error("config.maxDecimals must be a number");
-    }
-    return isEmpty(valueWithoutWhitespace) || createNumberRegexp(minDecimalsAsNumber, maxDecimalsAsNumber).test(valueWithoutWhitespace);
-  }
-};
-const emailValidator = {
-  name: "email",
-  validation(value, _element, config2) {
-    const maxLength = config2.maxLength || 254;
-    const EMAIL_REGEXP = new RegExp(`^(?=.{1,${maxLength}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
-    return isEmpty(value) || EMAIL_REGEXP.test(value);
-  }
-};
-function numberValidator$1(value, config2, name, compare2) {
-  if (value === "") {
-    return true;
-  }
-  const limit = config2[name];
-  if (!isSet(limit)) {
-    return false;
-  }
-  const limitAsNumber = parseNumber(String(config2[name]));
-  if (limitAsNumber === void 0) {
-    throw new Error(`config.${String(name)} must be a number`);
-  }
-  const valueAsNumber = parseNumber(value);
-  if (valueAsNumber === void 0) {
-    return false;
-  }
-  return compare2(valueAsNumber, limitAsNumber);
-}
-const greaterThanValidator = {
-  name: "greaterThan",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 > limit);
-  }
-};
-const NUMBER_REGEXP = /^([-−]?[0-9]+)?$/;
-const integerValidator = {
-  name: "integer",
-  validation(value) {
-    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
-    return isEmpty(valueWithoutWhitespace) || NUMBER_REGEXP.test(valueWithoutWhitespace);
-  }
-};
-function isInvalidDatesConfig(value) {
-  return Boolean(value.dates);
-}
-const invalidDatesValidator = {
-  name: "invalidDates",
-  validation(value, element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    if (!isInvalidDatesConfig(config2)) {
-      throw new Error(`Invalid invalidDates config for ${element.id}`);
-    }
-    return !config2.dates.includes(value);
-  }
-};
-function isInvalidWeekdaysConfig(value) {
-  return Boolean(value.days);
-}
-const invalidWeekdaysValidator = {
-  name: "invalidWeekdays",
-  validation(value, element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    if (!isInvalidWeekdaysConfig(config2)) {
-      throw new Error(`Invalid invalidWeekdays config for ${element.id}`);
-    }
-    const day = FDate$1.fromIso(value).weekDay;
-    return !config2.days.includes(day);
-  }
-};
-const lessThanValidator = {
-  name: "lessThan",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 < limit);
-  }
-};
-const matchesValidator = {
-  name: "matches",
-  validation(value, _element, config2) {
-    if (!isSet(config2.id) || !isSet(value)) {
-      return true;
-    }
-    const el = document.getElementById(config2.id);
-    return el.value === value;
-  }
-};
-const maxDateValidator = {
-  name: "maxDate",
-  validation(value, _element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalizedValue = normalizeDateFormat(value);
-    if (!normalizedValue) {
-      return false;
-    }
-    const parsed = FDate$1.fromIso(normalizedValue);
-    const limit = FDate$1.fromIso(validLimit(config2.limit));
-    return parsed.equals(limit) || parsed.isBefore(limit);
-  }
-};
-const maxLengthValidator = {
-  name: "maxLength",
-  validation(value, _element, config2) {
-    return config2.length ? value.length <= config2.length : true;
-  }
-};
-const maxValueValidator = {
-  name: "maxValue",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, this.name, (value2, limit) => value2 <= limit);
-  }
-};
-const minDateValidator = {
-  name: "minDate",
-  validation(value, _element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalizedValue = normalizeDateFormat(value);
-    if (!normalizedValue) {
-      return false;
-    }
-    const parsed = FDate$1.fromIso(normalizedValue);
-    const limit = FDate$1.fromIso(validLimit(config2.limit));
-    return parsed.equals(limit) || parsed.isAfter(limit);
-  }
-};
-const minLengthValidator = {
-  name: "minLength",
-  validation(value, _element, config2) {
-    return config2.length && value ? value.length >= config2.length : true;
-  }
-};
-const minValueValidator = {
-  name: "minValue",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, this.name, (value2, limit) => value2 >= limit);
-  }
-};
-const numberValidator = {
-  name: "number",
-  validation(value) {
-    return isEmpty(value) || isSet(parseNumber(value));
-  }
-};
-const organisationsnummerValidator = {
-  name: "organisationsnummer",
-  validation(value) {
-    return isEmpty(value) || isSet(parseOrganisationsnummer(value));
-  }
-};
-const PERCENT_REGEXP = /^([-+]?[0-9]+)([,.][0-9]+)?$/;
-const percentValidator = {
-  name: "percent",
-  validation(value) {
-    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
-    return isEmpty(valueWithoutWhitespace) || PERCENT_REGEXP.test(valueWithoutWhitespace);
-  }
-};
-const personnummerFormatValidator = {
-  name: "personnummerFormat",
-  validation(value) {
-    return isEmpty(value) || isSet(parsePersonnummer(value));
-  }
-};
-const personnummerLuhnValidator = {
-  name: "personnummerLuhn",
-  validation(value) {
-    return isEmpty(value) || isSet(parsePersonnummerLuhn(value));
-  }
-};
-const personnummerNotSame = {
-  name: "personnummerNotSame",
-  validation(value, _element, config2) {
-    const valuePnr = parsePersonnummer(String(value));
-    if (!valuePnr) {
-      return true;
-    }
-    const otherFieldPnr = parsePersonnummer(String(config2.otherField));
-    if (!otherFieldPnr) {
-      return true;
-    }
-    if (valuePnr === otherFieldPnr) {
-      return false;
-    }
-    return true;
-  }
-};
-const personnummerOlder = {
-  name: "personnummerOlder",
-  validation(value, _element, config2) {
-    const valueAsDate = formatPersonnummerToDate(value);
-    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
-    if (!valueAsDate || !otherAsDate) {
-      return true;
-    }
-    return FDate$1.compare(valueAsDate, otherAsDate) !== 1;
-  }
-};
-const personnummerYounger = {
-  name: "personnummerYounger",
-  validation(value, _element, config2) {
-    const valueAsDate = formatPersonnummerToDate(value);
-    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
-    if (!valueAsDate || !otherAsDate) {
-      return true;
-    }
-    return FDate$1.compare(valueAsDate, otherAsDate) !== -1;
-  }
-};
-const PHONE_NUMBER_REGEXP = /^(\+?[-_/() ]*(\d[-_/() ]*?){3,17})$/;
-const phoneNumberValidator = {
-  name: "phoneNumber",
-  validation(value) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    if (!isString(value) || value.length > 21) {
-      return false;
-    }
-    return PHONE_NUMBER_REGEXP.test(value);
-  }
-};
-const plusgiroValidator = {
-  name: "plusgiro",
-  validation(value) {
-    return isEmpty(value) || isSet(parsePlusgiro(value));
-  }
-};
-const postalCodeValidator = {
-  name: "postalCode",
-  validation(value) {
-    return isEmpty(value) || isSet(parsePostalCode(value));
-  }
-};
-const REQUIRED_REGEXP = /^\S+/;
-function isRelevantElement(input) {
-  return isRadiobuttonOrCheckbox(input) && !input.disabled;
-}
-function validateFieldset(fieldset) {
-  const inputs = Array.from(fieldset.elements).filter(isRelevantElement);
-  return inputs.length > 0 ? inputs.some((input) => input.checked) : true;
-}
-function validateChecked(element) {
-  return element.checked;
-}
-function validateInput(value) {
-  return REQUIRED_REGEXP.test(value);
-}
-const requiredValidator = {
-  name: "required",
-  validation(value, element) {
-    if (element instanceof HTMLFieldSetElement) {
-      return validateFieldset(element);
-    } else if (isRadiobuttonOrCheckbox(element)) {
-      return validateChecked(element);
-    } else {
-      return validateInput(value);
-    }
-  }
-};
-const WHITELIST_REGEXP = /^[a-zA-Z0-9 .,\-()\r\n?+=!:@*\xC0-\xFF]*$/;
-const whitelistValidator = {
-  name: "whitelist",
-  instant: true,
-  validation(value) {
-    return isEmpty(value) || WHITELIST_REGEXP.test(value);
-  }
-};
-ValidationService.registerValidator(allowListValidator);
-ValidationService.registerValidator(bankAccountNumberValidator);
-ValidationService.registerValidator(bankgiroValidator);
-ValidationService.registerValidator(blacklistValidator);
-ValidationService.registerValidator(clearingNumberValidator);
-ValidationService.registerValidator(currencyValidator);
-ValidationService.registerValidator(dateFormatValidator);
-ValidationService.registerValidator(dateValidator);
-ValidationService.registerValidator(decimalValidator);
-ValidationService.registerValidator(emailValidator);
-ValidationService.registerValidator(greaterThanValidator);
-ValidationService.registerValidator(integerValidator);
-ValidationService.registerValidator(invalidDatesValidator);
-ValidationService.registerValidator(invalidWeekdaysValidator);
-ValidationService.registerValidator(lessThanValidator);
-ValidationService.registerValidator(matchesValidator);
-ValidationService.registerValidator(maxDateValidator);
-ValidationService.registerValidator(maxLengthValidator);
-ValidationService.registerValidator(maxValueValidator);
-ValidationService.registerValidator(minDateValidator);
-ValidationService.registerValidator(minLengthValidator);
-ValidationService.registerValidator(minValueValidator);
-ValidationService.registerValidator(numberValidator);
-ValidationService.registerValidator(organisationsnummerValidator);
-ValidationService.registerValidator(percentValidator);
-ValidationService.registerValidator(personnummerFormatValidator);
-ValidationService.registerValidator(personnummerLuhnValidator);
-ValidationService.registerValidator(personnummerNotSame);
-ValidationService.registerValidator(personnummerOlder);
-ValidationService.registerValidator(personnummerYounger);
-ValidationService.registerValidator(phoneNumberValidator);
-ValidationService.registerValidator(plusgiroValidator);
-ValidationService.registerValidator(postalCodeValidator);
-ValidationService.registerValidator(requiredValidator);
-ValidationService.registerValidator(whitelistValidator);
-class ElementIdServiceImpl {
-  constructor() {
-    __publicField(this, "elementIdMap", /* @__PURE__ */ new Map());
-  }
-  generateElementId(prefix = "fkui") {
-    const id = this.nextId(prefix);
-    if (document.getElementById(id) === null) {
-      return id;
-    }
-    return this.generateElementId(prefix);
-  }
-  nextId(prefix) {
-    let elementIdWithPadding = String(this.getIdFromMap(prefix));
-    while (elementIdWithPadding.length < 4) {
-      elementIdWithPadding = `0${elementIdWithPadding}`;
-    }
-    return `${prefix}-vue-element-${elementIdWithPadding}`;
-  }
-  getIdFromMap(prefix) {
-    const elementId = this.elementIdMap.get(prefix);
-    if (!elementId) {
-      this.elementIdMap.set(prefix, { count: 1 });
-      return 1;
-    }
-    elementId.count++;
-    return elementId.count;
-  }
-  reset() {
-    this.elementIdMap = /* @__PURE__ */ new Map();
-  }
-}
-const ElementIdService = new ElementIdServiceImpl();
-(() => {
-  const test = "fkui.sessionstorage.test";
-  try {
-    if (window.sessionStorage) {
-      window.sessionStorage.setItem(test, "test");
-      window.sessionStorage.removeItem(test);
-      return true;
-    } else {
-      return false;
-    }
-  } catch {
-    return false;
-  }
-})();
+const ValidationService = /* @__PURE__ */ new ValidationServiceImpl();
 const SCREEN_READER_DELAY = 100;
 function waitForScreenReader(callback, delay = SCREEN_READER_DELAY) {
   return new Promise((resolve2, reject) => {
@@ -11332,7 +10823,7 @@ var Locale;
 function getDefaultLocale() {
   return Locale.SWEDISH;
 }
-let _locale = getDefaultLocale();
+let _locale = /* @__PURE__ */ getDefaultLocale();
 function getLocale() {
   return _locale;
 }
@@ -17095,6 +16586,14 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({
       default() {
       }
     },
+    /**
+     * List of buttons to display in the modal.
+     * Each button is defined as an FModalButtonDescriptor with the following properties:
+     * - `label` (String): The text displayed on the button.
+     * - `event` (String): The event emitted when the button is clicked.
+     * - `type` (String): The button type. Valid values are: "primary" or "secondary".
+     * - `submitButton` (Boolean): Whether the button is a submit button.
+     */
     buttons: {
       type: Array,
       required: false,
@@ -17349,62 +16848,138 @@ function getAbsolutePosition(src) {
     height: Math.floor(rect.height)
   };
 }
-function formatNumbers(el, number) {
-  var _formatNumber;
-  el.innerText = (_formatNumber = formatNumber(number)) !== null && _formatNumber !== void 0 ? _formatNumber : "";
-  el.classList.add("format__number");
+function isDateRange(value) {
+  if (!value) {
+    return false;
+  }
+  const maybeDateRange = value;
+  return typeof maybeDateRange.from === "string" && typeof maybeDateRange.to === "string";
+}
+function isNumberFormat(value) {
+  if (!value) {
+    return false;
+  }
+  const maybeNumberformat = value;
+  if (typeof maybeNumberformat.decimals !== "number") {
+    return false;
+  }
+  return ["number", "string"].includes(typeof maybeNumberformat.number);
+}
+function formatNumber(el, number) {
+  const value = number ? number : el.textContent;
+  if (typeof value === "string" || typeof value === "number") {
+    var _numberFormater;
+    el.textContent = (_numberFormater = formatNumber$1(value)) !== null && _numberFormater !== void 0 ? _numberFormater : "";
+  } else if (isNumberFormat(value)) {
+    var _numberFormater2;
+    el.textContent = (_numberFormater2 = formatNumber$1(value.number, value.decimals)) !== null && _numberFormater2 !== void 0 ? _numberFormater2 : "";
+  } else {
+    return;
+  }
+  el.classList.add("formatter--number");
 }
 function formatDate(el, date) {
-  var _parseDate;
-  el.innerText = (_parseDate = parseDate(date)) !== null && _parseDate !== void 0 ? _parseDate : "";
-  el.classList.add("format__date");
+  var _a;
+  var _el$textContent$trim;
+  if (typeof date !== "string" && typeof date !== "undefined") {
+    return;
+  }
+  const textContent = date ? parseDate(date) : parseDate((_el$textContent$trim = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim !== void 0 ? _el$textContent$trim : "");
+  el.textContent = textContent !== null && textContent !== void 0 ? textContent : "";
+  el.classList.add("formatter--date");
 }
 function formatDateFull(el, date) {
-  var _parseDate2;
-  const dateString = (_parseDate2 = parseDate(date)) !== null && _parseDate2 !== void 0 ? _parseDate2 : "";
-  el.innerText = FDate2.fromIso(dateString).toString(DateFormat.FULL);
-  el.classList.add("format__date-full");
+  var _a;
+  var _el$textContent$trim2;
+  if (typeof date !== "string" && typeof date !== "undefined") {
+    return;
+  }
+  const dateString = date ? parseDate(date) : parseDate((_el$textContent$trim2 = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim2 !== void 0 ? _el$textContent$trim2 : "");
+  el.textContent = FDate2.fromIso(dateString !== null && dateString !== void 0 ? dateString : "").toString(DateFormat.FULL);
+  el.classList.add("formatter--date-full");
 }
 function formatDateLong(el, date) {
-  var _parseDate3;
-  const dateString = (_parseDate3 = parseDate(date)) !== null && _parseDate3 !== void 0 ? _parseDate3 : "";
-  el.innerText = FDate2.fromIso(dateString).toString(DateFormat.LONG);
-  el.classList.add("format__date-long");
+  var _a;
+  var _el$textContent$trim3;
+  if (typeof date !== "string" && typeof date !== "undefined") {
+    return;
+  }
+  const dateString = date ? parseDate(date) : parseDate((_el$textContent$trim3 = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim3 !== void 0 ? _el$textContent$trim3 : "");
+  el.textContent = FDate2.fromIso(dateString !== null && dateString !== void 0 ? dateString : "").toString(DateFormat.LONG);
+  el.classList.add("formatter--date-long");
 }
 function formatDateRange(el, range) {
-  var _parseDate4, _parseDate5;
-  const from = (_parseDate4 = parseDate(range.from)) !== null && _parseDate4 !== void 0 ? _parseDate4 : "";
-  const to = (_parseDate5 = parseDate(range.to)) !== null && _parseDate5 !== void 0 ? _parseDate5 : "";
-  el.innerText = `${FDate2.fromIso(from)} – ${FDate2.fromIso(to)}`;
-  el.classList.add("format__date");
+  var _parseDate, _parseDate2;
+  if (!isDateRange(range)) {
+    return;
+  }
+  const from = (_parseDate = parseDate(range.from)) !== null && _parseDate !== void 0 ? _parseDate : "";
+  const to = (_parseDate2 = parseDate(range.to)) !== null && _parseDate2 !== void 0 ? _parseDate2 : "";
+  el.textContent = `${FDate2.fromIso(from)} – ${FDate2.fromIso(to)}`;
+  el.classList.add("formatter--date-range");
 }
 function formatBankgiro(el, bankgiro) {
-  var _parseBankgiro;
-  el.innerText = (_parseBankgiro = parseBankgiro(bankgiro)) !== null && _parseBankgiro !== void 0 ? _parseBankgiro : "";
-  el.classList.add("format__bankgiro");
+  var _a;
+  var _el$textContent$trim4;
+  if (typeof bankgiro !== "string" && typeof bankgiro !== "undefined") {
+    return;
+  }
+  const textContent = bankgiro ? parseBankgiro(bankgiro) : parseBankgiro((_el$textContent$trim4 = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim4 !== void 0 ? _el$textContent$trim4 : "");
+  el.textContent = textContent !== null && textContent !== void 0 ? textContent : "";
+  el.classList.add("formatter--bankgiro");
+}
+function formatPersonnummer(el, pnr) {
+  if (typeof pnr !== "string" && typeof pnr !== "undefined") {
+    return;
+  }
+  const textContent = pnr ? parsePersonnummer(pnr) : parsePersonnummer(el.textContent);
+  el.textContent = textContent !== null && textContent !== void 0 ? textContent : "";
+  el.classList.add("formatter--pnr");
+}
+function formatOrganisationsnummer(el, orgnr) {
+  var _a;
+  var _el$textContent$trim5;
+  if (typeof orgnr !== "string" && typeof orgnr !== "undefined") {
+    return;
+  }
+  const textContent = orgnr ? parseOrganisationsnummer(orgnr) : parseOrganisationsnummer((_el$textContent$trim5 = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim5 !== void 0 ? _el$textContent$trim5 : "");
+  el.textContent = textContent !== null && textContent !== void 0 ? textContent : "";
+  el.classList.add("formatter--orgnr");
+}
+function formatText(el, text) {
+  if (typeof text === "string") {
+    el.textContent = text;
+  }
+  el.classList.add("formatter--text");
+}
+const formatters = {
+  bankgiro: formatBankgiro,
+  "date-full": formatDateFull,
+  "date-long": formatDateLong,
+  "date-range": formatDateRange,
+  date: formatDate,
+  number: formatNumber,
+  orgnr: formatOrganisationsnummer,
+  pnr: formatPersonnummer,
+  text: formatText
+};
+function removeObsoletClasses(el) {
+  el.classList.forEach((it) => {
+    if (it.startsWith("formatter--")) {
+      el.classList.remove(it);
+    }
+  });
 }
 const FormatPlugin = {
   install(app2) {
-    app2.directive("format", (el, binding) => {
-      switch (binding.arg) {
-        case "number":
-          formatNumbers(el, binding.value);
-          break;
-        case "date":
-          formatDate(el, binding.value);
-          break;
-        case "date-full":
-          formatDateFull(el, binding.value);
-          break;
-        case "date-long":
-          formatDateLong(el, binding.value);
-          break;
-        case "date-range":
-          formatDateRange(el, binding.value);
-          break;
-        case "bankgiro":
-          formatBankgiro(el, binding.value);
-          break;
+    app2.directive("format", (el, {
+      value,
+      arg
+    }) => {
+      const formatter2 = formatters[arg];
+      if (formatter2) {
+        removeObsoletClasses(el);
+        formatter2(el, value);
       }
     });
   }

@@ -1,6 +1,6 @@
 // ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement, effectScope } from "vue";
-import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, isValidatableHTMLElement, parseBankgiro, parseDate, formatNumber, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
+import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
 var statuses = ["default", "warning", "error", "success", "info"];
 var _sfc_main$1e = /* @__PURE__ */ defineComponent({
@@ -5539,6 +5539,14 @@ var _sfc_main$15 = defineComponent({
       default() {
       }
     },
+    /**
+     * List of buttons to display in the modal.
+     * Each button is defined as an FModalButtonDescriptor with the following properties:
+     * - `label` (String): The text displayed on the button.
+     * - `event` (String): The event emitted when the button is clicked.
+     * - `type` (String): The button type. Valid values are: "primary" or "secondary".
+     * - `submitButton` (Boolean): Whether the button is a submit button.
+     */
     buttons: {
       type: Array,
       required: false,
@@ -5951,6 +5959,9 @@ var ValidationPrefixDirective = {
 };
 var ValidationPlugin = {
   install(app) {
+    for (const validator of availableValidators) {
+      ValidationService.registerValidator(validator);
+    }
     app.directive("validation", ValidationDirective);
     app.directive("validationPrefix", ValidationPrefixDirective);
   }
@@ -6053,62 +6064,138 @@ function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
   })]);
 }
 var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$G]]);
-function formatNumbers(el, number) {
-  var _formatNumber;
-  el.innerText = (_formatNumber = formatNumber(number)) !== null && _formatNumber !== void 0 ? _formatNumber : "";
-  el.classList.add("format__number");
+function isDateRange(value) {
+  if (!value) {
+    return false;
+  }
+  const maybeDateRange = value;
+  return typeof maybeDateRange.from === "string" && typeof maybeDateRange.to === "string";
+}
+function isNumberFormat(value) {
+  if (!value) {
+    return false;
+  }
+  const maybeNumberformat = value;
+  if (typeof maybeNumberformat.decimals !== "number") {
+    return false;
+  }
+  return ["number", "string"].includes(typeof maybeNumberformat.number);
+}
+function formatNumber(el, number) {
+  const value = number ? number : el.textContent;
+  if (typeof value === "string" || typeof value === "number") {
+    var _numberFormater;
+    el.textContent = (_numberFormater = formatNumber$1(value)) !== null && _numberFormater !== void 0 ? _numberFormater : "";
+  } else if (isNumberFormat(value)) {
+    var _numberFormater2;
+    el.textContent = (_numberFormater2 = formatNumber$1(value.number, value.decimals)) !== null && _numberFormater2 !== void 0 ? _numberFormater2 : "";
+  } else {
+    return;
+  }
+  el.classList.add("formatter--number");
 }
 function formatDate(el, date) {
-  var _parseDate;
-  el.innerText = (_parseDate = parseDate(date)) !== null && _parseDate !== void 0 ? _parseDate : "";
-  el.classList.add("format__date");
+  var _a;
+  var _el$textContent$trim;
+  if (typeof date !== "string" && typeof date !== "undefined") {
+    return;
+  }
+  const textContent = date ? parseDate(date) : parseDate((_el$textContent$trim = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim !== void 0 ? _el$textContent$trim : "");
+  el.textContent = textContent !== null && textContent !== void 0 ? textContent : "";
+  el.classList.add("formatter--date");
 }
 function formatDateFull(el, date) {
-  var _parseDate2;
-  const dateString = (_parseDate2 = parseDate(date)) !== null && _parseDate2 !== void 0 ? _parseDate2 : "";
-  el.innerText = FDate.fromIso(dateString).toString(DateFormat.FULL);
-  el.classList.add("format__date-full");
+  var _a;
+  var _el$textContent$trim2;
+  if (typeof date !== "string" && typeof date !== "undefined") {
+    return;
+  }
+  const dateString = date ? parseDate(date) : parseDate((_el$textContent$trim2 = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim2 !== void 0 ? _el$textContent$trim2 : "");
+  el.textContent = FDate.fromIso(dateString !== null && dateString !== void 0 ? dateString : "").toString(DateFormat.FULL);
+  el.classList.add("formatter--date-full");
 }
 function formatDateLong(el, date) {
-  var _parseDate3;
-  const dateString = (_parseDate3 = parseDate(date)) !== null && _parseDate3 !== void 0 ? _parseDate3 : "";
-  el.innerText = FDate.fromIso(dateString).toString(DateFormat.LONG);
-  el.classList.add("format__date-long");
+  var _a;
+  var _el$textContent$trim3;
+  if (typeof date !== "string" && typeof date !== "undefined") {
+    return;
+  }
+  const dateString = date ? parseDate(date) : parseDate((_el$textContent$trim3 = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim3 !== void 0 ? _el$textContent$trim3 : "");
+  el.textContent = FDate.fromIso(dateString !== null && dateString !== void 0 ? dateString : "").toString(DateFormat.LONG);
+  el.classList.add("formatter--date-long");
 }
 function formatDateRange(el, range) {
-  var _parseDate4, _parseDate5;
-  const from = (_parseDate4 = parseDate(range.from)) !== null && _parseDate4 !== void 0 ? _parseDate4 : "";
-  const to = (_parseDate5 = parseDate(range.to)) !== null && _parseDate5 !== void 0 ? _parseDate5 : "";
-  el.innerText = `${FDate.fromIso(from)} \u2013 ${FDate.fromIso(to)}`;
-  el.classList.add("format__date");
+  var _parseDate, _parseDate2;
+  if (!isDateRange(range)) {
+    return;
+  }
+  const from = (_parseDate = parseDate(range.from)) !== null && _parseDate !== void 0 ? _parseDate : "";
+  const to = (_parseDate2 = parseDate(range.to)) !== null && _parseDate2 !== void 0 ? _parseDate2 : "";
+  el.textContent = `${FDate.fromIso(from)} \u2013 ${FDate.fromIso(to)}`;
+  el.classList.add("formatter--date-range");
 }
 function formatBankgiro(el, bankgiro) {
-  var _parseBankgiro;
-  el.innerText = (_parseBankgiro = parseBankgiro(bankgiro)) !== null && _parseBankgiro !== void 0 ? _parseBankgiro : "";
-  el.classList.add("format__bankgiro");
+  var _a;
+  var _el$textContent$trim4;
+  if (typeof bankgiro !== "string" && typeof bankgiro !== "undefined") {
+    return;
+  }
+  const textContent = bankgiro ? parseBankgiro(bankgiro) : parseBankgiro((_el$textContent$trim4 = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim4 !== void 0 ? _el$textContent$trim4 : "");
+  el.textContent = textContent !== null && textContent !== void 0 ? textContent : "";
+  el.classList.add("formatter--bankgiro");
+}
+function formatPersonnummer(el, pnr) {
+  if (typeof pnr !== "string" && typeof pnr !== "undefined") {
+    return;
+  }
+  const textContent = pnr ? parsePersonnummer(pnr) : parsePersonnummer(el.textContent);
+  el.textContent = textContent !== null && textContent !== void 0 ? textContent : "";
+  el.classList.add("formatter--pnr");
+}
+function formatOrganisationsnummer(el, orgnr) {
+  var _a;
+  var _el$textContent$trim5;
+  if (typeof orgnr !== "string" && typeof orgnr !== "undefined") {
+    return;
+  }
+  const textContent = orgnr ? parseOrganisationsnummer(orgnr) : parseOrganisationsnummer((_el$textContent$trim5 = (_a = el.textContent) == null ? void 0 : _a.trim()) !== null && _el$textContent$trim5 !== void 0 ? _el$textContent$trim5 : "");
+  el.textContent = textContent !== null && textContent !== void 0 ? textContent : "";
+  el.classList.add("formatter--orgnr");
+}
+function formatText(el, text) {
+  if (typeof text === "string") {
+    el.textContent = text;
+  }
+  el.classList.add("formatter--text");
+}
+var formatters = {
+  bankgiro: formatBankgiro,
+  "date-full": formatDateFull,
+  "date-long": formatDateLong,
+  "date-range": formatDateRange,
+  date: formatDate,
+  number: formatNumber,
+  orgnr: formatOrganisationsnummer,
+  pnr: formatPersonnummer,
+  text: formatText
+};
+function removeObsoletClasses(el) {
+  el.classList.forEach((it) => {
+    if (it.startsWith("formatter--")) {
+      el.classList.remove(it);
+    }
+  });
 }
 var FormatPlugin = {
   install(app) {
-    app.directive("format", (el, binding) => {
-      switch (binding.arg) {
-        case "number":
-          formatNumbers(el, binding.value);
-          break;
-        case "date":
-          formatDate(el, binding.value);
-          break;
-        case "date-full":
-          formatDateFull(el, binding.value);
-          break;
-        case "date-long":
-          formatDateLong(el, binding.value);
-          break;
-        case "date-range":
-          formatDateRange(el, binding.value);
-          break;
-        case "bankgiro":
-          formatBankgiro(el, binding.value);
-          break;
+    app.directive("format", (el, {
+      value,
+      arg
+    }) => {
+      const formatter = formatters[arg];
+      if (formatter) {
+        removeObsoletClasses(el);
+        formatter(el, value);
       }
     });
   }
@@ -12344,7 +12431,7 @@ var _sfc_main$D = defineComponent({
     formatter: {
       type: Function,
       required: false,
-      default: formatNumber
+      default: formatNumber$1
     },
     parser: {
       type: Function,
@@ -12577,7 +12664,7 @@ var _sfc_main$z = defineComponent({
   }
 });
 function defaultFormatter$1(modelValue) {
-  return formatNumber(modelValue, this.decimals);
+  return formatNumber$1(modelValue, this.decimals);
 }
 var _sfc_main$y = defineComponent({
   name: "FNumericTextField",
@@ -12624,7 +12711,7 @@ var _sfc_main$x = defineComponent({
     formatter: {
       type: Function,
       required: false,
-      default: formatPersonnummer
+      default: formatPersonnummer$1
     },
     parser: {
       type: Function,
@@ -14336,6 +14423,9 @@ var _sfc_main$l = defineComponent({
       required: false,
       default: () => ElementIdService.generateElementId()
     },
+    /**
+     * Disables the file selector.
+     */
     disabled: {
       type: Boolean,
       required: false,
@@ -18489,6 +18579,10 @@ var _sfc_main = defineComponent({
   mixins: [TranslationMixin],
   inheritAttrs: true,
   props: {
+    /**
+     * The title of the wizard step.
+     * This will be displayed as the step's header.
+     */
     title: {
       type: String,
       required: true
