@@ -1055,7 +1055,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/6fe84e745226da5c714ac9fc574e48d9c36b1426/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/43a2e6b2a5faf843841e9fd3c037bcf8c08d5cc6/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
             
         </code>
          
@@ -1101,7 +1101,9 @@
                         <!-- prettier-ignore -->
 <p>Formulärsmodal är en standardmodal som kan presentera formulärsfält och hantera validering.</p>
 <p>Formulärsmodalen baseras på en modal dialogruta av typen standard och visas i fullskärm i mobil (&lt;640px).</p>
-<p>Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra. Alla fält valideras när användaren trycker på primärknappen.</p>
+<p>Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra.
+Standardinställning för knappordning i modaler är att primärknappen ligger först följt av sekundärknappen.
+Alla fält valideras när användaren trycker på primärknappen.</p>
 <ul>
 <li>Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.</li>
 <li>Öppna inte ytterligare modaler från en modal.</li>
@@ -1110,7 +1112,7 @@
 <p>Skapa först upp ett interface motsvarande den data din formulärsmodal ska arbeta med:</p>
 
                 <div
-                    id="example-06d914"
+                    id="example-3ba6a5"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1126,7 +1128,7 @@
             <p>Din komponent ska innehålla en prop <code>value</code> motsvarande ett objekt av interfacet:</p>
 
                 <div
-                    id="example-fcf0f6"
+                    id="example-003479"
                     class="code-preview code-preview--default"
                     
                     
@@ -1147,7 +1149,7 @@
 Inmatningsfälten läggs in i <code>#input-text-fields</code>-slotten.</p>
 
                 <div
-                    id="example-388e80"
+                    id="example-0134bb"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1223,7 +1225,7 @@ Du kan antingen låta din formulärsmodal hantera detta genom att internt kopier
         <h2 id="oppna_modal"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p>Du öppnar modalen med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
 
                 <div
-                    id="example-a68277"
+                    id="example-177670"
                     class="code-preview code-preview--default"
                     
                     
@@ -1246,7 +1248,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
 <p>Förifylld data kan skickas in med propen <code>value</code>:</p>
 
                 <div
-                    id="example-0119fc"
+                    id="example-f99d37"
                     class="code-preview code-preview--default"
                     
                     
@@ -1265,7 +1267,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                 </div>
             
             <div
-                id="example-d6429b"
+                id="example-8245bb"
                 class="code-preview code-preview--default"
                 
                 
@@ -1351,7 +1353,7 @@ Vi rekommenderar att du flyttar den till en egen Vue komponent och använder API
 Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FFormModal</code> med API.</p>
 
                 <div
-                    id="example-88944e"
+                    id="example-24a91c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1370,7 +1372,7 @@ Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur 
 Med den kan du ta bort existerande knappar eller använda en helt egen uppsättning.</p>
 
                 <div
-                    id="example-34ba24"
+                    id="example-690183"
                     class="code-preview code-preview--default"
                     
                     
@@ -1389,7 +1391,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
             <p><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
 
                 <div
-                    id="example-8575fa"
+                    id="example-12ae63"
                     class="code-preview code-preview--default"
                     
                     
@@ -1408,7 +1410,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 </div>
             
                 <div
-                    id="example-9effe9"
+                    id="example-d422ad"
                     class="code-preview code-preview--default"
                     
                     
@@ -1426,7 +1428,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p>Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code> property:</p>
 
                 <div
-                    id="example-d1d32d"
+                    id="example-97fc8d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1441,7 +1443,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p>Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
 
                 <div
-                    id="example-420a28"
+                    id="example-4c9750"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1461,7 +1463,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-cd7465"
+                    id="example-2f6bf3"
                     class="code-preview code-preview--default"
                     
                     
@@ -1477,7 +1479,7 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
 
                 <div
-                    id="example-ce25cb"
+                    id="example-042eea"
                     class="code-preview code-preview--default"
                     
                     
@@ -1879,9 +1881,9 @@ The event payload is the data that has been submitted.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/button-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/6fe84e745226da5c714ac9fc574e48d9c36b1426">6fe84e7</a>)<br />
+    docs/button-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/43a2e6b2a5faf843841e9fd3c037bcf8c08d5cc6">43a2e6b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/400">PR 400</a><br />
-        2025-04-02 14:56
+        2025-04-03 15:06
 </div>
 <div class="toolbar__item">
     <form id="version">
