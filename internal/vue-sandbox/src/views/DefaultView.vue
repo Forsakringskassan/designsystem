@@ -1,12 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
+import { FWizard, FWizardStep, FTooltip, FTextareaField } from "@fkui/vue";
 
 export default defineComponent({
-    components: { FTextField },
+    components: { FWizard, FWizardStep, FTooltip, FTextareaField },
     data() {
         return {
-            awesomeModel: "",
+            namn: "",
         };
     },
 });
@@ -23,16 +23,64 @@ export default defineComponent({
             <strong>Ändra och labba gärna här men glöm inte återställa innan merge!</strong>
         </p>
         <hr />
-        <f-text-field
-            id="awesome-field"
-            v-model="awesomeModel"
-            v-validation.required.maxLength="{ maxLength: { length: 10 } }"
-        >
-            <template #default> Inmatningsfält. </template>
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass"> Lorem ipsum dolor sit amet. </span>
-            </template>
-        </f-text-field>
+        <f-wizard header-tag="h2">
+            <!-- Steg 1 -->
+            <f-wizard-step key="bar" :use-error-list="false" title="Stegrubrik 1">
+                <!-- Lång text -->
+                <f-textarea-field id="lang" v-model="namn" :maxlength="1000" :soft-limit="100" name="lang">
+                    <template #default> Lång text (tooltip nåbar) </template>
+                    <template #tooltip>
+                        <f-tooltip
+                            header-tag="h3"
+                            screen-reader-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        >
+                            <template #header> Hur ska jag fylla i arbetstid under sjukskrivning på deltid? </template>
+                            <template #body>
+                                <div>
+                                    <p>
+                                        Skriv hur många timmar och minuter i veckan du jobbar under sjukskrivning på
+                                        deltid, och hur tiden fördelas per dag.
+                                    </p>
+                                </div>
+                            </template>
+                        </f-tooltip>
+                    </template>
+                    <template #description="{ discreteDescriptionClass }">
+                        <span :class="discreteDescriptionClass"> (max 1 000 tecken) </span>
+                    </template>
+                </f-textarea-field>
+
+                <!-- Kort text -->
+                <f-textarea-field id="kort" v-model="namn" :maxlength="1000" :soft-limit="100" name="kort">
+                    <template #default> Kort text (tooltip ej nåbar) </template>
+                    <template #tooltip>
+                        <f-tooltip
+                            header-tag="h3"
+                            screen-reader-text="Lorem ipsum dolor sit amet, [...] labore et dolore magna aliqua."
+                        >
+                            <template #header> Hur ska jag fylla i arbetstid under sjukskrivning på deltid? </template>
+                            <template #body>
+                                <div>
+                                    <p>
+                                        Skriv hur många timmar och minuter i veckan du jobbar under sjukskrivning på
+                                        deltid, och hur tiden fördelas per dag.
+                                    </p>
+                                </div>
+                            </template>
+                        </f-tooltip>
+                    </template>
+                    <template #description="{ discreteDescriptionClass }">
+                        <span :class="discreteDescriptionClass"> (max 1 000 tecken) </span>
+                    </template>
+                </f-textarea-field>
+            </f-wizard-step>
+
+            <!-- Steg 3 -->
+            <f-wizard-step key="baz" :use-error-list="false" title="Stegrubrik 2">
+                En informationstext
+                <template #next-button-text> Klar </template>
+            </f-wizard-step>
+        </f-wizard>
     </div>
 </template>
 
