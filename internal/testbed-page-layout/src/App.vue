@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo } from "@fkui/vue";
+import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo, FMinimizablePanel } from "@fkui/vue";
 import { XContextBar, XToolbar } from "./components";
 
 registerLayout({
@@ -56,9 +56,20 @@ registerLayout({
             <x-toolbar></x-toolbar>
         </template>
         <template #left>
-            <f-resize-pane min="200px" max="40%" initial="200px">
-                <h2>Mina uppgifter</h2>
-                <p>[Menypanel här]</p>
+            <f-resize-pane min="150px" max="40%" initial="600px">
+                <f-minimizable-panel>
+                    <template #header> Mina uppgifter </template>
+                    <template #default="{ isOpen }">
+                        <template v-if="isOpen">
+                            <p>[Minimerbar innehåll]</p>
+                        </template>
+                    </template>
+                    <template #footer="{ isOpen }">
+                        <template v-if="isOpen">
+                            <p>[Minimerbar fot]</p>
+                        </template>
+                    </template>
+                </f-minimizable-panel>
             </f-resize-pane>
         </template>
         <template #content>
@@ -67,7 +78,7 @@ registerLayout({
             </main>
         </template>
         <template #right>
-            <f-resize-pane min="200px" max="40%" initial="200px"> [Detaljpanel här] </f-resize-pane>
+            <f-resize-pane min="200px" max="40%" initial="200px"> [detaljpanel] </f-resize-pane>
         </template>
     </f-page-layout>
 </template>

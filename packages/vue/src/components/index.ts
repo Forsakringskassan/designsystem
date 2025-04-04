@@ -22,6 +22,12 @@ export {
 export { FDataTable } from "./FDataTable";
 export { FDatepickerField } from "./FDatepickerField";
 export {
+    type DetailsPanelCloseCallback,
+    type UseDetailsPanel,
+    FDetailsPanel,
+    useDetailsPanel,
+} from "./FDetailsPanel";
+export {
     type FDialogueTreeData,
     type FDialogueTreeEndQuestion,
     type FDialogueTreeOption,
@@ -84,6 +90,7 @@ export {
     registerLayout,
     useAreaData,
 } from "./FPageLayout";
+export { FMinimizablePanel } from "./FMinimizablePanel";
 export { FProgressbar } from "./FProgressbar";
 export { FRadioField } from "./FRadioField";
 export { type UseResizeOptions, FResizePane, useResize } from "./FResizePane";

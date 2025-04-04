@@ -219,6 +219,16 @@ module.exports = defineMetadata({
         slots: ["default"],
     },
 
+    "f-details-panel": {
+        flow: true,
+        attributes: {
+            name: {
+                enum: ["/.+/"],
+                required: true,
+            },
+        },
+    },
+
     "f-expand": {
         flow: true,
         transparent: true,
@@ -428,6 +438,14 @@ module.exports = defineMetadata({
 
     "f-output-field#label": {
         inherit: "f-label#description",
+    },
+
+    "ce-minimizable-panel": {
+        flow: true,
+    },
+
+    "f-minimizable-panel": {
+        flow: true,
     },
 
     "f-page-layout": {

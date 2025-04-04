@@ -14,8 +14,14 @@ import { useStorage } from "./use-storage";
 
 const STEP_SIZE = 10;
 
+defineOptions({
+    inheritAttrs: false,
+});
+
 const props = withDefaults(
     defineProps<{
+        overlay?: boolean;
+        offset?: number;
         /**
          * Disables resizing. The current size is locked.
          */
@@ -43,6 +49,8 @@ const props = withDefaults(
         initial?: string;
     }>(),
     {
+        overlay: false,
+        offset: 0,
         disabled: false,
         min: "0",
         max: "100%",
@@ -118,6 +126,7 @@ const classes = computed(() => {
     return [
         `resize--${attachment.value}`,
         `resize--${direction.value}`,
+        props.overlay ? "resize--overlay" : undefined,
         props.disabled ? "resize--disabled" : undefined,
     ];
 });
@@ -185,7 +194,8 @@ function getLayoutSize(): number {
 </script>
 
 <template>
-    <div ref="root" class="resize" :class="classes">
+    <div v-if="overlay && offset" class="resize__offset" :style="{ width: `${offset}px` }"></div>
+    <div ref="root" class="resize" :class="classes" v-bind="$attrs">
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->
             <slot name="content"></slot>
