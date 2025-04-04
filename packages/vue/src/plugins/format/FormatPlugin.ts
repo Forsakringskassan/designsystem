@@ -5,6 +5,7 @@ import {
     formatDateLong,
     formatDateRange,
     formatNumber,
+    formatText,
 } from "./formatters";
 
 const formatters = {
@@ -13,6 +14,7 @@ const formatters = {
     "date-range": formatDateRange,
     date: formatDate,
     number: formatNumber,
+    text: formatText,
 };
 function removeObsoleteClasses(el: HTMLElement): void {
     el.classList.forEach((it: string) => {
