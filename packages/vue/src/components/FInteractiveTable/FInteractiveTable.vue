@@ -642,7 +642,9 @@ function setActiveRow(row: T | undefined): void {
                         * `row: ListItem;` The object to be visualized.
                         @binding {T} row - The object to be screen read.
                     -->
-                    <slot name="row-description" v-bind="{ row }" class="sr-only"></slot>
+                    <span class="sr-only">
+                        <slot name="row-description" v-bind="{ row }" />
+                    </span>
                 </template>
 
                 <tr v-if="isEmpty && columns.length === 0">
