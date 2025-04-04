@@ -1,0 +1,8 @@
+$FORMATTER_SELECTOR: ".formatter" !default;
+
+#{$FORMATTER_SELECTOR} {
+    &--number {
+        white-space: nowrap;
+        font-feature-settings: "tnum";
+    }
+}
