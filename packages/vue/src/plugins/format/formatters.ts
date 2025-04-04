@@ -1,8 +1,26 @@
-import { formatNumber as numberFormater } from "@fkui/logic";
+import { DateFormat, FDate } from "@fkui/date";
+import { formatNumber as numberFormater, parseDate } from "@fkui/logic";
+
+interface DateRange {
+    from: string;
+    to: string;
+}
 
 interface NumberFormat {
     number: number | string;
     decimals: number;
+}
+
+function isDateRange(value: unknown): value is DateRange {
+    if (!value) {
+        return false;
+    }
+
+    const maybeDateRange = value as DateRange;
+    return (
+        typeof maybeDateRange.from === "string" &&
+        typeof maybeDateRange.to === "string"
+    );
 }
 
 function isNumberFormat(value: unknown): value is NumberFormat {
@@ -31,4 +49,50 @@ export function formatNumber(
         return;
     }
     el.classList.add("formatter--number");
+}
+
+export function formatDate(el: HTMLElement, date: string | unknown): void {
+    if (typeof date !== "string" && typeof date !== "undefined") {
+        return;
+    }
+    const textContent = date
+        ? parseDate(date)
+        : parseDate(el.textContent?.trim() ?? "");
+    el.textContent = textContent ?? "";
+    el.classList.add("formatter--date");
+}
+
+export function formatDateFull(el: HTMLElement, date: string | unknown): void {
+    if (typeof date !== "string" && typeof date !== "undefined") {
+        return;
+    }
+    const dateString = date
+        ? parseDate(date)
+        : parseDate(el.textContent?.trim() ?? "");
+    el.textContent = FDate.fromIso(dateString ?? "").toString(DateFormat.FULL);
+    el.classList.add("formatter--date-full");
+}
+
+export function formatDateLong(el: HTMLElement, date: string | unknown): void {
+    if (typeof date !== "string" && typeof date !== "undefined") {
+        return;
+    }
+    const dateString = date
+        ? parseDate(date)
+        : parseDate(el.textContent?.trim() ?? "");
+    el.textContent = FDate.fromIso(dateString ?? "").toString(DateFormat.LONG);
+    el.classList.add("formatter--date-long");
+}
+
+export function formatDateRange(
+    el: HTMLElement,
+    range: DateRange | unknown,
+): void {
+    if (!isDateRange(range)) {
+        return;
+    }
+    const from = parseDate(range.from) ?? "";
+    const to = parseDate(range.to) ?? "";
+    el.textContent = `${FDate.fromIso(from)} – ${FDate.fromIso(to)}`;
+    el.classList.add("formatter--date-range");
 }
