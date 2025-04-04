@@ -506,6 +506,72 @@ describe("Date range", () => {
     });
 });
 
+describe("Personnummer", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:pnr="'189001079806'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--pnr">18900107-9806</span>`,
+        );
+    });
+
+    it("should render empty element from number", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:pnr="191202119150"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--pnr"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", async () => {
+        const wrapper = createWrapper(`<span v-format:pnr="'ABC'"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--pnr"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", async () => {
+        const wrapper = createWrapper(`<span v-format:pnr="undefined"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--pnr"></span>`,
+        );
+    });
+
+    it("should render empty element for null", async () => {
+        const wrapper = createWrapper(`<span v-format:pnr="null"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--pnr"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:pnr="value"></span>
+                <button type="button" @click="value='189001079806'">
+                    Update
+                </button>
+            `,
+            "191202119150",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--pnr">19120211-9150</span>
+            <button type="button"> Update </button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--pnr">18900107-9806</span>
+            <button type="button"> Update </button>
+        `);
+    });
+});
+
 describe("Text", () => {
     it("should format from string", async () => {
         const wrapper = createWrapper(

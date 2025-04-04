@@ -95,6 +95,18 @@ export function formatBankgiro(
     }
 }
 
+export function formatPersonnummer(
+    el: HTMLElement,
+    pnr: string | unknown,
+): void {
+    el.classList.add("formatter--pnr");
+    el.textContent = "";
+
+    if (typeof pnr === "string") {
+        el.textContent = parsePersonnummer(pnr) ?? "";
+    }
+}
+
 export function formatText(el: HTMLElement, text: string | unknown): void {
     el.classList.add("formatter--text");
     el.textContent = typeof text === "string" ? text : "";

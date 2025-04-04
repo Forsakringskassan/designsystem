@@ -6,6 +6,7 @@ import {
     formatDateLong,
     formatDateRange,
     formatNumber,
+    formatPersonnummer,
     formatText,
 } from "./formatters";
 
@@ -16,6 +17,7 @@ const formatters = {
     "date-range": formatDateRange,
     date: formatDate,
     number: formatNumber,
+    pnr: formatPersonnummer,
     text: formatText,
 };
 function removeObsoleteClasses(el: HTMLElement): void {
