@@ -139,3 +139,23 @@ describe("Date range", () => {
         );
     });
 });
+
+describe("Text", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:text="'Some random text'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--text">Some random text</span>`,
+        );
+    });
+
+    it("should format from textContent", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:text> Some random text. <span style="color: red"> Some red text </span> </span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--text"> Some random text. <span style="color: red;"> Some red text </span></span>`,
+        );
+    });
+});
