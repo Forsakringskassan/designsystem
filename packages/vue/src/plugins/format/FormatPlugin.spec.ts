@@ -161,6 +161,26 @@ describe("Date range", () => {
     });
 });
 
+describe("Organisationsnummer", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:orgnr="'9999999999'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--orgnr">999999-9999</span>`,
+        );
+    });
+
+    it("should format from textContent", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:orgnr> 9999999999 </span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--orgnr">999999-9999</span>`,
+        );
+    });
+});
+
 describe("Personnummer", () => {
     it("should format from string", async () => {
         const wrapper = createWrapper(

@@ -6,6 +6,7 @@ import {
     formatDateLong,
     formatDateRange,
     formatNumber,
+    formatOrganisationsnummer,
     formatPersonnummer,
     formatText,
 } from "./formatters";
@@ -17,6 +18,7 @@ const formatters = {
     "date-range": formatDateRange,
     date: formatDate,
     number: formatNumber,
+    orgnr: formatOrganisationsnummer,
     pnr: formatPersonnummer,
     text: formatText,
 };

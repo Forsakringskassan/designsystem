@@ -3,6 +3,7 @@ import {
     formatNumber as numberFormater,
     parseBankgiro,
     parseDate,
+    parseOrganisationsnummer,
     parsePersonnummer,
 } from "@fkui/logic";
 
@@ -131,6 +132,20 @@ export function formatPersonnummer(
 
     el.textContent = textContent ?? "";
     el.classList.add("formatter--pnr");
+}
+
+export function formatOrganisationsnummer(
+    el: HTMLElement,
+    orgnr: string | unknown,
+): void {
+    if (typeof orgnr !== "string" && typeof orgnr !== "undefined") {
+        return;
+    }
+    const textContent = orgnr
+        ? parseOrganisationsnummer(orgnr)
+        : parseOrganisationsnummer(el.textContent?.trim() ?? "");
+    el.textContent = textContent ?? "";
+    el.classList.add("formatter--orgnr");
 }
 
 export function formatText(el: HTMLElement, text: string | unknown): void {
