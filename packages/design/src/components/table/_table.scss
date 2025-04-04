@@ -97,7 +97,7 @@ $table-input-offset-horizontal: 0.25rem;
 }
 
 %table-row-collapsed {
-    visibility: collapse;
+    display: none;
 }
 
 #{$TABLE_SELECTOR} {
