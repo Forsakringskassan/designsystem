@@ -9,6 +9,7 @@ $FORMATTER_SELECTOR: ".formatter" !default;
         white-space: nowrap;
     }
 
+    &--bankgiro,
     &--number {
         white-space: nowrap;
         font-feature-settings: "tnum";

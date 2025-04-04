@@ -1,5 +1,9 @@
 import { DateFormat, FDate } from "@fkui/date";
-import { formatNumber as numberFormater, parseDate } from "@fkui/logic";
+import {
+    formatNumber as numberFormater,
+    parseBankgiro,
+    parseDate,
+} from "@fkui/logic";
 
 interface DateRange {
     from: string;
@@ -95,6 +99,21 @@ export function formatDateRange(
     const to = parseDate(range.to) ?? "";
     el.textContent = `${FDate.fromIso(from)} – ${FDate.fromIso(to)}`;
     el.classList.add("formatter--date-range");
+}
+
+export function formatBankgiro(
+    el: HTMLElement,
+    bankgiro: string | unknown,
+): void {
+    if (typeof bankgiro !== "string" && typeof bankgiro !== "undefined") {
+        return;
+    }
+
+    const textContent = bankgiro
+        ? parseBankgiro(bankgiro)
+        : parseBankgiro(el.textContent?.trim() ?? "");
+    el.textContent = textContent ?? "";
+    el.classList.add("formatter--bankgiro");
 }
 
 export function formatText(el: HTMLElement, text: string | unknown): void {
