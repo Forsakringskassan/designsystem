@@ -506,6 +506,74 @@ describe("Date range", () => {
     });
 });
 
+describe("Organisationsnummer", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:orgnr="'9999999999'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--orgnr">999999-9999</span>`,
+        );
+    });
+
+    it("should render empty element from number", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:orgnr="9999999999"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--orgnr"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", async () => {
+        const wrapper = createWrapper(`<span v-format:orgnr="'ABC'"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--orgnr"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:orgnr="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--orgnr"></span>`,
+        );
+    });
+
+    it("should render empty element for null", async () => {
+        const wrapper = createWrapper(`<span v-format:orgnr="null"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--orgnr"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:orgnr="value"></span>
+                <button type="button" @click="value='9999999999'">
+                    Update
+                </button>
+            `,
+            "5555555555",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--orgnr">555555-5555</span>
+            <button type="button"> Update </button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--orgnr">999999-9999</span>
+            <button type="button"> Update </button>
+        `);
+    });
+});
+
 describe("Personnummer", () => {
     it("should format from string", async () => {
         const wrapper = createWrapper(
