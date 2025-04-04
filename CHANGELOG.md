@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 5.46.3 (2025-04-04)
+
+### Bug Fixes
+
+* **@fkui/vue:** card throws error when content is validated (fixes SFKUI-7190) a01fbec
+
 ## 5.46.2 (2025-02-20)
 
 ### Bug Fixes
