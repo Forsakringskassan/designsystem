@@ -82,3 +82,8 @@ export function formatDateRange(
         el.textContent = `${FDate.fromIso(fromDate ?? "")} – ${FDate.fromIso(toDate ?? "")}`;
     }
 }
+
+export function formatText(el: HTMLElement, text: string | unknown): void {
+    el.classList.add("formatter--text");
+    el.textContent = typeof text === "string" ? text : "";
+}
