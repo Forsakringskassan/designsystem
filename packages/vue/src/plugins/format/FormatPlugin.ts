@@ -1,5 +1,6 @@
 import { type App, type DirectiveBinding, type Plugin } from "vue";
 import {
+    formatBankgiro,
     formatDate,
     formatDateFull,
     formatDateLong,
@@ -9,6 +10,7 @@ import {
 } from "./formatters";
 
 const formatters = {
+    bankgiro: formatBankgiro,
     "date-full": formatDateFull,
     "date-long": formatDateLong,
     "date-range": formatDateRange,

@@ -83,6 +83,18 @@ export function formatDateRange(
     }
 }
 
+export function formatBankgiro(
+    el: HTMLElement,
+    bankgiro: string | unknown,
+): void {
+    el.classList.add("formatter--bankgiro");
+    el.textContent = "";
+
+    if (typeof bankgiro === "string") {
+        el.textContent = parseBankgiro(bankgiro) ?? "";
+    }
+}
+
 export function formatText(el: HTMLElement, text: string | unknown): void {
     el.classList.add("formatter--text");
     el.textContent = typeof text === "string" ? text : "";
