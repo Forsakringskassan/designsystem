@@ -233,7 +233,7 @@ $table-input-offset-horizontal: 0.25rem;
             @extend %table-row-normal;
 
             &--collapsed {
-                visibility: collapse;
+                display: none;
             }
         }
 
