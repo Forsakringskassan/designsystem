@@ -107,6 +107,75 @@ describe("Number", () => {
         `);
     });
 });
+
+describe("Bankgiro", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:bankgiro="'1234566'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--bankgiro">123-4566</span>`,
+        );
+    });
+
+    it("should render empty element from number", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:bankgiro="1234566"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--bankgiro"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:bankgiro="'ABC'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--bankgiro"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:bankgiro="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--bankgiro"></span>`,
+        );
+    });
+
+    it("should render empty element for null", async () => {
+        const wrapper = createWrapper(`<span v-format:bankgiro="null"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--bankgiro"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:bankgiro="value"></span>
+                <button type="button" @click="value='9999996'">Update</button>
+            `,
+            "1234566",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--bankgiro">123-4566</span>
+            <button type="button">Update</button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--bankgiro">999-9996</span>
+            <button type="button">Update</button>
+        `);
+    });
+});
+
 describe("Date", () => {
     it("should format from string", async () => {
         const wrapper = createWrapper(
