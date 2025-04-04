@@ -107,6 +107,18 @@ export function formatPersonnummer(
     }
 }
 
+export function formatOrganisationsnummer(
+    el: HTMLElement,
+    orgnr: string | unknown,
+): void {
+    el.classList.add("formatter--orgnr");
+    el.textContent = "";
+
+    if (typeof orgnr === "string") {
+        el.textContent = parseOrganisationsnummer(orgnr) ?? "";
+    }
+}
+
 export function formatText(el: HTMLElement, text: string | unknown): void {
     el.classList.add("formatter--text");
     el.textContent = typeof text === "string" ? text : "";
