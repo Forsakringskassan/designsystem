@@ -1,7 +1,17 @@
 import { type App, type DirectiveBinding, type Plugin } from "vue";
-import { formatNumber } from "./formatters";
+import {
+    formatDate,
+    formatDateFull,
+    formatDateLong,
+    formatDateRange,
+    formatNumber,
+} from "./formatters";
 
 const formatters = {
+    "date-full": formatDateFull,
+    "date-long": formatDateLong,
+    "date-range": formatDateRange,
+    date: formatDate,
     number: formatNumber,
 };
 function removeObsoleteClasses(el: HTMLElement): void {

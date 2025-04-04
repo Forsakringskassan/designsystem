@@ -1,5 +1,6 @@
 import { mount, VueWrapper } from "@vue/test-utils";
 import { defineComponent } from "vue";
+import { FDate } from "@fkui/date";
 import { FormatPlugin } from "./FormatPlugin";
 
 function createWrapper(
@@ -103,6 +104,335 @@ describe("Number", () => {
         expect(wrapper).toMatchInlineSnapshot(`
             <span class="formatter--number">0</span>
             <button type="button">Zero</button>
+        `);
+    });
+});
+describe("Date", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date="'20250403'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date">2025-04-03</span>`,
+        );
+    });
+
+    it("should format from FDate", async () => {
+        const date = FDate.fromIso("2025-04-15");
+        const wrapper = createWrapper(
+            `<span v-format:date="value"></span>`,
+            date,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date">2025-04-15</span>`,
+        );
+    });
+
+    it("should render empty element for invalid date", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date="'20251333'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", async () => {
+        const wrapper = createWrapper(`<span v-format:date="'ABC'"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date"></span>`,
+        );
+    });
+
+    it("should render empty element for null", async () => {
+        const wrapper = createWrapper(`<span v-format:date="null"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:date="value"></span>
+                <button type="button" @click="value='20200101'">Update</button>
+            `,
+            "20251231",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--date">2025-12-31</span>
+            <button type="button">Update</button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--date">2020-01-01</span>
+            <button type="button">Update</button>
+        `);
+    });
+});
+
+describe("Date long", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-long="'20250403'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-long">3 april 2025</span>`,
+        );
+    });
+
+    it("should format from FDate", async () => {
+        const date = FDate.fromIso("2025-04-15");
+        const wrapper = createWrapper(
+            `<span v-format:date-long="value"></span>`,
+            date,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-long">15 april 2025</span>`,
+        );
+    });
+
+    it("should render empty element for invalid date", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-long="'20251333'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-long"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-long="'ABC'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-long"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-long="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-long"></span>`,
+        );
+    });
+
+    it("should render empty element for null", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-long="null"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-long"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:date-long="value"></span>
+                <button type="button" @click="value='20200101'">Update</button>
+            `,
+            "20251231",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--date-long">31 december 2025</span>
+            <button type="button">Update</button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--date-long">1 januari 2020</span>
+            <button type="button">Update</button>
+        `);
+    });
+});
+
+describe("Date full", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-full="'20250403'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-full">torsdag 3 april 2025</span>`,
+        );
+    });
+
+    it("should format from FDate", async () => {
+        const date = FDate.fromIso("2025-04-15");
+        const wrapper = createWrapper(
+            `<span v-format:date-full="value"></span>`,
+            date,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-full">tisdag 15 april 2025</span>`,
+        );
+    });
+
+    it("should render empty element for invalid date", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-full="'20251333'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-full"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-full="'ABC'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-full"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-full="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-full"></span>`,
+        );
+    });
+
+    it("should render empty element for null", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-full="null"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-full"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:date-full="value"></span>
+                <button type="button" @click="value='20200101'">Update</button>
+            `,
+            "20251231",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--date-full">onsdag 31 december 2025</span>
+            <button type="button">Update</button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--date-full">onsdag 1 januari 2020</span>
+            <button type="button">Update</button>
+        `);
+    });
+});
+
+describe("Date range", () => {
+    it("should format range of string dates", async () => {
+        const wrapper = createWrapper(`<span v-format:date-range='{
+            from: "20201101",
+            to: "20250403",
+        }'></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-range">2020-11-01 – 2025-04-03</span>`,
+        );
+    });
+
+    it("should format range of FDate dates", async () => {
+        const date = FDate.fromIso("2025-04-15");
+        const wrapper = createWrapper(
+            `<span v-format:date-range='{
+            from: value,
+            to: value.addDays(100),
+        }'></span>`,
+            date,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-range">2025-04-15 – 2025-07-24</span>`,
+        );
+    });
+
+    it("should render empty element for invalid date", async () => {
+        const wrapper = createWrapper(`<span v-format:date-range='{
+            from: "20201400",
+            to: "20251438",
+        }'></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-range"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-range="'ABC'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-range"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-range="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-range"></span>`,
+        );
+    });
+
+    it("should render empty element for null", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-range="null"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-range"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span
+                    v-format:date-range='{
+                    from: value,
+                    to: "20250403",
+                }'
+                ></span>
+                <button type="button" @click="value='19990203'">Update</button>
+            `,
+            "20200101",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--date-range">2020-01-01 – 2025-04-03</span>
+            <button type="button">Update</button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--date-range">1999-02-03 – 2025-04-03</span>
+            <button type="button">Update</button>
         `);
     });
 });
