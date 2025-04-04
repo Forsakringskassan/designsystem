@@ -1,0 +1,17 @@
+.formatter {
+    &--date,
+    &--date-full,
+    &--date-long,
+    &--date-range,
+    &--text {
+        white-space: nowrap;
+    }
+
+    &--bankgiro,
+    &--orgnr,
+    &--pnr,
+    &--number {
+        white-space: nowrap;
+        font-feature-settings: "tnum";
+    }
+}
