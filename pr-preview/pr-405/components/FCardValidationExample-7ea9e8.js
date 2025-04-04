@@ -176,11 +176,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode("button", {
         type: "button",
         class: "button button-group__item button--tertiary button--large",
+        "data-test": "set-invalid",
         onClick: $setup.setInvalid
       }, " Markera kort som felaktigt "),
       _createElementVNode("button", {
         type: "button",
         class: "button button-group__item button--tertiary button--large",
+        "data-test": "set-valid",
         onClick: $setup.setValid
       }, " Markera kort som giltigt ")
     ],

@@ -6817,6 +6817,9 @@ var _sfc_main$Z = /* @__PURE__ */ defineComponent({
       if (!isMounted.value) {
         return;
       }
+      if (detail.elementId !== props.id) {
+        return;
+      }
       if (!props.focusRef) {
         throw new Error("Element to focus on when card is invalid (`focusRef`) is required when using card validation.");
       }
