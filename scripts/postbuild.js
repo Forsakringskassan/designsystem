@@ -6,16 +6,12 @@ const { promises: fs, existsSync } = require("fs");
 const fse = require("fs-extra");
 
 async function generatePublic() {
-    await fs.mkdir("public/assets", { recursive: true });
-
     const haveLabs = existsSync("packages/vue-labs/public");
     const haveSandbox = existsSync("internal/vue-sandbox/dist");
     const haveTestbed = existsSync("internal/testbed-page-layout/dist");
 
     /* copy docs from each package */
     await Promise.all([
-        fse.copy("packages/theme-default/dist", "public/assets"),
-        fse.copy("packages/design/lib", "public/assets"),
         fse.copy("packages/date/typedoc", "public/date"),
         fse.copy("packages/logic/typedoc", "public/logic"),
     ]);
