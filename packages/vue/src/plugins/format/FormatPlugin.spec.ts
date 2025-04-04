@@ -436,3 +436,62 @@ describe("Date range", () => {
         `);
     });
 });
+
+describe("Text", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:text="'Some random text'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--text">Some random text</span>`,
+        );
+    });
+
+    it("should render empty element from number", async () => {
+        const wrapper = createWrapper(`<span v-format:text="1234"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--text"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:text="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--text"></span>`,
+        );
+    });
+
+    it("should render empty element for null", async () => {
+        const wrapper = createWrapper(`<span v-format:text="null"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--text"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:text="value"></span>
+                <button type="button" @click="value='Another random text'">
+                    Update
+                </button>
+            `,
+            "Some random text",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--text">Some random text</span>
+            <button type="button"> Update </button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--text">Another random text</span>
+            <button type="button"> Update </button>
+        `);
+    });
+});
