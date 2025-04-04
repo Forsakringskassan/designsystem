@@ -1,6 +1,13 @@
 $FORMATTER_SELECTOR: ".formatter" !default;
 
 #{$FORMATTER_SELECTOR} {
+    &--date,
+    &--date-full,
+    &--date-long,
+    &--date-range {
+        white-space: nowrap;
+    }
+
     &--number {
         white-space: nowrap;
         font-feature-settings: "tnum";

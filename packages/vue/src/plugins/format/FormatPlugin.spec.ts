@@ -70,3 +70,72 @@ describe("Number", () => {
         );
     });
 });
+describe("Date", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date="'20250403'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date">2025-04-03</span>`,
+        );
+    });
+
+    it("should format from textContent", async () => {
+        const wrapper = createWrapper(`<span v-format:date> 20250403 </span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date">2025-04-03</span>`,
+        );
+    });
+});
+
+describe("Date long", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-long="'20250403'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-long">3 april 2025</span>`,
+        );
+    });
+
+    it("should format from textContent", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-long> 20250403 </span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-long">3 april 2025</span>`,
+        );
+    });
+});
+
+describe("Date full", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-full="'20250403'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-full">torsdag 3 april 2025</span>`,
+        );
+    });
+
+    it("should format from textContent", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:date-full> 20250403 </span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-full">torsdag 3 april 2025</span>`,
+        );
+    });
+});
+
+describe("Date range", () => {
+    it("should format range of dates", async () => {
+        const wrapper = createWrapper(`<span v-format:date-range='{
+            from: "20201101",
+            to: "20250403",
+        }'></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--date-range">2020-11-01 – 2025-04-03</span>`,
+        );
+    });
+});
