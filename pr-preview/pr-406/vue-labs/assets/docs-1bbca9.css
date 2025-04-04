@@ -5729,7 +5729,7 @@ input[type=search]:focus,
   color: var(--f-icon-color-table-header-discrete);
 }
 .table tbody .table__expandable-row--collapsed {
-  visibility: collapse;
+  display: none;
 }
 .table tbody td,
 .table tbody th {

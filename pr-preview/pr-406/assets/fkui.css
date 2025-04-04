@@ -5388,7 +5388,7 @@ input[type=search]:focus,
   color: var(--f-icon-color-table-header-discrete, #8d8e91);
 }
 .table tbody .table__expandable-row--collapsed {
-  visibility: collapse;
+  display: none;
 }
 .table tbody td,
 .table tbody th {
