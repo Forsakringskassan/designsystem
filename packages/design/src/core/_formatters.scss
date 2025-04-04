@@ -10,6 +10,7 @@ $FORMATTER_SELECTOR: ".formatter" !default;
     }
 
     &--bankgiro,
+    &--orgnr,
     &--pnr,
     &--number {
         white-space: nowrap;
