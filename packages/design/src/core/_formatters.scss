@@ -10,6 +10,7 @@ $FORMATTER_SELECTOR: ".formatter" !default;
     }
 
     &--bankgiro,
+    &--pnr,
     &--number {
         white-space: nowrap;
         font-feature-settings: "tnum";
