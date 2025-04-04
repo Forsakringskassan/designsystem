@@ -161,6 +161,26 @@ describe("Date range", () => {
     });
 });
 
+describe("Personnummer", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:pnr="'189001079806'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--pnr">18900107-9806</span>`,
+        );
+    });
+
+    it("should format from textContent", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:pnr> 189001079806 </span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--pnr">18900107-9806</span>`,
+        );
+    });
+});
+
 describe("Text", () => {
     it("should format from string", async () => {
         const wrapper = createWrapper(

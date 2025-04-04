@@ -3,6 +3,7 @@ import {
     formatNumber as numberFormater,
     parseBankgiro,
     parseDate,
+    parsePersonnummer,
 } from "@fkui/logic";
 
 interface DateRange {
@@ -114,6 +115,22 @@ export function formatBankgiro(
         : parseBankgiro(el.textContent?.trim() ?? "");
     el.textContent = textContent ?? "";
     el.classList.add("formatter--bankgiro");
+}
+
+export function formatPersonnummer(
+    el: HTMLElement,
+    pnr: string | unknown,
+): void {
+    if (typeof pnr !== "string" && typeof pnr !== "undefined") {
+        return;
+    }
+
+    const textContent = pnr
+        ? parsePersonnummer(pnr)
+        : parsePersonnummer(el.textContent);
+
+    el.textContent = textContent ?? "";
+    el.classList.add("formatter--pnr");
 }
 
 export function formatText(el: HTMLElement, text: string | unknown): void {
