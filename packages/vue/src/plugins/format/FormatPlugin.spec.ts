@@ -70,6 +70,27 @@ describe("Number", () => {
         );
     });
 });
+
+describe("Bankgiro", () => {
+    it("should format from string", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:bankgiro="'1234566'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--bankgiro">123-4566</span>`,
+        );
+    });
+
+    it("should format from textContent", async () => {
+        const wrapper = createWrapper(
+            `<span v-format:bankgiro> 1234566 </span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--bankgiro">123-4566</span>`,
+        );
+    });
+});
+
 describe("Date", () => {
     it("should format from string", async () => {
         const wrapper = createWrapper(
