@@ -22,7 +22,12 @@ jobs:
               if: github.event.action != 'closed'
               run: |
                   npm ci
-                  npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/vue-labs --scope=@fkui/testbed-page-layout build
+                  npm exec lerna -- run build \
+                      --include-dependencies \
+                      --scope=@fkui/vue \
+                      --scope=@fkui/vue-labs \
+                      --scope=@fkui/testbed-page-layout \
+                      --scope=@fkui/vue-sandbox
                   npm run build:docs
             - uses: rossjrw/pr-preview-action@v1
               id: preview
