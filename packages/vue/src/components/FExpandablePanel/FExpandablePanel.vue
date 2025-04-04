@@ -105,6 +105,10 @@ export default defineComponent({
             required: false,
             default: 0,
         },
+        /**
+         * Text template for the screen reader notification text.
+         * Use `%VALUE%` as a placeholder for the number of notifications.
+         */
         screenReaderNotificationTemplate: {
             type: String,
             required: false,
