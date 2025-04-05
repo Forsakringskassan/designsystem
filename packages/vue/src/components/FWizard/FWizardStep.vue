@@ -14,6 +14,12 @@
 
                 <i-flex-item align="bottom" grow>
                     <template v-if="isOpen">
+                        <!--
+                            @slot Use this slot to customize the content displayed for the "step of" information.
+                            @binding {string} headerClass Class to be applied to the step-of information.
+                            @binding {number} stepNumber Current step number.
+                            @binding {number} totalSteps The total number of steps in this wizard.
+                        -->
                         <slot
                             name="step-of"
                             v-bind="{ headerClass: 'wizard-step__header__step-of', stepNumber, totalSteps }"

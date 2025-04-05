@@ -17,7 +17,7 @@
             <!--
                 @slot Slot for displaying single or several error messages.
                 @binding {boolean} hasError Set to true when a validation error is present
-                @binding {string} valididationMessage Descriptive validation error message for current error
+                @binding {string} validationMessage Descriptive validation error message for current error
             -->
             <slot name="error-message" v-bind="{ hasError, validationMessage: validity.validationMessage }">
                 <template v-if="hasError">
