@@ -60,7 +60,7 @@ module.exports = {
     sourceFiles: [
         {
             include: "docs/**/*.md",
-            exclude: "docs/node_modules/**",
+            exclude: ["docs/node_modules/**", "docs/examples/**"],
             basePath: "docs",
             fileReader: frontMatterFileReader,
             transform(doc) {
@@ -79,7 +79,7 @@ module.exports = {
         },
         {
             include: "docs/*/**/*.json",
-            exclude: "docs/node_modules/**",
+            exclude: ["docs/node_modules/**", "docs/examples/**"],
             basePath: "docs",
             fileReader: navigationFileReader,
         },

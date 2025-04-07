@@ -117,7 +117,7 @@ Metoden `ariaValueNow()` har ändrats till `value()` och returnerar nu `number` 
 progressbar.ariaValueNow().should("equal", "40");
 ```
 
-```ts compare=progressbar-ariavaluenow
+```ts compare=progressbar-ariavaluenow nocompile
 progressbar.value().should("equal", 40);
 ```
 

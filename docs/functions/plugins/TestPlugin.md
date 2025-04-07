@@ -9,6 +9,12 @@ Plugin:et är tänkt att användas vid testautomation, enhets- och e2e-tester.
 _TestPlugin_ initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )
 
 ```ts
+import { defineComponent } from "vue";
+
+const App = defineComponent({});
+
+/* --- cut above ---*/
+
 import { createApp } from "vue";
 import { TestPlugin } from "@fkui/vue";
 
