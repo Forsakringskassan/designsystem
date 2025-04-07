@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-dbf107.css"
+            href="../assets/docs-3a44c1.css"
             crossorigin
-            integrity="sha384-ytMF529zhnOgCu/DcYAE7UA7c44RU2Vbrij2N/Gs5iiNGd2spnglEt7tYGz4W8om"
+            integrity="sha384-mwlC6ZcmWzVGBP9rGD53eh2nsWslBdia4sGq8uI29sNgi+O92y3Pux3ZeA0PrKWF"
             
         />
         <link
@@ -135,12 +135,20 @@
         <a
             href="./"
             
+            
+            
+            data-path="components/"
+            
         >
             Komponenter
         </a>
     </li><li class="link active">
         <a
             href="./xtimetextfield.html"
+            
+            
+            
+            data-path="components/xtimetextfield.html"
             
         >
             Tidsinmatning
@@ -197,10 +205,9 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>När det behövs ett textinmatningsfält för timmar och minuter, tt:mm. Accepterar inmatning med eller
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">När det behövs ett textinmatningsfält för timmar och minuter, tt:mm. Accepterar inmatning med eller
 utan kolon. Utan kolon tolkas inmatningen som enbart timmar. Om man matar in ett kolon måste det
-följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). Exempel:</p>
-<table class="table">
+följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). Exempel:</p><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Inmatning</th>
@@ -236,8 +243,7 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
 </tr>
 </tbody>
 </table>
-<p>Lagrar värdet internt i ett <code>Number</code> som plockas ut med <code>v-model</code>.</p>
-<h3 id="enkelt_exempel"><a class="header-anchor" href="#enkelt_exempel">Enkelt exempel</a></h3>
+<p class="docs-paragraph">Lagrar värdet internt i ett <code>Number</code> som plockas ut med <code>v-model</code>.</p><h3 id="enkelt_exempel"><a class="header-anchor" href="#enkelt_exempel">Enkelt exempel</a></h3>
             <div
                 id="example-df23f2"
                 class="code-preview code-preview--default"
@@ -247,13 +253,13 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
             >
                 
                 <div class="code-preview__preview">
-        <div id="XTimeTextFieldExample"></div>
+        <div id="example-e1dffd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XTimeTextFieldExample-6a992d.js"></script>
+        <script type="module" src="./XTimeTextFieldExample-e1dffd.js"></script>
     </div>
                 <div>
             <button
@@ -328,14 +334,13 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
 </code></pre>
                 </div>
             </div>
-        <h2 id="forlatande_inmatning"><a class="header-anchor" href="#forlatande_inmatning">Förlåtande inmatning</a></h2><p>Det är inte ovanligt med ett behov av att endast tillåta tidsangivelser upp till ett dygn
+        <h2 id="forlatande_inmatning"><a class="header-anchor" href="#forlatande_inmatning">Förlåtande inmatning</a></h2><p class="docs-paragraph">Det är inte ovanligt med ett behov av att endast tillåta tidsangivelser upp till ett dygn
 (24 timmar). Det går att sätta en egen parsingparameter istället. Detta görs i stil med
 <code>:parser=&quot;forgivingParseTimeToNumber&quot;</code>. I denna komponenten tolkas även fyra siffror inte
 längre som timmar, utan som timmar och minuter. De två första siffrorna tolkas som timmar
 och de två sista som minuter. Notera att tre siffror och fem siffror fortfarande tolkas
 som timmar.
-Exempel:</p>
-<table class="table">
+Exempel:</p><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Inmatning</th>
@@ -381,13 +386,13 @@ Exempel:</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="ForgivingInput"></div>
+        <div id="example-021453"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ForgivingInput-3214e6.js"></script>
+        <script type="module" src="./ForgivingInput-021453.js"></script>
     </div>
                 <div>
             <button
@@ -480,9 +485,15 @@ Exempel:</p>
             </div>
 
             <footer>
-                <!-- prettier-ignore --><div class="footer">
-    <!-- prettier-ignore -->
-    
+                <!-- prettier-ignore --><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="../changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content">
+        <!-- prettier-ignore -->
+        
+    </div>
 </div>
 </footer>
         </div>
@@ -562,10 +573,10 @@ Exempel:</p>
         <!-- prettier-ignore -->
         <!-- prettier-ignore -->
         <script
-            src="../assets/main-8fc899.js"
+            src="../assets/main-4e017a.js"
             type="module"
             crossorigin
-            integrity="sha384-/HnYv6JV0+huxWdpUJk7DpGc7zNdF6Bnrq+RY39TX0lEaZ5Ee02lrHZdZv9eyM+F"
+            integrity="sha384-ia5lk+4uQSceM2537Ee6lK2HLAd4V28wnHMdbltvcp7QX8dAs6CuXu8zYGaY3RDs"
             
         ></script>
     </body>

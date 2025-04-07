@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-e3ce1f.css"
+            href="../../assets/docs-6497af.css"
             crossorigin
-            integrity="sha384-3uWPciDOTsOBp3P4TrssSZP+XzRMjBcsFRqzM4rAoYVWW2jUZszJvC+yr2uAybaT"
+            integrity="sha384-AdouKtBCTIHy9a996Q4Gh2sVDWlsoR968us4ztiooEce9KTQvdN2YlBIdUVTqdhC"
             
         />
         <link
@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-48184b.json"
+            href="../../search-data-28aaf0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-sm/XiSbRWq0/SlyjIG19Qh3lJT8PmUoh+2AmyfC5V9mTBbOLpK7llnE/V3XMbIM1"
             id="search-data"
         />
     </head>
@@ -267,12 +267,20 @@
         <a
             href="./formatter-parser.html"
             
+            
+            
+            data-path="guides/formatting-and-parsing/formatter-parser.html"
+            
         >
             Formatering och parsning
         </a>
     </li><li class="link ">
         <a
             href="./custom-formatter-parser.html"
+            
+            
+            
+            data-path="guides/formatting-and-parsing/custom-formatter-parser.html"
             
         >
             Formaterare och parser - anpassad
@@ -290,12 +298,20 @@
         <a
             href="../validation-and-error-handling/validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/validation.html"
+            
         >
             Validering och felhantering
         </a>
     </li><li class="link ">
         <a
             href="../validation-and-error-handling/custom-error-message.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-error-message.html"
             
         >
             Felmeddelande - anpassat
@@ -304,6 +320,10 @@
         <a
             href="../validation-and-error-handling/cross-validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/cross-validation.html"
+            
         >
             Korsvalidering
         </a>
@@ -311,12 +331,20 @@
         <a
             href="../validation-and-error-handling/length-validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/length-validation.html"
+            
         >
             Längdvalidering
         </a>
     </li><li class="link ">
         <a
             href="../validation-and-error-handling/custom-validator.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-validator.html"
             
         >
             Validator - anpassad
@@ -360,32 +388,22 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält.
+<p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält.
 Parsning används för att ändra på det som faktiskt hanteras och skickas in.
 Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag.
-Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
-<p>Vi rekommenderar att du i första hand använder de <a href="../../components/input/textfield-specialized.html">specialiserade inmatningsfälten</a> där validering, formatering och parsning är inbyggt.</p>
-<p><strong>Notera att vi stödjer inte formatering och parsning utan validering.</strong></p>
-<h2 id="formatering_och_parsning"><a class="header-anchor" href="#formatering_och_parsning">Formatering och parsning</a></h2><p>Förenklat sett kan man säga att:</p>
-<ul>
-<li>Parser tolkar vy-värdet och gör om till ett modell-värde.</li>
-<li>Formaterare tolkar modell-värdet och gör om till ett vy-värde.</li>
+Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p><p class="docs-paragraph">Vi rekommenderar att du i första hand använder de <a href="../../components/input/textfield-specialized.html">specialiserade inmatningsfälten</a> där validering, formatering och parsning är inbyggt.</p><p class="docs-paragraph"><strong>Notera att vi stödjer inte formatering och parsning utan validering.</strong></p><h2 id="formatering_och_parsning"><a class="header-anchor" href="#formatering_och_parsning">Formatering och parsning</a></h2><p class="docs-paragraph">Förenklat sett kan man säga att:</p><ul>
+<li><p class="docs-paragraph">Parser tolkar vy-värdet och gör om till ett modell-värde.</p></li>
+<li><p class="docs-paragraph">Formaterare tolkar modell-värdet och gör om till ett vy-värde.</p></li>
 </ul>
-<p>Vy-värdet (<code>viewValue</code>) är det som visuellt presenteras i inmatningsfältet och är vanligtvis det som matats in av användaren.</p>
-<p>Modell-värdet (<code>modelValue</code>) är det värde som skrivs ner till konsumentens <code>v-model</code> och följdaktligen det konsumenten får ut från inmatningsfältet.
+<p class="docs-paragraph">Vy-värdet (<code>viewValue</code>) är det som visuellt presenteras i inmatningsfältet och är vanligtvis det som matats in av användaren.</p><p class="docs-paragraph">Modell-värdet (<code>modelValue</code>) är det värde som skrivs ner till konsumentens <code>v-model</code> och följdaktligen det konsumenten får ut från inmatningsfältet.
 Modell-värdet är det som senare används av logik och om en parser används är tolkat till rätt datatyp (exempelvis <code>string</code> till <code>number</code>).</p>
-
                 <pre class="mermaid">graph LR
 	viewValue -- parser --&gt; modelValue -- formatter --&gt; viewValue
 </pre>
-            <p>Undantaget från detta är när enbart en formaterare används: då agerar formateraren både som <code>formatter</code> och <code>parser</code>, det vill säga det formaterade värdet är det som skrivs ner som modell-värde.</p>
-<h3 id="formatering"><a class="header-anchor" href="#formatering">Formatering</a></h3><p>Formatering används för göra det lättare för användaren att läsa uppgifter som har matas in.
+            <p class="docs-paragraph">Undantaget från detta är när enbart en formaterare används: då agerar formateraren både som <code>formatter</code> och <code>parser</code>, det vill säga det formaterade värdet är det som skrivs ner som modell-värde.</p><h3 id="formatering"><a class="header-anchor" href="#formatering">Formatering</a></h3><p class="docs-paragraph">Formatering används för göra det lättare för användaren att läsa uppgifter som har matas in.
 Formatering görs när användaren lämnar inmatningsfältet och inmatningen har validerats utan fel.
 Till exempel formateras siffror inmatade i ett fält för valuta med ett mellanslag som tusenavgränsare och personnummer med ett bindestreck innan de fyra sista siffrorna.
-Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p>
-<p>Vy-värdet rensas alltid på inledande och avslutande mellanslag, oavsett om en specifik formaterare är satt eller ej.</p>
-<p>För att sätta formaterare använder man <code>formatter</code>-propen på <a href="../../components/input/ftextfield.html"><code>FTextField</code></a>:</p>
-
+Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p><p class="docs-paragraph">Vy-värdet rensas alltid på inledande och avslutande mellanslag, oavsett om en specifik formaterare är satt eller ej.</p><p class="docs-paragraph">För att sätta formaterare använder man <code>formatter</code>-propen på <a href="../../components/input/ftextfield.html"><code>FTextField</code></a>:</p>
                 <div
                     id="example-6f9842"
                     class="code-preview code-preview--default"
@@ -402,8 +420,7 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
  &lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>I exemplet nedan visas hur en formaterare (<code>formatNumber</code>) används för att infoga tusenavgränsare, notera också att modell-värdet också innehåller det formaterade värdet.</p>
-
+            <p class="docs-paragraph">I exemplet nedan visas hur en formaterare (<code>formatNumber</code>) används för att infoga tusenavgränsare, notera också att modell-värdet också innehåller det formaterade värdet.</p>
                 <div
                     id="example-2959a1"
                     class="code-preview code-preview--default"
@@ -413,20 +430,16 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
                 >
                     
                     <div class="code-preview__preview">
-        <div id="FormatterExample"></div>
+        <div id="example-c822c4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FormatterExample-c8e53d.js"></script>
+        <script type="module" src="./FormatterExample-c822c4.js"></script>
     </div>
                 </div>
-            <p><a href="./custom-formatter-parser.html">(Läs mer om att ta fram applikationsspecifik formaterare.)</a></p>
-<h3 id="parsning"><a class="header-anchor" href="#parsning">Parsning</a></h3><p>Parsning används för att tolka det inmatade värdet och se till att det blir rätt datatyp och format som kan hanteras av logiken.</p>
-<p>Parser får alltid in ett värde med inledande och avslutande mellanslag rensat.</p>
-<p>För att sätta parser använder man <code>parser</code> propen på <a href="../../components/input/ftextfield.html"><code>FTextField</code></a>:</p>
-
+            <p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Läs mer om att ta fram applikationsspecifik formaterare.)</a></p><h3 id="parsning"><a class="header-anchor" href="#parsning">Parsning</a></h3><p class="docs-paragraph">Parsning används för att tolka det inmatade värdet och se till att det blir rätt datatyp och format som kan hanteras av logiken.</p><p class="docs-paragraph">Parser får alltid in ett värde med inledande och avslutande mellanslag rensat.</p><p class="docs-paragraph">För att sätta parser använder man <code>parser</code> propen på <a href="../../components/input/ftextfield.html"><code>FTextField</code></a>:</p>
                 <div
                     id="example-51aaf7"
                     class="code-preview code-preview--default"
@@ -443,8 +456,7 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
  &lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>I exemplet nedan visas hur en parser (<code>parseNumber</code>) används för tolka det inmatade värdet som ett numeriskt värde istället för text.</p>
-
+            <p class="docs-paragraph">I exemplet nedan visas hur en parser (<code>parseNumber</code>) används för tolka det inmatade värdet som ett numeriskt värde istället för text.</p>
                 <div
                     id="example-8062b1"
                     class="code-preview code-preview--default"
@@ -454,18 +466,16 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
                 >
                     
                     <div class="code-preview__preview">
-        <div id="ParserExample"></div>
+        <div id="example-0b2ed3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ParserExample-ee8109.js"></script>
+        <script type="module" src="./ParserExample-0b2ed3.js"></script>
     </div>
                 </div>
-            <p><a href="./custom-formatter-parser.html">(Läs mer om att ta fram en applikationsspecifik parser.)</a></p>
-<h3 id="kombinera_formaterare_och_parser"><a class="header-anchor" href="#kombinera_formaterare_och_parser">Kombinera formaterare och parser</a></h3><p>Det går att kombinera formaterare och parser:</p>
-
+            <p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Läs mer om att ta fram en applikationsspecifik parser.)</a></p><h3 id="kombinera_formaterare_och_parser"><a class="header-anchor" href="#kombinera_formaterare_och_parser">Kombinera formaterare och parser</a></h3><p class="docs-paragraph">Det går att kombinera formaterare och parser:</p>
                 <div
                     id="example-354d27"
                     class="code-preview code-preview--default"
@@ -475,19 +485,16 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
                 >
                     
                     <div class="code-preview__preview">
-        <div id="CombinedFormatterParserExample"></div>
+        <div id="example-167542"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./CombinedFormatterParserExample-6bc375.js"></script>
+        <script type="module" src="./CombinedFormatterParserExample-167542.js"></script>
     </div>
                 </div>
-            <p>Då ser vi hur modellvärdet blir tolkat som ett numeriskt värde och vy-värdet formateras med tusenavgränsare.</p>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="./custom-formatter-parser.html">(Formaterare och parser - anpassad)</a></p>
-<p><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
-
+            <p class="docs-paragraph">Då ser vi hur modellvärdet blir tolkat som ett numeriskt värde och vy-värdet formateras med tusenavgränsare.</p><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Formaterare och parser - anpassad)</a></p><p class="docs-paragraph"><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
 
                     </div>
                 </main>
@@ -508,9 +515,9 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/major-vueuse-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/4be99fc60747e9880d02890727d8807ffc2127ed">4be99fc</a>)<br />
+    renovate/major-vueuse-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/b9ce5a7563aa91dbdcecf3624cc9494af967f9fc">b9ce5a7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/363">PR 363</a><br />
-        2025-04-07 23:46
+        2025-04-07 23:53
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -642,10 +649,10 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
         ></script>
         <!-- prettier-ignore -->
         <script
-            src="../../assets/main-644b1f.js"
+            src="../../assets/main-6ee948.js"
             type="module"
             crossorigin
-            integrity="sha384-McVMzbOvTSYLkrbbLUndw8uA9eujRpi/i57FfJil9Y/QpIQvyX99Z85mQgt4ORMO"
+            integrity="sha384-d0cmsEhrEUCCrqlEpGrW8CQWDnUgbz00YuAQwLWs7Zz1QZrr7TSchvO5ZQHKcSO4"
             
         ></script>
     </body>

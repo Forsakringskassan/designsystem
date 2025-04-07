@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-e3ce1f.css"
+            href="../assets/docs-6497af.css"
             crossorigin
-            integrity="sha384-3uWPciDOTsOBp3P4TrssSZP+XzRMjBcsFRqzM4rAoYVWW2jUZszJvC+yr2uAybaT"
+            integrity="sha384-AdouKtBCTIHy9a996Q4Gh2sVDWlsoR968us4ztiooEce9KTQvdN2YlBIdUVTqdhC"
             
         />
         <link
@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../search-data-48184b.json"
+            href="../search-data-28aaf0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-sm/XiSbRWq0/SlyjIG19Qh3lJT8PmUoh+2AmyfC5V9mTBbOLpK7llnE/V3XMbIM1"
             id="search-data"
         />
     </head>
@@ -262,12 +262,20 @@
         <a
             href="./theme.html"
             
+            
+            
+            data-path="styles/theme.html"
+            
         >
             Tema
         </a>
     </li><li class="link active">
         <a
             href="./density.html"
+            
+            
+            
+            data-path="styles/density.html"
             
         >
             Densitet
@@ -276,12 +284,20 @@
         <a
             href="./colors.html"
             
+            
+            
+            data-path="styles/colors.html"
+            
         >
             Färger
         </a>
     </li><li class="link ">
         <a
             href="./grid.html"
+            
+            
+            
+            data-path="styles/grid.html"
             
         >
             Grid
@@ -290,12 +306,20 @@
         <a
             href="./icons.html"
             
+            
+            
+            data-path="styles/icons.html"
+            
         >
             Ikoner
         </a>
     </li><li class="link ">
         <a
             href="./typography.html"
+            
+            
+            
+            data-path="styles/typography.html"
             
         >
             Typografi
@@ -335,11 +359,10 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Densitet styr hur många komponenter och hur mycket information som får plats på skärmen utan att
+<p class="docs-paragraph">Densitet styr hur många komponenter och hur mycket information som får plats på skärmen utan att
 användaren behöver skrolla. Densitet påverkar en komponents höjd samt avståndet mellan komponenter.
 Hög densitet ger en kompakt layout för applikationer som behöver presentera mycket information som
 användaren måste kunna överblicka.</p>
-
                 <div
                     id="example-52d9da"
                     class="code-preview code-preview--default"
@@ -349,29 +372,26 @@ användaren måste kunna överblicka.</p>
                 >
                     
                     <div class="code-preview__preview">
-        <div id="DensityExample"></div>
+        <div id="example-15747e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./DensityExample-bcf9c7.js"></script>
+        <script type="module" src="./DensityExample-15747e.js"></script>
     </div>
                 </div>
-            <p>Densitet kan användas för hela sidor, avgränsade ytor och komponenter.
+            <p class="docs-paragraph">Densitet kan användas för hela sidor, avgränsade ytor och komponenter.
 En hög densitet kan till exempel användas för att presentera en tabell med mycket information på en
 sida som i övrigt är luftig.
-Använd inte densitet för att ändra storleken på enskilda komponenter som till exempel en knapp eller ett inmatningsfält.</p>
-<ul>
-<li>Designsystemet har tre nivåer av densitet: standard, kompakt och extra kompakt.</li>
-<li>Densitet är frikopplat från textstorlek.
-Till exempel går det att kombinera en relativt stor textstorlek med hög densitet.</li>
-<li>En högre densitet ger inte mindre horisontellt utrymme för text.
-Till exempel ska en kolumn i en tabell visa samma mängd tecken oavsett vald densitet.</li>
+Använd inte densitet för att ändra storleken på enskilda komponenter som till exempel en knapp eller ett inmatningsfält.</p><ul>
+<li><p class="docs-paragraph">Designsystemet har tre nivåer av densitet: standard, kompakt och extra kompakt.</p></li>
+<li><p class="docs-paragraph">Densitet är frikopplat från textstorlek.
+Till exempel går det att kombinera en relativt stor textstorlek med hög densitet.</p></li>
+<li><p class="docs-paragraph">En högre densitet ger inte mindre horisontellt utrymme för text.
+Till exempel ska en kolumn i en tabell visa samma mängd tecken oavsett vald densitet.</p></li>
 </ul>
-<p>Jämför olika nivåer <a href="./compare-density.html">här</a>.</p>
-<h2 id="andra_densitet"><a class="header-anchor" href="#andra_densitet">Ändra densitet</a></h2><p>Du kan ändra nivå genom att ange någon av följande klasser:</p>
-<table class="table">
+<p class="docs-paragraph">Jämför olika nivåer <a href="./compare-density.html">här</a>.</p><h2 id="andra_densitet"><a class="header-anchor" href="#andra_densitet">Ändra densitet</a></h2><p class="docs-paragraph">Du kan ändra nivå genom att ange någon av följande klasser:</p><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Klass</th>
@@ -393,11 +413,10 @@ Till exempel ska en kolumn i en tabell visa samma mängd tecken oavsett vald den
 </tr>
 </tbody>
 </table>
-<h2 id="anpassa_for_egen_komponent"><a class="header-anchor" href="#anpassa_for_egen_komponent">Anpassa för egen komponent</a></h2><p>För att anpassa densitet för egna komponenter behöver du gå igenom alla vertikala avstånd,
+<h2 id="anpassa_for_egen_komponent"><a class="header-anchor" href="#anpassa_for_egen_komponent">Anpassa för egen komponent</a></h2><p class="docs-paragraph">För att anpassa densitet för egna komponenter behöver du gå igenom alla vertikala avstånd,
 som till exempel <code>margin</code>, <code>padding</code>, <code>top</code>, och <code>bottom</code>.
 Använd hjälpfunktionen <a href="../functions/helpers/densify.html"><code>densify</code></a> för de vertikala avstånd som ska vara påverkade av densitet.
 Se till att bredden är oförändrad av densitetsändringen.</p>
-
 
                     </div>
                 </main>
@@ -418,9 +437,9 @@ Se till att bredden är oförändrad av densitetsändringen.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    renovate/major-vueuse-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/4be99fc60747e9880d02890727d8807ffc2127ed">4be99fc</a>)<br />
+    renovate/major-vueuse-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/b9ce5a7563aa91dbdcecf3624cc9494af967f9fc">b9ce5a7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/363">PR 363</a><br />
-        2025-04-07 23:46
+        2025-04-07 23:53
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -552,10 +571,10 @@ Se till att bredden är oförändrad av densitetsändringen.</p>
         ></script>
         <!-- prettier-ignore -->
         <script
-            src="../assets/main-644b1f.js"
+            src="../assets/main-6ee948.js"
             type="module"
             crossorigin
-            integrity="sha384-McVMzbOvTSYLkrbbLUndw8uA9eujRpi/i57FfJil9Y/QpIQvyX99Z85mQgt4ORMO"
+            integrity="sha384-d0cmsEhrEUCCrqlEpGrW8CQWDnUgbz00YuAQwLWs7Zz1QZrr7TSchvO5ZQHKcSO4"
             
         ></script>
     </body>
