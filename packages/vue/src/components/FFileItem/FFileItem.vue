@@ -10,10 +10,9 @@
                 <span class="sr-only">&nbsp;{{ $t("fkui.file-item.file-open", "öppnas i nytt fönster") }}</span>
             </a>
 
-            <!-- @slot
-                Slot for any content that should be placed beside the file icon and file name.
-                If several elements is placed, they will be spaced evenly,
-      for more information see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content.-->
+            <!--
+            @slot Slot for any content that should be placed beside the file icon and file name. If several elements is placed, they will be spaced evenly, for more information see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content.
+            -->
             <slot name="row"></slot>
         </div>
         <!-- @slot Slot for any type of content. Elements placed in this slot will be position after the file icon and file name. -->

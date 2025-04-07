@@ -10,15 +10,10 @@
                 </span>
             </i-flex-item>
             <i-flex-item class="message-box__content" grow align="center">
-                <!-- @slot Slot for displaying content.
-
-Slot styling is available through `v-slot="{ <propertyName> }"`, e.g.
-`v-slot="{ headingSlotClass }"`.
-
-The following properties are available:
-
-* `headingSlotClass: string[];` CSS class to use for the heading element. Only set for normal layout (avoid heading otherwise). Use with `:class="headingSlotClass"`.
--->
+                <!--
+                @slot Slot for displaying content. Slot styling is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ headingSlotClass }"`.
+                @binding {string[]} headingSlotClass CSS class to use for the heading element. Only set for normal layout (avoid heading otherwise). Use with `:class="headingSlotClass"`.
+                -->
                 <slot v-bind="layout === 'short' ? {} : { headingSlotClass: headingClass }"></slot>
             </i-flex-item>
         </i-flex>
