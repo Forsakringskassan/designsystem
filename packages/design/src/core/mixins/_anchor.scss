@@ -15,3 +15,17 @@ $anchor-underline-width: 2px !default;
         text-decoration-color: var(--f-border-color-link-hover);
     }
 }
+
+@mixin anchor-discrete($standalone: true) {
+    @if $standalone {
+        @include anchor;
+    }
+
+    color: var(--f-text-color-link-discrete);
+    text-decoration-color: var(--f-border-color-link-discrete);
+
+    &:hover {
+        color: var(--f-text-color-link-discrete-hover);
+        text-decoration-color: var(--f-text-color-link-discrete-hover);
+    }
+}
