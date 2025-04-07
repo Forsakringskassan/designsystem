@@ -72,6 +72,9 @@ components/validation/fvalidationform.html
 components/validation/fvalidationgroup.html
 components/validation/validators.html
 functions/config.html
+functions/cypress/pageobjects/FFileItemPageObject/filename.html
+functions/cypress/pageobjects/FFileItemPageObject/index.html
+functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html
 functions/cypress/pageobjects/FLabelPageObject/description.html
 functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html

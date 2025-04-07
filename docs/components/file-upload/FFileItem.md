@@ -35,3 +35,7 @@ FFileItemIcons.vue
 :::api
 vue:FFileItem
 :::
+
+## Relaterat
+
+- {@link FFileItemPageObject FFileItemPageObject}
