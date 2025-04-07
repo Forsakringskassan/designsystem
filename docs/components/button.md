@@ -105,14 +105,14 @@ Knappar i `button-group`:
 <div class="button-group">
     <button class="button button-group__item button--primary" type="button">
         <svg aria-hidden="true" class="icon button__icon" focusable="false">
-            <use xlink:href="#f-icon-success" />
+            <use href="#f-icon-success" />
         </svg>
         <span>Knapp 1 i grupp</span>
     </button>
 
     <button class="button button-group__item button--secondary" type="button">
         <svg aria-hidden="true" class="icon button__icon" focusable="false">
-            <use xlink:href="#f-icon-error" />
+            <use href="#f-icon-error" />
         </svg>
         <span>Knapp 2 i grupp</span>
     </button>
