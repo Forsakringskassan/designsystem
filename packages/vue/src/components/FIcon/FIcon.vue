@@ -2,7 +2,7 @@
     <!-- [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]-->
     <svg v-bind="$attrs" focusable="false" class="icon" :class="[spriteKey, ...modifiers]" :aria-hidden="ariaHidden">
         <slot></slot>
-        <use :xlink:href="spriteId" />
+        <use :href="spriteId" />
     </svg>
 </template>
 
