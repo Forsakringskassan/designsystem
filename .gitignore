@@ -6,6 +6,7 @@ node_modules/
 .eslintcache
 build/
 dist/
+docs/examples/files/
 public/
 temp/
 *.tsbuildinfo
