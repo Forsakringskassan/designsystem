@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-48184b.json"
+            href="../../search-data-c1a550.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-l0ypm9JGLzve8UjBgSuMFSbTeByukfiuAUsbElI04gj4AhFI8qADa0629Go4KfHq"
             id="search-data"
         />
     </head>
@@ -820,19 +820,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/0eb1bd47330716b602f5585abd25a1af49a1df55/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/668d4e9d26e3aaf120b1f201edd1157dac68c553/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/0eb1bd47330716b602f5585abd25a1af49a1df55/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/668d4e9d26e3aaf120b1f201edd1157dac68c553/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/0eb1bd47330716b602f5585abd25a1af49a1df55/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/668d4e9d26e3aaf120b1f201edd1157dac68c553/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -2137,7 +2137,7 @@ Requires <code>selectable</code> to be set.</p>
                             
                         </dt>
                         <dd>
-                            <p>Slot for table row.</p>
+                            <p>Slot for table row. The row object is available through <code>v-slot=&quot;{ &lt;propertyName&gt; }&quot;</code>, e.g. <code>v-slot=&quot;{ row }&quot;</code>.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
                             <li><code>row: unknown</code></li>
@@ -2159,7 +2159,7 @@ Requires <code>selectable</code> to be set.</p>
                             <p>Slot for expandable table row.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>expandableRow: unknown</code></li><li><code>parentRow: unknown</code></li>
+                            <li><code>expandableRow: ListItem</code> <span role="presentation">&mdash;</span> The object to be visualized.</li><li><code>parentRow: ListItem</code> <span role="presentation">&mdash;</span> The parent row of the expandable rows.</li>
                             </ul>
                             
                         </dd>
@@ -2205,9 +2205,9 @@ Requires <code>selectable</code> to be set.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/668d4e9d26e3aaf120b1f201edd1157dac68c553">668d4e9</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 17:36
+        2025-04-07 17:54
 </div>
 <div class="toolbar__item">
     <form id="version">
