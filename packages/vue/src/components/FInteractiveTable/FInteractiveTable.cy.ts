@@ -80,6 +80,36 @@ function createComponent(template: string = defaultTemplate): DefineComponent {
     });
 }
 
+it("should move focus to next row (circular) with arrow-down-key", () => {
+    cy.mount(createComponent());
+    table.row(0).focus();
+    table.row(0).should("have.focus");
+    table.row(0).type("{downArrow}");
+
+    table.row(1).should("have.focus");
+    table.row(1).type("{downArrow}");
+
+    table.row(2).should("have.focus");
+    table.row(2).type("{downArrow}");
+
+    table.row(0).should("have.focus");
+});
+
+it("should move focus to previous row (circular) with arrow-up-key", () => {
+    cy.mount(createComponent());
+    table.row(2).focus();
+    table.row(2).should("have.focus");
+    table.row(2).type("{upArrow}");
+
+    table.row(1).should("have.focus");
+    table.row(1).type("{upArrow}");
+
+    table.row(0).should("have.focus");
+    table.row(0).type("{upArrow}");
+
+    table.row(2).should("have.focus");
+});
+
 it("should pre-select checkboxes", () => {
     cy.mount(createComponent());
     table.columnItem(1).checkbox().isSelected().should("be.true");

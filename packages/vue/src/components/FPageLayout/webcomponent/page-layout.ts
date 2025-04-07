@@ -1,3 +1,6 @@
+/* include typescript declarations for vite static asset handling (e.g. `?raw`) */
+/// <reference types="vite/client" />
+
 import {
     VAR_NAME_AREA,
     VAR_NAME_ATTACH_PANEL,
@@ -122,5 +125,11 @@ export class PageLayout extends HTMLElement {
                 this.#elements[slot] = element;
             }
         }
+
+        /* allow slots to settle before we dispatch the update event otherwise
+         * the updated data will not yet be available */
+        setTimeout(() => {
+            this.dispatchEvent(new CustomEvent("update"));
+        }, 0);
     }
 }

@@ -24,7 +24,7 @@ type Emit<T> = ((evt: "expand", row: T) => void) &
  */
 export function useExpandableTable<T extends object>(
     expandableAttribute: string,
-    keyAttribute: string,
+    keyAttribute: keyof T,
     describedby: string | undefined,
     emit: Emit<T>,
     slots: Slots,
@@ -42,7 +42,7 @@ export function useExpandableTable<T extends object>(
     function toggleExpanded(row: T): void {
         if (isExpanded(row)) {
             expandedRows.value = expandedRows.value.filter(
-                (it) => !itemEquals(it, row, keyAttribute as keyof T),
+                (it) => !itemEquals(it, row, keyAttribute),
             );
             emit("collapse", row);
         } else {
@@ -52,7 +52,7 @@ export function useExpandableTable<T extends object>(
     }
 
     function isExpanded(row: T): boolean {
-        return includeItem(row, expandedRows.value, keyAttribute as keyof T);
+        return includeItem(row, expandedRows.value, keyAttribute);
     }
 
     function rowAriaExpanded(row: T): boolean | undefined {
@@ -97,11 +97,14 @@ export function useExpandableTable<T extends object>(
     function expandableRows(row: T): T[] | undefined {
         const expandableRows = row[expandableAttribute as keyof T];
 
-        if (typeof expandableRows === "undefined") {
+        if (expandableRows === undefined || expandableRows === null) {
             return undefined;
         }
         if (!Array.isArray(expandableRows)) {
-            throw new Error(`Expandable rows must be a ListArray`);
+            throw new Error(`Expandable rows must be an array`);
+        }
+        if (expandableRows.length === 0) {
+            return undefined;
         }
 
         return expandableRows;

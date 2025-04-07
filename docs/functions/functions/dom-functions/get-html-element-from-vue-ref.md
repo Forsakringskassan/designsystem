@@ -8,8 +8,8 @@ Gets an `HTMLElement` a ref, provided it is defined and not an array.
 
 ## API
 
-```ts
-export function getHTMLElementFromVueRef(ref: unknown): HTMLElement | never;
+```ts nocompile
+function getHTMLElementFromVueRef(ref: unknown): HTMLElement | never;
 ```
 
 - `ref` - The ref to extract the `HTMLElement` from.
@@ -33,8 +33,21 @@ Given a Vue SFC such as:
 `getHTMLElementFromVueRef` can be called as following:
 
 ```ts
-const element = getHTMLElementFromVueRef(this.$refs.myParagraph);
-//    ^~~~~~~ HTMLElement
+import { defineComponent } from "vue";
+import { getHTMLElementFromVueRef } from "@fkui/vue";
+
+defineComponent({
+    methods: {
+        dummy() {
+            /* --- cut above --- */
+
+            const element = getHTMLElementFromVueRef(this.$refs.myParagraph);
+            //    ^~~~~~~ HTMLElement
+
+            /* --- cut below --- */
+        },
+    },
+});
 ```
 
 `element` will be a guaranteed instance of `HTMLELement`.

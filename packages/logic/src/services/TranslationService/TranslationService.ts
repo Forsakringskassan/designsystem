@@ -15,4 +15,5 @@ class TranslationServiceImpl implements TranslationServiceInterface {
  * @public
  */
 export const TranslationService: TranslationServiceInterface =
+    /* @__PURE__ */
     new TranslationServiceImpl();

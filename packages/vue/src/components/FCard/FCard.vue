@@ -41,6 +41,11 @@ async function onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>
         return;
     }
 
+    // ignore validity events triggered by child components
+    if (detail.elementId !== props.id) {
+        return;
+    }
+
     if (!props.focusRef) {
         throw new Error(
             "Element to focus on when card is invalid (`focusRef`) is required when using card validation.",

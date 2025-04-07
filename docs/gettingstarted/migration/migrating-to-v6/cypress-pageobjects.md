@@ -29,7 +29,7 @@ Använder du TypeScript med Cypress behöver du sätta två inställningar i din
 {
     "compilerOptions": {
         "module": "node16",
-        "moduleResolution": "node16",
+        "moduleResolution": "bundler",
         "target": "es6",
         "lib": ["es6", "dom"],
         "types": ["cypress", "node"]
@@ -37,6 +37,12 @@ Använder du TypeScript med Cypress behöver du sätta två inställningar i din
     "include": ["**/*.ts"]
 }
 ```
+
+`moduleResolution` kan sättas till något av:
+
+- `bundler`
+- `node16`
+- `nodenext`
 
 ## `trimmedText()`
 
@@ -56,6 +62,15 @@ Specifikt, för varje pageobjekt kan `.trimmedText().should(..)` ersättas med:
 - För `FLabelPageObject` ersätt med `.el().should(..)`
 - För `FRadioFieldPageObject` ersätt med `.label().should(..)`.
 - För `FSelectFieldPageObject` ersätt med `.selectedOption().should(..)`.
+
+## `FLabelPageobject`
+
+Metoden `discreteDescription` har ändrat namn till `formatDescription` för att matcha motsvarande ändringar på FLabel komponenten.
+
+```diff
+-label.discreteDescription().should("have.text", "...");
++label.formatDescription().should("have.text", "...");
+```
 
 ## `FLoaderPageobject`
 
@@ -102,7 +117,7 @@ Metoden `ariaValueNow()` har ändrats till `value()` och returnerar nu `number` 
 progressbar.ariaValueNow().should("equal", "40");
 ```
 
-```ts compare=progressbar-ariavaluenow
+```ts compare=progressbar-ariavaluenow nocompile
 progressbar.value().should("equal", 40);
 ```
 

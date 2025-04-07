@@ -9,9 +9,9 @@ There is also support for focusing Vue components and `$refs` in Vue components.
 
 ## API
 
-```ts
+```ts nocompile
 // @fkui/logic
-export function focus(
+function focus(
     element: Element | null | undefined,
     options: boolean | FocusOptions = {},
 ): void;
@@ -21,7 +21,7 @@ export function focus(
 - `options` - Focus options. If you pass boolean `true` or `false` it sets the `force` option.
 
 ```ts
-export interface FocusOptions {
+interface FocusOptions {
     force?: boolean;
     preventScroll?: boolean;
     scrollToTop?: boolean;
@@ -32,12 +32,9 @@ export interface FocusOptions {
 - `preventScroll` - By default the element is scrolled into view. Set this to `true` to prevent this behavior. See full description of [`preventScroll` at MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#parameters)
 - `scrollToTop` - By default the element is scrolled into view centered vertically. Set this to `true` to scroll such that the elements top is at the top of the viewport. It will utilize the `scrollIntoView` function, see full description of [`scrollIntoView` at MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
 
-```ts
+```ts nocompile
 // @fkui/vue
-export function focus(
-    element: unknown,
-    options: boolean | FocusOptions = {},
-): boolean;
+function focus(element: unknown, options: boolean | FocusOptions = {}): boolean;
 ```
 
 - `element` - Element to focus.

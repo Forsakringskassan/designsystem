@@ -1,4 +1,4 @@
-import { ValidationService } from "../ValidationService";
+import { type Validator } from "../Validator";
 import { allowListValidator } from "./AllowListValidator";
 import { bankAccountNumberValidator } from "./BankAccountNumberValidator";
 import { bankgiroValidator } from "./BankgiroValidator";
@@ -52,38 +52,45 @@ export {
 } from "./InvalidWeekdaysValidator";
 export { type AllowListValidatorConfig } from "./AllowListValidator";
 
-ValidationService.registerValidator(allowListValidator);
-ValidationService.registerValidator(bankAccountNumberValidator);
-ValidationService.registerValidator(bankgiroValidator);
-ValidationService.registerValidator(blacklistValidator);
-ValidationService.registerValidator(clearingNumberValidator);
-ValidationService.registerValidator(currencyValidator);
-ValidationService.registerValidator(dateFormatValidator);
-ValidationService.registerValidator(dateValidator);
-ValidationService.registerValidator(decimalValidator);
-ValidationService.registerValidator(emailValidator);
-ValidationService.registerValidator(greaterThanValidator);
-ValidationService.registerValidator(integerValidator);
-ValidationService.registerValidator(invalidDatesValidator);
-ValidationService.registerValidator(invalidWeekdaysValidator);
-ValidationService.registerValidator(lessThanValidator);
-ValidationService.registerValidator(matchesValidator);
-ValidationService.registerValidator(maxDateValidator);
-ValidationService.registerValidator(maxLengthValidator);
-ValidationService.registerValidator(maxValueValidator);
-ValidationService.registerValidator(minDateValidator);
-ValidationService.registerValidator(minLengthValidator);
-ValidationService.registerValidator(minValueValidator);
-ValidationService.registerValidator(numberValidator);
-ValidationService.registerValidator(organisationsnummerValidator);
-ValidationService.registerValidator(percentValidator);
-ValidationService.registerValidator(personnummerFormatValidator);
-ValidationService.registerValidator(personnummerLuhnValidator);
-ValidationService.registerValidator(personnummerNotSame);
-ValidationService.registerValidator(personnummerOlder);
-ValidationService.registerValidator(personnummerYounger);
-ValidationService.registerValidator(phoneNumberValidator);
-ValidationService.registerValidator(plusgiroValidator);
-ValidationService.registerValidator(postalCodeValidator);
-ValidationService.registerValidator(requiredValidator);
-ValidationService.registerValidator(whitelistValidator);
+/**
+ * List of all available builtin validators.
+ *
+ * @public
+ */
+export const availableValidators: Validator[] = [
+    allowListValidator,
+    bankAccountNumberValidator,
+    bankgiroValidator,
+    blacklistValidator,
+    clearingNumberValidator,
+    currencyValidator,
+    dateFormatValidator,
+    dateValidator,
+    decimalValidator,
+    emailValidator,
+    greaterThanValidator,
+    integerValidator,
+    invalidDatesValidator,
+    invalidWeekdaysValidator,
+    lessThanValidator,
+    matchesValidator,
+    maxDateValidator,
+    maxLengthValidator,
+    maxValueValidator,
+    minDateValidator,
+    minLengthValidator,
+    minValueValidator,
+    numberValidator,
+    organisationsnummerValidator,
+    percentValidator,
+    personnummerFormatValidator,
+    personnummerLuhnValidator,
+    personnummerNotSame,
+    personnummerOlder,
+    personnummerYounger,
+    phoneNumberValidator,
+    plusgiroValidator,
+    postalCodeValidator,
+    requiredValidator,
+    whitelistValidator,
+];

@@ -14,6 +14,12 @@
 
                 <i-flex-item align="bottom" grow>
                     <template v-if="isOpen">
+                        <!--
+                            @slot Use this slot to customize the content displayed for the "step of" information.
+                            @binding {string} headerClass Class to be applied to the step-of information.
+                            @binding {number} stepNumber Current step number.
+                            @binding {number} totalSteps The total number of steps in this wizard.
+                        -->
                         <slot
                             name="step-of"
                             v-bind="{ headerClass: 'wizard-step__header__step-of', stepNumber, totalSteps }"
@@ -73,6 +79,7 @@
                 @submit="onSubmit"
             >
                 <template #error-message>
+                    <!-- @slot Use this slot to customize the error message displayed when validation fails. -->
                     <slot name="error-message">
                         {{ $t("fkui.wizard-step.errorlist.title", "Oj, du har glömt att fylla i något. Gå till:") }}
                     </slot>
@@ -88,6 +95,11 @@
                             type="submit"
                             class="button button--primary button-group__item button--large"
                         >
+                            <!--
+                                @slot Use this slot to customize the text of the "Next" button.
+                                @binding {number} stepNumber Current step number (starts at 1).
+                                @binding {number} totalSteps The total number of steps in this wizard.
+                            -->
                             <slot name="next-button-text" v-bind="{ stepNumber, totalSteps }">
                                 <template v-if="isFinalStep">
                                     {{ $t("fkui.wizard-step.button.next.text-final", "Gå vidare och granska") }}
@@ -106,6 +118,11 @@
                             class="button button--secondary button-group__item button--large"
                             @click="onCancel"
                         >
+                            <!--
+                                @slot Use this slot to customize the text of the "Cancel" button.
+                                @binding {number} stepNumber Current step number (starts at 1).
+                                @binding {number} totalSteps The total number of steps in this wizard.
+                            -->
                             <slot name="cancel-button-text" v-bind="{ stepNumber, totalSteps }">
                                 {{ $t("fkui.wizard-step.button.cancel.text", "Avbryt") }}
                             </slot>
@@ -143,6 +160,10 @@ export default defineComponent({
     mixins: [TranslationMixin],
     inheritAttrs: true,
     props: {
+        /**
+         * The title of the wizard step.
+         * This will be displayed as the step's header.
+         */
         title: {
             type: String,
             required: true,

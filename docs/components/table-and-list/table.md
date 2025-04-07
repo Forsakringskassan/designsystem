@@ -48,6 +48,36 @@ FInteractiveTableInputExample.vue
 
 Även dropplista har stöd för att användas i tabellcell. I de fall en obligatorisk dropplista lämnas tom visas samma text som platshållartexten tillsammas med ikon och röd ram.
 
+### Välja rader
+
+En interaktiv tabell med `selectable` prop lägger till kryssrutor som kan användas för att välja rader.
+När en rad väljs uppdateras `v-model` med referens till alla rader som är valda.
+
+```diff
+-<f-interactive-table :rows="myRows">
+ <f-interactive-table
++   v-model="selectedRows"
+    :rows="myRows"
++   selectable
+ >
+```
+
+Du kan även lägga till eller ta bort valda rader genom att ändra referenserna som skickas till `v-model`.
+På så sätt kan du till exempel förvälja vissa rader eller skapa bulk-åtgärder som väljer vissa typer av rader.
+Notera att `v-model` kräver referenser till objekt som du skickat till `rows` prop för att kunna välja dessa.
+
+```ts
+const rows = [
+    { name: "Banan", type: "Frukt" },
+    { name: "Äpple", type: "Frukt" },
+    { name: "Vitkål", type: "Grönsak" },
+    { name: "Spenat", type: "Grönsak" },
+];
+
+// Preselect all rows that are fruit type.
+const selectedRows = rows.filter((row) => row.type === "Frukt");
+```
+
 ### Expanderbara rader
 
 Med expanderbara rader går det att skapa ytterligare tabellrader som visas när man trycker på en expanderbar rad.
@@ -95,6 +125,27 @@ För att istället skapa expanderbara rader med valfritt innehåll används `exp
 ```
 
 Observera att det inte är rekommenderat att skapa för komplext expanderat innehåll, så som att placera ytterligare expanderbara tabeller inuti.
+
+## Ange nyckel (`keyAttribute`)
+
+Med `keyAttribute` så kan du ange namnet för en nyckel (`key`) som finns i varje rad-ojekt och innehåller ett värde som kan användas för att identifiera olika rader.
+Om detta anges, så måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.
+
+Att använda `keyAttribute` är valfritt och behövs inte anges om du inte har nåt naturligt id att ange för dina rader.
+Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande så måste du använda `keyAttribute` för att aktuell status för raderna ska kunna bibehållas.
+
+```diff
+-<f-interactive-table :rows="myRows">
++<f-interactive-table :rows="myRows" key-attribute="id">
+```
+
+```ts
+// The key "id" is used for "keyAttribute".
+const myRows = [
+    { id: "a", name: "Banan" },
+    { id: "b", name: "Äpple" },
+];
+```
 
 ## Tabellrubrik
 

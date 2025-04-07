@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## 6.3.1 (2025-03-25)
+
+### Bug Fixes
+
+* **@fkui/test-utils, @fkui/tsconfig:** use `moduleResolution` `bundler` instead of `node16` (refs SFKUI-6500) effa960
+* **@fkui/vue:** move focus with arrow keys in `FInteractiveTable` (fixes SFKUI-7136) 2231d03
+* **@fkui/vue:** set `keyAttribute` as optional for `FDataTable` (fixes SFKUI-6936) 3c64d99, closes #158
+* **@fkui/vue:** set `keyAttribute` as optional for `FInteractiveTable` (fixes SFKUI-6936) 2f8d465, closes #158
+* **@fkui/vue:** set `keyAttribute` as optional for `FList` (fixes SFKUI-6936) bb28be4, closes #158
+* **deps:** update dependency i18next to v24.2.3 ac251de
+* stage `publiccode.yml` after prepare (refs SFKUI-6500) fe63716
+
+## 6.3.0 (2025-03-11)
+
+### Features
+
+* **@fkui/date, @fkui/i18next-translate, @fkui/logic, @fkui/test-utils, @fkui/tsconfig, @fkui/vue-labs, @fkui/vue:** new package `@fkui/tsconfig` (refs SFKUI-6500) e036065
+* **@fkui/design, @fkui/theme-default:** semantic tokens label (refs SFKUI-6835) c249d5e
+* **@fkui/theme-default, @fkui/vue:** new component `FResizePane` (refs SFKUI-6993) d01b0a1
+* **@fkui/vue-labs:** `@fkui/vue-labs/pageobject` moved to `@fkui/vue-labs/cypress` (refs SFKUI-6500) 1676ebf
+* **@fkui/vue:** set colors on `FPageLayout` areas (refs SFKUI-6500) 37d6370
+
+### Bug Fixes
+
+* **@fkui/design:** anchor underline offset relative to parent element. [#345](undefined/Forsakringskassan/designsystem/issues/345) (refs SB-4982) 1041436
+* **@fkui/vue:** `FInteractiveTable` do not render as expandable row if empty (fixes SFKUI-7078) 2fdf973, closes #333
+* **@fkui/vue:** `FInteractiveTable` set selected on `v-model` change (fixes SFKUI-7052) f8b8af3, closes #293
+* **@fkui/vue:** fix `FPageLayout` size on IOS (refs SFKUI-6500) 69bbec5
+* **@fkui/vue:** remove `tabindex` from `FList` `ul` element (fixes SFKUI-5962) fb7ba82
+* **@fkui/vue:** text field components allow null model value (fixes SFKUI-7076) 840d200, closes #316
+* **deps:** update dependency core-js to v3.41.0 5c79e8b
+
 ## 6.2.0 (2025-02-28)
 
 ### Features

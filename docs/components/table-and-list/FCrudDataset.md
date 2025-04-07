@@ -2,7 +2,9 @@
 title: Datamängdredigerare
 status: Produktionsklar
 layout: component
-component: FCrudDataset
+component:
+    - FCrudDataset
+    - FCrudButton
 ---
 
 Datamändgredigeraren används för att erbjuda användare funktionerna "lägg till", "ändra" och "ta bort" i en datamängd.
@@ -33,6 +35,11 @@ Callback anropas innan modalen visas.
 ```
 
 ```ts
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface MyInterface {}
+
+/* --- cut above --- */
+
 function onBeforeCreate(): MyInterface {
     return {
         /* ... */
@@ -94,6 +101,14 @@ FCrudDatasetSortListExample.vue
 
 ## API
 
+### `FCrudDataset`
+
 :::api
 vue:FCrudDataset
+:::
+
+### `FCrudButton`
+
+:::api
+vue:FCrudButton
 :::

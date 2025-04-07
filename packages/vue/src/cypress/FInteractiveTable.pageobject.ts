@@ -24,6 +24,10 @@ export class FInteractiveTablePageObject implements BasePageObject {
         return cy.get(`${this.selector} tbody tr`);
     }
 
+    public row(index: number): DefaultCypressChainable {
+        return cy.get(`${this.selector} tbody tr:nth(${index})`);
+    }
+
     public headersRow(): DefaultCypressChainable {
         return cy.get(`${this.selector} thead th`);
     }

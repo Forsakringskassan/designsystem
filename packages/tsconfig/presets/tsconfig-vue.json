@@ -3,6 +3,8 @@
     "display": "@fkui/tsconfig/vue",
 
     "compilerOptions": {
+        "module": "esnext",
+        "moduleResolution": "bundler",
         "emitDeclarationOnly": true,
         "skipLibCheck": true
     },

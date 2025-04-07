@@ -15,6 +15,7 @@ import {
 } from "vue";
 import { useSlotUtils } from "../../composables";
 import { TableScroll, tableScrollClasses, itemEquals, includeItem, renderSlotText } from "../../utils";
+import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import {
     FTableColumnData,
     FTableColumnSort,
@@ -38,6 +39,7 @@ const slots = useSlots();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
 const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
+const internalKey = getInternalKey<T>();
 
 const activeRow = ref<T | undefined>(undefined);
 const columns = ref<FTableColumnData[]>([]);
@@ -70,7 +72,8 @@ const props = defineProps({
      */
     keyAttribute: {
         type: String,
-        required: true,
+        required: false,
+        default: undefined,
     },
     /**
      * Attribute of expandable content in rows.
@@ -121,7 +124,8 @@ const props = defineProps({
         },
     },
     /**
-     * V-model will bind to value containing selected rows.
+     * Currently selected rows.
+     * Requires `selectable` to be set.
      */
     modelValue: {
         type: Array as PropType<T[] | undefined>,
@@ -183,7 +187,7 @@ const emit = defineEmits<{
 
 const expandableTable: ExpandableTable<T> = useExpandableTable(
     props.expandableAttribute,
-    props.keyAttribute,
+    internalKey,
     props.expandableDescribedby,
     emit,
     slots,
@@ -201,6 +205,8 @@ const {
     hasExpandableContent,
 } = expandableTable;
 
+const tbodyElement = useTemplateRef<HTMLElement>("tbodyElement");
+
 const hasCaption = computed((): boolean => {
     return hasSlot("caption", {}, { stripClasses: [] });
 });
@@ -210,12 +216,12 @@ const hasCheckboxDescription = computed((): boolean => {
      * only used when there is one or more rows present, if this is to be
      * called under other circumstances we need a stub object but this
      * should be good enough for now */
-    const firstRow = props.rows[0];
+    const firstRow = internalRows.value[0];
     return hasSlot("checkbox-description", { row: firstRow });
 });
 
 const isEmpty = computed((): boolean => {
-    return props.rows.length === 0;
+    return internalRows.value.length === 0;
 });
 
 const visibleColumns = computed((): FTableColumnData[] => {
@@ -253,6 +259,15 @@ const nbOfColumns = computed((): number => {
     return columnCount;
 });
 
+const internalRows = computed((): T[] => {
+    const { keyAttribute, expandableAttribute } = props;
+
+    if (isExpandableTable) {
+        return setInternalKeys(props.rows, keyAttribute as K, expandableAttribute as K);
+    }
+    return setInternalKeys(props.rows, keyAttribute as K);
+});
+
 provide("addColumn", (column: FTableColumnData) => {
     columns.value = addColumn(columns.value, column);
 });
@@ -265,7 +280,7 @@ provide("textFieldTableMode", true);
 
 provide(
     "renderColumns",
-    computed(() => props.rows.length > 0),
+    computed(() => internalRows.value.length > 0),
 );
 
 watch(
@@ -307,14 +322,12 @@ function updateTr(tbodyElement: HTMLElement): void {
 }
 
 onUpdated(() => {
-    const tbodyElement = useTemplateRef<HTMLElement>("tbodyElement");
     if (tbodyElement.value) {
         updateTr(tbodyElement.value);
     }
 });
 
 onMounted(() => {
-    const tbodyElement = useTemplateRef<HTMLElement>("tbodyElement");
     if (tbodyElement.value) {
         updateTr(tbodyElement.value);
     }
@@ -337,15 +350,15 @@ function isActive(row: T): boolean {
     if (!props.showActive) {
         return false;
     }
-    return itemEquals(row, activeRow.value, props.keyAttribute);
+    return itemEquals(row, activeRow.value, internalKey);
 }
 
 function isSelected(row: T): boolean {
-    return includeItem(row, selectedRows.value, props.keyAttribute as keyof T);
+    return includeItem(row, selectedRows.value, internalKey);
 }
 
 function onKeydown(event: KeyboardEvent, index: number): void {
-    onKeydown2({ rows: props.rows, tr, activate }, event, index);
+    onKeydown2({ rows: internalRows.value, tr, activate }, event, index);
 }
 
 function onClick(event: MouseEvent, row: T): void {
@@ -366,7 +379,7 @@ function activate(row: T, tr: HTMLElement | null): void {
         toggleExpanded(row);
     }
 
-    if (!itemEquals(row, activeRow.value, props.keyAttribute)) {
+    if (!itemEquals(row, activeRow.value, internalKey)) {
         emit("change", row);
         setActiveRow(row);
 
@@ -388,8 +401,8 @@ function rowDescription(row: T): string | undefined {
 }
 
 function onSelect(row: T): void {
-    if (includeItem(row, selectedRows.value, props.keyAttribute as keyof T)) {
-        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, props.keyAttribute as keyof T));
+    if (includeItem(row, selectedRows.value, internalKey)) {
+        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
         emit("unselect", row);
     } else {
         selectedRows.value.push(row);
@@ -406,7 +419,7 @@ function setSelectedRows(): void {
         return;
     }
     selectedRows.value = props.modelValue.filter((row: T) => {
-        return includeItem<T, K>(row, props.rows, props.keyAttribute as K);
+        return includeItem<T, K>(row, internalRows.value, internalKey as K);
     });
 }
 
@@ -427,11 +440,7 @@ function rowClasses(row: T, index: number): string[] {
 }
 
 function rowKey(row: T): string {
-    const key = row[props.keyAttribute as keyof T];
-    if (typeof key === "undefined") {
-        throw new Error(`Key attribute [${props.keyAttribute}]' is missing in row`);
-    }
-    return String(key);
+    return String(row[internalKey]);
 }
 
 function columnClasses(column: FTableColumnData): string[] {
@@ -472,17 +481,17 @@ function callbackAfterItemAdd(item: T): void {
 }
 
 function callbackBeforeItemDelete(item: T): void {
-    if (props.rows.length === 0) {
+    if (internalRows.value.length === 0) {
         return;
     }
     // Activate the item above the deleted one if it exists
-    let targetIndex = props.rows.indexOf(item) - 1;
-    if (targetIndex < 0 && props.rows.length > 1) {
+    let targetIndex = internalRows.value.indexOf(item) - 1;
+    if (targetIndex < 0 && internalRows.value.length > 1) {
         targetIndex = 1;
     } else if (targetIndex < 0) {
         targetIndex = 0;
     }
-    activate(props.rows[targetIndex], tr.value[targetIndex]);
+    activate(internalRows.value[targetIndex], tr.value[targetIndex]);
 }
 
 function escapeNewlines(value: string): string {
@@ -492,7 +501,7 @@ function escapeNewlines(value: string): string {
 function updateActiveRowFromVModel(): void {
     if (props.active === undefined) {
         setActiveRow(undefined);
-    } else if (!itemEquals(props.active, activeRow.value, props.keyAttribute)) {
+    } else if (!itemEquals(props.active, activeRow.value, internalKey)) {
         setActiveRow(props.active as T);
     }
 }
@@ -544,7 +553,7 @@ function setActiveRow(row: T | undefined): void {
                 </tr>
             </thead>
             <tbody ref="tbodyElement" :key="tbodyKey">
-                <template v-for="(row, index) in rows" :key="rowKey(row)">
+                <template v-for="(row, index) in internalRows" :key="rowKey(row)">
                     <tr
                         :class="rowClasses(row, index)"
                         :aria-label="rowDescription(row)"

@@ -59,6 +59,7 @@ components/page-layout/application-layout.html
 components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
 components/page-layout/fpagelayout.html
+components/page-layout/fresizepane.html
 components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
@@ -111,6 +112,7 @@ functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html
 functions/functions/use-area-data.html
 functions/functions/use-modal.html
+functions/functions/use-resize.html
 functions/helpers/accessibility.html
 functions/helpers/densify.html
 functions/helpers/index.html

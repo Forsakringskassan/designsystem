@@ -1,0 +1,76 @@
+publiccodeYmlVersion: "0.4"
+name: Försäkringskassans designsystem
+url: https://github.com/Forsakringskassan/designsystem.git
+landingURL: https://github.com/Forsakringskassan/designsystem
+softwareVersion: 6.3.1
+releaseDate: 2025-03-25
+logo: docs/src/assets/images/fk-logo-primary.svg
+platforms:
+    - web
+categories:
+    - design-system
+    - design
+usedBy:
+    - Försäkringskassan
+    - Bolagsverket
+developmentStatus: stable
+softwareType: library
+description:
+    en:
+        localisedName: FK Design System
+        shortDescription: The main objective of the design system is to create
+            accessible reusable components.
+        longDescription: >-
+            FK Design System is developed by the Swedish Social Insurance Agency
+            (Försäkringskassan).
+
+            The main objective of the design system is to create accessible reusable
+            components. It is composed of the component framework along with related
+            design documentation. We aim for all components to fulfill WCAG 2.2 AA (or
+            higher) and the EU accessibility directive (EN301549). All components are
+            tested both manually and with automated tools on a large range of devices.
+
+            The component framework was initially released internally in October 2019.
+            It has been continuously evolved since then with more components added.
+        documentation: https://designsystem.forsakringskassan.se/
+        apiDocumentation: https://designsystem.forsakringskassan.se/
+        features:
+            - Accessible Vue Components
+            - Responsive design
+            - Design guidelines
+            - User input validation with error handling
+            - Functions / utils
+    sv-SE:
+        localisedName: Försäkringskassans designsystem
+        shortDescription:
+            Designsystemet förenklar och effektiviserar arbete med att
+            skapa sammanhållna och inkluderande digitala användargränssnitt.
+        longDescription:
+            Designsystemet förenklar och effektiviserar arbete med att
+            skapa sammanhållna och inkluderande digitala användargränssnitt. Det
+            består av komponenter, funktioner och designriktlinjer. Vi strävar efter
+            att alla komponenter ska uppfylla WCAG 2.2 AA (eller högre) och EU:s
+            tillgänglighetsdirektiv (EN301549). Komponenterna är testade både manuellt
+            och med hjälp av automatiserade verktyg på ett brett urval av enheter.
+        documentation: https://designsystem.forsakringskassan.se/
+        apiDocumentation: https://designsystem.forsakringskassan.se/
+        features:
+            - Tillgängliga Vue komponenter
+            - Responsiv design
+            - Designmönster
+            - Validering och felhantering
+            - Funktioner och verktyg
+legal:
+    license: MIT
+    repoOwner: Försäkringskassan
+maintenance:
+    type: internal
+    contacts:
+        - name: Team FKDS
+          email: designsystem@forsakringskassan.se
+          phone: ""
+          affiliation: ""
+localisation:
+    localisationReady: true
+    availableLanguages:
+        - sv-SE

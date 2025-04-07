@@ -30,9 +30,14 @@ TranslationService.changeProvider(provider);
 Om du använder Vue kom ihåg att aktivera {@link TranslationPlugin}:
 
 ```ts
+import { defineComponent } from "vue";
+
+const App = defineComponent({});
+
+/* --- cut above --- */
+
 import { createApp } from "vue";
 import { TranslationPlugin } from "@fkui/vue";
-import App from "./App.vue";
 
 const app = createApp(App);
 

@@ -1,6 +1,6 @@
 {
   "name": "@fkui/date",
-  "version": "6.2.0",
+  "version": "6.3.1",
   "description": "Date",
   "keywords": [
     "fkui",
@@ -54,10 +54,10 @@
     "dayjs": "1.11.13"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "28.0.2",
-    "@rollup/plugin-node-resolve": "16.0.0",
+    "@rollup/plugin-commonjs": "28.0.3",
+    "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-typescript": "12.1.2",
-    "rollup": "4.34.9"
+    "rollup": "4.39.0"
   },
   "engines": {
     "node": ">= 20",

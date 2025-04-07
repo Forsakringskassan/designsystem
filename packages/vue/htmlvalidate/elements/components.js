@@ -125,7 +125,7 @@ module.exports = defineMetadata({
             "key-attribute": ["/.+/"],
             scroll: ["horizontal", "vertical", "both", "none"],
         },
-        requiredAttributes: ["key-attribute", "rows"],
+        requiredAttributes: ["rows"],
         slots: ["default", "caption", "empty"],
         requiredSlots: ["default", "caption"],
     },
@@ -321,7 +321,7 @@ module.exports = defineMetadata({
         inherit: "ul",
         flow: true,
         phrasing: true,
-        requiredAttributes: ["items", "key-attribute"],
+        requiredAttributes: ["items"],
         attributes: {
             selectable: ["/^[a-zA-Z][\\w\\d-_.:]+$/", "", "false", "true"],
             value: ["/.*/"],
@@ -376,7 +376,7 @@ module.exports = defineMetadata({
             "expandable-describedby": ["/.+/"],
             scroll: ["horizontal", "vertical", "both", "none"],
         },
-        requiredAttributes: ["key-attribute", "rows"],
+        requiredAttributes: ["rows"],
         slots: [
             "default",
             "caption",
@@ -443,6 +443,26 @@ module.exports = defineMetadata({
         flow: true,
         requiredAttributes: ["aria-label"],
         permittedContent: [],
+    },
+
+    "f-resize-pane": {
+        flow: true,
+        attributes: {
+            min: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+                list: true,
+            },
+            max: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+                list: true,
+            },
+            initial: {
+                enum: ["/\\d+px/", "/\\d+%/"],
+            },
+            disabled: {
+                boolean: true,
+            },
+        },
     },
 
     "f-sort-filter-dataset": {
