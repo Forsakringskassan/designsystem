@@ -28,14 +28,14 @@
     "vue": "../../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -850,10 +850,10 @@
 <p>Check if slot is implemented by the user.</p>
 <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-b53bc1"
+                    id="example-6b1a58"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile"
                     data-language="typescript"
                 >
                     
@@ -904,7 +904,7 @@
                 </div>
             
                 <div
-                    id="example-9a5e2d"
+                    id="example-b011a4"
                     class="code-preview code-preview--default"
                     
                     
@@ -913,13 +913,12 @@
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>); <span class="hljs-comment">// --&gt; true</span>
 <span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;bar&quot;</span>); <span class="hljs-comment">// --&gt; false</span>
-<span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;baz&quot;</span>); <span class="hljs-comment">// --&gt; false</span>
-</code></pre>
+<span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;baz&quot;</span>); <span class="hljs-comment">// --&gt; false</span></code></pre>
                 </div>
             <p>If you use scoped slots you need to pass in the scope:</p>
 
                 <div
-                    id="example-f6af24"
+                    id="example-ad80ca"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -933,21 +932,20 @@
                 </div>
             
                 <div
-                    id="example-ed1254"
+                    id="example-0596dd"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>, { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;World&quot;</span> }); <span class="hljs-comment">// --&gt; true</span>
-</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>, { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;World&quot;</span> }); <span class="hljs-comment">// --&gt; true</span></code></pre>
                 </div>
             <p>By default text wrapped by the <code>sr-only</code> class is ignored.
 This can be changed by setting the <code>stripClasses</code> option to <code>[]</code></p>
 
                 <div
-                    id="example-e47d9b"
+                    id="example-347c06"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -963,7 +961,7 @@ This can be changed by setting the <code>stripClasses</code> option to <code>[]<
                 </div>
             
                 <div
-                    id="example-fe6915"
+                    id="example-57cb4e"
                     class="code-preview code-preview--default"
                     
                     
@@ -971,8 +969,7 @@ This can be changed by setting the <code>stripClasses</code> option to <code>[]<
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>); <span class="hljs-comment">// --&gt; false</span>
-<span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>, {}, { <span class="hljs-attr">stripClasses</span>: [] }); <span class="hljs-comment">// --&gt; true</span>
-</code></pre>
+<span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>, {}, { <span class="hljs-attr">stripClasses</span>: [] }); <span class="hljs-comment">// --&gt; true</span></code></pre>
                 </div>
             
 
@@ -995,9 +992,9 @@ This can be changed by setting the <code>stripClasses</code> option to <code>[]<
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

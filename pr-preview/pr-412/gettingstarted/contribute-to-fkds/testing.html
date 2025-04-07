@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -596,7 +596,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
 <p>Ibland kan detta orsaka konflikt med datatyper i Typescript:</p>
 
                 <div
-                    id="example-19de4e"
+                    id="example-c3b7d8"
                     class="code-preview code-preview--default"
                     
                     
@@ -604,14 +604,16 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getFullName</span>(<span class="hljs-params"><span class="hljs-attr">src</span>: <span class="hljs-title class_">MyComplexObject</span></span>): <span class="hljs-built_in">string</span> {
-    <span class="hljs-comment">/* ... */</span>
+    <span class="hljs-comment">/* do something */</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;...&quot;</span>;
 }
 </code></pre>
                 </div>
             <p>Överväg att ändra prototypen så den inte kräver mer än nödvändigt:</p>
 
                 <div
-                    id="example-9833a0"
+                    id="example-8854e5"
                     class="code-preview code-preview--default"
                     
                     
@@ -625,7 +627,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <p>alternativt:</p>
 
                 <div
-                    id="example-551904"
+                    id="example-afc6ef"
                     class="code-preview code-preview--default"
                     
                     
@@ -644,7 +646,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <p>Ytterligare ett alternativ är att skapa en funktion för att skapa upp objektet:</p>
 
                 <div
-                    id="example-54cb1b"
+                    id="example-b339a3"
                     class="code-preview code-preview--default"
                     
                     
@@ -682,7 +684,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <h4 id="foredra_testdata_i_direkt_anslutning_till_testfallet"><a class="header-anchor" href="#foredra_testdata_i_direkt_anslutning_till_testfallet">Föredra testdata i direkt anslutning till testfallet</a></h4><p>Testdata lägger vi i första hand i direkt anslutning till testfallet.</p>
 
                 <div
-                    id="example-8ba1d5"
+                    id="example-7ed848"
                     class="code-preview code-preview--default"
                     
                     
@@ -690,9 +692,16 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-keyword">const</span> data = [{ ... }, { ... }];
+    <span class="hljs-keyword">const</span> data = [
+        {
+            <span class="hljs-comment">/* ... */</span>
+        },
+        {
+            <span class="hljs-comment">/* ... */</span>
+        },
+    ];
     <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">func</span>(data);
-	<span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toHaveLength</span>(<span class="hljs-number">2</span>);
+    <span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toHaveLength</span>(<span class="hljs-number">2</span>);
 });
 </code></pre>
                 </div>
@@ -701,7 +710,7 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
 <h4 id="bryt_ut_stor_och_repetitiv_testdata"><a class="header-anchor" href="#bryt_ut_stor_och_repetitiv_testdata">Bryt ut stor och repetitiv testdata</a></h4><p>Om det inte går att minimera storleken på testdata eller den används frekvent bryt ut den till en separat fil.</p>
 
                 <div
-                    id="example-904b4b"
+                    id="example-e723db"
                     class="code-preview code-preview--default"
                     
                     
@@ -711,7 +720,14 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+import { twoItems } from &quot;./__fixtures__&quot;;</span>
 <span class="hljs-addition">+</span>
  it(&quot;x should y&quot;, () =&gt; {
-<span class="hljs-deletion">-    const data = [{ ... }, { ... }];</span>
+<span class="hljs-deletion">-    const data = [</span>
+<span class="hljs-deletion">-        {</span>
+<span class="hljs-deletion">-            /* ... */</span>
+<span class="hljs-deletion">-        },</span>
+<span class="hljs-deletion">-        {</span>
+<span class="hljs-deletion">-            /* ... */</span>
+<span class="hljs-deletion">-        },</span>
+<span class="hljs-deletion">-    ];</span>
 <span class="hljs-deletion">-    const result = func(data);</span>
 <span class="hljs-addition">+    const result = func(twoItems);</span>
      expect(result).toHaveLength(2);
@@ -721,7 +737,7 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
             <p>Filerna läggs med fördel i <code>__fixtures__</code>:</p>
 
                 <div
-                    id="example-9ac09a"
+                    id="example-17f520"
                     class="code-preview code-preview--default"
                     
                     
@@ -745,9 +761,9 @@ Stora mängder testdata distraherar från själva testfallet.</p>
 </ol>
 
                 <div
-                    id="example-abb5ef"
+                    id="example-fe2615"
                     class="code-preview code-preview--default"
-                    
+                    data-test="given-when-then"
                     
                     data-language="typescript"
                 >
@@ -762,7 +778,7 @@ Stora mängder testdata distraherar från själva testfallet.</p>
     });
 
     <span class="hljs-comment">/* when: the buton is clicked */</span>
-    wrapper.<span class="hljs-title function_">click</span>();
+    wrapper.<span class="hljs-title function_">trigger</span>(<span class="hljs-string">&quot;click&quot;</span>);
 
     <span class="hljs-comment">/* then: the callback should have been called */</span>
     <span class="hljs-title function_">expect</span>(spy).<span class="hljs-title function_">toHaveBeenCalled</span>();
@@ -775,28 +791,32 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
 <p>Dåligt:</p>
 
                 <div
-                    id="example-631107"
+                    id="example-3d7d9b"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;propName&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;propName&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-comment">/* ... */</span>
+});
 </code></pre>
                 </div>
             <p>Förklarar inte vad man förväntar sig av propen</p>
 <p>Bra:</p>
 
                 <div
-                    id="example-3462ab"
+                    id="example-1def56"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should emit submit event when clicked&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should emit submit event when clicked&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-comment">/* ... */</span>
+});
 </code></pre>
                 </div>
             <p>Motivering:
@@ -833,10 +853,10 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <!-- prettier-ignore -->
 
                 <div
-                    id="example-1b3383"
+                    id="example-f4cf3f"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -852,10 +872,10 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p>För en VueJS komponent, importera komponenten sist direkt från <code>.vue</code> filen:</p>
 
                 <div
-                    id="example-99e6eb"
+                    id="example-56eeda"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -865,7 +885,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p>Motivering: ordningen av imports gör det mer överskådligt och snabbare att greppa.</p>
 <h3 id="props"><a class="header-anchor" href="#props">Props</a></h3>
                 <div
-                    id="example-496880"
+                    id="example-27d665"
                     class="code-preview code-preview--default"
                     
                     
@@ -873,16 +893,17 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;props&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-comment">/* v--- denna testas inte här, den ligger under v-model */</span>
-    <span class="hljs-comment">/*describe(&quot;highlight&quot;, () =&gt; {
-
-	});*/</span>
-
-    <span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;items&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should do something&quot;</span>, <span class="hljs-function">() =&gt;</span> {});
+    <span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should do something&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-comment">/* ... */</span>
+        });
     });
 
-    <span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-function">() =&gt;</span> {});
+    <span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;bar&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should do something else&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-comment">/* ... */</span>
+        });
+    });
 });
 </code></pre>
                 </div>
@@ -897,7 +918,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <p>Motivering: genom att inte attacha till <code>body</code> så behöver vi inte lika mycket uppstädning mellan testfall</p>
 <h3 id="foredra_jest_spyon_over_jest_fn"><a class="header-anchor" href="#foredra_jest_spyon_over_jest_fn">Föredra <code>jest.spyOn</code> över <code>jest.fn()</code></a></h3>
                 <div
-                    id="example-a2eb25"
+                    id="example-bcd50b"
                     class="code-preview code-preview--default"
                     
                     
@@ -912,7 +933,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <h3 id="foredra_lokalt_scopad_wrapper_over_global"><a class="header-anchor" href="#foredra_lokalt_scopad_wrapper_over_global">Föredra lokalt scopad wrapper över global</a></h3><p>istället för:</p>
 
                 <div
-                    id="example-33cc9b"
+                    id="example-b6de64"
                     class="code-preview code-preview--default"
                     
                     
@@ -921,23 +942,23 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">let</span> wrapper;
 
-<span class="hljs-title function_">it</span>(.., <span class="hljs-function">() =&gt;</span> {
-    wrapper = <span class="hljs-title function_">shallowMount</span>(..);
+<span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should ..&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+    wrapper = <span class="hljs-title function_">shallowMount</span>(<span class="hljs-title class_">AwesomeComponent</span>);
 });
 </code></pre>
                 </div>
             <p>kör:</p>
 
                 <div
-                    id="example-c8f0ff"
+                    id="example-9e31dd"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(.., <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(..);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should ..&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(<span class="hljs-title class_">AwesomeComponent</span>);
 });
 </code></pre>
                 </div>
@@ -958,10 +979,10 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 <p>För att korrekt mocka och verifiera <code>console.log</code> använder du <code>jest.spyOn(..)</code>:</p>
 
                 <div
-                    id="example-3d6e84"
+                    id="example-1e98fc"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -997,7 +1018,7 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 <h2 id="pageobject_for_cypress"><a class="header-anchor" href="#pageobject_for_cypress">Pageobject för Cypress</a></h2><p>Vi skriver och levererar pageobject för alla publika komponenter och moduler.</p>
 <h3 id="mall"><a class="header-anchor" href="#mall">Mall</a></h3>
                 <div
-                    id="example-4d0f79"
+                    id="example-7a5fdc"
                     class="code-preview code-preview--default"
                     
                     
@@ -1038,7 +1059,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 <p>Istället för:</p>
 
                 <div
-                    id="example-605c63"
+                    id="example-4d0667"
                     class="code-preview code-preview--default"
                     
                     
@@ -1063,7 +1084,7 @@ Undvik arrow-funktion-som-property mönster:</p>
             <p>Använd vanliga klassmetoder:</p>
 
                 <div
-                    id="example-45e668"
+                    id="example-1b792c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1091,7 +1112,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 Skriv istället ihop selectorn med en template literal:</p>
 
                 <div
-                    id="example-c87173"
+                    id="example-c5c5a9"
                     class="code-preview code-preview--default"
                     
                     
@@ -1124,9 +1145,9 @@ Skriv istället ihop selectorn med en template literal:</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -972,14 +972,14 @@
         <p>Axios-fel mm hanteras om man har kodat på följande vis:</p>
 
                 <div
-                    id="example-9d86ab"
+                    id="example-2dc64b"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">bliFel</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">void</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">bliFel</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
     <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;http://example.net&quot;</span>);
     <span class="hljs-comment">// alternativt return axios.get(&#x27;http://example.net&#x27;);</span>
 }
@@ -988,7 +988,7 @@
             <p>Om man däremot har kodat felaktigt, enligt nedanstående exempel, kommer exceptions inte att fångas av denna plugin.</p>
 
                 <div
-                    id="example-aaa2ff"
+                    id="example-50fa75"
                     class="code-preview code-preview--default"
                     
                     
@@ -1003,14 +1003,21 @@
             <h2 id="options"><a class="header-anchor" href="#options">Options</a></h2><p>Plugin tar ett optional objekt med inställningar:</p>
 
                 <div
-                    id="example-4e0700"
+                    id="example-9770f7"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0">app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ErrorPlugin</span>, {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { createApp, defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ErrorPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title function_">defineComponent</span>({}));
+
+<span class="hljs-comment">/* --- cut above ---*/</span>
+
+app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ErrorPlugin</span>, {
     <span class="hljs-attr">captureWarnings</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-attr">logToConsole</span>: <span class="hljs-literal">true</span>,
 });
@@ -1047,9 +1054,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

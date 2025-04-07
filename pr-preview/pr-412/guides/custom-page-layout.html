@@ -28,14 +28,14 @@
     "vue": "../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -368,14 +368,16 @@ Anropet kan exempelvis göras från din <code>main.ts</code>eller i root-kompone
 Namnet som anges är vad som senare används i <code>layout</code>-propen till <code>FPageLayout</code>.</p>
 <h2 id="registrera_tema"><a class="header-anchor" href="#registrera_tema">Registrera tema</a></h2>
                 <div
-                    id="example-3e30f9"
+                    id="example-ec8cc9"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">registerLayout</span>({
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { registerLayout } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-title function_">registerLayout</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;my-custom&quot;</span>,
     <span class="hljs-attr">areas</span>: {
         <span class="hljs-attr">header</span>: {
@@ -412,7 +414,7 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <h2 id="positionering_och_storlek"><a class="header-anchor" href="#positionering_och_storlek">Positionering och storlek</a></h2><p>För positionering och storlek används <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids">CSS grid</a> på <code>::part(grid name)</code> och kan se ut så här:</p>
 
                 <div
-                    id="example-7ebb55"
+                    id="example-8cd080"
                     class="code-preview code-preview--default"
                     
                     
@@ -433,7 +435,7 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <h2 id="farger"><a class="header-anchor" href="#farger">Färger</a></h2><p>Färg och bakgrundsfärg sätts med <code>::part(area name)</code>:</p>
 
                 <div
-                    id="example-4c0b7d"
+                    id="example-475ba9"
                     class="code-preview code-preview--default"
                     
                     
@@ -454,7 +456,7 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <h2 id="anvand_eget_tema"><a class="header-anchor" href="#anvand_eget_tema">Använd eget tema</a></h2><p>Slutligen används layouten genom att sätta det nya registrerade namnet som <code>layout</code> attributet samt implementera de ytor som definierats med hjälp av Vue slots.</p>
 
                 <div
-                    id="example-858ef6"
+                    id="example-09b59c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -493,9 +495,9 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

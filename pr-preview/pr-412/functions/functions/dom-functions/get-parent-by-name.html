@@ -28,14 +28,14 @@
     "vue": "../../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -827,14 +827,14 @@
 <p>Get and return the parent of given Vue component that matches given name.</p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
                 <div
-                    id="example-d56cdf"
+                    id="example-ba2f88"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile"
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getParentByName</span>(<span class="hljs-params">
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getParentByName</span>(<span class="hljs-params">
     <span class="hljs-attr">vm</span>: <span class="hljs-title class_">ComponentPublicInstance</span> | <span class="hljs-literal">undefined</span> | <span class="hljs-literal">null</span>,
     <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>,
 </span>): <span class="hljs-title class_">ComponentPublicInstance</span> | <span class="hljs-built_in">never</span>;
@@ -868,7 +868,7 @@ Throws an error if unable to find parent component by given name.</p>
             <p>And given <code>this</code> is the <code>MyChildComponent</code> instance:</p>
 
                 <div
-                    id="example-b606d6"
+                    id="example-544286"
                     class="code-preview code-preview--default"
                     
                     
@@ -877,8 +877,7 @@ Throws an error if unable to find parent component by given name.</p>
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">getParentByName</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;MyChildComponent&quot;</span>); <span class="hljs-comment">// --&gt; MyChildComponent</span>
 <span class="hljs-title function_">getParentByName</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;MyParentComponent&quot;</span>); <span class="hljs-comment">// --&gt; MyParentComponent</span>
-<span class="hljs-title function_">getParentByName</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;NowhereToBeFound&quot;</span>); <span class="hljs-comment">// --&gt; throws Error</span>
-</code></pre>
+<span class="hljs-title function_">getParentByName</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;NowhereToBeFound&quot;</span>); <span class="hljs-comment">// --&gt; throws Error</span></code></pre>
                 </div>
             
 
@@ -901,9 +900,9 @@ Throws an error if unable to find parent component by given name.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

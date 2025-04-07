@@ -28,14 +28,14 @@
     "vue": "../../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -826,32 +826,61 @@
                         <!-- prettier-ignore -->
 
                 <div
-                    id="example-764234"
+                    id="example-0d010f"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile"
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ModalOptions</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ModalOptions</span> {
     <span class="hljs-attr">attachTo</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>;
     <span class="hljs-attr">props</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>&gt;;
 }
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ModalResult</span>&lt;T&gt; {
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-4d6a1e"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ModalResult</span>&lt;T&gt; {
     <span class="hljs-attr">reason</span>: <span class="hljs-title class_">ModalReason</span> | <span class="hljs-built_in">string</span>;
     <span class="hljs-attr">data</span>: T;
 }
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">AsyncModalResult</span>&lt;T&gt; = <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">ModalResult</span>&lt;T&gt;&gt;;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> openModal&lt;T&gt;(
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-701305"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">type</span> <span class="hljs-title class_">AsyncModalResult</span>&lt;T&gt; = <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">ModalResult</span>&lt;T&gt;&gt;;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-59087c"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> openModal&lt;T&gt;(
     <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
     <span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
     <span class="hljs-attr">text</span>: <span class="hljs-built_in">string</span>,
 ): <span class="hljs-title class_">AsyncModalResult</span>&lt;T&gt;;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> openModal&lt;T&gt;(
+<span class="hljs-keyword">function</span> openModal&lt;T&gt;(
     <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
     <span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
     <span class="hljs-attr">options</span>?: <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">ModalOptions</span>&gt;,
@@ -861,7 +890,7 @@
             <p>Provides an API to pragmatically open modal dialogs.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-3f66c9"
+                    id="example-9f2f01"
                     class="code-preview code-preview--default"
                     
                     
@@ -875,8 +904,7 @@
     },
 });
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Modal closed with result&quot;</span>, result);
-<span class="hljs-comment">// Modal closed with result { reason: &quot;close&quot;, data: undefined }</span>
-</code></pre>
+<span class="hljs-comment">// Modal closed with result { reason: &quot;close&quot;, data: undefined }</span></code></pre>
                 </div>
             <h2 id="api_for_custom_modals"><a class="header-anchor" href="#api_for_custom_modals">API for custom modals</a></h2><p>The given component must adhere to the following contract:</p>
 <ol>
@@ -909,9 +937,9 @@ Both <code>reason</code> and <code>data</code> will be available in the resolved
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

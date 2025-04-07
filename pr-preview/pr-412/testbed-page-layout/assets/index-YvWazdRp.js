@@ -20401,7 +20401,7 @@ const _hoisted_2$p = {
       isFormModalOpen.value = true;
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$z, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), hasAddSlot.value ? (openBlock(), createElementBlock("div", _hoisted_2$p, [createBaseVNode("button", {
+      return openBlock(), createElementBlock("div", _hoisted_1$z, [renderSlot(_ctx.$slots, "default"), _cache[6] || (_cache[6] = createTextVNode()), hasAddSlot.value ? (openBlock(), createElementBlock("div", _hoisted_2$p, [createBaseVNode("button", {
         "data-test": "f-crud-dataset-add-button",
         type: "button",
         class: "button button--tertiary crud-dataset__add-button",
@@ -20409,7 +20409,9 @@ const _hoisted_2$p = {
       }, [createVNode(unref(FIcon), {
         class: "button__icon",
         name: "plus"
-      }), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "add-button", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.crud-dataset.button.add", "Lägg till ny")), 1)])])])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createVNode(unref(FFormModal), {
+      }), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "add-button", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.crud-dataset.button.add", "Lägg till ny")), 1)])]), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "buttons", normalizeProps(guardReactiveProps({
+        buttonClasses: ["button", "button--tertiary", "crud-dataset__add-button"]
+      })))])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createVNode(unref(FFormModal), {
         "is-open": isFormModalOpen.value,
         "aria-close-text": unref($t2)("fkui.crud-dataset.modal.close", "Stäng"),
         buttons: formModalButtons.value,
@@ -20426,13 +20428,13 @@ const _hoisted_2$p = {
           key: 0
         }, {
           item: item.value
-        }))) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), operation.value === unref(Operation).MODIFY ? renderSlot(_ctx.$slots, "modify", normalizeProps(mergeProps({
+        }))) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), operation.value === unref(Operation).MODIFY ? renderSlot(_ctx.$slots, "modify", normalizeProps(mergeProps({
           key: 1
         }, {
           item: item.value
         }))) : createCommentVNode("", true)]),
         _: 3
-      }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[7] || (_cache[7] = createTextVNode()), createVNode(unref(FConfirmModal), {
+      }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(FConfirmModal), {
         "is-open": isConfirmModalOpen.value,
         buttons: confirmDeleteButtons.value,
         onConfirm: onDeleteConfirm,

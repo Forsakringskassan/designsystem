@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -820,7 +820,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/5e05b92c159fa00673815a088ec38a5ccfd4e4cc/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0eb1bd47330716b602f5585abd25a1af49a1df55/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
             
         </code>
          
@@ -986,23 +986,45 @@ Du kan antingen låta din formulärsmodal hantera detta genom att internt kopier
 
             </div>
         <h2 id="oppna_modal"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p>Du öppnar modalen med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
+<p><strong>Options API:</strong></p>
 
                 <div
-                    id="example-a68277"
+                    id="example-577e0e"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// options api</span>
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">PersonFormModal</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">PersonFormModal</span>);</code></pre>
+                </div>
+            <p><strong>Composition API:</strong></p>
 
-<span class="hljs-comment">// composition api</span>
-<span class="hljs-keyword">const</span> { formModal } = <span class="hljs-title function_">useModal</span>();
+                <div
+                    id="example-dd316f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language=""
+                >
+                    
+                    <pre class="code-preview__markup"><code>import { defineComponent } from &quot;vue&quot;;
 
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
-    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>);
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface Person {}
+
+const PersonFormModal = defineComponent({});
+
+/* --- cut above --- */
+
+import { useModal } from &quot;@fkui/vue&quot;;
+
+const { formModal } = useModal();
+
+async function onOpen(): Promise&lt;void&gt; {
+	const result = await formModal&lt;Person&gt;(PersonFormModal);
+
+	/* do something with result */
 }
 </code></pre>
                 </div>
@@ -1011,14 +1033,18 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
 <p>Förifylld data kan skickas in med propen <code>value</code>:</p>
 
                 <div
-                    id="example-0119fc"
+                    id="example-4eaa7a"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>, {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> { formModal } = <span class="hljs-title function_">useModal</span>();
+
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>, {
     <span class="hljs-attr">props</span>: {
         <span class="hljs-attr">value</span>: {
             <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Kalle Anka&quot;</span>,
@@ -1030,7 +1056,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                 </div>
             
             <div
-                id="example-d6429b"
+                id="example-752c05"
                 class="code-preview code-preview--default"
                 
                 
@@ -1116,7 +1142,7 @@ Vi rekommenderar att du flyttar den till en egen Vue komponent och använder API
 Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FFormModal</code> med API.</p>
 
                 <div
-                    id="example-88944e"
+                    id="example-9d52bb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1135,7 +1161,7 @@ Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur 
 Med den kan du ta bort existerande knappar eller använda en helt egen uppsättning.</p>
 
                 <div
-                    id="example-34ba24"
+                    id="example-a0fcd3"
                     class="code-preview code-preview--default"
                     
                     
@@ -1148,13 +1174,12 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
             <span class="hljs-comment">/* ... */</span>
         ],
     },
-});
-</code></pre>
+});</code></pre>
                 </div>
             <p><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
 
                 <div
-                    id="example-8575fa"
+                    id="example-e1d05b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1173,10 +1198,10 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 </div>
             
                 <div
-                    id="example-9effe9"
+                    id="example-99bc06"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -1191,7 +1216,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p>Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code> property:</p>
 
                 <div
-                    id="example-d1d32d"
+                    id="example-2d3057"
                     class="code-preview code-preview--default"
                     
                     
@@ -1206,7 +1231,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p>Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
 
                 <div
-                    id="example-420a28"
+                    id="example-a3be15"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1226,7 +1251,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-cd7465"
+                    id="example-27d741"
                     class="code-preview code-preview--default"
                     
                     
@@ -1236,13 +1261,12 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-built_in">void</span> {
     <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">myField</span>);
     <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
-},
-</code></pre>
+},</code></pre>
                 </div>
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
 
                 <div
-                    id="example-ce25cb"
+                    id="example-211eea"
                     class="code-preview code-preview--default"
                     
                     
@@ -1252,8 +1276,7 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">FFormModalAction</span> {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-title class_">FFormModalAction</span>.<span class="hljs-property">CANCEL</span>;
-},
-</code></pre>
+},</code></pre>
                 </div>
             <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
         <h3 id="fformmodal-props">
@@ -1644,9 +1667,9 @@ The event payload is the data that has been submitted.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

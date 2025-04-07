@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -820,7 +820,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/5e05b92c159fa00673815a088ec38a5ccfd4e4cc/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">FConfirmModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0eb1bd47330716b602f5585abd25a1af49a1df55/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">FConfirmModal</a>
             
         </code>
          
@@ -944,17 +944,17 @@
                 </div>
             </div>
         <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>För att öppna en bekräftelsemodal använder du <a href="../../functions/functions/modal-functions/confirm-modal.html"><code>confirmModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
+<p><strong>Options API:</strong></p>
 
                 <div
-                    id="example-7f4f85"
+                    id="example-343301"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// options api</span>
-<span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
     <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt&quot;</span>,
     <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${frukt.namn}</span>&quot;?`</span>,
     <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
@@ -962,9 +962,20 @@
 });
 <span class="hljs-keyword">if</span> (confirmed) {
     <span class="hljs-comment">/* do something */</span>
-}
+}</code></pre>
+                </div>
+            <p><strong>Composition API:</strong></p>
 
-<span class="hljs-comment">// composition api</span>
+                <div
+                    id="example-181fee"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
 <span class="hljs-keyword">const</span> { confirmModal } = <span class="hljs-title function_">useModal</span>();
 
 <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
@@ -985,7 +996,7 @@ Om du använder detta rekommenderar vi att du tar bort <code>f-confirm-modal</co
 <p>Se <a href="./fconfirmmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FConfirmModal</code> med API.</p>
 
                 <div
-                    id="example-fbf1d0"
+                    id="example-575eef"
                     class="code-preview code-preview--default"
                     
                     
@@ -1008,7 +1019,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
 <p>Du styr den inbördes ordning som knapparna presenteras i med <a href="../../functions/config.html#referens">konfiguration</a> i applikationen där modalen används.</p>
 <h2 id="bekraftelsemodal_med_tre_knappar"><a class="header-anchor" href="#bekraftelsemodal_med_tre_knappar">Bekräftelsemodal med tre knappar</a></h2>
             <div
-                id="example-40661f"
+                id="example-7979ca"
                 class="code-preview code-preview--default"
                 
                 
@@ -1089,7 +1100,7 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
         <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p>Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code>-property:</p>
 
                 <div
-                    id="example-141d8a"
+                    id="example-b8821d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1371,9 +1382,9 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

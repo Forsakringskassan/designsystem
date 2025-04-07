@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -878,31 +878,25 @@
 <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p>Sätter en klass baserat på hur panelen ska fästas:</p>
 
                 <div
-                    id="example-01e658"
+                    id="example-7e8bca"
                     class="code-preview code-preview--default"
                     
-                    
-                    data-language="typescript"
+                    data-tags="static"
+                    data-language="vue"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { computed, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { useAreaData } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0">const element = useTemplateRef(&quot;my-root-element&quot;);
+const { attachPanel } = useAreaData(element);
 
-<span class="hljs-comment">/* --- cut above -- */</span>
-
-<span class="hljs-keyword">const</span> element = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;my-root-element&quot;</span>);
-<span class="hljs-keyword">const</span> { attachPanel } = <span class="hljs-title function_">useAreaData</span>(element);
-
-<span class="hljs-keyword">const</span> attachClass = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-keyword">switch</span> (attachPanel.<span class="hljs-property">value</span>) {
-        <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;left&quot;</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;attach-left&quot;</span>;
-        <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;right&quot;</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;attach-right&quot;</span>;
+const attachClass = computed(() =&gt; {
+    switch (attachPanel.value) {
+        case &quot;left&quot;:
+            return &quot;attach-left&quot;;
+        case &quot;right&quot;:
+            return &quot;attach-right&quot;;
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">undefined</span>;
-});
-</code></pre>
+    return undefined;
+});</code></pre>
                 </div>
             <h2 id="related"><a class="header-anchor" href="#related">Related</a></h2><ul>
 <li><a href="../../components/page-layout/fpagelayout.html"><code>FPageLayout</code></a></li>
@@ -929,9 +923,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

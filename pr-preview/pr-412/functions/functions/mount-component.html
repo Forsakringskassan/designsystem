@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -832,14 +832,14 @@
             </div>
         
                 <div
-                    id="example-9ad03c"
+                    id="example-43f07b"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MountOptions</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">MountOptions</span> {
     <span class="hljs-comment">/**
      * Element to mount component under. Default `&lt;body&gt;`.
      */</span>
@@ -850,8 +850,18 @@
      */</span>
     <span class="hljs-attr">attachFirst</span>?: <span class="hljs-built_in">boolean</span>;
 }
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">mountComponent</span>(<span class="hljs-params">
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-d5311d"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">mountComponent</span>(<span class="hljs-params">
     <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
     <span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
     <span class="hljs-attr">options</span>?: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">unknown</span>&gt; &amp; <span class="hljs-title class_">MountOptions</span>,
@@ -862,7 +872,7 @@
 The component will be mounted as a child of the target element and not onto the element itself.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-3d6316"
+                    id="example-8764ae"
                     class="code-preview code-preview--default"
                     
                     
@@ -870,18 +880,19 @@ The component will be mounted as a child of the target element and not onto the 
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">/* mount component */</span>
-<span class="hljs-keyword">const</span> targetElement = ...;
-<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">mountComponent</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">MyComponent</span>, { <span class="hljs-attr">attachTo</span>: targetElement });
+<span class="hljs-keyword">const</span> targetElement = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;body&quot;</span>)!;
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">mountComponent</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">MyComponent</span>, {
+    <span class="hljs-attr">attachTo</span>: targetElement,
+});
 
 <span class="hljs-comment">/* do fancy stuff */</span>
 
 <span class="hljs-comment">/* cleanup */</span>
-app.<span class="hljs-title function_">unmount</span>();
-</code></pre>
+app.<span class="hljs-title function_">unmount</span>();</code></pre>
                 </div>
             
             <div
-                id="example-7f0a11"
+                id="example-635530"
                 class="code-preview code-preview--default"
                 
                 
@@ -941,7 +952,7 @@ app.<span class="hljs-title function_">unmount</span>();
         <h2 id="passing_props_and_listeners"><a class="header-anchor" href="#passing_props_and_listeners">Passing props and listeners</a></h2><p>Props and listeners can be passed in the options object:</p>
 
                 <div
-                    id="example-4ead1c"
+                    id="example-f80af7"
                     class="code-preview code-preview--default"
                     
                     
@@ -958,8 +969,7 @@ app.<span class="hljs-title function_">unmount</span>();
     <span class="hljs-title function_">onSubmit</span>(): <span class="hljs-built_in">void</span> {
         <span class="hljs-comment">/* do something */</span>
     },
-});
-</code></pre>
+});</code></pre>
                 </div>
             
 
@@ -982,9 +992,9 @@ app.<span class="hljs-title function_">unmount</span>();
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">

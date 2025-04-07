@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4783e9.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-4783e9.js": "sha384-Fx1i8P5a/i2tWEZZmFpJy5bG45MXbMbz9hUwY/6uOkdefmvUjKXKqlgtAoQXK6zi",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -820,13 +820,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/5e05b92c159fa00673815a088ec38a5ccfd4e4cc/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0eb1bd47330716b602f5585abd25a1af49a1df55/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/5e05b92c159fa00673815a088ec38a5ccfd4e4cc/packages/vue/src/components/FCrudDataset/FCrudButton.vue">FCrudButton</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0eb1bd47330716b602f5585abd25a1af49a1df55/packages/vue/src/components/FCrudDataset/FCrudButton.vue">FCrudButton</a>
             
         </code>
          
@@ -854,6 +854,8 @@
                                 
                                 <li><a href="#anpassade_texter">Anpassade texter</a></li>
                                 
+                                <li><a href="#egna_lagg_till_knappar">Egna lägg till knappar</a></li>
+                                
                                 <li><a href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></li>
                                 
                                 <li><a href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></li>
@@ -877,7 +879,7 @@ Komponenten ansvarar inte för hur datamängden och åtgärderna &quot;lägg til
 Vanligtvis används lista eller tabell för presentation men kan även vara egenutvecklad.</p>
 <h2 id="interaktiv_tabell_med_redigering"><a class="header-anchor" href="#interaktiv_tabell_med_redigering">Interaktiv tabell med redigering</a></h2>
             <div
-                id="example-875ca7"
+                id="example-85943e"
                 class="code-preview code-preview--default"
                 
                 
@@ -1025,7 +1027,7 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
 Callback anropas innan modalen visas.</p>
 
                 <div
-                    id="example-309181"
+                    id="example-c15810"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1039,7 +1041,7 @@ Callback anropas innan modalen visas.</p>
                 </div>
             
                 <div
-                    id="example-456bd7"
+                    id="example-14354c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1056,7 +1058,7 @@ Callback anropas innan modalen visas.</p>
             <h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p>Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
 
             <div
-                id="example-0dcf92"
+                id="example-0c3787"
                 class="code-preview code-preview--default"
                 
                 
@@ -1221,9 +1223,49 @@ Callback anropas innan modalen visas.</p>
 </code></pre>
                 </div>
             </div>
-        <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
+        <h2 id="egna_lagg_till_knappar"><a class="header-anchor" href="#egna_lagg_till_knappar">Egna lägg till knappar</a></h2><p>Använd slotten <code>#buttons</code> för att lägga till egna anpassade lägg-till knappar.
+Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
+
+                <div
+                    id="example-17f489"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
+     &lt;template #default&gt; ... &lt;/template&gt;
+<span class="hljs-addition">+    &lt;template #buttons=&quot;{ buttonClasses }&quot;&gt;</span>
+<span class="hljs-addition">+        &lt;button type=&quot;button&quot; :class=&quot;buttonClasses&quot; @click=&quot;onClick&quot;&gt;</span>
+<span class="hljs-addition">+            My button</span>
+<span class="hljs-addition">+        &lt;/button&gt;</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-crud-dataset&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-424a1d"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="FCrudDatasetAdditionalButtons"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FCrudDatasetAdditionalButtons-adfec3.js"></script>
+    </div>
+                </div>
+            <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
-                id="example-918336"
+                id="example-22265e"
                 class="code-preview code-preview--default"
                 
                 
@@ -1332,7 +1374,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="interaktiv_tabell_med_knapp"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
             <div
-                id="example-3aeb78"
+                id="example-fbe245"
                 class="code-preview code-preview--default"
                 
                 
@@ -1430,7 +1472,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="lista_med_redigering"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-e8997c"
+                id="example-5d4243"
                 class="code-preview code-preview--default"
                 
                 
@@ -1594,7 +1636,7 @@ Callback anropas innan modalen visas.</p>
             </div>
         <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-2a3fd3"
+                id="example-bbc865"
                 class="code-preview code-preview--default"
                 
                 
@@ -2042,6 +2084,25 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                         </dd>
                     
                         <dt>
+                            <code id="fcruddataset-slot-buttons"
+                                ><a class="docs-api__anchor" href="#fcruddataset-slot-buttons"
+                                    ><span class="docs-api__name"
+                                        >buttons</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for additional add buttons</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>buttonClasses: string[]</code> <span role="presentation">&mdash;</span> Default button classes.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
                             <code id="fcruddataset-slot-add"
                                 ><a class="docs-api__anchor" href="#fcruddataset-slot-add"
                                     ><span class="docs-api__name"
@@ -2227,9 +2288,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/5e05b92c159fa00673815a088ec38a5ccfd4e4cc">5e05b92</a>)<br />
+    feature/xlink (<a href="https://github.com/Forsakringskassan/designsystem/commits/0eb1bd47330716b602f5585abd25a1af49a1df55">0eb1bd4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/412">PR 412</a><br />
-        2025-04-07 09:28
+        2025-04-07 17:36
 </div>
 <div class="toolbar__item">
     <form id="version">
