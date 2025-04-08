@@ -50,16 +50,11 @@
                 ></td>
 
                 <td v-for="day in week.days" :key="day.toString()" class="calendar-month__cell" role="presentation">
-                    <!-- @slot Slot for rendering of day content.
-
-Slot scope is available through `v-slot="{ <propertyName> }"`, e.g.
-`v-slot="{ date, focused }"`.
-
-The following properties are available:
-
-* `date: FDate;` Date of day.
-* `focused: bool;` If month component is focused or not.
-        -->
+                    <!--
+                    @slot Slot for rendering of day content. Slot scope is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ date, focused }"`.
+                    @binding {FDate} date Date of day.
+                    @binding {bool} focused If month component is focused or not.
+                    -->
                     <slot :date="day" :focused="focused"></slot>
                 </td>
 

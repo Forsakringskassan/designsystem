@@ -13,7 +13,7 @@ it("should not report when arbitrary svg is used", async () => {
         <svg></svg>
         <svg class="foobar"></svg>
         <svg>
-            <use xlink:href="#foo" />
+            <use href="#foo" />
         </svg>
     `;
     const report = await htmlvalidate.validateString(markup);
@@ -31,7 +31,7 @@ it("should report error for svg with icon", async () => {
     expect.assertions(2);
     const markup = /* HTML */ `
         <svg class="icon">
-            <use xlink:href="#f-icon-foo" />
+            <use href="#f-icon-foo" />
         </svg>
     `;
     const report = await htmlvalidate.validateString(markup);
@@ -41,7 +41,7 @@ it("should report error for svg with icon", async () => {
           1 |
         > 2 |         <svg class="icon">
             |          ^^^
-          3 |             <use xlink:href="#f-icon-foo" />
+          3 |             <use href="#f-icon-foo" />
           4 |         </svg>
           5 |
         Selector: -"

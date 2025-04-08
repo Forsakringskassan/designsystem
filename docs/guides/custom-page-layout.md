@@ -11,6 +11,8 @@ Namnet som anges är vad som senare används i `layout`-propen till `FPageLayout
 ## Registrera tema
 
 ```ts
+import { registerLayout } from "@fkui/vue";
+
 registerLayout({
     name: "my-custom",
     areas: {

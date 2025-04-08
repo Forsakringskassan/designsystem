@@ -30,7 +30,7 @@ Vid fokus hamnar ramen runt hela länken även om den sträcker sig över flera 
 <!-- [html-validate-disable-block fkui/prefer-ficon -- html example does not use @fkui/vue]-->
 <a class="anchor anchor--block" href="javascript:">
     <svg focusable="false" class="icon f-icon-doc">
-        <use xlink:href="#f-icon-doc"></use>
+        <use href="#f-icon-doc"></use>
     </svg>
     Fristående länk med ikon på flera rader. Fristående länk med ikon på flera
     rader. Fristående länk med ikon på flera rader.
