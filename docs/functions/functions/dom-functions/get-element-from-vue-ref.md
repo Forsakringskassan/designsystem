@@ -6,8 +6,8 @@ layout: content-with-menu
 
 Gets an `Element` a ref, provided it is defined and not an array.
 
-```ts
-export function getElementFromVueRef(ref: unknown): Element | never;
+```ts nocompile
+function getElementFromVueRef(ref: unknown): Element | never;
 ```
 
 - `ref` - The ref to extract the `Element` from.

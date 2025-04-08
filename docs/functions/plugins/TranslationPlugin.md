@@ -48,6 +48,7 @@ Notera att `$t` kan användas i metoder och computed men inte som default-värde
 Du måste istället anropa `TranslationService` från `@fkui/logic`` direkt:
 
 ```ts
+import { defineComponent } from "vue";
 import { TranslationService } from "@fkui/logic";
 
 export default defineComponent({
@@ -69,6 +70,13 @@ export default defineComponent({
 Du installerar plugin globalt för hela applikationen genom:
 
 ```ts
+import { defineComponent } from "vue";
+
+const App = defineComponent({});
+
+/* --- cut above ---*/
+
+import { createApp } from "vue";
 import { TranslationPlugin } from "@fkui/vue";
 
 const app = createApp(App);

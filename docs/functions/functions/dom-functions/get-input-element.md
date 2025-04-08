@@ -6,6 +6,6 @@ layout: content-with-menu
 
 (Odokumenterad funktion)
 
-```ts
-export function getInputElement(vm: { $el: Element }): ValidatableHTMLElement;
+```ts nocompile
+function getInputElement(vm: { $el: Element }): ValidatableHTMLElement;
 ```

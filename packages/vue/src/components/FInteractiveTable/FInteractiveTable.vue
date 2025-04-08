@@ -585,14 +585,8 @@ function setActiveRow(row: T | undefined): void {
                         </td>
 
                         <!--
-                            @slot Slot for table row.
-
-                            The row object is available through `v-slot="{ <propertyName> }"`, e.g.
-                            `v-slot="{ row }"`.
-
-                            The following properties are available:
-
-                            * `row: ListItem;` The object to be visualized.
+                            @slot Slot for table row. The row object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ row }"`.
+                            @binding {ListItem} row The object to be visualized.
                         -->
                         <slot v-bind="{ row }" />
                     </tr>
@@ -622,14 +616,10 @@ function setActiveRow(row: T | undefined): void {
                             <td v-else class="table__column table__column--indented" :colspan="columns.length">
                                 <!--
                                     @slot Slot for expandable table row.
-
                                     The row object is available through `v-slot="{ <propertyName> }"`, e.g.
                                     `v-slot="{ expandableRow }"`.
-
-                                    The following properties are available:
-
-                                    * `expandableRow: ListItem;` The object to be visualized.
-                                    * `parentRow: ListItem;` The parent row of the expandable rows.
+                                    @binding {ListItem} expandableRow The object to be visualized.
+                                    @binding {ListItem} parentRow The parent row of the expandable rows.
                                 -->
                                 <slot name="expandable" v-bind="{ expandableRow, parentRow: row }" />
                             </td>

@@ -44,7 +44,7 @@ function buildDemo() {
             return /* HTML */ `
                 <div class="item">
                     <svg focusable="false" class="icon">
-                        <use xlink:href="#${icon.key}"></use>
+                        <use href="#${icon.key}"></use>
                     </svg>
                     <p>${icon.name}<br /><small>(${icon.key})</small></p>
                 </div>

@@ -82,5 +82,17 @@ module.exports = {
                 "import/no-unresolved": "off",
             },
         },
+
+        {
+            files: "docs/examples/**/*.{js,ts}",
+            rules: {
+                "no-console": "off",
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": "off",
+                "eslint-comments/require-description": "off",
+                "import/no-duplicates": "off",
+                "import/no-extraneous-dependencies": "off",
+            },
+        },
     ],
 };

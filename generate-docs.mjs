@@ -7,6 +7,7 @@ import fse from "fs-extra";
 import isCI from "is-ci";
 import {
     Generator,
+    extractExamplesProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     matomoProcessor,
@@ -102,6 +103,9 @@ const docs = new Generator({
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
+        extractExamplesProcessor({
+            outputFolder: "docs/examples/files",
+        }),
         searchProcessor(),
         versionProcessor(pkg, "footer:right", {
             scm: isRelease
