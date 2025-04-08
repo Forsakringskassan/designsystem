@@ -1068,7 +1068,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/495bfa735bbf08ef1d011fd54132642957ead0f5/packages/vue/src/components/FDialogueTree/FDialogueTree.vue">FDialogueTree</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/eb95fe682516d58bc2fc926c887c131a15e93c12/packages/vue/src/components/FDialogueTree/FDialogueTree.vue">FDialogueTree</a>
             
         </code>
          
@@ -1168,13 +1168,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-7e2df7"></div>
+        <div id="example-1ef8c2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ExampleFDialogueTree-7e2df7.js"></script>
+        <script type="module" src="./ExampleFDialogueTree-1ef8c2.js"></script>
     </div>
                 <div>
             <button
@@ -1192,31 +1192,7 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- just for demo purpose --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ current.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-dialogue-tree</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;current&quot;</span> <span class="hljs-attr">:dialogue-tree</span>=<span class="hljs-string">&quot;tree&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ userData }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;userData.type === &#x27;formA&#x27;&quot;</span>&gt;</span>
-                    formA
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>&gt;</span>
-                        Field 1
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;userData.type === &#x27;formB&#x27;&quot;</span>&gt;</span>
-                    formB
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>&gt;</span>
-                        Field 1
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-dialogue-tree</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FDialogueTree</span>,
@@ -1291,6 +1267,30 @@
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- just for demo purpose --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ current.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-dialogue-tree</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;current&quot;</span> <span class="hljs-attr">:dialogue-tree</span>=<span class="hljs-string">&quot;tree&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ userData }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;userData.type === &#x27;formA&#x27;&quot;</span>&gt;</span>
+                    formA
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>&gt;</span>
+                        Field 1
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;userData.type === &#x27;formB&#x27;&quot;</span>&gt;</span>
+                    formB
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>&gt;</span>
+                        Field 1
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-dialogue-tree</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1325,13 +1325,13 @@
                 >
                     
                     <div class="code-preview__preview">
-        <div id="example-426c67"></div>
+        <div id="example-c172d1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FlerstegsModalExample-426c67.js"></script>
+        <script type="module" src="./FlerstegsModalExample-c172d1.js"></script>
     </div>
                 </div>
             <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
@@ -1450,9 +1450,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/495bfa735bbf08ef1d011fd54132642957ead0f5">495bfa7</a>)<br />
+    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/eb95fe682516d58bc2fc926c887c131a15e93c12">eb95fe6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/416">PR 416</a><br />
-        2025-04-08 13:36
+        2025-04-08 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">

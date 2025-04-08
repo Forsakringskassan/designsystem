@@ -1094,13 +1094,13 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-4bb1a7"></div>
+        <div id="example-09304b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./TestPluginExample-4bb1a7.js"></script>
+        <script type="module" src="./TestPluginExample-09304b.js"></script>
     </div>
                 <div>
             <button
@@ -1118,13 +1118,7 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;child-name&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>&gt;</span>
-        Barnets namn
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1133,6 +1127,12 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
     <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;child-name&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>&gt;</span>
+        Barnets namn
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1146,13 +1146,13 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-35d553"></div>
+        <div id="example-e0a55c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./TestPluginHidden-35d553.js"></script>
+        <script type="module" src="./TestPluginHidden-e0a55c.js"></script>
     </div>
                 <div>
             <button
@@ -1170,7 +1170,20 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;TestPluginHidden&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">isVisible</span>: <span class="hljs-literal">false</span> };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
             <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isVisible&quot;</span>
@@ -1185,19 +1198,6 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;TestPluginHidden&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> { <span class="hljs-attr">isVisible</span>: <span class="hljs-literal">false</span> };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1222,9 +1222,9 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/495bfa735bbf08ef1d011fd54132642957ead0f5">495bfa7</a>)<br />
+    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/eb95fe682516d58bc2fc926c887c131a15e93c12">eb95fe6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/416">PR 416</a><br />
-        2025-04-08 13:36
+        2025-04-08 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">

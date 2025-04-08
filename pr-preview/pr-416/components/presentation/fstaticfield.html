@@ -1068,7 +1068,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/495bfa735bbf08ef1d011fd54132642957ead0f5/packages/vue/src/components/FStaticField/FStaticField.vue">FStaticField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/eb95fe682516d58bc2fc926c887c131a15e93c12/packages/vue/src/components/FStaticField/FStaticField.vue">FStaticField</a>
             
         </code>
          
@@ -1114,13 +1114,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-2cfa36"></div>
+        <div id="example-1dbb93"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FStaticFieldInput-2cfa36.js"></script>
+        <script type="module" src="./FStaticFieldInput-1dbb93.js"></script>
     </div>
                 <div>
             <button
@@ -1138,7 +1138,20 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FStaticFieldTextField&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTextField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span> };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;output-field&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
             <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;normal&quot;</span>
@@ -1154,19 +1167,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FStaticFieldTextField&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTextField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span> };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1180,13 +1180,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-bc6fdd"></div>
+        <div id="example-534cd2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FStaticFieldTooltipDescription-bc6fdd.js"></script>
+        <script type="module" src="./FStaticFieldTooltipDescription-534cd2.js"></script>
     </div>
                 <div>
             <button
@@ -1204,7 +1204,17 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTooltip</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FStaticFieldTooltipDescription&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTooltip</span> },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;output-field&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Etikett <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1222,16 +1232,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTooltip</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FStaticFieldTooltipDescription&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTooltip</span> },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1339,9 +1339,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/495bfa735bbf08ef1d011fd54132642957ead0f5">495bfa7</a>)<br />
+    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/eb95fe682516d58bc2fc926c887c131a15e93c12">eb95fe6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/416">PR 416</a><br />
-        2025-04-08 13:36
+        2025-04-08 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">

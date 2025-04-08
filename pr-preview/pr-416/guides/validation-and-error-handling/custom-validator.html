@@ -633,13 +633,13 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-5d2258"></div>
+        <div id="example-a36110"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./CustomValidatorExample-5d2258.js"></script>
+        <script type="module" src="./CustomValidatorExample-a36110.js"></script>
     </div>
                 <div>
             <button
@@ -657,50 +657,7 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelFoo&quot;</span>
-            <span class="hljs-attr">v-validation.startsWith.maxLength</span>=<span class="hljs-string">&quot;{
-                startsWith: { startString: &#x27;foo&#x27; },
-                maxLength: { length: 20 },
-            }&quot;</span>
-        &gt;</span>
-            Detta fält accepterar bara strängar som börjar med &#x27;foo&#x27;
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Använder globalt felmeddelande <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelBar&quot;</span>
-            <span class="hljs-attr">v-validation.startsWith.maxLength</span>=<span class="hljs-string">&quot;{
-                startsWith: {
-                    startString: &#x27;bar&#x27;,
-                    errorMessage: &#x27;Texten måste börja med bar&#x27;,
-                },
-                maxLength: { length: 20 },
-            }&quot;</span>
-        &gt;</span>
-            Detta fält accepterar bara strängar som börjar med &#x27;bar&#x27;
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Använder ett specifik felmeddelande <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelDemo&quot;</span>
-            <span class="hljs-attr">v-validation.startsWith.maxLength</span>=<span class="hljs-string">&quot;{
-                maxLength: { length: 20 },
-            }&quot;</span>
-        &gt;</span>
-            Detta fält accepterar bara strängar som börjar med &#x27;demo&#x27;
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Saknar konfiguration för `startsWith` <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">ValidationErrorMessageBuilder</span>,
@@ -752,6 +709,49 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelFoo&quot;</span>
+            <span class="hljs-attr">v-validation.startsWith.maxLength</span>=<span class="hljs-string">&quot;{
+                startsWith: { startString: &#x27;foo&#x27; },
+                maxLength: { length: 20 },
+            }&quot;</span>
+        &gt;</span>
+            Detta fält accepterar bara strängar som börjar med &#x27;foo&#x27;
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Använder globalt felmeddelande <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelBar&quot;</span>
+            <span class="hljs-attr">v-validation.startsWith.maxLength</span>=<span class="hljs-string">&quot;{
+                startsWith: {
+                    startString: &#x27;bar&#x27;,
+                    errorMessage: &#x27;Texten måste börja med bar&#x27;,
+                },
+                maxLength: { length: 20 },
+            }&quot;</span>
+        &gt;</span>
+            Detta fält accepterar bara strängar som börjar med &#x27;bar&#x27;
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Använder ett specifik felmeddelande <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelDemo&quot;</span>
+            <span class="hljs-attr">v-validation.startsWith.maxLength</span>=<span class="hljs-string">&quot;{
+                maxLength: { length: 20 },
+            }&quot;</span>
+        &gt;</span>
+            Detta fält accepterar bara strängar som börjar med &#x27;demo&#x27;
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Saknar konfiguration för `startsWith` <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -776,9 +776,9 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/495bfa735bbf08ef1d011fd54132642957ead0f5">495bfa7</a>)<br />
+    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/eb95fe682516d58bc2fc926c887c131a15e93c12">eb95fe6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/416">PR 416</a><br />
-        2025-04-08 13:36
+        2025-04-08 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -1068,7 +1068,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/495bfa735bbf08ef1d011fd54132642957ead0f5/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/eb95fe682516d58bc2fc926c887c131a15e93c12/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
             
         </code>
          
@@ -1119,13 +1119,13 @@ inmatningskomponenter semantiskt och ge dem en gemensam etikett.</p><p class="do
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-51b229"></div>
+        <div id="example-66cce3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./CrossValidateDates-51b229.js"></script>
+        <script type="module" src="./CrossValidateDates-66cce3.js"></script>
     </div>
                 <div>
             <button
@@ -1143,7 +1143,42 @@ inmatningskomponenter semantiskt och ge dem en gemensam etikett.</p><p class="do
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span>, <span class="hljs-title class_">Weekday</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
+<span class="hljs-keyword">import</span> { isEmpty } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ComponentValidityEvent</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FFieldset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MIN_DATE</span> = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">addMonths</span>(-<span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>();
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_DATE</span> = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">addMonths</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>();
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FFieldset</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">fromDate</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">toDate</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">toMinLimit</span>: <span class="hljs-variable constant_">MIN_DATE</span>,
+            <span class="hljs-title class_">Weekday</span>,
+            <span class="hljs-variable constant_">MIN_DATE</span>,
+            <span class="hljs-variable constant_">MAX_DATE</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">getMinToDate</span>(<span class="hljs-attr">validFromDate</span>: boolean): string {
+            <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEmpty</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">fromDate</span>) || !validFromDate) {
+                <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">MIN_DATE</span>;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fromDate</span>;
+        },
+        <span class="hljs-title function_">onValidityFromDate</span>({ <span class="hljs-attr">detail</span>: { isValid } }: <span class="hljs-title class_">CustomEvent</span>&lt;<span class="hljs-title class_">ComponentValidityEvent</span>&gt;): <span class="hljs-keyword">void</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">toMinLimit</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMinToDate</span>(isValid);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Anställningsperiod <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-datepicker-field</span>
@@ -1179,41 +1214,6 @@ inmatningskomponenter semantiskt och ge dem en gemensam etikett.</p><p class="do
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-datepicker-field</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span>, <span class="hljs-title class_">Weekday</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
-<span class="hljs-keyword">import</span> { isEmpty } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ComponentValidityEvent</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FFieldset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MIN_DATE</span> = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">addMonths</span>(-<span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>();
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_DATE</span> = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">addMonths</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>();
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FFieldset</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">fromDate</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">toDate</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">toMinLimit</span>: <span class="hljs-variable constant_">MIN_DATE</span>,
-            <span class="hljs-title class_">Weekday</span>,
-            <span class="hljs-variable constant_">MIN_DATE</span>,
-            <span class="hljs-variable constant_">MAX_DATE</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">getMinToDate</span>(<span class="hljs-attr">validFromDate</span>: boolean): string {
-            <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEmpty</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">fromDate</span>) || !validFromDate) {
-                <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">MIN_DATE</span>;
-            }
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fromDate</span>;
-        },
-        <span class="hljs-title function_">onValidityFromDate</span>({ <span class="hljs-attr">detail</span>: { isValid } }: <span class="hljs-title class_">CustomEvent</span>&lt;<span class="hljs-title class_">ComponentValidityEvent</span>&gt;): <span class="hljs-keyword">void</span> {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">toMinLimit</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMinToDate</span>(isValid);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1236,13 +1236,13 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-e68911"></div>
+        <div id="example-118c82"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFieldsetDefault-e68911.js"></script>
+        <script type="module" src="./FFieldsetDefault-118c82.js"></script>
     </div>
                 <div>
             <button
@@ -1260,7 +1260,22 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span>, <span class="hljs-title class_">FTooltip</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFieldsetDefault&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span>, <span class="hljs-title class_">FTooltip</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">deltid</span>: <span class="hljs-literal">undefined</span>,
+        };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group-name-default&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Arbetar du deltid? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
@@ -1281,21 +1296,6 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
         <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;deltid-nej&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;deltid&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span> Nej <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span>, <span class="hljs-title class_">FTooltip</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFieldsetDefault&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span>, <span class="hljs-title class_">FTooltip</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">deltid</span>: <span class="hljs-literal">undefined</span>,
-        };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1309,13 +1309,13 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-3780fd"></div>
+        <div id="example-b71aa0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFieldsetRadioButtons-3780fd.js"></script>
+        <script type="module" src="./FFieldsetRadioButtons-b71aa0.js"></script>
     </div>
                 <div>
             <button
@@ -1333,15 +1333,7 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group-name-radio&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Ansöker du om sjukpenning? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ja&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;sjukpenning&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> Ja <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nej&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;sjukpenning&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span> Nej <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1355,6 +1347,14 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group-name-radio&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Ansöker du om sjukpenning? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ja&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;sjukpenning&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> Ja <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nej&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;sjukpenning&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span> Nej <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1368,13 +1368,13 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-22b505"></div>
+        <div id="example-fb7c37"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFieldsetRadioButtonsHorizontal-22b505.js"></script>
+        <script type="module" src="./FFieldsetRadioButtonsHorizontal-fb7c37.js"></script>
     </div>
                 <div>
             <button
@@ -1392,15 +1392,7 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group-name-radio-horizontal&quot;</span> <span class="hljs-attr">horizontal</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Ligger radioknapparna horisontellt? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;horisontellt-ja&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;model&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> Ja <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;horisontellt-nej&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;model&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span> Nej <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1414,6 +1406,14 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group-name-radio-horizontal&quot;</span> <span class="hljs-attr">horizontal</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Ligger radioknapparna horisontellt? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;horisontellt-ja&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;model&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> Ja <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;horisontellt-nej&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;model&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span> Nej <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1427,13 +1427,13 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-1f6e17"></div>
+        <div id="example-239839"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFieldsetCheckbox-1f6e17.js"></script>
+        <script type="module" src="./FFieldsetCheckbox-239839.js"></script>
     </div>
                 <div>
             <button
@@ -1451,7 +1451,25 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FCheckboxField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFieldsetChecbox&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FFieldset</span>,
+        <span class="hljs-title class_">FCheckboxField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">dagar</span>: [],
+        };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group-name-checkbox&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Vilka dagar i veckan vill du bli kontaktad? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-checkbox-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dagar-mandag&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;dagar&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;mandag&quot;</span>&gt;</span>
@@ -1471,24 +1489,6 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FCheckboxField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFieldsetChecbox&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FFieldset</span>,
-        <span class="hljs-title class_">FCheckboxField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">dagar</span>: [],
-        };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1777,9 +1777,9 @@ Supported by radiobuttons and chip layout.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/495bfa735bbf08ef1d011fd54132642957ead0f5">495bfa7</a>)<br />
+    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/eb95fe682516d58bc2fc926c887c131a15e93c12">eb95fe6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/416">PR 416</a><br />
-        2025-04-08 13:36
+        2025-04-08 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">

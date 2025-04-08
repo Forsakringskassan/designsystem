@@ -1068,13 +1068,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/495bfa735bbf08ef1d011fd54132642957ead0f5/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/eb95fe682516d58bc2fc926c887c131a15e93c12/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">FCrudDataset</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/495bfa735bbf08ef1d011fd54132642957ead0f5/packages/vue/src/components/FCrudDataset/FCrudButton.vue">FCrudButton</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/eb95fe682516d58bc2fc926c887c131a15e93c12/packages/vue/src/components/FCrudDataset/FCrudButton.vue">FCrudButton</a>
             
         </code>
          
@@ -1134,13 +1134,13 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-72eab0"></div>
+        <div id="example-851a59"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-72eab0.js"></script>
+        <script type="module" src="./FCrudDatasetTableExample-851a59.js"></script>
     </div>
                 <div>
             <button
@@ -1158,7 +1158,41 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCrudDataset</span>,
+    <span class="hljs-title class_">FCrudButton</span>,
+    <span class="hljs-title class_">FInteractiveTable</span>,
+    <span class="hljs-title class_">FTableColumn</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FCrudButton</span>,
+        <span class="hljs-title class_">FInteractiveTable</span>,
+        <span class="hljs-title class_">FTableColumn</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
@@ -1233,40 +1267,6 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCrudDataset</span>,
-    <span class="hljs-title class_">FCrudButton</span>,
-    <span class="hljs-title class_">FInteractiveTable</span>,
-    <span class="hljs-title class_">FTableColumn</span>,
-    <span class="hljs-title class_">FTextField</span>,
-    <span class="hljs-title class_">FTextareaField</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FCrudButton</span>,
-        <span class="hljs-title class_">FInteractiveTable</span>,
-        <span class="hljs-title class_">FTableColumn</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1311,13 +1311,13 @@ Callback anropas innan modalen visas.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-3b56e0"></div>
+        <div id="example-4309c8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetCustomTextExample-3b56e0.js"></script>
+        <script type="module" src="./FCrudDatasetCustomTextExample-4309c8.js"></script>
     </div>
                 <div>
             <button
@@ -1335,7 +1335,56 @@ Callback anropas innan modalen visas.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCrudDataset</span>,
+    <span class="hljs-title class_">FCrudButton</span>,
+    <span class="hljs-title class_">FList</span>,
+    <span class="hljs-title class_">FStaticField</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FCrudButton</span>,
+        <span class="hljs-title class_">FList</span>,
+        <span class="hljs-title class_">FStaticField</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
+        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
+            };
+        },
+        <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
+            }, <span class="hljs-number">0</span>);
+        },
+        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span>
         <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span>
         <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>
@@ -1416,55 +1465,6 @@ Callback anropas innan modalen visas.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCrudDataset</span>,
-    <span class="hljs-title class_">FCrudButton</span>,
-    <span class="hljs-title class_">FList</span>,
-    <span class="hljs-title class_">FStaticField</span>,
-    <span class="hljs-title class_">FTextField</span>,
-    <span class="hljs-title class_">FTextareaField</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FCrudButton</span>,
-        <span class="hljs-title class_">FList</span>,
-        <span class="hljs-title class_">FStaticField</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
-        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
-            <span class="hljs-keyword">return</span> {
-                <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
-                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
-            };
-        },
-        <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
-                <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
-            }, <span class="hljs-number">0</span>);
-        },
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1517,13 +1517,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-a25a4c"></div>
+        <div id="example-e3645d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-a25a4c.js"></script>
+        <script type="module" src="./FCrudDatasetTableCreateExample-e3645d.js"></script>
     </div>
                 <div>
             <button
@@ -1541,7 +1541,33 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FDataTable</span>,
+        <span class="hljs-title class_">FTableColumn</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-data-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
@@ -1587,32 +1613,6 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FDataTable</span>,
-        <span class="hljs-title class_">FTableColumn</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1626,13 +1626,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-354da7"></div>
+        <div id="example-5a9a49"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableUpdateExample-354da7.js"></script>
+        <script type="module" src="./FCrudDatasetTableUpdateExample-5a9a49.js"></script>
     </div>
                 <div>
             <button
@@ -1650,7 +1650,34 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FCrudButton</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableColumn</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FCrudButton</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FInteractiveTable</span>,
+        <span class="hljs-title class_">FTableColumn</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
@@ -1684,33 +1711,6 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FCrudButton</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableColumn</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FCrudButton</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FInteractiveTable</span>,
-        <span class="hljs-title class_">FTableColumn</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1724,13 +1724,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-d352ed"></div>
+        <div id="example-a6197c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetListExample-d352ed.js"></script>
+        <script type="module" src="./FCrudDatasetListExample-a6197c.js"></script>
     </div>
                 <div>
             <button
@@ -1748,7 +1748,55 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCrudDataset</span>,
+    <span class="hljs-title class_">FCrudButton</span>,
+    <span class="hljs-title class_">FList</span>,
+    <span class="hljs-title class_">FStaticField</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FCrudButton</span>,
+        <span class="hljs-title class_">FList</span>,
+        <span class="hljs-title class_">FStaticField</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
+        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
+            };
+        },
+        <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
+            }, <span class="hljs-number">0</span>);
+        },
+        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span>
         <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span>
         <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;f-crud-dataset-list-example&quot;</span>
@@ -1827,13 +1875,50 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+</code></pre>
+                </div>
+            </div>
+        <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
+            <div
+                id="example-bbc865"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-40b199"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FCrudDatasetSortListExample-40b199.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCrudDataset</span>,
     <span class="hljs-title class_">FCrudButton</span>,
+    <span class="hljs-title class_">FCrudDataset</span>,
     <span class="hljs-title class_">FList</span>,
+    <span class="hljs-title class_">FSortFilterDataset</span>,
     <span class="hljs-title class_">FStaticField</span>,
     <span class="hljs-title class_">FTextField</span>,
     <span class="hljs-title class_">FTextareaField</span>,
@@ -1842,9 +1927,10 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
         <span class="hljs-title class_">FCrudButton</span>,
+        <span class="hljs-title class_">FCrudDataset</span>,
         <span class="hljs-title class_">FList</span>,
+        <span class="hljs-title class_">FSortFilterDataset</span>,
         <span class="hljs-title class_">FStaticField</span>,
         <span class="hljs-title class_">FTextField</span>,
         <span class="hljs-title class_">FTextareaField</span>,
@@ -1869,50 +1955,11 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
             }, <span class="hljs-number">0</span>);
         },
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
-            <div
-                id="example-bbc865"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="example-95c4a9"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetSortListExample-95c4a9.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
@@ -1987,53 +2034,6 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCrudButton</span>,
-    <span class="hljs-title class_">FCrudDataset</span>,
-    <span class="hljs-title class_">FList</span>,
-    <span class="hljs-title class_">FSortFilterDataset</span>,
-    <span class="hljs-title class_">FStaticField</span>,
-    <span class="hljs-title class_">FTextField</span>,
-    <span class="hljs-title class_">FTextareaField</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudButton</span>,
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FList</span>,
-        <span class="hljs-title class_">FSortFilterDataset</span>,
-        <span class="hljs-title class_">FStaticField</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
-        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
-            <span class="hljs-keyword">return</span> {
-                <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
-                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
-            };
-        },
-        <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
-                <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
-            }, <span class="hljs-number">0</span>);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -2532,9 +2532,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/495bfa735bbf08ef1d011fd54132642957ead0f5">495bfa7</a>)<br />
+    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/eb95fe682516d58bc2fc926c887c131a15e93c12">eb95fe6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/416">PR 416</a><br />
-        2025-04-08 13:36
+        2025-04-08 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -1068,7 +1068,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/495bfa735bbf08ef1d011fd54132642957ead0f5/packages/design/src/components/button/_button.scss">button</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/eb95fe682516d58bc2fc926c887c131a15e93c12/packages/design/src/components/button/_button.scss">button</a>
             
         </code>
          
@@ -1127,13 +1127,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-915522"></div>
+        <div id="example-937421"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ButtonLiveExample-915522.js"></script>
+        <script type="module" src="./ButtonLiveExample-937421.js"></script>
     
                 </div>
             <h2 id="primar_knapp"><a class="header-anchor" href="#primar_knapp">Primär knapp</a></h2><p class="docs-paragraph">Använd primär knapp för det primära och det mest troliga alternativet för användaren. Det får bara finnas en primär knapp per sida.</p><h2 id="sekundar_knapp"><a class="header-anchor" href="#sekundar_knapp">Sekundär knapp</a></h2><p class="docs-paragraph">Använd sekundär knapp fristående eller tillsammans med en primär knapp.</p><h2 id="tertiar_knapp"><a class="header-anchor" href="#tertiar_knapp">Tertiär knapp</a></h2><p class="docs-paragraph">Använd tertiär knapp om en sekundär knapp blir för framträdande. Tertiär knapp passar bra när flera knappar ska grupperas, till exmepel om ett kort ska ha knappar för att ändra eller ta bort objekt som kortet representerar. Den kan användas som en tredje knapp tillsammans med en primär och en sekundär knapp i en grupp. Knapptexten ska vara understruken om en tertiär knapp används utan en ikon.</p><p class="docs-paragraph">Du kan ändra utseendet på tertiär knapp genom att ange någon av följande klasser:</p><table class="table">
@@ -1168,13 +1168,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-3210a0"></div>
+        <div id="example-7343ef"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCardExample-3210a0.js"></script>
+        <script type="module" src="./FCardExample-7343ef.js"></script>
     </div>
                 <div>
             <button
@@ -1192,7 +1192,17 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FIcon</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FCardExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FIcon</span> },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-card</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>=<span class="hljs-string">&quot;{ headingSlotClass }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;headingSlotClass&quot;</span>&gt;</span>Arbete<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
@@ -1230,16 +1240,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-card</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FIcon</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FCardExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FIcon</span> },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1410,9 +1410,9 @@ Knappars text för endast skärmläsare (SR-only-text) ska vara så beskrivande 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/495bfa735bbf08ef1d011fd54132642957ead0f5">495bfa7</a>)<br />
+    fix-default-value-filterdataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/eb95fe682516d58bc2fc926c887c131a15e93c12">eb95fe6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/416">PR 416</a><br />
-        2025-04-08 13:36
+        2025-04-08 14:41
 </div>
 <div class="toolbar__item">
     <form id="version">
