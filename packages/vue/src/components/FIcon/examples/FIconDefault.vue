@@ -1,7 +1,3 @@
-<template>
-    <f-icon name="bell"></f-icon>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FIcon } from "@fkui/vue";
@@ -11,3 +7,7 @@ export default defineComponent({
     components: { FIcon },
 });
 </script>
+
+<template>
+    <f-icon name="bell"></f-icon>
+</template>

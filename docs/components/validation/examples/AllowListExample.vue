@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { FTextField } from "@fkui/vue";
+import { ref } from "vue";
+
+const model = ref("");
+</script>
+
 <template>
     <f-text-field
         v-model="model"
@@ -6,10 +13,3 @@
         Fyll i en text (alternativ i lista: foo, bar, baz)</f-text-field
     >
 </template>
-
-<script setup lang="ts">
-import { FTextField } from "@fkui/vue";
-import { ref } from "vue";
-
-const model = ref("");
-</script>

@@ -1,10 +1,3 @@
-<template>
-    <a class="iskiplink" :href="href">
-        <!-- @slot Slot for default skip link text. -->
-        <slot>{{ $t("fkui.skip-link.text", "Gå direkt till innehåll") }}</slot>
-    </a>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { TranslationMixin } from "../../plugins/translation";
@@ -24,3 +17,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <a class="iskiplink" :href="href">
+        <!-- @slot Slot for default skip link text. -->
+        <slot>{{ $t("fkui.skip-link.text", "Gå direkt till innehåll") }}</slot>
+    </a>
+</template>

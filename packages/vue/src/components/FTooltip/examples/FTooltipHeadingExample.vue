@@ -1,3 +1,21 @@
+<script>
+import { defineComponent, useTemplateRef } from "vue";
+import { FTooltip } from "@fkui/vue";
+
+export default defineComponent({
+    components: { FTooltip },
+    setup() {
+        const heading1 = useTemplateRef("heading1");
+        const heading2 = useTemplateRef("heading2");
+        const heading3 = useTemplateRef("heading3");
+        const heading4 = useTemplateRef("heading4");
+        const heading5 = useTemplateRef("heading5");
+        const heading6 = useTemplateRef("heading6");
+        return { heading1, heading2, heading3, heading4, heading5, heading6 };
+    },
+});
+</script>
+
 <template>
     <div ref="heading1">
         <h1>Heading level 1</h1>
@@ -46,21 +64,3 @@
         <template #body> Lorem ipsum dolor sit amet. </template>
     </f-tooltip>
 </template>
-
-<script>
-import { defineComponent, useTemplateRef } from "vue";
-import { FTooltip } from "@fkui/vue";
-
-export default defineComponent({
-    components: { FTooltip },
-    setup() {
-        const heading1 = useTemplateRef("heading1");
-        const heading2 = useTemplateRef("heading2");
-        const heading3 = useTemplateRef("heading3");
-        const heading4 = useTemplateRef("heading4");
-        const heading5 = useTemplateRef("heading5");
-        const heading6 = useTemplateRef("heading6");
-        return { heading1, heading2, heading3, heading4, heading5, heading6 };
-    },
-});
-</script>

@@ -1,20 +1,3 @@
-<template>
-    <div class="f-form-modal-example">
-        <button
-            data-test="form-modal-api-example-button"
-            type="button"
-            class="button button--secondary"
-            @click="onClick"
-        >
-            Öppna Modal
-        </button>
-        <div v-if="result">
-            <pre>Modalen stängdes med resultatet:</pre>
-            <pre id="api-result">{{ result }}</pre>
-        </div>
-    </div>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { formModal } from "@fkui/vue";
@@ -44,3 +27,20 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="f-form-modal-example">
+        <button
+            data-test="form-modal-api-example-button"
+            type="button"
+            class="button button--secondary"
+            @click="onClick"
+        >
+            Öppna Modal
+        </button>
+        <div v-if="result">
+            <pre>Modalen stängdes med resultatet:</pre>
+            <pre id="api-result">{{ result }}</pre>
+        </div>
+    </div>
+</template>

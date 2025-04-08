@@ -1,10 +1,3 @@
-<template>
-    <div class="iflex" :class="classList">
-        <!-- @slot Slot for IFlexItem's -->
-        <slot></slot>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { GAP, FLOAT } from "./constants";
@@ -87,3 +80,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="iflex" :class="classList">
+        <!-- @slot Slot for IFlexItem's -->
+        <slot></slot>
+    </div>
+</template>

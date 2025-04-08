@@ -1,3 +1,16 @@
+<script>
+import { defineComponent } from "vue";
+import { FSelectField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FSelectFieldWidths",
+    components: { FSelectField },
+    data() {
+        return { foo: "" };
+    },
+});
+</script>
+
 <template>
     <f-select-field v-model="foo" v-validation.required label-width="md-9" select-width="md-6">
         <template #label>
@@ -11,16 +24,3 @@
         <option value="BAZ">Baz</option>
     </f-select-field>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FSelectField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FSelectFieldWidths",
-    components: { FSelectField },
-    data() {
-        return { foo: "" };
-    },
-});
-</script>

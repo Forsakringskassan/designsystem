@@ -1,3 +1,16 @@
+<script>
+import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "ValidationPluginValidityEvent",
+    components: { FTextField },
+    data() {
+        return { validityEvent: "", nameModel: "" };
+    },
+});
+</script>
+
 <template>
     <div>
         <strong>ValidityEvent</strong>
@@ -16,16 +29,3 @@
         </f-text-field>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "ValidationPluginValidityEvent",
-    components: { FTextField },
-    data() {
-        return { validityEvent: "", nameModel: "" };
-    },
-});
-</script>

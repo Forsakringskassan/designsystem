@@ -1,53 +1,3 @@
-<template>
-    <div class="select-field" :class="rootClass" @validity="onValidity">
-        <div :class="labelWrapperClass">
-            <f-label :for="id" :class="labelClass">
-                <template #default>
-                    <!-- @slot Slot for label content. -->
-                    <slot name="label"></slot>
-                </template>
-
-                <template v-if="$slots.tooltip" #tooltip>
-                    <!-- @slot Slot for tooltip. -->
-                    <slot name="tooltip"></slot>
-                </template>
-
-                <template #description="{ descriptionClass, formatDescriptionClass }">
-                    <!--
-                    @slot Optional slot for description. See {@link FLabel} for details.
-                    @binding {string[]} descriptionClass CSS classes for primary description content.
-                    @binding {string[]} formatDescriptionClass CSS classes for format description.
-                -->
-                    <slot name="description" :description-class :format-description-class></slot>
-                </template>
-
-                <template #error-message>
-                    <!--
-                    @slot Slot for displaying single or several error messages.
-                    @binding {boolean} hasError Set to true when a validation error is present
-                    @binding {string} validationMessage Descriptive validation error message for current error
-                -->
-                    <slot name="error-message" v-bind="{ hasError, validationMessage }">
-                        <template v-if="hasError">{{ validationMessage }}</template>
-                    </slot>
-                </template>
-            </f-label>
-        </div>
-        <div class="select-field__icon-wrapper" :class="selectWrapperClass">
-            <select :id="id" v-model="vModel" class="select-field__select" v-bind="attrs">
-                <slot></slot>
-            </select>
-            <f-icon
-                v-if="hasError && textFieldTableMode"
-                ref="icon"
-                class="text-field__icon input-icon select-field__error-popup-icon"
-                name="error"
-            ></f-icon>
-            <f-icon class="select-field__icon" name="arrow-down"></f-icon>
-        </div>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, inject } from "vue";
 import { ElementIdService, type ValidityEvent } from "@fkui/logic";
@@ -197,3 +147,53 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="select-field" :class="rootClass" @validity="onValidity">
+        <div :class="labelWrapperClass">
+            <f-label :for="id" :class="labelClass">
+                <template #default>
+                    <!-- @slot Slot for label content. -->
+                    <slot name="label"></slot>
+                </template>
+
+                <template v-if="$slots.tooltip" #tooltip>
+                    <!-- @slot Slot for tooltip. -->
+                    <slot name="tooltip"></slot>
+                </template>
+
+                <template #description="{ descriptionClass, formatDescriptionClass }">
+                    <!--
+                    @slot Optional slot for description. See {@link FLabel} for details.
+                    @binding {string[]} descriptionClass CSS classes for primary description content.
+                    @binding {string[]} formatDescriptionClass CSS classes for format description.
+                -->
+                    <slot name="description" :description-class :format-description-class></slot>
+                </template>
+
+                <template #error-message>
+                    <!--
+                    @slot Slot for displaying single or several error messages.
+                    @binding {boolean} hasError Set to true when a validation error is present
+                    @binding {string} validationMessage Descriptive validation error message for current error
+                -->
+                    <slot name="error-message" v-bind="{ hasError, validationMessage }">
+                        <template v-if="hasError">{{ validationMessage }}</template>
+                    </slot>
+                </template>
+            </f-label>
+        </div>
+        <div class="select-field__icon-wrapper" :class="selectWrapperClass">
+            <select :id="id" v-model="vModel" class="select-field__select" v-bind="attrs">
+                <slot></slot>
+            </select>
+            <f-icon
+                v-if="hasError && textFieldTableMode"
+                ref="icon"
+                class="text-field__icon input-icon select-field__error-popup-icon"
+                name="error"
+            ></f-icon>
+            <f-icon class="select-field__icon" name="arrow-down"></f-icon>
+        </div>
+    </div>
+</template>

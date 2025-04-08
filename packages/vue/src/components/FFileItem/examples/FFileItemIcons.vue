@@ -1,14 +1,3 @@
-<template>
-    <div>
-        <f-file-item
-            v-for="item in files"
-            :key="item.fileName"
-            :file-name="item.fileName"
-            :mime-type="item.fileType"
-        ></f-file-item>
-    </div>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FFileItem } from "@fkui/vue";
@@ -30,3 +19,14 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <f-file-item
+            v-for="item in files"
+            :key="item.fileName"
+            :file-name="item.fileName"
+            :mime-type="item.fileType"
+        ></f-file-item>
+    </div>
+</template>

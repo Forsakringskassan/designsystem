@@ -1,7 +1,3 @@
-<template>
-    <f-phone-text-field v-model="phone" v-validation.required></f-phone-text-field>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FPhoneTextField } from "@fkui/vue";
@@ -14,3 +10,7 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-phone-text-field v-model="phone" v-validation.required></f-phone-text-field>
+</template>

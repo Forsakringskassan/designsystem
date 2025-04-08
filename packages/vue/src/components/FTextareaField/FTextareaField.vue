@@ -1,56 +1,3 @@
-<template>
-    <div class="textarea-field" :class="validityClass">
-        <f-label :for="id">
-            <template #default>
-                <!-- @slot Slot for label content. -->
-                <slot name="default"></slot>
-            </template>
-
-            <template v-if="$slots.tooltip" #tooltip>
-                <!-- @slot Slot for tooltip. -->
-                <slot name="tooltip"></slot>
-            </template>
-
-            <template #description="{ descriptionClass, formatDescriptionClass }">
-                <!--
-                @slot Optional slot for description. See {@link FLabel} for details.
-                @binding {string[]} descriptionClass CSS classes for primary description content.
-                @binding {string[]} formatDescriptionClass CSS classes for format description.
-            -->
-                <slot name="description" :description-class :format-description-class></slot>
-            </template>
-
-            <template #error-message>
-                <!--
-                @slot Slot for displaying single or several error messages.
-                @binding {boolean} hasError Set to true when a validation error is present
-                @binding {string} validationMessage Descriptive validation error message for current error
-            -->
-                <slot name="error-message" v-bind="{ hasError, validationMessage }">
-                    <template v-if="hasError">{{ validationMessage }}</template>
-                </slot>
-            </template>
-        </f-label>
-
-        <f-label v-if="softLimit" :for="id" aria-live="polite">
-            <template #description="{ descriptionClass }">
-                <span v-if="showCharactersLeftWarning" :class="descriptionClass">
-                    {{ charactersLeftWarningInterpolated }}
-                </span>
-            </template>
-        </f-label>
-        <textarea
-            :id="id"
-            :class="textareaClass"
-            v-bind="attrs"
-            :disabled="disabled"
-            @input="onInput"
-            @validity="onValidity"
-            @pending-validity="onPendingValidity"
-        ></textarea>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { type ValidityEvent, isSet, ElementIdService } from "@fkui/logic";
@@ -229,3 +176,56 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="textarea-field" :class="validityClass">
+        <f-label :for="id">
+            <template #default>
+                <!-- @slot Slot for label content. -->
+                <slot name="default"></slot>
+            </template>
+
+            <template v-if="$slots.tooltip" #tooltip>
+                <!-- @slot Slot for tooltip. -->
+                <slot name="tooltip"></slot>
+            </template>
+
+            <template #description="{ descriptionClass, formatDescriptionClass }">
+                <!--
+                @slot Optional slot for description. See {@link FLabel} for details.
+                @binding {string[]} descriptionClass CSS classes for primary description content.
+                @binding {string[]} formatDescriptionClass CSS classes for format description.
+            -->
+                <slot name="description" :description-class :format-description-class></slot>
+            </template>
+
+            <template #error-message>
+                <!--
+                @slot Slot for displaying single or several error messages.
+                @binding {boolean} hasError Set to true when a validation error is present
+                @binding {string} validationMessage Descriptive validation error message for current error
+            -->
+                <slot name="error-message" v-bind="{ hasError, validationMessage }">
+                    <template v-if="hasError">{{ validationMessage }}</template>
+                </slot>
+            </template>
+        </f-label>
+
+        <f-label v-if="softLimit" :for="id" aria-live="polite">
+            <template #description="{ descriptionClass }">
+                <span v-if="showCharactersLeftWarning" :class="descriptionClass">
+                    {{ charactersLeftWarningInterpolated }}
+                </span>
+            </template>
+        </f-label>
+        <textarea
+            :id="id"
+            :class="textareaClass"
+            v-bind="attrs"
+            :disabled="disabled"
+            @input="onInput"
+            @validity="onValidity"
+            @pending-validity="onPendingValidity"
+        ></textarea>
+    </div>
+</template>

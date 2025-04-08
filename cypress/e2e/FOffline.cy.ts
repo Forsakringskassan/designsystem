@@ -1,5 +1,5 @@
-import { FOfflinePageObject } from "@fkui/vue/cypress";
 import { FOfflineLocalePageobject } from "../pageobjects/FOfflineLocale.pageobject";
+import { FOfflinePageObject } from "@fkui/vue/cypress";
 
 describe("FOffline", () => {
     const offline = new FOfflinePageObject();

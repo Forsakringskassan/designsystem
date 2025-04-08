@@ -1,3 +1,72 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import {
+    FTextField,
+    FTextareaField,
+    FSelectField,
+    FDatepickerField,
+    FFieldset,
+    FCheckboxField,
+    FRadioField,
+    FDataTable,
+    FTableColumn,
+    FList,
+    FCard,
+    FBadge,
+    FExpandableParagraph,
+    FExpandablePanel,
+    FMessageBox,
+    FTooltip,
+    FIcon,
+    FStaticField,
+} from "@fkui/vue";
+
+export default defineComponent({
+    components: {
+        FTextField,
+        FTextareaField,
+        FSelectField,
+        FDatepickerField,
+        FFieldset,
+        FCheckboxField,
+        FRadioField,
+        FDataTable,
+        FTableColumn,
+        FList,
+        FCard,
+        FBadge,
+        FExpandableParagraph,
+        FExpandablePanel,
+        FMessageBox,
+        FTooltip,
+        FIcon,
+        FStaticField,
+    },
+    data() {
+        return {
+            components: [] as string[],
+            densityLeft: "density-default",
+            densityRight: "density-dense",
+            textField: "Text",
+            textAreaField: [1, 2, 3, 4].map((it) => `Rad ${it}`).join("\n"),
+            selectField: "Text",
+            datepickerField: "2024-01-01",
+            checkboxField: [],
+            radioField: "",
+            dataTableRows: ["1", "2", "3"].map((id) => ({ id })),
+            dataTableColumns: ["1", "2", "3"].map((id) => ({ id })),
+            listItems: ["1", "2", "3"].map((id) => ({ id })),
+            listSelectedItems: [],
+        };
+    },
+    computed: {
+        densities(): Array<{ class: string }> {
+            return [this.densityLeft, this.densityRight].map((it) => ({ class: it }));
+        },
+    },
+});
+</script>
+
 <template>
     <div class="container-fluid">
         <div class="row">
@@ -206,72 +275,3 @@
         </div>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import {
-    FTextField,
-    FTextareaField,
-    FSelectField,
-    FDatepickerField,
-    FFieldset,
-    FCheckboxField,
-    FRadioField,
-    FDataTable,
-    FTableColumn,
-    FList,
-    FCard,
-    FBadge,
-    FExpandableParagraph,
-    FExpandablePanel,
-    FMessageBox,
-    FTooltip,
-    FIcon,
-    FStaticField,
-} from "@fkui/vue";
-
-export default defineComponent({
-    components: {
-        FTextField,
-        FTextareaField,
-        FSelectField,
-        FDatepickerField,
-        FFieldset,
-        FCheckboxField,
-        FRadioField,
-        FDataTable,
-        FTableColumn,
-        FList,
-        FCard,
-        FBadge,
-        FExpandableParagraph,
-        FExpandablePanel,
-        FMessageBox,
-        FTooltip,
-        FIcon,
-        FStaticField,
-    },
-    data() {
-        return {
-            components: [] as string[],
-            densityLeft: "density-default",
-            densityRight: "density-dense",
-            textField: "Text",
-            textAreaField: [1, 2, 3, 4].map((it) => `Rad ${it}`).join("\n"),
-            selectField: "Text",
-            datepickerField: "2024-01-01",
-            checkboxField: [],
-            radioField: "",
-            dataTableRows: ["1", "2", "3"].map((id) => ({ id })),
-            dataTableColumns: ["1", "2", "3"].map((id) => ({ id })),
-            listItems: ["1", "2", "3"].map((id) => ({ id })),
-            listSelectedItems: [],
-        };
-    },
-    computed: {
-        densities(): Array<{ class: string }> {
-            return [this.densityLeft, this.densityRight].map((it) => ({ class: it }));
-        },
-    },
-});
-</script>

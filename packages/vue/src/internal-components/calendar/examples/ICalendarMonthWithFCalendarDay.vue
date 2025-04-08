@@ -1,11 +1,3 @@
-<template>
-    <i-calendar-month v-model="month" :min-date="minDate" :max-date="maxDate" @click="onClick">
-        <template #default="{ date, isFocused }">
-            <f-calendar-day :day="date" :focused="isFocused"> </f-calendar-day>
-        </template>
-    </i-calendar-month>
-</template>
-
 <script lang="ts">
 import { defineComponent, shallowRef } from "vue";
 import { ICalendarMonth, FCalendarDay } from "@fkui/vue";
@@ -31,3 +23,11 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <i-calendar-month v-model="month" :min-date="minDate" :max-date="maxDate" @click="onClick">
+        <template #default="{ date, isFocused }">
+            <f-calendar-day :day="date" :focused="isFocused"> </f-calendar-day>
+        </template>
+    </i-calendar-month>
+</template>

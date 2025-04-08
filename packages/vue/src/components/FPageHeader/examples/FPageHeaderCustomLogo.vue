@@ -1,13 +1,3 @@
-<template>
-    <f-page-header>
-        Exempelapplikation
-        <template #right> Namn Namnsson </template>
-        <template #logo>
-            <span class="my-own-logos" aria-label="Annan logotyp" role="img"> </span>
-        </template>
-    </f-page-header>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FPageHeader } from "@fkui/vue";
@@ -17,6 +7,16 @@ export default defineComponent({
     components: { FPageHeader },
 });
 </script>
+
+<template>
+    <f-page-header>
+        Exempelapplikation
+        <template #right> Namn Namnsson </template>
+        <template #logo>
+            <span class="my-own-logos" aria-label="Annan logotyp" role="img"> </span>
+        </template>
+    </f-page-header>
+</template>
 
 <style>
 .my-own-logos {
