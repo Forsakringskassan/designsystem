@@ -7,7 +7,7 @@
 @use "@fkui/design/src/core/mixins/breakpoints";
 @use "@fkui/design/src/fkui";
 @use "@forsakringskassan/docs-generator/style";
-@use "@forsakringskassan/docs-live-example/dist/main";
+@use "@forsakringskassan/docs-live-example";
 
 $fk-logo-small: "fk-logo-primary-small.svg";
 $fk-logo-large: "fk-logo-primary-large.svg";
