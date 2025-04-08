@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-298fe8.css"
+            href="../assets/docs-f95f90.css"
             crossorigin
-            integrity="sha384-jcyOaRxo5XLk1c1rrWQ9e1ea0Ued5Ulg3vkxiMt2vP2gL2t9IDVxZV9iINfjuSo8"
+            integrity="sha384-THP+AVsqZoa7o1IFweA0tnwwagE6d9c59RmvMvZunfCo0YQ3De8sFSyynosKpw83"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-392b57.css"
+            href="../assets/docs-fkui-6244f1.css"
             crossorigin
-            integrity="sha384-njL2NZ488ii/iwdnSXddW0ESr8X9nHLSSS44xkRUOpMdATLYtVOZPvtDYoGeJXgb"
+            integrity="sha384-TzrWFKJCoX4bZp1gH9GSzw/JAmQ05yRHgH3CCRfofGIEAOPLMs5JNsDUsiaYkB2F"
             data-theme="fkui" disabled
         />
 
@@ -26,15 +26,15 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-6c2e41.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-9eb215.js",
-    "@fkui/date": "../assets/vendor-fkui-date-d56889.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-a0f3e4.js"
+    "@fkui/logic": "../assets/vendor-fkui-logic-c06ed0.js",
+    "@fkui/date": "../assets/vendor-fkui-date-d11adb.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-889cc9.js"
   },
   "integrity": {
     "../assets/vendor-vue-6c2e41.js": "sha384-YEv4tbVQlGj3XZu1k08lRfiDBJ6kZ+kj+WwpGdcMsyRsbPcuo6/9ExhKEAPH6LwP",
-    "../assets/vendor-fkui-logic-9eb215.js": "sha384-SsIsHX64zYq4ArhfQnh1rUzarl+9N5HdtRmAb15etFlGfOMkN8Mwr5O1Qx3Jrb0V",
-    "../assets/vendor-fkui-date-d56889.js": "sha384-Dpk/nRM9VKt023lizUK5KM1SUvR4lrVcREL83rPy0UUoQM2eGfRa8Y28l70iS9Zk",
-    "../assets/vendor-fkui-vue-a0f3e4.js": "sha384-f6Eyslz07xww9/vVMa4etNAbDaB/Ai20QkhrYVA+BvdJ0tewnVNbTtO6LwlpceTT"
+    "../assets/vendor-fkui-logic-c06ed0.js": "sha384-FlZw+HsGkcDZ9Pv8S2Oh2tzFy/xoCapwWSTFG5OAuJXoJYX1aGnfD9i0HfD165qm",
+    "../assets/vendor-fkui-date-d11adb.js": "sha384-X12fOIHKUKGgD0l/UlcXFi10Tij8/mCElKW44ma4fJmying2dQoELzvX0hIALN7I",
+    "../assets/vendor-fkui-vue-889cc9.js": "sha384-lIzx2waY4WXY2J106Mgj3Gc9Br8+ZrIYouYNUzmL3cHHlNtoEPV/uaIH/gHUvbaT"
   }
 }
         </script>
@@ -131,28 +131,29 @@
 <div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="./"
+            
+            
+            
+            data-path="components/"
             
         >
             Komponenter
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+    </li><li class="link active">
         <a
             href="./xtimetextfield.html"
+            
+            
+            
+            data-path="components/xtimetextfield.html"
             
         >
             Tidsinmatning
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 </nav>
 </div>
 
@@ -204,10 +205,9 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>När det behövs ett textinmatningsfält för timmar och minuter, tt:mm. Accepterar inmatning med eller
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">När det behövs ett textinmatningsfält för timmar och minuter, tt:mm. Accepterar inmatning med eller
 utan kolon. Utan kolon tolkas inmatningen som enbart timmar. Om man matar in ett kolon måste det
-följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). Exempel:</p>
-<table class="table">
+följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). Exempel:</p><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Inmatning</th>
@@ -243,8 +243,7 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
 </tr>
 </tbody>
 </table>
-<p>Lagrar värdet internt i ett <code>Number</code> som plockas ut med <code>v-model</code>.</p>
-<h3 id="enkelt_exempel"><a class="header-anchor" href="#enkelt_exempel">Enkelt exempel</a></h3>
+<p class="docs-paragraph">Lagrar värdet internt i ett <code>Number</code> som plockas ut med <code>v-model</code>.</p><h3 id="enkelt_exempel"><a class="header-anchor" href="#enkelt_exempel">Enkelt exempel</a></h3>
             <div
                 id="example-df23f2"
                 class="code-preview code-preview--default"
@@ -254,13 +253,13 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
             >
                 
                 <div class="code-preview__preview">
-        <div id="XTimeTextFieldExample"></div>
+        <div id="example-e1dffd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XTimeTextFieldExample-6a992d.js"></script>
+        <script type="module" src="./XTimeTextFieldExample-e1dffd.js"></script>
     </div>
                 <div>
             <button
@@ -335,14 +334,13 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
 </code></pre>
                 </div>
             </div>
-        <h2 id="forlatande_inmatning"><a class="header-anchor" href="#forlatande_inmatning">Förlåtande inmatning</a></h2><p>Det är inte ovanligt med ett behov av att endast tillåta tidsangivelser upp till ett dygn
+        <h2 id="forlatande_inmatning"><a class="header-anchor" href="#forlatande_inmatning">Förlåtande inmatning</a></h2><p class="docs-paragraph">Det är inte ovanligt med ett behov av att endast tillåta tidsangivelser upp till ett dygn
 (24 timmar). Det går att sätta en egen parsingparameter istället. Detta görs i stil med
 <code>:parser=&quot;forgivingParseTimeToNumber&quot;</code>. I denna komponenten tolkas även fyra siffror inte
 längre som timmar, utan som timmar och minuter. De två första siffrorna tolkas som timmar
 och de två sista som minuter. Notera att tre siffror och fem siffror fortfarande tolkas
 som timmar.
-Exempel:</p>
-<table class="table">
+Exempel:</p><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Inmatning</th>
@@ -388,13 +386,13 @@ Exempel:</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="ForgivingInput"></div>
+        <div id="example-021453"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ForgivingInput-3214e6.js"></script>
+        <script type="module" src="./ForgivingInput-021453.js"></script>
     </div>
                 <div>
             <button
@@ -487,9 +485,15 @@ Exempel:</p>
             </div>
 
             <footer>
-                <!-- prettier-ignore --><div class="footer">
-    <!-- prettier-ignore -->
-    
+                <!-- prettier-ignore --><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="../changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content">
+        <!-- prettier-ignore -->
+        
+    </div>
 </div>
 </footer>
         </div>
@@ -569,10 +573,10 @@ Exempel:</p>
         <!-- prettier-ignore -->
         <!-- prettier-ignore -->
         <script
-            src="../assets/main-f57e73.js"
+            src="../assets/main-4e017a.js"
             type="module"
             crossorigin
-            integrity="sha384-FGs3BktAZXSgQlpWrETLnee/3WRZXyD0W3/9XAYQFX3pn+sACjYZ4tFXI8+mWKtk"
+            integrity="sha384-ia5lk+4uQSceM2537Ee6lK2HLAd4V28wnHMdbltvcp7QX8dAs6CuXu8zYGaY3RDs"
             
         ></script>
     </body>
