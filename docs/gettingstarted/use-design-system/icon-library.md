@@ -32,7 +32,7 @@ Ikoner renderas sedan genom följande markup:
 
 ```html static
 <svg focusable="false">
-    <use xlink:href="#f-icon-pen"></use>
+    <use href="#f-icon-pen"></use>
 </svg>
 ```
 

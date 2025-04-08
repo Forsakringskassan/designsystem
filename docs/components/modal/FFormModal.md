@@ -103,15 +103,50 @@ Du kan antingen låta din formulärsmodal hantera detta genom att internt kopier
 
 Du öppnar modalen med {@link form-modal `formModal()`} (options API) eller {@link useModal `useModal()`} (composition API).
 
-```ts
-// options api
-const result = await formModal<Person>(this, PersonFormModal);
+**Options API:**
 
-// composition api
+```ts
+import { defineComponent } from "vue";
+import { formModal } from "@fkui/vue";
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface Person {}
+
+const PersonFormModal = defineComponent({});
+
+defineComponent({
+    methods: {
+        async dummy() {
+            /* --- cut above --- */
+
+            const result = await formModal<Person>(this, PersonFormModal);
+
+            /* --- cut below --- */
+        },
+    },
+});
+```
+
+**Composition API:**
+
+```
+import { defineComponent } from "vue";
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface Person {}
+
+const PersonFormModal = defineComponent({});
+
+/* --- cut above --- */
+
+import { useModal } from "@fkui/vue";
+
 const { formModal } = useModal();
 
 async function onOpen(): Promise<void> {
-    const result = await formModal<Person>(PersonFormModal);
+	const result = await formModal<Person>(PersonFormModal);
+
+	/* do something with result */
 }
 ```
 
@@ -121,6 +156,19 @@ Om användaren avbryter modalen avvisas `Promise` med `reject()` .
 Förifylld data kan skickas in med propen `value`:
 
 ```ts
+import { defineComponent } from "vue";
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface Person {}
+
+const PersonFormModal = defineComponent({});
+
+/* --- cut above --- */
+
+import { useModal } from "@fkui/vue";
+
+const { formModal } = useModal();
+
 const result = await formModal<Person>(PersonFormModal, {
     props: {
         value: {
@@ -156,11 +204,26 @@ Komponenten har en prop `buttons` som styr vilka knappar som finns i modalens si
 Med den kan du ta bort existerande knappar eller använda en helt egen uppsättning.
 
 ```ts
-const formdata = await formModal(this, MyAwesomeModal, {
-    props: {
-        buttons: [
-            /* ... */
-        ],
+import { defineComponent } from "vue";
+import { formModal } from "@fkui/vue";
+
+const MyAwesomeModal = defineComponent({});
+
+defineComponent({
+    methods: {
+        async dummy() {
+            /* --- cut above --- */
+
+            const formdata = await formModal(this, MyAwesomeModal, {
+                props: {
+                    buttons: [
+                        /* ... */
+                    ],
+                },
+            });
+
+            /* --- cut below --- */
+        },
     },
 });
 ```
@@ -178,7 +241,7 @@ export interface FModalButtonDescriptor {
 }
 ```
 
-```ts
+```ts nocompile nolint
 buttons: [{ label: "Stäng", event: "dismiss" }];
 ```
 
@@ -216,19 +279,52 @@ Notera att det är metoden `onBeforeSubmit` som ska skickas in i sin helhelt, an
 I `onBeforeSubmit` har du möjlighet att sätta nya valideringsfel på inmatningsfält:
 
 ```ts
-onBeforeSubmit(): void {
-    const myField = getElementFromVueRef(this.$refs.myField);
-    ValidationService.setError(myField, "This value is invalid!");
-},
+import { ValidationService } from "@fkui/logic";
+import { getElementFromVueRef, FFormModalAction } from "@fkui/vue";
+import { defineComponent } from "vue";
+
+defineComponent({
+    data() {
+        return {
+            showErrorMessage: false,
+        };
+    },
+    methods: {
+        /* --- cut above --- */
+
+        onBeforeSubmit(): void {
+            const myField = getElementFromVueRef(this.$refs.myField);
+            ValidationService.setError(myField, "This value is invalid!");
+        },
+
+        /* --- cut below --- */
+    },
+});
 ```
 
 Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera `FFormModalAction.CANCEL` från `onBeforeSubmit`:
 
 ```ts
-onBeforeSubmit(): FFormModalAction {
-    this.showErrorMessage = true;
-    return FFormModalAction.CANCEL;
-},
+import { FFormModalAction } from "@fkui/vue";
+import { defineComponent } from "vue";
+
+defineComponent({
+    data() {
+        return {
+            showErrorMessage: false,
+        };
+    },
+    methods: {
+        /* --- cut above --- */
+
+        onBeforeSubmit(): FFormModalAction {
+            this.showErrorMessage = true;
+            return FFormModalAction.CANCEL;
+        },
+
+        /* --- cut below --- */
+    },
+});
 ```
 
 ## API

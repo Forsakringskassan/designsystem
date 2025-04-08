@@ -6,12 +6,13 @@ import {
 } from "vue";
 import isEqual from "lodash/isEqual";
 import {
-    isValidatableHTMLElement,
-    ValidationService,
     type ValidatableHTMLElement,
     type ValidatorName,
     type ValidatorConfigs,
     type ValidatorConfig,
+    availableValidators,
+    isValidatableHTMLElement,
+    ValidationService,
 } from "@fkui/logic";
 import { ComponentValidityEvent } from "../../types";
 
@@ -98,6 +99,11 @@ const ValidationPrefixDirective: Directive<HTMLElement, string> = {
  */
 export const ValidationPlugin: Plugin = {
     install(app: App) {
+        /* register all builtin validators */
+        for (const validator of availableValidators) {
+            ValidationService.registerValidator(validator);
+        }
+
         app.directive("validation", ValidationDirective);
         app.directive("validationPrefix", ValidationPrefixDirective);
     },

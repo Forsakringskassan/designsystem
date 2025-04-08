@@ -141,6 +141,7 @@ $table-input-offset-horizontal: 0.25rem;
             font-weight: $table-header-font-weight;
             line-height: var(--f-line-height-large);
             padding: $table-header-padding;
+            text-align: left;
             vertical-align: top;
 
             &:last-child {
@@ -232,7 +233,7 @@ $table-input-offset-horizontal: 0.25rem;
             @extend %table-row-normal;
 
             &--collapsed {
-                visibility: collapse;
+                display: none;
             }
         }
 

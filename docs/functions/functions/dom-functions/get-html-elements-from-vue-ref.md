@@ -7,8 +7,8 @@ layout: content-with-menu
 Gets an array of `HTMLElement` items from a ref.
 If there are none, the array returned will be empty rather than `undefined`.
 
-```ts
-export function getHTMLElementsFromVueRef(ref: unknown): HTMLElement[];
+```ts nocompile
+function getHTMLElementsFromVueRef(ref: unknown): HTMLElement[];
 ```
 
 - `ref` - The ref to extract `HTMLElement` items from.

@@ -6,6 +6,6 @@ layout: content-with-menu
 
 (Odokumenterad typ)
 
-```ts
-export type MaybeComponent = Component | undefined;
+```ts nocompile
+type MaybeComponent = Component | undefined;
 ```
