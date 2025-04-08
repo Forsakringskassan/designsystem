@@ -64,7 +64,6 @@ describe("should have correct colspan", () => {
                         </template>
                         <template #default="{ row }">
                             <f-table-column
-                                name="name.en"
                                 title="Namn"
                                 description="(engelska)"
                                 :row-header="true"
@@ -73,7 +72,6 @@ describe("should have correct colspan", () => {
                                 {{ row.name.en }}
                             </f-table-column>
                             <f-table-column
-                                name="name.sv"
                                 title="Namn"
                                 description="(svenska)"
                                 type="text"
@@ -134,7 +132,6 @@ describe("should have correct colspan", () => {
                         </template>
                         <template #default="{ row }">
                             <f-table-column
-                                name="name.en"
                                 title="Namn"
                                 description="(engelska)"
                                 :row-header="true"
@@ -143,7 +140,6 @@ describe("should have correct colspan", () => {
                                 {{ row.name.en }}
                             </f-table-column>
                             <f-table-column
-                                name="name.sv"
                                 title="Namn"
                                 description="(svenska)"
                                 type="text"
@@ -203,7 +199,6 @@ describe("should hide or show column even when table is empty", () => {
                         </template>
                         <template #default="{ row }">
                             <f-table-column
-                                name="name.sv"
                                 title="Namn"
                                 description="(svenska)"
                                 type="text"
@@ -212,7 +207,6 @@ describe("should hide or show column even when table is empty", () => {
                             </f-table-column>
                             <f-table-column
                                 :visible="${visible ? "true" : "false"}"
-                                name="name.en"
                                 title="Namn"
                                 description="(engelska)"
                                 :row-header="true"
@@ -252,10 +246,10 @@ it("should be able to toggle column visibility when table is empty", async () =>
             <f-interactive-table :rows="rows" key-attribute="id">
                 <template #caption> Caption </template>
                 <template #default="{ row }">
-                    <f-table-column name="col1" title="Col1">
+                    <f-table-column title="Col1">
                         {{ row.data }}
                     </f-table-column>
-                    <f-table-column :visible name="col2" title="Col2">
+                    <f-table-column :visible title="Col2">
                         {{ row.data }}
                     </f-table-column>
                 </template>
@@ -293,10 +287,10 @@ describe("should match snapshot", () => {
         template: /* HTML */ `
             <f-interactive-table :rows="rows" key-attribute="a">
                 <template #default="{ row }">
-                    <f-table-column name="a" title="A" type="text">
+                    <f-table-column title="A" type="text">
                         {{ row.a }}
                     </f-table-column>
-                    <f-table-column name="b" title="A" type="numeric">
+                    <f-table-column title="A" type="numeric">
                         {{ row.b }}
                     </f-table-column>
                 </template>
@@ -334,8 +328,8 @@ it("should add table colum headers to <thead> with correct classes", async () =>
         template: /* HTML */ `
             <f-interactive-table :rows="rows" key-attribute="id">
                 <template #default="{ row }">
-                    <f-table-column name="a" title="A" shrink></f-table-column>
-                    <f-table-column name="b" title="B"></f-table-column>
+                    <f-table-column title="A" shrink></f-table-column>
+                    <f-table-column title="B"></f-table-column>
                 </template>
             </f-interactive-table>
         `,
@@ -395,7 +389,7 @@ it("should set scope on table columns", async () => {
         template: /* HTML */ `
             <f-interactive-table :rows="rows" key-attribute="id">
                 <template #default="{ row }">
-                    <f-table-column name="a" title="A"></f-table-column>
+                    <f-table-column title="A"></f-table-column>
                 </template>
             </f-interactive-table>
         `,
@@ -507,7 +501,7 @@ it("should not add table__row--striped class unless striped is set", async () =>
         template: /* HTML */ `
             <f-interactive-table :rows="rows" key-attribute="id">
                 <template #default="{ row }">
-                    <f-table-column name="a" title="A"></f-table-column>
+                    <f-table-column title="A"></f-table-column>
                 </template>
             </f-interactive-table>
         `,
@@ -532,7 +526,7 @@ it("should add table__row--striped class to every other row when striped is set"
         template: /* HTML */ `
             <f-interactive-table :rows="rows" key-attribute="id" striped>
                 <template #default="{ row }">
-                    <f-table-column name="a" title="A"></f-table-column>
+                    <f-table-column title="A"></f-table-column>
                 </template>
             </f-interactive-table>
         `,
@@ -647,7 +641,7 @@ it("should add an extra column when selectable is enabled", async () => {
         template: /* HTML */ `
             <f-interactive-table :rows="rows" key-attribute="id" selectable>
                 <template #default="{ row }">
-                    <f-table-column name="a" title="A"></f-table-column>
+                    <f-table-column title="A"></f-table-column>
                 </template>
             </f-interactive-table>
         `,
@@ -909,7 +903,7 @@ it("should handle nestled row objects when no rows are present", async () => {
             <f-interactive-table :rows="[]" key-attribute="id">
                 <template #caption> My fancy caption </template>
                 <template #default="{ row }">
-                    <f-table-column name="test" title="My Awesome Column">
+                    <f-table-column title="My Awesome Column">
                         {{ row.some.deeply.nested.prop }}
                     </f-table-column>
                 </template>
@@ -987,7 +981,7 @@ describe("Expandable rows", () => {
                 >
                     <template #caption> Expanderbara rader </template>
                     <template #default="{ row }">
-                        <f-table-column name="names" title="Fruit">
+                        <f-table-column title="Fruit">
                             Juicy {{ row.name }}
                         </f-table-column>
                     </template>

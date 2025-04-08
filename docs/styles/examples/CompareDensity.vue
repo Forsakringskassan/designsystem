@@ -172,7 +172,6 @@ export default defineComponent({
                         <f-table-column
                             v-for="column in dataTableColumns"
                             :key="column.id"
-                            :name="column.id"
                             title="Kolumnrubrik"
                             type="text"
                         >

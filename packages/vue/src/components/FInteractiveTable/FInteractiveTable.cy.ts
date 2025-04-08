@@ -42,21 +42,16 @@ const defaultTemplate = /* HTML */ `
     >
         <template #caption> Föräldrapenning </template>
         <template #default="{ row }">
-            <f-table-column name="level" title="Nivå" type="text">
+            <f-table-column title="Nivå" type="text">
                 {{ row.level }}
             </f-table-column>
-            <f-table-column
-                name="start"
-                title="Från och med"
-                type="text"
-                expand
-            >
+            <f-table-column title="Från och med" type="text" expand>
                 {{ row.start }}
             </f-table-column>
-            <f-table-column name="end" title="Till och med" type="text">
+            <f-table-column title="Till och med" type="text">
                 {{ row.end }}
             </f-table-column>
-            <f-table-column name="antal" title="Antal dagar" type="numeric">
+            <f-table-column title="Antal dagar" type="numeric">
                 {{ row.antal }}
             </f-table-column>
         </template>

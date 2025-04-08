@@ -177,7 +177,7 @@ export default defineComponent({
         },
         actions(): string {
             const actions = /* HTML */ `
-                <f-table-column name="actions" title="Åtgärd" type="action" shrink>
+                <f-table-column title="Åtgärd" type="action" shrink>
                     <button
                         aria-label="Redigera"
                         class="button button--tertiary button--small"
@@ -208,11 +208,10 @@ export default defineComponent({
                 >
                     <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
-                        <f-table-column name="level" title="Nivå" ${this.rowHeader} type="text">
+                        <f-table-column title="Nivå" ${this.rowHeader} type="text">
                             {{ row.level }}
                         </f-table-column>
                         <f-table-column
-                            name="start"
                             title="Från och med"
                             ${this.rowDescription}
                             type="text"
@@ -220,15 +219,10 @@ export default defineComponent({
                         >
                             {{ row.start }}
                         </f-table-column>
-                        <f-table-column
-                            name="end"
-                            title="Till och med"
-                            ${this.rowDescription}
-                            type="text"
-                        >
+                        <f-table-column title="Till och med" ${this.rowDescription} type="text">
                             {{ row.end }}
                         </f-table-column>
-                        <f-table-column name="antal" title="Antal dagar" type="numeric">
+                        <f-table-column title="Antal dagar" type="numeric">
                             {{ row.antal }}
                         </f-table-column>
                         ${this.actions}

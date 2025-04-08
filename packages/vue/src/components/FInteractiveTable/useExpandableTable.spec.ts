@@ -9,9 +9,7 @@ const UnexpandableComponent = {
     template: /* HTML */ `
         <f-interactive-table :rows="rows" key-attribute="id">
             <template #default="{ row }">
-                <f-table-column name="name" title="Name">
-                    {{ row.name }}
-                </f-table-column>
+                <f-table-column title="Name"> {{ row.name }} </f-table-column>
             </template>
         </f-interactive-table>
     `,
@@ -31,10 +29,8 @@ const UnslottedComponent = {
             expandable-attribute="expandable"
         >
             <template #default="{ row }">
-                <f-table-column name="name" title="Name">
-                    {{ row.name }}
-                </f-table-column>
-                <f-table-column name="amount" title="Amount">
+                <f-table-column title="Name"> {{ row.name }} </f-table-column>
+                <f-table-column title="Amount">
                     {{ row.amount }}
                 </f-table-column>
             </template>
@@ -63,10 +59,8 @@ const SlottedComponent = {
             expandable-attribute="expandable"
         >
             <template #default="{ row }">
-                <f-table-column name="name" title="Name">
-                    {{ row.name }}
-                </f-table-column>
-                <f-table-column name="amount" title="Amount">
+                <f-table-column title="Name"> {{ row.name }} </f-table-column>
+                <f-table-column title="Amount">
                     {{ row.amount }}
                 </f-table-column>
             </template>
@@ -191,7 +185,7 @@ describe("useExpandableTable", () => {
                     expandable-attribute="expandable"
                 >
                     <template #default="{ row }">
-                        <f-table-column name="name" title="Name">
+                        <f-table-column title="Name">
                             {{ row.name }}
                         </f-table-column>
                     </template>
