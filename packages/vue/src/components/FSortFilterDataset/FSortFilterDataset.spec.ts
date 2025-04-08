@@ -335,6 +335,9 @@ it("should emit event with used attributes when sorting using dropdown", async (
         {
             attribute: "",
             ascending: false,
+            ascendingName: "",
+            id: 0,
+            name: "",
         },
     ]);
 });
