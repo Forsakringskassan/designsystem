@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-081143.css"
+            href="../assets/docs-44039e.css"
             crossorigin
-            integrity="sha384-HUhDp8e8aO95mPIH3yC3721vIhGL7TAlqcMJ6w2LeG4Ez/kugaKkUmWTQabcpUYP"
+            integrity="sha384-Fm3JmyqUKAf2XYMAzY2gWjQhbGmaJjZYMPLS1b/hJfSceyOcwhZze2yvSuBCx4LO"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-855d8a.css"
+            href="../assets/docs-fkui-4ecb6d.css"
             crossorigin
-            integrity="sha384-0MgV4HMcj5OR4RuEjD1UM+FDGnMcKqwwBsKUVh5ou3WlMJm/VRpB0zR7Cs5ZqYZ3"
+            integrity="sha384-CC6Vb3lD+/MxRQkRAEekVk7Fo0SZFS6JwkUWKQWZwFuguHLB6tQ0+3tFeeqDSTwr"
             data-theme="fkui" disabled
         />
 
@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../search-data-35b08d.json"
+            href="../search-data-f9e572.json"
             as="fetch"
             crossorigin
-            integrity="sha384-VLPmpXxfffhPG4848X4SqUISLrSwkRLPU8nLcjOgwuydaRYcqm6lOSHLZLhqRMKg"
+            integrity="sha384-4KuijhCdV/fxV8kx5mDy6WAj+S8VeN7DlGMBchcc7cgzSwZSyggIOBHrgdHfz6Hj"
             id="search-data"
         />
     </head>
@@ -1068,7 +1068,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/e93d4c77003ae55c4d4e2cb78cea090b83c6876b/packages/vue/src/components/FDialogueTree/FDialogueTree.vue">FDialogueTree</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/0f08591244c1195405d4f495ee39f4fdd33c88ec/packages/vue/src/components/FDialogueTree/FDialogueTree.vue">FDialogueTree</a>
             
         </code>
          
@@ -1168,13 +1168,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-7e2df7"></div>
+        <div id="example-1ef8c2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ExampleFDialogueTree-7e2df7.js"></script>
+        <script type="module" src="./ExampleFDialogueTree-1ef8c2.js"></script>
     </div>
                 <div>
             <button
@@ -1192,31 +1192,7 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- just for demo purpose --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ current.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-dialogue-tree</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;current&quot;</span> <span class="hljs-attr">:dialogue-tree</span>=<span class="hljs-string">&quot;tree&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ userData }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;userData.type === &#x27;formA&#x27;&quot;</span>&gt;</span>
-                    formA
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>&gt;</span>
-                        Field 1
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;userData.type === &#x27;formB&#x27;&quot;</span>&gt;</span>
-                    formB
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>&gt;</span>
-                        Field 1
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-dialogue-tree</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FDialogueTree</span>,
@@ -1291,6 +1267,30 @@
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- just for demo purpose --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ current.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-dialogue-tree</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;current&quot;</span> <span class="hljs-attr">:dialogue-tree</span>=<span class="hljs-string">&quot;tree&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ userData }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;userData.type === &#x27;formA&#x27;&quot;</span>&gt;</span>
+                    formA
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>&gt;</span>
+                        Field 1
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;userData.type === &#x27;formB&#x27;&quot;</span>&gt;</span>
+                    formB
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>&gt;</span>
+                        Field 1
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-dialogue-tree</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1325,13 +1325,13 @@
                 >
                     
                     <div class="code-preview__preview">
-        <div id="example-426c67"></div>
+        <div id="example-c172d1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FlerstegsModalExample-426c67.js"></script>
+        <script type="module" src="./FlerstegsModalExample-c172d1.js"></script>
     </div>
                 </div>
             <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
@@ -1450,9 +1450,9 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    docs/pageobject-f-file-item (<a href="https://github.com/Forsakringskassan/designsystem/commits/e93d4c77003ae55c4d4e2cb78cea090b83c6876b">e93d4c7</a>)<br />
+    docs/pageobject-f-file-item (<a href="https://github.com/Forsakringskassan/designsystem/commits/0f08591244c1195405d4f495ee39f4fdd33c88ec">0f08591</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/251">PR 251</a><br />
-        2025-04-08 11:31
+        2025-04-08 14:32
 </div>
 <div class="toolbar__item">
     <form id="version">
