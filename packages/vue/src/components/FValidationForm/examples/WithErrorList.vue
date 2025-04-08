@@ -1,3 +1,26 @@
+<script>
+import { defineComponent } from "vue";
+import { FTextField, FValidationForm } from "@fkui/vue";
+
+export default defineComponent({
+    name: "DefaultExample",
+    components: { FTextField, FValidationForm },
+    data() {
+        return {
+            field1: "",
+            field2: "",
+        };
+    },
+    methods: {
+        onSubmit() {
+            alert("Spara");
+        },
+        onCancel() {
+            alert("Avbryt");
+        },
+    },
+});
+</script>
 <template>
     <f-validation-form @submit="onSubmit">
         <template #error-message> <span> Custom message </span> </template>
@@ -36,26 +59,3 @@
         </template>
     </f-validation-form>
 </template>
-<script>
-import { defineComponent } from "vue";
-import { FTextField, FValidationForm } from "@fkui/vue";
-
-export default defineComponent({
-    name: "DefaultExample",
-    components: { FTextField, FValidationForm },
-    data() {
-        return {
-            field1: "",
-            field2: "",
-        };
-    },
-    methods: {
-        onSubmit() {
-            alert("Spara");
-        },
-        onCancel() {
-            alert("Avbryt");
-        },
-    },
-});
-</script>

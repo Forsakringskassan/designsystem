@@ -1,38 +1,3 @@
-<template>
-    <f-validation-form :before-submit="runServerValidation" @submit="onSubmit">
-        <template #error-message> Oj, du har glömt fylla i något. Gå till: </template>
-        <template #default>
-            <f-text-field
-                ref="field1"
-                v-model="field1"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-            >
-                Ett inmatningsfält
-            </f-text-field>
-            <f-text-field
-                v-model="field2"
-                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
-            >
-                Ett annat inmatningsfält
-            </f-text-field>
-            <div class="button-group">
-                <button
-                    type="submit"
-                    class="button button-group__item button--primary button--large"
-                >
-                    Spara
-                </button>
-                <button
-                    type="button"
-                    class="button button-group__item button--secondary button--large"
-                    @click="onCancel"
-                >
-                    Avbryt
-                </button>
-            </div>
-        </template>
-    </f-validation-form>
-</template>
 <script>
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
@@ -69,3 +34,38 @@ export default defineComponent({
     },
 });
 </script>
+<template>
+    <f-validation-form :before-submit="runServerValidation" @submit="onSubmit">
+        <template #error-message> Oj, du har glömt fylla i något. Gå till: </template>
+        <template #default>
+            <f-text-field
+                ref="field1"
+                v-model="field1"
+                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
+            >
+                Ett inmatningsfält
+            </f-text-field>
+            <f-text-field
+                v-model="field2"
+                v-validation.required.maxLength="{ maxLength: { length: 32 } }"
+            >
+                Ett annat inmatningsfält
+            </f-text-field>
+            <div class="button-group">
+                <button
+                    type="submit"
+                    class="button button-group__item button--primary button--large"
+                >
+                    Spara
+                </button>
+                <button
+                    type="button"
+                    class="button button-group__item button--secondary button--large"
+                    @click="onCancel"
+                >
+                    Avbryt
+                </button>
+            </div>
+        </template>
+    </f-validation-form>
+</template>

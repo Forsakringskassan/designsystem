@@ -1,21 +1,3 @@
-<template>
-    <live-example :components :template>
-        <f-fieldset name="radio-link-type">
-            <template #label> Typ av länk </template>
-            <f-radio-field v-model="linkType" value="standard"> Standard </f-radio-field>
-            <f-radio-field v-model="linkType" value="document"> Dokument </f-radio-field>
-            <f-radio-field v-model="linkType" value="external"> Ny flik </f-radio-field>
-        </f-fieldset>
-        <f-select-field v-if="isDocument" v-model="fileType">
-            <template #label> Filtyp </template>
-            <option value="pdf">PDF</option>
-            <option value="doc">Doc</option>
-            <option value="pic">Bild</option>
-        </f-select-field>
-        <f-checkbox-field v-model="isDiscrete" :value="true"> Diskret länk </f-checkbox-field>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FCheckboxField, FFieldset, FRadioField, FIcon, FSelectField } from "@fkui/vue";
@@ -72,3 +54,21 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components :template>
+        <f-fieldset name="radio-link-type">
+            <template #label> Typ av länk </template>
+            <f-radio-field v-model="linkType" value="standard"> Standard </f-radio-field>
+            <f-radio-field v-model="linkType" value="document"> Dokument </f-radio-field>
+            <f-radio-field v-model="linkType" value="external"> Ny flik </f-radio-field>
+        </f-fieldset>
+        <f-select-field v-if="isDocument" v-model="fileType">
+            <template #label> Filtyp </template>
+            <option value="pdf">PDF</option>
+            <option value="doc">Doc</option>
+            <option value="pic">Bild</option>
+        </f-select-field>
+        <f-checkbox-field v-model="isDiscrete" :value="true"> Diskret länk </f-checkbox-field>
+    </live-example>
+</template>

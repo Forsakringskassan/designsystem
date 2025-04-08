@@ -1,10 +1,3 @@
-<template>
-    <div class="badge" :class="badgeClass">
-        <!-- @slot Slot for text to display in the badge. -->
-        <slot name="default"></slot>
-    </div>
-</template>
-
 <script setup lang="ts">
 import { type PropType, computed } from "vue";
 import { statuses } from "./statuses";
@@ -33,3 +26,10 @@ const badgeClass = computed(() => {
     return props.inverted ? `badge--${props.status}-inverted` : `badge--${props.status}`;
 });
 </script>
+
+<template>
+    <div class="badge" :class="badgeClass">
+        <!-- @slot Slot for text to display in the badge. -->
+        <slot name="default"></slot>
+    </div>
+</template>

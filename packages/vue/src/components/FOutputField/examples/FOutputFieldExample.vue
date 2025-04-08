@@ -1,3 +1,16 @@
+<script>
+import { defineComponent } from "vue";
+import { FOutputField, FTextField, FTooltip } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FOutputFieldExample",
+    components: { FOutputField, FTextField, FTooltip },
+    data() {
+        return { number1: "1", number2: "2" };
+    },
+});
+</script>
+
 <template>
     <div>
         <f-text-field
@@ -26,16 +39,3 @@
         </f-output-field>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FOutputField, FTextField, FTooltip } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FOutputFieldExample",
-    components: { FOutputField, FTextField, FTooltip },
-    data() {
-        return { number1: "1", number2: "2" };
-    },
-});
-</script>

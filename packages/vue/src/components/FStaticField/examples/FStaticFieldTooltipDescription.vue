@@ -1,3 +1,13 @@
+<script>
+import { defineComponent } from "vue";
+import { FStaticField, FTooltip } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FStaticFieldTooltipDescription",
+    components: { FStaticField, FTooltip },
+});
+</script>
+
 <template>
     <div data-test="output-field">
         <f-static-field>
@@ -16,13 +26,3 @@
         </f-static-field>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FStaticField, FTooltip } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FStaticFieldTooltipDescription",
-    components: { FStaticField, FTooltip },
-});
-</script>

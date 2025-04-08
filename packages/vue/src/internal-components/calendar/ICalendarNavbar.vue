@@ -1,37 +1,3 @@
-<template>
-    <div class="calendar-navbar">
-        <div class="calendar-navbar__month" tabindex="-1">
-            {{ currentText }}
-        </div>
-
-        <button
-            ref="previousButton"
-            class="calendar-navbar__arrow calendar-navbar__arrow--previous"
-            type="button"
-            :aria-disabled="previousDisabled"
-            :aria-live="isFocused('previousButton') ? 'polite' : 'off'"
-            @click.stop="onClickPreviousButton"
-        >
-            <span class="sr-only">
-                {{ previousSrText }}
-            </span>
-            <f-icon :class="previousIconClasses" name="arrow-right"></f-icon>
-        </button>
-
-        <button
-            ref="nextButton"
-            class="calendar-navbar__arrow calendar-navbar__arrow--next"
-            type="button"
-            :aria-disabled="nextDisabled"
-            :aria-live="isFocused('nextButton') ? 'polite' : 'off'"
-            @click.stop="onClickNextButton"
-        >
-            <span class="sr-only">{{ nextSrText }}</span>
-            <f-icon :class="nextIconClasses" name="arrow-right"></f-icon>
-        </button>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { FDate } from "@fkui/date";
@@ -157,3 +123,37 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="calendar-navbar">
+        <div class="calendar-navbar__month" tabindex="-1">
+            {{ currentText }}
+        </div>
+
+        <button
+            ref="previousButton"
+            class="calendar-navbar__arrow calendar-navbar__arrow--previous"
+            type="button"
+            :aria-disabled="previousDisabled"
+            :aria-live="isFocused('previousButton') ? 'polite' : 'off'"
+            @click.stop="onClickPreviousButton"
+        >
+            <span class="sr-only">
+                {{ previousSrText }}
+            </span>
+            <f-icon :class="previousIconClasses" name="arrow-right"></f-icon>
+        </button>
+
+        <button
+            ref="nextButton"
+            class="calendar-navbar__arrow calendar-navbar__arrow--next"
+            type="button"
+            :aria-disabled="nextDisabled"
+            :aria-live="isFocused('nextButton') ? 'polite' : 'off'"
+            @click.stop="onClickNextButton"
+        >
+            <span class="sr-only">{{ nextSrText }}</span>
+            <f-icon :class="nextIconClasses" name="arrow-right"></f-icon>
+        </button>
+    </div>
+</template>

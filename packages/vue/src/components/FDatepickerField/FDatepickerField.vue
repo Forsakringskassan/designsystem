@@ -1,107 +1,3 @@
-<template>
-    <div ref="component" class="datepicker-field">
-        <div ref="calendarInputs" @focusout="onFocusoutTextFieldButton">
-            <f-text-field
-                v-bind="$attrs"
-                v-model="textFieldValue"
-                maxlength="20"
-                :disabled="disabled"
-                :formatter="dateFormatter"
-                :label-width="labelWidth"
-                :input-width="inputWidth"
-                @component-validity="onValidityTextField"
-                @change="onChangeTextField"
-                @validation-config-update="onValidationConfigUpdate"
-            >
-                <!-- @slot **Optional** Slot for setting the label. Default value "Datum" -->
-                <slot>{{ $t("fkui.datepicker-field.label", "Datum") }}</slot>
-
-                <template v-if="$slots.tooltip" #tooltip>
-                    <!-- @slot **Optional** Slot for tooltip. May only contain an {@link FTooltip}. -->
-                    <slot name="tooltip"></slot>
-                </template>
-
-                <template #description="{ descriptionClass, formatDescriptionClass }">
-                    <!-- @slot **Optional** Slot for displaying description. The contents are passed to the description-slot of {@link FLabel}. -->
-                    <!--
-                         @slot Optional slot for description. See {@link FLabel} for details.
-                         @binding {string[]} descriptionClass CSS classes for primary description content.
-                         @binding {string[]} formatDescriptionClass CSS classes for format description.
-                    -->
-                    <slot name="description" :description-class :format-description-class></slot>
-                </template>
-
-                <template #error-message="{ hasError, validationMessage }">
-                    <!--
-                        @slot **Optional** Slot for error message(s). The contents are passed to the error message-slot of {@link FLabel}.
-                        @binding {boolean} hasError Set to true when a validation error is present
-                        @binding {string} validationMessage Descriptive validation error message for current error
-                    -->
-                    <slot name="error-message" v-bind="{ hasError, validationMessage }"></slot>
-                </template>
-
-                <template #input-right>
-                    <button
-                        ref="calendarButton"
-                        :disabled="disabled"
-                        class="datepicker-field__button"
-                        type="button"
-                        :aria-expanded="isCalendarOpen ? 'true' : 'false'"
-                        data-test="calendar-button"
-                        @click="onClickCalendarButton()"
-                    >
-                        <f-icon name="calendar"></f-icon>
-                        <span class="sr-only">{{ calendarButtonText }}</span>
-                    </button>
-                </template>
-            </f-text-field>
-        </div>
-
-        <i-popup
-            :is-open="isCalendarOpen"
-            :anchor="calendarInputs"
-            :inline="alwaysInline ? 'always' : undefined"
-            :set-focus="false"
-            @open="onOpenPopup"
-            @close="onClosePopup"
-        >
-            <div ref="popup" :class="popupClass">
-                <f-calendar
-                    v-model="calendarMonth"
-                    :tab-date="calendarValue"
-                    :min-date="minDate"
-                    :max-date="maxDate"
-                    @click="onSelectCalendarDay"
-                    @keyup.esc.stop="onKeyupEsc"
-                >
-                    <template #default="{ date, isFocused }">
-                        <f-calendar-day
-                            :day="date"
-                            :enabled="isDateEnabled(date)"
-                            :focused="isFocused"
-                            :highlight="highlightDay(date)"
-                            :selected="isDaySelected(date)"
-                        >
-                        </f-calendar-day>
-                    </template>
-                </f-calendar>
-
-                <div class="datepicker-field__close">
-                    <button
-                        class="button button--discrete button--discrete--black datepicker-field__close__button"
-                        type="button"
-                        @click="onClickCloseCalendarButton"
-                        @keyup.esc.stop="onKeyupEsc"
-                    >
-                        <span>{{ $t("fkui.datepicker-field.close", "Stäng") }}</span>
-                        <f-icon aria-hidden="true" class="button__icon" name="close" />
-                    </button>
-                </div>
-            </div>
-        </i-popup>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType, ref, shallowRef, inject } from "vue";
 import { FDate, DateFormat } from "@fkui/date";
@@ -418,3 +314,107 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div ref="component" class="datepicker-field">
+        <div ref="calendarInputs" @focusout="onFocusoutTextFieldButton">
+            <f-text-field
+                v-bind="$attrs"
+                v-model="textFieldValue"
+                maxlength="20"
+                :disabled="disabled"
+                :formatter="dateFormatter"
+                :label-width="labelWidth"
+                :input-width="inputWidth"
+                @component-validity="onValidityTextField"
+                @change="onChangeTextField"
+                @validation-config-update="onValidationConfigUpdate"
+            >
+                <!-- @slot **Optional** Slot for setting the label. Default value "Datum" -->
+                <slot>{{ $t("fkui.datepicker-field.label", "Datum") }}</slot>
+
+                <template v-if="$slots.tooltip" #tooltip>
+                    <!-- @slot **Optional** Slot for tooltip. May only contain an {@link FTooltip}. -->
+                    <slot name="tooltip"></slot>
+                </template>
+
+                <template #description="{ descriptionClass, formatDescriptionClass }">
+                    <!-- @slot **Optional** Slot for displaying description. The contents are passed to the description-slot of {@link FLabel}. -->
+                    <!--
+                         @slot Optional slot for description. See {@link FLabel} for details.
+                         @binding {string[]} descriptionClass CSS classes for primary description content.
+                         @binding {string[]} formatDescriptionClass CSS classes for format description.
+                    -->
+                    <slot name="description" :description-class :format-description-class></slot>
+                </template>
+
+                <template #error-message="{ hasError, validationMessage }">
+                    <!--
+                        @slot **Optional** Slot for error message(s). The contents are passed to the error message-slot of {@link FLabel}.
+                        @binding {boolean} hasError Set to true when a validation error is present
+                        @binding {string} validationMessage Descriptive validation error message for current error
+                    -->
+                    <slot name="error-message" v-bind="{ hasError, validationMessage }"></slot>
+                </template>
+
+                <template #input-right>
+                    <button
+                        ref="calendarButton"
+                        :disabled="disabled"
+                        class="datepicker-field__button"
+                        type="button"
+                        :aria-expanded="isCalendarOpen ? 'true' : 'false'"
+                        data-test="calendar-button"
+                        @click="onClickCalendarButton()"
+                    >
+                        <f-icon name="calendar"></f-icon>
+                        <span class="sr-only">{{ calendarButtonText }}</span>
+                    </button>
+                </template>
+            </f-text-field>
+        </div>
+
+        <i-popup
+            :is-open="isCalendarOpen"
+            :anchor="calendarInputs"
+            :inline="alwaysInline ? 'always' : undefined"
+            :set-focus="false"
+            @open="onOpenPopup"
+            @close="onClosePopup"
+        >
+            <div ref="popup" :class="popupClass">
+                <f-calendar
+                    v-model="calendarMonth"
+                    :tab-date="calendarValue"
+                    :min-date="minDate"
+                    :max-date="maxDate"
+                    @click="onSelectCalendarDay"
+                    @keyup.esc.stop="onKeyupEsc"
+                >
+                    <template #default="{ date, isFocused }">
+                        <f-calendar-day
+                            :day="date"
+                            :enabled="isDateEnabled(date)"
+                            :focused="isFocused"
+                            :highlight="highlightDay(date)"
+                            :selected="isDaySelected(date)"
+                        >
+                        </f-calendar-day>
+                    </template>
+                </f-calendar>
+
+                <div class="datepicker-field__close">
+                    <button
+                        class="button button--discrete button--discrete--black datepicker-field__close__button"
+                        type="button"
+                        @click="onClickCloseCalendarButton"
+                        @keyup.esc.stop="onKeyupEsc"
+                    >
+                        <span>{{ $t("fkui.datepicker-field.close", "Stäng") }}</span>
+                        <f-icon aria-hidden="true" class="button__icon" name="close" />
+                    </button>
+                </div>
+            </div>
+        </i-popup>
+    </div>
+</template>

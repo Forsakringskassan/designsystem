@@ -1,40 +1,3 @@
-<template>
-    <f-modal
-        :fullscreen="fullscreen"
-        :is-open="isOpen"
-        :aria-close-text="ariaCloseText"
-        type="warning"
-        :size="size"
-        :focus="focus"
-        @close="onClose"
-    >
-        <template #header>
-            <!--@slot Slot for advanced header. -->
-            <slot name="heading">{{ heading }}</slot>
-        </template>
-        <template #content>
-            <!--@slot Slot for advanced content. -->
-            <slot name="content">{{ content }}</slot>
-        </template>
-
-        <template #footer>
-            <div class="button-group">
-                <button
-                    v-for="button in preparedButtons"
-                    :key="button.label"
-                    type="button"
-                    :class="button.classlist"
-                    class="button-group__item"
-                    @click="onClick(button)"
-                >
-                    <span>{{ button.label }}</span>
-                    <span v-if="button.screenreader" class="sr-only">&nbsp;{{ button.screenreader }}</span>
-                </button>
-            </div>
-        </template>
-    </f-modal>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import FModal from "../FModal.vue";
@@ -160,3 +123,40 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-modal
+        :fullscreen="fullscreen"
+        :is-open="isOpen"
+        :aria-close-text="ariaCloseText"
+        type="warning"
+        :size="size"
+        :focus="focus"
+        @close="onClose"
+    >
+        <template #header>
+            <!--@slot Slot for advanced header. -->
+            <slot name="heading">{{ heading }}</slot>
+        </template>
+        <template #content>
+            <!--@slot Slot for advanced content. -->
+            <slot name="content">{{ content }}</slot>
+        </template>
+
+        <template #footer>
+            <div class="button-group">
+                <button
+                    v-for="button in preparedButtons"
+                    :key="button.label"
+                    type="button"
+                    :class="button.classlist"
+                    class="button-group__item"
+                    @click="onClick(button)"
+                >
+                    <span>{{ button.label }}</span>
+                    <span v-if="button.screenreader" class="sr-only">&nbsp;{{ button.screenreader }}</span>
+                </button>
+            </div>
+        </template>
+    </f-modal>
+</template>

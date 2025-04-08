@@ -1,45 +1,3 @@
-<template>
-    <div v-if="$slots.tooltip">
-        <div v-if="hasDefaultSlot" ref="tooltipAttachTo">
-            <label class="label" :for="forProperty">
-                <slot name="default"></slot>
-            </label>
-        </div>
-
-        <!-- @slot Slot for tooltip. -->
-        <slot name="tooltip"></slot>
-
-        <label v-if="hasDescriptionSlot || hasErrorMessageSlot" class="label sr-separator" :for="forProperty">
-            <!--
-                @slot Optional slot for description.
-                @binding {string[]} descriptionClass CSS classes for primary description content.
-                @binding {string[]} formatDescriptionClass CSS classes for format description.
-            -->
-            <slot name="description" :description-class :format-description-class></slot>
-            <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
-                <f-icon class="label__icon--left" name="error"></f-icon>
-                <slot name="error-message"></slot>
-            </span>
-        </label>
-    </div>
-
-    <label v-else class="label" :for="forProperty">
-        <!-- @slot Slot for label content. -->
-        <slot name="default"></slot>
-        <!--
-            @slot Optional slot for description.
-            @binding {string[]} descriptionClass CSS classes for primary description content.
-            @binding {string[]} formatDescriptionClass CSS classes for format description.
-          -->
-        <slot name="description" :description-class :format-description-class></slot>
-        <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
-            <f-icon class="label__icon--left" name="error"></f-icon>
-            <!-- @slot Slot for displaying single or several error messages. -->
-            <slot name="error-message"></slot>
-        </span>
-    </label>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType, provide, useTemplateRef } from "vue";
 import { hasSlot } from "../../utils";
@@ -86,3 +44,45 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div v-if="$slots.tooltip">
+        <div v-if="hasDefaultSlot" ref="tooltipAttachTo">
+            <label class="label" :for="forProperty">
+                <slot name="default"></slot>
+            </label>
+        </div>
+
+        <!-- @slot Slot for tooltip. -->
+        <slot name="tooltip"></slot>
+
+        <label v-if="hasDescriptionSlot || hasErrorMessageSlot" class="label sr-separator" :for="forProperty">
+            <!--
+                @slot Optional slot for description.
+                @binding {string[]} descriptionClass CSS classes for primary description content.
+                @binding {string[]} formatDescriptionClass CSS classes for format description.
+            -->
+            <slot name="description" :description-class :format-description-class></slot>
+            <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
+                <f-icon class="label__icon--left" name="error"></f-icon>
+                <slot name="error-message"></slot>
+            </span>
+        </label>
+    </div>
+
+    <label v-else class="label" :for="forProperty">
+        <!-- @slot Slot for label content. -->
+        <slot name="default"></slot>
+        <!--
+            @slot Optional slot for description.
+            @binding {string[]} descriptionClass CSS classes for primary description content.
+            @binding {string[]} formatDescriptionClass CSS classes for format description.
+          -->
+        <slot name="description" :description-class :format-description-class></slot>
+        <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
+            <f-icon class="label__icon--left" name="error"></f-icon>
+            <!-- @slot Slot for displaying single or several error messages. -->
+            <slot name="error-message"></slot>
+        </span>
+    </label>
+</template>

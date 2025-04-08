@@ -1,21 +1,3 @@
-<template>
-    <live-example :components="components" :template="template" :livedata="livedata">
-        <f-fieldset name="etikett">
-            <template #label> Egenskaper </template>
-            <f-checkbox-field v-model="descriptionVisible" :value="true">
-                Hjälptext
-            </f-checkbox-field>
-            <f-checkbox-field v-model="formatDescriptionVisible" :value="true">
-                Formatbeskrivning
-            </f-checkbox-field>
-            <f-checkbox-field v-model="tooltipVisible" :value="true"> Tooltip </f-checkbox-field>
-            <f-checkbox-field v-model="errorMessageVisible" :value="true">
-                Felmeddelande
-            </f-checkbox-field>
-        </f-fieldset>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FLabel, FFieldset, FCheckboxField, FTooltip } from "@fkui/vue";
@@ -86,3 +68,21 @@ export default defineComponent({
     methods: {},
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template" :livedata="livedata">
+        <f-fieldset name="etikett">
+            <template #label> Egenskaper </template>
+            <f-checkbox-field v-model="descriptionVisible" :value="true">
+                Hjälptext
+            </f-checkbox-field>
+            <f-checkbox-field v-model="formatDescriptionVisible" :value="true">
+                Formatbeskrivning
+            </f-checkbox-field>
+            <f-checkbox-field v-model="tooltipVisible" :value="true"> Tooltip </f-checkbox-field>
+            <f-checkbox-field v-model="errorMessageVisible" :value="true">
+                Felmeddelande
+            </f-checkbox-field>
+        </f-fieldset>
+    </live-example>
+</template>

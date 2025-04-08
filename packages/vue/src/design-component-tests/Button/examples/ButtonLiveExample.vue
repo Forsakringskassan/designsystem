@@ -1,36 +1,3 @@
-<template>
-    <live-example :components="components" :template="template">
-        <f-select-field v-model="buttonType">
-            <template #label> Typ </template>
-            <option value="primary">Primär</option>
-            <option value="secondary">Sekundär</option>
-            <option value="tertiary">Tertiär</option>
-        </f-select-field>
-        <f-select-field v-model="buttonSize">
-            <template #label> Storlek </template>
-            <option value="small">Small</option>
-            <option value="medium">Medium (standard)</option>
-            <option value="large">Large</option>
-        </f-select-field>
-        <f-checkbox-field v-model="hasIcon" :value="true"> Visa ikon </f-checkbox-field>
-        <f-fieldset v-if="hasIcon" name="radio-place-icon" horizontal>
-            <template #label> Placering av ikon </template>
-            <f-radio-field v-model="iconPlacement" value="left"> Vänster </f-radio-field>
-            <f-radio-field v-model="iconPlacement" value="right"> Höger </f-radio-field>
-        </f-fieldset>
-        <f-checkbox-field v-model="isFullwidth" :value="true" :disabled="disabledFullwidth">
-            Fullbredd i mobil
-        </f-checkbox-field>
-        <f-select-field v-if="isTertiary" v-model="tertiaryColor">
-            <template #label> Färg </template>
-            <option value="standard">Standard</option>
-            <option value="black">Svart</option>
-            <option value="inverted">Inverterad</option>
-        </f-select-field>
-        <f-checkbox-field v-model="isDisabled" :value="true"> Inaktiv </f-checkbox-field>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FCheckboxField, FFieldset, FRadioField, FIcon, FSelectField } from "@fkui/vue";
@@ -127,3 +94,36 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template">
+        <f-select-field v-model="buttonType">
+            <template #label> Typ </template>
+            <option value="primary">Primär</option>
+            <option value="secondary">Sekundär</option>
+            <option value="tertiary">Tertiär</option>
+        </f-select-field>
+        <f-select-field v-model="buttonSize">
+            <template #label> Storlek </template>
+            <option value="small">Small</option>
+            <option value="medium">Medium (standard)</option>
+            <option value="large">Large</option>
+        </f-select-field>
+        <f-checkbox-field v-model="hasIcon" :value="true"> Visa ikon </f-checkbox-field>
+        <f-fieldset v-if="hasIcon" name="radio-place-icon" horizontal>
+            <template #label> Placering av ikon </template>
+            <f-radio-field v-model="iconPlacement" value="left"> Vänster </f-radio-field>
+            <f-radio-field v-model="iconPlacement" value="right"> Höger </f-radio-field>
+        </f-fieldset>
+        <f-checkbox-field v-model="isFullwidth" :value="true" :disabled="disabledFullwidth">
+            Fullbredd i mobil
+        </f-checkbox-field>
+        <f-select-field v-if="isTertiary" v-model="tertiaryColor">
+            <template #label> Färg </template>
+            <option value="standard">Standard</option>
+            <option value="black">Svart</option>
+            <option value="inverted">Inverterad</option>
+        </f-select-field>
+        <f-checkbox-field v-model="isDisabled" :value="true"> Inaktiv </f-checkbox-field>
+    </live-example>
+</template>

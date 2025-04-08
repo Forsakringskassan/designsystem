@@ -1,3 +1,13 @@
+<script>
+import { defineComponent } from "vue";
+import { IFlex, IFlexItem, FIcon } from "@fkui/vue";
+
+export default defineComponent({
+    name: "IFlexExample",
+    components: { FIcon, IFlex, IFlexItem },
+});
+</script>
+
 <template>
     <div>
         <i-flex gap="1x">
@@ -10,13 +20,3 @@
         </i-flex>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { IFlex, IFlexItem, FIcon } from "@fkui/vue";
-
-export default defineComponent({
-    name: "IFlexExample",
-    components: { FIcon, IFlex, IFlexItem },
-});
-</script>

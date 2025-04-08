@@ -1,3 +1,27 @@
+<script>
+import { defineComponent } from "vue";
+import { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "WizardExampleDefault",
+    components: { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField },
+    data() {
+        return {
+            current: null,
+            visible: true,
+            done: false,
+            date: "",
+            options: "",
+        };
+    },
+    methods: {
+        onCompleted() {
+            this.done = true;
+        },
+    },
+});
+</script>
+
 <template>
     <div>
         <f-wizard v-model="current" header-tag="h2" @completed="onCompleted">
@@ -30,27 +54,3 @@
         <p v-if="done">Allt är ifyllt</p>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "WizardExampleDefault",
-    components: { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField },
-    data() {
-        return {
-            current: null,
-            visible: true,
-            done: false,
-            date: "",
-            options: "",
-        };
-    },
-    methods: {
-        onCompleted() {
-            this.done = true;
-        },
-    },
-});
-</script>

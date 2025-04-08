@@ -1,3 +1,22 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FDataTable, FTableColumn } from "@fkui/vue";
+
+export default defineComponent({
+    components: { FDataTable, FTableColumn },
+    data() {
+        return {
+            selectedItems: [],
+            items: [
+                { id: "1", date: "2022-02-01", amount: "2 300" },
+                { id: "2", date: "2024-04-20", amount: "5 250" },
+                { id: "3", date: "2024-05-01", amount: "2 100" },
+            ],
+        };
+    },
+});
+</script>
+
 <template>
     <div class="row">
         <div class="col col--md-6 density-default">
@@ -28,22 +47,3 @@
         </div>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FDataTable, FTableColumn } from "@fkui/vue";
-
-export default defineComponent({
-    components: { FDataTable, FTableColumn },
-    data() {
-        return {
-            selectedItems: [],
-            items: [
-                { id: "1", date: "2022-02-01", amount: "2 300" },
-                { id: "2", date: "2024-04-20", amount: "5 250" },
-                { id: "3", date: "2024-05-01", amount: "2 100" },
-            ],
-        };
-    },
-});
-</script>

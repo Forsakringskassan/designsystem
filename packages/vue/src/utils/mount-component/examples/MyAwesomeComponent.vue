@@ -1,12 +1,3 @@
-<template>
-    <div>
-        <p>Hej {{ name }}!</p>
-        <button type="button" class="button button--primary button--small" @click="onClick">
-            Svara
-        </button>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 
@@ -26,3 +17,12 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <p>Hej {{ name }}!</p>
+        <button type="button" class="button button--primary button--small" @click="onClick">
+            Svara
+        </button>
+    </div>
+</template>

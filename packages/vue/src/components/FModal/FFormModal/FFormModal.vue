@@ -1,56 +1,3 @@
-<template>
-    <f-modal
-        :data-test="dataTest"
-        :fullscreen="fullscreen"
-        :is-open="isOpen"
-        :size="size"
-        :aria-close-text="ariaCloseText"
-        @close="onClose"
-    >
-        <template #header>
-            <!-- @slot Slot for the header. -->
-            <slot name="header"></slot>
-        </template>
-        <template #content>
-            <div>
-                <!-- @slot Slot for main content above text fields and buttons. -->
-                <slot name="default"></slot>
-            </div>
-            <f-validation-form
-                :id="formId"
-                :before-submit="beforeSubmit"
-                :before-validation="beforeValidation"
-                :use-error-list="useErrorList"
-                @submit="onSubmit"
-                @cancel="onCancel"
-            >
-                <template #error-message>
-                    <!-- @slot Slot for error message -->
-                    <slot name="error-message"></slot>
-                </template>
-                <!-- @slot Slot for input text fields for entering text. -->
-                <slot name="input-text-fields"></slot>
-            </f-validation-form>
-        </template>
-        <template #footer>
-            <div class="button-group">
-                <button
-                    v-for="button in preparedButtons"
-                    :key="button.label"
-                    :type="button.buttonType"
-                    :class="button.classlist"
-                    class="button-group__item"
-                    :form="button.buttonType === 'submit' ? formId : undefined"
-                    @click="button.buttonType === 'button' ? onCancel() : false"
-                >
-                    <span>{{ button.label }}</span>
-                    <span v-if="button.screenreader" class="sr-only">&nbsp;{{ button.screenreader }}</span>
-                </button>
-            </div>
-        </template>
-    </f-modal>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { ElementIdService, ValidationService, TranslationService } from "@fkui/logic";
@@ -225,3 +172,56 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-modal
+        :data-test="dataTest"
+        :fullscreen="fullscreen"
+        :is-open="isOpen"
+        :size="size"
+        :aria-close-text="ariaCloseText"
+        @close="onClose"
+    >
+        <template #header>
+            <!-- @slot Slot for the header. -->
+            <slot name="header"></slot>
+        </template>
+        <template #content>
+            <div>
+                <!-- @slot Slot for main content above text fields and buttons. -->
+                <slot name="default"></slot>
+            </div>
+            <f-validation-form
+                :id="formId"
+                :before-submit="beforeSubmit"
+                :before-validation="beforeValidation"
+                :use-error-list="useErrorList"
+                @submit="onSubmit"
+                @cancel="onCancel"
+            >
+                <template #error-message>
+                    <!-- @slot Slot for error message -->
+                    <slot name="error-message"></slot>
+                </template>
+                <!-- @slot Slot for input text fields for entering text. -->
+                <slot name="input-text-fields"></slot>
+            </f-validation-form>
+        </template>
+        <template #footer>
+            <div class="button-group">
+                <button
+                    v-for="button in preparedButtons"
+                    :key="button.label"
+                    :type="button.buttonType"
+                    :class="button.classlist"
+                    class="button-group__item"
+                    :form="button.buttonType === 'submit' ? formId : undefined"
+                    @click="button.buttonType === 'button' ? onCancel() : false"
+                >
+                    <span>{{ button.label }}</span>
+                    <span v-if="button.screenreader" class="sr-only">&nbsp;{{ button.screenreader }}</span>
+                </button>
+            </div>
+        </template>
+    </f-modal>
+</template>

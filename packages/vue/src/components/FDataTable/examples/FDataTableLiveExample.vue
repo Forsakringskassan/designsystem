@@ -1,33 +1,3 @@
-<template>
-    <live-example :components :template :livedata>
-        <f-checkbox-field v-model="isStriped" :value="true"> Zebrarandig </f-checkbox-field>
-        <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
-        <f-checkbox-field v-model="hasRowDescription" :value="true">
-            Kolumnbeskrivnig
-        </f-checkbox-field>
-        <f-checkbox-field v-model="hasHiddenCaption" :value="true"> Dold caption </f-checkbox-field>
-        <f-checkbox-field v-model="isEmpty" :value="true"> Tom tabell </f-checkbox-field>
-        <f-select-field v-model="scroll">
-            <template #label> Skroll </template>
-            <template #default>
-                <option value="none">Inaktiv</option>
-                <option value="horizontal">Horisontal</option>
-                <option value="vertical">Vertikal</option>
-                <option value="both">Båda</option>
-            </template>
-        </f-select-field>
-        <f-fieldset v-if="isEmpty" name="radio-empty-text">
-            <template #label> Meddelande för tom tabell </template>
-            <f-radio-field v-model="hasCustomEmptyText" :value="false">
-                Standardmeddelande
-            </f-radio-field>
-            <f-radio-field v-model="hasCustomEmptyText" :value="true">
-                Eget meddelande
-            </f-radio-field>
-        </f-fieldset>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
@@ -157,6 +127,36 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components :template :livedata>
+        <f-checkbox-field v-model="isStriped" :value="true"> Zebrarandig </f-checkbox-field>
+        <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
+        <f-checkbox-field v-model="hasRowDescription" :value="true">
+            Kolumnbeskrivnig
+        </f-checkbox-field>
+        <f-checkbox-field v-model="hasHiddenCaption" :value="true"> Dold caption </f-checkbox-field>
+        <f-checkbox-field v-model="isEmpty" :value="true"> Tom tabell </f-checkbox-field>
+        <f-select-field v-model="scroll">
+            <template #label> Skroll </template>
+            <template #default>
+                <option value="none">Inaktiv</option>
+                <option value="horizontal">Horisontal</option>
+                <option value="vertical">Vertikal</option>
+                <option value="both">Båda</option>
+            </template>
+        </f-select-field>
+        <f-fieldset v-if="isEmpty" name="radio-empty-text">
+            <template #label> Meddelande för tom tabell </template>
+            <f-radio-field v-model="hasCustomEmptyText" :value="false">
+                Standardmeddelande
+            </f-radio-field>
+            <f-radio-field v-model="hasCustomEmptyText" :value="true">
+                Eget meddelande
+            </f-radio-field>
+        </f-fieldset>
+    </live-example>
+</template>
 
 <style>
 .nowrap {

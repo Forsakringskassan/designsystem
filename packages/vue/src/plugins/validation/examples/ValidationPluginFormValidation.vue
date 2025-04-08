@@ -1,3 +1,13 @@
+<script>
+import { defineComponent } from "vue";
+import { FValidationForm, FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "ValidationPluginFormValidation",
+    components: { FValidationForm, FTextField },
+});
+</script>
+
 <template>
     <f-validation-form v-test="'form-validation-prefix'">
         <template #error-message> Fel i följande fält... </template>
@@ -29,13 +39,3 @@
         <button type="submit">Trigga fel</button>
     </f-validation-form>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FValidationForm, FTextField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "ValidationPluginFormValidation",
-    components: { FValidationForm, FTextField },
-});
-</script>

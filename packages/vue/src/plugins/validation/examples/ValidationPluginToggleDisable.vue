@@ -1,3 +1,34 @@
+<script>
+import { defineComponent } from "vue";
+import { ValidationService } from "@fkui/logic";
+import { FTextField, FFieldset, FRadioField, getElementFromVueRef } from "@fkui/vue";
+
+export default defineComponent({
+    name: "ValidationPluginToggleDisable",
+    components: {
+        FTextField,
+        FFieldset,
+        FRadioField,
+    },
+    data() {
+        return {
+            name: "Ett för långt namn",
+            isDisabled: false,
+        };
+    },
+    methods: {
+        async onToggleDisable() {
+            await this.$nextTick();
+            if (this.isDisabled) {
+                const wrapper = getElementFromVueRef(this.$refs.inputField);
+                const input = wrapper.querySelector("input");
+                ValidationService.validateElement(input);
+            }
+        },
+    },
+});
+</script>
+
 <template>
     <div>
         <f-fieldset id="is-disabled" name="color" @change="onToggleDisable">
@@ -37,34 +68,3 @@
         </div>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { ValidationService } from "@fkui/logic";
-import { FTextField, FFieldset, FRadioField, getElementFromVueRef } from "@fkui/vue";
-
-export default defineComponent({
-    name: "ValidationPluginToggleDisable",
-    components: {
-        FTextField,
-        FFieldset,
-        FRadioField,
-    },
-    data() {
-        return {
-            name: "Ett för långt namn",
-            isDisabled: false,
-        };
-    },
-    methods: {
-        async onToggleDisable() {
-            await this.$nextTick();
-            if (this.isDisabled) {
-                const wrapper = getElementFromVueRef(this.$refs.inputField);
-                const input = wrapper.querySelector("input");
-                ValidationService.validateElement(input);
-            }
-        },
-    },
-});
-</script>

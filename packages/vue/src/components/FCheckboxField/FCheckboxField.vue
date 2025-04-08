@@ -1,41 +1,3 @@
-<template>
-    <div class="checkbox" :class="disabledClass" @validity="onValidity">
-        <input
-            :id="id"
-            v-bind="attrs"
-            ref="checkboxInput"
-            type="checkbox"
-            class="checkbox__input"
-            :disabled="disabled"
-            @keydown.space="onKeydown"
-            @change="updateExpandedFlag()"
-        />
-        <label :class="$slots.details ? 'checkbox__label checkbox__width' : 'checkbox__label'" :for="id">
-            <!-- @slot Slot for label content. -->
-            <slot name="default"></slot>
-            <template v-if="$slots.details">
-                <span v-if="showDetails === 'always'" class="checkbox__details">
-                    <br />
-                    <!-- @slot Slot for extended label, should only contain short text -->
-                    <slot name="details"></slot>
-                </span>
-                <transition
-                    v-if="showDetails === 'when-selected'"
-                    @enter="enter"
-                    @after-enter="afterEnter"
-                    @leave="leave"
-                >
-                    <span v-if="expanded" class="checkbox__details">
-                        <br />
-                        <!-- @slot Slot for details, should only contain short text -->
-                        <slot name="details" :height="height"></slot>
-                    </span>
-                </transition>
-            </template>
-        </label>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, toValue } from "vue";
 import { ElementIdService, type ValidityEvent } from "@fkui/logic";
@@ -258,3 +220,41 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="checkbox" :class="disabledClass" @validity="onValidity">
+        <input
+            :id="id"
+            v-bind="attrs"
+            ref="checkboxInput"
+            type="checkbox"
+            class="checkbox__input"
+            :disabled="disabled"
+            @keydown.space="onKeydown"
+            @change="updateExpandedFlag()"
+        />
+        <label :class="$slots.details ? 'checkbox__label checkbox__width' : 'checkbox__label'" :for="id">
+            <!-- @slot Slot for label content. -->
+            <slot name="default"></slot>
+            <template v-if="$slots.details">
+                <span v-if="showDetails === 'always'" class="checkbox__details">
+                    <br />
+                    <!-- @slot Slot for extended label, should only contain short text -->
+                    <slot name="details"></slot>
+                </span>
+                <transition
+                    v-if="showDetails === 'when-selected'"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+                    @leave="leave"
+                >
+                    <span v-if="expanded" class="checkbox__details">
+                        <br />
+                        <!-- @slot Slot for details, should only contain short text -->
+                        <slot name="details" :height="height"></slot>
+                    </span>
+                </transition>
+            </template>
+        </label>
+    </div>
+</template>

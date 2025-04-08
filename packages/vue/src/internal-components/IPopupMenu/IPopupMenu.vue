@@ -1,43 +1,3 @@
-<template>
-    <i-popup
-        class="ipopupmenu"
-        :is-open="isOpen"
-        :keyboard-trap="false"
-        :anchor="anchor"
-        :focus-element="focusElement"
-        @close="$emit('close')"
-        @keyup="onKeyUp"
-        @keydown="onKeyDown"
-    >
-        <nav class="ipopupmenu ipopupmenu--vertical" :aria-label="ariaLabel">
-            <ul role="menu" class="ipopupmenu__list">
-                <li
-                    v-for="(item, index) in items"
-                    ref="items"
-                    :key="item.key"
-                    role="presentation"
-                    :class="itemClasses(item)"
-                    @click="(event) => onClickItem(event, item)"
-                >
-                    <a
-                        ref="anchors"
-                        :data-ref-index="index"
-                        :href="item.href"
-                        role="menuitem"
-                        :target="item.target"
-                        tabindex="0"
-                    >
-                        <span v-if="isSelected(index)" class="sr-only">
-                            <span>{{ selectedMenuItemScreenReaderText }}&nbsp;</span>
-                        </span>
-                        {{ item.label }}
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </i-popup>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { focus } from "@fkui/logic";
@@ -319,3 +279,43 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <i-popup
+        class="ipopupmenu"
+        :is-open="isOpen"
+        :keyboard-trap="false"
+        :anchor="anchor"
+        :focus-element="focusElement"
+        @close="$emit('close')"
+        @keyup="onKeyUp"
+        @keydown="onKeyDown"
+    >
+        <nav class="ipopupmenu ipopupmenu--vertical" :aria-label="ariaLabel">
+            <ul role="menu" class="ipopupmenu__list">
+                <li
+                    v-for="(item, index) in items"
+                    ref="items"
+                    :key="item.key"
+                    role="presentation"
+                    :class="itemClasses(item)"
+                    @click="(event) => onClickItem(event, item)"
+                >
+                    <a
+                        ref="anchors"
+                        :data-ref-index="index"
+                        :href="item.href"
+                        role="menuitem"
+                        :target="item.target"
+                        tabindex="0"
+                    >
+                        <span v-if="isSelected(index)" class="sr-only">
+                            <span>{{ selectedMenuItemScreenReaderText }}&nbsp;</span>
+                        </span>
+                        {{ item.label }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </i-popup>
+</template>

@@ -1,26 +1,3 @@
-<template>
-    <f-validation-group :key="groupKey" v-model="validity" :stop-propagation="true">
-        <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
-        <form :id="id" v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
-            <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
-                <f-error-list :items="errors" :bullets="errorListBullets" :before-navigate="errorListBeforeNavigate">
-                    <template #title>
-                        <!--
-                            @slot **optional** Slot for displaying error description.
-
-                            After this slot a list of invalid elements is listed.
-                            When an item is clicked it will scroll to and focus that invalid element.
-                        -->
-                        <slot name="error-message"></slot>
-                    </template>
-                </f-error-list>
-            </nav>
-            <!-- @slot Slot for content, i.e. input elements. -->
-            <slot name="default"></slot>
-        </form>
-    </f-validation-group>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { ValidationService, focus, ElementIdService } from "@fkui/logic";
@@ -175,3 +152,26 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-validation-group :key="groupKey" v-model="validity" :stop-propagation="true">
+        <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
+        <form :id="id" v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
+            <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
+                <f-error-list :items="errors" :bullets="errorListBullets" :before-navigate="errorListBeforeNavigate">
+                    <template #title>
+                        <!--
+                            @slot **optional** Slot for displaying error description.
+
+                            After this slot a list of invalid elements is listed.
+                            When an item is clicked it will scroll to and focus that invalid element.
+                        -->
+                        <slot name="error-message"></slot>
+                    </template>
+                </f-error-list>
+            </nav>
+            <!-- @slot Slot for content, i.e. input elements. -->
+            <slot name="default"></slot>
+        </form>
+    </f-validation-group>
+</template>

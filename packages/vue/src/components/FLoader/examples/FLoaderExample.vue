@@ -1,3 +1,55 @@
+<script>
+import { defineComponent } from "vue";
+import { FLoader } from "@fkui/vue";
+
+const defaultTimer = 10;
+
+export default defineComponent({
+    name: "FLoaderExample",
+    components: {
+        FLoader,
+    },
+    data() {
+        return {
+            show: true,
+            overlay: false,
+            delay: true,
+            customText: false,
+            time: defaultTimer,
+        };
+    },
+    methods: {
+        toggleLoader() {
+            if (this.overlay) {
+                if (this.show) {
+                    clearInterval(this.interval);
+                } else {
+                    this.interval = setInterval(this.countdown, 1000);
+                }
+            }
+            this.show = !this.show;
+        },
+        toggleOverlay() {
+            this.overlay = !this.overlay;
+        },
+        toggleDelay() {
+            this.delay = this.delay ? false : true;
+        },
+
+        toggleCloseText() {
+            this.customText = !this.customText;
+        },
+        countdown() {
+            this.time = parseInt(this.time, 10) - 1;
+            if (this.time === 0) {
+                this.toggleLoader();
+                this.time = defaultTimer;
+            }
+        },
+    },
+});
+</script>
+
 <template>
     <div>
         <div>
@@ -58,55 +110,3 @@
         </div>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FLoader } from "@fkui/vue";
-
-const defaultTimer = 10;
-
-export default defineComponent({
-    name: "FLoaderExample",
-    components: {
-        FLoader,
-    },
-    data() {
-        return {
-            show: true,
-            overlay: false,
-            delay: true,
-            customText: false,
-            time: defaultTimer,
-        };
-    },
-    methods: {
-        toggleLoader() {
-            if (this.overlay) {
-                if (this.show) {
-                    clearInterval(this.interval);
-                } else {
-                    this.interval = setInterval(this.countdown, 1000);
-                }
-            }
-            this.show = !this.show;
-        },
-        toggleOverlay() {
-            this.overlay = !this.overlay;
-        },
-        toggleDelay() {
-            this.delay = this.delay ? false : true;
-        },
-
-        toggleCloseText() {
-            this.customText = !this.customText;
-        },
-        countdown() {
-            this.time = parseInt(this.time, 10) - 1;
-            if (this.time === 0) {
-                this.toggleLoader();
-                this.time = defaultTimer;
-            }
-        },
-    },
-});
-</script>

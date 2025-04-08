@@ -1,32 +1,3 @@
-<template>
-    <div>
-        <button
-            id="popup-menu-open-button"
-            ref="popup-anchor"
-            type="button"
-            class="button button--secondary"
-            @click="onClick"
-            @keyup="onKeyUp"
-            @keydown="onKeyDown"
-        >
-            Öppna popupmeny
-        </button>
-
-        <i-popup-menu
-            id="popup-menu"
-            v-model="selectedItem"
-            v-model:focused-item="focusedItem"
-            :items="items"
-            :is-open="popupOpen"
-            :anchor="getAnchor()"
-            enable-keyboard-navigation
-            @close="onClose"
-        ></i-popup-menu>
-
-        <pre>Selected item: {{ selectedItem }}</pre>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { IPopupMenu } from "..";
@@ -100,3 +71,32 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <button
+            id="popup-menu-open-button"
+            ref="popup-anchor"
+            type="button"
+            class="button button--secondary"
+            @click="onClick"
+            @keyup="onKeyUp"
+            @keydown="onKeyDown"
+        >
+            Öppna popupmeny
+        </button>
+
+        <i-popup-menu
+            id="popup-menu"
+            v-model="selectedItem"
+            v-model:focused-item="focusedItem"
+            :items="items"
+            :is-open="popupOpen"
+            :anchor="getAnchor()"
+            enable-keyboard-navigation
+            @close="onClose"
+        ></i-popup-menu>
+
+        <pre>Selected item: {{ selectedItem }}</pre>
+    </div>
+</template>

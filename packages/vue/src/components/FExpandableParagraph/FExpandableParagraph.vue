@@ -1,42 +1,3 @@
-<template>
-    <div class="expandable-paragraph" :class="[expandedClass, listClass]">
-        <div :class="relatedClass">
-            <component :is="headerTag" class="expandable-paragraph__heading" :class="headerVisualClass">
-                <button
-                    type="button"
-                    class="expandable-paragraph__button"
-                    :aria-expanded="expanded ? 'true' : 'false'"
-                    :aria-controls="id"
-                    v-bind="$attrs"
-                    @click="onClickMinimize"
-                >
-                    <span class="expandable-paragraph__icon">
-                        <span class="icon-stack">
-                            <f-icon name="dash"></f-icon>
-                            <f-icon name="dash"></f-icon>
-                        </span>
-                    </span>
-                    <!-- @slot Slot used for title content -->
-                    <slot name="title"></slot>
-                </button>
-            </component>
-            <div v-if="hasRelatedSlot" class="expandable-paragraph__related-information">
-                <!-- @slot Slot used for related information besides the header element -->
-                <slot name="related"></slot>
-            </div>
-        </div>
-        <f-expand>
-            <div v-show="expanded" :id="id" class="expandable-paragraph__container">
-                <div class="expandable-paragraph__content">
-                    <!-- @slot Slot used for content shown when expanded -->
-                    <slot></slot>
-                </div>
-                <div v-if="!list" class="expandable-paragraph__separator"></div>
-            </div>
-        </f-expand>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
@@ -131,3 +92,42 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="expandable-paragraph" :class="[expandedClass, listClass]">
+        <div :class="relatedClass">
+            <component :is="headerTag" class="expandable-paragraph__heading" :class="headerVisualClass">
+                <button
+                    type="button"
+                    class="expandable-paragraph__button"
+                    :aria-expanded="expanded ? 'true' : 'false'"
+                    :aria-controls="id"
+                    v-bind="$attrs"
+                    @click="onClickMinimize"
+                >
+                    <span class="expandable-paragraph__icon">
+                        <span class="icon-stack">
+                            <f-icon name="dash"></f-icon>
+                            <f-icon name="dash"></f-icon>
+                        </span>
+                    </span>
+                    <!-- @slot Slot used for title content -->
+                    <slot name="title"></slot>
+                </button>
+            </component>
+            <div v-if="hasRelatedSlot" class="expandable-paragraph__related-information">
+                <!-- @slot Slot used for related information besides the header element -->
+                <slot name="related"></slot>
+            </div>
+        </div>
+        <f-expand>
+            <div v-show="expanded" :id="id" class="expandable-paragraph__container">
+                <div class="expandable-paragraph__content">
+                    <!-- @slot Slot used for content shown when expanded -->
+                    <slot></slot>
+                </div>
+                <div v-if="!list" class="expandable-paragraph__separator"></div>
+            </div>
+        </f-expand>
+    </div>
+</template>

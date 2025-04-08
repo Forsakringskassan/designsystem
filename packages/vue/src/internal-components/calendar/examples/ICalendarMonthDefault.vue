@@ -1,9 +1,3 @@
-<template>
-    <i-calendar-month v-model="month" :min-date="minDate" :max-date="maxDate" @click="onClick">
-        <template #default="{ date }">{{ date.day }}</template>
-    </i-calendar-month>
-</template>
-
 <script lang="ts">
 import { defineComponent, shallowRef } from "vue";
 import { ICalendarMonth } from "@fkui/vue";
@@ -26,3 +20,9 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <i-calendar-month v-model="month" :min-date="minDate" :max-date="maxDate" @click="onClick">
+        <template #default="{ date }">{{ date.day }}</template>
+    </i-calendar-month>
+</template>

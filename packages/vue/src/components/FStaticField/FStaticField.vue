@@ -1,3 +1,15 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FLabel } from "../FLabel";
+
+export default defineComponent({
+    name: "FStaticField",
+    components: {
+        FLabel,
+    },
+});
+</script>
+
 <template>
     <div class="output-field">
         <f-label>
@@ -25,15 +37,3 @@
         </p>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FLabel } from "../FLabel";
-
-export default defineComponent({
-    name: "FStaticField",
-    components: {
-        FLabel,
-    },
-});
-</script>
