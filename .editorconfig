@@ -5,7 +5,7 @@ root = true
 charset = utf-8
 end_of_line = lf
 
-[*.{html,ts,js,scss,json,vue}]
+[*.{html,ts,mts,cts,js,cjs,mjs,scss,json,vue}]
 indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
