@@ -14,7 +14,8 @@ import { type SortOrder } from "./sort-order";
 const $t = useTranslate();
 
 const searchString = ref("");
-const sortAttribute = ref<SortOrder>({ attribute: "", name: "", ascendingName: "", ascending: false, id: 0 });
+const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 };
+const sortAttribute = ref<SortOrder>(defaultSortValue);
 const sortFilterResult = ref<T[]>([]) as Ref<T[]>;
 const debouncedFilterResultset = debounce(filterResultset, 250);
 
@@ -281,7 +282,7 @@ function filterResultset(): void {
                                 $t("fkui.sort-filter-dataset.label.sort", "Sortera\u00A0på")
                             }}</template>
 
-                            <option :value="{ attribute: '', ascending: false }">
+                            <option :value="defaultSortValue">
                                 {{ $t("fkui.sort-filter-dataset.label.unsorted", "Välj") }}
                             </option>
 
