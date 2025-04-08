@@ -3,8 +3,7 @@ html {
   font-size: 16px;
 }
 
-.code-preview__preview,
-.live-example__example {
+.code-preview__preview {
   --fkds-color-text-primary: #1b1e23; /* Standard text färg */
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff; /* Inverterad text färg */
@@ -180,7 +179,6 @@ html {
   --f-background-button-discrete-hover: none;
   --f-background-sidepanel-button-tertiary-hover: #e5e5f5;
   --f-background-grid-default: #ffffff;
-  --f-background-grid-selected: #f5f6fa;
   --f-background-grid-active: #e5e5f5;
   --f-background-grid-hover: #f5f6fa;
   --f-background-grid-striped: #f4f4f4;
@@ -350,10 +348,4 @@ html {
   --size: 0;
   --min: 0;
   --max: 0;
-  --f-logo-image-small:
-      url("./images/fk-logo-primary-small.svg"),
-      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
-  --f-logo-image-large:
-      url("./images/fk-logo-primary-large.svg"),
-      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 }

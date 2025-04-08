@@ -176,7 +176,6 @@
   --f-background-button-discrete-hover: none;
   --f-background-sidepanel-button-tertiary-hover: #e5e5f5;
   --f-background-grid-default: #ffffff;
-  --f-background-grid-selected: #f5f6fa;
   --f-background-grid-active: #e5e5f5;
   --f-background-grid-hover: #f5f6fa;
   --f-background-grid-striped: #f4f4f4;
@@ -2974,11 +2973,6 @@ input[type=search]:focus,
 .radio-button-group--border .radio-button-group__content .radio-button:hover, .checkbox-group--border .checkbox-group__content .checkbox:hover, .list--hover .list__item:focus-within,
 .list--hover .list__item:hover, .list__item--hover {
   background: var(--f-background-grid-hover);
-}
-
-.radio-button-group--border .radio-button-group__content .radio-button:has(input:checked), .checkbox-group--border .checkbox-group__content .checkbox:has(input:checked), .list--hover .list__item:focus-within.list__item--selected,
-.list--hover .list__item:hover.list__item--selected, .list__item--selected {
-  background: var(--f-background-grid-selected);
 }
 
 .list--hover .list__item:focus-within.list__item--active,
