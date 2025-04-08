@@ -45,6 +45,26 @@ Sätt `defaultSortAttribute` till namnet på fältet som ska sorteras samt `defa
  </f-sort-filter-dataset>
 ```
 
+### Filtrering
+
+Sätt `filterAttributes` till en lista med vilka attribut som ska inkluderas i filtreringen.
+Om `filterAttributes` inte anges inkluderas alla attribut i filtreringen.
+
+```diff
+ <f-sort-filter-dataset
+     :data="items"
+     :sortable-attributes="{ givenname: 'Förnamn', surname: 'Efternamn' }"
++    :filter-attributes="['surname']"
+ >
+     <template #header="{ slotClass }">
+         <h3 :class="slotClass">Rubrik</h3>
+     </template>
+     <template #default="{ sortFilterResult }">
+         <!-- sortFilterResult is array with filtered items -->
+     </template>
+ </f-sort-filter-dataset>
+```
+
 ## Lista med datamängdsorterare
 
 Visar hur `FSortFilterDataset` kan användas med {@link FList `FList`}.

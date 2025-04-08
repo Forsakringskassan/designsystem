@@ -12553,6 +12553,7 @@ export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __V
         showFilter: boolean;
         placeholderFilter: string;
         defaultSortAscending: boolean;
+        filterAttributes: string[];
     }> & Omit<{
         readonly data: T[];
         readonly sortableAttributes: Record<string, string>;
@@ -12561,9 +12562,10 @@ export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __V
         readonly showFilter: boolean;
         readonly placeholderFilter: string;
         readonly defaultSortAscending: boolean;
+        readonly filterAttributes?: string[] | undefined;
         readonly onDatasetSorted?: ((items: T[]) => any) | undefined;
         readonly onUsedSortAttributes?: ((sortAttribute: SortOrder) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "data" | "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending">, "sortableAttributes" | "onDatasetSorted" | "onUsedSortAttributes" | ("data" | "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "data" | "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes">, "sortableAttributes" | "onDatasetSorted" | "onUsedSortAttributes" | ("data" | "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
