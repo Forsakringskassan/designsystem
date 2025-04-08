@@ -37,11 +37,12 @@ function useAreaData(element);
 
 Sätter en klass baserat på hur panelen ska fästas:
 
-```ts
+```vue static
+<script setup lang="ts">
 import { computed, useTemplateRef } from "vue";
 import { useAreaData } from "@fkui/vue";
 
-/* --- cut above -- */
+/* --- cut above --- */
 
 const element = useTemplateRef("my-root-element");
 const { attachPanel } = useAreaData(element);
@@ -55,6 +56,13 @@ const attachClass = computed(() => {
     }
     return undefined;
 });
+
+/* --- cut below --- */
+</script>
+
+<template>
+    <div ref="my-root-element"></div>
+</template>
 ```
 
 ## Related

@@ -77,19 +77,52 @@ Notera att det är metoden `onBeforeNext` som ska skickas in i sin helhelt, anro
 I `onBeforeNext` har du möjlighet att sätta nya valideringsfel på inmatningsfält:
 
 ```ts
-onBeforeNext(): void {
-    const myField = getElementFromVueRef(this.$refs.myField);
-    ValidationService.setError(myField, "This value is invalid!");
-},
+import { ValidationService } from "@fkui/logic";
+import { getElementFromVueRef } from "@fkui/vue";
+import { defineComponent } from "vue";
+
+defineComponent({
+    data() {
+        return {
+            showErrorMessage: false,
+        };
+    },
+    methods: {
+        /* --- cut above --- */
+
+        onBeforeNext(): void {
+            const myField = getElementFromVueRef(this.$refs.myField);
+            ValidationService.setError(myField, "This value is invalid!");
+        },
+
+        /* --- cut below --- */
+    },
+});
 ```
 
 Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera `FWizardStepAction.CANCEL` från `onBeforeNext`:
 
 ```ts
-onBeforeNext(): FWizardStepAction {
-    this.showErrorMessage = true;
-    return FWizardStepAction.CANCEL;
-},
+import { FWizardStepAction } from "@fkui/vue";
+import { defineComponent } from "vue";
+
+defineComponent({
+    data() {
+        return {
+            showErrorMessage: false,
+        };
+    },
+    methods: {
+        /* --- cut above --- */
+
+        onBeforeNext(): FWizardStepAction {
+            this.showErrorMessage = true;
+            return FWizardStepAction.CANCEL;
+        },
+
+        /* --- cut below --- */
+    },
+});
 ```
 
 ### Lägga till steg dynamiskt

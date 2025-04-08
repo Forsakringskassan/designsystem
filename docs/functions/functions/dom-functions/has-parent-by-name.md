@@ -8,8 +8,8 @@ Check if given component has a parent with given name.
 
 ## API
 
-```ts
-export function hasParentByName(
+```ts nocompile
+function hasParentByName(
     vm: ComponentPublicInstance | undefined | null,
     name: string,
 ): boolean;
@@ -35,7 +35,20 @@ Given the following markup:
 And given `this` is the `MyChildComponent` instance:
 
 ```ts
-hasParentByName(this, "MyChildComponent"); // --> true
-hasParentByName(this, "MyParentComponent"); // --> true
-hasParentByName(this, "NowhereToBeFound"); // --> false
+import { defineComponent } from "vue";
+import { hasParentByName } from "@fkui/vue";
+
+defineComponent({
+    methods: {
+        dummy() {
+            /* --- cut above --- */
+
+            hasParentByName(this, "MyChildComponent"); // --> true
+            hasParentByName(this, "MyParentComponent"); // --> true
+            hasParentByName(this, "NowhereToBeFound"); // --> false
+
+            /* --- cut below --- */
+        },
+    },
+});
 ```

@@ -25,12 +25,12 @@ Men om det är tänkt att objekten ska laddas om från REST-api eller liknande s
 +<f-list :items="myitems" key-attribute="id">
 ```
 
-```js
+```ts
 // The key "id" is used for "keyAttribute".
-const myItems = ref([
+const myItems = [
     { id: "a", name: "Banan" },
     { id: "b", name: "Äpple" },
-]);
+];
 ```
 
 ## Användning av komponent

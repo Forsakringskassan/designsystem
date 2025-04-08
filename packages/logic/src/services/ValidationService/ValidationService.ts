@@ -811,4 +811,5 @@ class ValidationServiceImpl implements ValidationServiceInterface {
  * @public
  */
 export const ValidationService: ValidationServiceInterface =
+    /* @__PURE__ */
     new ValidationServiceImpl();
