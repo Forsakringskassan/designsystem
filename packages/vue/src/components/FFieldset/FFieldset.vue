@@ -1,83 +1,3 @@
-<template>
-    <fieldset :id="id" class="fieldset" :class="classes" @validity="onValidity">
-        <legend :key="legendKey" class="label" :class="legendClass">
-            <!-- @slot Slot for label content. This slot is required. -->
-            <slot name="label"></slot>
-
-            <span v-if="hasCheckbox && children.length > 1" class="sr-only">
-                <span>{{ numberOfCheckboxesScreenReaderText }}</span>
-            </span>
-            <!--
-                @slot Optional slot for description. See {@link FLabel} for details.
-                @binding {string[]} descriptionClass CSS classes for primary description content.
-                @binding {string[]} formatDescriptionClass CSS classes for format description.
-            -->
-            <slot name="description" :description-class :format-description-class></slot>
-
-            <!--
-                @slot Slot for displaying single or several error messages.
-                @binding {boolean} hasError Set to true when a validation error is present
-                @binding {string} validationMessage Descriptive validation error message for current error
-            -->
-            <slot name="error-message" v-bind="{ hasError, validationMessage: validity.validationMessage }">
-                <template v-if="hasError">
-                    <span class="label__message label__message--error">
-                        <f-icon class="label__icon--left" name="error"></f-icon>
-                        {{ validity.validationMessage }}
-                    </span>
-                </template>
-            </slot>
-        </legend>
-
-        <span v-if="hasCheckbox" data-test="checked-boxes" class="sr-only" aria-live="polite">
-            <span v-if="children.length === 1">{{ checkboxCheckedScreenReaderText }}</span>
-            <span v-else>{{ numberOfCheckedCheckboxesScreenText }}</span>
-        </span>
-
-        <!-- the original <legend> element is sr-only when a tooltip is present
-        so the tooltip button can be positioned correctly when a description is
-        also present -->
-        <template v-if="hasTooltipSlot">
-            <div ref="tooltipAttachTo" class="label">
-                <span aria-hidden="true">
-                    <slot name="label"></slot>
-                </span>
-            </div>
-
-            <!-- @slot Slot for tooltip. -->
-            <slot name="tooltip"></slot>
-
-            <div
-                v-if="hasDescriptionSlot || hasErrorMessageSlot || hasError"
-                class="label"
-                aria-hidden="true"
-                :class="groupLabelClass"
-            >
-                <!--
-                    @slot Optional slot for description. See {@link FLabel} for details.
-                    @binding {string[]} descriptionClass CSS classes for primary description content.
-                    @binding {string[]} formatDescriptionClass CSS classes for format description.
-                -->
-                <slot name="description" :description-class :format-description-class></slot>
-
-                <slot name="error-message" v-bind="{ hasError, validationMessage: validity.validationMessage }">
-                    <template v-if="hasError">
-                        <span class="label__message label__message--error">
-                            <f-icon class="label__icon--left" name="error"></f-icon>
-                            {{ validity.validationMessage }}
-                        </span>
-                    </template>
-                </slot>
-            </div>
-        </template>
-
-        <div :class="groupContentClass">
-            <!-- @slot Slot for fieldset content. -->
-            <slot name="default"></slot>
-        </div>
-    </fieldset>
-</template>
-
 <script lang="ts">
 import { type PropType, defineComponent, provide, useSlots, useTemplateRef } from "vue";
 import { ElementIdService, type ValidityEvent, debounce } from "@fkui/logic";
@@ -333,3 +253,83 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <fieldset :id="id" class="fieldset" :class="classes" @validity="onValidity">
+        <legend :key="legendKey" class="label" :class="legendClass">
+            <!-- @slot Slot for label content. This slot is required. -->
+            <slot name="label"></slot>
+
+            <span v-if="hasCheckbox && children.length > 1" class="sr-only">
+                <span>{{ numberOfCheckboxesScreenReaderText }}</span>
+            </span>
+            <!--
+                @slot Optional slot for description. See {@link FLabel} for details.
+                @binding {string[]} descriptionClass CSS classes for primary description content.
+                @binding {string[]} formatDescriptionClass CSS classes for format description.
+            -->
+            <slot name="description" :description-class :format-description-class></slot>
+
+            <!--
+                @slot Slot for displaying single or several error messages.
+                @binding {boolean} hasError Set to true when a validation error is present
+                @binding {string} validationMessage Descriptive validation error message for current error
+            -->
+            <slot name="error-message" v-bind="{ hasError, validationMessage: validity.validationMessage }">
+                <template v-if="hasError">
+                    <span class="label__message label__message--error">
+                        <f-icon class="label__icon--left" name="error"></f-icon>
+                        {{ validity.validationMessage }}
+                    </span>
+                </template>
+            </slot>
+        </legend>
+
+        <span v-if="hasCheckbox" data-test="checked-boxes" class="sr-only" aria-live="polite">
+            <span v-if="children.length === 1">{{ checkboxCheckedScreenReaderText }}</span>
+            <span v-else>{{ numberOfCheckedCheckboxesScreenText }}</span>
+        </span>
+
+        <!-- the original <legend> element is sr-only when a tooltip is present
+        so the tooltip button can be positioned correctly when a description is
+        also present -->
+        <template v-if="hasTooltipSlot">
+            <div ref="tooltipAttachTo" class="label">
+                <span aria-hidden="true">
+                    <slot name="label"></slot>
+                </span>
+            </div>
+
+            <!-- @slot Slot for tooltip. -->
+            <slot name="tooltip"></slot>
+
+            <div
+                v-if="hasDescriptionSlot || hasErrorMessageSlot || hasError"
+                class="label"
+                aria-hidden="true"
+                :class="groupLabelClass"
+            >
+                <!--
+                    @slot Optional slot for description. See {@link FLabel} for details.
+                    @binding {string[]} descriptionClass CSS classes for primary description content.
+                    @binding {string[]} formatDescriptionClass CSS classes for format description.
+                -->
+                <slot name="description" :description-class :format-description-class></slot>
+
+                <slot name="error-message" v-bind="{ hasError, validationMessage: validity.validationMessage }">
+                    <template v-if="hasError">
+                        <span class="label__message label__message--error">
+                            <f-icon class="label__icon--left" name="error"></f-icon>
+                            {{ validity.validationMessage }}
+                        </span>
+                    </template>
+                </slot>
+            </div>
+        </template>
+
+        <div :class="groupContentClass">
+            <!-- @slot Slot for fieldset content. -->
+            <slot name="default"></slot>
+        </div>
+    </fieldset>
+</template>

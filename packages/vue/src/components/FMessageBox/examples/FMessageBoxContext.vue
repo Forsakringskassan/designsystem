@@ -1,3 +1,13 @@
+<script>
+import { defineComponent } from "vue";
+import { FMessageBox } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FMessageBoxContext",
+    components: { FMessageBox },
+});
+</script>
+
 <template>
     <f-message-box type="info" :provide-screen-reader-context="false">
         <template #default="{ headingSlotClass }">
@@ -8,13 +18,3 @@
         </template>
     </f-message-box>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FMessageBox } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FMessageBoxContext",
-    components: { FMessageBox },
-});
-</script>

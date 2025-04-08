@@ -1,3 +1,18 @@
+<script>
+import { defineComponent } from "vue";
+import { FFieldset, FCheckboxField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FCheckboxGroupValues",
+    components: { FFieldset, FCheckboxField },
+    data() {
+        return {
+            brochures: [],
+        };
+    },
+});
+</script>
+
 <template>
     <f-fieldset name="checkbox-complex-values">
         <template #label> Broschyrer </template>
@@ -19,18 +34,3 @@
         </f-checkbox-field>
     </f-fieldset>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FFieldset, FCheckboxField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FCheckboxGroupValues",
-    components: { FFieldset, FCheckboxField },
-    data() {
-        return {
-            brochures: [],
-        };
-    },
-});
-</script>

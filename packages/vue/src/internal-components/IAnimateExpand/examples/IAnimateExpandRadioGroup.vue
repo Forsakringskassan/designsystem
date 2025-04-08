@@ -1,3 +1,19 @@
+<script>
+import { defineComponent } from "vue";
+import { IAnimateExpand, FFieldset, FRadioField, FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    namne: "IAnimateExpandRadioGroup",
+    components: { IAnimateExpand, FFieldset, FRadioField, FTextField },
+    data() {
+        return {
+            moreQuestions: "",
+            areYouSure: "",
+        };
+    },
+});
+</script>
+
 <template>
     <f-fieldset name="more-questions">
         <template #label> Vill du svar på mer frågor? </template>
@@ -23,19 +39,3 @@
         <f-radio-field v-model="moreQuestions" :value="false"> Nej tack </f-radio-field>
     </f-fieldset>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { IAnimateExpand, FFieldset, FRadioField, FTextField } from "@fkui/vue";
-
-export default defineComponent({
-    namne: "IAnimateExpandRadioGroup",
-    components: { IAnimateExpand, FFieldset, FRadioField, FTextField },
-    data() {
-        return {
-            moreQuestions: "",
-            areYouSure: "",
-        };
-    },
-});
-</script>

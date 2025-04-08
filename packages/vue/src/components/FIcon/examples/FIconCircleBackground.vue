@@ -1,3 +1,13 @@
+<script>
+import { defineComponent } from "vue";
+import { FIcon } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FIconCircleBackground",
+    components: { FIcon },
+});
+</script>
+
 <template>
     <div>
         <div>
@@ -22,13 +32,3 @@
         </div>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FIcon } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FIconCircleBackground",
-    components: { FIcon },
-});
-</script>

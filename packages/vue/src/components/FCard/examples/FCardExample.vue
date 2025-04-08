@@ -1,3 +1,13 @@
+<script>
+import { defineComponent } from "vue";
+import { FCard, FIcon } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FCardExample",
+    components: { FCard, FIcon },
+});
+</script>
+
 <template>
     <f-card>
         <template #header="{ headingSlotClass }">
@@ -36,13 +46,3 @@
         </template>
     </f-card>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FCard, FIcon } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FCardExample",
-    components: { FCard, FIcon },
-});
-</script>

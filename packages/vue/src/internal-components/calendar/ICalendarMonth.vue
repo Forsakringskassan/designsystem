@@ -1,23 +1,3 @@
-<template>
-    <i-calendar-month-grid :value="modelValue">
-        <template #default="{ date }">
-            <div
-                :ref="date.toString()"
-                role="gridcell"
-                class="calendar-month__button"
-                data-test="select-day-button"
-                :data-date="date.toString()"
-                :tabindex="getTabindex(date)"
-                @click.stop.prevent="onClickDay(date)"
-                @keydown="onKeydownDay(date, $event)"
-            >
-                <!-- @slot Slot for rendering of day content. -->
-                <slot :date="date" :is-focused="isDayFocused(date)"></slot>
-            </div>
-        </template>
-    </i-calendar-month-grid>
-</template>
-
 <script lang="ts">
 import { FDate } from "@fkui/date";
 import { alertScreenReader, focus } from "@fkui/logic";
@@ -137,3 +117,23 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <i-calendar-month-grid :value="modelValue">
+        <template #default="{ date }">
+            <div
+                :ref="date.toString()"
+                role="gridcell"
+                class="calendar-month__button"
+                data-test="select-day-button"
+                :data-date="date.toString()"
+                :tabindex="getTabindex(date)"
+                @click.stop.prevent="onClickDay(date)"
+                @keydown="onKeydownDay(date, $event)"
+            >
+                <!-- @slot Slot for rendering of day content. -->
+                <slot :date="date" :is-focused="isDayFocused(date)"></slot>
+            </div>
+        </template>
+    </i-calendar-month-grid>
+</template>

@@ -1,11 +1,3 @@
-<template>
-    <f-calendar v-model="month" :min-date="min" :max-date="max">
-        <template #default="{ date, isFocused }">
-            <f-calendar-day :day="date" :focused="isFocused"> </f-calendar-day>
-        </template>
-    </f-calendar>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
@@ -26,3 +18,11 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-calendar v-model="month" :min-date="min" :max-date="max">
+        <template #default="{ date, isFocused }">
+            <f-calendar-day :day="date" :focused="isFocused"> </f-calendar-day>
+        </template>
+    </f-calendar>
+</template>

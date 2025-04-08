@@ -1,3 +1,29 @@
+<script>
+import { defineComponent } from "vue";
+import { IPopup } from "@fkui/vue";
+
+export default defineComponent({
+    name: "IPopupExample",
+    components: { IPopup },
+    data() {
+        return {
+            isOpen: false,
+        };
+    },
+    methods: {
+        onClickOpen() {
+            this.isOpen = true;
+        },
+        onClickClose() {
+            this.isOpen = false;
+        },
+        onClose() {
+            this.isOpen = false;
+        },
+    },
+});
+</script>
+
 <template>
     <div>
         <button
@@ -25,32 +51,6 @@
         </i-popup>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { IPopup } from "@fkui/vue";
-
-export default defineComponent({
-    name: "IPopupExample",
-    components: { IPopup },
-    data() {
-        return {
-            isOpen: false,
-        };
-    },
-    methods: {
-        onClickOpen() {
-            this.isOpen = true;
-        },
-        onClickClose() {
-            this.isOpen = false;
-        },
-        onClose() {
-            this.isOpen = false;
-        },
-    },
-});
-</script>
 
 <style lang="scss">
 .my-awesome-popup {

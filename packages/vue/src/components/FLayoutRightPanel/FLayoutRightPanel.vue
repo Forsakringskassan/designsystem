@@ -1,57 +1,3 @@
-<template>
-    <div class="layout-secondary">
-        <!-- [html-validate-disable-next no-inline-style] -->
-        <div
-            id="layout-secondary__primary"
-            class="layout-secondary__primary"
-            :class="rightPrimaryClasses"
-            :style="primaryStyle"
-        >
-            <!--
-@slot Slot for displaying the primary content.
-            -->
-            <slot name="default"></slot>
-        </div>
-        <!-- [html-validate-disable-next no-inline-style] -->
-        <aside v-if="isOpen" :style="secondaryStyle" class="layout-secondary__secondary">
-            <div class="layout-secondary__secondary__border" @mousedown="onBorderMouseDown">
-                <div class="layout-secondary__secondary__border__dot"></div>
-                <div class="layout-secondary__secondary__border__dot"></div>
-                <div class="layout-secondary__secondary__border__dot"></div>
-            </div>
-            <div class="layout-secondary__secondary__inner">
-                <!-- [html-validate-disable-next no-inline-style] -->
-                <div ref="title" class="layout-secondary__secondary__inner__title" :style="contentStyle">
-                    <!-- @slot Slot for heading -->
-                    <slot name="heading"></slot>
-                </div>
-                <div>
-                    <hr aria-hidden="true" />
-                </div>
-                <!-- [html-validate-disable-next no-inline-style] -->
-                <div
-                    class="layout-secondary__secondary__inner__content scroll-target"
-                    :class="gridClasses"
-                    :style="contentStyle"
-                >
-                    <!--
-@slot Slot for displaying content in the secondary-panel
-                    -->
-                    <slot name="content"></slot>
-                    <button
-                        class="button button--tertiary button--small button--tertiary--black layout-secondary__secondary__inner__close"
-                        type="button"
-                        @click="onClickCloseSecondary"
-                    >
-                        <span class="sr-only">Stäng sekundärpanelen</span>
-                        <f-icon class="button__icon" name="close" />
-                    </button>
-                </div>
-            </div>
-        </aside>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, toRefs } from "vue";
 import { focus } from "@fkui/logic";
@@ -163,3 +109,57 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="layout-secondary">
+        <!-- [html-validate-disable-next no-inline-style] -->
+        <div
+            id="layout-secondary__primary"
+            class="layout-secondary__primary"
+            :class="rightPrimaryClasses"
+            :style="primaryStyle"
+        >
+            <!--
+@slot Slot for displaying the primary content.
+            -->
+            <slot name="default"></slot>
+        </div>
+        <!-- [html-validate-disable-next no-inline-style] -->
+        <aside v-if="isOpen" :style="secondaryStyle" class="layout-secondary__secondary">
+            <div class="layout-secondary__secondary__border" @mousedown="onBorderMouseDown">
+                <div class="layout-secondary__secondary__border__dot"></div>
+                <div class="layout-secondary__secondary__border__dot"></div>
+                <div class="layout-secondary__secondary__border__dot"></div>
+            </div>
+            <div class="layout-secondary__secondary__inner">
+                <!-- [html-validate-disable-next no-inline-style] -->
+                <div ref="title" class="layout-secondary__secondary__inner__title" :style="contentStyle">
+                    <!-- @slot Slot for heading -->
+                    <slot name="heading"></slot>
+                </div>
+                <div>
+                    <hr aria-hidden="true" />
+                </div>
+                <!-- [html-validate-disable-next no-inline-style] -->
+                <div
+                    class="layout-secondary__secondary__inner__content scroll-target"
+                    :class="gridClasses"
+                    :style="contentStyle"
+                >
+                    <!--
+@slot Slot for displaying content in the secondary-panel
+                    -->
+                    <slot name="content"></slot>
+                    <button
+                        class="button button--tertiary button--small button--tertiary--black layout-secondary__secondary__inner__close"
+                        type="button"
+                        @click="onClickCloseSecondary"
+                    >
+                        <span class="sr-only">Stäng sekundärpanelen</span>
+                        <f-icon class="button__icon" name="close" />
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+</template>

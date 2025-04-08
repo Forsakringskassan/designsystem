@@ -1,25 +1,3 @@
-<template>
-    <div>
-        <x-time-text-field
-            v-model="time"
-            v-validation.required.hoursMinutes="{
-                hoursMinutes: { errorMessage: 'Du har skrivit in ett felaktigt tidformat' },
-            }"
-        >
-            Ange arbetstid
-            <template #description="{ formatDescriptionClass }">
-                <span :class="formatDescriptionClass">(tt:mm)</span>
-            </template>
-        </x-time-text-field>
-        <p>
-            Värde: {{ time }}.<br />
-            Renskrivet värde: {{ userFriendlyValue }}.<br />
-            Värde i timmar: {{ timeInHours }}.<br />
-            Värde i objektnotation: {{ timeAsObject }}.
-        </p>
-    </div>
-</template>
-
 <script lang="js">
 import {
     XTimeTextField,
@@ -52,3 +30,25 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <x-time-text-field
+            v-model="time"
+            v-validation.required.hoursMinutes="{
+                hoursMinutes: { errorMessage: 'Du har skrivit in ett felaktigt tidformat' },
+            }"
+        >
+            Ange arbetstid
+            <template #description="{ formatDescriptionClass }">
+                <span :class="formatDescriptionClass">(tt:mm)</span>
+            </template>
+        </x-time-text-field>
+        <p>
+            Värde: {{ time }}.<br />
+            Renskrivet värde: {{ userFriendlyValue }}.<br />
+            Värde i timmar: {{ timeInHours }}.<br />
+            Värde i objektnotation: {{ timeAsObject }}.
+        </p>
+    </div>
+</template>

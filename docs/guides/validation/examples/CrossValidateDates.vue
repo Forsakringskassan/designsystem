@@ -1,3 +1,38 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FDate, Weekday } from "@fkui/date";
+import { isEmpty } from "@fkui/logic";
+import { type ComponentValidityEvent, FDatepickerField, FFieldset } from "@fkui/vue";
+
+const MIN_DATE = FDate.now().addMonths(-1).toString();
+const MAX_DATE = FDate.now().addMonths(1).toString();
+
+export default defineComponent({
+    components: { FDatepickerField, FFieldset },
+    data() {
+        return {
+            fromDate: "",
+            toDate: "",
+            toMinLimit: MIN_DATE,
+            Weekday,
+            MIN_DATE,
+            MAX_DATE,
+        };
+    },
+    methods: {
+        getMinToDate(validFromDate: boolean): string {
+            if (isEmpty(this.fromDate) || !validFromDate) {
+                return MIN_DATE;
+            }
+            return this.fromDate;
+        },
+        onValidityFromDate({ detail: { isValid } }: CustomEvent<ComponentValidityEvent>): void {
+            this.toMinLimit = this.getMinToDate(isValid);
+        },
+    },
+});
+</script>
+
 <template>
     <f-fieldset>
         <template #label> Anställningsperiod </template>
@@ -34,38 +69,3 @@
         </f-datepicker-field>
     </f-fieldset>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FDate, Weekday } from "@fkui/date";
-import { isEmpty } from "@fkui/logic";
-import { type ComponentValidityEvent, FDatepickerField, FFieldset } from "@fkui/vue";
-
-const MIN_DATE = FDate.now().addMonths(-1).toString();
-const MAX_DATE = FDate.now().addMonths(1).toString();
-
-export default defineComponent({
-    components: { FDatepickerField, FFieldset },
-    data() {
-        return {
-            fromDate: "",
-            toDate: "",
-            toMinLimit: MIN_DATE,
-            Weekday,
-            MIN_DATE,
-            MAX_DATE,
-        };
-    },
-    methods: {
-        getMinToDate(validFromDate: boolean): string {
-            if (isEmpty(this.fromDate) || !validFromDate) {
-                return MIN_DATE;
-            }
-            return this.fromDate;
-        },
-        onValidityFromDate({ detail: { isValid } }: CustomEvent<ComponentValidityEvent>): void {
-            this.toMinLimit = this.getMinToDate(isValid);
-        },
-    },
-});
-</script>

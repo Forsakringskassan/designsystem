@@ -1,119 +1,3 @@
-<template>
-    <div class="text-field" :class="rootClass">
-        <div :class="labelWrapperClass">
-            <f-label :for="id" :class="labelClass">
-                <template #default>
-                    <!-- @slot Slot for label content. -->
-                    <slot name="default">
-                        <span v-if="defaultText !== ''">{{ defaultText }}</span>
-                    </slot>
-                </template>
-
-                <template v-if="$slots.tooltip" #tooltip>
-                    <!-- @slot Slot for tooltip. -->
-                    <slot name="tooltip"></slot>
-                </template>
-
-                <template #description="{ descriptionClass, formatDescriptionClass }">
-                    <!--
-                    @slot Optional slot for description. See {@link FLabel} for details.
-                    @binding {string[]} descriptionClass CSS classes for primary description content.
-                    @binding {string[]} formatDescriptionClass CSS classes for format description.
-                -->
-                    <slot name="description" :description-class :format-description-class>
-                        <span v-if="descriptionText" :class="descriptionClass">
-                            <span v-if="descriptionScreenReaderText" class="sr-only">{{
-                                descriptionScreenReaderText
-                            }}</span>
-                            <span>{{ descriptionText }}</span>
-                        </span>
-                        <span v-if="discreteDescriptionText" :class="formatDescriptionClass">
-                            <span v-if="discreteDescriptionScreenReaderText" class="sr-only">{{
-                                discreteDescriptionScreenReaderText
-                            }}</span>
-                            <span>{{ discreteDescriptionText }}</span>
-                        </span>
-                    </slot>
-                </template>
-
-                <template #error-message>
-                    <!--
-                    @slot Slot for displaying single or several error messages.
-                    @binding {boolean} hasError Set to true when a validation error is present
-                    @binding {string} validationMessage Descriptive validation error message for current error
-                -->
-                    <slot name="error-message" v-bind="{ hasError, validationMessage }">
-                        <template v-if="hasError">{{ validationMessage }}</template>
-                    </slot>
-                </template>
-            </f-label>
-        </div>
-
-        <div class="text-field__input-wrapper" :class="inputWrapperClass">
-            <!-- @slot Slot for adding content to the left of the input element. -->
-            <slot name="input-left" />
-
-            <div class="text-field__icon-wrapper">
-                <input
-                    :id="id"
-                    ref="input"
-                    v-model="viewValue"
-                    :disabled
-                    :type="type"
-                    class="text-field__input"
-                    v-bind="$attrs"
-                    @blur="onBlur"
-                    @focus="onFocus"
-                    @change="onChange"
-                    @validation-config-update="onValidationConfigUpdate"
-                    @validity="onValidity"
-                    @pending-validity="onPendingValidity"
-                />
-                <f-icon
-                    v-if="hasError && textFieldTableMode"
-                    ref="icon"
-                    class="text-field__icon input-icon text-field__append-inner text-field__error-popup-icon"
-                    name="error"
-                ></f-icon>
-                <i-popup-error
-                    v-if="textFieldTableMode"
-                    :anchor="getErrorPopupAnchor()"
-                    :is-open="showPopupError"
-                    :error-message="validationMessage"
-                    @close="closePopupError"
-                ></i-popup-error>
-                <div v-if="$slots['append-inner']" class="text-field__append-inner">
-                    <!-- @slot Slot for add content inside the input to the right -->
-                    <slot name="append-inner"></slot>
-                </div>
-                <div v-if="options" class="text-field__append-inner">
-                    <i-combobox-toggle-button
-                        :disabled
-                        :aria-controls="dropdownIsOpen ? dropdownId : undefined"
-                        :aria-expanded="dropdownIsOpen"
-                        @toggle="toggleDropdown"
-                    ></i-combobox-toggle-button>
-                </div>
-            </div>
-
-            <!-- @slot Slot for adding content to the right of the input element. -->
-            <slot name="input-right" />
-        </div>
-
-        <i-combobox-dropdown
-            v-if="options && $refs.input"
-            :id="dropdownId"
-            :is-open="dropdownIsOpen"
-            :options="dropdownOptions"
-            :active-option
-            :active-option-id
-            :input-node="$refs.input"
-            @select="onDropdownSelect"
-            @close="onDropdownClose"
-        ></i-combobox-dropdown>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { ElementIdService, isSet, ValidationService, type ValidityEvent } from "@fkui/logic";
@@ -495,3 +379,119 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="text-field" :class="rootClass">
+        <div :class="labelWrapperClass">
+            <f-label :for="id" :class="labelClass">
+                <template #default>
+                    <!-- @slot Slot for label content. -->
+                    <slot name="default">
+                        <span v-if="defaultText !== ''">{{ defaultText }}</span>
+                    </slot>
+                </template>
+
+                <template v-if="$slots.tooltip" #tooltip>
+                    <!-- @slot Slot for tooltip. -->
+                    <slot name="tooltip"></slot>
+                </template>
+
+                <template #description="{ descriptionClass, formatDescriptionClass }">
+                    <!--
+                    @slot Optional slot for description. See {@link FLabel} for details.
+                    @binding {string[]} descriptionClass CSS classes for primary description content.
+                    @binding {string[]} formatDescriptionClass CSS classes for format description.
+                -->
+                    <slot name="description" :description-class :format-description-class>
+                        <span v-if="descriptionText" :class="descriptionClass">
+                            <span v-if="descriptionScreenReaderText" class="sr-only">{{
+                                descriptionScreenReaderText
+                            }}</span>
+                            <span>{{ descriptionText }}</span>
+                        </span>
+                        <span v-if="discreteDescriptionText" :class="formatDescriptionClass">
+                            <span v-if="discreteDescriptionScreenReaderText" class="sr-only">{{
+                                discreteDescriptionScreenReaderText
+                            }}</span>
+                            <span>{{ discreteDescriptionText }}</span>
+                        </span>
+                    </slot>
+                </template>
+
+                <template #error-message>
+                    <!--
+                    @slot Slot for displaying single or several error messages.
+                    @binding {boolean} hasError Set to true when a validation error is present
+                    @binding {string} validationMessage Descriptive validation error message for current error
+                -->
+                    <slot name="error-message" v-bind="{ hasError, validationMessage }">
+                        <template v-if="hasError">{{ validationMessage }}</template>
+                    </slot>
+                </template>
+            </f-label>
+        </div>
+
+        <div class="text-field__input-wrapper" :class="inputWrapperClass">
+            <!-- @slot Slot for adding content to the left of the input element. -->
+            <slot name="input-left" />
+
+            <div class="text-field__icon-wrapper">
+                <input
+                    :id="id"
+                    ref="input"
+                    v-model="viewValue"
+                    :disabled
+                    :type="type"
+                    class="text-field__input"
+                    v-bind="$attrs"
+                    @blur="onBlur"
+                    @focus="onFocus"
+                    @change="onChange"
+                    @validation-config-update="onValidationConfigUpdate"
+                    @validity="onValidity"
+                    @pending-validity="onPendingValidity"
+                />
+                <f-icon
+                    v-if="hasError && textFieldTableMode"
+                    ref="icon"
+                    class="text-field__icon input-icon text-field__append-inner text-field__error-popup-icon"
+                    name="error"
+                ></f-icon>
+                <i-popup-error
+                    v-if="textFieldTableMode"
+                    :anchor="getErrorPopupAnchor()"
+                    :is-open="showPopupError"
+                    :error-message="validationMessage"
+                    @close="closePopupError"
+                ></i-popup-error>
+                <div v-if="$slots['append-inner']" class="text-field__append-inner">
+                    <!-- @slot Slot for add content inside the input to the right -->
+                    <slot name="append-inner"></slot>
+                </div>
+                <div v-if="options" class="text-field__append-inner">
+                    <i-combobox-toggle-button
+                        :disabled
+                        :aria-controls="dropdownIsOpen ? dropdownId : undefined"
+                        :aria-expanded="dropdownIsOpen"
+                        @toggle="toggleDropdown"
+                    ></i-combobox-toggle-button>
+                </div>
+            </div>
+
+            <!-- @slot Slot for adding content to the right of the input element. -->
+            <slot name="input-right" />
+        </div>
+
+        <i-combobox-dropdown
+            v-if="options && $refs.input"
+            :id="dropdownId"
+            :is-open="dropdownIsOpen"
+            :options="dropdownOptions"
+            :active-option
+            :active-option-id
+            :input-node="$refs.input"
+            @select="onDropdownSelect"
+            @close="onDropdownClose"
+        ></i-combobox-dropdown>
+    </div>
+</template>

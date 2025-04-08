@@ -1,3 +1,21 @@
+<script>
+import { defineComponent } from "vue";
+import { FFieldset, FCheckboxField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FFieldsetChecbox",
+    components: {
+        FFieldset,
+        FCheckboxField,
+    },
+    data() {
+        return {
+            dagar: [],
+        };
+    },
+});
+</script>
+
 <template>
     <f-fieldset name="group-name-checkbox">
         <template #label> Vilka dagar i veckan vill du bli kontaktad? </template>
@@ -18,21 +36,3 @@
         </f-checkbox-field>
     </f-fieldset>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FFieldset, FCheckboxField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FFieldsetChecbox",
-    components: {
-        FFieldset,
-        FCheckboxField,
-    },
-    data() {
-        return {
-            dagar: [],
-        };
-    },
-});
-</script>

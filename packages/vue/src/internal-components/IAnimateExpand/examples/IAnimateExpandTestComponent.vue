@@ -1,13 +1,3 @@
-<template>
-    <div>
-        <button type="button" @click="isExpanded = !isExpanded">Öppna/stäng animering</button>
-        <i-animate-expand :expanded="isExpanded" :opacity="true">
-            <!-- [html-validate-disable-next no-inline-style] -->
-            <div :style="style"></div>
-        </i-animate-expand>
-    </div>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import IAnimateExpand from "../IAnimateExpand.vue";
@@ -23,3 +13,13 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <button type="button" @click="isExpanded = !isExpanded">Öppna/stäng animering</button>
+        <i-animate-expand :expanded="isExpanded" :opacity="true">
+            <!-- [html-validate-disable-next no-inline-style] -->
+            <div :style="style"></div>
+        </i-animate-expand>
+    </div>
+</template>

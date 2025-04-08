@@ -1,25 +1,3 @@
-<template>
-    <div class="dialogue-tree">
-        <template v-if="options.length > 0">
-            <ul class="dialogue-tree__list">
-                <li v-for="(option, index) in options" :key="option.label" class="dialogue-tree__list-item">
-                    <button :ref="`dialogueButton-${index}`" type="button" @click="onClickedOption(option, index)">
-                        <span>{{ option.label }}</span>
-                        <f-icon name="arrow-right"></f-icon>
-                    </button>
-                </li>
-            </ul>
-        </template>
-        <template v-else>
-            <!--
-                @slot Slot for last dialogue step.
-                @binding {userData} userData Step information
-            -->
-            <slot v-bind="{ userData: userData }"></slot>
-        </template>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { focus, focusFirst } from "@fkui/logic";
@@ -121,3 +99,25 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="dialogue-tree">
+        <template v-if="options.length > 0">
+            <ul class="dialogue-tree__list">
+                <li v-for="(option, index) in options" :key="option.label" class="dialogue-tree__list-item">
+                    <button :ref="`dialogueButton-${index}`" type="button" @click="onClickedOption(option, index)">
+                        <span>{{ option.label }}</span>
+                        <f-icon name="arrow-right"></f-icon>
+                    </button>
+                </li>
+            </ul>
+        </template>
+        <template v-else>
+            <!--
+                @slot Slot for last dialogue step.
+                @binding {userData} userData Step information
+            -->
+            <slot v-bind="{ userData: userData }"></slot>
+        </template>
+    </div>
+</template>

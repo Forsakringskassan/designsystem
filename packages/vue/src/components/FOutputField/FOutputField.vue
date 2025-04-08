@@ -1,23 +1,3 @@
-<template>
-    <div class="output-field">
-        <f-label :for="id">
-            <template #default>
-                <!-- @slot Slot for label content. -->
-                <slot name="label"></slot>
-            </template>
-            <!-- @slot Slot for tooltip. -->
-            <template v-if="$slots.tooltip" #tooltip>
-                <!-- @slot Slot primarily for tooltip. -->
-                <slot name="tooltip"></slot>
-            </template>
-        </f-label>
-        <output :id="id" :for="htmlFor" class="output-field__output" v-bind="$attrs">
-            <!-- @slot Slot for output field content. -->
-            <slot name="default"></slot>
-        </output>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
@@ -57,3 +37,23 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="output-field">
+        <f-label :for="id">
+            <template #default>
+                <!-- @slot Slot for label content. -->
+                <slot name="label"></slot>
+            </template>
+            <!-- @slot Slot for tooltip. -->
+            <template v-if="$slots.tooltip" #tooltip>
+                <!-- @slot Slot primarily for tooltip. -->
+                <slot name="tooltip"></slot>
+            </template>
+        </f-label>
+        <output :id="id" :for="htmlFor" class="output-field__output" v-bind="$attrs">
+            <!-- @slot Slot for output field content. -->
+            <slot name="default"></slot>
+        </output>
+    </div>
+</template>

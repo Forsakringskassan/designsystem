@@ -1,9 +1,3 @@
-<template>
-    <button class="button button--primary" type="button" @click="validateAllFieldsOnPage()">
-        Validera alla fält på sidan
-    </button>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
@@ -22,3 +16,9 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <button class="button button--primary" type="button" @click="validateAllFieldsOnPage()">
+        Validera alla fält på sidan
+    </button>
+</template>

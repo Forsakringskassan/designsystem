@@ -1,9 +1,3 @@
-<template>
-    <live-example :components :template :livedata>
-        <f-checkbox-field v-model="isVertical" :value="true"> Vertikal </f-checkbox-field>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FCheckboxField, FNavigationMenu } from "@fkui/vue";
@@ -47,3 +41,9 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components :template :livedata>
+        <f-checkbox-field v-model="isVertical" :value="true"> Vertikal </f-checkbox-field>
+    </live-example>
+</template>
