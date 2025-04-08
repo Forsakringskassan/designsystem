@@ -417,6 +417,12 @@ var metadata_default = {
       "comment": null
     },
     {
+      "name": "--fkds-color-feedback-text-positive",
+      "value": "#35805b",
+      "palette": "green-a-85",
+      "comment": null
+    },
+    {
       "name": "--fkds-color-select-background-primary-default",
       "value": "#35805b",
       "palette": "green-a-85",
@@ -462,6 +468,12 @@ var metadata_default = {
       "name": "--fkds-icon-color-content-disabled",
       "value": "#8d8e91",
       "palette": "fk-black-50",
+      "comment": null
+    },
+    {
+      "name": "--fkds-icon-color-content-inverted",
+      "value": "#ffffff",
+      "palette": "white-100",
       "comment": null
     },
     {

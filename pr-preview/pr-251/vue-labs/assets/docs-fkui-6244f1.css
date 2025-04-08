@@ -3,8 +3,7 @@ html {
   font-size: 16px;
 }
 
-.code-preview__preview,
-.live-example__example {
+.code-preview__preview {
   --fkds-color-text-primary: #1b1e23; /* Standard text färg */
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff; /* Inverterad text färg */
@@ -69,6 +68,7 @@ html {
   --fkds-color-feedback-border-warning: #ffbe10;
   --fkds-color-feedback-border-negative: #ca1515;
   --fkds-color-feedback-text-negative: #ca1515;
+  --fkds-color-feedback-text-positive: #35805b;
   --fkds-color-select-background-primary-default: #35805b;
   --fkds-color-select-background-primary-hover: #dbe9e2;
   --fkds-color-select-background-primary-active: #dbe9e2;
@@ -77,6 +77,7 @@ html {
   --fkds-icon-color-background-primary: #ffffff;
   --fkds-icon-color-border-primary: #1b1e23;
   --fkds-icon-color-content-disabled: #8d8e91;
+  --fkds-icon-color-content-inverted: #ffffff;
   --fkds-icon-color-action-content-primary-default: #4a52b6;
   --fkds-icon-color-action-content-primary-disabled: #8d8e91;
   --fkds-icon-color-action-content-primary-hover: #3b4292;
@@ -348,10 +349,4 @@ html {
   --size: 0;
   --min: 0;
   --max: 0;
-  --f-logo-image-small:
-      url("./images/fk-logo-primary-small.svg"),
-      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
-  --f-logo-image-large:
-      url("./images/fk-logo-primary-large.svg"),
-      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 }
