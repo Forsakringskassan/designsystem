@@ -85,6 +85,15 @@ const props = defineProps({
         required: false,
         default: () => true,
     },
+    /**
+     * Attributes that should be included in search when filtering by input.
+     * Default includes all attributes.
+     */
+    filterAttributes: {
+        type: Array as PropType<string[]>,
+        required: false,
+        default: undefined,
+    },
 });
 
 const emit = defineEmits<{
@@ -129,8 +138,11 @@ const sortOrders = computed((): SortOrder[] => {
     return arr;
 });
 
-const filterAttributes = computed(() => {
-    return Object.keys(props.sortableAttributes);
+const internalFilterAttributes = computed(() => {
+    if (!props.filterAttributes) {
+        return Object.keys(props.data[0] ?? {});
+    }
+    return props.filterAttributes;
 });
 
 provide("sort", (attribute: string, ascending: boolean) => {
@@ -178,7 +190,7 @@ watch(
 );
 
 function sortFilterData(): void {
-    const filteredData = filter(props.data, filterAttributes.value, searchString.value);
+    const filteredData = filter(props.data, internalFilterAttributes.value, searchString.value);
 
     if (sortAttribute.value.attribute === "") {
         sortFilterResult.value = filteredData;
