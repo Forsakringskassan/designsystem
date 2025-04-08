@@ -38,16 +38,16 @@ export default defineComponent({
             <f-interactive-table :rows="fruits" key-attribute="id">
                 <template #caption> <b>Frukter</b> </template>
                 <template #default="{ row }">
-                    <f-table-column name="name" title="Namn" type="text" shrink>
+                    <f-table-column title="Namn" type="text" shrink>
                         {{ row.name }}
                     </f-table-column>
-                    <f-table-column name="origin" title="Land" type="text" shrink>
+                    <f-table-column title="Land" type="text" shrink>
                         {{ row.origin }}
                     </f-table-column>
-                    <f-table-column name="description" title="Beskrivning" type="text" expand>
+                    <f-table-column title="Beskrivning" type="text" expand>
                         {{ row.description }}
                     </f-table-column>
-                    <f-table-column name="actions" title="Åtgärd" type="action" shrink>
+                    <f-table-column title="Åtgärd" type="action" shrink>
                         <f-crud-button action="modify" :item="row" icon />
                         <f-crud-button action="delete" :item="row" icon />
                     </f-table-column>

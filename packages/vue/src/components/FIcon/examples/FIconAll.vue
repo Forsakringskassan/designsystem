@@ -66,13 +66,13 @@ export default defineComponent({
             <span> Ikoner </span>
         </template>
         <template #default="{ row }">
-            <f-table-column name="ikon" title="Ikon" type="text">
+            <f-table-column title="Ikon" type="text">
                 <f-icon :name="row.namn" :library="row.library"></f-icon>
             </f-table-column>
-            <f-table-column name="namn" title="Ikonnamn" type="text">
+            <f-table-column title="Ikonnamn" type="text">
                 {{ row.namn }}
             </f-table-column>
-            <f-table-column name="library" title="Ikon-bibliotek" type="text">
+            <f-table-column title="Ikon-bibliotek" type="text">
                 {{ row.library }}
             </f-table-column>
         </template>

@@ -116,7 +116,6 @@ describe("when in `<thead>`", () => {
                     <thead>
                         <tr>
                             <f-table-column
-                                name="mock"
                                 title="Mock column"
                             ></f-table-column>
                         </tr>
@@ -189,7 +188,6 @@ describe("when in `<thead>`", () => {
                     <thead>
                         <tr>
                             <f-table-column
-                                name="mock"
                                 title="Mock column"
                             ></f-table-column>
                         </tr>
@@ -221,7 +219,6 @@ describe("when in `<thead>`", () => {
                     <thead>
                         <tr>
                             <f-table-column
-                                name="mock"
                                 title="Mock column"
                                 expand
                             ></f-table-column>
@@ -254,7 +251,6 @@ describe("when in `<thead>`", () => {
                     <thead>
                         <tr>
                             <f-table-column
-                                name="mock"
                                 title="Mock"
                                 shrink
                             ></f-table-column>
@@ -288,7 +284,6 @@ describe("when in `<thead>`", () => {
                     <thead>
                         <tr>
                             <f-table-column
-                                name="mock"
                                 title="Mock"
                                 shrink
                                 expand

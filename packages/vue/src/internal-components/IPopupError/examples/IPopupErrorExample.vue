@@ -46,14 +46,14 @@ export default defineComponent({
         <f-interactive-table :rows="insatser" hover key-attribute="id">
             <template #caption> PopupError example </template>
             <template #default="{ row }">
-                <f-table-column name="epost" title="Epost" type="text" shrink>
+                <f-table-column title="Epost" type="text" shrink>
                     <f-email-text-field
                         v-model="row.email"
                         v-validation.required
                     ></f-email-text-field>
                 </f-table-column>
 
-                <f-table-column name="postnr" title="Postnummer" type="text" shrink>
+                <f-table-column title="Postnummer" type="text" shrink>
                     <f-postal-code-text-field
                         v-model="row.postnr"
                         v-validation.required
