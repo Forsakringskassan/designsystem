@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-1babd8.css"
+            href="../../assets/docs-382061.css"
             crossorigin
-            integrity="sha384-Y7gqfIcgvJ1jmkSGUxowh0SfxsN1r3ClKY5qL2Ynm6gwWexnyVwFoMGSpRZG7ruY"
+            integrity="sha384-88VHjvPw6rJiduEpGWgQ9pGxTd61U5i/YUzuc26JEkbiqLCjfRokM44H37SPdw96"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-20051b.css"
+            href="../../assets/docs-fkui-855d8a.css"
             crossorigin
-            integrity="sha384-qhZPClx+QkuR7SzxzNbby0CImPd4CF3Dv4vTvYdwIXTTwVt5Z4WI3FlD0k3ChFqr"
+            integrity="sha384-0MgV4HMcj5OR4RuEjD1UM+FDGnMcKqwwBsKUVh5ou3WlMJm/VRpB0zR7Cs5ZqYZ3"
             data-theme="fkui" disabled
         />
 
@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-97ccd5.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-97ccd5.js": "sha384-liGlFpvVvNeAksCVUX9MGkA75AdyftcKxLsj9syodsHS5KDjscAm6OEbaqoDEX3b",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-48184b.json"
+            href="../../search-data-c1a550.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-l0ypm9JGLzve8UjBgSuMFSbTeByukfiuAUsbElI04gj4AhFI8qADa0629Go4KfHq"
             id="search-data"
         />
     </head>
@@ -267,12 +267,20 @@
         <a
             href="../formatting-and-parsing/formatter-parser.html"
             
+            
+            
+            data-path="guides/formatting-and-parsing/formatter-parser.html"
+            
         >
             Formatering och parsning
         </a>
     </li><li class="link ">
         <a
             href="../formatting-and-parsing/custom-formatter-parser.html"
+            
+            
+            
+            data-path="guides/formatting-and-parsing/custom-formatter-parser.html"
             
         >
             Formaterare och parser - anpassad
@@ -290,12 +298,20 @@
         <a
             href="./validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/validation.html"
+            
         >
             Validering och felhantering
         </a>
     </li><li class="link ">
         <a
             href="./custom-error-message.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-error-message.html"
             
         >
             Felmeddelande - anpassat
@@ -304,6 +320,10 @@
         <a
             href="./cross-validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/cross-validation.html"
+            
         >
             Korsvalidering
         </a>
@@ -311,12 +331,20 @@
         <a
             href="./length-validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/length-validation.html"
+            
         >
             Längdvalidering
         </a>
     </li><li class="link ">
         <a
             href="./custom-validator.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-validator.html"
             
         >
             Validator - anpassad
@@ -366,19 +394,13 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Vi hjälper användarna att fylla i uppgifter i ett formulär på rätt sätt genom att vi validerar uppgifterna och visar tydliga felmeddelanden vid rätt tillfälle.</p>
-<p>Innehållet i ett <a href="../../components/input/ftextfield.html">inmatningsfält</a> valideras när användaren lämnar fältet, till exempel genom att tabba vidare till nästa.
+<p class="docs-paragraph">Vi hjälper användarna att fylla i uppgifter i ett formulär på rätt sätt genom att vi validerar uppgifterna och visar tydliga felmeddelanden vid rätt tillfälle.</p><p class="docs-paragraph">Innehållet i ett <a href="../../components/input/ftextfield.html">inmatningsfält</a> valideras när användaren lämnar fältet, till exempel genom att tabba vidare till nästa.
 Om ett fel upptäcks markeras fältet som felaktigt och användaren informeras om felet med <a href="../../components/flabel.html">etikettens</a> felmeddelanden.
-I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etiketten</a> kan du se hur vi skriver feltexter.</p>
-<p>Exempel på när fel ska visas:</p>
-<ul>
-<li>Användaren har fyllt i ett felaktigt tecken.</li>
-<li>Ett inmatat postnummer matchar inte med någon ort.</li>
+I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etiketten</a> kan du se hur vi skriver feltexter.</p><p class="docs-paragraph">Exempel på när fel ska visas:</p><ul>
+<li><p class="docs-paragraph">Användaren har fyllt i ett felaktigt tecken.</p></li>
+<li><p class="docs-paragraph">Ett inmatat postnummer matchar inte med någon ort.</p></li>
 </ul>
-<p>Vi visar fel först när användaren lämnar fältet eftersom vi inte vill avbryta användaren med ett felmeddelande innan hen anser sig vara klar med att fylla i uppgifter i fältet.</p>
-<p>Fel om obligatoriska fält som lämnas utan att vara ifyllda visas först när användaren försöker skicka in formuläret.</p>
-<p>Felaktiga tecken eller värden ligger alltid kvar efter valideringen.</p>
-
+<p class="docs-paragraph">Vi visar fel först när användaren lämnar fältet eftersom vi inte vill avbryta användaren med ett felmeddelande innan hen anser sig vara klar med att fylla i uppgifter i fältet.</p><p class="docs-paragraph">Fel om obligatoriska fält som lämnas utan att vara ifyllda visas först när användaren försöker skicka in formuläret.</p><p class="docs-paragraph">Felaktiga tecken eller värden ligger alltid kvar efter valideringen.</p>
             <div
                 id="example-25d447"
                 class="code-preview code-preview--default"
@@ -388,13 +410,13 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
             >
                 
                 <div class="code-preview__preview">
-        <div id="FValidationFormDefault"></div>
+        <div id="example-4402a9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FValidationFormDefault-0e113b.js"></script>
+        <script type="module" src="./FValidationFormDefault-4402a9.js"></script>
     </div>
                 <div>
             <button
@@ -504,42 +526,26 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
 </code></pre>
                 </div>
             </div>
-        <h2 id="obligatoriska_falt"><a class="header-anchor" href="#obligatoriska_falt">Obligatoriska fält</a></h2><p>Vi visar inte användaren vilka fält som måste fyllas i.
+        <h2 id="obligatoriska_falt"><a class="header-anchor" href="#obligatoriska_falt">Obligatoriska fält</a></h2><p class="docs-paragraph">Vi visar inte användaren vilka fält som måste fyllas i.
 Istället visar vi användaren vilka fält som är valfria.
-Utgångspunkten är att vi bara frågar efter information som vi behöver.</p>
-<p>Etikettrubriken till ett valfritt fält avslutas med till exempel &quot;(Frivillig)&quot; eller &quot;(Valfritt)&quot;.</p>
-<p>Ett obligatoriskt fält som inte är ifyllt visas som felaktigt först när användaren försöker skicka in formuläret.
-Det här underlättar för skärmläsaranvändare som ofta har för vana att tabba igenom formulär för att skapa sig en överblick innan de fyller i några uppgifter.</p>
-<p>En formulärskomponent markeras som obligatorisk med <code>v-validation.required</code>.</p>
-<h2 id="submit_knappen"><a class="header-anchor" href="#submit_knappen">Submit-knappen</a></h2><p>Användaren ska alltid kunna trycka på ett formulärs submit-knapp, oavsett om ett formulär innehåller fel eller inte.
+Utgångspunkten är att vi bara frågar efter information som vi behöver.</p><p class="docs-paragraph">Etikettrubriken till ett valfritt fält avslutas med till exempel &quot;(Frivillig)&quot; eller &quot;(Valfritt)&quot;.</p><p class="docs-paragraph">Ett obligatoriskt fält som inte är ifyllt visas som felaktigt först när användaren försöker skicka in formuläret.
+Det här underlättar för skärmläsaranvändare som ofta har för vana att tabba igenom formulär för att skapa sig en överblick innan de fyller i några uppgifter.</p><p class="docs-paragraph">En formulärskomponent markeras som obligatorisk med <code>v-validation.required</code>.</p><h2 id="submit_knappen"><a class="header-anchor" href="#submit_knappen">Submit-knappen</a></h2><p class="docs-paragraph">Användaren ska alltid kunna trycka på ett formulärs submit-knapp, oavsett om ett formulär innehåller fel eller inte.
 Submit-knappen ska aldrig vara inaktiv.
-Formuläret valideras när användaren trycker på submit-knappen eller på ENTER.</p>
-<p>Det finns två alternativ för hur fel i ett formulär kan visas när användaren ha tryckt på submit-knappen:</p>
-<ul>
-<li>Fokus flyttas till den första formulärskomponenten med fel eller saknade uppgifter.</li>
-<li>En <a href="../../components/validation/ferrorlist.html">fellista</a> med ankarlänkar till varje fält med fel visas ovanför formuläret. Fellistan får automatiskt fokus.</li>
+Formuläret valideras när användaren trycker på submit-knappen eller på ENTER.</p><p class="docs-paragraph">Det finns två alternativ för hur fel i ett formulär kan visas när användaren ha tryckt på submit-knappen:</p><ul>
+<li><p class="docs-paragraph">Fokus flyttas till den första formulärskomponenten med fel eller saknade uppgifter.</p></li>
+<li><p class="docs-paragraph">En <a href="../../components/validation/ferrorlist.html">fellista</a> med ankarlänkar till varje fält med fel visas ovanför formuläret. Fellistan får automatiskt fokus.</p></li>
 </ul>
-<p>I formulär med några få komponenter rekommenderas det att fokus flyttas direkt till första formulärskomponenten.
-För stora formulär bör du använda en fellista.</p>
-<h2 id="komponenten_valideringsformular"><a class="header-anchor" href="#komponenten_valideringsformular">Komponenten valideringsformulär</a></h2><p>Som standard ska du använda komponenten <a href="../../components/validation/fvalidationform.html">valideringsformulär</a> för alla typer av formulär.
-Komponenten ger önskat beteende och funktioner för validering av formulär, till exempel:</p>
-<ul>
-<li>Som standard används en <a href="../../components/validation/ferrorlist.html">fellista</a> men den kan stängas av.</li>
-<li>Stöd för backend-validering.</li>
-<li>Fokushantering när användaren försöker skicka in ett formulär med fel.</li>
+<p class="docs-paragraph">I formulär med några få komponenter rekommenderas det att fokus flyttas direkt till första formulärskomponenten.
+För stora formulär bör du använda en fellista.</p><h2 id="komponenten_valideringsformular"><a class="header-anchor" href="#komponenten_valideringsformular">Komponenten valideringsformulär</a></h2><p class="docs-paragraph">Som standard ska du använda komponenten <a href="../../components/validation/fvalidationform.html">valideringsformulär</a> för alla typer av formulär.
+Komponenten ger önskat beteende och funktioner för validering av formulär, till exempel:</p><ul>
+<li><p class="docs-paragraph">Som standard används en <a href="../../components/validation/ferrorlist.html">fellista</a> men den kan stängas av.</p></li>
+<li><p class="docs-paragraph">Stöd för backend-validering.</p></li>
+<li><p class="docs-paragraph">Fokushantering när användaren försöker skicka in ett formulär med fel.</p></li>
 </ul>
-<h2 id="validatorer"><a class="header-anchor" href="#validatorer">Validatorer</a></h2><p>En inmatningskomponent kan ha en eller flera validatorer.
+<h2 id="validatorer"><a class="header-anchor" href="#validatorer">Validatorer</a></h2><p class="docs-paragraph">En inmatningskomponent kan ha en eller flera validatorer.
 Validering görs i den ordning som validatorerna ligger i, vilket innebär att felmeddelandet för den första validatorn som är ogiltig visas.
-En kombination av två validatorer kan resultera i ett specifikt felmeddelande.</p>
-<p>Designsystemet inkluderar inmatningsfält för vanliga format som mejladresser och personnummer.
-Använd något av de <a href="../../components/input/textfield-specialized.html">specialiserade inmatningsfälten</a> eller skapa ett eget inmatningsfält med de <a href="../../components/validation/validators.html">validatorer</a> och <a href="../formatting-and-parsing/formatter-parser.html">regler för formattering och parsning</a> som finns i designsystemet.</p>
-<p>Du kan skapa en <a href="./custom-validator.html">egen validator</a> om din applikation kräver inmatning av uppgifter som följer ett format som designsystemet inte har någon validator för.</p>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../../components/validation/validators.html">Validatorer</a></p>
-<p><a href="./custom-validator.html">Validator - anpassad</a></p>
-<p><a href="./length-validation.html">Längdvalidering</a></p>
-<p><a href="./cross-validation.html">Korsvalidering</a></p>
-<p><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p>
-
+En kombination av två validatorer kan resultera i ett specifikt felmeddelande.</p><p class="docs-paragraph">Designsystemet inkluderar inmatningsfält för vanliga format som mejladresser och personnummer.
+Använd något av de <a href="../../components/input/textfield-specialized.html">specialiserade inmatningsfälten</a> eller skapa ett eget inmatningsfält med de <a href="../../components/validation/validators.html">validatorer</a> och <a href="../formatting-and-parsing/formatter-parser.html">regler för formattering och parsning</a> som finns i designsystemet.</p><p class="docs-paragraph">Du kan skapa en <a href="./custom-validator.html">egen validator</a> om din applikation kräver inmatning av uppgifter som följer ett format som designsystemet inte har någon validator för.</p><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../components/validation/validators.html">Validatorer</a></p><p class="docs-paragraph"><a href="./custom-validator.html">Validator - anpassad</a></p><p class="docs-paragraph"><a href="./length-validation.html">Längdvalidering</a></p><p class="docs-paragraph"><a href="./cross-validation.html">Korsvalidering</a></p><p class="docs-paragraph"><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p>
 
                     </div>
                 </main>
@@ -560,9 +566,9 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/SFKUI-4410 (<a href="https://github.com/Forsakringskassan/designsystem/commits/c0ca5b3402272c1ae0f253f5a1fa638fb4a6af5a">c0ca5b3</a>)<br />
+    feature/SFKUI-4410 (<a href="https://github.com/Forsakringskassan/designsystem/commits/5121c544c8cfebd62ddcf4ea6603c69863ccb43d">5121c54</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/413">PR 413</a><br />
-        2025-04-07 13:59
+        2025-04-08 10:27
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -577,7 +583,7 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -694,10 +700,10 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
         ></script>
         <!-- prettier-ignore -->
         <script
-            src="../../assets/main-644b1f.js"
+            src="../../assets/main-6ee948.js"
             type="module"
             crossorigin
-            integrity="sha384-McVMzbOvTSYLkrbbLUndw8uA9eujRpi/i57FfJil9Y/QpIQvyX99Z85mQgt4ORMO"
+            integrity="sha384-d0cmsEhrEUCCrqlEpGrW8CQWDnUgbz00YuAQwLWs7Zz1QZrr7TSchvO5ZQHKcSO4"
             
         ></script>
     </body>

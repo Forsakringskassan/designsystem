@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-1babd8.css"
+            href="../assets/docs-382061.css"
             crossorigin
-            integrity="sha384-Y7gqfIcgvJ1jmkSGUxowh0SfxsN1r3ClKY5qL2Ynm6gwWexnyVwFoMGSpRZG7ruY"
+            integrity="sha384-88VHjvPw6rJiduEpGWgQ9pGxTd61U5i/YUzuc26JEkbiqLCjfRokM44H37SPdw96"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-20051b.css"
+            href="../assets/docs-fkui-855d8a.css"
             crossorigin
-            integrity="sha384-qhZPClx+QkuR7SzxzNbby0CImPd4CF3Dv4vTvYdwIXTTwVt5Z4WI3FlD0k3ChFqr"
+            integrity="sha384-0MgV4HMcj5OR4RuEjD1UM+FDGnMcKqwwBsKUVh5ou3WlMJm/VRpB0zR7Cs5ZqYZ3"
             data-theme="fkui" disabled
         />
 
@@ -28,14 +28,14 @@
     "vue": "../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-97ccd5.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../assets/vendor-fkui-vue-97ccd5.js": "sha384-liGlFpvVvNeAksCVUX9MGkA75AdyftcKxLsj9syodsHS5KDjscAm6OEbaqoDEX3b",
+    "../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../search-data-48184b.json"
+            href="../search-data-c1a550.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-l0ypm9JGLzve8UjBgSuMFSbTeByukfiuAUsbElI04gj4AhFI8qADa0629Go4KfHq"
             id="search-data"
         />
     </head>
@@ -267,12 +267,20 @@
         <a
             href="./formatting-and-parsing/formatter-parser.html"
             
+            
+            
+            data-path="guides/formatting-and-parsing/formatter-parser.html"
+            
         >
             Formatering och parsning
         </a>
     </li><li class="link ">
         <a
             href="./formatting-and-parsing/custom-formatter-parser.html"
+            
+            
+            
+            data-path="guides/formatting-and-parsing/custom-formatter-parser.html"
             
         >
             Formaterare och parser - anpassad
@@ -290,12 +298,20 @@
         <a
             href="./validation-and-error-handling/validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/validation.html"
+            
         >
             Validering och felhantering
         </a>
     </li><li class="link ">
         <a
             href="./validation-and-error-handling/custom-error-message.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-error-message.html"
             
         >
             Felmeddelande - anpassat
@@ -304,6 +320,10 @@
         <a
             href="./validation-and-error-handling/cross-validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/cross-validation.html"
+            
         >
             Korsvalidering
         </a>
@@ -311,12 +331,20 @@
         <a
             href="./validation-and-error-handling/length-validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/length-validation.html"
+            
         >
             Längdvalidering
         </a>
     </li><li class="link ">
         <a
             href="./validation-and-error-handling/custom-validator.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-validator.html"
             
         >
             Validator - anpassad
@@ -363,19 +391,20 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Registrera en ny layout med <code>registerLayout(..)</code>.
+<p class="docs-paragraph">Registrera en ny layout med <code>registerLayout(..)</code>.
 Anropet kan exempelvis göras från din <code>main.ts</code>eller i root-komponenten som monterar applikationslayouten.
-Namnet som anges är vad som senare används i <code>layout</code>-propen till <code>FPageLayout</code>.</p>
-<h2 id="registrera_tema"><a class="header-anchor" href="#registrera_tema">Registrera tema</a></h2>
+Namnet som anges är vad som senare används i <code>layout</code>-propen till <code>FPageLayout</code>.</p><h2 id="registrera_tema"><a class="header-anchor" href="#registrera_tema">Registrera tema</a></h2>
                 <div
-                    id="example-3e30f9"
+                    id="example-ec8cc9"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">registerLayout</span>({
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { registerLayout } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-title function_">registerLayout</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;my-custom&quot;</span>,
     <span class="hljs-attr">areas</span>: {
         <span class="hljs-attr">header</span>: {
@@ -403,16 +432,14 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 });
 </code></pre>
                 </div>
-            <p>där:</p>
-<ul>
-<li><code>attachPanel</code> talar om hur en panel ska fästas. Om ytan inte kan ta paneler sätter man <code>&quot;none&quot;</code>.</li>
-<li><code>direction</code> talar om ifall ytan flödar horisontellt eller vertikalt.</li>
-<li><code>scroll</code> talar om ifall ytan ska scrolla (i den riktning som <code>direction</code> talar om).</li>
+            <p class="docs-paragraph">där:</p><ul>
+<li><p class="docs-paragraph"><code>attachPanel</code> talar om hur en panel ska fästas. Om ytan inte kan ta paneler sätter man <code>&quot;none&quot;</code>.</p></li>
+<li><p class="docs-paragraph"><code>direction</code> talar om ifall ytan flödar horisontellt eller vertikalt.</p></li>
+<li><p class="docs-paragraph"><code>scroll</code> talar om ifall ytan ska scrolla (i den riktning som <code>direction</code> talar om).</p></li>
 </ul>
-<h2 id="positionering_och_storlek"><a class="header-anchor" href="#positionering_och_storlek">Positionering och storlek</a></h2><p>För positionering och storlek används <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids">CSS grid</a> på <code>::part(grid name)</code> och kan se ut så här:</p>
-
+<h2 id="positionering_och_storlek"><a class="header-anchor" href="#positionering_och_storlek">Positionering och storlek</a></h2><p class="docs-paragraph">För positionering och storlek används <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids">CSS grid</a> på <code>::part(grid name)</code> och kan se ut så här:</p>
                 <div
-                    id="example-7ebb55"
+                    id="example-8cd080"
                     class="code-preview code-preview--default"
                     
                     
@@ -429,11 +456,9 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 }
 </code></pre>
                 </div>
-            <p>Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p>
-<h2 id="farger"><a class="header-anchor" href="#farger">Färger</a></h2><p>Färg och bakgrundsfärg sätts med <code>::part(area name)</code>:</p>
-
+            <p class="docs-paragraph">Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p><h2 id="farger"><a class="header-anchor" href="#farger">Färger</a></h2><p class="docs-paragraph">Färg och bakgrundsfärg sätts med <code>::part(area name)</code>:</p>
                 <div
-                    id="example-4c0b7d"
+                    id="example-475ba9"
                     class="code-preview code-preview--default"
                     
                     
@@ -446,15 +471,12 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 }
 </code></pre>
                 </div>
-            <p>Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p>
-<p>Vi rekommenderar att använda semantiska färger.</p>
-<ul>
-<li>Läs mer om <a href="../styles/colors.html">semantiska färger</a>.</li>
+            <p class="docs-paragraph">Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p><p class="docs-paragraph">Vi rekommenderar att använda semantiska färger.</p><ul>
+<li><p class="docs-paragraph">Läs mer om <a href="../styles/colors.html">semantiska färger</a>.</p></li>
 </ul>
-<h2 id="anvand_eget_tema"><a class="header-anchor" href="#anvand_eget_tema">Använd eget tema</a></h2><p>Slutligen används layouten genom att sätta det nya registrerade namnet som <code>layout</code> attributet samt implementera de ytor som definierats med hjälp av Vue slots.</p>
-
+<h2 id="anvand_eget_tema"><a class="header-anchor" href="#anvand_eget_tema">Använd eget tema</a></h2><p class="docs-paragraph">Slutligen används layouten genom att sätta det nya registrerade namnet som <code>layout</code> attributet samt implementera de ytor som definierats med hjälp av Vue slots.</p>
                 <div
-                    id="example-858ef6"
+                    id="example-09b59c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -470,9 +492,7 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-layout</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="justerbara_ytor_och_paneler"><a class="header-anchor" href="#justerbara_ytor_och_paneler">Justerbara ytor och paneler</a></h2><p>Komponenten <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> kan användas för att skapa en yta vars storlek kan justeras av slutanvändaren.</p>
-<p>Använd <a href="../functions/functions/use-resize.html">useResize() composable</a> för att styra <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> om du skapar egna paneler.</p>
-
+            <h2 id="justerbara_ytor_och_paneler"><a class="header-anchor" href="#justerbara_ytor_och_paneler">Justerbara ytor och paneler</a></h2><p class="docs-paragraph">Komponenten <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> kan användas för att skapa en yta vars storlek kan justeras av slutanvändaren.</p><p class="docs-paragraph">Använd <a href="../functions/functions/use-resize.html">useResize() composable</a> för att styra <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> om du skapar egna paneler.</p>
 
                     </div>
                 </main>
@@ -493,9 +513,9 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/SFKUI-4410 (<a href="https://github.com/Forsakringskassan/designsystem/commits/c0ca5b3402272c1ae0f253f5a1fa638fb4a6af5a">c0ca5b3</a>)<br />
+    feature/SFKUI-4410 (<a href="https://github.com/Forsakringskassan/designsystem/commits/5121c544c8cfebd62ddcf4ea6603c69863ccb43d">5121c54</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/413">PR 413</a><br />
-        2025-04-07 13:59
+        2025-04-08 10:27
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -510,7 +530,7 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -627,10 +647,10 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
         ></script>
         <!-- prettier-ignore -->
         <script
-            src="../assets/main-644b1f.js"
+            src="../assets/main-6ee948.js"
             type="module"
             crossorigin
-            integrity="sha384-McVMzbOvTSYLkrbbLUndw8uA9eujRpi/i57FfJil9Y/QpIQvyX99Z85mQgt4ORMO"
+            integrity="sha384-d0cmsEhrEUCCrqlEpGrW8CQWDnUgbz00YuAQwLWs7Zz1QZrr7TSchvO5ZQHKcSO4"
             
         ></script>
     </body>
