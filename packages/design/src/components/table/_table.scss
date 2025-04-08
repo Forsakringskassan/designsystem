@@ -78,10 +78,6 @@ $table-input-offset-horizontal: 0.25rem;
     box-shadow: none;
 }
 
-%table-row-selected {
-    color: $table-row-foreground;
-}
-
 %table-row-active {
     background: var(--f-background-grid-active);
     color: $table-row-foreground;
@@ -193,10 +189,6 @@ $table-input-offset-horizontal: 0.25rem;
 
                 // these have higher priority
                 &#{$TABLE_SELECTOR}__row {
-                    &--selected {
-                        @extend %table-row-selected;
-                    }
-
                     &--active {
                         @extend %table-row-active;
                     }
@@ -209,18 +201,10 @@ $table-input-offset-horizontal: 0.25rem;
 
                 // these have higher priority
                 &#{$TABLE_SELECTOR}__row {
-                    &--selected {
-                        @extend %table-row-selected;
-                    }
-
                     &--active {
                         @extend %table-row-active;
                     }
                 }
-            }
-
-            &--selected {
-                @extend %table-row-selected;
             }
 
             &--active {
@@ -342,10 +326,6 @@ $table-input-offset-horizontal: 0.25rem;
 
             // these have higher priority
             &#{$TABLE_SELECTOR}__row {
-                &--selected {
-                    @extend %table-row-selected;
-                }
-
                 &--active {
                     @extend %table-row-active;
                 }
@@ -359,10 +339,6 @@ $table-input-offset-horizontal: 0.25rem;
 
             // these have higher priority
             &#{$TABLE_SELECTOR}__row {
-                &--selected {
-                    @extend %table-row-selected;
-                }
-
                 &--active {
                     @extend %table-row-active;
                 }
