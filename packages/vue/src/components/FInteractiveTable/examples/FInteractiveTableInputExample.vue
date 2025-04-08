@@ -41,16 +41,16 @@ export default defineComponent({
     <f-interactive-table :rows="betalningar" key-attribute="id">
         <template #caption> Justera betalningar </template>
         <template #default="{ row }">
-            <f-table-column name="beskrivning" title="Beskrivning" type="text" shrink>
+            <f-table-column title="Beskrivning" type="text" shrink>
                 {{ row.beskrivning }}
             </f-table-column>
-            <f-table-column name="date" title="Utbetalningsdatum" type="text" shrink>
+            <f-table-column title="Utbetalningsdatum" type="text" shrink>
                 <f-datepicker-field v-model="row.date" v-validation.required>
                     Utbetalningsdatum
                 </f-datepicker-field>
             </f-table-column>
 
-            <f-table-column name="belopp" title="Utbetalat belopp" type="text" shrink>
+            <f-table-column title="Utbetalat belopp" type="text" shrink>
                 <f-numeric-text-field v-model="row.belopp" v-validation.required>
                     Utbetalt belopp
                 </f-numeric-text-field>

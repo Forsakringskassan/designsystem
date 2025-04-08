@@ -43,12 +43,10 @@ const rows = [
     <f-interactive-table :rows expandable-attribute="myExpandableRow" key-attribute="id">
         <template #caption> Expanderbara rader </template>
         <template #default="{ row }">
-            <f-table-column name="compensation" title="Ersättning"> {{ row.name }} </f-table-column>
-            <f-table-column name="id" title="Id" shrink> {{ row.id }} </f-table-column>
-            <f-table-column name="date" title="Datum" type="date"> {{ row.date }} </f-table-column>
-            <f-table-column name="amount" title="Summa" type="numeric">
-                {{ row.sum }} kronor
-            </f-table-column>
+            <f-table-column title="Ersättning"> {{ row.name }} </f-table-column>
+            <f-table-column title="Id" shrink> {{ row.id }} </f-table-column>
+            <f-table-column title="Datum" type="date"> {{ row.date }} </f-table-column>
+            <f-table-column title="Summa" type="numeric"> {{ row.sum }} kronor </f-table-column>
         </template>
     </f-interactive-table>
 </template>
