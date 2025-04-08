@@ -1,0 +1,15 @@
+$wizardstep-stepofselector-color-text: var(--fkds-color-text-secondary);
+$wizardstep-line-color: var(--fkds-color-border-strong);
+$wizardstep-heading-color-default: var(--fkds-color-text-primary);
+$wizardstep-heading-color-done: var(--fkds-color-feedback-text-positive);
+$wizardstep-heading-decoration-color-done-hover: var(--fkds-color-feedback-text-positive);
+
+// CIRCLE
+$wizardstep-circle-color-border: var(--fkds-color-border-strong);
+$wizardstep-circle-color-background-open: var(--fkds-color-background-primary);
+$wizardstep-circle-color-background-pending: var(--fkds-color-background-disabled);
+$wizardstep-circle-color-border-done: var(--fkds-color-feedback-border-positive);
+$wizardstep-circle-color-background-done: var(--fkds-color-feedback-background-positive-strong);
+
+// ICON SUCCESS
+$wizardstep-success-color: var(--fkds-icon-color-content-inverted);
