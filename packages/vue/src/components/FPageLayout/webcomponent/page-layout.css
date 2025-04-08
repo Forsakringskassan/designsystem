@@ -16,13 +16,13 @@
 
         [part="area header"],
         [part="area footer"] {
-            background: var(--f-background-pageheader-primary);
-            color: var(--fkds-color-text-inverted);
+            --f-page-layout-background: var(--f-background-pageheader-primary);
+            --f-page-layout-color: var(--fkds-color-text-inverted);
         }
 
         [part="area content"] {
-            background: var(--fkds-color-background-primary);
-            color: var(--fkds-color-text-primary);
+            --f-page-layout-background: var(--fkds-color-background-primary);
+            --f-page-layout-color: var(--fkds-color-text-primary);
         }
     }
 
@@ -35,17 +35,17 @@
 
         [part="area header"],
         [part="area footer"] {
-            background: var(--f-background-pageheader-primary);
-            color: var(--fkds-color-text-inverted);
+            --f-page-layout-background: var(--f-background-pageheader-primary);
+            --f-page-layout-color: var(--fkds-color-text-inverted);
         }
 
         [part="area left"] {
-            background: var(--fkds-color-background-secondary);
+            --f-page-layout-background: var(--fkds-color-background-secondary);
         }
 
         [part="area content"] {
-            background: var(--fkds-color-background-primary);
-            color: var(--fkds-color-text-primary);
+            --f-page-layout-background: var(--fkds-color-background-primary);
+            --f-page-layout-color: var(--fkds-color-text-primary);
         }
     }
 
@@ -58,18 +58,18 @@
 
         [part="area header"],
         [part="area footer"] {
-            background: var(--f-background-pageheader-primary);
-            color: var(--fkds-color-text-inverted);
+            --f-page-layout-background: var(--f-background-pageheader-primary);
+            --f-page-layout-color: var(--fkds-color-text-inverted);
         }
 
         [part="area right"] {
-            background: var(--fkds-color-background-secondary);
-            color: var(--fkds-color-text-primary);
+            --f-page-layout-background: var(--fkds-color-background-secondary);
+            --f-page-layout-color: var(--fkds-color-text-primary);
         }
 
         [part="area content"] {
-            background: var(--fkds-color-background-primary);
-            color: var(--fkds-color-text-primary);
+            --f-page-layout-background: var(--fkds-color-background-primary);
+            --f-page-layout-color: var(--fkds-color-text-primary);
         }
     }
 
@@ -82,19 +82,19 @@
 
         [part="area header"],
         [part="area footer"] {
-            background: var(--f-background-pageheader-primary);
-            color: var(--fkds-color-text-inverted);
+            --f-page-layout-background: var(--f-background-pageheader-primary);
+            --f-page-layout-color: var(--fkds-color-text-inverted);
         }
 
         [part="area left"],
         [part="area right"] {
-            background: var(--fkds-color-background-secondary);
-            color: var(--fkds-color-text-primary);
+            --f-page-layout-background: var(--fkds-color-background-secondary);
+            --f-page-layout-color: var(--fkds-color-text-primary);
         }
 
         [part="area content"] {
-            background: var(--fkds-color-background-primary);
-            color: var(--fkds-color-text-primary);
+            --f-page-layout-background: var(--fkds-color-background-primary);
+            --f-page-layout-color: var(--fkds-color-text-primary);
         }
     }
 }
@@ -102,6 +102,8 @@
 .page-layout__area {
     display: flex;
     position: relative;
+    background: var(--f-page-layout-background);
+    color: var(--f-page-layout-color);
 
     &[data-direction="column"] {
         flex-direction: column;
