@@ -28,9 +28,6 @@ $CHECKBOX_SELECTOR: ".checkbox" !default;
     &:hover {
         @extend %list-item-hover;
     }
-    &:has(input:checked) {
-        @extend %list-item-selected;
-    }
     label::before {
         top: 0.9rem;
         left: 1rem;
