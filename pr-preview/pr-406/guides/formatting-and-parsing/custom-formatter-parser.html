@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-96f970.css"
+            href="../../assets/docs-081143.css"
             crossorigin
-            integrity="sha384-9VoXLzoMVpujVr0wGWaTJPCJmuNudKJQdc4nZN96Blg82yKuW6+fFAZ7aScbuPdd"
+            integrity="sha384-HUhDp8e8aO95mPIH3yC3721vIhGL7TAlqcMJ6w2LeG4Ez/kugaKkUmWTQabcpUYP"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-20051b.css"
+            href="../../assets/docs-fkui-855d8a.css"
             crossorigin
-            integrity="sha384-qhZPClx+QkuR7SzxzNbby0CImPd4CF3Dv4vTvYdwIXTTwVt5Z4WI3FlD0k3ChFqr"
+            integrity="sha384-0MgV4HMcj5OR4RuEjD1UM+FDGnMcKqwwBsKUVh5ou3WlMJm/VRpB0zR7Cs5ZqYZ3"
             data-theme="fkui" disabled
         />
 
@@ -28,14 +28,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-02d60d.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e2e674.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-02d60d.js": "sha384-enqqa6xGt2DKlN5IcAdXGticIPNbPdCrjILKLVcvWWfu9iiUtAI1cbEOzo+kbNkQ",
+    "../../assets/vendor-fkui-vue-e2e674.js": "sha384-KFUWeI6Us+2GM/RK9y2MTw2rDbciegPg5RoYSGLcYrx0+wKux4s2YFldaL4lV3iN",
     "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
   }
 }
@@ -267,12 +267,20 @@
         <a
             href="./formatter-parser.html"
             
+            
+            
+            data-path="guides/formatting-and-parsing/formatter-parser.html"
+            
         >
             Formatering och parsning
         </a>
     </li><li class="link active">
         <a
             href="./custom-formatter-parser.html"
+            
+            
+            
+            data-path="guides/formatting-and-parsing/custom-formatter-parser.html"
             
         >
             Formaterare och parser - anpassad
@@ -290,12 +298,20 @@
         <a
             href="../validation-and-error-handling/validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/validation.html"
+            
         >
             Validering och felhantering
         </a>
     </li><li class="link ">
         <a
             href="../validation-and-error-handling/custom-error-message.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-error-message.html"
             
         >
             Felmeddelande - anpassat
@@ -304,6 +320,10 @@
         <a
             href="../validation-and-error-handling/cross-validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/cross-validation.html"
+            
         >
             Korsvalidering
         </a>
@@ -311,12 +331,20 @@
         <a
             href="../validation-and-error-handling/length-validation.html"
             
+            
+            
+            data-path="guides/validation-and-error-handling/length-validation.html"
+            
         >
             Längdvalidering
         </a>
     </li><li class="link ">
         <a
             href="../validation-and-error-handling/custom-validator.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-validator.html"
             
         >
             Validator - anpassad
@@ -368,8 +396,7 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>För en djupare förståelse om hur data flödar från inmatningsfält till modell-värde till vy-värde presenterar vi flödesscheman.</p>
-<h2 id="utan_parser_och_formaterare"><a class="header-anchor" href="#utan_parser_och_formaterare">Utan parser och formaterare</a></h2>
+<p class="docs-paragraph">För en djupare förståelse om hur data flödar från inmatningsfält till modell-värde till vy-värde presenterar vi flödesscheman.</p><h2 id="utan_parser_och_formaterare"><a class="header-anchor" href="#utan_parser_och_formaterare">Utan parser och formaterare</a></h2>
                 <pre class="mermaid">graph LR
 	FTextField[&quot;`**FTextField**
 	    &amp;quot;AbcD&amp;quot;`&quot;]
@@ -384,8 +411,7 @@
     validerar? -- Nej --&gt; modelValue
     trim --&gt; modelValue
 </pre>
-            <h2 id="formaterare_utan_parser"><a class="header-anchor" href="#formaterare_utan_parser">Formaterare utan parser</a></h2><p>I detta exempel använder vi en fiktiv formaterare som ändrar skiftläge till gemener.</p>
-
+            <h2 id="formaterare_utan_parser"><a class="header-anchor" href="#formaterare_utan_parser">Formaterare utan parser</a></h2><p class="docs-paragraph">I detta exempel använder vi en fiktiv formaterare som ändrar skiftläge till gemener.</p>
                 <div
                     id="example-032ecd"
                     class="code-preview code-preview--default"
@@ -431,17 +457,16 @@
                 >
                     
                     <div class="code-preview__preview">
-        <div id="WithFormatterExample"></div>
+        <div id="example-60f4a7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./WithFormatterExample-1e6b70.js"></script>
+        <script type="module" src="./WithFormatterExample-60f4a7.js"></script>
     </div>
                 </div>
-            <h2 id="parser_utan_formaterare"><a class="header-anchor" href="#parser_utan_formaterare">Parser utan formaterare</a></h2><p>I detta exempel använder vi en fiktiv parser som ändrar skiftläge till versaler.</p>
-
+            <h2 id="parser_utan_formaterare"><a class="header-anchor" href="#parser_utan_formaterare">Parser utan formaterare</a></h2><p class="docs-paragraph">I detta exempel använder vi en fiktiv parser som ändrar skiftläge till versaler.</p>
                 <div
                     id="example-c588df"
                     class="code-preview code-preview--default"
@@ -486,8 +511,7 @@
     validerar? -- Nej --&gt; modelValue
     pparser --&gt; modelValue
 </pre>
-            <p>Eftersom ingen formaterare finns uppdateras inte vy-värdet.</p>
-
+            <p class="docs-paragraph">Eftersom ingen formaterare finns uppdateras inte vy-värdet.</p>
                 <div
                     id="example-c0d707"
                     class="code-preview code-preview--default"
@@ -497,17 +521,16 @@
                 >
                     
                     <div class="code-preview__preview">
-        <div id="WithParserExample"></div>
+        <div id="example-197c63"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./WithParserExample-b79579.js"></script>
+        <script type="module" src="./WithParserExample-197c63.js"></script>
     </div>
                 </div>
-            <h2 id="formaterare_och_parser"><a class="header-anchor" href="#formaterare_och_parser">Formaterare och parser</a></h2><p>I detta exempel kombinerar vi formateraren och parsern från tidigare flöden.</p>
-
+            <h2 id="formaterare_och_parser"><a class="header-anchor" href="#formaterare_och_parser">Formaterare och parser</a></h2><p class="docs-paragraph">I detta exempel kombinerar vi formateraren och parsern från tidigare flöden.</p>
                 <pre class="mermaid">graph LR
 	FTextField[&quot;`**FTextField**
 	    &amp;quot;AbcD&amp;quot;`&quot;]
@@ -541,20 +564,19 @@
                 >
                     
                     <div class="code-preview__preview">
-        <div id="WithParserFormatterExample"></div>
+        <div id="example-a9e962"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./WithParserFormatterExample-5c8d12.js"></script>
+        <script type="module" src="./WithParserFormatterExample-a9e962.js"></script>
     </div>
                 </div>
-            <h2 id="programmatisk_uppdatering_av_model_varde"><a class="header-anchor" href="#programmatisk_uppdatering_av_model_varde">Programmatisk uppdatering av model-värde</a></h2><p>Vid programmatisk uppdatering av model-värde uppdateras vy-värde automatiskt.
+            <h2 id="programmatisk_uppdatering_av_model_varde"><a class="header-anchor" href="#programmatisk_uppdatering_av_model_varde">Programmatisk uppdatering av model-värde</a></h2><p class="docs-paragraph">Vid programmatisk uppdatering av model-värde uppdateras vy-värde automatiskt.
 Vy-värdet formateras om en formaterare är angiven.
 Om även en parser är angiven utöver formaterare så parsas värdet innan det formateras.
 Misslyckas parsning eller formatering på vägen så sätts vy-värdet till model-värdet.</p>
-
                 <pre class="mermaid">graph LR
     modelValue[(&quot;`**modelValue**
 	    &amp;quot;AbcD&amp;quot;`&quot;)]
@@ -569,8 +591,7 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
     wformatter --&gt; stringify
     stringify -. Uppdaterar .-&gt; viewValue
 </pre>
-            <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="./formatter-parser.html">(Formatering och parsning)</a></p>
-
+            <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./formatter-parser.html">(Formatering och parsning)</a></p>
 
                     </div>
                 </main>
@@ -591,9 +612,9 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    fix/collapsed-expandable-rows-in-finteractivetable-shown-as-white-gaps-in-ios-browsers (<a href="https://github.com/Forsakringskassan/designsystem/commits/2804b47a0836a24939c7155c83c8a20ad6641513">2804b47</a>)<br />
+    fix/collapsed-expandable-rows-in-finteractivetable-shown-as-white-gaps-in-ios-browsers (<a href="https://github.com/Forsakringskassan/designsystem/commits/bbd71796546b93758d6d01c8ffda5c99eba9fa6c">bbd7179</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/406">PR 406</a><br />
-        2025-04-04 11:09
+        2025-04-08 08:12
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -608,7 +629,7 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -725,10 +746,10 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
         ></script>
         <!-- prettier-ignore -->
         <script
-            src="../../assets/main-644b1f.js"
+            src="../../assets/main-6ee948.js"
             type="module"
             crossorigin
-            integrity="sha384-McVMzbOvTSYLkrbbLUndw8uA9eujRpi/i57FfJil9Y/QpIQvyX99Z85mQgt4ORMO"
+            integrity="sha384-d0cmsEhrEUCCrqlEpGrW8CQWDnUgbz00YuAQwLWs7Zz1QZrr7TSchvO5ZQHKcSO4"
             
         ></script>
     </body>
