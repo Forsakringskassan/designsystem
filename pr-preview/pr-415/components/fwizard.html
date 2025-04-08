@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../search-data-48184b.json"
+            href="../search-data-c1a550.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-l0ypm9JGLzve8UjBgSuMFSbTeByukfiuAUsbElI04gj4AhFI8qADa0629Go4KfHq"
             id="search-data"
         />
     </head>
@@ -1068,13 +1068,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/05b20f6f29e5da444a185b1dce37a659a8bd6766/packages/vue/src/components/FWizard/FWizard.vue">FWizard</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/2194a0b7c3412e27b0f8642358700ba7d0ee1ec0/packages/vue/src/components/FWizard/FWizard.vue">FWizard</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/05b20f6f29e5da444a185b1dce37a659a8bd6766/packages/vue/src/components/FWizard/FWizardStep.vue">FWizardStep</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/2194a0b7c3412e27b0f8642358700ba7d0ee1ec0/packages/vue/src/components/FWizard/FWizardStep.vue">FWizardStep</a>
             
         </code>
          
@@ -1124,13 +1124,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-cc7d5e"></div>
+        <div id="example-ca50ba"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FWizardExampleDefault-cc7d5e.js"></script>
+        <script type="module" src="./FWizardExampleDefault-ca50ba.js"></script>
     </div>
                 <div>
             <button
@@ -1148,7 +1148,31 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FSelectField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;WizardExampleDefault&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FSelectField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">current</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">visible</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">options</span>: <span class="hljs-string">&quot;&quot;</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">onCompleted</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">done</span> = <span class="hljs-literal">true</span>;
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;current&quot;</span> <span class="hljs-attr">header-tag</span>=<span class="hljs-string">&quot;h2&quot;</span> @<span class="hljs-attr">completed</span>=<span class="hljs-string">&quot;onCompleted&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;foo&quot;</span> <span class="hljs-attr">:use-error-list</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Stegrubrik 1&quot;</span>&gt;</span>
@@ -1180,30 +1204,6 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;done&quot;</span>&gt;</span>Allt är ifyllt<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FSelectField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;WizardExampleDefault&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FSelectField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">current</span>: <span class="hljs-literal">null</span>,
-            <span class="hljs-attr">visible</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">options</span>: <span class="hljs-string">&quot;&quot;</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onCompleted</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">done</span> = <span class="hljs-literal">true</span>;
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1304,13 +1304,13 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-1017f1"></div>
+        <div id="example-4bd3a6"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FWizardExampleAddStep-1017f1.js"></script>
+        <script type="module" src="./FWizardExampleAddStep-4bd3a6.js"></script>
     </div>
                 <div>
             <button
@@ -1328,7 +1328,61 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FCheckboxField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;WizardExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FCheckboxField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">current</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">visible</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">fruktkorgar</span>: [],
+            <span class="hljs-attr">n</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">frukter</span>: [
+                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;BANAN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Banan 🍌&quot;</span> },
+                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ÄPPLE&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Äpple 🍏&quot;</span> },
+                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MANDARIN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Mandarin 🍊&quot;</span> },
+                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANANAS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Ananas 🍍&quot;</span> },
+                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;VATTENMELON&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Vattenmelon 🍉&quot;</span> },
+                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANDRA_FRUKTER&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Andra frukter&quot;</span> },
+            ],
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">addBasket</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruktkorgar</span>.<span class="hljs-title function_">push</span>({
+                <span class="hljs-attr">id</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">n</span>++,
+                <span class="hljs-attr">valdaFrukter</span>: [],
+            });
+        },
+        <span class="hljs-title function_">removeBasket</span>(<span class="hljs-params">item</span>) {
+            <span class="hljs-keyword">const</span> index = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruktkorgar</span>.<span class="hljs-title function_">findIndex</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> it.<span class="hljs-property">id</span> === item.<span class="hljs-property">id</span>);
+            <span class="hljs-keyword">if</span> (index &gt;= <span class="hljs-number">0</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruktkorgar</span>.<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);
+            }
+        },
+        <span class="hljs-title function_">onBeforeNext</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Här kanska man anropar backend för att kontrollera något?&quot;</span>);
+                <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">2000</span>);
+            });
+        },
+        <span class="hljs-title function_">onCompleted</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Tack för din beställning! 🙏 Applikationsspecifik logik tar det vidare.&quot;</span>);
+        },
+        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(
+                <span class="hljs-string">&quot;Avbryt anropat av användaren. Applikationsspecifik logik tar hand om eventuell bekräftelse.&quot;</span>,
+            );
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard</span>
             <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;current&quot;</span>
@@ -1393,60 +1447,6 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>v-model: {{ current }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FCheckboxField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;WizardExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FCheckboxField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">current</span>: <span class="hljs-literal">null</span>,
-            <span class="hljs-attr">visible</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">fruktkorgar</span>: [],
-            <span class="hljs-attr">n</span>: <span class="hljs-number">1</span>,
-            <span class="hljs-attr">frukter</span>: [
-                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;BANAN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Banan 🍌&quot;</span> },
-                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ÄPPLE&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Äpple 🍏&quot;</span> },
-                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MANDARIN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Mandarin 🍊&quot;</span> },
-                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANANAS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Ananas 🍍&quot;</span> },
-                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;VATTENMELON&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Vattenmelon 🍉&quot;</span> },
-                { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANDRA_FRUKTER&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Andra frukter&quot;</span> },
-            ],
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">addBasket</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruktkorgar</span>.<span class="hljs-title function_">push</span>({
-                <span class="hljs-attr">id</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">n</span>++,
-                <span class="hljs-attr">valdaFrukter</span>: [],
-            });
-        },
-        <span class="hljs-title function_">removeBasket</span>(<span class="hljs-params">item</span>) {
-            <span class="hljs-keyword">const</span> index = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruktkorgar</span>.<span class="hljs-title function_">findIndex</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> it.<span class="hljs-property">id</span> === item.<span class="hljs-property">id</span>);
-            <span class="hljs-keyword">if</span> (index &gt;= <span class="hljs-number">0</span>) {
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruktkorgar</span>.<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);
-            }
-        },
-        <span class="hljs-title function_">onBeforeNext</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> {
-                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Här kanska man anropar backend för att kontrollera något?&quot;</span>);
-                <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">2000</span>);
-            });
-        },
-        <span class="hljs-title function_">onCompleted</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Tack för din beställning! 🙏 Applikationsspecifik logik tar det vidare.&quot;</span>);
-        },
-        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(
-                <span class="hljs-string">&quot;Avbryt anropat av användaren. Applikationsspecifik logik tar hand om eventuell bekräftelse.&quot;</span>,
-            );
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1817,9 +1817,9 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    refactor/block-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/05b20f6f29e5da444a185b1dce37a659a8bd6766">05b20f6</a>)<br />
+    refactor/block-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/2194a0b7c3412e27b0f8642358700ba7d0ee1ec0">2194a0b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/415">PR 415</a><br />
-        2025-04-08 12:22
+        2025-04-08 13:54
 </div>
 <div class="toolbar__item">
     <form id="version">

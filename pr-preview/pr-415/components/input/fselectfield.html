@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-48184b.json"
+            href="../../search-data-c1a550.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-l0ypm9JGLzve8UjBgSuMFSbTeByukfiuAUsbElI04gj4AhFI8qADa0629Go4KfHq"
             id="search-data"
         />
     </head>
@@ -1068,7 +1068,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/05b20f6f29e5da444a185b1dce37a659a8bd6766/packages/vue/src/components/FSelectField/FSelectField.vue">FSelectField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/2194a0b7c3412e27b0f8642358700ba7d0ee1ec0/packages/vue/src/components/FSelectField/FSelectField.vue">FSelectField</a>
             
         </code>
          
@@ -1113,13 +1113,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-eda0f2"></div>
+        <div id="example-25db7c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSelectFieldLiveExample-eda0f2.js"></script>
+        <script type="module" src="./FSelectFieldLiveExample-25db7c.js"></script>
     
                 </div>
             <p class="docs-paragraph">Dropplista har alltid en etikett som beskriver vad användaren ska fylla i.</p><h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p class="docs-paragraph">I dropplistor är det vanligt att etiketten är formulerad som en fråga eller ett påstående.</p><p class="docs-paragraph">Texten i själva dropplistan formuleras så att det blir tydligt vad användaren ska fylla i, men får inte ensam beskriva valet då den försvinner när användaren gjort ett val.</p><h2 id="responsiv_bredd"><a class="header-anchor" href="#responsiv_bredd">Responsiv bredd</a></h2><p class="docs-paragraph">Etiketten och dropplistan kan ha olika bredd. När etikettens text radbryts behöver alltså inte vara kopplat till hur bred dropplistan i sig är.</p><p class="docs-paragraph">Bredden för respektive del anges med antal kolumner vid olika skärmbredder (brytpunkter).</p>
@@ -1132,13 +1132,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-c5f419"></div>
+        <div id="example-ff8069"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSelectFieldWidths-c5f419.js"></script>
+        <script type="module" src="./FSelectFieldWidths-ff8069.js"></script>
     </div>
                 <div>
             <button
@@ -1156,7 +1156,20 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSelectField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FSelectFieldWidths&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FSelectField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">foo</span>: <span class="hljs-string">&quot;&quot;</span> };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-select-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;foo&quot;</span> <span class="hljs-attr">v-validation.required</span> <span class="hljs-attr">label-width</span>=<span class="hljs-string">&quot;md-9&quot;</span> <span class="hljs-attr">select-width</span>=<span class="hljs-string">&quot;md-6&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi
@@ -1169,19 +1182,6 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;BAZ&quot;</span>&gt;</span>Baz<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-select-field</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSelectField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FSelectFieldWidths&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FSelectField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> { <span class="hljs-attr">foo</span>: <span class="hljs-string">&quot;&quot;</span> };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1456,9 +1456,9 @@ If the prop is not set undefined will be used.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    refactor/block-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/05b20f6f29e5da444a185b1dce37a659a8bd6766">05b20f6</a>)<br />
+    refactor/block-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/2194a0b7c3412e27b0f8642358700ba7d0ee1ec0">2194a0b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/415">PR 415</a><br />
-        2025-04-08 12:22
+        2025-04-08 13:54
 </div>
 <div class="toolbar__item">
     <form id="version">

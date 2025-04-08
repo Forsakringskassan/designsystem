@@ -92,10 +92,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-48184b.json"
+            href="../../search-data-c1a550.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-l0ypm9JGLzve8UjBgSuMFSbTeByukfiuAUsbElI04gj4AhFI8qADa0629Go4KfHq"
             id="search-data"
         />
     </head>
@@ -1136,13 +1136,13 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-43093a"></div>
+        <div id="example-bac4e9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginExample-43093a.js"></script>
+        <script type="module" src="./ValidationPluginExample-bac4e9.js"></script>
     </div>
                 <div>
             <button
@@ -1160,7 +1160,17 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
         <span class="hljs-attr">v-validation.required.maxLength.minLength</span>=<span class="hljs-string">&quot;{
             maxLength: { length: 20 },
@@ -1170,16 +1180,6 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
         Namn på barn
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1193,13 +1193,13 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-b92e90"></div>
+        <div id="example-596e2d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginVariables-b92e90.js"></script>
+        <script type="module" src="./ValidationPluginVariables-596e2d.js"></script>
     </div>
                 <div>
             <button
@@ -1217,18 +1217,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-        <span class="hljs-attr">v-validation.required.maxLength.minLength</span>=<span class="hljs-string">&quot;{
-            maxLength: { length: myDataVariable },
-            minLength: { length: anotherDataVariable },
-        }&quot;</span>
-    &gt;</span>
-        Namn på barn
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1243,6 +1232,17 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+        <span class="hljs-attr">v-validation.required.maxLength.minLength</span>=<span class="hljs-string">&quot;{
+            maxLength: { length: myDataVariable },
+            minLength: { length: anotherDataVariable },
+        }&quot;</span>
+    &gt;</span>
+        Namn på barn
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1257,13 +1257,13 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-2fea4a"></div>
+        <div id="example-96faa0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginValidityEvent-2fea4a.js"></script>
+        <script type="module" src="./ValidationPluginValidityEvent-96faa0.js"></script>
     </div>
                 <div>
             <button
@@ -1281,7 +1281,20 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginValidityEvent&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">validityEvent</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">nameModel</span>: <span class="hljs-string">&quot;&quot;</span> };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>ValidityEvent<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{{ validityEvent }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
@@ -1299,19 +1312,6 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginValidityEvent&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> { <span class="hljs-attr">validityEvent</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">nameModel</span>: <span class="hljs-string">&quot;&quot;</span> };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1347,13 +1347,13 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-8924a7"></div>
+        <div id="example-f7e803"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginErrorMessage-8924a7.js"></script>
+        <script type="module" src="./ValidationPluginErrorMessage-f7e803.js"></script>
     </div>
                 <div>
             <button
@@ -1371,20 +1371,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;specifikt-felmeddelande&quot;</span>
-        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;model&quot;</span>
-        <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{
-            required: { errorMessage: &#x27;Ett specifikt required felmeddelande&#x27; },
-        }&quot;</span>
-        <span class="hljs-attr">:maxlength</span>=<span class="hljs-string">&quot;100&quot;</span>
-    &gt;</span>
-        Ett fält med specifict felmeddelande
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1396,6 +1383,19 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;specifikt-felmeddelande&quot;</span>
+        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;model&quot;</span>
+        <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{
+            required: { errorMessage: &#x27;Ett specifikt required felmeddelande&#x27; },
+        }&quot;</span>
+        <span class="hljs-attr">:maxlength</span>=<span class="hljs-string">&quot;100&quot;</span>
+    &gt;</span>
+        Ett fält med specifict felmeddelande
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1411,13 +1411,13 @@ Det innebär att man kan lägga direktivet på flera platser för att kontinuerl
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-371f3d"></div>
+        <div id="example-c08100"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginFormValidation-371f3d.js"></script>
+        <script type="module" src="./ValidationPluginFormValidation-c08100.js"></script>
     </div>
                 <div>
             <button
@@ -1435,7 +1435,17 @@ Det innebär att man kan lägga direktivet på flera platser för att kontinuerl
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginFormValidation&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FTextField</span> },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;form-validation-prefix&#x27;&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">error-message</span>&gt;</span> Fel i följande fält... <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
@@ -1466,16 +1476,6 @@ Det innebär att man kan lägga direktivet på flera platser för att kontinuerl
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Trigga fel<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginFormValidation&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FTextField</span> },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1508,13 +1508,13 @@ Ett use-case för detta är tex om ett fält längre ned skall vara required bas
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-c79a02"></div>
+        <div id="example-ba8d35"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginToggleEnabled-c79a02.js"></script>
+        <script type="module" src="./ValidationPluginToggleEnabled-ba8d35.js"></script>
     </div>
                 <div>
             <button
@@ -1532,7 +1532,24 @@ Ett use-case för detta är tex om ett fält längre ned skall vara required bas
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginToggleEnabled&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">toggleEnabled</span>: <span class="hljs-literal">true</span> };
+    },
+    <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setSubmitted</span>(<span class="hljs-string">&quot;validator-enabled&quot;</span>);
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Validering aktiverad: {{ toggleEnabled }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
@@ -1554,23 +1571,6 @@ Ett use-case för detta är tex om ett fält längre ned skall vara required bas
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginToggleEnabled&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> { <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">toggleEnabled</span>: <span class="hljs-literal">true</span> };
-    },
-    <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setSubmitted</span>(<span class="hljs-string">&quot;validator-enabled&quot;</span>);
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1585,13 +1585,13 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="rev
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-ccc949"></div>
+        <div id="example-c11f80"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginRevalidate-ccc949.js"></script>
+        <script type="module" src="./ValidationPluginRevalidate-c11f80.js"></script>
     </div>
                 <div>
             <button
@@ -1609,13 +1609,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="rev
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validateAllFieldsOnPage()&quot;</span>&gt;</span>
-        Validera alla fält på sidan
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
@@ -1633,6 +1627,12 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="rev
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validateAllFieldsOnPage()&quot;</span>&gt;</span>
+        Validera alla fält på sidan
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1646,13 +1646,13 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="rev
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-3bcd8f"></div>
+        <div id="example-5452a8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginValidateAll-3bcd8f.js"></script>
+        <script type="module" src="./ValidationPluginValidateAll-5452a8.js"></script>
     </div>
                 <div>
             <button
@@ -1670,13 +1670,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="rev
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validateAllFieldsOnPage()&quot;</span>&gt;</span>
-        Validera alla fält på sidan
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
@@ -1696,6 +1690,12 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="rev
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validateAllFieldsOnPage()&quot;</span>&gt;</span>
+        Validera alla fält på sidan
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1711,13 +1711,13 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-ab1bc1"></div>
+        <div id="example-a984b5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginToggleDisable-ab1bc1.js"></script>
+        <script type="module" src="./ValidationPluginToggleDisable-a984b5.js"></script>
     </div>
                 <div>
             <button
@@ -1735,7 +1735,38 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span>, getElementFromVueRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginToggleDisable&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FFieldset</span>,
+        <span class="hljs-title class_">FRadioField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ett för långt namn&quot;</span>,
+            <span class="hljs-attr">isDisabled</span>: <span class="hljs-literal">false</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-keyword">async</span> <span class="hljs-title function_">onToggleDisable</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.$nextTick();
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">isDisabled</span>) {
+                <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">inputField</span>);
+                <span class="hljs-keyword">const</span> input = wrapper.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;input&quot;</span>);
+                <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">validateElement</span>(input);
+            }
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;is-disabled&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;color&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onToggleDisable&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Ska inmatningsfältet vara inaktivt? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1774,37 +1805,6 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span>, getElementFromVueRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginToggleDisable&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FFieldset</span>,
-        <span class="hljs-title class_">FRadioField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ett för långt namn&quot;</span>,
-            <span class="hljs-attr">isDisabled</span>: <span class="hljs-literal">false</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-keyword">async</span> <span class="hljs-title function_">onToggleDisable</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.$nextTick();
-            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">isDisabled</span>) {
-                <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">inputField</span>);
-                <span class="hljs-keyword">const</span> input = wrapper.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;input&quot;</span>);
-                <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">validateElement</span>(input);
-            }
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1829,9 +1829,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    refactor/block-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/05b20f6f29e5da444a185b1dce37a659a8bd6766">05b20f6</a>)<br />
+    refactor/block-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/2194a0b7c3412e27b0f8642358700ba7d0ee1ec0">2194a0b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/415">PR 415</a><br />
-        2025-04-08 12:22
+        2025-04-08 13:54
 </div>
 <div class="toolbar__item">
     <form id="version">
