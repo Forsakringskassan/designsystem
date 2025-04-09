@@ -219,7 +219,7 @@ function getLayoutSize(): number {
 </script>
 
 <template>
-    <div class="resize__offset" v-if="overlay && offset"></div>
+    <div v-if="overlay && offset" class="resize__offset"></div>
     <div ref="root" class="resize" :class="classes" v-bind="$attrs">
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->
