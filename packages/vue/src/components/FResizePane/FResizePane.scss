@@ -23,7 +23,7 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
         flex-direction: row;
 
         &:not(.resize--disabled) {
-            width: var(--size);
+            width: calc(var(--size) + #{$handle-size});
         }
 
         .resize__content {
@@ -35,7 +35,7 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
         flex-direction: row-reverse;
 
         &:not(.resize--disabled) {
-            width: var(--size);
+            width: calc(var(--size) + #{$handle-size});
         }
 
         .resize__content {
@@ -47,7 +47,7 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
         flex-direction: column;
 
         &:not(.resize--disabled) {
-            height: var(--size);
+            height: calc(var(--size) + #{$handle-size});
         }
     }
 
@@ -55,7 +55,7 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
         flex-direction: column-reverse;
 
         &:not(.resize--disabled) {
-            height: var(--size);
+            height: calc(var(--size) + #{$handle-size});
         }
     }
 
@@ -78,8 +78,9 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
     &--right {
         &:not(.resize--disabled) {
             .resize__content {
-                min-width: calc(var(--min) - $handle-size);
-                max-width: calc(var(--max) - $handle-size);
+                min-width: var(--min);
+                max-width: var(--max);
+                flex-basis: var(--size);
             }
         }
     }
@@ -88,8 +89,9 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
     &--bottom {
         &:not(.resize--disabled) {
             .resize__content {
-                min-height: calc(var(--min) - $handle-size);
-                max-height: calc(var(--max) - $handle-size);
+                min-height: var(--min);
+                max-height: var(--max);
+                flex-basis: var(--size);
             }
         }
     }
@@ -184,20 +186,4 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
             display: none;
         }
     }
-}
-
-.resize--left .resize__handle {
-    left: $handle-offset;
-}
-
-.resize--right .resize__handle {
-    right: $handle-offset;
-}
-
-.resize--top .resize__handle {
-    top: $handle-offset;
-}
-
-.resize--bottom .resize__handle {
-    bottom: $handle-offset;
 }
