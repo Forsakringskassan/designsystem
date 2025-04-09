@@ -17,6 +17,7 @@ export { FListPageObject } from "./FList.pageobject";
 export { FListItemPageObject } from "./FListItem.pageobject";
 export { FLoaderPageObject } from "./FLoader.pageobject";
 export { FMessageBoxPageObject } from "./FMessageBox.pageobject";
+export { FMinimizablePanelPageObject } from "./FMinimizablePanel.pageobject";
 export { FModalPageObject } from "./FModal.pageobject";
 export { FFormModalPageObject } from "./FFormModal.pageobject";
 export { FNavigationMenuPageobject } from "./FNavigationMenu/FNavigationMenu.pageobject";

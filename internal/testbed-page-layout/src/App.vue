@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo, FDetailsPanel } from "@fkui/vue";
+import {
+    FPageLayout,
+    FResizePane,
+    registerLayout,
+    FPageHeader,
+    FLogo,
+    FMinimizablePanel,
+    FDetailsPanel,
+} from "@fkui/vue";
 import { XContextBar, XToolbar } from "./components";
 import { type Expense } from "./expense";
 import { type Person } from "./person";
@@ -61,9 +69,18 @@ registerLayout({
             <x-toolbar></x-toolbar>
         </template>
         <template #left>
-            <f-resize-pane min="200px" max="40%" initial="200px">
-                <h2>Mina uppgifter</h2>
-                <p>[Menypanel här]</p>
+            <f-resize-pane min="150px" max="40%" initial="600px">
+                <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
+                <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
+                <f-minimizable-panel>
+                    <template #default="{ isOpen, header, footer, content }">
+                        <template v-if="isOpen">
+                            <h1 :slot="header">Rubrik</h1>
+                            <p :slot="content">Innehåll</p>
+                            <div :slot="footer">Fot</div>
+                        </template>
+                    </template>
+                </f-minimizable-panel>
             </f-resize-pane>
         </template>
         <template #content>
@@ -121,23 +138,27 @@ registerLayout({
 }
 
 ::part(area header) {
-    background: var(--f-background-pageheader-primary);
-    color: var(--fkds-color-text-inverted);
+    --f-page-layout-background: var(--f-background-pageheader-primary);
+    --f-page-layout-color: var(--fkds-color-text-inverted);
 }
 
 ::part(area contextbar) {
-    background: var(--fkds-color-background-secondary);
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
 }
 
 ::part(area toolbar) {
-    background: var(--fkds-color-background-secondary);
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
 }
 
 ::part(area left) {
-    background: var(--fkds-color-background-secondary);
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
 }
 
 ::part(area right) {
-    background: var(--fkds-color-background-secondary);
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
 }
 </style>

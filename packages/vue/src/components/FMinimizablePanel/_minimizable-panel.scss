@@ -1,0 +1,101 @@
+@use "@fkui/design" as fkui;
+@use "variables" as *;
+
+:host {
+    display: contents;
+}
+
+:host([hidden]) {
+    display: none;
+}
+
+:host ::slotted([slot="icon"]) {
+    display: contents;
+}
+
+::slotted([slot="header"]) {
+    font-weight: $minimizable-panel-header-weight !important;
+    font-size: 1.25rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+}
+
+.panel__wrapper {
+    flex-grow: 1;
+    display: flex;
+}
+
+.panel {
+    background: $minimizable-panel-background;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+.panel__header {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 0.25rem;
+    align-items: baseline;
+    justify-content: center;
+
+    .attach-left & {
+        flex-direction: row;
+    }
+
+    .attach-right & {
+        flex-direction: row-reverse;
+    }
+}
+
+.panel__button {
+    flex: 0 0 auto;
+    appearance: none;
+    line-height: 1;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 1rem;
+    width: max-content;
+
+    &:hover {
+        background-color: $minimizable-panel-icon-hover;
+    }
+
+    &:active,
+    &:focus {
+        @include fkui.focus-indicator;
+
+        background-color: $minimizable-panel-icon-hover;
+    }
+}
+
+.panel__title {
+    flex: 1 1 auto;
+}
+
+.panel__content {
+    flex: 1 0 auto;
+}
+
+.panel__footer {
+    flex: 0 0 auto;
+}
+
+.expanded.attach-left .panel__button {
+    transform: scaleX(1);
+}
+
+.collapsed.attach-left .panel__button {
+    transform: scaleX(-1);
+}
+
+.expanded.attach-right .panel__button {
+    transform: scaleX(-1);
+}
+
+.collapsed.attach-right .panel__button {
+    transform: scaleX(1);
+}

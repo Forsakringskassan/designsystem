@@ -57,6 +57,7 @@ components/modal/fformmodal.html
 components/modal/fmodal.html
 components/page-layout/application-layout.html
 components/page-layout/fdetailspanel.html
+components/page-layout/fminimizablepanel.html
 components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
 components/page-layout/fpagelayout.html
@@ -91,6 +92,12 @@ functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html
 functions/cypress/pageobjects/FLabelPageObject/format-description.html
 functions/cypress/pageobjects/FLabelPageObject/index.html
+functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html
+functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html
+functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html
+functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html
+functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html
+functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html
 functions/cypress/pageobjects/FProgressbarPageObject/el.html
 functions/cypress/pageobjects/FProgressbarPageObject/index.html
 functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html
