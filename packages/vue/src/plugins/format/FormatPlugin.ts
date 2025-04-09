@@ -22,6 +22,7 @@ const formatters = {
     pnr: formatPersonnummer,
     text: formatText,
 };
+
 function removeObsoleteClasses(el: HTMLElement): void {
     el.classList.forEach((it: string) => {
         if (it.startsWith("formatter--")) {
