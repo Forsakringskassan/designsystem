@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement, effectScope } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
@@ -4603,7 +4603,7 @@ var _hoisted_1$W = ["id"];
 var _hoisted_2$F = {
   class: "modal__backdrop"
 };
-var _hoisted_3$w = {
+var _hoisted_3$x = {
   class: "modal__inner-container"
 };
 var _hoisted_4$q = {
@@ -4645,7 +4645,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     role: "dialog",
     "aria-modal": "true",
     onKeyup: _cache[3] || (_cache[3] = withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
-  }, [createElementVNode("div", _hoisted_3$w, [createElementVNode("div", {
+  }, [createElementVNode("div", _hoisted_3$x, [createElementVNode("div", {
     ref: "modalDialogContainer",
     class: normalizeClass(["modal__dialog-container", _ctx.containerClasses])
   }, [createElementVNode("div", _hoisted_4$q, [createElementVNode("div", _hoisted_5$l, [createElementVNode("div", _hoisted_6$g, [createElementVNode("div", {
@@ -4800,7 +4800,7 @@ var _hoisted_1$V = {
   class: "button-group"
 };
 var _hoisted_2$E = ["onClick"];
-var _hoisted_3$v = {
+var _hoisted_3$w = {
   key: 0,
   class: "sr-only"
 };
@@ -4823,7 +4823,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
         type: "button",
         class: normalizeClass([button.classlist, "button-group__item"]),
         onClick: ($event) => _ctx.onClick(button)
-      }, [createElementVNode("span", null, toDisplayString(button.label), 1), _cache[0] || (_cache[0] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$v, "\xA0" + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$E);
+      }, [createElementVNode("span", null, toDisplayString(button.label), 1), _cache[0] || (_cache[0] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$w, "\xA0" + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$E);
     }), 128))])]),
     _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
@@ -5037,7 +5037,7 @@ var _hoisted_1$U = {
 var _hoisted_2$D = {
   key: 0
 };
-var _hoisted_3$u = {
+var _hoisted_3$v = {
   class: "error-list__list error-list--list-style-none"
 };
 var _hoisted_4$p = ["onClick"];
@@ -5067,7 +5067,7 @@ function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     })) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_flex_item, {
       grow: ""
     }, {
-      default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createElementBlock("div", _hoisted_2$D, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("ul", _hoisted_3$u, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item) => {
+      default: withCtx(() => [_ctx.hasTitleSlot ? (openBlock(), createElementBlock("div", _hoisted_2$D, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("ul", _hoisted_3$v, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item) => {
         return openBlock(), createElementBlock("li", {
           key: item.id,
           class: normalizeClass(_ctx.liClasses(item))
@@ -5602,7 +5602,7 @@ var _hoisted_1$S = {
   class: "button-group"
 };
 var _hoisted_2$B = ["type", "form", "onClick"];
-var _hoisted_3$t = {
+var _hoisted_3$u = {
   key: 0,
   class: "sr-only"
 };
@@ -5637,7 +5637,7 @@ function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
         class: normalizeClass([button.classlist, "button-group__item"]),
         form: button.buttonType === "submit" ? _ctx.formId : void 0,
         onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
-      }, [createElementVNode("span", null, toDisplayString(button.label), 1), _cache[2] || (_cache[2] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$t, "\xA0" + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$B);
+      }, [createElementVNode("span", null, toDisplayString(button.label), 1), _cache[2] || (_cache[2] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$u, "\xA0" + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$B);
     }), 128))])]),
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
@@ -6224,7 +6224,7 @@ var _hoisted_2$A = {
   class: "calendar-navbar__month",
   tabindex: "-1"
 };
-var _hoisted_3$s = ["aria-disabled", "aria-live"];
+var _hoisted_3$t = ["aria-disabled", "aria-live"];
 var _hoisted_4$o = {
   class: "sr-only"
 };
@@ -6244,7 +6244,7 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("span", _hoisted_4$o, toDisplayString(_ctx.previousSrText), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.previousIconClasses),
     name: "arrow-right"
-  }, null, 8, ["class"])], 8, _hoisted_3$s), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("button", {
+  }, null, 8, ["class"])], 8, _hoisted_3$t), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("button", {
     ref: "nextButton",
     class: "calendar-navbar__arrow calendar-navbar__arrow--next",
     type: "button",
@@ -6342,7 +6342,7 @@ var _hoisted_2$z = {
   key: 0,
   class: "calendar-month__col--week"
 };
-var _hoisted_3$r = {
+var _hoisted_3$s = {
   key: 0,
   scope: "col",
   "aria-hidden": "true",
@@ -6390,7 +6390,7 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     class: "calendar-month__col--day"
   }, null, -1)), _cache[14] || (_cache[14] = createTextVNode()), _cache[15] || (_cache[15] = createElementVNode("col", {
     class: "calendar-month__col--day"
-  }, null, -1))]), _cache[22] || (_cache[22] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", null, [!_ctx.internalHideWeekNumbers ? (openBlock(), createElementBlock("th", _hoisted_3$r)) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.weekdays, (weekday) => {
+  }, null, -1))]), _cache[22] || (_cache[22] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", null, [!_ctx.internalHideWeekNumbers ? (openBlock(), createElementBlock("th", _hoisted_3$s)) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.weekdays, (weekday) => {
     return openBlock(), createElementBlock("th", {
       key: weekday.name,
       scope: "col",
@@ -6772,7 +6772,7 @@ var _hoisted_2$x = {
   key: 0,
   class: "card__header"
 };
-var _hoisted_3$q = {
+var _hoisted_3$r = {
   class: "card__content"
 };
 var _hoisted_4$m = {
@@ -6865,7 +6865,7 @@ var _sfc_main$Z = /* @__PURE__ */ defineComponent({
           _: 1
         })]),
         _: 1
-      })) : createCommentVNode("", true)]), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_3$q, [renderSlot(_ctx.$slots, "default")]), _cache[3] || (_cache[3] = createTextVNode()), hasFooterSlot.value ? (openBlock(), createElementBlock("div", _hoisted_4$m, [renderSlot(_ctx.$slots, "footer", normalizeProps(guardReactiveProps({
+      })) : createCommentVNode("", true)]), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_3$r, [renderSlot(_ctx.$slots, "default")]), _cache[3] || (_cache[3] = createTextVNode()), hasFooterSlot.value ? (openBlock(), createElementBlock("div", _hoisted_4$m, [renderSlot(_ctx.$slots, "footer", normalizeProps(guardReactiveProps({
         hasError: hasError.value,
         validationMessage: validationMessage.value
       })))])) : createCommentVNode("", true)], 42, _hoisted_1$L);
@@ -8285,7 +8285,7 @@ var _hoisted_2$v = {
   role: "menu",
   class: "ipopupmenu__list"
 };
-var _hoisted_3$p = ["onClick"];
+var _hoisted_3$q = ["onClick"];
 var _hoisted_4$l = ["data-ref-index", "href", "target"];
 var _hoisted_5$h = {
   key: 0,
@@ -8322,7 +8322,7 @@ function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
         role: "menuitem",
         target: item.target,
         tabindex: "0"
-      }, [_ctx.isSelected(index) ? (openBlock(), createElementBlock("span", _hoisted_5$h, [createElementVNode("span", null, toDisplayString(_ctx.selectedMenuItemScreenReaderText) + "\xA0", 1)])) : createCommentVNode("", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$l)], 10, _hoisted_3$p);
+      }, [_ctx.isSelected(index) ? (openBlock(), createElementBlock("span", _hoisted_5$h, [createElementVNode("span", null, toDisplayString(_ctx.selectedMenuItemScreenReaderText) + "\xA0", 1)])) : createCommentVNode("", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$l)], 10, _hoisted_3$q);
     }), 128))])], 8, _hoisted_1$I)]),
     _: 1
   }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
@@ -8808,7 +8808,7 @@ var _hoisted_1$F = {
   class: "combobox"
 };
 var _hoisted_2$u = ["id"];
-var _hoisted_3$o = ["id", "aria-selected", "onClick"];
+var _hoisted_3$p = ["id", "aria-selected", "onClick"];
 var _sfc_main$R = /* @__PURE__ */ defineComponent({
   __name: "IComboboxDropdown",
   props: {
@@ -8870,7 +8870,7 @@ var _sfc_main$R = /* @__PURE__ */ defineComponent({
               "combobox__listbox__option--highlight": isOptionActive(item)
             }]),
             onClick: withModifiers(($event) => onOptionClick(item), ["stop", "prevent"])
-          }, toDisplayString(item), 11, _hoisted_3$o);
+          }, toDisplayString(item), 11, _hoisted_3$p);
         }), 128))], 8, _hoisted_2$u)]),
         _: 1
       }, 8, ["is-open", "anchor", "num-of-items", "active-element"])]);
@@ -9162,7 +9162,7 @@ var _hoisted_1$D = ["aria-expanded"];
 var _hoisted_2$t = {
   class: "icon-stack icon-stack--tooltip"
 };
-var _hoisted_3$n = {
+var _hoisted_3$o = {
   class: "sr-only"
 };
 var _hoisted_4$k = {
@@ -9191,7 +9191,7 @@ function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
     name: "circle"
   }), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_f_icon, {
     name: "i"
-  }), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_3$n, toDisplayString(_ctx.screenReaderText), 1)])], 8, _hoisted_1$D)], 8, ["disabled", "to"])), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("div", mergeProps({
+  }), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_3$o, toDisplayString(_ctx.screenReaderText), 1)])], 8, _hoisted_1$D)], 8, ["disabled", "to"])), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("div", mergeProps({
     ref: "wrapper",
     class: "tooltip"
   }, _ctx.$attrs), [_ctx.ready ? (openBlock(), createElementBlock("div", _hoisted_4$k, [_ctx.hasHeader ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), {
@@ -9483,7 +9483,7 @@ var _hoisted_2$s = {
   key: 0,
   class: "sr-only"
 };
-var _hoisted_3$m = {
+var _hoisted_3$n = {
   key: 0,
   class: "label__message label__message--error"
 };
@@ -9525,7 +9525,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
   }), _cache[3] || (_cache[3] = createTextVNode()), renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
     hasError: _ctx.hasError,
     validationMessage: _ctx.validity.validationMessage
-  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_3$m, [createVNode(_component_f_icon, {
+  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_3$n, [createVNode(_component_f_icon, {
     class: "label__icon--left",
     name: "error"
   }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)), _cache[7] || (_cache[7] = createTextVNode()), _ctx.hasCheckbox ? (openBlock(), createElementBlock("span", _hoisted_4$j, [_ctx.children.length === 1 ? (openBlock(), createElementBlock("span", _hoisted_5$f, toDisplayString(_ctx.checkboxCheckedScreenReaderText), 1)) : (openBlock(), createElementBlock("span", _hoisted_6$c, toDisplayString(_ctx.numberOfCheckedCheckboxesScreenText), 1))])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.hasTooltipSlot ? (openBlock(), createElementBlock(Fragment, {
@@ -9737,7 +9737,7 @@ var _sfc_main$N = defineComponent({
 });
 var _hoisted_1$B = ["id", "disabled"];
 var _hoisted_2$r = ["for"];
-var _hoisted_3$l = {
+var _hoisted_3$m = {
   key: 0,
   class: "checkbox__details"
 };
@@ -9763,7 +9763,7 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     for: _ctx.id
   }, [renderSlot(_ctx.$slots, "default"), _cache[8] || (_cache[8] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
     key: 0
-  }, [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$l, [_cache[3] || (_cache[3] = createElementVNode("br", null, null, -1)), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "details")])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, {
+  }, [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$m, [_cache[3] || (_cache[3] = createElementVNode("br", null, null, -1)), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "details")])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, {
     key: 1,
     onEnter: _ctx.enter,
     onAfterEnter: _ctx.afterEnter,
@@ -10025,7 +10025,7 @@ var _hoisted_2$q = {
   tabindex: "-1",
   class: "contextmenu__list"
 };
-var _hoisted_3$k = ["onClick"];
+var _hoisted_3$l = ["onClick"];
 var _hoisted_4$h = ["tabindex"];
 var _hoisted_5$e = {
   key: 0,
@@ -10066,7 +10066,7 @@ function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8, ["name", "library"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("a", {
         ref_for: true,
         ref: "anchors"
-      }, toDisplayString(item.label), 513)], 8, _hoisted_4$h), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$e)) : createCommentVNode("", true)], 8, _hoisted_3$k);
+      }, toDisplayString(item.label), 513)], 8, _hoisted_4$h), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$e)) : createCommentVNode("", true)], 8, _hoisted_3$l);
     }), 128))], 512)], 40, _hoisted_1$A)]),
     _: 1
   }, 8, ["is-open", "anchor", "focus-element"]);
@@ -11302,7 +11302,7 @@ var _hoisted_2$o = {
   key: 0,
   ref: "tooltipAttachTo"
 };
-var _hoisted_3$j = ["for"];
+var _hoisted_3$k = ["for"];
 var _hoisted_4$g = ["for"];
 var _hoisted_5$d = {
   key: 0,
@@ -11318,7 +11318,7 @@ function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.$slots.tooltip ? (openBlock(), createElementBlock("div", _hoisted_1$x, [_ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", _hoisted_2$o, [createElementVNode("label", {
     class: "label",
     for: _ctx.forProperty
-  }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$j)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
+  }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$k)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[3] || (_cache[3] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("label", {
     key: 1,
     class: "label sr-separator",
     for: _ctx.forProperty
@@ -11913,7 +11913,7 @@ var _hoisted_2$n = {
   key: 0,
   class: "sr-only"
 };
-var _hoisted_3$i = {
+var _hoisted_3$j = {
   key: 0,
   class: "sr-only"
 };
@@ -11956,7 +11956,7 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     }, [_ctx.descriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_2$n, toDisplayString(_ctx.descriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("span", null, toDisplayString(_ctx.descriptionText), 1)], 2)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), _ctx.discreteDescriptionText ? (openBlock(), createElementBlock("span", {
       key: 1,
       class: normalizeClass(formatDescriptionClass)
-    }, [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_3$i, toDisplayString(_ctx.discreteDescriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), createElementVNode("span", null, toDisplayString(_ctx.discreteDescriptionText), 1)], 2)) : createCommentVNode("", true)])]),
+    }, [_ctx.discreteDescriptionScreenReaderText ? (openBlock(), createElementBlock("span", _hoisted_3$j, toDisplayString(_ctx.discreteDescriptionScreenReaderText), 1)) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), createElementVNode("span", null, toDisplayString(_ctx.discreteDescriptionText), 1)], 2)) : createCommentVNode("", true)])]),
     "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
       hasError: _ctx.hasError,
       validationMessage: _ctx.validationMessage
@@ -12843,7 +12843,7 @@ var _hoisted_1$s = {
 var _hoisted_2$m = {
   class: "sort-filter-dataset__search"
 };
-var _hoisted_3$h = {
+var _hoisted_3$i = {
   class: "sr-only"
 };
 var _hoisted_4$e = ["title"];
@@ -13080,7 +13080,7 @@ var _sfc_main$s = /* @__PURE__ */ defineComponent({
                 maxlength: "64",
                 onInput: onSearchInput
               }, {
-                default: withCtx(() => [createElementVNode("span", _hoisted_3$h, toDisplayString(__props.placeholderFilter), 1)]),
+                default: withCtx(() => [createElementVNode("span", _hoisted_3$i, toDisplayString(__props.placeholderFilter), 1)]),
                 _: 1
               }, 8, ["modelValue", "placeholder"]), _cache[4] || (_cache[4] = createTextVNode()), showClearButton.value ? (openBlock(), createElementBlock("button", {
                 key: 0,
@@ -13130,7 +13130,7 @@ var _hoisted_1$r = ["tabindex"];
 var _hoisted_2$l = {
   key: 0
 };
-var _hoisted_3$g = {
+var _hoisted_3$h = {
   class: "table__row"
 };
 var _hoisted_4$d = ["innerHTML"];
@@ -13303,7 +13303,7 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
           key: column.id,
           class: normalizeClass(column.size)
         }, null, 2);
-      }), 128))]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$g, [(openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
+      }), 128))]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$h, [(openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
         return openBlock(), createElementBlock("th", mergeProps({
           key: column.id,
           scope: "col",
@@ -13673,7 +13673,7 @@ var _hoisted_1$q = {
   class: "datepicker-field"
 };
 var _hoisted_2$k = ["disabled", "aria-expanded"];
-var _hoisted_3$f = {
+var _hoisted_3$g = {
   class: "sr-only"
 };
 var _hoisted_4$c = {
@@ -13724,7 +13724,7 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: _cache[0] || (_cache[0] = ($event) => _ctx.onClickCalendarButton())
     }, [createVNode(_component_f_icon, {
       name: "calendar"
-    }), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("span", _hoisted_3$f, toDisplayString(_ctx.calendarButtonText), 1)], 8, _hoisted_2$k)]),
+    }), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("span", _hoisted_3$g, toDisplayString(_ctx.calendarButtonText), 1)], 8, _hoisted_2$k)]),
     default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.datepicker-field.label", "Datum")), 1)]), _cache[7] || (_cache[7] = createTextVNode()), _cache[8] || (_cache[8] = createTextVNode()), _cache[9] || (_cache[9] = createTextVNode()), _cache[10] || (_cache[10] = createTextVNode())]),
     _: 2
   }, [_ctx.$slots.tooltip ? {
@@ -13864,7 +13864,7 @@ var _hoisted_2$j = {
   key: 0,
   class: "dialogue-tree__list"
 };
-var _hoisted_3$e = ["onClick"];
+var _hoisted_3$f = ["onClick"];
 function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return openBlock(), createElementBlock("div", _hoisted_1$p, [_ctx.options.length > 0 ? (openBlock(), createElementBlock("ul", _hoisted_2$j, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
@@ -13878,7 +13878,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: ($event) => _ctx.onClickedOption(option, index)
     }, [createElementVNode("span", null, toDisplayString(option.label), 1), _cache[0] || (_cache[0] = createTextVNode()), createVNode(_component_f_icon, {
       name: "arrow-right"
-    })], 8, _hoisted_3$e)]);
+    })], 8, _hoisted_3$f)]);
   }), 128))])) : renderSlot(_ctx.$slots, "default", normalizeProps(mergeProps({
     key: 1
   }, {
@@ -13968,7 +13968,7 @@ var _hoisted_1$o = ["aria-expanded", "aria-controls"];
 var _hoisted_2$i = {
   class: "expandable-panel__icon"
 };
-var _hoisted_3$d = {
+var _hoisted_3$e = {
   class: "icon-stack"
 };
 var _hoisted_4$b = ["title"];
@@ -13997,7 +13997,7 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
       "aria-controls": _ctx.id
     }, _ctx.$attrs, {
       onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClickHeadingButton && _ctx.onClickHeadingButton(...args))
-    }), [createElementVNode("span", _hoisted_2$i, [createElementVNode("span", _hoisted_3$d, [createVNode(_component_f_icon, {
+    }), [createElementVNode("span", _hoisted_2$i, [createElementVNode("span", _hoisted_3$e, [createVNode(_component_f_icon, {
       name: "dash"
     }), _cache[1] || (_cache[1] = createTextVNode()), createVNode(_component_f_icon, {
       name: "dash"
@@ -14107,7 +14107,7 @@ var _hoisted_1$n = ["aria-expanded", "aria-controls"];
 var _hoisted_2$h = {
   class: "expandable-paragraph__icon"
 };
-var _hoisted_3$c = {
+var _hoisted_3$d = {
   class: "icon-stack"
 };
 var _hoisted_4$a = {
@@ -14139,7 +14139,7 @@ function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
       "aria-controls": _ctx.id
     }, _ctx.$attrs, {
       onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClickMinimize && _ctx.onClickMinimize(...args))
-    }), [createElementVNode("span", _hoisted_2$h, [createElementVNode("span", _hoisted_3$c, [createVNode(_component_f_icon, {
+    }), [createElementVNode("span", _hoisted_2$h, [createElementVNode("span", _hoisted_3$d, [createVNode(_component_f_icon, {
       name: "dash"
     }), _cache[1] || (_cache[1] = createTextVNode()), createVNode(_component_f_icon, {
       name: "dash"
@@ -14247,7 +14247,7 @@ var _hoisted_1$m = {
 var _hoisted_2$g = {
   class: "file-item__row"
 };
-var _hoisted_3$b = ["id"];
+var _hoisted_3$c = ["id"];
 var _hoisted_4$9 = {
   class: "icon-stack button__icon icon-stack--new-window"
 };
@@ -14270,7 +14270,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     name: "new-window"
   }), _cache[0] || (_cache[0] = createTextVNode()), createVNode(_component_f_icon, {
     name: _ctx.iconName
-  }, null, 8, ["name"])]), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_5$7, toDisplayString(_ctx.fileName), 1), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("span", _hoisted_6$5, "\xA0" + toDisplayString(_ctx.$t("fkui.file-item.file-open", "\xF6ppnas i nytt f\xF6nster")), 1)], 16, _hoisted_3$b), _cache[3] || (_cache[3] = createTextVNode()), renderSlot(_ctx.$slots, "row")]), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), _ctx.isMimeTypeChanged ? (openBlock(), createElementBlock("div", _hoisted_7$4, toDisplayString(_ctx.mimeTypeChangedText), 1)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), _cache[7] || (_cache[7] = createElementVNode("hr", {
+  }, null, 8, ["name"])]), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_5$7, toDisplayString(_ctx.fileName), 1), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("span", _hoisted_6$5, "\xA0" + toDisplayString(_ctx.$t("fkui.file-item.file-open", "\xF6ppnas i nytt f\xF6nster")), 1)], 16, _hoisted_3$c), _cache[3] || (_cache[3] = createTextVNode()), renderSlot(_ctx.$slots, "row")]), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), _ctx.isMimeTypeChanged ? (openBlock(), createElementBlock("div", _hoisted_7$4, toDisplayString(_ctx.mimeTypeChangedText), 1)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), _cache[7] || (_cache[7] = createElementVNode("hr", {
     class: "file-item__separator"
   }, null, -1))]);
 }
@@ -14343,7 +14343,7 @@ var _hoisted_1$l = {
   class: "file-selector"
 };
 var _hoisted_2$f = ["id", "aria-labelledby", "aria-disabled"];
-var _hoisted_3$a = ["id", "for"];
+var _hoisted_3$b = ["id", "for"];
 function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return openBlock(), createElementBlock("div", _hoisted_1$l, [createElementVNode("input", mergeProps({
@@ -14363,7 +14363,7 @@ function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createVNode(_component_f_icon, {
     class: "button__icon",
     name: "paper-clip"
-  }), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 10, _hoisted_3$a)]);
+  }), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 10, _hoisted_3$b)]);
 }
 var FFileSelector = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$e]]);
 var keybindings = {
@@ -14481,7 +14481,7 @@ var _hoisted_1$k = ["role"];
 var _hoisted_2$e = {
   key: 0
 };
-var _hoisted_3$9 = {
+var _hoisted_3$a = {
   key: 0,
   class: "table__column--shrink"
 };
@@ -14940,7 +14940,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       }, [createCommentVNode("", true), _cache[18] || (_cache[18] = createTextVNode()), createElementVNode("table", mergeProps({
         class: ["table", tableClasses.value],
         role: tableRole.value
-      }, _ctx.$attrs), [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$e, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), createElementVNode("colgroup", null, [unref(isExpandableTable) ? (openBlock(), createElementBlock("col", _hoisted_3$9)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("col", _hoisted_4$8)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+      }, _ctx.$attrs), [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$e, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), createElementVNode("colgroup", null, [unref(isExpandableTable) ? (openBlock(), createElementBlock("col", _hoisted_3$a)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("col", _hoisted_4$8)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createElementBlock("col", {
           key: column.id,
           class: normalizeClass(column.size)
@@ -15062,7 +15062,7 @@ var _hoisted_2$d = {
   ref: "header",
   class: "layout-application-template__header"
 };
-var _hoisted_3$8 = {
+var _hoisted_3$9 = {
   key: 1
 };
 var _hoisted_4$7 = {
@@ -15076,7 +15076,7 @@ var _hoisted_5$5 = {
 function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", _hoisted_1$j, [_ctx.showHeader || _ctx.showTopNavigation ? (openBlock(), createElementBlock("header", _hoisted_2$d, [_ctx.showHeader ? renderSlot(_ctx.$slots, "header", {
     key: 0
-  }) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), _ctx.showTopNavigation ? (openBlock(), createElementBlock("nav", _hoisted_3$8, [renderSlot(_ctx.$slots, "top-navigation")])) : createCommentVNode("", true)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("main", _hoisted_4$7, [renderSlot(_ctx.$slots, "default"), _cache[1] || (_cache[1] = createTextVNode()), _ctx.showFooter ? (openBlock(), createElementBlock("footer", _hoisted_5$5, [renderSlot(_ctx.$slots, "footer")])) : createCommentVNode("", true)], 512)]);
+  }) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), _ctx.showTopNavigation ? (openBlock(), createElementBlock("nav", _hoisted_3$9, [renderSlot(_ctx.$slots, "top-navigation")])) : createCommentVNode("", true)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("main", _hoisted_4$7, [renderSlot(_ctx.$slots, "default"), _cache[1] || (_cache[1] = createTextVNode()), _ctx.showFooter ? (openBlock(), createElementBlock("footer", _hoisted_5$5, [renderSlot(_ctx.$slots, "footer")])) : createCommentVNode("", true)], 512)]);
 }
 var FLayoutApplicationTemplate = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$d]]);
 function getGridClasses(target) {
@@ -15268,7 +15268,7 @@ var _hoisted_1$i = {
   class: "layout-navigation"
 };
 var _hoisted_2$c = ["aria-expanded"];
-var _hoisted_3$7 = {
+var _hoisted_3$8 = {
   class: "layout-navigation__navigation__inner"
 };
 var _hoisted_4$6 = {
@@ -15282,7 +15282,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     class: "layout-navigation__navigation",
     style: normalizeStyle(_ctx.navigationStyle),
     "aria-expanded": _ctx.isOpen
-  }, [createElementVNode("div", _hoisted_3$7, [_ctx.isOpen ? (openBlock(), createElementBlock(Fragment, {
+  }, [createElementVNode("div", _hoisted_3$8, [_ctx.isOpen ? (openBlock(), createElementBlock(Fragment, {
     key: 0
   }, [createElementVNode("div", {
     class: "layout-navigation__navigation__inner__title",
@@ -15527,7 +15527,7 @@ var _hoisted_2$a = {
   key: 0,
   class: "list__item"
 };
-var _hoisted_3$6 = {
+var _hoisted_3$7 = {
   class: "list__item__itempane"
 };
 var _hoisted_4$5 = ["id", "aria-labelledby", "tabindex", "onKeydown"];
@@ -15787,7 +15787,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
         }, {
           item
         }))], 512)]);
-      }), 128)), _cache[0] || (_cache[0] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("li", _hoisted_2$a, [createElementVNode("div", _hoisted_3$6, [renderSlot(_ctx.$slots, "empty", {}, () => [createElementVNode("em", null, toDisplayString(unref($t2)("fkui.list.empty", "Listan \xE4r tom")), 1)])])])) : createCommentVNode("", true)])) : (openBlock(), createElementBlock("ul", {
+      }), 128)), _cache[0] || (_cache[0] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("li", _hoisted_2$a, [createElementVNode("div", _hoisted_3$7, [renderSlot(_ctx.$slots, "empty", {}, () => [createElementVNode("em", null, toDisplayString(unref($t2)("fkui.list.empty", "Listan \xE4r tom")), 1)])])])) : createCommentVNode("", true)])) : (openBlock(), createElementBlock("ul", {
         key: 1,
         ref_key: "ulElement",
         ref: ulElement,
@@ -16586,7 +16586,7 @@ var _sfc_main$c = defineComponent({
 });
 var _hoisted_1$c = ["aria-label"];
 var _hoisted_2$8 = ["data-ref-index", "onClick"];
-var _hoisted_3$5 = {
+var _hoisted_3$6 = {
   class: "imenu__list__anchor-container"
 };
 var _hoisted_4$4 = ["data-ref-index", "href", "target"];
@@ -16627,7 +16627,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass(_ctx.itemClasses(item, index)),
       role: "none",
       onClick: (event) => _ctx.onClickItem(event, item)
-    }, [createElementVNode("div", _hoisted_3$5, [createElementVNode("a", {
+    }, [createElementVNode("div", _hoisted_3$6, [createElementVNode("a", {
       ref_for: true,
       ref: "anchors",
       "data-ref-index": index,
@@ -16722,7 +16722,7 @@ var _hoisted_2$7 = {
   key: 0,
   class: "offline"
 };
-var _hoisted_3$4 = {
+var _hoisted_3$5 = {
   class: "icon-stack icon-stack--error"
 };
 var _hoisted_4$3 = {
@@ -16745,7 +16745,7 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
       shrink: "",
       align: "center"
     }, {
-      default: withCtx(() => [createElementVNode("span", _hoisted_3$4, [createVNode(_component_f_icon, {
+      default: withCtx(() => [createElementVNode("span", _hoisted_3$5, [createVNode(_component_f_icon, {
         name: "triangle"
       }), _cache[0] || (_cache[0] = createTextVNode()), createVNode(_component_f_icon, {
         name: "alert"
@@ -16874,7 +16874,7 @@ var _hoisted_1$9 = {
 var _hoisted_2$5 = {
   key: 0
 };
-var _hoisted_3$3 = {
+var _hoisted_3$4 = {
   ref: "header",
   class: "page-header"
 };
@@ -16895,7 +16895,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: withCtx(() => [renderSlot(_ctx.$slots, "skip-link-text")]),
     _: 3
-  }, 8, ["href"])])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_3$3, [_ctx.hasLogo ? (openBlock(), createElementBlock("div", _hoisted_4$2, [renderSlot(_ctx.$slots, "logo")])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), (openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), {
+  }, 8, ["href"])])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_3$4, [_ctx.hasLogo ? (openBlock(), createElementBlock("div", _hoisted_4$2, [renderSlot(_ctx.$slots, "logo")])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), (openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), {
     class: "page-header__app-name"
   }, {
     default: withCtx(() => [renderSlot(_ctx.$slots, "default")]),
@@ -17317,7 +17317,7 @@ var _hoisted_1$7 = {
   class: "progress"
 };
 var _hoisted_2$4 = ["aria-label", "aria-valuenow", "aria-valuetext"];
-var _hoisted_3$2 = {
+var _hoisted_3$3 = {
   class: "sr-only"
 };
 var MIN_VALUE = 0;
@@ -17388,7 +17388,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         "aria-valuenow": progressValueNow.value,
         "aria-valuetext": progressText.value,
         style: normalizeStyle(cssWidth.value)
-      }, [createElementVNode("span", _hoisted_3$2, toDisplayString(progressText.value), 1)], 14, _hoisted_2$4)]);
+      }, [createElementVNode("span", _hoisted_3$3, toDisplayString(progressText.value), 1)], 14, _hoisted_2$4)]);
     };
   }
 });
@@ -17551,7 +17551,7 @@ var _sfc_main$6 = defineComponent({
 });
 var _hoisted_1$6 = ["id", "disabled"];
 var _hoisted_2$3 = ["for"];
-var _hoisted_3$1 = {
+var _hoisted_3$2 = {
   key: 0,
   class: "radio-button__details"
 };
@@ -17573,7 +17573,7 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     for: _ctx.id
   }, [renderSlot(_ctx.$slots, "default"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
     key: 0
-  }, [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$1, [_cache[1] || (_cache[1] = createElementVNode("br", null, null, -1)), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "details")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, {
+  }, [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$2, [_cache[1] || (_cache[1] = createElementVNode("br", null, null, -1)), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "details")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, {
     key: 1,
     onEnter: _ctx.enter,
     onAfterEnter: _ctx.afterEnter,
@@ -17752,10 +17752,17 @@ function useStorage(options) {
     loaded.value = true;
   });
 }
-var _hoisted_1$5 = ["aria-orientation"];
+var _hoisted_1$5 = {
+  key: 0,
+  class: "resize__offset"
+};
 var _hoisted_2$2 = ["aria-orientation"];
+var _hoisted_3$1 = ["aria-orientation"];
 var STEP_SIZE = 10;
 var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  ...{
+    inheritAttrs: false
+  },
   __name: "FResizePane.ce",
   props: {
     disabled: {
@@ -17773,10 +17780,22 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     initial: {
       default: "50%",
       type: String
+    },
+    overlay: {
+      type: Boolean,
+      default: false
+    },
+    offset: {
+      default: 0,
+      type: Number
     }
   },
-  setup(__props) {
+  emits: ["resize"],
+  setup(__props, {
+    emit: __emit
+  }) {
     const props = __props;
+    const emit = __emit;
     const root = shallowRef();
     const content = ref();
     const separator = ref();
@@ -17785,7 +17804,6 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       max: -1,
       current: -1
     });
-    const separatorSize = ref(0);
     const layoutSize = ref(0);
     const storageKey = computed(() => area.value ? `layout/${area.value}/size` : null);
     const {
@@ -17823,11 +17841,11 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     });
     const minSize = computed(() => {
       const total = layoutSize.value;
-      return Math.floor(aggregateCssValue(props.min, total, 0, Math.max) + separatorSize.value);
+      return Math.floor(aggregateCssValue(props.min, total, 0, Math.max));
     });
     const maxSize = computed(() => {
       const total = layoutSize.value;
-      return Math.floor(aggregateCssValue(props.max, total, total, Math.min) + separatorSize.value);
+      return Math.max(Math.floor(aggregateCssValue(props.max, total, total, Math.min)), minSize.value);
     });
     const initialSize = computed(() => {
       const total = layoutSize.value;
@@ -17841,7 +17859,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       }
     });
     const classes = computed(() => {
-      return [`resize--${attachment.value}`, `resize--${direction.value}`, props.disabled ? "resize--disabled" : void 0];
+      return [`resize--${attachment.value}`, `resize--${direction.value}`, props.overlay ? "resize--overlay" : void 0, props.disabled ? "resize--disabled" : void 0];
     });
     const layoutElement = computed(() => {
       var _host$closest;
@@ -17852,6 +17870,8 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       const host = shadow.host;
       return (_host$closest = host.closest("ce-page-layout")) !== null && _host$closest !== void 0 ? _host$closest : void 0;
     });
+    watch(() => props.min, onResize);
+    watch(() => props.max, onResize);
     watchEffect(() => {
       const {
         min,
@@ -17859,23 +17879,23 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         current: value
       } = state.value;
       if (root.value) {
-        root.value.style.setProperty("--size", `${String(value)}px`);
-        root.value.style.setProperty("--min", `${min}px`);
-        root.value.style.setProperty("--max", `${max}px`);
+        const shadowRoot = root.value.getRootNode();
+        const host = shadowRoot.host;
+        host.style.setProperty("--size", `${String(value)}px`);
+        host.style.setProperty("--min", `${min}px`);
+        host.style.setProperty("--max", `${max}px`);
+        host.style.setProperty("--offset", `${props.offset}px`);
       }
       if (separator.value) {
         separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
         separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
         separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
       }
+      if (value >= 0) {
+        emit("resize", value);
+      }
     });
     onMounted(() => {
-      if (separator.value) {
-        const {
-          flexBasis
-        } = getComputedStyle(separator.value);
-        separatorSize.value = computeCssValue(flexBasis, 0, 0);
-      }
       layoutSize.value = getLayoutSize();
       state.value = {
         min: minSize.value,
@@ -17906,11 +17926,11 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       }
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
+      return openBlock(), createElementBlock(Fragment, null, [_ctx.overlay && _ctx.offset ? (openBlock(), createElementBlock("div", _hoisted_1$5)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("div", mergeProps({
         ref_key: "root",
         ref: root,
-        class: normalizeClass(["resize", classes.value])
-      }, [createElementVNode("div", {
+        class: ["resize", classes.value]
+      }, _ctx.$attrs), [createElementVNode("div", {
         ref_key: "content",
         ref: content,
         class: "resize__content"
@@ -17922,29 +17942,35 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         class: "resize__handle",
         tabindex: "0",
         "aria-orientation": orientation.value
-      }, null, 8, _hoisted_1$5)) : (openBlock(), createElementBlock("div", {
+      }, null, 8, _hoisted_2$2)) : (openBlock(), createElementBlock("div", {
         key: 1,
         role: "separator",
         class: "resize__handle disabled",
         "aria-orientation": orientation.value
-      }, null, 8, _hoisted_2$2))], 2);
+      }, null, 8, _hoisted_3$1))], 16)], 64);
     };
   }
 });
-var _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted(*) {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: var(--size);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: var(--size);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: calc(var(--min) - 2px);\n  max-width: calc(var(--max) - 2px);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: calc(var(--min) - 2px);\n  max-height: calc(var(--max) - 2px);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}\n.resize--left .resize__handle {\n  left: 2px;\n}\n.resize--right .resize__handle {\n  right: 2px;\n}\n.resize--top .resize__handle {\n  top: 2px;\n}\n.resize--bottom .resize__handle {\n  bottom: 2px;\n}';
+var _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted(*) {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--overlay {\n  position: absolute;\n  z-index: 1;\n  background: var(--f-page-layout-background);\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: calc(var(--size) + 2px);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--left.resize--overlay {\n  left: 0;\n  top: 0;\n  bottom: 0;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: calc(var(--size) + 2px);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--right.resize--overlay {\n  right: 0;\n  top: 0;\n  bottom: 0;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: calc(var(--size) + 2px);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: calc(var(--size) + 2px);\n}\n.resize__offset {\n  width: calc(var(--offset) + 2px);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: var(--min);\n  max-width: var(--max);\n  flex-basis: var(--size);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: var(--min);\n  max-height: var(--max);\n  flex-basis: var(--size);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}';
 var FResizePane = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["styles", [_style_0]]]);
 var injectionKey = Symbol("FResizePane");
 function useResize(options = {}) {
   const api = inject(injectionKey, {
     register() {
       return () => void 0;
-    }
+    },
+    size: ref(0)
   });
   const unregister = api.register({
     enabled: options.enabled,
-    visible: options.visible
+    visible: options.visible,
+    overlay: options.overlay,
+    offset: options.offset
   });
   onUnmounted(unregister);
+  return {
+    size: api.size
+  };
 }
 var _hoisted_1$4 = {
   slot: "content"
@@ -17969,6 +17995,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
     }
     const anyEnabled = ref(true);
     const anyVisible = ref(true);
+    const anyOverlay = ref(false);
+    const size = ref(-1);
+    const offset2 = ref(0);
     let components = [];
     let n = 0;
     function any(src, predicate) {
@@ -17997,24 +18026,50 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
               return (_it$visible$value = (_a = it.visible) == null ? void 0 : _a.value) !== null && _it$visible$value !== void 0 ? _it$visible$value : true;
             });
           });
+          watchEffect(() => {
+            anyOverlay.value = any(components, (it) => {
+              var _a;
+              var _it$overlay$value;
+              return (_it$overlay$value = (_a = it.overlay) == null ? void 0 : _a.value) !== null && _it$overlay$value !== void 0 ? _it$overlay$value : false;
+            });
+          });
+          watchEffect(() => {
+            if (components.length === 0) {
+              return 0;
+            }
+            const offsets = components.map((it) => {
+              var _a;
+              return (_a = it.offset) == null ? void 0 : _a.value;
+            }).filter((it) => typeof it === "number");
+            offset2.value = Math.max(0, ...offsets);
+          });
         });
         return () => {
           components = components.filter((it) => it.id !== component.id);
           scope.stop();
         };
-      }
+      },
+      size
     });
     const disabled = computed(() => anyEnabled.value === false);
     const hidden = computed(() => anyVisible.value === false);
+    const overlay = computed(() => anyOverlay.value === true);
     const props = __props;
+    function onResize(event) {
+      size.value = event.detail[0];
+    }
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(tagName), mergeProps({
         disabled: disabled.value,
-        hidden: hidden.value
-      }, props), {
+        hidden: hidden.value,
+        overlay: overlay.value,
+        offset: offset2.value
+      }, props, {
+        onResize
+      }), {
         default: withCtx(() => [createElementVNode("div", _hoisted_1$4, [renderSlot(_ctx.$slots, "default")])]),
         _: 3
-      }, 16, ["disabled", "hidden"]);
+      }, 16, ["disabled", "hidden", "overlay", "offset"]);
     };
   }
 });
