@@ -448,6 +448,31 @@ module.exports = defineMetadata({
         inherit: "f-label#description",
     },
 
+    "f-minimizable-panel": {
+        flow: true,
+        attributes: {
+            context: {
+                enum: ["/.+/"],
+            },
+        },
+        slots: ["default", "icon"],
+    },
+
+    "ce-minimizable-panel": {
+        flow: true,
+        attributes: {
+            context: {
+                enum: ["/.+/"],
+            },
+            openPrefix: {
+                enum: ["/.+/"],
+            },
+            closePrefix: {
+                enum: ["/.+/"],
+            },
+        },
+    },
+
     "f-page-layout": {
         flow: true,
         attributes: {
