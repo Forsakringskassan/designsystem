@@ -11,12 +11,16 @@ if (!customElements.get(tagName)) {
 interface Component {
     readonly enabled?: Readonly<Ref<boolean>>;
     readonly visible?: Readonly<Ref<boolean>>;
+    readonly overlay?: Readonly<Ref<boolean>>;
+    readonly offset?: Readonly<Ref<number>>;
     id: number;
 }
 
 const anyEnabled = ref(true);
 const anyVisible = ref(true);
+const anyOverlay = ref(false);
 const size = ref(-1);
+const offset = ref(0);
 
 let components: Component[] = [];
 let n = 0;
@@ -37,6 +41,16 @@ provide(injectionKey, {
             watchEffect(() => {
                 anyVisible.value = any(components, (it) => it.visible?.value ?? true);
             });
+            watchEffect(() => {
+                anyOverlay.value = any(components, (it) => it.overlay?.value ?? false);
+            });
+            watchEffect(() => {
+                if (components.length === 0) {
+                    return 0;
+                }
+                const offsets = components.map((it) => it.offset?.value).filter((it) => typeof it === "number");
+                offset.value = Math.max(0, ...offsets);
+            });
         });
         return () => {
             components = components.filter((it) => it.id !== component.id);
@@ -48,6 +62,7 @@ provide(injectionKey, {
 
 const disabled = computed(() => anyEnabled.value === false);
 const hidden = computed(() => anyVisible.value === false);
+const overlay = computed(() => anyOverlay.value === true);
 
 const props = withDefaults(
     defineProps<{
@@ -74,7 +89,6 @@ const props = withDefaults(
         initial?: string;
     }>(),
     {
-        disabled: false,
         min: "0",
         max: "100%",
         initial: "50%",
@@ -87,7 +101,7 @@ function onResize(event: CustomEvent<[size: number]>): void {
 </script>
 
 <template>
-    <component :is="tagName" :disabled :hidden v-bind="props" @resize="onResize">
+    <component :is="tagName" :disabled :hidden :overlay :offset v-bind="props" @resize="onResize">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
         <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
         <div slot="content">

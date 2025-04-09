@@ -15619,6 +15619,8 @@ export function useResize(options?: UseResizeOptions): UseResize;
 // @public
 export interface UseResizeOptions {
     readonly enabled?: Readonly<Ref<boolean>>;
+    readonly offset?: Readonly<Ref<number>>;
+    readonly overlay?: Readonly<Ref<boolean>>;
     readonly visible?: Readonly<Ref<boolean>>;
 }
 
