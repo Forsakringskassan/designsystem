@@ -217,10 +217,10 @@ export default defineComponent({
                             type="text"
                             expand
                         >
-                            {{ row.start }}
+                            <span v-format:date="row.start"></span>
                         </f-table-column>
                         <f-table-column title="Till och med" ${this.rowDescription} type="text">
-                            {{ row.end }}
+                            <span v-format:date="row.end"></span>
                         </f-table-column>
                         <f-table-column title="Antal dagar" type="numeric">
                             {{ row.antal }}

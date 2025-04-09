@@ -8512,9 +8512,9 @@ required: false;
 default: typeof parseNumber;
 };
 }>> & Readonly<{}>, {
+decimals: number;
 formatter: FormatFunction<number>;
 parser: ParseFunction<number>;
-decimals: number;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public
@@ -9808,9 +9808,9 @@ required: false;
 default: typeof parsePercent;
 };
 }>> & Readonly<{}>, {
+decimals: number;
 formatter: FormatFunction<number>;
 parser: ParseFunction<number>;
-decimals: number;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)

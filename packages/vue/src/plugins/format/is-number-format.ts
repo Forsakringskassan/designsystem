@@ -1,12 +1,14 @@
-import { isSet } from "@fkui/logic";
-import { NumberFormat } from "./number-format";
+import { type NumberFormat } from "./number-format";
 
+/**
+ * @internal
+ */
 export function isNumberFormat(value: unknown): value is NumberFormat {
-    if (!isSet(value)) {
+    if (!value || typeof value !== "object") {
         return false;
     }
 
-    const maybeNumberformat = value as NumberFormat;
+    const maybeNumberformat = value as { [K in keyof NumberFormat]?: unknown };
     if (typeof maybeNumberformat.decimals !== "number") {
         return false;
     }

@@ -198,6 +198,7 @@ I undantagsfall kan du också använda en dold skärmläsartext i caption, men t
 
 - Gör en ordentlig analys av vilken information som måste visas i tabellen. Målet bör vara att alla kolumner får plats på skärmen.
 - Hjälp användaren att hitta i en tabell med mycket information genom att lägga till möjlighet att söka eller sortera. Använd komponent {@link FSortFilterDataset Datamängdssorteraren}
+- Formatera datan i tabellen så den blir lätt att läsa. Använd med fördel {@link FormatPlugin} för att både formatera och undvika radbryt mitt i ett värde.
 
 ## Utforma en tabell
 
