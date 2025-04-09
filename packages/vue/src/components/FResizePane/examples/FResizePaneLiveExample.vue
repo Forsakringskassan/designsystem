@@ -1,11 +1,34 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { FPageLayout, FResizePane, FFieldset, FRadioField } from "@fkui/vue";
+import { computed, defineComponent, ref } from "vue";
+import {
+    FCheckboxField,
+    FFieldset,
+    FPageLayout,
+    FRadioField,
+    FResizePane,
+    useResize,
+} from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 import { type LayoutAreaAttachPanel } from "../../FPageLayout";
 
+const CustomPanel = defineComponent({
+    setup() {
+        useResize({
+            enabled,
+            visible,
+        });
+    },
+    template: /* HTML */ `
+        <div class="content">
+            <slot></slot>
+        </div>
+    `,
+});
+
 const attachment = ref<LayoutAreaAttachPanel>("left");
-const components = { FPageLayout, FResizePane };
+const enabled = ref(true);
+const visible = ref(true);
+const components = { FPageLayout, FResizePane, CustomPanel };
 
 const layout = computed(() => {
     const mapping: Record<string, string> = {
@@ -29,9 +52,9 @@ const template = computed(() => {
             <f-page-layout layout="${layout.value}">
                 <template #${slot.value}>
                     <f-resize-pane min="200px" max="50%" initial="25%">
-                        <div class="content">
+                        <custom-panel>
                             <p>Panel</p>
-                        </div>
+                        </custom-panel>
                     </f-resize-pane>
                 </template>
                 <template #content>
@@ -55,6 +78,13 @@ const template = computed(() => {
                 <f-radio-field v-model="attachment" value="right">Höger</f-radio-field>
             </template>
         </f-fieldset>
+        <f-fieldset name="attachment">
+            <template #label> Egenskaper </template>
+            <template #default>
+                <f-checkbox-field v-model="enabled" :value="true">Enabled</f-checkbox-field>
+                <f-checkbox-field v-model="visible" :value="true">Visible</f-checkbox-field>
+            </template>
+        </f-fieldset>
     </live-example>
 </template>
 
@@ -66,5 +96,9 @@ const template = computed(() => {
 
 .content {
     padding: 1rem;
+
+    p {
+        margin: 0;
+    }
 }
 </style>
