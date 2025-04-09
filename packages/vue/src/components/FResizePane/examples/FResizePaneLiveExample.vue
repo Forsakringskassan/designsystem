@@ -17,6 +17,8 @@ const CustomPanel = defineComponent({
         const { size } = useResize({
             enabled,
             visible,
+            overlay,
+            offset,
         });
         return { size };
     },
@@ -30,6 +32,8 @@ const CustomPanel = defineComponent({
 const attachment = ref<LayoutAreaAttachPanel>("left");
 const enabled = ref(true);
 const visible = ref(true);
+const overlay = ref(false);
+const offset = ref(200);
 const min = ref("200px");
 const max = ref("50%");
 const components = { FPageLayout, FResizePane, CustomPanel };
@@ -73,6 +77,12 @@ const template = computed(() => {
                     <div class="content">
                         <p>Huvudyta</p>
                         <p>Drag i handtaget för att ändra storlek.</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut tellus
+                            sodales, vestibulum felis a, eleifend nunc. Mauris hendrerit lorem a
+                            nulla elementum tempor. Etiam vestibulum risus ut velit pharetra, vitae
+                            tincidunt lorem mattis.
+                        </p>
                     </div>
                 </template>
             </f-page-layout>
@@ -95,6 +105,7 @@ const template = computed(() => {
             <template #default>
                 <f-checkbox-field v-model="enabled" :value="true">Enabled</f-checkbox-field>
                 <f-checkbox-field v-model="visible" :value="true">Visible</f-checkbox-field>
+                <f-checkbox-field v-model="overlay" :value="true">Overlay</f-checkbox-field>
             </template>
         </f-fieldset>
         <f-select-field v-model="min">
@@ -113,6 +124,13 @@ const template = computed(() => {
                 <option value="400px">400px</option>
                 <option value="50%">50%</option>
                 <option value="400px 50%">400px 50%</option>
+            </template>
+        </f-select-field>
+        <f-select-field v-model="offset" :disabled="!overlay">
+            <template #label> Offset </template>
+            <template #default>
+                <option :value="0">Ingen offset</option>
+                <option :value="200">200px offset</option>
             </template>
         </f-select-field>
     </live-example>

@@ -14,6 +14,10 @@ import { useStorage } from "./use-storage";
 
 const STEP_SIZE = 10;
 
+defineOptions({
+    inheritAttrs: false,
+});
+
 const props = withDefaults(
     defineProps<{
         /**
@@ -41,8 +45,29 @@ const props = withDefaults(
          * size)
          */
         initial?: string;
+        /**
+         * Enables overlay.
+         *
+         * When enabled the pane will be an overlay instead of occupying space
+         * from other layout areas. The `offset` prop can be used to set a
+         * static size of how much space it should occupy.
+         */
+        overlay?: boolean;
+        /**
+         * When `overlay` is enabled this sets how much static space (in px) the
+         * pane should occupy from the nearby layout areas, that is, how much of
+         * the pane should be static and how much is overlay.
+         *
+         * Consider a collapsable panel, by setting the offset to the width of
+         * the collapsed state and enabling overlay, the resize pane will occupy
+         * that amount of space and the rest of the pane will be positioned on
+         * top of the other layout areas.
+         */
+        offset?: number;
     }>(),
     {
+        overlay: false,
+        offset: 0,
         disabled: false,
         min: "0",
         max: "100%",
@@ -121,6 +146,7 @@ const classes = computed(() => {
     return [
         `resize--${attachment.value}`,
         `resize--${direction.value}`,
+        props.overlay ? "resize--overlay" : undefined,
         props.disabled ? "resize--disabled" : undefined,
     ];
 });
@@ -140,9 +166,12 @@ watch(() => props.max, onResize);
 watchEffect(() => {
     const { min, max, current: value } = state.value;
     if (root.value) {
-        root.value.style.setProperty("--size", `${String(value)}px`);
-        root.value.style.setProperty("--min", `${min}px`);
-        root.value.style.setProperty("--max", `${max}px`);
+        const shadowRoot = root.value.getRootNode() as ShadowRoot;
+        const host = shadowRoot.host as HTMLElement;
+        host.style.setProperty("--size", `${String(value)}px`);
+        host.style.setProperty("--min", `${min}px`);
+        host.style.setProperty("--max", `${max}px`);
+        host.style.setProperty("--offset", `${props.offset}px`);
     }
     if (separator.value) {
         separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
@@ -190,7 +219,8 @@ function getLayoutSize(): number {
 </script>
 
 <template>
-    <div ref="root" class="resize" :class="classes">
+    <div class="resize__offset" v-if="overlay && offset"></div>
+    <div ref="root" class="resize" :class="classes" v-bind="$attrs">
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->
             <slot name="content"></slot>

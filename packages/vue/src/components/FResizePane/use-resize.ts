@@ -6,6 +6,8 @@ import { type InjectionKey, type Ref, inject, onUnmounted, ref } from "vue";
 export interface ResizeParams {
     readonly enabled?: Readonly<Ref<boolean>>;
     readonly visible?: Readonly<Ref<boolean>>;
+    readonly offset?: Readonly<Ref<number>>;
+    readonly overlay?: Readonly<Ref<boolean>>;
 }
 
 /**
@@ -44,6 +46,28 @@ export interface UseResizeOptions {
 
     /** When one or more compoents set `visible` to `true` the resize pane is visible */
     readonly visible?: Readonly<Ref<boolean>>;
+
+    /**
+     * When one or more components set `overlay` to `true` the resize pane is
+     * displayed as an overlay and instead of occupying space from ther layout
+     * areas it will be shown on top.
+     *
+     * The `offset` property can be used to set a static size of how much space
+     * it should occupy.
+     */
+    readonly overlay?: Readonly<Ref<boolean>>;
+
+    /**
+     * When `overlay` is enabled this sets how much static space (in px) the
+     * pane should occupy from the nearby layout areas, that is, how much of the
+     * pane should be static and how much is overlay.
+     *
+     * Consider a collapsable panel, by setting the offset to the width of the
+     * collapsed state and enabling overlay, the resize pane will occupy that
+     * amount of space and the rest of the pane will be positioned on
+     * top of the other layout areas.
+     */
+    readonly offset?: Readonly<Ref<number>>;
 }
 
 /**
@@ -64,6 +88,8 @@ export function useResize(options: UseResizeOptions = {}): UseResize {
     const unregister = api.register({
         enabled: options.enabled,
         visible: options.visible,
+        overlay: options.overlay,
+        offset: options.offset,
     });
 
     onUnmounted(unregister);
