@@ -46,6 +46,9 @@ Värden kan anges antingen som absolut storlek i pixlar (`px`), i procent (`%`) 
 - `20%` - minsta/största storlek är 20% av applikationslayoutens totala bredd.
 - `200px 20%` - minsta/största är det minsta/största av 200px eller 20%.
 
+Storleken refererar till innehållet i ytan, dvs `200px` innebär att det finns 200px effektiv yta för innehåll.
+Ytans totala storlek blir 200px + storleken på handtaget för att justera storleken.
+
 ## Initial storlek
 
 Den initiala storleken på ytan kan anges med `initial` propen.

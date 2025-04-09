@@ -1,11 +1,38 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { FPageLayout, FResizePane, FFieldset, FRadioField } from "@fkui/vue";
+import { computed, defineComponent, ref } from "vue";
+import {
+    FCheckboxField,
+    FFieldset,
+    FPageLayout,
+    FSelectField,
+    FRadioField,
+    FResizePane,
+    useResize,
+} from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 import { type LayoutAreaAttachPanel } from "../../FPageLayout";
 
+const CustomPanel = defineComponent({
+    setup() {
+        const { size } = useResize({
+            enabled,
+            visible,
+        });
+        return { size };
+    },
+    template: /* HTML */ `
+        <div class="content">
+            <slot v-bind="{ size }"></slot>
+        </div>
+    `,
+});
+
 const attachment = ref<LayoutAreaAttachPanel>("left");
-const components = { FPageLayout, FResizePane };
+const enabled = ref(true);
+const visible = ref(true);
+const min = ref("200px");
+const max = ref("50%");
+const components = { FPageLayout, FResizePane, CustomPanel };
 
 const layout = computed(() => {
     const mapping: Record<string, string> = {
@@ -23,15 +50,23 @@ const slot = computed(() => {
     return mapping[attachment.value];
 });
 
+const livedata = {
+    min,
+    max,
+};
+
 const template = computed(() => {
     return /* HTML */ `
         <div class="layout-container">
             <f-page-layout layout="${layout.value}">
                 <template #${slot.value}>
-                    <f-resize-pane min="200px" max="50%" initial="25%">
-                        <div class="content">
-                            <p>Panel</p>
-                        </div>
+                    <f-resize-pane :min :max initial="25%">
+                        <custom-panel>
+                            <template #default="{ size }">
+                                <p>Panel</p>
+                                <p>Size: {{ size }}px</p>
+                            </template>
+                        </custom-panel>
                     </f-resize-pane>
                 </template>
                 <template #content>
@@ -47,7 +82,7 @@ const template = computed(() => {
 </script>
 
 <template>
-    <live-example :components :template>
+    <live-example :components :livedata :template>
         <f-fieldset name="attachment">
             <template #label> Fäst till </template>
             <template #default>
@@ -55,6 +90,31 @@ const template = computed(() => {
                 <f-radio-field v-model="attachment" value="right">Höger</f-radio-field>
             </template>
         </f-fieldset>
+        <f-fieldset name="attachment">
+            <template #label> Egenskaper </template>
+            <template #default>
+                <f-checkbox-field v-model="enabled" :value="true">Enabled</f-checkbox-field>
+                <f-checkbox-field v-model="visible" :value="true">Visible</f-checkbox-field>
+            </template>
+        </f-fieldset>
+        <f-select-field v-model="min">
+            <template #label> Minsta storlek </template>
+            <template #default>
+                <option :value="undefined">(ingen begränsning)</option>
+                <option value="200px">200px</option>
+                <option value="10%">10%</option>
+                <option value="200px 10%">200px 10%</option>
+            </template>
+        </f-select-field>
+        <f-select-field v-model="max">
+            <template #label> Största storlek </template>
+            <template #default>
+                <option :value="undefined">(ingen begränsning)</option>
+                <option value="400px">400px</option>
+                <option value="50%">50%</option>
+                <option value="400px 50%">400px 50%</option>
+            </template>
+        </f-select-field>
     </live-example>
 </template>
 
@@ -66,5 +126,9 @@ const template = computed(() => {
 
 .content {
     padding: 1rem;
+
+    p {
+        margin: 0;
+    }
 }
 </style>

@@ -31,7 +31,10 @@ function useResize(options);
 
 ### Returvärde
 
-Inget returvärde.
+Ett objekt som innehåller:
+
+`size: Readonly<Ref<number>>`
+: Nuvarande storlek på ytan i px.
 
 ## Exempel
 

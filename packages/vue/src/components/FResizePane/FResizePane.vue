@@ -16,6 +16,7 @@ interface Component {
 
 const anyEnabled = ref(true);
 const anyVisible = ref(true);
+const size = ref(-1);
 
 let components: Component[] = [];
 let n = 0;
@@ -42,6 +43,7 @@ provide(injectionKey, {
             scope.stop();
         };
     },
+    size,
 });
 
 const disabled = computed(() => anyEnabled.value === false);
@@ -78,10 +80,14 @@ const props = withDefaults(
         initial: "50%",
     },
 );
+
+function onResize(event: CustomEvent<[size: number]>): void {
+    size.value = event.detail[0];
+}
 </script>
 
 <template>
-    <component :is="tagName" :disabled :hidden v-bind="props">
+    <component :is="tagName" :disabled :hidden v-bind="props" @resize="onResize">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
         <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
         <div slot="content">
