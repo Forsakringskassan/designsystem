@@ -11,10 +11,10 @@ import { NumberFormat } from "./number-format";
 import { isNumberFormat } from "./is-number-format";
 import { isDateRange } from "./is-date-range";
 
-export async function formatNumber(
+export function formatNumber(
     el: HTMLElement,
     number: string | number | NumberFormat | unknown,
-): Promise<void> {
+): void {
     el.classList.add("formatter--number");
     el.textContent = "";
 
