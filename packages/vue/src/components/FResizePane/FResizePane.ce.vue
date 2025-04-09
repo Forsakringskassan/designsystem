@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef, watchEffect } from "vue";
+import { computed, onMounted, ref, shallowRef, watch, watchEffect } from "vue";
 import { debounce } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 import { useAreaData } from "../FPageLayout";
@@ -129,6 +129,9 @@ const layoutElement = computed(() => {
     const host = shadow.host;
     return host.closest<HTMLElement>("ce-page-layout") ?? undefined;
 });
+
+watch(() => props.min, onResize);
+watch(() => props.max, onResize);
 
 watchEffect(() => {
     const { min, max, current: value } = state.value;
