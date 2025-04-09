@@ -4,6 +4,7 @@ import { type SetupOptions } from "@forsakringskassan/docs-generator";
 import {
     ErrorPlugin,
     FErrorHandlingApp,
+    FormatPlugin,
     TestPlugin,
     TranslationPlugin,
     ValidationPlugin,
@@ -25,5 +26,6 @@ export function setup(options: SetupOptions): void {
     app.use(ValidationPlugin);
     app.use(TestPlugin);
     app.use(TranslationPlugin);
+    app.use(FormatPlugin);
     app.mount(selector);
 }
