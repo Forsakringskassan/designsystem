@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FResizePane/examples/FResizePaneLiveExample.vue:FResizePaneLiveExample-590e5e.js
+// virtual-entry:virtual:packages/vue/src/components/FResizePane/examples/FResizePaneLiveExample.vue:FResizePaneLiveExample-f424cd.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, defineComponent, ref } from "vue";
 import {
@@ -113,11 +113,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut tellus
                             sodales, vestibulum felis a, eleifend nunc. Mauris hendrerit lorem a
                             nulla elementum tempor. Etiam vestibulum risus ut velit pharetra, vitae
-                            tincidunt lorem mattis. Maecenas elit dui, pellentesque eu molestie ut,
-                            sodales cursus mauris. Integer euismod nibh non hendrerit sodales.
-                            Vestibulum vestibulum leo vel varius molestie. Nunc vestibulum vehicula
-                            ante. Praesent interdum eros non velit iaculis, ac finibus tellus
-                            dignissim.
+                            tincidunt lorem mattis.
                         </p>
                     </div>
                 </template>
@@ -336,7 +332,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-590e5e"
+  selector: "#example-f424cd"
 });
 export {
   render
