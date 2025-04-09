@@ -102,10 +102,10 @@ export default defineComponent({
                             type="text"
                             expand
                         >
-                            <span class="nowrap">{{ row.start }}</span>
+                            <span v-format:date="row.start"></span>
                         </f-table-column>
                         <f-table-column title="Till och med" ${this.rowDescription} type="text">
-                            <span class="nowrap">{{ row.end }}</span>
+                            <span v-format:date="row.end"></span>
                         </f-table-column>
                         <f-table-column title="Antal dagar" type="numeric">
                             {{ row.antal }}
@@ -151,9 +151,3 @@ export default defineComponent({
         </f-fieldset>
     </live-example>
 </template>
-
-<style>
-.nowrap {
-    white-space: nowrap;
-}
-</style>

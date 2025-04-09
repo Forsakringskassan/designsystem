@@ -1,8 +1,11 @@
 import { FDate } from "@fkui/date";
-import { DateRange } from "./date-range";
+import { type DateRange } from "./date-range";
 
+/**
+ * @internal
+ */
 export function isDateRange(value: unknown): value is DateRange {
-    if (!value) {
+    if (!value || typeof value !== "object") {
         return false;
     }
 

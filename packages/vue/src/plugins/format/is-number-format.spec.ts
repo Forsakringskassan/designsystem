@@ -7,6 +7,9 @@ it.each`
     ${null}                                   | ${false}
     ${0}                                      | ${false}
     ${{}}                                     | ${false}
+    ${"test"}                                 | ${false}
+    ${true}                                   | ${false}
+    ${42}                                     | ${false}
     ${{ number: 123, decimals: null }}        | ${false}
     ${{ number: "123", decimals: null }}      | ${false}
     ${{ number: null, decimals: 1 }}          | ${false}

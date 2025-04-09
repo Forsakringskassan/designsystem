@@ -6,15 +6,18 @@ import {
     parseOrganisationsnummer,
     parsePersonnummer,
 } from "@fkui/logic";
-import { DateRange } from "./date-range";
-import { NumberFormat } from "./number-format";
+import { type DateRange } from "./date-range";
+import { type NumberFormat } from "./number-format";
 import { isNumberFormat } from "./is-number-format";
 import { isDateRange } from "./is-date-range";
 
-export async function formatNumber(
+/**
+ * @internal
+ */
+export function formatNumber(
     el: HTMLElement,
     number: string | number | NumberFormat | unknown,
-): Promise<void> {
+): void {
     el.classList.add("formatter--number");
     el.textContent = "";
 
@@ -25,6 +28,9 @@ export async function formatNumber(
     }
 }
 
+/**
+ * @internal
+ */
 export function formatDate(el: HTMLElement, date: string | unknown): void {
     el.classList.add("formatter--date");
     el.textContent = "";
@@ -36,6 +42,9 @@ export function formatDate(el: HTMLElement, date: string | unknown): void {
     }
 }
 
+/**
+ * @internal
+ */
 export function formatDateFull(el: HTMLElement, date: string | unknown): void {
     el.classList.add("formatter--date-full");
     el.textContent = "";
@@ -48,6 +57,9 @@ export function formatDateFull(el: HTMLElement, date: string | unknown): void {
     }
 }
 
+/**
+ * @internal
+ */
 export function formatDateLong(el: HTMLElement, date: string | unknown): void {
     el.classList.add("formatter--date-long");
     el.textContent = "";
@@ -60,6 +72,9 @@ export function formatDateLong(el: HTMLElement, date: string | unknown): void {
     }
 }
 
+/**
+ * @internal
+ */
 export function formatDateRange(
     el: HTMLElement,
     range: DateRange | unknown,
@@ -72,17 +87,22 @@ export function formatDateRange(
     }
     const fromDate =
         range.from instanceof FDate
-            ? range.from.toString()
-            : parseDate(range.from);
+            ? range.from
+            : FDate.fromIso(parseDate(range.from) ?? "");
 
     const toDate =
-        range.to instanceof FDate ? range.to.toString() : parseDate(range.to);
+        range.to instanceof FDate
+            ? range.to
+            : FDate.fromIso(parseDate(range.to) ?? "");
 
-    if (fromDate && toDate) {
-        el.textContent = `${FDate.fromIso(fromDate ?? "")} – ${FDate.fromIso(toDate ?? "")}`;
+    if (fromDate.isValid() && toDate.isValid()) {
+        el.textContent = `${fromDate.toString()} – ${toDate.toString()}`;
     }
 }
 
+/**
+ * @internal
+ */
 export function formatBankgiro(
     el: HTMLElement,
     bankgiro: string | unknown,
@@ -95,6 +115,9 @@ export function formatBankgiro(
     }
 }
 
+/**
+ * @internal
+ */
 export function formatPersonnummer(
     el: HTMLElement,
     pnr: string | unknown,
@@ -107,6 +130,9 @@ export function formatPersonnummer(
     }
 }
 
+/**
+ * @internal
+ */
 export function formatOrganisationsnummer(
     el: HTMLElement,
     orgnr: string | unknown,
@@ -119,6 +145,9 @@ export function formatOrganisationsnummer(
     }
 }
 
+/**
+ * @internal
+ */
 export function formatText(el: HTMLElement, text: string | unknown): void {
     el.classList.add("formatter--text");
     el.textContent = typeof text === "string" ? text : "";
