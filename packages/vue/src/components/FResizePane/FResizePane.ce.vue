@@ -97,7 +97,7 @@ const minSize = computed(() => {
 
 const maxSize = computed(() => {
     const total = layoutSize.value;
-    return Math.floor(aggregateCssValue(props.max, total, total, Math.min));
+    return Math.max(Math.floor(aggregateCssValue(props.max, total, total, Math.min)), minSize.value);
 });
 
 const initialSize = computed(() => {
