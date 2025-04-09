@@ -14,14 +14,15 @@ import { type LayoutAreaAttachPanel } from "../../FPageLayout";
 
 const CustomPanel = defineComponent({
     setup() {
-        useResize({
+        const { size } = useResize({
             enabled,
             visible,
         });
+        return { size };
     },
     template: /* HTML */ `
         <div class="content">
-            <slot></slot>
+            <slot v-bind="{ size }"></slot>
         </div>
     `,
 });
@@ -61,7 +62,10 @@ const template = computed(() => {
                 <template #${slot.value}>
                     <f-resize-pane :min :max initial="25%">
                         <custom-panel>
-                            <p>Panel</p>
+                            <template #default="{ size }">
+                                <p>Panel</p>
+                                <p>Size: {{ size }}px</p>
+                            </template>
                         </custom-panel>
                     </f-resize-pane>
                 </template>

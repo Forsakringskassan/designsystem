@@ -86,7 +86,12 @@ export {
 } from "./FPageLayout";
 export { FProgressbar } from "./FProgressbar";
 export { FRadioField } from "./FRadioField";
-export { type UseResizeOptions, FResizePane, useResize } from "./FResizePane";
+export {
+    type UseResize,
+    type UseResizeOptions,
+    FResizePane,
+    useResize,
+} from "./FResizePane";
 export { FSelectField } from "./FSelectField";
 export {
     type FSortFilterDatasetInterface,

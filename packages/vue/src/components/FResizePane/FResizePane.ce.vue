@@ -50,6 +50,10 @@ const props = withDefaults(
     },
 );
 
+const emit = defineEmits<{
+    resize: [size: number];
+}>();
+
 const root = shallowRef<HTMLElement>();
 const content = ref<HTMLElement>();
 const separator = ref<HTMLElement>();
@@ -144,6 +148,9 @@ watchEffect(() => {
         separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
         separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
         separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
+    }
+    if (value >= 0) {
+        emit("resize", value);
     }
 });
 
