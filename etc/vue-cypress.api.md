@@ -430,6 +430,17 @@ export class FMessageBoxPageObject implements BasePageObject {
     typeOfMessage(): Cypress.Chainable<string>;
 }
 
+// @public
+export class FMinimizablePanelPageObject implements BasePageObject {
+    constructor(selector: string);
+    content(): Cypress.Chainable<JQuery<HTMLElement>>;
+    el(): DefaultCypressChainable;
+    footer(): Cypress.Chainable<JQuery<HTMLElement>>;
+    header(): Cypress.Chainable<JQuery<HTMLElement>>;
+    readonly selector: string;
+    toggleButton(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
+}
+
 // @public (undocumented)
 export class FModalPageObject implements BasePageObject {
     constructor(selector: string);
