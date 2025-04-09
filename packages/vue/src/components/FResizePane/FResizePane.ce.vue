@@ -54,7 +54,6 @@ const root = shallowRef<HTMLElement>();
 const content = ref<HTMLElement>();
 const separator = ref<HTMLElement>();
 const state = ref<SizeState>({ min: -1, max: -1, current: -1 });
-const separatorSize = ref(0);
 const layoutSize = ref(0);
 const storageKey = computed(() => (area.value ? `layout/${area.value}/size` : null));
 
@@ -93,12 +92,12 @@ usePointerHandler({
 
 const minSize = computed(() => {
     const total = layoutSize.value;
-    return Math.floor(aggregateCssValue(props.min, total, 0, Math.max) + separatorSize.value);
+    return Math.floor(aggregateCssValue(props.min, total, 0, Math.max));
 });
 
 const maxSize = computed(() => {
     const total = layoutSize.value;
-    return Math.floor(aggregateCssValue(props.max, total, total, Math.min) + separatorSize.value);
+    return Math.floor(aggregateCssValue(props.max, total, total, Math.min));
 });
 
 const initialSize = computed(() => {
@@ -146,10 +145,6 @@ watchEffect(() => {
 });
 
 onMounted(() => {
-    if (separator.value) {
-        const { flexBasis } = getComputedStyle(separator.value);
-        separatorSize.value = computeCssValue(flexBasis, 0, 0);
-    }
     layoutSize.value = getLayoutSize();
     state.value = {
         min: minSize.value,
