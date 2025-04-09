@@ -15609,7 +15609,12 @@ export interface UseModal {
 export function useModal(): UseModal;
 
 // @public
-export function useResize(options?: UseResizeOptions): void;
+export interface UseResize {
+    readonly size: Readonly<Ref<number>>;
+}
+
+// @public
+export function useResize(options?: UseResizeOptions): UseResize;
 
 // @public
 export interface UseResizeOptions {

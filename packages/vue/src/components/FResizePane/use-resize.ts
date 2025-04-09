@@ -1,4 +1,4 @@
-import { type InjectionKey, inject, onUnmounted, type Ref } from "vue";
+import { type InjectionKey, type Ref, inject, onUnmounted, ref } from "vue";
 
 /**
  * @internal
@@ -15,12 +15,23 @@ export interface ResizeParams {
  */
 export interface ResizeAPI {
     register(params: ResizeParams): () => void;
+    size: Readonly<Ref<number>>;
 }
 
 /**
  * @internal
  */
 export const injectionKey: InjectionKey<ResizeAPI> = Symbol("FResizePane");
+
+/**
+ * Returned from `useResize()`.
+ *
+ * @public
+ */
+export interface UseResize {
+    /** current size of resize pane in px */
+    readonly size: Readonly<Ref<number>>;
+}
 
 /**
  * Optional refs controlling behaviour of ancestor `FResizePanel` component.
@@ -41,12 +52,13 @@ export interface UseResizeOptions {
  * @public
  * @param options - Optional refs controlling behaviour.
  */
-export function useResize(options: UseResizeOptions = {}): void {
+export function useResize(options: UseResizeOptions = {}): UseResize {
     const api = inject(injectionKey, {
         register() {
             /* fallback: do nothing */
             return () => undefined;
         },
+        size: ref(0),
     });
 
     const unregister = api.register({
@@ -55,4 +67,8 @@ export function useResize(options: UseResizeOptions = {}): void {
     });
 
     onUnmounted(unregister);
+
+    return {
+        size: api.size,
+    };
 }
