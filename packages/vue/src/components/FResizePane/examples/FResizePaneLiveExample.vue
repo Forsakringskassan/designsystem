@@ -4,6 +4,7 @@ import {
     FCheckboxField,
     FFieldset,
     FPageLayout,
+    FSelectField,
     FRadioField,
     FResizePane,
     useResize,
@@ -28,6 +29,8 @@ const CustomPanel = defineComponent({
 const attachment = ref<LayoutAreaAttachPanel>("left");
 const enabled = ref(true);
 const visible = ref(true);
+const min = ref("200px");
+const max = ref("50%");
 const components = { FPageLayout, FResizePane, CustomPanel };
 
 const layout = computed(() => {
@@ -46,12 +49,17 @@ const slot = computed(() => {
     return mapping[attachment.value];
 });
 
+const livedata = {
+    min,
+    max,
+};
+
 const template = computed(() => {
     return /* HTML */ `
         <div class="layout-container">
             <f-page-layout layout="${layout.value}">
                 <template #${slot.value}>
-                    <f-resize-pane min="200px" max="50%" initial="25%">
+                    <f-resize-pane :min :max initial="25%">
                         <custom-panel>
                             <p>Panel</p>
                         </custom-panel>
@@ -70,7 +78,7 @@ const template = computed(() => {
 </script>
 
 <template>
-    <live-example :components :template>
+    <live-example :components :livedata :template>
         <f-fieldset name="attachment">
             <template #label> Fäst till </template>
             <template #default>
@@ -85,6 +93,24 @@ const template = computed(() => {
                 <f-checkbox-field v-model="visible" :value="true">Visible</f-checkbox-field>
             </template>
         </f-fieldset>
+        <f-select-field v-model="min">
+            <template #label> Minsta storlek </template>
+            <template #default>
+                <option :value="undefined">(ingen begränsning)</option>
+                <option value="200px">200px</option>
+                <option value="10%">10%</option>
+                <option value="200px 10%">200px 10%</option>
+            </template>
+        </f-select-field>
+        <f-select-field v-model="max">
+            <template #label> Största storlek </template>
+            <template #default>
+                <option :value="undefined">(ingen begränsning)</option>
+                <option value="400px">400px</option>
+                <option value="50%">50%</option>
+                <option value="400px 50%">400px 50%</option>
+            </template>
+        </f-select-field>
     </live-example>
 </template>
 
