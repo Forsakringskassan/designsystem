@@ -25055,7 +25055,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     const isOpen = ref(false);
     function updateIsOpen(value) {
       if (value && !isDesktop.value && rootRef.value) {
-        const offset2 = rootRef.value.getBoundingClientRect().width + 2;
+        const offset2 = rootRef.value.getBoundingClientRect().width;
         emit2("toggle", value, true, offset2);
       } else {
         emit2("toggle", value, false);

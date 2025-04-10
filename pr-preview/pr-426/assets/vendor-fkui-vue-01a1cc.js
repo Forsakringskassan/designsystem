@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
@@ -17922,7 +17922,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     const isOpen = ref(false);
     function updateIsOpen(value) {
       if (value && !isDesktop.value && rootRef.value) {
-        const offset2 = rootRef.value.getBoundingClientRect().width + 2;
+        const offset2 = rootRef.value.getBoundingClientRect().width;
         emit("toggle", value, true, offset2);
       } else {
         emit("toggle", value, false);
