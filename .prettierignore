@@ -38,6 +38,8 @@ yarn-error.log*
 *.sln
 *.sw?
 
+.github/pull-request-changelog/*.hbs
+
 # vue specific
 packages/vue/pageobject/**/*.d.ts
 packages/vue/pageobject/**/*.js

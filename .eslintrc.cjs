@@ -90,5 +90,16 @@ module.exports = {
                 "import/no-extraneous-dependencies": "off",
             },
         },
+
+        {
+            files: [".github/pull-request-changelog/config.mjs"],
+            rules: {
+                /* the dependencies for these are normally not installed in a
+                 * development environment but we dont want eslint to yield errors for
+                 * it as they will be installed in the CI pipeline using this file */
+                "import/no-extraneous-dependencies": "off",
+                "import/no-unresolved": "off",
+            },
+        },
     ],
 };
