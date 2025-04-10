@@ -13,7 +13,7 @@ if (!customElements.get(tagName)) {
 
 const { name, exclusive, headingTag } = defineProps<{
     /**
-     * Name of this panel. Used when referencing the panel in {@link useDetailsPanel}.
+     * Name of this panel. Used when referencing the panel in {link useDetailsPanel}.
      */
     name: string;
     /**
