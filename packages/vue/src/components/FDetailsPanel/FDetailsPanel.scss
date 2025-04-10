@@ -1,0 +1,74 @@
+$detail-panel-padding: 0.5rem;
+$detail-panel-gap: 0.5rem;
+
+:host {
+    display: contents;
+}
+
+:host([hidden]) {
+    display: none;
+}
+
+:host ::slotted(*) {
+    display: contents;
+}
+
+.panel__wrapper {
+    flex-grow: 1;
+    display: flex;
+}
+
+.panel {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: $detail-panel-padding;
+    gap: $detail-panel-gap;
+    min-width: 25ch;
+}
+
+.panel__header {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    justify-content: center;
+
+    .attach-left & {
+        flex-direction: row;
+    }
+
+    .attach-right & {
+        flex-direction: row-reverse;
+    }
+}
+
+.panel__close-button {
+    display: inline-flex;
+    line-height: 1;
+    width: 2em;
+    height: 2em;
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.panel__title {
+    flex: 1 0 auto;
+    font-weight: 700;
+    font-size: 1.258rem;
+    line-height: 1;
+    margin: 0;
+}
+
+.panel__content {
+    flex: 1 0 auto;
+}
+
+.panel__footer {
+    flex: 0 0 auto;
+}
