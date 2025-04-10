@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-244ba0.css"
+            href="../assets/docs-593805.css"
             crossorigin
-            integrity="sha384-Mo0CQIfW7mbzsRHHBfDcKX/bxXcgqibtv7Zng9oItNwlmVgtmiA2/O+c3Du7WjEF"
+            integrity="sha384-f12dtES3lYCRKsK53isG6pKZ05HFPQEwTS+Myoe2rpWvyZxfeZc/HI5FbC2fdDLi"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-392b57.css"
+            href="../assets/docs-fkui-d3a31e.css"
             crossorigin
-            integrity="sha384-njL2NZ488ii/iwdnSXddW0ESr8X9nHLSSS44xkRUOpMdATLYtVOZPvtDYoGeJXgb"
+            integrity="sha384-rTkf6XXnwuvX0qtnYXqszJ3Cvx46yPxlbCCPb4zxKB4l0Wd+9wO4mKSg/QEsDib3"
             data-theme="fkui" disabled
         />
 
@@ -26,15 +26,15 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-6c2e41.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-9eb215.js",
-    "@fkui/date": "../assets/vendor-fkui-date-d56889.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-684e3b.js"
+    "@fkui/logic": "../assets/vendor-fkui-logic-c06ed0.js",
+    "@fkui/date": "../assets/vendor-fkui-date-d11adb.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-e1e2e9.js"
   },
   "integrity": {
     "../assets/vendor-vue-6c2e41.js": "sha384-YEv4tbVQlGj3XZu1k08lRfiDBJ6kZ+kj+WwpGdcMsyRsbPcuo6/9ExhKEAPH6LwP",
-    "../assets/vendor-fkui-logic-9eb215.js": "sha384-SsIsHX64zYq4ArhfQnh1rUzarl+9N5HdtRmAb15etFlGfOMkN8Mwr5O1Qx3Jrb0V",
-    "../assets/vendor-fkui-date-d56889.js": "sha384-Dpk/nRM9VKt023lizUK5KM1SUvR4lrVcREL83rPy0UUoQM2eGfRa8Y28l70iS9Zk",
-    "../assets/vendor-fkui-vue-684e3b.js": "sha384-BodLlE/SB+nRN5RaQQbenRnRMAkBrUnnNY0ornFMfplPBFUqCNzV/0eoa/WsQapV"
+    "../assets/vendor-fkui-logic-c06ed0.js": "sha384-FlZw+HsGkcDZ9Pv8S2Oh2tzFy/xoCapwWSTFG5OAuJXoJYX1aGnfD9i0HfD165qm",
+    "../assets/vendor-fkui-date-d11adb.js": "sha384-X12fOIHKUKGgD0l/UlcXFi10Tij8/mCElKW44ma4fJmying2dQoELzvX0hIALN7I",
+    "../assets/vendor-fkui-vue-e1e2e9.js": "sha384-pjiHo1YGIXN+noVFSwLdSQ0+3jqsbUV3i1Z7MBlRMWX//rsBjrhEegUYF3F5LhY/"
   }
 }
         </script>
@@ -131,28 +131,29 @@
 <div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="./"
+            
+            
+            
+            data-path="components/"
             
         >
             Komponenter
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+    </li><li class="link active">
         <a
             href="./xtimetextfield.html"
+            
+            
+            
+            data-path="components/xtimetextfield.html"
             
         >
             Tidsinmatning
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 </nav>
 </div>
 
@@ -204,10 +205,9 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>När det behövs ett textinmatningsfält för timmar och minuter, tt:mm. Accepterar inmatning med eller
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">När det behövs ett textinmatningsfält för timmar och minuter, tt:mm. Accepterar inmatning med eller
 utan kolon. Utan kolon tolkas inmatningen som enbart timmar. Om man matar in ett kolon måste det
-följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). Exempel:</p>
-<table class="table">
+följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). Exempel:</p><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Inmatning</th>
@@ -243,8 +243,7 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
 </tr>
 </tbody>
 </table>
-<p>Lagrar värdet internt i ett <code>Number</code> som plockas ut med <code>v-model</code>.</p>
-<h3 id="enkelt_exempel"><a class="header-anchor" href="#enkelt_exempel">Enkelt exempel</a></h3>
+<p class="docs-paragraph">Lagrar värdet internt i ett <code>Number</code> som plockas ut med <code>v-model</code>.</p><h3 id="enkelt_exempel"><a class="header-anchor" href="#enkelt_exempel">Enkelt exempel</a></h3>
             <div
                 id="example-df23f2"
                 class="code-preview code-preview--default"
@@ -254,13 +253,13 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
             >
                 
                 <div class="code-preview__preview">
-        <div id="XTimeTextFieldExample"></div>
+        <div id="example-01cf1c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XTimeTextFieldExample-6a992d.js"></script>
+        <script type="module" src="./XTimeTextFieldExample-01cf1c.js"></script>
     </div>
                 <div>
             <button
@@ -278,29 +277,7 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">x-time-text-field</span>
-            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;time&quot;</span>
-            <span class="hljs-attr">v-validation.required.hoursMinutes</span>=<span class="hljs-string">&quot;{
-                hoursMinutes: { errorMessage: &#x27;Du har skrivit in ett felaktigt tidformat&#x27; },
-            }&quot;</span>
-        &gt;</span>
-            Ange arbetstid
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ formatDescriptionClass }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;formatDescriptionClass&quot;</span>&gt;</span>(tt:mm)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">x-time-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-            Värde: {{ time }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-            Renskrivet värde: {{ userFriendlyValue }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-            Värde i timmar: {{ timeInHours }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-            Värde i objektnotation: {{ timeAsObject }}.
-        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">XTimeTextField</span>,
     minutesToUserFriendlyString,
@@ -332,17 +309,38 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">x-time-text-field</span>
+            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;time&quot;</span>
+            <span class="hljs-attr">v-validation.required.hoursMinutes</span>=<span class="hljs-string">&quot;{
+                hoursMinutes: { errorMessage: &#x27;Du har skrivit in ett felaktigt tidformat&#x27; },
+            }&quot;</span>
+        &gt;</span>
+            Ange arbetstid
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ formatDescriptionClass }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;formatDescriptionClass&quot;</span>&gt;</span>(tt:mm)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">x-time-text-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+            Värde: {{ time }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Renskrivet värde: {{ userFriendlyValue }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Värde i timmar: {{ timeInHours }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Värde i objektnotation: {{ timeAsObject }}.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <h2 id="forlatande_inmatning"><a class="header-anchor" href="#forlatande_inmatning">Förlåtande inmatning</a></h2><p>Det är inte ovanligt med ett behov av att endast tillåta tidsangivelser upp till ett dygn
+        <h2 id="forlatande_inmatning"><a class="header-anchor" href="#forlatande_inmatning">Förlåtande inmatning</a></h2><p class="docs-paragraph">Det är inte ovanligt med ett behov av att endast tillåta tidsangivelser upp till ett dygn
 (24 timmar). Det går att sätta en egen parsingparameter istället. Detta görs i stil med
 <code>:parser=&quot;forgivingParseTimeToNumber&quot;</code>. I denna komponenten tolkas även fyra siffror inte
 längre som timmar, utan som timmar och minuter. De två första siffrorna tolkas som timmar
 och de två sista som minuter. Notera att tre siffror och fem siffror fortfarande tolkas
 som timmar.
-Exempel:</p>
-<table class="table">
+Exempel:</p><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Inmatning</th>
@@ -388,13 +386,13 @@ Exempel:</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="ForgivingInput"></div>
+        <div id="example-cc479c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ForgivingInput-3214e6.js"></script>
+        <script type="module" src="./ForgivingInput-cc479c.js"></script>
     </div>
                 <div>
             <button
@@ -412,38 +410,7 @@ Exempel:</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">x-time-text-field</span>
-            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;time&quot;</span>
-            <span class="hljs-attr">v-validation.required.hoursMinutes.maxTime</span>=<span class="hljs-string">&quot;{
-                hoursMinutes: {
-                    errorMessage: &#x27;Du har skrivit in ett felaktigt tidformat.&#x27;,
-                    parser: [parser],
-                },
-                maxTime: {
-                    maxTime: &#x27;24:00&#x27;,
-                    errorMessage: &#x27;Du kan inte fylla i en tid överstigande 24 timmar.&#x27;,
-                    parser: [parser],
-                },
-            }&quot;</span>
-            <span class="hljs-attr">:parser</span>=<span class="hljs-string">&quot;parser&quot;</span>
-        &gt;</span>
-            Ange arbetstid
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ formatDescriptionClass }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;formatDescriptionClass&quot;</span>&gt;</span>(tt:mm)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">x-time-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-            Värde: {{ time }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-            Renskrivet värde: {{ userFriendlyValue }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-            Värde i timmar: {{ timeInHours }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-            Värde i objektnotation: {{ timeAsObject }}.
-        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">XTimeTextField</span>,
     forgivingParseTimeToNumber,
@@ -477,6 +444,37 @@ Exempel:</p>
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">x-time-text-field</span>
+            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;time&quot;</span>
+            <span class="hljs-attr">v-validation.required.hoursMinutes.maxTime</span>=<span class="hljs-string">&quot;{
+                hoursMinutes: {
+                    errorMessage: &#x27;Du har skrivit in ett felaktigt tidformat.&#x27;,
+                    parser: [parser],
+                },
+                maxTime: {
+                    maxTime: &#x27;24:00&#x27;,
+                    errorMessage: &#x27;Du kan inte fylla i en tid överstigande 24 timmar.&#x27;,
+                    parser: [parser],
+                },
+            }&quot;</span>
+            <span class="hljs-attr">:parser</span>=<span class="hljs-string">&quot;parser&quot;</span>
+        &gt;</span>
+            Ange arbetstid
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ formatDescriptionClass }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;formatDescriptionClass&quot;</span>&gt;</span>(tt:mm)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">x-time-text-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+            Värde: {{ time }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Renskrivet värde: {{ userFriendlyValue }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Värde i timmar: {{ timeInHours }}.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Värde i objektnotation: {{ timeAsObject }}.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -487,9 +485,15 @@ Exempel:</p>
             </div>
 
             <footer>
-                <!-- prettier-ignore --><div class="footer">
-    <!-- prettier-ignore -->
-    
+                <!-- prettier-ignore --><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="../changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content">
+        <!-- prettier-ignore -->
+        
+    </div>
 </div>
 </footer>
         </div>
@@ -569,10 +573,10 @@ Exempel:</p>
         <!-- prettier-ignore -->
         <!-- prettier-ignore -->
         <script
-            src="../assets/main-f57e73.js"
+            src="../assets/main-4e017a.js"
             type="module"
             crossorigin
-            integrity="sha384-FGs3BktAZXSgQlpWrETLnee/3WRZXyD0W3/9XAYQFX3pn+sACjYZ4tFXI8+mWKtk"
+            integrity="sha384-ia5lk+4uQSceM2537Ee6lK2HLAd4V28wnHMdbltvcp7QX8dAs6CuXu8zYGaY3RDs"
             
         ></script>
     </body>
