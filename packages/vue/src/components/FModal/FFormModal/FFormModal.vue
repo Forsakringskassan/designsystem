@@ -5,7 +5,7 @@ import FModal from "../FModal.vue";
 import { FValidationForm, type FValidationFormCallback } from "../../FValidationForm";
 import { TranslationMixin } from "../../../plugins/translation";
 import { sizes } from "../sizes";
-import { FModalButton, FModalButtonDescriptor } from "../modal-button";
+import { FModalButton, FModalButtonDescriptor, prepareButtonList } from "../modal-button";
 
 export default defineComponent({
     name: "FFormModal",
@@ -137,14 +137,7 @@ export default defineComponent({
     },
     computed: {
         preparedButtons(): FModalButton[] {
-            return this.buttons.map((button) => ({
-                label: button.label,
-                screenreader: button.screenreader,
-                event: button.event ?? "dismiss",
-                reason: button.reason ?? button.event ?? "dismiss",
-                classlist: ["button", `button--${button.type ?? "secondary"}`],
-                buttonType: button.submitButton ? "submit" : "button",
-            }));
+            return prepareButtonList(this.buttons);
         },
     },
     methods: {
