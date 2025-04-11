@@ -1,6 +1,13 @@
 name: PR Changelog
+
 on:
     pull_request:
+        branches:
+            - main
+            - "releases/**"
+
+permissions:
+    pull-requests: write
 
 jobs:
     pr-changelog:
