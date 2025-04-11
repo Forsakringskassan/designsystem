@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorDisabled.vue:FFileSelectorDisabled-0954c4.js
+// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorDisabled.vue:FFileSelectorDisabled-121bb1.js
 import { defineComponent } from "vue";
 import { FFileSelector } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -51,7 +51,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-0954c4"
+  selector: "#example-121bb1"
 });
 export {
   render

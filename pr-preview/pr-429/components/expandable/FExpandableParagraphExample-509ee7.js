@@ -26,13 +26,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FExpandablePanel/examples/FExpandablePanelExample.vue:FExpandablePanelExample-2d7338.js
+// virtual-entry:virtual:packages/vue/src/components/FExpandableParagraph/examples/FExpandableParagraphExample.vue:FExpandableParagraphExample-509ee7.js
 import { defineComponent } from "vue";
-import { FExpandablePanel } from "@fkui/vue";
+import { FExpandableParagraph } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "FExpandablePanelExample",
-  components: { FExpandablePanel },
+  name: "FExpandableParagraphExample",
+  components: { FExpandableParagraph },
   data() {
     return {
       expanded: false,
@@ -46,16 +46,23 @@ var exampleComponent = defineComponent({
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_expandable_panel = _resolveComponent("f-expandable-panel");
-  return _openBlock(), _createBlock(_component_f_expandable_panel, {
+  const _component_f_expandable_paragraph = _resolveComponent("f-expandable-paragraph");
+  return _openBlock(), _createBlock(_component_f_expandable_paragraph, {
     expanded: _ctx.expanded,
+    "header-tag": "span",
     onToggle: _ctx.onToggle
   }, {
     title: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Titel ")
+      _createTextVNode(" Titel (span) ")
     ])),
     default: _withCtx(() => _cache[1] || (_cache[1] = [
-      _createTextVNode(" Inneh\xE5ll "),
+      _createElementVNode(
+        "span",
+        null,
+        " Inneh\xE5ll ",
+        -1
+        /* HOISTED */
+      ),
       _createElementVNode(
         "p",
         null,
@@ -77,7 +84,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-2d7338"
+  selector: "#example-509ee7"
 });
 export {
   render
