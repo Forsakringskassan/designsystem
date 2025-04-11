@@ -71,11 +71,18 @@ async function onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>
 <template>
     <div :id :class="cardClass" @validity="onValidity">
         <div v-if="hasHeaderSlot" class="card__header">
-            <!--@slot Slot for the title. -->
+            <!--
+            @slot Slot for the title.
+            @binding {string} headingSlotClass CSS class for styling the header label.
+            -->
             <slot name="header" v-bind="{ headingSlotClass: 'card__header-label' }"></slot>
         </div>
 
-        <!--@slot Slot for displaying error message. -->
+        <!--
+        @slot Slot for displaying error message.
+        @binding {boolean} hasError Indicates whether a validation error is present.
+        @binding {string} validationMessage Descriptive validation error message for current error.
+        -->
         <slot name="error-message" v-bind="{ hasError, validationMessage }">
             <template v-if="hasError">
                 <i-flex gap="1x" class="card__error-message">
@@ -91,7 +98,11 @@ async function onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>
         </div>
 
         <div v-if="hasFooterSlot" class="card__footer">
-            <!--@slot Slot the footer content, i.e. buttons. -->
+            <!--
+            @slot Slot the footer content, i.e. buttons.
+            @binding {boolean} hasError Indicates whether a validation error is present.
+            @binding {string} validationMessage Descriptive validation error message for current error.
+            -->
             <slot name="footer" v-bind="{ hasError, validationMessage }"></slot>
         </div>
     </div>
