@@ -45,9 +45,11 @@ const rows = [
         <template #default="{ row }">
             <f-table-column name="compensation" title="Ersättning"> {{ row.name }} </f-table-column>
             <f-table-column name="id" title="Id" shrink> {{ row.id }} </f-table-column>
-            <f-table-column name="date" title="Datum" type="date"> {{ row.date }} </f-table-column>
+            <f-table-column name="date" title="Datum" type="date">
+                <span v-format:date="row.date"></span>
+            </f-table-column>
             <f-table-column name="amount" title="Summa" type="numeric">
-                {{ row.sum }} kronor
+                <span v-format:number="row.sum"></span> kronor
             </f-table-column>
         </template>
     </f-interactive-table>

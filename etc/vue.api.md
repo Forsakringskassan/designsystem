@@ -9093,6 +9093,9 @@ formatter: FormatFunction<string>;
 // @public (undocumented)
 export type FormatFunction<TModel> = (modelValue: TModel) => string | undefined;
 
+// @public
+export const FormatPlugin: Plugin_2;
+
 // @public (undocumented)
 export interface FormErrorList extends ErrorItem {
     // (undocumented)

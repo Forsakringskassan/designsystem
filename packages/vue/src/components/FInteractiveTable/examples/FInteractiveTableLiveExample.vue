@@ -218,7 +218,7 @@ export default defineComponent({
                             type="text"
                             expand
                         >
-                            {{ row.start }}
+                            <span v-format:date>{{ row.start }}</span>
                         </f-table-column>
                         <f-table-column
                             name="end"
@@ -226,7 +226,7 @@ export default defineComponent({
                             ${this.rowDescription}
                             type="text"
                         >
-                            {{ row.end }}
+                            <span v-format:date>{{ row.end }}</span>
                         </f-table-column>
                         <f-table-column name="antal" title="Antal dagar" type="numeric">
                             {{ row.antal }}
