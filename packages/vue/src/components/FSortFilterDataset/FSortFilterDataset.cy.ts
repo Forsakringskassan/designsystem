@@ -213,6 +213,14 @@ describe("filter", () => {
         assertTable(["aba"], COLUMN_TEXT);
         assertTable(["2021"], COLUMN_YEAR);
     });
+
+    it("should filter on attributes not in sortableAttributes", () => {
+        cy.mount(TestComponent);
+        // Filter by id 4
+        sortFilterDataset.textField.input().type("4");
+        assertTable(["bbb"], COLUMN_TEXT);
+        assertTable(["2023"], COLUMN_YEAR);
+    });
 });
 
 describe("sort & filter in combination", () => {

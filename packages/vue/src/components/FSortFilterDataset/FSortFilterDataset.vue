@@ -129,7 +129,7 @@ const sortOrders = computed((): SortOrder[] => {
 });
 
 const filterAttributes = computed(() => {
-    return Object.keys(props.sortableAttributes);
+    return [...new Set(props.data.flatMap((obj) => Object.keys(obj as object)))];
 });
 
 provide("sort", (attribute: string, ascending: boolean) => {
