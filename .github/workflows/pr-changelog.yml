@@ -6,6 +6,9 @@ on:
             - main
             - "releases/**"
 
+permissions:
+    pull-requests: write
+
 jobs:
     pr-changelog:
         runs-on: ubuntu-latest
