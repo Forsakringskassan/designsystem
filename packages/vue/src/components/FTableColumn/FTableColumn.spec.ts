@@ -1,3 +1,4 @@
+import { provide } from "vue";
 import { mount, VueWrapper } from "@vue/test-utils";
 import FTableColumn from "./FTableColumn.vue";
 import "html-validate/jest";
@@ -47,131 +48,6 @@ describe("should set type class for", () => {
         });
         await wrapper.vm.$nextTick();
         expect(wrapper.classes()).toContain(className);
-    });
-});
-
-it("should register when mounted", async () => {
-    expect.assertions(1);
-    const addColumn = jest.fn();
-    const mockColumn = {
-        name: "mockColumn",
-        title: "Mock column",
-        description: "My fancy column",
-        type: "numeric",
-        shrink: true,
-    };
-    const wrapper = createWrapper({
-        props: {
-            ...mockColumn,
-        },
-        provide: {
-            addColumn,
-        },
-    });
-    await wrapper.vm.$nextTick();
-    expect(addColumn).toHaveBeenCalledWith({
-        id: "column-vue-element-0001",
-        name: "mockColumn",
-        title: "Mock column",
-        description: "My fancy column",
-        size: FTableColumnSize.SHRINK,
-        type: "numeric",
-        visible: true,
-        sortable: false,
-        sort: FTableColumnSort.UNSORTED,
-    });
-});
-
-describe("column sizes", () => {
-    afterEach(() => {
-        jest.restoreAllMocks();
-    });
-
-    it("should default to size expanded", async () => {
-        expect.assertions(1);
-        const addColumn = jest.fn();
-        const mockColumn = {};
-        const wrapper = createWrapper({
-            props: {
-                ...mockColumn,
-            },
-            provide: {
-                addColumn,
-            },
-        });
-        await wrapper.vm.$nextTick();
-        expect(addColumn).toHaveBeenCalledWith(
-            expect.objectContaining({
-                size: FTableColumnSize.EXPAND,
-            }),
-        );
-    });
-
-    it("should set size to expanded when expand is enabled", async () => {
-        expect.assertions(1);
-        const addColumn = jest.fn();
-        const mockColumn = {
-            expand: true,
-        };
-        const wrapper = createWrapper({
-            props: {
-                ...mockColumn,
-            },
-            provide: {
-                addColumn,
-            },
-        });
-        await wrapper.vm.$nextTick();
-        expect(addColumn).toHaveBeenCalledWith(
-            expect.objectContaining({
-                size: FTableColumnSize.EXPAND,
-            }),
-        );
-    });
-
-    it("should set size to shrink when shrink is enabled", async () => {
-        expect.assertions(1);
-        const addColumn = jest.fn();
-        const mockColumn = {
-            shrink: true,
-        };
-        const wrapper = createWrapper({
-            props: {
-                ...mockColumn,
-            },
-            provide: {
-                addColumn,
-            },
-        });
-        await wrapper.vm.$nextTick();
-        expect(addColumn).toHaveBeenCalledWith(
-            expect.objectContaining({
-                size: FTableColumnSize.SHRINK,
-            }),
-        );
-    });
-
-    it("should throw error if both shrink and expand is enabled at the same time", async () => {
-        expect.assertions(1);
-        /* prevent vue from dumping the error on stdout */
-        jest.spyOn(console, "error").mockImplementation(() => undefined);
-        const addColumn = jest.fn();
-        const mockColumn = {
-            expand: true,
-            shrink: true,
-        };
-        expect(() => {
-            createWrapper({
-                props: {
-                    ...mockColumn,
-                },
-                provide: {
-                    addColumn,
-                },
-            });
-        }).toThrowErrorMatchingInlineSnapshot(
-            `"Table cannot have both shrink and expand enabled at the same time"`,
-        );
     });
 });
 
@@ -226,17 +102,210 @@ it("should not render any content unless renderColumns is enabled", async () => 
     expect(wrapper.find("*").exists()).toBeFalsy();
 });
 
-describe("html-validate", () => {
-    it("should require name attribute", () => {
-        expect.assertions(2);
-        expect("<f-table-column></f-table-column>").not.toHTMLValidate({
-            message: '<f-table-column> is missing required "name" attribute',
-        });
-        expect('<f-table-column name=""></f-table-column>').not.toHTMLValidate({
-            message: 'Attribute "name" has invalid value ""',
+describe("when in `<thead>`", () => {
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
+
+    it("should not render", async () => {
+        expect.assertions(1);
+        const TestComponent = {
+            components: { FTableColumn },
+            template: /* HTML */ `
+                <table>
+                    <thead>
+                        <tr>
+                            <f-table-column
+                                title="Mock column"
+                            ></f-table-column>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            setup() {
+                provide("addColumn", jest.fn());
+                provide("setVisibilityColumn", jest.fn());
+                provide("renderColumns", true);
+            },
+        };
+        const wrapper = mount(TestComponent);
+        await wrapper.vm.$nextTick();
+        expect(wrapper.element.querySelector("tr")).toMatchInlineSnapshot(`
+            <tr>
+              <!--v-if-->
+            </tr>
+        `);
+    });
+
+    it("should register when mounted", async () => {
+        expect.assertions(1);
+        const addColumn = jest.fn();
+        const TestComponent = {
+            components: { FTableColumn },
+            template: /* HTML */ `
+                <table>
+                    <thead>
+                        <tr>
+                            <f-table-column
+                                name="mock"
+                                title="Mock column"
+                                description="My fancy column"
+                                type="numeric"
+                                shrink
+                            ></f-table-column>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            setup() {
+                provide("addColumn", addColumn);
+                provide("setVisibilityColumn", jest.fn());
+            },
+        };
+        const wrapper = mount(TestComponent);
+
+        await wrapper.vm.$nextTick();
+        expect(addColumn).toHaveBeenCalledWith({
+            id: "column-vue-element-0001",
+            name: "mock",
+            title: "Mock column",
+            description: "My fancy column",
+            size: FTableColumnSize.SHRINK,
+            type: "numeric",
+            visible: true,
+            sortable: false,
+            sort: FTableColumnSort.UNSORTED,
         });
     });
 
+    it("should default to size expanded", async () => {
+        expect.assertions(1);
+        const addColumn = jest.fn();
+        const TestComponent = {
+            components: { FTableColumn },
+            template: /* HTML */ `
+                <table>
+                    <thead>
+                        <tr>
+                            <f-table-column
+                                title="Mock column"
+                            ></f-table-column>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            setup() {
+                provide("addColumn", addColumn);
+                provide("setVisibilityColumn", jest.fn());
+            },
+        };
+        const wrapper = mount(TestComponent);
+
+        await wrapper.vm.$nextTick();
+        expect(addColumn).toHaveBeenCalledWith(
+            expect.objectContaining({
+                size: FTableColumnSize.EXPAND,
+            }),
+        );
+    });
+
+    it("should set size to expanded when expand is enabled", async () => {
+        expect.assertions(1);
+        const addColumn = jest.fn();
+        const TestComponent = {
+            components: { FTableColumn },
+            template: /* HTML */ `
+                <table>
+                    <thead>
+                        <tr>
+                            <f-table-column
+                                title="Mock column"
+                                expand
+                            ></f-table-column>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            setup() {
+                provide("addColumn", addColumn);
+                provide("setVisibilityColumn", jest.fn());
+            },
+        };
+        const wrapper = mount(TestComponent);
+
+        await wrapper.vm.$nextTick();
+        expect(addColumn).toHaveBeenCalledWith(
+            expect.objectContaining({
+                size: FTableColumnSize.EXPAND,
+            }),
+        );
+    });
+
+    it("should set size to shrink when shrink is enabled", async () => {
+        expect.assertions(1);
+        const addColumn = jest.fn();
+        const TestComponent = {
+            components: { FTableColumn },
+            template: /* HTML */ `
+                <table>
+                    <thead>
+                        <tr>
+                            <f-table-column
+                                title="Mock"
+                                shrink
+                            ></f-table-column>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            setup() {
+                provide("addColumn", addColumn);
+                provide("setVisibilityColumn", jest.fn());
+            },
+        };
+        const wrapper = mount(TestComponent);
+
+        await wrapper.vm.$nextTick();
+        expect(addColumn).toHaveBeenCalledWith(
+            expect.objectContaining({
+                size: FTableColumnSize.SHRINK,
+            }),
+        );
+    });
+
+    it("should throw error if both shrink and expand is enabled at the same time", async () => {
+        expect.assertions(1);
+        /* prevent vue from dumping the error on stdout */
+        jest.spyOn(console, "error").mockImplementation(() => undefined);
+        const TestComponent = {
+            components: { FTableColumn },
+            template: /* HTML */ `
+                <table>
+                    <thead>
+                        <tr>
+                            <f-table-column
+                                title="Mock"
+                                shrink
+                                expand
+                            ></f-table-column>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            setup() {
+                provide("addColumn", jest.fn());
+                provide("setVisibilityColumn", jest.fn());
+            },
+        };
+        expect(() => {
+            mount(TestComponent);
+        }).toThrowErrorMatchingInlineSnapshot(
+            `"Table cannot have both shrink and expand enabled at the same time"`,
+        );
+    });
+});
+
+describe("html-validate", () => {
     it("should require title attribute", () => {
         expect.assertions(2);
         expect("<f-table-column></f-table-column>").not.toHTMLValidate({

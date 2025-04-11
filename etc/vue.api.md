@@ -3401,6 +3401,9 @@ export const FDataTable: <T extends object>(__VLS_props: NonNullable<Awaited<typ
     slots: {
         caption?(_: {}): any;
         default?(_: {
+            row: {};
+        }): any;
+        default?(_: {
             row: T;
         }): any;
         default?(_: {
@@ -6703,19 +6706,22 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
     slots: {
         'row-description'?(_: {}): any;
         caption?(_: {}): any;
+        default?(_: {
+            row: {};
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
+        default?(_: {
+            row: T;
+        }): any;
         'checkbox-description'?(_: {
-            row: T;
-        }): any;
-        default?(_: {
-            row: T;
-        }): any;
-        default?(_: {
-            row: T;
-        }): any;
-        default?(_: {
-            row: T;
-        }): any;
-        default?(_: {
             row: T;
         }): any;
         expandable?(_: {
@@ -12685,7 +12691,7 @@ export interface FTableColumnData {
     // (undocumented)
     id: string;
     // (undocumented)
-    name: string;
+    name?: string;
     // (undocumented)
     size: FTableColumnSize;
     // (undocumented)

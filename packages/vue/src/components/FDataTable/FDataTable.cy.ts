@@ -17,7 +17,6 @@ describe("density", () => {
                         <f-table-column
                             v-for="column in columns"
                             :key="column.id"
-                            :name="column.id"
                             title="Kolumnrubrik"
                             type="text"
                         >

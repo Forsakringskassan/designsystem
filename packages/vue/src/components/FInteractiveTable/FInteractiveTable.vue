@@ -460,7 +460,12 @@ function onClickColumnHeader(column: FTableColumnData): void {
     if (!column.sortable) {
         return;
     }
+
     let columnName = column.name;
+    if (!columnName) {
+        throw new Error("`FTableColumn` must have a unique `name` when used with `FSortFilterDataset`");
+    }
+
     if (column.sort === FTableColumnSort.DESCENDING) {
         columnName = "";
         column.sort = FTableColumnSort.UNSORTED;
@@ -528,6 +533,8 @@ function setActiveRow(row: T | undefined): void {
             </colgroup>
             <thead>
                 <tr class="table__row">
+                    <slot v-bind="{ row: {} }" />
+
                     <th v-if="isExpandableTable" scope="col">
                         <span class="sr-only">{{ $t("fkui.interactive-table.select", "Expandera") }}</span>
                     </th>
