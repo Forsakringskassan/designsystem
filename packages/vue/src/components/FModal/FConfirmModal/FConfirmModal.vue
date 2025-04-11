@@ -4,6 +4,7 @@ import FModal from "../FModal.vue";
 import { sizes } from "../sizes";
 
 import { FModalButton, FModalButtonDescriptor, prepareButtonList } from "../modal-button";
+import { config, FKUIConfigButtonOrder } from "../../../config";
 
 const defaultButtons: FModalButtonDescriptor[] = [
     { label: "Primärknapp", event: "confirm", type: "primary" },
@@ -95,7 +96,10 @@ export default defineComponent({
     emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
     computed: {
         preparedButtons(): FModalButton[] {
-            return prepareButtonList(this.buttons);
+            const preparedButtonList = prepareButtonList(this.buttons);
+            return config.buttonOrder === FKUIConfigButtonOrder.RIGHT_TO_LEFT
+                ? preparedButtonList.reverse()
+                : preparedButtonList;
         },
     },
     methods: {
