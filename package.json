@@ -119,7 +119,7 @@
     "html-validate-vue": "7.1.5",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
-    "lerna": "8.2.1",
+    "lerna": "8.2.2",
     "lint-staged": "15.5.0",
     "mocha-junit-reporter": "2.2.1",
     "mocha-multi-reporters": "1.5.1",
