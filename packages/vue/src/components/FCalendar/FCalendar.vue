@@ -88,7 +88,7 @@ export default defineComponent({
                 <!--
                 @slot Slot for calendar day.
                 @binding {FDate} date The date object for the current day.
-                @binding {boolean} isFocused Indicates whether the current day is focused.
+                @binding {boolean} is-focused Indicates whether the current day is focused.
                 -->
                 <slot :date="date" :is-focused="focused"></slot>
             </template>

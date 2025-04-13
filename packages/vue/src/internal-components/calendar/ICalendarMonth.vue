@@ -131,7 +131,11 @@ export default defineComponent({
                 @click.stop.prevent="onClickDay(date)"
                 @keydown="onKeydownDay(date, $event)"
             >
-                <!-- @slot Slot for rendering of day content. -->
+                <!--
+                    @slot Slot for rendering of day content.
+                    @binding {FDate} date The date object for the current day.
+                    @binding {boolean} is-focused Indicates whether the current day is focused.
+                -->
                 <slot :date="date" :is-focused="isDayFocused(date)"></slot>
             </div>
         </template>
