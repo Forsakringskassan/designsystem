@@ -19,7 +19,7 @@ export class FWizardStepHeaderPageobject implements BasePageObject {
         this.el = () => cy.get(this.selector);
 
         this.successIcon = () =>
-            cy.get(`${this.selector} .icon-stack .f-icon-success`);
+            cy.get(`${this.selector} .wizard-step__circle .f-icon-success`);
         this.stepNumber = () =>
             cy.get(`${this.selector} [data-test="step-number"]`).invoke("text");
         this.stepOf = () =>
