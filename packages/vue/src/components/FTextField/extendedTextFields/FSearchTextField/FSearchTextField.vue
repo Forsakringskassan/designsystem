@@ -112,8 +112,8 @@ export default defineComponent({
             <template #description="{ descriptionClass, formatDescriptionClass }">
                 <!--
                      @slot Optional slot for description. See {@link FLabel} for details.
-                     @binding {string[]} descriptionClass CSS classes for primary description content.
-                     @binding {string[]} formatDescriptionClass CSS classes for format description.
+                     @binding {string[]} description-class CSS classes for primary description content.
+                     @binding {string[]} format-description-class CSS classes for format description.
                 -->
                 <slot name="description" :description-class :format-description-class></slot>
             </template>
