@@ -4,19 +4,19 @@
 $WIZARD_STEP_SELECTOR: ".wizard-step" !default;
 
 /* Selectors */
-$icon-stack-selector: ".icon-stack" !default;
-$icon-circle-selector: ".icon.f-icon-circle" !default;
 $icon-success-selector: ".icon.f-icon-success" !default;
-$icon-number-selector: "#{$icon-stack-selector} div" !default;
-$title-placeholder-selector: ".iflex--grow" !default;
 $header-selector: "#{$WIZARD_STEP_SELECTOR}__header" !default;
 $title-selector: "#{$header-selector}__title" !default;
 $anchor-selector: "#{$title-selector} .anchor" !default;
-$title-container-selector: "#{$title-selector}-container";
-$line-adjustment-selector: "#{$header-selector}__line-adjustment" !default;
-$step-of-selector: "#{$header-selector}__step-of" !default;
-$line-up-selector: "#{$header-selector}__line-up" !default;
-$line-down-selector: "#{$header-selector}__line-down" !default;
+$step-of-selector: "#{$WIZARD_STEP_SELECTOR}__step-of" !default;
+$line-up-selector: "#{$WIZARD_STEP_SELECTOR}__line-up" !default;
+$line-down-selector: "#{$WIZARD_STEP_SELECTOR}__line-down" !default;
+$icon-line-down-selector: "#{$WIZARD_STEP_SELECTOR}__icon-container__line-down" !default;
+$icon-container-selector: "#{$WIZARD_STEP_SELECTOR}__icon-container" !default;
+$circle-selector: "#{$WIZARD_STEP_SELECTOR}__icon-container__circle" !default;
+$number-selector: "#{$WIZARD_STEP_SELECTOR}__icon-container__number" !default;
+$form-body-selector: "#{$WIZARD_STEP_SELECTOR}-body" !default;
+$form-border-container: "#{$form-body-selector}__border-container" !default;
 
 /* position adjustments for lines */
 
@@ -24,63 +24,75 @@ $line-down-selector: "#{$header-selector}__line-down" !default;
 
 $line-gap-to-circle: 4px;
 $line-width: 2px;
-$line-center: 14px;
-$line-down-adjustment-up: #{-7 + $line-gap-to-circle};
-$line-down-length: 13px;
-$line-up-length: 20px;
-$line-up-adjustment-down: #{$line-gap-to-circle};
-$line-desktop-adjustment-up: #{$line-down-adjustment-up};
-$line-desktop-adjustment-down: #{$line-gap-to-circle * -2};
-$line-desktop-push-content-right: 22px;
-$line-desktop-align-line: 4px;
-$line-desktop-padding-top: 1px;
 $icon-size: 30px;
 
 #{$WIZARD_STEP_SELECTOR} {
+    display: grid;
+    grid-template:
+        "wizard-step__line-up wizard-step__step-of" min-content
+        "wizard-step__icon-container wizard-step__header" min-content
+        "wizard-step__content wizard-step__content" min-content
+        / min-content 1fr;
+    gap: 0 0.5rem;
+
+    &:first-of-type {
+        #{$line-up-selector} {
+            border: 0;
+        }
+    }
+
+    &:last-of-type {
+        #{$line-down-selector},
+        #{$icon-line-down-selector} {
+            border: 0;
+        }
+    }
+
     #{$title-selector} {
         font-size: 1.125rem;
-        margin-top: 0;
-        margin-bottom: 0;
+        margin-top: 2px;
+        margin-bottom: 20px;
     }
 
-    #{$title-container-selector} {
+    #{$icon-container-selector} {
+        grid-area: wizard-step__icon-container;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #{$circle-selector} {
+        width: $icon-size;
         height: $icon-size;
+        border-radius: 50%;
+        border: 2px solid $wizardstep-circle-color-border;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-align: center;
+        transition:
+            background-color 400ms ease-out,
+            border-color 400ms ease-out,
+            opacity 400ms ease-out;
     }
 
-    #{$line-adjustment-selector} {
-        height: calc(#{$line-down-length} + #{$line-gap-to-circle});
+    #{$form-border-container} {
+        @include core.breakpoint-down(sm) {
+            display: none;
+        }
+
+        #{$line-down-selector} {
+            margin-top: 0;
+        }
+    }
+
+    #{$icon-success-selector} {
+        display: none;
     }
 
     #{$header-selector} {
-        margin-left: -10px;
-
-        #{$icon-stack-selector} {
-            display: block;
-            width: $icon-size;
-            height: $icon-size;
-            margin-right: 8px;
-        }
-
-        #{$icon-number-selector} {
-            width: 100%;
-            text-align: center;
-            font-size: 20px;
-            position: absolute;
-            font-weight: bold;
-        }
-
-        #{$icon-circle-selector} {
-            width: $icon-size;
-            height: $icon-size;
-            transition:
-                color 400ms ease-out,
-                fill 400ms ease-out,
-                opacity 400ms ease-out;
-        }
-
-        #{$icon-success-selector} {
-            display: none;
-        }
+        grid-area: wizard-step__header;
     }
 
     #{$step-of-selector} {
@@ -89,88 +101,72 @@ $icon-size: 30px;
         font-size: 1rem;
     }
 
-    #{$line-down-selector} {
-        position: relative;
-        margin-bottom: $line-gap-to-circle;
-        margin-left: #{$line-center};
-        height: #{$line-down-length};
+    #{$line-down-selector},
+    #{$icon-line-down-selector},
+    #{$line-up-selector} {
+        border-left: $line-width solid $wizardstep-line-color;
+        margin-left: 14px;
+    }
+
+    #{$icon-line-down-selector} {
         margin-top: $line-gap-to-circle;
-        width: #{$line-width};
-        background-color: $wizardstep-line-color;
+    }
+
+    #{$line-down-selector} {
+        grid-area: wizard-step__line-down;
+    }
+
+    .wizard-step__content {
+        margin-left: 0.5rem;
+        grid-area: wizard-step__content;
     }
 
     #{$line-up-selector} {
-        margin-left: #{$line-center};
-        height: #{$line-up-length};
-        width: #{$line-width};
-        margin-top: #{$line-gap-to-circle};
-        margin-bottom: #{$line-up-adjustment-down};
-        background-color: $wizardstep-line-color;
+        margin-bottom: $line-gap-to-circle;
+        grid-area: wizard-step__line-up;
     }
 
-    @media (forced-colors: active) {
-        #{$line-up-selector,
-        $line-down-selector} {
-            background-color: CanvasText;
-        }
-    }
-    @include core.breakpoint-up(md) {
+    &--open + &--pending {
         #{$line-up-selector} {
-            margin-bottom: $line-gap-to-circle;
-        }
-    }
-    @include core.breakpoint-up(md) {
-        &__connector {
-            border-left: #{$line-width} solid $wizardstep-line-color;
-            padding-left: #{$line-desktop-push-content-right};
-            margin-top: #{$line-desktop-adjustment-up};
-            margin-left: #{$line-desktop-align-line};
-            margin-bottom: #{$line-desktop-adjustment-down};
-            padding-top: #{$line-desktop-padding-top};
+            padding-top: 20px;
+            margin-top: -0.5rem;
         }
     }
 
-    &--open #{$header-selector} {
+    #{$icon-line-down-selector} {
+        flex: 1;
+    }
+
+    @include core.breakpoint-up(md) {
+        grid-template:
+            "wizard-step__line-up wizard-step__step-of" min-content
+            "wizard-step__icon-container wizard-step__header" min-content
+            "wizard-step__line-down wizard-step__content" min-content
+            / min-content 1fr;
+
+        &--open + &--pending {
+            #{$line-up-selector} {
+                margin-top: 0;
+                padding-top: 0;
+            }
+        }
+
+        .wizard-step__content {
+            margin-left: 0;
+        }
+    }
+
+    &--open {
         #{$title-selector} {
             color: $wizardstep-heading-color-default;
-        }
-
-        #{$icon-circle-selector} {
-            fill: $wizardstep-circle-color-border;
-            color: $wizardstep-circle-color-background-open;
-        }
-
-        #{$icon-number-selector} {
-            color: var(--f-icon-color-black);
         }
 
         #{$step-of-selector} {
             display: block;
         }
-
-        #{$title-placeholder-selector} {
-            padding-top: 12px;
-        }
-
-        #{$line-up-selector} {
-            height: 35px;
-        }
-
-        #{$line-down-selector} {
-            margin-bottom: 0;
-        }
-
-        @media (forced-colors: active) {
-            #{$icon-circle-selector} {
-                fill: CanvasText; // circle border
-                color: Canvas; // circle background
-            }
-        }
     }
 
-    &--done #{$header-selector} {
-        margin-top: $line-gap-to-circle;
-
+    &--done {
         #{$anchor-selector} {
             color: $wizardstep-heading-color-done;
             text-decoration-color: $wizardstep-heading-color-done;
@@ -184,173 +180,38 @@ $icon-size: 30px;
             text-underline-offset: 0.25em;
         }
 
-        #{$line-up-selector} {
-            display: none;
-        }
-
-        #{$line-down-selector} {
-            margin-bottom: 0;
-        }
-
-        #{$icon-circle-selector} {
-            fill: $wizardstep-circle-color-border-done;
-            color: $wizardstep-circle-color-background-done;
-        }
-
-        #{$icon-number-selector} {
-            display: none;
-        }
-
         #{$icon-success-selector} {
             display: block;
             color: $wizardstep-success-color;
             width: 20px;
-            height: 20px;
-            left: 5px;
-            top: 5px;
+            height: auto;
         }
 
-        #{$line-adjustment-selector} {
-            height: calc(#{$line-down-length} + #{$line-gap-to-circle});
+        #{$circle-selector} {
+            background-color: var(--f-icon-color-wizard-step-done);
+            border-color: var(--f-icon-color-wizard-step-done);
         }
 
-        @media (forced-colors: active) {
-            #{$icon-circle-selector} {
-                fill: CanvasText; // circle border
-                color: Canvas; // circle background
-            }
-
-            #{$icon-success-selector} {
-                color: CanvasText;
-            }
+        #{$number-selector} {
+            display: none;
         }
     }
 
-    &--pending #{$header-selector} {
+    &--pending {
         #{$title-selector} {
             color: var(--f-text-color-discrete);
         }
 
-        #{$icon-number-selector} {
+        #{$circle-selector} {
+            border: 2px solid $wizardstep-circle-color-border;
+            background-color: $wizardstep-circle-color-background-pending;
             color: var(--f-icon-color-discrete);
         }
+    }
 
-        #{$icon-circle-selector} {
-            fill: $wizardstep-circle-color-border;
-            color: $wizardstep-circle-color-background-pending;
+    @media (forced-colors: active) {
+        #{$icon-success-selector} {
+            color: CanvasText;
         }
-
-        #{$title-placeholder-selector} {
-            padding-top: 0;
-        }
-
-        #{$line-adjustment-selector} {
-            height: calc(#{$line-down-length} + (#{$line-gap-to-circle} * 2));
-        }
-
-        @media (forced-colors: active) {
-            #{$icon-circle-selector} {
-                fill: CanvasText; // circle border
-                color: Canvas; // circle background
-            }
-        }
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--pending + #{$WIZARD_STEP_SELECTOR} {
-    #{$line-up-selector} {
-        display: none;
-    }
-    #{$title-placeholder-selector} {
-        padding-top: 0;
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--open:first-child {
-    #{$line-up-selector} {
-        visibility: hidden;
-        height: 1.25rem;
-    }
-    #{$title-placeholder-selector} {
-        padding-top: 0;
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--done:first-child,
-#{$WIZARD_STEP_SELECTOR}--pending:first-child {
-    #{$line-up-selector} {
-        display: none;
-        margin-top: 0;
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--done {
-    @include core.breakpoint-up(md) {
-        .wizard-step__connector {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--pending {
-    @include core.breakpoint-up(md) {
-        .wizard-step__connector {
-            margin-top: -#{$line-gap-to-circle};
-            margin-bottom: $line-gap-to-circle;
-        }
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--done:last-child,
-#{$WIZARD_STEP_SELECTOR}--pending:last-child {
-    @include core.breakpoint-up(md) {
-        .wizard-step__connector {
-            border-left: none;
-        }
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--done:last-child {
-    @include core.breakpoint-up(md) {
-        .wizard-step__connector {
-            border-left: none;
-        }
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}:last-child {
-    #{$line-down-selector} {
-        display: none;
-    }
-
-    &.wizard-step--open {
-        .wizard-step__connector {
-            margin-top: 1rem;
-        }
-    }
-
-    #{$line-adjustment-selector} {
-        display: none;
-    }
-    @include core.breakpoint-up(md) {
-        .wizard-step__connector {
-            border-left: none;
-        }
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--open,
-#{$WIZARD_STEP_SELECTOR}--pending {
-    #{$line-up-selector} {
-        margin-top: -#{$line-gap-to-circle + 3};
-    }
-}
-
-#{$WIZARD_STEP_SELECTOR}--done + #{$WIZARD_STEP_SELECTOR}--pending {
-    margin-top: $line-gap-to-circle;
-
-    #{$line-up-selector} {
-        display: none;
     }
 }
