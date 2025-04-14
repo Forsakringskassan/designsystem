@@ -15,6 +15,7 @@ coverage/
 dist/
 docs/examples/files/
 lib/
+packages/vue/src/@types/vls.d.ts
 public/
 temp/
 tests/e2e/screenshots/

@@ -132,7 +132,7 @@
     "typescript": "5.8.3",
     "vite": "6.2.6",
     "vue": "3.5.13",
-    "vue-tsc": "2.2.0"
+    "vue-tsc": "2.2.8"
   },
   "engines": {
     "node": ">= 20",

@@ -11,3 +11,6 @@ typedoc/
 # pageobject output
 packages/*/pageobject/**/*.d.ts
 packages/*/pageobject/**/*.js
+
+# generated files
+packages/vue/src/@types/vls.d.ts
