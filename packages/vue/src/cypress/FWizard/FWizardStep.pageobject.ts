@@ -28,7 +28,7 @@ export class FWizardStepPageobject implements BasePageObject {
     }
 
     /**
-     * Get the header pagobject in the FWizardStep
+     * Get the header pageobject in the FWizardStep
      */
     public header: FWizardStepHeaderPageobject;
 
@@ -61,6 +61,31 @@ export class FWizardStepPageobject implements BasePageObject {
     }
 
     /**
+     * Get the steps number
+     */
+    public stepNumber(): DefaultCypressChainable {
+        return cy
+            .get(`${this.selector} [data-test="step-number"]`)
+            .invoke("text");
+    }
+
+    /**
+     * Get the title element
+     */
+    public title(): DefaultCypressChainable {
+        return cy
+            .get(`${this.selector} .wizard-step__header__title`)
+            .then((element) => {
+                if (element.children("a").length > 0) {
+                    return cy.get(
+                        `${this.selector} .wizard-step__header__title > a`,
+                    );
+                }
+                return cy.get(`${this.selector} .wizard-step__header__title`);
+            });
+    }
+
+    /**
      * Wait for open animation to finish.
      */
     public waitOnOpen(): void {
@@ -86,9 +111,7 @@ export class FWizardStepPageobject implements BasePageObject {
     public constructor(selector: string) {
         this.selector = selector;
         this.errors = new FErrorListPageObject(`${this.selector} .error-list`);
-        this.header = new FWizardStepHeaderPageobject(
-            `${this.selector} .wizard-step__header`,
-        );
+        this.header = new FWizardStepHeaderPageobject(this.selector);
         this.animateExpand = new IAnimateExpandPageobject(this.selector);
     }
 

@@ -23,6 +23,7 @@ const TestComponent = defineComponent({
                 header-tag="h2"
                 @cancel="onCancel"
                 @completed="onCompleted"
+                :disable-initial-focus="disableInitialFocus"
             >
                 <f-wizard-step title="TITLE_1" key="STEP1">
                     STEP_1_CONTENT
@@ -47,6 +48,10 @@ const TestComponent = defineComponent({
         openStep: {
             type: String,
             required: false,
+        },
+        disableInitialFocus: {
+            type: Boolean,
+            default: false,
         },
     },
     methods: {
@@ -156,7 +161,7 @@ it("should disable buttons when performing animation", () => {
     step1.waitOnOpen();
     step1.continue().click();
 
-    step2.continue().invoke("attr", "data-disabled").should("eq", "true");
+    step1.continue().invoke("attr", "data-disabled").should("eq", "true");
     step2.continue().invoke("attr", "data-disabled").should("eq", "false");
 });
 
@@ -310,7 +315,7 @@ describe("dynamic steps", () => {
         wizard.getStep(0).header.stepOf().should("have.text", "Steg 1 av 4");
         wizard
             .getStep(2)
-            .header.title()
+            .title()
             .should("trimmedText", "Steg 3 av 4 TITLE_2B Inaktivt");
 
         cy.get("#toggle-step-2b").click();
