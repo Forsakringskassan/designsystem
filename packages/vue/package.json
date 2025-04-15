@@ -45,8 +45,9 @@
   ],
   "scripts": {
     "prebuild": "run-s clean",
-    "build": "run-s build:lib build:pageobjects build:dts build:api",
+    "build": "run-s build:lib build:pageobjects build:vls build:dts build:api",
     "build:api": "fk-api-extractor --patch-augmentations api-extractor.*.json",
+    "build:vls": "node generate-global-types.mjs",
     "build:dts": "vue-tsc -b",
     "build:lib": "fk-build-vue-lib",
     "build:pageobjects": "node build-pageobjects.mjs",
@@ -87,6 +88,7 @@
     "@fkui/test-utils": "6.4.0",
     "@fkui/theme-default": "6.4.0",
     "@forsakringskassan/vite-lib-config": "3.6.2",
+    "@vue/language-core": "2.2.8",
     "@vue/test-utils": "2.4.6",
     "cypress": "14.3.0",
     "esbuild": "0.25.2",
