@@ -173,7 +173,7 @@ git commit -m 'fix(fkui-design,fkui-vue): update styling (fixes issue number)'
 
 Du sätter en release som brytande (BREAKING) genom att lägga till orden `BREAKING CHANGE:` i sidfoten följt av en beskrivning av vad som har ändrats.
 Du behöver också informera konsumenten hur hen ska hantera ändringen. <br>
-Texten kommer inkluderas i [CHANGELOG](./CHANGELOG.md).
+Texten kommer inkluderas i {@link changelog CHANGELOG}.
 Du kan också använda ett utropstecken `!` efter type/scope för att visa att en release är brytande.
 
 De olika typerna av ändring (Type) som är tillåtna och vilken release som de genererar visas i tabellen nedan.

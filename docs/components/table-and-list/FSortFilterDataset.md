@@ -47,7 +47,7 @@ Sätt `defaultSortAttribute` till namnet på fältet som ska sorteras samt `defa
 
 ## Lista med datamängdsorterare
 
-Visar hur `FSortFilterDataset` kan användas med [`FList`](../FList).
+Visar hur `FSortFilterDataset` kan användas med {@link FList}.
 
 ```import
 FSortFilterDatasetListExample.vue
