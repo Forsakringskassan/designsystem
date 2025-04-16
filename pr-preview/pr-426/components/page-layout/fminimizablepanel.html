@@ -1045,7 +1045,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/f6d7611cede72929a4934b106e5ac43523e26a74/packages/vue/src/components/FMinimizablePanel/FMinimizablePanel.vue">FMinimizablePanel</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/a46dcb7e5f08fdc3d8956d867889ad10c0a5dde4/packages/vue/src/components/FMinimizablePanel/FMinimizablePanel.vue">FMinimizablePanel</a>
             
         </code>
          
@@ -1075,7 +1075,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Minimerbar panel (FMinimizablePanel) används tillsammans med <a href="./fpagelayout.html">applikationsmallen</a>
-för att ge användaren möjlighet att visa innehåll i normalt läge eller minimerat läge.</p><p class="docs-paragraph">Komponenten har även stöd för att kombineras ihop med <a href="./fresizepane.html">justerbar yta</a>.</p>
+för att ge användaren möjlighet att visa innehåll i öppet läge eller minimerat läge.</p><p class="docs-paragraph">Komponenten har även stöd för att kombineras ihop med <a href="./fresizepane.html">justerbar yta</a>.</p>
             <div
                 id="example-152072"
                 class="code-preview code-preview--default"
@@ -1148,11 +1148,14 @@ för att ge användaren möjlighet att visa innehåll i normalt läge eller mini
 </code></pre>
                 </div>
             </div>
-        <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Komponenten har en <code>default</code>-slot för innehåll.</p><p class="docs-paragraph">In till default-slotten medföljer namn på de native-slots man kan placera innehåll i:
-<code>header</code>, <code>default</code> och <code>footer</code>.</p><p class="docs-paragraph">Även en flagga <code>isOpen</code> passas in till <code>default</code>-slotten, så att konsumenten kan styra
-vad som renderas beroende på om panelen är öppen eller minimerad.</p><p class="docs-paragraph">Native-slot innebär att man som konsument skapar elementet för slotten med attributet <code>slot</code>.</p>
+        <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Använd native slots för att placera innehåll:</p><ul>
+<li><p class="docs-paragraph"><code>header</code></p></li>
+<li><p class="docs-paragraph"><code>default</code></p></li>
+<li><p class="docs-paragraph"><code>footer</code>.</p></li>
+</ul>
+<p class="docs-paragraph">Native slot innebär att du som konsument skapar elementet för sloten med attributet <code>slot</code>.</p><p class="docs-paragraph">Använd flaggan <code>isOpen</code> för att styra vad som renderas beroende på om panelen är öppen eller minimerad.</p>
                 <div
-                    id="example-701de7"
+                    id="example-a93124"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1162,15 +1165,15 @@ vad som renderas beroende på om panelen är öppen eller minimerad.</p><p class
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-minimizable-panel</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ header, footer, content, isOpen }&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isOpen&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>Min rubrik<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>Mitt innehåll<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>Min fot<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>Rubrik<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>Innehåll<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>Fot<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-minimizable-panel</span>&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Ikonen kan bytas ut via <code>icon</code>-slotten.</p>
+            <p class="docs-paragraph">Du kan byta ut ikonen via <code>icon</code>-sloten.</p>
                 <div
                     id="example-82603d"
                     class="code-preview code-preview--default"
@@ -1334,7 +1337,7 @@ eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
                             <p>Content</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>isOpen: boolean</code> <span role="presentation">&mdash;</span> panel state</li><li><code>header: unknown</code></li><li><code>footer: unknown</code></li><li><code>content: unknown</code></li>
+                            <li><code>isOpen: boolean</code> <span role="presentation">&mdash;</span> panel state</li><li><code>header: string</code> <span role="presentation">&mdash;</span> native slot name</li><li><code>footer: string</code> <span role="presentation">&mdash;</span> native slot name</li><li><code>content: string</code> <span role="presentation">&mdash;</span> native slot name</li>
                             </ul>
                             
                         </dd>
@@ -1375,9 +1378,9 @@ eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">add-mini-panel (<a href="https://github.com/Forsakringskassan/designsystem/commits/f6d7611cede72929a4934b106e5ac43523e26a74">f6d7611</a>)<br />
+<div class="footer__right"><div class="version">add-mini-panel (<a href="https://github.com/Forsakringskassan/designsystem/commits/a46dcb7e5f08fdc3d8956d867889ad10c0a5dde4">a46dcb7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/426">PR 426</a><br />
-        2025-04-16 10:43
+        2025-04-16 11:08
 </div>
 <div class="toolbar__item">
     <form id="version">
