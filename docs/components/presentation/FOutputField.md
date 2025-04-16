@@ -7,6 +7,7 @@ component: FOutputField
 
 Dynamiskt presentationsfält används för att presentera information som användaren inte ska kunna redigera och som är dynamisk. Det kan till exempel vara resultatet av en beräkning baserat på inmatade värden eller resultatet av en uppslagning baserat på en interaktion från användaren.
 Komponenten presenterar dynamisk text i ett `<output>`-element.
+Förslagsvis så kombineras komponenten med {@link FormatPlugin} för att formatera resultaten på önskat sätt.
 
 ```import
 FOutputFieldExample.vue
