@@ -20,13 +20,13 @@ jobs:
               run: npm run prettier:check
             - name: ESLint
               if: success() || failure()
-              run: npm run eslint || false
+              run: npm run eslint -- --max-warnings 0 || false
             - name: HTML Validate
               if: success() || failure()
-              run: npm run html-validate || false
+              run: npm run html-validate -- --max-warnings 0 || false
             - name: Stylelint
               if: success() || failure()
-              run: npm run stylelint
+              run: npm run stylelint -- --max-warnings 0
             - name: pnr-scanner
               if: success() || failure()
               run: |

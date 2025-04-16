@@ -399,8 +399,8 @@ export default defineComponent({
                 <template #description="{ descriptionClass, formatDescriptionClass }">
                     <!--
                     @slot Optional slot for description. See {@link FLabel} for details.
-                    @binding {string[]} descriptionClass CSS classes for primary description content.
-                    @binding {string[]} formatDescriptionClass CSS classes for format description.
+                    @binding {string[]} description-class CSS classes for primary description content.
+                    @binding {string[]} format-description-class CSS classes for format description.
                 -->
                     <slot name="description" :description-class :format-description-class>
                         <span v-if="descriptionText" :class="descriptionClass">
@@ -489,7 +489,7 @@ export default defineComponent({
             :options="dropdownOptions"
             :active-option
             :active-option-id
-            :input-node="$refs.input"
+            :input-node="$refs.input as HTMLInputElement"
             @select="onDropdownSelect"
             @close="onDropdownClose"
         ></i-combobox-dropdown>
