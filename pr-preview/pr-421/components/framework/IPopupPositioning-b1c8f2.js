@@ -1999,7 +1999,7 @@ FErrorHandlingApp_default.render = render3;
 FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
 
 // packages/vue/src/plugins/format/formatters.ts
-import { DateFormat, FDate } from "@fkui/date";
+import { DateFormat, FDate as FDate2 } from "@fkui/date";
 import {
   formatNumber as numberFormater,
   parseBankgiro,
@@ -2007,6 +2007,12 @@ import {
   parseOrganisationsnummer,
   parsePersonnummer
 } from "@fkui/logic";
+
+// packages/vue/src/plugins/format/is-number-format.ts
+import { isSet as isSet3 } from "@fkui/logic";
+
+// packages/vue/src/plugins/format/is-date-range.ts
+import { FDate } from "@fkui/date";
 
 // packages/vue/src/components/FModal/sizes.ts
 var sizes = [
