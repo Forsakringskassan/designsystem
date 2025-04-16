@@ -4,52 +4,45 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Validatorer - FK Designsystem</title>
-
-        <!-- prettier-ignore -->
-        <link
+        <title>Validatorer - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-120737.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-IusWRxbEFv97KrDAoXUDrjxs26QwiFGM4uNsNu6tehe9kz8ExiXlBbuU0qMGMn68"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-4ecb6d.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-CC6Vb3lD+/MxRQkRAEekVk7Fo0SZFS6JwkUWKQWZwFuguHLB6tQ0+3tFeeqDSTwr"
+            data-theme="fkui" disabled
         />
 
-        <!-- prettier-ignore -->
-        <script
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-a5c2ba.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../../assets/vendor-fkui-vue-a5c2ba.js": "sha384-2qBBQIeHwEp7NYAe7ys6dix3AK/FbwmOgpKxFSKoYe+7vfvctONnl35dhu4KTKa2",
+    "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
             src="../../assets/bootstrap-956ec3.js"
+            
             crossorigin
             integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
             
-        ></script>
-
-        <!-- prettier-ignore -->
-        <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
+        ></script><script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,17 +82,14 @@
 
         <link
             rel="preload"
-            href="../../search-data-c0e456.json"
+            href="../../search-data-f416bf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LF46wM8JoZsvVD+puNCMk1Yx9OWk8IbcgdbnXDwxC6EByS5JjFmjHO7u4gC6JR56"
+            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
             id="search-data"
         />
     </head>
-    <body>
-        <!-- prettier-ignore -->
-        
-<template id="motd-message">
+    <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
         <span class="icon-stack icon-stack--info">
@@ -139,20 +129,14 @@
 
 
         <div class="layout-wrapper">
-            <header>
-                <!-- prettier-ignore --><div class="page-header__root">
+            <header><div class="page-header__root">
     <div class="page-header">
         <a class="page-header__logo" href="../../index.html">
             <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
         <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
-    <ul class="docs-topnav__list">
-        <!-- prettier-ignore -->
-        
-        
-        
-        <li class="docs-topnav__item ">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
         </li>
         
@@ -191,12 +175,7 @@
                 </svg>
             </button>
             <div class="docs-contextmenu">
-                <ul class="docs-contextmenu__list">
-                    <!-- prettier-ignore -->
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item " style="display: none">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
                     </li>
                     
@@ -243,55 +222,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -299,804 +229,807 @@
 </div>
 </header>
 
-            <div id="primary">
-                <!-- prettier-ignore -->
-<div id="sidenav">
+            <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../fbadge.html"
+            
+            
+            
+            data-path="components/fbadge.html"
             
         >
             Bricka
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../chip.html"
+            
+            
+            
+            data-path="components/chip.html"
             
         >
             Chip
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fdialoguetree.html"
+            
+            
+            
+            data-path="components/fdialoguetree.html"
             
         >
             Dialogträd
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../flabel.html"
+            
+            
+            
+            data-path="components/flabel.html"
             
         >
             Etikett
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Expanderbara ytor</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../expandable/fexpandablepanel.html"
+            
+            
+            
+            data-path="components/expandable/fexpandablepanel.html"
             
         >
             Expanderbar panel
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../expandable/fexpand.html"
+            
+            
+            
+            data-path="components/expandable/fexpand.html"
             
         >
             Expanderbart innehåll
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../expandable/fexpandableparagraph.html"
+            
+            
+            
+            data-path="components/expandable/fexpandableparagraph.html"
             
         >
             Expanderbart stycke
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Filuppladdning</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../file-upload/ffileitem.html"
+            
+            
+            
+            data-path="components/file-upload/ffileitem.html"
             
         >
             Filpresentatör
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../file-upload/ffileselector.html"
+            
+            
+            
+            data-path="components/file-upload/ffileselector.html"
             
         >
             Filväljare
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Gruppera</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../group/ffieldset.html"
+            
+            
+            
+            data-path="components/group/ffieldset.html"
             
         >
             Fältgruppering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../group/"
+            
+            
+            
+            data-path="components/group/"
             
         >
             Komponentgrupp
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../ficon.html"
+            
+            
+            
+            data-path="components/ficon.html"
             
         >
             Ikon
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Inmatning</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../input/ftextfield.html"
+            
+            
+            
+            data-path="components/input/ftextfield.html"
             
         >
             Inmatningsfält
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/fdatepickerfield.html"
+            
+            
+            
+            data-path="components/input/fdatepickerfield.html"
             
         >
             Datumväljare
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/fselectfield.html"
+            
+            
+            
+            data-path="components/input/fselectfield.html"
             
         >
             Dropplista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/ftextareafield.html"
+            
+            
+            
+            data-path="components/input/ftextareafield.html"
             
         >
             Flerradigt inmatningsfält
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/combobox.html"
+            
+            
+            
+            data-path="components/input/combobox.html"
             
         >
             Kombobox
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/fcheckboxfield.html"
+            
+            
+            
+            data-path="components/input/fcheckboxfield.html"
             
         >
             Kryssruta
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/fradiofield.html"
+            
+            
+            
+            data-path="components/input/fradiofield.html"
             
         >
             Radioknapp
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/textfield-specialized.html"
+            
+            
+            
+            data-path="components/input/textfield-specialized.html"
             
         >
             Specialiserade inmatningsfält
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcalendar.html"
+            
+            
+            
+            data-path="components/fcalendar.html"
             
         >
             Kalender
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../button.html"
+            
+            
+            
+            data-path="components/button.html"
             
         >
             Knapp
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcontextmenu.html"
+            
+            
+            
+            data-path="components/fcontextmenu.html"
             
         >
             Kontextmeny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcard.html"
+            
+            
+            
+            data-path="components/fcard.html"
             
         >
             Kort
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Ladda innehåll</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../load/fprogressbar.html"
+            
+            
+            
+            data-path="components/load/fprogressbar.html"
             
         >
             Förloppsindikator
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../load/floader.html"
+            
+            
+            
+            data-path="components/load/floader.html"
             
         >
             Laddningsindikator
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="link ">
+        <a
+            href="../flogo.html"
+            
+            
+            
+            data-path="components/flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><li class="expandable ">
         <details >
             <summary>Länkar</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../links/anchor.html"
+            
+            
+            
+            data-path="components/links/anchor.html"
             
         >
             Länk
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../links/entrypoint.html"
+            
+            
+            
+            data-path="components/links/entrypoint.html"
             
         >
             Startpunkt
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fmessagebox.html"
+            
+            
+            
+            data-path="components/fmessagebox.html"
             
         >
             Meddelanderuta
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Modal</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../modal/fconfirmmodal.html"
+            
+            
+            
+            data-path="components/modal/fconfirmmodal.html"
             
         >
             Bekräftelsemodal
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../modal/fformmodal.html"
+            
+            
+            
+            data-path="components/modal/fformmodal.html"
             
         >
             Formulärsmodal
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../modal/fmodal.html"
+            
+            
+            
+            data-path="components/modal/fmodal.html"
             
         >
             Modal dialogruta
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../foffline.html"
+            
+            
+            
+            data-path="components/foffline.html"
             
         >
             Offline
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Presentationsfält</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../presentation/foutputfield.html"
+            
+            
+            
+            data-path="components/presentation/foutputfield.html"
             
         >
             Presentationsfält - dynamiskt
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../presentation/fstaticfield.html"
+            
+            
+            
+            data-path="components/presentation/fstaticfield.html"
             
         >
             Presentationsfält - statiskt
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Ramverkskomponenter</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../framework/ianimateexpand.html"
+            
+            
+            
+            data-path="components/framework/ianimateexpand.html"
             
         >
             Animerad expandering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iflexitem.html"
+            
+            
+            
+            data-path="components/framework/iflexitem.html"
             
         >
             Flex Item
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iflex.html"
+            
+            
+            
+            data-path="components/framework/iflex.html"
             
         >
             Flexibel positionering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iskiplink.html"
+            
+            
+            
+            data-path="components/framework/iskiplink.html"
             
         >
             Gå till innehåll
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarmonth.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonth.html"
             
         >
             Kalendermånad
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarnavbar.html"
+            
+            
+            
+            data-path="components/framework/icalendarnavbar.html"
             
         >
             Kalendernavigering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarmonthgrid.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonthgrid.html"
             
         >
             Kalenderrutnät
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopup.html"
+            
+            
+            
+            data-path="components/framework/ipopup.html"
             
         >
             Popup
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopupmenu.html"
+            
+            
+            
+            data-path="components/framework/ipopupmenu.html"
             
         >
             Popup-meny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopuperror.html"
+            
+            
+            
+            data-path="components/framework/ipopuperror.html"
             
         >
             PopupError
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Sidlayout</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../page-layout/application-layout.html"
+            
+            
+            
+            data-path="components/page-layout/application-layout.html"
             
         >
             Applikationslayout
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
+        <a
+            href="../page-layout/fpagelayout.html"
+            
+            
+            
+            data-path="components/page-layout/fpagelayout.html"
+            
+        >
+            Applikationsmall
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fresizepane.html"
+            
+            
+            
+            data-path="components/page-layout/fresizepane.html"
+            
+        >
+            Justerbar yta
+        </a>
+    </li><li class="link ">
         <a
             href="../page-layout/fnavigationmenu.html"
+            
+            
+            
+            data-path="components/page-layout/fnavigationmenu.html"
             
         >
             Navigeringsmeny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../page-layout/fpageheader.html"
+            
+            
+            
+            data-path="components/page-layout/fpageheader.html"
             
         >
             Sidhuvud
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fwizard.html"
+            
+            
+            
+            data-path="components/fwizard.html"
             
         >
             Steg för steg-guide
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Tabell och lista</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../table-and-list/table.html"
+            
+            
+            
+            data-path="components/table-and-list/table.html"
             
         >
             Tabell
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/flist.html"
+            
+            
+            
+            data-path="components/table-and-list/flist.html"
             
         >
             Lista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/fcruddataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fcruddataset.html"
             
         >
             Datamängdredigerare
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/fsortfilterdataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fsortfilterdataset.html"
             
         >
             Datamängdsorterare
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../ftooltip.html"
+            
+            
+            
+            data-path="components/ftooltip.html"
             
         >
             Tooltip
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable active">
+    </li><li class="expandable active">
         <details open>
             <summary>Validering</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="./ferrorlist.html"
+            
+            
+            
+            data-path="components/validation/ferrorlist.html"
             
         >
             Fellista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./formatters-and-parsers.html"
+            
+            
+            
+            data-path="components/validation/formatters-and-parsers.html"
             
         >
             Formaterare och parsers
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+    </li><li class="link active">
         <a
             href="./validators.html"
+            
+            
+            
+            data-path="components/validation/validators.html"
             
         >
             Validatorer
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./fvalidationgroup.html"
+            
+            
+            
+            data-path="components/validation/fvalidationgroup.html"
             
         >
             Validering samlad
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./fvalidationform.html"
+            
+            
+            
+            data-path="components/validation/fvalidationform.html"
             
         >
             Valideringsformulär
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --></ol>
+    </li></ol>
 </nav>
-</div>
-
-
-                <!-- prettier-ignore -->
-                <script
-                    src="../../assets/vendor-vue-468cb1.js"
-                    crossorigin
-                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-logic-62a69f.js"
-                    crossorigin
-                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-date-7710bf.js"
-                    crossorigin
-                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
-                    crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
-                ></script>
-                <script
-                    src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
-                    crossorigin
-                    integrity="sha384-nSXnCy3XWIIfbEbIXNEJqSLQAEcC9s8jxUGnIw/HClLMcJP8KJDSvkJw7vxe9PgF"
-                ></script>
-
-                <!-- prettier-ignore --><main>
+</div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">Validatorer</h1>
 
                     
-                    <div id="aside">
-                        <!-- prettier-ignore -->
-<dl>
-    <!-- prettier-ignore -->
-    
-
-    <!-- prettier-ignore -->
-    
-</dl>
+                    <div id="aside"><dl></dl>
 
 
                         
@@ -1124,30 +1057,26 @@
                     </div>
                     
 
-                    <div id="content">
-                        <!-- prettier-ignore -->
-<h2 id="generella_validatorer"><a class="header-anchor" href="#generella_validatorer">Generella validatorer</a></h2><h3 id="identisk_matches"><a class="header-anchor" href="#identisk_matches">Identisk <code>matches</code></a></h3><p>Validatorn kontrollerar att det värde som användaren har fyllt i är identiskt med värdet i ett annat inmatningsfält (referensvärde).</p>
-
+                    <div id="content"><h2 id="generella_validatorer"><a class="header-anchor" href="#generella_validatorer">Generella validatorer</a></h2><h3 id="identisk_matches"><a class="header-anchor" href="#identisk_matches">Identisk <code>matches</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det värde som användaren har fyllt i är identiskt med värdet i ett annat inmatningsfält (referensvärde).</p>
                 <div
                     id="example-30fe57"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="MatchesExample"></div>
+        <div id="example-bd0e55"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MatchesExample-c74304.js"></script>
+        <script type="module" src="./MatchesExample-bd0e55.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod för att jämföra med ett inmatningsfält med <code>id=&quot;reference&quot;</code>:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod för att jämföra med ett inmatningsfält med <code>id=&quot;reference&quot;</code>:</p>
                 <div
                     id="example-37e5bd"
                     class="code-preview code-preview--default"
@@ -1161,8 +1090,7 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Konfiguration:</p>
-
+            <p class="docs-paragraph">Konfiguration:</p>
                 <div
                     id="example-2fda75"
                     class="code-preview code-preview--default"
@@ -1177,34 +1105,31 @@
 }
 </code></pre>
                 </div>
-            <p>Kända buggar:</p>
-<ul>
-<li>Validatorn kraschar om <code>id</code> refererar till ett inmatningsfält som inte finns.</li>
-<li>Validatorn ger alltid ett felmeddelande om <code>id</code> refererar till ett element som inte är ett inmatningsfält.</li>
-<li>Validatorn fungerar inte om referensvärdet uppdateras. Du behöver hantera det manuellt, se <a href="../../guides/validation-and-error-handling/cross-validation.html">korsvalidering</a>.</li>
+            <p class="docs-paragraph">Kända buggar:</p><ul>
+<li><p class="docs-paragraph">Validatorn kraschar om <code>id</code> refererar till ett inmatningsfält som inte finns.</p></li>
+<li><p class="docs-paragraph">Validatorn ger alltid ett felmeddelande om <code>id</code> refererar till ett element som inte är ett inmatningsfält.</p></li>
+<li><p class="docs-paragraph">Validatorn fungerar inte om referensvärdet uppdateras. Du behöver hantera det manuellt, se <a href="../../guides/validation-and-error-handling/cross-validation.html">korsvalidering</a>.</p></li>
 </ul>
-<h3 id="maxlangd_maxlength"><a class="header-anchor" href="#maxlangd_maxlength">Maxlängd <code>maxLength</code></a></h3><p>Validatorn kontrollerar att antalet tecken som fylls i inte överstiger det angivna gränsvärdet.</p>
-
+<h3 id="maxlangd_maxlength"><a class="header-anchor" href="#maxlangd_maxlength">Maxlängd <code>maxLength</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att antalet tecken som fylls i inte överstiger det angivna gränsvärdet.</p>
                 <div
                     id="example-399de9"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="MaxLengthExample"></div>
+        <div id="example-eebf6d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MaxLengthExample-555f2f.js"></script>
+        <script type="module" src="./MaxLengthExample-eebf6d.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod för att sätta en maxlängd på tio tecken:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod för att sätta en maxlängd på tio tecken:</p>
                 <div
                     id="example-6b62ea"
                     class="code-preview code-preview--default"
@@ -1218,37 +1143,33 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MAXLENGTH. Undantag är om validatorn är kombinerad med någon av validatorerna som nämns nedan.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>bankgiro <code>bankgiro</code>: Fyll i bankgironumret.</li>
-<li>organisationsnummer <code>organisationsnummer</code>: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.</li>
-<li>personnummer-format <code>personnummerFormat</code>: Fyll i personnumret med 10 siffror.</li>
-<li>plusgiro <code>plusgiro</code>: Fyll i plusgironumret.</li>
-<li>postnummer <code>postalCode</code>: Fyll i ett postnummer.</li>
+            <p class="docs-paragraph">Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MAXLENGTH. Undantag är om validatorn är kombinerad med någon av validatorerna som nämns nedan.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">bankgiro <code>bankgiro</code>: Fyll i bankgironumret.</p></li>
+<li><p class="docs-paragraph">organisationsnummer <code>organisationsnummer</code>: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.</p></li>
+<li><p class="docs-paragraph">personnummer-format <code>personnummerFormat</code>: Fyll i personnumret med 10 siffror.</p></li>
+<li><p class="docs-paragraph">plusgiro <code>plusgiro</code>: Fyll i plusgironumret.</p></li>
+<li><p class="docs-paragraph">postnummer <code>postalCode</code>: Fyll i ett postnummer.</p></li>
 </ul>
-<h3 id="minlangd_minlength"><a class="header-anchor" href="#minlangd_minlength">Minlängd <code>minLength</code></a></h3><p>Validatorn kontrollerar att antalet tecken som fylls i inte understiger det angivna gränsvärdet.</p>
-
+<h3 id="minlangd_minlength"><a class="header-anchor" href="#minlangd_minlength">Minlängd <code>minLength</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att antalet tecken som fylls i inte understiger det angivna gränsvärdet.</p>
                 <div
                     id="example-868d3d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="MinLengthExample"></div>
+        <div id="example-6a27e3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MinLengthExample-2d4047.js"></script>
+        <script type="module" src="./MinLengthExample-6a27e3.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod för att sätta en minlängd på fyra tecken:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod för att sätta en minlängd på fyra tecken:</p>
                 <div
                     id="example-465a2f"
                     class="code-preview code-preview--default"
@@ -1262,39 +1183,34 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MINLENGTH.</p>
-<h3 id="obligatoriskt_required"><a class="header-anchor" href="#obligatoriskt_required">Obligatoriskt <code>required</code></a></h3><p>Validatorn kontrollerar att inmatningskomponenten har ett värde.</p>
-<p>Valideringskriterier för inmatningsfält är:</p>
-<ul>
-<li>Det måste finnas ett ifyllt värde.</li>
-<li>Värden med endast mellanslag, indrag, radbrytningar och kontrolltecken (CR, LF) är inte godkänt.</li>
-<li>Undefined och null är inte godkänt.</li>
+            <p class="docs-paragraph">Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MINLENGTH.</p><h3 id="obligatoriskt_required"><a class="header-anchor" href="#obligatoriskt_required">Obligatoriskt <code>required</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att inmatningskomponenten har ett värde.</p><p class="docs-paragraph">Valideringskriterier för inmatningsfält är:</p><ul>
+<li><p class="docs-paragraph">Det måste finnas ett ifyllt värde.</p></li>
+<li><p class="docs-paragraph">Värden med endast mellanslag, indrag, radbrytningar och kontrolltecken (CR, LF) är inte godkänt.</p></li>
+<li><p class="docs-paragraph">Undefined och null är inte godkänt.</p></li>
 </ul>
-<p>Valideringskriterier för radioknapp och kryssruta:</p>
-<ul>
-<li>Det måste finnas minst en vald radioknapp eller kryssruta i gruppen.</li>
+<p class="docs-paragraph">Valideringskriterier för radioknapp och kryssruta:</p><ul>
+<li><p class="docs-paragraph">Det måste finnas minst en vald radioknapp eller kryssruta i gruppen.</p></li>
 </ul>
 
                 <div
                     id="example-40e161"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="RequiredExample"></div>
+        <div id="example-896f0c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./RequiredExample-0c4bd4.js"></script>
+        <script type="module" src="./RequiredExample-896f0c.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod:</p>
                 <div
                     id="example-12f0eb"
                     class="code-preview code-preview--default"
@@ -1308,52 +1224,46 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:</p>
-<ul>
-<li>inmatningsfält: Fyll i text.</li>
-<li>dropplista: Välj ett av alternativen.</li>
-<li>kryssruta: Välj minst ett alternativ.</li>
-<li>radioknapp: Välj ett av alternativen.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:</p><ul>
+<li><p class="docs-paragraph">inmatningsfält: Fyll i text.</p></li>
+<li><p class="docs-paragraph">dropplista: Välj ett av alternativen.</p></li>
+<li><p class="docs-paragraph">kryssruta: Välj minst ett alternativ.</p></li>
+<li><p class="docs-paragraph">radioknapp: Välj ett av alternativen.</p></li>
 </ul>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>bankgiro <code>bankgiro</code>: Fyll i bankgironumret.</li>
-<li>clearingnummer <code>clearingNumber</code>: Fyll i ett clearingnummer.</li>
-<li>datum <code>date</code>: Välj ett datum.</li>
-<li>kontonummer <code>bankAccountNumber</code>: Fyll i ett kontonummer.</li>
-<li>nummer <code>number</code>: Fyll i en siffra.</li>
-<li>organisationsnummer <code>organisationsnummer</code>: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.</li>
-<li>personnummer-format <code>personnummerFormat</code>: Fyll i personnumret med 10 siffror.</li>
-<li>plusgiro <code>plusgiro</code>: Fyll i plusgironumret.</li>
-<li>postnummer <code>postalCode</code>: Fyll i ett postnummer.</li>
-<li>procent <code>percent</code>: Fyll i en siffra.</li>
-<li>telefonnummer <code>phoneNumber</code>: Kolla att telefonnumret stämmer.</li>
-<li>valutabelopp <code>currency</code>: Fyll i ett belopp.</li>
+<p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">bankgiro <code>bankgiro</code>: Fyll i bankgironumret.</p></li>
+<li><p class="docs-paragraph">clearingnummer <code>clearingNumber</code>: Fyll i ett clearingnummer.</p></li>
+<li><p class="docs-paragraph">datum <code>date</code>: Välj ett datum.</p></li>
+<li><p class="docs-paragraph">kontonummer <code>bankAccountNumber</code>: Fyll i ett kontonummer.</p></li>
+<li><p class="docs-paragraph">nummer <code>number</code>: Fyll i en siffra.</p></li>
+<li><p class="docs-paragraph">organisationsnummer <code>organisationsnummer</code>: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.</p></li>
+<li><p class="docs-paragraph">personnummer-format <code>personnummerFormat</code>: Fyll i personnumret med 10 siffror.</p></li>
+<li><p class="docs-paragraph">plusgiro <code>plusgiro</code>: Fyll i plusgironumret.</p></li>
+<li><p class="docs-paragraph">postnummer <code>postalCode</code>: Fyll i ett postnummer.</p></li>
+<li><p class="docs-paragraph">procent <code>percent</code>: Fyll i en siffra.</p></li>
+<li><p class="docs-paragraph">telefonnummer <code>phoneNumber</code>: Kolla att telefonnumret stämmer.</p></li>
+<li><p class="docs-paragraph">valutabelopp <code>currency</code>: Fyll i ett belopp.</p></li>
 </ul>
-<h3 id="tillatna_tecken_whitelist"><a class="header-anchor" href="#tillatna_tecken_whitelist">Tillåtna tecken <code>whitelist</code></a></h3><p>Validatorn kontrollerar att de tecken som användaren har fyllt i är tillåtna tecken.</p>
-<p>Tillåtna tecken är:  a-z A-Z 0-9 . , - ( ) ? + = ! : @ * À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ</p>
-<p>Valideringen sker direkt efter användaren har fyllt i ett otillåtet tecken. Direktvalideringen är inbyggd i validatorn.</p>
-
+<h3 id="tillatna_tecken_whitelist"><a class="header-anchor" href="#tillatna_tecken_whitelist">Tillåtna tecken <code>whitelist</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att de tecken som användaren har fyllt i är tillåtna tecken.</p><p class="docs-paragraph">Tillåtna tecken är:  a-z A-Z 0-9 . , - ( ) ? + = ! : @ * À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ</p><p class="docs-paragraph">Valideringen sker direkt efter användaren har fyllt i ett otillåtet tecken. Direktvalideringen är inbyggd i validatorn.</p>
                 <div
                     id="example-f8e639"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="WhitelistExample"></div>
+        <div id="example-cc8929"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./WhitelistExample-0f5d25.js"></script>
+        <script type="module" src="./WhitelistExample-cc8929.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod:</p>
                 <div
                     id="example-eda8bd"
                     class="code-preview code-preview--default"
@@ -1367,33 +1277,29 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:</p>
-<ul>
-<li>Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och &quot;.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:</p><ul>
+<li><p class="docs-paragraph">Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och &quot;.</p></li>
 </ul>
-<h3 id="val_fran_lista_allowlist"><a class="header-anchor" href="#val_fran_lista_allowlist">Val från lista <code>allowList</code></a></h3><p>Validatorn kontrollerar att värdet som användaren angivit exakt matchar något av valen i listan.</p>
-<p>Om det finns behov av att dynamiskt ändra på listans innehåll, så behöver den befintliga listan ersättas med en ny lista för att en omvalidering ska ske.</p>
-
+<h3 id="val_fran_lista_allowlist"><a class="header-anchor" href="#val_fran_lista_allowlist">Val från lista <code>allowList</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att värdet som användaren angivit exakt matchar något av valen i listan.</p><p class="docs-paragraph">Om det finns behov av att dynamiskt ändra på listans innehåll, så behöver den befintliga listan ersättas med en ny lista för att en omvalidering ska ske.</p>
                 <div
                     id="example-3803fe"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="AllowListExample"></div>
+        <div id="example-e9d759"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./AllowListExample-ad5819.js"></script>
+        <script type="module" src="./AllowListExample-e9d759.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod:</p>
                 <div
                     id="example-686c85"
                     class="code-preview code-preview--default"
@@ -1407,41 +1313,36 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:</p>
-<ul>
-<li>Välj ett av alternativen i listan.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:</p><ul>
+<li><p class="docs-paragraph">Välj ett av alternativen i listan.</p></li>
 </ul>
-<h2 id="datum"><a class="header-anchor" href="#datum">Datum</a></h2><h3 id="datum_date"><a class="header-anchor" href="#datum_date">Datum <code>date</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet är ett giltigt datum.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, bindestreck eller snedstreck.</li>
-<li>Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.</li>
-<li>Max antal tecken är tio.</li>
-<li>Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.</li>
-<li>Det datum som fylls i måste vara ett giltigt datum (det kontrolleras mot en kalender).</li>
+<h2 id="datum"><a class="header-anchor" href="#datum">Datum</a></h2><h3 id="datum_date"><a class="header-anchor" href="#datum_date">Datum <code>date</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är ett giltigt datum.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, bindestreck eller snedstreck.</p></li>
+<li><p class="docs-paragraph">Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är tio.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.</p></li>
+<li><p class="docs-paragraph">Det datum som fylls i måste vara ett giltigt datum (det kontrolleras mot en kalender).</p></li>
 </ul>
-<p>Till exempel är 2020-02-30 inte ett giltigt datum.</p>
-
+<p class="docs-paragraph">Till exempel är 2020-02-30 inte ett giltigt datum.</p>
                 <div
                     id="example-a89a16"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="DateExample"></div>
+        <div id="example-8566e2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./DateExample-000022.js"></script>
+        <script type="module" src="./DateExample-8566e2.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod:</p>
                 <div
                     id="example-975cbc"
                     class="code-preview code-preview--default"
@@ -1455,36 +1356,32 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett felaktigt datum.</p>
-<p>Felmeddelandet när validatorn för datum <code>date</code> är kombinerad med validatorn för obligatoriskt fält <code>required</code> är:<br> Välj ett datum.</p>
-<h3 id="datumformat_dateformat"><a class="header-anchor" href="#datumformat_dateformat">Datumformat <code>dateFormat</code></a></h3><p>Validatorn kontrollerar att det ifyllda värde stämmer överens mot de här valideringskriterierna:</p>
-<ul>
-<li>Tillåtna tecken är siffror, bindestreck eller snedstreck.</li>
-<li>Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.</li>
-<li>Max antal tecken är tio.</li>
-<li>Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett felaktigt datum.</p><p class="docs-paragraph">Felmeddelandet när validatorn för datum <code>date</code> är kombinerad med validatorn för obligatoriskt fält <code>required</code> är:<br> Välj ett datum.</p><h3 id="datumformat_dateformat"><a class="header-anchor" href="#datumformat_dateformat">Datumformat <code>dateFormat</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värde stämmer överens mot de här valideringskriterierna:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, bindestreck eller snedstreck.</p></li>
+<li><p class="docs-paragraph">Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är tio.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.</p></li>
 </ul>
 
                 <div
                     id="example-bd1221"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="DateFormatExample"></div>
+        <div id="example-0f52a8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./DateFormatExample-11c33f.js"></script>
+        <script type="module" src="./DateFormatExample-0f52a8.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod:</p>
                 <div
                     id="example-dbb634"
                     class="code-preview code-preview--default"
@@ -1498,29 +1395,26 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i datumet med åtta siffror.</p>
-<h3 id="inte_valbara_datum_invaliddates"><a class="header-anchor" href="#inte_valbara_datum_invaliddates">Inte valbara datum <code>invalidDates</code></a></h3><p>Validatorn kontrollerar att det datum som användaren har valt är ett valbart datum.</p>
-
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i datumet med åtta siffror.</p><h3 id="inte_valbara_datum_invaliddates"><a class="header-anchor" href="#inte_valbara_datum_invaliddates">Inte valbara datum <code>invalidDates</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det datum som användaren har valt är ett valbart datum.</p>
                 <div
                     id="example-01d0fa"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="InvalidDatesExample"></div>
+        <div id="example-4036b0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./InvalidDatesExample-4a8bfe.js"></script>
+        <script type="module" src="./InvalidDatesExample-4036b0.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod för att 1 januari 2022, 5 maj 2022 och 20 juni 2022 inte ska vara valbara datum:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod för att 1 januari 2022, 5 maj 2022 och 20 juni 2022 inte ska vara valbara datum:</p>
                 <div
                     id="example-cd9dab"
                     class="code-preview code-preview--default"
@@ -1534,29 +1428,26 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du kan inte välja det här datumet.</p>
-<h3 id="inte_valbara_veckodagar_invalidweekdays"><a class="header-anchor" href="#inte_valbara_veckodagar_invalidweekdays">Inte valbara veckodagar <code>invalidWeekdays</code></a></h3><p>Validatorn kontrollerar att det datum som användaren har valt är en valbar veckodag.</p>
-
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du kan inte välja det här datumet.</p><h3 id="inte_valbara_veckodagar_invalidweekdays"><a class="header-anchor" href="#inte_valbara_veckodagar_invalidweekdays">Inte valbara veckodagar <code>invalidWeekdays</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det datum som användaren har valt är en valbar veckodag.</p>
                 <div
                     id="example-094547"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="InvalidWeekdaysExample"></div>
+        <div id="example-651763"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./InvalidWeekdaysExample-2ef8ba.js"></script>
+        <script type="module" src="./InvalidWeekdaysExample-651763.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod för att sätta måndagar, tisdagar, onsdagar och torsdagar som inte valbara veckodagar:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod för att sätta måndagar, tisdagar, onsdagar och torsdagar som inte valbara veckodagar:</p>
                 <div
                     id="example-85d90e"
                     class="code-preview code-preview--default"
@@ -1570,33 +1461,29 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringern inte är godkänd är:<br> Du kan inte välja det här datumet.</p>
-<h3 id="maxdatum_maxdate"><a class="header-anchor" href="#maxdatum_maxdate">Maxdatum <code>maxDate</code></a></h3><p>Validatorn kontrollerar att det datum som användaren har fyllt i <strong>inte</strong> ligger längre fram än angivet datum. Använd maxdatum-validatorn tillsammans med datum-validatorn.</p>
-<p>Valideringskriterie:</p>
-<ul>
-<li>Tillåtna datum är till och med det datum som anges.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringern inte är godkänd är:<br> Du kan inte välja det här datumet.</p><h3 id="maxdatum_maxdate"><a class="header-anchor" href="#maxdatum_maxdate">Maxdatum <code>maxDate</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det datum som användaren har fyllt i <strong>inte</strong> ligger längre fram än angivet datum. Använd maxdatum-validatorn tillsammans med datum-validatorn.</p><p class="docs-paragraph">Valideringskriterie:</p><ul>
+<li><p class="docs-paragraph">Tillåtna datum är till och med det datum som anges.</p></li>
 </ul>
 
                 <div
                     id="example-746e3d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="MaxDateExample"></div>
+        <div id="example-f3c8a8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MaxDateExample-2ed264.js"></script>
+        <script type="module" src="./MaxDateExample-f3c8a8.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska välja ett datum fram till och med 30 januari 2020:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska välja ett datum fram till och med 30 januari 2020:</p>
                 <div
                     id="example-4e973e"
                     class="code-preview code-preview--default"
@@ -1610,33 +1497,29 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt fram i tiden.</p>
-<h3 id="mindatum_mindate"><a class="header-anchor" href="#mindatum_mindate">Mindatum <code>minDate</code></a></h3><p>Validatorn kontrollerar att det datum som användaren har fyllt i <strong>inte</strong> ligger tidigare än angivet datum. Använd mindatum-validatorn tillsammans med datum-validatorn.</p>
-<p>Valideringskriterie:</p>
-<ul>
-<li>Tillåtna datum är från och med det datum som anges.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt fram i tiden.</p><h3 id="mindatum_mindate"><a class="header-anchor" href="#mindatum_mindate">Mindatum <code>minDate</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det datum som användaren har fyllt i <strong>inte</strong> ligger tidigare än angivet datum. Använd mindatum-validatorn tillsammans med datum-validatorn.</p><p class="docs-paragraph">Valideringskriterie:</p><ul>
+<li><p class="docs-paragraph">Tillåtna datum är från och med det datum som anges.</p></li>
 </ul>
 
                 <div
                     id="example-3659d9"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="MinDateExample"></div>
+        <div id="example-86f164"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MinDateExample-d075fa.js"></script>
+        <script type="module" src="./MinDateExample-86f164.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska välja ett datum från och med 1 januari 2020:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska välja ett datum från och med 1 januari 2020:</p>
                 <div
                     id="example-48642f"
                     class="code-preview code-preview--default"
@@ -1650,38 +1533,35 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt bak i tiden.</p>
-<h2 id="tal_och_valutabelopp"><a class="header-anchor" href="#tal_och_valutabelopp">Tal och valutabelopp</a></h2><h3 id="nummer_number"><a class="header-anchor" href="#nummer_number">Nummer <code>number</code></a></h3><p>Validatorn kontrollerat att det ifyllda värdet stämmer överens med valideringskriterierna:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</li>
-<li>Minustecken är endast tillåtet om det ligger först.</li>
-<li>Ett decimalkomma är tillåtet</li>
-<li>En decimalpunkt är tillåten.</li>
-<li>Decimalkomma och decimalpunkt räknas båda som decimalseparator.</li>
-<li>Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</li>
-<li>Alla numeriska värden är tillåtna.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt bak i tiden.</p><h2 id="tal_och_valutabelopp"><a class="header-anchor" href="#tal_och_valutabelopp">Tal och valutabelopp</a></h2><h3 id="nummer_number"><a class="header-anchor" href="#nummer_number">Nummer <code>number</code></a></h3><p class="docs-paragraph">Validatorn kontrollerat att det ifyllda värdet stämmer överens med valideringskriterierna:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</p></li>
+<li><p class="docs-paragraph">Minustecken är endast tillåtet om det ligger först.</p></li>
+<li><p class="docs-paragraph">Ett decimalkomma är tillåtet</p></li>
+<li><p class="docs-paragraph">En decimalpunkt är tillåten.</p></li>
+<li><p class="docs-paragraph">Decimalkomma och decimalpunkt räknas båda som decimalseparator.</p></li>
+<li><p class="docs-paragraph">Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</p></li>
+<li><p class="docs-paragraph">Alla numeriska värden är tillåtna.</p></li>
 </ul>
 
                 <div
                     id="example-ba866c"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="NumberExample"></div>
+        <div id="example-1ce760"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./NumberExample-eab19c.js"></script>
+        <script type="module" src="./NumberExample-1ce760.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod:</p>
                 <div
                     id="example-2dfe00"
                     class="code-preview code-preview--default"
@@ -1695,41 +1575,36 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett ogiltigt tecken. Fyll i siffror.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>obligatorisk <code>required</code>: Fyll i en siffra.</li>
-<li>maxvärde <code>maxValue</code>: Du har fyllt i en för hög siffra.</li>
-<li>minvärde <code>minValue</code>: Fyll i en högre siffra.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett ogiltigt tecken. Fyll i siffror.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">obligatorisk <code>required</code>: Fyll i en siffra.</p></li>
+<li><p class="docs-paragraph">maxvärde <code>maxValue</code>: Du har fyllt i en för hög siffra.</p></li>
+<li><p class="docs-paragraph">minvärde <code>minValue</code>: Fyll i en högre siffra.</p></li>
 </ul>
-<h3 id="heltal_integer"><a class="header-anchor" href="#heltal_integer">Heltal <code>integer</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet är ett heltal.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag och minustecken.</li>
-<li>Minustecken är endast tillåtet om det ligger först</li>
-<li>Endast heltal är tillåtna.</li>
+<h3 id="heltal_integer"><a class="header-anchor" href="#heltal_integer">Heltal <code>integer</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är ett heltal.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag och minustecken.</p></li>
+<li><p class="docs-paragraph">Minustecken är endast tillåtet om det ligger först</p></li>
+<li><p class="docs-paragraph">Endast heltal är tillåtna.</p></li>
 </ul>
 
                 <div
                     id="example-6d2aad"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="IntegerExample"></div>
+        <div id="example-ee7837"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./IntegerExample-f75054.js"></script>
+        <script type="module" src="./IntegerExample-ee7837.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren måste fylla i ett heltal:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren måste fylla i ett heltal:</p>
                 <div
                     id="example-7b1657"
                     class="code-preview code-preview--default"
@@ -1743,46 +1618,40 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i siffror utan decimal.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn komponbineras med andra validatorer:</p>
-<ul>
-<li>obligatorisk <code>required</code>: Fyll i en siffra.</li>
-<li>procent <code>percent</code>: Fyll i procent utan decimal.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i siffror utan decimal.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn komponbineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">obligatorisk <code>required</code>: Fyll i en siffra.</p></li>
+<li><p class="docs-paragraph">procent <code>percent</code>: Fyll i procent utan decimal.</p></li>
 </ul>
-<h3 id="decimaltal_decimal"><a class="header-anchor" href="#decimaltal_decimal">Decimaltal <code>decimal</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet är ett decimaltal.</p>
-<p>Max antal decimaler och minsta antal decimaler är konfigurerbart. Utgångsvärden för max antal decimaler är två. Utgångsvärdet för minsta antal decimaler är ett.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</li>
-<li>Minustecken är endast tillåtet om det ligger först.</li>
-<li>Ett decimalkomma är tillåtet.</li>
-<li>En decimalpunkt är tillåten.</li>
-<li>Decimalkomma och decimalpunkt räknas båda som decimalseparator.</li>
-<li>Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</li>
-<li>Endast decimaltal är tillåtet.</li>
-<li>Antal decimaler följer angivna värden (konfigurerbart).</li>
+<h3 id="decimaltal_decimal"><a class="header-anchor" href="#decimaltal_decimal">Decimaltal <code>decimal</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är ett decimaltal.</p><p class="docs-paragraph">Max antal decimaler och minsta antal decimaler är konfigurerbart. Utgångsvärden för max antal decimaler är två. Utgångsvärdet för minsta antal decimaler är ett.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</p></li>
+<li><p class="docs-paragraph">Minustecken är endast tillåtet om det ligger först.</p></li>
+<li><p class="docs-paragraph">Ett decimalkomma är tillåtet.</p></li>
+<li><p class="docs-paragraph">En decimalpunkt är tillåten.</p></li>
+<li><p class="docs-paragraph">Decimalkomma och decimalpunkt räknas båda som decimalseparator.</p></li>
+<li><p class="docs-paragraph">Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</p></li>
+<li><p class="docs-paragraph">Endast decimaltal är tillåtet.</p></li>
+<li><p class="docs-paragraph">Antal decimaler följer angivna värden (konfigurerbart).</p></li>
 </ul>
 
                 <div
                     id="example-7dad05"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="DecimalExample"></div>
+        <div id="example-c61ae3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./DecimalExample-b14c37.js"></script>
+        <script type="module" src="./DecimalExample-c61ae3.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren måste fylla i ett tal med minst en decimal och max sex decimaler:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren måste fylla i ett tal med minst en decimal och max sex decimaler:</p>
                 <div
                     id="example-e1c00d"
                     class="code-preview code-preview--default"
@@ -1796,40 +1665,36 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett värde med rätt antal decimaler.</p>
-<h3 id="maxvarde_maxvalue"><a class="header-anchor" href="#maxvarde_maxvalue">Maxvärde <code>maxValue</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet inte överstiger det angivna gränsvärdet.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</li>
-<li>Minustecken endast tillåtet om det ligger först.</li>
-<li>Ett decimalkomma är tillåtet.</li>
-<li>En decimalpunkt är tillåten.</li>
-<li>Decimalkomma och decimalpunkt räknas båda som decimalseparator.</li>
-<li>Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</li>
-<li>Alla numeriska värden är tillåtna.</li>
-<li>Det ifyllda värdet får inte överstiga gränsvärdet.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett värde med rätt antal decimaler.</p><h3 id="maxvarde_maxvalue"><a class="header-anchor" href="#maxvarde_maxvalue">Maxvärde <code>maxValue</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet inte överstiger det angivna gränsvärdet.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</p></li>
+<li><p class="docs-paragraph">Minustecken endast tillåtet om det ligger först.</p></li>
+<li><p class="docs-paragraph">Ett decimalkomma är tillåtet.</p></li>
+<li><p class="docs-paragraph">En decimalpunkt är tillåten.</p></li>
+<li><p class="docs-paragraph">Decimalkomma och decimalpunkt räknas båda som decimalseparator.</p></li>
+<li><p class="docs-paragraph">Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</p></li>
+<li><p class="docs-paragraph">Alla numeriska värden är tillåtna.</p></li>
+<li><p class="docs-paragraph">Det ifyllda värdet får inte överstiga gränsvärdet.</p></li>
 </ul>
 
                 <div
                     id="example-c089b0"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="MaxValueExample"></div>
+        <div id="example-042b94"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MaxValueExample-205022.js"></script>
+        <script type="module" src="./MaxValueExample-042b94.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren måste fylla i ett tal som inte överstiger 50:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren måste fylla i ett tal som inte överstiger 50:</p>
                 <div
                     id="example-8d13c7"
                     class="code-preview code-preview--default"
@@ -1843,46 +1708,41 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>nummer <code>number</code>: Du har fyllt i en för hög siffra.</li>
-<li>procent <code>percent</code>: Fyll i en lägre siffra.</li>
-<li>valutabelopp <code>currency</code>: Fyll i ett belopp.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">nummer <code>number</code>: Du har fyllt i en för hög siffra.</p></li>
+<li><p class="docs-paragraph">procent <code>percent</code>: Fyll i en lägre siffra.</p></li>
+<li><p class="docs-paragraph">valutabelopp <code>currency</code>: Fyll i ett belopp.</p></li>
 </ul>
-<h3 id="minvarde_minvalue"><a class="header-anchor" href="#minvarde_minvalue">Minvärde <code>minValue</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet inte understiger det angivna gränsvärdet.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</li>
-<li>Minustecken är endast tillåtet om det ligger först.</li>
-<li>Ett decimalkomma är tillåtet.</li>
-<li>En decimalpunkt är tillåten.</li>
-<li>Decimalkomma och decimalpunkt räknas båda som decimalseparator.</li>
-<li>Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</li>
-<li>Alla numeriska värden är tillåtna.</li>
-<li>Det ifyllda värdet får inte understiga gränsvärdet.</li>
+<h3 id="minvarde_minvalue"><a class="header-anchor" href="#minvarde_minvalue">Minvärde <code>minValue</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet inte understiger det angivna gränsvärdet.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</p></li>
+<li><p class="docs-paragraph">Minustecken är endast tillåtet om det ligger först.</p></li>
+<li><p class="docs-paragraph">Ett decimalkomma är tillåtet.</p></li>
+<li><p class="docs-paragraph">En decimalpunkt är tillåten.</p></li>
+<li><p class="docs-paragraph">Decimalkomma och decimalpunkt räknas båda som decimalseparator.</p></li>
+<li><p class="docs-paragraph">Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</p></li>
+<li><p class="docs-paragraph">Alla numeriska värden är tillåtna.</p></li>
+<li><p class="docs-paragraph">Det ifyllda värdet får inte understiga gränsvärdet.</p></li>
 </ul>
 
                 <div
                     id="example-19dcf0"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="MinValueExample"></div>
+        <div id="example-571e44"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./MinValueExample-f48d09.js"></script>
+        <script type="module" src="./MinValueExample-571e44.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i ett tal som inte understiger 10:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i ett tal som inte understiger 10:</p>
                 <div
                     id="example-7fcb76"
                     class="code-preview code-preview--default"
@@ -1896,46 +1756,41 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>nummer <code>number</code>: Fyll i en högre siffra.</li>
-<li>procent <code>percent</code>: Fyll i en högre siffra.</li>
-<li>valutabelopp <code>currency</code>: Fyll i ett belopp.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">nummer <code>number</code>: Fyll i en högre siffra.</p></li>
+<li><p class="docs-paragraph">procent <code>percent</code>: Fyll i en högre siffra.</p></li>
+<li><p class="docs-paragraph">valutabelopp <code>currency</code>: Fyll i ett belopp.</p></li>
 </ul>
-<h3 id="mindre_an_lessthen"><a class="header-anchor" href="#mindre_an_lessthen">Mindre än <code>lessThen</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet är mindre än det angivna gränsvärdet.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</li>
-<li>Minustecken är endast tillåtet om det ligger först.</li>
-<li>Ett decimalkomma är tillåtet.</li>
-<li>En decimalpunkt är tillåten.</li>
-<li>Decimalkomma och decimalpunkt räknas båda som decimalseparator.</li>
-<li>Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</li>
-<li>Alla numeriska värden är tillåtna.</li>
-<li>Det ifyllda värdet måste vara mindre än gränsvärdet.</li>
+<h3 id="mindre_an_lessthen"><a class="header-anchor" href="#mindre_an_lessthen">Mindre än <code>lessThen</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är mindre än det angivna gränsvärdet.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</p></li>
+<li><p class="docs-paragraph">Minustecken är endast tillåtet om det ligger först.</p></li>
+<li><p class="docs-paragraph">Ett decimalkomma är tillåtet.</p></li>
+<li><p class="docs-paragraph">En decimalpunkt är tillåten.</p></li>
+<li><p class="docs-paragraph">Decimalkomma och decimalpunkt räknas båda som decimalseparator.</p></li>
+<li><p class="docs-paragraph">Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</p></li>
+<li><p class="docs-paragraph">Alla numeriska värden är tillåtna.</p></li>
+<li><p class="docs-paragraph">Det ifyllda värdet måste vara mindre än gränsvärdet.</p></li>
 </ul>
 
                 <div
                     id="example-d0978a"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="LessThanExample"></div>
+        <div id="example-139e76"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./LessThanExample-6dde42.js"></script>
+        <script type="module" src="./LessThanExample-139e76.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren fylla i ett tal som är mindre än 100:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren fylla i ett tal som är mindre än 100:</p>
                 <div
                     id="example-53caa1"
                     class="code-preview code-preview--default"
@@ -1949,40 +1804,36 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.</p>
-<h3 id="storre_an_greaterthan"><a class="header-anchor" href="#storre_an_greaterthan">Större än <code>greaterThan</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet är större än det angivna gränsvärdet.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</li>
-<li>Minustecken är endast tillåtet om det ligger först</li>
-<li>Ett decimalkomma är tillåtet.</li>
-<li>En decimalpunkt är tillåten.</li>
-<li>Decimalkomma och decimalpunkt räknas båda som decimalseparator.</li>
-<li>Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</li>
-<li>Alla numeriska värden är tillåtna.</li>
-<li>Det ifyllda värdet ska vara större än gränsvärdet.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.</p><h3 id="storre_an_greaterthan"><a class="header-anchor" href="#storre_an_greaterthan">Större än <code>greaterThan</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är större än det angivna gränsvärdet.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</p></li>
+<li><p class="docs-paragraph">Minustecken är endast tillåtet om det ligger först</p></li>
+<li><p class="docs-paragraph">Ett decimalkomma är tillåtet.</p></li>
+<li><p class="docs-paragraph">En decimalpunkt är tillåten.</p></li>
+<li><p class="docs-paragraph">Decimalkomma och decimalpunkt räknas båda som decimalseparator.</p></li>
+<li><p class="docs-paragraph">Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</p></li>
+<li><p class="docs-paragraph">Alla numeriska värden är tillåtna.</p></li>
+<li><p class="docs-paragraph">Det ifyllda värdet ska vara större än gränsvärdet.</p></li>
 </ul>
 
                 <div
                     id="example-72185e"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="GreaterThanExample"></div>
+        <div id="example-36e168"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./GreaterThanExample-aeb8ec.js"></script>
+        <script type="module" src="./GreaterThanExample-36e168.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i ett tal som är större än 0.123:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i ett tal som är större än 0.123:</p>
                 <div
                     id="example-b3500b"
                     class="code-preview code-preview--default"
@@ -1996,37 +1847,34 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.</p>
-<h3 id="procent_percent"><a class="header-anchor" href="#procent_percent">Procent <code>percent</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med valideringskriterierna:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt, och minustecken.</li>
-<li>Minustecken är endast tillåtet om det ligger först.</li>
-<li>Ett decimalkomma är tillåtet.</li>
-<li>En decimalpunkt är tillåten.</li>
-<li>Decimalkomma och decimalpunkt räknas båda som decimalseparator.</li>
-<li>Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.</p><h3 id="procent_percent"><a class="header-anchor" href="#procent_percent">Procent <code>percent</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med valideringskriterierna:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt, och minustecken.</p></li>
+<li><p class="docs-paragraph">Minustecken är endast tillåtet om det ligger först.</p></li>
+<li><p class="docs-paragraph">Ett decimalkomma är tillåtet.</p></li>
+<li><p class="docs-paragraph">En decimalpunkt är tillåten.</p></li>
+<li><p class="docs-paragraph">Decimalkomma och decimalpunkt räknas båda som decimalseparator.</p></li>
+<li><p class="docs-paragraph">Det måste finnas minst en siffra före och minst en siffra efter en decimalseparator.</p></li>
 </ul>
 
                 <div
                     id="example-06b64f"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PercentExample"></div>
+        <div id="example-5ac4b4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PercentExample-470afc.js"></script>
+        <script type="module" src="./PercentExample-5ac4b4.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i ett tal i procent:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i ett tal i procent:</p>
                 <div
                     id="example-e6f478"
                     class="code-preview code-preview--default"
@@ -2040,36 +1888,32 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i procent med en siffra.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>heltal <code>integer</code>: Fyll i procent utan decimal.</li>
-<li>maxvärde <code>maxValue</code>: Fyll i en lägre siffra.</li>
-<li>minvärde <code>minValue</code>: Fyll i en högre siffra.</li>
-<li>obligatorisk <code>required</code>: Fyll i en siffra.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i procent med en siffra.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">heltal <code>integer</code>: Fyll i procent utan decimal.</p></li>
+<li><p class="docs-paragraph">maxvärde <code>maxValue</code>: Fyll i en lägre siffra.</p></li>
+<li><p class="docs-paragraph">minvärde <code>minValue</code>: Fyll i en högre siffra.</p></li>
+<li><p class="docs-paragraph">obligatorisk <code>required</code>: Fyll i en siffra.</p></li>
 </ul>
-<h3 id="valutabelopp_currency"><a class="header-anchor" href="#valutabelopp_currency">Valutabelopp <code>currency</code></a></h3><p>Validatorn baseras på <a href="#nummer-number">nummer-validatorn</a>.</p>
-
+<h3 id="valutabelopp_currency"><a class="header-anchor" href="#valutabelopp_currency">Valutabelopp <code>currency</code></a></h3><p class="docs-paragraph">Validatorn baseras på <a href="#nummer-number">nummer-validatorn</a>.</p>
                 <div
                     id="example-0ddea0"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="CurrencyExample"></div>
+        <div id="example-9ee951"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./CurrencyExample-ebac30.js"></script>
+        <script type="module" src="./CurrencyExample-9ee951.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i ett valutabelopp:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i ett valutabelopp:</p>
                 <div
                     id="example-9c327b"
                     class="code-preview code-preview--default"
@@ -2083,43 +1927,38 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett belopp.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>obligatorisk <code>required</code>: Fyll i ett belopp.</li>
-<li>maxvärde <code>maxValue</code>: Fyll i ett belopp.</li>
-<li>minvärde <code>minValue</code>: Fyll i ett belopp.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett belopp.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">obligatorisk <code>required</code>: Fyll i ett belopp.</p></li>
+<li><p class="docs-paragraph">maxvärde <code>maxValue</code>: Fyll i ett belopp.</p></li>
+<li><p class="docs-paragraph">minvärde <code>minValue</code>: Fyll i ett belopp.</p></li>
 </ul>
-<h2 id="identifiering"><a class="header-anchor" href="#identifiering">Identifiering</a></h2><h3 id="organisationsnummer_organisationsnummer"><a class="header-anchor" href="#organisationsnummer_organisationsnummer">Organisationsnummer <code>organisationsnummer</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för organisationsnummer och att checksumman stämmer.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror och bindestreck.</li>
-<li>Bindestreck får bara vara på plats nummer sju i ordningen.</li>
-<li>Minsta antal tecken är tio. Minst tio tecken måste vara siffror.</li>
-<li>Max antal tecken är 11.</li>
-<li>Checksumman stämmer överens med det ifyllda värdet.</li>
+<h2 id="identifiering"><a class="header-anchor" href="#identifiering">Identifiering</a></h2><h3 id="organisationsnummer_organisationsnummer"><a class="header-anchor" href="#organisationsnummer_organisationsnummer">Organisationsnummer <code>organisationsnummer</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för organisationsnummer och att checksumman stämmer.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror och bindestreck.</p></li>
+<li><p class="docs-paragraph">Bindestreck får bara vara på plats nummer sju i ordningen.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är tio. Minst tio tecken måste vara siffror.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är 11.</p></li>
+<li><p class="docs-paragraph">Checksumman stämmer överens med det ifyllda värdet.</p></li>
 </ul>
 
                 <div
                     id="example-5a9865"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="OrganisationsnummerExample"></div>
+        <div id="example-840afe"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./OrganisationsnummerExample-c60954.js"></script>
+        <script type="module" src="./OrganisationsnummerExample-840afe.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i organisationsnummer:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i organisationsnummer:</p>
                 <div
                     id="example-9d6014"
                     class="code-preview code-preview--default"
@@ -2133,50 +1972,42 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
 <li>
-<p>obligatorisk <code>requied</code>: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.</p>
-</li>
+<p class="docs-paragraph">obligatorisk <code>requied</code>: Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.</p></li>
 <li>
-<p>maxlängd <code>maxLength</code>: Organisationsnumret kan inte ha mer än 11 tecken.</p>
-</li>
+<p class="docs-paragraph">maxlängd <code>maxLength</code>: Organisationsnumret kan inte ha mer än 11 tecken.</p></li>
 </ul>
-<h3 id="personnummer_format_personnummerformat"><a class="header-anchor" href="#personnummer_format_personnummerformat">Personnummer - format <code>personnummerFormat</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för personnummer.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, bindestreck och plustecken.</li>
-<li>Det måste vara 10 eller 12 siffror.</li>
-<li>Datum ligger efter 5 maj 1840.</li>
-<li>Datum ligger inte i framtiden om sekel är angivet.</li>
-<li>År &gt;= 00 och &lt;=99.</li>
-<li>Månad &gt;= 01 och &lt;=12.</li>
-<li>Dag &gt;= 01 och &lt;=31 eller &gt;= 60 och &lt;=91 (det senare är samordningsnummer).</li>
-<li>De fyra sista siffrorna: 0000-9999.</li>
+<h3 id="personnummer_format_personnummerformat"><a class="header-anchor" href="#personnummer_format_personnummerformat">Personnummer - format <code>personnummerFormat</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för personnummer.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, bindestreck och plustecken.</p></li>
+<li><p class="docs-paragraph">Det måste vara 10 eller 12 siffror.</p></li>
+<li><p class="docs-paragraph">Datum ligger efter 5 maj 1840.</p></li>
+<li><p class="docs-paragraph">Datum ligger inte i framtiden om sekel är angivet.</p></li>
+<li><p class="docs-paragraph">År &gt;= 00 och &lt;=99.</p></li>
+<li><p class="docs-paragraph">Månad &gt;= 01 och &lt;=12.</p></li>
+<li><p class="docs-paragraph">Dag &gt;= 01 och &lt;=31 eller &gt;= 60 och &lt;=91 (det senare är samordningsnummer).</p></li>
+<li><p class="docs-paragraph">De fyra sista siffrorna: 0000-9999.</p></li>
 </ul>
-<p>Det finns en separat validator för att kontrollera checksumman på ett personnummer, personnummer-checksumma (personnummerLuhn). Validatorn för format ska stå före validatorn för checksumma.</p>
-
+<p class="docs-paragraph">Det finns en separat validator för att kontrollera checksumman på ett personnummer, personnummer-checksumma (personnummerLuhn). Validatorn för format ska stå före validatorn för checksumma.</p>
                 <div
                     id="example-499179"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PersonnummerFormatExample"></div>
+        <div id="example-c2e96b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PersonnummerFormatExample-39ea75.js"></script>
+        <script type="module" src="./PersonnummerFormatExample-c2e96b.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i personnummer:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i personnummer:</p>
                 <div
                     id="example-3a4303"
                     class="code-preview code-preview--default"
@@ -2190,35 +2021,30 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i personnumret med 10 siffror.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>obligatorisk <code>required</code>: Fyll i personnumret med 10 siffror.</li>
-<li>maxlängd <code>maxLength</code>: Fyll i personnumret med 10 siffror.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i personnumret med 10 siffror.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">obligatorisk <code>required</code>: Fyll i personnumret med 10 siffror.</p></li>
+<li><p class="docs-paragraph">maxlängd <code>maxLength</code>: Fyll i personnumret med 10 siffror.</p></li>
 </ul>
-<h3 id="personnummer_checksumma_personnummerluhn"><a class="header-anchor" href="#personnummer_checksumma_personnummerluhn">Personnummer - checksumma <code>personnummerLuhn</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med checksumman för personnummer.</p>
-<p>Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (personnummerFormat). Validatorn för format ska stå före validatorn för checksumma.</p>
-
+<h3 id="personnummer_checksumma_personnummerluhn"><a class="header-anchor" href="#personnummer_checksumma_personnummerluhn">Personnummer - checksumma <code>personnummerLuhn</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med checksumman för personnummer.</p><p class="docs-paragraph">Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (personnummerFormat). Validatorn för format ska stå före validatorn för checksumma.</p>
                 <div
                     id="example-a45913"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PersonnummerLuhnExample"></div>
+        <div id="example-efd619"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PersonnummerLuhnExample-7ee579.js"></script>
+        <script type="module" src="./PersonnummerLuhnExample-efd619.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i personnummer:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i personnummer:</p>
                 <div
                     id="example-9c6e16"
                     class="code-preview code-preview--default"
@@ -2232,30 +2058,26 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.</p>
-<h3 id="personnummer_inte_samma_personnummernotsame"><a class="header-anchor" href="#personnummer_inte_samma_personnummernotsame">Personnummer - inte samma <code>personnummerNotSame</code></a></h3><p>Validatorn kontrollerar att det ifyllda personnumret inte är samma som personnumret i annat fält.</p>
-<p>Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerNotSame</code>.</p>
-
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.</p><h3 id="personnummer_inte_samma_personnummernotsame"><a class="header-anchor" href="#personnummer_inte_samma_personnummernotsame">Personnummer - inte samma <code>personnummerNotSame</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda personnumret inte är samma som personnumret i annat fält.</p><p class="docs-paragraph">Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerNotSame</code>.</p>
                 <div
                     id="example-ef892d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PersonnummerNotSameExample"></div>
+        <div id="example-e81f36"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PersonnummerNotSameExample-9ad45d.js"></script>
+        <script type="module" src="./PersonnummerNotSameExample-e81f36.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
                 <div
                     id="example-2bd5e8"
                     class="code-preview code-preview--default"
@@ -2269,30 +2091,26 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
-<h3 id="personnummer_aldre_personnummerolder"><a class="header-anchor" href="#personnummer_aldre_personnummerolder">Personnummer - äldre <code>personnummerOlder</code></a></h3><p>Validatorn kontrollerar att det ifyllda personnumret är äldre än eller är i samma ålder som personnumret i annat fält.</p>
-<p>Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerOlder</code>.</p>
-
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p><h3 id="personnummer_aldre_personnummerolder"><a class="header-anchor" href="#personnummer_aldre_personnummerolder">Personnummer - äldre <code>personnummerOlder</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda personnumret är äldre än eller är i samma ålder som personnumret i annat fält.</p><p class="docs-paragraph">Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerOlder</code>.</p>
                 <div
                     id="example-62016e"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PersonnummerOlderExample"></div>
+        <div id="example-f0e832"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PersonnummerOlderExample-2f062e.js"></script>
+        <script type="module" src="./PersonnummerOlderExample-f0e832.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
                 <div
                     id="example-d438c9"
                     class="code-preview code-preview--default"
@@ -2306,30 +2124,26 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
-<h3 id="personnummer_yngre_personnummeryounger"><a class="header-anchor" href="#personnummer_yngre_personnummeryounger">Personnummer - yngre <code>personnummerYounger</code></a></h3><p>Validatorn kontrollerar att det ifyllda personnumret är yngre än eller är i samma ålder som personnumret i annat fält.</p>
-<p>Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerYounger</code>.</p>
-
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p><h3 id="personnummer_yngre_personnummeryounger"><a class="header-anchor" href="#personnummer_yngre_personnummeryounger">Personnummer - yngre <code>personnummerYounger</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda personnumret är yngre än eller är i samma ålder som personnumret i annat fält.</p><p class="docs-paragraph">Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerYounger</code>.</p>
                 <div
                     id="example-fdea31"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PersonnummerYoungerExample"></div>
+        <div id="example-222882"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PersonnummerYoungerExample-3c5ee9.js"></script>
+        <script type="module" src="./PersonnummerYoungerExample-222882.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
                 <div
                     id="example-b53f22"
                     class="code-preview code-preview--default"
@@ -2343,38 +2157,34 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
-<h2 id="adress_och_kontaktuppgifter"><a class="header-anchor" href="#adress_och_kontaktuppgifter">Adress och kontaktuppgifter</a></h2><h3 id="mejladress_email"><a class="header-anchor" href="#mejladress_email">Mejladress <code>email</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med giltigt format för mejladress. Max antal tecken är konfigurerbart. Utgångsvärdet för max antal tecken är 64.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Ifyllt värde ska ha format <strong>localpart@domain</strong>.</li>
-<li>Tillåtna tecken för <strong>localpart</strong> är a-ö, 0-9, snedstreck och punkt.</li>
-<li>Tillåtna tecken för <strong>domain</strong> är a-z, 0-9 och punkt.</li>
-<li><strong>localpart</strong> ska innehålla minst ett tecken.</li>
-<li><strong>domain</strong> ska innehålla minst ett tecken och får inte börja eller avslutas med punkt.</li>
-<li>Max antal tecken följer det angivna värdet (konfigurerbart).</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p><h2 id="adress_och_kontaktuppgifter"><a class="header-anchor" href="#adress_och_kontaktuppgifter">Adress och kontaktuppgifter</a></h2><h3 id="mejladress_email"><a class="header-anchor" href="#mejladress_email">Mejladress <code>email</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med giltigt format för mejladress. Max antal tecken är konfigurerbart. Utgångsvärdet för max antal tecken är 64.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Ifyllt värde ska ha format <strong>localpart@domain</strong>.</p></li>
+<li><p class="docs-paragraph">Tillåtna tecken för <strong>localpart</strong> är a-ö, 0-9, snedstreck och punkt.</p></li>
+<li><p class="docs-paragraph">Tillåtna tecken för <strong>domain</strong> är a-z, 0-9 och punkt.</p></li>
+<li><p class="docs-paragraph"><strong>localpart</strong> ska innehålla minst ett tecken.</p></li>
+<li><p class="docs-paragraph"><strong>domain</strong> ska innehålla minst ett tecken och får inte börja eller avslutas med punkt.</p></li>
+<li><p class="docs-paragraph">Max antal tecken följer det angivna värdet (konfigurerbart).</p></li>
 </ul>
 
                 <div
                     id="example-b58ed9"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="EmailExample"></div>
+        <div id="example-e3f6d6"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./EmailExample-626323.js"></script>
+        <script type="module" src="./EmailExample-e3f6d6.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i mejladress:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i mejladress:</p>
                 <div
                     id="example-141258"
                     class="code-preview code-preview--default"
@@ -2388,38 +2198,34 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Mejladressen är inte rätt ifylld.</p>
-<h3 id="postnummer_postalcode"><a class="header-anchor" href="#postnummer_postalcode">Postnummer <code>postalCode</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för postnummer.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror och mellanslag.</li>
-<li>Antal siffror ska vara fem.</li>
-<li>Minsta antal tecken är fem.</li>
-<li>Max antal tecken är sex.</li>
-<li>Mellanslag är endast tillåtet på position fyra.</li>
-<li>Första siffran ska vara 1 till 9.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Mejladressen är inte rätt ifylld.</p><h3 id="postnummer_postalcode"><a class="header-anchor" href="#postnummer_postalcode">Postnummer <code>postalCode</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för postnummer.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror och mellanslag.</p></li>
+<li><p class="docs-paragraph">Antal siffror ska vara fem.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är fem.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är sex.</p></li>
+<li><p class="docs-paragraph">Mellanslag är endast tillåtet på position fyra.</p></li>
+<li><p class="docs-paragraph">Första siffran ska vara 1 till 9.</p></li>
 </ul>
 
                 <div
                     id="example-2feefd"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PostalCodeExample"></div>
+        <div id="example-ef3a35"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PostalCodeExample-256bf7.js"></script>
+        <script type="module" src="./PostalCodeExample-ef3a35.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användare ska fylla i postnummer:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användare ska fylla i postnummer:</p>
                 <div
                     id="example-3aa801"
                     class="code-preview code-preview--default"
@@ -2433,43 +2239,38 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i postnumret med fem siffror.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>obligatorisk <code>required</code>: Fyll i ett postnummer.</li>
-<li>maxLängd <code>maxLength</code>: Postnumret kan inte ha mer än 13 tecken.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i postnumret med fem siffror.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">obligatorisk <code>required</code>: Fyll i ett postnummer.</p></li>
+<li><p class="docs-paragraph">maxLängd <code>maxLength</code>: Postnumret kan inte ha mer än 13 tecken.</p></li>
 </ul>
-<h3 id="telefonnummer_phonenumber"><a class="header-anchor" href="#telefonnummer_phonenumber">Telefonnummer <code>phoneNumber</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för telefonnummer.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, plustecken, bindestreck, mellanslag, parentes, understreck och snedstreck framåt ( / ).</li>
-<li>Plustecken får bara stå först.</li>
-<li>Minsta antal tecken är tre.</li>
-<li>Det måste vara minst tre siffror.</li>
-<li>Max antal tecken är 20.</li>
-<li>Det får max vara 15 siffror.</li>
+<h3 id="telefonnummer_phonenumber"><a class="header-anchor" href="#telefonnummer_phonenumber">Telefonnummer <code>phoneNumber</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för telefonnummer.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, plustecken, bindestreck, mellanslag, parentes, understreck och snedstreck framåt ( / ).</p></li>
+<li><p class="docs-paragraph">Plustecken får bara stå först.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är tre.</p></li>
+<li><p class="docs-paragraph">Det måste vara minst tre siffror.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är 21.</p></li>
+<li><p class="docs-paragraph">Det får max vara 17 siffror.</p></li>
 </ul>
 
                 <div
                     id="example-c2f4d7"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PhoneNumberExample"></div>
+        <div id="example-da3cca"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PhoneNumberExample-5d663d.js"></script>
+        <script type="module" src="./PhoneNumberExample-da3cca.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i telefonnummer:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i telefonnummer:</p>
                 <div
                     id="example-61b995"
                     class="code-preview code-preview--default"
@@ -2483,39 +2284,34 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Telefonnumret är inte rätt ifyllt.</p>
-<p>Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Kolla att telefonnumret stämmer.</p>
-<h2 id="bank"><a class="header-anchor" href="#bank">Bank</a></h2><h3 id="bankgiro_bankgiro"><a class="header-anchor" href="#bankgiro_bankgiro">Bankgiro <code>bankgiro</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för bankgiro.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror och bindestreck.</li>
-<li>Bindestreck får bara vara på plats nummer fyra eller fem i ordningen.</li>
-<li>Minsta antal tecken är sju tecken.</li>
-<li>Det måsta vara minst sju siffror.</li>
-<li>Max antal tecken är nio tecken.</li>
-<li>Checksumman ska stämma på det ifyllda värdet.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Telefonnumret är inte rätt ifyllt.</p><p class="docs-paragraph">Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Kolla att telefonnumret stämmer.</p><h2 id="bank"><a class="header-anchor" href="#bank">Bank</a></h2><h3 id="bankgiro_bankgiro"><a class="header-anchor" href="#bankgiro_bankgiro">Bankgiro <code>bankgiro</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för bankgiro.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror och bindestreck.</p></li>
+<li><p class="docs-paragraph">Bindestreck får bara vara på plats nummer fyra eller fem i ordningen.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är sju tecken.</p></li>
+<li><p class="docs-paragraph">Det måsta vara minst sju siffror.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är nio tecken.</p></li>
+<li><p class="docs-paragraph">Checksumman ska stämma på det ifyllda värdet.</p></li>
 </ul>
 
                 <div
                     id="example-76642e"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="BankgiroExample"></div>
+        <div id="example-c1e416"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./BankgiroExample-689182.js"></script>
+        <script type="module" src="./BankgiroExample-c1e416.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i bankgiro:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i bankgiro:</p>
                 <div
                     id="example-9df3e5"
                     class="code-preview code-preview--default"
@@ -2529,43 +2325,38 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i bankgironumret med sju eller åtta siffror och bindestreck.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>obligatorisk <code>required</code>: Fyll i bankgironumret.</li>
-<li>maxlängd <code>maxLength</code>: Bankgironumret kan ha mer än 9 tecken.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i bankgironumret med sju eller åtta siffror och bindestreck.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">obligatorisk <code>required</code>: Fyll i bankgironumret.</p></li>
+<li><p class="docs-paragraph">maxlängd <code>maxLength</code>: Bankgironumret kan ha mer än 9 tecken.</p></li>
 </ul>
-<h3 id="clearingnummer_clearingnumber"><a class="header-anchor" href="#clearingnummer_clearingnumber">Clearingnummer <code>clearingNumber</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för clearingnummer.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag och bindestreck.</li>
-<li>Mellanslag och bindestreck är bara tillåtet mellan siffra nummer fyra och fem.</li>
-<li>Minsta antal tecken är fyra.</li>
-<li>Det måste vara minst fyra siffror.</li>
-<li>Max antal tecken är sex.</li>
-<li>Det får vara max fem siffror.</li>
+<h3 id="clearingnummer_clearingnumber"><a class="header-anchor" href="#clearingnummer_clearingnumber">Clearingnummer <code>clearingNumber</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för clearingnummer.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag och bindestreck.</p></li>
+<li><p class="docs-paragraph">Mellanslag och bindestreck är bara tillåtet mellan siffra nummer fyra och fem.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är fyra.</p></li>
+<li><p class="docs-paragraph">Det måste vara minst fyra siffror.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är sex.</p></li>
+<li><p class="docs-paragraph">Det får vara max fem siffror.</p></li>
 </ul>
 
                 <div
                     id="example-c37271"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="ClearingNumberExample"></div>
+        <div id="example-94dd75"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./ClearingNumberExample-c519a2.js"></script>
+        <script type="module" src="./ClearingNumberExample-94dd75.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i clearingnummer:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i clearingnummer:</p>
                 <div
                     id="example-0b38f8"
                     class="code-preview code-preview--default"
@@ -2579,37 +2370,32 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Clearingnumret är inte rätt ifyllt. Kolla att det stämmer.</p>
-<p>Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Fyll i ett clearingnummer.</p>
-<h3 id="kontonummer_bankaccountnumber"><a class="header-anchor" href="#kontonummer_bankaccountnumber">Kontonummer <code>bankAccountNumber</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för kontonummer.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror, mellanslag, bindestreck, punkt och komma.</li>
-<li>Minsta antal tecken är tre.</li>
-<li>Det måste vara minst tre siffror.</li>
-<li>Max antal tecken är 16.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Clearingnumret är inte rätt ifyllt. Kolla att det stämmer.</p><p class="docs-paragraph">Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Fyll i ett clearingnummer.</p><h3 id="kontonummer_bankaccountnumber"><a class="header-anchor" href="#kontonummer_bankaccountnumber">Kontonummer <code>bankAccountNumber</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för kontonummer.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror, mellanslag, bindestreck, punkt och komma.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är tre.</p></li>
+<li><p class="docs-paragraph">Det måste vara minst tre siffror.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är 16.</p></li>
 </ul>
 
                 <div
                     id="example-7eaf80"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="BankAccountNumberExample"></div>
+        <div id="example-52fe12"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./BankAccountNumberExample-38b17c.js"></script>
+        <script type="module" src="./BankAccountNumberExample-52fe12.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i kontonummer:<br></p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i kontonummer:<br></p>
                 <div
                     id="example-0ad077"
                     class="code-preview code-preview--default"
@@ -2623,38 +2409,33 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kontonumret är inte rätt ifyllt. Kolla att det stämmer.</p>
-<p>Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Fyll i ett kontonummer.</p>
-<h3 id="plusgiro_plusgiro"><a class="header-anchor" href="#plusgiro_plusgiro">Plusgiro <code>plusgiro</code></a></h3><p>Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för plusgiro.</p>
-<p>Valideringskriterier:</p>
-<ul>
-<li>Tillåtna tecken är siffror och bindestreck.</li>
-<li>Minsta antal tecken är tre. Minst två tecken måste vara siffror.</li>
-<li>Max antal tecken är nio. Max åtta tecken får vara siffror.</li>
-<li>Bindestreck får bara vara på näst sista positionen.</li>
-<li>Checksumman ska stämma på det ifyllda värdet.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kontonumret är inte rätt ifyllt. Kolla att det stämmer.</p><p class="docs-paragraph">Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Fyll i ett kontonummer.</p><h3 id="plusgiro_plusgiro"><a class="header-anchor" href="#plusgiro_plusgiro">Plusgiro <code>plusgiro</code></a></h3><p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för plusgiro.</p><p class="docs-paragraph">Valideringskriterier:</p><ul>
+<li><p class="docs-paragraph">Tillåtna tecken är siffror och bindestreck.</p></li>
+<li><p class="docs-paragraph">Minsta antal tecken är tre. Minst två tecken måste vara siffror.</p></li>
+<li><p class="docs-paragraph">Max antal tecken är nio. Max åtta tecken får vara siffror.</p></li>
+<li><p class="docs-paragraph">Bindestreck får bara vara på näst sista positionen.</p></li>
+<li><p class="docs-paragraph">Checksumman ska stämma på det ifyllda värdet.</p></li>
 </ul>
 
                 <div
                     id="example-043dc9"
                     class="code-preview code-preview--default"
                     
-                    data-tags=nomarkup
+                    data-tags="nomarkup"
                     data-language="vue"
                 >
                     
                     <div class="code-preview__preview">
-        <div id="PlusgiroExample"></div>
+        <div id="example-309eed"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./PlusgiroExample-637367.js"></script>
+        <script type="module" src="./PlusgiroExample-309eed.js"></script>
     </div>
                 </div>
-            <p>Skriv så här i kod när användaren ska fylla i plusgiro:</p>
-
+            <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i plusgiro:</p>
                 <div
                     id="example-71e3a0"
                     class="code-preview code-preview--default"
@@ -2668,24 +2449,17 @@
  &gt;&lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <p>Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i plusgironumret med siffror och bindestreck.</p>
-<p>Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p>
-<ul>
-<li>obligatorisk <code>required</code>: Fyll i plusgironumret.</li>
-<li>maxlängd <code>maxLength</code>: Plusgironumret kan inte ha mer än 11 tecken.</li>
+            <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i plusgironumret med siffror och bindestreck.</p><p class="docs-paragraph">Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:</p><ul>
+<li><p class="docs-paragraph">obligatorisk <code>required</code>: Fyll i plusgironumret.</p></li>
+<li><p class="docs-paragraph">maxlängd <code>maxLength</code>: Plusgironumret kan inte ha mer än 11 tecken.</p></li>
 </ul>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p>
-<p><a href="../../guides/validation-and-error-handling/custom-validator.html">Validator anpassad</a></p>
-<p><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p>
-<p><a href="../input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
-
+<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/custom-validator.html">Validator anpassad</a></p><p class="docs-paragraph"><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p><p class="docs-paragraph"><a href="../input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
 
                     </div>
                 </main>
             </div>
 
-            <footer>
-                <!-- prettier-ignore --><div class="footer__left">
+            <footer><div class="footer__left">
     <h1>Kontakta oss</h1>
     <ul>
         <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
@@ -2695,13 +2469,9 @@
 
 <div class="footer__center"></div>
 
-<div class="footer__right">
-    <!-- prettier-ignore -->
-    <div class="version">
-    <!-- prettier-ignore -->
-    docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/863709a0ba28ad42c41081cb3402a0398f71778f">863709a</a>)<br />
+<div class="footer__right"><div class="version">docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/96ea38c4d01133ef054df56a6b42444f6b6cfe45">96ea38c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/252">PR 252</a><br />
-        2025-02-05 12:20
+        2025-04-16 12:01
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2716,7 +2486,7 @@
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -2740,9 +2510,7 @@
     </ul>
 </div>
 </footer>
-        </div>
-
-        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+        </div><div aria-hidden="true" style="display: none">
     <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
         <symbol id="docs-icon-search" viewBox="0 0 512 512">
             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -2785,9 +2553,7 @@
             ></path>
         </symbol>
     </svg>
-</div>
-<!-- prettier-ignore -->
-        <dialog id="search-dialog">
+</div><dialog id="search-dialog">
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
@@ -2811,26 +2577,23 @@
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog>
-
-
-        <!-- prettier-ignore -->
-        <script
-            src="../../assets/processors/motd/index-8c87e1.js"
+</dialog><script
+            src="../../assets/processors/motd/index-fd9bb8.js"
+            type="module"
             crossorigin
-            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
-        ></script>
-        <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            type="module"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
             
-        ></script>
-        <script
-            src="../../assets/main-7b9d0f.js"
+        ></script><script
+            src="../../assets/main-a45256.js"
+            type="module"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
             
         ></script>
     </body>

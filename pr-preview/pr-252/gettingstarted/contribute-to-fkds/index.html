@@ -4,52 +4,45 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Bidra till designsystemet - FK Designsystem</title>
-
-        <!-- prettier-ignore -->
-        <link
+        <title>Bidra till designsystemet - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-120737.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-IusWRxbEFv97KrDAoXUDrjxs26QwiFGM4uNsNu6tehe9kz8ExiXlBbuU0qMGMn68"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-4ecb6d.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-CC6Vb3lD+/MxRQkRAEekVk7Fo0SZFS6JwkUWKQWZwFuguHLB6tQ0+3tFeeqDSTwr"
+            data-theme="fkui" disabled
         />
 
-        <!-- prettier-ignore -->
-        <script
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-a5c2ba.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../../assets/vendor-fkui-vue-a5c2ba.js": "sha384-2qBBQIeHwEp7NYAe7ys6dix3AK/FbwmOgpKxFSKoYe+7vfvctONnl35dhu4KTKa2",
+    "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
             src="../../assets/bootstrap-956ec3.js"
+            
             crossorigin
             integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
             
-        ></script>
-
-        <!-- prettier-ignore -->
-        <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
+        ></script><script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,17 +82,14 @@
 
         <link
             rel="preload"
-            href="../../search-data-c0e456.json"
+            href="../../search-data-f416bf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LF46wM8JoZsvVD+puNCMk1Yx9OWk8IbcgdbnXDwxC6EByS5JjFmjHO7u4gC6JR56"
+            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
             id="search-data"
         />
     </head>
-    <body>
-        <!-- prettier-ignore -->
-        
-<template id="motd-message">
+    <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
         <span class="icon-stack icon-stack--info">
@@ -139,20 +129,14 @@
 
 
         <div class="layout-wrapper">
-            <header>
-                <!-- prettier-ignore --><div class="page-header__root">
+            <header><div class="page-header__root">
     <div class="page-header">
         <a class="page-header__logo" href="../../index.html">
             <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
         <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
-    <ul class="docs-topnav__list">
-        <!-- prettier-ignore -->
-        
-        
-        
-        <li class="docs-topnav__item ">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../"> Kom igång </a>
         </li>
         
@@ -191,12 +175,7 @@
                 </svg>
             </button>
             <div class="docs-contextmenu">
-                <ul class="docs-contextmenu__list">
-                    <!-- prettier-ignore -->
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item " style="display: none">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="../"> Kom igång </a>
                     </li>
                     
@@ -243,55 +222,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -299,277 +229,293 @@
 </div>
 </header>
 
-            <div id="primary">
-                <!-- prettier-ignore -->
-<div id="sidenav">
+            <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+<ol><li class="expandable ">
         <details >
             <summary>Använda designsystemet</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../use-design-system/getting-started.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/getting-started.html"
             
         >
             Kom igång
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../use-design-system/getting-started-application.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/getting-started-application.html"
             
         >
             Ta fram applikation
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../use-design-system/icon-library.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/icon-library.html"
             
         >
             Skapa eget ikonbibliotek
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable active">
+    </li><li class="expandable active">
         <details open>
             <summary>Bidra till designsystemet</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+<ol><li class="link active">
         <a
             href="./"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/"
             
         >
             Bidra till designsystemet
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./contributing-developers.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/contributing-developers.html"
             
         >
             För utvecklare
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./release.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/release.html"
             
         >
             Releaseprocess
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./testing.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/testing.html"
             
         >
             Automatisk testning
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./checklist-publication.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/checklist-publication.html"
             
         >
             Checklista vid publicering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./commits.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/commits.html"
             
         >
             Commits och commitmeddelanden
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./testverktyg.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/testverktyg.html"
             
         >
             Testverktyg
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Om designsystemet</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../about/"
+            
+            
+            
+            data-path="gettingstarted/about/"
             
         >
             Designsystemet
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../about/news.html"
+            
+            
+            
+            data-path="gettingstarted/about/news.html"
             
         >
             Nyheter
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../about/release-plan.html"
             
+            
+            
+            data-path="gettingstarted/about/release-plan.html"
+            
         >
-            Releaseplan
+            På gång
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../help-and-support.html"
+            
+            
+            
+            data-path="gettingstarted/help-and-support.html"
             
         >
             Hjälp och support
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Migreringsguider</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../migration/migrating-to-fieldset.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-fieldset.html"
             
         >
             Fieldset migreringsguide
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../migration/migrating-to-v5.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v5.html"
             
         >
             Version 5 migreringsguide
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="expandable ">
+        <details >
+            <summary>Version 6 migreringsguide</summary>
+            
+            
+<ol><li class="link ">
         <a
-            href="../migration/migrating-to-v6.html"
+            href="../migration/migrating-to-v6/overview.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/overview.html"
             
         >
-            Version 6 migreringsguide
+            Sammanfattning
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li><li class="link ">
+        <a
+            href="../migration/migrating-to-v6/design.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migration/migrating-to-v6/logic.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/logic.html"
+            
+        >
+            @fkui/logic
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migration/migrating-to-v6/vue.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li><li class="link ">
+        <a
+            href="../migration/migrating-to-v6/cypress-pageobjects.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --></ol>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
 </nav>
-</div>
-
-
-                <!-- prettier-ignore -->
-                <script
-                    src="../../assets/vendor-vue-468cb1.js"
-                    crossorigin
-                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-logic-62a69f.js"
-                    crossorigin
-                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-date-7710bf.js"
-                    crossorigin
-                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
-                    crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
-                ></script>
-                <script
-                    src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
-                    crossorigin
-                    integrity="sha384-nSXnCy3XWIIfbEbIXNEJqSLQAEcC9s8jxUGnIw/HClLMcJP8KJDSvkJw7vxe9PgF"
-                ></script>
-
-                <!-- prettier-ignore --><main>
+</div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">Bidra till designsystemet</h1>
 
                     
-                    <div id="aside">
-                        <!-- prettier-ignore -->
-<dl>
-    <!-- prettier-ignore -->
-    
-</dl>
+                    <div id="aside"><dl></dl>
 
 
                         
@@ -593,97 +539,75 @@
                     </div>
                     
 
-                    <div id="content">
-                        <!-- prettier-ignore -->
-<p>Du kan bidra till designsystemet på många sätt. Läs igenom guiden nedan innan du sätter igång.</p>
-<p>Du kan bidra med följande:</p>
-<ul>
-<li>kontakta FKDS-teamet (<a href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a>) och se vad du kan hjälpa till med</li>
-<li>föreslå ny komponent, funktionalitet, mönster eller uppdatera designsystemets webbplats</li>
-<li>ge förbättringsförslag, rapportera och fixa buggar</li>
-<li>lägga en pull request.</li>
+                    <div id="content"><p class="docs-paragraph">Du kan bidra till designsystemet på många sätt. Läs igenom guiden nedan innan du sätter igång.</p><p class="docs-paragraph">Du kan bidra med följande:</p><ul>
+<li><p class="docs-paragraph">kontakta FKDS-teamet (<a href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a>) och se vad du kan hjälpa till med</p></li>
+<li><p class="docs-paragraph">föreslå ny komponent, funktionalitet, mönster eller uppdatera designsystemets webbplats</p></li>
+<li><p class="docs-paragraph">ge förbättringsförslag, rapportera och fixa buggar</p></li>
+<li><p class="docs-paragraph">lägga en pull request.</p></li>
 </ul>
-<h2 id="uppdatera_dokumentation"><a class="header-anchor" href="#uppdatera_dokumentation">Uppdatera dokumentation</a></h2><p>Kontakta FKDS-teamet eller lägg en pull request.</p>
-<h2 id="foresla_ett_nytt_monster"><a class="header-anchor" href="#foresla_ett_nytt_monster">Föreslå ett nytt mönster</a></h2><p>Kontakta FKDS-teamet om du saknar ett mönster eller vill ändra på något.
-Du kan också lägga en pull request.</p>
-<h2 id="ny_komponent_eller_funktionalitet"><a class="header-anchor" href="#ny_komponent_eller_funktionalitet">Ny komponent eller funktionalitet</a></h2><p>Varje komponent som läggs till designsystemet består av tre delar:</p>
-<ul>
-<li>design</li>
-<li>dokumentation</li>
-<li>kod</li>
+<h2 id="uppdatera_dokumentation"><a class="header-anchor" href="#uppdatera_dokumentation">Uppdatera dokumentation</a></h2><p class="docs-paragraph">Kontakta FKDS-teamet eller lägg en pull request.</p><h2 id="foresla_ett_nytt_monster"><a class="header-anchor" href="#foresla_ett_nytt_monster">Föreslå ett nytt mönster</a></h2><p class="docs-paragraph">Kontakta FKDS-teamet om du saknar ett mönster eller vill ändra på något.
+Du kan också lägga en pull request.</p><h2 id="ny_komponent_eller_funktionalitet"><a class="header-anchor" href="#ny_komponent_eller_funktionalitet">Ny komponent eller funktionalitet</a></h2><p class="docs-paragraph">Varje komponent som läggs till designsystemet består av tre delar:</p><ul>
+<li><p class="docs-paragraph">design</p></li>
+<li><p class="docs-paragraph">dokumentation</p></li>
+<li><p class="docs-paragraph">kod</p></li>
 </ul>
-<p>Du kan bidra i vilken del som helst, men alla tre delarna måste vara implementerade och validerade innan en komponent kan släppas.
-Kontakta FKDS-teamet innan du påbörjar arbetet.</p>
-<h3 id="design"><a class="header-anchor" href="#design">Design</a></h3><p>Komponent eller ny funktionalitet ska följa våra grafiska riktlinjer (färgpalett, ikoner och typografi) och mönster.
+<p class="docs-paragraph">Du kan bidra i vilken del som helst, men alla tre delarna måste vara implementerade och validerade innan en komponent kan släppas.
+Kontakta FKDS-teamet innan du påbörjar arbetet.</p><h3 id="design"><a class="header-anchor" href="#design">Design</a></h3><p class="docs-paragraph">Komponent eller ny funktionalitet ska följa våra grafiska riktlinjer (färgpalett, ikoner och typografi) och mönster.
 Den ska också uppfylla krav på tillgänglighet som till exemepel kontrast.
-Riktlinjer och mönster för komponenten beskrivs på den här webbplatsen.</p>
-<h3 id="dokumentation"><a class="header-anchor" href="#dokumentation">Dokumentation</a></h3><p>Användardokumentationen behöver uppdateras vid ny eller ändrad komponent/funktionalitet.
+Riktlinjer och mönster för komponenten beskrivs på den här webbplatsen.</p><h3 id="dokumentation"><a class="header-anchor" href="#dokumentation">Dokumentation</a></h3><p class="docs-paragraph">Användardokumentationen behöver uppdateras vid ny eller ändrad komponent/funktionalitet.
 Användardokumentationen ligger på den här webbplatsen och kan bestå av beskrivning, live-exempel, riktlinjer, designmönster och API.
 All dokumentation på webbplatsen ska vara på svenska.
-Undantag är referenser till koden.</p>
-<h3 id="kod"><a class="header-anchor" href="#kod">Kod</a></h3><p>Vi förväntar oss följande när du bidrar med kod till designsystemet</p>
-<ul>
-<li>logik ska läggas i FKUI:s logik-paket</li>
-<li>komponenter ska läggas i FKUI:s vue-paket</li>
-<li>all kod har automatiska testfall</li>
-<li>api-dokumentation (slots, props &amp; events) uppdateras</li>
-<li>cypress-tester där det är relevant</li>
-<li>skärmdumpar (screenshots) vid behov</li>
+Undantag är referenser till koden.</p><h3 id="kod"><a class="header-anchor" href="#kod">Kod</a></h3><p class="docs-paragraph">Vi förväntar oss följande när du bidrar med kod till designsystemet</p><ul>
+<li><p class="docs-paragraph">logik ska läggas i FKUI:s logik-paket</p></li>
+<li><p class="docs-paragraph">komponenter ska läggas i FKUI:s vue-paket</p></li>
+<li><p class="docs-paragraph">all kod har automatiska testfall</p></li>
+<li><p class="docs-paragraph">api-dokumentation (slots, props &amp; events) uppdateras</p></li>
+<li><p class="docs-paragraph">cypress-tester där det är relevant</p></li>
+<li><p class="docs-paragraph">skärmdumpar (screenshots) vid behov</p></li>
 </ul>
-<h4 id="verktyg"><a class="header-anchor" href="#verktyg">Verktyg</a></h4><p>Beroende på vad du vill bidra med behöver du tillgång till GitHub.</p>
-<h4 id="lagga_en_pull_request"><a class="header-anchor" href="#lagga_en_pull_request">Lägga en pull request</a></h4><p>Lägg upp din pull request mot master. Alla pull requests är välkomna.
-Om din pull request inte är redo för granskning, skapa istället en draft pull request.</p>
-<p>För att kunna göra ändringar i FKUI i din utvecklingsmiljö behöver du göra följande</p>
-<ol>
-<li>Klona FKUI-repo</li>
-<li>Sätt upp din utvecklingsmiljö</li>
-<li>Skapa en branch där du kan göra dina ändringar.<br> Branchnamn ska börja med feature/bugfix/docs. Dela gärna upp större ändringar i mindre delar, vilket ibland kräver att du har flera pull requests.<br> Kom ihåg att använda korta och beskrivande commit-meddelande.</li>
+<h4 id="verktyg"><a class="header-anchor" href="#verktyg">Verktyg</a></h4><p class="docs-paragraph">Beroende på vad du vill bidra med behöver du tillgång till GitHub.</p><h4 id="lagga_en_pull_request"><a class="header-anchor" href="#lagga_en_pull_request">Lägga en pull request</a></h4><p class="docs-paragraph">Lägg upp din pull request mot master. Alla pull requests är välkomna.
+Om din pull request inte är redo för granskning, skapa istället en draft pull request.</p><p class="docs-paragraph">För att kunna göra ändringar i FKUI i din utvecklingsmiljö behöver du göra följande</p><ol>
+<li><p class="docs-paragraph">Klona FKUI-repo</p></li>
+<li><p class="docs-paragraph">Sätt upp din utvecklingsmiljö</p></li>
+<li><p class="docs-paragraph">Skapa en branch där du kan göra dina ändringar.<br> Branchnamn ska börja med feature/bugfix/docs. Dela gärna upp större ändringar i mindre delar, vilket ibland kräver att du har flera pull requests.<br> Kom ihåg att använda korta och beskrivande commit-meddelande.</p></li>
 </ol>
 <ul>
-<li>feature - om du tänker ändra API eller lägga till ny funktionalitet</li>
-<li>bugfix - om du tänker göra en kodändring för att lösa ett problem</li>
-<li>docs - om du tänker uppdatera dokumentation.</li>
+<li><p class="docs-paragraph">feature - om du tänker ändra API eller lägga till ny funktionalitet</p></li>
+<li><p class="docs-paragraph">bugfix - om du tänker göra en kodändring för att lösa ett problem</p></li>
+<li><p class="docs-paragraph">docs - om du tänker uppdatera dokumentation.</p></li>
 </ul>
 <ol start="4">
-<li>Om dina kodändringar behöver testas, lägg till testfall. Lägg till de enhetstester, komponenttester och e2e-tester som är relevanta, se mer under avsnitt Test.</li>
-<li>Kontrollera att dina ändringar följer krav på vad som är tillåtet att publicera för kod och dokumentation, se <a href="./checklist-publication.html">checklista</a>.</li>
-<li>Lägg din pull request i GitHub.<br> Försäkra dig om att inget liknande arbete pågår för att förhindra överlappande arbete.</li>
-<li>FKDS-teamet kommer granska din pull request och återkoppla. Vi granskar utifrån följande kriterier</li>
+<li><p class="docs-paragraph">Om dina kodändringar behöver testas, lägg till testfall. Lägg till de enhetstester, komponenttester och e2e-tester som är relevanta, se mer under avsnitt Test.</p></li>
+<li><p class="docs-paragraph">Kontrollera att dina ändringar följer krav på vad som är tillåtet att publicera för kod och dokumentation, se <a href="./checklist-publication.html">checklista</a>.</p></li>
+<li><p class="docs-paragraph">Lägg din pull request i GitHub.<br> Försäkra dig om att inget liknande arbete pågår för att förhindra överlappande arbete.</p></li>
+<li><p class="docs-paragraph">FKDS-teamet kommer granska din pull request och återkoppla. Vi granskar utifrån följande kriterier</p></li>
 </ol>
 <ul>
-<li>tillgänglighet</li>
-<li>användbarhet</li>
-<li>grafisk profil</li>
-<li>funktion och prestanda</li>
-<li>säkerhet</li>
-<li>lätt att underhålla.</li>
+<li><p class="docs-paragraph">tillgänglighet</p></li>
+<li><p class="docs-paragraph">användbarhet</p></li>
+<li><p class="docs-paragraph">grafisk profil</p></li>
+<li><p class="docs-paragraph">funktion och prestanda</p></li>
+<li><p class="docs-paragraph">säkerhet</p></li>
+<li><p class="docs-paragraph">lätt att underhålla.</p></li>
 </ul>
-<p><a href="./contributing-developers.html">Läs mer om kommandon, commits och release-hanteringen i FKUI</a></p>
-<h4 id="test"><a class="header-anchor" href="#test">Test</a></h4><p>Vi har enhetstester, komponenttester och E2E-tester i FKUI.</p>
-<p>Enhetstester med jest-tester</p>
-<ul>
-<li>logik</li>
-<li>events</li>
-<li>props</li>
-<li>regler för HTML-validate.</li>
+<p class="docs-paragraph"><a href="./contributing-developers.html">Läs mer om kommandon, commits och release-hanteringen i FKUI</a></p><h4 id="test"><a class="header-anchor" href="#test">Test</a></h4><p class="docs-paragraph">Vi har enhetstester, komponenttester och E2E-tester i FKUI.</p><p class="docs-paragraph">Enhetstester med jest-tester</p><ul>
+<li><p class="docs-paragraph">logik</p></li>
+<li><p class="docs-paragraph">events</p></li>
+<li><p class="docs-paragraph">props</p></li>
+<li><p class="docs-paragraph">regler för HTML-validate.</p></li>
 </ul>
-<p>Komponenttester med cypress-tester</p>
-<ul>
-<li>enskilda komponenter</li>
-<li>interaktion med komponenten.</li>
+<p class="docs-paragraph">Komponenttester med cypress-tester</p><ul>
+<li><p class="docs-paragraph">enskilda komponenter</p></li>
+<li><p class="docs-paragraph">interaktion med komponenten.</p></li>
 </ul>
-<p>E2E-tester med cypress-tester</p>
-<ul>
-<li>interaktion mellan flera komponenter</li>
-<li>exempel i dokumentation.</li>
+<p class="docs-paragraph">E2E-tester med cypress-tester</p><ul>
+<li><p class="docs-paragraph">interaktion mellan flera komponenter</p></li>
+<li><p class="docs-paragraph">exempel i dokumentation.</p></li>
 </ul>
-<p>Undvik större mängder av mockning för enkelhetens skull och test av implementationsdetaljer.
+<p class="docs-paragraph">Undvik större mängder av mockning för enkelhetens skull och test av implementationsdetaljer.
 Testa till exempel hellre att en komponent inte är synlig än att funktionen <code>hideComponent</code> används.
-På så sätt undviker vi &quot;false negatives&quot; om vi skulle ändra namnet på funktionen eller &quot;false positives&quot; om funktionen går sönder och inte döljer komponenten.</p>
-<p>Försäkra dig om att testfallen och regressionstesterna går igenom. Kom ihåg att lägga till uppdaterade skärmdumpar (screenshots).
-Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skärmstorlekar på olika enheter och webbläsare.</p>
-<p>Du hittar åtgärder som du kan göra i GitBash och tillhörande kommando i tabellen nedan.</p>
-<table class="table">
+På så sätt undviker vi &quot;false negatives&quot; om vi skulle ändra namnet på funktionen eller &quot;false positives&quot; om funktionen går sönder och inte döljer komponenten.</p><p class="docs-paragraph">Försäkra dig om att testfallen och regressionstesterna går igenom. Kom ihåg att lägga till uppdaterade skärmdumpar (screenshots).
+Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skärmstorlekar på olika enheter och webbläsare.</p><p class="docs-paragraph">Du hittar åtgärder som du kan göra i GitBash och tillhörande kommando i tabellen nedan.</p><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Åtgärd</th>
@@ -705,20 +629,15 @@ Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skär
 </tr>
 </tbody>
 </table>
-<p><a href="./testing.html">Läs mer om test här</a></p>
-<h2 id="buggar_och_forbattringsforslag"><a class="header-anchor" href="#buggar_och_forbattringsforslag">Buggar och förbättringsförslag</a></h2><p>Du kan rapportera buggar genom att följa instruktionen på sidan <a href="../help-and-support.html#rapportera_buggar#">Hjälp och support</a>.
+<p class="docs-paragraph"><a href="./testing.html">Läs mer om test här</a></p><h2 id="buggar_och_forbattringsforslag"><a class="header-anchor" href="#buggar_och_forbattringsforslag">Buggar och förbättringsförslag</a></h2><p class="docs-paragraph">Du kan rapportera buggar genom att följa instruktionen på sidan <a href="../help-and-support.html#rapportera_buggar#">Hjälp och support</a>.
 Vi ser gärna att du och ditt team bidrar genom att lösa de buggar ni själva hittar.
-Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../help-and-support.html">Hjälp och support</a></p>
-<p><a href="..">Kom igång</a></p>
-
+Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../help-and-support.html">Hjälp och support</a></p><p class="docs-paragraph"><a href="..">Kom igång</a></p>
 
                     </div>
                 </main>
             </div>
 
-            <footer>
-                <!-- prettier-ignore --><div class="footer__left">
+            <footer><div class="footer__left">
     <h1>Kontakta oss</h1>
     <ul>
         <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
@@ -728,13 +647,9 @@ Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right">
-    <!-- prettier-ignore -->
-    <div class="version">
-    <!-- prettier-ignore -->
-    docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/863709a0ba28ad42c41081cb3402a0398f71778f">863709a</a>)<br />
+<div class="footer__right"><div class="version">docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/96ea38c4d01133ef054df56a6b42444f6b6cfe45">96ea38c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/252">PR 252</a><br />
-        2025-02-05 12:20
+        2025-04-16 12:01
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -749,7 +664,7 @@ Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p>
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -773,9 +688,7 @@ Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p>
     </ul>
 </div>
 </footer>
-        </div>
-
-        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+        </div><div aria-hidden="true" style="display: none">
     <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
         <symbol id="docs-icon-search" viewBox="0 0 512 512">
             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -818,9 +731,7 @@ Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p>
             ></path>
         </symbol>
     </svg>
-</div>
-<!-- prettier-ignore -->
-        <dialog id="search-dialog">
+</div><dialog id="search-dialog">
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
@@ -844,26 +755,23 @@ Du behöver inte kontakta FKDS-teamet utan lägg en pull request direkt.</p>
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog>
-
-
-        <!-- prettier-ignore -->
-        <script
-            src="../../assets/processors/motd/index-8c87e1.js"
+</dialog><script
+            src="../../assets/processors/motd/index-fd9bb8.js"
+            type="module"
             crossorigin
-            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
-        ></script>
-        <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            type="module"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
             
-        ></script>
-        <script
-            src="../../assets/main-7b9d0f.js"
+        ></script><script
+            src="../../assets/main-a45256.js"
+            type="module"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
             
         ></script>
     </body>

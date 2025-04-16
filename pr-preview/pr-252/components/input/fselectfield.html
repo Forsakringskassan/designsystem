@@ -4,52 +4,45 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Dropplista - FK Designsystem</title>
-
-        <!-- prettier-ignore -->
-        <link
+        <title>Dropplista - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-120737.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-IusWRxbEFv97KrDAoXUDrjxs26QwiFGM4uNsNu6tehe9kz8ExiXlBbuU0qMGMn68"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-4ecb6d.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-CC6Vb3lD+/MxRQkRAEekVk7Fo0SZFS6JwkUWKQWZwFuguHLB6tQ0+3tFeeqDSTwr"
+            data-theme="fkui" disabled
         />
 
-        <!-- prettier-ignore -->
-        <script
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-a5c2ba.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../../assets/vendor-fkui-vue-a5c2ba.js": "sha384-2qBBQIeHwEp7NYAe7ys6dix3AK/FbwmOgpKxFSKoYe+7vfvctONnl35dhu4KTKa2",
+    "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
             src="../../assets/bootstrap-956ec3.js"
+            
             crossorigin
             integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
             
-        ></script>
-
-        <!-- prettier-ignore -->
-        <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
+        ></script><script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,17 +82,14 @@
 
         <link
             rel="preload"
-            href="../../search-data-c0e456.json"
+            href="../../search-data-f416bf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LF46wM8JoZsvVD+puNCMk1Yx9OWk8IbcgdbnXDwxC6EByS5JjFmjHO7u4gC6JR56"
+            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
             id="search-data"
         />
     </head>
-    <body>
-        <!-- prettier-ignore -->
-        
-<template id="motd-message">
+    <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
         <span class="icon-stack icon-stack--info">
@@ -139,20 +129,14 @@
 
 
         <div class="layout-wrapper">
-            <header>
-                <!-- prettier-ignore --><div class="page-header__root">
+            <header><div class="page-header__root">
     <div class="page-header">
         <a class="page-header__logo" href="../../index.html">
             <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
         <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
-    <ul class="docs-topnav__list">
-        <!-- prettier-ignore -->
-        
-        
-        
-        <li class="docs-topnav__item ">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
         </li>
         
@@ -191,12 +175,7 @@
                 </svg>
             </button>
             <div class="docs-contextmenu">
-                <ul class="docs-contextmenu__list">
-                    <!-- prettier-ignore -->
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item " style="display: none">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
                     </li>
                     
@@ -243,55 +222,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -299,815 +229,816 @@
 </div>
 </header>
 
-            <div id="primary">
-                <!-- prettier-ignore -->
-<div id="sidenav">
+            <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../fbadge.html"
+            
+            
+            
+            data-path="components/fbadge.html"
             
         >
             Bricka
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../chip.html"
+            
+            
+            
+            data-path="components/chip.html"
             
         >
             Chip
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fdialoguetree.html"
+            
+            
+            
+            data-path="components/fdialoguetree.html"
             
         >
             Dialogträd
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../flabel.html"
+            
+            
+            
+            data-path="components/flabel.html"
             
         >
             Etikett
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Expanderbara ytor</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../expandable/fexpandablepanel.html"
+            
+            
+            
+            data-path="components/expandable/fexpandablepanel.html"
             
         >
             Expanderbar panel
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../expandable/fexpand.html"
+            
+            
+            
+            data-path="components/expandable/fexpand.html"
             
         >
             Expanderbart innehåll
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../expandable/fexpandableparagraph.html"
+            
+            
+            
+            data-path="components/expandable/fexpandableparagraph.html"
             
         >
             Expanderbart stycke
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Filuppladdning</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../file-upload/ffileitem.html"
+            
+            
+            
+            data-path="components/file-upload/ffileitem.html"
             
         >
             Filpresentatör
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../file-upload/ffileselector.html"
+            
+            
+            
+            data-path="components/file-upload/ffileselector.html"
             
         >
             Filväljare
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Gruppera</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../group/ffieldset.html"
+            
+            
+            
+            data-path="components/group/ffieldset.html"
             
         >
             Fältgruppering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../group/"
+            
+            
+            
+            data-path="components/group/"
             
         >
             Komponentgrupp
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../ficon.html"
+            
+            
+            
+            data-path="components/ficon.html"
             
         >
             Ikon
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable active">
+    </li><li class="expandable active">
         <details open>
             <summary>Inmatning</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="./ftextfield.html"
+            
+            
+            
+            data-path="components/input/ftextfield.html"
             
         >
             Inmatningsfält
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./fdatepickerfield.html"
+            
+            
+            
+            data-path="components/input/fdatepickerfield.html"
             
         >
             Datumväljare
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+    </li><li class="link active">
         <a
             href="./fselectfield.html"
+            
+            
+            
+            data-path="components/input/fselectfield.html"
             
         >
             Dropplista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./ftextareafield.html"
+            
+            
+            
+            data-path="components/input/ftextareafield.html"
             
         >
             Flerradigt inmatningsfält
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./combobox.html"
+            
+            
+            
+            data-path="components/input/combobox.html"
             
         >
             Kombobox
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./fcheckboxfield.html"
+            
+            
+            
+            data-path="components/input/fcheckboxfield.html"
             
         >
             Kryssruta
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./fradiofield.html"
+            
+            
+            
+            data-path="components/input/fradiofield.html"
             
         >
             Radioknapp
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./textfield-specialized.html"
+            
+            
+            
+            data-path="components/input/textfield-specialized.html"
             
         >
             Specialiserade inmatningsfält
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcalendar.html"
+            
+            
+            
+            data-path="components/fcalendar.html"
             
         >
             Kalender
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../button.html"
+            
+            
+            
+            data-path="components/button.html"
             
         >
             Knapp
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcontextmenu.html"
+            
+            
+            
+            data-path="components/fcontextmenu.html"
             
         >
             Kontextmeny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcard.html"
+            
+            
+            
+            data-path="components/fcard.html"
             
         >
             Kort
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Ladda innehåll</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../load/fprogressbar.html"
+            
+            
+            
+            data-path="components/load/fprogressbar.html"
             
         >
             Förloppsindikator
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../load/floader.html"
+            
+            
+            
+            data-path="components/load/floader.html"
             
         >
             Laddningsindikator
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="link ">
+        <a
+            href="../flogo.html"
+            
+            
+            
+            data-path="components/flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><li class="expandable ">
         <details >
             <summary>Länkar</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../links/anchor.html"
+            
+            
+            
+            data-path="components/links/anchor.html"
             
         >
             Länk
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../links/entrypoint.html"
+            
+            
+            
+            data-path="components/links/entrypoint.html"
             
         >
             Startpunkt
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fmessagebox.html"
+            
+            
+            
+            data-path="components/fmessagebox.html"
             
         >
             Meddelanderuta
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Modal</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../modal/fconfirmmodal.html"
+            
+            
+            
+            data-path="components/modal/fconfirmmodal.html"
             
         >
             Bekräftelsemodal
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../modal/fformmodal.html"
+            
+            
+            
+            data-path="components/modal/fformmodal.html"
             
         >
             Formulärsmodal
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../modal/fmodal.html"
+            
+            
+            
+            data-path="components/modal/fmodal.html"
             
         >
             Modal dialogruta
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../foffline.html"
+            
+            
+            
+            data-path="components/foffline.html"
             
         >
             Offline
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Presentationsfält</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../presentation/foutputfield.html"
+            
+            
+            
+            data-path="components/presentation/foutputfield.html"
             
         >
             Presentationsfält - dynamiskt
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../presentation/fstaticfield.html"
+            
+            
+            
+            data-path="components/presentation/fstaticfield.html"
             
         >
             Presentationsfält - statiskt
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Ramverkskomponenter</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../framework/ianimateexpand.html"
+            
+            
+            
+            data-path="components/framework/ianimateexpand.html"
             
         >
             Animerad expandering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iflexitem.html"
+            
+            
+            
+            data-path="components/framework/iflexitem.html"
             
         >
             Flex Item
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iflex.html"
+            
+            
+            
+            data-path="components/framework/iflex.html"
             
         >
             Flexibel positionering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iskiplink.html"
+            
+            
+            
+            data-path="components/framework/iskiplink.html"
             
         >
             Gå till innehåll
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarmonth.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonth.html"
             
         >
             Kalendermånad
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarnavbar.html"
+            
+            
+            
+            data-path="components/framework/icalendarnavbar.html"
             
         >
             Kalendernavigering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarmonthgrid.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonthgrid.html"
             
         >
             Kalenderrutnät
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopup.html"
+            
+            
+            
+            data-path="components/framework/ipopup.html"
             
         >
             Popup
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopupmenu.html"
+            
+            
+            
+            data-path="components/framework/ipopupmenu.html"
             
         >
             Popup-meny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopuperror.html"
+            
+            
+            
+            data-path="components/framework/ipopuperror.html"
             
         >
             PopupError
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Sidlayout</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../page-layout/application-layout.html"
+            
+            
+            
+            data-path="components/page-layout/application-layout.html"
             
         >
             Applikationslayout
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
+        <a
+            href="../page-layout/fpagelayout.html"
+            
+            
+            
+            data-path="components/page-layout/fpagelayout.html"
+            
+        >
+            Applikationsmall
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fresizepane.html"
+            
+            
+            
+            data-path="components/page-layout/fresizepane.html"
+            
+        >
+            Justerbar yta
+        </a>
+    </li><li class="link ">
         <a
             href="../page-layout/fnavigationmenu.html"
+            
+            
+            
+            data-path="components/page-layout/fnavigationmenu.html"
             
         >
             Navigeringsmeny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../page-layout/fpageheader.html"
+            
+            
+            
+            data-path="components/page-layout/fpageheader.html"
             
         >
             Sidhuvud
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fwizard.html"
+            
+            
+            
+            data-path="components/fwizard.html"
             
         >
             Steg för steg-guide
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Tabell och lista</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../table-and-list/table.html"
+            
+            
+            
+            data-path="components/table-and-list/table.html"
             
         >
             Tabell
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/flist.html"
+            
+            
+            
+            data-path="components/table-and-list/flist.html"
             
         >
             Lista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/fcruddataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fcruddataset.html"
             
         >
             Datamängdredigerare
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/fsortfilterdataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fsortfilterdataset.html"
             
         >
             Datamängdsorterare
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../ftooltip.html"
+            
+            
+            
+            data-path="components/ftooltip.html"
             
         >
             Tooltip
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Validering</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../validation/ferrorlist.html"
+            
+            
+            
+            data-path="components/validation/ferrorlist.html"
             
         >
             Fellista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../validation/formatters-and-parsers.html"
+            
+            
+            
+            data-path="components/validation/formatters-and-parsers.html"
             
         >
             Formaterare och parsers
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../validation/validators.html"
+            
+            
+            
+            data-path="components/validation/validators.html"
             
         >
             Validatorer
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../validation/fvalidationgroup.html"
+            
+            
+            
+            data-path="components/validation/fvalidationgroup.html"
             
         >
             Validering samlad
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../validation/fvalidationform.html"
+            
+            
+            
+            data-path="components/validation/fvalidationform.html"
             
         >
             Valideringsformulär
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --></ol>
+    </li></ol>
 </nav>
-</div>
-
-
-                <!-- prettier-ignore -->
-                <script
-                    src="../../assets/vendor-vue-468cb1.js"
-                    crossorigin
-                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-logic-62a69f.js"
-                    crossorigin
-                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-date-7710bf.js"
-                    crossorigin
-                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
-                    crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
-                ></script>
-                <script
-                    src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
-                    crossorigin
-                    integrity="sha384-nSXnCy3XWIIfbEbIXNEJqSLQAEcC9s8jxUGnIw/HClLMcJP8KJDSvkJw7vxe9PgF"
-                ></script>
-
-                <!-- prettier-ignore --><main>
+</div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">Dropplista</h1>
 
                     
-                    <div id="aside">
-                        <!-- prettier-ignore -->
-<dl>
-    <!-- prettier-ignore -->
-    
-    <dt>Komponent</dt>
+                    <div id="aside"><dl><dt>Komponent</dt>
     <dd>
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/863709a0ba28ad42c41081cb3402a0398f71778f/packages/vue/src/components/FSelectField/FSelectField.vue">FSelectField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/96ea38c4d01133ef054df56a6b42444f6b6cfe45/packages/vue/src/components/FSelectField/FSelectField.vue">FSelectField</a>
             
         </code>
          
-    </dd>
-    
-
-    <!-- prettier-ignore -->
-    
-    <dt>Status</dt>
+    </dd><dt>Status</dt>
     <dd>
         <div class="badge badge--success">Produktionsklar</div>
     </dd>
@@ -1132,33 +1063,25 @@
                     </div>
                     
 
-                    <div id="content">
-                        <!-- prettier-ignore -->
-<p>Använd dropplista när användaren ska välja ett av flera liknande, fördefinierade alternativ. En dropplista måste ha minst två alternativ men används oftast då det finns fyra val eller fler.</p>
-
+                    <div id="content"><p class="docs-paragraph">Använd dropplista när användaren ska välja ett av flera liknande, fördefinierade alternativ. En dropplista måste ha minst två alternativ men används oftast då det finns fyra val eller fler.</p>
                 <div
                     id="example-c6f911"
                     class="code-preview code-preview--borderless"
                     data-test="live"
-                    data-tags=live-example
+                    data-tags="live-example"
                     data-language="vue"
                 >
                     
-        <div id="FSelectFieldLiveExample"></div>
+        <div id="example-25db7c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FSelectFieldLiveExample-236f7d.js"></script>
+        <script type="module" src="./FSelectFieldLiveExample-25db7c.js"></script>
     
                 </div>
-            <p>Dropplista har alltid en etikett som beskriver vad användaren ska fylla i.</p>
-<h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p>I dropplistor är det vanligt att etiketten är formulerad som en fråga eller ett påstående.</p>
-<p>Texten i själva dropplistan formuleras så att det blir tydligt vad användaren ska fylla i, men får inte ensam beskriva valet då den försvinner när användaren gjort ett val.</p>
-<h2 id="responsiv_bredd"><a class="header-anchor" href="#responsiv_bredd">Responsiv bredd</a></h2><p>Etiketten och dropplistan kan ha olika bredd. När etikettens text radbryts behöver alltså inte vara kopplat till hur bred dropplistan i sig är.</p>
-<p>Bredden för respektive del anges med antal kolumner vid olika skärmbredder (brytpunkter).</p>
-
+            <p class="docs-paragraph">Dropplista har alltid en etikett som beskriver vad användaren ska fylla i.</p><h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p class="docs-paragraph">I dropplistor är det vanligt att etiketten är formulerad som en fråga eller ett påstående.</p><p class="docs-paragraph">Texten i själva dropplistan formuleras så att det blir tydligt vad användaren ska fylla i, men får inte ensam beskriva valet då den försvinner när användaren gjort ett val.</p><h2 id="responsiv_bredd"><a class="header-anchor" href="#responsiv_bredd">Responsiv bredd</a></h2><p class="docs-paragraph">Etiketten och dropplistan kan ha olika bredd. När etikettens text radbryts behöver alltså inte vara kopplat till hur bred dropplistan i sig är.</p><p class="docs-paragraph">Bredden för respektive del anges med antal kolumner vid olika skärmbredder (brytpunkter).</p>
             <div
                 id="example-ea0e7e"
                 class="code-preview code-preview--default"
@@ -1168,13 +1091,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="FSelectFieldWidths"></div>
+        <div id="example-ff8069"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FSelectFieldWidths-0e53da.js"></script>
+        <script type="module" src="./FSelectFieldWidths-ff8069.js"></script>
     </div>
                 <div>
             <button
@@ -1192,7 +1115,20 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSelectField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FSelectFieldWidths&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FSelectField</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">foo</span>: <span class="hljs-string">&quot;&quot;</span> };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-select-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;foo&quot;</span> <span class="hljs-attr">v-validation.required</span> <span class="hljs-attr">label-width</span>=<span class="hljs-string">&quot;md-9&quot;</span> <span class="hljs-attr">select-width</span>=<span class="hljs-string">&quot;md-6&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi
@@ -1205,85 +1141,266 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;BAZ&quot;</span>&gt;</span>Baz<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-select-field</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSelectField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FSelectFieldWidths&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FSelectField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> { <span class="hljs-attr">foo</span>: <span class="hljs-string">&quot;&quot;</span> };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
-</td><td><p>The id for the select id attribute.<br>
-The id for the label for attribute.<br>
+        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fselectfield-props">
+            <a class="header-anchor" href="#fselectfield-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fselectfield-prop-id"
+                                ><a class="docs-api__anchor" href="#fselectfield-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the select id attribute.
+The id for the label for attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td></tr><tr><td><p>inline</p>
-</td><td><p>Show the component inline.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td></tr><tr><td><p>v-model</p>
-</td><td><p>The value for the input.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-prop-inline"
+                                ><a class="docs-api__anchor" href="#fselectfield-prop-inline"
+                                    ><span class="docs-api__name"
+                                        >inline</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Show the component inline.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-prop-v-model"
+                                ><a class="docs-api__anchor" href="#fselectfield-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: string|number|object|array|boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The value for the input.
 If the prop is not set undefined will be used.</p>
-</td><td><p>string|number|object|array|boolean</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td></tr><tr><td><p>labelWidth</p>
-</td><td><p>Set responsive width for label section.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-prop-labelwidth"
+                                ><a class="docs-api__anchor" href="#fselectfield-prop-labelwidth"
+                                    ><span class="docs-api__name"
+                                        >labelWidth</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set responsive width for label section.</p>
 <pre><code>label-width=&quot;md-9 lg-6&quot;
 </code></pre>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;sm-12&quot;</p>
-</td></tr><tr><td><p>selectWidth</p>
-</td><td><p>Set responsive width for select section that wraps select element and icons.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;sm-12&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-prop-selectwidth"
+                                ><a class="docs-api__anchor" href="#fselectfield-prop-selectwidth"
+                                    ><span class="docs-api__name"
+                                        >selectWidth</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set responsive width for select section that wraps select element and icons.</p>
 <pre><code>select-width=&quot;md-6 lg-3&quot;
 </code></pre>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;sm-12&quot;</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>change</p>
-</td><td><p>Emitted when the value of the dropdown changes.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td></tr><tr><td><p>update:modelValue</p>
-</td><td><p>V-model event.</p>
-</td><td><p>&lt;anonymous&gt;: string</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>label</p>
-</td><td><p>Slot for label content.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>tooltip</p>
-</td><td><p>Slot for tooltip.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>description</p>
-</td><td><p>Optional slot for description. See <a href="#/Components/FLabel">FLabel</a> for details.</p>
-</td><td><p>descriptionClass<br>
-discreteDescriptionClass</p>
-</td></tr><tr><td><p>error-message</p>
-</td><td><p>Slot for displaying single or several error messages.</p>
-</td><td><p>hasError<br>
-validationMessage</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>‐</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            <p class="doc-api__item">Default: <code>&quot;sm-12&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fselectfield-events">
+            <a class="header-anchor" href="#fselectfield-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fselectfield-event-change"
+                                ><a class="docs-api__anchor" href="#fselectfield-event-change"
+                                    ><span class="docs-api__name"
+                                        >change</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when the value of the dropdown changes.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#fselectfield-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fselectfield-slots">
+            <a class="header-anchor" href="#fselectfield-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fselectfield-slot-label"
+                                ><a class="docs-api__anchor" href="#fselectfield-slot-label"
+                                    ><span class="docs-api__name"
+                                        >label</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for label content.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-slot-tooltip"
+                                ><a class="docs-api__anchor" href="#fselectfield-slot-tooltip"
+                                    ><span class="docs-api__name"
+                                        >tooltip</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for tooltip.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-slot-description"
+                                ><a class="docs-api__anchor" href="#fselectfield-slot-description"
+                                    ><span class="docs-api__name"
+                                        >description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional slot for description. See <a href="../flabel.html"><code>FLabel</code></a> for details.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>description-class: string[]</code> <span role="presentation">&mdash;</span> CSS classes for primary description content.</li><li><code>format-description-class: string[]</code> <span role="presentation">&mdash;</span> CSS classes for format description.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-slot-error-message"
+                                ><a class="docs-api__anchor" href="#fselectfield-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying single or several error messages.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fselectfield-slot-default"
+                                ><a class="docs-api__anchor" href="#fselectfield-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
             </div>
 
-            <footer>
-                <!-- prettier-ignore --><div class="footer__left">
+            <footer><div class="footer__left">
     <h1>Kontakta oss</h1>
     <ul>
         <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
@@ -1293,13 +1410,9 @@ validationMessage</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right">
-    <!-- prettier-ignore -->
-    <div class="version">
-    <!-- prettier-ignore -->
-    docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/863709a0ba28ad42c41081cb3402a0398f71778f">863709a</a>)<br />
+<div class="footer__right"><div class="version">docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/96ea38c4d01133ef054df56a6b42444f6b6cfe45">96ea38c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/252">PR 252</a><br />
-        2025-02-05 12:20
+        2025-04-16 12:01
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1314,7 +1427,7 @@ validationMessage</p>
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -1338,9 +1451,7 @@ validationMessage</p>
     </ul>
 </div>
 </footer>
-        </div>
-
-        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+        </div><div aria-hidden="true" style="display: none">
     <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
         <symbol id="docs-icon-search" viewBox="0 0 512 512">
             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -1383,9 +1494,7 @@ validationMessage</p>
             ></path>
         </symbol>
     </svg>
-</div>
-<!-- prettier-ignore -->
-        <dialog id="search-dialog">
+</div><dialog id="search-dialog">
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
@@ -1409,26 +1518,23 @@ validationMessage</p>
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog>
-
-
-        <!-- prettier-ignore -->
-        <script
-            src="../../assets/processors/motd/index-8c87e1.js"
+</dialog><script
+            src="../../assets/processors/motd/index-fd9bb8.js"
+            type="module"
             crossorigin
-            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
-        ></script>
-        <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            type="module"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
             
-        ></script>
-        <script
-            src="../../assets/main-7b9d0f.js"
+        ></script><script
+            src="../../assets/main-a45256.js"
+            type="module"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
             
         ></script>
     </body>

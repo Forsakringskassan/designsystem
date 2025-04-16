@@ -4,52 +4,45 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Om testverktyg - FK Designsystem</title>
-
-        <!-- prettier-ignore -->
-        <link
+        <title>Om testverktyg - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-120737.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-IusWRxbEFv97KrDAoXUDrjxs26QwiFGM4uNsNu6tehe9kz8ExiXlBbuU0qMGMn68"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-4ecb6d.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-CC6Vb3lD+/MxRQkRAEekVk7Fo0SZFS6JwkUWKQWZwFuguHLB6tQ0+3tFeeqDSTwr"
+            data-theme="fkui" disabled
         />
 
-        <!-- prettier-ignore -->
-        <script
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-a5c2ba.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../../assets/vendor-fkui-vue-a5c2ba.js": "sha384-2qBBQIeHwEp7NYAe7ys6dix3AK/FbwmOgpKxFSKoYe+7vfvctONnl35dhu4KTKa2",
+    "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
             src="../../assets/bootstrap-956ec3.js"
+            
             crossorigin
             integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
             
-        ></script>
-
-        <!-- prettier-ignore -->
-        <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
+        ></script><script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,17 +82,14 @@
 
         <link
             rel="preload"
-            href="../../search-data-c0e456.json"
+            href="../../search-data-f416bf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LF46wM8JoZsvVD+puNCMk1Yx9OWk8IbcgdbnXDwxC6EByS5JjFmjHO7u4gC6JR56"
+            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
             id="search-data"
         />
     </head>
-    <body>
-        <!-- prettier-ignore -->
-        
-<template id="motd-message">
+    <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
         <span class="icon-stack icon-stack--info">
@@ -139,20 +129,14 @@
 
 
         <div class="layout-wrapper">
-            <header>
-                <!-- prettier-ignore --><div class="page-header__root">
+            <header><div class="page-header__root">
     <div class="page-header">
         <a class="page-header__logo" href="../../index.html">
             <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
         <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
-    <ul class="docs-topnav__list">
-        <!-- prettier-ignore -->
-        
-        
-        
-        <li class="docs-topnav__item ">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
         </li>
         
@@ -191,12 +175,7 @@
                 </svg>
             </button>
             <div class="docs-contextmenu">
-                <ul class="docs-contextmenu__list">
-                    <!-- prettier-ignore -->
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item " style="display: none">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
                     </li>
                     
@@ -243,55 +222,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -299,792 +229,890 @@
 </div>
 </header>
 
-            <div id="primary">
-                <!-- prettier-ignore -->
-<div id="sidenav">
+            <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+<ol><li class="expandable ">
         <details >
             <summary>Cypress</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+<ol><li class="expandable ">
         <details >
             <summary>Pageobject</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+<ol><li class="expandable ">
         <details >
             <summary>FBadgePageObject()</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../cypress/pageobjects/FBadgePageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/"
             
         >
             FBadgePageObject()
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../cypress/pageobjects/FBadgePageObject/is-inverted.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/is-inverted.html"
             
         >
             inverted()
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../cypress/pageobjects/FBadgePageObject/status.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/status.html"
             
         >
             status()
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
+        <details >
+            <summary>FFileItemPageObject()</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../cypress/pageobjects/FFileItemPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/"
+            
+        >
+            FFileItemPageObject()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/FFileItemPageObject/filename.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/filename.html"
+            
+        >
+            fileName()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/FFileItemPageObject/typeoffile.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html"
+            
+        >
+            typeOfFile()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>FProgressbarPageObject</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../cypress/pageobjects/FProgressbarPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/"
+            
+        >
+            FProgressbarPageObject
+        </a>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/FProgressbarPageObject/el.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/el.html"
+            
+        >
+            el()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/FProgressbarPageObject/progress-status.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html"
+            
+        >
+            progressStatus()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/FProgressbarPageObject/value.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/value.html"
+            
+        >
+            value()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
         <details >
             <summary>FLabelPageObject</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../cypress/pageobjects/FLabelPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/"
             
         >
             FLabelPageObject()
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../cypress/pageobjects/FLabelPageObject/description.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/description.html"
             
         >
             description()
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../cypress/pageobjects/FLabelPageObject/discrete-description.html"
-            
-        >
-            discreteDescription()
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../cypress/pageobjects/FLabelPageObject/error-icon.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/error-icon.html"
             
         >
             errorIcon()
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../cypress/pageobjects/FLabelPageObject/error-message.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/error-message.html"
             
         >
             errorMessage()
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/FLabelPageObject/format-description.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/format-description.html"
+            
+        >
+            formatDescription()
+        </a>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../../date/"
             
             target="_blank"
             rel="external"
+            
+            
             data-path="date/"
+            
             
         >
             Datum-paket
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Funktioner</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../functions/dispatch-component-validity-event.html"
+            
+            
+            
+            data-path="functions/functions/dispatch-component-validity-event.html"
             
         >
             dispatchComponentValidityEvent
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>DOM-funktioner</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../functions/dom-functions/find-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-element-from-vue-ref.html"
             
         >
             findElementFromVueRef
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/find-html-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-html-element-from-vue-ref.html"
             
         >
             findHTMLElementFromVueRef
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/find-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-parent-by-name.html"
             
         >
             findParentByName
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/focus.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/focus.html"
             
         >
             focus
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/get-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-element-from-vue-ref.html"
             
         >
             getElementFromVueRef
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/get-elements-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-elements-from-vue-ref.html"
             
         >
             getElementsFromVueRef
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/get-html-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-html-element-from-vue-ref.html"
             
         >
             getHTMLElementFromVueRef
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/get-html-elements-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-html-elements-from-vue-ref.html"
             
         >
             getHTMLElementsFromVueRef
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/get-input-element.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-input-element.html"
             
         >
             getInputElement
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/get-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-parent-by-name.html"
             
         >
             getParentByName
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/has-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/has-parent-by-name.html"
             
         >
             hasParentByName
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/has-slot.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/has-slot.html"
             
         >
             hasSlot()
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/ref-is-element.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-element.html"
             
         >
             refIsElement
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/ref-is-element-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-element-array.html"
             
         >
             refIsElementArray
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/ref-is-html-element-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-html-element-array.html"
             
         >
             refIsHTMLElementArray
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/ref-is-vue.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-vue.html"
             
         >
             refIsVue
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/dom-functions/ref-is-vue-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-vue-array.html"
             
         >
             refIsVueArray
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/handle-keyboard-focus-navigation.html"
+            
+            
+            
+            data-path="functions/functions/handle-keyboard-focus-navigation.html"
             
         >
             handleKeyboardFocusNavigation
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/include-item.html"
+            
+            
+            
+            data-path="functions/functions/include-item.html"
             
         >
             includeItem
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/item-equals.html"
+            
+            
+            
+            data-path="functions/functions/item-equals.html"
             
         >
             itemEquals
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/maybe-component.html"
+            
+            
+            
+            data-path="functions/functions/maybe-component.html"
             
         >
             MaybeComponent
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Modal funktioner</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../functions/modal-functions/confirm-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/confirm-modal.html"
             
         >
             confirmModal()
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/modal-functions/form-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/form-modal.html"
             
         >
             formModal()
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/modal-functions/open-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/open-modal.html"
             
         >
             openModal
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/mount-component.html"
+            
+            
+            
+            data-path="functions/functions/mount-component.html"
             
         >
             mountComponent
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/render-slot-text.html"
+            
+            
+            
+            data-path="functions/functions/render-slot-text.html"
             
         >
             renderSlotText
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/table-scroll.html"
+            
+            
+            
+            data-path="functions/functions/table-scroll.html"
             
         >
             TableScroll
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../functions/table-scroll-classes.html"
+            
+            
+            
+            data-path="functions/functions/table-scroll-classes.html"
             
         >
             tableScrollClasses
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
+        <a
+            href="../functions/use-area-data.html"
+            
+            
+            
+            data-path="functions/functions/use-area-data.html"
+            
+        >
+            useAreaData()
+        </a>
+    </li><li class="link ">
         <a
             href="../functions/use-modal.html"
+            
+            
+            
+            data-path="functions/functions/use-modal.html"
             
         >
             useModal()
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li><li class="link ">
+        <a
+            href="../functions/use-resize.html"
+            
+            
+            
+            data-path="functions/functions/use-resize.html"
+            
+        >
+            useResize()
+        </a>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Helpers</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../helpers/densify.html"
+            
+            
+            
+            data-path="functions/helpers/densify.html"
             
         >
             densify
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../helpers/"
+            
+            
+            
+            data-path="functions/helpers/"
             
         >
             Hjälpklasser
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../helpers/accessibility.html"
+            
+            
+            
+            data-path="functions/helpers/accessibility.html"
             
         >
             Skärmläsare
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>i18next</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../i18next-translate/i18next.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next.html"
             
         >
             i18next
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../i18next-translate/i18next-provider.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next-provider.html"
             
         >
             i18nextProvider
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../i18next-translate/i18next-provider-interface.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next-provider-interface.html"
             
         >
             I18nextProvider
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../config.html"
+            
+            
+            
+            data-path="functions/config.html"
             
         >
             Konfiguration
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../../vue-labs/"
             
             target="_blank"
             rel="external"
+            
+            
             data-path="vue-labs/"
+            
             
         >
             Labs
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../../logic/"
             
             target="_blank"
             rel="external"
+            
+            
             data-path="logic/"
+            
             
         >
             Logik-paket
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Plugins</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../plugins/errorplugin.html"
+            
+            
+            
+            data-path="functions/plugins/errorplugin.html"
             
         >
             Error Plugin
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../plugins/testplugin.html"
+            
+            
+            
+            data-path="functions/plugins/testplugin.html"
             
         >
             Test Plugin
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../plugins/translationplugin.html"
+            
+            
+            
+            data-path="functions/plugins/translationplugin.html"
             
         >
             Translation Plugin
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../plugins/validationplugin.html"
+            
+            
+            
+            data-path="functions/plugins/validationplugin.html"
             
         >
             Validation Plugin
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Services</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../services/event-bus.html"
+            
+            
+            
+            data-path="functions/services/event-bus.html"
             
         >
             EventBus
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable active">
+    </li><li class="expandable active">
         <details open>
             <summary>Testverktyg</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+<ol><li class="link active">
         <a
             href="./"
+            
+            
+            
+            data-path="functions/test-utils/"
             
         >
             Om testverktyg
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./lib.html"
+            
+            
+            
+            data-path="functions/test-utils/lib.html"
             
         >
             Generella funktioner
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./jest.html"
+            
+            
+            
+            data-path="functions/test-utils/jest.html"
             
         >
             Jest
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./vue.html"
+            
+            
+            
+            data-path="functions/test-utils/vue.html"
             
         >
             Vue.js
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --></ol>
+    </li><li class="link ">
+        <a
+            href="../tsconfig.html"
+            
+            
+            
+            data-path="functions/tsconfig.html"
+            
+        >
+            TSConfig
+        </a>
+    </li></ol>
 </nav>
-</div>
-
-
-                <!-- prettier-ignore -->
-                <script
-                    src="../../assets/vendor-vue-468cb1.js"
-                    crossorigin
-                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-logic-62a69f.js"
-                    crossorigin
-                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-date-7710bf.js"
-                    crossorigin
-                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
-                    crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
-                ></script>
-                <script
-                    src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
-                    crossorigin
-                    integrity="sha384-nSXnCy3XWIIfbEbIXNEJqSLQAEcC9s8jxUGnIw/HClLMcJP8KJDSvkJw7vxe9PgF"
-                ></script>
-
-                <!-- prettier-ignore --><main>
+</div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">Om testverktyg</h1>
 
                     
 
-                    <div id="content">
-                        <!-- prettier-ignore -->
-<p>Samling med funktioner och komponenter till Jest och Cypress för att underlätta utveckling av automatiska testfall.</p>
-<pre><code>npm install --save-dev @fkui/test-utils
+                    <div id="content"><p class="docs-paragraph">Samling med funktioner och komponenter till Jest och Cypress för att underlätta utveckling av automatiska testfall.</p><pre><code>npm install --save-dev @fkui/test-utils
 </code></pre>
 <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><h3 id="generella_funktioner"><a class="header-anchor" href="#generella_funktioner">Generella funktioner</a></h3>
                 <div
@@ -1110,8 +1138,7 @@
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/test-utils/jest&quot;</span>;
 </code></pre>
                 </div>
-            <p>Denna entrypoint exporterar också allt från <code>@fkui/test-utils</code>.</p>
-<h3 id="vue"><a class="header-anchor" href="#vue">Vue</a></h3>
+            <p class="docs-paragraph">Denna entrypoint exporterar också allt från <code>@fkui/test-utils</code>.</p><h3 id="vue"><a class="header-anchor" href="#vue">Vue</a></h3>
                 <div
                     id="example-c614eb"
                     class="code-preview code-preview--default"
@@ -1123,15 +1150,13 @@
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/test-utils/vue&quot;</span>;
 </code></pre>
                 </div>
-            <p>Denna entrypoint exporterar också allt från <code>@fkui/test-utils</code>.</p>
-
+            <p class="docs-paragraph">Denna entrypoint exporterar också allt från <code>@fkui/test-utils</code>.</p>
 
                     </div>
                 </main>
             </div>
 
-            <footer>
-                <!-- prettier-ignore --><div class="footer__left">
+            <footer><div class="footer__left">
     <h1>Kontakta oss</h1>
     <ul>
         <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
@@ -1141,13 +1166,9 @@
 
 <div class="footer__center"></div>
 
-<div class="footer__right">
-    <!-- prettier-ignore -->
-    <div class="version">
-    <!-- prettier-ignore -->
-    docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/863709a0ba28ad42c41081cb3402a0398f71778f">863709a</a>)<br />
+<div class="footer__right"><div class="version">docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/96ea38c4d01133ef054df56a6b42444f6b6cfe45">96ea38c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/252">PR 252</a><br />
-        2025-02-05 12:20
+        2025-04-16 12:01
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1162,7 +1183,7 @@
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -1186,9 +1207,7 @@
     </ul>
 </div>
 </footer>
-        </div>
-
-        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+        </div><div aria-hidden="true" style="display: none">
     <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
         <symbol id="docs-icon-search" viewBox="0 0 512 512">
             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -1231,9 +1250,7 @@
             ></path>
         </symbol>
     </svg>
-</div>
-<!-- prettier-ignore -->
-        <dialog id="search-dialog">
+</div><dialog id="search-dialog">
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
@@ -1257,26 +1274,23 @@
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog>
-
-
-        <!-- prettier-ignore -->
-        <script
-            src="../../assets/processors/motd/index-8c87e1.js"
+</dialog><script
+            src="../../assets/processors/motd/index-fd9bb8.js"
+            type="module"
             crossorigin
-            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
-        ></script>
-        <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            type="module"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
             
-        ></script>
-        <script
-            src="../../assets/main-7b9d0f.js"
+        ></script><script
+            src="../../assets/main-a45256.js"
+            type="module"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
             
         ></script>
     </body>

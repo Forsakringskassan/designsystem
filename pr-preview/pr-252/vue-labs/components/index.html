@@ -4,81 +4,60 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Komponenter - FKUI Labs</title>
-
-        <!-- prettier-ignore -->
-        <link
+        <title>Komponenter - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-14c0c6.css"
+            href="../assets/docs-66011a.css"
             crossorigin
-            integrity="sha384-r+NSLFv6XrngSmltzmYr8QlwUvMG0w9awGiy2jbmGssQkug1I1wBb05Bm6XM4nFp"
+            integrity="sha384-l6SNOU/IGzIAbVKpPIPdVUFO51psgxQeHV9lSXHr3ZQDLmNf/XXQtU099B7WC/xQ"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-3e2c1f.css"
+            href="../assets/docs-fkui-d3a31e.css"
             crossorigin
-            integrity="sha384-wbFaRH1oFM7zXiZQtQawD5wJ/07rBIzHxNKWMxXWMlr6TzkOMJYomBubNiETvezB"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../assets/docs-int-d00de7.css"
-            crossorigin
-            integrity="sha384-YFhTliWLMuGdwtPh4aQ8h5fYgrBlqMPzjEPjuIxOo3mFlt5FiNVrCdBS/xPDQuNA"
-            data-theme="int" disabled
+            integrity="sha384-rTkf6XXnwuvX0qtnYXqszJ3Cvx46yPxlbCCPb4zxKB4l0Wd+9wO4mKSg/QEsDib3"
+            data-theme="fkui" disabled
         />
 
-        <!-- prettier-ignore -->
-        <script
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../assets/vendor-vue-6c2e41.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-c06ed0.js",
+    "@fkui/date": "../assets/vendor-fkui-date-d11adb.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-ac14cd.js"
+  },
+  "integrity": {
+    "../assets/vendor-vue-6c2e41.js": "sha384-YEv4tbVQlGj3XZu1k08lRfiDBJ6kZ+kj+WwpGdcMsyRsbPcuo6/9ExhKEAPH6LwP",
+    "../assets/vendor-fkui-logic-c06ed0.js": "sha384-FlZw+HsGkcDZ9Pv8S2Oh2tzFy/xoCapwWSTFG5OAuJXoJYX1aGnfD9i0HfD165qm",
+    "../assets/vendor-fkui-date-d11adb.js": "sha384-X12fOIHKUKGgD0l/UlcXFi10Tij8/mCElKW44ma4fJmying2dQoELzvX0hIALN7I",
+    "../assets/vendor-fkui-vue-ac14cd.js": "sha384-nyAaJS0QVCPeAF+b8rXbNwd5k/Y6f0pJjW1eu/T2ruJLKAeaTl3kI9MetXa8LxWP"
+  }
+}
+        </script><script
             src="../assets/bootstrap-0df2b2.js"
+            
             crossorigin
             integrity="sha384-/CsPb6xxx2R6SuFD6YW8AvT0hMxEGGkO4Mh6yG04C8ck+/qIKXqKA3EALt2ADT17"
             
-        ></script>
-
-        <!-- prettier-ignore -->
-        <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-
-
-        <link
+        ></script><link
             rel="preload"
-            href="../search-data-f8ea4e.json"
+            href="../search-data-cdf67f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8olbfPIqg3BjAwXl/qsNqFsKkZDlUZv6KP0TtStbD4chlxN67hlggvz4eevPm7ca"
+            integrity="sha384-sUnhZOnckHbg1NZYpFxul1Ux/9MzFzeTaARsEl2YyKpRE8PVVTxzkzeE1ulqfv+j"
             id="search-data"
         />
     </head>
-    <body>
-        <!-- prettier-ignore -->
-        
-
-        <div class="layout-wrapper">
-            <header>
-                <!-- prettier-ignore --><div class="page-header__root">
+    <body><div class="layout-wrapper">
+            <header><div class="page-header__root">
     <div class="page-header">
         <a class="page-header__logo" href="../index.html">
             <span aria-label="FKUI Labs" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../index.html"> FKUI Labs </a>
         <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
-    <ul class="docs-topnav__list">
-        <!-- prettier-ignore -->
-        
-        
-        
-        <li class="docs-topnav__item highlight">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item highlight">
             <a class="docs-topnav__anchor" href="./"> Komponenter </a>
         </li>
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
@@ -89,12 +68,7 @@
                 </svg>
             </button>
             <div class="docs-contextmenu">
-                <ul class="docs-contextmenu__list">
-                    <!-- prettier-ignore -->
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item highlight" style="display: none">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item highlight" style="display: none">
                         <a class="docs-contextmenu__anchor" href="./"> Komponenter </a>
                     </li>
                     </ul>
@@ -114,57 +88,8 @@
     </form>
 </div>
 <div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
-<div class="toolbar__item">
     <span class="version">
-        5.46.0
+        6.4.0
     </span>
 </div>
 </div>
@@ -174,85 +99,55 @@
 </div>
 </header>
 
-            <div id="primary">
-                <!-- prettier-ignore -->
-<div id="sidenav">
+            <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+<ol><li class="link active">
         <a
             href="./"
+            
+            
+            
+            data-path="components/"
             
         >
             Komponenter
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./xtimetextfield.html"
+            
+            
+            
+            data-path="components/xtimetextfield.html"
             
         >
             Tidsinmatning
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 </nav>
-</div>
-
-
-                <!-- prettier-ignore -->
-                <script
-                    src="../assets/vendor-vue-ce6943.js"
-                    crossorigin
-                    integrity="sha384-fNTiFMLYobZ/3uPWSbkX0BoEj3ji/BINt7Jk+R8EC9LI50I0QYOiAVH7nOL2/SO9"
-                ></script>
-                <script
-                    src="../assets/vendor-fkui-logic-23d238.js"
-                    crossorigin
-                    integrity="sha384-X1qPShbahkLWp9YEty8N8CTv/9JBV8zVJ3cqP7ZD65iKdSXjXzpjd5P+k4OQFz2t"
-                ></script>
-                <script
-                    src="../assets/vendor-fkui-date-0b5d4b.js"
-                    crossorigin
-                    integrity="sha384-qFl9sMVllZVSUjaXJ/tZ+Ayl7zK2wrSuXSQwO1c0tsifkdsaXN4RIMRsbm/1skJH"
-                ></script>
-                <script
-                    src="../assets/vendor-fkui-vue-32a70d.js"
-                    crossorigin
-                    integrity="sha384-Dq7Uf6fqZJRE0ON5zru1kLlQYlLkXdsyBGgwwdd8anWpw+Fmwk3cr/NTSYqvgnMC"
-                ></script>
-
-                <!-- prettier-ignore --><main>
+</div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">Komponenter</h1>
 
                     
 
-                    <div id="content">
-                        <!-- prettier-ignore -->
-<p>Experimentella komponenter som kan ändras när som helst.
-Även vid brytande ändringar hanteras det som vilka andra ändringar som helst (dvs ej semantisk versionshantering).</p>
-<p>Använd på egen risk!</p>
-
+                    <div id="content"><p class="docs-paragraph">Experimentella komponenter som kan ändras när som helst.
+Även vid brytande ändringar hanteras det som vilka andra ändringar som helst (dvs ej semantisk versionshantering).</p><p class="docs-paragraph">Använd på egen risk!</p>
 
                     </div>
                 </main>
             </div>
 
-            <footer>
-                <!-- prettier-ignore --><div class="footer">
-    <!-- prettier-ignore -->
-    
+            <footer><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="../changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content"></div>
 </div>
 </footer>
-        </div>
-
-        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+        </div><div aria-hidden="true" style="display: none">
     <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
         <symbol id="docs-icon-search" viewBox="0 0 512 512">
             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -295,9 +190,7 @@
             ></path>
         </symbol>
     </svg>
-</div>
-<!-- prettier-ignore -->
-        <dialog id="search-dialog">
+</div><dialog id="search-dialog">
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
@@ -321,14 +214,11 @@
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog>
-
-
-        <!-- prettier-ignore -->
-        <script
-            src="../assets/main-231ac2.js"
+</dialog><script
+            src="../assets/main-4be8c2.js"
+            type="module"
             crossorigin
-            integrity="sha384-rkZqIBZ5uct9KGGDQnA3bszHyuUewd3VTBT1sbbsTEeNKfCjeLgw6SiTEUnEdaXo"
+            integrity="sha384-nNcnQ8tY1zh8SCUJHyHoTrzKSNMpcX9hjBTVNftREYPnJnCB9lZayu48cD4nX0mP"
             
         ></script>
     </body>

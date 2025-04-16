@@ -4,52 +4,45 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Formulärsmodal - FK Designsystem</title>
-
-        <!-- prettier-ignore -->
-        <link
+        <title>Formulärsmodal - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-c04aff.css"
+            href="../../assets/docs-120737.css"
             crossorigin
-            integrity="sha384-tapz/DGULZdw95zkbqyWJyURxy7V4nnQHuVTb+fTMB7D+LmaEgkLHOQxxvYov9nP"
+            integrity="sha384-IusWRxbEFv97KrDAoXUDrjxs26QwiFGM4uNsNu6tehe9kz8ExiXlBbuU0qMGMn68"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-4ecb6d.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-CC6Vb3lD+/MxRQkRAEekVk7Fo0SZFS6JwkUWKQWZwFuguHLB6tQ0+3tFeeqDSTwr"
+            data-theme="fkui" disabled
         />
 
-        <!-- prettier-ignore -->
-        <script
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-a5c2ba.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../../assets/vendor-fkui-vue-a5c2ba.js": "sha384-2qBBQIeHwEp7NYAe7ys6dix3AK/FbwmOgpKxFSKoYe+7vfvctONnl35dhu4KTKa2",
+    "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
             src="../../assets/bootstrap-956ec3.js"
+            
             crossorigin
             integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
             
-        ></script>
-
-        <!-- prettier-ignore -->
-        <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
+        ></script><script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -89,17 +82,14 @@
 
         <link
             rel="preload"
-            href="../../search-data-c0e456.json"
+            href="../../search-data-f416bf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LF46wM8JoZsvVD+puNCMk1Yx9OWk8IbcgdbnXDwxC6EByS5JjFmjHO7u4gC6JR56"
+            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
             id="search-data"
         />
     </head>
-    <body>
-        <!-- prettier-ignore -->
-        
-<template id="motd-message">
+    <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
         <span class="icon-stack icon-stack--info">
@@ -139,20 +129,14 @@
 
 
         <div class="layout-wrapper">
-            <header>
-                <!-- prettier-ignore --><div class="page-header__root">
+            <header><div class="page-header__root">
     <div class="page-header">
         <a class="page-header__logo" href="../../index.html">
             <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
         <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
-    <ul class="docs-topnav__list">
-        <!-- prettier-ignore -->
-        
-        
-        
-        <li class="docs-topnav__item ">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
         </li>
         
@@ -191,12 +175,7 @@
                 </svg>
             </button>
             <div class="docs-contextmenu">
-                <ul class="docs-contextmenu__list">
-                    <!-- prettier-ignore -->
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item " style="display: none">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
                     </li>
                     
@@ -243,55 +222,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -299,815 +229,816 @@
 </div>
 </header>
 
-            <div id="primary">
-                <!-- prettier-ignore -->
-<div id="sidenav">
+            <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../fbadge.html"
+            
+            
+            
+            data-path="components/fbadge.html"
             
         >
             Bricka
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../chip.html"
+            
+            
+            
+            data-path="components/chip.html"
             
         >
             Chip
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fdialoguetree.html"
+            
+            
+            
+            data-path="components/fdialoguetree.html"
             
         >
             Dialogträd
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../flabel.html"
+            
+            
+            
+            data-path="components/flabel.html"
             
         >
             Etikett
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Expanderbara ytor</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../expandable/fexpandablepanel.html"
+            
+            
+            
+            data-path="components/expandable/fexpandablepanel.html"
             
         >
             Expanderbar panel
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../expandable/fexpand.html"
+            
+            
+            
+            data-path="components/expandable/fexpand.html"
             
         >
             Expanderbart innehåll
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../expandable/fexpandableparagraph.html"
+            
+            
+            
+            data-path="components/expandable/fexpandableparagraph.html"
             
         >
             Expanderbart stycke
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Filuppladdning</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../file-upload/ffileitem.html"
+            
+            
+            
+            data-path="components/file-upload/ffileitem.html"
             
         >
             Filpresentatör
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../file-upload/ffileselector.html"
+            
+            
+            
+            data-path="components/file-upload/ffileselector.html"
             
         >
             Filväljare
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Gruppera</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../group/ffieldset.html"
+            
+            
+            
+            data-path="components/group/ffieldset.html"
             
         >
             Fältgruppering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../group/"
+            
+            
+            
+            data-path="components/group/"
             
         >
             Komponentgrupp
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../ficon.html"
+            
+            
+            
+            data-path="components/ficon.html"
             
         >
             Ikon
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Inmatning</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../input/ftextfield.html"
+            
+            
+            
+            data-path="components/input/ftextfield.html"
             
         >
             Inmatningsfält
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/fdatepickerfield.html"
+            
+            
+            
+            data-path="components/input/fdatepickerfield.html"
             
         >
             Datumväljare
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/fselectfield.html"
+            
+            
+            
+            data-path="components/input/fselectfield.html"
             
         >
             Dropplista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/ftextareafield.html"
+            
+            
+            
+            data-path="components/input/ftextareafield.html"
             
         >
             Flerradigt inmatningsfält
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/combobox.html"
+            
+            
+            
+            data-path="components/input/combobox.html"
             
         >
             Kombobox
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/fcheckboxfield.html"
+            
+            
+            
+            data-path="components/input/fcheckboxfield.html"
             
         >
             Kryssruta
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/fradiofield.html"
+            
+            
+            
+            data-path="components/input/fradiofield.html"
             
         >
             Radioknapp
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../input/textfield-specialized.html"
+            
+            
+            
+            data-path="components/input/textfield-specialized.html"
             
         >
             Specialiserade inmatningsfält
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcalendar.html"
+            
+            
+            
+            data-path="components/fcalendar.html"
             
         >
             Kalender
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../button.html"
+            
+            
+            
+            data-path="components/button.html"
             
         >
             Knapp
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcontextmenu.html"
+            
+            
+            
+            data-path="components/fcontextmenu.html"
             
         >
             Kontextmeny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fcard.html"
+            
+            
+            
+            data-path="components/fcard.html"
             
         >
             Kort
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Ladda innehåll</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../load/fprogressbar.html"
+            
+            
+            
+            data-path="components/load/fprogressbar.html"
             
         >
             Förloppsindikator
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../load/floader.html"
+            
+            
+            
+            data-path="components/load/floader.html"
             
         >
             Laddningsindikator
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="link ">
+        <a
+            href="../flogo.html"
+            
+            
+            
+            data-path="components/flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><li class="expandable ">
         <details >
             <summary>Länkar</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../links/anchor.html"
+            
+            
+            
+            data-path="components/links/anchor.html"
             
         >
             Länk
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../links/entrypoint.html"
+            
+            
+            
+            data-path="components/links/entrypoint.html"
             
         >
             Startpunkt
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fmessagebox.html"
+            
+            
+            
+            data-path="components/fmessagebox.html"
             
         >
             Meddelanderuta
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable active">
+    </li><li class="expandable active">
         <details open>
             <summary>Modal</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="./fconfirmmodal.html"
+            
+            
+            
+            data-path="components/modal/fconfirmmodal.html"
             
         >
             Bekräftelsemodal
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+    </li><li class="link active">
         <a
             href="./fformmodal.html"
+            
+            
+            
+            data-path="components/modal/fformmodal.html"
             
         >
             Formulärsmodal
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./fmodal.html"
+            
+            
+            
+            data-path="components/modal/fmodal.html"
             
         >
             Modal dialogruta
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../foffline.html"
+            
+            
+            
+            data-path="components/foffline.html"
             
         >
             Offline
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Presentationsfält</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../presentation/foutputfield.html"
+            
+            
+            
+            data-path="components/presentation/foutputfield.html"
             
         >
             Presentationsfält - dynamiskt
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../presentation/fstaticfield.html"
+            
+            
+            
+            data-path="components/presentation/fstaticfield.html"
             
         >
             Presentationsfält - statiskt
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Ramverkskomponenter</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../framework/ianimateexpand.html"
+            
+            
+            
+            data-path="components/framework/ianimateexpand.html"
             
         >
             Animerad expandering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iflexitem.html"
+            
+            
+            
+            data-path="components/framework/iflexitem.html"
             
         >
             Flex Item
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iflex.html"
+            
+            
+            
+            data-path="components/framework/iflex.html"
             
         >
             Flexibel positionering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/iskiplink.html"
+            
+            
+            
+            data-path="components/framework/iskiplink.html"
             
         >
             Gå till innehåll
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarmonth.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonth.html"
             
         >
             Kalendermånad
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarnavbar.html"
+            
+            
+            
+            data-path="components/framework/icalendarnavbar.html"
             
         >
             Kalendernavigering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/icalendarmonthgrid.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonthgrid.html"
             
         >
             Kalenderrutnät
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopup.html"
+            
+            
+            
+            data-path="components/framework/ipopup.html"
             
         >
             Popup
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopupmenu.html"
+            
+            
+            
+            data-path="components/framework/ipopupmenu.html"
             
         >
             Popup-meny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../framework/ipopuperror.html"
+            
+            
+            
+            data-path="components/framework/ipopuperror.html"
             
         >
             PopupError
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Sidlayout</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../page-layout/application-layout.html"
+            
+            
+            
+            data-path="components/page-layout/application-layout.html"
             
         >
             Applikationslayout
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
+        <a
+            href="../page-layout/fpagelayout.html"
+            
+            
+            
+            data-path="components/page-layout/fpagelayout.html"
+            
+        >
+            Applikationsmall
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fresizepane.html"
+            
+            
+            
+            data-path="components/page-layout/fresizepane.html"
+            
+        >
+            Justerbar yta
+        </a>
+    </li><li class="link ">
         <a
             href="../page-layout/fnavigationmenu.html"
+            
+            
+            
+            data-path="components/page-layout/fnavigationmenu.html"
             
         >
             Navigeringsmeny
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../page-layout/fpageheader.html"
+            
+            
+            
+            data-path="components/page-layout/fpageheader.html"
             
         >
             Sidhuvud
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../fwizard.html"
+            
+            
+            
+            data-path="components/fwizard.html"
             
         >
             Steg för steg-guide
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Tabell och lista</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../table-and-list/table.html"
+            
+            
+            
+            data-path="components/table-and-list/table.html"
             
         >
             Tabell
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/flist.html"
+            
+            
+            
+            data-path="components/table-and-list/flist.html"
             
         >
             Lista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/fcruddataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fcruddataset.html"
             
         >
             Datamängdredigerare
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../table-and-list/fsortfilterdataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fsortfilterdataset.html"
             
         >
             Datamängdsorterare
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../ftooltip.html"
+            
+            
+            
+            data-path="components/ftooltip.html"
             
         >
             Tooltip
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+    </li><li class="expandable ">
         <details >
             <summary>Validering</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../validation/ferrorlist.html"
+            
+            
+            
+            data-path="components/validation/ferrorlist.html"
             
         >
             Fellista
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../validation/formatters-and-parsers.html"
+            
+            
+            
+            data-path="components/validation/formatters-and-parsers.html"
             
         >
             Formaterare och parsers
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../validation/validators.html"
+            
+            
+            
+            data-path="components/validation/validators.html"
             
         >
             Validatorer
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../validation/fvalidationgroup.html"
+            
+            
+            
+            data-path="components/validation/fvalidationgroup.html"
             
         >
             Validering samlad
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../validation/fvalidationform.html"
+            
+            
+            
+            data-path="components/validation/fvalidationform.html"
             
         >
             Valideringsformulär
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --></ol>
+    </li></ol>
 </nav>
-</div>
-
-
-                <!-- prettier-ignore -->
-                <script
-                    src="../../assets/vendor-vue-468cb1.js"
-                    crossorigin
-                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-logic-62a69f.js"
-                    crossorigin
-                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-date-7710bf.js"
-                    crossorigin
-                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
-                ></script>
-                <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
-                    crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
-                ></script>
-                <script
-                    src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
-                    crossorigin
-                    integrity="sha384-nSXnCy3XWIIfbEbIXNEJqSLQAEcC9s8jxUGnIw/HClLMcJP8KJDSvkJw7vxe9PgF"
-                ></script>
-
-                <!-- prettier-ignore --><main>
+</div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">Formulärsmodal</h1>
 
                     
-                    <div id="aside">
-                        <!-- prettier-ignore -->
-<dl>
-    <!-- prettier-ignore -->
-    
-    <dt>Komponent</dt>
+                    <div id="aside"><dl><dt>Komponent</dt>
     <dd>
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/863709a0ba28ad42c41081cb3402a0398f71778f/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/96ea38c4d01133ef054df56a6b42444f6b6cfe45/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">FFormModal</a>
             
         </code>
          
-    </dd>
-    
-
-    <!-- prettier-ignore -->
-    
-    <dt>Status</dt>
+    </dd><dt>Status</dt>
     <dd>
         <div class="badge badge--success">Produktionsklar</div>
     </dd>
@@ -1140,23 +1071,16 @@
                     </div>
                     
 
-                    <div id="content">
-                        <!-- prettier-ignore -->
-<p>Formulärsmodal är en standardmodal som kan presentera formulärsfält och hantera validering.</p>
-<p>Formulärsmodalen baseras på en modal dialogruta av typen standard och visas i fullskärm i mobil (&lt;640px).</p>
-<p>Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra. Alla fält valideras när användaren trycker på primärknappen.</p>
-<ul>
-<li>Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.</li>
-<li>Öppna inte ytterligare modaler från en modal.</li>
+                    <div id="content"><p class="docs-paragraph">Formulärsmodal är en standardmodal som kan presentera formulärsfält och hantera validering.</p><p class="docs-paragraph">Formulärsmodalen baseras på en modal dialogruta av typen standard och visas i fullskärm i mobil (&lt;640px).</p><p class="docs-paragraph">Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra. Alla fält valideras när användaren trycker på primärknappen.</p><ul>
+<li><p class="docs-paragraph">Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.</p></li>
+<li><p class="docs-paragraph">Öppna inte ytterligare modaler från en modal.</p></li>
 </ul>
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>Du skapar själv upp din formulärsmodal genom att skapa upp en ny Vue-komponent där <code>FFormModal</code>-komponenten nyttjas.</p>
-<p>Skapa först upp ett interface motsvarande den data din formulärsmodal ska arbeta med:</p>
-
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Du skapar själv upp din formulärsmodal genom att skapa upp en ny Vue-komponent där <code>FFormModal</code>-komponenten nyttjas.</p><p class="docs-paragraph">Skapa först upp ett interface motsvarande den data din formulärsmodal ska arbeta med:</p>
                 <div
                     id="example-06d914"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="typescript"
                 >
                     
@@ -1166,8 +1090,7 @@
 }
 </code></pre>
                 </div>
-            <p>Din komponent ska innehålla en prop <code>value</code> motsvarande ett objekt av interfacet:</p>
-
+            <p class="docs-paragraph">Din komponent ska innehålla en prop <code>value</code> motsvarande ett objekt av interfacet:</p>
                 <div
                     id="example-fcf0f6"
                     class="code-preview code-preview--default"
@@ -1186,14 +1109,13 @@
  });
 </code></pre>
                 </div>
-            <p>Template använder <code>FFormModal</code> och binder <code>value</code> dels som <code>value</code>-propen men också som <code>v-model</code> för respektive inmatningsfält.
+            <p class="docs-paragraph">Template använder <code>FFormModal</code> och binder <code>value</code> dels som <code>value</code>-propen men också som <code>v-model</code> för respektive inmatningsfält.
 Inmatningsfälten läggs in i <code>#input-text-fields</code>-slotten.</p>
-
                 <div
                     id="example-388e80"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="vue"
                 >
                     
@@ -1218,7 +1140,7 @@ Inmatningsfälten läggs in i <code>#input-text-fields</code>-slotten.</p>
                     id="example-ace641"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="vue"
                 >
                     
@@ -1258,45 +1180,65 @@ interface <span class="hljs-title class_">Person</span> {
         
             <div class="docs-messagebox docs-messagebox--danger">
                 <p class="docs-messagebox__title">Tänk på att</p>
-                <p>Data muteras direkt på <code>value</code>-propen.
+                <p class="docs-paragraph">Data muteras direkt på <code>value</code>-propen.
 Det kan leda till oönskade konsekvenser om konsumenten skickas in existernade referenser till objekt istället för att skicka in en kopia eller nytt objekt.
 Du kan antingen låta din formulärsmodal hantera detta genom att internt kopiera <code>value</code> eller tydligt dokumentera att konsumenten måste skicka in en kopia.</p>
-
             </div>
-        <h2 id="oppna_modal"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p>Du öppnar modalen med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
-
+        <h2 id="oppna_modal"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p class="docs-paragraph">Du öppnar modalen med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p><p class="docs-paragraph"><strong>Options API:</strong></p>
                 <div
-                    id="example-a68277"
+                    id="example-577e0e"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// options api</span>
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">PersonFormModal</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">PersonFormModal</span>);</code></pre>
+                </div>
+            <p class="docs-paragraph"><strong>Composition API:</strong></p>
+                <div
+                    id="example-dd316f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language=""
+                >
+                    
+                    <pre class="code-preview__markup"><code>import { defineComponent } from &quot;vue&quot;;
 
-<span class="hljs-comment">// composition api</span>
-<span class="hljs-keyword">const</span> { formModal } = <span class="hljs-title function_">useModal</span>();
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
+interface Person {}
 
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onOpen</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
-    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>);
+const PersonFormModal = defineComponent({});
+
+/* --- cut above --- */
+
+import { useModal } from &quot;@fkui/vue&quot;;
+
+const { formModal } = useModal();
+
+async function onOpen(): Promise&lt;void&gt; {
+	const result = await formModal&lt;Person&gt;(PersonFormModal);
+
+	/* do something with result */
 }
 </code></pre>
                 </div>
-            <p>Returvärdet är <code>Promise</code> som löses ut med <code>resolve(value)</code> (det objekt som ligger lagrat i <code>value</code> när modalen stängs).
-Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()</code> .</p>
-<p>Förifylld data kan skickas in med propen <code>value</code>:</p>
-
+            <p class="docs-paragraph">Returvärdet är <code>Promise</code> som löses ut med <code>resolve(value)</code> (det objekt som ligger lagrat i <code>value</code> när modalen stängs).
+Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()</code> .</p><p class="docs-paragraph">Förifylld data kan skickas in med propen <code>value</code>:</p>
                 <div
-                    id="example-0119fc"
+                    id="example-4eaa7a"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>, {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> { formModal } = <span class="hljs-title function_">useModal</span>();
+
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>, {
     <span class="hljs-attr">props</span>: {
         <span class="hljs-attr">value</span>: {
             <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Kalle Anka&quot;</span>,
@@ -1308,7 +1250,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                 </div>
             
             <div
-                id="example-d6429b"
+                id="example-752c05"
                 class="code-preview code-preview--default"
                 
                 
@@ -1316,13 +1258,13 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
             >
                 
                 <div class="code-preview__preview">
-        <div id="FFormModalApiExample"></div>
+        <div id="example-62ba5c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FFormModalApiExample-8796bc.js"></script>
+        <script type="module" src="./FFormModalApiExample-62ba5c.js"></script>
     </div>
                 <div>
             <button
@@ -1340,24 +1282,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-example&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;form-modal-api-example-button&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
-            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
-        &gt;</span>
-            Öppna Modal
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Modalen stängdes med resultatet:<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;api-result&quot;</span>&gt;</span>{{ result }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { formModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">ExampleModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ExampleModal.vue&quot;</span>;
@@ -1386,15 +1311,31 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-example&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;form-modal-api-example-button&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
+            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
+        &gt;</span>
+            Öppna Modal
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Modalen stängdes med resultatet:<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;api-result&quot;</span>&gt;</span>{{ result }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <h2 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h2><p>Att använda <code>FFormModal</code> nästlad i template är deprekerat.
+        <h2 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h2><p class="docs-paragraph">Att använda <code>FFormModal</code> nästlad i template är deprekerat.
 Vi rekommenderar att du flyttar den till en egen Vue komponent och använder API för att öppna den.
 Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FFormModal</code> med API.</p>
-
                 <div
-                    id="example-88944e"
+                    id="example-9d52bb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1409,11 +1350,10 @@ Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur 
  &lt;/template&gt;
 </code></pre>
                 </div>
-            <h2 id="formularsmodal_med_flera_knappar"><a class="header-anchor" href="#formularsmodal_med_flera_knappar">Formulärsmodal med flera knappar</a></h2><p>Komponenten har en prop <code>buttons</code> som styr vilka knappar som finns i modalens sidfot.
+            <h2 id="formularsmodal_med_flera_knappar"><a class="header-anchor" href="#formularsmodal_med_flera_knappar">Formulärsmodal med flera knappar</a></h2><p class="docs-paragraph">Komponenten har en prop <code>buttons</code> som styr vilka knappar som finns i modalens sidfot.
 Med den kan du ta bort existerande knappar eller använda en helt egen uppsättning.</p>
-
                 <div
-                    id="example-34ba24"
+                    id="example-a0fcd3"
                     class="code-preview code-preview--default"
                     
                     
@@ -1426,13 +1366,11 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
             <span class="hljs-comment">/* ... */</span>
         ],
     },
-});
-</code></pre>
+});</code></pre>
                 </div>
-            <p><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
-
+            <p class="docs-paragraph"><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
                 <div
-                    id="example-8575fa"
+                    id="example-e1d05b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1451,25 +1389,23 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 </div>
             
                 <div
-                    id="example-9effe9"
+                    id="example-99bc06"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-attr">buttons</span>: [{ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Stäng&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;dismiss&quot;</span> }];
 </code></pre>
                 </div>
-            <p>Två event har speciell innebörd:</p>
-<ul>
-<li><code>dismiss</code>: stänger modalen utan att spara formulärsdata.</li>
-<li><code>submit</code>: stänger modalen och returnerar formulärsdata till anroparen.</li>
+            <p class="docs-paragraph">Två event har speciell innebörd:</p><ul>
+<li><p class="docs-paragraph"><code>dismiss</code>: stänger modalen utan att spara formulärsdata.</p></li>
+<li><p class="docs-paragraph"><code>submit</code>: stänger modalen och returnerar formulärsdata till anroparen.</p></li>
 </ul>
-<h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p>Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code> property:</p>
-
+<h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p class="docs-paragraph">Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code> property:</p>
                 <div
-                    id="example-d1d32d"
+                    id="example-2d3057"
                     class="code-preview code-preview--default"
                     
                     
@@ -1480,14 +1416,12 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <span class="hljs-addition">+buttons: [{ label: &quot;Stäng&quot;, screenreader: &quot;formuläret&quot;, event: &quot;dismiss&quot; }];</span>
 </code></pre>
                 </div>
-            <p>Om du använder <code>screenreader</code> för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i <code>label</code>. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.</p>
-<h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p>Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
-
+            <p class="docs-paragraph">Om du använder <code>screenreader</code> för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i <code>label</code>. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.</p><h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p class="docs-paragraph">Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
                 <div
-                    id="example-420a28"
+                    id="example-a3be15"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1500,11 +1434,10 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-form-modal</span>&gt;</span>
 </code></pre>
                 </div>
-            <p>Notera att det är metoden <code>onBeforeSubmit</code> som ska skickas in i sin helhelt, anropa inte metoden med <code>:before-submit=&quot;onBeforeSubmit()&quot;</code>.
+            <p class="docs-paragraph">Notera att det är metoden <code>onBeforeSubmit</code> som ska skickas in i sin helhelt, anropa inte metoden med <code>:before-submit=&quot;onBeforeSubmit()&quot;</code>.
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
-
                 <div
-                    id="example-cd7465"
+                    id="example-27d741"
                     class="code-preview code-preview--default"
                     
                     
@@ -1514,13 +1447,11 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-built_in">void</span> {
     <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">myField</span>);
     <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
-},
-</code></pre>
+},</code></pre>
                 </div>
-            <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
-
+            <p class="docs-paragraph">Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
                 <div
-                    id="example-ce25cb"
+                    id="example-211eea"
                     class="code-preview code-preview--default"
                     
                     
@@ -1530,111 +1461,375 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">FFormModalAction</span> {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-title class_">FFormModalAction</span>.<span class="hljs-property">CANCEL</span>;
-},
-</code></pre>
+},</code></pre>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>fullscreen</p>
-</td><td><p>Enable fullscreen mode in mobile.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>isOpen</p>
-</td><td><p>If the modal is open.<br>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fformmodal-props">
+            <a class="header-anchor" href="#fformmodal-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fformmodal-prop-fullscreen"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-fullscreen"
+                                    ><span class="docs-api__name"
+                                        >fullscreen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable fullscreen mode in mobile.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-isopen"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-isopen"
+                                    ><span class="docs-api__name"
+                                        >isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If the modal is open.
 Use this to toggle if the modal should be visible or not.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>size</p>
-</td><td><p>See &lt;f-modal&gt; <code>size</code> props.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td></tr><tr><td><p>dataTest</p>
-</td><td><p>‐</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td></tr><tr><td><p>value</p>
-</td><td><p>The data that has been submitted.</p>
-</td><td><p>object</p>
-</td><td><p>false</p>
-</td><td><p>{}</p>
-</td></tr><tr><td><p>useErrorList</p>
-</td><td><p>Include the error list component.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>true</p>
-</td></tr><tr><td><p>formId</p>
-</td><td><p>The id for the form id attribute.<br>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-size"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-size"
+                                    ><span class="docs-api__name"
+                                        >size</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>See &lt;f-modal&gt; <code>size</code> props.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-value"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-value"
+                                    ><span class="docs-api__name"
+                                        >value</span
+                                    >: object</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The data that has been submitted.</p>
+
+                            <p class="doc-api__item">Default: <code>{}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-useerrorlist"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-useerrorlist"
+                                    ><span class="docs-api__name"
+                                        >useErrorList</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Include the error list component.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-formid"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-formid"
+                                    ><span class="docs-api__name"
+                                        >formId</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the form id attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td></tr><tr><td><p>ariaCloseText</p>
-</td><td><p>The aria-label attribute text for the top right close button.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td></tr><tr><td><p>beforeSubmit</p>
-</td><td><p>If given, this function is called before the [[submit]] event is emitted.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-ariaclosetext"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-ariaclosetext"
+                                    ><span class="docs-api__name"
+                                        >ariaCloseText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The aria-label attribute text for the top right close button.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-beforesubmit"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-beforesubmit"
+                                    ><span class="docs-api__name"
+                                        >beforeSubmit</span
+                                    >: FValidationFormCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called before the [[submit]] event is emitted.
 See &lt;f-validation-form&gt; <code>beforeSubmit</code> props for more info.</p>
-</td><td><p>FValidationFormCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-/* do nothing */<br>
-}</p>
-</td></tr><tr><td><p>beforeValidation</p>
-</td><td><p>If given, this function is called before the form data is validated and the [[submit]] event is emitted.<br>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    /* do nothing */
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-beforevalidation"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-beforevalidation"
+                                    ><span class="docs-api__name"
+                                        >beforeValidation</span
+                                    >: FValidationFormCallback</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If given, this function is called before the form data is validated and the [[submit]] event is emitted.
 See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.</p>
-</td><td><p>FValidationFormCallback</p>
-</td><td><p>false</p>
-</td><td><p>function() {<br>
-/* do nothing */<br>
-}</p>
-</td></tr><tr><td><p>buttons</p>
-</td><td><p>‐</p>
-</td><td><p>FModalButtonDescriptor[]</p>
-</td><td><p>false</p>
-</td><td><p>(): FModalButtonDescriptor[] =&gt; [<br>
-{<br>
-label: TranslationService.provider.translate(&quot;fkui.form-modal.button.submit.text&quot;, &quot;Spara&quot;),<br>
-event: &quot;submit&quot;,<br>
-type: &quot;primary&quot;,<br>
-submitButton: true,<br>
-},<br>
-{<br>
-label: TranslationService.provider.translate(&quot;fkui.form-modal.button.cancel.text&quot;, &quot;Avbryt&quot;),<br>
-event: &quot;dismiss&quot;,<br>
-type: &quot;secondary&quot;,<br>
-},<br>
-]</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>cancel</p>
-</td><td><p>Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.<br>
+
+                            <p class="doc-api__item">Default: <code>function() {
+    /* do nothing */
+}</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-prop-buttons"
+                                ><a class="docs-api__anchor" href="#fformmodal-prop-buttons"
+                                    ><span class="docs-api__name"
+                                        >buttons</span
+                                    >: FModalButtonDescriptor[]</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>List of buttons to display in the modal.
+Each button is defined as an FModalButtonDescriptor with the following properties:</p>
+<ul>
+<li><code>label</code> (String): The text displayed on the button.</li>
+<li><code>event</code> (String): The event emitted when the button is clicked.</li>
+<li><code>type</code> (String): The button type. Valid values are: &quot;primary&quot; or &quot;secondary&quot;.</li>
+<li><code>submitButton</code> (Boolean): Whether the button is a submit button.</li>
+</ul>
+
+                            <p class="doc-api__item">Default: <code>(): FModalButtonDescriptor[] =&gt; [
+    {
+        label: TranslationService.provider.translate(&quot;fkui.form-modal.button.submit.text&quot;, &quot;Spara&quot;),
+        event: &quot;submit&quot;,
+        type: &quot;primary&quot;,
+        submitButton: true,
+    },
+    {
+        label: TranslationService.provider.translate(&quot;fkui.form-modal.button.cancel.text&quot;, &quot;Avbryt&quot;),
+        event: &quot;dismiss&quot;,
+        type: &quot;secondary&quot;,
+    },
+]</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fformmodal-events">
+            <a class="header-anchor" href="#fformmodal-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fformmodal-event-cancel"
+                                ><a class="docs-api__anchor" href="#fformmodal-event-cancel"
+                                    ><span class="docs-api__name"
+                                        >cancel</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
 In most use cases the isOpen prop should be set to false when this event is triggered.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>close</p>
-</td><td><p>Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.<br>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-event-close"
+                                ><a class="docs-api__anchor" href="#fformmodal-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
 In most use cases the isOpen prop should be set to false when this event is triggered.</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td></tr><tr><td><p>submit</p>
-</td><td><p>Event that is dispatched when the submit button is is clicked.<br>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-event-submit"
+                                ><a class="docs-api__anchor" href="#fformmodal-event-submit"
+                                    ><span class="docs-api__name"
+                                        >submit</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when the submit button is is clicked.
 The event payload is the data that has been submitted.</p>
-</td><td><p>&lt;anonymous&gt;: undefined</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Slot for the header.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>default</p>
-</td><td><p>Slot for main content above text fields and buttons.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>error-message</p>
-</td><td><p>Slot for error message</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>input-text-fields</p>
-</td><td><p>Slot for input text fields for entering text.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
-<li><a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) för programatiskt användande av formulärsmodal.</li>
-<li><a href="./fmodal.html">Modal</a> för mer information om modaler.</li>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fformmodal-slots">
+            <a class="header-anchor" href="#fformmodal-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fformmodal-slot-header"
+                                ><a class="docs-api__anchor" href="#fformmodal-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for the header.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-slot-default"
+                                ><a class="docs-api__anchor" href="#fformmodal-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for main content above text fields and buttons.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-slot-error-message"
+                                ><a class="docs-api__anchor" href="#fformmodal-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for error message</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fformmodal-slot-input-text-fields"
+                                ><a class="docs-api__anchor" href="#fformmodal-slot-input-text-fields"
+                                    ><span class="docs-api__name"
+                                        >input-text-fields</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for input text fields for entering text.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
+<li><p class="docs-paragraph"><a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) för programatiskt användande av formulärsmodal.</p></li>
+<li><p class="docs-paragraph"><a href="./fmodal.html">Modal</a> för mer information om modaler.</p></li>
 </ul>
 
 
@@ -1642,8 +1837,7 @@ The event payload is the data that has been submitted.</p>
                 </main>
             </div>
 
-            <footer>
-                <!-- prettier-ignore --><div class="footer__left">
+            <footer><div class="footer__left">
     <h1>Kontakta oss</h1>
     <ul>
         <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
@@ -1653,13 +1847,9 @@ The event payload is the data that has been submitted.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right">
-    <!-- prettier-ignore -->
-    <div class="version">
-    <!-- prettier-ignore -->
-    docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/863709a0ba28ad42c41081cb3402a0398f71778f">863709a</a>)<br />
+<div class="footer__right"><div class="version">docs/pageobject-f-badge (<a href="https://github.com/Forsakringskassan/designsystem/commits/96ea38c4d01133ef054df56a6b42444f6b6cfe45">96ea38c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/252">PR 252</a><br />
-        2025-02-05 12:20
+        2025-04-16 12:01
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1674,7 +1864,7 @@ The event payload is the data that has been submitted.</p>
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -1698,9 +1888,7 @@ The event payload is the data that has been submitted.</p>
     </ul>
 </div>
 </footer>
-        </div>
-
-        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+        </div><div aria-hidden="true" style="display: none">
     <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
         <symbol id="docs-icon-search" viewBox="0 0 512 512">
             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -1743,9 +1931,7 @@ The event payload is the data that has been submitted.</p>
             ></path>
         </symbol>
     </svg>
-</div>
-<!-- prettier-ignore -->
-        <dialog id="search-dialog">
+</div><dialog id="search-dialog">
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
@@ -1769,26 +1955,23 @@ The event payload is the data that has been submitted.</p>
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog>
-
-
-        <!-- prettier-ignore -->
-        <script
-            src="../../assets/processors/motd/index-8c87e1.js"
+</dialog><script
+            src="../../assets/processors/motd/index-fd9bb8.js"
+            type="module"
             crossorigin
-            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
-        ></script>
-        <script
-            src="../../assets/processors/selectable-version/select-version-dac30b.js"
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            type="module"
             crossorigin
-            integrity="sha384-QK9Rv7ZIApW5REwvk5sgvimhFpzeswE9BmkKHX5JEnX70fvX9EXHS1AEBAc+8ta0"
+            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
             
-        ></script>
-        <script
-            src="../../assets/main-7b9d0f.js"
+        ></script><script
+            src="../../assets/main-a45256.js"
+            type="module"
             crossorigin
-            integrity="sha384-CkBS+2iQM0YabVVYQivsXGjK3HAoNMXLv+j8OKNP2LV3qfpfTLch5hsrKHw2NwpD"
+            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
             
         ></script>
     </body>
