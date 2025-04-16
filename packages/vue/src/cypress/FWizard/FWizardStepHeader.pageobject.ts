@@ -12,7 +12,6 @@ export class FWizardStepHeaderPageobject implements BasePageObject {
     public successIcon: () => DefaultCypressChainable;
     public stepNumber: () => Cypress.Chainable<string>;
     public stepOf: () => DefaultCypressChainable;
-    public title: () => DefaultCypressChainable;
 
     public constructor(selector: string) {
         this.selector = selector;
@@ -24,7 +23,18 @@ export class FWizardStepHeaderPageobject implements BasePageObject {
             cy.get(`${this.selector} [data-test="step-number"]`).invoke("text");
         this.stepOf = () =>
             cy.get(`${this.selector} .wizard-step__header__step-of`);
-        this.title = () =>
-            cy.get(`${this.selector} .wizard-step__header__title`);
+    }
+
+    public title(): DefaultCypressChainable {
+        return cy
+            .get(`${this.selector} .wizard-step__header__title`)
+            .then((element) => {
+                if (element.children("a").length > 0) {
+                    return cy.get(
+                        `${this.selector} .wizard-step__header__title > a`,
+                    );
+                }
+                return cy.get(`${this.selector} .wizard-step__header__title`);
+            });
     }
 }

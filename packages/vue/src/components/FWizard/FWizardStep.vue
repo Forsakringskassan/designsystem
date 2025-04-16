@@ -249,28 +249,29 @@ export default defineComponent({
 
                     <i-flex class="wizard-step__header__title-container">
                         <i-flex-item align="center">
-                            <a
-                                v-if="showLink"
-                                aria-expanded="false"
-                                role="button"
-                                href="#"
-                                class="anchor wizard-step__header__title"
-                                @click.prevent="open"
-                                @keypress.space.prevent="open"
-                            >
-                                <span class="sr-only">{{ defaultCurrentStepInformation }}&nbsp;</span>
-                                {{ title }}
-                                <span class="sr-only"
-                                    >&nbsp;{{ $t("fkui.wizard-step.finished-step", "Avklarat steg") }}</span
+                            <component :is="inheritedProps.headerTag" class="wizard-step__header__title">
+                                <a
+                                    v-if="showLink"
+                                    aria-expanded="false"
+                                    role="button"
+                                    href="#"
+                                    class="anchor"
+                                    @click.prevent="open"
+                                    @keypress.space.prevent="open"
                                 >
-                            </a>
-
-                            <component :is="inheritedProps.headerTag" v-else class="wizard-step__header__title">
-                                <span class="sr-only">{{ defaultCurrentStepInformation }}&nbsp;</span>
-                                {{ title }}
-                                <span v-if="isPending" class="sr-only">
-                                    &nbsp;{{ $t("fkui.wizard-step.pending", "Inaktivt") }}
-                                </span>
+                                    <span class="sr-only">{{ defaultCurrentStepInformation }}&nbsp;</span>
+                                    {{ title }}
+                                    <span class="sr-only">
+                                        &nbsp;{{ $t("fkui.wizard-step.finished-step", "Avklarat steg") }}
+                                    </span>
+                                </a>
+                                <template v-else>
+                                    <span class="sr-only">{{ defaultCurrentStepInformation }}&nbsp;</span>
+                                    {{ title }}
+                                    <span v-if="isPending" class="sr-only">
+                                        &nbsp;{{ $t("fkui.wizard-step.pending", "Inaktivt") }}
+                                    </span>
+                                </template>
                             </component>
                         </i-flex-item>
                     </i-flex>
