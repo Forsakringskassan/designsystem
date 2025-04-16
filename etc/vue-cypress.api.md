@@ -701,7 +701,7 @@ export class FWizardStepHeaderPageobject implements BasePageObject {
     // (undocumented)
     successIcon: () => DefaultCypressChainable;
     // (undocumented)
-    title: () => DefaultCypressChainable;
+    title(): DefaultCypressChainable;
 }
 
 // @public
