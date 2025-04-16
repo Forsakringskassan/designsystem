@@ -59,8 +59,8 @@ export default defineComponent({
         <label v-if="hasDescriptionSlot || hasErrorMessageSlot" class="label sr-separator" :for="forProperty">
             <!--
                 @slot Optional slot for description.
-                @binding {string[]} descriptionClass CSS classes for primary description content.
-                @binding {string[]} formatDescriptionClass CSS classes for format description.
+                @binding {string[]} description-class CSS classes for primary description content.
+                @binding {string[]} format-description-class CSS classes for format description.
             -->
             <slot name="description" :description-class :format-description-class></slot>
             <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
@@ -75,8 +75,8 @@ export default defineComponent({
         <slot name="default"></slot>
         <!--
             @slot Optional slot for description.
-            @binding {string[]} descriptionClass CSS classes for primary description content.
-            @binding {string[]} formatDescriptionClass CSS classes for format description.
+            @binding {string[]} description-class CSS classes for primary description content.
+            @binding {string[]} format-description-class CSS classes for format description.
           -->
         <slot name="description" :description-class :format-description-class></slot>
         <span v-if="hasErrorMessageSlot" class="label__message label__message--error">
