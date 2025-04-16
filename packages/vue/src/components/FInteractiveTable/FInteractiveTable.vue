@@ -13,6 +13,7 @@ import {
     getCurrentInstance,
     watch,
 } from "vue";
+import { findTabbableElements } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
 import { TableScroll, tableScrollClasses, itemEquals, includeItem, renderSlotText } from "../../utils";
 import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
@@ -45,6 +46,7 @@ const activeRow = ref<T | undefined>(undefined);
 const columns = ref<FTableColumnData[]>([]);
 const selectedRows = ref<T[]>([]) as Ref<T[]>;
 const tr = shallowRef<HTMLElement[]>([]);
+const trAll = shallowRef<HTMLElement[]>([]);
 const tbodyKey = ref(0);
 
 defineOptions({
@@ -203,6 +205,7 @@ const {
     getExpandableDescribedby,
     expandableRows,
     hasExpandableContent,
+    getExpandedIndex,
 } = expandableTable;
 
 const tbodyElement = useTemplateRef<HTMLElement>("tbodyElement");
@@ -314,8 +317,8 @@ watch(
 );
 
 function updateTr(tbodyElement: HTMLElement): void {
-    const trElements = [].slice.call(tbodyElement.children) as HTMLElement[];
-    const trInteractableElements = trElements.filter((tr) => {
+    trAll.value = [].slice.call(tbodyElement.children) as HTMLElement[];
+    const trInteractableElements = trAll.value.filter((tr) => {
         return tr.tabIndex === 0;
     });
     tr.value = trInteractableElements;
@@ -469,15 +472,30 @@ function callbackBeforeItemDelete(item: T): void {
     if (internalRows.value.length === 0) {
         return;
     }
-    // Focus the item above the deleted one if it exists
-    let targetIndex = internalRows.value.indexOf(item) - 1;
-    if (targetIndex < 0 && internalRows.value.length > 1) {
-        targetIndex = 1;
-    } else if (targetIndex < 0) {
-        targetIndex = 0;
+
+    const currentIndex = internalRows.value.indexOf(item);
+    let targetIndex = currentIndex > 0 ? currentIndex - 1 : currentIndex + 1;
+
+    const row = internalRows.value[targetIndex];
+    let targetRow = tr.value[targetIndex];
+    if (!targetRow || !row) {
+        return;
+    }
+    if (isExpanded(row) && currentIndex - 1 >= 0) {
+        targetIndex = getExpandedIndex(currentIndex, internalRows.value) - 1;
+        targetRow = trAll.value[targetIndex];
+        if (!targetRow) {
+            return;
+        }
     }
 
-    const target = tr.value[targetIndex];
+    if (targetIndex > currentIndex) {
+        targetRow.focus();
+        return;
+    }
+
+    const tabbables = findTabbableElements(targetRow);
+    const target = tabbables[tabbables.length - 1];
     if (target) {
         target.focus();
     }
