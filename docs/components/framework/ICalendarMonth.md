@@ -4,8 +4,8 @@ layout: component
 component: ICalendarMonth
 ---
 
-Kalendermånad är en ramverkskomponent avsedd att användas i kalender ([FCalendar](#/Components/FCalendar)) för att integrera kalenderrutnät ([ICalendarMonthGrid](#/Internal%20Components/ICalendarMonthGrid)) med daginnehåll.
-Den används i förlängning av komponent datumväljare ([FDatepickerField](#/Components/FDatepickerField)).
+Kalendermånad är en ramverkskomponent avsedd att användas i kalender ({@link FCalendar}) för att integrera kalenderrutnät ({@link ICalendarMonthGrid}) med daginnehåll.
+Den används i förlängning av komponent datumväljare ({@link FDatepickerField}).
 
 ## Kalendermånad tillsammans med datumnummer
 
