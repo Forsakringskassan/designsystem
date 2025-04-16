@@ -11,6 +11,7 @@ $icon-number-selector: "#{$icon-stack-selector} div" !default;
 $title-placeholder-selector: ".iflex--grow" !default;
 $header-selector: "#{$WIZARD_STEP_SELECTOR}__header" !default;
 $title-selector: "#{$header-selector}__title" !default;
+$anchor-selector: "#{$title-selector} .anchor" !default;
 $title-container-selector: "#{$title-selector}-container";
 $line-adjustment-selector: "#{$header-selector}__line-adjustment" !default;
 $step-of-selector: "#{$header-selector}__step-of" !default;
@@ -170,14 +171,14 @@ $icon-size: 30px;
     &--done #{$header-selector} {
         margin-top: $line-gap-to-circle;
 
-        #{$title-selector} {
+        #{$anchor-selector} {
             color: $wizardstep-heading-color-done;
             text-decoration-color: $wizardstep-heading-color-done;
             text-decoration-thickness: 2px;
             text-underline-offset: 0.25em;
         }
 
-        #{$title-selector}:hover {
+        #{$anchor-selector}:hover {
             text-decoration-color: $wizardstep-heading-decoration-color-done-hover;
             text-decoration-thickness: 3px;
             text-underline-offset: 0.25em;
