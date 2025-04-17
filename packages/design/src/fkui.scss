@@ -1,3 +1,5 @@
 @use "core/all" as core;
 @use "components/all" as components;
 @use "internal-components/all" as internal-components;
+
+@forward "core/mixins/focus";
