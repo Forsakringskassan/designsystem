@@ -2,6 +2,7 @@
 @use "../../core/mixins/focus" as *;
 @use "../../core/mixins/sr-only" as *;
 @use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $checkbox_label_offset: 0.1rem;
 $CHECKBOX_SELECTOR: ".checkbox" !default;
@@ -56,8 +57,8 @@ $CHECKBOX_SELECTOR: ".checkbox" !default;
         }
 
         &::before {
-            background: var(--f-background-input);
-            border: var(--f-border-width-medium) solid var(--f-border-color-input);
+            background: $checkbox-color-background-default;
+            border: var(--f-border-width-medium) solid $checkbox-color-border-default;
             border-radius: var(--f-border-radius-small);
             cursor: pointer;
             display: block;
@@ -77,28 +78,32 @@ $CHECKBOX_SELECTOR: ".checkbox" !default;
     }
 
     &.disabled {
-        color: var(--f-text-color-input-disabled);
+        color: $checkbox-color-text-disabled;
+        @media (forced-colors: active) {
+            color: GrayText;
+        }
 
         #{$CHECKBOX_SELECTOR}__label {
             cursor: default;
 
             &::before {
-                border: var(--f-border-width-medium) solid var(--f-text-color-input-disabled);
+                border: var(--f-border-width-medium) solid $checkbox-color-border-disabled;
                 cursor: inherit;
             }
         }
 
         input[type="checkbox"]:checked + label::before {
-            background: var(--f-background-input-selected-disabled);
+            background: $checkbox-color-background-disabled;
         }
     }
 
     input[type="checkbox"]:checked + label::before {
-        background-color: var(--f-background-input-selected);
-    }
-
-    input[type="checkbox"]:not(:checked) + #{$CHECKBOX_SELECTOR}__label::before {
-        box-shadow: var(--f-input-shadow-inset);
+        background-color: $checkbox-color-background-selected;
+        border-color: $checkbox-color-border-selected;
+        @media (forced-colors: active) and (prefers-color-scheme: light) {
+            forced-color-adjust: none;
+            background-color: currentcolor;
+        }
     }
 
     input[type="checkbox"]:checked + #{$CHECKBOX_SELECTOR}__label::after {
