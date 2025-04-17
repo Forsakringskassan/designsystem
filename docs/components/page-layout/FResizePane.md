@@ -46,6 +46,9 @@ Värden kan anges antingen som absolut storlek i pixlar (`px`), i procent (`%`) 
 - `20%` - minsta/största storlek är 20% av applikationslayoutens totala bredd.
 - `200px 20%` - minsta/största är det minsta/största av 200px eller 20%.
 
+Storleken refererar till innehållet i ytan, dvs `200px` innebär att det finns 200px effektiv yta för innehåll.
+Ytans totala storlek blir 200px + storleken på handtaget för att justera storleken.
+
 ## Initial storlek
 
 Den initiala storleken på ytan kan anges med `initial` propen.
@@ -53,6 +56,37 @@ Värde kan anges antingen som absolut storlek i pixlar (`px`) eller i procent (`
 
 - `200px` - initial storlek är 200px
 - `20%` - initial storlek är 20% av applikationslayoutens totala bredd.
+
+## Anpassad panel
+
+```import live-example
+CustomPanelExample.vue
+```
+
+En anpassad panel använder composable {@link useResize} för att få tillgång till det API som exponeras från justerbar yta.
+Som konsument kan du styra om ytan ska
+
+- vara justerbar
+- visas.
+
+Samtliga är valfria och aktiverade som standard.
+
+```vue static
+<script setup lang="ts">
+import { ref } from "vue";
+import { useResize } from "@fkui/vue";
+
+const enabled = ref(true);
+const visible = ref(true);
+
+useResize({
+    enabled,
+    visible,
+});
+</script>
+```
+
+{@link useResize Läs mer om useResize}.
 
 ## Props, Events & Slots
 

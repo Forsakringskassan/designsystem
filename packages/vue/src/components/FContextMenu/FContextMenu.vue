@@ -1,32 +1,3 @@
-<template>
-    <i-popup
-        :is-open="isOpen"
-        :keyboard-trap="false"
-        :anchor="anchor"
-        :set-focus="true"
-        :focus-element="() => contextmenu"
-        inline="never"
-        @close="$emit('close')"
-    >
-        <nav class="contextmenu" :aria-label="ariaLabel" @keyup="onKeyUp" @keydown="onKeyDown">
-            <ul ref="contextmenu" role="menu" tabindex="-1" class="contextmenu__list">
-                <li v-for="(item, index) in popupItems" :key="item.key" role="menuitem" @click="onClickItem(item)">
-                    <div ref="items" :tabindex="tabIndex(index)" class="contextmenu__list__item">
-                        <f-icon
-                            v-if="hasIcons"
-                            class="contextmenu__lefticon"
-                            :name="item.icon ? item.icon : ''"
-                            :library="item.iconLibrary ? item.iconLibrary : 'f'"
-                        />
-                        <a ref="anchors">{{ item.label }}</a>
-                    </div>
-                    <hr v-if="hasSeparatorAfterItemAt(index)" class="contextmenu__separator" />
-                </li>
-            </ul>
-        </nav>
-    </i-popup>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, type PropType } from "vue";
 import { focus } from "@fkui/logic";
@@ -234,3 +205,32 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <i-popup
+        :is-open="isOpen"
+        :keyboard-trap="false"
+        :anchor="anchor"
+        :set-focus="true"
+        :focus-element="() => contextmenu"
+        inline="never"
+        @close="$emit('close')"
+    >
+        <nav class="contextmenu" :aria-label="ariaLabel" @keyup="onKeyUp" @keydown="onKeyDown">
+            <ul ref="contextmenu" role="menu" tabindex="-1" class="contextmenu__list">
+                <li v-for="(item, index) in popupItems" :key="item.key" role="menuitem" @click="onClickItem(item)">
+                    <div ref="items" :tabindex="tabIndex(index)" class="contextmenu__list__item">
+                        <f-icon
+                            v-if="hasIcons"
+                            class="contextmenu__lefticon"
+                            :name="item.icon ? item.icon : ''"
+                            :library="item.iconLibrary ? item.iconLibrary : 'f'"
+                        />
+                        <a ref="anchors">{{ item.label }}</a>
+                    </div>
+                    <hr v-if="hasSeparatorAfterItemAt(index)" class="contextmenu__separator" />
+                </li>
+            </ul>
+        </nav>
+    </i-popup>
+</template>

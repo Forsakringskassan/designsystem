@@ -1,3 +1,20 @@
+<script>
+import { defineComponent } from "vue";
+import { ValidationService } from "@fkui/logic";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "ValidationPluginToggleEnabled",
+    components: { FTextField },
+    data() {
+        return { model: "", toggleEnabled: true };
+    },
+    mounted() {
+        ValidationService.setSubmitted("validator-enabled");
+    },
+});
+</script>
+
 <template>
     <div>
         <p>Validering aktiverad: {{ toggleEnabled }}</p>
@@ -20,20 +37,3 @@
         </button>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { ValidationService } from "@fkui/logic";
-import { FTextField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "ValidationPluginToggleEnabled",
-    components: { FTextField },
-    data() {
-        return { model: "", toggleEnabled: true };
-    },
-    mounted() {
-        ValidationService.setSubmitted("validator-enabled");
-    },
-});
-</script>

@@ -2,6 +2,7 @@ import "html-validate/jest";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { FDate } from "@fkui/date";
+import { ValidationPlugin } from "../../plugins";
 import FDatepickerField from "./FDatepickerField.vue";
 
 beforeEach(() => {
@@ -17,6 +18,9 @@ describe("transparency", () => {
         const wrapper = mount(FDatepickerField, {
             attrs: {
                 title: "foo",
+            },
+            global: {
+                plugins: [ValidationPlugin],
             },
         });
 
@@ -40,6 +44,9 @@ describe("textfield", () => {
         const wrapper = mount(FDatepickerField, {
             attrs: {
                 id: "foo",
+            },
+            global: {
+                plugins: [ValidationPlugin],
             },
         });
 

@@ -1,7 +1,3 @@
-<template>
-    <i-calendar-month-grid :value="month"> </i-calendar-month-grid>
-</template>
-
 <script lang="ts">
 import { defineComponent, shallowRef } from "vue";
 import { ICalendarMonthGrid } from "@fkui/vue";
@@ -17,3 +13,7 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <i-calendar-month-grid :value="month"> </i-calendar-month-grid>
+</template>

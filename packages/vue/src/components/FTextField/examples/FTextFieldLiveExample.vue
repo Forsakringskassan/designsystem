@@ -1,60 +1,3 @@
-<template>
-    <live-example :components="components" :template="template" :livedata="livedata">
-        <f-select-field v-model="type">
-            <template #label> Typ </template>
-            <option value="f-text-field">Fritext</option>
-            <option value="f-bankgiro-text-field">Bankgiro</option>
-            <option value="f-clearingnumber-text-field">Clearingnummer</option>
-            <option value="f-bank-account-number-text-field">Kontonummer</option>
-            <option value="f-email-text-field">Mejladress</option>
-            <option value="f-numeric-text-field">Numeriskt</option>
-            <option value="f-organisationsnummer-text-field">Organisationsnummer</option>
-            <option value="f-personnummer-text-field">Personnummer</option>
-            <option value="f-plusgiro-text-field">Plusgiro</option>
-            <option value="f-postal-code-text-field">Postnummer</option>
-            <option value="f-percent-text-field">Procent</option>
-            <option value="f-phone-text-field">Telefonnummer</option>
-            <option value="f-currency-text-field">Valuta</option>
-            <option value="f-search-text-field">Sökfält</option>
-        </f-select-field>
-        <f-select-field v-if="isTextfieldOrNumeric" v-model="maxLength">
-            <template #label> Max antal tecken </template>
-            <option :value="0">Ingen gräns</option>
-            <option :value="20">Exempel: 20 tecken</option>
-        </f-select-field>
-        <f-checkbox-field v-if="isTextfieldOrNumeric" v-model="isWhitelist" :value="true">
-            Begränsa tillåtna tecken med whitelist-validatorn
-        </f-checkbox-field>
-        <f-checkbox-field v-if="!isClearable" v-model="isRequired" :value="true">
-            Obligatorisk fält
-        </f-checkbox-field>
-        <f-checkbox-field v-model="isDisabled" :value="true"> Inaktivt fält </f-checkbox-field>
-        <f-checkbox-field v-if="showAppendInner" v-model="appendInnerVisible" :value="true">
-            Innehåll i inmatningsfält
-        </f-checkbox-field>
-        <f-fieldset name="etikett">
-            <template #label> Etiketten </template>
-            <f-checkbox-field v-if="supportDescription" v-model="descriptionVisible" :value="true">
-                Hjälptext
-            </f-checkbox-field>
-            <f-checkbox-field
-                v-if="supportDescription"
-                v-model="formatDescriptionVisible"
-                :value="true"
-            >
-                Formatbeskrivning
-            </f-checkbox-field>
-            <f-checkbox-field v-if="!isEmail" v-model="tooltipVisible" :value="true">
-                Tooltip
-            </f-checkbox-field>
-            <f-checkbox-field v-model="isInline" :value="true"> Inline </f-checkbox-field>
-            <f-checkbox-field v-if="!isTextfieldOrNumeric" v-model="customLabel" :value="true">
-                Annan etikett
-            </f-checkbox-field>
-        </f-fieldset>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
@@ -244,3 +187,60 @@ export default defineComponent({
     methods: {},
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template" :livedata="livedata">
+        <f-select-field v-model="type">
+            <template #label> Typ </template>
+            <option value="f-text-field">Fritext</option>
+            <option value="f-bankgiro-text-field">Bankgiro</option>
+            <option value="f-clearingnumber-text-field">Clearingnummer</option>
+            <option value="f-bank-account-number-text-field">Kontonummer</option>
+            <option value="f-email-text-field">Mejladress</option>
+            <option value="f-numeric-text-field">Numeriskt</option>
+            <option value="f-organisationsnummer-text-field">Organisationsnummer</option>
+            <option value="f-personnummer-text-field">Personnummer</option>
+            <option value="f-plusgiro-text-field">Plusgiro</option>
+            <option value="f-postal-code-text-field">Postnummer</option>
+            <option value="f-percent-text-field">Procent</option>
+            <option value="f-phone-text-field">Telefonnummer</option>
+            <option value="f-currency-text-field">Valuta</option>
+            <option value="f-search-text-field">Sökfält</option>
+        </f-select-field>
+        <f-select-field v-if="isTextfieldOrNumeric" v-model="maxLength">
+            <template #label> Max antal tecken </template>
+            <option :value="0">Ingen gräns</option>
+            <option :value="20">Exempel: 20 tecken</option>
+        </f-select-field>
+        <f-checkbox-field v-if="isTextfieldOrNumeric" v-model="isWhitelist" :value="true">
+            Begränsa tillåtna tecken med whitelist-validatorn
+        </f-checkbox-field>
+        <f-checkbox-field v-if="!isClearable" v-model="isRequired" :value="true">
+            Obligatorisk fält
+        </f-checkbox-field>
+        <f-checkbox-field v-model="isDisabled" :value="true"> Inaktivt fält </f-checkbox-field>
+        <f-checkbox-field v-if="showAppendInner" v-model="appendInnerVisible" :value="true">
+            Innehåll i inmatningsfält
+        </f-checkbox-field>
+        <f-fieldset name="etikett">
+            <template #label> Etiketten </template>
+            <f-checkbox-field v-if="supportDescription" v-model="descriptionVisible" :value="true">
+                Hjälptext
+            </f-checkbox-field>
+            <f-checkbox-field
+                v-if="supportDescription"
+                v-model="formatDescriptionVisible"
+                :value="true"
+            >
+                Formatbeskrivning
+            </f-checkbox-field>
+            <f-checkbox-field v-if="!isEmail" v-model="tooltipVisible" :value="true">
+                Tooltip
+            </f-checkbox-field>
+            <f-checkbox-field v-model="isInline" :value="true"> Inline </f-checkbox-field>
+            <f-checkbox-field v-if="!isTextfieldOrNumeric" v-model="customLabel" :value="true">
+                Annan etikett
+            </f-checkbox-field>
+        </f-fieldset>
+    </live-example>
+</template>

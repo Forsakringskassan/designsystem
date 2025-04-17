@@ -66,16 +66,16 @@ Du kan även lägga till eller ta bort valda rader genom att ändra referenserna
 På så sätt kan du till exempel förvälja vissa rader eller skapa bulk-åtgärder som väljer vissa typer av rader.
 Notera att `v-model` kräver referenser till objekt som du skickat till `rows` prop för att kunna välja dessa.
 
-```js
-const rows = ref([
+```ts
+const rows = [
     { name: "Banan", type: "Frukt" },
     { name: "Äpple", type: "Frukt" },
     { name: "Vitkål", type: "Grönsak" },
     { name: "Spenat", type: "Grönsak" },
-]);
+];
 
 // Preselect all rows that are fruit type.
-const selectedRows = ref(rows.value.filter((row) => row.type === "Frukt"));
+const selectedRows = rows.filter((row) => row.type === "Frukt");
 ```
 
 ### Expanderbara rader
@@ -139,12 +139,12 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
 +<f-interactive-table :rows="myRows" key-attribute="id">
 ```
 
-```js
+```ts
 // The key "id" is used for "keyAttribute".
-const myRows = ref([
+const myRows = [
     { id: "a", name: "Banan" },
     { id: "b", name: "Äpple" },
-]);
+];
 ```
 
 ## Tabellrubrik

@@ -1,3 +1,44 @@
+<script>
+import { defineComponent } from "vue";
+import {
+    FCheckboxField,
+    FEmailTextField,
+    FFieldset,
+    FRadioField,
+    FPhoneTextField,
+    FValidationForm,
+} from "@fkui/vue";
+
+export default defineComponent({
+    name: "FValidationFormDefault",
+    components: {
+        FCheckboxField,
+        FEmailTextField,
+        FFieldset,
+        FRadioField,
+        FPhoneTextField,
+        FValidationForm,
+    },
+    data() {
+        return {
+            phone: "",
+            phoneAlt: "",
+            email: "",
+            info: "",
+            tips: false,
+            news: false,
+        };
+    },
+    methods: {
+        onSubmit() {
+            alert("Spara");
+        },
+        onCancel() {
+            alert("Avbryt");
+        },
+    },
+});
+</script>
 <template>
     <f-validation-form @submit="onSubmit">
         <template #error-message> Oj, du har glömt fylla i något. Gå till: </template>
@@ -46,44 +87,3 @@
         </template>
     </f-validation-form>
 </template>
-<script>
-import { defineComponent } from "vue";
-import {
-    FCheckboxField,
-    FEmailTextField,
-    FFieldset,
-    FRadioField,
-    FPhoneTextField,
-    FValidationForm,
-} from "@fkui/vue";
-
-export default defineComponent({
-    name: "FValidationFormDefault",
-    components: {
-        FCheckboxField,
-        FEmailTextField,
-        FFieldset,
-        FRadioField,
-        FPhoneTextField,
-        FValidationForm,
-    },
-    data() {
-        return {
-            phone: "",
-            phoneAlt: "",
-            email: "",
-            info: "",
-            tips: false,
-            news: false,
-        };
-    },
-    methods: {
-        onSubmit() {
-            alert("Spara");
-        },
-        onCancel() {
-            alert("Avbryt");
-        },
-    },
-});
-</script>

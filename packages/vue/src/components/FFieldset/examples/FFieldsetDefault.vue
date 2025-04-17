@@ -1,3 +1,18 @@
+<script>
+import { defineComponent } from "vue";
+import { FFieldset, FRadioField, FTooltip } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FFieldsetDefault",
+    components: { FFieldset, FRadioField, FTooltip },
+    data() {
+        return {
+            deltid: undefined,
+        };
+    },
+});
+</script>
+
 <template>
     <f-fieldset name="group-name-default">
         <template #label> Arbetar du deltid? </template>
@@ -19,18 +34,3 @@
         <f-radio-field id="deltid-nej" v-model="deltid" :value="false"> Nej </f-radio-field>
     </f-fieldset>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FFieldset, FRadioField, FTooltip } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FFieldsetDefault",
-    components: { FFieldset, FRadioField, FTooltip },
-    data() {
-        return {
-            deltid: undefined,
-        };
-    },
-});
-</script>

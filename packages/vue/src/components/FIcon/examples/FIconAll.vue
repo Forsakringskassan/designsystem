@@ -1,22 +1,3 @@
-<template>
-    <f-data-table :rows="allIcons" :striped="true" key-attribute="id">
-        <template #caption>
-            <span> Ikoner </span>
-        </template>
-        <template #default="{ row }">
-            <f-table-column name="ikon" title="Ikon" type="text">
-                <f-icon :name="row.namn" :library="row.library"></f-icon>
-            </f-table-column>
-            <f-table-column name="namn" title="Ikonnamn" type="text">
-                {{ row.namn }}
-            </f-table-column>
-            <f-table-column name="library" title="Ikon-bibliotek" type="text">
-                {{ row.library }}
-            </f-table-column>
-        </template>
-    </f-data-table>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { type IconPackage } from "@fkui/icon-lib-default";
@@ -78,3 +59,22 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-data-table :rows="allIcons" :striped="true" key-attribute="id">
+        <template #caption>
+            <span> Ikoner </span>
+        </template>
+        <template #default="{ row }">
+            <f-table-column name="ikon" title="Ikon" type="text">
+                <f-icon :name="row.namn" :library="row.library"></f-icon>
+            </f-table-column>
+            <f-table-column name="namn" title="Ikonnamn" type="text">
+                {{ row.namn }}
+            </f-table-column>
+            <f-table-column name="library" title="Ikon-bibliotek" type="text">
+                {{ row.library }}
+            </f-table-column>
+        </template>
+    </f-data-table>
+</template>

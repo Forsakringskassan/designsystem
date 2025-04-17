@@ -1,3 +1,22 @@
+<script>
+import { defineComponent } from "vue";
+import { FValidationGroup, FTextField, FFieldset, FRadioField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "OptimizationExample",
+    components: { FTextField, FValidationGroup, FFieldset, FRadioField },
+    data() {
+        return {
+            favoritGrupp: {},
+            val: true,
+            kaka: "",
+            frukt: "",
+            godis: "",
+        };
+    },
+});
+</script>
+
 <template>
     <div>
         <f-validation-group key="unik-nyckel" v-model="favoritGrupp">
@@ -54,22 +73,3 @@
         <pre>{{ favoritGrupp.componentCount }}</pre>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FValidationGroup, FTextField, FFieldset, FRadioField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "OptimizationExample",
-    components: { FTextField, FValidationGroup, FFieldset, FRadioField },
-    data() {
-        return {
-            favoritGrupp: {},
-            val: true,
-            kaka: "",
-            frukt: "",
-            godis: "",
-        };
-    },
-});
-</script>

@@ -224,7 +224,7 @@ function escapeNewlines(value: string): string {
                 <tr v-for="row in internalRows" :key="rowKey(row)" class="table__row">
                     <!--
                          @slot Slot for table row. The item object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ row }"`.
-                         @binding {T} row - The object to be visualized..
+                         @binding {T} row - The object to be visualized.
                     -->
                     <slot v-bind="{ row }" />
                 </tr>

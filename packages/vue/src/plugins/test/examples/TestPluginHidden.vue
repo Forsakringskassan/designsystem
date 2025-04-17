@@ -1,3 +1,16 @@
+<script>
+import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "TestPluginHidden",
+    components: { FTextField },
+    data() {
+        return { isVisible: false };
+    },
+});
+</script>
+
 <template>
     <div>
         <f-text-field
@@ -13,16 +26,3 @@
         </button>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "TestPluginHidden",
-    components: { FTextField },
-    data() {
-        return { isVisible: false };
-    },
-});
-</script>

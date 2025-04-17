@@ -1,10 +1,14 @@
 import "html-validate/jest";
 import { mount, VueWrapper } from "@vue/test-utils";
+import { ValidationPlugin } from "../../../../plugins";
 import FPercentTextField from "./FPercentTextField.vue";
 
 function createWrapper(props = {}): VueWrapper {
     return mount(FPercentTextField, {
         props: { ...props },
+        global: {
+            plugins: [ValidationPlugin],
+        },
     });
 }
 

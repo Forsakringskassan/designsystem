@@ -1,7 +1,3 @@
-<template>
-    <i-calendar-navbar v-model="month" :min-date="minDate" :max-date="maxDate"> </i-calendar-navbar>
-</template>
-
 <script lang="ts">
 import { defineComponent, shallowRef } from "vue";
 import { ICalendarNavbar } from "@fkui/vue";
@@ -19,3 +15,7 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <i-calendar-navbar v-model="month" :min-date="minDate" :max-date="maxDate"> </i-calendar-navbar>
+</template>

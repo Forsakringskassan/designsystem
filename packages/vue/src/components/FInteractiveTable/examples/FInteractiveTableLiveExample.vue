@@ -1,36 +1,3 @@
-<template>
-    <live-example :components="components" :template="template" :livedata="livedata">
-        <f-checkbox-field v-model="isSelectable" :value="true"> Valbara rader </f-checkbox-field>
-        <f-checkbox-field v-model="isExpandable" :value="true">
-            Expanderbara rader
-        </f-checkbox-field>
-        <f-fieldset v-if="isExpandable" name="radio-expandable-type">
-            <template #label> Typ av expanderat innehåll </template>
-            <f-radio-field v-model="hasCustomExpandContent" :value="false">
-                Tabellrad
-            </f-radio-field>
-            <f-radio-field v-model="hasCustomExpandContent" :value="true">
-                Valfritt innehåll
-            </f-radio-field>
-        </f-fieldset>
-        <f-checkbox-field v-model="hasHover" :value="true"> Hover </f-checkbox-field>
-        <f-checkbox-field v-model="isStriped" :value="true"> Zebrarandig </f-checkbox-field>
-        <f-checkbox-field v-model="hasActions" :value="true"> Åtgärdsknappar </f-checkbox-field>
-        <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
-        <f-checkbox-field v-model="hasHiddenCaption" :value="true"> Dold caption </f-checkbox-field>
-        <f-checkbox-field v-model="isEmpty" :value="true"> Tom tabell </f-checkbox-field>
-        <f-fieldset v-if="isEmpty" name="radio-empty-text">
-            <template #label> Meddelande för tom tabell </template>
-            <f-radio-field v-model="hasCustomEmptyText" :value="false">
-                Standardmeddelande
-            </f-radio-field>
-            <f-radio-field v-model="hasCustomEmptyText" :value="true">
-                Eget meddelande
-            </f-radio-field>
-        </f-fieldset>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
@@ -275,3 +242,36 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template" :livedata="livedata">
+        <f-checkbox-field v-model="isSelectable" :value="true"> Valbara rader </f-checkbox-field>
+        <f-checkbox-field v-model="isExpandable" :value="true">
+            Expanderbara rader
+        </f-checkbox-field>
+        <f-fieldset v-if="isExpandable" name="radio-expandable-type">
+            <template #label> Typ av expanderat innehåll </template>
+            <f-radio-field v-model="hasCustomExpandContent" :value="false">
+                Tabellrad
+            </f-radio-field>
+            <f-radio-field v-model="hasCustomExpandContent" :value="true">
+                Valfritt innehåll
+            </f-radio-field>
+        </f-fieldset>
+        <f-checkbox-field v-model="hasHover" :value="true"> Hover </f-checkbox-field>
+        <f-checkbox-field v-model="isStriped" :value="true"> Zebrarandig </f-checkbox-field>
+        <f-checkbox-field v-model="hasActions" :value="true"> Åtgärdsknappar </f-checkbox-field>
+        <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
+        <f-checkbox-field v-model="hasHiddenCaption" :value="true"> Dold caption </f-checkbox-field>
+        <f-checkbox-field v-model="isEmpty" :value="true"> Tom tabell </f-checkbox-field>
+        <f-fieldset v-if="isEmpty" name="radio-empty-text">
+            <template #label> Meddelande för tom tabell </template>
+            <f-radio-field v-model="hasCustomEmptyText" :value="false">
+                Standardmeddelande
+            </f-radio-field>
+            <f-radio-field v-model="hasCustomEmptyText" :value="true">
+                Eget meddelande
+            </f-radio-field>
+        </f-fieldset>
+    </live-example>
+</template>

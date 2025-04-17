@@ -34,7 +34,12 @@ jobs:
             - name: Install dependencies
               run: npm ci
             - name: Build (minimal)
-              run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/vue-labs build
+              run: |
+                  npm exec lerna -- run build \
+                      --include-dependencies \
+                      --scope=@fkui/i18next-translate \
+                      --scope=@fkui/vue \
+                      --scope=@fkui/vue-labs
             - name: Build documentation
               run: npm run build:docs
             - name: Sanity check

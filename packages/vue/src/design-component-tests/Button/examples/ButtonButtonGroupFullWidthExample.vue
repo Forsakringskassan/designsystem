@@ -1,3 +1,19 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FIcon } from "@fkui/vue";
+
+export default defineComponent({
+    components: { FIcon },
+    props: {
+        useFullWidth: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+    },
+});
+</script>
+
 <template>
     <!-- [html-validate-disable-next no-inline-style] -->
     <div style="background-color: beige; padding: 20px">
@@ -120,19 +136,3 @@
         </div>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FIcon } from "@fkui/vue";
-
-export default defineComponent({
-    components: { FIcon },
-    props: {
-        useFullWidth: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-    },
-});
-</script>

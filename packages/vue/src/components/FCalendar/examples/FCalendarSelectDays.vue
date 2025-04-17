@@ -1,20 +1,3 @@
-<template>
-    <div>
-        <f-calendar v-model="month" :min-date="min" :max-date="max" @click="onSelectDay">
-            <template #default="{ date, isFocused }">
-                <f-calendar-day
-                    data-test="multiple-days"
-                    :day="date"
-                    :focused="isFocused"
-                    :selected="isSelected(date)"
-                >
-                </f-calendar-day>
-            </template>
-        </f-calendar>
-        <span data-test="days-array"> Valda dagar: {{ selected }} </span>
-    </div>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
@@ -49,3 +32,20 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <f-calendar v-model="month" :min-date="min" :max-date="max" @click="onSelectDay">
+            <template #default="{ date, isFocused }">
+                <f-calendar-day
+                    data-test="multiple-days"
+                    :day="date"
+                    :focused="isFocused"
+                    :selected="isSelected(date)"
+                >
+                </f-calendar-day>
+            </template>
+        </f-calendar>
+        <span data-test="days-array"> Valda dagar: {{ selected }} </span>
+    </div>
+</template>

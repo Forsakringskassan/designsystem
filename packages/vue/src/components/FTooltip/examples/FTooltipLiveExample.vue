@@ -1,10 +1,3 @@
-<template>
-    <live-example :components="components" :template="template">
-        <f-checkbox-field v-model="hasHeader" :value="true"> Rubrik i tooltip </f-checkbox-field>
-        <f-checkbox-field v-model="longText" :value="true"> Lång text </f-checkbox-field>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FLabel, FTooltip, FCheckboxField } from "@fkui/vue";
@@ -55,3 +48,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template">
+        <f-checkbox-field v-model="hasHeader" :value="true"> Rubrik i tooltip </f-checkbox-field>
+        <f-checkbox-field v-model="longText" :value="true"> Lång text </f-checkbox-field>
+    </live-example>
+</template>

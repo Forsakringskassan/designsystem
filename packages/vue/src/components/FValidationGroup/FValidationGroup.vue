@@ -1,9 +1,3 @@
-<template>
-    <div @component-validity="onComponentValidity" @component-unmount="onComponentUnmount">
-        <slot></slot>
-    </div>
-</template>
-
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import { documentOrderComparator } from "@fkui/logic";
@@ -85,3 +79,9 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div @component-validity="onComponentValidity" @component-unmount="onComponentUnmount">
+        <slot></slot>
+    </div>
+</template>

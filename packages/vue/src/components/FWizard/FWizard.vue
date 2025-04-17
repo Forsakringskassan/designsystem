@@ -1,10 +1,3 @@
-<template>
-    <div class="wizard">
-        <!-- @slot One or more <f-wizard-step> elements -->
-        <slot></slot>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { FWizardApi, FWizardKey, FWizardStepDefinition, StepNumber, addStep, removeStep } from "./FWizardApi";
@@ -171,3 +164,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="wizard">
+        <!-- @slot One or more <f-wizard-step> elements -->
+        <slot></slot>
+    </div>
+</template>

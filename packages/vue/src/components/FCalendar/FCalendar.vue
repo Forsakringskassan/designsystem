@@ -1,28 +1,3 @@
-<template>
-    <div class="calendar__wrapper">
-        <i-calendar-navbar
-            :model-value="modelValue"
-            :min-date="minDate"
-            :max-date="maxDate"
-            @update:model-value="onChangeMonth"
-        ></i-calendar-navbar>
-
-        <i-calendar-month
-            :model-value="modelValue"
-            :min-date="minDate"
-            :max-date="maxDate"
-            :tab-date="tabDate"
-            @click="onClickDay"
-            @update:model-value="onChangeMonth"
-        >
-            <template #default="{ date, focused }">
-                <!-- @slot Slot for calendar day. -->
-                <slot :date="date" :is-focused="focused"></slot>
-            </template>
-        </i-calendar-month>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { FDate } from "@fkui/date";
@@ -91,3 +66,32 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="calendar__wrapper">
+        <i-calendar-navbar
+            :model-value="modelValue"
+            :min-date="minDate"
+            :max-date="maxDate"
+            @update:model-value="onChangeMonth"
+        ></i-calendar-navbar>
+
+        <i-calendar-month
+            :model-value="modelValue"
+            :min-date="minDate"
+            :max-date="maxDate"
+            :tab-date="tabDate"
+            @click="onClickDay"
+            @update:model-value="onChangeMonth"
+        >
+            <template #default="{ date, focused }">
+                <!--
+                @slot Slot for calendar day.
+                @binding {FDate} date The date object for the current day.
+                @binding {boolean} is-focused Indicates whether the current day is focused.
+                -->
+                <slot :date="date" :is-focused="focused"></slot>
+            </template>
+        </i-calendar-month>
+    </div>
+</template>

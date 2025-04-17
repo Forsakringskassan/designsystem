@@ -1,3 +1,57 @@
+<script>
+import { defineComponent } from "vue";
+import { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "WizardExample",
+    components: { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField },
+    data() {
+        return {
+            current: null,
+            visible: true,
+            fruktkorgar: [],
+            n: 1,
+            frukter: [
+                { value: "BANAN", text: "Banan 🍌" },
+                { value: "ÄPPLE", text: "Äpple 🍏" },
+                { value: "MANDARIN", text: "Mandarin 🍊" },
+                { value: "ANANAS", text: "Ananas 🍍" },
+                { value: "VATTENMELON", text: "Vattenmelon 🍉" },
+                { value: "ANDRA_FRUKTER", text: "Andra frukter" },
+            ],
+        };
+    },
+    methods: {
+        addBasket() {
+            this.fruktkorgar.push({
+                id: this.n++,
+                valdaFrukter: [],
+            });
+        },
+        removeBasket(item) {
+            const index = this.fruktkorgar.findIndex((it) => it.id === item.id);
+            if (index >= 0) {
+                this.fruktkorgar.splice(index, 1);
+            }
+        },
+        onBeforeNext() {
+            return new Promise((resolve) => {
+                console.log("Här kanska man anropar backend för att kontrollera något?");
+                setTimeout(resolve, 2000);
+            });
+        },
+        onCompleted() {
+            alert("Tack för din beställning! 🙏 Applikationsspecifik logik tar det vidare.");
+        },
+        onCancel() {
+            alert(
+                "Avbryt anropat av användaren. Applikationsspecifik logik tar hand om eventuell bekräftelse.",
+            );
+        },
+    },
+});
+</script>
+
 <template>
     <div>
         <f-wizard
@@ -63,57 +117,3 @@
         <pre>v-model: {{ current }}</pre>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "WizardExample",
-    components: { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField },
-    data() {
-        return {
-            current: null,
-            visible: true,
-            fruktkorgar: [],
-            n: 1,
-            frukter: [
-                { value: "BANAN", text: "Banan 🍌" },
-                { value: "ÄPPLE", text: "Äpple 🍏" },
-                { value: "MANDARIN", text: "Mandarin 🍊" },
-                { value: "ANANAS", text: "Ananas 🍍" },
-                { value: "VATTENMELON", text: "Vattenmelon 🍉" },
-                { value: "ANDRA_FRUKTER", text: "Andra frukter" },
-            ],
-        };
-    },
-    methods: {
-        addBasket() {
-            this.fruktkorgar.push({
-                id: this.n++,
-                valdaFrukter: [],
-            });
-        },
-        removeBasket(item) {
-            const index = this.fruktkorgar.findIndex((it) => it.id === item.id);
-            if (index >= 0) {
-                this.fruktkorgar.splice(index, 1);
-            }
-        },
-        onBeforeNext() {
-            return new Promise((resolve) => {
-                console.log("Här kanska man anropar backend för att kontrollera något?");
-                setTimeout(resolve, 2000);
-            });
-        },
-        onCompleted() {
-            alert("Tack för din beställning! 🙏 Applikationsspecifik logik tar det vidare.");
-        },
-        onCancel() {
-            alert(
-                "Avbryt anropat av användaren. Applikationsspecifik logik tar hand om eventuell bekräftelse.",
-            );
-        },
-    },
-});
-</script>

@@ -1,3 +1,17 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    components: { FTextField },
+    data() {
+        return {
+            awesomeModel: "",
+        };
+    },
+});
+</script>
+
 <template>
     <div class="sandbox-root">
         <h1>FKUI Sandbox</h1>
@@ -21,20 +35,6 @@
         </f-text-field>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
-
-export default defineComponent({
-    components: { FTextField },
-    data() {
-        return {
-            awesomeModel: "",
-        };
-    },
-});
-</script>
 
 <style>
 .sandbox-root {

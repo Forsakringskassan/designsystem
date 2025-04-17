@@ -27,6 +27,7 @@ function createWrapper({
         ...options,
         global: {
             stubs: ["f-icon"],
+            plugins: [ValidationPlugin],
         },
     });
 }

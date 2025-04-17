@@ -1,28 +1,3 @@
-<template>
-    <div class="file-item">
-        <div class="file-item__row">
-            <a :id="id" class="file-item__file-open" v-bind="$attrs">
-                <div class="icon-stack button__icon icon-stack--new-window">
-                    <f-icon name="new-window"></f-icon>
-                    <f-icon :name="iconName"></f-icon>
-                </div>
-                <span class="file-item__file-name">{{ fileName }}</span>
-                <span class="sr-only">&nbsp;{{ $t("fkui.file-item.file-open", "öppnas i nytt fönster") }}</span>
-            </a>
-
-            <!-- @slot
-                Slot for any content that should be placed beside the file icon and file name.
-                If several elements is placed, they will be spaced evenly,
-      for more information see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content.-->
-            <slot name="row"></slot>
-        </div>
-        <!-- @slot Slot for any type of content. Elements placed in this slot will be position after the file icon and file name. -->
-        <slot></slot>
-        <div v-if="isMimeTypeChanged" class="file-item__change-info">{{ mimeTypeChangedText }}</div>
-        <hr class="file-item__separator" />
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ElementIdService, isSet } from "@fkui/logic";
@@ -126,3 +101,27 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="file-item">
+        <div class="file-item__row">
+            <a :id="id" class="file-item__file-open" v-bind="$attrs">
+                <div class="icon-stack button__icon icon-stack--new-window">
+                    <f-icon name="new-window"></f-icon>
+                    <f-icon :name="iconName"></f-icon>
+                </div>
+                <span class="file-item__file-name">{{ fileName }}</span>
+                <span class="sr-only">&nbsp;{{ $t("fkui.file-item.file-open", "öppnas i nytt fönster") }}</span>
+            </a>
+
+            <!--
+            @slot Slot for any content that should be placed beside the file icon and file name. If several elements is placed, they will be spaced evenly, for more information see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content.
+            -->
+            <slot name="row"></slot>
+        </div>
+        <!-- @slot Slot for any type of content. Elements placed in this slot will be position after the file icon and file name. -->
+        <slot></slot>
+        <div v-if="isMimeTypeChanged" class="file-item__change-info">{{ mimeTypeChangedText }}</div>
+        <hr class="file-item__separator" />
+    </div>
+</template>

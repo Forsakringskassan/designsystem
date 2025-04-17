@@ -1,3 +1,29 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FCrudDataset, FDataTable, FTableColumn, FTextField, FTextareaField } from "@fkui/vue";
+import { type FruitData, fruits } from "./fruit-data";
+
+export default defineComponent({
+    components: {
+        FCrudDataset,
+        FDataTable,
+        FTableColumn,
+        FTextField,
+        FTextareaField,
+    },
+    data() {
+        return {
+            fruits,
+        };
+    },
+    methods: {
+        saveModel(row: FruitData) {
+            console.log("Post model to backend", row);
+        },
+    },
+});
+</script>
+
 <template>
     <f-crud-dataset v-model="fruits" @created="saveModel" @updated="saveModel" @deleted="saveModel">
         <template #default>
@@ -44,29 +70,3 @@
         </template>
     </f-crud-dataset>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FCrudDataset, FDataTable, FTableColumn, FTextField, FTextareaField } from "@fkui/vue";
-import { type FruitData, fruits } from "./fruit-data";
-
-export default defineComponent({
-    components: {
-        FCrudDataset,
-        FDataTable,
-        FTableColumn,
-        FTextField,
-        FTextareaField,
-    },
-    data() {
-        return {
-            fruits,
-        };
-    },
-    methods: {
-        saveModel(row: FruitData) {
-            console.log("Post model to backend", row);
-        },
-    },
-});
-</script>

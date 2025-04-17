@@ -32,7 +32,7 @@ Som konsument finns det fortfarande möjlighet att själv tillhandahålla specif
 Möjlighet finns att importera separat vid behov.
 
 ```scss
-@use "@fkui/theme-default/src/deprecated-css-variables" as *;
+@use "@fkui/theme-default/src/fkui-css-variables-deprecated" as *;
 
 :root {
     @include deprecated-variables;

@@ -1,10 +1,3 @@
-<template>
-    <div v-test="'offlineExample'">
-        <f-offline> {{ offlineMessage }} </f-offline>
-        <button type="button" @click="toggle">Visa/Dölj komponent</button>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FOffline } from "..";
@@ -32,3 +25,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div v-test="'offlineExample'">
+        <f-offline> {{ offlineMessage }} </f-offline>
+        <button type="button" @click="toggle">Visa/Dölj komponent</button>
+    </div>
+</template>

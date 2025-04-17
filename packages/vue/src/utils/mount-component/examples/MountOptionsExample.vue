@@ -1,7 +1,3 @@
-<template>
-    <div></div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mountComponent } from "@fkui/vue";
@@ -20,3 +16,7 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div></div>
+</template>

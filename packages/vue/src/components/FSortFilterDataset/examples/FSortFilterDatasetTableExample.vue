@@ -1,3 +1,22 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FSortFilterDataset, FInteractiveTable, FTableColumn } from "@fkui/vue";
+import { fruits } from "./fruit-data";
+
+export default defineComponent({
+    components: { FSortFilterDataset, FInteractiveTable, FTableColumn },
+    data() {
+        return {
+            sortableAttributes: {
+                name: "Namn",
+                origin: "Land",
+            },
+            fruits,
+        };
+    },
+});
+</script>
+
 <template>
     <f-sort-filter-dataset
         :data="fruits"
@@ -28,22 +47,3 @@
         </template>
     </f-sort-filter-dataset>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FSortFilterDataset, FInteractiveTable, FTableColumn } from "@fkui/vue";
-import { fruits } from "./fruit-data";
-
-export default defineComponent({
-    components: { FSortFilterDataset, FInteractiveTable, FTableColumn },
-    data() {
-        return {
-            sortableAttributes: {
-                name: "Namn",
-                origin: "Land",
-            },
-            fruits,
-        };
-    },
-});
-</script>

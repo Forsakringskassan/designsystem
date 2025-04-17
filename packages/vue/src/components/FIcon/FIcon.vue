@@ -1,11 +1,3 @@
-<template>
-    <!-- [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]-->
-    <svg v-bind="$attrs" focusable="false" class="icon" :class="[spriteKey, ...modifiers]" :aria-hidden="ariaHidden">
-        <slot></slot>
-        <use :xlink:href="spriteId" />
-    </svg>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 
@@ -94,3 +86,11 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <!-- [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]-->
+    <svg v-bind="$attrs" focusable="false" class="icon" :class="[spriteKey, ...modifiers]" :aria-hidden="ariaHidden">
+        <slot></slot>
+        <use :href="spriteId" />
+    </svg>
+</template>

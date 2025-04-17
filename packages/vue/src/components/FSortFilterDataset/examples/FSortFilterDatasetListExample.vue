@@ -1,3 +1,22 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FSortFilterDataset, FList } from "@fkui/vue";
+import { fruits } from "./fruit-data";
+
+export default defineComponent({
+    components: { FSortFilterDataset, FList },
+    data() {
+        return {
+            sortableAttributes: {
+                name: "Namn",
+                origin: "Land",
+            },
+            fruits,
+        };
+    },
+});
+</script>
+
 <template>
     <f-sort-filter-dataset :data="fruits" :sortable-attributes="sortableAttributes">
         <template #header="{ slotClass }">
@@ -21,23 +40,4 @@
         </template>
     </f-sort-filter-dataset>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FSortFilterDataset, FList } from "@fkui/vue";
-import { fruits } from "./fruit-data";
-
-export default defineComponent({
-    components: { FSortFilterDataset, FList },
-    data() {
-        return {
-            sortableAttributes: {
-                name: "Namn",
-                origin: "Land",
-            },
-            fruits,
-        };
-    },
-});
-</script>
 ./fruit-data

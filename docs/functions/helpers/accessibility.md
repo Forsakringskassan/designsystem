@@ -33,10 +33,10 @@ Klassen `sr-separator` används för att separera uppläsningen av två element,
         <button class="tooltip__button" type="button" aria-expanded="true">
             <span class="icon-stack icon-stack--circle">
                 <svg focusable="false" class="icon icon__info button__icon">
-                    <use xlink:href="#f-icon-circle" />
+                    <use href="#f-icon-circle" />
                 </svg>
                 <svg focusable="false" class="icon button__icon">
-                    <use xlink:href="#f-icon-i" />
+                    <use href="#f-icon-i" />
                 </svg>
             </span>
             <span class="sr-only"> Denna text syns bara för skärmläsare. </span>
@@ -63,10 +63,10 @@ Klassen `sr-separator` används för att separera uppläsningen av två element,
         <button class="tooltip__button" type="button" aria-expanded="true">
             <span class="icon-stack icon-stack--circle">
                 <svg focusable="false" class="icon icon__info button__icon">
-                    <use xlink:href="#f-icon-circle" />
+                    <use href="#f-icon-circle" />
                 </svg>
                 <svg focusable="false" class="icon button__icon">
-                    <use xlink:href="#f-icon-i" />
+                    <use href="#f-icon-i" />
                 </svg>
             </span>
             <span class="sr-only"> Denna text syns bara för skärmläsare. </span>

@@ -1,11 +1,3 @@
-<template>
-    <f-sort-filter-dataset :data="fruits" :sortable-attributes="sortableAttributes">
-        <template #default="{ sortFilterResult }">
-            <pre v-for="item in sortFilterResult" :key="item.id">{{ item }}</pre>
-        </template>
-    </f-sort-filter-dataset>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FSortFilterDataset } from "@fkui/vue";
@@ -27,6 +19,14 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-sort-filter-dataset :data="fruits" :sortable-attributes="sortableAttributes">
+        <template #default="{ sortFilterResult }">
+            <pre v-for="item in sortFilterResult" :key="item.id">{{ item }}</pre>
+        </template>
+    </f-sort-filter-dataset>
+</template>
 
 <style>
 .sort-filter-dataset pre {

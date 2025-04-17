@@ -82,13 +82,17 @@ ValidationPluginValidityEvent.vue
 Om man behöver utveckla en egen komponent med inbyggd validering som standard-beteende så måste man lägga till validatorn i komponentens mounted()-metod via metoden `ValidationService.addValidatorsToElement()` och med tredje parametern `isBaseConfigs` satt till `true`:
 
 ```ts
-import { ValidationService, type ValidatorConfigs } from '@fkui/logic';
+import { useTemplateRef } from "vue";
+import { ValidationService, type ValidatorConfigs } from "@fkui/logic";
 
 const validatorConfigs: ValidatorConfigs = {
-    email: { errorMessage: 'E-posten är inte korrekt ifylld' },
+    email: { errorMessage: "E-posten är inte korrekt ifylld" },
 };
 
-ValidationService.addValidatorsToElement(this.$el.querySelector(<Your_Selector>) as HTMLInputElement, validatorConfigs, true);
+const element = document.querySelector<HTMLInputElement>("#my-element");
+if (element) {
+    ValidationService.addValidatorsToElement(element, validatorConfigs, true);
+}
 ```
 
 Se implementationen av komponenten FEmailTextField på sidan {@link textfield-specialized Inmatningsfält specialiserade} för konkret exempel.

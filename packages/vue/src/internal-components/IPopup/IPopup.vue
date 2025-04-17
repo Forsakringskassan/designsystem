@@ -1,20 +1,3 @@
-<template>
-    <teleport v-if="isOpen" :to="teleportTarget" :disabled="teleportDisabled">
-        <div ref="popup" v-bind="$attrs" :class="popupClasses">
-            <div
-                ref="wrapper"
-                role="presentation"
-                class="popup__wrapper"
-                @click="onPopupClickHandler"
-                @keyup.esc.stop="onKeyEsc"
-                @keydown.tab="onKeyTab"
-            >
-                <slot v-bind="{ toggleIsOpen, placement }"></slot>
-            </div>
-        </div>
-    </teleport>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { debounce, handleTab, pushFocus, popFocus } from "@fkui/logic";
@@ -323,3 +306,20 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <teleport v-if="isOpen" :to="teleportTarget" :disabled="teleportDisabled">
+        <div ref="popup" v-bind="$attrs" :class="popupClasses">
+            <div
+                ref="wrapper"
+                role="presentation"
+                class="popup__wrapper"
+                @click="onPopupClickHandler"
+                @keyup.esc.stop="onKeyEsc"
+                @keydown.tab="onKeyTab"
+            >
+                <slot v-bind="{ toggleIsOpen, placement }"></slot>
+            </div>
+        </div>
+    </teleport>
+</template>

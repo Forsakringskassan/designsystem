@@ -1,20 +1,3 @@
-<template>
-    <f-calendar
-        v-model="month"
-        :min-date="min"
-        :max-date="max"
-        :tab-date="tabDay"
-        @click="onSelectDay"
-    >
-        <template #default="{ date }">
-            <span :class="dayClasses(date)">
-                <span class="date"> {{ date.day }} </span>
-                <span :class="eventClasses(date)"> {{ getEvents(date) }} </span>
-            </span>
-        </template>
-    </f-calendar>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
@@ -113,6 +96,23 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-calendar
+        v-model="month"
+        :min-date="min"
+        :max-date="max"
+        :tab-date="tabDay"
+        @click="onSelectDay"
+    >
+        <template #default="{ date }">
+            <span :class="dayClasses(date)">
+                <span class="date"> {{ date.day }} </span>
+                <span :class="eventClasses(date)"> {{ getEvents(date) }} </span>
+            </span>
+        </template>
+    </f-calendar>
+</template>
 
 <style>
 .my-custom-day {

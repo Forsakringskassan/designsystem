@@ -1,3 +1,13 @@
+<script>
+import { defineComponent } from "vue";
+import { FMessageBox, FIcon } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FMessageBoxIconLink",
+    components: { FMessageBox, FIcon },
+});
+</script>
+
 <template>
     <f-message-box type="info">
         <template #default="{ headingSlotClass }">
@@ -12,13 +22,3 @@
         </template>
     </f-message-box>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FMessageBox, FIcon } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FMessageBoxIconLink",
-    components: { FMessageBox, FIcon },
-});
-</script>

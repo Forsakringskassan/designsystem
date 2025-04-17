@@ -1,76 +1,3 @@
-<template>
-    <div class="layout-navigation">
-        <!-- [html-validate-disable-next no-inline-style] -->
-        <nav
-            id="layout-navigation__navigation"
-            class="layout-navigation__navigation"
-            :style="navigationStyle"
-            :aria-expanded="isOpen"
-        >
-            <div class="layout-navigation__navigation__inner">
-                <template v-if="isOpen">
-                    <!-- [html-validate-disable-next no-inline-style] -->
-                    <div class="layout-navigation__navigation__inner__title" :style="contentStyle">
-                        <!-- @slot Slot for heading -->
-                        <slot name="heading"></slot>
-                        <button
-                            ref="close-button"
-                            class="button button--tertiary button--small button--tertiary--black"
-                            type="button"
-                            @click="toggleSideNavigation"
-                        >
-                            <span class="sr-only">Stäng navigationspanelen</span>
-                            <f-icon class="button__icon" name="chevrons-left" />
-                        </button>
-                    </div>
-                    <div>
-                        <hr />
-                    </div>
-                    <!-- [html-validate-disable-next no-inline-style] -->
-                    <div
-                        class="layout-navigation__navigation__inner__content scroll-target"
-                        :class="gridClasses"
-                        :style="contentStyle"
-                    >
-                        <!--
-@slot Slot for displaying content in the navigation-panel
-                        -->
-                        <slot name="content"></slot>
-                    </div>
-                </template>
-                <div v-if="!isOpen" class="layout-navigation__navigation__inner--minimized">
-                    <button
-                        ref="open-button"
-                        class="button button--tertiary button--tertiary--black"
-                        type="button"
-                        @click="toggleSideNavigation"
-                    >
-                        <span class="sr-only">Öppna navigationspanelen</span>
-                        <f-icon class="button__icon" name="bars" />
-                    </button>
-                </div>
-            </div>
-            <div v-if="isOpen" class="layout-navigation__navigation__border" @mousedown="onBorderMouseDown">
-                <div class="layout-navigation__navigation__border__dot"></div>
-                <div class="layout-navigation__navigation__border__dot"></div>
-                <div class="layout-navigation__navigation__border__dot"></div>
-            </div>
-        </nav>
-        <!-- [html-validate-disable-next no-inline-style] -->
-        <div
-            id="layout-navigation__primary"
-            class="layout-navigation__primary"
-            :class="leftPrimaryClasses"
-            :style="primaryStyle"
-        >
-            <!--
-@slot Slot for displaying the primary content.
-            -->
-            <slot name="default"></slot>
-        </div>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, toRefs } from "vue";
 import { focus } from "@fkui/logic";
@@ -152,3 +79,76 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="layout-navigation">
+        <!-- [html-validate-disable-next no-inline-style] -->
+        <nav
+            id="layout-navigation__navigation"
+            class="layout-navigation__navigation"
+            :style="navigationStyle"
+            :aria-expanded="isOpen"
+        >
+            <div class="layout-navigation__navigation__inner">
+                <template v-if="isOpen">
+                    <!-- [html-validate-disable-next no-inline-style] -->
+                    <div class="layout-navigation__navigation__inner__title" :style="contentStyle">
+                        <!-- @slot Slot for heading -->
+                        <slot name="heading"></slot>
+                        <button
+                            ref="close-button"
+                            class="button button--tertiary button--small button--tertiary--black"
+                            type="button"
+                            @click="toggleSideNavigation"
+                        >
+                            <span class="sr-only">Stäng navigationspanelen</span>
+                            <f-icon class="button__icon" name="chevrons-left" />
+                        </button>
+                    </div>
+                    <div>
+                        <hr />
+                    </div>
+                    <!-- [html-validate-disable-next no-inline-style] -->
+                    <div
+                        class="layout-navigation__navigation__inner__content scroll-target"
+                        :class="gridClasses"
+                        :style="contentStyle"
+                    >
+                        <!--
+@slot Slot for displaying content in the navigation-panel
+                        -->
+                        <slot name="content"></slot>
+                    </div>
+                </template>
+                <div v-if="!isOpen" class="layout-navigation__navigation__inner--minimized">
+                    <button
+                        ref="open-button"
+                        class="button button--tertiary button--tertiary--black"
+                        type="button"
+                        @click="toggleSideNavigation"
+                    >
+                        <span class="sr-only">Öppna navigationspanelen</span>
+                        <f-icon class="button__icon" name="bars" />
+                    </button>
+                </div>
+            </div>
+            <div v-if="isOpen" class="layout-navigation__navigation__border" @mousedown="onBorderMouseDown">
+                <div class="layout-navigation__navigation__border__dot"></div>
+                <div class="layout-navigation__navigation__border__dot"></div>
+                <div class="layout-navigation__navigation__border__dot"></div>
+            </div>
+        </nav>
+        <!-- [html-validate-disable-next no-inline-style] -->
+        <div
+            id="layout-navigation__primary"
+            class="layout-navigation__primary"
+            :class="leftPrimaryClasses"
+            :style="primaryStyle"
+        >
+            <!--
+@slot Slot for displaying the primary content.
+            -->
+            <slot name="default"></slot>
+        </div>
+    </div>
+</template>

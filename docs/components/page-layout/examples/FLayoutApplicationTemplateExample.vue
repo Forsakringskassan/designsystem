@@ -1,3 +1,55 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import {
+    FLayoutApplicationTemplate,
+    FLayoutLeftPanel,
+    FLayoutRightPanel,
+    FLayoutRightPanelService,
+} from "@fkui/vue";
+
+interface ExampleItem {
+    title: string;
+    text: string;
+}
+
+interface ExampleData {
+    selectedText: string;
+    selectedTitle: string;
+    items: ExampleItem[];
+}
+
+export default defineComponent({
+    name: "FullNavigationExampleApp",
+    components: { FLayoutApplicationTemplate, FLayoutLeftPanel, FLayoutRightPanel },
+    data(): ExampleData {
+        return {
+            selectedText: "",
+            selectedTitle: "",
+            items: [
+                {
+                    title: "Träutensilier",
+                    text: "Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor, för trevnadens, ordningens och ekonomiens upprätthållande, och dock är det icke sällan som sorgliga erfarenheter göras på grund af det oförstånd med hvilket kaster, formbräden och regaler tillverkas och försäljas Kaster som äro dåligt hopkomna och af otillräckligt",
+                },
+                {
+                    title: "Lorem ipsum",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                },
+            ],
+        };
+    },
+    methods: {
+        openPanel(item: ExampleItem): void {
+            this.selectedTitle = item.title;
+            this.selectedText = item.text;
+            FLayoutRightPanelService.open();
+        },
+        closePanel(): void {
+            FLayoutRightPanelService.close();
+        },
+    },
+});
+</script>
+
 <template>
     <f-layout-application-template>
         <template #header>
@@ -59,58 +111,6 @@
         </template>
     </f-layout-application-template>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import {
-    FLayoutApplicationTemplate,
-    FLayoutLeftPanel,
-    FLayoutRightPanel,
-    FLayoutRightPanelService,
-} from "@fkui/vue";
-
-interface ExampleItem {
-    title: string;
-    text: string;
-}
-
-interface ExampleData {
-    selectedText: string;
-    selectedTitle: string;
-    items: ExampleItem[];
-}
-
-export default defineComponent({
-    name: "FullNavigationExampleApp",
-    components: { FLayoutApplicationTemplate, FLayoutLeftPanel, FLayoutRightPanel },
-    data(): ExampleData {
-        return {
-            selectedText: "",
-            selectedTitle: "",
-            items: [
-                {
-                    title: "Träutensilier",
-                    text: "Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor, för trevnadens, ordningens och ekonomiens upprätthållande, och dock är det icke sällan som sorgliga erfarenheter göras på grund af det oförstånd med hvilket kaster, formbräden och regaler tillverkas och försäljas Kaster som äro dåligt hopkomna och af otillräckligt",
-                },
-                {
-                    title: "Lorem ipsum",
-                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                },
-            ],
-        };
-    },
-    methods: {
-        openPanel(item: ExampleItem): void {
-            this.selectedTitle = item.title;
-            this.selectedText = item.text;
-            FLayoutRightPanelService.open();
-        },
-        closePanel(): void {
-            FLayoutRightPanelService.close();
-        },
-    },
-});
-</script>
 
 <style lang="css">
 .example-grid .col {

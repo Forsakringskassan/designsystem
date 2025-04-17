@@ -1,3 +1,27 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FSelectField, FSortFilterDataset, FDataTable, FTableColumn } from "@fkui/vue";
+import { type FruitData, fruits } from "./fruit-data";
+
+const emptyList: FruitData[] = [];
+const populatedList: FruitData[] = fruits;
+
+export default defineComponent({
+    components: { FSelectField, FSortFilterDataset, FDataTable, FTableColumn },
+    data() {
+        return {
+            sortableAttributes: {
+                name: "Namn",
+                origin: "Land",
+            },
+            fruits: populatedList,
+            emptyList,
+            populatedList,
+        };
+    },
+});
+</script>
+
 <template>
     <div>
         <f-select-field id="data-source" v-model="fruits">
@@ -39,27 +63,3 @@
         </f-sort-filter-dataset>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FSelectField, FSortFilterDataset, FDataTable, FTableColumn } from "@fkui/vue";
-import { type FruitData, fruits } from "./fruit-data";
-
-const emptyList: FruitData[] = [];
-const populatedList: FruitData[] = fruits;
-
-export default defineComponent({
-    components: { FSelectField, FSortFilterDataset, FDataTable, FTableColumn },
-    data() {
-        return {
-            sortableAttributes: {
-                name: "Namn",
-                origin: "Land",
-            },
-            fruits: populatedList,
-            emptyList,
-            populatedList,
-        };
-    },
-});
-</script>

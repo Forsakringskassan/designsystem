@@ -1,10 +1,3 @@
-<template>
-    <transition @enter="enter" @after-enter="afterEnter" @leave="leave">
-        <!-- @slot Content to expand -->
-        <slot :height="height"></slot>
-    </transition>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { getHTMLElementFromVueRef } from "../../utils";
@@ -69,3 +62,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <transition @enter="enter" @after-enter="afterEnter" @leave="leave">
+        <!-- @slot Content to expand -->
+        <slot :height="height"></slot>
+    </transition>
+</template>

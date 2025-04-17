@@ -1,17 +1,3 @@
-<template>
-    <live-example :components="components" :template="template">
-        <f-select-field v-model="badgeType">
-            <template #label> Typ </template>
-            <option value="standard">Standard</option>
-            <option value="warning">Varning</option>
-            <option value="error">Fel</option>
-            <option value="success">Framgång</option>
-            <option value="info">Info</option>
-        </f-select-field>
-        <f-checkbox-field v-model="isInverted" :value="true"> Inverterad </f-checkbox-field>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FCheckboxField, FBadge, FSelectField } from "@fkui/vue";
@@ -50,3 +36,17 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template">
+        <f-select-field v-model="badgeType">
+            <template #label> Typ </template>
+            <option value="standard">Standard</option>
+            <option value="warning">Varning</option>
+            <option value="error">Fel</option>
+            <option value="success">Framgång</option>
+            <option value="info">Info</option>
+        </f-select-field>
+        <f-checkbox-field v-model="isInverted" :value="true"> Inverterad </f-checkbox-field>
+    </live-example>
+</template>

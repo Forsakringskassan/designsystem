@@ -69,6 +69,7 @@ function setValid(): void {
     <button
         type="button"
         class="button button-group__item button--tertiary button--large"
+        data-test="set-invalid"
         @click="setInvalid"
     >
         Markera kort som felaktigt
@@ -76,6 +77,7 @@ function setValid(): void {
     <button
         type="button"
         class="button button-group__item button--tertiary button--large"
+        data-test="set-valid"
         @click="setValid"
     >
         Markera kort som giltigt

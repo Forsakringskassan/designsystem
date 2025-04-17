@@ -1,3 +1,20 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { formatNumber } from "@fkui/logic";
+import { FTextField, FOutputField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FormatterExample",
+    components: { FTextField, FOutputField },
+    data() {
+        return {
+            modelValue: "",
+            formatNumber,
+        };
+    },
+});
+</script>
+
 <template>
     <div class="row">
         <div class="col col--md-9">
@@ -23,20 +40,3 @@
         </div>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { formatNumber } from "@fkui/logic";
-import { FTextField, FOutputField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FormatterExample",
-    components: { FTextField, FOutputField },
-    data() {
-        return {
-            modelValue: "",
-            formatNumber,
-        };
-    },
-});
-</script>

@@ -1,10 +1,3 @@
-<template>
-    <span :class="dayClasses">
-        <span aria-hidden="true">{{ day.day }}</span>
-        <span class="sr-only">{{ srText }}</span>
-    </span>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { FDate } from "@fkui/date";
@@ -79,3 +72,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <span :class="dayClasses">
+        <span aria-hidden="true">{{ day.day }}</span>
+        <span class="sr-only">{{ srText }}</span>
+    </span>
+</template>

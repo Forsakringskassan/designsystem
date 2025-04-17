@@ -1,3 +1,19 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "PersonnummerYoungerExample",
+    components: { FTextField },
+    data() {
+        return {
+            reference: "",
+            model: "",
+        };
+    },
+});
+</script>
+
 <template>
     <div class="row">
         <div class="col col--md-6">
@@ -22,19 +38,3 @@
         </div>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "PersonnummerYoungerExample",
-    components: { FTextField },
-    data() {
-        return {
-            reference: "",
-            model: "",
-        };
-    },
-});
-</script>

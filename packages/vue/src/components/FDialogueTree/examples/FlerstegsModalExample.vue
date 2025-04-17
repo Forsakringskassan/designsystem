@@ -1,13 +1,3 @@
-<template>
-    <div>
-        <button type="button" class="button button--secondary" @click="onClick">Öppna Modal</button>
-        <div v-if="result">
-            <pre>Modalen stängdes med resultatet:</pre>
-            <pre>{{ result }}</pre>
-        </div>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { formModal } from "@fkui/vue";
@@ -32,3 +22,13 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <button type="button" class="button button--secondary" @click="onClick">Öppna Modal</button>
+        <div v-if="result">
+            <pre>Modalen stängdes med resultatet:</pre>
+            <pre>{{ result }}</pre>
+        </div>
+    </div>
+</template>

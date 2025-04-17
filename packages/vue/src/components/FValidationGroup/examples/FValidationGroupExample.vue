@@ -1,3 +1,16 @@
+<script>
+import { defineComponent } from "vue";
+import { FValidationGroup, FTextField } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FValidationGroupExample",
+    components: { FValidationGroup, FTextField },
+    data() {
+        return { favoritGrupp: {} };
+    },
+});
+</script>
+
 <template>
     <div>
         <f-validation-group key="favoritGrupp" v-model="favoritGrupp">
@@ -13,16 +26,3 @@
         <pre>{{ favoritGrupp }}</pre>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FValidationGroup, FTextField } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FValidationGroupExample",
-    components: { FValidationGroup, FTextField },
-    data() {
-        return { favoritGrupp: {} };
-    },
-});
-</script>

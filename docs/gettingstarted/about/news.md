@@ -4,13 +4,23 @@ name: news
 layout: content-with-menu
 ---
 
-## TypeScript konfiguration
+## Version 6.4.0
 
-Version: 6.3.0 <br>
-2025-03-11
+2025-04-12
 
-Designsystemet levererar nu ett nytt paket `@fkui/tsconfig` med rekommenderad konfiguration för TypeScript och FKUI.
-Läs mer om {@link tsconfig}.
+### Ändringar i nya applikationslayout
+
+Mer kontroll över justerbara ytor i nya applikationslayouten (fortfarande beta):
+
+- Overlay
+- Stäng av/på om storlek ska kunna justeras
+- Dölj/visa yta
+
+Flera buggar rättade.
+
+### Stöd för egna knappar i `FCrudDataset`
+
+Använd slotten #buttons för att lägga till egna anpassade lägg-till knappar.
 
 ## Ny release med brytande ändringar &#127881;
 

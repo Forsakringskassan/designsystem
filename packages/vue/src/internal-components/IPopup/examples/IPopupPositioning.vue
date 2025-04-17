@@ -1,19 +1,3 @@
-<template>
-    <div class="wrapper">
-        <label for="constraint"> Begränsa till: </label>
-        <select id="constraint" v-model="constraint" @change="onChangeConstraint">
-            <option value="viewport">Viewport</option>
-            <option value="container">Container</option>
-            <option value="combo">Viewport + container</option>
-        </select>
-        <p>Dra <i>ankaret</i> med hjälp av musen.</p>
-        <div ref="area" class="area">
-            <div ref="anchor" class="pos-anchor" @mousedown="onMouseDown">Ankare</div>
-            <div ref="target" class="pos-target">Popup</div>
-        </div>
-    </div>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { fitInsideArea, clamp, Placement } from "../IPopupUtils";
@@ -136,6 +120,22 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="wrapper">
+        <label for="constraint"> Begränsa till: </label>
+        <select id="constraint" v-model="constraint" @change="onChangeConstraint">
+            <option value="viewport">Viewport</option>
+            <option value="container">Container</option>
+            <option value="combo">Viewport + container</option>
+        </select>
+        <p>Dra <i>ankaret</i> med hjälp av musen.</p>
+        <div ref="area" class="area">
+            <div ref="anchor" class="pos-anchor" @mousedown="onMouseDown">Ankare</div>
+            <div ref="target" class="pos-target">Popup</div>
+        </div>
+    </div>
+</template>
 
 <style>
 .wrapper {

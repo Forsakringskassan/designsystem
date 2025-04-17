@@ -184,6 +184,12 @@ describe("sort", () => {
             .selectedOption()
             .should("contain.text", "År (fallande)");
     });
+
+    it("should default to first option in dropdown", () => {
+        sortFilterDataset.selectField
+            .selectedOption()
+            .should("contain.text", "Välj");
+    });
 });
 
 describe("filter", () => {

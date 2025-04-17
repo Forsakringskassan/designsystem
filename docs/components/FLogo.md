@@ -19,8 +19,10 @@ Variablerna definieras som `background`.
 För att kunna använda `FLogo` med `responsive` krävs det att båda variabler är satta.
 
 ```css
---f-logo-image-small: url("path/to/image-small.svg");
---f-logo-image-large: url("path/to/image-large.svg");
+:root {
+    --f-logo-image-small: url("path/to/image-small.svg");
+    --f-logo-image-large: url("path/to/image-large.svg");
+}
 ```
 
 För att ändra logotypens storlek används CSS variabler.
@@ -29,8 +31,10 @@ Storleks-variablerna definieras som `padding`.
 Logotypen kommer att centreras samt växa eller krympa för att passa inom given storlek.
 
 ```css
---f-logo-size-small: 0.6rem;
---f-logo-size-large: 0.6rem 4rem;
+:root {
+    --f-logo-size-small: 0.6rem;
+    --f-logo-size-large: 0.6rem 4rem;
+}
 ```
 
 ## API

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineEmits, onMounted, useSlots } from "vue";
+import { computed, onMounted, useSlots } from "vue";
 import { PageLayout } from "./webcomponent";
 
 const emit = defineEmits<{

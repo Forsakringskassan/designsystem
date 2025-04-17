@@ -1,29 +1,3 @@
-<template>
-    <teleport v-if="isOpen" :to="teleportTarget" :disabled="teleportDisabled">
-        <div ref="popup" :class="popupClasses" aria-hidden="true">
-            <div ref="wrapper" class="popup-error__wrapper">
-                <!-- [html-validate-disable-next no-inline-style] -->
-                <div :class="arrowClass" :style="errorStyle">
-                    <span>{{ errorMessage }}</span>
-
-                    <!-- `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.
-                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .
-                    -->
-                    <button
-                        tabindex="-1"
-                        type="button"
-                        class="button button--discrete button--discrete--black modal__close-button popup-error__button"
-                        aria-label="Stäng"
-                        @click="onClose"
-                    >
-                        <f-icon name="close" class="button__icon"></f-icon>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </teleport>
-</template>
-
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import { FIcon } from "../../components/FIcon";
@@ -177,3 +151,29 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <teleport v-if="isOpen" :to="teleportTarget" :disabled="teleportDisabled">
+        <div ref="popup" :class="popupClasses" aria-hidden="true">
+            <div ref="wrapper" class="popup-error__wrapper">
+                <!-- [html-validate-disable-next no-inline-style] -->
+                <div :class="arrowClass" :style="errorStyle">
+                    <span>{{ errorMessage }}</span>
+
+                    <!-- `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.
+                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .
+                    -->
+                    <button
+                        tabindex="-1"
+                        type="button"
+                        class="button button--discrete button--discrete--black modal__close-button popup-error__button"
+                        aria-label="Stäng"
+                        @click="onClose"
+                    >
+                        <f-icon name="close" class="button__icon"></f-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </teleport>
+</template>

@@ -10,7 +10,7 @@ This function is not yet available for usage with Vue Composition API!
 :::
 
 ```ts
-export interface MountOptions {
+interface MountOptions {
     /**
      * Element to mount component under. Default `<body>`.
      */
@@ -21,8 +21,10 @@ export interface MountOptions {
      */
     attachFirst?: boolean;
 }
+```
 
-export function mountComponent(
+```ts nocompile
+function mountComponent(
     callingInstance: MaybeWithFKUIContext,
     Component: MaybeComponent,
     options?: Record<string, unknown> & MountOptions,
@@ -35,14 +37,31 @@ The component will be mounted as a child of the target element and not onto the 
 ## Usage
 
 ```ts
-/* mount component */
-const targetElement = ...;
-const app = mountComponent(this, MyComponent, { attachTo: targetElement });
+import { defineComponent } from "vue";
+import { mountComponent } from "@fkui/vue";
 
-/* do fancy stuff */
+const MyComponent = defineComponent({});
 
-/* cleanup */
-app.unmount();
+defineComponent({
+    methods: {
+        dummy() {
+            /* --- cut above --- */
+
+            /* mount component */
+            const targetElement = document.querySelector("body")!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+            const app = mountComponent(this, MyComponent, {
+                attachTo: targetElement,
+            });
+
+            /* do fancy stuff */
+
+            /* cleanup */
+            app.unmount();
+
+            /* --- cut below --- */
+        },
+    },
+});
 ```
 
 ```import
@@ -54,15 +73,31 @@ MountOptionsExample.vue
 Props and listeners can be passed in the options object:
 
 ```ts
-mountComponent(this, MyComponent, {
-    attachTo: targetElement,
+import { defineComponent } from "vue";
+import { mountComponent } from "@fkui/vue";
 
-    /* props */
-    foo: "bar",
+const MyComponent = defineComponent({});
+const targetElement = document.createElement("div");
 
-    /* listeners */
-    onSubmit(): void {
-        /* do something */
+defineComponent({
+    methods: {
+        dummy() {
+            /* --- cut above --- */
+
+            mountComponent(this, MyComponent, {
+                attachTo: targetElement,
+
+                /* props */
+                foo: "bar",
+
+                /* listeners */
+                onSubmit(): void {
+                    /* do something */
+                },
+            });
+
+            /* --- cut below --- */
+        },
     },
 });
 ```

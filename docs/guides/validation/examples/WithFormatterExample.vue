@@ -1,3 +1,23 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FTextField, FOutputField } from "@fkui/vue";
+
+function myFormatter(value: string): string {
+    return value.toLowerCase();
+}
+
+export default defineComponent({
+    name: "WithFormatterExample",
+    components: { FTextField, FOutputField },
+    data() {
+        return {
+            modelValue: "",
+            myFormatter,
+        };
+    },
+});
+</script>
+
 <template>
     <div class="row">
         <div class="col col--md-9">
@@ -20,23 +40,3 @@
         </div>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FTextField, FOutputField } from "@fkui/vue";
-
-function myFormatter(value: string): string {
-    return value.toLowerCase();
-}
-
-export default defineComponent({
-    name: "WithFormatterExample",
-    components: { FTextField, FOutputField },
-    data() {
-        return {
-            modelValue: "",
-            myFormatter,
-        };
-    },
-});
-</script>

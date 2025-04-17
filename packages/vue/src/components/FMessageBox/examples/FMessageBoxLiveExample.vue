@@ -1,18 +1,3 @@
-<template>
-    <live-example :components="components" :template="template">
-        <f-fieldset name="radio-message-type">
-            <template #label> Typ </template>
-            <f-radio-field v-model="messageType" value="info"> Information </f-radio-field>
-            <f-radio-field v-model="messageType" value="warning"> Varning </f-radio-field>
-            <f-radio-field v-model="messageType" value="error"> Fel </f-radio-field>
-            <f-radio-field v-model="messageType" value="success">
-                Positiv återkoppling
-            </f-radio-field>
-        </f-fieldset>
-        <f-checkbox-field v-model="shortLayout" :value="true"> Kort meddelande </f-checkbox-field>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FCheckboxField, FFieldset, FMessageBox, FRadioField } from "@fkui/vue";
@@ -52,3 +37,18 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template">
+        <f-fieldset name="radio-message-type">
+            <template #label> Typ </template>
+            <f-radio-field v-model="messageType" value="info"> Information </f-radio-field>
+            <f-radio-field v-model="messageType" value="warning"> Varning </f-radio-field>
+            <f-radio-field v-model="messageType" value="error"> Fel </f-radio-field>
+            <f-radio-field v-model="messageType" value="success">
+                Positiv återkoppling
+            </f-radio-field>
+        </f-fieldset>
+        <f-checkbox-field v-model="shortLayout" :value="true"> Kort meddelande </f-checkbox-field>
+    </live-example>
+</template>

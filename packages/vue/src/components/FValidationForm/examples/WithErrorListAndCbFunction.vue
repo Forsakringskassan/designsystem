@@ -1,3 +1,33 @@
+<script>
+import { defineComponent } from "vue";
+import { FTextField, FValidationForm, FExpandablePanel } from "@fkui/vue";
+
+export default defineComponent({
+    name: "ErrorListWithOptionsExample",
+    components: { FTextField, FValidationForm, FExpandablePanel },
+    data() {
+        return {
+            field1: "",
+            field2: "",
+            expand: false,
+        };
+    },
+    methods: {
+        onSubmit() {
+            alert("Spara");
+        },
+        onCancel() {
+            this.expand = false;
+        },
+        onToggle() {
+            this.expand = !this.expand;
+        },
+        expandPanel() {
+            this.expand = true;
+        },
+    },
+});
+</script>
 <template>
     <f-validation-form :error-list-before-navigate="expandPanel" @submit="onSubmit">
         <template #error-message> <span> Custom message </span> </template>
@@ -41,33 +71,3 @@
         </template>
     </f-validation-form>
 </template>
-<script>
-import { defineComponent } from "vue";
-import { FTextField, FValidationForm, FExpandablePanel } from "@fkui/vue";
-
-export default defineComponent({
-    name: "ErrorListWithOptionsExample",
-    components: { FTextField, FValidationForm, FExpandablePanel },
-    data() {
-        return {
-            field1: "",
-            field2: "",
-            expand: false,
-        };
-    },
-    methods: {
-        onSubmit() {
-            alert("Spara");
-        },
-        onCancel() {
-            this.expand = false;
-        },
-        onToggle() {
-            this.expand = !this.expand;
-        },
-        expandPanel() {
-            this.expand = true;
-        },
-    },
-});
-</script>

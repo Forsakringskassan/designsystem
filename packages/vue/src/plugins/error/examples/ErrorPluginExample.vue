@@ -1,24 +1,3 @@
-<template>
-    <div>
-        <button
-            v-test="'generate-error'"
-            class="button button--secondary"
-            type="button"
-            @click="generateError()"
-        >
-            Fel
-        </button>
-        <button
-            v-test="'generate-warning'"
-            class="button button--secondary"
-            type="button"
-            @click="generateWarning()"
-        >
-            Varning
-        </button>
-    </div>
-</template>
-
 <script>
 import { defineComponent, getCurrentInstance } from "vue";
 
@@ -41,3 +20,24 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <button
+            v-test="'generate-error'"
+            class="button button--secondary"
+            type="button"
+            @click="generateError()"
+        >
+            Fel
+        </button>
+        <button
+            v-test="'generate-warning'"
+            class="button button--secondary"
+            type="button"
+            @click="generateWarning()"
+        >
+            Varning
+        </button>
+    </div>
+</template>

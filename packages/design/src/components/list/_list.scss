@@ -23,10 +23,6 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
     background: var(--f-background-grid-hover);
 }
 
-%list-item-selected {
-    background: var(--f-background-grid-selected);
-}
-
 %list-item-active {
     background: var(--f-background-grid-active);
 }
@@ -44,10 +40,6 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
 
         &--hover {
             @extend %list-item-hover;
-        }
-
-        &--selected {
-            @extend %list-item-selected;
         }
 
         &--active {
@@ -106,10 +98,6 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
             &#{$LIST_SELECTOR}__item {
                 &--active {
                     @extend %list-item-active;
-                }
-
-                &--selected {
-                    @extend %list-item-selected;
                 }
             }
         }

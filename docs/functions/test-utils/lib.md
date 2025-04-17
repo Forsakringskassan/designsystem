@@ -12,7 +12,7 @@ Anroparen ansvarar för att städa upp elementet.
 
 Måste köras i en miljö där DOM finns tillgängligt, exempelvis en browser eller JSDOM.
 
-```ts
+```ts nocompile nolint
 function createPlaceholderInDocument(): HTMLElement;
 ```
 
@@ -21,6 +21,13 @@ function createPlaceholderInDocument(): HTMLElement;
 I Vue.js testfall kan funktionen användas med `attachTo` när komponenten måste finnas i DOM (exempelvis när man testar fokus):
 
 ```ts
+import { defineComponent } from "vue";
+
+const MyComponent = defineComponent({});
+
+/* --- cut above --- */
+
+import { shallowMount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils";
 
 shallowMount(MyComponent, {
@@ -34,7 +41,7 @@ Genererar en CSS selector för givet element.
 
 Måste köras i en miljö där DOM finns tillgängligt, exempelvis en browser eller JSDOM.
 
-```ts
+```ts nocompile nolint
 function generateSelector(element: Element | null): string;
 ```
 

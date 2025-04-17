@@ -1,28 +1,3 @@
-<template>
-    <div class="file-selector">
-        <input
-            :id="id"
-            ref="file-selector"
-            type="file"
-            :aria-labelledby="labelId"
-            :aria-disabled="ariaDisabled ? 'true' : undefined"
-            v-bind="attrs"
-            @click="onClick"
-        />
-        <label
-            :id="labelId"
-            role="button"
-            :class="labelClass"
-            :for="id"
-            class="button button--tertiary button--medium"
-            aria-hidden="true"
-        >
-            <f-icon class="button__icon" name="paper-clip"></f-icon>
-            <slot></slot>
-        </label>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
@@ -49,6 +24,9 @@ export default defineComponent({
             required: false,
             default: () => ElementIdService.generateElementId(),
         },
+        /**
+         * Disables the file selector.
+         */
         disabled: {
             type: Boolean,
             required: false,
@@ -98,3 +76,28 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="file-selector">
+        <input
+            :id="id"
+            ref="file-selector"
+            type="file"
+            :aria-labelledby="labelId"
+            :aria-disabled="ariaDisabled ? 'true' : undefined"
+            v-bind="attrs"
+            @click="onClick"
+        />
+        <label
+            :id="labelId"
+            role="button"
+            :class="labelClass"
+            :for="id"
+            class="button button--tertiary button--medium"
+            aria-hidden="true"
+        >
+            <f-icon class="button__icon" name="paper-clip"></f-icon>
+            <slot></slot>
+        </label>
+    </div>
+</template>

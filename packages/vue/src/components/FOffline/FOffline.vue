@@ -1,28 +1,3 @@
-<template>
-    <div ref="offline" class="offline__wrapper" :role="role">
-        <div v-if="!isOnline" class="offline">
-            <i-flex gap="2x">
-                <i-flex-item class="offline__icon" shrink align="center">
-                    <span class="icon-stack icon-stack--error">
-                        <f-icon name="triangle"></f-icon>
-                        <f-icon name="alert"></f-icon>
-                    </span>
-                </i-flex-item>
-
-                <i-flex-item class="offline_content" grow align="center">
-                    <p class="offline__content">
-                        <!-- @slot Slot for customizing text message. -->
-                        <slot> Det verkar som att du inte har någon internetuppkoppling just nu </slot>
-                    </p>
-                </i-flex-item>
-            </i-flex>
-        </div>
-        <span v-show="isOnline" class="sr-only" :aria-hidden="shouldNotRead ? 'true' : undefined">
-            Din internetuppkoppling fungerar igen
-        </span>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FIcon } from "../FIcon";
@@ -80,3 +55,28 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div ref="offline" class="offline__wrapper" :role="role">
+        <div v-if="!isOnline" class="offline">
+            <i-flex gap="2x">
+                <i-flex-item class="offline__icon" shrink align="center">
+                    <span class="icon-stack icon-stack--error">
+                        <f-icon name="triangle"></f-icon>
+                        <f-icon name="alert"></f-icon>
+                    </span>
+                </i-flex-item>
+
+                <i-flex-item class="offline_content" grow align="center">
+                    <p class="offline__content">
+                        <!-- @slot Slot for customizing text message. -->
+                        <slot> Det verkar som att du inte har någon internetuppkoppling just nu </slot>
+                    </p>
+                </i-flex-item>
+            </i-flex>
+        </div>
+        <span v-show="isOnline" class="sr-only" :aria-hidden="shouldNotRead ? 'true' : undefined">
+            Din internetuppkoppling fungerar igen
+        </span>
+    </div>
+</template>

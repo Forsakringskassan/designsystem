@@ -2887,6 +2887,9 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
     slots: {
         default?(_: {}): any;
         'add-button'?(_: {}): any;
+        buttons?(_: {
+            buttonClasses: string[];
+        }): any;
         add?(_: {
             item: NonNullable<DistributeRef<[T | null] extends [Ref<any, any>] ? IfAny<Ref<any, any> & T, Ref<Ref<any, any> & T, Ref<any, any> & T>, Ref<any, any> & T> : Ref<UnwrapRef<T> | null, T | UnwrapRef<T> | null>>>;
         }): any;
@@ -15604,6 +15607,22 @@ export interface UseModal {
 
 // @public (undocumented)
 export function useModal(): UseModal;
+
+// @public
+export interface UseResize {
+    readonly size: Readonly<Ref<number>>;
+}
+
+// @public
+export function useResize(options?: UseResizeOptions): UseResize;
+
+// @public
+export interface UseResizeOptions {
+    readonly enabled?: Readonly<Ref<boolean>>;
+    readonly offset?: Readonly<Ref<number>>;
+    readonly overlay?: Readonly<Ref<boolean>>;
+    readonly visible?: Readonly<Ref<boolean>>;
+}
 
 // @public (undocumented)
 export interface UseSlotUtils {

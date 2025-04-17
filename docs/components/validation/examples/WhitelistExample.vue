@@ -1,7 +1,3 @@
-<template>
-    <f-text-field v-model="model" v-validation.whitelist> Fyll i en text </f-text-field>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FTextField } from "@fkui/vue";
@@ -14,3 +10,7 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-text-field v-model="model" v-validation.whitelist> Fyll i en text </f-text-field>
+</template>

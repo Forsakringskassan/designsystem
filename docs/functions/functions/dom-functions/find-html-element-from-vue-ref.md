@@ -6,10 +6,8 @@ layout: content-with-menu
 
 Find an `HTMLElement` from a ref, provided it is defined and not an array.
 
-```ts
-export function findHTMLElementFromVueRef(
-    ref: unknown,
-): HTMLElement | undefined;
+```ts nocompile
+function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined;
 ```
 
 - `ref` - The ref to extract `HTMLElement` from.

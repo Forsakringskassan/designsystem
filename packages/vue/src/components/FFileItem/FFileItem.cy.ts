@@ -70,18 +70,18 @@ describe("FFileItem", () => {
         `;
         cy.mount(createComponent(template));
         fileItem.fileName().should("have.trimmedText", "bar.pdf");
-        fileItem.typeOfFileIcon().should("be.equal", "pdf");
+        fileItem.typeOfFile().should("be.equal", "pdf");
         fileItem
-            .cancelDeleteButton()
+            ._cancelDeleteButton()
             .should("have.trimmedText", "Avbryt uppladdning");
         fileItem.typeOfButtonIcon().should("be.equal", "close");
         const selector = "#upload-progress";
         cy.get(selector).clear();
         cy.get(selector).type("30");
-        fileItem.progressMeter.progressMeter().should("be.visible");
+        fileItem._progressMeter.progressMeter().should("be.visible");
         cy.get(selector).clear();
         cy.get(selector).type("100");
-        fileItem.progressMeter.progressMeter().should("not.exist");
+        fileItem._progressMeter.progressMeter().should("not.exist");
         fileItem.typeOfButtonIcon().should("be.equal", "trashcan");
     });
 });

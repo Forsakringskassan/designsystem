@@ -12,7 +12,7 @@ function getDefaultLocale(): Locale {
     return Locale.SWEDISH;
 }
 
-let _locale: Locale = getDefaultLocale();
+let _locale: Locale = /* @__PURE__ */ getDefaultLocale();
 
 /**
  * Reset current locale to its default value.

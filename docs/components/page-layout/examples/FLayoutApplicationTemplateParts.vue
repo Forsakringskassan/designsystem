@@ -1,3 +1,13 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FLayoutApplicationTemplate } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FLayoutApplicationTemplateExample",
+    components: { FLayoutApplicationTemplate },
+});
+</script>
+
 <template>
     <f-layout-application-template>
         <template #header>
@@ -15,16 +25,6 @@
         </template>
     </f-layout-application-template>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FLayoutApplicationTemplate } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FLayoutApplicationTemplateExample",
-    components: { FLayoutApplicationTemplate },
-});
-</script>
 
 <style>
 .example-header {

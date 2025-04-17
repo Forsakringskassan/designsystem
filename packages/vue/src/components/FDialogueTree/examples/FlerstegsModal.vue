@@ -1,30 +1,3 @@
-<template>
-    <f-form-modal
-        :is-open="isOpen"
-        :value="value"
-        :buttons="buttons"
-        @submit="onSubmit"
-        @cancel="onCancel"
-        @close="onClose"
-    >
-        <template #header> {{ current.label }} </template>
-        <template #error-message>Oj, du har glömt fylla i något. Gå till:</template>
-        <template #input-text-fields>
-            <f-dialogue-tree v-model="current" :dialogue-tree="treeData" @change="onChange">
-                <template #default="{ userData }">
-                    <template v-if="userData.label">
-                        <f-organisationsnummer-text-field
-                            v-model="value.organisationNumber"
-                            v-validation.required
-                            v-test="'organisationsnummer'"
-                        ></f-organisationsnummer-text-field>
-                    </template>
-                </template>
-            </f-dialogue-tree>
-        </template>
-    </f-form-modal>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
@@ -102,3 +75,30 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-form-modal
+        :is-open="isOpen"
+        :value="value"
+        :buttons="buttons"
+        @submit="onSubmit"
+        @cancel="onCancel"
+        @close="onClose"
+    >
+        <template #header> {{ current.label }} </template>
+        <template #error-message>Oj, du har glömt fylla i något. Gå till:</template>
+        <template #input-text-fields>
+            <f-dialogue-tree v-model="current" :dialogue-tree="treeData" @change="onChange">
+                <template #default="{ userData }">
+                    <template v-if="userData.label">
+                        <f-organisationsnummer-text-field
+                            v-model="value.organisationNumber"
+                            v-validation.required
+                            v-test="'organisationsnummer'"
+                        ></f-organisationsnummer-text-field>
+                    </template>
+                </template>
+            </f-dialogue-tree>
+        </template>
+    </f-form-modal>
+</template>

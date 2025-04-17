@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 6.4.0 (2025-04-11)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** add semantic tokens for colors to wizard (refs SFKUI-7160) 23a3c86
+* **@fkui/design, @fkui/theme-default:** remove background for selected list/table rows (refs SFKUI-4410) ([#413](undefined/Forsakringskassan/designsystem/issues/413)) af9f3ee
+* **@fkui/design:** add styling `text-align: left` on component `th` (fixes SFKUI-7151) 86c1b0f
+* **@fkui/design:** update card semantic tokens (refs SFKUI-7166) 6c50ad5
+* **@fkui/design:** update entrypoint with tokens  (refs SFKUI-7040) 6c2f0f1
+* **@fkui/vue:** support custom buttons in `FCrudDataset` (fixes SFKUI-7068) 07ee345, closes #321
+* **deps:** update dependency express to v5 6c388e3
+* **deps:** update dependency express to v5 a48fef0
+
+### Bug Fixes
+
+* **@fkui/design:** collapsed expandable rows in `FInteractiveTable` shown as white gaps in iOS browsers (fixes SFKUI-6984) ([#406](undefined/Forsakringskassan/designsystem/issues/406)) 40421a7
+* **@fkui/vue:** card throws error when content is validated (fixes SFKUI-7190) 4c1e690
+
 ## 6.3.1 (2025-03-25)
 
 ### Bug Fixes

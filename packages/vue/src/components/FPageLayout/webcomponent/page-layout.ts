@@ -1,3 +1,6 @@
+/* include typescript declarations for vite static asset handling (e.g. `?raw`) */
+/// <reference types="vite/client" />
+
 import {
     VAR_NAME_AREA,
     VAR_NAME_ATTACH_PANEL,

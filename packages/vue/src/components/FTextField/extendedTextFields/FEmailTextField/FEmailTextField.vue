@@ -1,39 +1,3 @@
-<template>
-    <div>
-        <f-text-field
-            :id="id"
-            type="email"
-            :maxlength="maxLength"
-            v-bind="$attrs"
-            :model-value="modelValue"
-            @change="onChange"
-            @blur="onBlur"
-            @update:model-value="onUpdate"
-            @validity="onValidity"
-            @pending-validity="onPendingValidity"
-        >
-            <!-- @slot Optional slot for label content. -->
-            <slot name="default">{{ defaultText }}</slot>
-            <template #error-message>
-                <span v-if="showPasteErrorMessage">
-                    {{ pasteErrorText }}
-                </span>
-            </template>
-        </f-text-field>
-        <f-text-field
-            v-if="extendedValidation"
-            v-model="secondEmail"
-            type="email"
-            :maxlength="maxLength"
-            @paste="onPaste"
-            @blur="showPasteErrorMessage = false"
-        >
-            <!-- @slot Optional slot for label content of extended field. -->
-            <slot name="extended-label">{{ $t("fkui.email-text-field.label.repeat", "Upprepa mejladress") }}</slot>
-        </f-text-field>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
@@ -179,3 +143,39 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <f-text-field
+            :id="id"
+            type="email"
+            :maxlength="maxLength"
+            v-bind="$attrs"
+            :model-value="modelValue"
+            @change="onChange"
+            @blur="onBlur"
+            @update:model-value="onUpdate"
+            @validity="onValidity"
+            @pending-validity="onPendingValidity"
+        >
+            <!-- @slot Optional slot for label content. -->
+            <slot name="default">{{ defaultText }}</slot>
+            <template #error-message>
+                <span v-if="showPasteErrorMessage">
+                    {{ pasteErrorText }}
+                </span>
+            </template>
+        </f-text-field>
+        <f-text-field
+            v-if="extendedValidation"
+            v-model="secondEmail"
+            type="email"
+            :maxlength="maxLength"
+            @paste="onPaste"
+            @blur="showPasteErrorMessage = false"
+        >
+            <!-- @slot Optional slot for label content of extended field. -->
+            <slot name="extended-label">{{ $t("fkui.email-text-field.label.repeat", "Upprepa mejladress") }}</slot>
+        </f-text-field>
+    </div>
+</template>

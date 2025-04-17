@@ -1,10 +1,13 @@
 import fs from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import module from "node:module";
 import { execSync } from "node:child_process";
+import fse from "fs-extra";
 import isCI from "is-ci";
 import {
     Generator,
+    extractExamplesProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     matomoProcessor,
@@ -60,6 +63,16 @@ if (isCI) {
     console.log();
 }
 
+async function copyDocs(pkg, from, to) {
+    const exists = existsSync(from);
+    if (exists) {
+        console.log(`Copying ${pkg} to ${to}`);
+        await fse.copy(from, to);
+    } else {
+        console.log(`${pkg} not built, skipping`);
+    }
+}
+
 const docs = new Generator({
     site: {
         name: "FK Designsystem",
@@ -90,6 +103,9 @@ const docs = new Generator({
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
+        extractExamplesProcessor({
+            outputFolder: "docs/examples/files",
+        }),
         searchProcessor(),
         versionProcessor(pkg, "footer:right", {
             scm: isRelease
@@ -155,6 +171,26 @@ try {
     );
     await fs.mkdir("temp/docs", { recursive: true });
     await fs.writeFile("temp/docs/versions.json", versions, "utf-8");
+
+    /* copy docs from each package */
+    console.log(); // intentional blank line
+    await copyDocs("@fkui/date", "packages/date/typedoc", "public/date");
+    await copyDocs("@fkui/logic", "packages/logic/typedoc", "public/logic");
+    await copyDocs(
+        "@fkui/vue-labs",
+        "packages/vue-labs/public",
+        "public/vue-labs",
+    );
+    await copyDocs(
+        "@fkui/vue-sandbox",
+        "internal/vue-sandbox/dist",
+        "public/vue-sandbox",
+    );
+    await copyDocs(
+        "@fkui/testbed-page-layout",
+        "internal/testbed-page-layout/dist",
+        "public/testbed-page-layout",
+    );
 } catch (err) {
     console.error(err.prettyError ? err.prettyError() : err);
     process.exitCode = 1;

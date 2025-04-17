@@ -9,7 +9,7 @@ exports[`snapshots should match snapshot and use prop name to set icon 1`] = `
   
   
   <use
-    xlink:href="#f-icon-my-icon"
+    href="#f-icon-my-icon"
   />
 </svg>
 `;
@@ -25,7 +25,7 @@ exports[`snapshots should match snapshot when passing content to default slot 1`
   </title>
   
   <use
-    xlink:href="#f-icon-my-icon"
+    href="#f-icon-my-icon"
   />
 </svg>
 `;

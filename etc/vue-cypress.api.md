@@ -278,23 +278,23 @@ export class FFieldsetPageObject implements BasePageObject {
 // @public (undocumented)
 export class FFileItemPageObject implements BasePageObject {
     constructor(selector: string);
-    // (undocumented)
-    cancelDeleteButton: () => DefaultCypressChainable;
-    // (undocumented)
-    cancelDeleteButtonIcon: () => DefaultCypressChainable;
+    // @internal (undocumented)
+    _cancelDeleteButton(): Cypress.Chainable<JQuery<HTMLElement>>;
+    // @internal (undocumented)
+    _cancelDeleteButtonIcon(): Cypress.Chainable<JQuery<HTMLElement>>;
     // (undocumented)
     el: () => DefaultCypressChainable;
-    // (undocumented)
-    fileIcon: () => DefaultCypressChainable;
-    // (undocumented)
-    fileName: () => DefaultCypressChainable;
-    // (undocumented)
-    progressMeter: FProgressbarPageObject;
+    // @internal (undocumented)
+    _fileIcon(): Cypress.Chainable<JQuery<HTMLElement>>;
+    fileName(): Cypress.Chainable<JQuery<HTMLElement>>;
+    // @internal (undocumented)
+    _progressMeter: FProgressbarPageObject;
     // (undocumented)
     selector: string;
-    // (undocumented)
+    // @internal (undocumented)
     typeOfButtonIcon(): Cypress.Chainable<string>;
-    // (undocumented)
+    typeOfFile(): Cypress.Chainable<string>;
+    // @deprecated (undocumented)
     typeOfFileIcon(): Cypress.Chainable<string>;
 }
 

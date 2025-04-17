@@ -1,0 +1,35 @@
+name: PR Changelog
+
+on:
+    pull_request:
+        branches:
+            - main
+            - "releases/**"
+
+permissions:
+    pull-requests: write
+
+jobs:
+    pr-changelog:
+        if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  ref: "${{ github.head_ref }}"
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: |
+                  npm ci
+                  npm install --no-save \
+                      @forsakringskassan/semantic-release-common@3 \
+                      conventional-changelog-conventionalcommits@8
+            - name: Pull Requst Changelog
+              uses: ext/pull-request-changelog@v1
+              with:
+                  config: .github/pull-request-changelog/config.mjs
+                  template-dir: .github/pull-request-changelog

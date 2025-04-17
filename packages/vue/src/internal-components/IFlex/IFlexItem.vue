@@ -1,10 +1,3 @@
-<template>
-    <div class="iflex__item" :class="classList">
-        <!-- @slot Content -->
-        <slot></slot>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ALIGNMENT } from "./constants";
@@ -58,3 +51,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="iflex__item" :class="classList">
+        <!-- @slot Content -->
+        <slot></slot>
+    </div>
+</template>

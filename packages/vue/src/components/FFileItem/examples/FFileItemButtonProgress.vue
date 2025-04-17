@@ -1,3 +1,21 @@
+<script>
+import { defineComponent } from "vue";
+import { FFileItem, FIcon, FProgressbar } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FFileItemButtonProgress",
+    components: { FFileItem, FIcon, FProgressbar },
+    data() {
+        return {
+            fileName: "bar.pdf",
+            mimeType: "application/pdf",
+            progress: 30,
+            filteredProgress: 30,
+        };
+    },
+});
+</script>
+
 <template>
     <div>
         <label>
@@ -39,21 +57,3 @@
         </f-file-item>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FFileItem, FIcon, FProgressbar } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FFileItemButtonProgress",
-    components: { FFileItem, FIcon, FProgressbar },
-    data() {
-        return {
-            fileName: "bar.pdf",
-            mimeType: "application/pdf",
-            progress: 30,
-            filteredProgress: 30,
-        };
-    },
-});
-</script>

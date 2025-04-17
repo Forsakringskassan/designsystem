@@ -1,71 +1,3 @@
-<template>
-    <nav ref="menu" :aria-label="menuAriaLabel" :class="menuClasses">
-        <ul class="imenu__list" role="menubar" @keyup="onKeyUp" @keydown="onKeyDown">
-            <li
-                v-for="(item, index) in items"
-                :key="item.key"
-                ref="items"
-                :data-ref-index="index"
-                :class="itemClasses(item, index)"
-                role="none"
-                @click="(event) => onClickItem(event, item)"
-            >
-                <div class="imenu__list__anchor-container">
-                    <a
-                        ref="anchors"
-                        :data-ref-index="index"
-                        tabindex="0"
-                        :href="item.href"
-                        :target="item.target"
-                        class="imenu__list__anchor"
-                        role="menuitem"
-                    >
-                        <span v-if="showItemSrText(index)" class="sr-only">
-                            <span>{{ selectedItemSrText }}&nbsp;</span>
-                        </span>
-                        {{ item.label }}
-                    </a>
-                </div>
-            </li>
-
-            <li v-if="hasOverflow" class="imenu__popup-item" role="none">
-                <div ref="popup-item" :class="popupItemClasses" @click="togglePopup(true)">
-                    <div class="imenu__list__anchor-container">
-                        <a
-                            ref="popup-anchor"
-                            tabindex="0"
-                            class="imenu__list__anchor"
-                            role="menuitem"
-                            aria-haspopup="menu"
-                            :aria-expanded="popupOpen ? 'true' : 'false'"
-                        >
-                            <span class="sr-only">
-                                <span>{{ popupMenuSrText }}&nbsp;</span>
-                            </span>
-                            {{ popupLabel }}
-                            <f-icon name="arrow-down" class="imenu__list__anchor-icon-right" />
-                        </a>
-                    </div>
-                </div>
-            </li>
-        </ul>
-
-        <i-popup-menu
-            ref="popup-menu"
-            v-model="selectedItem"
-            v-model:focused-item="focusedPopupMenuItem"
-            :items="overflowItems"
-            :is-open="popupOpen"
-            :anchor="popupAnchor"
-            :selected-menu-item-screen-reader-text="selectedItemSrText"
-            :aria-label="popupAriaLabel"
-            enable-keyboard-navigation
-            @select="onPopupMenuItemSelected"
-            @close="togglePopup(false)"
-        />
-    </nav>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { debounce } from "@fkui/logic";
@@ -454,3 +386,71 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <nav ref="menu" :aria-label="menuAriaLabel" :class="menuClasses">
+        <ul class="imenu__list" role="menubar" @keyup="onKeyUp" @keydown="onKeyDown">
+            <li
+                v-for="(item, index) in items"
+                :key="item.key"
+                ref="items"
+                :data-ref-index="index"
+                :class="itemClasses(item, index)"
+                role="none"
+                @click="(event) => onClickItem(event, item)"
+            >
+                <div class="imenu__list__anchor-container">
+                    <a
+                        ref="anchors"
+                        :data-ref-index="index"
+                        tabindex="0"
+                        :href="item.href"
+                        :target="item.target"
+                        class="imenu__list__anchor"
+                        role="menuitem"
+                    >
+                        <span v-if="showItemSrText(index)" class="sr-only">
+                            <span>{{ selectedItemSrText }}&nbsp;</span>
+                        </span>
+                        {{ item.label }}
+                    </a>
+                </div>
+            </li>
+
+            <li v-if="hasOverflow" class="imenu__popup-item" role="none">
+                <div ref="popup-item" :class="popupItemClasses" @click="togglePopup(true)">
+                    <div class="imenu__list__anchor-container">
+                        <a
+                            ref="popup-anchor"
+                            tabindex="0"
+                            class="imenu__list__anchor"
+                            role="menuitem"
+                            aria-haspopup="menu"
+                            :aria-expanded="popupOpen ? 'true' : 'false'"
+                        >
+                            <span class="sr-only">
+                                <span>{{ popupMenuSrText }}&nbsp;</span>
+                            </span>
+                            {{ popupLabel }}
+                            <f-icon name="arrow-down" class="imenu__list__anchor-icon-right" />
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <i-popup-menu
+            ref="popup-menu"
+            v-model="selectedItem"
+            v-model:focused-item="focusedPopupMenuItem"
+            :items="overflowItems"
+            :is-open="popupOpen"
+            :anchor="popupAnchor"
+            :selected-menu-item-screen-reader-text="selectedItemSrText"
+            :aria-label="popupAriaLabel"
+            enable-keyboard-navigation
+            @select="onPopupMenuItemSelected"
+            @close="togglePopup(false)"
+        />
+    </nav>
+</template>

@@ -1,32 +1,3 @@
-<template>
-    <live-example :components="components" :template="template" :livedata="livedata">
-        <f-fieldset name="checkbox-label">
-            <template #label> Etiketten </template>
-            <f-checkbox-field v-model="tooltipVisible" :value="true"> Tooltip </f-checkbox-field>
-            <f-checkbox-field v-model="descriptionVisible" :value="true">
-                Hjälptext
-            </f-checkbox-field>
-        </f-fieldset>
-        <f-fieldset name="settings">
-            <template #label> Inställningar </template>
-            <f-checkbox-field v-model="isDisabled" :value="true"> Inaktiv </f-checkbox-field>
-            <f-checkbox-field v-model="isResizable" :value="true">
-                Justerbar storlek
-            </f-checkbox-field>
-            <f-checkbox-field v-model="customWarning" :value="true">
-                Egen varningstext
-            </f-checkbox-field>
-        </f-fieldset>
-        <f-select-field v-model="rows">
-            <template #label> Antal rader </template>
-            <option value="3">3</option>
-            <option value="4">4 (standard)</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </f-select-field>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FCheckboxField, FFieldset, FSelectField, FTextareaField, FTooltip } from "@fkui/vue";
@@ -116,3 +87,32 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template" :livedata="livedata">
+        <f-fieldset name="checkbox-label">
+            <template #label> Etiketten </template>
+            <f-checkbox-field v-model="tooltipVisible" :value="true"> Tooltip </f-checkbox-field>
+            <f-checkbox-field v-model="descriptionVisible" :value="true">
+                Hjälptext
+            </f-checkbox-field>
+        </f-fieldset>
+        <f-fieldset name="settings">
+            <template #label> Inställningar </template>
+            <f-checkbox-field v-model="isDisabled" :value="true"> Inaktiv </f-checkbox-field>
+            <f-checkbox-field v-model="isResizable" :value="true">
+                Justerbar storlek
+            </f-checkbox-field>
+            <f-checkbox-field v-model="customWarning" :value="true">
+                Egen varningstext
+            </f-checkbox-field>
+        </f-fieldset>
+        <f-select-field v-model="rows">
+            <template #label> Antal rader </template>
+            <option value="3">3</option>
+            <option value="4">4 (standard)</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </f-select-field>
+    </live-example>
+</template>

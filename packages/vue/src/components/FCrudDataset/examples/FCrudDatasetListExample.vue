@@ -1,3 +1,51 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import {
+    FCrudDataset,
+    FCrudButton,
+    FList,
+    FStaticField,
+    FTextField,
+    FTextareaField,
+} from "@fkui/vue";
+import { type FruitData, fruits } from "./fruit-data";
+
+export default defineComponent({
+    components: {
+        FCrudDataset,
+        FCrudButton,
+        FList,
+        FStaticField,
+        FTextField,
+        FTextareaField,
+    },
+    data() {
+        return {
+            fruits,
+        };
+    },
+    methods: {
+        // Förpopulera ett objekt med värden
+        beforeCreate(): FruitData {
+            return {
+                id: String(this.getMaxId() + 1),
+                name: "",
+                origin: "",
+                description: "",
+            };
+        },
+        getMaxId() {
+            return this.fruits.reduce((max, item) => {
+                return Math.max(max, parseInt(item.id, 10));
+            }, 0);
+        },
+        saveModel(row: FruitData) {
+            console.log("Post model to backend", row);
+        },
+    },
+});
+</script>
+
 <template>
     <f-crud-dataset
         v-model="fruits"
@@ -77,51 +125,3 @@
         </template>
     </f-crud-dataset>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import {
-    FCrudDataset,
-    FCrudButton,
-    FList,
-    FStaticField,
-    FTextField,
-    FTextareaField,
-} from "@fkui/vue";
-import { type FruitData, fruits } from "./fruit-data";
-
-export default defineComponent({
-    components: {
-        FCrudDataset,
-        FCrudButton,
-        FList,
-        FStaticField,
-        FTextField,
-        FTextareaField,
-    },
-    data() {
-        return {
-            fruits,
-        };
-    },
-    methods: {
-        // Förpopulera ett objekt med värden
-        beforeCreate(): FruitData {
-            return {
-                id: String(this.getMaxId() + 1),
-                name: "",
-                origin: "",
-                description: "",
-            };
-        },
-        getMaxId() {
-            return this.fruits.reduce((max, item) => {
-                return Math.max(max, parseInt(item.id, 10));
-            }, 0);
-        },
-        saveModel(row: FruitData) {
-            console.log("Post model to backend", row);
-        },
-    },
-});
-</script>

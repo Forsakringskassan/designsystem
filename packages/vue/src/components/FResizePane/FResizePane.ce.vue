@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef, watchEffect } from "vue";
+import { computed, onMounted, ref, shallowRef, watch, watchEffect } from "vue";
 import { debounce } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 import { useAreaData } from "../FPageLayout";
@@ -13,6 +13,10 @@ import { aggregateCssValue } from "./aggregate-css-value";
 import { useStorage } from "./use-storage";
 
 const STEP_SIZE = 10;
+
+defineOptions({
+    inheritAttrs: false,
+});
 
 const props = withDefaults(
     defineProps<{
@@ -41,8 +45,29 @@ const props = withDefaults(
          * size)
          */
         initial?: string;
+        /**
+         * Enables overlay.
+         *
+         * When enabled the pane will be an overlay instead of occupying space
+         * from other layout areas. The `offset` prop can be used to set a
+         * static size of how much space it should occupy.
+         */
+        overlay?: boolean;
+        /**
+         * When `overlay` is enabled this sets how much static space (in px) the
+         * pane should occupy from the nearby layout areas, that is, how much of
+         * the pane should be static and how much is overlay.
+         *
+         * Consider a collapsable panel, by setting the offset to the width of
+         * the collapsed state and enabling overlay, the resize pane will occupy
+         * that amount of space and the rest of the pane will be positioned on
+         * top of the other layout areas.
+         */
+        offset?: number;
     }>(),
     {
+        overlay: false,
+        offset: 0,
         disabled: false,
         min: "0",
         max: "100%",
@@ -50,15 +75,18 @@ const props = withDefaults(
     },
 );
 
+const emit = defineEmits<{
+    resize: [size: number];
+}>();
+
 const root = shallowRef<HTMLElement>();
 const content = ref<HTMLElement>();
 const separator = ref<HTMLElement>();
 const state = ref<SizeState>({ min: -1, max: -1, current: -1 });
-const separatorSize = ref(0);
 const layoutSize = ref(0);
 const storageKey = computed(() => (area.value ? `layout/${area.value}/size` : null));
 
-const { attachPanel: attachment, area } = useAreaData(root);
+const { attachPanel: attachment, direction, area } = useAreaData(root);
 
 useKeyboardHandler({
     increase() {
@@ -93,12 +121,12 @@ usePointerHandler({
 
 const minSize = computed(() => {
     const total = layoutSize.value;
-    return Math.floor(aggregateCssValue(props.min, total, 0, Math.max) + separatorSize.value);
+    return Math.floor(aggregateCssValue(props.min, total, 0, Math.max));
 });
 
 const maxSize = computed(() => {
     const total = layoutSize.value;
-    return Math.floor(aggregateCssValue(props.max, total, total, Math.min) + separatorSize.value);
+    return Math.max(Math.floor(aggregateCssValue(props.max, total, total, Math.min)), minSize.value);
 });
 
 const initialSize = computed(() => {
@@ -114,6 +142,15 @@ const orientation = computed((): Orientation => {
     }
 });
 
+const classes = computed(() => {
+    return [
+        `resize--${attachment.value}`,
+        `resize--${direction.value}`,
+        props.overlay ? "resize--overlay" : undefined,
+        props.disabled ? "resize--disabled" : undefined,
+    ];
+});
+
 const layoutElement = computed(() => {
     if (!root.value) {
         return undefined;
@@ -123,25 +160,30 @@ const layoutElement = computed(() => {
     return host.closest<HTMLElement>("ce-page-layout") ?? undefined;
 });
 
+watch(() => props.min, onResize);
+watch(() => props.max, onResize);
+
 watchEffect(() => {
     const { min, max, current: value } = state.value;
     if (root.value) {
-        root.value.style.setProperty("--size", `${String(value)}px`);
-        root.value.style.setProperty("--min", `${min}px`);
-        root.value.style.setProperty("--max", `${max}px`);
+        const shadowRoot = root.value.getRootNode() as ShadowRoot;
+        const host = shadowRoot.host as HTMLElement;
+        host.style.setProperty("--size", `${String(value)}px`);
+        host.style.setProperty("--min", `${min}px`);
+        host.style.setProperty("--max", `${max}px`);
+        host.style.setProperty("--offset", `${props.offset}px`);
     }
     if (separator.value) {
         separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
         separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
         separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
     }
+    if (value >= 0) {
+        emit("resize", value);
+    }
 });
 
 onMounted(() => {
-    if (separator.value) {
-        const { flexBasis } = getComputedStyle(separator.value);
-        separatorSize.value = computeCssValue(flexBasis, 0, 0);
-    }
     layoutSize.value = getLayoutSize();
     state.value = {
         min: minSize.value,
@@ -177,7 +219,8 @@ function getLayoutSize(): number {
 </script>
 
 <template>
-    <div ref="root" class="resize" :class="`resize--${attachment}`">
+    <div v-if="overlay && offset" class="resize__offset"></div>
+    <div ref="root" class="resize" :class="classes" v-bind="$attrs">
         <div ref="content" class="resize__content">
             <!-- @slot Pane content -->
             <slot name="content"></slot>

@@ -1,24 +1,3 @@
-<template>
-    <live-example :components="components" :template="template" :livedata="livedata">
-        <f-select-field v-model="listOption">
-            <template #label> Interaktivitet </template>
-            <option value="static">Statisk</option>
-            <option value="checkbox">Interaktiv med kryssruta</option>
-            <option value="link">Interaktiv med länk</option>
-        </f-select-field>
-        <f-checkbox-field v-model="isEmpty" :value="true"> Tom lista </f-checkbox-field>
-        <f-fieldset v-if="isEmpty" name="radio-empty-text">
-            <template #label> Meddelande för tom lista </template>
-            <f-radio-field v-model="hasCustomEmptyText" :value="false">
-                Standardmeddelande
-            </f-radio-field>
-            <f-radio-field v-model="hasCustomEmptyText" :value="true">
-                Eget meddelande
-            </f-radio-field>
-        </f-fieldset>
-    </live-example>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FCheckboxField, FList, FFieldset, FRadioField, FSelectField } from "@fkui/vue";
@@ -104,3 +83,24 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <live-example :components="components" :template="template" :livedata="livedata">
+        <f-select-field v-model="listOption">
+            <template #label> Interaktivitet </template>
+            <option value="static">Statisk</option>
+            <option value="checkbox">Interaktiv med kryssruta</option>
+            <option value="link">Interaktiv med länk</option>
+        </f-select-field>
+        <f-checkbox-field v-model="isEmpty" :value="true"> Tom lista </f-checkbox-field>
+        <f-fieldset v-if="isEmpty" name="radio-empty-text">
+            <template #label> Meddelande för tom lista </template>
+            <f-radio-field v-model="hasCustomEmptyText" :value="false">
+                Standardmeddelande
+            </f-radio-field>
+            <f-radio-field v-model="hasCustomEmptyText" :value="true">
+                Eget meddelande
+            </f-radio-field>
+        </f-fieldset>
+    </live-example>
+</template>

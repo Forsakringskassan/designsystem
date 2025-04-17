@@ -1,33 +1,3 @@
-<template>
-    <div class="radio-button" :class="disabledClass" @validity="onValidity">
-        <input :id="id" type="radio" class="radio-button__input" :disabled="disabled" v-bind="attrs" />
-
-        <label :class="$slots.details ? 'radio-button__label radio-button__width' : 'radio-button__label'" :for="id">
-            <!-- @slot Slot for label content. -->
-            <slot></slot>
-            <template v-if="$slots.details">
-                <span v-if="showDetails === 'always'" class="radio-button__details">
-                    <br />
-                    <!-- @slot Slot for details, should only contain short text -->
-                    <slot name="details"></slot>
-                </span>
-                <transition
-                    v-if="showDetails === 'when-selected'"
-                    @enter="enter"
-                    @after-enter="afterEnter"
-                    @leave="leave"
-                >
-                    <span v-if="value === modelValue" class="radio-button__details">
-                        <br />
-                        <!-- @slot Slot for details, should only contain short text-->
-                        <slot name="details" :height="height"></slot>
-                    </span>
-                </transition>
-            </template>
-        </label>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ElementIdService, type ValidityEvent } from "@fkui/logic";
@@ -206,3 +176,33 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="radio-button" :class="disabledClass" @validity="onValidity">
+        <input :id="id" type="radio" class="radio-button__input" :disabled="disabled" v-bind="attrs" />
+
+        <label :class="$slots.details ? 'radio-button__label radio-button__width' : 'radio-button__label'" :for="id">
+            <!-- @slot Slot for label content. -->
+            <slot></slot>
+            <template v-if="$slots.details">
+                <span v-if="showDetails === 'always'" class="radio-button__details">
+                    <br />
+                    <!-- @slot Slot for details, should only contain short text -->
+                    <slot name="details"></slot>
+                </span>
+                <transition
+                    v-if="showDetails === 'when-selected'"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+                    @leave="leave"
+                >
+                    <span v-if="value === modelValue" class="radio-button__details">
+                        <br />
+                        <!-- @slot Slot for details, should only contain short text-->
+                        <slot name="details" :height="height"></slot>
+                    </span>
+                </transition>
+            </template>
+        </label>
+    </div>
+</template>

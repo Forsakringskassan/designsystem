@@ -1,13 +1,3 @@
-<template>
-    <!-- [html-validate-disable-next no-inline-style] -->
-    <div :class="animationClasses" :style="heightStyle">
-        <div v-if="shouldVIf" v-show="shouldVShow" ref="content" data-test="animation-content">
-            <!-- @slot Slot used for content shown when component is expanded -->
-            <slot></slot>
-        </div>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { AnimationCallback } from "./AnimationCallback";
@@ -223,3 +213,13 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <!-- [html-validate-disable-next no-inline-style] -->
+    <div :class="animationClasses" :style="heightStyle">
+        <div v-if="shouldVIf" v-show="shouldVShow" ref="content" data-test="animation-content">
+            <!-- @slot Slot used for content shown when component is expanded -->
+            <slot></slot>
+        </div>
+    </div>
+</template>

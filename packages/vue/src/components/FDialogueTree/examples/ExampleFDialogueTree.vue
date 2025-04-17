@@ -1,27 +1,3 @@
-<template>
-    <div>
-        <!-- just for demo purpose -->
-        <h1>{{ current.label }}</h1>
-
-        <f-dialogue-tree v-model="current" :dialogue-tree="tree">
-            <template #default="{ userData }">
-                <template v-if="userData.type === 'formA'">
-                    formA
-                    <f-text-field v-validation.required.maxLength="{ maxLength: { length: 32 } }">
-                        Field 1
-                    </f-text-field>
-                </template>
-                <template v-if="userData.type === 'formB'">
-                    formB
-                    <f-text-field v-validation.required.maxLength="{ maxLength: { length: 32 } }">
-                        Field 1
-                    </f-text-field>
-                </template>
-            </template>
-        </f-dialogue-tree>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
@@ -97,3 +73,27 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <!-- just for demo purpose -->
+        <h1>{{ current.label }}</h1>
+
+        <f-dialogue-tree v-model="current" :dialogue-tree="tree">
+            <template #default="{ userData }">
+                <template v-if="userData.type === 'formA'">
+                    formA
+                    <f-text-field v-validation.required.maxLength="{ maxLength: { length: 32 } }">
+                        Field 1
+                    </f-text-field>
+                </template>
+                <template v-if="userData.type === 'formB'">
+                    formB
+                    <f-text-field v-validation.required.maxLength="{ maxLength: { length: 32 } }">
+                        Field 1
+                    </f-text-field>
+                </template>
+            </template>
+        </f-dialogue-tree>
+    </div>
+</template>

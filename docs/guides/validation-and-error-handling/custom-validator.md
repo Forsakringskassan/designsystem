@@ -13,6 +13,10 @@ Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas n
 En validator implementeras genom att skapa ett objekt som uppfyller interfacet `Validator`:
 
 ```ts
+import { type ValidatableHTMLElement } from "@fkui/logic";
+
+/* --- cut above --- */
+
 interface Validator<TConfig> {
     name: string;
     validation(
@@ -115,6 +119,14 @@ function startsWithPattern(input: string, pattern: string): boolean {
 Om det finns möjlighet till felaktig konfiguration eller om standardvärden inte används måste du införa felhantering:
 
 ```ts
+import { type Validator, isEmpty, isSet } from "@fkui/logic";
+
+interface StartsWithConfig {
+    startString?: string;
+}
+
+/* --- cut above --- */
+
 export const startsWithValidator: Validator<StartsWithConfig> = {
     name: "startsWith",
     validation(value, element, configuration) {

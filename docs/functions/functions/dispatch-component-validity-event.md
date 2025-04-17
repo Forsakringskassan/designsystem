@@ -6,8 +6,8 @@ layout: content-with-menu
 
 Dispatch an ComponentValidityEvent to the given element.
 
-```ts
-export function dispatchComponentValidityEvent(
+```ts nocompile
+function dispatchComponentValidityEvent(
     element: Element,
     detail: ComponentValidityEvent,
 ): void;

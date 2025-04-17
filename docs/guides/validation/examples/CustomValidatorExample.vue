@@ -1,46 +1,3 @@
-<template>
-    <div>
-        <f-text-field
-            v-model="modelFoo"
-            v-validation.startsWith.maxLength="{
-                startsWith: { startString: 'foo' },
-                maxLength: { length: 20 },
-            }"
-        >
-            Detta fält accepterar bara strängar som börjar med 'foo'
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass"> Använder globalt felmeddelande </span>
-            </template>
-        </f-text-field>
-        <f-text-field
-            v-model="modelBar"
-            v-validation.startsWith.maxLength="{
-                startsWith: {
-                    startString: 'bar',
-                    errorMessage: 'Texten måste börja med bar',
-                },
-                maxLength: { length: 20 },
-            }"
-        >
-            Detta fält accepterar bara strängar som börjar med 'bar'
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass"> Använder ett specifik felmeddelande </span>
-            </template>
-        </f-text-field>
-        <f-text-field
-            v-model="modelDemo"
-            v-validation.startsWith.maxLength="{
-                maxLength: { length: 20 },
-            }"
-        >
-            Detta fält accepterar bara strängar som börjar med 'demo'
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass"> Saknar konfiguration för `startsWith` </span>
-            </template>
-        </f-text-field>
-    </div>
-</template>
-
 <script lang="ts">
 import { FTextField } from "@fkui/vue";
 import {
@@ -93,3 +50,46 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <f-text-field
+            v-model="modelFoo"
+            v-validation.startsWith.maxLength="{
+                startsWith: { startString: 'foo' },
+                maxLength: { length: 20 },
+            }"
+        >
+            Detta fält accepterar bara strängar som börjar med 'foo'
+            <template #description="{ descriptionClass }">
+                <span :class="descriptionClass"> Använder globalt felmeddelande </span>
+            </template>
+        </f-text-field>
+        <f-text-field
+            v-model="modelBar"
+            v-validation.startsWith.maxLength="{
+                startsWith: {
+                    startString: 'bar',
+                    errorMessage: 'Texten måste börja med bar',
+                },
+                maxLength: { length: 20 },
+            }"
+        >
+            Detta fält accepterar bara strängar som börjar med 'bar'
+            <template #description="{ descriptionClass }">
+                <span :class="descriptionClass"> Använder ett specifik felmeddelande </span>
+            </template>
+        </f-text-field>
+        <f-text-field
+            v-model="modelDemo"
+            v-validation.startsWith.maxLength="{
+                maxLength: { length: 20 },
+            }"
+        >
+            Detta fält accepterar bara strängar som börjar med 'demo'
+            <template #description="{ descriptionClass }">
+                <span :class="descriptionClass"> Saknar konfiguration för `startsWith` </span>
+            </template>
+        </f-text-field>
+    </div>
+</template>

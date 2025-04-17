@@ -81,7 +81,13 @@ Använd `error-message`-slotten för att definiera ett eget beteende.
 
 Felstatus sätts manuellt av konsumenten genom att anropa metoder i `ValidationService`.
 
-```js static
+```ts static
+import { ValidationService } from "@fkui/logic";
+
+const element = document.createElement("div");
+
+/* --- cut above --- */
+
 /* sätter ogiltig status */
 ValidationService.setError(element, "Felmeddelande");
 

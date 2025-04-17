@@ -72,6 +72,12 @@ components/validation/fvalidationform.html
 components/validation/fvalidationgroup.html
 components/validation/validators.html
 functions/config.html
+functions/cypress/pageobjects/FBadgePageObject/index.html
+functions/cypress/pageobjects/FBadgePageObject/is-inverted.html
+functions/cypress/pageobjects/FBadgePageObject/status.html
+functions/cypress/pageobjects/FFileItemPageObject/filename.html
+functions/cypress/pageobjects/FFileItemPageObject/index.html
+functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html
 functions/cypress/pageobjects/FLabelPageObject/description.html
 functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html
@@ -112,6 +118,7 @@ functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html
 functions/functions/use-area-data.html
 functions/functions/use-modal.html
+functions/functions/use-resize.html
 functions/helpers/accessibility.html
 functions/helpers/densify.html
 functions/helpers/index.html

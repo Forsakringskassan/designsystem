@@ -1,38 +1,3 @@
-<template>
-    <teleport :to="teleportTarget" :disabled="teleportDisabled">
-        <div v-show="show" v-bind="$attrs" class="loader" :class="classes">
-            <div class="loader__backdrop">
-                <div class="loader__wrapper">
-                    <div class="loader__spinner-1 loader__spinner">
-                        <div class="loader__spinner-1-circle1 loader__circle loader__circle--1"></div>
-                        <div class="loader__spinner-1-circle2 loader__circle loader__circle--2"></div>
-                        <div class="loader__spinner-1-circle3 loader__circle loader__circle--3"></div>
-                        <div class="loader__spinner-1-circle4 loader__circle loader__circle--4"></div>
-                    </div>
-                    <div class="loader__spinner-2 loader__spinner">
-                        <div class="loader__spinner-2-circle1 loader__circle loader__circle--1"></div>
-                        <div class="loader__spinner-2-circle2 loader__circle loader__circle--2"></div>
-                        <div class="loader__spinner-2-circle3 loader__circle loader__circle--3"></div>
-                        <div class="loader__spinner-2-circle4 loader__circle loader__circle--4"></div>
-                    </div>
-                    <div class="loader__spinner-3 loader__spinner">
-                        <div class="loader__spinner-3-circle1 loader__circle loader__circle--1"></div>
-                        <div class="loader__spinner-3-circle2 loader__circle loader__circle--2"></div>
-                        <div class="loader__spinner-3-circle3 loader__circle loader__circle--3"></div>
-                        <div class="loader__spinner-3-circle4 loader__circle loader__circle--4"></div>
-                    </div>
-                </div>
-                <div ref="loader-text" class="loader__wait-text" :class="{ 'loader--delay': delay }" tabindex="-1">
-                    <span role="alert">
-                        <!-- @slot Slot for define a custom loading text -->
-                        <slot>{{ $t("fkui.loader.wait.text", defaultLoadingText) }}</slot>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </teleport>
-</template>
-
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import { addFocusListener, findTabbableElements, removeFocusListener, restoreFocus, saveFocus } from "@fkui/logic";
@@ -153,3 +118,38 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <teleport :to="teleportTarget" :disabled="teleportDisabled">
+        <div v-show="show" v-bind="$attrs" class="loader" :class="classes">
+            <div class="loader__backdrop">
+                <div class="loader__wrapper">
+                    <div class="loader__spinner-1 loader__spinner">
+                        <div class="loader__spinner-1-circle1 loader__circle loader__circle--1"></div>
+                        <div class="loader__spinner-1-circle2 loader__circle loader__circle--2"></div>
+                        <div class="loader__spinner-1-circle3 loader__circle loader__circle--3"></div>
+                        <div class="loader__spinner-1-circle4 loader__circle loader__circle--4"></div>
+                    </div>
+                    <div class="loader__spinner-2 loader__spinner">
+                        <div class="loader__spinner-2-circle1 loader__circle loader__circle--1"></div>
+                        <div class="loader__spinner-2-circle2 loader__circle loader__circle--2"></div>
+                        <div class="loader__spinner-2-circle3 loader__circle loader__circle--3"></div>
+                        <div class="loader__spinner-2-circle4 loader__circle loader__circle--4"></div>
+                    </div>
+                    <div class="loader__spinner-3 loader__spinner">
+                        <div class="loader__spinner-3-circle1 loader__circle loader__circle--1"></div>
+                        <div class="loader__spinner-3-circle2 loader__circle loader__circle--2"></div>
+                        <div class="loader__spinner-3-circle3 loader__circle loader__circle--3"></div>
+                        <div class="loader__spinner-3-circle4 loader__circle loader__circle--4"></div>
+                    </div>
+                </div>
+                <div ref="loader-text" class="loader__wait-text" :class="{ 'loader--delay': delay }" tabindex="-1">
+                    <span role="alert">
+                        <!-- @slot Slot for define a custom loading text -->
+                        <slot>{{ $t("fkui.loader.wait.text", defaultLoadingText) }}</slot>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </teleport>
+</template>

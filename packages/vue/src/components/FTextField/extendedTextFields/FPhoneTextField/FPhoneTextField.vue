@@ -1,26 +1,3 @@
-<template>
-    <div>
-        <f-text-field
-            :id="id"
-            type="tel"
-            :maxlength="maxLength"
-            v-bind="$attrs"
-            :model-value="modelValue"
-            @change="onChange"
-            @blur="onBlur"
-            @update:model-value="onUpdate"
-            @validity="onValidity"
-            @pending-validity="onPendingValidity"
-            ><slot name="default">{{ defaultText }}</slot></f-text-field
-        >
-        <f-text-field v-if="extendedValidation" v-model="secondPhone" type="tel" :maxlength="maxLength">
-            <slot name="extendedLabel">{{
-                $t("fkui.phone-text-field.label.repeat", "Upprepa telefonnumret")
-            }}</slot></f-text-field
-        >
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { type ValidatorConfigs, type ValidityEvent, ValidationService, ElementIdService } from "@fkui/logic";
@@ -141,3 +118,26 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div>
+        <f-text-field
+            :id="id"
+            type="tel"
+            :maxlength="maxLength"
+            v-bind="$attrs"
+            :model-value="modelValue"
+            @change="onChange"
+            @blur="onBlur"
+            @update:model-value="onUpdate"
+            @validity="onValidity"
+            @pending-validity="onPendingValidity"
+            ><slot name="default">{{ defaultText }}</slot></f-text-field
+        >
+        <f-text-field v-if="extendedValidation" v-model="secondPhone" type="tel" :maxlength="maxLength">
+            <slot name="extendedLabel">{{
+                $t("fkui.phone-text-field.label.repeat", "Upprepa telefonnumret")
+            }}</slot></f-text-field
+        >
+    </div>
+</template>

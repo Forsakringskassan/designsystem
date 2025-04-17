@@ -1,15 +1,3 @@
-<template>
-    <f-expandable-paragraph :expanded="expanded" header-tag="span" @toggle="onToggle">
-        <template #title> Titel (span) </template>
-        <template #default>
-            <span> Innehåll </span>
-            <p>
-                <a class="anchor" href="" target="_blank"> Länk till annan sida </a>
-            </p>
-        </template>
-    </f-expandable-paragraph>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FExpandableParagraph } from "@fkui/vue";
@@ -30,3 +18,15 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-expandable-paragraph :expanded="expanded" header-tag="span" @toggle="onToggle">
+        <template #title> Titel (span) </template>
+        <template #default>
+            <span> Innehåll </span>
+            <p>
+                <a class="anchor" href="" target="_blank"> Länk till annan sida </a>
+            </p>
+        </template>
+    </f-expandable-paragraph>
+</template>

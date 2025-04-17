@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { ValidationPlugin } from "@fkui/vue";
 import XTimeTextField from "./XTimeTextField.vue";
 
 function createWrapper(
@@ -19,7 +20,11 @@ function createWrapper(
         template,
     });
 
-    return mount(TestComponent);
+    return mount(TestComponent, {
+        global: {
+            plugins: [ValidationPlugin],
+        },
+    });
 }
 
 describe("snapshots", () => {

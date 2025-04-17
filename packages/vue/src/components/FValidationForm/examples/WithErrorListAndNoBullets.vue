@@ -1,3 +1,26 @@
+<script>
+import { defineComponent } from "vue";
+import { FTextField, FValidationForm } from "@fkui/vue";
+
+export default defineComponent({
+    name: "WithErrorListAndNoBullets",
+    components: { FTextField, FValidationForm },
+    data() {
+        return {
+            field1: "",
+            field2: "",
+        };
+    },
+    methods: {
+        onSubmit() {
+            alert("Spara");
+        },
+        onCancel() {
+            alert("Avbryt");
+        },
+    },
+});
+</script>
 <template>
     <f-validation-form :error-list-bullets="false" @submit="onSubmit">
         <template #error-message> <span> No Bullets </span> </template>
@@ -36,26 +59,3 @@
         </template>
     </f-validation-form>
 </template>
-<script>
-import { defineComponent } from "vue";
-import { FTextField, FValidationForm } from "@fkui/vue";
-
-export default defineComponent({
-    name: "WithErrorListAndNoBullets",
-    components: { FTextField, FValidationForm },
-    data() {
-        return {
-            field1: "",
-            field2: "",
-        };
-    },
-    methods: {
-        onSubmit() {
-            alert("Spara");
-        },
-        onCancel() {
-            alert("Avbryt");
-        },
-    },
-});
-</script>

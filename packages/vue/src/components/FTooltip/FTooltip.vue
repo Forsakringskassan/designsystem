@@ -1,37 +1,3 @@
-<template>
-    <!-- [html-validate-disable-next element-case -- false positive, is proper case for Vue] -->
-    <Teleport :disabled="iconTarget === null" :to="iconTarget">
-        <button ref="button" class="tooltip__button" type="button" :aria-expanded="isOpen" @click="onClickToggle">
-            <span class="icon-stack icon-stack--tooltip">
-                <f-icon name="circle"></f-icon>
-                <f-icon name="i"></f-icon>
-                <span class="sr-only">{{ screenReaderText }}</span>
-            </span>
-        </button>
-    </Teleport>
-
-    <div ref="wrapper" class="tooltip" v-bind="$attrs">
-        <div v-if="ready" class="tooltip__bubble" tabindex="-1">
-            <component :is="headerTag" v-if="hasHeader" class="tooltip__header">
-                <!-- @slot Tooltip header content -->
-                <slot name="header"></slot>
-            </component>
-
-            <div class="tooltip__body">
-                <!-- @slot Tooltip body content-->
-                <slot name="body"></slot>
-            </div>
-
-            <div class="tooltip__footer">
-                <button class="close-button" type="button" @click="onClickToggle">
-                    <span>{{ closeButtonText }}</span>
-                    <f-icon class="button__icon" name="close"></f-icon>
-                </button>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script lang="ts">
 import { computed, defineComponent, inject, ref, toRef, useTemplateRef, watchEffect, useSlots } from "vue";
 import { TranslationService } from "@fkui/logic";
@@ -200,3 +166,37 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <!-- [html-validate-disable-next element-case -- false positive, is proper case for Vue] -->
+    <Teleport :disabled="iconTarget === null" :to="iconTarget">
+        <button ref="button" class="tooltip__button" type="button" :aria-expanded="isOpen" @click="onClickToggle">
+            <span class="icon-stack icon-stack--tooltip">
+                <f-icon name="circle"></f-icon>
+                <f-icon name="i"></f-icon>
+                <span class="sr-only">{{ screenReaderText }}</span>
+            </span>
+        </button>
+    </Teleport>
+
+    <div ref="wrapper" class="tooltip" v-bind="$attrs">
+        <div v-if="ready" class="tooltip__bubble" tabindex="-1">
+            <component :is="headerTag" v-if="hasHeader" class="tooltip__header">
+                <!-- @slot Tooltip header content -->
+                <slot name="header"></slot>
+            </component>
+
+            <div class="tooltip__body">
+                <!-- @slot Tooltip body content-->
+                <slot name="body"></slot>
+            </div>
+
+            <div class="tooltip__footer">
+                <button class="close-button" type="button" @click="onClickToggle">
+                    <span>{{ closeButtonText }}</span>
+                    <f-icon class="button__icon" name="close"></f-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</template>

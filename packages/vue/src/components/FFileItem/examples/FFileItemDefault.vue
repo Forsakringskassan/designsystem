@@ -1,7 +1,3 @@
-<template>
-    <f-file-item :file-name="fileName" :mime-type="fileType"></f-file-item>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 import { FFileItem } from "@fkui/vue";
@@ -15,3 +11,7 @@ export default defineComponent({
     methods: {},
 });
 </script>
+
+<template>
+    <f-file-item :file-name="fileName" :mime-type="fileType"></f-file-item>
+</template>

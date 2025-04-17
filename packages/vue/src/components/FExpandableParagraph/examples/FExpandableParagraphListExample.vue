@@ -1,3 +1,31 @@
+<script>
+import { defineComponent } from "vue";
+import { FExpandableParagraph } from "@fkui/vue";
+
+export default defineComponent({
+    name: "FExpandableParagraphMultipleExample",
+    components: { FExpandableParagraph },
+    data() {
+        return {
+            expanded1: false,
+            expanded2: false,
+            expanded3: false,
+        };
+    },
+    methods: {
+        onToggle1() {
+            this.expanded1 = !this.expanded1;
+        },
+        onToggle2() {
+            this.expanded2 = !this.expanded2;
+        },
+        onToggle3() {
+            this.expanded3 = !this.expanded3;
+        },
+    },
+});
+</script>
+
 <template>
     <div>
         <f-expandable-paragraph
@@ -40,31 +68,3 @@
         </f-expandable-paragraph>
     </div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-import { FExpandableParagraph } from "@fkui/vue";
-
-export default defineComponent({
-    name: "FExpandableParagraphMultipleExample",
-    components: { FExpandableParagraph },
-    data() {
-        return {
-            expanded1: false,
-            expanded2: false,
-            expanded3: false,
-        };
-    },
-    methods: {
-        onToggle1() {
-            this.expanded1 = !this.expanded1;
-        },
-        onToggle2() {
-            this.expanded2 = !this.expanded2;
-        },
-        onToggle3() {
-            this.expanded3 = !this.expanded3;
-        },
-    },
-});
-</script>

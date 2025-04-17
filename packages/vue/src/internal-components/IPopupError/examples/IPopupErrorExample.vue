@@ -1,27 +1,3 @@
-<template>
-    <f-validation-form :use-error-list="false">
-        <f-interactive-table :rows="insatser" hover key-attribute="id">
-            <template #caption> PopupError example </template>
-            <template #default="{ row }">
-                <f-table-column name="epost" title="Epost" type="text" shrink>
-                    <f-email-text-field
-                        v-model="row.email"
-                        v-validation.required
-                    ></f-email-text-field>
-                </f-table-column>
-
-                <f-table-column name="postnr" title="Postnummer" type="text" shrink>
-                    <f-postal-code-text-field
-                        v-model="row.postnr"
-                        v-validation.required
-                    ></f-postal-code-text-field>
-                </f-table-column>
-            </template>
-        </f-interactive-table>
-        <button class="button button--primary" type="submit">Submit</button>
-    </f-validation-form>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
@@ -64,3 +40,27 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <f-validation-form :use-error-list="false">
+        <f-interactive-table :rows="insatser" hover key-attribute="id">
+            <template #caption> PopupError example </template>
+            <template #default="{ row }">
+                <f-table-column name="epost" title="Epost" type="text" shrink>
+                    <f-email-text-field
+                        v-model="row.email"
+                        v-validation.required
+                    ></f-email-text-field>
+                </f-table-column>
+
+                <f-table-column name="postnr" title="Postnummer" type="text" shrink>
+                    <f-postal-code-text-field
+                        v-model="row.postnr"
+                        v-validation.required
+                    ></f-postal-code-text-field>
+                </f-table-column>
+            </template>
+        </f-interactive-table>
+        <button class="button button--primary" type="submit">Submit</button>
+    </f-validation-form>
+</template>

@@ -9,7 +9,7 @@ Används för att hämta formatbeskrivning.
 
 ## Syntax
 
-```ts
+```ts nocompile nolint
 formatDescription();
 ```
 
