@@ -26,37 +26,43 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject-status.vue:FBadgePageObject-status-755bb4.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-el.vue:FDetailsPanelPageObject-el-8fa099.js
 import { defineComponent as _defineComponent } from "vue";
-import { FBadge } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { FDetailsPanel, useDetailsPanel } from "@fkui/vue";
+import { createVNode as _createVNode, createElementVNode as _createElementVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FBadgePageObject-status",
+  __name: "FDetailsPanelPageObject-el",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FBadge() {
-      return FBadge;
+    function openPanel() {
+      useDetailsPanel("awesome-panel").open("foo");
+    }
+    const __returned__ = { openPanel, get FDetailsPanel() {
+      return FDetailsPanel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], { status: "warning" }, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" MyBadge ")
-    ])),
-    _: 1
-    /* STABLE */
-  })), [
-    [_directive_test, "my-badge-warning"]
-  ]);
+  return _openBlock(), _createElementBlock(
+    _Fragment,
+    null,
+    [
+      _createVNode($setup["FDetailsPanel"], { name: "awesome-panel" }),
+      _createElementVNode("button", {
+        type: "button",
+        onClick: $setup.openPanel
+      }, "\xD6ppna panel")
+    ],
+    64
+    /* STABLE_FRAGMENT */
+  );
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-755bb4"
+  selector: "#example-8fa099"
 });
 export {
   render
