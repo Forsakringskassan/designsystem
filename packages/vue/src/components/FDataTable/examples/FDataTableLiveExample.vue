@@ -89,7 +89,7 @@ export default defineComponent({
         },
         template(): string {
             const scroll = this.scroll !== "none" ? `scroll="${this.scroll}"` : "";
-            return /* HTML */ `
+            const template = /* HTML */ `
                 <f-data-table ${this.items} ${this.striped} ${scroll} key-attribute="id">
                     <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
@@ -123,6 +123,9 @@ export default defineComponent({
                     ${this.empty}
                 </f-data-table>
             `;
+            return ["vertical", "both"].includes(this.scroll)
+                ? /* HTML */ `<div style="height: 120px">${template}</div>`
+                : template;
         },
     },
 });
