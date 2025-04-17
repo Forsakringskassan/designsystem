@@ -139,6 +139,7 @@ functions/plugins/errorplugin.html
 functions/plugins/testplugin.html
 functions/plugins/translationplugin.html
 functions/plugins/validationplugin.html
+functions/sass/focus-indicator.html
 functions/services/event-bus.html
 functions/test-utils/index.html
 functions/test-utils/jest.html
