@@ -86,7 +86,7 @@
     "@forsakringskassan/cypress-visual-regression": "2.4.0",
     "@forsakringskassan/docs-generator": "2.24.0",
     "@forsakringskassan/docs-live-example": "2.0.0",
-    "@forsakringskassan/eslint-config": "11.9.1",
+    "@forsakringskassan/eslint-config": "11.9.2",
     "@forsakringskassan/eslint-config-cli": "11.9.0",
     "@forsakringskassan/eslint-config-cypress": "11.9.0",
     "@forsakringskassan/eslint-config-jest": "11.9.1",
