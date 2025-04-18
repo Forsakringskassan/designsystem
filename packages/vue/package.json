@@ -86,7 +86,7 @@
     "@fkui/logic": "6.4.0",
     "@fkui/test-utils": "6.4.0",
     "@fkui/theme-default": "6.4.0",
-    "@forsakringskassan/vite-lib-config": "3.6.2",
+    "@forsakringskassan/vite-lib-config": "3.6.3",
     "@vue/test-utils": "2.4.6",
     "cypress": "14.3.0",
     "esbuild": "0.25.2",
