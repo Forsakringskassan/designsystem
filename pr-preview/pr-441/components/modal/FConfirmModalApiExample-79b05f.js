@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FConfirmModalApiExample.vue:FConfirmModalApiExample-d204e9.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FConfirmModalApiExample.vue:FConfirmModalApiExample-79b05f.js
 import { defineComponent } from "vue";
 import { confirmModal } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -67,7 +67,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d204e9"
+  selector: "#example-79b05f"
 });
 export {
   render

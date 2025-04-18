@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderExample.vue:FLoaderExample-8095d9.js
+// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderExample.vue:FLoaderExample-69db74.js
 import { defineComponent } from "vue";
 import { FLoader } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withDirectives as _withDirectives, vModelText as _vModelText } from "vue";
@@ -178,7 +178,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8095d9"
+  selector: "#example-69db74"
 });
 export {
   render

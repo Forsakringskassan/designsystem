@@ -126,16 +126,16 @@
     "FPageHeader",
     "Navigeringsmeny",
     "FNavigationMenu",
+    "Förloppsindikator",
+    "FProgressbar",
+    "Laddningsindikator",
+    "FLoader",
     "Modal dialogruta",
     "FModal",
     "Formulärsmodal",
     "FFormModal",
     "Bekräftelsemodal",
     "FConfirmModal",
-    "Förloppsindikator",
-    "FProgressbar",
-    "Laddningsindikator",
-    "FLoader",
     "Startpunkt",
     "entrypoint",
     "Länk",
@@ -745,6 +745,20 @@
       ]
     },
     {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "FLoader"
+      ]
+    },
+    {
       "url": "components/modal/fmodal.html",
       "title": "Modal dialogruta",
       "terms": [
@@ -763,20 +777,6 @@
       "title": "Bekräftelsemodal",
       "terms": [
         "FConfirmModal"
-      ]
-    },
-    {
-      "url": "components/load/fprogressbar.html",
-      "title": "Förloppsindikator",
-      "terms": [
-        "FProgressbar"
-      ]
-    },
-    {
-      "url": "components/load/floader.html",
-      "title": "Laddningsindikator",
-      "terms": [
-        "FLoader"
       ]
     },
     {
