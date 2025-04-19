@@ -250,7 +250,10 @@ export default defineComponent({
                 >
                     <span v-if="expanded" class="checkbox__details">
                         <br />
-                        <!-- @slot Slot for details, should only contain short text -->
+                        <!--
+                        @slot Slot for details, should only contain short text
+                        @binding {number} height The height of the expanded details content.
+                        -->
                         <slot name="details" :height="height"></slot>
                     </span>
                 </transition>
