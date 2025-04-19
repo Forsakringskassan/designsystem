@@ -185,6 +185,19 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     toggleCalendarButton(): DefaultCypressChainable;
 }
 
+// @public
+export class FDetailsPanelPageObject implements BasePageObject {
+    protected constructor(selector: string);
+    closeButton(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
+    content(): Cypress.Chainable<JQuery<HTMLElement>>;
+    el(): DefaultCypressChainable;
+    footer(): Cypress.Chainable<JQuery<HTMLElement>>;
+    static fromName(name: string): FDetailsPanelPageObject;
+    header(): Cypress.Chainable<JQuery<HTMLElement>>;
+    protected static nameSelector(name: string): string;
+    readonly selector: string;
+}
+
 // @public (undocumented)
 export class FDialogueTreeItemPageObject implements BasePageObject {
     constructor(selector: string);
@@ -331,6 +344,10 @@ export class FInteractiveTablePageObject implements BasePageObject {
     bodyRow(): DefaultCypressChainable;
     // (undocumented)
     caption(): DefaultCypressChainable;
+    cell(cell: {
+        row: number;
+        col: number;
+    }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
     columnItem(index: number): FTableColumnPageObject;
     // (undocumented)
     el: () => DefaultCypressChainable;

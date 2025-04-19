@@ -16,6 +16,34 @@ export class FInteractiveTablePageObject implements BasePageObject {
         this.el = () => cy.get(this.selector);
     }
 
+    /**
+     * Get table cell (typically `<td>` but can be `<th>` if row headers are
+     * present).
+     *
+     * Both row and column are 1-indexed, i.e. 1:1 selects the first cell in the
+     * first row.
+     *
+     * - For expandable rows it includes the leading column with the icon. The
+     *   row number depends on whenever the row is expanded or not, e.g. if row
+     *   1 is expanded row 2 is the first row of the expanded content while if
+     *   row 1 is collapsed row 2 is the next primary row.
+     * - For selectable rows it includes the leading column with the checkbox.
+     *
+     * @public
+     * @param cell - Row and column number of cell (1-indexed).
+     * @returns The cell element.
+     */
+    public cell(cell: {
+        row: number;
+        col: number;
+    }): Cypress.Chainable<JQuery<HTMLTableCellElement>> {
+        const rowIndex = cell.row - 1;
+        const colIndex = cell.col - 1;
+        return cy.get(
+            `${this.selector} tbody tr:nth(${rowIndex}) > :nth(${colIndex})`,
+        );
+    }
+
     public caption(): DefaultCypressChainable {
         return cy.get(`${this.selector} caption`);
     }

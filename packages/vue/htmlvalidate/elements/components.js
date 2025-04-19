@@ -186,6 +186,24 @@ module.exports = defineMetadata({
         inherit: "f-text-field#tooltip",
     },
 
+    "f-details-panel": {
+        flow: true,
+        attributes: {
+            name: {
+                required: true,
+                enum: ["/.+/"],
+            },
+            exclude: {
+                enum: ["/.+/"],
+            },
+        },
+        slots: ["default", "icon"],
+    },
+
+    "f-details-panel#icon": {
+        permittedContent: ["f-icon"],
+    },
+
     "f-calendar": {
         flow: true,
         slots: ["default"],
