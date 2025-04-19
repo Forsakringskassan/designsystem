@@ -3,7 +3,10 @@
     "compilerOptions": {
         "types": ["cypress", "node", "cypress-html-validate/commands"],
         "paths": {
-            "@fkui/*": ["./packages/*"]
+            "@fkui/date": ["./packages/date/src/index.ts"],
+            "@fkui/logic": ["./packages/logic/src/index.ts"],
+            "@fkui/vue": ["./packages/vue/src/index.ts"],
+            "@fkui/vue-labs": ["./packages/vue-labs/src/index.ts"]
         }
     },
     "include": ["**/*.ts"]
