@@ -331,6 +331,10 @@ export class FInteractiveTablePageObject implements BasePageObject {
     bodyRow(): DefaultCypressChainable;
     // (undocumented)
     caption(): DefaultCypressChainable;
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
     columnItem(index: number): FTableColumnPageObject;
     // (undocumented)
     el: () => DefaultCypressChainable;
