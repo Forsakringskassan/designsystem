@@ -5,7 +5,11 @@ import { vuePlugin } from "@forsakringskassan/vite-lib-config/vite";
 
 export default defineConfig({
     optimizeDeps: {
-        entries: ["packages/*/src/**/*.{ts,vue}", "cypress/**/*.{ts,vue}"],
+        entries: [
+            "packages/*/src/**/*.{ts,vue}",
+            "cypress/**/*.{ts,vue}",
+            "!**/*.spec.ts",
+        ],
         include: ["dayjs", "lodash", "vue", "vue-router"],
     },
     plugins: [vuePlugin()],
