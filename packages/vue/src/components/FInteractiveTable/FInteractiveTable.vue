@@ -205,7 +205,7 @@ const {
     hasExpandableContent,
 } = expandableTable;
 
-const tbodyElement = useTemplateRef<HTMLElement>("tbodyElement");
+const tbody = useTemplateRef<HTMLElement>("tbodyElement");
 
 const hasCaption = computed((): boolean => {
     return hasSlot("caption", {}, { stripClasses: [] });
@@ -322,14 +322,14 @@ function updateTr(tbodyElement: HTMLElement): void {
 }
 
 onUpdated(() => {
-    if (tbodyElement.value) {
-        updateTr(tbodyElement.value);
+    if (tbody.value) {
+        updateTr(tbody.value);
     }
 });
 
 onMounted(() => {
-    if (tbodyElement.value) {
-        updateTr(tbodyElement.value);
+    if (tbody.value) {
+        updateTr(tbody.value);
     }
     registerCallbackOnSort(callbackOnSort);
     registerCallbackOnMount(callbackSortableColumns);
