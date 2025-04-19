@@ -11,7 +11,7 @@ const internalVisible = ref(true);
 const renderElement = ref(true);
 
 const id = ElementIdService.generateElementId("column");
-const el = useTemplateRef("el");
+const el = useTemplateRef("element");
 
 defineOptions({
     inheritAttrs: false,
@@ -167,7 +167,7 @@ function isHeader(): boolean {
     <component
         :is="tagName"
         v-if="renderElement && internalVisible"
-        ref="el"
+        ref="element"
         :class="classes"
         :scope="scope"
         v-bind="$attrs"
