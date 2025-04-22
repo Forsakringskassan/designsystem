@@ -45,6 +45,16 @@ export default defineComponent({
             default: "sv",
         },
         /**
+         *   Controls if focus should be set on the loading text when the loader is displayed with overlay.
+         * - When set to true focus will be set on the loading text when the loader is displayed with overlay.
+         * - When set to false no focus will be set, instead aria alert is used to announce loading for screen readers.
+         */
+        focusOnOverlay: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+        /*
          * Set teleport target (when overlay is enabled).
          *
          * - When set to a string it is used as a selector.
@@ -82,6 +92,12 @@ export default defineComponent({
         teleportDisabled() {
             return !this.overlay;
         },
+        role(): string | undefined {
+            if (this.overlay && this.focusOnOverlay) {
+                return undefined;
+            }
+            return "alert";
+        },
     },
     watch: {
         show(show) {
@@ -105,7 +121,9 @@ export default defineComponent({
         async openLoader() {
             if (this.overlay) {
                 saveFocus(document);
-                this.listener();
+                if (this.focusOnOverlay) {
+                    await this.listener();
+                }
                 addFocusListener(findTabbableElements(document), this.listener);
             }
         },
@@ -144,7 +162,7 @@ export default defineComponent({
                     </div>
                 </div>
                 <div ref="loader-text" class="loader__wait-text" :class="{ 'loader--delay': delay }" tabindex="-1">
-                    <span role="alert">
+                    <span :role>
                         <!-- @slot Slot for define a custom loading text -->
                         <slot>{{ $t("fkui.loader.wait.text", defaultLoadingText) }}</slot>
                     </span>
