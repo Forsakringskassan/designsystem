@@ -7085,6 +7085,11 @@ type: StringConstructor;
 required: false;
 default: string;
 };
+focusOnOverlay: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
 teleport: {
 type: PropType<string | HTMLElement | undefined>;
 required: false;
@@ -7097,6 +7102,7 @@ defaultLoadingText(): string;
 classes(): Record<string, boolean>;
 teleportTarget(): string | Element;
 teleportDisabled(): boolean;
+role(): string | undefined;
 }, {
 listener(): Promise<void>;
 openLoader(): Promise<void>;
@@ -7122,6 +7128,11 @@ type: StringConstructor;
 required: false;
 default: string;
 };
+focusOnOverlay: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
 teleport: {
 type: PropType<string | HTMLElement | undefined>;
 required: false;
@@ -7132,6 +7143,7 @@ teleport: string | HTMLElement | undefined;
 overlay: boolean;
 delay: boolean;
 language: string;
+focusOnOverlay: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)

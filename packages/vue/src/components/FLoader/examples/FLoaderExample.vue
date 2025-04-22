@@ -16,6 +16,7 @@ export default defineComponent({
             delay: true,
             customText: false,
             time: defaultTimer,
+            focusOnOverlay: true,
         };
     },
     methods: {
@@ -53,7 +54,12 @@ export default defineComponent({
 <template>
     <div>
         <div>
-            <f-loader :show="show" :overlay="overlay" :delay="delay">
+            <f-loader
+                :show="show"
+                :overlay="overlay"
+                :delay="delay"
+                :focus-on-overlay="focusOnOverlay"
+            >
                 <template v-if="customText"> Loading (App specific)... </template>
             </f-loader>
         </div>
@@ -107,6 +113,12 @@ export default defineComponent({
                     type="text"
                     :disabled="Boolean(show)"
             /></label>
+            <div>
+                <label>
+                    Sätt fokus på textinnehåll när loader öppnas
+                    <input id="loader-overlay-focus" v-model="focusOnOverlay" type="checkbox" />
+                </label>
+            </div>
         </div>
     </div>
 </template>
