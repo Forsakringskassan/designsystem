@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Format Plugin - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-1caacb.css"
+            href="../../assets/docs-a8ca20.css"
             crossorigin
-            integrity="sha384-C4ohx/pVENQpe0tS0L9vLdPIJ89AJuTA7N2HIMfHLl1K1Af6X/kuVoqTnw+kMixh"
+            integrity="sha384-u7SvStfG4IJNaKw5uwpMvJfAq8cjEgcZNdoul9rxaWaOPVjWSWKxZ7tlYvyFOb3K"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-e32757.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-525106.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-e32757.js": "sha384-7ycG/PxaecQoQ+VRepDMhAvdGocHADgwAhxcC1xvDdMwzpxhbgZlOve7lVFMdq3R",
+    "../../assets/vendor-fkui-vue-525106.js": "sha384-3dzoMwxVDNw93OogU6AxeTN+y2asYzmc2WkCC8SBoue3R/1qkTfvX/AKmIzHtOf4",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-05c935.json"
+            href="../../search-data-83877b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8OeSOR+N0ik1Cb0Tr6B105f2+yu1T8aodcAykVY5wMoQbaS8FTB0KOZtUL2UTcYQ"
+            integrity="sha384-Vm287e/93dPDLH++ye4VhZbTK6XFhibOjyyxJgVwJz/2FCD/iAMrOnwNi9Zylk+p"
             id="search-data"
         />
     </head>
@@ -243,6 +243,48 @@
             
             
 <ol><li class="expandable ">
+        <details >
+            <summary>FBadgePageObject()</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../cypress/pageobjects/FBadgePageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/"
+            
+        >
+            FBadgePageObject()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/FBadgePageObject/is-inverted.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/is-inverted.html"
+            
+        >
+            inverted()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/FBadgePageObject/status.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/status.html"
+            
+        >
+            status()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
         <details >
             <summary>FFileItemPageObject()</summary>
             
@@ -1143,10 +1185,13 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>);
 </code></pre>
                 </div>
-            <h2 id="bankgiro"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h2><p class="docs-paragraph">Formaterar värdet enligt <a href="../../components/validation/formatters-and-parsers.html#bankgiro_parser">parseBankgiro</a>.
-Värdet ska vara av typen <code>string</code>.</p>
+            <h2 id="bankgiro"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h2><p class="docs-paragraph">Värdet ska vara av typen <code>string</code>.</p><p class="docs-paragraph">Formaterar värdet enligt:</p><ul>
+<li><p class="docs-paragraph">NNN-NNNN om längden är sju tecken</p></li>
+<li><p class="docs-paragraph">NNNN-NNNN om längden är åtta tecken.</p></li>
+</ul>
+
                 <div
-                    id="example-7f2545"
+                    id="example-b707d0"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1164,7 +1209,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-74194e"
+                    id="example-fc7e52"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1189,7 +1234,7 @@ Värdet ska vara av typen <code>string</code>.</p>
 </ul>
 <p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code>, <code>FDate</code> eller <code>DateRange</code>.</p>
                 <div
-                    id="example-e04ddd"
+                    id="example-d83a08"
                     class="code-preview code-preview--default"
                     
                     
@@ -1211,7 +1256,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-336f29"
+                    id="example-9e1ff6"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1246,7 +1291,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-cba2f6"
+                    id="example-e75c4a"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1263,10 +1308,14 @@ Värdet ska vara av typen <code>string</code>.</p>
         <script type="module" src="./FormatPluginDate-d88a40.js"></script>
     </div>
                 </div>
-            <h2 id="nummer"><a class="header-anchor" href="#nummer">Nummer</a></h2><p class="docs-paragraph">Formaterar värdet som ett nummer enligt <a href="../../components/validation/formatters-and-parsers.html#nummer_formaterare">formatNumber</a>.
-Värdet kan antingen vara av typen <code>string</code>,<code>number</code> eller <code>NumberFormat</code> om man vill precisera antalet decimaler.</p>
+            <h2 id="nummer"><a class="header-anchor" href="#nummer">Nummer</a></h2><p class="docs-paragraph">Formaterar värdet som ett nummer enligt:</p><ul>
+<li><p class="docs-paragraph">tar bort inledande nollor</p></li>
+<li><p class="docs-paragraph">sätter tusenavdelare</p></li>
+<li><p class="docs-paragraph">konverterar punkt till komma.</p></li>
+</ul>
+<p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code>,<code>number</code> eller <code>NumberFormat</code> om man vill precisera antalet decimaler.</p>
                 <div
-                    id="example-fcc48d"
+                    id="example-00b240"
                     class="code-preview code-preview--default"
                     
                     
@@ -1281,7 +1330,7 @@ Värdet kan antingen vara av typen <code>string</code>,<code>number</code> eller
                 </div>
             
                 <div
-                    id="example-79edc0"
+                    id="example-d2f4ff"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1306,7 +1355,7 @@ Värdet kan antingen vara av typen <code>string</code>,<code>number</code> eller
                 </div>
             
                 <div
-                    id="example-e89d14"
+                    id="example-8aaf25"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1323,10 +1372,10 @@ Värdet kan antingen vara av typen <code>string</code>,<code>number</code> eller
         <script type="module" src="./FormatPluginNumber-127ee2.js"></script>
     </div>
                 </div>
-            <h2 id="organisationsnummer"><a class="header-anchor" href="#organisationsnummer">Organisationsnummer</a></h2><p class="docs-paragraph">Formaterar värdet som enligt <a href="../../components/validation/formatters-and-parsers.html#organisationsnummer_parser">parseOrganisationsnummer</a>.
+            <h2 id="organisationsnummer"><a class="header-anchor" href="#organisationsnummer">Organisationsnummer</a></h2><p class="docs-paragraph">Formaterar värdet enligt formatet NNNNNN-NNNN.
 Värdet ska vara av typen <code>string</code>.</p>
                 <div
-                    id="example-8e4677"
+                    id="example-07e512"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1344,7 +1393,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-e8539f"
+                    id="example-111dec"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1361,10 +1410,10 @@ Värdet ska vara av typen <code>string</code>.</p>
         <script type="module" src="./FormatPluginOrgnr-1c9546.js"></script>
     </div>
                 </div>
-            <h2 id="personnummer"><a class="header-anchor" href="#personnummer">Personnummer</a></h2><p class="docs-paragraph">Formaterar värdet som enligt <a href="../../components/validation/formatters-and-parsers.html#personnummer_parser">parsePersonnummer</a>.
+            <h2 id="personnummer"><a class="header-anchor" href="#personnummer">Personnummer</a></h2><p class="docs-paragraph">Formaterar värdet enligt formatet ååååmmdd-nnnn.
 Värdet ska vara av typen <code>string</code>.</p>
                 <div
-                    id="example-db7687"
+                    id="example-04f75b"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1382,7 +1431,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-011d70"
+                    id="example-114662"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1401,7 +1450,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             <h2 id="text"><a class="header-anchor" href="#text">Text</a></h2><p class="docs-paragraph">Formateraren för text ser till att texten inte radbryts.</p>
                 <div
-                    id="example-901871"
+                    id="example-18033b"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1424,7 +1473,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-3e0a1b"
+                    id="example-77a651"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1461,9 +1510,9 @@ Värdet ska vara av typen <code>string</code>.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feat/SFKUI-7093-format-directive (<a href="https://github.com/Forsakringskassan/designsystem/commits/2459fa3e6f60a32421fba49b824b91a7e06f4ffb">2459fa3</a>)<br />
+<div class="footer__right"><div class="version">feat/SFKUI-7093-format-directive (<a href="https://github.com/Forsakringskassan/designsystem/commits/bfb83f75839cc1f742e6c34bb9b8664d06ad54e6">bfb83f7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/421">PR 421</a><br />
-        2025-04-16 11:51
+        2025-04-22 08:37
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1549,7 +1598,7 @@ Värdet ska vara av typen <code>string</code>.</p>
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
-            <label for="search-field" class="label"> Sök </label>
+            <label for="search-field" class="label">Sök</label>
             <div class="text-field__input-wrapper">
                 <div class="text-field__icon-wrapper">
                     <input
