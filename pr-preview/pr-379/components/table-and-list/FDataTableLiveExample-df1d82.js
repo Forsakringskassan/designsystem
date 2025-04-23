@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue:FDataTableLiveExample-bfc8f5.js
+// virtual-entry:virtual:packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue:FDataTableLiveExample-df1d82.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
@@ -147,7 +147,7 @@ var exampleComponent = defineComponent({
       );
       return ["vertical", "both"].includes(this.scroll) ? (
         /* HTML */
-        `<div style="height: 120px">${template}</div>`
+        `<div class="forceVerticalScroll">${template}</div>`
       ) : template;
     }
   }
@@ -301,7 +301,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-bfc8f5"
+  selector: "#example-df1d82"
 });
 export {
   render

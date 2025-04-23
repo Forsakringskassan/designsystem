@@ -72,11 +72,11 @@ const isMap = (val) => toTypeString(val) === "[object Map]";
 const isSet$1 = (val) => toTypeString(val) === "[object Set]";
 const isDate = (val) => toTypeString(val) === "[object Date]";
 const isFunction = (val) => typeof val === "function";
-const isString = (val) => typeof val === "string";
+const isString$1 = (val) => typeof val === "string";
 const isSymbol$1 = (val) => typeof val === "symbol";
-const isObject$2 = (val) => val !== null && typeof val === "object";
+const isObject = (val) => val !== null && typeof val === "object";
 const isPromise = (val) => {
-  return (isObject$2(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
+  return (isObject(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
 };
 const objectToString = Object.prototype.toString;
 const toTypeString = (value) => objectToString.call(value);
@@ -84,7 +84,7 @@ const toRawType = (value) => {
   return toTypeString(value).slice(8, -1);
 };
 const isPlainObject = (val) => toTypeString(val) === "[object Object]";
-const isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
+const isIntegerKey = (key) => isString$1(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 const isReservedProp = /* @__PURE__ */ makeMap(
   // the leading comma is intentional so empty string "" is also included
   ",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"
@@ -134,7 +134,7 @@ const looseToNumber = (val) => {
   return isNaN(n) ? val : n;
 };
 const toNumber = (val) => {
-  const n = isString(val) ? Number(val) : NaN;
+  const n = isString$1(val) ? Number(val) : NaN;
   return isNaN(n) ? val : n;
 };
 let _globalThis;
@@ -146,7 +146,7 @@ function normalizeStyle(value) {
     const res = {};
     for (let i = 0; i < value.length; i++) {
       const item = value[i];
-      const normalized = isString(item) ? parseStringStyle(item) : normalizeStyle(item);
+      const normalized = isString$1(item) ? parseStringStyle(item) : normalizeStyle(item);
       if (normalized) {
         for (const key in normalized) {
           res[key] = normalized[key];
@@ -154,7 +154,7 @@ function normalizeStyle(value) {
       }
     }
     return res;
-  } else if (isString(value) || isObject$2(value)) {
+  } else if (isString$1(value) || isObject(value)) {
     return value;
   }
 }
@@ -173,7 +173,7 @@ function parseStringStyle(cssText) {
 }
 function normalizeClass(value) {
   let res = "";
-  if (isString(value)) {
+  if (isString$1(value)) {
     res = value;
   } else if (isArray$2(value)) {
     for (let i = 0; i < value.length; i++) {
@@ -182,7 +182,7 @@ function normalizeClass(value) {
         res += normalized + " ";
       }
     }
-  } else if (isObject$2(value)) {
+  } else if (isObject(value)) {
     for (const name in value) {
       if (value[name]) {
         res += name + " ";
@@ -194,7 +194,7 @@ function normalizeClass(value) {
 function normalizeProps(props) {
   if (!props) return null;
   let { class: klass, style } = props;
-  if (klass && !isString(klass)) {
+  if (klass && !isString$1(klass)) {
     props.class = normalizeClass(klass);
   }
   if (style) {
@@ -232,8 +232,8 @@ function looseEqual(a, b) {
   if (aValidType || bValidType) {
     return aValidType && bValidType ? looseCompareArrays(a, b) : false;
   }
-  aValidType = isObject$2(a);
-  bValidType = isObject$2(b);
+  aValidType = isObject(a);
+  bValidType = isObject(b);
   if (aValidType || bValidType) {
     if (!aValidType || !bValidType) {
       return false;
@@ -260,7 +260,7 @@ const isRef$1 = (val) => {
   return !!(val && val["__v_isRef"] === true);
 };
 const toDisplayString = (val) => {
-  return isString(val) ? val : val == null ? "" : isArray$2(val) || isObject$2(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+  return isString$1(val) ? val : val == null ? "" : isArray$2(val) || isObject(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
 };
 const replacer = (_key, val) => {
   if (isRef$1(val)) {
@@ -281,7 +281,7 @@ const replacer = (_key, val) => {
     };
   } else if (isSymbol$1(val)) {
     return stringifySymbol(val);
-  } else if (isObject$2(val) && !isArray$2(val) && !isPlainObject(val)) {
+  } else if (isObject(val) && !isArray$2(val) && !isPlainObject(val)) {
     return String(val);
   }
   return val;
@@ -404,16 +404,8 @@ class EffectScope {
     }
   }
 }
-function effectScope(detached) {
-  return new EffectScope(detached);
-}
 function getCurrentScope() {
   return activeEffectScope;
-}
-function onScopeDispose(fn2, failSilently = false) {
-  if (activeEffectScope) {
-    activeEffectScope.cleanups.push(fn2);
-  }
 }
 let activeSub;
 const pausedQueueEffects = /* @__PURE__ */ new WeakSet();
@@ -1108,7 +1100,7 @@ class BaseReactiveHandler {
     if (isRef(res)) {
       return targetIsArray && isIntegerKey(key) ? res : res.value;
     }
-    if (isObject$2(res)) {
+    if (isObject(res)) {
       return isReadonly2 ? readonly(res) : reactive(res);
     }
     return res;
@@ -1451,7 +1443,7 @@ function shallowReadonly(target) {
   );
 }
 function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
-  if (!isObject$2(target)) {
+  if (!isObject(target)) {
     return target;
   }
   if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) {
@@ -1497,8 +1489,8 @@ function markRaw(value) {
   }
   return value;
 }
-const toReactive = (value) => isObject$2(value) ? reactive(value) : value;
-const toReadonly = (value) => isObject$2(value) ? readonly(value) : value;
+const toReactive = (value) => isObject(value) ? reactive(value) : value;
+const toReadonly = (value) => isObject(value) ? readonly(value) : value;
 function isRef(r) {
   return r ? r["__v_isRef"] === true : false;
 }
@@ -1598,7 +1590,7 @@ function toRef(source, key, defaultValue) {
     return source;
   } else if (isFunction(source)) {
     return new GetterRefImpl(source);
-  } else if (isObject$2(source) && arguments.length > 1) {
+  } else if (isObject(source) && arguments.length > 1) {
     return propertyToRef(source, key, defaultValue);
   } else {
     return ref(source);
@@ -1814,7 +1806,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
   return watchHandle;
 }
 function traverse(value, depth = Infinity, seen) {
-  if (depth <= 0 || !isObject$2(value) || value["__v_skip"]) {
+  if (depth <= 0 || !isObject(value) || value["__v_skip"]) {
     return value;
   }
   seen = seen || /* @__PURE__ */ new Set();
@@ -1941,7 +1933,7 @@ function formatProps(props) {
   return res;
 }
 function formatProp(key, value, raw) {
-  if (isString(value)) {
+  if (isString$1(value)) {
     value = JSON.stringify(value);
     return raw ? value : [`${key}=${value}`];
   } else if (typeof value === "number" || typeof value === "boolean" || value == null) {
@@ -2242,13 +2234,13 @@ function invokeDirectiveHook(vnode, prevVNode, instance, name) {
 }
 const TeleportEndKey = Symbol("_vte");
 const isTeleport = (type) => type.__isTeleport;
-const isTeleportDisabled$1 = (props) => props && (props.disabled || props.disabled === "");
+const isTeleportDisabled = (props) => props && (props.disabled || props.disabled === "");
 const isTeleportDeferred = (props) => props && (props.defer || props.defer === "");
 const isTargetSVG = (target) => typeof SVGElement !== "undefined" && target instanceof SVGElement;
 const isTargetMathML = (target) => typeof MathMLElement === "function" && target instanceof MathMLElement;
 const resolveTarget = (props, select) => {
   const targetSelector = props && props.to;
-  if (isString(targetSelector)) {
+  if (isString$1(targetSelector)) {
     if (!select) {
       return null;
     } else {
@@ -2269,7 +2261,7 @@ const TeleportImpl = {
       pbc: patchBlockChildren,
       o: { insert, querySelector, createText, createComment }
     } = internals;
-    const disabled = isTeleportDisabled$1(n2.props);
+    const disabled = isTeleportDisabled(n2.props);
     let { shapeFlag, children, dynamicChildren } = n2;
     if (n1 == null) {
       const placeholder = n2.el = createText("");
@@ -2344,7 +2336,7 @@ const TeleportImpl = {
       const mainAnchor = n2.anchor = n1.anchor;
       const target = n2.target = n1.target;
       const targetAnchor = n2.targetAnchor = n1.targetAnchor;
-      const wasDisabled = isTeleportDisabled$1(n1.props);
+      const wasDisabled = isTeleportDisabled(n1.props);
       const currentContainer = wasDisabled ? container : target;
       const currentAnchor = wasDisabled ? mainAnchor : targetAnchor;
       if (namespace === "svg" || isTargetSVG(target)) {
@@ -2434,7 +2426,7 @@ const TeleportImpl = {
     }
     doRemove && hostRemove(anchor);
     if (shapeFlag & 16) {
-      const shouldRemove = doRemove || !isTeleportDisabled$1(props);
+      const shouldRemove = doRemove || !isTeleportDisabled(props);
       for (let i = 0; i < children.length; i++) {
         const child = children[i];
         unmount(
@@ -2459,7 +2451,7 @@ function moveTeleport(vnode, container, parentAnchor, { o: { insert }, m: move }
   if (isReorder) {
     insert(el, container, parentAnchor);
   }
-  if (!isReorder || isTeleportDisabled$1(props)) {
+  if (!isReorder || isTeleportDisabled(props)) {
     if (shapeFlag & 16) {
       for (let i = 0; i < children.length; i++) {
         move(
@@ -2483,7 +2475,7 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
     querySelector
   );
   if (target) {
-    const disabled = isTeleportDisabled$1(vnode.props);
+    const disabled = isTeleportDisabled(vnode.props);
     const targetNode = target._lpa || target.firstChild;
     if (vnode.shapeFlag & 16) {
       if (disabled) {
@@ -2962,7 +2954,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
     return hasOwn(rawSetupState, key);
   };
   if (oldRef != null && oldRef !== ref3) {
-    if (isString(oldRef)) {
+    if (isString$1(oldRef)) {
       refs[oldRef] = null;
       if (canSetSetupRef(oldRef)) {
         setupState[oldRef] = null;
@@ -2974,7 +2966,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   if (isFunction(ref3)) {
     callWithErrorHandling(ref3, owner, 12, [value, refs]);
   } else {
-    const _isString = isString(ref3);
+    const _isString = isString$1(ref3);
     const _isRef = isRef(ref3);
     if (_isString || _isRef) {
       const doSet = () => {
@@ -3103,22 +3095,26 @@ function onErrorCaptured(hook, target = currentInstance) {
   injectHook("ec", hook, target);
 }
 const COMPONENTS = "components";
+const DIRECTIVES = "directives";
 function resolveComponent(name, maybeSelfReference) {
   return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
 }
 const NULL_DYNAMIC_COMPONENT = Symbol.for("v-ndc");
 function resolveDynamicComponent(component) {
-  if (isString(component)) {
+  if (isString$1(component)) {
     return resolveAsset(COMPONENTS, component, false) || component;
   } else {
     return component || NULL_DYNAMIC_COMPONENT;
   }
 }
+function resolveDirective(name) {
+  return resolveAsset(DIRECTIVES, name);
+}
 function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false) {
   const instance = currentRenderingInstance || currentInstance;
   if (instance) {
     const Component = instance.type;
-    {
+    if (type === COMPONENTS) {
       const selfName = getComponentName(
         Component,
         false
@@ -3146,7 +3142,7 @@ function renderList(source, renderItem, cache, index) {
   let ret;
   const cached = cache;
   const sourceIsArray = isArray$2(source);
-  if (sourceIsArray || isString(source)) {
+  if (sourceIsArray || isString$1(source)) {
     const sourceIsReactiveArray = sourceIsArray && isReactive(source);
     let needsWrap = false;
     if (sourceIsReactiveArray) {
@@ -3167,7 +3163,7 @@ function renderList(source, renderItem, cache, index) {
     for (let i = 0; i < source; i++) {
       ret[i] = renderItem(i + 1, i, void 0, cached);
     }
-  } else if (isObject$2(source)) {
+  } else if (isObject(source)) {
     if (source[Symbol.iterator]) {
       ret = Array.from(
         source,
@@ -3425,7 +3421,7 @@ function applyOptions(instance) {
     beforeUnmount,
     destroyed,
     unmounted,
-    render: render2,
+    render,
     renderTracked,
     renderTriggered,
     errorCaptured,
@@ -3454,7 +3450,7 @@ function applyOptions(instance) {
   }
   if (dataOptions) {
     const data = dataOptions.call(publicThis, publicThis);
-    if (!isObject$2(data)) ;
+    if (!isObject(data)) ;
     else {
       instance.data = reactive(data);
     }
@@ -3523,8 +3519,8 @@ function applyOptions(instance) {
       instance.exposed = {};
     }
   }
-  if (render2 && instance.render === NOOP) {
-    instance.render = render2;
+  if (render && instance.render === NOOP) {
+    instance.render = render;
   }
   if (inheritAttrs != null) {
     instance.inheritAttrs = inheritAttrs;
@@ -3542,7 +3538,7 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) 
   for (const key in injectOptions) {
     const opt = injectOptions[key];
     let injected;
-    if (isObject$2(opt)) {
+    if (isObject(opt)) {
       if ("default" in opt) {
         injected = inject(
           opt.from || key,
@@ -3576,7 +3572,7 @@ function callHook$1(hook, instance, type) {
 }
 function createWatcher(raw, ctx, publicThis, key) {
   let getter = key.includes(".") ? createPathGetter(publicThis, key) : () => publicThis[key];
-  if (isString(raw)) {
+  if (isString$1(raw)) {
     const handler = ctx[raw];
     if (isFunction(handler)) {
       {
@@ -3587,7 +3583,7 @@ function createWatcher(raw, ctx, publicThis, key) {
     {
       watch(getter, raw.bind(publicThis));
     }
-  } else if (isObject$2(raw)) {
+  } else if (isObject(raw)) {
     if (isArray$2(raw)) {
       raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
     } else {
@@ -3623,7 +3619,7 @@ function resolveMergedOptions(instance) {
     }
     mergeOptions$1(resolved, base, optionMergeStrategies);
   }
-  if (isObject$2(base)) {
+  if (isObject(base)) {
     cache.set(base, resolved);
   }
   return resolved;
@@ -3756,12 +3752,12 @@ function createAppContext() {
   };
 }
 let uid$1 = 0;
-function createAppAPI(render2, hydrate) {
+function createAppAPI(render, hydrate) {
   return function createApp2(rootComponent, rootProps = null) {
     if (!isFunction(rootComponent)) {
       rootComponent = extend({}, rootComponent);
     }
-    if (rootProps != null && !isObject$2(rootProps)) {
+    if (rootProps != null && !isObject(rootProps)) {
       rootProps = null;
     }
     const context = createAppContext();
@@ -3824,7 +3820,7 @@ function createAppAPI(render2, hydrate) {
             namespace = void 0;
           }
           {
-            render2(vnode, rootContainer, namespace);
+            render(vnode, rootContainer, namespace);
           }
           isMounted = true;
           app2._container = rootContainer;
@@ -3842,7 +3838,7 @@ function createAppAPI(render2, hydrate) {
             app2._instance,
             16
           );
-          render2(null, app2._container);
+          render(null, app2._container);
           delete app2._container.__vue_app__;
         }
       },
@@ -4111,7 +4107,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject$2(comp)) {
+    if (isObject(comp)) {
       cache.set(comp, EMPTY_ARR);
     }
     return EMPTY_ARR;
@@ -4161,7 +4157,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   const res = [normalized, needCastKeys];
-  if (isObject$2(comp)) {
+  if (isObject(comp)) {
     cache.set(comp, res);
   }
   return res;
@@ -5441,7 +5437,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     return teleportEnd ? hostNextSibling(teleportEnd) : el;
   };
   let isFlushing = false;
-  const render2 = (vnode, container, namespace) => {
+  const render = (vnode, container, namespace) => {
     if (vnode == null) {
       if (container._vnode) {
         unmount(container._vnode, null, null, true);
@@ -5479,9 +5475,9 @@ function baseCreateRenderer(options, createHydrationFns) {
   };
   let hydrate;
   return {
-    render: render2,
+    render,
     hydrate,
-    createApp: createAppAPI(render2)
+    createApp: createAppAPI(render)
   };
 }
 function resolveChildrenNamespace({ type, props }, currentNamespace) {
@@ -5648,7 +5644,7 @@ function doWatch(source, cb, options = EMPTY_OBJ) {
 }
 function instanceWatch(source, value, options) {
   const publicThis = this.proxy;
-  const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
+  const getter = isString$1(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
   let cb;
   if (isFunction(value)) {
     cb = value;
@@ -5682,7 +5678,7 @@ function emit(instance, event, ...rawArgs) {
   const modifiers = isModelListener2 && getModelModifiers(props, event.slice(7));
   if (modifiers) {
     if (modifiers.trim) {
-      args = rawArgs.map((a) => isString(a) ? a.trim() : a);
+      args = rawArgs.map((a) => isString$1(a) ? a.trim() : a);
     }
     if (modifiers.number) {
       args = rawArgs.map(looseToNumber);
@@ -5746,7 +5742,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject$2(comp)) {
+    if (isObject(comp)) {
       cache.set(comp, null);
     }
     return null;
@@ -5756,7 +5752,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
   } else {
     extend(normalized, raw);
   }
-  if (isObject$2(comp)) {
+  if (isObject(comp)) {
     cache.set(comp, normalized);
   }
   return normalized;
@@ -5780,7 +5776,7 @@ function renderComponentRoot(instance) {
     slots,
     attrs,
     emit: emit2,
-    render: render2,
+    render,
     renderCache,
     props,
     data,
@@ -5805,7 +5801,7 @@ function renderComponentRoot(instance) {
         }
       }) : proxyToUse;
       result = normalizeVNode(
-        render2.call(
+        render.call(
           thisProxy,
           proxyToUse,
           renderCache,
@@ -5817,10 +5813,10 @@ function renderComponentRoot(instance) {
       );
       fallthroughAttrs = attrs;
     } else {
-      const render22 = Component;
+      const render2 = Component;
       if (false) ;
       result = normalizeVNode(
-        render22.length > 1 ? render22(
+        render2.length > 1 ? render2(
           false ? shallowReadonly(props) : props,
           false ? {
             get attrs() {
@@ -5830,7 +5826,7 @@ function renderComponentRoot(instance) {
             slots,
             emit: emit2
           } : { attrs, slots, emit: emit2 }
-        ) : render22(
+        ) : render2(
           false ? shallowReadonly(props) : props,
           null
         )
@@ -6040,7 +6036,7 @@ const normalizeRef = ({
   if (typeof ref3 === "number") {
     ref3 = "" + ref3;
   }
-  return ref3 != null ? isString(ref3) || isRef(ref3) || isFunction(ref3) ? { i: currentRenderingInstance, r: ref3, k: ref_key, f: !!ref_for } : ref3 : null;
+  return ref3 != null ? isString$1(ref3) || isRef(ref3) || isFunction(ref3) ? { i: currentRenderingInstance, r: ref3, k: ref_key, f: !!ref_for } : ref3 : null;
 };
 function createBaseVNode(type, props = null, children = null, patchFlag = 0, dynamicProps = null, shapeFlag = type === Fragment ? 0 : 1, isBlockNode = false, needFullChildrenNormalization = false) {
   const vnode = {
@@ -6078,7 +6074,7 @@ function createBaseVNode(type, props = null, children = null, patchFlag = 0, dyn
       type.normalize(vnode);
     }
   } else if (children) {
-    vnode.shapeFlag |= isString(children) ? 8 : 16;
+    vnode.shapeFlag |= isString$1(children) ? 8 : 16;
   }
   if (isBlockTreeEnabled > 0 && // avoid a block node from tracking itself
   !isBlockNode && // has current parent block
@@ -6124,17 +6120,17 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
   if (props) {
     props = guardReactiveProps(props);
     let { class: klass, style } = props;
-    if (klass && !isString(klass)) {
+    if (klass && !isString$1(klass)) {
       props.class = normalizeClass(klass);
     }
-    if (isObject$2(style)) {
+    if (isObject(style)) {
       if (isProxy(style) && !isArray$2(style)) {
         style = extend({}, style);
       }
       props.style = normalizeStyle(style);
     }
   }
-  const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$2(type) ? 4 : isFunction(type) ? 2 : 0;
+  const shapeFlag = isString$1(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject(type) ? 4 : isFunction(type) ? 2 : 0;
   return createBaseVNode(
     type,
     props,
@@ -6495,7 +6491,7 @@ function handleSetupResult(instance, setupResult, isSSR) {
     } else {
       instance.render = setupResult;
     }
-  } else if (isObject$2(setupResult)) {
+  } else if (isObject(setupResult)) {
     instance.setupState = proxyRefs(setupResult);
   } else ;
   finishComponentSetup(instance);
@@ -6590,7 +6586,7 @@ const computed = (getterOrOptions, debugOptions) => {
 function h(type, propsOrChildren, children) {
   const l = arguments.length;
   if (l === 2) {
-    if (isObject$2(propsOrChildren) && !isArray$2(propsOrChildren)) {
+    if (isObject(propsOrChildren) && !isArray$2(propsOrChildren)) {
       if (isVNode(propsOrChildren)) {
         return createVNode(type, null, [propsOrChildren]);
       }
@@ -6853,7 +6849,7 @@ function resolveTransitionProps(rawProps) {
 function normalizeDuration(duration) {
   if (duration == null) {
     return null;
-  } else if (isObject$2(duration)) {
+  } else if (isObject(duration)) {
     return [NumberOf(duration.enter), NumberOf(duration.leave)];
   } else {
     const n = NumberOf(duration);
@@ -6987,11 +6983,11 @@ const CSS_VAR_TEXT = Symbol("");
 const displayRE = /(^|;)\s*display\s*:/;
 function patchStyle(el, prev, next) {
   const style = el.style;
-  const isCssString = isString(next);
+  const isCssString = isString$1(next);
   let hasControlledDisplay = false;
   if (next && !isCssString) {
     if (prev) {
-      if (!isString(prev)) {
+      if (!isString$1(prev)) {
         for (const key in prev) {
           if (next[key] == null) {
             setStyle(style, key, "");
@@ -7232,7 +7228,7 @@ const patchProp = (el, key, prevValue, nextValue, namespace, parentComponent) =>
     }
   } else if (
     // #11081 force set props for possible async custom element
-    el._isVueCE && (/[A-Z]/.test(key) || !isString(nextValue))
+    el._isVueCE && (/[A-Z]/.test(key) || !isString$1(nextValue))
   ) {
     patchDOMProp(el, camelize(key), nextValue, parentComponent, key);
   } else {
@@ -7272,340 +7268,10 @@ function shouldSetAsProp(el, key, value, isSVG) {
       return false;
     }
   }
-  if (isNativeOn(key) && isString(value)) {
+  if (isNativeOn(key) && isString$1(value)) {
     return false;
   }
   return key in el;
-}
-const REMOVAL = {};
-/*! #__NO_SIDE_EFFECTS__ */
-// @__NO_SIDE_EFFECTS__
-function defineCustomElement(options, extraOptions, _createApp) {
-  const Comp = /* @__PURE__ */ defineComponent(options, extraOptions);
-  if (isPlainObject(Comp)) extend(Comp, extraOptions);
-  class VueCustomElement extends VueElement {
-    constructor(initialProps) {
-      super(Comp, initialProps, _createApp);
-    }
-  }
-  VueCustomElement.def = Comp;
-  return VueCustomElement;
-}
-const BaseClass = typeof HTMLElement !== "undefined" ? HTMLElement : class {
-};
-class VueElement extends BaseClass {
-  constructor(_def, _props = {}, _createApp = createApp) {
-    super();
-    this._def = _def;
-    this._props = _props;
-    this._createApp = _createApp;
-    this._isVueCE = true;
-    this._instance = null;
-    this._app = null;
-    this._nonce = this._def.nonce;
-    this._connected = false;
-    this._resolved = false;
-    this._numberProps = null;
-    this._styleChildren = /* @__PURE__ */ new WeakSet();
-    this._ob = null;
-    if (this.shadowRoot && _createApp !== createApp) {
-      this._root = this.shadowRoot;
-    } else {
-      if (_def.shadowRoot !== false) {
-        this.attachShadow({ mode: "open" });
-        this._root = this.shadowRoot;
-      } else {
-        this._root = this;
-      }
-    }
-    if (!this._def.__asyncLoader) {
-      this._resolveProps(this._def);
-    }
-  }
-  connectedCallback() {
-    if (!this.isConnected) return;
-    if (!this.shadowRoot) {
-      this._parseSlots();
-    }
-    this._connected = true;
-    let parent = this;
-    while (parent = parent && (parent.parentNode || parent.host)) {
-      if (parent instanceof VueElement) {
-        this._parent = parent;
-        break;
-      }
-    }
-    if (!this._instance) {
-      if (this._resolved) {
-        this._setParent();
-        this._update();
-      } else {
-        if (parent && parent._pendingResolve) {
-          this._pendingResolve = parent._pendingResolve.then(() => {
-            this._pendingResolve = void 0;
-            this._resolveDef();
-          });
-        } else {
-          this._resolveDef();
-        }
-      }
-    }
-  }
-  _setParent(parent = this._parent) {
-    if (parent) {
-      this._instance.parent = parent._instance;
-      this._instance.provides = parent._instance.provides;
-    }
-  }
-  disconnectedCallback() {
-    this._connected = false;
-    nextTick(() => {
-      if (!this._connected) {
-        if (this._ob) {
-          this._ob.disconnect();
-          this._ob = null;
-        }
-        this._app && this._app.unmount();
-        if (this._instance) this._instance.ce = void 0;
-        this._app = this._instance = null;
-      }
-    });
-  }
-  /**
-   * resolve inner component definition (handle possible async component)
-   */
-  _resolveDef() {
-    if (this._pendingResolve) {
-      return;
-    }
-    for (let i = 0; i < this.attributes.length; i++) {
-      this._setAttr(this.attributes[i].name);
-    }
-    this._ob = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        this._setAttr(m.attributeName);
-      }
-    });
-    this._ob.observe(this, { attributes: true });
-    const resolve2 = (def2, isAsync = false) => {
-      this._resolved = true;
-      this._pendingResolve = void 0;
-      const { props, styles } = def2;
-      let numberProps;
-      if (props && !isArray$2(props)) {
-        for (const key in props) {
-          const opt = props[key];
-          if (opt === Number || opt && opt.type === Number) {
-            if (key in this._props) {
-              this._props[key] = toNumber(this._props[key]);
-            }
-            (numberProps || (numberProps = /* @__PURE__ */ Object.create(null)))[camelize(key)] = true;
-          }
-        }
-      }
-      this._numberProps = numberProps;
-      if (isAsync) {
-        this._resolveProps(def2);
-      }
-      if (this.shadowRoot) {
-        this._applyStyles(styles);
-      }
-      this._mount(def2);
-    };
-    const asyncDef = this._def.__asyncLoader;
-    if (asyncDef) {
-      this._pendingResolve = asyncDef().then(
-        (def2) => resolve2(this._def = def2, true)
-      );
-    } else {
-      resolve2(this._def);
-    }
-  }
-  _mount(def2) {
-    this._app = this._createApp(def2);
-    if (def2.configureApp) {
-      def2.configureApp(this._app);
-    }
-    this._app._ceVNode = this._createVNode();
-    this._app.mount(this._root);
-    const exposed = this._instance && this._instance.exposed;
-    if (!exposed) return;
-    for (const key in exposed) {
-      if (!hasOwn(this, key)) {
-        Object.defineProperty(this, key, {
-          // unwrap ref to be consistent with public instance behavior
-          get: () => unref(exposed[key])
-        });
-      }
-    }
-  }
-  _resolveProps(def2) {
-    const { props } = def2;
-    const declaredPropKeys = isArray$2(props) ? props : Object.keys(props || {});
-    for (const key of Object.keys(this)) {
-      if (key[0] !== "_" && declaredPropKeys.includes(key)) {
-        this._setProp(key, this[key]);
-      }
-    }
-    for (const key of declaredPropKeys.map(camelize)) {
-      Object.defineProperty(this, key, {
-        get() {
-          return this._getProp(key);
-        },
-        set(val) {
-          this._setProp(key, val, true, true);
-        }
-      });
-    }
-  }
-  _setAttr(key) {
-    if (key.startsWith("data-v-")) return;
-    const has = this.hasAttribute(key);
-    let value = has ? this.getAttribute(key) : REMOVAL;
-    const camelKey = camelize(key);
-    if (has && this._numberProps && this._numberProps[camelKey]) {
-      value = toNumber(value);
-    }
-    this._setProp(camelKey, value, false, true);
-  }
-  /**
-   * @internal
-   */
-  _getProp(key) {
-    return this._props[key];
-  }
-  /**
-   * @internal
-   */
-  _setProp(key, val, shouldReflect = true, shouldUpdate = false) {
-    if (val !== this._props[key]) {
-      if (val === REMOVAL) {
-        delete this._props[key];
-      } else {
-        this._props[key] = val;
-        if (key === "key" && this._app) {
-          this._app._ceVNode.key = val;
-        }
-      }
-      if (shouldUpdate && this._instance) {
-        this._update();
-      }
-      if (shouldReflect) {
-        const ob = this._ob;
-        ob && ob.disconnect();
-        if (val === true) {
-          this.setAttribute(hyphenate(key), "");
-        } else if (typeof val === "string" || typeof val === "number") {
-          this.setAttribute(hyphenate(key), val + "");
-        } else if (!val) {
-          this.removeAttribute(hyphenate(key));
-        }
-        ob && ob.observe(this, { attributes: true });
-      }
-    }
-  }
-  _update() {
-    render(this._createVNode(), this._root);
-  }
-  _createVNode() {
-    const baseProps = {};
-    if (!this.shadowRoot) {
-      baseProps.onVnodeMounted = baseProps.onVnodeUpdated = this._renderSlots.bind(this);
-    }
-    const vnode = createVNode(this._def, extend(baseProps, this._props));
-    if (!this._instance) {
-      vnode.ce = (instance) => {
-        this._instance = instance;
-        instance.ce = this;
-        instance.isCE = true;
-        const dispatch = (event, args) => {
-          this.dispatchEvent(
-            new CustomEvent(
-              event,
-              isPlainObject(args[0]) ? extend({ detail: args }, args[0]) : { detail: args }
-            )
-          );
-        };
-        instance.emit = (event, ...args) => {
-          dispatch(event, args);
-          if (hyphenate(event) !== event) {
-            dispatch(hyphenate(event), args);
-          }
-        };
-        this._setParent();
-      };
-    }
-    return vnode;
-  }
-  _applyStyles(styles, owner) {
-    if (!styles) return;
-    if (owner) {
-      if (owner === this._def || this._styleChildren.has(owner)) {
-        return;
-      }
-      this._styleChildren.add(owner);
-    }
-    const nonce = this._nonce;
-    for (let i = styles.length - 1; i >= 0; i--) {
-      const s = document.createElement("style");
-      if (nonce) s.setAttribute("nonce", nonce);
-      s.textContent = styles[i];
-      this.shadowRoot.prepend(s);
-    }
-  }
-  /**
-   * Only called when shadowRoot is false
-   */
-  _parseSlots() {
-    const slots = this._slots = {};
-    let n;
-    while (n = this.firstChild) {
-      const slotName = n.nodeType === 1 && n.getAttribute("slot") || "default";
-      (slots[slotName] || (slots[slotName] = [])).push(n);
-      this.removeChild(n);
-    }
-  }
-  /**
-   * Only called when shadowRoot is false
-   */
-  _renderSlots() {
-    const outlets = (this._teleportTarget || this).querySelectorAll("slot");
-    const scopeId = this._instance.type.__scopeId;
-    for (let i = 0; i < outlets.length; i++) {
-      const o = outlets[i];
-      const slotName = o.getAttribute("name") || "default";
-      const content = this._slots[slotName];
-      const parent = o.parentNode;
-      if (content) {
-        for (const n of content) {
-          if (scopeId && n.nodeType === 1) {
-            const id = scopeId + "-s";
-            const walker = document.createTreeWalker(n, 1);
-            n.setAttribute(id, "");
-            let child;
-            while (child = walker.nextNode()) {
-              child.setAttribute(id, "");
-            }
-          }
-          parent.insertBefore(n, o);
-        }
-      } else {
-        while (o.firstChild) parent.insertBefore(o.firstChild, o);
-      }
-      parent.removeChild(o);
-    }
-  }
-  /**
-   * @internal
-   */
-  _injectChildStyle(comp) {
-    this._applyStyles(comp.styles, comp);
-  }
-  /**
-   * @internal
-   */
-  _removeChildStyle(comp) {
-  }
 }
 const getModelAssigner = (vnode) => {
   const fn2 = vnode.props["onUpdate:modelValue"] || false;
@@ -7824,8 +7490,8 @@ const vModelDynamic = {
     callModelHook(el, binding, vnode, prevVNode, "updated");
   }
 };
-function resolveDynamicModel(tagName2, type) {
-  switch (tagName2) {
+function resolveDynamicModel(tagName, type) {
+  switch (tagName) {
     case "SELECT":
       return vModelSelect;
     case "TEXTAREA":
@@ -7903,9 +7569,6 @@ let renderer;
 function ensureRenderer() {
   return renderer || (renderer = createRenderer(rendererOptions));
 }
-const render = (...args) => {
-  ensureRenderer().render(...args);
-};
 const createApp = (...args) => {
   const app2 = ensureRenderer().createApp(...args);
   const { mount } = app2;
@@ -7937,7 +7600,7 @@ function resolveRootNamespace(container) {
   }
 }
 function normalizeContainer(container) {
-  if (isString(container)) {
+  if (isString$1(container)) {
     const res = document.querySelector(container);
     return res;
   }
@@ -7960,1914 +7623,28 @@ if (document.readyState === "loading") {
 } else {
   injectSpritesheet();
 }
-/*!
-  * vue-router v4.5.0
-  * (c) 2024 Eduardo San Martin Morote
-  * @license MIT
-  */
-const isBrowser = typeof document !== "undefined";
-function isRouteComponent(component) {
-  return typeof component === "object" || "displayName" in component || "props" in component || "__vccOpts" in component;
-}
-function isESModule(obj) {
-  return obj.__esModule || obj[Symbol.toStringTag] === "Module" || // support CF with dynamic imports that do not
-  // add the Module string tag
-  obj.default && isRouteComponent(obj.default);
-}
-const assign = Object.assign;
-function applyToParams(fn2, params) {
-  const newParams = {};
-  for (const key in params) {
-    const value = params[key];
-    newParams[key] = isArray$1(value) ? value.map(fn2) : fn2(value);
-  }
-  return newParams;
-}
-const noop = () => {
+const configLogic = {
+  production: true
 };
-const isArray$1 = Array.isArray;
-const HASH_RE = /#/g;
-const AMPERSAND_RE = /&/g;
-const SLASH_RE = /\//g;
-const EQUAL_RE = /=/g;
-const IM_RE = /\?/g;
-const PLUS_RE = /\+/g;
-const ENC_BRACKET_OPEN_RE = /%5B/g;
-const ENC_BRACKET_CLOSE_RE = /%5D/g;
-const ENC_CARET_RE = /%5E/g;
-const ENC_BACKTICK_RE = /%60/g;
-const ENC_CURLY_OPEN_RE = /%7B/g;
-const ENC_PIPE_RE = /%7C/g;
-const ENC_CURLY_CLOSE_RE = /%7D/g;
-const ENC_SPACE_RE = /%20/g;
-function commonEncode(text) {
-  return encodeURI("" + text).replace(ENC_PIPE_RE, "|").replace(ENC_BRACKET_OPEN_RE, "[").replace(ENC_BRACKET_CLOSE_RE, "]");
-}
-function encodeHash(text) {
-  return commonEncode(text).replace(ENC_CURLY_OPEN_RE, "{").replace(ENC_CURLY_CLOSE_RE, "}").replace(ENC_CARET_RE, "^");
-}
-function encodeQueryValue(text) {
-  return commonEncode(text).replace(PLUS_RE, "%2B").replace(ENC_SPACE_RE, "+").replace(HASH_RE, "%23").replace(AMPERSAND_RE, "%26").replace(ENC_BACKTICK_RE, "`").replace(ENC_CURLY_OPEN_RE, "{").replace(ENC_CURLY_CLOSE_RE, "}").replace(ENC_CARET_RE, "^");
-}
-function encodeQueryKey(text) {
-  return encodeQueryValue(text).replace(EQUAL_RE, "%3D");
-}
-function encodePath(text) {
-  return commonEncode(text).replace(HASH_RE, "%23").replace(IM_RE, "%3F");
-}
-function encodeParam(text) {
-  return text == null ? "" : encodePath(text).replace(SLASH_RE, "%2F");
-}
-function decode(text) {
-  try {
-    return decodeURIComponent("" + text);
-  } catch (err) {
-  }
-  return "" + text;
-}
-const TRAILING_SLASH_RE = /\/$/;
-const removeTrailingSlash = (path) => path.replace(TRAILING_SLASH_RE, "");
-function parseURL(parseQuery2, location2, currentLocation = "/") {
-  let path, query = {}, searchString = "", hash = "";
-  const hashPos = location2.indexOf("#");
-  let searchPos = location2.indexOf("?");
-  if (hashPos < searchPos && hashPos >= 0) {
-    searchPos = -1;
-  }
-  if (searchPos > -1) {
-    path = location2.slice(0, searchPos);
-    searchString = location2.slice(searchPos + 1, hashPos > -1 ? hashPos : location2.length);
-    query = parseQuery2(searchString);
-  }
-  if (hashPos > -1) {
-    path = path || location2.slice(0, hashPos);
-    hash = location2.slice(hashPos, location2.length);
-  }
-  path = resolveRelativePath(path != null ? path : location2, currentLocation);
-  return {
-    fullPath: path + (searchString && "?") + searchString + hash,
-    path,
-    query,
-    hash: decode(hash)
-  };
-}
-function stringifyURL(stringifyQuery2, location2) {
-  const query = location2.query ? stringifyQuery2(location2.query) : "";
-  return location2.path + (query && "?") + query + (location2.hash || "");
-}
-function stripBase(pathname, base) {
-  if (!base || !pathname.toLowerCase().startsWith(base.toLowerCase()))
-    return pathname;
-  return pathname.slice(base.length) || "/";
-}
-function isSameRouteLocation(stringifyQuery2, a, b) {
-  const aLastIndex = a.matched.length - 1;
-  const bLastIndex = b.matched.length - 1;
-  return aLastIndex > -1 && aLastIndex === bLastIndex && isSameRouteRecord(a.matched[aLastIndex], b.matched[bLastIndex]) && isSameRouteLocationParams(a.params, b.params) && stringifyQuery2(a.query) === stringifyQuery2(b.query) && a.hash === b.hash;
-}
-function isSameRouteRecord(a, b) {
-  return (a.aliasOf || a) === (b.aliasOf || b);
-}
-function isSameRouteLocationParams(a, b) {
-  if (Object.keys(a).length !== Object.keys(b).length)
-    return false;
-  for (const key in a) {
-    if (!isSameRouteLocationParamsValue(a[key], b[key]))
-      return false;
-  }
-  return true;
-}
-function isSameRouteLocationParamsValue(a, b) {
-  return isArray$1(a) ? isEquivalentArray(a, b) : isArray$1(b) ? isEquivalentArray(b, a) : a === b;
-}
-function isEquivalentArray(a, b) {
-  return isArray$1(b) ? a.length === b.length && a.every((value, i) => value === b[i]) : a.length === 1 && a[0] === b;
-}
-function resolveRelativePath(to, from) {
-  if (to.startsWith("/"))
-    return to;
-  if (!to)
-    return from;
-  const fromSegments = from.split("/");
-  const toSegments = to.split("/");
-  const lastToSegment = toSegments[toSegments.length - 1];
-  if (lastToSegment === ".." || lastToSegment === ".") {
-    toSegments.push("");
-  }
-  let position = fromSegments.length - 1;
-  let toPosition;
-  let segment;
-  for (toPosition = 0; toPosition < toSegments.length; toPosition++) {
-    segment = toSegments[toPosition];
-    if (segment === ".")
-      continue;
-    if (segment === "..") {
-      if (position > 1)
-        position--;
-    } else
-      break;
-  }
-  return fromSegments.slice(0, position).join("/") + "/" + toSegments.slice(toPosition).join("/");
-}
-const START_LOCATION_NORMALIZED = {
-  path: "/",
-  // TODO: could we use a symbol in the future?
-  name: void 0,
-  params: {},
-  query: {},
-  hash: "",
-  fullPath: "/",
-  matched: [],
-  meta: {},
-  redirectedFrom: void 0
-};
-var NavigationType;
-(function(NavigationType2) {
-  NavigationType2["pop"] = "pop";
-  NavigationType2["push"] = "push";
-})(NavigationType || (NavigationType = {}));
-var NavigationDirection;
-(function(NavigationDirection2) {
-  NavigationDirection2["back"] = "back";
-  NavigationDirection2["forward"] = "forward";
-  NavigationDirection2["unknown"] = "";
-})(NavigationDirection || (NavigationDirection = {}));
-function normalizeBase(base) {
-  if (!base) {
-    if (isBrowser) {
-      const baseEl = document.querySelector("base");
-      base = baseEl && baseEl.getAttribute("href") || "/";
-      base = base.replace(/^\w+:\/\/[^\/]+/, "");
-    } else {
-      base = "/";
-    }
-  }
-  if (base[0] !== "/" && base[0] !== "#")
-    base = "/" + base;
-  return removeTrailingSlash(base);
-}
-const BEFORE_HASH_RE = /^[^#]+#/;
-function createHref(base, location2) {
-  return base.replace(BEFORE_HASH_RE, "#") + location2;
-}
-function getElementPosition(el, offset2) {
-  const docRect = document.documentElement.getBoundingClientRect();
-  const elRect = el.getBoundingClientRect();
-  return {
-    behavior: offset2.behavior,
-    left: elRect.left - docRect.left - (offset2.left || 0),
-    top: elRect.top - docRect.top - (offset2.top || 0)
-  };
-}
-const computeScrollPosition = () => ({
-  left: window.scrollX,
-  top: window.scrollY
-});
-function scrollToPosition(position) {
-  let scrollToOptions;
-  if ("el" in position) {
-    const positionEl = position.el;
-    const isIdSelector = typeof positionEl === "string" && positionEl.startsWith("#");
-    const el = typeof positionEl === "string" ? isIdSelector ? document.getElementById(positionEl.slice(1)) : document.querySelector(positionEl) : positionEl;
-    if (!el) {
-      return;
-    }
-    scrollToOptions = getElementPosition(el, position);
-  } else {
-    scrollToOptions = position;
-  }
-  if ("scrollBehavior" in document.documentElement.style)
-    window.scrollTo(scrollToOptions);
-  else {
-    window.scrollTo(scrollToOptions.left != null ? scrollToOptions.left : window.scrollX, scrollToOptions.top != null ? scrollToOptions.top : window.scrollY);
-  }
-}
-function getScrollKey(path, delta) {
-  const position = history.state ? history.state.position - delta : -1;
-  return position + path;
-}
-const scrollPositions = /* @__PURE__ */ new Map();
-function saveScrollPosition(key, scrollPosition) {
-  scrollPositions.set(key, scrollPosition);
-}
-function getSavedScrollPosition(key) {
-  const scroll = scrollPositions.get(key);
-  scrollPositions.delete(key);
-  return scroll;
-}
-let createBaseLocation = () => location.protocol + "//" + location.host;
-function createCurrentLocation(base, location2) {
-  const { pathname, search, hash } = location2;
-  const hashPos = base.indexOf("#");
-  if (hashPos > -1) {
-    let slicePos = hash.includes(base.slice(hashPos)) ? base.slice(hashPos).length : 1;
-    let pathFromHash = hash.slice(slicePos);
-    if (pathFromHash[0] !== "/")
-      pathFromHash = "/" + pathFromHash;
-    return stripBase(pathFromHash, "");
-  }
-  const path = stripBase(pathname, base);
-  return path + search + hash;
-}
-function useHistoryListeners(base, historyState, currentLocation, replace) {
-  let listeners = [];
-  let teardowns = [];
-  let pauseState = null;
-  const popStateHandler = ({ state }) => {
-    const to = createCurrentLocation(base, location);
-    const from = currentLocation.value;
-    const fromState = historyState.value;
-    let delta = 0;
-    if (state) {
-      currentLocation.value = to;
-      historyState.value = state;
-      if (pauseState && pauseState === from) {
-        pauseState = null;
-        return;
-      }
-      delta = fromState ? state.position - fromState.position : 0;
-    } else {
-      replace(to);
-    }
-    listeners.forEach((listener) => {
-      listener(currentLocation.value, from, {
-        delta,
-        type: NavigationType.pop,
-        direction: delta ? delta > 0 ? NavigationDirection.forward : NavigationDirection.back : NavigationDirection.unknown
-      });
-    });
-  };
-  function pauseListeners() {
-    pauseState = currentLocation.value;
-  }
-  function listen(callback) {
-    listeners.push(callback);
-    const teardown = () => {
-      const index = listeners.indexOf(callback);
-      if (index > -1)
-        listeners.splice(index, 1);
-    };
-    teardowns.push(teardown);
-    return teardown;
-  }
-  function beforeUnloadListener() {
-    const { history: history2 } = window;
-    if (!history2.state)
-      return;
-    history2.replaceState(assign({}, history2.state, { scroll: computeScrollPosition() }), "");
-  }
-  function destroy() {
-    for (const teardown of teardowns)
-      teardown();
-    teardowns = [];
-    window.removeEventListener("popstate", popStateHandler);
-    window.removeEventListener("beforeunload", beforeUnloadListener);
-  }
-  window.addEventListener("popstate", popStateHandler);
-  window.addEventListener("beforeunload", beforeUnloadListener, {
-    passive: true
-  });
-  return {
-    pauseListeners,
-    listen,
-    destroy
-  };
-}
-function buildState(back, current, forward, replaced = false, computeScroll = false) {
-  return {
-    back,
-    current,
-    forward,
-    replaced,
-    position: window.history.length,
-    scroll: computeScroll ? computeScrollPosition() : null
-  };
-}
-function useHistoryStateNavigation(base) {
-  const { history: history2, location: location2 } = window;
-  const currentLocation = {
-    value: createCurrentLocation(base, location2)
-  };
-  const historyState = { value: history2.state };
-  if (!historyState.value) {
-    changeLocation(currentLocation.value, {
-      back: null,
-      current: currentLocation.value,
-      forward: null,
-      // the length is off by one, we need to decrease it
-      position: history2.length - 1,
-      replaced: true,
-      // don't add a scroll as the user may have an anchor, and we want
-      // scrollBehavior to be triggered without a saved position
-      scroll: null
-    }, true);
-  }
-  function changeLocation(to, state, replace2) {
-    const hashIndex = base.indexOf("#");
-    const url = hashIndex > -1 ? (location2.host && document.querySelector("base") ? base : base.slice(hashIndex)) + to : createBaseLocation() + base + to;
-    try {
-      history2[replace2 ? "replaceState" : "pushState"](state, "", url);
-      historyState.value = state;
-    } catch (err) {
-      {
-        console.error(err);
-      }
-      location2[replace2 ? "replace" : "assign"](url);
-    }
-  }
-  function replace(to, data) {
-    const state = assign({}, history2.state, buildState(
-      historyState.value.back,
-      // keep back and forward entries but override current position
-      to,
-      historyState.value.forward,
-      true
-    ), data, { position: historyState.value.position });
-    changeLocation(to, state, true);
-    currentLocation.value = to;
-  }
-  function push(to, data) {
-    const currentState = assign(
-      {},
-      // use current history state to gracefully handle a wrong call to
-      // history.replaceState
-      // https://github.com/vuejs/router/issues/366
-      historyState.value,
-      history2.state,
-      {
-        forward: to,
-        scroll: computeScrollPosition()
-      }
-    );
-    changeLocation(currentState.current, currentState, true);
-    const state = assign({}, buildState(currentLocation.value, to, null), { position: currentState.position + 1 }, data);
-    changeLocation(to, state, false);
-    currentLocation.value = to;
-  }
-  return {
-    location: currentLocation,
-    state: historyState,
-    push,
-    replace
-  };
-}
-function createWebHistory(base) {
-  base = normalizeBase(base);
-  const historyNavigation = useHistoryStateNavigation(base);
-  const historyListeners = useHistoryListeners(base, historyNavigation.state, historyNavigation.location, historyNavigation.replace);
-  function go(delta, triggerListeners = true) {
-    if (!triggerListeners)
-      historyListeners.pauseListeners();
-    history.go(delta);
-  }
-  const routerHistory = assign({
-    // it's overridden right after
-    location: "",
-    base,
-    go,
-    createHref: createHref.bind(null, base)
-  }, historyNavigation, historyListeners);
-  Object.defineProperty(routerHistory, "location", {
-    enumerable: true,
-    get: () => historyNavigation.location.value
-  });
-  Object.defineProperty(routerHistory, "state", {
-    enumerable: true,
-    get: () => historyNavigation.state.value
-  });
-  return routerHistory;
-}
-function createWebHashHistory(base) {
-  base = location.host ? base || location.pathname + location.search : "";
-  if (!base.includes("#"))
-    base += "#";
-  return createWebHistory(base);
-}
-function isRouteLocation(route) {
-  return typeof route === "string" || route && typeof route === "object";
-}
-function isRouteName(name) {
-  return typeof name === "string" || typeof name === "symbol";
-}
-const NavigationFailureSymbol = Symbol("");
-var NavigationFailureType;
-(function(NavigationFailureType2) {
-  NavigationFailureType2[NavigationFailureType2["aborted"] = 4] = "aborted";
-  NavigationFailureType2[NavigationFailureType2["cancelled"] = 8] = "cancelled";
-  NavigationFailureType2[NavigationFailureType2["duplicated"] = 16] = "duplicated";
-})(NavigationFailureType || (NavigationFailureType = {}));
-function createRouterError(type, params) {
-  {
-    return assign(new Error(), {
-      type,
-      [NavigationFailureSymbol]: true
-    }, params);
-  }
-}
-function isNavigationFailure(error, type) {
-  return error instanceof Error && NavigationFailureSymbol in error && (type == null || !!(error.type & type));
-}
-const BASE_PARAM_PATTERN = "[^/]+?";
-const BASE_PATH_PARSER_OPTIONS = {
-  sensitive: false,
-  strict: false,
-  start: true,
-  end: true
-};
-const REGEX_CHARS_RE = /[.+*?^${}()[\]/\\]/g;
-function tokensToParser(segments, extraOptions) {
-  const options = assign({}, BASE_PATH_PARSER_OPTIONS, extraOptions);
-  const score = [];
-  let pattern = options.start ? "^" : "";
-  const keys = [];
-  for (const segment of segments) {
-    const segmentScores = segment.length ? [] : [
-      90
-      /* PathScore.Root */
-    ];
-    if (options.strict && !segment.length)
-      pattern += "/";
-    for (let tokenIndex = 0; tokenIndex < segment.length; tokenIndex++) {
-      const token = segment[tokenIndex];
-      let subSegmentScore = 40 + (options.sensitive ? 0.25 : 0);
-      if (token.type === 0) {
-        if (!tokenIndex)
-          pattern += "/";
-        pattern += token.value.replace(REGEX_CHARS_RE, "\\$&");
-        subSegmentScore += 40;
-      } else if (token.type === 1) {
-        const { value, repeatable, optional, regexp } = token;
-        keys.push({
-          name: value,
-          repeatable,
-          optional
-        });
-        const re2 = regexp ? regexp : BASE_PARAM_PATTERN;
-        if (re2 !== BASE_PARAM_PATTERN) {
-          subSegmentScore += 10;
-          try {
-            new RegExp(`(${re2})`);
-          } catch (err) {
-            throw new Error(`Invalid custom RegExp for param "${value}" (${re2}): ` + err.message);
-          }
-        }
-        let subPattern = repeatable ? `((?:${re2})(?:/(?:${re2}))*)` : `(${re2})`;
-        if (!tokenIndex)
-          subPattern = // avoid an optional / if there are more segments e.g. /:p?-static
-          // or /:p?-:p2
-          optional && segment.length < 2 ? `(?:/${subPattern})` : "/" + subPattern;
-        if (optional)
-          subPattern += "?";
-        pattern += subPattern;
-        subSegmentScore += 20;
-        if (optional)
-          subSegmentScore += -8;
-        if (repeatable)
-          subSegmentScore += -20;
-        if (re2 === ".*")
-          subSegmentScore += -50;
-      }
-      segmentScores.push(subSegmentScore);
-    }
-    score.push(segmentScores);
-  }
-  if (options.strict && options.end) {
-    const i = score.length - 1;
-    score[i][score[i].length - 1] += 0.7000000000000001;
-  }
-  if (!options.strict)
-    pattern += "/?";
-  if (options.end)
-    pattern += "$";
-  else if (options.strict && !pattern.endsWith("/"))
-    pattern += "(?:/|$)";
-  const re = new RegExp(pattern, options.sensitive ? "" : "i");
-  function parse(path) {
-    const match = path.match(re);
-    const params = {};
-    if (!match)
-      return null;
-    for (let i = 1; i < match.length; i++) {
-      const value = match[i] || "";
-      const key = keys[i - 1];
-      params[key.name] = value && key.repeatable ? value.split("/") : value;
-    }
-    return params;
-  }
-  function stringify(params) {
-    let path = "";
-    let avoidDuplicatedSlash = false;
-    for (const segment of segments) {
-      if (!avoidDuplicatedSlash || !path.endsWith("/"))
-        path += "/";
-      avoidDuplicatedSlash = false;
-      for (const token of segment) {
-        if (token.type === 0) {
-          path += token.value;
-        } else if (token.type === 1) {
-          const { value, repeatable, optional } = token;
-          const param = value in params ? params[value] : "";
-          if (isArray$1(param) && !repeatable) {
-            throw new Error(`Provided param "${value}" is an array but it is not repeatable (* or + modifiers)`);
-          }
-          const text = isArray$1(param) ? param.join("/") : param;
-          if (!text) {
-            if (optional) {
-              if (segment.length < 2) {
-                if (path.endsWith("/"))
-                  path = path.slice(0, -1);
-                else
-                  avoidDuplicatedSlash = true;
-              }
-            } else
-              throw new Error(`Missing required param "${value}"`);
-          }
-          path += text;
-        }
-      }
-    }
-    return path || "/";
-  }
-  return {
-    re,
-    score,
-    keys,
-    parse,
-    stringify
-  };
-}
-function compareScoreArray(a, b) {
-  let i = 0;
-  while (i < a.length && i < b.length) {
-    const diff = b[i] - a[i];
-    if (diff)
-      return diff;
-    i++;
-  }
-  if (a.length < b.length) {
-    return a.length === 1 && a[0] === 40 + 40 ? -1 : 1;
-  } else if (a.length > b.length) {
-    return b.length === 1 && b[0] === 40 + 40 ? 1 : -1;
-  }
-  return 0;
-}
-function comparePathParserScore(a, b) {
-  let i = 0;
-  const aScore = a.score;
-  const bScore = b.score;
-  while (i < aScore.length && i < bScore.length) {
-    const comp = compareScoreArray(aScore[i], bScore[i]);
-    if (comp)
-      return comp;
-    i++;
-  }
-  if (Math.abs(bScore.length - aScore.length) === 1) {
-    if (isLastScoreNegative(aScore))
-      return 1;
-    if (isLastScoreNegative(bScore))
-      return -1;
-  }
-  return bScore.length - aScore.length;
-}
-function isLastScoreNegative(score) {
-  const last = score[score.length - 1];
-  return score.length > 0 && last[last.length - 1] < 0;
-}
-const ROOT_TOKEN = {
-  type: 0,
-  value: ""
-};
-const VALID_PARAM_RE = /[a-zA-Z0-9_]/;
-function tokenizePath(path) {
-  if (!path)
-    return [[]];
-  if (path === "/")
-    return [[ROOT_TOKEN]];
-  if (!path.startsWith("/")) {
-    throw new Error(`Invalid path "${path}"`);
-  }
-  function crash(message) {
-    throw new Error(`ERR (${state})/"${buffer}": ${message}`);
-  }
-  let state = 0;
-  let previousState = state;
-  const tokens = [];
-  let segment;
-  function finalizeSegment() {
-    if (segment)
-      tokens.push(segment);
-    segment = [];
-  }
-  let i = 0;
-  let char;
-  let buffer = "";
-  let customRe = "";
-  function consumeBuffer() {
-    if (!buffer)
-      return;
-    if (state === 0) {
-      segment.push({
-        type: 0,
-        value: buffer
-      });
-    } else if (state === 1 || state === 2 || state === 3) {
-      if (segment.length > 1 && (char === "*" || char === "+"))
-        crash(`A repeatable param (${buffer}) must be alone in its segment. eg: '/:ids+.`);
-      segment.push({
-        type: 1,
-        value: buffer,
-        regexp: customRe,
-        repeatable: char === "*" || char === "+",
-        optional: char === "*" || char === "?"
-      });
-    } else {
-      crash("Invalid state to consume buffer");
-    }
-    buffer = "";
-  }
-  function addCharToBuffer() {
-    buffer += char;
-  }
-  while (i < path.length) {
-    char = path[i++];
-    if (char === "\\" && state !== 2) {
-      previousState = state;
-      state = 4;
-      continue;
-    }
-    switch (state) {
-      case 0:
-        if (char === "/") {
-          if (buffer) {
-            consumeBuffer();
-          }
-          finalizeSegment();
-        } else if (char === ":") {
-          consumeBuffer();
-          state = 1;
-        } else {
-          addCharToBuffer();
-        }
-        break;
-      case 4:
-        addCharToBuffer();
-        state = previousState;
-        break;
-      case 1:
-        if (char === "(") {
-          state = 2;
-        } else if (VALID_PARAM_RE.test(char)) {
-          addCharToBuffer();
-        } else {
-          consumeBuffer();
-          state = 0;
-          if (char !== "*" && char !== "?" && char !== "+")
-            i--;
-        }
-        break;
-      case 2:
-        if (char === ")") {
-          if (customRe[customRe.length - 1] == "\\")
-            customRe = customRe.slice(0, -1) + char;
-          else
-            state = 3;
-        } else {
-          customRe += char;
-        }
-        break;
-      case 3:
-        consumeBuffer();
-        state = 0;
-        if (char !== "*" && char !== "?" && char !== "+")
-          i--;
-        customRe = "";
-        break;
-      default:
-        crash("Unknown state");
-        break;
-    }
-  }
-  if (state === 2)
-    crash(`Unfinished custom RegExp for param "${buffer}"`);
-  consumeBuffer();
-  finalizeSegment();
-  return tokens;
-}
-function createRouteRecordMatcher(record, parent, options) {
-  const parser = tokensToParser(tokenizePath(record.path), options);
-  const matcher = assign(parser, {
-    record,
-    parent,
-    // these needs to be populated by the parent
-    children: [],
-    alias: []
-  });
-  if (parent) {
-    if (!matcher.record.aliasOf === !parent.record.aliasOf)
-      parent.children.push(matcher);
-  }
-  return matcher;
-}
-function createRouterMatcher(routes, globalOptions) {
-  const matchers = [];
-  const matcherMap = /* @__PURE__ */ new Map();
-  globalOptions = mergeOptions({ strict: false, end: true, sensitive: false }, globalOptions);
-  function getRecordMatcher(name) {
-    return matcherMap.get(name);
-  }
-  function addRoute(record, parent, originalRecord) {
-    const isRootAdd = !originalRecord;
-    const mainNormalizedRecord = normalizeRouteRecord(record);
-    mainNormalizedRecord.aliasOf = originalRecord && originalRecord.record;
-    const options = mergeOptions(globalOptions, record);
-    const normalizedRecords = [mainNormalizedRecord];
-    if ("alias" in record) {
-      const aliases = typeof record.alias === "string" ? [record.alias] : record.alias;
-      for (const alias of aliases) {
-        normalizedRecords.push(
-          // we need to normalize again to ensure the `mods` property
-          // being non enumerable
-          normalizeRouteRecord(assign({}, mainNormalizedRecord, {
-            // this allows us to hold a copy of the `components` option
-            // so that async components cache is hold on the original record
-            components: originalRecord ? originalRecord.record.components : mainNormalizedRecord.components,
-            path: alias,
-            // we might be the child of an alias
-            aliasOf: originalRecord ? originalRecord.record : mainNormalizedRecord
-            // the aliases are always of the same kind as the original since they
-            // are defined on the same record
-          }))
-        );
-      }
-    }
-    let matcher;
-    let originalMatcher;
-    for (const normalizedRecord of normalizedRecords) {
-      const { path } = normalizedRecord;
-      if (parent && path[0] !== "/") {
-        const parentPath = parent.record.path;
-        const connectingSlash = parentPath[parentPath.length - 1] === "/" ? "" : "/";
-        normalizedRecord.path = parent.record.path + (path && connectingSlash + path);
-      }
-      matcher = createRouteRecordMatcher(normalizedRecord, parent, options);
-      if (originalRecord) {
-        originalRecord.alias.push(matcher);
-      } else {
-        originalMatcher = originalMatcher || matcher;
-        if (originalMatcher !== matcher)
-          originalMatcher.alias.push(matcher);
-        if (isRootAdd && record.name && !isAliasRecord(matcher)) {
-          removeRoute(record.name);
-        }
-      }
-      if (isMatchable(matcher)) {
-        insertMatcher(matcher);
-      }
-      if (mainNormalizedRecord.children) {
-        const children = mainNormalizedRecord.children;
-        for (let i = 0; i < children.length; i++) {
-          addRoute(children[i], matcher, originalRecord && originalRecord.children[i]);
-        }
-      }
-      originalRecord = originalRecord || matcher;
-    }
-    return originalMatcher ? () => {
-      removeRoute(originalMatcher);
-    } : noop;
-  }
-  function removeRoute(matcherRef) {
-    if (isRouteName(matcherRef)) {
-      const matcher = matcherMap.get(matcherRef);
-      if (matcher) {
-        matcherMap.delete(matcherRef);
-        matchers.splice(matchers.indexOf(matcher), 1);
-        matcher.children.forEach(removeRoute);
-        matcher.alias.forEach(removeRoute);
-      }
-    } else {
-      const index = matchers.indexOf(matcherRef);
-      if (index > -1) {
-        matchers.splice(index, 1);
-        if (matcherRef.record.name)
-          matcherMap.delete(matcherRef.record.name);
-        matcherRef.children.forEach(removeRoute);
-        matcherRef.alias.forEach(removeRoute);
-      }
-    }
-  }
-  function getRoutes() {
-    return matchers;
-  }
-  function insertMatcher(matcher) {
-    const index = findInsertionIndex(matcher, matchers);
-    matchers.splice(index, 0, matcher);
-    if (matcher.record.name && !isAliasRecord(matcher))
-      matcherMap.set(matcher.record.name, matcher);
-  }
-  function resolve2(location2, currentLocation) {
-    let matcher;
-    let params = {};
-    let path;
-    let name;
-    if ("name" in location2 && location2.name) {
-      matcher = matcherMap.get(location2.name);
-      if (!matcher)
-        throw createRouterError(1, {
-          location: location2
-        });
-      name = matcher.record.name;
-      params = assign(
-        // paramsFromLocation is a new object
-        paramsFromLocation(
-          currentLocation.params,
-          // only keep params that exist in the resolved location
-          // only keep optional params coming from a parent record
-          matcher.keys.filter((k) => !k.optional).concat(matcher.parent ? matcher.parent.keys.filter((k) => k.optional) : []).map((k) => k.name)
-        ),
-        // discard any existing params in the current location that do not exist here
-        // #1497 this ensures better active/exact matching
-        location2.params && paramsFromLocation(location2.params, matcher.keys.map((k) => k.name))
-      );
-      path = matcher.stringify(params);
-    } else if (location2.path != null) {
-      path = location2.path;
-      matcher = matchers.find((m) => m.re.test(path));
-      if (matcher) {
-        params = matcher.parse(path);
-        name = matcher.record.name;
-      }
-    } else {
-      matcher = currentLocation.name ? matcherMap.get(currentLocation.name) : matchers.find((m) => m.re.test(currentLocation.path));
-      if (!matcher)
-        throw createRouterError(1, {
-          location: location2,
-          currentLocation
-        });
-      name = matcher.record.name;
-      params = assign({}, currentLocation.params, location2.params);
-      path = matcher.stringify(params);
-    }
-    const matched = [];
-    let parentMatcher = matcher;
-    while (parentMatcher) {
-      matched.unshift(parentMatcher.record);
-      parentMatcher = parentMatcher.parent;
-    }
-    return {
-      name,
-      path,
-      params,
-      matched,
-      meta: mergeMetaFields(matched)
-    };
-  }
-  routes.forEach((route) => addRoute(route));
-  function clearRoutes() {
-    matchers.length = 0;
-    matcherMap.clear();
-  }
-  return {
-    addRoute,
-    resolve: resolve2,
-    removeRoute,
-    clearRoutes,
-    getRoutes,
-    getRecordMatcher
-  };
-}
-function paramsFromLocation(params, keys) {
-  const newParams = {};
-  for (const key of keys) {
-    if (key in params)
-      newParams[key] = params[key];
-  }
-  return newParams;
-}
-function normalizeRouteRecord(record) {
-  const normalized = {
-    path: record.path,
-    redirect: record.redirect,
-    name: record.name,
-    meta: record.meta || {},
-    aliasOf: record.aliasOf,
-    beforeEnter: record.beforeEnter,
-    props: normalizeRecordProps(record),
-    children: record.children || [],
-    instances: {},
-    leaveGuards: /* @__PURE__ */ new Set(),
-    updateGuards: /* @__PURE__ */ new Set(),
-    enterCallbacks: {},
-    // must be declared afterwards
-    // mods: {},
-    components: "components" in record ? record.components || null : record.component && { default: record.component }
-  };
-  Object.defineProperty(normalized, "mods", {
-    value: {}
-  });
-  return normalized;
-}
-function normalizeRecordProps(record) {
-  const propsObject = {};
-  const props = record.props || false;
-  if ("component" in record) {
-    propsObject.default = props;
-  } else {
-    for (const name in record.components)
-      propsObject[name] = typeof props === "object" ? props[name] : props;
-  }
-  return propsObject;
-}
-function isAliasRecord(record) {
-  while (record) {
-    if (record.record.aliasOf)
-      return true;
-    record = record.parent;
-  }
-  return false;
-}
-function mergeMetaFields(matched) {
-  return matched.reduce((meta, record) => assign(meta, record.meta), {});
-}
-function mergeOptions(defaults, partialOptions) {
-  const options = {};
-  for (const key in defaults) {
-    options[key] = key in partialOptions ? partialOptions[key] : defaults[key];
-  }
-  return options;
-}
-function findInsertionIndex(matcher, matchers) {
-  let lower = 0;
-  let upper = matchers.length;
-  while (lower !== upper) {
-    const mid = lower + upper >> 1;
-    const sortOrder = comparePathParserScore(matcher, matchers[mid]);
-    if (sortOrder < 0) {
-      upper = mid;
-    } else {
-      lower = mid + 1;
-    }
-  }
-  const insertionAncestor = getInsertionAncestor(matcher);
-  if (insertionAncestor) {
-    upper = matchers.lastIndexOf(insertionAncestor, upper - 1);
-  }
-  return upper;
-}
-function getInsertionAncestor(matcher) {
-  let ancestor = matcher;
-  while (ancestor = ancestor.parent) {
-    if (isMatchable(ancestor) && comparePathParserScore(matcher, ancestor) === 0) {
-      return ancestor;
-    }
-  }
-  return;
-}
-function isMatchable({ record }) {
-  return !!(record.name || record.components && Object.keys(record.components).length || record.redirect);
-}
-function parseQuery(search) {
-  const query = {};
-  if (search === "" || search === "?")
-    return query;
-  const hasLeadingIM = search[0] === "?";
-  const searchParams = (hasLeadingIM ? search.slice(1) : search).split("&");
-  for (let i = 0; i < searchParams.length; ++i) {
-    const searchParam = searchParams[i].replace(PLUS_RE, " ");
-    const eqPos = searchParam.indexOf("=");
-    const key = decode(eqPos < 0 ? searchParam : searchParam.slice(0, eqPos));
-    const value = eqPos < 0 ? null : decode(searchParam.slice(eqPos + 1));
-    if (key in query) {
-      let currentValue = query[key];
-      if (!isArray$1(currentValue)) {
-        currentValue = query[key] = [currentValue];
-      }
-      currentValue.push(value);
-    } else {
-      query[key] = value;
-    }
-  }
-  return query;
-}
-function stringifyQuery(query) {
-  let search = "";
-  for (let key in query) {
-    const value = query[key];
-    key = encodeQueryKey(key);
-    if (value == null) {
-      if (value !== void 0) {
-        search += (search.length ? "&" : "") + key;
-      }
-      continue;
-    }
-    const values = isArray$1(value) ? value.map((v) => v && encodeQueryValue(v)) : [value && encodeQueryValue(value)];
-    values.forEach((value2) => {
-      if (value2 !== void 0) {
-        search += (search.length ? "&" : "") + key;
-        if (value2 != null)
-          search += "=" + value2;
-      }
-    });
-  }
-  return search;
-}
-function normalizeQuery(query) {
-  const normalizedQuery = {};
-  for (const key in query) {
-    const value = query[key];
-    if (value !== void 0) {
-      normalizedQuery[key] = isArray$1(value) ? value.map((v) => v == null ? null : "" + v) : value == null ? value : "" + value;
-    }
-  }
-  return normalizedQuery;
-}
-const matchedRouteKey = Symbol("");
-const viewDepthKey = Symbol("");
-const routerKey = Symbol("");
-const routeLocationKey = Symbol("");
-const routerViewLocationKey = Symbol("");
-function useCallbacks() {
-  let handlers = [];
-  function add(handler) {
-    handlers.push(handler);
-    return () => {
-      const i = handlers.indexOf(handler);
-      if (i > -1)
-        handlers.splice(i, 1);
-    };
-  }
-  function reset() {
-    handlers = [];
-  }
-  return {
-    add,
-    list: () => handlers.slice(),
-    reset
-  };
-}
-function guardToPromiseFn(guard, to, from, record, name, runWithContext = (fn2) => fn2()) {
-  const enterCallbackArray = record && // name is defined if record is because of the function overload
-  (record.enterCallbacks[name] = record.enterCallbacks[name] || []);
-  return () => new Promise((resolve2, reject) => {
-    const next = (valid) => {
-      if (valid === false) {
-        reject(createRouterError(4, {
-          from,
-          to
-        }));
-      } else if (valid instanceof Error) {
-        reject(valid);
-      } else if (isRouteLocation(valid)) {
-        reject(createRouterError(2, {
-          from: to,
-          to: valid
-        }));
-      } else {
-        if (enterCallbackArray && // since enterCallbackArray is truthy, both record and name also are
-        record.enterCallbacks[name] === enterCallbackArray && typeof valid === "function") {
-          enterCallbackArray.push(valid);
-        }
-        resolve2();
-      }
-    };
-    const guardReturn = runWithContext(() => guard.call(record && record.instances[name], to, from, next));
-    let guardCall = Promise.resolve(guardReturn);
-    if (guard.length < 3)
-      guardCall = guardCall.then(next);
-    guardCall.catch((err) => reject(err));
-  });
-}
-function extractComponentsGuards(matched, guardType, to, from, runWithContext = (fn2) => fn2()) {
-  const guards = [];
-  for (const record of matched) {
-    for (const name in record.components) {
-      let rawComponent = record.components[name];
-      if (guardType !== "beforeRouteEnter" && !record.instances[name])
-        continue;
-      if (isRouteComponent(rawComponent)) {
-        const options = rawComponent.__vccOpts || rawComponent;
-        const guard = options[guardType];
-        guard && guards.push(guardToPromiseFn(guard, to, from, record, name, runWithContext));
-      } else {
-        let componentPromise = rawComponent();
-        guards.push(() => componentPromise.then((resolved) => {
-          if (!resolved)
-            throw new Error(`Couldn't resolve component "${name}" at "${record.path}"`);
-          const resolvedComponent = isESModule(resolved) ? resolved.default : resolved;
-          record.mods[name] = resolved;
-          record.components[name] = resolvedComponent;
-          const options = resolvedComponent.__vccOpts || resolvedComponent;
-          const guard = options[guardType];
-          return guard && guardToPromiseFn(guard, to, from, record, name, runWithContext)();
-        }));
-      }
-    }
-  }
-  return guards;
-}
-function useLink(props) {
-  const router2 = inject(routerKey);
-  const currentRoute = inject(routeLocationKey);
-  const route = computed(() => {
-    const to = unref(props.to);
-    return router2.resolve(to);
-  });
-  const activeRecordIndex = computed(() => {
-    const { matched } = route.value;
-    const { length } = matched;
-    const routeMatched = matched[length - 1];
-    const currentMatched = currentRoute.matched;
-    if (!routeMatched || !currentMatched.length)
-      return -1;
-    const index = currentMatched.findIndex(isSameRouteRecord.bind(null, routeMatched));
-    if (index > -1)
-      return index;
-    const parentRecordPath = getOriginalPath(matched[length - 2]);
-    return (
-      // we are dealing with nested routes
-      length > 1 && // if the parent and matched route have the same path, this link is
-      // referring to the empty child. Or we currently are on a different
-      // child of the same parent
-      getOriginalPath(routeMatched) === parentRecordPath && // avoid comparing the child with its parent
-      currentMatched[currentMatched.length - 1].path !== parentRecordPath ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2])) : index
-    );
-  });
-  const isActive = computed(() => activeRecordIndex.value > -1 && includesParams(currentRoute.params, route.value.params));
-  const isExactActive = computed(() => activeRecordIndex.value > -1 && activeRecordIndex.value === currentRoute.matched.length - 1 && isSameRouteLocationParams(currentRoute.params, route.value.params));
-  function navigate(e = {}) {
-    if (guardEvent(e)) {
-      const p2 = router2[unref(props.replace) ? "replace" : "push"](
-        unref(props.to)
-        // avoid uncaught errors are they are logged anyway
-      ).catch(noop);
-      if (props.viewTransition && typeof document !== "undefined" && "startViewTransition" in document) {
-        document.startViewTransition(() => p2);
-      }
-      return p2;
-    }
-    return Promise.resolve();
-  }
-  return {
-    route,
-    href: computed(() => route.value.href),
-    isActive,
-    isExactActive,
-    navigate
-  };
-}
-function preferSingleVNode(vnodes) {
-  return vnodes.length === 1 ? vnodes[0] : vnodes;
-}
-const RouterLinkImpl = /* @__PURE__ */ defineComponent({
-  name: "RouterLink",
-  compatConfig: { MODE: 3 },
-  props: {
-    to: {
-      type: [String, Object],
-      required: true
-    },
-    replace: Boolean,
-    activeClass: String,
-    // inactiveClass: String,
-    exactActiveClass: String,
-    custom: Boolean,
-    ariaCurrentValue: {
-      type: String,
-      default: "page"
-    }
-  },
-  useLink,
-  setup(props, { slots }) {
-    const link = reactive(useLink(props));
-    const { options } = inject(routerKey);
-    const elClass = computed(() => ({
-      [getLinkClass(props.activeClass, options.linkActiveClass, "router-link-active")]: link.isActive,
-      // [getLinkClass(
-      //   props.inactiveClass,
-      //   options.linkInactiveClass,
-      //   'router-link-inactive'
-      // )]: !link.isExactActive,
-      [getLinkClass(props.exactActiveClass, options.linkExactActiveClass, "router-link-exact-active")]: link.isExactActive
-    }));
-    return () => {
-      const children = slots.default && preferSingleVNode(slots.default(link));
-      return props.custom ? children : h("a", {
-        "aria-current": link.isExactActive ? props.ariaCurrentValue : null,
-        href: link.href,
-        // this would override user added attrs but Vue will still add
-        // the listener, so we end up triggering both
-        onClick: link.navigate,
-        class: elClass.value
-      }, children);
-    };
-  }
-});
-const RouterLink = RouterLinkImpl;
-function guardEvent(e) {
-  if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey)
-    return;
-  if (e.defaultPrevented)
-    return;
-  if (e.button !== void 0 && e.button !== 0)
-    return;
-  if (e.currentTarget && e.currentTarget.getAttribute) {
-    const target = e.currentTarget.getAttribute("target");
-    if (/\b_blank\b/i.test(target))
-      return;
-  }
-  if (e.preventDefault)
-    e.preventDefault();
-  return true;
-}
-function includesParams(outer, inner) {
-  for (const key in inner) {
-    const innerValue = inner[key];
-    const outerValue = outer[key];
-    if (typeof innerValue === "string") {
-      if (innerValue !== outerValue)
-        return false;
-    } else {
-      if (!isArray$1(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value !== outerValue[i]))
-        return false;
-    }
-  }
-  return true;
-}
-function getOriginalPath(record) {
-  return record ? record.aliasOf ? record.aliasOf.path : record.path : "";
-}
-const getLinkClass = (propClass, globalClass, defaultClass) => propClass != null ? propClass : globalClass != null ? globalClass : defaultClass;
-const RouterViewImpl = /* @__PURE__ */ defineComponent({
-  name: "RouterView",
-  // #674 we manually inherit them
-  inheritAttrs: false,
-  props: {
-    name: {
-      type: String,
-      default: "default"
-    },
-    route: Object
-  },
-  // Better compat for @vue/compat users
-  // https://github.com/vuejs/router/issues/1315
-  compatConfig: { MODE: 3 },
-  setup(props, { attrs, slots }) {
-    const injectedRoute = inject(routerViewLocationKey);
-    const routeToDisplay = computed(() => props.route || injectedRoute.value);
-    const injectedDepth = inject(viewDepthKey, 0);
-    const depth = computed(() => {
-      let initialDepth = unref(injectedDepth);
-      const { matched } = routeToDisplay.value;
-      let matchedRoute;
-      while ((matchedRoute = matched[initialDepth]) && !matchedRoute.components) {
-        initialDepth++;
-      }
-      return initialDepth;
-    });
-    const matchedRouteRef = computed(() => routeToDisplay.value.matched[depth.value]);
-    provide(viewDepthKey, computed(() => depth.value + 1));
-    provide(matchedRouteKey, matchedRouteRef);
-    provide(routerViewLocationKey, routeToDisplay);
-    const viewRef = ref();
-    watch(() => [viewRef.value, matchedRouteRef.value, props.name], ([instance, to, name], [oldInstance, from, oldName]) => {
-      if (to) {
-        to.instances[name] = instance;
-        if (from && from !== to && instance && instance === oldInstance) {
-          if (!to.leaveGuards.size) {
-            to.leaveGuards = from.leaveGuards;
-          }
-          if (!to.updateGuards.size) {
-            to.updateGuards = from.updateGuards;
-          }
-        }
-      }
-      if (instance && to && // if there is no instance but to and from are the same this might be
-      // the first visit
-      (!from || !isSameRouteRecord(to, from) || !oldInstance)) {
-        (to.enterCallbacks[name] || []).forEach((callback) => callback(instance));
-      }
-    }, { flush: "post" });
-    return () => {
-      const route = routeToDisplay.value;
-      const currentName = props.name;
-      const matchedRoute = matchedRouteRef.value;
-      const ViewComponent = matchedRoute && matchedRoute.components[currentName];
-      if (!ViewComponent) {
-        return normalizeSlot(slots.default, { Component: ViewComponent, route });
-      }
-      const routePropsOption = matchedRoute.props[currentName];
-      const routeProps = routePropsOption ? routePropsOption === true ? route.params : typeof routePropsOption === "function" ? routePropsOption(route) : routePropsOption : null;
-      const onVnodeUnmounted = (vnode) => {
-        if (vnode.component.isUnmounted) {
-          matchedRoute.instances[currentName] = null;
-        }
-      };
-      const component = h(ViewComponent, assign({}, routeProps, attrs, {
-        onVnodeUnmounted,
-        ref: viewRef
-      }));
-      return (
-        // pass the vnode to the slot as a prop.
-        // h and <component :is="..."> both accept vnodes
-        normalizeSlot(slots.default, { Component: component, route }) || component
-      );
-    };
-  }
-});
-function normalizeSlot(slot, data) {
-  if (!slot)
-    return null;
-  const slotContent = slot(data);
-  return slotContent.length === 1 ? slotContent[0] : slotContent;
-}
-const RouterView = RouterViewImpl;
-function createRouter(options) {
-  const matcher = createRouterMatcher(options.routes, options);
-  const parseQuery$1 = options.parseQuery || parseQuery;
-  const stringifyQuery$1 = options.stringifyQuery || stringifyQuery;
-  const routerHistory = options.history;
-  const beforeGuards = useCallbacks();
-  const beforeResolveGuards = useCallbacks();
-  const afterGuards = useCallbacks();
-  const currentRoute = shallowRef(START_LOCATION_NORMALIZED);
-  let pendingLocation = START_LOCATION_NORMALIZED;
-  if (isBrowser && options.scrollBehavior && "scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-  }
-  const normalizeParams = applyToParams.bind(null, (paramValue) => "" + paramValue);
-  const encodeParams = applyToParams.bind(null, encodeParam);
-  const decodeParams = (
-    // @ts-expect-error: intentionally avoid the type check
-    applyToParams.bind(null, decode)
-  );
-  function addRoute(parentOrRoute, route) {
-    let parent;
-    let record;
-    if (isRouteName(parentOrRoute)) {
-      parent = matcher.getRecordMatcher(parentOrRoute);
-      record = route;
-    } else {
-      record = parentOrRoute;
-    }
-    return matcher.addRoute(record, parent);
-  }
-  function removeRoute(name) {
-    const recordMatcher = matcher.getRecordMatcher(name);
-    if (recordMatcher) {
-      matcher.removeRoute(recordMatcher);
-    }
-  }
-  function getRoutes() {
-    return matcher.getRoutes().map((routeMatcher) => routeMatcher.record);
-  }
-  function hasRoute(name) {
-    return !!matcher.getRecordMatcher(name);
-  }
-  function resolve2(rawLocation, currentLocation) {
-    currentLocation = assign({}, currentLocation || currentRoute.value);
-    if (typeof rawLocation === "string") {
-      const locationNormalized = parseURL(parseQuery$1, rawLocation, currentLocation.path);
-      const matchedRoute2 = matcher.resolve({ path: locationNormalized.path }, currentLocation);
-      const href2 = routerHistory.createHref(locationNormalized.fullPath);
-      return assign(locationNormalized, matchedRoute2, {
-        params: decodeParams(matchedRoute2.params),
-        hash: decode(locationNormalized.hash),
-        redirectedFrom: void 0,
-        href: href2
-      });
-    }
-    let matcherLocation;
-    if (rawLocation.path != null) {
-      matcherLocation = assign({}, rawLocation, {
-        path: parseURL(parseQuery$1, rawLocation.path, currentLocation.path).path
-      });
-    } else {
-      const targetParams = assign({}, rawLocation.params);
-      for (const key in targetParams) {
-        if (targetParams[key] == null) {
-          delete targetParams[key];
-        }
-      }
-      matcherLocation = assign({}, rawLocation, {
-        params: encodeParams(targetParams)
-      });
-      currentLocation.params = encodeParams(currentLocation.params);
-    }
-    const matchedRoute = matcher.resolve(matcherLocation, currentLocation);
-    const hash = rawLocation.hash || "";
-    matchedRoute.params = normalizeParams(decodeParams(matchedRoute.params));
-    const fullPath = stringifyURL(stringifyQuery$1, assign({}, rawLocation, {
-      hash: encodeHash(hash),
-      path: matchedRoute.path
-    }));
-    const href = routerHistory.createHref(fullPath);
-    return assign({
-      fullPath,
-      // keep the hash encoded so fullPath is effectively path + encodedQuery +
-      // hash
-      hash,
-      query: (
-        // if the user is using a custom query lib like qs, we might have
-        // nested objects, so we keep the query as is, meaning it can contain
-        // numbers at `$route.query`, but at the point, the user will have to
-        // use their own type anyway.
-        // https://github.com/vuejs/router/issues/328#issuecomment-649481567
-        stringifyQuery$1 === stringifyQuery ? normalizeQuery(rawLocation.query) : rawLocation.query || {}
-      )
-    }, matchedRoute, {
-      redirectedFrom: void 0,
-      href
-    });
-  }
-  function locationAsObject(to) {
-    return typeof to === "string" ? parseURL(parseQuery$1, to, currentRoute.value.path) : assign({}, to);
-  }
-  function checkCanceledNavigation(to, from) {
-    if (pendingLocation !== to) {
-      return createRouterError(8, {
-        from,
-        to
-      });
-    }
-  }
-  function push(to) {
-    return pushWithRedirect(to);
-  }
-  function replace(to) {
-    return push(assign(locationAsObject(to), { replace: true }));
-  }
-  function handleRedirectRecord(to) {
-    const lastMatched = to.matched[to.matched.length - 1];
-    if (lastMatched && lastMatched.redirect) {
-      const { redirect } = lastMatched;
-      let newTargetLocation = typeof redirect === "function" ? redirect(to) : redirect;
-      if (typeof newTargetLocation === "string") {
-        newTargetLocation = newTargetLocation.includes("?") || newTargetLocation.includes("#") ? newTargetLocation = locationAsObject(newTargetLocation) : (
-          // force empty params
-          { path: newTargetLocation }
-        );
-        newTargetLocation.params = {};
-      }
-      return assign({
-        query: to.query,
-        hash: to.hash,
-        // avoid transferring params if the redirect has a path
-        params: newTargetLocation.path != null ? {} : to.params
-      }, newTargetLocation);
-    }
-  }
-  function pushWithRedirect(to, redirectedFrom) {
-    const targetLocation = pendingLocation = resolve2(to);
-    const from = currentRoute.value;
-    const data = to.state;
-    const force = to.force;
-    const replace2 = to.replace === true;
-    const shouldRedirect = handleRedirectRecord(targetLocation);
-    if (shouldRedirect)
-      return pushWithRedirect(
-        assign(locationAsObject(shouldRedirect), {
-          state: typeof shouldRedirect === "object" ? assign({}, data, shouldRedirect.state) : data,
-          force,
-          replace: replace2
-        }),
-        // keep original redirectedFrom if it exists
-        redirectedFrom || targetLocation
-      );
-    const toLocation = targetLocation;
-    toLocation.redirectedFrom = redirectedFrom;
-    let failure;
-    if (!force && isSameRouteLocation(stringifyQuery$1, from, targetLocation)) {
-      failure = createRouterError(16, { to: toLocation, from });
-      handleScroll(
-        from,
-        from,
-        // this is a push, the only way for it to be triggered from a
-        // history.listen is with a redirect, which makes it become a push
-        true,
-        // This cannot be the first navigation because the initial location
-        // cannot be manually navigated to
-        false
-      );
-    }
-    return (failure ? Promise.resolve(failure) : navigate(toLocation, from)).catch((error) => isNavigationFailure(error) ? (
-      // navigation redirects still mark the router as ready
-      isNavigationFailure(
-        error,
-        2
-        /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
-      ) ? error : markAsReady(error)
-    ) : (
-      // reject any unknown error
-      triggerError(error, toLocation, from)
-    )).then((failure2) => {
-      if (failure2) {
-        if (isNavigationFailure(
-          failure2,
-          2
-          /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
-        )) {
-          return pushWithRedirect(
-            // keep options
-            assign({
-              // preserve an existing replacement but allow the redirect to override it
-              replace: replace2
-            }, locationAsObject(failure2.to), {
-              state: typeof failure2.to === "object" ? assign({}, data, failure2.to.state) : data,
-              force
-            }),
-            // preserve the original redirectedFrom if any
-            redirectedFrom || toLocation
-          );
-        }
-      } else {
-        failure2 = finalizeNavigation(toLocation, from, true, replace2, data);
-      }
-      triggerAfterEach(toLocation, from, failure2);
-      return failure2;
-    });
-  }
-  function checkCanceledNavigationAndReject(to, from) {
-    const error = checkCanceledNavigation(to, from);
-    return error ? Promise.reject(error) : Promise.resolve();
-  }
-  function runWithContext(fn2) {
-    const app2 = installedApps.values().next().value;
-    return app2 && typeof app2.runWithContext === "function" ? app2.runWithContext(fn2) : fn2();
-  }
-  function navigate(to, from) {
-    let guards;
-    const [leavingRecords, updatingRecords, enteringRecords] = extractChangingRecords(to, from);
-    guards = extractComponentsGuards(leavingRecords.reverse(), "beforeRouteLeave", to, from);
-    for (const record of leavingRecords) {
-      record.leaveGuards.forEach((guard) => {
-        guards.push(guardToPromiseFn(guard, to, from));
-      });
-    }
-    const canceledNavigationCheck = checkCanceledNavigationAndReject.bind(null, to, from);
-    guards.push(canceledNavigationCheck);
-    return runGuardQueue(guards).then(() => {
-      guards = [];
-      for (const guard of beforeGuards.list()) {
-        guards.push(guardToPromiseFn(guard, to, from));
-      }
-      guards.push(canceledNavigationCheck);
-      return runGuardQueue(guards);
-    }).then(() => {
-      guards = extractComponentsGuards(updatingRecords, "beforeRouteUpdate", to, from);
-      for (const record of updatingRecords) {
-        record.updateGuards.forEach((guard) => {
-          guards.push(guardToPromiseFn(guard, to, from));
-        });
-      }
-      guards.push(canceledNavigationCheck);
-      return runGuardQueue(guards);
-    }).then(() => {
-      guards = [];
-      for (const record of enteringRecords) {
-        if (record.beforeEnter) {
-          if (isArray$1(record.beforeEnter)) {
-            for (const beforeEnter of record.beforeEnter)
-              guards.push(guardToPromiseFn(beforeEnter, to, from));
-          } else {
-            guards.push(guardToPromiseFn(record.beforeEnter, to, from));
-          }
-        }
-      }
-      guards.push(canceledNavigationCheck);
-      return runGuardQueue(guards);
-    }).then(() => {
-      to.matched.forEach((record) => record.enterCallbacks = {});
-      guards = extractComponentsGuards(enteringRecords, "beforeRouteEnter", to, from, runWithContext);
-      guards.push(canceledNavigationCheck);
-      return runGuardQueue(guards);
-    }).then(() => {
-      guards = [];
-      for (const guard of beforeResolveGuards.list()) {
-        guards.push(guardToPromiseFn(guard, to, from));
-      }
-      guards.push(canceledNavigationCheck);
-      return runGuardQueue(guards);
-    }).catch((err) => isNavigationFailure(
-      err,
-      8
-      /* ErrorTypes.NAVIGATION_CANCELLED */
-    ) ? err : Promise.reject(err));
-  }
-  function triggerAfterEach(to, from, failure) {
-    afterGuards.list().forEach((guard) => runWithContext(() => guard(to, from, failure)));
-  }
-  function finalizeNavigation(toLocation, from, isPush, replace2, data) {
-    const error = checkCanceledNavigation(toLocation, from);
-    if (error)
-      return error;
-    const isFirstNavigation = from === START_LOCATION_NORMALIZED;
-    const state = !isBrowser ? {} : history.state;
-    if (isPush) {
-      if (replace2 || isFirstNavigation)
-        routerHistory.replace(toLocation.fullPath, assign({
-          scroll: isFirstNavigation && state && state.scroll
-        }, data));
-      else
-        routerHistory.push(toLocation.fullPath, data);
-    }
-    currentRoute.value = toLocation;
-    handleScroll(toLocation, from, isPush, isFirstNavigation);
-    markAsReady();
-  }
-  let removeHistoryListener;
-  function setupListeners() {
-    if (removeHistoryListener)
-      return;
-    removeHistoryListener = routerHistory.listen((to, _from, info) => {
-      if (!router2.listening)
-        return;
-      const toLocation = resolve2(to);
-      const shouldRedirect = handleRedirectRecord(toLocation);
-      if (shouldRedirect) {
-        pushWithRedirect(assign(shouldRedirect, { replace: true, force: true }), toLocation).catch(noop);
-        return;
-      }
-      pendingLocation = toLocation;
-      const from = currentRoute.value;
-      if (isBrowser) {
-        saveScrollPosition(getScrollKey(from.fullPath, info.delta), computeScrollPosition());
-      }
-      navigate(toLocation, from).catch((error) => {
-        if (isNavigationFailure(
-          error,
-          4 | 8
-          /* ErrorTypes.NAVIGATION_CANCELLED */
-        )) {
-          return error;
-        }
-        if (isNavigationFailure(
-          error,
-          2
-          /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
-        )) {
-          pushWithRedirect(
-            assign(locationAsObject(error.to), {
-              force: true
-            }),
-            toLocation
-            // avoid an uncaught rejection, let push call triggerError
-          ).then((failure) => {
-            if (isNavigationFailure(
-              failure,
-              4 | 16
-              /* ErrorTypes.NAVIGATION_DUPLICATED */
-            ) && !info.delta && info.type === NavigationType.pop) {
-              routerHistory.go(-1, false);
-            }
-          }).catch(noop);
-          return Promise.reject();
-        }
-        if (info.delta) {
-          routerHistory.go(-info.delta, false);
-        }
-        return triggerError(error, toLocation, from);
-      }).then((failure) => {
-        failure = failure || finalizeNavigation(
-          // after navigation, all matched components are resolved
-          toLocation,
-          from,
-          false
-        );
-        if (failure) {
-          if (info.delta && // a new navigation has been triggered, so we do not want to revert, that will change the current history
-          // entry while a different route is displayed
-          !isNavigationFailure(
-            failure,
-            8
-            /* ErrorTypes.NAVIGATION_CANCELLED */
-          )) {
-            routerHistory.go(-info.delta, false);
-          } else if (info.type === NavigationType.pop && isNavigationFailure(
-            failure,
-            4 | 16
-            /* ErrorTypes.NAVIGATION_DUPLICATED */
-          )) {
-            routerHistory.go(-1, false);
-          }
-        }
-        triggerAfterEach(toLocation, from, failure);
-      }).catch(noop);
-    });
-  }
-  let readyHandlers = useCallbacks();
-  let errorListeners = useCallbacks();
-  let ready;
-  function triggerError(error, to, from) {
-    markAsReady(error);
-    const list = errorListeners.list();
-    if (list.length) {
-      list.forEach((handler) => handler(error, to, from));
-    } else {
-      console.error(error);
-    }
-    return Promise.reject(error);
-  }
-  function isReady() {
-    if (ready && currentRoute.value !== START_LOCATION_NORMALIZED)
-      return Promise.resolve();
-    return new Promise((resolve22, reject) => {
-      readyHandlers.add([resolve22, reject]);
-    });
-  }
-  function markAsReady(err) {
-    if (!ready) {
-      ready = !err;
-      setupListeners();
-      readyHandlers.list().forEach(([resolve22, reject]) => err ? reject(err) : resolve22());
-      readyHandlers.reset();
-    }
-    return err;
-  }
-  function handleScroll(to, from, isPush, isFirstNavigation) {
-    const { scrollBehavior } = options;
-    if (!isBrowser || !scrollBehavior)
-      return Promise.resolve();
-    const scrollPosition = !isPush && getSavedScrollPosition(getScrollKey(to.fullPath, 0)) || (isFirstNavigation || !isPush) && history.state && history.state.scroll || null;
-    return nextTick().then(() => scrollBehavior(to, from, scrollPosition)).then((position) => position && scrollToPosition(position)).catch((err) => triggerError(err, to, from));
-  }
-  const go = (delta) => routerHistory.go(delta);
-  let started;
-  const installedApps = /* @__PURE__ */ new Set();
-  const router2 = {
-    currentRoute,
-    listening: true,
-    addRoute,
-    removeRoute,
-    clearRoutes: matcher.clearRoutes,
-    hasRoute,
-    getRoutes,
-    resolve: resolve2,
-    options,
-    push,
-    replace,
-    go,
-    back: () => go(-1),
-    forward: () => go(1),
-    beforeEach: beforeGuards.add,
-    beforeResolve: beforeResolveGuards.add,
-    afterEach: afterGuards.add,
-    onError: errorListeners.add,
-    isReady,
-    install(app2) {
-      const router22 = this;
-      app2.component("RouterLink", RouterLink);
-      app2.component("RouterView", RouterView);
-      app2.config.globalProperties.$router = router22;
-      Object.defineProperty(app2.config.globalProperties, "$route", {
-        enumerable: true,
-        get: () => unref(currentRoute)
-      });
-      if (isBrowser && // used for the initial navigation client side to avoid pushing
-      // multiple times when the router is used in multiple apps
-      !started && currentRoute.value === START_LOCATION_NORMALIZED) {
-        started = true;
-        push(routerHistory.location).catch((err) => {
-        });
-      }
-      const reactiveRoute = {};
-      for (const key in START_LOCATION_NORMALIZED) {
-        Object.defineProperty(reactiveRoute, key, {
-          get: () => currentRoute.value[key],
-          enumerable: true
-        });
-      }
-      app2.provide(routerKey, router22);
-      app2.provide(routeLocationKey, shallowReactive(reactiveRoute));
-      app2.provide(routerViewLocationKey, currentRoute);
-      const unmountApp = app2.unmount;
-      installedApps.add(app2);
-      app2.unmount = function() {
-        installedApps.delete(app2);
-        if (installedApps.size < 1) {
-          pendingLocation = START_LOCATION_NORMALIZED;
-          removeHistoryListener && removeHistoryListener();
-          removeHistoryListener = null;
-          currentRoute.value = START_LOCATION_NORMALIZED;
-          started = false;
-          ready = false;
-        }
-        unmountApp();
-      };
-    }
-  };
-  function runGuardQueue(guards) {
-    return guards.reduce((promise, guard) => promise.then(() => runWithContext(guard)), Promise.resolve());
-  }
-  return router2;
-}
-function extractChangingRecords(to, from) {
-  const leavingRecords = [];
-  const updatingRecords = [];
-  const enteringRecords = [];
-  const len = Math.max(from.matched.length, to.matched.length);
-  for (let i = 0; i < len; i++) {
-    const recordFrom = from.matched[i];
-    if (recordFrom) {
-      if (to.matched.find((record) => isSameRouteRecord(record, recordFrom)))
-        updatingRecords.push(recordFrom);
-      else
-        leavingRecords.push(recordFrom);
-    }
-    const recordTo = to.matched[i];
-    if (recordTo) {
-      if (!from.matched.find((record) => isSameRouteRecord(record, recordTo))) {
-        enteringRecords.push(recordTo);
-      }
-    }
-  }
-  return [leavingRecords, updatingRecords, enteringRecords];
-}
-function useRouter() {
-  return inject(routerKey);
-}
-const _export_sfc$1 = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
-const _sfc_main$7 = {};
-function _sfc_render$3(_ctx, _cache) {
-  return openBlock(), createElementBlock(Fragment, null, [
-    _cache[0] || (_cache[0] = createBaseVNode("h1", null, "Dokument", -1)),
-    _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))
-  ], 64);
-}
-const XDocumentView = /* @__PURE__ */ _export_sfc$1(_sfc_main$7, [["render", _sfc_render$3]]);
-const _sfc_main$6 = {};
-function _sfc_render$2(_ctx, _cache) {
-  return openBlock(), createElementBlock(Fragment, null, [
-    _cache[0] || (_cache[0] = createBaseVNode("h1", null, "Journal", -1)),
-    _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))
-  ], 64);
-}
-const XJournalView = /* @__PURE__ */ _export_sfc$1(_sfc_main$6, [["render", _sfc_render$2]]);
-const _sfc_main$3 = {};
-function _sfc_render$1(_ctx, _cache) {
-  return openBlock(), createElementBlock(Fragment, null, [
-    _cache[0] || (_cache[0] = createBaseVNode("h1", null, "Översikt", -1)),
-    _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))
-  ], 64);
-}
-const XOverviewView = /* @__PURE__ */ _export_sfc$1(_sfc_main$3, [["render", _sfc_render$1]]);
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes: [
-    { path: "/", name: "overview", component: XOverviewView },
-    { path: "/journal", name: "journal", component: XJournalView },
-    { path: "/documents", name: "documents", component: XDocumentView }
-  ]
-});
 function isEmpty(value) {
   return !value;
 }
 function isSet(value) {
   return value !== void 0 && value !== null;
+}
+function isString(value) {
+  return typeof value === "string" || value instanceof String;
+}
+const DATE_REGEXP_WITH_DASH = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
+function validLimit(limit) {
+  if (typeof limit !== "string" || isEmpty(limit)) {
+    throw new Error(`limit must be a non-empty string`);
+  }
+  const limitAsString = limit;
+  if (!DATE_REGEXP_WITH_DASH.test(limitAsString)) {
+    throw new Error(`limit has invalid format`);
+  }
+  return limitAsString;
 }
 function debounce(func, delay, immediate = false) {
   let timeout = null;
@@ -9935,9 +7712,9 @@ function requireLodash_clonedeep() {
       return array;
     }
     function arrayPush(array, values) {
-      var index = -1, length = values.length, offset2 = array.length;
+      var index = -1, length = values.length, offset = array.length;
       while (++index < length) {
-        array[offset2 + index] = values[index];
+        array[offset + index] = values[index];
       }
       return array;
     }
@@ -10475,6 +8252,70 @@ var cloneDeep = /* @__PURE__ */ getDefaultExportFromCjs$1$1(lodash_clonedeepExpo
 function deepClone(value) {
   return cloneDeep(value);
 }
+function normalizeDateFormat(value) {
+  const supportedFormats = [
+    /* yyyy-mm-dd */
+    /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/,
+    /* yyyymmdd */
+    /^(?<year>\d{4})(?<month>\d{2})(?<day>\d{2})$/,
+    /* yyyy-mm-dd */
+    /^(?<year>\d{4})\/(?<month>\d{2})\/(?<day>\d{2})$/
+  ];
+  const match = supportedFormats.map((pattern) => value.match(pattern)).find(Boolean);
+  if (!match || !match.groups) {
+    return void 0;
+  }
+  const { year, month, day } = match.groups;
+  return `${year}-${month}-${day}`;
+}
+function testLuhnChecksum(inputString) {
+  let sum = 0;
+  if (/^[0-9]+$/.test(inputString) === false) {
+    throw new Error("Luhn Checksum test only works on strings containing numbers");
+  }
+  inputString.split("").reverse().forEach((numChar, index) => {
+    const digit = parseInt(numChar, 10) * ((index + 1) % 2 === 0 ? 2 : 1);
+    sum += digit >= 10 ? digit - 9 : digit;
+  });
+  return sum % 10 === 0;
+}
+function validChecksum(value) {
+  const yymmddxxxx = value.slice(2).replace(/-/g, "");
+  return testLuhnChecksum(yymmddxxxx);
+}
+const BANK_ACCOUNT_NUMBER_REGEXP = /^\d{3,16}$/;
+const BANK_ACCOUNT_NUMBER_TRIM_REGEXP = /[- .,]+/g;
+function parseBankAccountNumber(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  const trimmedValue = value.replace(BANK_ACCOUNT_NUMBER_TRIM_REGEXP, "");
+  return BANK_ACCOUNT_NUMBER_REGEXP.test(trimmedValue) ? trimmedValue : void 0;
+}
+const BANKGIRO_REGEXP_HYPHEN = /^(\d{3,4})[-]?(\d{4})$/;
+function parseBankgiro(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  const match = value.match(BANKGIRO_REGEXP_HYPHEN);
+  if (!match) {
+    return void 0;
+  }
+  if (!testLuhnChecksum(`${match[1]}${match[2]}`)) {
+    return void 0;
+  }
+  return `${match[1]}-${match[2]}`;
+}
+const CLEARINGNUMBER_REGEXP = /^\d{4}([-\s]?\d)?$/;
+function parseClearingNumber(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  if (!CLEARINGNUMBER_REGEXP.test(value)) {
+    return void 0;
+  }
+  return value.length === 5 ? `${value.substring(0, 4)}-${value.substring(4, 5)}` : value;
+}
 function getDefaultExportFromCjs$2(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
@@ -10831,6 +8672,13 @@ var Locale$1;
   Locale2["SWEDISH"] = "sv";
   Locale2["ENGLISH"] = "en";
 })(Locale$1 || (Locale$1 = {}));
+function getDefaultLocale() {
+  return Locale$1.SWEDISH;
+}
+let _locale = /* @__PURE__ */ getDefaultLocale();
+function getLocale() {
+  return _locale;
+}
 var Weekday$1;
 (function(Weekday2) {
   Weekday2[Weekday2["MONDAY"] = 1] = "MONDAY";
@@ -10918,7 +8766,7 @@ var Weekday$1;
   ]
 });
 const ISO8601_YYYY_MM_DD$1 = "YYYY-MM-DD";
-({
+const formatter = {
   [Locale$1.SWEDISH]: {
     [DateFormat$1.FULL]: "dddd D MMMM YYYY",
     [DateFormat$1.LONG]: "D MMMM YYYY",
@@ -10931,7 +8779,559 @@ const ISO8601_YYYY_MM_DD$1 = "YYYY-MM-DD";
     [DateFormat$1.ISO8601]: ISO8601_YYYY_MM_DD$1,
     [DateFormat$1.YYYYMMDD]: "YYYYMMDD"
   }
-});
+};
+class FDate {
+  constructor(value) {
+    __publicField(this, "value");
+    this.value = dayjs$1(value, ISO8601_YYYY_MM_DD$1, true).startOf("day");
+  }
+  /**
+   * Create {@link FDate} with an invalid state.
+   *
+   * @internal
+   */
+  static invalid() {
+    return new FDate("<invalid>");
+  }
+  /**
+   * Create {@link FDate} from current date.
+   *
+   * ```
+   * FDate.now()
+   * ```
+   *
+   * @public
+   */
+  static now() {
+    return new FDate();
+  }
+  /**
+   * Create {@link FDate} from ISO8601 string.
+   *
+   * ```
+   * FDate.fromIso("2022-04-20")
+   * ```
+   *
+   * @public
+   */
+  static fromIso(value) {
+    const match = value.match(/^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/);
+    if (match && match.groups) {
+      const date = new FDate(value);
+      const { month } = match.groups;
+      if (date.isValid() && date.month === parseInt(month, 10)) {
+        return date;
+      }
+    }
+    return FDate.invalid();
+  }
+  /**
+   * Create {@link FDate} from `Date`.
+   *
+   * ```
+   * FDate.fromDate(new Date())
+   * ```
+   *
+   * @public
+   */
+  static fromDate(value) {
+    return new FDate(value);
+  }
+  /**
+   * Create {@link FDate} from year, month, day.
+   *
+   * ```
+   * FDate.fromYearMonthDay(2023, 1, 1) // => 2023-01-01
+   * FDate.fromYearMonthDay("2023", "01", "01") // => 2023-01-01
+   * ```
+   *
+   * @public
+   */
+  static fromYearMonthDay(year, month, day) {
+    const paddedMonth = month.toString().padStart(2, "0");
+    const paddedDay = day.toString().padStart(2, "0");
+    const iso = `${year}-${paddedMonth}-${paddedDay}`;
+    return FDate.fromIso(iso);
+  }
+  /**
+   * Get the year.
+   *
+   * ```
+   * FDate.now().year()// => 2022
+   * ```
+   *
+   * @public
+   */
+  get year() {
+    return this.value.year();
+  }
+  /**
+   * Get the month.
+   *
+   * Months are one-indexed, so January is month 1.
+   *
+   * ```
+   * FDate.now().month()// => 1-12
+   * ```
+   *
+   * @public
+   */
+  get month() {
+    return this.value.month() + 1;
+  }
+  /**
+   * Get the week according to the Swedish locale.
+   *
+   * @public
+   */
+  get week() {
+    return this.value.locale(Locale$1.SWEDISH).week();
+  }
+  /**
+   * Get the day of the month.
+   *
+   * ```
+   * FDate.now().day// => 1-31
+   * ```
+   *
+   * @public
+   */
+  get day() {
+    return this.value.date();
+  }
+  /**
+   * Get the name of the month.
+   *
+   * ```
+   * FDate.now().monthName// => January
+   * ```
+   *
+   * @public
+   */
+  get monthName() {
+    if (this.isValid()) {
+      return this.value.locale(getLocale()).format("MMMM");
+    } else {
+      return "";
+    }
+  }
+  /**
+   * Get the short name of the month.
+   *
+   * ```
+   * FDate.now().monthNameShort// => Jan
+   * ```
+   *
+   * @public
+   */
+  get monthNameShort() {
+    if (this.isValid()) {
+      return this.value.locale(getLocale()).format("MMM");
+    } else {
+      return "";
+    }
+  }
+  /**
+   * Get the name of the day.
+   *
+   * ```
+   * FDate.now().dayName// => Monday
+   * ```
+   *
+   * @public
+   */
+  get dayName() {
+    if (this.isValid()) {
+      return this.value.locale(getLocale()).format("dddd");
+    } else {
+      return "";
+    }
+  }
+  /**
+   * Get the short name of the day.
+   *
+   * ```
+   * FDate.now().dayNameShort// => Mon
+   * ```
+   *
+   * @public
+   */
+  get dayNameShort() {
+    if (this.isValid()) {
+      return this.value.locale(getLocale()).format("ddd");
+    } else {
+      return "";
+    }
+  }
+  /**
+   * Get number of the day in a week.
+   * Returns `Weekday` enum.
+   * If date is invalid, `0` is returned.
+   *
+   * ```
+   * FDate.now().weekDay// => Weekday.MONDAY / 1
+   * ```
+   *
+   * @public
+   */
+  get weekDay() {
+    if (!this.isValid()) {
+      return 0;
+    }
+    const result = parseInt(this.value.format("d"), 10);
+    if (!result) {
+      return Weekday$1.SUNDAY;
+    }
+    return result;
+  }
+  /**
+   * This returns a `boolean` indicating whether the FDate object contains a valid date or not.
+   *
+   * ```
+   * FDate().isValid()// => boolean
+   * ```
+   *
+   * @public
+   */
+  isValid() {
+    return this.value.isValid();
+  }
+  /**
+   * Returns a cloned {@link FDate} object and set it to the start of month.
+   *
+   * @public
+   */
+  startOfMonth() {
+    return new FDate(this.value.startOf("month"));
+  }
+  /**
+   * Returns a cloned {@link FDate} object and set it to the end of month.
+   *
+   * @public
+   */
+  endOfMonth() {
+    return new FDate(this.value.endOf("month"));
+  }
+  /**
+   * Returns a new {@link FDate} object with a specified amount of days added.
+   * Specify a negative amount in order to subtract days.
+   *
+   * ```
+   * FDate().addDays(7)// => FDate
+   * ```
+   *
+   * @public
+   */
+  addDays(value) {
+    return new FDate(this.value.add(value, "day"));
+  }
+  /**
+   * Returns a cloned {@link FDate} object with a specified amount of months added.
+   * Specify a negative amount in order to subtract months.
+   *
+   * ```
+   * FDate().addMonths(7)// => FDate
+   * ```
+   *
+   * @public
+   */
+  addMonths(value) {
+    return new FDate(this.value.add(value, "month"));
+  }
+  /**
+   * Returns a new {@link FDate} object with a specified amount of years added.
+   * Specify a negative amount in order to subtract years.
+   *
+   * ```
+   * FDate().addYears(7)// => FDate
+   * ```
+   *
+   * @public
+   */
+  addYears(value) {
+    return new FDate(this.value.add(value, "year"));
+  }
+  next() {
+    return this.addDays(1);
+  }
+  /**
+   * Compares two {@link FDate} objects and returns `true` if they represent the
+   * same date.
+   *
+   * Invalid dates always returns `false`.
+   *
+   * @public
+   * @param rhs - The date to compare with.
+   * @returns `true` if the dates represent the same date.
+   */
+  equals(rhs) {
+    if (typeof rhs === "string") {
+      rhs = FDate.fromIso(rhs);
+    }
+    return this.value.isSame(rhs.value, "day");
+  }
+  /**
+   * Returns true if this date is before given date.
+   *
+   * If the dates are the same this function returns false.
+   */
+  isBefore(rhs) {
+    if (typeof rhs === "string") {
+      rhs = FDate.fromIso(rhs);
+    }
+    return this.value.isBefore(rhs.value, "day");
+  }
+  /**
+   * Returns true if this date is after given date.
+   *
+   * If the dates are the same this function returns false.
+   */
+  isAfter(rhs) {
+    if (typeof rhs === "string") {
+      rhs = FDate.fromIso(rhs);
+    }
+    return this.value.isAfter(rhs.value, "day");
+  }
+  /**
+   * Compares two {@link FDate} objects. Returns and integer indicating whenever
+   * `a` comes before or after or is equal to `b`.
+   *
+   * - `-1` if `a` beomes before `b`.
+   * - `0` if `a` and `b` are the same date.
+   * - `1` if `a` beomes after `b`.
+   *
+   * If either or both date is invalid the result is undefined behaviour and
+   * should not be relied on. Use {@link FDate.isValid} to ensure validity
+   * first, e.g. `myArray.filter(it => it.isValid())` before sorting.
+   *
+   * @public
+   * @param a - First date object to compare.
+   * @param b - Second date object to compare.
+   * @returns `-1`, `0` or `1`
+   */
+  static compare(a, b) {
+    if (typeof a === "string") {
+      a = FDate.fromIso(a);
+    }
+    if (typeof b === "string") {
+      b = FDate.fromIso(b);
+    }
+    const aInvalid = !a.isValid();
+    const bInvalid = !b.isValid();
+    if (aInvalid || bInvalid) {
+      if (aInvalid && bInvalid) {
+        return 0;
+      } else if (aInvalid) {
+        return 1;
+      } else {
+        return -1;
+      }
+    }
+    if (a.equals(b)) {
+      return 0;
+    } else if (a.isBefore(b)) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  /**
+   * Returns a string representation of the date.
+   *
+   * ```
+   * FDate().toString() // "2022-05-04"
+   * FDate().toString(DateFormat.FULL) // "onsdag 4 maj 2022"
+   * FDate().toString(DateFormat.LONG) // "4 maj 2022"
+   * FDate().toString(DateFormat.ISO8601) // "2022-04-20"
+   * ```
+   *
+   * @public
+   * @param format - Format to use.
+   */
+  toString(format = DateFormat$1.ISO8601) {
+    if (this.isValid()) {
+      const template = formatter[getLocale()][format];
+      return this.value.locale(getLocale()).format(template);
+    } else {
+      return "";
+    }
+  }
+  /**
+   * To serialize as an ISO8601 string.
+   *
+   * ```
+   * FDate().toJSON() // "2019-01-25"
+   * ```
+   *
+   * @public
+   */
+  toJSON() {
+    return this.toString(DateFormat$1.ISO8601);
+  }
+}
+function parseDate(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  const normalized = normalizeDateFormat(value);
+  if (!normalized) {
+    return void 0;
+  }
+  const date = FDate.fromIso(normalized);
+  if (date.isValid()) {
+    return date.toString();
+  } else {
+    return void 0;
+  }
+}
+function stripWhitespace(text) {
+  return text.replace(/\s+/g, "");
+}
+const NUMBER_REGEXP$1 = /^([-]?[0-9]+)([,.][0-9]+)?$/;
+function replaceCommaWithDot(str) {
+  return str.replace(",", ".");
+}
+function replaceMinusSignWithDash(str) {
+  return str.replace("−", "-");
+}
+function parseNumber(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  const stripped = stripWhitespace(value);
+  const numberString = replaceCommaWithDot(replaceMinusSignWithDash(stripped));
+  if (!NUMBER_REGEXP$1.test(numberString)) {
+    return void 0;
+  }
+  const number = Number(numberString);
+  return isNaN(number) ? void 0 : number;
+}
+function getNowDetails(now) {
+  const nowIso = now.toString();
+  return {
+    nowCentury: nowIso.substring(0, 2),
+    nowYear: nowIso.substring(2, 4),
+    nowMonthDay: nowIso.substring(5, 7) + nowIso.substring(8, 10)
+  };
+}
+function resolveCentury(year, month, day, hasPlus, now) {
+  const { nowCentury, nowYear, nowMonthDay } = getNowDetails(now);
+  let subtractCenturies = 0;
+  if (hasPlus) {
+    subtractCenturies += 1;
+  }
+  if (year > nowYear || year === nowYear && !hasPlus && `${month}${day}` > nowMonthDay) {
+    subtractCenturies += 1;
+  }
+  return (Number(nowCentury) - subtractCenturies).toString();
+}
+const PERSONNUMMER_REGEXP = /^(?<century>\d{2})?(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?<sign>-|\+)?(?<check>\d{4})$/;
+function getDayWithoutSamordning(day) {
+  return (Number(day) % 60).toString().padStart(2, "0");
+}
+function getPersonnummerString(century, year, month, day, check) {
+  return `${century}${year}${month}${day}-${check}`;
+}
+function isValidDate(date, now) {
+  if (!date.isValid() || date.isBefore("1840-05-06") || date.isAfter(now)) {
+    return false;
+  }
+  return true;
+}
+function parsePersonnummer(value, now = FDate.now()) {
+  var _a;
+  if (!isSet(value)) {
+    return void 0;
+  }
+  const match = stripWhitespace(value).match(PERSONNUMMER_REGEXP);
+  if (!match) {
+    return void 0;
+  }
+  const { year, month, day, sign, check } = match.groups;
+  const dayWithoutSamordning = getDayWithoutSamordning(day);
+  const century = ((_a = match.groups) == null ? void 0 : _a.century) ?? resolveCentury(year, month, dayWithoutSamordning, sign === "+", now);
+  if (day === "60") {
+    return getPersonnummerString(century, year, month, day, check);
+  }
+  const date = FDate.fromYearMonthDay(century + year, month, dayWithoutSamordning);
+  if (!isValidDate(date, now)) {
+    return void 0;
+  }
+  return getPersonnummerString(century, year, month, day, check);
+}
+function parsePersonnummerLuhn(value) {
+  const parsed = parsePersonnummer(value);
+  if (!parsed) {
+    return void 0;
+  }
+  if (!validChecksum(parsed)) {
+    return void 0;
+  }
+  return parsed;
+}
+function formatPersonnummerToDate(value) {
+  var _a;
+  const datePart = parseDate(((_a = parsePersonnummer(value)) == null ? void 0 : _a.slice(0, 8)) || "");
+  if (!datePart) {
+    return void 0;
+  }
+  return FDate.fromIso(datePart);
+}
+const PLUSGIRO_REGEXP = /^\d{1,7}[-]?\d{1}$/;
+function hyphenShouldBeAdded(value) {
+  return value.length >= 2 && value.length <= 8;
+}
+function parsePlusgiro(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  value = value.replace(/ /g, "");
+  value = value.replace(/\D/g, "");
+  if (!PLUSGIRO_REGEXP.test(value) || !testLuhnChecksum(value.replace(/\D/g, ""))) {
+    return void 0;
+  }
+  if (hyphenShouldBeAdded(value)) {
+    value = `${value.substring(0, value.length - 1)}-${value[value.length - 1]}`;
+  }
+  const startOffset = 4;
+  let formattedString = value.substring(value.length - startOffset, value.length);
+  const step = 2;
+  for (let i = value.length - startOffset; i >= (value.length === 9 ? 3 : 1); i -= step) {
+    formattedString = `${value.substring(Math.max(i - step, 0), i)} ${formattedString}`;
+  }
+  if (value.length === 9) {
+    formattedString = value.substring(0, 1) + formattedString;
+  }
+  return formattedString;
+}
+const POSTAL_CODE_REGEXP = /^([1-9]{1}\d{2}) ?(\d{2})$/;
+function formatPostalCode(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  const match = value.match(POSTAL_CODE_REGEXP);
+  if (match === null) {
+    return void 0;
+  }
+  return `${match[1]} ${match[2]}`;
+}
+function parsePostalCode(value) {
+  return formatPostalCode(value);
+}
+const ORGANISATIONSNUMMER_REGEXP = /^([0-9]{6})-?([0-9]{4})$/;
+function parseOrganisationsnummer(value) {
+  if (isEmpty(value)) {
+    return void 0;
+  }
+  const match = value.match(ORGANISATIONSNUMMER_REGEXP);
+  if (!match) {
+    return void 0;
+  }
+  if (!testLuhnChecksum(`${match[1]}${match[2]}`)) {
+    return void 0;
+  }
+  return `${match[1]}-${match[2]}`;
+}
 function documentOrderComparator(a, b) {
   if (!a) {
     return 1;
@@ -10958,20 +9358,20 @@ function elementTop(element) {
 }
 function scrollTo(element, arg = 0) {
   if (typeof arg === "number") {
-    const offset2 = arg;
+    const offset = arg;
     const bodyRect = document.body.getBoundingClientRect();
     const elemRect = element.getBoundingClientRect();
-    const scroll = elemRect.top - bodyRect.top - offset2;
+    const scroll = elemRect.top - bodyRect.top - offset;
     window.scrollTo({ top: scroll, behavior: "smooth" });
     return Promise.resolve();
   } else {
     return scrollToSlow(element, arg.duration || 500, arg.offset || 0);
   }
 }
-function scrollToSlow(element, duration, offset2 = 0) {
+function scrollToSlow(element, duration, offset = 0) {
   const steps = duration / 1e3 * FRAMERATE;
   const interval = duration / steps;
-  const target = elementTop(element) - offset2;
+  const target = elementTop(element) - offset;
   const scrollRange = target - window.pageYOffset;
   function tween(s) {
     return target - easeInEaseOut(scrollRange, 0, s);
@@ -11056,36 +9456,24 @@ function pushFocus(element) {
 function popFocus(handle) {
   if (_focusElementStack.length === 0) {
     const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
-    {
+    if (configLogic.production) {
       console.error(emptyStackErrorMsg);
       return;
+    } else {
+      throw new Error(emptyStackErrorMsg);
     }
   }
   const top = _focusElementStack.pop();
   if ((top == null ? void 0 : top.id) !== handle[sym]) {
     const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top == null ? void 0 : top.id} but got ${handle[sym]}`;
-    {
+    if (configLogic.production) {
       console.error(outOfOrderErrorMsg);
       return;
+    } else {
+      throw new Error(outOfOrderErrorMsg);
     }
   }
   focus$1(top == null ? void 0 : top.element);
-}
-function handleTab(event, container) {
-  const elements = findTabbableElements(container);
-  let targetIndex = elements.indexOf(event.target);
-  if (event.shiftKey) {
-    targetIndex--;
-  } else {
-    targetIndex++;
-  }
-  if (targetIndex < 0) {
-    targetIndex = elements.length - 1;
-  } else if (targetIndex >= elements.length) {
-    targetIndex = 0;
-  }
-  focus$1(elements[targetIndex]);
-  event.preventDefault();
 }
 function isRadiobuttonOrCheckbox(element) {
   return element instanceof HTMLInputElement && (element.type === "radio" || element.type === "checkbox");
@@ -11476,8 +9864,8 @@ class ValidationServiceImpl {
       src = element2;
     }
     if (!isValidatableHTMLElement(src)) {
-      const tagName2 = src.tagName.toLowerCase();
-      const ref2 = `${tagName2}#${src.id}`;
+      const tagName = src.tagName.toLowerCase();
+      const ref2 = `${tagName}#${src.id}`;
       throw new Error(`Element "${ref2}" is not a validatable element`);
     }
     const element = src;
@@ -11508,8 +9896,8 @@ class ValidationServiceImpl {
       };
       element.addEventListener("validity", once);
       const watchdog = setTimeout(() => {
-        const tagName2 = element.tagName.toLowerCase();
-        const ref2 = `${tagName2}#${element.id}`;
+        const tagName = element.tagName.toLowerCase();
+        const ref2 = `${tagName}#${element.id}`;
         element.removeEventListener("validity", once);
         reject(`Element "${ref2}" did not respond with validity event after 500ms`);
       }, 500);
@@ -11746,6 +10134,407 @@ class ValidationServiceImpl {
   }
 }
 const ValidationService = /* @__PURE__ */ new ValidationServiceImpl();
+const allowListValidator = {
+  name: "allowList",
+  validation(value, element, config2) {
+    if (isEmpty(value) || config2.list === void 0 || config2.list.length === 0) {
+      return true;
+    }
+    return config2.list.includes(value);
+  }
+};
+const bankAccountNumberValidator = {
+  name: "bankAccountNumber",
+  validation(value) {
+    return isEmpty(value) || isSet(parseBankAccountNumber(value));
+  }
+};
+const bankgiroValidator = {
+  name: "bankgiro",
+  validation(value) {
+    return isEmpty(value) || isSet(parseBankgiro(value));
+  }
+};
+function toArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  } else {
+    return [value];
+  }
+}
+const blacklistValidator = {
+  name: "blacklist",
+  validation(value, _element, config2) {
+    if (!config2.values) {
+      throw new Error("config.exclude must have values");
+    }
+    const values = toArray(config2.values);
+    const found = values.some((it) => String(it) === value);
+    return !found;
+  }
+};
+const clearingNumberValidator = {
+  name: "clearingNumber",
+  validation(value) {
+    return isEmpty(value) || isSet(parseClearingNumber(value));
+  }
+};
+const currencyValidator = {
+  name: "currency",
+  validation(value) {
+    return isEmpty(value) || isSet(parseNumber(value));
+  }
+};
+const dateValidator = {
+  name: "date",
+  validation(value) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    const normalized = normalizeDateFormat(value);
+    if (!normalized) {
+      return false;
+    }
+    const parsed = FDate.fromIso(normalized);
+    return parsed.isValid();
+  }
+};
+const dateFormatValidator = {
+  name: "dateFormat",
+  validation(value) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    const normalized = normalizeDateFormat(value);
+    return Boolean(normalized);
+  }
+};
+function createNumberRegexp(minDecimals = 0, maxDecimals = 2) {
+  return new RegExp(`^([-−]?[0-9]+)([,.][0-9]{${minDecimals},${maxDecimals}})(?<![,.])$`);
+}
+const decimalValidator = {
+  name: "decimal",
+  validation(value, _element, config2) {
+    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
+    const minDecimalsAsNumber = isSet(config2.minDecimals) ? Number(config2.minDecimals) : void 0;
+    const maxDecimalsAsNumber = isSet(config2.maxDecimals) ? Number(config2.maxDecimals) : void 0;
+    if (config2.minDecimals && isNaN(minDecimalsAsNumber)) {
+      throw new Error("config.minDecimals must be a number");
+    }
+    if (config2.maxDecimals && isNaN(maxDecimalsAsNumber)) {
+      throw new Error("config.maxDecimals must be a number");
+    }
+    return isEmpty(valueWithoutWhitespace) || createNumberRegexp(minDecimalsAsNumber, maxDecimalsAsNumber).test(valueWithoutWhitespace);
+  }
+};
+const emailValidator = {
+  name: "email",
+  validation(value, _element, config2) {
+    const maxLength = config2.maxLength || 254;
+    const EMAIL_REGEXP = new RegExp(`^(?=.{1,${maxLength}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
+    return isEmpty(value) || EMAIL_REGEXP.test(value);
+  }
+};
+function numberValidator$1(value, config2, name, compare2) {
+  if (value === "") {
+    return true;
+  }
+  const limit = config2[name];
+  if (!isSet(limit)) {
+    return false;
+  }
+  const limitAsNumber = parseNumber(String(config2[name]));
+  if (limitAsNumber === void 0) {
+    throw new Error(`config.${String(name)} must be a number`);
+  }
+  const valueAsNumber = parseNumber(value);
+  if (valueAsNumber === void 0) {
+    return false;
+  }
+  return compare2(valueAsNumber, limitAsNumber);
+}
+const greaterThanValidator = {
+  name: "greaterThan",
+  validation(value, _element, config2) {
+    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 > limit);
+  }
+};
+const NUMBER_REGEXP = /^([-−]?[0-9]+)?$/;
+const integerValidator = {
+  name: "integer",
+  validation(value) {
+    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
+    return isEmpty(valueWithoutWhitespace) || NUMBER_REGEXP.test(valueWithoutWhitespace);
+  }
+};
+function isInvalidDatesConfig(value) {
+  return Boolean(value.dates);
+}
+const invalidDatesValidator = {
+  name: "invalidDates",
+  validation(value, element, config2) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    if (!isInvalidDatesConfig(config2)) {
+      throw new Error(`Invalid invalidDates config for ${element.id}`);
+    }
+    return !config2.dates.includes(value);
+  }
+};
+function isInvalidWeekdaysConfig(value) {
+  return Boolean(value.days);
+}
+const invalidWeekdaysValidator = {
+  name: "invalidWeekdays",
+  validation(value, element, config2) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    if (!isInvalidWeekdaysConfig(config2)) {
+      throw new Error(`Invalid invalidWeekdays config for ${element.id}`);
+    }
+    const day = FDate.fromIso(value).weekDay;
+    return !config2.days.includes(day);
+  }
+};
+const lessThanValidator = {
+  name: "lessThan",
+  validation(value, _element, config2) {
+    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 < limit);
+  }
+};
+const matchesValidator = {
+  name: "matches",
+  validation(value, _element, config2) {
+    if (!isSet(config2.id) || !isSet(value)) {
+      return true;
+    }
+    const el = document.getElementById(config2.id);
+    return el.value === value;
+  }
+};
+const maxDateValidator = {
+  name: "maxDate",
+  validation(value, _element, config2) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    const normalizedValue = normalizeDateFormat(value);
+    if (!normalizedValue) {
+      return false;
+    }
+    const parsed = FDate.fromIso(normalizedValue);
+    const limit = FDate.fromIso(validLimit(config2.limit));
+    return parsed.equals(limit) || parsed.isBefore(limit);
+  }
+};
+const maxLengthValidator = {
+  name: "maxLength",
+  validation(value, _element, config2) {
+    return config2.length ? value.length <= config2.length : true;
+  }
+};
+const maxValueValidator = {
+  name: "maxValue",
+  validation(value, _element, config2) {
+    return numberValidator$1(value, config2, this.name, (value2, limit) => value2 <= limit);
+  }
+};
+const minDateValidator = {
+  name: "minDate",
+  validation(value, _element, config2) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    const normalizedValue = normalizeDateFormat(value);
+    if (!normalizedValue) {
+      return false;
+    }
+    const parsed = FDate.fromIso(normalizedValue);
+    const limit = FDate.fromIso(validLimit(config2.limit));
+    return parsed.equals(limit) || parsed.isAfter(limit);
+  }
+};
+const minLengthValidator = {
+  name: "minLength",
+  validation(value, _element, config2) {
+    return config2.length && value ? value.length >= config2.length : true;
+  }
+};
+const minValueValidator = {
+  name: "minValue",
+  validation(value, _element, config2) {
+    return numberValidator$1(value, config2, this.name, (value2, limit) => value2 >= limit);
+  }
+};
+const numberValidator = {
+  name: "number",
+  validation(value) {
+    return isEmpty(value) || isSet(parseNumber(value));
+  }
+};
+const organisationsnummerValidator = {
+  name: "organisationsnummer",
+  validation(value) {
+    return isEmpty(value) || isSet(parseOrganisationsnummer(value));
+  }
+};
+const PERCENT_REGEXP = /^([-+]?[0-9]+)([,.][0-9]+)?$/;
+const percentValidator = {
+  name: "percent",
+  validation(value) {
+    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
+    return isEmpty(valueWithoutWhitespace) || PERCENT_REGEXP.test(valueWithoutWhitespace);
+  }
+};
+const personnummerFormatValidator = {
+  name: "personnummerFormat",
+  validation(value) {
+    return isEmpty(value) || isSet(parsePersonnummer(value));
+  }
+};
+const personnummerLuhnValidator = {
+  name: "personnummerLuhn",
+  validation(value) {
+    return isEmpty(value) || isSet(parsePersonnummerLuhn(value));
+  }
+};
+const personnummerNotSame = {
+  name: "personnummerNotSame",
+  validation(value, _element, config2) {
+    const valuePnr = parsePersonnummer(String(value));
+    if (!valuePnr) {
+      return true;
+    }
+    const otherFieldPnr = parsePersonnummer(String(config2.otherField));
+    if (!otherFieldPnr) {
+      return true;
+    }
+    if (valuePnr === otherFieldPnr) {
+      return false;
+    }
+    return true;
+  }
+};
+const personnummerOlder = {
+  name: "personnummerOlder",
+  validation(value, _element, config2) {
+    const valueAsDate = formatPersonnummerToDate(value);
+    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
+    if (!valueAsDate || !otherAsDate) {
+      return true;
+    }
+    return FDate.compare(valueAsDate, otherAsDate) !== 1;
+  }
+};
+const personnummerYounger = {
+  name: "personnummerYounger",
+  validation(value, _element, config2) {
+    const valueAsDate = formatPersonnummerToDate(value);
+    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
+    if (!valueAsDate || !otherAsDate) {
+      return true;
+    }
+    return FDate.compare(valueAsDate, otherAsDate) !== -1;
+  }
+};
+const PHONE_NUMBER_REGEXP = /^(\+?[-_/() ]*(\d[-_/() ]*?){3,17})$/;
+const phoneNumberValidator = {
+  name: "phoneNumber",
+  validation(value) {
+    if (isEmpty(value)) {
+      return true;
+    }
+    if (!isString(value) || value.length > 21) {
+      return false;
+    }
+    return PHONE_NUMBER_REGEXP.test(value);
+  }
+};
+const plusgiroValidator = {
+  name: "plusgiro",
+  validation(value) {
+    return isEmpty(value) || isSet(parsePlusgiro(value));
+  }
+};
+const postalCodeValidator = {
+  name: "postalCode",
+  validation(value) {
+    return isEmpty(value) || isSet(parsePostalCode(value));
+  }
+};
+const REQUIRED_REGEXP = /^\S+/;
+function isRelevantElement(input) {
+  return isRadiobuttonOrCheckbox(input) && !input.disabled;
+}
+function validateFieldset(fieldset) {
+  const inputs = Array.from(fieldset.elements).filter(isRelevantElement);
+  return inputs.length > 0 ? inputs.some((input) => input.checked) : true;
+}
+function validateChecked(element) {
+  return element.checked;
+}
+function validateInput(value) {
+  return REQUIRED_REGEXP.test(value);
+}
+const requiredValidator = {
+  name: "required",
+  validation(value, element) {
+    if (element instanceof HTMLFieldSetElement) {
+      return validateFieldset(element);
+    } else if (isRadiobuttonOrCheckbox(element)) {
+      return validateChecked(element);
+    } else {
+      return validateInput(value);
+    }
+  }
+};
+const WHITELIST_REGEXP = /^[a-zA-Z0-9 .,\-()\r\n?+=!:@*\xC0-\xFF]*$/;
+const whitelistValidator = {
+  name: "whitelist",
+  instant: true,
+  validation(value) {
+    return isEmpty(value) || WHITELIST_REGEXP.test(value);
+  }
+};
+const availableValidators = [
+  allowListValidator,
+  bankAccountNumberValidator,
+  bankgiroValidator,
+  blacklistValidator,
+  clearingNumberValidator,
+  currencyValidator,
+  dateFormatValidator,
+  dateValidator,
+  decimalValidator,
+  emailValidator,
+  greaterThanValidator,
+  integerValidator,
+  invalidDatesValidator,
+  invalidWeekdaysValidator,
+  lessThanValidator,
+  matchesValidator,
+  maxDateValidator,
+  maxLengthValidator,
+  maxValueValidator,
+  minDateValidator,
+  minLengthValidator,
+  minValueValidator,
+  numberValidator,
+  organisationsnummerValidator,
+  percentValidator,
+  personnummerFormatValidator,
+  personnummerLuhnValidator,
+  personnummerNotSame,
+  personnummerOlder,
+  personnummerYounger,
+  phoneNumberValidator,
+  plusgiroValidator,
+  postalCodeValidator,
+  requiredValidator,
+  whitelistValidator
+];
 const SCREEN_READER_DELAY = 100;
 function waitForScreenReader(callback, delay = SCREEN_READER_DELAY) {
   return new Promise((resolve2, reject) => {
@@ -14002,16 +12791,16 @@ function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
 var es_array_push = {};
-var isArray;
+var isArray$1;
 var hasRequiredIsArray$1;
 function requireIsArray$1() {
-  if (hasRequiredIsArray$1) return isArray;
+  if (hasRequiredIsArray$1) return isArray$1;
   hasRequiredIsArray$1 = 1;
   var classof2 = requireClassofRaw();
-  isArray = Array.isArray || function isArray2(argument) {
+  isArray$1 = Array.isArray || function isArray2(argument) {
     return classof2(argument) === "Array";
   };
-  return isArray;
+  return isArray$1;
 }
 var arraySetLength;
 var hasRequiredArraySetLength;
@@ -14186,7 +12975,7 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _export_sfc = (sfc, props) => {
+const _export_sfc$1 = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
     target[key] = val;
@@ -14204,7 +12993,32 @@ function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.spriteId
   }, null, 8, _hoisted_2$G)], 16, _hoisted_1$X);
 }
-const FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$Q]]);
+const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1d, [["render", _sfc_render$Q]]);
+const DATA_TEST_ATTRIBUTE_NAME = "data-test";
+function throwErrorIfEmpty(value) {
+  if (!value) {
+    throw new Error(`Did you forgot to add a value to v-test?`);
+  }
+}
+const TestDirective = {
+  mounted(el, {
+    value
+  }) {
+    throwErrorIfEmpty(value);
+    el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
+  },
+  updated(el, {
+    value
+  }) {
+    throwErrorIfEmpty(value);
+    el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
+  }
+};
+const TestPlugin = {
+  install(app2) {
+    app2.directive("test", TestDirective);
+  }
+};
 function translate(key, defaultValueOrArgs, args) {
   const {
     provider
@@ -16261,51 +15075,20 @@ function dispatchComponentValidityEvent(element, detail) {
     bubbles: true
   }));
 }
+function dispatchComponentUnmountEvent(element) {
+  const event = new CustomEvent("component-unmount", {
+    detail: {
+      elementId: element.id
+    },
+    bubbles: true
+  });
+  element.dispatchEvent(event);
+}
 function refIsElement(value) {
   return value instanceof Element;
 }
-function refIsHTMLElementArray(value) {
-  return Array.isArray(value) && value.length > 0 && value[0] instanceof HTMLElement;
-}
 function refIsVue(value) {
   return (value == null ? void 0 : value.$el) !== void 0;
-}
-function refIsVueArray(value) {
-  return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
-}
-function getSortedHTMLElementsFromVueRef(ref2) {
-  const htmlElements = getHTMLElementsFromVueRef(ref2);
-  htmlElements.sort((lhs, rhs) => {
-    const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
-    const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
-    return lhsIndex === rhsIndex ? 0 : lhsIndex - rhsIndex;
-  });
-  return htmlElements;
-}
-function parseIntOrDefault(value, defaultValue) {
-  if (typeof value === "string") {
-    const parsed = parseInt(value, 10);
-    if (!isNaN(parsed)) {
-      return parsed;
-    }
-  }
-  return defaultValue;
-}
-function getHTMLElementsFromVueRef(ref2) {
-  let result = [];
-  if (isEmptyArray(ref2)) {
-    result = [];
-  } else if (refIsVueArray(ref2)) {
-    result = ref2.map((vueRef) => vueRef.$el);
-  } else if (refIsHTMLElementArray(ref2)) {
-    result = [...ref2];
-  } else if (isSet(ref2)) {
-    result = [getHTMLElementFromVueRef(ref2)];
-  }
-  return result;
-}
-function isEmptyArray(value) {
-  return Array.isArray(value) && value.length === 0;
 }
 function findElementFromVueRef(ref2) {
   if (refIsElement(ref2)) {
@@ -16355,6 +15138,7 @@ var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
   return FKUIConfigButtonOrder2;
 })(FKUIConfigButtonOrder || {});
 let popupContainer = document.body;
+let production = true;
 const config = {
   buttonOrder: FKUIConfigButtonOrder.RIGHT_TO_LEFT,
   teleportTarget: document.body,
@@ -16371,8 +15155,21 @@ const config = {
   },
   set popupContainer(value) {
     popupContainer = value;
+  },
+  set production(value) {
+    production = value;
+    configLogic.production = value;
+  },
+  get production() {
+    return production;
   }
 };
+function setRunningContext(app2) {
+  const fkuiContext = {
+    appContext: app2._context
+  };
+  app2.config.globalProperties.$fkui = fkuiContext;
+}
 const sizes = ["", "small", "medium", "large", "fullscreen", "fullwidth"];
 function sizeClass(size) {
   if (!sizes.includes(size)) {
@@ -16652,7 +15449,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$W)) : createCommentVNode("", true);
 }
-const FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$P]]);
+const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1c, [["render", _sfc_render$P]]);
 function prepareButtonList(src) {
   return src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
@@ -16812,7 +15609,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
-const FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$O]]);
+const FConfirmModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1b, [["render", _sfc_render$O]]);
 const GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 const ALIGNMENT = ["top", "center", "bottom"];
 const FLOAT = ["left", "center", "right"];
@@ -16896,7 +15693,7 @@ function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass(["iflex", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$N]]);
+const IFlex = /* @__PURE__ */ _export_sfc$1(_sfc_main$1a, [["render", _sfc_render$N]]);
 const _sfc_main$19 = /* @__PURE__ */ defineComponent({
   name: "IFlexItem",
   inheritAttrs: true,
@@ -16949,7 +15746,7 @@ function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass(["iflex__item", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-const IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$M]]);
+const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$19, [["render", _sfc_render$M]]);
 function focusError(item) {
   const element = document.querySelector(`#${item.id}`);
   if (!element) {
@@ -17082,7 +15879,7 @@ function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })]);
 }
-const FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$L]]);
+const FErrorList = /* @__PURE__ */ _export_sfc$1(_sfc_main$18, [["render", _sfc_render$L]]);
 var es_iterator_every = {};
 var hasRequiredEs_iterator_every;
 function requireEs_iterator_every() {
@@ -17246,7 +16043,7 @@ function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
   }, [renderSlot(_ctx.$slots, "default")], 32);
 }
-const FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$K]]);
+const FValidationGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$17, [["render", _sfc_render$K]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -17424,7 +16221,7 @@ function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["modelValue"]);
 }
-const FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$J]]);
+const FValidationForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$J]]);
 const _sfc_main$15 = /* @__PURE__ */ defineComponent({
   name: "FFormModal",
   components: {
@@ -17626,7 +16423,7 @@ function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
-const FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$I]]);
+const FFormModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$I]]);
 function isVueComponent(element) {
   return Boolean(element && typeof element === "object" && "$el" in element);
 }
@@ -17678,11 +16475,11 @@ function getTextContent(children, options) {
     }
   }).join("");
 }
-function renderSlotText(render2, props = {}, options) {
-  if (!render2) {
+function renderSlotText(render, props = {}, options) {
+  if (!render) {
     return void 0;
   }
-  const nodes = render2(props);
+  const nodes = render(props);
   if (nodes.length === 0) {
     return void 0;
   }
@@ -17725,45 +16522,6 @@ function _defineProperty(e, r, t) {
     writable: true
   }) : e[r] = t, e;
 }
-var MenuAction = /* @__PURE__ */ ((MenuAction2) => {
-  MenuAction2[MenuAction2["MOVE_NEXT"] = 0] = "MOVE_NEXT";
-  MenuAction2[MenuAction2["MOVE_PREV"] = 1] = "MOVE_PREV";
-  MenuAction2[MenuAction2["MOVE_FIRST"] = 2] = "MOVE_FIRST";
-  MenuAction2[MenuAction2["MOVE_LAST"] = 3] = "MOVE_LAST";
-  MenuAction2[MenuAction2["ACTIVATE"] = 4] = "ACTIVATE";
-  return MenuAction2;
-})(MenuAction || {});
-function actionFromKeyboardEvent(event) {
-  switch (event.key) {
-    case "End":
-      return MenuAction.MOVE_LAST;
-    case "Home":
-      return MenuAction.MOVE_FIRST;
-    case "Up":
-    case "ArrowUp":
-      return MenuAction.MOVE_PREV;
-    case "Down":
-    case "ArrowDown":
-      return MenuAction.MOVE_NEXT;
-    case "Left":
-    case "ArrowLeft":
-      return MenuAction.MOVE_PREV;
-    case "Right":
-    case "ArrowRight":
-      return MenuAction.MOVE_NEXT;
-    case "Tab":
-      if (event.shiftKey) {
-        return MenuAction.MOVE_PREV;
-      }
-      return MenuAction.MOVE_NEXT;
-    case " ":
-    case "Spacebar":
-    case "Enter":
-      return MenuAction.ACTIVATE;
-    default:
-      return null;
-  }
-}
 function getAbsolutePosition(src) {
   if (!src) {
     return void 0;
@@ -17785,6 +16543,73 @@ function getAbsolutePosition(src) {
     height: Math.floor(rect.height)
   };
 }
+function getValidatableElement(element) {
+  if (isValidatableHTMLElement(element)) {
+    return element;
+  }
+  const validatableInsideElement = element.querySelector("input, textarea, select");
+  if (validatableInsideElement) {
+    return validatableInsideElement;
+  } else {
+    throw new Error(`Couldn't find any validatable element`);
+  }
+}
+function triggerInitialValidation(el) {
+  const target = getValidatableElement(el);
+  ValidationService.validateElement(target);
+}
+function registerValidators(el, binding) {
+  const {
+    modifiers: bindingModifiers = {},
+    value: bindingValue = {}
+  } = binding;
+  const target = getValidatableElement(el);
+  Object.keys(bindingValue).forEach((validatorName) => {
+    if (!bindingModifiers[validatorName]) {
+      throw new Error(`Have you forget to add '${validatorName}' to v-validation.${validatorName}?`);
+    }
+  });
+  const validatorConfigs = {};
+  Object.keys(bindingModifiers).forEach((validatorName) => {
+    validatorConfigs[validatorName] = bindingValue[validatorName] || {};
+  });
+  ValidationService.addValidatorsToElement(target, validatorConfigs);
+}
+const ValidationDirective = {
+  beforeMount(el, binding) {
+    registerValidators(el, binding);
+  },
+  beforeUnmount(el, _binding) {
+    const validatableElement = getValidatableElement(el);
+    dispatchComponentUnmountEvent(validatableElement);
+    ValidationService.removeValidatorsFromElement(validatableElement);
+  },
+  updated(el, binding) {
+    if (!isEqual$1(binding.value, binding.oldValue)) {
+      registerValidators(el, binding);
+    }
+  },
+  mounted(el) {
+    triggerInitialValidation(el);
+  }
+};
+const ValidationPrefixDirective = {
+  beforeMount(el, binding) {
+    el.addEventListener("component-validity", (event) => {
+      const e = event;
+      e.detail.errorMessage = `${binding.value}${e.detail.errorMessage}`;
+    });
+  }
+};
+const ValidationPlugin = {
+  install(app2) {
+    for (const validator of availableValidators) {
+      ValidationService.registerValidator(validator);
+    }
+    app2.directive("validation", ValidationDirective);
+    app2.directive("validationPrefix", ValidationPrefixDirective);
+  }
+};
 function useEventListener$1(target, event, callback) {
   onMounted(() => {
     var _a;
@@ -17871,24 +16696,7 @@ function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
-const FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$A]]);
-function offset(page, el) {
-  const rect = el.getBoundingClientRect();
-  return {
-    top: rect.top + page.pageYOffset,
-    left: rect.left + page.pageXOffset
-  };
-}
-function getElement(anchor) {
-  if (!anchor) {
-    return null;
-  }
-  if (typeof anchor === "string") {
-    return document.getElementById(anchor);
-  } else {
-    return anchor;
-  }
-}
+const FExpand = /* @__PURE__ */ _export_sfc$1(_sfc_main$Y, [["render", _sfc_render$A]]);
 var Placement = /* @__PURE__ */ ((Placement2) => {
   Placement2["A"] = "A";
   Placement2["B"] = "B";
@@ -18089,19 +16897,6 @@ function fitInsideArea(options) {
     /* Fallback */
   };
 }
-function getScrollToPopup(param) {
-  const popupOffset = offset({
-    pageXOffset: 0,
-    pageYOffset: param.scrollTop
-  }, param.popup);
-  const popupHeight = param.popup.offsetHeight;
-  const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
-  if (neededScroll > param.scrollTop) {
-    return neededScroll;
-  } else {
-    return param.scrollTop;
-  }
-}
 function getFallbackPosition(anchor, target, clippedArea, spacing) {
   const x = anchor.x - (target.width + spacing);
   const y = anchor.y + anchor.height + spacing;
@@ -18117,348 +16912,6 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
     };
   }
 }
-function getContainer(element, prop) {
-  if (prop) {
-    return prop;
-  }
-  const parent = element.closest(".popup__container");
-  if (parent) {
-    return parent;
-  }
-  return config.popupContainer;
-}
-function getFocusableElement(rootElement, callback) {
-  var _elements$;
-  if (callback) {
-    return callback();
-  }
-  const popupElement = getHTMLElementFromVueRef(rootElement);
-  const elements = findTabbableElements(popupElement);
-  return (_elements$ = elements[0]) !== null && _elements$ !== void 0 ? _elements$ : null;
-}
-const MIN_DESKTOP_WIDTH = 640;
-const POPUP_SPACING$1 = 20;
-function isTeleportDisabled(options) {
-  const {
-    window: window2,
-    placement,
-    forceInline,
-    forceOverlay
-  } = options;
-  const isMobileSize = window2.innerWidth < MIN_DESKTOP_WIDTH;
-  let disableTeleport = isMobileSize || placement === Placement.Fallback;
-  if (forceInline) {
-    disableTeleport = true;
-  } else if (forceOverlay) {
-    disableTeleport = false;
-  } else if (placement === Placement.NotCalculated && !isMobileSize) {
-    disableTeleport = false;
-  }
-  return disableTeleport;
-}
-const _sfc_main$X = /* @__PURE__ */ defineComponent({
-  name: "IPopup",
-  inheritAttrs: false,
-  props: {
-    /**
-     * Toggle open/closed popup.
-     */
-    isOpen: {
-      type: Boolean,
-      required: true
-    },
-    /**
-     * DOM element to position popup at.
-     */
-    anchor: {
-      type: HTMLElement,
-      required: false,
-      default: void 0
-    },
-    /**
-     * Type of inline behaviour.
-     * - `"auto"` changes between overlay or inline depending on window size.
-     * - `"always"` forces the popup to always be inline.
-     * - `"never"` forces the popup to never be inline.
-     */
-    inline: {
-      type: String,
-      required: false,
-      validator(value) {
-        return ["always", "never", "auto"].includes(value);
-      },
-      default: "auto"
-    },
-    /**
-     * Which element to use as container.
-     */
-    container: {
-      type: HTMLElement,
-      required: false,
-      default: void 0
-    },
-    /**
-     * Which element to use as viewport.
-     */
-    viewport: {
-      type: HTMLElement,
-      required: false,
-      default() {
-        return document.documentElement;
-      }
-    },
-    /**
-     * Prevents tabbing outside of component.
-     */
-    keyboardTrap: {
-      type: Boolean,
-      required: false,
-      default: true
-    },
-    /**
-     * Function that returns the element that will receive focus
-     */
-    focusElement: {
-      type: Function,
-      required: false,
-      default: null
-    },
-    /**
-     * Set focus on first tabbable element (or element in the `focusElement` prop if provided) when opened.
-     */
-    setFocus: {
-      type: Boolean,
-      required: false,
-      default: true
-    }
-  },
-  emits: [
-    /**
-     * Emitted when popup is visible and placement is fully calculated.
-     */
-    "open",
-    /**
-     * Emitted when clicked outside of popup.
-     */
-    "close"
-  ],
-  data() {
-    return {
-      teleportDisabled: false,
-      placement: Placement.NotCalculated,
-      focus: null
-    };
-  },
-  computed: {
-    popupClasses() {
-      const popupState = this.isInline ? ["popup--inline"] : ["popup--overlay"];
-      return ["popup", ...popupState];
-    },
-    isInline() {
-      let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
-      if (this.forceInline) {
-        isInline = true;
-      } else if (this.forceOverlay) {
-        isInline = false;
-      } else if (this.placement === Placement.NotCalculated && !this.isMobileSize()) {
-        isInline = false;
-      }
-      return isInline;
-    },
-    forceInline() {
-      return this.inline === "always";
-    },
-    forceOverlay() {
-      return this.inline === "never";
-    },
-    teleportTarget() {
-      return config.teleportTarget;
-    }
-  },
-  watch: {
-    isOpen: {
-      immediate: true,
-      handler(value) {
-        this.toggleIsOpen(value);
-        if (value) {
-          const {
-            placement,
-            forceInline,
-            forceOverlay
-          } = this;
-          this.teleportDisabled = isTeleportDisabled({
-            window,
-            placement,
-            forceInline,
-            forceOverlay
-          });
-          setTimeout(() => {
-            if (this.isOpen) {
-              document.addEventListener("click", this.onDocumentClickHandler);
-              window.addEventListener("resize", this.onWindowResizeDebounced);
-            }
-          }, 0);
-        } else {
-          document.removeEventListener("click", this.onDocumentClickHandler);
-          window.removeEventListener("resize", this.onWindowResizeDebounced);
-        }
-      }
-    }
-  },
-  created() {
-    this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
-  },
-  unmounted() {
-    document.removeEventListener("click", this.onDocumentClickHandler);
-    window.removeEventListener("resize", this.onWindowResizeDebounced);
-  },
-  methods: {
-    async toggleIsOpen(isOpen) {
-      if (!isOpen) {
-        this.placement = Placement.NotCalculated;
-        if (this.focus) {
-          popFocus(this.focus);
-          this.focus = null;
-        }
-        return;
-      }
-      await this.$nextTick();
-      await this.calculatePlacement();
-      this.applyFocus();
-      this.$emit("open");
-    },
-    async calculatePlacement() {
-      const popup = getHTMLElementFromVueRef(this.$refs.popup);
-      const wrapper2 = getHTMLElementFromVueRef(this.$refs.wrapper);
-      const anchor = getElement(this.anchor);
-      if (!anchor) {
-        throw new Error("No anchor element found");
-      }
-      const shouldCheckCandidates = this.forceOverlay || !(this.isMobileSize() || this.forceInline);
-      if (shouldCheckCandidates) {
-        const area = getContainer(popup, this.container);
-        const viewport = this.viewport;
-        const result = fitInsideArea({
-          area,
-          anchor,
-          target: wrapper2,
-          viewport,
-          spacing: POPUP_SPACING$1,
-          candidateOrder: CandidateOrder.Default
-        });
-        this.placement = result.placement;
-        const useOverlay = this.forceOverlay || result.placement !== Placement.Fallback;
-        if (useOverlay) {
-          wrapper2.style.left = `${result.x}px`;
-          wrapper2.style.top = `${result.y}px`;
-          return;
-        }
-      }
-      this.teleportDisabled = true;
-      wrapper2.style.removeProperty("left");
-      wrapper2.style.removeProperty("top");
-      await new Promise((resolve2) => setTimeout(resolve2, 200));
-      const scrollTarget = popup.closest(".scroll-target");
-      const hasScrollTarget = scrollTarget !== null;
-      const top = getScrollToPopup({
-        popup: wrapper2,
-        windowInnerHeight: window.innerHeight,
-        scrollTop: hasScrollTarget ? scrollTarget.scrollTop : window.scrollY,
-        spacing: POPUP_SPACING$1
-      });
-      const scrollOptions = {
-        top,
-        behavior: "smooth"
-      };
-      if (hasScrollTarget) {
-        scrollTarget.scrollTo(scrollOptions);
-      } else {
-        window.scrollTo(scrollOptions);
-      }
-    },
-    applyFocus() {
-      if (!this.setFocus) {
-        return;
-      }
-      const wrapper2 = this.$refs.wrapper;
-      if (!wrapper2) {
-        return;
-      }
-      const focusableElement = getFocusableElement(wrapper2, this.focusElement);
-      this.focus = pushFocus(focusableElement);
-    },
-    isMobileSize() {
-      return window.innerWidth < MIN_DESKTOP_WIDTH;
-    },
-    onDocumentClickHandler() {
-      this.$emit("close");
-    },
-    onWindowResizeDebounced() {
-    },
-    async onWindowResize() {
-      if (!this.isOpen) {
-        return;
-      }
-      if (this.forceInline) {
-        return;
-      }
-      if (this.isInline && this.isMobileSize()) {
-        return;
-      }
-      if (this.isInline) {
-        this.placement = Placement.NotCalculated;
-        this.teleportDisabled = false;
-        await this.$nextTick();
-      }
-      await this.calculatePlacement();
-      const {
-        placement,
-        forceInline,
-        forceOverlay
-      } = this;
-      this.teleportDisabled = isTeleportDisabled({
-        window,
-        placement,
-        forceInline,
-        forceOverlay
-      });
-    },
-    onPopupClickHandler(event) {
-      event.stopPropagation();
-    },
-    onKeyEsc() {
-      this.$emit("close");
-    },
-    onKeyTab(event) {
-      if (this.keyboardTrap) {
-        const wrapper2 = getHTMLElementFromVueRef(this.$refs.wrapper);
-        handleTab(event, wrapper2);
-      }
-    }
-  }
-});
-function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
-    key: 0,
-    to: _ctx.teleportTarget,
-    disabled: _ctx.teleportDisabled
-  }, [createBaseVNode("div", mergeProps({
-    ref: "popup"
-  }, _ctx.$attrs, {
-    class: _ctx.popupClasses
-  }), [createBaseVNode("div", {
-    ref: "wrapper",
-    role: "presentation",
-    class: "popup__wrapper",
-    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onPopupClickHandler && _ctx.onPopupClickHandler(...args)),
-    onKeyup: _cache[1] || (_cache[1] = withKeys(withModifiers((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
-    onKeydown: _cache[2] || (_cache[2] = withKeys((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
-  }, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
-    toggleIsOpen: _ctx.toggleIsOpen,
-    placement: _ctx.placement
-  })))], 544)], 16)], 8, ["to", "disabled"])) : createCommentVNode("", true);
-}
-const IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$z]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   switch (placement) {
     case Placement.A: {
@@ -18688,7 +17141,7 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     class: "button__icon"
   })])], 6)], 512)], 2)], 8, ["to", "disabled"])) : createCommentVNode("", true);
 }
-const IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$y]]);
+const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$W, [["render", _sfc_render$y]]);
 function numItems(itemHeight, availableHeight, verticalSpacing) {
   const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
   return Math.min(itemsFit, 7);
@@ -18918,371 +17371,6 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function getNewItemIndexFromMenuAction$2(action, index, n) {
-  let newIndex;
-  if (n <= 0) {
-    return 0;
-  }
-  switch (action) {
-    case MenuAction.MOVE_NEXT:
-      newIndex = (index + 1) % n;
-      break;
-    case MenuAction.MOVE_PREV:
-      newIndex = (index - 1 + n) % n;
-      break;
-    case MenuAction.MOVE_FIRST:
-      newIndex = 0;
-      break;
-    case MenuAction.MOVE_LAST:
-      newIndex = Math.max(n - 1, 0);
-      break;
-    default:
-      newIndex = index;
-  }
-  return newIndex;
-}
-async function doMenuAction$2(action, target) {
-  const itemsLength = target.items.length;
-  const currentIndex = target.currentFocusedItemIndex;
-  const newFocusedItemIndex = getNewItemIndexFromMenuAction$2(action, currentIndex, itemsLength);
-  switch (action) {
-    case MenuAction.MOVE_NEXT:
-    case MenuAction.MOVE_PREV:
-    case MenuAction.MOVE_FIRST:
-    case MenuAction.MOVE_LAST:
-      await target.setFocusOnItem(newFocusedItemIndex);
-      break;
-    case MenuAction.ACTIVATE:
-      await target.activateItem(newFocusedItemIndex);
-      break;
-  }
-}
-const preventKeys$2 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
-const _sfc_main$U = /* @__PURE__ */ defineComponent({
-  name: "IPopupMenu",
-  components: {
-    IPopup
-  },
-  props: {
-    /**
-     * Key of the currently selected and highlighted item.
-     *
-     * @model
-     */
-    modelValue: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * Key of the currently focused item.
-     * Sets focus on matching item element when value changes.
-     *
-     * @model
-     */
-    focusedItem: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * Toggle open/closed popup.
-     */
-    isOpen: {
-      type: Boolean,
-      required: true
-    },
-    /**
-     * DOM element to position popup at.
-     */
-    anchor: {
-      type: HTMLElement,
-      default: void 0
-    },
-    /**
-     * The items to be diplayed in the menu
-     */
-    items: {
-      type: Array,
-      required: true
-    },
-    /**
-     * If true, enable built-in keyboard navigation
-     */
-    enableKeyboardNavigation: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    /**
-     * Unique accessible name for navigation landmark.
-     */
-    ariaLabel: {
-      type: String,
-      required: false,
-      default: "Popupmeny"
-    },
-    /**
-     * Text for selected item for screen reader
-     */
-    selectedMenuItemScreenReaderText: {
-      type: String,
-      required: false,
-      default: "vald nu"
-    }
-  },
-  emits: [
-    /**
-     * Emitted when an item is selected and when tabbing out of the popup.
-     *
-     * @event close
-     */
-    "close",
-    /**
-     * Emitted when an item is selected.
-     *
-     * @event select
-     * @type {string} item key
-     */
-    "select",
-    /**
-     * V-model event. Emitted when an item is selected.
-     *
-     * @event select
-     * @type {string} item key
-     */
-    "update:modelValue",
-    /**
-     * V-model event. Emitted when item focus changes.
-     *
-     * @event select
-     * @type {string} Key of focused item, or empty if no item focused.
-     */
-    "update:focusedItem"
-  ],
-  data() {
-    return {
-      currentFocusedItemIndex: 0,
-      lastSelectedItem: ""
-    };
-  },
-  watch: {
-    isOpen: {
-      immediate: true,
-      async handler(newVal) {
-        if (newVal) {
-          return;
-        }
-        this.currentFocusedItemIndex = 0;
-        this.lastSelectedItem = "";
-        this.$emit("update:focusedItem", "");
-      }
-    },
-    modelValue: {
-      async handler(newVal) {
-        if (this.enableKeyboardNavigation) {
-          return;
-        }
-        const index = this.indexOfItemByKey(newVal);
-        if (index >= 0) {
-          await this.activateItem(index);
-        } else {
-          this.setFocusedItemIndex(0);
-        }
-      }
-    },
-    focusedItem: {
-      async handler(newVal) {
-        if (newVal.length === 0) {
-          return;
-        }
-        const index = this.indexOfItemByKey(newVal);
-        if (index >= 0) {
-          await this.setFocusOnItem(index);
-        } else {
-          this.setFocusedItemIndex(0);
-        }
-      }
-    }
-  },
-  methods: {
-    isSelected(index) {
-      return this.items[index].key === this.modelValue;
-    },
-    focusElement() {
-      return null;
-    },
-    findItemByKey(key) {
-      return this.items.find((it) => it.key === key);
-    },
-    indexOfItemByKey(key) {
-      const item = this.findItemByKey(key);
-      if (!item) {
-        return -1;
-      }
-      return this.items.indexOf(item);
-    },
-    onClickItem(event, item) {
-      this.selectItem(item.key);
-      const target = event.target;
-      const isAnchor = target instanceof HTMLElement && target.tagName === "A";
-      if (!isAnchor) {
-        this.clickItemAnchor(item);
-      }
-    },
-    clickItemAnchor(item) {
-      if (!item.href) {
-        return;
-      }
-      const index = this.items.indexOf(item);
-      const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-      anchors[index].click();
-    },
-    selectItem(key) {
-      if (key !== this.lastSelectedItem) {
-        this.$emit("update:modelValue", key);
-        this.$emit("select", key);
-        this.lastSelectedItem = key;
-      }
-      this.$emit("close");
-    },
-    itemClasses(item) {
-      const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
-      return ["ipopupmenu__list__item", ...highlight];
-    },
-    async setFocusOnItem(index) {
-      this.setFocusedItemIndex(index);
-      await this.$nextTick();
-      if (!this.isOpen) {
-        return;
-      }
-      const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-      if (anchors.length === 0) {
-        return;
-      }
-      const itemAnchor = anchors[index];
-      focus$1(itemAnchor, {
-        preventScroll: true
-      });
-      const key = this.items[index].key;
-      this.$emit("update:focusedItem", key);
-    },
-    async activateItem(index) {
-      if (index !== this.currentFocusedItemIndex) {
-        await this.setFocusOnItem(index);
-      }
-      const item = this.items[index];
-      this.selectItem(item.key);
-      this.clickItemAnchor(item);
-    },
-    setFocusedItemIndex(index) {
-      this.currentFocusedItemIndex = index;
-    },
-    onKeyUp(event) {
-      if (!this.enableKeyboardNavigation) {
-        return;
-      }
-      if (preventKeys$2.includes(event.key)) {
-        event.preventDefault();
-      }
-    },
-    async onKeyDown(event) {
-      if (!this.enableKeyboardNavigation) {
-        return;
-      }
-      if (!preventKeys$2.includes(event.key)) {
-        return;
-      }
-      const firstItemFocused = this.currentFocusedItemIndex === 0;
-      const lastItemFocused = this.currentFocusedItemIndex === this.items.length - 1;
-      const tabOutPrev = event.key === "Tab" && event.shiftKey && firstItemFocused;
-      const tabOutNext = event.key === "Tab" && !event.shiftKey && lastItemFocused;
-      if (tabOutPrev || tabOutNext) {
-        if (tabOutPrev) {
-          event.preventDefault();
-        }
-        this.$emit("close");
-        return;
-      }
-      const action = actionFromKeyboardEvent(event);
-      if (action === null) {
-        return;
-      }
-      event.preventDefault();
-      await doMenuAction$2(action, this);
-    }
-  }
-});
-const _hoisted_1$I = ["aria-label"];
-const _hoisted_2$v = {
-  role: "menu",
-  class: "ipopupmenu__list"
-};
-const _hoisted_3$q = ["onClick"];
-const _hoisted_4$l = ["data-ref-index", "href", "target"];
-const _hoisted_5$h = {
-  key: 0,
-  class: "sr-only"
-};
-function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_i_popup = resolveComponent("i-popup");
-  return openBlock(), createBlock(_component_i_popup, {
-    class: "ipopupmenu",
-    "is-open": _ctx.isOpen,
-    "keyboard-trap": false,
-    anchor: _ctx.anchor,
-    "focus-element": _ctx.focusElement,
-    onClose: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("close")),
-    onKeyup: _ctx.onKeyUp,
-    onKeydown: _ctx.onKeyDown
-  }, {
-    default: withCtx(() => [createBaseVNode("nav", {
-      class: "ipopupmenu ipopupmenu--vertical",
-      "aria-label": _ctx.ariaLabel
-    }, [createBaseVNode("ul", _hoisted_2$v, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
-      return openBlock(), createElementBlock("li", {
-        ref_for: true,
-        ref: "items",
-        key: item.key,
-        role: "presentation",
-        class: normalizeClass(_ctx.itemClasses(item)),
-        onClick: (event) => _ctx.onClickItem(event, item)
-      }, [createBaseVNode("a", {
-        ref_for: true,
-        ref: "anchors",
-        "data-ref-index": index,
-        href: item.href,
-        role: "menuitem",
-        target: item.target,
-        tabindex: "0"
-      }, [_ctx.isSelected(index) ? (openBlock(), createElementBlock("span", _hoisted_5$h, [createBaseVNode("span", null, toDisplayString(_ctx.selectedMenuItemScreenReaderText) + " ", 1)])) : createCommentVNode("", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$l)], 10, _hoisted_3$q);
-    }), 128))])], 8, _hoisted_1$I)]),
-    _: 1
-  }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
-}
-const IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$x]]);
-const _sfc_main$S = /* @__PURE__ */ defineComponent({
-  name: "ISkipLink",
-  mixins: [TranslationMixin],
-  props: {
-    /**
-     * Target for skiplink.
-     */
-    href: {
-      type: String,
-      required: false,
-      default: "main"
-    }
-  }
-});
-const _hoisted_1$G = ["href"];
-function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("a", {
-    class: "iskiplink",
-    href: _ctx.href
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.skip-link.text", "Gå direkt till innehåll")), 1)])], 8, _hoisted_1$G);
-}
-const ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$v]]);
 function filterOptions(options, filter2, selectMode) {
   if (isEmpty(filter2) || selectMode) {
     return options;
@@ -20121,7 +18209,7 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$r)], 34);
 }
-const FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$s]]);
+const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$N, [["render", _sfc_render$s]]);
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
 function requireEs_iterator_some() {
@@ -21198,7 +19286,7 @@ function FTableInjected() {
     const internalVisible = ref(true);
     const renderElement = ref(true);
     const id = ElementIdService.generateElementId("column");
-    const el = useTemplateRef("el");
+    const el = useTemplateRef("element");
     const props = __props;
     const classes = computed(() => {
       return ["table__column", `table__column--${props.type}`];
@@ -21249,8 +19337,7 @@ function FTableInjected() {
     return (_ctx, _cache) => {
       return renderElement.value && internalVisible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
         key: 0,
-        ref_key: "el",
-        ref: el,
+        ref: "element",
         class: classes.value,
         scope: scope.value
       }, _ctx.$attrs), {
@@ -21355,7 +19442,7 @@ function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$b));
 }
-const FLabel = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$p]]);
+const FLabel = /* @__PURE__ */ _export_sfc$1(_sfc_main$I, [["render", _sfc_render$p]]);
 function resolveWidthClass$1(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -21538,7 +19625,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     name: "arrow-down"
   })], 2)], 34);
 }
-const FSelectField = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$o]]);
+const FSelectField = /* @__PURE__ */ _export_sfc$1(_sfc_main$H, [["render", _sfc_render$o]]);
 function resolveWidthClass(words, inline) {
   return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -22027,7 +20114,7 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.onDropdownClose
   }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node", "onSelect", "onClose"])) : createCommentVNode("", true)], 2);
 }
-const FTextField = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$n]]);
+const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$G, [["render", _sfc_render$n]]);
 /* @__PURE__ */ defineComponent({
   name: "FEmailTextField",
   components: {
@@ -23096,7 +21183,7 @@ const _hoisted_22 = ["colspan"];
       expandableRows,
       hasExpandableContent
     } = expandableTable;
-    const tbodyElement = useTemplateRef("tbodyElement");
+    const tbody = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
         stripClasses: []
@@ -23178,21 +21265,21 @@ const _hoisted_22 = ["colspan"];
       immediate: true,
       deep: true
     });
-    function updateTr(tbodyElement2) {
-      const trElements = [].slice.call(tbodyElement2.children);
+    function updateTr(tbodyElement) {
+      const trElements = [].slice.call(tbodyElement.children);
       const trInteractableElements = trElements.filter((tr2) => {
         return tr2.tabIndex === 0;
       });
       tr.value = trInteractableElements;
     }
     onUpdated(() => {
-      if (tbodyElement.value) {
-        updateTr(tbodyElement.value);
+      if (tbody.value) {
+        updateTr(tbody.value);
       }
     });
     onMounted(() => {
-      if (tbodyElement.value) {
-        updateTr(tbodyElement.value);
+      if (tbody.value) {
+        updateTr(tbody.value);
       }
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
@@ -23378,8 +21465,7 @@ const _hoisted_22 = ["colspan"];
           name: iconName(column)
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_11$1, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
       }), 128))])]), _cache[18] || (_cache[18] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
-        ref_key: "tbodyElement",
-        ref: tbodyElement,
+        ref: "tbodyElement",
         key: tbodyKey.value
       }, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row, index) => {
         return openBlock(), createElementBlock(Fragment, {
@@ -23488,7 +21574,7 @@ const __default__ = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _sfc_main$e = /* @__PURE__ */ defineComponent({
+/* @__PURE__ */ defineComponent({
   ...__default__,
   __name: "FLogo",
   props: {
@@ -23516,561 +21602,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function findOverflowIndex(totalWidth, elements) {
-  let sum = 0;
-  const index = elements.findIndex((element) => {
-    sum += element.offsetWidth;
-    return sum > totalWidth;
-  });
-  return index < 1 ? index : index - 1;
-}
-function getNewItemIndexFromMenuAction(action, index, maxIndex) {
-  const minIndex = 0;
-  const nextIndex = index + 1;
-  const prevIndex = index - 1;
-  let newIndex;
-  switch (action) {
-    case MenuAction.MOVE_NEXT:
-      newIndex = nextIndex > maxIndex ? minIndex : nextIndex;
-      break;
-    case MenuAction.MOVE_PREV:
-      newIndex = prevIndex < minIndex ? maxIndex : prevIndex;
-      break;
-    case MenuAction.MOVE_FIRST:
-      newIndex = minIndex;
-      break;
-    case MenuAction.MOVE_LAST:
-      newIndex = maxIndex;
-      break;
-    default:
-      newIndex = index;
-  }
-  return newIndex;
-}
-async function doMenuAction(action, target, currentIndex, maxIndex) {
-  const itemIndex = getNewItemIndexFromMenuAction(action, currentIndex, maxIndex);
-  switch (action) {
-    case MenuAction.MOVE_NEXT:
-    case MenuAction.MOVE_PREV:
-    case MenuAction.MOVE_FIRST:
-    case MenuAction.MOVE_LAST:
-      await target.setFocusOnItem(itemIndex);
-      break;
-    case MenuAction.ACTIVATE:
-      await target.activateItem(itemIndex);
-      break;
-  }
-}
-const upKeys = ["Up", "ArrowUp"];
-const downKeys = ["Down", "ArrowDown"];
-const verticalKeys = [...upKeys, ...downKeys];
-const preventKeys = ["Tab", "Left", "Right", "ArrowLeft", "ArrowRight", "Home", "End", " ", "Spacebar", "Enter", ...verticalKeys];
-const _sfc_main$c = /* @__PURE__ */ defineComponent({
-  name: "FNavigationMenu",
-  components: {
-    FIcon,
-    IPopupMenu
-  },
-  mixins: [TranslationMixin],
-  props: {
-    /**
-     * Current route.
-     */
-    route: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * The route items to be diplayed in the menu
-     */
-    routes: {
-      type: Array,
-      required: true
-    },
-    /**
-     * If true, show the menu vertically
-     */
-    vertical: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    /**
-     * Screen reader text for selected item
-     */
-    selectedMenuItemScreenReaderText: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * Screen reader text for the more menu item
-     */
-    menuMoreScreenReaderText: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * Screen reader text for the more menu with selected items
-     */
-    menuMoreWithSelectedItemsScreenReaderText: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * Unique accessible name for navigation landmark in menu.
-     */
-    menuAriaLabel: {
-      type: String,
-      required: false,
-      default: "Navigeringsmeny"
-    },
-    /**
-     * Unique accessible name for navigation landmark in popup.
-     */
-    popupAriaLabel: {
-      type: String,
-      required: false,
-      default: "Popupmeny"
-    }
-  },
-  emits: [
-    /**
-     * Event that is dispatched when a menu item is selected, for example, by clicking on the item.
-     * In most use cases the event payload is used to call Vue `router.push()` from the consumer code.
-     *
-     * @event selectedRoute
-     * @param route
-     * @type {string}
-     */
-    "selectedRoute",
-    /**
-     * V-model event to update route property.
-     *
-     * @event update:route
-     * @param route
-     * @type {string}
-     */
-    "update:route"
-  ],
-  data() {
-    return {
-      selectedItem: "",
-      focusedPopupMenuItem: "",
-      overflowIndex: -1,
-      popupOpen: false,
-      popupAnchor: void 0,
-      resizeObserver: void 0
-    };
-  },
-  computed: {
-    items() {
-      if (!this.routes || !Array.isArray(this.routes)) {
-        return [];
-      }
-      return this.routes.map((i) => ({
-        label: i.label,
-        key: i.route,
-        href: i.href,
-        target: i.target
-      }));
-    },
-    overflowItems() {
-      return this.hasOverflow ? this.items.slice(this.overflowIndex) : [];
-    },
-    hasOverflow() {
-      return this.overflowIndex > -1 && !this.vertical;
-    },
-    overflowItemSelected() {
-      return this.overflowItems.some((item) => item.key === this.selectedItem);
-    },
-    menuClasses() {
-      const vertical = this.vertical ? ["imenu--vertical"] : ["imenu--horizontal"];
-      return ["imenu", ...vertical];
-    },
-    popupItemClasses() {
-      const highlight = this.overflowItemSelected ? ["imenu__list__item--highlight"] : [];
-      return ["imenu__popup-item__wrapper", "imenu__list__item", ...highlight];
-    },
-    selectedItemSrText() {
-      if (this.selectedMenuItemScreenReaderText === "") {
-        return this.$t("fkui.navigation-menu.current-page", "Aktuell sida");
-      } else {
-        return this.selectedMenuItemScreenReaderText;
-      }
-    },
-    popupLabel() {
-      return this.$t("fkui.navigation-menu.more-text", "Mer");
-    },
-    popupMenuSrText() {
-      return this.overflowItemSelected ? this.popupMenuSelectedSrText : this.menuMoreScreenReaderText;
-    },
-    popupMenuSelectedSrText() {
-      if (this.menuMoreWithSelectedItemsScreenReaderText === "") {
-        return this.$t("fkui.navigation-menu.more-selection", "underliggande vald nu");
-      } else {
-        return this.menuMoreWithSelectedItemsScreenReaderText;
-      }
-    }
-  },
-  watch: {
-    route: {
-      async handler(value) {
-        this.selectedItem = value;
-      },
-      immediate: true
-    },
-    routes: {
-      deep: true,
-      async handler() {
-        await this.$nextTick();
-        this.onResize();
-      }
-    }
-  },
-  mounted() {
-    this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
-    this.resizeObserver.observe(this.$el);
-    this.onResize();
-  },
-  unmounted() {
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-    }
-  },
-  methods: {
-    itemClasses(item, index) {
-      const hidden = this.hasOverflow && index >= this.overflowIndex ? ["imenu__list__item--hidden"] : [];
-      const highlight = item.key === this.selectedItem ? ["imenu__list__item--highlight"] : [];
-      return ["imenu__list__item", ...highlight, ...hidden];
-    },
-    showItemSrText(index) {
-      const isSelected = this.items[index].key === this.selectedItem;
-      const isVisible2 = index < this.overflowIndex;
-      return isSelected && isVisible2;
-    },
-    getVisibleAnchors() {
-      const itemAnchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-      const sliceEnd = this.hasOverflow ? this.overflowIndex : void 0;
-      const visibleItemAnchors = itemAnchors.slice(0, sliceEnd);
-      const popupItemAnchor = this.hasOverflow ? [getHTMLElementFromVueRef(this.$refs["popup-anchor"])] : [];
-      return [...visibleItemAnchors, ...popupItemAnchor];
-    },
-    getAnchor(index) {
-      const anchors = this.getVisibleAnchors();
-      return anchors[index];
-    },
-    findItemByKey(key) {
-      return this.items.find((it) => it.key === key);
-    },
-    indexOfItemByKey(key) {
-      const item = this.findItemByKey(key);
-      if (!item) {
-        return -1;
-      }
-      return this.items.indexOf(item);
-    },
-    selectItem(key) {
-      if (key !== this.selectedItem) {
-        this.selectedItem = key;
-      }
-      if (key !== this.route) {
-        this.$emit("update:route", key);
-        this.$emit("selectedRoute", key);
-      }
-    },
-    async activateItem(index) {
-      const popupItemFocused = this.hasOverflow && index === this.overflowIndex;
-      if (popupItemFocused) {
-        this.togglePopup(!this.popupOpen);
-        return;
-      }
-      const item = this.items[index];
-      this.selectItem(item.key);
-      this.clickItemAnchor(item);
-    },
-    onClickItem(event, item) {
-      this.selectItem(item.key);
-      const target = event.target;
-      const isAnchor = target instanceof HTMLElement && target.tagName === "A";
-      if (!isAnchor) {
-        this.clickItemAnchor(item);
-      }
-    },
-    clickItemAnchor(item) {
-      var _a;
-      if (!item.href) {
-        return;
-      }
-      const index = this.items.indexOf(item);
-      (_a = this.getAnchor(index)) == null ? void 0 : _a.click();
-    },
-    onPopupMenuItemSelected(key) {
-      this.selectItem(key);
-      if (key !== this.selectedItem) {
-        this.togglePopup(false);
-      }
-    },
-    togglePopup(open) {
-      if (open) {
-        this.popupAnchor = getHTMLElementFromVueRef(this.$refs["popup-item"]);
-      }
-      this.popupOpen = open;
-    },
-    async setFocusOnItem(index) {
-      if (this.popupOpen) {
-        this.togglePopup(false);
-        await this.$nextTick();
-      }
-      const itemAnchor = this.getAnchor(index);
-      focus(itemAnchor, {
-        preventScroll: true
-      });
-    },
-    async onResize() {
-      if (this.vertical) {
-        return;
-      }
-      const menu = getHTMLElementFromVueRef(this.$refs.menu);
-      const itemElements = getSortedHTMLElementsFromVueRef(this.$refs.items);
-      const menuWidth = menu.offsetWidth;
-      const foundOverflowIndex = findOverflowIndex(menuWidth, itemElements);
-      if (this.overflowIndex === foundOverflowIndex) {
-        return;
-      }
-      this.overflowIndex = foundOverflowIndex;
-      if (!this.hasOverflow) {
-        this.popupOpen = false;
-        return;
-      }
-      const popupWasOpen = this.popupOpen;
-      this.popupOpen = false;
-      await this.$nextTick();
-      const wrapper2 = getHTMLElementFromVueRef(this.$refs["popup-item"]);
-      wrapper2.style.left = "0";
-      const firstHiddenItem = itemElements[this.overflowIndex];
-      const firstHiddenItemRect = getAbsolutePosition(firstHiddenItem);
-      const wrapperRect = getAbsolutePosition(wrapper2);
-      const offset2 = wrapperRect.x - firstHiddenItemRect.x;
-      wrapper2.style.left = `-${offset2}px`;
-      this.popupOpen = popupWasOpen;
-    },
-    onKeyUp(event) {
-      if (preventKeys.includes(event.key)) {
-        event.preventDefault();
-      }
-    },
-    async onKeyDown(event) {
-      if (event.key === "Escape") {
-        this.togglePopup(false);
-        return;
-      }
-      if (!preventKeys.includes(event.key)) {
-        return;
-      }
-      const anchors = this.getVisibleAnchors();
-      const focusedIndex = anchors.findIndex((anchor) => anchor === event.target);
-      const lastItemIndex = anchors.length - 1;
-      const firstItemFocused = focusedIndex === 0;
-      const lastItemFocused = focusedIndex === lastItemIndex;
-      const tabPrev = event.key === "Tab" && event.shiftKey;
-      const tabNext = event.key === "Tab" && !event.shiftKey;
-      const shouldCheckPopupKeys = this.hasOverflow && lastItemFocused && this.popupOpen;
-      const popupKeyPressed = verticalKeys.includes(event.key) || tabNext;
-      if (shouldCheckPopupKeys && popupKeyPressed) {
-        event.preventDefault();
-        const index = upKeys.includes(event.key) ? this.overflowItems.length - 1 : 0;
-        this.focusedPopupMenuItem = this.overflowItems[index].key;
-        return;
-      }
-      if (tabPrev && firstItemFocused || tabNext && lastItemFocused) {
-        return;
-      }
-      const action = actionFromKeyboardEvent(event);
-      if (action === null) {
-        return;
-      }
-      event.preventDefault();
-      await doMenuAction(action, this, focusedIndex, lastItemIndex);
-    }
-  }
-});
-const _hoisted_1$c = ["aria-label"];
-const _hoisted_2$8 = ["data-ref-index", "onClick"];
-const _hoisted_3$6 = {
-  class: "imenu__list__anchor-container"
-};
-const _hoisted_4$4 = ["data-ref-index", "href", "target"];
-const _hoisted_5$3 = {
-  key: 0,
-  class: "sr-only"
-};
-const _hoisted_6$2 = {
-  key: 0,
-  class: "imenu__popup-item",
-  role: "none"
-};
-const _hoisted_7$1 = {
-  class: "imenu__list__anchor-container"
-};
-const _hoisted_8$1 = ["aria-expanded"];
-const _hoisted_9$1 = {
-  class: "sr-only"
-};
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = resolveComponent("f-icon");
-  const _component_i_popup_menu = resolveComponent("i-popup-menu");
-  return openBlock(), createElementBlock("nav", {
-    ref: "menu",
-    "aria-label": _ctx.menuAriaLabel,
-    class: normalizeClass(_ctx.menuClasses)
-  }, [createBaseVNode("ul", {
-    class: "imenu__list",
-    role: "menubar",
-    onKeyup: _cache[1] || (_cache[1] = (...args) => _ctx.onKeyUp && _ctx.onKeyUp(...args)),
-    onKeydown: _cache[2] || (_cache[2] = (...args) => _ctx.onKeyDown && _ctx.onKeyDown(...args))
-  }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
-    return openBlock(), createElementBlock("li", {
-      key: item.key,
-      ref_for: true,
-      ref: "items",
-      "data-ref-index": index,
-      class: normalizeClass(_ctx.itemClasses(item, index)),
-      role: "none",
-      onClick: (event) => _ctx.onClickItem(event, item)
-    }, [createBaseVNode("div", _hoisted_3$6, [createBaseVNode("a", {
-      ref_for: true,
-      ref: "anchors",
-      "data-ref-index": index,
-      tabindex: "0",
-      href: item.href,
-      target: item.target,
-      class: "imenu__list__anchor",
-      role: "menuitem"
-    }, [_ctx.showItemSrText(index) ? (openBlock(), createElementBlock("span", _hoisted_5$3, [createBaseVNode("span", null, toDisplayString(_ctx.selectedItemSrText) + " ", 1)])) : createCommentVNode("", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$4)])], 10, _hoisted_2$8);
-  }), 128)), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasOverflow ? (openBlock(), createElementBlock("li", _hoisted_6$2, [createBaseVNode("div", {
-    ref: "popup-item",
-    class: normalizeClass(_ctx.popupItemClasses),
-    onClick: _cache[0] || (_cache[0] = ($event) => _ctx.togglePopup(true))
-  }, [createBaseVNode("div", _hoisted_7$1, [createBaseVNode("a", {
-    ref: "popup-anchor",
-    tabindex: "0",
-    class: "imenu__list__anchor",
-    role: "menuitem",
-    "aria-haspopup": "menu",
-    "aria-expanded": _ctx.popupOpen ? "true" : "false"
-  }, [createBaseVNode("span", _hoisted_9$1, [createBaseVNode("span", null, toDisplayString(_ctx.popupMenuSrText) + " ", 1)]), createTextVNode(" " + toDisplayString(_ctx.popupLabel) + " ", 1), createVNode(_component_f_icon, {
-    name: "arrow-down",
-    class: "imenu__list__anchor-icon-right"
-  })], 8, _hoisted_8$1)])], 2)])) : createCommentVNode("", true)], 32), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_popup_menu, {
-    ref: "popup-menu",
-    modelValue: _ctx.selectedItem,
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.selectedItem = $event),
-    "focused-item": _ctx.focusedPopupMenuItem,
-    "onUpdate:focusedItem": _cache[4] || (_cache[4] = ($event) => _ctx.focusedPopupMenuItem = $event),
-    items: _ctx.overflowItems,
-    "is-open": _ctx.popupOpen,
-    anchor: _ctx.popupAnchor,
-    "selected-menu-item-screen-reader-text": _ctx.selectedItemSrText,
-    "aria-label": _ctx.popupAriaLabel,
-    "enable-keyboard-navigation": "",
-    onSelect: _ctx.onPopupMenuItemSelected,
-    onClose: _cache[5] || (_cache[5] = ($event) => _ctx.togglePopup(false))
-  }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "selected-menu-item-screen-reader-text", "aria-label", "onSelect"])], 10, _hoisted_1$c);
-}
-const FNavigationMenu = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$8]]);
-const _sfc_main$9 = /* @__PURE__ */ defineComponent({
-  name: "FPageHeader",
-  components: {
-    ISkipLink
-  },
-  inheritAttrs: true,
-  props: {
-    /**
-     * Render skiplink.
-     *
-     * When set to a non-empty string the skiplink feature is enabled.
-     * The string is the id of the element to move focus to.
-     *
-     * When set to empty string (default) the skiplink feature is disabled.
-     */
-    skipLink: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * HTML element type for header.
-     */
-    headerTag: {
-      default: "span",
-      required: false,
-      validator(value) {
-        return ["span", "h1"].includes(value);
-      }
-    }
-  },
-  computed: {
-    skipLinkAnchor() {
-      const {
-        skipLink
-      } = this;
-      if (skipLink === "") {
-        return null;
-      } else {
-        return `#${skipLink}`;
-      }
-    },
-    hasLogo() {
-      return Boolean(this.$slots.logo);
-    }
-  }
-});
-const _hoisted_1$9 = {
-  class: "page-header__root"
-};
-const _hoisted_2$5 = {
-  key: 0
-};
-const _hoisted_3$4 = {
-  ref: "header",
-  class: "page-header"
-};
-const _hoisted_4$2 = {
-  key: 0,
-  class: "page-header__logo"
-};
-const _hoisted_5$1 = {
-  class: "page-header__right"
-};
-const _hoisted_6$1 = {
-  class: "page-header__right-slot"
-};
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_i_skip_link = resolveComponent("i-skip-link");
-  return openBlock(), createElementBlock("div", _hoisted_1$9, [_ctx.skipLinkAnchor ? (openBlock(), createElementBlock("nav", _hoisted_2$5, [createVNode(_component_i_skip_link, {
-    href: _ctx.skipLinkAnchor
-  }, {
-    default: withCtx(() => [renderSlot(_ctx.$slots, "skip-link-text")]),
-    _: 3
-  }, 8, ["href"])])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode("div", _hoisted_3$4, [_ctx.hasLogo ? (openBlock(), createElementBlock("div", _hoisted_4$2, [renderSlot(_ctx.$slots, "logo")])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), (openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), {
-    class: "page-header__app-name"
-  }, {
-    default: withCtx(() => [renderSlot(_ctx.$slots, "default")]),
-    _: 3
-  })), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", _hoisted_5$1, [createBaseVNode("div", _hoisted_6$1, [renderSlot(_ctx.$slots, "right")])])], 512)]);
-}
-const FPageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
-const layoutRegister = {};
-function getLayout(name) {
-  var _layoutRegister$name;
-  return (_layoutRegister$name = layoutRegister[name]) !== null && _layoutRegister$name !== void 0 ? _layoutRegister$name : null;
-}
 function setLayout(name, layout) {
-  layoutRegister[name] = layout;
 }
 function defineLayout(definition) {
   return normalizeDefinition(definition);
@@ -24094,25 +21626,6 @@ function normalizeAreasDefinition(areas) {
     }];
   }));
 }
-function _checkPrivateRedeclaration(e, t) {
-  if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object");
-}
-function _classPrivateFieldInitSpec(e, t, a) {
-  _checkPrivateRedeclaration(e, t), t.set(e, a);
-}
-function _assertClassBrand(e, t, n) {
-  if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n;
-  throw new TypeError("Private element is not present on this object");
-}
-function _classPrivateFieldGet2(s, a) {
-  return s.get(_assertClassBrand(s, a));
-}
-function _classPrivateFieldSet2(s, a, r) {
-  return s.set(_assertClassBrand(s, a), r), r;
-}
-const VAR_NAME_AREA = "--f-layout-area";
-const VAR_NAME_ATTACH_PANEL = "--f-layout-panel";
-const VAR_NAME_DIRECTION = "--f-layout-direction";
 registerLayout({
   name: "simple",
   areas: {
@@ -24201,894 +21714,1941 @@ registerLayout({
     }
   }
 });
-const styleContent = ':host {\n    display: block;\n}\n\n.page-layout {\n    display: grid;\n    height: 100cqh;\n    width: min(100%, 100cqw);\n\n    &[part~="simple"] {\n        grid-template:\n            "header" min-content\n            "content" 1fr\n            "footer" min-content\n            / 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            --f-page-layout-background: var(--f-background-pageheader-primary);\n            --f-page-layout-color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area content"] {\n            --f-page-layout-background: var(--fkds-color-background-primary);\n            --f-page-layout-color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="left-panel"] {\n        grid-template:\n            "header header" min-content\n            "left content" 1fr\n            "footer footer" min-content\n            / min-content 1fr;\n\n        [part="area header"],\n        [part="area footer"] {\n            --f-page-layout-background: var(--f-background-pageheader-primary);\n            --f-page-layout-color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"] {\n            --f-page-layout-background: var(--fkds-color-background-secondary);\n        }\n\n        [part="area content"] {\n            --f-page-layout-background: var(--fkds-color-background-primary);\n            --f-page-layout-color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="right-panel"] {\n        grid-template:\n            "header header" min-content\n            "content right" 1fr\n            "footer footer" min-content\n            / 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            --f-page-layout-background: var(--f-background-pageheader-primary);\n            --f-page-layout-color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area right"] {\n            --f-page-layout-background: var(--fkds-color-background-secondary);\n            --f-page-layout-color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            --f-page-layout-background: var(--fkds-color-background-primary);\n            --f-page-layout-color: var(--fkds-color-text-primary);\n        }\n    }\n\n    &[part~="three-column"] {\n        grid-template:\n            "header header header" min-content\n            "left content right" 1fr\n            "footer footer footer" min-content\n            / min-content 1fr min-content;\n\n        [part="area header"],\n        [part="area footer"] {\n            --f-page-layout-background: var(--f-background-pageheader-primary);\n            --f-page-layout-color: var(--fkds-color-text-inverted);\n        }\n\n        [part="area left"],\n        [part="area right"] {\n            --f-page-layout-background: var(--fkds-color-background-secondary);\n            --f-page-layout-color: var(--fkds-color-text-primary);\n        }\n\n        [part="area content"] {\n            --f-page-layout-background: var(--fkds-color-background-primary);\n            --f-page-layout-color: var(--fkds-color-text-primary);\n        }\n    }\n}\n\n.page-layout__area {\n    display: flex;\n    position: relative;\n    background: var(--f-page-layout-background);\n    color: var(--f-page-layout-color);\n\n    &[data-direction="column"] {\n        flex-direction: column;\n    }\n\n    &[data-direction="row"] {\n        flex-direction: row;\n    }\n\n    &[data-scroll] {\n        overflow-y: auto;\n    }\n\n    &:empty {\n        display: none;\n    }\n}\n\n:host ::slotted(*) {\n    display: contents;\n}\n';
-const stubLayout = defineLayout({
+defineLayout({
   name: "",
   areas: {}
 });
-function getSlotNames(element) {
-  return Array.from(element.querySelectorAll(":scope > [slot]"), (it) => it.slot);
+typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
+/*!
+  * vue-router v4.5.0
+  * (c) 2024 Eduardo San Martin Morote
+  * @license MIT
+  */
+const isBrowser = typeof document !== "undefined";
+function isRouteComponent(component) {
+  return typeof component === "object" || "displayName" in component || "props" in component || "__vccOpts" in component;
 }
-var _wrapper = /* @__PURE__ */ new WeakMap();
-var _elements = /* @__PURE__ */ new WeakMap();
-var _layout = /* @__PURE__ */ new WeakMap();
-var _observer = /* @__PURE__ */ new WeakMap();
-var _slotNames = /* @__PURE__ */ new WeakMap();
-class PageLayout extends HTMLElement {
-  constructor() {
-    super();
-    _classPrivateFieldInitSpec(this, _wrapper, void 0);
-    _classPrivateFieldInitSpec(this, _elements, {});
-    _classPrivateFieldInitSpec(this, _layout, stubLayout);
-    _classPrivateFieldInitSpec(this, _observer, void 0);
-    _classPrivateFieldInitSpec(this, _slotNames, []);
-    _classPrivateFieldSet2(_wrapper, this, document.createElement("div"));
-    _classPrivateFieldSet2(_observer, this, new MutationObserver(() => {
-      this.slotNames = getSlotNames(this);
-    }));
+function isESModule(obj) {
+  return obj.__esModule || obj[Symbol.toStringTag] === "Module" || // support CF with dynamic imports that do not
+  // add the Module string tag
+  obj.default && isRouteComponent(obj.default);
+}
+const assign = Object.assign;
+function applyToParams(fn2, params) {
+  const newParams = {};
+  for (const key in params) {
+    const value = params[key];
+    newParams[key] = isArray(value) ? value.map(fn2) : fn2(value);
   }
-  /* eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- this one is better to infer or each attribute would have to be duplicated */
-  static get observedAttributes() {
-    return ["layout"];
+  return newParams;
+}
+const noop = () => {
+};
+const isArray = Array.isArray;
+const HASH_RE = /#/g;
+const AMPERSAND_RE = /&/g;
+const SLASH_RE = /\//g;
+const EQUAL_RE = /=/g;
+const IM_RE = /\?/g;
+const PLUS_RE = /\+/g;
+const ENC_BRACKET_OPEN_RE = /%5B/g;
+const ENC_BRACKET_CLOSE_RE = /%5D/g;
+const ENC_CARET_RE = /%5E/g;
+const ENC_BACKTICK_RE = /%60/g;
+const ENC_CURLY_OPEN_RE = /%7B/g;
+const ENC_PIPE_RE = /%7C/g;
+const ENC_CURLY_CLOSE_RE = /%7D/g;
+const ENC_SPACE_RE = /%20/g;
+function commonEncode(text) {
+  return encodeURI("" + text).replace(ENC_PIPE_RE, "|").replace(ENC_BRACKET_OPEN_RE, "[").replace(ENC_BRACKET_CLOSE_RE, "]");
+}
+function encodeHash(text) {
+  return commonEncode(text).replace(ENC_CURLY_OPEN_RE, "{").replace(ENC_CURLY_CLOSE_RE, "}").replace(ENC_CARET_RE, "^");
+}
+function encodeQueryValue(text) {
+  return commonEncode(text).replace(PLUS_RE, "%2B").replace(ENC_SPACE_RE, "+").replace(HASH_RE, "%23").replace(AMPERSAND_RE, "%26").replace(ENC_BACKTICK_RE, "`").replace(ENC_CURLY_OPEN_RE, "{").replace(ENC_CURLY_CLOSE_RE, "}").replace(ENC_CARET_RE, "^");
+}
+function encodeQueryKey(text) {
+  return encodeQueryValue(text).replace(EQUAL_RE, "%3D");
+}
+function encodePath(text) {
+  return commonEncode(text).replace(HASH_RE, "%23").replace(IM_RE, "%3F");
+}
+function encodeParam(text) {
+  return text == null ? "" : encodePath(text).replace(SLASH_RE, "%2F");
+}
+function decode(text) {
+  try {
+    return decodeURIComponent("" + text);
+  } catch (err) {
   }
-  connectedCallback() {
-    this.slotNames = getSlotNames(this);
-    _classPrivateFieldGet2(_observer, this).observe(this, {
-      childList: true
+  return "" + text;
+}
+const TRAILING_SLASH_RE = /\/$/;
+const removeTrailingSlash = (path) => path.replace(TRAILING_SLASH_RE, "");
+function parseURL(parseQuery2, location2, currentLocation = "/") {
+  let path, query = {}, searchString = "", hash = "";
+  const hashPos = location2.indexOf("#");
+  let searchPos = location2.indexOf("?");
+  if (hashPos < searchPos && hashPos >= 0) {
+    searchPos = -1;
+  }
+  if (searchPos > -1) {
+    path = location2.slice(0, searchPos);
+    searchString = location2.slice(searchPos + 1, hashPos > -1 ? hashPos : location2.length);
+    query = parseQuery2(searchString);
+  }
+  if (hashPos > -1) {
+    path = path || location2.slice(0, hashPos);
+    hash = location2.slice(hashPos, location2.length);
+  }
+  path = resolveRelativePath(path != null ? path : location2, currentLocation);
+  return {
+    fullPath: path + (searchString && "?") + searchString + hash,
+    path,
+    query,
+    hash: decode(hash)
+  };
+}
+function stringifyURL(stringifyQuery2, location2) {
+  const query = location2.query ? stringifyQuery2(location2.query) : "";
+  return location2.path + (query && "?") + query + (location2.hash || "");
+}
+function stripBase(pathname, base) {
+  if (!base || !pathname.toLowerCase().startsWith(base.toLowerCase()))
+    return pathname;
+  return pathname.slice(base.length) || "/";
+}
+function isSameRouteLocation(stringifyQuery2, a, b) {
+  const aLastIndex = a.matched.length - 1;
+  const bLastIndex = b.matched.length - 1;
+  return aLastIndex > -1 && aLastIndex === bLastIndex && isSameRouteRecord(a.matched[aLastIndex], b.matched[bLastIndex]) && isSameRouteLocationParams(a.params, b.params) && stringifyQuery2(a.query) === stringifyQuery2(b.query) && a.hash === b.hash;
+}
+function isSameRouteRecord(a, b) {
+  return (a.aliasOf || a) === (b.aliasOf || b);
+}
+function isSameRouteLocationParams(a, b) {
+  if (Object.keys(a).length !== Object.keys(b).length)
+    return false;
+  for (const key in a) {
+    if (!isSameRouteLocationParamsValue(a[key], b[key]))
+      return false;
+  }
+  return true;
+}
+function isSameRouteLocationParamsValue(a, b) {
+  return isArray(a) ? isEquivalentArray(a, b) : isArray(b) ? isEquivalentArray(b, a) : a === b;
+}
+function isEquivalentArray(a, b) {
+  return isArray(b) ? a.length === b.length && a.every((value, i) => value === b[i]) : a.length === 1 && a[0] === b;
+}
+function resolveRelativePath(to, from) {
+  if (to.startsWith("/"))
+    return to;
+  if (!to)
+    return from;
+  const fromSegments = from.split("/");
+  const toSegments = to.split("/");
+  const lastToSegment = toSegments[toSegments.length - 1];
+  if (lastToSegment === ".." || lastToSegment === ".") {
+    toSegments.push("");
+  }
+  let position = fromSegments.length - 1;
+  let toPosition;
+  let segment;
+  for (toPosition = 0; toPosition < toSegments.length; toPosition++) {
+    segment = toSegments[toPosition];
+    if (segment === ".")
+      continue;
+    if (segment === "..") {
+      if (position > 1)
+        position--;
+    } else
+      break;
+  }
+  return fromSegments.slice(0, position).join("/") + "/" + toSegments.slice(toPosition).join("/");
+}
+const START_LOCATION_NORMALIZED = {
+  path: "/",
+  // TODO: could we use a symbol in the future?
+  name: void 0,
+  params: {},
+  query: {},
+  hash: "",
+  fullPath: "/",
+  matched: [],
+  meta: {},
+  redirectedFrom: void 0
+};
+var NavigationType;
+(function(NavigationType2) {
+  NavigationType2["pop"] = "pop";
+  NavigationType2["push"] = "push";
+})(NavigationType || (NavigationType = {}));
+var NavigationDirection;
+(function(NavigationDirection2) {
+  NavigationDirection2["back"] = "back";
+  NavigationDirection2["forward"] = "forward";
+  NavigationDirection2["unknown"] = "";
+})(NavigationDirection || (NavigationDirection = {}));
+function normalizeBase(base) {
+  if (!base) {
+    if (isBrowser) {
+      const baseEl = document.querySelector("base");
+      base = baseEl && baseEl.getAttribute("href") || "/";
+      base = base.replace(/^\w+:\/\/[^\/]+/, "");
+    } else {
+      base = "/";
+    }
+  }
+  if (base[0] !== "/" && base[0] !== "#")
+    base = "/" + base;
+  return removeTrailingSlash(base);
+}
+const BEFORE_HASH_RE = /^[^#]+#/;
+function createHref(base, location2) {
+  return base.replace(BEFORE_HASH_RE, "#") + location2;
+}
+function getElementPosition(el, offset) {
+  const docRect = document.documentElement.getBoundingClientRect();
+  const elRect = el.getBoundingClientRect();
+  return {
+    behavior: offset.behavior,
+    left: elRect.left - docRect.left - (offset.left || 0),
+    top: elRect.top - docRect.top - (offset.top || 0)
+  };
+}
+const computeScrollPosition = () => ({
+  left: window.scrollX,
+  top: window.scrollY
+});
+function scrollToPosition(position) {
+  let scrollToOptions;
+  if ("el" in position) {
+    const positionEl = position.el;
+    const isIdSelector = typeof positionEl === "string" && positionEl.startsWith("#");
+    const el = typeof positionEl === "string" ? isIdSelector ? document.getElementById(positionEl.slice(1)) : document.querySelector(positionEl) : positionEl;
+    if (!el) {
+      return;
+    }
+    scrollToOptions = getElementPosition(el, position);
+  } else {
+    scrollToOptions = position;
+  }
+  if ("scrollBehavior" in document.documentElement.style)
+    window.scrollTo(scrollToOptions);
+  else {
+    window.scrollTo(scrollToOptions.left != null ? scrollToOptions.left : window.scrollX, scrollToOptions.top != null ? scrollToOptions.top : window.scrollY);
+  }
+}
+function getScrollKey(path, delta) {
+  const position = history.state ? history.state.position - delta : -1;
+  return position + path;
+}
+const scrollPositions = /* @__PURE__ */ new Map();
+function saveScrollPosition(key, scrollPosition) {
+  scrollPositions.set(key, scrollPosition);
+}
+function getSavedScrollPosition(key) {
+  const scroll = scrollPositions.get(key);
+  scrollPositions.delete(key);
+  return scroll;
+}
+let createBaseLocation = () => location.protocol + "//" + location.host;
+function createCurrentLocation(base, location2) {
+  const { pathname, search, hash } = location2;
+  const hashPos = base.indexOf("#");
+  if (hashPos > -1) {
+    let slicePos = hash.includes(base.slice(hashPos)) ? base.slice(hashPos).length : 1;
+    let pathFromHash = hash.slice(slicePos);
+    if (pathFromHash[0] !== "/")
+      pathFromHash = "/" + pathFromHash;
+    return stripBase(pathFromHash, "");
+  }
+  const path = stripBase(pathname, base);
+  return path + search + hash;
+}
+function useHistoryListeners(base, historyState, currentLocation, replace) {
+  let listeners = [];
+  let teardowns = [];
+  let pauseState = null;
+  const popStateHandler = ({ state }) => {
+    const to = createCurrentLocation(base, location);
+    const from = currentLocation.value;
+    const fromState = historyState.value;
+    let delta = 0;
+    if (state) {
+      currentLocation.value = to;
+      historyState.value = state;
+      if (pauseState && pauseState === from) {
+        pauseState = null;
+        return;
+      }
+      delta = fromState ? state.position - fromState.position : 0;
+    } else {
+      replace(to);
+    }
+    listeners.forEach((listener) => {
+      listener(currentLocation.value, from, {
+        delta,
+        type: NavigationType.pop,
+        direction: delta ? delta > 0 ? NavigationDirection.forward : NavigationDirection.back : NavigationDirection.unknown
+      });
     });
-    const shadow = this.attachShadow({
-      mode: "open"
-    });
-    const style = document.createElement("style");
-    style.textContent = styleContent;
-    shadow.append(style);
-    shadow.append(_classPrivateFieldGet2(_wrapper, this));
+  };
+  function pauseListeners() {
+    pauseState = currentLocation.value;
   }
-  disconnectedCallback() {
-    _classPrivateFieldGet2(_observer, this).disconnect();
+  function listen(callback) {
+    listeners.push(callback);
+    const teardown = () => {
+      const index = listeners.indexOf(callback);
+      if (index > -1)
+        listeners.splice(index, 1);
+    };
+    teardowns.push(teardown);
+    return teardown;
   }
-  attributeChangedCallback(name, _oldValue, value) {
-    switch (name) {
-      case "layout": {
-        var _getLayout;
-        const part = ["grid", value].filter(Boolean).join(" ");
-        _classPrivateFieldGet2(_wrapper, this).className = "page-layout";
-        _classPrivateFieldGet2(_wrapper, this).setAttribute("part", part);
-        _classPrivateFieldSet2(_layout, this, (_getLayout = getLayout(value)) !== null && _getLayout !== void 0 ? _getLayout : stubLayout);
-        this.updateSlotElements();
+  function beforeUnloadListener() {
+    const { history: history2 } = window;
+    if (!history2.state)
+      return;
+    history2.replaceState(assign({}, history2.state, { scroll: computeScrollPosition() }), "");
+  }
+  function destroy() {
+    for (const teardown of teardowns)
+      teardown();
+    teardowns = [];
+    window.removeEventListener("popstate", popStateHandler);
+    window.removeEventListener("beforeunload", beforeUnloadListener);
+  }
+  window.addEventListener("popstate", popStateHandler);
+  window.addEventListener("beforeunload", beforeUnloadListener, {
+    passive: true
+  });
+  return {
+    pauseListeners,
+    listen,
+    destroy
+  };
+}
+function buildState(back, current, forward, replaced = false, computeScroll = false) {
+  return {
+    back,
+    current,
+    forward,
+    replaced,
+    position: window.history.length,
+    scroll: computeScroll ? computeScrollPosition() : null
+  };
+}
+function useHistoryStateNavigation(base) {
+  const { history: history2, location: location2 } = window;
+  const currentLocation = {
+    value: createCurrentLocation(base, location2)
+  };
+  const historyState = { value: history2.state };
+  if (!historyState.value) {
+    changeLocation(currentLocation.value, {
+      back: null,
+      current: currentLocation.value,
+      forward: null,
+      // the length is off by one, we need to decrease it
+      position: history2.length - 1,
+      replaced: true,
+      // don't add a scroll as the user may have an anchor, and we want
+      // scrollBehavior to be triggered without a saved position
+      scroll: null
+    }, true);
+  }
+  function changeLocation(to, state, replace2) {
+    const hashIndex = base.indexOf("#");
+    const url = hashIndex > -1 ? (location2.host && document.querySelector("base") ? base : base.slice(hashIndex)) + to : createBaseLocation() + base + to;
+    try {
+      history2[replace2 ? "replaceState" : "pushState"](state, "", url);
+      historyState.value = state;
+    } catch (err) {
+      {
+        console.error(err);
+      }
+      location2[replace2 ? "replace" : "assign"](url);
+    }
+  }
+  function replace(to, data) {
+    const state = assign({}, history2.state, buildState(
+      historyState.value.back,
+      // keep back and forward entries but override current position
+      to,
+      historyState.value.forward,
+      true
+    ), data, { position: historyState.value.position });
+    changeLocation(to, state, true);
+    currentLocation.value = to;
+  }
+  function push(to, data) {
+    const currentState = assign(
+      {},
+      // use current history state to gracefully handle a wrong call to
+      // history.replaceState
+      // https://github.com/vuejs/router/issues/366
+      historyState.value,
+      history2.state,
+      {
+        forward: to,
+        scroll: computeScrollPosition()
+      }
+    );
+    changeLocation(currentState.current, currentState, true);
+    const state = assign({}, buildState(currentLocation.value, to, null), { position: currentState.position + 1 }, data);
+    changeLocation(to, state, false);
+    currentLocation.value = to;
+  }
+  return {
+    location: currentLocation,
+    state: historyState,
+    push,
+    replace
+  };
+}
+function createWebHistory(base) {
+  base = normalizeBase(base);
+  const historyNavigation = useHistoryStateNavigation(base);
+  const historyListeners = useHistoryListeners(base, historyNavigation.state, historyNavigation.location, historyNavigation.replace);
+  function go(delta, triggerListeners = true) {
+    if (!triggerListeners)
+      historyListeners.pauseListeners();
+    history.go(delta);
+  }
+  const routerHistory = assign({
+    // it's overridden right after
+    location: "",
+    base,
+    go,
+    createHref: createHref.bind(null, base)
+  }, historyNavigation, historyListeners);
+  Object.defineProperty(routerHistory, "location", {
+    enumerable: true,
+    get: () => historyNavigation.location.value
+  });
+  Object.defineProperty(routerHistory, "state", {
+    enumerable: true,
+    get: () => historyNavigation.state.value
+  });
+  return routerHistory;
+}
+function createWebHashHistory(base) {
+  base = location.host ? base || location.pathname + location.search : "";
+  if (!base.includes("#"))
+    base += "#";
+  return createWebHistory(base);
+}
+function isRouteLocation(route) {
+  return typeof route === "string" || route && typeof route === "object";
+}
+function isRouteName(name) {
+  return typeof name === "string" || typeof name === "symbol";
+}
+const NavigationFailureSymbol = Symbol("");
+var NavigationFailureType;
+(function(NavigationFailureType2) {
+  NavigationFailureType2[NavigationFailureType2["aborted"] = 4] = "aborted";
+  NavigationFailureType2[NavigationFailureType2["cancelled"] = 8] = "cancelled";
+  NavigationFailureType2[NavigationFailureType2["duplicated"] = 16] = "duplicated";
+})(NavigationFailureType || (NavigationFailureType = {}));
+function createRouterError(type, params) {
+  {
+    return assign(new Error(), {
+      type,
+      [NavigationFailureSymbol]: true
+    }, params);
+  }
+}
+function isNavigationFailure(error, type) {
+  return error instanceof Error && NavigationFailureSymbol in error && (type == null || !!(error.type & type));
+}
+const BASE_PARAM_PATTERN = "[^/]+?";
+const BASE_PATH_PARSER_OPTIONS = {
+  sensitive: false,
+  strict: false,
+  start: true,
+  end: true
+};
+const REGEX_CHARS_RE = /[.+*?^${}()[\]/\\]/g;
+function tokensToParser(segments, extraOptions) {
+  const options = assign({}, BASE_PATH_PARSER_OPTIONS, extraOptions);
+  const score = [];
+  let pattern = options.start ? "^" : "";
+  const keys = [];
+  for (const segment of segments) {
+    const segmentScores = segment.length ? [] : [
+      90
+      /* PathScore.Root */
+    ];
+    if (options.strict && !segment.length)
+      pattern += "/";
+    for (let tokenIndex = 0; tokenIndex < segment.length; tokenIndex++) {
+      const token = segment[tokenIndex];
+      let subSegmentScore = 40 + (options.sensitive ? 0.25 : 0);
+      if (token.type === 0) {
+        if (!tokenIndex)
+          pattern += "/";
+        pattern += token.value.replace(REGEX_CHARS_RE, "\\$&");
+        subSegmentScore += 40;
+      } else if (token.type === 1) {
+        const { value, repeatable, optional, regexp } = token;
+        keys.push({
+          name: value,
+          repeatable,
+          optional
+        });
+        const re2 = regexp ? regexp : BASE_PARAM_PATTERN;
+        if (re2 !== BASE_PARAM_PATTERN) {
+          subSegmentScore += 10;
+          try {
+            new RegExp(`(${re2})`);
+          } catch (err) {
+            throw new Error(`Invalid custom RegExp for param "${value}" (${re2}): ` + err.message);
+          }
+        }
+        let subPattern = repeatable ? `((?:${re2})(?:/(?:${re2}))*)` : `(${re2})`;
+        if (!tokenIndex)
+          subPattern = // avoid an optional / if there are more segments e.g. /:p?-static
+          // or /:p?-:p2
+          optional && segment.length < 2 ? `(?:/${subPattern})` : "/" + subPattern;
+        if (optional)
+          subPattern += "?";
+        pattern += subPattern;
+        subSegmentScore += 20;
+        if (optional)
+          subSegmentScore += -8;
+        if (repeatable)
+          subSegmentScore += -20;
+        if (re2 === ".*")
+          subSegmentScore += -50;
+      }
+      segmentScores.push(subSegmentScore);
+    }
+    score.push(segmentScores);
+  }
+  if (options.strict && options.end) {
+    const i = score.length - 1;
+    score[i][score[i].length - 1] += 0.7000000000000001;
+  }
+  if (!options.strict)
+    pattern += "/?";
+  if (options.end)
+    pattern += "$";
+  else if (options.strict && !pattern.endsWith("/"))
+    pattern += "(?:/|$)";
+  const re = new RegExp(pattern, options.sensitive ? "" : "i");
+  function parse(path) {
+    const match = path.match(re);
+    const params = {};
+    if (!match)
+      return null;
+    for (let i = 1; i < match.length; i++) {
+      const value = match[i] || "";
+      const key = keys[i - 1];
+      params[key.name] = value && key.repeatable ? value.split("/") : value;
+    }
+    return params;
+  }
+  function stringify(params) {
+    let path = "";
+    let avoidDuplicatedSlash = false;
+    for (const segment of segments) {
+      if (!avoidDuplicatedSlash || !path.endsWith("/"))
+        path += "/";
+      avoidDuplicatedSlash = false;
+      for (const token of segment) {
+        if (token.type === 0) {
+          path += token.value;
+        } else if (token.type === 1) {
+          const { value, repeatable, optional } = token;
+          const param = value in params ? params[value] : "";
+          if (isArray(param) && !repeatable) {
+            throw new Error(`Provided param "${value}" is an array but it is not repeatable (* or + modifiers)`);
+          }
+          const text = isArray(param) ? param.join("/") : param;
+          if (!text) {
+            if (optional) {
+              if (segment.length < 2) {
+                if (path.endsWith("/"))
+                  path = path.slice(0, -1);
+                else
+                  avoidDuplicatedSlash = true;
+              }
+            } else
+              throw new Error(`Missing required param "${value}"`);
+          }
+          path += text;
+        }
+      }
+    }
+    return path || "/";
+  }
+  return {
+    re,
+    score,
+    keys,
+    parse,
+    stringify
+  };
+}
+function compareScoreArray(a, b) {
+  let i = 0;
+  while (i < a.length && i < b.length) {
+    const diff = b[i] - a[i];
+    if (diff)
+      return diff;
+    i++;
+  }
+  if (a.length < b.length) {
+    return a.length === 1 && a[0] === 40 + 40 ? -1 : 1;
+  } else if (a.length > b.length) {
+    return b.length === 1 && b[0] === 40 + 40 ? 1 : -1;
+  }
+  return 0;
+}
+function comparePathParserScore(a, b) {
+  let i = 0;
+  const aScore = a.score;
+  const bScore = b.score;
+  while (i < aScore.length && i < bScore.length) {
+    const comp = compareScoreArray(aScore[i], bScore[i]);
+    if (comp)
+      return comp;
+    i++;
+  }
+  if (Math.abs(bScore.length - aScore.length) === 1) {
+    if (isLastScoreNegative(aScore))
+      return 1;
+    if (isLastScoreNegative(bScore))
+      return -1;
+  }
+  return bScore.length - aScore.length;
+}
+function isLastScoreNegative(score) {
+  const last = score[score.length - 1];
+  return score.length > 0 && last[last.length - 1] < 0;
+}
+const ROOT_TOKEN = {
+  type: 0,
+  value: ""
+};
+const VALID_PARAM_RE = /[a-zA-Z0-9_]/;
+function tokenizePath(path) {
+  if (!path)
+    return [[]];
+  if (path === "/")
+    return [[ROOT_TOKEN]];
+  if (!path.startsWith("/")) {
+    throw new Error(`Invalid path "${path}"`);
+  }
+  function crash(message) {
+    throw new Error(`ERR (${state})/"${buffer}": ${message}`);
+  }
+  let state = 0;
+  let previousState = state;
+  const tokens = [];
+  let segment;
+  function finalizeSegment() {
+    if (segment)
+      tokens.push(segment);
+    segment = [];
+  }
+  let i = 0;
+  let char;
+  let buffer = "";
+  let customRe = "";
+  function consumeBuffer() {
+    if (!buffer)
+      return;
+    if (state === 0) {
+      segment.push({
+        type: 0,
+        value: buffer
+      });
+    } else if (state === 1 || state === 2 || state === 3) {
+      if (segment.length > 1 && (char === "*" || char === "+"))
+        crash(`A repeatable param (${buffer}) must be alone in its segment. eg: '/:ids+.`);
+      segment.push({
+        type: 1,
+        value: buffer,
+        regexp: customRe,
+        repeatable: char === "*" || char === "+",
+        optional: char === "*" || char === "?"
+      });
+    } else {
+      crash("Invalid state to consume buffer");
+    }
+    buffer = "";
+  }
+  function addCharToBuffer() {
+    buffer += char;
+  }
+  while (i < path.length) {
+    char = path[i++];
+    if (char === "\\" && state !== 2) {
+      previousState = state;
+      state = 4;
+      continue;
+    }
+    switch (state) {
+      case 0:
+        if (char === "/") {
+          if (buffer) {
+            consumeBuffer();
+          }
+          finalizeSegment();
+        } else if (char === ":") {
+          consumeBuffer();
+          state = 1;
+        } else {
+          addCharToBuffer();
+        }
         break;
-      }
+      case 4:
+        addCharToBuffer();
+        state = previousState;
+        break;
+      case 1:
+        if (char === "(") {
+          state = 2;
+        } else if (VALID_PARAM_RE.test(char)) {
+          addCharToBuffer();
+        } else {
+          consumeBuffer();
+          state = 0;
+          if (char !== "*" && char !== "?" && char !== "+")
+            i--;
+        }
+        break;
+      case 2:
+        if (char === ")") {
+          if (customRe[customRe.length - 1] == "\\")
+            customRe = customRe.slice(0, -1) + char;
+          else
+            state = 3;
+        } else {
+          customRe += char;
+        }
+        break;
+      case 3:
+        consumeBuffer();
+        state = 0;
+        if (char !== "*" && char !== "?" && char !== "+")
+          i--;
+        customRe = "";
+        break;
+      default:
+        crash("Unknown state");
+        break;
     }
   }
-  get slotNames() {
-    return _classPrivateFieldGet2(_slotNames, this);
-  }
-  set slotNames(slots) {
-    _classPrivateFieldSet2(_slotNames, this, slots);
-    this.updateSlotElements();
-  }
-  updateSlotElements() {
-    const wrapper2 = _classPrivateFieldGet2(_wrapper, this);
-    const layout = _classPrivateFieldGet2(_layout, this);
-    for (const slot of _classPrivateFieldGet2(_slotNames, this)) {
-      const existing = _classPrivateFieldGet2(_elements, this)[slot];
-      const element = existing !== null && existing !== void 0 ? existing : document.createElement("div");
-      const area = layout.areas[slot];
-      if (!area) {
-        continue;
-      }
-      const {
-        attachPanel: attach,
-        direction,
-        scroll
-      } = area;
-      element.className = "";
-      element.classList.add("page-layout__area");
-      element.setAttribute("part", ["area", slot].join(" "));
-      element.setAttribute("data-direction", direction);
-      if (scroll) {
-        element.setAttribute("data-scroll", "true");
-      } else {
-        element.removeAttribute("data-scroll");
-      }
-      element.style.setProperty("grid-area", slot);
-      element.style.setProperty(VAR_NAME_AREA, `"${slot}"`);
-      element.style.setProperty(VAR_NAME_ATTACH_PANEL, `"${attach}"`);
-      element.style.setProperty(VAR_NAME_DIRECTION, `"${direction}"`);
-      if (!existing) {
-        const slotElement = document.createElement("slot");
-        slotElement.name = slot;
-        element.append(slotElement);
-        wrapper2.append(element);
-        _classPrivateFieldGet2(_elements, this)[slot] = element;
-      }
-    }
-    setTimeout(() => {
-      this.dispatchEvent(new CustomEvent("update"));
-    }, 0);
-  }
+  if (state === 2)
+    crash(`Unfinished custom RegExp for param "${buffer}"`);
+  consumeBuffer();
+  finalizeSegment();
+  return tokens;
 }
-const _hoisted_1$8 = ["slot"];
-const tagName$1 = `ce-page-layout`;
-const _sfc_main$8 = /* @__PURE__ */ defineComponent({
-  __name: "FPageLayout",
-  props: {
-    layout: {}
-  },
-  emits: ["update"],
-  setup(__props, {
-    emit: __emit
-  }) {
-    const emit2 = __emit;
-    const slots = useSlots();
-    const slotNames = computed(() => {
-      return Object.keys(slots);
-    });
-    onMounted(() => {
-      if (!customElements.get(tagName$1)) {
-        customElements.define(tagName$1, PageLayout);
+function createRouteRecordMatcher(record, parent, options) {
+  const parser = tokensToParser(tokenizePath(record.path), options);
+  const matcher = assign(parser, {
+    record,
+    parent,
+    // these needs to be populated by the parent
+    children: [],
+    alias: []
+  });
+  if (parent) {
+    if (!matcher.record.aliasOf === !parent.record.aliasOf)
+      parent.children.push(matcher);
+  }
+  return matcher;
+}
+function createRouterMatcher(routes, globalOptions) {
+  const matchers = [];
+  const matcherMap = /* @__PURE__ */ new Map();
+  globalOptions = mergeOptions({ strict: false, end: true, sensitive: false }, globalOptions);
+  function getRecordMatcher(name) {
+    return matcherMap.get(name);
+  }
+  function addRoute(record, parent, originalRecord) {
+    const isRootAdd = !originalRecord;
+    const mainNormalizedRecord = normalizeRouteRecord(record);
+    mainNormalizedRecord.aliasOf = originalRecord && originalRecord.record;
+    const options = mergeOptions(globalOptions, record);
+    const normalizedRecords = [mainNormalizedRecord];
+    if ("alias" in record) {
+      const aliases = typeof record.alias === "string" ? [record.alias] : record.alias;
+      for (const alias of aliases) {
+        normalizedRecords.push(
+          // we need to normalize again to ensure the `mods` property
+          // being non enumerable
+          normalizeRouteRecord(assign({}, mainNormalizedRecord, {
+            // this allows us to hold a copy of the `components` option
+            // so that async components cache is hold on the original record
+            components: originalRecord ? originalRecord.record.components : mainNormalizedRecord.components,
+            path: alias,
+            // we might be the child of an alias
+            aliasOf: originalRecord ? originalRecord.record : mainNormalizedRecord
+            // the aliases are always of the same kind as the original since they
+            // are defined on the same record
+          }))
+        );
       }
-    });
-    function onUpdate() {
-      emit2("update");
     }
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(resolveDynamicComponent(tagName$1), {
-        layout: _ctx.layout,
-        onUpdate
-      }, {
-        default: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(slotNames.value, (slot) => {
-          return openBlock(), createElementBlock("div", {
-            key: slot,
-            slot
-          }, [renderSlot(_ctx.$slots, slot)], 8, _hoisted_1$8);
-        }), 128))]),
-        _: 3
-      }, 40, ["layout"]);
+    let matcher;
+    let originalMatcher;
+    for (const normalizedRecord of normalizedRecords) {
+      const { path } = normalizedRecord;
+      if (parent && path[0] !== "/") {
+        const parentPath = parent.record.path;
+        const connectingSlash = parentPath[parentPath.length - 1] === "/" ? "" : "/";
+        normalizedRecord.path = parent.record.path + (path && connectingSlash + path);
+      }
+      matcher = createRouteRecordMatcher(normalizedRecord, parent, options);
+      if (originalRecord) {
+        originalRecord.alias.push(matcher);
+      } else {
+        originalMatcher = originalMatcher || matcher;
+        if (originalMatcher !== matcher)
+          originalMatcher.alias.push(matcher);
+        if (isRootAdd && record.name && !isAliasRecord(matcher)) {
+          removeRoute(record.name);
+        }
+      }
+      if (isMatchable(matcher)) {
+        insertMatcher(matcher);
+      }
+      if (mainNormalizedRecord.children) {
+        const children = mainNormalizedRecord.children;
+        for (let i = 0; i < children.length; i++) {
+          addRoute(children[i], matcher, originalRecord && originalRecord.children[i]);
+        }
+      }
+      originalRecord = originalRecord || matcher;
+    }
+    return originalMatcher ? () => {
+      removeRoute(originalMatcher);
+    } : noop;
+  }
+  function removeRoute(matcherRef) {
+    if (isRouteName(matcherRef)) {
+      const matcher = matcherMap.get(matcherRef);
+      if (matcher) {
+        matcherMap.delete(matcherRef);
+        matchers.splice(matchers.indexOf(matcher), 1);
+        matcher.children.forEach(removeRoute);
+        matcher.alias.forEach(removeRoute);
+      }
+    } else {
+      const index = matchers.indexOf(matcherRef);
+      if (index > -1) {
+        matchers.splice(index, 1);
+        if (matcherRef.record.name)
+          matcherMap.delete(matcherRef.record.name);
+        matcherRef.children.forEach(removeRoute);
+        matcherRef.alias.forEach(removeRoute);
+      }
+    }
+  }
+  function getRoutes() {
+    return matchers;
+  }
+  function insertMatcher(matcher) {
+    const index = findInsertionIndex(matcher, matchers);
+    matchers.splice(index, 0, matcher);
+    if (matcher.record.name && !isAliasRecord(matcher))
+      matcherMap.set(matcher.record.name, matcher);
+  }
+  function resolve2(location2, currentLocation) {
+    let matcher;
+    let params = {};
+    let path;
+    let name;
+    if ("name" in location2 && location2.name) {
+      matcher = matcherMap.get(location2.name);
+      if (!matcher)
+        throw createRouterError(1, {
+          location: location2
+        });
+      name = matcher.record.name;
+      params = assign(
+        // paramsFromLocation is a new object
+        paramsFromLocation(
+          currentLocation.params,
+          // only keep params that exist in the resolved location
+          // only keep optional params coming from a parent record
+          matcher.keys.filter((k) => !k.optional).concat(matcher.parent ? matcher.parent.keys.filter((k) => k.optional) : []).map((k) => k.name)
+        ),
+        // discard any existing params in the current location that do not exist here
+        // #1497 this ensures better active/exact matching
+        location2.params && paramsFromLocation(location2.params, matcher.keys.map((k) => k.name))
+      );
+      path = matcher.stringify(params);
+    } else if (location2.path != null) {
+      path = location2.path;
+      matcher = matchers.find((m) => m.re.test(path));
+      if (matcher) {
+        params = matcher.parse(path);
+        name = matcher.record.name;
+      }
+    } else {
+      matcher = currentLocation.name ? matcherMap.get(currentLocation.name) : matchers.find((m) => m.re.test(currentLocation.path));
+      if (!matcher)
+        throw createRouterError(1, {
+          location: location2,
+          currentLocation
+        });
+      name = matcher.record.name;
+      params = assign({}, currentLocation.params, location2.params);
+      path = matcher.stringify(params);
+    }
+    const matched = [];
+    let parentMatcher = matcher;
+    while (parentMatcher) {
+      matched.unshift(parentMatcher.record);
+      parentMatcher = parentMatcher.parent;
+    }
+    return {
+      name,
+      path,
+      params,
+      matched,
+      meta: mergeMetaFields(matched)
     };
   }
-});
-function tryOnScopeDispose(fn2) {
-  if (getCurrentScope()) {
-    onScopeDispose(fn2);
-    return true;
+  routes.forEach((route) => addRoute(route));
+  function clearRoutes() {
+    matchers.length = 0;
+    matcherMap.clear();
+  }
+  return {
+    addRoute,
+    resolve: resolve2,
+    removeRoute,
+    clearRoutes,
+    getRoutes,
+    getRecordMatcher
+  };
+}
+function paramsFromLocation(params, keys) {
+  const newParams = {};
+  for (const key of keys) {
+    if (key in params)
+      newParams[key] = params[key];
+  }
+  return newParams;
+}
+function normalizeRouteRecord(record) {
+  const normalized = {
+    path: record.path,
+    redirect: record.redirect,
+    name: record.name,
+    meta: record.meta || {},
+    aliasOf: record.aliasOf,
+    beforeEnter: record.beforeEnter,
+    props: normalizeRecordProps(record),
+    children: record.children || [],
+    instances: {},
+    leaveGuards: /* @__PURE__ */ new Set(),
+    updateGuards: /* @__PURE__ */ new Set(),
+    enterCallbacks: {},
+    // must be declared afterwards
+    // mods: {},
+    components: "components" in record ? record.components || null : record.component && { default: record.component }
+  };
+  Object.defineProperty(normalized, "mods", {
+    value: {}
+  });
+  return normalized;
+}
+function normalizeRecordProps(record) {
+  const propsObject = {};
+  const props = record.props || false;
+  if ("component" in record) {
+    propsObject.default = props;
+  } else {
+    for (const name in record.components)
+      propsObject[name] = typeof props === "object" ? props[name] : props;
+  }
+  return propsObject;
+}
+function isAliasRecord(record) {
+  while (record) {
+    if (record.record.aliasOf)
+      return true;
+    record = record.parent;
   }
   return false;
 }
-const isClient = typeof window !== "undefined" && typeof document !== "undefined";
-typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
-const toString = Object.prototype.toString;
-const isObject = (val) => toString.call(val) === "[object Object]";
-function toArray(value) {
-  return Array.isArray(value) ? value : [value];
+function mergeMetaFields(matched) {
+  return matched.reduce((meta, record) => assign(meta, record.meta), {});
 }
-function watchImmediate(source, cb, options) {
-  return watch(
-    source,
-    cb,
-    {
-      ...options,
-      immediate: true
-    }
-  );
-}
-const defaultWindow = isClient ? window : void 0;
-function unrefElement(elRef) {
-  var _a;
-  const plain = toValue(elRef);
-  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
-}
-function useEventListener(...args) {
-  const cleanups = [];
-  const cleanup = () => {
-    cleanups.forEach((fn2) => fn2());
-    cleanups.length = 0;
-  };
-  const register = (el, event, listener, options) => {
-    el.addEventListener(event, listener, options);
-    return () => el.removeEventListener(event, listener, options);
-  };
-  const firstParamTargets = computed(() => {
-    const test = toArray(toValue(args[0])).filter((e) => e != null);
-    return test.every((e) => typeof e !== "string") ? test : void 0;
-  });
-  const stopWatch = watchImmediate(
-    () => {
-      var _a, _b;
-      return [
-        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
-        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
-        toArray(unref(firstParamTargets.value ? args[2] : args[1])),
-        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
-        toValue(firstParamTargets.value ? args[3] : args[2])
-      ];
-    },
-    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
-      cleanup();
-      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
-        return;
-      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
-      cleanups.push(
-        ...raw_targets.flatMap(
-          (el) => raw_events.flatMap(
-            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
-          )
-        )
-      );
-    },
-    { flush: "post" }
-  );
-  const stop = () => {
-    stopWatch();
-    cleanup();
-  };
-  tryOnScopeDispose(cleanup);
-  return stop;
-}
-function getProperty(style, key) {
-  const value = style.getPropertyValue(key);
-  if (value === "") {
-    return null;
-  } else {
-    return JSON.parse(value);
+function mergeOptions(defaults, partialOptions) {
+  const options = {};
+  for (const key in defaults) {
+    options[key] = key in partialOptions ? partialOptions[key] : defaults[key];
   }
+  return options;
 }
-function findLayoutElement(element) {
-  if (!element) {
-    return null;
-  }
-  const parent = element.closest("ce-page-layout");
-  if (parent) {
-    return parent;
-  }
-  const root = element.getRootNode();
-  if (root instanceof ShadowRoot) {
-    return findLayoutElement(root.host);
-  }
-  return null;
-}
-function useAreaData(element) {
-  const area = ref(null);
-  const attachPanel = ref(null);
-  const direction = ref(null);
-  const layoutElement = computed(() => findLayoutElement(toValue(element)));
-  useEventListener(layoutElement, "update", () => {
-    if (element.value) {
-      update(element.value);
-    }
-  });
-  watchEffect(() => {
-    if (element.value) {
-      update(element.value);
-    }
-  });
-  return {
-    area,
-    attachPanel,
-    direction
-  };
-  function update(element2) {
-    const style = getComputedStyle(element2);
-    area.value = getProperty(style, VAR_NAME_AREA);
-    attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
-    direction.value = getProperty(style, VAR_NAME_DIRECTION);
-  }
-}
-const keymap = {
-  left: {
-    ArrowLeft: "decrease",
-    ArrowRight: "increase",
-    Home: "minimize",
-    End: "maximize"
-  },
-  right: {
-    ArrowLeft: "increase",
-    ArrowRight: "decrease",
-    Home: "minimize",
-    End: "maximize"
-  },
-  top: {
-    ArrowUp: "decrease",
-    ArrowDown: "increase",
-    Home: "minimize",
-    End: "maximize"
-  },
-  bottom: {
-    ArrowUp: "increase",
-    ArrowDown: "decrease",
-    Home: "minimize",
-    End: "maximize"
-  },
-  none: {}
-};
-function useKeyboardHandler(options) {
-  const {
-    attachment,
-    separator
-  } = options;
-  useEventListener(separator, "keydown", (event) => {
-    if (!attachment.value) {
-      return;
-    }
-    const action = keymap[attachment.value][event.key];
-    if (action) {
-      event.preventDefault();
-      options[action]();
-    }
-  });
-}
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
-function usePointerHandler(options) {
-  const {
-    separator,
-    attachment
-  } = options;
-  const invert = computed(() => {
-    if (attachment.value === "right" || attachment.value === "bottom") {
-      return -1;
-    }
-    return 1;
-  });
-  const orientation = computed(() => {
-    if (attachment.value === "top" || attachment.value === "bottom") {
-      return "horizontal";
+function findInsertionIndex(matcher, matchers) {
+  let lower = 0;
+  let upper = matchers.length;
+  while (lower !== upper) {
+    const mid = lower + upper >> 1;
+    const sortOrder = comparePathParserScore(matcher, matchers[mid]);
+    if (sortOrder < 0) {
+      upper = mid;
     } else {
-      return "vertical";
+      lower = mid + 1;
     }
-  });
-  useEventListener(separator, "pointerdown", (event) => {
-    const {
-      isPrimary,
-      button,
-      target,
-      pointerId
-    } = event;
-    if (!separator.value) {
-      return;
+  }
+  const insertionAncestor = getInsertionAncestor(matcher);
+  if (insertionAncestor) {
+    upper = matchers.lastIndexOf(insertionAncestor, upper - 1);
+  }
+  return upper;
+}
+function getInsertionAncestor(matcher) {
+  let ancestor = matcher;
+  while (ancestor = ancestor.parent) {
+    if (isMatchable(ancestor) && comparePathParserScore(matcher, ancestor) === 0) {
+      return ancestor;
     }
-    if (!isPrimary || button !== 0 || target !== separator.value) {
-      return;
-    }
-    const separatorElement = separator.value;
-    const property = orientation.value === "horizontal" ? "clientY" : "clientX";
-    const reference = event[property];
-    const resize = createResizer();
-    function onPointerMove(event2) {
-      if (event2.pointerId === pointerId) {
-        resize(event2[property] - reference);
+  }
+  return;
+}
+function isMatchable({ record }) {
+  return !!(record.name || record.components && Object.keys(record.components).length || record.redirect);
+}
+function parseQuery(search) {
+  const query = {};
+  if (search === "" || search === "?")
+    return query;
+  const hasLeadingIM = search[0] === "?";
+  const searchParams = (hasLeadingIM ? search.slice(1) : search).split("&");
+  for (let i = 0; i < searchParams.length; ++i) {
+    const searchParam = searchParams[i].replace(PLUS_RE, " ");
+    const eqPos = searchParam.indexOf("=");
+    const key = decode(eqPos < 0 ? searchParam : searchParam.slice(0, eqPos));
+    const value = eqPos < 0 ? null : decode(searchParam.slice(eqPos + 1));
+    if (key in query) {
+      let currentValue = query[key];
+      if (!isArray(currentValue)) {
+        currentValue = query[key] = [currentValue];
       }
+      currentValue.push(value);
+    } else {
+      query[key] = value;
     }
-    function onLostPointerCapture(event2) {
-      if (event2.pointerId === pointerId) {
-        separatorElement.removeEventListener("pointermove", onPointerMove);
-        separatorElement.removeEventListener("lostpointercapture", onLostPointerCapture);
+  }
+  return query;
+}
+function stringifyQuery(query) {
+  let search = "";
+  for (let key in query) {
+    const value = query[key];
+    key = encodeQueryKey(key);
+    if (value == null) {
+      if (value !== void 0) {
+        search += (search.length ? "&" : "") + key;
       }
+      continue;
     }
-    onPointerMove(event);
-    separatorElement.addEventListener("lostpointercapture", onLostPointerCapture);
-    separatorElement.addEventListener("pointermove", onPointerMove);
-    separatorElement.setPointerCapture(pointerId);
-    event.preventDefault();
-  });
-  function createResizer() {
-    const {
-      min,
-      max,
-      current: value
-    } = options.state.value;
-    return (amount) => {
-      options.movement(clamp(value + amount * invert.value, min, max));
+    const values = isArray(value) ? value.map((v) => v && encodeQueryValue(v)) : [value && encodeQueryValue(value)];
+    values.forEach((value2) => {
+      if (value2 !== void 0) {
+        search += (search.length ? "&" : "") + key;
+        if (value2 != null)
+          search += "=" + value2;
+      }
+    });
+  }
+  return search;
+}
+function normalizeQuery(query) {
+  const normalizedQuery = {};
+  for (const key in query) {
+    const value = query[key];
+    if (value !== void 0) {
+      normalizedQuery[key] = isArray(value) ? value.map((v) => v == null ? null : "" + v) : value == null ? value : "" + value;
+    }
+  }
+  return normalizedQuery;
+}
+const matchedRouteKey = Symbol("");
+const viewDepthKey = Symbol("");
+const routerKey = Symbol("");
+const routeLocationKey = Symbol("");
+const routerViewLocationKey = Symbol("");
+function useCallbacks() {
+  let handlers = [];
+  function add(handler) {
+    handlers.push(handler);
+    return () => {
+      const i = handlers.indexOf(handler);
+      if (i > -1)
+        handlers.splice(i, 1);
     };
   }
-}
-function computeCssValue(raw, total, auto) {
-  if (raw.endsWith("px")) {
-    return parseInt(raw.slice(0, -2), 10);
-  } else if (raw.endsWith("%")) {
-    const value = parseInt(raw.slice(0, -1), 10);
-    const percent = value / 100;
-    return percent * total;
-  } else if (raw === "0") {
-    return 0;
-  } else if (raw === "auto" || raw === "") {
-    return auto;
-  } else {
-    throw new Error(`Cant parse size from "${raw}"`);
+  function reset() {
+    handlers = [];
   }
+  return {
+    add,
+    list: () => handlers.slice(),
+    reset
+  };
 }
-function aggregateCssValue(raw, total, auto, take) {
-  if (raw === "auto") {
-    return auto;
-  }
-  const parts = raw.split(/\s+/).map((it) => it.trim());
-  const parsed = parts.map((it) => computeCssValue(it, total, auto));
-  return take(...parsed);
-}
-function useStorage(options) {
-  const {
-    state,
-    storageKey
-  } = options;
-  const loaded = ref(false);
-  let last = -1;
-  watchEffect(() => {
-    if (!loaded.value) {
-      return;
-    }
-    if (!storageKey.value) {
-      return;
-    }
-    if (state.value.current < 0 || state.value.current === last) {
-      return;
-    }
-    const json = JSON.stringify(state.value.current);
-    window.localStorage.setItem(storageKey.value, json);
-    last = state.value.current;
-  });
-  watchEffect(() => {
-    if (!storageKey.value) {
-      return;
-    }
-    const json = window.localStorage.getItem(storageKey.value);
-    if (json) {
-      const value = JSON.parse(json);
-      state.value.current = clamp(value, state.value.min, state.value.max);
-      last = value;
-    }
-    loaded.value = true;
-  });
-}
-const _hoisted_1$5 = {
-  key: 0,
-  class: "resize__offset"
-};
-const _hoisted_2$2 = ["aria-orientation"];
-const _hoisted_3$1 = ["aria-orientation"];
-const STEP_SIZE = 10;
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
-  ...{
-    inheritAttrs: false
-  },
-  __name: "FResizePane.ce",
-  props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    min: {
-      default: "0",
-      type: String
-    },
-    max: {
-      default: "100%",
-      type: String
-    },
-    initial: {
-      default: "50%",
-      type: String
-    },
-    overlay: {
-      type: Boolean,
-      default: false
-    },
-    offset: {
-      default: 0,
-      type: Number
-    }
-  },
-  emits: ["resize"],
-  setup(__props, {
-    emit: __emit
-  }) {
-    const props = __props;
-    const emit2 = __emit;
-    const root = shallowRef();
-    const content = ref();
-    const separator = ref();
-    const state = ref({
-      min: -1,
-      max: -1,
-      current: -1
-    });
-    const layoutSize = ref(0);
-    const storageKey = computed(() => area.value ? `layout/${area.value}/size` : null);
-    const {
-      attachPanel: attachment,
-      direction,
-      area
-    } = useAreaData(root);
-    useKeyboardHandler({
-      increase() {
-        state.value.current = Math.min(state.value.current + STEP_SIZE, state.value.max);
-      },
-      decrease() {
-        state.value.current = Math.max(state.value.current - STEP_SIZE, state.value.min);
-      },
-      maximize() {
-        state.value.current = state.value.max;
-      },
-      minimize() {
-        state.value.current = state.value.min;
-      },
-      attachment,
-      separator
-    });
-    useStorage({
-      state,
-      storageKey
-    });
-    usePointerHandler({
-      movement(value) {
-        state.value.current = value;
-      },
-      separator,
-      state,
-      attachment
-    });
-    const minSize = computed(() => {
-      const total = layoutSize.value;
-      return Math.floor(aggregateCssValue(props.min, total, 0, Math.max));
-    });
-    const maxSize = computed(() => {
-      const total = layoutSize.value;
-      return Math.max(Math.floor(aggregateCssValue(props.max, total, total, Math.min)), minSize.value);
-    });
-    const initialSize = computed(() => {
-      const total = layoutSize.value;
-      return Math.floor(computeCssValue(props.initial, total, total * 0.5));
-    });
-    const orientation = computed(() => {
-      if (attachment.value === "top" || attachment.value === "bottom") {
-        return "horizontal";
+function guardToPromiseFn(guard, to, from, record, name, runWithContext = (fn2) => fn2()) {
+  const enterCallbackArray = record && // name is defined if record is because of the function overload
+  (record.enterCallbacks[name] = record.enterCallbacks[name] || []);
+  return () => new Promise((resolve2, reject) => {
+    const next = (valid) => {
+      if (valid === false) {
+        reject(createRouterError(4, {
+          from,
+          to
+        }));
+      } else if (valid instanceof Error) {
+        reject(valid);
+      } else if (isRouteLocation(valid)) {
+        reject(createRouterError(2, {
+          from: to,
+          to: valid
+        }));
       } else {
-        return "vertical";
-      }
-    });
-    const classes = computed(() => {
-      return [`resize--${attachment.value}`, `resize--${direction.value}`, props.overlay ? "resize--overlay" : void 0, props.disabled ? "resize--disabled" : void 0];
-    });
-    const layoutElement = computed(() => {
-      var _host$closest;
-      if (!root.value) {
-        return void 0;
-      }
-      const shadow = root.value.getRootNode();
-      const host = shadow.host;
-      return (_host$closest = host.closest("ce-page-layout")) !== null && _host$closest !== void 0 ? _host$closest : void 0;
-    });
-    watch(() => props.min, onResize);
-    watch(() => props.max, onResize);
-    watchEffect(() => {
-      const {
-        min,
-        max,
-        current: value
-      } = state.value;
-      if (root.value) {
-        const shadowRoot = root.value.getRootNode();
-        const host = shadowRoot.host;
-        host.style.setProperty("--size", `${String(value)}px`);
-        host.style.setProperty("--min", `${min}px`);
-        host.style.setProperty("--max", `${max}px`);
-        host.style.setProperty("--offset", `${props.offset}px`);
-      }
-      if (separator.value) {
-        separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
-        separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
-        separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
-      }
-      if (value >= 0) {
-        emit2("resize", value);
-      }
-    });
-    onMounted(() => {
-      layoutSize.value = getLayoutSize();
-      state.value = {
-        min: minSize.value,
-        max: maxSize.value,
-        current: clamp(initialSize.value, minSize.value, maxSize.value)
-      };
-    });
-    useEventListener$1(window, "resize", debounce(onResize, 20));
-    function onResize() {
-      layoutSize.value = getLayoutSize();
-      state.value = {
-        min: minSize.value,
-        max: maxSize.value,
-        current: initialSize.value
-      };
-    }
-    function getLayoutSize() {
-      if (!layoutElement.value) {
-        return 0;
-      }
-      switch (orientation.value) {
-        case "horizontal": {
-          return layoutElement.value.offsetHeight;
+        if (enterCallbackArray && // since enterCallbackArray is truthy, both record and name also are
+        record.enterCallbacks[name] === enterCallbackArray && typeof valid === "function") {
+          enterCallbackArray.push(valid);
         }
-        case "vertical": {
-          return layoutElement.value.offsetWidth;
-        }
+        resolve2();
       }
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [_ctx.overlay && _ctx.offset ? (openBlock(), createElementBlock("div", _hoisted_1$5)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", mergeProps({
-        ref_key: "root",
-        ref: root,
-        class: ["resize", classes.value]
-      }, _ctx.$attrs), [createBaseVNode("div", {
-        ref_key: "content",
-        ref: content,
-        class: "resize__content"
-      }, [renderSlot(_ctx.$slots, "content")], 512), _cache[0] || (_cache[0] = createTextVNode()), !props.disabled ? (openBlock(), createElementBlock("div", {
-        key: 0,
-        ref_key: "separator",
-        ref: separator,
-        role: "separator",
-        class: "resize__handle",
-        tabindex: "0",
-        "aria-orientation": orientation.value
-      }, null, 8, _hoisted_2$2)) : (openBlock(), createElementBlock("div", {
-        key: 1,
-        role: "separator",
-        class: "resize__handle disabled",
-        "aria-orientation": orientation.value
-      }, null, 8, _hoisted_3$1))], 16)], 64);
     };
+    const guardReturn = runWithContext(() => guard.call(record && record.instances[name], to, from, next));
+    let guardCall = Promise.resolve(guardReturn);
+    if (guard.length < 3)
+      guardCall = guardCall.then(next);
+    guardCall.catch((err) => reject(err));
+  });
+}
+function extractComponentsGuards(matched, guardType, to, from, runWithContext = (fn2) => fn2()) {
+  const guards = [];
+  for (const record of matched) {
+    for (const name in record.components) {
+      let rawComponent = record.components[name];
+      if (guardType !== "beforeRouteEnter" && !record.instances[name])
+        continue;
+      if (isRouteComponent(rawComponent)) {
+        const options = rawComponent.__vccOpts || rawComponent;
+        const guard = options[guardType];
+        guard && guards.push(guardToPromiseFn(guard, to, from, record, name, runWithContext));
+      } else {
+        let componentPromise = rawComponent();
+        guards.push(() => componentPromise.then((resolved) => {
+          if (!resolved)
+            throw new Error(`Couldn't resolve component "${name}" at "${record.path}"`);
+          const resolvedComponent = isESModule(resolved) ? resolved.default : resolved;
+          record.mods[name] = resolved;
+          record.components[name] = resolvedComponent;
+          const options = resolvedComponent.__vccOpts || resolvedComponent;
+          const guard = options[guardType];
+          return guard && guardToPromiseFn(guard, to, from, record, name, runWithContext)();
+        }));
+      }
+    }
   }
-});
-const _style_0 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted(*) {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--overlay {\n  position: absolute;\n  z-index: 1;\n  background: var(--f-page-layout-background);\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: calc(var(--size) + 2px);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--left.resize--overlay {\n  left: 0;\n  top: 0;\n  bottom: 0;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: calc(var(--size) + 2px);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--right.resize--overlay {\n  right: 0;\n  top: 0;\n  bottom: 0;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: calc(var(--size) + 2px);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: calc(var(--size) + 2px);\n}\n.resize__offset {\n  width: calc(var(--offset) + 2px);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: var(--min);\n  max-width: var(--max);\n  flex-basis: var(--size);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: var(--min);\n  max-height: var(--max);\n  flex-basis: var(--size);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n  /* disable regular focus indicator as this component has its own */\n  /* when focus by keyboard we dont want the delay or transition */\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}';
-const FResizePane = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["styles", [_style_0]]]);
-const injectionKey = Symbol("FResizePane");
-const _hoisted_1$4 = {
-  slot: "content"
-};
-const tagName = "ce-resize-pane";
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
-  __name: "FResizePane",
+  return guards;
+}
+function useLink(props) {
+  const router2 = inject(routerKey);
+  const currentRoute = inject(routeLocationKey);
+  const route = computed(() => {
+    const to = unref(props.to);
+    return router2.resolve(to);
+  });
+  const activeRecordIndex = computed(() => {
+    const { matched } = route.value;
+    const { length } = matched;
+    const routeMatched = matched[length - 1];
+    const currentMatched = currentRoute.matched;
+    if (!routeMatched || !currentMatched.length)
+      return -1;
+    const index = currentMatched.findIndex(isSameRouteRecord.bind(null, routeMatched));
+    if (index > -1)
+      return index;
+    const parentRecordPath = getOriginalPath(matched[length - 2]);
+    return (
+      // we are dealing with nested routes
+      length > 1 && // if the parent and matched route have the same path, this link is
+      // referring to the empty child. Or we currently are on a different
+      // child of the same parent
+      getOriginalPath(routeMatched) === parentRecordPath && // avoid comparing the child with its parent
+      currentMatched[currentMatched.length - 1].path !== parentRecordPath ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2])) : index
+    );
+  });
+  const isActive = computed(() => activeRecordIndex.value > -1 && includesParams(currentRoute.params, route.value.params));
+  const isExactActive = computed(() => activeRecordIndex.value > -1 && activeRecordIndex.value === currentRoute.matched.length - 1 && isSameRouteLocationParams(currentRoute.params, route.value.params));
+  function navigate(e = {}) {
+    if (guardEvent(e)) {
+      const p2 = router2[unref(props.replace) ? "replace" : "push"](
+        unref(props.to)
+        // avoid uncaught errors are they are logged anyway
+      ).catch(noop);
+      if (props.viewTransition && typeof document !== "undefined" && "startViewTransition" in document) {
+        document.startViewTransition(() => p2);
+      }
+      return p2;
+    }
+    return Promise.resolve();
+  }
+  return {
+    route,
+    href: computed(() => route.value.href),
+    isActive,
+    isExactActive,
+    navigate
+  };
+}
+function preferSingleVNode(vnodes) {
+  return vnodes.length === 1 ? vnodes[0] : vnodes;
+}
+const RouterLinkImpl = /* @__PURE__ */ defineComponent({
+  name: "RouterLink",
+  compatConfig: { MODE: 3 },
   props: {
-    min: {
-      default: "0"
+    to: {
+      type: [String, Object],
+      required: true
     },
-    max: {
-      default: "100%"
-    },
-    initial: {
-      default: "50%"
+    replace: Boolean,
+    activeClass: String,
+    // inactiveClass: String,
+    exactActiveClass: String,
+    custom: Boolean,
+    ariaCurrentValue: {
+      type: String,
+      default: "page"
     }
   },
-  setup(__props) {
-    if (!customElements.get(tagName)) {
-      customElements.define(tagName, /* @__PURE__ */ defineCustomElement(FResizePane));
-    }
-    const anyEnabled = ref(true);
-    const anyVisible = ref(true);
-    const anyOverlay = ref(false);
-    const size = ref(-1);
-    const offset2 = ref(0);
-    let components = [];
-    let n = 0;
-    function any(src, predicate) {
-      return src.length === 0 || src.some(predicate);
-    }
-    provide(injectionKey, {
-      register(options) {
-        const component = {
-          ...options,
-          id: n++
-        };
-        components.push(component);
-        const scope = effectScope();
-        scope.run(() => {
-          watchEffect(() => {
-            anyEnabled.value = any(components, (it) => {
-              var _a;
-              var _it$enabled$value;
-              return (_it$enabled$value = (_a = it.enabled) == null ? void 0 : _a.value) !== null && _it$enabled$value !== void 0 ? _it$enabled$value : true;
-            });
-          });
-          watchEffect(() => {
-            anyVisible.value = any(components, (it) => {
-              var _a;
-              var _it$visible$value;
-              return (_it$visible$value = (_a = it.visible) == null ? void 0 : _a.value) !== null && _it$visible$value !== void 0 ? _it$visible$value : true;
-            });
-          });
-          watchEffect(() => {
-            anyOverlay.value = any(components, (it) => {
-              var _a;
-              var _it$overlay$value;
-              return (_it$overlay$value = (_a = it.overlay) == null ? void 0 : _a.value) !== null && _it$overlay$value !== void 0 ? _it$overlay$value : false;
-            });
-          });
-          watchEffect(() => {
-            if (components.length === 0) {
-              return 0;
-            }
-            const offsets = components.map((it) => {
-              var _a;
-              return (_a = it.offset) == null ? void 0 : _a.value;
-            }).filter((it) => typeof it === "number");
-            offset2.value = Math.max(0, ...offsets);
-          });
-        });
-        return () => {
-          components = components.filter((it) => it.id !== component.id);
-          scope.stop();
-        };
-      },
-      size
-    });
-    const disabled = computed(() => anyEnabled.value === false);
-    const hidden = computed(() => anyVisible.value === false);
-    const overlay = computed(() => anyOverlay.value === true);
-    const props = __props;
-    function onResize(event) {
-      size.value = event.detail[0];
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(resolveDynamicComponent(tagName), mergeProps({
-        disabled: disabled.value,
-        hidden: hidden.value,
-        overlay: overlay.value,
-        offset: offset2.value
-      }, props, {
-        onResize
-      }), {
-        default: withCtx(() => [createBaseVNode("div", _hoisted_1$4, [renderSlot(_ctx.$slots, "default")])]),
-        _: 3
-      }, 16, ["disabled", "hidden", "overlay", "offset"]);
+  useLink,
+  setup(props, { slots }) {
+    const link = reactive(useLink(props));
+    const { options } = inject(routerKey);
+    const elClass = computed(() => ({
+      [getLinkClass(props.activeClass, options.linkActiveClass, "router-link-active")]: link.isActive,
+      // [getLinkClass(
+      //   props.inactiveClass,
+      //   options.linkInactiveClass,
+      //   'router-link-inactive'
+      // )]: !link.isExactActive,
+      [getLinkClass(props.exactActiveClass, options.linkExactActiveClass, "router-link-exact-active")]: link.isExactActive
+    }));
+    return () => {
+      const children = slots.default && preferSingleVNode(slots.default(link));
+      return props.custom ? children : h("a", {
+        "aria-current": link.isExactActive ? props.ariaCurrentValue : null,
+        href: link.href,
+        // this would override user added attrs but Vue will still add
+        // the listener, so we end up triggering both
+        onClick: link.navigate,
+        class: elClass.value
+      }, children);
     };
   }
 });
-const _sfc_main$2 = {};
-const _hoisted_1$1 = { class: "contextbar" };
-function _sfc_render(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$1, _cache[0] || (_cache[0] = [
-    createBaseVNode("div", { class: "contextbar__forman" }, "KAT_ANS", -1),
-    createBaseVNode("div", { clas: "contextbar__pnr" }, "19120211-9151", -1),
-    createBaseVNode("div", { clas: "contextbar__name" }, "Test Testorsson", -1)
-  ]));
+const RouterLink = RouterLinkImpl;
+function guardEvent(e) {
+  if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey)
+    return;
+  if (e.defaultPrevented)
+    return;
+  if (e.button !== void 0 && e.button !== 0)
+    return;
+  if (e.currentTarget && e.currentTarget.getAttribute) {
+    const target = e.currentTarget.getAttribute("target");
+    if (/\b_blank\b/i.test(target))
+      return;
+  }
+  if (e.preventDefault)
+    e.preventDefault();
+  return true;
 }
-const XContextBar = /* @__PURE__ */ _export_sfc$1(_sfc_main$2, [["render", _sfc_render], ["__scopeId", "data-v-f3c4fc0f"]]);
-const _hoisted_1 = { class: "toolbar" };
-const _sfc_main$1 = /* @__PURE__ */ defineComponent({
-  __name: "XToolbar",
-  setup(__props) {
-    const router2 = useRouter();
-    const bar1 = [
-      { label: "Översikt", route: "overview" },
-      { label: "Journal", route: "journal" },
-      { label: "Dokument", route: "documents" }
-    ];
-    const bar2 = [
-      { label: "Kundinformation", route: "ROUTE_1" },
-      { label: "Kundens ärenden", route: "ROUTE_2" },
-      { label: "Serviceåtgärder", route: "ROUTE_3" }
-    ];
-    function onSelectRoute(route) {
-      router2.push({ name: route });
+function includesParams(outer, inner) {
+  for (const key in inner) {
+    const innerValue = inner[key];
+    const outerValue = outer[key];
+    if (typeof innerValue === "string") {
+      if (innerValue !== outerValue)
+        return false;
+    } else {
+      if (!isArray(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value !== outerValue[i]))
+        return false;
     }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1, [
-        createVNode(unref(FNavigationMenu), {
-          "aria-label": "Primary toolbar",
-          routes: bar1,
-          onSelectedRoute: onSelectRoute
-        }),
-        createVNode(unref(FNavigationMenu), {
-          "aria-label": "Secondary toolbar",
-          routes: bar2
-        })
-      ]);
-    };
   }
-});
-const _sfc_main = /* @__PURE__ */ defineComponent({
-  __name: "App",
-  setup(__props) {
-    registerLayout({
-      name: "awesome-layout",
-      areas: {
-        header: {
-          attachPanel: "none",
-          direction: "column"
-        },
-        left: {
-          attachPanel: "left",
-          direction: "column"
-        },
-        contextbar: {
-          attachPanel: "none",
-          direction: "row"
-        },
-        toolbar: {
-          attachPanel: "none",
-          direction: "row"
-        },
-        content: {
-          attachPanel: "none",
-          direction: "column",
-          scroll: true
-        },
-        right: {
-          attachPanel: "right",
-          direction: "column"
-        },
-        footer: {
-          attachPanel: "none",
-          direction: "column"
+  return true;
+}
+function getOriginalPath(record) {
+  return record ? record.aliasOf ? record.aliasOf.path : record.path : "";
+}
+const getLinkClass = (propClass, globalClass, defaultClass) => propClass != null ? propClass : globalClass != null ? globalClass : defaultClass;
+const RouterViewImpl = /* @__PURE__ */ defineComponent({
+  name: "RouterView",
+  // #674 we manually inherit them
+  inheritAttrs: false,
+  props: {
+    name: {
+      type: String,
+      default: "default"
+    },
+    route: Object
+  },
+  // Better compat for @vue/compat users
+  // https://github.com/vuejs/router/issues/1315
+  compatConfig: { MODE: 3 },
+  setup(props, { attrs, slots }) {
+    const injectedRoute = inject(routerViewLocationKey);
+    const routeToDisplay = computed(() => props.route || injectedRoute.value);
+    const injectedDepth = inject(viewDepthKey, 0);
+    const depth = computed(() => {
+      let initialDepth = unref(injectedDepth);
+      const { matched } = routeToDisplay.value;
+      let matchedRoute;
+      while ((matchedRoute = matched[initialDepth]) && !matchedRoute.components) {
+        initialDepth++;
+      }
+      return initialDepth;
+    });
+    const matchedRouteRef = computed(() => routeToDisplay.value.matched[depth.value]);
+    provide(viewDepthKey, computed(() => depth.value + 1));
+    provide(matchedRouteKey, matchedRouteRef);
+    provide(routerViewLocationKey, routeToDisplay);
+    const viewRef = ref();
+    watch(() => [viewRef.value, matchedRouteRef.value, props.name], ([instance, to, name], [oldInstance, from, oldName]) => {
+      if (to) {
+        to.instances[name] = instance;
+        if (from && from !== to && instance && instance === oldInstance) {
+          if (!to.leaveGuards.size) {
+            to.leaveGuards = from.leaveGuards;
+          }
+          if (!to.updateGuards.size) {
+            to.updateGuards = from.updateGuards;
+          }
         }
       }
-    });
-    return (_ctx, _cache) => {
-      const _component_router_view = resolveComponent("router-view");
-      return openBlock(), createBlock(unref(_sfc_main$8), { layout: "awesome-layout" }, {
-        header: withCtx(() => [
-          createBaseVNode("header", null, [
-            createVNode(unref(FPageHeader), null, {
-              logo: withCtx(() => [
-                createVNode(unref(_sfc_main$e), { size: "small" }, {
-                  default: withCtx(() => _cache[0] || (_cache[0] = [
-                    createTextVNode("Logo")
-                  ])),
-                  _: 1
-                })
-              ]),
-              right: withCtx(() => _cache[1] || (_cache[1] = [
-                createTextVNode(" Namn Namnsson ")
-              ])),
-              default: withCtx(() => [
-                _cache[2] || (_cache[2] = createTextVNode(" Layout components testbed "))
-              ]),
-              _: 1
-            })
-          ])
-        ]),
-        contextbar: withCtx(() => [
-          createVNode(unref(XContextBar))
-        ]),
-        toolbar: withCtx(() => [
-          createVNode(unref(_sfc_main$1))
-        ]),
-        left: withCtx(() => [
-          createVNode(unref(_sfc_main$4), {
-            min: "200px",
-            max: "40%",
-            initial: "200px"
-          }, {
-            default: withCtx(() => _cache[3] || (_cache[3] = [
-              createBaseVNode("h2", null, "Mina uppgifter", -1),
-              createBaseVNode("p", null, "[Menypanel här]", -1)
-            ])),
-            _: 1
-          })
-        ]),
-        content: withCtx(() => [
-          createBaseVNode("main", null, [
-            createVNode(_component_router_view)
-          ])
-        ]),
-        right: withCtx(() => [
-          createVNode(unref(_sfc_main$4), {
-            min: "200px",
-            max: "40%",
-            initial: "200px"
-          }, {
-            default: withCtx(() => _cache[4] || (_cache[4] = [
-              createTextVNode(" [Detaljpanel här] ")
-            ])),
-            _: 1
-          })
-        ]),
-        _: 1
-      });
+      if (instance && to && // if there is no instance but to and from are the same this might be
+      // the first visit
+      (!from || !isSameRouteRecord(to, from) || !oldInstance)) {
+        (to.enterCallbacks[name] || []).forEach((callback) => callback(instance));
+      }
+    }, { flush: "post" });
+    return () => {
+      const route = routeToDisplay.value;
+      const currentName = props.name;
+      const matchedRoute = matchedRouteRef.value;
+      const ViewComponent = matchedRoute && matchedRoute.components[currentName];
+      if (!ViewComponent) {
+        return normalizeSlot(slots.default, { Component: ViewComponent, route });
+      }
+      const routePropsOption = matchedRoute.props[currentName];
+      const routeProps = routePropsOption ? routePropsOption === true ? route.params : typeof routePropsOption === "function" ? routePropsOption(route) : routePropsOption : null;
+      const onVnodeUnmounted = (vnode) => {
+        if (vnode.component.isUnmounted) {
+          matchedRoute.instances[currentName] = null;
+        }
+      };
+      const component = h(ViewComponent, assign({}, routeProps, attrs, {
+        onVnodeUnmounted,
+        ref: viewRef
+      }));
+      return (
+        // pass the vnode to the slot as a prop.
+        // h and <component :is="..."> both accept vnodes
+        normalizeSlot(slots.default, { Component: component, route }) || component
+      );
     };
   }
 });
-const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-30826b30"]]);
+function normalizeSlot(slot, data) {
+  if (!slot)
+    return null;
+  const slotContent = slot(data);
+  return slotContent.length === 1 ? slotContent[0] : slotContent;
+}
+const RouterView = RouterViewImpl;
+function createRouter(options) {
+  const matcher = createRouterMatcher(options.routes, options);
+  const parseQuery$1 = options.parseQuery || parseQuery;
+  const stringifyQuery$1 = options.stringifyQuery || stringifyQuery;
+  const routerHistory = options.history;
+  const beforeGuards = useCallbacks();
+  const beforeResolveGuards = useCallbacks();
+  const afterGuards = useCallbacks();
+  const currentRoute = shallowRef(START_LOCATION_NORMALIZED);
+  let pendingLocation = START_LOCATION_NORMALIZED;
+  if (isBrowser && options.scrollBehavior && "scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  const normalizeParams = applyToParams.bind(null, (paramValue) => "" + paramValue);
+  const encodeParams = applyToParams.bind(null, encodeParam);
+  const decodeParams = (
+    // @ts-expect-error: intentionally avoid the type check
+    applyToParams.bind(null, decode)
+  );
+  function addRoute(parentOrRoute, route) {
+    let parent;
+    let record;
+    if (isRouteName(parentOrRoute)) {
+      parent = matcher.getRecordMatcher(parentOrRoute);
+      record = route;
+    } else {
+      record = parentOrRoute;
+    }
+    return matcher.addRoute(record, parent);
+  }
+  function removeRoute(name) {
+    const recordMatcher = matcher.getRecordMatcher(name);
+    if (recordMatcher) {
+      matcher.removeRoute(recordMatcher);
+    }
+  }
+  function getRoutes() {
+    return matcher.getRoutes().map((routeMatcher) => routeMatcher.record);
+  }
+  function hasRoute(name) {
+    return !!matcher.getRecordMatcher(name);
+  }
+  function resolve2(rawLocation, currentLocation) {
+    currentLocation = assign({}, currentLocation || currentRoute.value);
+    if (typeof rawLocation === "string") {
+      const locationNormalized = parseURL(parseQuery$1, rawLocation, currentLocation.path);
+      const matchedRoute2 = matcher.resolve({ path: locationNormalized.path }, currentLocation);
+      const href2 = routerHistory.createHref(locationNormalized.fullPath);
+      return assign(locationNormalized, matchedRoute2, {
+        params: decodeParams(matchedRoute2.params),
+        hash: decode(locationNormalized.hash),
+        redirectedFrom: void 0,
+        href: href2
+      });
+    }
+    let matcherLocation;
+    if (rawLocation.path != null) {
+      matcherLocation = assign({}, rawLocation, {
+        path: parseURL(parseQuery$1, rawLocation.path, currentLocation.path).path
+      });
+    } else {
+      const targetParams = assign({}, rawLocation.params);
+      for (const key in targetParams) {
+        if (targetParams[key] == null) {
+          delete targetParams[key];
+        }
+      }
+      matcherLocation = assign({}, rawLocation, {
+        params: encodeParams(targetParams)
+      });
+      currentLocation.params = encodeParams(currentLocation.params);
+    }
+    const matchedRoute = matcher.resolve(matcherLocation, currentLocation);
+    const hash = rawLocation.hash || "";
+    matchedRoute.params = normalizeParams(decodeParams(matchedRoute.params));
+    const fullPath = stringifyURL(stringifyQuery$1, assign({}, rawLocation, {
+      hash: encodeHash(hash),
+      path: matchedRoute.path
+    }));
+    const href = routerHistory.createHref(fullPath);
+    return assign({
+      fullPath,
+      // keep the hash encoded so fullPath is effectively path + encodedQuery +
+      // hash
+      hash,
+      query: (
+        // if the user is using a custom query lib like qs, we might have
+        // nested objects, so we keep the query as is, meaning it can contain
+        // numbers at `$route.query`, but at the point, the user will have to
+        // use their own type anyway.
+        // https://github.com/vuejs/router/issues/328#issuecomment-649481567
+        stringifyQuery$1 === stringifyQuery ? normalizeQuery(rawLocation.query) : rawLocation.query || {}
+      )
+    }, matchedRoute, {
+      redirectedFrom: void 0,
+      href
+    });
+  }
+  function locationAsObject(to) {
+    return typeof to === "string" ? parseURL(parseQuery$1, to, currentRoute.value.path) : assign({}, to);
+  }
+  function checkCanceledNavigation(to, from) {
+    if (pendingLocation !== to) {
+      return createRouterError(8, {
+        from,
+        to
+      });
+    }
+  }
+  function push(to) {
+    return pushWithRedirect(to);
+  }
+  function replace(to) {
+    return push(assign(locationAsObject(to), { replace: true }));
+  }
+  function handleRedirectRecord(to) {
+    const lastMatched = to.matched[to.matched.length - 1];
+    if (lastMatched && lastMatched.redirect) {
+      const { redirect } = lastMatched;
+      let newTargetLocation = typeof redirect === "function" ? redirect(to) : redirect;
+      if (typeof newTargetLocation === "string") {
+        newTargetLocation = newTargetLocation.includes("?") || newTargetLocation.includes("#") ? newTargetLocation = locationAsObject(newTargetLocation) : (
+          // force empty params
+          { path: newTargetLocation }
+        );
+        newTargetLocation.params = {};
+      }
+      return assign({
+        query: to.query,
+        hash: to.hash,
+        // avoid transferring params if the redirect has a path
+        params: newTargetLocation.path != null ? {} : to.params
+      }, newTargetLocation);
+    }
+  }
+  function pushWithRedirect(to, redirectedFrom) {
+    const targetLocation = pendingLocation = resolve2(to);
+    const from = currentRoute.value;
+    const data = to.state;
+    const force = to.force;
+    const replace2 = to.replace === true;
+    const shouldRedirect = handleRedirectRecord(targetLocation);
+    if (shouldRedirect)
+      return pushWithRedirect(
+        assign(locationAsObject(shouldRedirect), {
+          state: typeof shouldRedirect === "object" ? assign({}, data, shouldRedirect.state) : data,
+          force,
+          replace: replace2
+        }),
+        // keep original redirectedFrom if it exists
+        redirectedFrom || targetLocation
+      );
+    const toLocation = targetLocation;
+    toLocation.redirectedFrom = redirectedFrom;
+    let failure;
+    if (!force && isSameRouteLocation(stringifyQuery$1, from, targetLocation)) {
+      failure = createRouterError(16, { to: toLocation, from });
+      handleScroll(
+        from,
+        from,
+        // this is a push, the only way for it to be triggered from a
+        // history.listen is with a redirect, which makes it become a push
+        true,
+        // This cannot be the first navigation because the initial location
+        // cannot be manually navigated to
+        false
+      );
+    }
+    return (failure ? Promise.resolve(failure) : navigate(toLocation, from)).catch((error) => isNavigationFailure(error) ? (
+      // navigation redirects still mark the router as ready
+      isNavigationFailure(
+        error,
+        2
+        /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
+      ) ? error : markAsReady(error)
+    ) : (
+      // reject any unknown error
+      triggerError(error, toLocation, from)
+    )).then((failure2) => {
+      if (failure2) {
+        if (isNavigationFailure(
+          failure2,
+          2
+          /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
+        )) {
+          return pushWithRedirect(
+            // keep options
+            assign({
+              // preserve an existing replacement but allow the redirect to override it
+              replace: replace2
+            }, locationAsObject(failure2.to), {
+              state: typeof failure2.to === "object" ? assign({}, data, failure2.to.state) : data,
+              force
+            }),
+            // preserve the original redirectedFrom if any
+            redirectedFrom || toLocation
+          );
+        }
+      } else {
+        failure2 = finalizeNavigation(toLocation, from, true, replace2, data);
+      }
+      triggerAfterEach(toLocation, from, failure2);
+      return failure2;
+    });
+  }
+  function checkCanceledNavigationAndReject(to, from) {
+    const error = checkCanceledNavigation(to, from);
+    return error ? Promise.reject(error) : Promise.resolve();
+  }
+  function runWithContext(fn2) {
+    const app2 = installedApps.values().next().value;
+    return app2 && typeof app2.runWithContext === "function" ? app2.runWithContext(fn2) : fn2();
+  }
+  function navigate(to, from) {
+    let guards;
+    const [leavingRecords, updatingRecords, enteringRecords] = extractChangingRecords(to, from);
+    guards = extractComponentsGuards(leavingRecords.reverse(), "beforeRouteLeave", to, from);
+    for (const record of leavingRecords) {
+      record.leaveGuards.forEach((guard) => {
+        guards.push(guardToPromiseFn(guard, to, from));
+      });
+    }
+    const canceledNavigationCheck = checkCanceledNavigationAndReject.bind(null, to, from);
+    guards.push(canceledNavigationCheck);
+    return runGuardQueue(guards).then(() => {
+      guards = [];
+      for (const guard of beforeGuards.list()) {
+        guards.push(guardToPromiseFn(guard, to, from));
+      }
+      guards.push(canceledNavigationCheck);
+      return runGuardQueue(guards);
+    }).then(() => {
+      guards = extractComponentsGuards(updatingRecords, "beforeRouteUpdate", to, from);
+      for (const record of updatingRecords) {
+        record.updateGuards.forEach((guard) => {
+          guards.push(guardToPromiseFn(guard, to, from));
+        });
+      }
+      guards.push(canceledNavigationCheck);
+      return runGuardQueue(guards);
+    }).then(() => {
+      guards = [];
+      for (const record of enteringRecords) {
+        if (record.beforeEnter) {
+          if (isArray(record.beforeEnter)) {
+            for (const beforeEnter of record.beforeEnter)
+              guards.push(guardToPromiseFn(beforeEnter, to, from));
+          } else {
+            guards.push(guardToPromiseFn(record.beforeEnter, to, from));
+          }
+        }
+      }
+      guards.push(canceledNavigationCheck);
+      return runGuardQueue(guards);
+    }).then(() => {
+      to.matched.forEach((record) => record.enterCallbacks = {});
+      guards = extractComponentsGuards(enteringRecords, "beforeRouteEnter", to, from, runWithContext);
+      guards.push(canceledNavigationCheck);
+      return runGuardQueue(guards);
+    }).then(() => {
+      guards = [];
+      for (const guard of beforeResolveGuards.list()) {
+        guards.push(guardToPromiseFn(guard, to, from));
+      }
+      guards.push(canceledNavigationCheck);
+      return runGuardQueue(guards);
+    }).catch((err) => isNavigationFailure(
+      err,
+      8
+      /* ErrorTypes.NAVIGATION_CANCELLED */
+    ) ? err : Promise.reject(err));
+  }
+  function triggerAfterEach(to, from, failure) {
+    afterGuards.list().forEach((guard) => runWithContext(() => guard(to, from, failure)));
+  }
+  function finalizeNavigation(toLocation, from, isPush, replace2, data) {
+    const error = checkCanceledNavigation(toLocation, from);
+    if (error)
+      return error;
+    const isFirstNavigation = from === START_LOCATION_NORMALIZED;
+    const state = !isBrowser ? {} : history.state;
+    if (isPush) {
+      if (replace2 || isFirstNavigation)
+        routerHistory.replace(toLocation.fullPath, assign({
+          scroll: isFirstNavigation && state && state.scroll
+        }, data));
+      else
+        routerHistory.push(toLocation.fullPath, data);
+    }
+    currentRoute.value = toLocation;
+    handleScroll(toLocation, from, isPush, isFirstNavigation);
+    markAsReady();
+  }
+  let removeHistoryListener;
+  function setupListeners() {
+    if (removeHistoryListener)
+      return;
+    removeHistoryListener = routerHistory.listen((to, _from, info) => {
+      if (!router2.listening)
+        return;
+      const toLocation = resolve2(to);
+      const shouldRedirect = handleRedirectRecord(toLocation);
+      if (shouldRedirect) {
+        pushWithRedirect(assign(shouldRedirect, { replace: true, force: true }), toLocation).catch(noop);
+        return;
+      }
+      pendingLocation = toLocation;
+      const from = currentRoute.value;
+      if (isBrowser) {
+        saveScrollPosition(getScrollKey(from.fullPath, info.delta), computeScrollPosition());
+      }
+      navigate(toLocation, from).catch((error) => {
+        if (isNavigationFailure(
+          error,
+          4 | 8
+          /* ErrorTypes.NAVIGATION_CANCELLED */
+        )) {
+          return error;
+        }
+        if (isNavigationFailure(
+          error,
+          2
+          /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
+        )) {
+          pushWithRedirect(
+            assign(locationAsObject(error.to), {
+              force: true
+            }),
+            toLocation
+            // avoid an uncaught rejection, let push call triggerError
+          ).then((failure) => {
+            if (isNavigationFailure(
+              failure,
+              4 | 16
+              /* ErrorTypes.NAVIGATION_DUPLICATED */
+            ) && !info.delta && info.type === NavigationType.pop) {
+              routerHistory.go(-1, false);
+            }
+          }).catch(noop);
+          return Promise.reject();
+        }
+        if (info.delta) {
+          routerHistory.go(-info.delta, false);
+        }
+        return triggerError(error, toLocation, from);
+      }).then((failure) => {
+        failure = failure || finalizeNavigation(
+          // after navigation, all matched components are resolved
+          toLocation,
+          from,
+          false
+        );
+        if (failure) {
+          if (info.delta && // a new navigation has been triggered, so we do not want to revert, that will change the current history
+          // entry while a different route is displayed
+          !isNavigationFailure(
+            failure,
+            8
+            /* ErrorTypes.NAVIGATION_CANCELLED */
+          )) {
+            routerHistory.go(-info.delta, false);
+          } else if (info.type === NavigationType.pop && isNavigationFailure(
+            failure,
+            4 | 16
+            /* ErrorTypes.NAVIGATION_DUPLICATED */
+          )) {
+            routerHistory.go(-1, false);
+          }
+        }
+        triggerAfterEach(toLocation, from, failure);
+      }).catch(noop);
+    });
+  }
+  let readyHandlers = useCallbacks();
+  let errorListeners = useCallbacks();
+  let ready;
+  function triggerError(error, to, from) {
+    markAsReady(error);
+    const list = errorListeners.list();
+    if (list.length) {
+      list.forEach((handler) => handler(error, to, from));
+    } else {
+      console.error(error);
+    }
+    return Promise.reject(error);
+  }
+  function isReady() {
+    if (ready && currentRoute.value !== START_LOCATION_NORMALIZED)
+      return Promise.resolve();
+    return new Promise((resolve22, reject) => {
+      readyHandlers.add([resolve22, reject]);
+    });
+  }
+  function markAsReady(err) {
+    if (!ready) {
+      ready = !err;
+      setupListeners();
+      readyHandlers.list().forEach(([resolve22, reject]) => err ? reject(err) : resolve22());
+      readyHandlers.reset();
+    }
+    return err;
+  }
+  function handleScroll(to, from, isPush, isFirstNavigation) {
+    const { scrollBehavior } = options;
+    if (!isBrowser || !scrollBehavior)
+      return Promise.resolve();
+    const scrollPosition = !isPush && getSavedScrollPosition(getScrollKey(to.fullPath, 0)) || (isFirstNavigation || !isPush) && history.state && history.state.scroll || null;
+    return nextTick().then(() => scrollBehavior(to, from, scrollPosition)).then((position) => position && scrollToPosition(position)).catch((err) => triggerError(err, to, from));
+  }
+  const go = (delta) => routerHistory.go(delta);
+  let started;
+  const installedApps = /* @__PURE__ */ new Set();
+  const router2 = {
+    currentRoute,
+    listening: true,
+    addRoute,
+    removeRoute,
+    clearRoutes: matcher.clearRoutes,
+    hasRoute,
+    getRoutes,
+    resolve: resolve2,
+    options,
+    push,
+    replace,
+    go,
+    back: () => go(-1),
+    forward: () => go(1),
+    beforeEach: beforeGuards.add,
+    beforeResolve: beforeResolveGuards.add,
+    afterEach: afterGuards.add,
+    onError: errorListeners.add,
+    isReady,
+    install(app2) {
+      const router22 = this;
+      app2.component("RouterLink", RouterLink);
+      app2.component("RouterView", RouterView);
+      app2.config.globalProperties.$router = router22;
+      Object.defineProperty(app2.config.globalProperties, "$route", {
+        enumerable: true,
+        get: () => unref(currentRoute)
+      });
+      if (isBrowser && // used for the initial navigation client side to avoid pushing
+      // multiple times when the router is used in multiple apps
+      !started && currentRoute.value === START_LOCATION_NORMALIZED) {
+        started = true;
+        push(routerHistory.location).catch((err) => {
+        });
+      }
+      const reactiveRoute = {};
+      for (const key in START_LOCATION_NORMALIZED) {
+        Object.defineProperty(reactiveRoute, key, {
+          get: () => currentRoute.value[key],
+          enumerable: true
+        });
+      }
+      app2.provide(routerKey, router22);
+      app2.provide(routeLocationKey, shallowReactive(reactiveRoute));
+      app2.provide(routerViewLocationKey, currentRoute);
+      const unmountApp = app2.unmount;
+      installedApps.add(app2);
+      app2.unmount = function() {
+        installedApps.delete(app2);
+        if (installedApps.size < 1) {
+          pendingLocation = START_LOCATION_NORMALIZED;
+          removeHistoryListener && removeHistoryListener();
+          removeHistoryListener = null;
+          currentRoute.value = START_LOCATION_NORMALIZED;
+          started = false;
+          ready = false;
+        }
+        unmountApp();
+      };
+    }
+  };
+  function runGuardQueue(guards) {
+    return guards.reduce((promise, guard) => promise.then(() => runWithContext(guard)), Promise.resolve());
+  }
+  return router2;
+}
+function extractChangingRecords(to, from) {
+  const leavingRecords = [];
+  const updatingRecords = [];
+  const enteringRecords = [];
+  const len = Math.max(from.matched.length, to.matched.length);
+  for (let i = 0; i < len; i++) {
+    const recordFrom = from.matched[i];
+    if (recordFrom) {
+      if (to.matched.find((record) => isSameRouteRecord(record, recordFrom)))
+        updatingRecords.push(recordFrom);
+      else
+        leavingRecords.push(recordFrom);
+    }
+    const recordTo = to.matched[i];
+    if (recordTo) {
+      if (!from.matched.find((record) => isSameRouteRecord(record, recordTo))) {
+        enteringRecords.push(recordTo);
+      }
+    }
+  }
+  return [leavingRecords, updatingRecords, enteringRecords];
+}
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  components: { FTextField },
+  data() {
+    return {
+      awesomeModel: ""
+    };
+  }
+});
+const _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+const _hoisted_1 = { class: "sandbox-root" };
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_text_field = resolveComponent("f-text-field");
+  const _directive_validation = resolveDirective("validation");
+  return openBlock(), createElementBlock("div", _hoisted_1, [
+    _cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
+    _cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
+    _cache[4] || (_cache[4] = createBaseVNode("p", null, [
+      createBaseVNode("strong", null, "Ändra och labba gärna här men glöm inte återställa innan merge!")
+    ], -1)),
+    _cache[5] || (_cache[5] = createBaseVNode("hr", null, null, -1)),
+    withDirectives((openBlock(), createBlock(_component_f_text_field, {
+      id: "awesome-field",
+      modelValue: _ctx.awesomeModel,
+      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.awesomeModel = $event)
+    }, {
+      default: withCtx(() => _cache[1] || (_cache[1] = [
+        createTextVNode(" Inmatningsfält. ")
+      ])),
+      description: withCtx(({ descriptionClass }) => [
+        createBaseVNode("span", {
+          class: normalizeClass(descriptionClass)
+        }, " Lorem ipsum dolor sit amet. ", 2)
+      ]),
+      _: 1
+    }, 8, ["modelValue"])), [
+      [
+        _directive_validation,
+        { maxLength: { length: 10 } },
+        void 0,
+        {
+          required: true,
+          maxLength: true
+        }
+      ]
+    ])
+  ]);
+}
+const DefaultView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [{ path: "/", name: "", component: DefaultView }]
+});
+const _sfc_main = {};
+function _sfc_render(_ctx, _cache) {
+  const _component_router_view = resolveComponent("router-view");
+  return openBlock(), createBlock(_component_router_view);
+}
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+config.production = false;
+config.popupContainer = "#app";
 const app = createApp(App);
 app.use(router);
+app.use(ValidationPlugin);
+app.use(TestPlugin);
 app.mount("#app");
+setRunningContext(app);
