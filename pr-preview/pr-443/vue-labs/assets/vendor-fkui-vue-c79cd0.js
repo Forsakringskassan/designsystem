@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement, effectScope } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
@@ -4664,8 +4664,8 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$W)) : createCommentVNode("", true);
 }
 var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$P]]);
-function prepareButtonList(src, buttonOrder = config.buttonOrder) {
-  const list = src.map((it) => {
+function prepareButtonList(src) {
+  return src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
     return {
       label: it.label,
@@ -4676,12 +4676,6 @@ function prepareButtonList(src, buttonOrder = config.buttonOrder) {
       buttonType: it.submitButton ? "submit" : "button"
     };
   });
-  switch (buttonOrder) {
-    case FKUIConfigButtonOrder.LEFT_TO_RIGHT:
-      return list;
-    case FKUIConfigButtonOrder.RIGHT_TO_LEFT:
-      return list.reverse();
-  }
 }
 var defaultButtons = [{
   label: "Prim\xE4rknapp",
@@ -4779,7 +4773,8 @@ var _sfc_main$1b = defineComponent({
   })],
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons);
+      const preparedButtonList = prepareButtonList(this.buttons);
+      return config.buttonOrder === FKUIConfigButtonOrder.RIGHT_TO_LEFT ? preparedButtonList.reverse() : preparedButtonList;
     }
   },
   methods: {
@@ -5568,7 +5563,7 @@ var _sfc_main$15 = defineComponent({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, FKUIConfigButtonOrder.RIGHT_TO_LEFT);
+      return prepareButtonList(this.buttons);
     }
   },
   methods: {
