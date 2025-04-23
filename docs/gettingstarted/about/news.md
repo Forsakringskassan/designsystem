@@ -4,6 +4,13 @@ name: news
 layout: content-with-menu
 ---
 
+## Version 6.5.0
+
+2025-04-23
+
+Inställningen för knappordning påverkar nu enbart bekräftelsemodaler.
+Dokumentationen för {@link config konfiguration} är uppdaterad med vilken inbyggd knappordning FKUI-komponenter använder.
+
 ## Version 6.4.0
 
 2025-04-12
