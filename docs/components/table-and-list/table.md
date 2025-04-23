@@ -279,7 +279,7 @@ I undantagsfall kan du också använda en dold skärmläsartext i caption, men t
 
 ### Skroll i tabell
 
-För att lägga till skoll i tabell använder du prop `scroll`:
+För att lägga till skroll i tabell använder du prop `scroll`:
 
 ```diff
 -<f-data-table :rows="items">
