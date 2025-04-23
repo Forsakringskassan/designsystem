@@ -23,10 +23,10 @@ export default defineComponent({
             <f-data-table :rows="items" key-attribute="id">
                 <template #caption> Tabell med standard densitet </template>
                 <template #default="{ row }">
-                    <f-table-column name="date" title="Datum" type="text">
+                    <f-table-column title="Datum" type="text">
                         {{ row.date }}
                     </f-table-column>
-                    <f-table-column name="amount" title="Belopp" type="numeric">
+                    <f-table-column title="Belopp" type="numeric">
                         {{ row.amount }}
                     </f-table-column>
                 </template>
@@ -36,10 +36,10 @@ export default defineComponent({
             <f-data-table :rows="items" key-attribute="id">
                 <template #caption> Tabell med kompakt densitet </template>
                 <template #default="{ row }">
-                    <f-table-column name="date" title="Datum" type="text">
+                    <f-table-column title="Datum" type="text">
                         {{ row.date }}
                     </f-table-column>
-                    <f-table-column name="amount" title="Belopp" type="numeric">
+                    <f-table-column title="Belopp" type="numeric">
                         {{ row.amount }}
                     </f-table-column>
                 </template>

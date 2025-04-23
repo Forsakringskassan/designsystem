@@ -4,7 +4,7 @@ layout: component
 component: IFlexItem
 ---
 
-See documentation for [IFlex](#/internal-components/iflex).
+See documentation for {@link IFlex}.
 
 ## API
 

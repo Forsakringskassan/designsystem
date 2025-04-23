@@ -47,21 +47,38 @@ Sätt `defaultSortAttribute` till namnet på fältet som ska sorteras samt `defa
 
 ## Lista med datamängdsorterare
 
-Visar hur `FSortFilterDataset` kan användas med [`FList`](../FList).
+Visar hur `FSortFilterDataset` kan användas med {@link FList `FList`}.
 
 ```import
 FSortFilterDatasetListExample.vue
 ```
 
-## Tabell med förvald sortering
+## Tabell med datamängdsorterare
 
-Visar hur `FSortFilterDataset` kan användas med [`FInteractiveTable`](../FInteractiveTable).
+När tabell ({@link table#interaktiv_tabell `FInteractiveTable`} eller {@link table#datatabell `FDataTable`}) används med datamängdsorterare måste varje tabellkolumn använda `name` prop med ett unikt värde.
+För objektet som du skickar till datamängdsorterarens `sortableAttributes` behöver egenskapernas namn även matcha kolumnernas namn för att kunna sortera dem.
+
+```diff
+-<f-table-column title="Datum">
++<f-table-column name="date" title="Datum">
+```
+
+```ts
+const mySortableAttributes = {
+    // Property name must match column name.
+    date: "Datum",
+};
+```
+
+### Tabell med förvald sortering
+
+Visar hur `FSortFilterDataset` kan användas med {@link table#interaktiv_tabell `FInteractiveTable`}.
 
 ```import
 FSortFilterDatasetTableExample.vue
 ```
 
-## Tabell med åtgärder
+### Tabell med åtgärder
 
 Åtgärder som till exempel batch-funktioner som rör hela datamängden kan placeras i sloten Header för att gruppera med sortering och filtering.
 
@@ -104,7 +121,7 @@ FSortFilterDatasetHeader.vue
 För att visa antalet rader som presenteras använder man sig av de två listornas längd.
 
 - Om längden av de ursprungliga raderna är `0` finns inga rader att visa oavsett filtrering.
-- Om längden av de filtrerade raderna är `0` (men urprungliga är större än `0`) visas inga rader på grund av filter.
+- Om längden av de filtrerade raderna är `0` (men ursprungliga är större än `0`) visas inga rader på grund av filter.
 - Om längden mellan de två skiljer sig åt har sökningen gett ett resultat.
 
 Vi använder begreppet "träffar" för att presentera resultat.
