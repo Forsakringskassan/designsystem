@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Konfiguration - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-7b4a68.css"
+            href="../assets/docs-dfbd95.css"
             crossorigin
-            integrity="sha384-YGlTUg/J3l395TSipQ6a0qlTc6ySnihieljwDd29ErQ2BSoTcgqAkiEjedPnB0NI"
+            integrity="sha384-VU638FPJ4BfHN7rx7rJVqjDb6ARrOLhV6HsGpQOm6to263WYev8LbyJsqyKdSdpH"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-9912b8.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-3fe358.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../assets/vendor-fkui-vue-9912b8.js": "sha384-9ef2AqTgq1eUEBtWU3ge+CSnqx/UeZsIKu+F8CuiywK7QEnMkB3rQkrQrsUoA5uj",
+    "../assets/vendor-fkui-vue-3fe358.js": "sha384-9VHTdhaS8M+g88GezUQD9/iUPHknt9a7gu3X0DyeQCn3beF9QosI8jIKQtBYzr78",
     "../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-3ecae1.json"
+            href="../search-data-f416bf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-3xZ+kILEgr5uIxbhFidUaQ9TYlxWvVhMyhqC+Unuayv3zLzjZwJx/Xl+zUabaWeH"
+            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
             id="search-data"
         />
     </head>
@@ -1174,55 +1174,91 @@
 config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title class_">FKUIConfigButtonOrder</span>.<span class="hljs-property">LEFT_TO_RIGHT</span>;
 </code></pre>
                 </div>
-            <h2 id="referens"><a class="header-anchor" href="#referens">Referens</a></h2><h3 id="buttonorder"><a class="header-anchor" href="#buttonorder"><code>buttonOrder</code></a></h3><ul>
-<li><p class="docs-paragraph">default: <code>RIGHT_TO_LEFT</code></p></li>
+            <h2 id="referens"><a class="header-anchor" href="#referens">Referens</a></h2><h3 id="knappordning_bekraftelsemodal_buttonorder"><a class="header-anchor" href="#knappordning_bekraftelsemodal_buttonorder">Knappordning bekräftelsemodal (<code>buttonOrder</code>)</a></h3><ul>
+<li><p class="docs-paragraph">default: Höger till vänster (<code>RIGHT_TO_LEFT</code>)</p></li>
 <li><p class="docs-paragraph">type: <code>FKUIConfigButtonOrder</code></p></li>
 </ul>
-<p class="docs-paragraph">Anger i vilken ordning man vill visa knappar.</p><p class="docs-paragraph"><code>LEFT_TO_RIGHT</code>: Vänster till höger</p>
+<p class="docs-paragraph">Anger i vilken ordning man vill visa knappar i bekräftelsemodal.</p><p class="docs-paragraph"><code>LEFT_TO_RIGHT</code>: Vänster till höger</p>
                 <div
-                    id="example-786b69"
-                    class="code-preview code-preview--default"
+                    id="example-800a68"
+                    class="code-preview code-preview--borderless"
                     
-                    data-tags="nomarkup"
-                    data-language="jsx"
+                    data-tags="nomarkup borderless"
+                    data-language="html"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-jsx" tabindex="0">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;
-    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary button-group__item&quot;</span>&gt;</span>
-        1
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary button-group__item&quot;</span>&gt;</span>
-        2
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary button-group__item&quot;</span>&gt;</span>
-        3
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-&lt;/div&gt;
-</code></pre>
+                    <div class="code-preview__preview"><button inert type="button" class="docs-example-button button--primary">
+    Ta bort
+</button>
+<button inert type="button" class="docs-example-button button--secondary">
+    Avbryt
+</button>
+</div>
                 </div>
             <p class="docs-paragraph"><code>RIGHT_TO_LEFT</code>: Höger till vänster</p>
                 <div
-                    id="example-8a9b35"
-                    class="code-preview code-preview--default"
+                    id="example-4acf0e"
+                    class="code-preview code-preview--borderless"
                     
-                    data-tags="nomarkup"
-                    data-language="jsx"
+                    data-tags="nomarkup borderless"
+                    data-language="html"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-jsx" tabindex="0">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;
-    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary button-group__item&quot;</span>&gt;</span>
-        3
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary button-group__item&quot;</span>&gt;</span>
-        2
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary button-group__item&quot;</span>&gt;</span>
-        1
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-&lt;/div&gt;
-</code></pre>
+                    <div class="code-preview__preview"><button inert type="button" class="docs-example-button button--secondary">
+    Avbryt
+</button>
+<button inert type="button" class="docs-example-button button--primary">
+    Ta bort
+</button>
+</div>
                 </div>
-            <h3 id="teleporttarget"><a class="header-anchor" href="#teleporttarget"><code>teleportTarget</code></a></h3><ul>
+            <h4 id="modaler_med_inbyggd_knappordning"><a class="header-anchor" href="#modaler_med_inbyggd_knappordning">Modaler med inbyggd knappordning</a></h4><table class="table">
+<thead>
+<tr class="table__row">
+<th class="table__column table__column--text" scope="col">Komponent</th>
+<th class="table__column table__column--text" scope="col">Inställning</th>
+<th class="table__column table__column--text" scope="col">Knappordning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table__row">
+<td class="table__column table__column--text">Bekräftelsemodal (FConfirmModal)</td>
+<td class="table__column table__column--text">LEFT_TO_RIGHT</td>
+<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text">Bekräftelsemodal (FConfirmModal)</td>
+<td class="table__column table__column--text">RIGHT_TO_LEFT</td>
+<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--secondary">Avbryt</button><button inert type="button" class="docs-example-button button--primary">Spara</button></td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text">Formulärsmodal (FFormModal)</td>
+<td class="table__column table__column--text">*</td>
+<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text">Datamängdredigerare (FCrudDataset) - Lägg till</td>
+<td class="table__column table__column--text">*</td>
+<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Lägg till</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text">Datamängdredigerare (FCrudDataset) - Ändra</td>
+<td class="table__column table__column--text">*</td>
+<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text">Datamängdredigerare (FCrudDataset) - Ta bort</td>
+<td class="table__column table__column--text">LEFT_TO_RIGHT</td>
+<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Ta bort</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text">Datamängdredigerare (FCrudDataset) - Ta bort</td>
+<td class="table__column table__column--text">RIGHT_TO_LEFT</td>
+<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--secondary">Avbryt</button><button inert type="button" class="docs-example-button button--primary">Ta bort</button></td>
+</tr>
+</tbody>
+</table>
+<h3 id="teleporttarget"><a class="header-anchor" href="#teleporttarget"><code>teleportTarget</code></a></h3><ul>
 <li><p class="docs-paragraph">default: <code>document.body</code></p></li>
 <li><p class="docs-paragraph">type: <code>string | Element</code></p></li>
 </ul>
@@ -1261,9 +1297,9 @@ Ett exempel av skillnad: i produktion vill man inte kasta exception men man logg
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/sfkui-7207 (<a href="https://github.com/Forsakringskassan/designsystem/commits/33672d190c9739c5c95e7c0a6f03d7a33bff965e">33672d1</a>)<br />
+<div class="footer__right"><div class="version">fix/sfkui-7207 (<a href="https://github.com/Forsakringskassan/designsystem/commits/f64e84400a434653a804c2b52633679578ebe05c">f64e844</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/446">PR 446</a><br />
-        2025-04-22 09:44
+        2025-04-23 12:26
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1376,10 +1412,10 @@ Ett exempel av skillnad: i produktion vill man inte kasta exception men man logg
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-aad26b.js"
+            src="../assets/processors/selectable-version/select-version-50a45c.js"
             type="module"
             crossorigin
-            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
+            integrity="sha384-ew0nN7HjZZWlAqqxYNe3jmOgC0rjVWd7o94Muk42AmApjtUhqPuR8E+Y7cq5AJcx"
             
         ></script><script
             src="../assets/main-a45256.js"
