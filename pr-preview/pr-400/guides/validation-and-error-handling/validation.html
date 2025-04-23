@@ -4,21 +4,18 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Validering och felhantering - FK Designsystem</title>
-
-        <!-- prettier-ignore -->
-        <link
+        <title>Validering och felhantering - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2125ae.css"
+            href="../../assets/docs-7bb5b7.css"
             crossorigin
-            integrity="sha384-VKPOAi0vL4KNNjbO7O+mExDjXSkLKGw9d6hJp+hKzFhpLxX6il5KMxnSWLOLYX57"
+            integrity="sha384-zkpVDJCyRHaNPgo8932DqDY7D67iG9jT90dnuGabCI7LMEhemljeGu7APE+gPIlv"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-20051b.css"
+            href="../../assets/docs-fkui-4ecb6d.css"
             crossorigin
-            integrity="sha384-qhZPClx+QkuR7SzxzNbby0CImPd4CF3Dv4vTvYdwIXTTwVt5Z4WI3FlD0k3ChFqr"
+            integrity="sha384-CC6Vb3lD+/MxRQkRAEekVk7Fo0SZFS6JwkUWKQWZwFuguHLB6tQ0+3tFeeqDSTwr"
             data-theme="fkui" disabled
         />
 
@@ -28,31 +25,24 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-cccf4b.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-096436.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-9c5468.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-cccf4b.js": "sha384-ArMw59qPIlf4P9VcGbDUmNxWbZH3zI/Z1Ttr+8SGWRpiSZjKkbxjuNV2MjIXEU/r",
-    "../../assets/vendor-forsakringskassan-docs-live-example-096436.js": "sha384-YtIZtW/tnSEEknfiiCGwy8X5ax8aqTONG/nKhutnM8X1GfGkmrxw2IojxhOLMhAk"
+    "../../assets/vendor-fkui-vue-9c5468.js": "sha384-ReW6QtuzEyuX6XG/23fLy9UGrz09wRcVy1vzjxOYeYvcalCeBNK3v4gCDPemCCCg",
+    "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
-        </script>
-
-        <!-- prettier-ignore -->
-        <!-- prettier-ignore -->
-        <script
+        </script><script
             src="../../assets/bootstrap-956ec3.js"
             
             crossorigin
             integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
             
-        ></script>
-
-        <!-- prettier-ignore -->
-        <script>
+        ></script><script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -92,17 +82,14 @@
 
         <link
             rel="preload"
-            href="../../search-data-48184b.json"
+            href="../../search-data-3ecae1.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+PNwUHo06BWPJF5WevC3kc+ljtrgONo0r/nU9pxS669rCNtWsqkR4RBHvdjt9xva"
+            integrity="sha384-3xZ+kILEgr5uIxbhFidUaQ9TYlxWvVhMyhqC+Unuayv3zLzjZwJx/Xl+zUabaWeH"
             id="search-data"
         />
     </head>
-    <body>
-        <!-- prettier-ignore -->
-        
-<template id="motd-message">
+    <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
         <span class="icon-stack icon-stack--info">
@@ -142,20 +129,14 @@
 
 
         <div class="layout-wrapper">
-            <header>
-                <!-- prettier-ignore --><div class="page-header__root">
+            <header><div class="page-header__root">
     <div class="page-header">
         <a class="page-header__logo" href="../../index.html">
             <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
         <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
-    <ul class="docs-topnav__list">
-        <!-- prettier-ignore -->
-        
-        
-        
-        <li class="docs-topnav__item ">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
         </li>
         
@@ -194,12 +175,7 @@
                 </svg>
             </button>
             <div class="docs-contextmenu">
-                <ul class="docs-contextmenu__list">
-                    <!-- prettier-ignore -->
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item " style="display: none">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
                     </li>
                     
@@ -253,124 +229,112 @@
 </div>
 </header>
 
-            <div id="primary">
-                <!-- prettier-ignore -->
-<div id="sidenav">
+            <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable ">
+<ol><li class="expandable ">
         <details >
             <summary>Formatering och parsning</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+<ol><li class="link ">
         <a
             href="../formatting-and-parsing/formatter-parser.html"
+            
+            
+            
+            data-path="guides/formatting-and-parsing/formatter-parser.html"
             
         >
             Formatering och parsning
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="../formatting-and-parsing/custom-formatter-parser.html"
+            
+            
+            
+            data-path="guides/formatting-and-parsing/custom-formatter-parser.html"
             
         >
             Formaterare och parser - anpassad
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <li class="expandable active">
+    </li><li class="expandable active">
         <details open>
             <summary>Validering och felhantering</summary>
-            <!-- prettier-ignore -->
             
             
-<ol>
-    <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link active">
-        <!-- prettier-ignore -->
+<ol><li class="link active">
         <a
             href="./validation.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/validation.html"
             
         >
             Validering och felhantering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./custom-error-message.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-error-message.html"
             
         >
             Felmeddelande - anpassat
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./cross-validation.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/cross-validation.html"
             
         >
             Korsvalidering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./length-validation.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/length-validation.html"
             
         >
             Längdvalidering
         </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
+    </li><li class="link ">
         <a
             href="./custom-validator.html"
+            
+            
+            
+            data-path="guides/validation-and-error-handling/custom-validator.html"
             
         >
             Validator - anpassad
         </a>
-    </li><!-- prettier-ignore --></ol>
+    </li></ol>
 
             
         </details>
-    </li><!-- prettier-ignore -->
-    <!-- prettier-ignore --></ol>
+    </li></ol>
 </nav>
-</div>
-
-
-                <!-- prettier-ignore --><main>
+</div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">Validering och felhantering</h1>
 
                     
-                    <div id="aside">
-                        <!-- prettier-ignore -->
-<dl>
-    <!-- prettier-ignore -->
-    
-</dl>
+                    <div id="aside"><dl></dl>
 
 
                         
@@ -394,21 +358,13 @@
                     </div>
                     
 
-                    <div id="content">
-                        <!-- prettier-ignore -->
-<p>Vi hjälper användarna att fylla i uppgifter i ett formulär på rätt sätt genom att vi validerar uppgifterna och visar tydliga felmeddelanden vid rätt tillfälle.</p>
-<p>Innehållet i ett <a href="../../components/input/ftextfield.html">inmatningsfält</a> valideras när användaren lämnar fältet, till exempel genom att tabba vidare till nästa.
+                    <div id="content"><p class="docs-paragraph">Vi hjälper användarna att fylla i uppgifter i ett formulär på rätt sätt genom att vi validerar uppgifterna och visar tydliga felmeddelanden vid rätt tillfälle.</p><p class="docs-paragraph">Innehållet i ett <a href="../../components/input/ftextfield.html">inmatningsfält</a> valideras när användaren lämnar fältet, till exempel genom att tabba vidare till nästa.
 Om ett fel upptäcks markeras fältet som felaktigt och användaren informeras om felet med <a href="../../components/flabel.html">etikettens</a> felmeddelanden.
-I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etiketten</a> kan du se hur vi skriver feltexter.</p>
-<p>Exempel på när fel ska visas:</p>
-<ul>
-<li>Användaren har fyllt i ett felaktigt tecken.</li>
-<li>Ett inmatat postnummer matchar inte med någon ort.</li>
+I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etiketten</a> kan du se hur vi skriver feltexter.</p><p class="docs-paragraph">Exempel på när fel ska visas:</p><ul>
+<li><p class="docs-paragraph">Användaren har fyllt i ett felaktigt tecken.</p></li>
+<li><p class="docs-paragraph">Ett inmatat postnummer matchar inte med någon ort.</p></li>
 </ul>
-<p>Vi visar fel först när användaren lämnar fältet eftersom vi inte vill avbryta användaren med ett felmeddelande innan hen anser sig vara klar med att fylla i uppgifter i fältet.</p>
-<p>Fel om obligatoriska fält som lämnas utan att vara ifyllda visas först när användaren försöker skicka in formuläret.</p>
-<p>Felaktiga tecken eller värden ligger alltid kvar efter valideringen.</p>
-
+<p class="docs-paragraph">Vi visar fel först när användaren lämnar fältet eftersom vi inte vill avbryta användaren med ett felmeddelande innan hen anser sig vara klar med att fylla i uppgifter i fältet.</p><p class="docs-paragraph">Fel om obligatoriska fält som lämnas utan att vara ifyllda visas först när användaren försöker skicka in formuläret.</p><p class="docs-paragraph">Felaktiga tecken eller värden ligger alltid kvar efter valideringen.</p>
             <div
                 id="example-25d447"
                 class="code-preview code-preview--default"
@@ -418,13 +374,13 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
             >
                 
                 <div class="code-preview__preview">
-        <div id="FValidationFormDefault"></div>
+        <div id="example-94c5be"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FValidationFormDefault-0e113b.js"></script>
+        <script type="module" src="./FValidationFormDefault-94c5be.js"></script>
     </div>
                 <div>
             <button
@@ -442,7 +398,48 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCheckboxField</span>,
+    <span class="hljs-title class_">FEmailTextField</span>,
+    <span class="hljs-title class_">FFieldset</span>,
+    <span class="hljs-title class_">FRadioField</span>,
+    <span class="hljs-title class_">FPhoneTextField</span>,
+    <span class="hljs-title class_">FValidationForm</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FValidationFormDefault&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCheckboxField</span>,
+        <span class="hljs-title class_">FEmailTextField</span>,
+        <span class="hljs-title class_">FFieldset</span>,
+        <span class="hljs-title class_">FRadioField</span>,
+        <span class="hljs-title class_">FPhoneTextField</span>,
+        <span class="hljs-title class_">FValidationForm</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">phone</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">phoneAlt</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">info</span>: <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">tips</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">news</span>: <span class="hljs-literal">false</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Spara&quot;</span>);
+        },
+        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Avbryt&quot;</span>);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-validation-form</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">error-message</span>&gt;</span> Oj, du har glömt fylla i något. Gå till: <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
@@ -490,93 +487,35 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCheckboxField</span>,
-    <span class="hljs-title class_">FEmailTextField</span>,
-    <span class="hljs-title class_">FFieldset</span>,
-    <span class="hljs-title class_">FRadioField</span>,
-    <span class="hljs-title class_">FPhoneTextField</span>,
-    <span class="hljs-title class_">FValidationForm</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FValidationFormDefault&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCheckboxField</span>,
-        <span class="hljs-title class_">FEmailTextField</span>,
-        <span class="hljs-title class_">FFieldset</span>,
-        <span class="hljs-title class_">FRadioField</span>,
-        <span class="hljs-title class_">FPhoneTextField</span>,
-        <span class="hljs-title class_">FValidationForm</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">phone</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">phoneAlt</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">info</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">tips</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">news</span>: <span class="hljs-literal">false</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Spara&quot;</span>);
-        },
-        <span class="hljs-title function_">onCancel</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Avbryt&quot;</span>);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <h2 id="obligatoriska_falt"><a class="header-anchor" href="#obligatoriska_falt">Obligatoriska fält</a></h2><p>Vi visar inte användaren vilka fält som måste fyllas i.
+        <h2 id="obligatoriska_falt"><a class="header-anchor" href="#obligatoriska_falt">Obligatoriska fält</a></h2><p class="docs-paragraph">Vi visar inte användaren vilka fält som måste fyllas i.
 Istället visar vi användaren vilka fält som är valfria.
-Utgångspunkten är att vi bara frågar efter information som vi behöver.</p>
-<p>Etikettrubriken till ett valfritt fält avslutas med till exempel &quot;(Frivillig)&quot; eller &quot;(Valfritt)&quot;.</p>
-<p>Ett obligatoriskt fält som inte är ifyllt visas som felaktigt först när användaren försöker skicka in formuläret.
-Det här underlättar för skärmläsaranvändare som ofta har för vana att tabba igenom formulär för att skapa sig en överblick innan de fyller i några uppgifter.</p>
-<p>En formulärskomponent markeras som obligatorisk med <code>v-validation.required</code>.</p>
-<h2 id="submit_knappen"><a class="header-anchor" href="#submit_knappen">Submit-knappen</a></h2><p>Användaren ska alltid kunna trycka på ett formulärs submit-knapp, oavsett om ett formulär innehåller fel eller inte.
+Utgångspunkten är att vi bara frågar efter information som vi behöver.</p><p class="docs-paragraph">Etikettrubriken till ett valfritt fält avslutas med till exempel &quot;(Frivillig)&quot; eller &quot;(Valfritt)&quot;.</p><p class="docs-paragraph">Ett obligatoriskt fält som inte är ifyllt visas som felaktigt först när användaren försöker skicka in formuläret.
+Det här underlättar för skärmläsaranvändare som ofta har för vana att tabba igenom formulär för att skapa sig en överblick innan de fyller i några uppgifter.</p><p class="docs-paragraph">En formulärskomponent markeras som obligatorisk med <code>v-validation.required</code>.</p><h2 id="submit_knappen"><a class="header-anchor" href="#submit_knappen">Submit-knappen</a></h2><p class="docs-paragraph">Användaren ska alltid kunna trycka på ett formulärs submit-knapp, oavsett om ett formulär innehåller fel eller inte.
 Submit-knappen ska aldrig vara inaktiv.
-Formuläret valideras när användaren trycker på submit-knappen eller på ENTER.</p>
-<p>Det finns två alternativ för hur fel i ett formulär kan visas när användaren ha tryckt på submit-knappen:</p>
-<ul>
-<li>Fokus flyttas till den första formulärskomponenten med fel eller saknade uppgifter.</li>
-<li>En <a href="../../components/validation/ferrorlist.html">fellista</a> med ankarlänkar till varje fält med fel visas ovanför formuläret. Fellistan får automatiskt fokus.</li>
+Formuläret valideras när användaren trycker på submit-knappen eller på ENTER.</p><p class="docs-paragraph">Det finns två alternativ för hur fel i ett formulär kan visas när användaren ha tryckt på submit-knappen:</p><ul>
+<li><p class="docs-paragraph">Fokus flyttas till den första formulärskomponenten med fel eller saknade uppgifter.</p></li>
+<li><p class="docs-paragraph">En <a href="../../components/validation/ferrorlist.html">fellista</a> med ankarlänkar till varje fält med fel visas ovanför formuläret. Fellistan får automatiskt fokus.</p></li>
 </ul>
-<p>I formulär med några få komponenter rekommenderas det att fokus flyttas direkt till första formulärskomponenten.
-För stora formulär bör du använda en fellista.</p>
-<h2 id="komponenten_valideringsformular"><a class="header-anchor" href="#komponenten_valideringsformular">Komponenten valideringsformulär</a></h2><p>Som standard ska du använda komponenten <a href="../../components/validation/fvalidationform.html">valideringsformulär</a> för alla typer av formulär.
-Komponenten ger önskat beteende och funktioner för validering av formulär, till exempel:</p>
-<ul>
-<li>Som standard används en <a href="../../components/validation/ferrorlist.html">fellista</a> men den kan stängas av.</li>
-<li>Stöd för backend-validering.</li>
-<li>Fokushantering när användaren försöker skicka in ett formulär med fel.</li>
+<p class="docs-paragraph">I formulär med några få komponenter rekommenderas det att fokus flyttas direkt till första formulärskomponenten.
+För stora formulär bör du använda en fellista.</p><h2 id="komponenten_valideringsformular"><a class="header-anchor" href="#komponenten_valideringsformular">Komponenten valideringsformulär</a></h2><p class="docs-paragraph">Som standard ska du använda komponenten <a href="../../components/validation/fvalidationform.html">valideringsformulär</a> för alla typer av formulär.
+Komponenten ger önskat beteende och funktioner för validering av formulär, till exempel:</p><ul>
+<li><p class="docs-paragraph">Som standard används en <a href="../../components/validation/ferrorlist.html">fellista</a> men den kan stängas av.</p></li>
+<li><p class="docs-paragraph">Stöd för backend-validering.</p></li>
+<li><p class="docs-paragraph">Fokushantering när användaren försöker skicka in ett formulär med fel.</p></li>
 </ul>
-<h2 id="validatorer"><a class="header-anchor" href="#validatorer">Validatorer</a></h2><p>En inmatningskomponent kan ha en eller flera validatorer.
+<h2 id="validatorer"><a class="header-anchor" href="#validatorer">Validatorer</a></h2><p class="docs-paragraph">En inmatningskomponent kan ha en eller flera validatorer.
 Validering görs i den ordning som validatorerna ligger i, vilket innebär att felmeddelandet för den första validatorn som är ogiltig visas.
-En kombination av två validatorer kan resultera i ett specifikt felmeddelande.</p>
-<p>Designsystemet inkluderar inmatningsfält för vanliga format som mejladresser och personnummer.
-Använd något av de <a href="../../components/input/textfield-specialized.html">specialiserade inmatningsfälten</a> eller skapa ett eget inmatningsfält med de <a href="../../components/validation/validators.html">validatorer</a> och <a href="../formatting-and-parsing/formatter-parser.html">regler för formattering och parsning</a> som finns i designsystemet.</p>
-<p>Du kan skapa en <a href="./custom-validator.html">egen validator</a> om din applikation kräver inmatning av uppgifter som följer ett format som designsystemet inte har någon validator för.</p>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../../components/validation/validators.html">Validatorer</a></p>
-<p><a href="./custom-validator.html">Validator - anpassad</a></p>
-<p><a href="./length-validation.html">Längdvalidering</a></p>
-<p><a href="./cross-validation.html">Korsvalidering</a></p>
-<p><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p>
-
+En kombination av två validatorer kan resultera i ett specifikt felmeddelande.</p><p class="docs-paragraph">Designsystemet inkluderar inmatningsfält för vanliga format som mejladresser och personnummer.
+Använd något av de <a href="../../components/input/textfield-specialized.html">specialiserade inmatningsfälten</a> eller skapa ett eget inmatningsfält med de <a href="../../components/validation/validators.html">validatorer</a> och <a href="../formatting-and-parsing/formatter-parser.html">regler för formattering och parsning</a> som finns i designsystemet.</p><p class="docs-paragraph">Du kan skapa en <a href="./custom-validator.html">egen validator</a> om din applikation kräver inmatning av uppgifter som följer ett format som designsystemet inte har någon validator för.</p><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../components/validation/validators.html">Validatorer</a></p><p class="docs-paragraph"><a href="./custom-validator.html">Validator - anpassad</a></p><p class="docs-paragraph"><a href="./length-validation.html">Längdvalidering</a></p><p class="docs-paragraph"><a href="./cross-validation.html">Korsvalidering</a></p><p class="docs-paragraph"><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p>
 
                     </div>
                 </main>
             </div>
 
-            <footer>
-                <!-- prettier-ignore --><div class="footer__left">
+            <footer><div class="footer__left">
     <h1>Kontakta oss</h1>
     <ul>
         <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
@@ -586,13 +525,9 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
 
 <div class="footer__center"></div>
 
-<div class="footer__right">
-    <!-- prettier-ignore -->
-    <div class="version">
-    <!-- prettier-ignore -->
-    docs/button-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/43a2e6b2a5faf843841e9fd3c037bcf8c08d5cc6">43a2e6b</a>)<br />
+<div class="footer__right"><div class="version">docs/button-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/1a1f3f1706403828feab458036e4406cdcdec7f4">1a1f3f1</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/400">PR 400</a><br />
-        2025-04-03 15:06
+        2025-04-23 08:25
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -607,7 +542,7 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
             <button type="button" class="button button--discrete button--discrete--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use xlink:href="#f-icon-close"></use>
+                    <use href="#f-icon-close"></use>
                 </svg>
             </button>
         </div>
@@ -631,9 +566,7 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
     </ul>
 </div>
 </footer>
-        </div>
-
-        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+        </div><div aria-hidden="true" style="display: none">
     <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
         <symbol id="docs-icon-search" viewBox="0 0 512 512">
             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -676,13 +609,11 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
             ></path>
         </symbol>
     </svg>
-</div>
-<!-- prettier-ignore -->
-        <dialog id="search-dialog">
+</div><dialog id="search-dialog">
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
-            <label for="search-field" class="label"> Sök </label>
+            <label for="search-field" class="label">Sök</label>
             <div class="text-field__input-wrapper">
                 <div class="text-field__icon-wrapper">
                     <input
@@ -702,32 +633,23 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog>
-
-
-        <!-- prettier-ignore -->
-        <!-- prettier-ignore -->
-        <script
+</dialog><script
             src="../../assets/processors/motd/index-fd9bb8.js"
             type="module"
             crossorigin
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
-        ></script>
-        <!-- prettier-ignore -->
-        <script
-            src="../../assets/processors/selectable-version/select-version-a076f1.js"
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-aad26b.js"
             type="module"
             crossorigin
-            integrity="sha384-RMh9k9IJjqrU+bFKJl6I1MDRi1eClLAJW3/SwuV5d6V8FssNrFHzR5/pElR+oYxu"
+            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
             
-        ></script>
-        <!-- prettier-ignore -->
-        <script
-            src="../../assets/main-fdf9fa.js"
+        ></script><script
+            src="../../assets/main-a45256.js"
             type="module"
             crossorigin
-            integrity="sha384-HwDbYmFxEeQarpLEI/iKbW2iV20oBQ0AkDSbeeEVbkf78ns6F0BH/TUIeCI+SB/g"
+            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
             
         ></script>
     </body>
