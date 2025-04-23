@@ -1,5 +1,3 @@
-import { config, FKUIConfigButtonOrder } from "../../config";
-
 /**
  * @public
  */
@@ -31,9 +29,8 @@ export interface FModalButton {
  */
 export function prepareButtonList(
     src: FModalButtonDescriptor[],
-    buttonOrder = config.buttonOrder,
 ): FModalButton[] {
-    const list: FModalButton[] = src.map((it) => ({
+    return src.map((it) => ({
         label: it.label,
         screenreader: it.screenreader,
         event: it.event ?? "dismiss",
@@ -41,11 +38,4 @@ export function prepareButtonList(
         classlist: ["button", `button--${it.type ?? "secondary"}`],
         buttonType: it.submitButton ? "submit" : "button",
     }));
-
-    switch (buttonOrder) {
-        case FKUIConfigButtonOrder.LEFT_TO_RIGHT:
-            return list;
-        case FKUIConfigButtonOrder.RIGHT_TO_LEFT:
-            return list.reverse();
-    }
 }
