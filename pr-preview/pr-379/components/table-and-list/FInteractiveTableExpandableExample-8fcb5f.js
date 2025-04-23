@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableExpandableExample.vue:FInteractiveTableExpandableExample-a32a12.js
+// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableExpandableExample.vue:FInteractiveTableExpandableExample-8fcb5f.js
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = {
@@ -90,10 +90,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx(({ row }) => [
       _createVNode(
         $setup["FTableColumn"],
-        {
-          name: "compensation",
-          title: "Ers\xE4ttning"
-        },
+        { title: "Ers\xE4ttning" },
         {
           default: _withCtx(() => [
             _createTextVNode(
@@ -111,7 +108,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         $setup["FTableColumn"],
         {
-          name: "id",
           title: "Id",
           shrink: ""
         },
@@ -132,7 +128,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         $setup["FTableColumn"],
         {
-          name: "date",
           title: "Datum",
           type: "date"
         },
@@ -153,7 +148,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         $setup["FTableColumn"],
         {
-          name: "amount",
           title: "Summa",
           type: "numeric"
         },
@@ -179,7 +173,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a32a12"
+  selector: "#example-8fcb5f"
 });
 export {
   render

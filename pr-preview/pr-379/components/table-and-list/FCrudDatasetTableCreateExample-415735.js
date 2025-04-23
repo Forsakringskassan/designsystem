@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-e3645d.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-415735.js
 import { defineComponent } from "vue";
 import { FCrudDataset, FDataTable, FTableColumn, FTextField, FTextareaField } from "@fkui/vue";
 
@@ -58,7 +58,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-e3645d.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableCreateExample.vue:FCrudDatasetTableCreateExample-415735.js
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = defineComponent({
   components: {
@@ -111,7 +111,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "name",
               title: "Namn",
               type: "text",
               shrink: ""
@@ -133,7 +132,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "origin",
               title: "Land",
               type: "text",
               shrink: ""
@@ -155,7 +153,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "description",
               title: "Beskrivning",
               type: "text",
               expand: ""
@@ -268,7 +265,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e3645d"
+  selector: "#example-415735"
 });
 export {
   render

@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableLiveExample.vue:FInteractiveTableLiveExample-b2e334.js
+// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableLiveExample.vue:FInteractiveTableLiveExample-343064.js
 import { defineComponent } from "vue";
 import {
   FIcon,
@@ -209,7 +209,7 @@ var exampleComponent = defineComponent({
       const actions = (
         /* HTML */
         `
-                <f-table-column name="actions" title="\xC5tg\xE4rd" type="action" shrink>
+                <f-table-column title="\xC5tg\xE4rd" type="action" shrink>
                     <button
                         aria-label="Redigera"
                         class="button button--tertiary button--small"
@@ -243,11 +243,10 @@ var exampleComponent = defineComponent({
                 >
                     <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
-                        <f-table-column name="level" title="Niv\xE5" ${this.rowHeader} type="text">
+                        <f-table-column title="Niv\xE5" ${this.rowHeader} type="text">
                             {{ row.level }}
                         </f-table-column>
                         <f-table-column
-                            name="start"
                             title="Fr\xE5n och med"
                             ${this.rowDescription}
                             type="text"
@@ -255,15 +254,10 @@ var exampleComponent = defineComponent({
                         >
                             {{ row.start }}
                         </f-table-column>
-                        <f-table-column
-                            name="end"
-                            title="Till och med"
-                            ${this.rowDescription}
-                            type="text"
-                        >
+                        <f-table-column title="Till och med" ${this.rowDescription} type="text">
                             {{ row.end }}
                         </f-table-column>
-                        <f-table-column name="antal" title="Antal dagar" type="numeric">
+                        <f-table-column title="Antal dagar" type="numeric">
                             {{ row.antal }}
                         </f-table-column>
                         ${this.actions}
@@ -452,7 +446,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b2e334"
+  selector: "#example-343064"
 });
 export {
   render

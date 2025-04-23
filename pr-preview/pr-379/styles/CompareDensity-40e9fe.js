@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/styles/examples/CompareDensity.vue:CompareDensity-a57bf8.js
+// virtual-entry:virtual:docs/styles/examples/CompareDensity.vue:CompareDensity-40e9fe.js
 import { defineComponent } from "vue";
 import {
   FTextField,
@@ -504,18 +504,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     _Fragment,
                     null,
                     _renderList(_ctx.dataTableColumns, (column) => {
-                      return _openBlock(), _createBlock(_component_f_table_column, {
-                        key: column.id,
-                        name: column.id,
-                        title: "Kolumnrubrik",
-                        type: "text"
-                      }, {
-                        default: _withCtx(() => [..._cache[49] || (_cache[49] = [
-                          _createTextVNode(" Text ")
-                        ])]),
-                        _: 2
-                        /* DYNAMIC */
-                      }, 1032, ["name"]);
+                      return _openBlock(), _createBlock(
+                        _component_f_table_column,
+                        {
+                          key: column.id,
+                          title: "Kolumnrubrik",
+                          type: "text"
+                        },
+                        {
+                          default: _withCtx(() => [..._cache[49] || (_cache[49] = [
+                            _createTextVNode(" Text ")
+                          ])]),
+                          _: 2
+                          /* DYNAMIC */
+                        },
+                        1024
+                        /* DYNAMIC_SLOTS */
+                      );
                     }),
                     128
                     /* KEYED_FRAGMENT */
@@ -706,7 +711,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a57bf8"
+  selector: "#example-40e9fe"
 });
 export {
   render

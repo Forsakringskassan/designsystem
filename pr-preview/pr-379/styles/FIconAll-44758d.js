@@ -224,7 +224,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FIcon/examples/FIconAll.vue:FIconAll-5ce6ef.js
+// virtual-entry:virtual:packages/vue/src/components/FIcon/examples/FIconAll.vue:FIconAll-44758d.js
 import { defineComponent } from "vue";
 import { FDataTable, FTableColumn, FIcon } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -280,7 +280,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "ikon",
           title: "Ikon",
           type: "text"
         },
@@ -300,7 +299,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "namn",
           title: "Ikonnamn",
           type: "text"
         },
@@ -321,7 +319,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "library",
           title: "Ikon-bibliotek",
           type: "text"
         },
@@ -347,7 +344,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-5ce6ef"
+  selector: "#example-44758d"
 });
 export {
   render

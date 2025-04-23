@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, onUpdated, toRefs, getCurrentScope, onScopeDispose, defineCustomElement, effectScope } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, formatNumber, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parsePersonnummer, formatPersonnummer, parsePlusgiro, formatPostalCode, parsePercent, formatPercent, parseOrganisationsnummer, isInvalidDatesConfig, isInvalidWeekdaysConfig, parseDate, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { groupByWeek, getWeekdayNamings, FDate, DateFormat } from "@fkui/date";
@@ -4664,8 +4664,8 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$W)) : createCommentVNode("", true);
 }
 var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$P]]);
-function prepareButtonList(src, buttonOrder = config.buttonOrder) {
-  const list = src.map((it) => {
+function prepareButtonList(src) {
+  return src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
     return {
       label: it.label,
@@ -4676,12 +4676,6 @@ function prepareButtonList(src, buttonOrder = config.buttonOrder) {
       buttonType: it.submitButton ? "submit" : "button"
     };
   });
-  switch (buttonOrder) {
-    case FKUIConfigButtonOrder.LEFT_TO_RIGHT:
-      return list;
-    case FKUIConfigButtonOrder.RIGHT_TO_LEFT:
-      return list.reverse();
-  }
 }
 var defaultButtons = [{
   label: "Prim\xE4rknapp",
@@ -4779,7 +4773,8 @@ var _sfc_main$1b = defineComponent({
   })],
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons);
+      const preparedButtonList = prepareButtonList(this.buttons);
+      return config.buttonOrder === FKUIConfigButtonOrder.RIGHT_TO_LEFT ? preparedButtonList.reverse() : preparedButtonList;
     }
   },
   methods: {
@@ -5568,7 +5563,7 @@ var _sfc_main$15 = defineComponent({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, FKUIConfigButtonOrder.RIGHT_TO_LEFT);
+      return prepareButtonList(this.buttons);
     }
   },
   methods: {
@@ -11048,13 +11043,19 @@ var FTableColumnSort = /* @__PURE__ */ ((FTableColumnSort2) => {
   return FTableColumnSort2;
 })(FTableColumnSort || {});
 function addColumn(src, column) {
-  if (!src.some((col) => col.name === column.name)) {
+  if (column.name) {
+    const hasDuplicateName = src.some((it) => it.name === column.name);
+    if (hasDuplicateName) {
+      throw new Error(`Expected FTableColumn to have a unique name but encountered duplicate of "${column.name}"`);
+    }
+  }
+  if (!src.some((col) => col.id === column.id)) {
     return [...src, column];
   }
   return src;
 }
 function setVisibilityColumn(src, id, visible) {
-  const column = src.find((col) => col.name === id);
+  const column = src.find((col) => col.id === id);
   if (column) {
     column.visible = visible;
   }
@@ -11113,14 +11114,14 @@ var _sfc_main$J = /* @__PURE__ */ defineComponent({
   __name: "FTableColumn",
   props: {
     /**
-     * Unique (per-table) identifier.
+     * Unique (per-table) identifier. Typically set to the row
+     * property displayed but any unique string can be used.
      *
-     * Typically set to the row property displayed but any unique string can
-     * be used.
+     * Only required when used with `FSortFilterDataset`.
      */
     name: {
       type: String,
-      required: true
+      default: void 0
     },
     /**
      * If set to true, display the column, set to false to hide it.
@@ -11203,6 +11204,10 @@ var _sfc_main$J = /* @__PURE__ */ defineComponent({
       setVisibilityColumn: setVisibilityColumn2,
       addColumn: addColumn2
     } = FTableInjected();
+    const internalVisible = ref(true);
+    const renderElement = ref(true);
+    const id = ElementIdService.generateElementId("column");
+    const el = useTemplateRef("el");
     const props = __props;
     const classes = computed(() => {
       return ["table__column", `table__column--${props.type}`];
@@ -11217,33 +11222,52 @@ var _sfc_main$J = /* @__PURE__ */ defineComponent({
         return "td";
       }
     });
-    watch(() => props.visible, () => setVisibilityColumn2(props.name, props.visible));
+    watch(() => props.visible, () => {
+      internalVisible.value = props.visible;
+      setVisibilityColumn2(id, props.visible);
+    });
     onMounted(() => {
       if (props.shrink && props.expand) {
         throw new Error("Table cannot have both shrink and expand enabled at the same time");
       }
       const size = props.shrink ? FTableColumnSize.SHRINK : FTableColumnSize.EXPAND;
-      addColumn2({
-        name: props.name,
-        title: props.title,
-        description: props.description || void 0,
-        id: ElementIdService.generateElementId("column"),
-        size,
-        type: props.type,
-        visible: props.visible,
-        sortable: false,
-        sort: FTableColumnSort.UNSORTED
-      });
+      const header = isHeader();
+      if (header) {
+        addColumn2({
+          name: props.name,
+          title: props.title,
+          description: props.description || void 0,
+          id,
+          size,
+          type: props.type,
+          visible: props.visible,
+          sortable: false,
+          sort: FTableColumnSort.UNSORTED
+        });
+      }
+      renderElement.value = renderColumns && !header;
+      internalVisible.value = props.visible;
     });
+    function isHeader() {
+      if (!el.value || !(el.value instanceof HTMLElement)) {
+        return false;
+      }
+      const closest = el.value.closest("thead, tbody");
+      return (closest == null ? void 0 : closest.tagName) === "THEAD";
+    }
     return (_ctx, _cache) => {
-      return unref(renderColumns) && __props.visible ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
+      return renderElement.value && internalVisible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
         key: 0,
+        ref_key: "el",
+        ref: el,
         class: classes.value,
         scope: scope.value
       }, _ctx.$attrs), {
-        default: withCtx(() => [renderSlot(_ctx.$slots, "default"), _cache[0] || (_cache[0] = createTextVNode()), _cache[1] || (_cache[1] = createElementVNode("span", {
+        default: withCtx(() => [unref(renderColumns) ? (openBlock(), createElementBlock(Fragment, {
+          key: 0
+        }, [renderSlot(_ctx.$slots, "default"), _cache[0] || (_cache[0] = createTextVNode()), _cache[1] || (_cache[1] = createElementVNode("span", {
           class: "sr-only"
-        }, "\xA0", -1))]),
+        }, "\xA0", -1))], 64)) : createCommentVNode("", true)]),
         _: 3
       }, 16, ["class", "scope"])) : createCommentVNode("", true);
     };
@@ -13274,6 +13298,9 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
         return;
       }
       let columnName = column.name;
+      if (!columnName) {
+        throw new Error("`FTableColumn` must have a unique `name` when used with `FSortFilterDataset`");
+      }
       if (column.sort === FTableColumnSort.DESCENDING) {
         columnName = "";
         column.sort = FTableColumnSort.UNSORTED;
@@ -13295,12 +13322,14 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("table", mergeProps({
         class: ["table", tableClasses.value],
         tabindex: tabindex.value
-      }, _ctx.$attrs), [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$l, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("colgroup", null, [(openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+      }, _ctx.$attrs), [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$l, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("colgroup", null, [(openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createElementBlock("col", {
           key: column.id,
           class: normalizeClass(column.size)
         }, null, 2);
-      }), 128))]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$h, [(openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
+      }), 128))]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$h, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        row: {}
+      }))), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
         return openBlock(), createElementBlock("th", mergeProps({
           key: column.id,
           scope: "col",
@@ -13314,12 +13343,12 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
           class: normalizeClass(iconClasses2(column)),
           name: iconName(column)
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_5$a, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
-      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_6$8, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+      }), 128))])]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_6$8, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         row: {}
-      })))])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$7, [createElementVNode("td", {
+      })))])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$7, [createElementVNode("td", {
         class: "table__column table__column--action",
         colspan: columns.value.length
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.data-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.data-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
         return openBlock(), createElementBlock("tr", {
           key: rowKey(row),
           class: "table__row"
@@ -14890,6 +14919,9 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
         return;
       }
       let columnName = column.name;
+      if (!columnName) {
+        throw new Error("`FTableColumn` must have a unique `name` when used with `FSortFilterDataset`");
+      }
       if (column.sort === FTableColumnSort.DESCENDING) {
         columnName = "";
         column.sort = FTableColumnSort.UNSORTED;
@@ -14934,15 +14966,17 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
         class: normalizeClass(wrapperClasses.value)
-      }, [createCommentVNode("", true), _cache[18] || (_cache[18] = createTextVNode()), createElementVNode("table", mergeProps({
+      }, [createCommentVNode("", true), _cache[19] || (_cache[19] = createTextVNode()), createElementVNode("table", mergeProps({
         class: ["table", tableClasses.value],
         role: tableRole.value
-      }, _ctx.$attrs), [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$e, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), createElementVNode("colgroup", null, [unref(isExpandableTable) ? (openBlock(), createElementBlock("col", _hoisted_3$a)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("col", _hoisted_4$8)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+      }, _ctx.$attrs), [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$e, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), createElementVNode("colgroup", null, [unref(isExpandableTable) ? (openBlock(), createElementBlock("col", _hoisted_3$a)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("col", _hoisted_4$8)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createElementBlock("col", {
           key: column.id,
           class: normalizeClass(column.size)
         }, null, 2);
-      }), 128))]), _cache[16] || (_cache[16] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_5$6, [unref(isExpandableTable) ? (openBlock(), createElementBlock("th", _hoisted_6$4, [createElementVNode("span", _hoisted_7$3, toDisplayString(unref($t2)("fkui.interactive-table.select", "Expandera")), 1)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$3, [createElementVNode("span", _hoisted_9$3, toDisplayString(unref($t2)("fkui.interactive-table.select", "Markera")), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
+      }), 128))]), _cache[17] || (_cache[17] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_5$6, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        row: {}
+      }))), _cache[4] || (_cache[4] = createTextVNode()), unref(isExpandableTable) ? (openBlock(), createElementBlock("th", _hoisted_6$4, [createElementVNode("span", _hoisted_7$3, toDisplayString(unref($t2)("fkui.interactive-table.select", "Expandera")), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$3, [createElementVNode("span", _hoisted_9$3, toDisplayString(unref($t2)("fkui.interactive-table.select", "Markera")), 1)])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
         return openBlock(), createElementBlock("th", mergeProps({
           key: column.id,
           scope: "col",
@@ -14956,7 +14990,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
           class: normalizeClass(iconClasses2(column)),
           name: iconName(column)
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_11$1, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
-      }), 128))])]), _cache[17] || (_cache[17] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
+      }), 128))])]), _cache[18] || (_cache[18] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
         ref_key: "tbodyElement",
         ref: tbodyElement,
         key: tbodyKey.value
@@ -14975,7 +15009,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
         }, [unref(isExpandableTable) ? (openBlock(), createElementBlock("td", _hoisted_13, [unref(hasExpandableContent)(row) ? (openBlock(), createElementBlock("div", _hoisted_14, [createVNode(unref(FIcon), {
           name: "arrow-right",
           rotate: unref(isExpanded)(row) ? "270" : "90"
-        }, null, 8, ["rotate"])])) : createCommentVNode("", true)])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_15, [createElementVNode("div", _hoisted_16, [createVNode(unref(FCheckboxField), {
+        }, null, 8, ["rotate"])])) : createCommentVNode("", true)])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_15, [createElementVNode("div", _hoisted_16, [createVNode(unref(FCheckboxField), {
           value: true,
           "model-value": isSelected(row),
           onClick: withModifiers(($event) => onSelect(row), ["self"])
@@ -14986,20 +15020,20 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
             row
           }))])) : createCommentVNode("", true)]),
           _: 2
-        }, 1032, ["model-value", "onClick"])])])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), renderSlot(_ctx.$slots, "default", mergeProps({
+        }, 1032, ["model-value", "onClick"])])])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), renderSlot(_ctx.$slots, "default", mergeProps({
           ref_for: true
         }, {
           row
-        }))], 42, _hoisted_12$1), _cache[11] || (_cache[11] = createTextVNode()), unref(isExpandableTable) && unref(hasExpandableContent)(row) ? (openBlock(true), createElementBlock(Fragment, {
+        }))], 42, _hoisted_12$1), _cache[12] || (_cache[12] = createTextVNode()), unref(isExpandableTable) && unref(hasExpandableContent)(row) ? (openBlock(true), createElementBlock(Fragment, {
           key: 0
         }, renderList(unref(expandableRows)(row), (expandableRow, expandableIndex) => {
           return openBlock(), createElementBlock("tr", {
             key: rowKey(expandableRow),
             "aria-level": "2",
             class: normalizeClass(unref(expandableRowClasses)(row, expandableIndex))
-          }, [_cache[8] || (_cache[8] = createElementVNode("td", {
+          }, [_cache[9] || (_cache[9] = createElementVNode("td", {
             class: "table__column--placeholder"
-          }, null, -1)), _cache[9] || (_cache[9] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_18)) : createCommentVNode("", true), _cache[10] || (_cache[10] = createTextVNode()), !unref(hasExpandableSlot) ? renderSlot(_ctx.$slots, "default", mergeProps({
+          }, null, -1)), _cache[10] || (_cache[10] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_18)) : createCommentVNode("", true), _cache[11] || (_cache[11] = createTextVNode()), !unref(hasExpandableSlot) ? renderSlot(_ctx.$slots, "default", mergeProps({
             key: 1,
             ref_for: true
           }, {
@@ -15015,12 +15049,12 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
             parentRow: row
           }))], 8, _hoisted_19))], 2);
         }), 128)) : createCommentVNode("", true)], 64);
-      }), 128)), _cache[13] || (_cache[13] = createTextVNode()), isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_20, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+      }), 128)), _cache[14] || (_cache[14] = createTextVNode()), isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_20, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         row: {}
-      })))])) : createCommentVNode("", true), _cache[14] || (_cache[14] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_21, [createElementVNode("td", {
+      })))])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_21, [createElementVNode("td", {
         class: "table__column table__column--action",
         colspan: nbOfColumns.value
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_22), _cache[12] || (_cache[12] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t2)("fkui.interactive-table.empty", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_22), _cache[13] || (_cache[13] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         row: {}
       })))])) : createCommentVNode("", true)]))], 16, _hoisted_1$k)], 2);
     };

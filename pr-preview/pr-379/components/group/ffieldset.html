@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Fältgruppering - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-6b81a9.css"
+            href="../../assets/docs-050345.css"
             crossorigin
-            integrity="sha384-Y013T79bFJtJOTY1XRVbI3dbCfYXAj1H1T1ctDO1Wi9mT/pQFxeAaa8PADLRy1xp"
+            integrity="sha384-Jgrjl9vjLf4sf0O9xz7IC49deOONpdtOdC5stJ5cuJB/OUIkEeoUZK25FkmvPFDQ"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-a5c2ba.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-9c5468.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-a5c2ba.js": "sha384-2qBBQIeHwEp7NYAe7ys6dix3AK/FbwmOgpKxFSKoYe+7vfvctONnl35dhu4KTKa2",
+    "../../assets/vendor-fkui-vue-9c5468.js": "sha384-ReW6QtuzEyuX6XG/23fLy9UGrz09wRcVy1vzjxOYeYvcalCeBNK3v4gCDPemCCCg",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -1029,16 +1029,24 @@
                     <h1 id="title">Fältgruppering</h1>
 
                     
-                    <div id="aside"><dl><dt>Komponent</dt>
+                    <div id="aside"><dl>
+    
+    <dt>Komponent</dt>
     <dd>
-        
-        <code>
+        <div class="docs-badge-list">
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/df535cc2a59ad6850a1b14eea01a02c5d0a8ea51/packages/vue/src/components/FFieldset/FFieldset.vue">FFieldset</a>
             
-        </code>
-         
-    </dd><dt>Status</dt>
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4fcd280134ce357e7ac3a2cbbabf54a494bbc6c2/packages/vue/src/components/FFieldset/FFieldset.vue">
+                FFieldset
+            </a>
+            
+            
+        </div>
+    </dd>
+    
+
+    
+    <dt>Status</dt>
     <dd>
         <div class="badge badge--success">Produktionsklar</div>
     </dd>
@@ -1668,10 +1676,10 @@ Supported by radiobuttons and chip layout.</p>
                             
                         </dt>
                         <dd>
-                            <p>Slot for displaying single or several error messages.</p>
+                            <p>Slot for label content. This slot is required.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>hasError: unknown</code></li><li><code>validationMessage: unknown</code></li>
+                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
                             </ul>
                             
                         </dd>
@@ -1731,9 +1739,9 @@ Supported by radiobuttons and chip layout.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/df535cc2a59ad6850a1b14eea01a02c5d0a8ea51">df535cc</a>)<br />
+<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/4fcd280134ce357e7ac3a2cbbabf54a494bbc6c2">4fcd280</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/379">PR 379</a><br />
-        2025-04-17 12:02
+        2025-04-23 08:08
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1819,7 +1827,7 @@ Supported by radiobuttons and chip layout.</p>
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
-            <label for="search-field" class="label"> Sök </label>
+            <label for="search-field" class="label">Sök</label>
             <div class="text-field__input-wrapper">
                 <div class="text-field__icon-wrapper">
                     <input

@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableInputExample.vue:FInteractiveTableInputExample-12782b.js
+// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableInputExample.vue:FInteractiveTableInputExample-7b99f3.js
 import { defineComponent } from "vue";
 import { FDatepickerField, FInteractiveTable, FTableColumn, FNumericTextField } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
@@ -80,7 +80,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "beskrivning",
           title: "Beskrivning",
           type: "text",
           shrink: ""
@@ -102,7 +101,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "date",
           title: "Utbetalningsdatum",
           type: "text",
           shrink: ""
@@ -136,7 +134,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "belopp",
           title: "Utbetalat belopp",
           type: "text",
           shrink: ""
@@ -175,7 +172,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-12782b"
+  selector: "#example-7b99f3"
 });
 export {
   render

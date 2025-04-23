@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue:FDataTableLiveExample-e9e9bb.js
+// virtual-entry:virtual:packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue:FDataTableLiveExample-bfc8f5.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
@@ -120,11 +120,10 @@ var exampleComponent = defineComponent({
                 <f-data-table ${this.items} ${this.striped} ${scroll} key-attribute="id">
                     <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
-                        <f-table-column name="level" title="Niv\xE5" ${this.rowHeader} type="text">
+                        <f-table-column title="Niv\xE5" ${this.rowHeader} type="text">
                             {{ row.level }}
                         </f-table-column>
                         <f-table-column
-                            name="start"
                             title="Fr\xE5n och med"
                             ${this.rowDescription}
                             type="text"
@@ -132,18 +131,13 @@ var exampleComponent = defineComponent({
                         >
                             <span class="nowrap">{{ row.start }}</span>
                         </f-table-column>
-                        <f-table-column
-                            name="end"
-                            title="Till och med"
-                            ${this.rowDescription}
-                            type="text"
-                        >
+                        <f-table-column title="Till och med" ${this.rowDescription} type="text">
                             <span class="nowrap">{{ row.end }}</span>
                         </f-table-column>
-                        <f-table-column name="antal" title="Antal dagar" type="numeric">
+                        <f-table-column title="Antal dagar" type="numeric">
                             {{ row.antal }}
                         </f-table-column>
-                        <f-table-column name="anteckning" title="Anteckning" type="text">
+                        <f-table-column title="Anteckning" type="text">
                             {{ row.anteckning }}
                         </f-table-column>
                     </template>
@@ -307,7 +301,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e9e9bb"
+  selector: "#example-bfc8f5"
 });
 export {
   render

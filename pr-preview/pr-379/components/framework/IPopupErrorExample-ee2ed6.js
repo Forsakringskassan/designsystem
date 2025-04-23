@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopupError/examples/IPopupErrorExample.vue:IPopupErrorExample-3b4528.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopupError/examples/IPopupErrorExample.vue:IPopupErrorExample-ee2ed6.js
 import { defineComponent } from "vue";
 import {
   FInteractiveTable,
@@ -88,7 +88,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "epost",
               title: "Epost",
               type: "text",
               shrink: ""
@@ -116,7 +115,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "postnr",
               title: "Postnummer",
               type: "text",
               shrink: ""
@@ -163,7 +161,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-3b4528"
+  selector: "#example-ee2ed6"
 });
 export {
   render

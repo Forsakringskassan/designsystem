@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/styles/examples/DensityExample.vue:DensityExample-9b6033.js
+// virtual-entry:virtual:docs/styles/examples/DensityExample.vue:DensityExample-dbe606.js
 import { defineComponent } from "vue";
 import { FDataTable, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -62,7 +62,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "date",
               title: "Datum",
               type: "text"
             },
@@ -83,7 +82,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "amount",
               title: "Belopp",
               type: "numeric"
             },
@@ -118,7 +116,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "date",
               title: "Datum",
               type: "text"
             },
@@ -139,7 +136,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(
             _component_f_table_column,
             {
-              name: "amount",
               title: "Belopp",
               type: "numeric"
             },
@@ -167,7 +163,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-9b6033"
+  selector: "#example-dbe606"
 });
 export {
   render
