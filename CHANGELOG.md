@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 6.5.0 (2025-04-23)
+
+### Features
+
+* **deps:** update dependency i18next to v25 223cfd7
+
+### Bug Fixes
+
+* **@fkui/vue:** `FTableColumn` `name` only required with `FSortFilterDataset` (fixes SFKUI-7059) 3dc3454, closes #312
+* **@fkui/vue:** default value in FSortFilterDataset dropdown (fixes SFKUI-7083) 401f110
+* **@fkui/vue:** fix "set operation on key value failed" on `FInteractiveTable` (refs SFKUI-6500) 7bb357e
+* **@fkui/vue:** fix "set operation on key value failed" on `FTableColumn` (refs SFKUI-6500) 0fe7409
+* **@fkui/vue:** wrong button order in `FFormModal` (fixes SFKUI-7185) ([#429](undefined/Forsakringskassan/designsystem/issues/429)) 886b8f4
+
 ## 6.4.0 (2025-04-11)
 
 ### Features
