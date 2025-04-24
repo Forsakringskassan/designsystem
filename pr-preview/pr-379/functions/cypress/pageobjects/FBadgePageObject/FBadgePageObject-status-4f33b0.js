@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject-status.vue:FBadgePageObject-status-345103.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject-status.vue:FBadgePageObject-status-4f33b0.js
 import { defineComponent as _defineComponent } from "vue";
 import { FBadge } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
@@ -56,7 +56,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-345103"
+  selector: "#example-4f33b0"
 });
 export {
   render

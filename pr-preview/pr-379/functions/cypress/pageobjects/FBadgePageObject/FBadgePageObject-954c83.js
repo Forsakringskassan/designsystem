@@ -26,16 +26,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject.vue:FFileItemPageObject-b5d250.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject.vue:FBadgePageObject-954c83.js
 import { defineComponent as _defineComponent } from "vue";
-import { FFileItem } from "@fkui/vue";
-import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FBadge } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FFileItemPageObject",
+  __name: "FBadgePageObject",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FFileItem() {
-      return FFileItem;
+    const __returned__ = { get FBadge() {
+      return FBadge;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -43,23 +43,20 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock(
-    $setup["FFileItem"],
-    {
-      "file-name": "myFile.pdf",
-      "mime-type": "application/pdf"
-    },
-    null,
-    512
-    /* NEED_PATCH */
-  )), [
-    [_directive_test, "file-item"]
+  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], null, {
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" MyBadge ")
+    ])),
+    _: 1
+    /* STABLE */
+  })), [
+    [_directive_test, "my-badge"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b5d250"
+  selector: "#example-954c83"
 });
 export {
   render
