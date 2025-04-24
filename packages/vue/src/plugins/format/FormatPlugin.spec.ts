@@ -698,3 +698,73 @@ describe("Text", () => {
         `);
     });
 });
+
+describe("Postnummer", () => {
+    it("should format from string", () => {
+        const wrapper = createWrapper(
+            `<span v-format:postnummer="'93222'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--postnummer">932 22</span>`,
+        );
+    });
+
+    it("should render empty element from number", () => {
+        const wrapper = createWrapper(
+            `<span v-format:postnummer="93222"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--postnummer"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", () => {
+        const wrapper = createWrapper(
+            `<span v-format:postnummer="'932BC'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--postnummer"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", () => {
+        const wrapper = createWrapper(
+            `<span v-format:postnummer="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--postnummer"></span>`,
+        );
+    });
+
+    it("should render empty element for null", () => {
+        const wrapper = createWrapper(
+            `<span v-format:postnummer="null"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--postnummer"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:postnummer="value"></span>
+                <button type="button" @click="value='37224'">Update</button>
+            `,
+            "93222",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--postnummer">932 22</span>
+            <button type="button">Update</button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--postnummer">372 24</span>
+            <button type="button">Update</button>
+        `);
+    });
+});

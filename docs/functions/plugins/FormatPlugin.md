@@ -127,6 +127,19 @@ FormatPluginPnr.vue
 FormatPluginPnr.vue
 ```
 
+## Postnummer
+
+Formaterar värdet enligt formatet NNN NN.
+Värdet ska vara av typen `string`.
+
+```import static
+FormatPluginPostnummer.vue
+```
+
+```import nomarkup
+FormatPluginPostnummer.vue
+```
+
 ## Text
 
 Formateraren för text ser till att texten inte radbryts.
