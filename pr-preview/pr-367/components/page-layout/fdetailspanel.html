@@ -1047,7 +1047,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8540e246ba7a311146df3d6c4e88bc077d8d32a3/packages/vue/src/components/FDetailsPanel/FDetailsPanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/1b1a699e755f7451b27fa5d2cc016144a536f73a/packages/vue/src/components/FDetailsPanel/FDetailsPanel.vue">
                 FDetailsPanel
             </a>
             
@@ -1088,7 +1088,7 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Detaljpanel (FDetailsPanel) används tillsammand med <a href="./fpagelayout.html">Applikationslayout</a> för att visa detaljer om ett av användaren valt objekt.</p>
+                    <div id="content"><p class="docs-paragraph">Detaljpanel (FDetailsPanel) används tillsammand med <a href="./fpagelayout.html">applikationslayout</a> för att visa detaljer om ett objekt som användaren har valt.</p>
             <div
                 id="example-85011a"
                 class="code-preview code-preview--default"
@@ -1350,7 +1350,7 @@ interface <span class="hljs-title class_">Row</span> {
  &lt;/f-page-layout&gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Innehåll läggs i respektive slot:</p>
+            <p class="docs-paragraph">Du lägger innehåll i respektive slot:</p>
                 <div
                     id="example-e2c1f0"
                     class="code-preview code-preview--default"
@@ -1374,7 +1374,7 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             <p class="docs-paragraph">Detalpanelen öppnas med API från <a href="../../functions/functions/use-details-panel.html"><code>useDetailsPanel()</code></a> och kräver ett objekt.
-Namnet man anget i propen <code>name</code> används som identifierare för att hämta ut rätt detaljpanel.</p>
+Använd namnet du angett i propen <code>name</code> som identifierare för att hämta ut rätt detaljpanel.</p>
                 <div
                     id="example-c9f2c6"
                     class="code-preview code-preview--default"
@@ -1392,7 +1392,7 @@ panel.<span class="hljs-title function_">close</span>(); <span class="hljs-comme
 </code></pre>
                 </div>
             <p class="docs-paragraph"><code>useDetailsPanel()</code> kan användas överallt i din kodbas så länge namnet matchar en detaljpanel.
-Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen skapats upp men den måste finnas när <code>open()</code> senare anropas.</p><p class="docs-paragraph">Det är rekommenderat att lägga namnet på panelen i en konstant som återanvänds mellan filer.</p>
+Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen skapats upp men den måste finnas när <code>open()</code> senare anropas.</p><p class="docs-paragraph">Vi rekommenderar att du lägger namnet på panelen i en konstant som återanvänds mellan filer.</p>
                 <div
                     id="example-498049"
                     class="code-preview code-preview--default"
@@ -1431,7 +1431,7 @@ Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen sk
 <span class="hljs-addition">+&lt;f-details-panel :name=&quot;awesomePanel&quot;&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Objektet kan återfås i panelen med scope attribute <code>item</code>:</p>
+            <p class="docs-paragraph">Du återfår objektet i panelen med scope attribute <code>item</code>:</p>
                 <div
                     id="example-abe6ce"
                     class="code-preview code-preview--default"
@@ -1455,7 +1455,7 @@ Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen sk
          &lt;/f-details-panel&gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om konsumenten vill agera på att detaljpanelen stängs kan man skicka en valfri callback:</p>
+            <p class="docs-paragraph">Skicka en valfri callback om du vill agera på att detaljpanelen stängs:</p>
                 <div
                     id="example-701b5b"
                     class="code-preview code-preview--default"
@@ -1513,7 +1513,7 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
      &lt;template #default=&quot;{ item }&quot;&gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph"><code>item</code> kommer då vara av typen <code>Item</code>.</p><p class="docs-paragraph">Använder du <a href="https://html-validate.org/">HTML-validate</a> rekommenderas att definiera upp att elementet ärver från <code>FDetailsPanel</code>:</p>
+            <p class="docs-paragraph"><code>item</code> kommer då vara av typen <code>Item</code>.</p><p class="docs-paragraph">Definiera upp att elementet ärver från <code>FDetailsPanel</code> om du använder <a href="https://html-validate.org/">HTML-validate</a>:</p>
                 <div
                     id="example-42bf81"
                     class="code-preview code-preview--default"
@@ -1530,7 +1530,7 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
  ]
 </code></pre>
                 </div>
-            <h2 id="egna_knappar"><a class="header-anchor" href="#egna_knappar">Egna knappar</a></h2><p class="docs-paragraph">Konsumenten kan lägga in egna knappar som stänger detaljpanelen.</p>
+            <h2 id="egna_knappar"><a class="header-anchor" href="#egna_knappar">Egna knappar</a></h2><p class="docs-paragraph">Du kan lägga in egna knappar som stänger detaljpanelen.</p>
                 <div
                     id="example-6997df"
                     class="code-preview code-preview--default"
@@ -1588,11 +1588,11 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
             
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
-                <p class="docs-paragraph">Om du ska använda detaljpanelen för att redigera objekt tänk på att skicka in en kopia av original objektet istället.
+                <p class="docs-paragraph">Om du ska använda detaljpanelen för att redigera objekt tänk på att skicka in en kopia av original-objektet istället.
 Annars riskerar du att mutera originalet vilket bland annat förhindrar att avbryta redigering.</p>
             </div>
         <h2 id="flera_detaljpaneler_i_samma_yta"><a class="header-anchor" href="#flera_detaljpaneler_i_samma_yta">Flera detaljpaneler i samma yta</a></h2><p class="docs-paragraph">Ibland är det användbart att skapa upp flera detaljpaneler i samma yta.
-Som en riktline rekommenderar vi att endast visa en detaljpanel åt gången.</p><p class="docs-paragraph">Om du har flera detaljpaneler och vill stoppa andra från att visas samtidigt sätt propen <code>exclusive</code> till ett gemensamt gruppnamn:</p>
+Som en riktlinje rekommenderar vi att endast visa en detaljpanel åt gången.</p><p class="docs-paragraph">Om du har flera detaljpaneler och vill stoppa andra från att visas samtidigt sätt propen <code>exclusive</code> till ett gemensamt gruppnamn:</p>
                 <div
                     id="example-2361ca"
                     class="code-preview code-preview--default"
@@ -1712,9 +1712,9 @@ from being open at the same time.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feature/details-panel (<a href="https://github.com/Forsakringskassan/designsystem/commits/8540e246ba7a311146df3d6c4e88bc077d8d32a3">8540e24</a>)<br />
+<div class="footer__right"><div class="version">feature/details-panel (<a href="https://github.com/Forsakringskassan/designsystem/commits/1b1a699e755f7451b27fa5d2cc016144a536f73a">1b1a699</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/367">PR 367</a><br />
-        2025-04-24 09:00
+        2025-04-24 12:39
 </div>
 <div class="toolbar__item">
     <form id="version">
