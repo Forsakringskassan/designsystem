@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-b1697d.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-5bfec6.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-b1697d.js": "sha384-xT7bCuy17W1f4y58goxTZWVgafeOKMfyMcDoveHqA608fn5t/Y6Kjn0lAkBNdyfZ",
+    "../../assets/vendor-fkui-vue-5bfec6.js": "sha384-AfVFSwjmpz5T4BUWCjevfa+UpwtLVobd74vSXfzpLl5Fs42YxPyqaaWkd8DMNcJP",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7eaf1c.json"
+            href="../../search-data-0ecd46.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LrN671Fj2UbQgqGGw5py2q+nZ1VoPMYIrM/eNEEKHavan9Q3VFESHtVB7DDK+wi7"
+            integrity="sha384-HSFG7CEB+B8KIDJgxJ5oGeAf8UjDPE44iipmYAnTV0dkcdyO/XP/damrF/4Nubmi"
             id="search-data"
         />
     </head>
@@ -1047,7 +1047,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/d4155f1a0ad057b044400a7bcb765193436f0a71/packages/vue/src/components/FDetailsPanel/FDetailsPanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e9f378c0aa3b2ca50fc9131546f98e0ba92c8ef8/packages/vue/src/components/FDetailsPanel/FDetailsPanel.vue">
                 FDetailsPanel
             </a>
             
@@ -1076,6 +1076,8 @@
                                 
                                 <li><a href="#egna_knappar">Egna knappar</a></li>
                                 
+                                <li><a href="#redigera_objekt">Redigera objekt</a></li>
+                                
                                 <li><a href="#flera_detaljpaneler_i_samma_yta">Flera detaljpaneler i samma yta</a></li>
                                 
                                 <li><a href="#textnycklar">Textnycklar</a></li>
@@ -1098,18 +1100,18 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-16163f"></div>
+        <div id="example-d0fbb2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.layout-container[data-v-16163f] {
+.layout-container[data-v-d0fbb2] {
     container-type: size;
-    height: 520px;
+    height: 200px;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FDetailsPanelExample-16163f.js"></script>
+        <script type="module" src="./FDetailsPanelExample-d0fbb2.js"></script>
     </div>
                 <div>
             <button
@@ -1152,19 +1154,19 @@ interface <span class="hljs-title class_">Item</span> {
                 <span class="hljs-comment">&lt;!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot --&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-resize-pane</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;200px&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;50%&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">example-panel</span> <span class="hljs-attr">:name</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ header, content }&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item, header, content }&quot;</span>&gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>Detaljpanel<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>Innehåll<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
                         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">example-panel</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-resize-pane</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Applikationsyta<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;openPanel&quot;</span>&gt;</span>
-                    Öppna
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;openPanel&quot;</span>&gt;</span>
+                        Öppna
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-layout</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1173,7 +1175,7 @@ interface <span class="hljs-title class_">Item</span> {
 <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css">
 <span class="hljs-selector-class">.layout-container</span> {
     <span class="hljs-attribute">container-type</span>: size;
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">520px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
 }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 </code></pre>
@@ -1500,10 +1502,190 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
                 <p class="docs-paragraph">Om du ska använda detaljpanelen för att redigera objekt tänk på att skicka in en kopia av original-objektet istället.
 Annars riskerar du att mutera originalet vilket bland annat förhindrar att avbryta redigering.</p>
             </div>
+        <h2 id="redigera_objekt"><a class="header-anchor" href="#redigera_objekt">Redigera objekt</a></h2><p class="docs-paragraph">Riktlinjer för att använda detaljpanelen för att redigera objekt:</p><ul>
+<li><p class="docs-paragraph">Använd en separat knapp med en annan orsak (<code>@click=&quot;close('save')&quot;</code>) för att låta slutanvändaren ha möjlighet att ångra sig och förhindra att man oavsikligt redigerar data.</p></li>
+<li><p class="docs-paragraph">Använd en kopia av objektet och mutera inte originalobjektet direkt förrän användaren explicit valt att spara.</p></li>
+</ul>
+
+            <div
+                id="example-656483"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-ab0ee7"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+.layout-container[data-v-ab0ee7] {
+    container-type: size;
+    height: 520px;
+}
+
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FDetailsPanelEdit-ab0ee7.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { reactive } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FDetailsPanel</span>,
+    <span class="hljs-title class_">FInteractiveTable</span>,
+    <span class="hljs-title class_">FPageLayout</span>,
+    <span class="hljs-title class_">FResizePane</span>,
+    <span class="hljs-title class_">FTableColumn</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    useDetailsPanel,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: number;
+    <span class="hljs-attr">column1</span>: string;
+    <span class="hljs-attr">column2</span>: string;
+    <span class="hljs-attr">column3</span>: string;
+    <span class="hljs-attr">column4</span>: string;
+}
+
+<span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;edit-panel&quot;</span>;
+<span class="hljs-keyword">const</span> panel = useDetailsPanel&lt;<span class="hljs-title class_">Row</span>&gt;(name);
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">ExamplePanel</span> = <span class="hljs-title class_">FDetailsPanel</span>&lt;<span class="hljs-title class_">Row</span>&gt;;
+
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">reactive</span>([
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text11&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text12&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text13&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text14&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text21&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text22&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text23&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text24&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text31&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text33&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text33&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text34&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text41&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text44&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text43&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text44&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text51&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text52&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text53&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text54&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">6</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text61&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text62&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text63&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text64&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">7</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text71&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text72&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text73&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text74&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">8</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text81&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text82&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text83&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text84&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-number">9</span>, <span class="hljs-attr">column1</span>: <span class="hljs-string">&quot;Text91&quot;</span>, <span class="hljs-attr">column2</span>: <span class="hljs-string">&quot;Text92&quot;</span>, <span class="hljs-attr">column3</span>: <span class="hljs-string">&quot;Text93&quot;</span>, <span class="hljs-attr">column4</span>: <span class="hljs-string">&quot;Text94&quot;</span> },
+]);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">openPanel</span>(<span class="hljs-params">row: Row</span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-comment">/* to handle when the panel is closed without saving we avoid mutating the
+     * row directly by creating a copy and when saving we write down the actual
+     * values */</span>
+    <span class="hljs-keyword">const</span> copy = { ...row };
+    panel.<span class="hljs-title function_">open</span>(copy, {
+        <span class="hljs-title function_">onClose</span>(<span class="hljs-params">{ reason }</span>) {
+            <span class="hljs-keyword">if</span> (reason === <span class="hljs-string">&quot;save&quot;</span>) {
+                <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(row, copy);
+            }
+        },
+    });
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;layout-container&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-page-layout</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">&quot;three-column&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">right</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot --&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-resize-pane</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;200px&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;50%&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">example-panel</span> <span class="hljs-attr">:name</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item, close, content }&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.column1&quot;</span>
+                                    <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 10 } }&quot;</span>
+                                &gt;</span>
+                                    Etikett-rubrik 1
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.column2&quot;</span>
+                                    <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 10 } }&quot;</span>
+                                &gt;</span>
+                                    Etikett-rubrik 2
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.column3&quot;</span>
+                                    <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 10 } }&quot;</span>
+                                &gt;</span>
+                                    Etikett-rubrik 3
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.column4&quot;</span>
+                                    <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 10 } }&quot;</span>
+                                &gt;</span>
+                                    Etikett-rubrik 4
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--primary button--small&quot;</span>
+                                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;close(&#x27;save&#x27;)&quot;</span>
+                                    &gt;</span>
+                                        Spara
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--secondary button--small&quot;</span>
+                                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;close()&quot;</span>
+                                    &gt;</span>
+                                        Avbryt
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">example-panel</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-resize-pane</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;openPanel($event)&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>Tabell<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;column1&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kolumnrubrik&quot;</span>&gt;</span>
+                            {{ row.column1 }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;column2&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kolumnrubrik&quot;</span>&gt;</span>
+                            {{ row.column2 }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;column3&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kolumnrubrik&quot;</span>&gt;</span>
+                            {{ row.column3 }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;column4&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kolumnrubrik&quot;</span>&gt;</span>
+                            {{ row.column4 }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-layout</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css">
+<span class="hljs-selector-class">.layout-container</span> {
+    <span class="hljs-attribute">container-type</span>: size;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">520px</span>;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
         <h2 id="flera_detaljpaneler_i_samma_yta"><a class="header-anchor" href="#flera_detaljpaneler_i_samma_yta">Flera detaljpaneler i samma yta</a></h2><p class="docs-paragraph">Ibland är det användbart att skapa upp flera detaljpaneler i samma yta.
 Som en riktlinje rekommenderar vi att endast visa en detaljpanel åt gången.</p><p class="docs-paragraph">Om du har flera detaljpaneler och vill stoppa andra från att visas samtidigt sätt propen <code>exclusive</code> till ett gemensamt gruppnamn:</p>
                 <div
-                    id="example-2361ca"
+                    id="example-6e84b7"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1621,9 +1803,9 @@ from being open at the same time.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feature/details-panel (<a href="https://github.com/Forsakringskassan/designsystem/commits/d4155f1a0ad057b044400a7bcb765193436f0a71">d4155f1</a>)<br />
+<div class="footer__right"><div class="version">feature/details-panel (<a href="https://github.com/Forsakringskassan/designsystem/commits/e9f378c0aa3b2ca50fc9131546f98e0ba92c8ef8">e9f378c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/367">PR 367</a><br />
-        2025-04-24 13:18
+        2025-04-24 14:28
 </div>
 <div class="toolbar__item">
     <form id="version">
