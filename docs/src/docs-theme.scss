@@ -5,7 +5,7 @@
     $asset-path-images: "./images"
 );
 @use "@fkui/design/src/core/mixins/breakpoints";
-@use "@fkui/design/src/fkui";
+@use "@fkui/design" as fkui;
 @use "@forsakringskassan/docs-generator/style";
 @use "@forsakringskassan/docs-live-example";
 
@@ -66,7 +66,8 @@ footer {
         padding: 0;
     }
 
-    li {
+    li,
+    #version button {
         margin-bottom: 0.5rem;
     }
 
@@ -74,6 +75,14 @@ footer {
         color: var(--fkds-color-text-inverted);
         font-weight: var(--f-font-weight-normal);
         text-decoration-color: var(--fkds-color-text-inverted);
+    }
+
+    .anchor,
+    #version button {
+        &:hover {
+            color: palette.$palette-color-fk-black-100;
+            text-decoration-color: palette.$palette-color-fk-black-100;
+        }
     }
 
     .footer__left {
@@ -91,6 +100,22 @@ footer {
     .version {
         color: var(--fkds-color-text-inverted);
         margin-left: 0;
+    }
+
+    #version {
+        button {
+            appearance: none;
+
+            &:focus {
+                @include fkui.focus-indicator;
+            }
+
+            &:hover,
+            &:active {
+                background: transparent;
+                cursor: pointer;
+            }
+        }
     }
 
     #version-dialog .list__item {
