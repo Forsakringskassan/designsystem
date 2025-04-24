@@ -226,6 +226,7 @@
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
+    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -1145,6 +1146,11 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
       "title": "FFileItemPageObject: FFileItemPageObject() constructor",
       "terms": []
@@ -1425,6 +1431,7 @@
     "231": 160,
     "232": 161,
     "233": 162,
-    "234": 163
+    "234": 163,
+    "235": 164
   }
 }

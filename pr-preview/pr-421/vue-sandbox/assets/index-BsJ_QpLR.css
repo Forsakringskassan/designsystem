@@ -1,6 +1,6 @@
 @charset "UTF-8";
 :root {
-  --fkui-theme-default-version: "6.4.0";
+  --fkui-theme-default-version: "6.5.0";
   --fkds-color-text-primary: #1b1e23; /* Standard text färg */
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff; /* Inverterad text färg */
@@ -6234,13 +6234,13 @@ input[type=search]:focus,
 .wizard-step--done .wizard-step__header {
   margin-top: 4px;
 }
-.wizard-step--done .wizard-step__header .wizard-step__header__title {
+.wizard-step--done .wizard-step__header .wizard-step__header__title .anchor {
   color: var(--fkds-color-feedback-text-positive);
   text-decoration-color: var(--fkds-color-feedback-text-positive);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.25em;
 }
-.wizard-step--done .wizard-step__header .wizard-step__header__title:hover {
+.wizard-step--done .wizard-step__header .wizard-step__header__title .anchor:hover {
   text-decoration-color: var(--fkds-color-feedback-text-positive);
   text-decoration-thickness: 3px;
   text-underline-offset: 0.25em;

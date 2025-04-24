@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject-fileName.vue:FFileItemPageObject-fileName-e1e93c.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject-fileName.vue:FFileItemPageObject-fileName-8afc79.js
 import { defineComponent as _defineComponent } from "vue";
 import { FFileItem } from "@fkui/vue";
 import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -61,7 +61,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e1e93c"
+  selector: "#example-8afc79"
 });
 export {
   render

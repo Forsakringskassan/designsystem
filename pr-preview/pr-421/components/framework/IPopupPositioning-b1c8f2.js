@@ -2381,8 +2381,8 @@ var FModal_default2 = FModal_default;
 import { defineComponent as defineComponent5 } from "vue";
 
 // packages/vue/src/components/FModal/modal-button.ts
-function prepareButtonList(src, buttonOrder = config.buttonOrder) {
-  const list = src.map((it) => ({
+function prepareButtonList(src) {
+  return src.map((it) => ({
     label: it.label,
     screenreader: it.screenreader,
     event: it.event ?? "dismiss",
@@ -2390,12 +2390,6 @@ function prepareButtonList(src, buttonOrder = config.buttonOrder) {
     classlist: ["button", `button--${it.type ?? "secondary"}`],
     buttonType: it.submitButton ? "submit" : "button"
   }));
-  switch (buttonOrder) {
-    case 0 /* LEFT_TO_RIGHT */:
-      return list;
-    case 1 /* RIGHT_TO_LEFT */:
-      return list.reverse();
-  }
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue?type=script
@@ -2485,7 +2479,8 @@ var FConfirmModal_default = defineComponent5({
   emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons);
+      const preparedButtonList = prepareButtonList(this.buttons);
+      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.reverse() : preparedButtonList;
     }
   },
   methods: {
@@ -3430,7 +3425,7 @@ var FFormModal_default = defineComponent11({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, 1 /* RIGHT_TO_LEFT */);
+      return prepareButtonList(this.buttons);
     }
   },
   methods: {
