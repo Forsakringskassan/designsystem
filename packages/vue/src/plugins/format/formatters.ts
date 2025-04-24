@@ -5,6 +5,7 @@ import {
     parseDate,
     parseOrganisationsnummer,
     parsePersonnummer,
+    parsePostalCode,
 } from "@fkui/logic";
 import { type DateRange } from "./date-range";
 import { type NumberFormat } from "./number-format";
@@ -151,4 +152,16 @@ export function formatOrganisationsnummer(
 export function formatText(el: HTMLElement, text: string | unknown): void {
     el.classList.add("formatter--text");
     el.textContent = typeof text === "string" ? text : "";
+}
+
+export function formatPostnummer(
+    el: HTMLElement,
+    postnummer: string | unknown,
+): void {
+    el.classList.add("formatter--postnummer");
+    el.textContent = "";
+
+    if (typeof postnummer === "string") {
+        el.textContent = parsePostalCode(postnummer) ?? "";
+    }
 }
